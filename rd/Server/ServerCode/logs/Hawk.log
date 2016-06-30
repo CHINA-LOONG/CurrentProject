@@ -1,0 +1,31 @@
+2015-04-01 18:24:28,024 - load config: F:\rd\Server\ServerCode\GameServer\cfg/gs.cfg
+2015-04-01 18:24:28,039 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-04-01 18:24:28,039 - UserDir: F:\rd\Server\ServerCode\GameServer
+2015-04-01 18:24:28,039 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-04-01 18:24:28,086 - parse script/script.xml config
+2015-04-01 18:24:28,086 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-04-01 18:24:28,460 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-04-01 18:24:28,492 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-04-01 18:24:28,523 - init config package: com.hawk.game.config
+2015-04-01 18:24:28,523 - load config: F:\rd\Server\ServerCode\GameServer\xml/grayPuid.xml
+2015-04-01 18:24:28,538 - load config: F:\rd\Server\ServerCode\GameServer\xml/item_reward_data.xml
+2015-04-01 18:24:28,538 - ItemReward
+2015-04-01 18:24:28,538 - ItemReward
+2015-04-01 18:24:28,538 - ItemReward
+2015-04-01 18:24:28,538 - ItemReward
+2015-04-01 18:24:28,538 - load config: F:\rd\Server\ServerCode\GameServer\xml/sysBasic.cfg
+2015-04-01 18:24:28,601 - start msgExecutor, threadNum: 4
+2015-04-01 18:24:28,663 - start taskExecutor, threadNum: 4
+2015-04-01 18:24:28,835 - init entity package: com.hawk.game.entity
+2015-04-01 18:24:28,850 - scan database entity: PlayerEntity
+2015-04-01 18:24:29,351 - init database, connUrl: jdbc:mysql://10.21.2.47:3306/game, userName: root, pwd: root, hbmXml: cfg/db.xml
+2015-04-01 18:24:29,402 - start dbExecutor, threadNum: 4
+2015-04-01 18:24:29,403 - init server data......
+2015-04-01 18:24:29,404 - load player count from db......
+2015-04-01 18:24:29,584 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 180
+2015-04-01 18:24:29,584 - load puid and playerId from db......
+2015-04-01 18:24:29,599 - load playerName and playerId from db......
+2015-04-01 18:24:29,705 - dbmanager.executequery timeout, sql: select name, playerId from role where type = 1, costtime: 106
+2015-04-01 18:24:29,706 - install email service......
+2015-04-01 18:24:29,785 - start network, port: 9595
+2015-04-01 18:24:29,785 - server running......

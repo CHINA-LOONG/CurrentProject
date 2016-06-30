@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRewardData>
+	<ItemRewardList id="activity_mer_reward_01" type="mercenary" level_min="0" level_max="0">
+		<ItemReward id="armor_mer_head_003" ratio="100" min="1" max="1"/>
+		<ItemReward id="armor_mer_weapon_003" ratio="100" min="1" max="1"/>
+	</ItemRewardList>
+
+	<ItemRewardList id="activity_rai_reward_01" type="raider" level_min="0" level_max="0">
+		<ItemReward id="armor_rai_head_003" ratio="100" min="1" max="1"/>
+		<ItemReward id="armor_rai_weapon_003" ratio="100" min="1" max="1"/>
+	</ItemRewardList>
+
+</ItemRewardData>
