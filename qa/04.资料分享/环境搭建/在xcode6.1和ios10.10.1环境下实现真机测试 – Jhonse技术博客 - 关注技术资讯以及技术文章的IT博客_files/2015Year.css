@@ -1,0 +1,103 @@
+body{
+	background: url(./body_bg.jpg) no-repeat fixed center top; 
+	background-size:100%;
+}
+a{
+	color:#eb7350;
+}
+a:hover, a:focus{
+color:#F55A2C;
+}
+::selection {
+background: #eb7350;
+color: #fff;
+}
+.navbar .logo{
+background-color:#eb7350;
+}
+.header{
+position: fixed;
+max-width: 100%;
+}
+.header .navbar{
+width:980px;
+margin:0px auto;
+}
+.header .speedbar{
+width:940px;
+margin:0px auto;
+}
+.container{
+margin-top:97px;
+}
+.excerpt{
+margin-bottom:10px;
+border-radius: 5px;
+}
+.title{
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+}
+.banner-sticky{
+margin-bottom:10px;
+border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;
+}
+.sticky{
+margin-bottom:10px;
+border-radius: 5px;
+}
+.article-header{
+margin-bottom:0px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+}
+.breadcrumbs{
+margin-bottom:10px;
+border-radius: 5px;
+}
+.pagination{
+border-radius: 5px;
+}
+.archive-header{
+margin-bottom:0px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+}
+.relates{
+border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;
+}
+.article-content a{
+color:#eb7350;
+}
+.navbar .nav li li a:hover{
+background: #eb7350;
+}
+.btn-primary{
+background: #eb7350;
+}
+.footer-inner{
+border-left: 20px solid #eb7350;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled]{
+background-color:#F55A2C;
+}
+.btn-group.open .btn-primary.dropdown-toggle{
+background-color:#F55A2C;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a{
+background-color:#eb7350;
+}
+.excerpt:hover{
+border-left-color: #eb7350;
+}
+.pagination ul > .active > a, .pagination ul > .active > span{
+background-color: #eb7350;
+}
+.article-tags a:nth-child(5n+1){
+background-color: #eb7350;
+}
+.pagesider-menu li.active a, .pagesider-menu li.current_page_item a, .pagesider-menu li.current-menu-item a{
+border-left-color: #eb7350;
+}
