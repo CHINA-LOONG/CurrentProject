@@ -30,7 +30,7 @@ public class Player extends HawkAppObj {
 	 * 协议日志记录器
 	 */
 	private static final Logger logger = LoggerFactory.getLogger("Protocol");
-	
+
 	/**
 	 * 挂载玩家数据管理集合
 	 */
@@ -40,7 +40,7 @@ public class Player extends HawkAppObj {
 	 * 组装状态
 	 */
 	private boolean assembleFinish;
-	
+
 	/**
 	 * 构造函数
 	 * 
@@ -60,7 +60,7 @@ public class Player extends HawkAppObj {
 	 */
 	public void initModules() {
 		registerModule(GsConst.ModuleType.LOGIN_MODULE, new PlayerLoginModule(this));
-		
+
 		// 最后注册空闲模块, 用来消息收尾处理
 		registerModule(GsConst.ModuleType.IDLE_MODULE, new PlayerIdleModule(this));
 	}
@@ -125,7 +125,7 @@ public class Player extends HawkAppObj {
 		builder.setErrFlag(errFlag);
 		sendProtocol(HawkProtocol.valueOf(HP.sys.ERROR_CODE, builder));
 	}
-	
+
 	/**
 	 * 发送协议
 	 * 
@@ -139,7 +139,7 @@ public class Player extends HawkAppObj {
 		}
 		return super.sendProtocol(protocol);
 	}
-	
+
 	/**
 	 * 踢出玩家
 	 * @param reason
@@ -158,7 +158,7 @@ public class Player extends HawkAppObj {
 		if (HawkServiceProxy.onMessage(this, msg)) {
 			return true;
 		}
-		
+
 		// 系统级消息, 所有模块都进行处理的消息
 		if (msg.getMsg() == GsConst.MsgType.PLAYER_LOGIN) {
 			for (Entry<Integer, HawkObjModule> entry : objModules.entrySet()) {
@@ -195,7 +195,7 @@ public class Player extends HawkAppObj {
 		if (HawkServiceProxy.onProtocol(this, protocol)) {
 			return true;
 		}
-		
+
 		// 玩家不在线而且不是登陆协议(非法协议时机)
 		if (!isOnline() && !protocol.checkType(HP.code.LOGIN_C)) {
 			HawkLog.errPrintln(String.format("player is offline, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
@@ -207,7 +207,7 @@ public class Player extends HawkAppObj {
 			HawkLog.errPrintln(String.format("player assemble unfinish, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
 			return true;
 		}
-		
+
 		return false;
 	}
 
@@ -294,7 +294,7 @@ public class Player extends HawkAppObj {
 	public String getPhoneInfo() {
 		return playerData.getPlayerEntity().getPhoneInfo();
 	}
-	
+
 	/**
 	 * 获取钻石
 	 * 
@@ -347,7 +347,7 @@ public class Player extends HawkAppObj {
 	public int getExp() {
 		return playerData.getPlayerEntity().getExp();
 	}
-	
+
 	/**
 	 * 获取会话ip地址
 	 * 

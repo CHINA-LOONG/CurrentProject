@@ -24,7 +24,7 @@ public class PlayerData {
 	 * 玩家基础数据
 	 */
 	private PlayerEntity playerEntity = null;
-	
+
 	/**
 	 * 构造函数
 	 * 
@@ -60,7 +60,7 @@ public class PlayerData {
 	public void setPlayerEntity(PlayerEntity playerEntity) {
 		this.playerEntity = playerEntity;
 	}
-	
+
 	/**********************************************************************************************************
 	 * 数据db操作区
 	 **********************************************************************************************************/

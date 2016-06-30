@@ -27,19 +27,31 @@ public class PlayerEntity extends HawkDBEntity {
 	@GeneratedValue(generator = "AUTO_INCREMENT")
 	@Column(name = "id", unique = true)
 	private int id = 0;
-	
+
 	@Column(name = "puid", unique = true, nullable = false)
 	protected String puid = "";
 
 	@Column(name = "name", unique = true, nullable = false)
 	private String name ;
-	
+
+	@Column(name = "asset")
+	private byte asset;
+
+	@Column(name = "career")
+	private byte career;
+
 	@Column(name = "level")
 	private int level;
-	
+
 	@Column(name = "exp")
 	private int exp;
-	
+
+	@Column(name = "fatigue")
+	private int fatigue;
+
+	@Column(name = "bagCapacity")
+	private int bagCapacity;
+
 	@Column(name = "gold")
 	protected int gold = 0;
 
@@ -60,36 +72,36 @@ public class PlayerEntity extends HawkDBEntity {
 
 	@Column(name = "phoneInfo", nullable = false)
 	protected String phoneInfo = "";
-	
+
 	@Column(name = "forbidenTime")
 	protected Date forbidenTime = null;
-	
+
 	@Column(name = "silentTime")
 	protected Date silentTime = null;
-	
+
 	@Column(name = "loginTime")
 	protected Date loginTime = null;
 
 	@Column(name = "logoutTime")
 	protected Date logoutTime = null;
-	
+
 	@Column(name = "resetTime")
 	protected Date resetTime = null;
-	
+
 	@Column(name = "createTime", nullable = false)
 	protected Date createTime = null;
-	
+
 	@Column(name = "updateTime")
 	protected Date updateTime;
 
 	@Column(name = "invalid")
 	protected boolean invalid;
-	
+
 	public PlayerEntity() {
 		this.createTime = HawkTime.getCalendar().getTime();
 		this.loginTime = HawkTime.getCalendar().getTime();
 	}
-	
+
 	public PlayerEntity(String puid, String device, String platform, String phoneInfo) {
 		this.puid = puid;
 		this.device = device;
@@ -99,7 +111,7 @@ public class PlayerEntity extends HawkDBEntity {
 		this.createTime = HawkTime.getCalendar().getTime();
 		this.loginTime = HawkTime.getCalendar().getTime();
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -116,6 +128,62 @@ public class PlayerEntity extends HawkDBEntity {
 		this.puid = puid;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public byte getAsset() {
+		return asset;
+	}
+
+	public void setAsset(byte asset) {
+		this.asset = asset;
+	}
+
+	public byte getCareer() {
+		return career;
+	}
+
+	public void setCareer(byte career) {
+		this.career = career;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+	public int getFatigue() {
+		return fatigue;
+	}
+
+	public void setFatigue(int fatigue) {
+		this.fatigue = fatigue;
+	}
+
+	public int getBagCapacity() {
+		return bagCapacity;
+	}
+
+	public void setBagCapacity(int bagCapacity) {
+		this.bagCapacity = bagCapacity;
+	}
+
 	public int getGold() {
 		return gold;
 	}
@@ -123,7 +191,7 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setGold(int gold) {
 		this.gold = gold;
 	}
-	
+
 	public long getCoin() {
 		return coin;
 	}
@@ -164,6 +232,30 @@ public class PlayerEntity extends HawkDBEntity {
 		this.platform = platform;
 	}
 
+	public String getPhoneInfo() {
+		return phoneInfo;
+	}
+
+	public void setPhoneInfo(String phoneInfo) {
+		this.phoneInfo = phoneInfo;
+	}
+
+	public Date getForbidenTime() {
+		return forbidenTime;
+	}
+
+	public void setForbidenTime(Date forbidenTime) {
+		this.forbidenTime = forbidenTime;
+	}
+
+	public Date getSilentTime() {
+		return silentTime;
+	}
+
+	public void setSilentTime(Date silentTime) {
+		this.silentTime = silentTime;
+	}
+
 	public Date getLoginTime() {
 		return loginTime;
 	}
@@ -179,21 +271,13 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setLogoutTime(Date logoutTime) {
 		this.logoutTime = logoutTime;
 	}
-	
+
 	public Date getResetTime() {
 		return resetTime;
 	}
 
 	public void setResetTime(Date resetTime) {
 		this.resetTime = resetTime;
-	}
-	
-	public Date getForbidenTime() {
-		return forbidenTime;
-	}
-
-	public void setForbidenTime(Date forbidenTime) {
-		this.forbidenTime = forbidenTime;
 	}
 
 	public Date getCreateTime() {
@@ -211,52 +295,12 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
-	
+
 	public boolean isInvalid() {
 		return invalid;
 	}
 
 	public void setInvalid(boolean invalid) {
 		this.invalid = invalid;
-	}
-
-	public String getPhoneInfo() {
-		return phoneInfo;
-	}
-
-	public void setPhoneInfo(String phoneInfo) {
-		this.phoneInfo = phoneInfo;
-	}
-
-	public Date getSilentTime() {
-		return silentTime;
-	}
-
-	public void setSilentTime(Date silentTime) {
-		this.silentTime = silentTime;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getExp() {
-		return exp;
-	}
-
-	public void setExp(int exp) {
-		this.exp = exp;
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
 	}
 }

@@ -48,8 +48,27 @@ public class GsConst {
 	public static class ModuleType {
 		// 登陆模块
 		public static int LOGIN_MODULE = 1;
-		
+
 		// 空闲模块(保证在最后)
 		public static int IDLE_MODULE = 100;
 	}
+	
+	/**
+	 * 进化类型定义
+	 * 
+	 * @author zs
+	 */
+	public static class EvolutionType {
+
+		public static int NULL_EVOLUTION = 0;
+		// 级别进化，达到一定级别进化
+		public static int LEVEL_EVOLUTION = 1;
+		// 物品进化，和某个物品合成进化
+		public static int ITEM_EVOLUTION = 2;
+		// 物品进化，和某个怪物合成进化
+		public static int MONSTER_EVOLUTION = 3;
+		// 物品进化，和某个任务合成进化
+		public static int MISSION_EVOLUTION = 4;
+	}
+	
 }

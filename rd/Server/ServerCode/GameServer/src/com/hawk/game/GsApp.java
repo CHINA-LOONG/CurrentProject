@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 import com.hawk.game.callback.ShutdownCallback;
 import com.hawk.game.config.GrayPuidCfg;
 import com.hawk.game.config.SysBasicCfg;
-import com.hawk.game.config.ItemRewardTest;
+import com.hawk.game.config.MonsterAttr;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
@@ -38,7 +38,6 @@ import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.SysProtocol.HPHeartBeat;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
 /**
  * 游戏应用
@@ -105,11 +104,12 @@ public class GsApp extends HawkApp {
 			return false;
 		}
 
-	
-		Map<Object, ItemRewardTest> result = HawkConfigManager.getInstance().getConfigMap(ItemRewardTest.class);
+
+		Map<Object, MonsterAttr> result = HawkConfigManager.getInstance().getConfigMap(MonsterAttr.class);
+
+		MonsterAttr test =  result.get("baize");
 		
-		ItemRewardTest test =  result.get("activity_rai_reward_01");
-	
+		test.toString();
 		
 		// 初始化对象管理区
 		if (!initAppObjMan()) {

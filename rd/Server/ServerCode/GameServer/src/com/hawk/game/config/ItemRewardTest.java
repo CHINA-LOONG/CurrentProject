@@ -8,13 +8,13 @@ public class ItemRewardTest extends HawkConfigBase {
 
 	@Id
 	protected final String id ;
-	
+
 	protected final String type;
-	
+
 	protected final int level_min;
-	
+
 	protected final int level_max;
-	
+
 	/**
 	 * 全局静态对象
 	 */

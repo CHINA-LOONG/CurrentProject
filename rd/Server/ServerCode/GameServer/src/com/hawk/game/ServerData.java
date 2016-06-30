@@ -50,7 +50,7 @@ public class ServerData {
 	 * 上次信息显示时间
 	 */
 	protected int lastShowTime = 0;
-	
+
 	/**
 	 * 全局对象实例
 	 */
@@ -203,7 +203,7 @@ public class ServerData {
 	public boolean isExistName(String name) {
 		return nameMap.containsKey(name);
 	}
-	
+
 	/**
 	 * 添加在线id
 	 * 
@@ -244,7 +244,7 @@ public class ServerData {
 	public void addDisablePhone(String phoneInfo) {
 		disablePhoneMap.put(phoneInfo, phoneInfo);
 	}
-	
+
 	/**
 	 * 是否为禁用设备
 	 * 
@@ -254,14 +254,14 @@ public class ServerData {
 	public boolean isDisablePhone(String phoneInfo) {
 		return disablePhoneMap.containsKey(phoneInfo);
 	}
-	
+
 	/**
 	 * 清空无效设备信息
 	 */
 	public void clearDisablePhone() {
 		disablePhoneMap.clear();
 	}
-	
+
 	/**
 	 * 打印服务器状态信息
 	 */

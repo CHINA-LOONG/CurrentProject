@@ -25,7 +25,7 @@ public class ProtoUtil {
 			if (GsConfig.getInstance().isWebSocket()) {
 				return protocol;
 			}
-			
+
 			if (protocol.getSize() > 0) {
 				ByteBuffer buffer = protocol.getOctets().getBuffer();
 				byte[] bytes = HawkZlib.zlibDeflate(buffer.array(), buffer.position(), buffer.remaining());
@@ -38,7 +38,7 @@ public class ProtoUtil {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 协议解密
 	 * @return
@@ -54,14 +54,14 @@ public class ProtoUtil {
 			if (protocol.getReserve() != 0) {
 				if (lowMask < RESERVE_XOR_MIN_VALUE || lowMask > RESERVE_XOR_MAX_VALUE)
 					return null;
-				
+
 				if (highMask <= session.getProtocolOrder())
 					return null;
-				
+
 				session.setProtocolOrder(highMask);
 			}
 		}
-		
+
 		if (lowMask >= RESERVE_XOR_MIN_VALUE && lowMask <= RESERVE_XOR_MAX_VALUE) {
 			if (protocol.getSize() > 0) {
 				ByteBuffer buffer = protocol.getOctets().getBuffer();
@@ -73,7 +73,7 @@ public class ProtoUtil {
 		}
 		return protocol;
 	}
-	
+
 	/**
 	 * 生成错误码协议
 	 * @param hpCode
