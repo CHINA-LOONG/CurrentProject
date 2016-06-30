@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.module.PlayerIdleModule;
 import com.hawk.game.module.PlayerLoginModule;
+import com.hawk.game.module.PlayerRoleModuel;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.util.GsConst;
@@ -60,6 +61,7 @@ public class Player extends HawkAppObj {
 	 */
 	public void initModules() {
 		registerModule(GsConst.ModuleType.LOGIN_MODULE, new PlayerLoginModule(this));
+		registerModule(GsConst.ModuleType.ROLE_MODULE, new PlayerRoleModuel(this));
 
 		// 最后注册空闲模块, 用来消息收尾处理
 		registerModule(GsConst.ModuleType.IDLE_MODULE, new PlayerIdleModule(this));
@@ -300,9 +302,9 @@ public class Player extends HawkAppObj {
 	 * 
 	 * @return
 	 */
-//	public int getGold() {
-//		return playerData.getPlayerEntity().getGold();
-//	}
+	public int getGold() {
+		return 0;
+	}
 
 	/**
 	 * 获取金币
@@ -327,9 +329,9 @@ public class Player extends HawkAppObj {
 	 * 
 	 * @return
 	 */
-//	public String getName() {
-//		return playerData.getPlayerEntity().getName();
-//	}
+	public String getName() {
+		return "";
+	}
 
 	/**
 	 * 获取玩家等级
@@ -344,9 +346,9 @@ public class Player extends HawkAppObj {
 	 * 获取经验
 	 * @return
 	 */
-//	public int getExp() {
-//		return playerData.getPlayerEntity().getExp();
-//	}
+	public int getExp() {
+		return 0;
+	}
 
 	/**
 	 * 获取会话ip地址

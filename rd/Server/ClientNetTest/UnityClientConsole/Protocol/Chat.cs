@@ -10,10 +10,10 @@
 // Generated from: Chat.proto
 namespace PB
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPSendChat")]
-  public partial class HPSendChat : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSSendChat")]
+  public partial class HSSendChat : global::ProtoBuf.IExtensible
   {
-    public HPSendChat() {}
+    public HSSendChat() {}
     
     private string _chatMsg;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"chatMsg", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -27,10 +27,10 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPPushChat")]
-  public partial class HPPushChat : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPushChat")]
+  public partial class HSPushChat : global::ProtoBuf.IExtensible
   {
-    public HPPushChat() {}
+    public HSPushChat() {}
     
     private int _type;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]

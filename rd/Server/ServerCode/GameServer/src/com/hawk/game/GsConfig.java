@@ -38,6 +38,10 @@ public class GsConfig extends HawkAppCfg {
 	 */
 	protected final int registerMaxSize;
 	/**
+	 * 玩家角色最大数
+	 */
+	protected final int roleMaxSize;
+	/**
 	 * cdk地址
 	 */
 	protected final String cdkHost;
@@ -83,12 +87,13 @@ public class GsConfig extends HawkAppCfg {
 		platform = "";
 		serverId = 0;
 		registerMaxSize = 0;
+		roleMaxSize = 0;
 		grayState = 0;
 		cdkHost = "";
 		cdkTimeout = 1000;
 		reportHost = "";
 		reportTimeout = 1000;
-		serviceDate = "20140101";
+		serviceDate = "20150101";
 		ipProxyAddr = "";
 		ipProxyTimeout = 1000;
 	}
@@ -108,7 +113,11 @@ public class GsConfig extends HawkAppCfg {
 	public int getRegisterMaxSize() {
 		return registerMaxSize;
 	}
-
+	
+	public int getRoleMaxSize() {
+		return roleMaxSize;
+	}
+	
 	public int getGrayState() {
 		return grayState;
 	}

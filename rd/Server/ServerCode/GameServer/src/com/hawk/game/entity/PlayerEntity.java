@@ -83,8 +83,8 @@ public class PlayerEntity extends HawkDBEntity {
 		this.device = device;
 		this.platform = platform;
 		this.phoneInfo = phoneInfo;
-		this.createTime = HawkTime.getCalendar().getTime();
-		this.loginTime = HawkTime.getCalendar().getTime();
+
+
 	}
 
 	public int getId() {

@@ -24,7 +24,10 @@ namespace PB
       REGISTER_MAX_LIMIT = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SERVER_GRAY_STATE", Value=4)]
-      SERVER_GRAY_STATE = 4
+      SERVER_GRAY_STATE = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_MAX_SIZE", Value=5)]
+      ROLE_MAX_SIZE = 5
     }
   
 }

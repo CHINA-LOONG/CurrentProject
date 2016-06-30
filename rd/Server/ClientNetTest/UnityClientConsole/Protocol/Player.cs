@@ -10,10 +10,10 @@
 // Generated from: Player.proto
 namespace PB
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPPlayerKickout")]
-  public partial class HPPlayerKickout : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPlayerKickout")]
+  public partial class HSPlayerKickout : global::ProtoBuf.IExtensible
   {
-    public HPPlayerKickout() {}
+    public HSPlayerKickout() {}
     
     private int _reason;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"reason", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]

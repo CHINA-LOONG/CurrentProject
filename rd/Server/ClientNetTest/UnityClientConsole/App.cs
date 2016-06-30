@@ -14,6 +14,9 @@ namespace UnityClientConsole
     {
         private static App instance;
 
+        private int   playerID;
+
+
         private App()
         {
 
@@ -42,16 +45,51 @@ namespace UnityClientConsole
         {
         }
 
+        public void SendLoginProtocol(String puid)
+        {
+            HSLogin login = new HSLogin();
+            login.puid = puid;
+
+            NetManager.GetInstance().SendProtocol(code.LOGIN_C.GetHashCode(), login);
+        }
+
         public void OnProtocol(Protocol protocol)
         {
             
-            if (protocol.checkType(code.LOGIN_C.GetHashCode()))
+            if (protocol.checkType(code.LOGIN_S.GetHashCode()))
             {
-                
+                HSLoginRet loginReturn = protocol.GetProtocolBody<HSLoginRet>();
+
+                this.playerID = loginReturn.playerId;
+
+                HSRoleCreate roleCreate = new HSRoleCreate();
+                roleCreate.nickname = "test1";
+                roleCreate.career = 1;
+                roleCreate.eye = 1;
+                roleCreate.hair = 1;
+                roleCreate.hairColor = 1;
+                roleCreate.gender = 1;
+
+
+                NetManager.GetInstance().SendProtocol(code.ROLE_CREATE_C.GetHashCode(), roleCreate);
+
+
+
+
+
             }
             else if (protocol.checkType(sys.HEART_BEAT.GetHashCode()))
             {
-                HPHeartBeat response = protocol.GetProtocolBody<HPHeartBeat>();
+                HSHeartBeat response = protocol.GetProtocolBody<HSHeartBeat>();
+
+            }
+            else if (protocol.checkType(code.ROLE_CREATE_S.GetHashCode()))
+            {
+                HSRoleCreateRet response = protocol.GetProtocolBody<HSRoleCreateRet>();
+                int roleID = response.roleId;
+
+                Console.WriteLine(roleID);
+
 
             }
         }

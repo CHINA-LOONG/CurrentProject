@@ -10,10 +10,10 @@
 // Generated from: SysProtocol.proto
 namespace PB
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPDataWarpper")]
-  public partial class HPDataWarpper : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSDataWarpper")]
+  public partial class HSDataWarpper : global::ProtoBuf.IExtensible
   {
-    public HPDataWarpper() {}
+    public HSDataWarpper() {}
     
     private byte[] _data = null;
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"data", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -28,10 +28,10 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPKeyExchange")]
-  public partial class HPKeyExchange : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSKeyExchange")]
+  public partial class HSKeyExchange : global::ProtoBuf.IExtensible
   {
-    public HPKeyExchange() {}
+    public HSKeyExchange() {}
     
     private byte[] _keys = null;
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"keys", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -46,10 +46,10 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPHeartBeat")]
-  public partial class HPHeartBeat : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSHeartBeat")]
+  public partial class HSHeartBeat : global::ProtoBuf.IExtensible
   {
-    public HPHeartBeat() {}
+    public HSHeartBeat() {}
     
     private int _timeStamp = default(int);
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -72,10 +72,10 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPErrorCode")]
-  public partial class HPErrorCode : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSErrorCode")]
+  public partial class HSErrorCode : global::ProtoBuf.IExtensible
   {
-    public HPErrorCode() {}
+    public HSErrorCode() {}
     
     private int _hpCode;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"hpCode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]

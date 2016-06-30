@@ -2,9 +2,11 @@ package com.hawk.game.module;
 
 import org.hawk.annotation.ProtocolHandler;
 import org.hawk.app.HawkApp;
+import org.hawk.msg.HawkMsg;
 import org.hawk.net.HawkSession;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
+
 import com.hawk.game.ServerData;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
@@ -13,6 +15,7 @@ import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Login.HSLogin;
 import com.hawk.game.protocol.Login.HSLoginRet;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
 
 /**
@@ -113,6 +116,7 @@ public class PlayerLoginModule extends PlayerModule {
 
 		// 登陆回复协议
 		HSLoginRet.Builder response = HSLoginRet.newBuilder();
+		response.setStatus(1);
 		response.setPlayerId(playerEntity.getId());
 		// 设置时间戳
 		response.setTimeStamp(HawkTime.getSeconds());
@@ -121,6 +125,11 @@ public class PlayerLoginModule extends PlayerModule {
 		player.setSession(session);
 		// 发送登陆成功协议
 		sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S, response));
+		
+		// 通知玩家组装完成
+		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_ASSEMBLE, player.getXid());
+		HawkApp.getInstance().postMsg(msg);
+		
 		return true;
 	}
 

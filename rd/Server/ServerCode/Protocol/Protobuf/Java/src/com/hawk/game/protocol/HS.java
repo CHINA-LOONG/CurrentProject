@@ -196,9 +196,21 @@ public final class HS {
      * 选择角色
      * </pre>
      */
-    ROLE_SELECT_C(7, 1012),
+    ROLE_SELECT_C(9, 1012),
     ;
 
+    /**
+     * <code>ROLE_DELETE_C = 1010;</code>
+     *
+     * <pre>
+     * 删除角色
+     * </pre>
+     */
+    public static final code ROLE_DELETE_C = ROLE_CREATE_C;
+    /**
+     * <code>ROLE_DELETE_S = 1011;</code>
+     */
+    public static final code ROLE_DELETE_S = ROLE_CREATE_S;
     /**
      * <code>LOGIN_C = 1000;</code>
      *
@@ -235,6 +247,18 @@ public final class HS {
      * <code>ROLE_CREATE_S = 1011;</code>
      */
     public static final int ROLE_CREATE_S_VALUE = 1011;
+    /**
+     * <code>ROLE_DELETE_C = 1010;</code>
+     *
+     * <pre>
+     * 删除角色
+     * </pre>
+     */
+    public static final int ROLE_DELETE_C_VALUE = 1010;
+    /**
+     * <code>ROLE_DELETE_S = 1011;</code>
+     */
+    public static final int ROLE_DELETE_S_VALUE = 1011;
     /**
      * <code>ROLE_SELECT_C = 1012;</code>
      *
@@ -286,7 +310,9 @@ public final class HS {
       return com.hawk.game.protocol.HS.getDescriptor().getEnumTypes().get(1);
     }
 
-    private static final code[] VALUES = values();
+    private static final code[] VALUES = {
+      LOGIN_C, LOGIN_S, LOGOUT_C, LOGOUT_S, KICKOUT_S, ROLE_CREATE_C, ROLE_CREATE_S, ROLE_DELETE_C, ROLE_DELETE_S, ROLE_SELECT_C, 
+    };
 
     public static code valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -319,10 +345,11 @@ public final class HS {
     java.lang.String[] descriptorData = {
       "\n\010HS.proto*I\n\003sys\022\020\n\014DATA_WRAPPER\020\001\022\020\n\014K" +
       "EY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016\n\nERROR_C" +
-      "ODE\020\004*\214\001\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020" +
+      "ODE\020\004*\264\001\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020" +
       "\351\007\022\r\n\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICK" +
       "OUT_S\020\354\007\022\022\n\rROLE_CREATE_C\020\362\007\022\022\n\rROLE_CRE" +
-      "ATE_S\020\363\007\022\022\n\rROLE_SELECT_C\020\364\007B\030\n\026com.hawk" +
+      "ATE_S\020\363\007\022\022\n\rROLE_DELETE_C\020\362\007\022\022\n\rROLE_DEL" +
+      "ETE_S\020\363\007\022\022\n\rROLE_SELECT_C\020\364\007B\030\n\026com.hawk" +
       ".game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =

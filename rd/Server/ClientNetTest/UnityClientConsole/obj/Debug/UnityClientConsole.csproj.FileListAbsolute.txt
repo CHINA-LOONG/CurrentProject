@@ -7,3 +7,9 @@ c:\users\hs004\documents\visual studio 2012\Projects\UnityClientConsole\UnityCli
 F:\svn_backup\rd\Client\UnityClientConsole\bin\Debug\UnityClientConsole.exe.config
 F:\svn_backup\rd\Client\UnityClientConsole\obj\Debug\UnityClientConsole.exe
 F:\svn_backup\rd\Client\UnityClientConsole\obj\Debug\UnityClientConsole.pdb
+F:\rd\Server\ClientNetTest\UnityClientConsole\bin\Debug\UnityClientConsole.exe.config
+F:\rd\Server\ClientNetTest\UnityClientConsole\obj\Debug\UnityClientConsole.exe
+F:\rd\Server\ClientNetTest\UnityClientConsole\obj\Debug\UnityClientConsole.pdb
+F:\rd\Server\ClientNetTest\UnityClientConsole\bin\Debug\UnityClientConsole.exe
+F:\rd\Server\ClientNetTest\UnityClientConsole\bin\Debug\UnityClientConsole.pdb
+F:\rd\Server\ClientNetTest\UnityClientConsole\obj\Debug\UnityClientConsole.csprojResolveAssemblyReference.cache

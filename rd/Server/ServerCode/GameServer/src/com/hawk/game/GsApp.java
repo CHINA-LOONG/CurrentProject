@@ -103,14 +103,6 @@ public class GsApp extends HawkApp {
 		if (!super.init(appCfg)) {
 			return false;
 		}
-
-
-		Map<Object, MonsterAttr> result = HawkConfigManager.getInstance().getConfigMap(MonsterAttr.class);
-
-		MonsterAttr test =  result.get("baize");
-		
-		test.toString();
-		
 		// 初始化对象管理区
 		if (!initAppObjMan()) {
 			return false;

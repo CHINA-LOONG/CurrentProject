@@ -7,6 +7,7 @@ import org.hawk.os.HawkTime;
 
 import com.hawk.game.ServerData;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.entity.RoleEntity;
 
 /**
  * 管理所有玩家数据集合
@@ -19,12 +20,17 @@ public class PlayerData {
 	 * 玩家对象
 	 */
 	private Player player = null;
-
+	
 	/**
 	 * 玩家基础数据
 	 */
 	private PlayerEntity playerEntity = null;
-
+	
+	/**
+	 * 角色基础数据
+	 */
+	private RoleEntity roleEntity = null;
+	
 	/**
 	 * 构造函数
 	 * 
@@ -60,7 +66,26 @@ public class PlayerData {
 	public void setPlayerEntity(PlayerEntity playerEntity) {
 		this.playerEntity = playerEntity;
 	}
+	
+	/**
+	 * 获取角色数据实体
+	 * 
+	 * @return
+	 */
+	public RoleEntity getRoleEntity() {
+		return roleEntity;
+	}
 
+	/**
+	 * 设置角色数据实体
+	 * 
+	 * @param playerEntity
+	 */
+	public void setRoleEntity(RoleEntity roleEntity){
+		this.roleEntity = roleEntity;
+	}
+	
+	
 	/**********************************************************************************************************
 	 * 数据db操作区
 	 **********************************************************************************************************/
@@ -83,5 +108,19 @@ public class PlayerData {
 			}
 		}
 		return playerEntity;
+	}
+	
+	/**
+	 * 加载角色信息
+	 * 
+	 * @return
+	 */
+	public RoleEntity loadRole(int roleId) {	
+		List<RoleEntity> roleEntitys = HawkDBManager.getInstance().query("from RoleEntity where id = ? and invalid = 0", roleId);
+		if (roleEntitys != null && roleEntitys.size() > 0) {
+			RoleEntity roleEntity = roleEntitys.get(0);
+			return roleEntity;
+		}
+		return null;
 	}
 }

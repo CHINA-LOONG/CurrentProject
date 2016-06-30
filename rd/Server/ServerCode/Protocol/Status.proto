@@ -1,7 +1,17 @@
 option java_package = "com.hawk.game.protocol";
 
+enum errorMask
+{
+	NORMAL_ERROR  = 0x00010000;
+	LOGIN_ERROR   = 0x00020000;
+	ROLE_ERROR    = 0x00030000;
+	MONSTER_ERROR = 0x00040000;
+}
+
 enum error
 {
+	//没有错误
+	NONE_ERROR = 0;
 	// 配置文件错误
 	CONFIG_ERROR = 1;
 	// 在线人数达到上限
@@ -10,4 +20,16 @@ enum error
 	REGISTER_MAX_LIMIT = 3;
 	// 服务器灰度状态中
 	SERVER_GRAY_STATE = 4;
+	//数据库错误
+	DATA_BASE_ERROR = 5;
+	
+	//服务器错误
+	SERVER_ERROR = 100;
+}
+
+enum RoleError{
+	// 账户角色数量达到上限
+	ROLE_MAX_SIZE =  0x00030001;
+	// 角色不存在
+	ROLE_NOT_EXIST=  0x00030002;
 }

@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Login.proto
+// Note: requires additional types generated from: Role.proto
 namespace PB
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPLogin")]
-  public partial class HPLogin : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSLogin")]
+  public partial class HSLogin : global::ProtoBuf.IExtensible
   {
-    public HPLogin() {}
+    public HSLogin() {}
     
     private string _puid;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"puid", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -59,10 +60,10 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPLoginRet")]
-  public partial class HPLoginRet : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSLoginRet")]
+  public partial class HSLoginRet : global::ProtoBuf.IExtensible
   {
-    public HPLoginRet() {}
+    public HSLoginRet() {}
     
     private int _status;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -79,31 +80,30 @@ namespace PB
       get { return _playerId; }
       set { _playerId = value; }
     }
-    private int _roleItemId = default(int);
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"roleItemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int roleItemId
-    {
-      get { return _roleItemId; }
-      set { _roleItemId = value; }
-    }
     private int _timeStamp = default(int);
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int timeStamp
     {
       get { return _timeStamp; }
       set { _timeStamp = value; }
     }
+    private readonly global::System.Collections.Generic.List<HSRoleBrief> _roleList = new global::System.Collections.Generic.List<HSRoleBrief>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"roleList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HSRoleBrief> roleList
+    {
+      get { return _roleList; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HPUserKickout")]
-  public partial class HPUserKickout : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSUserKickout")]
+  public partial class HSUserKickout : global::ProtoBuf.IExtensible
   {
-    public HPUserKickout() {}
+    public HSUserKickout() {}
     
     private int _playerId;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]

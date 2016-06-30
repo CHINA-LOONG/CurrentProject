@@ -27,6 +27,10 @@ enum code
 	ROLE_CREATE_C = 1010;
 	ROLE_CREATE_S = 1011;
 	
+	// 删除角色
+	ROLE_DELETE_C = 1010;
+	ROLE_DELETE_S = 1011;
+	
 	// 选择角色
 	ROLE_SELECT_C = 1012;
 }

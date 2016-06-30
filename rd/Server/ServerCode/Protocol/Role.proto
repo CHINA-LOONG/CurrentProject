@@ -45,6 +45,18 @@ message HSRoleCreateRet
 	optional int32 roleId = 2;
 }
 
+// ROLE_DELETE_C
+message HSRoleDelete
+{
+	required int32 roleId = 1;
+}
+
+// ROLE_DELETE_S
+message HSRoleDeleteRet
+{
+	required int32 status = 1;
+}
+
 // ROLE_SELECT_C
 message HSRoleSelect
 {

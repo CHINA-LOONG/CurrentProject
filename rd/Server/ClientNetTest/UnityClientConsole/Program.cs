@@ -28,10 +28,8 @@ namespace UnityClientConsole
 
             App.GetInstance().Run();
 
-            HPLogin login = new HPLogin();
-            login.puid = "2";
 
-            NetManager.GetInstance().SendProtocol(code.LOGIN_C.GetHashCode(), login);
+            App.GetInstance().SendLoginProtocol("zhengshuai");
 
 
             //for (int i = 0; i < 10000; ++i)

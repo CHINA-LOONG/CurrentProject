@@ -35,10 +35,10 @@ public class MonsterEntity extends HawkDBEntity {
 	@Column(name = "id", unique = true)
 	private int id = 0;
 
-	@Column(name = "cfg", nullable = false)
+	@Column(name = "cfgId", nullable = false)
 	private int cfgId = 0;
 
-	@Column(name = "role", nullable = false)
+	@Column(name = "roleId", nullable = false)
 	protected int roleId = 0;
 
 	@Column(name = "grade", nullable = false)
@@ -70,6 +70,9 @@ public class MonsterEntity extends HawkDBEntity {
 
 	@Transient
 	protected Map<Integer, Integer> skillMap = new HashMap<Integer, Integer>();
+	
+	@Transient
+	private boolean assembleFinish = false;
 
 	public MonsterEntity() {
 		this.createTime = HawkTime.getCalendar().getTime();
@@ -97,18 +100,20 @@ public class MonsterEntity extends HawkDBEntity {
 			skill = jsonArray.getJSONObject(i);
 
 			try {
-				if (skill.containsKey("id") == false || skill.containsKey("level") == false) {
+				if (skill.containsKey("id") == false || skill.containsKey("lv") == false) {
 					throw new Exception();
 				}
 
 				skillId = skill.getInt("id");
-				skillLevel = skill.getInt("level");
+				skillLevel = skill.getInt("lv");
 			} catch (Exception e) {
 				HawkException.catchException(new HawkException("db monster skill data invalid: " + this.id));
 			}
 
 			skillMap.put(skillId, skillLevel);
 		}
+		
+		assembleFinish = true;
 	}
 
 	private void SkillMapToJson() {
@@ -117,7 +122,7 @@ public class MonsterEntity extends HawkDBEntity {
 
 		for (Map.Entry<Integer, Integer> entry : skillMap.entrySet()) {
 			skill.put("id", entry.getKey());
-			skill.put("level", entry.getValue());
+			skill.put("lv", entry.getValue());
 
 			jsonArray.add(skill);
 		}
@@ -190,7 +195,9 @@ public class MonsterEntity extends HawkDBEntity {
 	}
 
 	public Map<Integer, Integer> getSkillMap() {
-		SkillJsonToMap();
+		if (assembleFinish == false) {
+			SkillJsonToMap();
+		}
 		return skillMap;
 	}
 
@@ -200,7 +207,15 @@ public class MonsterEntity extends HawkDBEntity {
 
 	public void setSkillLevel(int skillId, int level) {
 		skillMap.put(skillId, level);
+	}
+	
+	/**
+	 * 子类重载用于数据装配
+	 */
+	@Override
+	public void notifyUpdate(boolean async) {
 		SkillMapToJson();
+		super.notifyUpdate(async);
 	}
 
 	@Override

@@ -48,7 +48,9 @@ public class GsConst {
 	public static class ModuleType {
 		// 登陆模块
 		public static int LOGIN_MODULE = 1;
-
+		// 角色模块
+		public static int ROLE_MODULE = 2;
+		
 		// 空闲模块(保证在最后)
 		public static int IDLE_MODULE = 100;
 	}
