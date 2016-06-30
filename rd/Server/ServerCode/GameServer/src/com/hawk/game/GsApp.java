@@ -32,10 +32,10 @@ import com.hawk.game.config.MonsterAttr;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
-import com.hawk.game.protocol.HP;
-import com.hawk.game.protocol.Login.HPLogin;
+import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Login.HSLogin;
 import com.hawk.game.protocol.Status;
-import com.hawk.game.protocol.SysProtocol.HPHeartBeat;
+import com.hawk.game.protocol.SysProtocol.HSHeartBeat;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
 
@@ -195,7 +195,7 @@ public class GsApp extends HawkApp {
 			}
 
 			if (player.getPlayerData() != null && player.getPlayerData().getPlayerEntity() != null) {
-				logger.info("remove player: {}, puid: {}, gold: {}, coin: {}, level: {}, vip: {}", player.getId(), player.getPuid(), player.getGold(), player.getCoin(), player.getLevel(), player.getVipLevel());
+//				logger.info("remove player: {}, puid: {}, gold: {}, coin: {}, level: {}, vip: {}", player.getId(), player.getPuid(), player.getGold(), player.getCoin(), player.getLevel(), player.getVipLevel());
 			}
 		}
 	}
@@ -256,18 +256,18 @@ public class GsApp extends HawkApp {
 		long protoTime = HawkTime.getMillisecond();
 		try {
 			// 心跳协议直接处理
-			if (protocol.checkType(HP.sys.HEART_BEAT)) {
-				HPHeartBeat.Builder builder = HPHeartBeat.newBuilder();
+			if (protocol.checkType(HS.sys.HEART_BEAT)) {
+				HSHeartBeat.Builder builder = HSHeartBeat.newBuilder();
 				builder.setTimeStamp(HawkTime.getSeconds());
-				protocol.getSession().sendProtocol(HawkProtocol.valueOf(HP.sys.HEART_BEAT, builder));
+				protocol.getSession().sendProtocol(HawkProtocol.valueOf(HS.sys.HEART_BEAT, builder));
 				return true;
 			}
 
 			try {
 				if (session.getAppObject() == null) {
 					// 登陆协议
-					if (protocol.checkType(HP.code.LOGIN_C)) {
-						String puid = protocol.parseProtocol(HPLogin.getDefaultInstance()).getPuid().trim().toLowerCase();
+					if (protocol.checkType(HS.code.LOGIN_C)) {
+						String puid = protocol.parseProtocol(HSLogin.getDefaultInstance()).getPuid().trim().toLowerCase();
 						if (!checkPuidValid(puid, session)) {
 							return true;
 						}
@@ -327,7 +327,7 @@ public class GsApp extends HawkApp {
 		if (grayState > 0) {
 			GrayPuidCfg grayPuid = HawkConfigManager.getInstance().getConfigByKey(GrayPuidCfg.class, puid);
 			if (grayPuid == null) {
-				session.sendProtocol(ProtoUtil.genErrorProtocol(HP.code.LOGIN_C_VALUE, Status.error.SERVER_GRAY_STATE_VALUE, 1));
+				session.sendProtocol(ProtoUtil.genErrorProtocol(HS.code.LOGIN_C_VALUE, Status.error.SERVER_GRAY_STATE_VALUE, 1));
 				return false;
 			}
 		}
@@ -337,7 +337,7 @@ public class GsApp extends HawkApp {
 			// 注册人数达到上限
 			int registerMaxSize = GsConfig.getInstance().getRegisterMaxSize();
 			if (registerMaxSize > 0 && ServerData.getInstance().getRegisterPlayer() >= registerMaxSize) {
-				session.sendProtocol(ProtoUtil.genErrorProtocol(HP.code.LOGIN_C_VALUE, Status.error.REGISTER_MAX_LIMIT_VALUE, 1));
+				session.sendProtocol(ProtoUtil.genErrorProtocol(HS.code.LOGIN_C_VALUE, Status.error.REGISTER_MAX_LIMIT_VALUE, 1));
 				return false;
 			}
 		}

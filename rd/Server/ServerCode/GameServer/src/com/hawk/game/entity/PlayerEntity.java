@@ -31,30 +31,6 @@ public class PlayerEntity extends HawkDBEntity {
 	@Column(name = "puid", unique = true, nullable = false)
 	protected String puid = "";
 
-	@Column(name = "name", unique = true, nullable = false)
-	private String name ;
-
-	@Column(name = "asset")
-	private byte asset;
-
-	@Column(name = "career")
-	private byte career;
-
-	@Column(name = "level")
-	private int level;
-
-	@Column(name = "exp")
-	private int exp;
-
-	@Column(name = "fatigue")
-	private int fatigue;
-
-	@Column(name = "bagCapacity")
-	private int bagCapacity;
-
-	@Column(name = "gold")
-	protected int gold = 0;
-
 	@Column(name = "coin")
 	protected long coin = 0;
 
@@ -107,7 +83,6 @@ public class PlayerEntity extends HawkDBEntity {
 		this.device = device;
 		this.platform = platform;
 		this.phoneInfo = phoneInfo;
-		this.setName(puid);
 		this.createTime = HawkTime.getCalendar().getTime();
 		this.loginTime = HawkTime.getCalendar().getTime();
 	}
@@ -126,70 +101,6 @@ public class PlayerEntity extends HawkDBEntity {
 
 	public void setPuid(String puid) {
 		this.puid = puid;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public byte getAsset() {
-		return asset;
-	}
-
-	public void setAsset(byte asset) {
-		this.asset = asset;
-	}
-
-	public byte getCareer() {
-		return career;
-	}
-
-	public void setCareer(byte career) {
-		this.career = career;
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
-	}
-
-	public int getExp() {
-		return exp;
-	}
-
-	public void setExp(int exp) {
-		this.exp = exp;
-	}
-
-	public int getFatigue() {
-		return fatigue;
-	}
-
-	public void setFatigue(int fatigue) {
-		this.fatigue = fatigue;
-	}
-
-	public int getBagCapacity() {
-		return bagCapacity;
-	}
-
-	public void setBagCapacity(int bagCapacity) {
-		this.bagCapacity = bagCapacity;
-	}
-
-	public int getGold() {
-		return gold;
-	}
-
-	public void setGold(int gold) {
-		this.gold = gold;
 	}
 
 	public long getCoin() {

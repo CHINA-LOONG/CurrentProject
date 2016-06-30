@@ -1,22 +1,26 @@
 option java_package = "com.hawk.game.protocol";
 
-message HPDataWarpper
+// DATA_WRAPPER
+message HSDataWarpper
 {
 	optional bytes data = 1;
 }
- 
-message HPKeyExchange
+
+// KEY_EXCHANGE
+message HSKeyExchange
 {
 	optional bytes keys = 1;
 }
 
-message HPHeartBeat
+// HEART_BEAT
+message HSHeartBeat
 {
 	optional int32 timeStamp = 1;
 	optional bytes data = 2;
 }
 
-message HPErrorCode
+// ERROR_CODE
+message HSErrorCode
 {
 	required int32  hpCode = 1;	
 	required int32  errCode = 2;

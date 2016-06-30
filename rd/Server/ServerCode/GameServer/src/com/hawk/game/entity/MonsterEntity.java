@@ -38,8 +38,8 @@ public class MonsterEntity extends HawkDBEntity {
 	@Column(name = "cfg", nullable = false)
 	private int cfgId = 0;
 
-	@Column(name = "player", nullable = false)
-	protected int playerId = 0;
+	@Column(name = "role", nullable = false)
+	protected int roleId = 0;
 
 	@Column(name = "grade", nullable = false)
 	protected int grade = 0;
@@ -75,9 +75,9 @@ public class MonsterEntity extends HawkDBEntity {
 		this.createTime = HawkTime.getCalendar().getTime();
 	}
 
-	public MonsterEntity(int cfgId, int playerId, int grade, int level, int exp, boolean hasEquip, byte disposition) {
+	public MonsterEntity(int cfgId, int roleId, int grade, int level, int exp, boolean hasEquip, byte disposition) {
 		this.cfgId = cfgId;
-		this.playerId = playerId;
+		this.roleId = roleId;
 		this.grade = grade;
 		this.level = level;
 		this.exp = exp;
@@ -141,12 +141,12 @@ public class MonsterEntity extends HawkDBEntity {
 		this.cfgId = cfgId;
 	}
 
-	public int getPlayerId() {
-		return playerId;
+	public int getRoleId() {
+		return roleId;
 	}
 
-	public void setPlayerId(int playerId) {
-		this.playerId = playerId;
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 
 	public int getGrade() {

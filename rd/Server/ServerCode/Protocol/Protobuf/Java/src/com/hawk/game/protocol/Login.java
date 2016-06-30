@@ -8,7 +8,7 @@ public final class Login {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface HPLoginOrBuilder
+  public interface HSLoginOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required string puid = 1;
@@ -87,24 +87,28 @@ public final class Login {
         getTokenBytes();
   }
   /**
-   * Protobuf type {@code HPLogin}
+   * Protobuf type {@code HSLogin}
+   *
+   * <pre>
+   * LOGIN_C
+   * </pre>
    */
-  public static final class HPLogin extends
+  public static final class HSLogin extends
       com.google.protobuf.GeneratedMessage
-      implements HPLoginOrBuilder {
-    // Use HPLogin.newBuilder() to construct.
-    private HPLogin(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HSLoginOrBuilder {
+    // Use HSLogin.newBuilder() to construct.
+    private HSLogin(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HPLogin(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HSLogin(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HPLogin defaultInstance;
-    public static HPLogin getDefaultInstance() {
+    private static final HSLogin defaultInstance;
+    public static HSLogin getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HPLogin getDefaultInstanceForType() {
+    public HSLogin getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -114,7 +118,7 @@ public final class Login {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HPLogin(
+    private HSLogin(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -176,28 +180,28 @@ public final class Login {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Login.internal_static_HPLogin_descriptor;
+      return com.hawk.game.protocol.Login.internal_static_HSLogin_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.Login.internal_static_HPLogin_fieldAccessorTable
+      return com.hawk.game.protocol.Login.internal_static_HSLogin_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.Login.HPLogin.class, com.hawk.game.protocol.Login.HPLogin.Builder.class);
+              com.hawk.game.protocol.Login.HSLogin.class, com.hawk.game.protocol.Login.HSLogin.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HPLogin> PARSER =
-        new com.google.protobuf.AbstractParser<HPLogin>() {
-      public HPLogin parsePartialFrom(
+    public static com.google.protobuf.Parser<HSLogin> PARSER =
+        new com.google.protobuf.AbstractParser<HSLogin>() {
+      public HSLogin parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HPLogin(input, extensionRegistry);
+        return new HSLogin(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HPLogin> getParserForType() {
+    public com.google.protobuf.Parser<HSLogin> getParserForType() {
       return PARSER;
     }
 
@@ -496,53 +500,53 @@ public final class Login {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.Login.HPLogin parseFrom(
+    public static com.hawk.game.protocol.Login.HSLogin parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Login.HPLogin parseFrom(
+    public static com.hawk.game.protocol.Login.HSLogin parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPLogin parseFrom(byte[] data)
+    public static com.hawk.game.protocol.Login.HSLogin parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Login.HPLogin parseFrom(
+    public static com.hawk.game.protocol.Login.HSLogin parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPLogin parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Login.HSLogin parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Login.HPLogin parseFrom(
+    public static com.hawk.game.protocol.Login.HSLogin parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPLogin parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Login.HSLogin parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.Login.HPLogin parseDelimitedFrom(
+    public static com.hawk.game.protocol.Login.HSLogin parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPLogin parseFrom(
+    public static com.hawk.game.protocol.Login.HSLogin parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Login.HPLogin parseFrom(
+    public static com.hawk.game.protocol.Login.HSLogin parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -551,7 +555,7 @@ public final class Login {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.Login.HPLogin prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.Login.HSLogin prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -563,24 +567,28 @@ public final class Login {
       return builder;
     }
     /**
-     * Protobuf type {@code HPLogin}
+     * Protobuf type {@code HSLogin}
+     *
+     * <pre>
+     * LOGIN_C
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.Login.HPLoginOrBuilder {
+       implements com.hawk.game.protocol.Login.HSLoginOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.Login.internal_static_HPLogin_descriptor;
+        return com.hawk.game.protocol.Login.internal_static_HSLogin_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.Login.internal_static_HPLogin_fieldAccessorTable
+        return com.hawk.game.protocol.Login.internal_static_HSLogin_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.Login.HPLogin.class, com.hawk.game.protocol.Login.HPLogin.Builder.class);
+                com.hawk.game.protocol.Login.HSLogin.class, com.hawk.game.protocol.Login.HSLogin.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.Login.HPLogin.newBuilder()
+      // Construct using com.hawk.game.protocol.Login.HSLogin.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -619,23 +627,23 @@ public final class Login {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.Login.internal_static_HPLogin_descriptor;
+        return com.hawk.game.protocol.Login.internal_static_HSLogin_descriptor;
       }
 
-      public com.hawk.game.protocol.Login.HPLogin getDefaultInstanceForType() {
-        return com.hawk.game.protocol.Login.HPLogin.getDefaultInstance();
+      public com.hawk.game.protocol.Login.HSLogin getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Login.HSLogin.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.Login.HPLogin build() {
-        com.hawk.game.protocol.Login.HPLogin result = buildPartial();
+      public com.hawk.game.protocol.Login.HSLogin build() {
+        com.hawk.game.protocol.Login.HSLogin result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.Login.HPLogin buildPartial() {
-        com.hawk.game.protocol.Login.HPLogin result = new com.hawk.game.protocol.Login.HPLogin(this);
+      public com.hawk.game.protocol.Login.HSLogin buildPartial() {
+        com.hawk.game.protocol.Login.HSLogin result = new com.hawk.game.protocol.Login.HSLogin(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -664,16 +672,16 @@ public final class Login {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.Login.HPLogin) {
-          return mergeFrom((com.hawk.game.protocol.Login.HPLogin)other);
+        if (other instanceof com.hawk.game.protocol.Login.HSLogin) {
+          return mergeFrom((com.hawk.game.protocol.Login.HSLogin)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.Login.HPLogin other) {
-        if (other == com.hawk.game.protocol.Login.HPLogin.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hawk.game.protocol.Login.HSLogin other) {
+        if (other == com.hawk.game.protocol.Login.HSLogin.getDefaultInstance()) return this;
         if (other.hasPuid()) {
           bitField0_ |= 0x00000001;
           puid_ = other.puid_;
@@ -715,11 +723,11 @@ public final class Login {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.Login.HPLogin parsedMessage = null;
+        com.hawk.game.protocol.Login.HSLogin parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.Login.HPLogin) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.Login.HSLogin) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1100,18 +1108,18 @@ public final class Login {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:HPLogin)
+      // @@protoc_insertion_point(builder_scope:HSLogin)
     }
 
     static {
-      defaultInstance = new HPLogin(true);
+      defaultInstance = new HSLogin(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:HPLogin)
+    // @@protoc_insertion_point(class_scope:HSLogin)
   }
 
-  public interface HPLoginRetOrBuilder
+  public interface HSLoginRetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required int32 status = 1;
@@ -1134,45 +1142,64 @@ public final class Login {
      */
     int getPlayerId();
 
-    // optional int32 roleItemId = 3;
+    // optional int32 timeStamp = 3;
     /**
-     * <code>optional int32 roleItemId = 3;</code>
-     */
-    boolean hasRoleItemId();
-    /**
-     * <code>optional int32 roleItemId = 3;</code>
-     */
-    int getRoleItemId();
-
-    // optional int32 timeStamp = 4;
-    /**
-     * <code>optional int32 timeStamp = 4;</code>
+     * <code>optional int32 timeStamp = 3;</code>
      */
     boolean hasTimeStamp();
     /**
-     * <code>optional int32 timeStamp = 4;</code>
+     * <code>optional int32 timeStamp = 3;</code>
      */
     int getTimeStamp();
+
+    // repeated .HSRoleBrief roleList = 4;
+    /**
+     * <code>repeated .HSRoleBrief roleList = 4;</code>
+     */
+    java.util.List<com.hawk.game.protocol.Role.HSRoleBrief> 
+        getRoleListList();
+    /**
+     * <code>repeated .HSRoleBrief roleList = 4;</code>
+     */
+    com.hawk.game.protocol.Role.HSRoleBrief getRoleList(int index);
+    /**
+     * <code>repeated .HSRoleBrief roleList = 4;</code>
+     */
+    int getRoleListCount();
+    /**
+     * <code>repeated .HSRoleBrief roleList = 4;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Role.HSRoleBriefOrBuilder> 
+        getRoleListOrBuilderList();
+    /**
+     * <code>repeated .HSRoleBrief roleList = 4;</code>
+     */
+    com.hawk.game.protocol.Role.HSRoleBriefOrBuilder getRoleListOrBuilder(
+        int index);
   }
   /**
-   * Protobuf type {@code HPLoginRet}
+   * Protobuf type {@code HSLoginRet}
+   *
+   * <pre>
+   * LOGIN_S
+   * </pre>
    */
-  public static final class HPLoginRet extends
+  public static final class HSLoginRet extends
       com.google.protobuf.GeneratedMessage
-      implements HPLoginRetOrBuilder {
-    // Use HPLoginRet.newBuilder() to construct.
-    private HPLoginRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HSLoginRetOrBuilder {
+    // Use HSLoginRet.newBuilder() to construct.
+    private HSLoginRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HPLoginRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HSLoginRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HPLoginRet defaultInstance;
-    public static HPLoginRet getDefaultInstance() {
+    private static final HSLoginRet defaultInstance;
+    public static HSLoginRet getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HPLoginRet getDefaultInstanceForType() {
+    public HSLoginRet getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -1182,7 +1209,7 @@ public final class Login {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HPLoginRet(
+    private HSLoginRet(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1217,12 +1244,15 @@ public final class Login {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              roleItemId_ = input.readInt32();
+              timeStamp_ = input.readInt32();
               break;
             }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              timeStamp_ = input.readInt32();
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                roleList_ = new java.util.ArrayList<com.hawk.game.protocol.Role.HSRoleBrief>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              roleList_.add(input.readMessage(com.hawk.game.protocol.Role.HSRoleBrief.PARSER, extensionRegistry));
               break;
             }
           }
@@ -1233,34 +1263,37 @@ public final class Login {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          roleList_ = java.util.Collections.unmodifiableList(roleList_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Login.internal_static_HPLoginRet_descriptor;
+      return com.hawk.game.protocol.Login.internal_static_HSLoginRet_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.Login.internal_static_HPLoginRet_fieldAccessorTable
+      return com.hawk.game.protocol.Login.internal_static_HSLoginRet_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.Login.HPLoginRet.class, com.hawk.game.protocol.Login.HPLoginRet.Builder.class);
+              com.hawk.game.protocol.Login.HSLoginRet.class, com.hawk.game.protocol.Login.HSLoginRet.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HPLoginRet> PARSER =
-        new com.google.protobuf.AbstractParser<HPLoginRet>() {
-      public HPLoginRet parsePartialFrom(
+    public static com.google.protobuf.Parser<HSLoginRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSLoginRet>() {
+      public HSLoginRet parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HPLoginRet(input, extensionRegistry);
+        return new HSLoginRet(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HPLoginRet> getParserForType() {
+    public com.google.protobuf.Parser<HSLoginRet> getParserForType() {
       return PARSER;
     }
 
@@ -1297,43 +1330,63 @@ public final class Login {
       return playerId_;
     }
 
-    // optional int32 roleItemId = 3;
-    public static final int ROLEITEMID_FIELD_NUMBER = 3;
-    private int roleItemId_;
+    // optional int32 timeStamp = 3;
+    public static final int TIMESTAMP_FIELD_NUMBER = 3;
+    private int timeStamp_;
     /**
-     * <code>optional int32 roleItemId = 3;</code>
+     * <code>optional int32 timeStamp = 3;</code>
      */
-    public boolean hasRoleItemId() {
+    public boolean hasTimeStamp() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional int32 roleItemId = 3;</code>
-     */
-    public int getRoleItemId() {
-      return roleItemId_;
-    }
-
-    // optional int32 timeStamp = 4;
-    public static final int TIMESTAMP_FIELD_NUMBER = 4;
-    private int timeStamp_;
-    /**
-     * <code>optional int32 timeStamp = 4;</code>
-     */
-    public boolean hasTimeStamp() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 timeStamp = 4;</code>
+     * <code>optional int32 timeStamp = 3;</code>
      */
     public int getTimeStamp() {
       return timeStamp_;
     }
 
+    // repeated .HSRoleBrief roleList = 4;
+    public static final int ROLELIST_FIELD_NUMBER = 4;
+    private java.util.List<com.hawk.game.protocol.Role.HSRoleBrief> roleList_;
+    /**
+     * <code>repeated .HSRoleBrief roleList = 4;</code>
+     */
+    public java.util.List<com.hawk.game.protocol.Role.HSRoleBrief> getRoleListList() {
+      return roleList_;
+    }
+    /**
+     * <code>repeated .HSRoleBrief roleList = 4;</code>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Role.HSRoleBriefOrBuilder> 
+        getRoleListOrBuilderList() {
+      return roleList_;
+    }
+    /**
+     * <code>repeated .HSRoleBrief roleList = 4;</code>
+     */
+    public int getRoleListCount() {
+      return roleList_.size();
+    }
+    /**
+     * <code>repeated .HSRoleBrief roleList = 4;</code>
+     */
+    public com.hawk.game.protocol.Role.HSRoleBrief getRoleList(int index) {
+      return roleList_.get(index);
+    }
+    /**
+     * <code>repeated .HSRoleBrief roleList = 4;</code>
+     */
+    public com.hawk.game.protocol.Role.HSRoleBriefOrBuilder getRoleListOrBuilder(
+        int index) {
+      return roleList_.get(index);
+    }
+
     private void initFields() {
       status_ = 0;
       playerId_ = 0;
-      roleItemId_ = 0;
       timeStamp_ = 0;
+      roleList_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1343,6 +1396,12 @@ public final class Login {
       if (!hasStatus()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      for (int i = 0; i < getRoleListCount(); i++) {
+        if (!getRoleList(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -1358,10 +1417,10 @@ public final class Login {
         output.writeInt32(2, playerId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, roleItemId_);
+        output.writeInt32(3, timeStamp_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, timeStamp_);
+      for (int i = 0; i < roleList_.size(); i++) {
+        output.writeMessage(4, roleList_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1382,11 +1441,11 @@ public final class Login {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, roleItemId_);
+          .computeInt32Size(3, timeStamp_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      for (int i = 0; i < roleList_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, timeStamp_);
+          .computeMessageSize(4, roleList_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1400,53 +1459,53 @@ public final class Login {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.Login.HPLoginRet parseFrom(
+    public static com.hawk.game.protocol.Login.HSLoginRet parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Login.HPLoginRet parseFrom(
+    public static com.hawk.game.protocol.Login.HSLoginRet parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPLoginRet parseFrom(byte[] data)
+    public static com.hawk.game.protocol.Login.HSLoginRet parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Login.HPLoginRet parseFrom(
+    public static com.hawk.game.protocol.Login.HSLoginRet parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPLoginRet parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Login.HSLoginRet parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Login.HPLoginRet parseFrom(
+    public static com.hawk.game.protocol.Login.HSLoginRet parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPLoginRet parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Login.HSLoginRet parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.Login.HPLoginRet parseDelimitedFrom(
+    public static com.hawk.game.protocol.Login.HSLoginRet parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPLoginRet parseFrom(
+    public static com.hawk.game.protocol.Login.HSLoginRet parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Login.HPLoginRet parseFrom(
+    public static com.hawk.game.protocol.Login.HSLoginRet parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1455,7 +1514,7 @@ public final class Login {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.Login.HPLoginRet prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.Login.HSLoginRet prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -1467,24 +1526,28 @@ public final class Login {
       return builder;
     }
     /**
-     * Protobuf type {@code HPLoginRet}
+     * Protobuf type {@code HSLoginRet}
+     *
+     * <pre>
+     * LOGIN_S
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.Login.HPLoginRetOrBuilder {
+       implements com.hawk.game.protocol.Login.HSLoginRetOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.Login.internal_static_HPLoginRet_descriptor;
+        return com.hawk.game.protocol.Login.internal_static_HSLoginRet_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.Login.internal_static_HPLoginRet_fieldAccessorTable
+        return com.hawk.game.protocol.Login.internal_static_HSLoginRet_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.Login.HPLoginRet.class, com.hawk.game.protocol.Login.HPLoginRet.Builder.class);
+                com.hawk.game.protocol.Login.HSLoginRet.class, com.hawk.game.protocol.Login.HSLoginRet.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.Login.HPLoginRet.newBuilder()
+      // Construct using com.hawk.game.protocol.Login.HSLoginRet.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1496,6 +1559,7 @@ public final class Login {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRoleListFieldBuilder();
         }
       }
       private static Builder create() {
@@ -1508,10 +1572,14 @@ public final class Login {
         bitField0_ = (bitField0_ & ~0x00000001);
         playerId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        roleItemId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
         timeStamp_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (roleListBuilder_ == null) {
+          roleList_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          roleListBuilder_.clear();
+        }
         return this;
       }
 
@@ -1521,23 +1589,23 @@ public final class Login {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.Login.internal_static_HPLoginRet_descriptor;
+        return com.hawk.game.protocol.Login.internal_static_HSLoginRet_descriptor;
       }
 
-      public com.hawk.game.protocol.Login.HPLoginRet getDefaultInstanceForType() {
-        return com.hawk.game.protocol.Login.HPLoginRet.getDefaultInstance();
+      public com.hawk.game.protocol.Login.HSLoginRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Login.HSLoginRet.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.Login.HPLoginRet build() {
-        com.hawk.game.protocol.Login.HPLoginRet result = buildPartial();
+      public com.hawk.game.protocol.Login.HSLoginRet build() {
+        com.hawk.game.protocol.Login.HSLoginRet result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.Login.HPLoginRet buildPartial() {
-        com.hawk.game.protocol.Login.HPLoginRet result = new com.hawk.game.protocol.Login.HPLoginRet(this);
+      public com.hawk.game.protocol.Login.HSLoginRet buildPartial() {
+        com.hawk.game.protocol.Login.HSLoginRet result = new com.hawk.game.protocol.Login.HSLoginRet(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1551,38 +1619,66 @@ public final class Login {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.roleItemId_ = roleItemId_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
         result.timeStamp_ = timeStamp_;
+        if (roleListBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            roleList_ = java.util.Collections.unmodifiableList(roleList_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.roleList_ = roleList_;
+        } else {
+          result.roleList_ = roleListBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.Login.HPLoginRet) {
-          return mergeFrom((com.hawk.game.protocol.Login.HPLoginRet)other);
+        if (other instanceof com.hawk.game.protocol.Login.HSLoginRet) {
+          return mergeFrom((com.hawk.game.protocol.Login.HSLoginRet)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.Login.HPLoginRet other) {
-        if (other == com.hawk.game.protocol.Login.HPLoginRet.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hawk.game.protocol.Login.HSLoginRet other) {
+        if (other == com.hawk.game.protocol.Login.HSLoginRet.getDefaultInstance()) return this;
         if (other.hasStatus()) {
           setStatus(other.getStatus());
         }
         if (other.hasPlayerId()) {
           setPlayerId(other.getPlayerId());
         }
-        if (other.hasRoleItemId()) {
-          setRoleItemId(other.getRoleItemId());
-        }
         if (other.hasTimeStamp()) {
           setTimeStamp(other.getTimeStamp());
+        }
+        if (roleListBuilder_ == null) {
+          if (!other.roleList_.isEmpty()) {
+            if (roleList_.isEmpty()) {
+              roleList_ = other.roleList_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureRoleListIsMutable();
+              roleList_.addAll(other.roleList_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.roleList_.isEmpty()) {
+            if (roleListBuilder_.isEmpty()) {
+              roleListBuilder_.dispose();
+              roleListBuilder_ = null;
+              roleList_ = other.roleList_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              roleListBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRoleListFieldBuilder() : null;
+            } else {
+              roleListBuilder_.addAllMessages(other.roleList_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1593,6 +1689,12 @@ public final class Login {
           
           return false;
         }
+        for (int i = 0; i < getRoleListCount(); i++) {
+          if (!getRoleList(i).isInitialized()) {
+            
+            return false;
+          }
+        }
         return true;
       }
 
@@ -1600,11 +1702,11 @@ public final class Login {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.Login.HPLoginRet parsedMessage = null;
+        com.hawk.game.protocol.Login.HSLoginRet parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.Login.HPLoginRet) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.Login.HSLoginRet) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1681,84 +1783,291 @@ public final class Login {
         return this;
       }
 
-      // optional int32 roleItemId = 3;
-      private int roleItemId_ ;
+      // optional int32 timeStamp = 3;
+      private int timeStamp_ ;
       /**
-       * <code>optional int32 roleItemId = 3;</code>
+       * <code>optional int32 timeStamp = 3;</code>
        */
-      public boolean hasRoleItemId() {
+      public boolean hasTimeStamp() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional int32 roleItemId = 3;</code>
-       */
-      public int getRoleItemId() {
-        return roleItemId_;
-      }
-      /**
-       * <code>optional int32 roleItemId = 3;</code>
-       */
-      public Builder setRoleItemId(int value) {
-        bitField0_ |= 0x00000004;
-        roleItemId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 roleItemId = 3;</code>
-       */
-      public Builder clearRoleItemId() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        roleItemId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 timeStamp = 4;
-      private int timeStamp_ ;
-      /**
-       * <code>optional int32 timeStamp = 4;</code>
-       */
-      public boolean hasTimeStamp() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 timeStamp = 4;</code>
+       * <code>optional int32 timeStamp = 3;</code>
        */
       public int getTimeStamp() {
         return timeStamp_;
       }
       /**
-       * <code>optional int32 timeStamp = 4;</code>
+       * <code>optional int32 timeStamp = 3;</code>
        */
       public Builder setTimeStamp(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         timeStamp_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 timeStamp = 4;</code>
+       * <code>optional int32 timeStamp = 3;</code>
        */
       public Builder clearTimeStamp() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         timeStamp_ = 0;
         onChanged();
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:HPLoginRet)
+      // repeated .HSRoleBrief roleList = 4;
+      private java.util.List<com.hawk.game.protocol.Role.HSRoleBrief> roleList_ =
+        java.util.Collections.emptyList();
+      private void ensureRoleListIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          roleList_ = new java.util.ArrayList<com.hawk.game.protocol.Role.HSRoleBrief>(roleList_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Role.HSRoleBrief, com.hawk.game.protocol.Role.HSRoleBrief.Builder, com.hawk.game.protocol.Role.HSRoleBriefOrBuilder> roleListBuilder_;
+
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Role.HSRoleBrief> getRoleListList() {
+        if (roleListBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(roleList_);
+        } else {
+          return roleListBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public int getRoleListCount() {
+        if (roleListBuilder_ == null) {
+          return roleList_.size();
+        } else {
+          return roleListBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public com.hawk.game.protocol.Role.HSRoleBrief getRoleList(int index) {
+        if (roleListBuilder_ == null) {
+          return roleList_.get(index);
+        } else {
+          return roleListBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public Builder setRoleList(
+          int index, com.hawk.game.protocol.Role.HSRoleBrief value) {
+        if (roleListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRoleListIsMutable();
+          roleList_.set(index, value);
+          onChanged();
+        } else {
+          roleListBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public Builder setRoleList(
+          int index, com.hawk.game.protocol.Role.HSRoleBrief.Builder builderForValue) {
+        if (roleListBuilder_ == null) {
+          ensureRoleListIsMutable();
+          roleList_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          roleListBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public Builder addRoleList(com.hawk.game.protocol.Role.HSRoleBrief value) {
+        if (roleListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRoleListIsMutable();
+          roleList_.add(value);
+          onChanged();
+        } else {
+          roleListBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public Builder addRoleList(
+          int index, com.hawk.game.protocol.Role.HSRoleBrief value) {
+        if (roleListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRoleListIsMutable();
+          roleList_.add(index, value);
+          onChanged();
+        } else {
+          roleListBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public Builder addRoleList(
+          com.hawk.game.protocol.Role.HSRoleBrief.Builder builderForValue) {
+        if (roleListBuilder_ == null) {
+          ensureRoleListIsMutable();
+          roleList_.add(builderForValue.build());
+          onChanged();
+        } else {
+          roleListBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public Builder addRoleList(
+          int index, com.hawk.game.protocol.Role.HSRoleBrief.Builder builderForValue) {
+        if (roleListBuilder_ == null) {
+          ensureRoleListIsMutable();
+          roleList_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          roleListBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public Builder addAllRoleList(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Role.HSRoleBrief> values) {
+        if (roleListBuilder_ == null) {
+          ensureRoleListIsMutable();
+          super.addAll(values, roleList_);
+          onChanged();
+        } else {
+          roleListBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public Builder clearRoleList() {
+        if (roleListBuilder_ == null) {
+          roleList_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          roleListBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public Builder removeRoleList(int index) {
+        if (roleListBuilder_ == null) {
+          ensureRoleListIsMutable();
+          roleList_.remove(index);
+          onChanged();
+        } else {
+          roleListBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public com.hawk.game.protocol.Role.HSRoleBrief.Builder getRoleListBuilder(
+          int index) {
+        return getRoleListFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public com.hawk.game.protocol.Role.HSRoleBriefOrBuilder getRoleListOrBuilder(
+          int index) {
+        if (roleListBuilder_ == null) {
+          return roleList_.get(index);  } else {
+          return roleListBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Role.HSRoleBriefOrBuilder> 
+           getRoleListOrBuilderList() {
+        if (roleListBuilder_ != null) {
+          return roleListBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(roleList_);
+        }
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public com.hawk.game.protocol.Role.HSRoleBrief.Builder addRoleListBuilder() {
+        return getRoleListFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Role.HSRoleBrief.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public com.hawk.game.protocol.Role.HSRoleBrief.Builder addRoleListBuilder(
+          int index) {
+        return getRoleListFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Role.HSRoleBrief.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HSRoleBrief roleList = 4;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Role.HSRoleBrief.Builder> 
+           getRoleListBuilderList() {
+        return getRoleListFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Role.HSRoleBrief, com.hawk.game.protocol.Role.HSRoleBrief.Builder, com.hawk.game.protocol.Role.HSRoleBriefOrBuilder> 
+          getRoleListFieldBuilder() {
+        if (roleListBuilder_ == null) {
+          roleListBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Role.HSRoleBrief, com.hawk.game.protocol.Role.HSRoleBrief.Builder, com.hawk.game.protocol.Role.HSRoleBriefOrBuilder>(
+                  roleList_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          roleList_ = null;
+        }
+        return roleListBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSLoginRet)
     }
 
     static {
-      defaultInstance = new HPLoginRet(true);
+      defaultInstance = new HSLoginRet(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:HPLoginRet)
+    // @@protoc_insertion_point(class_scope:HSLoginRet)
   }
 
-  public interface HPUserKickoutOrBuilder
+  public interface HSUserKickoutOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required int32 playerId = 1;
@@ -1782,24 +2091,28 @@ public final class Login {
     int getReason();
   }
   /**
-   * Protobuf type {@code HPUserKickout}
+   * Protobuf type {@code HSUserKickout}
+   *
+   * <pre>
+   * KICKOUT_S
+   * </pre>
    */
-  public static final class HPUserKickout extends
+  public static final class HSUserKickout extends
       com.google.protobuf.GeneratedMessage
-      implements HPUserKickoutOrBuilder {
-    // Use HPUserKickout.newBuilder() to construct.
-    private HPUserKickout(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HSUserKickoutOrBuilder {
+    // Use HSUserKickout.newBuilder() to construct.
+    private HSUserKickout(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HPUserKickout(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HSUserKickout(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HPUserKickout defaultInstance;
-    public static HPUserKickout getDefaultInstance() {
+    private static final HSUserKickout defaultInstance;
+    public static HSUserKickout getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HPUserKickout getDefaultInstanceForType() {
+    public HSUserKickout getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -1809,7 +2122,7 @@ public final class Login {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HPUserKickout(
+    private HSUserKickout(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1856,28 +2169,28 @@ public final class Login {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Login.internal_static_HPUserKickout_descriptor;
+      return com.hawk.game.protocol.Login.internal_static_HSUserKickout_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.Login.internal_static_HPUserKickout_fieldAccessorTable
+      return com.hawk.game.protocol.Login.internal_static_HSUserKickout_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.Login.HPUserKickout.class, com.hawk.game.protocol.Login.HPUserKickout.Builder.class);
+              com.hawk.game.protocol.Login.HSUserKickout.class, com.hawk.game.protocol.Login.HSUserKickout.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HPUserKickout> PARSER =
-        new com.google.protobuf.AbstractParser<HPUserKickout>() {
-      public HPUserKickout parsePartialFrom(
+    public static com.google.protobuf.Parser<HSUserKickout> PARSER =
+        new com.google.protobuf.AbstractParser<HSUserKickout>() {
+      public HSUserKickout parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HPUserKickout(input, extensionRegistry);
+        return new HSUserKickout(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HPUserKickout> getParserForType() {
+    public com.google.protobuf.Parser<HSUserKickout> getParserForType() {
       return PARSER;
     }
 
@@ -1969,53 +2282,53 @@ public final class Login {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.Login.HPUserKickout parseFrom(
+    public static com.hawk.game.protocol.Login.HSUserKickout parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Login.HPUserKickout parseFrom(
+    public static com.hawk.game.protocol.Login.HSUserKickout parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPUserKickout parseFrom(byte[] data)
+    public static com.hawk.game.protocol.Login.HSUserKickout parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Login.HPUserKickout parseFrom(
+    public static com.hawk.game.protocol.Login.HSUserKickout parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPUserKickout parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Login.HSUserKickout parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Login.HPUserKickout parseFrom(
+    public static com.hawk.game.protocol.Login.HSUserKickout parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPUserKickout parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Login.HSUserKickout parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.Login.HPUserKickout parseDelimitedFrom(
+    public static com.hawk.game.protocol.Login.HSUserKickout parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Login.HPUserKickout parseFrom(
+    public static com.hawk.game.protocol.Login.HSUserKickout parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Login.HPUserKickout parseFrom(
+    public static com.hawk.game.protocol.Login.HSUserKickout parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2024,7 +2337,7 @@ public final class Login {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.Login.HPUserKickout prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.Login.HSUserKickout prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -2036,24 +2349,28 @@ public final class Login {
       return builder;
     }
     /**
-     * Protobuf type {@code HPUserKickout}
+     * Protobuf type {@code HSUserKickout}
+     *
+     * <pre>
+     * KICKOUT_S
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.Login.HPUserKickoutOrBuilder {
+       implements com.hawk.game.protocol.Login.HSUserKickoutOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.Login.internal_static_HPUserKickout_descriptor;
+        return com.hawk.game.protocol.Login.internal_static_HSUserKickout_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.Login.internal_static_HPUserKickout_fieldAccessorTable
+        return com.hawk.game.protocol.Login.internal_static_HSUserKickout_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.Login.HPUserKickout.class, com.hawk.game.protocol.Login.HPUserKickout.Builder.class);
+                com.hawk.game.protocol.Login.HSUserKickout.class, com.hawk.game.protocol.Login.HSUserKickout.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.Login.HPUserKickout.newBuilder()
+      // Construct using com.hawk.game.protocol.Login.HSUserKickout.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2086,23 +2403,23 @@ public final class Login {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.Login.internal_static_HPUserKickout_descriptor;
+        return com.hawk.game.protocol.Login.internal_static_HSUserKickout_descriptor;
       }
 
-      public com.hawk.game.protocol.Login.HPUserKickout getDefaultInstanceForType() {
-        return com.hawk.game.protocol.Login.HPUserKickout.getDefaultInstance();
+      public com.hawk.game.protocol.Login.HSUserKickout getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Login.HSUserKickout.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.Login.HPUserKickout build() {
-        com.hawk.game.protocol.Login.HPUserKickout result = buildPartial();
+      public com.hawk.game.protocol.Login.HSUserKickout build() {
+        com.hawk.game.protocol.Login.HSUserKickout result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.Login.HPUserKickout buildPartial() {
-        com.hawk.game.protocol.Login.HPUserKickout result = new com.hawk.game.protocol.Login.HPUserKickout(this);
+      public com.hawk.game.protocol.Login.HSUserKickout buildPartial() {
+        com.hawk.game.protocol.Login.HSUserKickout result = new com.hawk.game.protocol.Login.HSUserKickout(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2119,16 +2436,16 @@ public final class Login {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.Login.HPUserKickout) {
-          return mergeFrom((com.hawk.game.protocol.Login.HPUserKickout)other);
+        if (other instanceof com.hawk.game.protocol.Login.HSUserKickout) {
+          return mergeFrom((com.hawk.game.protocol.Login.HSUserKickout)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.Login.HPUserKickout other) {
-        if (other == com.hawk.game.protocol.Login.HPUserKickout.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hawk.game.protocol.Login.HSUserKickout other) {
+        if (other == com.hawk.game.protocol.Login.HSUserKickout.getDefaultInstance()) return this;
         if (other.hasPlayerId()) {
           setPlayerId(other.getPlayerId());
         }
@@ -2151,11 +2468,11 @@ public final class Login {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.Login.HPUserKickout parsedMessage = null;
+        com.hawk.game.protocol.Login.HSUserKickout parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.Login.HPUserKickout) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.Login.HSUserKickout) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -2232,32 +2549,32 @@ public final class Login {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:HPUserKickout)
+      // @@protoc_insertion_point(builder_scope:HSUserKickout)
     }
 
     static {
-      defaultInstance = new HPUserKickout(true);
+      defaultInstance = new HSUserKickout(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:HPUserKickout)
+    // @@protoc_insertion_point(class_scope:HSUserKickout)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HPLogin_descriptor;
+    internal_static_HSLogin_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HPLogin_fieldAccessorTable;
+      internal_static_HSLogin_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HPLoginRet_descriptor;
+    internal_static_HSLoginRet_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HPLoginRet_fieldAccessorTable;
+      internal_static_HSLoginRet_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HPUserKickout_descriptor;
+    internal_static_HSUserKickout_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HPUserKickout_fieldAccessorTable;
+      internal_static_HSUserKickout_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2267,37 +2584,37 @@ public final class Login {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013Login.proto\"h\n\007HPLogin\022\014\n\004puid\030\001 \002(\t\022\023" +
-      "\n\010deviceId\030\002 \001(\t:\0010\022\023\n\010platform\030\003 \001(\t:\0010" +
-      "\022\026\n\007version\030\004 \001(\t:\0050.0.1\022\r\n\005token\030\005 \001(\t\"" +
-      "U\n\nHPLoginRet\022\016\n\006status\030\001 \002(\005\022\020\n\010playerI" +
-      "d\030\002 \001(\005\022\022\n\nroleItemId\030\003 \001(\005\022\021\n\ttimeStamp" +
-      "\030\004 \001(\005\"1\n\rHPUserKickout\022\020\n\010playerId\030\001 \002(" +
-      "\005\022\016\n\006reason\030\002 \001(\005B\030\n\026com.hawk.game.proto" +
-      "col"
+      "\n\013Login.proto\032\nRole.proto\"h\n\007HSLogin\022\014\n\004" +
+      "puid\030\001 \002(\t\022\023\n\010deviceId\030\002 \001(\t:\0010\022\023\n\010platf" +
+      "orm\030\003 \001(\t:\0010\022\026\n\007version\030\004 \001(\t:\0050.0.1\022\r\n\005" +
+      "token\030\005 \001(\t\"a\n\nHSLoginRet\022\016\n\006status\030\001 \002(" +
+      "\005\022\020\n\010playerId\030\002 \001(\005\022\021\n\ttimeStamp\030\003 \001(\005\022\036" +
+      "\n\010roleList\030\004 \003(\0132\014.HSRoleBrief\"1\n\rHSUser" +
+      "Kickout\022\020\n\010playerId\030\001 \002(\005\022\016\n\006reason\030\002 \001(" +
+      "\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_HPLogin_descriptor =
+          internal_static_HSLogin_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_HPLogin_fieldAccessorTable = new
+          internal_static_HSLogin_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HPLogin_descriptor,
+              internal_static_HSLogin_descriptor,
               new java.lang.String[] { "Puid", "DeviceId", "Platform", "Version", "Token", });
-          internal_static_HPLoginRet_descriptor =
+          internal_static_HSLoginRet_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_HPLoginRet_fieldAccessorTable = new
+          internal_static_HSLoginRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HPLoginRet_descriptor,
-              new java.lang.String[] { "Status", "PlayerId", "RoleItemId", "TimeStamp", });
-          internal_static_HPUserKickout_descriptor =
+              internal_static_HSLoginRet_descriptor,
+              new java.lang.String[] { "Status", "PlayerId", "TimeStamp", "RoleList", });
+          internal_static_HSUserKickout_descriptor =
             getDescriptor().getMessageTypes().get(2);
-          internal_static_HPUserKickout_fieldAccessorTable = new
+          internal_static_HSUserKickout_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HPUserKickout_descriptor,
+              internal_static_HSUserKickout_descriptor,
               new java.lang.String[] { "PlayerId", "Reason", });
           return null;
         }
@@ -2305,6 +2622,7 @@ public final class Login {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.hawk.game.protocol.Role.getDescriptor(),
         }, assigner);
   }
 

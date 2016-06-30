@@ -8,7 +8,7 @@ public final class Chat {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface HPSendChatOrBuilder
+  public interface HSSendChatOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required string chatMsg = 1;
@@ -27,24 +27,24 @@ public final class Chat {
         getChatMsgBytes();
   }
   /**
-   * Protobuf type {@code HPSendChat}
+   * Protobuf type {@code HSSendChat}
    */
-  public static final class HPSendChat extends
+  public static final class HSSendChat extends
       com.google.protobuf.GeneratedMessage
-      implements HPSendChatOrBuilder {
-    // Use HPSendChat.newBuilder() to construct.
-    private HPSendChat(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HSSendChatOrBuilder {
+    // Use HSSendChat.newBuilder() to construct.
+    private HSSendChat(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HPSendChat(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HSSendChat(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HPSendChat defaultInstance;
-    public static HPSendChat getDefaultInstance() {
+    private static final HSSendChat defaultInstance;
+    public static HSSendChat getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HPSendChat getDefaultInstanceForType() {
+    public HSSendChat getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -54,7 +54,7 @@ public final class Chat {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HPSendChat(
+    private HSSendChat(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -96,28 +96,28 @@ public final class Chat {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Chat.internal_static_HPSendChat_descriptor;
+      return com.hawk.game.protocol.Chat.internal_static_HSSendChat_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.Chat.internal_static_HPSendChat_fieldAccessorTable
+      return com.hawk.game.protocol.Chat.internal_static_HSSendChat_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.Chat.HPSendChat.class, com.hawk.game.protocol.Chat.HPSendChat.Builder.class);
+              com.hawk.game.protocol.Chat.HSSendChat.class, com.hawk.game.protocol.Chat.HSSendChat.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HPSendChat> PARSER =
-        new com.google.protobuf.AbstractParser<HPSendChat>() {
-      public HPSendChat parsePartialFrom(
+    public static com.google.protobuf.Parser<HSSendChat> PARSER =
+        new com.google.protobuf.AbstractParser<HSSendChat>() {
+      public HSSendChat parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HPSendChat(input, extensionRegistry);
+        return new HSSendChat(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HPSendChat> getParserForType() {
+    public com.google.protobuf.Parser<HSSendChat> getParserForType() {
       return PARSER;
     }
 
@@ -212,53 +212,53 @@ public final class Chat {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.Chat.HPSendChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSSendChat parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Chat.HPSendChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSSendChat parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Chat.HPSendChat parseFrom(byte[] data)
+    public static com.hawk.game.protocol.Chat.HSSendChat parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Chat.HPSendChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSSendChat parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Chat.HPSendChat parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Chat.HSSendChat parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Chat.HPSendChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSSendChat parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Chat.HPSendChat parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Chat.HSSendChat parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.Chat.HPSendChat parseDelimitedFrom(
+    public static com.hawk.game.protocol.Chat.HSSendChat parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Chat.HPSendChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSSendChat parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Chat.HPSendChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSSendChat parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -267,7 +267,7 @@ public final class Chat {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.Chat.HPSendChat prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.Chat.HSSendChat prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -279,24 +279,24 @@ public final class Chat {
       return builder;
     }
     /**
-     * Protobuf type {@code HPSendChat}
+     * Protobuf type {@code HSSendChat}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.Chat.HPSendChatOrBuilder {
+       implements com.hawk.game.protocol.Chat.HSSendChatOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.Chat.internal_static_HPSendChat_descriptor;
+        return com.hawk.game.protocol.Chat.internal_static_HSSendChat_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.Chat.internal_static_HPSendChat_fieldAccessorTable
+        return com.hawk.game.protocol.Chat.internal_static_HSSendChat_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.Chat.HPSendChat.class, com.hawk.game.protocol.Chat.HPSendChat.Builder.class);
+                com.hawk.game.protocol.Chat.HSSendChat.class, com.hawk.game.protocol.Chat.HSSendChat.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.Chat.HPSendChat.newBuilder()
+      // Construct using com.hawk.game.protocol.Chat.HSSendChat.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -327,23 +327,23 @@ public final class Chat {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.Chat.internal_static_HPSendChat_descriptor;
+        return com.hawk.game.protocol.Chat.internal_static_HSSendChat_descriptor;
       }
 
-      public com.hawk.game.protocol.Chat.HPSendChat getDefaultInstanceForType() {
-        return com.hawk.game.protocol.Chat.HPSendChat.getDefaultInstance();
+      public com.hawk.game.protocol.Chat.HSSendChat getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Chat.HSSendChat.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.Chat.HPSendChat build() {
-        com.hawk.game.protocol.Chat.HPSendChat result = buildPartial();
+      public com.hawk.game.protocol.Chat.HSSendChat build() {
+        com.hawk.game.protocol.Chat.HSSendChat result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.Chat.HPSendChat buildPartial() {
-        com.hawk.game.protocol.Chat.HPSendChat result = new com.hawk.game.protocol.Chat.HPSendChat(this);
+      public com.hawk.game.protocol.Chat.HSSendChat buildPartial() {
+        com.hawk.game.protocol.Chat.HSSendChat result = new com.hawk.game.protocol.Chat.HSSendChat(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -356,16 +356,16 @@ public final class Chat {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.Chat.HPSendChat) {
-          return mergeFrom((com.hawk.game.protocol.Chat.HPSendChat)other);
+        if (other instanceof com.hawk.game.protocol.Chat.HSSendChat) {
+          return mergeFrom((com.hawk.game.protocol.Chat.HSSendChat)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.Chat.HPSendChat other) {
-        if (other == com.hawk.game.protocol.Chat.HPSendChat.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hawk.game.protocol.Chat.HSSendChat other) {
+        if (other == com.hawk.game.protocol.Chat.HSSendChat.getDefaultInstance()) return this;
         if (other.hasChatMsg()) {
           bitField0_ |= 0x00000001;
           chatMsg_ = other.chatMsg_;
@@ -387,11 +387,11 @@ public final class Chat {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.Chat.HPSendChat parsedMessage = null;
+        com.hawk.game.protocol.Chat.HSSendChat parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.Chat.HPSendChat) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.Chat.HSSendChat) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -476,18 +476,18 @@ public final class Chat {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:HPSendChat)
+      // @@protoc_insertion_point(builder_scope:HSSendChat)
     }
 
     static {
-      defaultInstance = new HPSendChat(true);
+      defaultInstance = new HSSendChat(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:HPSendChat)
+    // @@protoc_insertion_point(class_scope:HSSendChat)
   }
 
-  public interface HPPushChatOrBuilder
+  public interface HSPushChatOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required int32 type = 1;
@@ -541,24 +541,24 @@ public final class Chat {
         getChatMsgBytes();
   }
   /**
-   * Protobuf type {@code HPPushChat}
+   * Protobuf type {@code HSPushChat}
    */
-  public static final class HPPushChat extends
+  public static final class HSPushChat extends
       com.google.protobuf.GeneratedMessage
-      implements HPPushChatOrBuilder {
-    // Use HPPushChat.newBuilder() to construct.
-    private HPPushChat(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HSPushChatOrBuilder {
+    // Use HSPushChat.newBuilder() to construct.
+    private HSPushChat(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HPPushChat(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HSPushChat(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HPPushChat defaultInstance;
-    public static HPPushChat getDefaultInstance() {
+    private static final HSPushChat defaultInstance;
+    public static HSPushChat getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HPPushChat getDefaultInstanceForType() {
+    public HSPushChat getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -568,7 +568,7 @@ public final class Chat {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HPPushChat(
+    private HSPushChat(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -625,28 +625,28 @@ public final class Chat {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Chat.internal_static_HPPushChat_descriptor;
+      return com.hawk.game.protocol.Chat.internal_static_HSPushChat_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.Chat.internal_static_HPPushChat_fieldAccessorTable
+      return com.hawk.game.protocol.Chat.internal_static_HSPushChat_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.Chat.HPPushChat.class, com.hawk.game.protocol.Chat.HPPushChat.Builder.class);
+              com.hawk.game.protocol.Chat.HSPushChat.class, com.hawk.game.protocol.Chat.HSPushChat.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HPPushChat> PARSER =
-        new com.google.protobuf.AbstractParser<HPPushChat>() {
-      public HPPushChat parsePartialFrom(
+    public static com.google.protobuf.Parser<HSPushChat> PARSER =
+        new com.google.protobuf.AbstractParser<HSPushChat>() {
+      public HSPushChat parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HPPushChat(input, extensionRegistry);
+        return new HSPushChat(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HPPushChat> getParserForType() {
+    public com.google.protobuf.Parser<HSPushChat> getParserForType() {
       return PARSER;
     }
 
@@ -852,53 +852,53 @@ public final class Chat {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.Chat.HPPushChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSPushChat parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Chat.HPPushChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSPushChat parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Chat.HPPushChat parseFrom(byte[] data)
+    public static com.hawk.game.protocol.Chat.HSPushChat parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Chat.HPPushChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSPushChat parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Chat.HPPushChat parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Chat.HSPushChat parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Chat.HPPushChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSPushChat parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Chat.HPPushChat parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Chat.HSPushChat parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.Chat.HPPushChat parseDelimitedFrom(
+    public static com.hawk.game.protocol.Chat.HSPushChat parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Chat.HPPushChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSPushChat parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Chat.HPPushChat parseFrom(
+    public static com.hawk.game.protocol.Chat.HSPushChat parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -907,7 +907,7 @@ public final class Chat {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.Chat.HPPushChat prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.Chat.HSPushChat prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -919,24 +919,24 @@ public final class Chat {
       return builder;
     }
     /**
-     * Protobuf type {@code HPPushChat}
+     * Protobuf type {@code HSPushChat}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.Chat.HPPushChatOrBuilder {
+       implements com.hawk.game.protocol.Chat.HSPushChatOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.Chat.internal_static_HPPushChat_descriptor;
+        return com.hawk.game.protocol.Chat.internal_static_HSPushChat_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.Chat.internal_static_HPPushChat_fieldAccessorTable
+        return com.hawk.game.protocol.Chat.internal_static_HSPushChat_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.Chat.HPPushChat.class, com.hawk.game.protocol.Chat.HPPushChat.Builder.class);
+                com.hawk.game.protocol.Chat.HSPushChat.class, com.hawk.game.protocol.Chat.HSPushChat.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.Chat.HPPushChat.newBuilder()
+      // Construct using com.hawk.game.protocol.Chat.HSPushChat.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -973,23 +973,23 @@ public final class Chat {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.Chat.internal_static_HPPushChat_descriptor;
+        return com.hawk.game.protocol.Chat.internal_static_HSPushChat_descriptor;
       }
 
-      public com.hawk.game.protocol.Chat.HPPushChat getDefaultInstanceForType() {
-        return com.hawk.game.protocol.Chat.HPPushChat.getDefaultInstance();
+      public com.hawk.game.protocol.Chat.HSPushChat getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Chat.HSPushChat.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.Chat.HPPushChat build() {
-        com.hawk.game.protocol.Chat.HPPushChat result = buildPartial();
+      public com.hawk.game.protocol.Chat.HSPushChat build() {
+        com.hawk.game.protocol.Chat.HSPushChat result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.Chat.HPPushChat buildPartial() {
-        com.hawk.game.protocol.Chat.HPPushChat result = new com.hawk.game.protocol.Chat.HPPushChat(this);
+      public com.hawk.game.protocol.Chat.HSPushChat buildPartial() {
+        com.hawk.game.protocol.Chat.HSPushChat result = new com.hawk.game.protocol.Chat.HSPushChat(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1014,16 +1014,16 @@ public final class Chat {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.Chat.HPPushChat) {
-          return mergeFrom((com.hawk.game.protocol.Chat.HPPushChat)other);
+        if (other instanceof com.hawk.game.protocol.Chat.HSPushChat) {
+          return mergeFrom((com.hawk.game.protocol.Chat.HSPushChat)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.Chat.HPPushChat other) {
-        if (other == com.hawk.game.protocol.Chat.HPPushChat.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hawk.game.protocol.Chat.HSPushChat other) {
+        if (other == com.hawk.game.protocol.Chat.HSPushChat.getDefaultInstance()) return this;
         if (other.hasType()) {
           setType(other.getType());
         }
@@ -1068,11 +1068,11 @@ public final class Chat {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.Chat.HPPushChat parsedMessage = null;
+        com.hawk.game.protocol.Chat.HSPushChat parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.Chat.HPPushChat) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.Chat.HSPushChat) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1297,27 +1297,27 @@ public final class Chat {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:HPPushChat)
+      // @@protoc_insertion_point(builder_scope:HSPushChat)
     }
 
     static {
-      defaultInstance = new HPPushChat(true);
+      defaultInstance = new HSPushChat(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:HPPushChat)
+    // @@protoc_insertion_point(class_scope:HSPushChat)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HPSendChat_descriptor;
+    internal_static_HSSendChat_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HPSendChat_fieldAccessorTable;
+      internal_static_HSSendChat_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HPPushChat_descriptor;
+    internal_static_HSPushChat_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HPPushChat_fieldAccessorTable;
+      internal_static_HSPushChat_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1327,8 +1327,8 @@ public final class Chat {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nChat.proto\"\035\n\nHPSendChat\022\017\n\007chatMsg\030\001 " +
-      "\002(\t\"K\n\nHPPushChat\022\014\n\004type\030\001 \002(\005\022\020\n\010playe" +
+      "\n\nChat.proto\"\035\n\nHSSendChat\022\017\n\007chatMsg\030\001 " +
+      "\002(\t\"K\n\nHSPushChat\022\014\n\004type\030\001 \002(\005\022\020\n\010playe" +
       "rId\030\002 \002(\005\022\014\n\004name\030\003 \002(\t\022\017\n\007chatMsg\030\004 \002(\t" +
       "B\030\n\026com.hawk.game.protocol"
     };
@@ -1337,17 +1337,17 @@ public final class Chat {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_HPSendChat_descriptor =
+          internal_static_HSSendChat_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_HPSendChat_fieldAccessorTable = new
+          internal_static_HSSendChat_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HPSendChat_descriptor,
+              internal_static_HSSendChat_descriptor,
               new java.lang.String[] { "ChatMsg", });
-          internal_static_HPPushChat_descriptor =
+          internal_static_HSPushChat_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_HPPushChat_fieldAccessorTable = new
+          internal_static_HSPushChat_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HPPushChat_descriptor,
+              internal_static_HSPushChat_descriptor,
               new java.lang.String[] { "Type", "PlayerId", "Name", "ChatMsg", });
           return null;
         }

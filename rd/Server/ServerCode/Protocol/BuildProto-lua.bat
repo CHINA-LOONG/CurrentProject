@@ -5,3 +5,4 @@ for /r %%i in (*.proto) do (
 	protoc.exe --lua_out=./Protobuf/Lua/ --plugin=protoc-gen-lua=".\plugin\protoc-gen-lua.bat" %%~ni.proto
 )
 @echo done!
+pause

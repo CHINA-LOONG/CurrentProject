@@ -8,8 +8,8 @@ import org.hawk.os.HawkException;
 import org.hawk.util.HawkZlib;
 
 import com.hawk.game.GsConfig;
-import com.hawk.game.protocol.HP;
-import com.hawk.game.protocol.SysProtocol.HPErrorCode;
+import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 
 public class ProtoUtil {
 	private static int RESERVE_ZLIB_COMPRESS = 1;
@@ -82,10 +82,10 @@ public class ProtoUtil {
 	 * @return
 	 */
 	public static HawkProtocol genErrorProtocol(int hpCode, int errCode, int errFlag) {
-		HPErrorCode.Builder builder = HPErrorCode.newBuilder();
+		HSErrorCode.Builder builder = HSErrorCode.newBuilder();
 		builder.setHpCode(hpCode);
 		builder.setErrCode(errCode);
 		builder.setErrFlag(errFlag);
-		return HawkProtocol.valueOf(HP.sys.ERROR_CODE, builder);
+		return HawkProtocol.valueOf(HS.sys.ERROR_CODE, builder);
 	}
 }

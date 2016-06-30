@@ -15,8 +15,8 @@ import org.slf4j.LoggerFactory;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.module.PlayerIdleModule;
 import com.hawk.game.module.PlayerLoginModule;
-import com.hawk.game.protocol.HP;
-import com.hawk.game.protocol.SysProtocol.HPErrorCode;
+import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.util.GsConst;
 
 /**
@@ -107,10 +107,10 @@ public class Player extends HawkAppObj {
 	 * @param errCode
 	 */
 	public void sendError(int hpCode, int errCode) {
-		HPErrorCode.Builder builder = HPErrorCode.newBuilder();
+		HSErrorCode.Builder builder = HSErrorCode.newBuilder();
 		builder.setHpCode(hpCode);
 		builder.setErrCode(errCode);
-		sendProtocol(HawkProtocol.valueOf(HP.sys.ERROR_CODE, builder));
+		sendProtocol(HawkProtocol.valueOf(HS.sys.ERROR_CODE, builder));
 	}
 
 	/**
@@ -119,11 +119,11 @@ public class Player extends HawkAppObj {
 	 * @param errCode
 	 */
 	public void sendError(int hpCode, int errCode, int errFlag) {
-		HPErrorCode.Builder builder = HPErrorCode.newBuilder();
+		HSErrorCode.Builder builder = HSErrorCode.newBuilder();
 		builder.setHpCode(hpCode);
 		builder.setErrCode(errCode);
 		builder.setErrFlag(errFlag);
-		sendProtocol(HawkProtocol.valueOf(HP.sys.ERROR_CODE, builder));
+		sendProtocol(HawkProtocol.valueOf(HS.sys.ERROR_CODE, builder));
 	}
 
 	/**
@@ -197,13 +197,13 @@ public class Player extends HawkAppObj {
 		}
 
 		// 玩家不在线而且不是登陆协议(非法协议时机)
-		if (!isOnline() && !protocol.checkType(HP.code.LOGIN_C)) {
+		if (!isOnline() && !protocol.checkType(HS.code.LOGIN_C)) {
 			HawkLog.errPrintln(String.format("player is offline, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
 			return true;
 		}
 
 		// 玩家未组装完成
-		if (!isAssembleFinish() && !protocol.checkType(HP.code.LOGIN_C)) {
+		if (!isAssembleFinish() && !protocol.checkType(HS.code.LOGIN_C)) {
 			HawkLog.errPrintln(String.format("player assemble unfinish, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
 			return true;
 		}
@@ -300,9 +300,9 @@ public class Player extends HawkAppObj {
 	 * 
 	 * @return
 	 */
-	public int getGold() {
-		return playerData.getPlayerEntity().getGold();
-	}
+//	public int getGold() {
+//		return playerData.getPlayerEntity().getGold();
+//	}
 
 	/**
 	 * 获取金币
@@ -327,9 +327,9 @@ public class Player extends HawkAppObj {
 	 * 
 	 * @return
 	 */
-	public String getName() {
-		return playerData.getPlayerEntity().getName();
-	}
+//	public String getName() {
+//		return playerData.getPlayerEntity().getName();
+//	}
 
 	/**
 	 * 获取玩家等级
@@ -344,9 +344,9 @@ public class Player extends HawkAppObj {
 	 * 获取经验
 	 * @return
 	 */
-	public int getExp() {
-		return playerData.getPlayerEntity().getExp();
-	}
+//	public int getExp() {
+//		return playerData.getPlayerEntity().getExp();
+//	}
 
 	/**
 	 * 获取会话ip地址

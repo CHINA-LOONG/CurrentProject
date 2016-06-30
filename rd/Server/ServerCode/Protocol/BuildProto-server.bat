@@ -5,3 +5,4 @@ for /r %%i in (*.proto) do (
 	protoc.exe --java_out=./Protobuf/Java/src %%~ni.proto
 )
 @echo done!
+pause

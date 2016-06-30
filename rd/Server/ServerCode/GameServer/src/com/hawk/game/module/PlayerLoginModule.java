@@ -9,9 +9,9 @@ import com.hawk.game.ServerData;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
-import com.hawk.game.protocol.HP;
-import com.hawk.game.protocol.Login.HPLogin;
-import com.hawk.game.protocol.Login.HPLoginRet;
+import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Login.HSLogin;
+import com.hawk.game.protocol.Login.HSLoginRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.ProtoUtil;
 
@@ -36,9 +36,9 @@ public class PlayerLoginModule extends PlayerModule {
 	 * @param session
 	 * @param protocol
 	 */
-	@ProtocolHandler(code = HP.code.LOGIN_C_VALUE)
+	@ProtocolHandler(code = HS.code.LOGIN_C_VALUE)
 	private boolean onPlayerLogin(HawkProtocol cmd) {
-		HPLogin protocol = cmd.parseProtocol(HPLogin.getDefaultInstance());
+		HSLogin protocol = cmd.parseProtocol(HSLogin.getDefaultInstance());
 		HawkSession session = cmd.getSession();
 		int hpCode = cmd.getType();
 
@@ -112,7 +112,7 @@ public class PlayerLoginModule extends PlayerModule {
 		}
 
 		// 登陆回复协议
-		HPLoginRet.Builder response = HPLoginRet.newBuilder();
+		HSLoginRet.Builder response = HSLoginRet.newBuilder();
 		response.setPlayerId(playerEntity.getId());
 		// 设置时间戳
 		response.setTimeStamp(HawkTime.getSeconds());
@@ -120,7 +120,7 @@ public class PlayerLoginModule extends PlayerModule {
 		// 绑定会话
 		player.setSession(session);
 		// 发送登陆成功协议
-		sendProtocol(HawkProtocol.valueOf(HP.code.LOGIN_S, response));
+		sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S, response));
 		return true;
 	}
 

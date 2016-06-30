@@ -8,7 +8,7 @@ public final class Player {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface HPPlayerKickoutOrBuilder
+  public interface HSPlayerKickoutOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required int32 reason = 1;
@@ -22,24 +22,24 @@ public final class Player {
     int getReason();
   }
   /**
-   * Protobuf type {@code HPPlayerKickout}
+   * Protobuf type {@code HSPlayerKickout}
    */
-  public static final class HPPlayerKickout extends
+  public static final class HSPlayerKickout extends
       com.google.protobuf.GeneratedMessage
-      implements HPPlayerKickoutOrBuilder {
-    // Use HPPlayerKickout.newBuilder() to construct.
-    private HPPlayerKickout(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HSPlayerKickoutOrBuilder {
+    // Use HSPlayerKickout.newBuilder() to construct.
+    private HSPlayerKickout(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HPPlayerKickout(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HSPlayerKickout(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HPPlayerKickout defaultInstance;
-    public static HPPlayerKickout getDefaultInstance() {
+    private static final HSPlayerKickout defaultInstance;
+    public static HSPlayerKickout getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HPPlayerKickout getDefaultInstanceForType() {
+    public HSPlayerKickout getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -49,7 +49,7 @@ public final class Player {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HPPlayerKickout(
+    private HSPlayerKickout(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -91,28 +91,28 @@ public final class Player {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Player.internal_static_HPPlayerKickout_descriptor;
+      return com.hawk.game.protocol.Player.internal_static_HSPlayerKickout_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.Player.internal_static_HPPlayerKickout_fieldAccessorTable
+      return com.hawk.game.protocol.Player.internal_static_HSPlayerKickout_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.Player.HPPlayerKickout.class, com.hawk.game.protocol.Player.HPPlayerKickout.Builder.class);
+              com.hawk.game.protocol.Player.HSPlayerKickout.class, com.hawk.game.protocol.Player.HSPlayerKickout.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HPPlayerKickout> PARSER =
-        new com.google.protobuf.AbstractParser<HPPlayerKickout>() {
-      public HPPlayerKickout parsePartialFrom(
+    public static com.google.protobuf.Parser<HSPlayerKickout> PARSER =
+        new com.google.protobuf.AbstractParser<HSPlayerKickout>() {
+      public HSPlayerKickout parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HPPlayerKickout(input, extensionRegistry);
+        return new HSPlayerKickout(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HPPlayerKickout> getParserForType() {
+    public com.google.protobuf.Parser<HSPlayerKickout> getParserForType() {
       return PARSER;
     }
 
@@ -180,53 +180,53 @@ public final class Player {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.Player.HPPlayerKickout parseFrom(
+    public static com.hawk.game.protocol.Player.HSPlayerKickout parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Player.HPPlayerKickout parseFrom(
+    public static com.hawk.game.protocol.Player.HSPlayerKickout parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Player.HPPlayerKickout parseFrom(byte[] data)
+    public static com.hawk.game.protocol.Player.HSPlayerKickout parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Player.HPPlayerKickout parseFrom(
+    public static com.hawk.game.protocol.Player.HSPlayerKickout parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Player.HPPlayerKickout parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Player.HSPlayerKickout parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Player.HPPlayerKickout parseFrom(
+    public static com.hawk.game.protocol.Player.HSPlayerKickout parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Player.HPPlayerKickout parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Player.HSPlayerKickout parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.Player.HPPlayerKickout parseDelimitedFrom(
+    public static com.hawk.game.protocol.Player.HSPlayerKickout parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Player.HPPlayerKickout parseFrom(
+    public static com.hawk.game.protocol.Player.HSPlayerKickout parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Player.HPPlayerKickout parseFrom(
+    public static com.hawk.game.protocol.Player.HSPlayerKickout parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -235,7 +235,7 @@ public final class Player {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.Player.HPPlayerKickout prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.Player.HSPlayerKickout prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -247,24 +247,24 @@ public final class Player {
       return builder;
     }
     /**
-     * Protobuf type {@code HPPlayerKickout}
+     * Protobuf type {@code HSPlayerKickout}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.Player.HPPlayerKickoutOrBuilder {
+       implements com.hawk.game.protocol.Player.HSPlayerKickoutOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.Player.internal_static_HPPlayerKickout_descriptor;
+        return com.hawk.game.protocol.Player.internal_static_HSPlayerKickout_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.Player.internal_static_HPPlayerKickout_fieldAccessorTable
+        return com.hawk.game.protocol.Player.internal_static_HSPlayerKickout_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.Player.HPPlayerKickout.class, com.hawk.game.protocol.Player.HPPlayerKickout.Builder.class);
+                com.hawk.game.protocol.Player.HSPlayerKickout.class, com.hawk.game.protocol.Player.HSPlayerKickout.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.Player.HPPlayerKickout.newBuilder()
+      // Construct using com.hawk.game.protocol.Player.HSPlayerKickout.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -295,23 +295,23 @@ public final class Player {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.Player.internal_static_HPPlayerKickout_descriptor;
+        return com.hawk.game.protocol.Player.internal_static_HSPlayerKickout_descriptor;
       }
 
-      public com.hawk.game.protocol.Player.HPPlayerKickout getDefaultInstanceForType() {
-        return com.hawk.game.protocol.Player.HPPlayerKickout.getDefaultInstance();
+      public com.hawk.game.protocol.Player.HSPlayerKickout getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Player.HSPlayerKickout.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.Player.HPPlayerKickout build() {
-        com.hawk.game.protocol.Player.HPPlayerKickout result = buildPartial();
+      public com.hawk.game.protocol.Player.HSPlayerKickout build() {
+        com.hawk.game.protocol.Player.HSPlayerKickout result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.Player.HPPlayerKickout buildPartial() {
-        com.hawk.game.protocol.Player.HPPlayerKickout result = new com.hawk.game.protocol.Player.HPPlayerKickout(this);
+      public com.hawk.game.protocol.Player.HSPlayerKickout buildPartial() {
+        com.hawk.game.protocol.Player.HSPlayerKickout result = new com.hawk.game.protocol.Player.HSPlayerKickout(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -324,16 +324,16 @@ public final class Player {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.Player.HPPlayerKickout) {
-          return mergeFrom((com.hawk.game.protocol.Player.HPPlayerKickout)other);
+        if (other instanceof com.hawk.game.protocol.Player.HSPlayerKickout) {
+          return mergeFrom((com.hawk.game.protocol.Player.HSPlayerKickout)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.Player.HPPlayerKickout other) {
-        if (other == com.hawk.game.protocol.Player.HPPlayerKickout.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hawk.game.protocol.Player.HSPlayerKickout other) {
+        if (other == com.hawk.game.protocol.Player.HSPlayerKickout.getDefaultInstance()) return this;
         if (other.hasReason()) {
           setReason(other.getReason());
         }
@@ -353,11 +353,11 @@ public final class Player {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.Player.HPPlayerKickout parsedMessage = null;
+        com.hawk.game.protocol.Player.HSPlayerKickout parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.Player.HPPlayerKickout) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.Player.HSPlayerKickout) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -401,22 +401,22 @@ public final class Player {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:HPPlayerKickout)
+      // @@protoc_insertion_point(builder_scope:HSPlayerKickout)
     }
 
     static {
-      defaultInstance = new HPPlayerKickout(true);
+      defaultInstance = new HSPlayerKickout(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:HPPlayerKickout)
+    // @@protoc_insertion_point(class_scope:HSPlayerKickout)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HPPlayerKickout_descriptor;
+    internal_static_HSPlayerKickout_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HPPlayerKickout_fieldAccessorTable;
+      internal_static_HSPlayerKickout_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -426,7 +426,7 @@ public final class Player {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014Player.proto\"!\n\017HPPlayerKickout\022\016\n\006rea" +
+      "\n\014Player.proto\"!\n\017HSPlayerKickout\022\016\n\006rea" +
       "son\030\001 \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
@@ -434,11 +434,11 @@ public final class Player {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_HPPlayerKickout_descriptor =
+          internal_static_HSPlayerKickout_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_HPPlayerKickout_fieldAccessorTable = new
+          internal_static_HSPlayerKickout_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HPPlayerKickout_descriptor,
+              internal_static_HSPlayerKickout_descriptor,
               new java.lang.String[] { "Reason", });
           return null;
         }

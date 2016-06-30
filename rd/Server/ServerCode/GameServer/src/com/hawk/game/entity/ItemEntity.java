@@ -31,14 +31,14 @@ public class ItemEntity extends HawkDBEntity {
 	@Column(name = "cfg", nullable = false)
 	private int cfgId = 0;
 
-	@Column(name = "currentPlayer", nullable = false)
-	protected int playerId = 0;
+	@Column(name = "currentRole", nullable = false)
+	protected int roleId = 0;
 
 	@Column(name = "currentCount", nullable = false)
 	protected short count = 0;
 
-	@Column(name = "initPlayer", nullable = false)
-	protected int initPlayerId = 0;
+	@Column(name = "initRole", nullable = false)
+	protected int initRoleId = 0;
 
 	@Column(name = "initCount", nullable = false)
 	protected short initCount = 0;
@@ -68,16 +68,16 @@ public class ItemEntity extends HawkDBEntity {
 		this.createTime = HawkTime.getCalendar().getTime();
 	}
 
-	public ItemEntity(int cfgId, int playerId, int monsterId, short status, int slot, short count, Date expireTime) {
+	public ItemEntity(int cfgId, int roleId, int monsterId, short status, int slot, short count, Date expireTime) {
 		this.cfgId = cfgId;
-		this.playerId = playerId;
+		this.roleId = roleId;
 		this.monsterId = monsterId;
 		this.status = status;
 		this.slot = slot;
 		this.count = count;
 		this.expireTime = expireTime;
 
-		this.initPlayerId = playerId;
+		this.initRoleId = roleId;
 		this.initCount = count;
 		this.createTime = HawkTime.getCalendar().getTime();
 	}
@@ -98,12 +98,12 @@ public class ItemEntity extends HawkDBEntity {
 		this.cfgId = cfgId;
 	}
 
-	public int getPlayerId() {
-		return playerId;
+	public int getRoleId() {
+		return roleId;
 	}
 
-	public void setPlayerId(int playerId) {
-		this.playerId = playerId;
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 
 	public short getCount() {
@@ -114,12 +114,12 @@ public class ItemEntity extends HawkDBEntity {
 		this.count = count;
 	}
 
-	public int getInitPlayerId() {
-		return initPlayerId;
+	public int getInitRoleId() {
+		return initRoleId;
 	}
 
-	public void setInitPlayerId(int initPlayerId) {
-		this.initPlayerId = initPlayerId;
+	public void setInitRoleId(int initRoleId) {
+		this.initRoleId = initRoleId;
 	}
 
 	public int getInitCount() {

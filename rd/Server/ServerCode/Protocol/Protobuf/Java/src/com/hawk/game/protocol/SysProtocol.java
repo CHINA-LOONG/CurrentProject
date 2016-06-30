@@ -8,7 +8,7 @@ public final class SysProtocol {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface HPDataWarpperOrBuilder
+  public interface HSDataWarpperOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // optional bytes data = 1;
@@ -22,24 +22,28 @@ public final class SysProtocol {
     com.google.protobuf.ByteString getData();
   }
   /**
-   * Protobuf type {@code HPDataWarpper}
+   * Protobuf type {@code HSDataWarpper}
+   *
+   * <pre>
+   * DATA_WRAPPER
+   * </pre>
    */
-  public static final class HPDataWarpper extends
+  public static final class HSDataWarpper extends
       com.google.protobuf.GeneratedMessage
-      implements HPDataWarpperOrBuilder {
-    // Use HPDataWarpper.newBuilder() to construct.
-    private HPDataWarpper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HSDataWarpperOrBuilder {
+    // Use HSDataWarpper.newBuilder() to construct.
+    private HSDataWarpper(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HPDataWarpper(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HSDataWarpper(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HPDataWarpper defaultInstance;
-    public static HPDataWarpper getDefaultInstance() {
+    private static final HSDataWarpper defaultInstance;
+    public static HSDataWarpper getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HPDataWarpper getDefaultInstanceForType() {
+    public HSDataWarpper getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -49,7 +53,7 @@ public final class SysProtocol {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HPDataWarpper(
+    private HSDataWarpper(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -91,28 +95,28 @@ public final class SysProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.SysProtocol.internal_static_HPDataWarpper_descriptor;
+      return com.hawk.game.protocol.SysProtocol.internal_static_HSDataWarpper_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.SysProtocol.internal_static_HPDataWarpper_fieldAccessorTable
+      return com.hawk.game.protocol.SysProtocol.internal_static_HSDataWarpper_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.SysProtocol.HPDataWarpper.class, com.hawk.game.protocol.SysProtocol.HPDataWarpper.Builder.class);
+              com.hawk.game.protocol.SysProtocol.HSDataWarpper.class, com.hawk.game.protocol.SysProtocol.HSDataWarpper.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HPDataWarpper> PARSER =
-        new com.google.protobuf.AbstractParser<HPDataWarpper>() {
-      public HPDataWarpper parsePartialFrom(
+    public static com.google.protobuf.Parser<HSDataWarpper> PARSER =
+        new com.google.protobuf.AbstractParser<HSDataWarpper>() {
+      public HSDataWarpper parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HPDataWarpper(input, extensionRegistry);
+        return new HSDataWarpper(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HPDataWarpper> getParserForType() {
+    public com.google.protobuf.Parser<HSDataWarpper> getParserForType() {
       return PARSER;
     }
 
@@ -176,53 +180,53 @@ public final class SysProtocol {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.SysProtocol.HPDataWarpper parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSDataWarpper parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPDataWarpper parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSDataWarpper parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPDataWarpper parseFrom(byte[] data)
+    public static com.hawk.game.protocol.SysProtocol.HSDataWarpper parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPDataWarpper parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSDataWarpper parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPDataWarpper parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.SysProtocol.HSDataWarpper parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPDataWarpper parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSDataWarpper parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPDataWarpper parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.SysProtocol.HSDataWarpper parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPDataWarpper parseDelimitedFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSDataWarpper parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPDataWarpper parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSDataWarpper parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPDataWarpper parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSDataWarpper parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -231,7 +235,7 @@ public final class SysProtocol {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.SysProtocol.HPDataWarpper prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.SysProtocol.HSDataWarpper prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -243,24 +247,28 @@ public final class SysProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code HPDataWarpper}
+     * Protobuf type {@code HSDataWarpper}
+     *
+     * <pre>
+     * DATA_WRAPPER
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.SysProtocol.HPDataWarpperOrBuilder {
+       implements com.hawk.game.protocol.SysProtocol.HSDataWarpperOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPDataWarpper_descriptor;
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSDataWarpper_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPDataWarpper_fieldAccessorTable
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSDataWarpper_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.SysProtocol.HPDataWarpper.class, com.hawk.game.protocol.SysProtocol.HPDataWarpper.Builder.class);
+                com.hawk.game.protocol.SysProtocol.HSDataWarpper.class, com.hawk.game.protocol.SysProtocol.HSDataWarpper.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.SysProtocol.HPDataWarpper.newBuilder()
+      // Construct using com.hawk.game.protocol.SysProtocol.HSDataWarpper.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -291,23 +299,23 @@ public final class SysProtocol {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPDataWarpper_descriptor;
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSDataWarpper_descriptor;
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPDataWarpper getDefaultInstanceForType() {
-        return com.hawk.game.protocol.SysProtocol.HPDataWarpper.getDefaultInstance();
+      public com.hawk.game.protocol.SysProtocol.HSDataWarpper getDefaultInstanceForType() {
+        return com.hawk.game.protocol.SysProtocol.HSDataWarpper.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPDataWarpper build() {
-        com.hawk.game.protocol.SysProtocol.HPDataWarpper result = buildPartial();
+      public com.hawk.game.protocol.SysProtocol.HSDataWarpper build() {
+        com.hawk.game.protocol.SysProtocol.HSDataWarpper result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPDataWarpper buildPartial() {
-        com.hawk.game.protocol.SysProtocol.HPDataWarpper result = new com.hawk.game.protocol.SysProtocol.HPDataWarpper(this);
+      public com.hawk.game.protocol.SysProtocol.HSDataWarpper buildPartial() {
+        com.hawk.game.protocol.SysProtocol.HSDataWarpper result = new com.hawk.game.protocol.SysProtocol.HSDataWarpper(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -320,16 +328,16 @@ public final class SysProtocol {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.SysProtocol.HPDataWarpper) {
-          return mergeFrom((com.hawk.game.protocol.SysProtocol.HPDataWarpper)other);
+        if (other instanceof com.hawk.game.protocol.SysProtocol.HSDataWarpper) {
+          return mergeFrom((com.hawk.game.protocol.SysProtocol.HSDataWarpper)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.SysProtocol.HPDataWarpper other) {
-        if (other == com.hawk.game.protocol.SysProtocol.HPDataWarpper.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hawk.game.protocol.SysProtocol.HSDataWarpper other) {
+        if (other == com.hawk.game.protocol.SysProtocol.HSDataWarpper.getDefaultInstance()) return this;
         if (other.hasData()) {
           setData(other.getData());
         }
@@ -345,11 +353,11 @@ public final class SysProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.SysProtocol.HPDataWarpper parsedMessage = null;
+        com.hawk.game.protocol.SysProtocol.HSDataWarpper parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.SysProtocol.HPDataWarpper) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.SysProtocol.HSDataWarpper) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -396,18 +404,18 @@ public final class SysProtocol {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:HPDataWarpper)
+      // @@protoc_insertion_point(builder_scope:HSDataWarpper)
     }
 
     static {
-      defaultInstance = new HPDataWarpper(true);
+      defaultInstance = new HSDataWarpper(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:HPDataWarpper)
+    // @@protoc_insertion_point(class_scope:HSDataWarpper)
   }
 
-  public interface HPKeyExchangeOrBuilder
+  public interface HSKeyExchangeOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // optional bytes keys = 1;
@@ -421,24 +429,28 @@ public final class SysProtocol {
     com.google.protobuf.ByteString getKeys();
   }
   /**
-   * Protobuf type {@code HPKeyExchange}
+   * Protobuf type {@code HSKeyExchange}
+   *
+   * <pre>
+   * KEY_EXCHANGE
+   * </pre>
    */
-  public static final class HPKeyExchange extends
+  public static final class HSKeyExchange extends
       com.google.protobuf.GeneratedMessage
-      implements HPKeyExchangeOrBuilder {
-    // Use HPKeyExchange.newBuilder() to construct.
-    private HPKeyExchange(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HSKeyExchangeOrBuilder {
+    // Use HSKeyExchange.newBuilder() to construct.
+    private HSKeyExchange(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HPKeyExchange(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HSKeyExchange(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HPKeyExchange defaultInstance;
-    public static HPKeyExchange getDefaultInstance() {
+    private static final HSKeyExchange defaultInstance;
+    public static HSKeyExchange getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HPKeyExchange getDefaultInstanceForType() {
+    public HSKeyExchange getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -448,7 +460,7 @@ public final class SysProtocol {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HPKeyExchange(
+    private HSKeyExchange(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -490,28 +502,28 @@ public final class SysProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.SysProtocol.internal_static_HPKeyExchange_descriptor;
+      return com.hawk.game.protocol.SysProtocol.internal_static_HSKeyExchange_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.SysProtocol.internal_static_HPKeyExchange_fieldAccessorTable
+      return com.hawk.game.protocol.SysProtocol.internal_static_HSKeyExchange_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.SysProtocol.HPKeyExchange.class, com.hawk.game.protocol.SysProtocol.HPKeyExchange.Builder.class);
+              com.hawk.game.protocol.SysProtocol.HSKeyExchange.class, com.hawk.game.protocol.SysProtocol.HSKeyExchange.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HPKeyExchange> PARSER =
-        new com.google.protobuf.AbstractParser<HPKeyExchange>() {
-      public HPKeyExchange parsePartialFrom(
+    public static com.google.protobuf.Parser<HSKeyExchange> PARSER =
+        new com.google.protobuf.AbstractParser<HSKeyExchange>() {
+      public HSKeyExchange parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HPKeyExchange(input, extensionRegistry);
+        return new HSKeyExchange(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HPKeyExchange> getParserForType() {
+    public com.google.protobuf.Parser<HSKeyExchange> getParserForType() {
       return PARSER;
     }
 
@@ -575,53 +587,53 @@ public final class SysProtocol {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.SysProtocol.HPKeyExchange parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSKeyExchange parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPKeyExchange parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSKeyExchange parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPKeyExchange parseFrom(byte[] data)
+    public static com.hawk.game.protocol.SysProtocol.HSKeyExchange parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPKeyExchange parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSKeyExchange parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPKeyExchange parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.SysProtocol.HSKeyExchange parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPKeyExchange parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSKeyExchange parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPKeyExchange parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.SysProtocol.HSKeyExchange parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPKeyExchange parseDelimitedFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSKeyExchange parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPKeyExchange parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSKeyExchange parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPKeyExchange parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSKeyExchange parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -630,7 +642,7 @@ public final class SysProtocol {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.SysProtocol.HPKeyExchange prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.SysProtocol.HSKeyExchange prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -642,24 +654,28 @@ public final class SysProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code HPKeyExchange}
+     * Protobuf type {@code HSKeyExchange}
+     *
+     * <pre>
+     * KEY_EXCHANGE
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.SysProtocol.HPKeyExchangeOrBuilder {
+       implements com.hawk.game.protocol.SysProtocol.HSKeyExchangeOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPKeyExchange_descriptor;
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSKeyExchange_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPKeyExchange_fieldAccessorTable
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSKeyExchange_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.SysProtocol.HPKeyExchange.class, com.hawk.game.protocol.SysProtocol.HPKeyExchange.Builder.class);
+                com.hawk.game.protocol.SysProtocol.HSKeyExchange.class, com.hawk.game.protocol.SysProtocol.HSKeyExchange.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.SysProtocol.HPKeyExchange.newBuilder()
+      // Construct using com.hawk.game.protocol.SysProtocol.HSKeyExchange.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -690,23 +706,23 @@ public final class SysProtocol {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPKeyExchange_descriptor;
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSKeyExchange_descriptor;
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPKeyExchange getDefaultInstanceForType() {
-        return com.hawk.game.protocol.SysProtocol.HPKeyExchange.getDefaultInstance();
+      public com.hawk.game.protocol.SysProtocol.HSKeyExchange getDefaultInstanceForType() {
+        return com.hawk.game.protocol.SysProtocol.HSKeyExchange.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPKeyExchange build() {
-        com.hawk.game.protocol.SysProtocol.HPKeyExchange result = buildPartial();
+      public com.hawk.game.protocol.SysProtocol.HSKeyExchange build() {
+        com.hawk.game.protocol.SysProtocol.HSKeyExchange result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPKeyExchange buildPartial() {
-        com.hawk.game.protocol.SysProtocol.HPKeyExchange result = new com.hawk.game.protocol.SysProtocol.HPKeyExchange(this);
+      public com.hawk.game.protocol.SysProtocol.HSKeyExchange buildPartial() {
+        com.hawk.game.protocol.SysProtocol.HSKeyExchange result = new com.hawk.game.protocol.SysProtocol.HSKeyExchange(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -719,16 +735,16 @@ public final class SysProtocol {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.SysProtocol.HPKeyExchange) {
-          return mergeFrom((com.hawk.game.protocol.SysProtocol.HPKeyExchange)other);
+        if (other instanceof com.hawk.game.protocol.SysProtocol.HSKeyExchange) {
+          return mergeFrom((com.hawk.game.protocol.SysProtocol.HSKeyExchange)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.SysProtocol.HPKeyExchange other) {
-        if (other == com.hawk.game.protocol.SysProtocol.HPKeyExchange.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hawk.game.protocol.SysProtocol.HSKeyExchange other) {
+        if (other == com.hawk.game.protocol.SysProtocol.HSKeyExchange.getDefaultInstance()) return this;
         if (other.hasKeys()) {
           setKeys(other.getKeys());
         }
@@ -744,11 +760,11 @@ public final class SysProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.SysProtocol.HPKeyExchange parsedMessage = null;
+        com.hawk.game.protocol.SysProtocol.HSKeyExchange parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.SysProtocol.HPKeyExchange) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.SysProtocol.HSKeyExchange) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -795,18 +811,18 @@ public final class SysProtocol {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:HPKeyExchange)
+      // @@protoc_insertion_point(builder_scope:HSKeyExchange)
     }
 
     static {
-      defaultInstance = new HPKeyExchange(true);
+      defaultInstance = new HSKeyExchange(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:HPKeyExchange)
+    // @@protoc_insertion_point(class_scope:HSKeyExchange)
   }
 
-  public interface HPHeartBeatOrBuilder
+  public interface HSHeartBeatOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // optional int32 timeStamp = 1;
@@ -830,24 +846,28 @@ public final class SysProtocol {
     com.google.protobuf.ByteString getData();
   }
   /**
-   * Protobuf type {@code HPHeartBeat}
+   * Protobuf type {@code HSHeartBeat}
+   *
+   * <pre>
+   * HEART_BEAT
+   * </pre>
    */
-  public static final class HPHeartBeat extends
+  public static final class HSHeartBeat extends
       com.google.protobuf.GeneratedMessage
-      implements HPHeartBeatOrBuilder {
-    // Use HPHeartBeat.newBuilder() to construct.
-    private HPHeartBeat(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HSHeartBeatOrBuilder {
+    // Use HSHeartBeat.newBuilder() to construct.
+    private HSHeartBeat(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HPHeartBeat(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HSHeartBeat(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HPHeartBeat defaultInstance;
-    public static HPHeartBeat getDefaultInstance() {
+    private static final HSHeartBeat defaultInstance;
+    public static HSHeartBeat getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HPHeartBeat getDefaultInstanceForType() {
+    public HSHeartBeat getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -857,7 +877,7 @@ public final class SysProtocol {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HPHeartBeat(
+    private HSHeartBeat(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -904,28 +924,28 @@ public final class SysProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.SysProtocol.internal_static_HPHeartBeat_descriptor;
+      return com.hawk.game.protocol.SysProtocol.internal_static_HSHeartBeat_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.SysProtocol.internal_static_HPHeartBeat_fieldAccessorTable
+      return com.hawk.game.protocol.SysProtocol.internal_static_HSHeartBeat_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.SysProtocol.HPHeartBeat.class, com.hawk.game.protocol.SysProtocol.HPHeartBeat.Builder.class);
+              com.hawk.game.protocol.SysProtocol.HSHeartBeat.class, com.hawk.game.protocol.SysProtocol.HSHeartBeat.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HPHeartBeat> PARSER =
-        new com.google.protobuf.AbstractParser<HPHeartBeat>() {
-      public HPHeartBeat parsePartialFrom(
+    public static com.google.protobuf.Parser<HSHeartBeat> PARSER =
+        new com.google.protobuf.AbstractParser<HSHeartBeat>() {
+      public HSHeartBeat parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HPHeartBeat(input, extensionRegistry);
+        return new HSHeartBeat(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HPHeartBeat> getParserForType() {
+    public com.google.protobuf.Parser<HSHeartBeat> getParserForType() {
       return PARSER;
     }
 
@@ -1013,53 +1033,53 @@ public final class SysProtocol {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.SysProtocol.HPHeartBeat parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSHeartBeat parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPHeartBeat parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSHeartBeat parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPHeartBeat parseFrom(byte[] data)
+    public static com.hawk.game.protocol.SysProtocol.HSHeartBeat parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPHeartBeat parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSHeartBeat parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPHeartBeat parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.SysProtocol.HSHeartBeat parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPHeartBeat parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSHeartBeat parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPHeartBeat parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.SysProtocol.HSHeartBeat parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPHeartBeat parseDelimitedFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSHeartBeat parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPHeartBeat parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSHeartBeat parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPHeartBeat parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSHeartBeat parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1068,7 +1088,7 @@ public final class SysProtocol {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.SysProtocol.HPHeartBeat prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.SysProtocol.HSHeartBeat prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -1080,24 +1100,28 @@ public final class SysProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code HPHeartBeat}
+     * Protobuf type {@code HSHeartBeat}
+     *
+     * <pre>
+     * HEART_BEAT
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.SysProtocol.HPHeartBeatOrBuilder {
+       implements com.hawk.game.protocol.SysProtocol.HSHeartBeatOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPHeartBeat_descriptor;
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSHeartBeat_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPHeartBeat_fieldAccessorTable
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSHeartBeat_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.SysProtocol.HPHeartBeat.class, com.hawk.game.protocol.SysProtocol.HPHeartBeat.Builder.class);
+                com.hawk.game.protocol.SysProtocol.HSHeartBeat.class, com.hawk.game.protocol.SysProtocol.HSHeartBeat.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.SysProtocol.HPHeartBeat.newBuilder()
+      // Construct using com.hawk.game.protocol.SysProtocol.HSHeartBeat.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1130,23 +1154,23 @@ public final class SysProtocol {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPHeartBeat_descriptor;
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSHeartBeat_descriptor;
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPHeartBeat getDefaultInstanceForType() {
-        return com.hawk.game.protocol.SysProtocol.HPHeartBeat.getDefaultInstance();
+      public com.hawk.game.protocol.SysProtocol.HSHeartBeat getDefaultInstanceForType() {
+        return com.hawk.game.protocol.SysProtocol.HSHeartBeat.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPHeartBeat build() {
-        com.hawk.game.protocol.SysProtocol.HPHeartBeat result = buildPartial();
+      public com.hawk.game.protocol.SysProtocol.HSHeartBeat build() {
+        com.hawk.game.protocol.SysProtocol.HSHeartBeat result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPHeartBeat buildPartial() {
-        com.hawk.game.protocol.SysProtocol.HPHeartBeat result = new com.hawk.game.protocol.SysProtocol.HPHeartBeat(this);
+      public com.hawk.game.protocol.SysProtocol.HSHeartBeat buildPartial() {
+        com.hawk.game.protocol.SysProtocol.HSHeartBeat result = new com.hawk.game.protocol.SysProtocol.HSHeartBeat(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1163,16 +1187,16 @@ public final class SysProtocol {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.SysProtocol.HPHeartBeat) {
-          return mergeFrom((com.hawk.game.protocol.SysProtocol.HPHeartBeat)other);
+        if (other instanceof com.hawk.game.protocol.SysProtocol.HSHeartBeat) {
+          return mergeFrom((com.hawk.game.protocol.SysProtocol.HSHeartBeat)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.SysProtocol.HPHeartBeat other) {
-        if (other == com.hawk.game.protocol.SysProtocol.HPHeartBeat.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hawk.game.protocol.SysProtocol.HSHeartBeat other) {
+        if (other == com.hawk.game.protocol.SysProtocol.HSHeartBeat.getDefaultInstance()) return this;
         if (other.hasTimeStamp()) {
           setTimeStamp(other.getTimeStamp());
         }
@@ -1191,11 +1215,11 @@ public final class SysProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.SysProtocol.HPHeartBeat parsedMessage = null;
+        com.hawk.game.protocol.SysProtocol.HSHeartBeat parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.SysProtocol.HPHeartBeat) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.SysProtocol.HSHeartBeat) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1275,18 +1299,18 @@ public final class SysProtocol {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:HPHeartBeat)
+      // @@protoc_insertion_point(builder_scope:HSHeartBeat)
     }
 
     static {
-      defaultInstance = new HPHeartBeat(true);
+      defaultInstance = new HSHeartBeat(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:HPHeartBeat)
+    // @@protoc_insertion_point(class_scope:HSHeartBeat)
   }
 
-  public interface HPErrorCodeOrBuilder
+  public interface HSErrorCodeOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required int32 hpCode = 1;
@@ -1335,24 +1359,28 @@ public final class SysProtocol {
     int getErrFlag();
   }
   /**
-   * Protobuf type {@code HPErrorCode}
+   * Protobuf type {@code HSErrorCode}
+   *
+   * <pre>
+   * ERROR_CODE
+   * </pre>
    */
-  public static final class HPErrorCode extends
+  public static final class HSErrorCode extends
       com.google.protobuf.GeneratedMessage
-      implements HPErrorCodeOrBuilder {
-    // Use HPErrorCode.newBuilder() to construct.
-    private HPErrorCode(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HSErrorCodeOrBuilder {
+    // Use HSErrorCode.newBuilder() to construct.
+    private HSErrorCode(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HPErrorCode(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HSErrorCode(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HPErrorCode defaultInstance;
-    public static HPErrorCode getDefaultInstance() {
+    private static final HSErrorCode defaultInstance;
+    public static HSErrorCode getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HPErrorCode getDefaultInstanceForType() {
+    public HSErrorCode getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -1362,7 +1390,7 @@ public final class SysProtocol {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HPErrorCode(
+    private HSErrorCode(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1419,28 +1447,28 @@ public final class SysProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.SysProtocol.internal_static_HPErrorCode_descriptor;
+      return com.hawk.game.protocol.SysProtocol.internal_static_HSErrorCode_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.SysProtocol.internal_static_HPErrorCode_fieldAccessorTable
+      return com.hawk.game.protocol.SysProtocol.internal_static_HSErrorCode_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.SysProtocol.HPErrorCode.class, com.hawk.game.protocol.SysProtocol.HPErrorCode.Builder.class);
+              com.hawk.game.protocol.SysProtocol.HSErrorCode.class, com.hawk.game.protocol.SysProtocol.HSErrorCode.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HPErrorCode> PARSER =
-        new com.google.protobuf.AbstractParser<HPErrorCode>() {
-      public HPErrorCode parsePartialFrom(
+    public static com.google.protobuf.Parser<HSErrorCode> PARSER =
+        new com.google.protobuf.AbstractParser<HSErrorCode>() {
+      public HSErrorCode parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HPErrorCode(input, extensionRegistry);
+        return new HSErrorCode(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HPErrorCode> getParserForType() {
+    public com.google.protobuf.Parser<HSErrorCode> getParserForType() {
       return PARSER;
     }
 
@@ -1611,53 +1639,53 @@ public final class SysProtocol {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.SysProtocol.HPErrorCode parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSErrorCode parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPErrorCode parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSErrorCode parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPErrorCode parseFrom(byte[] data)
+    public static com.hawk.game.protocol.SysProtocol.HSErrorCode parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPErrorCode parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSErrorCode parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPErrorCode parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.SysProtocol.HSErrorCode parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPErrorCode parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSErrorCode parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPErrorCode parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.SysProtocol.HSErrorCode parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPErrorCode parseDelimitedFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSErrorCode parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPErrorCode parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSErrorCode parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.SysProtocol.HPErrorCode parseFrom(
+    public static com.hawk.game.protocol.SysProtocol.HSErrorCode parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1666,7 +1694,7 @@ public final class SysProtocol {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.SysProtocol.HPErrorCode prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.SysProtocol.HSErrorCode prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -1678,24 +1706,28 @@ public final class SysProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code HPErrorCode}
+     * Protobuf type {@code HSErrorCode}
+     *
+     * <pre>
+     * ERROR_CODE
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.SysProtocol.HPErrorCodeOrBuilder {
+       implements com.hawk.game.protocol.SysProtocol.HSErrorCodeOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPErrorCode_descriptor;
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSErrorCode_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPErrorCode_fieldAccessorTable
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSErrorCode_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.SysProtocol.HPErrorCode.class, com.hawk.game.protocol.SysProtocol.HPErrorCode.Builder.class);
+                com.hawk.game.protocol.SysProtocol.HSErrorCode.class, com.hawk.game.protocol.SysProtocol.HSErrorCode.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.SysProtocol.HPErrorCode.newBuilder()
+      // Construct using com.hawk.game.protocol.SysProtocol.HSErrorCode.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1732,23 +1764,23 @@ public final class SysProtocol {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.SysProtocol.internal_static_HPErrorCode_descriptor;
+        return com.hawk.game.protocol.SysProtocol.internal_static_HSErrorCode_descriptor;
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPErrorCode getDefaultInstanceForType() {
-        return com.hawk.game.protocol.SysProtocol.HPErrorCode.getDefaultInstance();
+      public com.hawk.game.protocol.SysProtocol.HSErrorCode getDefaultInstanceForType() {
+        return com.hawk.game.protocol.SysProtocol.HSErrorCode.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPErrorCode build() {
-        com.hawk.game.protocol.SysProtocol.HPErrorCode result = buildPartial();
+      public com.hawk.game.protocol.SysProtocol.HSErrorCode build() {
+        com.hawk.game.protocol.SysProtocol.HSErrorCode result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.SysProtocol.HPErrorCode buildPartial() {
-        com.hawk.game.protocol.SysProtocol.HPErrorCode result = new com.hawk.game.protocol.SysProtocol.HPErrorCode(this);
+      public com.hawk.game.protocol.SysProtocol.HSErrorCode buildPartial() {
+        com.hawk.game.protocol.SysProtocol.HSErrorCode result = new com.hawk.game.protocol.SysProtocol.HSErrorCode(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1773,16 +1805,16 @@ public final class SysProtocol {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.SysProtocol.HPErrorCode) {
-          return mergeFrom((com.hawk.game.protocol.SysProtocol.HPErrorCode)other);
+        if (other instanceof com.hawk.game.protocol.SysProtocol.HSErrorCode) {
+          return mergeFrom((com.hawk.game.protocol.SysProtocol.HSErrorCode)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.SysProtocol.HPErrorCode other) {
-        if (other == com.hawk.game.protocol.SysProtocol.HPErrorCode.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hawk.game.protocol.SysProtocol.HSErrorCode other) {
+        if (other == com.hawk.game.protocol.SysProtocol.HSErrorCode.getDefaultInstance()) return this;
         if (other.hasHpCode()) {
           setHpCode(other.getHpCode());
         }
@@ -1817,11 +1849,11 @@ public final class SysProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.SysProtocol.HPErrorCode parsedMessage = null;
+        com.hawk.game.protocol.SysProtocol.HSErrorCode parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.SysProtocol.HPErrorCode) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.SysProtocol.HSErrorCode) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -2005,37 +2037,37 @@ public final class SysProtocol {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:HPErrorCode)
+      // @@protoc_insertion_point(builder_scope:HSErrorCode)
     }
 
     static {
-      defaultInstance = new HPErrorCode(true);
+      defaultInstance = new HSErrorCode(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:HPErrorCode)
+    // @@protoc_insertion_point(class_scope:HSErrorCode)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HPDataWarpper_descriptor;
+    internal_static_HSDataWarpper_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HPDataWarpper_fieldAccessorTable;
+      internal_static_HSDataWarpper_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HPKeyExchange_descriptor;
+    internal_static_HSKeyExchange_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HPKeyExchange_fieldAccessorTable;
+      internal_static_HSKeyExchange_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HPHeartBeat_descriptor;
+    internal_static_HSHeartBeat_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HPHeartBeat_fieldAccessorTable;
+      internal_static_HSHeartBeat_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HPErrorCode_descriptor;
+    internal_static_HSErrorCode_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HPErrorCode_fieldAccessorTable;
+      internal_static_HSErrorCode_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2045,10 +2077,10 @@ public final class SysProtocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021SysProtocol.proto\"\035\n\rHPDataWarpper\022\014\n\004" +
-      "data\030\001 \001(\014\"\035\n\rHPKeyExchange\022\014\n\004keys\030\001 \001(" +
-      "\014\".\n\013HPHeartBeat\022\021\n\ttimeStamp\030\001 \001(\005\022\014\n\004d" +
-      "ata\030\002 \001(\014\"R\n\013HPErrorCode\022\016\n\006hpCode\030\001 \002(\005" +
+      "\n\021SysProtocol.proto\"\035\n\rHSDataWarpper\022\014\n\004" +
+      "data\030\001 \001(\014\"\035\n\rHSKeyExchange\022\014\n\004keys\030\001 \001(" +
+      "\014\".\n\013HSHeartBeat\022\021\n\ttimeStamp\030\001 \001(\005\022\014\n\004d" +
+      "ata\030\002 \001(\014\"R\n\013HSErrorCode\022\016\n\006hpCode\030\001 \002(\005" +
       "\022\017\n\007errCode\030\002 \002(\005\022\016\n\006errMsg\030\003 \001(\t\022\022\n\007err" +
       "Flag\030\004 \001(\005:\0010B\030\n\026com.hawk.game.protocol"
     };
@@ -2057,29 +2089,29 @@ public final class SysProtocol {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_HPDataWarpper_descriptor =
+          internal_static_HSDataWarpper_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_HPDataWarpper_fieldAccessorTable = new
+          internal_static_HSDataWarpper_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HPDataWarpper_descriptor,
+              internal_static_HSDataWarpper_descriptor,
               new java.lang.String[] { "Data", });
-          internal_static_HPKeyExchange_descriptor =
+          internal_static_HSKeyExchange_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_HPKeyExchange_fieldAccessorTable = new
+          internal_static_HSKeyExchange_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HPKeyExchange_descriptor,
+              internal_static_HSKeyExchange_descriptor,
               new java.lang.String[] { "Keys", });
-          internal_static_HPHeartBeat_descriptor =
+          internal_static_HSHeartBeat_descriptor =
             getDescriptor().getMessageTypes().get(2);
-          internal_static_HPHeartBeat_fieldAccessorTable = new
+          internal_static_HSHeartBeat_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HPHeartBeat_descriptor,
+              internal_static_HSHeartBeat_descriptor,
               new java.lang.String[] { "TimeStamp", "Data", });
-          internal_static_HPErrorCode_descriptor =
+          internal_static_HSErrorCode_descriptor =
             getDescriptor().getMessageTypes().get(3);
-          internal_static_HPErrorCode_fieldAccessorTable = new
+          internal_static_HSErrorCode_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HPErrorCode_descriptor,
+              internal_static_HSErrorCode_descriptor,
               new java.lang.String[] { "HpCode", "ErrCode", "ErrMsg", "ErrFlag", });
           return null;
         }

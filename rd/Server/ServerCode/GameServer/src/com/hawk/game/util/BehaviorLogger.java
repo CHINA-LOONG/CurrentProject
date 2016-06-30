@@ -165,7 +165,7 @@ public class BehaviorLogger {
 			// 行为时间
 			jsonObject.put("puid", player.getPuid());
 			jsonObject.put("playerId", player.getId());
-			jsonObject.put("playerName", player.getName());
+//			jsonObject.put("playerName", player.getName());
 			jsonObject.put("source", source.name());
 			jsonObject.put("action", action.name());
 
@@ -194,7 +194,7 @@ public class BehaviorLogger {
 			// 行为时间
 			jsonObject.put("puid", playerEntity.getPuid());
 			jsonObject.put("playerId", playerEntity.getId());
-			jsonObject.put("playerName", playerEntity.getName());
+//			jsonObject.put("playerName", playerEntity.getName());
 			jsonObject.put("source", source.name());
 			jsonObject.put("action", action.name());
 

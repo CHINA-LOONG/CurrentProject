@@ -5,3 +5,4 @@ for /r %%i in (*.proto) do (
 	protoc.exe --cpp_out=./Protobuf/C++/ %%~ni.proto
 )
 @echo done!
+@pause

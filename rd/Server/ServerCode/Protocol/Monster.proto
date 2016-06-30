@@ -1,0 +1,9 @@
+option java_package = "com.hawk.game.protocol";
+
+// data---------------------------------------------------------
+message HSMonster
+{
+	required int32 monsterId = 1;
+}
+
+// protocol-----------------------------------------------------
