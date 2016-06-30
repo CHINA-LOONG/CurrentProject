@@ -43,12 +43,12 @@ public class PlayerLoginModule extends PlayerModule {
 	private boolean onPlayerLogin(HawkProtocol cmd) {
 		HSLogin protocol = cmd.parseProtocol(HSLogin.getDefaultInstance());
 		HawkSession session = cmd.getSession();
-		int hpCode = cmd.getType();
+		int hsCode = cmd.getType();
 
 		// 在线人数达到上限
 		int sessionMaxSize = HawkApp.getInstance().getAppCfg().getSessionMaxSize();
 		if (sessionMaxSize > 0 && ServerData.getInstance().getOnlinePlayer() >= sessionMaxSize) {
-			session.sendProtocol(ProtoUtil.genErrorProtocol(hpCode, Status.error.ONLINE_MAX_LIMIT_VALUE, 1));
+			session.sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.error.ONLINE_MAX_LIMIT_VALUE, 1));
 			return false;
 		}
 

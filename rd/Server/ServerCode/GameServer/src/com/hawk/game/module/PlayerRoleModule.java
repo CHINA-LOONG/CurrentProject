@@ -17,7 +17,7 @@ import com.hawk.game.protocol.Role.HSRoleCreate;
 import com.hawk.game.protocol.Role.HSRoleCreateRet;
 import com.hawk.game.protocol.Role.HSRoleDeleteRet;
 
-public class PlayerRoleModuel extends PlayerModule{
+public class PlayerRoleModule extends PlayerModule{
 
 	private static final Logger logger = LoggerFactory.getLogger("Protocol");
 
@@ -26,7 +26,7 @@ public class PlayerRoleModuel extends PlayerModule{
 	 * 
 	 * @param player
 	 */
-	public PlayerRoleModuel(Player player) {
+	public PlayerRoleModule(Player player) {
 		super(player);
 	}
 	
@@ -35,7 +35,7 @@ public class PlayerRoleModuel extends PlayerModule{
 		int count = (int)HawkDBManager.getInstance().count("select count(*) from RoleEntity where playerID = ?", player.getId());
 		if (count >= GsConfig.getInstance().getRoleMaxSize()) {
 			
-			player.sendError(HS.code.ROLE_CREATE_C_VALUE, Status.RoleError.ROLE_MAX_SIZE_VALUE, 1);
+			player.sendError(HS.code.ROLE_CREATE_C_VALUE, Status.roleError.ROLE_MAX_SIZE_VALUE, 1);
 			return true;
 		}
 		
@@ -58,7 +58,7 @@ public class PlayerRoleModuel extends PlayerModule{
 		HSRoleDelete protocol = cmd.parseProtocol(HSRoleDelete.getDefaultInstance());
 		RoleEntity roleEntity = player.getPlayerData().loadRole(protocol.getRoleId());
 		if (roleEntity == null) {
-			player.sendError(HS.code.ROLE_DELETE_C_VALUE, Status.RoleError.ROLE_NOT_EXIST_VALUE, 1);
+			player.sendError(HS.code.ROLE_DELETE_C_VALUE, Status.roleError.ROLE_NOT_EXIST_VALUE, 1);
 			return true;
 		}
 		

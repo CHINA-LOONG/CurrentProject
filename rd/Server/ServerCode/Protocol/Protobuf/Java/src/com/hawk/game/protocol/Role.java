@@ -108,10 +108,6 @@ public final class Role {
   }
   /**
    * Protobuf type {@code HSRoleBrief}
-   *
-   * <pre>
-   * data---------------------------------------------------------
-   * </pre>
    */
   public static final class HSRoleBrief extends
       com.google.protobuf.GeneratedMessage
@@ -628,10 +624,6 @@ public final class Role {
     }
     /**
      * Protobuf type {@code HSRoleBrief}
-     *
-     * <pre>
-     * data---------------------------------------------------------
-     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -2532,7 +2524,6 @@ public final class Role {
    * Protobuf type {@code HSRoleCreate}
    *
    * <pre>
-   * protocol-----------------------------------------------------
    * ROLE_CREATE_C
    * </pre>
    */
@@ -2954,7 +2945,6 @@ public final class Role {
      * Protobuf type {@code HSRoleCreate}
      *
      * <pre>
-     * protocol-----------------------------------------------------
      * ROLE_CREATE_C
      * </pre>
      */

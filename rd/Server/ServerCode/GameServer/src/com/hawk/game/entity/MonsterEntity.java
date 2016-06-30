@@ -15,6 +15,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.hawk.db.HawkDBEntity;
+import org.hawk.db.HawkDBManager;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 import org.hibernate.annotations.GenericGenerator;
@@ -216,6 +217,11 @@ public class MonsterEntity extends HawkDBEntity {
 	public void notifyUpdate(boolean async) {
 		SkillMapToJson();
 		super.notifyUpdate(async);
+	}
+	
+	public boolean updateSync() {
+		SkillMapToJson();
+		return HawkDBManager.getInstance().update(this);
 	}
 
 	@Override

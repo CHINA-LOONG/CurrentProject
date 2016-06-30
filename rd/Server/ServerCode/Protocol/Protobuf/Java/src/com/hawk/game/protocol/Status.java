@@ -117,7 +117,7 @@ public final class Status {
      * <code>NONE_ERROR = 0;</code>
      *
      * <pre>
-     *没有错误
+     * 没有错误
      * </pre>
      */
     NONE_ERROR(0, 0),
@@ -157,7 +157,7 @@ public final class Status {
      * <code>DATA_BASE_ERROR = 5;</code>
      *
      * <pre>
-     *数据库错误
+     * 数据库错误
      * </pre>
      */
     DATA_BASE_ERROR(5, 5),
@@ -165,7 +165,7 @@ public final class Status {
      * <code>SERVER_ERROR = 100;</code>
      *
      * <pre>
-     *服务器错误
+     * 服务器错误
      * </pre>
      */
     SERVER_ERROR(6, 100),
@@ -175,7 +175,7 @@ public final class Status {
      * <code>NONE_ERROR = 0;</code>
      *
      * <pre>
-     *没有错误
+     * 没有错误
      * </pre>
      */
     public static final int NONE_ERROR_VALUE = 0;
@@ -215,7 +215,7 @@ public final class Status {
      * <code>DATA_BASE_ERROR = 5;</code>
      *
      * <pre>
-     *数据库错误
+     * 数据库错误
      * </pre>
      */
     public static final int DATA_BASE_ERROR_VALUE = 5;
@@ -223,7 +223,7 @@ public final class Status {
      * <code>SERVER_ERROR = 100;</code>
      *
      * <pre>
-     *服务器错误
+     * 服务器错误
      * </pre>
      */
     public static final int SERVER_ERROR_VALUE = 100;
@@ -292,9 +292,9 @@ public final class Status {
   }
 
   /**
-   * Protobuf enum {@code RoleError}
+   * Protobuf enum {@code roleError}
    */
-  public enum RoleError
+  public enum roleError
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>ROLE_MAX_SIZE = 196609;</code>
@@ -334,7 +334,7 @@ public final class Status {
 
     public final int getNumber() { return value; }
 
-    public static RoleError valueOf(int value) {
+    public static roleError valueOf(int value) {
       switch (value) {
         case 196609: return ROLE_MAX_SIZE;
         case 196610: return ROLE_NOT_EXIST;
@@ -342,15 +342,15 @@ public final class Status {
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<RoleError>
+    public static com.google.protobuf.Internal.EnumLiteMap<roleError>
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<RoleError>
+    private static com.google.protobuf.Internal.EnumLiteMap<roleError>
         internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<RoleError>() {
-            public RoleError findValueByNumber(int number) {
-              return RoleError.valueOf(number);
+          new com.google.protobuf.Internal.EnumLiteMap<roleError>() {
+            public roleError findValueByNumber(int number) {
+              return roleError.valueOf(number);
             }
           };
 
@@ -367,9 +367,9 @@ public final class Status {
       return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(2);
     }
 
-    private static final RoleError[] VALUES = values();
+    private static final roleError[] VALUES = values();
 
-    public static RoleError valueOf(
+    public static roleError valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -381,12 +381,110 @@ public final class Status {
     private final int index;
     private final int value;
 
-    private RoleError(int index, int value) {
+    private roleError(int index, int value) {
       this.index = index;
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:RoleError)
+    // @@protoc_insertion_point(enum_scope:roleError)
+  }
+
+  /**
+   * Protobuf enum {@code monsterError}
+   */
+  public enum monsterError
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>MONSTER_MAX_SIZE = 262145;</code>
+     *
+     * <pre>
+     * 账户角色数量达到上限
+     * </pre>
+     */
+    MONSTER_MAX_SIZE(0, 262145),
+    /**
+     * <code>MONSTER_NOT_EXIST = 262146;</code>
+     *
+     * <pre>
+     * 角色不存在
+     * </pre>
+     */
+    MONSTER_NOT_EXIST(1, 262146),
+    ;
+
+    /**
+     * <code>MONSTER_MAX_SIZE = 262145;</code>
+     *
+     * <pre>
+     * 账户角色数量达到上限
+     * </pre>
+     */
+    public static final int MONSTER_MAX_SIZE_VALUE = 262145;
+    /**
+     * <code>MONSTER_NOT_EXIST = 262146;</code>
+     *
+     * <pre>
+     * 角色不存在
+     * </pre>
+     */
+    public static final int MONSTER_NOT_EXIST_VALUE = 262146;
+
+
+    public final int getNumber() { return value; }
+
+    public static monsterError valueOf(int value) {
+      switch (value) {
+        case 262145: return MONSTER_MAX_SIZE;
+        case 262146: return MONSTER_NOT_EXIST;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<monsterError>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<monsterError>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<monsterError>() {
+            public monsterError findValueByNumber(int number) {
+              return monsterError.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(3);
+    }
+
+    private static final monsterError[] VALUES = values();
+
+    public static monsterError valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private monsterError(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:monsterError)
   }
 
 
@@ -404,9 +502,11 @@ public final class Status {
       "ONE_ERROR\020\000\022\020\n\014CONFIG_ERROR\020\001\022\024\n\020ONLINE_" +
       "MAX_LIMIT\020\002\022\026\n\022REGISTER_MAX_LIMIT\020\003\022\025\n\021S" +
       "ERVER_GRAY_STATE\020\004\022\023\n\017DATA_BASE_ERROR\020\005\022" +
-      "\020\n\014SERVER_ERROR\020d*6\n\tRoleError\022\023\n\rROLE_M" +
-      "AX_SIZE\020\201\200\014\022\024\n\016ROLE_NOT_EXIST\020\202\200\014B\030\n\026com" +
-      ".hawk.game.protocol"
+      "\020\n\014SERVER_ERROR\020d*6\n\troleError\022\023\n\rROLE_M" +
+      "AX_SIZE\020\201\200\014\022\024\n\016ROLE_NOT_EXIST\020\202\200\014*?\n\014mon" +
+      "sterError\022\026\n\020MONSTER_MAX_SIZE\020\201\200\020\022\027\n\021MON" +
+      "STER_NOT_EXIST\020\202\200\020B\030\n\026com.hawk.game.prot",
+      "ocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

@@ -1,11 +1,14 @@
 package com.hawk.game.player;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hawk.db.HawkDBManager;
 import org.hawk.os.HawkTime;
 
 import com.hawk.game.ServerData;
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.RoleEntity;
 
@@ -25,12 +28,14 @@ public class PlayerData {
 	 * 玩家基础数据
 	 */
 	private PlayerEntity playerEntity = null;
-	
+
 	/**
 	 * 角色基础数据
 	 */
 	private RoleEntity roleEntity = null;
-	
+
+	private Map<Integer, MonsterEntity> monsterEntityMap = new HashMap<Integer, MonsterEntity>();
+
 	/**
 	 * 构造函数
 	 * 
@@ -84,8 +89,29 @@ public class PlayerData {
 	public void setRoleEntity(RoleEntity roleEntity){
 		this.roleEntity = roleEntity;
 	}
-	
-	
+
+	/**
+	 * 获取玩家当前角色的怪物数据实体
+	 * 
+	 * @return
+	 */
+	public Map<Integer, MonsterEntity> getMonsterEntity() {
+		 return monsterEntityMap;
+	}
+	public MonsterEntity getMonsterEntity(int monsterId) {
+		return monsterEntityMap.get(monsterId);
+	}
+
+	/**
+	 * 设置玩家当前角色的怪物数据实体
+	 * 
+	 * @param playerEntity
+	 */
+	public void setMonsterEntity(MonsterEntity monsterEntity) {
+		this.monsterEntityMap.put(monsterEntity.getId(), monsterEntity);
+	}
+
+
 	/**********************************************************************************************************
 	 * 数据db操作区
 	 **********************************************************************************************************/
@@ -122,5 +148,23 @@ public class PlayerData {
 			return roleEntity;
 		}
 		return null;
+	}
+
+
+	/**
+	 * 加载怪物信息
+	 * 
+	 * @return
+	 */
+	private void loadMonster() {
+		if (monsterEntityMap.isEmpty() == true) {
+			// TODO: roleId
+			List<MonsterEntity> monsterEntitys = HawkDBManager.getInstance().query("from MonsterEntity where roleId = ? and invalid = 0", 1);
+			if (monsterEntitys != null && monsterEntitys.size() > 0) {
+				for (MonsterEntity monsterEntity : monsterEntitys) {
+					monsterEntityMap.put(monsterEntity.getId(), monsterEntity);
+				}
+			}
+		}
 	}
 }

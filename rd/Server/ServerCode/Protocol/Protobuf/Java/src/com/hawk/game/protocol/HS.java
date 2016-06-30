@@ -157,7 +157,7 @@ public final class HS {
      * <code>LOGIN_C = 1000;</code>
      *
      * <pre>
-     * 登录，登出
+     * 玩家
      * </pre>
      */
     LOGIN_C(0, 1000),
@@ -178,44 +178,72 @@ public final class HS {
      */
     KICKOUT_S(4, 1004),
     /**
-     * <code>ROLE_CREATE_C = 1010;</code>
+     * <code>ROLE_CREATE_C = 1100;</code>
      *
      * <pre>
-     * 创建角色
+     * 角色
      * </pre>
      */
-    ROLE_CREATE_C(5, 1010),
+    ROLE_CREATE_C(5, 1100),
     /**
-     * <code>ROLE_CREATE_S = 1011;</code>
+     * <code>ROLE_CREATE_S = 1101;</code>
      */
-    ROLE_CREATE_S(6, 1011),
+    ROLE_CREATE_S(6, 1101),
     /**
-     * <code>ROLE_SELECT_C = 1012;</code>
+     * <code>ROLE_DELETE_C = 1102;</code>
+     */
+    ROLE_DELETE_C(7, 1102),
+    /**
+     * <code>ROLE_DELETE_S = 1103;</code>
+     */
+    ROLE_DELETE_S(8, 1103),
+    /**
+     * <code>ROLE_SELECT_C = 1104;</code>
+     */
+    ROLE_SELECT_C(9, 1104),
+    /**
+     * <code>ROLE_SELECT_S = 1105;</code>
+     */
+    ROLE_SELECT_S(10, 1105),
+    /**
+     * <code>ROLE_CHANGE_C = 1106;</code>
+     */
+    ROLE_CHANGE_C(11, 1106),
+    /**
+     * <code>ROLE_CHANGE_S = 1107;</code>
+     */
+    ROLE_CHANGE_S(12, 1107),
+    /**
+     * <code>MONSTER_ADD_S = 2000;</code>
      *
      * <pre>
-     * 选择角色
+     * 怪物
      * </pre>
      */
-    ROLE_SELECT_C(9, 1012),
+    MONSTER_ADD_S(13, 2000),
+    /**
+     * <code>MONSTER_BREAK_C = 2001;</code>
+     */
+    MONSTER_BREAK_C(14, 2001),
+    /**
+     * <code>MONSTER_BREAK_S = 2002;</code>
+     */
+    MONSTER_BREAK_S(15, 2002),
+    /**
+     * <code>MONSTER_FEED_C = 2003;</code>
+     */
+    MONSTER_FEED_C(16, 2003),
+    /**
+     * <code>MONSTER_FEED_S = 2004;</code>
+     */
+    MONSTER_FEED_S(17, 2004),
     ;
 
-    /**
-     * <code>ROLE_DELETE_C = 1010;</code>
-     *
-     * <pre>
-     * 删除角色
-     * </pre>
-     */
-    public static final code ROLE_DELETE_C = ROLE_CREATE_C;
-    /**
-     * <code>ROLE_DELETE_S = 1011;</code>
-     */
-    public static final code ROLE_DELETE_S = ROLE_CREATE_S;
     /**
      * <code>LOGIN_C = 1000;</code>
      *
      * <pre>
-     * 登录，登出
+     * 玩家
      * </pre>
      */
     public static final int LOGIN_C_VALUE = 1000;
@@ -236,37 +264,65 @@ public final class HS {
      */
     public static final int KICKOUT_S_VALUE = 1004;
     /**
-     * <code>ROLE_CREATE_C = 1010;</code>
+     * <code>ROLE_CREATE_C = 1100;</code>
      *
      * <pre>
-     * 创建角色
+     * 角色
      * </pre>
      */
-    public static final int ROLE_CREATE_C_VALUE = 1010;
+    public static final int ROLE_CREATE_C_VALUE = 1100;
     /**
-     * <code>ROLE_CREATE_S = 1011;</code>
+     * <code>ROLE_CREATE_S = 1101;</code>
      */
-    public static final int ROLE_CREATE_S_VALUE = 1011;
+    public static final int ROLE_CREATE_S_VALUE = 1101;
     /**
-     * <code>ROLE_DELETE_C = 1010;</code>
+     * <code>ROLE_DELETE_C = 1102;</code>
+     */
+    public static final int ROLE_DELETE_C_VALUE = 1102;
+    /**
+     * <code>ROLE_DELETE_S = 1103;</code>
+     */
+    public static final int ROLE_DELETE_S_VALUE = 1103;
+    /**
+     * <code>ROLE_SELECT_C = 1104;</code>
+     */
+    public static final int ROLE_SELECT_C_VALUE = 1104;
+    /**
+     * <code>ROLE_SELECT_S = 1105;</code>
+     */
+    public static final int ROLE_SELECT_S_VALUE = 1105;
+    /**
+     * <code>ROLE_CHANGE_C = 1106;</code>
+     */
+    public static final int ROLE_CHANGE_C_VALUE = 1106;
+    /**
+     * <code>ROLE_CHANGE_S = 1107;</code>
+     */
+    public static final int ROLE_CHANGE_S_VALUE = 1107;
+    /**
+     * <code>MONSTER_ADD_S = 2000;</code>
      *
      * <pre>
-     * 删除角色
+     * 怪物
      * </pre>
      */
-    public static final int ROLE_DELETE_C_VALUE = 1010;
+    public static final int MONSTER_ADD_S_VALUE = 2000;
     /**
-     * <code>ROLE_DELETE_S = 1011;</code>
+     * <code>MONSTER_BREAK_C = 2001;</code>
      */
-    public static final int ROLE_DELETE_S_VALUE = 1011;
+    public static final int MONSTER_BREAK_C_VALUE = 2001;
     /**
-     * <code>ROLE_SELECT_C = 1012;</code>
-     *
-     * <pre>
-     * 选择角色
-     * </pre>
+     * <code>MONSTER_BREAK_S = 2002;</code>
      */
-    public static final int ROLE_SELECT_C_VALUE = 1012;
+    public static final int MONSTER_BREAK_S_VALUE = 2002;
+    /**
+     * <code>MONSTER_FEED_C = 2003;</code>
+     */
+    public static final int MONSTER_FEED_C_VALUE = 2003;
+    /**
+     * <code>MONSTER_FEED_S = 2004;</code>
+     */
+    public static final int MONSTER_FEED_S_VALUE = 2004;
 
 
     public final int getNumber() { return value; }
@@ -278,9 +334,19 @@ public final class HS {
         case 1002: return LOGOUT_C;
         case 1003: return LOGOUT_S;
         case 1004: return KICKOUT_S;
-        case 1010: return ROLE_CREATE_C;
-        case 1011: return ROLE_CREATE_S;
-        case 1012: return ROLE_SELECT_C;
+        case 1100: return ROLE_CREATE_C;
+        case 1101: return ROLE_CREATE_S;
+        case 1102: return ROLE_DELETE_C;
+        case 1103: return ROLE_DELETE_S;
+        case 1104: return ROLE_SELECT_C;
+        case 1105: return ROLE_SELECT_S;
+        case 1106: return ROLE_CHANGE_C;
+        case 1107: return ROLE_CHANGE_S;
+        case 2000: return MONSTER_ADD_S;
+        case 2001: return MONSTER_BREAK_C;
+        case 2002: return MONSTER_BREAK_S;
+        case 2003: return MONSTER_FEED_C;
+        case 2004: return MONSTER_FEED_S;
         default: return null;
       }
     }
@@ -310,9 +376,7 @@ public final class HS {
       return com.hawk.game.protocol.HS.getDescriptor().getEnumTypes().get(1);
     }
 
-    private static final code[] VALUES = {
-      LOGIN_C, LOGIN_S, LOGOUT_C, LOGOUT_S, KICKOUT_S, ROLE_CREATE_C, ROLE_CREATE_S, ROLE_DELETE_C, ROLE_DELETE_S, ROLE_SELECT_C, 
-    };
+    private static final code[] VALUES = values();
 
     public static code valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -345,12 +409,16 @@ public final class HS {
     java.lang.String[] descriptorData = {
       "\n\010HS.proto*I\n\003sys\022\020\n\014DATA_WRAPPER\020\001\022\020\n\014K" +
       "EY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016\n\nERROR_C" +
-      "ODE\020\004*\264\001\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020" +
+      "ODE\020\004*\332\002\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020" +
       "\351\007\022\r\n\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICK" +
-      "OUT_S\020\354\007\022\022\n\rROLE_CREATE_C\020\362\007\022\022\n\rROLE_CRE" +
-      "ATE_S\020\363\007\022\022\n\rROLE_DELETE_C\020\362\007\022\022\n\rROLE_DEL" +
-      "ETE_S\020\363\007\022\022\n\rROLE_SELECT_C\020\364\007B\030\n\026com.hawk" +
-      ".game.protocol"
+      "OUT_S\020\354\007\022\022\n\rROLE_CREATE_C\020\314\010\022\022\n\rROLE_CRE" +
+      "ATE_S\020\315\010\022\022\n\rROLE_DELETE_C\020\316\010\022\022\n\rROLE_DEL" +
+      "ETE_S\020\317\010\022\022\n\rROLE_SELECT_C\020\320\010\022\022\n\rROLE_SEL" +
+      "ECT_S\020\321\010\022\022\n\rROLE_CHANGE_C\020\322\010\022\022\n\rROLE_CHA" +
+      "NGE_S\020\323\010\022\022\n\rMONSTER_ADD_S\020\320\017\022\024\n\017MONSTER_" +
+      "BREAK_C\020\321\017\022\024\n\017MONSTER_BREAK_S\020\322\017\022\023\n\016MONS",
+      "TER_FEED_C\020\323\017\022\023\n\016MONSTER_FEED_S\020\324\017B\030\n\026co" +
+      "m.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

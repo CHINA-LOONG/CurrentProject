@@ -2,7 +2,8 @@ import "Monster.proto";
 
 option java_package = "com.hawk.game.protocol";
 
-// data---------------------------------------------------------
+// struct-------------------------------------------------------
+
 message HSRoleBrief
 {
 	required int32 roleId = 1;
@@ -27,6 +28,7 @@ message HSRoleDetail
 }
 
 // protocol-----------------------------------------------------
+
 // ROLE_CREATE_C
 message HSRoleCreate
 {

@@ -240,6 +240,110 @@ public final class Const {
     // @@protoc_insertion_point(enum_scope:kickReason)
   }
 
+  /**
+   * Protobuf enum {@code RewardReason}
+   *
+   * <pre>
+   * 获得道具/怪物原因
+   * </pre>
+   */
+  public enum RewardReason
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>SYS_PRESENT = 1;</code>
+     */
+    SYS_PRESENT(0, 1),
+    /**
+     * <code>NPC = 2;</code>
+     */
+    NPC(1, 2),
+    /**
+     * <code>QUEST = 3;</code>
+     */
+    QUEST(2, 3),
+    /**
+     * <code>ACITVITY = 4;</code>
+     */
+    ACITVITY(3, 4),
+    ;
+
+    /**
+     * <code>SYS_PRESENT = 1;</code>
+     */
+    public static final int SYS_PRESENT_VALUE = 1;
+    /**
+     * <code>NPC = 2;</code>
+     */
+    public static final int NPC_VALUE = 2;
+    /**
+     * <code>QUEST = 3;</code>
+     */
+    public static final int QUEST_VALUE = 3;
+    /**
+     * <code>ACITVITY = 4;</code>
+     */
+    public static final int ACITVITY_VALUE = 4;
+
+
+    public final int getNumber() { return value; }
+
+    public static RewardReason valueOf(int value) {
+      switch (value) {
+        case 1: return SYS_PRESENT;
+        case 2: return NPC;
+        case 3: return QUEST;
+        case 4: return ACITVITY;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<RewardReason>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<RewardReason>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<RewardReason>() {
+            public RewardReason findValueByNumber(int number) {
+              return RewardReason.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(2);
+    }
+
+    private static final RewardReason[] VALUES = values();
+
+    public static RewardReason valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private RewardReason(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:RewardReason)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -253,8 +357,10 @@ public final class Const {
       "\001\022\022\n\016CHAT_BROADCAST\020\002\022\023\n\017WORLD_BROADCAST" +
       "\020\003*n\n\nkickReason\022\023\n\017DUPLICATE_LOGIN\020\001\022\023\n" +
       "\017SERVER_SHUTDOWN\020\002\022\022\n\016LOGIN_FORBIDEN\020\003\022\016" +
-      "\n\nKICKED_OUT\020\004\022\022\n\016SERVER_RESTART\020\005B\030\n\026co" +
-      "m.hawk.game.protocol"
+      "\n\nKICKED_OUT\020\004\022\022\n\016SERVER_RESTART\020\005*A\n\014Re" +
+      "wardReason\022\017\n\013SYS_PRESENT\020\001\022\007\n\003NPC\020\002\022\t\n\005" +
+      "QUEST\020\003\022\014\n\010ACITVITY\020\004B\030\n\026com.hawk.game.p" +
+      "rotocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

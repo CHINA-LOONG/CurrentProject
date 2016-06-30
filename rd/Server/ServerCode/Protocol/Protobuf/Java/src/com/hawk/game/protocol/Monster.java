@@ -20,13 +20,94 @@ public final class Monster {
      * <code>required int32 monsterId = 1;</code>
      */
     int getMonsterId();
+
+    // required int32 cfgId = 2;
+    /**
+     * <code>required int32 cfgId = 2;</code>
+     */
+    boolean hasCfgId();
+    /**
+     * <code>required int32 cfgId = 2;</code>
+     */
+    int getCfgId();
+
+    // required int32 grade = 3;
+    /**
+     * <code>required int32 grade = 3;</code>
+     */
+    boolean hasGrade();
+    /**
+     * <code>required int32 grade = 3;</code>
+     */
+    int getGrade();
+
+    // required int32 level = 4;
+    /**
+     * <code>required int32 level = 4;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>required int32 level = 4;</code>
+     */
+    int getLevel();
+
+    // required int32 exp = 5;
+    /**
+     * <code>required int32 exp = 5;</code>
+     */
+    boolean hasExp();
+    /**
+     * <code>required int32 exp = 5;</code>
+     */
+    int getExp();
+
+    // required bool hasEquip = 6;
+    /**
+     * <code>required bool hasEquip = 6;</code>
+     */
+    boolean hasHasEquip();
+    /**
+     * <code>required bool hasEquip = 6;</code>
+     */
+    boolean getHasEquip();
+
+    // required int32 disposition = 7;
+    /**
+     * <code>required int32 disposition = 7;</code>
+     */
+    boolean hasDisposition();
+    /**
+     * <code>required int32 disposition = 7;</code>
+     */
+    int getDisposition();
+
+    // repeated .HSSkill skillList = 8;
+    /**
+     * <code>repeated .HSSkill skillList = 8;</code>
+     */
+    java.util.List<com.hawk.game.protocol.Skill.HSSkill> 
+        getSkillListList();
+    /**
+     * <code>repeated .HSSkill skillList = 8;</code>
+     */
+    com.hawk.game.protocol.Skill.HSSkill getSkillList(int index);
+    /**
+     * <code>repeated .HSSkill skillList = 8;</code>
+     */
+    int getSkillListCount();
+    /**
+     * <code>repeated .HSSkill skillList = 8;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Skill.HSSkillOrBuilder> 
+        getSkillListOrBuilderList();
+    /**
+     * <code>repeated .HSSkill skillList = 8;</code>
+     */
+    com.hawk.game.protocol.Skill.HSSkillOrBuilder getSkillListOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code HSMonster}
-   *
-   * <pre>
-   * data---------------------------------------------------------
-   * </pre>
    */
   public static final class HSMonster extends
       com.google.protobuf.GeneratedMessage
@@ -81,6 +162,44 @@ public final class Monster {
               monsterId_ = input.readInt32();
               break;
             }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              cfgId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              grade_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              level_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              exp_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              hasEquip_ = input.readBool();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              disposition_ = input.readInt32();
+              break;
+            }
+            case 66: {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                skillList_ = new java.util.ArrayList<com.hawk.game.protocol.Skill.HSSkill>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              skillList_.add(input.readMessage(com.hawk.game.protocol.Skill.HSSkill.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -89,6 +208,9 @@ public final class Monster {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          skillList_ = java.util.Collections.unmodifiableList(skillList_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -137,8 +259,147 @@ public final class Monster {
       return monsterId_;
     }
 
+    // required int32 cfgId = 2;
+    public static final int CFGID_FIELD_NUMBER = 2;
+    private int cfgId_;
+    /**
+     * <code>required int32 cfgId = 2;</code>
+     */
+    public boolean hasCfgId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 cfgId = 2;</code>
+     */
+    public int getCfgId() {
+      return cfgId_;
+    }
+
+    // required int32 grade = 3;
+    public static final int GRADE_FIELD_NUMBER = 3;
+    private int grade_;
+    /**
+     * <code>required int32 grade = 3;</code>
+     */
+    public boolean hasGrade() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 grade = 3;</code>
+     */
+    public int getGrade() {
+      return grade_;
+    }
+
+    // required int32 level = 4;
+    public static final int LEVEL_FIELD_NUMBER = 4;
+    private int level_;
+    /**
+     * <code>required int32 level = 4;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required int32 level = 4;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    // required int32 exp = 5;
+    public static final int EXP_FIELD_NUMBER = 5;
+    private int exp_;
+    /**
+     * <code>required int32 exp = 5;</code>
+     */
+    public boolean hasExp() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 exp = 5;</code>
+     */
+    public int getExp() {
+      return exp_;
+    }
+
+    // required bool hasEquip = 6;
+    public static final int HASEQUIP_FIELD_NUMBER = 6;
+    private boolean hasEquip_;
+    /**
+     * <code>required bool hasEquip = 6;</code>
+     */
+    public boolean hasHasEquip() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required bool hasEquip = 6;</code>
+     */
+    public boolean getHasEquip() {
+      return hasEquip_;
+    }
+
+    // required int32 disposition = 7;
+    public static final int DISPOSITION_FIELD_NUMBER = 7;
+    private int disposition_;
+    /**
+     * <code>required int32 disposition = 7;</code>
+     */
+    public boolean hasDisposition() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required int32 disposition = 7;</code>
+     */
+    public int getDisposition() {
+      return disposition_;
+    }
+
+    // repeated .HSSkill skillList = 8;
+    public static final int SKILLLIST_FIELD_NUMBER = 8;
+    private java.util.List<com.hawk.game.protocol.Skill.HSSkill> skillList_;
+    /**
+     * <code>repeated .HSSkill skillList = 8;</code>
+     */
+    public java.util.List<com.hawk.game.protocol.Skill.HSSkill> getSkillListList() {
+      return skillList_;
+    }
+    /**
+     * <code>repeated .HSSkill skillList = 8;</code>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Skill.HSSkillOrBuilder> 
+        getSkillListOrBuilderList() {
+      return skillList_;
+    }
+    /**
+     * <code>repeated .HSSkill skillList = 8;</code>
+     */
+    public int getSkillListCount() {
+      return skillList_.size();
+    }
+    /**
+     * <code>repeated .HSSkill skillList = 8;</code>
+     */
+    public com.hawk.game.protocol.Skill.HSSkill getSkillList(int index) {
+      return skillList_.get(index);
+    }
+    /**
+     * <code>repeated .HSSkill skillList = 8;</code>
+     */
+    public com.hawk.game.protocol.Skill.HSSkillOrBuilder getSkillListOrBuilder(
+        int index) {
+      return skillList_.get(index);
+    }
+
     private void initFields() {
       monsterId_ = 0;
+      cfgId_ = 0;
+      grade_ = 0;
+      level_ = 0;
+      exp_ = 0;
+      hasEquip_ = false;
+      disposition_ = 0;
+      skillList_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -149,6 +410,36 @@ public final class Monster {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasCfgId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasGrade()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLevel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasExp()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHasEquip()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDisposition()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getSkillListCount(); i++) {
+        if (!getSkillList(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -158,6 +449,27 @@ public final class Monster {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, cfgId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, grade_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, level_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, exp_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBool(6, hasEquip_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt32(7, disposition_);
+      }
+      for (int i = 0; i < skillList_.size(); i++) {
+        output.writeMessage(8, skillList_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -171,6 +483,34 @@ public final class Monster {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, cfgId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, grade_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, level_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, exp_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, hasEquip_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, disposition_);
+      }
+      for (int i = 0; i < skillList_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, skillList_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -252,10 +592,6 @@ public final class Monster {
     }
     /**
      * Protobuf type {@code HSMonster}
-     *
-     * <pre>
-     * data---------------------------------------------------------
-     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -284,6 +620,7 @@ public final class Monster {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSkillListFieldBuilder();
         }
       }
       private static Builder create() {
@@ -294,6 +631,24 @@ public final class Monster {
         super.clear();
         monsterId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        cfgId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        grade_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        exp_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        hasEquip_ = false;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        disposition_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        if (skillListBuilder_ == null) {
+          skillList_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+        } else {
+          skillListBuilder_.clear();
+        }
         return this;
       }
 
@@ -326,6 +681,39 @@ public final class Monster {
           to_bitField0_ |= 0x00000001;
         }
         result.monsterId_ = monsterId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.cfgId_ = cfgId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.grade_ = grade_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.exp_ = exp_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.hasEquip_ = hasEquip_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.disposition_ = disposition_;
+        if (skillListBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+            skillList_ = java.util.Collections.unmodifiableList(skillList_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.skillList_ = skillList_;
+        } else {
+          result.skillList_ = skillListBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -345,6 +733,50 @@ public final class Monster {
         if (other.hasMonsterId()) {
           setMonsterId(other.getMonsterId());
         }
+        if (other.hasCfgId()) {
+          setCfgId(other.getCfgId());
+        }
+        if (other.hasGrade()) {
+          setGrade(other.getGrade());
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
+        if (other.hasExp()) {
+          setExp(other.getExp());
+        }
+        if (other.hasHasEquip()) {
+          setHasEquip(other.getHasEquip());
+        }
+        if (other.hasDisposition()) {
+          setDisposition(other.getDisposition());
+        }
+        if (skillListBuilder_ == null) {
+          if (!other.skillList_.isEmpty()) {
+            if (skillList_.isEmpty()) {
+              skillList_ = other.skillList_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureSkillListIsMutable();
+              skillList_.addAll(other.skillList_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.skillList_.isEmpty()) {
+            if (skillListBuilder_.isEmpty()) {
+              skillListBuilder_.dispose();
+              skillListBuilder_ = null;
+              skillList_ = other.skillList_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              skillListBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getSkillListFieldBuilder() : null;
+            } else {
+              skillListBuilder_.addAllMessages(other.skillList_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -353,6 +785,36 @@ public final class Monster {
         if (!hasMonsterId()) {
           
           return false;
+        }
+        if (!hasCfgId()) {
+          
+          return false;
+        }
+        if (!hasGrade()) {
+          
+          return false;
+        }
+        if (!hasLevel()) {
+          
+          return false;
+        }
+        if (!hasExp()) {
+          
+          return false;
+        }
+        if (!hasHasEquip()) {
+          
+          return false;
+        }
+        if (!hasDisposition()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getSkillListCount(); i++) {
+          if (!getSkillList(i).isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -409,6 +871,444 @@ public final class Monster {
         return this;
       }
 
+      // required int32 cfgId = 2;
+      private int cfgId_ ;
+      /**
+       * <code>required int32 cfgId = 2;</code>
+       */
+      public boolean hasCfgId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 cfgId = 2;</code>
+       */
+      public int getCfgId() {
+        return cfgId_;
+      }
+      /**
+       * <code>required int32 cfgId = 2;</code>
+       */
+      public Builder setCfgId(int value) {
+        bitField0_ |= 0x00000002;
+        cfgId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 cfgId = 2;</code>
+       */
+      public Builder clearCfgId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        cfgId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 grade = 3;
+      private int grade_ ;
+      /**
+       * <code>required int32 grade = 3;</code>
+       */
+      public boolean hasGrade() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 grade = 3;</code>
+       */
+      public int getGrade() {
+        return grade_;
+      }
+      /**
+       * <code>required int32 grade = 3;</code>
+       */
+      public Builder setGrade(int value) {
+        bitField0_ |= 0x00000004;
+        grade_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 grade = 3;</code>
+       */
+      public Builder clearGrade() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        grade_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 level = 4;
+      private int level_ ;
+      /**
+       * <code>required int32 level = 4;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int32 level = 4;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>required int32 level = 4;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000008;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 level = 4;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 exp = 5;
+      private int exp_ ;
+      /**
+       * <code>required int32 exp = 5;</code>
+       */
+      public boolean hasExp() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 exp = 5;</code>
+       */
+      public int getExp() {
+        return exp_;
+      }
+      /**
+       * <code>required int32 exp = 5;</code>
+       */
+      public Builder setExp(int value) {
+        bitField0_ |= 0x00000010;
+        exp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 exp = 5;</code>
+       */
+      public Builder clearExp() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        exp_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required bool hasEquip = 6;
+      private boolean hasEquip_ ;
+      /**
+       * <code>required bool hasEquip = 6;</code>
+       */
+      public boolean hasHasEquip() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required bool hasEquip = 6;</code>
+       */
+      public boolean getHasEquip() {
+        return hasEquip_;
+      }
+      /**
+       * <code>required bool hasEquip = 6;</code>
+       */
+      public Builder setHasEquip(boolean value) {
+        bitField0_ |= 0x00000020;
+        hasEquip_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool hasEquip = 6;</code>
+       */
+      public Builder clearHasEquip() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        hasEquip_ = false;
+        onChanged();
+        return this;
+      }
+
+      // required int32 disposition = 7;
+      private int disposition_ ;
+      /**
+       * <code>required int32 disposition = 7;</code>
+       */
+      public boolean hasDisposition() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required int32 disposition = 7;</code>
+       */
+      public int getDisposition() {
+        return disposition_;
+      }
+      /**
+       * <code>required int32 disposition = 7;</code>
+       */
+      public Builder setDisposition(int value) {
+        bitField0_ |= 0x00000040;
+        disposition_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 disposition = 7;</code>
+       */
+      public Builder clearDisposition() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        disposition_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .HSSkill skillList = 8;
+      private java.util.List<com.hawk.game.protocol.Skill.HSSkill> skillList_ =
+        java.util.Collections.emptyList();
+      private void ensureSkillListIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          skillList_ = new java.util.ArrayList<com.hawk.game.protocol.Skill.HSSkill>(skillList_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Skill.HSSkill, com.hawk.game.protocol.Skill.HSSkill.Builder, com.hawk.game.protocol.Skill.HSSkillOrBuilder> skillListBuilder_;
+
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Skill.HSSkill> getSkillListList() {
+        if (skillListBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(skillList_);
+        } else {
+          return skillListBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public int getSkillListCount() {
+        if (skillListBuilder_ == null) {
+          return skillList_.size();
+        } else {
+          return skillListBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public com.hawk.game.protocol.Skill.HSSkill getSkillList(int index) {
+        if (skillListBuilder_ == null) {
+          return skillList_.get(index);
+        } else {
+          return skillListBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public Builder setSkillList(
+          int index, com.hawk.game.protocol.Skill.HSSkill value) {
+        if (skillListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillListIsMutable();
+          skillList_.set(index, value);
+          onChanged();
+        } else {
+          skillListBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public Builder setSkillList(
+          int index, com.hawk.game.protocol.Skill.HSSkill.Builder builderForValue) {
+        if (skillListBuilder_ == null) {
+          ensureSkillListIsMutable();
+          skillList_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillListBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public Builder addSkillList(com.hawk.game.protocol.Skill.HSSkill value) {
+        if (skillListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillListIsMutable();
+          skillList_.add(value);
+          onChanged();
+        } else {
+          skillListBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public Builder addSkillList(
+          int index, com.hawk.game.protocol.Skill.HSSkill value) {
+        if (skillListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillListIsMutable();
+          skillList_.add(index, value);
+          onChanged();
+        } else {
+          skillListBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public Builder addSkillList(
+          com.hawk.game.protocol.Skill.HSSkill.Builder builderForValue) {
+        if (skillListBuilder_ == null) {
+          ensureSkillListIsMutable();
+          skillList_.add(builderForValue.build());
+          onChanged();
+        } else {
+          skillListBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public Builder addSkillList(
+          int index, com.hawk.game.protocol.Skill.HSSkill.Builder builderForValue) {
+        if (skillListBuilder_ == null) {
+          ensureSkillListIsMutable();
+          skillList_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillListBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public Builder addAllSkillList(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Skill.HSSkill> values) {
+        if (skillListBuilder_ == null) {
+          ensureSkillListIsMutable();
+          super.addAll(values, skillList_);
+          onChanged();
+        } else {
+          skillListBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public Builder clearSkillList() {
+        if (skillListBuilder_ == null) {
+          skillList_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+          onChanged();
+        } else {
+          skillListBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public Builder removeSkillList(int index) {
+        if (skillListBuilder_ == null) {
+          ensureSkillListIsMutable();
+          skillList_.remove(index);
+          onChanged();
+        } else {
+          skillListBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public com.hawk.game.protocol.Skill.HSSkill.Builder getSkillListBuilder(
+          int index) {
+        return getSkillListFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public com.hawk.game.protocol.Skill.HSSkillOrBuilder getSkillListOrBuilder(
+          int index) {
+        if (skillListBuilder_ == null) {
+          return skillList_.get(index);  } else {
+          return skillListBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Skill.HSSkillOrBuilder> 
+           getSkillListOrBuilderList() {
+        if (skillListBuilder_ != null) {
+          return skillListBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(skillList_);
+        }
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public com.hawk.game.protocol.Skill.HSSkill.Builder addSkillListBuilder() {
+        return getSkillListFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Skill.HSSkill.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public com.hawk.game.protocol.Skill.HSSkill.Builder addSkillListBuilder(
+          int index) {
+        return getSkillListFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Skill.HSSkill.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HSSkill skillList = 8;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Skill.HSSkill.Builder> 
+           getSkillListBuilderList() {
+        return getSkillListFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Skill.HSSkill, com.hawk.game.protocol.Skill.HSSkill.Builder, com.hawk.game.protocol.Skill.HSSkillOrBuilder> 
+          getSkillListFieldBuilder() {
+        if (skillListBuilder_ == null) {
+          skillListBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Skill.HSSkill, com.hawk.game.protocol.Skill.HSSkill.Builder, com.hawk.game.protocol.Skill.HSSkillOrBuilder>(
+                  skillList_,
+                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  getParentForChildren(),
+                  isClean());
+          skillList_ = null;
+        }
+        return skillListBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:HSMonster)
     }
 
@@ -420,11 +1320,2563 @@ public final class Monster {
     // @@protoc_insertion_point(class_scope:HSMonster)
   }
 
+  public interface HSMonsterAddOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .HSMonster monster = 1;
+    /**
+     * <code>required .HSMonster monster = 1;</code>
+     */
+    boolean hasMonster();
+    /**
+     * <code>required .HSMonster monster = 1;</code>
+     */
+    com.hawk.game.protocol.Monster.HSMonster getMonster();
+    /**
+     * <code>required .HSMonster monster = 1;</code>
+     */
+    com.hawk.game.protocol.Monster.HSMonsterOrBuilder getMonsterOrBuilder();
+
+    // optional int32 reason = 2;
+    /**
+     * <code>optional int32 reason = 2;</code>
+     */
+    boolean hasReason();
+    /**
+     * <code>optional int32 reason = 2;</code>
+     */
+    int getReason();
+  }
+  /**
+   * Protobuf type {@code HSMonsterAdd}
+   *
+   * <pre>
+   * MONSTER_ADD_S
+   * </pre>
+   */
+  public static final class HSMonsterAdd extends
+      com.google.protobuf.GeneratedMessage
+      implements HSMonsterAddOrBuilder {
+    // Use HSMonsterAdd.newBuilder() to construct.
+    private HSMonsterAdd(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSMonsterAdd(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSMonsterAdd defaultInstance;
+    public static HSMonsterAdd getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSMonsterAdd getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSMonsterAdd(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.hawk.game.protocol.Monster.HSMonster.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = monster_.toBuilder();
+              }
+              monster_ = input.readMessage(com.hawk.game.protocol.Monster.HSMonster.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(monster_);
+                monster_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              reason_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterAdd_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterAdd_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Monster.HSMonsterAdd.class, com.hawk.game.protocol.Monster.HSMonsterAdd.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSMonsterAdd> PARSER =
+        new com.google.protobuf.AbstractParser<HSMonsterAdd>() {
+      public HSMonsterAdd parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSMonsterAdd(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSMonsterAdd> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .HSMonster monster = 1;
+    public static final int MONSTER_FIELD_NUMBER = 1;
+    private com.hawk.game.protocol.Monster.HSMonster monster_;
+    /**
+     * <code>required .HSMonster monster = 1;</code>
+     */
+    public boolean hasMonster() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .HSMonster monster = 1;</code>
+     */
+    public com.hawk.game.protocol.Monster.HSMonster getMonster() {
+      return monster_;
+    }
+    /**
+     * <code>required .HSMonster monster = 1;</code>
+     */
+    public com.hawk.game.protocol.Monster.HSMonsterOrBuilder getMonsterOrBuilder() {
+      return monster_;
+    }
+
+    // optional int32 reason = 2;
+    public static final int REASON_FIELD_NUMBER = 2;
+    private int reason_;
+    /**
+     * <code>optional int32 reason = 2;</code>
+     */
+    public boolean hasReason() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 reason = 2;</code>
+     */
+    public int getReason() {
+      return reason_;
+    }
+
+    private void initFields() {
+      monster_ = com.hawk.game.protocol.Monster.HSMonster.getDefaultInstance();
+      reason_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMonster()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getMonster().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, monster_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, reason_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, monster_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, reason_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Monster.HSMonsterAdd parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterAdd parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterAdd parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterAdd parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterAdd parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterAdd parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterAdd parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterAdd parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterAdd parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterAdd parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Monster.HSMonsterAdd prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSMonsterAdd}
+     *
+     * <pre>
+     * MONSTER_ADD_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Monster.HSMonsterAddOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterAdd_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterAdd_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Monster.HSMonsterAdd.class, com.hawk.game.protocol.Monster.HSMonsterAdd.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Monster.HSMonsterAdd.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMonsterFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (monsterBuilder_ == null) {
+          monster_ = com.hawk.game.protocol.Monster.HSMonster.getDefaultInstance();
+        } else {
+          monsterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        reason_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterAdd_descriptor;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterAdd getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Monster.HSMonsterAdd.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterAdd build() {
+        com.hawk.game.protocol.Monster.HSMonsterAdd result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterAdd buildPartial() {
+        com.hawk.game.protocol.Monster.HSMonsterAdd result = new com.hawk.game.protocol.Monster.HSMonsterAdd(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (monsterBuilder_ == null) {
+          result.monster_ = monster_;
+        } else {
+          result.monster_ = monsterBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.reason_ = reason_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Monster.HSMonsterAdd) {
+          return mergeFrom((com.hawk.game.protocol.Monster.HSMonsterAdd)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Monster.HSMonsterAdd other) {
+        if (other == com.hawk.game.protocol.Monster.HSMonsterAdd.getDefaultInstance()) return this;
+        if (other.hasMonster()) {
+          mergeMonster(other.getMonster());
+        }
+        if (other.hasReason()) {
+          setReason(other.getReason());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMonster()) {
+          
+          return false;
+        }
+        if (!getMonster().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Monster.HSMonsterAdd parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Monster.HSMonsterAdd) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .HSMonster monster = 1;
+      private com.hawk.game.protocol.Monster.HSMonster monster_ = com.hawk.game.protocol.Monster.HSMonster.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Monster.HSMonster, com.hawk.game.protocol.Monster.HSMonster.Builder, com.hawk.game.protocol.Monster.HSMonsterOrBuilder> monsterBuilder_;
+      /**
+       * <code>required .HSMonster monster = 1;</code>
+       */
+      public boolean hasMonster() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .HSMonster monster = 1;</code>
+       */
+      public com.hawk.game.protocol.Monster.HSMonster getMonster() {
+        if (monsterBuilder_ == null) {
+          return monster_;
+        } else {
+          return monsterBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .HSMonster monster = 1;</code>
+       */
+      public Builder setMonster(com.hawk.game.protocol.Monster.HSMonster value) {
+        if (monsterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          monster_ = value;
+          onChanged();
+        } else {
+          monsterBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .HSMonster monster = 1;</code>
+       */
+      public Builder setMonster(
+          com.hawk.game.protocol.Monster.HSMonster.Builder builderForValue) {
+        if (monsterBuilder_ == null) {
+          monster_ = builderForValue.build();
+          onChanged();
+        } else {
+          monsterBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .HSMonster monster = 1;</code>
+       */
+      public Builder mergeMonster(com.hawk.game.protocol.Monster.HSMonster value) {
+        if (monsterBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              monster_ != com.hawk.game.protocol.Monster.HSMonster.getDefaultInstance()) {
+            monster_ =
+              com.hawk.game.protocol.Monster.HSMonster.newBuilder(monster_).mergeFrom(value).buildPartial();
+          } else {
+            monster_ = value;
+          }
+          onChanged();
+        } else {
+          monsterBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .HSMonster monster = 1;</code>
+       */
+      public Builder clearMonster() {
+        if (monsterBuilder_ == null) {
+          monster_ = com.hawk.game.protocol.Monster.HSMonster.getDefaultInstance();
+          onChanged();
+        } else {
+          monsterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .HSMonster monster = 1;</code>
+       */
+      public com.hawk.game.protocol.Monster.HSMonster.Builder getMonsterBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getMonsterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .HSMonster monster = 1;</code>
+       */
+      public com.hawk.game.protocol.Monster.HSMonsterOrBuilder getMonsterOrBuilder() {
+        if (monsterBuilder_ != null) {
+          return monsterBuilder_.getMessageOrBuilder();
+        } else {
+          return monster_;
+        }
+      }
+      /**
+       * <code>required .HSMonster monster = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Monster.HSMonster, com.hawk.game.protocol.Monster.HSMonster.Builder, com.hawk.game.protocol.Monster.HSMonsterOrBuilder> 
+          getMonsterFieldBuilder() {
+        if (monsterBuilder_ == null) {
+          monsterBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.hawk.game.protocol.Monster.HSMonster, com.hawk.game.protocol.Monster.HSMonster.Builder, com.hawk.game.protocol.Monster.HSMonsterOrBuilder>(
+                  monster_,
+                  getParentForChildren(),
+                  isClean());
+          monster_ = null;
+        }
+        return monsterBuilder_;
+      }
+
+      // optional int32 reason = 2;
+      private int reason_ ;
+      /**
+       * <code>optional int32 reason = 2;</code>
+       */
+      public boolean hasReason() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 reason = 2;</code>
+       */
+      public int getReason() {
+        return reason_;
+      }
+      /**
+       * <code>optional int32 reason = 2;</code>
+       */
+      public Builder setReason(int value) {
+        bitField0_ |= 0x00000002;
+        reason_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 reason = 2;</code>
+       */
+      public Builder clearReason() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        reason_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSMonsterAdd)
+    }
+
+    static {
+      defaultInstance = new HSMonsterAdd(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSMonsterAdd)
+  }
+
+  public interface HSMonsterBreakOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 monsterId = 1;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    int getMonsterId();
+  }
+  /**
+   * Protobuf type {@code HSMonsterBreak}
+   *
+   * <pre>
+   * MONSTER_BREAK_C
+   * </pre>
+   */
+  public static final class HSMonsterBreak extends
+      com.google.protobuf.GeneratedMessage
+      implements HSMonsterBreakOrBuilder {
+    // Use HSMonsterBreak.newBuilder() to construct.
+    private HSMonsterBreak(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSMonsterBreak(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSMonsterBreak defaultInstance;
+    public static HSMonsterBreak getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSMonsterBreak getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSMonsterBreak(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              monsterId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterBreak_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterBreak_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Monster.HSMonsterBreak.class, com.hawk.game.protocol.Monster.HSMonsterBreak.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSMonsterBreak> PARSER =
+        new com.google.protobuf.AbstractParser<HSMonsterBreak>() {
+      public HSMonsterBreak parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSMonsterBreak(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSMonsterBreak> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 monsterId = 1;
+    public static final int MONSTERID_FIELD_NUMBER = 1;
+    private int monsterId_;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    private void initFields() {
+      monsterId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, monsterId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, monsterId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Monster.HSMonsterBreak parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreak parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreak parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreak parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreak parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreak parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreak parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreak parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreak parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreak parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Monster.HSMonsterBreak prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSMonsterBreak}
+     *
+     * <pre>
+     * MONSTER_BREAK_C
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Monster.HSMonsterBreakOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterBreak_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterBreak_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Monster.HSMonsterBreak.class, com.hawk.game.protocol.Monster.HSMonsterBreak.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Monster.HSMonsterBreak.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        monsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterBreak_descriptor;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterBreak getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Monster.HSMonsterBreak.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterBreak build() {
+        com.hawk.game.protocol.Monster.HSMonsterBreak result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterBreak buildPartial() {
+        com.hawk.game.protocol.Monster.HSMonsterBreak result = new com.hawk.game.protocol.Monster.HSMonsterBreak(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.monsterId_ = monsterId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Monster.HSMonsterBreak) {
+          return mergeFrom((com.hawk.game.protocol.Monster.HSMonsterBreak)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Monster.HSMonsterBreak other) {
+        if (other == com.hawk.game.protocol.Monster.HSMonsterBreak.getDefaultInstance()) return this;
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMonsterId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Monster.HSMonsterBreak parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Monster.HSMonsterBreak) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 monsterId = 1;
+      private int monsterId_ ;
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000001;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSMonsterBreak)
+    }
+
+    static {
+      defaultInstance = new HSMonsterBreak(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSMonsterBreak)
+  }
+
+  public interface HSMonsterBreakRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 status = 1;
+    /**
+     * <code>required int32 status = 1;</code>
+     */
+    boolean hasStatus();
+    /**
+     * <code>required int32 status = 1;</code>
+     */
+    int getStatus();
+
+    // required int32 monsterId = 2;
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     */
+    int getMonsterId();
+  }
+  /**
+   * Protobuf type {@code HSMonsterBreakRet}
+   *
+   * <pre>
+   * MONSTER_BREAK_S
+   * </pre>
+   */
+  public static final class HSMonsterBreakRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSMonsterBreakRetOrBuilder {
+    // Use HSMonsterBreakRet.newBuilder() to construct.
+    private HSMonsterBreakRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSMonsterBreakRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSMonsterBreakRet defaultInstance;
+    public static HSMonsterBreakRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSMonsterBreakRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSMonsterBreakRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              status_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              monsterId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterBreakRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterBreakRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Monster.HSMonsterBreakRet.class, com.hawk.game.protocol.Monster.HSMonsterBreakRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSMonsterBreakRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSMonsterBreakRet>() {
+      public HSMonsterBreakRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSMonsterBreakRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSMonsterBreakRet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 status = 1;
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private int status_;
+    /**
+     * <code>required int32 status = 1;</code>
+     */
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 status = 1;</code>
+     */
+    public int getStatus() {
+      return status_;
+    }
+
+    // required int32 monsterId = 2;
+    public static final int MONSTERID_FIELD_NUMBER = 2;
+    private int monsterId_;
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    private void initFields() {
+      status_ = 0;
+      monsterId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasStatus()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, status_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, monsterId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, status_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, monsterId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Monster.HSMonsterBreakRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreakRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreakRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreakRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreakRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreakRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreakRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreakRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreakRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterBreakRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Monster.HSMonsterBreakRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSMonsterBreakRet}
+     *
+     * <pre>
+     * MONSTER_BREAK_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Monster.HSMonsterBreakRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterBreakRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterBreakRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Monster.HSMonsterBreakRet.class, com.hawk.game.protocol.Monster.HSMonsterBreakRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Monster.HSMonsterBreakRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        status_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterBreakRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterBreakRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Monster.HSMonsterBreakRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterBreakRet build() {
+        com.hawk.game.protocol.Monster.HSMonsterBreakRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterBreakRet buildPartial() {
+        com.hawk.game.protocol.Monster.HSMonsterBreakRet result = new com.hawk.game.protocol.Monster.HSMonsterBreakRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.status_ = status_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.monsterId_ = monsterId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Monster.HSMonsterBreakRet) {
+          return mergeFrom((com.hawk.game.protocol.Monster.HSMonsterBreakRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Monster.HSMonsterBreakRet other) {
+        if (other == com.hawk.game.protocol.Monster.HSMonsterBreakRet.getDefaultInstance()) return this;
+        if (other.hasStatus()) {
+          setStatus(other.getStatus());
+        }
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasStatus()) {
+          
+          return false;
+        }
+        if (!hasMonsterId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Monster.HSMonsterBreakRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Monster.HSMonsterBreakRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 status = 1;
+      private int status_ ;
+      /**
+       * <code>required int32 status = 1;</code>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 status = 1;</code>
+       */
+      public int getStatus() {
+        return status_;
+      }
+      /**
+       * <code>required int32 status = 1;</code>
+       */
+      public Builder setStatus(int value) {
+        bitField0_ |= 0x00000001;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 status = 1;</code>
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        status_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 monsterId = 2;
+      private int monsterId_ ;
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000002;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSMonsterBreakRet)
+    }
+
+    static {
+      defaultInstance = new HSMonsterBreakRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSMonsterBreakRet)
+  }
+
+  public interface HSMonsterFeedOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 monsterId = 1;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    int getMonsterId();
+
+    // required int32 foodMonsterId = 2;
+    /**
+     * <code>required int32 foodMonsterId = 2;</code>
+     */
+    boolean hasFoodMonsterId();
+    /**
+     * <code>required int32 foodMonsterId = 2;</code>
+     */
+    int getFoodMonsterId();
+  }
+  /**
+   * Protobuf type {@code HSMonsterFeed}
+   *
+   * <pre>
+   *MONSTER_FEED_C
+   * </pre>
+   */
+  public static final class HSMonsterFeed extends
+      com.google.protobuf.GeneratedMessage
+      implements HSMonsterFeedOrBuilder {
+    // Use HSMonsterFeed.newBuilder() to construct.
+    private HSMonsterFeed(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSMonsterFeed(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSMonsterFeed defaultInstance;
+    public static HSMonsterFeed getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSMonsterFeed getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSMonsterFeed(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              monsterId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              foodMonsterId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterFeed_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterFeed_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Monster.HSMonsterFeed.class, com.hawk.game.protocol.Monster.HSMonsterFeed.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSMonsterFeed> PARSER =
+        new com.google.protobuf.AbstractParser<HSMonsterFeed>() {
+      public HSMonsterFeed parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSMonsterFeed(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSMonsterFeed> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 monsterId = 1;
+    public static final int MONSTERID_FIELD_NUMBER = 1;
+    private int monsterId_;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    // required int32 foodMonsterId = 2;
+    public static final int FOODMONSTERID_FIELD_NUMBER = 2;
+    private int foodMonsterId_;
+    /**
+     * <code>required int32 foodMonsterId = 2;</code>
+     */
+    public boolean hasFoodMonsterId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 foodMonsterId = 2;</code>
+     */
+    public int getFoodMonsterId() {
+      return foodMonsterId_;
+    }
+
+    private void initFields() {
+      monsterId_ = 0;
+      foodMonsterId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFoodMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, foodMonsterId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, foodMonsterId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Monster.HSMonsterFeed parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeed parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeed parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeed parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeed parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeed parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeed parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeed parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeed parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeed parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Monster.HSMonsterFeed prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSMonsterFeed}
+     *
+     * <pre>
+     *MONSTER_FEED_C
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Monster.HSMonsterFeedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterFeed_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterFeed_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Monster.HSMonsterFeed.class, com.hawk.game.protocol.Monster.HSMonsterFeed.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Monster.HSMonsterFeed.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        monsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        foodMonsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterFeed_descriptor;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterFeed getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Monster.HSMonsterFeed.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterFeed build() {
+        com.hawk.game.protocol.Monster.HSMonsterFeed result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterFeed buildPartial() {
+        com.hawk.game.protocol.Monster.HSMonsterFeed result = new com.hawk.game.protocol.Monster.HSMonsterFeed(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.monsterId_ = monsterId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.foodMonsterId_ = foodMonsterId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Monster.HSMonsterFeed) {
+          return mergeFrom((com.hawk.game.protocol.Monster.HSMonsterFeed)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Monster.HSMonsterFeed other) {
+        if (other == com.hawk.game.protocol.Monster.HSMonsterFeed.getDefaultInstance()) return this;
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
+        if (other.hasFoodMonsterId()) {
+          setFoodMonsterId(other.getFoodMonsterId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMonsterId()) {
+          
+          return false;
+        }
+        if (!hasFoodMonsterId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Monster.HSMonsterFeed parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Monster.HSMonsterFeed) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 monsterId = 1;
+      private int monsterId_ ;
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000001;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 foodMonsterId = 2;
+      private int foodMonsterId_ ;
+      /**
+       * <code>required int32 foodMonsterId = 2;</code>
+       */
+      public boolean hasFoodMonsterId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 foodMonsterId = 2;</code>
+       */
+      public int getFoodMonsterId() {
+        return foodMonsterId_;
+      }
+      /**
+       * <code>required int32 foodMonsterId = 2;</code>
+       */
+      public Builder setFoodMonsterId(int value) {
+        bitField0_ |= 0x00000002;
+        foodMonsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 foodMonsterId = 2;</code>
+       */
+      public Builder clearFoodMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        foodMonsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSMonsterFeed)
+    }
+
+    static {
+      defaultInstance = new HSMonsterFeed(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSMonsterFeed)
+  }
+
+  public interface HSMonsterFeedRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 status = 1;
+    /**
+     * <code>required int32 status = 1;</code>
+     */
+    boolean hasStatus();
+    /**
+     * <code>required int32 status = 1;</code>
+     */
+    int getStatus();
+
+    // required int32 monsterId = 2;
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     */
+    int getMonsterId();
+  }
+  /**
+   * Protobuf type {@code HSMonsterFeedRet}
+   *
+   * <pre>
+   * MONSTER_FEED_S
+   * </pre>
+   */
+  public static final class HSMonsterFeedRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSMonsterFeedRetOrBuilder {
+    // Use HSMonsterFeedRet.newBuilder() to construct.
+    private HSMonsterFeedRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSMonsterFeedRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSMonsterFeedRet defaultInstance;
+    public static HSMonsterFeedRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSMonsterFeedRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSMonsterFeedRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              status_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              monsterId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterFeedRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterFeedRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Monster.HSMonsterFeedRet.class, com.hawk.game.protocol.Monster.HSMonsterFeedRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSMonsterFeedRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSMonsterFeedRet>() {
+      public HSMonsterFeedRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSMonsterFeedRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSMonsterFeedRet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 status = 1;
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private int status_;
+    /**
+     * <code>required int32 status = 1;</code>
+     */
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 status = 1;</code>
+     */
+    public int getStatus() {
+      return status_;
+    }
+
+    // required int32 monsterId = 2;
+    public static final int MONSTERID_FIELD_NUMBER = 2;
+    private int monsterId_;
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    private void initFields() {
+      status_ = 0;
+      monsterId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasStatus()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, status_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, monsterId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, status_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, monsterId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Monster.HSMonsterFeedRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeedRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeedRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeedRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeedRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeedRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeedRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeedRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeedRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterFeedRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Monster.HSMonsterFeedRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSMonsterFeedRet}
+     *
+     * <pre>
+     * MONSTER_FEED_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Monster.HSMonsterFeedRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterFeedRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterFeedRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Monster.HSMonsterFeedRet.class, com.hawk.game.protocol.Monster.HSMonsterFeedRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Monster.HSMonsterFeedRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        status_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterFeedRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterFeedRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Monster.HSMonsterFeedRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterFeedRet build() {
+        com.hawk.game.protocol.Monster.HSMonsterFeedRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterFeedRet buildPartial() {
+        com.hawk.game.protocol.Monster.HSMonsterFeedRet result = new com.hawk.game.protocol.Monster.HSMonsterFeedRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.status_ = status_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.monsterId_ = monsterId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Monster.HSMonsterFeedRet) {
+          return mergeFrom((com.hawk.game.protocol.Monster.HSMonsterFeedRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Monster.HSMonsterFeedRet other) {
+        if (other == com.hawk.game.protocol.Monster.HSMonsterFeedRet.getDefaultInstance()) return this;
+        if (other.hasStatus()) {
+          setStatus(other.getStatus());
+        }
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasStatus()) {
+          
+          return false;
+        }
+        if (!hasMonsterId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Monster.HSMonsterFeedRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Monster.HSMonsterFeedRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 status = 1;
+      private int status_ ;
+      /**
+       * <code>required int32 status = 1;</code>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 status = 1;</code>
+       */
+      public int getStatus() {
+        return status_;
+      }
+      /**
+       * <code>required int32 status = 1;</code>
+       */
+      public Builder setStatus(int value) {
+        bitField0_ |= 0x00000001;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 status = 1;</code>
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        status_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 monsterId = 2;
+      private int monsterId_ ;
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000002;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSMonsterFeedRet)
+    }
+
+    static {
+      defaultInstance = new HSMonsterFeedRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSMonsterFeedRet)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSMonster_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSMonster_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSMonsterAdd_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSMonsterAdd_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSMonsterBreak_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSMonsterBreak_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSMonsterBreakRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSMonsterBreakRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSMonsterFeed_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSMonsterFeed_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSMonsterFeedRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSMonsterFeedRet_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -434,8 +3886,19 @@ public final class Monster {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rMonster.proto\"\036\n\tHSMonster\022\021\n\tmonsterI" +
-      "d\030\001 \002(\005B\030\n\026com.hawk.game.protocol"
+      "\n\rMonster.proto\032\013Skill.proto\"\234\001\n\tHSMonst" +
+      "er\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005cfgId\030\002 \002(\005\022\r\n\005" +
+      "grade\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\022" +
+      "\020\n\010hasEquip\030\006 \002(\010\022\023\n\013disposition\030\007 \002(\005\022\033" +
+      "\n\tskillList\030\010 \003(\0132\010.HSSkill\";\n\014HSMonster" +
+      "Add\022\033\n\007monster\030\001 \002(\0132\n.HSMonster\022\016\n\006reas" +
+      "on\030\002 \001(\005\"#\n\016HSMonsterBreak\022\021\n\tmonsterId\030" +
+      "\001 \002(\005\"6\n\021HSMonsterBreakRet\022\016\n\006status\030\001 \002" +
+      "(\005\022\021\n\tmonsterId\030\002 \002(\005\"9\n\rHSMonsterFeed\022\021" +
+      "\n\tmonsterId\030\001 \002(\005\022\025\n\rfoodMonsterId\030\002 \002(\005",
+      "\"5\n\020HSMonsterFeedRet\022\016\n\006status\030\001 \002(\005\022\021\n\t" +
+      "monsterId\030\002 \002(\005B\030\n\026com.hawk.game.protoco" +
+      "l"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -447,13 +3910,44 @@ public final class Monster {
           internal_static_HSMonster_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonster_descriptor,
+              new java.lang.String[] { "MonsterId", "CfgId", "Grade", "Level", "Exp", "HasEquip", "Disposition", "SkillList", });
+          internal_static_HSMonsterAdd_descriptor =
+            getDescriptor().getMessageTypes().get(1);
+          internal_static_HSMonsterAdd_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSMonsterAdd_descriptor,
+              new java.lang.String[] { "Monster", "Reason", });
+          internal_static_HSMonsterBreak_descriptor =
+            getDescriptor().getMessageTypes().get(2);
+          internal_static_HSMonsterBreak_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSMonsterBreak_descriptor,
               new java.lang.String[] { "MonsterId", });
+          internal_static_HSMonsterBreakRet_descriptor =
+            getDescriptor().getMessageTypes().get(3);
+          internal_static_HSMonsterBreakRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSMonsterBreakRet_descriptor,
+              new java.lang.String[] { "Status", "MonsterId", });
+          internal_static_HSMonsterFeed_descriptor =
+            getDescriptor().getMessageTypes().get(4);
+          internal_static_HSMonsterFeed_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSMonsterFeed_descriptor,
+              new java.lang.String[] { "MonsterId", "FoodMonsterId", });
+          internal_static_HSMonsterFeedRet_descriptor =
+            getDescriptor().getMessageTypes().get(5);
+          internal_static_HSMonsterFeedRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSMonsterFeedRet_descriptor,
+              new java.lang.String[] { "Status", "MonsterId", });
           return null;
         }
       };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.hawk.game.protocol.Skill.getDescriptor(),
         }, assigner);
   }
 

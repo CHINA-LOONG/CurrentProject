@@ -50,6 +50,8 @@ public class GsConst {
 		public static int LOGIN_MODULE = 1;
 		// 角色模块
 		public static int ROLE_MODULE = 2;
+		// 怪物模块
+		public static int MONSTER_MODULE = 3;
 		
 		// 空闲模块(保证在最后)
 		public static int IDLE_MODULE = 100;
