@@ -51,9 +51,6 @@ public class MonsterEntity extends HawkDBEntity {
 	@Column(name = "exp", nullable = false)
 	protected int exp = 0;
 
-	@Column(name = "hasEquip", nullable = false)
-	protected boolean hasEquip = false;
-
 	@Column(name = "disposition", nullable = false)
 	protected byte disposition = 0;
 
@@ -73,19 +70,21 @@ public class MonsterEntity extends HawkDBEntity {
 	protected Map<Integer, Integer> skillMap = new HashMap<Integer, Integer>();
 	
 	@Transient
+	protected long equipId = 0;
+	
+	@Transient
 	private boolean assembleFinish = false;
 
 	public MonsterEntity() {
 		this.createTime = HawkTime.getCalendar().getTime();
 	}
 
-	public MonsterEntity(int cfgId, int roleId, int grade, int level, int exp, boolean hasEquip, byte disposition) {
+	public MonsterEntity(int cfgId, int roleId, int grade, int level, int exp, byte disposition) {
 		this.cfgId = cfgId;
 		this.roleId = roleId;
 		this.grade = grade;
 		this.level = level;
 		this.exp = exp;
-		this.hasEquip = hasEquip;
 		this.disposition = disposition;
 		this.createTime = HawkTime.getCalendar().getTime();
 	}
@@ -177,14 +176,6 @@ public class MonsterEntity extends HawkDBEntity {
 
 	public void setExp(int exp) {
 		this.exp = exp;
-	}
-
-	public boolean getHasEquip() {
-		return hasEquip;
-	}
-
-	public void setHasEquip(boolean hasEquip) {
-		this.hasEquip = hasEquip;
 	}
 
 	public byte getDisposition() {

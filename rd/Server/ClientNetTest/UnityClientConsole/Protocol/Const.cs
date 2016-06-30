@@ -44,4 +44,21 @@ namespace PB
       SERVER_RESTART = 5
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"RewardReason")]
+    public enum RewardReason
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SYS_PRESENT", Value=1)]
+      SYS_PRESENT = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"NPC", Value=2)]
+      NPC = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST", Value=3)]
+      QUEST = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ACITVITY", Value=4)]
+      ACITVITY = 4
+    }
+  
 }

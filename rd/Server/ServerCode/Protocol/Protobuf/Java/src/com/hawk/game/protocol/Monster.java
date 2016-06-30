@@ -61,15 +61,15 @@ public final class Monster {
      */
     int getExp();
 
-    // required bool hasEquip = 6;
+    // required int32 equipId = 6;
     /**
-     * <code>required bool hasEquip = 6;</code>
+     * <code>required int32 equipId = 6;</code>
      */
-    boolean hasHasEquip();
+    boolean hasEquipId();
     /**
-     * <code>required bool hasEquip = 6;</code>
+     * <code>required int32 equipId = 6;</code>
      */
-    boolean getHasEquip();
+    int getEquipId();
 
     // required int32 disposition = 7;
     /**
@@ -184,7 +184,7 @@ public final class Monster {
             }
             case 48: {
               bitField0_ |= 0x00000020;
-              hasEquip_ = input.readBool();
+              equipId_ = input.readInt32();
               break;
             }
             case 56: {
@@ -323,20 +323,20 @@ public final class Monster {
       return exp_;
     }
 
-    // required bool hasEquip = 6;
-    public static final int HASEQUIP_FIELD_NUMBER = 6;
-    private boolean hasEquip_;
+    // required int32 equipId = 6;
+    public static final int EQUIPID_FIELD_NUMBER = 6;
+    private int equipId_;
     /**
-     * <code>required bool hasEquip = 6;</code>
+     * <code>required int32 equipId = 6;</code>
      */
-    public boolean hasHasEquip() {
+    public boolean hasEquipId() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>required bool hasEquip = 6;</code>
+     * <code>required int32 equipId = 6;</code>
      */
-    public boolean getHasEquip() {
-      return hasEquip_;
+    public int getEquipId() {
+      return equipId_;
     }
 
     // required int32 disposition = 7;
@@ -397,7 +397,7 @@ public final class Monster {
       grade_ = 0;
       level_ = 0;
       exp_ = 0;
-      hasEquip_ = false;
+      equipId_ = 0;
       disposition_ = 0;
       skillList_ = java.util.Collections.emptyList();
     }
@@ -426,7 +426,7 @@ public final class Monster {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasHasEquip()) {
+      if (!hasEquipId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -463,7 +463,7 @@ public final class Monster {
         output.writeInt32(5, exp_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeBool(6, hasEquip_);
+        output.writeInt32(6, equipId_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(7, disposition_);
@@ -502,7 +502,7 @@ public final class Monster {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(6, hasEquip_);
+          .computeInt32Size(6, equipId_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
@@ -639,7 +639,7 @@ public final class Monster {
         bitField0_ = (bitField0_ & ~0x00000008);
         exp_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        hasEquip_ = false;
+        equipId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
         disposition_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
@@ -700,7 +700,7 @@ public final class Monster {
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.hasEquip_ = hasEquip_;
+        result.equipId_ = equipId_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
@@ -745,8 +745,8 @@ public final class Monster {
         if (other.hasExp()) {
           setExp(other.getExp());
         }
-        if (other.hasHasEquip()) {
-          setHasEquip(other.getHasEquip());
+        if (other.hasEquipId()) {
+          setEquipId(other.getEquipId());
         }
         if (other.hasDisposition()) {
           setDisposition(other.getDisposition());
@@ -802,7 +802,7 @@ public final class Monster {
           
           return false;
         }
-        if (!hasHasEquip()) {
+        if (!hasEquipId()) {
           
           return false;
         }
@@ -1003,35 +1003,35 @@ public final class Monster {
         return this;
       }
 
-      // required bool hasEquip = 6;
-      private boolean hasEquip_ ;
+      // required int32 equipId = 6;
+      private int equipId_ ;
       /**
-       * <code>required bool hasEquip = 6;</code>
+       * <code>required int32 equipId = 6;</code>
        */
-      public boolean hasHasEquip() {
+      public boolean hasEquipId() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>required bool hasEquip = 6;</code>
+       * <code>required int32 equipId = 6;</code>
        */
-      public boolean getHasEquip() {
-        return hasEquip_;
+      public int getEquipId() {
+        return equipId_;
       }
       /**
-       * <code>required bool hasEquip = 6;</code>
+       * <code>required int32 equipId = 6;</code>
        */
-      public Builder setHasEquip(boolean value) {
+      public Builder setEquipId(int value) {
         bitField0_ |= 0x00000020;
-        hasEquip_ = value;
+        equipId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required bool hasEquip = 6;</code>
+       * <code>required int32 equipId = 6;</code>
        */
-      public Builder clearHasEquip() {
+      public Builder clearEquipId() {
         bitField0_ = (bitField0_ & ~0x00000020);
-        hasEquip_ = false;
+        equipId_ = 0;
         onChanged();
         return this;
       }
@@ -3368,6 +3368,36 @@ public final class Monster {
      * <code>required int32 monsterId = 2;</code>
      */
     int getMonsterId();
+
+    // required int32 foodMonsterId = 3;
+    /**
+     * <code>required int32 foodMonsterId = 3;</code>
+     */
+    boolean hasFoodMonsterId();
+    /**
+     * <code>required int32 foodMonsterId = 3;</code>
+     */
+    int getFoodMonsterId();
+
+    // optional int32 exp = 4;
+    /**
+     * <code>optional int32 exp = 4;</code>
+     */
+    boolean hasExp();
+    /**
+     * <code>optional int32 exp = 4;</code>
+     */
+    int getExp();
+
+    // optional int32 level = 5;
+    /**
+     * <code>optional int32 level = 5;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>optional int32 level = 5;</code>
+     */
+    int getLevel();
   }
   /**
    * Protobuf type {@code HSMonsterFeedRet}
@@ -3432,6 +3462,21 @@ public final class Monster {
             case 16: {
               bitField0_ |= 0x00000002;
               monsterId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              foodMonsterId_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              exp_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              level_ = input.readInt32();
               break;
             }
           }
@@ -3506,9 +3551,60 @@ public final class Monster {
       return monsterId_;
     }
 
+    // required int32 foodMonsterId = 3;
+    public static final int FOODMONSTERID_FIELD_NUMBER = 3;
+    private int foodMonsterId_;
+    /**
+     * <code>required int32 foodMonsterId = 3;</code>
+     */
+    public boolean hasFoodMonsterId() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 foodMonsterId = 3;</code>
+     */
+    public int getFoodMonsterId() {
+      return foodMonsterId_;
+    }
+
+    // optional int32 exp = 4;
+    public static final int EXP_FIELD_NUMBER = 4;
+    private int exp_;
+    /**
+     * <code>optional int32 exp = 4;</code>
+     */
+    public boolean hasExp() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 exp = 4;</code>
+     */
+    public int getExp() {
+      return exp_;
+    }
+
+    // optional int32 level = 5;
+    public static final int LEVEL_FIELD_NUMBER = 5;
+    private int level_;
+    /**
+     * <code>optional int32 level = 5;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 level = 5;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
     private void initFields() {
       status_ = 0;
       monsterId_ = 0;
+      foodMonsterId_ = 0;
+      exp_ = 0;
+      level_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3520,6 +3616,10 @@ public final class Monster {
         return false;
       }
       if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFoodMonsterId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3535,6 +3635,15 @@ public final class Monster {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, monsterId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, foodMonsterId_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, exp_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, level_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3552,6 +3661,18 @@ public final class Monster {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, monsterId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, foodMonsterId_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, exp_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, level_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3677,6 +3798,12 @@ public final class Monster {
         bitField0_ = (bitField0_ & ~0x00000001);
         monsterId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        foodMonsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        exp_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -3713,6 +3840,18 @@ public final class Monster {
           to_bitField0_ |= 0x00000002;
         }
         result.monsterId_ = monsterId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.foodMonsterId_ = foodMonsterId_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.exp_ = exp_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.level_ = level_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3735,6 +3874,15 @@ public final class Monster {
         if (other.hasMonsterId()) {
           setMonsterId(other.getMonsterId());
         }
+        if (other.hasFoodMonsterId()) {
+          setFoodMonsterId(other.getFoodMonsterId());
+        }
+        if (other.hasExp()) {
+          setExp(other.getExp());
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -3745,6 +3893,10 @@ public final class Monster {
           return false;
         }
         if (!hasMonsterId()) {
+          
+          return false;
+        }
+        if (!hasFoodMonsterId()) {
           
           return false;
         }
@@ -3836,6 +3988,105 @@ public final class Monster {
         return this;
       }
 
+      // required int32 foodMonsterId = 3;
+      private int foodMonsterId_ ;
+      /**
+       * <code>required int32 foodMonsterId = 3;</code>
+       */
+      public boolean hasFoodMonsterId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 foodMonsterId = 3;</code>
+       */
+      public int getFoodMonsterId() {
+        return foodMonsterId_;
+      }
+      /**
+       * <code>required int32 foodMonsterId = 3;</code>
+       */
+      public Builder setFoodMonsterId(int value) {
+        bitField0_ |= 0x00000004;
+        foodMonsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 foodMonsterId = 3;</code>
+       */
+      public Builder clearFoodMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        foodMonsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 exp = 4;
+      private int exp_ ;
+      /**
+       * <code>optional int32 exp = 4;</code>
+       */
+      public boolean hasExp() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 exp = 4;</code>
+       */
+      public int getExp() {
+        return exp_;
+      }
+      /**
+       * <code>optional int32 exp = 4;</code>
+       */
+      public Builder setExp(int value) {
+        bitField0_ |= 0x00000008;
+        exp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 exp = 4;</code>
+       */
+      public Builder clearExp() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        exp_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level = 5;
+      private int level_ ;
+      /**
+       * <code>optional int32 level = 5;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int32 level = 5;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional int32 level = 5;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000010;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level = 5;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:HSMonsterFeedRet)
     }
 
@@ -3886,19 +4137,20 @@ public final class Monster {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rMonster.proto\032\013Skill.proto\"\234\001\n\tHSMonst" +
+      "\n\rMonster.proto\032\013Skill.proto\"\233\001\n\tHSMonst" +
       "er\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005cfgId\030\002 \002(\005\022\r\n\005" +
       "grade\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\022" +
-      "\020\n\010hasEquip\030\006 \002(\010\022\023\n\013disposition\030\007 \002(\005\022\033" +
-      "\n\tskillList\030\010 \003(\0132\010.HSSkill\";\n\014HSMonster" +
-      "Add\022\033\n\007monster\030\001 \002(\0132\n.HSMonster\022\016\n\006reas" +
-      "on\030\002 \001(\005\"#\n\016HSMonsterBreak\022\021\n\tmonsterId\030" +
-      "\001 \002(\005\"6\n\021HSMonsterBreakRet\022\016\n\006status\030\001 \002" +
-      "(\005\022\021\n\tmonsterId\030\002 \002(\005\"9\n\rHSMonsterFeed\022\021" +
-      "\n\tmonsterId\030\001 \002(\005\022\025\n\rfoodMonsterId\030\002 \002(\005",
-      "\"5\n\020HSMonsterFeedRet\022\016\n\006status\030\001 \002(\005\022\021\n\t" +
-      "monsterId\030\002 \002(\005B\030\n\026com.hawk.game.protoco" +
-      "l"
+      "\017\n\007equipId\030\006 \002(\005\022\023\n\013disposition\030\007 \002(\005\022\033\n" +
+      "\tskillList\030\010 \003(\0132\010.HSSkill\";\n\014HSMonsterA" +
+      "dd\022\033\n\007monster\030\001 \002(\0132\n.HSMonster\022\016\n\006reaso" +
+      "n\030\002 \001(\005\"#\n\016HSMonsterBreak\022\021\n\tmonsterId\030\001" +
+      " \002(\005\"6\n\021HSMonsterBreakRet\022\016\n\006status\030\001 \002(" +
+      "\005\022\021\n\tmonsterId\030\002 \002(\005\"9\n\rHSMonsterFeed\022\021\n" +
+      "\tmonsterId\030\001 \002(\005\022\025\n\rfoodMonsterId\030\002 \002(\005\"",
+      "h\n\020HSMonsterFeedRet\022\016\n\006status\030\001 \002(\005\022\021\n\tm" +
+      "onsterId\030\002 \002(\005\022\025\n\rfoodMonsterId\030\003 \002(\005\022\013\n" +
+      "\003exp\030\004 \001(\005\022\r\n\005level\030\005 \001(\005B\030\n\026com.hawk.ga" +
+      "me.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3910,7 +4162,7 @@ public final class Monster {
           internal_static_HSMonster_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonster_descriptor,
-              new java.lang.String[] { "MonsterId", "CfgId", "Grade", "Level", "Exp", "HasEquip", "Disposition", "SkillList", });
+              new java.lang.String[] { "MonsterId", "CfgId", "Grade", "Level", "Exp", "EquipId", "Disposition", "SkillList", });
           internal_static_HSMonsterAdd_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_HSMonsterAdd_fieldAccessorTable = new
@@ -3940,7 +4192,7 @@ public final class Monster {
           internal_static_HSMonsterFeedRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonsterFeedRet_descriptor,
-              new java.lang.String[] { "Status", "MonsterId", });
+              new java.lang.String[] { "Status", "MonsterId", "FoodMonsterId", "Exp", "Level", });
           return null;
         }
       };
