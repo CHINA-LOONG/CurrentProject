@@ -92,6 +92,9 @@
     <ClCompile Include="..\src\core\common\SysLogNet.cpp" />
     <ClCompile Include="..\src\core\common\tcrdb_win.cpp" />
     <ClCompile Include="..\src\core\config\ServerConfig.cpp" />
+    <ClCompile Include="..\src\core\handle\DataHandler.cpp" />
+    <ClCompile Include="..\src\core\handle\EventHandler.cpp" />
+    <ClCompile Include="..\src\core\handle\EventQueue.cpp" />
     <ClCompile Include="..\src\core\net\NetCache.cpp" />
     <ClCompile Include="..\src\core\net\NetHandler.cpp" />
     <ClCompile Include="..\src\core\net\ProtocolHandler.cpp" />
@@ -101,10 +104,7 @@
     <ClCompile Include="..\src\event\AchievementItem.pb.cpp" />
     <ClCompile Include="..\src\event\BagItem.pb.cpp" />
     <ClCompile Include="..\src\event\BroadcastMessage.pb.cpp" />
-    <ClCompile Include="..\src\event\DataHandler.cpp" />
     <ClCompile Include="..\src\event\event.pb.cpp" />
-    <ClCompile Include="..\src\event\EventHandler.cpp" />
-    <ClCompile Include="..\src\event\EventQueue.cpp" />
     <ClCompile Include="..\src\event\FriendInfoLite.pb.cpp" />
     <ClCompile Include="..\src\event\LeaveMessage.pb.cpp" />
     <ClCompile Include="..\src\event\MceActionInfo.pb.cpp" />
@@ -148,6 +148,10 @@
     <ClInclude Include="..\src\core\common\tcrdb_win.h" />
     <ClInclude Include="..\src\core\common\TicTac.h" />
     <ClInclude Include="..\src\core\config\ServerConfig.h" />
+    <ClInclude Include="..\src\core\handle\DataHandler.h" />
+    <ClInclude Include="..\src\core\handle\EventDefine.h" />
+    <ClInclude Include="..\src\core\handle\EventHandler.h" />
+    <ClInclude Include="..\src\core\handle\EventQueue.h" />
     <ClInclude Include="..\src\core\net\NetCache.h" />
     <ClInclude Include="..\src\core\net\NetHandler.h" />
     <ClInclude Include="..\src\core\net\ProtocolHandler.h" />
@@ -158,11 +162,7 @@
     <ClInclude Include="..\src\event\AchievementItem.pb.h" />
     <ClInclude Include="..\src\event\BagItem.pb.h" />
     <ClInclude Include="..\src\event\BroadcastMessage.pb.h" />
-    <ClInclude Include="..\src\event\DataHandler.h" />
     <ClInclude Include="..\src\event\event.pb.h" />
-    <ClInclude Include="..\src\event\EventDefine.h" />
-    <ClInclude Include="..\src\event\EventHandler.h" />
-    <ClInclude Include="..\src\event\EventQueue.h" />
     <ClInclude Include="..\src\event\FriendInfoLite.pb.h" />
     <ClInclude Include="..\src\event\LeaveMessage.pb.h" />
     <ClInclude Include="..\src\event\MceActionInfo.pb.h" />

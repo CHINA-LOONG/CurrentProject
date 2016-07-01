@@ -150,17 +150,17 @@
     <ClCompile Include="..\src\event\event.pb.cpp">
       <Filter>event</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\event\DataHandler.cpp">
-      <Filter>handler</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\event\EventHandler.cpp">
-      <Filter>handler</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\event\EventQueue.cpp">
-      <Filter>handler</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\core\config\ServerConfig.cpp">
       <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\handle\DataHandler.cpp">
+      <Filter>handler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\handle\EventHandler.cpp">
+      <Filter>handler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\handle\EventQueue.cpp">
+      <Filter>handler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -317,20 +317,20 @@
     <ClInclude Include="..\src\event\event.pb.h">
       <Filter>event</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\event\DataHandler.h">
-      <Filter>handler</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\event\EventDefine.h">
-      <Filter>handler</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\event\EventHandler.h">
-      <Filter>handler</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\event\EventQueue.h">
-      <Filter>handler</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\core\config\ServerConfig.h">
       <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\handle\DataHandler.h">
+      <Filter>handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\handle\EventDefine.h">
+      <Filter>handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\handle\EventHandler.h">
+      <Filter>handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\handle\EventQueue.h">
+      <Filter>handler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

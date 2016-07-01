@@ -14,7 +14,9 @@ public class GameEventList
     public static string StartBattle = "StartBattle";  //param: PbStartBattle    
 
     //process
-    public static string SwitchPet = "SwitchPet";
+    public static string SwitchPet = "SwitchPet";//param <int,int>
+	public static string ShowSwitchPetUI = "ShowSwitchPetUI";//param  int
+	public static string HideSwitchPetUI = "HideSwitchPetUI";//no param
     
     //spell
     public static string FireSpell = "FireSpell";

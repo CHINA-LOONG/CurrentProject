@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIBattle : UIBase
 {
@@ -14,6 +15,9 @@ public class UIBattle : UIBase
 	public List<Image> m_SpeedNumImageList = new List<Image>();
 	public Toggle m_ToggleMirror = null;
 	public Toggle m_ToggleBattleStyle = null;
+
+	private GameObject m_PetPanelGameObject = null;
+	public List<Image> m_PetImageList = new List<Image>();
 	
 	private	MirrorDray	m_MirrorDray = null;
 
@@ -33,12 +37,33 @@ public class UIBattle : UIBase
 
 		m_ToggleMirror.isOn = false;
 		m_MirrorImage.gameObject.SetActive (false);
+		m_PetPanelGameObject = m_PetImageList [0].transform.parent.gameObject;
+		m_PetPanelGameObject.SetActive (false);
+
 		AddUIObjectEvent ();
+		BindListener ();
+	}
+
+	void OnDestory()
+	{
+		UnBindListener ();
+	}
+
+	void BindListener()
+	{
+		GameEventMgr.Instance.AddListener<int>(GameEventList.ShowSwitchPetUI, OnShowSwitchPetUIAtIndex);
+		GameEventMgr.Instance.AddListener (GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
+	}
+	
+	void UnBindListener()
+	{
+		GameEventMgr.Instance.RemoveListener<int> (GameEventList.ShowSwitchPetUI, OnShowSwitchPetUIAtIndex);
+		GameEventMgr.Instance.RemoveListener (GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
 	}
 
 	void AddUIObjectEvent()
 	{
-		EventTriggerListener.Get (m_ButtonLeft.gameObject).onClick = OnButtonDaojuClicked;
+		EventTriggerListener.Get (m_ButtonLeft.gameObject).onClick = OnButtonLeftCllicked;
 		EventTriggerListener.Get (m_ButtonDaoju.gameObject).onClick = OnButtonDaojuClicked;
 		EventTriggerListener.Get (m_ButtonSpeed.gameObject).onClick = OnButtonSpeedClicked;
 
@@ -48,10 +73,13 @@ public class UIBattle : UIBase
 
 	void	OnButtonLeftCllicked(GameObject go)
 	{
+		m_PetPanelGameObject.SetActive (true);
+		GameEventMgr.Instance.FireEvent<int> (GameEventList.ShowSwitchPetUI, 1);
 	}
 
 	void OnButtonDaojuClicked(GameObject go)
 	{
+		GameEventMgr.Instance.FireEvent (GameEventList.HideSwitchPetUI);
 	}
 
 	void OnButtonSpeedClicked(GameObject go)
@@ -96,5 +124,17 @@ public class UIBattle : UIBase
 	void OnToggleBattleStyleClicked(GameObject go)
 	{
 
+	}
+
+	//switch pet
+	void OnShowSwitchPetUIAtIndex( int posIndex)
+	{
+		OnHideSwitchPetUI ();
+		m_PetPanelGameObject.SetActive (true);
+	}
+	
+	void OnHideSwitchPetUI()
+	{
+		m_PetPanelGameObject.SetActive (false);
 	}
 }

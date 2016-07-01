@@ -18,14 +18,12 @@ GameConfigMgr::~GameConfigMgr(void)
   
 }
 
-
 void
 GameConfigMgr::LoadRuntimeConfig()
 {
     GameConfig::GetInstance()->LoadInfo();
     GameConfig::GetInstance()->LoadWebPath();
     LoadHotCacheDBConfig();
-  
 }
 
 void

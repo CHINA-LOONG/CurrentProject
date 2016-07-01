@@ -53,4 +53,30 @@ public class BattleModule : ModuleBase
         Destroy(controller);
         Destroy(process);
     }
+
+	void LateUpdate()
+	{
+		if (Input.GetMouseButtonUp (0)) 
+		{
+			Ray r = BattleCamera.Instance.CameraAttr.ScreenPointToRay(Input.mousePosition);
+			RaycastHit rh;
+			if (Physics.Raycast(r, out rh))
+			{
+				//test 
+				MirrorTarget target = rh.collider.GetComponent<MirrorTarget>();
+				if (target != null)
+				{
+					GameEventMgr.Instance.FireEvent<int>(GameEventList.ShowSwitchPetUI,0);
+				}
+				else
+				{
+					GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
+				}
+			}
+			else
+			{
+				GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
+			}
+		}
+	}
 }
