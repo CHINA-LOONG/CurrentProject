@@ -5,6 +5,7 @@ public class PrefabLoadMgr
 {
 	static string   UIPrefabPath	= "Assets/cmsAsset/prefabs/UI/";
 	static string   BattleScenePrefabPath = "Assets/cmsAsset/prefabs/battleScene/";
+	static string   CameraPrefabPath = "Assets/cmsAsset/prefabs/camera/";
 
 	static public GameObject LoadUIPrefab(string name)
 	{
@@ -14,6 +15,11 @@ public class PrefabLoadMgr
 	static	public GameObject LoadBattleScenePrefab(string name)
 	{
 		return LoadPrefabWithFullPath (BattleScenePrefabPath + name + ".prefab");
+	}
+
+	static	public	GameObject LoadCameraPrefab(string name)
+	{
+		return LoadPrefabWithFullPath (CameraPrefabPath + name + ".prefab");
 	}
 
 	static public GameObject LoadPrefabWithFullPath(string fullPath)

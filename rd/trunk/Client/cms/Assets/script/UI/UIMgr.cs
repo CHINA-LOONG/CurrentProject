@@ -3,6 +3,16 @@ using System.Collections;
 
 public class UIMgr : MonoBehaviour 
 {
+	[SerializeField]
+	RectTransform	m_rootRectTransform;
+	public	RectTransform	RootRectTransform
+	{
+		get
+		{
+			return	m_rootRectTransform;
+		}
+	}
+
 	static UIMgr mInst = null;
 	public static UIMgr Instance
 	{
@@ -14,11 +24,16 @@ public class UIMgr : MonoBehaviour
 				GameObject ui = Instantiate(r) as GameObject;
 				ui.name = "UIMgr";
 				mInst = ui.AddComponent<UIMgr>();
+
 			}
 			return mInst;
 		}
 	}
-	public static int PopUpViewDepth = 50;
+	void Start()
+	{
+		m_rootRectTransform = transform as RectTransform;
+	}
+
 	public void Init()
 	{
 		DontDestroyOnLoad(gameObject);
@@ -64,18 +79,5 @@ public class UIMgr : MonoBehaviour
 				Destroy(vb.gameObject);
 			}
 		}
-	}
-
-	/*
-	 * Load UIPrefab  临时使用
-	 */
-	static public GameObject LoadUIPrefab(string name)
-	{
-		GameObject prefab = Resources.LoadAssetAtPath("Assets/cmsAsset/prefabs/UI/" + name + ".prefab", typeof(GameObject)) as GameObject;
-		if (null == prefab) 
-		{
-			Debug.LogError("Error for load uiprefab " + name);
-		}
-		return prefab;
 	}
 }
