@@ -242,6 +242,13 @@ namespace PB
       get { return _status; }
       set { _status = value; }
     }
+    private int _roleId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"roleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int roleId
+    {
+      get { return _roleId; }
+      set { _roleId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -31,14 +31,7 @@ namespace UnityClientConsole
 
             App.GetInstance().SendLoginProtocol("zhengshuai");
 
-
-            //for (int i = 0; i < 10000; ++i)
-            //{
-            //    HPHeartBeat heartBeat = new HPHeartBeat();
-            //    heartBeat.timeStamp = 123123123;
-            //    NetManager.GetInstance().SendProtocol(sys.HEART_BEAT.GetHashCode(), heartBeat);
-
-            //}
+            App.GetInstance().SendDeleteRoleProtocol(2);
 
             Console.ReadLine();
 
