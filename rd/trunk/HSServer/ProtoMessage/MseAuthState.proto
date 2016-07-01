@@ -1,0 +1,13 @@
+//package candy.protocol;
+//返回认证通过状态
+message MseAuthState {
+    required bool pass = 1;        //是否认证通过
+    required int32 type = 2;			//未通过原因(1.checkSecret; 2.封停)
+    required int32 leftMin = 3;			//剩余时间
+    optional int32 banMin  = 4;         //总共封停的时间
+    optional string adpath = 5;         //广告地址
+    optional string openid = 6;         // openid;
+    optional string uid    = 7;         // uid
+    optional int32  adval  = 8;
+    optional int32  sw     = 9;         
+}

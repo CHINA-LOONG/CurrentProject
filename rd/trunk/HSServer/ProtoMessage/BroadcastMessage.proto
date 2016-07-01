@@ -1,0 +1,25 @@
+//package candy.protocol;
+//公告信息
+
+message BroadcastMessage
+{
+    enum MessageType {
+        NORMAL_STRING = 0; //无类型
+        SYSTEM_ADMIN  = 1; //管理员公告
+    };
+
+    enum BroadcastType {
+				SINGAL_ONE = 1; //单人
+        ALL     = 2; 		//所有人
+    };
+    required string         uid           = 1 ; 									//发起公告的玩家uid 管理员为-1
+    optional string					name					= 5 [default = ""];			//姓名
+    optional MessageType    messagetype   = 2 [default = NORMAL_STRING] ;
+    optional BroadcastType  broadcasttype = 3 [default = ALL] ;
+    repeated int32          args          = 4 ;									 	//参数列表
+    optional string         message       = 7 [ default = ""];  	//消息
+    optional string         listener			= 8 [ default = ""]; 	 	//单一收听者的uid
+    optional string					listener_name = 6 [ default = ""];		//单一收听者名字
+    optional string         time					= 9 [ default = ""];  
+    optional bool						read_flag			= 10[ default = false];	//是否读标志
+}

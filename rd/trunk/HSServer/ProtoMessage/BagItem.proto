@@ -1,0 +1,8 @@
+//package candy.protocol;
+//仓库里的货物结构
+
+message BagItem {
+	optional int32 typeid = 1 [default = 0]; //货物的类型id 
+	optional int32 count  = 2 [default = 0]; //货物数量
+	optional int32 level  = 3 [default = 0]; //等级
+}

@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{424F26F2-B73B-48FC-BFE5-DFB53DDCBADE}</ProjectGuid>
+    <RootNamespace>core</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="common.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="common.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(HSSrc)/event;$(HSSrc)/core;$(HSLib)\libconfig\include;$(HSLib)\pthread\include;$(HSLib)\gd\include;$(HSLib)\protobuf\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <ErrorReporting>None</ErrorReporting>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\core\common\Base64.cpp" />
+    <ClCompile Include="..\src\core\common\chardata.c" />
+    <ClCompile Include="..\src\core\common\charutil.c" />
+    <ClCompile Include="..\src\core\common\charwrap.c" />
+    <ClCompile Include="..\src\core\common\Clock.cpp" />
+    <ClCompile Include="..\src\core\common\counter.cpp" />
+    <ClCompile Include="..\src\core\common\DBC.cpp" />
+    <ClCompile Include="..\src\core\common\distribution.cpp" />
+    <ClCompile Include="..\src\core\common\gdhandler.cpp" />
+    <ClCompile Include="..\src\core\common\Ini.cpp" />
+    <ClCompile Include="..\src\core\common\json\json_reader.cpp" />
+    <ClCompile Include="..\src\core\common\json\json_value.cpp" />
+    <ClCompile Include="..\src\core\common\json\json_writer.cpp" />
+    <ClCompile Include="..\src\core\common\Log.cpp" />
+    <ClCompile Include="..\src\core\common\staticfile.cpp" />
+    <ClCompile Include="..\src\core\common\statistics.cpp" />
+    <ClCompile Include="..\src\core\common\string-util.cpp" />
+    <ClCompile Include="..\src\core\common\SysLog.cpp" />
+    <ClCompile Include="..\src\core\common\SysLogNet.cpp" />
+    <ClCompile Include="..\src\core\common\tcrdb_win.cpp" />
+    <ClCompile Include="..\src\core\config\ServerConfig.cpp" />
+    <ClCompile Include="..\src\core\net\NetCache.cpp" />
+    <ClCompile Include="..\src\core\net\NetHandler.cpp" />
+    <ClCompile Include="..\src\core\net\ProtocolHandler.cpp" />
+    <ClCompile Include="..\src\core\ShareMemory\ShareMemAO.cpp" />
+    <ClCompile Include="..\src\core\ShareMemory\ShareMemAPI.cpp" />
+    <ClCompile Include="..\src\core\ShareMemory\ShareMemHandler.cpp" />
+    <ClCompile Include="..\src\event\AchievementItem.pb.cpp" />
+    <ClCompile Include="..\src\event\BagItem.pb.cpp" />
+    <ClCompile Include="..\src\event\BroadcastMessage.pb.cpp" />
+    <ClCompile Include="..\src\event\DataHandler.cpp" />
+    <ClCompile Include="..\src\event\event.pb.cpp" />
+    <ClCompile Include="..\src\event\EventHandler.cpp" />
+    <ClCompile Include="..\src\event\EventQueue.cpp" />
+    <ClCompile Include="..\src\event\FriendInfoLite.pb.cpp" />
+    <ClCompile Include="..\src\event\LeaveMessage.pb.cpp" />
+    <ClCompile Include="..\src\event\MceActionInfo.pb.cpp" />
+    <ClCompile Include="..\src\event\MceGatewayFunction.pb.cpp" />
+    <ClCompile Include="..\src\event\MceHeartbeat.pb.cpp" />
+    <ClCompile Include="..\src\event\MseActionInfo.pb.cpp" />
+    <ClCompile Include="..\src\event\MseAuthState.pb.cpp" />
+    <ClCompile Include="..\src\event\MseFriendList.pb.cpp" />
+    <ClCompile Include="..\src\event\MseFuncSwich.pb.cpp" />
+    <ClCompile Include="..\src\event\MseGatewayFunction.pb.cpp" />
+    <ClCompile Include="..\src\event\MseRank.pb.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\core\common\Base64.h" />
+    <ClInclude Include="..\src\core\common\charutil.h" />
+    <ClInclude Include="..\src\core\common\charwrap.h" />
+    <ClInclude Include="..\src\core\common\Clock.h" />
+    <ClInclude Include="..\src\core\common\const_def.h" />
+    <ClInclude Include="..\src\core\common\counter.h" />
+    <ClInclude Include="..\src\core\common\DBC.h" />
+    <ClInclude Include="..\src\core\common\distribution.h" />
+    <ClInclude Include="..\src\core\common\gdhandler.h" />
+    <ClInclude Include="..\src\core\common\Ini.h" />
+    <ClInclude Include="..\src\core\common\json\autolink.h" />
+    <ClInclude Include="..\src\core\common\json\config.h" />
+    <ClInclude Include="..\src\core\common\json\features.h" />
+    <ClInclude Include="..\src\core\common\json\forwards.h" />
+    <ClInclude Include="..\src\core\common\json\json.h" />
+    <ClInclude Include="..\src\core\common\json\json_batchallocator.h" />
+    <ClInclude Include="..\src\core\common\json\reader.h" />
+    <ClInclude Include="..\src\core\common\json\value.h" />
+    <ClInclude Include="..\src\core\common\json\writer.h" />
+    <ClInclude Include="..\src\core\common\Log.h" />
+    <ClInclude Include="..\src\core\common\Logger_win.h" />
+    <ClInclude Include="..\src\core\common\LogInclude.h" />
+    <ClInclude Include="..\src\core\common\staticfile.h" />
+    <ClInclude Include="..\src\core\common\statistics.h" />
+    <ClInclude Include="..\src\core\common\string-util.h" />
+    <ClInclude Include="..\src\core\common\SysLog.h" />
+    <ClInclude Include="..\src\core\common\SysLogNet.h" />
+    <ClInclude Include="..\src\core\common\tcrdb_win.h" />
+    <ClInclude Include="..\src\core\common\TicTac.h" />
+    <ClInclude Include="..\src\core\config\ServerConfig.h" />
+    <ClInclude Include="..\src\core\net\NetCache.h" />
+    <ClInclude Include="..\src\core\net\NetHandler.h" />
+    <ClInclude Include="..\src\core\net\ProtocolHandler.h" />
+    <ClInclude Include="..\src\core\ShareMemory\ShareMemAO.h" />
+    <ClInclude Include="..\src\core\ShareMemory\ShareMemAPI.h" />
+    <ClInclude Include="..\src\core\ShareMemory\ShareMemDef.h" />
+    <ClInclude Include="..\src\core\ShareMemory\ShareMemHandler.h" />
+    <ClInclude Include="..\src\event\AchievementItem.pb.h" />
+    <ClInclude Include="..\src\event\BagItem.pb.h" />
+    <ClInclude Include="..\src\event\BroadcastMessage.pb.h" />
+    <ClInclude Include="..\src\event\DataHandler.h" />
+    <ClInclude Include="..\src\event\event.pb.h" />
+    <ClInclude Include="..\src\event\EventDefine.h" />
+    <ClInclude Include="..\src\event\EventHandler.h" />
+    <ClInclude Include="..\src\event\EventQueue.h" />
+    <ClInclude Include="..\src\event\FriendInfoLite.pb.h" />
+    <ClInclude Include="..\src\event\LeaveMessage.pb.h" />
+    <ClInclude Include="..\src\event\MceActionInfo.pb.h" />
+    <ClInclude Include="..\src\event\MceGatewayFunction.pb.h" />
+    <ClInclude Include="..\src\event\MceHeartbeat.pb.h" />
+    <ClInclude Include="..\src\event\MseActionInfo.pb.h" />
+    <ClInclude Include="..\src\event\MseAuthState.pb.h" />
+    <ClInclude Include="..\src\event\MseFriendList.pb.h" />
+    <ClInclude Include="..\src\event\MseFuncSwich.pb.h" />
+    <ClInclude Include="..\src\event\MseGatewayFunction.pb.h" />
+    <ClInclude Include="..\src\event\MseRank.pb.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\core\common\json\json_internalarray.inl" />
+    <None Include="..\src\core\common\json\json_internalmap.inl" />
+    <None Include="..\src\core\common\json\json_valueiterator.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

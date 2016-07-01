@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="event">
+      <UniqueIdentifier>{f77d9e14-e05a-42ad-8a4a-c8921f81f516}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="json">
+      <UniqueIdentifier>{77ee1e70-ddfa-41c2-8577-c7911c1479e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="log">
+      <UniqueIdentifier>{0e9b5963-fc1b-4558-beb0-b4d0474e3923}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{30337cb2-210b-41e5-ab33-54c3280e2f75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shareMemory">
+      <UniqueIdentifier>{0b73b446-bbfc-4603-8f91-22e0c5a481eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{bcb66df7-9906-48fa-8e95-bb38121c5f05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="handler">
+      <UniqueIdentifier>{a26bdb8e-a065-449c-8ce3-263ec33294c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{1f12c737-45ba-49b7-bc52-24d1efa460b9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\event\AchievementItem.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\BagItem.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\BroadcastMessage.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\FriendInfoLite.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\LeaveMessage.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\MceActionInfo.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\MceGatewayFunction.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\MceHeartbeat.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\MseActionInfo.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\MseAuthState.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\MseFriendList.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\MseFuncSwich.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\MseGatewayFunction.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\MseRank.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\json\json_reader.cpp">
+      <Filter>json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\json\json_value.cpp">
+      <Filter>json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\json\json_writer.cpp">
+      <Filter>json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\Log.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\SysLog.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\SysLogNet.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\net\NetCache.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\net\NetHandler.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\net\ProtocolHandler.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\ShareMemory\ShareMemAO.cpp">
+      <Filter>shareMemory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\ShareMemory\ShareMemAPI.cpp">
+      <Filter>shareMemory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\ShareMemory\ShareMemHandler.cpp">
+      <Filter>shareMemory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\Base64.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\chardata.c">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\charutil.c">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\charwrap.c">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\counter.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\DBC.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\distribution.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\Ini.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\staticfile.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\statistics.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\string-util.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\tcrdb_win.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\gdhandler.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\common\Clock.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\event.pb.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\DataHandler.cpp">
+      <Filter>handler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\EventHandler.cpp">
+      <Filter>handler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\event\EventQueue.cpp">
+      <Filter>handler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\config\ServerConfig.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\event\AchievementItem.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\BagItem.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\BroadcastMessage.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\FriendInfoLite.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\LeaveMessage.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\MceActionInfo.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\MceGatewayFunction.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\MceHeartbeat.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\MseActionInfo.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\MseAuthState.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\MseFriendList.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\MseFuncSwich.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\MseGatewayFunction.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\MseRank.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\json\autolink.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\json\config.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\json\features.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\json\forwards.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\json\json.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\json\json_batchallocator.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\json\reader.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\json\value.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\json\writer.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\Log.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\Logger_win.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\LogInclude.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\SysLog.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\SysLogNet.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\net\NetCache.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\net\NetHandler.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\net\ProtocolHandler.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\ShareMemory\ShareMemAO.h">
+      <Filter>shareMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\ShareMemory\ShareMemAPI.h">
+      <Filter>shareMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\ShareMemory\ShareMemDef.h">
+      <Filter>shareMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\ShareMemory\ShareMemHandler.h">
+      <Filter>shareMemory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\Base64.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\charutil.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\charwrap.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\const_def.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\counter.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\DBC.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\distribution.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\Ini.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\staticfile.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\statistics.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\string-util.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\tcrdb_win.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\TicTac.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\gdhandler.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\common\Clock.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\event.pb.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\DataHandler.h">
+      <Filter>handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\EventDefine.h">
+      <Filter>handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\EventHandler.h">
+      <Filter>handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\event\EventQueue.h">
+      <Filter>handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\config\ServerConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\core\common\json\json_internalarray.inl">
+      <Filter>json</Filter>
+    </None>
+    <None Include="..\src\core\common\json\json_internalmap.inl">
+      <Filter>json</Filter>
+    </None>
+    <None Include="..\src\core\common\json\json_valueiterator.inl">
+      <Filter>json</Filter>
+    </None>
+  </ItemGroup>
+</Project>

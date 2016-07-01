@@ -18,7 +18,7 @@ public class BattleModule : ModuleBase
 
     void Start()
     {
-        ///BattleCamera.Instance.Init();
+        BattleCamera.Instance.Init();
     }
 
     public override void OnInit(object param)

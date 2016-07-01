@@ -1,0 +1,15 @@
+//package candy.protocol;
+//server 发送成就相关信息
+/////////////////////////////////////////////////////////////////////////
+//   成就系统                                                          //
+/////////////////////////////////////////////////////////////////////////
+//prime
+
+message AchievementItem
+{
+		optional int32 now_value = 1 [default = 0];			//当前值
+		optional int32 max_value = 2 [default = 0];			//最大值
+		optional int32 state = 3 [default = 0];					//状态种类可后加（已完成1，未完成0，新成就2，新完成3）
+		optional int32 type =4[default = 0];						//成就类型或种类
+		optional int32 id = 5[default = 0];							//id
+}

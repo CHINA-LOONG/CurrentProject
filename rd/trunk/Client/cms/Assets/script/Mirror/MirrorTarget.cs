@@ -19,6 +19,6 @@ public class MirrorTarget : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-	
+	  
 	}
 }

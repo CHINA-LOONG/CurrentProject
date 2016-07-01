@@ -8,11 +8,7 @@ public class MirrorRaycast : MonoBehaviour
 	void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 
 	public	void	testRayCast(Vector3 startPos)
 	{

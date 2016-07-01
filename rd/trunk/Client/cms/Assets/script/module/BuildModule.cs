@@ -37,7 +37,6 @@ public class BuildModule : ModuleBase
 	public override void OnInit(object param)
 	{
 		UIMgr.Instance.OpenUI (UIBuild.ViewName);
-		string battlePrefabName = GameConfig.Instance.testBattlePrefab;
 
 	}
 	
