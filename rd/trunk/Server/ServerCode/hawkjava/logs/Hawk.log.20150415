@@ -1,0 +1,79 @@
+2015-04-15 09:27:36,535 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-04-15 09:27:36,604 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-04-15 09:27:36,604 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-04-15 09:27:36,604 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-04-15 09:27:36,691 - parse script/script.xml config
+2015-04-15 09:27:36,693 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-04-15 09:27:37,096 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-04-15 09:27:37,130 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-04-15 09:27:37,164 - zmqversion: 4.0.4
+2015-04-15 09:27:37,166 - init config package: com.hawk.game.config
+2015-04-15 09:27:37,171 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-04-15 09:27:37,176 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-04-15 09:27:37,180 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-04-15 09:27:37,184 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/monsterAttr.xml
+2015-04-15 09:27:37,228 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/monsterGrade.xml
+2015-04-15 09:27:37,246 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-04-15 09:27:37,287 - start msgExecutor, threadNum: 4
+2015-04-15 09:27:37,327 - start taskExecutor, threadNum: 4
+2015-04-15 09:27:37,546 - init entity package: com.hawk.game.entity
+2015-04-15 09:27:37,553 - scan database entity: ItemEntity
+2015-04-15 09:27:37,553 - scan database entity: MonsterEntity
+2015-04-15 09:27:37,553 - scan database entity: PlayerEntity
+2015-04-15 09:27:37,553 - scan database entity: RoleEntity
+2015-04-15 09:28:17,178 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-04-15 09:28:17,192 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-04-15 09:28:17,192 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-04-15 09:28:17,192 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-04-15 09:28:17,236 - parse script/script.xml config
+2015-04-15 09:28:17,238 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-04-15 09:28:17,556 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-04-15 09:28:17,590 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-04-15 09:28:17,622 - zmqversion: 4.0.4
+2015-04-15 09:28:17,624 - init config package: com.hawk.game.config
+2015-04-15 09:28:17,629 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-04-15 09:28:17,634 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-04-15 09:28:17,638 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-04-15 09:28:17,642 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/monsterAttr.xml
+2015-04-15 09:28:17,685 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/monsterGrade.xml
+2015-04-15 09:28:17,703 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-04-15 09:28:17,744 - start msgExecutor, threadNum: 4
+2015-04-15 09:28:17,784 - start taskExecutor, threadNum: 4
+2015-04-15 09:28:17,930 - init entity package: com.hawk.game.entity
+2015-04-15 09:28:17,937 - scan database entity: ItemEntity
+2015-04-15 09:28:17,937 - scan database entity: MonsterEntity
+2015-04-15 09:28:17,937 - scan database entity: PlayerEntity
+2015-04-15 09:28:17,937 - scan database entity: RoleEntity
+2015-04-15 09:30:41,540 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-04-15 09:30:41,553 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-04-15 09:30:41,553 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-04-15 09:30:41,553 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-04-15 09:30:41,598 - parse script/script.xml config
+2015-04-15 09:30:41,600 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-04-15 09:30:41,910 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-04-15 09:30:41,944 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-04-15 09:30:41,977 - zmqversion: 4.0.4
+2015-04-15 09:30:41,978 - init config package: com.hawk.game.config
+2015-04-15 09:30:41,984 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-04-15 09:30:41,989 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-04-15 09:30:41,993 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-04-15 09:30:41,996 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/monsterAttr.xml
+2015-04-15 09:30:42,040 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/monsterGrade.xml
+2015-04-15 09:30:42,058 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-04-15 09:30:42,099 - start msgExecutor, threadNum: 4
+2015-04-15 09:30:42,139 - start taskExecutor, threadNum: 4
+2015-04-15 09:30:42,282 - init entity package: com.hawk.game.entity
+2015-04-15 09:30:42,288 - scan database entity: ItemEntity
+2015-04-15 09:30:42,288 - scan database entity: MonsterEntity
+2015-04-15 09:30:42,288 - scan database entity: PlayerEntity
+2015-04-15 09:30:42,288 - scan database entity: RoleEntity
+2015-04-15 09:30:42,879 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-04-15 09:30:42,920 - start dbExecutor, threadNum: 4
+2015-04-15 09:30:42,921 - init server data......
+2015-04-15 09:30:42,921 - load player count from db......
+2015-04-15 09:30:43,055 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 133
+2015-04-15 09:30:43,055 - load puid and playerId from db......
+2015-04-15 09:30:43,070 - load nickname and playerId from db......
+2015-04-15 09:30:43,074 - install email service......
+2015-04-15 09:30:43,150 - start network, port: 9595
+2015-04-15 09:30:43,150 - server running......

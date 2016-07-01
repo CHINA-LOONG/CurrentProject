@@ -43,6 +43,7 @@ public class GameApp : MonoBehaviour
         GameEventMgr.Instance.Init();
         UIMgr.Instance.Init();
         GameMain.Instance.Init();
+        SpellService.Instance.Init();
     }
 
     /// <summary>

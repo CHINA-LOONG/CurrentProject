@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class BattleController : MonoBehaviour
 {
+    int battleId;
+    BattleData.RowData battleData;
     BattleProcess mProcess;
     BattleGroup battleGroup;
 
-    //战斗进程
-    List<PbBattleProcess> battleProcessList = new List<PbBattleProcess>();
     //初值为-1
     int curProcessIndex = -1;
 
@@ -20,7 +20,9 @@ public class BattleController : MonoBehaviour
 
     public void StartBattle(PbStartBattle proto)
     {
-        battleProcessList = proto.processList;
+        battleId = proto.battleId;
+        battleData = StaticDataMgr.Instance.BattleData.getRowDataFromLevel(battleId);
+
         battleGroup.SetEnemyList(proto.enemyList);
         battleGroup.SetPlayerList(proto.playerList);
 
@@ -42,9 +44,9 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    void CreateUnit(BattleUnit unit)
+    void CreateUnit(GameUnit unit)
     {
-        Logger.LogFormat("[Battle]Create unit {0}", unit.Name);
+        Logger.LogFormat("[Battle]Create unit {0}", unit.name);
     }
 
     void PlayPreStoryAnim()
@@ -60,20 +62,26 @@ public class BattleController : MonoBehaviour
     void StartProcess()
     {
         var curProcess = GetNextProcess();
-        if (curProcess != null)
+        if (curProcess != -1)
             mProcess.StartProcess(curProcess, battleGroup);
         else
             OnAllProcessOver();        
     }
 
-    PbBattleProcess GetNextProcess()
+    int GetNextProcess()
     {
         curProcessIndex++;
 
-        if (curProcessIndex >= battleProcessList.Count)
-            return null;
+        if (curProcessIndex == 0 &&
+            (battleData.processList==null || battleData.processList.Count == 0))
+        {
+            return 0;
+        }
+
+        if (curProcessIndex >= battleData.processList.Count)
+            return -1;
         else
-            return battleProcessList[curProcessIndex];
+            return battleData.processList[curProcessIndex];
     }
 
     public void OnProcessOver()

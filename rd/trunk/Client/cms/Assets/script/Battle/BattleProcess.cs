@@ -14,23 +14,40 @@ public class BattleProcess : MonoBehaviour
     class Action
     {
         public ActionType type;
-        public BattleUnit caster;
-        public BattleUnit target;
+        public GameUnit caster;
+        public GameUnit target;
     }
 
     BattleGroup battleGroup;
-    PbBattleProcess process;
+    ProcessData.RowData processData;
 
     Queue<Action> insertAction = new Queue<Action>();
+
+    //如果没有集火目标，根据怪物各自AI进行战斗
+    GameUnit curTarget = null;
 
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<int, int>(GameEventList.SwitchPet, OnSwitchPet);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.ChangeTarget, OnChangeTarget);
+        GameEventMgr.Instance.AddListener(GameEventList.FireSpell, OnFireSpell);
+        GameEventMgr.Instance.AddListener(GameEventList.LifeChange, OnLifeChange);
+        GameEventMgr.Instance.AddListener(GameEventList.EnergyChange, OnEnergyChange);
+        GameEventMgr.Instance.AddListener(GameEventList.UnitDead, OnUnitDead);
+        GameEventMgr.Instance.AddListener(GameEventList.BuffAdd, OnBuffAdd);
+        GameEventMgr.Instance.AddListener(GameEventList.BuffRemove, OnBuffRemove);
     }
 
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<int, int>(GameEventList.SwitchPet, OnSwitchPet);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.ChangeTarget, OnChangeTarget);
+        GameEventMgr.Instance.RemoveListener(GameEventList.FireSpell, OnFireSpell);
+        GameEventMgr.Instance.RemoveListener(GameEventList.LifeChange, OnLifeChange);
+        GameEventMgr.Instance.RemoveListener(GameEventList.EnergyChange, OnEnergyChange);
+        GameEventMgr.Instance.RemoveListener(GameEventList.UnitDead, OnUnitDead);
+        GameEventMgr.Instance.RemoveListener(GameEventList.BuffAdd, OnBuffAdd);
+        GameEventMgr.Instance.RemoveListener(GameEventList.BuffRemove, OnBuffRemove);
     }
 
     public void Init()
@@ -43,9 +60,14 @@ public class BattleProcess : MonoBehaviour
         UnBindListener();
     }
 
-    public void StartProcess(PbBattleProcess process, BattleGroup group)
+    public void StartProcess(int processId, BattleGroup group)
     {
-        this.process = process;
+        if (processId != 0)
+            processData = StaticDataMgr.Instance.ProcessData.getRowDataFromLevel(processId);
+        else
+            //默认进程数据
+            processData = new ProcessData.RowData();
+
         Logger.Log("[Battle.Process]Start process");
         battleGroup = group;
 
@@ -79,7 +101,7 @@ public class BattleProcess : MonoBehaviour
 
     private bool HasProcessAnim()
     {
-        return process.processAnim != 0;
+        return processData != null && !string.IsNullOrEmpty(processData.processAnimation);
     }
 
     IEnumerator PlayProcessAnim()
@@ -89,7 +111,7 @@ public class BattleProcess : MonoBehaviour
 
     private bool HasPreAnim()
     {
-        return process.preAnim != 0;
+        return processData != null && !string.IsNullOrEmpty(processData.preAnimation);
     }
 
     IEnumerator PlayPreAnim()
@@ -99,7 +121,7 @@ public class BattleProcess : MonoBehaviour
 
     private bool IsClearBuff()
     {
-        return process.needClearBuff;
+        return processData != null && processData.isClearBuff;
     }
 
     IEnumerator ClearBuff()
@@ -171,15 +193,17 @@ public class BattleProcess : MonoBehaviour
         }
     }
 
-    void OnUnitFight(BattleUnit unit)
+    void OnUnitFight(GameUnit unit)
     {
-        Logger.LogFormat("[Battle.Process]Unit {0} is moving...", unit.Name);
+        Logger.LogFormat("[Battle.Process]Unit {0} is moving...", unit.name);
+        //TODO 执行战斗
+
         OnUnitFightOver(unit);
     }
 
-    void OnUnitFightOver(BattleUnit movedUnit)
+    void OnUnitFightOver(GameUnit movedUnit)
     {
-        battleGroup.ReCalcActionOrder(movedUnit.Guid);
+        battleGroup.ReCalcActionOrder(movedUnit.pbUnit.guid);
     }
 
     bool IsProcessOver()
@@ -189,9 +213,9 @@ public class BattleProcess : MonoBehaviour
 
     //////////////////////////////////////////////////////////////////////////
     //process action
-    void SwitchPet(BattleUnit exit, BattleUnit enter)
+    void SwitchPet(GameUnit exit, GameUnit enter)
     {
-        int slot = exit.Slot;
+        int slot = exit.pbUnit.guid;
 
         //TODO 播放动画
         battleGroup.OnUnitExitField(exit, slot);
@@ -210,6 +234,60 @@ public class BattleProcess : MonoBehaviour
         insertAction.Enqueue(action);
     }
 
-    //spell event
+    void OnChangeTarget(int id)
+    {
+        var unit = battleGroup.GetUnitByGuid(id);
+        curTarget = unit;
 
+        Logger.Log("[Battle.Process]Change Fire Targret To " + unit.name);
+    }
+
+    //spell event
+    void OnFireSpell()
+    {
+        int movedUnitId = 0;
+        var movedUnit = battleGroup.GetUnitByGuid(movedUnitId);
+
+        Logger.Log("[Battle.Process]OnFireSpell");
+    }
+
+    void OnLifeChange()
+    {
+        Logger.Log("[Battle.Process]OnLifeChange");
+    }
+
+    void OnEnergyChange()
+    {
+        Logger.Log("[Battle.Process]OnEnergyChange");
+    }
+
+    void OnUnitDead()
+    {
+        int deadId = 0;
+        var deadUnit = battleGroup.GetUnitByGuid(deadId);
+        Logger.Log("[Battle.Process]OnUnitDead: " + deadUnit.name);
+
+        int slot = deadUnit.pbUnit.slot;
+        battleGroup.OnUnitExitField(deadUnit, slot);
+
+        //查看是否还有需要上场的单位
+        if (deadUnit.pbUnit.camp == UnitCamp.Enemy)
+        {
+
+        }
+        else
+        {
+            //自己单位弹出换宠UI
+        }
+    }
+
+    void OnBuffAdd()
+    {
+
+    }
+
+    void OnBuffRemove()
+    {
+
+    }
 }

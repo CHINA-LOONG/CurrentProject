@@ -1,0 +1,5 @@
+TEXT,TEXT,TEXT,NUM,NUM,TEXT,NUM,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,NUM,TEXT,NUM,NUM,TEXT
+Index,assetID,nickname,grade,evolutionable,evolutionID,property,levelUpExpRate,healthModifyRate,strengthModifyRate,intelligenceModifyRate,speedModifyRate,defenseModifyRate,enduranceModifyRate,goldNoteMinValueModifyRate ,goldNoteMaxValueModifyRate ,expMinValueModifyRate,expMaxValueModifyRate,recoveryRate,equip,spellID_list,lazy,AI,weakpoint_list
+#服务端id,模型路径,中文名称,品级,是否可进化,进化后怪物ID,怪物属性,升级所需经验比例修正,体力比例修正,力量比例修正,智力比例修正,速度比例修正,防御比例修正,耐力比例修正,最小金币掉落修正,最大金币掉落率修正,最小经验修改率,最大经验修正,战后回血比例修正,装备组,技能列表,懒惰程度,技能偏向,弱点列表
+soul,soul,灵魂,4,5,cat,7,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,23,s1;s2,1,1,wp1;wp2
+cat,cat,猫,1,1,null,1,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,1,s1;s2,5,2,wp1;wp2

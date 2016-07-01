@@ -45,4 +45,27 @@ public class PlayerData : MonoBehaviour
 			m_Heroid = value;
 		}
 	}
+
+    //主角装备加成
+    public int equipHealth;
+    public int equipStrength;
+    public int equipIntelligence;
+    public int equipSpeed;
+    public int equipDefense;
+    public int equipEndurance;
+    public float criticalRatio;
+    public float hitRatio;
+
+    public float equipHealthRatio;
+    public float equipStrengthRatio;
+    public float equipIntelligenceRatio;
+    public float equipSpeedRatio;
+    public float equipDefenseRatio;
+    public float equipEnduranceRatio;
+    //五行加成
+    public float goldDamageRatio;
+    public float woodDamageRatio;
+    public float waterDamageRatio;
+    public float fireDamageRatio;
+    public float earthDamageRatio;
 }

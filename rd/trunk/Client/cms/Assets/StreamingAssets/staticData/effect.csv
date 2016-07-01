@@ -1,0 +1,7 @@
+TEXT,NUM,NUM,NUM,NUM,TEXT,NUM,NUM,TEXT,TEXT,FLOAT,TEXT,NUM,FLOAT,NUM,NUM,TEXT
+id,type,casterType,targetType,energy,effectList,count,camp,searchEffect,effectStartID,startDelay,periodEffectList,damageType,attackFactor,isHeal,damageProp,buffID
+e1,0,1,0,0,e5,,,,,,,,,,,
+e2,1,1,0,0,,3,0,e4,,,,,,,,
+e3,2,1,0,0,,,,,e4,0,0|e4;1|e4,,,,,
+e4,3,1,0,0,,,,,,,,0,100,0,0,
+e5,4,1,0,0,,,,,,,,,,,,b1
