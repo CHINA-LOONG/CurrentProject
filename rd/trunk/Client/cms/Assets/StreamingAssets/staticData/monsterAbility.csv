@@ -1,0 +1,5 @@
+TEXT,TEXT,TEXT,NUM,NUM,TEXT,NUM,NULL,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,NUM,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,NUM,NUM
+Index,assetID,nickname,grade,evolutionable,evolutionID,property,怪物倾向,initLife,experienceModifyRate,healthModifyRate,strengthModifyRate,intelligenceModifyRate,speedModifyRate,resistanceModifyRate,enduranceModifyRate,hitRateModifyVal,criticalRateModifyVal,criticalFactorModifyVal,goldNoteValueModifyRate ,expValueModifyRate ,recoveryRate ,equip,physical_skill,magic_skill,buff_skill,powerful_skill,protect_skill,lazy_skill,captain_skill,lazy,AI
+#服务端id,模型路径,中文名称,品级,是否可进化,进化后怪物ID,怪物属性,倾向不导出,初始血百分比,升级所需经验比例修正,体力比例修正,力量比例修正,智力比例修正,速度比例修正,抗性比例修正,耐力比例修正,命中率值值修正,暴击率值值修正,暴击伤害百分比值修正,金券比例修正,经验比例修正,战后回血比例修正,装备组,物理技能名,法术技能名,buff技能名,大招,防御,偷懒,队长技,懒惰程度,技能偏向
+soul,soul,灵魂,4,5,cat,7,物理,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,1.233,23,hit,fire,increase,soul_huoyan,fangyu,landuo,increase,1,1
+cat,cat,猫,1,1,,1,法术,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,1,crush,ice,dot,cat_siyao,fangyu,landuo,increase,5,2
