@@ -9,6 +9,8 @@ PromptPanel = {};
 
 --启动事件--
 function PromptPanel.Start()
+	print(package.path);
+	
 	this = PromptPanel;
 	gameObject = find("PromptPanel");
 	trans = gameObject.transform;

@@ -1,3 +1,12 @@
+local string = string
+local math = math
+local pairs = pairs
+local setmetatable = setmetatable
+local table = table
+local print = print
+local _G = _G
+
+module "Effect"
 ---------------------------------------------------------------------------------------------------
 Effect = 
 {
@@ -17,6 +26,7 @@ Effect =
 	hit,
 	applyTime,
 	instanceID,
+	owner
 }
 ---------------------------------------------------------------------------------------------------
 function Effect:Init()
@@ -26,19 +36,22 @@ function Effect:SetOwnedBuff(buff)
 	self.ownedBuff = buff
 	if buff ~= nil then
 		self.caster = buff.caster
-		self.target = buff:target
+		self.target = buff.target
 	end
 end
 ---------------------------------------------------------------------------------------------------
 function Effect:SetOwnedSpell(spell)
 	self.ownedSpell = spell
 	if spell ~= nil then
-		self.caster = spell:GetCaster()
-		self.target = spell:GetTarget()
+		self.caster = spell.caster
+		self.target = spell.target
 	end
 end
 ---------------------------------------------------------------------------------------------------
 function Effect:ApplyBasic(curTime)
+	local info = string.format("effect Apply basic id%s \n", self.id)
+	print(info)
+	
 	self:GenerateTarget(self.caster, self.target)
 	if self.chance then
 		local rand = math.random(100)/100.0
@@ -55,13 +68,13 @@ function Effect:ApplyBasic(curTime)
 end
 ---------------------------------------------------------------------------------------------------
 function Effect:GenerateTarget(caster, target)
-	if self.targetType == TARGET_CASTER then
+	if self.targetType == _G.TARGET_CASTER then
 		self.target = caster
 	else
 		self.target = target
 	end
 	
-	if self.casterType == TARGET_TARGET then
+	if self.casterType == _G.TARGET_TARGET then
 		self.caster = target
 	else
 		self.caster = caster
@@ -77,15 +90,15 @@ function Effect:CalculateBasicHit(caster, target)
 	--min((max(N+L(lv1-lv2)),60%)+装备附加命中+buff附加命中,100%)
 	local hitRate = caster.baseHitRate + GetHitRateAdjustNum(caster.level - target.level)
 	local hitRateExtra = caster.hitRate - caster.baseHitRate
-	if hitRate < HIT_RATE_MIN then
-		hitRate = HIT_RATE_MIN
+	if hitRate < _G.HIT_RATE_MIN then
+		hitRate = _G.HIT_RATE_MIN
 	end
 	hitRate = hitRate + hitRateExtra
 	local hitRandNum = math.random()
 	if hitRate < 0 or hitRandNum > hitRate then
-		return HIT_MISS
+		return _G.HIT_MISS
 	end
 	
-	return HIT_SUCCESS
+	return _G.HIT_SUCCESS
 end
 ---------------------------------------------------------------------------------------------------

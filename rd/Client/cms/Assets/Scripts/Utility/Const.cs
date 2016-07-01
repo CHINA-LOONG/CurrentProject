@@ -3,9 +3,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Const {   
-    public static bool DebugMode = true;                       //调试模式-用于内部测试
-    public static bool UpdateMode = true;                     //调试模式
+public class Const {
+    /// <summary>
+    /// 调试模式
+    /// 不开启此模式会直接读取streamingassets中的文件
+    /// 开启此模式会将streamingassets下面的文件复制到persistentDataPath中，并从persistentDataPath中读取数据
+    /// </summary>
+    public static bool DebugMode = false;
+    /// <summary>
+    /// 更新模式
+    /// 更新模式下回从
+    /// </summary>
+    public static bool UpdateMode = false;
 
     public static int TimerInterval = 1;
     public static int GameFrameRate = 30;                       //游戏帧频

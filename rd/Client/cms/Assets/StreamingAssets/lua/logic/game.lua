@@ -1,8 +1,14 @@
+-- pb files must require before pbc/protobuf
+require "pblua/Chat_pb"
+
 require "pbc/protobuf"
 require "logic/luaclass"
 require "common/define"
 require "common/functions"
 
+require "logic/Battle/BattleController"
+--test
+require "logic/SpellService/SpellTest"
 --管理器--
 local game;	
 local this;
@@ -22,14 +28,21 @@ function GameManager.Start()
 	--warn('Start--->>>');
 end
 
+--测试技能
+function GameManager.FireSpell()
+	SpellTest.SpellInit()
+end
 --初始化完成，发送链接服务器信息--
 function GameManager.OnInitOK()
 	warn('OnInitOK--->>>');
+    print(package.path);
 	createPanel("Prompt");
 
     Const.SocketPort = 2012;
     Const.SocketAddress = "127.0.0.1";
     ioo.networkManager:SendConnect();
+
+    BattleController.StartBattle();
 end
 
 function GameManager.test_lpeg_func()
@@ -68,7 +81,7 @@ end
 
 --测试pbc--
 function GameManager.test_pbc_func()
-    local path = Util.DataPath.."Lua/pbc/addressbook.pb";
+    local path = Util.LuaPath("pblua/Monster_pb.pb");
     log('io.open--->>>'..path);
 
     local addr = io.open(path, "rb")

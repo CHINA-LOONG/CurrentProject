@@ -76,7 +76,11 @@ UnitData =
 	guid,
 	id,
 	disposition,--性格
+	curExp, --当前经验
+	injuryRatio,--buff附加受伤比
+	camp,--阵营
 	
+	--base attribute
 	level,
 	baseStrength,
 	baseLife,
@@ -89,9 +93,7 @@ UnitData =
 	baseCriticalDamageFactor,
 	baseRecovery,
 	
-	phyAttack,
-	magAttack,
-	defend,
+	--current attribute
 	strength,
 	life,
 	maxLife,
@@ -103,9 +105,11 @@ UnitData =
 	criticalRate,
 	criticalDamageFactor,
 	recovery,
-	curExp, --当前经验
-	injuryRatio,--buff附加受伤比
-	camp,--阵营
+	
+	--second level attribute
+	phyAttack,
+	magAttack,
+	defend,
 	
 	spellList=
 	{
@@ -124,5 +128,8 @@ UnitData =
 	
 	--state data
 	buffList={},
-	stateFlags={},
+	flags={},
+	shield,
 }
+function OnToplevelAttrChanged()
+end

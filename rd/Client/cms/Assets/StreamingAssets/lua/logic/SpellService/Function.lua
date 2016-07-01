@@ -1,6 +1,7 @@
 ---------------------------------------------------------------------------------------------------
 --damage releated
 function GetInjuryAdjustNum(level)
+	print("get injury count 1\n")
 	return 1
 end
 ---------------------------------------------------------------------------------------------------
@@ -19,5 +20,17 @@ end
 ---------------------------------------------------------------------------------------------------
 function IsEnemy(caster, target)
 	return not(IsAlly())
+end
+---------------------------------------------------------------------------------------------------
+function GetChangeValue(baseValue, amountChange, factorChange)
+	local finalValue = 0
+	if amountChange then
+		finalValue = amountChange
+	end
+	if factorChange then
+		finalValue = finalValue + baseValue * factorChange
+	end
+	
+	return finalValue
 end
 ---------------------------------------------------------------------------------------------------

@@ -504,21 +504,10 @@ public class Util : MonoBehaviour
     {
         get
         {
-            return Application.persistentDataPath;
-            //Editor Path: Assets/../res
-            //PC Path: ***_Data/res
-            /*if (Application.isEditor ||
-                Application.platform == RuntimePlatform.WindowsPlayer)
-            {
-                return Application.dataPath + "/../res/";
-            }
-            else if (Application.isMobilePlatform)
-            {
-                string game = Const.AppName.ToLower();
-                return Application.persistentDataPath + "/" + game + "/";
-            }
-
-            return Application.dataPath + "/res";*/
+            if(Const.DebugMode)
+                return Application.streamingAssetsPath;
+            else
+                return Application.persistentDataPath;
         }
     }
 
@@ -566,20 +555,7 @@ public class Util : MonoBehaviour
     /// </summary>
     public static string AppContentPath()
     {
-        string path = string.Empty;
-        switch (Application.platform)
-        {
-            case RuntimePlatform.Android:
-                path = "jar:file://" + Application.dataPath + "!/assets";
-                break;
-            case RuntimePlatform.IPhonePlayer:
-                path = Application.dataPath + "/Raw";
-                break;
-            default:
-                path = Application.streamingAssetsPath;
-                break;
-        }
-        return path;
+        return Application.streamingAssetsPath;
     }
 
     /// <summary>
@@ -611,11 +587,21 @@ public class Util : MonoBehaviour
         return Path.Combine(ResPath, "lua");
     }
 
+    public static string ProtoPath()
+    {
+        return Path.Combine(LuaPath(), "pblua");
+    }
+
     /// <summary>
     /// 取得Lua路径
     /// </summary>
     public static string LuaPath(string name)
     {
+
+        if (name.EndsWith("_pb.lua") && !name.Contains("/"))
+        {
+            return Path.Combine(ProtoPath(), name);
+        }
         if (name.EndsWith(".lua"))
         {
             return Path.Combine(LuaPath(), name);

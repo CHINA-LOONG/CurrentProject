@@ -1,3 +1,12 @@
+local string = string
+local math = math
+local pairs = pairs
+local setmetatable = setmetatable
+local table = table
+local Effect = Effect
+local print = print
+
+module "EffectSearch"
 ---------------------------------------------------------------------------------------------------
 EffectSearch = {
 	excludeTarget,
@@ -9,13 +18,12 @@ EffectSearch = {
 	compareFun,
 	searchArea,--{range(one,all, row, column), searchCount, searchPortion, effectID}
 	isRandom,
-	isWanLing,
 	
 	--state data
 	sortFunction,
 	targetList,--{{target, effectid}}
 }
-_G.setmetatable(EffectSearch, {__index = Effect})
+setmetatable(EffectSearch, {__index = Effect.Effect})
 ---------------------------------------------------------------------------------------------------
 function EffectSearch:Init()
 	self.targetList = {}
@@ -26,29 +34,29 @@ function EffectSearch:Apply(curTime)
 		do return end
 	end
 	
+	local info = string.format("search effect Apply id%s \n", self.id)
+	print(info)
+	do return end
+	
 	--self:SendEffect()
 	--self:CalculateEnergy()
 	self:GenerateSorFunction()
-	if self.isWanLing then
-		self:SearchWanLing()
-	else
-		self:Search()
-		local targetCount = 0
-		for _, _ in pairs(self.targetList) do
-			targetCount = targetCount + 1	
-		end
-		
-		for key, val in pairs(self.targetList) do
-			local curEffect = SpellService:GetEffect(val.effectID)
-			if curEffect ~= nil then
-				curEffect:SetOwnedSpell(self.ownedSpell)
-				curEffect:SetOwnedBuff(self.ownedBuff)
-				curEffect:SetCaster(self.casterID)
-				curEffect.target = val.target
-				--curEffect:SetSource(self.targetID)
-				--curEffect:SetParam(targetCount)
-				curEffect:Apply(self.applyTime)
-			end
+	self:Search()
+	local targetCount = 0
+	for _, _ in pairs(self.targetList) do
+		targetCount = targetCount + 1	
+	end
+	
+	for key, val in pairs(self.targetList) do
+		local curEffect = self.owner:GetEffect(val.effectID)
+		if curEffect ~= nil then
+			curEffect:SetOwnedSpell(self.ownedSpell)
+			curEffect:SetOwnedBuff(self.ownedBuff)
+			curEffect:SetCaster(self.casterID)
+			curEffect.target = val.target
+			--curEffect:SetSource(self.targetID)
+			--curEffect:SetParam(targetCount)
+			curEffect:Apply(self.applyTime)
 		end
 	end
 end
@@ -101,7 +109,7 @@ function EffectSearch:Search()
 	end
 	
 	if self.searchArea then
-		local playerList, enemyList = SpellService:GetAllUnits()
+		local playerList, enemyList = self.owner:GetAllUnits()
 		--have sort
 		if self.sortFunction or self.isRandom then
 			for _, val in pairs(playerList) do
@@ -155,43 +163,32 @@ function EffectSearch:Search()
 	local loseCount = 0
 	--target in includelist always added into final targetlist
 	for key, val in pairs(includeList) do
-		table.insert(self.m_TargetList, val)
+		table.insert(self.targetList, val)
 		curCount = curCount + 1
 	end
 	--trim
-	if totalCount > self.m_MaxCount then
+	if totalCount > self.maxCount then
 		local trimTotalCount = totalCount - curCount
-		local trimMaxCount = self.m_MaxCount - curCount
-		if self.m_SortFunction then
-			table.sort(targetList, self.m_SortFunction)
-			
-			--check need random
-			--{target = slotID, effectID = searchArea.effectID}
-			--local unit1Attr = self.m_Owner:GetUnit(totalCount).curAttr
-			--local unit2Attr = self.m_Owner:GetUnit(target2.target).curAttr
-			--local val = self.m_Sort[1]
-			
-			--local startIndex = self.m_MaxCount
-			--local endIndex = totalCount
-			--local lastAttr = self.m_Owner:GetUnit(targetList[self.m_MaxCount].target).curAttr
-			--local lastValue = lastAttr[self.m_Sort[1]]
+		local trimMaxCount = self.maxCount - curCount
+		if self.sortFunction then
+			table.sort(targetList, self.sortFunction)
 			
 			local startIndex = trimMaxCount
 			local endIndex = trimTotalCount
-			local lastAttr = self.m_Owner:GetUnit(targetList[trimMaxCount].target).curAttr
-			local lastValue = lastAttr[self.m_Sort[1]]
+			local targetUnit = self.owner:GetUnit(targetList[trimMaxCount].target)
+			local lastValue = targetUnit[self.sort[1]]
 			
 			for index=1, trimMaxCount do
-				local curAttr = self.m_Owner:GetUnit(targetList[index].target).curAttr
-				local curVal = curAttr[self.m_Sort[1]]
+				local curUnit = self.owner:GetUnit(targetList[index].target)
+				local curVal = curUnit[self.sort[1]]
 				if curVal == lastValue then
 					startIndex = index
 					break
 				end
 			end
 			for index=trimMaxCount+1, trimTotalCount do
-				local curAttr = self.m_Owner:GetUnit(targetList[index].target).curAttr
-				local curVal = curAttr[self.m_Sort[1]]
+				local curUnit = self.owner:GetUnit(targetList[index].target)
+				local curVal = curUnit[self.sort[1]]
 				if curVal ~= lastValue then
 					endIndex = index - 1
 					break
@@ -207,7 +204,7 @@ function EffectSearch:Search()
 			for key, val in pairs(targetList) do
 				if val.random then
 					local dice = math.random(2)
-					if curCount<self.m_MaxCount and (dice == 1 or loseCount >= (trimTotalCount - trimMaxCount)) then
+					if curCount<self.maxCount and (dice == 1 or loseCount >= (trimTotalCount - trimMaxCount)) then
 						curCount = curCount + 1
 					else
 						loseCount = loseCount + 1
@@ -215,26 +212,15 @@ function EffectSearch:Search()
 					end
 				else
 					curCount = curCount + 1
-					if curCount > self.m_MaxCount then
+					if curCount > self.maxCount then
 						targetList[key] = nil
 					end
 				end
 			end
-			
-			--previous version
-			--[[
-			totalCount = 0
-			for key, val in pairs(self.m_TargetList) do
-				totalCount = totalCount + 1
-				if totalCount > self.m_MaxCount then
-					self.m_TargetList[key] = nil
-				end
-			end
-			]]
-		elseif self.m_Random then
+		elseif self.isRandom then
 			for key, val in pairs(targetList) do
 				local dice = math.random(2)
-				if curCount<self.m_MaxCount and (dice == 1 or loseCount >= (totalCount - self.m_MaxCount)) then
+				if curCount<self.maxCount and (dice == 1 or loseCount >= (totalCount - self.maxCount)) then
 					curCount = curCount + 1
 				else
 					loseCount = loseCount + 1
@@ -245,87 +231,29 @@ function EffectSearch:Search()
 	end
 	
 	for _, val in pairs(targetList) do
-		table.insert(self.m_TargetList, val)
+		table.insert(self.targetList, val)
 	end
 	targetList = nil
 end
 --*************************************************************************************************
-function EffectSearch:SearchWanLing()
-
-	local effectIndex = 1
-	local maxSearchArea = #self.m_SearchArea
-	while true do
-		self:Search()
-		local targetCount = #self.m_TargetList
-		if (targetCount <= 0) then
-		    break
-		end
-		local repeatCount = math.floor(self.m_MaxCount/targetCount)
-		local remainCount = self.m_MaxCount - targetCount * repeatCount
-		
-		if repeatCount >= 1 then
-			for index = 1, targetCount do
-				local curEffect = self.m_Owner:GetEffect(self.m_SearchArea[effectIndex].effectID)
-				effectIndex = effectIndex + 1
-				if effectIndex > maxSearchArea then
-				    effectIndex = 1
-				end
-				if curEffect ~= nil then
-					curEffect:SetOwnedSpell(self.m_OwnedSpell)
-					curEffect:SetOwnedBuff(self.m_OwnedBuff)
-					curEffect:SetCaster(self.m_CasterID)
-					curEffect:SetTarget(self.m_TargetList[index].target)
-					curEffect:SetSource(self.m_TargetID)
-					curEffect:SetParam(targetCount)
-					curEffect:Apply(self.m_ApplyTime, isCrazy)
-				end
-			end
-			
-			self.m_MaxCount = self.m_MaxCount - targetCount
-		else
-			for index = 1, remainCount do
-				local curEffect = self.m_Owner:GetEffect(self.m_SearchArea[effectIndex].effectID)
-				effectIndex = effectIndex + 1
-				if effectIndex > maxSearchArea then
-				    effectIndex = 1
-				end
-				if curEffect ~= nil then
-					curEffect:SetOwnedSpell(self.m_OwnedSpell)
-					curEffect:SetOwnedBuff(self.m_OwnedBuff)
-					curEffect:SetCaster(self.m_CasterID)
-					curEffect:SetTarget(self.m_TargetList[index].target)
-					curEffect:SetSource(self.m_TargetID)
-					curEffect:SetParam(targetCount)
-					curEffect:Apply(self.m_ApplyTime, isCrazy)
-				end
-			end
-		end
-		
-		if repeatCount == 0 or (repeatCount == 1 and remainCount == 0) then
-			break
-		end
-	end
-	
-end
---*************************************************************************************************
 function EffectSearch:GenerateSorFunction()
 
-	if self.m_Sort then
-		self.m_SortFunction = 
+	if self.sort then
+		self.sortFunction = 
 		function (target1, target2)
-			local unit1Attr = self.m_Owner:GetUnit(target1.target).curAttr
-			local unit2Attr = self.m_Owner:GetUnit(target2.target).curAttr
+			local unit1 = self.owner:GetUnit(target1.guid)
+			local unit2 = self.owner:GetUnit(target2.guid)
 			local result = false
 			--for key, val in pairs(self.m_Sort) do
-				local val = self.m_Sort[1]
-				local val1 = unit1Attr[val]
-				local val2 = unit2Attr[val]
+				local val = self.sort[1]
+				local val1 = unit1[val]
+				local val2 = unit2[val]
 				if val1 == nil or val2 == nil then
 					return false
 				end
 				if val1 ~= val2 then
-					if self.m_CompareFun then
-						result = self.m_CompareFun(val1, val2)
+					if self.compareFun then
+						result = self.compareFun(val1, val2)
 					else
 						result = val1 < val2
 					end

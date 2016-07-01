@@ -1,3 +1,13 @@
+local string = string
+local math = math
+local pairs = pairs
+local setmetatable = setmetatable
+local table = table
+local Effect = Effect
+local print = print
+local _G = _G
+
+module "EffectDamage"
 ---------------------------------------------------------------------------------------------------
 damageTypePhy = 1
 damageTypeMag = 2
@@ -22,15 +32,18 @@ EffectDamage =
 	--state data
 	isCritical,
 }
-setmetatable(EffectDamage, {__index = Effect})
+setmetatable(EffectDamage, {__index = Effect.Effect})
 ---------------------------------------------------------------------------------------------------
 function EffectDamage:Apply(curTime)
 	if self:ApplyBasic(curTime) == false then
 		return 
 	end
 	
+	local info = string.format("damage effect Apply id%s \n", self.id)
+	print(info)
+	
 	self:CalculateHit()
-	if self.hit = HIT_SUCCESS then
+	if self.hit == _G.HIT_SUCCESS then
 		self:CalculateEnergy()
 		if self.kill then
 			--kill
@@ -42,11 +55,11 @@ function EffectDamage:Apply(curTime)
 end
 ---------------------------------------------------------------------------------------------------
 function EffectDamage:CalculateHit()
-	self.hit = HIT_SUCCESS
+	self.hit = _G.HIT_SUCCESS
 	if not(self.isHeal) then
 		local invulnerable = self.target.flags.invulnerable
 		if invulnerable and invulnerable > 0 then
-			self.hit = HIT_IMMUNE
+			self.hit = _G.HIT_IMMUNE
 			return
 		end
 	end
@@ -77,7 +90,7 @@ function EffectDamage:CalculateDamage(curTime)
 	local lifeAmount
 	if self.amountFunction then
 		lifeAmount = self.amountFunction(self)
-	elseif self.attackFactor
+	elseif self.attackFactor then
 		local attack = self.caster.phyAttack
 		if self.damageType == damageTypeMag then
 			attack = self.caster.magAttack
@@ -90,7 +103,7 @@ function EffectDamage:CalculateDamage(curTime)
 	
 	--暴击系数
 	if self.isCritical then
-		lifeAmount  = lifeAmount * CRITICAL_DMG_RATIO
+		lifeAmount  = lifeAmount * _G.CRITICAL_DMG_RATIO
 	end
 	
 	local damageConvertRatio = 1
@@ -111,7 +124,7 @@ function EffectDamage:CalculateDamage(curTime)
 		end
 		
 		--副本系数？什么玩意
-		--lifeAmount = lifeAmount * SpellService.level.injuryRatio
+		--lifeAmount = lifeAmount * self.owner.level.injuryRatio
 	end
 	lifeAmount = math.ceil(lifeAmount)
 	lifeAmount = lifeAmount * damageConvertRatio
@@ -127,10 +140,11 @@ function EffectDamage:CalculateDamage(curTime)
 	
 	--change unit attribute
 	if self.isHeal then
-	self.target.life = self.target.life + lifeAmount
+		self.target.life = self.target.life + lifeAmount
+	end
 	if self.target.life < 0 then
 		self.target.life = 0
-		SpellService:OnUnitDead(self.target)
+		self.owner:OnUnitDead(self.target)
 	elseif self.target.life > self.target.maxLife then
 		self.target.life = self.target.maxLife
 	end

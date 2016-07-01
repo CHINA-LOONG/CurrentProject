@@ -1,3 +1,12 @@
+local string = string
+local math = math
+local pairs = pairs
+local setmetatable = setmetatable
+local table = table
+local print = print
+local _G = _G
+
+module "Spell"
 ---------------------------------------------------------------------------------------------------
 Spell =
 {
@@ -15,15 +24,22 @@ Spell =
 	target,
 	instanceID,
 	nextValidateRound,
+	owner,
 }
 ---------------------------------------------------------------------------------------------------
 function Spell:Init()
+	local info = string.format("init spell %s\n", self.id)
+	print(info)
+	
 	nextValidateRound = coolDownStart
 end
 ---------------------------------------------------------------------------------------------------
 function Spell:Apply(triggerTime)
+	local info = string.format("Apply Spell %s \n", self.id)
+	print(info)
+	
 	self.applyTime = triggerTime
-	local rootEffect = SpellService:GetEffect(rootEffectID)
+	local rootEffect = self.owner:GetEffect(rootEffectID)
 	if rootEffect then
 		rootEffect.applyTime = triggerTime
 		rootEffect:SetOwnedSpell(self)
@@ -46,10 +62,18 @@ function Spell:TakeCost(curTime)
 end
 ---------------------------------------------------------------------------------------------------
 function Spell:GetCurState(curTime)
-	local curState = SPELL_STATE_PREPARE
+	local curState = _G.SPELL_STATE_PREPARE
 	if curTime >= self.applyTime + self.prepareTime then
-		self.curState = SPELL_STATE_FINISH
+		self.curState = _G.SPELL_STATE_FINISH
 	end
 	return curState
+end
+---------------------------------------------------------------------------------------------------
+function Spell:CheckActive()
+	return true
+end
+---------------------------------------------------------------------------------------------------
+function Spell:CheckCast(triggerTime)
+	return _G.SPELL_CAST_OK
 end
 ---------------------------------------------------------------------------------------------------

@@ -37,7 +37,11 @@ public class GameManager : BaseLua
         Application.targetFrameRate = Const.GameFrameRate;
 
         //释放资源，将包中的压缩资源解压出来
+#if UNITY_EDITOR
+        Util.Add<ResourceManager>(gameObject);
+#else
         CheckExtractResource();
+#endif
     }
 
     /// <summary>
@@ -120,7 +124,7 @@ public class GameManager : BaseLua
 
         Util.Add<ResourceManager>(gameObject);
         //释放完成，开始启动更新资源
-        //StartCoroutine(OnUpdateResource());
+        StartCoroutine(OnUpdateResource());
     }
 
     /// <summary>
@@ -209,10 +213,17 @@ public class GameManager : BaseLua
     {
         uluaMgr = new LuaScriptMgr();
         uluaMgr.Start();
+
         uluaMgr.DoFile("logic/game");      //加载游戏
         uluaMgr.DoFile("logic/network");   //加载网络
         ioo.networkManager.OnInit();    //初始化网络
+        uluaMgr.CallLuaFunction("GameManager.FireSpell");
+        //uluaMgr.CallLuaFunction("SpellService:New");
+        //uluaMgr.CallLuaFunction("Test.test1");
+        //uluaMgr.CallLuaFunction("TestChild.test1");
+        //uluaMgr.CallLuaFunction("TestChild2.test1");
 
+        /*
         object[] panels = CallMethod("LuaScriptPanel");
         //---------------------Lua面板---------------------------
         foreach (object o in panels)
@@ -226,6 +237,7 @@ public class GameManager : BaseLua
         }
         //------------------------------------------------------------
         CallMethod("OnInitOK");   //初始化完成
+         * */
     }
 
     /// <summary>

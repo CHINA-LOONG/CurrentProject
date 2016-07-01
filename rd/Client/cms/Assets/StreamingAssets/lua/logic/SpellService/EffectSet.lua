@@ -1,3 +1,12 @@
+local string = string
+local math = math
+local pairs = pairs
+local setmetatable = setmetatable
+local table = table
+local Effect = Effect
+local print = print
+
+module "EffectSet"
 ---------------------------------------------------------------------------------------------------
 EffectSet = {
 	effectList,
@@ -6,7 +15,7 @@ EffectSet = {
 	--isRandom,
 	--randomCount,
 }
-_G.setmetatable(EffectSet, {__index = Effect})
+setmetatable(EffectSet, {__index = Effect.Effect})
 
 ---------------------------------------------------------------------------------------------------
 --[[
@@ -23,6 +32,10 @@ function EffectSet:Apply(curTime)
 	if self:ApplyBasic(curTime) == false then
 		do return end
 	end
+	
+	local info = string.format("set effect Apply id%s \n", self.id)
+	print(info)
+	do return end
 	
 	--self:CalculateEnergy()
 	if self.effectList == nil then
@@ -71,7 +84,7 @@ function EffectSet:Apply(curTime)
 	]]
 
 	for _, effectID in pairs(self.effectList) do
-		local curEffect = SpellService:GetEffect(effectID)
+		local curEffect = self.owner:GetEffect(effectID)
 		if curEffect ~= nil then
 			curEffect:SetOwnedBuff(self.ownedBuff)
 			curEffect:SetOwnedSpell(self.ownedSpell)
