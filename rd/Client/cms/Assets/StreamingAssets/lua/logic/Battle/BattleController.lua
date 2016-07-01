@@ -2,9 +2,10 @@ require "logic.Battle.BattleProcess"
 
 BattleController = {
 	battleGroup = nil,
+	curProcess = nil,
 }
 
-testProcess = 5
+testProcess = 1
 processCount = 0
 
 function BattleController:StartBattle(group)
@@ -37,9 +38,9 @@ function BattleController:PlayPostStoryAnim()
 end
 
 function BattleController:StartProcess()
-	local curProcess = self:GetNextProcess()
-	if curProcess ~= nil then
-		curProcess:Start(self.battleGroup, function ()
+	self.curProcess = self:GetNextProcess()
+	if self.curProcess ~= nil then
+		self.curProcess:Start(self.battleGroup, function ()
 			self:OnEndProcess()
 		end)
 	else

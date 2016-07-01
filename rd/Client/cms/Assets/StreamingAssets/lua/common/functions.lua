@@ -56,3 +56,16 @@ end
 function toInt(number)
     return math.floor(tonumber(number) or error("Could not cast '" .. tostring(number) .. "' to number.'"))
 end
+
+function clone(tSrc)
+	local tDest
+	for key,value in tSrc do 
+		if type(value)=='table' and value["spuer"]==nil then 
+			tDest[key] = {} 
+			deepcopy(tDest[key],value) 
+		else 
+			tDest[key]=value
+		end 
+	end 
+	return tDest
+end

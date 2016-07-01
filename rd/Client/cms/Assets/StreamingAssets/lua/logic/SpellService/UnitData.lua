@@ -53,6 +53,8 @@ UnitDataList =
 		spellList=
 		{
 		},
+		battleSpellList={
+		},
 		captainSpell,
 		evolutionType,
 		evolutionList=

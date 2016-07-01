@@ -1,7 +1,7 @@
 --test config
-require "logic.SpellService.SpellConfigTest"
-require "logic.SpellService.EffectConfigTest"
-require "logic.SpellService.BuffConfigTest"
+require "logic.SpellService.config.SpellConfigTest"
+require "logic.SpellService.config.EffectConfigTest"
+require "logic.SpellService.config.BuffConfigTest"
 
 ---------------------------------------------------------------------------------------------------
 function AddOriginalDatas(spellService)

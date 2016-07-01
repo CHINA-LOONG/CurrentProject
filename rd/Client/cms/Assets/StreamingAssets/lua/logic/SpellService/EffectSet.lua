@@ -4,7 +4,7 @@ local pairs = pairs
 local setmetatable = setmetatable
 local table = table
 local Effect = Effect
-local print = print
+local Log = DebugLog
 
 module "EffectSet"
 ---------------------------------------------------------------------------------------------------
@@ -34,8 +34,7 @@ function EffectSet:Apply(curTime)
 	end
 	
 	local info = string.format("set effect Apply id%s \n", self.id)
-	print(info)
-	do return end
+	Log:Log(info)
 	
 	--self:CalculateEnergy()
 	if self.effectList == nil then

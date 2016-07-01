@@ -47,9 +47,10 @@ Unit1 =
 	
 	spellList=
 	{
-		["s01"] = 1,
+		[1] = "s01",
 	},
-	captainSpell,
+	battleSpellList = {},
+	captainSpell = nil,
 	equipmentList=
 	{
 	},
@@ -63,7 +64,7 @@ Unit1 =
 	--state data
 	buffList={},
 	flags={},
-	shield,
+	shield = nil,
 }
 Unit2 =
 {
@@ -107,9 +108,10 @@ Unit2 =
 	
 	spellList=
 	{
-		["s01"] = 1,
+		[1] = "s01",
 	},
-	captainSpell,
+	battleSpellList = {},
+	captainSpell = nil,
 	equipmentList=
 	{
 	},
@@ -123,24 +125,43 @@ Unit2 =
 	--state data
 	buffList={},
 	flags={},
-	shield,
+	shield = nil,
 }
 ---------------------------------------------------------------------------------------------------
 local this
 SpellTest = {}
+function tt(...)
+	local a = ...
+	print(a)
+end
 ---------------------------------------------------------------------------------------------------
 function SpellTest.SpellInit()
+--[[	
+	local Test = Event("Test", true)
+	Test:Add(tt)
+	Test(1)
+	do return end
+	]]
 	print("SpellTest->SpellInit()\n")
 	this = SpellTest
 	this.ss = SpellService:New()
 	this.ss:Init(game)
+	--test only
+	this.ss.playerList = {
+		[1] = Unit1,
+	}
+	this.ss.enemyList = {
+		[2] = Unit2,
+	}
 	
-	local s1 = this.ss:GetSpell("s01")
+	this.ss:InitUnit(Unit1)
+	this.ss:InitUnit(Unit2)
+	--local s1 = this.ss:GetSpell("s01")
 	local request = {
 		triggerTime = 0,
 		caster = Unit1,
 		target = Unit2,
-		spell = s1,
+		spellID = "s01",
 	}
 	
 	this.ss:SpellRequest(request)

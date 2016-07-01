@@ -3,7 +3,7 @@ local math = math
 local pairs = pairs
 local setmetatable = setmetatable
 local table = table
-local print = print
+local Log = DebugLog
 local _G = _G
 
 module "Spell"
@@ -29,17 +29,15 @@ Spell =
 ---------------------------------------------------------------------------------------------------
 function Spell:Init()
 	local info = string.format("init spell %s\n", self.id)
-	print(info)
+	Log:Log(info)
 	
 	nextValidateRound = coolDownStart
 end
 ---------------------------------------------------------------------------------------------------
 function Spell:Apply(triggerTime)
-	local info = string.format("Apply Spell %s \n", self.id)
-	print(info)
-	
+	self.owner:TriggerFireSpell({triggerTime = triggerTime, spellID = self.id, casterID = self.caster.guid, castResult = _G.SPELL_CAST_OK})
 	self.applyTime = triggerTime
-	local rootEffect = self.owner:GetEffect(rootEffectID)
+	local rootEffect = self.owner:GetEffect(self.rootEffectID)
 	if rootEffect then
 		rootEffect.applyTime = triggerTime
 		rootEffect:SetOwnedSpell(self)

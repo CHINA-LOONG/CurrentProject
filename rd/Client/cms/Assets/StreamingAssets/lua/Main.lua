@@ -15,9 +15,9 @@ function TestCo2()
 	
 	while true do
 		mat.color = Color.red
-		coroutine.wait(0.2)		
+		coroutine.wait(0.2)
 		mat.color = Color.white
-		coroutine.wait(0.2)		
+		coroutine.wait(0.2)
 	end
 	
 	print("coroutine2 over:", i)

@@ -3,8 +3,8 @@ local math = math
 local pairs = pairs
 local setmetatable = setmetatable
 local table = table
-local print = print
 local _G = _G
+local Log = DebugLog
 
 module "Buff"
 
@@ -163,10 +163,6 @@ function Buff:SetEnable(enable)
 end
 ---------------------------------------------------------------------------------------------------
 function Buff:Apply(curTime)
-	local info = string.format("buff applyed id %s\n", self.id)
-	print(info)
-	do return end
-	
 	if self.target == nil then
 		return
 	end
@@ -185,6 +181,14 @@ function Buff:Apply(curTime)
 		effectInitial.target = self.target
 		effectInitial:Apply(curTime)
 	end
+	
+	self.owner:TriggerBuff(
+		{ triggerTime = curTime, casterID = self.caster.guid, targetID = self.target.guid,
+		  buffID = self.id, isAdd = true
+		}
+	)
+	--test only
+	self:Periodic(100)
 	
 	--self:ModifyUnit(false)
 end
@@ -228,7 +232,8 @@ function Buff:Periodic(curTime)
 				periodicEffect.target = self.target
 				periodicEffect.caster = self.caster
 				periodicEffect.applyTime = validateTime
-				self.owner:AddCalculateEffect(periodicEffect)
+				periodicEffect:Apply()
+				--self.owner:AddCalculateEffect(periodicEffect)
 			end 
 			self.curPeriodicCount = self.curPeriodicCount + 1
 			validateTime = self.applyTime + self.curPeriodicCount * periodTime
@@ -273,9 +278,9 @@ function Buff:AddBuff(activeBuffList, curTime)
 		--if self.m_Enable then
 		--	self:ModifyUnit(false)		
 		--end
-		successAdded = self.m_Owner:AddActiveBuff(self)
+		successAdded = self.owner:AddActiveBuff(self)
 		if successAdded then
-			self:AddStack(self.m_CasterID, 1, curTime)
+			self:AddStack(self.caster.guid, 1, curTime)
 			self:SendBuff(curTime, true)
 			self:Periodic(curTime)
 			self:UpdateBuffState(curTime)
@@ -310,7 +315,7 @@ function Buff:GetCurStack(casterID)
 			curStack = curStack + val
 		end
 	else
-	    curStack = self.m_CurStack[casterID]
+	    curStack = self.curStack[casterID]
 	    if curStack == nil then
 	        curStack = 0
 		end
@@ -334,7 +339,7 @@ function Buff:AddStack(casterID, buffCount, pos)
 	if self.curStack[casterID] ~= nil then
 		self.curStack[casterID]  = self.curStack[casterID] + addStack
 	else
-	    self.m_CurStack[casterID] = addStack
+	    self.curStack[casterID] = addStack
 	end
 	self.curTotalStack = self.curTotalStack + addStack
 	local minusStack = 0
@@ -348,7 +353,7 @@ function Buff:AddStack(casterID, buffCount, pos)
 		if previousTotalStack ~= 0 then
 			self:ModifyUnit(true, previousTotalStack, pos)
 		end
-		--if self.m_CurTotalStack ~= 1 then --TODO:check =1 already modifyunit in checkenable?
+		--if self.curTotalStack ~= 1 then --TODO:check =1 already modifyunit in checkenable?
 		self:ModifyUnit(false)
 		--end
 	end
@@ -383,14 +388,14 @@ function Buff:Refresh(curTime)
 	self.endTime = curTime + self.actualDuration
 	self.curCharge = self.charge
 	self.curPeriodicCount = 1
-	--if self.m_NextValidateTime <= curTime then
+	--if self.nextValidateTime <= curTime then
 		local effectRefresh = self.owner:GetEffect(self.effectRefreshID)
 		if self.effectRefresh ~= nil then
 			effectRefresh:SetOwnedSpell(self.ownedSpell)
 			effectRefresh:SetOwnedBuff(self)
 			effectRefresh.target = self.target
 			effectRefresh:Apply(curTime)
-			--self.m_Owner:AddActiveEffect(effectRefresh)
+			--self.owner:AddActiveEffect(effectRefresh)
 		end
 	--end
 	
@@ -400,7 +405,7 @@ function Buff:Refresh(curTime)
 	end
 	
 	--[[local curBeginPos = math.floor(curTime/_Gen.POS_PER_ROUND)*_Gen.POS_PER_ROUND
-	if self.actualDuration > 0 and self.m_EndTime - curTime <= _Gen.POS_PER_ROUND then
+	if self.actualDuration > 0 and self.endTime - curTime <= _Gen.POS_PER_ROUND then
 		self.m_Owner:AddBuffToRemove(self, true)
 	else
 		self.m_Owner:ClearBuffToRemove(self)
@@ -624,6 +629,12 @@ function Buff:Remove(removeType, curTime)
 		return false
 	end
 
+	self.owner:TriggerBuff(
+		{ triggerTime = curTime, casterID = self.caster.guid, targetID = self.target.guid,
+		  buffID = self.id, isAdd = false
+		}
+	)
+	
 	self.isFinish = true
 	self.removeType = removeType
 	self.actualDuration = 0

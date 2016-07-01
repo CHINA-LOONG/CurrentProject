@@ -4,7 +4,8 @@ local pairs = pairs
 local setmetatable = setmetatable
 local table = table
 local Effect = Effect
-local print = print
+local _G = _G
+local Log = DebugLog
 
 module "EffectApplyBuff"
 ---------------------------------------------------------------------------------------------------
@@ -21,8 +22,7 @@ function EffectApplyBuff:Apply(curTime)
 	end
 	
 	local info = string.format("apply buff effect Apply id%s \n", self.id)
-	print(info)
-	do return end
+	Log:Log(info)
 	
 	self:CalculateHit()
 	
@@ -68,11 +68,11 @@ function EffectApplyBuff:CalculateHit()
 	end
 	
 	--not check ally team
-	if IsAlly(self.caster.camp, self.target.camp) then
+	if _G.IsAlly(self) then
 		self.hit = _G.HIT_SUCCESS
 		return
 	end
 	
-	self.hit = CalculateBasicHit(self.caster, self.target)
+	self.hit = self:CalculateBasicHit(self.caster, self.target)
 end
 ---------------------------------------------------------------------------------------------------

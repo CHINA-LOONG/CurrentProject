@@ -5,6 +5,7 @@ require "pbc/protobuf"
 require "logic/luaclass"
 require "common/define"
 require "common/functions"
+require "common/DebugLog"
 
 require "logic/Battle/BattleTest"
 --test

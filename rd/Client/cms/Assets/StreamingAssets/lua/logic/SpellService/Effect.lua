@@ -3,8 +3,8 @@ local math = math
 local pairs = pairs
 local setmetatable = setmetatable
 local table = table
-local print = print
 local _G = _G
+local Log = DebugLog
 
 module "Effect"
 ---------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ end
 ---------------------------------------------------------------------------------------------------
 function Effect:ApplyBasic(curTime)
 	local info = string.format("effect Apply basic id%s \n", self.id)
-	print(info)
+	Log:Log(info)
 	
 	self:GenerateTarget(self.caster, self.target)
 	if self.chance then
@@ -81,14 +81,14 @@ function Effect:GenerateTarget(caster, target)
 	end
 end
 ---------------------------------------------------------------------------------------------------
-function Effect:GenerateEnergy()
+function Effect:CalculateEnergy()
 	if self.caster and self.energy then	
 	end
 end
 ---------------------------------------------------------------------------------------------------
 function Effect:CalculateBasicHit(caster, target)
 	--min((max(N+L(lv1-lv2)),60%)+装备附加命中+buff附加命中,100%)
-	local hitRate = caster.baseHitRate + GetHitRateAdjustNum(caster.level - target.level)
+	local hitRate = caster.baseHitRate + _G.GetHitRateAdjustNum(caster.level - target.level)
 	local hitRateExtra = caster.hitRate - caster.baseHitRate
 	if hitRate < _G.HIT_RATE_MIN then
 		hitRate = _G.HIT_RATE_MIN

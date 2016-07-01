@@ -4,7 +4,7 @@ local pairs = pairs
 local setmetatable = setmetatable
 local table = table
 local Effect = Effect
-local print = print
+local Log = DebugLog
 local _G = _G
 
 module "EffectDamage"
@@ -40,7 +40,7 @@ function EffectDamage:Apply(curTime)
 	end
 	
 	local info = string.format("damage effect Apply id%s \n", self.id)
-	print(info)
+	Log:Log(info)
 	
 	self:CalculateHit()
 	if self.hit == _G.HIT_SUCCESS then
@@ -55,6 +55,9 @@ function EffectDamage:Apply(curTime)
 end
 ---------------------------------------------------------------------------------------------------
 function EffectDamage:CalculateHit()
+	local info = string.format("calculate hit in effect %s", self.id)
+	Log:Log(info)
+	
 	self.hit = _G.HIT_SUCCESS
 	if not(self.isHeal) then
 		local invulnerable = self.target.flags.invulnerable
@@ -65,11 +68,13 @@ function EffectDamage:CalculateHit()
 	end
 	
 	if not(self.noMiss) then
-		self.hit = CalculateBasicHit(self.caster, self.target)
+		self.hit = self:CalculateBasicHit(self.caster, self.target)
 	end
 end
 ---------------------------------------------------------------------------------------------------
 function EffectDamage:CalculateCritical()
+	local info = string.format("calculate critical in effect %s", self.id)
+	Log:Log(info)
 	self.isCritical = true
 	if self.absoluteCritical then
 		self.isCritical = true
@@ -81,12 +86,14 @@ function EffectDamage:CalculateCritical()
 	end
 	
 	local criticalRandNum = math.random()
-	if criticalRandNum > caster.criticalRate then
+	if criticalRandNum > self.caster.criticalRate then
 		self.isCritical = nil
 	end
 end
 ---------------------------------------------------------------------------------------------------
 function EffectDamage:CalculateDamage(curTime)
+	local info = string.format("calculate damage in effect %s", self.id)
+	Log:Log(info)
 	local lifeAmount
 	if self.amountFunction then
 		lifeAmount = self.amountFunction(self)
@@ -111,7 +118,7 @@ function EffectDamage:CalculateDamage(curTime)
 		damageConvertRatio = -1
 		--受伤比
 		--1/(1+(B防御力)/I(lv2))
-		local injuryRatio = 1.0/(1.0 + (self.target.defend)/GetInjuryAdjustNum(math.min(self.caster.level, self.target.level)))
+		local injuryRatio = 1.0/(1.0 + (self.target.defend)/_G.GetInjuryAdjustNum(math.min(self.caster.level, self.target.level)))
 		if injuryRatio > 0.25 then
 			injuryRatio = 0.25
 		end
@@ -120,7 +127,7 @@ function EffectDamage:CalculateDamage(curTime)
 		
 		--属性相克系数
 		if self.damageType == damageTypeMag then
-			lifeAmount = lifeAmount * GetPropertyInfluenceRatio(self.caster.property, self.target.property)
+			lifeAmount = lifeAmount * _G.GetPropertyInfluenceRatio(self.caster.property, self.target.property)
 		end
 		
 		--副本系数？什么玩意
@@ -144,9 +151,16 @@ function EffectDamage:CalculateDamage(curTime)
 	end
 	if self.target.life < 0 then
 		self.target.life = 0
-		self.owner:OnUnitDead(self.target)
+		self.owner:TriggerUnitDead({triggerTime = curTime, casterID = self.caster.guid, deathID = self.target.guid})
 	elseif self.target.life > self.target.maxLife then
 		self.target.life = self.target.maxLife
 	end
+	
+	self.owner:TriggerLifeChange(
+		{ triggerTime = curTime, casterID = self.caster.guid, targetID = self.target.guid,
+			isCritical = self.isCritical, lifeChange = lifeAmount, 
+			lifeCurrent = self.target.life,lifeMax = self.target.maxLife
+		}
+	)
 end
 ---------------------------------------------------------------------------------------------------

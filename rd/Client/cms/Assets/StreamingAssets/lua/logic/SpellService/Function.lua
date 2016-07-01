@@ -1,7 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 --damage releated
 function GetInjuryAdjustNum(level)
-	print("get injury count 1\n")
 	return 1
 end
 ---------------------------------------------------------------------------------------------------
@@ -14,12 +13,12 @@ function GetPropertyInfluenceRatio(propAttacker, propDefender)
 end
 ---------------------------------------------------------------------------------------------------
 --validators
-function IsAlly(caster, target)
-	return caster.camp == target.camp
+function IsAlly(param)
+	return param.caster.camp == param.target.camp
 end
 ---------------------------------------------------------------------------------------------------
-function IsEnemy(caster, target)
-	return not(IsAlly())
+function IsEnemy(param)
+	return not(IsAlly(param))
 end
 ---------------------------------------------------------------------------------------------------
 function GetChangeValue(baseValue, amountChange, factorChange)

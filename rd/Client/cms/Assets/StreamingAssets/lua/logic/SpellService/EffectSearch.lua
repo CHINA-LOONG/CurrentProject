@@ -4,7 +4,7 @@ local pairs = pairs
 local setmetatable = setmetatable
 local table = table
 local Effect = Effect
-local print = print
+local Log = DebugLog
 
 module "EffectSearch"
 ---------------------------------------------------------------------------------------------------
@@ -16,7 +16,7 @@ EffectSearch = {
 	targetValidatorList,
 	sort,
 	compareFun,
-	searchArea,--{range(one,all, row, column), searchCount, searchPortion, effectID}
+	searchEffectID,--{range(one,all, row, column), searchCount, searchPortion, effectID}
 	isRandom,
 	
 	--state data
@@ -35,8 +35,7 @@ function EffectSearch:Apply(curTime)
 	end
 	
 	local info = string.format("search effect Apply id%s \n", self.id)
-	print(info)
-	do return end
+	Log:Log(info)
 	
 	--self:SendEffect()
 	--self:CalculateEnergy()
@@ -52,7 +51,7 @@ function EffectSearch:Apply(curTime)
 		if curEffect ~= nil then
 			curEffect:SetOwnedSpell(self.ownedSpell)
 			curEffect:SetOwnedBuff(self.ownedBuff)
-			curEffect:SetCaster(self.casterID)
+			curEffect.caster = self.caster
 			curEffect.target = val.target
 			--curEffect:SetSource(self.targetID)
 			--curEffect:SetParam(targetCount)
@@ -76,9 +75,15 @@ function EffectSearch:IsTargetValidate(target, excludeList)
 		end
 	end
 	
+	local validateParam =
+	{
+		caster = self.caster,
+		target = target,
+		owner = self.owner,
+	}
 	if self.targetValidatorList then
 		for _, val in pairs(self.targetValidatorList) do
-			targetValidate = val(self.caster, target)
+			targetValidate = val(validateParam)
 			if not(targetValidate) then
 				break
 			end
@@ -99,53 +104,53 @@ function EffectSearch:Search()
 			if key == "target" then
 				totalCount = totalCount + 1
 				excludeList[self.target.guid] = true
-				table.insert(includeList, {target = self.target.guid, effectID = effectID})
+				table.insert(includeList, {target = self.target, effectID = effectID})
 			elseif key == "caster" then
 				totalCount = totalCount + 1
 				excludeList[self.casterID.guid] = true
-				table.insert(includeList, {target = self.caster.guid, effectID = effectID})
+				table.insert(includeList, {target = self.caster, effectID = effectID})
 			end
 		end
 	end
 	
-	if self.searchArea then
+	if self.searchEffectID then
 		local playerList, enemyList = self.owner:GetAllUnits()
 		--have sort
 		if self.sortFunction or self.isRandom then
 			for _, val in pairs(playerList) do
-				if self:IsTargetValidate(val.guid, excludeList) then
+				if self:IsTargetValidate(val, excludeList) then
 					excludeList[val.guid] = true
-					table.insert(targetList, {target = val.guid, effectID = self.searchArea.effectID})
+					table.insert(targetList, {target = val, effectID = self.searchEffectID})
 					totalCount = totalCount + 1
 				end
 			end
 			for _, val in pairs(enemyList) do
-				if self:IsTargetValidate(val.guid, excludeList) then
+				if self:IsTargetValidate(val, excludeList) then
 					excludeList[guid] = true
-					table.insert(targetList, {target = val.guid, effectID = searchArea.effectID})
+					table.insert(targetList, {target = val, effectID = self.searchEffectID})
 					totalCount = totalCount + 1
 				end
 			end
 		--no sort, break if reach max count of current area
 		else 
 			for _, val in pairs(playerList) do
-				if self:IsTargetValidate(val.guid, excludeList) then
+				if self:IsTargetValidate(val, excludeList) then
 					if totalCount >= self.maxCount then
 						break
 					end
 					excludeList[val.guid] = true
-					table.insert(targetList, {target = val.guid, effectID = searchArea.effectID})
+					table.insert(targetList, {target = val, effectID = self.searchEffectID})
 					totalCount = totalCount + 1
 				end
 			end
 			if totalCount < self.maxCount then
 				for _, val in pairs(enemyList) do
-					if self:IsTargetValidate(val.guid, excludeList) then
+					if self:IsTargetValidate(val, excludeList) then
 						if totalCount >= self.maxCount then
 							break
 						end
 						excludeList[val.guid] = true
-						table.insert(targetList, {target = val.guid, effectID = searchArea.effectID})
+						table.insert(targetList, {target = val, effectID = self.searchEffectID})
 						totalCount = totalCount + 1
 					end
 				end
@@ -175,11 +180,13 @@ function EffectSearch:Search()
 			
 			local startIndex = trimMaxCount
 			local endIndex = trimTotalCount
-			local targetUnit = self.owner:GetUnit(targetList[trimMaxCount].target)
+			local targetUnit = targetList[trimMaxCount].target
+			--local targetUnit = self.owner:GetUnit(targetList[trimMaxCount].target)
 			local lastValue = targetUnit[self.sort[1]]
 			
 			for index=1, trimMaxCount do
-				local curUnit = self.owner:GetUnit(targetList[index].target)
+				--local curUnit = self.owner:GetUnit(targetList[index].target)
+				local curUnit = targetList[index].target
 				local curVal = curUnit[self.sort[1]]
 				if curVal == lastValue then
 					startIndex = index
@@ -187,7 +194,8 @@ function EffectSearch:Search()
 				end
 			end
 			for index=trimMaxCount+1, trimTotalCount do
-				local curUnit = self.owner:GetUnit(targetList[index].target)
+				--local curUnit = self.owner:GetUnit(targetList[index].target)
+				local curUnit = targetList[index].target
 				local curVal = curUnit[self.sort[1]]
 				if curVal ~= lastValue then
 					endIndex = index - 1
@@ -234,6 +242,8 @@ function EffectSearch:Search()
 		table.insert(self.targetList, val)
 	end
 	targetList = nil
+	
+	Log:Log("search end")
 end
 --*************************************************************************************************
 function EffectSearch:GenerateSorFunction()
