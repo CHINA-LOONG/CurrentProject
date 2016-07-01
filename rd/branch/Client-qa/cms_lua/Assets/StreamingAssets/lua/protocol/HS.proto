@@ -1,0 +1,42 @@
+option java_package = "com.hawk.game.protocol";
+
+// 系统协议ID列表(<100)
+enum sys
+{
+	// 数据封装
+	DATA_WRAPPER           = 1;
+	// 秘钥交换
+	KEY_EXCHANGE           = 2;
+	// 心跳通知
+	HEART_BEAT             = 3;	
+	// 错误码提示
+	ERROR_CODE             = 4;	
+}
+
+// 游戏协议ID列表(>=100)
+enum code
+{
+	// 玩家
+	LOGIN_C                = 1000;
+	LOGIN_S                = 1001;
+	LOGOUT_C               = 1002;
+	LOGOUT_S               = 1003;
+	KICKOUT_S              = 1004;
+
+	// 角色
+	ROLE_CREATE_C          = 1100;
+	ROLE_CREATE_S          = 1101;
+	ROLE_DELETE_C          = 1102;
+	ROLE_DELETE_S          = 1103;
+	ROLE_SELECT_C          = 1104;
+	ROLE_SELECT_S          = 1105;
+	ROLE_CHANGE_C          = 1106;
+	ROLE_CHANGE_S          = 1107;
+
+	// 怪物
+	MONSTER_ADD_S          = 2000;
+	MONSTER_BREAK_C        = 2001;
+	MONSTER_BREAK_S        = 2002;
+	MONSTER_FEED_C         = 2003;
+	MONSTER_FEED_S         = 2004;
+}
