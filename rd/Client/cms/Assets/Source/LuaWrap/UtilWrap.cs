@@ -40,6 +40,7 @@ public class UtilWrap
 		new LuaMethod("GetFileText", GetFileText),
 		new LuaMethod("AppContentPath", AppContentPath),
 		new LuaMethod("LuaPath", LuaPath),
+		new LuaMethod("ProtoPath", ProtoPath),
 		new LuaMethod("Log", Log),
 		new LuaMethod("LogWarning", LogWarning),
 		new LuaMethod("LogError", LogError),
@@ -528,6 +529,15 @@ public class UtilWrap
 		}
 
 		return 0;
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ProtoPath(IntPtr L)
+	{
+		LuaScriptMgr.CheckArgsCount(L, 0);
+		string o = Util.ProtoPath();
+		LuaScriptMgr.Push(L, o);
+		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]

@@ -9,7 +9,7 @@ function TestCo2()
 	if not TestMode then return end
 
 	local go = GameObject.Find("/Cube")
-	local render = go.renderer
+	local render = go:GetComponent("Renderer")
 	local mat = render.material
 	local i = 1
 	

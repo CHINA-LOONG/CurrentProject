@@ -8,9 +8,7 @@ local this;
 PromptPanel = {};
 
 --启动事件--
-function PromptPanel.Start()
-	print(package.path);
-	
+function PromptPanel.Start()	
 	this = PromptPanel;
 	gameObject = find("PromptPanel");
 	trans = gameObject.transform;
@@ -18,7 +16,7 @@ function PromptPanel.Start()
 
 	this.InitPanel();	--初始化面板--
 	prompt:AddClick('Open');
-	warn("Start lua--->>"..gameObject.name);
+	log("Start lua--->>"..gameObject.name);
 end
 
 --初始化面板--

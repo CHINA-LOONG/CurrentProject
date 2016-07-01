@@ -1,64 +1,88 @@
 require "logic.Battle.BattleProcess"
 
-local this;
-BattleController = {}
+BattleController = {
+	battleGroup = nil,
+}
 
-function BattleController:StartBattle()
-	this = BattleController;
+testProcess = 5
+processCount = 0
+
+function BattleController:StartBattle(group)
+	self.battleGroup = group
 
 	-- create all units of this battle
-	this.CreateUnit();
+	self:CreateUnit()
 
 	-- 前置剧情动画
-	this.PlayPreStoryAnim();
+	self:PlayPreStoryAnim()
 
 	-- 显示对局UI
-	this.ShowUI();
+	self:ShowUI()
 
-	-- 进程循环
-	this.ProcessLoop();
+	-- 开始进程
+	self:StartProcess()
 
-	-- 胜利失败动画
-	this.PlayBalanceAnim();
-
-	-- 后置剧情动画
-	this.PlayPostStoryAnim();
-
-	-- 结算面板
-	this.Balance();
 end
 
 function BattleController:CreateUnit()
-	print("Creating Battle Units...");
+	print("<Battle>Creating Battle Units...")
 end
 
 function BattleController:PlayPreStoryAnim()
-	print("Play Story Animation before any process...");
+	print("<Battle>Play Story Animation before any process...")
 end
 
 function BattleController:PlayPostStoryAnim()
-	print("Play Story Animation after any process...");
+	print("<Battle>Play Story Animation after any process...")
 end
 
-function BattleController:ProcessLoop()
-	print("Pre Process");
-	local curProcess = this.GetNextProcess();
-	while curProcess ~= nil do
-		curProcess.Start();
+function BattleController:StartProcess()
+	local curProcess = self:GetNextProcess()
+	if curProcess ~= nil then
+		curProcess:Start(self.battleGroup, function ()
+			self:OnEndProcess()
+		end)
+	else
+		self:OnEndAllProcess();
 	end
-	print("End Process");
+end
+
+function BattleController:OnEndProcess()
+	print("<Battle>OnEndProcess Callback")
+	self:StartProcess();
+end
+
+function BattleController:OnEndAllProcess()
+	print("<Battle>OnEndAllProcess")
+	-- 胜利失败动画
+	self:PlayBalanceAnim()
+
+	-- 后置剧情动画
+	self:PlayPostStoryAnim()
+
+	-- 结算面板
+	self:ShowBalanceUI()
 end
 
 function BattleController:ShowUI( ... )
-	print("Show Battle UI...")
+	print("<Battle>Show Battle UI...")
 end
 
 function BattleController:GetNextProcess( ... )
-	return BattleProcess.New();
+	if processCount < testProcess then	
+		processCount = processCount+1
+		return BattleProcess:New()
+	else
+		return nil
+	end
 end
 
-function BattleController:Balance( ... )
-	print("Show the balance UI of this battle..")
+function BattleController:PlayBalanceAnim( ... )
+	print("<Battle>Playing Balance Animation...")
+end
+
+function BattleController:ShowBalanceUI( ... )
+	print("<Battle>Show the balance UI of this battle...")
 end
 
 -----------------------------------------Event-----------------------------------------------------

@@ -41,6 +41,6 @@ public class PanelManager : MonoBehaviour {
         go.transform.localPosition = Vector3.zero;
         go.AddComponent<BaseLua>(); 
 
-        Debug.LogWarning("CreatePanel::>> " + name + " " + prefab);
+        Debug.Log("CreatePanel::>> " + name + " " + prefab);
     }
 }

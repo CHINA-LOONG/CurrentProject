@@ -8,7 +8,7 @@ local islogging = false;
 
 function Network.Start() 
     this = Network;
-    warn("Network.Start!!");
+    log("Network.Start!!");
 end
 
 --Socket消息--

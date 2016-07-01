@@ -6,7 +6,7 @@ require "logic/luaclass"
 require "common/define"
 require "common/functions"
 
-require "logic/Battle/BattleController"
+require "logic/Battle/BattleTest"
 --test
 require "logic/SpellService/SpellTest"
 --管理器--
@@ -34,15 +34,14 @@ function GameManager.FireSpell()
 end
 --初始化完成，发送链接服务器信息--
 function GameManager.OnInitOK()
-	warn('OnInitOK--->>>');
-    print(package.path);
-	createPanel("Prompt");
+	log('OnInitOK--->>>');
+--[[	createPanel("Prompt");
 
     Const.SocketPort = 2012;
     Const.SocketAddress = "127.0.0.1";
-    ioo.networkManager:SendConnect();
+    ioo.networkManager:SendConnect();--]]
 
-    BattleController.StartBattle();
+    BattleTest:Test();
 end
 
 function GameManager.test_lpeg_func()

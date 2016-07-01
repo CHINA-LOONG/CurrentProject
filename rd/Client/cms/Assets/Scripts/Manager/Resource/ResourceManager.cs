@@ -23,7 +23,6 @@ public class ResourceManager : MonoBehaviour {
         uri = Path.Combine(Util.AssetBundlePath, Const.AssetDirname);
 
         stream = File.ReadAllBytes(uri);
-        Debug.LogWarning(stream.Length +" " + File.Exists(uri));
 
         assetbundle = AssetBundle.CreateFromMemoryImmediate(stream);
         manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
@@ -52,7 +51,7 @@ public class ResourceManager : MonoBehaviour {
         if (!bundles.ContainsKey(abname)) {
             byte[] stream = null;
             string uri = Path.Combine(Util.AssetBundlePath, abname);
-            Debug.LogWarning("LoadFile::>> " + uri);
+            Debug.Log("LoadFile::>> " + uri);
             LoadDependencies(abname);
 
             stream = File.ReadAllBytes(uri);

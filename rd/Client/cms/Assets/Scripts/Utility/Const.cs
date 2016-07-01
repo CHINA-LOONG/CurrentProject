@@ -6,13 +6,14 @@ using System.Collections.Generic;
 public class Const {
     /// <summary>
     /// 调试模式
-    /// 不开启此模式会直接读取streamingassets中的文件
-    /// 开启此模式会将streamingassets下面的文件复制到persistentDataPath中，并从persistentDataPath中读取数据
+    /// 开启此模式会直接读取streamingassets中的文件
+    /// 不开启此模式会将streamingassets下面的文件复制到persistentDataPath中，并从persistentDataPath中读取数据
     /// </summary>
-    public static bool DebugMode = false;
+    public static bool DebugMode = true;
     /// <summary>
-    /// 更新模式
-    /// 更新模式下回从
+    /// 更新模式（开始此模式请确保DebugMode为false）
+    /// 更新模式下会从web server上获取version list，然后下载更新包更新版本
+    /// ios初审时请关闭
     /// </summary>
     public static bool UpdateMode = false;
 

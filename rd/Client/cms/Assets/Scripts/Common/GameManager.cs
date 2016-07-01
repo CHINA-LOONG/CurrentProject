@@ -37,11 +37,7 @@ public class GameManager : BaseLua
         Application.targetFrameRate = Const.GameFrameRate;
 
         //释放资源，将包中的压缩资源解压出来
-#if UNITY_EDITOR
-        Util.Add<ResourceManager>(gameObject);
-#else
         CheckExtractResource();
-#endif
     }
 
     /// <summary>
@@ -50,7 +46,8 @@ public class GameManager : BaseLua
     public void CheckExtractResource()
     {
         bool isExists = Directory.Exists(Util.ResPath) && File.Exists(Path.Combine(Util.ResPath, "files.txt"));
-        if (isExists && !Const.DebugMode)
+        //
+        if (Const.DebugMode || isExists)
         {
             StartCoroutine(OnUpdateResource());
             return;   //文件已经解压过了，自己可添加检查文件列表逻辑
@@ -132,6 +129,7 @@ public class GameManager : BaseLua
     /// </summary>
     IEnumerator OnUpdateResource()
     {
+        //不更新模式下直接添加ResourceManager
         if (!Const.UpdateMode)
         {
             Util.Add<ResourceManager>(gameObject);
@@ -213,17 +211,10 @@ public class GameManager : BaseLua
     {
         uluaMgr = new LuaScriptMgr();
         uluaMgr.Start();
-
         uluaMgr.DoFile("logic/game");      //加载游戏
         uluaMgr.DoFile("logic/network");   //加载网络
         ioo.networkManager.OnInit();    //初始化网络
-        uluaMgr.CallLuaFunction("GameManager.FireSpell");
-        //uluaMgr.CallLuaFunction("SpellService:New");
-        //uluaMgr.CallLuaFunction("Test.test1");
-        //uluaMgr.CallLuaFunction("TestChild.test1");
-        //uluaMgr.CallLuaFunction("TestChild2.test1");
 
-        /*
         object[] panels = CallMethod("LuaScriptPanel");
         //---------------------Lua面板---------------------------
         foreach (object o in panels)
@@ -233,11 +224,10 @@ public class GameManager : BaseLua
             name += "Panel";    //添加
 
             uluaMgr.DoFile("logic/" + name);
-            Debug.LogWarning("LoadLua---->>>>" + name + ".lua");
+            Debug.Log("LoadLua---->>>>" + name + ".lua");
         }
         //------------------------------------------------------------
         CallMethod("OnInitOK");   //初始化完成
-         * */
     }
 
     /// <summary>
@@ -254,5 +244,29 @@ public class GameManager : BaseLua
     new void OnDestroy()
     {
         Debug.Log("~GameManager was destroyed");
+    }
+
+    void Update()
+    {
+        if (uluaMgr != null)
+        {
+            uluaMgr.Update();
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (uluaMgr != null)
+        {
+            uluaMgr.LateUpate();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (uluaMgr != null)
+        {
+            uluaMgr.FixedUpdate();
+        }
     }
 }

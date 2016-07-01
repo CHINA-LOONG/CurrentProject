@@ -1,4 +1,7 @@
-BattleUnit = {}
+BattleUnit = {
+	speedCount = 0,
+	order = 0,
+}
 
 function BattleUnit:Move( ... )
 	-- body
