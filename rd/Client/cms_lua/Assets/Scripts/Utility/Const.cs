@@ -30,7 +30,7 @@ public class Const {
     public static string AppName = "game";                      //应用程序名称
     public static string AppPrefix = AppName + "_";             //应用程序前缀
     public static string ExtName = ".unity3d";                  //素材扩展名
-    public static string AssetDirname = "assetbundle";         //素材目录 
+    public static string AssetDirname = "assetbundle";         //素材目录
 
     //更新地址
     public static string WebUrl = "http://localhost/versions/";
