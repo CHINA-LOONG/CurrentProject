@@ -15,6 +15,7 @@ public class BattleGroup
         foreach (var item in list)
         {
             var unit = BattleUnit.FromPb(item);
+            unit.Camp = UnitCamp.Enemy;
             if (item.slot > 0 && item.slot <= BattleConst.maxFieldUnit)
                 enemyField[item.slot - 1] = unit;
             enemyList.Add(unit);
@@ -27,6 +28,7 @@ public class BattleGroup
         foreach (var item in list)
         {
             var unit = BattleUnit.FromPb(item);
+            unit.Camp = UnitCamp.Player;
             if (item.slot > 0 && item.slot <= BattleConst.maxFieldUnit)
                 playerField[item.slot - 1] = unit;
             playerList.Add(unit);
@@ -132,5 +134,69 @@ public class BattleGroup
         }
 
         return true;
+    }
+
+    public BattleUnit GetUnitByGuid(int id)
+    {
+        foreach (var item in enemyList)
+        {
+            if (item.Guid == id)
+                return item;
+        }
+
+        foreach (var item in playerList)
+        {
+            if (item.Guid == id)
+                return item;
+        }
+
+        Logger.LogWarning("Battle Unit Not Found: " + id);
+        return null;
+    }
+
+    public void OnUnitEnterField(BattleUnit unit, int slot)
+    {
+        int fixedSlot = Mathf.Clamp(slot, BattleConst.slotIndexMin, BattleConst.slotIndexMax);
+        if (fixedSlot != slot)
+        {
+            Logger.LogError("Slot[1,3] error:" + slot);
+            return;
+        }   
+
+        BattleUnit[] field;
+        if (unit.Camp == UnitCamp.Enemy)
+            field = enemyField;
+        else
+            field = playerField;
+
+        if (field[slot] != null)
+        {
+            OnUnitExitField(field[slot], slot);
+        }
+
+        unit.Slot = slot;
+        field[slot] = unit;
+    }
+
+    public void OnUnitExitField(BattleUnit unit, int slot)
+    {
+        int fixedSlot = Mathf.Clamp(slot, BattleConst.slotIndexMin, BattleConst.slotIndexMax);
+        if (fixedSlot != slot)
+        {
+            Logger.LogError("Slot[1,3] error:" + slot);
+            return;
+        }
+
+        BattleUnit[] field;
+        if (unit.Camp == UnitCamp.Enemy)
+            field = enemyField;
+        else
+            field = playerField;
+
+        if (field[slot] != null)
+        {
+            unit.Slot = 0;
+            field[slot] = null;
+        }
     }
 }

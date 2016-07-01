@@ -1,6 +1,0 @@
-option java_package = "com.hawk.game.protocol";
-
-message HSPlayerKickout
-{
-	required int32 reason = 1;	
-}

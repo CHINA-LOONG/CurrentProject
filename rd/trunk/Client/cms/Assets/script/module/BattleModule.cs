@@ -26,6 +26,7 @@ public class BattleModule : ModuleBase
         controller = gameObject.AddComponent<BattleController>();
         process = gameObject.AddComponent<BattleProcess>();
         controller.Init(process);
+        process.Init();
     }
 
     public override void OnEnter(ModuleBase prevModule, object param)

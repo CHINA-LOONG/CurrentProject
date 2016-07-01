@@ -132,11 +132,11 @@ namespace FireEngine
 			{
 				byte[] sourceBytes = txtAsset.bytes;
 				OpenFromBytes (sourceBytes);
-				//FireLogger.LogMsg("FireTABFile.OpenFromFile:" + fileName + " loaded!");
+				Logger.Log("FireTABFile.OpenFromFile:" + fileName + " loaded!");
 			} 
             else
             {
-                //FireLogger.LogMsg("FireTABFile.OpenFromFile:" + fileName + " doesn't exist!");
+                Logger.Log("FireTABFile.OpenFromFile:" + fileName + " doesn't exist!");
 			}
 		}
 
@@ -162,13 +162,14 @@ namespace FireEngine
 			{
 				string errMsg = "Error while open tab: " + filename;
 				Debug.LogError(errMsg);
-                //FireLogger.LogException(exception,errMsg);
+                Logger.LogException(exception);
 				return false;
 			}
 			catch(UnauthorizedAccessException exception)
 			{
 				string errMsg = "Error while open tab: " + filename;
-               // FireLogger.LogException(exception,errMsg);
+                Logger.LogError(errMsg);
+                Logger.LogException(exception);
 				return false;
 			}
 		}
@@ -183,13 +184,15 @@ namespace FireEngine
 			catch(IOException exception)
 			{
 				string errMsg = "Error while open server res sync config.";
-              //  FireLogger.LogException(exception, errMsg);
+                Logger.LogError(errMsg);
+                Logger.LogException(exception);
 				return false;
 			}
 			catch(UnauthorizedAccessException exception)
 			{
 				string errMsg = "Error while open server res sync config.";
-              //  FireLogger.LogException(exception, errMsg);
+                Logger.LogError(errMsg);
+                Logger.LogException(exception);
 				return false;
 			}
 		}
@@ -432,7 +435,7 @@ namespace FireEngine
 
 		public List<FIELD> GetRowFieldsWithPrimaryColAndValue(string primaryKey, string value)
 		{
-			FIELD_TYPE fType = GetColumnTyp (primaryKey);
+			//FIELD_TYPE fType = GetColumnTyp (primaryKey);
 
 			List<FIELD> allKey = GetSpecifiedColumnFields (primaryKey);
 

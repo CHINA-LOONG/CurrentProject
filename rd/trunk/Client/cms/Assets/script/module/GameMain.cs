@@ -14,8 +14,8 @@ public class GameMain : MonoBehaviour
 	}
 	[SerializeField]
 	ModuleBase mPrevModule = null;
-	[SerializeField]
-	ModuleBase mNextModule = null;
+	/*[SerializeField]
+	ModuleBase mNextModule = null;*/
 	
 	object mParam0 = null;
 	public object Param0Attr

@@ -35,7 +35,7 @@ public class BattleUnitData
 public class BattleUnit
 {
     //配置数据
-    BattleUnitData config = null;
+    //BattleUnitData config = null;
     //服务器发过来的协议中属性
     PbBattleUnit proto = null;
 
@@ -78,6 +78,12 @@ public class BattleUnit
     float recovery;
     public float Recovery { get { return recovery; } set { recovery = value; } }
 
+    //////////////////////////////////////////////////////////////////////////
+    int slot;
+    public int Slot { get { return slot; } set { slot = value; } }
+    UnitCamp camp;
+    public UnitCamp Camp { get { return camp; } set { camp = value; } }
+
     //只在客户端计算使用的属性
     float speedCount = 0;
     float actionOrder = 0;
@@ -87,7 +93,6 @@ public class BattleUnit
     {
         var battleUnit = new BattleUnit();
         battleUnit.proto = unit;
-        battleUnit.config = new BattleUnitData();
 
         //初始化属性
         battleUnit.Init();
@@ -108,6 +113,8 @@ public class BattleUnit
         criticalRate = proto.criticalRate;
         criticalDamageFactor = proto.criticalDamageFactor;
         recovery = proto.recovery;
+
+        slot = proto.slot;
     }
 
     /// <summary>
@@ -128,5 +135,15 @@ public class BattleUnit
         speedCount = proto.speed * Random.Range(BattleConst.speedFactorMin, BattleConst.speedFactorMax);
         actionOrder = BattleConst.speedK / speedCount;
         Logger.LogFormat("Unit {0}: speedCount: {1}, actionOrder: {2}", Name, speedCount, actionOrder);
+    }
+
+    public void OnEnterField()
+    {
+
+    }
+
+    public void OnExitField()
+    {
+
     }
 }

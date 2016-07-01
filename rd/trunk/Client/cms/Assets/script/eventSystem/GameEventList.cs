@@ -9,8 +9,22 @@ public class GameEventList
     //Build
     public static string BattleBtnClick = "BattleBtnClick";
 
+    //////////////////////////////////////////////////////////////////////////
     //Battle
-    public static string StartBattle = "StartBattle";  //param: Collision
+    public static string StartBattle = "StartBattle";  //param: PbStartBattle    
+
+    //process
+    public static string SwitchPet = "SwitchPet";
+    
+    //spell
+    public static string FireSpell = "FireSpell";
+    public static string LifeChange = "LifeChange";
+    public static string EnergyChange = "EnergyChange";
+    public static string UnitDead = "UnitDead";
+    public static string Buff = "Buff";
+
+
+    //////////////////////////////////////////////////////////////////////////
 
     //Data
     public static string LifeDataChanged = "LifeDataChanged"; //float
