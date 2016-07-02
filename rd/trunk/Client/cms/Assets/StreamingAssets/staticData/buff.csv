@@ -1,4 +1,8 @@
-﻿#TEXT,NUM,TEXT,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT
-id,category,periodEffectID,duration,stun,invincible,strengthRatio,intelligenceRatio,defenseRatio,speedRatio
-#id,category,periodEffectID,duration,stun,invincible,strengthRatio,intelligenceRatio,defenseRatio,speedRatio
-b1,0,e1,5,0,0,1,1,1,1
+﻿#TEXT,NUM,TEXT,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT,TEXT
+id,category,periodEffectID,duration,stun,invincible,strengthRatio,intelligenceRatio,defenseRatio,speedRatio,icon
+#id,category,periodEffectID,duration,stun,invincible,strengthRatio,intelligenceRatio,defenseRatio,speedRatio,icon
+b1,1,e1,5,0,0,1,1,1,1,ui/monster/soul
+buffMagicb1,1,,3,0,0,0,1,0,0,ui/monster/cat
+buffAttackb1,1,,3,0,0,1,0,0,0,ui/monster/soul
+debuffDefenseb1,1,,3,0,0,0,0,1,0,ui/monster/cat
+defendb1,1,,1,0,0,0,0,1,0,ui/monster/soul

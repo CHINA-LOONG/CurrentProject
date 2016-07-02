@@ -78,7 +78,6 @@ public class EffectDamage : Effect
             //受伤比计算 max(1/(1+(守方总防御力-攻方防御穿透)/I(min(lv1,lv2))),25%)
             float injuryRatio = 1.0f / (1.0f + (target.defense - caster.defensePierce) / SpellFunctions.GetInjuryAdjustNum(caster.pbUnit.level, target.pbUnit.level));
             injuryRatio = injuryRatio < 0.25f ? 0.25f : injuryRatio;
-            Logger.LogFormat("受伤比：{0}   守方总防御力：{1}  攻方防御穿透：{2}  攻方等级：{3}    防御方等级：{4}", injuryRatio, target.defense, caster.defensePierce, caster.pbUnit.level, target.pbUnit.level);
 
             EffectDamageProtoType damageProto = protoEffect as EffectDamageProtoType;
             int damageAmount = 0;
@@ -87,9 +86,9 @@ public class EffectDamage : Effect
             {
                 //治疗
                 damageAmount = (int)(
-                                damageRatio * injuryRatio * SpellConst.intelligenceToAttack * caster.intelligence *  //暴击伤害系数 * 受伤比 * 攻击
+                                damageRatio * SpellConst.intelligenceToAttack * caster.intelligence *  //暴击伤害系数 * 攻击
                                 (1.0f + gdMgr.PlayerDataAttr.equipIntelligenceRatio + caster.additionHealRatio) * //主角和怪物装备加成
-                                (1.0f + damageProto.attackFactor * spellLevelRatio) * //技能加成
+                                (damageProto.attackFactor + spellLevelRatio) * //技能加成
                                 (1.0f + caster.spellIntelligenceRatio)
                                 );//buff加成(队长技 etc)
 
@@ -111,18 +110,10 @@ public class EffectDamage : Effect
                     damageAmount = (int)(
                                     damageRatio * injuryRatio * SpellConst.strengthToAttack * caster.strength *  //暴击伤害系数 * 受伤比 * 攻击
                                     (1.0f + gdMgr.PlayerDataAttr.equipStrengthRatio + caster.additionDamageRatio - target.minusDamageRatio) * //主角和怪物装备加成
-                                    (1.0f + damageProto.attackFactor * spellLevelRatio) * //技能加成
+                                    (damageProto.attackFactor + spellLevelRatio) * //技能加成
                                     (1.0f + caster.spellStrengthRatio) *
                                     wpRatio
                                     ); //buff加成(队长技 etc)
-                    //添加log by ts
-                     Logger.LogFormat("总力量：{0}   k值：{1}  物理攻击力：{2}    暴击伤害百分比：{3}    受伤比：{4}",
-                        caster.strength,
-                        SpellConst.strengthToAttack,
-                        SpellConst.strengthToAttack * caster.strength,
-                        damageRatio,
-                        injuryRatio
-                        );
                 }
                 //法术伤害
                 else
@@ -154,19 +145,11 @@ public class EffectDamage : Effect
                     damageAmount = (int)(
                                     damageRatio * injuryRatio * SpellConst.intelligenceToAttack * caster.intelligence *  //暴击伤害系数 * 受伤比 * 攻击
                                     (1.0f + gdMgr.PlayerDataAttr.equipIntelligenceRatio + caster.additionDamageRatio - target.minusDamageRatio) * //主角和怪物装备加成
-                                    (1.0f + damageProto.attackFactor * spellLevelRatio) * //技能加成
+                                    (damageProto.attackFactor + spellLevelRatio) * //技能加成
                                     (1.0f + caster.spellIntelligenceRatio) *//buff加成(队长技 etc)
                                     propertyDamageRatio
                                     ); //五行相关
                                     /* *弱点伤害 * 副本伤害 */
-                    //添加log by ts
-                    Logger.LogFormat("总智力：{0}   k值：{1}  法术攻击力：{2}    暴击伤害百分比：{3}    受伤比：{4}",
-                        caster.intelligence,
-                        SpellConst.intelligenceToAttack,
-                        SpellConst.intelligenceToAttack * caster.intelligence,
-                        damageRatio,
-                        injuryRatio
-                        );
                 }
                 //伤害*-1 修正为负数
                 damageAmount *= -1;

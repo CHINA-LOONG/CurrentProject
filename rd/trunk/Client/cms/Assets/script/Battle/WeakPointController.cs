@@ -168,9 +168,11 @@ public class WeakPointController : MonoBehaviour
 
 		GameUnit curGameUnit = getGameUnit(findTarget);
 		string curWeakPointName = findTarget.WeakPointIDAttr;
-		
-		ShowOrHideFindEffect(curGameUnit,curWeakPointName,true);
-		ShowOrHideFindFinishedEffect(curGameUnit,curWeakPointName,false);
+
+		bool isFinished = curGameUnit.findWeakPointlist.Contains (curWeakPointName);
+
+		ShowOrHideFindEffect(curGameUnit,curWeakPointName,!isFinished);
+		ShowOrHideFindFinishedEffect(curGameUnit,curWeakPointName,isFinished);
 
 		Debug.LogError ("-----find a new weakPoint ");
 	}

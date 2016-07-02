@@ -12,9 +12,11 @@ public class AnimControl : MonoBehaviour
     private int hashRun;
     private int hashWin;
     private int hashDazhao;
-    private int hashWugong;
+	private int hashWugong;
+	private int hashFagong;
     private int hashLazy;
     private int hashStun;
+    private int hashShouji;
     //state hash
     private int hashDeadState;
     private int hashStunState;
@@ -37,10 +39,12 @@ public class AnimControl : MonoBehaviour
         hashDead = Animator.StringToHash("dead");
         hashRun = Animator.StringToHash("run");
         hashWin = Animator.StringToHash("win");
-        hashDazhao = Animator.StringToHash("dazhao");
+		hashDazhao = Animator.StringToHash("dazhao");
+		hashFagong = Animator.StringToHash("fagong");
         hashWugong = Animator.StringToHash("wugong");
         hashLazy = Animator.StringToHash("lazy");
         hashStun = Animator.StringToHash("stun");
+        hashShouji = Animator.StringToHash("shouji");
 
         hashDeadState = Animator.StringToHash("Base Layer.siwang");
         hashStunState = Animator.StringToHash("Base Layer.shoukong");
@@ -121,6 +125,16 @@ public class AnimControl : MonoBehaviour
         animator.SetBool(hashDazhao, false);
     }
     //---------------------------------------------------------------------------------------------
+    public void OnDShoujiBegin()
+    {
+
+    }
+    //---------------------------------------------------------------------------------------------
+    public void OnShoujiEnd()
+    {
+        animator.SetBool(hashShouji, false);
+    }
+    //---------------------------------------------------------------------------------------------
     public void OnWuGongBegin()
     {
     
@@ -129,7 +143,17 @@ public class AnimControl : MonoBehaviour
     public void OnWuGongEnd()
     {
         animator.SetBool(hashWugong, false);
-    }
+	}
+	//---------------------------------------------------------------------------------------------
+	public void OnFaGongBegin()
+	{
+		
+	}
+	//---------------------------------------------------------------------------------------------
+	public void OnFaGongEnd()
+	{
+		animator.SetBool(hashFagong, false);
+	}
     //---------------------------------------------------------------------------------------------
     public void OnLazyBegin()
     {

@@ -353,6 +353,101 @@ public final class Const {
     // @@protoc_insertion_point(enum_scope:RewardReason)
   }
 
+  /**
+   * Protobuf enum {@code BattleType}
+   *
+   * <pre>
+   * 对局类型
+   * </pre>
+   */
+  public enum BattleType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>NORMAL = 1;</code>
+     */
+    NORMAL(0, 1),
+    /**
+     * <code>BOSS = 2;</code>
+     */
+    BOSS(1, 2),
+    /**
+     * <code>RARE = 3;</code>
+     */
+    RARE(2, 3),
+    ;
+
+    /**
+     * <code>NORMAL = 1;</code>
+     */
+    public static final int NORMAL_VALUE = 1;
+    /**
+     * <code>BOSS = 2;</code>
+     */
+    public static final int BOSS_VALUE = 2;
+    /**
+     * <code>RARE = 3;</code>
+     */
+    public static final int RARE_VALUE = 3;
+
+
+    public final int getNumber() { return value; }
+
+    public static BattleType valueOf(int value) {
+      switch (value) {
+        case 1: return NORMAL;
+        case 2: return BOSS;
+        case 3: return RARE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<BattleType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<BattleType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<BattleType>() {
+            public BattleType findValueByNumber(int number) {
+              return BattleType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(3);
+    }
+
+    private static final BattleType[] VALUES = values();
+
+    public static BattleType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private BattleType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:BattleType)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -369,7 +464,8 @@ public final class Const {
       "BIDEN\020\003\022\016\n\nKICKED_OUT\020\004\022\022\n\016SERVER_RESTAR" +
       "T\020\005*L\n\014RewardReason\022\017\n\013SYS_PRESENT\020\001\022\007\n\003" +
       "NPC\020\002\022\t\n\005QUEST\020\003\022\014\n\010ACITVITY\020\004\022\t\n\005CATCH\020" +
-      "\005B\030\n\026com.hawk.game.protocol"
+      "\005*,\n\nBattleType\022\n\n\006NORMAL\020\001\022\010\n\004BOSS\020\002\022\010\n" +
+      "\004RARE\020\003B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

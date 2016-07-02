@@ -95,7 +95,8 @@ public class BattleProcess : MonoBehaviour
                 case ActionType.SwitchPet:
                     break;
                 case ActionType.Dazhao:
-                    if (Time.time - dazhaoStartTime > 5)
+                    var spell = curAction.caster.GetDazhao();
+                    if (Time.time - dazhaoStartTime > (spell != null ? spell.spellData.channelTime : BattleConst.dazhaoDefaultTime))
                     {
                         Logger.LogWarning("[Battle.Procee]Dazhao time over!!!");
                         OnActionOver();
@@ -252,7 +253,6 @@ public class BattleProcess : MonoBehaviour
         {
             BattleController.Instance.OnBattleOver(false);
             return;
-
         }
 
         //判断进程是否结束
@@ -278,20 +278,13 @@ public class BattleProcess : MonoBehaviour
 
         //执行战斗
         var aiResult = BattleUnitAi.Instance.GetAiAttackResult(unit);
-        Logger.LogFormat("Ai Attack style = {0} target = {1} ", aiResult.attackStyle, aiResult.attackTarget == null ? "no target--" : aiResult.attackTarget.name);
+       // Logger.LogFormat("Ai Attack style = {0} target = {1} ", aiResult.attackStyle, aiResult.attackTarget == null ? "no target--" : aiResult.attackTarget.name);
 
         if (fireFocusTarget != null &&
             unit.pbUnit.camp == UnitCamp.Player)
         {
             aiResult.attackTarget = fireFocusTarget;
             Logger.LogWarning("reset attack target is fireFocusTarget " + fireFocusTarget.name + fireFocusTarget.pbUnit.guid + " weakpointName " + aiResult.attackTarget.attackWpName);
-        }
-        else
-        {
-            if (null != aiResult.attackTarget)
-            {
-                aiResult.attackTarget.attackWpName = null;
-            }
         }
 
         switch (aiResult.attackStyle)
@@ -300,14 +293,17 @@ public class BattleProcess : MonoBehaviour
                 break;
             case BattleUnitAi.AiAttackStyle.Lazy:
                 Logger.Log(unit.name + "   lazy");
+			unit.attackCount++;
                 OnUnitFightOver(unit);
                 return;
             case BattleUnitAi.AiAttackStyle.Defence:
                 Logger.Log(unit.name + "   defence");
+			unit.attackCount++;
                 OnUnitFightOver(unit);
                 return;
-            case BattleUnitAi.AiAttackStyle.Gain:
-                Logger.Log(unit.name + "   Gain");
+			case BattleUnitAi.AiAttackStyle.Beneficial:
+				Logger.Log(unit.name + "   Beneficial");
+			unit.attackCount++;
                 OnUnitFightOver(unit);
                 return;
             case BattleUnitAi.AiAttackStyle.MagicAttack:
@@ -321,7 +317,14 @@ public class BattleProcess : MonoBehaviour
         {
             Debug.LogError("Error for BattleUnitAI....");
         }
-        SpellService.Instance.SpellRequest("s1", unit, aiResult.attackTarget, Time.time);
+		if (aiResult.useSpell != null)
+		{
+			SpellService.Instance.SpellRequest(aiResult.useSpell.spellData.id, unit, aiResult.attackTarget, Time.time);
+		} else
+		{
+			SpellService.Instance.SpellRequest("s1", unit, aiResult.attackTarget, Time.time);
+		}
+		unit.attackCount ++;
     }
 
     void RunSwitchPetAction(GameUnit exit, GameUnit enter)
@@ -385,16 +388,24 @@ public class BattleProcess : MonoBehaviour
                 {
                     case ActionType.Dazhao:
                         Logger.Log("Dazhao hit something");
-						battleGo.unit.attackWpName = weakpointName;
-                        SpellService.Instance.SpellRequest("s1", curAction.caster, battleGo.unit, Time.time);
+                        battleGo.unit.attackWpName = weakpointName;
+                        var caster = curAction.caster;
+                        var spell = caster.GetDazhao();
+                        if (spell == null)
+                        {
+                            Logger.LogErrorFormat("[SERIOUS]Unit {0}'s dazhao error! No dazhao is configured! Exit dazhao mode!!!", caster.pbUnit.id);
+                            OnActionOver();
+                            break;
+                        }
+                        SpellService.Instance.SpellRequest(spell.spellData.id, curAction.caster, battleGo.unit, Time.time);
                         dazhaoCount++;
-                        if (dazhaoCount >= 5)
+                        if (dazhaoCount >= spell.spellData.actionCount)
                         {
                             OnActionOver();
                         }
                         break;
                     default:
-					OnChangeTarget(battleGo.id,weakpointName);
+                        OnChangeTarget(battleGo.id, weakpointName);
                         break;
                 }
             }
@@ -434,13 +445,13 @@ public class BattleProcess : MonoBehaviour
             float startTime = Time.time;
             while (Time.time - startTime < totalTime)
             {
-                movedUnit.gameObject.transform.position += Vector3.up * speed * Time.deltaTime;
+                //movedUnit.gameObject.transform.position += Vector3.up * speed * Time.deltaTime;
                 yield return null;
             }
             startTime = Time.time;
             while (Time.time - startTime < totalTime)
             {
-                movedUnit.gameObject.transform.position -= Vector3.up * speed * Time.deltaTime;
+               // movedUnit.gameObject.transform.position -= Vector3.up * speed * Time.deltaTime;
                 yield return null;
             }
 
@@ -510,18 +521,25 @@ public class BattleProcess : MonoBehaviour
         }
     }
 
-    IEnumerator DebugAnim(GameObject go)
+	IEnumerator DebugAnim(GameObject movedUnit)
     {
-        float totalTime = 1;
-        float startTime = Time.time;
+		float totalTime = 0.2f;
+		float speed = 1f;
+		float startTime = Time.time;
         while (Time.time - startTime < totalTime)
         {
-            go.transform.Rotate(Vector3.up, 90 * Time.deltaTime);
+			movedUnit.gameObject.transform.position += Vector3.up * speed * Time.deltaTime;
             yield return null;
-        }
-    }
-
-    void OnBuffChange(EventArgs sArgs)
+		}
+		startTime = Time.time;
+		while (Time.time - startTime < totalTime)
+		{
+			movedUnit.gameObject.transform.position -= Vector3.up * speed * Time.deltaTime;
+			yield return null;
+		}
+	}
+	
+	void OnBuffChange(EventArgs sArgs)
     {
         //var args = sArgs as SpellBuffArgs;
 

@@ -162,13 +162,21 @@ public final class Status {
      */
     DATA_BASE_ERROR(5, 5),
     /**
+     * <code>PARAMS_INVALID = 6;</code>
+     *
+     * <pre>
+     * 参数错误
+     * </pre>
+     */
+    PARAMS_INVALID(6, 6),
+    /**
      * <code>SERVER_ERROR = 4096;</code>
      *
      * <pre>
      * 服务器错误
      * </pre>
      */
-    SERVER_ERROR(6, 4096),
+    SERVER_ERROR(7, 4096),
     ;
 
     /**
@@ -220,6 +228,14 @@ public final class Status {
      */
     public static final int DATA_BASE_ERROR_VALUE = 5;
     /**
+     * <code>PARAMS_INVALID = 6;</code>
+     *
+     * <pre>
+     * 参数错误
+     * </pre>
+     */
+    public static final int PARAMS_INVALID_VALUE = 6;
+    /**
      * <code>SERVER_ERROR = 4096;</code>
      *
      * <pre>
@@ -239,6 +255,7 @@ public final class Status {
         case 3: return REGISTER_MAX_LIMIT;
         case 4: return SERVER_GRAY_STATE;
         case 5: return DATA_BASE_ERROR;
+        case 6: return PARAMS_INVALID;
         case 4096: return SERVER_ERROR;
         default: return null;
       }
@@ -498,15 +515,16 @@ public final class Status {
     java.lang.String[] descriptorData = {
       "\n\025Protocol/Status.proto*Y\n\terrorMask\022\020\n\014" +
       "NORMAL_ERROR\020\000\022\021\n\013LOGIN_ERROR\020\200\200\004\022\022\n\014PLA" +
-      "YER_ERROR\020\200\200\010\022\023\n\rMONSTER_ERROR\020\200\200\014*\226\001\n\005e" +
+      "YER_ERROR\020\200\200\010\022\023\n\rMONSTER_ERROR\020\200\200\014*\252\001\n\005e" +
       "rror\022\016\n\nNONE_ERROR\020\000\022\020\n\014CONFIG_ERROR\020\001\022\024" +
       "\n\020ONLINE_MAX_LIMIT\020\002\022\026\n\022REGISTER_MAX_LIM" +
       "IT\020\003\022\025\n\021SERVER_GRAY_STATE\020\004\022\023\n\017DATA_BASE" +
-      "_ERROR\020\005\022\021\n\014SERVER_ERROR\020\200 *B\n\013PlayerErr" +
-      "or\022\026\n\020PLAYER_NOT_EXIST\020\201\200\010\022\033\n\025PLAYER_NIC" +
-      "KNAME_EXIST\020\202\200\010*?\n\014monsterError\022\026\n\020MONST" +
-      "ER_MAX_SIZE\020\201\200\014\022\027\n\021MONSTER_NOT_EXIST\020\202\200\014",
-      "B\030\n\026com.hawk.game.protocol"
+      "_ERROR\020\005\022\022\n\016PARAMS_INVALID\020\006\022\021\n\014SERVER_E" +
+      "RROR\020\200 *B\n\013PlayerError\022\026\n\020PLAYER_NOT_EXI" +
+      "ST\020\201\200\010\022\033\n\025PLAYER_NICKNAME_EXIST\020\202\200\010*?\n\014m" +
+      "onsterError\022\026\n\020MONSTER_MAX_SIZE\020\201\200\014\022\027\n\021M",
+      "ONSTER_NOT_EXIST\020\202\200\014B\030\n\026com.hawk.game.pr" +
+      "otocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

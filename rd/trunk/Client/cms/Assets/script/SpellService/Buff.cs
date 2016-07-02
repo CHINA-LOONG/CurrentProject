@@ -21,6 +21,9 @@ public class BuffPrototype
     public float intelligenceRatio;
     public float defenseRatio;
     public float speedRatio;
+
+    //显示相关
+    public string icon;
 }
 
 public class BuffPrototypes : ScriptableObject
@@ -42,6 +45,7 @@ public class Buff
         spellService = owner;
         buffProto = new BuffPrototype();
         buffProto.id = buffPt.id;
+        buffProto.icon = buffPt.icon;
         buffProto.category = buffPt.category;
         buffProto.periodEffectID = buffPt.periodEffectID;
         buffProto.duration = buffPt.duration;
@@ -97,14 +101,6 @@ public class Buff
     //---------------------------------------------------------------------------------------------
     void AddBuff(List<Buff> buffList)
     {
-        SpellBuffArgs args = new SpellBuffArgs();
-        args.triggerTime = 0;
-        args.casterID = casterID;
-        args.targetID = targetID;
-        args.isAdd = true;
-        args.buffID = buffProto.id;
-        spellService.TriggerEvent(GameEventList.SpellBuff, args);
-
         if (buffProto.category == (int)(BuffType.Buff_Type_Dot))
         {
             Buff firstDot = null;
@@ -148,6 +144,13 @@ public class Buff
             }
         }
 
+        SpellBuffArgs args = new SpellBuffArgs();
+        args.triggerTime = 0;
+        args.casterID = casterID;
+        args.targetID = targetID;
+        args.isAdd = true;
+        args.buffID = buffProto.id;
+        spellService.TriggerEvent(GameEventList.SpellBuff, args);
         buffList.Add(this);
         ModifyUnit(false);
     }

@@ -287,7 +287,7 @@ public class BattleController : MonoBehaviour
                 return null;
             }
             else
-                return instanceData.rareProcess[0];
+                return instanceData.rareProcess[index];
         }
 
         Logger.LogError("BattleType error" + battleType);
@@ -308,8 +308,9 @@ public class BattleController : MonoBehaviour
             }
             else
                 break;
-        }        
+        }
 
+        Logger.LogWarning("Switch Process to: " + gotoVal);
         //进程切换条件达成后
         StartProcess(gotoVal - 1);
     }

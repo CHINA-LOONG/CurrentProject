@@ -12,7 +12,7 @@
 
     public const float criticalDamgeRatio = 1.5f;
     public const float criticalRatio = 0.1f;
-    public const float hitRatio = 0.4f;
+    public const float hitRatio = 0.8f;
     public const float minHitRatio = 0.6f;
 
     public const int damagePhy = 0;
@@ -27,6 +27,8 @@
     public const int propertyWater = 3;
     public const int propertyFire = 4;
     public const int propertyEarth = 5;
+    public const float propertyEnhance = 1.25f;
+    public const float propertyWeaken = 0.75f;
 
     public const int maxEnergy = 100;
 }
@@ -47,15 +49,24 @@ public enum BuffType
     Buff_Type_Normal,
     Buff_Type_Dot,
     Buff_Type_Hot,
+    Buff_Type_Defend,
+    Buff_Type_Debuff,
+    Buff_Type_Benefit,
 
     Num_Buff_Type
 }
 
 public enum SpellType
 {
-    Spell_Type_Normal,
+    Spell_Type_PhyAttack,
+    Spell_Type_MgicAttack,
+    Spell_Type_Cure,
+    Spell_Type_Defense,
     Spell_Type_Passive,
-    Spell_Type_Captain,
+    Spell_Type_Beneficial,
+    Spell_Type_Negative,
+    Spell_Type_Lazy,
+    Spell_Type_DaZhao,
 
     Num_Spell_Type
 }

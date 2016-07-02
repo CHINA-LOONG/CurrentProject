@@ -28,8 +28,7 @@ public class UnitData
     public float recoveryRate;
 
     public int equip;
-    public int lazy;
-    public int AI;
+    public string AI;
 
     public string spellIDList;
     public string weakpointList;

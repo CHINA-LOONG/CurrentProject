@@ -229,6 +229,26 @@ public final class HS {
      * <code>MONSTER_FEED_S = 2006;</code>
      */
     MONSTER_FEED_S(15, 2006),
+    /**
+     * <code>INSTANCE_ENTER_C = 3000;</code>
+     *
+     * <pre>
+     * 副本
+     * </pre>
+     */
+    INSTANCE_ENTER_C(16, 3000),
+    /**
+     * <code>INSTANCE_ENTER_S = 3001;</code>
+     */
+    INSTANCE_ENTER_S(17, 3001),
+    /**
+     * <code>INSTANCE_SETTLE_C = 3002;</code>
+     */
+    INSTANCE_SETTLE_C(18, 3002),
+    /**
+     * <code>INSTANCE_SETTLE_S = 3003;</code>
+     */
+    INSTANCE_SETTLE_S(19, 3003),
     ;
 
     /**
@@ -307,6 +327,26 @@ public final class HS {
      * <code>MONSTER_FEED_S = 2006;</code>
      */
     public static final int MONSTER_FEED_S_VALUE = 2006;
+    /**
+     * <code>INSTANCE_ENTER_C = 3000;</code>
+     *
+     * <pre>
+     * 副本
+     * </pre>
+     */
+    public static final int INSTANCE_ENTER_C_VALUE = 3000;
+    /**
+     * <code>INSTANCE_ENTER_S = 3001;</code>
+     */
+    public static final int INSTANCE_ENTER_S_VALUE = 3001;
+    /**
+     * <code>INSTANCE_SETTLE_C = 3002;</code>
+     */
+    public static final int INSTANCE_SETTLE_C_VALUE = 3002;
+    /**
+     * <code>INSTANCE_SETTLE_S = 3003;</code>
+     */
+    public static final int INSTANCE_SETTLE_S_VALUE = 3003;
 
 
     public final int getNumber() { return value; }
@@ -329,6 +369,10 @@ public final class HS {
         case 2004: return MONSTER_BREAK_S;
         case 2005: return MONSTER_FEED_C;
         case 2006: return MONSTER_FEED_S;
+        case 3000: return INSTANCE_ENTER_C;
+        case 3001: return INSTANCE_ENTER_S;
+        case 3002: return INSTANCE_SETTLE_C;
+        case 3003: return INSTANCE_SETTLE_S;
         default: return null;
       }
     }
@@ -391,7 +435,7 @@ public final class HS {
     java.lang.String[] descriptorData = {
       "\n\021Protocol/HS.proto*I\n\003sys\022\020\n\014DATA_WRAPP" +
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
-      "\n\nERROR_CODE\020\004*\307\002\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n" +
+      "\n\nERROR_CODE\020\004*\245\003\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n" +
       "\007LOGIN_S\020\351\007\022\r\n\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353" +
       "\007\022\016\n\tKICKOUT_S\020\354\007\022\027\n\022PLAYER_INFO_SYNC_S\020" +
       "\355\007\022\026\n\021ASSEMBLE_FINISH_S\020\362\007\022\024\n\017PLAYER_CRE" +
@@ -399,8 +443,10 @@ public final class HS {
       "R_INFO_SYNC_S\020\320\017\022\022\n\rMONSTER_ADD_S\020\321\017\022\024\n\017" +
       "MONSTER_CATCH_C\020\322\017\022\024\n\017MONSTER_BREAK_C\020\323\017" +
       "\022\024\n\017MONSTER_BREAK_S\020\324\017\022\023\n\016MONSTER_FEED_C",
-      "\020\325\017\022\023\n\016MONSTER_FEED_S\020\326\017B\030\n\026com.hawk.gam" +
-      "e.protocol"
+      "\020\325\017\022\023\n\016MONSTER_FEED_S\020\326\017\022\025\n\020INSTANCE_ENT" +
+      "ER_C\020\270\027\022\025\n\020INSTANCE_ENTER_S\020\271\027\022\026\n\021INSTAN" +
+      "CE_SETTLE_C\020\272\027\022\026\n\021INSTANCE_SETTLE_S\020\273\027B\030" +
+      "\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

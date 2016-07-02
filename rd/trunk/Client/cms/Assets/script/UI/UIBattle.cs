@@ -34,6 +34,7 @@ public class UIBattle : UIBase
         {
             m_MirrorDray = m_MirrorImage.gameObject.AddComponent<MirrorDray>();
 			m_MirrorDray.Init();
+			//Debug.LogError("liwsTest: UIBattle is Load And MirrorDray component added");
         }
         else
         {
@@ -61,11 +62,13 @@ public class UIBattle : UIBase
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.ShowSwitchPetUI, OnShowSwitchPetUIAtIndex);
+		GameEventMgr.Instance.AddListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
     }
 
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.ShowSwitchPetUI, OnShowSwitchPetUIAtIndex);
+		GameEventMgr.Instance.RemoveListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
     }
 
     void AddUIObjectEvent()
@@ -83,12 +86,12 @@ public class UIBattle : UIBase
     void OnButtonLeftCllicked(GameObject go)
     {
         //m_PetPanelGameObject.SetActive (true);
-        GameEventMgr.Instance.FireEvent<int>(GameEventList.ShowSwitchPetUI, 1);
+        //GameEventMgr.Instance.FireEvent<int>(GameEventList.ShowSwitchPetUI, 1);
     }
 
     void OnButtonDaojuClicked(GameObject go)
     {
-        GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
+		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
     }
 
     void OnButtonSpeedClicked(GameObject go)
@@ -124,19 +127,26 @@ public class UIBattle : UIBase
     void OnToggleMirrorClicked(GameObject go)
     {
 		bool isMirrorMode = m_ButtonMirror.IsOn;
-        m_MirrorImage.gameObject.SetActive(isMirrorMode);
-        if (isMirrorMode)
-        {
-            Vector3 tempPos = m_MirrorImage.transform.localPosition;
-            tempPos.x = 0;
-            tempPos.y = 0;
-
-            m_MirrorImage.transform.localPosition = tempPos;
-        }
-
-		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, isMirrorMode);
+		OnSetMirrorModeState (isMirrorMode);
+		//GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, isMirrorMode);
     }
 
+	void	OnSetMirrorModeState(bool isMirrorMode)
+	{
+		m_ButtonMirror.IsOn = isMirrorMode;
+		m_MirrorImage.gameObject.SetActive(isMirrorMode);
+		if (isMirrorMode)
+		{
+			Vector3 tempPos = m_MirrorImage.transform.localPosition;
+			tempPos.x = 0;
+			tempPos.y = 0;
+			
+			m_MirrorImage.transform.localPosition = tempPos;
+		}
+		
+		//
+		m_MirrorDray.OnSetMirrorModeState (isMirrorMode);
+	}
     void OnTuoguanButtonClick(GameObject go)
     {
 
@@ -144,7 +154,7 @@ public class UIBattle : UIBase
 
 	void OnMomoCliced(GameObject go)
 	{
-
+		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
 	}
 
 #region Event

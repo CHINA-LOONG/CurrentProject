@@ -16,7 +16,7 @@ public class FindWeakpointEffect : MonoBehaviour
 		}
 
 		effectObject.transform.SetParent (transform);
-		effectObject.transform.position = Vector3.zero;
+		effectObject.transform.localPosition = Vector3.zero;
 		effectObject.SetActive (false);
 	}
 }

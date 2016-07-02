@@ -47,21 +47,15 @@ public class UIMgr : MonoBehaviour
 			return null;
 		}
 		GameObject ui = Instantiate(r) as GameObject;
-        ui.transform.SetParent(transform);
-		ui.transform.localPosition = Vector3.zero;
-		ui.transform.localEulerAngles = Vector3.zero;
-		ui.transform.localScale = Vector3.one;
+
+		RectTransform rt = ui.transform as RectTransform;
+		rt.SetParent (transform ,false);
+		rt.localScale = Vector3.one;
+		rt.localEulerAngles = Vector3.zero;
+		//ui.transform.localPosition = Vector3.zero;
+
 		UIBase vb = ui.GetComponent<UIBase>();
-
-		if (vb.ViewTypeAttr == UIBase.ViewType.VT_POPUP)
-		{
-			ui.name = uiName;
-			ui.layer = LayerMask.NameToLayer("Default");
-			ui.transform.SetParent(transform);
-			ui.transform.localScale = Vector3.one;
-			ui.transform.localPosition = Vector3.zero;
-
-		}
+		ui.name = uiName;
 
         return ui;
 	}

@@ -74,6 +74,16 @@ ModelImporter:
     100132: e_ruodian_10
     100134: objobjpolySurface40
     100136: objpolySurface79
+    100138: jiuweihu_shenti
+    100140: jiuweihu_weiba1
+    100142: jiuweihu_weiba2
+    100144: jiuweihu_weiba3
+    100146: jiuweihu_weiba4
+    100148: jiuweihu_weiba5
+    100150: jiuweihu_weiba6
+    100152: jiuweihu_weiba7
+    100154: jiuweihu_weiba8
+    100156: jiuweihu_weiba9
     400000: Bip001
     400002: Bip001 Footsteps
     400004: Bip001 Head
@@ -143,11 +153,41 @@ ModelImporter:
     400132: e_ruodian_10
     400134: objobjpolySurface40
     400136: objpolySurface79
+    400138: jiuweihu_shenti
+    400140: jiuweihu_weiba1
+    400142: jiuweihu_weiba2
+    400144: jiuweihu_weiba3
+    400146: jiuweihu_weiba4
+    400148: jiuweihu_weiba5
+    400150: jiuweihu_weiba6
+    400152: jiuweihu_weiba7
+    400154: jiuweihu_weiba8
+    400156: jiuweihu_weiba9
     4300000: objobjpolySurface40
     4300002: objpolySurface79
+    4300004: jiuweihu_weiba1
+    4300006: jiuweihu_shenti
+    4300008: jiuweihu_weiba2
+    4300010: jiuweihu_weiba3
+    4300012: jiuweihu_weiba4
+    4300014: jiuweihu_weiba5
+    4300016: jiuweihu_weiba6
+    4300018: jiuweihu_weiba7
+    4300020: jiuweihu_weiba8
+    4300022: jiuweihu_weiba9
     9500000: //RootNode
     13700000: objobjpolySurface40
     13700002: objpolySurface79
+    13700004: jiuweihu_shenti
+    13700006: jiuweihu_weiba1
+    13700008: jiuweihu_weiba2
+    13700010: jiuweihu_weiba3
+    13700012: jiuweihu_weiba4
+    13700014: jiuweihu_weiba5
+    13700016: jiuweihu_weiba6
+    13700018: jiuweihu_weiba7
+    13700020: jiuweihu_weiba8
+    13700022: jiuweihu_weiba9
   materials:
     importMaterials: 1
     materialName: 0

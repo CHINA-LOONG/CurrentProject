@@ -90,18 +90,19 @@ public class BattleObject : MonoBehaviour
             curEvent = waitEventList[i];
             if (curEvent.triggerTime <= curTime)
             {
+                activeEventList.Add(curEvent);
                 //TODO: not only bool
-                if (curEvent.motionKey.Length > 0)
+                if (curEvent.motionKey != null)
                 {
                     aniControl.SetBool(curEvent.motionKey, bool.Parse(curEvent.motionValue));
                 }
 
-                if (curEvent.particleAsset.Length > 0)
+                if (curEvent.particleAsset != null)
                 {
                     GameObject prefab = ResourceMgr.Instance.LoadAsset(curEvent.particleBundle, curEvent.particleAsset);
                     curEvent.psObject = GameObject.Instantiate(prefab);
                     curEvent.psObject.transform.parent = transform;
-                    if (curEvent.particleParent.Length > 0)
+                    if (curEvent.particleParent != null)
                     {
                         GameObject parentNode = GameObject.Find(curEvent.particleParent);
                         if (parentNode != null)
@@ -119,7 +120,7 @@ public class BattleObject : MonoBehaviour
                     }
                 }
 
-                if (curEvent.cameraAni.Length > 0)
+                if (curEvent.cameraAni != null)
                 {
 
                 }

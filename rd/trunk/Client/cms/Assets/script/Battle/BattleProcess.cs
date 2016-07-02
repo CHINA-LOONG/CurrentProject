@@ -278,20 +278,13 @@ public class BattleProcess : MonoBehaviour
 
         //执行战斗
         var aiResult = BattleUnitAi.Instance.GetAiAttackResult(unit);
-        Logger.LogFormat("Ai Attack style = {0} target = {1} ", aiResult.attackStyle, aiResult.attackTarget == null ? "no target--" : aiResult.attackTarget.name);
+       // Logger.LogFormat("Ai Attack style = {0} target = {1} ", aiResult.attackStyle, aiResult.attackTarget == null ? "no target--" : aiResult.attackTarget.name);
 
         if (fireFocusTarget != null &&
             unit.pbUnit.camp == UnitCamp.Player)
         {
             aiResult.attackTarget = fireFocusTarget;
             Logger.LogWarning("reset attack target is fireFocusTarget " + fireFocusTarget.name + fireFocusTarget.pbUnit.guid + " weakpointName " + aiResult.attackTarget.attackWpName);
-        }
-        else
-        {
-            if (null != aiResult.attackTarget)
-            {
-                aiResult.attackTarget.attackWpName = null;
-            }
         }
 
         switch (aiResult.attackStyle)
@@ -300,16 +293,21 @@ public class BattleProcess : MonoBehaviour
                 break;
             case BattleUnitAi.AiAttackStyle.Lazy:
                 Logger.Log(unit.name + "   lazy");
+			unit.attackCount++;
                 OnUnitFightOver(unit);
                 return;
             case BattleUnitAi.AiAttackStyle.Defence:
                 Logger.Log(unit.name + "   defence");
-                OnUnitFightOver(unit);
+			//unit.attackCount++;
+                //OnUnitFightOver(unit);
+			break;
                 return;
-            case BattleUnitAi.AiAttackStyle.Gain:
-                Logger.Log(unit.name + "   Gain");
-                OnUnitFightOver(unit);
-                return;
+			case BattleUnitAi.AiAttackStyle.Beneficial:
+				Logger.Log(unit.name + "   Beneficial");
+		//	unit.attackCount++;
+               // OnUnitFightOver(unit);
+                //return;
+			break;
             case BattleUnitAi.AiAttackStyle.MagicAttack:
                 break;
             case BattleUnitAi.AiAttackStyle.PhysicsAttack:
@@ -321,7 +319,14 @@ public class BattleProcess : MonoBehaviour
         {
             Debug.LogError("Error for BattleUnitAI....");
         }
-        SpellService.Instance.SpellRequest("s1", unit, aiResult.attackTarget, Time.time);
+		if (aiResult.useSpell != null)
+		{
+			SpellService.Instance.SpellRequest(aiResult.useSpell.spellData.id, unit, aiResult.attackTarget, Time.time);
+		} else
+		{
+			SpellService.Instance.SpellRequest("s1", unit, aiResult.attackTarget, Time.time);
+		}
+		unit.attackCount ++;
     }
 
     void RunSwitchPetAction(GameUnit exit, GameUnit enter)
@@ -442,13 +447,13 @@ public class BattleProcess : MonoBehaviour
             float startTime = Time.time;
             while (Time.time - startTime < totalTime)
             {
-                movedUnit.gameObject.transform.position += Vector3.up * speed * Time.deltaTime;
+                //movedUnit.gameObject.transform.position += Vector3.up * speed * Time.deltaTime;
                 yield return null;
             }
             startTime = Time.time;
             while (Time.time - startTime < totalTime)
             {
-                movedUnit.gameObject.transform.position -= Vector3.up * speed * Time.deltaTime;
+               // movedUnit.gameObject.transform.position -= Vector3.up * speed * Time.deltaTime;
                 yield return null;
             }
 
@@ -518,18 +523,25 @@ public class BattleProcess : MonoBehaviour
         }
     }
 
-    IEnumerator DebugAnim(GameObject go)
+	IEnumerator DebugAnim(GameObject movedUnit)
     {
-        float totalTime = 1;
-        float startTime = Time.time;
+		float totalTime = 0.2f;
+		float speed = 1f;
+		float startTime = Time.time;
         while (Time.time - startTime < totalTime)
         {
-            go.transform.Rotate(Vector3.up, 90 * Time.deltaTime);
+			movedUnit.gameObject.transform.position += Vector3.up * speed * Time.deltaTime;
             yield return null;
-        }
-    }
-
-    void OnBuffChange(EventArgs sArgs)
+		}
+		startTime = Time.time;
+		while (Time.time - startTime < totalTime)
+		{
+			movedUnit.gameObject.transform.position -= Vector3.up * speed * Time.deltaTime;
+			yield return null;
+		}
+	}
+	
+	void OnBuffChange(EventArgs sArgs)
     {
         //var args = sArgs as SpellBuffArgs;
 

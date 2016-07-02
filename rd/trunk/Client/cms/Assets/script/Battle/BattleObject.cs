@@ -90,18 +90,23 @@ public class BattleObject : MonoBehaviour
             curEvent = waitEventList[i];
             if (curEvent.triggerTime <= curTime)
             {
+                activeEventList.Add(curEvent);
                 //TODO: not only bool
-                if (curEvent.motionKey != null)
+                if (curEvent.motionKey != null && curEvent.motionKey.Length > 0)
                 {
                     aniControl.SetBool(curEvent.motionKey, bool.Parse(curEvent.motionValue));
                 }
 
-                if (curEvent.particleAsset != null)
+                if (curEvent.particleAsset != null && curEvent.particleAsset.Length > 0)
                 {
                     GameObject prefab = ResourceMgr.Instance.LoadAsset(curEvent.particleBundle, curEvent.particleAsset);
                     curEvent.psObject = GameObject.Instantiate(prefab);
                     curEvent.psObject.transform.parent = transform;
-                    if (curEvent.particleParent != null)
+                    curEvent.psObject.transform.localPosition = prefab.transform.position;
+                    curEvent.psObject.transform.localRotation = prefab.transform.rotation;
+                    curEvent.psObject.transform.localScale = prefab.transform.localScale;
+
+                    if (curEvent.particleParent != null && curEvent.particleParent.Length > 0)
                     {
                         GameObject parentNode = GameObject.Find(curEvent.particleParent);
                         if (parentNode != null)
@@ -110,16 +115,22 @@ public class BattleObject : MonoBehaviour
                         }
                     }
                     curEvent.ps = curEvent.psObject.GetComponent<ParticleSystem>();
-                    curEvent.ps.Play();
-
-                    if (curEvent.particleAni != null)
+                    if (curEvent.ps != null)
                     {
-                        Animator animator = curEvent.psObject.GetComponent<Animator>();
-                        animator.Play(curEvent.particleAni);
+                        curEvent.ps.Play();
+                    }
+
+                    if (curEvent.particleAni != null && curEvent.particleAni.Length > 0)
+                    {
+                        Animator animator = curEvent.psObject.GetComponentInChildren<Animator>();
+                        if (animator != null)
+                        {
+                            animator.Play(curEvent.particleAni);
+                        }
                     }
                 }
 
-                if (curEvent.cameraAni != null)
+                if (curEvent.cameraAni != null && curEvent.cameraAni.Length > 0)
                 {
 
                 }

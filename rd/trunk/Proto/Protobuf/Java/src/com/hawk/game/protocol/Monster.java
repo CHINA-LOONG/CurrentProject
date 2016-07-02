@@ -2098,15 +2098,15 @@ public final class Monster {
      */
     com.hawk.game.protocol.Monster.HSMonsterOrBuilder getMonsterOrBuilder();
 
-    // optional int32 reason = 2;
+    // optional .RewardReason reason = 2 [default = SYS_PRESENT];
     /**
-     * <code>optional int32 reason = 2;</code>
+     * <code>optional .RewardReason reason = 2 [default = SYS_PRESENT];</code>
      */
     boolean hasReason();
     /**
-     * <code>optional int32 reason = 2;</code>
+     * <code>optional .RewardReason reason = 2 [default = SYS_PRESENT];</code>
      */
-    int getReason();
+    com.hawk.game.protocol.Const.RewardReason getReason();
   }
   /**
    * Protobuf type {@code HSMonsterAdd}
@@ -2177,8 +2177,14 @@ public final class Monster {
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
-              reason_ = input.readInt32();
+              int rawValue = input.readEnum();
+              com.hawk.game.protocol.Const.RewardReason value = com.hawk.game.protocol.Const.RewardReason.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                reason_ = value;
+              }
               break;
             }
           }
@@ -2243,25 +2249,25 @@ public final class Monster {
       return monster_;
     }
 
-    // optional int32 reason = 2;
+    // optional .RewardReason reason = 2 [default = SYS_PRESENT];
     public static final int REASON_FIELD_NUMBER = 2;
-    private int reason_;
+    private com.hawk.game.protocol.Const.RewardReason reason_;
     /**
-     * <code>optional int32 reason = 2;</code>
+     * <code>optional .RewardReason reason = 2 [default = SYS_PRESENT];</code>
      */
     public boolean hasReason() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 reason = 2;</code>
+     * <code>optional .RewardReason reason = 2 [default = SYS_PRESENT];</code>
      */
-    public int getReason() {
+    public com.hawk.game.protocol.Const.RewardReason getReason() {
       return reason_;
     }
 
     private void initFields() {
       monster_ = com.hawk.game.protocol.Monster.HSMonster.getDefaultInstance();
-      reason_ = 0;
+      reason_ = com.hawk.game.protocol.Const.RewardReason.SYS_PRESENT;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2287,7 +2293,7 @@ public final class Monster {
         output.writeMessage(1, monster_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, reason_);
+        output.writeEnum(2, reason_.getNumber());
       }
       getUnknownFields().writeTo(output);
     }
@@ -2304,7 +2310,7 @@ public final class Monster {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, reason_);
+          .computeEnumSize(2, reason_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2433,7 +2439,7 @@ public final class Monster {
           monsterBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
-        reason_ = 0;
+        reason_ = com.hawk.game.protocol.Const.RewardReason.SYS_PRESENT;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -2649,35 +2655,38 @@ public final class Monster {
         return monsterBuilder_;
       }
 
-      // optional int32 reason = 2;
-      private int reason_ ;
+      // optional .RewardReason reason = 2 [default = SYS_PRESENT];
+      private com.hawk.game.protocol.Const.RewardReason reason_ = com.hawk.game.protocol.Const.RewardReason.SYS_PRESENT;
       /**
-       * <code>optional int32 reason = 2;</code>
+       * <code>optional .RewardReason reason = 2 [default = SYS_PRESENT];</code>
        */
       public boolean hasReason() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional int32 reason = 2;</code>
+       * <code>optional .RewardReason reason = 2 [default = SYS_PRESENT];</code>
        */
-      public int getReason() {
+      public com.hawk.game.protocol.Const.RewardReason getReason() {
         return reason_;
       }
       /**
-       * <code>optional int32 reason = 2;</code>
+       * <code>optional .RewardReason reason = 2 [default = SYS_PRESENT];</code>
        */
-      public Builder setReason(int value) {
+      public Builder setReason(com.hawk.game.protocol.Const.RewardReason value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         bitField0_ |= 0x00000002;
         reason_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 reason = 2;</code>
+       * <code>optional .RewardReason reason = 2 [default = SYS_PRESENT];</code>
        */
       public Builder clearReason() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        reason_ = 0;
+        reason_ = com.hawk.game.protocol.Const.RewardReason.SYS_PRESENT;
         onChanged();
         return this;
       }
@@ -6093,24 +6102,26 @@ public final class Monster {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\026Protocol/Monster.proto\032\024Protocol/Skill" +
-      ".proto\"\213\001\n\tHSMonster\022\021\n\tmonsterId\030\001 \002(\005\022" +
-      "\r\n\005cfgId\030\002 \002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005level\030\004" +
-      " \002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004lazy\030\006 \002(\005\022\n\n\002ai\030\007 " +
-      "\002(\005\022\027\n\005skill\030\010 \003(\0132\010.HSSkill\"4\n\021HSMonste" +
-      "rInfoSync\022\037\n\013monsterInfo\030\001 \003(\0132\n.HSMonst" +
-      "er\";\n\014HSMonsterAdd\022\033\n\007monster\030\001 \002(\0132\n.HS" +
-      "Monster\022\016\n\006reason\030\002 \001(\005\"|\n\016HSMonsterCatc" +
-      "h\022\r\n\005cfgId\030\001 \002(\t\022\020\n\005stage\030\002 \001(\005:\0010\022\020\n\005le" +
-      "vel\030\003 \001(\005:\0011\022\017\n\004lazy\030\004 \001(\005:\0011\022\r\n\002ai\030\005 \001(",
-      "\005:\0011\022\027\n\005skill\030\006 \003(\0132\010.HSSkill\"#\n\016HSMonst" +
-      "erBreak\022\021\n\tmonsterId\030\001 \002(\005\"6\n\021HSMonsterB" +
-      "reakRet\022\016\n\006status\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002" +
-      "(\005\"9\n\rHSMonsterFeed\022\021\n\tmonsterId\030\001 \002(\005\022\025" +
-      "\n\rfoodMonsterId\030\002 \002(\005\"h\n\020HSMonsterFeedRe" +
-      "t\022\016\n\006status\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\022\025\n\r" +
-      "foodMonsterId\030\003 \002(\005\022\013\n\003exp\030\004 \001(\005\022\r\n\005leve" +
-      "l\030\005 \001(\005B\030\n\026com.hawk.game.protocol"
+      "\n\026Protocol/Monster.proto\032\024Protocol/Const" +
+      ".proto\032\024Protocol/Skill.proto\"\213\001\n\tHSMonst" +
+      "er\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005cfgId\030\002 \002(\t\022\r\n\005" +
+      "stage\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\022" +
+      "\014\n\004lazy\030\006 \002(\005\022\n\n\002ai\030\007 \002(\005\022\027\n\005skill\030\010 \003(\013" +
+      "2\010.HSSkill\"4\n\021HSMonsterInfoSync\022\037\n\013monst" +
+      "erInfo\030\001 \003(\0132\n.HSMonster\"W\n\014HSMonsterAdd" +
+      "\022\033\n\007monster\030\001 \002(\0132\n.HSMonster\022*\n\006reason\030" +
+      "\002 \001(\0162\r.RewardReason:\013SYS_PRESENT\"|\n\016HSM" +
+      "onsterCatch\022\r\n\005cfgId\030\001 \002(\t\022\020\n\005stage\030\002 \001(",
+      "\005:\0010\022\020\n\005level\030\003 \001(\005:\0011\022\017\n\004lazy\030\004 \001(\005:\0011\022" +
+      "\r\n\002ai\030\005 \001(\005:\0011\022\027\n\005skill\030\006 \003(\0132\010.HSSkill\"" +
+      "#\n\016HSMonsterBreak\022\021\n\tmonsterId\030\001 \002(\005\"6\n\021" +
+      "HSMonsterBreakRet\022\016\n\006status\030\001 \002(\005\022\021\n\tmon" +
+      "sterId\030\002 \002(\005\"9\n\rHSMonsterFeed\022\021\n\tmonster" +
+      "Id\030\001 \002(\005\022\025\n\rfoodMonsterId\030\002 \002(\005\"h\n\020HSMon" +
+      "sterFeedRet\022\016\n\006status\030\001 \002(\005\022\021\n\tmonsterId" +
+      "\030\002 \002(\005\022\025\n\rfoodMonsterId\030\003 \002(\005\022\013\n\003exp\030\004 \001" +
+      "(\005\022\r\n\005level\030\005 \001(\005B\030\n\026com.hawk.game.proto" +
+      "col"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -6171,6 +6182,7 @@ public final class Monster {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.hawk.game.protocol.Const.getDescriptor(),
           com.hawk.game.protocol.Skill.getDescriptor(),
         }, assigner);
   }

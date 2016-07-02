@@ -25,8 +25,19 @@ public class BattleTest : MonoBehaviour
             {
                 PbUnit pbUnit = new PbUnit();
                 pbUnit.guid = 10 + i;
-                pbUnit.level = 16;
-                pbUnit.id = "soul";
+                pbUnit.level = 50;
+				if (i == 0)
+					pbUnit.id = "Unit_Demo_qingniao";
+				if (i == 1)
+					pbUnit.id = "Unit_Demo_zhuyan";
+				if (i == 2)
+					pbUnit.id = "Unit_Demo_ershu";
+				if (i == 3)
+					pbUnit.id = "Unit_Demo_ershu";
+				if (i == 4)
+					pbUnit.id = "Unit_Demo_zhuyan";
+				if (i == 5)
+					pbUnit.id = "Unit_Demo_qingniao";
                 pbUnit.slot = i;
                 if (i > 2)
                     pbUnit.slot = BattleConst.offsiteSlot;
@@ -50,8 +61,17 @@ public class BattleTest : MonoBehaviour
         {
             PbUnit pbUnit = new PbUnit();
             pbUnit.guid = i;
-            pbUnit.id = "soul";
-            pbUnit.level = 20;// instanceData.level;
+			if (i == 0)
+				pbUnit.id = "Unit_Demo_ershu";
+			if (i == 1)
+				pbUnit.id = "Unit_Demo_ershu";
+			if (i == 2)
+				pbUnit.id = "Unit_Demo_ershu";
+			if (i == 3)
+				pbUnit.id = "Unit_Demo_ershu";
+			if (i == 4)
+				pbUnit.id = "Unit_Demo_ershu";
+            pbUnit.level = 50;// instanceData.level;
             pbUnit.slot = i;
             if (i > 2)
                 pbUnit.slot = BattleConst.offsiteSlot;
@@ -77,8 +97,8 @@ public class BattleTest : MonoBehaviour
         if (StaticDataMgr.Instance.GetUnitRowData(instanceData.bossID) != null)
             pbUnit.id = instanceData.bossID;
         else
-            pbUnit.id = "soul"; //instanceData.rareID;
-        pbUnit.level = 28;
+            pbUnit.id = "Unit_Demo_jiuweihu"; //instanceData.rareID;
+        pbUnit.level = 50;
         pbUnit.slot = 1;
 
         proto.enemyList.Add(pbUnit);

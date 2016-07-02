@@ -10,15 +10,19 @@ public class BattleUnitUI : MonoBehaviour
     public EnegyBarUI enegyBar;
 
     public GameUnit Unit { get; set; }
+    private UIBuffView buffView;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
        EventTriggerListener.Get(dazhaoBtn.gameObject).onClick = OnDazhaoClick;
+       buffView = gameObject.GetComponent<UIBuffView>();
+       buffView.Init();
     }
 
     public void Show(GameUnit sUnit)
     {
+        buffView.SetTargetUnit(sUnit);
         if (sUnit == null)
         {
             Hide();
@@ -48,5 +52,6 @@ public class BattleUnitUI : MonoBehaviour
     void OnDazhaoClick(GameObject go)
     {
         GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.HitDazhaoBtn, Unit);
+		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
     }
 }

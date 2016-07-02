@@ -50,6 +50,7 @@ public class GameUnit
     public int property;//五行属性
     public int recovery;//战后回血
 	public bool isBoss = false;
+	public string Ai;
     //掉落金币
     public int goldNoteMin;
     public int goldNoteMax;
@@ -131,6 +132,15 @@ public class GameUnit
 
     void Init(bool isPlayer)
     {
+		buffList = new List<Buff>();
+		
+		findWeakPointlist = new List<string> ();
+		weakPointMeshDic = new Dictionary<string, GameObject> ();
+		weakPointEffectDic = new Dictionary<string, GameObject> ();
+		weakPointDumpDic = new Dictionary<string, GameObject> ();
+		weakPointList = new List<string>();
+		wpHpList = new Dictionary<string, WeakPointRuntimeData>();
+
         GameDataMgr gdMgr = GameDataMgr.Instance;
         UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
         UnitBaseData unitBaseRowData = StaticDataMgr.Instance.GetUnitBaseRowData(pbUnit.level);
@@ -146,6 +156,7 @@ public class GameUnit
         isEvolutionable = unitRowData.isEvolutionable!=0;
         evolutionID = unitRowData.evolutionID;
         name = unitRowData.nickName;
+		Ai = unitRowData.AI;
 
         //TODO: 装备系统附加值
         criticalRatio = gdMgr.PlayerDataAttr.criticalRatio;
@@ -203,17 +214,9 @@ public class GameUnit
             {
 				spellList.Add(spellID, new Spell(spellPt));
             }
-        }
-
-        buffList = new List<Buff>();
-
-		findWeakPointlist = new List<string> ();
-		weakPointMeshDic = new Dictionary<string, GameObject> ();
-		weakPointEffectDic = new Dictionary<string, GameObject> ();
-		weakPointDumpDic = new Dictionary<string, GameObject> ();
-		
-    }
-
+        }	
+	}
+	
 	void InitWeakPoint(string strWeak)
 	{
 		if (strWeak == null || strWeak == "") 
@@ -221,12 +224,6 @@ public class GameUnit
 			return;
 		}
 		ArrayList weakArrayList = MiniJsonExtensions.arrayListFromJson (strWeak);
-		//string[] weakArray = strWeak.Split (';');
-		if (null == weakPointList) 
-		{
-			weakPointList = new List<string>();
-            wpHpList = new Dictionary<string, WeakPointRuntimeData>();
-		}
 
 		weakPointList.Clear();
         wpHpList.Clear();
@@ -331,6 +328,7 @@ public class GameUnit
 
         //get slot position
         unitObject.transform.position = BattleScene.Instance.GetSlotPosition(pbUnit.camp, pbUnit.slot);
+		unitObject.transform.localEulerAngles = BattleScene.Instance.GetSlotLocalEuler(pbUnit.camp, pbUnit.slot);
 
 		//
 		if (com.camp == UnitCamp.Enemy)

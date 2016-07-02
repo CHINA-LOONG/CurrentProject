@@ -1,4 +1,8 @@
 ﻿#TEXT,NUM,TEXT,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT
 id,category,periodEffectID,duration,stun,invincible,strengthRatio,intelligenceRatio,defenseRatio,speedRatio
 #id,category,periodEffectID,duration,stun,invincible,strengthRatio,intelligenceRatio,defenseRatio,speedRatio
-b1,0,,5,0,0,3,2,2,0
+b1,0,e1,5,0,0,1,1,1,1
+buffMagicb1,0,,3,0,0,0,1,0,0
+buffAttackb1,0,,3,0,0,1,0,0,0
+debuffDefenseb1,0,,3,0,0,0,0,1,0
+defendb1,0,,1,0,0,0,0,1,0

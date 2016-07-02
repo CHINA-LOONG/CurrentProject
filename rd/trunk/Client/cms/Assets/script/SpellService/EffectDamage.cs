@@ -82,6 +82,8 @@ public class EffectDamage : Effect
             EffectDamageProtoType damageProto = protoEffect as EffectDamageProtoType;
             int damageAmount = 0;
             float spellLevelRatio = ownedSpell.spellData.level * ownedSpell.spellData.levelAdjust;
+            //弱点
+            WeakPointData wp = null;
             if (damageProto.isHeal == true)
             {
                 //治疗
@@ -95,8 +97,6 @@ public class EffectDamage : Effect
             }
             else
             {
-                //弱点
-                WeakPointData wp = null;
                 if (target.attackWpName != null)
                 {
                     wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
@@ -159,42 +159,41 @@ public class EffectDamage : Effect
                 {
                     target.OnDamageWeakPoint(wp.id, damageAmount);
                 }
+            }
 
-                //没有弱点或者弱点属性关联伤害，则扣除怪物血量
-                if (wp == null || wp.isDamagePoint == 1)
+            //没有弱点或者弱点属性关联伤害，则扣除/增加怪物血量
+            if (wp == null || wp.isDamagePoint == 1)
+            {
+                target.curLife += damageAmount;
+                if (target.curLife < 0)
                 {
-                    target.curLife += damageAmount;
-                    if (target.curLife < 0)
-                    {
-                        target.curLife = 0;
-                        SpellUnitDeadArgs args = new SpellUnitDeadArgs();
-                        args.triggerTime = applyTime;
-                        args.casterID = casterID;
-                        args.deathID = targetID;
-                        spellService.TriggerEvent(GameEventList.SpellUnitDead, args);
-                    }
-                    else if (target.curLife > target.maxLife)
-                    {
-                        target.curLife = target.maxLife;
-                    }
-                }
-
-                //trigger damage event
-                {
-                    SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+                    target.curLife = 0;
+                    SpellUnitDeadArgs args = new SpellUnitDeadArgs();
                     args.triggerTime = applyTime;
                     args.casterID = casterID;
-                    args.targetID = targetID;
-                    args.isCritical = critical;
-                    args.vitalChange = damageAmount;
-                    args.vitalCurrent = target.curLife;//TODO: need weak point life?
-                    if (wp != null)
-                    {
-                        args.wpID = wp.id;
-                    }
-                    spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
+                    args.deathID = targetID;
+                    spellService.TriggerEvent(GameEventList.SpellUnitDead, args);
                 }
+                else if (target.curLife > target.maxLife)
+                {
+                    target.curLife = target.maxLife;
+                }
+            }
 
+            //trigger damage event
+            {
+                SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+                args.triggerTime = applyTime;
+                args.casterID = casterID;
+                args.targetID = targetID;
+                args.isCritical = critical;
+                args.vitalChange = damageAmount;
+                args.vitalCurrent = target.curLife;//TODO: need weak point life?
+                if (wp != null)
+                {
+                    args.wpID = wp.id;
+                }
+                spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
             }
         }
     }

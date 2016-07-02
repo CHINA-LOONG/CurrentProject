@@ -30,3 +30,11 @@ enum RewardReason
 	ACITVITY               = 4;
 	CATCH                  = 5;
 }
+
+// 对局类型
+enum BattleType
+{
+	NORMAL                 = 1;
+	BOSS                   = 2;
+	RARE                   = 3;
+}

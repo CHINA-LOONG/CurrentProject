@@ -55,7 +55,7 @@ public abstract class HawkConfigBase extends HawkConstable {
 	}
 	
 	/**
-	 * 检测有消息
+	 * 检测有效性
 	 * @return
 	 */
 	protected boolean checkValid() {

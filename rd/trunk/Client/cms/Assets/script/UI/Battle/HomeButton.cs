@@ -22,6 +22,8 @@ public class HomeButton : MonoBehaviour
 		set
 		{
 			isOn = value;
+			UpdateButtonGraphic ();
+			UpdateEffect ();
 		}
 		get
 		{

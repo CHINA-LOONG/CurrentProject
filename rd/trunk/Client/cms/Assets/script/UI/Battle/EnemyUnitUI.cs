@@ -8,8 +8,15 @@ public class EnemyUnitUI : MonoBehaviour
 	public Text unitLevel;
 	public LifeBarUI lifeBar;
 	public int	slot = 0;
-	
-	public GameUnit Unit { get; set; }
+
+    public GameUnit Unit { get; set; }
+    private UIBuffView buffView;
+
+    void Start()
+    {
+        buffView = gameObject.GetComponent<UIBuffView>();
+        buffView.Init();
+    }
 
 	public void	UpdateShow(GameUnit battleUnit)
 	{
@@ -18,6 +25,8 @@ public class EnemyUnitUI : MonoBehaviour
 			//gameObject.SetActive(false);
 			//return;
 		}
+        buffView.SetTargetUnit(battleUnit);
+
 		Vector3 uiDumpPostion = battleUnit.gameObject.transform.position;
 		Vector2 pos = RectTransformUtility.WorldToScreenPoint (BattleCamera.Instance.CameraAttr, 
 		                                                       new Vector3 (uiDumpPostion.x,uiDumpPostion.y + GameConfig.Instance.EnmeyUnitOffsetYForBloodUI, uiDumpPostion.z));
@@ -26,9 +35,5 @@ public class EnemyUnitUI : MonoBehaviour
 		unitName.text = battleUnit.name;
 		lifeBar.value = battleUnit.curLife / (float)battleUnit.maxLife;
 		unitLevel.text = battleUnit.pbUnit.level.ToString ();
-
-
-
-
 	}
 }

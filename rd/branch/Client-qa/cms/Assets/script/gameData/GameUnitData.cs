@@ -50,6 +50,7 @@ public class GameUnit
     public int property;//五行属性
     public int recovery;//战后回血
 	public bool isBoss = false;
+	public string Ai;
     //掉落金币
     public int goldNoteMin;
     public int goldNoteMax;
@@ -131,29 +132,31 @@ public class GameUnit
 
     void Init(bool isPlayer)
     {
+		buffList = new List<Buff>();
+		
+		findWeakPointlist = new List<string> ();
+		weakPointMeshDic = new Dictionary<string, GameObject> ();
+		weakPointEffectDic = new Dictionary<string, GameObject> ();
+		weakPointDumpDic = new Dictionary<string, GameObject> ();
+		weakPointList = new List<string>();
+		wpHpList = new Dictionary<string, WeakPointRuntimeData>();
+
         GameDataMgr gdMgr = GameDataMgr.Instance;
         UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
         UnitBaseData unitBaseRowData = StaticDataMgr.Instance.GetUnitBaseRowData(pbUnit.level);
         health = (int)(unitRowData.healthModifyRate * unitBaseRowData.health + gdMgr.PlayerDataAttr.equipHealth);
-        Logger.LogFormat("总体力：{0}  基础体力：{1}   体力修正：{2}  装备附加体力：{3}", health, unitBaseRowData.health, unitRowData.healthModifyRate, gdMgr.PlayerDataAttr.equipHealth);
         strength = (int)(unitRowData.strengthModifyRate * unitBaseRowData.strength + gdMgr.PlayerDataAttr.equipStrength);
-        Logger.LogFormat("总力量：{0}  基础力量：{1}   力量修正：{2}  装备附加力量：{3}", strength, unitBaseRowData.strength, unitRowData.strengthModifyRate, gdMgr.PlayerDataAttr.equipStrength);
         intelligence = (int)(unitRowData.intelligenceModifyRate * unitBaseRowData.intelligence + gdMgr.PlayerDataAttr.equipIntelligence);
-        Logger.LogFormat("总智力：{0}  基础智力：{1}   智力修正：{2}  装备附加智力：{3}", intelligence, unitBaseRowData.intelligence, unitRowData.intelligenceModifyRate, gdMgr.PlayerDataAttr.equipIntelligence);
         speed = (int)(unitRowData.speedModifyRate * unitBaseRowData.speed + gdMgr.PlayerDataAttr.equipSpeed);
-        Logger.LogFormat("总速度：{0}  基础速度：{1}   速度修正：{2}  装备附加速度：{3}", speed, unitBaseRowData.speed, unitRowData.speedModifyRate, gdMgr.PlayerDataAttr.equipSpeed);
         defense = (int)(unitRowData.defenseModifyRate * unitBaseRowData.defense + gdMgr.PlayerDataAttr.equipDefense);
-        Logger.LogFormat("总防御：{0}  基础防御：{1}   防御修正：{2}  装备附加防御：{3}", defense, unitBaseRowData.defense, unitRowData.defenseModifyRate, gdMgr.PlayerDataAttr.equipDefense);
         endurance = (int)(unitRowData.enduranceModifyRate * unitBaseRowData.endurance + gdMgr.PlayerDataAttr.equipEndurance);
-        Logger.LogFormat("总耐力：{0}  基础耐力：{1}   耐力修正：{2}  装备附加耐力：{3}", endurance, unitBaseRowData.endurance, unitRowData.enduranceModifyRate, gdMgr.PlayerDataAttr.equipEndurance);
         recovery = (int)(unitRowData.recoveryRate * unitBaseRowData.recovery);
-        Logger.LogFormat("总战后回血：{0} 基础战后回血：{1}  战后回血比例修正：{2}", recovery, unitBaseRowData.recovery, unitRowData.recoveryRate);
         property = unitRowData.property;
-        Logger.LogFormat("怪物属性：{0}  （1=金，2=木，3=水，4=火，5=土）", property);
         assetID = unitRowData.assetID;
         isEvolutionable = unitRowData.isEvolutionable!=0;
         evolutionID = unitRowData.evolutionID;
         name = unitRowData.nickName;
+		Ai = unitRowData.AI;
 
         //TODO: 装备系统附加值
         criticalRatio = gdMgr.PlayerDataAttr.criticalRatio;
@@ -163,8 +166,7 @@ public class GameUnit
         minusDamageRatio = 0.0f;
         additionHealRatio = 0.0f;
         defensePierce = 0.0f;
-        Logger.LogFormat("暴击率：{0}   暴击抗性：{1}    附加命中率：{2} 伤害加深：{3}    伤害减免：{4}    治疗加成：{5}    防御穿透：{6}", criticalRatio, antiCriticalRatio, hitRatio, additionDamageRatio, minusDamageRatio, additionHealRatio, defensePierce);
-        Logger.LogFormat("========================|{0}|==============================", name);
+
         //战斗状态值初始化
         invincible = 0;
         stun = 0;
@@ -212,17 +214,9 @@ public class GameUnit
             {
 				spellList.Add(spellID, new Spell(spellPt));
             }
-        }
-
-        buffList = new List<Buff>();
-
-		findWeakPointlist = new List<string> ();
-		weakPointMeshDic = new Dictionary<string, GameObject> ();
-		weakPointEffectDic = new Dictionary<string, GameObject> ();
-		weakPointDumpDic = new Dictionary<string, GameObject> ();
-		
-    }
-
+        }	
+	}
+	
 	void InitWeakPoint(string strWeak)
 	{
 		if (strWeak == null || strWeak == "") 
@@ -230,12 +224,6 @@ public class GameUnit
 			return;
 		}
 		ArrayList weakArrayList = MiniJsonExtensions.arrayListFromJson (strWeak);
-		//string[] weakArray = strWeak.Split (';');
-		if (null == weakPointList) 
-		{
-			weakPointList = new List<string>();
-            wpHpList = new Dictionary<string, WeakPointRuntimeData>();
-		}
 
 		weakPointList.Clear();
         wpHpList.Clear();
@@ -288,6 +276,17 @@ public class GameUnit
         return null;
     }
 
+    public Spell GetDazhao()
+    {
+        foreach (var item in spellList)
+        {
+            if (item.Value.spellData.category == (int)SpellType.Spell_Type_DaZhao)
+                return item.Value;
+        }
+
+        return null;
+    }
+
 	/// <summary>
 	/// 战斗对象AI
 	/// </summary>
@@ -329,6 +328,7 @@ public class GameUnit
 
         //get slot position
         unitObject.transform.position = BattleScene.Instance.GetSlotPosition(pbUnit.camp, pbUnit.slot);
+		unitObject.transform.localEulerAngles = BattleScene.Instance.GetSlotLocalEuler(pbUnit.camp, pbUnit.slot);
 
 		//
 		if (com.camp == UnitCamp.Enemy)

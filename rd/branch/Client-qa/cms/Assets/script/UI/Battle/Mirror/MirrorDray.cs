@@ -24,8 +24,8 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler
 	void Awake ()
 	{  
 		RectTransform parentTransform = UIMgr.Instance.RootRectTransform;
-		float rootWidth = parentTransform.rect.width;
-		float rootHeight = parentTransform.rect.height;
+		float rootWidth = Screen.width;// parentTransform.rect.width;
+		float rootHeight = Screen.height;// parentTransform.rect.height;
 
 		RectTransform thisTransform = transform as RectTransform;
 		float myWith = thisTransform.rect.width;

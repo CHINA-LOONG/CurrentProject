@@ -330,7 +330,12 @@ public class StaticDataMgr : MonoBehaviour
 
     public BattleUnitAiData GetBattleUnitAiData(string index)
     {
-        return battleUnitAiData[index];
+		if (battleUnitAiData.ContainsKey (index)) {
+			return battleUnitAiData [index];
+		} else {
+			Debug.LogError("can't find battleunitai key " + index);
+			return null;
+		}
     }
     #endregion
 }

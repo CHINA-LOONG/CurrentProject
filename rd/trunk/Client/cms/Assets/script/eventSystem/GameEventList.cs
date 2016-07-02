@@ -19,6 +19,7 @@ public class GameEventList
 	public static string FindWeakPoint = "FindWeakPoint";//param MirrorTarget ,MirrorTarget
 	public static string FindFinishedWeakPoint = "FindFinishedWeakPoint";//param MIrrorTarget
 	public static string MirrorOutWeakPoint = "MirrorOutWeakPoint";//param MIrrorTarget
+	public static string MirrorClicked = "MirrorClicked";//param vector3
 
     //process
     public static string SwitchPet = "SwitchPet";//param <int,int>

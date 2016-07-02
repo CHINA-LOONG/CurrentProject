@@ -136,7 +136,7 @@ public class PlayerMonsterModule extends PlayerModule {
 			monsterEntity.setSkillLevel(skill.getSkillId(), skill.getLevel());
 		}
 
-		return addMonster(RewardReason.CATCH_VALUE, monsterEntity);
+		return addMonster(RewardReason.CATCH, monsterEntity);
 	}
 
 	/**
@@ -144,13 +144,13 @@ public class PlayerMonsterModule extends PlayerModule {
 	 */
 	@MessageHandler(code = GsConst.MsgType.PRESENT_MONSTER)
 	private boolean onMonsterPresent(HawkMsg msg) {
-		addMonster(RewardReason.SYS_PRESENT_VALUE, (MonsterEntity)msg.getParam(0));
+		addMonster(RewardReason.SYS_PRESENT, (MonsterEntity)msg.getParam(0));
 		return true;
 	}
 
 	// 内部函数--------------------------------------------------------------------------------------
 
-	private boolean addMonster(int reason, MonsterEntity monsterEntity) {
+	private boolean addMonster(RewardReason reason, MonsterEntity monsterEntity) {
 		if (false == HawkDBManager.getInstance().create(monsterEntity)) {
 			logger.error("database error, create monster entity fail");
 			return false;

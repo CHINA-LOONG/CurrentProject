@@ -48,38 +48,66 @@ public class BattleController : MonoBehaviour
         instance = this;
         this.process = process;
         battleGroup = new BattleGroup();
+		BindListener ();
     }
+
+	void OnDestroy()
+	{
+		UnBindListener ();
+	}
+	
+	void BindListener()
+	{
+		GameEventMgr.Instance.AddListener<Vector3>(GameEventList.MirrorClicked ,OnMirrorClilced );
+	}
+	
+	void UnBindListener()
+	{
+		GameEventMgr.Instance.RemoveListener<Vector3> (GameEventList.MirrorClicked, OnMirrorClilced);
+	}
+
+	void  OnMirrorClilced(Vector3 inputPos)
+	{
+		RaycastBattleObject (inputPos);
+	}
 
     void Update()
     {
-        RaycastHit hit;
+        
 		Vector3 inputPos = Input.mousePosition;
-		Ray ray = BattleCamera.Instance.GetComponent<Camera>().ScreenPointToRay( inputPos );
+
         if (Input.GetMouseButtonDown(0))
         {
             isMouseOnUI = EventSystem.current.IsPointerOverGameObject();
         }
-
-        if (Input.GetMouseButtonUp(0) && !isMouseOnUI)
-        {
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-                var battleGo = hit.collider.gameObject.GetComponent<BattleObject>();
-                if (battleGo)
-                {
-					OnHitBattleObject(battleGo, GetClickedEnemyWpName(battleGo,inputPos));
-                }
-                else
-                {
-                    Logger.LogWarning("Hit something but not a battle object!");
-                }
-            }
-            else
-            {
-                GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
-            }
-        }
+		if (Input.GetMouseButtonUp (0) && !isMouseOnUI)
+		{
+			RaycastBattleObject (inputPos);
+		}
     }
+
+	void RaycastBattleObject(Vector3 inputPos)
+	{
+		RaycastHit hit;
+		Ray ray = BattleCamera.Instance.GetComponent<Camera>().ScreenPointToRay( inputPos );
+		
+		if (Physics.Raycast(ray, out hit, 100))
+		{
+			var battleGo = hit.collider.gameObject.GetComponent<BattleObject>();
+			if (battleGo)
+			{
+				OnHitBattleObject(battleGo, GetClickedEnemyWpName(battleGo,inputPos));
+			}
+			else
+			{
+				Logger.LogWarning("Hit something but not a battle object!");
+			}
+		}
+		else
+		{
+			GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
+		}
+	}
 
 	string GetClickedEnemyWpName(BattleObject battleObj,Vector2 inputPos)
 	{

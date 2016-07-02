@@ -34,6 +34,7 @@ public class UIBattle : UIBase
         {
             m_MirrorDray = m_MirrorImage.gameObject.AddComponent<MirrorDray>();
 			m_MirrorDray.Init();
+			//Debug.LogError("liwsTest: UIBattle is Load And MirrorDray component added");
         }
         else
         {

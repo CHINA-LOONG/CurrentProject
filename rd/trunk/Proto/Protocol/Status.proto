@@ -22,19 +22,23 @@ enum error
 	SERVER_GRAY_STATE      = 0x00000004;
 	// 数据库错误
 	DATA_BASE_ERROR        = 0x00000005;
+	// 参数错误
+	PARAMS_INVALID         = 0x00000006;
 	
 	// 服务器错误
 	SERVER_ERROR           = 0x00001000;
 }
 
-enum PlayerError{
+enum PlayerError
+{
 	// 角色不存在
 	PLAYER_NOT_EXIST       = 0x00020001;
 	// 昵称存在
 	PLAYER_NICKNAME_EXIST  = 0x00020002;
 }
 
-enum monsterError{
+enum monsterError
+{
 	// 怪物数量达到上限
 	MONSTER_MAX_SIZE       = 0x00030001;
 	// 怪物不存在

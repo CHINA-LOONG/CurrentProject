@@ -43,7 +43,7 @@ public class BattleGroupUI : MonoBehaviour
         var units = BattleController.Instance.BattleGroup.PlayerFieldList;
         for (int i = 0; i < unitUI.Length; i++)
         {
-            if (i < unitUI.Length)
+            if (i < units.Count)
             {
                 unitUI[i].Show(units[i]);
             }

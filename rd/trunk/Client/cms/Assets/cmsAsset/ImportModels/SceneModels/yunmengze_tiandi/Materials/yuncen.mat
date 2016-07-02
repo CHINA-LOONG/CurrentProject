@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: yuncen
-  m_Shader: {fileID: 10753, guid: 0000000000000000e000000000000000, type: 0}
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -39,6 +39,10 @@ Material:
         second: 1
       data:
         first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
           name: _Outline
         second: .00499999989
       data:
@@ -62,6 +66,10 @@ Material:
         first:
           name: _OutlineColor
         second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _TintColor
+        second: {r: .463235319, g: .463235319, b: .463235319, a: .501960814}
       data:
         first:
           name: _Tint

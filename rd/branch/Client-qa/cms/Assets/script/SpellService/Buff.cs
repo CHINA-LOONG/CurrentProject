@@ -9,6 +9,7 @@ public class BuffPrototype
     public string id;
     public string periodEffectID;
     public int category;
+    //public int isClear;//切进程是否删除
     public int duration;
 
     //状态改变
