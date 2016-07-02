@@ -12,8 +12,8 @@ public class BuffPrototype
     public int duration;
 
     //状态改变
-    public bool stun;//眩晕
-    public bool invincible;//无敌
+    public int stun;//眩晕
+    public int invincible;//无敌
 
     //属性改变
     public float strengthRatio;
@@ -169,7 +169,7 @@ public class Buff
         GameUnit target = spellService.GetUnit(targetID);
 
         //状态改变
-        if (buffProto.stun == true)
+        if (buffProto.stun > 0)
         {
             ++target.stun;
         }
@@ -178,7 +178,7 @@ public class Buff
             --target.stun;
         }
 
-        if (buffProto.invincible == true)
+        if (buffProto.invincible > 0)
         {
             ++target.invincible;
         }

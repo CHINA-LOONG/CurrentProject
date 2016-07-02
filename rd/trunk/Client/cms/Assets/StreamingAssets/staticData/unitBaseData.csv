@@ -1,4 +1,4 @@
-NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM
+#NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM
 level,experience,health,strength,intelligence,speed,defense,endurance,recovery,goldNoteMin,goldNoteMax,expMin,expMax,output
 #等级,升级所需经验,体力,力量,智力,速度,防御力,耐力,战后回血,货币随机掉落最小值,货币随机掉落最大值,经验随机掉落最小值,经验随机掉落最大值,产出经验
 12,123,234,345,456,567,678,789,1233,1455,1566,1788,1899,2010

@@ -107,7 +107,7 @@ public class BattleController : MonoBehaviour
 
     void ShowUI()
     {
-        Logger.Log("[Battle]Show Battle UI...");
+        GameEventMgr.Instance.FireEvent(GameEventList.ShowBattleUI);
     }
 
     void StartProcess()
@@ -171,4 +171,8 @@ public class BattleController : MonoBehaviour
         Logger.Log("[Battle]Showing Balance UI...");
     }
 
+    public void OnUnitCastDazhao(GameUnit unit)
+    {
+
+    }
 }

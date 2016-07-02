@@ -63,5 +63,4 @@ public class BattleData
     public string rareValiVic;
 
     public List<int> processList = new List<int>();
-
 }

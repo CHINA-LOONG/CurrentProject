@@ -14,4 +14,6 @@ public class GameConfig : MonoBehaviour {
 
 	public float FindWeakPointFinishedNeedTime = 2.0f;
 	public float MirrorRadius = 5f;
+
+	public	float	MaxCureMagicLifeRate  = 0.75f;
 }

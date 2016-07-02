@@ -11,7 +11,14 @@ public class GameEventList
 
     //////////////////////////////////////////////////////////////////////////
     //Battle
-    public static string StartBattle = "StartBattle";  //param: PbStartBattle    
+    public static string StartBattle = "StartBattle";  //param: PbStartBattle  
+	public static string LoadBattleObjectFinished = "LoadBattleObjectFinished";//param GameUnitData
+
+	//Mirror in the Battle
+	public static string SetMirrorModeState = "SetMirrorModeState"; //param bool 
+	public static string FindWeakPoint = "FindWeakPoint";//param MirrorTarget ,MirrorTarget
+	public static string FindFinishedWeakPoint = "FindFinishedWeakPoint";//param MIrrorTarget
+	public static string MirrorOutWeakPoint = "MirrorOutWeakPoint";//param MIrrorTarget
 
     //process
     public static string SwitchPet = "SwitchPet";//param <int,int>
@@ -21,11 +28,6 @@ public class GameEventList
 
     //////////////////////////////////////////////////////////////////////////
 
-    //Data
-    public static string LifeDataChanged = "LifeDataChanged"; //float
-
-
-    public static string StaminaRepair = "StaminaRepair";//object
 
     //Ui
     public static string RestartGame = "RestartGame";

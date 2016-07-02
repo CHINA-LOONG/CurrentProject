@@ -1,4 +1,4 @@
-NUM,TEXT,TEXT,TEXT,NUM,NUM,TEXT
+#NUM,TEXT,TEXT,TEXT,NUM,NUM,TEXT
 id,name,processAnimation,preAnimation,isClearBuff,endCondition,state
 #,,,,,,
 1,״̬1,,,0,1,

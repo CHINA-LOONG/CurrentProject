@@ -5,6 +5,7 @@ public class BattleModule : ModuleBase
 {
     BattleController controller;
     BattleProcess process;
+	WeakPointController  weakPointController;
 
     void BindListener()
     {
@@ -32,6 +33,12 @@ public class BattleModule : ModuleBase
         process = gameObject.AddComponent<BattleProcess>();
         controller.Init(process);
         process.Init();
+
+		weakPointController = gameObject.AddComponent<WeakPointController> ();
+		weakPointController.Init ();
+
+		BattleUnitAi battleUnitAi = gameObject.AddComponent<BattleUnitAi> ();
+		battleUnitAi.Init ();
     }
 
     public override void OnEnter(ModuleBase prevModule, object param)
@@ -53,6 +60,7 @@ public class BattleModule : ModuleBase
         UnBindListener();
         Destroy(controller);
         Destroy(process);
+		Destroy (weakPointController);
     }
 
 	void LateUpdate()

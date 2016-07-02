@@ -1,4 +1,4 @@
-TEXT,TEXT,NUM,NUM,NUM,FLOAT
+#TEXT,TEXT,NUM,NUM,NUM,FLOAT
 id,rootEffectID,energyCost,energyGenerate,category,levelAdjust
 #id,rootEffectID,energyCost,energyGenerate,category,levelAdjust
 s1,e1,0,10,0,1

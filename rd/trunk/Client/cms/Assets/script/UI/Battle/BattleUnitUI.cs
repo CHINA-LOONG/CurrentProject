@@ -6,26 +6,34 @@ public class BattleUnitUI : MonoBehaviour
 {
     public Button dazhaoBtn;
     public Text unitName;
-    public Scrollbar lifeBar;
+    public LifeBarUI lifeBar;
 
-    GameUnit unit;
-    public GameUnit Unit
-    {
-        set { unit = value; }
-    }
+    public GameUnit Unit { get; set; }
 
     // Use this for initialization
     void Start()
     {
-
+       EventTriggerListener.Get(dazhaoBtn.gameObject).onClick = OnDazhaoClick;
     }
 
     public void Show(GameUnit sUnit)
     {
-        unit = sUnit;
+        if (sUnit == null)
+        {
+            Hide();
+            return;
+        }
 
-        unitName.text = unit.name;
-        lifeBar.size = unit.curLife / (float)unit.maxLife;
+        Unit = sUnit;
+
+        dazhaoBtn.gameObject.SetActive(false);
+        unitName.text = Unit.name;
+        lifeBar.value = Unit.curLife / (float)Unit.maxLife;
+
+        if (Unit.energy >= BattleConst.enegyMax)
+        {
+            dazhaoBtn.gameObject.SetActive(true);
+        }
 
         gameObject.SetActive(true);
     }
@@ -33,5 +41,10 @@ public class BattleUnitUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    void OnDazhaoClick(GameObject go)
+    {
+        BattleController.Instance.OnUnitCastDazhao(Unit);
     }
 }

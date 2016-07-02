@@ -2,6 +2,14 @@
 using System;
 using System.Collections.Generic;
 
+public enum UnitState
+{
+    None,
+    Dazhao,
+    ToBeReplaced,
+    Dead,
+}
+
 //////////////////////////////////////////////////////////////////////////
 /// <summary>
 /// 模拟战斗协议，只做测试用途
@@ -82,11 +90,22 @@ public class GameUnit
     public Dictionary<string, Spell> spellList;
     //public List<Equipment> equipmentList;
 	public List<string> weakPointList;
+	public List<string> findWeakPointlist = null;
+	public Dictionary<string,GameObject> weakPointMeshDic;
+	public Dictionary<string,GameObject> weakPointEffectDic;
 
     //只在客户端计算使用的属性
     float speedCount = 0;
     float actionOrder = 0;
     public float ActionOrder { get { return actionOrder; } }
+
+    UnitState state = UnitState.None;
+    public UnitState State { get { return state; } set { state = value; } }
+
+	//战斗单元统计数据 
+	public	int attackCount = 0;
+	public 	List<int> lazyList = new List<int>();
+	public	List<int> dazhaoList = new List<int>();
 
     //////////////////////////////////////////////////////////////////////////
     //显示部分    
@@ -110,18 +129,26 @@ public class GameUnit
     void Init()
     {
         GameDataMgr gdMgr = GameDataMgr.Instance;
-        UnitData.RowData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
-        UnitBaseData.RowData unitBaseRowData = StaticDataMgr.Instance.GetUnitBaseRowData(pbUnit.level);
+        UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
+        UnitBaseData unitBaseRowData = StaticDataMgr.Instance.GetUnitBaseRowData(pbUnit.level);
         health = (int)(unitRowData.healthModifyRate * unitBaseRowData.health + gdMgr.PlayerDataAttr.equipHealth);
+        Logger.LogFormat("总体力：{0}  基础体力：{1}   体力修正：{2}  装备附加体力：{3}", health, unitBaseRowData.health, unitRowData.healthModifyRate, gdMgr.PlayerDataAttr.equipHealth);
         strength = (int)(unitRowData.strengthModifyRate * unitBaseRowData.strength + gdMgr.PlayerDataAttr.equipStrength);
+        Logger.LogFormat("总力量：{0}  基础力量：{1}   力量修正：{2}  装备附加力量：{3}", strength, unitBaseRowData.strength, unitRowData.strengthModifyRate, gdMgr.PlayerDataAttr.equipStrength);
         intelligence = (int)(unitRowData.intelligenceModifyRate * unitBaseRowData.intelligence + gdMgr.PlayerDataAttr.equipIntelligence);
+        Logger.LogFormat("总智力：{0}  基础智力：{1}   智力修正：{2}  装备附加智力：{3}", intelligence, unitBaseRowData.intelligence, unitRowData.intelligenceModifyRate, gdMgr.PlayerDataAttr.equipIntelligence);
         speed = (int)(unitRowData.speedModifyRate * unitBaseRowData.speed + gdMgr.PlayerDataAttr.equipSpeed);
+        Logger.LogFormat("总速度：{0}  基础速度：{1}   速度修正：{2}  装备附加速度：{3}", speed, unitBaseRowData.speed, unitRowData.speedModifyRate, gdMgr.PlayerDataAttr.equipSpeed);
         defense = (int)(unitRowData.defenseModifyRate * unitBaseRowData.defense + gdMgr.PlayerDataAttr.equipDefense);
+        Logger.LogFormat("总防御：{0}  基础防御：{1}   防御修正：{2}  装备附加防御：{3}", defense, unitBaseRowData.defense, unitRowData.defenseModifyRate, gdMgr.PlayerDataAttr.equipDefense);
         endurance = (int)(unitRowData.enduranceModifyRate * unitBaseRowData.endurance + gdMgr.PlayerDataAttr.equipEndurance);
+        Logger.LogFormat("总耐力：{0}  基础耐力：{1}   耐力修正：{2}  装备附加耐力：{3}", endurance, unitBaseRowData.endurance, unitRowData.enduranceModifyRate, gdMgr.PlayerDataAttr.equipEndurance);
         recovery = (int)(unitRowData.recoveryRate * unitBaseRowData.recovery);
+        Logger.LogFormat("总战后回血：{0} 基础战后回血：{1}  战后回血比例修正：{2}", recovery, unitBaseRowData.recovery, unitRowData.recoveryRate);
         property = unitRowData.property;
+        Logger.LogFormat("怪物属性：{0}  （1=金，2=木，3=水，4=火，5=土）", property);
         assetID = unitRowData.assetID;
-        isEvolutionable = unitRowData.isEvolutionable;
+        isEvolutionable = unitRowData.isEvolutionable!=0;
         evolutionID = unitRowData.evolutionID;
         name = unitRowData.nickName;
         //TODO: 玩家宠物不需要
@@ -138,7 +165,8 @@ public class GameUnit
         minusDamageRatio = 0.0f;
         additionHealRatio = 0.0f;
         defensePierce = 0.0f;
-
+        Logger.LogFormat("暴击率：{0}   暴击抗性：{1}    附加命中率：{2} 伤害加深：{3}    伤害减免：{4}    治疗加成：{5}    防御穿透：{6}", criticalRatio, antiCriticalRatio, hitRatio, additionDamageRatio, minusDamageRatio, additionHealRatio, defensePierce);
+        Logger.LogFormat("========================|{0}|==============================", name);
         //战斗状态值初始化
         invincible = 0;
         stun = 0;
@@ -169,6 +197,10 @@ public class GameUnit
         }
 
         buffList = new List<Buff>();
+
+		findWeakPointlist = new List<string> ();
+		weakPointMeshDic = new Dictionary<string, GameObject> ();
+		weakPointEffectDic = new Dictionary<string, GameObject> ();
 		
     }
 
@@ -191,7 +223,6 @@ public class GameUnit
 		}
 	}
 
-
     public Spell GetSpell(string spellID)
     {
         Spell spell;
@@ -202,6 +233,15 @@ public class GameUnit
 
         return null;
     }
+
+	/// <summary>
+	/// 战斗对象AI
+	/// </summary>
+	/// <returns>The ai attack resul.</returns>
+	public	BattleUnitAi.AiAttackResult  GetAiAttackResul()
+	{
+		return BattleUnitAi.Instance.GetAiAttackResult (this);
+	}
 
     /// <summary>
     /// 累计速度，计算order值
@@ -234,6 +274,12 @@ public class GameUnit
 
         //get slot position
         unitObject.transform.position = BattleScene.Instance.GetSlotPosition(pbUnit.camp, pbUnit.slot);
+
+		//
+		if (com.camp == UnitCamp.Enemy)
+		{
+			GameEventMgr.Instance.FireEvent<GameUnit> (GameEventList.LoadBattleObjectFinished, this);
+		}
 
         ReCalcSpeed();
 

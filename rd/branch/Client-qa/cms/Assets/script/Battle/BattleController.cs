@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BattleController : MonoBehaviour
 {
-    int battleId;
-    BattleData.RowData battleData;
+    string battleId;
+    BattleData battleData;
     BattleProcess process;
     BattleGroup battleGroup;
+	bool	isMouseOnUI = false;
     public BattleGroup BattleGroup
     {
         get { return battleGroup; }
@@ -35,7 +37,12 @@ public class BattleController : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = BattleCamera.Instance.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-        if (Input.GetMouseButtonUp(0))
+		if (Input.GetMouseButtonDown (0)) 
+		{
+			isMouseOnUI = EventSystem.current.IsPointerOverGameObject ();
+		}
+		
+		if (Input.GetMouseButtonUp(0) && !isMouseOnUI )
         {
             if (Physics.Raycast(ray, out hit, 100))
             {
@@ -80,7 +87,7 @@ public class BattleController : MonoBehaviour
     public void StartBattle(PbStartBattle proto)
     {
         battleId = proto.battleId;
-        battleData = StaticDataMgr.Instance.BattleData.getRowDataFromLevel(battleId);
+        battleData = StaticDataMgr.Instance.GetBattleDataFromLevel(battleId);
 
         //设置battlegroup 并且创建模型
         battleGroup.SetEnemyList(proto.enemyList);
@@ -106,13 +113,13 @@ public class BattleController : MonoBehaviour
     void StartProcess()
     {
         var curProcess = GetNextProcess();
-        if (curProcess != -1)
+        if (curProcess != null)
             process.StartProcess(curProcess, battleGroup);
         else
             OnAllProcessOver();        
     }
 
-    int GetNextProcess()
+    ProcessData GetNextProcess()
     {
         curProcessIndex++;
 
@@ -120,13 +127,13 @@ public class BattleController : MonoBehaviour
             battleData.processList.Count == 0)
         {
             //小怪进程
-            return 0;
+            return new ProcessData();
         }
 
         if (curProcessIndex >= battleData.processList.Count)
-            return -1;
+            return null;
         else
-            return battleData.processList[curProcessIndex];
+            return null;
     }
 
     public void OnProcessSuccess()

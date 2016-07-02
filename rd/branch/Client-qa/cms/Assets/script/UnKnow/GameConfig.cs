@@ -11,4 +11,9 @@ public class GameConfig : MonoBehaviour {
 	}
 	public string testBattlePrefab;
 	public string testBattleAssetName;
+
+	public float FindWeakPointFinishedNeedTime = 2.0f;
+	public float MirrorRadius = 5f;
+
+	public	float	MaxCureMagicLifeRate  = 0.75f;
 }

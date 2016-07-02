@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
 
@@ -36,7 +37,8 @@ public class Util
             if (Const.DebugMode)
                 return Application.streamingAssetsPath;
             else
-                return Application.persistentDataPath;
+                //不能直接使用Application.persistentDataPath，由于涉及到删除目录操作，删除根目录无权限，故加上game子目录
+                return Path.Combine(Application.persistentDataPath, "game");
         }
     }
 
@@ -119,4 +121,68 @@ public class Util
         System.GC.Collect();
         Resources.UnloadUnusedAssets();
     }
+
+	/// <summary>
+	/// 对象查找
+	/// </summary>
+	/// <returns>The child by name.</returns>
+	/// <param name="go">Go.</param>
+	/// <param name="name">Name.</param>
+	public static GameObject FindChildByName(GameObject go, string name)
+	{
+		Transform[] trans = go.GetComponentsInChildren<Transform> ();
+		foreach (Transform tran in trans)
+		{
+			if (tran.name == name) 
+			{
+				return tran.gameObject;
+			}
+		}
+		
+		return null;
+	}
+
+	/// <summary>
+	/// 带权重的随机
+	/// </summary>
+	/// <returns>The Index of List.</returns>
+	/// <param name="weightList">Weight list.</param>
+	public	static int RondomWithWeight(List<int> weightList)
+	{
+		int sum = 0;
+		for (int i = 0; i<weightList.Count; ++i) 
+		{
+			if(weightList[i] < 0)
+			{
+				Debug.LogError("RondomWithWeight Eror param sum = " + sum);
+				return -1;
+			}
+
+			sum += weightList[i];
+		}
+		if (sum <= 0) 
+		{
+			Debug.LogError("RondomWithWeight Eror param sum = " + sum);
+			return -1;
+		}
+
+		int value = Random.Range (0, sum);// return [)
+
+		int count = 0;
+		int subWeight = 0;
+		for(int i =0;i<weightList.Count ; ++i)
+		{
+			subWeight = weightList[i];
+			count += subWeight;
+			if(0 == subWeight)
+			{
+				continue;
+			}
+			if(value < count)
+			{
+				return i;
+			}
+		}
+		return weightList.Count - 1;
+	}
 }

@@ -106,6 +106,14 @@ public class EffectDamage : Effect
                                     (1.0f + caster.spellStrengthRatio)
                                     ); //buff加成(队长技 etc)
                                     /* *弱点伤害 * 副本伤害 */
+                    //添加log by ts
+                     Logger.LogFormat("总力量：{0}   k值：{1}  物理攻击力：{2}    暴击伤害百分比：{3}    受伤比：{4}",
+                        caster.strength,
+                        SpellConst.strengthToAttack,
+                        SpellConst.strengthToAttack * caster.strength,
+                        damageRatio,
+                        injuryRatio
+                        );
                 }
                 //法术伤害
                 else
@@ -141,6 +149,14 @@ public class EffectDamage : Effect
                                     propertyDamageRatio
                                     ); //五行相关
                                     /* *弱点伤害 * 副本伤害 */
+                    //添加log by ts
+                    Logger.LogFormat("总智力：{0}   k值：{1}  法术攻击力：{2}    暴击伤害百分比：{3}    受伤比：{4}",
+                        caster.intelligence,
+                        SpellConst.intelligenceToAttack,
+                        SpellConst.intelligenceToAttack * caster.intelligence,
+                        damageRatio,
+                        injuryRatio
+                        );
                 }
                 //伤害*-1 修正为负数
                 damageAmount *= -1;

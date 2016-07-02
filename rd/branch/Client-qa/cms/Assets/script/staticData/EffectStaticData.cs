@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+/*
 
-public class EffectStaticData : StaticDataBase
+public class EffectStaticData 
 {
     private Dictionary<string, EffectPrototype> m_CacheDic = new Dictionary<string, EffectPrototype>();
 
@@ -121,3 +122,4 @@ public class EffectStaticData : StaticDataBase
     }
 
 }
+*/

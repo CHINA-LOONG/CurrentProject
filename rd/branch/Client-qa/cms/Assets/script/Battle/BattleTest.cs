@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class PbStartBattle
 {
-    public int battleId;
+    public string battleId;
     public List<PbUnit> enemyList = new List<PbUnit>();
     public List<PbUnit> playerList = new List<PbUnit>();
 }
@@ -17,10 +17,10 @@ public class BattleTest : MonoBehaviour
     static PbStartBattle InitBattleGroup()
     {
         var proto = new PbStartBattle();
-        proto.battleId = 2;
+        proto.battleId = "demo";
 
         //enemy list
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 1; i++)
         {
             PbUnit pbUnit = new PbUnit();
             pbUnit.guid = i;
@@ -34,12 +34,12 @@ public class BattleTest : MonoBehaviour
         }
 
         //player list
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 1; i++)
         {
             PbUnit pbUnit = new PbUnit();
             pbUnit.guid = 10 + i;
             pbUnit.level = 16;
-            pbUnit.id = "soul";
+            pbUnit.id = "cat";
             pbUnit.slot = i;
             if (i > 2)
                 pbUnit.slot = BattleConst.offsiteSlot;

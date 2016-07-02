@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 public enum UnitState
@@ -102,6 +103,11 @@ public class GameUnit
     UnitState state = UnitState.None;
     public UnitState State { get { return state; } set { state = value; } }
 
+	//战斗单元统计数据 
+	public	int attackCount = 0;
+	public 	List<int> lazyList = new List<int>();
+	public	List<int> dazhaoList = new List<int>();
+
     //////////////////////////////////////////////////////////////////////////
     //显示部分    
     GameObject unitObject;
@@ -171,14 +177,17 @@ public class GameUnit
 
         //初始化技能列表
         spellList = new Dictionary<string, Spell>();
-        string[] spellIDList = unitRowData.spellIDList.Split(';');
+        //string[] spellIDList = unitRowData.spellIDList.Split(';');
+		ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson (unitRowData.spellIDList);
+
         SpellProtoType spellPt = null;
-        for (int i = 0; i < spellIDList.Length; ++i)
+		for (int i = 0; i < spellArrayList.Count; ++i)
         {
-            spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellIDList[i]);
+			string spellID = spellArrayList[i]as string ;
+			spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellID);
             if (spellPt != null)
             {
-                spellList.Add(spellIDList[i], new Spell(spellPt));
+				spellList.Add(spellID, new Spell(spellPt));
             }
         }
 
@@ -219,6 +228,15 @@ public class GameUnit
 
         return null;
     }
+
+	/// <summary>
+	/// 战斗对象AI
+	/// </summary>
+	/// <returns>The ai attack resul.</returns>
+	public	BattleUnitAi.AiAttackResult  GetAiAttackResul()
+	{
+		return BattleUnitAi.Instance.GetAiAttackResult (this);
+	}
 
     /// <summary>
     /// 累计速度，计算order值

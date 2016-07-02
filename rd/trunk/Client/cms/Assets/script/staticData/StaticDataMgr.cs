@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.IO;
 using Csv.Serialization;
@@ -67,10 +67,11 @@ public class StaticDataMgr : MonoBehaviour
                         {
                             effectPt = new EffectSetPrototype();
                             EffectSetPrototype setPt = effectPt as EffectSetPrototype;
-                            string[] effects = wholeData.effectList.Split(';');
-                            for (int i = 0; i < effects.Length; ++i)
+                            //string[] effects = wholeData.effectList.Split(';');
+							ArrayList effectArrayList = MiniJsonExtensions.arrayListFromJson ( wholeData.effectList);
+							for (int i = 0; i <  effectArrayList.Count; ++i)
                             {
-                                setPt.effectList.Add(effects[i]);
+								setPt.effectList.Add(effectArrayList[i] as string);
                             }
                         }
                         break;
@@ -92,9 +93,10 @@ public class StaticDataMgr : MonoBehaviour
                             persistPt.effectStartID = wholeData.effectStartID;
                             persistPt.startDelayTime = wholeData.startDelayTime;
                             string[] effectList = wholeData.periodEffectList.Split(';');
-                            for (int i = 0; i < effectList.Length; ++i)
+							///ArrayList effectArrayList = MiniJsonExtensions.arrayListFromJson (wholeData.periodEffectList);
+							for (int i = 0; i < effectList.Length; ++i)
                             {
-                                string[] effectKV = effectList[i].Split('|');
+								string[] effectKV = effectList[i].Split('|');
                                 if (effectKV.Length != 2)
                                     continue;
 

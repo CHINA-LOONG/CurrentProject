@@ -34,7 +34,7 @@ public class BattleTest : MonoBehaviour
         }
 
         //player list
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
             PbUnit pbUnit = new PbUnit();
             pbUnit.guid = 10 + i;

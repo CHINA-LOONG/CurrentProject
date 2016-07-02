@@ -96,7 +96,7 @@ public class BattleProcess : MonoBehaviour
 
         RefreshEnemyState();
 
-        StartCoroutine(StartAction());
+        StartAction();
     }
 
     private bool HasProcessAnim()
@@ -145,12 +145,12 @@ public class BattleProcess : MonoBehaviour
 
     }
 
-    IEnumerator StartAction()
+    void StartAction()
     {
         if (IsProcessOver())
         {
             GetComponent<BattleController>().OnProcessSuccess();
-            yield break;
+            return;
         }
 
         Action action = GetNextAction();
@@ -170,8 +170,6 @@ public class BattleProcess : MonoBehaviour
                     break;
             }
         }
-
-        yield return null;
     }
 
     Action GetNextAction()
@@ -194,7 +192,7 @@ public class BattleProcess : MonoBehaviour
 
     void OnActionOver()
     {
-        StartCoroutine(StartAction());
+        StartAction();
     }
 
     void OnUnitFight(GameUnit unit)
@@ -202,9 +200,43 @@ public class BattleProcess : MonoBehaviour
         Logger.LogFormat("[Battle.Process]Unit {0} is moving...", unit.name);
 
         //执行战斗
-        var curTarget = SimulateAI(unit);
+
+
+		var aiResult = BattleUnitAi.Instance.GetAiAttackResult (unit);
+		Logger.LogFormat ("Ai Attack style = {0} target = {1} ",aiResult.attackStyle, aiResult.attackTarget ==null?"no target--":aiResult.attackTarget.name);
+
+		switch (aiResult.attackStyle)
+		{
+		case BattleUnitAi.AiAttackStyle.Dazhao:
+			break;
+		case BattleUnitAi.AiAttackStyle.Lazy:
+			Logger.Log(unit.name + "   lazy" );
+			OnUnitFightOver(unit);
+			return;
+			break;
+		case BattleUnitAi.AiAttackStyle.Defence:
+			Logger.Log(unit.name + "   defence" );
+			OnUnitFightOver(unit);
+			return;
+			break;
+		case BattleUnitAi.AiAttackStyle.Gain:
+			Logger.Log(unit.name + "   Gain" );
+			OnUnitFightOver(unit);
+			return;
+			break;
+		case BattleUnitAi.AiAttackStyle.MagicAttack:
+			break;
+		case BattleUnitAi.AiAttackStyle.PhysicsAttack:
+			break;
+		}
+
+		var curTarget = aiResult.attackTarget;
+		if (null == curTarget) 
+		{
+			Debug.LogError("Error for BattleUnitAI....");
+		}
         Logger.Log(unit.name + " " + curTarget.name);
-        SpellService.Instance.SpellRequest("s1", unit, curTarget, 0);
+        SpellService.Instance.SpellRequest("s1", unit, aiResult.attackTarget, 0);
     }
 
     GameUnit SimulateAI(GameUnit unit)
@@ -345,7 +377,7 @@ public class BattleProcess : MonoBehaviour
         var args = sArgs as SpellUnitDeadArgs;
         int deadId = args.deathID;
         var deadUnit = battleGroup.GetUnitByGuid(deadId);
-        Logger.LogWarning("[Battle.Process]OnUnitDead: " + deadUnit.name);
+        //Logger.LogWarning("[Battle.Process]OnUnitDead: " + deadUnit.name);
 
         int slot = deadUnit.pbUnit.slot;
         deadUnit.State = UnitState.Dead;

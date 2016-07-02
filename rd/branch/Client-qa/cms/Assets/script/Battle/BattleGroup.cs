@@ -151,9 +151,9 @@ public class BattleGroup
 
     public bool IsPlayerAllDead()
     {
-        for (int i = 0; i < enemyField.Length; i++)
+        for (int i = 0; i < playerField.Length; i++)
         {
-            var unit = enemyField[i];
+            var unit = playerField[i];
             if (unit != null)
                 return false;
         }
@@ -256,7 +256,7 @@ public class BattleGroup
             {
                 int index = Random.Range(0, 3);
                 unit = playerField[index];
-            } while (unit == null);    
+            } while (unit == null);
         }
 
         return unit;

@@ -18,6 +18,7 @@ public class UIBattle : UIBase
     public Toggle m_ToggleMirror = null;
     public Toggle m_ToggleBattleStyle = null;
 
+    public BattleGroupUI m_PlayerGroupUI;
     public PetSwitchPage m_PetPanel;
 
     private MirrorDray m_MirrorDray = null;
@@ -25,7 +26,7 @@ public class UIBattle : UIBase
     private int m_BattleSpeed = 1;
 
     // Use this for initialization
-    void Start()
+    public void Init()
     {
         if (null != m_MirrorImage)
         {
@@ -40,6 +41,9 @@ public class UIBattle : UIBase
         m_ToggleMirror.isOn = false;
         m_MirrorImage.gameObject.SetActive(false);
         m_PetPanel.gameObject.SetActive(false);
+
+        m_PlayerGroupUI.gameObject.SetActive(true);
+        m_PlayerGroupUI.Init(BattleController.Instance.BattleGroup.PlayerFieldList);
 
         AddUIObjectEvent();
         BindListener();
@@ -127,6 +131,8 @@ public class UIBattle : UIBase
 
     }
 
+#region Event
+
     //switch pet
     void OnShowSwitchPetUIAtIndex(EventArgs sArgs)
     {
@@ -142,4 +148,5 @@ public class UIBattle : UIBase
 
         GameEventMgr.Instance.RemoveListener(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
     }
+#endregion    
 }

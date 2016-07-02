@@ -3,6 +3,35 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+//for csv loader
+public class EffectWholeData
+{
+    //TODO:Remove(moved to spell)
+    public int energy;
+
+    public int effectType;
+    public string id;
+    public int targetType;
+    public int casterType;
+    //apply buff
+    public string buffID;
+    //damamge effect
+    public int damageType;
+    public float attackFactor;
+    public int isHeal;
+    public int damageProperty;//五行伤害
+    //persistent
+    public string effectStartID;
+    public float startDelayTime;
+    public string periodEffectList;
+    //search
+    public int count;
+    public int camp;
+    public string searchEffect;
+    //set
+    public string effectList;
+}
+
 [Serializable]
 public class EffectPrototype
 {
@@ -122,6 +151,7 @@ public class Effect
         hitRatio = hitRatio < SpellConst.minHitRatio ? SpellConst.minHitRatio : hitRatio;
         System.Random ran = new System.Random();
         int randKey = ran.Next(0, 1);
+        Logger.LogFormat("总命中率：{0}   randkey：{1}    总附加命中率：{2}  攻击方等级：{3}   防御方等级：{4}   攻防命中：{5}", hitRatio, randKey, caster.hitRatio, caster.pbUnit.level, target.pbUnit.level, SpellFunctions.GetHitRatio(caster.pbUnit.level, target.pbUnit.level));
         if (randKey < hitRatio)
         {
             return SpellConst.hitSuccess;

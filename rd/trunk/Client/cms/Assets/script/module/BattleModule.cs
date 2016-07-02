@@ -10,11 +10,13 @@ public class BattleModule : ModuleBase
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<PbStartBattle>(GameEventList.StartBattle, controller.StartBattle);
+        GameEventMgr.Instance.AddListener(GameEventList.ShowBattleUI, OnShowBattleUI);
     }
 
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<PbStartBattle>(GameEventList.StartBattle, controller.StartBattle);
+        GameEventMgr.Instance.RemoveListener(GameEventList.ShowBattleUI, OnShowBattleUI);
     }
 
     void Start()
@@ -36,13 +38,15 @@ public class BattleModule : ModuleBase
 
 		weakPointController = gameObject.AddComponent<WeakPointController> ();
 		weakPointController.Init ();
+
+		BattleUnitAi battleUnitAi = gameObject.AddComponent<BattleUnitAi> ();
+		battleUnitAi.Init ();
     }
 
     public override void OnEnter(ModuleBase prevModule, object param)
     {
         BindListener();
 
-        UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
         Logger.Log("Enter Battle");
         BattleTest.Test();
     }
@@ -60,31 +64,11 @@ public class BattleModule : ModuleBase
 		Destroy (weakPointController);
     }
 
-	void LateUpdate()
-	{
-        //raycast全部在battlecontroller的Update中处理
-
-		/*if (Input.GetMouseButtonUp (0) && false) 
-		{
-			Ray r = BattleCamera.Instance.CameraAttr.ScreenPointToRay(Input.mousePosition);
-			RaycastHit rh;
-			if (Physics.Raycast(r, out rh))
-			{
-				//test 
-				MirrorTarget target = rh.collider.GetComponent<MirrorTarget>();
-				if (target != null)
-				{
-					GameEventMgr.Instance.FireEvent<int>(GameEventList.ShowSwitchPetUI,0);
-				}
-				else
-				{
-					GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
-				}
-			}
-			else
-			{
-				GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
-			}
-		}*/
-	}
+#region  Event
+    void OnShowBattleUI()
+    {
+        var ui = UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
+        ui.GetComponent<UIBattle>().Init();
+    }
+#endregion
 }

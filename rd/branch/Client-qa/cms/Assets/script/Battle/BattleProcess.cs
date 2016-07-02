@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+public class ProcessData
+{
+    public int id = 0;
+    public string name;
+    public string processAnimation;
+    public string preAnimation;
+    public bool isClearBuff;
+}
+
 public class BattleProcess : MonoBehaviour
 {
     enum ActionType
@@ -20,18 +29,15 @@ public class BattleProcess : MonoBehaviour
     }
 
     BattleGroup battleGroup;
-    ProcessData.RowData processData;
+    ProcessData processData;
 
-    Queue<Action> insertAction = new Queue<Action>();
+    List<Action> insertAction = new List<Action>();
 
     //如果没有集火目标，根据怪物各自AI进行战斗
     GameUnit target = null;
 
     //换宠cd
     float lastSwitchTime = -BattleConst.switchPetCD;
-
-    //for debug
-    int actionIndex = 0;
 
     void BindListener()
     {
@@ -65,13 +71,9 @@ public class BattleProcess : MonoBehaviour
         UnBindListener();
     }
 
-    public void StartProcess(int processId, BattleGroup group)
+    public void StartProcess(ProcessData process, BattleGroup group)
     {
-        if (processId != 0)
-            processData = StaticDataMgr.Instance.ProcessData.getRowDataFromLevel(processId);
-        else
-            //默认进程数据
-            processData = new ProcessData.RowData();
+        processData = new ProcessData();
 
         Logger.Log("[Battle.Process]Start process");
         battleGroup = group;
@@ -176,7 +178,11 @@ public class BattleProcess : MonoBehaviour
     {
         //是否有插入动作，按队列顺序一个一个处理
         if (insertAction.Count > 0)
-            return insertAction.Dequeue();
+        {
+            var a = insertAction[0];
+            insertAction.RemoveAt(0);
+            return a;
+        }
 
         //下一个单位行动
         Action action = new Action();
@@ -195,7 +201,7 @@ public class BattleProcess : MonoBehaviour
     {
         Logger.LogFormat("[Battle.Process]Unit {0} is moving...", unit.name);
 
-        //TODO 执行战斗
+        //执行战斗
         var curTarget = SimulateAI(unit);
         Logger.Log(unit.name + " " + curTarget.name);
         SpellService.Instance.SpellRequest("s1", unit, curTarget, 0);
@@ -241,6 +247,19 @@ public class BattleProcess : MonoBehaviour
         return Time.time - lastSwitchTime >= BattleConst.switchPetCD;
     }
 
+    Action GetSwitchAction(int toBeReplaedId)
+    {
+        Action action = null;
+        foreach (var item in insertAction)
+        {
+            if (item.type == ActionType.SwitchPet && item.target.pbUnit.guid == toBeReplaedId)
+            {
+                return item;
+            }
+        }
+        return action;
+    }
+
     //////////////////////////////////////////////////////////////////////////
     //process action
     void SwitchPet(GameUnit exit, GameUnit enter)
@@ -265,7 +284,9 @@ public class BattleProcess : MonoBehaviour
         action.caster = battleGroup.GetUnitByGuid(exitId);
         action.target = battleGroup.GetUnitByGuid(enterId);
 
-        insertAction.Enqueue(action);
+        action.target.State = UnitState.ToBeReplaced;
+
+        insertAction.Add(action);
         lastSwitchTime = Time.time;
     }
 
@@ -309,13 +330,13 @@ public class BattleProcess : MonoBehaviour
 
     void OnLifeChange(EventArgs sArgs)
     {
-        var args = sArgs as SpellVitalChangeArgs;
+        //var args = sArgs as SpellVitalChangeArgs;
         Logger.Log("[Battle.Process]OnLifeChange");
     }
 
     void OnEnergyChange(EventArgs sArgs)
     {
-        var args = sArgs as SpellVitalChangeArgs;
+        //var args = sArgs as SpellVitalChangeArgs;
         Logger.Log("[Battle.Process]OnEnergyChange");
     }
 
@@ -327,6 +348,7 @@ public class BattleProcess : MonoBehaviour
         Logger.LogWarning("[Battle.Process]OnUnitDead: " + deadUnit.name);
 
         int slot = deadUnit.pbUnit.slot;
+        deadUnit.State = UnitState.Dead;
         battleGroup.OnUnitExitField(deadUnit, slot);
 
         //查看是否还有需要上场的单位
@@ -341,12 +363,24 @@ public class BattleProcess : MonoBehaviour
         }
         else
         {
-            var unit = battleGroup.GetPlayerToField();
-            if (unit != null)
+            var switchAction = GetSwitchAction(deadId);
+            if (switchAction != null)
             {
+                var unit = switchAction.caster;
                 battleGroup.OnUnitEnterField(unit, slot);
                 StartCoroutine(DebugAnim(unit.gameObject));
-            }
+                insertAction.Remove(switchAction);
+                Logger.LogWarning("Dead unit was to be replaced, get the replace unit to field.");
+            } 
+            else
+            {
+                var unit = battleGroup.GetPlayerToField();
+                if (unit != null)
+                {
+                    battleGroup.OnUnitEnterField(unit, slot);
+                    StartCoroutine(DebugAnim(unit.gameObject));
+                }
+            }            
         }
 
         //检查是否结束战斗
@@ -369,7 +403,7 @@ public class BattleProcess : MonoBehaviour
 
     void OnBuffChange(EventArgs sArgs)
     {
-        var args = sArgs as SpellBuffArgs;
+        //var args = sArgs as SpellBuffArgs;
 
     }
     #endregion
