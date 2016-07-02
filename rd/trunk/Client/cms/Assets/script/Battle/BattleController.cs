@@ -1,21 +1,87 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BattleController : MonoBehaviour
 {
     int battleId;
     BattleData.RowData battleData;
-    BattleProcess mProcess;
+    BattleProcess process;
     BattleGroup battleGroup;
+	bool	isMouseOnUI = false;
+    public BattleGroup BattleGroup
+    {
+        get { return battleGroup; }
+    }
 
     //初值为-1
     int curProcessIndex = -1;
 
+    static BattleController instance;
+    public static BattleController Instance
+    {
+        get { return instance; }
+    }
+
+
     // Use this for initialization
     public void Init(BattleProcess process)
     {
-        mProcess = process;
+        instance = this;
+        this.process = process;
         battleGroup = new BattleGroup();
+    }
+
+    void Update()
+    {
+        RaycastHit hit;
+        Ray ray = BattleCamera.Instance.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+		if (Input.GetMouseButtonDown (0)) 
+		{
+			isMouseOnUI = EventSystem.current.IsPointerOverGameObject ();
+		}
+		
+		if (Input.GetMouseButtonUp(0) && !isMouseOnUI )
+        {
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                var battleGo = hit.collider.gameObject.GetComponent<BattleObject>();
+                if (battleGo)
+                {
+                    OnHitBattleObject(battleGo);
+                } 
+                else
+                {
+                    Logger.LogWarning("Hit something but not a battle object!");
+                }
+            }
+            else
+            {
+                GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
+            }
+        }        
+    }
+
+    void OnHitBattleObject(BattleObject battleGo)
+    {
+        if (battleGo.camp == UnitCamp.Enemy)
+        {
+            //设置集火目标
+            Logger.Log("Set hit target to " + battleGo.id);
+            process.OnChangeTarget(battleGo.id);
+        }
+        else if (battleGo.camp == UnitCamp.Player)
+        {
+            if (process.CanSwitchPet())
+            {
+                //换宠
+                ShowSwitchPetUIArgs args = new ShowSwitchPetUIArgs();
+                args.targetId = battleGo.id;
+                args.idleUnits = battleGroup.GetPlayerOffsiteUnits();
+                GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.ShowSwitchPetUI, args);
+            }            
+        }
     }
 
     public void StartBattle(PbStartBattle proto)
@@ -23,30 +89,15 @@ public class BattleController : MonoBehaviour
         battleId = proto.battleId;
         battleData = StaticDataMgr.Instance.BattleData.getRowDataFromLevel(battleId);
 
+        //设置battlegroup 并且创建模型
         battleGroup.SetEnemyList(proto.enemyList);
         battleGroup.SetPlayerList(proto.playerList);
-
-        CreateAllUnits();
 
         PlayPreStoryAnim();
 
         ShowUI();
 
         StartProcess();
-    }
-
-    void CreateAllUnits()
-    {
-        var all = battleGroup.GetAllUnits();
-        foreach (var item in all)
-        {
-            CreateUnit(item);
-        }
-    }
-
-    void CreateUnit(GameUnit unit)
-    {
-        Logger.LogFormat("[Battle]Create unit {0}", unit.name);
     }
 
     void PlayPreStoryAnim()
@@ -63,7 +114,7 @@ public class BattleController : MonoBehaviour
     {
         var curProcess = GetNextProcess();
         if (curProcess != -1)
-            mProcess.StartProcess(curProcess, battleGroup);
+            process.StartProcess(curProcess, battleGroup);
         else
             OnAllProcessOver();        
     }
@@ -73,8 +124,9 @@ public class BattleController : MonoBehaviour
         curProcessIndex++;
 
         if (curProcessIndex == 0 &&
-            (battleData.processList==null || battleData.processList.Count == 0))
+            battleData.processList.Count == 0)
         {
+            //小怪进程
             return 0;
         }
 
@@ -84,9 +136,14 @@ public class BattleController : MonoBehaviour
             return battleData.processList[curProcessIndex];
     }
 
-    public void OnProcessOver()
+    public void OnProcessSuccess()
     {
         StartProcess();
+    }
+
+    public void OnProcessFailed()
+    {
+        OnAllProcessOver();
     }
 
     public void OnAllProcessOver()

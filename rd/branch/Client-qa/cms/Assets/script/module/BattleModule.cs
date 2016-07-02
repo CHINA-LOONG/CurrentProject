@@ -18,14 +18,15 @@ public class BattleModule : ModuleBase
 
     void Start()
     {
-        ///BattleCamera.Instance.Init();
+        BattleCamera.Instance.Init();
     }
 
     public override void OnInit(object param)
     {
 		string battlePrefabName = GameConfig.Instance.testBattlePrefab;
+		string assetName = GameConfig.Instance.testBattleAssetName;
 		BattleScene battleScene = gameObject.AddComponent<BattleScene> ();
-		battleScene.InitWithBattleSceneName (battlePrefabName);
+		battleScene.InitWithBattleSceneName (assetName, battlePrefabName);
 
         controller = gameObject.AddComponent<BattleController>();
         process = gameObject.AddComponent<BattleProcess>();
@@ -37,7 +38,7 @@ public class BattleModule : ModuleBase
     {
         BindListener();
 
-        UIMgr.Instance.OpenUI(UIBattle.ViewName);
+        UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
         Logger.Log("Enter Battle");
         BattleTest.Test();
     }
@@ -53,4 +54,32 @@ public class BattleModule : ModuleBase
         Destroy(controller);
         Destroy(process);
     }
+
+	void LateUpdate()
+	{
+        //raycast全部在battlecontroller的Update中处理
+
+		/*if (Input.GetMouseButtonUp (0) && false) 
+		{
+			Ray r = BattleCamera.Instance.CameraAttr.ScreenPointToRay(Input.mousePosition);
+			RaycastHit rh;
+			if (Physics.Raycast(r, out rh))
+			{
+				//test 
+				MirrorTarget target = rh.collider.GetComponent<MirrorTarget>();
+				if (target != null)
+				{
+					GameEventMgr.Instance.FireEvent<int>(GameEventList.ShowSwitchPetUI,0);
+				}
+				else
+				{
+					GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
+				}
+			}
+			else
+			{
+				GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
+			}
+		}*/
+	}
 }

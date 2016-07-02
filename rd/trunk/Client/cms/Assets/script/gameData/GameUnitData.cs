@@ -2,13 +2,21 @@
 using System;
 using System.Collections.Generic;
 
+public enum UnitState
+{
+    None,
+    Dazhao,
+    ToBeReplaced,
+    Dead,
+}
+
 //////////////////////////////////////////////////////////////////////////
 /// <summary>
 /// 模拟战斗协议，只做测试用途
 /// </summary>
 public class PbUnit
 {
-    //站位，1，2，3表示，0表示在场下
+    //站位，0，1，2表示，-1表示在场下
     public int slot;
     public int guid;
     public UnitCamp camp;
@@ -22,6 +30,7 @@ public class PbUnit
     //public List<string> spellIDList;
 }
 
+[Serializable]
 public class GameUnit
 {
     public PbUnit pbUnit;
@@ -75,13 +84,28 @@ public class GameUnit
     public int magicAttack;
     public int phyAttack;
 
+
+
     public List<Buff> buffList;
     public Dictionary<string, Spell> spellList;
     //public List<Equipment> equipmentList;
+	public List<string> weakPointList;
+
     //只在客户端计算使用的属性
     float speedCount = 0;
     float actionOrder = 0;
     public float ActionOrder { get { return actionOrder; } }
+
+    UnitState state = UnitState.None;
+    public UnitState State { get { return state; } set { state = value; } }
+
+    //////////////////////////////////////////////////////////////////////////
+    //显示部分    
+    GameObject unitObject;
+    public GameObject gameObject
+    {
+        get { return unitObject; }
+    }
 
     public static GameUnit FromPb(PbUnit unit)
     {
@@ -116,6 +140,7 @@ public class GameUnit
         goldNoteMin = (int)(unitRowData.goldNoteMinValueModifyRate * unitBaseRowData.goldNoteMin);
         expMin = (int)(unitRowData.expMinValueModifyRate * unitBaseRowData.expMin);
         expMax = (int)(unitRowData.expMaxValueModifyRate * unitBaseRowData.expMax);
+		InitWeakPoint (unitRowData.weakpointList);
         //TODO: 装备系统附加值
         criticalRatio = gdMgr.PlayerDataAttr.criticalRatio;
         antiCriticalRatio = 0.0f;
@@ -155,7 +180,28 @@ public class GameUnit
         }
 
         buffList = new List<Buff>();
+		
     }
+
+	void	InitWeakPoint(string strWeak)
+	{
+		if (strWeak == null || strWeak == "") 
+		{
+			return;
+		}
+		string[] weakArray = strWeak.Split (';');
+		if (null == weakPointList) 
+		{
+			weakPointList = new List<string>();
+		}
+
+		weakPointList.Clear();
+		for(int i = 0;i<weakArray.Length;++i)
+		{
+			weakPointList.Add(weakArray[i]);
+		}
+	}
+
 
     public Spell GetSpell(string spellID)
     {
@@ -190,11 +236,33 @@ public class GameUnit
 
     public void OnEnterField()
     {
+        var go = ResourceMgr.Instance.LoadAsset("monster", assetID);
+        unitObject = GameObject.Instantiate(go);
+        var com = unitObject.AddComponent<BattleObject>();
+        com.camp = pbUnit.camp;
+        com.id = pbUnit.guid;
+        com.unit = this;
 
+        //get slot position
+        unitObject.transform.position = BattleScene.Instance.GetSlotPosition(pbUnit.camp, pbUnit.slot);
+
+		//
+		if (com.camp == UnitCamp.Enemy)
+		{
+			GameEventMgr.Instance.FireEvent<GameUnit> (GameEventList.LoadBattleObjectFinished, this);
+		}
+
+        ReCalcSpeed();
+
+        Logger.LogFormat("Unit {0} guid:{1} has entered field", name, pbUnit.guid);
     }
 
     public void OnExitField()
     {
+        GameObject.Destroy(unitObject);
+        unitObject = null;
+
+        Logger.LogFormat("Unit {0} guid:{1} has exited field", name, pbUnit.guid);
 
     }
 }

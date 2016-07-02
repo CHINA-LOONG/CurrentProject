@@ -1,81 +1,138 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 using System.Collections;
+using System.IO;
 
-public class StaticDataMgr : MonoBehaviour {
-	
-	// Use this for initialization
-	void Start () 
-	{
-		
-	}
-	static StaticDataMgr mInst = null;
-	public static StaticDataMgr Instance
+public class StaticDataMgr : MonoBehaviour
+{
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+    static StaticDataMgr mInst = null;
+    public static StaticDataMgr Instance
+    {
+        get
+        {
+            if (mInst == null)
+            {
+                GameObject go = new GameObject("StaticDataMgr");
+                mInst = go.AddComponent<StaticDataMgr>();
+            }
+            return mInst;
+        }
+    }
+    public void Init()
+    {
+        DontDestroyOnLoad(gameObject);
+        InitData();
+    }
+
+    public UnitBaseData.RowData GetUnitBaseRowData(int level)
+    {
+        return m_UnitBaseData.getRowDataFromLevel(level);
+    }
+    public UnitData.RowData GetUnitRowData(string unitID)
+    {
+        return m_UnitData.getRowDataFromIndex(unitID);
+    }
+    public SpellProtoType GetSpellProtoData(string id)
+    {
+        return spellData.GetSpellRawData(id);
+    }
+    public EffectPrototype GetEffectProtoData(string id)
+    {
+        return effectData.GetEffectRawData(id);
+    }
+    public BuffPrototype GetBuffProtoData(string id)
+    {
+        return buffData.GetBuffRawData(id);
+    }
+
+	[SerializeField]
+	UnitData  m_UnitData;
+	public UnitData UnitDataAttr
 	{
 		get
 		{
-			if (mInst == null)
-			{
-				GameObject go = new GameObject("StaticDataMgr");
-				mInst = go.AddComponent<StaticDataMgr>();
-			}
-			return mInst;
+			return m_UnitData;
 		}
-	}
-	public void Init()
-	{
-		DontDestroyOnLoad(gameObject);
-		InitData();
 	}
 
 	[SerializeField]
-	MonsterAbility  m_MonsterAbility;
-	public MonsterAbility MonsterAbilityAttr
+	UnitBaseData m_UnitBaseData;
+    public UnitBaseData UnitBaseDataEAttr
 	{
 		get
 		{
-			return m_MonsterAbility;
+            return m_UnitBaseData;
 		}
 	}
 
-	[SerializeField]
-	MonsterGrade m_MonsterGradeE;
-	public MonsterGrade MonsterGradeEAttr
-	{
-		get
-		{
-			return m_MonsterGradeE;
-		}
-	}
+    SpellStaticData spellData;
+    BuffStaticData buffData;
+    EffectStaticData effectData;
 
-	[SerializeField]
-	MonsterGrade m_MonsterGradeA;
-	public MonsterGrade MonsterGradeAAttr
-	{
-		get
-		{
-			return m_MonsterGradeA;
-		}
-	}
-	
-	public void InitData()
-	{
+    [SerializeField]
+    BattleData m_BattleData;
+    public BattleData BattleData
+    {
+        get
+        {
+            return m_BattleData;
+        }
+    }
 
-		GameObject monsterAbilityGo = new GameObject ("MonsterAbilityData");
-		monsterAbilityGo.transform.parent = transform;
-		m_MonsterAbility = monsterAbilityGo.AddComponent<MonsterAbility> ();
-		m_MonsterAbility.InitWithTableFile (Util.ResPath + "/staticData/" + "monsterAbility.csv");
+    [SerializeField]
+    ProcessData m_ProcessData;
+    public ProcessData ProcessData
+    {
+        get
+        {
+            return m_ProcessData;
+        }
+    }
 
-		GameObject monsterGradeEGo = new GameObject ("MonsterGradeEData");
-		monsterGradeEGo.transform.parent = transform;
-		m_MonsterGradeE = monsterGradeEGo.AddComponent<MonsterGrade> ();
-		m_MonsterGradeE.InitWithTableFile (Util.ResPath + "/staticData/" + "monsterGradeE.csv");
+    public void InitData()
+    {
+        GameObject unitDataGo = new GameObject ("UnitData");
+        unitDataGo.transform.parent = transform;
+        m_UnitData = unitDataGo.AddComponent<UnitData>();
+        m_UnitData.InitWithTableFile(Util.ResPath + "/staticData/" + "unitData.csv");
 
-		GameObject monsterGradeAGo = new GameObject ("MonsterGradeAData");
-		monsterGradeAGo.transform.parent = transform;
-		m_MonsterGradeA = monsterGradeAGo.AddComponent<MonsterGrade> ();
-		m_MonsterGradeA.InitWithTableFile (Util.ResPath + "/staticData/" + "monsterGradeE.csv");
+		GameObject unitBaseDataGo = new GameObject ("UnitBaseData");
+        unitBaseDataGo.transform.parent = transform;
+        m_UnitBaseData = unitBaseDataGo.AddComponent<UnitBaseData>();
+        m_UnitBaseData.InitWithTableFile(Util.ResPath + "/staticData/" + "unitBaseData.csv");
 
+        //Spell releated
+        GameObject spellDataGo = new GameObject("SpellStaticData");
+        spellDataGo.transform.parent = transform;
+        spellData = spellDataGo.AddComponent<SpellStaticData>();
+        spellData.InitWithTableFile(Util.ResPath + "/staticData/" + "spell.csv");
 
-	}
-	
+        GameObject buffDataGo = new GameObject("BuffStaticData");
+        buffDataGo.transform.parent = transform;
+        buffData = buffDataGo.AddComponent<BuffStaticData>();
+        buffData.InitWithTableFile(Util.ResPath + "/staticData/" + "buff.csv");
+
+        GameObject effectDataGo = new GameObject("EffectStaticData");
+        effectDataGo.transform.parent = transform;
+        effectData = effectDataGo.AddComponent<EffectStaticData>();
+        effectData.InitWithTableFile(Util.ResPath + "/staticData/" + "effect.csv");
+
+        m_BattleData = InitTable<BattleData>("battle") as BattleData;
+        m_ProcessData = InitTable<ProcessData>("process") as ProcessData;
+    }
+
+    StaticDataBase InitTable<T>(string filename) where T : StaticDataBase
+    {
+        GameObject go = new GameObject(filename);
+        go.transform.parent = transform;
+        var target = go.AddComponent<T>();
+        target.InitWithTableFile(Path.Combine(Util.StaticDataPath, filename + ".csv"));
+
+        return target;
+    }
 }

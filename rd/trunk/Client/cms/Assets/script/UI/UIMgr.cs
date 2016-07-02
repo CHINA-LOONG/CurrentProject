@@ -20,7 +20,7 @@ public class UIMgr : MonoBehaviour
 		{
 			if (mInst == null)
 			{
-				Object r = PrefabLoadMgr.LoadUIPrefab("UIRoot");
+				Object r = ResourceMgr.Instance.LoadAsset ("ui/root", "UIRoot"); 
 				GameObject ui = Instantiate(r) as GameObject;
 				ui.name = "UIMgr";
 				mInst = ui.AddComponent<UIMgr>();
@@ -39,9 +39,9 @@ public class UIMgr : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
-	public void OpenUI(string uiName)
+	public void OpenUI(string assertName, string uiName)
 	{
-		Object r = PrefabLoadMgr.LoadUIPrefab (uiName);
+		Object r = ResourceMgr.Instance.LoadAsset (assertName, uiName);
 		if (null == r) 
 		{
 			return;

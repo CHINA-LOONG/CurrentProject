@@ -40,6 +40,11 @@ public class Util
         }
     }
 
+    public static string StaticDataPath
+    {
+        get { return Path.Combine(ResPath, "staticData"); }
+    }
+
     public static string AssetBundlePath
     {
         get

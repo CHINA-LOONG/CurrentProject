@@ -6,9 +6,11 @@ import org.hawk.msg.HawkMsg;
 import org.hawk.net.HawkSession;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
+import java.util.List;
 
 import com.hawk.game.ServerData;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.entity.RoleEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
@@ -113,7 +115,9 @@ public class PlayerLoginModule extends PlayerModule {
 				playerEntity.notifyUpdate(true);
 			}
 		}
-
+		
+		playerEntity.setLoginTime(HawkTime.getCalendar().getTime());
+		
 		// 登陆回复协议
 		HSLoginRet.Builder response = HSLoginRet.newBuilder();
 		response.setStatus(1);
@@ -125,6 +129,13 @@ public class PlayerLoginModule extends PlayerModule {
 		player.setSession(session);
 		// 发送登陆成功协议
 		sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S, response));
+		
+		List<RoleEntity> roleEntities = player.getPlayerData().loadAllRoles();
+		if (roleEntities != null) {
+			
+		}
+		
+		
 		
 		// 通知玩家组装完成
 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_ASSEMBLE, player.getXid());

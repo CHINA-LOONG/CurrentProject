@@ -193,7 +193,6 @@ public abstract class HawkApp extends HawkAppObj {
 		});
 		
 		try {
-			// 初始化
 			System.loadLibrary("hawk");
 			if (!HawkNativeApi.initHawk()) {
 				return false;

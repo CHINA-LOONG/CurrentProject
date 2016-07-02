@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class UILogin : UIBase
 {
 	public static	string	ViewName = "UILogin";
+	public static string AssertName = "ui/login";
+
 	public Button m_LoginButton;
 	void Start()
 	{

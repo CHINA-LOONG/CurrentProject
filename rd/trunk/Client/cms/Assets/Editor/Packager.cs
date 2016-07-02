@@ -44,7 +44,7 @@ public class Packager
         }
         sw.Close(); fs.Close();
         AssetDatabase.Refresh();
-        Debug.Log("Generated lua files.txt at:" + newFilePath);
+        Debug.Log("Generated files.txt at:" + newFilePath);
     }
 
     /// <summary>

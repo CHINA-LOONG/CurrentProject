@@ -119,4 +119,24 @@ public class Util
         System.GC.Collect();
         Resources.UnloadUnusedAssets();
     }
+
+	/// <summary>
+	/// 对象查找
+	/// </summary>
+	/// <returns>The child by name.</returns>
+	/// <param name="go">Go.</param>
+	/// <param name="name">Name.</param>
+	public static GameObject FindChildByName(GameObject go, string name)
+	{
+		Transform[] trans = go.GetComponentsInChildren<Transform> ();
+		foreach (Transform tran in trans)
+		{
+			if (tran.name == name) 
+			{
+				return tran.gameObject;
+			}
+		}
+		
+		return null;
+	}
 }

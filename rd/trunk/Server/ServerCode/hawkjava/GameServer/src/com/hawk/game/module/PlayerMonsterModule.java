@@ -102,7 +102,7 @@ public class PlayerMonsterModule extends PlayerModule {
 	}
 	
 	private boolean addMonster(int cfgId, int grade, int level, int exp, byte disposition, int reason) {
-		int roleId = player.getPlayerData().getRoleEntity().getRoleID();
+		int roleId = player.getPlayerData().getSelectRoleEntity().getRoleID();
 		int equipId = 0;
 		
 		MonsterEntity monsterEntity = new MonsterEntity(cfgId, roleId, grade, level, exp, disposition);
@@ -130,7 +130,7 @@ public class PlayerMonsterModule extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogout() {
 		// 重要数据下线就存储
-		for (Map.Entry<Integer, MonsterEntity> entry : player.getPlayerData().getMonsterEntity().entrySet()) {
+		for (Map.Entry<Integer, MonsterEntity> entry : player.getPlayerData().getMonsterEntities().entrySet()) {
 			entry.getValue().notifyUpdate(false);
 		}
 		return true;

@@ -11,30 +11,18 @@ public class GameEventList
 
     //////////////////////////////////////////////////////////////////////////
     //Battle
-    public static string StartBattle = "StartBattle";  //param: PbStartBattle    
+    public static string StartBattle = "StartBattle";  //param: PbStartBattle   
+	public static string FindWeakPoint = "FindWeakPoint";//param <int,string> 
+	public static string LoadBattleObjectFinished = "LoadBattleObjectFinished";//param GameUnitData
 
     //process
     public static string SwitchPet = "SwitchPet";//param <int,int>
 	public static string ShowSwitchPetUI = "ShowSwitchPetUI";//param  int
 	public static string HideSwitchPetUI = "HideSwitchPetUI";//no param
     public static string ChangeTarget = "ChangeTarget";
-    
-    //spell
-    public static string FireSpell = "FireSpell";
-    public static string LifeChange = "LifeChange";
-    public static string EnergyChange = "EnergyChange";
-    public static string UnitDead = "UnitDead";
-    public static string BuffAdd = "BuffAdd";
-    public static string BuffRemove = "BuffRemove";
-
 
     //////////////////////////////////////////////////////////////////////////
 
-    //Data
-    public static string LifeDataChanged = "LifeDataChanged"; //float
-
-
-    public static string StaminaRepair = "StaminaRepair";//object
 
     //Ui
     public static string RestartGame = "RestartGame";

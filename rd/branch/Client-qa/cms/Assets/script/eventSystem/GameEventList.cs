@@ -14,15 +14,10 @@ public class GameEventList
     public static string StartBattle = "StartBattle";  //param: PbStartBattle    
 
     //process
-    public static string SwitchPet = "SwitchPet";
-    
-    //spell
-    public static string FireSpell = "FireSpell";
-    public static string LifeChange = "LifeChange";
-    public static string EnergyChange = "EnergyChange";
-    public static string UnitDead = "UnitDead";
-    public static string Buff = "Buff";
-
+    public static string SwitchPet = "SwitchPet";//param <int,int>
+	public static string ShowSwitchPetUI = "ShowSwitchPetUI";//param  int
+	public static string HideSwitchPetUI = "HideSwitchPetUI";//no param
+    public static string ChangeTarget = "ChangeTarget";
 
     //////////////////////////////////////////////////////////////////////////
 
@@ -41,4 +36,14 @@ public class GameEventList
     public static string NetRequestState = "NetRequestState";//object
     public static string OnLoginMsg = "OnLoginMsg";
 
+    //Spell
+    public static string SpellFire = "SpellFire";
+    public static string SpellLifeChange = "SpellLifeChange";
+    public static string SpellEnergyChange = "SpellEnergyChange";
+    public static string SpellUnitDead = "SpellUnitDead";
+    public static string SpellBuff = "SpellBuff";
+    public static string SpellEffect = "SpellEffect";
+    public static string SpellMiss = "SpellMiss";
+    public static string SpellImmune = "SpellImmune";
+    public static string SpellStun = "SpellStun";
 }

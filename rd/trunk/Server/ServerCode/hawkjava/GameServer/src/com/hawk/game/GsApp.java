@@ -58,7 +58,7 @@ public class GsApp extends HawkApp {
 
 	/**
 	 * 全局静态对象
-	 */
+	 */ 
 	private static GsApp instance = null;
 
 	/**
@@ -157,7 +157,8 @@ public class GsApp extends HawkApp {
 
 		// 创建玩家管理区
 		objMan = createObjMan(GsConst.ObjType.PLAYER);
-		objMan.setObjTimeout(SysBasicCfg.getInstance().getPlayerCacheTime());
+		long timeout = SysBasicCfg.getInstance().getPlayerCacheTime();
+		objMan.setObjTimeout(timeout);
 
 		// 创建全局管理器, 并注册应用对象
 		objMan = createObjMan(GsConst.ObjType.MANAGER);

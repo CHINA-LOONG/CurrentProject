@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class UIBuild : UIBase
 {
     public static string ViewName = "UIBuild";
+	public static string AssertName = "ui/build";
 
     public Button m_BattleButton;
     // Use this for initialization

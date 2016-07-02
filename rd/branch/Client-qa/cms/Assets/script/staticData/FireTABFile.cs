@@ -312,21 +312,21 @@ namespace FireEngine
 						case FIELD_TYPE.EFT_NUM:
 							newField = new FIELD ();
 							newField.FieldType = FIELD_TYPE.EFT_NUM;
-							newField.FieldValueStr = strList[_Idx];
+							newField.FieldValueStr = strList[_Idx].Trim();
 							mDataBufs.Add (newField);
 							break;
 						
 						case FIELD_TYPE.EFT_FLOAT:
 							newField = new FIELD ();
 							newField.FieldType = FIELD_TYPE.EFT_FLOAT;
-							newField.FieldValueStr = strList[_Idx];
+							newField.FieldValueStr = strList[_Idx].Trim();
 							mDataBufs.Add (newField);
 							break;
 						
 						case FIELD_TYPE.EFT_TEXT:
 							newField = new FIELD ();
 							newField.FieldType = FIELD_TYPE.EFT_TEXT;
-							newField.FieldValueStr = strList[_Idx];
+							newField.FieldValueStr = strList[_Idx].Trim();
 							mDataBufs.Add (newField);
 							break;
 						}

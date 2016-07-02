@@ -5,6 +5,7 @@ public class BattleModule : ModuleBase
 {
     BattleController controller;
     BattleProcess process;
+	WeakPointController  weakPointController;
 
     void BindListener()
     {
@@ -24,20 +25,24 @@ public class BattleModule : ModuleBase
     public override void OnInit(object param)
     {
 		string battlePrefabName = GameConfig.Instance.testBattlePrefab;
+		string assetName = GameConfig.Instance.testBattleAssetName;
 		BattleScene battleScene = gameObject.AddComponent<BattleScene> ();
-		battleScene.InitWithBattleSceneName (battlePrefabName);
+		battleScene.InitWithBattleSceneName (assetName, battlePrefabName);
 
         controller = gameObject.AddComponent<BattleController>();
         process = gameObject.AddComponent<BattleProcess>();
         controller.Init(process);
         process.Init();
+
+		weakPointController = gameObject.AddComponent<WeakPointController> ();
+		weakPointController.Init ();
     }
 
     public override void OnEnter(ModuleBase prevModule, object param)
     {
         BindListener();
 
-        UIMgr.Instance.OpenUI(UIBattle.ViewName);
+        UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
         Logger.Log("Enter Battle");
         BattleTest.Test();
     }
@@ -52,11 +57,14 @@ public class BattleModule : ModuleBase
         UnBindListener();
         Destroy(controller);
         Destroy(process);
+		Destroy (weakPointController);
     }
 
 	void LateUpdate()
 	{
-		if (Input.GetMouseButtonUp (0)) 
+        //raycast全部在battlecontroller的Update中处理
+
+		/*if (Input.GetMouseButtonUp (0) && false) 
 		{
 			Ray r = BattleCamera.Instance.CameraAttr.ScreenPointToRay(Input.mousePosition);
 			RaycastHit rh;
@@ -77,6 +85,6 @@ public class BattleModule : ModuleBase
 			{
 				GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
 			}
-		}
+		}*/
 	}
 }

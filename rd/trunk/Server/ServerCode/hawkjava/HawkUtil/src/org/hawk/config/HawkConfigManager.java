@@ -141,7 +141,7 @@ public class HawkConfigManager {
 		if (!HawkNativeApi.checkHawk()) {
 			return false;
 		}
-		
+		 
 		try {
 			String[] configPackageArray = configPackages.split(",");
 			if (configPackageArray != null) {

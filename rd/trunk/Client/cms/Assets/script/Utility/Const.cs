@@ -42,7 +42,7 @@ public class Const
     //应用程序前缀
     public static string AppPrefix = AppName + "_";
     //素材扩展名
-    public static string ExtName = ".unity3d";
+    public static string ExtName = "";
     //素材目录
     public static string AssetDirname = "assetbundle";
     //游戏管理器object名字

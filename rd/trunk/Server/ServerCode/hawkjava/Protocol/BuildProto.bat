@@ -1,9 +1,10 @@
 @echo protocol file generator...
 @echo off
-for /r %%i in (*.proto) do (
-	@echo general %%~ni.proto
-	protoc.exe --cpp_out=./Protobuf/C++/ --java_out=./Protobuf/Java/src %%~ni.proto
-	protoc.exe --lua_out=./Protobuf/Lua/ --plugin=protoc-gen-lua=".\Plugin\protoc-gen-lua.bat" %%~ni.proto
+for /r %%i in (./Protocol/*.proto) do (
+	@echo general ./Protocol/%%~ni.proto
+	protoc.exe  --java_out=./Protobuf/Java/src  --proto_path=./Protocol ./Protocol/%%~ni.proto
 )
+
 @echo done!
 @pause
+

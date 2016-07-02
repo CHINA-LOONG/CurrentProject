@@ -26,20 +26,24 @@ public class BattleTest : MonoBehaviour
             pbUnit.guid = i;
             pbUnit.id = "soul";
             pbUnit.level = 15;
-            //pbUnit.name = "Enemy" + (i + 1);
             pbUnit.slot = i;
+            if (i > 2)
+                pbUnit.slot = BattleConst.offsiteSlot;
+
             proto.enemyList.Add(pbUnit);
         }
 
         //player list
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             PbUnit pbUnit = new PbUnit();
             pbUnit.guid = 10 + i;
             pbUnit.level = 16;
-            //unit.name = "Player"+(i+1);
             pbUnit.id = "soul";
             pbUnit.slot = i;
+            if (i > 2)
+                pbUnit.slot = BattleConst.offsiteSlot;
+
             proto.playerList.Add(pbUnit);
         }
 

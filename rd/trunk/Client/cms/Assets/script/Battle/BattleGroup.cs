@@ -9,6 +9,17 @@ public class BattleGroup
     List<GameUnit> enemyList = new List<GameUnit>();
     List<GameUnit> playerList = new List<GameUnit>();
 
+    public List<GameUnit> EnemyFieldList
+    {
+        get { return new List<GameUnit>(enemyField); }
+    }
+
+    public List<GameUnit> PlayerFieldList
+    {
+        get { return new List<GameUnit>(playerField); }
+    }
+
+
     public void SetEnemyList(List<PbUnit> list)
     {
         enemyList.Clear();
@@ -17,8 +28,11 @@ public class BattleGroup
             var unit = GameUnit.FromPb(item);
             unit.pbUnit.camp = UnitCamp.Enemy;
             //unit.Camp = UnitCamp.Enemy;
-            if (item.slot > 0 && item.slot <= BattleConst.maxFieldUnit)
-                enemyField[item.slot - 1] = unit;
+            if (item.slot >= BattleConst.slotIndexMin && item.slot <= BattleConst.slotIndexMax)
+            {
+                enemyField[item.slot] = unit;
+                unit.OnEnterField();
+            }
             enemyList.Add(unit);
         }
     }
@@ -31,8 +45,11 @@ public class BattleGroup
             var unit = GameUnit.FromPb(item);
             unit.pbUnit.camp = UnitCamp.Player;
             //unit.Camp = UnitCamp.Player;
-            if (item.slot > 0 && item.slot <= BattleConst.maxFieldUnit)
-                playerField[item.slot - 1] = unit;
+            if (item.slot >= BattleConst.slotIndexMin && item.slot <= BattleConst.slotIndexMax)
+            {
+                playerField[item.slot] = unit;
+                unit.OnEnterField();
+            }
             playerList.Add(unit);
         }
     }
@@ -66,19 +83,25 @@ public class BattleGroup
         for (int i = 0; i < enemyField.Length; i++)
         {
             var unit = enemyField[i];
-            if (unit.pbUnit.guid == movedUnitId)
-                unit.ReCalcSpeed();
-            else
-                unit.CalcSpeed();
+            if (unit != null)
+            {
+                if (unit.pbUnit.guid == movedUnitId)
+                    unit.ReCalcSpeed();
+                else
+                    unit.CalcSpeed();
+            }            
         }
 
         for (int i = 0; i < playerField.Length; i++)
         {
             var unit = playerField[i];
-            if (unit.pbUnit.guid == movedUnitId)
-                unit.ReCalcSpeed();
-            else
-                unit.CalcSpeed();
+            if (unit != null)
+            {
+                if (unit.pbUnit.guid == movedUnitId)
+                    unit.ReCalcSpeed();
+                else
+                    unit.CalcSpeed();
+            } 
         }
     }
 
@@ -111,7 +134,7 @@ public class BattleGroup
 
     public bool IsAnySideDead()
     {
-        return IsEnemyAllDead() && IsPlayerAllDead();
+        return IsEnemyAllDead() || IsPlayerAllDead();
     }
 
     public bool IsEnemyAllDead()
@@ -128,9 +151,9 @@ public class BattleGroup
 
     public bool IsPlayerAllDead()
     {
-        for (int i = 0; i < enemyField.Length; i++)
+        for (int i = 0; i < playerField.Length; i++)
         {
-            var unit = enemyField[i];
+            var unit = playerField[i];
             if (unit != null)
                 return false;
         }
@@ -156,6 +179,43 @@ public class BattleGroup
         return null;
     }
 
+    public GameUnit GetEnemyToField()
+    {
+        foreach (var item in enemyList)
+        {
+            if (item.pbUnit.slot == BattleConst.offsiteSlot && item.curLife > 0)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public GameUnit GetPlayerToField()
+    {
+        foreach (var item in playerList)
+        {
+            if (item.pbUnit.slot == BattleConst.offsiteSlot && item.curLife > 0)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public List<GameUnit> GetPlayerOffsiteUnits()
+    {
+        List<GameUnit> result = new List<GameUnit>();
+        foreach (var item in playerList)
+        {
+            if (item.pbUnit.slot == BattleConst.offsiteSlot)
+            {
+                result.Add(item);
+            }
+        }
+        return result;
+    }
+
     public void OnUnitEnterField(GameUnit unit, int slot)
     {
         int fixedSlot = Mathf.Clamp(slot, BattleConst.slotIndexMin, BattleConst.slotIndexMax);
@@ -167,11 +227,8 @@ public class BattleGroup
 
         GameUnit[] field;
         field = (unit.pbUnit.camp == UnitCamp.Enemy) ? enemyField : playerField;
-        //if (unit.Camp == UnitCamp.Enemy)
-        //    field = enemyField;
-        //else
-        //    field = playerField;
 
+        //如果场上还有单位则替换
         if (field[slot] != null)
         {
             OnUnitExitField(field[slot], slot);
@@ -182,12 +239,35 @@ public class BattleGroup
         unit.OnEnterField();
     }
 
+    public GameUnit RandomUnit(UnitCamp camp)
+    {
+        GameUnit unit = null;
+        if (camp == UnitCamp.Enemy)
+        {
+            do
+            {
+                int index = Random.Range(0, 3);
+                unit = enemyField[index];
+            } while (unit == null);            
+        }
+        else
+        {
+            do
+            {
+                int index = Random.Range(0, 3);
+                unit = playerField[index];
+            } while (unit == null);
+        }
+
+        return unit;
+    }
+
     public void OnUnitExitField(GameUnit unit, int slot)
     {
         int fixedSlot = Mathf.Clamp(slot, BattleConst.slotIndexMin, BattleConst.slotIndexMax);
         if (fixedSlot != slot)
         {
-            Logger.LogError("Slot[1,3] error:" + slot);
+            Logger.LogError("Slot[1,3] error:" + fixedSlot+" slot="+slot);
             return;
         }
 
@@ -199,7 +279,7 @@ public class BattleGroup
 
         if (field[slot] != null)
         {
-            unit.pbUnit.slot = 0;
+            unit.pbUnit.slot = BattleConst.offsiteSlot;
             field[slot] = null;
             unit.OnExitField();
         }

@@ -372,14 +372,7 @@ public class Player extends HawkAppObj {
 	 *
 	 */
 	 public void saveRoleData(){	 
-		if (playerData.getRoleEntity() != null) {
-			playerData.getRoleEntity().notifyUpdate(false);
-		}
 
-		Map<Integer, MonsterEntity> monsters = playerData.getMonsterEntity();
-		for (Map.Entry<Integer, MonsterEntity> entry : monsters.entrySet()) {
-			entry.getValue().notifyUpdate(false);
-		}
 	 }
 	
 	/**
@@ -387,8 +380,6 @@ public class Player extends HawkAppObj {
 	 *
 	 */	 
 	 public void ReselectRole() {
-		saveRoleData();
-		playerData.setRoleEntity(null);
-		playerData.clearMonsterEntity();
+
 	}
 }

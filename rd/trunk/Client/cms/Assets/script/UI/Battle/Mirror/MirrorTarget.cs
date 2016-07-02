@@ -4,16 +4,16 @@ using System.Collections;
 public class MirrorTarget : MonoBehaviour 
 {
 	[SerializeField]
-	string	m_monsterPoorID;
-	public	string	MonsterPoorIDAttr
+	string	m_monsterWeakPointID;
+	public	string	WeakPointIDAttr
 	{
 		set
 		{
-			m_monsterPoorID = value;
+			m_monsterWeakPointID = value;
 		}
 		get
 		{
-			return m_monsterPoorID;
+			return m_monsterWeakPointID;
 		}
 	}
 	// Use this for initialization

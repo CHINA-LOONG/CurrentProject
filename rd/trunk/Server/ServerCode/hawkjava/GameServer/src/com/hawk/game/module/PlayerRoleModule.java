@@ -95,20 +95,12 @@ public class PlayerRoleModule extends PlayerModule{
 		
 		//保存之前的角色数据
 		player.saveRoleData();
-		RoleEntity entity =	player.getPlayerData().loadRoleAndMonster(protocol.getRoleId());
-		if(entity == null){
+		boolean result = player.getPlayerData().selectRole(protocol.getRoleId());
+		if(result == false){
 			player.sendError(HS.code.ROLE_SELECT_C_VALUE, Status.roleError.ROLE_NOT_EXIST_VALUE, 1);
 			return true;
 		}
 		
-		HSRoleSelectRet.Builder response = HSRoleSelectRet.newBuilder();
-		HSRoleDetail.Builder roleDetailData = HSRoleDetail.newBuilder();
-		HSRoleBrief.Builder roleBriefData = HSRoleBrief.newBuilder();
-		
-		response.setStatus(error.NONE_ERROR_VALUE);
-		response.setRoleData(roleDetailData);
-		roleDetailData.setBriefData(roleBriefData);
-		roleBriefData.setRoleId(entity.getRoleID());
 		
 
 		return true;

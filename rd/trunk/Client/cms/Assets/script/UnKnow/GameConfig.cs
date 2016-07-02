@@ -10,4 +10,5 @@ public class GameConfig : MonoBehaviour {
 		Instance = this;
 	}
 	public string testBattlePrefab;
+	public string testBattleAssetName;
 }

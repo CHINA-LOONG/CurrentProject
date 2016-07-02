@@ -1,4 +1,4 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.IO;
 
@@ -94,6 +94,16 @@ public class StaticDataMgr : MonoBehaviour
         }
     }
 
+	[SerializeField]
+	WeakPointData m_WeakPointData;
+	public WeakPointData WeakPointData
+	{
+		get
+		{
+			return m_WeakPointData;
+		}
+	}
+
     public void InitData()
     {
         GameObject unitDataGo = new GameObject ("UnitData");
@@ -124,6 +134,8 @@ public class StaticDataMgr : MonoBehaviour
 
         m_BattleData = InitTable<BattleData>("battle") as BattleData;
         m_ProcessData = InitTable<ProcessData>("process") as ProcessData;
+
+		m_WeakPointData = InitTable<WeakPointData> ("weakPointData") as WeakPointData;
     }
 
     StaticDataBase InitTable<T>(string filename) where T : StaticDataBase

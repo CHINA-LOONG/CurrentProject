@@ -1,0 +1,4 @@
+TEXT,TEXT,NUM,NUM
+id,effectID,energyCost,category
+s1,e1,0,0
+s2,e2,0,0

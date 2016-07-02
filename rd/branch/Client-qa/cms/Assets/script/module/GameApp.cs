@@ -7,6 +7,17 @@ public class GameApp : MonoBehaviour
 {
     private string message;
 
+    private static GameApp _manager = null;
+    public static GameApp Instance
+    {
+        get
+        {
+            if (_manager == null)
+                _manager = GameObject.Find("/GameApp").GetComponent<GameApp>();
+            return _manager;
+        }
+    }
+
     /// <summary>
     /// 初始化游戏管理器
     /// </summary>
@@ -18,6 +29,7 @@ public class GameApp : MonoBehaviour
             Logger.LogWarning("Changing GameApp GameObject's name to " + Const.GameAppName);
             name = Const.GameAppName;
         }
+        _manager = this;
         Init();
     }
 
@@ -43,6 +55,7 @@ public class GameApp : MonoBehaviour
         GameEventMgr.Instance.Init();
         UIMgr.Instance.Init();
         GameMain.Instance.Init();
+        SpellService.Instance.Init();
     }
 
     /// <summary>
@@ -124,7 +137,6 @@ public class GameApp : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         message = string.Empty;
 
-        Util.Add<ResourceManager>(gameObject);
         //释放完成，开始启动更新资源
         StartCoroutine(OnUpdateResource());
     }
@@ -137,7 +149,7 @@ public class GameApp : MonoBehaviour
         //不更新模式下直接添加ResourceManager
         if (!Const.UpdateMode)
         {
-            Util.Add<ResourceManager>(gameObject);
+            ResourceMgr.Instance.Init();
             yield break;
         }
 
@@ -194,7 +206,7 @@ public class GameApp : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
         message = "更新完成!!";
-        Util.Add<ResourceManager>(gameObject);
+        ResourceMgr.Instance.Init();
     }
 
     void OnUpdateFailed(string file)
