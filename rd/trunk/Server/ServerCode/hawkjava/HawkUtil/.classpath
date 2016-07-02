@@ -46,5 +46,6 @@
 	<classpathentry kind="lib" path="lib/jedis-2.6.0.jar" sourcepath="/Jedis"/>
 	<classpathentry kind="lib" path="lib/commons-pool2-2.2.jar"/>
 	<classpathentry kind="lib" path="lib/protobuf-java-format-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/javacsv.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

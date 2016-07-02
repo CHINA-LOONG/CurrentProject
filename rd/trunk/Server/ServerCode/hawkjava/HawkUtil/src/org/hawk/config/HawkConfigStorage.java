@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.nio.charset.Charset;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Enumeration;
@@ -18,6 +19,8 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
+
+import com.csvreader.CsvReader;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -91,7 +94,20 @@ public class HawkConfigStorage {
 	public HawkConfigStorage(Class<?> cfgClass) throws Exception {
 		this.cfgClass = cfgClass;
 
-		if (cfgClass.getAnnotation(HawkConfigManager.XmlResource.class) != null) {
+		if (cfgClass.getAnnotation(HawkConfigManager.CsvResource.class) != null) {
+			HawkConfigManager.CsvResource csvRes = cfgClass.getAnnotation(HawkConfigManager.CsvResource.class);
+			if ("map".equals(csvRes.struct())) {
+				configMap = new TreeMap<Object, HawkConfigBase>();
+			} else if ("list".equals(csvRes.struct())) {
+				configList = new LinkedList<HawkConfigBase>();
+			} else {
+				throw new Exception("unknown config struct: " + csvRes.struct() + ", filePath: " + filePath);
+			}
+			filePath = HawkApp.getInstance().getWorkPath() + csvRes.file();
+			HawkLog.logPrintln("load config: " + filePath);		
+			
+			loadCsvConfig();
+		} else if (cfgClass.getAnnotation(HawkConfigManager.XmlResource.class) != null) {
 			HawkConfigManager.XmlResource xmlRes = cfgClass.getAnnotation(HawkConfigManager.XmlResource.class);
 			if ("map".equals(xmlRes.struct())) {
 				configMap = new TreeMap<Object, HawkConfigBase>();
@@ -147,6 +163,107 @@ public class HawkConfigStorage {
 		return string;
 	}
 
+	/**
+	 * 加载xml配置数据
+	 */
+	private void loadCsvConfig() throws Exception {
+		try {
+			File file = new File(filePath);
+			if (file.exists() == false) {
+				throw new HawkException("config file not exist: " + filePath);
+			}
+			
+			CsvReader csvReader = new CsvReader(new FileInputStream(file), Charset.forName("GBK"));
+			csvReader.setUseComments(true);
+			if (csvReader.readHeaders() == false) {
+				throw new HawkException("config headers not exist: " + filePath);
+			}
+			
+			String[] headers = csvReader.getHeaders();
+			Object cfg = cfgClass.newInstance();
+			if (cfg instanceof HawkConfigBase) {
+				Class<?> cfgKeyType = null;
+				int cfgKeyIndex = 0;
+				
+				// 检测属性
+				for (int i = 0; i < headers.length; ++i) {
+					Field field = getField(cfg, headers[i].trim());
+					if (field == null) {
+						throw new HawkException("config class field not exist, file: " + filePath + ", field: " + headers[i].trim());
+					}
+					
+					Id id = null;
+					try {
+						// 测试Id标注是否存在
+						id = field.getAnnotation(Id.class);
+					} catch (Exception e) {
+						throw new NullPointerException("config id annotation not exist: " + cfg.getClass().getName() + ", nodeName: "+ headers[i]);
+					}
+					
+					if (id != null) {
+						// id标注重复
+						if (cfgKeyType != null) {
+							throw new HawkException("config id annotation duplicate: " + filePath + ", nodeName: "+ headers[i]);
+						}
+						
+						String type = field.getType().toString();
+						if (type.indexOf("int") >= 0 || type.indexOf("Integer") >= 0) {
+							cfgKeyType = Integer.class;
+						} else if (type.indexOf("String") >= 0) {
+							cfgKeyType = String.class;
+						}
+						cfgKeyIndex = i;
+					}
+				}
+
+				// 读取数据
+				while (csvReader.readRecord()) {
+					Object cfgObj = cfgClass.newInstance();
+					HawkConfigBase configBase = (HawkConfigBase) cfgObj;
+					configBase.setStorage(this);
+					
+					for (int i = 0; i < headers.length; ++i) {
+						setAttr(cfgObj, headers[i].trim(), csvReader.get(i));
+					}
+
+					// 通知上层装配
+					if (configBase.assemble()) {
+						// 常量锁定
+						configBase.lockConst(true);
+						// 存储
+						if (configList != null) {
+							configList.add(configBase);
+						} else {
+							if (cfgKeyType != null) {
+								Object cfgKey = null;
+								if (cfgKeyType == Integer.class) {
+									cfgKey = Integer.valueOf(csvReader.get(cfgKeyIndex));
+								} else if (cfgKeyType == String.class) {
+									cfgKey = csvReader.get(cfgKeyIndex);
+								}
+								
+								if (configMap.containsKey(cfgKey)) {
+									throw new Exception("config key duplicate: " + filePath + ", key: " + cfgKey);
+								}
+								configMap.put(cfgKey, configBase);
+							}
+							else {
+								throw new Exception("config mapping key is null");
+							}
+						}
+					} else {
+						throw new Exception("config assemble failed: " + cfgClass.getName() + ", keyIndex: " + cfgKeyIndex);
+					}
+				}
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+
+		// 存储文件热加载信息
+		updateFileInfo();
+	}
+	
 	/**
 	 * 加载xml配置数据
 	 */

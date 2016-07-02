@@ -26,7 +26,7 @@ public class BuffStaticData : StaticDataBase
 
         FireEngine.FIELD subField;
         subField = m_StaticTable.GetCertainField(nRow, "category");
-        bpt.category = subField.FieldValueStr;
+        bpt.category = int.Parse(subField.FieldValueStr);
 
         subField = m_StaticTable.GetCertainField(nRow, "periodEffect");
         bpt.periodEffectID = subField.FieldValueStr;

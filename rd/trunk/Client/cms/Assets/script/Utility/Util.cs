@@ -36,7 +36,8 @@ public class Util
             if (Const.DebugMode)
                 return Application.streamingAssetsPath;
             else
-                return Application.persistentDataPath;
+                //不能直接使用Application.persistentDataPath，由于涉及到删除目录操作，删除根目录无权限，故加上game子目录
+                return Path.Combine(Application.persistentDataPath, "game");
         }
     }
 

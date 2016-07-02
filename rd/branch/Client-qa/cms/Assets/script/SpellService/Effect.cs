@@ -9,6 +9,7 @@ public class EffectPrototype
     public string id;
     public int targetType;
     public int casterType;
+    //TODO:Remove(moved to spell)
     public int energy;
 
     public EffectType effectType;
@@ -59,6 +60,17 @@ public class Effect
         args.targetID = targetID;
         args.effectID = protoEffect.id;
         spellService.TriggerEvent(GameEventList.SpellEffect, args);
+
+        if (protoEffect.energy != 0)
+        {
+            SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+            energyArgs.triggerTime = applyTime;
+            energyArgs.casterID = casterID;
+            energyArgs.vitalChange = protoEffect.energy;
+            energyArgs.vitalCurrent = 0;
+            spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
+
+        }
     }
     //---------------------------------------------------------------------------------------------
     public void SetOwnedBuff(Buff buffOwner)

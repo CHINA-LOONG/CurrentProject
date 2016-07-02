@@ -90,6 +90,9 @@ public class GameUnit
     public Dictionary<string, Spell> spellList;
     //public List<Equipment> equipmentList;
 	public List<string> weakPointList;
+	public List<string> findWeakPointlist = null;
+	public Dictionary<string,GameObject> weakPointMeshDic;
+	public Dictionary<string,GameObject> weakPointEffectDic;
 
     //只在客户端计算使用的属性
     float speedCount = 0;
@@ -121,8 +124,8 @@ public class GameUnit
     void Init()
     {
         GameDataMgr gdMgr = GameDataMgr.Instance;
-        UnitData.RowData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
-        UnitBaseData.RowData unitBaseRowData = StaticDataMgr.Instance.GetUnitBaseRowData(pbUnit.level);
+        UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
+        UnitBaseData unitBaseRowData = StaticDataMgr.Instance.GetUnitBaseRowData(pbUnit.level);
         health = (int)(unitRowData.healthModifyRate * unitBaseRowData.health + gdMgr.PlayerDataAttr.equipHealth);
         strength = (int)(unitRowData.strengthModifyRate * unitBaseRowData.strength + gdMgr.PlayerDataAttr.equipStrength);
         intelligence = (int)(unitRowData.intelligenceModifyRate * unitBaseRowData.intelligence + gdMgr.PlayerDataAttr.equipIntelligence);
@@ -132,7 +135,7 @@ public class GameUnit
         recovery = (int)(unitRowData.recoveryRate * unitBaseRowData.recovery);
         property = unitRowData.property;
         assetID = unitRowData.assetID;
-        isEvolutionable = unitRowData.isEvolutionable;
+        isEvolutionable = unitRowData.isEvolutionable!=0;
         evolutionID = unitRowData.evolutionID;
         name = unitRowData.nickName;
         //TODO: 玩家宠物不需要
@@ -180,6 +183,10 @@ public class GameUnit
         }
 
         buffList = new List<Buff>();
+
+		findWeakPointlist = new List<string> ();
+		weakPointMeshDic = new Dictionary<string, GameObject> ();
+		weakPointEffectDic = new Dictionary<string, GameObject> ();
 		
     }
 
@@ -201,7 +208,6 @@ public class GameUnit
 			weakPointList.Add(weakArray[i]);
 		}
 	}
-
 
     public Spell GetSpell(string spellID)
     {

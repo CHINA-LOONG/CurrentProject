@@ -126,6 +126,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1001 &608708243
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 408962, guid: 470ffa59e5a3d814dbc4ac712f299fad, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .280000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 408962, guid: 470ffa59e5a3d814dbc4ac712f299fad, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .0199999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 408962, guid: 470ffa59e5a3d814dbc4ac712f299fad, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.95000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 408962, guid: 470ffa59e5a3d814dbc4ac712f299fad, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408962, guid: 470ffa59e5a3d814dbc4ac712f299fad, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408962, guid: 470ffa59e5a3d814dbc4ac712f299fad, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408962, guid: 470ffa59e5a3d814dbc4ac712f299fad, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408962, guid: 470ffa59e5a3d814dbc4ac712f299fad, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 144540, guid: 470ffa59e5a3d814dbc4ac712f299fad, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 470ffa59e5a3d814dbc4ac712f299fad, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &763403493
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testBattlePrefab: yunmengze
   testBattleAssetName: battlescene/yunmenze
+  FindWeakPointFinishedNeedTime: 4
+  MirrorRadius: 5
 --- !u!1 &886866240
 GameObject:
   m_ObjectHideFlags: 0

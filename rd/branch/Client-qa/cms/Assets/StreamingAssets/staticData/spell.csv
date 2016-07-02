@@ -1,4 +1,4 @@
-TEXT,TEXT,NUM,NUM
-id,effectID,energyCost,category
-s1,e1,0,0
-s2,e2,0,0
+TEXT,TEXT,NUM,NUM,NUM,FLOAT
+id,effectID,energyCost,energyGenerate,category,levelAdjust
+s1,e1,0,10,0,1
+s2,e2,0,10,0,1

@@ -8,7 +8,10 @@ public class SpellProtoType
     public string id;
     public string rootEffectID;
     public int energyCost;
+    public int energyGenerate;
     public int category;
+    public float levelAdjust;
+    public int level;
     //public int cdTime;
 }
 
@@ -24,6 +27,8 @@ public class Spell
     public Spell(SpellProtoType spellPt)
     {
         spellData = spellPt;
+        //TODO: form server pb data
+        spellData.level = 1;
     }
 
     public void Init(SpellService owner)
@@ -39,25 +44,46 @@ public class Spell
         args.spellID = spellData.id;
         args.casterID = casterID;
         args.targetID = targetID;
+        GameUnit caster = spellService.GetUnit(casterID);
         //args.castResult = SpellConst.spellCastOK;
         spellService.TriggerEvent(GameEventList.SpellFire, args);
+
+        //generate energy
+        if (spellData.energyGenerate > 0)
+        {
+            caster.energy += spellData.energyGenerate;
+            if (caster.energy > SpellConst.maxEnergy)
+                caster.energy = SpellConst.maxEnergy;
+
+            SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+            energyArgs.triggerTime = triggerTime;
+            energyArgs.casterID = casterID;
+            energyArgs.vitalChange = spellData.energyGenerate;
+            energyArgs.vitalCurrent = caster.energy;
+            spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
+        }
+
+        //take energy if needed
+        if (caster.energy < spellData.energyCost)
+        {
+            Logger.LogWarning("Energy not enough!");
+            return;
+        }
+        {
+            SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+            energyArgs.triggerTime = triggerTime;
+            energyArgs.casterID = casterID;
+            energyArgs.vitalChange = spellData.energyCost * -1;//minus
+            energyArgs.vitalCurrent = caster.energy - spellData.energyCost;
+            spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
+        }
+
 
         Effect rootEffect = spellService.GetEffect(spellData.rootEffectID);
         if (rootEffect != null)
         {
             rootEffect.SetOwnedSpell(this);
             rootEffect.Apply(triggerTime);
-        }
-
-        //take energy if needed
-        if (spellData.energyCost > 0)
-        {
-            SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
-            energyArgs.triggerTime = triggerTime;
-            energyArgs.casterID = casterID;
-            energyArgs.vitalChange = spellData.energyCost;
-            energyArgs.vitalCurrent = 0;
-            spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
         }
     }
 

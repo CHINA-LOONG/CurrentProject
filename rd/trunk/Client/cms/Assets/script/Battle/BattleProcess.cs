@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+public class ProcessData
+{
+    public int id = 0;
+    public string name;
+    public string processAnimation;
+    public string preAnimation;
+    public bool isClearBuff;
+}
+
 public class BattleProcess : MonoBehaviour
 {
     enum ActionType
@@ -20,7 +29,7 @@ public class BattleProcess : MonoBehaviour
     }
 
     BattleGroup battleGroup;
-    ProcessData.RowData processData;
+    ProcessData processData;
 
     List<Action> insertAction = new List<Action>();
 
@@ -29,9 +38,6 @@ public class BattleProcess : MonoBehaviour
 
     //换宠cd
     float lastSwitchTime = -BattleConst.switchPetCD;
-
-    //for debug
-    int actionIndex = 0;
 
     void BindListener()
     {
@@ -65,13 +71,9 @@ public class BattleProcess : MonoBehaviour
         UnBindListener();
     }
 
-    public void StartProcess(int processId, BattleGroup group)
+    public void StartProcess(ProcessData process, BattleGroup group)
     {
-        if (processId != 0)
-            processData = StaticDataMgr.Instance.ProcessData.getRowDataFromLevel(processId);
-        else
-            //默认进程数据
-            processData = new ProcessData.RowData();
+        processData = new ProcessData();
 
         Logger.Log("[Battle.Process]Start process");
         battleGroup = group;
@@ -328,13 +330,13 @@ public class BattleProcess : MonoBehaviour
 
     void OnLifeChange(EventArgs sArgs)
     {
-        var args = sArgs as SpellVitalChangeArgs;
+        //var args = sArgs as SpellVitalChangeArgs;
         Logger.Log("[Battle.Process]OnLifeChange");
     }
 
     void OnEnergyChange(EventArgs sArgs)
     {
-        var args = sArgs as SpellVitalChangeArgs;
+        //var args = sArgs as SpellVitalChangeArgs;
         Logger.Log("[Battle.Process]OnEnergyChange");
     }
 
@@ -401,7 +403,7 @@ public class BattleProcess : MonoBehaviour
 
     void OnBuffChange(EventArgs sArgs)
     {
-        var args = sArgs as SpellBuffArgs;
+        //var args = sArgs as SpellBuffArgs;
 
     }
     #endregion

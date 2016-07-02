@@ -30,6 +30,7 @@ public class UIBattle : UIBase
         if (null != m_MirrorImage)
         {
             m_MirrorDray = m_MirrorImage.gameObject.AddComponent<MirrorDray>();
+			m_MirrorDray.Init();
         }
         else
         {
@@ -117,6 +118,8 @@ public class UIBattle : UIBase
 
             m_MirrorImage.transform.localPosition = tempPos;
         }
+
+		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, isMirrorMode);
     }
 
     void OnToggleBattleStyleClicked(GameObject go)

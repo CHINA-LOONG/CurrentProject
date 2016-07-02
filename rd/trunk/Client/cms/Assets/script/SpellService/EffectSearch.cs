@@ -40,7 +40,7 @@ public class EffectSearch : Effect
             {
                 curEffect.SetOwnedBuff(ownedBuff);
                 curEffect.SetOwnedSpell(ownedSpell);
-                curEffect.targetID = targetID;
+                curEffect.targetID = unit.pbUnit.guid;
                 curEffect.Apply(applyTime);
             }
         }

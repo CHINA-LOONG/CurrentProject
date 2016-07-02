@@ -7,13 +7,13 @@ using System.Collections.Generic;
 public class BuffPrototype
 {
     public string id;
-    public string category;
     public string periodEffectID;
+    public int category;
     public int duration;
 
     //状态改变
-    public bool stun;//眩晕
-    public bool invincible;//无敌
+    public int stun;//眩晕
+    public int invincible;//无敌
 
     //属性改变
     public float strengthRatio;
@@ -104,16 +104,50 @@ public class Buff
         args.buffID = buffProto.id;
         spellService.TriggerEvent(GameEventList.SpellBuff, args);
 
-        foreach (Buff buff in buffList)
+        if (buffProto.category == (int)(BuffType.Buff_Type_Dot))
         {
-            if (buffProto.id == buff.buffProto.id)
+            Buff firstDot = null;
+            int dotCount = 0;
+            foreach (Buff buff in buffList)
             {
-                buff.Reset();
-                return;
+                if (buff.buffProto.category == (int)(BuffType.Buff_Type_Dot))
+                {
+                    if (++dotCount == 1)
+                    {
+                        firstDot = buff;
+                    }
+
+                    //同源同id，刷新
+                    if (buff.casterID == casterID)
+                    {
+                        buff.Reset();
+                        return;
+                    }
+
+                    if (dotCount >= 3)
+                    {
+                        firstDot.Finish();
+                        firstDot.ModifyUnit(true);
+                        buffList.Remove(firstDot);
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            foreach (Buff buff in buffList)
+            {
+                //同名刷新，不区分来源
+                if (buff.buffProto.id == buffProto.id)
+                {
+                    buff.Reset();
+                    return;
+                }
             }
         }
 
-        DealReplace(buffList);
+        buffList.Add(this);
         ModifyUnit(false);
     }
     //---------------------------------------------------------------------------------------------
@@ -130,17 +164,12 @@ public class Buff
         ModifyUnit(true);
     }
     //---------------------------------------------------------------------------------------------
-    void DealReplace(List<Buff> buffList)
-    {
-
-    }
-    //---------------------------------------------------------------------------------------------
     void ModifyUnit(bool isRemove)
     {
         GameUnit target = spellService.GetUnit(targetID);
 
         //状态改变
-        if (buffProto.stun == true)
+        if (buffProto.stun > 0)
         {
             ++target.stun;
         }
@@ -149,7 +178,7 @@ public class Buff
             --target.stun;
         }
 
-        if (buffProto.invincible == true)
+        if (buffProto.invincible > 0)
         {
             ++target.invincible;
         }

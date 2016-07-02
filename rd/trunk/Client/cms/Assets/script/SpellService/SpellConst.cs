@@ -27,6 +27,8 @@
     public const int propertyWater = 3;
     public const int propertyFire = 4;
     public const int propertyEarth = 5;
+
+    public const int maxEnergy = 100;
 }
 
 public enum EffectType
@@ -37,5 +39,23 @@ public enum EffectType
     Effect_Type_Damage,
     Effect_Type_Buff,
 
-    NUM_Effect_Type
+    Num_Effect_Type
+}
+
+public enum BuffType
+{
+    Buff_Type_Normal,
+    Buff_Type_Dot,
+    Buff_Type_Hot,
+
+    Num_Buff_Type
+}
+
+public enum SpellType
+{
+    Spell_Type_Normal,
+    Spell_Type_Passive,
+    Spell_Type_Captain,
+
+    Num_Spell_Type
 }

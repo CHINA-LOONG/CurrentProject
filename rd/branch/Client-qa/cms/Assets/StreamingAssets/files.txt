@@ -4,14 +4,6 @@
 /assetbundle/camera.manifest
 /assetbundle/monster
 /assetbundle/monster.manifest
-/assetbundle/uibattle
-/assetbundle/uibattle.manifest
-/assetbundle/uibuild
-/assetbundle/uibuild.manifest
-/assetbundle/uilogin
-/assetbundle/uilogin.manifest
-/assetbundle/uiroot
-/assetbundle/uiroot.manifest
 /assetbundle/battlescene/yunmenze
 /assetbundle/battlescene/yunmenze.manifest
 /assetbundle/ui/battle

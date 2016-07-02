@@ -1,3 +1,4 @@
-TEXT,TEXT,TEXT,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT
-id,category,periodEffect,duration,stun,invincible,strengthRatio,intelligenceRatio,defenseRatio,speedRatio
-b1,gm,e1,5,0,0,1,1,1,1
+TEXT,NUM,TEXT,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT
+id,category,periodEffectID,duration,stun,invincible,strengthRatio,intelligenceRatio,defenseRatio,speedRatio
+#id,category,periodEffectID,duration,stun,invincible,strengthRatio,intelligenceRatio,defenseRatio,speedRatio
+b1,0,e1,5,0,0,1,1,1,1

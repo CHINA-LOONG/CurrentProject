@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class PbStartBattle
 {
-    public int battleId;
+    public string battleId;
     public List<PbUnit> enemyList = new List<PbUnit>();
     public List<PbUnit> playerList = new List<PbUnit>();
 }
@@ -17,7 +17,7 @@ public class BattleTest : MonoBehaviour
     static PbStartBattle InitBattleGroup()
     {
         var proto = new PbStartBattle();
-        proto.battleId = 2;
+        proto.battleId = "demo";
 
         //enemy list
         for (int i = 0; i < 5; i++)

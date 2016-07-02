@@ -196,7 +196,7 @@ public class SpellService : MonoBehaviour
             SpellBuffArgs curArgs = args as SpellBuffArgs;
             if (curArgs.isAdd)
             {
-                Logger.LogFormat("[SpellService]{0} cast buff {1} to {1}", curArgs.casterID, curArgs.buffID, curArgs.targetID);
+                Logger.LogFormat("[SpellService]{0} cast buff {1} to {2}", curArgs.casterID, curArgs.buffID, curArgs.targetID);
             }
             else
             {

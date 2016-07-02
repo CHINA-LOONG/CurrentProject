@@ -412,6 +412,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_postionType: 0
   m_ID: 5
+  camp: 1
+  slot: 5
 --- !u!114 &11425956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -425,6 +427,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_postionType: 0
   m_ID: 3
+  camp: 1
+  slot: 3
 --- !u!114 &11428772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -438,6 +442,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_postionType: 0
   m_ID: 0
+  camp: 0
+  slot: 0
 --- !u!114 &11435674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -451,6 +457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_postionType: 0
   m_ID: 1
+  camp: 0
+  slot: 1
 --- !u!114 &11470724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -464,6 +472,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_postionType: 0
   m_ID: 4
+  camp: 1
+  slot: 4
 --- !u!114 &11473368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -476,7 +486,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_postionType: 0
-  m_ID: 1
+  m_ID: 2
+  camp: 0
+  slot: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

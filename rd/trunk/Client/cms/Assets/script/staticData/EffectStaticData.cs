@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+/*
 
-public class EffectStaticData : StaticDataBase
+public class EffectStaticData 
 {
     private Dictionary<string, EffectPrototype> m_CacheDic = new Dictionary<string, EffectPrototype>();
 
@@ -115,12 +116,10 @@ public class EffectStaticData : StaticDataBase
         subField = m_StaticTable.GetCertainField(nRow, "casterType");
         spt.casterType = int.Parse(subField.FieldValueStr);
 
-        subField = m_StaticTable.GetCertainField(nRow, "energy");
-        spt.energy = int.Parse(subField.FieldValueStr);
-
         m_CacheDic[spt.id] = spt;
 
         return spt;
     }
 
 }
+*/

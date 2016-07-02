@@ -115,9 +115,6 @@ public class EffectStaticData : StaticDataBase
         subField = m_StaticTable.GetCertainField(nRow, "casterType");
         spt.casterType = int.Parse(subField.FieldValueStr);
 
-        subField = m_StaticTable.GetCertainField(nRow, "energy");
-        spt.energy = int.Parse(subField.FieldValueStr);
-
         m_CacheDic[spt.id] = spt;
 
         return spt;

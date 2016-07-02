@@ -31,8 +31,14 @@ public class SpellStaticData : StaticDataBase
         subField = m_StaticTable.GetCertainField(nRow, "energyCost");
         spt.energyCost = int.Parse(subField.FieldValueStr);
 
+        subField = m_StaticTable.GetCertainField(nRow, "energyGenerate");
+        spt.energyGenerate = int.Parse(subField.FieldValueStr);
+
         subField = m_StaticTable.GetCertainField(nRow, "category");
-        spt.category = int.Parse(subField.FieldValueStr);
+        spt.category = int.Parse(subField.FieldValueStr); 
+
+        subField = m_StaticTable.GetCertainField(nRow, "levelAdjust");
+        spt.levelAdjust = int.Parse(subField.FieldValueStr);
 
         m_CacheDic[spt.id] = spt;
 

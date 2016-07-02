@@ -6,10 +6,17 @@ public class Const
 {
     /// <summary>
     /// 调试模式
-    /// 开启此模式会直接读取streamingassets中的文件
-    /// 不开启此模式会将streamingassets下面的文件复制到persistentDataPath中，并从persistentDataPath中读取数据
+    /// 非mobile平台（editor，windows等）会直接读取streamingassets中的文件
+    /// mobile平台（android，ios）：将streamingassets下面的文件复制到persistentDataPath中，并从persistentDataPath中读取数据
     /// </summary>
-    public static bool DebugMode = true;
+    public static bool DebugMode
+    {
+        get
+        {
+            return !Application.isMobilePlatform;
+        }
+    }
+
     /// <summary>
     /// 更新模式（开始此模式请确保DebugMode为false）
     /// 更新模式下会从web server上获取version list，然后下载更新包更新版本

@@ -26,6 +26,30 @@ import org.hawk.os.HawkTime;
  */
 public class HawkConfigManager {
 	/**
+	 * csv类型配置注解
+	 * 
+	 * @author walker
+	 */
+	@Documented
+	@Retention(RetentionPolicy.RUNTIME)
+	@Target({ java.lang.annotation.ElementType.TYPE })
+	public @interface CsvResource {
+		/**
+		 * 文件路径
+		 * 
+		 * @return
+		 */
+		public String file() default "";
+
+		/**
+		 * 存储结构, "map" | "list"
+		 * 
+		 * @return
+		 */
+		public String struct() default "map";
+	}
+	
+	/**
 	 * xml类型配置注解
 	 * 
 	 * @author hawk
@@ -148,7 +172,7 @@ public class HawkConfigManager {
 				for (String configPackage : configPackageArray) {
 					HawkLog.logPrintln("init config package: " + configPackage);
 					List<Class<?>> classList = HawkClassScaner.scanClassesFilter(configPackage, 
-							XmlResource.class, KVResource.class, JsonResource.class);
+							CsvResource.class, XmlResource.class, KVResource.class, JsonResource.class);
 					
 					for (Class<?> configClass : classList) {
 						storages.put(configClass, new HawkConfigStorage(configClass));

@@ -3,12 +3,42 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+//for csv loader
+public class EffectWholeData
+{
+    //TODO:Remove(moved to spell)
+    public int energy;
+
+    public int effectType;
+    public string id;
+    public int targetType;
+    public int casterType;
+    //apply buff
+    public string buffID;
+    //damamge effect
+    public int damageType;
+    public float attackFactor;
+    public int isHeal;
+    public int damageProperty;//五行伤害
+    //persistent
+    public string effectStartID;
+    public float startDelayTime;
+    public string periodEffectList;
+    //search
+    public int count;
+    public int camp;
+    public string searchEffect;
+    //set
+    public string effectList;
+}
+
 [Serializable]
 public class EffectPrototype
 {
     public string id;
     public int targetType;
     public int casterType;
+    //TODO:Remove(moved to spell)
     public int energy;
 
     public EffectType effectType;
@@ -59,6 +89,17 @@ public class Effect
         args.targetID = targetID;
         args.effectID = protoEffect.id;
         spellService.TriggerEvent(GameEventList.SpellEffect, args);
+
+        if (protoEffect.energy != 0)
+        {
+            SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+            energyArgs.triggerTime = applyTime;
+            energyArgs.casterID = casterID;
+            energyArgs.vitalChange = protoEffect.energy;
+            energyArgs.vitalCurrent = 0;
+            spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
+
+        }
     }
     //---------------------------------------------------------------------------------------------
     public void SetOwnedBuff(Buff buffOwner)

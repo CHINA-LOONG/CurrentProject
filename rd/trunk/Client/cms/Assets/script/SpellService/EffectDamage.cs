@@ -77,16 +77,18 @@ public class EffectDamage : Effect
 
             //受伤比计算 max(1/(1+(守方总防御力-攻方防御穿透)/I(min(lv1,lv2))),25%)
             float injuryRatio = 1.0f / (1.0f + (target.defense - caster.defensePierce) / SpellFunctions.GetInjuryAdjustNum(caster.pbUnit.level, target.pbUnit.level));
+            injuryRatio = injuryRatio < 0.25f ? 0.25f : injuryRatio;
 
             EffectDamageProtoType damageProto = protoEffect as EffectDamageProtoType;
             int damageAmount = 0;
+            float spellLevelRatio = ownedSpell.spellData.level * ownedSpell.spellData.levelAdjust;
             if (damageProto.isHeal == true)
             {
                 //治疗
                 damageAmount = (int)(
                                 damageRatio * injuryRatio * SpellConst.intelligenceToAttack * caster.intelligence *  //暴击伤害系数 * 受伤比 * 攻击
                                 (1.0f + gdMgr.PlayerDataAttr.equipIntelligenceRatio + caster.additionHealRatio) * //主角和怪物装备加成
-                                (1.0f + damageProto.attackFactor /*+技能等级*/) * //技能加成
+                                (1.0f + damageProto.attackFactor * spellLevelRatio) * //技能加成
                                 (1.0f + caster.spellIntelligenceRatio)
                                 );//buff加成(队长技 etc)
                                 /* *弱点伤害 * 副本伤害 */
@@ -100,7 +102,7 @@ public class EffectDamage : Effect
                     damageAmount = (int)(
                                     damageRatio * injuryRatio * SpellConst.strengthToAttack * caster.strength *  //暴击伤害系数 * 受伤比 * 攻击
                                     (1.0f + gdMgr.PlayerDataAttr.equipStrengthRatio + caster.additionDamageRatio - target.minusDamageRatio) * //主角和怪物装备加成
-                                    (1.0f + damageProto.attackFactor /*+ 技能等级*/) * //技能加成
+                                    (1.0f + damageProto.attackFactor * spellLevelRatio) * //技能加成
                                     (1.0f + caster.spellStrengthRatio)
                                     ); //buff加成(队长技 etc)
                                     /* *弱点伤害 * 副本伤害 */
@@ -113,19 +115,19 @@ public class EffectDamage : Effect
                     switch (damageProto.damageProperty)
                     {
                         case SpellConst.propertyGold:
-                            propertyDamageRatio = gdMgr.PlayerDataAttr.goldDamageRatio;
+                            propertyDamageRatio += gdMgr.PlayerDataAttr.goldDamageRatio;
                             break;
                         case SpellConst.propertyWood:
-                            propertyDamageRatio = gdMgr.PlayerDataAttr.woodDamageRatio;
+                            propertyDamageRatio += gdMgr.PlayerDataAttr.woodDamageRatio;
                             break;
                         case SpellConst.propertyWater:
-                            propertyDamageRatio = gdMgr.PlayerDataAttr.waterDamageRatio;
+                            propertyDamageRatio += gdMgr.PlayerDataAttr.waterDamageRatio;
                             break;
                         case SpellConst.propertyFire:
-                            propertyDamageRatio = gdMgr.PlayerDataAttr.fireDamageRatio;
+                            propertyDamageRatio += gdMgr.PlayerDataAttr.fireDamageRatio;
                             break;
                         case SpellConst.propertyEarth:
-                            propertyDamageRatio = gdMgr.PlayerDataAttr.earthDamageRatio;
+                            propertyDamageRatio += gdMgr.PlayerDataAttr.earthDamageRatio;
                             break;
                     }
                     //五行相生相克系数
@@ -134,7 +136,7 @@ public class EffectDamage : Effect
                     damageAmount = (int)(
                                     damageRatio * injuryRatio * SpellConst.intelligenceToAttack * caster.intelligence *  //暴击伤害系数 * 受伤比 * 攻击
                                     (1.0f + gdMgr.PlayerDataAttr.equipIntelligenceRatio + caster.additionDamageRatio - target.minusDamageRatio) * //主角和怪物装备加成
-                                    (1.0f + damageProto.attackFactor/*+技能等级*/) * //技能加成
+                                    (1.0f + damageProto.attackFactor * spellLevelRatio) * //技能加成
                                     (1.0f + caster.spellIntelligenceRatio) *//buff加成(队长技 etc)
                                     propertyDamageRatio
                                     ); //五行相关
