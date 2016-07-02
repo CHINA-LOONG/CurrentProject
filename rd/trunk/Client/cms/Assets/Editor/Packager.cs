@@ -38,6 +38,7 @@ public class Packager
             string file = files[i];
             string ext = Path.GetExtension(file);
             if (ext.Equals(".meta")) continue;
+            if (file.Contains(".DS_Store")) continue;
 
             string value = file.Replace(Util.BuildPath, string.Empty);
             sw.WriteLine(value);

@@ -46,29 +46,17 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"KICKOUT_S", Value=1004)]
       KICKOUT_S = 1004,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_CREATE_C", Value=1100)]
-      ROLE_CREATE_C = 1100,
+      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_INFO_SYNC_S", Value=1005)]
+      PLAYER_INFO_SYNC_S = 1005,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_CREATE_S", Value=1101)]
-      ROLE_CREATE_S = 1101,
+      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1010)]
+      ASSEMBLE_FINISH_S = 1010,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_DELETE_C", Value=1102)]
-      ROLE_DELETE_C = 1102,
+      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CREATE_C", Value=1101)]
+      PLAYER_CREATE_C = 1101,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_DELETE_S", Value=1103)]
-      ROLE_DELETE_S = 1103,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_SELECT_C", Value=1104)]
-      ROLE_SELECT_C = 1104,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_SELECT_S", Value=1105)]
-      ROLE_SELECT_S = 1105,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_CHANGE_C", Value=1106)]
-      ROLE_CHANGE_C = 1106,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_CHANGE_S", Value=1107)]
-      ROLE_CHANGE_S = 1107,
+      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CREATE_S", Value=1102)]
+      PLAYER_CREATE_S = 1102,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_ADD_S", Value=2000)]
       MONSTER_ADD_S = 2000,

@@ -23,15 +23,12 @@ namespace UnityClientConsole
         static void Main(string[] args)
         {
             //设定服务器IP地址  
-            if (App.GetInstance().Init("127.0.0.1", 443) == false)
+            if (App.GetInstance().Init("127.0.0.1", 9595, "zhengshuai") == false)
                 return;
 
             App.GetInstance().Run();
 
-
-            App.GetInstance().SendLoginProtocol("zhengshuai");
-
-            App.GetInstance().SendDeleteRoleProtocol(2);
+            App.GetInstance().SendLoginProtocol();
 
             Console.ReadLine();
 

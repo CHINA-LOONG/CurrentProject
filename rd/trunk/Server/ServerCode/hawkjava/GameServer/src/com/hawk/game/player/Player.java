@@ -17,7 +17,6 @@ import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.module.PlayerIdleModule;
 import com.hawk.game.module.PlayerLoginModule;
-import com.hawk.game.module.PlayerRoleModule;
 import com.hawk.game.module.PlayerMonsterModule;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
@@ -64,7 +63,6 @@ public class Player extends HawkAppObj {
 	 */
 	public void initModules() {
 		registerModule(GsConst.ModuleType.LOGIN_MODULE, new PlayerLoginModule(this));
-		registerModule(GsConst.ModuleType.ROLE_MODULE, new PlayerRoleModule(this));
 		registerModule(GsConst.ModuleType.MONSTER_MODULE, new PlayerMonsterModule(this));
 
 		// 最后注册空闲模块, 用来消息收尾处理

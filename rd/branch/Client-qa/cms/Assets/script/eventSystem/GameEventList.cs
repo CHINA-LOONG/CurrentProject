@@ -25,6 +25,10 @@ public class GameEventList
 	public static string ShowSwitchPetUI = "ShowSwitchPetUI";//param  int
 	public static string HideSwitchPetUI = "HideSwitchPetUI";//no param
     public static string ChangeTarget = "ChangeTarget";
+    public static string HitDazhaoBtn = "HitDazhaoBtn";
+
+    //UI in the battle
+    public static string ShowBattleUI = "ShowBattleUI";
 
     //////////////////////////////////////////////////////////////////////////
 

@@ -22,16 +22,14 @@ enum code
 	LOGOUT_C               = 1002;
 	LOGOUT_S               = 1003;
 	KICKOUT_S              = 1004;
-
+	PLAYER_INFO_SYNC_S     = 1005;
+	
+	ASSEMBLE_FINISH_S      = 1010;
+	
+	
 	// 角色
-	ROLE_CREATE_C          = 1100;
-	ROLE_CREATE_S          = 1101;
-	ROLE_DELETE_C          = 1102;
-	ROLE_DELETE_S          = 1103;
-	ROLE_SELECT_C          = 1104;
-	ROLE_SELECT_S          = 1105;
-	ROLE_CHANGE_C          = 1106;
-	ROLE_CHANGE_S          = 1107;
+	PLAYER_CREATE_C        = 1101;
+	PLAYER_CREATE_S        = 1102;
 
 	// 怪物
 	MONSTER_ADD_S          = 2000;

@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.IO;
 using Csv.Serialization;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 public class StaticDataMgr : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, BuffPrototype> buffData;
     Dictionary<string, EffectPrototype> effectData;
     Dictionary<string, SpellProtoType> spellData;
-    Dictionary<string, BattleData> m_BattleData;
+    Dictionary<string, InstanceData> m_InstanceData;
 	Dictionary<string, BattleUnitAiData> m_BattleUnitAiData;
    
     public void Init()
@@ -67,10 +68,11 @@ public class StaticDataMgr : MonoBehaviour
                         {
                             effectPt = new EffectSetPrototype();
                             EffectSetPrototype setPt = effectPt as EffectSetPrototype;
-                            string[] effects = wholeData.effectList.Split(';');
-                            for (int i = 0; i < effects.Length; ++i)
+                            //string[] effects = wholeData.effectList.Split(';');
+							ArrayList effectArrayList = MiniJsonExtensions.arrayListFromJson ( wholeData.effectList);
+							for (int i = 0; i <  effectArrayList.Count; ++i)
                             {
-                                setPt.effectList.Add(effects[i]);
+								setPt.effectList.Add(effectArrayList[i] as string);
                             }
                         }
                         break;
@@ -92,9 +94,10 @@ public class StaticDataMgr : MonoBehaviour
                             persistPt.effectStartID = wholeData.effectStartID;
                             persistPt.startDelayTime = wholeData.startDelayTime;
                             string[] effectList = wholeData.periodEffectList.Split(';');
-                            for (int i = 0; i < effectList.Length; ++i)
+							///ArrayList effectArrayList = MiniJsonExtensions.arrayListFromJson (wholeData.periodEffectList);
+							for (int i = 0; i < effectList.Length; ++i)
                             {
-                                string[] effectKV = effectList[i].Split('|');
+								string[] effectKV = effectList[i].Split('|');
                                 if (effectKV.Length != 2)
                                     continue;
 
@@ -130,8 +133,44 @@ public class StaticDataMgr : MonoBehaviour
             }
         }
         {
-            var data = InitTable<BattleData>("battle");
-            m_BattleData = data.ToDictionary(p => p.id);
+            var data = InitTable<InstanceData>("instance");
+            m_InstanceData = data.ToDictionary(p => p.id);
+            foreach (var item in m_InstanceData)
+            {
+                ProcessData process = new ProcessData();
+                process.index = 0;
+                process.processAnim = item.Value.process1Animation;
+                process.needClearBuff = item.Value.is1ClearBuff != 0;
+                process.ParseCondition(item.Value.bossValiP1);
+                item.Value.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 1;
+                process.processAnim = item.Value.process2Animation;
+                process.needClearBuff = item.Value.is2ClearBuff != 0;
+                process.ParseCondition(item.Value.bossValiP2);
+                item.Value.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 2;
+                process.processAnim = item.Value.process3Animation;
+                process.needClearBuff = item.Value.is3ClearBuff != 0;
+                process.ParseCondition(item.Value.bossValiP3);
+                item.Value.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 3;
+                process.processAnim = item.Value.process4Animation;
+                process.needClearBuff = item.Value.is4ClearBuff != 0;
+                process.ParseCondition(item.Value.bossValiP4);
+                item.Value.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 4;
+                process.processAnim = item.Value.process5Animation;
+                process.needClearBuff = item.Value.is5ClearBuff != 0;
+                item.Value.bossProcess.Add(process);
+            }
         }
         {
             var data = InitTable<WeakPointData>("weakPointData");
@@ -149,7 +188,7 @@ public class StaticDataMgr : MonoBehaviour
         // Deserialization
         List<string> rowData = new List<string>();
         List<List<string>> rows = new List<List<string>>();
-        using (var reader = new CsvFileReader(Path.Combine(Util.StaticDataPath, filename + ".csv")))
+        using (var reader = new CsvFileReader(Path.Combine(Util.StaticDataPath, filename + ".csv"), Encoding.GetEncoding("GB2312")))
         {
             while (reader.ReadRow(rowData))
             {
@@ -191,9 +230,9 @@ public class StaticDataMgr : MonoBehaviour
         return m_WeakPointData[id];
     }
 
-    public BattleData GetBattleDataFromLevel(string id)
+    public InstanceData GetInstanceData(string id)
     {
-        return m_BattleData[id];
+        return m_InstanceData[id];
     }
 
 	public BattleUnitAiData GetBattleUnitAiData(string index)

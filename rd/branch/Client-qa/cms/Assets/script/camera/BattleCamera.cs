@@ -54,7 +54,4 @@ public class BattleCamera : MonoBehaviour
 		Destroy(mInst.gameObject);
 		mInst = null;
 	}
-
-
-
 }

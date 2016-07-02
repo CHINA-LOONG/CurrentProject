@@ -12,20 +12,23 @@ public class UIBattle : UIBase
 
     public Image m_MirrorImage = null;
     public Button m_ButtonLeft = null;
-    public Button m_ButtonDaoju = null;
+    public HomeButton m_ButtonDaoju = null;
     public Button m_ButtonSpeed = null;
     public List<Image> m_SpeedNumImageList = new List<Image>();
-    public Toggle m_ToggleMirror = null;
-    public Toggle m_ToggleBattleStyle = null;
+	public HomeButton m_ButtonMirror = null;
+    public HomeButton m_ButtonTuoguan = null;
+	public HomeButton m_ButtonMomo = null;
 
+    public BattleGroupUI m_PlayerGroupUI;
     public PetSwitchPage m_PetPanel;
 
     private MirrorDray m_MirrorDray = null;
 
     private int m_BattleSpeed = 1;
+	private	int	m_MaxSpeed = 3;
 
     // Use this for initialization
-    void Start()
+    public void Init()
     {
         if (null != m_MirrorImage)
         {
@@ -37,12 +40,17 @@ public class UIBattle : UIBase
             Debug.LogError("You Should set MirrorImage in the UIBattle prefab!");
         }
 
-        m_ToggleMirror.isOn = false;
+		m_ButtonMirror.IsOn = false;
         m_MirrorImage.gameObject.SetActive(false);
         m_PetPanel.gameObject.SetActive(false);
 
+        m_PlayerGroupUI.gameObject.SetActive(true);
+        m_PlayerGroupUI.Init(BattleController.Instance.BattleGroup.PlayerFieldList);
+
         AddUIObjectEvent();
         BindListener();
+
+		UpdateButton ();
     }
 
     void OnDestory()
@@ -63,11 +71,13 @@ public class UIBattle : UIBase
     void AddUIObjectEvent()
     {
         EventTriggerListener.Get(m_ButtonLeft.gameObject).onClick = OnButtonLeftCllicked;
-        EventTriggerListener.Get(m_ButtonDaoju.gameObject).onClick = OnButtonDaojuClicked;
+		m_ButtonDaoju.onClick = OnButtonDaojuClicked;
         EventTriggerListener.Get(m_ButtonSpeed.gameObject).onClick = OnButtonSpeedClicked;
 
-        EventTriggerListener.Get(m_ToggleMirror.gameObject).onClick = OnToggleMirrorClicked;
-        EventTriggerListener.Get(m_ToggleBattleStyle.gameObject).onClick = OnToggleBattleStyleClicked;
+		m_ButtonMirror.onClick = OnToggleMirrorClicked;
+		m_ButtonTuoguan.onClick = OnTuoguanButtonClick;
+
+		m_ButtonMomo.onClick = OnMomoCliced;
     }
 
     void OnButtonLeftCllicked(GameObject go)
@@ -84,31 +94,36 @@ public class UIBattle : UIBase
     void OnButtonSpeedClicked(GameObject go)
     {
         m_BattleSpeed++;
-        if (m_BattleSpeed > 3)
+		if (m_BattleSpeed > m_MaxSpeed)
         {
             m_BattleSpeed = 1;
         }
 
-        Image subImg = null;
-        for (int i = 0; i < m_SpeedNumImageList.Count; ++i)
-        {
-            subImg = m_SpeedNumImageList[i] as Image;
-            if (i + 1 == m_BattleSpeed)
-            {
-                subImg.gameObject.SetActive(true);
-            }
-            else
-            {
-                subImg.gameObject.SetActive(false);
-            }
-        }
-
-        Debug.Log("battle Speed = " + m_BattleSpeed);
+		UpdateButton ();
     }
+
+	void UpdateButton()
+	{
+		Image subImg = null;
+		for (int i = 0; i < m_SpeedNumImageList.Count; ++i)
+		{
+			subImg = m_SpeedNumImageList[i] as Image;
+			if (i + 1 == m_BattleSpeed)
+			{
+				subImg.gameObject.SetActive(true);
+			}
+			else
+			{
+				subImg.gameObject.SetActive(false);
+			}
+		}
+		
+		Debug.Log("battle Speed = " + m_BattleSpeed);
+	}
 
     void OnToggleMirrorClicked(GameObject go)
     {
-        bool isMirrorMode = m_ToggleMirror.isOn;
+		bool isMirrorMode = m_ButtonMirror.IsOn;
         m_MirrorImage.gameObject.SetActive(isMirrorMode);
         if (isMirrorMode)
         {
@@ -122,10 +137,17 @@ public class UIBattle : UIBase
 		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, isMirrorMode);
     }
 
-    void OnToggleBattleStyleClicked(GameObject go)
+    void OnTuoguanButtonClick(GameObject go)
     {
 
     }
+
+	void OnMomoCliced(GameObject go)
+	{
+
+	}
+
+#region Event
 
     //switch pet
     void OnShowSwitchPetUIAtIndex(EventArgs sArgs)
@@ -142,4 +164,5 @@ public class UIBattle : UIBase
 
         GameEventMgr.Instance.RemoveListener(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
     }
+#endregion    
 }

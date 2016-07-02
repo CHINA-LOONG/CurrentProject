@@ -178,41 +178,25 @@ public final class HS {
      */
     KICKOUT_S(4, 1004),
     /**
-     * <code>ROLE_CREATE_C = 1100;</code>
+     * <code>PLAYER_INFO_SYNC_S = 1005;</code>
+     */
+    PLAYER_INFO_SYNC_S(5, 1005),
+    /**
+     * <code>ASSEMBLE_FINISH_S = 1010;</code>
+     */
+    ASSEMBLE_FINISH_S(6, 1010),
+    /**
+     * <code>PLAYER_CREATE_C = 1101;</code>
      *
      * <pre>
      * 角色
      * </pre>
      */
-    ROLE_CREATE_C(5, 1100),
+    PLAYER_CREATE_C(7, 1101),
     /**
-     * <code>ROLE_CREATE_S = 1101;</code>
+     * <code>PLAYER_CREATE_S = 1102;</code>
      */
-    ROLE_CREATE_S(6, 1101),
-    /**
-     * <code>ROLE_DELETE_C = 1102;</code>
-     */
-    ROLE_DELETE_C(7, 1102),
-    /**
-     * <code>ROLE_DELETE_S = 1103;</code>
-     */
-    ROLE_DELETE_S(8, 1103),
-    /**
-     * <code>ROLE_SELECT_C = 1104;</code>
-     */
-    ROLE_SELECT_C(9, 1104),
-    /**
-     * <code>ROLE_SELECT_S = 1105;</code>
-     */
-    ROLE_SELECT_S(10, 1105),
-    /**
-     * <code>ROLE_CHANGE_C = 1106;</code>
-     */
-    ROLE_CHANGE_C(11, 1106),
-    /**
-     * <code>ROLE_CHANGE_S = 1107;</code>
-     */
-    ROLE_CHANGE_S(12, 1107),
+    PLAYER_CREATE_S(8, 1102),
     /**
      * <code>MONSTER_ADD_S = 2000;</code>
      *
@@ -220,23 +204,23 @@ public final class HS {
      * 怪物
      * </pre>
      */
-    MONSTER_ADD_S(13, 2000),
+    MONSTER_ADD_S(9, 2000),
     /**
      * <code>MONSTER_BREAK_C = 2001;</code>
      */
-    MONSTER_BREAK_C(14, 2001),
+    MONSTER_BREAK_C(10, 2001),
     /**
      * <code>MONSTER_BREAK_S = 2002;</code>
      */
-    MONSTER_BREAK_S(15, 2002),
+    MONSTER_BREAK_S(11, 2002),
     /**
      * <code>MONSTER_FEED_C = 2003;</code>
      */
-    MONSTER_FEED_C(16, 2003),
+    MONSTER_FEED_C(12, 2003),
     /**
      * <code>MONSTER_FEED_S = 2004;</code>
      */
-    MONSTER_FEED_S(17, 2004),
+    MONSTER_FEED_S(13, 2004),
     ;
 
     /**
@@ -264,41 +248,25 @@ public final class HS {
      */
     public static final int KICKOUT_S_VALUE = 1004;
     /**
-     * <code>ROLE_CREATE_C = 1100;</code>
+     * <code>PLAYER_INFO_SYNC_S = 1005;</code>
+     */
+    public static final int PLAYER_INFO_SYNC_S_VALUE = 1005;
+    /**
+     * <code>ASSEMBLE_FINISH_S = 1010;</code>
+     */
+    public static final int ASSEMBLE_FINISH_S_VALUE = 1010;
+    /**
+     * <code>PLAYER_CREATE_C = 1101;</code>
      *
      * <pre>
      * 角色
      * </pre>
      */
-    public static final int ROLE_CREATE_C_VALUE = 1100;
+    public static final int PLAYER_CREATE_C_VALUE = 1101;
     /**
-     * <code>ROLE_CREATE_S = 1101;</code>
+     * <code>PLAYER_CREATE_S = 1102;</code>
      */
-    public static final int ROLE_CREATE_S_VALUE = 1101;
-    /**
-     * <code>ROLE_DELETE_C = 1102;</code>
-     */
-    public static final int ROLE_DELETE_C_VALUE = 1102;
-    /**
-     * <code>ROLE_DELETE_S = 1103;</code>
-     */
-    public static final int ROLE_DELETE_S_VALUE = 1103;
-    /**
-     * <code>ROLE_SELECT_C = 1104;</code>
-     */
-    public static final int ROLE_SELECT_C_VALUE = 1104;
-    /**
-     * <code>ROLE_SELECT_S = 1105;</code>
-     */
-    public static final int ROLE_SELECT_S_VALUE = 1105;
-    /**
-     * <code>ROLE_CHANGE_C = 1106;</code>
-     */
-    public static final int ROLE_CHANGE_C_VALUE = 1106;
-    /**
-     * <code>ROLE_CHANGE_S = 1107;</code>
-     */
-    public static final int ROLE_CHANGE_S_VALUE = 1107;
+    public static final int PLAYER_CREATE_S_VALUE = 1102;
     /**
      * <code>MONSTER_ADD_S = 2000;</code>
      *
@@ -334,14 +302,10 @@ public final class HS {
         case 1002: return LOGOUT_C;
         case 1003: return LOGOUT_S;
         case 1004: return KICKOUT_S;
-        case 1100: return ROLE_CREATE_C;
-        case 1101: return ROLE_CREATE_S;
-        case 1102: return ROLE_DELETE_C;
-        case 1103: return ROLE_DELETE_S;
-        case 1104: return ROLE_SELECT_C;
-        case 1105: return ROLE_SELECT_S;
-        case 1106: return ROLE_CHANGE_C;
-        case 1107: return ROLE_CHANGE_S;
+        case 1005: return PLAYER_INFO_SYNC_S;
+        case 1010: return ASSEMBLE_FINISH_S;
+        case 1101: return PLAYER_CREATE_C;
+        case 1102: return PLAYER_CREATE_S;
         case 2000: return MONSTER_ADD_S;
         case 2001: return MONSTER_BREAK_C;
         case 2002: return MONSTER_BREAK_S;
@@ -409,16 +373,14 @@ public final class HS {
     java.lang.String[] descriptorData = {
       "\n\010HS.proto*I\n\003sys\022\020\n\014DATA_WRAPPER\020\001\022\020\n\014K" +
       "EY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016\n\nERROR_C" +
-      "ODE\020\004*\332\002\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020" +
+      "ODE\020\004*\227\002\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020" +
       "\351\007\022\r\n\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICK" +
-      "OUT_S\020\354\007\022\022\n\rROLE_CREATE_C\020\314\010\022\022\n\rROLE_CRE" +
-      "ATE_S\020\315\010\022\022\n\rROLE_DELETE_C\020\316\010\022\022\n\rROLE_DEL" +
-      "ETE_S\020\317\010\022\022\n\rROLE_SELECT_C\020\320\010\022\022\n\rROLE_SEL" +
-      "ECT_S\020\321\010\022\022\n\rROLE_CHANGE_C\020\322\010\022\022\n\rROLE_CHA" +
-      "NGE_S\020\323\010\022\022\n\rMONSTER_ADD_S\020\320\017\022\024\n\017MONSTER_" +
-      "BREAK_C\020\321\017\022\024\n\017MONSTER_BREAK_S\020\322\017\022\023\n\016MONS",
-      "TER_FEED_C\020\323\017\022\023\n\016MONSTER_FEED_S\020\324\017B\030\n\026co" +
-      "m.hawk.game.protocol"
+      "OUT_S\020\354\007\022\027\n\022PLAYER_INFO_SYNC_S\020\355\007\022\026\n\021ASS" +
+      "EMBLE_FINISH_S\020\362\007\022\024\n\017PLAYER_CREATE_C\020\315\010\022" +
+      "\024\n\017PLAYER_CREATE_S\020\316\010\022\022\n\rMONSTER_ADD_S\020\320" +
+      "\017\022\024\n\017MONSTER_BREAK_C\020\321\017\022\024\n\017MONSTER_BREAK" +
+      "_S\020\322\017\022\023\n\016MONSTER_FEED_C\020\323\017\022\023\n\016MONSTER_FE" +
+      "ED_S\020\324\017B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

@@ -2,15 +2,17 @@ package com.hawk.game.module;
 
 import org.hawk.annotation.ProtocolHandler;
 import org.hawk.app.HawkApp;
+import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.HawkSession;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
+
 import java.util.List;
 
 import com.hawk.game.ServerData;
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
-import com.hawk.game.entity.RoleEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
@@ -36,17 +38,32 @@ public class PlayerLoginModule extends PlayerModule {
 	}
 
 	/**
+	 * 协议响应
+	 * 
+	 * @param protocol
+	 * @return
+	 */
+	@Override
+	public boolean onProtocol(HawkProtocol protocol)
+	{
+		if (protocol.checkType(HS.code.LOGIN_C))
+		{
+			// 处理本会话的玩家登陆协议
+			onPlayerLogin(protocol.getSession(), protocol.getType(), protocol.parseProtocol(HSLogin.getDefaultInstance()));
+			return true;
+		}
+		return super.onProtocol(protocol);
+	}
+	
+	/**
 	 * 登陆协议处理
 	 * 
 	 * @param session
 	 * @param protocol
 	 */
 	@ProtocolHandler(code = HS.code.LOGIN_C_VALUE)
-	private boolean onPlayerLogin(HawkProtocol cmd) {
-		HSLogin protocol = cmd.parseProtocol(HSLogin.getDefaultInstance());
-		HawkSession session = cmd.getSession();
-		int hsCode = cmd.getType();
-
+	private boolean onPlayerLogin(HawkSession session, int hsCode, HSLogin protocol)
+	{
 		// 在线人数达到上限
 		int sessionMaxSize = HawkApp.getInstance().getAppCfg().getSessionMaxSize();
 		if (sessionMaxSize > 0 && ServerData.getInstance().getOnlinePlayer() >= sessionMaxSize) {
@@ -116,6 +133,13 @@ public class PlayerLoginModule extends PlayerModule {
 			}
 		}
 		
+		// 玩家对象信息错误
+		if (playerEntity == null || playerEntity.getId() <= 0)
+		{
+			session.sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.PlayerError.PAYER_NOT_EXIST_VALUE, 1));
+			return false;
+		}
+		
 		playerEntity.setLoginTime(HawkTime.getCalendar().getTime());
 		
 		// 登陆回复协议
@@ -124,22 +148,28 @@ public class PlayerLoginModule extends PlayerModule {
 		response.setPlayerId(playerEntity.getId());
 		// 设置时间戳
 		response.setTimeStamp(HawkTime.getSeconds());
-
 		// 绑定会话
 		player.setSession(session);
+		playerEntity.setLoginTime(HawkTime.getCalendar().getTime());
+		playerEntity.notifyUpdate(true);
+
+		// 加载所有怪物数据
+		//player.getPlayerData().loadAllMonsters(playerEntity.getId());
+		
 		// 发送登陆成功协议
 		sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S, response));
+		// 同步玩家信息
+		player.getPlayerData().syncPlayerInfo();
 		
-		List<RoleEntity> roleEntities = player.getPlayerData().loadAllRoles();
-		if (roleEntities != null) {
-			
+		// 同步怪物信息
+		player.getPlayerData().syncRoleInfo(0);
+		
+		// 通知玩家其他模块玩家登陆成功
+		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LOGIN, player.getXid());
+		if (!HawkApp.getInstance().postMsg(msg))
+		{
+			HawkLog.errPrintln("post player login message failed: " + playerEntity.getNickname());
 		}
-		
-		
-		
-		// 通知玩家组装完成
-		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_ASSEMBLE, player.getXid());
-		HawkApp.getInstance().postMsg(msg);
 		
 		return true;
 	}

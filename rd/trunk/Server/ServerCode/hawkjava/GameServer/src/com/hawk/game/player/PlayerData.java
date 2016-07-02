@@ -1,17 +1,19 @@
 package com.hawk.game.player;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import org.hawk.db.HawkDBManager;
+import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
 
 import com.hawk.game.ServerData;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
-import com.hawk.game.entity.RoleEntity;
+import com.hawk.game.protocol.Player.HSPlayerInfoSync;
+import com.hawk.game.protocol.HS;
+import com.hawk.game.util.BuilderUtil;
 
 /**
  * 管理所有玩家数据集合
@@ -30,16 +32,6 @@ public class PlayerData {
 	 */
 	private PlayerEntity playerEntity = null;
 
-	/**
-	 * 当前选择角色基础数据
-	 */
-	private RoleEntity selectRoleEntity = null;
-
-	/**
-	 * 角色列表数据
-	 */
-	private List<RoleEntity> roleEntities = new LinkedList<RoleEntity>();
-	
 	/**
 	 * 怪的基础数据
 	 */
@@ -63,15 +55,27 @@ public class PlayerData {
 		return player;
 	}
 
+	/**********************************************************************************************************
+	 * 数据查询区
+	 **********************************************************************************************************/
 	/**
-	 * 获取玩家数据实体
+	 * 获取玩家ID
+	 * 
+	 * @return
+	 */
+	public int getId() {
+		return playerEntity.getId();
+	}
+
+	/**
+	 * 获取玩家基础数据
 	 * 
 	 * @return
 	 */
 	public PlayerEntity getPlayerEntity() {
 		return playerEntity;
 	}
-
+	
 	/**
 	 * 设置玩家数据实体
 	 * 
@@ -79,24 +83,6 @@ public class PlayerData {
 	 */
 	public void setPlayerEntity(PlayerEntity playerEntity) {
 		this.playerEntity = playerEntity;
-	}
-	
-	/**
-	 * 获取角色数据实体
-	 * 
-	 * @return
-	 */
-	public RoleEntity getSelectRoleEntity() {
-		return selectRoleEntity;
-	}
-
-	/**
-	 * 设置角色数据实体
-	 * 
-	 * @param playerEntity
-	 */
-	public void setRoleEntity(RoleEntity roleEntity){
-		this.selectRoleEntity = roleEntity;
 	}
 
 	/**
@@ -115,7 +101,7 @@ public class PlayerData {
 	 * @param playerEntity
 	 */
 	public void setMonsterEntity(MonsterEntity monsterEntity) {
-		
+		monsterEntities.put(monsterEntity.getId(), monsterEntity);
 	}
 
 	public MonsterEntity getMonsterEntity(int monsterID){
@@ -144,61 +130,51 @@ public class PlayerData {
 			List<PlayerEntity> playerEntitys = HawkDBManager.getInstance().query("from PlayerEntity where puid = ? and invalid = 0", puid);
 			if (playerEntitys != null && playerEntitys.size() > 0) {
 				playerEntity = playerEntitys.get(0);
-				try {
-					if (playerEntity.getSilentTime() != null && playerEntity.getSilentTime().getTime() > HawkTime.getMillisecond()) {
-						ServerData.getInstance().addDisablePhone(playerEntity.getPhoneInfo());
-					}
-				} catch (Exception e) {
-				}
+//				try {
+//					if (playerEntity.getSilentTime() != null && playerEntity.getSilentTime().getTime() > HawkTime.getMillisecond()) {
+//						ServerData.getInstance().addDisablePhone(playerEntity.getPhoneInfo());
+//					}
+//				} catch (Exception e) {
+//				}
 			}
 		}
 		return playerEntity;
 	}
 	
 	/**
-	 * 加载所有角色信息
-	 * 
-	 * @return
-	 */
-	public List<RoleEntity> loadAllRoles() {	
-		roleEntities = HawkDBManager.getInstance().query("from RoleEntity where playerId = ? and invalid = 0 order by id asc ", playerEntity.getId());
-		return roleEntities;
-	}
-	
-	/**
-	 * 加载角色信息
-	 * 
-	 * @return
-	 */
-	public boolean selectRole(int roleId) {
-		selectRoleEntity = null;
-		
-		for (RoleEntity roleEntity : roleEntities) {
-			if (roleId == roleEntity.getRoleID()) {
-				selectRoleEntity = roleEntity;
-			}
-		}
-		
-		if (selectRoleEntity == null) {
-			return false;
-		}
-		
-		loadMonster(roleId);
-		return true;
-	}
-
-	/**
 	 * 加载怪物信息
 	 * 
 	 * @return
 	 */
-	private void loadMonster(int roleId) {	
+	public void loadAllMonsters(int playerID) {	
 		monsterEntities.clear();
-		List<MonsterEntity> monsterEntityList = HawkDBManager.getInstance().query("from MonsterEntity where roleId = ? and invalid = 0", roleId);
+		List<MonsterEntity> monsterEntityList = HawkDBManager.getInstance().query("from MonsterEntity where roleId = ? and invalid = 0", playerID);
 		if (monsterEntityList != null && monsterEntityList.size() > 0) {
 			for (MonsterEntity monsterEntity : monsterEntityList) {
 				monsterEntities.put(monsterEntity.getId(), monsterEntity);
 			}
 		}
+	}
+	
+	/**********************************************************************************************************
+	 * 数据同步区
+	 **********************************************************************************************************/
+	
+	/**
+	 * 同步玩家信息
+	 */
+	public void syncPlayerInfo() {
+		HSPlayerInfoSync.Builder builder = HSPlayerInfoSync.newBuilder();
+		builder.addPlayerInfos(BuilderUtil.genPlayerBuilder(playerEntity));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_INFO_SYNC_S, builder));
+	}
+
+	/**
+	 * 同步角色信息(0表示同步所有)
+	 * 
+	 * @param roleId
+	 */
+	public void syncRoleInfo(int id) {
+
 	}
 }

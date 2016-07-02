@@ -1,8 +1,15 @@
 package com.hawk.game.module;
 
+import org.hawk.app.HawkApp;
+import org.hawk.msg.HawkMsg;
+import org.hawk.net.protocol.HawkProtocol;
+
 import com.hawk.game.ServerData;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
+import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Player.HSAssembleFinish;
+import com.hawk.game.util.GsConst;
 
 /**
  * 空闲模块, 所有模块最后操作
@@ -26,7 +33,13 @@ public class PlayerIdleModule extends PlayerModule {
 	 */
 	@Override
 	protected boolean onPlayerLogin() {
-
+		// 最后通知组装完成
+		sendProtocol(HawkProtocol.valueOf(HS.code.ASSEMBLE_FINISH_S, HSAssembleFinish.newBuilder().setPlayerID(player.getPlayerData().getId())));
+			
+		// 通知玩家组装完成
+ 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_ASSEMBLE, player.getXid());
+		HawkApp.getInstance().postMsg(msg);
+		
 		return true;
 	}
 

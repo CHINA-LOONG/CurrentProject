@@ -1,4 +1,4 @@
-TEXT,NUM,FLOAT,NUM,NUM,NUM,TEXT,TEXT,TEXT,TEXT,NUM
+#TEXT,NUM,FLOAT,NUM,NUM,NUM,TEXT,TEXT,TEXT,TEXT,NUM
 id,isDamagePoint,damageRate,health,isTarget,property,node,asset,collider,mesh,initialStatus
 #弱点id,是否关联boss减血,弱点系数,弱点hp,ai选择目标是否可以选择到,弱点五行,弱点的节点,弱点表现,检测的盒子,部位mesh名,部位初始状态
 jiuweihu_wp1,1,0.7,-1,1,-1,jiuweihu_wp1,weakpointEffect1,wp1,,-1

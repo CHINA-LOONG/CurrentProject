@@ -185,4 +185,35 @@ public class Util
 		}
 		return weightList.Count - 1;
 	}
+
+	public static List<int> RondomNoneReatNumbers(int min,int max,int numbers)
+	{
+		int Count = max - min;
+		if (min == max) 
+		{
+			Count = 1;
+		}
+		int[] numberSZ = new int[Count];
+		for (int i = 0; i<Count; ++i)
+		{
+			numberSZ[i] = min + i;
+		}
+
+		int tempIndex = 0;
+		int tempValue = 0;
+		for (int i =0; i<Count; ++i)
+		{
+			tempIndex = Random.Range(0,Count);
+			tempValue = numberSZ[i];
+			numberSZ[i] = numberSZ[tempIndex];
+			numberSZ[tempIndex] = tempValue;
+		}
+		List<int> listReturn = new List<int> ();
+		for (int i =0; i<numbers; ++i)
+		{
+			listReturn.Add(numberSZ[i]);
+		}
+
+		return listReturn;
+	}
 }

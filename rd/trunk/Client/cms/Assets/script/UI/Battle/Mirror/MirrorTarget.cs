@@ -5,6 +5,7 @@ public class MirrorTarget : MonoBehaviour
 {
 	[SerializeField]
 	string	m_monsterWeakPointID;
+
 	public	string	WeakPointIDAttr
 	{
 		set
@@ -16,6 +17,12 @@ public class MirrorTarget : MonoBehaviour
 			return m_monsterWeakPointID;
 		}
 	}
+
+	public float DistanceToMirror {
+		set;
+		get;
+	}
+
 	// Use this for initialization
 	void Start () 
 	{

@@ -14,17 +14,17 @@ namespace PB
     public enum errorMask
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"NORMAL_ERROR", Value=65536)]
-      NORMAL_ERROR = 65536,
+      [global::ProtoBuf.ProtoEnum(Name=@"NORMAL_ERROR", Value=0)]
+      NORMAL_ERROR = 0,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_ERROR", Value=131072)]
-      LOGIN_ERROR = 131072,
+      [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_ERROR", Value=65536)]
+      LOGIN_ERROR = 65536,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_ERROR", Value=196608)]
-      ROLE_ERROR = 196608,
+      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_ERROR", Value=131072)]
+      ROLE_ERROR = 131072,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_ERROR", Value=262144)]
-      MONSTER_ERROR = 262144
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_ERROR", Value=196608)]
+      MONSTER_ERROR = 196608
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"error")]
@@ -49,22 +49,19 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"DATA_BASE_ERROR", Value=5)]
       DATA_BASE_ERROR = 5,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SERVER_ERROR", Value=100)]
-      SERVER_ERROR = 100
+      [global::ProtoBuf.ProtoEnum(Name=@"SERVER_ERROR", Value=4096)]
+      SERVER_ERROR = 4096
     }
   
-    [global::ProtoBuf.ProtoContract(Name=@"roleError")]
-    public enum roleError
+    [global::ProtoBuf.ProtoContract(Name=@"PlayerError")]
+    public enum PlayerError
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_MAX_SIZE", Value=196609)]
-      ROLE_MAX_SIZE = 196609,
+      [global::ProtoBuf.ProtoEnum(Name=@"PAYER_NOT_EXIST", Value=196609)]
+      PAYER_NOT_EXIST = 196609,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_NICKNAME_EXIST", Value=196610)]
-      ROLE_NICKNAME_EXIST = 196610,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ROLE_NOT_EXIST", Value=196611)]
-      ROLE_NOT_EXIST = 196611
+      [global::ProtoBuf.ProtoEnum(Name=@"PAYER_NICKNAME_EXIST", Value=196610)]
+      PAYER_NICKNAME_EXIST = 196610
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"monsterError")]

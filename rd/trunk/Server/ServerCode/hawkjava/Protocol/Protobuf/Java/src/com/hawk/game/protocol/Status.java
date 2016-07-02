@@ -14,49 +14,48 @@ public final class Status {
   public enum errorMask
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>NORMAL_ERROR = 65536;</code>
+     * <code>NORMAL_ERROR = 0;</code>
      */
-    NORMAL_ERROR(0, 65536),
+    NORMAL_ERROR(0, 0),
     /**
-     * <code>LOGIN_ERROR = 131072;</code>
+     * <code>LOGIN_ERROR = 65536;</code>
      */
-    LOGIN_ERROR(1, 131072),
+    LOGIN_ERROR(1, 65536),
     /**
-     * <code>ROLE_ERROR = 196608;</code>
+     * <code>ROLE_ERROR = 131072;</code>
      */
-    ROLE_ERROR(2, 196608),
-    /**
-     * <code>MONSTER_ERROR = 262144;</code>
-     */
-    MONSTER_ERROR(3, 262144),
+    ROLE_ERROR(2, 131072),
     ;
 
     /**
-     * <code>NORMAL_ERROR = 65536;</code>
+     * <code>MONSTER_ERROR = 131072;</code>
      */
-    public static final int NORMAL_ERROR_VALUE = 65536;
+    public static final errorMask MONSTER_ERROR = ROLE_ERROR;
     /**
-     * <code>LOGIN_ERROR = 131072;</code>
+     * <code>NORMAL_ERROR = 0;</code>
      */
-    public static final int LOGIN_ERROR_VALUE = 131072;
+    public static final int NORMAL_ERROR_VALUE = 0;
     /**
-     * <code>ROLE_ERROR = 196608;</code>
+     * <code>LOGIN_ERROR = 65536;</code>
      */
-    public static final int ROLE_ERROR_VALUE = 196608;
+    public static final int LOGIN_ERROR_VALUE = 65536;
     /**
-     * <code>MONSTER_ERROR = 262144;</code>
+     * <code>ROLE_ERROR = 131072;</code>
      */
-    public static final int MONSTER_ERROR_VALUE = 262144;
+    public static final int ROLE_ERROR_VALUE = 131072;
+    /**
+     * <code>MONSTER_ERROR = 131072;</code>
+     */
+    public static final int MONSTER_ERROR_VALUE = 131072;
 
 
     public final int getNumber() { return value; }
 
     public static errorMask valueOf(int value) {
       switch (value) {
-        case 65536: return NORMAL_ERROR;
-        case 131072: return LOGIN_ERROR;
-        case 196608: return ROLE_ERROR;
-        case 262144: return MONSTER_ERROR;
+        case 0: return NORMAL_ERROR;
+        case 65536: return LOGIN_ERROR;
+        case 131072: return ROLE_ERROR;
         default: return null;
       }
     }
@@ -86,7 +85,9 @@ public final class Status {
       return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(0);
     }
 
-    private static final errorMask[] VALUES = values();
+    private static final errorMask[] VALUES = {
+      NORMAL_ERROR, LOGIN_ERROR, ROLE_ERROR, MONSTER_ERROR, 
+    };
 
     public static errorMask valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -162,13 +163,13 @@ public final class Status {
      */
     DATA_BASE_ERROR(5, 5),
     /**
-     * <code>SERVER_ERROR = 100;</code>
+     * <code>SERVER_ERROR = 4096;</code>
      *
      * <pre>
      * 服务器错误
      * </pre>
      */
-    SERVER_ERROR(6, 100),
+    SERVER_ERROR(6, 4096),
     ;
 
     /**
@@ -220,13 +221,13 @@ public final class Status {
      */
     public static final int DATA_BASE_ERROR_VALUE = 5;
     /**
-     * <code>SERVER_ERROR = 100;</code>
+     * <code>SERVER_ERROR = 4096;</code>
      *
      * <pre>
      * 服务器错误
      * </pre>
      */
-    public static final int SERVER_ERROR_VALUE = 100;
+    public static final int SERVER_ERROR_VALUE = 4096;
 
 
     public final int getNumber() { return value; }
@@ -239,7 +240,7 @@ public final class Status {
         case 3: return REGISTER_MAX_LIMIT;
         case 4: return SERVER_GRAY_STATE;
         case 5: return DATA_BASE_ERROR;
-        case 100: return SERVER_ERROR;
+        case 4096: return SERVER_ERROR;
         default: return null;
       }
     }
@@ -292,82 +293,65 @@ public final class Status {
   }
 
   /**
-   * Protobuf enum {@code roleError}
+   * Protobuf enum {@code PlayerError}
    */
-  public enum roleError
+  public enum PlayerError
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>ROLE_MAX_SIZE = 196609;</code>
-     *
-     * <pre>
-     * 账户角色数量达到上限
-     * </pre>
-     */
-    ROLE_MAX_SIZE(0, 196609),
-    /**
-     * <code>ROLE_NICKNAME_EXIST = 196610;</code>
-     *
-     * <pre>
-     * 昵称存在
-     * </pre>
-     */
-    ROLE_NICKNAME_EXIST(1, 196610),
-    /**
-     * <code>ROLE_NOT_EXIST = 196611;</code>
+     * <code>PAYER_NOT_EXIST = 196609;</code>
      *
      * <pre>
      * 角色不存在
      * </pre>
      */
-    ROLE_NOT_EXIST(2, 196611),
+    PAYER_NOT_EXIST(0, 196609),
+    /**
+     * <code>PAYER_NICKNAME_EXIST = 196610;</code>
+     *
+     * <pre>
+     * 昵称存在
+     * </pre>
+     */
+    PAYER_NICKNAME_EXIST(1, 196610),
     ;
 
     /**
-     * <code>ROLE_MAX_SIZE = 196609;</code>
-     *
-     * <pre>
-     * 账户角色数量达到上限
-     * </pre>
-     */
-    public static final int ROLE_MAX_SIZE_VALUE = 196609;
-    /**
-     * <code>ROLE_NICKNAME_EXIST = 196610;</code>
-     *
-     * <pre>
-     * 昵称存在
-     * </pre>
-     */
-    public static final int ROLE_NICKNAME_EXIST_VALUE = 196610;
-    /**
-     * <code>ROLE_NOT_EXIST = 196611;</code>
+     * <code>PAYER_NOT_EXIST = 196609;</code>
      *
      * <pre>
      * 角色不存在
      * </pre>
      */
-    public static final int ROLE_NOT_EXIST_VALUE = 196611;
+    public static final int PAYER_NOT_EXIST_VALUE = 196609;
+    /**
+     * <code>PAYER_NICKNAME_EXIST = 196610;</code>
+     *
+     * <pre>
+     * 昵称存在
+     * </pre>
+     */
+    public static final int PAYER_NICKNAME_EXIST_VALUE = 196610;
 
 
     public final int getNumber() { return value; }
 
-    public static roleError valueOf(int value) {
+    public static PlayerError valueOf(int value) {
       switch (value) {
-        case 196609: return ROLE_MAX_SIZE;
-        case 196610: return ROLE_NICKNAME_EXIST;
-        case 196611: return ROLE_NOT_EXIST;
+        case 196609: return PAYER_NOT_EXIST;
+        case 196610: return PAYER_NICKNAME_EXIST;
         default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<roleError>
+    public static com.google.protobuf.Internal.EnumLiteMap<PlayerError>
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<roleError>
+    private static com.google.protobuf.Internal.EnumLiteMap<PlayerError>
         internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<roleError>() {
-            public roleError findValueByNumber(int number) {
-              return roleError.valueOf(number);
+          new com.google.protobuf.Internal.EnumLiteMap<PlayerError>() {
+            public PlayerError findValueByNumber(int number) {
+              return PlayerError.valueOf(number);
             }
           };
 
@@ -384,9 +368,9 @@ public final class Status {
       return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(2);
     }
 
-    private static final roleError[] VALUES = values();
+    private static final PlayerError[] VALUES = values();
 
-    public static roleError valueOf(
+    public static PlayerError valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -398,12 +382,12 @@ public final class Status {
     private final int index;
     private final int value;
 
-    private roleError(int index, int value) {
+    private PlayerError(int index, int value) {
       this.index = index;
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:roleError)
+    // @@protoc_insertion_point(enum_scope:PlayerError)
   }
 
   /**
@@ -513,17 +497,17 @@ public final class Status {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014Status.proto*Y\n\terrorMask\022\022\n\014NORMAL_ER" +
-      "ROR\020\200\200\004\022\021\n\013LOGIN_ERROR\020\200\200\010\022\020\n\nROLE_ERROR" +
-      "\020\200\200\014\022\023\n\rMONSTER_ERROR\020\200\200\020*\225\001\n\005error\022\016\n\nN" +
-      "ONE_ERROR\020\000\022\020\n\014CONFIG_ERROR\020\001\022\024\n\020ONLINE_" +
-      "MAX_LIMIT\020\002\022\026\n\022REGISTER_MAX_LIMIT\020\003\022\025\n\021S" +
-      "ERVER_GRAY_STATE\020\004\022\023\n\017DATA_BASE_ERROR\020\005\022" +
-      "\020\n\014SERVER_ERROR\020d*Q\n\troleError\022\023\n\rROLE_M" +
-      "AX_SIZE\020\201\200\014\022\031\n\023ROLE_NICKNAME_EXIST\020\202\200\014\022\024" +
-      "\n\016ROLE_NOT_EXIST\020\203\200\014*?\n\014monsterError\022\026\n\020" +
-      "MONSTER_MAX_SIZE\020\201\200\020\022\027\n\021MONSTER_NOT_EXIS",
-      "T\020\202\200\020B\030\n\026com.hawk.game.protocol"
+      "\n\014Status.proto*W\n\terrorMask\022\020\n\014NORMAL_ER" +
+      "ROR\020\000\022\021\n\013LOGIN_ERROR\020\200\200\004\022\020\n\nROLE_ERROR\020\200" +
+      "\200\010\022\023\n\rMONSTER_ERROR\020\200\200\010*\226\001\n\005error\022\016\n\nNON" +
+      "E_ERROR\020\000\022\020\n\014CONFIG_ERROR\020\001\022\024\n\020ONLINE_MA" +
+      "X_LIMIT\020\002\022\026\n\022REGISTER_MAX_LIMIT\020\003\022\025\n\021SER" +
+      "VER_GRAY_STATE\020\004\022\023\n\017DATA_BASE_ERROR\020\005\022\021\n" +
+      "\014SERVER_ERROR\020\200 *@\n\013PlayerError\022\025\n\017PAYER" +
+      "_NOT_EXIST\020\201\200\014\022\032\n\024PAYER_NICKNAME_EXIST\020\202" +
+      "\200\014*?\n\014monsterError\022\026\n\020MONSTER_MAX_SIZE\020\201" +
+      "\200\020\022\027\n\021MONSTER_NOT_EXIST\020\202\200\020B\030\n\026com.hawk.",
+      "game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

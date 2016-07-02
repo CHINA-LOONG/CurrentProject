@@ -7,6 +7,7 @@ public class BattleUnitUI : MonoBehaviour
     public Button dazhaoBtn;
     public Text unitName;
     public LifeBarUI lifeBar;
+    public EnegyBarUI enegyBar;
 
     public GameUnit Unit { get; set; }
 
@@ -29,6 +30,7 @@ public class BattleUnitUI : MonoBehaviour
         dazhaoBtn.gameObject.SetActive(false);
         unitName.text = Unit.name;
         lifeBar.value = Unit.curLife / (float)Unit.maxLife;
+        enegyBar.value = Mathf.Clamp01(Unit.energy / (float)BattleConst.enegyMax);
 
         if (Unit.energy >= BattleConst.enegyMax)
         {
@@ -45,6 +47,6 @@ public class BattleUnitUI : MonoBehaviour
 
     void OnDazhaoClick(GameObject go)
     {
-        BattleController.Instance.OnUnitCastDazhao(Unit);
+        GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.HitDazhaoBtn, Unit);
     }
 }

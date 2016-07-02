@@ -11,7 +11,7 @@ message HSMonster
 	required int32 grade = 3;
 	required int32 level = 4;
 	required int32 exp = 5;
-	required bool hasEquip = 6;
+	required int32 equipId = 6;
 	required int32 disposition = 7;
 	repeated HSSkill skillList = 8;
 }
@@ -50,4 +50,7 @@ message HSMonsterFeedRet
 {
 	required int32 status = 1;
 	required int32 monsterId = 2;
+	required int32 foodMonsterId = 3;
+	optional int32 exp = 4;
+	optional int32 level = 5;
 }

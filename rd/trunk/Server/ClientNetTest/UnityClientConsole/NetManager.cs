@@ -11,7 +11,6 @@ using System.IO;
 namespace UnityClientConsole
 {
   
-
     class NetManager
     {
         private const int BUFFERSIZE = 1024;
@@ -77,7 +76,6 @@ namespace UnityClientConsole
             {    
                 Socket handler = (Socket)ar.AsyncState;    
                 int bytesSent = handler.EndSend(ar);
-                Console.WriteLine("{0} bytes already send", bytesSent);
             }
             catch (Exception e)
             {

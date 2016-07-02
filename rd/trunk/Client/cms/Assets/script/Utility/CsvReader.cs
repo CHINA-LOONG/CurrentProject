@@ -70,6 +70,7 @@ public class CsvFileReader : CsvFileCommon, IDisposable
     private StreamReader Reader;
     private string CurrLine;
     private int CurrPos;
+    private Encoding FileEncoding;
     private EmptyLineBehavior EmptyLineBehavior;
 
     /// <summary>
@@ -79,9 +80,11 @@ public class CsvFileReader : CsvFileCommon, IDisposable
     /// <param name="stream">The stream to read from</param>
     /// <param name="emptyLineBehavior">Determines how empty lines are handled</param>
     public CsvFileReader(Stream stream,
+        Encoding encoding = null,
         EmptyLineBehavior emptyLineBehavior = EmptyLineBehavior.NoColumns)
     {
-        Reader = new StreamReader(stream);
+        FileEncoding = encoding;
+        Reader = new StreamReader(stream, FileEncoding);
         EmptyLineBehavior = emptyLineBehavior;
     }
 
@@ -92,9 +95,11 @@ public class CsvFileReader : CsvFileCommon, IDisposable
     /// <param name="path">The name of the CSV file to read from</param>
     /// <param name="emptyLineBehavior">Determines how empty lines are handled</param>
     public CsvFileReader(string path,
+        Encoding encoding = null,
         EmptyLineBehavior emptyLineBehavior = EmptyLineBehavior.NoColumns)
     {
-        Reader = new StreamReader(path);
+        FileEncoding = encoding;
+        Reader = new StreamReader(path, FileEncoding);
         EmptyLineBehavior = emptyLineBehavior;
     }
 

@@ -4,8 +4,12 @@
 /assetbundle/camera.manifest
 /assetbundle/monster
 /assetbundle/monster.manifest
+/assetbundle/battlescene/daxueshan
+/assetbundle/battlescene/daxueshan.manifest
 /assetbundle/battlescene/yunmenze
 /assetbundle/battlescene/yunmenze.manifest
+/assetbundle/effect/battle
+/assetbundle/effect/battle.manifest
 /assetbundle/ui/battle
 /assetbundle/ui/battle.manifest
 /assetbundle/ui/build
@@ -15,9 +19,12 @@
 /assetbundle/ui/root
 /assetbundle/ui/root.manifest
 /staticData/battle.csv
+/staticData/battleUnitAi.csv
 /staticData/buff.csv
 /staticData/effect.csv
+/staticData/instance.csv
 /staticData/process.csv
 /staticData/spell.csv
 /staticData/unitBaseData.csv
 /staticData/unitData.csv
+/staticData/weakPointData.csv

@@ -23,5 +23,5 @@ public class BattleConst
     public const float speedFactorMax = 1.02f;
 
     //能量积攒上限
-    public const int enegyMax = 20;
+    public const int enegyMax = 30;
 }

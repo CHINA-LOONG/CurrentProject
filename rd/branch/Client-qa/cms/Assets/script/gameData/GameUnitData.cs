@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 public enum UnitState
@@ -83,8 +84,6 @@ public class GameUnit
     public int maxLife;
     public int magicAttack;
     public int phyAttack;
-
-
 
     public List<Buff> buffList;
     public Dictionary<string, Spell> spellList;
@@ -185,14 +184,17 @@ public class GameUnit
 
         //初始化技能列表
         spellList = new Dictionary<string, Spell>();
-        string[] spellIDList = unitRowData.spellIDList.Split(';');
+        //string[] spellIDList = unitRowData.spellIDList.Split(';');
+		ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson (unitRowData.spellIDList);
+
         SpellProtoType spellPt = null;
-        for (int i = 0; i < spellIDList.Length; ++i)
+		for (int i = 0; i < spellArrayList.Count; ++i)
         {
-            spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellIDList[i]);
+			string spellID = spellArrayList[i]as string ;
+			spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellID);
             if (spellPt != null)
             {
-                spellList.Add(spellIDList[i], new Spell(spellPt));
+				spellList.Add(spellID, new Spell(spellPt));
             }
         }
 
@@ -250,7 +252,7 @@ public class GameUnit
     {
         speedCount += speed * UnityEngine.Random.Range(BattleConst.speedFactorMin, BattleConst.speedFactorMax);
         actionOrder = BattleConst.speedK / speedCount;
-        Logger.LogFormat("Unit {0}: speedCount: {1}, actionOrder: {2}", name, speedCount, actionOrder);
+        //Logger.LogFormat("Unit {0}: speedCount: {1}, actionOrder: {2}", name, speedCount, actionOrder);
     }
 
     /// <summary>
@@ -260,7 +262,7 @@ public class GameUnit
     {
         speedCount = speed * UnityEngine.Random.Range(BattleConst.speedFactorMin, BattleConst.speedFactorMax);
         actionOrder = BattleConst.speedK / speedCount;
-        Logger.LogFormat("Unit {0}: speedCount: {1}, actionOrder: {2}", name, speedCount, actionOrder);
+        //Logger.LogFormat("Unit {0}: speedCount: {1}, actionOrder: {2}", name, speedCount, actionOrder);
     }
 
     public void OnEnterField()

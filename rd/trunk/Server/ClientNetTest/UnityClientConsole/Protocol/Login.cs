@@ -72,9 +72,8 @@ namespace PB
       get { return _status; }
       set { _status = value; }
     }
-    private int _playerId = default(int);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int playerId
     {
       get { return _playerId; }
@@ -88,13 +87,6 @@ namespace PB
       get { return _timeStamp; }
       set { _timeStamp = value; }
     }
-    private readonly global::System.Collections.Generic.List<HSRoleBrief> _roleList = new global::System.Collections.Generic.List<HSRoleBrief>();
-    [global::ProtoBuf.ProtoMember(4, Name=@"roleList", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<HSRoleBrief> roleList
-    {
-      get { return _roleList; }
-    }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

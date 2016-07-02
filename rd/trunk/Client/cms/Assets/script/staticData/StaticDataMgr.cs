@@ -4,6 +4,7 @@ using System.IO;
 using Csv.Serialization;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 public class StaticDataMgr : MonoBehaviour
 {
@@ -21,15 +22,15 @@ public class StaticDataMgr : MonoBehaviour
         }
     }
 
-    Dictionary<string, WeakPointData> m_WeakPointData;
-    Dictionary<string, UnitData> m_UnitData;
-    Dictionary<int, UnitBaseData> m_UnitBaseData;
-    Dictionary<string, BuffPrototype> buffData;
-    Dictionary<string, EffectPrototype> effectData;
-    Dictionary<string, SpellProtoType> spellData;
-    Dictionary<string, BattleData> m_BattleData;
-	Dictionary<string, BattleUnitAiData> m_BattleUnitAiData;
-   
+    Dictionary<string, WeakPointData> weakPointData = new Dictionary<string, WeakPointData>();
+    Dictionary<string, UnitData> unitData = new Dictionary<string, UnitData>();
+    Dictionary<int, UnitBaseData> unitBaseData = new Dictionary<int, UnitBaseData>();
+    Dictionary<string, BuffPrototype> buffData = new Dictionary<string, BuffPrototype>();
+    Dictionary<string, EffectPrototype> effectData = new Dictionary<string, EffectPrototype>();
+    Dictionary<string, SpellProtoType> spellData = new Dictionary<string, SpellProtoType>();
+    Dictionary<string, InstanceData> instanceData = new Dictionary<string, InstanceData>();
+    Dictionary<string, BattleUnitAiData> battleUnitAiData = new Dictionary<string, BattleUnitAiData>();
+
     public void Init()
     {
         DontDestroyOnLoad(gameObject);
@@ -40,19 +41,23 @@ public class StaticDataMgr : MonoBehaviour
     {
         {
             var data = InitTable<UnitData>("unitData");
-            m_UnitData = data.ToDictionary(p => p.index);
+            foreach (var item in data)
+                unitData.Add(item.index, item);
         }
         {
             var data = InitTable<UnitBaseData>("unitBaseData");
-            m_UnitBaseData = data.ToDictionary(p => p.level);
+            foreach (var item in data)
+                unitBaseData.Add(item.level, item);
         }
         {
-             var data = InitTable<SpellProtoType>("spell");
-             spellData = data.ToDictionary(p => p.id);
+            var data = InitTable<SpellProtoType>("spell");
+            foreach (var item in data)
+                spellData.Add(item.id, item);
         }
         {
-             var data = InitTable<BuffPrototype>("buff");
-             buffData = data.ToDictionary(p => p.id);
+            var data = InitTable<BuffPrototype>("buff");
+            foreach (var item in data)
+                buffData.Add(item.id, item);
         }
         {
             effectData = new Dictionary<string, EffectPrototype>();
@@ -68,10 +73,10 @@ public class StaticDataMgr : MonoBehaviour
                             effectPt = new EffectSetPrototype();
                             EffectSetPrototype setPt = effectPt as EffectSetPrototype;
                             //string[] effects = wholeData.effectList.Split(';');
-							ArrayList effectArrayList = MiniJsonExtensions.arrayListFromJson ( wholeData.effectList);
-							for (int i = 0; i <  effectArrayList.Count; ++i)
+                            ArrayList effectArrayList = MiniJsonExtensions.arrayListFromJson(wholeData.effectList);
+                            for (int i = 0; i < effectArrayList.Count; ++i)
                             {
-								setPt.effectList.Add(effectArrayList[i] as string);
+                                setPt.effectList.Add(effectArrayList[i] as string);
                             }
                         }
                         break;
@@ -93,10 +98,10 @@ public class StaticDataMgr : MonoBehaviour
                             persistPt.effectStartID = wholeData.effectStartID;
                             persistPt.startDelayTime = wholeData.startDelayTime;
                             string[] effectList = wholeData.periodEffectList.Split(';');
-							///ArrayList effectArrayList = MiniJsonExtensions.arrayListFromJson (wholeData.periodEffectList);
-							for (int i = 0; i < effectList.Length; ++i)
+                            ///ArrayList effectArrayList = MiniJsonExtensions.arrayListFromJson (wholeData.periodEffectList);
+                            for (int i = 0; i < effectList.Length; ++i)
                             {
-								string[] effectKV = effectList[i].Split('|');
+                                string[] effectKV = effectList[i].Split('|');
                                 if (effectKV.Length != 2)
                                     continue;
 
@@ -131,19 +136,104 @@ public class StaticDataMgr : MonoBehaviour
                 effectData.Add(effectPt.id, effectPt);
             }
         }
+        #region instance data
         {
-            var data = InitTable<BattleData>("battle");
-            m_BattleData = data.ToDictionary(p => p.id);
+            var data = InitTable<InstanceData>("instance");
+            foreach (var item in data)
+            {
+                ProcessData process = new ProcessData();
+                process.index = 0;
+                process.preAnim = item.pre1Animation;
+                process.processAnim = item.process1Animation;
+                process.needClearBuff = item.is1ClearBuff != 0;
+                process.ParseCondition(item.bossValiP1);
+                item.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 1;
+                process.preAnim = item.pre2Animation;
+                process.processAnim = item.process2Animation;
+                process.needClearBuff = item.is2ClearBuff != 0;
+                process.ParseCondition(item.bossValiP2);
+                item.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 2;
+                process.preAnim = item.pre3Animation;
+                process.processAnim = item.process3Animation;
+                process.needClearBuff = item.is3ClearBuff != 0;
+                process.ParseCondition(item.bossValiP3);
+                item.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 3;
+                process.preAnim = item.pre4Animation;
+                process.processAnim = item.process4Animation;
+                process.needClearBuff = item.is4ClearBuff != 0;
+                process.ParseCondition(item.bossValiP4);
+                item.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 4;
+                process.preAnim = item.pre5Animation;
+                process.processAnim = item.process5Animation;
+                process.needClearBuff = item.is5ClearBuff != 0;
+                item.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 0;
+                process.preAnim = item.preRare1Animation;
+                process.processAnim = item.processRare1Animation;
+                process.needClearBuff = item.isRare1ClearBuff != 0;
+                process.ParseCondition(item.rareValiP1);
+                item.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 1;
+                process.preAnim = item.preRare2Animation;
+                process.processAnim = item.processRare2Animation;
+                process.needClearBuff = item.isRare2ClearBuff != 0;
+                process.ParseCondition(item.rareValiP2);
+                item.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 2;
+                process.preAnim = item.preRare3Animation;
+                process.processAnim = item.processRare3Animation;
+                process.needClearBuff = item.isRare3ClearBuff != 0;
+                process.ParseCondition(item.rareValiP3);
+                item.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 3;
+                process.preAnim = item.preRare4Animation;
+                process.processAnim = item.processRare4Animation;
+                process.needClearBuff = item.isRare4ClearBuff != 0;
+                process.ParseCondition(item.rareValiP4);
+                item.bossProcess.Add(process);
+
+                process = new ProcessData();
+                process.index = 4;
+                process.preAnim = item.preRare5Animation;
+                process.processAnim = item.processRare5Animation;
+                process.needClearBuff = item.isRare5ClearBuff != 0;
+                item.bossProcess.Add(process);
+
+                instanceData.Add(item.id, item);
+            }
         }
+        #endregion
         {
             var data = InitTable<WeakPointData>("weakPointData");
-            m_WeakPointData = data.ToDictionary(p => p.id);
+            foreach (var item in data)
+                weakPointData.Add(item.id, item);
         }
 
-		{
-			var data = InitTable<BattleUnitAiData>("battleUnitAi");
-			m_BattleUnitAiData = data.ToDictionary(p => p.index);
-		}
+        {
+            var data = InitTable<BattleUnitAiData>("battleUnitAi");
+            foreach (var item in data)
+                battleUnitAiData.Add(item.index, item);
+        }
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -151,7 +241,7 @@ public class StaticDataMgr : MonoBehaviour
         // Deserialization
         List<string> rowData = new List<string>();
         List<List<string>> rows = new List<List<string>>();
-        using (var reader = new CsvFileReader(Path.Combine(Util.StaticDataPath, filename + ".csv")))
+        using (var reader = new CsvFileReader(Path.Combine(Util.StaticDataPath, filename + ".csv"), Encoding.Default))
         {
             while (reader.ReadRow(rowData))
             {
@@ -166,14 +256,14 @@ public class StaticDataMgr : MonoBehaviour
         }
     }
 
-#region Get Data
+    #region Get Data
     public UnitBaseData GetUnitBaseRowData(int level)
     {
-        return m_UnitBaseData[level];
+        return unitBaseData[level];
     }
     public UnitData GetUnitRowData(string unitID)
     {
-        return m_UnitData[unitID];
+        return unitData[unitID];
     }
     public SpellProtoType GetSpellProtoData(string id)
     {
@@ -190,17 +280,17 @@ public class StaticDataMgr : MonoBehaviour
 
     public WeakPointData GetWeakPointData(string id)
     {
-        return m_WeakPointData[id];
+        return weakPointData[id];
     }
 
-    public BattleData GetBattleDataFromLevel(string id)
+    public InstanceData GetInstanceData(string id)
     {
-        return m_BattleData[id];
+        return instanceData[id];
     }
 
-	public BattleUnitAiData GetBattleUnitAiData(string index)
-	{
-		return m_BattleUnitAiData [index];
-	}
-#endregion    
+    public BattleUnitAiData GetBattleUnitAiData(string index)
+    {
+        return battleUnitAiData[index];
+    }
+    #endregion
 }

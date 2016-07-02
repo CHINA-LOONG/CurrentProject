@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+public enum BattleType
+{
+    Normal,
+    Boss,
+    Rare,
+}
+
 public class BattleController : MonoBehaviour
 {
-    string battleId;
-    BattleData battleData;
+    BattleType battleType;
+    InstanceData instanceData;
     BattleProcess process;
+    bool isMouseOnUI = false;
+
     BattleGroup battleGroup;
-	bool	isMouseOnUI = false;
     public BattleGroup BattleGroup
     {
         get { return battleGroup; }
@@ -37,12 +45,12 @@ public class BattleController : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = BattleCamera.Instance.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-		if (Input.GetMouseButtonDown (0)) 
-		{
-			isMouseOnUI = EventSystem.current.IsPointerOverGameObject ();
-		}
-		
-		if (Input.GetMouseButtonUp(0) && !isMouseOnUI )
+        if (Input.GetMouseButtonDown(0))
+        {
+            isMouseOnUI = EventSystem.current.IsPointerOverGameObject();
+        }
+
+        if (Input.GetMouseButtonUp(0) && !isMouseOnUI)
         {
             if (Physics.Raycast(ray, out hit, 100))
             {
@@ -50,7 +58,7 @@ public class BattleController : MonoBehaviour
                 if (battleGo)
                 {
                     OnHitBattleObject(battleGo);
-                } 
+                }
                 else
                 {
                     Logger.LogWarning("Hit something but not a battle object!");
@@ -60,7 +68,7 @@ public class BattleController : MonoBehaviour
             {
                 GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
             }
-        }        
+        }
     }
 
     void OnHitBattleObject(BattleObject battleGo)
@@ -68,8 +76,8 @@ public class BattleController : MonoBehaviour
         if (battleGo.camp == UnitCamp.Enemy)
         {
             //设置集火目标
-            Logger.Log("Set hit target to " + battleGo.id);
-            process.OnChangeTarget(battleGo.id);
+            process.OnHitBattleObject(battleGo);
+			Logger.LogWarning("hit enemy gameobject....");
         }
         else if (battleGo.camp == UnitCamp.Player)
         {
@@ -80,14 +88,14 @@ public class BattleController : MonoBehaviour
                 args.targetId = battleGo.id;
                 args.idleUnits = battleGroup.GetPlayerOffsiteUnits();
                 GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.ShowSwitchPetUI, args);
-            }            
+            }
         }
     }
 
     public void StartBattle(PbStartBattle proto)
     {
-        battleId = proto.battleId;
-        battleData = StaticDataMgr.Instance.GetBattleDataFromLevel(battleId);
+        battleType = (BattleType)proto.battleType;
+        instanceData = StaticDataMgr.Instance.GetInstanceData(proto.instanceId);
 
         //设置battlegroup 并且创建模型
         battleGroup.SetEnemyList(proto.enemyList);
@@ -114,26 +122,41 @@ public class BattleController : MonoBehaviour
     {
         var curProcess = GetNextProcess();
         if (curProcess != null)
-            process.StartProcess(curProcess, battleGroup);
+            process.StartProcess(curProcess);
         else
-            OnAllProcessOver();        
+            OnAllProcessOver();
     }
 
     ProcessData GetNextProcess()
     {
         curProcessIndex++;
 
-        if (curProcessIndex == 0 &&
-            battleData.processList.Count == 0)
+        if (battleType == BattleType.Normal)
         {
-            //小怪进程
-            return new ProcessData();
+            if (curProcessIndex == 0)
+                return new ProcessData();
+            else
+                return null;
         }
 
-        if (curProcessIndex >= battleData.processList.Count)
-            return null;
-        else
-            return null;
+        if (battleType == BattleType.Boss)
+        {
+            if (curProcessIndex >= instanceData.bossProcess.Count)
+                return null;
+            else
+                return null;
+        }
+
+        if (battleType == BattleType.Rare)
+        {
+            if (curProcessIndex >= instanceData.rareProcess.Count)
+                return null;
+            else
+                return null;
+        }
+
+        Logger.LogError("BattleType error" + battleType);
+        return null;
     }
 
     public void OnProcessSuccess()
@@ -169,10 +192,5 @@ public class BattleController : MonoBehaviour
     private void ShowBalanceUI()
     {
         Logger.Log("[Battle]Showing Balance UI...");
-    }
-
-    public void OnUnitCastDazhao(GameUnit unit)
-    {
-
     }
 }

@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.hawk.game.entity.MonsterEntity;
-import com.hawk.game.entity.RoleEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
@@ -21,8 +20,6 @@ import com.hawk.game.protocol.Monster.HSMonsterFeed;
 import com.hawk.game.protocol.Monster.HSMonsterFeedRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Monster.HSMonsterBreak;
-import com.hawk.game.protocol.Role.HSRoleCreate;
-import com.hawk.game.protocol.Role.HSRoleCreateRet;
 import com.hawk.game.util.ProtoUtil;
 
 /**
@@ -102,10 +99,10 @@ public class PlayerMonsterModule extends PlayerModule {
 	}
 	
 	private boolean addMonster(int cfgId, int grade, int level, int exp, byte disposition, int reason) {
-		int roleId = player.getPlayerData().getSelectRoleEntity().getRoleID();
+		int playerID = player.getPlayerData().getPlayerEntity().getId();
 		int equipId = 0;
 		
-		MonsterEntity monsterEntity = new MonsterEntity(cfgId, roleId, grade, level, exp, disposition);
+		MonsterEntity monsterEntity = new MonsterEntity(cfgId, playerID, grade, level, exp, disposition);
 		if (!HawkDBManager.getInstance().create(monsterEntity)) {
 			logger.error("database error, create monster entity fail");
 			return false;

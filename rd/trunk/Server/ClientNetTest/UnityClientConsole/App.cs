@@ -14,14 +14,13 @@ namespace UnityClientConsole
     {
         private static App instance;
 
-        private int   playerID;
-
+        private int    playerID;
+        private string puid;
 
         private App()
         {
-
+           
         }
-
         public static App GetInstance()
         {
             if (instance == null)
@@ -31,13 +30,15 @@ namespace UnityClientConsole
             return instance;
         }
 
-        public bool Init(string address, int port)
+        public bool Init(string address, int port, string puid)
         {
             if (NetManager.GetInstance().Init(address, port) == false)
             {
                 return false;
             }
 
+            this.puid = puid;
+            
             return true;
         }
 
@@ -45,7 +46,7 @@ namespace UnityClientConsole
         {
         }
 
-        public void SendLoginProtocol(String puid)
+        public void SendLoginProtocol()
         {
             HSLogin login = new HSLogin();
             login.puid = puid;
@@ -53,26 +54,6 @@ namespace UnityClientConsole
             NetManager.GetInstance().SendProtocol(code.LOGIN_C.GetHashCode(), login);
         }
 
-        public void SendCreateRoleProtocol()
-        {
-            HSRoleCreate roleCreate = new HSRoleCreate();
-            roleCreate.nickname = "test1";
-            roleCreate.career = 1;
-            roleCreate.eye = 1;
-            roleCreate.hair = 1;
-            roleCreate.hairColor = 1;
-            roleCreate.gender = 1;
-
-            NetManager.GetInstance().SendProtocol(code.ROLE_CREATE_C.GetHashCode(), roleCreate);
-        }
-
-        public void SendDeleteRoleProtocol(int roleID)
-        {
-            HSRoleDelete roleDelete = new HSRoleDelete();
-            roleDelete.roleId = roleID;
-
-            NetManager.GetInstance().SendProtocol(code.ROLE_DELETE_C.GetHashCode(), roleDelete);
-        }
 
         public void OnProtocol(Protocol protocol)
         {
@@ -87,27 +68,7 @@ namespace UnityClientConsole
                    {
                        Console.WriteLine("在线人数超限制");
                    }
-               }
-               else if (hsError.hpCode == code.ROLE_CREATE_C.GetHashCode())
-               {
-                   if (hsError.errCode == roleError.ROLE_NICKNAME_EXIST.GetHashCode())
-                   {
-                       Console.WriteLine("昵称重复");
-                   }
-                   else if (hsError.errCode == roleError.ROLE_MAX_SIZE.GetHashCode())
-                   {
-                       Console.WriteLine("角色数量达到上限");
-                   }
-               }
-               else if (hsError.hpCode == code.ROLE_DELETE_C.GetHashCode())
-               {
-                   if (hsError.errCode == roleError.ROLE_NOT_EXIST.GetHashCode())
-                   {
-                       Console.WriteLine("要删除的角色不存在");
-                   }
-               }
-                    
-
+               }     
             }
 
 
@@ -116,26 +77,35 @@ namespace UnityClientConsole
                 HSLoginRet loginReturn = protocol.GetProtocolBody<HSLoginRet>();
 
                 this.playerID = loginReturn.playerId;
-            }
-            else if (protocol.checkType(code.ROLE_CREATE_S.GetHashCode()))
-            {
-                HSRoleCreateRet response = protocol.GetProtocolBody<HSRoleCreateRet>();
-                int roleID = response.roleId;
-                Console.WriteLine(roleID);
-            }
-            else if (protocol.checkType(code.ROLE_DELETE_C.GetHashCode()))
-            {
-                HSRoleDeleteRet response = protocol.GetProtocolBody<HSRoleDeleteRet>(); 
-                if (response.status == error.NONE_ERROR.GetHashCode())
+
+                // 创建角色
+                if (playerID == 0)
                 {
-                    Console.WriteLine("角色删除成功{}", response.roleId);
+                    HSPlayerCreate createRole = new HSPlayerCreate();
+                    createRole.puid = "zhengshuai";
+                    createRole.nickname = "郑帅";
+                    createRole.career = 1;
+                    createRole.gender = 0;
+                    createRole.eye = 1;
+                    createRole.hair = 1;
+                    createRole.hairColor = 1;
+                    NetManager.GetInstance().SendProtocol(code.PLAYER_CREATE_C.GetHashCode(), createRole);
                 }
+            }
+            else if (protocol.checkType(code.PLAYER_CREATE_S.GetHashCode()))
+            {
+
+                playerID = protocol.GetProtocolBody<HSPlayerCreateRet>().palyerID;
+
+                SendLoginProtocol();
+
             }
             else if (protocol.checkType(sys.HEART_BEAT.GetHashCode()))
             {
-                HSHeartBeat response = protocol.GetProtocolBody<HSHeartBeat>();
+               // HSHeartBeat response = protocol.GetProtocolBody<HSHeartBeat>();
 
             }
+
         }
 
     }

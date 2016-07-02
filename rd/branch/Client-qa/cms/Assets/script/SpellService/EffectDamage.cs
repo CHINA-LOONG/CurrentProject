@@ -78,6 +78,7 @@ public class EffectDamage : Effect
             //受伤比计算 max(1/(1+(守方总防御力-攻方防御穿透)/I(min(lv1,lv2))),25%)
             float injuryRatio = 1.0f / (1.0f + (target.defense - caster.defensePierce) / SpellFunctions.GetInjuryAdjustNum(caster.pbUnit.level, target.pbUnit.level));
             injuryRatio = injuryRatio < 0.25f ? 0.25f : injuryRatio;
+            Logger.LogFormat("受伤比：{0}   守方总防御力：{1}  攻方防御穿透：{2}  攻方等级：{3}    防御方等级：{4}", injuryRatio, target.defense, caster.defensePierce, caster.pbUnit.level, target.pbUnit.level);
 
             EffectDamageProtoType damageProto = protoEffect as EffectDamageProtoType;
             int damageAmount = 0;

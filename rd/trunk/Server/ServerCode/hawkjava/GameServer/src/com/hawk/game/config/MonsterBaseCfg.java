@@ -1,0 +1,113 @@
+package com.hawk.game.config;
+
+import org.hawk.config.HawkConfigManager;
+import org.hawk.config.HawkConfigBase;
+
+@HawkConfigManager.CsvResource(file = "xml/unitBaseData.csv", struct = "map")
+public class MonsterBaseCfg extends HawkConfigBase {
+
+	@Id
+	protected final int level;
+	protected final int experience;
+	protected final int health;
+	protected final int strength;
+	protected final int intelligence;
+	protected final int speed;
+	protected final int defense;
+	protected final int endurance;
+	protected final int recovery;
+	protected final int goldNoteMin;
+	protected final int goldNoteMax;
+	protected final int expMin;
+	protected final int expMax;
+	protected final int output;
+	
+	/**
+	 * 全局静态对象
+	 */
+	private static MonsterBaseCfg instance = null;
+
+	/**
+	 * 获取全局静态对象
+	 * 
+	 * @return
+	 */
+	public static MonsterBaseCfg getInstance() {
+		return instance;
+	}
+
+	public MonsterBaseCfg() {
+		instance = this;
+		level = 0;
+		experience = 0;
+		health = 0;
+		strength = 0;
+		intelligence = 0;
+		speed = 0;
+		defense = 0;
+		endurance = 0;
+		recovery = 0;
+		goldNoteMin = 0;
+		goldNoteMax = 0;
+		expMin = 0;
+		expMax = 0;
+		output = 0;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+	
+	public int getNextExp() {
+		return experience;
+	}
+	
+	public int getHealth() {
+		return health;
+	}
+	
+	public int getStrength() {
+		return strength;
+	}
+	
+	public int getIntelligence() {
+		return intelligence;
+	}
+	
+	public int getSpeed() {
+		return speed;
+	}
+	
+	public int getDefense() {
+		return defense;
+	}
+	
+	public int getEndurance() {
+		return endurance;
+	}
+	
+	public int getRecovery() {
+		return recovery;
+	}
+	
+	public int getGoldNoteMin() {
+		return goldNoteMin;
+	}
+	
+	public int getGoldNoteMax() {
+		return goldNoteMax;
+	}
+	
+	public int getExpMin() {
+		return expMin;
+	}
+	
+	public int getExpMax() {
+		return expMax;
+	}
+	
+	public int getOutput() {
+		return output;
+	}
+	
+}

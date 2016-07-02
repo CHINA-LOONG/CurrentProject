@@ -16,9 +16,8 @@ message HSLogin
 message HSLoginRet
 {
 	required int32 status = 1;
-	optional int32 playerId = 2;
+	required int32 playerId = 2;
 	optional int32 timeStamp = 3;
-	repeated HSRoleBrief roleList = 4;	
 }
 
 // KICKOUT_S
@@ -27,4 +26,3 @@ message HSUserKickout
 	required int32 playerId = 1;
 	optional int32 reason = 2;	
 }
-

@@ -177,7 +177,11 @@ public class WeakPointController : MonoBehaviour
 	{
 		GameUnit lastGameUnit = getGameUnit(target);
 		string lastWeakpointName = target.WeakPointIDAttr;
-		
+		if (!lastGameUnit.findWeakPointlist.Contains (lastWeakpointName))
+		{
+			lastGameUnit.findWeakPointlist.Add(lastWeakpointName);
+		}
+
 		ShowOrHideFindEffect(lastGameUnit,lastWeakpointName,false);
 		ShowOrHideFindFinishedEffect(lastGameUnit,lastWeakpointName,true);
 		Debug.LogError ("finish ----------- weakPoint ");

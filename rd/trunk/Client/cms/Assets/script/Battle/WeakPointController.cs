@@ -91,20 +91,27 @@ public class WeakPointController : MonoBehaviour
 			Debug.LogError("Can't find monster weakCollider " + colliderName);
 			return;
 		}
-		
+
+		gu.weakPointDumpDic [rowData.id] = colliderGo;
 		MirrorTarget mTarget = colliderGo.AddComponent<MirrorTarget>();
+		mTarget.WeakPointIDAttr = rowData.id;
+
+/*		MirrorTarget mTarget = colliderGo.AddComponent<MirrorTarget>();
 		mTarget.WeakPointIDAttr = rowData.id;
 		colliderGo.layer = LayerConst.WeakpointLayer;
 		if(null == 	colliderGo.GetComponent<BoxCollider>())
 		{
 			BoxCollider bc = colliderGo.AddComponent<BoxCollider>();
 		}
-		
+		*/
+
+		/*
 		MeshRenderer mr = colliderGo.GetComponentInChildren<MeshRenderer>();
 		if(mr!=null)
 		{
 			//mr.enabled = false;
 		}
+		*/
 	}
 
 	void InitWeakPointEffect(WeakPointData rowData,GameUnit gu)
@@ -177,7 +184,11 @@ public class WeakPointController : MonoBehaviour
 	{
 		GameUnit lastGameUnit = getGameUnit(target);
 		string lastWeakpointName = target.WeakPointIDAttr;
-		
+		if (!lastGameUnit.findWeakPointlist.Contains (lastWeakpointName))
+		{
+			lastGameUnit.findWeakPointlist.Add(lastWeakpointName);
+		}
+
 		ShowOrHideFindEffect(lastGameUnit,lastWeakpointName,false);
 		ShowOrHideFindFinishedEffect(lastGameUnit,lastWeakpointName,true);
 		Debug.LogError ("finish ----------- weakPoint ");

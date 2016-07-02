@@ -51,12 +51,12 @@ namespace PB
       get { return _exp; }
       set { _exp = value; }
     }
-    private bool _hasEquip;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"hasEquip", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public bool hasEquip
+    private int _equipId;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int equipId
     {
-      get { return _hasEquip; }
-      set { _hasEquip = value; }
+      get { return _equipId; }
+      set { _equipId = value; }
     }
     private int _disposition;
     [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"disposition", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -185,6 +185,29 @@ namespace PB
     {
       get { return _monsterId; }
       set { _monsterId = value; }
+    }
+    private int _foodMonsterId;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"foodMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int foodMonsterId
+    {
+      get { return _foodMonsterId; }
+      set { _foodMonsterId = value; }
+    }
+    private int _exp = default(int);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"exp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int exp
+    {
+      get { return _exp; }
+      set { _exp = value; }
+    }
+    private int _level = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

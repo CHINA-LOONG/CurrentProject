@@ -4,7 +4,10 @@ using System.Collections.Generic;
 
 public class PbStartBattle
 {
-    public string battleId;
+    //0小怪 1boss 2稀有
+    public int battleType;
+    //副本id
+    public string instanceId;
     public List<PbUnit> enemyList = new List<PbUnit>();
     public List<PbUnit> playerList = new List<PbUnit>();
 }
@@ -17,7 +20,7 @@ public class BattleTest : MonoBehaviour
     static PbStartBattle InitBattleGroup()
     {
         var proto = new PbStartBattle();
-        proto.battleId = "demo";
+        proto.instanceId = "demo";
 
         //enemy list
         for (int i = 0; i < 1; i++)

@@ -39,12 +39,12 @@ public class UIMgr : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
-	public void OpenUI(string assertName, string uiName)
+	public GameObject OpenUI(string assertName, string uiName)
 	{
 		Object r = ResourceMgr.Instance.LoadAsset (assertName, uiName);
 		if (null == r) 
 		{
-			return;
+			return null;
 		}
 		GameObject ui = Instantiate(r) as GameObject;
         ui.transform.SetParent(transform);
@@ -62,6 +62,8 @@ public class UIMgr : MonoBehaviour
 			ui.transform.localPosition = Vector3.zero;
 
 		}
+
+        return ui;
 	}
 
 	public void CloseUI(UIBase vb)

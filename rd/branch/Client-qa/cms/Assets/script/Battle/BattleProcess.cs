@@ -3,15 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class ProcessData
-{
-    public int id = 0;
-    public string name;
-    public string processAnimation;
-    public string preAnimation;
-    public bool isClearBuff;
-}
-
 public class BattleProcess : MonoBehaviour
 {
     enum ActionType
@@ -19,6 +10,7 @@ public class BattleProcess : MonoBehaviour
         None,
         UnitFight,
         SwitchPet,
+        Dazhao,
     }
 
     class Action
@@ -39,9 +31,17 @@ public class BattleProcess : MonoBehaviour
     //换宠cd
     float lastSwitchTime = -BattleConst.switchPetCD;
 
+    //当前行动
+    Action curAction = null;
+
+    //大招
+    float dazhaoStartTime = 0;
+    float dazhaoCount = 0;
+
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<int, int>(GameEventList.SwitchPet, OnSwitchPet);
+        GameEventMgr.Instance.AddListener<GameUnit>(GameEventList.HitDazhaoBtn, OnUnitCastDazhao);
         GameEventMgr.Instance.AddListener<int>(GameEventList.ChangeTarget, OnChangeTarget);
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellFire, OnFireSpell);
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellLifeChange, OnLifeChange);
@@ -54,6 +54,7 @@ public class BattleProcess : MonoBehaviour
     {
         GameEventMgr.Instance.RemoveListener<int, int>(GameEventList.SwitchPet, OnSwitchPet);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.ChangeTarget, OnChangeTarget);
+        GameEventMgr.Instance.RemoveListener<GameUnit>(GameEventList.HitDazhaoBtn, OnUnitCastDazhao);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellFire, OnFireSpell);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellLifeChange, OnLifeChange);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellEnergyChange, OnEnergyChange);
@@ -66,17 +67,41 @@ public class BattleProcess : MonoBehaviour
         BindListener();
     }
 
+    void Update()
+    {
+        if (curAction != null)
+        {
+            switch (curAction.type)
+            {
+                case ActionType.None:
+                    break;
+                case ActionType.UnitFight:
+                    break;
+                case ActionType.SwitchPet:
+                    break;
+                case ActionType.Dazhao:
+                    if (Time.time - dazhaoStartTime > 5)
+                    {
+                        OnActionOver();
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
     void OnDestory()
     {
         UnBindListener();
     }
 
-    public void StartProcess(ProcessData process, BattleGroup group)
+    public void StartProcess(ProcessData process)
     {
         processData = new ProcessData();
 
         Logger.Log("[Battle.Process]Start process");
-        battleGroup = group;
+        battleGroup = BattleController.Instance.BattleGroup;
 
         StartCoroutine(Process());
     }
@@ -92,16 +117,17 @@ public class BattleProcess : MonoBehaviour
         if (IsClearBuff())
             yield return StartCoroutine(ClearBuff());
 
-        yield return StartCoroutine(PlayCountDownAnim());
+        if (processData.index == 0)
+            yield return StartCoroutine(PlayCountDownAnim());
 
         RefreshEnemyState();
 
-        StartCoroutine(StartAction());
+        StartAction();
     }
 
     private bool HasProcessAnim()
     {
-        return processData != null && !string.IsNullOrEmpty(processData.processAnimation);
+        return processData != null && !string.IsNullOrEmpty(processData.processAnim);
     }
 
     IEnumerator PlayProcessAnim()
@@ -111,7 +137,7 @@ public class BattleProcess : MonoBehaviour
 
     private bool HasPreAnim()
     {
-        return processData != null && !string.IsNullOrEmpty(processData.preAnimation);
+        return processData != null && !string.IsNullOrEmpty(processData.preAnim);
     }
 
     IEnumerator PlayPreAnim()
@@ -121,7 +147,7 @@ public class BattleProcess : MonoBehaviour
 
     private bool IsClearBuff()
     {
-        return processData != null && processData.isClearBuff;
+        return processData != null && processData.needClearBuff;
     }
 
     IEnumerator ClearBuff()
@@ -137,7 +163,7 @@ public class BattleProcess : MonoBehaviour
         yield return new WaitForSeconds(1);
         Logger.Log("[Battle.Process]1...");
         yield return new WaitForSeconds(1);
-        Logger.Log("[Battle.Process]Fight!!!");
+        Logger.Log("[Battle.Process]GO!!!");
     }
 
     private void RefreshEnemyState()
@@ -145,12 +171,12 @@ public class BattleProcess : MonoBehaviour
 
     }
 
-    IEnumerator StartAction()
+    void StartAction()
     {
         if (IsProcessOver())
         {
             GetComponent<BattleController>().OnProcessSuccess();
-            yield break;
+            return;
         }
 
         Action action = GetNextAction();
@@ -161,17 +187,18 @@ public class BattleProcess : MonoBehaviour
                 case ActionType.None:
                     break;
                 case ActionType.UnitFight:
-                    OnUnitFight(action.caster);
+                    RunUnitFightAction(action.caster);
                     break;
                 case ActionType.SwitchPet:
-                    SwitchPet(action.caster, action.target);
+                    RunSwitchPetAction(action.caster, action.target);
+                    break;
+                case ActionType.Dazhao:
+                    RunDazhaoAction(action);
                     break;
                 default:
                     break;
             }
         }
-
-        yield return null;
     }
 
     Action GetNextAction()
@@ -194,43 +221,245 @@ public class BattleProcess : MonoBehaviour
 
     void OnActionOver()
     {
-        StartCoroutine(StartAction());
+        curAction = null;
+        StartAction();
     }
 
-    void OnUnitFight(GameUnit unit)
+    #region Run Action
+    //////////////////////////////////////////////////////////////////////////
+    //run action
+    void RunUnitFightAction(GameUnit unit)
     {
         Logger.LogFormat("[Battle.Process]Unit {0} is moving...", unit.name);
 
         //执行战斗
-        var curTarget = SimulateAI(unit);
-        Logger.Log(unit.name + " " + curTarget.name);
-        SpellService.Instance.SpellRequest("s1", unit, curTarget, 0);
+        var aiResult = BattleUnitAi.Instance.GetAiAttackResult(unit);
+        Logger.LogFormat("Ai Attack style = {0} target = {1} ", aiResult.attackStyle, aiResult.attackTarget == null ? "no target--" : aiResult.attackTarget.name);
+
+        switch (aiResult.attackStyle)
+        {
+            case BattleUnitAi.AiAttackStyle.Dazhao:
+                break;
+            case BattleUnitAi.AiAttackStyle.Lazy:
+                Logger.Log(unit.name + "   lazy");
+                OnUnitFightOver(unit);
+                return;
+            case BattleUnitAi.AiAttackStyle.Defence:
+                Logger.Log(unit.name + "   defence");
+                OnUnitFightOver(unit);
+                return;
+            case BattleUnitAi.AiAttackStyle.Gain:
+                Logger.Log(unit.name + "   Gain");
+                OnUnitFightOver(unit);
+                return;
+            case BattleUnitAi.AiAttackStyle.MagicAttack:
+                break;
+            case BattleUnitAi.AiAttackStyle.PhysicsAttack:
+                break;
+        }
+
+        var curTarget = aiResult.attackTarget;
+        if (null == curTarget)
+        {
+            Debug.LogError("Error for BattleUnitAI....");
+        }
+        SpellService.Instance.SpellRequest("s1", unit, aiResult.attackTarget, 0);
     }
 
-    GameUnit SimulateAI(GameUnit unit)
+    void RunSwitchPetAction(GameUnit exit, GameUnit enter)
     {
-        GameUnit rTarget = null;
-        if (unit.pbUnit.camp == UnitCamp.Player)
+        int slot = exit.pbUnit.slot;
+
+        //TODO 播放动画
+        battleGroup.OnUnitExitField(exit, slot);
+        battleGroup.OnUnitEnterField(enter, slot);
+
+        StartCoroutine(DebugAnim(enter.gameObject));
+
+        OnActionOver();
+    }
+
+    void RunDazhaoAction(Action act)
+    {
+        Logger.Log("[Battle.Process]Enter Dazhao Mode!!!");
+        curAction = act;
+
+        //倒计时
+        dazhaoStartTime = Time.time;
+        dazhaoCount = 0;
+
+        //之后在OnHitBattleObject中处理
+    }
+    #endregion
+
+    #region Event
+    //process event, add action to insertAction List
+    void OnSwitchPet(int exitId, int enterId)
+    {
+        Action action = new Action();
+        action.type = ActionType.SwitchPet;
+        action.caster = battleGroup.GetUnitByGuid(exitId);
+        action.target = battleGroup.GetUnitByGuid(enterId);
+
+        action.target.State = UnitState.ToBeReplaced;
+
+        InsertAction(action);
+        lastSwitchTime = Time.time;
+    }
+
+    public void OnUnitCastDazhao(GameUnit unit)
+    {
+        Action action = new Action();
+        action.type = ActionType.Dazhao;
+        action.caster = unit;
+        unit.energy = 0;
+
+        action.caster.State = UnitState.Dazhao;
+        InsertAction(action);
+    }
+
+    public void OnHitBattleObject(BattleObject battleGo)
+    {
+        if (curAction != null)
         {
-            if (target == null)
+            if (battleGo.camp == UnitCamp.Enemy)
             {
-                //随机一个目标
-                rTarget = battleGroup.RandomUnit(UnitCamp.Enemy);
+                switch (curAction.type)
+                {
+                    case ActionType.Dazhao:
+                        Logger.Log("Dazhao hit something");
+                        dazhaoCount++;
+                        if (dazhaoCount >= 5)
+                        {
+                            OnActionOver();
+                        }
+                        break;
+                    default:
+                        OnChangeTarget(battleGo.id);
+                        break;
+                }
             }
-            else
+        }
+    }
+
+    public void OnChangeTarget(int id)
+    {
+        var unit = battleGroup.GetUnitByGuid(id);
+        target = unit;
+
+        Logger.Log("[Battle.Process]Change Fire Targret To " + unit.name);
+    }
+
+    //spell event
+    void OnFireSpell(EventArgs sArgs)
+    {
+        var args = sArgs as SpellFireArgs;
+        int movedUnitId = args.casterID;
+        var movedUnit = battleGroup.GetUnitByGuid(movedUnitId);
+
+        StartCoroutine(SimulateAnim(movedUnit));
+    }
+
+    IEnumerator SimulateAnim(GameUnit movedUnit)
+    {
+        float totalTime = 0.5f;
+        float speed = 1;
+        float startTime = Time.time;
+        while (Time.time - startTime < totalTime)
+        {
+            movedUnit.gameObject.transform.position += Vector3.up * speed * Time.deltaTime;
+            yield return null;
+        }
+        startTime = Time.time;
+        while (Time.time - startTime < totalTime)
+        {
+            movedUnit.gameObject.transform.position -= Vector3.up * speed * Time.deltaTime;
+            yield return null;
+        }
+        OnUnitFightOver(movedUnit);
+    }
+
+    void OnLifeChange(EventArgs sArgs)
+    {
+        //var args = sArgs as SpellVitalChangeArgs;
+        //Logger.Log("[Battle.Process]OnLifeChange");
+    }
+
+    void OnEnergyChange(EventArgs sArgs)
+    {
+        //var args = sArgs as SpellVitalChangeArgs;
+        Logger.Log("[Battle.Process]OnEnergyChange");
+    }
+
+    void OnUnitDead(EventArgs sArgs)
+    {
+        var args = sArgs as SpellUnitDeadArgs;
+        int deadId = args.deathID;
+        var deadUnit = battleGroup.GetUnitByGuid(deadId);
+        //Logger.LogWarning("[Battle.Process]OnUnitDead: " + deadUnit.name);
+
+        int slot = deadUnit.pbUnit.slot;
+        deadUnit.State = UnitState.Dead;
+        battleGroup.OnUnitExitField(deadUnit, slot);
+
+        //查看是否还有需要上场的单位
+        if (deadUnit.pbUnit.camp == UnitCamp.Enemy)
+        {
+            var unit = battleGroup.GetEnemyToField();
+            if (unit != null)
             {
-                rTarget = target;
+                battleGroup.OnUnitEnterField(unit, slot);
+                StartCoroutine(DebugAnim(unit.gameObject));
             }
         }
         else
         {
-            //随机一个目标
-            rTarget = battleGroup.RandomUnit(UnitCamp.Player);
+            var switchAction = GetSwitchAction(deadId);
+            if (switchAction != null)
+            {
+                var unit = switchAction.caster;
+                battleGroup.OnUnitEnterField(unit, slot);
+                StartCoroutine(DebugAnim(unit.gameObject));
+                insertAction.Remove(switchAction);
+                Logger.LogWarning("Dead unit was to be replaced, get the replace unit to field.");
+            }
+            else
+            {
+                var unit = battleGroup.GetPlayerToField();
+                if (unit != null)
+                {
+                    battleGroup.OnUnitEnterField(unit, slot);
+                    StartCoroutine(DebugAnim(unit.gameObject));
+                }
+            }
         }
 
-        return rTarget;
+        //检查是否结束战斗
+        if (battleGroup.IsPlayerAllDead())
+        {
+            GetComponent<BattleController>().OnProcessFailed();
+        }
     }
 
+    IEnumerator DebugAnim(GameObject go)
+    {
+        float totalTime = 1;
+        float startTime = Time.time;
+        while (Time.time - startTime < totalTime)
+        {
+            go.transform.Rotate(Vector3.up, 90 * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    void OnBuffChange(EventArgs sArgs)
+    {
+        //var args = sArgs as SpellBuffArgs;
+
+    }
+    #endregion
+
+    #region Utils
     void OnUnitFightOver(GameUnit movedUnit)
     {
         battleGroup.ReCalcActionOrder(movedUnit.pbUnit.guid);
@@ -260,151 +489,10 @@ public class BattleProcess : MonoBehaviour
         return action;
     }
 
-    //////////////////////////////////////////////////////////////////////////
-    //process action
-    void SwitchPet(GameUnit exit, GameUnit enter)
+    void InsertAction(Action act)
     {
-        int slot = exit.pbUnit.slot;
-
-        //TODO 播放动画
-        battleGroup.OnUnitExitField(exit, slot);
-        battleGroup.OnUnitEnterField(enter, slot);
-
-        StartCoroutine(DebugAnim(enter.gameObject));
-
-        OnActionOver();
+        insertAction.Add(act);
     }
 
-    #region Event
-    //process event
-    void OnSwitchPet(int exitId, int enterId)
-    {
-        Action action = new Action();
-        action.type = ActionType.SwitchPet;
-        action.caster = battleGroup.GetUnitByGuid(exitId);
-        action.target = battleGroup.GetUnitByGuid(enterId);
-
-        action.target.State = UnitState.ToBeReplaced;
-
-        insertAction.Add(action);
-        lastSwitchTime = Time.time;
-    }
-
-    public void OnChangeTarget(int id)
-    {
-        var unit = battleGroup.GetUnitByGuid(id);
-        target = unit;
-
-        Logger.Log("[Battle.Process]Change Fire Targret To " + unit.name);
-    }
-
-    //spell event
-    void OnFireSpell(EventArgs sArgs)
-    {
-        var args = sArgs as SpellFireArgs;
-        int movedUnitId = args.casterID;
-        var movedUnit = battleGroup.GetUnitByGuid(movedUnitId);
-
-        Logger.Log("[Battle.Process]OnFireSpell");
-        StartCoroutine(SimulateAnim(movedUnit));
-    }
-
-    IEnumerator SimulateAnim(GameUnit movedUnit)
-    {
-        float totalTime = 0.5f;
-        float speed = 1;
-        float startTime = Time.time;
-        while (Time.time - startTime < totalTime)
-        {
-            movedUnit.gameObject.transform.position += Vector3.up * speed * Time.deltaTime;
-            yield return null;
-        }
-        startTime = Time.time;
-        while (Time.time - startTime < totalTime)
-        {
-            movedUnit.gameObject.transform.position -= Vector3.up * speed * Time.deltaTime;
-            yield return null;
-        }
-        OnUnitFightOver(movedUnit);
-    }
-
-    void OnLifeChange(EventArgs sArgs)
-    {
-        //var args = sArgs as SpellVitalChangeArgs;
-        Logger.Log("[Battle.Process]OnLifeChange");
-    }
-
-    void OnEnergyChange(EventArgs sArgs)
-    {
-        //var args = sArgs as SpellVitalChangeArgs;
-        Logger.Log("[Battle.Process]OnEnergyChange");
-    }
-
-    void OnUnitDead(EventArgs sArgs)
-    {
-        var args = sArgs as SpellUnitDeadArgs;
-        int deadId = args.deathID;
-        var deadUnit = battleGroup.GetUnitByGuid(deadId);
-        Logger.LogWarning("[Battle.Process]OnUnitDead: " + deadUnit.name);
-
-        int slot = deadUnit.pbUnit.slot;
-        deadUnit.State = UnitState.Dead;
-        battleGroup.OnUnitExitField(deadUnit, slot);
-
-        //查看是否还有需要上场的单位
-        if (deadUnit.pbUnit.camp == UnitCamp.Enemy)
-        {
-            var unit = battleGroup.GetEnemyToField();
-            if (unit != null)
-            {
-                battleGroup.OnUnitEnterField(unit, slot);
-                StartCoroutine(DebugAnim(unit.gameObject));
-            }
-        }
-        else
-        {
-            var switchAction = GetSwitchAction(deadId);
-            if (switchAction != null)
-            {
-                var unit = switchAction.caster;
-                battleGroup.OnUnitEnterField(unit, slot);
-                StartCoroutine(DebugAnim(unit.gameObject));
-                insertAction.Remove(switchAction);
-                Logger.LogWarning("Dead unit was to be replaced, get the replace unit to field.");
-            } 
-            else
-            {
-                var unit = battleGroup.GetPlayerToField();
-                if (unit != null)
-                {
-                    battleGroup.OnUnitEnterField(unit, slot);
-                    StartCoroutine(DebugAnim(unit.gameObject));
-                }
-            }            
-        }
-
-        //检查是否结束战斗
-        if (battleGroup.IsPlayerAllDead())
-        {
-            GetComponent<BattleController>().OnProcessFailed();
-        }
-    }
-
-    IEnumerator DebugAnim(GameObject go)
-    {
-        float totalTime = 1;
-        float startTime = Time.time;
-        while (Time.time - startTime < totalTime)
-        {
-            go.transform.Rotate(Vector3.up, 90 * Time.deltaTime);
-            yield return null;
-        }
-    }
-
-    void OnBuffChange(EventArgs sArgs)
-    {
-        //var args = sArgs as SpellBuffArgs;
-
-    }
     #endregion
 }

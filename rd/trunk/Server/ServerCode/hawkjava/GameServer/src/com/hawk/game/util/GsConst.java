@@ -42,37 +42,27 @@ public class GsConst {
 
 	/**
 	 * 模块定义
-	 * 
-	 * @author hawk
 	 */
 	public static class ModuleType {
 		// 登陆模块
 		public static int LOGIN_MODULE = 1;
-		// 角色模块
-		public static int ROLE_MODULE = 2;
 		// 怪物模块
-		public static int MONSTER_MODULE = 3;
+		public static int MONSTER_MODULE = 2;
 		
 		// 空闲模块(保证在最后)
 		public static int IDLE_MODULE = 100;
 	}
-	
-	/**
-	 * 进化类型定义
-	 * 
-	 * @author zs
-	 */
-	public static class EvolutionType {
 
-		public static int NULL_EVOLUTION = 0;
-		// 级别进化，达到一定级别进化
-		public static int LEVEL_EVOLUTION = 1;
-		// 物品进化，和某个物品合成进化
-		public static int ITEM_EVOLUTION = 2;
-		// 物品进化，和某个怪物合成进化
-		public static int MONSTER_EVOLUTION = 3;
-		// 物品进化，和某个任务合成进化
-		public static int MISSION_EVOLUTION = 4;
+	/**
+	 * 属性类型定义
+	 */
+	public static class PropertyType {
+		// 金木水火土
+		public static int JIN_PROPERTY = 1;
+		public static int MU_PROPERTY = 2;
+		public static int SHUI_PROPERTY = 3;
+		public static int HUO_PROPERTY = 4;
+		public static int TU_PROPERTY = 5;
 	}
 	
 }

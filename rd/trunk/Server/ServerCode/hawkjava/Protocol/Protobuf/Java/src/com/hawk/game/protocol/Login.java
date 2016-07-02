@@ -1132,13 +1132,13 @@ public final class Login {
      */
     int getStatus();
 
-    // optional int32 playerId = 2;
+    // required int32 playerId = 2;
     /**
-     * <code>optional int32 playerId = 2;</code>
+     * <code>required int32 playerId = 2;</code>
      */
     boolean hasPlayerId();
     /**
-     * <code>optional int32 playerId = 2;</code>
+     * <code>required int32 playerId = 2;</code>
      */
     int getPlayerId();
 
@@ -1151,31 +1151,6 @@ public final class Login {
      * <code>optional int32 timeStamp = 3;</code>
      */
     int getTimeStamp();
-
-    // repeated .HSRoleBrief roleList = 4;
-    /**
-     * <code>repeated .HSRoleBrief roleList = 4;</code>
-     */
-    java.util.List<com.hawk.game.protocol.Role.HSRoleBrief> 
-        getRoleListList();
-    /**
-     * <code>repeated .HSRoleBrief roleList = 4;</code>
-     */
-    com.hawk.game.protocol.Role.HSRoleBrief getRoleList(int index);
-    /**
-     * <code>repeated .HSRoleBrief roleList = 4;</code>
-     */
-    int getRoleListCount();
-    /**
-     * <code>repeated .HSRoleBrief roleList = 4;</code>
-     */
-    java.util.List<? extends com.hawk.game.protocol.Role.HSRoleBriefOrBuilder> 
-        getRoleListOrBuilderList();
-    /**
-     * <code>repeated .HSRoleBrief roleList = 4;</code>
-     */
-    com.hawk.game.protocol.Role.HSRoleBriefOrBuilder getRoleListOrBuilder(
-        int index);
   }
   /**
    * Protobuf type {@code HSLoginRet}
@@ -1247,14 +1222,6 @@ public final class Login {
               timeStamp_ = input.readInt32();
               break;
             }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                roleList_ = new java.util.ArrayList<com.hawk.game.protocol.Role.HSRoleBrief>();
-                mutable_bitField0_ |= 0x00000008;
-              }
-              roleList_.add(input.readMessage(com.hawk.game.protocol.Role.HSRoleBrief.PARSER, extensionRegistry));
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1263,9 +1230,6 @@ public final class Login {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-          roleList_ = java.util.Collections.unmodifiableList(roleList_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -1314,17 +1278,17 @@ public final class Login {
       return status_;
     }
 
-    // optional int32 playerId = 2;
+    // required int32 playerId = 2;
     public static final int PLAYERID_FIELD_NUMBER = 2;
     private int playerId_;
     /**
-     * <code>optional int32 playerId = 2;</code>
+     * <code>required int32 playerId = 2;</code>
      */
     public boolean hasPlayerId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 playerId = 2;</code>
+     * <code>required int32 playerId = 2;</code>
      */
     public int getPlayerId() {
       return playerId_;
@@ -1346,47 +1310,10 @@ public final class Login {
       return timeStamp_;
     }
 
-    // repeated .HSRoleBrief roleList = 4;
-    public static final int ROLELIST_FIELD_NUMBER = 4;
-    private java.util.List<com.hawk.game.protocol.Role.HSRoleBrief> roleList_;
-    /**
-     * <code>repeated .HSRoleBrief roleList = 4;</code>
-     */
-    public java.util.List<com.hawk.game.protocol.Role.HSRoleBrief> getRoleListList() {
-      return roleList_;
-    }
-    /**
-     * <code>repeated .HSRoleBrief roleList = 4;</code>
-     */
-    public java.util.List<? extends com.hawk.game.protocol.Role.HSRoleBriefOrBuilder> 
-        getRoleListOrBuilderList() {
-      return roleList_;
-    }
-    /**
-     * <code>repeated .HSRoleBrief roleList = 4;</code>
-     */
-    public int getRoleListCount() {
-      return roleList_.size();
-    }
-    /**
-     * <code>repeated .HSRoleBrief roleList = 4;</code>
-     */
-    public com.hawk.game.protocol.Role.HSRoleBrief getRoleList(int index) {
-      return roleList_.get(index);
-    }
-    /**
-     * <code>repeated .HSRoleBrief roleList = 4;</code>
-     */
-    public com.hawk.game.protocol.Role.HSRoleBriefOrBuilder getRoleListOrBuilder(
-        int index) {
-      return roleList_.get(index);
-    }
-
     private void initFields() {
       status_ = 0;
       playerId_ = 0;
       timeStamp_ = 0;
-      roleList_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1397,11 +1324,9 @@ public final class Login {
         memoizedIsInitialized = 0;
         return false;
       }
-      for (int i = 0; i < getRoleListCount(); i++) {
-        if (!getRoleList(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
+      if (!hasPlayerId()) {
+        memoizedIsInitialized = 0;
+        return false;
       }
       memoizedIsInitialized = 1;
       return true;
@@ -1418,9 +1343,6 @@ public final class Login {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, timeStamp_);
-      }
-      for (int i = 0; i < roleList_.size(); i++) {
-        output.writeMessage(4, roleList_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1442,10 +1364,6 @@ public final class Login {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, timeStamp_);
-      }
-      for (int i = 0; i < roleList_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, roleList_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1559,7 +1477,6 @@ public final class Login {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getRoleListFieldBuilder();
         }
       }
       private static Builder create() {
@@ -1574,12 +1491,6 @@ public final class Login {
         bitField0_ = (bitField0_ & ~0x00000002);
         timeStamp_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        if (roleListBuilder_ == null) {
-          roleList_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
-        } else {
-          roleListBuilder_.clear();
-        }
         return this;
       }
 
@@ -1620,15 +1531,6 @@ public final class Login {
           to_bitField0_ |= 0x00000004;
         }
         result.timeStamp_ = timeStamp_;
-        if (roleListBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
-            roleList_ = java.util.Collections.unmodifiableList(roleList_);
-            bitField0_ = (bitField0_ & ~0x00000008);
-          }
-          result.roleList_ = roleList_;
-        } else {
-          result.roleList_ = roleListBuilder_.build();
-        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1654,32 +1556,6 @@ public final class Login {
         if (other.hasTimeStamp()) {
           setTimeStamp(other.getTimeStamp());
         }
-        if (roleListBuilder_ == null) {
-          if (!other.roleList_.isEmpty()) {
-            if (roleList_.isEmpty()) {
-              roleList_ = other.roleList_;
-              bitField0_ = (bitField0_ & ~0x00000008);
-            } else {
-              ensureRoleListIsMutable();
-              roleList_.addAll(other.roleList_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.roleList_.isEmpty()) {
-            if (roleListBuilder_.isEmpty()) {
-              roleListBuilder_.dispose();
-              roleListBuilder_ = null;
-              roleList_ = other.roleList_;
-              bitField0_ = (bitField0_ & ~0x00000008);
-              roleListBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getRoleListFieldBuilder() : null;
-            } else {
-              roleListBuilder_.addAllMessages(other.roleList_);
-            }
-          }
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1689,11 +1565,9 @@ public final class Login {
           
           return false;
         }
-        for (int i = 0; i < getRoleListCount(); i++) {
-          if (!getRoleList(i).isInitialized()) {
-            
-            return false;
-          }
+        if (!hasPlayerId()) {
+          
+          return false;
         }
         return true;
       }
@@ -1750,22 +1624,22 @@ public final class Login {
         return this;
       }
 
-      // optional int32 playerId = 2;
+      // required int32 playerId = 2;
       private int playerId_ ;
       /**
-       * <code>optional int32 playerId = 2;</code>
+       * <code>required int32 playerId = 2;</code>
        */
       public boolean hasPlayerId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional int32 playerId = 2;</code>
+       * <code>required int32 playerId = 2;</code>
        */
       public int getPlayerId() {
         return playerId_;
       }
       /**
-       * <code>optional int32 playerId = 2;</code>
+       * <code>required int32 playerId = 2;</code>
        */
       public Builder setPlayerId(int value) {
         bitField0_ |= 0x00000002;
@@ -1774,7 +1648,7 @@ public final class Login {
         return this;
       }
       /**
-       * <code>optional int32 playerId = 2;</code>
+       * <code>required int32 playerId = 2;</code>
        */
       public Builder clearPlayerId() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -1814,246 +1688,6 @@ public final class Login {
         timeStamp_ = 0;
         onChanged();
         return this;
-      }
-
-      // repeated .HSRoleBrief roleList = 4;
-      private java.util.List<com.hawk.game.protocol.Role.HSRoleBrief> roleList_ =
-        java.util.Collections.emptyList();
-      private void ensureRoleListIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          roleList_ = new java.util.ArrayList<com.hawk.game.protocol.Role.HSRoleBrief>(roleList_);
-          bitField0_ |= 0x00000008;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.hawk.game.protocol.Role.HSRoleBrief, com.hawk.game.protocol.Role.HSRoleBrief.Builder, com.hawk.game.protocol.Role.HSRoleBriefOrBuilder> roleListBuilder_;
-
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public java.util.List<com.hawk.game.protocol.Role.HSRoleBrief> getRoleListList() {
-        if (roleListBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(roleList_);
-        } else {
-          return roleListBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public int getRoleListCount() {
-        if (roleListBuilder_ == null) {
-          return roleList_.size();
-        } else {
-          return roleListBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public com.hawk.game.protocol.Role.HSRoleBrief getRoleList(int index) {
-        if (roleListBuilder_ == null) {
-          return roleList_.get(index);
-        } else {
-          return roleListBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public Builder setRoleList(
-          int index, com.hawk.game.protocol.Role.HSRoleBrief value) {
-        if (roleListBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureRoleListIsMutable();
-          roleList_.set(index, value);
-          onChanged();
-        } else {
-          roleListBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public Builder setRoleList(
-          int index, com.hawk.game.protocol.Role.HSRoleBrief.Builder builderForValue) {
-        if (roleListBuilder_ == null) {
-          ensureRoleListIsMutable();
-          roleList_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          roleListBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public Builder addRoleList(com.hawk.game.protocol.Role.HSRoleBrief value) {
-        if (roleListBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureRoleListIsMutable();
-          roleList_.add(value);
-          onChanged();
-        } else {
-          roleListBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public Builder addRoleList(
-          int index, com.hawk.game.protocol.Role.HSRoleBrief value) {
-        if (roleListBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureRoleListIsMutable();
-          roleList_.add(index, value);
-          onChanged();
-        } else {
-          roleListBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public Builder addRoleList(
-          com.hawk.game.protocol.Role.HSRoleBrief.Builder builderForValue) {
-        if (roleListBuilder_ == null) {
-          ensureRoleListIsMutable();
-          roleList_.add(builderForValue.build());
-          onChanged();
-        } else {
-          roleListBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public Builder addRoleList(
-          int index, com.hawk.game.protocol.Role.HSRoleBrief.Builder builderForValue) {
-        if (roleListBuilder_ == null) {
-          ensureRoleListIsMutable();
-          roleList_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          roleListBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public Builder addAllRoleList(
-          java.lang.Iterable<? extends com.hawk.game.protocol.Role.HSRoleBrief> values) {
-        if (roleListBuilder_ == null) {
-          ensureRoleListIsMutable();
-          super.addAll(values, roleList_);
-          onChanged();
-        } else {
-          roleListBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public Builder clearRoleList() {
-        if (roleListBuilder_ == null) {
-          roleList_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
-          onChanged();
-        } else {
-          roleListBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public Builder removeRoleList(int index) {
-        if (roleListBuilder_ == null) {
-          ensureRoleListIsMutable();
-          roleList_.remove(index);
-          onChanged();
-        } else {
-          roleListBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public com.hawk.game.protocol.Role.HSRoleBrief.Builder getRoleListBuilder(
-          int index) {
-        return getRoleListFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public com.hawk.game.protocol.Role.HSRoleBriefOrBuilder getRoleListOrBuilder(
-          int index) {
-        if (roleListBuilder_ == null) {
-          return roleList_.get(index);  } else {
-          return roleListBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public java.util.List<? extends com.hawk.game.protocol.Role.HSRoleBriefOrBuilder> 
-           getRoleListOrBuilderList() {
-        if (roleListBuilder_ != null) {
-          return roleListBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(roleList_);
-        }
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public com.hawk.game.protocol.Role.HSRoleBrief.Builder addRoleListBuilder() {
-        return getRoleListFieldBuilder().addBuilder(
-            com.hawk.game.protocol.Role.HSRoleBrief.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public com.hawk.game.protocol.Role.HSRoleBrief.Builder addRoleListBuilder(
-          int index) {
-        return getRoleListFieldBuilder().addBuilder(
-            index, com.hawk.game.protocol.Role.HSRoleBrief.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .HSRoleBrief roleList = 4;</code>
-       */
-      public java.util.List<com.hawk.game.protocol.Role.HSRoleBrief.Builder> 
-           getRoleListBuilderList() {
-        return getRoleListFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.hawk.game.protocol.Role.HSRoleBrief, com.hawk.game.protocol.Role.HSRoleBrief.Builder, com.hawk.game.protocol.Role.HSRoleBriefOrBuilder> 
-          getRoleListFieldBuilder() {
-        if (roleListBuilder_ == null) {
-          roleListBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.hawk.game.protocol.Role.HSRoleBrief, com.hawk.game.protocol.Role.HSRoleBrief.Builder, com.hawk.game.protocol.Role.HSRoleBriefOrBuilder>(
-                  roleList_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
-                  getParentForChildren(),
-                  isClean());
-          roleList_ = null;
-        }
-        return roleListBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:HSLoginRet)
@@ -2587,11 +2221,10 @@ public final class Login {
       "\n\013Login.proto\032\nRole.proto\"h\n\007HSLogin\022\014\n\004" +
       "puid\030\001 \002(\t\022\023\n\010deviceId\030\002 \001(\t:\0010\022\023\n\010platf" +
       "orm\030\003 \001(\t:\0010\022\026\n\007version\030\004 \001(\t:\0050.0.1\022\r\n\005" +
-      "token\030\005 \001(\t\"a\n\nHSLoginRet\022\016\n\006status\030\001 \002(" +
-      "\005\022\020\n\010playerId\030\002 \001(\005\022\021\n\ttimeStamp\030\003 \001(\005\022\036" +
-      "\n\010roleList\030\004 \003(\0132\014.HSRoleBrief\"1\n\rHSUser" +
-      "Kickout\022\020\n\010playerId\030\001 \002(\005\022\016\n\006reason\030\002 \001(" +
-      "\005B\030\n\026com.hawk.game.protocol"
+      "token\030\005 \001(\t\"A\n\nHSLoginRet\022\016\n\006status\030\001 \002(" +
+      "\005\022\020\n\010playerId\030\002 \002(\005\022\021\n\ttimeStamp\030\003 \001(\005\"1" +
+      "\n\rHSUserKickout\022\020\n\010playerId\030\001 \002(\005\022\016\n\006rea" +
+      "son\030\002 \001(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2609,7 +2242,7 @@ public final class Login {
           internal_static_HSLoginRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSLoginRet_descriptor,
-              new java.lang.String[] { "Status", "PlayerId", "TimeStamp", "RoleList", });
+              new java.lang.String[] { "Status", "PlayerId", "TimeStamp", });
           internal_static_HSUserKickout_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSUserKickout_fieldAccessorTable = new
