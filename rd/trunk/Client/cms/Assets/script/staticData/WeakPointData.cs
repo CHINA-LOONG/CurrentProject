@@ -5,8 +5,9 @@ using System.Collections.Generic;
 public class WeakPointData
 {
     public string id;
-    public byte isDamagePoint;
-    public float damageRate;
+    public int type;
+    public byte isDamagePoint;//是否关联boss减血
+    public float damageRate;//伤害系数
     public int health;
     public byte isTarget;
     public int property;
@@ -17,3 +18,11 @@ public class WeakPointData
     public string mesh;
     public int initialStatus;
 }
+
+public class WeakPointRuntimeData
+{
+	public string id;
+	public int maxHp;
+	public int hp;
+}
+

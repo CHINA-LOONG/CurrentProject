@@ -15,12 +15,35 @@ public class PbStartBattle
 
 public class BattleTest : MonoBehaviour
 {
-    static bool m_IsTest = true;
+    static List<PbUnit> PlayerList
+    {
+        get
+        {
+            var list = new List<PbUnit>();
+            //player list
+            for (int i = 0; i < 6; i++)
+            {
+                PbUnit pbUnit = new PbUnit();
+                pbUnit.guid = 10 + i;
+                pbUnit.level = 16;
+                pbUnit.id = "soul";
+                pbUnit.slot = i;
+                if (i > 2)
+                    pbUnit.slot = BattleConst.offsiteSlot;
 
-    static PbStartBattle InitBattleGroup()
+                list.Add(pbUnit);
+            }
+
+            return list;
+        }
+    }
+
+    public static PbStartBattle GenerateNormalProto(string instanceId)
     {
         var proto = new PbStartBattle();
-        proto.instanceId = "demo";
+        proto.battleType = (int)BattleType.Normal;
+        proto.instanceId = instanceId;
+        //var instanceData = StaticDataMgr.Instance.GetInstanceData(instanceId);
 
         //enemy list
         for (int i = 0; i < 5; i++)
@@ -28,7 +51,7 @@ public class BattleTest : MonoBehaviour
             PbUnit pbUnit = new PbUnit();
             pbUnit.guid = i;
             pbUnit.id = "soul";
-            pbUnit.level = 15;
+            pbUnit.level = 20;// instanceData.level;
             pbUnit.slot = i;
             if (i > 2)
                 pbUnit.slot = BattleConst.offsiteSlot;
@@ -36,31 +59,58 @@ public class BattleTest : MonoBehaviour
             proto.enemyList.Add(pbUnit);
         }
 
-        //player list
-        for (int i = 0; i < 6; i++)
-        {
-            PbUnit pbUnit = new PbUnit();
-            pbUnit.guid = 10 + i;
-            pbUnit.level = 16;
-            pbUnit.id = "soul";
-            pbUnit.slot = i;
-            if (i > 2)
-                pbUnit.slot = BattleConst.offsiteSlot;
-
-            proto.playerList.Add(pbUnit);
-        }
+        proto.playerList = PlayerList;
 
         return proto;
     }
 
-    // Use this for initialization
-    public static void Test()
+    public static PbStartBattle GenerateBossProto(string instanceId)
     {
-        if (!m_IsTest)
-            return;
+        var proto = new PbStartBattle();
+        proto.battleType = (int)BattleType.Boss;
+        proto.instanceId = instanceId;
+        var instanceData = StaticDataMgr.Instance.GetInstanceData(instanceId);
 
-        var proto = InitBattleGroup();
+        //enemy list
+        PbUnit pbUnit = new PbUnit();
+        pbUnit.guid = Random.Range(100, 1000);
+        if (StaticDataMgr.Instance.GetUnitRowData(instanceData.bossID) != null)
+            pbUnit.id = instanceData.bossID;
+        else
+            pbUnit.id = "soul"; //instanceData.rareID;
+        pbUnit.level = 28;
+        pbUnit.slot = 1;
 
-        GameEventMgr.Instance.FireEvent(GameEventList.StartBattle, proto);
+        proto.enemyList.Add(pbUnit);
+
+        //player list
+        proto.playerList = PlayerList;
+
+        return proto;
+    }
+
+    public static PbStartBattle GenerateRareProto(string instanceId)
+    {
+        var proto = new PbStartBattle();
+        proto.battleType = (int)BattleType.Rare;
+        proto.instanceId = instanceId;
+        var instanceData = StaticDataMgr.Instance.GetInstanceData(instanceId);
+
+        //enemy list
+        PbUnit pbUnit = new PbUnit();
+        pbUnit.guid = 1;
+        if (StaticDataMgr.Instance.GetUnitRowData(instanceData.rareID) != null)
+            pbUnit.id = instanceData.rareID;
+        else
+            pbUnit.id = "soul"; //instanceData.rareID;
+        pbUnit.level = 28;
+        pbUnit.slot = 1;
+
+        proto.enemyList.Add(pbUnit);
+
+        //player list
+        proto.playerList = PlayerList;
+
+        return proto;
     }
 }

@@ -3,6 +3,7 @@ package org.hawk.config;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -173,7 +174,11 @@ public class HawkConfigStorage {
 				throw new HawkException("config file not exist: " + filePath);
 			}
 			
-			CsvReader csvReader = new CsvReader(new FileInputStream(file), Charset.forName("GBK"));
+			InputStream stream = new FileInputStream(file);
+			// UTF-8 CSV with 3 bytes BOM
+			stream.skip(3);
+			
+			CsvReader csvReader = new CsvReader(stream, Charset.forName("UTF-8"));
 			csvReader.setUseComments(true);
 			if (csvReader.readHeaders() == false) {
 				throw new HawkException("config headers not exist: " + filePath);

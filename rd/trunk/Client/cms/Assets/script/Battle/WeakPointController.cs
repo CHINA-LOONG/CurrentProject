@@ -11,7 +11,7 @@ public class WeakPointController : MonoBehaviour
 	
 	}
 	static WeakPointController instance = null;
-	static WeakPointController Instance
+	public static WeakPointController Instance
 	{
 		get
 		{
@@ -96,22 +96,18 @@ public class WeakPointController : MonoBehaviour
 		MirrorTarget mTarget = colliderGo.AddComponent<MirrorTarget>();
 		mTarget.WeakPointIDAttr = rowData.id;
 
-/*		MirrorTarget mTarget = colliderGo.AddComponent<MirrorTarget>();
-		mTarget.WeakPointIDAttr = rowData.id;
-		colliderGo.layer = LayerConst.WeakpointLayer;
-		if(null == 	colliderGo.GetComponent<BoxCollider>())
-		{
-			BoxCollider bc = colliderGo.AddComponent<BoxCollider>();
-		}
-		*/
-
-		/*
 		MeshRenderer mr = colliderGo.GetComponentInChildren<MeshRenderer>();
 		if(mr!=null)
 		{
-			//mr.enabled = false;
+			mr.enabled = false;
 		}
-		*/
+
+		BoxCollider bc = colliderGo.GetComponent<BoxCollider> ();
+		if (bc != null)
+		{
+			bc.enabled = false;
+		}
+
 	}
 
 	void InitWeakPointEffect(WeakPointData rowData,GameUnit gu)
@@ -144,7 +140,7 @@ public class WeakPointController : MonoBehaviour
 		if (meshGo != null) 
 		{
 			//Debug.LogError("find meshName initialStatus = " + rowData.initialStatus );
-			gu.weakPointEffectDic[rowData.id] = meshGo;
+			gu.weakPointMeshDic[rowData.id] = meshGo;
 			if(1 != rowData.initialStatus)
 			{
 				meshGo.SetActive(false);
@@ -154,7 +150,6 @@ public class WeakPointController : MonoBehaviour
 
 	void OnLoadEnemyFinished(GameUnit gu)
 	{
-		//return;
 		Logger.LogFormat ("On Load Enemy finished!");
 		this.AddWeakPoint (gu);
 	}
@@ -182,15 +177,31 @@ public class WeakPointController : MonoBehaviour
 
 	void OnFindFinishedWeakPoint(MirrorTarget target)
 	{
-		GameUnit lastGameUnit = getGameUnit(target);
-		string lastWeakpointName = target.WeakPointIDAttr;
-		if (!lastGameUnit.findWeakPointlist.Contains (lastWeakpointName))
+		GameUnit unit = getGameUnit(target);
+		string wpName = target.WeakPointIDAttr;
+		if (!unit.findWeakPointlist.Contains (wpName))
 		{
-			lastGameUnit.findWeakPointlist.Add(lastWeakpointName);
+			unit.findWeakPointlist.Add(wpName);
+		}
+		try
+		{
+			if(unit.weakPointMeshDic.ContainsKey(wpName))
+			{
+				GameObject wpMeshGo = unit.weakPointMeshDic [wpName] as GameObject;
+				if (null != wpMeshGo)
+				{
+					wpMeshGo.SetActive(true);
+				}
+			}
+		}
+		catch(UnityException e)
+		{
+			Logger.LogException(e);
 		}
 
-		ShowOrHideFindEffect(lastGameUnit,lastWeakpointName,false);
-		ShowOrHideFindFinishedEffect(lastGameUnit,lastWeakpointName,true);
+
+		ShowOrHideFindEffect(unit,wpName,false);
+		ShowOrHideFindFinishedEffect(unit,wpName,true);
 		Debug.LogError ("finish ----------- weakPoint ");
 	}
 
@@ -238,5 +249,47 @@ public class WeakPointController : MonoBehaviour
 		{
 			Debug.LogError("Error to find finished effectobj with  weakpointID " + weakpointID);
 		}
+	}
+
+	// /////////////////////////////////////////////
+	public List<string> GetCanAttackWeakpointList(GameUnit unit)
+	{
+		List<string> canAttackList = new List<string> ();
+
+		foreach (string subWeap in unit.findWeakPointlist) 
+		{
+			WeakPointRuntimeData tempData = unit.wpHpList[subWeap];
+			if(tempData != null && tempData.hp > 0)
+			{
+				canAttackList.Add(subWeap);
+			}
+		}
+
+		List<string> weakPointList = unit.weakPointList;
+
+		string subWp;
+		for (int i = 0; i< weakPointList.Count; ++i)
+		{	
+			subWp = weakPointList[i];
+			if(canAttackList.Contains(subWp))
+			{
+				continue;
+			}
+			WeakPointData wpData = StaticDataMgr.Instance.GetWeakPointData(subWp);
+			if(null == wpData)
+			{
+				continue;
+			}
+			if(wpData.initialStatus ==1)
+			{
+				WeakPointRuntimeData tempData = unit.wpHpList[subWp];
+				if(tempData != null && tempData.hp > 0)
+				{
+					canAttackList.Add(subWp);
+				}
+			}
+		}
+
+		return canAttackList;
 	}
 }

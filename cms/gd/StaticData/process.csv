@@ -1,6 +1,0 @@
-#NUM,TEXT,TEXT,TEXT,NUM,NUM,TEXT
-id,name,processAnimation,preAnimation,isClearBuff,endCondition,state
-#,,,,,,
-1,״̬1,,,0,1,
-2,״̬2,,,0,1,
-3,״̬3,,,0,1,

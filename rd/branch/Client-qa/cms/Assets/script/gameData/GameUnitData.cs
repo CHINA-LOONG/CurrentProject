@@ -49,6 +49,7 @@ public class GameUnit
     public int endurance;
     public int property;//五行属性
     public int recovery;//战后回血
+	public bool isBoss = false;
     //掉落金币
     public int goldNoteMin;
     public int goldNoteMax;
@@ -88,7 +89,9 @@ public class GameUnit
     public List<Buff> buffList;
     public Dictionary<string, Spell> spellList;
     //public List<Equipment> equipmentList;
-	public List<string> weakPointList;
+    public List<string> weakPointList;
+    public Dictionary<string, WeakPointRuntimeData> wpHpList;
+	public Dictionary<string,GameObject> weakPointDumpDic;
 	public List<string> findWeakPointlist = null;
 	public Dictionary<string,GameObject> weakPointMeshDic;
 	public Dictionary<string,GameObject> weakPointEffectDic;
@@ -97,6 +100,7 @@ public class GameUnit
     float speedCount = 0;
     float actionOrder = 0;
     public float ActionOrder { get { return actionOrder; } }
+    public string attackWpName = null;
 
     UnitState state = UnitState.None;
     public UnitState State { get { return state; } set { state = value; } }
@@ -114,18 +118,18 @@ public class GameUnit
         get { return unitObject; }
     }
 
-    public static GameUnit FromPb(PbUnit unit)
+    public static GameUnit FromPb(PbUnit unit, bool isPlayer)
     {
         var gameUnit = new GameUnit();
         gameUnit.pbUnit = unit;
 
         //初始化属性
-        gameUnit.Init();
+        gameUnit.Init(isPlayer);
 
         return gameUnit;
     }
 
-    void Init()
+    void Init(bool isPlayer)
     {
         GameDataMgr gdMgr = GameDataMgr.Instance;
         UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
@@ -150,12 +154,7 @@ public class GameUnit
         isEvolutionable = unitRowData.isEvolutionable!=0;
         evolutionID = unitRowData.evolutionID;
         name = unitRowData.nickName;
-        //TODO: 玩家宠物不需要
-        goldNoteMax = (int)(unitRowData.goldNoteMaxValueModifyRate * unitBaseRowData.goldNoteMax);
-        goldNoteMin = (int)(unitRowData.goldNoteMinValueModifyRate * unitBaseRowData.goldNoteMin);
-        expMin = (int)(unitRowData.expMinValueModifyRate * unitBaseRowData.expMin);
-        expMax = (int)(unitRowData.expMaxValueModifyRate * unitBaseRowData.expMax);
-		InitWeakPoint (unitRowData.weakpointList);
+
         //TODO: 装备系统附加值
         criticalRatio = gdMgr.PlayerDataAttr.criticalRatio;
         antiCriticalRatio = 0.0f;
@@ -175,6 +174,23 @@ public class GameUnit
         spellSpeedRatio = 0.0f;
         spellDefenseRatio = 0.0f;
         spellEnduranceRatio = 0.0f;
+
+        //不是玩家宠物有副本加成 
+        if (isPlayer == false)
+        {
+            InstanceData instData = BattleController.Instance.InstanceData;
+            //掉落
+            goldNoteMax = (int)(unitRowData.goldNoteMaxValueModifyRate * unitBaseRowData.goldNoteMax * instData.goldCoef);
+            goldNoteMin = (int)(unitRowData.goldNoteMinValueModifyRate * unitBaseRowData.goldNoteMin * instData.goldCoef);
+            expMin = (int)(unitRowData.expMinValueModifyRate * unitBaseRowData.expMin * instData.expCoef);
+            expMax = (int)(unitRowData.expMaxValueModifyRate * unitBaseRowData.expMax * instData.expCoef);
+            //弱点
+            InitWeakPoint(unitRowData.weakpointList);
+            //基础属性影响
+            strength = (int)(strength * instData.attackCoef);
+            intelligence = (int)(intelligence * instData.attackCoef);
+            health = (int)(health * instData.lifeCoef);
+        }
 
         //计算二级属性
         curLife = (int)SpellConst.healthToLife * health;
@@ -203,27 +219,63 @@ public class GameUnit
 		findWeakPointlist = new List<string> ();
 		weakPointMeshDic = new Dictionary<string, GameObject> ();
 		weakPointEffectDic = new Dictionary<string, GameObject> ();
+		weakPointDumpDic = new Dictionary<string, GameObject> ();
 		
     }
 
-	void	InitWeakPoint(string strWeak)
+	void InitWeakPoint(string strWeak)
 	{
 		if (strWeak == null || strWeak == "") 
 		{
 			return;
 		}
-		string[] weakArray = strWeak.Split (';');
+		ArrayList weakArrayList = MiniJsonExtensions.arrayListFromJson (strWeak);
+		//string[] weakArray = strWeak.Split (';');
 		if (null == weakPointList) 
 		{
 			weakPointList = new List<string>();
+            wpHpList = new Dictionary<string, WeakPointRuntimeData>();
 		}
 
 		weakPointList.Clear();
-		for(int i = 0;i<weakArray.Length;++i)
+        wpHpList.Clear();
+        WeakPointData wpData = null;
+		for(int i = 0;weakArrayList !=null && i<weakArrayList.Count;++i)
 		{
-			weakPointList.Add(weakArray[i]);
+            wpData = StaticDataMgr.Instance.GetWeakPointData(weakArrayList[i] as string);
+            if (wpData != null)
+            {
+                weakPointList.Add(wpData.id);
+                WeakPointRuntimeData wpRuntimeData = new WeakPointRuntimeData();
+                wpRuntimeData.id = wpData.id;
+                wpRuntimeData.maxHp = wpRuntimeData.hp = wpData.health;
+                wpHpList.Add(wpData.id, wpRuntimeData);
+            }
 		}
 	}
+
+    public void OnDamageWeakPoint(string id, int damage)
+    {
+        WeakPointRuntimeData wpRuntimeData = null;
+        if (wpHpList.TryGetValue(id, out wpRuntimeData))
+        {
+            wpRuntimeData.hp += damage;
+            if (wpRuntimeData.hp < 0)
+            {
+                wpRuntimeData.hp = 0;
+				GameObject meshObj = null;
+				if(weakPointMeshDic.TryGetValue(id,out meshObj))
+				{
+					meshObj.SetActive(false);
+				}
+                //Logger.LogError("TODO: weak point is dead (lws)");
+            }
+            else if (wpRuntimeData.hp > wpRuntimeData.maxHp)
+            {
+                wpRuntimeData.hp = wpRuntimeData.maxHp;
+            }
+        }
+    }
 
     public Spell GetSpell(string spellID)
     {
@@ -273,6 +325,7 @@ public class GameUnit
         com.camp = pbUnit.camp;
         com.id = pbUnit.guid;
         com.unit = this;
+        com.aniControl = unitObject.AddComponent<AnimControl>();
 
         //get slot position
         unitObject.transform.position = BattleScene.Instance.GetSlotPosition(pbUnit.camp, pbUnit.slot);

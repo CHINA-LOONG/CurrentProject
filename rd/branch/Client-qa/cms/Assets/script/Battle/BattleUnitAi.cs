@@ -247,16 +247,12 @@ public class BattleUnitAi : MonoBehaviour {
 		{
 		case 0:
 			return AiAttackStyle.PhysicsAttack;
-			break;
 		case 1:
 			return AiAttackStyle.MagicAttack;
-			break;
 		case 2:
 			return AiAttackStyle.Gain;
-			break;
 		case 3:
 			return AiAttackStyle.Defence;
-			break;
 		}
 
 		return AiAttackStyle.UnKown;

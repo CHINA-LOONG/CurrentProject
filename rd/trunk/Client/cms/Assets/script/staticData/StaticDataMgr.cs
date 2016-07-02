@@ -141,83 +141,121 @@ public class StaticDataMgr : MonoBehaviour
             var data = InitTable<InstanceData>("instance");
             foreach (var item in data)
             {
-                ProcessData process = new ProcessData();
-                process.index = 0;
-                process.preAnim = item.pre1Animation;
-                process.processAnim = item.process1Animation;
-                process.needClearBuff = item.is1ClearBuff != 0;
-                process.ParseCondition(item.bossValiP1);
-                item.bossProcess.Add(process);
+                ProcessData process;
 
-                process = new ProcessData();
-                process.index = 1;
-                process.preAnim = item.pre2Animation;
-                process.processAnim = item.process2Animation;
-                process.needClearBuff = item.is2ClearBuff != 0;
-                process.ParseCondition(item.bossValiP2);
-                item.bossProcess.Add(process);
+                if (!string.IsNullOrEmpty(item.bossValiP1))
+                {
+                    process = new ProcessData();
+                    process.index = 1;
+                    process.preAnim = item.pre1Animation;
+                    process.processAnim = item.process1Animation;
+                    process.needClearBuff = item.is1ClearBuff != 0;
+                    process.ParseCondition(item.bossValiP1);
+                    item.bossProcess.Add(process);
+                }
 
-                process = new ProcessData();
-                process.index = 2;
-                process.preAnim = item.pre3Animation;
-                process.processAnim = item.process3Animation;
-                process.needClearBuff = item.is3ClearBuff != 0;
-                process.ParseCondition(item.bossValiP3);
-                item.bossProcess.Add(process);
+                if (!string.IsNullOrEmpty(item.bossValiP2))
+                {
+                    process = new ProcessData();
+                    process.index = 2;
+                    process.preAnim = item.pre2Animation;
+                    process.processAnim = item.process2Animation;
+                    process.needClearBuff = item.is2ClearBuff != 0;
+                    process.ParseCondition(item.bossValiP2);
+                    item.bossProcess.Add(process);
+                }
 
-                process = new ProcessData();
-                process.index = 3;
-                process.preAnim = item.pre4Animation;
-                process.processAnim = item.process4Animation;
-                process.needClearBuff = item.is4ClearBuff != 0;
-                process.ParseCondition(item.bossValiP4);
-                item.bossProcess.Add(process);
+                if (!string.IsNullOrEmpty(item.bossValiP3))
+                {
+                    process = new ProcessData();
+                    process.index = 3;
+                    process.preAnim = item.pre3Animation;
+                    process.processAnim = item.process3Animation;
+                    process.needClearBuff = item.is3ClearBuff != 0;
+                    process.ParseCondition(item.bossValiP3);
+                    item.bossProcess.Add(process);
+                }
 
-                process = new ProcessData();
-                process.index = 4;
-                process.preAnim = item.pre5Animation;
-                process.processAnim = item.process5Animation;
-                process.needClearBuff = item.is5ClearBuff != 0;
-                item.bossProcess.Add(process);
+                if (!string.IsNullOrEmpty(item.bossValiP4))
+                {
+                    process = new ProcessData();
+                    process.index = 4;
+                    process.preAnim = item.pre4Animation;
+                    process.processAnim = item.process4Animation;
+                    process.needClearBuff = item.is4ClearBuff != 0;
+                    process.ParseCondition(item.bossValiP4);
+                    item.bossProcess.Add(process);
+                }
 
-                process = new ProcessData();
-                process.index = 0;
-                process.preAnim = item.preRare1Animation;
-                process.processAnim = item.processRare1Animation;
-                process.needClearBuff = item.isRare1ClearBuff != 0;
-                process.ParseCondition(item.rareValiP1);
-                item.bossProcess.Add(process);
+                if (!string.IsNullOrEmpty(item.bossValiP5))
+                {
+                    process = new ProcessData();
+                    process.index = 5;
+                    process.preAnim = item.pre5Animation;
+                    process.processAnim = item.process5Animation;
+                    process.needClearBuff = item.is5ClearBuff != 0;
+                    process.ParseCondition(item.bossValiP5);
+                    item.bossProcess.Add(process);
+                }
 
-                process = new ProcessData();
-                process.index = 1;
-                process.preAnim = item.preRare2Animation;
-                process.processAnim = item.processRare2Animation;
-                process.needClearBuff = item.isRare2ClearBuff != 0;
-                process.ParseCondition(item.rareValiP2);
-                item.bossProcess.Add(process);
+                if (!string.IsNullOrEmpty(item.rareValiP1))
+                {
+                    process = new ProcessData();
+                    process.index = 1;
+                    process.preAnim = item.preRare1Animation;
+                    process.processAnim = item.processRare1Animation;
+                    process.needClearBuff = item.isRare1ClearBuff != 0;
+                    process.ParseCondition(item.rareValiP1);
+                    item.rareProcess.Add(process);
+                }
 
-                process = new ProcessData();
-                process.index = 2;
-                process.preAnim = item.preRare3Animation;
-                process.processAnim = item.processRare3Animation;
-                process.needClearBuff = item.isRare3ClearBuff != 0;
-                process.ParseCondition(item.rareValiP3);
-                item.bossProcess.Add(process);
 
-                process = new ProcessData();
-                process.index = 3;
-                process.preAnim = item.preRare4Animation;
-                process.processAnim = item.processRare4Animation;
-                process.needClearBuff = item.isRare4ClearBuff != 0;
-                process.ParseCondition(item.rareValiP4);
-                item.bossProcess.Add(process);
+                if (!string.IsNullOrEmpty(item.rareValiP2))
+                {
+                    process = new ProcessData();
+                    process.index = 2;
+                    process.preAnim = item.preRare2Animation;
+                    process.processAnim = item.processRare2Animation;
+                    process.needClearBuff = item.isRare2ClearBuff != 0;
+                    process.ParseCondition(item.rareValiP2);
+                    item.rareProcess.Add(process);
+                }
 
-                process = new ProcessData();
-                process.index = 4;
-                process.preAnim = item.preRare5Animation;
-                process.processAnim = item.processRare5Animation;
-                process.needClearBuff = item.isRare5ClearBuff != 0;
-                item.bossProcess.Add(process);
+
+                if (!string.IsNullOrEmpty(item.rareValiP3))
+                {
+                    process = new ProcessData();
+                    process.index = 3;
+                    process.preAnim = item.preRare3Animation;
+                    process.processAnim = item.processRare3Animation;
+                    process.needClearBuff = item.isRare3ClearBuff != 0;
+                    process.ParseCondition(item.rareValiP3);
+                    item.rareProcess.Add(process);
+                }
+
+
+                if (!string.IsNullOrEmpty(item.rareValiP4))
+                {
+                    process = new ProcessData();
+                    process.index = 4;
+                    process.preAnim = item.preRare4Animation;
+                    process.processAnim = item.processRare4Animation;
+                    process.needClearBuff = item.isRare4ClearBuff != 0;
+                    process.ParseCondition(item.rareValiP4);
+                    item.rareProcess.Add(process);
+                }
+
+
+                if (!string.IsNullOrEmpty(item.rareValiP5))
+                {
+                    process = new ProcessData();
+                    process.index = 5;
+                    process.preAnim = item.preRare5Animation;
+                    process.processAnim = item.processRare5Animation;
+                    process.needClearBuff = item.isRare5ClearBuff != 0;
+                    process.ParseCondition(item.rareValiP5);
+                    item.rareProcess.Add(process);
+                }
 
                 instanceData.Add(item.id, item);
             }
@@ -241,7 +279,7 @@ public class StaticDataMgr : MonoBehaviour
         // Deserialization
         List<string> rowData = new List<string>();
         List<List<string>> rows = new List<List<string>>();
-        using (var reader = new CsvFileReader(Path.Combine(Util.StaticDataPath, filename + ".csv"), Encoding.Default))
+        using (var reader = new CsvFileReader(Path.Combine(Util.StaticDataPath, filename + ".csv"), Encoding.UTF8))
         {
             while (reader.ReadRow(rowData))
             {
@@ -263,7 +301,9 @@ public class StaticDataMgr : MonoBehaviour
     }
     public UnitData GetUnitRowData(string unitID)
     {
-        return unitData[unitID];
+        if (unitData.ContainsKey(unitID))
+            return unitData[unitID];
+        return null;
     }
     public SpellProtoType GetSpellProtoData(string id)
     {

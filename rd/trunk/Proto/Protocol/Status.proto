@@ -1,0 +1,42 @@
+option java_package = "com.hawk.game.protocol";
+
+enum errorMask
+{
+	NORMAL_ERROR           = 0x00000000;
+	LOGIN_ERROR            = 0x00010000;
+	PLAYER_ERROR           = 0x00020000;
+	MONSTER_ERROR          = 0x00030000;
+}
+
+enum error
+{
+	// 没有错误
+	NONE_ERROR             = 0x00000000;
+	// 配置文件错误
+	CONFIG_ERROR           = 0x00000001;
+	// 在线人数达到上限
+	ONLINE_MAX_LIMIT       = 0x00000002;
+	// 注册人数达到上限
+	REGISTER_MAX_LIMIT     = 0x00000003;
+	// 服务器灰度状态中
+	SERVER_GRAY_STATE      = 0x00000004;
+	// 数据库错误
+	DATA_BASE_ERROR        = 0x00000005;
+	
+	// 服务器错误
+	SERVER_ERROR           = 0x00001000;
+}
+
+enum PlayerError{
+	// 角色不存在
+	PLAYER_NOT_EXIST       = 0x00020001;
+	// 昵称存在
+	PLAYER_NICKNAME_EXIST  = 0x00020002;
+}
+
+enum monsterError{
+	// 怪物数量达到上限
+	MONSTER_MAX_SIZE       = 0x00030001;
+	// 怪物不存在
+	MONSTER_NOT_EXIST      = 0x00030002;
+}

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 //---------------------------------------------------------------------------------------------
 public class SpellFireArgs : EventArgs
 {
-    public int triggerTime;
+    public float triggerTime;
     public string spellID;
     public int casterID;
     public int targetID;
@@ -17,9 +17,10 @@ public class SpellFireArgs : EventArgs
 public class SpellVitalChangeArgs : EventArgs
 {
     //NOTE: if server notify client, make targetID to list
-    public int triggerTime;
+    public float triggerTime;
     public int casterID;
     public int targetID;
+    public string wpID;
     public bool isCritical;
     public int vitalChange;
     public int vitalCurrent;
@@ -28,14 +29,14 @@ public class SpellVitalChangeArgs : EventArgs
 //---------------------------------------------------------------------------------------------
 public class SpellUnitDeadArgs : EventArgs
 {
-    public int triggerTime;
+    public float triggerTime;
     public int deathID;
     public int casterID;//who makes deathID dead
 }
 //---------------------------------------------------------------------------------------------
 public class SpellBuffArgs : EventArgs
 {
-    public int triggerTime;
+    public float triggerTime;
     public int casterID;
     public int targetID;
     public string buffID;
@@ -44,7 +45,7 @@ public class SpellBuffArgs : EventArgs
 //---------------------------------------------------------------------------------------------
 public class SpellEffectArgs : EventArgs
 {
-    public int triggerTime;
+    public float triggerTime;
     public int casterID;
     public int targetID;
     public string effectID;
@@ -53,7 +54,7 @@ public class SpellEffectArgs : EventArgs
 //miss,immune,stun
 public class SpellStateArgs : EventArgs
 {
-    public int triggerTime;
+    public float triggerTime;
     public int targetID;
     public int casterID;
     public string effectID;

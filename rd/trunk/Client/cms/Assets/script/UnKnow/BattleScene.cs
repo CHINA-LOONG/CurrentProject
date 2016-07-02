@@ -5,6 +5,8 @@ public class BattleScene : MonoBehaviour
 {
     public static BattleScene Instance;
 
+    GameObject sceneGo;
+
     Vector3[] enemySlot = new Vector3[3];
     Vector3[] playerSlot = new Vector3[3];
 
@@ -18,6 +20,8 @@ public class BattleScene : MonoBehaviour
 		go.transform.SetParent (transform);
 		go.transform.localPosition = Vector3.zero;
 		go.transform.localEulerAngles = Vector3.zero;
+
+        sceneGo = go;
 
 		SetBattlePosition ();
 		SetBattleEffectPosition ();
@@ -68,5 +72,15 @@ public class BattleScene : MonoBehaviour
             return enemySlot[slot];
         else
             return playerSlot[slot];
+    }
+
+    public void OnExitBattle()
+    {
+        Destroy(sceneGo);
+    }
+
+    void OnDestroy()
+    {
+        OnExitBattle();
     }
 }

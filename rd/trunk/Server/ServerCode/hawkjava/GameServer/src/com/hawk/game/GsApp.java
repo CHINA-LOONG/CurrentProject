@@ -27,17 +27,14 @@ import org.slf4j.LoggerFactory;
 
 import com.hawk.game.callback.ShutdownCallback;
 import com.hawk.game.config.GrayPuidCfg;
-import com.hawk.game.config.ItemRewardTestCfg;
 import com.hawk.game.config.SysBasicCfg;
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Login.HSLogin;
-import com.hawk.game.protocol.Login.HSLoginOrBuilder;
 import com.hawk.game.protocol.Login.HSLoginRet;
-import com.hawk.game.protocol.Login.HSLoginRetOrBuilder;
-import com.hawk.game.protocol.Monster.HSMonsterBreak;
 import com.hawk.game.protocol.Player.HSPlayerCreate;
 import com.hawk.game.protocol.Player.HSPlayerCreateRet;
 import com.hawk.game.protocol.Status;
@@ -303,7 +300,6 @@ public class GsApp extends HawkApp {
 						if (!CreateNewPlayer(puid, session, protocol)) {
 							return false;
 						}
-						
 						return true;
 					}
 					else {
@@ -409,6 +405,14 @@ public class GsApp extends HawkApp {
 			response.setStatus(Status.error.NONE_ERROR_VALUE);
 			response.setPalyerID(playerId);
 			session.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_CREATE_S_VALUE, response));
+			
+			// TEST: 给予默认宠物
+			MonsterEntity monsterEntity = new MonsterEntity("soul", playerId, (byte)1, (short)1, 1, (byte)1, (byte)1);
+			monsterEntity.setSkillLevel(1, 1);
+			if (!HawkDBManager.getInstance().create(monsterEntity)) {
+				logger.error("database error, create monster entity fail");
+			}
+
 			return true;
 		}		
 		return false;

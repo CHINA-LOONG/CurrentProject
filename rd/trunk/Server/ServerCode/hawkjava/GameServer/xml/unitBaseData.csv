@@ -1,6 +1,6 @@
-#NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM
+ï»¿#NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM
 level,experience,health,strength,intelligence,speed,defense,endurance,recovery,goldNoteMin,goldNoteMax,expMin,expMax,output
-#µÈ¼¶,Éý¼¶ËùÐè¾­Ñé,ÌåÁ¦,Á¦Á¿,ÖÇÁ¦,ËÙ¶È,·ÀÓùÁ¦,ÄÍÁ¦,Õ½ºó»ØÑª,»õ±ÒËæ»úµôÂä×îÐ¡Öµ,»õ±ÒËæ»úµôÂä×î´óÖµ,¾­ÑéËæ»úµôÂä×îÐ¡Öµ,¾­ÑéËæ»úµôÂä×î´óÖµ,²ú³ö¾­Ñé
+#ç­‰çº§,å‡çº§æ‰€éœ€ç»éªŒ,ä½“åŠ›,åŠ›é‡,æ™ºåŠ›,é€Ÿåº¦,é˜²å¾¡åŠ›,è€åŠ›,æˆ˜åŽå›žè¡€,è´§å¸éšæœºæŽ‰è½æœ€å°å€¼,è´§å¸éšæœºæŽ‰è½æœ€å¤§å€¼,ç»éªŒéšæœºæŽ‰è½æœ€å°å€¼,ç»éªŒéšæœºæŽ‰è½æœ€å¤§å€¼,äº§å‡ºç»éªŒ
 12,123,234,345,456,567,678,789,1233,1455,1566,1788,1899,2010
 13,124,235,346,457,568,679,790,1234,1456,1567,1789,1900,2011
 14,125,236,347,458,569,680,791,1235,1457,1568,1790,1901,2012

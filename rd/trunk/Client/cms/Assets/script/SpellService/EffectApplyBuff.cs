@@ -21,7 +21,7 @@ public class EffectApplyBuff : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(int applyTime, float aniDelayTime)
+    public override void Apply(float applyTime, float aniDelayTime)
     {
         base.Apply(applyTime);
         int hitResult = CalculateHit();

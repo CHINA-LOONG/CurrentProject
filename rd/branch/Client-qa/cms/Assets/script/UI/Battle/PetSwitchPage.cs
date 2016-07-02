@@ -5,13 +5,13 @@ using System.Collections.Generic;
 public class PetSwitchPage : MonoBehaviour
 {
     public List<PetSwitchItem> items;
-    // Use this for initialization
+
     public void Show(ShowSwitchPetUIArgs args)
     {
         int i = 0;
+        var prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "petItem");
         foreach (var unit in args.idleUnits)
         {
-            var prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "petItem");
             var item = Instantiate(prefab);
             item.transform.SetParent(gameObject.transform, false);
 
@@ -19,15 +19,15 @@ public class PetSwitchPage : MonoBehaviour
             trans.anchoredPosition += new Vector2(100*i++, 0);
 
             var com = item.GetComponent<PetSwitchItem>();
-            com.targetId = args.targetId;
-            com.unit = unit;
-
-            com.text.text = string.Format("{0}:{1}\nHP:{2}/{3}", unit.name, unit.pbUnit.guid, unit.curLife, unit.maxLife);
+            com.Show(args.targetId, unit);
 
             items.Add(com);
         }
 
         gameObject.SetActive(true);
+        var targetGO = BattleController.Instance.BattleGroup.GetUnitByGuid(args.targetId);
+        transform.position = RectTransformUtility.WorldToScreenPoint(BattleCamera.Instance.CameraAttr, targetGO.gameObject.transform.position);
+        transform.position += new Vector3(0, 200, 0);
     }
 
     public void Hide()

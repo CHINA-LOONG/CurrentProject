@@ -59,6 +59,13 @@ public class ResourceMgr : MonoBehaviour
         return bundle.LoadAsset<GameObject>(assetname);
     }
 
+    public T LoadAssetType<T>(string abname, string assetname) where T:Object
+    {
+        abname = abname.ToLower();
+        AssetBundle bundle = LoadAssetBundle(abname);
+        return bundle.LoadAsset<T>(assetname);
+    }
+
     /// <summary>
     /// ‘ÿ»ÎAssetBundle
     /// </summary>

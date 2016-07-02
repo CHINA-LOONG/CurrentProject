@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+state = 0 Add
+state = 1 Remove
+-->
+<AniList>
+	<Ani id="e1" state="0">
+		<Motion ani="" key="lazy" value="true" />
+		<Particle asset="ps1Test" bundle="effect/particle" ani="fireMove" parent=""/>
+		<Camera ani="" />
+	</Ani>
+	<Ani id="e1Finish" state="1">
+		<Particle asset="ps1Test" ani="" parent=""/>
+	</Ani>
+</AniList>

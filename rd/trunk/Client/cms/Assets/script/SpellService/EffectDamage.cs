@@ -25,7 +25,7 @@ public class EffectDamage : Effect
         damagePt.damageProperty = damagePtOut.damageProperty;
         base.Init(pt, owner);
     }
-    public override void Apply(int applyTime, float aniDelayTime)
+    public override void Apply(float applyTime, float aniDelayTime)
     {
         base.Apply(applyTime);
         CalculateDamage();
@@ -86,26 +86,34 @@ public class EffectDamage : Effect
             {
                 //治疗
                 damageAmount = (int)(
-                                damageRatio * injuryRatio * SpellConst.intelligenceToAttack * caster.intelligence *  //暴击伤害系数 * 受伤比 * 攻击
+                                damageRatio * SpellConst.intelligenceToAttack * caster.intelligence *  //暴击伤害系数 * 攻击
                                 (1.0f + gdMgr.PlayerDataAttr.equipIntelligenceRatio + caster.additionHealRatio) * //主角和怪物装备加成
-                                (1.0f + damageProto.attackFactor * spellLevelRatio) * //技能加成
+                                (damageProto.attackFactor + spellLevelRatio) * //技能加成
                                 (1.0f + caster.spellIntelligenceRatio)
                                 );//buff加成(队长技 etc)
-                                /* *弱点伤害 * 副本伤害 */
 
             }
-            else 
+            else
             {
+                //弱点
+                WeakPointData wp = null;
+                if (target.attackWpName != null)
+                {
+                    wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
+                }
+
+                float wpRatio = wp != null ? wp.damageRate : 1.0f;
+
                 //物理伤害
                 if (damageProto.damageType == SpellConst.damagePhy)
                 {
                     damageAmount = (int)(
                                     damageRatio * injuryRatio * SpellConst.strengthToAttack * caster.strength *  //暴击伤害系数 * 受伤比 * 攻击
                                     (1.0f + gdMgr.PlayerDataAttr.equipStrengthRatio + caster.additionDamageRatio - target.minusDamageRatio) * //主角和怪物装备加成
-                                    (1.0f + damageProto.attackFactor * spellLevelRatio) * //技能加成
-                                    (1.0f + caster.spellStrengthRatio)
+                                    (damageProto.attackFactor + spellLevelRatio) * //技能加成
+                                    (1.0f + caster.spellStrengthRatio) *
+                                    wpRatio
                                     ); //buff加成(队长技 etc)
-                                    /* *弱点伤害 * 副本伤害 */
                 }
                 //法术伤害
                 else
@@ -131,12 +139,13 @@ public class EffectDamage : Effect
                             break;
                     }
                     //五行相生相克系数
-                    propertyDamageRatio *= SpellFunctions.GetPropertyDamageRatio(caster.property, target.property);
+                    int targetProp = wp != null ? wp.property : target.property;
+                    propertyDamageRatio *= SpellFunctions.GetPropertyDamageRatio(caster.property, targetProp);
 
                     damageAmount = (int)(
                                     damageRatio * injuryRatio * SpellConst.intelligenceToAttack * caster.intelligence *  //暴击伤害系数 * 受伤比 * 攻击
                                     (1.0f + gdMgr.PlayerDataAttr.equipIntelligenceRatio + caster.additionDamageRatio - target.minusDamageRatio) * //主角和怪物装备加成
-                                    (1.0f + damageProto.attackFactor * spellLevelRatio) * //技能加成
+                                    (damageProto.attackFactor + spellLevelRatio) * //技能加成
                                     (1.0f + caster.spellIntelligenceRatio) *//buff加成(队长技 etc)
                                     propertyDamageRatio
                                     ); //五行相关
@@ -144,21 +153,32 @@ public class EffectDamage : Effect
                 }
                 //伤害*-1 修正为负数
                 damageAmount *= -1;
-                //
-                target.curLife += damageAmount;
-                if (target.curLife < 0)
+
+                //弱点伤害计算
+                if (wp != null)
                 {
-                    target.curLife = 0;
-                    SpellUnitDeadArgs args = new SpellUnitDeadArgs();
-                    args.triggerTime = applyTime;
-                    args.casterID = casterID;
-                    args.deathID = targetID;
-                    spellService.TriggerEvent(GameEventList.SpellUnitDead, args);
+                    target.OnDamageWeakPoint(wp.id, damageAmount);
                 }
-                else if(target.curLife > target.maxLife)
+
+                //没有弱点或者弱点属性关联伤害，则扣除怪物血量
+                if (wp == null || wp.isDamagePoint == 1)
                 {
-                    target.curLife = target.maxLife;
+                    target.curLife += damageAmount;
+                    if (target.curLife < 0)
+                    {
+                        target.curLife = 0;
+                        SpellUnitDeadArgs args = new SpellUnitDeadArgs();
+                        args.triggerTime = applyTime;
+                        args.casterID = casterID;
+                        args.deathID = targetID;
+                        spellService.TriggerEvent(GameEventList.SpellUnitDead, args);
+                    }
+                    else if (target.curLife > target.maxLife)
+                    {
+                        target.curLife = target.maxLife;
+                    }
                 }
+
                 //trigger damage event
                 {
                     SpellVitalChangeArgs args = new SpellVitalChangeArgs();
@@ -167,9 +187,14 @@ public class EffectDamage : Effect
                     args.targetID = targetID;
                     args.isCritical = critical;
                     args.vitalChange = damageAmount;
-                    args.vitalCurrent = target.curLife;
+                    args.vitalCurrent = target.curLife;//TODO: need weak point life?
+                    if (wp != null)
+                    {
+                        args.wpID = wp.id;
+                    }
                     spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
                 }
+
             }
         }
     }

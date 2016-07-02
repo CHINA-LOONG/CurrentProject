@@ -24,4 +24,8 @@ public class BattleConst
 
     //能量积攒上限
     public const int enegyMax = 30;
+
+    public const int processContinueRet = -1;
+
+    public const float dazhaoDefaultTime = 5;
 }

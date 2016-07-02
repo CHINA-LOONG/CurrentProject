@@ -26,13 +26,17 @@ public class EffectSearch : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(int applyTime, float aniDelayTime)
+    public override void Apply(float applyTime, float aniDelayTime)
     {
         base.Apply(applyTime);
 
         Logger.Log("[SpellService]trigger search effect");
         EffectSearchPrototype searchProt = protoEffect as EffectSearchPrototype;
-        List<GameUnit> unitList = spellService.GetUnitList(searchProt.camp);
+        UnitCamp casterCamp = spellService.GetUnit(casterID).pbUnit.camp;
+        int camp = searchProt.camp;
+        camp = casterCamp == UnitCamp.Player ? camp : (int)(UnitCamp.Enemy);
+
+        List<GameUnit> unitList = spellService.GetUnitList(camp);
         foreach (GameUnit unit in unitList)
         {
             Effect curEffect = spellService.GetEffect(searchProt.effectID);

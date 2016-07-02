@@ -1,6 +1,5 @@
 package com.hawk.game.player;
 
-import java.util.Map;
 import java.util.Map.Entry;
 
 import org.hawk.app.HawkAppObj;
@@ -13,7 +12,6 @@ import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.module.PlayerIdleModule;
 import com.hawk.game.module.PlayerLoginModule;

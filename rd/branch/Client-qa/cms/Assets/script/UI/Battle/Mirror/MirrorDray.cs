@@ -135,7 +135,6 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler
 					}
 					else
 					{
-						Debug.LogError("hello World!!");
 						GameEventMgr.Instance.FireEvent<MirrorTarget,MirrorTarget>(GameEventList.FindWeakPoint,findTarget,m_curFindTarget);
 						findTimeCount = 0f;
 						m_curFindTarget = findTarget;

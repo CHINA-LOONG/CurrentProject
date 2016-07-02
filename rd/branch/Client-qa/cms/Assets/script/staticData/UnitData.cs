@@ -7,6 +7,7 @@ public class UnitData
 {
     public string index;
     public string assetID;
+    public string uiAsset;
     public string nickName;
     public int grade;
     public byte isEvolutionable;

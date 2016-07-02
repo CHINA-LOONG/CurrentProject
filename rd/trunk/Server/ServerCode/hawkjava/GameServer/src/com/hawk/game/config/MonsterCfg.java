@@ -1,11 +1,9 @@
 package com.hawk.game.config;
 
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase;
-import org.hawk.os.HawkException;
 
 @HawkConfigManager.CsvResource(file = "xml/unitData.csv", struct = "map")
 public class MonsterCfg extends HawkConfigBase {

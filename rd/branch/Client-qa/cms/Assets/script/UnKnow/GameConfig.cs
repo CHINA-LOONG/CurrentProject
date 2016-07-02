@@ -13,7 +13,9 @@ public class GameConfig : MonoBehaviour {
 	public string testBattleAssetName;
 
 	public float FindWeakPointFinishedNeedTime = 2.0f;
-	public float MirrorRadius = 5f;
+	public float MirrorRadius = 50f;
+	public float FireFocusWpRadius = 50f;
+	public float EnmeyUnitOffsetYForBloodUI  = 1.4f;
 
-	public	float	MaxCureMagicLifeRate  = 0.75f;
+	public	float	MaxCureMagicLifeRate  = 0.75f;	
 }

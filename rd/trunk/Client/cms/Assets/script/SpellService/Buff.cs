@@ -9,6 +9,7 @@ public class BuffPrototype
     public string id;
     public string periodEffectID;
     public int category;
+    //public int isClear;//切进程是否删除
     public int duration;
 
     //状态改变
@@ -57,14 +58,14 @@ public class Buff
         ownedSpell = spell;
     }
     //---------------------------------------------------------------------------------------------
-    public void Apply(int curTime)
+    public void Apply(float curTime)
     {
         periodCount = 0;
         GameUnit target = spellService.GetUnit(targetID);
         AddBuff(target.buffList);
     }
     //---------------------------------------------------------------------------------------------
-    public void Update(int curTime)
+    public void Update(float curTime)
     {
         List<Buff> buffList = spellService.GetUnit(targetID).buffList;
         if (periodCount >= buffProto.duration)
@@ -75,10 +76,10 @@ public class Buff
         }
 
         //hot and dot
+        ++periodCount;
         if (buffProto.periodEffectID.Length > 0)
         {
             Logger.Log("[SpellService]take periodic effect");
-            ++periodCount;
             Effect eft = spellService.GetEffect(buffProto.periodEffectID);
             if (eft != null)
             {

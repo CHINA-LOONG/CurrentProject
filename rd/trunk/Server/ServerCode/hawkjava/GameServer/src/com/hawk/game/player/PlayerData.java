@@ -3,6 +3,7 @@ package com.hawk.game.player;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.hawk.db.HawkDBManager;
 import org.hawk.net.protocol.HawkProtocol;
@@ -11,9 +12,11 @@ import org.hawk.os.HawkTime;
 import com.hawk.game.ServerData;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.protocol.Monster.HSMonsterInfoSync;
 import com.hawk.game.protocol.Player.HSPlayerInfoSync;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.util.BuilderUtil;
+import com.hawk.game.util.ProtoUtil;
 
 /**
  * 管理所有玩家数据集合
@@ -35,7 +38,7 @@ public class PlayerData {
 	/**
 	 * 怪的基础数据
 	 */
-	private Map<Integer, MonsterEntity> monsterEntities = new HashMap<Integer, MonsterEntity>();
+	private Map<Integer, MonsterEntity> monsterEntityList = new HashMap<Integer, MonsterEntity>();
 
 	/**
 	 * 构造函数
@@ -90,8 +93,8 @@ public class PlayerData {
 	 * 
 	 * @return
 	 */
-	public Map<Integer, MonsterEntity> getMonsterEntities() {
-		 return monsterEntities;
+	public Map<Integer, MonsterEntity> getMonsterEntityList() {
+		 return monsterEntityList;
 	}
 	
 
@@ -101,11 +104,11 @@ public class PlayerData {
 	 * @param playerEntity
 	 */
 	public void setMonsterEntity(MonsterEntity monsterEntity) {
-		monsterEntities.put(monsterEntity.getId(), monsterEntity);
+		monsterEntityList.put(monsterEntity.getId(), monsterEntity);
 	}
 
-	public MonsterEntity getMonsterEntity(int monsterID){
-		return monsterEntities.get(monsterID);
+	public MonsterEntity getMonsterEntity(int monsterId){
+		return monsterEntityList.get(monsterId);
 	}
 	
 	/**
@@ -114,7 +117,7 @@ public class PlayerData {
 	 * @param playerEntity
 	 */
 	public void clearMonsterEntity() {
-		this.monsterEntities.clear();
+		this.monsterEntityList.clear();
 	}
 
 	/**********************************************************************************************************
@@ -146,12 +149,12 @@ public class PlayerData {
 	 * 
 	 * @return
 	 */
-	public void loadAllMonsters(int playerID) {	
-		monsterEntities.clear();
-		List<MonsterEntity> monsterEntityList = HawkDBManager.getInstance().query("from MonsterEntity where roleId = ? and invalid = 0", playerID);
+	public void loadAllMonster() {	
+		monsterEntityList.clear();
+		List<MonsterEntity> monsterEntitys = HawkDBManager.getInstance().query("from MonsterEntity where playerId = ? and invalid = 0", getId());
 		if (monsterEntityList != null && monsterEntityList.size() > 0) {
-			for (MonsterEntity monsterEntity : monsterEntityList) {
-				monsterEntities.put(monsterEntity.getId(), monsterEntity);
+			for (MonsterEntity monsterEntity : monsterEntitys) {
+				monsterEntityList.put(monsterEntity.getId(), monsterEntity);
 			}
 		}
 	}
@@ -170,11 +173,24 @@ public class PlayerData {
 	}
 
 	/**
-	 * 同步角色信息(0表示同步所有)
-	 * 
-	 * @param roleId
+	 * 同步怪物信息(0表示同步所有)
 	 */
-	public void syncRoleInfo(int id) {
+	public void syncMonsterInfo(int id) {		
+		HSMonsterInfoSync.Builder builder = HSMonsterInfoSync.newBuilder();
+		
+		if (id == 0) {
+			for (Entry<Integer, MonsterEntity> entry : monsterEntityList.entrySet()) {
+				builder.addMonsterInfo(BuilderUtil.genMonsterBuilder(entry.getValue()));
+			}
+		} else {
+			builder.addMonsterInfo(BuilderUtil.genMonsterBuilder(monsterEntityList.get(id)));
+		}
 
+		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.MONSTER_INFO_SYNC_S, builder);
+		if (id == 0) {
+			player.sendProtocol(ProtoUtil.compressProtocol(protocol));
+		} else {
+			player.sendProtocol(protocol);
+		}
 	}
 }

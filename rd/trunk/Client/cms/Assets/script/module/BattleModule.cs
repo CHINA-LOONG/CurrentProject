@@ -5,7 +5,9 @@ public class BattleModule : ModuleBase
 {
     BattleController controller;
     BattleProcess process;
+    BattleScene battleScene;
 	WeakPointController  weakPointController;
+    BattleUnitAi battleUnitAi;
 
     void BindListener()
     {
@@ -28,7 +30,7 @@ public class BattleModule : ModuleBase
     {
 		string battlePrefabName = GameConfig.Instance.testBattlePrefab;
 		string assetName = GameConfig.Instance.testBattleAssetName;
-		BattleScene battleScene = gameObject.AddComponent<BattleScene> ();
+		battleScene = gameObject.AddComponent<BattleScene> ();
 		battleScene.InitWithBattleSceneName (assetName, battlePrefabName);
 
         controller = gameObject.AddComponent<BattleController>();
@@ -39,16 +41,13 @@ public class BattleModule : ModuleBase
 		weakPointController = gameObject.AddComponent<WeakPointController> ();
 		weakPointController.Init ();
 
-		BattleUnitAi battleUnitAi = gameObject.AddComponent<BattleUnitAi> ();
+        battleUnitAi = gameObject.AddComponent<BattleUnitAi>();
 		battleUnitAi.Init ();
     }
 
     public override void OnEnter(ModuleBase prevModule, object param)
     {
         BindListener();
-
-        Logger.Log("Enter Battle");
-        BattleTest.Test();
     }
 
     public override void OnExecute()
@@ -59,9 +58,11 @@ public class BattleModule : ModuleBase
     public override void OnExit(ModuleBase nextModule)
     {
         UnBindListener();
+        Destroy(battleScene);
         Destroy(controller);
         Destroy(process);
-		Destroy (weakPointController);
+        Destroy(weakPointController);
+        Destroy(battleUnitAi);
     }
 
 #region  Event

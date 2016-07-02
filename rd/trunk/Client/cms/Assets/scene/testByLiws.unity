@@ -169,6 +169,8 @@ MonoBehaviour:
   testBattleAssetName: battlescene/yunmenze
   FindWeakPointFinishedNeedTime: 4
   MirrorRadius: 50
+  FireFocusWpRadius: 50
+  EnmeyUnitOffsetYForBloodUI: 1.39999998
   MaxCureMagicLifeRate: .75
 --- !u!1 &886866240
 GameObject:
@@ -230,52 +232,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!1001 &1076908702
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 485644, guid: 39fc463fabc7dce4986ec06c51739315, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 485644, guid: 39fc463fabc7dce4986ec06c51739315, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 485644, guid: 39fc463fabc7dce4986ec06c51739315, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 485644, guid: 39fc463fabc7dce4986ec06c51739315, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 485644, guid: 39fc463fabc7dce4986ec06c51739315, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 485644, guid: 39fc463fabc7dce4986ec06c51739315, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 485644, guid: 39fc463fabc7dce4986ec06c51739315, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 485644, guid: 39fc463fabc7dce4986ec06c51739315, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 110398, guid: 39fc463fabc7dce4986ec06c51739315, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 39fc463fabc7dce4986ec06c51739315, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1343968387
 Prefab:
   m_ObjectHideFlags: 0

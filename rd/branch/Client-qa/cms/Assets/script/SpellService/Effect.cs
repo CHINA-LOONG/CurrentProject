@@ -58,7 +58,7 @@ public class Effect
     public SpellService spellService;
     public int casterID;
     public int targetID;
-    public int applyTime;
+    public float applyTime;
     public float aniDelayTime;
     public Buff ownedBuff;
     public Spell ownedSpell;
@@ -77,7 +77,7 @@ public class Effect
         spellService = owner;
     }
     //---------------------------------------------------------------------------------------------
-    public virtual void Apply(int applyTime, float aniDelayTime = 0.0f)
+    public virtual void Apply(float applyTime, float aniDelayTime = 0.0f)
     {
         GenerateTarget(casterID, targetID);
         this.applyTime = applyTime;

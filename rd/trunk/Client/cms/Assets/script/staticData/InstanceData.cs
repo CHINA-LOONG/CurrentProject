@@ -1,33 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 public class Condition
 {
     public string func;
     public Dictionary<int, int> rets = new Dictionary<int, int>();
+
+    public MethodInfo method;
 }
 
 public class ProcessData
 {
-    //从0开始，和list index相同
+    //从1开始
     public int index;
     public string processAnim;
     public string preAnim;
     public bool needClearBuff;
-    public Condition condition = new Condition();
+    public string func;
+    public Dictionary<int, int> rets = new Dictionary<int, int>();
+
+    public MethodInfo method = null;
 
     public void ParseCondition(string con)
     {
+        if (string.IsNullOrEmpty(con))
+            return;
+
         Hashtable table = MiniJSON.jsonDecode(con) as Hashtable;
-        condition.func = table["func"].ToString();
-        var rets = table["ret"] as ArrayList;
-        foreach (var item in rets)
+        func = table["func"].ToString();
+        var returnCodes = table["ret"] as ArrayList;
+        foreach (var item in returnCodes)
         {
             var ret = item as Hashtable;
             var val = int.Parse(ret["val"].ToString());
             var gotoVal = int.Parse(ret["goto"].ToString());
-            condition.rets.Add(val, gotoVal);
+            rets.Add(val, gotoVal);
         }
     }
 }
@@ -78,6 +87,7 @@ public class InstanceData
     public string pre5Animation;
     public string process5Animation;
     public byte is5ClearBuff;
+    public string bossValiP5;
     public string bossValiVic;
     public string rareID;
     public float rareProbability;
@@ -102,8 +112,12 @@ public class InstanceData
     public string preRare5Animation;
     public string processRare5Animation;
     public byte isRare5ClearBuff;
+    public string rareValiP5;
     public string rareValiVic;
 
     public List<ProcessData> bossProcess = new List<ProcessData>();
     public List<ProcessData> rareProcess = new List<ProcessData>();
+    public MethodInfo normalValiVicMethod = null;
+    public MethodInfo bossValiVicMethod = null;
+    public MethodInfo rareValiVicMethod = null;
 }

@@ -8,10 +8,7 @@ import org.hawk.net.HawkSession;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
 
-import java.util.List;
-
 import com.hawk.game.ServerData;
-import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
@@ -136,7 +133,7 @@ public class PlayerLoginModule extends PlayerModule {
 		// 玩家对象信息错误
 		if (playerEntity == null || playerEntity.getId() <= 0)
 		{
-			session.sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.PlayerError.PAYER_NOT_EXIST_VALUE, 1));
+			session.sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.PlayerError.PLAYER_NOT_EXIST_VALUE, 1));
 			return false;
 		}
 		
@@ -152,17 +149,11 @@ public class PlayerLoginModule extends PlayerModule {
 		player.setSession(session);
 		playerEntity.setLoginTime(HawkTime.getCalendar().getTime());
 		playerEntity.notifyUpdate(true);
-
-		// 加载所有怪物数据
-		//player.getPlayerData().loadAllMonsters(playerEntity.getId());
 		
 		// 发送登陆成功协议
 		sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S, response));
 		// 同步玩家信息
 		player.getPlayerData().syncPlayerInfo();
-		
-		// 同步怪物信息
-		player.getPlayerData().syncRoleInfo(0);
 		
 		// 通知玩家其他模块玩家登陆成功
 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LOGIN, player.getXid());

@@ -38,6 +38,9 @@ public class GsConst {
 		public static int PLAYER_LOGIN = 3;
 		// 玩家初始化完成
 		public static int PLAYER_ASSEMBLE = 4;
+		
+		// 奖励宠物
+		public static final int PRESENT_MONSTER = 1001;
 	}
 
 	/**

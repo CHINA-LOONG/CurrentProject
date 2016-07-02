@@ -5,12 +5,12 @@ public class BuildModule : ModuleBase
 {	
 	void BindListener()
 	{
-        GameEventMgr.Instance.AddListener(GameEventList.BattleBtnClick, OnBattleBtnClick);
+        GameEventMgr.Instance.AddListener<PbStartBattle>(GameEventList.BattleBtnClick, OnBattleBtnClick);
 	}
 	
 	void UnBindListener()
 	{
-        GameEventMgr.Instance.RemoveListener(GameEventList.BattleBtnClick, OnBattleBtnClick);
+        GameEventMgr.Instance.RemoveListener<PbStartBattle>(GameEventList.BattleBtnClick, OnBattleBtnClick);
 	}
 	
 	void Start()
@@ -56,10 +56,12 @@ public class BuildModule : ModuleBase
 		UnBindListener();
 	}
 
-    private void OnBattleBtnClick()
+    private void OnBattleBtnClick(PbStartBattle proto)
     {
         GameMain.Instance.ChangeModule<BattleModule>();
+        Logger.Log("Enter Battle");
         UIMgr.Instance.CloseUI(UIBuild.ViewName);
+        GameEventMgr.Instance.FireEvent(GameEventList.StartBattle, proto);
     }
 }
 

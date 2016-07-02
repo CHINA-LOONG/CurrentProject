@@ -15,7 +15,6 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.hawk.db.HawkDBEntity;
-import org.hawk.db.HawkDBManager;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 import org.hibernate.annotations.GenericGenerator;
@@ -37,22 +36,25 @@ public class MonsterEntity extends HawkDBEntity {
 	private int id = 0;
 
 	@Column(name = "cfgId", nullable = false)
-	private int cfgId = 0;
+	private String cfgId = "";
 
-	@Column(name = "roleId", nullable = false)
-	protected int roleId = 0;
+	@Column(name = "playerId", nullable = false)
+	protected int playerId = 0;
 
-	@Column(name = "grade", nullable = false)
-	protected int grade = 0;
+	@Column(name = "stage", nullable = false)
+	protected byte stage = 0;
 
 	@Column(name = "level", nullable = false)
-	protected int level = 0;
+	protected short level = 0;
 
 	@Column(name = "exp", nullable = false)
 	protected int exp = 0;
 
-	@Column(name = "disposition", nullable = false)
-	protected byte disposition = 0;
+	@Column(name = "lazy", nullable = false)
+	protected byte lazy = 0;
+	
+	@Column(name = "ai", nullable = false)
+	protected byte ai = 0;
 
 	@Column(name = "skillList", nullable = false)
 	private String skillJsonStr = "";
@@ -60,7 +62,7 @@ public class MonsterEntity extends HawkDBEntity {
 	@Column(name = "createTime", nullable = false)
 	protected Date createTime = null;
 
-	@Column(name = "updateTime", nullable = false)
+	@Column(name = "updateTime")
 	protected Date updateTime = null;
 
 	@Column(name = "invalid", nullable = false)
@@ -70,22 +72,20 @@ public class MonsterEntity extends HawkDBEntity {
 	protected Map<Integer, Integer> skillMap = new HashMap<Integer, Integer>();
 	
 	@Transient
-	protected long equipId = 0;
-	
-	@Transient
 	private boolean assembleFinish = false;
 
 	public MonsterEntity() {
 		this.createTime = HawkTime.getCalendar().getTime();
 	}
 
-	public MonsterEntity(int cfgId, int roleId, int grade, int level, int exp, byte disposition) {
+	public MonsterEntity(String cfgId, int playerId, byte stage, short level, int exp, byte lazy, byte ai) {
 		this.cfgId = cfgId;
-		this.roleId = roleId;
-		this.grade = grade;
+		this.playerId = playerId;
+		this.stage = stage;
 		this.level = level;
 		this.exp = exp;
-		this.disposition = disposition;
+		this.lazy = lazy;
+		this.ai = ai;
 		this.createTime = HawkTime.getCalendar().getTime();
 	}
 
@@ -94,23 +94,27 @@ public class MonsterEntity extends HawkDBEntity {
 		JSONObject skill = null;
 		int skillId = 0;
 		int skillLevel = 0;
+		boolean valid = true;
 		skillMap.clear();
-
-		for (int i = 0; jsonArray != null && jsonArray.isArray() && i < jsonArray.size(); ++i) {
-			skill = jsonArray.getJSONObject(i);
-
-			try {
+		
+		if (jsonArray == null ||  jsonArray.isArray() == false) {
+			valid = false;
+		}
+		else {
+			for (int i = 0; i < jsonArray.size(); ++i) {
+				skill = jsonArray.getJSONObject(i);
 				if (skill.containsKey("id") == false || skill.containsKey("lv") == false) {
-					throw new Exception();
+					valid = false;
+					continue;
 				}
-
 				skillId = skill.getInt("id");
 				skillLevel = skill.getInt("lv");
-			} catch (Exception e) {
-				HawkException.catchException(new HawkException("db monster skill data invalid: " + this.id));
+				skillMap.put(skillId, skillLevel);
 			}
-
-			skillMap.put(skillId, skillLevel);
+		} 
+		
+		if (valid == false) {
+			HawkException.catchException(new HawkException("db monster skill data invalid: " + this.id));
 		}
 		
 		assembleFinish = true;
@@ -138,35 +142,35 @@ public class MonsterEntity extends HawkDBEntity {
 		this.id = id;
 	}
 
-	public int getCfgId() {
+	public String getCfgId() {
 		return cfgId;
 	}
 
-	public void setCfgId(int cfgId) {
+	public void setCfgId(String cfgId) {
 		this.cfgId = cfgId;
 	}
 
-	public int getRoleId() {
-		return roleId;
+	public int getPlayerId() {
+		return playerId;
 	}
 
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
+	public void setPlayerId(int playerId) {
+		this.playerId = playerId;
 	}
 
-	public int getGrade() {
-		return grade;
+	public byte getStage() {
+		return stage;
 	}
 
-	public void setGrade(int grade) {
-		this.grade = grade;
+	public void setStage(byte stage) {
+		this.stage = stage;
 	}
 
-	public int getLevel() {
+	public short getLevel() {
 		return level;
 	}
 
-	public void setLevel(int level) {
+	public void setLevel(short level) {
 		this.level = level;
 	}
 
@@ -178,12 +182,20 @@ public class MonsterEntity extends HawkDBEntity {
 		this.exp = exp;
 	}
 
-	public byte getDisposition() {
-		return disposition;
+	public byte getLazy() {
+		return lazy;
 	}
 
-	public void setDisposition(byte disposition) {
-		this.disposition = disposition;
+	public void setLazy(byte lazy) {
+		this.lazy = lazy;
+	}
+	
+	public byte getAi() {
+		return ai;
+	}
+
+	public void setAi(byte ai) {
+		this.ai = ai;
 	}
 
 	public Map<Integer, Integer> getSkillMap() {
@@ -210,10 +222,10 @@ public class MonsterEntity extends HawkDBEntity {
 		super.notifyUpdate(async);
 	}
 	
-	public boolean updateSync() {
-		SkillMapToJson();
-		return HawkDBManager.getInstance().update(this);
-	}
+//	public boolean updateSync() {
+//		SkillMapToJson();
+//		return HawkDBManager.getInstance().update(this);
+//	}
 
 	@Override
 	public Date getCreateTime() {

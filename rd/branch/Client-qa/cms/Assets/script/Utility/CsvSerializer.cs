@@ -7,14 +7,10 @@
 //===================================================================================
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using UnityEngine;
 
 
 namespace Csv.Serialization
@@ -110,11 +106,15 @@ namespace Csv.Serialization
 
             var fields = type.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
 
-            var q = fields.AsQueryable();
+            var q = new List<FieldInfo>();
 
             if (IgnoreReferenceTypesExceptString)
             {
-                q = q.Where(a => a.FieldType.IsValueType || a.FieldType.Name == "String");
+                foreach (var a in fields)
+                {
+                    if (a.FieldType.IsValueType || a.FieldType.Name == "String")
+                        q.Add(a);
+                }
             }
 
             var r = from a in q
@@ -130,6 +130,7 @@ namespace Csv.Serialization
         /// </summary>
         /// <param name="stream">stream</param>
         /// <returns></returns>
+        /*
         public List<T> Deserialize(Stream stream)
         {
             string[] columns;
@@ -139,12 +140,12 @@ namespace Csv.Serialization
             {
                 using (var sr = new StreamReader(stream))
                 {
-                    /*CsvFileReader reader = new CsvFileReader(stream);
+                    / *CsvFileReader reader = new CsvFileReader(stream);
                     List<string> d = new List<string>();
                     while (reader.ReadRow(d))
                     {
                         Debug.Log(d);
-                    }*/
+                    }* /
 
                     rows = sr.ReadToEnd().Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
                     columns = rows[ColumnNameRow].Split(Separator);
@@ -197,7 +198,15 @@ namespace Csv.Serialization
                         .Replace(Replacement, Separator.ToString())
                         .Replace(NewlineReplacement, Environment.NewLine);
 
-                    var p = _properties.First(a => a.Name == column);
+                    FieldInfo p = null;
+                    foreach (var item in _properties)
+                    {
+                        if (item.Name == column)
+                        {
+                            p = item;
+                            break;
+                        }
+                    }
 
                     var converter = TypeDescriptor.GetConverter(p.FieldType);
                     var convertedvalue = converter.ConvertFrom(value);
@@ -210,6 +219,7 @@ namespace Csv.Serialization
 
             return data;
         }
+        */
 
         public List<T> Deserialize(List<string> header, List<List<string>> data)
         {
@@ -229,7 +239,15 @@ namespace Csv.Serialization
 
                     try
                     {
-                        var p = _properties.First(a => a.Name == field);
+                        FieldInfo p = null;
+                        foreach (var item in _properties)
+                        {
+                            if (item.Name == field)
+                            {
+                                p = item;
+                                break;
+                            }
+                        }
                         var converter = TypeDescriptor.GetConverter(p.FieldType);
                         var convertedvalue = converter.ConvertFrom(value);
 
@@ -238,24 +256,13 @@ namespace Csv.Serialization
                     catch (System.Exception ex)
                     {
                         Logger.LogErrorFormat("Cannot find field:{0}  in class:{1}\n{2}", field, typeof(T), ex);
-                    }                    
+                    }
                 }
 
                 instance.Add(datum);
             }
 
             return instance;
-        }
-
-        /// <summary>
-        /// Get Header
-        /// </summary>
-        /// <returns></returns>
-        private string GetHeader()
-        {
-            var header = _properties.Select(a => a.Name);
-
-            return string.Join(Separator.ToString(), header.ToArray());
         }
     }
 

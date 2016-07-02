@@ -7,6 +7,8 @@ public class SpellProtoType
 {
     public string id;
     public string rootEffectID;
+    public int actionCount;
+    public int channelTime;
     public int energyCost;
     public int energyGenerate;
     public int category;
@@ -36,7 +38,7 @@ public class Spell
         spellService = owner;
     }
 
-    public void Apply(int triggerTime)
+    public void Apply(float triggerTime)
     {
         //generate spell event
         SpellFireArgs args = new SpellFireArgs();

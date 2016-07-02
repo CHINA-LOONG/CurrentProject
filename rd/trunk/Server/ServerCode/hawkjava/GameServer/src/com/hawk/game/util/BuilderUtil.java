@@ -1,7 +1,12 @@
 package com.hawk.game.util;
 
+import java.util.Map.Entry;
+
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Player.PlayerInfo;
+import com.hawk.game.protocol.Skill.HSSkill;
 
 public class BuilderUtil {
 
@@ -25,6 +30,25 @@ public class BuilderUtil {
 		builder.setHairColor(playerEntity.getHairColor());
 		builder.setRecharge(playerEntity.getRecharge());
 		builder.setVipLevel(playerEntity.getVipLevel());
+		return builder;
+	}
+	
+	public static HSMonster.Builder genMonsterBuilder(MonsterEntity monsterEntity) {
+		HSMonster.Builder builder = HSMonster.newBuilder();
+		builder.setMonsterId(monsterEntity.getId());
+		builder.setCfgId(monsterEntity.getCfgId());
+		builder.setStage(monsterEntity.getStage());
+		builder.setLevel(monsterEntity.getLevel());
+		builder.setExp(monsterEntity.getExp());
+		builder.setLazy(monsterEntity.getLazy());
+		builder.setAi(monsterEntity.getAi());
+		
+		HSSkill.Builder skill = HSSkill.newBuilder();
+		for (Entry<Integer, Integer> entry : monsterEntity.getSkillMap().entrySet()) {
+			skill.setSkillId(entry.getKey());
+			skill.setLevel(entry.getValue());
+			builder.addSkill(skill);
+		}
 		return builder;
 	}
 }
