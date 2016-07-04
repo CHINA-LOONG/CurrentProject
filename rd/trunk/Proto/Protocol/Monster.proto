@@ -5,6 +5,13 @@ option java_package = "com.hawk.game.protocol";
 
 // struct-------------------------------------------------------
 
+message SynMonsterAttr
+{
+	required int32 monsterId = 1;
+	optional int32 level = 2;
+	optional int32 exp = 3;
+}
+
 message HSMonster
 {
 	required int32 monsterId = 1;

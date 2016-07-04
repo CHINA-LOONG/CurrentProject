@@ -69,18 +69,19 @@ public class PetSwitchPage : MonoBehaviour
 
         var targetGO = BattleController.Instance.BattleGroup.GetUnitByGuid(args.targetId);
 
-		transform.position = RectTransformUtility.WorldToScreenPoint(BattleCamera.Instance.CameraAttr, targetGO.gameObject.transform.position);
-		transform.position += new Vector3(0, Screen.height*0.4f, 0);
+		//transform.position = RectTransformUtility.WorldToScreenPoint(BattleCamera.Instance.CameraAttr, targetGO.gameObject.transform.position);
+		//transform.position += new Vector3(0, Screen.height*0.4f, 0);
        
-		/*
 		var viewPos = BattleCamera.Instance.CameraAttr.WorldToViewportPoint(targetGO.gameObject.transform.position);
 
         var pos = UICamera.Instance.CameraAttr.ViewportToScreenPoint(viewPos);
-        Logger.LogWarning(pos);
+      //  Logger.LogWarning("pos"+pos);
+
+      //  Logger.LogWarning("parent world position" + transform.parent.position);
 
         var trans = transform as RectTransform;
         trans.anchoredPosition = pos;
-        trans.anchoredPosition += new Vector2(0, Screen.height * 0.4f);*/
+        trans.anchoredPosition += new Vector2(0, Screen.height * 0.4f);
     }
 
     public bool Hide(int id)

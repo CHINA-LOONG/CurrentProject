@@ -1,0 +1,9 @@
+option java_package = "com.hawk.game.protocol";
+
+message Attr
+{
+	// 属性id(参考Const.attr)
+	required int32 attrId = 1;
+	// 属性值
+	required float attrValue = 2;
+}

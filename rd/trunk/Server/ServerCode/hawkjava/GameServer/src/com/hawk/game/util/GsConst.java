@@ -70,4 +70,29 @@ public class GsConst {
 		public static int TU_PROPERTY = 5;
 	}
 	
+	public static class PlayerItemCheckResult {
+		/**
+		 * 金币不足
+		 */
+		public static final int COINS_NOT_ENOUGH = 1;
+		/**
+		 * 钻石不足
+		 */
+		public static final int GOLD_NOT_ENOUGH = 2;
+
+		public static final int LEVEL_NOT_ENOUGH = 4;
+
+		public static final int EXP_NOT_ENOUGH = 5;
+
+		public static final int VIPLEVEL_NOT_ENOUGH = 6;
+		/**
+		 * 道具不足
+		 */
+		public static final int TOOLS_NOT_ENOUGH = 7;
+		/**
+		 * 装备不足
+		 */
+		public static final int EQUIP_NOI_ENOUGH = 8;
+	}
+
 }

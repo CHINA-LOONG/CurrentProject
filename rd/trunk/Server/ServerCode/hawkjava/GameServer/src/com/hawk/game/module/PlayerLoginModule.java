@@ -32,6 +32,7 @@ public class PlayerLoginModule extends PlayerModule {
 	 */
 	public PlayerLoginModule(Player player) {
 		super(player);
+		listenProto(HS.code.LOGIN_C);
 	}
 
 	/**
@@ -58,7 +59,6 @@ public class PlayerLoginModule extends PlayerModule {
 	 * @param session
 	 * @param protocol
 	 */
-	@ProtocolHandler(code = HS.code.LOGIN_C_VALUE)
 	private boolean onPlayerLogin(HawkSession session, int hsCode, HSLogin protocol)
 	{
 		// 在线人数达到上限

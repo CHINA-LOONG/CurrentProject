@@ -12,6 +12,8 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 	float 	m_MinPosY = 0f;
 	float	m_MaxposY = 0f;
 
+	RectTransform rectTrans;
+
 	Dictionary<MirrorTarget, float> lastFindWeakpoint = new Dictionary<MirrorTarget, float> ();
 
 	MirrorRaycast m_MirrorRaycast;
@@ -24,27 +26,24 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 	public void Init()
 	{
 		m_MirrorRaycast = gameObject.AddComponent<MirrorRaycast> ();
+		rectTrans = transform as RectTransform;
 	}
 
 	void Awake ()
 	{  
 		RectTransform parentTransform = transform.parent as RectTransform;
-		float rootWidth =  parentTransform.rect.width;
-		float rootHeight =  parentTransform.rect.height;
-		float screenWith = Screen.width;
-		float screenHeight = Screen.height;
-
-		CanvasScaler cs =  UIMgr.Instance.GetComponent<CanvasScaler> ();
-		float uiScaleFactor = cs.scaleFactor;
-
+		float rootWidth = Screen.width /UIMgr.Instance.CanvasAttr.scaleFactor ;
+		float rootHeight =   Screen.height/UIMgr.Instance.CanvasAttr.scaleFactor;
+		
+		//Debug.LogError ("Screen.Width = " + Screen.width + "  Screen.height = " + Screen.height + "scaleFactor = " + UIMgr.Instance.CanvasAttr.scaleFactor );
 		RectTransform thisTransform = transform as RectTransform;
 		float myWith = thisTransform.rect.width;
 		float myHeigth = thisTransform.rect.height;
 
-		m_MinPosX =  myWith / 2.0f;
-		m_MaxPosX = rootWidth  - myWith / 2.0f;
-		m_MinPosY = myHeigth / 2.0f;
-		m_MaxposY = rootHeight  - myHeigth / 2.0f;
+		m_MinPosX = myWith /2.0f;
+		m_MaxPosX = rootWidth - myWith/2.0f  ;
+		m_MinPosY = 0;
+		m_MaxposY = rootHeight - myHeigth / 2.0f;
 	}  
 
 	// 鼠标按下  
@@ -56,10 +55,8 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 	public void OnDrag (PointerEventData data)
 	{  
 		isDragging = true;
-		transform.position = GetNewPosition (Input.mousePosition);
-		//RectTransform rt = transform as RectTransform;
-		//rt.anchoredPosition = GetNewPosition (Input.mousePosition);
-		//rt.position = GetNewPosition (Input.mousePosition);
+		
+		rectTrans.anchoredPosition = GetMirrorScreenPosition (Input.mousePosition);	
 	}  
 	//点击
 	public void OnPointerClick (PointerEventData eventData)
@@ -70,20 +67,21 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 		}
 	}
 
-	Vector3 GetNewPosition(Vector3 mousePosition)
+	Vector2 GetMirrorScreenPosition(Vector3 mousePosition)
 	{
-		Vector3 newPos = new Vector3 (mousePosition.x, mousePosition.y, mousePosition.z);
+		Vector2 newPos = new Vector2 (mousePosition.x / UIMgr.Instance.CanvasAttr.scaleFactor , mousePosition.y / UIMgr.Instance.CanvasAttr.scaleFactor);
+
 		if (newPos.x < m_MinPosX) {
-			//newPos.x = m_MinPosX;
+			newPos.x = m_MinPosX;
 		}
 		if (newPos.x > m_MaxPosX) {
-			//newPos.x = m_MaxPosX;
+			newPos.x = m_MaxPosX;
 		}
 		if (newPos.y < m_MinPosY) {
-			//newPos.y = m_MinPosY;
+			newPos.y = m_MinPosY;
 		}
 		if (newPos.y > m_MaxposY) {
-			//newPos.y = m_MaxposY;
+			newPos.y = m_MaxposY;
 		}
 		return newPos;
 	}
@@ -122,14 +120,16 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 	IEnumerator weakPointRayCastCo()
 	{
 		List<MirrorTarget> listFindTarget = null;
-		float findTimeCount = 0f;
 		while (true)
 		{
 			newFindTargetList.Clear();
 			outFindTarget.Clear();
 			finishFindTargett.Clear();
 
-			listFindTarget = m_MirrorRaycast.WeakpointRayCast (new Vector2(transform.position.x + GameConfig.Instance.MirrorCenterOffset.x, transform.position.y + GameConfig.Instance.MirrorCenterOffset.y));
+			Vector3 mirrorScreenPos = UIUtil.GetSpacePos(transform as RectTransform,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
+			mirrorScreenPos.x += GameConfig.Instance.MirrorCenterOffset.x;
+			mirrorScreenPos.y += GameConfig.Instance.MirrorCenterOffset.y;
+			listFindTarget = m_MirrorRaycast.WeakpointRayCast (mirrorScreenPos);
 			if(listFindTarget.Count > 0)
 			{
 				MirrorTarget subTarget = null;
@@ -139,7 +139,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 					if(lastFindWeakpoint.ContainsKey(subTarget))
 					{
 						lastFindWeakpoint[subTarget] += Time.deltaTime;
-						if(findTimeCount > GameConfig.Instance.FindWeakPointFinishedNeedTime)
+						if(lastFindWeakpoint[subTarget] > GameConfig.Instance.FindWeakPointFinishedNeedTime)
 						{
 							finishFindTargett.Add(subTarget);
 						}

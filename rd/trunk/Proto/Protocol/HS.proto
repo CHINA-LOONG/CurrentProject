@@ -23,14 +23,17 @@ enum code
 	LOGOUT_S               = 1003;
 	KICKOUT_S              = 1004;
 	PLAYER_INFO_SYNC_S     = 1005;
-	
+	ITEM_INFO_SYNC_S       = 1006;
+	EQUIP_INFO_SYNC_S      = 1007;
 	ASSEMBLE_FINISH_S      = 1010;
-	
 	
 	// 角色
 	PLAYER_CREATE_C        = 1101;
 	PLAYER_CREATE_S        = 1102;
 
+	PLAYER_CONSUME_S	   = 1103;
+	PLAYER_REWARD_S 	   = 1104;
+	
 	// 怪物
 	MONSTER_INFO_SYNC_S    = 2000;
 	MONSTER_ADD_S          = 2001;
@@ -45,4 +48,8 @@ enum code
 	INSTANCE_ENTER_S       = 3001;
 	INSTANCE_SETTLE_C      = 3002;
 	INSTANCE_SETTLE_S      = 3003;
+	
+	// 道具
+	ITEM_USE_C			   = 4001;
+	ITEM_SELL_C		       = 4002;
 }

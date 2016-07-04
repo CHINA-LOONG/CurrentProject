@@ -102,16 +102,17 @@ public class BattleObject : MonoBehaviour
                     GameObject prefab = ResourceMgr.Instance.LoadAsset(curEvent.particleBundle, curEvent.particleAsset);
                     curEvent.psObject = GameObject.Instantiate(prefab);
                     curEvent.psObject.transform.parent = transform;
-                    curEvent.psObject.transform.localPosition = prefab.transform.position;
-                    curEvent.psObject.transform.localRotation = prefab.transform.rotation;
-                    curEvent.psObject.transform.localScale = prefab.transform.localScale;
+                    //curEvent.psObject.transform.localPosition = prefab.transform.position;
+                    //curEvent.psObject.transform.localRotation = prefab.transform.rotation;
+                    //curEvent.psObject.transform.localScale = prefab.transform.localScale;
 
                     if (curEvent.particleParent != null && curEvent.particleParent.Length > 0)
                     {
-                        Transform parentNode = transform.Find(curEvent.particleParent);
+                        //Transform parentNode = transform.Find(curEvent.particleParent);
+                        GameObject parentNode = Util.FindChildByName(gameObject, curEvent.particleParent);
                         if (parentNode != null)
                         {
-                            curEvent.psObject.transform.parent = parentNode;
+                            curEvent.psObject.transform.parent = parentNode.transform;
                         }
                     }
                     curEvent.ps = curEvent.psObject.GetComponent<ParticleSystem>();

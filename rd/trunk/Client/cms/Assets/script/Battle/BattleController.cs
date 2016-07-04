@@ -75,11 +75,15 @@ public class BattleController : MonoBehaviour
     {
         
 		Vector3 inputPos = Input.mousePosition;
-
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            isMouseOnUI = EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+        }  
+        else if (Input.GetMouseButtonDown(0))
         {
             isMouseOnUI = EventSystem.current.IsPointerOverGameObject();
         }
+
 		if (Input.GetMouseButtonUp (0) && !isMouseOnUI)
 		{
 			RaycastBattleObject (inputPos);
@@ -110,7 +114,7 @@ public class BattleController : MonoBehaviour
 		}
 	}
 
-	string GetClickedEnemyWpName(BattleObject battleObj,Vector2 inputPos)
+	string GetClickedEnemyWpName(BattleObject battleObj,Vector3 inputScreenPos)
 	{
 		if (battleObj.camp == UnitCamp.Player) 
 		{
@@ -118,7 +122,7 @@ public class BattleController : MonoBehaviour
 		}
 		var gameUnit = battleObj.unit;
 		
-		MirrorTarget findTarget = MirrorRaycast.RaycastCanAttackWeakpoint (gameUnit, inputPos, GameConfig.Instance.FireFocusWpRadius);
+		MirrorTarget findTarget = MirrorRaycast.RaycastCanAttackWeakpoint (gameUnit, inputScreenPos, GameConfig.Instance.FireFocusWpRadius);
 		if (findTarget != null)
 		{
 			return findTarget.WeakPointIDAttr;

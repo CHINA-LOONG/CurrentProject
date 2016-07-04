@@ -60,9 +60,10 @@ public class EnemyGroupUI : MonoBehaviour
                 if (subUnit.isBoss)
                 {
                     isHaveBoss = true;
+					subEnmeyUI.gameObject.SetActive(false);
                     subEnmeyUI = enemyUIArray[BattleConst.maxFieldUnit];
                 }
-                subEnmeyUI.gameObject.SetActive(false);
+                subEnmeyUI.gameObject.SetActive(true);
                 subEnmeyUI.UpdateShow(subUnit);
             }
         }

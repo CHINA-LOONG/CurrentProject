@@ -144,7 +144,7 @@ public class PlayerEntity extends HawkDBEntity {
 		return this.nickname;
 	}
 	
-	public short getlevel() {
+	public short getLevel() {
 		return level;
 	}
 

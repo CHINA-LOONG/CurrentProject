@@ -11,7 +11,6 @@ GameObject:
   - 20: {fileID: 2020090}
   - 124: {fileID: 12494246}
   - 92: {fileID: 9238922}
-  - 81: {fileID: 8163790}
   - 114: {fileID: 11485562}
   m_Layer: 0
   m_Name: UICamera
@@ -64,13 +63,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
---- !u!81 &8163790
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151558}
-  m_Enabled: 1
 --- !u!92 &9238922
 Behaviour:
   m_ObjectHideFlags: 1

@@ -46,8 +46,10 @@ enum itemType
 	PLAYER_ATTR = 1;	
 	// 角色
 	MONSTER_ATTR = 2;
-	// 物品
+	// 道具
 	ITEM = 3;
+	// 装备
+	EQUIP = 4;
 }
 
 // 购买价格类型
@@ -84,33 +86,23 @@ enum changeType
 	// 金币
 	CHANGE_COIN = 2;
 	// 经验
-	CHANGE_EXP = 3;
+	CHANGE_PLAYER_EXP = 3;
 	// 等级
-	CHANGE_LEVEL = 4;
+	CHANGE_PLAYER_LEVEL = 4;
+	// 经验
+	CHANGE_MONSTER_EXP = 5;
+	// 等级
+	CHANGE_MONSTER_LEVEL = 6;
 	// 疲劳值
-	CHANGE_FATIGUE = 5;
-	// 血量
-	CHANGE_HP = 6;
+	CHANGE_FATIGUE = 7;
 	// 好感度
-	CHANGE_FAV	= 7;
-	// 充值总额
-	CHANGE_RECHARGE = 8;
+	CHANGE_FAV	= 8;
 	// vip等级
 	CHANGE_VIPLEVEL = 9;
-	// 角色
-	CHANGE_ROLE = 10;
 	// 道具    
-	CHANGE_TOOLS = 11;
+	CHANGE_TOOLS = 10;
 	// 装备
-	CHANGE_EQUIP = 12;
-	// 熔炼值
-	CHANGE_SMELT_VALUE = 13;
-	// 贡献值
-	CHANGE_CONTRIBUTION = 14;
-	// 荣誉值
-	CHANGE_HONOR_VALUE = 15;
-	// 声望值
-	CHANGE_REPUTATION_VALUE = 16;
+	CHANGE_EQUIP = 11;
 }
 
 // 附加属性类型定义
@@ -172,8 +164,8 @@ enum bindType
 // 物品类型定义
 enum toolType
 {
-	// 普通类型
-	NORMAL = 1;
+	// 通用类型
+	COMMON = 1;
 	// 碎片
 	FRAGMENT = 2;
 	// 宝石
@@ -184,8 +176,6 @@ enum toolType
 	USE = 5;
 	// 兑换类
 	EXCHANGE = 6;
-	// 装备
-	EQUIP = 7;
 }
 
 // 装备部位定义

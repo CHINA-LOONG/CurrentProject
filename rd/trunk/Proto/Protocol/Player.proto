@@ -1,5 +1,40 @@
 option java_package = "com.hawk.game.protocol";
 
+// ------------------------------------------------------- struct -------------------------------------------------------
+
+message SynPlayerAttr
+{
+	// 钻石
+	optional int32 gold = 1;
+	// 金币
+	optional int64 coin = 2;
+	// 主卡等级
+	optional int32 level = 3;
+	// 主卡经验
+	optional int32 exp = 4;
+	// vip等级
+	optional int32 vipLevel = 5;
+}
+
+message PlayerInfo
+{
+	required int32  playerId = 1;
+	required string nickname = 2;
+	required int32  career = 3;
+	required int32  level = 4;
+	required int32  exp = 5;
+	required int32  gold = 6;
+	required int64  coin = 7;
+	optional int32  gender = 8;
+	optional int32  eye = 9;
+	optional int32  hair = 10;
+	optional int32  hairColor = 11;
+	required int32  recharge = 12;
+	required int32  vipLevel = 13;
+}
+
+// ------------------------------------------------------- protocol-----------------------------------------------------
+
 message HSPlayerKickout
 {
 	required int32 reason = 1;	
@@ -24,34 +59,15 @@ message HSPlayerCreateRet
 	optional int32 palyerID = 2;
 }
 
-message PlayerInfo
-{
-	required int32  playerId = 1;
-	required string nickname = 2;
-	required int32  career = 3;
-	required int32  level = 4;
-	required int32  exp = 5;
-	required int32  gold = 6;
-	required int64  coin = 7;
-	optional int32  gender = 8;
-	optional int32  eye = 9;
-	optional int32  hair = 10;
-	optional int32  hairColor = 11;
-	required int32  recharge = 12;
-	required int32  vipLevel = 13;
-}
-
 message HSPlayerInfoSync
 {
-	repeated PlayerInfo playerInfos = 1;
+	required PlayerInfo info = 1;
 }
 
 message HSAssembleFinish
 {
 	required int32 playerID = 1;
 }
-
-
 
 
 

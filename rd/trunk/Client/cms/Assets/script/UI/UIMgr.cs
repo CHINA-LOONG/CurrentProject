@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class UIMgr : MonoBehaviour 
 {
@@ -22,6 +23,7 @@ public class UIMgr : MonoBehaviour
 			return canVas;
 		}
 	}
+
 
 	static UIMgr mInst = null;
 	public static UIMgr Instance
@@ -49,8 +51,11 @@ public class UIMgr : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 		canVas = gameObject.GetComponent<Canvas> ();
 
-		//UICamera.Instance.Init ();
-		//canVas.worldCamera = UICamera.Instance.CameraAttr;
+		UICamera.Instance.Init ();
+		canVas.worldCamera = UICamera.Instance.CameraAttr;
+
+		//CanvasScaler cs =  UIMgr.Instance.GetComponent<CanvasScaler> ();
+		//float uiScaleFactor = cs.scaleFactor;
 	}
 
 	public GameObject OpenUI(string assertName, string uiName)
@@ -68,7 +73,7 @@ public class UIMgr : MonoBehaviour
 		rt.localEulerAngles = Vector3.zero;
 		//ui.transform.localPosition = Vector3.zero;
 
-		UIBase vb = ui.GetComponent<UIBase>();
+		//UIBase vb = ui.GetComponent<UIBase>();
 		ui.name = uiName;
 
         return ui;

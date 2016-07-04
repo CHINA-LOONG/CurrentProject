@@ -1,9 +1,13 @@
 package com.hawk.game.player;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.hawk.app.HawkAppObj;
 import org.hawk.app.HawkObjModule;
+import org.hawk.config.HawkConfigManager;
+import org.hawk.db.HawkDBManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
@@ -12,13 +16,23 @@ import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hawk.game.config.ItemCfg;
+import com.hawk.game.entity.EquipEntity;
+import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.log.BehaviorLogger;
+import com.hawk.game.log.BehaviorLogger.Action;
+import com.hawk.game.log.BehaviorLogger.Params;
+import com.hawk.game.log.BehaviorLogger.Source;
 import com.hawk.game.module.PlayerIdleModule;
 import com.hawk.game.module.PlayerInstanceModule;
 import com.hawk.game.module.PlayerLoginModule;
 import com.hawk.game.module.PlayerMonsterModule;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
+import com.hawk.game.util.ConfigUtil;
+import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.GsConst;
 
 /**
@@ -364,6 +378,252 @@ public class Player extends HawkAppObj {
 		}
 		return null;
 	}
+	
+	/**
+	 * 增加钻石
+	 * 
+	 * @param gold
+	 * @param action
+	 */
+	public void increaseGold(int gold, Action action) {
+		if (gold <= 0) {
+			throw new RuntimeException("increaseGold");
+		}
+
+		playerData.getPlayerEntity().setGold(playerData.getPlayerEntity().getGold() + gold);
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("playerAttr", Const.playerAttr.GOLD_VALUE), 
+				Params.valueOf("add", gold), 
+				Params.valueOf("after", getGold()));
+		
+		
+		BehaviorLogger.log4Platform(this, action, Params.valueOf("playerAttr", Const.playerAttr.GOLD_VALUE), 
+				Params.valueOf("add", gold), 
+				Params.valueOf("after", getGold()));
+	}
+
+	/**
+	 * 消耗钻石
+	 * 
+	 * @param gold
+	 * @param action
+	 */
+	public void consumeGold(int gold, Action action) {
+		if (gold <= 0 || gold > getGold()) {
+			throw new RuntimeException("consumeGold");
+		}
+
+		playerData.getPlayerEntity().setGold(playerData.getPlayerEntity().getGold() - gold);
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("playerAttr", Const.playerAttr.GOLD_VALUE), 
+				Params.valueOf("sub", gold), 
+				Params.valueOf("after", getGold()));
+		
+		BehaviorLogger.log4Platform(this, Action.GOLD_COST, Params.valueOf("money", gold),
+				Params.valueOf("wpnum", 1), Params.valueOf("price", gold),
+				Params.valueOf("wpid", 0), Params.valueOf("wptype", action.name()));
+	}
+
+	/**
+	 * 增加金币
+	 * 
+	 * @param coin
+	 * @param action
+	 */
+	public void increaseCoin(int coin, Action action) {
+		if (coin <= 0) {
+			throw new RuntimeException("increaseCoin");
+		}
+
+		playerData.getPlayerEntity().setCoin(playerData.getPlayerEntity().getCoin() + coin);
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("playerAttr", Const.playerAttr.COIN_VALUE), 
+				Params.valueOf("add", coin), 
+				Params.valueOf("after", getCoin()));
+	}
+	
+	/**
+	 * 消费金币
+	 * 
+	 * @param coin
+	 * @param action
+	 */
+	public void consumeCoin(long coin, Action action) {
+		if (coin <= 0 || coin > getCoin()) {
+			throw new RuntimeException("consumeCoin");
+		}
+
+		playerData.getPlayerEntity().setCoin(playerData.getPlayerEntity().getCoin() - coin);
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("playerAttr", Const.playerAttr.COIN_VALUE), 
+				Params.valueOf("sub", coin), 
+				Params.valueOf("after", getCoin()));
+		
+		BehaviorLogger.log4Platform(this, Action.COIN_COST, Params.valueOf("money", coin),
+				Params.valueOf("wpnum", 1), Params.valueOf("price", coin),
+				Params.valueOf("wpid", 0), Params.valueOf("wptype", action.name()));
+	}
+	
+	/**
+	 * 增加vip等级
+	 * 
+	 * @param level
+	 */
+	public void setVipLevel(int level, Action action) {
+		if (level <= 0) {
+			throw new RuntimeException("increaseLevel");
+		}
+	}
+
+	
+	/**
+	 * 增加等级
+	 * 
+	 * @param level
+	 */
+	public void increaseLevel(int level, Action action) {
+		if (level <= 0) {
+			throw new RuntimeException("increaseLevel");
+		}
+	}
+	
+	/**
+	 * 增加经验
+	 * 
+	 * @param exp
+	 */
+	public void increaseExp(int exp, Action action) {
+		if (exp <= 0) {
+			throw new RuntimeException("increaseExp");
+		}
+
+	}
+	
+	/**
+	 * 增加物品
+	 */
+	public ItemEntity increaseTools(int itemId, int itemCount, Action action) {
+		if(!ConfigUtil.check(Const.itemType.ITEM_VALUE, itemId)) {
+			return null;
+		}
+		
+		ItemEntity itemEntity = playerData.getItemByItemId(itemId);
+		if (itemEntity == null) {
+			itemEntity = new ItemEntity();
+			itemEntity.setItemId(itemId);
+			itemEntity.setCount(itemCount);
+			itemEntity.setPlayerId(getId());
+			if (HawkDBManager.getInstance().create(itemEntity)) {
+				playerData.addItemEntity(itemEntity);
+			}
+		} else {
+			itemEntity.setCount(itemEntity.getCount() + itemCount);
+			itemEntity.notifyUpdate(true);
+		}
+
+		if (itemEntity.getId() > 0) {
+
+			BehaviorLogger.log4Service(this, Source.TOOLS_ADD, action, 
+					Params.valueOf("itemId", itemId), 
+					Params.valueOf("id", itemEntity.getId()), 
+					Params.valueOf("add", itemCount), 
+					Params.valueOf("after", itemEntity.getCount()));
+	
+			return itemEntity;
+		}
+		return null;
+	}
+
+	/**
+	 * 消耗物品
+	 */
+	public ItemEntity consumeTools(int itemId, int itemCount, Action action) {
+		ItemEntity itemEntity = playerData.getItemByItemId(itemId);
+		if (itemEntity != null && itemEntity.getCount() >= itemCount) {
+			itemEntity.setCount(itemEntity.getCount() - itemCount);
+			itemEntity.notifyUpdate(true);
+			
+			BehaviorLogger.log4Service(this, Source.TOOLS_REMOVE, action, 
+					Params.valueOf("itemId", itemId), 
+					Params.valueOf("id", itemEntity.getId()), 
+					Params.valueOf("sub", itemCount), 
+					Params.valueOf("after", itemEntity.getCount()));
+
+			return itemEntity;
+		}
+		return null;
+	}
+
+	/**
+	 * 增加装备
+	 */
+	public EquipEntity increaseEquip(int equipId, Action action) {
+		return increaseEquip(equipId,0,0,action);
+	}
+	
+	/**
+	 * 增加装备
+	 */
+	public EquipEntity increaseEquip(int equipId, int stage, int level, Action action) {
+		if(!ConfigUtil.check(Const.itemType.EQUIP_VALUE, equipId)) {
+			return null;
+		}
+		
+		EquipEntity equipEntity = EquipUtil.generateEquip(this, equipId, stage, level);
+		if (equipEntity != null) {
+			if (HawkDBManager.getInstance().create(equipEntity)) {
+				playerData.addEquipEntity(equipEntity);
+	
+				BehaviorLogger.log4Service(this, Source.EQUIP_ADD, action, 
+						Params.valueOf("equipId", equipId), 
+						Params.valueOf("id", equipEntity.getId()));
+				return equipEntity;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * 消耗装备
+	 */
+	public boolean consumeEquip(long id, Action action) {
+		EquipEntity equipEntity = playerData.getEquipById(id);
+		if (equipEntity != null) {
+			playerData.removeEquipEntity(equipEntity);
+			equipEntity.delete();
+
+			BehaviorLogger.log4Service(this, Source.EQUIP_REMOVE, action, 
+					Params.valueOf("equipId", equipEntity.getItemId()), 
+					Params.valueOf("id", equipEntity.getId()));
+
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 批量消耗装备
+	 * 
+	 * @return 消耗失败的装备Id
+	 */
+	public List<Integer> consumeEquip(List<Integer> ids, Action action) {
+		List<Integer> removeFailEquipIds = new LinkedList<>();
+		for (Integer id : ids) {
+			if (!consumeEquip(id, action)) {
+				removeFailEquipIds.add(id);
+			}
+		}
+		return removeFailEquipIds;
+	}
+
 	
 	/**
 	 * 角色数据落地

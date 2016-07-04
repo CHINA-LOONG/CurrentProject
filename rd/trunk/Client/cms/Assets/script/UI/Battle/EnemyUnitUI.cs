@@ -11,11 +11,13 @@ public class EnemyUnitUI : MonoBehaviour
 
     public GameUnit Unit { get; set; }
     private UIBuffView buffView;
+	//RectTransform rectTrans;
 
     void Start()
     {
         buffView = gameObject.GetComponent<UIBuffView>();
         buffView.Init();
+		//rectTrans = transform as RectTransform;
     }
 
 	public void	UpdateShow(GameUnit battleUnit)
@@ -29,10 +31,9 @@ public class EnemyUnitUI : MonoBehaviour
 		}
         buffView.SetTargetUnit(battleUnit);
 
-		Vector3 uiDumpPostion = battleUnit.gameObject.transform.position;
-		Vector2 pos = RectTransformUtility.WorldToScreenPoint (BattleCamera.Instance.CameraAttr, 
-		                                                       new Vector3 (uiDumpPostion.x,uiDumpPostion.y + GameConfig.Instance.EnmeyUnitOffsetYForBloodUI, uiDumpPostion.z));
-		transform.position = pos;
+		//Vector3 viewPosition = BattleCamera.Instance.CameraAttr.WorldToViewportPoint (battleUnit.gameObject.transform.position);
+		//Vector3 screenPosition = UICamera.Instance.CameraAttr.ViewportToScreenPoint (viewPosition);
+		//rectTrans.anchoredPosition = screenPosition;
 
 		unitName.text = battleUnit.name;
         if (battleUnit.isBorn)

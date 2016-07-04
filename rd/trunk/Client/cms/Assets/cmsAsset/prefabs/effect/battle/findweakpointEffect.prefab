@@ -2172,8 +2172,8 @@ ParticleSystemRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127544}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 7d34dd9db26878e4d9d5e7fa08972047, type: 2}
   m_SubsetIndices: 
@@ -2208,8 +2208,8 @@ ParticleSystemRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112482}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 7edefc7f72b7f434cbab06b4b429533d, type: 2}
   m_SubsetIndices: 

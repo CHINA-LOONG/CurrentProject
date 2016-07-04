@@ -13,6 +13,9 @@ public class BattleScene : MonoBehaviour
 	Vector3[] enemySlotLocalEuler = new Vector3[3];
 	Vector3[] playerSlotLocalEuler = new Vector3[3];
 
+	Vector3[] enemySlotScale = new Vector3[3];
+	Vector3[] playerSlotScale = new Vector3[3];
+
 	public void	InitWithBattleSceneName(string assertName, string battlePrefabName)
 	{
         Instance = this;
@@ -47,11 +50,13 @@ public class BattleScene : MonoBehaviour
 			{
                 enemySlot[subPositionProxy.slot] = subPositionProxy.transform.position;
 				enemySlotLocalEuler[subPositionProxy.slot] = subPositionProxy.transform.localEulerAngles;
+				enemySlotScale[subPositionProxy.slot] = subPositionProxy.transform.localScale;
 			}
             else
 			{
                 playerSlot[subPositionProxy.slot] = subPositionProxy.transform.position;
 				playerSlotLocalEuler[subPositionProxy.slot] = subPositionProxy.transform.localEulerAngles;
+				playerSlotScale[subPositionProxy.slot] = subPositionProxy.transform.localScale;
 			}
 		}
 	}
@@ -92,6 +97,17 @@ public class BattleScene : MonoBehaviour
 			return enemySlotLocalEuler[slot];
 		else
 			return playerSlotLocalEuler[slot];
+	}
+
+	public Vector3 GetSlotLocalScale(UnitCamp camp, int slot)
+	{
+		if (slot < BattleConst.slotIndexMin || slot > BattleConst.slotIndexMax)
+			return Vector3.zero;
+
+		if (camp == UnitCamp.Enemy)
+			return enemySlotScale[slot];
+		else
+			return playerSlotScale[slot];
 	}
 
     public void OnExitBattle()

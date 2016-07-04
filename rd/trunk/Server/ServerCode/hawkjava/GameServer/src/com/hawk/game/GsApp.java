@@ -25,18 +25,26 @@ import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import sun.security.krb5.Config;
+
 import com.hawk.game.callback.ShutdownCallback;
+import com.hawk.game.config.EquipAttr;
 import com.hawk.game.config.GrayPuidCfg;
+import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.HS.sys;
 import com.hawk.game.protocol.Login.HSLogin;
 import com.hawk.game.protocol.Login.HSLoginRet;
 import com.hawk.game.protocol.Player.HSPlayerCreate;
 import com.hawk.game.protocol.Player.HSPlayerCreateRet;
+import com.hawk.game.protocol.Reward;
+import com.hawk.game.protocol.Reward.HSRewardInfo;
+import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.SysProtocol.HSHeartBeat;
 import com.hawk.game.util.GsConst;
@@ -93,6 +101,7 @@ public class GsApp extends HawkApp {
 	 * @return
 	 */
 	public boolean init(String cfg) {
+		
 		GsConfig appCfg = null;
 		try {
 			HawkConfigStorage cfgStorgae = new HawkConfigStorage(GsConfig.class);
@@ -110,17 +119,6 @@ public class GsApp extends HawkApp {
 		if (!initAppObjMan()) {
 			return false;
 		}
-
-//		ItemRewardTestCfg test =  HawkConfigManager.getInstance().getConfigMap(ItemRewardTestCfg.class).get("reward_00001");
-//		
-//		Map<Object, ItemRewardTestCfg.RewardItem> result =  test.getConfigMap(ItemRewardTestCfg.RewardItem.class);
-//		
-//		ItemRewardTestCfg.RewardItem temp = result.get("exp");
-//		
-//		
-//		Map<Object, ItemRewardTestCfg.RewardItemChild> child =  temp.getConfigMap(ItemRewardTestCfg.RewardItemChild.class);
-//		
-//		ItemRewardTestCfg.RewardItemChild ch = child.get("100");
 		
 		// 设置关服回调
 		HawkShutdownHook.getInstance().setCallback(new ShutdownCallback());
@@ -129,6 +127,9 @@ public class GsApp extends HawkApp {
 		HawkLog.logPrintln("init server data......");
 		ServerData.getInstance().init();
 
+		ItemCfg test = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, 10001);
+		System.out.println(test);
+		
 		// cdk服务初始化
 		if (GsConfig.getInstance().getCdkHost().length() > 0) {
 			HawkLog.logPrintln("install cdk service......");

@@ -18,14 +18,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: ac0b1ca8d4f07a043acae1b20443e3ac, type: 3}
-          m_Scale: {x: 2, y: 2}
+          m_Texture: {fileID: 2800000, guid: 7eea1bf23ea2c3044b9cfcacc6543aaf, type: 3}
+          m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _InvFade
-        second: 1
+        second: 1.00999999
     m_Colors:
       data:
         first:
@@ -34,7 +34,7 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .595588207, g: .595588207, b: .595588207, a: .501960814}
+        second: {r: .647058845, g: .647058845, b: .647058845, a: .501960814}
       data:
         first:
           name: _EmisColor

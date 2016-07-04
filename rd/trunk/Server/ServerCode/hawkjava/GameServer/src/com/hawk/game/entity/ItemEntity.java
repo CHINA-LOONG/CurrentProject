@@ -28,29 +28,17 @@ public class ItemEntity extends HawkDBEntity {
 	@Column(name = "id", unique = true)
 	private long id = 0;
 
-	@Column(name = "cfg", nullable = false)
-	private int cfgId = 0;
+	@Column(name = "itemId", nullable = false)
+	private int itemId = 0;
 
-	@Column(name = "currentRole", nullable = false)
-	protected int roleId = 0;
-
-	@Column(name = "currentCount", nullable = false)
+	@Column(name = "count", nullable = false)
 	protected short count = 0;
-
-	@Column(name = "initRole", nullable = false)
-	protected int initRoleId = 0;
-
-	@Column(name = "initCount", nullable = false)
-	protected short initCount = 0;
-
+	
+	@Column(name = "playerId")
+	protected int playerId = 0;
+	
 	@Column(name = "status", nullable = false)
-	protected short status = 0;
-
-	@Column(name = "monster", nullable = false)
-	protected int monsterId = 0;
-
-	@Column(name = "slot", nullable = false)
-	protected int slot = 0;
+	protected byte status = 0;
 
 	@Column(name = "expireTime", nullable = false)
 	protected Date expireTime = null;
@@ -68,17 +56,10 @@ public class ItemEntity extends HawkDBEntity {
 		this.createTime = HawkTime.getCalendar().getTime();
 	}
 
-	public ItemEntity(int cfgId, int roleId, int monsterId, short status, int slot, short count, Date expireTime) {
-		this.cfgId = cfgId;
-		this.roleId = roleId;
-		this.monsterId = monsterId;
+	public ItemEntity(int itemId, byte status, short slot, short count, Date expireTime) {
 		this.status = status;
-		this.slot = slot;
 		this.count = count;
 		this.expireTime = expireTime;
-
-		this.initRoleId = roleId;
-		this.initCount = count;
 		this.createTime = HawkTime.getCalendar().getTime();
 	}
 
@@ -90,68 +71,36 @@ public class ItemEntity extends HawkDBEntity {
 		this.id = id;
 	}
 
-	public int getCfgId() {
-		return cfgId;
+	public int getItemId() {
+		return itemId;
 	}
 
-	public void setCfgId(int cfgId) {
-		this.cfgId = cfgId;
-	}
-
-	public int getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
 	}
 
 	public short getCount() {
 		return count;
 	}
 
-	public void setCount(short count) {
-		this.count = count;
+	public void setCount(int count) {
+		this.count = (short)count;
+	}
+	
+	public int getPlayerId() {
+		return playerId;
 	}
 
-	public int getInitRoleId() {
-		return initRoleId;
+	public void setPlayerId(int playerId) {
+		this.playerId = playerId;
 	}
-
-	public void setInitRoleId(int initRoleId) {
-		this.initRoleId = initRoleId;
-	}
-
-	public int getInitCount() {
-		return initCount;
-	}
-
-	public void setInitCount(short initCount) {
-		this.initCount = initCount;
-	}
-
-	public int getStatus() {
+	
+	public byte getStatus() {
 		return status;
 	}
 
-	public void setStatus(short status) {
+	public void setStatus(byte status) {
 		this.status = status;
-	}
-
-	public int getMonsterId() {
-		return monsterId;
-	}
-
-	public void setMonsterId(int monsterId) {
-		this.monsterId = monsterId;
-	}
-
-	public int getSlot() {
-		return slot;
-	}
-
-	public void setSlot(int slot) {
-		this.slot = slot;
 	}
 
 	public Date getExpireTime() {

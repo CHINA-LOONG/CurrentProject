@@ -1,0 +1,33 @@
+option java_package = "com.hawk.game.protocol";
+
+import "Protocol/Attribute.proto";
+
+message GemInfo
+{
+	// 宝石位置
+	required int32 pos = 1;
+	// 宝石id
+	required int32 gemItemId = 2;
+}
+
+message EquipInfo
+{
+	required int64  id = 1;
+	required int32  equipId = 2;
+	//装备品级
+	required int32  stage = 3;
+	//装备强化等级
+	required int32  level = 4;
+	//宝石信息
+	repeated GemInfo gemInfos = 5;
+	//附加属性信息
+	repeated Attr  attrDatas = 6;
+	required int32  status = 7;
+	optional  int32 expireTime = 8;
+}
+
+//装备信息同步
+message HSEquipInfoSync
+{
+	repeated EquipInfo equipInfos = 1;
+}

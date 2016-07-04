@@ -27,6 +27,10 @@ public class GameEventList
     public static string HideSwitchPetUI = "HideSwitchPetUI";//param  int -1则无条件关闭换宠UI，其他则和当前被换宠物id相同才关闭
     public static string ChangeTarget = "ChangeTarget";
     public static string HitDazhaoBtn = "HitDazhaoBtn";
+    public static string ShowDazhaoTip = "ShowDazhaoTip";
+    public static string HideDazhaoTip = "HideDazhaoTip";
+	public static string ShowFireFocus = "ShowFireFocus";//param GameUnit
+	public static string HideFireFocus = "HideFireFocus";// no param
 
     //UI in the battle
     public static string ShowBattleUI = "ShowBattleUI";

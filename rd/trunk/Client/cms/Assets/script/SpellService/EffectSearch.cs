@@ -21,7 +21,7 @@ public class EffectSearch : Effect
         protoEffect = new EffectSearchPrototype();
         EffectSearchPrototype searchPt = protoEffect as EffectSearchPrototype;
         searchPt.count = searchPtOut.count;
-        searchPt.camp = searchPtOut.count;
+        searchPt.camp = searchPtOut.camp;
         searchPt.effectID = searchPtOut.effectID;
         base.Init(pt, owner);
     }

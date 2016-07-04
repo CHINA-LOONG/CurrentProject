@@ -2484,13 +2484,18 @@ ParticleSystem:
         m_Curve:
         - time: 0
           value: 0
-          inSlope: 2
-          outSlope: 2
+          inSlope: 4.70588207
+          outSlope: 4.70588207
+          tangentMode: 0
+        - time: .20952636
+          value: .730467439
+          inSlope: .940004289
+          outSlope: .940004289
           tangentMode: 0
         - time: 1
           value: 1
-          inSlope: 0
-          outSlope: 0
+          inSlope: -.0304261483
+          outSlope: -.0304261483
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -2511,7 +2516,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 1
   RotationModule:
-    enabled: 1
+    enabled: 0
     curve:
       scalar: 1.57079625
       maxCurve:

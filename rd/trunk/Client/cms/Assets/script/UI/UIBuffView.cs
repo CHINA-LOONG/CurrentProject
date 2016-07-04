@@ -94,7 +94,7 @@ public class UIBuffView : UIBase
             BuffPrototype buffPb = null;
             for (int i = 0; i < buffCount; ++i)
             {
-                buffPb = targetUnit.buffList[curOtherBuffIndex].buffProto;
+                buffPb = targetUnit.buffList[i].buffProto;
                 if (buffPb.category != (int)(BuffType.Buff_Type_Dot))
                 {
                     otherBuffList.Add(buffPb.icon);

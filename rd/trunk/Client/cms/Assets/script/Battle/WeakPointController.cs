@@ -127,6 +127,9 @@ public class WeakPointController : MonoBehaviour
 				string prefabName = rowData.asset;
 				FindFinishedWeakpointEffect finishEffect = effectGo.AddComponent<FindFinishedWeakpointEffect>();
 				finishEffect.Init("effect/battle",prefabName);
+
+				WeakpointFireEffect fireEffect = effectGo.AddComponent<WeakpointFireEffect>();
+				fireEffect.Init();
 			}
 		}
 	}
@@ -181,18 +184,20 @@ public class WeakPointController : MonoBehaviour
 			GameObject wpMeshGo = null;// unit.weakPointMeshDic [wpName] as GameObject;
 			if(!unit.weakPointMeshDic.TryGetValue(wpName,out wpMeshGo))
 			{
-				continue;
+				//continue;
 			}
-			if(wpMeshGo.activeSelf)
-			{
-				continue;
-			}
+			//if(wpMeshGo.activeSelf)
+			//{
+				//continue;
+			//}
 
 			wpMeshGo.SetActive(true);
 
 			if (!unit.findWeakPointlist.Contains (wpName)) 
 			{
 				unit.findWeakPointlist.Add (wpName);
+				//光效果
+				ShowWeakpointFireEffect(unit, wpName);
 			}
 		
 
@@ -249,6 +254,19 @@ public class WeakPointController : MonoBehaviour
 		{
 			Debug.LogError("Error to find finished effectobj with  weakpointID " + weakpointID);
 		}
+	}
+
+	void ShowWeakpointFireEffect(GameUnit gUnit,string weakpointID)
+	{
+		GameObject effectGo = gUnit.weakPointEffectDic[weakpointID];
+		if (effectGo) 
+		{
+			WeakpointFireEffect ffe = effectGo.GetComponent<WeakpointFireEffect> ();
+			if (ffe)
+			{
+				ffe.Show();
+			}
+		} 
 	}
 
 	// /////////////////////////////////////////////

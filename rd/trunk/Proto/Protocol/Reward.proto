@@ -1,0 +1,38 @@
+option java_package = "com.hawk.game.protocol";
+
+import "Protocol/Consume.proto";
+import "Protocol/Attribute.proto";
+import "Protocol/Player.proto";
+import "Protocol/Monster.proto";
+
+// ------------------------------------------------------- struct -------------------------------------------------------
+message RewardItem
+{
+	// 类型
+	required int32 type = 1;
+	// 唯一Id
+	optional int64 id = 2;
+	// 物品编号
+	required int32 itemId = 3;
+	// 实体对象直接移除对象
+	optional int32 count = 4;
+	
+	// 是装备的附加属性
+	//装备品级
+	optional int32  stage = 5;
+	//装备强化等级
+	optional int32  level = 6;
+	//附加属性信息
+	repeated Attr  attrDatas = 7;
+}
+
+// ------------------------------------------------------- protocol -------------------------------------------------------
+message HSRewardInfo
+{
+	// 玩家同步信息
+	optional SynPlayerAttr playerAttr = 1;
+	// 宠物同步信息
+	repeated SynMonsterAttr monstersAttr = 2;
+	
+	repeated RewardItem RewardItems = 3;	
+}

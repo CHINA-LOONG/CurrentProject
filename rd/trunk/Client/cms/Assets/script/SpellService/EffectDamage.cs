@@ -69,7 +69,7 @@ public class EffectDamage : Effect
             float damageRatio = 1.0f;
             float randKey = UnityEngine.Random.Range(0.0f, 1.0f);
             //暴击率 = 暴击常数 + 施法者暴击率 - 目标抗暴
-            bool critical = randKey > (SpellConst.criticalRatio + caster.criticalRatio - target.antiCriticalRatio);
+            bool critical = randKey <= (SpellConst.criticalRatio + caster.criticalRatio - target.antiCriticalRatio);
             if (critical)
             {
                 //暴击加成 =   暴击加成常数 + 附加暴击加成

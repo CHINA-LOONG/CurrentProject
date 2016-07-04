@@ -21,6 +21,7 @@ public class UIBattle : UIBase
 
     public BattleGroupUI m_PlayerGroupUI;
     public PetSwitchPage m_PetPanel;
+    public Text dazhaoTip;
 
     private MirrorDray m_MirrorDray = null;
 
@@ -44,6 +45,7 @@ public class UIBattle : UIBase
 		m_ButtonMirror.IsOn = false;
         m_MirrorImage.gameObject.SetActive(false);
         m_PetPanel.gameObject.SetActive(false);
+        dazhaoTip.gameObject.SetActive(false);
 
         m_PlayerGroupUI.gameObject.SetActive(true);
         m_PlayerGroupUI.Init(BattleController.Instance.BattleGroup.PlayerFieldList);
@@ -59,16 +61,28 @@ public class UIBattle : UIBase
         UnBindListener();
     }
 
+    void Update()
+    {
+        if (dazhaoTip.gameObject.activeSelf)
+        {
+            dazhaoTip.text = "大招模式点点点！剩余时间：" + (int)BattleController.Instance.Process.DazhaoLeftTime + "秒 剩余次数：" + BattleController.Instance.Process.DazhaoLeftCount;
+        }
+    }
+
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.ShowSwitchPetUI, OnShowSwitchPetUIAtIndex);
+        GameEventMgr.Instance.AddListener(GameEventList.ShowDazhaoTip, OnShowDazhaoTip);
+        GameEventMgr.Instance.AddListener(GameEventList.HideDazhaoTip, OnHideDazhaoTip);
 		GameEventMgr.Instance.AddListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
     }
 
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.ShowSwitchPetUI, OnShowSwitchPetUIAtIndex);
-		GameEventMgr.Instance.RemoveListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
+        GameEventMgr.Instance.RemoveListener(GameEventList.ShowDazhaoTip, OnShowDazhaoTip);
+        GameEventMgr.Instance.RemoveListener(GameEventList.HideDazhaoTip, OnHideDazhaoTip);
+        GameEventMgr.Instance.RemoveListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
     }
 
     void AddUIObjectEvent()
@@ -131,7 +145,7 @@ public class UIBattle : UIBase
 		//GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, isMirrorMode);
     }
 
-	void	OnSetMirrorModeState(bool isMirrorMode)
+	void OnSetMirrorModeState(bool isMirrorMode)
 	{
 		m_ButtonMirror.IsOn = isMirrorMode;
 		m_MirrorImage.gameObject.SetActive(isMirrorMode);
@@ -172,6 +186,17 @@ public class UIBattle : UIBase
     {
         if (m_PetPanel.Hide(targetId))
             GameEventMgr.Instance.RemoveListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
+    }
+
+    //dazhao
+    void OnShowDazhaoTip()
+    {
+        dazhaoTip.gameObject.SetActive(true);
+    }
+
+    void OnHideDazhaoTip()
+    {
+        dazhaoTip.gameObject.SetActive(false);
     }
 #endregion
 }

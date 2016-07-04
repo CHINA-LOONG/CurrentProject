@@ -24,6 +24,8 @@ enum error
 	DATA_BASE_ERROR        = 0x00000005;
 	// 参数错误
 	PARAMS_INVALID         = 0x00000006;
+	// 配置错误
+	CONFIG_NOT_FOUND	   = 0x00000007;
 	
 	// 服务器错误
 	SERVER_ERROR           = 0x00001000;
@@ -43,4 +45,18 @@ enum monsterError
 	MONSTER_MAX_SIZE       = 0x00030001;
 	// 怪物不存在
 	MONSTER_NOT_EXIST      = 0x00030002;
+}
+
+enum itemError
+{
+	// 道具不存在
+	ITEM_NOT_FOUND       = 0x00040001;
+	// 金币不足
+	COINS_NOT_ENOUGH       = 0x00020002;
+	// 钻石不足
+	GOLD_NOT_ENOUGH       = 0x00020003;
+	// 装备不足
+	EQUIP_NOT_FOUND        = 0x00020004;
+	// 道具数量不足
+	ITEM_NOT_ENOUGH      = 0x00040005;	
 }

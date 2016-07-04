@@ -337,8 +337,10 @@ public class GameUnit
         com.aniControl = unitObject.AddComponent<AnimControl>();
 
         //get slot position
+		unitObject.transform.SetParent (GameMain.Instance.transform);
         unitObject.transform.position = BattleScene.Instance.GetSlotPosition(pbUnit.camp, pbUnit.slot);
 		unitObject.transform.localEulerAngles = BattleScene.Instance.GetSlotLocalEuler(pbUnit.camp, pbUnit.slot);
+		unitObject.transform.localScale = BattleScene.Instance.GetSlotLocalScale (pbUnit.camp, pbUnit.slot);
 
 		//
 		if (com.camp == UnitCamp.Enemy)

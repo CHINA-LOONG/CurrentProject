@@ -343,7 +343,6 @@ GameObject:
   - 95: {fileID: 9506840}
   - 65: {fileID: 6561668}
   - 114: {fileID: 11441962}
-  - 114: {fileID: 11479736}
   m_Layer: 0
   m_Name: yunmengze_daoyu
   m_TagString: Untagged
@@ -436,7 +435,6 @@ GameObject:
   - 95: {fileID: 9512690}
   - 64: {fileID: 6454084}
   - 114: {fileID: 11405566}
-  - 114: {fileID: 11482128}
   m_Layer: 0
   m_Name: yunmengze_yinlong 1
   m_TagString: Untagged
@@ -1967,28 +1965,6 @@ MonoBehaviour:
   m_ID: 1
   camp: 0
   slot: 2
---- !u!114 &11479736
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11482128
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

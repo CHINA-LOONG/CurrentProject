@@ -128,7 +128,7 @@ public class Buff
                     }
 
                     //同源同id，刷新
-                    if (buff.casterID == casterID)
+                    if (buff.casterID == casterID && buff.buffProto.id == buffProto.id)
                     {
                         buff.Reset();
                         return;
@@ -157,6 +157,8 @@ public class Buff
             }
         }
 
+        buffList.Add(this);
+        ModifyUnit(false);
         SpellBuffArgs args = new SpellBuffArgs();
         args.triggerTime = 0;
         args.casterID = casterID;
@@ -164,8 +166,6 @@ public class Buff
         args.isAdd = true;
         args.buffID = buffProto.id;
         spellService.TriggerEvent(GameEventList.SpellBuff, args);
-        buffList.Add(this);
-        ModifyUnit(false);
     }
     //---------------------------------------------------------------------------------------------
     void Finish()

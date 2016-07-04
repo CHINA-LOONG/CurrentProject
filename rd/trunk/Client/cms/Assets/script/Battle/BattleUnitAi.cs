@@ -120,7 +120,8 @@ public class BattleUnitAi : MonoBehaviour {
 			break;
 
 		case (int) SpellType.Spell_Type_Cure:
-			attackTarget = GetAttackTargetUnitNormalStyle (battleUnit,false);
+			//attackTarget = GetAttackTargetUnitNormalStyle (battleUnit,false);
+			attackTarget = GetCurveAiTarget(battleUnit);
 			break;
 		
 		case (int) SpellType.Spell_Type_Beneficial:
@@ -367,6 +368,32 @@ public class BattleUnitAi : MonoBehaviour {
 		}
 	}
 
+	GameUnit GetCurveAiTarget(GameUnit battleUnit)
+	{
+	 	 List<GameUnit>	allTarget = GetOurSideFiledList (battleUnit);
+		List<GameUnit> listTarget = new List<GameUnit> ();
+		foreach(GameUnit subUnit in allTarget)
+		{
+			if(subUnit.curLife/(float)subUnit.maxLife <= GameConfig.Instance.MaxCureMagicLifeRate )
+			{
+				listTarget.Add(subUnit);
+				break;
+			}
+			
+		}
+		int iIndex = 0;
+		if (listTarget.Count > 0) 
+		{
+			iIndex = Random.Range (0, listTarget.Count);
+			return listTarget [iIndex];
+		}
+		else
+		{
+			iIndex = Random.Range(0,allTarget.Count);
+			return allTarget[iIndex];
+		}
+	}
+
 	bool IsGameUnitHaveBuff(GameUnit unit,string spellID)
 	{
 		List<Buff> listBuffer = unit.buffList;
@@ -430,7 +457,7 @@ public class BattleUnitAi : MonoBehaviour {
 			bool isCanCureMagic = false;
 			foreach(GameUnit subUnit in listUnit)
 			{
-				if(subUnit.curLife/(float)subUnit.maxLife >= GameConfig.Instance.MaxCureMagicLifeRate )
+				if(subUnit.curLife/(float)subUnit.maxLife <= GameConfig.Instance.MaxCureMagicLifeRate )
 				{
 					isCanCureMagic = true;
 					break;
@@ -450,6 +477,15 @@ public class BattleUnitAi : MonoBehaviour {
 	{
 		//todo by zz
 		//Debug.LogError ("todo by ZZ,comming later!");
+		Dictionary<string,Spell> spellList = battleUnit.spellList;
+		foreach (var subSpell in spellList.Values)
+		{
+			if(subSpell.spellData.category == (int)SpellType.Spell_Type_Cure)
+			{
+				return true;
+			}
+		}
+
 		return false;
 	}
 
@@ -491,7 +527,7 @@ public class BattleUnitAi : MonoBehaviour {
 		for (int i =0; i<battleList.Count; ++i) 
 		{
 			subUnit = battleList[i];
-			if(null!=subUnit)
+			if(null!=subUnit && subUnit.curLife > 0)
 			{
 				listField.Add(subUnit);
 			}

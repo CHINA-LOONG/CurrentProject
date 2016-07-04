@@ -1,0 +1,23 @@
+option java_package = "com.hawk.game.protocol";
+
+// 用于同步物品信息
+message ItemInfo
+{
+	required int64  id = 1;
+	required int32  itemId = 2;
+	required int32  count = 3;
+	required int32  status = 4;
+}
+
+// 同步所有物品信息
+message HSItemInfoSync
+{
+	repeated ItemInfo itemInfos = 1;
+}
+
+// 使用道具
+message HSItemUse
+{
+	required int32 itemId = 1;	
+	required int32 itemCount = 2;
+}
