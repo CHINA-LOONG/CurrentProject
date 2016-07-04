@@ -1,7 +1,7 @@
 package org.hawk.db;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.hawk.os.HawkTime;
@@ -22,25 +22,25 @@ public abstract class HawkDBEntity implements Serializable {
 	 * 获取对象创建时间
 	 * @return
 	 */
-	public abstract Date getCreateTime();
+	public abstract Calendar getCreateTime();
 
 	/**
 	 * 设置对象创建时间
 	 * @param createTime
 	 */
-	public abstract void setCreateTime(Date createTime);
+	public abstract void setCreateTime(Calendar createTime);
 
 	/**
 	 * 获取对象更新时间
 	 * @return
 	 */
-	public abstract Date getUpdateTime();
+	public abstract Calendar getUpdateTime();
 
 	/**
 	 * 设置对象更新时间
 	 * @param updateTime
 	 */
-	public abstract void setUpdateTime(Date updateTime);
+	public abstract void setUpdateTime(Calendar updateTime);
 
 	/**
 	 * 判断对象是否有效
@@ -83,7 +83,7 @@ public abstract class HawkDBEntity implements Serializable {
 	 * @return
 	 */
 	public boolean notifyCreate() {
-		setCreateTime(HawkTime.getCalendar().getTime());
+		setCreateTime(HawkTime.getCalendar());
 		disassemble();
 		
 		return HawkDBManager.getInstance().create(this);
@@ -119,7 +119,7 @@ public abstract class HawkDBEntity implements Serializable {
 	 * 通知db更新(同步 or 异步更新)
 	 */
 	public void notifyUpdate(boolean async) {
-		setUpdateTime(HawkTime.getCalendar().getTime());
+		setUpdateTime(HawkTime.getCalendar());
 		disassemble();
 		
 		if (async) {

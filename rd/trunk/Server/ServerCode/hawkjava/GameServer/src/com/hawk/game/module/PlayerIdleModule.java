@@ -48,6 +48,10 @@ public class PlayerIdleModule extends PlayerModule {
 	 */
 	@Override
 	protected boolean onPlayerAssemble() {
+		
+		// 组装穿戴信息
+		player.getPlayerData().initMonsterDressedEquip();
+		
 		// 设置组装状态
 		player.setAssembleFinish(true);
 		// 添加在线信息

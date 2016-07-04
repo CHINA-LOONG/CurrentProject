@@ -24,6 +24,8 @@ public class UIMgr : MonoBehaviour
 		}
 	}
 
+	private Transform topPanelTransform;
+
 
 	static UIMgr mInst = null;
 	public static UIMgr Instance
@@ -36,7 +38,6 @@ public class UIMgr : MonoBehaviour
 				GameObject ui = Instantiate(r) as GameObject;
 				ui.name = "UIMgr";
 				mInst = ui.AddComponent<UIMgr>();
-
 			}
 			return mInst;
 		}
@@ -54,8 +55,9 @@ public class UIMgr : MonoBehaviour
 		UICamera.Instance.Init ();
 		canVas.worldCamera = UICamera.Instance.CameraAttr;
 
-		//CanvasScaler cs =  UIMgr.Instance.GetComponent<CanvasScaler> ();
-		//float uiScaleFactor = cs.scaleFactor;
+		GameObject topGo = Util.FindChildByName(gameObject,"topPanel");
+		topPanelTransform = topGo.transform;
+
 	}
 
 	public GameObject OpenUI(string assertName, string uiName)
@@ -68,14 +70,21 @@ public class UIMgr : MonoBehaviour
 		GameObject ui = Instantiate(r) as GameObject;
 
 		RectTransform rt = ui.transform as RectTransform;
-		rt.SetParent (transform ,false);
+
 		rt.localScale = Vector3.one;
 		rt.localEulerAngles = Vector3.zero;
-		//ui.transform.localPosition = Vector3.zero;
-
-		//UIBase vb = ui.GetComponent<UIBase>();
 		ui.name = uiName;
 
+		UIBase vb = ui.GetComponent<UIBase>();
+		if (vb.ViewTypeAttr == UIBase.ViewType.VT_POPUP)
+		{
+			rt.SetParent (topPanelTransform ,false);
+		}
+		else 
+		{
+			rt.SetParent (transform ,false);
+			topPanelTransform.SetSiblingIndex (ui.transform.GetSiblingIndex() + 1);
+		}
         return ui;
 	}
 

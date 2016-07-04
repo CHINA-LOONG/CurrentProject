@@ -1,0 +1,4 @@
+﻿#TEXT,NUM,NUM,NUM,NUM
+id,rewardId,star1RewardGroupId,star2RewardGroupId,star3RewardGroupId
+#副本Id_难度,额外奖励列表,1星奖励组,2星奖励组,3星奖励组
+demo_1,10001,1001,1001,1002

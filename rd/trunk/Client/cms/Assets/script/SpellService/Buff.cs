@@ -19,8 +19,9 @@ public class BuffPrototype
     //属性改变
     public float strengthRatio;
     public float intelligenceRatio;
-    public float defenseRatio;
+    public float defenseRatio;//防御力
     public float speedRatio;
+    public float defenseDamageRatio;//防御系数
 
     //显示相关
     public string icon;
@@ -60,6 +61,7 @@ public class Buff
         buffProto.intelligenceRatio = buffPt.intelligenceRatio;
         buffProto.defenseRatio = buffPt.defenseRatio;
         buffProto.speedRatio = buffPt.speedRatio;
+        buffProto.defenseDamageRatio = buffPt.defenseDamageRatio;
         isFinish = false;
     }
     //---------------------------------------------------------------------------------------------
@@ -168,7 +170,7 @@ public class Buff
         spellService.TriggerEvent(GameEventList.SpellBuff, args);
     }
     //---------------------------------------------------------------------------------------------
-    void Finish()
+    public void Finish()
     {
         ModifyUnit(true);
         isFinish = true;
@@ -212,6 +214,7 @@ public class Buff
             target.spellIntelligenceRatio -= buffProto.intelligenceRatio;
             target.spellSpeedRatio -= buffProto.speedRatio;
             target.spellDefenseRatio -= buffProto.defenseRatio;
+            target.spellDefenseDamageRatio = 0.0f;
         }
         else
         {
@@ -219,6 +222,7 @@ public class Buff
             target.spellIntelligenceRatio += buffProto.intelligenceRatio;
             target.spellSpeedRatio += buffProto.speedRatio;
             target.spellDefenseRatio += buffProto.defenseRatio;
+            target.spellDefenseDamageRatio = buffProto.defenseDamageRatio;
         }
     }
     //---------------------------------------------------------------------------------------------

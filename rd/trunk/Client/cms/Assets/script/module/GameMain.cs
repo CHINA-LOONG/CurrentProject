@@ -73,7 +73,7 @@ public class GameMain : MonoBehaviour
 	{
 		if (1 == state) 
 		{
-			Debug.LogError ("OK for net");
+			Debug.LogWarning ("OK for net");
 		}
 		else
 		{

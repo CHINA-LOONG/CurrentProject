@@ -1,5 +1,7 @@
 option java_package = "com.hawk.game.protocol";
 
+// ------------------------------------------------------- struct -------------------------------------------------------
+
 // 用于同步物品信息
 message ItemInfo
 {
@@ -8,6 +10,8 @@ message ItemInfo
 	required int32  count = 3;
 	required int32  status = 4;
 }
+
+// ------------------------------------------------------- protocol-----------------------------------------------------
 
 // 同步所有物品信息
 message HSItemInfoSync
@@ -18,8 +22,13 @@ message HSItemInfoSync
 // 使用道具
 message HSItemUse
 {
-	required int32 itemId = 1;	
-	required int32 itemCount = 2;
+	required int32 itemId = 1;
+}
+
+// 使用道具
+message HSItemUseRet
+{
+	required int32 itemId = 1;
 }
 
 // 购买道具
@@ -27,4 +36,23 @@ message HSItemBuy
 {
 	required int32 itemId = 1;	
 	required int32 itemCount = 2;
+}
+
+// 购买道具返回
+message HSItemBuyRet
+{
+	required int32 itemId = 1;	
+	required int32 itemCount = 2;
+}
+
+// 合成道具
+message HSItemCompose
+{
+	required int32 itemId = 1;
+}
+
+// 合成道具返回
+message HSItemComposeRet
+{
+	required int32 itemId = 1;
 }

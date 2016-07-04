@@ -1,6 +1,6 @@
 package com.hawk.game.module;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.player.Player;
@@ -34,9 +34,9 @@ public class PlayerStatisticsModule  extends PlayerModule {
 	protected boolean onPlayerLogout() {
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 		
-		Date loginTime = player.getEntity().getLoginTime();
-		Date logoutTime = player.getEntity().getLogoutTime();
-		long onlineTime = logoutTime.getTime() - loginTime.getTime();
+		Calendar loginTime = player.getEntity().getLoginTime();
+		Calendar logoutTime = player.getEntity().getLogoutTime();
+		long onlineTime = logoutTime.getTimeInMillis() - loginTime.getTimeInMillis();
 		statisticsEntity.addTotalOnlineTime(onlineTime);
 		
 		statisticsEntity.notifyUpdate(false);

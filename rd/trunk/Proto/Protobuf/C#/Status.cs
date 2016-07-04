@@ -98,7 +98,13 @@ namespace PB
       EQUIP_NOT_FOUND = 131076,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_ENOUGH", Value=262149)]
-      ITEM_NOT_ENOUGH = 262149
+      ITEM_NOT_ENOUGH = 262149,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_NOT_ALLOW", Value=262150)]
+      ITEM_BUY_NOT_ALLOW = 262150,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_NOT_ALLOW", Value=262151)]
+      ITEM_SELL_NOT_ALLOW = 262151
     }
   
 }

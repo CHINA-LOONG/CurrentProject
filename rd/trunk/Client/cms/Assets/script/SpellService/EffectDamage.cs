@@ -150,11 +150,12 @@ public class EffectDamage : Effect
                                     (damageProto.attackFactor + spellLevelRatio) * //技能加成
                                     (1.0f + caster.spellIntelligenceRatio) *//buff加成(队长技 etc)
                                     propertyDamageRatio *
-                                    wpRatio
+                                    wpRatio *
+                                    (1.0f + target.spellDefenseDamageRatio)
                                     ); //五行相关
                 }
                 //伤害*-1 修正为负数
-                damageAmount *= -1;
+                damageAmount *= -10;
 
                 //弱点伤害计算
                 if (wp != null)

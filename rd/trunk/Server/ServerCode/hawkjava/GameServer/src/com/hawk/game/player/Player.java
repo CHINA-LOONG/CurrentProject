@@ -261,7 +261,7 @@ public class Player extends HawkAppObj {
 		}
 
 		// 在线跨天刷新
-		if (null == playerData.getPlayerEntity() || false == HawkTime.isToday(playerData.getPlayerEntity().getResetTime())) {
+		if (null == playerData.getPlayerEntity() || false == HawkTime.isToday(playerData.getPlayerEntity().getResetTime().getTime())) {
 			onFirstLoginDaily(true);
 		}
 		// 刷新玩家数据
@@ -407,8 +407,8 @@ public class Player extends HawkAppObj {
 			return session.getIpAddr();
 		}
 		return null;
-	}
-
+	}	
+	
 	/**
 	 * 增加钻石
 	 * 
@@ -540,7 +540,7 @@ public class Player extends HawkAppObj {
 	/**
 	 * 增加物品
 	 */
-	public ItemEntity increaseTools(int itemId, int itemCount, Action action) {
+	public ItemEntity increaseItem(int itemId, int itemCount, Action action) {
 		if(!ConfigUtil.check(Const.itemType.ITEM_VALUE, itemId)) {
 			return null;
 		}
@@ -575,7 +575,7 @@ public class Player extends HawkAppObj {
 	/**
 	 * 消耗物品
 	 */
-	public ItemEntity consumeTools(int itemId, int itemCount, Action action) {
+	public ItemEntity consumeItem(int itemId, int itemCount, Action action) {
 		ItemEntity itemEntity = playerData.getItemByItemId(itemId);
 		if (itemEntity != null && itemEntity.getCount() >= itemCount) {
 			itemEntity.setCount(itemEntity.getCount() - itemCount);
@@ -678,7 +678,7 @@ public class Player extends HawkAppObj {
 	public void onFirstLoginDaily(boolean sync) {
 		StatisticsEntity statisticsEntity = playerData.loadStatistics();
 		// 保存重置时间
-		playerData.getPlayerEntity().setResetTime(HawkTime.getCalendar().getTime());
+		playerData.getPlayerEntity().setResetTime(HawkTime.getCalendar());
 		playerData.getPlayerEntity().notifyUpdate(true);
 
 		// 同步
@@ -706,18 +706,16 @@ public class Player extends HawkAppObj {
 			if (null != timeCfg) {
 				try {
 					boolean  shouldRefresh = false;
-					Calendar lastRefreshTime = HawkTime.getCalendar();
 					Calendar nextRefreshTime = HawkTime.getCalendar();
-					Date lastRefreshTimeDate = statisticsEntity.getLastRefreshTime(i);
-					if (null == lastRefreshTimeDate) {
+					Calendar lastRefreshTime = statisticsEntity.getLastRefreshTime(i);
+					if (null == lastRefreshTime) {
+						lastRefreshTime = HawkTime.getCalendar();
 						lastRefreshTime.setTimeInMillis(0);
-					} else {
-						lastRefreshTime.setTime(lastRefreshTimeDate);
 					}
 
 					shouldRefresh = RefreshTime.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
 					if (true == shouldRefresh) {
-						statisticsEntity.setRefreshTime(i,  nextRefreshTime.getTime());
+						statisticsEntity.setRefreshTime(i,  nextRefreshTime);
 
 						switch (i) {
 						case GsConst.RefreshType.SIGN_IN_PERS_REFRESH:

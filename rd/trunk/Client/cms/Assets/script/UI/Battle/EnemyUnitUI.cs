@@ -20,15 +20,10 @@ public class EnemyUnitUI : MonoBehaviour
 		//rectTrans = transform as RectTransform;
     }
 
-	public void	UpdateShow(GameUnit battleUnit)
+	public void	UpdateShow(BattleObject battleUnit)
 	{
         lifeBar.LifeTarget = battleUnit;
 
-		if (null == battleUnit || battleUnit.gameObject == null)
-		{
-			//gameObject.SetActive(false);
-			//return;
-		}
         buffView.SetTargetUnit(battleUnit);
 
 		//Vector3 viewPosition = BattleCamera.Instance.CameraAttr.WorldToViewportPoint (battleUnit.gameObject.transform.position);
@@ -36,11 +31,11 @@ public class EnemyUnitUI : MonoBehaviour
 		//rectTrans.anchoredPosition = screenPosition;
 
 		unitName.text = battleUnit.name;
-        if (battleUnit.isBorn)
-        {
-		    lifeBar.value = battleUnit.curLife / (float)battleUnit.maxLife;
-            battleUnit.isBorn = false;
-        }
-		unitLevel.text = battleUnit.pbUnit.level.ToString ();
+        //if (battleUnit.gameObject.activeSelf)
+        //{
+        //    lifeBar.value = battleUnit.unit.curLife / (float)battleUnit.unit.maxLife;
+        //    //battleUnit.isBorn = false;
+        //}
+		unitLevel.text = battleUnit.unit.pbUnit.level.ToString ();
 	}
 }

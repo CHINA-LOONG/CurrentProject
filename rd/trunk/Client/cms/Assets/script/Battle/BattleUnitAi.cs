@@ -53,6 +53,10 @@ public class BattleUnitAi : MonoBehaviour {
 		jiuWeiHuAi = gameObject.AddComponent<JiuWeiHuUnitAi> ();
 	}
 
+    void OnDestroy()
+    {
+        Destroy(jiuWeiHuAi);
+    }
 
 
 	public	AiAttackResult GetAiAttackResult(GameUnit battleUnit)
@@ -470,8 +474,8 @@ public class BattleUnitAi : MonoBehaviour {
 
 	public List<GameUnit> GetOurSideFiledList(GameUnit battleUnit)
 	{
-		BattleObject battleObject = battleUnit.gameObject.GetComponent<BattleObject>();
-		UnitCamp camp = battleObject.camp;
+		//BattleObject battleObject = battleUnit.gameObject.GetComponent<BattleObject>();
+        UnitCamp camp = battleUnit.pbUnit.camp;
 
 		if (camp == UnitCamp.Player) 
 		{
@@ -485,8 +489,8 @@ public class BattleUnitAi : MonoBehaviour {
 
 	public List<GameUnit> GetOppositeSideFiledList(GameUnit battleUnit)
 	{
-		BattleObject battleObject = battleUnit.gameObject.GetComponent<BattleObject>();
-		UnitCamp camp = battleObject.camp;
+		//BattleObject battleObject = battleUnit.gameObject.GetComponent<BattleObject>();
+		UnitCamp camp = battleUnit.pbUnit.camp;
 		
 		if (camp == UnitCamp.Enemy) 
 		{
@@ -498,17 +502,17 @@ public class BattleUnitAi : MonoBehaviour {
 		}
 	}
 
-	List<GameUnit> GetValidGameUnitList(List<GameUnit> battleList)
+	List<GameUnit> GetValidGameUnitList(List<BattleObject> battleList)
 	{
 		List<GameUnit> listField = new List<GameUnit> ();
 
-		GameUnit subUnit = null;
+		BattleObject subUnit = null;
 		for (int i =0; i<battleList.Count; ++i) 
 		{
 			subUnit = battleList[i];
-			if(null!=subUnit && subUnit.curLife > 0)
+			if(null!=subUnit && subUnit.unit.curLife > 0)
 			{
-				listField.Add(subUnit);
+				listField.Add(subUnit.unit);
 			}
 		}
 		return  listField;

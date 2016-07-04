@@ -31,6 +31,7 @@ public class EffectPersistent : Effect
         persistPt.effectList = persistPtOut.effectList;
         base.Init(pt,owner);
     }
+    //---------------------------------------------------------------------------------------------
     public override void Apply(float applyTime, float aniDelayTime)
     {
         base.Apply(applyTime);
@@ -66,4 +67,5 @@ public class EffectPersistent : Effect
         //cache spell length
         ownedSpell.AddSpellLength(delayTime);
     }
+    //---------------------------------------------------------------------------------------------
 }

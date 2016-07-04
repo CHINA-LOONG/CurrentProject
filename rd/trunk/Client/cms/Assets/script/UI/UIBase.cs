@@ -7,7 +7,6 @@ public class UIBase : MonoBehaviour
 	public enum ViewType
 	{
 		VT_NORMAL,
-		VT_SCREEN,
 		VT_POPUP,
 	}
 	[SerializeField]

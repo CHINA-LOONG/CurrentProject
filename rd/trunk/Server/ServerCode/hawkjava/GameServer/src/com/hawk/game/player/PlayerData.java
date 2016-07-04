@@ -3,6 +3,7 @@ package com.hawk.game.player;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.Map.Entry;
 
 import org.hawk.config.HawkConfigManager;
@@ -68,6 +69,11 @@ public class PlayerData {
 	 */
 	private List<EquipEntity> equipEntities = null;
 
+	/**
+	 * 穿戴装备列表
+	 */
+	private Map<Integer, Map<Integer, Long>> dressedEquipMap = null;
+	
 	/**
 	 * 构造函数
 	 * 
@@ -169,6 +175,104 @@ public class PlayerData {
 		return statisticsEntity;
 	}
 
+	/**
+	 * 初始化怪物装备信息
+	 * 
+	 */
+	public void initMonsterDressedEquip() {
+		dressedEquipMap = new TreeMap<>();
+		for (EquipEntity equip : equipEntities) {
+			if (equip.getMonsterId() != -1) {
+				int monsterId = equip.getMonsterId();
+				addMonsterEquip(monsterId, equip);
+			}
+		}
+	}
+	
+	/**
+	 * 添加装备  不修改entity
+	 * 
+	 * @param monsterID 怪物ID
+	 * @param id 装备唯一id
+	 */
+	public boolean addMonsterEquip(int monsterId, EquipEntity equipEntity) {
+		Map<Integer, Long> monsterDressedMap = null;
+		if (dressedEquipMap.containsKey(monsterId)) {
+			monsterDressedMap = dressedEquipMap.get(monsterId);
+		}
+		else {
+			monsterDressedMap = new TreeMap<Integer, Long>();
+			dressedEquipMap.put(monsterId, monsterDressedMap);
+		}
+		
+		ItemCfg itemcfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipEntity.getItemId());		
+		if (itemcfg == null) {
+			return false;
+		}
+		if (monsterDressedMap.containsKey(itemcfg.getPart())) {
+			return false;
+		}
+		
+		monsterDressedMap.put(itemcfg.getPart(), equipEntity.getId());
+		return true;
+	}
+	
+	/**
+	 * 脱掉装备
+	 * 
+	 */
+	public boolean removeMonsterEquip(EquipEntity equipEntity) {
+		Map<Integer, Long> monsterDressedMap = null;
+		if (!dressedEquipMap.containsKey(equipEntity.getMonsterId())) {
+			return false;
+		}
+		monsterDressedMap = dressedEquipMap.get(equipEntity.getMonsterId());
+		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipEntity.getItemId());
+		if (itemCfg == null) {
+			return false;
+		}
+		
+		if (monsterDressedMap.get(itemCfg.getPart()) != equipEntity.getId()) {
+			return false;
+		}
+		
+		if (monsterDressedMap.size() == 0) {
+			dressedEquipMap.remove(equipEntity.getMonsterId());
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * 替换装备
+	 * 不修改entity
+	 * 
+	 */
+	public boolean replaceMonsterEquip(int monsterId, EquipEntity oldEquip, EquipEntity newEquip) {	
+		if (newEquip.getMonsterId() != -1 || oldEquip.getMonsterId() != monsterId) {
+			return false;
+		}
+		
+		Map<Integer, Long> monsterDressedMap = null;
+		if (!dressedEquipMap.containsKey(monsterId)) {
+			return false;
+		}
+		
+		ItemCfg oldCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, oldEquip.getItemId());
+		ItemCfg newCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, newEquip.getItemId());
+		if (oldCfg.getPart() != newCfg.getPart()) {
+			return false;
+		}
+		
+		monsterDressedMap = dressedEquipMap.get(monsterId);		
+		if (monsterDressedMap.get(oldCfg.getPart()) != oldEquip.getId()) {
+			return false;
+		}
+		
+		monsterDressedMap.put(newCfg.getPart(), newEquip.getId());
+		return true;	
+	}
+	
 	/**********************************************************************************************************
 	 * 数据db操作区
 	 **********************************************************************************************************/
@@ -186,6 +290,7 @@ public class PlayerData {
 			List<PlayerEntity> playerEntitys = HawkDBManager.getInstance().query("from PlayerEntity where puid = ? and invalid = 0", puid);
 			if (playerEntitys != null && playerEntitys.size() > 0) {
 				playerEntity = playerEntitys.get(0);
+				playerEntity.assemble();
 //				try {
 //					if (playerEntity.getSilentTime() != null && playerEntity.getSilentTime().getTime() > HawkTime.getMillisecond()) {
 //						ServerData.getInstance().addDisablePhone(playerEntity.getPhoneInfo());
@@ -205,7 +310,6 @@ public class PlayerData {
 			List<StatisticsEntity> statisticsEntitys = HawkDBManager.getInstance().query("from StatisticsEntity where playerId = ? and invalid = 0", getId());
 			if (statisticsEntitys != null && statisticsEntitys.size() > 0) {
 				statisticsEntity = statisticsEntitys.get(0);
-
 				statisticsEntity.assemble();
 
 //				// 新号上报数据
@@ -248,6 +352,13 @@ public class PlayerData {
 		if (itemEntities == null) {
 			itemEntities = HawkDBManager.getInstance().query("from ItemEntity where playerId = ? and invalid = 0 order by id asc", playerEntity.getId());
 		}
+		
+		if (itemEntities != null && itemEntities.size() > 0) {
+			for (ItemEntity itemEntity : itemEntities) {
+				itemEntity.assemble();
+			}
+		}
+		
 		return itemEntities;
 	}
 
@@ -260,6 +371,13 @@ public class PlayerData {
 		if (equipEntities == null) {
 			equipEntities = HawkDBManager.getInstance().query("from EquipEntity where playerId = ? and invalid = 0 order by id asc", playerEntity.getId());
 		}
+		
+		if (equipEntities != null && equipEntities.size() > 0) {
+			for (EquipEntity equipEntity : equipEntities) {
+				equipEntity.assemble();
+			}
+		}
+		
 		return equipEntities;
 	}
 

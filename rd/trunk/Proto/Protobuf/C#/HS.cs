@@ -46,17 +46,29 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"KICKOUT_S", Value=1004)]
       KICKOUT_S = 1004,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_INFO_SYNC_S", Value=1005)]
-      PLAYER_INFO_SYNC_S = 1005,
+      [global::ProtoBuf.ProtoEnum(Name=@"SYNCINFO_C", Value=1005)]
+      SYNCINFO_C = 1005,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_INFO_SYNC_S", Value=1006)]
-      ITEM_INFO_SYNC_S = 1006,
+      [global::ProtoBuf.ProtoEnum(Name=@"SYNCINFO_S", Value=1006)]
+      SYNCINFO_S = 1006,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INFO_SYNC_S", Value=1007)]
-      EQUIP_INFO_SYNC_S = 1007,
+      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_INFO_SYNC_S", Value=1010)]
+      PLAYER_INFO_SYNC_S = 1010,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1010)]
-      ASSEMBLE_FINISH_S = 1010,
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_INFO_SYNC_S", Value=1011)]
+      STATISTICS_INFO_SYNC_S = 1011,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_INFO_SYNC_S", Value=1012)]
+      MONSTER_INFO_SYNC_S = 1012,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_INFO_SYNC_S", Value=1013)]
+      ITEM_INFO_SYNC_S = 1013,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INFO_SYNC_S", Value=1014)]
+      EQUIP_INFO_SYNC_S = 1014,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1015)]
+      ASSEMBLE_FINISH_S = 1015,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CREATE_C", Value=1101)]
       PLAYER_CREATE_C = 1101,
@@ -70,26 +82,26 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_REWARD_S", Value=1104)]
       PLAYER_REWARD_S = 1104,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_INFO_SYNC_S", Value=2000)]
-      MONSTER_INFO_SYNC_S = 2000,
-            
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_ADD_S", Value=2001)]
       MONSTER_ADD_S = 2001,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_CATCH_C", Value=2002)]
       MONSTER_CATCH_C = 2002,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_BREAK_C", Value=2003)]
-      MONSTER_BREAK_C = 2003,
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_CATCH_S", Value=2003)]
+      MONSTER_CATCH_S = 2003,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_BREAK_S", Value=2004)]
-      MONSTER_BREAK_S = 2004,
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_BREAK_C", Value=2004)]
+      MONSTER_BREAK_C = 2004,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_C", Value=2005)]
-      MONSTER_FEED_C = 2005,
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_BREAK_S", Value=2005)]
+      MONSTER_BREAK_S = 2005,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_S", Value=2006)]
-      MONSTER_FEED_S = 2006,
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_C", Value=2006)]
+      MONSTER_FEED_C = 2006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_S", Value=2007)]
+      MONSTER_FEED_S = 2007,
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_C", Value=3000)]
       INSTANCE_ENTER_C = 3000,
@@ -106,8 +118,26 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_C", Value=4002)]
-      ITEM_SELL_C = 4002
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_S", Value=4002)]
+      ITEM_USE_S = 4002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_C", Value=4003)]
+      ITEM_SELL_C = 4003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_S", Value=4004)]
+      ITEM_SELL_S = 4004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_C", Value=4005)]
+      ITEM_BUY_C = 4005,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_S", Value=4006)]
+      ITEM_BUY_S = 4006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SELL_C", Value=4101)]
+      EQUIP_SELL_C = 4101,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_BUY_C", Value=4102)]
+      EQUIP_BUY_C = 4102
     }
   
 }

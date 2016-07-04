@@ -23,7 +23,7 @@ public class Spell
     public int targetID;
     public SpellProtoType spellData;
     public SpellService spellService;
-    
+
     private float spellLength;
 
     public Spell(SpellProtoType spellPt)
@@ -35,6 +35,7 @@ public class Spell
 
     public void Init(SpellService owner)
     {
+        spellLength = 0.0f;
         spellService = owner;
     }
 
@@ -48,7 +49,6 @@ public class Spell
         args.targetID = targetID;
         GameUnit caster = spellService.GetUnit(casterID);
         //args.castResult = SpellConst.spellCastOK;
-        spellService.TriggerEvent(GameEventList.SpellFire, args);
 
         //generate energy
         if (spellData.energyGenerate > 0)
@@ -95,11 +95,13 @@ public class Spell
             rootEffect.SetOwnedSpell(this);
             rootEffect.Apply(triggerTime);
         }
+
+        args.aniTime = spellLength;
+        spellService.TriggerEvent(GameEventList.SpellFire, args);
     }
 
     public void AddSpellLength(float delayTime)
     {
         spellLength += delayTime;
-        Logger.Log("spell length added");
     }
 }

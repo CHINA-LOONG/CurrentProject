@@ -37,6 +37,7 @@ public class NetworkManager : MonoBehaviour
                 {
 				case ResponseState.Connect:
 					GameEventMgr.Instance.FireEvent<int>(NetEventList.NetConnectFinished,1);
+					UINetRequest.Close();
 					break;
 				case ResponseState.UnConnect:
 					GameEventMgr.Instance.FireEvent<int>(NetEventList.NetConnectFinished,0);
@@ -52,6 +53,7 @@ public class NetworkManager : MonoBehaviour
 					ProtocolMessage pmsg = _event.Value;
 					Debug.Log("receiv msg : " + pmsg.GetMessageType());
 					GameEventMgr.Instance.FireEvent<ProtocolMessage>(pmsg.GetMessageType().ToString(),pmsg);
+					UINetRequest.Close();
 				}
 					break;
                 default:
@@ -66,6 +68,7 @@ public class NetworkManager : MonoBehaviour
     /// </summary>
     public void SendConnect()
     {
+		UINetRequest.Open ();
         SocketClient.SendConnect();
     }
 
@@ -75,6 +78,7 @@ public class NetworkManager : MonoBehaviour
 	public void SendMessage(ProtocolMessage buffer)
     {
         SocketClient.SendMessage(buffer);
+		UINetRequest.Open ();
     }
 
 	public void SendMessage(int messageType, ProtoBuf.IExtensible builder)

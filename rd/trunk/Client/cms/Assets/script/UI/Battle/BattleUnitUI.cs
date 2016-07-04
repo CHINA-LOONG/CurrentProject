@@ -9,7 +9,7 @@ public class BattleUnitUI : MonoBehaviour
     public LifeBarUI lifeBar;
     public EnegyBarUI enegyBar;
 
-    public GameUnit Unit { get; set; }
+    public BattleObject Unit { get; set; }
     private UIBuffView buffView;
 
     // Use this for initialization
@@ -20,7 +20,7 @@ public class BattleUnitUI : MonoBehaviour
        buffView.Init();
     }
 
-    public void Show(GameUnit sUnit)
+    public void Show(BattleObject sUnit)
     {
         buffView.SetTargetUnit(sUnit);
         lifeBar.LifeTarget = sUnit;
@@ -34,14 +34,13 @@ public class BattleUnitUI : MonoBehaviour
 
         dazhaoBtn.gameObject.SetActive(false);
         unitName.text = Unit.name;
-        if (sUnit.isBorn)
-        {
-            lifeBar.value = Unit.curLife / (float)Unit.maxLife;
-            sUnit.isBorn = false;
-        }
-        enegyBar.value = Mathf.Clamp01(Unit.energy / (float)BattleConst.enegyMax);
+        //if (sUnit.gameObject.activeSelf)
+        //{
+        //    lifeBar.value = Unit.unit.curLife / (float)Unit.unit.maxLife;
+        //}
+        enegyBar.value = Mathf.Clamp01(Unit.unit.energy / (float)BattleConst.enegyMax);
 
-        if (Unit.energy >= BattleConst.enegyMax)
+        if (Unit.unit.energy >= BattleConst.enegyMax)
         {
             dazhaoBtn.gameObject.SetActive(true);
         }
@@ -56,7 +55,7 @@ public class BattleUnitUI : MonoBehaviour
 
     void OnDazhaoClick(GameObject go)
     {
-        GameEventMgr.Instance.FireEvent<GameUnit>(GameEventList.HitDazhaoBtn, Unit);
+        GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.HitDazhaoBtn, Unit);
 		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
     }
 }

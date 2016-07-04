@@ -1,6 +1,8 @@
 package com.hawk.game.entity;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,11 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import net.sf.json.JSONObject;
-
 import org.hawk.db.HawkDBEntity;
 import org.hawk.os.HawkTime;
+import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
+
+import com.google.gson.reflect.TypeToken;
 
 /**
  * 玩家基础数据
@@ -70,6 +73,9 @@ public class PlayerEntity extends HawkDBEntity {
 	@Column(name = "gold")
 	protected int gold = 0;
 	
+	@Column(name = "battleMonster", nullable = false)
+	protected String battleMonsterJson = "";
+	
 	@Column(name = "device", nullable = false)
 	protected String device = "";
 
@@ -80,42 +86,41 @@ public class PlayerEntity extends HawkDBEntity {
 	protected String phoneInfo = "";
 	
 	@Column(name = "loginTime")
-	protected Date loginTime = null;
+	protected Calendar loginTime = null;
 
 	@Column(name = "logoutTime")
-	protected Date logoutTime = null;
+	protected Calendar logoutTime = null;
 
 	@Column(name = "resetTime")
-	protected Date resetTime = null;
+	protected Calendar resetTime = null;
 
 	@Column(name = "createTime", nullable = false)
-	protected Date createTime = null;
+	protected Calendar createTime = null;
 
 	@Column(name = "updateTime")
-	protected Date updateTime;
+	protected Calendar updateTime;
 
 	@Column(name = "invalid")
 	protected boolean invalid;
 
 	@Transient
-	private JSONObject assetJson = null;
+	private List<Integer> battleMonsterList = new LinkedList<Integer>();
 	
 	public PlayerEntity() {
-		this.createTime = HawkTime.getCalendar().getTime();
-		this.loginTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
+		this.loginTime = HawkTime.getCalendar();
 	}
 
 	public PlayerEntity(String puid, String device, String platform, String phoneInfo) {
 		this.puid = puid;
-		this.createTime = HawkTime.getCalendar().getTime();
-		this.loginTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
+		this.loginTime = HawkTime.getCalendar();
 	}
 	
 	public PlayerEntity(String puid, String nickname, byte career, int gender, int eye, int hair, int hairColor){
-
 		this.puid = puid;
-		this.createTime = HawkTime.getCalendar().getTime();
-		this.loginTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
+		this.loginTime = HawkTime.getCalendar();
 		this.nickname = nickname;
 		this.career = career;
 		this.gender = (byte)gender;
@@ -184,6 +189,14 @@ public class PlayerEntity extends HawkDBEntity {
 		this.gold = gold;
 	}
 	
+	public List<Integer> getBattleMonsterList() {
+		return battleMonsterList;
+	}
+	
+	public void setBattleMonsterList(LinkedList<Integer> list) {
+		this.battleMonsterList = list;
+	}
+	
 	public int getRecharge() {
 		return recharge;
 	}
@@ -240,56 +253,71 @@ public class PlayerEntity extends HawkDBEntity {
 		this.phoneInfo = phoneInfo;
 	}
 
-	public Date getLoginTime() {
+	public Calendar getLoginTime() {
 		return loginTime;
 	}
 
-	public void setLoginTime(Date loginTime) {
+	public void setLoginTime(Calendar loginTime) {
 		this.loginTime = loginTime;
 	}
 
-	public Date getLogoutTime() {
+	public Calendar getLogoutTime() {
 		return logoutTime;
 	}
 
-	public void setLogoutTime(Date logoutTime) {
+	public void setLogoutTime(Calendar logoutTime) {
 		this.logoutTime = logoutTime;
 	}
 
-	public Date getResetTime() {
+	public Calendar getResetTime() {
 		return resetTime;
 	}
 
-	public void setResetTime(Date resetTime) {
+	public void setResetTime(Calendar resetTime) {
 		this.resetTime = resetTime;
 	}
-
-	public Date getCreateTime() {
-		return createTime;
+	
+	@Override
+	public boolean assemble() {
+		if (battleMonsterJson != null && false == "".equals(battleMonsterJson) && false == "null".equals(battleMonsterJson)) {
+			battleMonsterList = HawkJsonUtil.getJsonInstance().fromJson(battleMonsterJson, new TypeToken<List<Integer>>() {}.getType());
+		}
+		return true;
+	}
+	
+	@Override
+	public boolean disassemble() {
+		battleMonsterJson = HawkJsonUtil.getJsonInstance().toJson(battleMonsterList);
+		return true;
 	}
 
-	public void setCreateTime(Date createTime) {
+	@Override
+	public Calendar getCreateTime() {
+		return createTime;
+	}
+	
+	@Override
+	public void setCreateTime(Calendar createTime) {
 		this.createTime = createTime;
 	}
 
-	public Date getUpdateTime() {
+	@Override
+	public Calendar getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Date updateTime) {
+	@Override
+	public void setUpdateTime(Calendar updateTime) {
 		this.updateTime = updateTime;
 	}
 
+	@Override
 	public boolean isInvalid() {
 		return invalid;
 	}
 
+	@Override
 	public void setInvalid(boolean invalid) {
 		this.invalid = invalid;
 	}
-	
-	@Override
-	public void notifyUpdate(boolean async) {
-		super.notifyUpdate(async);
-	}	
 }

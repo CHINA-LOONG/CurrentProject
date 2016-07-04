@@ -40,10 +40,10 @@ public class EnemyGroupUI : MonoBehaviour
 
     void UpdateEnmeyUICo()
     {
-        List<GameUnit> listEnmey = BattleController.Instance.BattleGroup.EnemyFieldList;
+        List<BattleObject> listEnmey = BattleController.Instance.BattleGroup.EnemyFieldList;
 
         bool isHaveBoss = false;
-        GameUnit subUnit = null;
+        BattleObject subUnit = null;
         EnemyUnitUI subEnmeyUI = null;
 
         for (int i = 0; i < listEnmey.Count; ++i)
@@ -57,7 +57,7 @@ public class EnemyGroupUI : MonoBehaviour
             }
             else
             {
-                if (subUnit.isBoss)
+                if (subUnit.unit.isBoss)
                 {
                     isHaveBoss = true;
 					subEnmeyUI.gameObject.SetActive(false);

@@ -182,7 +182,7 @@ public class Attribute {
 				if (items.length != 2) {
 					return false;
 				}
-				add(Const.attr.valueOf(Integer.valueOf(items[0])), Integer.valueOf(items[1]));
+				add(Const.attr.valueOf(Integer.valueOf(items[0])), Float.valueOf(items[1]));
 			}
 		}
 		return true;

@@ -2,6 +2,7 @@ package com.hawk.game.config;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.config.HawkConfigBase.Id;
 
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.protocol.Const;
@@ -61,19 +62,23 @@ public class ItemCfg extends HawkConfigBase {
 	 */
 	protected final int buyType;
 	/**
-	 * 配对item
-	 */
-	protected final String needItem;	
-	/**
 	 * 叠加上限
 	 */
 	protected final int stack;
 	/**
 	 * 宝箱的奖励列表
 	 */
-	protected final String rewardId;
+	protected final int rewardId;
 	/**
-	 * 兑换/合成道具ID
+	 * 合成该装备需要的道具列表
+	 */
+	protected final String componentItem;
+	/**
+	 * 配对使用的道具列表
+	 */
+	protected final String needItem;
+	/**
+	 * 兑换/合成道具列表
 	 */
 	protected final String targetItem;
 	/**
@@ -114,7 +119,11 @@ public class ItemCfg extends HawkConfigBase {
 	protected final String asset ;
 	
 	protected final String tips ;
-	
+
+	/**
+	 * 合成该装备需要的道具列表
+	 */
+	private List<ItemInfo> componentItemList;
 	/**
 	 * 匹配使用装备列表
 	 */
@@ -137,9 +146,10 @@ public class ItemCfg extends HawkConfigBase {
 		sellType = 0;
 		buyPrice = 0;
 		buyType = 0;
+		componentItem = null;
 		needItem = null;
 		stack = 0;
-		rewardId = null;
+		rewardId = 0;
 		targetItem = null;
 		needCount = 0;
 		addAttrType = 0;
@@ -154,11 +164,11 @@ public class ItemCfg extends HawkConfigBase {
 		asset = null;
 		tips = null;
 		
+		componentItemList = new LinkedList<ItemInfo>();
 		needItemList = new LinkedList<ItemInfo>();
 		targetItemList = new LinkedList<ItemInfo>();
 	}
 
-	
 	public int getId() {
 		return id;
 	}
@@ -166,7 +176,6 @@ public class ItemCfg extends HawkConfigBase {
 	public int getClassType() {
 		return classType;
 	}
-
 
 	public int getType() {
 		return type;
@@ -219,7 +228,7 @@ public class ItemCfg extends HawkConfigBase {
 	}
 
 
-	public String getRewardId() {
+	public int getRewardId() {
 		return rewardId;
 	}
 
@@ -271,10 +280,17 @@ public class ItemCfg extends HawkConfigBase {
 		return tips;
 	}
 
+	public List<ItemInfo> getComponentItemList() {
+		return componentItemList;
+	}
+
+	public void setComponentItemList(List<ItemInfo> componentItemList) {
+		this.componentItemList = componentItemList;
+	}
+
 	public List<ItemInfo> getNeedItemList() {
 		return needItemList;
 	}
-
 
 	public void setNeedItemList(List<ItemInfo> needItemList) {
 		this.needItemList = needItemList;
@@ -285,19 +301,47 @@ public class ItemCfg extends HawkConfigBase {
 		return targetItemList;
 	}
 
-
 	public void setTargetItemList(List<ItemInfo> targetItemList) {
 		this.targetItemList = targetItemList;
 	}
-
 
 	@Override
 	protected boolean assemble() {
 		needItemList.clear();
 		targetItemList.clear();
 		
+		// 合成该物品需要的道具列表
+		if (this.componentItem != null && this.componentItem.length() > 0 && !"0".equals(this.componentItem)) {
+			String[] itemArrays = componentItem.split(",");
+			for (String itemArray : itemArrays) {
+				String[] items = itemArray.split("_");
+				if (items.length == 3) {
+					ItemInfo itemInfo = new ItemInfo();
+					itemInfo.setType(Integer.valueOf(items[0]));
+					itemInfo.setItemId(Integer.valueOf(items[1]));
+					itemInfo.setCount(Integer.valueOf(items[2]));
+					componentItemList.add(itemInfo);
+				}
+				else if (items.length == 5){
+					if (Integer.valueOf(items[0]) != Const.itemType.EQUIP_VALUE) {
+						return false;
+					}
+					ItemInfo itemInfo = new ItemInfo();
+					itemInfo.setType(Integer.valueOf(items[0]));
+					itemInfo.setItemId(Integer.valueOf(items[1]));
+					itemInfo.setCount(Integer.valueOf(items[2]));
+					itemInfo.setStage(Integer.valueOf(items[3]));
+					itemInfo.setLevel(Integer.valueOf(items[4]));
+					componentItemList.add(itemInfo);
+				}
+				else {
+					return false;
+				}
+			}
+		}
+		
 		// 碎片
-		if (this.type == Const.toolType.EXCHANGETOOL_VALUE || this.type == Const.toolType.FRAGMENTTOOL_VALUE) {
+		if (this.type == Const.toolType.FRAGMENTTOOL_VALUE) {
 			if (this.targetItem != null && this.targetItem.length() > 0 && !"0".equals(this.targetItem)) {
 				String[] itemArrays = targetItem.split(",");
 				for (String itemArray : itemArrays) {
@@ -338,7 +382,7 @@ public class ItemCfg extends HawkConfigBase {
 						itemInfo.setType(Integer.valueOf(items[0]));
 						itemInfo.setItemId(Integer.valueOf(items[1]));
 						itemInfo.setCount(Integer.valueOf(items[2]));
-						targetItemList.add(itemInfo);
+						needItemList.add(itemInfo);
 					}
 					else if (items.length == 5){
 						if (Integer.valueOf(items[0]) != Const.itemType.EQUIP_VALUE) {
@@ -350,7 +394,7 @@ public class ItemCfg extends HawkConfigBase {
 						itemInfo.setCount(Integer.valueOf(items[2]));
 						itemInfo.setStage(Integer.valueOf(items[3]));
 						itemInfo.setLevel(Integer.valueOf(items[4]));
-						targetItemList.add(itemInfo);
+						needItemList.add(itemInfo);
 					}
 					else {
 						return false;
@@ -363,6 +407,14 @@ public class ItemCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean checkValid() {
+		if (this.type == Const.toolType.FRAGMENTTOOL_VALUE && this.getNeedCount() <= 0 ) {
+			return false;
+		}
+		else if (this.type == Const.toolType.BOXTOOL_VALUE && this.getRewardId() == 0) {
+			return false;
+		}
+		
+		
 		return true;
 	}
 }

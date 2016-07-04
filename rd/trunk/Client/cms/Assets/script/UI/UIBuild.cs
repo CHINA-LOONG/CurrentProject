@@ -22,9 +22,9 @@ public class UIBuild : UIBase
         EventTriggerListener.Get(m_BossBattleButton.gameObject).onClick = BossBattleButtonClick;
         EventTriggerListener.Get(m_RareBattleButton.gameObject).onClick = RareBattleButtonClick;
 
-		levelText.text = GameDataMgr.Instance.PlayerDataAttr.level.ToString ();
-		coinText.text = GameDataMgr.Instance.PlayerDataAttr.coin.ToString ();
-		nameText.text = GameDataMgr.Instance.PlayerDataAttr.nickName;
+        //levelText.text = GameDataMgr.Instance.PlayerDataAttr.level.ToString ();
+        //coinText.text = GameDataMgr.Instance.PlayerDataAttr.coin.ToString ();
+        //nameText.text = GameDataMgr.Instance.PlayerDataAttr.nickName;
 		BindListener ();
     }
 

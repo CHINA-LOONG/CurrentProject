@@ -146,15 +146,22 @@ namespace PB
       get { return _hairColor; }
       set { _hairColor = value; }
     }
+    private readonly global::System.Collections.Generic.List<int> _battleMonster = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(12, Name=@"battleMonster", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> battleMonster
+    {
+      get { return _battleMonster; }
+    }
+  
     private int _recharge;
-    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"recharge", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"recharge", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int recharge
     {
       get { return _recharge; }
       set { _recharge = value; }
     }
     private int _vipLevel;
-    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"vipLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"vipLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int vipLevel
     {
       get { return _vipLevel; }
@@ -277,6 +284,24 @@ namespace PB
     {
       get { return _info; }
       set { _info = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsInfoSync")]
+  public partial class HSStatisticsInfoSync : global::ProtoBuf.IExtensible
+  {
+    public HSStatisticsInfoSync() {}
+    
+    private string _instanceState = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"instanceState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string instanceState
+    {
+      get { return _instanceState; }
+      set { _instanceState = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

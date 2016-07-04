@@ -1,6 +1,6 @@
 package com.hawk.game.entity;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,8 +18,10 @@ import net.sf.json.JSONObject;
 import org.hawk.db.HawkDBEntity;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
+import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.google.gson.reflect.TypeToken;
 import com.hawk.game.attr.Attribute;
 
 /**
@@ -63,13 +65,13 @@ public class EquipEntity extends HawkDBEntity {
 	protected String additionAttr = "";
 	
 	@Column(name = "expireTime")
-	protected Date expireTime = null;
+	protected Calendar expireTime = null;
 
 	@Column(name = "createTime", nullable = false)
-	protected Date createTime = null;
+	protected Calendar createTime = null;
 
 	@Column(name = "updateTime")
-	protected Date updateTime;
+	protected Calendar updateTime;
 
 	@Column(name = "invalid")
 	protected boolean invalid;
@@ -80,19 +82,16 @@ public class EquipEntity extends HawkDBEntity {
 	@Transient
 	Attribute attr = null;
 	
-	@Transient
-	private boolean assembleFinish = false;
-	
 	public EquipEntity() {
-		this.createTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
 	}
 
-	public EquipEntity(int itemId, byte status, short slot, short count, byte stage, byte level, Date expireTime) {
+	public EquipEntity(int itemId, byte status, short slot, short count, byte stage, byte level, Calendar expireTime) {
 		this.status = status;
 		this.stage = stage;
 		this.level = level;
 		this.expireTime = expireTime;
-		this.createTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
 	}
 
 	public long getId() {
@@ -152,18 +151,10 @@ public class EquipEntity extends HawkDBEntity {
 	}
 
 	public Map<Integer, Integer> GetGemDressMap() {
-		if (assembleFinish == false) {
-			gemDressJsonToMap();
-		}
-
 		return gemDressMap;
 	}
 	
 	private void gemDressJsonToMap(){		
-		if (gemDress == null) {
-			return;
-		}
-		
 		JSONObject gemJson = JSONObject.fromObject(gemDress);
 		if (gemJson == null) {
 			HawkException.catchException(new HawkException("db gem data invalid: " + this.id));
@@ -174,19 +165,16 @@ public class EquipEntity extends HawkDBEntity {
 				gemDressMap.put((Integer)k, (Integer)v);
 			}
 		} 
-		assembleFinish = true;
 	}
 
 	private void gemMapToJson() {
-		//强制生成MAP
-		GetGemDressMap();
-		
-		JSONObject gemJson = new JSONObject();
-		for (Map.Entry<Integer, Integer> entry : gemDressMap.entrySet()) {
-			gemJson.put(entry.getKey(), entry.getValue());
+		if (gemDressMap.isEmpty() == false) {
+			JSONObject gemJson = new JSONObject();
+			for (Map.Entry<Integer, Integer> entry : gemDressMap.entrySet()) {
+				gemJson.put(entry.getKey(), entry.getValue());
+			}
+			gemDress = gemJson.toString();
 		}
-		
-		gemDress = gemJson.toString();
 	}
 	
 	public void addGem(int index, int gemId)
@@ -202,52 +190,59 @@ public class EquipEntity extends HawkDBEntity {
 	}
 	
 	public Attribute getAttr() {
-		if (additionAttr == "") {
-			return null;
-		}
-		
-		if (attr == null) {
-			attr = Attribute.valueOf(additionAttr);
-		}
-		
 		return attr;
 	}
 	
 	public void setAttr(Attribute attr){
-		this.attr = attr;		
+		this.attr = attr;
 	}
 	
-	public void serializeAttr()	{
-		// 强制生成Attr
-		getAttr();
-		additionAttr = attr.toString();
-	}
-	
-	public Date getExpireTime() {
+	public Calendar getExpireTime() {
 		return expireTime;
 	}
 
-	public void setExpireTime(Date expireTime) {
+	public void setExpireTime(Calendar expireTime) {
 		this.expireTime = expireTime;
 	}
 
 	@Override
-	public Date getCreateTime() {
+	public boolean assemble() {
+		if (additionAttr != null && false == "".equals(additionAttr) && false == "null".equals(additionAttr)) {
+			attr = Attribute.valueOf(additionAttr);
+		}
+		if (gemDress != null && false == "".equals(gemDress) && false == "null".equals(gemDress)) {
+			gemDressJsonToMap();
+		}
+		return true;
+	}
+
+	@Override
+	public boolean disassemble() {
+		gemMapToJson();
+		if(attr != null){
+			this.additionAttr = attr.toString();
+		}
+		
+		return true;
+	}
+	
+	@Override
+	public Calendar getCreateTime() {
 		return createTime;
 	}
 
 	@Override
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(Calendar createTime) {
 		this.createTime = createTime;
 	}
 
 	@Override
-	public Date getUpdateTime() {
+	public Calendar getUpdateTime() {
 		return updateTime;
 	}
 
 	@Override
-	public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(Calendar updateTime) {
 		this.updateTime = updateTime;
 	}
 
@@ -259,12 +254,5 @@ public class EquipEntity extends HawkDBEntity {
 	@Override
 	public void setInvalid(boolean invalid) {
 		this.invalid = invalid;
-	}
-	
-	@Override
-	public void notifyUpdate(boolean async) {
-		gemMapToJson();
-		serializeAttr();
-		super.notifyUpdate(async);
 	}
 }

@@ -38,6 +38,7 @@ public class BuilderUtil {
 		builder.setEye(playerEntity.getExp());
 		builder.setHair(playerEntity.getHair());
 		builder.setHairColor(playerEntity.getHairColor());
+		builder.addAllBattleMonster(playerEntity.getBattleMonsterList());
 		builder.setRecharge(playerEntity.getRecharge());
 		builder.setVipLevel(playerEntity.getVipLevel());
 		return builder;
@@ -57,7 +58,8 @@ public class BuilderUtil {
 		builder.setLevel(monsterEntity.getLevel());
 		builder.setExp(monsterEntity.getExp());
 		builder.setLazy(monsterEntity.getLazy());
-		builder.setAi(monsterEntity.getAi());
+		builder.setLazyExp(monsterEntity.getLazyExp());
+		builder.setDisposition(monsterEntity.getDisposition());
 
 		HSSkill.Builder skill = HSSkill.newBuilder();
 		for (Entry<Integer, Integer> entry : monsterEntity.getSkillMap().entrySet()) {
@@ -97,7 +99,7 @@ public class BuilderUtil {
 		builder.setStage(equipEntity.getStage());
 		builder.setStatus(0);
 		if (equipEntity.getExpireTime() != null) {
-			builder.setExpireTime((int)equipEntity.getExpireTime().getTime());
+			builder.setExpireTime((int)equipEntity.getExpireTime().getTimeInMillis() / 1000);
 		}
 
 		//组装镶嵌宝石数据

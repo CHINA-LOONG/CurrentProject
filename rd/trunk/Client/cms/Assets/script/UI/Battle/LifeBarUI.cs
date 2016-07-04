@@ -11,8 +11,8 @@ public class LifeBarUI : MonoBehaviour
     float width = 586;
 
     private List<SpellVitalChangeArgs> vitalEventList;
-    private GameUnit lifeTarget;
-    public GameUnit LifeTarget
+    private BattleObject lifeTarget;
+    public BattleObject LifeTarget
     {
         set 
         {
@@ -56,10 +56,15 @@ public class LifeBarUI : MonoBehaviour
         }
     }
 
+    public void SetTargetLife(int targetValue, int maxValue)
+    {
+        value = targetValue / maxValue;
+    }
+
     public void OnLifeChange(EventArgs args)
     {
         SpellVitalChangeArgs vitalArgs = args as SpellVitalChangeArgs;
-        if (lifeTarget != null && vitalArgs.targetID == lifeTarget.pbUnit.guid)
+        if (lifeTarget != null && vitalArgs.targetID == lifeTarget.guid)
         {
             vitalEventList.Add(vitalArgs);
         }

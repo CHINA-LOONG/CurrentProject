@@ -79,6 +79,9 @@ namespace PB
     public enum itemType
     {
             
+      [global::ProtoBuf.ProtoEnum(Name=@"NONE_ITEM", Value=1)]
+      NONE_ITEM = 1,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_ATTR", Value=1)]
       PLAYER_ATTR = 1,
             
@@ -161,13 +164,7 @@ namespace PB
       CHANGE_FAV = 8,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_VIPLEVEL", Value=9)]
-      CHANGE_VIPLEVEL = 9,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_ITEM", Value=10)]
-      CHANGE_ITEM = 10,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_EQUIP", Value=11)]
-      CHANGE_EQUIP = 11
+      CHANGE_VIPLEVEL = 9
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"attr")]
@@ -263,9 +260,6 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"USETOOL", Value=5)]
       USETOOL = 5,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"EXCHANGETOOL", Value=6)]
-      EXCHANGETOOL = 6,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIPTOOL", Value=7)]
       EQUIPTOOL = 7

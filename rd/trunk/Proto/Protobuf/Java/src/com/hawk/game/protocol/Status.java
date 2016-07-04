@@ -566,6 +566,22 @@ public final class Status {
      * </pre>
      */
     ITEM_NOT_ENOUGH(4, 262149),
+    /**
+     * <code>ITEM_BUY_NOT_ALLOW = 262150;</code>
+     *
+     * <pre>
+     * 道具不能买
+     * </pre>
+     */
+    ITEM_BUY_NOT_ALLOW(5, 262150),
+    /**
+     * <code>ITEM_SELL_NOT_ALLOW = 262151;</code>
+     *
+     * <pre>
+     * 道具不能卖
+     * </pre>
+     */
+    ITEM_SELL_NOT_ALLOW(6, 262151),
     ;
 
     /**
@@ -608,6 +624,22 @@ public final class Status {
      * </pre>
      */
     public static final int ITEM_NOT_ENOUGH_VALUE = 262149;
+    /**
+     * <code>ITEM_BUY_NOT_ALLOW = 262150;</code>
+     *
+     * <pre>
+     * 道具不能买
+     * </pre>
+     */
+    public static final int ITEM_BUY_NOT_ALLOW_VALUE = 262150;
+    /**
+     * <code>ITEM_SELL_NOT_ALLOW = 262151;</code>
+     *
+     * <pre>
+     * 道具不能卖
+     * </pre>
+     */
+    public static final int ITEM_SELL_NOT_ALLOW_VALUE = 262151;
 
 
     public final int getNumber() { return value; }
@@ -619,6 +651,8 @@ public final class Status {
         case 131075: return GOLD_NOT_ENOUGH;
         case 131076: return EQUIP_NOT_FOUND;
         case 262149: return ITEM_NOT_ENOUGH;
+        case 262150: return ITEM_BUY_NOT_ALLOW;
+        case 262151: return ITEM_SELL_NOT_ALLOW;
         default: return null;
       }
     }
@@ -690,10 +724,12 @@ public final class Status {
       "rror\022\026\n\020PLAYER_NOT_EXIST\020\201\200\010\022\033\n\025PLAYER_N" +
       "ICKNAME_EXIST\020\202\200\010*?\n\014monsterError\022\026\n\020MON",
       "STER_MAX_SIZE\020\201\200\014\022\027\n\021MONSTER_NOT_EXIST\020\202" +
-      "\200\014*~\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026\n" +
-      "\020COINS_NOT_ENOUGH\020\202\200\010\022\025\n\017GOLD_NOT_ENOUGH" +
-      "\020\203\200\010\022\025\n\017EQUIP_NOT_FOUND\020\204\200\010\022\025\n\017ITEM_NOT_" +
-      "ENOUGH\020\205\200\020B\030\n\026com.hawk.game.protocol"
+      "\200\014*\263\001\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026" +
+      "\n\020COINS_NOT_ENOUGH\020\202\200\010\022\025\n\017GOLD_NOT_ENOUG" +
+      "H\020\203\200\010\022\025\n\017EQUIP_NOT_FOUND\020\204\200\010\022\025\n\017ITEM_NOT" +
+      "_ENOUGH\020\205\200\020\022\030\n\022ITEM_BUY_NOT_ALLOW\020\206\200\020\022\031\n" +
+      "\023ITEM_SELL_NOT_ALLOW\020\207\200\020B\030\n\026com.hawk.gam" +
+      "e.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

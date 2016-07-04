@@ -41,39 +41,41 @@ public class BattleController : MonoBehaviour
         get { return instance; }
     }
 
-
+    private BattleObject curBattleScene;
+    //---------------------------------------------------------------------------------------------
     // Use this for initialization
-    public void Init(BattleProcess process)
+    public void Init()
     {
         instance = this;
-        this.process = process;
-        battleGroup = new BattleGroup();
-		BindListener ();
+        BindListener();
+        process = gameObject.AddComponent<BattleProcess>();
+        process.Init();
+        //battleGroup = new BattleGroup();
     }
-
+    //---------------------------------------------------------------------------------------------
 	void OnDestroy()
 	{
+        Destroy(process);
 		UnBindListener ();
 	}
-	
+    //---------------------------------------------------------------------------------------------
 	void BindListener()
 	{
 		GameEventMgr.Instance.AddListener<Vector3>(GameEventList.MirrorClicked ,OnMirrorClilced );
 	}
-	
+    //---------------------------------------------------------------------------------------------
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener<Vector3> (GameEventList.MirrorClicked, OnMirrorClilced);
 	}
-
+    //---------------------------------------------------------------------------------------------
 	void  OnMirrorClilced(Vector3 inputPos)
 	{
 		RaycastBattleObject (inputPos);
 	}
-
+    //---------------------------------------------------------------------------------------------
     void Update()
     {
-        
 		Vector3 inputPos = Input.mousePosition;
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
@@ -86,10 +88,13 @@ public class BattleController : MonoBehaviour
 
 		if (Input.GetMouseButtonUp (0) && !isMouseOnUI)
 		{
-			RaycastBattleObject (inputPos);
+			if(!LastEvenType.Instance.IsDrag())
+			{
+				RaycastBattleObject (inputPos);
+			}
 		}
     }
-
+    //---------------------------------------------------------------------------------------------
 	void RaycastBattleObject(Vector3 inputPos)
 	{
 		RaycastHit hit;
@@ -113,7 +118,7 @@ public class BattleController : MonoBehaviour
             GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
 		}
 	}
-
+    //---------------------------------------------------------------------------------------------
 	string GetClickedEnemyWpName(BattleObject battleObj,Vector3 inputScreenPos)
 	{
 		if (battleObj.camp == UnitCamp.Player) 
@@ -129,7 +134,7 @@ public class BattleController : MonoBehaviour
 		}
 		return null;
 	}
-
+    //---------------------------------------------------------------------------------------------
     void OnHitBattleObject(BattleObject battleGo, string weakpointName)
     {
         if (battleGo.camp == UnitCamp.Enemy)
@@ -143,11 +148,11 @@ public class BattleController : MonoBehaviour
         {
             //换宠
             ShowSwitchPetUIArgs args = new ShowSwitchPetUIArgs();
-            args.targetId = battleGo.id;
+            args.targetId = battleGo.guid;
             GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.ShowSwitchPetUI, args);
         }
     }
-
+    //---------------------------------------------------------------------------------------------
     public void StartBattle(PbStartBattle proto)
     {
         battleType = (BattleType)proto.battleType;
@@ -156,17 +161,77 @@ public class BattleController : MonoBehaviour
         if (!InitVictorMethod())
             return;
 
+        //加载场景
+        LoadBattleScene(instanceData.sceneBattle);
+
         //设置battlegroup 并且创建模型
         battleGroup.SetEnemyList(proto.enemyList);
-        battleGroup.SetPlayerList(proto.playerList);
+        battleGroup.SetPlayerList();
 
         PlayPreStoryAnim();
 
-        ShowUI();
+        var ui = UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
+        ui.GetComponent<UIBattle>().Init();
+        //ShowUI();
 
         StartProcess(0);
     }
+    //---------------------------------------------------------------------------------------------
+    void LoadBattleScene(string sceneName)
+    {
+        battleGroup = new BattleGroup();
+        int index = sceneName.LastIndexOf('/');
+        string assetbundle = sceneName.Substring(0, index);
+        string assetname = sceneName.Substring(index + 1, sceneName.Length - index - 1);
+        curBattleScene = ObjectDataMgr.Instance.CreateSceneObject(BattleConst.battleSceneGuid, assetbundle, assetname);
+    }
+    //---------------------------------------------------------------------------------------------
+    void UnLoadBattleScene()
+    {
+        battleGroup.DestroyEnemys();
+        ObjectDataMgr.Instance.RemoveBattleObject(BattleConst.battleSceneGuid);
+        //Destroy(curBattleScene);
+        List<BattleObject> playerUnitList = GameDataMgr.Instance.PlayerDataAttr.GetMainUnits();
+        for (int i = 0; i < playerUnitList.Count; ++i)
+        {
+            playerUnitList[i].gameObject.SetActive(false);
+        }
 
+        curBattleScene = null;
+    }
+    //---------------------------------------------------------------------------------------------
+    public GameObject GetSlotNode(UnitCamp camp, int slotID, bool isBoss)
+    {
+        if (curBattleScene == null)
+        {
+            Logger.LogError("battle scene is null");
+            return GameMain.Instance.gameObject;
+        }
+
+        string nodeName = "pos";
+        if (isBoss)
+        {
+            nodeName = "bosspos";
+        }
+        else 
+        {
+            if (camp == UnitCamp.Enemy)
+            {
+                slotID = slotID + BattleConst.slotIndexMax + 1;
+            }
+
+            nodeName = nodeName + slotID.ToString();
+        }
+
+        GameObject slotNode = Util.FindChildByName(curBattleScene.gameObject, nodeName);
+        if (slotNode != null)
+        {
+            return slotNode;
+        }
+
+        return GameMain.Instance.gameObject;
+    }
+    //---------------------------------------------------------------------------------------------
     /// <summary>
     /// 反射获取战斗/进程胜利的方法
     /// </summary>
@@ -269,17 +334,17 @@ public class BattleController : MonoBehaviour
 
         return true;
     }
-
+    //---------------------------------------------------------------------------------------------
     void PlayPreStoryAnim()
     {
         Logger.Log("[Battle]Play Story Animation before any process...");
     }
-
-    void ShowUI()
-    {
-        GameEventMgr.Instance.FireEvent(GameEventList.ShowBattleUI);
-    }
-
+    //---------------------------------------------------------------------------------------------
+    //void ShowUI()
+    //{
+    //    GameEventMgr.Instance.FireEvent(GameEventList.ShowBattleUI);
+    //}
+    //---------------------------------------------------------------------------------------------
     void StartProcess(int index)
     {
         var curProcess = GetProcessAtIndex(index);
@@ -288,7 +353,7 @@ public class BattleController : MonoBehaviour
         else
             OnBattleOver(true);
     }
-
+    //---------------------------------------------------------------------------------------------
     ProcessData GetProcessAtIndex(int index)
     {
         if (battleType == BattleType.Normal)
@@ -325,7 +390,7 @@ public class BattleController : MonoBehaviour
         Logger.LogError("BattleType error" + battleType);
         return null;
     }
-
+    //---------------------------------------------------------------------------------------------
     public void OnProcessSwitch(int gotoVal)
     {
         //检测下一个process的条件，避免出现跳进程的情况，如：从>50%，一刀砍到<30%
@@ -346,7 +411,7 @@ public class BattleController : MonoBehaviour
         //进程切换条件达成后
         StartProcess(gotoVal - 1);
     }
-
+    //---------------------------------------------------------------------------------------------
     public void OnBattleOver(bool isSuccess)
     {
         Debug.LogWarning("Battle " + (isSuccess ? "Success" : "Failed"));
@@ -361,22 +426,25 @@ public class BattleController : MonoBehaviour
         battleGroup.AllUnitsExitField();
 
         //回到副本层
+        UnLoadBattleScene();
+        process.ClearEvent();
         GameMain.Instance.ChangeModule<BuildModule>();
         UIMgr.Instance.CloseUI(UIBattle.ViewName);
     }
-
+    //---------------------------------------------------------------------------------------------
     private void PlayBalanceAnim()
     {
         Logger.Log("[Battle]Playing Balance Anim...");
     }
-
+    //---------------------------------------------------------------------------------------------
     private void PlayPostStoryAnim()
     {
         Logger.Log("[Battle]Playing Post Story Anim...");
     }
-
+    //---------------------------------------------------------------------------------------------
     private void ShowBalanceUI()
     {
         Logger.Log("[Battle]Showing Balance UI...");
     }
+    //---------------------------------------------------------------------------------------------
 }

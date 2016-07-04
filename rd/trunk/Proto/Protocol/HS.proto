@@ -42,10 +42,11 @@ enum code
 	// 怪物
 	MONSTER_ADD_S          = 2001;
 	MONSTER_CATCH_C        = 2002;
-	MONSTER_BREAK_C        = 2003;
-	MONSTER_BREAK_S        = 2004;
-	MONSTER_FEED_C         = 2005;
-	MONSTER_FEED_S         = 2006;
+	MONSTER_CATCH_S        = 2003;
+	MONSTER_BREAK_C        = 2004;
+	MONSTER_BREAK_S        = 2005;
+	MONSTER_FEED_C         = 2006;
+	MONSTER_FEED_S         = 2007;
 
 	// 副本
 	INSTANCE_ENTER_C       = 3000;
@@ -55,9 +56,16 @@ enum code
 	
 	// 道具
 	ITEM_USE_C			   = 4001;
-	ITEM_SELL_C		       = 4002;
-	ITEM_BUY_C		       = 4003;
+	ITEM_USE_S			   = 4002;
+	ITEM_SELL_C		       = 4003;
+	ITEM_SELL_S		       = 4004;
+	ITEM_BUY_C		       = 4005;
+	ITEM_BUY_S		       = 4006;
+	ITEM_COMPOSE_C		   = 4007;
+	ITEM_COMPOSE_S		   = 4008;
 	
 	EQUIP_SELL_C		   = 4101;
 	EQUIP_BUY_C		       = 4102;	
+	EQUIP_COMPOSE_C		   = 4103;
+	EQUIP_COMPOSE_S		   = 4104;
 }

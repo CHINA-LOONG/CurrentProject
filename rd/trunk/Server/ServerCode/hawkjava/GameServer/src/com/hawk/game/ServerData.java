@@ -113,7 +113,7 @@ public class ServerData {
 		// 从db拉取玩家name和id的映射表
 		try {
 			HawkLog.logPrintln("load nickname and playerId from db......");
-			List<Object> rowInfos = HawkDBManager.getInstance().executeQuery("select nickname, playerId from role ");
+			List<Object> rowInfos = HawkDBManager.getInstance().executeQuery("select nickname, id from player ");
 			for (Object rowInfo : rowInfos) {
 				Object[] colInfos = (Object[]) rowInfo;
 				addNameAndPlayerId((String) colInfos[0], (Integer) colInfos[1]);

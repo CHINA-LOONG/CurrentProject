@@ -73,7 +73,7 @@ public class FetchOperationInfoHandler implements HttpHandler {
 					
 					jsonArray.add(operationData.toJsonObject(dataType == OperationAnalyser.DATE_TYPE_BASE));
 				}
-				
+			
 				HawkLog.logPrintln(jsonArray.toString());
 				CollectorHttpServer.response(httpExchange, jsonArray.toString());
 			}

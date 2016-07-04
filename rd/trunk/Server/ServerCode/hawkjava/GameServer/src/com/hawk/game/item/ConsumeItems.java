@@ -9,17 +9,23 @@ import org.hawk.os.HawkException;
 import com.google.protobuf.ProtocolMessageEnum;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
+import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
+import com.hawk.game.log.BehaviorLogger.Params;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerData;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Const.changeType;
 import com.hawk.game.protocol.Const.itemType;
+import com.hawk.game.protocol.Const.playerAttr;
 import com.hawk.game.protocol.Consume.ConsumeItem;
 import com.hawk.game.protocol.Consume.HSConsumeInfo;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Player.SynPlayerAttr;
+import com.hawk.game.protocol.Reward.HSRewardInfo;
+import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.GsConst.PlayerItemCheckResult;
 
 /**
@@ -34,7 +40,6 @@ public class ConsumeItems {
 
 	public ConsumeItems() {
 		consumeInfo = HSConsumeInfo.newBuilder();
-
 		SynPlayerAttr.Builder playerBuilder = SynPlayerAttr.newBuilder();
 		consumeInfo.setPlayerAttr(playerBuilder);
 	}
@@ -43,126 +48,150 @@ public class ConsumeItems {
 		return new ConsumeItems();
 	}
 
-	public static ConsumeItems valueOf(ProtocolMessageEnum type, int count) {
-		ConsumeItems consumeItems = new ConsumeItems();
-		consumeItems.addChangeInfo(type, count);
-		return consumeItems;
+	public static ConsumeItems valueOf(ProtocolMessageEnum changeType, int count) {
+		ConsumeItems newConsumeItem = ConsumeItems.valueOf();
+		newConsumeItem.addAttr(changeType.getNumber(), count);
+		return newConsumeItem;
 	}
 	
-	public static ConsumeItems valueOf(ProtocolMessageEnum type, int id, int itemId, int count) {
-		ConsumeItems consumeItems = new ConsumeItems();
-		consumeItems.addChangeInfo(type, id, itemId, count);
-		return consumeItems;
+	/**
+	 * 设置builder
+	 */
+	public void setRewardInfo(HSConsumeInfo.Builder consumeInfo) {
+		this.consumeInfo = consumeInfo;
 	}
-
+	
 	public HSConsumeInfo.Builder getBuilder() {
 		return consumeInfo;
 	}
-
+	
 	/**
-	 * type
-	 * 
-	 * @param type
+	 * 克隆消耗对象
 	 */
-	public void addChangeInfo(ProtocolMessageEnum type, int count) {
-		SynPlayerAttr.Builder builder = consumeInfo.getPlayerAttrBuilder();
-		switch (type.getNumber()) {
-		case Const.changeType.CHANGE_GOLD_VALUE:
-			builder.setGold(count);
-			break;
-
-		case Const.changeType.CHANGE_COIN_VALUE:
-			builder.setCoin(count);
-			break;
-
-		case Const.changeType.CHANGE_PLAYER_EXP_VALUE:
-			builder.setExp(count);
-			break;
-
-		case Const.changeType.CHANGE_PLAYER_LEVEL_VALUE:
-			builder.setLevel(count);
-			break;
-
-		case Const.changeType.CHANGE_VIPLEVEL_VALUE:
-			builder.setVipLevel(count);
-			break;
-			
-		default:
-			HawkLog.errPrintln("unsupport change info: " + type.getNumber());
-			break;
-		}
-	}
-
-	/**
-	 * 添加修改信息
-	 * 
-	 * @param type
-	 * @param id
-	 * @param itemId
-	 * @param count
-	 */
-	public void addChangeInfo(ProtocolMessageEnum type, long id, int itemId, int count) {
-		ConsumeItem.Builder builder = ConsumeItem.newBuilder();
-		builder.setType(type.getNumber());
-		builder.setId(id);
-		builder.setItemId(itemId);
-		builder.setCount(count);
-		consumeInfo.addConsumeItems(builder);
-	}
-
-
-	/**
-	 * 添加道具信息
-	 * 
-	 * @param type
-	 * @param itemId
-	 * @param count
-	 */
-	public void addChangeItem(int itemId, int count) {
-		ConsumeItem.Builder builder = ConsumeItem.newBuilder();
-		builder.setType(Const.itemType.ITEM_VALUE);
-		builder.setItemId(itemId);
-		builder.setCount(count);
-		consumeInfo.addConsumeItems(builder);
+	@Override
+	public ConsumeItems clone() {
+		ConsumeItems newConsume = new ConsumeItems();
+		newConsume.setRewardInfo(consumeInfo.clone());
+		return newConsume;
 	}
 	
 	/**
-	 * 添加装备信息
-	 * 
-	 * @param type
-	 * @param id
-	 * @param itemId
+	 * 判断是否有奖励
 	 */
-	public void addChangeEquip(long id, int itemId) {
-		ConsumeItem.Builder builder = ConsumeItem.newBuilder();
-		builder.setType(Const.itemType.EQUIP_VALUE);
-		builder.setItemId(itemId);
-		builder.setId(id);
-		consumeInfo.addConsumeItems(builder);
+	public boolean hasConsumeItem() {
+		return consumeInfo.getConsumeItemsList().size() > 0;
 	}
 	
 	/**
-	 * 同步改变信息
+	 * 生成存储字符串
 	 * 
-	 * @param player
 	 * @return
 	 */
-	public boolean pushChange(Player player) {
-		HSConsumeInfo consumes = consumeInfo.build();
-		SynPlayerAttr syncAttrInfo = consumes.getPlayerAttr();
-		if(syncAttrInfo.getCoin() > 0) {
-			consumeInfo.getPlayerAttrBuilder().setCoin(player.getCoin());
+	public String toDbString() {
+		return null;
+	}
+
+	@Override
+	public String toString() {
+		return null;
+	}
+	
+	public ConsumeItems addItem(int itemId, int count) {		
+		ConsumeItem.Builder consumeItem = null;
+		for (ConsumeItem.Builder consume :  consumeInfo.getConsumeItemsBuilderList()) {
+			if (consume.getType() == itemType.ITEM_VALUE && consume.getItemId() == itemId) {
+				consumeItem = consume;
+				break;
+			}
 		}
 		
-		if(syncAttrInfo.getGold() > 0) {
-			consumeInfo.getPlayerAttrBuilder().setGold(player.getGold());
+		if (consumeItem == null) {
+			consumeItem = ConsumeItem.newBuilder();
+			consumeItem.setType(itemType.ITEM_VALUE);
+			consumeItem.setItemId(itemId);
+			consumeItem.setCount(count);
+			consumeInfo.addConsumeItems(consumeItem);
 		}
 		
-		if (syncAttrInfo.getExp() > 0) {
-			consumeInfo.getPlayerAttrBuilder().setExp(player.getExp());
+		consumeItem.setCount(consumeItem.getCount() + count);
+		return this;
+	}
+
+	public ConsumeItems addEquip(long id, int equipId) {
+		ConsumeItem.Builder consumeItem = ConsumeItem.newBuilder();
+		consumeItem.setType(Const.itemType.EQUIP_VALUE);
+		consumeItem.setItemId(equipId);
+		consumeItem.setId(id);
+		consumeItem.setCount(1);
+		consumeInfo.addConsumeItems(consumeItem);
+		return this;
+	}
+	
+	public ConsumeItems addAttr(int attrType, int count) {
+		ConsumeItem.Builder consumeItem = null;
+		for (ConsumeItem.Builder consume :  consumeInfo.getConsumeItemsBuilderList()) {
+			if (consume.getType() == itemType.PLAYER_ATTR_VALUE && consume.getItemId() == attrType) {
+				consumeItem = consume;
+				break;
+			}
 		}
 		
-		return player.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_CONSUME_S, consumeInfo));
+		if (consumeItem == null) {
+			consumeItem = ConsumeItem.newBuilder();
+			consumeItem.setType(itemType.PLAYER_ATTR_VALUE);
+			consumeItem.setItemId(attrType);
+			consumeItem.setCount(count);
+			consumeInfo.addConsumeItems(consumeItem);
+		}
+		
+		consumeItem.setCount(consumeItem.getCount() + count);
+		return this;
+	}
+	
+	/**
+	 * 根据配置添加消耗
+	 * 
+	 * @return
+	 */
+	public ConsumeItems addItemInfo (ItemInfo itemInfo) {
+			
+		if (itemInfo.getType() == itemType.PLAYER_ATTR_VALUE) {
+			addAttr(itemInfo.getItemId(), itemInfo.getCount());
+		}
+		else if (itemInfo.getType() == itemType.ITEM_VALUE) {
+			addItem(itemInfo.getItemId(), itemInfo.getCount());
+		}
+		//配置的消耗类型不包括装备
+		else if (itemInfo.getType() == itemType.EQUIP_VALUE) {
+			throw new RuntimeException("unsupport config consume type");
+		}
+		
+		return this;
+	}
+	
+	public ConsumeItems addItemInfos(List<ItemInfo> itemInfos) {
+		if (itemInfos != null) {
+			for (ItemInfo itemInfo : itemInfos) {
+				addItemInfo(itemInfo);
+			}
+		}
+		
+		return this;
+	}
+	
+	public ConsumeItems addGold(int gold) {
+		addAttr(changeType.CHANGE_GOLD_VALUE, gold);
+		return this;
+	}
+
+	public ConsumeItems addCoin(int coin) {
+		addAttr(changeType.CHANGE_COIN_VALUE, coin);
+		return this;
+	}
+
+	public ConsumeItems addExp(int exp) {
+		addAttr(changeType.CHANGE_PLAYER_EXP_VALUE, exp);
+		return this;
 	}
 
 	/**
@@ -172,56 +201,6 @@ public class ConsumeItems {
 	 */
 	public boolean checkConsume(Player player) {
 		return checkConsumeInternal(player) == 0;
-	}
-
-	/**
-	 * 数据消耗
-	 */
-	public boolean consumeTakeAffectAndPush(Player player, Action action) {
-		try {
-			consumeTakeAffect(player, action);
-			// 推送消耗信息
-			pushChange(player);
-		}catch (Exception e) {
-			HawkException.catchException(e);
-			return false;
-		}
-		
-		return true;
-	}
-	/**
-	 * 数据消耗
-	 */
-	public boolean consumeTakeAffect(Player player, Action action) {
-		HSConsumeInfo consumes = consumeInfo.build();
-		SynPlayerAttr syncAttrInfo = consumes.getPlayerAttr();
-		try{
-			if(syncAttrInfo.getCoin() > 0) {
-				player.consumeCoin(syncAttrInfo.getCoin(), action);
-			}
-			
-			if(syncAttrInfo.getGold() > 0) {
-				player.consumeGold(syncAttrInfo.getGold(), action);
-			}
-			
-			// TODO 经验
-			
-			for(ConsumeItem consumeItem : consumes.getConsumeItemsList()) {
-				if(consumeItem.getType() == changeType.CHANGE_EQUIP_VALUE) {
-					//检测装备 
-					long equipId = consumeItem.getId();
-					player.consumeEquip(equipId, action);
-				} else if(consumeItem.getType() == changeType.CHANGE_ITEM_VALUE) {
-					//检测道具
-					int itemId = consumeItem.getItemId();
-					player.consumeTools(itemId, consumeItem.getCount(), action);
-				}
-			}
-		}catch (Exception e) {
-			HawkException.catchException(e);
-			return false;
-		}
-		return true;
 	}
 	
 	/**
@@ -263,23 +242,20 @@ public class ConsumeItems {
 	 * @return
 	 */
 	private int checkConsumeInternal(Player player) {
-		HSConsumeInfo consumes = consumeInfo.build();
-		SynPlayerAttr syncAttrInfo = consumes.getPlayerAttr();
-		
-		if(syncAttrInfo.getCoin() > 0) {
-			if(player.getCoin() < syncAttrInfo.getCoin()) {
-				return PlayerItemCheckResult.COINS_NOT_ENOUGH;
+		for(ConsumeItem consumeItem : consumeInfo.getConsumeItemsList()) {
+			if(consumeItem.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
+				if (consumeItem.getItemId() == Const.changeType.CHANGE_COIN_VALUE) {
+					if(player.getCoin() < consumeItem.getCount()) {
+						return PlayerItemCheckResult.COINS_NOT_ENOUGH;
+					} 
+				}
+				else if (consumeItem.getItemId() == Const.changeType.CHANGE_GOLD_VALUE) {
+					if (player.getGold() < consumeItem.getCount()) {
+						return PlayerItemCheckResult.GOLD_NOT_ENOUGH;
+					}
+				}
 			}
-		}
-		
-		if(syncAttrInfo.getGold() > 0) {
-			if(player.getGold() < syncAttrInfo.getGold()) {
-				return PlayerItemCheckResult.GOLD_NOT_ENOUGH;
-			}
-		}
-		
-		for(ConsumeItem consumeItem : consumes.getConsumeItemsList()) {
-			if(consumeItem.getType() == Const.itemType.EQUIP_VALUE) {
+			else if(consumeItem.getType() == Const.itemType.EQUIP_VALUE) {
 				//检测装备 
 				long equipId = consumeItem.getId();
 				EquipEntity equipEntity = player.getPlayerData().getEquipById(equipId);
@@ -289,7 +265,7 @@ public class ConsumeItems {
 			} else if(consumeItem.getType() == Const.itemType.ITEM_VALUE) {
 				//检测道具
 				int itemId = (int) consumeItem.getItemId();
-				ItemEntity itemEntity = player.getPlayerData().getItemById(itemId);
+				ItemEntity itemEntity = player.getPlayerData().getItemByItemId(itemId);
 				if(itemEntity == null || itemEntity.getCount() <= 0 || itemEntity.getCount() < consumeItem.getCount()) {
 					return PlayerItemCheckResult.TOOLS_NOT_ENOUGH;
 				}
@@ -298,48 +274,85 @@ public class ConsumeItems {
 		
 		return 0;
 	}
+	
+	/**
+	 * 数据消耗
+	 */
+	public boolean consumeTakeAffect(Player player, Action action) {
+		try {	
+			for (int i = 0; i < consumeInfo.getConsumeItemsBuilderList().size(); ) {
+				ConsumeItem.Builder item = consumeInfo.getConsumeItemsBuilder(i);
+				SynPlayerAttr.Builder playerBuilder = consumeInfo.getPlayerAttrBuilder();
+				if (item.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
+					// 玩家属性
+					switch (item.getItemId()) {
+					case playerAttr.COIN_VALUE:
+						player.consumeCoin(item.getCount(), action);
+						playerBuilder.setCoin(player.getCoin());
+						break;
 
-	public boolean addConsumeInfo(PlayerData playerData, List<ItemInfo> needItems) {
-		SynPlayerAttr.Builder builder = consumeInfo.getPlayerAttrBuilder();
-		for(ItemInfo itemInfo : needItems) {
-			if(itemInfo.getType() == itemType.PLAYER_ATTR_VALUE) {
-				switch (itemInfo.getItemId()) {
-					case Const.playerAttr.GOLD_VALUE:
-						builder.setGold(itemInfo.getCount());
+					case playerAttr.GOLD_VALUE:
+						player.consumeGold(item.getCount(), action);
+						playerBuilder.setGold(player.getGold());
 						break;
-					case Const.playerAttr.COIN_VALUE:	
-						builder.setCoin(itemInfo.getCount());
-						break;
-					case Const.playerAttr.EXP_VALUE:
-						builder.setExp(itemInfo.getCount());
-						break;
-					case Const.playerAttr.LEVEL_VALUE:
-						builder.setLevel(itemInfo.getCount());
-						break;
-					case Const.playerAttr.VIPLEVEL_VALUE:
-						builder.setVipLevel(itemInfo.getCount());
-						break;
+					
 					default:
 						break;
+					}
 				}
-			}
-			else if(itemInfo.getType()  == itemType.ITEM_VALUE){
-				ItemEntity itemEntity = playerData.getItemByItemId(itemInfo.getItemId());
-				if(itemEntity == null || itemEntity.getCount() < itemInfo.getCount()) {
-					//构造失败 道具不足
-					return false;
+				else if(item.getType() == Const.itemType.ITEM_VALUE){
+					int itemId = item.getItemId();
+					ItemEntity itemEntity = player.consumeItem(itemId, item.getCount(), action);
+					if (itemEntity != null) {					
+						try {
+							BehaviorLogger.log4Platform(player, action, Params.valueOf("id", item.getId()), 
+								Params.valueOf("itemId", item.getItemId()), 
+								Params.valueOf("itemCount", item.getCount()));
+						} catch (Exception e) {
+							HawkException.catchException(e);
+						}
+					}
+					else {
+						consumeInfo.removeConsumeItems(i);
+						continue;
+					}
 				}
-				addChangeInfo(changeType.CHANGE_ITEM, itemEntity.getId(), itemEntity.getItemId(), itemInfo.getCount());
-			}
-			else if(itemInfo.getType()  == itemType.EQUIP_VALUE){
-				ItemEntity itemEntity = playerData.getItemByItemId(itemInfo.getItemId());
-				if(itemEntity == null) {
-					//构造失败 装备不存在
-					return false;
+				else if(item.getType() == Const.itemType.EQUIP_VALUE){
+					boolean result = player.consumeEquip(item.getId(), action);
+					if (result == true) {				
+						try {
+							BehaviorLogger.log4Platform(player, action, Params.valueOf("id", item.getId()), 
+								Params.valueOf("itemId", item.getItemId()));
+						} catch (Exception e) {
+							HawkException.catchException(e);
+						}
+					}
+					else {
+						consumeInfo.removeConsumeItems(i);
+						continue;
+					}
 				}
-				addChangeInfo(changeType.CHANGE_ITEM, itemEntity.getId(), itemEntity.getItemId(), itemInfo.getCount());
+				else {
+					throw new RuntimeException("unsupport item type");
+				}
+				
+				++i;
 			}
 		}
+		catch (Exception e) {
+			HawkException.catchException(e);
+			return false;
+		}
 		return true;
+	}
+
+	/**
+	 * 数据消耗
+	 */
+	public void consumeTakeAffectAndPush(Player player, Action action) {
+		if (consumeTakeAffect(player, action) == true) {
+			// 推送消耗信息
+			player.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_CONSUME_S, consumeInfo));
+		}
 	}
 }

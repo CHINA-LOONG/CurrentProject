@@ -43,10 +43,10 @@ public class EffectSearch : Effect
             camp = (camp == (int)UnitCamp.Player) ? (int)(UnitCamp.Enemy) : camp;
         }
 
-        List<GameUnit> unitList = spellService.GetUnitList(camp);
-        foreach (GameUnit unit in unitList)
+        List<BattleObject> boList = spellService.GetUnitList(camp);
+        foreach (BattleObject bo in boList)
         {
-            if (unit == null)
+            if (bo == null)
                 continue;
 
             Effect curEffect = spellService.GetEffect(searchProt.effectID);
@@ -54,7 +54,7 @@ public class EffectSearch : Effect
             {
                 curEffect.SetOwnedBuff(ownedBuff);
                 curEffect.SetOwnedSpell(ownedSpell);
-                curEffect.targetID = unit.pbUnit.guid;
+                curEffect.targetID = bo.guid;
                 curEffect.Apply(applyTime);
             }
         }

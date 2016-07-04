@@ -83,6 +83,7 @@ public class GameUnit
     public float spellSpeedRatio;
     public float spellDefenseRatio;
     public float spellEnduranceRatio;
+    public float spellDefenseDamageRatio;
 
     //二级属性
     public int curLife;
@@ -113,15 +114,6 @@ public class GameUnit
 	public	int attackCount = 0;
 	public 	List<int> lazyList = new List<int>();
 	public	List<int> dazhaoList = new List<int>();
-
-    //////////////////////////////////////////////////////////////////////////
-    //显示部分    
-    public bool isBorn = true;//test
-    GameObject unitObject;
-    public GameObject gameObject
-    {
-        get { return unitObject; }
-    }
 
     public static GameUnit FromPb(PbUnit unit, bool isPlayer)
     {
@@ -301,15 +293,6 @@ public class GameUnit
         return null;
     }
 
-	/// <summary>
-	/// 战斗对象AI
-	/// </summary>
-	/// <returns>The ai attack resul.</returns>
-	public	BattleUnitAi.AiAttackResult  GetAiAttackResul()
-	{
-		return BattleUnitAi.Instance.GetAiAttackResult (this);
-	}
-
     /// <summary>
     /// 累计速度，计算order值
     /// </summary>
@@ -330,42 +313,34 @@ public class GameUnit
         //Logger.LogFormat("Unit {0}: speedCount: {1}, actionOrder: {2}", name, speedCount, actionOrder);
     }
 
-    public void OnEnterField()
+    public void RemoveAllBuff()
     {
-        //
-        isBorn = true;
-
-        var go = ResourceMgr.Instance.LoadAsset("monster", assetID);
-        unitObject = GameObject.Instantiate(go);
-        var com = unitObject.AddComponent<BattleObject>();
-        com.camp = pbUnit.camp;
-        com.id = pbUnit.guid;
-        com.unit = this;
-        com.aniControl = unitObject.AddComponent<AnimControl>();
-
-        //get slot position
-		unitObject.transform.SetParent (GameMain.Instance.transform);
-        unitObject.transform.position = BattleScene.Instance.GetSlotPosition(pbUnit.camp, pbUnit.slot);
-		unitObject.transform.localEulerAngles = BattleScene.Instance.GetSlotLocalEuler(pbUnit.camp, pbUnit.slot);
-		unitObject.transform.localScale = BattleScene.Instance.GetSlotLocalScale (pbUnit.camp, pbUnit.slot);
-
-		//
-		if (com.camp == UnitCamp.Enemy)
-		{
-			GameEventMgr.Instance.FireEvent<GameUnit> (GameEventList.LoadBattleObjectFinished, this);
-		}
-
-        ReCalcSpeed();
-
-        Logger.LogFormat("Unit {0} guid:{1} has entered field", name, pbUnit.guid);
+        foreach (Buff buff in buffList)
+        {
+            buff.Finish();
+        }
     }
 
-    public void OnExitField()
+    public void ResetAllState()
     {
-        GameObject.Destroy(unitObject);
-        unitObject = null;
+        invincible = 0;
+        stun = 0;
+        energy = 0;
+        spellStrengthRatio = 0.0f;
+        spellIntelligenceRatio = 0.0f;
+        spellSpeedRatio = 0.0f;
+        spellDefenseRatio = 0.0f;
+        spellEnduranceRatio = 0.0f;
+        spellDefenseDamageRatio = 0.0f;
 
-        Logger.LogFormat("Unit {0} guid:{1} has exited field", name, pbUnit.guid);
+        //二级属性
+        curLife = maxLife;
 
+        speedCount = 0;
+        actionOrder = 0;
+        attackWpName = null;
+
+        state = UnitState.None;
+	    attackCount = 0;
     }
 }

@@ -79,6 +79,9 @@ namespace PB
     public enum itemType
     {
             
+      [global::ProtoBuf.ProtoEnum(Name=@"NONE_ITEM", Value=1)]
+      NONE_ITEM = 1,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_ATTR", Value=1)]
       PLAYER_ATTR = 1,
             
@@ -89,11 +92,17 @@ namespace PB
       ITEM = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP", Value=4)]
-      EQUIP = 4
+      EQUIP = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SKILL", Value=5)]
+      SKILL = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GROUP", Value=6)]
+      GROUP = 6
     }
   
-    [global::ProtoBuf.ProtoContract(Name=@"buyMoneyType")]
-    public enum buyMoneyType
+    [global::ProtoBuf.ProtoContract(Name=@"moneyType")]
+    public enum moneyType
     {
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONEY_GOLD", Value=1)]
@@ -155,13 +164,7 @@ namespace PB
       CHANGE_FAV = 8,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_VIPLEVEL", Value=9)]
-      CHANGE_VIPLEVEL = 9,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_TOOLS", Value=10)]
-      CHANGE_TOOLS = 10,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_EQUIP", Value=11)]
-      CHANGE_EQUIP = 11
+      CHANGE_VIPLEVEL = 9
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"attr")]
@@ -243,23 +246,23 @@ namespace PB
     public enum toolType
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"COMMON", Value=1)]
-      COMMON = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"COMMONTOOL", Value=1)]
+      COMMONTOOL = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"FRAGMENT", Value=2)]
-      FRAGMENT = 2,
+      [global::ProtoBuf.ProtoEnum(Name=@"FRAGMENTTOOL", Value=2)]
+      FRAGMENTTOOL = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"GEM", Value=3)]
-      GEM = 3,
+      [global::ProtoBuf.ProtoEnum(Name=@"GEMTOOL", Value=3)]
+      GEMTOOL = 3,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"BOX", Value=4)]
-      BOX = 4,
+      [global::ProtoBuf.ProtoEnum(Name=@"BOXTOOL", Value=4)]
+      BOXTOOL = 4,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"USE", Value=5)]
-      USE = 5,
+      [global::ProtoBuf.ProtoEnum(Name=@"USETOOL", Value=5)]
+      USETOOL = 5,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EXCHANGE", Value=6)]
-      EXCHANGE = 6
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIPTOOL", Value=7)]
+      EQUIPTOOL = 7
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"equipPart")]

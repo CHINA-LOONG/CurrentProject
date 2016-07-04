@@ -45,23 +45,23 @@ public class AwardItems {
 	 */
 	public AwardItems() {
 		rewardInfo = HSRewardInfo.newBuilder();
-
 		SynPlayerAttr.Builder playerBuilder = SynPlayerAttr.newBuilder();
 		rewardInfo.setPlayerAttr(playerBuilder);
 	}
 
-	/**
-	 * 判断是否有奖励
-	 */
-	public void setRewardInfo(HSRewardInfo.Builder rewardInfo) {
-		this.rewardInfo = rewardInfo;
+	public static AwardItems valueOf() {
+		return new AwardItems();
 	}
 	
 	/**
 	 * 设置builder
 	 */
-	public boolean hasAwardItem() {
-		return rewardInfo.getRewardItemsList().size() > 0;
+	public void setRewardInfo(HSRewardInfo.Builder rewardInfo) {
+		this.rewardInfo = rewardInfo;
+	}
+	
+	public HSRewardInfo.Builder getBuilder() {
+		return rewardInfo;
 	}
 	
 	/**
@@ -72,6 +72,13 @@ public class AwardItems {
 		AwardItems newAward = new AwardItems();
 		newAward.setRewardInfo(rewardInfo.clone());
 		return newAward;
+	}
+	
+	/**
+	 * 判断是否有奖励
+	 */
+	public boolean hasAwardItem() {
+		return rewardInfo.getRewardItemsList().size() > 0;
 	}
 
 	/**
@@ -89,11 +96,30 @@ public class AwardItems {
 	}
 
 	public AwardItems addItem(int itemId, int count) {
-		RewardItem.Builder rewardItem = RewardItem.newBuilder();
-		rewardItem.setType(Const.itemType.ITEM_VALUE);
-		rewardItem.setItemId(itemId);
-		rewardItem.setCount(count);
-		rewardInfo.addRewardItems(rewardItem);
+		RewardItem.Builder rewardItem = null;
+		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
+			if (reward.getType() == itemType.ITEM_VALUE && reward.getItemId() == itemId) {
+				rewardItem = reward;
+				break;
+			}
+		}
+		
+		if (rewardItem == null) {
+			rewardItem = RewardItem.newBuilder();
+			rewardItem.setType(itemType.ITEM_VALUE);
+			rewardItem.setItemId(itemId);
+			rewardItem.setCount(count);
+			rewardInfo.addRewardItems(rewardItem);
+		}
+		
+		rewardItem.setCount(rewardItem.getCount() + count);
+		return this;
+	}
+
+	public AwardItems addEquip(int equipId, int count, int stage, int level) {
+		for (int i = 0; i < count; i++) {
+			addEquip(equipId, stage, level);
+		}
 		return this;
 	}
 
@@ -106,7 +132,7 @@ public class AwardItems {
 		rewardInfo.addRewardItems(rewardItem);
 		return this;
 	}
-
+	
 	public AwardItems addAttr(int attrType, int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
@@ -128,19 +154,24 @@ public class AwardItems {
 		return this;
 	}
 	
-	public AwardItems addItem(ItemInfo itemInfo) {
-		RewardItem.Builder rewardItem = RewardItem.newBuilder();
-		rewardItem.setType(itemInfo.getType());
-		rewardItem.setItemId(itemInfo.getItemId());
-		rewardItem.setStage(itemInfo.getStage());
-		rewardItem.setLevel(itemInfo.getLevel());
-		rewardInfo.addRewardItems(rewardItem);
+	public AwardItems addItemInfo(ItemInfo itemInfo) {
+		if (itemInfo.getType() == itemType.ITEM_VALUE) {
+			addItem(itemInfo.getItemId(), itemInfo.getCount());
+		}
+		else if (itemInfo.getType() == itemType.EQUIP_VALUE) {
+			if (itemInfo.getCount() > 0) {
+				addEquip(itemInfo.getItemId(), itemInfo.getCount(), itemInfo.getStage(), itemInfo.getLevel());
+			}
+			else {
+				addEquip(itemInfo.getItemId(), itemInfo.getStage(), itemInfo.getLevel());
+			}
+		}			
 		return this;
 	}
 
 	public AwardItems addItemInfos(List<ItemInfo> itemInfos) {
 		for (ItemInfo itemInfo : itemInfos) {
-			addItem(itemInfo);
+			addItemInfo(itemInfo);
 		}
 		return this;
 	}
@@ -185,12 +216,6 @@ public class AwardItems {
 		return null;
 	}
 
-	public AwardItems appendAward(AwardItems awards) {
-		AwardItems newAward = new AwardItems();
-		newAward.setRewardInfo(rewardInfo.clone());
-		return this;
-	}
-
 	/**
 	 * 功能发放奖励
 	 * 
@@ -199,29 +224,7 @@ public class AwardItems {
 	 * @param async
 	 * @return
 	 */
-	public void  rewardTakeAffect(Player player, Action action) {
-		deliverItemAwards(player, action);
-	}
-
-	/**
-	 * 发放奖励并且推送
-	 * 
-	 * @param player
-	 * @param action
-	 */
-	public void rewardTakeAffectAndPush(Player player, Action action) {
-		rewardTakeAffect(player, action);
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_REWARD_S_VALUE, rewardInfo));
-	}
-
-	/**
-	 * 具体发放奖励
-	 * 
-	 * @param player
-	 * @param action
-	 * @param async
-	 */
-	public void deliverItemAwards(Player player, Action action) {	
+	public boolean  rewardTakeAffect(Player player, Action action) {
 		try {			
 			for (int i = 0; i < rewardInfo.getRewardItemsBuilderList().size(); ) {
 				RewardItem.Builder item = rewardInfo.getRewardItemsBuilder(i);
@@ -260,7 +263,7 @@ public class AwardItems {
 					}
 				}
 				else if(item.getType() == Const.itemType.ITEM_VALUE){
-					ItemEntity itemEntity = player.increaseTools(item.getItemId(), item.getCount(), action);
+					ItemEntity itemEntity = player.increaseItem(item.getItemId(), item.getCount(), action);
 					if (itemEntity != null) {					
 						try {
 							BehaviorLogger.log4Platform(player, action, Params.valueOf("id", itemEntity.getId()), 
@@ -275,14 +278,13 @@ public class AwardItems {
 						continue;
 					}
 				}
-				else if(item.getType() == Const.itemType.EQUIP_VALUE){
+				else if(item.getType() == Const.itemType.EQUIP_VALUE){				
 					EquipEntity equipEntity = player.increaseEquip(item.getItemId(), item.getStage(), item.getLevel(), action);
 					EquipUtil.generateAttr(equipEntity, item);
 					if (equipEntity != null) {				
 						try {
 							BehaviorLogger.log4Platform(player, action, Params.valueOf("id", equipEntity.getId()), 
-								Params.valueOf("itemId", equipEntity.getItemId()), 
-								Params.valueOf("itemCount", item.getCount()));
+								Params.valueOf("itemId", equipEntity.getItemId()));
 						} catch (Exception e) {
 							HawkException.catchException(e);
 						}
@@ -292,16 +294,28 @@ public class AwardItems {
 						continue;
 					}
 				}
-				else {
-					throw new RuntimeException("unsupport item type");
-				}
-				
+
 				++i;
 			}
 		}
 		catch (Exception e) {
 			HawkException.catchException(e);
+			return false;
 		}
 		
+		return true;
 	}
+
+	/**
+	 * 发放奖励并且推送
+	 * 
+	 * @param player
+	 * @param action
+	 */
+	public void rewardTakeAffectAndPush(Player player, Action action) {
+		if (rewardTakeAffect(player, action) == true) {
+			player.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_REWARD_S_VALUE, rewardInfo));
+		}
+	}
+
 }

@@ -32,4 +32,7 @@ public class BattleConst
 
     //无条件关闭换宠UI
     public const int closeSwitchPetUI = -1;
+
+    //战斗场景id
+    public const int battleSceneGuid = -1;
 }

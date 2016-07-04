@@ -9,7 +9,7 @@ public class UIBuffView : UIBase
     public BuffIcon[] dotBuffList;
     public BuffIcon otherBuff;
     
-    private GameUnit targetUnit;
+    private BattleObject targetUnit;
     private int curOtherBuffIndex;
     private float otherBuffInterval;
     private List<string> otherBuffList;
@@ -27,7 +27,7 @@ public class UIBuffView : UIBase
         //otherBuff = new BuffIcon();
 	}
 
-    public void SetTargetUnit(GameUnit targetUnit)
+    public void SetTargetUnit(BattleObject targetUnit)
     {
         if (this.targetUnit != targetUnit)
         {
@@ -50,7 +50,7 @@ public class UIBuffView : UIBase
     private void OnBuffChanged(EventArgs args)
     {
         SpellBuffArgs buffArgs = args as SpellBuffArgs;
-        if (targetUnit != null && buffArgs.targetID != targetUnit.pbUnit.guid)
+        if (targetUnit != null && buffArgs.targetID != targetUnit.guid)
         {
             return;
         }
@@ -89,13 +89,13 @@ public class UIBuffView : UIBase
             if (targetUnit == null)
                 return;
 
-            int buffCount = targetUnit.buffList.Count;
+            int buffCount = targetUnit.unit.buffList.Count;
             otherBuffList.Clear();
             BuffPrototype buffPb = null;
             for (int i = 0; i < buffCount; ++i)
             {
-                buffPb = targetUnit.buffList[i].buffProto;
-                if (buffPb.category != (int)(BuffType.Buff_Type_Dot))
+                buffPb = targetUnit.unit.buffList[i].buffProto;
+                if (buffPb.category != (int)(BuffType.Buff_Type_Dot) && buffPb.category != (int)(BuffType.Buff_Type_Defend))
                 {
                     otherBuffList.Add(buffPb.icon);
                 }
@@ -134,12 +134,12 @@ public class UIBuffView : UIBase
         if (targetUnit == null)
             return;
 
-        int buffCount = targetUnit.buffList.Count;
+        int buffCount = targetUnit.unit.buffList.Count;
         int dotIndex = 0;
         BuffPrototype buffPb = null;
         for (int i = 0; i < buffCount; ++i)
         {
-            buffPb = targetUnit.buffList[i].buffProto;
+            buffPb = targetUnit.unit.buffList[i].buffProto;
             if (buffPb.category == (int)(BuffType.Buff_Type_Dot))
             {
                 dotBuffList[dotIndex].ShowBuff(buffPb.icon);

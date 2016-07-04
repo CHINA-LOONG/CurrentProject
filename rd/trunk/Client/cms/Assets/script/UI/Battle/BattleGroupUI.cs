@@ -8,7 +8,7 @@ public class BattleGroupUI : MonoBehaviour
     public BattleUnitUI[] unitUI;
 
     // Use this for initialization
-    public void Init(List<GameUnit> units)
+    public void Init(List<BattleObject> units)
     {
         for (int i = 0; i < unitUI.Length; i++)
         {
@@ -58,7 +58,7 @@ public class BattleGroupUI : MonoBehaviour
     {
         for (int i = 0; i < unitUI.Length; i++)
         {
-            if (unitUI[i].Unit.pbUnit.guid == id)
+            if (unitUI[i].Unit.guid == id)
                 return unitUI[i];
         }
 

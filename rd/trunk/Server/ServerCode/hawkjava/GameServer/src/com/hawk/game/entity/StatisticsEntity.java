@@ -1,6 +1,6 @@
 package com.hawk.game.entity;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -37,13 +37,13 @@ public class StatisticsEntity  extends HawkDBEntity {
 	private byte signInCount = 0;
 
 	@Column(name = "signInRt")
-	private Date signInRt = new Date();
+	private Calendar signInRt = null;
 
 	@Column(name = "instanceState", nullable = false)
 	private String instanceStateJson = "";
 
 	@Column(name = "instanceRt")
-	private Date instanceRt = null;
+	private Calendar instanceRt = null;
 	
 	@Column(name = "monsterCollect", nullable = false)
 	private String monsterCollectJson = "";
@@ -55,17 +55,17 @@ public class StatisticsEntity  extends HawkDBEntity {
 	private long totalOnlineTime = 0;
 
 	@Column(name = "createTime", nullable = false)
-	protected Date createTime = null;
+	protected Calendar createTime = null;
 
 	@Column(name = "updateTime")
-	protected Date updateTime = null;
+	protected Calendar updateTime = null;
 
 	@Column(name = "invalid", nullable = false)
 	protected boolean invalid = false;
 
 	/** 每一项刷新时间 */
 	@Transient
-	protected Map<Integer, Date> refreshTimeMap = new HashMap<Integer, Date>();
+	protected Map<Integer, Calendar> refreshTimeMap = new HashMap<Integer, Calendar>();
 
 	@Transient
 	protected Map<String, Integer> instanceStateMap = new HashMap<String, Integer> ();
@@ -74,12 +74,16 @@ public class StatisticsEntity  extends HawkDBEntity {
 	protected Set<String> monsterCollectSet = new HashSet<String> ();
 	
 	public StatisticsEntity() {
-		this.createTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
+		this.signInRt = HawkTime.getCalendar();
+		this.instanceRt = HawkTime.getCalendar();
 	}
 
 	public StatisticsEntity(int playerId) {
 		this.playerId = playerId;
-		this.createTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
+		this.signInRt = HawkTime.getCalendar();
+		this.instanceRt = HawkTime.getCalendar();
 	}
 
 	public int getPlayerId() {
@@ -90,19 +94,19 @@ public class StatisticsEntity  extends HawkDBEntity {
 		this.playerId = playerId;
 	}
 
-	public Date getLastRefreshTime(int type) {
+	public Calendar getLastRefreshTime(int type) {
 		return refreshTimeMap.get(type);
 	}
 
-	public void setRefreshTime(int type, Date time) {
+	public void setRefreshTime(int type, Calendar time) {
 		this.refreshTimeMap.put(type, time);
 		
 		switch (type) {
 		case GsConst.RefreshType.SIGN_IN_PERS_REFRESH:
-			this.signInRt = time;
+			this.signInRt.setTimeInMillis(time.getTimeInMillis());
 			break;
 		case GsConst.RefreshType.INSTANCE_PERS_REFRESH:
-			this.instanceRt = time;
+			this.instanceRt.setTimeInMillis(time.getTimeInMillis());
 			break;
 		default:
 			break;
@@ -177,22 +181,22 @@ public class StatisticsEntity  extends HawkDBEntity {
 	}
 	
 	@Override
-	public Date getCreateTime() {
+	public Calendar getCreateTime() {
 		return createTime;
 	}
 
 	@Override
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(Calendar createTime) {
 		this.createTime = createTime;
 	}
 
 	@Override
-	public Date getUpdateTime() {
+	public Calendar getUpdateTime() {
 		return updateTime;
 	}
 
 	@Override
-	public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(Calendar updateTime) {
 		this.updateTime = updateTime;
 	}
 

@@ -1,6 +1,6 @@
 package com.hawk.game.entity;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,17 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
 import org.hawk.db.HawkDBEntity;
-import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.google.gson.reflect.TypeToken;
-import com.hawk.game.util.GsConst;
 
 /**
  * 怪物基础数据
@@ -57,17 +52,20 @@ public class MonsterEntity extends HawkDBEntity {
 	@Column(name = "lazy", nullable = false)
 	protected byte lazy = 0;
 	
-	@Column(name = "ai", nullable = false)
-	protected byte ai = 0;
+	@Column(name = "lazyExp", nullable = false)
+	protected int lazyExp = 0;
+	
+	@Column(name = "disposition", nullable = false)
+	protected byte disposition = 0;
 
 	@Column(name = "skillList", nullable = false)
 	private String skillJson = "";
 
 	@Column(name = "createTime", nullable = false)
-	protected Date createTime = null;
+	protected Calendar createTime = null;
 
 	@Column(name = "updateTime")
-	protected Date updateTime = null;
+	protected Calendar updateTime = null;
 
 	@Column(name = "invalid", nullable = false)
 	protected boolean invalid = false;
@@ -76,18 +74,19 @@ public class MonsterEntity extends HawkDBEntity {
 	protected Map<Integer, Integer> skillMap = new HashMap<Integer, Integer>();
 
 	public MonsterEntity() {
-		this.createTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
 	}
 
-	public MonsterEntity(String cfgId, int playerId, byte stage, short level, int exp, byte lazy, byte ai) {
+	public MonsterEntity(String cfgId, int playerId, byte stage, short level, int exp, byte lazy, int lazyExp, byte disposition) {
 		this.cfgId = cfgId;
 		this.playerId = playerId;
 		this.stage = stage;
 		this.level = level;
 		this.exp = exp;
 		this.lazy = lazy;
-		this.ai = ai;
-		this.createTime = HawkTime.getCalendar().getTime();
+		this.lazyExp = lazyExp;
+		this.disposition = disposition;
+		this.createTime = HawkTime.getCalendar();
 	}
 
 	public int getId() {
@@ -146,12 +145,20 @@ public class MonsterEntity extends HawkDBEntity {
 		this.lazy = lazy;
 	}
 	
-	public byte getAi() {
-		return ai;
+	public int getLazyExp() {
+		return lazyExp;
 	}
 
-	public void setAi(byte ai) {
-		this.ai = ai;
+	public void setLazyExp(byte lazyExp) {
+		this.lazyExp = lazyExp;
+	}
+	
+	public byte getDisposition() {
+		return disposition;
+	}
+
+	public void setDisposition(byte disposition) {
+		this.disposition = disposition;
 	}
 
 	public Map<Integer, Integer> getSkillMap() {
@@ -181,22 +188,22 @@ public class MonsterEntity extends HawkDBEntity {
 	}
 	
 	@Override
-	public Date getCreateTime() {
+	public Calendar getCreateTime() {
 		return createTime;
 	}
 
 	@Override
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(Calendar createTime) {
 		this.createTime = createTime;
 	}
 
 	@Override
-	public Date getUpdateTime() {
+	public Calendar getUpdateTime() {
 		return updateTime;
 	}
 
 	@Override
-	public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(Calendar updateTime) {
 		this.updateTime = updateTime;
 	}
 

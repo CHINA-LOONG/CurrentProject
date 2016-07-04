@@ -77,6 +77,40 @@ namespace PB
       get { return _itemId; }
       set { _itemId = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSItemUseRet")]
+  public partial class HSItemUseRet : global::ProtoBuf.IExtensible
+  {
+    public HSItemUseRet() {}
+    
+    private int _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int itemId
+    {
+      get { return _itemId; }
+      set { _itemId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSItemBuy")]
+  public partial class HSItemBuy : global::ProtoBuf.IExtensible
+  {
+    public HSItemBuy() {}
+    
+    private int _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int itemId
+    {
+      get { return _itemId; }
+      set { _itemId = value; }
+    }
     private int _itemCount;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"itemCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int itemCount
@@ -89,10 +123,10 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSItemBuy")]
-  public partial class HSItemBuy : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSItemBuyRet")]
+  public partial class HSItemBuyRet : global::ProtoBuf.IExtensible
   {
-    public HSItemBuy() {}
+    public HSItemBuyRet() {}
     
     private int _itemId;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]

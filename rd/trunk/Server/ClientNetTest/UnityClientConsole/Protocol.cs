@@ -226,7 +226,7 @@ namespace UnityClientConsole
 		    		}
 		    	}
                 else{
-
+                    return false;
 		    	}
 		    } catch (Exception e) {
 		    	

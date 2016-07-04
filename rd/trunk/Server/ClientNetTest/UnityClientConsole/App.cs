@@ -61,14 +61,8 @@ namespace UnityClientConsole
             if (protocol.checkType(sys.ERROR_CODE.GetHashCode()))
             {
                 HSErrorCode hsError = protocol.GetProtocolBody<HSErrorCode>();
-
-               if (hsError.hpCode == code.LOGIN_C.GetHashCode())
-               {
-                   if (hsError.errCode == error.ONLINE_MAX_LIMIT.GetHashCode())
-                   {
-                       Console.WriteLine("在线人数超限制");
-                   }
-               }     
+                Console.WriteLine("" + hsError.hpCode.GetHashCode() + " " + hsError.errCode.GetHashCode().ToString("X2"));
+                Console.WriteLine(""); 
             }
 
 
@@ -84,8 +78,8 @@ namespace UnityClientConsole
                     Console.WriteLine("角色不存在，创角色");
 
                     HSPlayerCreate createRole = new HSPlayerCreate();
-                    createRole.puid = "zs";
-                    createRole.nickname = "qq";
+                    createRole.puid = puid;
+                    createRole.nickname = "12311";
                     createRole.career = 1;
                     createRole.gender = 0;
                     createRole.eye = 1;
@@ -103,7 +97,7 @@ namespace UnityClientConsole
             }
             else if (protocol.checkType(code.PLAYER_CREATE_S.GetHashCode()))
             {
-                Console.WriteLine("创建角色成功");
+                Console.WriteLine("创建角色成功 ");
 
                 playerID = protocol.GetProtocolBody<HSPlayerCreateRet>().palyerID;
                 HSSyncInfo syncInfo = new HSSyncInfo();
@@ -142,9 +136,29 @@ namespace UnityClientConsole
             }
             else if (protocol.checkType(code.ASSEMBLE_FINISH_S.GetHashCode()))
             {
-                Console.WriteLine("同步完成"); 
+                Console.WriteLine("同步完成");
 
+                HSItemUse itemuse = new HSItemUse();
+                itemuse.itemId = 40001;
+
+                NetManager.GetInstance().SendProtocol(code.ITEM_USE_C.GetHashCode(), itemuse);
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             else if (protocol.checkType(sys.HEART_BEAT.GetHashCode()))
             {
                // HSHeartBeat response = protocol.GetProtocolBody<HSHeartBeat>();

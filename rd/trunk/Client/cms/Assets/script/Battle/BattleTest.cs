@@ -9,48 +9,12 @@ public class PbStartBattle
     //副本id
     public string instanceId;
     public List<PbUnit> enemyList = new List<PbUnit>();
-    public List<PbUnit> playerList = new List<PbUnit>();
+    //public List<PbUnit> playerList = new List<PbUnit>();
 }
 //////////////////////////////////////////////////////////////////////////
 
 public class BattleTest : MonoBehaviour
 {
-    static List<PbUnit> PlayerList
-    {
-        get
-        {
-            var list = new List<PbUnit>();
-            //player list
-            for (int i = 0; i < 6; i++)
-            {
-                PbUnit pbUnit = new PbUnit();
-                pbUnit.guid = 10 + i;
-                pbUnit.level = 50;
-				if (i == 0)
-					pbUnit.id = "Unit_Demo_qingniao";
-				if (i == 1)
-					pbUnit.id = "Unit_Demo_zhuyan";
-				if (i == 2)
-					pbUnit.id = "Unit_Demo_ershu";
-				if (i == 3)
-					pbUnit.id = "Unit_Demo_ershu";
-				if (i == 4)
-					pbUnit.id = "Unit_Demo_zhuyan";
-				if (i == 5)
-					pbUnit.id = "Unit_Demo_qingniao";
-                pbUnit.slot = i;
-                if (i > 2)
-                    pbUnit.slot = BattleConst.offsiteSlot;
-
-				pbUnit.character = 4;
-				pbUnit.lazy = 4;
-
-                list.Add(pbUnit);
-            }
-
-            return list;
-        }
-    }
 
     public static PbStartBattle GenerateNormalProto(string instanceId)
     {
@@ -64,14 +28,15 @@ public class BattleTest : MonoBehaviour
         {
             PbUnit pbUnit = new PbUnit();
             pbUnit.guid = i;
+            pbUnit.camp = UnitCamp.Enemy;
 			if (i == 0)
-				pbUnit.id = "Unit_Demo_ershu";
+                pbUnit.id = "Unit_Demo_qingniao";
 			if (i == 1)
-				pbUnit.id = "Unit_Demo_ershu";
+				pbUnit.id = "Unit_Demo_zhuyan";
 			if (i == 2)
 				pbUnit.id = "Unit_Demo_ershu";
 			if (i == 3)
-				pbUnit.id = "Unit_Demo_ershu";
+				pbUnit.id = "Unit_Demo_qingniao";
 			if (i == 4)
 				pbUnit.id = "Unit_Demo_ershu";
             pbUnit.level = 50;// instanceData.level;
@@ -85,7 +50,7 @@ public class BattleTest : MonoBehaviour
             proto.enemyList.Add(pbUnit);
         }
 
-        proto.playerList = PlayerList;
+        //proto.playerList = PlayerList;
 
         return proto;
     }
@@ -105,6 +70,7 @@ public class BattleTest : MonoBehaviour
         else
             pbUnit.id = "Unit_Demo_jiuweihu"; //instanceData.rareID;
         pbUnit.level = 50;
+        pbUnit.camp = UnitCamp.Enemy;
         pbUnit.slot = 1;
 		pbUnit.character = 2;
 		pbUnit.lazy = 2;
@@ -112,7 +78,7 @@ public class BattleTest : MonoBehaviour
         proto.enemyList.Add(pbUnit);
 
         //player list
-        proto.playerList = PlayerList;
+        //proto.playerList = PlayerList;
 
         return proto;
     }
@@ -134,12 +100,13 @@ public class BattleTest : MonoBehaviour
         pbUnit.level = 28;
         pbUnit.slot = 1;
 		pbUnit.character = 2;
-		pbUnit.lazy = 2;
+        pbUnit.lazy = 2;
+        pbUnit.camp = UnitCamp.Enemy;
 
         proto.enemyList.Add(pbUnit);
 
         //player list
-        proto.playerList = PlayerList;
+        //proto.playerList = PlayerList;
 
         return proto;
     }

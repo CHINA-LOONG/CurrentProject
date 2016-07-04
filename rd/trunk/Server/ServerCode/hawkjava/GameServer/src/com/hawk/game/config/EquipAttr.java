@@ -260,6 +260,21 @@ public class EquipAttr extends HawkConfigBase{
 	}
 	
 	/**
+	 * 获取品级下级别个数
+	 */
+	public static int getLevelSize(int equip, int stage){
+		List<EquipLevelItem> levelList = equipList.get(equip).get(stage).getLevelList();
+		return levelList.size();
+	}
+	
+	/**
+	 * 获取品级下级别个数
+	 */
+	public static int getStageSize(int equip){
+		return equipList.get(equip).size();
+	}
+	
+	/**
 	 * 获取品级列表
 	 */
 	public static Map<Integer, EquipStageItem> getStageList() {

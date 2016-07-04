@@ -17,7 +17,7 @@ public static class RareScript
 
     public static int rareValiP1()
     {
-        var rareUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1];
+        var rareUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1].unit;
         if (rareUnit != null)
         {
             if (rareUnit.curLife < rareUnit.maxLife * 0.8f)
@@ -29,7 +29,7 @@ public static class RareScript
 
     public static int rareValiP2()
     {
-        var rareUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1];
+        var rareUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1].unit;
         if (rareUnit != null)
         {
             if (rareUnit.curLife < rareUnit.maxLife * 0.6f)
@@ -40,7 +40,7 @@ public static class RareScript
 
     public static int rareValiP3()
     {
-        var rareUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1];
+        var rareUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1].unit;
         if (rareUnit != null)
         {
             if (rareUnit.curLife < rareUnit.maxLife * 0.4f)
@@ -51,7 +51,7 @@ public static class RareScript
 
     public static int rareValiP4()
     {
-        var rareUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1];
+        var rareUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1].unit;
         if (rareUnit != null)
         {
             if (rareUnit.curLife < rareUnit.maxLife * 0.2f)

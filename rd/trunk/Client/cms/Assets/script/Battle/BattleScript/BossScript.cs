@@ -16,7 +16,7 @@ public static class BossScript
 
     public static int bossValiP1()
     {
-        var bossUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1];
+        var bossUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1].unit;
         if (bossUnit != null)
         {
             if (bossUnit.curLife < bossUnit.maxLife * 0.8f)
@@ -28,7 +28,7 @@ public static class BossScript
 
     public static int bossValiP2()
     {
-        var bossUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1];
+        var bossUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1].unit;
         if (bossUnit != null)
         {
             if (bossUnit.curLife < bossUnit.maxLife * 0.6f)
@@ -39,7 +39,7 @@ public static class BossScript
 
     public static int bossValiP3()
     {
-        var bossUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1];
+        var bossUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1].unit;
         if (bossUnit != null)
         {
             if (bossUnit.curLife < bossUnit.maxLife * 0.4f)
@@ -50,7 +50,7 @@ public static class BossScript
 
     public static int bossValiP4()
     {
-        var bossUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1];
+        var bossUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1].unit;
         if (bossUnit != null)
         {
             if (bossUnit.curLife < bossUnit.maxLife * 0.2f)

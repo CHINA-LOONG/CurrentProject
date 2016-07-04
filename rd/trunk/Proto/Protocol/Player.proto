@@ -29,8 +29,9 @@ message PlayerInfo
 	optional int32  eye = 9;
 	optional int32  hair = 10;
 	optional int32  hairColor = 11;
-	required int32  recharge = 12;
-	required int32  vipLevel = 13;
+	repeated int32  battleMonster = 12;
+	required int32  recharge = 13;
+	required int32  vipLevel = 14;
 }
 
 // ------------------------------------------------------- protocol-----------------------------------------------------

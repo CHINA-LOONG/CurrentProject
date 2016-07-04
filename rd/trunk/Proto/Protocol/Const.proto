@@ -42,6 +42,8 @@ enum ClassType
 // 抽象物品类型定义
 enum itemType
 {
+	// 空属性
+	NONE_ITEM = 1;
 	// 玩家属性
 	PLAYER_ATTR = 1;	
 	// 角色
@@ -103,10 +105,6 @@ enum changeType
 	CHANGE_FAV	= 8;
 	// vip等级
 	CHANGE_VIPLEVEL = 9;
-	// 道具    
-	CHANGE_ITEM = 10;
-	// 装备
-	CHANGE_EQUIP = 11;
 }
 
 // 附加属性类型定义
@@ -178,8 +176,6 @@ enum toolType
 	BOXTOOL = 4;
 	// 消耗类
 	USETOOL = 5;
-	// 兑换类
-	EXCHANGETOOL = 6;
 	// 装备
 	EQUIPTOOL = 7;
 }

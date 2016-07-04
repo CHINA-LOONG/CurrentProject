@@ -58,7 +58,7 @@ public class UICreatePlayer : UIBase
 	void OnRequestCreatePlayerFinished(ProtocolMessage msg)
 	{
 		PB.HSPlayerCreateRet response = msg.GetProtocolBody<PB.HSPlayerCreateRet> ();
-		GameDataMgr.Instance.PlayerDataAttr.playerId = response.palyerID;
+		//GameDataMgr.Instance.PlayerDataAttr.playerId = response.palyerID;
 
 		GameEventMgr.Instance.FireEvent (GameEventList.CreatePlayerFinished);
 	}

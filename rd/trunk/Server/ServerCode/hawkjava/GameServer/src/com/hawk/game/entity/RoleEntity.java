@@ -1,6 +1,6 @@
 package com.hawk.game.entity;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -54,17 +54,17 @@ public class RoleEntity extends HawkDBEntity{
 	protected int recharge = 0;
 
 	@Column(name = "createTime")
-	protected Date createTime = null;
+	protected Calendar createTime = null;
 
 	@Column(name = "updateTime")
-	protected Date updateTime = null;
+	protected Calendar updateTime = null;
 	
 	@Column(name = "invalid")
 	protected boolean invalid;	
 	
 	public RoleEntity() {
-		this.createTime = HawkTime.getCalendar().getTime();
-		this.updateTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
+		this.updateTime = HawkTime.getCalendar();
 	}
 	
 	public RoleEntity(String nickname, int career, int gender, int eye, int hair, int hairColor, int index) {
@@ -77,34 +77,40 @@ public class RoleEntity extends HawkDBEntity{
 		assetJson.put("hair", hair);
 		assetJson.put("hairColor", hairColor);
 		this.asset = assetJson.toString();
-		this.createTime = HawkTime.getCalendar().getTime();
-		this.updateTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
+		this.updateTime = HawkTime.getCalendar();
 	}
 	
 	public int getRoleID() {
 		return id;
 	}
 	
-	public Date getCreateTime() {
+	@Override
+	public Calendar getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Date createTime) {
+	@Override
+	public void setCreateTime(Calendar createTime) {
 		this.createTime = createTime;
 	}
 
-	public Date getUpdateTime() {
+	@Override
+	public Calendar getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Date updateTime) {
+	@Override
+	public void setUpdateTime(Calendar updateTime) {
 		this.updateTime = updateTime;
 	}
 
+	@Override
 	public boolean isInvalid() {
 		return invalid;
 	}
 
+	@Override
 	public void setInvalid(boolean invalid) {
 		this.invalid = invalid;
 	}

@@ -5,20 +5,19 @@ public class BattleModule : ModuleBase
 {
     BattleController controller;
     BattleProcess process;
-    BattleScene battleScene;
 	WeakPointController  weakPointController;
     BattleUnitAi battleUnitAi;
 
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<PbStartBattle>(GameEventList.StartBattle, controller.StartBattle);
-        GameEventMgr.Instance.AddListener(GameEventList.ShowBattleUI, OnShowBattleUI);
+        //GameEventMgr.Instance.AddListener(GameEventList.ShowBattleUI, OnShowBattleUI);
     }
 
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<PbStartBattle>(GameEventList.StartBattle, controller.StartBattle);
-        GameEventMgr.Instance.RemoveListener(GameEventList.ShowBattleUI, OnShowBattleUI);
+        //GameEventMgr.Instance.RemoveListener(GameEventList.ShowBattleUI, OnShowBattleUI);
     }
 
     void Start()
@@ -30,13 +29,11 @@ public class BattleModule : ModuleBase
     {
 		string battlePrefabName = GameConfig.Instance.testBattlePrefab;
 		string assetName = GameConfig.Instance.testBattleAssetName;
-		battleScene = gameObject.AddComponent<BattleScene> ();
-		battleScene.InitWithBattleSceneName (assetName, battlePrefabName);
 
         controller = gameObject.AddComponent<BattleController>();
-        process = gameObject.AddComponent<BattleProcess>();
-        controller.Init(process);
-        process.Init();
+        //process = gameObject.AddComponent<BattleProcess>();
+        controller.Init();
+        //process.Init();
 
 		weakPointController = gameObject.AddComponent<WeakPointController> ();
 		weakPointController.Init ();
@@ -48,6 +45,8 @@ public class BattleModule : ModuleBase
     public override void OnEnter(ModuleBase prevModule, object param)
     {
         BindListener();
+        //var ui = UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
+        //ui.GetComponent<UIBattle>().Init();
     }
 
     public override void OnExecute()
@@ -58,18 +57,18 @@ public class BattleModule : ModuleBase
     public override void OnExit(ModuleBase nextModule)
     {
         UnBindListener();
-        Destroy(battleScene);
         Destroy(controller);
-        Destroy(process);
+        //Destroy(process);
         Destroy(weakPointController);
         Destroy(battleUnitAi);
+        //UIMgr.Instance.CloseUI(UIBattle.ViewName);
     }
 
 #region  Event
-    void OnShowBattleUI()
-    {
-        var ui = UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
-        ui.GetComponent<UIBattle>().Init();
-    }
+    //void OnShowBattleUI()
+    //{
+    //    var ui = UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
+    //    ui.GetComponent<UIBattle>().Init();
+    //}
 #endregion
 }

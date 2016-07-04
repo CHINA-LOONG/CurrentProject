@@ -1,6 +1,6 @@
 package com.hawk.game.entity;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,26 +41,26 @@ public class ItemEntity extends HawkDBEntity {
 	protected byte status = 0;
 
 	@Column(name = "expireTime")
-	protected Date expireTime = null;
+	protected Calendar expireTime = null;
 
 	@Column(name = "createTime", nullable = false)
-	protected Date createTime = null;
+	protected Calendar createTime = null;
 
 	@Column(name = "updateTime")
-	protected Date updateTime;
+	protected Calendar updateTime;
 
 	@Column(name = "invalid", nullable = false)
 	protected boolean invalid;
 
 	public ItemEntity() {
-		this.createTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
 	}
 
-	public ItemEntity(int itemId, byte status, short slot, short count, Date expireTime) {
+	public ItemEntity(int itemId, byte status, short slot, short count, Calendar expireTime) {
 		this.status = status;
 		this.count = count;
 		this.expireTime = expireTime;
-		this.createTime = HawkTime.getCalendar().getTime();
+		this.createTime = HawkTime.getCalendar();
 	}
 
 	public long getId() {
@@ -103,31 +103,31 @@ public class ItemEntity extends HawkDBEntity {
 		this.status = status;
 	}
 
-	public Date getExpireTime() {
+	public Calendar getExpireTime() {
 		return expireTime;
 	}
 
-	public void setExpireTime(Date expireTime) {
+	public void setExpireTime(Calendar expireTime) {
 		this.expireTime = expireTime;
 	}
 
 	@Override
-	public Date getCreateTime() {
+	public Calendar getCreateTime() {
 		return createTime;
 	}
 
 	@Override
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(Calendar createTime) {
 		this.createTime = createTime;
 	}
 
 	@Override
-	public Date getUpdateTime() {
+	public Calendar getUpdateTime() {
 		return updateTime;
 	}
 
 	@Override
-	public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(Calendar updateTime) {
 		this.updateTime = updateTime;
 	}
 

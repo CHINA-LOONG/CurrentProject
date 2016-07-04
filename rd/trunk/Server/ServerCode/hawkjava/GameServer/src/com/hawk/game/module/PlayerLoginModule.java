@@ -1,6 +1,5 @@
 package com.hawk.game.module;
 
-import org.hawk.annotation.ProtocolHandler;
 import org.hawk.app.HawkApp;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
@@ -13,8 +12,6 @@ import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Login.HSLogin;
-import com.hawk.game.protocol.Login.HSLoginRet;
 import com.hawk.game.protocol.Login.HSSyncInfo;
 import com.hawk.game.protocol.Login.HSSyncInfoRet;
 import com.hawk.game.protocol.Status;
@@ -140,7 +137,7 @@ public class PlayerLoginModule extends PlayerModule {
 		}
 
 		// 记录上线时间
-		playerEntity.setLoginTime(HawkTime.getCalendar().getTime());
+		playerEntity.setLoginTime(HawkTime.getCalendar());
 
 		// 登陆回复协议
 		HSSyncInfoRet.Builder response = HSSyncInfoRet.newBuilder();
@@ -150,14 +147,14 @@ public class PlayerLoginModule extends PlayerModule {
 		
 		// 绑定会话
 		player.setSession(session);
-		playerEntity.setLoginTime(HawkTime.getCalendar().getTime());
+		playerEntity.setLoginTime(HawkTime.getCalendar());
 		playerEntity.notifyUpdate(true);
 
 		// 发送登陆成功协议
 		sendProtocol(HawkProtocol.valueOf(HS.code.SYNCINFO_S, response));
 
 		// 跨天重置
-		if (null == player.getEntity().getResetTime() || false == HawkTime.isToday(player.getEntity().getResetTime())) {
+		if (null == player.getEntity().getResetTime() || false == HawkTime.isToday(player.getEntity().getResetTime().getTime())) {
 			player.onFirstLoginDaily(false);
 		}
 
@@ -177,8 +174,7 @@ public class PlayerLoginModule extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogout() {
 		// 记录下线时间
-		player.getEntity().setLogoutTime(HawkTime.getCalendar().getTime());
-
+		player.getEntity().setLogoutTime(HawkTime.getCalendar());
 		// 重要数据下线就存储
 		player.getEntity().notifyUpdate(false);
 		return true;

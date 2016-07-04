@@ -12,7 +12,7 @@ public class BattleObject : MonoBehaviour
 {
     public BattleObjectType type = BattleObjectType.Unit ;
     public UnitCamp camp;
-    public int id;
+    public int guid;
     public GameUnit unit;
 
     public ActorEventService actorEventService;
@@ -20,13 +20,14 @@ public class BattleObject : MonoBehaviour
     public List<ActorEventData> activeEventList;
     public List<ActorEventData> waitEventList;
 
+    //---------------------------------------------------------------------------------------------
     void Awake()
     {
         actorEventService = ActorEventService.Instance;
         activeEventList = new List<ActorEventData>();
         waitEventList = new List<ActorEventData>();
     }
-
+    //---------------------------------------------------------------------------------------------
     public void TriggerEvent(string eventID, float triggerTime)
     {
         ActorEventData srcEvent = null;
@@ -65,7 +66,45 @@ public class BattleObject : MonoBehaviour
             }
         }
     }
+    //---------------------------------------------------------------------------------------------
+    public void OnEnterField()
+    {
+        BattleObject bo = ObjectDataMgr.Instance.GetBattleObject(guid);
+        if (bo != null)
+        {
+            bo.gameObject.SetActive(true);
+            GameObject slotNode = BattleController.Instance.GetSlotNode(camp, unit.pbUnit.slot, unit.isBoss);
+            bo.transform.position = slotNode.transform.position;
+            bo.transform.rotation = slotNode.transform.rotation;
+            bo.transform.localScale = slotNode.transform.localScale;
+            bo.gameObject.transform.SetParent(GameMain.Instance.transform);
+            if (bo.camp == UnitCamp.Enemy)
+            {
+                GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.LoadBattleObjectFinished, this);
+            }
+        }
 
+        unit.ReCalcSpeed();
+
+        Logger.LogFormat("Unit {0} guid:{1} has entered field", name, guid);
+    }
+    //---------------------------------------------------------------------------------------------
+    public void OnExitField()
+    {
+        //if (pbUnit.camp == UnitCamp.Enemy)
+        //{
+        //    GameObject.Destroy(unitObject);
+        //    unitObject = null;
+
+        //}
+        BattleObject unit = ObjectDataMgr.Instance.GetBattleObject(guid);
+        if (unit != null)
+        {
+            unit.gameObject.SetActive(false);
+            Logger.LogFormat("Unit {0} guid:{1} has exited field", name, guid);
+        }
+    }
+    //---------------------------------------------------------------------------------------------
     void FixedUpdate()
     {
         UpdateEventsInternal();
@@ -80,7 +119,7 @@ public class BattleObject : MonoBehaviour
             }
         }
     }
-
+    //---------------------------------------------------------------------------------------------
     private void UpdateEventsInternal()
     {
         float curTime = Time.time;
@@ -92,7 +131,7 @@ public class BattleObject : MonoBehaviour
             {
                 activeEventList.Add(curEvent);
                 //TODO: not only bool
-                if (curEvent.motionKey != null && curEvent.motionKey.Length > 0)
+                if (aniControl != null && curEvent.motionKey != null && curEvent.motionKey.Length > 0)
                 {
                     aniControl.SetBool(curEvent.motionKey, bool.Parse(curEvent.motionValue));
                 }
@@ -141,4 +180,5 @@ public class BattleObject : MonoBehaviour
             }
         }
     }
+    //---------------------------------------------------------------------------------------------
 }

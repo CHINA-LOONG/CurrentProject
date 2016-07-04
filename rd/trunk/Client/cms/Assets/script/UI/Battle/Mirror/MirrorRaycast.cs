@@ -14,9 +14,9 @@ public class MirrorRaycast : MonoBehaviour
 	public List<MirrorTarget> WeakpointRayCast(Vector3 startPosInScreen)
 	{
 		List<MirrorTarget> returnList = new List<MirrorTarget> ();
-		List<GameUnit> listEnemy = BattleController.Instance.BattleGroup.EnemyFieldList;
+		List<BattleObject> listEnemy = BattleController.Instance.BattleGroup.EnemyFieldList;
 
-		GameUnit subUnit = null;
+		BattleObject subUnit = null;
 		for (int i =0; i< listEnemy.Count; ++i)
 		{
 			subUnit = listEnemy [i];
@@ -25,7 +25,7 @@ public class MirrorRaycast : MonoBehaviour
 				continue;
 			}
 			MirrorTarget bestTarget = null;
-			List<MirrorTarget> listFind  = RaycastFromAllWeakpoint(subUnit,startPosInScreen,GameConfig.Instance.MirrorRadius, out bestTarget);
+			List<MirrorTarget> listFind  = RaycastFromAllWeakpoint(subUnit.unit,startPosInScreen,GameConfig.Instance.MirrorRadius, out bestTarget);
 			returnList.AddRange(listFind);
 		}
 		return returnList;

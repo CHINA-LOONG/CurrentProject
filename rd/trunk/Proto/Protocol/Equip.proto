@@ -40,3 +40,18 @@ message HSEquipBuy
 	required int32 stage = 3;
 	optional int32 level = 4;
 }
+
+// 合成装备
+message HSEquipCompose
+{
+	required int32 equipId = 1;
+	required int32 relatedItemId = 2;
+}
+
+// 合成装备返回
+message HSEquipComposeRet
+{
+	required int32 equipId = 1;
+	optional int32 stage = 2;
+	optional int32 level = 3;
+}

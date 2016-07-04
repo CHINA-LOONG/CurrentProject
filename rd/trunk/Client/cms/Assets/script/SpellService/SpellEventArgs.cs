@@ -10,6 +10,7 @@ public class SpellFireArgs : EventArgs
     public string spellID;
     public int casterID;
     public int targetID;
+    public float aniTime;
     //public int castResult;
 }
 //---------------------------------------------------------------------------------------------
@@ -32,6 +33,12 @@ public class SpellUnitDeadArgs : EventArgs
     public float triggerTime;
     public int deathID;
     public int casterID;//who makes deathID dead
+}
+//-------------------------------------------------------------------------------------------------
+public class SpellUnitBornArgs : EventArgs
+{
+    public float triggerTime;
+    public int bornID;
 }
 //---------------------------------------------------------------------------------------------
 public class SpellBuffArgs : EventArgs

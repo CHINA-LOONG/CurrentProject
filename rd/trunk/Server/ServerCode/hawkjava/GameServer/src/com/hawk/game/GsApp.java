@@ -1,6 +1,8 @@
 package com.hawk.game;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -31,10 +33,12 @@ import com.hawk.game.attr.Attribute;
 import com.hawk.game.callback.ShutdownCallback;
 import com.hawk.game.config.GrayPuidCfg;
 import com.hawk.game.config.ItemCfg;
+import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.item.ItemInfo;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
@@ -43,6 +47,7 @@ import com.hawk.game.protocol.Login.HSLoginRet;
 import com.hawk.game.protocol.Player.HSPlayerCreate;
 import com.hawk.game.protocol.Player.HSPlayerCreateRet;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.protocol.SysProtocol.HSHeartBeat;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
@@ -149,7 +154,7 @@ public class GsApp extends HawkApp {
 			HawkLog.logPrintln("install email service......");
 			HawkEmailService.getInstance().install("smtp.163.com", 25, GsConfig.getInstance().getEmailUser(), GsConfig.getInstance().getEmailPwd());
 		}
-
+		
 		return true;
 	}
 
@@ -253,7 +258,7 @@ public class GsApp extends HawkApp {
 		HawkEmailService emailService = HawkEmailService.getInstance();
 		if (emailService != null) {
 			String emailTitle = String.format("exception(%s_%s_%d)", GsConfig.getInstance().getGameId(), GsConfig.getInstance().getPlatform(), GsConfig.getInstance().getServerId());
-			emailService.sendEmail(emailTitle, HawkException.formatStackMsg(e), Arrays.asList("daijunhua@com4loves.com"));
+			emailService.sendEmail(emailTitle, HawkException.formatStackMsg(e), Arrays.asList("18612791243@163.com"));
 		}
 	}
 
@@ -300,7 +305,7 @@ public class GsApp extends HawkApp {
 						}
 
 						if (!preparePuidSession(puid, session)) {
-							return false;
+							return true;
 						}
 						
 						// 登录成功协议
@@ -315,11 +320,11 @@ public class GsApp extends HawkApp {
 					else if (protocol.checkType(HS.code.PLAYER_CREATE_C_VALUE)) {
 						String puid = protocol.parseProtocol(HSPlayerCreate.getDefaultInstance()).getPuid().trim().toLowerCase();
 						if (!CreateNewPlayer(puid, session, protocol)) {
-							return false;
+							return true;
 						}
 						
 						if (!preparePuidSession(puid, session)) {
-							return false;
+							return true;
 						}
 						
 						return true;
@@ -414,12 +419,21 @@ public class GsApp extends HawkApp {
 		int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
 		if (playerId == 0) {
 			HSPlayerCreate protocol = cmd.parseProtocol(HSPlayerCreate.getDefaultInstance());
+			if (ServerData.getInstance().isExistName(protocol.getNickname())) {
+				HSErrorCode.Builder error = HSErrorCode.newBuilder();
+				error.setErrCode(Status.PlayerError.PLAYER_NICKNAME_EXIST_VALUE);
+				error.setHpCode(HS.code.PLAYER_CREATE_C_VALUE);
+				session.sendProtocol(HawkProtocol.valueOf(HS.sys.ERROR_CODE, error));
+				return false;
+			}
+			
 			PlayerEntity playerEntity = new PlayerEntity(puid, protocol.getNickname(), (byte)(protocol.getCareer()), protocol.getGender(), protocol.getEye(), protocol.getHair(), protocol.getHairColor());
 			if (false == playerEntity.notifyCreate()) {
 				return false;
 			}
-
+			
 			playerId = playerEntity.getId();
+			ServerData.getInstance().addNameAndPlayerId(protocol.getNickname(), playerId);
 			ServerData.getInstance().addPuidAndPlayerId(puid, playerId);
 			logger.info("create player entity: {}, puid: {}", playerId, puid);
 
@@ -429,11 +443,16 @@ public class GsApp extends HawkApp {
 			session.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_CREATE_S_VALUE, response));
 
 			// TEST: 给予默认宠物
-			MonsterEntity monsterEntity = new MonsterEntity("soul", playerId, (byte)1, (short)1, 1, (byte)1, (byte)1);
-			monsterEntity.setSkillLevel(1, 1);
-			if (!HawkDBManager.getInstance().create(monsterEntity)) {
-				logger.error("database error, create monster entity fail");
+			LinkedList<Integer> battleMonsterList = new LinkedList<>();
+			for (int i = 0; i < 5; ++i) {
+				MonsterEntity monsterEntity = new MonsterEntity("soul", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
+				monsterEntity.setSkillLevel(1, 1);
+				if (true == monsterEntity.notifyCreate()) {
+					battleMonsterList.add(monsterEntity.getId());
+				}
 			}
+			playerEntity.setBattleMonsterList(battleMonsterList);
+			playerEntity.notifyUpdate(false);
 
 			return true;
 		}

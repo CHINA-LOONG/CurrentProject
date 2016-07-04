@@ -35,7 +35,7 @@ public class WeakPointController : MonoBehaviour
 		GameEventMgr.Instance.AddListener< List<MirrorTarget> >(GameEventList.FindWeakPoint , OnFindWeakPoint);
 		GameEventMgr.Instance.AddListener< List<MirrorTarget> >(GameEventList.FindFinishedWeakPoint , OnFindFinishedWeakPoint);
 		GameEventMgr.Instance.AddListener< List<MirrorTarget> >(GameEventList.MirrorOutWeakPoint , OnMirrorOutFromWeakPoint);
-		GameEventMgr.Instance.AddListener<GameUnit> (GameEventList.LoadBattleObjectFinished, OnLoadEnemyFinished);
+		GameEventMgr.Instance.AddListener<BattleObject> (GameEventList.LoadBattleObjectFinished, OnLoadEnemyFinished);
 	}
 	
 	void UnBindListener()
@@ -43,18 +43,18 @@ public class WeakPointController : MonoBehaviour
 		GameEventMgr.Instance.RemoveListener< List<MirrorTarget> > (GameEventList.FindWeakPoint, OnFindWeakPoint);
 		GameEventMgr.Instance.RemoveListener< List<MirrorTarget> > (GameEventList.FindFinishedWeakPoint, OnFindFinishedWeakPoint);
 		GameEventMgr.Instance.RemoveListener< List<MirrorTarget> > (GameEventList.MirrorOutWeakPoint, OnMirrorOutFromWeakPoint);
-		GameEventMgr.Instance.RemoveListener<GameUnit> (GameEventList.LoadBattleObjectFinished, OnLoadEnemyFinished);
+        GameEventMgr.Instance.RemoveListener<BattleObject>(GameEventList.LoadBattleObjectFinished, OnLoadEnemyFinished);
 	}
 
-	void AddWeakPoint(GameUnit gu)
+	void AddWeakPoint(BattleObject bo)
 	{
-		List<string> weakList = gu.weakPointList;
+		List<string> weakList = bo.unit.weakPointList;
 		if (null == weakList || weakList.Count < 1)
 		{
 			return;
 		}
 
-		GameObject monsterGo = gu.gameObject;
+		GameObject monsterGo = bo.gameObject;
 		MirrorTarget weakpoint = monsterGo.GetComponent<MirrorTarget> ();
 		if (null != weakpoint) 
 		{
@@ -72,17 +72,17 @@ public class WeakPointController : MonoBehaviour
 				continue;
 			}
 
-			InitWeakPointCollider(rowData,gu);
-			InitWeakPointEffect(rowData,gu);
-			InitWeakPointMesh(rowData,gu);
+			InitWeakPointCollider(rowData,bo);
+            InitWeakPointEffect(rowData, bo);
+            InitWeakPointMesh(rowData, bo);
 
 		}
 
 	}
 
-	void  InitWeakPointCollider(WeakPointData rowData,GameUnit gu)
+	void  InitWeakPointCollider(WeakPointData rowData,BattleObject bo)
 	{
-		GameObject monsterGo = gu.gameObject;
+		GameObject monsterGo = bo.gameObject;
 		string colliderName = rowData.collider;
 		
 		GameObject colliderGo = Util.FindChildByName(monsterGo,colliderName);
@@ -92,7 +92,7 @@ public class WeakPointController : MonoBehaviour
 			return;
 		}
 
-		gu.weakPointDumpDic [rowData.id] = colliderGo;
+		bo.unit.weakPointDumpDic [rowData.id] = colliderGo;
 		MirrorTarget mTarget = colliderGo.AddComponent<MirrorTarget>();
 		mTarget.WeakPointIDAttr = rowData.id;
 
@@ -110,14 +110,14 @@ public class WeakPointController : MonoBehaviour
 
 	}
 
-	void InitWeakPointEffect(WeakPointData rowData,GameUnit gu)
+	void InitWeakPointEffect(WeakPointData rowData,BattleObject bo)
 	{
-		GameObject monsterGo = gu.gameObject;
+		GameObject monsterGo = bo.gameObject;
 		string effectNodeName = rowData.node;
 		GameObject effectGo = Util.FindChildByName (monsterGo, effectNodeName);
 		if (effectGo != null) 
 		{
-			gu.weakPointEffectDic[rowData.id] = effectGo;
+			bo.unit.weakPointEffectDic[rowData.id] = effectGo;
 
 			if(null == effectGo.GetComponent<FindWeakpointEffect>())
 			{
@@ -134,16 +134,16 @@ public class WeakPointController : MonoBehaviour
 		}
 	}
 
-	void InitWeakPointMesh(WeakPointData rowData,GameUnit gu)
+	void InitWeakPointMesh(WeakPointData rowData,BattleObject bo)
 	{
-		GameObject monsterGo = gu.gameObject;
+		GameObject monsterGo = bo.gameObject;
 		string meshNodeName = rowData.mesh;
 		GameObject meshGo = Util.FindChildByName (monsterGo, meshNodeName);
 		//Debug.LogError ("meshName = " + meshNodeName);
 		if (meshGo != null) 
 		{
 			//Debug.LogError("find meshName initialStatus = " + rowData.initialStatus );
-			gu.weakPointMeshDic[rowData.id] = meshGo;
+			bo.unit.weakPointMeshDic[rowData.id] = meshGo;
 			if(1 != rowData.initialStatus)
 			{
 				meshGo.SetActive(false);
@@ -151,10 +151,10 @@ public class WeakPointController : MonoBehaviour
 		}
 	}
 
-	void OnLoadEnemyFinished(GameUnit gu)
+	void OnLoadEnemyFinished(BattleObject bo)
 	{
 		Logger.LogFormat ("On Load Enemy finished!");
-		this.AddWeakPoint (gu);
+		this.AddWeakPoint (bo);
 	}
 
 	void OnFindWeakPoint( List<MirrorTarget> newFindList)

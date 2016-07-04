@@ -18,7 +18,7 @@ public class UILogin : UIBase
 	void  onLoginButtonClicked(GameObject go)
 	{
 		//Debug.Log ("Login Button Click!!");
-		GameEventMgr.Instance.FireEvent (GameEventList.LoginClick);
+        GameEventMgr.Instance.FireEvent(GameEventList.LoginClick);
 	}
 
 	void  OnGuuidButtonClicked(GameObject go)

@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.hawk.annotation.MessageHandler;
 import org.hawk.annotation.ProtocolHandler;
-import org.hawk.db.HawkDBManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.slf4j.Logger;
@@ -126,12 +125,12 @@ public class PlayerMonsterModule extends PlayerModule {
 		int stage = protocol.getStage();
 		int level = protocol.getLevel();
 		int lazy = protocol.getLazy();
-		int ai = protocol.getAi();
+		int disposition = protocol.getDisposition();
 		List<HSSkill> skillList = protocol.getSkillList();
 
 		// TODO: catch logic 
 
-		MonsterEntity monsterEntity = new MonsterEntity(cfgId, playerId, (byte)stage, (short)level, 0, (byte)lazy, (byte)ai);
+		MonsterEntity monsterEntity = new MonsterEntity(cfgId, playerId, (byte)stage, (short)level, 0, (byte)lazy, 0, (byte)disposition);
 		for (HSSkill skill : skillList) {
 			monsterEntity.setSkillLevel(skill.getSkillId(), skill.getLevel());
 		}

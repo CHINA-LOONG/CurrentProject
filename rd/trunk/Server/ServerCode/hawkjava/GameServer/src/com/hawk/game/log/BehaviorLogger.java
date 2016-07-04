@@ -159,9 +159,13 @@ public class BehaviorLogger {
 		 */
 		SHOP_BUY,
 		/**
-		 * 装备锻造
+		 * 装备进阶
 		 */
-		EQUIP_FORGE,
+		EQUIP_ADVANCE,
+		/**
+		 * 装备强化
+		 */
+		EQUIP_EHANCE,
 		/**
 		 * 装备出售
 		 */
@@ -170,10 +174,7 @@ public class BehaviorLogger {
 		 * 装备洗炼
 		 */
 		EQUIP_WASH,
-		/**
-		 * 装备强化
-		 */
-		EQUIP_EHANCE,
+
 		/**
 		 * 扩充装备包囊
 		 */

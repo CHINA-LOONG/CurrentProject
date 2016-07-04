@@ -54,6 +54,7 @@ public class ResourceMgr : MonoBehaviour
     /// </summary>
     public GameObject LoadAsset(string abname, string assetname)
     {
+        //TODO: use pool manager
         abname = abname.ToLower();
         AssetBundle bundle = LoadAssetBundle(abname);
         return bundle.LoadAsset<GameObject>(assetname);
@@ -64,6 +65,12 @@ public class ResourceMgr : MonoBehaviour
         abname = abname.ToLower();
         AssetBundle bundle = LoadAssetBundle(abname);
         return bundle.LoadAsset<T>(assetname);
+    }
+
+    public void DestroyAsset(GameObject go, bool cache = true)
+    {
+        //TODO: use pool manager
+        GameObject.Destroy(go);
     }
 
     /// <summary>
@@ -160,6 +167,7 @@ public class ResourceMgr : MonoBehaviour
     void OnDestroy()
     {
         if (manifest != null) manifest = null;
+        Destroy(gameObject);
         Debug.Log("~ResourceManager was destroy!");
     }
 }

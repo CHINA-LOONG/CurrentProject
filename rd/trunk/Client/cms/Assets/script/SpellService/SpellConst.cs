@@ -31,6 +31,8 @@
     public const float propertyWeaken = 0.75f;
 
     public const int maxEnergy = 100;
+
+    public const float aniDelayTime = 1.0f;
 }
 
 public enum EffectType

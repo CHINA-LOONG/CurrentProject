@@ -52,6 +52,7 @@ public class GameApp : MonoBehaviour
 		GameEventMgr.Instance.Init();
 
         StaticDataMgr.Instance.Init();
+        ObjectDataMgr.Instance.Init();
         GameDataMgr.Instance.Init();
 		LayerConst.Init ();
         //NetMgr.Instance.Init();

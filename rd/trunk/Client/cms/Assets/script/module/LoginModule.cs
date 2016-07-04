@@ -20,7 +20,7 @@ public class LoginModule : ModuleBase
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.LOGIN_S.GetHashCode ().ToString (), OnNetLoginFinished);
 	}
 
-	void	OnLoginClick()
+	void OnLoginClick()
 	{
 		PB.HSLogin hsLogin = new PB.HSLogin ();
 		hsLogin.puid = GameDataMgr.Instance.UserDataAttr.guid;
@@ -46,16 +46,13 @@ public class LoginModule : ModuleBase
 		UIMgr.Instance.CloseUI (UILogin.ViewName);
 		if (loginS.playerId > 0) 
 		{
-			GameDataMgr.Instance.PlayerDataAttr.playerId = loginS.playerId;
+			//GameDataMgr.Instance.PlayerDataAttr.playerId = loginS.playerId;
 			GameMain.Instance.ChangeModule<BuildModule>();
 		}
 		else
 		{
 			GameMain.Instance.ChangeModule<CreatePlayerModule>();
-		}
-
-
-
+        }
 	}
 
 	public override void OnInit(object param)

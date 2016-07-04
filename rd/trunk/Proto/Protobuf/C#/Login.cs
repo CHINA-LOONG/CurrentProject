@@ -23,32 +23,8 @@ namespace PB
       get { return _puid; }
       set { _puid = value; }
     }
-    private string _deviceId = @"0";
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"deviceId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(@"0")]
-    public string deviceId
-    {
-      get { return _deviceId; }
-      set { _deviceId = value; }
-    }
-    private string _platform = @"0";
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"platform", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(@"0")]
-    public string platform
-    {
-      get { return _platform; }
-      set { _platform = value; }
-    }
-    private string _version = @"0.0.1";
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"version", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(@"0.0.1")]
-    public string version
-    {
-      get { return _version; }
-      set { _version = value; }
-    }
     private string _token = "";
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"token", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"token", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string token
     {
@@ -79,8 +55,59 @@ namespace PB
       get { return _playerId; }
       set { _playerId = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSSyncInfo")]
+  public partial class HSSyncInfo : global::ProtoBuf.IExtensible
+  {
+    public HSSyncInfo() {}
+    
+    private string _deviceId = @"0";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"deviceId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(@"0")]
+    public string deviceId
+    {
+      get { return _deviceId; }
+      set { _deviceId = value; }
+    }
+    private string _platform = @"0";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"platform", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(@"0")]
+    public string platform
+    {
+      get { return _platform; }
+      set { _platform = value; }
+    }
+    private string _version = @"0.0.1";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"version", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(@"0.0.1")]
+    public string version
+    {
+      get { return _version; }
+      set { _version = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSSyncInfoRet")]
+  public partial class HSSyncInfoRet : global::ProtoBuf.IExtensible
+  {
+    public HSSyncInfoRet() {}
+    
+    private int _status;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int status
+    {
+      get { return _status; }
+      set { _status = value; }
+    }
     private int _timeStamp = default(int);
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int timeStamp
     {
