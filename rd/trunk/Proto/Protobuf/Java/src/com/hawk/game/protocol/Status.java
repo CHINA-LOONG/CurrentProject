@@ -170,13 +170,21 @@ public final class Status {
      */
     PARAMS_INVALID(6, 6),
     /**
+     * <code>CONFIG_NOT_FOUND = 7;</code>
+     *
+     * <pre>
+     * 配置错误
+     * </pre>
+     */
+    CONFIG_NOT_FOUND(7, 7),
+    /**
      * <code>SERVER_ERROR = 4096;</code>
      *
      * <pre>
      * 服务器错误
      * </pre>
      */
-    SERVER_ERROR(7, 4096),
+    SERVER_ERROR(8, 4096),
     ;
 
     /**
@@ -236,6 +244,14 @@ public final class Status {
      */
     public static final int PARAMS_INVALID_VALUE = 6;
     /**
+     * <code>CONFIG_NOT_FOUND = 7;</code>
+     *
+     * <pre>
+     * 配置错误
+     * </pre>
+     */
+    public static final int CONFIG_NOT_FOUND_VALUE = 7;
+    /**
      * <code>SERVER_ERROR = 4096;</code>
      *
      * <pre>
@@ -256,6 +272,7 @@ public final class Status {
         case 4: return SERVER_GRAY_STATE;
         case 5: return DATA_BASE_ERROR;
         case 6: return PARAMS_INVALID;
+        case 7: return CONFIG_NOT_FOUND;
         case 4096: return SERVER_ERROR;
         default: return null;
       }
@@ -504,6 +521,155 @@ public final class Status {
     // @@protoc_insertion_point(enum_scope:monsterError)
   }
 
+  /**
+   * Protobuf enum {@code itemError}
+   */
+  public enum itemError
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ITEM_NOT_FOUND = 262145;</code>
+     *
+     * <pre>
+     * 道具不存在
+     * </pre>
+     */
+    ITEM_NOT_FOUND(0, 262145),
+    /**
+     * <code>COINS_NOT_ENOUGH = 131074;</code>
+     *
+     * <pre>
+     * 金币不足
+     * </pre>
+     */
+    COINS_NOT_ENOUGH(1, 131074),
+    /**
+     * <code>GOLD_NOT_ENOUGH = 131075;</code>
+     *
+     * <pre>
+     * 钻石不足
+     * </pre>
+     */
+    GOLD_NOT_ENOUGH(2, 131075),
+    /**
+     * <code>EQUIP_NOT_FOUND = 131076;</code>
+     *
+     * <pre>
+     * 装备不足
+     * </pre>
+     */
+    EQUIP_NOT_FOUND(3, 131076),
+    /**
+     * <code>ITEM_NOT_ENOUGH = 262149;</code>
+     *
+     * <pre>
+     * 道具数量不足
+     * </pre>
+     */
+    ITEM_NOT_ENOUGH(4, 262149),
+    ;
+
+    /**
+     * <code>ITEM_NOT_FOUND = 262145;</code>
+     *
+     * <pre>
+     * 道具不存在
+     * </pre>
+     */
+    public static final int ITEM_NOT_FOUND_VALUE = 262145;
+    /**
+     * <code>COINS_NOT_ENOUGH = 131074;</code>
+     *
+     * <pre>
+     * 金币不足
+     * </pre>
+     */
+    public static final int COINS_NOT_ENOUGH_VALUE = 131074;
+    /**
+     * <code>GOLD_NOT_ENOUGH = 131075;</code>
+     *
+     * <pre>
+     * 钻石不足
+     * </pre>
+     */
+    public static final int GOLD_NOT_ENOUGH_VALUE = 131075;
+    /**
+     * <code>EQUIP_NOT_FOUND = 131076;</code>
+     *
+     * <pre>
+     * 装备不足
+     * </pre>
+     */
+    public static final int EQUIP_NOT_FOUND_VALUE = 131076;
+    /**
+     * <code>ITEM_NOT_ENOUGH = 262149;</code>
+     *
+     * <pre>
+     * 道具数量不足
+     * </pre>
+     */
+    public static final int ITEM_NOT_ENOUGH_VALUE = 262149;
+
+
+    public final int getNumber() { return value; }
+
+    public static itemError valueOf(int value) {
+      switch (value) {
+        case 262145: return ITEM_NOT_FOUND;
+        case 131074: return COINS_NOT_ENOUGH;
+        case 131075: return GOLD_NOT_ENOUGH;
+        case 131076: return EQUIP_NOT_FOUND;
+        case 262149: return ITEM_NOT_ENOUGH;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<itemError>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<itemError>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<itemError>() {
+            public itemError findValueByNumber(int number) {
+              return itemError.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(4);
+    }
+
+    private static final itemError[] VALUES = values();
+
+    public static itemError valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private itemError(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:itemError)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -515,16 +681,19 @@ public final class Status {
     java.lang.String[] descriptorData = {
       "\n\025Protocol/Status.proto*Y\n\terrorMask\022\020\n\014" +
       "NORMAL_ERROR\020\000\022\021\n\013LOGIN_ERROR\020\200\200\004\022\022\n\014PLA" +
-      "YER_ERROR\020\200\200\010\022\023\n\rMONSTER_ERROR\020\200\200\014*\252\001\n\005e" +
+      "YER_ERROR\020\200\200\010\022\023\n\rMONSTER_ERROR\020\200\200\014*\300\001\n\005e" +
       "rror\022\016\n\nNONE_ERROR\020\000\022\020\n\014CONFIG_ERROR\020\001\022\024" +
       "\n\020ONLINE_MAX_LIMIT\020\002\022\026\n\022REGISTER_MAX_LIM" +
       "IT\020\003\022\025\n\021SERVER_GRAY_STATE\020\004\022\023\n\017DATA_BASE" +
-      "_ERROR\020\005\022\022\n\016PARAMS_INVALID\020\006\022\021\n\014SERVER_E" +
-      "RROR\020\200 *B\n\013PlayerError\022\026\n\020PLAYER_NOT_EXI" +
-      "ST\020\201\200\010\022\033\n\025PLAYER_NICKNAME_EXIST\020\202\200\010*?\n\014m" +
-      "onsterError\022\026\n\020MONSTER_MAX_SIZE\020\201\200\014\022\027\n\021M",
-      "ONSTER_NOT_EXIST\020\202\200\014B\030\n\026com.hawk.game.pr" +
-      "otocol"
+      "_ERROR\020\005\022\022\n\016PARAMS_INVALID\020\006\022\024\n\020CONFIG_N" +
+      "OT_FOUND\020\007\022\021\n\014SERVER_ERROR\020\200 *B\n\013PlayerE" +
+      "rror\022\026\n\020PLAYER_NOT_EXIST\020\201\200\010\022\033\n\025PLAYER_N" +
+      "ICKNAME_EXIST\020\202\200\010*?\n\014monsterError\022\026\n\020MON",
+      "STER_MAX_SIZE\020\201\200\014\022\027\n\021MONSTER_NOT_EXIST\020\202" +
+      "\200\014*~\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026\n" +
+      "\020COINS_NOT_ENOUGH\020\202\200\010\022\025\n\017GOLD_NOT_ENOUGH" +
+      "\020\203\200\010\022\025\n\017EQUIP_NOT_FOUND\020\204\200\010\022\025\n\017ITEM_NOT_" +
+      "ENOUGH\020\205\200\020B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.IO;
 using System.Net;
@@ -26,7 +26,7 @@ public class SocketClient : MonoBehaviour {
     private byte[] byteBuffer = new byte[MAX_READ];
 
     public static bool loggedIn = false;
-    private static Queue<KeyValuePair<NetActionType, ByteBuffer>> _events = new Queue<KeyValuePair<NetActionType, ByteBuffer>>();
+	private static Queue<KeyValuePair<NetActionType, ProtocolMessage>> _events = new Queue<KeyValuePair<NetActionType, ProtocolMessage>>();
 
     // Use this for initialization
     void Awake() {
@@ -38,18 +38,23 @@ public class SocketClient : MonoBehaviour {
     /// 消息循环
     /// </summary>
     void Update() {
-        while (_events.Count > 0) {
-            KeyValuePair<NetActionType, ByteBuffer> _event = _events.Dequeue();
-            switch (_event.Key) {
+        while (_events.Count > 0) 
+		{
+			KeyValuePair<NetActionType, ProtocolMessage> _event = _events.Dequeue();
+
+            switch (_event.Key) 
+			{
                 case NetActionType.Connect:
                     ConnectServer(Const.SocketAddress, Const.SocketPort);
                 break;
                 case NetActionType.Message: 
-                    SessionSend(_event.Value.ToBytes());
+					SessionSend( _event.Value );
                 break;
-                case NetActionType.Logout: Close(); break;
+                case NetActionType.Logout:
+					Close();
+				break;
             }
-            if (_event.Value != null) _event.Value.Close();
+            //if (_event.Value != null) _event.Value.Close();
         }
     }
 
@@ -57,15 +62,19 @@ public class SocketClient : MonoBehaviour {
     /// 连接服务器
     /// </summary>
     void ConnectServer(string host, int port) {
+       // Debug.LogError("begin connect to server");
         client = null;
         client = new TcpClient();
         client.SendTimeout = 1000;
         client.ReceiveTimeout = 1000;
         client.NoDelay = true;
-        try {
+        try
+		{
             client.BeginConnect(host, port, new AsyncCallback(OnConnect), null);
-        } catch (Exception e) {
-            Close(); Debug.LogError(e.Message);
+        } 
+		catch (Exception e) {
+            Close(); 
+			Debug.LogError(e.Message);
         }
     }
 
@@ -73,9 +82,17 @@ public class SocketClient : MonoBehaviour {
     /// 连接上服务器
     /// </summary>
     void OnConnect(IAsyncResult asr) {
-        outStream = client.GetStream();
-        client.GetStream().BeginRead(byteBuffer, 0, MAX_READ, new AsyncCallback(OnRead), null);
-        NetworkManager.AddEvent(Protocal.Connect, new ByteBuffer());
+		try
+		{
+        	outStream = client.GetStream();
+        	client.GetStream().BeginRead(byteBuffer, 0, MAX_READ, new AsyncCallback(OnRead), null);
+       	 	NetworkManager.AddEvent(ResponseState.Connect, null);
+		}
+		catch(Exception e)
+		{
+			Logger.LogException(e);
+			NetworkManager.AddEvent(ResponseState.UnConnect, null);
+		}
     }
 
     /// <summary>
@@ -83,18 +100,22 @@ public class SocketClient : MonoBehaviour {
     /// </summary>
     void WriteMessage(byte[] message) {
         MemoryStream ms = null;
-        using (ms = new MemoryStream()) {
+        using (ms = new MemoryStream()) 
+		{
             ms.Position = 0;
             BinaryWriter writer = new BinaryWriter(ms);
             ushort msglen = (ushort)message.Length;
-            writer.Write(msglen);
+           // writer.Write(msglen);
             writer.Write(message);
             writer.Flush();
-            if (client != null && client.Connected) {
+            if (client != null && client.Connected) 
+			{
                 //NetworkStream stream = client.GetStream(); 
                 byte[] payload = ms.ToArray(); 
                 outStream.BeginWrite(payload, 0, payload.Length, new AsyncCallback(OnWrite), null);
-            } else {
+            } 
+			else 
+			{
                 Debug.LogError("client.connected----->>false");
             }
         }
@@ -103,22 +124,30 @@ public class SocketClient : MonoBehaviour {
     /// <summary>
     /// 读取消息
     /// </summary>
-    void OnRead(IAsyncResult asr) {
+    void OnRead(IAsyncResult asr)
+	{
         int bytesRead = 0;
-        try {
-            lock (client.GetStream()) {         //读取字节流到缓冲区
+        try 
+		{
+            lock (client.GetStream()) 
+			{         //读取字节流到缓冲区
                 bytesRead = client.GetStream().EndRead(asr);
             }
-            if (bytesRead < 1) {                //包尺寸有问题，断线处理
+            if (bytesRead < 1) 
+			{                //包尺寸有问题，断线处理
                 OnDisconnected(DisType.Disconnect, "bytesRead < 1");
                 return;
             }
             OnReceive(byteBuffer, bytesRead);   //分析数据包内容，抛给逻辑层
-            lock (client.GetStream()) {         //分析完，再次监听服务器发过来的新消息
+
+            lock (client.GetStream())
+			{         //分析完，再次监听服务器发过来的新消息
                 Array.Clear(byteBuffer, 0, byteBuffer.Length);   //清空数组
                 client.GetStream().BeginRead(byteBuffer, 0, MAX_READ, new AsyncCallback(OnRead), null);
             }
-        } catch (Exception ex) {
+        } 
+		catch (Exception ex) 
+		{
             //PrintBytes();
             OnDisconnected(DisType.Exception, ex.Message);
         }
@@ -130,11 +159,9 @@ public class SocketClient : MonoBehaviour {
     void OnDisconnected(DisType dis, string msg) {
         Close();   //关掉客户端链接
         int protocal = dis == DisType.Exception ? 
-        Protocal.Exception : Protocal.Disconnect;
+			ResponseState.Exception : ResponseState.Disconnect;
 
-        ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteShort((ushort)protocal);
-        NetworkManager.AddEvent(protocal, buffer);
+        NetworkManager.AddEvent(protocal, null);
         Debug.LogError("Connection was closed by the server:>" + msg + " Distype:>" + dis);
     }
 
@@ -164,29 +191,50 @@ public class SocketClient : MonoBehaviour {
     /// <summary>
     /// 接收到消息
     /// </summary>
-    void OnReceive(byte[] bytes, int length) {
+    void OnReceive(byte[] bytes, int length) 
+	{
         memStream.Seek(0, SeekOrigin.End);
         memStream.Write(bytes, 0, length);
         //Reset to beginning
         memStream.Seek(0, SeekOrigin.Begin);
-        while (RemainingBytes() > 2) {
-            ushort messageLen = reader.ReadUInt16();
-            if (RemainingBytes() >= messageLen) {
+        while (RemainingBytes() > ProtocolMessage.HEAD_SIZE)
+		{
+            Byte[] tempBuffer = new Byte[sizeof(int)];
+            memStream.Read(tempBuffer, 0, sizeof(int));
+            int type = IPAddress.NetworkToHostOrder(System.BitConverter.ToInt32(tempBuffer, 0));
+            memStream.Read(tempBuffer, 0, sizeof(int));
+            int size = IPAddress.NetworkToHostOrder(System.BitConverter.ToInt32(tempBuffer, 0));
+            memStream.Seek(0, SeekOrigin.Begin);
+
+			if (RemainingBytes() >= size + ProtocolMessage.HEAD_SIZE)
+            {
                 MemoryStream ms = new MemoryStream();
                 BinaryWriter writer = new BinaryWriter(ms);
-                writer.Write(reader.ReadBytes(messageLen));
-                ms.Seek(0, SeekOrigin.Begin);
-                OnReceivedMessage(ms);
-            } else {
+				writer.Write(reader.ReadBytes(size + ProtocolMessage.HEAD_SIZE));
+				ms.Seek(0, SeekOrigin.Begin);
+				OnReceivedMessage(ms);
+
+				byte[] leftover1 = reader.ReadBytes((int)RemainingBytes());
+				memStream.SetLength(0);     //Clear
+				memStream.Write(leftover1, 0, leftover1.Length);
+				memStream.Seek (0, SeekOrigin.Begin);
+				//memStream.Seek(size + ProtocolMessage.HEAD_SIZE, SeekOrigin.Begin);
+                
+            } 
+			else 
+			{
                 //Back up the position two bytes
-                memStream.Position = memStream.Position - 2;
+              //  memStream.Position = memStream.Position - 2;
+				memStream.Seek(0, SeekOrigin.Begin);
                 break;
             }
         }
+
         //Create a new stream with any leftover bytes
         byte[] leftover = reader.ReadBytes((int)RemainingBytes());
         memStream.SetLength(0);     //Clear
         memStream.Write(leftover, 0, leftover.Length);
+
     }
 
     /// <summary>
@@ -200,22 +248,23 @@ public class SocketClient : MonoBehaviour {
     /// 接收到消息
     /// </summary>
     /// <param name="ms"></param>
-    void OnReceivedMessage(MemoryStream ms) {
-        BinaryReader r = new BinaryReader(ms);
-        byte[] message = r.ReadBytes((int)(ms.Length - ms.Position));
-        //int msglen = message.Length;
+    void OnReceivedMessage(MemoryStream ms) 
+	{
+		ProtocolMessage receivMsg = ProtocolMessage.Create ();
+		receivMsg.decode (ms);
 
-        ByteBuffer buffer = new ByteBuffer(message);
-        int mainId = buffer.ReadShort();
-        NetworkManager.AddEvent(mainId, buffer);
+		NetworkManager.AddEvent(ResponseState.Message, receivMsg);
     }
 
 
     /// <summary>
     /// 会话发送
     /// </summary>
-    void SessionSend(byte[] bytes) {
-        WriteMessage(bytes);
+    void SessionSend(ProtocolMessage msg) 
+	{
+		MemoryStream ms = new MemoryStream ();
+		msg.encode (ms);
+        WriteMessage(ms.ToArray());
     }
 
     /// <summary>
@@ -233,20 +282,20 @@ public class SocketClient : MonoBehaviour {
     /// 登出
     /// </summary>
     public static void Logout() { 
-        _events.Enqueue(new KeyValuePair<NetActionType, ByteBuffer>(NetActionType.Logout, null));
+		_events.Enqueue(new KeyValuePair<NetActionType, ProtocolMessage>(NetActionType.Logout, null));
     }
 
     /// <summary>
     /// 发送连接请求
     /// </summary>
     public static void SendConnect() {
-        _events.Enqueue(new KeyValuePair<NetActionType, ByteBuffer>(NetActionType.Connect, null));
+		_events.Enqueue(new KeyValuePair<NetActionType, ProtocolMessage>(NetActionType.Connect, null));
     }
 
     /// <summary>
     /// 发送消息
     /// </summary>
-    public static void SendMessage(ByteBuffer buffer) {
-        _events.Enqueue(new KeyValuePair<NetActionType, ByteBuffer>(NetActionType.Message, buffer));
+	public static void SendMessage(ProtocolMessage buffer) {
+		_events.Enqueue(new KeyValuePair<NetActionType, ProtocolMessage>(NetActionType.Message, buffer));
     }
 }

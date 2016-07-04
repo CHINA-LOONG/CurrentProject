@@ -42,6 +42,9 @@ public class BattleTest : MonoBehaviour
                 if (i > 2)
                     pbUnit.slot = BattleConst.offsiteSlot;
 
+				pbUnit.character = 4;
+				pbUnit.lazy = 4;
+
                 list.Add(pbUnit);
             }
 
@@ -76,6 +79,9 @@ public class BattleTest : MonoBehaviour
             if (i > 2)
                 pbUnit.slot = BattleConst.offsiteSlot;
 
+			pbUnit.character = 4;
+			pbUnit.lazy = 4;
+
             proto.enemyList.Add(pbUnit);
         }
 
@@ -100,6 +106,8 @@ public class BattleTest : MonoBehaviour
             pbUnit.id = "Unit_Demo_jiuweihu"; //instanceData.rareID;
         pbUnit.level = 50;
         pbUnit.slot = 1;
+		pbUnit.character = 2;
+		pbUnit.lazy = 2;
 
         proto.enemyList.Add(pbUnit);
 
@@ -125,6 +133,8 @@ public class BattleTest : MonoBehaviour
             pbUnit.id = "soul"; //instanceData.rareID;
         pbUnit.level = 28;
         pbUnit.slot = 1;
+		pbUnit.character = 2;
+		pbUnit.lazy = 2;
 
         proto.enemyList.Add(pbUnit);
 

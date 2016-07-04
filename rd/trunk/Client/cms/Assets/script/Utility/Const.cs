@@ -55,6 +55,7 @@ public class Const
     //游戏管理器object名字
     public static string GameAppName = "GameApp";
 
-    public static int SocketPort = 0;                           //Socket服务器端口
-    public static string SocketAddress = string.Empty;          //Socket服务器地址
+	public static int SocketPort = 9595;                          //Socket服务器端口
+	public static string SocketAddress = "192.168.199.122";          //Socket服务器地址
+	//public static string SocketAddress = "192.168.199.178";          // Socket服务器地址
 }

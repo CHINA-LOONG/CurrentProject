@@ -40,13 +40,13 @@ public class ItemEntity extends HawkDBEntity {
 	@Column(name = "status", nullable = false)
 	protected byte status = 0;
 
-	@Column(name = "expireTime", nullable = false)
+	@Column(name = "expireTime")
 	protected Date expireTime = null;
 
 	@Column(name = "createTime", nullable = false)
 	protected Date createTime = null;
 
-	@Column(name = "updateTime", nullable = false)
+	@Column(name = "updateTime")
 	protected Date updateTime;
 
 	@Column(name = "invalid", nullable = false)

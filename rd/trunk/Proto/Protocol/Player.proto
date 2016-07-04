@@ -64,6 +64,11 @@ message HSPlayerInfoSync
 	required PlayerInfo info = 1;
 }
 
+message HSStatisticsInfoSync
+{
+	optional string instanceState = 1;	
+}
+
 message HSAssembleFinish
 {
 	required int32 playerID = 1;

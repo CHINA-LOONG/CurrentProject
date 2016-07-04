@@ -16,6 +16,9 @@ public class BattleUnitAi : MonoBehaviour {
 		UnKown
 	}
 
+	int enemyLazyIndex = 3;
+	int enmeyCharacterIndex = 3;//性格
+
 	public	class AiAttackResult
 	{
 		public	AiAttackStyle attackStyle = AiAttackStyle.UnKown;
@@ -33,7 +36,7 @@ public class BattleUnitAi : MonoBehaviour {
 	}
 
 	// 
-	BattleUnitAiData  battleUnitAiData = null;
+
 	int	attackMaxTimes = 100;
 
 	JiuWeiHuUnitAi jiuWeiHuAi = null;
@@ -61,32 +64,18 @@ public class BattleUnitAi : MonoBehaviour {
 
 		AiAttackResult attackResult = new AiAttackResult ();
 
-		string aIIndex = battleUnit.Ai;
-		battleUnitAiData = StaticDataMgr.Instance.GetBattleUnitAiData (aIIndex);
-		if (null == battleUnitAiData)
-		{
-			Logger.LogErrorFormat("Can't find  AiData index = " + aIIndex);
-			return attackResult;
-		}
 
-
-		if (battleUnit.lazyList.Count < 1)
+		if ( battleUnit.lazyList.Count < 1)
 		{
 			InitLazyList(battleUnit);
 		}
-		if (battleUnit.dazhaoList.Count < 1)
+		if (UnitCamp.Enemy == battleUnit.pbUnit.camp && battleUnit.dazhaoList.Count < 1)
 		{
 			InitDazhaoList(battleUnit);
 		}
 
 		attackResult.attackStyle = GetAttackStyle (battleUnit);
-		//test
-		//if (attackResult.attackStyle != AiAttackStyle.PhysicsAttack )
-		//{
-		//	attackResult.attackStyle = AiAttackStyle.PhysicsAttack;
-		//	Debug.LogError("todo:liws test attack Style,need spellList!!");
-		//}
-		///end test
+
 		attackResult.useSpell = GetSpell (attackResult.attackStyle, battleUnit);
 
 		GameUnit attackTarget = null;
@@ -101,40 +90,27 @@ public class BattleUnitAi : MonoBehaviour {
 
 		case (int) SpellType.Spell_Type_PhyAttack:
 		case (int) SpellType.Spell_Type_MgicAttack:
-		case (int) SpellType.Spell_Type_DaZhao:
 		{
-
-				List<GameUnit> listTarget = GetOppositeSideFiledList (battleUnit);
-				//对方是否有可攻击的弱点
-				GameUnit unit = null;
-				string wpName = null;
-				if(CheckAttackWpAi(listTarget,out unit, out wpName))
-				{
-					attackResult.attackTarget = unit;
-					unit.attackWpName = wpName;
-					return attackResult;
-				}
-
-			attackTarget = GetAttackTargetUnitNormalStyle (battleUnit,true);
+			attackTarget = GetAttackTargetNormalStyle (battleUnit);
 		}
 			break;
 
 		case (int) SpellType.Spell_Type_Cure:
-			//attackTarget = GetAttackTargetUnitNormalStyle (battleUnit,false);
 			attackTarget = GetCurveAiTarget(battleUnit);
 			break;
 		
 		case (int) SpellType.Spell_Type_Beneficial:
-			attackTarget = GetAttackTargetUnitBuffStyle (battleUnit,attackResult.useSpell);
-			break;
 		case (int) SpellType.Spell_Type_Negative:
 			attackTarget = GetAttackTargetUnitBuffStyle (battleUnit,attackResult.useSpell);
+			break;
+		case (int) SpellType.Spell_Type_DaZhao:
+			attackTarget = GetDazhaoAttackTarget(battleUnit);
 			break;
 		default:
 			Debug.LogError("battleAi Can't did the spelltype " + spellType);
 			break;
 		}
-		attackTarget.attackWpName = null;
+	//	attackTarget.attackWpName = null;
 		attackResult.attackTarget = attackTarget;
 
 		return attackResult;
@@ -144,10 +120,23 @@ public class BattleUnitAi : MonoBehaviour {
 	{
 		battleUnit.lazyList.Clear ();
 		int maxGroup = 0;
-		int lazyGroup = battleUnitAiData.lazyGroup;
+
+		int lazyIndex = battleUnit.lazy;
+		if (battleUnit.pbUnit.camp == UnitCamp.Enemy) 
+		{
+			lazyIndex = enemyLazyIndex;
+		}
+		LazyData lazyData = StaticDataMgr.Instance.GetLazyData (lazyIndex);
+		if (null == lazyData) 
+		{
+			Debug.LogError("static lazy data Can't contain index = " + lazyIndex);
+			return;
+		}
+
+		int lazyGroup = lazyData.lazyGroup;
 		maxGroup = attackMaxTimes / lazyGroup + 1;
 
-		int timesPerGroup = battleUnitAiData.lazyTimes;
+		int timesPerGroup = lazyData.lazyTimes;
 		for (int i = 0; i< maxGroup; ++ i) 
 		{
 			List<int> rondomList = Util.RondomNoneReatNumbers(0,lazyGroup,timesPerGroup);
@@ -163,8 +152,10 @@ public class BattleUnitAi : MonoBehaviour {
 		battleUnit.dazhaoList.Clear ();
 
 		int maxGroup = 0;
-		int dazhaoGroup = battleUnitAiData.dazhaoGroup;
-		int dazhaoAdjust = battleUnitAiData.dazhaoAdjust;
+
+		InstanceData instanceData = BattleController.Instance.InstanceData;
+		int dazhaoGroup = instanceData.dazhaoGroup;
+		int dazhaoAdjust = instanceData.dazhaoAdjust;
 
 		maxGroup = attackMaxTimes / dazhaoGroup + 1;
 
@@ -243,78 +234,37 @@ public class BattleUnitAi : MonoBehaviour {
 		return AiAttackStyle.UnKown;
 	}
 
-	GameUnit GetAttackTargetUnitNormalStyle(GameUnit battleUnit,bool isAttack)
+	GameUnit GetAttackTargetNormalStyle(GameUnit battleUnit)
 	{
 		List<GameUnit> listTarget;
-		if (isAttack)
+		listTarget = GetOppositeSideFiledList (battleUnit);
+
+		int iIndex = Random.Range (0, listTarget.Count);
+
+		GameUnit attackResult = listTarget [iIndex];
+
+		if (attackResult.pbUnit.camp == UnitCamp.Enemy) 
 		{
-			listTarget = GetOppositeSideFiledList (battleUnit);
-		}
-		else
-		{
-			listTarget = GetOurSideFiledList  (battleUnit);
-		}
-
-
-		int [] weightSz = new int[8];
-		weightSz [0] = battleUnitAiData.rondomWeight;
-
-		weightSz [1] = battleUnitAiData.goldWeight;
-		weightSz [2] = battleUnitAiData.woodWeight;
-		weightSz [3] = battleUnitAiData.waterWeight;
-		weightSz [4] = battleUnitAiData.fireWeight;
-		weightSz [5] = battleUnitAiData.soilWeight;
-
-		weightSz [6] = battleUnitAiData.maxBloodWeight;
-		weightSz [7] = battleUnitAiData.minBloodWeight;
-		List<int> listWeight = new List<int> (weightSz);
-
-		int rondomIndex = Util.RondomWithWeight (listWeight);
-
-		//rondom style
-		if (0 == rondomIndex)
-		{
-			int index =  Random.Range(0,listTarget.Count);
-			return listTarget[index];
-		}
-
-		// property stle
-		if (rondomIndex > 0 && rondomIndex < 6) 
-		{
-			int property = rondomIndex;
-
-			GameUnit subUnit;
-			for(int i =0;i<listTarget.Count;++i)
+			string wpName = RandowmAttackWp(attackResult);
+			if(!string.IsNullOrEmpty(wpName))
 			{
-				subUnit = listTarget[i];
-				if(subUnit.property == property)
-				{
-					return subUnit;
-				}
+				attackResult.attackWpName = wpName;
 			}
-			int index =  Random.Range(0,listTarget.Count);
-			return  listTarget[index];
 		}
-		//blood style
-		//max blood
-		bool isAttackMaxBlood = false;
-		if (6 == rondomIndex)
+
+		return attackResult;
+	}
+
+	private string RandowmAttackWp(GameUnit attackUnit)
+	{
+		
+		List<string> wpList = WeakPointController.Instance.GetCanAttackWeakpointList(attackUnit);
+		if(wpList == null || wpList.Count < 1)
 		{
-			isAttackMaxBlood = true;
+			return null;
 		}
-		listTarget.Sort(delegate(GameUnit x, GameUnit y){
-			if(isAttackMaxBlood)
-			{
-				return y.curLife.CompareTo(x.curLife);
-			}
-			else
-			{
-				return x.curLife.CompareTo(y.curLife);
-			}
-		});
-
-		return listTarget [0];
-
+		int rindex = Random.Range(0,wpList.Count);
+		return wpList [rindex];
 	}
 
 	GameUnit GetAttackTargetUnitBuffStyle(GameUnit battleUnit,Spell casterSpell)
@@ -366,6 +316,17 @@ public class BattleUnitAi : MonoBehaviour {
 			int rondomIndex = Random.Range (0, listValidTarget.Count);
 			return listValidTarget [rondomIndex];
 		}
+	}
+
+	GameUnit GetDazhaoAttackTarget(GameUnit battleUnit)
+	{
+		List<GameUnit> listTarget;
+		listTarget = GetOppositeSideFiledList (battleUnit);
+		
+		int iIndex = Random.Range (0, listTarget.Count);
+		
+		GameUnit attackResult = listTarget [iIndex];
+		return attackResult;
 	}
 
 	GameUnit GetCurveAiTarget(GameUnit battleUnit)
@@ -420,16 +381,30 @@ public class BattleUnitAi : MonoBehaviour {
 		}
 		
 		//大招
-		if (battleUnit.dazhaoList.Contains (battleUnit.attackCount))
+		if ( UnitCamp.Enemy == battleUnit.pbUnit.camp &&
+		    battleUnit.dazhaoList.Contains (battleUnit.attackCount))
 		{
 			return AiAttackStyle.Dazhao;
 		}
 
+		int unitCharacter = battleUnit.character;
+		if (battleUnit.pbUnit.camp == UnitCamp.Enemy) 
+		{
+			unitCharacter = enmeyCharacterIndex;
+		}
+
+		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (unitCharacter);
+		if (null == characterData)
+		{
+			Debug.LogError("Can't Find characterData index = " + battleUnit.character);
+			return AiAttackStyle.UnKown;
+		}
+
 		int [] weightSz = new int[4];
-		weightSz[0] = battleUnitAiData.physicsWeight;
+		weightSz[0] = characterData.physicsWeight;
 		weightSz[1] = GetMagicWeight(battleUnit);
-		weightSz[2] = battleUnitAiData.gainWeight;
-		weightSz[3] = battleUnitAiData.defenseWeight;
+		weightSz[2] = characterData.gainWeight;
+		weightSz[3] = characterData.defenseWeight;
 		List<int> listWeight = new List<int> (weightSz);
 
 		int rondomIndex = Util.RondomWithWeight (listWeight);
@@ -450,7 +425,14 @@ public class BattleUnitAi : MonoBehaviour {
 
 	int	GetMagicWeight(GameUnit battleUnit)
 	{
-		int magicWeight = battleUnitAiData.magicWeight;
+		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (battleUnit.character);
+		if (null == characterData)
+		{
+			Debug.LogError("Can't Find  1characterData index = " + battleUnit.character);
+			return 0;
+		}
+
+		int magicWeight = characterData.magicWeight;
 		if (IsCureMagic (battleUnit)) 
 		{
 			List<GameUnit> listUnit = GetOurSideFiledList(battleUnit);
@@ -469,14 +451,11 @@ public class BattleUnitAi : MonoBehaviour {
 				magicWeight = 0;
 			}
 		}
-
 		return magicWeight;
 	}
 
 	bool IsCureMagic(GameUnit battleUnit)
 	{
-		//todo by zz
-		//Debug.LogError ("todo by ZZ,comming later!");
 		Dictionary<string,Spell> spellList = battleUnit.spellList;
 		foreach (var subSpell in spellList.Values)
 		{
@@ -534,31 +513,5 @@ public class BattleUnitAi : MonoBehaviour {
 		}
 		return  listField;
 	}
-
-	private bool CheckAttackWpAi(List<GameUnit> listTarget,out GameUnit unit,out string wpName)
-	{
-		int rondomAi = Random.Range (0, 2);
-		if (rondomAi == 0) 
-		{
-			unit = null;
-			wpName = null;
-			return false;
-		}
-		foreach (GameUnit subUnit in listTarget)
-		{
-			List<string> wpList = WeakPointController.Instance.GetCanAttackWeakpointList(subUnit);
-			if(wpList == null || wpList.Count < 1)
-			{
-				continue;
-			}
-			int rindex = Random.Range(0,wpList.Count);
-			unit = subUnit;
-			//Debug.LogError("rindex = " + rindex + " count = " + wpList.Count);
-			wpName = wpList[rindex];
-			return true;
-		}
-		unit = null;
-		wpName = null;
-		return false;
-	}
+	
 }

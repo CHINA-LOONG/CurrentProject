@@ -10,101 +10,50 @@
 // Generated from: Protocol/Player.proto
 namespace PB
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPlayerKickout")]
-  public partial class HSPlayerKickout : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SynPlayerAttr")]
+  public partial class SynPlayerAttr : global::ProtoBuf.IExtensible
   {
-    public HSPlayerKickout() {}
+    public SynPlayerAttr() {}
     
-    private int _reason;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"reason", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int reason
-    {
-      get { return _reason; }
-      set { _reason = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPlayerCreate")]
-  public partial class HSPlayerCreate : global::ProtoBuf.IExtensible
-  {
-    public HSPlayerCreate() {}
-    
-    private string _puid;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"puid", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string puid
-    {
-      get { return _puid; }
-      set { _puid = value; }
-    }
-    private string _nickname;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string nickname
-    {
-      get { return _nickname; }
-      set { _nickname = value; }
-    }
-    private int _career;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"career", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int career
-    {
-      get { return _career; }
-      set { _career = value; }
-    }
-    private int _gender;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"gender", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int gender
-    {
-      get { return _gender; }
-      set { _gender = value; }
-    }
-    private int _eye;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"eye", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int eye
-    {
-      get { return _eye; }
-      set { _eye = value; }
-    }
-    private int _hair;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"hair", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int hair
-    {
-      get { return _hair; }
-      set { _hair = value; }
-    }
-    private int _hairColor;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"hairColor", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int hairColor
-    {
-      get { return _hairColor; }
-      set { _hairColor = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPlayerCreateRet")]
-  public partial class HSPlayerCreateRet : global::ProtoBuf.IExtensible
-  {
-    public HSPlayerCreateRet() {}
-    
-    private int _status;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int status
-    {
-      get { return _status; }
-      set { _status = value; }
-    }
-    private int _palyerID = default(int);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"palyerID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    private int _gold = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"gold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
-    public int palyerID
+    public int gold
     {
-      get { return _palyerID; }
-      set { _palyerID = value; }
+      get { return _gold; }
+      set { _gold = value; }
+    }
+    private long _coin = default(long);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"coin", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(long))]
+    public long coin
+    {
+      get { return _coin; }
+      set { _coin = value; }
+    }
+    private int _level = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
+    }
+    private int _exp = default(int);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"exp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int exp
+    {
+      get { return _exp; }
+      set { _exp = value; }
+    }
+    private int _vipLevel = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"vipLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int vipLevel
+    {
+      get { return _vipLevel; }
+      set { _vipLevel = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -216,18 +165,119 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPlayerKickout")]
+  public partial class HSPlayerKickout : global::ProtoBuf.IExtensible
+  {
+    public HSPlayerKickout() {}
+    
+    private int _reason;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"reason", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int reason
+    {
+      get { return _reason; }
+      set { _reason = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPlayerCreate")]
+  public partial class HSPlayerCreate : global::ProtoBuf.IExtensible
+  {
+    public HSPlayerCreate() {}
+    
+    private string _puid;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"puid", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string puid
+    {
+      get { return _puid; }
+      set { _puid = value; }
+    }
+    private string _nickname;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string nickname
+    {
+      get { return _nickname; }
+      set { _nickname = value; }
+    }
+    private int _career;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"career", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int career
+    {
+      get { return _career; }
+      set { _career = value; }
+    }
+    private int _gender;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"gender", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int gender
+    {
+      get { return _gender; }
+      set { _gender = value; }
+    }
+    private int _eye;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"eye", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int eye
+    {
+      get { return _eye; }
+      set { _eye = value; }
+    }
+    private int _hair;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"hair", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int hair
+    {
+      get { return _hair; }
+      set { _hair = value; }
+    }
+    private int _hairColor;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"hairColor", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int hairColor
+    {
+      get { return _hairColor; }
+      set { _hairColor = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPlayerCreateRet")]
+  public partial class HSPlayerCreateRet : global::ProtoBuf.IExtensible
+  {
+    public HSPlayerCreateRet() {}
+    
+    private int _status;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int status
+    {
+      get { return _status; }
+      set { _status = value; }
+    }
+    private int _palyerID = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"palyerID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int palyerID
+    {
+      get { return _palyerID; }
+      set { _palyerID = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSPlayerInfoSync")]
   public partial class HSPlayerInfoSync : global::ProtoBuf.IExtensible
   {
     public HSPlayerInfoSync() {}
     
-    private readonly global::System.Collections.Generic.List<PlayerInfo> _playerInfos = new global::System.Collections.Generic.List<PlayerInfo>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"playerInfos", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<PlayerInfo> playerInfos
+    private PlayerInfo _info;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"info", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public PlayerInfo info
     {
-      get { return _playerInfos; }
+      get { return _info; }
+      set { _info = value; }
     }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

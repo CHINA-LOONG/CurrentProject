@@ -8,6 +8,572 @@ public final class Monster {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface SynMonsterAttrOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 monsterId = 1;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    int getMonsterId();
+
+    // optional int32 level = 2;
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    int getLevel();
+
+    // optional int32 exp = 3;
+    /**
+     * <code>optional int32 exp = 3;</code>
+     */
+    boolean hasExp();
+    /**
+     * <code>optional int32 exp = 3;</code>
+     */
+    int getExp();
+  }
+  /**
+   * Protobuf type {@code SynMonsterAttr}
+   */
+  public static final class SynMonsterAttr extends
+      com.google.protobuf.GeneratedMessage
+      implements SynMonsterAttrOrBuilder {
+    // Use SynMonsterAttr.newBuilder() to construct.
+    private SynMonsterAttr(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SynMonsterAttr(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SynMonsterAttr defaultInstance;
+    public static SynMonsterAttr getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SynMonsterAttr getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SynMonsterAttr(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              monsterId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              level_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              exp_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Monster.internal_static_SynMonsterAttr_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Monster.internal_static_SynMonsterAttr_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Monster.SynMonsterAttr.class, com.hawk.game.protocol.Monster.SynMonsterAttr.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SynMonsterAttr> PARSER =
+        new com.google.protobuf.AbstractParser<SynMonsterAttr>() {
+      public SynMonsterAttr parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SynMonsterAttr(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SynMonsterAttr> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 monsterId = 1;
+    public static final int MONSTERID_FIELD_NUMBER = 1;
+    private int monsterId_;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    // optional int32 level = 2;
+    public static final int LEVEL_FIELD_NUMBER = 2;
+    private int level_;
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    // optional int32 exp = 3;
+    public static final int EXP_FIELD_NUMBER = 3;
+    private int exp_;
+    /**
+     * <code>optional int32 exp = 3;</code>
+     */
+    public boolean hasExp() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 exp = 3;</code>
+     */
+    public int getExp() {
+      return exp_;
+    }
+
+    private void initFields() {
+      monsterId_ = 0;
+      level_ = 0;
+      exp_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, level_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, exp_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, level_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, exp_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Monster.SynMonsterAttr parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.SynMonsterAttr parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.SynMonsterAttr parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.SynMonsterAttr parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.SynMonsterAttr parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.SynMonsterAttr parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.SynMonsterAttr parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.SynMonsterAttr parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.SynMonsterAttr parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.SynMonsterAttr parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Monster.SynMonsterAttr prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SynMonsterAttr}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Monster.SynMonsterAttrOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Monster.internal_static_SynMonsterAttr_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Monster.internal_static_SynMonsterAttr_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Monster.SynMonsterAttr.class, com.hawk.game.protocol.Monster.SynMonsterAttr.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Monster.SynMonsterAttr.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        monsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        exp_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Monster.internal_static_SynMonsterAttr_descriptor;
+      }
+
+      public com.hawk.game.protocol.Monster.SynMonsterAttr getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Monster.SynMonsterAttr.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Monster.SynMonsterAttr build() {
+        com.hawk.game.protocol.Monster.SynMonsterAttr result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Monster.SynMonsterAttr buildPartial() {
+        com.hawk.game.protocol.Monster.SynMonsterAttr result = new com.hawk.game.protocol.Monster.SynMonsterAttr(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.monsterId_ = monsterId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.exp_ = exp_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Monster.SynMonsterAttr) {
+          return mergeFrom((com.hawk.game.protocol.Monster.SynMonsterAttr)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Monster.SynMonsterAttr other) {
+        if (other == com.hawk.game.protocol.Monster.SynMonsterAttr.getDefaultInstance()) return this;
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
+        if (other.hasExp()) {
+          setExp(other.getExp());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMonsterId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Monster.SynMonsterAttr parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Monster.SynMonsterAttr) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 monsterId = 1;
+      private int monsterId_ ;
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000001;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level = 2;
+      private int level_ ;
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000002;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 exp = 3;
+      private int exp_ ;
+      /**
+       * <code>optional int32 exp = 3;</code>
+       */
+      public boolean hasExp() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 exp = 3;</code>
+       */
+      public int getExp() {
+        return exp_;
+      }
+      /**
+       * <code>optional int32 exp = 3;</code>
+       */
+      public Builder setExp(int value) {
+        bitField0_ |= 0x00000004;
+        exp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 exp = 3;</code>
+       */
+      public Builder clearExp() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        exp_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SynMonsterAttr)
+    }
+
+    static {
+      defaultInstance = new SynMonsterAttr(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:SynMonsterAttr)
+  }
+
   public interface HSMonsterOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -6054,6 +6620,11 @@ public final class Monster {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SynMonsterAttr_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SynMonsterAttr_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSMonster_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -6103,75 +6674,82 @@ public final class Monster {
   static {
     java.lang.String[] descriptorData = {
       "\n\026Protocol/Monster.proto\032\024Protocol/Const" +
-      ".proto\032\024Protocol/Skill.proto\"\213\001\n\tHSMonst" +
-      "er\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005cfgId\030\002 \002(\t\022\r\n\005" +
-      "stage\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\022" +
-      "\014\n\004lazy\030\006 \002(\005\022\n\n\002ai\030\007 \002(\005\022\027\n\005skill\030\010 \003(\013" +
-      "2\010.HSSkill\"4\n\021HSMonsterInfoSync\022\037\n\013monst" +
-      "erInfo\030\001 \003(\0132\n.HSMonster\"W\n\014HSMonsterAdd" +
-      "\022\033\n\007monster\030\001 \002(\0132\n.HSMonster\022*\n\006reason\030" +
-      "\002 \001(\0162\r.RewardReason:\013SYS_PRESENT\"|\n\016HSM" +
-      "onsterCatch\022\r\n\005cfgId\030\001 \002(\t\022\020\n\005stage\030\002 \001(",
-      "\005:\0010\022\020\n\005level\030\003 \001(\005:\0011\022\017\n\004lazy\030\004 \001(\005:\0011\022" +
-      "\r\n\002ai\030\005 \001(\005:\0011\022\027\n\005skill\030\006 \003(\0132\010.HSSkill\"" +
-      "#\n\016HSMonsterBreak\022\021\n\tmonsterId\030\001 \002(\005\"6\n\021" +
-      "HSMonsterBreakRet\022\016\n\006status\030\001 \002(\005\022\021\n\tmon" +
-      "sterId\030\002 \002(\005\"9\n\rHSMonsterFeed\022\021\n\tmonster" +
-      "Id\030\001 \002(\005\022\025\n\rfoodMonsterId\030\002 \002(\005\"h\n\020HSMon" +
-      "sterFeedRet\022\016\n\006status\030\001 \002(\005\022\021\n\tmonsterId" +
-      "\030\002 \002(\005\022\025\n\rfoodMonsterId\030\003 \002(\005\022\013\n\003exp\030\004 \001" +
-      "(\005\022\r\n\005level\030\005 \001(\005B\030\n\026com.hawk.game.proto" +
-      "col"
+      ".proto\032\024Protocol/Skill.proto\"?\n\016SynMonst" +
+      "erAttr\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005level\030\002 \001(\005" +
+      "\022\013\n\003exp\030\003 \001(\005\"\213\001\n\tHSMonster\022\021\n\tmonsterId" +
+      "\030\001 \002(\005\022\r\n\005cfgId\030\002 \002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005" +
+      "level\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004lazy\030\006 \002(\005\022\n" +
+      "\n\002ai\030\007 \002(\005\022\027\n\005skill\030\010 \003(\0132\010.HSSkill\"4\n\021H" +
+      "SMonsterInfoSync\022\037\n\013monsterInfo\030\001 \003(\0132\n." +
+      "HSMonster\"W\n\014HSMonsterAdd\022\033\n\007monster\030\001 \002" +
+      "(\0132\n.HSMonster\022*\n\006reason\030\002 \001(\0162\r.RewardR",
+      "eason:\013SYS_PRESENT\"|\n\016HSMonsterCatch\022\r\n\005" +
+      "cfgId\030\001 \002(\t\022\020\n\005stage\030\002 \001(\005:\0010\022\020\n\005level\030\003" +
+      " \001(\005:\0011\022\017\n\004lazy\030\004 \001(\005:\0011\022\r\n\002ai\030\005 \001(\005:\0011\022" +
+      "\027\n\005skill\030\006 \003(\0132\010.HSSkill\"#\n\016HSMonsterBre" +
+      "ak\022\021\n\tmonsterId\030\001 \002(\005\"6\n\021HSMonsterBreakR" +
+      "et\022\016\n\006status\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\"9\n" +
+      "\rHSMonsterFeed\022\021\n\tmonsterId\030\001 \002(\005\022\025\n\rfoo" +
+      "dMonsterId\030\002 \002(\005\"h\n\020HSMonsterFeedRet\022\016\n\006" +
+      "status\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\022\025\n\rfoodM" +
+      "onsterId\030\003 \002(\005\022\013\n\003exp\030\004 \001(\005\022\r\n\005level\030\005 \001",
+      "(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_HSMonster_descriptor =
+          internal_static_SynMonsterAttr_descriptor =
             getDescriptor().getMessageTypes().get(0);
+          internal_static_SynMonsterAttr_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_SynMonsterAttr_descriptor,
+              new java.lang.String[] { "MonsterId", "Level", "Exp", });
+          internal_static_HSMonster_descriptor =
+            getDescriptor().getMessageTypes().get(1);
           internal_static_HSMonster_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonster_descriptor,
               new java.lang.String[] { "MonsterId", "CfgId", "Stage", "Level", "Exp", "Lazy", "Ai", "Skill", });
           internal_static_HSMonsterInfoSync_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(2);
           internal_static_HSMonsterInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonsterInfoSync_descriptor,
               new java.lang.String[] { "MonsterInfo", });
           internal_static_HSMonsterAdd_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_HSMonsterAdd_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonsterAdd_descriptor,
               new java.lang.String[] { "Monster", "Reason", });
           internal_static_HSMonsterCatch_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_HSMonsterCatch_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonsterCatch_descriptor,
               new java.lang.String[] { "CfgId", "Stage", "Level", "Lazy", "Ai", "Skill", });
           internal_static_HSMonsterBreak_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_HSMonsterBreak_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonsterBreak_descriptor,
               new java.lang.String[] { "MonsterId", });
           internal_static_HSMonsterBreakRet_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_HSMonsterBreakRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonsterBreakRet_descriptor,
               new java.lang.String[] { "Status", "MonsterId", });
           internal_static_HSMonsterFeed_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_HSMonsterFeed_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonsterFeed_descriptor,
               new java.lang.String[] { "MonsterId", "FoodMonsterId", });
           internal_static_HSMonsterFeedRet_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_HSMonsterFeedRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonsterFeedRet_descriptor,

@@ -59,4 +59,8 @@ enum itemError
 	EQUIP_NOT_FOUND        = 0x00020004;
 	// 道具数量不足
 	ITEM_NOT_ENOUGH      = 0x00040005;	
+	// 道具不能买
+	ITEM_BUY_NOT_ALLOW      = 0x00040006;	
+	// 道具不能卖
+	ITEM_SELL_NOT_ALLOW      = 0x00040007;	
 }

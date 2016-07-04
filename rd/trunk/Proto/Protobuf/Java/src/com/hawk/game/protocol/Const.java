@@ -354,6 +354,1923 @@ public final class Const {
   }
 
   /**
+   * Protobuf enum {@code ClassType}
+   */
+  public enum ClassType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>PLAYER = 1;</code>
+     *
+     * <pre>
+     * 角色
+     * </pre>
+     */
+    PLAYER(0, 1),
+    /**
+     * <code>MONSTER = 2;</code>
+     *
+     * <pre>
+     * 怪物
+     * </pre>
+     */
+    MONSTER(1, 2),
+    ;
+
+    /**
+     * <code>PLAYER = 1;</code>
+     *
+     * <pre>
+     * 角色
+     * </pre>
+     */
+    public static final int PLAYER_VALUE = 1;
+    /**
+     * <code>MONSTER = 2;</code>
+     *
+     * <pre>
+     * 怪物
+     * </pre>
+     */
+    public static final int MONSTER_VALUE = 2;
+
+
+    public final int getNumber() { return value; }
+
+    public static ClassType valueOf(int value) {
+      switch (value) {
+        case 1: return PLAYER;
+        case 2: return MONSTER;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ClassType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<ClassType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ClassType>() {
+            public ClassType findValueByNumber(int number) {
+              return ClassType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(3);
+    }
+
+    private static final ClassType[] VALUES = values();
+
+    public static ClassType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private ClassType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ClassType)
+  }
+
+  /**
+   * Protobuf enum {@code itemType}
+   *
+   * <pre>
+   * 抽象物品类型定义
+   * </pre>
+   */
+  public enum itemType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>PLAYER_ATTR = 1;</code>
+     *
+     * <pre>
+     * 玩家属性
+     * </pre>
+     */
+    PLAYER_ATTR(0, 1),
+    /**
+     * <code>MONSTER_ATTR = 2;</code>
+     *
+     * <pre>
+     * 角色
+     * </pre>
+     */
+    MONSTER_ATTR(1, 2),
+    /**
+     * <code>ITEM = 3;</code>
+     *
+     * <pre>
+     * 道具
+     * </pre>
+     */
+    ITEM(2, 3),
+    /**
+     * <code>EQUIP = 4;</code>
+     *
+     * <pre>
+     * 装备
+     * </pre>
+     */
+    EQUIP(3, 4),
+    /**
+     * <code>SKILL = 5;</code>
+     *
+     * <pre>
+     * 技能
+     * </pre>
+     */
+    SKILL(4, 5),
+    ;
+
+    /**
+     * <code>PLAYER_ATTR = 1;</code>
+     *
+     * <pre>
+     * 玩家属性
+     * </pre>
+     */
+    public static final int PLAYER_ATTR_VALUE = 1;
+    /**
+     * <code>MONSTER_ATTR = 2;</code>
+     *
+     * <pre>
+     * 角色
+     * </pre>
+     */
+    public static final int MONSTER_ATTR_VALUE = 2;
+    /**
+     * <code>ITEM = 3;</code>
+     *
+     * <pre>
+     * 道具
+     * </pre>
+     */
+    public static final int ITEM_VALUE = 3;
+    /**
+     * <code>EQUIP = 4;</code>
+     *
+     * <pre>
+     * 装备
+     * </pre>
+     */
+    public static final int EQUIP_VALUE = 4;
+    /**
+     * <code>SKILL = 5;</code>
+     *
+     * <pre>
+     * 技能
+     * </pre>
+     */
+    public static final int SKILL_VALUE = 5;
+
+
+    public final int getNumber() { return value; }
+
+    public static itemType valueOf(int value) {
+      switch (value) {
+        case 1: return PLAYER_ATTR;
+        case 2: return MONSTER_ATTR;
+        case 3: return ITEM;
+        case 4: return EQUIP;
+        case 5: return SKILL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<itemType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<itemType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<itemType>() {
+            public itemType findValueByNumber(int number) {
+              return itemType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(4);
+    }
+
+    private static final itemType[] VALUES = values();
+
+    public static itemType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private itemType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:itemType)
+  }
+
+  /**
+   * Protobuf enum {@code buyMoneyType}
+   *
+   * <pre>
+   * 购买价格类型
+   * </pre>
+   */
+  public enum buyMoneyType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>MONEY_GOLD = 1;</code>
+     *
+     * <pre>
+     * 钻石
+     * </pre>
+     */
+    MONEY_GOLD(0, 1),
+    /**
+     * <code>MONEY_COIN = 2;</code>
+     *
+     * <pre>
+     * 金币
+     * </pre>
+     */
+    MONEY_COIN(1, 2),
+    ;
+
+    /**
+     * <code>MONEY_GOLD = 1;</code>
+     *
+     * <pre>
+     * 钻石
+     * </pre>
+     */
+    public static final int MONEY_GOLD_VALUE = 1;
+    /**
+     * <code>MONEY_COIN = 2;</code>
+     *
+     * <pre>
+     * 金币
+     * </pre>
+     */
+    public static final int MONEY_COIN_VALUE = 2;
+
+
+    public final int getNumber() { return value; }
+
+    public static buyMoneyType valueOf(int value) {
+      switch (value) {
+        case 1: return MONEY_GOLD;
+        case 2: return MONEY_COIN;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<buyMoneyType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<buyMoneyType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<buyMoneyType>() {
+            public buyMoneyType findValueByNumber(int number) {
+              return buyMoneyType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(5);
+    }
+
+    private static final buyMoneyType[] VALUES = values();
+
+    public static buyMoneyType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private buyMoneyType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:buyMoneyType)
+  }
+
+  /**
+   * Protobuf enum {@code playerAttr}
+   *
+   * <pre>
+   * 玩家属性类型定义
+   * </pre>
+   */
+  public enum playerAttr
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>GOLD = 1;</code>
+     *
+     * <pre>
+     * 钻石
+     * </pre>
+     */
+    GOLD(0, 1),
+    /**
+     * <code>COIN = 2;</code>
+     *
+     * <pre>
+     * 金币
+     * </pre>
+     */
+    COIN(1, 2),
+    /**
+     * <code>LEVEL = 3;</code>
+     *
+     * <pre>
+     * 等级
+     * </pre>
+     */
+    LEVEL(2, 3),
+    /**
+     * <code>EXP = 4;</code>
+     *
+     * <pre>
+     * 经验
+     * </pre>
+     */
+    EXP(3, 4),
+    /**
+     * <code>FATIGUE = 5;</code>
+     *
+     * <pre>
+     * 疲劳值
+     * </pre>
+     */
+    FATIGUE(4, 5),
+    /**
+     * <code>VIPLEVEL = 6;</code>
+     *
+     * <pre>
+     * vip等级
+     * </pre>
+     */
+    VIPLEVEL(5, 6),
+    ;
+
+    /**
+     * <code>GOLD = 1;</code>
+     *
+     * <pre>
+     * 钻石
+     * </pre>
+     */
+    public static final int GOLD_VALUE = 1;
+    /**
+     * <code>COIN = 2;</code>
+     *
+     * <pre>
+     * 金币
+     * </pre>
+     */
+    public static final int COIN_VALUE = 2;
+    /**
+     * <code>LEVEL = 3;</code>
+     *
+     * <pre>
+     * 等级
+     * </pre>
+     */
+    public static final int LEVEL_VALUE = 3;
+    /**
+     * <code>EXP = 4;</code>
+     *
+     * <pre>
+     * 经验
+     * </pre>
+     */
+    public static final int EXP_VALUE = 4;
+    /**
+     * <code>FATIGUE = 5;</code>
+     *
+     * <pre>
+     * 疲劳值
+     * </pre>
+     */
+    public static final int FATIGUE_VALUE = 5;
+    /**
+     * <code>VIPLEVEL = 6;</code>
+     *
+     * <pre>
+     * vip等级
+     * </pre>
+     */
+    public static final int VIPLEVEL_VALUE = 6;
+
+
+    public final int getNumber() { return value; }
+
+    public static playerAttr valueOf(int value) {
+      switch (value) {
+        case 1: return GOLD;
+        case 2: return COIN;
+        case 3: return LEVEL;
+        case 4: return EXP;
+        case 5: return FATIGUE;
+        case 6: return VIPLEVEL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<playerAttr>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<playerAttr>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<playerAttr>() {
+            public playerAttr findValueByNumber(int number) {
+              return playerAttr.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(6);
+    }
+
+    private static final playerAttr[] VALUES = values();
+
+    public static playerAttr valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private playerAttr(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:playerAttr)
+  }
+
+  /**
+   * Protobuf enum {@code changeType}
+   *
+   * <pre>
+   * 变换的数值类型
+   * </pre>
+   */
+  public enum changeType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>CHANGE_GOLD = 1;</code>
+     *
+     * <pre>
+     * 钻石
+     * </pre>
+     */
+    CHANGE_GOLD(0, 1),
+    /**
+     * <code>CHANGE_COIN = 2;</code>
+     *
+     * <pre>
+     * 金币
+     * </pre>
+     */
+    CHANGE_COIN(1, 2),
+    /**
+     * <code>CHANGE_PLAYER_EXP = 3;</code>
+     *
+     * <pre>
+     * 经验
+     * </pre>
+     */
+    CHANGE_PLAYER_EXP(2, 3),
+    /**
+     * <code>CHANGE_PLAYER_LEVEL = 4;</code>
+     *
+     * <pre>
+     * 等级
+     * </pre>
+     */
+    CHANGE_PLAYER_LEVEL(3, 4),
+    /**
+     * <code>CHANGE_MONSTER_EXP = 5;</code>
+     *
+     * <pre>
+     * 经验
+     * </pre>
+     */
+    CHANGE_MONSTER_EXP(4, 5),
+    /**
+     * <code>CHANGE_MONSTER_LEVEL = 6;</code>
+     *
+     * <pre>
+     * 等级
+     * </pre>
+     */
+    CHANGE_MONSTER_LEVEL(5, 6),
+    /**
+     * <code>CHANGE_FATIGUE = 7;</code>
+     *
+     * <pre>
+     * 疲劳值
+     * </pre>
+     */
+    CHANGE_FATIGUE(6, 7),
+    /**
+     * <code>CHANGE_FAV = 8;</code>
+     *
+     * <pre>
+     * 好感度
+     * </pre>
+     */
+    CHANGE_FAV(7, 8),
+    /**
+     * <code>CHANGE_VIPLEVEL = 9;</code>
+     *
+     * <pre>
+     * vip等级
+     * </pre>
+     */
+    CHANGE_VIPLEVEL(8, 9),
+    /**
+     * <code>CHANGE_TOOLS = 10;</code>
+     *
+     * <pre>
+     * 道具    
+     * </pre>
+     */
+    CHANGE_TOOLS(9, 10),
+    /**
+     * <code>CHANGE_EQUIP = 11;</code>
+     *
+     * <pre>
+     * 装备
+     * </pre>
+     */
+    CHANGE_EQUIP(10, 11),
+    ;
+
+    /**
+     * <code>CHANGE_GOLD = 1;</code>
+     *
+     * <pre>
+     * 钻石
+     * </pre>
+     */
+    public static final int CHANGE_GOLD_VALUE = 1;
+    /**
+     * <code>CHANGE_COIN = 2;</code>
+     *
+     * <pre>
+     * 金币
+     * </pre>
+     */
+    public static final int CHANGE_COIN_VALUE = 2;
+    /**
+     * <code>CHANGE_PLAYER_EXP = 3;</code>
+     *
+     * <pre>
+     * 经验
+     * </pre>
+     */
+    public static final int CHANGE_PLAYER_EXP_VALUE = 3;
+    /**
+     * <code>CHANGE_PLAYER_LEVEL = 4;</code>
+     *
+     * <pre>
+     * 等级
+     * </pre>
+     */
+    public static final int CHANGE_PLAYER_LEVEL_VALUE = 4;
+    /**
+     * <code>CHANGE_MONSTER_EXP = 5;</code>
+     *
+     * <pre>
+     * 经验
+     * </pre>
+     */
+    public static final int CHANGE_MONSTER_EXP_VALUE = 5;
+    /**
+     * <code>CHANGE_MONSTER_LEVEL = 6;</code>
+     *
+     * <pre>
+     * 等级
+     * </pre>
+     */
+    public static final int CHANGE_MONSTER_LEVEL_VALUE = 6;
+    /**
+     * <code>CHANGE_FATIGUE = 7;</code>
+     *
+     * <pre>
+     * 疲劳值
+     * </pre>
+     */
+    public static final int CHANGE_FATIGUE_VALUE = 7;
+    /**
+     * <code>CHANGE_FAV = 8;</code>
+     *
+     * <pre>
+     * 好感度
+     * </pre>
+     */
+    public static final int CHANGE_FAV_VALUE = 8;
+    /**
+     * <code>CHANGE_VIPLEVEL = 9;</code>
+     *
+     * <pre>
+     * vip等级
+     * </pre>
+     */
+    public static final int CHANGE_VIPLEVEL_VALUE = 9;
+    /**
+     * <code>CHANGE_TOOLS = 10;</code>
+     *
+     * <pre>
+     * 道具    
+     * </pre>
+     */
+    public static final int CHANGE_TOOLS_VALUE = 10;
+    /**
+     * <code>CHANGE_EQUIP = 11;</code>
+     *
+     * <pre>
+     * 装备
+     * </pre>
+     */
+    public static final int CHANGE_EQUIP_VALUE = 11;
+
+
+    public final int getNumber() { return value; }
+
+    public static changeType valueOf(int value) {
+      switch (value) {
+        case 1: return CHANGE_GOLD;
+        case 2: return CHANGE_COIN;
+        case 3: return CHANGE_PLAYER_EXP;
+        case 4: return CHANGE_PLAYER_LEVEL;
+        case 5: return CHANGE_MONSTER_EXP;
+        case 6: return CHANGE_MONSTER_LEVEL;
+        case 7: return CHANGE_FATIGUE;
+        case 8: return CHANGE_FAV;
+        case 9: return CHANGE_VIPLEVEL;
+        case 10: return CHANGE_TOOLS;
+        case 11: return CHANGE_EQUIP;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<changeType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<changeType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<changeType>() {
+            public changeType findValueByNumber(int number) {
+              return changeType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(7);
+    }
+
+    private static final changeType[] VALUES = values();
+
+    public static changeType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private changeType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:changeType)
+  }
+
+  /**
+   * Protobuf enum {@code attr}
+   *
+   * <pre>
+   * 附加属性类型定义
+   * </pre>
+   */
+  public enum attr
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>EMPTYATTR = 0;</code>
+     *
+     * <pre>
+     * 空属性
+     * </pre>
+     */
+    EMPTYATTR(0, 0),
+    /**
+     * <code>STRENGHT = 1;</code>
+     *
+     * <pre>
+     * 力量
+     * </pre>
+     */
+    STRENGHT(1, 1),
+    /**
+     * <code>INTELLIGENCE = 2;</code>
+     *
+     * <pre>
+     * 智力
+     * </pre>
+     */
+    INTELLIGENCE(2, 2),
+    /**
+     * <code>SPEED = 3;</code>
+     *
+     * <pre>
+     *速度
+     * </pre>
+     */
+    SPEED(3, 3),
+    /**
+     * <code>DEFENSE = 4;</code>
+     *
+     * <pre>
+     *防御力
+     * </pre>
+     */
+    DEFENSE(4, 4),
+    /**
+     * <code>HEALTH = 5;</code>
+     *
+     * <pre>
+     *体力
+     * </pre>
+     */
+    HEALTH(5, 5),
+    /**
+     * <code>DEFENSEWEAKEN = 101;</code>
+     *
+     * <pre>
+     *防御穿透
+     * </pre>
+     */
+    DEFENSEWEAKEN(6, 101),
+    /**
+     * <code>CRITICAL = 102;</code>
+     *
+     * <pre>
+     *暴击率
+     * </pre>
+     */
+    CRITICAL(7, 102),
+    /**
+     * <code>CRITICALWEAKEN = 103;</code>
+     *
+     * <pre>
+     *暴击抗性
+     * </pre>
+     */
+    CRITICALWEAKEN(8, 103),
+    /**
+     * <code>RECOVERY = 104;</code>
+     *
+     * <pre>
+     *生命回复
+     * </pre>
+     */
+    RECOVERY(9, 104),
+    /**
+     * <code>CRITICALDAMAGE = 105;</code>
+     *
+     * <pre>
+     *暴击伤害加成
+     * </pre>
+     */
+    CRITICALDAMAGE(10, 105),
+    /**
+     * <code>HITRATE = 106;</code>
+     *
+     * <pre>
+     *命中率
+     * </pre>
+     */
+    HITRATE(11, 106),
+    /**
+     * <code>CUREINCREASE = 107;</code>
+     *
+     * <pre>
+     *治疗效果加成
+     * </pre>
+     */
+    CUREINCREASE(12, 107),
+    /**
+     * <code>DAMAGEREDUCE = 108;</code>
+     *
+     * <pre>
+     *伤害减免
+     * </pre>
+     */
+    DAMAGEREDUCE(13, 108),
+    /**
+     * <code>DAMAGEINCREASE = 109;</code>
+     *
+     * <pre>
+     *伤害加深
+     * </pre>
+     */
+    DAMAGEINCREASE(14, 109),
+    ;
+
+    /**
+     * <code>EMPTYATTR = 0;</code>
+     *
+     * <pre>
+     * 空属性
+     * </pre>
+     */
+    public static final int EMPTYATTR_VALUE = 0;
+    /**
+     * <code>STRENGHT = 1;</code>
+     *
+     * <pre>
+     * 力量
+     * </pre>
+     */
+    public static final int STRENGHT_VALUE = 1;
+    /**
+     * <code>INTELLIGENCE = 2;</code>
+     *
+     * <pre>
+     * 智力
+     * </pre>
+     */
+    public static final int INTELLIGENCE_VALUE = 2;
+    /**
+     * <code>SPEED = 3;</code>
+     *
+     * <pre>
+     *速度
+     * </pre>
+     */
+    public static final int SPEED_VALUE = 3;
+    /**
+     * <code>DEFENSE = 4;</code>
+     *
+     * <pre>
+     *防御力
+     * </pre>
+     */
+    public static final int DEFENSE_VALUE = 4;
+    /**
+     * <code>HEALTH = 5;</code>
+     *
+     * <pre>
+     *体力
+     * </pre>
+     */
+    public static final int HEALTH_VALUE = 5;
+    /**
+     * <code>DEFENSEWEAKEN = 101;</code>
+     *
+     * <pre>
+     *防御穿透
+     * </pre>
+     */
+    public static final int DEFENSEWEAKEN_VALUE = 101;
+    /**
+     * <code>CRITICAL = 102;</code>
+     *
+     * <pre>
+     *暴击率
+     * </pre>
+     */
+    public static final int CRITICAL_VALUE = 102;
+    /**
+     * <code>CRITICALWEAKEN = 103;</code>
+     *
+     * <pre>
+     *暴击抗性
+     * </pre>
+     */
+    public static final int CRITICALWEAKEN_VALUE = 103;
+    /**
+     * <code>RECOVERY = 104;</code>
+     *
+     * <pre>
+     *生命回复
+     * </pre>
+     */
+    public static final int RECOVERY_VALUE = 104;
+    /**
+     * <code>CRITICALDAMAGE = 105;</code>
+     *
+     * <pre>
+     *暴击伤害加成
+     * </pre>
+     */
+    public static final int CRITICALDAMAGE_VALUE = 105;
+    /**
+     * <code>HITRATE = 106;</code>
+     *
+     * <pre>
+     *命中率
+     * </pre>
+     */
+    public static final int HITRATE_VALUE = 106;
+    /**
+     * <code>CUREINCREASE = 107;</code>
+     *
+     * <pre>
+     *治疗效果加成
+     * </pre>
+     */
+    public static final int CUREINCREASE_VALUE = 107;
+    /**
+     * <code>DAMAGEREDUCE = 108;</code>
+     *
+     * <pre>
+     *伤害减免
+     * </pre>
+     */
+    public static final int DAMAGEREDUCE_VALUE = 108;
+    /**
+     * <code>DAMAGEINCREASE = 109;</code>
+     *
+     * <pre>
+     *伤害加深
+     * </pre>
+     */
+    public static final int DAMAGEINCREASE_VALUE = 109;
+
+
+    public final int getNumber() { return value; }
+
+    public static attr valueOf(int value) {
+      switch (value) {
+        case 0: return EMPTYATTR;
+        case 1: return STRENGHT;
+        case 2: return INTELLIGENCE;
+        case 3: return SPEED;
+        case 4: return DEFENSE;
+        case 5: return HEALTH;
+        case 101: return DEFENSEWEAKEN;
+        case 102: return CRITICAL;
+        case 103: return CRITICALWEAKEN;
+        case 104: return RECOVERY;
+        case 105: return CRITICALDAMAGE;
+        case 106: return HITRATE;
+        case 107: return CUREINCREASE;
+        case 108: return DAMAGEREDUCE;
+        case 109: return DAMAGEINCREASE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<attr>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<attr>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<attr>() {
+            public attr findValueByNumber(int number) {
+              return attr.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(8);
+    }
+
+    private static final attr[] VALUES = values();
+
+    public static attr valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private attr(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:attr)
+  }
+
+  /**
+   * Protobuf enum {@code userCondition}
+   *
+   * <pre>
+   * 使用条件
+   * </pre>
+   */
+  public enum userCondition
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>BATTLE = 1;</code>
+     *
+     * <pre>
+     * 战斗
+     * </pre>
+     */
+    BATTLE(0, 1),
+    /**
+     * <code>NON_BATTLE = 2;</code>
+     *
+     * <pre>
+     * 非战斗
+     * </pre>
+     */
+    NON_BATTLE(1, 2),
+    ;
+
+    /**
+     * <code>BATTLE = 1;</code>
+     *
+     * <pre>
+     * 战斗
+     * </pre>
+     */
+    public static final int BATTLE_VALUE = 1;
+    /**
+     * <code>NON_BATTLE = 2;</code>
+     *
+     * <pre>
+     * 非战斗
+     * </pre>
+     */
+    public static final int NON_BATTLE_VALUE = 2;
+
+
+    public final int getNumber() { return value; }
+
+    public static userCondition valueOf(int value) {
+      switch (value) {
+        case 1: return BATTLE;
+        case 2: return NON_BATTLE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<userCondition>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<userCondition>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<userCondition>() {
+            public userCondition findValueByNumber(int number) {
+              return userCondition.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(9);
+    }
+
+    private static final userCondition[] VALUES = values();
+
+    public static userCondition valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private userCondition(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:userCondition)
+  }
+
+  /**
+   * Protobuf enum {@code bindType}
+   *
+   * <pre>
+   * 绑定类型
+   * </pre>
+   */
+  public enum bindType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>NON_BIND = 0;</code>
+     *
+     * <pre>
+     * 不绑定
+     * </pre>
+     */
+    NON_BIND(0, 0),
+    /**
+     * <code>USE_BIND = 1;</code>
+     *
+     * <pre>
+     * 使用绑定
+     * </pre>
+     */
+    USE_BIND(1, 1),
+    /**
+     * <code>TAKE_BIND = 2;</code>
+     *
+     * <pre>
+     * 拾取绑定
+     * </pre>
+     */
+    TAKE_BIND(2, 2),
+    ;
+
+    /**
+     * <code>NON_BIND = 0;</code>
+     *
+     * <pre>
+     * 不绑定
+     * </pre>
+     */
+    public static final int NON_BIND_VALUE = 0;
+    /**
+     * <code>USE_BIND = 1;</code>
+     *
+     * <pre>
+     * 使用绑定
+     * </pre>
+     */
+    public static final int USE_BIND_VALUE = 1;
+    /**
+     * <code>TAKE_BIND = 2;</code>
+     *
+     * <pre>
+     * 拾取绑定
+     * </pre>
+     */
+    public static final int TAKE_BIND_VALUE = 2;
+
+
+    public final int getNumber() { return value; }
+
+    public static bindType valueOf(int value) {
+      switch (value) {
+        case 0: return NON_BIND;
+        case 1: return USE_BIND;
+        case 2: return TAKE_BIND;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<bindType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<bindType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<bindType>() {
+            public bindType findValueByNumber(int number) {
+              return bindType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(10);
+    }
+
+    private static final bindType[] VALUES = values();
+
+    public static bindType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private bindType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:bindType)
+  }
+
+  /**
+   * Protobuf enum {@code toolType}
+   *
+   * <pre>
+   * 物品类型定义
+   * </pre>
+   */
+  public enum toolType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>COMMONTOOL = 1;</code>
+     *
+     * <pre>
+     * 通用类型
+     * </pre>
+     */
+    COMMONTOOL(0, 1),
+    /**
+     * <code>FRAGMENTTOOL = 2;</code>
+     *
+     * <pre>
+     * 碎片
+     * </pre>
+     */
+    FRAGMENTTOOL(1, 2),
+    /**
+     * <code>GEMTOOL = 3;</code>
+     *
+     * <pre>
+     * 宝石
+     * </pre>
+     */
+    GEMTOOL(2, 3),
+    /**
+     * <code>BOXTOOL = 4;</code>
+     *
+     * <pre>
+     * 宝箱
+     * </pre>
+     */
+    BOXTOOL(3, 4),
+    /**
+     * <code>USETOOL = 5;</code>
+     *
+     * <pre>
+     * 消耗类
+     * </pre>
+     */
+    USETOOL(4, 5),
+    /**
+     * <code>EXCHANGETOOL = 6;</code>
+     *
+     * <pre>
+     * 兑换类
+     * </pre>
+     */
+    EXCHANGETOOL(5, 6),
+    /**
+     * <code>EQUIPTOOL = 7;</code>
+     *
+     * <pre>
+     * 装备
+     * </pre>
+     */
+    EQUIPTOOL(6, 7),
+    ;
+
+    /**
+     * <code>COMMONTOOL = 1;</code>
+     *
+     * <pre>
+     * 通用类型
+     * </pre>
+     */
+    public static final int COMMONTOOL_VALUE = 1;
+    /**
+     * <code>FRAGMENTTOOL = 2;</code>
+     *
+     * <pre>
+     * 碎片
+     * </pre>
+     */
+    public static final int FRAGMENTTOOL_VALUE = 2;
+    /**
+     * <code>GEMTOOL = 3;</code>
+     *
+     * <pre>
+     * 宝石
+     * </pre>
+     */
+    public static final int GEMTOOL_VALUE = 3;
+    /**
+     * <code>BOXTOOL = 4;</code>
+     *
+     * <pre>
+     * 宝箱
+     * </pre>
+     */
+    public static final int BOXTOOL_VALUE = 4;
+    /**
+     * <code>USETOOL = 5;</code>
+     *
+     * <pre>
+     * 消耗类
+     * </pre>
+     */
+    public static final int USETOOL_VALUE = 5;
+    /**
+     * <code>EXCHANGETOOL = 6;</code>
+     *
+     * <pre>
+     * 兑换类
+     * </pre>
+     */
+    public static final int EXCHANGETOOL_VALUE = 6;
+    /**
+     * <code>EQUIPTOOL = 7;</code>
+     *
+     * <pre>
+     * 装备
+     * </pre>
+     */
+    public static final int EQUIPTOOL_VALUE = 7;
+
+
+    public final int getNumber() { return value; }
+
+    public static toolType valueOf(int value) {
+      switch (value) {
+        case 1: return COMMONTOOL;
+        case 2: return FRAGMENTTOOL;
+        case 3: return GEMTOOL;
+        case 4: return BOXTOOL;
+        case 5: return USETOOL;
+        case 6: return EXCHANGETOOL;
+        case 7: return EQUIPTOOL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<toolType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<toolType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<toolType>() {
+            public toolType findValueByNumber(int number) {
+              return toolType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(11);
+    }
+
+    private static final toolType[] VALUES = values();
+
+    public static toolType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private toolType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:toolType)
+  }
+
+  /**
+   * Protobuf enum {@code equipPart}
+   *
+   * <pre>
+   * 装备部位定义
+   * </pre>
+   */
+  public enum equipPart
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>HELMET = 1;</code>
+     *
+     * <pre>
+     * 头盔
+     * </pre>
+     */
+    HELMET(0, 1),
+    /**
+     * <code>RING = 2;</code>
+     *
+     * <pre>
+     * 戒子
+     * </pre>
+     */
+    RING(1, 2),
+    /**
+     * <code>BELT = 3;</code>
+     *
+     * <pre>
+     * 腰带
+     * </pre>
+     */
+    BELT(2, 3),
+    /**
+     * <code>CUIRASS = 4;</code>
+     *
+     * <pre>
+     * 胸甲
+     * </pre>
+     */
+    CUIRASS(3, 4),
+    /**
+     * <code>WEAPON1 = 5;</code>
+     *
+     * <pre>
+     * 主手武器
+     * </pre>
+     */
+    WEAPON1(4, 5),
+    /**
+     * <code>WEAPON2 = 6;</code>
+     *
+     * <pre>
+     * 副手武器
+     * </pre>
+     */
+    WEAPON2(5, 6),
+    /**
+     * <code>LEGGUARD = 7;</code>
+     *
+     * <pre>
+     * 护腿
+     * </pre>
+     */
+    LEGGUARD(6, 7),
+    /**
+     * <code>SHOES = 8;</code>
+     *
+     * <pre>
+     * 鞋子
+     * </pre>
+     */
+    SHOES(7, 8),
+    /**
+     * <code>GLOVE = 9;</code>
+     *
+     * <pre>
+     * 手套
+     * </pre>
+     */
+    GLOVE(8, 9),
+    /**
+     * <code>NECKLACE = 10;</code>
+     *
+     * <pre>
+     * 项链
+     * </pre>
+     */
+    NECKLACE(9, 10),
+    ;
+
+    /**
+     * <code>HELMET = 1;</code>
+     *
+     * <pre>
+     * 头盔
+     * </pre>
+     */
+    public static final int HELMET_VALUE = 1;
+    /**
+     * <code>RING = 2;</code>
+     *
+     * <pre>
+     * 戒子
+     * </pre>
+     */
+    public static final int RING_VALUE = 2;
+    /**
+     * <code>BELT = 3;</code>
+     *
+     * <pre>
+     * 腰带
+     * </pre>
+     */
+    public static final int BELT_VALUE = 3;
+    /**
+     * <code>CUIRASS = 4;</code>
+     *
+     * <pre>
+     * 胸甲
+     * </pre>
+     */
+    public static final int CUIRASS_VALUE = 4;
+    /**
+     * <code>WEAPON1 = 5;</code>
+     *
+     * <pre>
+     * 主手武器
+     * </pre>
+     */
+    public static final int WEAPON1_VALUE = 5;
+    /**
+     * <code>WEAPON2 = 6;</code>
+     *
+     * <pre>
+     * 副手武器
+     * </pre>
+     */
+    public static final int WEAPON2_VALUE = 6;
+    /**
+     * <code>LEGGUARD = 7;</code>
+     *
+     * <pre>
+     * 护腿
+     * </pre>
+     */
+    public static final int LEGGUARD_VALUE = 7;
+    /**
+     * <code>SHOES = 8;</code>
+     *
+     * <pre>
+     * 鞋子
+     * </pre>
+     */
+    public static final int SHOES_VALUE = 8;
+    /**
+     * <code>GLOVE = 9;</code>
+     *
+     * <pre>
+     * 手套
+     * </pre>
+     */
+    public static final int GLOVE_VALUE = 9;
+    /**
+     * <code>NECKLACE = 10;</code>
+     *
+     * <pre>
+     * 项链
+     * </pre>
+     */
+    public static final int NECKLACE_VALUE = 10;
+
+
+    public final int getNumber() { return value; }
+
+    public static equipPart valueOf(int value) {
+      switch (value) {
+        case 1: return HELMET;
+        case 2: return RING;
+        case 3: return BELT;
+        case 4: return CUIRASS;
+        case 5: return WEAPON1;
+        case 6: return WEAPON2;
+        case 7: return LEGGUARD;
+        case 8: return SHOES;
+        case 9: return GLOVE;
+        case 10: return NECKLACE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<equipPart>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<equipPart>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<equipPart>() {
+            public equipPart findValueByNumber(int number) {
+              return equipPart.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(12);
+    }
+
+    private static final equipPart[] VALUES = values();
+
+    public static equipPart valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private equipPart(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:equipPart)
+  }
+
+  /**
+   * Protobuf enum {@code equipQuality}
+   *
+   * <pre>
+   * 装备品质
+   * </pre>
+   */
+  public enum equipQuality
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>WHITE = 1;</code>
+     *
+     * <pre>
+     * 白
+     * </pre>
+     */
+    WHITE(0, 1),
+    /**
+     * <code>GREEN = 2;</code>
+     *
+     * <pre>
+     * 绿
+     * </pre>
+     */
+    GREEN(1, 2),
+    /**
+     * <code>BLUE = 3;</code>
+     *
+     * <pre>
+     * 蓝
+     * </pre>
+     */
+    BLUE(2, 3),
+    /**
+     * <code>PURPLE = 4;</code>
+     *
+     * <pre>
+     * 紫
+     * </pre>
+     */
+    PURPLE(3, 4),
+    /**
+     * <code>ORANGE = 5;</code>
+     *
+     * <pre>
+     * 橙
+     * </pre>
+     */
+    ORANGE(4, 5),
+    /**
+     * <code>RED = 6;</code>
+     *
+     * <pre>
+     * 红
+     * </pre>
+     */
+    RED(5, 6),
+    ;
+
+    /**
+     * <code>WHITE = 1;</code>
+     *
+     * <pre>
+     * 白
+     * </pre>
+     */
+    public static final int WHITE_VALUE = 1;
+    /**
+     * <code>GREEN = 2;</code>
+     *
+     * <pre>
+     * 绿
+     * </pre>
+     */
+    public static final int GREEN_VALUE = 2;
+    /**
+     * <code>BLUE = 3;</code>
+     *
+     * <pre>
+     * 蓝
+     * </pre>
+     */
+    public static final int BLUE_VALUE = 3;
+    /**
+     * <code>PURPLE = 4;</code>
+     *
+     * <pre>
+     * 紫
+     * </pre>
+     */
+    public static final int PURPLE_VALUE = 4;
+    /**
+     * <code>ORANGE = 5;</code>
+     *
+     * <pre>
+     * 橙
+     * </pre>
+     */
+    public static final int ORANGE_VALUE = 5;
+    /**
+     * <code>RED = 6;</code>
+     *
+     * <pre>
+     * 红
+     * </pre>
+     */
+    public static final int RED_VALUE = 6;
+
+
+    public final int getNumber() { return value; }
+
+    public static equipQuality valueOf(int value) {
+      switch (value) {
+        case 1: return WHITE;
+        case 2: return GREEN;
+        case 3: return BLUE;
+        case 4: return PURPLE;
+        case 5: return ORANGE;
+        case 6: return RED;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<equipQuality>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<equipQuality>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<equipQuality>() {
+            public equipQuality findValueByNumber(int number) {
+              return equipQuality.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(13);
+    }
+
+    private static final equipQuality[] VALUES = values();
+
+    public static equipQuality valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private equipQuality(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:equipQuality)
+  }
+
+  /**
    * Protobuf enum {@code BattleType}
    *
    * <pre>
@@ -423,7 +2340,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(3);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(14);
     }
 
     private static final BattleType[] VALUES = values();
@@ -464,8 +2381,38 @@ public final class Const {
       "BIDEN\020\003\022\016\n\nKICKED_OUT\020\004\022\022\n\016SERVER_RESTAR" +
       "T\020\005*L\n\014RewardReason\022\017\n\013SYS_PRESENT\020\001\022\007\n\003" +
       "NPC\020\002\022\t\n\005QUEST\020\003\022\014\n\010ACITVITY\020\004\022\t\n\005CATCH\020" +
-      "\005*,\n\nBattleType\022\n\n\006NORMAL\020\001\022\010\n\004BOSS\020\002\022\010\n" +
-      "\004RARE\020\003B\030\n\026com.hawk.game.protocol"
+      "\005*$\n\tClassType\022\n\n\006PLAYER\020\001\022\013\n\007MONSTER\020\002*" +
+      "M\n\010itemType\022\017\n\013PLAYER_ATTR\020\001\022\020\n\014MONSTER_" +
+      "ATTR\020\002\022\010\n\004ITEM\020\003\022\t\n\005EQUIP\020\004\022\t\n\005SKILL\020\005*.",
+      "\n\014buyMoneyType\022\016\n\nMONEY_GOLD\020\001\022\016\n\nMONEY_" +
+      "COIN\020\002*O\n\nplayerAttr\022\010\n\004GOLD\020\001\022\010\n\004COIN\020\002" +
+      "\022\t\n\005LEVEL\020\003\022\007\n\003EXP\020\004\022\013\n\007FATIGUE\020\005\022\014\n\010VIP" +
+      "LEVEL\020\006*\355\001\n\nchangeType\022\017\n\013CHANGE_GOLD\020\001\022" +
+      "\017\n\013CHANGE_COIN\020\002\022\025\n\021CHANGE_PLAYER_EXP\020\003\022" +
+      "\027\n\023CHANGE_PLAYER_LEVEL\020\004\022\026\n\022CHANGE_MONST" +
+      "ER_EXP\020\005\022\030\n\024CHANGE_MONSTER_LEVEL\020\006\022\022\n\016CH" +
+      "ANGE_FATIGUE\020\007\022\016\n\nCHANGE_FAV\020\010\022\023\n\017CHANGE" +
+      "_VIPLEVEL\020\t\022\020\n\014CHANGE_TOOLS\020\n\022\020\n\014CHANGE_" +
+      "EQUIP\020\013*\365\001\n\004attr\022\r\n\tEMPTYATTR\020\000\022\014\n\010STREN",
+      "GHT\020\001\022\020\n\014INTELLIGENCE\020\002\022\t\n\005SPEED\020\003\022\013\n\007DE" +
+      "FENSE\020\004\022\n\n\006HEALTH\020\005\022\021\n\rDEFENSEWEAKEN\020e\022\014" +
+      "\n\010CRITICAL\020f\022\022\n\016CRITICALWEAKEN\020g\022\014\n\010RECO" +
+      "VERY\020h\022\022\n\016CRITICALDAMAGE\020i\022\013\n\007HITRATE\020j\022" +
+      "\020\n\014CUREINCREASE\020k\022\020\n\014DAMAGEREDUCE\020l\022\022\n\016D" +
+      "AMAGEINCREASE\020m*+\n\ruserCondition\022\n\n\006BATT" +
+      "LE\020\001\022\016\n\nNON_BATTLE\020\002*5\n\010bindType\022\014\n\010NON_" +
+      "BIND\020\000\022\014\n\010USE_BIND\020\001\022\r\n\tTAKE_BIND\020\002*t\n\010t" +
+      "oolType\022\016\n\nCOMMONTOOL\020\001\022\020\n\014FRAGMENTTOOL\020" +
+      "\002\022\013\n\007GEMTOOL\020\003\022\013\n\007BOXTOOL\020\004\022\013\n\007USETOOL\020\005",
+      "\022\020\n\014EXCHANGETOOL\020\006\022\r\n\tEQUIPTOOL\020\007*\204\001\n\teq" +
+      "uipPart\022\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022\010\n\004BELT\020\003\022" +
+      "\013\n\007CUIRASS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WEAPON2\020\006\022\014" +
+      "\n\010LEGGUARD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NE" +
+      "CKLACE\020\n*O\n\014equipQuality\022\t\n\005WHITE\020\001\022\t\n\005G" +
+      "REEN\020\002\022\010\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005" +
+      "\022\007\n\003RED\020\006*,\n\nBattleType\022\n\n\006NORMAL\020\001\022\010\n\004B" +
+      "OSS\020\002\022\010\n\004RARE\020\003B\030\n\026com.hawk.game.protoco" +
+      "l"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

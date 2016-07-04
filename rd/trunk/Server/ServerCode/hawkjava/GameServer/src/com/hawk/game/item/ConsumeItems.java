@@ -110,6 +110,37 @@ public class ConsumeItems {
 		consumeInfo.addConsumeItems(builder);
 	}
 
+
+	/**
+	 * 添加道具信息
+	 * 
+	 * @param type
+	 * @param itemId
+	 * @param count
+	 */
+	public void addChangeItem(int itemId, int count) {
+		ConsumeItem.Builder builder = ConsumeItem.newBuilder();
+		builder.setType(Const.itemType.ITEM_VALUE);
+		builder.setItemId(itemId);
+		builder.setCount(count);
+		consumeInfo.addConsumeItems(builder);
+	}
+	
+	/**
+	 * 添加装备信息
+	 * 
+	 * @param type
+	 * @param id
+	 * @param itemId
+	 */
+	public void addChangeEquip(long id, int itemId) {
+		ConsumeItem.Builder builder = ConsumeItem.newBuilder();
+		builder.setType(Const.itemType.EQUIP_VALUE);
+		builder.setItemId(itemId);
+		builder.setId(id);
+		consumeInfo.addConsumeItems(builder);
+	}
+	
 	/**
 	 * 同步改变信息
 	 * 
@@ -180,7 +211,7 @@ public class ConsumeItems {
 					//检测装备 
 					long equipId = consumeItem.getId();
 					player.consumeEquip(equipId, action);
-				} else if(consumeItem.getType() == changeType.CHANGE_TOOLS_VALUE) {
+				} else if(consumeItem.getType() == changeType.CHANGE_ITEM_VALUE) {
 					//检测道具
 					int itemId = consumeItem.getItemId();
 					player.consumeTools(itemId, consumeItem.getCount(), action);
@@ -248,14 +279,14 @@ public class ConsumeItems {
 		}
 		
 		for(ConsumeItem consumeItem : consumes.getConsumeItemsList()) {
-			if(consumeItem.getType() == changeType.CHANGE_EQUIP_VALUE) {
+			if(consumeItem.getType() == Const.itemType.EQUIP_VALUE) {
 				//检测装备 
 				long equipId = consumeItem.getId();
 				EquipEntity equipEntity = player.getPlayerData().getEquipById(equipId);
 				if(equipEntity == null) {
 					return PlayerItemCheckResult.EQUIP_NOI_ENOUGH;
 				}
-			} else if(consumeItem.getType() == changeType.CHANGE_TOOLS_VALUE) {
+			} else if(consumeItem.getType() == Const.itemType.ITEM_VALUE) {
 				//检测道具
 				int itemId = (int) consumeItem.getItemId();
 				ItemEntity itemEntity = player.getPlayerData().getItemById(itemId);
@@ -298,7 +329,7 @@ public class ConsumeItems {
 					//构造失败 道具不足
 					return false;
 				}
-				addChangeInfo(changeType.CHANGE_TOOLS, itemEntity.getId(), itemEntity.getItemId(), itemInfo.getCount());
+				addChangeInfo(changeType.CHANGE_ITEM, itemEntity.getId(), itemEntity.getItemId(), itemInfo.getCount());
 			}
 			else if(itemInfo.getType()  == itemType.EQUIP_VALUE){
 				ItemEntity itemEntity = playerData.getItemByItemId(itemInfo.getItemId());
@@ -306,7 +337,7 @@ public class ConsumeItems {
 					//构造失败 装备不存在
 					return false;
 				}
-				addChangeInfo(changeType.CHANGE_TOOLS, itemEntity.getId(), itemEntity.getItemId(), itemInfo.getCount());
+				addChangeInfo(changeType.CHANGE_ITEM, itemEntity.getId(), itemEntity.getItemId(), itemInfo.getCount());
 			}
 		}
 		return true;

@@ -24,7 +24,8 @@ public class PbUnit
     //静态数据id，可以通过此id获取prefab等
     public string id;
     //性格
-    public int personality;
+	public int character;
+	public int lazy;
     public int level;
     public int curExp;
     public int starLevel;//升星
@@ -51,6 +52,8 @@ public class GameUnit
     public int recovery;//战后回血
 	public bool isBoss = false;
 	public string Ai;
+	public int character;//性格
+	public int lazy;//勤奋度
     //掉落金币
     public int goldNoteMin;
     public int goldNoteMax;
@@ -222,6 +225,10 @@ public class GameUnit
 				spellList.Add(spellID, new Spell(spellPt));
             }
         }	
+
+		//性格，勤奋度
+		character = pbUnit.character;
+		lazy = pbUnit.lazy;
 	}
 	
 	void InitWeakPoint(string strWeak)

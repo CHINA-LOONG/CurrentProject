@@ -276,10 +276,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .241935462
+  m_TransitionDuration: .405251622
   m_TransitionOffset: 0
-  m_ExitTime: .758064508
-  m_HasExitTime: 0
+  m_ExitTime: .568306625
+  m_HasExitTime: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -597,7 +597,7 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 7400000, guid: e13640971bb405e4d99f517cc6f73faa, type: 3}
+  m_Motion: {fileID: 7400000, guid: 1d40e8638efa0e2498c481693357678d, type: 3}
   m_Tag: 
 --- !u!1102 &110293032
 AnimatorState:

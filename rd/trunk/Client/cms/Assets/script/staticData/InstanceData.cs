@@ -54,6 +54,10 @@ public class InstanceData
     public string sceneBattle;
     public string sceneAmount;
     public string monsterAmount;
+
+	public int dazhaoGroup;
+	public int dazhaoAdjust;
+
     public string monster1;
     public int monster1Amount;
     public string monster2;

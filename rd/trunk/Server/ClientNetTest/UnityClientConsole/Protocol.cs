@@ -209,7 +209,7 @@ namespace UnityClientConsole
 		    	
 		    	if ((buffer.Length - buffer.Position) >= header.size) {
   		
-		    		if (header.size > 0) {
+		    		if (header.size >= 0) {
 
                         if (octets == null)
                         {
@@ -220,13 +220,13 @@ namespace UnityClientConsole
                         octets.Write(buffer.GetBuffer(), (int)buffer.Position, header.size);
 
                         Buffer.BlockCopy(buffer.GetBuffer(), HEAD_SIZE + header.size, buffer.GetBuffer(), 0, (int)(buffer.Length - HEAD_SIZE - header.size));
-                        buffer.SetLength(buffer.Length - header.size - HEAD_SIZE);
+                        
+                        buffer.SetLength(buffer.Length - header.size - HEAD_SIZE);                      
                         crc = 0;
 		    		}
 		    	}
                 else{
 
-		    		return false;
 		    	}
 		    } catch (Exception e) {
 		    	
@@ -236,7 +236,7 @@ namespace UnityClientConsole
             }
             finally
             {
-                buffer.Position = buffer.Length;
+                buffer.Seek(0, SeekOrigin.Begin);
             }
 
 		    // crc校验

@@ -10,7 +10,6 @@ import com.hawk.game.protocol.Const;
 /**
  * 配置检查
  * 
- * @author xulinqs
  * 
  */
 public class ConfigUtil {
@@ -26,13 +25,7 @@ public class ConfigUtil {
 		if (itemType == Const.itemType.PLAYER_ATTR_VALUE) {
 			return true;
 		} 
-		else if (itemType == Const.itemType.EQUIP_VALUE) {
-			if (HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId) == null) {
-				HawkLog.errPrintln("equip config not found, itemId: " + itemId);
-				return false;
-			}
-			return true;
-		} else if (itemType == Const.itemType.ITEM_VALUE) {
+		else if (itemType == Const.itemType.ITEM_VALUE || itemType == Const.itemType.EQUIP_VALUE) {
 			if (HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId) == null) {
 				HawkLog.errPrintln("item config not found, itemId: " + itemId);
 				return false;
@@ -42,6 +35,42 @@ public class ConfigUtil {
 		return false;
 	}
 
+	/**
+	 * 检测itemType的itemId 
+	 * 
+	 * @param itemType
+	 * @param itemId
+	 * @return
+	 */
+	public static boolean checkIsNotEquip(int itemType) {
+		if (itemType == Const.itemType.PLAYER_ATTR_VALUE  ||
+			itemType == Const.itemType.MONSTER_ATTR_VALUE ||	
+			itemType == Const.itemType.ITEM_VALUE		  ||	
+			itemType == Const.itemType.EQUIP_VALUE		  ||	
+			itemType == Const.itemType.GROUP_VALUE	
+			) 
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * 检测itemType的itemId 
+	 * 
+	 * @param itemType
+	 * @param itemId
+	 * @return
+	 */
+	public static boolean checkIsEquip(int itemType) {
+		if (itemType == Const.itemType.EQUIP_VALUE) {
+			return true;
+		} 
+		
+		return false;
+	}
+	
 	/**
 	 * 怪物检测
 	 * @param monsterId

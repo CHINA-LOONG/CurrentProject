@@ -29,7 +29,8 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, EffectPrototype> effectData = new Dictionary<string, EffectPrototype>();
     Dictionary<string, SpellProtoType> spellData = new Dictionary<string, SpellProtoType>();
     Dictionary<string, InstanceData> instanceData = new Dictionary<string, InstanceData>();
-    Dictionary<string, BattleUnitAiData> battleUnitAiData = new Dictionary<string, BattleUnitAiData>();
+	Dictionary<int,LazyData>	lazyData = new Dictionary<int, LazyData>();
+	Dictionary<int,CharacterData> characterData = new Dictionary<int, CharacterData>();
 
     public void Init()
     {
@@ -267,11 +268,17 @@ public class StaticDataMgr : MonoBehaviour
                 weakPointData.Add(item.id, item);
         }
 
-        {
-            var data = InitTable<BattleUnitAiData>("battleUnitAi");
-            foreach (var item in data)
-                battleUnitAiData.Add(item.index, item);
-        }
+		{
+			var data = InitTable<LazyData>("lazy");
+			foreach(var item in data)
+				lazyData.Add(item.index,item);
+		}
+
+		{
+			var data = InitTable<CharacterData>("character");
+			foreach(var item in data)
+				characterData.Add(item.index,item);
+		}
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -328,14 +335,19 @@ public class StaticDataMgr : MonoBehaviour
         return instanceData[id];
     }
 
-    public BattleUnitAiData GetBattleUnitAiData(string index)
-    {
-		if (battleUnitAiData.ContainsKey (index)) {
-			return battleUnitAiData [index];
-		} else {
-			Debug.LogError("can't find battleunitai key " + index);
-			return null;
-		}
-    }
+	public LazyData GetLazyData(int index)
+	{
+		LazyData ldata = null;
+		lazyData.TryGetValue (index, out ldata);
+		return ldata;
+	}
+
+	public CharacterData GetCharacterData(int index)
+	{
+		CharacterData cData = null;
+		characterData.TryGetValue (index, out cData);
+		return cData;
+	}
+
     #endregion
 }

@@ -49,16 +49,38 @@ public class GameMain : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 		//SkillMgr.Instance.Init();
 		ChangeModule<LoginModule>();
+
+		BindListener ();
+		GameApp.Instance.netManager.SendConnect ();
+	}
+
+	void OnDestory()
+	{
+		UnBindListener ();
 	}
 	
 	void BindListener()
 	{
+		GameEventMgr.Instance.AddListener<int> (NetEventList.NetConnectFinished, OnNetConnectFinished);
 	}
 	
 	void UnBindListener()
 	{
-		
+		GameEventMgr.Instance.RemoveListener<int> (NetEventList.NetConnectFinished, OnNetConnectFinished);
 	}
+
+	void OnNetConnectFinished( int state )
+	{
+		if (1 == state) 
+		{
+			Debug.LogError ("OK for net");
+		}
+		else
+		{
+			Debug.LogError("Error for Net");
+		}
+	}
+
 
 	public void ChangeModule<T>(object param0 = null) where T : ModuleBase
 	{

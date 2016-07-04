@@ -182,9 +182,17 @@ public final class HS {
      */
     PLAYER_INFO_SYNC_S(5, 1005),
     /**
+     * <code>ITEM_INFO_SYNC_S = 1006;</code>
+     */
+    ITEM_INFO_SYNC_S(6, 1006),
+    /**
+     * <code>EQUIP_INFO_SYNC_S = 1007;</code>
+     */
+    EQUIP_INFO_SYNC_S(7, 1007),
+    /**
      * <code>ASSEMBLE_FINISH_S = 1010;</code>
      */
-    ASSEMBLE_FINISH_S(6, 1010),
+    ASSEMBLE_FINISH_S(8, 1010),
     /**
      * <code>PLAYER_CREATE_C = 1101;</code>
      *
@@ -192,11 +200,19 @@ public final class HS {
      * 角色
      * </pre>
      */
-    PLAYER_CREATE_C(7, 1101),
+    PLAYER_CREATE_C(9, 1101),
     /**
      * <code>PLAYER_CREATE_S = 1102;</code>
      */
-    PLAYER_CREATE_S(8, 1102),
+    PLAYER_CREATE_S(10, 1102),
+    /**
+     * <code>PLAYER_CONSUME_S = 1103;</code>
+     */
+    PLAYER_CONSUME_S(11, 1103),
+    /**
+     * <code>PLAYER_REWARD_S = 1104;</code>
+     */
+    PLAYER_REWARD_S(12, 1104),
     /**
      * <code>MONSTER_INFO_SYNC_S = 2000;</code>
      *
@@ -204,31 +220,31 @@ public final class HS {
      * 怪物
      * </pre>
      */
-    MONSTER_INFO_SYNC_S(9, 2000),
+    MONSTER_INFO_SYNC_S(13, 2000),
     /**
      * <code>MONSTER_ADD_S = 2001;</code>
      */
-    MONSTER_ADD_S(10, 2001),
+    MONSTER_ADD_S(14, 2001),
     /**
      * <code>MONSTER_CATCH_C = 2002;</code>
      */
-    MONSTER_CATCH_C(11, 2002),
+    MONSTER_CATCH_C(15, 2002),
     /**
      * <code>MONSTER_BREAK_C = 2003;</code>
      */
-    MONSTER_BREAK_C(12, 2003),
+    MONSTER_BREAK_C(16, 2003),
     /**
      * <code>MONSTER_BREAK_S = 2004;</code>
      */
-    MONSTER_BREAK_S(13, 2004),
+    MONSTER_BREAK_S(17, 2004),
     /**
      * <code>MONSTER_FEED_C = 2005;</code>
      */
-    MONSTER_FEED_C(14, 2005),
+    MONSTER_FEED_C(18, 2005),
     /**
      * <code>MONSTER_FEED_S = 2006;</code>
      */
-    MONSTER_FEED_S(15, 2006),
+    MONSTER_FEED_S(19, 2006),
     /**
      * <code>INSTANCE_ENTER_C = 3000;</code>
      *
@@ -236,19 +252,31 @@ public final class HS {
      * 副本
      * </pre>
      */
-    INSTANCE_ENTER_C(16, 3000),
+    INSTANCE_ENTER_C(20, 3000),
     /**
      * <code>INSTANCE_ENTER_S = 3001;</code>
      */
-    INSTANCE_ENTER_S(17, 3001),
+    INSTANCE_ENTER_S(21, 3001),
     /**
      * <code>INSTANCE_SETTLE_C = 3002;</code>
      */
-    INSTANCE_SETTLE_C(18, 3002),
+    INSTANCE_SETTLE_C(22, 3002),
     /**
      * <code>INSTANCE_SETTLE_S = 3003;</code>
      */
-    INSTANCE_SETTLE_S(19, 3003),
+    INSTANCE_SETTLE_S(23, 3003),
+    /**
+     * <code>ITEM_USE_C = 4001;</code>
+     *
+     * <pre>
+     * 道具
+     * </pre>
+     */
+    ITEM_USE_C(24, 4001),
+    /**
+     * <code>ITEM_SELL_C = 4002;</code>
+     */
+    ITEM_SELL_C(25, 4002),
     ;
 
     /**
@@ -280,6 +308,14 @@ public final class HS {
      */
     public static final int PLAYER_INFO_SYNC_S_VALUE = 1005;
     /**
+     * <code>ITEM_INFO_SYNC_S = 1006;</code>
+     */
+    public static final int ITEM_INFO_SYNC_S_VALUE = 1006;
+    /**
+     * <code>EQUIP_INFO_SYNC_S = 1007;</code>
+     */
+    public static final int EQUIP_INFO_SYNC_S_VALUE = 1007;
+    /**
      * <code>ASSEMBLE_FINISH_S = 1010;</code>
      */
     public static final int ASSEMBLE_FINISH_S_VALUE = 1010;
@@ -295,6 +331,14 @@ public final class HS {
      * <code>PLAYER_CREATE_S = 1102;</code>
      */
     public static final int PLAYER_CREATE_S_VALUE = 1102;
+    /**
+     * <code>PLAYER_CONSUME_S = 1103;</code>
+     */
+    public static final int PLAYER_CONSUME_S_VALUE = 1103;
+    /**
+     * <code>PLAYER_REWARD_S = 1104;</code>
+     */
+    public static final int PLAYER_REWARD_S_VALUE = 1104;
     /**
      * <code>MONSTER_INFO_SYNC_S = 2000;</code>
      *
@@ -347,6 +391,18 @@ public final class HS {
      * <code>INSTANCE_SETTLE_S = 3003;</code>
      */
     public static final int INSTANCE_SETTLE_S_VALUE = 3003;
+    /**
+     * <code>ITEM_USE_C = 4001;</code>
+     *
+     * <pre>
+     * 道具
+     * </pre>
+     */
+    public static final int ITEM_USE_C_VALUE = 4001;
+    /**
+     * <code>ITEM_SELL_C = 4002;</code>
+     */
+    public static final int ITEM_SELL_C_VALUE = 4002;
 
 
     public final int getNumber() { return value; }
@@ -359,9 +415,13 @@ public final class HS {
         case 1003: return LOGOUT_S;
         case 1004: return KICKOUT_S;
         case 1005: return PLAYER_INFO_SYNC_S;
+        case 1006: return ITEM_INFO_SYNC_S;
+        case 1007: return EQUIP_INFO_SYNC_S;
         case 1010: return ASSEMBLE_FINISH_S;
         case 1101: return PLAYER_CREATE_C;
         case 1102: return PLAYER_CREATE_S;
+        case 1103: return PLAYER_CONSUME_S;
+        case 1104: return PLAYER_REWARD_S;
         case 2000: return MONSTER_INFO_SYNC_S;
         case 2001: return MONSTER_ADD_S;
         case 2002: return MONSTER_CATCH_C;
@@ -373,6 +433,8 @@ public final class HS {
         case 3001: return INSTANCE_ENTER_S;
         case 3002: return INSTANCE_SETTLE_C;
         case 3003: return INSTANCE_SETTLE_S;
+        case 4001: return ITEM_USE_C;
+        case 4002: return ITEM_SELL_C;
         default: return null;
       }
     }
@@ -435,18 +497,21 @@ public final class HS {
     java.lang.String[] descriptorData = {
       "\n\021Protocol/HS.proto*I\n\003sys\022\020\n\014DATA_WRAPP" +
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
-      "\n\nERROR_CODE\020\004*\245\003\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n" +
+      "\n\nERROR_CODE\020\004*\244\004\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n" +
       "\007LOGIN_S\020\351\007\022\r\n\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353" +
       "\007\022\016\n\tKICKOUT_S\020\354\007\022\027\n\022PLAYER_INFO_SYNC_S\020" +
-      "\355\007\022\026\n\021ASSEMBLE_FINISH_S\020\362\007\022\024\n\017PLAYER_CRE" +
-      "ATE_C\020\315\010\022\024\n\017PLAYER_CREATE_S\020\316\010\022\030\n\023MONSTE" +
-      "R_INFO_SYNC_S\020\320\017\022\022\n\rMONSTER_ADD_S\020\321\017\022\024\n\017" +
-      "MONSTER_CATCH_C\020\322\017\022\024\n\017MONSTER_BREAK_C\020\323\017" +
-      "\022\024\n\017MONSTER_BREAK_S\020\324\017\022\023\n\016MONSTER_FEED_C",
-      "\020\325\017\022\023\n\016MONSTER_FEED_S\020\326\017\022\025\n\020INSTANCE_ENT" +
-      "ER_C\020\270\027\022\025\n\020INSTANCE_ENTER_S\020\271\027\022\026\n\021INSTAN" +
-      "CE_SETTLE_C\020\272\027\022\026\n\021INSTANCE_SETTLE_S\020\273\027B\030" +
-      "\n\026com.hawk.game.protocol"
+      "\355\007\022\025\n\020ITEM_INFO_SYNC_S\020\356\007\022\026\n\021EQUIP_INFO_" +
+      "SYNC_S\020\357\007\022\026\n\021ASSEMBLE_FINISH_S\020\362\007\022\024\n\017PLA" +
+      "YER_CREATE_C\020\315\010\022\024\n\017PLAYER_CREATE_S\020\316\010\022\025\n" +
+      "\020PLAYER_CONSUME_S\020\317\010\022\024\n\017PLAYER_REWARD_S\020" +
+      "\320\010\022\030\n\023MONSTER_INFO_SYNC_S\020\320\017\022\022\n\rMONSTER_",
+      "ADD_S\020\321\017\022\024\n\017MONSTER_CATCH_C\020\322\017\022\024\n\017MONSTE" +
+      "R_BREAK_C\020\323\017\022\024\n\017MONSTER_BREAK_S\020\324\017\022\023\n\016MO" +
+      "NSTER_FEED_C\020\325\017\022\023\n\016MONSTER_FEED_S\020\326\017\022\025\n\020" +
+      "INSTANCE_ENTER_C\020\270\027\022\025\n\020INSTANCE_ENTER_S\020" +
+      "\271\027\022\026\n\021INSTANCE_SETTLE_C\020\272\027\022\026\n\021INSTANCE_S" +
+      "ETTLE_S\020\273\027\022\017\n\nITEM_USE_C\020\241\037\022\020\n\013ITEM_SELL" +
+      "_C\020\242\037B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

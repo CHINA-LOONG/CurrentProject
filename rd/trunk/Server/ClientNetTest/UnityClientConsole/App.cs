@@ -81,9 +81,11 @@ namespace UnityClientConsole
                 // 创建角色
                 if (playerID == 0)
                 {
+                    Console.WriteLine("角色不存在，创角色");
+
                     HSPlayerCreate createRole = new HSPlayerCreate();
-                    createRole.puid = "zhengshuai";
-                    createRole.nickname = "郑帅";
+                    createRole.puid = "zs";
+                    createRole.nickname = "qq";
                     createRole.career = 1;
                     createRole.gender = 0;
                     createRole.eye = 1;
@@ -91,13 +93,56 @@ namespace UnityClientConsole
                     createRole.hairColor = 1;
                     NetManager.GetInstance().SendProtocol(code.PLAYER_CREATE_C.GetHashCode(), createRole);
                 }
+                else
+                {
+                    Console.WriteLine("登录成功");
+                    HSSyncInfo syncInfo = new HSSyncInfo();
+                    NetManager.GetInstance().SendProtocol(code.SYNCINFO_C.GetHashCode(), syncInfo);
+                }
+
             }
             else if (protocol.checkType(code.PLAYER_CREATE_S.GetHashCode()))
             {
+                Console.WriteLine("创建角色成功");
 
                 playerID = protocol.GetProtocolBody<HSPlayerCreateRet>().palyerID;
+                HSSyncInfo syncInfo = new HSSyncInfo();
+                NetManager.GetInstance().SendProtocol(code.SYNCINFO_C.GetHashCode(), syncInfo);
 
-                SendLoginProtocol();
+            }
+            else if (protocol.checkType(code.SYNCINFO_S.GetHashCode()))
+            {
+
+                Console.WriteLine("开始同步信息");
+
+            }
+            else if (protocol.checkType(code.PLAYER_INFO_SYNC_S.GetHashCode()))
+            {
+
+                Console.WriteLine("同步玩家信息");
+
+            }
+            else if (protocol.checkType(code.STATISTICS_INFO_SYNC_S.GetHashCode()))
+            {
+
+                Console.WriteLine("同步统计信息");
+
+            }
+            else if (protocol.checkType(code.MONSTER_INFO_SYNC_S.GetHashCode()))
+            {
+                Console.WriteLine("同步宠物信息");
+            }
+            else if (protocol.checkType(code.ITEM_INFO_SYNC_S.GetHashCode()))
+            {
+                Console.WriteLine("同步道具信息");
+            }
+            else if (protocol.checkType(code.EQUIP_INFO_SYNC_S.GetHashCode()))
+            {
+                Console.WriteLine("同步装备信息");
+            }
+            else if (protocol.checkType(code.ASSEMBLE_FINISH_S.GetHashCode()))
+            {
+                Console.WriteLine("同步完成"); 
 
             }
             else if (protocol.checkType(sys.HEART_BEAT.GetHashCode()))

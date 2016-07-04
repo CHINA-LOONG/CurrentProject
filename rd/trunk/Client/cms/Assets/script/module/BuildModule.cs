@@ -3,36 +3,43 @@ using System.Collections;
 using System.Collections.Generic;
 public class BuildModule : ModuleBase 
 {	
+	void Start()
+	{
+	}
+
 	void BindListener()
 	{
-        GameEventMgr.Instance.AddListener<PbStartBattle>(GameEventList.BattleBtnClick, OnBattleBtnClick);
+		GameEventMgr.Instance.AddListener<PbStartBattle>(GameEventList.BattleBtnClick, OnBattleBtnClick);
+		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.SYNCINFO_S.GetHashCode().ToString (), OnRequestPlayerSyncInfoFinished);
+		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.ASSEMBLE_FINISH_S.GetHashCode ().ToString (), OnRequestPlayerSyncInfoFinished);
 	}
 	
 	void UnBindListener()
 	{
-        GameEventMgr.Instance.RemoveListener<PbStartBattle>(GameEventList.BattleBtnClick, OnBattleBtnClick);
+		GameEventMgr.Instance.RemoveListener<PbStartBattle>(GameEventList.BattleBtnClick, OnBattleBtnClick);
+		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.SYNCINFO_S.GetHashCode().ToString (), OnRequestPlayerSyncInfoFinished);
+		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.ASSEMBLE_FINISH_S.GetHashCode ().ToString (), OnRequestPlayerSyncInfoFinished);
 	}
-	
-	void Start()
+
+	private void OnBattleBtnClick(PbStartBattle proto)
 	{
-		
-	
+		GameMain.Instance.ChangeModule<BattleModule>();
+		Logger.Log("Enter Battle");
+		UIMgr.Instance.CloseUI(UIBuild.ViewName);
+		GameEventMgr.Instance.FireEvent(GameEventList.StartBattle, proto);
 	}
-	
-	void RequestHeroData()
+
+
+	void RequestPlayerData()
 	{
-		//Dictionary<string,string> dict = new Dictionary<string, string> ();
-		//dict.Add("heroid", GameDataMgr.Instance.PlayerDataAttr.Heroid);
-		//NetMgr.Instance.SendNetMsg(NetMsgList.Net_GetPlayerData, OnGetHeroData,dict);
-		
-		//	NetMgr.Instance.SendNetMsg(NetMsgList.Net_GetHeroData, OnGetHeroData);
+		PB.HSSyncInfo param = new PB.HSSyncInfo ();
+		param.deviceId = GameDataMgr.Instance.UserDataAttr.deviceID;
+		param.platform = GameDataMgr.Instance.UserDataAttr.platform;
+		param.version = GameDataMgr.Instance.UserDataAttr.version;
+
+		GameApp.Instance.netManager.SendMessage (ProtocolMessage.Create (PB.code.SYNCINFO_C.GetHashCode (), param));
 	}
-	
-	void OnGetHeroData(object param)
-	{
-		
-	}
-	
+
 
 	public override void OnInit(object param)
 	{
@@ -43,7 +50,7 @@ public class BuildModule : ModuleBase
 	public override void OnEnter(ModuleBase prevModule, object param)
 	{
 		BindListener();
-		RequestHeroData ();
+		RequestPlayerData ();
 	}
 	
 	public override void OnExecute()
@@ -56,13 +63,24 @@ public class BuildModule : ModuleBase
 		UnBindListener();
 	}
 
-    private void OnBattleBtnClick(PbStartBattle proto)
-    {
-        GameMain.Instance.ChangeModule<BattleModule>();
-        Logger.Log("Enter Battle");
-        UIMgr.Instance.CloseUI(UIBuild.ViewName);
-        GameEventMgr.Instance.FireEvent(GameEventList.StartBattle, proto);
-    }
+
+	//net message
+
+	void OnRequestPlayerSyncInfoFinished(ProtocolMessage msg)
+	{
+		int msgType = msg.GetMessageType ();
+		if (msgType == PB.code.SYNCINFO_S.GetHashCode ())
+		{
+			PB.HSSyncInfoRet  response = msg.GetProtocolBody<PB.HSSyncInfoRet>();
+		}
+		else if ( msgType == PB.code.ASSEMBLE_FINISH_S.GetHashCode() )
+		{
+			//消息同步完成
+			PB.HSAssembleFinish finishState = msg.GetProtocolBody<PB.HSAssembleFinish>();
+			//
+			Debug.LogWarning("player info sync finished!");
+		}
+	}
 }
 
 

@@ -1,0 +1,8 @@
+﻿#NUM,NUM,NUM,NUM,NUM
+index,physicsWeight,magicWeight,gainWeight,defenseWeight
+#性格ID,物理攻击权重,法术攻击权重,增益效果攻击权重,防御效果权重
+1,100,100,100,100
+2,800,100,50,50
+3,100,800,50,50
+4,100,100,700,100
+5,100,100,100,700

@@ -454,6 +454,10 @@ public class BehaviorLogger {
 		 */
 		SKILL_CARRAY,
 		/**
+		 * 购买出售
+		 */
+		ITEM_BUY,
+		/**
 		 * 道具出售
 		 */
 		ITEM_SELL,

@@ -6,6 +6,9 @@ package com.hawk.game.util;
  * @author hawk
  */
 public class GsConst {
+	// 刷新间隔帧
+	public static final int REFRESH_PERIOD = 100;
+
 	/**
 	 * 对象类型
 	 * 
@@ -13,9 +16,9 @@ public class GsConst {
 	 */
 	public static class ObjType {
 		// 玩家对象
-		public static int PLAYER = 1;
+		public static final int PLAYER = 1;
 		// 应用程序
-		public static int MANAGER = 100;
+		public static final int MANAGER = 100;
 	}
 
 	/**
@@ -25,7 +28,7 @@ public class GsConst {
 	 */
 	public static class ObjId {
 		// 应用程序
-		public static int APP = 100;
+		public static final int APP = 100;
 	}
 
 	/**
@@ -33,12 +36,12 @@ public class GsConst {
 	 */
 	public static class MsgType {
 		// 连接断开
-		public static int SESSION_CLOSED = 2;
+		public static final int SESSION_CLOSED = 2;
 		// 玩家上线
-		public static int PLAYER_LOGIN = 3;
+		public static final int PLAYER_LOGIN = 3;
 		// 玩家初始化完成
-		public static int PLAYER_ASSEMBLE = 4;
-		
+		public static final int PLAYER_ASSEMBLE = 4;
+
 		// 奖励宠物
 		public static final int PRESENT_MONSTER = 1001;
 	}
@@ -48,14 +51,36 @@ public class GsConst {
 	 */
 	public static class ModuleType {
 		// 登陆模块
-		public static int LOGIN_MODULE = 1;
+		public static final int LOGIN_MODULE = 1;
+		// 统计模块
+		public static final int STATISTICS_MODULE = 2;
 		// 怪物模块
-		public static int MONSTER_MODULE = 2;
+		public static final int MONSTER_MODULE = 3;
 		// 副本模块
-		public static int INSTANCE_MODULE = 3;
+		public static final int INSTANCE_MODULE = 4;
+		// 装备模块
+		public static int ITEM_MODULE = 5;
+		// 道具模块
+		public static int EQUIP_MODULE = 6;
 		
 		// 空闲模块(保证在最后)
-		public static int IDLE_MODULE = 100;
+		public static final int IDLE_MODULE = 100;
+	}
+
+	/**
+	 * 刷新类型定义
+	 */
+	public static class RefreshType {
+		// 全局刷新----------------------------------------------------------
+		public static final int GLOBAL_REFRESH_BEGIN = 0;
+		public static final int QUEST_GLOBAL_REFRESH = 1;
+		public static final int GLOBAL_REFRESH_END = 2;
+
+		// 个人刷新----------------------------------------------------------
+		public static final int PERS_REFRESH_BEGIN = 100;
+		public static final int SIGN_IN_PERS_REFRESH = 101;
+		public static final int INSTANCE_PERS_REFRESH = 102;
+		public static final int PERS_REFRESH_END = 103;
 	}
 
 	/**
@@ -63,13 +88,12 @@ public class GsConst {
 	 */
 	public static class PropertyType {
 		// 金木水火土
-		public static int JIN_PROPERTY = 1;
-		public static int MU_PROPERTY = 2;
-		public static int SHUI_PROPERTY = 3;
-		public static int HUO_PROPERTY = 4;
-		public static int TU_PROPERTY = 5;
+		public static final int JIN_PROPERTY = 1;
+		public static final int MU_PROPERTY = 2;
+		public static final int SHUI_PROPERTY = 3;
+		public static final int HUO_PROPERTY = 4;
+		public static final int TU_PROPERTY = 5;
 	}
-	
 	public static class PlayerItemCheckResult {
 		/**
 		 * 金币不足

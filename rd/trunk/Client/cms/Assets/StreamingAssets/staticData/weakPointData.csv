@@ -1,6 +1,6 @@
-#TEXT,NUM,FLOAT,NUM,NUM,NUM,TEXT,TEXT,TEXT,TEXT,NUM
+ï»¿#TEXT,NUM,FLOAT,NUM,NUM,NUM,TEXT,TEXT,TEXT,TEXT,NUM
 id,isDamagePoint,damageRate,health,isTarget,property,node,asset,collider,mesh,initialStatus
-#Èõµãid,ÊÇ·ñ¹ØÁªboss¼õÑª,ÈõµãÏµÊı,Èõµãhp,aiÑ¡ÔñÄ¿±êÊÇ·ñ¿ÉÒÔÑ¡Ôñµ½,ÈõµãÎåĞĞ,ÈõµãµÄ½Úµã,Èõµã±íÏÖ,¼ì²âµÄºĞ×Ó,²¿Î»meshÃû,²¿Î»³õÊ¼×´Ì¬
+#å¼±ç‚¹id,æ˜¯å¦å…³è”bosså‡è¡€,å¼±ç‚¹ç³»æ•°,å¼±ç‚¹hp,aié€‰æ‹©ç›®æ ‡æ˜¯å¦å¯ä»¥é€‰æ‹©åˆ°,å¼±ç‚¹äº”è¡Œ,å¼±ç‚¹çš„èŠ‚ç‚¹,å¼±ç‚¹è¡¨ç°,æ£€æµ‹çš„ç›’å­,éƒ¨ä½meshå,éƒ¨ä½åˆå§‹çŠ¶æ€
 1jiuweihu_wp1,1,0.7,-1,1,-1,jiuweihu_wp1,weakpointEffect1,wp1,,-1
 1jiuweihu_wp2,1,0.45,200,1,1,jiuweihu_wp1,weakpointEffect1,wp2,jiuweihu_weiba,0
 1jiuweihu_wp3,0,0.45,200,1,2,jiuweihu_wp1,weakpointEffect1,wp3,,-1

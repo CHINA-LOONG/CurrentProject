@@ -6,6 +6,7 @@ using System;
 public class GameApp : MonoBehaviour
 {
     private static GameApp _manager = null;
+	public NetworkManager netManager =null;
     public static GameApp Instance
     {
         get
@@ -38,6 +39,7 @@ public class GameApp : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);  //防止销毁自己
 
+		netManager = gameObject.GetComponent<NetworkManager> ();
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Application.targetFrameRate = Const.GameFrameRate;
 
@@ -47,11 +49,13 @@ public class GameApp : MonoBehaviour
 
     void InitMgr()
     {
+		GameEventMgr.Instance.Init();
+
         StaticDataMgr.Instance.Init();
         GameDataMgr.Instance.Init();
 		LayerConst.Init ();
         //NetMgr.Instance.Init();
-        GameEventMgr.Instance.Init();
+       
         UIMgr.Instance.Init();
         GameMain.Instance.Init();
         SpellService.Instance.Init();

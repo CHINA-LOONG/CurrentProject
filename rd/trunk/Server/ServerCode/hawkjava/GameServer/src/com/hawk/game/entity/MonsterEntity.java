@@ -17,7 +17,11 @@ import net.sf.json.JSONObject;
 import org.hawk.db.HawkDBEntity;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
+import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
+
+import com.google.gson.reflect.TypeToken;
+import com.hawk.game.util.GsConst;
 
 /**
  * 怪物基础数据
@@ -57,7 +61,7 @@ public class MonsterEntity extends HawkDBEntity {
 	protected byte ai = 0;
 
 	@Column(name = "skillList", nullable = false)
-	private String skillJsonStr = "";
+	private String skillJson = "";
 
 	@Column(name = "createTime", nullable = false)
 	protected Date createTime = null;
@@ -70,9 +74,6 @@ public class MonsterEntity extends HawkDBEntity {
 
 	@Transient
 	protected Map<Integer, Integer> skillMap = new HashMap<Integer, Integer>();
-	
-	@Transient
-	private boolean assembleFinish = false;
 
 	public MonsterEntity() {
 		this.createTime = HawkTime.getCalendar().getTime();
@@ -87,51 +88,6 @@ public class MonsterEntity extends HawkDBEntity {
 		this.lazy = lazy;
 		this.ai = ai;
 		this.createTime = HawkTime.getCalendar().getTime();
-	}
-
-	private void SkillJsonToMap(){
-		JSONArray jsonArray = JSONArray.fromObject(skillJsonStr);
-		JSONObject skill = null;
-		int skillId = 0;
-		int skillLevel = 0;
-		boolean valid = true;
-		skillMap.clear();
-		
-		if (jsonArray == null ||  jsonArray.isArray() == false) {
-			valid = false;
-		}
-		else {
-			for (int i = 0; i < jsonArray.size(); ++i) {
-				skill = jsonArray.getJSONObject(i);
-				if (skill.containsKey("id") == false || skill.containsKey("lv") == false) {
-					valid = false;
-					continue;
-				}
-				skillId = skill.getInt("id");
-				skillLevel = skill.getInt("lv");
-				skillMap.put(skillId, skillLevel);
-			}
-		} 
-		
-		if (valid == false) {
-			HawkException.catchException(new HawkException("db monster skill data invalid: " + this.id));
-		}
-		
-		assembleFinish = true;
-	}
-
-	private void SkillMapToJson() {
-		JSONArray jsonArray = new JSONArray();
-		JSONObject skill = new JSONObject();
-
-		for (Map.Entry<Integer, Integer> entry : skillMap.entrySet()) {
-			skill.put("id", entry.getKey());
-			skill.put("lv", entry.getValue());
-
-			jsonArray.add(skill);
-		}
-
-		skillJsonStr = jsonArray.toString();
 	}
 
 	public int getId() {
@@ -199,9 +155,6 @@ public class MonsterEntity extends HawkDBEntity {
 	}
 
 	public Map<Integer, Integer> getSkillMap() {
-		if (assembleFinish == false) {
-			SkillJsonToMap();
-		}
 		return skillMap;
 	}
 
@@ -212,21 +165,21 @@ public class MonsterEntity extends HawkDBEntity {
 	public void setSkillLevel(int skillId, int level) {
 		skillMap.put(skillId, level);
 	}
-	
-	/**
-	 * 子类重载用于数据装配
-	 */
+
 	@Override
-	public void notifyUpdate(boolean async) {
-		SkillMapToJson();
-		super.notifyUpdate(async);
+	public boolean assemble() {
+		if (skillJson != null && false == "".equals(skillJson) && false == "null".equals(skillJson)) {
+			skillMap = HawkJsonUtil.getJsonInstance().fromJson(skillJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
+		}
+		return true;
+	}
+
+	@Override
+	public boolean disassemble() {
+		skillJson = HawkJsonUtil.getJsonInstance().toJson(skillMap);
+		return true;
 	}
 	
-//	public boolean updateSync() {
-//		SkillMapToJson();
-//		return HawkDBManager.getInstance().update(this);
-//	}
-
 	@Override
 	public Date getCreateTime() {
 		return createTime;

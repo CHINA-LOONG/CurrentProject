@@ -8,6 +8,2401 @@ public final class Player {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface SynPlayerAttrOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 gold = 1;
+    /**
+     * <code>optional int32 gold = 1;</code>
+     *
+     * <pre>
+     * 钻石
+     * </pre>
+     */
+    boolean hasGold();
+    /**
+     * <code>optional int32 gold = 1;</code>
+     *
+     * <pre>
+     * 钻石
+     * </pre>
+     */
+    int getGold();
+
+    // optional int64 coin = 2;
+    /**
+     * <code>optional int64 coin = 2;</code>
+     *
+     * <pre>
+     * 金币
+     * </pre>
+     */
+    boolean hasCoin();
+    /**
+     * <code>optional int64 coin = 2;</code>
+     *
+     * <pre>
+     * 金币
+     * </pre>
+     */
+    long getCoin();
+
+    // optional int32 level = 3;
+    /**
+     * <code>optional int32 level = 3;</code>
+     *
+     * <pre>
+     * 主卡等级
+     * </pre>
+     */
+    boolean hasLevel();
+    /**
+     * <code>optional int32 level = 3;</code>
+     *
+     * <pre>
+     * 主卡等级
+     * </pre>
+     */
+    int getLevel();
+
+    // optional int32 exp = 4;
+    /**
+     * <code>optional int32 exp = 4;</code>
+     *
+     * <pre>
+     * 主卡经验
+     * </pre>
+     */
+    boolean hasExp();
+    /**
+     * <code>optional int32 exp = 4;</code>
+     *
+     * <pre>
+     * 主卡经验
+     * </pre>
+     */
+    int getExp();
+
+    // optional int32 vipLevel = 5;
+    /**
+     * <code>optional int32 vipLevel = 5;</code>
+     *
+     * <pre>
+     * vip等级
+     * </pre>
+     */
+    boolean hasVipLevel();
+    /**
+     * <code>optional int32 vipLevel = 5;</code>
+     *
+     * <pre>
+     * vip等级
+     * </pre>
+     */
+    int getVipLevel();
+  }
+  /**
+   * Protobuf type {@code SynPlayerAttr}
+   */
+  public static final class SynPlayerAttr extends
+      com.google.protobuf.GeneratedMessage
+      implements SynPlayerAttrOrBuilder {
+    // Use SynPlayerAttr.newBuilder() to construct.
+    private SynPlayerAttr(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SynPlayerAttr(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SynPlayerAttr defaultInstance;
+    public static SynPlayerAttr getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SynPlayerAttr getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SynPlayerAttr(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              gold_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              coin_ = input.readInt64();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              level_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              exp_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              vipLevel_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Player.internal_static_SynPlayerAttr_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Player.internal_static_SynPlayerAttr_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Player.SynPlayerAttr.class, com.hawk.game.protocol.Player.SynPlayerAttr.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SynPlayerAttr> PARSER =
+        new com.google.protobuf.AbstractParser<SynPlayerAttr>() {
+      public SynPlayerAttr parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SynPlayerAttr(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SynPlayerAttr> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 gold = 1;
+    public static final int GOLD_FIELD_NUMBER = 1;
+    private int gold_;
+    /**
+     * <code>optional int32 gold = 1;</code>
+     *
+     * <pre>
+     * 钻石
+     * </pre>
+     */
+    public boolean hasGold() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 gold = 1;</code>
+     *
+     * <pre>
+     * 钻石
+     * </pre>
+     */
+    public int getGold() {
+      return gold_;
+    }
+
+    // optional int64 coin = 2;
+    public static final int COIN_FIELD_NUMBER = 2;
+    private long coin_;
+    /**
+     * <code>optional int64 coin = 2;</code>
+     *
+     * <pre>
+     * 金币
+     * </pre>
+     */
+    public boolean hasCoin() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int64 coin = 2;</code>
+     *
+     * <pre>
+     * 金币
+     * </pre>
+     */
+    public long getCoin() {
+      return coin_;
+    }
+
+    // optional int32 level = 3;
+    public static final int LEVEL_FIELD_NUMBER = 3;
+    private int level_;
+    /**
+     * <code>optional int32 level = 3;</code>
+     *
+     * <pre>
+     * 主卡等级
+     * </pre>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 level = 3;</code>
+     *
+     * <pre>
+     * 主卡等级
+     * </pre>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    // optional int32 exp = 4;
+    public static final int EXP_FIELD_NUMBER = 4;
+    private int exp_;
+    /**
+     * <code>optional int32 exp = 4;</code>
+     *
+     * <pre>
+     * 主卡经验
+     * </pre>
+     */
+    public boolean hasExp() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 exp = 4;</code>
+     *
+     * <pre>
+     * 主卡经验
+     * </pre>
+     */
+    public int getExp() {
+      return exp_;
+    }
+
+    // optional int32 vipLevel = 5;
+    public static final int VIPLEVEL_FIELD_NUMBER = 5;
+    private int vipLevel_;
+    /**
+     * <code>optional int32 vipLevel = 5;</code>
+     *
+     * <pre>
+     * vip等级
+     * </pre>
+     */
+    public boolean hasVipLevel() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 vipLevel = 5;</code>
+     *
+     * <pre>
+     * vip等级
+     * </pre>
+     */
+    public int getVipLevel() {
+      return vipLevel_;
+    }
+
+    private void initFields() {
+      gold_ = 0;
+      coin_ = 0L;
+      level_ = 0;
+      exp_ = 0;
+      vipLevel_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, gold_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt64(2, coin_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, level_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, exp_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, vipLevel_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, gold_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, coin_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, level_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, exp_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, vipLevel_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Player.SynPlayerAttr parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Player.SynPlayerAttr parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Player.SynPlayerAttr parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Player.SynPlayerAttr parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Player.SynPlayerAttr parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Player.SynPlayerAttr parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Player.SynPlayerAttr parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Player.SynPlayerAttr parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Player.SynPlayerAttr parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Player.SynPlayerAttr parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Player.SynPlayerAttr prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SynPlayerAttr}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Player.SynPlayerAttrOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Player.internal_static_SynPlayerAttr_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Player.internal_static_SynPlayerAttr_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Player.SynPlayerAttr.class, com.hawk.game.protocol.Player.SynPlayerAttr.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Player.SynPlayerAttr.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        gold_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        coin_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        exp_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        vipLevel_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Player.internal_static_SynPlayerAttr_descriptor;
+      }
+
+      public com.hawk.game.protocol.Player.SynPlayerAttr getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Player.SynPlayerAttr.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Player.SynPlayerAttr build() {
+        com.hawk.game.protocol.Player.SynPlayerAttr result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Player.SynPlayerAttr buildPartial() {
+        com.hawk.game.protocol.Player.SynPlayerAttr result = new com.hawk.game.protocol.Player.SynPlayerAttr(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.gold_ = gold_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.coin_ = coin_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.exp_ = exp_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.vipLevel_ = vipLevel_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Player.SynPlayerAttr) {
+          return mergeFrom((com.hawk.game.protocol.Player.SynPlayerAttr)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Player.SynPlayerAttr other) {
+        if (other == com.hawk.game.protocol.Player.SynPlayerAttr.getDefaultInstance()) return this;
+        if (other.hasGold()) {
+          setGold(other.getGold());
+        }
+        if (other.hasCoin()) {
+          setCoin(other.getCoin());
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
+        if (other.hasExp()) {
+          setExp(other.getExp());
+        }
+        if (other.hasVipLevel()) {
+          setVipLevel(other.getVipLevel());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Player.SynPlayerAttr parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Player.SynPlayerAttr) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 gold = 1;
+      private int gold_ ;
+      /**
+       * <code>optional int32 gold = 1;</code>
+       *
+       * <pre>
+       * 钻石
+       * </pre>
+       */
+      public boolean hasGold() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 gold = 1;</code>
+       *
+       * <pre>
+       * 钻石
+       * </pre>
+       */
+      public int getGold() {
+        return gold_;
+      }
+      /**
+       * <code>optional int32 gold = 1;</code>
+       *
+       * <pre>
+       * 钻石
+       * </pre>
+       */
+      public Builder setGold(int value) {
+        bitField0_ |= 0x00000001;
+        gold_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 gold = 1;</code>
+       *
+       * <pre>
+       * 钻石
+       * </pre>
+       */
+      public Builder clearGold() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        gold_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int64 coin = 2;
+      private long coin_ ;
+      /**
+       * <code>optional int64 coin = 2;</code>
+       *
+       * <pre>
+       * 金币
+       * </pre>
+       */
+      public boolean hasCoin() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int64 coin = 2;</code>
+       *
+       * <pre>
+       * 金币
+       * </pre>
+       */
+      public long getCoin() {
+        return coin_;
+      }
+      /**
+       * <code>optional int64 coin = 2;</code>
+       *
+       * <pre>
+       * 金币
+       * </pre>
+       */
+      public Builder setCoin(long value) {
+        bitField0_ |= 0x00000002;
+        coin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 coin = 2;</code>
+       *
+       * <pre>
+       * 金币
+       * </pre>
+       */
+      public Builder clearCoin() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        coin_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level = 3;
+      private int level_ ;
+      /**
+       * <code>optional int32 level = 3;</code>
+       *
+       * <pre>
+       * 主卡等级
+       * </pre>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 level = 3;</code>
+       *
+       * <pre>
+       * 主卡等级
+       * </pre>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional int32 level = 3;</code>
+       *
+       * <pre>
+       * 主卡等级
+       * </pre>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000004;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level = 3;</code>
+       *
+       * <pre>
+       * 主卡等级
+       * </pre>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 exp = 4;
+      private int exp_ ;
+      /**
+       * <code>optional int32 exp = 4;</code>
+       *
+       * <pre>
+       * 主卡经验
+       * </pre>
+       */
+      public boolean hasExp() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 exp = 4;</code>
+       *
+       * <pre>
+       * 主卡经验
+       * </pre>
+       */
+      public int getExp() {
+        return exp_;
+      }
+      /**
+       * <code>optional int32 exp = 4;</code>
+       *
+       * <pre>
+       * 主卡经验
+       * </pre>
+       */
+      public Builder setExp(int value) {
+        bitField0_ |= 0x00000008;
+        exp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 exp = 4;</code>
+       *
+       * <pre>
+       * 主卡经验
+       * </pre>
+       */
+      public Builder clearExp() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        exp_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 vipLevel = 5;
+      private int vipLevel_ ;
+      /**
+       * <code>optional int32 vipLevel = 5;</code>
+       *
+       * <pre>
+       * vip等级
+       * </pre>
+       */
+      public boolean hasVipLevel() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int32 vipLevel = 5;</code>
+       *
+       * <pre>
+       * vip等级
+       * </pre>
+       */
+      public int getVipLevel() {
+        return vipLevel_;
+      }
+      /**
+       * <code>optional int32 vipLevel = 5;</code>
+       *
+       * <pre>
+       * vip等级
+       * </pre>
+       */
+      public Builder setVipLevel(int value) {
+        bitField0_ |= 0x00000010;
+        vipLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 vipLevel = 5;</code>
+       *
+       * <pre>
+       * vip等级
+       * </pre>
+       */
+      public Builder clearVipLevel() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        vipLevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SynPlayerAttr)
+    }
+
+    static {
+      defaultInstance = new SynPlayerAttr(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:SynPlayerAttr)
+  }
+
+  public interface PlayerInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 playerId = 1;
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    boolean hasPlayerId();
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    int getPlayerId();
+
+    // required string nickname = 2;
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    boolean hasNickname();
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    java.lang.String getNickname();
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNicknameBytes();
+
+    // required int32 career = 3;
+    /**
+     * <code>required int32 career = 3;</code>
+     */
+    boolean hasCareer();
+    /**
+     * <code>required int32 career = 3;</code>
+     */
+    int getCareer();
+
+    // required int32 level = 4;
+    /**
+     * <code>required int32 level = 4;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>required int32 level = 4;</code>
+     */
+    int getLevel();
+
+    // required int32 exp = 5;
+    /**
+     * <code>required int32 exp = 5;</code>
+     */
+    boolean hasExp();
+    /**
+     * <code>required int32 exp = 5;</code>
+     */
+    int getExp();
+
+    // required int32 gold = 6;
+    /**
+     * <code>required int32 gold = 6;</code>
+     */
+    boolean hasGold();
+    /**
+     * <code>required int32 gold = 6;</code>
+     */
+    int getGold();
+
+    // required int64 coin = 7;
+    /**
+     * <code>required int64 coin = 7;</code>
+     */
+    boolean hasCoin();
+    /**
+     * <code>required int64 coin = 7;</code>
+     */
+    long getCoin();
+
+    // optional int32 gender = 8;
+    /**
+     * <code>optional int32 gender = 8;</code>
+     */
+    boolean hasGender();
+    /**
+     * <code>optional int32 gender = 8;</code>
+     */
+    int getGender();
+
+    // optional int32 eye = 9;
+    /**
+     * <code>optional int32 eye = 9;</code>
+     */
+    boolean hasEye();
+    /**
+     * <code>optional int32 eye = 9;</code>
+     */
+    int getEye();
+
+    // optional int32 hair = 10;
+    /**
+     * <code>optional int32 hair = 10;</code>
+     */
+    boolean hasHair();
+    /**
+     * <code>optional int32 hair = 10;</code>
+     */
+    int getHair();
+
+    // optional int32 hairColor = 11;
+    /**
+     * <code>optional int32 hairColor = 11;</code>
+     */
+    boolean hasHairColor();
+    /**
+     * <code>optional int32 hairColor = 11;</code>
+     */
+    int getHairColor();
+
+    // required int32 recharge = 12;
+    /**
+     * <code>required int32 recharge = 12;</code>
+     */
+    boolean hasRecharge();
+    /**
+     * <code>required int32 recharge = 12;</code>
+     */
+    int getRecharge();
+
+    // required int32 vipLevel = 13;
+    /**
+     * <code>required int32 vipLevel = 13;</code>
+     */
+    boolean hasVipLevel();
+    /**
+     * <code>required int32 vipLevel = 13;</code>
+     */
+    int getVipLevel();
+  }
+  /**
+   * Protobuf type {@code PlayerInfo}
+   */
+  public static final class PlayerInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements PlayerInfoOrBuilder {
+    // Use PlayerInfo.newBuilder() to construct.
+    private PlayerInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PlayerInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PlayerInfo defaultInstance;
+    public static PlayerInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PlayerInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PlayerInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              playerId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              nickname_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              career_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              level_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              exp_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              gold_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              coin_ = input.readInt64();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000080;
+              gender_ = input.readInt32();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000100;
+              eye_ = input.readInt32();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000200;
+              hair_ = input.readInt32();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000400;
+              hairColor_ = input.readInt32();
+              break;
+            }
+            case 96: {
+              bitField0_ |= 0x00000800;
+              recharge_ = input.readInt32();
+              break;
+            }
+            case 104: {
+              bitField0_ |= 0x00001000;
+              vipLevel_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Player.internal_static_PlayerInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Player.internal_static_PlayerInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Player.PlayerInfo.class, com.hawk.game.protocol.Player.PlayerInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PlayerInfo> PARSER =
+        new com.google.protobuf.AbstractParser<PlayerInfo>() {
+      public PlayerInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PlayerInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PlayerInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 playerId = 1;
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private int playerId_;
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    public boolean hasPlayerId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    public int getPlayerId() {
+      return playerId_;
+    }
+
+    // required string nickname = 2;
+    public static final int NICKNAME_FIELD_NUMBER = 2;
+    private java.lang.Object nickname_;
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    public boolean hasNickname() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    public java.lang.String getNickname() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nickname_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNicknameBytes() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nickname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 career = 3;
+    public static final int CAREER_FIELD_NUMBER = 3;
+    private int career_;
+    /**
+     * <code>required int32 career = 3;</code>
+     */
+    public boolean hasCareer() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 career = 3;</code>
+     */
+    public int getCareer() {
+      return career_;
+    }
+
+    // required int32 level = 4;
+    public static final int LEVEL_FIELD_NUMBER = 4;
+    private int level_;
+    /**
+     * <code>required int32 level = 4;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required int32 level = 4;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    // required int32 exp = 5;
+    public static final int EXP_FIELD_NUMBER = 5;
+    private int exp_;
+    /**
+     * <code>required int32 exp = 5;</code>
+     */
+    public boolean hasExp() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 exp = 5;</code>
+     */
+    public int getExp() {
+      return exp_;
+    }
+
+    // required int32 gold = 6;
+    public static final int GOLD_FIELD_NUMBER = 6;
+    private int gold_;
+    /**
+     * <code>required int32 gold = 6;</code>
+     */
+    public boolean hasGold() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required int32 gold = 6;</code>
+     */
+    public int getGold() {
+      return gold_;
+    }
+
+    // required int64 coin = 7;
+    public static final int COIN_FIELD_NUMBER = 7;
+    private long coin_;
+    /**
+     * <code>required int64 coin = 7;</code>
+     */
+    public boolean hasCoin() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required int64 coin = 7;</code>
+     */
+    public long getCoin() {
+      return coin_;
+    }
+
+    // optional int32 gender = 8;
+    public static final int GENDER_FIELD_NUMBER = 8;
+    private int gender_;
+    /**
+     * <code>optional int32 gender = 8;</code>
+     */
+    public boolean hasGender() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional int32 gender = 8;</code>
+     */
+    public int getGender() {
+      return gender_;
+    }
+
+    // optional int32 eye = 9;
+    public static final int EYE_FIELD_NUMBER = 9;
+    private int eye_;
+    /**
+     * <code>optional int32 eye = 9;</code>
+     */
+    public boolean hasEye() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional int32 eye = 9;</code>
+     */
+    public int getEye() {
+      return eye_;
+    }
+
+    // optional int32 hair = 10;
+    public static final int HAIR_FIELD_NUMBER = 10;
+    private int hair_;
+    /**
+     * <code>optional int32 hair = 10;</code>
+     */
+    public boolean hasHair() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional int32 hair = 10;</code>
+     */
+    public int getHair() {
+      return hair_;
+    }
+
+    // optional int32 hairColor = 11;
+    public static final int HAIRCOLOR_FIELD_NUMBER = 11;
+    private int hairColor_;
+    /**
+     * <code>optional int32 hairColor = 11;</code>
+     */
+    public boolean hasHairColor() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional int32 hairColor = 11;</code>
+     */
+    public int getHairColor() {
+      return hairColor_;
+    }
+
+    // required int32 recharge = 12;
+    public static final int RECHARGE_FIELD_NUMBER = 12;
+    private int recharge_;
+    /**
+     * <code>required int32 recharge = 12;</code>
+     */
+    public boolean hasRecharge() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>required int32 recharge = 12;</code>
+     */
+    public int getRecharge() {
+      return recharge_;
+    }
+
+    // required int32 vipLevel = 13;
+    public static final int VIPLEVEL_FIELD_NUMBER = 13;
+    private int vipLevel_;
+    /**
+     * <code>required int32 vipLevel = 13;</code>
+     */
+    public boolean hasVipLevel() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>required int32 vipLevel = 13;</code>
+     */
+    public int getVipLevel() {
+      return vipLevel_;
+    }
+
+    private void initFields() {
+      playerId_ = 0;
+      nickname_ = "";
+      career_ = 0;
+      level_ = 0;
+      exp_ = 0;
+      gold_ = 0;
+      coin_ = 0L;
+      gender_ = 0;
+      eye_ = 0;
+      hair_ = 0;
+      hairColor_ = 0;
+      recharge_ = 0;
+      vipLevel_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasPlayerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNickname()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCareer()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLevel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasExp()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasGold()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCoin()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRecharge()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasVipLevel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, playerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getNicknameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, career_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, level_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, exp_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, gold_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt64(7, coin_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(8, gender_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeInt32(9, eye_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeInt32(10, hair_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeInt32(11, hairColor_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeInt32(12, recharge_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeInt32(13, vipLevel_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, playerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getNicknameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, career_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, level_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, exp_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, gold_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(7, coin_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, gender_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, eye_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(10, hair_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, hairColor_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(12, recharge_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(13, vipLevel_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Player.PlayerInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Player.PlayerInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Player.PlayerInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code PlayerInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Player.PlayerInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Player.internal_static_PlayerInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Player.internal_static_PlayerInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Player.PlayerInfo.class, com.hawk.game.protocol.Player.PlayerInfo.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Player.PlayerInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        playerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        nickname_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        career_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        exp_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        gold_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        coin_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        gender_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        eye_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        hair_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        hairColor_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        recharge_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000800);
+        vipLevel_ = 0;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Player.internal_static_PlayerInfo_descriptor;
+      }
+
+      public com.hawk.game.protocol.Player.PlayerInfo getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Player.PlayerInfo.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Player.PlayerInfo build() {
+        com.hawk.game.protocol.Player.PlayerInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Player.PlayerInfo buildPartial() {
+        com.hawk.game.protocol.Player.PlayerInfo result = new com.hawk.game.protocol.Player.PlayerInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.playerId_ = playerId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.nickname_ = nickname_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.career_ = career_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.exp_ = exp_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.gold_ = gold_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.coin_ = coin_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.gender_ = gender_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.eye_ = eye_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.hair_ = hair_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.hairColor_ = hairColor_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.recharge_ = recharge_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
+        result.vipLevel_ = vipLevel_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Player.PlayerInfo) {
+          return mergeFrom((com.hawk.game.protocol.Player.PlayerInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Player.PlayerInfo other) {
+        if (other == com.hawk.game.protocol.Player.PlayerInfo.getDefaultInstance()) return this;
+        if (other.hasPlayerId()) {
+          setPlayerId(other.getPlayerId());
+        }
+        if (other.hasNickname()) {
+          bitField0_ |= 0x00000002;
+          nickname_ = other.nickname_;
+          onChanged();
+        }
+        if (other.hasCareer()) {
+          setCareer(other.getCareer());
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
+        if (other.hasExp()) {
+          setExp(other.getExp());
+        }
+        if (other.hasGold()) {
+          setGold(other.getGold());
+        }
+        if (other.hasCoin()) {
+          setCoin(other.getCoin());
+        }
+        if (other.hasGender()) {
+          setGender(other.getGender());
+        }
+        if (other.hasEye()) {
+          setEye(other.getEye());
+        }
+        if (other.hasHair()) {
+          setHair(other.getHair());
+        }
+        if (other.hasHairColor()) {
+          setHairColor(other.getHairColor());
+        }
+        if (other.hasRecharge()) {
+          setRecharge(other.getRecharge());
+        }
+        if (other.hasVipLevel()) {
+          setVipLevel(other.getVipLevel());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasPlayerId()) {
+          
+          return false;
+        }
+        if (!hasNickname()) {
+          
+          return false;
+        }
+        if (!hasCareer()) {
+          
+          return false;
+        }
+        if (!hasLevel()) {
+          
+          return false;
+        }
+        if (!hasExp()) {
+          
+          return false;
+        }
+        if (!hasGold()) {
+          
+          return false;
+        }
+        if (!hasCoin()) {
+          
+          return false;
+        }
+        if (!hasRecharge()) {
+          
+          return false;
+        }
+        if (!hasVipLevel()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Player.PlayerInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Player.PlayerInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 playerId = 1;
+      private int playerId_ ;
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public boolean hasPlayerId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public int getPlayerId() {
+        return playerId_;
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public Builder setPlayerId(int value) {
+        bitField0_ |= 0x00000001;
+        playerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public Builder clearPlayerId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        playerId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string nickname = 2;
+      private java.lang.Object nickname_ = "";
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public boolean hasNickname() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public java.lang.String getNickname() {
+        java.lang.Object ref = nickname_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          nickname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNicknameBytes() {
+        java.lang.Object ref = nickname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nickname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public Builder setNickname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public Builder clearNickname() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nickname_ = getDefaultInstance().getNickname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public Builder setNicknameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 career = 3;
+      private int career_ ;
+      /**
+       * <code>required int32 career = 3;</code>
+       */
+      public boolean hasCareer() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 career = 3;</code>
+       */
+      public int getCareer() {
+        return career_;
+      }
+      /**
+       * <code>required int32 career = 3;</code>
+       */
+      public Builder setCareer(int value) {
+        bitField0_ |= 0x00000004;
+        career_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 career = 3;</code>
+       */
+      public Builder clearCareer() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        career_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 level = 4;
+      private int level_ ;
+      /**
+       * <code>required int32 level = 4;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int32 level = 4;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>required int32 level = 4;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000008;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 level = 4;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 exp = 5;
+      private int exp_ ;
+      /**
+       * <code>required int32 exp = 5;</code>
+       */
+      public boolean hasExp() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 exp = 5;</code>
+       */
+      public int getExp() {
+        return exp_;
+      }
+      /**
+       * <code>required int32 exp = 5;</code>
+       */
+      public Builder setExp(int value) {
+        bitField0_ |= 0x00000010;
+        exp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 exp = 5;</code>
+       */
+      public Builder clearExp() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        exp_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 gold = 6;
+      private int gold_ ;
+      /**
+       * <code>required int32 gold = 6;</code>
+       */
+      public boolean hasGold() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required int32 gold = 6;</code>
+       */
+      public int getGold() {
+        return gold_;
+      }
+      /**
+       * <code>required int32 gold = 6;</code>
+       */
+      public Builder setGold(int value) {
+        bitField0_ |= 0x00000020;
+        gold_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 gold = 6;</code>
+       */
+      public Builder clearGold() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        gold_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int64 coin = 7;
+      private long coin_ ;
+      /**
+       * <code>required int64 coin = 7;</code>
+       */
+      public boolean hasCoin() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required int64 coin = 7;</code>
+       */
+      public long getCoin() {
+        return coin_;
+      }
+      /**
+       * <code>required int64 coin = 7;</code>
+       */
+      public Builder setCoin(long value) {
+        bitField0_ |= 0x00000040;
+        coin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 coin = 7;</code>
+       */
+      public Builder clearCoin() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        coin_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 gender = 8;
+      private int gender_ ;
+      /**
+       * <code>optional int32 gender = 8;</code>
+       */
+      public boolean hasGender() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional int32 gender = 8;</code>
+       */
+      public int getGender() {
+        return gender_;
+      }
+      /**
+       * <code>optional int32 gender = 8;</code>
+       */
+      public Builder setGender(int value) {
+        bitField0_ |= 0x00000080;
+        gender_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 gender = 8;</code>
+       */
+      public Builder clearGender() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        gender_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 eye = 9;
+      private int eye_ ;
+      /**
+       * <code>optional int32 eye = 9;</code>
+       */
+      public boolean hasEye() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional int32 eye = 9;</code>
+       */
+      public int getEye() {
+        return eye_;
+      }
+      /**
+       * <code>optional int32 eye = 9;</code>
+       */
+      public Builder setEye(int value) {
+        bitField0_ |= 0x00000100;
+        eye_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 eye = 9;</code>
+       */
+      public Builder clearEye() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        eye_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 hair = 10;
+      private int hair_ ;
+      /**
+       * <code>optional int32 hair = 10;</code>
+       */
+      public boolean hasHair() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional int32 hair = 10;</code>
+       */
+      public int getHair() {
+        return hair_;
+      }
+      /**
+       * <code>optional int32 hair = 10;</code>
+       */
+      public Builder setHair(int value) {
+        bitField0_ |= 0x00000200;
+        hair_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 hair = 10;</code>
+       */
+      public Builder clearHair() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        hair_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 hairColor = 11;
+      private int hairColor_ ;
+      /**
+       * <code>optional int32 hairColor = 11;</code>
+       */
+      public boolean hasHairColor() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional int32 hairColor = 11;</code>
+       */
+      public int getHairColor() {
+        return hairColor_;
+      }
+      /**
+       * <code>optional int32 hairColor = 11;</code>
+       */
+      public Builder setHairColor(int value) {
+        bitField0_ |= 0x00000400;
+        hairColor_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 hairColor = 11;</code>
+       */
+      public Builder clearHairColor() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        hairColor_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 recharge = 12;
+      private int recharge_ ;
+      /**
+       * <code>required int32 recharge = 12;</code>
+       */
+      public boolean hasRecharge() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>required int32 recharge = 12;</code>
+       */
+      public int getRecharge() {
+        return recharge_;
+      }
+      /**
+       * <code>required int32 recharge = 12;</code>
+       */
+      public Builder setRecharge(int value) {
+        bitField0_ |= 0x00000800;
+        recharge_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 recharge = 12;</code>
+       */
+      public Builder clearRecharge() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        recharge_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 vipLevel = 13;
+      private int vipLevel_ ;
+      /**
+       * <code>required int32 vipLevel = 13;</code>
+       */
+      public boolean hasVipLevel() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
+      /**
+       * <code>required int32 vipLevel = 13;</code>
+       */
+      public int getVipLevel() {
+        return vipLevel_;
+      }
+      /**
+       * <code>required int32 vipLevel = 13;</code>
+       */
+      public Builder setVipLevel(int value) {
+        bitField0_ |= 0x00001000;
+        vipLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 vipLevel = 13;</code>
+       */
+      public Builder clearVipLevel() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        vipLevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:PlayerInfo)
+    }
+
+    static {
+      defaultInstance = new PlayerInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:PlayerInfo)
+  }
+
   public interface HSPlayerKickoutOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -2001,1548 +4396,22 @@ public final class Player {
     // @@protoc_insertion_point(class_scope:HSPlayerCreateRet)
   }
 
-  public interface PlayerInfoOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // required int32 playerId = 1;
-    /**
-     * <code>required int32 playerId = 1;</code>
-     */
-    boolean hasPlayerId();
-    /**
-     * <code>required int32 playerId = 1;</code>
-     */
-    int getPlayerId();
-
-    // required string nickname = 2;
-    /**
-     * <code>required string nickname = 2;</code>
-     */
-    boolean hasNickname();
-    /**
-     * <code>required string nickname = 2;</code>
-     */
-    java.lang.String getNickname();
-    /**
-     * <code>required string nickname = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getNicknameBytes();
-
-    // required int32 career = 3;
-    /**
-     * <code>required int32 career = 3;</code>
-     */
-    boolean hasCareer();
-    /**
-     * <code>required int32 career = 3;</code>
-     */
-    int getCareer();
-
-    // required int32 level = 4;
-    /**
-     * <code>required int32 level = 4;</code>
-     */
-    boolean hasLevel();
-    /**
-     * <code>required int32 level = 4;</code>
-     */
-    int getLevel();
-
-    // required int32 exp = 5;
-    /**
-     * <code>required int32 exp = 5;</code>
-     */
-    boolean hasExp();
-    /**
-     * <code>required int32 exp = 5;</code>
-     */
-    int getExp();
-
-    // required int32 gold = 6;
-    /**
-     * <code>required int32 gold = 6;</code>
-     */
-    boolean hasGold();
-    /**
-     * <code>required int32 gold = 6;</code>
-     */
-    int getGold();
-
-    // required int64 coin = 7;
-    /**
-     * <code>required int64 coin = 7;</code>
-     */
-    boolean hasCoin();
-    /**
-     * <code>required int64 coin = 7;</code>
-     */
-    long getCoin();
-
-    // optional int32 gender = 8;
-    /**
-     * <code>optional int32 gender = 8;</code>
-     */
-    boolean hasGender();
-    /**
-     * <code>optional int32 gender = 8;</code>
-     */
-    int getGender();
-
-    // optional int32 eye = 9;
-    /**
-     * <code>optional int32 eye = 9;</code>
-     */
-    boolean hasEye();
-    /**
-     * <code>optional int32 eye = 9;</code>
-     */
-    int getEye();
-
-    // optional int32 hair = 10;
-    /**
-     * <code>optional int32 hair = 10;</code>
-     */
-    boolean hasHair();
-    /**
-     * <code>optional int32 hair = 10;</code>
-     */
-    int getHair();
-
-    // optional int32 hairColor = 11;
-    /**
-     * <code>optional int32 hairColor = 11;</code>
-     */
-    boolean hasHairColor();
-    /**
-     * <code>optional int32 hairColor = 11;</code>
-     */
-    int getHairColor();
-
-    // required int32 recharge = 12;
-    /**
-     * <code>required int32 recharge = 12;</code>
-     */
-    boolean hasRecharge();
-    /**
-     * <code>required int32 recharge = 12;</code>
-     */
-    int getRecharge();
-
-    // required int32 vipLevel = 13;
-    /**
-     * <code>required int32 vipLevel = 13;</code>
-     */
-    boolean hasVipLevel();
-    /**
-     * <code>required int32 vipLevel = 13;</code>
-     */
-    int getVipLevel();
-  }
-  /**
-   * Protobuf type {@code PlayerInfo}
-   */
-  public static final class PlayerInfo extends
-      com.google.protobuf.GeneratedMessage
-      implements PlayerInfoOrBuilder {
-    // Use PlayerInfo.newBuilder() to construct.
-    private PlayerInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private PlayerInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final PlayerInfo defaultInstance;
-    public static PlayerInfo getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public PlayerInfo getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private PlayerInfo(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              playerId_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              nickname_ = input.readBytes();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              career_ = input.readInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              level_ = input.readInt32();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              exp_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000020;
-              gold_ = input.readInt32();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000040;
-              coin_ = input.readInt64();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000080;
-              gender_ = input.readInt32();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000100;
-              eye_ = input.readInt32();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000200;
-              hair_ = input.readInt32();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000400;
-              hairColor_ = input.readInt32();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00000800;
-              recharge_ = input.readInt32();
-              break;
-            }
-            case 104: {
-              bitField0_ |= 0x00001000;
-              vipLevel_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.hawk.game.protocol.Player.internal_static_PlayerInfo_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.Player.internal_static_PlayerInfo_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.Player.PlayerInfo.class, com.hawk.game.protocol.Player.PlayerInfo.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<PlayerInfo> PARSER =
-        new com.google.protobuf.AbstractParser<PlayerInfo>() {
-      public PlayerInfo parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PlayerInfo(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<PlayerInfo> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required int32 playerId = 1;
-    public static final int PLAYERID_FIELD_NUMBER = 1;
-    private int playerId_;
-    /**
-     * <code>required int32 playerId = 1;</code>
-     */
-    public boolean hasPlayerId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required int32 playerId = 1;</code>
-     */
-    public int getPlayerId() {
-      return playerId_;
-    }
-
-    // required string nickname = 2;
-    public static final int NICKNAME_FIELD_NUMBER = 2;
-    private java.lang.Object nickname_;
-    /**
-     * <code>required string nickname = 2;</code>
-     */
-    public boolean hasNickname() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required string nickname = 2;</code>
-     */
-    public java.lang.String getNickname() {
-      java.lang.Object ref = nickname_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          nickname_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string nickname = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getNicknameBytes() {
-      java.lang.Object ref = nickname_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        nickname_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // required int32 career = 3;
-    public static final int CAREER_FIELD_NUMBER = 3;
-    private int career_;
-    /**
-     * <code>required int32 career = 3;</code>
-     */
-    public boolean hasCareer() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>required int32 career = 3;</code>
-     */
-    public int getCareer() {
-      return career_;
-    }
-
-    // required int32 level = 4;
-    public static final int LEVEL_FIELD_NUMBER = 4;
-    private int level_;
-    /**
-     * <code>required int32 level = 4;</code>
-     */
-    public boolean hasLevel() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>required int32 level = 4;</code>
-     */
-    public int getLevel() {
-      return level_;
-    }
-
-    // required int32 exp = 5;
-    public static final int EXP_FIELD_NUMBER = 5;
-    private int exp_;
-    /**
-     * <code>required int32 exp = 5;</code>
-     */
-    public boolean hasExp() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>required int32 exp = 5;</code>
-     */
-    public int getExp() {
-      return exp_;
-    }
-
-    // required int32 gold = 6;
-    public static final int GOLD_FIELD_NUMBER = 6;
-    private int gold_;
-    /**
-     * <code>required int32 gold = 6;</code>
-     */
-    public boolean hasGold() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>required int32 gold = 6;</code>
-     */
-    public int getGold() {
-      return gold_;
-    }
-
-    // required int64 coin = 7;
-    public static final int COIN_FIELD_NUMBER = 7;
-    private long coin_;
-    /**
-     * <code>required int64 coin = 7;</code>
-     */
-    public boolean hasCoin() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>required int64 coin = 7;</code>
-     */
-    public long getCoin() {
-      return coin_;
-    }
-
-    // optional int32 gender = 8;
-    public static final int GENDER_FIELD_NUMBER = 8;
-    private int gender_;
-    /**
-     * <code>optional int32 gender = 8;</code>
-     */
-    public boolean hasGender() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional int32 gender = 8;</code>
-     */
-    public int getGender() {
-      return gender_;
-    }
-
-    // optional int32 eye = 9;
-    public static final int EYE_FIELD_NUMBER = 9;
-    private int eye_;
-    /**
-     * <code>optional int32 eye = 9;</code>
-     */
-    public boolean hasEye() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>optional int32 eye = 9;</code>
-     */
-    public int getEye() {
-      return eye_;
-    }
-
-    // optional int32 hair = 10;
-    public static final int HAIR_FIELD_NUMBER = 10;
-    private int hair_;
-    /**
-     * <code>optional int32 hair = 10;</code>
-     */
-    public boolean hasHair() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
-    }
-    /**
-     * <code>optional int32 hair = 10;</code>
-     */
-    public int getHair() {
-      return hair_;
-    }
-
-    // optional int32 hairColor = 11;
-    public static final int HAIRCOLOR_FIELD_NUMBER = 11;
-    private int hairColor_;
-    /**
-     * <code>optional int32 hairColor = 11;</code>
-     */
-    public boolean hasHairColor() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    /**
-     * <code>optional int32 hairColor = 11;</code>
-     */
-    public int getHairColor() {
-      return hairColor_;
-    }
-
-    // required int32 recharge = 12;
-    public static final int RECHARGE_FIELD_NUMBER = 12;
-    private int recharge_;
-    /**
-     * <code>required int32 recharge = 12;</code>
-     */
-    public boolean hasRecharge() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
-    }
-    /**
-     * <code>required int32 recharge = 12;</code>
-     */
-    public int getRecharge() {
-      return recharge_;
-    }
-
-    // required int32 vipLevel = 13;
-    public static final int VIPLEVEL_FIELD_NUMBER = 13;
-    private int vipLevel_;
-    /**
-     * <code>required int32 vipLevel = 13;</code>
-     */
-    public boolean hasVipLevel() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
-    }
-    /**
-     * <code>required int32 vipLevel = 13;</code>
-     */
-    public int getVipLevel() {
-      return vipLevel_;
-    }
-
-    private void initFields() {
-      playerId_ = 0;
-      nickname_ = "";
-      career_ = 0;
-      level_ = 0;
-      exp_ = 0;
-      gold_ = 0;
-      coin_ = 0L;
-      gender_ = 0;
-      eye_ = 0;
-      hair_ = 0;
-      hairColor_ = 0;
-      recharge_ = 0;
-      vipLevel_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasPlayerId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasNickname()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasCareer()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasLevel()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasExp()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasGold()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasCoin()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRecharge()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasVipLevel()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, playerId_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getNicknameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, career_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, level_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, exp_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, gold_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt64(7, coin_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(8, gender_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(9, eye_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(10, hair_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeInt32(11, hairColor_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeInt32(12, recharge_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        output.writeInt32(13, vipLevel_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, playerId_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getNicknameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, career_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, level_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, exp_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, gold_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(7, coin_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, gender_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, eye_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, hair_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, hairColor_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, recharge_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(13, vipLevel_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Player.PlayerInfo parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.hawk.game.protocol.Player.PlayerInfo parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.hawk.game.protocol.Player.PlayerInfo parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.Player.PlayerInfo prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code PlayerInfo}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.Player.PlayerInfoOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.hawk.game.protocol.Player.internal_static_PlayerInfo_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.Player.internal_static_PlayerInfo_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.Player.PlayerInfo.class, com.hawk.game.protocol.Player.PlayerInfo.Builder.class);
-      }
-
-      // Construct using com.hawk.game.protocol.Player.PlayerInfo.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        playerId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        nickname_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        career_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        level_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        exp_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        gold_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        coin_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        gender_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        eye_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        hair_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        hairColor_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
-        recharge_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000800);
-        vipLevel_ = 0;
-        bitField0_ = (bitField0_ & ~0x00001000);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.hawk.game.protocol.Player.internal_static_PlayerInfo_descriptor;
-      }
-
-      public com.hawk.game.protocol.Player.PlayerInfo getDefaultInstanceForType() {
-        return com.hawk.game.protocol.Player.PlayerInfo.getDefaultInstance();
-      }
-
-      public com.hawk.game.protocol.Player.PlayerInfo build() {
-        com.hawk.game.protocol.Player.PlayerInfo result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.hawk.game.protocol.Player.PlayerInfo buildPartial() {
-        com.hawk.game.protocol.Player.PlayerInfo result = new com.hawk.game.protocol.Player.PlayerInfo(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.playerId_ = playerId_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.nickname_ = nickname_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.career_ = career_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.level_ = level_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.exp_ = exp_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.gold_ = gold_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.coin_ = coin_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.gender_ = gender_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.eye_ = eye_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.hair_ = hair_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.hairColor_ = hairColor_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000800;
-        }
-        result.recharge_ = recharge_;
-        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
-          to_bitField0_ |= 0x00001000;
-        }
-        result.vipLevel_ = vipLevel_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.Player.PlayerInfo) {
-          return mergeFrom((com.hawk.game.protocol.Player.PlayerInfo)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.hawk.game.protocol.Player.PlayerInfo other) {
-        if (other == com.hawk.game.protocol.Player.PlayerInfo.getDefaultInstance()) return this;
-        if (other.hasPlayerId()) {
-          setPlayerId(other.getPlayerId());
-        }
-        if (other.hasNickname()) {
-          bitField0_ |= 0x00000002;
-          nickname_ = other.nickname_;
-          onChanged();
-        }
-        if (other.hasCareer()) {
-          setCareer(other.getCareer());
-        }
-        if (other.hasLevel()) {
-          setLevel(other.getLevel());
-        }
-        if (other.hasExp()) {
-          setExp(other.getExp());
-        }
-        if (other.hasGold()) {
-          setGold(other.getGold());
-        }
-        if (other.hasCoin()) {
-          setCoin(other.getCoin());
-        }
-        if (other.hasGender()) {
-          setGender(other.getGender());
-        }
-        if (other.hasEye()) {
-          setEye(other.getEye());
-        }
-        if (other.hasHair()) {
-          setHair(other.getHair());
-        }
-        if (other.hasHairColor()) {
-          setHairColor(other.getHairColor());
-        }
-        if (other.hasRecharge()) {
-          setRecharge(other.getRecharge());
-        }
-        if (other.hasVipLevel()) {
-          setVipLevel(other.getVipLevel());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        if (!hasPlayerId()) {
-          
-          return false;
-        }
-        if (!hasNickname()) {
-          
-          return false;
-        }
-        if (!hasCareer()) {
-          
-          return false;
-        }
-        if (!hasLevel()) {
-          
-          return false;
-        }
-        if (!hasExp()) {
-          
-          return false;
-        }
-        if (!hasGold()) {
-          
-          return false;
-        }
-        if (!hasCoin()) {
-          
-          return false;
-        }
-        if (!hasRecharge()) {
-          
-          return false;
-        }
-        if (!hasVipLevel()) {
-          
-          return false;
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.hawk.game.protocol.Player.PlayerInfo parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.Player.PlayerInfo) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // required int32 playerId = 1;
-      private int playerId_ ;
-      /**
-       * <code>required int32 playerId = 1;</code>
-       */
-      public boolean hasPlayerId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required int32 playerId = 1;</code>
-       */
-      public int getPlayerId() {
-        return playerId_;
-      }
-      /**
-       * <code>required int32 playerId = 1;</code>
-       */
-      public Builder setPlayerId(int value) {
-        bitField0_ |= 0x00000001;
-        playerId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 playerId = 1;</code>
-       */
-      public Builder clearPlayerId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        playerId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required string nickname = 2;
-      private java.lang.Object nickname_ = "";
-      /**
-       * <code>required string nickname = 2;</code>
-       */
-      public boolean hasNickname() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required string nickname = 2;</code>
-       */
-      public java.lang.String getNickname() {
-        java.lang.Object ref = nickname_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          nickname_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string nickname = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getNicknameBytes() {
-        java.lang.Object ref = nickname_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          nickname_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string nickname = 2;</code>
-       */
-      public Builder setNickname(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        nickname_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string nickname = 2;</code>
-       */
-      public Builder clearNickname() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        nickname_ = getDefaultInstance().getNickname();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string nickname = 2;</code>
-       */
-      public Builder setNicknameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        nickname_ = value;
-        onChanged();
-        return this;
-      }
-
-      // required int32 career = 3;
-      private int career_ ;
-      /**
-       * <code>required int32 career = 3;</code>
-       */
-      public boolean hasCareer() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>required int32 career = 3;</code>
-       */
-      public int getCareer() {
-        return career_;
-      }
-      /**
-       * <code>required int32 career = 3;</code>
-       */
-      public Builder setCareer(int value) {
-        bitField0_ |= 0x00000004;
-        career_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 career = 3;</code>
-       */
-      public Builder clearCareer() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        career_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required int32 level = 4;
-      private int level_ ;
-      /**
-       * <code>required int32 level = 4;</code>
-       */
-      public boolean hasLevel() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>required int32 level = 4;</code>
-       */
-      public int getLevel() {
-        return level_;
-      }
-      /**
-       * <code>required int32 level = 4;</code>
-       */
-      public Builder setLevel(int value) {
-        bitField0_ |= 0x00000008;
-        level_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 level = 4;</code>
-       */
-      public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        level_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required int32 exp = 5;
-      private int exp_ ;
-      /**
-       * <code>required int32 exp = 5;</code>
-       */
-      public boolean hasExp() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>required int32 exp = 5;</code>
-       */
-      public int getExp() {
-        return exp_;
-      }
-      /**
-       * <code>required int32 exp = 5;</code>
-       */
-      public Builder setExp(int value) {
-        bitField0_ |= 0x00000010;
-        exp_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 exp = 5;</code>
-       */
-      public Builder clearExp() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        exp_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required int32 gold = 6;
-      private int gold_ ;
-      /**
-       * <code>required int32 gold = 6;</code>
-       */
-      public boolean hasGold() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>required int32 gold = 6;</code>
-       */
-      public int getGold() {
-        return gold_;
-      }
-      /**
-       * <code>required int32 gold = 6;</code>
-       */
-      public Builder setGold(int value) {
-        bitField0_ |= 0x00000020;
-        gold_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 gold = 6;</code>
-       */
-      public Builder clearGold() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        gold_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required int64 coin = 7;
-      private long coin_ ;
-      /**
-       * <code>required int64 coin = 7;</code>
-       */
-      public boolean hasCoin() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>required int64 coin = 7;</code>
-       */
-      public long getCoin() {
-        return coin_;
-      }
-      /**
-       * <code>required int64 coin = 7;</code>
-       */
-      public Builder setCoin(long value) {
-        bitField0_ |= 0x00000040;
-        coin_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int64 coin = 7;</code>
-       */
-      public Builder clearCoin() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        coin_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 gender = 8;
-      private int gender_ ;
-      /**
-       * <code>optional int32 gender = 8;</code>
-       */
-      public boolean hasGender() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional int32 gender = 8;</code>
-       */
-      public int getGender() {
-        return gender_;
-      }
-      /**
-       * <code>optional int32 gender = 8;</code>
-       */
-      public Builder setGender(int value) {
-        bitField0_ |= 0x00000080;
-        gender_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 gender = 8;</code>
-       */
-      public Builder clearGender() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        gender_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 eye = 9;
-      private int eye_ ;
-      /**
-       * <code>optional int32 eye = 9;</code>
-       */
-      public boolean hasEye() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional int32 eye = 9;</code>
-       */
-      public int getEye() {
-        return eye_;
-      }
-      /**
-       * <code>optional int32 eye = 9;</code>
-       */
-      public Builder setEye(int value) {
-        bitField0_ |= 0x00000100;
-        eye_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 eye = 9;</code>
-       */
-      public Builder clearEye() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        eye_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 hair = 10;
-      private int hair_ ;
-      /**
-       * <code>optional int32 hair = 10;</code>
-       */
-      public boolean hasHair() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
-      }
-      /**
-       * <code>optional int32 hair = 10;</code>
-       */
-      public int getHair() {
-        return hair_;
-      }
-      /**
-       * <code>optional int32 hair = 10;</code>
-       */
-      public Builder setHair(int value) {
-        bitField0_ |= 0x00000200;
-        hair_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 hair = 10;</code>
-       */
-      public Builder clearHair() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        hair_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 hairColor = 11;
-      private int hairColor_ ;
-      /**
-       * <code>optional int32 hairColor = 11;</code>
-       */
-      public boolean hasHairColor() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      /**
-       * <code>optional int32 hairColor = 11;</code>
-       */
-      public int getHairColor() {
-        return hairColor_;
-      }
-      /**
-       * <code>optional int32 hairColor = 11;</code>
-       */
-      public Builder setHairColor(int value) {
-        bitField0_ |= 0x00000400;
-        hairColor_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 hairColor = 11;</code>
-       */
-      public Builder clearHairColor() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        hairColor_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required int32 recharge = 12;
-      private int recharge_ ;
-      /**
-       * <code>required int32 recharge = 12;</code>
-       */
-      public boolean hasRecharge() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
-      }
-      /**
-       * <code>required int32 recharge = 12;</code>
-       */
-      public int getRecharge() {
-        return recharge_;
-      }
-      /**
-       * <code>required int32 recharge = 12;</code>
-       */
-      public Builder setRecharge(int value) {
-        bitField0_ |= 0x00000800;
-        recharge_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 recharge = 12;</code>
-       */
-      public Builder clearRecharge() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        recharge_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required int32 vipLevel = 13;
-      private int vipLevel_ ;
-      /**
-       * <code>required int32 vipLevel = 13;</code>
-       */
-      public boolean hasVipLevel() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
-      }
-      /**
-       * <code>required int32 vipLevel = 13;</code>
-       */
-      public int getVipLevel() {
-        return vipLevel_;
-      }
-      /**
-       * <code>required int32 vipLevel = 13;</code>
-       */
-      public Builder setVipLevel(int value) {
-        bitField0_ |= 0x00001000;
-        vipLevel_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 vipLevel = 13;</code>
-       */
-      public Builder clearVipLevel() {
-        bitField0_ = (bitField0_ & ~0x00001000);
-        vipLevel_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:PlayerInfo)
-    }
-
-    static {
-      defaultInstance = new PlayerInfo(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:PlayerInfo)
-  }
-
   public interface HSPlayerInfoSyncOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .PlayerInfo playerInfos = 1;
+    // required .PlayerInfo info = 1;
     /**
-     * <code>repeated .PlayerInfo playerInfos = 1;</code>
+     * <code>required .PlayerInfo info = 1;</code>
      */
-    java.util.List<com.hawk.game.protocol.Player.PlayerInfo> 
-        getPlayerInfosList();
+    boolean hasInfo();
     /**
-     * <code>repeated .PlayerInfo playerInfos = 1;</code>
+     * <code>required .PlayerInfo info = 1;</code>
      */
-    com.hawk.game.protocol.Player.PlayerInfo getPlayerInfos(int index);
+    com.hawk.game.protocol.Player.PlayerInfo getInfo();
     /**
-     * <code>repeated .PlayerInfo playerInfos = 1;</code>
+     * <code>required .PlayerInfo info = 1;</code>
      */
-    int getPlayerInfosCount();
-    /**
-     * <code>repeated .PlayerInfo playerInfos = 1;</code>
-     */
-    java.util.List<? extends com.hawk.game.protocol.Player.PlayerInfoOrBuilder> 
-        getPlayerInfosOrBuilderList();
-    /**
-     * <code>repeated .PlayerInfo playerInfos = 1;</code>
-     */
-    com.hawk.game.protocol.Player.PlayerInfoOrBuilder getPlayerInfosOrBuilder(
-        int index);
+    com.hawk.game.protocol.Player.PlayerInfoOrBuilder getInfoOrBuilder();
   }
   /**
    * Protobuf type {@code HSPlayerInfoSync}
@@ -3596,11 +4465,16 @@ public final class Player {
               break;
             }
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                playerInfos_ = new java.util.ArrayList<com.hawk.game.protocol.Player.PlayerInfo>();
-                mutable_bitField0_ |= 0x00000001;
+              com.hawk.game.protocol.Player.PlayerInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = info_.toBuilder();
               }
-              playerInfos_.add(input.readMessage(com.hawk.game.protocol.Player.PlayerInfo.PARSER, extensionRegistry));
+              info_ = input.readMessage(com.hawk.game.protocol.Player.PlayerInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(info_);
+                info_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
               break;
             }
           }
@@ -3611,9 +4485,6 @@ public final class Player {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          playerInfos_ = java.util.Collections.unmodifiableList(playerInfos_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -3645,55 +4516,44 @@ public final class Player {
       return PARSER;
     }
 
-    // repeated .PlayerInfo playerInfos = 1;
-    public static final int PLAYERINFOS_FIELD_NUMBER = 1;
-    private java.util.List<com.hawk.game.protocol.Player.PlayerInfo> playerInfos_;
+    private int bitField0_;
+    // required .PlayerInfo info = 1;
+    public static final int INFO_FIELD_NUMBER = 1;
+    private com.hawk.game.protocol.Player.PlayerInfo info_;
     /**
-     * <code>repeated .PlayerInfo playerInfos = 1;</code>
+     * <code>required .PlayerInfo info = 1;</code>
      */
-    public java.util.List<com.hawk.game.protocol.Player.PlayerInfo> getPlayerInfosList() {
-      return playerInfos_;
+    public boolean hasInfo() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>repeated .PlayerInfo playerInfos = 1;</code>
+     * <code>required .PlayerInfo info = 1;</code>
      */
-    public java.util.List<? extends com.hawk.game.protocol.Player.PlayerInfoOrBuilder> 
-        getPlayerInfosOrBuilderList() {
-      return playerInfos_;
+    public com.hawk.game.protocol.Player.PlayerInfo getInfo() {
+      return info_;
     }
     /**
-     * <code>repeated .PlayerInfo playerInfos = 1;</code>
+     * <code>required .PlayerInfo info = 1;</code>
      */
-    public int getPlayerInfosCount() {
-      return playerInfos_.size();
-    }
-    /**
-     * <code>repeated .PlayerInfo playerInfos = 1;</code>
-     */
-    public com.hawk.game.protocol.Player.PlayerInfo getPlayerInfos(int index) {
-      return playerInfos_.get(index);
-    }
-    /**
-     * <code>repeated .PlayerInfo playerInfos = 1;</code>
-     */
-    public com.hawk.game.protocol.Player.PlayerInfoOrBuilder getPlayerInfosOrBuilder(
-        int index) {
-      return playerInfos_.get(index);
+    public com.hawk.game.protocol.Player.PlayerInfoOrBuilder getInfoOrBuilder() {
+      return info_;
     }
 
     private void initFields() {
-      playerInfos_ = java.util.Collections.emptyList();
+      info_ = com.hawk.game.protocol.Player.PlayerInfo.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getPlayerInfosCount(); i++) {
-        if (!getPlayerInfos(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
+      if (!hasInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getInfo().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
       }
       memoizedIsInitialized = 1;
       return true;
@@ -3702,8 +4562,8 @@ public final class Player {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < playerInfos_.size(); i++) {
-        output.writeMessage(1, playerInfos_.get(i));
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, info_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3714,9 +4574,9 @@ public final class Player {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < playerInfos_.size(); i++) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, playerInfos_.get(i));
+          .computeMessageSize(1, info_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3826,7 +4686,7 @@ public final class Player {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getPlayerInfosFieldBuilder();
+          getInfoFieldBuilder();
         }
       }
       private static Builder create() {
@@ -3835,12 +4695,12 @@ public final class Player {
 
       public Builder clear() {
         super.clear();
-        if (playerInfosBuilder_ == null) {
-          playerInfos_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+        if (infoBuilder_ == null) {
+          info_ = com.hawk.game.protocol.Player.PlayerInfo.getDefaultInstance();
         } else {
-          playerInfosBuilder_.clear();
+          infoBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -3868,15 +4728,16 @@ public final class Player {
       public com.hawk.game.protocol.Player.HSPlayerInfoSync buildPartial() {
         com.hawk.game.protocol.Player.HSPlayerInfoSync result = new com.hawk.game.protocol.Player.HSPlayerInfoSync(this);
         int from_bitField0_ = bitField0_;
-        if (playerInfosBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            playerInfos_ = java.util.Collections.unmodifiableList(playerInfos_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.playerInfos_ = playerInfos_;
-        } else {
-          result.playerInfos_ = playerInfosBuilder_.build();
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
+        if (infoBuilder_ == null) {
+          result.info_ = info_;
+        } else {
+          result.info_ = infoBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -3892,42 +4753,21 @@ public final class Player {
 
       public Builder mergeFrom(com.hawk.game.protocol.Player.HSPlayerInfoSync other) {
         if (other == com.hawk.game.protocol.Player.HSPlayerInfoSync.getDefaultInstance()) return this;
-        if (playerInfosBuilder_ == null) {
-          if (!other.playerInfos_.isEmpty()) {
-            if (playerInfos_.isEmpty()) {
-              playerInfos_ = other.playerInfos_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensurePlayerInfosIsMutable();
-              playerInfos_.addAll(other.playerInfos_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.playerInfos_.isEmpty()) {
-            if (playerInfosBuilder_.isEmpty()) {
-              playerInfosBuilder_.dispose();
-              playerInfosBuilder_ = null;
-              playerInfos_ = other.playerInfos_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              playerInfosBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getPlayerInfosFieldBuilder() : null;
-            } else {
-              playerInfosBuilder_.addAllMessages(other.playerInfos_);
-            }
-          }
+        if (other.hasInfo()) {
+          mergeInfo(other.getInfo());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getPlayerInfosCount(); i++) {
-          if (!getPlayerInfos(i).isInitialized()) {
-            
-            return false;
-          }
+        if (!hasInfo()) {
+          
+          return false;
+        }
+        if (!getInfo().isInitialized()) {
+          
+          return false;
         }
         return true;
       }
@@ -3951,244 +4791,121 @@ public final class Player {
       }
       private int bitField0_;
 
-      // repeated .PlayerInfo playerInfos = 1;
-      private java.util.List<com.hawk.game.protocol.Player.PlayerInfo> playerInfos_ =
-        java.util.Collections.emptyList();
-      private void ensurePlayerInfosIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          playerInfos_ = new java.util.ArrayList<com.hawk.game.protocol.Player.PlayerInfo>(playerInfos_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.hawk.game.protocol.Player.PlayerInfo, com.hawk.game.protocol.Player.PlayerInfo.Builder, com.hawk.game.protocol.Player.PlayerInfoOrBuilder> playerInfosBuilder_;
-
+      // required .PlayerInfo info = 1;
+      private com.hawk.game.protocol.Player.PlayerInfo info_ = com.hawk.game.protocol.Player.PlayerInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Player.PlayerInfo, com.hawk.game.protocol.Player.PlayerInfo.Builder, com.hawk.game.protocol.Player.PlayerInfoOrBuilder> infoBuilder_;
       /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
+       * <code>required .PlayerInfo info = 1;</code>
        */
-      public java.util.List<com.hawk.game.protocol.Player.PlayerInfo> getPlayerInfosList() {
-        if (playerInfosBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(playerInfos_);
+      public boolean hasInfo() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .PlayerInfo info = 1;</code>
+       */
+      public com.hawk.game.protocol.Player.PlayerInfo getInfo() {
+        if (infoBuilder_ == null) {
+          return info_;
         } else {
-          return playerInfosBuilder_.getMessageList();
+          return infoBuilder_.getMessage();
         }
       }
       /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
+       * <code>required .PlayerInfo info = 1;</code>
        */
-      public int getPlayerInfosCount() {
-        if (playerInfosBuilder_ == null) {
-          return playerInfos_.size();
-        } else {
-          return playerInfosBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
-       */
-      public com.hawk.game.protocol.Player.PlayerInfo getPlayerInfos(int index) {
-        if (playerInfosBuilder_ == null) {
-          return playerInfos_.get(index);
-        } else {
-          return playerInfosBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
-       */
-      public Builder setPlayerInfos(
-          int index, com.hawk.game.protocol.Player.PlayerInfo value) {
-        if (playerInfosBuilder_ == null) {
+      public Builder setInfo(com.hawk.game.protocol.Player.PlayerInfo value) {
+        if (infoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensurePlayerInfosIsMutable();
-          playerInfos_.set(index, value);
+          info_ = value;
           onChanged();
         } else {
-          playerInfosBuilder_.setMessage(index, value);
+          infoBuilder_.setMessage(value);
         }
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
+       * <code>required .PlayerInfo info = 1;</code>
        */
-      public Builder setPlayerInfos(
-          int index, com.hawk.game.protocol.Player.PlayerInfo.Builder builderForValue) {
-        if (playerInfosBuilder_ == null) {
-          ensurePlayerInfosIsMutable();
-          playerInfos_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          playerInfosBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
-       */
-      public Builder addPlayerInfos(com.hawk.game.protocol.Player.PlayerInfo value) {
-        if (playerInfosBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePlayerInfosIsMutable();
-          playerInfos_.add(value);
-          onChanged();
-        } else {
-          playerInfosBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
-       */
-      public Builder addPlayerInfos(
-          int index, com.hawk.game.protocol.Player.PlayerInfo value) {
-        if (playerInfosBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePlayerInfosIsMutable();
-          playerInfos_.add(index, value);
-          onChanged();
-        } else {
-          playerInfosBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
-       */
-      public Builder addPlayerInfos(
+      public Builder setInfo(
           com.hawk.game.protocol.Player.PlayerInfo.Builder builderForValue) {
-        if (playerInfosBuilder_ == null) {
-          ensurePlayerInfosIsMutable();
-          playerInfos_.add(builderForValue.build());
+        if (infoBuilder_ == null) {
+          info_ = builderForValue.build();
           onChanged();
         } else {
-          playerInfosBuilder_.addMessage(builderForValue.build());
+          infoBuilder_.setMessage(builderForValue.build());
         }
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
+       * <code>required .PlayerInfo info = 1;</code>
        */
-      public Builder addPlayerInfos(
-          int index, com.hawk.game.protocol.Player.PlayerInfo.Builder builderForValue) {
-        if (playerInfosBuilder_ == null) {
-          ensurePlayerInfosIsMutable();
-          playerInfos_.add(index, builderForValue.build());
+      public Builder mergeInfo(com.hawk.game.protocol.Player.PlayerInfo value) {
+        if (infoBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              info_ != com.hawk.game.protocol.Player.PlayerInfo.getDefaultInstance()) {
+            info_ =
+              com.hawk.game.protocol.Player.PlayerInfo.newBuilder(info_).mergeFrom(value).buildPartial();
+          } else {
+            info_ = value;
+          }
           onChanged();
         } else {
-          playerInfosBuilder_.addMessage(index, builderForValue.build());
+          infoBuilder_.mergeFrom(value);
         }
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
+       * <code>required .PlayerInfo info = 1;</code>
        */
-      public Builder addAllPlayerInfos(
-          java.lang.Iterable<? extends com.hawk.game.protocol.Player.PlayerInfo> values) {
-        if (playerInfosBuilder_ == null) {
-          ensurePlayerInfosIsMutable();
-          super.addAll(values, playerInfos_);
+      public Builder clearInfo() {
+        if (infoBuilder_ == null) {
+          info_ = com.hawk.game.protocol.Player.PlayerInfo.getDefaultInstance();
           onChanged();
         } else {
-          playerInfosBuilder_.addAllMessages(values);
+          infoBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
+       * <code>required .PlayerInfo info = 1;</code>
        */
-      public Builder clearPlayerInfos() {
-        if (playerInfosBuilder_ == null) {
-          playerInfos_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
+      public com.hawk.game.protocol.Player.PlayerInfo.Builder getInfoBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .PlayerInfo info = 1;</code>
+       */
+      public com.hawk.game.protocol.Player.PlayerInfoOrBuilder getInfoOrBuilder() {
+        if (infoBuilder_ != null) {
+          return infoBuilder_.getMessageOrBuilder();
         } else {
-          playerInfosBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
-       */
-      public Builder removePlayerInfos(int index) {
-        if (playerInfosBuilder_ == null) {
-          ensurePlayerInfosIsMutable();
-          playerInfos_.remove(index);
-          onChanged();
-        } else {
-          playerInfosBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
-       */
-      public com.hawk.game.protocol.Player.PlayerInfo.Builder getPlayerInfosBuilder(
-          int index) {
-        return getPlayerInfosFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
-       */
-      public com.hawk.game.protocol.Player.PlayerInfoOrBuilder getPlayerInfosOrBuilder(
-          int index) {
-        if (playerInfosBuilder_ == null) {
-          return playerInfos_.get(index);  } else {
-          return playerInfosBuilder_.getMessageOrBuilder(index);
+          return info_;
         }
       }
       /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
+       * <code>required .PlayerInfo info = 1;</code>
        */
-      public java.util.List<? extends com.hawk.game.protocol.Player.PlayerInfoOrBuilder> 
-           getPlayerInfosOrBuilderList() {
-        if (playerInfosBuilder_ != null) {
-          return playerInfosBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(playerInfos_);
-        }
-      }
-      /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
-       */
-      public com.hawk.game.protocol.Player.PlayerInfo.Builder addPlayerInfosBuilder() {
-        return getPlayerInfosFieldBuilder().addBuilder(
-            com.hawk.game.protocol.Player.PlayerInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
-       */
-      public com.hawk.game.protocol.Player.PlayerInfo.Builder addPlayerInfosBuilder(
-          int index) {
-        return getPlayerInfosFieldBuilder().addBuilder(
-            index, com.hawk.game.protocol.Player.PlayerInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .PlayerInfo playerInfos = 1;</code>
-       */
-      public java.util.List<com.hawk.game.protocol.Player.PlayerInfo.Builder> 
-           getPlayerInfosBuilderList() {
-        return getPlayerInfosFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilder<
           com.hawk.game.protocol.Player.PlayerInfo, com.hawk.game.protocol.Player.PlayerInfo.Builder, com.hawk.game.protocol.Player.PlayerInfoOrBuilder> 
-          getPlayerInfosFieldBuilder() {
-        if (playerInfosBuilder_ == null) {
-          playerInfosBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getInfoFieldBuilder() {
+        if (infoBuilder_ == null) {
+          infoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.hawk.game.protocol.Player.PlayerInfo, com.hawk.game.protocol.Player.PlayerInfo.Builder, com.hawk.game.protocol.Player.PlayerInfoOrBuilder>(
-                  playerInfos_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  info_,
                   getParentForChildren(),
                   isClean());
-          playerInfos_ = null;
+          info_ = null;
         }
-        return playerInfosBuilder_;
+        return infoBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:HSPlayerInfoSync)
@@ -4607,6 +5324,16 @@ public final class Player {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SynPlayerAttr_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SynPlayerAttr_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_PlayerInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_PlayerInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSPlayerKickout_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -4621,11 +5348,6 @@ public final class Player {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSPlayerCreateRet_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_PlayerInfo_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_PlayerInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSPlayerInfoSync_descriptor;
   private static
@@ -4645,59 +5367,67 @@ public final class Player {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025Protocol/Player.proto\"!\n\017HSPlayerKicko" +
-      "ut\022\016\n\006reason\030\001 \002(\005\"~\n\016HSPlayerCreate\022\014\n\004" +
-      "puid\030\001 \002(\t\022\020\n\010nickname\030\002 \002(\t\022\016\n\006career\030\003" +
-      " \002(\005\022\016\n\006gender\030\004 \002(\005\022\013\n\003eye\030\005 \002(\005\022\014\n\004hai" +
-      "r\030\006 \002(\005\022\021\n\thairColor\030\007 \002(\005\"5\n\021HSPlayerCr" +
-      "eateRet\022\016\n\006status\030\001 \002(\005\022\020\n\010palyerID\030\002 \001(" +
-      "\005\"\332\001\n\nPlayerInfo\022\020\n\010playerId\030\001 \002(\005\022\020\n\010ni" +
-      "ckname\030\002 \002(\t\022\016\n\006career\030\003 \002(\005\022\r\n\005level\030\004 " +
-      "\002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004gold\030\006 \002(\005\022\014\n\004coin\030\007" +
-      " \002(\003\022\016\n\006gender\030\010 \001(\005\022\013\n\003eye\030\t \001(\005\022\014\n\004hai",
-      "r\030\n \001(\005\022\021\n\thairColor\030\013 \001(\005\022\020\n\010recharge\030\014" +
-      " \002(\005\022\020\n\010vipLevel\030\r \002(\005\"4\n\020HSPlayerInfoSy" +
-      "nc\022 \n\013playerInfos\030\001 \003(\0132\013.PlayerInfo\"$\n\020" +
-      "HSAssembleFinish\022\020\n\010playerID\030\001 \002(\005B\030\n\026co" +
-      "m.hawk.game.protocol"
+      "\n\025Protocol/Player.proto\"Y\n\rSynPlayerAttr" +
+      "\022\014\n\004gold\030\001 \001(\005\022\014\n\004coin\030\002 \001(\003\022\r\n\005level\030\003 " +
+      "\001(\005\022\013\n\003exp\030\004 \001(\005\022\020\n\010vipLevel\030\005 \001(\005\"\332\001\n\nP" +
+      "layerInfo\022\020\n\010playerId\030\001 \002(\005\022\020\n\010nickname\030" +
+      "\002 \002(\t\022\016\n\006career\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003" +
+      "exp\030\005 \002(\005\022\014\n\004gold\030\006 \002(\005\022\014\n\004coin\030\007 \002(\003\022\016\n" +
+      "\006gender\030\010 \001(\005\022\013\n\003eye\030\t \001(\005\022\014\n\004hair\030\n \001(\005" +
+      "\022\021\n\thairColor\030\013 \001(\005\022\020\n\010recharge\030\014 \002(\005\022\020\n" +
+      "\010vipLevel\030\r \002(\005\"!\n\017HSPlayerKickout\022\016\n\006re" +
+      "ason\030\001 \002(\005\"~\n\016HSPlayerCreate\022\014\n\004puid\030\001 \002",
+      "(\t\022\020\n\010nickname\030\002 \002(\t\022\016\n\006career\030\003 \002(\005\022\016\n\006" +
+      "gender\030\004 \002(\005\022\013\n\003eye\030\005 \002(\005\022\014\n\004hair\030\006 \002(\005\022" +
+      "\021\n\thairColor\030\007 \002(\005\"5\n\021HSPlayerCreateRet\022" +
+      "\016\n\006status\030\001 \002(\005\022\020\n\010palyerID\030\002 \001(\005\"-\n\020HSP" +
+      "layerInfoSync\022\031\n\004info\030\001 \002(\0132\013.PlayerInfo" +
+      "\"$\n\020HSAssembleFinish\022\020\n\010playerID\030\001 \002(\005B\030" +
+      "\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_HSPlayerKickout_descriptor =
+          internal_static_SynPlayerAttr_descriptor =
             getDescriptor().getMessageTypes().get(0);
+          internal_static_SynPlayerAttr_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_SynPlayerAttr_descriptor,
+              new java.lang.String[] { "Gold", "Coin", "Level", "Exp", "VipLevel", });
+          internal_static_PlayerInfo_descriptor =
+            getDescriptor().getMessageTypes().get(1);
+          internal_static_PlayerInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_PlayerInfo_descriptor,
+              new java.lang.String[] { "PlayerId", "Nickname", "Career", "Level", "Exp", "Gold", "Coin", "Gender", "Eye", "Hair", "HairColor", "Recharge", "VipLevel", });
+          internal_static_HSPlayerKickout_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_HSPlayerKickout_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPlayerKickout_descriptor,
               new java.lang.String[] { "Reason", });
           internal_static_HSPlayerCreate_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_HSPlayerCreate_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPlayerCreate_descriptor,
               new java.lang.String[] { "Puid", "Nickname", "Career", "Gender", "Eye", "Hair", "HairColor", });
           internal_static_HSPlayerCreateRet_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_HSPlayerCreateRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPlayerCreateRet_descriptor,
               new java.lang.String[] { "Status", "PalyerID", });
-          internal_static_PlayerInfo_descriptor =
-            getDescriptor().getMessageTypes().get(3);
-          internal_static_PlayerInfo_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_PlayerInfo_descriptor,
-              new java.lang.String[] { "PlayerId", "Nickname", "Career", "Level", "Exp", "Gold", "Coin", "Gender", "Eye", "Hair", "HairColor", "Recharge", "VipLevel", });
           internal_static_HSPlayerInfoSync_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_HSPlayerInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSPlayerInfoSync_descriptor,
-              new java.lang.String[] { "PlayerInfos", });
+              new java.lang.String[] { "Info", });
           internal_static_HSAssembleFinish_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_HSAssembleFinish_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAssembleFinish_descriptor,

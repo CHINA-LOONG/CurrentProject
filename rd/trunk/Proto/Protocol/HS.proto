@@ -22,10 +22,15 @@ enum code
 	LOGOUT_C               = 1002;
 	LOGOUT_S               = 1003;
 	KICKOUT_S              = 1004;
-	PLAYER_INFO_SYNC_S     = 1005;
-	ITEM_INFO_SYNC_S       = 1006;
-	EQUIP_INFO_SYNC_S      = 1007;
-	ASSEMBLE_FINISH_S      = 1010;
+	SYNCINFO_C			   = 1005;
+	SYNCINFO_S             = 1006;
+
+	PLAYER_INFO_SYNC_S     = 1010;
+	STATISTICS_INFO_SYNC_S = 1011;
+	MONSTER_INFO_SYNC_S    = 1012;
+	ITEM_INFO_SYNC_S       = 1013;
+	EQUIP_INFO_SYNC_S      = 1014;
+	ASSEMBLE_FINISH_S      = 1015;
 	
 	// 角色
 	PLAYER_CREATE_C        = 1101;
@@ -35,7 +40,6 @@ enum code
 	PLAYER_REWARD_S 	   = 1104;
 	
 	// 怪物
-	MONSTER_INFO_SYNC_S    = 2000;
 	MONSTER_ADD_S          = 2001;
 	MONSTER_CATCH_C        = 2002;
 	MONSTER_BREAK_C        = 2003;
@@ -52,4 +56,8 @@ enum code
 	// 道具
 	ITEM_USE_C			   = 4001;
 	ITEM_SELL_C		       = 4002;
+	ITEM_BUY_C		       = 4003;
+	
+	EQUIP_SELL_C		   = 4101;
+	EQUIP_BUY_C		       = 4102;	
 }

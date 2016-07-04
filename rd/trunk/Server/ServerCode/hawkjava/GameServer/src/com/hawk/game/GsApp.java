@@ -27,24 +27,21 @@ import org.slf4j.LoggerFactory;
 
 import sun.security.krb5.Config;
 
+import com.hawk.game.attr.Attribute;
 import com.hawk.game.callback.ShutdownCallback;
-import com.hawk.game.config.EquipAttr;
 import com.hawk.game.config.GrayPuidCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.HS.sys;
 import com.hawk.game.protocol.Login.HSLogin;
 import com.hawk.game.protocol.Login.HSLoginRet;
 import com.hawk.game.protocol.Player.HSPlayerCreate;
 import com.hawk.game.protocol.Player.HSPlayerCreateRet;
-import com.hawk.game.protocol.Reward;
-import com.hawk.game.protocol.Reward.HSRewardInfo;
-import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.SysProtocol.HSHeartBeat;
 import com.hawk.game.util.GsConst;
@@ -66,6 +63,11 @@ public class GsApp extends HawkApp {
 	 * puid登陆时间
 	 */
 	private Map<String, Long> puidLoginTime;
+
+	/**
+	 * 帧计数
+	 */
+	private int tickIndex = 0;
 
 	/**
 	 * 全局静态对象
@@ -101,7 +103,7 @@ public class GsApp extends HawkApp {
 	 * @return
 	 */
 	public boolean init(String cfg) {
-		
+
 		GsConfig appCfg = null;
 		try {
 			HawkConfigStorage cfgStorgae = new HawkConfigStorage(GsConfig.class);
@@ -119,7 +121,7 @@ public class GsApp extends HawkApp {
 		if (!initAppObjMan()) {
 			return false;
 		}
-		
+
 		// 设置关服回调
 		HawkShutdownHook.getInstance().setCallback(new ShutdownCallback());
 
@@ -129,7 +131,7 @@ public class GsApp extends HawkApp {
 
 		ItemCfg test = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, 10001);
 		System.out.println(test);
-		
+
 		// cdk服务初始化
 		if (GsConfig.getInstance().getCdkHost().length() > 0) {
 			HawkLog.logPrintln("install cdk service......");
@@ -176,6 +178,11 @@ public class GsApp extends HawkApp {
 	 */
 	@Override
 	public boolean onTick() {
+		// 刷新全局数据
+		if (++tickIndex % GsConst.REFRESH_PERIOD == 0) {
+			onRefresh();
+		}
+
 		if (super.onTick()) {
 			// 数据上报
 			try {
@@ -287,20 +294,34 @@ public class GsApp extends HawkApp {
 							}
 							puidLoginTime.put(puid, HawkTime.getMillisecond());
 						}
-						
+
 						if (!checkPlayerExist(puid, session)) {
 							return true;
 						}
-						
+
 						if (!preparePuidSession(puid, session)) {
 							return false;
 						}
+						
+						// 登录成功协议
+						int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
+						HSLoginRet.Builder response = HSLoginRet.newBuilder();
+						response.setStatus(Status.error.NONE_ERROR_VALUE);
+						response.setPlayerId(playerId);
+						session.sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S, response));
+						
+						return true;
 					}
 					else if (protocol.checkType(HS.code.PLAYER_CREATE_C_VALUE)) {
 						String puid = protocol.parseProtocol(HSPlayerCreate.getDefaultInstance()).getPuid().trim().toLowerCase();
 						if (!CreateNewPlayer(puid, session, protocol)) {
 							return false;
 						}
+						
+						if (!preparePuidSession(puid, session)) {
+							return false;
+						}
+						
 						return true;
 					}
 					else {
@@ -363,7 +384,7 @@ public class GsApp extends HawkApp {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 检查puid对应的角色
 	 * 
@@ -372,17 +393,17 @@ public class GsApp extends HawkApp {
 	 */
 	private boolean checkPlayerExist(String puid, HawkSession session) {
 		int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
-		if (playerId == 0) {	
-			HSLoginRet.Builder response = HSLoginRet.newBuilder();	
+		if (playerId == 0) {
+			HSLoginRet.Builder response = HSLoginRet.newBuilder();
 			response.setStatus(Status.error.NONE_ERROR_VALUE);
 			response.setPlayerId(0);
 			session.sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S_VALUE, response));
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * 创建puid对应的角色
 	 * 
@@ -394,19 +415,19 @@ public class GsApp extends HawkApp {
 		if (playerId == 0) {
 			HSPlayerCreate protocol = cmd.parseProtocol(HSPlayerCreate.getDefaultInstance());
 			PlayerEntity playerEntity = new PlayerEntity(puid, protocol.getNickname(), (byte)(protocol.getCareer()), protocol.getGender(), protocol.getEye(), protocol.getHair(), protocol.getHairColor());
-			if (!HawkDBManager.getInstance().create(playerEntity)) {
+			if (false == playerEntity.notifyCreate()) {
 				return false;
-			}		
-			
+			}
+
 			playerId = playerEntity.getId();
 			ServerData.getInstance().addPuidAndPlayerId(puid, playerId);
 			logger.info("create player entity: {}, puid: {}", playerId, puid);
-			
+
 			HSPlayerCreateRet.Builder response = HSPlayerCreateRet.newBuilder();
 			response.setStatus(Status.error.NONE_ERROR_VALUE);
 			response.setPalyerID(playerId);
 			session.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_CREATE_S_VALUE, response));
-			
+
 			// TEST: 给予默认宠物
 			MonsterEntity monsterEntity = new MonsterEntity("soul", playerId, (byte)1, (short)1, 1, (byte)1, (byte)1);
 			monsterEntity.setSkillLevel(1, 1);
@@ -415,10 +436,10 @@ public class GsApp extends HawkApp {
 			}
 
 			return true;
-		}		
+		}
 		return false;
 	}
-	
+
 	/**
 	 * 准备puid对应的会话
 	 * 
@@ -430,7 +451,7 @@ public class GsApp extends HawkApp {
 		if (playerId == 0) {
 			return false;
 		}
-		
+
 		HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId);
 		HawkObjBase<HawkXID, HawkAppObj> objBase = lockObject(xid);
 		try {
@@ -452,6 +473,8 @@ public class GsApp extends HawkApp {
 					player.kickout(Const.kickReason.DUPLICATE_LOGIN_VALUE);
 				}
 
+				// 设置玩家puid
+				player.getPlayerData().setPuid(puid);
 				// 绑定会话对象
 				session.setAppObject(objBase.getImpl());
 			}
@@ -461,5 +484,12 @@ public class GsApp extends HawkApp {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * 刷新全局数据
+	 */
+	private void onRefresh() {
+		// TODO
 	}
 }

@@ -39,7 +39,7 @@ enum ClassType
 	MONSTER = 2;
 }
 
-// 数据类型定义
+// 抽象物品类型定义
 enum itemType
 {
 	// 玩家属性
@@ -50,10 +50,14 @@ enum itemType
 	ITEM = 3;
 	// 装备
 	EQUIP = 4;
+	// 技能
+	SKILL = 5;
+	// 奖励组
+	GROUP = 6;
 }
 
 // 购买价格类型
-enum buyMoneyType
+enum moneyType
 {
 	// 钻石
 	MONEY_GOLD = 1;
@@ -100,7 +104,7 @@ enum changeType
 	// vip等级
 	CHANGE_VIPLEVEL = 9;
 	// 道具    
-	CHANGE_TOOLS = 10;
+	CHANGE_ITEM = 10;
 	// 装备
 	CHANGE_EQUIP = 11;
 }
@@ -165,17 +169,19 @@ enum bindType
 enum toolType
 {
 	// 通用类型
-	COMMON = 1;
+	COMMONTOOL = 1;
 	// 碎片
-	FRAGMENT = 2;
+	FRAGMENTTOOL = 2;
 	// 宝石
-	GEM = 3;
+	GEMTOOL = 3;
 	// 宝箱
-	BOX = 4;
+	BOXTOOL = 4;
 	// 消耗类
-	USE = 5;
+	USETOOL = 5;
 	// 兑换类
-	EXCHANGE = 6;
+	EXCHANGETOOL = 6;
+	// 装备
+	EQUIPTOOL = 7;
 }
 
 // 装备部位定义

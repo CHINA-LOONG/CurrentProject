@@ -49,6 +49,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"DATA_BASE_ERROR", Value=5)]
       DATA_BASE_ERROR = 5,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"PARAMS_INVALID", Value=6)]
+      PARAMS_INVALID = 6,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CONFIG_NOT_FOUND", Value=7)]
+      CONFIG_NOT_FOUND = 7,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SERVER_ERROR", Value=4096)]
       SERVER_ERROR = 4096
     }
@@ -73,6 +79,26 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_NOT_EXIST", Value=196610)]
       MONSTER_NOT_EXIST = 196610
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"itemError")]
+    public enum itemError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_FOUND", Value=262145)]
+      ITEM_NOT_FOUND = 262145,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"COINS_NOT_ENOUGH", Value=131074)]
+      COINS_NOT_ENOUGH = 131074,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=131075)]
+      GOLD_NOT_ENOUGH = 131075,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=131076)]
+      EQUIP_NOT_FOUND = 131076,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_ENOUGH", Value=262149)]
+      ITEM_NOT_ENOUGH = 262149
     }
   
 }

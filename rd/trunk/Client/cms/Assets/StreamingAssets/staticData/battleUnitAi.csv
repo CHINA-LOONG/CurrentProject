@@ -1,6 +1,6 @@
-#TEXT,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM
+ï»¿#TEXT,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM
 index,dazhaoGroup,dazhaoAdjust,physicsWeight,magicWeight,gainWeight,defenseWeight,rondomWeight,goldWeight,woodWeight,waterWeight,fireWeight,soilWeight,maxBloodWeight,minBloodWeight,lazyGroup,lazyTimes
-#·þÎñ¶Ëid,Ò»´Î´óÕÐ¹¥»÷ÐèÒªµÄ³öÊÖ´ÎÊý,´óÕÐ¹¥»÷´ÎÐòµ÷Õû,ÎïÀí¹¥»÷È¨ÖØ,·¨Êõ¹¥»÷È¨ÖØ,ÔöÒæÐ§¹û¹¥»÷È¨ÖØ,·ÀÓùÐ§¹ûÈ¨ÖØ,¹¥»÷Ä¿±êÍêÈ«Ëæ»úÈ¨ÖØ,¹¥»÷½ðÈ¨ÖØ,¹¥»÷Ä¾È¨ÖØ,¹¥»÷Ë®È¨ÖØ,¹¥»÷»ðÈ¨ÖØ,¹¥»÷ÍÁÈ°×ß,¹¥»÷×î¸ßÑªÁ¿È¨ÖØ,¹¥»÷×îµÍÑªÁ¿È¨ÖØ,ÍµÀÁ³öÊÖ×éÊý,ÍµÀÁ´ÎÊý
+#æœåŠ¡ç«¯id,ä¸€æ¬¡å¤§æ‹›æ”»å‡»éœ€è¦çš„å‡ºæ‰‹æ¬¡æ•°,å¤§æ‹›æ”»å‡»æ¬¡åºè°ƒæ•´,ç‰©ç†æ”»å‡»æƒé‡,æ³•æœ¯æ”»å‡»æƒé‡,å¢žç›Šæ•ˆæžœæ”»å‡»æƒé‡,é˜²å¾¡æ•ˆæžœæƒé‡,æ”»å‡»ç›®æ ‡å®Œå…¨éšæœºæƒé‡,æ”»å‡»é‡‘æƒé‡,æ”»å‡»æœ¨æƒé‡,æ”»å‡»æ°´æƒé‡,æ”»å‡»ç«æƒé‡,æ”»å‡»åœŸåŠèµ°,æ”»å‡»æœ€é«˜è¡€é‡æƒé‡,æ”»å‡»æœ€ä½Žè¡€é‡æƒé‡,å·æ‡’å‡ºæ‰‹ç»„æ•°,å·æ‡’æ¬¡æ•°
 soul,10,3,100,100,100,100,100,0,0,0,0,0,0,0,10,2
 cat,6,2,100,0,0,3888,50,1,1,399,9,8,1999,999,8,1
 Unit_Demo_ershu,9999,1,25,25,25,25,100,0,0,0,0,0,0,0,20,1

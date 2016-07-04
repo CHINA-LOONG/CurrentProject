@@ -29,7 +29,7 @@ import com.hawk.game.attr.Attribute;
  * 
  */
 @Entity
-@Table(name = "item")
+@Table(name = "equip")
 @SuppressWarnings("serial")
 public class EquipEntity extends HawkDBEntity {
 	@Id
@@ -60,7 +60,7 @@ public class EquipEntity extends HawkDBEntity {
 	protected String gemDress = null;
 
 	@Column(name = "additionAttr")
-	protected String additionAttr = null;
+	protected String additionAttr = "";
 	
 	@Column(name = "expireTime")
 	protected Date expireTime = null;
@@ -78,7 +78,7 @@ public class EquipEntity extends HawkDBEntity {
 	protected Map<Integer, Integer> gemDressMap = new HashMap<Integer, Integer>();
 
 	@Transient
-	Attribute attr ;
+	Attribute attr = null;
 	
 	@Transient
 	private boolean assembleFinish = false;
@@ -185,30 +185,39 @@ public class EquipEntity extends HawkDBEntity {
 		for (Map.Entry<Integer, Integer> entry : gemDressMap.entrySet()) {
 			gemJson.put(entry.getKey(), entry.getValue());
 		}
-
+		
 		gemDress = gemJson.toString();
 	}
 	
 	public void addGem(int index, int gemId)
 	{
 		// TODO valid of gemId
-		gemDressMap.put(index, gemId);
+		GetGemDressMap().put(index, gemId);
 	}
 	
 	public void remvoeGem(int index)
 	{
 		// TODO valid of gemId
-		gemDressMap.remove(index);
+		GetGemDressMap().remove(index);
 	}
 	
 	public Attribute getAttr() {
+		if (additionAttr == "") {
+			return null;
+		}
+		
 		if (attr == null) {
 			attr = Attribute.valueOf(additionAttr);
 		}
+		
 		return attr;
 	}
 	
-	public void seriAttr()	{
+	public void setAttr(Attribute attr){
+		this.attr = attr;		
+	}
+	
+	public void serializeAttr()	{
 		// 强制生成Attr
 		getAttr();
 		additionAttr = attr.toString();
@@ -255,7 +264,7 @@ public class EquipEntity extends HawkDBEntity {
 	@Override
 	public void notifyUpdate(boolean async) {
 		gemMapToJson();
-		seriAttr();
+		serializeAttr();
 		super.notifyUpdate(async);
 	}
 }

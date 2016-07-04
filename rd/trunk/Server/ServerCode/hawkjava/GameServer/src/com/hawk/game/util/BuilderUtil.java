@@ -3,24 +3,18 @@ package com.hawk.game.util;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.smartcardio.ATR;
-
-import org.hawk.config.HawkConfigManager;
-import org.hibernate.type.AbstractCharArrayType;
-
-import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.protocol.Attribute.Attr;
 import com.hawk.game.protocol.Const;
-import com.hawk.game.protocol.Const.attr;
-import com.hawk.game.protocol.Const.toolType;
 import com.hawk.game.protocol.Equip.EquipInfo;
 import com.hawk.game.protocol.Equip.GemInfo;
 import com.hawk.game.protocol.Item.ItemInfo;
 import com.hawk.game.protocol.Monster.HSMonster;
+import com.hawk.game.protocol.Player.HSStatisticsInfoSync;
 import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Skill.HSSkill;
 
@@ -48,7 +42,13 @@ public class BuilderUtil {
 		builder.setVipLevel(playerEntity.getVipLevel());
 		return builder;
 	}
-	
+
+	public static HSStatisticsInfoSync.Builder genStatisticsBuilder(StatisticsEntity statisticsEntity) {
+		HSStatisticsInfoSync.Builder builder = HSStatisticsInfoSync.newBuilder();
+//		builder.setInstanceState(statisticsEntity.get());
+		return builder;
+	}
+
 	public static HSMonster.Builder genMonsterBuilder(MonsterEntity monsterEntity) {
 		HSMonster.Builder builder = HSMonster.newBuilder();
 		builder.setMonsterId(monsterEntity.getId());
@@ -58,7 +58,7 @@ public class BuilderUtil {
 		builder.setExp(monsterEntity.getExp());
 		builder.setLazy(monsterEntity.getLazy());
 		builder.setAi(monsterEntity.getAi());
-		
+
 		HSSkill.Builder skill = HSSkill.newBuilder();
 		for (Entry<Integer, Integer> entry : monsterEntity.getSkillMap().entrySet()) {
 			skill.setSkillId(entry.getKey());
@@ -67,21 +67,21 @@ public class BuilderUtil {
 		}
 		return builder;
 	}
-	
+
 	/**
 	 * 生成物品实体的builder信息
 	 * 
 	 * @return
 	 */
-	public static ItemInfo.Builder genItemBuilder(ItemEntity itemEntity) {		
+	public static ItemInfo.Builder genItemBuilder(ItemEntity itemEntity) {
 		ItemInfo.Builder builder = ItemInfo.newBuilder();
 		builder.setId(itemEntity.getId());
 		builder.setItemId(itemEntity.getItemId());
 		builder.setCount(itemEntity.getCount());
 		builder.setStatus(itemEntity.getStatus());
-		return builder;	
+		return builder;
 	}
-	
+
 	/**
 	 * 生成装备实体的builder信息
 	 * 
@@ -95,8 +95,11 @@ public class BuilderUtil {
 		builder.setStage(equipEntity.getStage());
 		builder.setLevel(equipEntity.getLevel());
 		builder.setStage(equipEntity.getStage());
-		builder.setExpireTime((int)equipEntity.getExpireTime().getTime());
-		
+		builder.setStatus(0);
+		if (equipEntity.getExpireTime() != null) {
+			builder.setExpireTime((int)equipEntity.getExpireTime().getTime());
+		}
+
 		//组装镶嵌宝石数据
 		for (Map.Entry<Integer, Integer> entry : equipEntity.GetGemDressMap().entrySet()) {
 			GemInfo.Builder gemInfo = GemInfo.newBuilder();
@@ -104,14 +107,18 @@ public class BuilderUtil {
 			gemInfo.setGemItemId(entry.getValue());
 			builder.addGemInfos(gemInfo);
 		}
-		
-		//组装生成附加属性列表
-		for (Map.Entry<Const.attr, Float> entry : equipEntity.getAttr().getAttrMap().entrySet()) {
-			Attr.Builder attrInfo = Attr.newBuilder();
-			attrInfo.setAttrId(entry.getKey().getNumber());
-			attrInfo.setAttrValue(entry.getValue());
-			builder.addAttrDatas(attrInfo);
+
+		if (equipEntity.getAttr() != null) {
+			//组装生成附加属性列表
+			for (Map.Entry<Const.attr, Float> entry : equipEntity.getAttr().getAttrMap().entrySet()) {
+				Attr.Builder attrInfo = Attr.newBuilder();
+				attrInfo.setAttrId(entry.getKey().getNumber());
+				attrInfo.setAttrValue(entry.getValue());
+				builder.addAttrDatas(attrInfo);
+			}
 		}
+		
+		
 		return builder;
 	}
 }

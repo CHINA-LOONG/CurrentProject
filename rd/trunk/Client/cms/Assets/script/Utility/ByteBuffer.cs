@@ -10,11 +10,13 @@ public class ByteBuffer {
     BinaryReader reader = null;
 
     public ByteBuffer() {
+		Debug.LogError ("No Use......");
         stream = new MemoryStream();
         writer = new BinaryWriter(stream);
     }
 
     public ByteBuffer(byte[] data) {
+		Debug.LogError ("No Use......");
         if (data != null) {
             stream = new MemoryStream(data);
             reader = new BinaryReader(stream);
@@ -114,11 +116,17 @@ public class ByteBuffer {
     }
 
     public byte[] ToBytes() {
-        writer.Flush();
+		if (writer != null ) 
+		{
+			writer.Flush ();
+		}
         return stream.ToArray();
     }
 
     public void Flush() {
-        writer.Flush();
+		if (writer != null) 
+		{
+			writer.Flush ();
+		}
     }
 }

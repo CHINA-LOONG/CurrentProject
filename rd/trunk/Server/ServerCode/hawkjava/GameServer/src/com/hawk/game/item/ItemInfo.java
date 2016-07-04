@@ -40,10 +40,11 @@ public class ItemInfo {
 		this.count = count;
 	}
 
-	public ItemInfo(int type, int itemId, int stage, int level) {
+	public ItemInfo(int type, int itemId, int count, int stage, int level) {
 		super();
 		this.type = type;
 		this.itemId = itemId;
+		this.count = count;
 		this.stage = stage;
 		this.level = level;
 	}
@@ -80,7 +81,7 @@ public class ItemInfo {
 		return stage;
 	}
 
-	public void Stage(int stage) {
+	public void setStage(int stage) {
 		this.stage = stage;
 	}
 
@@ -106,6 +107,10 @@ public class ItemInfo {
 		return new ItemInfo(type, itemId, quantity);
 	}
 
+	public static ItemInfo valueOf(int type, int itemId, int quantity, int stage, int level) {
+		return new ItemInfo(type, itemId, quantity, stage, level);
+	}
+	
 	public boolean initByString(String info) {
 		if (info != null && info.length() > 0 && !info.equals("0") && !info.equals("none")) {
 			String[] items = info.split("_");

@@ -15,7 +15,10 @@ import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Login.HSLogin;
 import com.hawk.game.protocol.Login.HSLoginRet;
+import com.hawk.game.protocol.Login.HSSyncInfo;
+import com.hawk.game.protocol.Login.HSSyncInfoRet;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.protocol.Status.error;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
 
@@ -32,7 +35,7 @@ public class PlayerLoginModule extends PlayerModule {
 	 */
 	public PlayerLoginModule(Player player) {
 		super(player);
-		listenProto(HS.code.LOGIN_C);
+		listenProto(HS.code.SYNCINFO_C_VALUE);
 	}
 
 	/**
@@ -44,22 +47,22 @@ public class PlayerLoginModule extends PlayerModule {
 	@Override
 	public boolean onProtocol(HawkProtocol protocol)
 	{
-		if (protocol.checkType(HS.code.LOGIN_C))
+		if (protocol.checkType(HS.code.SYNCINFO_C_VALUE))
 		{
 			// 处理本会话的玩家登陆协议
-			onPlayerLogin(protocol.getSession(), protocol.getType(), protocol.parseProtocol(HSLogin.getDefaultInstance()));
+			onPlayerLogin(protocol.getSession(), protocol.getType(), protocol.parseProtocol(HSSyncInfo.getDefaultInstance()));
 			return true;
 		}
 		return super.onProtocol(protocol);
 	}
-	
+
 	/**
 	 * 登陆协议处理
 	 * 
 	 * @param session
 	 * @param protocol
 	 */
-	private boolean onPlayerLogin(HawkSession session, int hsCode, HSLogin protocol)
+	private boolean onPlayerLogin(HawkSession session, int hsCode, HSSyncInfo protocol)
 	{
 		// 在线人数达到上限
 		int sessionMaxSize = HawkApp.getInstance().getAppCfg().getSessionMaxSize();
@@ -69,7 +72,6 @@ public class PlayerLoginModule extends PlayerModule {
 		}
 
 		// 参数解析
-		String puid = protocol.getPuid().trim();
 		String device = protocol.getDeviceId().trim().toLowerCase();
 		String platInfo = protocol.getPlatform().trim().toLowerCase();
 
@@ -104,7 +106,7 @@ public class PlayerLoginModule extends PlayerModule {
 		}
 
 		// 加载玩家实体信息
-		PlayerEntity playerEntity = player.getPlayerData().loadPlayer(puid);
+		PlayerEntity playerEntity = player.getPlayerData().loadPlayer();
 
 		// 更新玩家设备相关信息
 		if (playerEntity != null) {
@@ -129,44 +131,54 @@ public class PlayerLoginModule extends PlayerModule {
 				playerEntity.notifyUpdate(true);
 			}
 		}
-		
+
 		// 玩家对象信息错误
 		if (playerEntity == null || playerEntity.getId() <= 0)
 		{
 			session.sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.PlayerError.PLAYER_NOT_EXIST_VALUE, 1));
 			return false;
 		}
-		
+
+		// 记录上线时间
 		playerEntity.setLoginTime(HawkTime.getCalendar().getTime());
-		
+
 		// 登陆回复协议
-		HSLoginRet.Builder response = HSLoginRet.newBuilder();
-		response.setStatus(1);
-		response.setPlayerId(playerEntity.getId());
+		HSSyncInfoRet.Builder response = HSSyncInfoRet.newBuilder();
+		response.setStatus(error.NONE_ERROR_VALUE);
 		// 设置时间戳
 		response.setTimeStamp(HawkTime.getSeconds());
+		
 		// 绑定会话
 		player.setSession(session);
 		playerEntity.setLoginTime(HawkTime.getCalendar().getTime());
 		playerEntity.notifyUpdate(true);
-		
+
 		// 发送登陆成功协议
-		sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S, response));
+		sendProtocol(HawkProtocol.valueOf(HS.code.SYNCINFO_S, response));
+
+		// 跨天重置
+		if (null == player.getEntity().getResetTime() || false == HawkTime.isToday(player.getEntity().getResetTime())) {
+			player.onFirstLoginDaily(false);
+		}
+
 		// 同步玩家信息
 		player.getPlayerData().syncPlayerInfo();
-		
+
 		// 通知玩家其他模块玩家登陆成功
 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LOGIN, player.getXid());
 		if (!HawkApp.getInstance().postMsg(msg))
 		{
 			HawkLog.errPrintln("post player login message failed: " + playerEntity.getNickname());
 		}
-		
+
 		return true;
 	}
 
 	@Override
 	protected boolean onPlayerLogout() {
+		// 记录下线时间
+		player.getEntity().setLogoutTime(HawkTime.getCalendar().getTime());
+
 		// 重要数据下线就存储
 		player.getEntity().notifyUpdate(false);
 		return true;

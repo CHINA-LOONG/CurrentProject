@@ -90,7 +90,7 @@ public class AwardItems {
 
 	public AwardItems addItem(int itemId, int count) {
 		RewardItem.Builder rewardItem = RewardItem.newBuilder();
-		rewardItem.setType(itemType.ITEM_VALUE);
+		rewardItem.setType(Const.itemType.ITEM_VALUE);
 		rewardItem.setItemId(itemId);
 		rewardItem.setCount(count);
 		rewardInfo.addRewardItems(rewardItem);
@@ -99,7 +99,7 @@ public class AwardItems {
 
 	public AwardItems addEquip(int equipId, int stage, int level) {
 		RewardItem.Builder rewardItem = RewardItem.newBuilder();
-		rewardItem.setType(itemType.EQUIP_VALUE);
+		rewardItem.setType(Const.itemType.EQUIP_VALUE);
 		rewardItem.setItemId(equipId);
 		rewardItem.setStage(stage);
 		rewardItem.setLevel(level);
@@ -109,7 +109,6 @@ public class AwardItems {
 
 	public AwardItems addAttr(int attrType, int count) {
 		RewardItem.Builder rewardItem = null;
-		
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
 			if (reward.getType() == itemType.PLAYER_ATTR_VALUE && reward.getItemId() == attrType) {
 				rewardItem = reward;
@@ -262,8 +261,7 @@ public class AwardItems {
 				}
 				else if(item.getType() == Const.itemType.ITEM_VALUE){
 					ItemEntity itemEntity = player.increaseTools(item.getItemId(), item.getCount(), action);
-					if (itemEntity != null) {
-						
+					if (itemEntity != null) {					
 						try {
 							BehaviorLogger.log4Platform(player, action, Params.valueOf("id", itemEntity.getId()), 
 								Params.valueOf("itemId", itemEntity.getItemId()), 
@@ -278,7 +276,8 @@ public class AwardItems {
 					}
 				}
 				else if(item.getType() == Const.itemType.EQUIP_VALUE){
-					EquipEntity equipEntity = player.increaseEquip(item.getItemId(), action);
+					EquipEntity equipEntity = player.increaseEquip(item.getItemId(), item.getStage(), item.getLevel(), action);
+					EquipUtil.generateAttr(equipEntity, item);
 					if (equipEntity != null) {				
 						try {
 							BehaviorLogger.log4Platform(player, action, Params.valueOf("id", equipEntity.getId()), 

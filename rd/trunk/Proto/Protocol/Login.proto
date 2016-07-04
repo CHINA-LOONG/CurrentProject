@@ -6,10 +6,7 @@ option java_package = "com.hawk.game.protocol";
 message HSLogin
 {
 	required string puid = 1;
-	optional string deviceId = 2 [default = "0"];
-	optional string platform = 3 [default = "0"];
-	optional string version = 4 [default = "0.0.1"];
-	optional string token = 5;
+	optional string token = 2;
 }
 
 // LOGIN_S
@@ -17,7 +14,21 @@ message HSLoginRet
 {
 	required int32 status = 1;
 	required int32 playerId = 2;
-	optional int32 timeStamp = 3;
+}
+
+// SyncInfo_C
+message HSSyncInfo
+{
+	optional string deviceId = 1 [default = "0"];
+	optional string platform = 2 [default = "0"];
+	optional string version = 3 [default = "0.0.1"];
+}
+
+// SyncInfo_S
+message HSSyncInfoRet
+{
+	required int32 status = 1;
+	optional int32 timeStamp = 2;
 }
 
 // KICKOUT_S

@@ -1,5 +1,7 @@
 package com.hawk.game.player;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -11,29 +13,39 @@ import org.hawk.db.HawkDBManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkException;
+import org.hawk.os.HawkTime;
 import org.hawk.service.HawkServiceProxy;
+import org.hawk.util.services.HawkReportService;
 import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hawk.game.config.TimeCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.log.BehaviorLogger.Params;
 import com.hawk.game.log.BehaviorLogger.Source;
+import com.hawk.game.module.PlayerEquipModuel;
 import com.hawk.game.module.PlayerIdleModule;
 import com.hawk.game.module.PlayerInstanceModule;
+import com.hawk.game.module.PlayerItemModule;
 import com.hawk.game.module.PlayerLoginModule;
 import com.hawk.game.module.PlayerMonsterModule;
+import com.hawk.game.module.PlayerStatisticsModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.EquipUtil;
+import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.RefreshTime;
 
 /**
  * 玩家对象
@@ -58,6 +70,11 @@ public class Player extends HawkAppObj {
 	private boolean assembleFinish;
 
 	/**
+	 * 帧计数
+	 */
+	private int tickIndex = 0;
+
+	/**
 	 * 构造函数
 	 * 
 	 * @param xid
@@ -76,8 +93,11 @@ public class Player extends HawkAppObj {
 	 */
 	public void initModules() {
 		registerModule(GsConst.ModuleType.LOGIN_MODULE, new PlayerLoginModule(this));
+		registerModule(GsConst.ModuleType.STATISTICS_MODULE, new PlayerStatisticsModule(this));
 		registerModule(GsConst.ModuleType.MONSTER_MODULE, new PlayerMonsterModule(this));
 		registerModule(GsConst.ModuleType.INSTANCE_MODULE, new PlayerInstanceModule(this));
+		registerModule(GsConst.ModuleType.ITEM_MODULE, new PlayerItemModule(this));
+		registerModule(GsConst.ModuleType.EQUIP_MODULE, new PlayerEquipModuel(this));
 
 		// 最后注册空闲模块, 用来消息收尾处理
 		registerModule(GsConst.ModuleType.IDLE_MODULE, new PlayerIdleModule(this));
@@ -216,15 +236,15 @@ public class Player extends HawkAppObj {
 		}
 
 		// 玩家不在线而且不是登陆协议(非法协议时机)
-		if (!isOnline() && !protocol.checkType(HS.code.LOGIN_C)) {
+		if (!isOnline() && !(protocol.checkType(HS.code.LOGIN_C) || protocol.checkType(HS.code.SYNCINFO_C))) {
 			HawkLog.errPrintln(String.format("player is offline, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
 			return true;
 		}
 
 		// 玩家未组装完成
-		if (!isAssembleFinish() && !protocol.checkType(HS.code.LOGIN_C)) {
-			HawkLog.errPrintln(String.format("player assemble unfinish, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
-			return true;
+		if (!isAssembleFinish() && !(protocol.checkType(HS.code.LOGIN_C) || protocol.checkType(HS.code.SYNCINFO_C))) {
+			//HawkLog.errPrintln(String.format("player assemble unfinish, session: %s, protocol: %d", protocol.getSession().getIpAddr(), protocol.getType()));
+			//return true;
 		}
 
 		return false;
@@ -239,6 +259,16 @@ public class Player extends HawkAppObj {
 		if (!isAssembleFinish()) {
 			return true;
 		}
+
+		// 在线跨天刷新
+		if (null == playerData.getPlayerEntity() || false == HawkTime.isToday(playerData.getPlayerEntity().getResetTime())) {
+			onFirstLoginDaily(true);
+		}
+		// 刷新玩家数据
+		if (++tickIndex % GsConst.REFRESH_PERIOD == 0) {
+			onRefresh();
+		}
+
 		return super.onTick();
 	}
 
@@ -320,7 +350,7 @@ public class Player extends HawkAppObj {
 	 * @return
 	 */
 	public int getGold() {
-		return 0;
+		return playerData.getPlayerEntity().getGold();
 	}
 
 	/**
@@ -347,7 +377,7 @@ public class Player extends HawkAppObj {
 	 * @return
 	 */
 	public String getName() {
-		return "";
+		return playerData.getPlayerEntity().getNickname();
 	}
 
 	/**
@@ -356,7 +386,7 @@ public class Player extends HawkAppObj {
 	 * @return
 	 */
 	public int getLevel() {
-		return 0;
+		return playerData.getPlayerEntity().getLevel();
 	}
 
 	/**
@@ -364,7 +394,7 @@ public class Player extends HawkAppObj {
 	 * @return
 	 */
 	public int getExp() {
-		return 0;
+		return playerData.getPlayerEntity().getExp();
 	}
 
 	/**
@@ -378,7 +408,7 @@ public class Player extends HawkAppObj {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 增加钻石
 	 * 
@@ -397,8 +427,8 @@ public class Player extends HawkAppObj {
 				Params.valueOf("playerAttr", Const.playerAttr.GOLD_VALUE), 
 				Params.valueOf("add", gold), 
 				Params.valueOf("after", getGold()));
-		
-		
+
+
 		BehaviorLogger.log4Platform(this, action, Params.valueOf("playerAttr", Const.playerAttr.GOLD_VALUE), 
 				Params.valueOf("add", gold), 
 				Params.valueOf("after", getGold()));
@@ -422,7 +452,7 @@ public class Player extends HawkAppObj {
 				Params.valueOf("playerAttr", Const.playerAttr.GOLD_VALUE), 
 				Params.valueOf("sub", gold), 
 				Params.valueOf("after", getGold()));
-		
+
 		BehaviorLogger.log4Platform(this, Action.GOLD_COST, Params.valueOf("money", gold),
 				Params.valueOf("wpnum", 1), Params.valueOf("price", gold),
 				Params.valueOf("wpid", 0), Params.valueOf("wptype", action.name()));
@@ -447,7 +477,7 @@ public class Player extends HawkAppObj {
 				Params.valueOf("add", coin), 
 				Params.valueOf("after", getCoin()));
 	}
-	
+
 	/**
 	 * 消费金币
 	 * 
@@ -466,12 +496,12 @@ public class Player extends HawkAppObj {
 				Params.valueOf("playerAttr", Const.playerAttr.COIN_VALUE), 
 				Params.valueOf("sub", coin), 
 				Params.valueOf("after", getCoin()));
-		
+
 		BehaviorLogger.log4Platform(this, Action.COIN_COST, Params.valueOf("money", coin),
 				Params.valueOf("wpnum", 1), Params.valueOf("price", coin),
 				Params.valueOf("wpid", 0), Params.valueOf("wptype", action.name()));
 	}
-	
+
 	/**
 	 * 增加vip等级
 	 * 
@@ -483,7 +513,7 @@ public class Player extends HawkAppObj {
 		}
 	}
 
-	
+
 	/**
 	 * 增加等级
 	 * 
@@ -494,7 +524,7 @@ public class Player extends HawkAppObj {
 			throw new RuntimeException("increaseLevel");
 		}
 	}
-	
+
 	/**
 	 * 增加经验
 	 * 
@@ -506,7 +536,7 @@ public class Player extends HawkAppObj {
 		}
 
 	}
-	
+
 	/**
 	 * 增加物品
 	 */
@@ -514,14 +544,14 @@ public class Player extends HawkAppObj {
 		if(!ConfigUtil.check(Const.itemType.ITEM_VALUE, itemId)) {
 			return null;
 		}
-		
+
 		ItemEntity itemEntity = playerData.getItemByItemId(itemId);
 		if (itemEntity == null) {
 			itemEntity = new ItemEntity();
 			itemEntity.setItemId(itemId);
 			itemEntity.setCount(itemCount);
 			itemEntity.setPlayerId(getId());
-			if (HawkDBManager.getInstance().create(itemEntity)) {
+			if (itemEntity.notifyCreate()) {
 				playerData.addItemEntity(itemEntity);
 			}
 		} else {
@@ -536,7 +566,7 @@ public class Player extends HawkAppObj {
 					Params.valueOf("id", itemEntity.getId()), 
 					Params.valueOf("add", itemCount), 
 					Params.valueOf("after", itemEntity.getCount()));
-	
+
 			return itemEntity;
 		}
 		return null;
@@ -550,7 +580,7 @@ public class Player extends HawkAppObj {
 		if (itemEntity != null && itemEntity.getCount() >= itemCount) {
 			itemEntity.setCount(itemEntity.getCount() - itemCount);
 			itemEntity.notifyUpdate(true);
-			
+
 			BehaviorLogger.log4Service(this, Source.TOOLS_REMOVE, action, 
 					Params.valueOf("itemId", itemId), 
 					Params.valueOf("id", itemEntity.getId()), 
@@ -568,7 +598,7 @@ public class Player extends HawkAppObj {
 	public EquipEntity increaseEquip(int equipId, Action action) {
 		return increaseEquip(equipId,0,0,action);
 	}
-	
+
 	/**
 	 * 增加装备
 	 */
@@ -576,12 +606,12 @@ public class Player extends HawkAppObj {
 		if(!ConfigUtil.check(Const.itemType.EQUIP_VALUE, equipId)) {
 			return null;
 		}
-		
+
 		EquipEntity equipEntity = EquipUtil.generateEquip(this, equipId, stage, level);
 		if (equipEntity != null) {
-			if (HawkDBManager.getInstance().create(equipEntity)) {
+			if (equipEntity.notifyCreate()) {
 				playerData.addEquipEntity(equipEntity);
-	
+
 				BehaviorLogger.log4Service(this, Source.EQUIP_ADD, action, 
 						Params.valueOf("equipId", equipId), 
 						Params.valueOf("id", equipEntity.getId()));
@@ -624,7 +654,7 @@ public class Player extends HawkAppObj {
 		return removeFailEquipIds;
 	}
 
-	
+
 	/**
 	 * 角色数据落地
 	 *
@@ -632,7 +662,7 @@ public class Player extends HawkAppObj {
 	 public void saveRoleData(){	 
 
 	 }
-	
+
 	/**
 	 * 重新选择角色
 	 *
@@ -640,4 +670,69 @@ public class Player extends HawkAppObj {
 	 public void ReselectRole() {
 
 	}
+	 
+	/**
+	 * 
+	 * 每日首次登陆
+	 */
+	public void onFirstLoginDaily(boolean sync) {
+		StatisticsEntity statisticsEntity = playerData.loadStatistics();
+		// 保存重置时间
+		playerData.getPlayerEntity().setResetTime(HawkTime.getCalendar().getTime());
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		// 同步
+		if (sync) {
+			sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_INFO_SYNC_S, BuilderUtil.genStatisticsBuilder(statisticsEntity)));
+		}
+
+//		// 登陆信息上报
+//		HawkReportService.LoginData loginData = new HawkReportService.LoginData(getPuid(), getDevice(), getId(), HawkTime.getTimeString());
+//		HawkReportService.getInstance().report(loginData);
+	 }
+	 
+	/**
+	 * 刷新数据
+	 */
+	private void onRefresh() {
+		Calendar curTime = HawkTime.getCalendar();
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		if (null == statisticsEntity) {
+			return;
+		}
+
+		for (int i = GsConst.RefreshType.PERS_REFRESH_BEGIN + 1; i < GsConst.RefreshType.PERS_REFRESH_END; ++i) {
+			TimeCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, i);
+			if (null != timeCfg) {
+				try {
+					boolean  shouldRefresh = false;
+					Calendar lastRefreshTime = HawkTime.getCalendar();
+					Calendar nextRefreshTime = HawkTime.getCalendar();
+					Date lastRefreshTimeDate = statisticsEntity.getLastRefreshTime(i);
+					if (null == lastRefreshTimeDate) {
+						lastRefreshTime.setTimeInMillis(0);
+					} else {
+						lastRefreshTime.setTime(lastRefreshTimeDate);
+					}
+
+					shouldRefresh = RefreshTime.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
+					if (true == shouldRefresh) {
+						statisticsEntity.setRefreshTime(i,  nextRefreshTime.getTime());
+
+						switch (i) {
+						case GsConst.RefreshType.SIGN_IN_PERS_REFRESH:
+							break;
+						case GsConst.RefreshType.INSTANCE_PERS_REFRESH:
+							break;
+						default:
+								break;
+						}
+					}
+				} catch (Exception e) {
+					HawkException.catchException(e);
+				}
+			}
+		}
+	}
+
 }

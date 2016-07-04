@@ -21,3 +21,10 @@ message HSItemUse
 	required int32 itemId = 1;	
 	required int32 itemCount = 2;
 }
+
+// 购买道具
+message HSItemBuy
+{
+	required int32 itemId = 1;	
+	required int32 itemCount = 2;
+}

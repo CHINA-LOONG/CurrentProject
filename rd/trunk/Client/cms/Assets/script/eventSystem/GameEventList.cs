@@ -6,6 +6,8 @@ public class GameEventList
     //Login
     public static string LoginClick = "LoginClick";//no param
 
+	public static string CreatePlayerFinished = "CreatePlayerFinished";//no param
+
     //Build
     public static string BattleBtnClick = "BattleBtnClick";
 
@@ -43,9 +45,6 @@ public class GameEventList
     public static string RefreshBattleResultUI = "RefreshBattleResultUI";//UIData
     public static string ResetOperHabit = "ResetOperHabit"; //设置操作习惯
 
-    //Net
-    public static string NetRequestState = "NetRequestState";//object
-    public static string OnLoginMsg = "OnLoginMsg";
 
     //Spell
     public static string SpellFire = "SpellFire";
@@ -57,4 +56,8 @@ public class GameEventList
     public static string SpellMiss = "SpellMiss";
     public static string SpellImmune = "SpellImmune";
     public static string SpellStun = "SpellStun";
+
+	//GameDataChange for ui
+	public static	string LevelChanged = "LeveleChanged";//param int
+	public static   string CoinChanged  = "CoinChanged";//param int
 }

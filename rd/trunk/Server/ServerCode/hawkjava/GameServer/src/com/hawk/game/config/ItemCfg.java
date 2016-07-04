@@ -73,13 +73,9 @@ public class ItemCfg extends HawkConfigBase {
 	 */
 	protected final String rewardId;
 	/**
-	 * 兑换表
+	 * 兑换/合成道具ID
 	 */
-	protected final String exchange;
-	/**
-	 * 合成道具ID
-	 */
-	protected final String targetItemId;
+	protected final String targetItem;
 	/**
 	 * 合成/兑换 需要的数量
 	 */
@@ -124,10 +120,10 @@ public class ItemCfg extends HawkConfigBase {
 	 */
 	private List<ItemInfo> needItemList;
 	/**
-	 * 兑换装备列表
+	 * 合成/兑换装备列表
 	 */
-	private List<ItemInfo> exchangeList;
-
+	private List<ItemInfo> targetItemList;
+	
 	public ItemCfg(){				
 		id  = 0;
 		classType = 0;
@@ -143,9 +139,8 @@ public class ItemCfg extends HawkConfigBase {
 		buyType = 0;
 		needItem = null;
 		stack = 0;
-		exchange = null;
 		rewardId = null;
-		targetItemId = null;
+		targetItem = null;
 		needCount = 0;
 		addAttrType = 0;
 		addAttrValue = 0;
@@ -160,9 +155,10 @@ public class ItemCfg extends HawkConfigBase {
 		tips = null;
 		
 		needItemList = new LinkedList<ItemInfo>();
-		exchangeList = new LinkedList<ItemInfo>();
+		targetItemList = new LinkedList<ItemInfo>();
 	}
 
+	
 	public int getId() {
 		return id;
 	}
@@ -170,6 +166,7 @@ public class ItemCfg extends HawkConfigBase {
 	public int getClassType() {
 		return classType;
 	}
+
 
 	public int getType() {
 		return type;
@@ -187,21 +184,26 @@ public class ItemCfg extends HawkConfigBase {
 		return condition;
 	}
 
+
 	public int getTimes() {
 		return times;
 	}
+
 
 	public int getBindType() {
 		return bindType;
 	}
 
+
 	public int getSellPrice() {
 		return sellPrice;
 	}
 
+
 	public int getSellType() {
 		return sellType;
 	}
+
 
 	public int getBuyPrice() {
 		return buyPrice;
@@ -211,24 +213,14 @@ public class ItemCfg extends HawkConfigBase {
 		return buyType;
 	}
 
-	public String getNeedItem() {
-		return needItem;
-	}
 
 	public int getStack() {
 		return stack;
 	}
 
+
 	public String getRewardId() {
 		return rewardId;
-	}
-
-	public String getExchange() {
-		return exchange;
-	}
-
-	public String getTargetItemId() {
-		return targetItemId;
 	}
 
 	public int getNeedCount() {
@@ -239,15 +231,17 @@ public class ItemCfg extends HawkConfigBase {
 		return addAttrType;
 	}
 
+
 	public int getAddAttrValue() {
 		return addAttrValue;
 	}
+
 
 	public String getGemId() {
 		return gemId;
 	}
 
-	public int getMaxGemCount() {
+	public int getMaxGem() {
 		return maxGem;
 	}
 
@@ -259,6 +253,7 @@ public class ItemCfg extends HawkConfigBase {
 		return durability;
 	}
 
+
 	public int getEquipAttId() {
 		return equipAttId;
 	}
@@ -266,6 +261,7 @@ public class ItemCfg extends HawkConfigBase {
 	public String getName() {
 		return name;
 	}
+
 
 	public String getAsset() {
 		return asset;
@@ -279,56 +275,89 @@ public class ItemCfg extends HawkConfigBase {
 		return needItemList;
 	}
 
+
 	public void setNeedItemList(List<ItemInfo> needItemList) {
 		this.needItemList = needItemList;
 	}
 
-	public List<ItemInfo> getExchangeList() {
-		return exchangeList;
+
+	public List<ItemInfo> getTargetItemList() {
+		return targetItemList;
 	}
 
-	public void setExchangeList(List<ItemInfo> exchangeList) {
-		this.exchangeList = exchangeList;
+
+	public void setTargetItemList(List<ItemInfo> targetItemList) {
+		this.targetItemList = targetItemList;
 	}
-	
+
+
 	@Override
 	protected boolean assemble() {
 		needItemList.clear();
+		targetItemList.clear();
+		
+		// 碎片
+		if (this.type == Const.toolType.EXCHANGETOOL_VALUE || this.type == Const.toolType.FRAGMENTTOOL_VALUE) {
+			if (this.targetItem != null && this.targetItem.length() > 0 && !"0".equals(this.targetItem)) {
+				String[] itemArrays = targetItem.split(",");
+				for (String itemArray : itemArrays) {
+					String[] items = itemArray.split("_");
+					if (items.length == 3) {
+						ItemInfo itemInfo = new ItemInfo();
+						itemInfo.setType(Integer.valueOf(items[0]));
+						itemInfo.setItemId(Integer.valueOf(items[1]));
+						itemInfo.setCount(Integer.valueOf(items[2]));
+						targetItemList.add(itemInfo);
+					}
+					else if (items.length == 5){
+						if (Integer.valueOf(items[0]) != Const.itemType.EQUIP_VALUE) {
+							return false;
+						}
+						ItemInfo itemInfo = new ItemInfo();
+						itemInfo.setType(Integer.valueOf(items[0]));
+						itemInfo.setItemId(Integer.valueOf(items[1]));
+						itemInfo.setCount(Integer.valueOf(items[2]));
+						itemInfo.setStage(Integer.valueOf(items[3]));
+						itemInfo.setLevel(Integer.valueOf(items[4]));
+						targetItemList.add(itemInfo);
+					}
+					else {
+						return false;
+					}
+				}
+			}
+		}
 		// 宝箱需要配对的钥匙
-		if (this.type == Const.toolType.BOX_VALUE) {
+		else if (this.type == Const.toolType.BOXTOOL_VALUE) {
 			if (this.needItem != null && this.needItem.length() > 0 && !"0".equals(this.needItem)) {
 				String[] itemArrays = needItem.split(",");
 				for (String itemArray : itemArrays) {
 					String[] items = itemArray.split("_");
-					if (items.length != 3) {
+					if (items.length == 3) {
+						ItemInfo itemInfo = new ItemInfo();
+						itemInfo.setType(Integer.valueOf(items[0]));
+						itemInfo.setItemId(Integer.valueOf(items[1]));
+						itemInfo.setCount(Integer.valueOf(items[2]));
+						targetItemList.add(itemInfo);
+					}
+					else if (items.length == 5){
+						if (Integer.valueOf(items[0]) != Const.itemType.EQUIP_VALUE) {
+							return false;
+						}
+						ItemInfo itemInfo = new ItemInfo();
+						itemInfo.setType(Integer.valueOf(items[0]));
+						itemInfo.setItemId(Integer.valueOf(items[1]));
+						itemInfo.setCount(Integer.valueOf(items[2]));
+						itemInfo.setStage(Integer.valueOf(items[3]));
+						itemInfo.setLevel(Integer.valueOf(items[4]));
+						targetItemList.add(itemInfo);
+					}
+					else {
 						return false;
 					}
-					ItemInfo itemInfo = new ItemInfo();
-					itemInfo.setType(Integer.valueOf(items[0]));
-					itemInfo.setItemId(Integer.valueOf(items[1]));
-					itemInfo.setCount(Integer.valueOf(items[2]));
-					needItemList.add(itemInfo);
 				}
 			}
-		}
-		
-		if (this.type == Const.toolType.EXCHANGE_VALUE) {
-			if (this.exchange != null && this.exchange.length() > 0 && !"0".equals(this.exchange)) {
-				String[] itemArrays = exchange.split(",");
-				for (String itemArray : itemArrays) {
-					String[] items = itemArray.split("_");
-					if (items.length != 3) {
-						return false;
-					}
-					ItemInfo itemInfo = new ItemInfo();
-					itemInfo.setType(Integer.valueOf(items[0]));
-					itemInfo.setItemId(Integer.valueOf(items[1]));
-					itemInfo.setCount(Integer.valueOf(items[2]));
-					exchangeList.add(itemInfo);
-				}
-			}
-		}
-		
+		}	
 		return true;
 	}
 

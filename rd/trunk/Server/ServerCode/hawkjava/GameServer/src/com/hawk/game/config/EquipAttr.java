@@ -1,8 +1,12 @@
 package com.hawk.game.config;
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.log.HawkLog;
 
+import com.hawk.game.attr.Attribute;
 import com.hawk.game.item.ItemInfo;
+import com.hawk.game.protocol.Const.attr;
+import com.hawk.game.util.WeightUtil;
 import com.hawk.game.util.WeightUtil.WeightItem;
 
 import java.util.LinkedHashMap;
@@ -10,25 +14,35 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.smartcardio.ATR;
+
 @HawkConfigManager.CsvResource(file = "xml/equipAttr.csv", struct = "list")
 public class EquipAttr extends HawkConfigBase{
 
 	private static Map<Integer, EquipStageItem> stageList = new LinkedHashMap<Integer, EquipStageItem>();
 	private static Map<Integer, Map<Integer, EquipStageItem>> equipList = new LinkedHashMap<Integer, Map<Integer, EquipStageItem>>();
 
-	private static class EquipStageItem{
+	private class EquipStageItem{
 		/**
 		 * 强化级别对应属性列表
 		 */
-		List<EquipLevelItem> levelList;
-		List<WeightItem<AdditionAttrItem>> weightList;
+		private List<EquipLevelItem> levelList;
+		/**
+		 * 随机属性强化列表
+		 */
+		private List<WeightItem<AdditionAttrItem>> weightList;
+		/**
+		 * roll 次数
+		 */
+		private int rollCount;
 		
 		public  EquipStageItem() {
 			levelList = new LinkedList<EquipLevelItem>();
 			weightList = new LinkedList<WeightItem<AdditionAttrItem>>();
+			rollCount = 0;
 		}
-		
-		public boolean init(String additionAttr){
+		 
+		public boolean init(String additionAttr, int rollCount){
 			if (additionAttr != null && additionAttr.length() > 0 && !"0".equals(additionAttr)) {
 				String[] itemArrays = additionAttr.split(",");
 				for (String itemArray : itemArrays) {
@@ -43,35 +57,49 @@ public class EquipAttr extends HawkConfigBase{
 				}
 			}	
 			
+			this.rollCount = rollCount;
+			
 			return true;
 		}
-
+		
+		/**
+		 * roll指定次数的附加属性 0代码空roll
+		 */
+		public Attribute rondomAddiAttr() {
+			Attribute attr = new Attribute();
+			List<WeightItem<AdditionAttrItem>> remaindAttr = new LinkedList<WeightUtil.WeightItem<AdditionAttrItem>>();
+			remaindAttr.addAll(weightList);
+			
+			for (int i = 0; i < rollCount; i++) {
+				AdditionAttrItem current = WeightUtil.random(remaindAttr);
+				// 0 代表NULL
+				if (current.getType() != 0) {
+					attr.add(current.getType(), current.getValue());
+					for (WeightItem<AdditionAttrItem> item : remaindAttr) {
+						if (item.getValue().getType() == current.getType()) {
+							remaindAttr.remove(item);
+							break;
+						}
+					}
+				}
+			}
+			return attr;
+		}
+		
 		public List<EquipLevelItem> getLevelList() {
 			return levelList;
 		}
-
-		public void setLevelList(List<EquipLevelItem> levelList) {
-			this.levelList = levelList;
-		}
-
-		public List<WeightItem<AdditionAttrItem>> getWeightList() {
-			return weightList;
-		}
-
-		public void setWeightList(List<WeightItem<AdditionAttrItem>> weightList) {
-			this.weightList = weightList;
-		}
 	}
 	
-	private static class AdditionAttrItem{
+	private  class AdditionAttrItem{
 		/**
 		 * 附加属性类型
 		 */
-		int type;
+		private int type;
 		/**
 		 * 附加属性值
 		 */
-		float value;
+		private float value;
 		
 		public AdditionAttrItem() {
 			this.type = 0;
@@ -92,7 +120,7 @@ public class EquipAttr extends HawkConfigBase{
 		}
 	}
 	
-	private static class EquipLevelItem{
+	private class EquipLevelItem{
 		/**
 		 * 基础属性索引
 		 */
@@ -130,10 +158,16 @@ public class EquipAttr extends HawkConfigBase{
 			return true;
 		}
 
+		/**
+		 * 获取基础属性
+		 */
 		public BaseAttrCfg getBaseAttr() {
 			return HawkConfigManager.getInstance().getConfigByKey(BaseAttrCfg.class, this.baseAttrId);
 		}
 
+		/**
+		 * 获取消耗列表
+		 */
 		public List<ItemInfo> getDemandList() {
 			return demandList;
 		}
@@ -178,18 +212,77 @@ public class EquipAttr extends HawkConfigBase{
 		demand = null;
 	}
 	
+	/**
+	 * 随机附加属性
+	 */
+	public static Attribute getAdditionAttr(int equip, int stage){
+		if (stage <= 1) {
+			return null;
+		}
+		
+		Map<Integer, EquipStageItem> equipStage = equipList.get(equip);
+		if(equipStage == null)
+		{
+			HawkLog.errPrintln("invalid equip id:" + equip);
+			return null;
+		}
+		
+		EquipStageItem stageItem = equipStage.get(stage);
+		if(stageItem == null)
+		{
+			HawkLog.errPrintln("invalid stage id: " + stage);
+			return null;
+		}
+		
+		return stageItem.rondomAddiAttr();
+	}
+	
+	/**
+	 * 获取消耗列表
+	 */
+	public static List<ItemInfo> getDemandList(int equip, int stage, int level){
+		List<EquipLevelItem> levelList = equipList.get(equip).get(stage).getLevelList();
+		if (level >= levelList.size()) {
+			return null;
+		}
+		return levelList.get(level).getDemandList();
+	}
+
+	/**
+	 * 获取基础属性列表
+	 */
+	public static BaseAttrCfg getBaseAttrCfg(int equip, int stage, int level){		
+		List<EquipLevelItem> levelList = equipList.get(equip).get(stage).getLevelList();
+		if (level >= levelList.size()) {
+			return null;
+		}
+		return levelList.get(level).getBaseAttr();
+	}
+	
+	/**
+	 * 获取品级列表
+	 */
 	public static Map<Integer, EquipStageItem> getStageList() {
 		return stageList;
 	}
 
+	/**
+	 * 设置品级列表
+	 */
 	public static void setStageList(Map<Integer, EquipStageItem> stageList) {
 		EquipAttr.stageList = stageList;
 	}
 
+	/**
+	 * 获取装备列表
+	 */
 	public static Map<Integer, Map<Integer, EquipStageItem>> getEquipList() {
 		return equipList;
 	}
 
+	/**
+	 * 设置装备列表
+	 */
 	public static void setEquipList(Map<Integer, Map<Integer, EquipStageItem>> equipList) {
 		EquipAttr.equipList = equipList;
 	}
@@ -218,7 +311,7 @@ public class EquipAttr extends HawkConfigBase{
 			
 			// 新建一个品级map
 			currentStage = new EquipStageItem();
-			if (currentStage.init(this.additionAttr) == false) 
+			if (currentStage.init(this.additionAttr, this.rollCount) == false) 
 			{
 				return false;		
 			}

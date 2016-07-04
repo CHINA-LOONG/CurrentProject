@@ -65,12 +65,18 @@
     <Compile Include="Protocol.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocol\Attribute.cs" />
     <Compile Include="Protocol\Chat.cs" />
     <Compile Include="Protocol\Const.cs" />
+    <Compile Include="Protocol\Consume.cs" />
+    <Compile Include="Protocol\Equip.cs" />
     <Compile Include="Protocol\HS.cs" />
+    <Compile Include="Protocol\Instance.cs" />
+    <Compile Include="Protocol\Item.cs" />
     <Compile Include="Protocol\Login.cs" />
     <Compile Include="Protocol\Monster.cs" />
     <Compile Include="Protocol\Player.cs" />
+    <Compile Include="Protocol\Reward.cs" />
     <Compile Include="Protocol\Role.cs" />
     <Compile Include="Protocol\Skill.cs" />
     <Compile Include="Protocol\Status.cs" />
@@ -96,6 +102,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

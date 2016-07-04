@@ -31,3 +31,12 @@ message HSEquipInfoSync
 {
 	repeated EquipInfo equipInfos = 1;
 }
+
+// 装备购买道具
+message HSEquipBuy
+{
+	required int32 equipId = 1;	
+	required int32 equipCount = 2;
+	required int32 stage = 3;
+	optional int32 level = 4;
+}

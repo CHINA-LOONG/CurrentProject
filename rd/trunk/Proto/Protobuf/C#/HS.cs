@@ -49,6 +49,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_INFO_SYNC_S", Value=1005)]
       PLAYER_INFO_SYNC_S = 1005,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_INFO_SYNC_S", Value=1006)]
+      ITEM_INFO_SYNC_S = 1006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INFO_SYNC_S", Value=1007)]
+      EQUIP_INFO_SYNC_S = 1007,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1010)]
       ASSEMBLE_FINISH_S = 1010,
             
@@ -57,6 +63,12 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CREATE_S", Value=1102)]
       PLAYER_CREATE_S = 1102,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CONSUME_S", Value=1103)]
+      PLAYER_CONSUME_S = 1103,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_REWARD_S", Value=1104)]
+      PLAYER_REWARD_S = 1104,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_INFO_SYNC_S", Value=2000)]
       MONSTER_INFO_SYNC_S = 2000,
@@ -77,7 +89,25 @@ namespace PB
       MONSTER_FEED_C = 2005,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_S", Value=2006)]
-      MONSTER_FEED_S = 2006
+      MONSTER_FEED_S = 2006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_C", Value=3000)]
+      INSTANCE_ENTER_C = 3000,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_S", Value=3001)]
+      INSTANCE_ENTER_S = 3001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SETTLE_C", Value=3002)]
+      INSTANCE_SETTLE_C = 3002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SETTLE_S", Value=3003)]
+      INSTANCE_SETTLE_S = 3003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
+      ITEM_USE_C = 4001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_C", Value=4002)]
+      ITEM_SELL_C = 4002
     }
   
 }

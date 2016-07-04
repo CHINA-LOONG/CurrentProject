@@ -7,10 +7,44 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: Monster.proto
-// Note: requires additional types generated from: Skill.proto
+// Generated from: Protocol/Monster.proto
+// Note: requires additional types generated from: Protocol/Const.proto
+// Note: requires additional types generated from: Protocol/Skill.proto
 namespace PB
 {
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SynMonsterAttr")]
+  public partial class SynMonsterAttr : global::ProtoBuf.IExtensible
+  {
+    public SynMonsterAttr() {}
+    
+    private int _monsterId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"monsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int monsterId
+    {
+      get { return _monsterId; }
+      set { _monsterId = value; }
+    }
+    private int _level = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
+    }
+    private int _exp = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"exp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int exp
+    {
+      get { return _exp; }
+      set { _exp = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonster")]
   public partial class HSMonster : global::ProtoBuf.IExtensible
   {
@@ -23,19 +57,19 @@ namespace PB
       get { return _monsterId; }
       set { _monsterId = value; }
     }
-    private int _cfgId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"cfgId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int cfgId
+    private string _cfgId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"cfgId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string cfgId
     {
       get { return _cfgId; }
       set { _cfgId = value; }
     }
-    private int _grade;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"grade", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int grade
+    private int _stage;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"stage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int stage
     {
-      get { return _grade; }
-      set { _grade = value; }
+      get { return _stage; }
+      set { _stage = value; }
     }
     private int _level;
     [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -51,25 +85,42 @@ namespace PB
       get { return _exp; }
       set { _exp = value; }
     }
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private int _lazy;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"lazy", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int lazy
     {
-      get { return _equipId; }
-      set { _equipId = value; }
+      get { return _lazy; }
+      set { _lazy = value; }
     }
-    private int _disposition;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"disposition", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int disposition
+    private int _ai;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"ai", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int ai
     {
-      get { return _disposition; }
-      set { _disposition = value; }
+      get { return _ai; }
+      set { _ai = value; }
     }
-    private readonly global::System.Collections.Generic.List<HSSkill> _skillList = new global::System.Collections.Generic.List<HSSkill>();
-    [global::ProtoBuf.ProtoMember(8, Name=@"skillList", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<HSSkill> skillList
+    private readonly global::System.Collections.Generic.List<HSSkill> _skill = new global::System.Collections.Generic.List<HSSkill>();
+    [global::ProtoBuf.ProtoMember(8, Name=@"skill", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HSSkill> skill
     {
-      get { return _skillList; }
+      get { return _skill; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterInfoSync")]
+  public partial class HSMonsterInfoSync : global::ProtoBuf.IExtensible
+  {
+    public HSMonsterInfoSync() {}
+    
+    private readonly global::System.Collections.Generic.List<HSMonster> _monsterInfo = new global::System.Collections.Generic.List<HSMonster>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"monsterInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HSMonster> monsterInfo
+    {
+      get { return _monsterInfo; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;
@@ -89,14 +140,70 @@ namespace PB
       get { return _monster; }
       set { _monster = value; }
     }
-    private int _reason = default(int);
+    private RewardReason _reason = RewardReason.SYS_PRESENT;
     [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"reason", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int reason
+    [global::System.ComponentModel.DefaultValue(RewardReason.SYS_PRESENT)]
+    public RewardReason reason
     {
       get { return _reason; }
       set { _reason = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterCatch")]
+  public partial class HSMonsterCatch : global::ProtoBuf.IExtensible
+  {
+    public HSMonsterCatch() {}
+    
+    private string _cfgId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"cfgId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string cfgId
+    {
+      get { return _cfgId; }
+      set { _cfgId = value; }
+    }
+    private int _stage = (int)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"stage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int stage
+    {
+      get { return _stage; }
+      set { _stage = value; }
+    }
+    private int _level = (int)1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)1)]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
+    }
+    private int _lazy = (int)1;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"lazy", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)1)]
+    public int lazy
+    {
+      get { return _lazy; }
+      set { _lazy = value; }
+    }
+    private int _ai = (int)1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ai", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)1)]
+    public int ai
+    {
+      get { return _ai; }
+      set { _ai = value; }
+    }
+    private readonly global::System.Collections.Generic.List<HSSkill> _skill = new global::System.Collections.Generic.List<HSSkill>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"skill", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HSSkill> skill
+    {
+      get { return _skill; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

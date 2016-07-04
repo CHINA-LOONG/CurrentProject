@@ -16,6 +16,7 @@ import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.protocol.Equip.EquipInfo;
 import com.hawk.game.protocol.Equip.HSEquipInfoSync;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
@@ -35,6 +36,10 @@ public class PlayerData {
 	/**
 	 * 玩家对象
 	 */
+	private String puid = null;
+	/**
+	 * 玩家对象
+	 */
 	private Player player = null;
 	
 	/**
@@ -43,9 +48,15 @@ public class PlayerData {
 	private PlayerEntity playerEntity = null;
 
 	/**
+	 * 玩家统计数据
+	 */
+	private StatisticsEntity statisticsEntity = null;
+
+	/**
 	 * 怪的基础数据
 	 */
 	private Map<Integer, MonsterEntity> monsterEntityList = new HashMap<Integer, MonsterEntity>();
+
 
 	/**
 	 * 物品列表
@@ -56,7 +67,7 @@ public class PlayerData {
 	 * 装备列表
 	 */
 	private List<EquipEntity> equipEntities = null;
-	
+
 	/**
 	 * 构造函数
 	 * 
@@ -66,6 +77,24 @@ public class PlayerData {
 		this.player = player;
 	}
 
+	/**
+	 * 设置玩家puid
+	 * 
+	 * @return
+	 */
+	public void setPuid(String puid) {
+		this.puid = puid;
+	}
+
+	/**
+	 * 获取玩家puid
+	 * 
+	 * @return
+	 */
+	public String getPuid() {
+		return this.puid;
+	}
+	
 	/**
 	 * 获取数据对应玩家对象
 	 * 
@@ -95,7 +124,7 @@ public class PlayerData {
 	public PlayerEntity getPlayerEntity() {
 		return playerEntity;
 	}
-	
+
 	/**
 	 * 设置玩家数据实体
 	 * 
@@ -113,12 +142,11 @@ public class PlayerData {
 	public Map<Integer, MonsterEntity> getMonsterEntityList() {
 		 return monsterEntityList;
 	}
-	
 
 	/**
 	 * 设置玩家当前角色的怪物数据实体
 	 * 
-	 * @param playerEntity
+	 * @param
 	 */
 	public void setMonsterEntity(MonsterEntity monsterEntity) {
 		monsterEntityList.put(monsterEntity.getId(), monsterEntity);
@@ -127,7 +155,7 @@ public class PlayerData {
 	public MonsterEntity getMonsterEntity(int monsterId){
 		return monsterEntityList.get(monsterId);
 	}
-	
+
 	/**
 	 * 清空当前角色的怪物数据实体
 	 * 
@@ -135,6 +163,10 @@ public class PlayerData {
 	 */
 	public void clearMonsterEntity() {
 		this.monsterEntityList.clear();
+	}
+
+	public StatisticsEntity getStatisticsEntity() {
+		return statisticsEntity;
 	}
 
 	/**********************************************************************************************************
@@ -145,7 +177,11 @@ public class PlayerData {
 	 * 
 	 * @return
 	 */
-	public PlayerEntity loadPlayer(String puid) {
+	public PlayerEntity loadPlayer() {	
+		if (this.puid == null) {
+			return null;
+		}
+		
 		if (playerEntity == null) {
 			List<PlayerEntity> playerEntitys = HawkDBManager.getInstance().query("from PlayerEntity where puid = ? and invalid = 0", puid);
 			if (playerEntitys != null && playerEntitys.size() > 0) {
@@ -160,22 +196,49 @@ public class PlayerData {
 		}
 		return playerEntity;
 	}
-	
+
+	/**
+	 * 加载玩家统计信息
+	 */
+	public StatisticsEntity loadStatistics() {
+		if (statisticsEntity == null) {
+			List<StatisticsEntity> statisticsEntitys = HawkDBManager.getInstance().query("from StatisticsEntity where playerId = ? and invalid = 0", getId());
+			if (statisticsEntitys != null && statisticsEntitys.size() > 0) {
+				statisticsEntity = statisticsEntitys.get(0);
+
+				statisticsEntity.assemble();
+
+//				// 新号上报数据
+//				if (statisticsEntity.getPlatformData() != null && statisticsEntity.getPlatformData().indexOf("65535") > 0) {
+//					GsApp.getInstance().reportCmActivePlayer(player);
+//				}
+			} else {
+				statisticsEntity = new StatisticsEntity(getId());
+				statisticsEntity.notifyCreate();
+
+//				// 新号上报数据
+//				GsApp.getInstance().reportCmActivePlayer(player);
+			}
+		}
+		return statisticsEntity;
+	}
+
 	/**
 	 * 加载怪物信息
 	 * 
 	 * @return
 	 */
-	public void loadAllMonster() {	
+	public void loadAllMonster() {
 		monsterEntityList.clear();
 		List<MonsterEntity> monsterEntitys = HawkDBManager.getInstance().query("from MonsterEntity where playerId = ? and invalid = 0", getId());
 		if (monsterEntityList != null && monsterEntityList.size() > 0) {
 			for (MonsterEntity monsterEntity : monsterEntitys) {
+				monsterEntity.assemble();
 				monsterEntityList.put(monsterEntity.getId(), monsterEntity);
 			}
 		}
 	}
-	
+
 	/**
 	 * 加载物品信息
 	 * 
@@ -199,11 +262,11 @@ public class PlayerData {
 		}
 		return equipEntities;
 	}
-	
+
 	/**********************************************************************************************************
 	 * 数据同步区
 	 **********************************************************************************************************/
-	
+
 	/**
 	 * 同步玩家信息
 	 */
@@ -214,11 +277,18 @@ public class PlayerData {
 	}
 
 	/**
+	 * 同步玩家统计信息
+	 */
+	public void syncStatisticsInfo() {
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_INFO_SYNC_S, BuilderUtil.genStatisticsBuilder(statisticsEntity)));
+	}
+
+	/**
 	 * 同步怪物信息(0表示同步所有)
 	 */
-	public void syncMonsterInfo(int id) {		
+	public void syncMonsterInfo(int id) {
 		HSMonsterInfoSync.Builder builder = HSMonsterInfoSync.newBuilder();
-		
+
 		if (id == 0) {
 			for (Entry<Integer, MonsterEntity> entry : monsterEntityList.entrySet()) {
 				builder.addMonsterInfo(BuilderUtil.genMonsterBuilder(entry.getValue()));
@@ -234,7 +304,8 @@ public class PlayerData {
 			player.sendProtocol(protocol);
 		}
 	}
-	
+
+
 	/**
 	 * 同步物品信息
 	 */
@@ -268,7 +339,7 @@ public class PlayerData {
 		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.ITEM_INFO_SYNC_S, builder);
 		player.sendProtocol(protocol);
 	}
-	
+
 	/**
 	 * 同步装备信息
 	 */
@@ -279,7 +350,7 @@ public class PlayerData {
 				builder.addEquipInfos(BuilderUtil.genEquipBuilder(equipEntity));
 			}
 		}
-		
+
 		if (builder.getEquipInfosCount() > 0) {
 			player.sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INFO_SYNC_S, builder));
 		}
@@ -315,7 +386,7 @@ public class PlayerData {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 增加物品实体
 	 * 
@@ -349,7 +420,7 @@ public class PlayerData {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 增加装备实体
 	 * 

@@ -151,7 +151,7 @@ public class PlayerMonsterModule extends PlayerModule {
 	// 内部函数--------------------------------------------------------------------------------------
 
 	private boolean addMonster(RewardReason reason, MonsterEntity monsterEntity) {
-		if (false == HawkDBManager.getInstance().create(monsterEntity)) {
+		if (false == monsterEntity.notifyCreate()) {
 			logger.error("database error, create monster entity fail");
 			return false;
 		}

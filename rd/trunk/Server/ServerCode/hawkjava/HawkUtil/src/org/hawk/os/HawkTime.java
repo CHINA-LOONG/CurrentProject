@@ -73,7 +73,7 @@ public class HawkTime {
 	public static int getYearDay() {
 		return getCalendar().get(Calendar.DAY_OF_YEAR);
 	}
-	
+
 	/**
 	 * 获取一年中的周
 	 * 
@@ -82,7 +82,7 @@ public class HawkTime {
 	public static int getYearWeek() {
 		return getCalendar().get(Calendar.WEEK_OF_YEAR);
 	}
-	
+
 	/**
 	 * 获取系统当前时间
 	 * 
@@ -198,7 +198,7 @@ public class HawkTime {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(calendar.getTime());
 	}
-	
+
 	/**
 	 * 字符串转换为日历格式
 	 * 
@@ -212,7 +212,7 @@ public class HawkTime {
 		} else { 
 			sdf = new SimpleDateFormat("yyyy-MM-dd");
 		}
-		
+
 		try {
 			sdf.parse(info);
 		} catch (ParseException e) {
@@ -220,7 +220,7 @@ public class HawkTime {
 		}
 		return sdf.getCalendar();
 	}
-	
+
 	/**
 	 * 获取两个日期之间的天数差
 	 * 
@@ -231,7 +231,7 @@ public class HawkTime {
 	public static int calendarDiff(Calendar cal1, Calendar cal2) {
 		return (cal1.get(Calendar.YEAR) - cal2.get(Calendar.YEAR)) * 365 - cal2.get(Calendar.DAY_OF_YEAR) + cal1.get(Calendar.DAY_OF_YEAR);
 	}
-	
+
 	/**
 	 * @return 获取第二天零点
 	 */
@@ -281,7 +281,7 @@ public class HawkTime {
 		Calendar calendar = getCalendar();
 		return getFirstDayOfWeek(calendar);
 	}
-	
+
 	/**
 	 * 获得当前这一周的第一天，中国是周一
 	 * 
@@ -301,8 +301,8 @@ public class HawkTime {
 		}
 		return calendar;
 	}
-	
-	
+
+
 	/**
 	 * 获得指定某个日期那一周的第一天，中国是周一
 	 * 
@@ -313,7 +313,7 @@ public class HawkTime {
 		calendar.setTime(date);
 		return getFirstDayOfWeek(calendar);
 	}
-	
+
 	/**
 	 * 获得指定某个日期那一周的第一天，中国是周一
 	 * 
@@ -332,4 +332,24 @@ public class HawkTime {
 		}
 		return calendar.getTime();
 	}
+
+	public static int dayOfWeekGregorianToChina(int dayOfWeek) {
+		if (dayOfWeek == 1) {
+			return 7;
+		} else if (dayOfWeek >= 2 && dayOfWeek <= 7) {
+			return dayOfWeek - 1;
+		} 
+		return 0;
+	}
+
+	public static int dayOfWeekChinaToGregorian(int dayOfWeek) {
+		if (dayOfWeek == 7) {
+			return 1;
+		} else if (dayOfWeek >= 1 && dayOfWeek <= 6) {
+			return dayOfWeek + 1;
+		}
+		return 0;
+	}
+
+
 }

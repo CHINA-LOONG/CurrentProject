@@ -1,6 +1,6 @@
-#TEXT,TEXT,NUM,NUM,NUM,NUM,NUM,FLOAT
+ï»¿#TEXT,TEXT,NUM,NUM,NUM,NUM,NUM,FLOAT
 id,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,category,levelAdjust
-#id,rootEffectID,²Ù×÷´ÎÊı,Òıµ¼Ê±¼ä,energyCost,energyGenerate,category,levelAdjust
+#id,rootEffectID,æ“ä½œæ¬¡æ•°,å¼•å¯¼æ—¶é—´,energyCost,energyGenerate,category,levelAdjust
 s1,e1,0,0,0,10,0,0
 s2,e2,0,0,0,10,0,0
 s3,e2,3,5,100,0,0,0

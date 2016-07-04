@@ -11,13 +11,50 @@ public class UIBuild : UIBase
     public Button m_BossBattleButton;
     public Button m_RareBattleButton;
 
+	public Text levelText;
+	public Text coinText;
+	public Text nameText;
+
     // Use this for initialization
     void Start()
     {
         EventTriggerListener.Get(m_NormalBattleButton.gameObject).onClick = NormalBattleButtonClick;
         EventTriggerListener.Get(m_BossBattleButton.gameObject).onClick = BossBattleButtonClick;
         EventTriggerListener.Get(m_RareBattleButton.gameObject).onClick = RareBattleButtonClick;
+
+		levelText.text = GameDataMgr.Instance.PlayerDataAttr.level.ToString ();
+		coinText.text = GameDataMgr.Instance.PlayerDataAttr.coin.ToString ();
+		nameText.text = GameDataMgr.Instance.PlayerDataAttr.nickName;
+		BindListener ();
     }
+
+	void OnDestroy()
+	{
+		UnBindListener ();
+	}
+
+	void BindListener()
+	{
+		GameEventMgr.Instance.AddListener<int> (GameEventList.LevelChanged, OnLevelChanged);
+		GameEventMgr.Instance.AddListener<int> (GameEventList.CoinChanged, OnCoinChanged);
+	}
+
+	void UnBindListener()
+	{
+		GameEventMgr.Instance.RemoveListener<int> (GameEventList.LevelChanged, OnLevelChanged);
+		GameEventMgr.Instance.RemoveListener<int> (GameEventList.CoinChanged, OnCoinChanged);
+	}
+
+	void OnLevelChanged(int level)
+	{
+		levelText.text = level.ToString ();
+		nameText.text = GameDataMgr.Instance.PlayerDataAttr.nickName;
+	}
+
+	void OnCoinChanged(int coin)
+	{
+		coinText.text = coin.ToString ();
+	}
 
     void NormalBattleButtonClick(GameObject go)
     {
