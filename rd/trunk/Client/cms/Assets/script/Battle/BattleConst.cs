@@ -23,9 +23,13 @@ public class BattleConst
     public const float speedFactorMax = 1.02f;
 
     //能量积攒上限
-    public const int enegyMax = 30;
+    public const int enegyMax = 100;
 
     public const int processContinueRet = -1;
 
+    //大招默认施法时长
     public const float dazhaoDefaultTime = 5;
+
+    //无条件关闭换宠UI
+    public const int closeSwitchPetUI = -1;
 }

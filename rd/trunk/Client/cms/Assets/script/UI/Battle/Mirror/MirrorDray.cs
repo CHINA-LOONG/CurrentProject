@@ -2,6 +2,7 @@
 using UnityEngine.UI;  
 using UnityEngine.EventSystems;  
 using System.Collections;
+using System.Collections.Generic;
 
 public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPointerClickHandler
 {
@@ -10,10 +11,13 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 	float 	m_MaxPosX = 0f;
 	float 	m_MinPosY = 0f;
 	float	m_MaxposY = 0f;
-	
-	MirrorTarget m_curFindTarget;
+
+	Dictionary<MirrorTarget, float> lastFindWeakpoint = new Dictionary<MirrorTarget, float> ();
 
 	MirrorRaycast m_MirrorRaycast;
+	List<MirrorTarget> newFindTargetList =new List<MirrorTarget>();
+	List<MirrorTarget> finishFindTargett = new List<MirrorTarget>();
+	List<MirrorTarget> outFindTarget = new List<MirrorTarget> ();
 
 	bool isDragging = false;
 
@@ -53,6 +57,9 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 	{  
 		isDragging = true;
 		transform.position = GetNewPosition (Input.mousePosition);
+		//RectTransform rt = transform as RectTransform;
+		//rt.anchoredPosition = GetNewPosition (Input.mousePosition);
+		//rt.position = GetNewPosition (Input.mousePosition);
 	}  
 	//点击
 	public void OnPointerClick (PointerEventData eventData)
@@ -67,10 +74,10 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 	{
 		Vector3 newPos = new Vector3 (mousePosition.x, mousePosition.y, mousePosition.z);
 		if (newPos.x < m_MinPosX) {
-		//	newPos.x = m_MinPosX;
+			//newPos.x = m_MinPosX;
 		}
 		if (newPos.x > m_MaxPosX) {
-		//	newPos.x = m_MaxPosX;
+			//newPos.x = m_MaxPosX;
 		}
 		if (newPos.y < m_MinPosY) {
 			//newPos.y = m_MinPosY;
@@ -95,62 +102,82 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 
 	void StartRayCast()
 	{
-		m_curFindTarget = null;
+		lastFindWeakpoint.Clear ();
+
+
 		StartCoroutine (weakPointRayCastCo());
 	}
 
 	void StopRayCast()
 	{
 		StopCoroutine(weakPointRayCastCo());
-		if (null != m_curFindTarget) 
+
+		List<MirrorTarget> listTarget = new List<MirrorTarget> (lastFindWeakpoint.Keys);
+		if (null !=listTarget && listTarget.Count > 0) 
 		{
-			GameEventMgr.Instance.FireEvent<MirrorTarget>(GameEventList.MirrorOutWeakPoint,m_curFindTarget);
+			GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.MirrorOutWeakPoint,listTarget);
 		}
 	}
 
 	IEnumerator weakPointRayCastCo()
 	{
-		MirrorTarget findTarget = null;
+		List<MirrorTarget> listFindTarget = null;
 		float findTimeCount = 0f;
 		while (true)
 		{
-			findTarget = m_MirrorRaycast.WeakpointRayCast (transform.position);
-			if(findTarget)
+			newFindTargetList.Clear();
+			outFindTarget.Clear();
+			finishFindTargett.Clear();
+
+			listFindTarget = m_MirrorRaycast.WeakpointRayCast (new Vector2(transform.position.x + GameConfig.Instance.MirrorCenterOffset.x, transform.position.y + GameConfig.Instance.MirrorCenterOffset.y));
+			if(listFindTarget.Count > 0)
 			{
-				if(null == m_curFindTarget)
+				MirrorTarget subTarget = null;
+				for(int i =0 ; i< listFindTarget.Count; ++i)
 				{
-					m_curFindTarget = findTarget;
-					GameEventMgr.Instance.FireEvent<MirrorTarget,MirrorTarget>(GameEventList.FindWeakPoint,m_curFindTarget,null);
-					findTimeCount = 0f;
-				}
-				else
-				{
-					if(findTarget == m_curFindTarget)
+					subTarget = listFindTarget[i];
+					if(lastFindWeakpoint.ContainsKey(subTarget))
 					{
-						findTimeCount += Time.deltaTime;
-						//Debug.LogError("findTimeCount = " + findTimeCount + " needtime = " + GameConfig.Instance.FindWeakPointFinishedNeedTime );
+						lastFindWeakpoint[subTarget] += Time.deltaTime;
 						if(findTimeCount > GameConfig.Instance.FindWeakPointFinishedNeedTime)
 						{
-							GameEventMgr.Instance.FireEvent<MirrorTarget>(GameEventList.FindFinishedWeakPoint,m_curFindTarget);
+							finishFindTargett.Add(subTarget);
 						}
 					}
 					else
 					{
-						GameEventMgr.Instance.FireEvent<MirrorTarget,MirrorTarget>(GameEventList.FindWeakPoint,findTarget,m_curFindTarget);
-						findTimeCount = 0f;
-						m_curFindTarget = findTarget;
-					}
+						lastFindWeakpoint.Add(subTarget,0.0f);
+						newFindTargetList.Add(subTarget);
 
+					}
 				}
 			}
-			else
+			if(newFindTargetList.Count > 0)
 			{
-				if(null != m_curFindTarget)
+				GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.FindWeakPoint,newFindTargetList);
+			}
+			if(finishFindTargett.Count > 0)
+			{
+				GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.FindFinishedWeakPoint,finishFindTargett);
+			}
+
+			List<MirrorTarget> lastFindKeys =  new List<MirrorTarget>( lastFindWeakpoint.Keys);
+			if(null!=lastFindKeys && lastFindKeys.Count > 0)
+			{
+				for(int i =0 ;i < lastFindKeys.Count;++i)
 				{
-					GameEventMgr.Instance.FireEvent<MirrorTarget>(GameEventList.MirrorOutWeakPoint,m_curFindTarget);
-					m_curFindTarget = null;
+					if(!listFindTarget.Contains(lastFindKeys[i]))
+					{
+						outFindTarget.Add(lastFindKeys[i]);
+						lastFindWeakpoint.Remove(lastFindKeys[i]);
+					}
 				}
 			}
+			if(outFindTarget.Count> 0)
+			{
+				GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.MirrorOutWeakPoint,outFindTarget);
+			}
+
 			//Debug.LogError("finding....."+ transform.position.x);
 			yield return new WaitForSeconds(0.05f);
 		}

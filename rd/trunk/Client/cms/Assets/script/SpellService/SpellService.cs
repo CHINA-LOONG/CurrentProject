@@ -7,6 +7,7 @@ public class SpellService : MonoBehaviour
 {
     //---------------------------------------------------------------------------------------------
     static SpellService mInst = null;
+    private Dictionary<int, EventArgs> deadList;
     public static SpellService Instance
     {
         get
@@ -26,58 +27,50 @@ public class SpellService : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void Init()
     {
-        //playerList = new List<GameUnit>();
-        //enemyList = new List<GameUnit>();
+        deadList = new Dictionary<int, EventArgs>();
+    }
+    //---------------------------------------------------------------------------------------------
+    public void AddDeadData(SpellUnitDeadArgs args)
+    {
+        if (deadList.ContainsKey(args.deathID))
+            return;
 
-        //PbUnit pu1 = new PbUnit();
-        //pu1.id = "soul";
-        //pu1.slot = 0;
-        //pu1.guid = 0;
-        //pu1.camp = UnitCamp.Player;
-        //pu1.personality = 0;
-        //pu1.level = 15;
-        //pu1.curExp = 0;
-        //pu1.starLevel = 0;
-        //GameUnit unit1 = GameUnit.FromPb(pu1);
-        //playerList.Add(unit1);
-
-        //PbUnit pu2 = new PbUnit();
-        //pu2.id = "soul";
-        //pu2.slot = 1;
-        //pu2.guid = 1;
-        //pu2.camp = UnitCamp.Enemy;
-        //pu2.personality = 1;
-        //pu2.level = 15;
-        //pu2.curExp = 0;
-        //pu2.starLevel = 0;
-        //GameUnit unit2 = GameUnit.FromPb(pu2);
-        //enemyList.Add(unit2);
-
-        //SpellRequest("s1", playerList[0], enemyList[0], 0);
+        deadList.Add(args.deathID, args);
     }
     //---------------------------------------------------------------------------------------------
     public void Update()
     {
-        if (Input.GetKeyDown("f"))
+        foreach (KeyValuePair<int, EventArgs> args in deadList)
         {
-            //buffList["b1"].Update(0);
+            TriggerEvent(GameEventList.SpellUnitDead, args.Value);
         }
+
+        deadList.Clear();
     }
     //---------------------------------------------------------------------------------------------
     public void SpellRequest(string spellID, GameUnit caster, GameUnit target, float curTime)
     {
         Spell curSpell = caster.GetSpell(spellID);
-        curSpell.Init(this);
         if (curSpell != null)
         {
+            curSpell.Init(this);
             curSpell.casterID = caster.pbUnit.guid;
             curSpell.targetID = target.pbUnit.guid;
             curSpell.Apply(curTime);
         }
 
-        foreach (Buff bf in caster.buffList)
+        //buff list可能会在update里被修改，只会被增加，删除buff下面单独处理，避免遍历出错
+        for (int i = 0; i < caster.buffList.Count; ++i)
         {
-            bf.Update(curTime);
+            caster.buffList[i].Update(curTime);
+        }
+
+        for (int i = caster.buffList.Count - 1; i >= 0; --i)
+        {
+            if (caster.buffList[i].IsFinish)
+            {
+                caster.buffList.RemoveAt(i);
+            }
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -175,12 +168,13 @@ public class SpellService : MonoBehaviour
         {
             SpellVitalChangeArgs curArgs = args as SpellVitalChangeArgs;
             Logger.LogFormat(
-                "[SpellService]{0} makes {1} damage/heal(critical {2}) to {3}, current life {4}",
+                "[SpellService]{0} makes {1} damage/heal(critical {2}) to {3}, current life {4} wpID={5}",
                 curArgs.casterID,
                 curArgs.vitalChange,
                 curArgs.isCritical,
                 curArgs.targetID,
-                curArgs.vitalCurrent
+                curArgs.vitalCurrent,
+                curArgs.wpID
                 );
         }
         else if (eventType == GameEventList.SpellEnergyChange)

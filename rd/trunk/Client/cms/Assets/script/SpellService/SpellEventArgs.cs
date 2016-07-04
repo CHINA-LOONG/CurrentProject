@@ -24,7 +24,7 @@ public class SpellVitalChangeArgs : EventArgs
     public bool isCritical;
     public int vitalChange;
     public int vitalCurrent;
-    //public int vitalMax; //no maxlife change in design
+    public int vitalMax; 
 }
 //---------------------------------------------------------------------------------------------
 public class SpellUnitDeadArgs : EventArgs

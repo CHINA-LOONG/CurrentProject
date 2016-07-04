@@ -31,6 +31,205 @@ enum RewardReason
 	CATCH                  = 5;
 }
 
+enum ClassType
+{
+	// 角色
+	PLAYER = 1;
+	// 怪物
+	MONSTER = 2;
+}
+
+// 数据类型定义
+enum itemType
+{
+	// 玩家属性
+	PLAYER_ATTR = 1;	
+	// 角色
+	MONSTER_ATTR = 2;
+	// 物品
+	ITEM = 3;
+}
+
+// 购买价格类型
+enum buyMoneyType
+{
+	// 钻石
+	MONEY_GOLD = 1;
+	// 金币
+	MONEY_COIN = 2;	
+}
+
+// 玩家属性类型定义
+enum playerAttr
+{
+	// 钻石
+	GOLD = 1;
+	// 金币
+	COIN = 2;
+	// 等级
+	LEVEL = 3;
+	// 经验
+	EXP = 4;
+	// 疲劳值
+	FATIGUE = 5;
+	// vip等级
+	VIPLEVEL = 6;
+}
+
+// 变换的数值类型
+enum changeType 
+{
+	// 钻石
+	CHANGE_GOLD = 1;
+	// 金币
+	CHANGE_COIN = 2;
+	// 经验
+	CHANGE_EXP = 3;
+	// 等级
+	CHANGE_LEVEL = 4;
+	// 疲劳值
+	CHANGE_FATIGUE = 5;
+	// 血量
+	CHANGE_HP = 6;
+	// 好感度
+	CHANGE_FAV	= 7;
+	// 充值总额
+	CHANGE_RECHARGE = 8;
+	// vip等级
+	CHANGE_VIPLEVEL = 9;
+	// 角色
+	CHANGE_ROLE = 10;
+	// 道具    
+	CHANGE_TOOLS = 11;
+	// 装备
+	CHANGE_EQUIP = 12;
+	// 熔炼值
+	CHANGE_SMELT_VALUE = 13;
+	// 贡献值
+	CHANGE_CONTRIBUTION = 14;
+	// 荣誉值
+	CHANGE_HONOR_VALUE = 15;
+	// 声望值
+	CHANGE_REPUTATION_VALUE = 16;
+}
+
+// 附加属性类型定义
+enum attr
+{
+	// 空属性
+	EMPTYATTR = 0;
+	// 力量
+	STRENGHT = 1;
+	// 智力
+	INTELLIGENCE = 2;
+	//速度
+	SPEED = 3;
+	//防御力
+	DEFENSE = 4;
+	//体力
+    HEALTH = 5;
+	
+	//防御穿透
+	DEFENSEWEAKEN = 101;
+	//暴击率
+	CRITICAL = 102;
+	//暴击抗性
+	CRITICALWEAKEN = 103;
+	//生命回复
+	RECOVERY = 104;
+	//暴击伤害加成
+	CRITICALDAMAGE = 105;
+	//命中率
+	HITRATE = 106;
+	//治疗效果加成
+	CUREINCREASE = 107;
+	//伤害减免
+	DAMAGEREDUCE = 108;
+	//伤害加深
+	DAMAGEINCREASE = 109;
+}
+
+// 使用条件
+enum userCondition
+{
+	// 战斗
+	BATTLE = 1;
+	// 非战斗
+	NON_BATTLE = 2;
+}
+
+// 绑定类型
+enum bindType
+{
+	// 不绑定
+	NON_BIND = 0;
+	// 使用绑定
+	USE_BIND = 1;
+	// 拾取绑定
+	TAKE_BIND =2;
+}
+
+// 物品类型定义
+enum toolType
+{
+	// 普通类型
+	NORMAL = 1;
+	// 碎片
+	FRAGMENT = 2;
+	// 宝石
+	GEM = 3;
+	// 宝箱
+	BOX = 4;
+	// 消耗类
+	USE = 5;
+	// 兑换类
+	EXCHANGE = 6;
+	// 装备
+	EQUIP = 7;
+}
+
+// 装备部位定义
+enum equipPart
+{
+	// 头盔
+	HELMET = 1;
+	// 戒子
+	RING = 2;
+	// 腰带
+	BELT = 3;
+	// 胸甲
+	CUIRASS = 4;
+	// 主手武器
+	WEAPON1 = 5;
+	// 副手武器
+	WEAPON2 = 6;
+	// 护腿
+	LEGGUARD = 7;
+	// 鞋子
+	SHOES = 8;
+	// 手套
+	GLOVE = 9;
+	// 项链
+	NECKLACE = 10;
+}
+
+// 装备品质
+enum equipQuality
+{
+	// 白
+	WHITE = 1;
+	// 绿
+	GREEN = 2;
+	// 蓝
+	BLUE = 3;
+	// 紫
+	PURPLE = 4;
+	// 橙
+	ORANGE = 5;
+	// 红
+	RED = 6;
+}
+
 // 对局类型
 enum BattleType
 {

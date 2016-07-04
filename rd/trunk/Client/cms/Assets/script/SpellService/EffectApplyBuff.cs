@@ -51,6 +51,12 @@ public class EffectApplyBuff : Effect
         //1 check buff replace
 
         //2 check ally team
+        GameUnit caster = spellService.GetUnit(casterID);
+        GameUnit target = spellService.GetUnit(targetID);
+        if (caster.pbUnit.camp == target.pbUnit.camp)
+        {
+            return SpellConst.hitSuccess;
+        }
 
        return base.CalculateHit();
     }

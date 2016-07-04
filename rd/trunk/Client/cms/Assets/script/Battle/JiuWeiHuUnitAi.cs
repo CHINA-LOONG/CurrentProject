@@ -20,30 +20,65 @@ public class JiuWeiHuUnitAi : MonoBehaviour {
 		//spell todo
 		Dictionary<string,Spell> jiuWeihuSpellDic = GetUnitSpellList (jiuWeihuUnit);
 
-		Spell magicSpell = null;
-		if (jiuWeihuSpellDic.TryGetValue ("", out magicSpell))
-		{
+		Spell useSpell = null;
+		jiuWeihuSpellDic.TryGetValue ("attackTriStrong", out useSpell);
 
+		attackResult.attackTarget = GetAttackRandomTarget(jiuWeihuUnit);
+
+		List<string> wpList = null;
+		wpList = GetAliveWeakPointList (jiuWeihuUnit);
+		int count = 0;
+		for(int n = wpList.Count -1 ;n > 0;n--)
+		{
+			if (wpList[n] == "jiuweihu_wp2")
+				count++;
+			if (wpList[n] == "jiuweihu_wp4")
+				count++;
+			if (wpList[n] == "jiuweihu_wp5")
+				count++;
+			if (wpList[n] == "jiuweihu_wp9")
+				count++;
+		}
+
+		int i = 1;
+		if (GetAttackCount(jiuWeihuUnit) % 4 == 3 && GetUnitMinHp(jiuWeihuUnit) <= (GetUnitMaxHp(jiuWeihuUnit) * 0.75))
+		{
+			jiuWeihuSpellDic.TryGetValue ("buffMagic", out useSpell);
+			attackResult.attackTarget = jiuWeihuUnit;
 		} 
-		else 
+		else if(GetAttackCount(jiuWeihuUnit) % 4 == 0 && GetUnitMinHp(jiuWeihuUnit) <= (GetUnitMaxHp(jiuWeihuUnit) * 0.75)) 
 		{
-
+			jiuWeihuSpellDic.TryGetValue ("magicCureSlight", out useSpell);
+			attackResult.attackTarget = jiuWeihuUnit;
+		}
+		else if(GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 4) 
+		{
+			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu4", out useSpell);
+			attackResult.attackTarget = jiuWeihuUnit;
+		}
+		else if(GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 3) 
+		{
+			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu3", out useSpell);
+			attackResult.attackTarget = jiuWeihuUnit;
+		}
+		else if(GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 2) 
+		{
+			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu2", out useSpell);
+			attackResult.attackTarget = jiuWeihuUnit;
+		}
+		else if(GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 1) 
+		{
+			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu1", out useSpell);
+			attackResult.attackTarget = jiuWeihuUnit;
+		}
+		else if(GetUnitMinHp(jiuWeihuUnit) <= (GetUnitMaxHp(jiuWeihuUnit) * 0.3) && i == 1) 
+		{
+			jiuWeihuSpellDic.TryGetValue ("defend", out useSpell);
+			attackResult.attackTarget = jiuWeihuUnit;
+			i--;
 		}
 
-		foreach (KeyValuePair<string,Spell> subSpellDic in jiuWeihuSpellDic)
-		{
-			attackResult.useSpell = subSpellDic.Value;
-			break;
-		}
-		
-
-		//target todo
-		List<GameUnit> listUnit = GetCanAttackList (jiuWeihuUnit);
-
-		int randomIndex = Random.Range (0, listUnit.Count);
-
-		attackResult.attackTarget = listUnit [randomIndex];
-
+		attackResult.useSpell = useSpell;
 
 		return attackResult;
 	}
@@ -51,6 +86,15 @@ public class JiuWeiHuUnitAi : MonoBehaviour {
 	private List<GameUnit> GetCanAttackList(GameUnit jiuWeihuUnit)
 	{
 		return BattleUnitAi.Instance.GetOppositeSideFiledList(jiuWeihuUnit);
+	}
+
+	private GameUnit GetAttackRandomTarget(GameUnit jiuWeiHuUnit)
+	{
+		List<GameUnit> listTarge = GetCanAttackList (jiuWeiHuUnit);
+		
+		int index = Random.Range (0, listTarge.Count);
+		
+		return listTarge[index];
 	}
 
 	private int GetAttackCount(GameUnit jiuWeihuUnit)

@@ -20,6 +20,8 @@ public class EnemyUnitUI : MonoBehaviour
 
 	public void	UpdateShow(GameUnit battleUnit)
 	{
+        lifeBar.LifeTarget = battleUnit;
+
 		if (null == battleUnit || battleUnit.gameObject == null)
 		{
 			//gameObject.SetActive(false);
@@ -33,7 +35,11 @@ public class EnemyUnitUI : MonoBehaviour
 		transform.position = pos;
 
 		unitName.text = battleUnit.name;
-		lifeBar.value = battleUnit.curLife / (float)battleUnit.maxLife;
+        if (battleUnit.isBorn)
+        {
+		    lifeBar.value = battleUnit.curLife / (float)battleUnit.maxLife;
+            battleUnit.isBorn = false;
+        }
 		unitLevel.text = battleUnit.pbUnit.level.ToString ();
 	}
 }

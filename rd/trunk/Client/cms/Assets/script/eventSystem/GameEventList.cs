@@ -16,15 +16,15 @@ public class GameEventList
 
 	//Mirror in the Battle
 	public static string SetMirrorModeState = "SetMirrorModeState"; //param bool 
-	public static string FindWeakPoint = "FindWeakPoint";//param MirrorTarget ,MirrorTarget
-	public static string FindFinishedWeakPoint = "FindFinishedWeakPoint";//param MIrrorTarget
-	public static string MirrorOutWeakPoint = "MirrorOutWeakPoint";//param MIrrorTarget
+	public static string FindWeakPoint = "FindWeakPoint";//param List<MirrorTarget>
+	public static string FindFinishedWeakPoint = "FindFinishedWeakPoint";//param  List<MirrorTarget>
+	public static string MirrorOutWeakPoint = "MirrorOutWeakPoint";//param  List<MirrorTarget>
 	public static string MirrorClicked = "MirrorClicked";//param vector3
 
     //process
     public static string SwitchPet = "SwitchPet";//param <int,int>
 	public static string ShowSwitchPetUI = "ShowSwitchPetUI";//param  int
-	public static string HideSwitchPetUI = "HideSwitchPetUI";//no param
+    public static string HideSwitchPetUI = "HideSwitchPetUI";//param  int -1则无条件关闭换宠UI，其他则和当前被换宠物id相同才关闭
     public static string ChangeTarget = "ChangeTarget";
     public static string HitDazhaoBtn = "HitDazhaoBtn";
 

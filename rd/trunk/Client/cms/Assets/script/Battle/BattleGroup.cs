@@ -19,6 +19,11 @@ public class BattleGroup
         get { return new List<GameUnit>(playerField); }
     }
 
+    public List<GameUnit> PlayerIdleList
+    {
+        get { return GetPlayerOffsiteUnits(); }
+    }
+
 
     public void SetEnemyList(List<PbUnit> list)
     {

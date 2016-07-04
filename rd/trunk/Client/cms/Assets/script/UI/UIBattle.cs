@@ -54,7 +54,7 @@ public class UIBattle : UIBase
 		UpdateButton ();
     }
 
-    void OnDestory()
+    void OnDestroy()
     {
         UnBindListener();
     }
@@ -165,14 +165,13 @@ public class UIBattle : UIBase
         var args = sArgs as ShowSwitchPetUIArgs;
         m_PetPanel.Show(args);
 
-        GameEventMgr.Instance.AddListener(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
     }
 
-    void OnHideSwitchPetUI()
+    void OnHideSwitchPetUI(int targetId)
     {
-        m_PetPanel.Hide();
-
-        GameEventMgr.Instance.RemoveListener(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
+        if (m_PetPanel.Hide(targetId))
+            GameEventMgr.Instance.RemoveListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
     }
-#endregion    
+#endregion
 }

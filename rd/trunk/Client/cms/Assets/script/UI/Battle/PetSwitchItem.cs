@@ -10,6 +10,7 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     public Image lifeBar;
     public Image cdmask;
     public Text deadtext;
+    public Text nameText;
 
     int targetId;
     GameUnit unit;
@@ -27,10 +28,10 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     {
         if (BattleController.Instance.Process.SwitchPetCD == 0)
         {
-            if (unit.curLife > 0)
+            if (unit != null && unit.curLife > 0)
             {
                 GameEventMgr.Instance.FireEvent<int, int>(GameEventList.SwitchPet, targetId, unit.pbUnit.guid);
-                GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
+                GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
             }
         }
     }
@@ -40,6 +41,11 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         this.targetId = targetId;
         this.unit = unit;
 
+        InitItem();
+    }
+
+    void InitItem()
+    {
         var unitData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
         var headPath = unitData.uiAsset;
         var index = headPath.LastIndexOf('/');
@@ -48,6 +54,7 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         var image = ResourceMgr.Instance.LoadAssetType<Sprite>(assetbundle, assetname) as Sprite;
 
         head.sprite = image;
+        nameText.text = unit.name;
 
         if (unit.curLife > 0)
         {
@@ -58,6 +65,11 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         {
             cdmask.gameObject.SetActive(true);
             deadtext.gameObject.SetActive(true);
+
+            //死亡血条为空
+            var size = lifeBar.rectTransform.sizeDelta;
+            size.x = 0;
+            lifeBar.rectTransform.sizeDelta = size;
         }
 
         if (BattleController.Instance.Process.SwitchPetCD > 0)
@@ -66,22 +78,56 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    void Update()
+    public void ShowEmpty()
     {
-        if ( unit.curLife > 0)
-        {
-            if (BattleController.Instance.Process.SwitchPetCD > 0)
-            {
-                var size = cdmask.rectTransform.sizeDelta;
-                size.y = maskHeight * (BattleController.Instance.Process.SwitchPetCD / BattleConst.switchPetCD);
-                cdmask.rectTransform.sizeDelta = size;
-            }
+        nameText.text = "";
+        cdmask.gameObject.SetActive(true);
+        deadtext.gameObject.SetActive(true);
+        deadtext.text = "无怪物";
 
+        //血条为空
+        var size = lifeBar.rectTransform.sizeDelta;
+        size.x = 0;
+        lifeBar.rectTransform.sizeDelta = size;
+
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void UpdateData(GameUnit unit)
+    {
+        if (unit != null)
+        {
+            //unit发生了变化
+            if (this.unit!=unit)
             {
-                var size = lifeBar.rectTransform.sizeDelta;
-                size.x = lifeBarWidth * (unit.curLife / (float)unit.maxLife);
-                lifeBar.rectTransform.sizeDelta = size;
+                this.unit = unit;
+                InitItem();
             }
-        }        
+            else
+            {
+                if (unit.curLife > 0)
+                {
+                    if (BattleController.Instance.Process.SwitchPetCD > 0)
+                    {
+                        var size = cdmask.rectTransform.sizeDelta;
+                        size.y = maskHeight * (BattleController.Instance.Process.SwitchPetCD / BattleConst.switchPetCD);
+                        cdmask.rectTransform.sizeDelta = size;
+                    }
+
+                    {
+                        var size = lifeBar.rectTransform.sizeDelta;
+                        size.x = lifeBarWidth * (unit.curLife / (float)unit.maxLife);
+                        lifeBar.rectTransform.sizeDelta = size;
+                    }
+                }
+            }
+        }
+        else
+            Hide();
     }
 }

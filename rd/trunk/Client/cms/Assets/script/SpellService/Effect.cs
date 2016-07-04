@@ -97,6 +97,7 @@ public class Effect
             energyArgs.casterID = casterID;
             energyArgs.vitalChange = protoEffect.energy;
             energyArgs.vitalCurrent = 0;
+            energyArgs.vitalMax = 0;
             spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
 
         }
@@ -147,15 +148,10 @@ public class Effect
     {
         GameUnit caster = spellService.GetUnit(casterID);
         GameUnit target = spellService.GetUnit(targetID);
-        if (caster.pbUnit.camp == target.pbUnit.camp)
-        {
-            return SpellConst.hitSuccess;
-        }
-
+        //max(N+L(lv1-lv2))+总附加命中率,60%
         float hitRatio = SpellConst.hitRatio + caster.hitRatio + SpellFunctions.GetHitRatio(caster.pbUnit.level, target.pbUnit.level);
         hitRatio = hitRatio < SpellConst.minHitRatio ? SpellConst.minHitRatio : hitRatio;
-        System.Random ran = new System.Random();
-        int randKey = ran.Next(0, 1);
+        float randKey = UnityEngine.Random.Range(0.0f, 1.0f);
         if (randKey < hitRatio)
         {
             return SpellConst.hitSuccess;

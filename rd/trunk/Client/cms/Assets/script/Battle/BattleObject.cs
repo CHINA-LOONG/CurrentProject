@@ -108,10 +108,10 @@ public class BattleObject : MonoBehaviour
 
                     if (curEvent.particleParent != null && curEvent.particleParent.Length > 0)
                     {
-                        GameObject parentNode = GameObject.Find(curEvent.particleParent);
+                        Transform parentNode = transform.Find(curEvent.particleParent);
                         if (parentNode != null)
                         {
-                            curEvent.psObject.transform.parent = parentNode.transform;
+                            curEvent.psObject.transform.parent = parentNode;
                         }
                     }
                     curEvent.ps = curEvent.psObject.GetComponent<ParticleSystem>();
@@ -123,9 +123,10 @@ public class BattleObject : MonoBehaviour
                     if (curEvent.particleAni != null && curEvent.particleAni.Length > 0)
                     {
                         Animator animator = curEvent.psObject.GetComponentInChildren<Animator>();
-                        if (animator != null)
+                        int curStateHash = Animator.StringToHash(curEvent.particleAni);
+                        if (animator != null && animator.HasState(0, curStateHash))
                         {
-                            animator.Play(curEvent.particleAni);
+                            animator.Play(curStateHash);
                         }
                     }
                 }

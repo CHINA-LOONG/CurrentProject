@@ -38,12 +38,13 @@ public class BattleProcess : MonoBehaviour
 
     //如果没有集火目标，根据怪物各自AI进行战斗
     GameUnit fireFocusTarget = null;
+	string  fireAttackWpName = null;
 
     //换宠cd
     float lastSwitchTime = -BattleConst.switchPetCD;
     public float SwitchPetCD
     {
-        get { return Mathf.Clamp(BattleConst.switchPetCD - (Time.time - lastSwitchTime), 0, 10); }
+        get { return Mathf.Clamp(BattleConst.switchPetCD - (Time.time - lastSwitchTime), 0, BattleConst.switchPetCD); }
     }
 
     //当前行动
@@ -284,6 +285,7 @@ public class BattleProcess : MonoBehaviour
             unit.pbUnit.camp == UnitCamp.Player)
         {
             aiResult.attackTarget = fireFocusTarget;
+			aiResult.attackTarget.attackWpName = fireAttackWpName;
             Logger.LogWarning("reset attack target is fireFocusTarget " + fireFocusTarget.name + fireFocusTarget.pbUnit.guid + " weakpointName " + aiResult.attackTarget.attackWpName);
         }
 
@@ -319,6 +321,7 @@ public class BattleProcess : MonoBehaviour
         {
             Debug.LogError("Error for BattleUnitAI....");
         }
+		unit.attackCount ++;
 		if (aiResult.useSpell != null)
 		{
 			SpellService.Instance.SpellRequest(aiResult.useSpell.spellData.id, unit, aiResult.attackTarget, Time.time);
@@ -326,7 +329,7 @@ public class BattleProcess : MonoBehaviour
 		{
 			SpellService.Instance.SpellRequest("s1", unit, aiResult.attackTarget, Time.time);
 		}
-		unit.attackCount ++;
+
     }
 
     void RunSwitchPetAction(GameUnit exit, GameUnit enter)
@@ -371,10 +374,10 @@ public class BattleProcess : MonoBehaviour
 
     public void OnUnitCastDazhao(GameUnit unit)
     {
+        Logger.Log("OnUnitCastDazhao");
         Action action = new Action();
         action.type = ActionType.Dazhao;
         action.caster = unit;
-        unit.energy = 0;
 
         action.caster.State = UnitState.Dazhao;
         InsertAction(action);
@@ -424,7 +427,7 @@ public class BattleProcess : MonoBehaviour
         var unit = battleGroup.GetUnitByGuid(id);
         fireFocusTarget = unit;
         fireFocusTarget.attackWpName = weakpointName;
-
+		fireAttackWpName = weakpointName;
         Logger.Log("[Battle.Process]Change Fire Targret To " + unit.name + "  weakpoint name : " + weakpointName);
     }
 
@@ -435,27 +438,15 @@ public class BattleProcess : MonoBehaviour
         int movedUnitId = args.casterID;
         var movedUnit = battleGroup.GetUnitByGuid(movedUnitId);
 
-        StartCoroutine(SimulateAnim(movedUnit));
+        StartCoroutine(WaitAnim(movedUnit));
     }
 
-    IEnumerator SimulateAnim(GameUnit movedUnit)
+    IEnumerator WaitAnim(GameUnit movedUnit)
     {
         if (curAction == null || (curAction != null && curAction.type != ActionType.Dazhao))
         {
-            float totalTime = 1f;
-            float speed = 0.5f;
-            float startTime = Time.time;
-            while (Time.time - startTime < totalTime)
-            {
-                //movedUnit.gameObject.transform.position += Vector3.up * speed * Time.deltaTime;
-                yield return null;
-            }
-            startTime = Time.time;
-            while (Time.time - startTime < totalTime)
-            {
-               // movedUnit.gameObject.transform.position -= Vector3.up * speed * Time.deltaTime;
-                yield return null;
-            }
+            float totalTime = 3f;
+            yield return new WaitForSeconds(totalTime);
 
             OnUnitFightOver(movedUnit);
         }
@@ -480,6 +471,8 @@ public class BattleProcess : MonoBehaviour
         var deadUnit = battleGroup.GetUnitByGuid(deadId);
         //Logger.LogWarning("[Battle.Process]OnUnitDead: " + deadUnit.name);
 
+        GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, deadUnit.pbUnit.guid);
+
         int slot = deadUnit.pbUnit.slot;
         deadUnit.State = UnitState.Dead;
 
@@ -493,6 +486,7 @@ public class BattleProcess : MonoBehaviour
             if (unit != null)
             {
                 unit.attackWpName = null;
+				fireAttackWpName = null;
                 battleGroup.OnUnitEnterField(unit, slot);
                 StartCoroutine(DebugAnim(unit.gameObject));
             }

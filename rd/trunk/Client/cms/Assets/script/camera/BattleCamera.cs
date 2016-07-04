@@ -38,7 +38,7 @@ public class BattleCamera : MonoBehaviour
 					GameObject go = Instantiate(prefab) as GameObject;
 					go.name = "BattleCamera";
 					mInst = go.GetComponent<BattleCamera>();
-					mInst.CameraAttr = go1.GetComponent<Camera>();
+					mInst.CameraAttr = go.GetComponent<Camera>();
 				}
 			}
 			return mInst;

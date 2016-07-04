@@ -113,6 +113,7 @@ public class GameUnit
 
     //////////////////////////////////////////////////////////////////////////
     //显示部分    
+    public bool isBorn = true;//test
     GameObject unitObject;
     public GameObject gameObject
     {
@@ -153,6 +154,12 @@ public class GameUnit
         recovery = (int)(unitRowData.recoveryRate * unitBaseRowData.recovery);
         property = unitRowData.property;
         assetID = unitRowData.assetID;
+        //test only
+        if (assetID.Contains("boss"))
+        {
+            isBoss = true;
+        }
+
         isEvolutionable = unitRowData.isEvolutionable!=0;
         evolutionID = unitRowData.evolutionID;
         name = unitRowData.nickName;
@@ -197,8 +204,8 @@ public class GameUnit
         //计算二级属性
         curLife = (int)SpellConst.healthToLife * health;
         maxLife = curLife;
-        magicAttack = (int)(SpellConst.strengthToAttack * strength);
-        phyAttack = (int)(SpellConst.intelligenceToAttack * intelligence);
+        magicAttack = (int)(SpellConst.strengthToAttack * intelligence);
+        phyAttack = (int)(SpellConst.intelligenceToAttack * strength);
 
         //初始化技能列表
         spellList = new Dictionary<string, Spell>();
@@ -301,7 +308,7 @@ public class GameUnit
     /// </summary>
     public void CalcSpeed()
     {
-        speedCount += speed * UnityEngine.Random.Range(BattleConst.speedFactorMin, BattleConst.speedFactorMax);
+        speedCount += speed * (1.0f + spellSpeedRatio) * UnityEngine.Random.Range(BattleConst.speedFactorMin, BattleConst.speedFactorMax);
         actionOrder = BattleConst.speedK / speedCount;
         //Logger.LogFormat("Unit {0}: speedCount: {1}, actionOrder: {2}", name, speedCount, actionOrder);
     }
@@ -311,13 +318,16 @@ public class GameUnit
     /// </summary>
     public void ReCalcSpeed()
     {
-        speedCount = speed * UnityEngine.Random.Range(BattleConst.speedFactorMin, BattleConst.speedFactorMax);
+        speedCount = speed * (1.0f + spellSpeedRatio) + UnityEngine.Random.Range(BattleConst.speedFactorMin, BattleConst.speedFactorMax);
         actionOrder = BattleConst.speedK / speedCount;
         //Logger.LogFormat("Unit {0}: speedCount: {1}, actionOrder: {2}", name, speedCount, actionOrder);
     }
 
     public void OnEnterField()
     {
+        //
+        isBorn = true;
+
         var go = ResourceMgr.Instance.LoadAsset("monster", assetID);
         unitObject = GameObject.Instantiate(go);
         var com = unitObject.AddComponent<BattleObject>();

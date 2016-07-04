@@ -23,6 +23,7 @@ public class BattleUnitUI : MonoBehaviour
     public void Show(GameUnit sUnit)
     {
         buffView.SetTargetUnit(sUnit);
+        lifeBar.LifeTarget = sUnit;
         if (sUnit == null)
         {
             Hide();
@@ -33,7 +34,11 @@ public class BattleUnitUI : MonoBehaviour
 
         dazhaoBtn.gameObject.SetActive(false);
         unitName.text = Unit.name;
-        lifeBar.value = Unit.curLife / (float)Unit.maxLife;
+        if (sUnit.isBorn)
+        {
+            lifeBar.value = Unit.curLife / (float)Unit.maxLife;
+            sUnit.isBorn = false;
+        }
         enegyBar.value = Mathf.Clamp01(Unit.energy / (float)BattleConst.enegyMax);
 
         if (Unit.energy >= BattleConst.enegyMax)

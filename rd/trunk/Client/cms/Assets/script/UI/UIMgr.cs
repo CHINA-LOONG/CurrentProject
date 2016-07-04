@@ -13,6 +13,16 @@ public class UIMgr : MonoBehaviour
 		}
 	}
 
+	[SerializeField]
+	Canvas canVas = null;
+	public Canvas CanvasAttr
+	{
+		get
+		{
+			return canVas;
+		}
+	}
+
 	static UIMgr mInst = null;
 	public static UIMgr Instance
 	{
@@ -37,6 +47,10 @@ public class UIMgr : MonoBehaviour
 	public void Init()
 	{
 		DontDestroyOnLoad(gameObject);
+		canVas = gameObject.GetComponent<Canvas> ();
+
+		//UICamera.Instance.Init ();
+		//canVas.worldCamera = UICamera.Instance.CameraAttr;
 	}
 
 	public GameObject OpenUI(string assertName, string uiName)

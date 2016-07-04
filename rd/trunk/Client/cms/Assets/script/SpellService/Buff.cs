@@ -39,6 +39,11 @@ public class Buff
     public int casterID;
     public int targetID;
     private int periodCount;
+    private bool isFinish;
+    public bool IsFinish
+    {
+        get { return isFinish; }
+    }
     //---------------------------------------------------------------------------------------------
     public void Init(BuffPrototype buffPt, SpellService owner)
     {
@@ -55,6 +60,7 @@ public class Buff
         buffProto.intelligenceRatio = buffPt.intelligenceRatio;
         buffProto.defenseRatio = buffPt.defenseRatio;
         buffProto.speedRatio = buffPt.speedRatio;
+        isFinish = false;
     }
     //---------------------------------------------------------------------------------------------
     public void SetOwnedSpell(Spell spell)
@@ -65,19 +71,19 @@ public class Buff
     public void Apply(float curTime)
     {
         periodCount = 0;
+        isFinish = false;
         GameUnit target = spellService.GetUnit(targetID);
         AddBuff(target.buffList);
     }
     //---------------------------------------------------------------------------------------------
     public void Update(float curTime)
     {
-        List<Buff> buffList = spellService.GetUnit(targetID).buffList;
-        if (periodCount >= buffProto.duration)
+        if (isFinish)
         {
-            Finish();
-            buffList.Remove(this);
             return;
         }
+
+        List<Buff> buffList = spellService.GetUnit(targetID).buffList;
 
         //hot and dot
         ++periodCount;
@@ -92,11 +98,18 @@ public class Buff
                 eft.Apply(curTime);
             }
         }
+
+        if (periodCount >= buffProto.duration)
+        {
+            Finish();
+            //buffList.Remove(this);
+        }
     }
     //---------------------------------------------------------------------------------------------
     public void Reset()
     {
         periodCount = 0;
+        isFinish = false;
     }
     //---------------------------------------------------------------------------------------------
     void AddBuff(List<Buff> buffList)
@@ -157,6 +170,9 @@ public class Buff
     //---------------------------------------------------------------------------------------------
     void Finish()
     {
+        ModifyUnit(true);
+        isFinish = true;
+
         SpellBuffArgs args = new SpellBuffArgs();
         args.triggerTime = 0;
         args.casterID = casterID;
@@ -164,8 +180,6 @@ public class Buff
         args.isAdd = false;
         args.buffID = buffProto.id;
         spellService.TriggerEvent(GameEventList.SpellBuff, args);
-        
-        ModifyUnit(true);
     }
     //---------------------------------------------------------------------------------------------
     void ModifyUnit(bool isRemove)

@@ -44,12 +44,16 @@ public class UIBuffView : UIBase
 
     void OnDestory()
     {
-        GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.ShowSwitchPetUI, OnBuffChanged);
+        GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellBuff, OnBuffChanged);
     }
 
     private void OnBuffChanged(EventArgs args)
     {
         SpellBuffArgs buffArgs = args as SpellBuffArgs;
+        if (targetUnit != null && buffArgs.targetID != targetUnit.pbUnit.guid)
+        {
+            return;
+        }
         BuffPrototype curBuff = StaticDataMgr.Instance.GetBuffProtoData(buffArgs.buffID);
 
         //dot类buff

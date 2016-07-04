@@ -32,17 +32,17 @@ public class WeakPointController : MonoBehaviour
 
 	void BindListener()
 	{
-		GameEventMgr.Instance.AddListener<MirrorTarget,MirrorTarget>(GameEventList.FindWeakPoint , OnFindWeakPoint);
-		GameEventMgr.Instance.AddListener<MirrorTarget>(GameEventList.FindFinishedWeakPoint , OnFindFinishedWeakPoint);
-		GameEventMgr.Instance.AddListener<MirrorTarget>(GameEventList.MirrorOutWeakPoint , OnMirrorOutFromWeakPoint);
+		GameEventMgr.Instance.AddListener< List<MirrorTarget> >(GameEventList.FindWeakPoint , OnFindWeakPoint);
+		GameEventMgr.Instance.AddListener< List<MirrorTarget> >(GameEventList.FindFinishedWeakPoint , OnFindFinishedWeakPoint);
+		GameEventMgr.Instance.AddListener< List<MirrorTarget> >(GameEventList.MirrorOutWeakPoint , OnMirrorOutFromWeakPoint);
 		GameEventMgr.Instance.AddListener<GameUnit> (GameEventList.LoadBattleObjectFinished, OnLoadEnemyFinished);
 	}
 	
 	void UnBindListener()
 	{
-		GameEventMgr.Instance.RemoveListener<MirrorTarget,MirrorTarget> (GameEventList.FindWeakPoint, OnFindWeakPoint);
-		GameEventMgr.Instance.RemoveListener<MirrorTarget> (GameEventList.FindFinishedWeakPoint, OnFindFinishedWeakPoint);
-		GameEventMgr.Instance.RemoveListener<MirrorTarget> (GameEventList.MirrorOutWeakPoint, OnMirrorOutFromWeakPoint);
+		GameEventMgr.Instance.RemoveListener< List<MirrorTarget> > (GameEventList.FindWeakPoint, OnFindWeakPoint);
+		GameEventMgr.Instance.RemoveListener< List<MirrorTarget> > (GameEventList.FindFinishedWeakPoint, OnFindFinishedWeakPoint);
+		GameEventMgr.Instance.RemoveListener< List<MirrorTarget> > (GameEventList.MirrorOutWeakPoint, OnMirrorOutFromWeakPoint);
 		GameEventMgr.Instance.RemoveListener<GameUnit> (GameEventList.LoadBattleObjectFinished, OnLoadEnemyFinished);
 	}
 
@@ -154,67 +154,65 @@ public class WeakPointController : MonoBehaviour
 		this.AddWeakPoint (gu);
 	}
 
-	void OnFindWeakPoint(MirrorTarget findTarget,MirrorTarget lastTarget)
+	void OnFindWeakPoint( List<MirrorTarget> newFindList)
 	{
-		//Debug.LogError("weakpoint  find");
-		if (null != lastTarget)
+		foreach (MirrorTarget findTarget in newFindList) 
 		{
-			GameUnit lastGameUnit = getGameUnit(lastTarget);
-			string lastWeakpointName = lastTarget.WeakPointIDAttr;
 
-			ShowOrHideFindEffect(lastGameUnit,lastWeakpointName,false);
-			ShowOrHideFindFinishedEffect(lastGameUnit,lastWeakpointName,false);
+			GameUnit curGameUnit = getGameUnit (findTarget);
+			string curWeakPointName = findTarget.WeakPointIDAttr;
+
+			bool isFinished = curGameUnit.findWeakPointlist.Contains (curWeakPointName);
+
+			ShowOrHideFindEffect (curGameUnit, curWeakPointName, !isFinished);
+			ShowOrHideFindFinishedEffect (curGameUnit, curWeakPointName, isFinished);
+
+			//Debug.LogError ("-----find a new weakPoint ");
 		}
-
-		GameUnit curGameUnit = getGameUnit(findTarget);
-		string curWeakPointName = findTarget.WeakPointIDAttr;
-
-		bool isFinished = curGameUnit.findWeakPointlist.Contains (curWeakPointName);
-
-		ShowOrHideFindEffect(curGameUnit,curWeakPointName,!isFinished);
-		ShowOrHideFindFinishedEffect(curGameUnit,curWeakPointName,isFinished);
-
-		Debug.LogError ("-----find a new weakPoint ");
 	}
 
-	void OnFindFinishedWeakPoint(MirrorTarget target)
+	void OnFindFinishedWeakPoint(List<MirrorTarget> finishList)
 	{
-		GameUnit unit = getGameUnit(target);
-		string wpName = target.WeakPointIDAttr;
-		if (!unit.findWeakPointlist.Contains (wpName))
+		foreach (MirrorTarget target in finishList)
 		{
-			unit.findWeakPointlist.Add(wpName);
-		}
-		try
-		{
-			if(unit.weakPointMeshDic.ContainsKey(wpName))
+			GameUnit unit = getGameUnit (target);
+			string wpName = target.WeakPointIDAttr;
+
+			GameObject wpMeshGo = null;// unit.weakPointMeshDic [wpName] as GameObject;
+			if(!unit.weakPointMeshDic.TryGetValue(wpName,out wpMeshGo))
 			{
-				GameObject wpMeshGo = unit.weakPointMeshDic [wpName] as GameObject;
-				if (null != wpMeshGo)
-				{
-					wpMeshGo.SetActive(true);
-				}
+				continue;
 			}
-		}
-		catch(UnityException e)
-		{
-			Logger.LogException(e);
-		}
+			if(wpMeshGo.activeSelf)
+			{
+				continue;
+			}
 
+			wpMeshGo.SetActive(true);
 
-		ShowOrHideFindEffect(unit,wpName,false);
-		ShowOrHideFindFinishedEffect(unit,wpName,true);
-		Debug.LogError ("finish ----------- weakPoint ");
+			if (!unit.findWeakPointlist.Contains (wpName)) 
+			{
+				unit.findWeakPointlist.Add (wpName);
+			}
+		
+
+			ShowOrHideFindEffect (unit, wpName, false);
+			ShowOrHideFindFinishedEffect (unit, wpName, true);
+			//Debug.LogError ("finish ----------- weakPoint ");
+		}
 	}
 
-	void OnMirrorOutFromWeakPoint(MirrorTarget target)
+	void OnMirrorOutFromWeakPoint(List<MirrorTarget> outList)
 	{
-		GameUnit lastGameUnit = getGameUnit(target);
-		string lastWeakpointName = target.WeakPointIDAttr;
+		foreach (MirrorTarget target in outList) 
+		{
+			GameUnit lastGameUnit = getGameUnit (target);
+			string lastWeakpointName = target.WeakPointIDAttr;
 		
-		ShowOrHideFindEffect(lastGameUnit,lastWeakpointName,false);
-		ShowOrHideFindFinishedEffect(lastGameUnit,lastWeakpointName,false);
-		Debug.LogError ("out weakPoint -----------");
+			ShowOrHideFindEffect (lastGameUnit, lastWeakpointName, false);
+			ShowOrHideFindFinishedEffect (lastGameUnit, lastWeakpointName, false);
+		//	Debug.LogError ("out weakPoint -----------");
+		}
 	}
 
 	GameUnit getGameUnit(MirrorTarget target)

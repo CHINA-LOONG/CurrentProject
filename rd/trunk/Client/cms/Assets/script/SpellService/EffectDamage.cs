@@ -25,11 +25,13 @@ public class EffectDamage : Effect
         damagePt.damageProperty = damagePtOut.damageProperty;
         base.Init(pt, owner);
     }
+    //---------------------------------------------------------------------------------------------
     public override void Apply(float applyTime, float aniDelayTime)
     {
         base.Apply(applyTime);
         CalculateDamage();
     }
+    //---------------------------------------------------------------------------------------------
     public override int CalculateHit()
     {
         EffectDamageProtoType damageProto = protoEffect as EffectDamageProtoType;
@@ -54,7 +56,7 @@ public class EffectDamage : Effect
 
         return base.CalculateHit();
     }
-
+    //---------------------------------------------------------------------------------------------
     public void CalculateDamage()
     {
         if (CalculateHit() == SpellConst.hitSuccess)
@@ -65,8 +67,7 @@ public class EffectDamage : Effect
 
             //暴击计算 min(max(N+L(lv1-lv2))+总附加命中率,60%,100%)
             float damageRatio = 1.0f;
-            System.Random ran = new System.Random();
-            int randKey = ran.Next(0, 1);
+            float randKey = UnityEngine.Random.Range(0.0f, 1.0f);
             //暴击率 = 暴击常数 + 施法者暴击率 - 目标抗暴
             bool critical = randKey > (SpellConst.criticalRatio + caster.criticalRatio - target.antiCriticalRatio);
             if (critical)
@@ -76,7 +77,7 @@ public class EffectDamage : Effect
             }
 
             //受伤比计算 max(1/(1+(守方总防御力-攻方防御穿透)/I(min(lv1,lv2))),25%)
-            float injuryRatio = 1.0f / (1.0f + (target.defense - caster.defensePierce) / SpellFunctions.GetInjuryAdjustNum(caster.pbUnit.level, target.pbUnit.level));
+            float injuryRatio = 1.0f / (1.0f + (target.defense * (1.0f + target.spellDefenseRatio) - caster.defensePierce) / SpellFunctions.GetInjuryAdjustNum(caster.pbUnit.level, target.pbUnit.level));
             injuryRatio = injuryRatio < 0.25f ? 0.25f : injuryRatio;
 
             EffectDamageProtoType damageProto = protoEffect as EffectDamageProtoType;
@@ -140,16 +141,17 @@ public class EffectDamage : Effect
                     }
                     //五行相生相克系数
                     int targetProp = wp != null ? wp.property : target.property;
-                    propertyDamageRatio *= SpellFunctions.GetPropertyDamageRatio(caster.property, targetProp);
+                    EffectDamageProtoType damagePt = protoEffect as EffectDamageProtoType;
+                    propertyDamageRatio *= SpellFunctions.GetPropertyDamageRatio((int)(damagePt.damageProperty), targetProp);
 
                     damageAmount = (int)(
                                     damageRatio * injuryRatio * SpellConst.intelligenceToAttack * caster.intelligence *  //暴击伤害系数 * 受伤比 * 攻击
                                     (1.0f + gdMgr.PlayerDataAttr.equipIntelligenceRatio + caster.additionDamageRatio - target.minusDamageRatio) * //主角和怪物装备加成
                                     (damageProto.attackFactor + spellLevelRatio) * //技能加成
                                     (1.0f + caster.spellIntelligenceRatio) *//buff加成(队长技 etc)
-                                    propertyDamageRatio
+                                    propertyDamageRatio *
+                                    wpRatio
                                     ); //五行相关
-                                    /* *弱点伤害 * 副本伤害 */
                 }
                 //伤害*-1 修正为负数
                 damageAmount *= -1;
@@ -172,7 +174,7 @@ public class EffectDamage : Effect
                     args.triggerTime = applyTime;
                     args.casterID = casterID;
                     args.deathID = targetID;
-                    spellService.TriggerEvent(GameEventList.SpellUnitDead, args);
+                    spellService.AddDeadData(args);
                 }
                 else if (target.curLife > target.maxLife)
                 {
@@ -189,12 +191,18 @@ public class EffectDamage : Effect
                 args.isCritical = critical;
                 args.vitalChange = damageAmount;
                 args.vitalCurrent = target.curLife;//TODO: need weak point life?
+                args.vitalMax = target.maxLife;
                 if (wp != null)
                 {
                     args.wpID = wp.id;
+                }
+                else 
+                {
+                    args.wpID = string.Empty;
                 }
                 spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
             }
         }
     }
+    //---------------------------------------------------------------------------------------------
 }

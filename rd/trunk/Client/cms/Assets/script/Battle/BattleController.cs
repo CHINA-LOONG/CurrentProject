@@ -100,12 +100,13 @@ public class BattleController : MonoBehaviour
 			}
 			else
 			{
+                GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
 				Logger.LogWarning("Hit something but not a battle object!");
 			}
 		}
 		else
 		{
-			GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
+            GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
 		}
 	}
 
@@ -129,9 +130,9 @@ public class BattleController : MonoBehaviour
     {
         if (battleGo.camp == UnitCamp.Enemy)
         {
-            //设置集火目标 
+            //集火或者大招
 			process.OnHitBattleObject(battleGo, weakpointName);
-            GameEventMgr.Instance.FireEvent(GameEventList.HideSwitchPetUI);
+            GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
             Logger.LogWarning("hit enemy gameobject....");
         }
         else if (battleGo.camp == UnitCamp.Player)
@@ -139,7 +140,6 @@ public class BattleController : MonoBehaviour
             //换宠
             ShowSwitchPetUIArgs args = new ShowSwitchPetUIArgs();
             args.targetId = battleGo.id;
-            args.idleUnits = battleGroup.GetPlayerOffsiteUnits();
             GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.ShowSwitchPetUI, args);
         }
     }

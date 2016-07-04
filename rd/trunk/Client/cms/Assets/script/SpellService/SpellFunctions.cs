@@ -5,12 +5,7 @@ public class SpellFunctions
 {
     public static float GetInjuryAdjustNum(int casterLvl, int targetLvl)
     {
-        return 0.1f;
-    }
-    
-    public static float GetPropertyInfluenceRatio(int prop1, int prop2)
-    {
-        return 2.5f;
+        return 2100.0f;
     }
 
     public static float GetHitRatio(int casterLvl, int targetLvl)

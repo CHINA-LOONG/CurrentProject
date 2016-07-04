@@ -62,6 +62,7 @@ public class Spell
             energyArgs.casterID = casterID;
             energyArgs.vitalChange = spellData.energyGenerate;
             energyArgs.vitalCurrent = caster.energy;
+            energyArgs.vitalMax = 0;
             spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
         }
 
@@ -77,6 +78,7 @@ public class Spell
             energyArgs.casterID = casterID;
             energyArgs.vitalChange = spellData.energyCost * -1;//minus
             energyArgs.vitalCurrent = caster.energy - spellData.energyCost;
+            energyArgs.vitalMax = 0;
             spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
         }
 

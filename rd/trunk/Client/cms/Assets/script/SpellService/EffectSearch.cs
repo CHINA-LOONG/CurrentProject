@@ -34,11 +34,21 @@ public class EffectSearch : Effect
         EffectSearchPrototype searchProt = protoEffect as EffectSearchPrototype;
         UnitCamp casterCamp = spellService.GetUnit(casterID).pbUnit.camp;
         int camp = searchProt.camp;
-        camp = casterCamp == UnitCamp.Player ? camp : (int)(UnitCamp.Enemy);
+        if (casterCamp == UnitCamp.Player)
+        {
+            camp = (camp == (int)UnitCamp.Player) ? camp : (int)(UnitCamp.Enemy);
+        }
+        else
+        {
+            camp = (camp == (int)UnitCamp.Player) ? (int)(UnitCamp.Enemy) : camp;
+        }
 
         List<GameUnit> unitList = spellService.GetUnitList(camp);
         foreach (GameUnit unit in unitList)
         {
+            if (unit == null)
+                continue;
+
             Effect curEffect = spellService.GetEffect(searchProt.effectID);
             if (curEffect != null)
             {

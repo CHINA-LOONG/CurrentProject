@@ -5,8 +5,6 @@ using System;
 
 public class GameApp : MonoBehaviour
 {
-    private string message;
-
     private static GameApp _manager = null;
     public static GameApp Instance
     {
@@ -79,7 +77,7 @@ public class GameApp : MonoBehaviour
     {
         string dataPath = Util.ResPath;  //数据目录
         string resPath = Util.AppContentPath(); //游戏包资源目录
-        Debug.Log(Application.persistentDataPath);
+        Debug.Log(Util.ResPath);
 
         if (Directory.Exists(dataPath))
             Directory.Delete(dataPath, true);
@@ -90,8 +88,7 @@ public class GameApp : MonoBehaviour
         if (File.Exists(outfile))
             File.Delete(outfile);
 
-        message = "正在解包文件:>files.txt\n";
-        Debug.Log(message);
+        Logger.Log("正在解包文件:>files.txt\n");
         if (Application.platform == RuntimePlatform.Android)
         {
             WWW www = new WWW(infile);
@@ -112,8 +109,7 @@ public class GameApp : MonoBehaviour
         {
             infile = resPath + file;
             outfile = dataPath + file;
-            message = "正在解包文件:>" + file;
-            //Debug.Log("正在解包文件:>" + infile);
+            Logger.Log("正在解包文件:>" + file);
 
             string dir = Path.GetDirectoryName(outfile);
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
@@ -135,9 +131,8 @@ public class GameApp : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
-        message = "解包完成!!!";
+        Logger.Log("解包完成!!!");
         yield return new WaitForSeconds(0.1f);
-        message = string.Empty;
 
         //释放完成，开始启动更新资源
         StartCoroutine(OnUpdateResource());
@@ -207,18 +202,13 @@ public class GameApp : MonoBehaviour
         }
 
         yield return new WaitForEndOfFrame();
-        message = "更新完成!!";
+        Logger.Log("更新完成!!");
         ResourceMgr.Instance.Init();
     }
 
     void OnUpdateFailed(string file)
     {
-        message = "更新失败!>" + file;
-    }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(10, 100, 960, 50), message);
+        Logger.LogError("更新失败!>" + file);
     }
 
     /// <summary>

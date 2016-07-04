@@ -11,11 +11,11 @@ public class MirrorRaycast : MonoBehaviour
 	}
 
 
-	public MirrorTarget WeakpointRayCast(Vector2 startPos)
+	public List<MirrorTarget> WeakpointRayCast(Vector2 startPos)
 	{
+		List<MirrorTarget> returnList = new List<MirrorTarget> ();
 		List<GameUnit> listEnemy = BattleController.Instance.BattleGroup.EnemyFieldList;
 
-		MirrorTarget findTarget = null;
 		GameUnit subUnit = null;
 		for (int i =0; i< listEnemy.Count; ++i)
 		{
@@ -24,25 +24,11 @@ public class MirrorRaycast : MonoBehaviour
 			{
 				continue;
 			}
-			MirrorTarget subfindTarget = RaycastAllWeakpoint(subUnit,startPos,GameConfig.Instance.MirrorRadius);
-			if(null == subfindTarget)
-			{
-				continue;
-			}
-
-			if(findTarget == null)
-			{
-				findTarget = subfindTarget;
-			}
-			else
-			{
-				if(subfindTarget.DistanceToMirror < findTarget.DistanceToMirror)
-				{
-					findTarget = subfindTarget;
-				}
-			}
+			MirrorTarget bestTarget = null;
+			List<MirrorTarget> listFind  = RaycastFromAllWeakpoint(subUnit,startPos,GameConfig.Instance.MirrorRadius, out bestTarget);
+			returnList.AddRange(listFind);
 		}
-		return findTarget;
+		return returnList;
 	}
 
 	public static	MirrorTarget RaycastCanAttackWeakpoint( GameUnit gameUnit,Vector2 uiPos,float maxDistance)
@@ -56,18 +42,22 @@ public class MirrorRaycast : MonoBehaviour
 				weakpointDumpDic.Add(subWp, gameUnit.weakPointDumpDic[subWp]);
 			}
 		}
-		return RaycastWeakpoint (gameUnit, uiPos, maxDistance, weakpointDumpDic);
+		MirrorTarget bestTarget = null;
+		RaycastWeakPoint (gameUnit, uiPos, maxDistance, weakpointDumpDic,out bestTarget);
+		return bestTarget;
 	}
 
-	public static	MirrorTarget RaycastAllWeakpoint(GameUnit gameUnit, Vector2 uiPos, float maxDistance)
+	public static	List<MirrorTarget> RaycastFromAllWeakpoint(GameUnit gameUnit, Vector2 uiPos, float maxDistance,out MirrorTarget bestTarget)
 	{
 		Dictionary<string,GameObject> weakpointDumpDic = gameUnit.weakPointDumpDic;
-		return RaycastWeakpoint (gameUnit, uiPos, maxDistance, weakpointDumpDic);
+
+		return RaycastWeakPoint (gameUnit, uiPos, maxDistance, weakpointDumpDic,out bestTarget);
 	}
 
-	private  static	MirrorTarget RaycastWeakpoint(GameUnit gameUnit,Vector2 uiPos,float maxDistance,Dictionary<string,GameObject> weakpointDumpDic)
+	private  static	List<MirrorTarget> RaycastWeakPoint(GameUnit gameUnit,Vector2 uiPos,float maxDistance,Dictionary<string,GameObject> weakpointDumpDic,out MirrorTarget bestTarget)
 	{
-		MirrorTarget findTarget = null;
+		List<MirrorTarget> allFindTarget  = new List<MirrorTarget>();
+		bestTarget = null;
 		GameObject subWeakpointObj = null;
 		foreach(KeyValuePair<string,GameObject> subWeak in weakpointDumpDic)
 		{
@@ -87,21 +77,21 @@ public class MirrorRaycast : MonoBehaviour
 			{
 				MirrorTarget mTarget = subWeakpointObj.GetComponent<MirrorTarget>();
 				mTarget.DistanceToMirror = distane;
-				if(findTarget == null)
+				if(bestTarget == null)
 				{
-					findTarget = mTarget;
+					bestTarget = mTarget;
 				}
 				else
 				{
-					if(mTarget.DistanceToMirror < findTarget.DistanceToMirror)
+					if(mTarget.DistanceToMirror < bestTarget.DistanceToMirror)
 					{
-						findTarget = mTarget;
+						bestTarget = mTarget;
 					}
 				}
-				
+				allFindTarget.Add(mTarget);
 			}
 		}
-		
-		return findTarget;
+		 
+		return allFindTarget;
 	}
 }

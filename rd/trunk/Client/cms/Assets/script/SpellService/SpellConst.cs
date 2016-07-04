@@ -20,7 +20,7 @@
 
     public const float strengthToAttack = 1.0f;
     public const float intelligenceToAttack = 1.0f;
-    public const float healthToLife = 4.0f;
+    public const float healthToLife = 1.0f;
 
     public const int propertyGold = 1;
     public const int propertyWood = 2;
