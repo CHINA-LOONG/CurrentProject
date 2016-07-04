@@ -31,10 +31,10 @@ public class MirrorRaycast : MonoBehaviour
 		return returnList;
 	}
 
-	public static	MirrorTarget RaycastCanAttackWeakpoint( GameUnit gameUnit,Vector3 inputScreenPos,float maxDistance)
+	public static	MirrorTarget RaycastFirFocusWeakpoint( GameUnit gameUnit,Vector3 inputScreenPos,float maxDistance)
 	{
 		Dictionary<string,GameObject> weakpointDumpDic = new Dictionary<string, GameObject> ();
-		List<string> attackWpList = WeakPointController.Instance.GetCanAttackWeakpointList (gameUnit);
+		List<string> attackWpList = WeakPointController.Instance.GetFireFocusAttackWeakpointList (gameUnit);
 		if (null != attackWpList)
 		{
 			foreach(string subWp in attackWpList)
@@ -59,6 +59,7 @@ public class MirrorRaycast : MonoBehaviour
 		List<MirrorTarget> allFindTarget  = new List<MirrorTarget>();
 		bestTarget = null;
 		GameObject subWeakpointObj = null;
+
 		foreach(KeyValuePair<string,GameObject> subWeak in weakpointDumpDic)
 		{
 			WeakPointRuntimeData wpHp = null;
@@ -71,11 +72,19 @@ public class MirrorRaycast : MonoBehaviour
 			}
 
 			subWeakpointObj = subWeak.Value;
+			MirrorTarget mTarget = subWeakpointObj.GetComponent<MirrorTarget>();
+
+			if(!gameUnit.isVisible && !mTarget.isSelf)
+			{
+				continue;
+			}
+
+
 			Vector2	dumpPos = RectTransformUtility.WorldToScreenPoint(BattleCamera.Instance.CameraAttr,subWeakpointObj.transform.position);
 			float distane = Vector2.Distance(startPosInScreen,dumpPos);
 			if(distane < maxDistance)
 			{
-				MirrorTarget mTarget = subWeakpointObj.GetComponent<MirrorTarget>();
+				
 				mTarget.DistanceToMirror = distane;
 				if(bestTarget == null)
 				{

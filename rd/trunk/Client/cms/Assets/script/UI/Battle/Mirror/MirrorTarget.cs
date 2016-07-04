@@ -23,6 +23,11 @@ public class MirrorTarget : MonoBehaviour
 		get;
 	}
 
+	/// <summary>
+	/// is 本体?
+	/// </summary>
+	public bool	isSelf = false;
+
 	// Use this for initialization
 	void Start () 
 	{

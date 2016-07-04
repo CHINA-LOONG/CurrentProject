@@ -67,7 +67,7 @@ public class InstanceRewardCfg extends HawkConfigBase {
 			return false;
 		}
 		starRewardCfgList.add(rewardGroupCfg);
-		
+
 		rewardGroupCfg = HawkConfigManager.getInstance().getConfigByKey(RewardGroupCfg.class, star3RewardGroupId);
 		if (null == rewardGroupCfg) {
 			return false;

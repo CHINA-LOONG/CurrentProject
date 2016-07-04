@@ -88,17 +88,20 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_CATCH_C", Value=2002)]
       MONSTER_CATCH_C = 2002,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_BREAK_C", Value=2003)]
-      MONSTER_BREAK_C = 2003,
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_CATCH_S", Value=2003)]
+      MONSTER_CATCH_S = 2003,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_BREAK_S", Value=2004)]
-      MONSTER_BREAK_S = 2004,
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_BREAK_C", Value=2004)]
+      MONSTER_BREAK_C = 2004,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_C", Value=2005)]
-      MONSTER_FEED_C = 2005,
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_BREAK_S", Value=2005)]
+      MONSTER_BREAK_S = 2005,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_S", Value=2006)]
-      MONSTER_FEED_S = 2006,
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_C", Value=2006)]
+      MONSTER_FEED_C = 2006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_S", Value=2007)]
+      MONSTER_FEED_S = 2007,
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_C", Value=3000)]
       INSTANCE_ENTER_C = 3000,
@@ -115,17 +118,68 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_C", Value=4002)]
-      ITEM_SELL_C = 4002,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_S", Value=4002)]
+      ITEM_USE_S = 4002,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_C", Value=4003)]
-      ITEM_BUY_C = 4003,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_C", Value=4003)]
+      ITEM_SELL_C = 4003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_S", Value=4004)]
+      ITEM_SELL_S = 4004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_C", Value=4005)]
+      ITEM_BUY_C = 4005,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_S", Value=4006)]
+      ITEM_BUY_S = 4006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_COMPOSE_C", Value=4007)]
+      ITEM_COMPOSE_C = 4007,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_COMPOSE_S", Value=4008)]
+      ITEM_COMPOSE_S = 4008,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SELL_C", Value=4101)]
       EQUIP_SELL_C = 4101,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_BUY_C", Value=4102)]
-      EQUIP_BUY_C = 4102
+      EQUIP_BUY_C = 4102,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_C", Value=4103)]
+      EQUIP_COMPOSE_C = 4103,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_S", Value=4104)]
+      EQUIP_COMPOSE_S = 4104,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_C", Value=4105)]
+      EQUIP_INCREASE_LEVEL_C = 4105,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_S", Value=4106)]
+      EQUIP_INCREASE_LEVEL_S = 4106,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_C", Value=4107)]
+      EQUIP_INCREASE_STAGE_C = 4107,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_S", Value=4108)]
+      EQUIP_INCREASE_STAGE_S = 4108,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_DRESS_C", Value=4109)]
+      EQUIP_DRESS_C = 4109,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_DRESS_S", Value=4110)]
+      EQUIP_DRESS_S = 4110,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_UNDRESS_C", Value=4111)]
+      EQUIP_UNDRESS_C = 4111,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_UNDRESS_S", Value=4112)]
+      EQUIP_UNDRESS_S = 4112,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_REPLACE_C", Value=4113)]
+      EQUIP_REPLACE_C = 4113,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_REPLACE_S", Value=4114)]
+      EQUIP_REPLACE_S = 4114
     }
   
 }

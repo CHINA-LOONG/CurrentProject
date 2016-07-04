@@ -16,12 +16,8 @@ public class MonsterBaseCfg extends HawkConfigBase {
 	protected final int defense;
 	protected final int endurance;
 	protected final int recovery;
-	protected final int goldNoteMin;
-	protected final int goldNoteMax;
-	protected final int expMin;
-	protected final int expMax;
 	protected final int output;
-	
+
 	/**
 	 * 全局静态对象
 	 */
@@ -47,67 +43,47 @@ public class MonsterBaseCfg extends HawkConfigBase {
 		defense = 0;
 		endurance = 0;
 		recovery = 0;
-		goldNoteMin = 0;
-		goldNoteMax = 0;
-		expMin = 0;
-		expMax = 0;
 		output = 0;
 	}
 
 	public int getLevel() {
 		return level;
 	}
-	
+
 	public int getNextExp() {
 		return experience;
 	}
-	
+
 	public int getHealth() {
 		return health;
 	}
-	
+
 	public int getStrength() {
 		return strength;
 	}
-	
+
 	public int getIntelligence() {
 		return intelligence;
 	}
-	
+
 	public int getSpeed() {
 		return speed;
 	}
-	
+
 	public int getDefense() {
 		return defense;
 	}
-	
+
 	public int getEndurance() {
 		return endurance;
 	}
-	
+
 	public int getRecovery() {
 		return recovery;
 	}
-	
-	public int getGoldNoteMin() {
-		return goldNoteMin;
-	}
-	
-	public int getGoldNoteMax() {
-		return goldNoteMax;
-	}
-	
-	public int getExpMin() {
-		return expMin;
-	}
-	
-	public int getExpMax() {
-		return expMax;
-	}
-	
+
 	public int getOutput() {
 		return output;
 	}
-	
+
 }

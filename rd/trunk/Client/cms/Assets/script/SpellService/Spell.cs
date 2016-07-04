@@ -13,7 +13,6 @@ public class SpellProtoType
     public int energyGenerate;
     public int category;
     public float levelAdjust;
-    public int level;
     //public int cdTime;
 }
 
@@ -23,14 +22,14 @@ public class Spell
     public int targetID;
     public SpellProtoType spellData;
     public SpellService spellService;
+    public int level;
 
     private float spellLength;
 
-    public Spell(SpellProtoType spellPt)
+    public Spell(SpellProtoType spellPt, int level)
     {
         spellData = spellPt;
-        //TODO: form server pb data
-        spellData.level = 1;
+        this.level = level;
     }
 
     public void Init(SpellService owner)

@@ -42,11 +42,13 @@ import com.hawk.game.item.ItemInfo;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Const.itemType;
 import com.hawk.game.protocol.Login.HSLogin;
 import com.hawk.game.protocol.Login.HSLoginRet;
 import com.hawk.game.protocol.Player.HSPlayerCreate;
 import com.hawk.game.protocol.Player.HSPlayerCreateRet;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.protocol.Status.itemError;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.protocol.SysProtocol.HSHeartBeat;
 import com.hawk.game.util.GsConst;
@@ -442,17 +444,57 @@ public class GsApp extends HawkApp {
 			response.setPalyerID(playerId);
 			session.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_CREATE_S_VALUE, response));
 
-			// TEST: 给予默认宠物
+			// TEST: 给予默认宠物------------------------------------
 			LinkedList<Integer> battleMonsterList = new LinkedList<>();
-			for (int i = 0; i < 5; ++i) {
-				MonsterEntity monsterEntity = new MonsterEntity("soul", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
-				monsterEntity.setSkillLevel(1, 1);
-				if (true == monsterEntity.notifyCreate()) {
-					battleMonsterList.add(monsterEntity.getId());
-				}
+			
+			MonsterEntity monsterEntity = new MonsterEntity("Unit_Demo_ershu", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
+			monsterEntity.setSkillLevel("s1", 1);
+			monsterEntity.setSkillLevel("attackMedium", 1);
+			monsterEntity.setSkillLevel("magicCureMedium", 1);
+			monsterEntity.setSkillLevel("buffMagic", 1);
+			if (true == monsterEntity.notifyCreate()) {
+				battleMonsterList.add(monsterEntity.getId());
 			}
+			
+			monsterEntity = new MonsterEntity("Unit_Demo_qingniao", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
+			monsterEntity.setSkillLevel("s1", 1);
+			monsterEntity.setSkillLevel("attackSlight", 1);
+			monsterEntity.setSkillLevel("magicWaterMedium", 1);
+			monsterEntity.setSkillLevel("debuffDefense", 1);
+			if (true == monsterEntity.notifyCreate()) {
+				battleMonsterList.add(monsterEntity.getId());
+			}
+			
+			monsterEntity = new MonsterEntity("Unit_Demo_zhuyan", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
+			monsterEntity.setSkillLevel("s1", 1);
+			monsterEntity.setSkillLevel("attackTriStrong", 1);
+			monsterEntity.setSkillLevel("magicFireSlight", 1);
+			monsterEntity.setSkillLevel("buffAttack", 1);
+			if (true == monsterEntity.notifyCreate()) {
+				battleMonsterList.add(monsterEntity.getId());
+			}
+			
+			monsterEntity = new MonsterEntity("Unit_Demo_qingniao", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
+			monsterEntity.setSkillLevel("s1", 1);
+			monsterEntity.setSkillLevel("attackSlight", 1);
+			monsterEntity.setSkillLevel("magicWaterMedium", 1);
+			monsterEntity.setSkillLevel("debuffDefense", 1);
+			if (true == monsterEntity.notifyCreate()) {
+				battleMonsterList.add(monsterEntity.getId());
+			}
+			
+			monsterEntity = new MonsterEntity("Unit_Demo_zhuyan", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
+			monsterEntity.setSkillLevel("s1", 1);
+			monsterEntity.setSkillLevel("attackTriStrong", 1);
+			monsterEntity.setSkillLevel("magicFireSlight", 1);
+			monsterEntity.setSkillLevel("buffAttack", 1);
+			if (true == monsterEntity.notifyCreate()) {
+				battleMonsterList.add(monsterEntity.getId());
+			}
+
 			playerEntity.setBattleMonsterList(battleMonsterList);
 			playerEntity.notifyUpdate(false);
+			// TEST END--------------------------------------------------------------
 
 			return true;
 		}

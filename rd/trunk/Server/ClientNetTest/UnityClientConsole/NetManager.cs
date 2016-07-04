@@ -13,7 +13,7 @@ namespace UnityClientConsole
   
     class NetManager
     {
-        private const int BUFFERSIZE = 1024;
+        private const int BUFFERSIZE = 102400;
         private static NetManager instance;
         private Socket socketClient;
         private MemoryStream sendStream;

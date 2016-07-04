@@ -20,7 +20,6 @@ public class InstanceCfg extends HawkConfigBase {
 	protected final float attackCoef;
 	protected final float expCoef;
 	protected final float goldCoef;
-	protected final String rewardList;
 	protected final String sceneBattle;
 	protected final int sceneAmount;
 	protected final int monsterAmount;
@@ -88,7 +87,6 @@ public class InstanceCfg extends HawkConfigBase {
 	protected final String rareValiP5 = null;
 		
 	// assemble
-	private int[] rewardListAssemble;
 	private Map<String, Integer> monsterAmountList;
 	
 	/**
@@ -112,7 +110,6 @@ public class InstanceCfg extends HawkConfigBase {
 		attackCoef = 1.0f;
 		expCoef = 1.0f;
 		goldCoef = 1.0f;
-		rewardList = "";
 		sceneBattle = "";
 		sceneAmount = 0;
 		monsterAmount = 0;
@@ -130,15 +127,6 @@ public class InstanceCfg extends HawkConfigBase {
 	
 	@Override
 	protected boolean assemble() {
-		JSONArray jsonArray = JSONArray.fromObject(rewardList);
-		if (jsonArray == null || jsonArray.isArray() == false) {
-			return false;
-		}
-		rewardListAssemble = new int[jsonArray.size()];
-		for (int i = 0; i < jsonArray.size(); ++i) {
-			rewardListAssemble[i] = jsonArray.getInt(i);
-		}
-		
 		monsterAmountList =  new HashMap<String, Integer>();
 		if (monster1 != "" && monster1Amount > 0) {
 			monsterAmountList.put(monster1, monster1Amount);
@@ -205,10 +193,6 @@ public class InstanceCfg extends HawkConfigBase {
 	
 	public float getGoldCoef() {
 		return goldCoef;
-	}
-	
-	public int[] getRewardList() {
-		return rewardListAssemble;
 	}
 	
 	public String getBattleScene() {

@@ -136,6 +136,9 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 				for(int i =0 ; i< listFindTarget.Count; ++i)
 				{
 					subTarget = listFindTarget[i];
+					var battleObject = subTarget.GetComponentInParent<BattleObject> () as BattleObject;
+
+
 					if(lastFindWeakpoint.ContainsKey(subTarget))
 					{
 						lastFindWeakpoint[subTarget] += Time.deltaTime;
@@ -146,8 +149,15 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 					}
 					else
 					{
-						lastFindWeakpoint.Add(subTarget,0.0f);
-						newFindTargetList.Add(subTarget);
+						if(subTarget.isSelf && battleObject.unit.isVisible)
+						{
+							finishFindTargett.Add(subTarget);
+						}
+						else
+						{
+							lastFindWeakpoint.Add(subTarget,0.0f);
+							newFindTargetList.Add(subTarget);
+						}
 
 					}
 				}
@@ -159,6 +169,11 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 			if(finishFindTargett.Count > 0)
 			{
 				GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.FindFinishedWeakPoint,finishFindTargett);
+				GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.ShowFindMonsterInfo, finishFindTargett);
+			}
+			else
+			{
+				GameEventMgr.Instance.FireEvent(GameEventList.HideFindMonsterInfo);
 			}
 
 			List<MirrorTarget> lastFindKeys =  new List<MirrorTarget>( lastFindWeakpoint.Keys);

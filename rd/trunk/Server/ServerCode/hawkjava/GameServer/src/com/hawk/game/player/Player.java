@@ -183,8 +183,8 @@ public class Player extends HawkAppObj {
 	 * @param reason
 	 */
 	public void kickout(int reason) {
+		session.setAppObject(null);
 		session = null;
-		saveRoleData();
 	}
 	/**
 	 * 玩家消息预处理
@@ -652,23 +652,6 @@ public class Player extends HawkAppObj {
 			}
 		}
 		return removeFailEquipIds;
-	}
-
-
-	/**
-	 * 角色数据落地
-	 *
-	 */
-	 public void saveRoleData(){	 
-
-	 }
-
-	/**
-	 * 重新选择角色
-	 *
-	 */	 
-	 public void ReselectRole() {
-
 	}
 	 
 	/**

@@ -29,7 +29,7 @@ public class PbUnit
     public int level;
     public int curExp;
     public int starLevel;//升星
-    //public List<string> spellIDList;
+    public List<PB.HSSkill> spellPbList;
 }
 
 [Serializable]
@@ -51,15 +51,16 @@ public class GameUnit
     public int property;//五行属性
     public int recovery;//战后回血
 	public bool isBoss = false;
-	public string Ai;
+	//public string Ai;
 	public int character;//性格
 	public int lazy;//勤奋度
+	public bool isVisible = true;//是否可见
     //掉落金币
-    public int goldNoteMin;
-    public int goldNoteMax;
+    //public int goldNoteMin;
+  //  public int goldNoteMax;
     //掉落经验
-    public int expMin;
-    public int expMax;
+  //  public int expMin;
+  //  public int expMax;
     //public int outputExp;//被吃掉产出
     public float criticalRatio;//暴击率
     public float antiCriticalRatio;//抗暴击
@@ -158,7 +159,7 @@ public class GameUnit
         isEvolutionable = unitRowData.isEvolutionable!=0;
         evolutionID = unitRowData.evolutionID;
         name = unitRowData.nickName;
-		Ai = unitRowData.AI;
+		//Ai = unitRowData.AI;
 
         //TODO: 装备系统附加值
         criticalRatio = gdMgr.PlayerDataAttr.criticalRatio;
@@ -184,10 +185,10 @@ public class GameUnit
         {
             InstanceData instData = BattleController.Instance.InstanceData;
             //掉落
-            goldNoteMax = (int)(unitRowData.goldNoteMaxValueModifyRate * unitBaseRowData.goldNoteMax * instData.goldCoef);
-            goldNoteMin = (int)(unitRowData.goldNoteMinValueModifyRate * unitBaseRowData.goldNoteMin * instData.goldCoef);
-            expMin = (int)(unitRowData.expMinValueModifyRate * unitBaseRowData.expMin * instData.expCoef);
-            expMax = (int)(unitRowData.expMaxValueModifyRate * unitBaseRowData.expMax * instData.expCoef);
+            //goldNoteMax = (int)(unitRowData.goldNoteMaxValueModifyRate * unitBaseRowData.goldNoteMax * instData.goldCoef);
+            //goldNoteMin = (int)(unitRowData.goldNoteMinValueModifyRate * unitBaseRowData.goldNoteMin * instData.goldCoef);
+          //  expMin = (int)(unitRowData.expMinValueModifyRate * unitBaseRowData.expMin * instData.expCoef);
+           // expMax = (int)(unitRowData.expMaxValueModifyRate * unitBaseRowData.expMax * instData.expCoef);
             //弱点
             InitWeakPoint(unitRowData.weakpointList);
             //基础属性影响
@@ -204,19 +205,36 @@ public class GameUnit
 
         //初始化技能列表
         spellList = new Dictionary<string, Spell>();
-        //string[] spellIDList = unitRowData.spellIDList.Split(';');
-		ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson (unitRowData.spellIDList);
-
         SpellProtoType spellPt = null;
-		for (int i = 0; i < spellArrayList.Count; ++i)
+
+        if (pbUnit.spellPbList != null)
         {
-			string spellID = spellArrayList[i]as string ;
-			spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellID);
-            if (spellPt != null)
+            int skillCount = pbUnit.spellPbList.Count;
+            for (int skillIndex = 0; skillIndex < skillCount; ++skillIndex)
             {
-				spellList.Add(spellID, new Spell(spellPt));
+                string spellID = pbUnit.spellPbList[skillIndex].skillId;
+                spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellID);
+                if (spellPt != null)
+                {
+                    spellList.Add(spellID, new Spell(spellPt, pbUnit.spellPbList[skillIndex].level));
+                }
             }
-        }	
+        }
+        //TODO: remove, for fake enemy
+        else
+        {
+            ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson(unitRowData.spellIDList);
+            for (int i = 0; i < spellArrayList.Count; ++i)
+            {
+                string spellID = spellArrayList[i] as string;
+                spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellID);
+                if (spellPt != null)
+                {
+                    spellList.Add(spellID, new Spell(spellPt, 1));
+                }
+            }	
+        }
+
 
 		//性格，勤奋度
 		character = pbUnit.character;
@@ -240,10 +258,16 @@ public class GameUnit
             if (wpData != null)
             {
                 weakPointList.Add(wpData.id);
+
                 WeakPointRuntimeData wpRuntimeData = new WeakPointRuntimeData();
                 wpRuntimeData.id = wpData.id;
                 wpRuntimeData.maxHp = wpRuntimeData.hp = wpData.health;
                 wpHpList.Add(wpData.id, wpRuntimeData);
+
+				if(wpData.isSelf == 1)
+				{
+				  isVisible = wpData.initialStatus == 1;
+				}
             }
 		}
 	}

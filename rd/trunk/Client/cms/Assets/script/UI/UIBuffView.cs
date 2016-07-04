@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 //for single unit buff view
-public class UIBuffView : UIBase
+public class UIBuffView : MonoBehaviour
 {
     public BuffIcon[] dotBuffList;
     public BuffIcon otherBuff;
@@ -37,12 +37,17 @@ public class UIBuffView : UIBase
         }
     }
 	
-	void Update () 
+	void Update ()
     {
+        if (dotBuffList[0] == null)
+        {
+            int a = 0;
+        }
         UpdateBuff();
+
 	}
 
-    void OnDestory()
+    void OnDestroy()
     {
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellBuff, OnBuffChanged);
     }

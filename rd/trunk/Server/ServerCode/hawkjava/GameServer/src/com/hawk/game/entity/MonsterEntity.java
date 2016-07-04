@@ -71,7 +71,7 @@ public class MonsterEntity extends HawkDBEntity {
 	protected boolean invalid = false;
 
 	@Transient
-	protected Map<Integer, Integer> skillMap = new HashMap<Integer, Integer>();
+	protected Map<String, Integer> skillMap = new HashMap<String, Integer>();
 
 	public MonsterEntity() {
 		this.createTime = HawkTime.getCalendar();
@@ -161,7 +161,7 @@ public class MonsterEntity extends HawkDBEntity {
 		this.disposition = disposition;
 	}
 
-	public Map<Integer, Integer> getSkillMap() {
+	public Map<String, Integer> getSkillMap() {
 		return skillMap;
 	}
 
@@ -169,14 +169,14 @@ public class MonsterEntity extends HawkDBEntity {
 		return skillMap.get(skillId);
 	}
 
-	public void setSkillLevel(int skillId, int level) {
+	public void setSkillLevel(String skillId, int level) {
 		skillMap.put(skillId, level);
 	}
 
 	@Override
 	public boolean assemble() {
 		if (skillJson != null && false == "".equals(skillJson) && false == "null".equals(skillJson)) {
-			skillMap = HawkJsonUtil.getJsonInstance().fromJson(skillJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
+			skillMap = HawkJsonUtil.getJsonInstance().fromJson(skillJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
 		return true;
 	}

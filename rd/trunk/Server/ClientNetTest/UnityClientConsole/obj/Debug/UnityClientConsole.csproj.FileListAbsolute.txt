@@ -19,3 +19,9 @@ E:\old_server\Server\ClientNetTest\UnityClientConsole\obj\Debug\UnityClientConso
 E:\old_server\Server\ClientNetTest\UnityClientConsole\bin\Debug\UnityClientConsole.exe
 E:\old_server\Server\ClientNetTest\UnityClientConsole\bin\Debug\UnityClientConsole.pdb
 E:\old_server\Server\ClientNetTest\UnityClientConsole\obj\Debug\UnityClientConsole.csprojResolveAssemblyReference.cache
+E:\workSpace\Program\trunk\Server\ClientNetTest\UnityClientConsole\bin\Debug\UnityClientConsole.exe.config
+E:\workSpace\Program\trunk\Server\ClientNetTest\UnityClientConsole\bin\Debug\UnityClientConsole.exe
+E:\workSpace\Program\trunk\Server\ClientNetTest\UnityClientConsole\bin\Debug\UnityClientConsole.pdb
+E:\workSpace\Program\trunk\Server\ClientNetTest\UnityClientConsole\obj\Debug\UnityClientConsole.csprojResolveAssemblyReference.cache
+E:\workSpace\Program\trunk\Server\ClientNetTest\UnityClientConsole\obj\Debug\UnityClientConsole.exe
+E:\workSpace\Program\trunk\Server\ClientNetTest\UnityClientConsole\obj\Debug\UnityClientConsole.pdb

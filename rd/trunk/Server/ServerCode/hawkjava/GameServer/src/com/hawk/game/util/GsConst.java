@@ -8,7 +8,12 @@ package com.hawk.game.util;
 public class GsConst {
 	// 刷新间隔帧
 	public static final int REFRESH_PERIOD = 100;
+	
+	public static final int INSTANCE_CARD_COUNT = 4;
 
+	// 装备在背包时monsterId
+	public static final int EQUIPNOTDRESS = -1;
+	
 	/**
 	 * 对象类型
 	 * 

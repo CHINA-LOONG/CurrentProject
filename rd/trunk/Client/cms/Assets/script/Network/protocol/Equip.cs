@@ -158,4 +158,161 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipCompose")]
+  public partial class HSEquipCompose : global::ProtoBuf.IExtensible
+  {
+    public HSEquipCompose() {}
+    
+    private int _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int equipId
+    {
+      get { return _equipId; }
+      set { _equipId = value; }
+    }
+    private int _relatedItemId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"relatedItemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int relatedItemId
+    {
+      get { return _relatedItemId; }
+      set { _relatedItemId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipComposeRet")]
+  public partial class HSEquipComposeRet : global::ProtoBuf.IExtensible
+  {
+    public HSEquipComposeRet() {}
+    
+    private int _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int equipId
+    {
+      get { return _equipId; }
+      set { _equipId = value; }
+    }
+    private int _stage = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"stage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int stage
+    {
+      get { return _stage; }
+      set { _stage = value; }
+    }
+    private int _level = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSIncreaseEquipLevel")]
+  public partial class HSIncreaseEquipLevel : global::ProtoBuf.IExtensible
+  {
+    public HSIncreaseEquipLevel() {}
+    
+    private long _id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long id
+    {
+      get { return _id; }
+      set { _id = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSIncreaseEquipLevelRet")]
+  public partial class HSIncreaseEquipLevelRet : global::ProtoBuf.IExtensible
+  {
+    public HSIncreaseEquipLevelRet() {}
+    
+    private long _id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long id
+    {
+      get { return _id; }
+      set { _id = value; }
+    }
+    private int _stage = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"stage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int stage
+    {
+      get { return _stage; }
+      set { _stage = value; }
+    }
+    private int _level = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSIncreaseEquipStage")]
+  public partial class HSIncreaseEquipStage : global::ProtoBuf.IExtensible
+  {
+    public HSIncreaseEquipStage() {}
+    
+    private long _id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long id
+    {
+      get { return _id; }
+      set { _id = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSIncreaseEquipStageRet")]
+  public partial class HSIncreaseEquipStageRet : global::ProtoBuf.IExtensible
+  {
+    public HSIncreaseEquipStageRet() {}
+    
+    private long _id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long id
+    {
+      get { return _id; }
+      set { _id = value; }
+    }
+    private int _stage = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"stage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int stage
+    {
+      get { return _stage; }
+      set { _stage = value; }
+    }
+    private int _level = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

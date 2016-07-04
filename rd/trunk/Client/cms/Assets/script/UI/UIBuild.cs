@@ -36,13 +36,13 @@ public class UIBuild : UIBase
 	void BindListener()
 	{
 		GameEventMgr.Instance.AddListener<int> (GameEventList.LevelChanged, OnLevelChanged);
-		GameEventMgr.Instance.AddListener<int> (GameEventList.CoinChanged, OnCoinChanged);
+		GameEventMgr.Instance.AddListener<long> (GameEventList.CoinChanged, OnCoinChanged);
 	}
 
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener<int> (GameEventList.LevelChanged, OnLevelChanged);
-		GameEventMgr.Instance.RemoveListener<int> (GameEventList.CoinChanged, OnCoinChanged);
+		GameEventMgr.Instance.RemoveListener<long> (GameEventList.CoinChanged, OnCoinChanged);
 	}
 
 	void OnLevelChanged(int level)
@@ -51,7 +51,7 @@ public class UIBuild : UIBase
 		nameText.text = GameDataMgr.Instance.PlayerDataAttr.nickName;
 	}
 
-	void OnCoinChanged(int coin)
+	void OnCoinChanged(long coin)
 	{
 		coinText.text = coin.ToString ();
 	}

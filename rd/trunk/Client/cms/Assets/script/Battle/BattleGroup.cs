@@ -127,7 +127,7 @@ public class BattleGroup
         for (int i = 0; i < enemyField.Length; i++)
         {
             var bo = enemyField[i];
-            if (bo != null && bo.unit.curLife > 0 && bo.unit.ActionOrder < fastestOrder)
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.ActionOrder < fastestOrder && bo.unit.isVisible)
             {
                 fastestUnit = bo;
                 fastestOrder = bo.unit.ActionOrder;
@@ -137,7 +137,7 @@ public class BattleGroup
         for (int i = 0; i < playerField.Length; i++)
         {
             var bo = playerField[i];
-            if (bo != null && bo.unit.curLife > 0 && bo.unit.ActionOrder < fastestOrder)
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.ActionOrder < fastestOrder && bo.unit.isVisible)
             {
                 fastestUnit = bo;
                 fastestOrder = bo.unit.ActionOrder;
@@ -157,8 +157,10 @@ public class BattleGroup
         for (int i = 0; i < enemyField.Length; i++)
         {
             var bo = enemyField[i];
-            if (bo != null && bo.unit.curLife > 0)
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.isVisible)
+			{
                 return false;
+			}
         }
 
         return true;

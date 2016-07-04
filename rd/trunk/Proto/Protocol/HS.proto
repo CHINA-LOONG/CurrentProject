@@ -4,68 +4,82 @@ option java_package = "com.hawk.game.protocol";
 enum sys
 {
 	// 数据封装
-	DATA_WRAPPER           = 1;
+	DATA_WRAPPER                = 1;
 	// 秘钥交换
-	KEY_EXCHANGE           = 2;
+	KEY_EXCHANGE                = 2;
 	// 心跳通知
-	HEART_BEAT             = 3;	
+	HEART_BEAT                  = 3;	
 	// 错误码提示
-	ERROR_CODE             = 4;	
+	ERROR_CODE                  = 4;	
 }
 
 // 游戏协议ID列表(>=100)
 enum code
 {
 	// 玩家
-	LOGIN_C                = 1000;
-	LOGIN_S                = 1001;
-	LOGOUT_C               = 1002;
-	LOGOUT_S               = 1003;
-	KICKOUT_S              = 1004;
-	SYNCINFO_C			   = 1005;
-	SYNCINFO_S             = 1006;
+	LOGIN_C                     = 1000;
+	LOGIN_S                     = 1001;
+	LOGOUT_C                    = 1002;
+	LOGOUT_S                    = 1003;
+	KICKOUT_S                   = 1004;
+	SYNCINFO_C			        = 1005;
+	SYNCINFO_S                  = 1006;
 
-	PLAYER_INFO_SYNC_S     = 1010;
-	STATISTICS_INFO_SYNC_S = 1011;
-	MONSTER_INFO_SYNC_S    = 1012;
-	ITEM_INFO_SYNC_S       = 1013;
-	EQUIP_INFO_SYNC_S      = 1014;
-	ASSEMBLE_FINISH_S      = 1015;
-	
+	PLAYER_INFO_SYNC_S          = 1010;
+	STATISTICS_INFO_SYNC_S      = 1011;
+	MONSTER_INFO_SYNC_S         = 1012;
+	ITEM_INFO_SYNC_S            = 1013;
+	EQUIP_INFO_SYNC_S           = 1014;
+	ASSEMBLE_FINISH_S           = 1015;
+
 	// 角色
-	PLAYER_CREATE_C        = 1101;
-	PLAYER_CREATE_S        = 1102;
+	PLAYER_CREATE_C             = 1101;
+	PLAYER_CREATE_S             = 1102;
 
-	PLAYER_CONSUME_S	   = 1103;
-	PLAYER_REWARD_S 	   = 1104;
-	
+	PLAYER_CONSUME_S	        = 1103;
+	PLAYER_REWARD_S 	        = 1104;
+
 	// 怪物
-	MONSTER_ADD_S          = 2001;
-	MONSTER_CATCH_C        = 2002;
-	MONSTER_CATCH_S        = 2003;
-	MONSTER_BREAK_C        = 2004;
-	MONSTER_BREAK_S        = 2005;
-	MONSTER_FEED_C         = 2006;
-	MONSTER_FEED_S         = 2007;
+	MONSTER_ADD_S               = 2001;
+	MONSTER_CATCH_C             = 2002;
+	MONSTER_CATCH_S             = 2003;
+	MONSTER_BREAK_C             = 2004;
+	MONSTER_BREAK_S             = 2005;
+	MONSTER_FEED_C              = 2006;
+	MONSTER_FEED_S              = 2007;
 
 	// 副本
-	INSTANCE_ENTER_C       = 3000;
-	INSTANCE_ENTER_S       = 3001;
-	INSTANCE_SETTLE_C      = 3002;
-	INSTANCE_SETTLE_S      = 3003;
-	
+	INSTANCE_ENTER_C            = 3000;
+	INSTANCE_ENTER_S            = 3001;
+	INSTANCE_SETTLE_C           = 3002;
+	INSTANCE_SETTLE_S           = 3003;
+	INSTANCE_OPEN_CARD_C        = 3004;
+	INSTANCE_OPEN_CARD_S        = 3005;
+
 	// 道具
-	ITEM_USE_C			   = 4001;
-	ITEM_USE_S			   = 4002;
-	ITEM_SELL_C		       = 4003;
-	ITEM_SELL_S		       = 4004;
-	ITEM_BUY_C		       = 4005;
-	ITEM_BUY_S		       = 4006;
-	ITEM_COMPOSE_C		   = 4007;
-	ITEM_COMPOSE_S		   = 4008;
-	
-	EQUIP_SELL_C		   = 4101;
-	EQUIP_BUY_C		       = 4102;	
-	EQUIP_COMPOSE_C		   = 4103;
-	EQUIP_COMPOSE_S		   = 4104;
+	ITEM_USE_C			        = 4001;
+	ITEM_USE_S			        = 4002;
+	ITEM_SELL_C		            = 4003;
+	ITEM_SELL_S		            = 4004;
+	ITEM_BUY_C		            = 4005;
+	ITEM_BUY_S		            = 4006;
+	ITEM_COMPOSE_C		        = 4007;
+	ITEM_COMPOSE_S		        = 4008;
+
+	EQUIP_SELL_C		        = 4101;
+	EQUIP_BUY_C		            = 4102;	
+	EQUIP_COMPOSE_C		        = 4103;
+	EQUIP_COMPOSE_S		        = 4104;
+	EQUIP_INCREASE_LEVEL_C      = 4105;
+	EQUIP_INCREASE_LEVEL_S      = 4106;
+	EQUIP_INCREASE_STAGE_C      = 4107;
+	EQUIP_INCREASE_STAGE_S      = 4108;
+
+	EQUIP_MONSTER_DRESS_C       = 4109;
+	EQUIP_MONSTER_DRESS_S       = 4110;
+	EQUIP_MONSTER_UNDRESS_C     = 4111;
+	EQUIP_MONSTER_UNDRESS_S     = 4112;
+	EQUIP_MONSTER_REPLACE_C     = 4113;
+	EQUIP_MONSTER_REPLACE_S     = 4114;
+
 }

@@ -43,7 +43,7 @@ enum ClassType
 enum itemType
 {
 	// 空属性
-	NONE_ITEM = 1;
+	NONE_ITEM = 0;
 	// 玩家属性
 	PLAYER_ATTR = 1;	
 	// 角色

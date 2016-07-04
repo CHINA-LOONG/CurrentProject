@@ -4,7 +4,7 @@ option java_package = "com.hawk.game.protocol";
 
 message HSSkill
 {
-	required int32 skillId = 1;
+	required string skillId = 1;
 	required int32 level = 2;
 }
 

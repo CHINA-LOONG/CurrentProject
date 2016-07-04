@@ -1,6 +1,8 @@
 package com.hawk.game.player;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -25,6 +27,7 @@ import com.hawk.game.protocol.Monster.HSMonsterInfoSync;
 import com.hawk.game.protocol.Player.HSPlayerInfoSync;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.util.BuilderUtil;
+import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
 
 /**
@@ -180,11 +183,14 @@ public class PlayerData {
 	 * 
 	 */
 	public void initMonsterDressedEquip() {
-		dressedEquipMap = new TreeMap<>();
+		dressedEquipMap = new HashMap<>();
 		for (EquipEntity equip : equipEntities) {
-			if (equip.getMonsterId() != -1) {
+			if (equip.getMonsterId() != GsConst.EQUIPNOTDRESS) {
 				int monsterId = equip.getMonsterId();
-				addMonsterEquip(monsterId, equip);
+				ItemCfg itemcfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equip.getItemId());
+				if (itemcfg != null) {
+					addMonsterEquip(monsterId, equip, itemcfg.getPart());
+				}
 			}
 		}
 	}
@@ -195,25 +201,21 @@ public class PlayerData {
 	 * @param monsterID 怪物ID
 	 * @param id 装备唯一id
 	 */
-	public boolean addMonsterEquip(int monsterId, EquipEntity equipEntity) {
+	public boolean addMonsterEquip(int monsterId, EquipEntity equipEntity, int part) {
 		Map<Integer, Long> monsterDressedMap = null;
 		if (dressedEquipMap.containsKey(monsterId)) {
 			monsterDressedMap = dressedEquipMap.get(monsterId);
 		}
 		else {
-			monsterDressedMap = new TreeMap<Integer, Long>();
+			monsterDressedMap = new HashMap<>();
 			dressedEquipMap.put(monsterId, monsterDressedMap);
 		}
 		
-		ItemCfg itemcfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipEntity.getItemId());		
-		if (itemcfg == null) {
-			return false;
-		}
-		if (monsterDressedMap.containsKey(itemcfg.getPart())) {
+		if (monsterDressedMap.containsKey(part)) {
 			return false;
 		}
 		
-		monsterDressedMap.put(itemcfg.getPart(), equipEntity.getId());
+		monsterDressedMap.put(part, equipEntity.getId());
 		return true;
 	}
 	
@@ -221,18 +223,14 @@ public class PlayerData {
 	 * 脱掉装备
 	 * 
 	 */
-	public boolean removeMonsterEquip(EquipEntity equipEntity) {
+	public boolean removeMonsterEquip(EquipEntity equipEntity, int part) {
 		Map<Integer, Long> monsterDressedMap = null;
 		if (!dressedEquipMap.containsKey(equipEntity.getMonsterId())) {
 			return false;
 		}
 		monsterDressedMap = dressedEquipMap.get(equipEntity.getMonsterId());
-		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipEntity.getItemId());
-		if (itemCfg == null) {
-			return false;
-		}
 		
-		if (monsterDressedMap.get(itemCfg.getPart()) != equipEntity.getId()) {
+		if (monsterDressedMap.get(part) != equipEntity.getId()) {
 			return false;
 		}
 		
@@ -248,7 +246,7 @@ public class PlayerData {
 	 * 不修改entity
 	 * 
 	 */
-	public boolean replaceMonsterEquip(int monsterId, EquipEntity oldEquip, EquipEntity newEquip) {	
+	public boolean replaceMonsterEquip(int monsterId, EquipEntity oldEquip, EquipEntity newEquip, int part) {	
 		if (newEquip.getMonsterId() != -1 || oldEquip.getMonsterId() != monsterId) {
 			return false;
 		}
@@ -258,19 +256,67 @@ public class PlayerData {
 			return false;
 		}
 		
-		ItemCfg oldCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, oldEquip.getItemId());
-		ItemCfg newCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, newEquip.getItemId());
-		if (oldCfg.getPart() != newCfg.getPart()) {
+		monsterDressedMap = dressedEquipMap.get(monsterId);		
+		if (monsterDressedMap.get(part) != oldEquip.getId()) {
+			return false;
+		}
+		
+		monsterDressedMap.put(part, newEquip.getId());
+		return true;	
+	}
+	
+	/**
+	 * 指定位置是否有装备
+	 * 
+	 */
+	public boolean isMonsterEquipOnPart(int monsterId, int part) {	
+		Map<Integer, Long> monsterDressedMap = null;
+		if (!dressedEquipMap.containsKey(monsterId)) {
 			return false;
 		}
 		
 		monsterDressedMap = dressedEquipMap.get(monsterId);		
-		if (monsterDressedMap.get(oldCfg.getPart()) != oldEquip.getId()) {
+		if (!monsterDressedMap.containsKey(part)) {
 			return false;
 		}
 		
-		monsterDressedMap.put(newCfg.getPart(), newEquip.getId());
 		return true;	
+	}
+	
+	/**
+	 * 指定位置是否有装备id
+	 * 
+	 */
+	public boolean isMonsterEquipOnPart(int monsterId, int part, long id) {	
+		Map<Integer, Long> monsterDressedMap = null;
+		if (!dressedEquipMap.containsKey(monsterId)) {
+			return false;
+		}
+		
+		monsterDressedMap = dressedEquipMap.get(monsterId);		
+		if (monsterDressedMap.get(part) != id) {
+			return false;
+		}
+		
+		return true;	
+	}
+
+	/**
+	 * 获取某一个位置装备Id
+	 * 
+	 */
+	public long getMonsterEquipIdOnPart(int monsterId, int part) {	
+		Map<Integer, Long> monsterDressedMap = null;
+		if (!dressedEquipMap.containsKey(monsterId)) {
+			return 0;
+		}
+		
+		monsterDressedMap = dressedEquipMap.get(monsterId);		
+		if (monsterDressedMap.containsKey(part) == false) {
+			return 0;
+		}
+		
+		return monsterDressedMap.get(part);	
 	}
 	
 	/**********************************************************************************************************
@@ -335,7 +381,7 @@ public class PlayerData {
 	public void loadAllMonster() {
 		monsterEntityList.clear();
 		List<MonsterEntity> monsterEntitys = HawkDBManager.getInstance().query("from MonsterEntity where playerId = ? and invalid = 0", getId());
-		if (monsterEntityList != null && monsterEntityList.size() > 0) {
+		if (monsterEntitys != null && monsterEntitys.size() > 0) {
 			for (MonsterEntity monsterEntity : monsterEntitys) {
 				monsterEntity.assemble();
 				monsterEntityList.put(monsterEntity.getId(), monsterEntity);
@@ -400,7 +446,7 @@ public class PlayerData {
 	public void syncStatisticsInfo() {
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_INFO_SYNC_S, BuilderUtil.genStatisticsBuilder(statisticsEntity)));
 	}
-
+	
 	/**
 	 * 同步怪物信息(0表示同步所有)
 	 */
@@ -416,11 +462,7 @@ public class PlayerData {
 		}
 
 		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.MONSTER_INFO_SYNC_S, builder);
-		if (id == 0) {
-			player.sendProtocol(ProtoUtil.compressProtocol(protocol));
-		} else {
-			player.sendProtocol(protocol);
-		}
+		player.sendProtocol(protocol);
 	}
 
 

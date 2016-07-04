@@ -43,7 +43,9 @@ public class UIBattle : UIBase
         }
 
 		m_ButtonMirror.IsOn = false;
-        m_MirrorImage.gameObject.SetActive(false);
+        
+		InitMirrorImage ();
+		InitFindWpInfoGroup ();
         m_PetPanel.gameObject.SetActive(false);
         dazhaoTip.gameObject.SetActive(false);
 
@@ -97,6 +99,26 @@ public class UIBattle : UIBase
 		m_ButtonMomo.onClick = OnMomoCliced;
     }
 
+
+	void InitMirrorImage()
+	{
+		GameObject prefab = ResourceMgr.Instance.LoadAsset ("ui/findmonsterinfo", "MirrorFindMonsterInfo");
+		GameObject go = Instantiate (prefab) as GameObject;
+		go.transform.SetParent (m_MirrorImage.gameObject.transform,false);
+		MirrorFindMonsterInfo mminfo = go.GetComponent<MirrorFindMonsterInfo> ();
+		mminfo.Init ();
+
+		m_MirrorImage.gameObject.SetActive(false);
+	}
+
+	void InitFindWpInfoGroup()
+	{
+		//照妖镜发现弱点
+		WpInfoGroup wpInfoGroup = gameObject.AddComponent<WpInfoGroup> ();
+		wpInfoGroup.InitWithParent (transform);
+	}	
+
+	//--------------------------------------------------------------------------------------------------
     void OnButtonLeftCllicked(GameObject go)
     {
         //m_PetPanelGameObject.SetActive (true);

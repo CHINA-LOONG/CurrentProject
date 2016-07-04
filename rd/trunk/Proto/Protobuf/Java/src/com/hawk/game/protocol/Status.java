@@ -582,6 +582,62 @@ public final class Status {
      * </pre>
      */
     ITEM_SELL_NOT_ALLOW(6, 262151),
+    /**
+     * <code>EQUIP_MAX_LEVEL_ALREADY = 262152;</code>
+     *
+     * <pre>
+     * 装备最大等级
+     * </pre>
+     */
+    EQUIP_MAX_LEVEL_ALREADY(7, 262152),
+    /**
+     * <code>EQUIP_LEVEL_NOT_ENOUGH = 262153;</code>
+     *
+     * <pre>
+     * 装备等级不够进阶
+     * </pre>
+     */
+    EQUIP_LEVEL_NOT_ENOUGH(8, 262153),
+    /**
+     * <code>EQUIP_MAX_STAGE_ALREADY = 262154;</code>
+     *
+     * <pre>
+     * 装备最大品级
+     * </pre>
+     */
+    EQUIP_MAX_STAGE_ALREADY(9, 262154),
+    /**
+     * <code>EQUIP_DRESS_ALREADY = 262160;</code>
+     *
+     * <pre>
+     * 装备不在背包
+     * </pre>
+     */
+    EQUIP_DRESS_ALREADY(10, 262160),
+    /**
+     * <code>EQUIP_NOT_DRESS_OTHER = 262161;</code>
+     *
+     * <pre>
+     * 该位置没有其他装备
+     * </pre>
+     */
+    EQUIP_NOT_DRESS_OTHER(11, 262161),
+    /**
+     * <code>EQUIP_DRESS_OTHER_ALREADY = 262162;</code>
+     *
+     * <pre>
+     * 该位置已经有其他装备
+     * </pre>
+     */
+    EQUIP_DRESS_OTHER_ALREADY(12, 262162),
+    /**
+     * <code>EQUIP_NOT_DRESSED = 262163;</code>
+     *
+     * <pre>
+     * 装备不在身上
+     * </pre>
+     */
+    EQUIP_NOT_DRESSED(13, 262163),
     ;
 
     /**
@@ -640,6 +696,62 @@ public final class Status {
      * </pre>
      */
     public static final int ITEM_SELL_NOT_ALLOW_VALUE = 262151;
+    /**
+     * <code>EQUIP_MAX_LEVEL_ALREADY = 262152;</code>
+     *
+     * <pre>
+     * 装备最大等级
+     * </pre>
+     */
+    public static final int EQUIP_MAX_LEVEL_ALREADY_VALUE = 262152;
+    /**
+     * <code>EQUIP_LEVEL_NOT_ENOUGH = 262153;</code>
+     *
+     * <pre>
+     * 装备等级不够进阶
+     * </pre>
+     */
+    public static final int EQUIP_LEVEL_NOT_ENOUGH_VALUE = 262153;
+    /**
+     * <code>EQUIP_MAX_STAGE_ALREADY = 262154;</code>
+     *
+     * <pre>
+     * 装备最大品级
+     * </pre>
+     */
+    public static final int EQUIP_MAX_STAGE_ALREADY_VALUE = 262154;
+    /**
+     * <code>EQUIP_DRESS_ALREADY = 262160;</code>
+     *
+     * <pre>
+     * 装备不在背包
+     * </pre>
+     */
+    public static final int EQUIP_DRESS_ALREADY_VALUE = 262160;
+    /**
+     * <code>EQUIP_NOT_DRESS_OTHER = 262161;</code>
+     *
+     * <pre>
+     * 该位置没有其他装备
+     * </pre>
+     */
+    public static final int EQUIP_NOT_DRESS_OTHER_VALUE = 262161;
+    /**
+     * <code>EQUIP_DRESS_OTHER_ALREADY = 262162;</code>
+     *
+     * <pre>
+     * 该位置已经有其他装备
+     * </pre>
+     */
+    public static final int EQUIP_DRESS_OTHER_ALREADY_VALUE = 262162;
+    /**
+     * <code>EQUIP_NOT_DRESSED = 262163;</code>
+     *
+     * <pre>
+     * 装备不在身上
+     * </pre>
+     */
+    public static final int EQUIP_NOT_DRESSED_VALUE = 262163;
 
 
     public final int getNumber() { return value; }
@@ -653,6 +765,13 @@ public final class Status {
         case 262149: return ITEM_NOT_ENOUGH;
         case 262150: return ITEM_BUY_NOT_ALLOW;
         case 262151: return ITEM_SELL_NOT_ALLOW;
+        case 262152: return EQUIP_MAX_LEVEL_ALREADY;
+        case 262153: return EQUIP_LEVEL_NOT_ENOUGH;
+        case 262154: return EQUIP_MAX_STAGE_ALREADY;
+        case 262160: return EQUIP_DRESS_ALREADY;
+        case 262161: return EQUIP_NOT_DRESS_OTHER;
+        case 262162: return EQUIP_DRESS_OTHER_ALREADY;
+        case 262163: return EQUIP_NOT_DRESSED;
         default: return null;
       }
     }
@@ -724,12 +843,17 @@ public final class Status {
       "rror\022\026\n\020PLAYER_NOT_EXIST\020\201\200\010\022\033\n\025PLAYER_N" +
       "ICKNAME_EXIST\020\202\200\010*?\n\014monsterError\022\026\n\020MON",
       "STER_MAX_SIZE\020\201\200\014\022\027\n\021MONSTER_NOT_EXIST\020\202" +
-      "\200\014*\263\001\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026" +
+      "\200\014*\201\003\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026" +
       "\n\020COINS_NOT_ENOUGH\020\202\200\010\022\025\n\017GOLD_NOT_ENOUG" +
       "H\020\203\200\010\022\025\n\017EQUIP_NOT_FOUND\020\204\200\010\022\025\n\017ITEM_NOT" +
       "_ENOUGH\020\205\200\020\022\030\n\022ITEM_BUY_NOT_ALLOW\020\206\200\020\022\031\n" +
-      "\023ITEM_SELL_NOT_ALLOW\020\207\200\020B\030\n\026com.hawk.gam" +
-      "e.protocol"
+      "\023ITEM_SELL_NOT_ALLOW\020\207\200\020\022\035\n\027EQUIP_MAX_LE" +
+      "VEL_ALREADY\020\210\200\020\022\034\n\026EQUIP_LEVEL_NOT_ENOUG" +
+      "H\020\211\200\020\022\035\n\027EQUIP_MAX_STAGE_ALREADY\020\212\200\020\022\031\n\023" +
+      "EQUIP_DRESS_ALREADY\020\220\200\020\022\033\n\025EQUIP_NOT_DRE" +
+      "SS_OTHER\020\221\200\020\022\037\n\031EQUIP_DRESS_OTHER_ALREAD",
+      "Y\020\222\200\020\022\027\n\021EQUIP_NOT_DRESSED\020\223\200\020B\030\n\026com.ha" +
+      "wk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

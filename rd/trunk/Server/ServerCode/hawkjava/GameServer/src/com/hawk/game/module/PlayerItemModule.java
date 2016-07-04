@@ -56,7 +56,7 @@ public class PlayerItemModule extends PlayerModule{
 		}
 		else if(protocol.checkType(HS.code.ITEM_SELL_C)) {
 			//道具出售
-			//onItemSell(protocol.parseProtocol(HPItemSell.getDefaultInstance()));
+			//onItemSell(protocol.parseProtocol(hsItemSell.getDefaultInstance()));
 			return true;
 		}
 		else if(protocol.checkType(HS.code.ITEM_BUY_C)) {
@@ -95,36 +95,36 @@ public class PlayerItemModule extends PlayerModule{
 
 	/**
 	 * 购买
-	 * @param hpCode
+	 * @param hsCode
 	 * @param protocol
 	 */
-	private void onItemBuy(int hpCode, HSItemBuy protocol) {
+	private void onItemBuy(int hsCode, HSItemBuy protocol) {
 		int itemId = protocol.getItemId();
 		int itemCount = protocol.getItemCount();
 		if (itemId <= 0 || itemCount <= 0) {
-			sendError(hpCode, Status.error.PARAMS_INVALID);
+			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return ;
 		}
 		 
 		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId);
 		if(itemCfg == null) {
-			sendError(hpCode, Status.error.CONFIG_NOT_FOUND);
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
 			return ;
 		}
 		
 		if (itemCfg.getType() == Const.toolType.EQUIPTOOL_VALUE) {
-			sendError(hpCode, Status.error.PARAMS_INVALID);
+			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return ;
 		}
 		
 		if(itemCfg.getBuyPrice() <= 0) {
-			sendError(hpCode, Status.itemError.ITEM_BUY_NOT_ALLOW);
+			sendError(hsCode, Status.itemError.ITEM_BUY_NOT_ALLOW);
 			return ;
 		}
 		
 		Const.changeType changeType = itemCfg.getBuyType() == Const.moneyType.MONEY_COIN_VALUE ? Const.changeType.CHANGE_COIN : Const.changeType.CHANGE_GOLD;
 		ConsumeItems consumeItem = ConsumeItems.valueOf(changeType, itemCfg.getBuyPrice() * itemCount);
-		if (consumeItem.checkConsume(player, hpCode) == false) {
+		if (consumeItem.checkConsume(player, hsCode) == false) {
 			return ;
 		}
 	
@@ -141,26 +141,26 @@ public class PlayerItemModule extends PlayerModule{
 	
 	/**
 	 * 使用道具
-	 * @param hpCode
+	 * @param hsCode
 	 * @param protocol
 	 */
-	private void onItemUse(int hpCode, HSItemUse protocol) {
+	private void onItemUse(int hsCode, HSItemUse protocol) {
 		int itemId = protocol.getItemId();
 		
 		if (itemId <= 0 ) {
-			sendError(hpCode, Status.error.PARAMS_INVALID);
+			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return ;
 		}
 		 
 		ItemEntity itemEntity = player.getPlayerData().getItemByItemId(itemId);
 		if(itemEntity == null) {
-			sendError(hpCode, Status.itemError.ITEM_NOT_FOUND);
+			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND);
 			return ;
 		}
 		
 		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemEntity.getItemId());
 		if(itemCfg == null) {
-			sendError(hpCode, Status.error.CONFIG_NOT_FOUND);
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
 			return ;
 		}
 		
@@ -171,7 +171,7 @@ public class PlayerItemModule extends PlayerModule{
 		
 		if (useType == Const.toolType.FRAGMENTTOOL_VALUE) {
 			consumeItems.addItem(itemId, itemCfg.getNeedCount());
-			if (consumeItems.checkConsume(player, hpCode) == false) {
+			if (consumeItems.checkConsume(player, hsCode) == false) {
 				return;
 			}
 			consumeItems.consumeTakeAffectAndPush(player, Action.TOOL_USE);
@@ -183,7 +183,7 @@ public class PlayerItemModule extends PlayerModule{
 		else if (useType == Const.toolType.BOXTOOL_VALUE) {
 			consumeItems.addItem(itemId, 1);
 			consumeItems.addItemInfos(itemCfg.getNeedItemList());
-			if (consumeItems.checkConsume(player, hpCode) == false) {
+			if (consumeItems.checkConsume(player, hsCode) == false) {
 				return;
 			}
 			
@@ -205,30 +205,30 @@ public class PlayerItemModule extends PlayerModule{
 	
 	/**
 	 * 合成道具
-	 * @param hpCode
+	 * @param hsCode
 	 * @param protocol
 	 */
-	private void onItemCompose(int hpCode, HSItemCompose protocol) {
+	private void onItemCompose(int hsCode, HSItemCompose protocol) {
 		int itemId = protocol.getItemId();
 		if (itemId <= 0 ) {
-			sendError(hpCode, Status.error.PARAMS_INVALID);
+			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return ;
 		}
 		
 		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId);
 		if(itemCfg == null) {
-			sendError(hpCode, Status.error.CONFIG_NOT_FOUND);
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
 			return ;
 		}
 		
 		if (itemCfg.getComponentItemList() == null || itemCfg.getComponentItemList().size() == 0) {
-			sendError(hpCode, Status.itemError.ITEM_NOT_ENOUGH);
+			sendError(hsCode, Status.itemError.ITEM_NOT_ENOUGH);
 			return ;
 		}		
 		
 		ConsumeItems consumeItems = ConsumeItems.valueOf();
 		consumeItems.addItemInfos(itemCfg.getNeedItemList());
-		if (consumeItems.checkConsume(player, hpCode) == false) {
+		if (consumeItems.checkConsume(player, hsCode) == false) {
 			return;
 		}
 		

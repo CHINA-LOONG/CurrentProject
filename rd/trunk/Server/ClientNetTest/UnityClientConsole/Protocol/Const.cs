@@ -79,8 +79,8 @@ namespace PB
     public enum itemType
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"NONE_ITEM", Value=1)]
-      NONE_ITEM = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"NONE_ITEM", Value=0)]
+      NONE_ITEM = 0,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_ATTR", Value=1)]
       PLAYER_ATTR = 1,

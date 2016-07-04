@@ -62,7 +62,7 @@ public class BuilderUtil {
 		builder.setDisposition(monsterEntity.getDisposition());
 
 		HSSkill.Builder skill = HSSkill.newBuilder();
-		for (Entry<Integer, Integer> entry : monsterEntity.getSkillMap().entrySet()) {
+		for (Entry<String, Integer> entry : monsterEntity.getSkillMap().entrySet()) {
 			skill.setSkillId(entry.getKey());
 			skill.setLevel(entry.getValue());
 			builder.addSkill(skill);

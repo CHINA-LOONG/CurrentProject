@@ -83,7 +83,7 @@ public class WeakPointController : MonoBehaviour
 	void  InitWeakPointCollider(WeakPointData rowData,BattleObject bo)
 	{
 		GameObject monsterGo = bo.gameObject;
-		string colliderName = rowData.collider;
+		string colliderName = rowData.node;
 		
 		GameObject colliderGo = Util.FindChildByName(monsterGo,colliderName);
 		if(null == colliderGo)
@@ -95,6 +95,7 @@ public class WeakPointController : MonoBehaviour
 		bo.unit.weakPointDumpDic [rowData.id] = colliderGo;
 		MirrorTarget mTarget = colliderGo.AddComponent<MirrorTarget>();
 		mTarget.WeakPointIDAttr = rowData.id;
+		mTarget.isSelf = rowData.isSelf == 1;
 
 		MeshRenderer mr = colliderGo.GetComponentInChildren<MeshRenderer>();
 		if(mr!=null)
@@ -181,17 +182,16 @@ public class WeakPointController : MonoBehaviour
 			GameUnit unit = getGameUnit (target);
 			string wpName = target.WeakPointIDAttr;
 
-			GameObject wpMeshGo = null;// unit.weakPointMeshDic [wpName] as GameObject;
-			if(!unit.weakPointMeshDic.TryGetValue(wpName,out wpMeshGo))
+			GameObject wpMeshGo = null;
+			if(unit.weakPointMeshDic.TryGetValue(wpName,out wpMeshGo))
 			{
-				//continue;
+				wpMeshGo.SetActive(true);
 			}
-			//if(wpMeshGo.activeSelf)
-			//{
-				//continue;
-			//}
 
-			wpMeshGo.SetActive(true);
+			if(target.isSelf)
+			{
+				unit.isVisible = true;
+			}
 
 			if (!unit.findWeakPointlist.Contains (wpName)) 
 			{
@@ -203,7 +203,8 @@ public class WeakPointController : MonoBehaviour
 
 			ShowOrHideFindEffect (unit, wpName, false);
 			ShowOrHideFindFinishedEffect (unit, wpName, true);
-			//Debug.LogError ("finish ----------- weakPoint ");
+
+			//
 		}
 	}
 
@@ -266,48 +267,83 @@ public class WeakPointController : MonoBehaviour
 			{
 				ffe.Show();
 			}
-		} 
+		}  
 	}
 
-	// /////////////////////////////////////////////
-	public List<string> GetCanAttackWeakpointList(GameUnit unit)
+	// -----------------------------------------------------------------------
+	public List<string> GetAiCanAttackWeakpointList(GameUnit unit)
 	{
-		List<string> canAttackList = new List<string> ();
-
-		foreach (string subWeap in unit.findWeakPointlist) 
-		{
-			WeakPointRuntimeData tempData = unit.wpHpList[subWeap];
-			if(tempData != null && tempData.hp > 0)
-			{
-				canAttackList.Add(subWeap);
-			}
-		}
-
 		List<string> weakPointList = unit.weakPointList;
-
+		List<string> canAttackList = new List<string> ();
 		string subWp;
 		for (int i = 0; i< weakPointList.Count; ++i)
 		{	
 			subWp = weakPointList[i];
-			if(canAttackList.Contains(subWp))
-			{
-				continue;
-			}
+
 			WeakPointData wpData = StaticDataMgr.Instance.GetWeakPointData(subWp);
-			if(null == wpData)
+			if(null == wpData )
 			{
 				continue;
 			}
+			
+			if(wpData.isTarget != 1)
+				continue;
+
+			WeakPointRuntimeData tempData = unit.wpHpList[subWp];
+
+			if(tempData.hp < 1)
+				continue;
+
 			if(wpData.initialStatus ==1)
 			{
-				WeakPointRuntimeData tempData = unit.wpHpList[subWp];
-				if(tempData != null && tempData.hp > 0)
+				canAttackList.Add(subWp);
+			}
+			else
+			{
+				if(unit.findWeakPointlist.Contains(subWp))
 				{
 					canAttackList.Add(subWp);
 				}
 			}
 		}
 
+		return canAttackList;
+	}
+
+	// -----------------------------------------------------------------------
+	public List<string> GetFireFocusAttackWeakpointList(GameUnit unit)
+	{
+		List<string> weakPointList = unit.weakPointList;
+		List<string> canAttackList = new List<string> ();
+		string subWp;
+		for (int i = 0; i< weakPointList.Count; ++i)
+		{	
+			subWp = weakPointList[i];
+			
+			WeakPointData wpData = StaticDataMgr.Instance.GetWeakPointData(subWp);
+			if(null == wpData )
+			{
+				continue;
+			}
+			
+			WeakPointRuntimeData tempData = unit.wpHpList[subWp];
+			
+			if(tempData.hp < 1)
+				continue;
+			
+			if(wpData.initialStatus ==1)
+			{
+				canAttackList.Add(subWp);
+			}
+			else
+			{
+				if(unit.findWeakPointlist.Contains(subWp))
+				{
+					canAttackList.Add(subWp);
+				}
+			}
+		}
+		
 		return canAttackList;
 	}
 }

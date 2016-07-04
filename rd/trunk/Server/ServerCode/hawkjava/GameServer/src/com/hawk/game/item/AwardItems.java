@@ -27,6 +27,7 @@ import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ItemUtil;
+import com.sun.org.apache.regexp.internal.recompile;
 
 /**
  * 奖励信息内存数据 禁忌: 此对象不可重复复用, 避免奖励累加, 切记
@@ -51,6 +52,12 @@ public class AwardItems {
 
 	public static AwardItems valueOf() {
 		return new AwardItems();
+	}
+
+	public static AwardItems valueOf(List<ItemInfo> infos) {
+		AwardItems awards =    new AwardItems();
+		awards.addItemInfos(infos);
+		return awards;
 	}
 	
 	/**
@@ -87,11 +94,6 @@ public class AwardItems {
 	 * @return
 	 */
 	public String toDbString() {
-		return null;
-	}
-
-	@Override
-	public String toString() {
 		return null;
 	}
 
@@ -146,7 +148,7 @@ public class AwardItems {
 			rewardItem = RewardItem.newBuilder();
 			rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
 			rewardItem.setItemId(attrType);
-			rewardItem.setCount(0);
+			rewardItem.setCount(count);
 			rewardInfo.addRewardItems(rewardItem);
 		}
 		
@@ -155,7 +157,10 @@ public class AwardItems {
 	}
 	
 	public AwardItems addItemInfo(ItemInfo itemInfo) {
-		if (itemInfo.getType() == itemType.ITEM_VALUE) {
+		if (itemInfo.getType() == itemType.PLAYER_ATTR_VALUE) {
+			addAttr(itemInfo.getItemId(), itemInfo.getCount());
+		}
+		else if (itemInfo.getType() == itemType.ITEM_VALUE) {
 			addItem(itemInfo.getItemId(), itemInfo.getCount());
 		}
 		else if (itemInfo.getType() == itemType.EQUIP_VALUE) {
@@ -215,7 +220,7 @@ public class AwardItems {
 		}
 		return null;
 	}
-
+	
 	/**
 	 * 功能发放奖励
 	 * 

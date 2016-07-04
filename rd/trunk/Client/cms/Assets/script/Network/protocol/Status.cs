@@ -104,7 +104,16 @@ namespace PB
       ITEM_BUY_NOT_ALLOW = 262150,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_NOT_ALLOW", Value=262151)]
-      ITEM_SELL_NOT_ALLOW = 262151
+      ITEM_SELL_NOT_ALLOW = 262151,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MAX_LEVEL_ALREADY", Value=262152)]
+      EQUIP_MAX_LEVEL_ALREADY = 262152,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_LEVEL_NOT_ENOUGH", Value=262153)]
+      EQUIP_LEVEL_NOT_ENOUGH = 262153,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MAX_STAGE_ALREADY", Value=262154)]
+      EQUIP_MAX_STAGE_ALREADY = 262154
     }
   
 }

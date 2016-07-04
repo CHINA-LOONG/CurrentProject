@@ -1,5 +1,4 @@
 ﻿#TEXT,NUM
 id,rewardId
 #副本Id_难度_怪物Id,奖励列表Id
-demo_1_baize,10001
-demo_1_jiuwei,10002
+demo_soul,10001

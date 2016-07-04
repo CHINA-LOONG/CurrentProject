@@ -55,3 +55,72 @@ message HSEquipComposeRet
 	optional int32 stage = 2;
 	optional int32 level = 3;
 }
+
+// 装备升级
+message HSEquipIncreaseLevel
+{
+	required int64 id= 1;
+}
+
+// 装备升级返回
+message HSEquipIncreaseLevelRet
+{
+	required int64 id = 1;
+	optional int32 stage = 2;
+	optional int32 level = 3;
+}
+
+// 装备进阶
+message HSEquipIncreaseStage
+{
+	required int64 id = 1;
+}
+
+// 装备进阶返回
+message HSEquipIncreaseStageRet
+{
+	required int64 id = 1;
+	optional int32 stage = 2;
+	optional int32 level = 3;
+}
+
+// 装备穿戴
+message HSEquipMonsterDress
+{
+	required int64 id  = 1;
+	required int32 monsterId = 2;
+}
+
+// 装备穿戴返回
+message HSEquipMonsterDressRet
+{
+	optional int64 id  = 1;
+	optional int32 monsterId = 2;
+}
+
+// 装备卸载
+message HSEquipMonsterUndress
+{
+	required int64 id  = 1;
+}
+
+// 装备卸载返回
+message HSEquipMonsterUndressRet
+{
+	optional int64 id  = 1;
+	optional int32 monsterId = 2;
+}
+
+// 装备替换 
+message HSEquipMonsterReplace
+{
+	required int64 id  = 1;
+	optional int32 monsterId = 2;
+}
+
+// 装备卸载返回
+message HSEquipMonsterReplaceRet
+{
+	optional int64 id  = 1;
+	optional int32 monsterId = 2;
+}

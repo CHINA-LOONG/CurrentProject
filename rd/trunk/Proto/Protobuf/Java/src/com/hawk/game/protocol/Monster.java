@@ -642,37 +642,47 @@ public final class Monster {
      */
     int getLazy();
 
-    // required int32 ai = 7;
+    // required int32 lazyExp = 7;
     /**
-     * <code>required int32 ai = 7;</code>
+     * <code>required int32 lazyExp = 7;</code>
      */
-    boolean hasAi();
+    boolean hasLazyExp();
     /**
-     * <code>required int32 ai = 7;</code>
+     * <code>required int32 lazyExp = 7;</code>
      */
-    int getAi();
+    int getLazyExp();
 
-    // repeated .HSSkill skill = 8;
+    // required int32 disposition = 8;
     /**
-     * <code>repeated .HSSkill skill = 8;</code>
+     * <code>required int32 disposition = 8;</code>
+     */
+    boolean hasDisposition();
+    /**
+     * <code>required int32 disposition = 8;</code>
+     */
+    int getDisposition();
+
+    // repeated .HSSkill skill = 9;
+    /**
+     * <code>repeated .HSSkill skill = 9;</code>
      */
     java.util.List<com.hawk.game.protocol.Skill.HSSkill> 
         getSkillList();
     /**
-     * <code>repeated .HSSkill skill = 8;</code>
+     * <code>repeated .HSSkill skill = 9;</code>
      */
     com.hawk.game.protocol.Skill.HSSkill getSkill(int index);
     /**
-     * <code>repeated .HSSkill skill = 8;</code>
+     * <code>repeated .HSSkill skill = 9;</code>
      */
     int getSkillCount();
     /**
-     * <code>repeated .HSSkill skill = 8;</code>
+     * <code>repeated .HSSkill skill = 9;</code>
      */
     java.util.List<? extends com.hawk.game.protocol.Skill.HSSkillOrBuilder> 
         getSkillOrBuilderList();
     /**
-     * <code>repeated .HSSkill skill = 8;</code>
+     * <code>repeated .HSSkill skill = 9;</code>
      */
     com.hawk.game.protocol.Skill.HSSkillOrBuilder getSkillOrBuilder(
         int index);
@@ -760,13 +770,18 @@ public final class Monster {
             }
             case 56: {
               bitField0_ |= 0x00000040;
-              ai_ = input.readInt32();
+              lazyExp_ = input.readInt32();
               break;
             }
-            case 66: {
-              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+            case 64: {
+              bitField0_ |= 0x00000080;
+              disposition_ = input.readInt32();
+              break;
+            }
+            case 74: {
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
                 skill_ = new java.util.ArrayList<com.hawk.game.protocol.Skill.HSSkill>();
-                mutable_bitField0_ |= 0x00000080;
+                mutable_bitField0_ |= 0x00000100;
               }
               skill_.add(input.readMessage(com.hawk.game.protocol.Skill.HSSkill.PARSER, extensionRegistry));
               break;
@@ -779,7 +794,7 @@ public final class Monster {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
           skill_ = java.util.Collections.unmodifiableList(skill_);
         }
         this.unknownFields = unknownFields.build();
@@ -937,52 +952,68 @@ public final class Monster {
       return lazy_;
     }
 
-    // required int32 ai = 7;
-    public static final int AI_FIELD_NUMBER = 7;
-    private int ai_;
+    // required int32 lazyExp = 7;
+    public static final int LAZYEXP_FIELD_NUMBER = 7;
+    private int lazyExp_;
     /**
-     * <code>required int32 ai = 7;</code>
+     * <code>required int32 lazyExp = 7;</code>
      */
-    public boolean hasAi() {
+    public boolean hasLazyExp() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>required int32 ai = 7;</code>
+     * <code>required int32 lazyExp = 7;</code>
      */
-    public int getAi() {
-      return ai_;
+    public int getLazyExp() {
+      return lazyExp_;
     }
 
-    // repeated .HSSkill skill = 8;
-    public static final int SKILL_FIELD_NUMBER = 8;
+    // required int32 disposition = 8;
+    public static final int DISPOSITION_FIELD_NUMBER = 8;
+    private int disposition_;
+    /**
+     * <code>required int32 disposition = 8;</code>
+     */
+    public boolean hasDisposition() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required int32 disposition = 8;</code>
+     */
+    public int getDisposition() {
+      return disposition_;
+    }
+
+    // repeated .HSSkill skill = 9;
+    public static final int SKILL_FIELD_NUMBER = 9;
     private java.util.List<com.hawk.game.protocol.Skill.HSSkill> skill_;
     /**
-     * <code>repeated .HSSkill skill = 8;</code>
+     * <code>repeated .HSSkill skill = 9;</code>
      */
     public java.util.List<com.hawk.game.protocol.Skill.HSSkill> getSkillList() {
       return skill_;
     }
     /**
-     * <code>repeated .HSSkill skill = 8;</code>
+     * <code>repeated .HSSkill skill = 9;</code>
      */
     public java.util.List<? extends com.hawk.game.protocol.Skill.HSSkillOrBuilder> 
         getSkillOrBuilderList() {
       return skill_;
     }
     /**
-     * <code>repeated .HSSkill skill = 8;</code>
+     * <code>repeated .HSSkill skill = 9;</code>
      */
     public int getSkillCount() {
       return skill_.size();
     }
     /**
-     * <code>repeated .HSSkill skill = 8;</code>
+     * <code>repeated .HSSkill skill = 9;</code>
      */
     public com.hawk.game.protocol.Skill.HSSkill getSkill(int index) {
       return skill_.get(index);
     }
     /**
-     * <code>repeated .HSSkill skill = 8;</code>
+     * <code>repeated .HSSkill skill = 9;</code>
      */
     public com.hawk.game.protocol.Skill.HSSkillOrBuilder getSkillOrBuilder(
         int index) {
@@ -996,7 +1027,8 @@ public final class Monster {
       level_ = 0;
       exp_ = 0;
       lazy_ = 0;
-      ai_ = 0;
+      lazyExp_ = 0;
+      disposition_ = 0;
       skill_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -1028,7 +1060,11 @@ public final class Monster {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasAi()) {
+      if (!hasLazyExp()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDisposition()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1064,10 +1100,13 @@ public final class Monster {
         output.writeInt32(6, lazy_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, ai_);
+        output.writeInt32(7, lazyExp_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(8, disposition_);
       }
       for (int i = 0; i < skill_.size(); i++) {
-        output.writeMessage(8, skill_.get(i));
+        output.writeMessage(9, skill_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1104,11 +1143,15 @@ public final class Monster {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, ai_);
+          .computeInt32Size(7, lazyExp_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, disposition_);
       }
       for (int i = 0; i < skill_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, skill_.get(i));
+          .computeMessageSize(9, skill_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1239,11 +1282,13 @@ public final class Monster {
         bitField0_ = (bitField0_ & ~0x00000010);
         lazy_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        ai_ = 0;
+        lazyExp_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
+        disposition_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
         if (skillBuilder_ == null) {
           skill_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000100);
         } else {
           skillBuilder_.clear();
         }
@@ -1302,11 +1347,15 @@ public final class Monster {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.ai_ = ai_;
+        result.lazyExp_ = lazyExp_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.disposition_ = disposition_;
         if (skillBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+          if (((bitField0_ & 0x00000100) == 0x00000100)) {
             skill_ = java.util.Collections.unmodifiableList(skill_);
-            bitField0_ = (bitField0_ & ~0x00000080);
+            bitField0_ = (bitField0_ & ~0x00000100);
           }
           result.skill_ = skill_;
         } else {
@@ -1348,14 +1397,17 @@ public final class Monster {
         if (other.hasLazy()) {
           setLazy(other.getLazy());
         }
-        if (other.hasAi()) {
-          setAi(other.getAi());
+        if (other.hasLazyExp()) {
+          setLazyExp(other.getLazyExp());
+        }
+        if (other.hasDisposition()) {
+          setDisposition(other.getDisposition());
         }
         if (skillBuilder_ == null) {
           if (!other.skill_.isEmpty()) {
             if (skill_.isEmpty()) {
               skill_ = other.skill_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000100);
             } else {
               ensureSkillIsMutable();
               skill_.addAll(other.skill_);
@@ -1368,7 +1420,7 @@ public final class Monster {
               skillBuilder_.dispose();
               skillBuilder_ = null;
               skill_ = other.skill_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000100);
               skillBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getSkillFieldBuilder() : null;
@@ -1406,7 +1458,11 @@ public final class Monster {
           
           return false;
         }
-        if (!hasAi()) {
+        if (!hasLazyExp()) {
+          
+          return false;
+        }
+        if (!hasDisposition()) {
           
           return false;
         }
@@ -1677,46 +1733,79 @@ public final class Monster {
         return this;
       }
 
-      // required int32 ai = 7;
-      private int ai_ ;
+      // required int32 lazyExp = 7;
+      private int lazyExp_ ;
       /**
-       * <code>required int32 ai = 7;</code>
+       * <code>required int32 lazyExp = 7;</code>
        */
-      public boolean hasAi() {
+      public boolean hasLazyExp() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>required int32 ai = 7;</code>
+       * <code>required int32 lazyExp = 7;</code>
        */
-      public int getAi() {
-        return ai_;
+      public int getLazyExp() {
+        return lazyExp_;
       }
       /**
-       * <code>required int32 ai = 7;</code>
+       * <code>required int32 lazyExp = 7;</code>
        */
-      public Builder setAi(int value) {
+      public Builder setLazyExp(int value) {
         bitField0_ |= 0x00000040;
-        ai_ = value;
+        lazyExp_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 ai = 7;</code>
+       * <code>required int32 lazyExp = 7;</code>
        */
-      public Builder clearAi() {
+      public Builder clearLazyExp() {
         bitField0_ = (bitField0_ & ~0x00000040);
-        ai_ = 0;
+        lazyExp_ = 0;
         onChanged();
         return this;
       }
 
-      // repeated .HSSkill skill = 8;
+      // required int32 disposition = 8;
+      private int disposition_ ;
+      /**
+       * <code>required int32 disposition = 8;</code>
+       */
+      public boolean hasDisposition() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required int32 disposition = 8;</code>
+       */
+      public int getDisposition() {
+        return disposition_;
+      }
+      /**
+       * <code>required int32 disposition = 8;</code>
+       */
+      public Builder setDisposition(int value) {
+        bitField0_ |= 0x00000080;
+        disposition_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 disposition = 8;</code>
+       */
+      public Builder clearDisposition() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        disposition_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .HSSkill skill = 9;
       private java.util.List<com.hawk.game.protocol.Skill.HSSkill> skill_ =
         java.util.Collections.emptyList();
       private void ensureSkillIsMutable() {
-        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
           skill_ = new java.util.ArrayList<com.hawk.game.protocol.Skill.HSSkill>(skill_);
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000100;
          }
       }
 
@@ -1724,7 +1813,7 @@ public final class Monster {
           com.hawk.game.protocol.Skill.HSSkill, com.hawk.game.protocol.Skill.HSSkill.Builder, com.hawk.game.protocol.Skill.HSSkillOrBuilder> skillBuilder_;
 
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public java.util.List<com.hawk.game.protocol.Skill.HSSkill> getSkillList() {
         if (skillBuilder_ == null) {
@@ -1734,7 +1823,7 @@ public final class Monster {
         }
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public int getSkillCount() {
         if (skillBuilder_ == null) {
@@ -1744,7 +1833,7 @@ public final class Monster {
         }
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public com.hawk.game.protocol.Skill.HSSkill getSkill(int index) {
         if (skillBuilder_ == null) {
@@ -1754,7 +1843,7 @@ public final class Monster {
         }
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public Builder setSkill(
           int index, com.hawk.game.protocol.Skill.HSSkill value) {
@@ -1771,7 +1860,7 @@ public final class Monster {
         return this;
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public Builder setSkill(
           int index, com.hawk.game.protocol.Skill.HSSkill.Builder builderForValue) {
@@ -1785,7 +1874,7 @@ public final class Monster {
         return this;
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public Builder addSkill(com.hawk.game.protocol.Skill.HSSkill value) {
         if (skillBuilder_ == null) {
@@ -1801,7 +1890,7 @@ public final class Monster {
         return this;
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public Builder addSkill(
           int index, com.hawk.game.protocol.Skill.HSSkill value) {
@@ -1818,7 +1907,7 @@ public final class Monster {
         return this;
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public Builder addSkill(
           com.hawk.game.protocol.Skill.HSSkill.Builder builderForValue) {
@@ -1832,7 +1921,7 @@ public final class Monster {
         return this;
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public Builder addSkill(
           int index, com.hawk.game.protocol.Skill.HSSkill.Builder builderForValue) {
@@ -1846,7 +1935,7 @@ public final class Monster {
         return this;
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public Builder addAllSkill(
           java.lang.Iterable<? extends com.hawk.game.protocol.Skill.HSSkill> values) {
@@ -1860,12 +1949,12 @@ public final class Monster {
         return this;
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public Builder clearSkill() {
         if (skillBuilder_ == null) {
           skill_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000100);
           onChanged();
         } else {
           skillBuilder_.clear();
@@ -1873,7 +1962,7 @@ public final class Monster {
         return this;
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public Builder removeSkill(int index) {
         if (skillBuilder_ == null) {
@@ -1886,14 +1975,14 @@ public final class Monster {
         return this;
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public com.hawk.game.protocol.Skill.HSSkill.Builder getSkillBuilder(
           int index) {
         return getSkillFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public com.hawk.game.protocol.Skill.HSSkillOrBuilder getSkillOrBuilder(
           int index) {
@@ -1903,7 +1992,7 @@ public final class Monster {
         }
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public java.util.List<? extends com.hawk.game.protocol.Skill.HSSkillOrBuilder> 
            getSkillOrBuilderList() {
@@ -1914,14 +2003,14 @@ public final class Monster {
         }
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public com.hawk.game.protocol.Skill.HSSkill.Builder addSkillBuilder() {
         return getSkillFieldBuilder().addBuilder(
             com.hawk.game.protocol.Skill.HSSkill.getDefaultInstance());
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public com.hawk.game.protocol.Skill.HSSkill.Builder addSkillBuilder(
           int index) {
@@ -1929,7 +2018,7 @@ public final class Monster {
             index, com.hawk.game.protocol.Skill.HSSkill.getDefaultInstance());
       }
       /**
-       * <code>repeated .HSSkill skill = 8;</code>
+       * <code>repeated .HSSkill skill = 9;</code>
        */
       public java.util.List<com.hawk.game.protocol.Skill.HSSkill.Builder> 
            getSkillBuilderList() {
@@ -1942,7 +2031,7 @@ public final class Monster {
           skillBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.hawk.game.protocol.Skill.HSSkill, com.hawk.game.protocol.Skill.HSSkill.Builder, com.hawk.game.protocol.Skill.HSSkillOrBuilder>(
                   skill_,
-                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  ((bitField0_ & 0x00000100) == 0x00000100),
                   getParentForChildren(),
                   isClean());
           skill_ = null;
@@ -3316,15 +3405,15 @@ public final class Monster {
      */
     int getLazy();
 
-    // optional int32 ai = 5 [default = 1];
+    // optional int32 disposition = 5 [default = 1];
     /**
-     * <code>optional int32 ai = 5 [default = 1];</code>
+     * <code>optional int32 disposition = 5 [default = 1];</code>
      */
-    boolean hasAi();
+    boolean hasDisposition();
     /**
-     * <code>optional int32 ai = 5 [default = 1];</code>
+     * <code>optional int32 disposition = 5 [default = 1];</code>
      */
-    int getAi();
+    int getDisposition();
 
     // repeated .HSSkill skill = 6;
     /**
@@ -3428,7 +3517,7 @@ public final class Monster {
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              ai_ = input.readInt32();
+              disposition_ = input.readInt32();
               break;
             }
             case 50: {
@@ -3573,20 +3662,20 @@ public final class Monster {
       return lazy_;
     }
 
-    // optional int32 ai = 5 [default = 1];
-    public static final int AI_FIELD_NUMBER = 5;
-    private int ai_;
+    // optional int32 disposition = 5 [default = 1];
+    public static final int DISPOSITION_FIELD_NUMBER = 5;
+    private int disposition_;
     /**
-     * <code>optional int32 ai = 5 [default = 1];</code>
+     * <code>optional int32 disposition = 5 [default = 1];</code>
      */
-    public boolean hasAi() {
+    public boolean hasDisposition() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional int32 ai = 5 [default = 1];</code>
+     * <code>optional int32 disposition = 5 [default = 1];</code>
      */
-    public int getAi() {
-      return ai_;
+    public int getDisposition() {
+      return disposition_;
     }
 
     // repeated .HSSkill skill = 6;
@@ -3630,7 +3719,7 @@ public final class Monster {
       stage_ = 0;
       level_ = 1;
       lazy_ = 1;
-      ai_ = 1;
+      disposition_ = 1;
       skill_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -3668,7 +3757,7 @@ public final class Monster {
         output.writeInt32(4, lazy_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, ai_);
+        output.writeInt32(5, disposition_);
       }
       for (int i = 0; i < skill_.size(); i++) {
         output.writeMessage(6, skill_.get(i));
@@ -3700,7 +3789,7 @@ public final class Monster {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, ai_);
+          .computeInt32Size(5, disposition_);
       }
       for (int i = 0; i < skill_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -3835,7 +3924,7 @@ public final class Monster {
         bitField0_ = (bitField0_ & ~0x00000004);
         lazy_ = 1;
         bitField0_ = (bitField0_ & ~0x00000008);
-        ai_ = 1;
+        disposition_ = 1;
         bitField0_ = (bitField0_ & ~0x00000010);
         if (skillBuilder_ == null) {
           skill_ = java.util.Collections.emptyList();
@@ -3890,7 +3979,7 @@ public final class Monster {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.ai_ = ai_;
+        result.disposition_ = disposition_;
         if (skillBuilder_ == null) {
           if (((bitField0_ & 0x00000020) == 0x00000020)) {
             skill_ = java.util.Collections.unmodifiableList(skill_);
@@ -3930,8 +4019,8 @@ public final class Monster {
         if (other.hasLazy()) {
           setLazy(other.getLazy());
         }
-        if (other.hasAi()) {
-          setAi(other.getAi());
+        if (other.hasDisposition()) {
+          setDisposition(other.getDisposition());
         }
         if (skillBuilder_ == null) {
           if (!other.skill_.isEmpty()) {
@@ -4169,35 +4258,35 @@ public final class Monster {
         return this;
       }
 
-      // optional int32 ai = 5 [default = 1];
-      private int ai_ = 1;
+      // optional int32 disposition = 5 [default = 1];
+      private int disposition_ = 1;
       /**
-       * <code>optional int32 ai = 5 [default = 1];</code>
+       * <code>optional int32 disposition = 5 [default = 1];</code>
        */
-      public boolean hasAi() {
+      public boolean hasDisposition() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional int32 ai = 5 [default = 1];</code>
+       * <code>optional int32 disposition = 5 [default = 1];</code>
        */
-      public int getAi() {
-        return ai_;
+      public int getDisposition() {
+        return disposition_;
       }
       /**
-       * <code>optional int32 ai = 5 [default = 1];</code>
+       * <code>optional int32 disposition = 5 [default = 1];</code>
        */
-      public Builder setAi(int value) {
+      public Builder setDisposition(int value) {
         bitField0_ |= 0x00000010;
-        ai_ = value;
+        disposition_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 ai = 5 [default = 1];</code>
+       * <code>optional int32 disposition = 5 [default = 1];</code>
        */
-      public Builder clearAi() {
+      public Builder clearDisposition() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        ai_ = 1;
+        disposition_ = 1;
         onChanged();
         return this;
       }
@@ -7093,25 +7182,26 @@ public final class Monster {
       "\n\026Protocol/Monster.proto\032\024Protocol/Const" +
       ".proto\032\024Protocol/Skill.proto\"?\n\016SynMonst" +
       "erAttr\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005level\030\002 \001(\005" +
-      "\022\013\n\003exp\030\003 \001(\005\"\213\001\n\tHSMonster\022\021\n\tmonsterId" +
+      "\022\013\n\003exp\030\003 \001(\005\"\245\001\n\tHSMonster\022\021\n\tmonsterId" +
       "\030\001 \002(\005\022\r\n\005cfgId\030\002 \002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005" +
-      "level\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004lazy\030\006 \002(\005\022\n" +
-      "\n\002ai\030\007 \002(\005\022\027\n\005skill\030\010 \003(\0132\010.HSSkill\"4\n\021H" +
-      "SMonsterInfoSync\022\037\n\013monsterInfo\030\001 \003(\0132\n." +
-      "HSMonster\"W\n\014HSMonsterAdd\022\033\n\007monster\030\001 \002" +
-      "(\0132\n.HSMonster\022*\n\006reason\030\002 \001(\0162\r.RewardR",
-      "eason:\013SYS_PRESENT\"|\n\016HSMonsterCatch\022\r\n\005" +
-      "cfgId\030\001 \002(\t\022\020\n\005stage\030\002 \001(\005:\0010\022\020\n\005level\030\003" +
-      " \001(\005:\0011\022\017\n\004lazy\030\004 \001(\005:\0011\022\r\n\002ai\030\005 \001(\005:\0011\022" +
-      "\027\n\005skill\030\006 \003(\0132\010.HSSkill\"#\n\021HSMonsterCat" +
-      "chRet\022\016\n\006status\030\001 \002(\005\"#\n\016HSMonsterBreak\022" +
-      "\021\n\tmonsterId\030\001 \002(\005\"6\n\021HSMonsterBreakRet\022" +
-      "\016\n\006status\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\"9\n\rHS" +
-      "MonsterFeed\022\021\n\tmonsterId\030\001 \002(\005\022\025\n\rfoodMo" +
-      "nsterId\030\002 \002(\005\"h\n\020HSMonsterFeedRet\022\016\n\006sta" +
-      "tus\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\022\025\n\rfoodMons",
-      "terId\030\003 \002(\005\022\013\n\003exp\030\004 \001(\005\022\r\n\005level\030\005 \001(\005B" +
-      "\030\n\026com.hawk.game.protocol"
+      "level\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004lazy\030\006 \002(\005\022\017" +
+      "\n\007lazyExp\030\007 \002(\005\022\023\n\013disposition\030\010 \002(\005\022\027\n\005" +
+      "skill\030\t \003(\0132\010.HSSkill\"4\n\021HSMonsterInfoSy" +
+      "nc\022\037\n\013monsterInfo\030\001 \003(\0132\n.HSMonster\"W\n\014H" +
+      "SMonsterAdd\022\033\n\007monster\030\001 \002(\0132\n.HSMonster",
+      "\022*\n\006reason\030\002 \001(\0162\r.RewardReason:\013SYS_PRE" +
+      "SENT\"\205\001\n\016HSMonsterCatch\022\r\n\005cfgId\030\001 \002(\t\022\020" +
+      "\n\005stage\030\002 \001(\005:\0010\022\020\n\005level\030\003 \001(\005:\0011\022\017\n\004la" +
+      "zy\030\004 \001(\005:\0011\022\026\n\013disposition\030\005 \001(\005:\0011\022\027\n\005s" +
+      "kill\030\006 \003(\0132\010.HSSkill\"#\n\021HSMonsterCatchRe" +
+      "t\022\016\n\006status\030\001 \002(\005\"#\n\016HSMonsterBreak\022\021\n\tm" +
+      "onsterId\030\001 \002(\005\"6\n\021HSMonsterBreakRet\022\016\n\006s" +
+      "tatus\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\"9\n\rHSMons" +
+      "terFeed\022\021\n\tmonsterId\030\001 \002(\005\022\025\n\rfoodMonste" +
+      "rId\030\002 \002(\005\"h\n\020HSMonsterFeedRet\022\016\n\006status\030",
+      "\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\022\025\n\rfoodMonsterI" +
+      "d\030\003 \002(\005\022\013\n\003exp\030\004 \001(\005\022\r\n\005level\030\005 \001(\005B\030\n\026c" +
+      "om.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7129,7 +7219,7 @@ public final class Monster {
           internal_static_HSMonster_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonster_descriptor,
-              new java.lang.String[] { "MonsterId", "CfgId", "Stage", "Level", "Exp", "Lazy", "Ai", "Skill", });
+              new java.lang.String[] { "MonsterId", "CfgId", "Stage", "Level", "Exp", "Lazy", "LazyExp", "Disposition", "Skill", });
           internal_static_HSMonsterInfoSync_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSMonsterInfoSync_fieldAccessorTable = new
@@ -7147,7 +7237,7 @@ public final class Monster {
           internal_static_HSMonsterCatch_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonsterCatch_descriptor,
-              new java.lang.String[] { "CfgId", "Stage", "Level", "Lazy", "Ai", "Skill", });
+              new java.lang.String[] { "CfgId", "Stage", "Level", "Lazy", "Disposition", "Skill", });
           internal_static_HSMonsterCatchRet_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_HSMonsterCatchRet_fieldAccessorTable = new

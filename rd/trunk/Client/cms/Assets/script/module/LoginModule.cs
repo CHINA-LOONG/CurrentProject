@@ -42,6 +42,7 @@ public class LoginModule : ModuleBase
 			return;
 		}
 
+        BuildModule.needSyncInfo = true;
 		PB.HSLoginRet loginS = msg.GetProtocolBody<PB.HSLoginRet> ();
 		UIMgr.Instance.CloseUI (UILogin.ViewName);
 		if (loginS.playerId > 0) 
@@ -73,6 +74,5 @@ public class LoginModule : ModuleBase
 	public override void OnExit(ModuleBase nextModule)
 	{
 		UnBindListener();
-
 	}	
 }

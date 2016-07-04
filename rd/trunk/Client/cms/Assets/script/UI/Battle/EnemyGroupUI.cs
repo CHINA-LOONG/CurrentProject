@@ -63,8 +63,16 @@ public class EnemyGroupUI : MonoBehaviour
 					subEnmeyUI.gameObject.SetActive(false);
                     subEnmeyUI = enemyUIArray[BattleConst.maxFieldUnit];
                 }
-                subEnmeyUI.gameObject.SetActive(true);
-                subEnmeyUI.UpdateShow(subUnit);
+				if(subUnit.unit.isVisible)
+				{
+					subEnmeyUI.gameObject.SetActive(true);
+					subEnmeyUI.UpdateShow(subUnit);
+				}
+				else
+				{
+					subEnmeyUI.gameObject.SetActive(false);
+				}
+                
             }
         }
 

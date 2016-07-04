@@ -11,21 +11,22 @@ import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
-import com.hawk.game.protocol.Const.equipPart;
 import com.hawk.game.protocol.Equip.HSEquipBuy;
 import com.hawk.game.protocol.Const;
-import com.hawk.game.protocol.Equip.HSEquipCompose;
-import com.hawk.game.protocol.Equip.HSEquipComposeRet;
-import com.hawk.game.protocol.Equip.HSIncreaseEquipLevel;
-import com.hawk.game.protocol.Equip.HSIncreaseEquipLevelRet;
-import com.hawk.game.protocol.Equip.HSIncreaseEquipStage;
-import com.hawk.game.protocol.Equip.HSIncreaseEquipStageRet;
+import com.hawk.game.protocol.Equip.HSEquipIncreaseLevel;
+import com.hawk.game.protocol.Equip.HSEquipIncreaseLevelRet;
+import com.hawk.game.protocol.Equip.HSEquipIncreaseStage;
+import com.hawk.game.protocol.Equip.HSEquipIncreaseStageRet;
+import com.hawk.game.protocol.Equip.HSEquipMonsterDress;
+import com.hawk.game.protocol.Equip.HSEquipMonsterDressRet;
+import com.hawk.game.protocol.Equip.HSEquipMonsterDressRetOrBuilder;
+import com.hawk.game.protocol.Equip.HSEquipMonsterReplace;
+import com.hawk.game.protocol.Equip.HSEquipMonsterReplaceRet;
+import com.hawk.game.protocol.Equip.HSEquipMonsterUndress;
+import com.hawk.game.protocol.Equip.HSEquipMonsterUndressRet;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
-import com.hawk.game.protocol.HS.code;
-import com.hawk.game.protocol.Item.HSItemBuy;
-import com.hawk.game.protocol.Item.HSItemComposeRet;
-import com.hawk.game.protocol.Item.HSItemUse;
+import com.hawk.game.util.GsConst;
 
 public class PlayerEquipModuel extends PlayerModule{
 	/**
@@ -39,6 +40,9 @@ public class PlayerEquipModuel extends PlayerModule{
 		listenProto(HS.code.EQUIP_BUY_C);
 		listenProto(HS.code.EQUIP_INCREASE_LEVEL_C);
 		listenProto(HS.code.EQUIP_INCREASE_STAGE_C);
+		listenProto(HS.code.EQUIP_MONSTER_DRESS_C);
+		listenProto(HS.code.EQUIP_MONSTER_UNDRESS_C);
+		listenProto(HS.code.EQUIP_MONSTER_REPLACE_C);
 	}
 	
 	/**
@@ -61,12 +65,27 @@ public class PlayerEquipModuel extends PlayerModule{
 		}
 		else if(protocol.checkType(HS.code.EQUIP_INCREASE_LEVEL_C)) {
 			//买装备
-			onEquipIncreaseLevel(HS.code.EQUIP_INCREASE_LEVEL_C_VALUE, protocol.parseProtocol(HSIncreaseEquipLevel.getDefaultInstance()));
+			onEquipIncreaseLevel(HS.code.EQUIP_INCREASE_LEVEL_C_VALUE, protocol.parseProtocol(HSEquipIncreaseLevel.getDefaultInstance()));
 			return true;
 		}
 		else if(protocol.checkType(HS.code.EQUIP_INCREASE_STAGE_C)) {
 			//买装备
-			onEquipIncreaseStage(HS.code.EQUIP_INCREASE_STAGE_C_VALUE, protocol.parseProtocol(HSIncreaseEquipStage.getDefaultInstance()));
+			onEquipIncreaseStage(HS.code.EQUIP_INCREASE_STAGE_C_VALUE, protocol.parseProtocol(HSEquipIncreaseStage.getDefaultInstance()));
+			return true;
+		}
+		else if(protocol.checkType(HS.code.EQUIP_MONSTER_DRESS_C)) {
+			//穿装备
+			onEquipDressOnMonster(HS.code.EQUIP_MONSTER_DRESS_C_VALUE, protocol.parseProtocol(HSEquipMonsterDress.getDefaultInstance()));
+			return true;
+		}
+		else if(protocol.checkType(HS.code.EQUIP_MONSTER_UNDRESS_C)) {
+			//脱装备
+			onEquipUnDressOnMonster(HS.code.EQUIP_MONSTER_UNDRESS_C_VALUE, protocol.parseProtocol(HSEquipMonsterUndress.getDefaultInstance()));
+			return true;
+		}
+		else if(protocol.checkType(HS.code.EQUIP_MONSTER_REPLACE_C)) {
+			//替换装备
+			onEquipReplaceOnMonster(HS.code.EQUIP_MONSTER_REPLACE_C_VALUE, protocol.parseProtocol(HSEquipMonsterReplace.getDefaultInstance()));
 			return true;
 		}
 
@@ -85,35 +104,35 @@ public class PlayerEquipModuel extends PlayerModule{
 		return true;
 	}
 
-	public void onEquipBuy(int hpCode, HSEquipBuy protocol)
+	public void onEquipBuy(int hsCode, HSEquipBuy protocol)
 	{
 		int equip = protocol.getEquipId();
 		int equipCount = protocol.getEquipCount();
 		if (equip <= 0 || equipCount <= 0) {
-			sendError(hpCode, Status.error.PARAMS_INVALID);
+			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return ;
 		}
 		
 		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equip);
 		if(itemCfg == null) {
-			sendError(hpCode, Status.error.CONFIG_NOT_FOUND);
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
 			return ;
 		}
 		
 		if (itemCfg.getType() != Const.toolType.EQUIPTOOL_VALUE) {
-			sendError(hpCode, Status.error.PARAMS_INVALID);
+			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return ;
 		}
 		
 		if(itemCfg.getBuyPrice() <= 0) {
-			sendError(hpCode, Status.itemError.ITEM_BUY_NOT_ALLOW);
+			sendError(hsCode, Status.itemError.ITEM_BUY_NOT_ALLOW);
 			return ;
 		}
 		
 		Const.changeType changeType = itemCfg.getBuyType() == Const.moneyType.MONEY_COIN_VALUE ? Const.changeType.CHANGE_COIN : Const.changeType.CHANGE_GOLD;
 		float price = itemCfg.getBuyPrice() * equipCount * (1 + 0.2f * protocol.getStage());
 		ConsumeItems consume =	ConsumeItems.valueOf(changeType, (int)price);
-		if (consume.checkConsume(player, hpCode) == false) {
+		if (consume.checkConsume(player, hsCode) == false) {
 			return ;
 		}
 		consume.consumeTakeAffectAndPush(player, Action.ITEM_BUY);
@@ -125,26 +144,26 @@ public class PlayerEquipModuel extends PlayerModule{
 		awardItems.rewardTakeAffectAndPush(player, Action.ITEM_BUY);
 	}
 
-	public void onEquipIncreaseLevel(int hpCode, HSIncreaseEquipLevel protocol)
+	public void onEquipIncreaseLevel(int hsCode, HSEquipIncreaseLevel protocol)
 	{
 		long id = protocol.getId();
 		
 		EquipEntity equipEntity = player.getPlayerData().getEquipById(id);
 		if (equipEntity == null) {
-			sendError(hpCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
+			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
 			return ;
 		}
 		
 		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipEntity.getItemId());
 		if(itemCfg == null) {
-			sendError(hpCode, Status.error.CONFIG_NOT_FOUND);
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
 			return ;
 		}
 		
 		// level 从0开始
 		int maxLevel = EquipAttr.getLevelSize(equipEntity.getItemId(), equipEntity.getStage());
 		if (equipEntity.getLevel() >= maxLevel - 1) {
-			sendError(hpCode, Status.itemError.EQUIP_MAX_LEVEL_ALREADY);
+			sendError(hsCode, Status.itemError.EQUIP_MAX_LEVEL_ALREADY);
 			return ;
 		}
 	
@@ -158,38 +177,38 @@ public class PlayerEquipModuel extends PlayerModule{
 		equipEntity.setLevel(equipEntity.getLevel() + 1);
 		equipEntity.notifyUpdate(true);
 		
-		HSIncreaseEquipLevelRet.Builder response = HSIncreaseEquipLevelRet.newBuilder();
+		HSEquipIncreaseLevelRet.Builder response = HSEquipIncreaseLevelRet.newBuilder();
 		response.setId(id);
 		response.setStage(equipEntity.getStage());
 		response.setLevel(equipEntity.getLevel());
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_LEVEL_S, response));
 	}
 	
-	public void onEquipIncreaseStage(int hpCode, HSIncreaseEquipStage protocol)
+	public void onEquipIncreaseStage(int hsCode, HSEquipIncreaseStage protocol)
 	{
 		long id = protocol.getId();
 		
 		EquipEntity equipEntity = player.getPlayerData().getEquipById(id);
 		if (equipEntity == null) {
-			sendError(hpCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
+			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
 			return ;
 		}
 		
 		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipEntity.getItemId());
 		if(itemCfg == null) {
-			sendError(hpCode, Status.error.CONFIG_NOT_FOUND);
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
 			return ;
 		}
 		
 		int maxLevel = EquipAttr.getLevelSize(equipEntity.getItemId(), equipEntity.getStage());
 		if (equipEntity.getLevel() < maxLevel - 1) {
-			sendError(hpCode, Status.itemError.EQUIP_LEVEL_NOT_ENOUGH_VALUE);
+			sendError(hsCode, Status.itemError.EQUIP_LEVEL_NOT_ENOUGH_VALUE);
 			return ;
 		}	
 		
 		int maxStage = EquipAttr.getStageSize(equipEntity.getItemId());
 		if (equipEntity.getStage() >= maxStage) {
-			sendError(hpCode, Status.itemError.EQUIP_MAX_STAGE_ALREADY_VALUE);
+			sendError(hsCode, Status.itemError.EQUIP_MAX_STAGE_ALREADY_VALUE);
 			return ;
 		}
 		
@@ -204,10 +223,135 @@ public class PlayerEquipModuel extends PlayerModule{
 		equipEntity.setStage(equipEntity.getStage() + 1);
 		equipEntity.notifyUpdate(true);
 		
-		HSIncreaseEquipStageRet.Builder response = HSIncreaseEquipStageRet.newBuilder();
+		HSEquipIncreaseStageRet.Builder response = HSEquipIncreaseStageRet.newBuilder();
 		response.setId(id);
 		response.setStage(equipEntity.getStage());
 		response.setLevel(equipEntity.getLevel());
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_STAGE_S, response));	
+	}
+	
+	public void onEquipDressOnMonster(int hsCode, HSEquipMonsterDress protocol) {
+		long id = protocol.getId();
+		int monsterId = protocol.getMonsterId();
+		
+		EquipEntity equipEntity = player.getPlayerData().getEquipById(id);
+		if (equipEntity == null) {
+			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
+			return ;
+		}
+		
+		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipEntity.getItemId());
+		if(itemCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
+			return ;
+		}
+		
+		if (equipEntity.getMonsterId() != GsConst.EQUIPNOTDRESS) {
+			sendError(hsCode, Status.itemError.EQUIP_DRESS_ALREADY_VALUE);
+			return ;
+		}
+		
+		if (player.getPlayerData().isMonsterEquipOnPart(monsterId, itemCfg.getPart()) == true) {
+			sendError(hsCode, Status.itemError.EQUIP_DRESS_OTHER_ALREADY_VALUE);
+			return ;
+		}
+
+		if (player.getPlayerData().addMonsterEquip(monsterId, equipEntity, itemCfg.getPart()) == false) {
+			sendError(hsCode, Status.error.SERVER_ERROR);
+			return ;
+		}
+		
+		equipEntity.setMonsterId(monsterId);
+		equipEntity.notifyUpdate(true);
+		
+		HSEquipMonsterDressRet.Builder response = HSEquipMonsterDressRet.newBuilder();
+		response.setId(id);
+		response.setMonsterId(monsterId);
+		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_DRESS_S_VALUE, response));
+	}
+	
+	public void onEquipUnDressOnMonster(int hsCode, HSEquipMonsterUndress protocol) {
+		long id = protocol.getId();
+		
+		EquipEntity equipEntity = player.getPlayerData().getEquipById(id);
+		if (equipEntity == null) {
+			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
+			return ;
+		}
+
+		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipEntity.getItemId());
+		if(itemCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
+			return ;
+		}
+		
+		if (player.getPlayerData().isMonsterEquipOnPart(equipEntity.getMonsterId(), itemCfg.getPart(), id) == false) {
+			sendError(hsCode, Status.itemError.EQUIP_NOT_DRESSED);
+			return ;
+		}
+
+		if (player.getPlayerData().removeMonsterEquip(equipEntity, itemCfg.getPart()) == false) {
+			sendError(hsCode, Status.error.SERVER_ERROR);
+			return ;
+		}
+		
+		equipEntity.setMonsterId(GsConst.EQUIPNOTDRESS);
+		equipEntity.notifyUpdate(true);
+		
+		HSEquipMonsterUndressRet.Builder response = HSEquipMonsterUndressRet.newBuilder();
+		response.setId(id);
+		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_UNDRESS_S_VALUE, response));
+	}
+	
+	public void onEquipReplaceOnMonster(int hsCode, HSEquipMonsterReplace protocol) {
+		long id = protocol.getId();
+		int monsterId = protocol.getMonsterId();
+		
+		EquipEntity newEntity = player.getPlayerData().getEquipById(id);
+		if (newEntity == null) {
+			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
+			return ;
+		}
+
+		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, newEntity.getItemId());
+		if(itemCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
+			return ;
+		}
+		
+		if (newEntity.getMonsterId() != GsConst.EQUIPNOTDRESS) {
+			sendError(hsCode, Status.itemError.EQUIP_DRESS_ALREADY);
+			return ;
+		}
+		
+		if (player.getPlayerData().isMonsterEquipOnPart(monsterId, itemCfg.getPart()) == false) {
+			sendError(hsCode, Status.itemError.EQUIP_NOT_DRESS_OTHER_VALUE);
+			return ;
+		}
+		
+		long oldId = player.getPlayerData().getMonsterEquipIdOnPart(monsterId, itemCfg.getPart());
+	
+		EquipEntity oldEntity = player.getPlayerData().getEquipById(oldId);
+		if (oldEntity == null) {
+			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
+			return ;
+		}	
+	
+		if (player.getPlayerData().replaceMonsterEquip(monsterId, oldEntity, newEntity, itemCfg.getPart()) == false) {
+			sendError(hsCode, Status.error.SERVER_ERROR);
+			return ;
+		}
+		
+		
+		newEntity.setMonsterId(monsterId);
+		newEntity.notifyUpdate(true);
+		
+		oldEntity.setMonsterId(GsConst.EQUIPNOTDRESS);
+		oldEntity.notifyUpdate(true);
+		
+		HSEquipMonsterReplaceRet.Builder response = HSEquipMonsterReplaceRet.newBuilder();
+		response.setId(id);
+		response.setMonsterId(monsterId);
+		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_UNDRESS_S_VALUE, response));
 	}
 }

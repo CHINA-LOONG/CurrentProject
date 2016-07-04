@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class GameDataMgr : MonoBehaviour 
 {
-    private Dictionary<int, PlayerData> playerList = new Dictionary<int,PlayerData>();
-    private Dictionary<int, BattleObject> unitList = new Dictionary<int, BattleObject>();
+    //private Dictionary<int, PlayerData> playerList = new Dictionary<int,PlayerData>();
+    //private Dictionary<int, BattleObject> unitList = new Dictionary<int, BattleObject>();
 
 	static GameDataMgr mInst = null;
 	public static GameDataMgr Instance
@@ -29,11 +29,11 @@ public class GameDataMgr : MonoBehaviour
 		{
             return mainPlayer;
 		}
-		set
-		{
+        set
+        {
             mainPlayer = value;
-            AddPlayerData(mainPlayer);
-		}
+            //AddPlayerData(mainPlayer);
+        }
 	}
 
 	[SerializeField]
@@ -50,6 +50,10 @@ public class GameDataMgr : MonoBehaviour
 	{
         DontDestroyOnLoad(gameObject);
 
+        GameObject playerData = new GameObject("PlayerData");
+        playerData.transform.SetParent(transform);
+        mainPlayer = playerData.AddComponent<PlayerData>();
+
 		GameObject userDataGo = new GameObject("UserData");
 		userDataGo.transform.SetParent (transform);
 		userData = userDataGo.AddComponent<UserData>();
@@ -61,52 +65,6 @@ public class GameDataMgr : MonoBehaviour
     void OnDestroy()
     {
         UnBindListener();
-    }
-    //---------------------------------------------------------------------------------------------
-    public void AddPlayerData(PlayerData data)
-    {
-        if (playerList.ContainsKey(data.playerId) == true)
-        {
-            return;
-        }
-
-        playerList.Add(data.playerId, data);
-        data.InitMainUnitList();
-
-        var itor = data.mainUnitList.GetEnumerator();
-        while (itor.MoveNext())
-        {
-            if (unitList.ContainsKey(itor.Current.guid) == false)
-            {
-                unitList.Add(itor.Current.guid, itor.Current);
-            }
-        }
-    }
-    //---------------------------------------------------------------------------------------------
-    public void RemovePlayerData(int guid)
-    {
-        PlayerData data;
-        if (playerList.TryGetValue(guid, out data) == false)
-        {
-            return;
-        }
-
-        var itor = data.mainUnitList.GetEnumerator();
-        while (itor.MoveNext())
-        {
-            unitList.Remove(itor.Current.guid);
-        }
-    }
-    //---------------------------------------------------------------------------------------------
-
-    public Dictionary<int, PlayerData> GetPlayers()
-    {
-        return playerList;
-    }
-    //---------------------------------------------------------------------------------------------
-    public Dictionary<int, BattleObject> GetUnits()
-    {
-        return unitList;
     }
     //---------------------------------------------------------------------------------------------
 	void BindListener()
@@ -135,7 +93,36 @@ public class GameDataMgr : MonoBehaviour
         {
             mainPlayer = new PlayerData();
         }
-        mainPlayer.SyncPlayerInof(msg);
+        PB.HSPlayerInfoSync playerSync = msg.GetProtocolBody<PB.HSPlayerInfoSync>();
+        PB.PlayerInfo playerInfo = playerSync.info;
+        int mainUnitCount = playerInfo.battleMonster.Count;
+        for (int i = 0; i < mainUnitCount; ++i)
+        {
+            mainPlayer.mainUnitID.Add(playerInfo.battleMonster[i]);
+        }
+        mainPlayer.playerId = playerInfo.playerId;
+        mainPlayer.nickName = playerInfo.nickname;
+        mainPlayer.career = playerInfo.career;
+        {
+            mainPlayer.level = playerInfo.level;
+            GameEventMgr.Instance.FireEvent<int>(GameEventList.LevelChanged, mainPlayer.level);
+        }
+        {
+            mainPlayer.exp = playerInfo.exp;
+        }
+        {
+            mainPlayer.gold = playerInfo.gold;
+        }
+        {
+            mainPlayer.coin = playerInfo.coin;
+            GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, mainPlayer.coin);
+        }
+        mainPlayer.gender = playerInfo.gender;
+        mainPlayer.eye = playerInfo.eye;
+        mainPlayer.hair = playerInfo.hair;
+        mainPlayer.hairColor = playerInfo.hairColor;
+        mainPlayer.recharget = playerInfo.recharge;
+        mainPlayer.vipLevel = playerInfo.vipLevel;
     }
     //---------------------------------------------------------------------------------------------
     void OnStatisticsInfoSync(ProtocolMessage msg)
@@ -147,6 +134,23 @@ public class GameDataMgr : MonoBehaviour
     void OnMonsterInfoSync(ProtocolMessage msg)
     {
         PB.HSMonsterInfoSync monsterSync = msg.GetProtocolBody<PB.HSMonsterInfoSync>();
+        int monsterCount = monsterSync.monsterInfo.Count;
+        for (int i = 0; i < monsterCount; ++i)
+        {
+            PbUnit unit = new PbUnit();
+            PB.HSMonster monster = monsterSync.monsterInfo[i];
+            unit.slot = -1;
+            unit.guid = monster.monsterId;
+            unit.camp = UnitCamp.Player;
+            unit.id = monster.cfgId;
+	        unit.character = monster.disposition;
+	        unit.lazy = monster.lazy;
+            unit.level = monster.level;
+            unit.curExp = monster.exp;
+            unit.starLevel = monster.stage;
+            unit.spellPbList = monster.skill;
+            mainPlayer.unitPbList.Add(unit.guid, unit);
+        }
     }
     //---------------------------------------------------------------------------------------------
     void OnItemInfoSync(ProtocolMessage msg)
@@ -158,6 +162,52 @@ public class GameDataMgr : MonoBehaviour
     {
         PB.HSEquipInfoSync equpSync = msg.GetProtocolBody<PB.HSEquipInfoSync>();
     }
+    //---------------------------------------------------------------------------------------------
+    //public void AddPlayerData(PlayerData data)
+    //{
+    //    if (playerList.ContainsKey(data.playerId) == true)
+    //    {
+    //        return;
+    //    }
+
+    //    playerList.Add(data.playerId, data);
+    //    data.InitMainUnitList();
+
+    //    var itor = data.mainUnitList.GetEnumerator();
+    //    while (itor.MoveNext())
+    //    {
+    //        if (unitList.ContainsKey(itor.Current.guid) == false)
+    //        {
+    //            unitList.Add(itor.Current.guid, itor.Current);
+    //        }
+    //    }
+    //}
+    //---------------------------------------------------------------------------------------------
+    //public void RemovePlayerData(int guid)
+    //{
+    //    PlayerData data;
+    //    if (playerList.TryGetValue(guid, out data) == false)
+    //    {
+    //        return;
+    //    }
+
+    //    var itor = data.mainUnitList.GetEnumerator();
+    //    while (itor.MoveNext())
+    //    {
+    //        unitList.Remove(itor.Current.guid);
+    //    }
+    //}
+    ////---------------------------------------------------------------------------------------------
+
+    //public Dictionary<int, PlayerData> GetPlayers()
+    //{
+    //    return playerList;
+    //}
+    ////---------------------------------------------------------------------------------------------
+    //public Dictionary<int, BattleObject> GetUnits()
+    //{
+    //    return unitList;
+    //}
     //---------------------------------------------------------------------------------------------
 
 }

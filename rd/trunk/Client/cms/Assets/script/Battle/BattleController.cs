@@ -126,8 +126,7 @@ public class BattleController : MonoBehaviour
 			return null;
 		}
 		var gameUnit = battleObj.unit;
-		
-		MirrorTarget findTarget = MirrorRaycast.RaycastCanAttackWeakpoint (gameUnit, inputScreenPos, GameConfig.Instance.FireFocusWpRadius);
+		MirrorTarget findTarget = MirrorRaycast.RaycastFirFocusWeakpoint (gameUnit, inputScreenPos, GameConfig.Instance.FireFocusWpRadius);
 		if (findTarget != null)
 		{
 			return findTarget.WeakPointIDAttr;

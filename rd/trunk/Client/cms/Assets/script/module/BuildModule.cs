@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 public class BuildModule : ModuleBase 
 {	
+    public static bool needSyncInfo = false;
+
 	void Start()
 	{
 	}
@@ -50,7 +52,11 @@ public class BuildModule : ModuleBase
 	public override void OnEnter(ModuleBase prevModule, object param)
 	{
 		BindListener();
-		RequestPlayerData ();
+        if (needSyncInfo)
+        {
+            needSyncInfo = false;
+            RequestPlayerData();
+        }
 	}
 	
 	public override void OnExecute()
@@ -77,6 +83,7 @@ public class BuildModule : ModuleBase
 		{
 			//消息同步完成
 			PB.HSAssembleFinish finishState = msg.GetProtocolBody<PB.HSAssembleFinish>();
+            GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
 			//
 			Debug.LogWarning("player info sync finished!");
 		}

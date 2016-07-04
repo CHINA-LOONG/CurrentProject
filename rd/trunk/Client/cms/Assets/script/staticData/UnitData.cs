@@ -21,15 +21,16 @@ public class UnitData
     public float speedModifyRate;
     public float defenseModifyRate;
     public float enduranceModifyRate;
-    public float goldNoteMinValueModifyRate;
-    public float goldNoteMaxValueModifyRate;
-    public float expMinValueModifyRate;
-    public float expMaxValueModifyRate;
+    //public float goldNoteMinValueModifyRate;
+   // public float goldNoteMaxValueModifyRate;
+   // public float expMinValueModifyRate;
+   // public float expMaxValueModifyRate;
     public float recoveryRate;
 
     public int equip;
-    public string AI;
+   // public string AI;
 
     public string spellIDList;
     public string weakpointList;
+	public int	friendship;
 }

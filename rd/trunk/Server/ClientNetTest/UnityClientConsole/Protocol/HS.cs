@@ -115,6 +115,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SETTLE_S", Value=3003)]
       INSTANCE_SETTLE_S = 3003,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_OPEN_CARD_C", Value=3004)]
+      INSTANCE_OPEN_CARD_C = 3004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_OPEN_CARD_S", Value=3005)]
+      INSTANCE_OPEN_CARD_S = 3005,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
             
@@ -133,11 +139,53 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_S", Value=4006)]
       ITEM_BUY_S = 4006,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_COMPOSE_C", Value=4007)]
+      ITEM_COMPOSE_C = 4007,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_COMPOSE_S", Value=4008)]
+      ITEM_COMPOSE_S = 4008,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SELL_C", Value=4101)]
       EQUIP_SELL_C = 4101,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_BUY_C", Value=4102)]
-      EQUIP_BUY_C = 4102
+      EQUIP_BUY_C = 4102,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_C", Value=4103)]
+      EQUIP_COMPOSE_C = 4103,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_S", Value=4104)]
+      EQUIP_COMPOSE_S = 4104,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_C", Value=4105)]
+      EQUIP_INCREASE_LEVEL_C = 4105,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_S", Value=4106)]
+      EQUIP_INCREASE_LEVEL_S = 4106,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_C", Value=4107)]
+      EQUIP_INCREASE_STAGE_C = 4107,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_S", Value=4108)]
+      EQUIP_INCREASE_STAGE_S = 4108,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_C", Value=4109)]
+      EQUIP_MONSTER_DRESS_C = 4109,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_S", Value=4110)]
+      EQUIP_MONSTER_DRESS_S = 4110,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_UNDRESS_C", Value=4111)]
+      EQUIP_MONSTER_UNDRESS_C = 4111,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_UNDRESS_S", Value=4112)]
+      EQUIP_MONSTER_UNDRESS_S = 4112,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_REPLACE_C", Value=4113)]
+      EQUIP_MONSTER_REPLACE_C = 4113,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_REPLACE_S", Value=4114)]
+      EQUIP_MONSTER_REPLACE_S = 4114
     }
   
 }

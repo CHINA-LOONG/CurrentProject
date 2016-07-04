@@ -92,15 +92,22 @@ namespace PB
       get { return _lazy; }
       set { _lazy = value; }
     }
-    private int _ai;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"ai", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int ai
+    private int _lazyExp;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"lazyExp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int lazyExp
     {
-      get { return _ai; }
-      set { _ai = value; }
+      get { return _lazyExp; }
+      set { _lazyExp = value; }
+    }
+    private int _disposition;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"disposition", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int disposition
+    {
+      get { return _disposition; }
+      set { _disposition = value; }
     }
     private readonly global::System.Collections.Generic.List<HSSkill> _skill = new global::System.Collections.Generic.List<HSSkill>();
-    [global::ProtoBuf.ProtoMember(8, Name=@"skill", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(9, Name=@"skill", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<HSSkill> skill
     {
       get { return _skill; }
@@ -189,13 +196,13 @@ namespace PB
       get { return _lazy; }
       set { _lazy = value; }
     }
-    private int _ai = (int)1;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ai", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    private int _disposition = (int)1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"disposition", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)1)]
-    public int ai
+    public int disposition
     {
-      get { return _ai; }
-      set { _ai = value; }
+      get { return _disposition; }
+      set { _disposition = value; }
     }
     private readonly global::System.Collections.Generic.List<HSSkill> _skill = new global::System.Collections.Generic.List<HSSkill>();
     [global::ProtoBuf.ProtoMember(6, Name=@"skill", DataFormat = global::ProtoBuf.DataFormat.Default)]

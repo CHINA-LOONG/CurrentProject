@@ -82,7 +82,7 @@ public class EffectDamage : Effect
 
             EffectDamageProtoType damageProto = protoEffect as EffectDamageProtoType;
             int damageAmount = 0;
-            float spellLevelRatio = ownedSpell.spellData.level * ownedSpell.spellData.levelAdjust;
+            float spellLevelRatio = ownedSpell.level * ownedSpell.spellData.levelAdjust;
             //弱点
             WeakPointData wp = null;
             if (damageProto.isHeal == true)
@@ -113,7 +113,8 @@ public class EffectDamage : Effect
                                     (1.0f + gdMgr.PlayerDataAttr.equipStrengthRatio + caster.additionDamageRatio - target.minusDamageRatio) * //主角和怪物装备加成
                                     (damageProto.attackFactor + spellLevelRatio) * //技能加成
                                     (1.0f + caster.spellStrengthRatio) *
-                                    wpRatio
+                                    wpRatio *
+                                    (1.0f + target.spellDefenseDamageRatio)
                                     ); //buff加成(队长技 etc)
                 }
                 //法术伤害
