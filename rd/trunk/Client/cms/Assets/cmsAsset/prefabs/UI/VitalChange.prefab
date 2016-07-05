@@ -135,6 +135,7 @@ MonoBehaviour:
   vitalWnd: {fileID: 11410706}
   vitalBackImage: {fileID: 11404220}
   criticalSprite: {fileID: 21300000, guid: d3345ab04ee438549b4d9d36f350a3d4, type: 3}
+  criticalHealSprite: {fileID: 21300000, guid: 0c0f9ca7022f14440a72fe7603ef7adc, type: 3}
   missSprite: {fileID: 21300000, guid: 441396d0146cb5242a5882441f17f1bc, type: 3}
 --- !u!222 &22222478
 CanvasRenderer:
@@ -195,8 +196,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -30580.9883}
-  m_LocalScale: {x: 305.809875, y: 305.809875, z: 305.809875}
+  m_LocalPosition: {x: 0, y: 0, z: -55131.9219}
+  m_LocalScale: {x: 551.319214, y: 551.319214, z: 551.319214}
   m_Children:
   - {fileID: 22475784}
   - {fileID: 22442320}
@@ -204,7 +205,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 480, y: 978.591553}
+  m_AnchoredPosition: {x: 865.352112, y: 1764.22144}
   m_SizeDelta: {x: 205, y: 107}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000

@@ -25,9 +25,9 @@ public class EffectSet : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, float aniDelayTime)
+    public override void Apply(float applyTime, string wpID, float aniDelayTime)
     {
-        base.Apply(applyTime);
+        base.Apply(applyTime, wpID);
 
         EffectSetPrototype setProto = protoEffect as EffectSetPrototype;
         if (setProto == null)
@@ -41,7 +41,7 @@ public class EffectSet : Effect
                 curEffect.SetOwnedBuff(ownedBuff);
                 curEffect.SetOwnedSpell(ownedSpell);
                 curEffect.targetID = targetID;
-                curEffect.Apply(applyTime);
+                curEffect.Apply(applyTime, wpID);
             }
         }
     }

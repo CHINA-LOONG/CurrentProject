@@ -5,46 +5,51 @@ using System;
 
 public class BattleGroupUI : MonoBehaviour
 {
-    public BattleUnitUI[] playerUnitUI;
-    public EnemyUnitUI[] enemyUnitUI;
+    //public BattleUnitUI[] playerUnitUI;
+    //public EnemyUnitUI[] enemyUnitUI;
+    public string bundleName;
+    public string playerUIName;
+    public string enemyUIName;
     public EnemyUnitUI bossUnitUI;
 
+    private Transform playerGroupTrans;
+    private Transform enemyGroupTrans;
+    Dictionary<int, BattleUnitUI> playerUIList = new Dictionary<int,BattleUnitUI>();
+    Dictionary<int, EnemyUnitUI> enemyUIList = new Dictionary<int,EnemyUnitUI>();
+
+    //---------------------------------------------------------------------------------------------
+    void Awake()
+    {
+        GameObject playerGroup = Util.FindChildByName(gameObject, "PlayerGroup");
+        GameObject enemyGroup = Util.FindChildByName(gameObject, "EnemyGroup");
+
+        playerGroupTrans = playerGroup.transform;
+        enemyGroupTrans = enemyGroup.transform;
+    }
     //---------------------------------------------------------------------------------------------
     public void Init(List<BattleObject> playerUnits, List<BattleObject> enemyUnits)
     {
+        playerUIList.Clear();
+        enemyUIList.Clear();
+
         //init player unit ui
         int count = playerUnits.Count;
-        count = (count < playerUnitUI.Length) ? count : playerUnitUI.Length;
-        int i = 0;
-        for (; i < count; ++i)
+        for (int i = 0; i < count; ++i)
         {
-            playerUnitUI[i].Show(playerUnits[i]);
-        }
-        for (; i < playerUnitUI.Length; ++i)
-        {
-            playerUnitUI[i].Hide();
+            BattleUnitUI bu = AddPlayerUI(playerUnits[i].guid);
+            bu.Show(playerUnits[i]);
         }
 
         //init enemy unit ui
         bossUnitUI.Hide();
         count = enemyUnits.Count;
-        count = (count < enemyUnitUI.Length) ? count : enemyUnitUI.Length;
-        i = 0;
-        for (; i < count; ++i)
+        for (int i = 0; i < count; ++i)
         {
-            if (enemyUnits[i] != null && enemyUnits[i].unit.isBoss)
+            if (enemyUnits[i] != null)
             {
-                bossUnitUI.Show(enemyUnits[i]);
-                enemyUnitUI[i].Hide();
+                EnemyUnitUI eu = AddEnemyUI(enemyUnits[i].guid, enemyUnits[i].unit.isBoss);
+                eu.Show(enemyUnits[i]);
             }
-            else
-            {
-                enemyUnitUI[i].Show(enemyUnits[i]);
-            }
-        }
-        for (; i < playerUnitUI.Length; ++i)
-        {
-            enemyUnitUI[i].Hide();
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -77,17 +82,19 @@ public class BattleGroupUI : MonoBehaviour
         }
         else if(unit.camp == UnitCamp.Enemy)
         {
-            if (slot < enemyUnitUI.Length)
-            {
-                enemyUnitUI[slot].Show(unit);
-            }
+            EnemyUnitUI enemyUI = GetEnemyUI(unit.guid);
+            if (enemyUI == null)
+                enemyUI = AddEnemyUI(unit.guid, false);
+
+            enemyUI.Show(unit);
         }
         else 
         {
-            if (slot < playerUnitUI.Length)
-            {
-                playerUnitUI[slot].Show(unit);
-            }
+            BattleUnitUI playerUI = GetPlayerUI(unit.guid);
+            if (playerUI == null)
+                playerUI = AddPlayerUI(unit.guid);
+
+            playerUI.Show(unit);
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -96,15 +103,23 @@ public class BattleGroupUI : MonoBehaviour
         BattleUnitUI playerUI = GetPlayerUI(id);
         if (playerUI != null)
         {
-            playerUI.Show(null);
+            playerUIList.Remove(id);
+            playerUI.Destroy();
             return;
         }
 
         EnemyUnitUI enemyUI = GetEnemyUI(id);
         if (enemyUI != null)
         {
-            enemyUI.Hide();
-            return;
+            if (enemyUI.Unit.unit.isBoss == false)
+            {
+                enemyUIList.Remove(id);
+                enemyUI.Destroy();
+            }
+            else 
+            {
+                enemyUI.Hide();
+            }
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -147,7 +162,7 @@ public class BattleGroupUI : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void SetBattleUnitVisible(int id, bool visible)
     {
-        //NOTE: only enemy need this check
+        //NOTE: only enemy need this check(照妖镜隐藏怪物)
         EnemyUnitUI enemy = GetEnemyUI(id);
         if (enemy != null)
         {
@@ -162,29 +177,62 @@ public class BattleGroupUI : MonoBehaviour
         Logger.LogWarningFormat("can not find hide monst id={0}", id);
     }
     //---------------------------------------------------------------------------------------------
-    BattleUnitUI GetPlayerUI(int id)
-    {
-        for (int i = 0; i < playerUnitUI.Length; i++)
-        {
-            if (playerUnitUI[i].Unit && playerUnitUI[i].Unit.guid == id)
-                return playerUnitUI[i];
-        }
-
-        return null;
-    }
-    //---------------------------------------------------------------------------------------------
     EnemyUnitUI GetEnemyUI(int id)
     {
-        for (int i = 0; i < enemyUnitUI.Length; i++)
+        EnemyUnitUI enemyUI = null;
+        if (enemyUIList.TryGetValue(id, out enemyUI))
         {
-            if (enemyUnitUI[i].Unit && enemyUnitUI[i].Unit.guid == id)
-                return enemyUnitUI[i];
+            return enemyUI;
         }
 
         if (bossUnitUI.Unit && bossUnitUI.Unit.guid == id)
             return bossUnitUI;
 
         return null;
+    }
+    //---------------------------------------------------------------------------------------------
+    EnemyUnitUI AddEnemyUI(int id, bool isBoss)
+    {
+        EnemyUnitUI curEnemyUI = null;
+        if (isBoss == false)
+        {
+            GameObject enemyUISrc = ResourceMgr.Instance.LoadAsset(bundleName, enemyUIName);
+            GameObject go = Instantiate(enemyUISrc) as GameObject;
+            curEnemyUI = go.GetComponent<EnemyUnitUI>();
+            enemyUIList.Add(id, curEnemyUI);
+            curEnemyUI.transform.SetParent(enemyGroupTrans);
+            curEnemyUI.transform.localScale = Vector3.one;
+            curEnemyUI.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+        else 
+        {
+            curEnemyUI = bossUnitUI;
+        }
+        return curEnemyUI;
+    }
+    //---------------------------------------------------------------------------------------------
+    BattleUnitUI GetPlayerUI(int id)
+    {
+        BattleUnitUI playerUI = null;
+        if (playerUIList.TryGetValue(id, out playerUI))
+        {
+            return playerUI;
+        }
+
+        return null;
+    }
+    //---------------------------------------------------------------------------------------------
+    BattleUnitUI AddPlayerUI(int id)
+    {
+        GameObject playerUISrc = ResourceMgr.Instance.LoadAsset(bundleName, playerUIName);
+        BattleUnitUI curPlayerUI = null;
+        GameObject go = Instantiate(playerUISrc) as GameObject;
+        curPlayerUI = go.GetComponent<BattleUnitUI>();
+        playerUIList.Add(id, curPlayerUI);
+        curPlayerUI.transform.SetParent(playerGroupTrans);
+        curPlayerUI.transform.localScale = Vector3.one;
+        curPlayerUI.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        return curPlayerUI;
     }
     //---------------------------------------------------------------------------------------------
     //void Update()

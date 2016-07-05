@@ -208,7 +208,30 @@ public class BattleController : MonoBehaviour
         string assetbundle = sceneName.Substring(0, index);
         string assetname = sceneName.Substring(index + 1, sceneName.Length - index - 1);
         curBattleScene = ObjectDataMgr.Instance.CreateSceneObject(BattleConst.battleSceneGuid, assetbundle, assetname);
+
+        Transform defaultTrans = GetDefaultCameraNode();
+        BattleCamera.Instance.transform.localPosition = defaultTrans.position;
+        BattleCamera.Instance.transform.localRotation = defaultTrans.rotation;
+        BattleCamera.Instance.transform.localScale = Vector3.Scale(transform.localScale, defaultTrans.localScale);
     }
+    //---------------------------------------------------------------------------------------------
+    public Transform GetDefaultCameraNode()
+    {
+        string cameraSlotName = "cameraNormal";
+        if (battleType == BattleType.Boss)
+        {
+            cameraSlotName = "cameraBoss";
+        }
+
+        GameObject cameraNode = Util.FindChildByName(curBattleScene.gameObject, cameraSlotName);
+        return cameraNode.transform;
+    }
+	//---------------------------------------------------------------------------------------------
+	public	Transform GetPhyDazhaoCameraNode()
+	{
+		GameObject cameraNode = Util.FindChildByName(curBattleScene.gameObject, "cameraPhyDazhao");
+		return cameraNode.transform;
+	}
     //---------------------------------------------------------------------------------------------
     void UnLoadBattleScene()
     {
@@ -444,6 +467,7 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     IEnumerator ProcessBattleOver(bool isSuccess)
     {
+        //yield return new WaitForSeconds(5.0f);
         //胜利失败动画
         yield return StartCoroutine(PlayBalanceAnim(isSuccess));
         //后置剧情动画
@@ -459,18 +483,21 @@ public class BattleController : MonoBehaviour
         process.Clear();
         GameMain.Instance.ChangeModule<BuildModule>();
         UIMgr.Instance.CloseUI(UIBattle.ViewName);
+
+		UIMgr.Instance.CloseUI (UIFazhen.ViewName);
     }
     //---------------------------------------------------------------------------------------------
     IEnumerator PlayBalanceAnim(bool isSuccess)
     {
         uiBattle.ShowEndBattleUI(isSuccess);
         string eventName = isSuccess ? "win" : "failed";
+        float curTime = Time.time;
         for (int i = 0; i < battleGroup.EnemyFieldList.Count; ++i)
         {
             BattleObject bo = battleGroup.PlayerFieldList[i];
             if (bo != null && bo.unit.curLife > 0)
             {
-                battleGroup.PlayerFieldList[i].TriggerEvent(eventName, Time.time, null);
+                battleGroup.PlayerFieldList[i].TriggerEvent(eventName, curTime, null);
             }
         }
         yield return new WaitForSeconds(3.0f);

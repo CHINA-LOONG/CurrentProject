@@ -1,5 +1,6 @@
 package com.hawk.game.player;
 
+import java.awt.TexturePaint;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppObj;
 import org.hawk.app.HawkObjModule;
 import org.hawk.config.HawkConfigManager;
@@ -540,16 +542,46 @@ public class Player extends HawkAppObj {
 		if (monster != null) {		
 			float levelUpExpRate = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getCfgId()).getNextExpRate();
 			Map<Object, MonsterBaseCfg> monsterBaseCfg = HawkConfigManager.getInstance().getConfigMap(MonsterBaseCfg.class);	
-			int expRemain = getExp() + exp;
-			int targetLevel = getLevel();
+			int expRemain = monster.getExp() + exp;
+			int targetLevel = monster.getLevel();
+			boolean levelup = false;
 			while (targetLevel != monsterBaseCfg.size() && expRemain >= monsterBaseCfg.get(targetLevel).getNextExp() * levelUpExpRate) {
 				expRemain -= monsterBaseCfg.get(targetLevel).getNextExp() * levelUpExpRate;
 				targetLevel += 1;
+				levelup = true;
 			}
-			playerData.getMonsterEntity(monsterId).setExp(expRemain);
-			playerData.getMonsterEntity(monsterId).setLevel(targetLevel);
-			playerData.getMonsterEntity(monsterId).notifyUpdate(true);
+
+			monster.setExp(expRemain);
+			monster.setLevel(targetLevel);
+			monster.notifyUpdate(true);
 			
+			if (true == levelup) {
+				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity(); 
+				boolean update = false;
+				int history = statisticsEntity.getMonsterCountOverLevel(targetLevel);
+				int cur = playerData.getMonsterCountOverLevel(targetLevel);
+				if (cur > history) {
+					statisticsEntity.setMonsterCountOverLevel(targetLevel, cur);
+					update = true;
+				}
+				
+				history = statisticsEntity.getMonsterMaxLevel();
+				if (targetLevel > history) {
+					statisticsEntity.setMonsterMaxLevel(targetLevel);
+					update = true;
+				}
+				
+				if (true == update) {
+					statisticsEntity.notifyUpdate(true);
+					
+					HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
+					msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
+					if (false == HawkApp.getInstance().postMsg(msg)) {
+						HawkLog.errPrintln("post statistics update message failed: " + getName());
+					}
+				}
+			}
+
 			BehaviorLogger.log4Service(this, Source.MONSTER_ATTR_CHANGE, action, 
 					Params.valueOf("monsterAttr", Const.changeType.CHANGE_MONSTER_EXP), 
 					Params.valueOf("add", exp), 
@@ -570,15 +602,25 @@ public class Player extends HawkAppObj {
 		Map<Object, PlayerAttrCfg> playAttrCfg = HawkConfigManager.getInstance().getConfigMap(PlayerAttrCfg.class);
 		int expRemain = getExp() + exp;
 		int targetLevel = getLevel();
+		boolean levelup = false;
 		while (targetLevel != playAttrCfg.size() && expRemain >= playAttrCfg.get(targetLevel).getExp()) {
 			expRemain -= playAttrCfg.get(targetLevel).getExp();
 			targetLevel += 1;
+			levelup = true;
 		}
-		
+
 		playerData.getPlayerEntity().setExp(expRemain);
 		playerData.getPlayerEntity().setLevel(targetLevel);
 		playerData.getPlayerEntity().notifyUpdate(true);
-		
+
+		if (true == levelup) {
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
+			msg.pushParam(GsConst.StatisticsType.LEVEL_STATISTICS);
+			if (false == HawkApp.getInstance().postMsg(msg)) {
+				HawkLog.errPrintln("post statistics update message failed: " + getName());
+			}
+		}
+
 		BehaviorLogger.log4Service(this, Source.MONSTER_ATTR_CHANGE, action, 
 				Params.valueOf("monsterAttr", Const.changeType.CHANGE_PLAYER_EXP), 
 				Params.valueOf("add", exp), 

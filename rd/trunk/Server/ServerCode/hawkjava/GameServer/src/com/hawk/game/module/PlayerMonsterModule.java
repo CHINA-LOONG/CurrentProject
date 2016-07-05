@@ -5,12 +5,15 @@ import java.util.Map;
 
 import org.hawk.annotation.MessageHandler;
 import org.hawk.annotation.ProtocolHandler;
+import org.hawk.app.HawkApp;
+import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.hawk.game.entity.MonsterEntity;
+import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const.RewardReason;
@@ -161,6 +164,65 @@ public class PlayerMonsterModule extends PlayerModule {
 		response.setMonster(monsterData);
 		response.setReason(reason);
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_ADD_S, response));
+		
+		// 统计数据
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity(); 
+		boolean update = false;
+		
+		// collection
+		if (false == statisticsEntity.getMonsterCollectSet().contains(monsterEntity.getCfgId())) {
+			statisticsEntity.addMonsterCollect(monsterEntity.getCfgId());
+			update = true;
+		}
+
+		// level
+		int level = monsterEntity.getLevel();
+		int history = statisticsEntity.getMonsterCountOverLevel(level);
+		int cur = player.getPlayerData().getMonsterCountOverLevel(level);
+		if (cur > history) {
+			statisticsEntity.setMonsterCountOverLevel(level, cur);
+			update = true;
+		}
+		
+		history = statisticsEntity.getMonsterMaxLevel();
+		if (level > history) {
+			statisticsEntity.setMonsterMaxLevel(level);
+			update = true;
+		}
+		
+		// stage
+		int stage = monsterEntity.getStage();
+		history = statisticsEntity.getMonsterCountOverStage(stage);
+		cur = player.getPlayerData().getMonsterCountOverStage(stage);
+		if (cur > history) {
+			statisticsEntity.setMonsterCountOverStage(stage, cur);
+			update = true;
+		}
+		
+		history = statisticsEntity.getMonsterMaxStage();
+		if (stage > history) {
+			statisticsEntity.setMonsterMaxStage(stage);
+			update = true;
+		}
+		
+		// count
+		history = statisticsEntity.getMonsterMaxCount();
+		cur = player.getPlayerData().getMonsterEntityList().size();
+		if (cur > history) {
+			statisticsEntity.setMonsterMaxCount(cur);
+			update = true;
+		}
+		
+		if (true == update) {
+			statisticsEntity.notifyUpdate(true);
+			
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, player.getXid());
+			msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
+			if (false == HawkApp.getInstance().postMsg(msg)) {
+				HawkLog.errPrintln("post statistics update message failed: " + player.getName());
+			}
+		}
+
 		return true;
 	}
 

@@ -56,6 +56,7 @@ public enum BuffType
     Buff_Type_Defend,
     Buff_Type_Debuff,
     Buff_Type_Benefit,
+    Buff_Type_Dazhao,
 
     Num_Buff_Type
 }
@@ -72,6 +73,7 @@ public enum SpellType
     Spell_Type_Lazy,
     Spell_Type_PhyDaZhao,
 	Spell_Type_MagicDazhao,
+    Spell_Type_PrepareDazhao,
 
     Num_Spell_Type
 }

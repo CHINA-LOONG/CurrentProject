@@ -10,7 +10,7 @@ public class LifeBarUI : MonoBehaviour
     public Image targetBarImage;
     RectTransform currentBar;
     RectTransform targetBar;
-    public float width = 586;
+    float width = 586;
     public float lifeRatioSpeed = 0.3f;
     public float dangerRatio = 0.3f;
     public Color normalColor = Color.white;
@@ -53,6 +53,8 @@ public class LifeBarUI : MonoBehaviour
     {
         currentBar = currentBarImage.transform as RectTransform;
         targetBar = targetBarImage.transform as RectTransform;
+
+        width = currentBar.rect.width;
     }
 
     void OnDestroy()

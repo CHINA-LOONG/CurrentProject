@@ -31,6 +31,7 @@ import com.hawk.game.protocol.Quest.HSQuestInfoSync;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
+import com.sun.xml.internal.stream.Entity;
 
 /**
  * 管理所有玩家数据集合
@@ -339,19 +340,38 @@ public class PlayerData {
 	}
 
 	/**
+	 * 获取达到某等级怪物数量
+	 */
+	public int getMonsterCountOverLevel(int level) {
+		int count = 0;
+		for (Entry<Integer,MonsterEntity> entry : monsterEntityList.entrySet()) {
+			if (entry.getValue().getLevel() >= level) {
+				++count;
+			}
+		}
+		return count;
+	}
+	
+	/**
+	 * 获取达到某品级怪物数量
+	 */
+	public int getMonsterCountOverStage(int stage) {
+		int count = 0;
+		for (Entry<Integer,MonsterEntity> entry : monsterEntityList.entrySet()) {
+			if (entry.getValue().getStage() >= stage) {
+				++count;
+			}
+		}
+		return count;
+	}
+	
+	/**
 	 * 获取当前任务列表
-	 * 
-	 * @return
 	 */
 	public Map<Integer, HSQuest> getQuestMap() {
 		 return questMap;
 	}
 
-	/**
-	 * 设置任务
-	 * 
-	 * @param
-	 */
 	public void setQuest(HSQuest quest) {
 		questMap.put(quest.getQuestId(), quest);
 	}

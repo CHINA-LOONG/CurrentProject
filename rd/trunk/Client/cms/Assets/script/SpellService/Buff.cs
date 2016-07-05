@@ -15,6 +15,7 @@ public class BuffPrototype
     //状态改变
     public int stun;//眩晕
     public int invincible;//无敌
+    public int dazhao;//大招状态
 
     //属性改变
     public float strengthRatio;
@@ -58,6 +59,7 @@ public class Buff
         buffProto.duration = buffPt.duration;
         buffProto.stun = buffPt.stun;
         buffProto.invincible = buffPt.invincible;
+        buffProto.dazhao = buffPt.dazhao;
         buffProto.strengthRatio = buffPt.strengthRatio;
         buffProto.intelligenceRatio = buffPt.intelligenceRatio;
         buffProto.defenseRatio = buffPt.defenseRatio;
@@ -99,7 +101,7 @@ public class Buff
             {
                 eft.SetOwnedSpell(ownedSpell);
                 eft.SetOwnedBuff(this);
-                eft.Apply(curTime);
+                eft.Apply(curTime, "");
             }
         }
 
@@ -207,6 +209,15 @@ public class Buff
                 ++target.invincible;
         }
 
+        if (buffProto.dazhao > 0)
+        {
+            target.dazhaoDamageCount = 0;
+            if (isRemove)
+                --target.dazhao;
+            else
+                ++target.dazhao;
+        }
+
         //属性改变
         if (isRemove)
         {
@@ -225,6 +236,23 @@ public class Buff
             if (buffProto.category == (int)BuffType.Buff_Type_Defend)
             {
                 target.spellDefenseDamageRatio = buffProto.defenseDamageRatio;
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    //now only dazhao buff need response
+    public void DamageResponse(float curTime)
+    {
+        GameUnit target = spellService.GetUnit(targetID);
+        if (target != null)
+        {
+            if (target.dazhao > 0)
+            {
+                ++target.dazhaoDamageCount;
+                if (DazhaoExitCheck.IsExitByPhyAttacked(target.dazhaoDamageCount))
+                {
+                    Finish(curTime);
+                }
             }
         }
     }

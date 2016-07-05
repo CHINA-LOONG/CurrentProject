@@ -56,7 +56,7 @@ public class BattleCamera : MonoBehaviour
 
 	public void Init()
 	{
-		AniControlParam.phyDazhao = Animator.StringToHash ("phyDazhao");
+		//AniControlParam.phyDazhao = Animator.StringToHash ("phyDazhao");
 	}
 
 

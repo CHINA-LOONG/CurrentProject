@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 [Serializable]
 public class EffectDamageProtoType : EffectPrototype
@@ -26,10 +27,10 @@ public class EffectDamage : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, float aniDelayTime)
+    public override void Apply(float applyTime, string wpID, float aniDelayTime)
     {
-        base.Apply(applyTime);
-        CalculateDamage();
+        base.Apply(applyTime, wpID);
+        CalculateDamage(wpID);
     }
     //---------------------------------------------------------------------------------------------
     public override int CalculateHit()
@@ -57,7 +58,7 @@ public class EffectDamage : Effect
         return base.CalculateHit();
     }
     //---------------------------------------------------------------------------------------------
-    public void CalculateDamage()
+    public void CalculateDamage(string wpID)
     {
         if (CalculateHit() == SpellConst.hitSuccess)
         {
@@ -98,11 +99,7 @@ public class EffectDamage : Effect
             }
             else
             {
-
-				if (target.attackWpName != null)
-                {
-                    wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
-                }
+                wp = StaticDataMgr.Instance.GetWeakPointData(wpID);
 
                 float wpRatio = wp != null ? wp.damageRate : 1.0f;
 
@@ -117,6 +114,18 @@ public class EffectDamage : Effect
                                     wpRatio *
                                     (1.0f + target.spellDefenseDamageRatio)
                                     ); //buff加成(队长技 etc)
+
+                    //物理伤害反应
+                    List<Buff> buffList = target.buffList;
+                    int count = buffList.Count;
+                    for (int i = 0; i < count; ++i)
+                    {
+                        if (buffList[i].buffProto.category == (int)(BuffType.Buff_Type_Dazhao))
+                        {
+                            buffList[i].DamageResponse(applyTime);
+                            break;
+                        }
+                    }
                 }
                 //法术伤害
                 else
@@ -158,6 +167,10 @@ public class EffectDamage : Effect
                 }
                 //伤害*-1 修正为负数
                 damageAmount *= -1;
+                //if (caster.pbUnit.camp == UnitCamp.Enemy)
+                //    damageAmount *= 100;
+                //else
+                //    damageAmount = -1;
 
                 //弱点伤害计算
                 if (wp != null)

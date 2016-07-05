@@ -59,7 +59,7 @@ public class QuestUtil {
 		}
 		QuestGroup group = questGroupMap.get(questCfg.getGroup());
 		int index = group.questList.indexOf(questCfg);
-		if (index < group.questList.size() - 1 && index > 0) {
+		if (index < group.questList.size() - 1 && index > -1) {
 			return group.questList.get(index + 1);
 		}
 		

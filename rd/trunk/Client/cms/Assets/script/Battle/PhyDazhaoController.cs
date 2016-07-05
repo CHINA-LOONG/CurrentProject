@@ -45,11 +45,13 @@ public class PhyDazhaoController : MonoBehaviour
 	void BindListener()
 	{
 		GameEventMgr.Instance.AddListener< int >(GameEventList.ExitDazhaoByPhyAttacked , OnExitByPhyAttacked);
+		GameEventMgr.Instance.AddListener (GameEventList.MonsterShowoffOver, OnMonsterShowoffOver);
 	}
 	
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener< int > (GameEventList.ExitDazhaoByPhyAttacked, OnExitByPhyAttacked);
+		GameEventMgr.Instance.RemoveListener (GameEventList.MonsterShowoffOver, OnMonsterShowoffOver);
 	}
 
 
@@ -59,7 +61,11 @@ public class PhyDazhaoController : MonoBehaviour
 		dazhaoState = DazhaoState.Wait;
 
 		//蓄气效果
-		casterGo.ShowDazhaoPrepareEffect ();
+	//	casterGo.ShowDazhaoPrepareEffect ();
+		if(casterBattleGo.shifaNodeEffect != null)
+		{
+			casterBattleGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoPreprare);
+		}
 
 		//中断检测
 		dazhaoExitCheck = casterGo.gameObject.GetComponent<DazhaoExitCheck> ();
@@ -78,7 +84,10 @@ public class PhyDazhaoController : MonoBehaviour
 		dazhaoFinishCount = 0;
 		dazhaoStartTime = Time.time;
 
-		casterGo.HideDazhaoPrepareEffect ();
+		if(casterBattleGo.shifaNodeEffect !=null)
+		{
+			casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+		}
 
 		dazhaoSpell = casterBattleGo.unit.GetDazhao ();
 		if (dazhaoSpell == null)
@@ -88,11 +97,40 @@ public class PhyDazhaoController : MonoBehaviour
 			return;
 		}
 		dazhaoState = DazhaoState.Prepare;
-		BattleCamera.Instance.animator.SetBool (BattleCamera.AniControlParam.phyDazhao, true);
+		//BattleCamera.Instance.animator.SetBool (BattleCamera.AniControlParam.phyDazhao, true);
 
-		StartCoroutine (PrepareDazhaoCo ());
+		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
+		//爆点
+		if (casterGo.shifaNodeEffect != null) 
+		{
+			casterGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoReady);
+		}
+		
+		StartCoroutine (showOffCo ());
 	}
 
+	IEnumerator showOffCo()
+	{
+		yield return new WaitForSeconds (1.0f);
+		
+		if (casterBattleGo.shifaNodeEffect != null) 
+		{
+			casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoReady);
+		}
+		DazhaofocusController.Instance.ShowoffDazhao (casterBattleGo);
+	}
+
+
+	void OnMonsterShowoffOver()
+	{
+		if (dazhaoState != DazhaoState.Prepare)
+			return;
+		Transform testCameraTrans =	BattleCamera.Instance.transform;
+		Vector3 pos = testCameraTrans.position;
+		pos.z -= 2;
+		testCameraTrans.position = pos;
+		StartCoroutine (PrepareDazhaoCo ());
+	}
 	IEnumerator PrepareDazhaoCo()
 	{
 		yield return new WaitForSeconds (1.0f);
@@ -103,6 +141,10 @@ public class PhyDazhaoController : MonoBehaviour
 
 	public void  HitBattleObjectWithDazhao(BattleObject battleGo, string weakpointName)
 	{
+		if (dazhaoState != DazhaoState.Start)
+		{
+			return;
+		}
 		if (dazhaoUseCount >= dazhaoSpell.spellData.actionCount) 
 		{
 			return;
@@ -119,6 +161,11 @@ public class PhyDazhaoController : MonoBehaviour
 	
 	private void OnExitByPhyAttacked( int casterID)
 	{
+		if (dazhaoState == DazhaoState.Finished)
+			return;
+		if (null == casterBattleGo)
+			return;
+
 		if (casterBattleGo.guid != casterID)
 		{
 			Logger.LogErrorFormat("ExitDazhao by PhyAttack Error: dazhao castID = {0}, getCasterID = {1}",casterBattleGo.guid,casterID);
@@ -129,7 +176,11 @@ public class PhyDazhaoController : MonoBehaviour
 			//大招被打断
 			GameEventMgr.Instance.FireEvent(GameEventList.RemoveDazhaoAction);
 
-			casterBattleGo.HideDazhaoPrepareEffect();
+			//casterBattleGo.HideDazhaoPrepareEffect();
+			if(casterBattleGo.shifaNodeEffect !=null)
+			{
+				casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+			}
 			//todo:大招被打断ui提示
 
 		}
@@ -178,8 +229,12 @@ public class PhyDazhaoController : MonoBehaviour
 			yield return new WaitForEndOfFrame ();
 		}
 		//Debug.LogError ("大招结束.... attack times: " + dazhaoFinishCount);
-		BattleCamera.Instance.animator.SetBool (BattleCamera.AniControlParam.phyDazhao, false);
-		
+		//BattleCamera.Instance.animator.SetBool (BattleCamera.AniControlParam.phyDazhao, false);
+		Transform testCameraTrans =	BattleCamera.Instance.transform;
+		Vector3 pos = testCameraTrans.position;
+		pos.z += 2;
+		testCameraTrans.position = pos;
+
 		GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.DazhaoActionOver, casterBattleGo);
 		GameEventMgr.Instance.FireEvent(GameEventList.HideDazhaoTip);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Normal);

@@ -32,14 +32,11 @@ message HSQuestSubmitRet
 // QUEST_ACCEPT_S
 message HSQuestAccept
 {
-	required int32 questId = 1;
-	optional int32 progress = 2 [default = 0];
+	repeated HSQuest questInfo = 1;
 }
 
 // QUEST_UPDATE_S
 message HSQuestUpdate
 {
-	required int32 questId = 1;
-	optional int32 progress = 2;
-	optional bool isOpen = 3;
+	repeated HSQuest questInfo = 1;
 }

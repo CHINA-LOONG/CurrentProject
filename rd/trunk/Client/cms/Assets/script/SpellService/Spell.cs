@@ -38,7 +38,7 @@ public class Spell
         spellService = owner;
     }
 
-    public void Apply(float triggerTime)
+    public void Apply(float triggerTime, string wpID)
     {
         //generate spell event
         SpellFireArgs args = new SpellFireArgs();
@@ -93,7 +93,7 @@ public class Spell
         if (rootEffect != null)
         {
             rootEffect.SetOwnedSpell(this);
-            rootEffect.Apply(triggerTime);
+            rootEffect.Apply(triggerTime, wpID);
         }
 
         args.aniTime = spellLength;

@@ -52,11 +52,11 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "instanceComplete", nullable = false)
 	private String instanceCompleteJson = "";
 	
-	// 历史特定品级宠物数量
+	// 历史达到特定品级宠物数量
 	@Column(name = "monsterStage", nullable = false)
 	private String monsterStageJson = "";
 
-	// 历史特定等级宠物数量
+	// 历史达到特定等级宠物数量
 	@Column(name = "monsterLevel", nullable = false)
 	private String monsterLevelJson = "";
 	
@@ -295,11 +295,11 @@ public class StatisticsEntity  extends HawkDBEntity {
 		return 0;
 	}
 	
-	public Map<Integer, Integer> getMonsterStageMap() {
+	public Map<Integer, Integer> getMonsterCountOverStageMap() {
 		return monsterStageMap;
 	}
 	
-	public int getMonsterCountOfStage(int stage) {
+	public int getMonsterCountOverStage(int stage) {
 		Integer count = monsterStageMap.get(stage);
 		if (null != count) {
 			return count;
@@ -307,15 +307,15 @@ public class StatisticsEntity  extends HawkDBEntity {
 		return 0;
 	}
 	
-	public void setMonsterStageCount(int stage, int count) {
+	public void setMonsterCountOverStage(int stage, int count) {
 		monsterStageMap.put(stage, count);
 	}
 	
-	public Map<Integer, Integer> getMonsterLevelMap() {
+	public Map<Integer, Integer> getMonsterCountOverLevelMap() {
 		return monsterLevelMap;
 	}
 	
-	public int getMonsterCountOfLevel(int level) {
+	public int getMonsterCountOverLevel(int level) {
 		Integer count = monsterLevelMap.get(level);
 		if (null != count) {
 			return count;
@@ -323,7 +323,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 		return 0;
 	}
 	
-	public void setMonsterLevelCount(int level, int count) {
+	public void setMonsterCountOverLevel(int level, int count) {
 		monsterLevelMap.put(level, count);
 	}
 	

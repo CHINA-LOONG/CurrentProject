@@ -62,7 +62,7 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 				if(wpData.tipType == (int)TipInfoType.TipSelf)
 				{
 					GameUnit unit = WeakPointController.Instance.getGameUnit(subTarget);
-					propertyText.text = subTarget.WeakPointIDAttr;
+					//propertyText.text = subTarget.WeakPointIDAttr;
 					friendShipText.text = unit.friendship.ToString();
 					friendShipText.gameObject.SetActive(true);
 					propertyText.gameObject.SetActive(true);

@@ -16,7 +16,7 @@ public class BattleConst
     public const int maxFieldUnit = 3;
 
     //换宠冷却时间
-    public const float switchPetCD = 0;
+    public const float switchPetCD = 10;
 
     public const int speedK = 1000;
     public const float speedFactorMin = 0.98f;
@@ -37,7 +37,10 @@ public class BattleConst
     public const int battleSceneGuid = -1;
 
     //换宠换出去时间
-    public const float unitOutTime = 1.5f;
+    public const float unitOutTime = 2.5f;
     //换宠换进来时间
-    public const float unitInTime = 1.5f;
+    public const float unitInTime = 0.5f;
+    //头顶节点
+    public const string headNode = "headnode";
+    public const string lifeBarNode = "lifebarnode";
 }

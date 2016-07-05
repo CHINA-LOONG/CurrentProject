@@ -61,10 +61,15 @@ public class PetSwitchPage : MonoBehaviour
 
 
         BattleObject targetGO = ObjectDataMgr.Instance.GetBattleObject(args.targetId);
-        Vector3 pt = BattleCamera.Instance.CameraAttr.WorldToScreenPoint(targetGO.gameObject.transform.position);
+        Transform targetTrans = targetGO.transform;
+        GameObject headNode = Util.FindChildByName(targetGO.gameObject, BattleConst.headNode);
+        if (headNode != null)
+        {
+            targetTrans = headNode.transform;
+        }
+        Vector3 pt = BattleCamera.Instance.CameraAttr.WorldToScreenPoint(targetTrans.position);
         float scale = UIMgr.Instance.CanvasAttr.scaleFactor;
-        //TODO; change to child node, when gd changes the prefab
-        trans.anchoredPosition = new Vector2(pt.x / scale, pt.y / scale + 100/scale);
+        trans.anchoredPosition = new Vector2(pt.x / scale, pt.y / scale);
 
         //var targetGO = ObjectDataMgr.Instance.GetBattleObject(args.targetId);
         //var viewPos = BattleCamera.Instance.CameraAttr.WorldToViewportPoint(targetGO.gameObject.transform.position);

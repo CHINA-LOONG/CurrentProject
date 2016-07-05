@@ -49,6 +49,9 @@ public class GameEventList
 	public static string ExitDazhaoByPhyAttacked = "ExitDazhaoByPhyAttacked";//param int(unit.guid)
 	public static string RemoveDazhaoAction = "RemoveDazhaoAction";
 
+	public static string OverMagicShifaWithResult = "OverMagicShifaWithResult";//0 failed,  1 succ
+	public static string MonsterShowoffOver = "MonsterShowoffOver";
+
     //UI in the battle
     public static string ShowBattleUI = "ShowBattleUI";
 

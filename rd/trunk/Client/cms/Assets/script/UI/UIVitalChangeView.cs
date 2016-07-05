@@ -15,6 +15,7 @@ public class UIVitalChangeView : MonoBehaviour
     public Text vitalWnd;
     public Image vitalBackImage;
     public Sprite criticalSprite;
+    public Sprite criticalHealSprite;
     public Sprite missSprite;
     RectTransform trans;
 
@@ -34,20 +35,21 @@ public class UIVitalChangeView : MonoBehaviour
         trans.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         if (args.vitalType == (int)VitalType.Vital_Type_Default)
         {
-            vitalBackImage.sprite = criticalSprite;
-            vitalBackImage.gameObject.SetActive(args.isCritical == true);
             vitalWnd.gameObject.SetActive(true);
             if (vitalChange < 0)
             {
                 vitalWnd.font = damageFont;
                 vitalWnd.material = damageFontMat;
                 vitalChange *= -1;
+                vitalBackImage.sprite = criticalSprite;
             }
             else
             {
                 vitalWnd.font = healFont;
                 vitalWnd.material = healFontMat;
+                vitalBackImage.sprite = criticalHealSprite;
             }
+            vitalBackImage.gameObject.SetActive(args.isCritical == true);
             vitalWnd.text = vitalChange.ToString();
         }
         else if (args.vitalType == (int)VitalType.Vital_Type_Miss)
@@ -61,7 +63,13 @@ public class UIVitalChangeView : MonoBehaviour
         BattleObject bo = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
         if (bo != null)
         {
-            Transform targetTrans = bo.gameObject.transform;
+            Transform targetTrans = bo.transform;
+            GameObject lifebarNode = Util.FindChildByName(bo.gameObject, BattleConst.lifeBarNode);
+            if (lifebarNode != null)
+            {
+                targetTrans = lifebarNode.transform;
+            }
+
             if (args.wpNode != null && args.wpNode.Length > 0)
             {
                 GameObject targetNode = Util.FindChildByName(bo.gameObject, args.wpNode);
@@ -70,7 +78,6 @@ public class UIVitalChangeView : MonoBehaviour
                     targetTrans = targetNode.transform;
                 }
             }
-            //TODO; use a child node
             Vector3 pt = BattleCamera.Instance.CameraAttr.WorldToScreenPoint(targetTrans.position);
             float scale = UIMgr.Instance.CanvasAttr.scaleFactor;
             trans.anchoredPosition = new Vector2(pt.x / scale, pt.y / scale);

@@ -67,8 +67,11 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INFO_SYNC_S", Value=1014)]
       EQUIP_INFO_SYNC_S = 1014,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1015)]
-      ASSEMBLE_FINISH_S = 1015,
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1015)]
+      QUEST_INFO_SYNC_S = 1015,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1016)]
+      ASSEMBLE_FINISH_S = 1016,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CREATE_C", Value=1101)]
       PLAYER_CREATE_C = 1101,
@@ -103,23 +106,23 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_S", Value=2007)]
       MONSTER_FEED_S = 2007,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_C", Value=3000)]
-      INSTANCE_ENTER_C = 3000,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_C", Value=3001)]
+      INSTANCE_ENTER_C = 3001,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_S", Value=3001)]
-      INSTANCE_ENTER_S = 3001,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_S", Value=3002)]
+      INSTANCE_ENTER_S = 3002,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SETTLE_C", Value=3002)]
-      INSTANCE_SETTLE_C = 3002,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SETTLE_C", Value=3003)]
+      INSTANCE_SETTLE_C = 3003,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SETTLE_S", Value=3003)]
-      INSTANCE_SETTLE_S = 3003,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SETTLE_S", Value=3004)]
+      INSTANCE_SETTLE_S = 3004,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_OPEN_CARD_C", Value=3004)]
-      INSTANCE_OPEN_CARD_C = 3004,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_OPEN_CARD_C", Value=3005)]
+      INSTANCE_OPEN_CARD_C = 3005,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_OPEN_CARD_S", Value=3005)]
-      INSTANCE_OPEN_CARD_S = 3005,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_OPEN_CARD_S", Value=3006)]
+      INSTANCE_OPEN_CARD_S = 3006,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
@@ -185,7 +188,19 @@ namespace PB
       EQUIP_MONSTER_REPLACE_C = 4113,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_REPLACE_S", Value=4114)]
-      EQUIP_MONSTER_REPLACE_S = 4114
+      EQUIP_MONSTER_REPLACE_S = 4114,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_SUBMIT_C", Value=5001)]
+      QUEST_SUBMIT_C = 5001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_SUBMIT_S", Value=5002)]
+      QUEST_SUBMIT_S = 5002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_ACCEPT_S", Value=5003)]
+      QUEST_ACCEPT_S = 5003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_UPDATE_S", Value=5004)]
+      QUEST_UPDATE_S = 5004
     }
   
 }

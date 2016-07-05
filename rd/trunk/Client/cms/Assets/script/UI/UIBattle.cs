@@ -50,9 +50,19 @@ public class UIBattle : UIBase
     GameObject endBattleUI = null;
 	Animator animator;
 
+	static UIBattle instance = null;
+	public static UIBattle Instance
+	{
+		get
+		{
+			return instance;
+		}
+	}
+
 	// Use this for initialization
     public void Init()
     {
+		instance = this;
         if (null != m_MirrorImage)
         {
             m_MirrorDray = m_MirrorImage.gameObject.AddComponent<MirrorDray>();
@@ -63,7 +73,6 @@ public class UIBattle : UIBase
         {
             Debug.LogError("You Should set MirrorImage in the UIBattle prefab!");
         }
-
 		m_ButtonMirror.IsOn = false;
         
 		InitMirrorImage ();

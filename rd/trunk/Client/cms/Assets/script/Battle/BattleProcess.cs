@@ -13,19 +13,29 @@ public enum BattleRetCode
 
 public class BattleProcess : MonoBehaviour
 {
-    enum ActionType
+    public enum ActionType
     {
         None = 0,
         UnitFight,
         SwitchPet,
-        Dazhao,
+        Dazhao
     }
 
-    class Action
+	public enum DazhaoType
+	{
+		Phyics =0,
+		Magic,
+		Unkown
+	}
+
+    public class Action
     {
         public ActionType type;
         public BattleObject caster;
         public BattleObject target;
+
+		//二级属性
+		public DazhaoType dazhaoType = DazhaoType.Unkown;
     }
 
     BattleGroup battleGroup;
@@ -151,6 +161,15 @@ public class BattleProcess : MonoBehaviour
             deadUnit.unit.State = UnitState.Dead;
             deadUnit.TriggerEvent("dead", args.triggerTime, null);
 
+			BattleObject dazhaoCaster = MagicDazhaoController.Instance.GetCasterBattleObj();
+			if(null!=dazhaoCaster)
+			{
+				if(dazhaoCaster.guid == deadId)
+				{
+					MagicDazhaoController.Instance.FinishDazhaoWithSelfDead();
+				}
+			}
+
 			//检测死亡的怪物是否 发动了大招，如果插入 则从插入事件中删除
 			for (int j =0; j < insertAction.Count; ++j)
 			{
@@ -168,7 +187,14 @@ public class BattleProcess : MonoBehaviour
 				bool actionOver = battleGroup.IsEnemyAllDead();
 				if(actionOver)
 				{
-					PhyDazhaoController.Instance.FinishDazhaoWithAllEnemyDead();
+					if(curAction.dazhaoType == DazhaoType.Phyics)
+					{
+						PhyDazhaoController.Instance.FinishDazhaoWithAllEnemyDead();
+					}
+					else
+					{
+						MagicDazhaoController.Instance.FinishDazhaoWithAllEnemyDead();
+					}
 				}
 			}
 
@@ -244,6 +270,7 @@ public class BattleProcess : MonoBehaviour
 
 			if(useSpell.spellData.category == (int) SpellType.Spell_Type_MagicDazhao)
 			{
+				MagicDazhaoController.Instance.DazhaoAttackFinished(args.casterID);
 			}
 			 else if (useSpell.spellData.category == (int) SpellType.Spell_Type_PhyDaZhao )
 			{
@@ -429,28 +456,35 @@ public class BattleProcess : MonoBehaviour
 
     void StartAction()
     {
-        Action action = GetNextAction();
-        curAction = action;
-        if (action != null)
-        {
-            switch (action.type)
-            {
-                case ActionType.None:
-                    break;
-                case ActionType.UnitFight:
-                    RunUnitFightAction(action.caster);
-                    break;
-                case ActionType.SwitchPet:
-                    StartCoroutine(RunSwitchPetAction(action.caster, action.target));
-                    break;
-                case ActionType.Dazhao:
-                   // RunDazhaoAction(action);
-				PhyDazhaoController.Instance.RunActionWithDazhao(action.caster);
-                    break;
-                default:
-                    break;
-            }
-        }
+		Action action = GetNextAction();
+		curAction = action;
+		if (action != null)
+		{
+			switch (action.type)
+			{
+			case ActionType.None:
+				break;
+			case ActionType.UnitFight:
+				RunUnitFightAction(action.caster);
+				break;
+			case ActionType.SwitchPet:
+				StartCoroutine(RunSwitchPetAction(action.caster, action.target));
+				break;
+			case ActionType.Dazhao:
+				if(action.dazhaoType == DazhaoType.Phyics)
+				{
+					PhyDazhaoController.Instance.RunActionWithDazhao(action.caster);
+				}
+				else if (action.dazhaoType == DazhaoType.Magic)
+				{
+					MagicDazhaoController.Instance.RunActionWithDazhao(action.caster);
+				}
+				
+				break;
+			default:
+				break;
+			}
+		}
     }
 
     Action GetNextAction()
@@ -525,17 +559,17 @@ public class BattleProcess : MonoBehaviour
 
         switch (aiResult.attackStyle)
         {
-			case BattleUnitAi.AiAttackStyle.Dazhao:
-			//扣除能量
-			SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
-            energyArgs.vitalType = (int)VitalType.Vital_Type_Default;
-			energyArgs.triggerTime = Time.time;
-			energyArgs.casterID = bo.guid;
-			energyArgs.vitalChange = BattleConst.enegyMax;
-			energyArgs.vitalCurrent = 0;
-			energyArgs.vitalMax = 0;
-			SpellService.Instance.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
-			break;
+			case BattleUnitAi.AiAttackStyle.DazhaoPrepare:
+			    //扣除能量
+			    SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+                energyArgs.vitalType = (int)VitalType.Vital_Type_Default;
+			    energyArgs.triggerTime = Time.time;
+			    energyArgs.casterID = bo.guid;
+			    energyArgs.vitalChange = BattleConst.enegyMax;
+			    energyArgs.vitalCurrent = 0;
+			    energyArgs.vitalMax = 0;
+			    SpellService.Instance.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
+			    break;
             case BattleUnitAi.AiAttackStyle.Lazy:
                 Logger.Log(bo.unit.name + "   lazy");
                 bo.unit.attackCount++;
@@ -575,6 +609,29 @@ public class BattleProcess : MonoBehaviour
 
     }
 
+	public void RunMagicDazhao(Action action)
+	{
+		GameUnit attackTarget = null;
+		if(fireFocusTarget != null)
+		{
+			attackTarget = fireFocusTarget;
+			attackTarget.attackWpName = fireAttackWpName;
+		}
+		else
+		{
+			attackTarget = BattleUnitAi.Instance.GetMagicDazhaoAttackUnit(action.caster.unit);
+		}
+		Spell dazhaoSpell = action.caster.unit.GetDazhao ();
+		if (null != dazhaoSpell) 
+		{
+			SpellService.Instance.SpellRequest (dazhaoSpell.spellData.id, action.caster.unit, attackTarget, Time.time);
+		}
+		else
+		{
+			Debug.LogError("Error: dazhaoAttack not have Dazhao Spell!");
+		}
+	}
+
     IEnumerator RunSwitchPetAction(BattleObject exit, BattleObject enter)
     {
         int slot = exit.unit.pbUnit.slot;
@@ -588,9 +645,16 @@ public class BattleProcess : MonoBehaviour
             yield return new WaitForSeconds(BattleConst.unitOutTime);
 
             BattleController.Instance.curBattleScene.TriggerEvent("unitEnter", Time.time, nodeName);
-            battleGroup.OnUnitEnterField(enter, slot);
             yield return new WaitForSeconds(BattleConst.unitInTime);
+            battleGroup.OnUnitEnterField(enter, slot);
             switchingPet = false;
+
+            //check if there is empty slot in field(only check once),since another pet may dead when switching
+            int emptySlot = battleGroup.GetEmptyPlayerSlot();
+            if (emptySlot <= BattleConst.slotIndexMax)
+            {
+                battleGroup.OnUnitEnterField(exit, emptySlot);
+            }
         }
         else
         {
@@ -632,17 +696,30 @@ public class BattleProcess : MonoBehaviour
 			return;
 		}
 
-        Logger.Log("OnUnitCastDazhao");
+		Spell dazhaoSpell = bo.unit.GetDazhao ();
+		if (null == dazhaoSpell)
+		{
+			Logger.LogError("Dazhao configError: no dazhao");
+			return;
+		}
+		
         Action action = new Action();
         action.type = ActionType.Dazhao;
         action.caster = bo;
-
         bo.unit.energy = 0;
-
         action.caster.unit.State = UnitState.Dazhao;
-        InsertAction(action);
-
-		PhyDazhaoController.Instance.PrepareDazhao (bo);
+		
+		if (dazhaoSpell.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao) 
+		{
+			action.dazhaoType = DazhaoType.Phyics;
+			InsertAction(action);
+			PhyDazhaoController.Instance.PrepareDazhao (bo);
+		}
+		else if (dazhaoSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao) 
+		{
+			action.dazhaoType = DazhaoType.Magic;
+			MagicDazhaoController.Instance.PrepareShifa(action);
+		}
     }
 
     public void OnHitBattleObject(BattleObject battleGo, string weakpointName)
@@ -829,7 +906,7 @@ public class BattleProcess : MonoBehaviour
         return action;
     }
 
-    void InsertAction(Action act)
+    public void InsertAction(Action act)
     {
         insertAction.Add(act);
     }

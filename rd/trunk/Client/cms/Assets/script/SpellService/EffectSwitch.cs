@@ -26,9 +26,9 @@ public class EffectSwitch : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, float aniDelayTime)
+    public override void Apply(float applyTime, string wpID, float aniDelayTime)
     {
-        base.Apply(applyTime);
+        base.Apply(applyTime, wpID);
 
         EffectSwitchPrototype setProto = protoEffect as EffectSwitchPrototype;
         if (setProto == null)
@@ -50,7 +50,7 @@ public class EffectSwitch : Effect
                     curEffect.SetOwnedBuff(ownedBuff);
                     curEffect.SetOwnedSpell(ownedSpell);
                     curEffect.targetID = targetID;
-                    curEffect.Apply(applyTime);
+                    curEffect.Apply(applyTime, wpID);
 
                     return;
                 }

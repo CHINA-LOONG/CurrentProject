@@ -1,4 +1,4 @@
-#TEXT,NUM,NUM,NUM,NUM,TEXT,NUM,NUM,TEXT,TEXT,FLOAT,TEXT,NUM,FLOAT,NUM,NUM,TEXT
+﻿#TEXT,NUM,NUM,NUM,NUM,TEXT,NUM,NUM,TEXT,TEXT,FLOAT,TEXT,NUM,FLOAT,NUM,NUM,TEXT
 id,effectType,casterType,targetType,energy,effectList,count,camp,searchEffect,effectStartID,startDelayTime,periodEffectList,damageType,attackFactor,isHeal,damageProperty,buffID
 #e1,3,1,0,0,,0,0,,,0,,1,100,0,2,
 e1,2,1,0,0,,0,0,,e2,1,,0,0,0,0,
@@ -47,13 +47,13 @@ debuffDefensee2,4,1,0,0,,0,0,,,0,,0,0,0,0,debuffDefenseb1
 ultErshue1,3,1,0,0,,0,0,,,0,,0,0,0,0,
 ultQingniaoe1,3,1,0,0,,0,0,,,0,,0,0,0,0,
 ultZhuyane1,3,1,0,0,,0,0,,,0,,0,0,0,0,
-demoDazhao,3,1,0,0,,0,0,,,0,,0,0.8,0,0,
+demoDazhao,3,1,0,0,,0,0,,,0,,0,0.6,0,0,
 bossJiuweihu1e1,2,1,0,0,,3,0,,bossJiuweihu1e2,0,,0,0,0,0,
 bossJiuweihu2e1,2,1,0,0,,3,0,,bossJiuweihu2e2,0,,0,0,0,0,
 bossJiuweihu3e1,2,1,0,0,,3,0,,bossJiuweihu3e2,0,,0,0,0,0,
 bossJiuweihu4e1,2,1,0,0,,3,0,,bossJiuweihu4e2,0,,0,0,0,0,
 bossJiuweihu1e2,3,1,0,0,,0,0,,,0,,1,3,1,0,
-bossJiuweihu2e2,3,1,0,0,,0,0,,,0,,1,5,1,0,
-bossJiuweihu3e2,3,1,0,0,,0,0,,,0,,1,7,1,0,
-bossJiuweihu4e2,3,1,0,0,,0,0,,,0,,1,8,1,0,
+bossJiuweihu2e2,3,1,0,0,,0,0,,,0,,1,4,1,0,
+bossJiuweihu3e2,3,1,0,0,,0,0,,,0,,1,8,1,0,
+bossJiuweihu4e2,3,1,0,0,,0,0,,,0,,1,12,1,0,
 switch1,5,1,0,0,,0,0,,,0,IsEnemy|attackTriStronge2;Default|attackTriStronge2,0,0,0,0,

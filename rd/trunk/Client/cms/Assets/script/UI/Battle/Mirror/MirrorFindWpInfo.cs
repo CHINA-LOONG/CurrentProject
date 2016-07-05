@@ -35,7 +35,7 @@ public class MirrorFindWpInfo : MonoBehaviour
 		Vector2 tipPostion = new Vector2 (wpPostion.x + offsetX, wpPostion.y + offsetY);
 
 		rectTrans.anchoredPosition = tipPostion;
-		wpInfoText.text = wpTarget.WeakPointIDAttr;
+		//wpInfoText.text = wpTarget.WeakPointIDAttr;
 
 		int property = WeakPointController.Instance.GetProperty(wpTarget);
 		var image = ResourceMgr.Instance.LoadAssetType<Sprite>("ui/property", "property_" + property) as Sprite;

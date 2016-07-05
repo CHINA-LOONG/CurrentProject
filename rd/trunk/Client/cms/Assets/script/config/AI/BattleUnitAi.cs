@@ -13,6 +13,7 @@ public class BattleUnitAi : MonoBehaviour {
 		MagicAttack,
 		Defence,
 		Beneficial,
+        DazhaoPrepare,
 		UnKown
 	}
 
@@ -55,6 +56,10 @@ public class BattleUnitAi : MonoBehaviour {
         Destroy(jiuWeiHuAi);
     }
 
+	public GameUnit GetMagicDazhaoAttackUnit(GameUnit battleUnit)
+	{
+		return GetAttackTargetNormalStyle (battleUnit);
+	}
 
 	public	AiAttackResult GetAiAttackResult(GameUnit battleUnit)
 	{
@@ -90,7 +95,8 @@ public class BattleUnitAi : MonoBehaviour {
 			break;
 
 		case (int) SpellType.Spell_Type_PhyAttack:
-		case (int) SpellType.Spell_Type_MgicAttack:
+        case (int)SpellType.Spell_Type_MgicAttack:
+        case (int)SpellType.Spell_Type_PrepareDazhao:
 		{
 			attackTarget = GetAttackTargetNormalStyle (battleUnit);
 		}
@@ -198,6 +204,7 @@ public class BattleUnitAi : MonoBehaviour {
 		}
 
 		Logger.LogWarning("Error for getSpell.. spell Count = " + spellDic.Count);
+
 		return subSpel;
 	}
 
@@ -207,29 +214,25 @@ public class BattleUnitAi : MonoBehaviour {
 		{
 		case (int) SpellType.Spell_Type_PhyAttack:
 			return AiAttackStyle.PhysicsAttack;
-			break;
 		case (int) SpellType.Spell_Type_MgicAttack:
 		case (int) SpellType.Spell_Type_Cure:
 			return AiAttackStyle.MagicAttack;
-			break;
 		case (int) SpellType.Spell_Type_Defense:
 			return AiAttackStyle.Defence;
-			break;
 		case (int) SpellType.Spell_Type_Beneficial:
 		case (int) SpellType.Spell_Type_Negative:
 			return AiAttackStyle.Beneficial;
-		
 		case (int) SpellType.Spell_Type_Lazy:
 			return AiAttackStyle.Lazy;
 		case (int) SpellType.Spell_Type_PhyDaZhao:
 		case (int) SpellType.Spell_Type_MagicDazhao:
-			return AiAttackStyle.Dazhao;
-			break;
+            return AiAttackStyle.Dazhao;
+        case (int)SpellType.Spell_Type_PrepareDazhao:
+            return AiAttackStyle.DazhaoPrepare;
 		case (int) SpellType.Spell_Type_Passive:
 			break;
 		default:
 			return AiAttackStyle.UnKown;
-			break;
 		}
 		return AiAttackStyle.UnKown;
 	}
@@ -372,7 +375,12 @@ public class BattleUnitAi : MonoBehaviour {
 	}
 
 	AiAttackStyle GetAttackStyle(GameUnit battleUnit)
-	{
+    {
+        if (battleUnit.dazhao > 0)
+        {
+            return AiAttackStyle.Dazhao;
+        }
+
 		//lazy 
 		if (battleUnit.lazyList.Contains (battleUnit.attackCount))
 		{
@@ -385,7 +393,7 @@ public class BattleUnitAi : MonoBehaviour {
 		{
 			if(battleUnit.energy >= BattleConst.enegyMax)
 			{
-				return AiAttackStyle.Dazhao;
+				return AiAttackStyle.DazhaoPrepare;
 			}
 		}
 

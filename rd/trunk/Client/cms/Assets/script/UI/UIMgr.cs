@@ -104,18 +104,4 @@ public class UIMgr : MonoBehaviour
 			}
 		}
 	}
-
-    public UIBase GetUI(string name)
-    {
-        UIBase[] uiList = GetComponents<UIBase>();
-        foreach (UIBase uiBase in uiList)
-        {
-            if (uiBase.GetType().Name == name)
-            {
-                return uiBase;
-            }
-        }
-
-        return null;
-    }
 }

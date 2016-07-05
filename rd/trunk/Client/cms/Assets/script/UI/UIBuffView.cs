@@ -63,7 +63,10 @@ public class UIBuffView : MonoBehaviour
             for (int i = 0; i < buffCount; ++i)
             {
                 buffPb = targetUnit.unit.buffList[i].buffProto;
-                if (buffPb.category != (int)(BuffType.Buff_Type_Dot) && buffPb.category != (int)(BuffType.Buff_Type_Defend))
+                if (buffPb.category != (int)(BuffType.Buff_Type_Dot) && 
+                    buffPb.category != (int)(BuffType.Buff_Type_Defend) &&
+                    buffPb.category != (int)(BuffType.Buff_Type_Dazhao)
+                    )
                 {
                     otherBuffList.Add(buffPb.icon);
                 }

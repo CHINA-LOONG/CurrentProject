@@ -21,9 +21,9 @@ public class EffectApplyBuff : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, float aniDelayTime)
+    public override void Apply(float applyTime, string wpName, float aniDelayTime)
     {
-        base.Apply(applyTime);
+        base.Apply(applyTime, wpName);
         int hitResult = CalculateHit();
 
         Logger.Log("[SpellService]trigger apply buff effect");

@@ -78,8 +78,10 @@ public class GameUnit
 
     //状态数据
     //技能加成系数
-    public int invincible;//无敌
-    public int stun;//眩晕
+    public int invincible = 0;//无敌
+    public int stun = 0;//眩晕
+    public int dazhao = 0;//AI释放大招状态
+    public int dazhaoDamageCount=0;//统计AI释放大招模式下受到的物理伤害次数
     public int energy;//能量值
     public float spellStrengthRatio;
     public float spellIntelligenceRatio;
@@ -392,6 +394,7 @@ public class GameUnit
         invincible = 0;
         stun = 0;
         energy = 0;
+        dazhao = 0;
         spellStrengthRatio = 0.0f;
         spellIntelligenceRatio = 0.0f;
         spellSpeedRatio = 0.0f;
@@ -414,5 +417,19 @@ public class GameUnit
     public void OnDead()
     {
         buffList.Clear();
+    }
+
+    public bool IsPrepareDazhao()
+    {
+        int count = buffList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            if (buffList[i].buffProto.category == (int)(BuffType.Buff_Type_Dazhao))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

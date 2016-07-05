@@ -210,6 +210,17 @@ public class BattleGroup
         return null;
     }
 
+    public int GetEmptyPlayerSlot()
+    {
+        for (int i = 0; i < playerField.Length; i++)
+        {
+            if (playerField[i] == null || playerField[i].unit.State == UnitState.Dead)
+                return i;
+        }
+
+        return BattleConst.maxFieldUnit;
+    }
+
     public List<GameUnit> GetPlayerOffsiteUnits()
     {
         List<GameUnit> result = new List<GameUnit>();

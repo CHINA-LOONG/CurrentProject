@@ -56,7 +56,7 @@ public class SpellService : MonoBehaviour
             curSpell.Init(this);
             curSpell.casterID = caster.pbUnit.guid;
             curSpell.targetID = target.pbUnit.guid;
-            curSpell.Apply(curTime);
+            curSpell.Apply(curTime, target.attackWpName);
         }
 
         //buff list可能会在update里被修改，只会被增加，删除buff下面单独处理，避免遍历出错

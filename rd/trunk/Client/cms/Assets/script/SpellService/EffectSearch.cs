@@ -26,9 +26,9 @@ public class EffectSearch : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, float aniDelayTime)
+    public override void Apply(float applyTime, string wpName, float aniDelayTime)
     {
-        base.Apply(applyTime);
+        base.Apply(applyTime, wpName);
 
         Logger.Log("[SpellService]trigger search effect");
         EffectSearchPrototype searchProt = protoEffect as EffectSearchPrototype;
@@ -40,7 +40,7 @@ public class EffectSearch : Effect
         }
         else
         {
-            camp = (camp == (int)UnitCamp.Player) ? (int)(UnitCamp.Enemy) : camp;
+            camp = (camp == (int)UnitCamp.Player) ? (int)(UnitCamp.Enemy) : (int)(UnitCamp.Player);
         }
 
         List<BattleObject> boList = spellService.GetUnitList(camp);
@@ -49,14 +49,19 @@ public class EffectSearch : Effect
             if (bo == null || bo.unit.isVisible == false)
                 continue;
 
-            Effect curEffect = spellService.GetEffect(searchProt.effectID);
-            if (curEffect != null)
+            List<string> wpList = WeakPointController.Instance.GetAiCanAttackWeakpointList(bo.unit);
+            for (int i = 0; i < wpList.Count; ++i)
             {
-                curEffect.SetOwnedBuff(ownedBuff);
-                curEffect.SetOwnedSpell(ownedSpell);
-                curEffect.targetID = bo.guid;
-                curEffect.Apply(applyTime);
+                Effect curEffect = spellService.GetEffect(searchProt.effectID);
+                if (curEffect != null)
+                {
+                    curEffect.SetOwnedBuff(ownedBuff);
+                    curEffect.SetOwnedSpell(ownedSpell);
+                    curEffect.targetID = bo.guid;
+                    curEffect.Apply(applyTime, wpList[i]);
+                }
             }
+
         }
     }
     //---------------------------------------------------------------------------------------------

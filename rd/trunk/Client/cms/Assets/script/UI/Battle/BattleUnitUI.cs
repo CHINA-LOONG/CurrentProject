@@ -22,14 +22,21 @@ public class BattleUnitUI : MonoBehaviour
     }
     private BattleObject targetUnit;
     private UIBuffView buffView;
+    private RectTransform trans;
 
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
     void Awake()
     {
-       EventTriggerListener.Get(dazhaoBtn.gameObject).onClick = OnDazhaoClick;
-       buffView = gameObject.GetComponent<UIBuffView>();
-       buffView.Init();
+        trans = transform as RectTransform;
+        EventTriggerListener.Get(dazhaoBtn.gameObject).onClick = OnDazhaoClick;
+        buffView = gameObject.GetComponent<UIBuffView>();
+        buffView.Init();
+    }
+    //---------------------------------------------------------------------------------------------
+    void Update()
+    {
+        RefreshPos();
     }
     //---------------------------------------------------------------------------------------------
     public void ChangeBuffState(SpellBuffArgs args)
@@ -62,6 +69,7 @@ public class BattleUnitUI : MonoBehaviour
         }
 
         gameObject.SetActive(Unit.unit.isVisible == true);
+        RefreshPos();
     }
     //---------------------------------------------------------------------------------------------
     public void SetEnergy(int currentVital)
@@ -75,10 +83,33 @@ public class BattleUnitUI : MonoBehaviour
         gameObject.SetActive(false);
     }
     //---------------------------------------------------------------------------------------------
+    public void Destroy()
+    {
+        //TODO: use resourcemanager
+        Destroy(gameObject);
+    }
+    //---------------------------------------------------------------------------------------------
     void OnDazhaoClick(GameObject go)
     {
         GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.HitDazhaoBtn, Unit);
 		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
+    }
+    //---------------------------------------------------------------------------------------------
+    void RefreshPos()
+    {
+        if (targetUnit == null)
+            return;
+
+        Transform targetTrans = targetUnit.transform;
+        //GameObject headNode = Util.FindChildByName(targetUnit.gameObject, BattleConst.headNode);
+        //if (headNode != null)
+        //{
+        //    targetTrans = headNode.transform;
+        //}
+
+        Vector3 pt = BattleCamera.Instance.CameraAttr.WorldToScreenPoint(targetTrans.position);
+        float scale = UIMgr.Instance.CanvasAttr.scaleFactor;
+        trans.anchoredPosition = new Vector2(pt.x / scale, pt.y / scale);
     }
     //---------------------------------------------------------------------------------------------
 }

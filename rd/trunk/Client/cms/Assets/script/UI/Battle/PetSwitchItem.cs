@@ -76,7 +76,6 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
 
     public void ShowEmpty(bool isDead)
     {
-        nameText.text = "";
         cdmask.gameObject.SetActive(true);
         var size = cdmask.rectTransform.sizeDelta;
         size.y = maskHeight;
@@ -94,7 +93,15 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         energyBar.rectTransform.sizeDelta = size;
         energyBar.gameObject.SetActive(false);
 
-        frame.sprite = isDead ? deadFrame : emptyFrame;
+        if (isDead)
+        {
+            frame.sprite = deadFrame;
+        }
+        else
+        {
+            nameText.text = "";
+            frame.sprite = emptyFrame;
+        }
 
         gameObject.SetActive(true);
     }

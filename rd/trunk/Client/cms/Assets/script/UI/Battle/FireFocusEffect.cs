@@ -45,8 +45,10 @@ public class FireFocusEffect : MonoBehaviour
 
 	void OnShow(BattleObject bo)
 	{
-		StopCoroutine (RefreshEffectCo ());
 		effectGo.SetActive (true);
+		if (!gameObject.activeSelf)
+			return;
+		StopCoroutine (RefreshEffectCo ());
 
 		offsetH = 0.5f;
         if (bo.unit.isBoss) 
@@ -78,9 +80,12 @@ public class FireFocusEffect : MonoBehaviour
 	{
 		while (true) 
 		{
-			Vector3 unitPosition = effectTargetTrans.position + new Vector3 (0, offsetH, 0);
-			var screenPos = BattleCamera.Instance.CameraAttr.WorldToScreenPoint (unitPosition);
-			rectTrans.anchoredPosition = new Vector2 (screenPos.x / UIMgr.Instance.CanvasAttr.scaleFactor, screenPos.y / UIMgr.Instance.CanvasAttr.scaleFactor);
+			if(null != effectTargetTrans)
+			{
+				Vector3 unitPosition = effectTargetTrans.position + new Vector3 (0, offsetH, 0);
+				var screenPos = BattleCamera.Instance.CameraAttr.WorldToScreenPoint (unitPosition);
+				rectTrans.anchoredPosition = new Vector2 (screenPos.x / UIMgr.Instance.CanvasAttr.scaleFactor, screenPos.y / UIMgr.Instance.CanvasAttr.scaleFactor);
+			}
 			yield return new WaitForEndOfFrame();
 		}
 	}

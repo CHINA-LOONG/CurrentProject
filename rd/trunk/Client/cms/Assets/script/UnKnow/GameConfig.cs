@@ -10,7 +10,7 @@ public class GameConfig : MonoBehaviour {
 		Instance = this;
 	}
 
-	public float FindWeakPointFinishedNeedTime = 2.0f;
+	public float FindWeakPointFinishedNeedTime = 0.6f;
 	public float MirrorRadius = 100f;
 	//public Vector2 MirrorCenterOffset = new Vector2(-100, 120);
 	public float FireFocusWpRadius = 50f;

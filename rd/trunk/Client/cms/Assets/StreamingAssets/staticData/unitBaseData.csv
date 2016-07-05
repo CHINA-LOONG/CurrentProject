@@ -1,6 +1,6 @@
-#NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM
+ï»¿#NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM
 level,experience,health,strength,intelligence,speed,defense,endurance,recovery,goldNoteMin,goldNoteMax,expMin,expMax,output
-#µÈ¼¶,Éý¼¶ËùÐè¾­Ñé,ÌåÁ¦,Á¦Á¿,ÖÇÁ¦,ËÙ¶È,·ÀÓùÁ¦,ÄÍÁ¦,Õ½ºó»ØÑª,»õ±ÒËæ»úµôÂä×îÐ¡Öµ,»õ±ÒËæ»úµôÂä×î´óÖµ,¾­ÑéËæ»úµôÂä×îÐ¡Öµ,¾­ÑéËæ»úµôÂä×î´óÖµ,²ú³ö¾­Ñé
+#ç­‰çº§,å‡çº§æ‰€éœ€ç»éªŒ,ä½“åŠ›,åŠ›é‡,æ™ºåŠ›,é€Ÿåº¦,é˜²å¾¡åŠ›,è€åŠ›,æˆ˜åŽå›žè¡€,è´§å¸éšæœºæŽ‰è½æœ€å°å€¼,è´§å¸éšæœºæŽ‰è½æœ€å¤§å€¼,ç»éªŒéšæœºæŽ‰è½æœ€å°å€¼,ç»éªŒéšæœºæŽ‰è½æœ€å¤§å€¼,äº§å‡ºç»éªŒ
 1,0,1000,100,100,100,100,0,0,0,0,0,0,0
 2,0,1000,100,100,100,100,0,0,0,0,0,0,0
 3,0,1000,100,100,100,100,0,0,0,0,0,0,0

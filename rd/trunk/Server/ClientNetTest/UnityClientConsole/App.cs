@@ -79,7 +79,7 @@ namespace UnityClientConsole
 
                     HSPlayerCreate createRole = new HSPlayerCreate();
                     createRole.puid = puid;
-                    createRole.nickname = "monster101";
+                    createRole.nickname = "quest01";
                     createRole.career = 1;
                     createRole.gender = 0;
                     createRole.eye = 1;
@@ -129,13 +129,23 @@ namespace UnityClientConsole
             {
                 Console.WriteLine("同步装备信息");
             }
+            else if (protocol.checkType(code.QUEST_INFO_SYNC_S.GetHashCode()))
+            {
+                HSQuestInfoSync questInfo = protocol.GetProtocolBody<HSQuestInfoSync>();
+                Console.WriteLine("同步任务信息");
+            }
             else if (protocol.checkType(code.ASSEMBLE_FINISH_S.GetHashCode()))
             {
                 Console.WriteLine("同步完成");
 
-                //HSInstanceEnter instanceEnter = new HSInstanceEnter();
-                //instanceEnter.cfgId = "demo";
-                //NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
+//                 //HSInstanceEnter instanceEnter = new HSInstanceEnter();
+//                 //instanceEnter.cfgId = "demo";
+//                 //NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
+
+                HSItemBuy itemBuy = new HSItemBuy();
+                itemBuy.itemId = 40001;
+                itemBuy.itemCount = 1;
+                NetManager.GetInstance().SendProtocol(code.ITEM_BUY_C.GetHashCode(), itemBuy);
 
                 HSItemUse itemUse = new HSItemUse();
                 itemUse.itemId = 40001;
@@ -173,13 +183,22 @@ namespace UnityClientConsole
                 HSRewardInfo rewardInfo = protocol.GetProtocolBody<HSRewardInfo>();
                 Console.WriteLine("奖励");
             }
-
             else if (protocol.checkType(sys.HEART_BEAT.GetHashCode()))
             {
                 // HSHeartBeat response = protocol.GetProtocolBody<HSHeartBeat>();
 
             }
-
+            // 任务----------------------------------------------------------------------------------------------------------
+            else if (protocol.checkType(code.QUEST_UPDATE_S.GetHashCode()))
+            {
+                HSQuestUpdate questUpdate = protocol.GetProtocolBody<HSQuestUpdate>();
+                Console.WriteLine("任务更新");
+            }
+            else if (protocol.checkType(code.QUEST_ACCEPT_S.GetHashCode()))
+            {
+                HSQuestAccept questAccept = protocol.GetProtocolBody<HSQuestAccept>();
+                Console.WriteLine("任务接取");
+            }
         }
 
     }

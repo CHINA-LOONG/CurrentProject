@@ -21,14 +21,19 @@ public class EnemyUnitUI : MonoBehaviour
     }
     private BattleObject targetUnit;
     private UIBuffView buffView;
-	//RectTransform rectTrans;
+	RectTransform trans;
 
     //---------------------------------------------------------------------------------------------
     void Awake()
     {
         buffView = gameObject.GetComponent<UIBuffView>();
         buffView.Init();
-		//rectTrans = transform as RectTransform;
+		trans = transform as RectTransform;
+    }
+    //---------------------------------------------------------------------------------------------
+    void Update()
+    {
+        RefreshPos();
     }
     //---------------------------------------------------------------------------------------------
     public void ChangeBuffState(SpellBuffArgs args)
@@ -51,11 +56,35 @@ public class EnemyUnitUI : MonoBehaviour
         unitLevel.text = sUnit.unit.pbUnit.level.ToString();
 
         gameObject.SetActive(Unit.unit.isVisible == true);
+        RefreshPos();
     }
     //---------------------------------------------------------------------------------------------
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+    //---------------------------------------------------------------------------------------------
+    public void Destroy()
+    {
+        //TODO: use resourcemanager
+        Destroy(gameObject);
+    }
+    //---------------------------------------------------------------------------------------------
+    void RefreshPos()
+    {
+        if (targetUnit == null || targetUnit.unit.isBoss == true)
+            return;
+
+        Transform targetTrans = targetUnit.transform;
+        GameObject headNode = Util.FindChildByName(targetUnit.gameObject, BattleConst.headNode);
+        if (headNode != null)
+        {
+            targetTrans = headNode.transform;
+        }
+
+        Vector3 pt = BattleCamera.Instance.CameraAttr.WorldToScreenPoint(targetTrans.position);
+        float scale = UIMgr.Instance.CanvasAttr.scaleFactor;
+        trans.anchoredPosition = new Vector2(pt.x / scale, pt.y / scale);
     }
     //---------------------------------------------------------------------------------------------
 }

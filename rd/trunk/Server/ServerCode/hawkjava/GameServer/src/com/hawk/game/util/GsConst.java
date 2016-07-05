@@ -163,4 +163,10 @@ public class GsConst {
 		public static final int EQUIP_UP_GOAL = 16;
 		public static final int BUYCOIN_GOAL = 17;
 	}
+	
+	// 统计数据类型
+	public static class StatisticsType {
+		public static final int LEVEL_STATISTICS = 1;
+		public static final int OTHER_STATISTICS = 2;
+	}
 }

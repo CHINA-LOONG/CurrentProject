@@ -25,7 +25,7 @@ public class MirrorRaycast : MonoBehaviour
 				continue;
 			}
 			MirrorTarget bestTarget = null;
-			List<MirrorTarget> listFind  = RaycastFromAllWeakpoint(subUnit.unit,startPosInScreen,GameConfig.Instance.MirrorRadius, out bestTarget);
+			List<MirrorTarget> listFind  = RaycastFromAllWeakpoint(subUnit.unit,startPosInScreen,GameConfig.Instance.MirrorRadius*UIMgr.Instance.CanvasAttr.scaleFactor , out bestTarget);
 			returnList.AddRange(listFind);
 		}
 		return returnList;

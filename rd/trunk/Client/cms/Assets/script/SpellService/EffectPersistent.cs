@@ -32,9 +32,9 @@ public class EffectPersistent : Effect
         base.Init(pt,owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, float aniDelayTime)
+    public override void Apply(float applyTime, string wpID, float aniDelayTime)
     {
-        base.Apply(applyTime);
+        base.Apply(applyTime, wpID);
 
         EffectPersistentProtoType persistProto = protoEffect as EffectPersistentProtoType;
         if (persistProto == null)
@@ -48,7 +48,7 @@ public class EffectPersistent : Effect
             startEffect.SetOwnedBuff(ownedBuff);
             startEffect.SetOwnedSpell(ownedSpell);
             startEffect.targetID = targetID;
-            startEffect.Apply(applyTime + persistProto.startDelayTime, persistProto.startDelayTime);
+            startEffect.Apply(applyTime + persistProto.startDelayTime, wpID, persistProto.startDelayTime);
         }
 
         foreach (KeyValuePair<float, string> effect in persistProto.effectList)
@@ -60,7 +60,7 @@ public class EffectPersistent : Effect
                 curEffect.SetOwnedBuff(ownedBuff);
                 curEffect.SetOwnedSpell(ownedSpell);
                 curEffect.targetID = targetID;
-                curEffect.Apply(applyTime + delayTime, delayTime);
+                curEffect.Apply(applyTime + delayTime, wpID, delayTime);
             }
         }
 

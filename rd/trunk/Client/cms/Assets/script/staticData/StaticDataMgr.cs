@@ -345,7 +345,12 @@ public class StaticDataMgr : MonoBehaviour
 
     public WeakPointData GetWeakPointData(string id)
     {
-        return weakPointData[id];
+        if (id == null)
+            return null;
+
+        WeakPointData wpData = null;
+        weakPointData.TryGetValue(id, out wpData);
+        return wpData;
     }
 
     public InstanceData GetInstanceData(string id)

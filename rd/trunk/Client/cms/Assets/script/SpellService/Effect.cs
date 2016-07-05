@@ -77,7 +77,7 @@ public class Effect
         spellService = owner;
     }
     //---------------------------------------------------------------------------------------------
-    public virtual void Apply(float applyTime, float aniDelayTime = 0.0f)
+    public virtual void Apply(float applyTime, string wpID, float aniDelayTime = 0.0f)
     {
         GenerateTarget(casterID, targetID);
         this.applyTime = applyTime;

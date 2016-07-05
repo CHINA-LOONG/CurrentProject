@@ -43,6 +43,8 @@ public class GameApp : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Application.targetFrameRate = Const.GameFrameRate;
 
+		gameObject.AddComponent<GameConfig> ();
+
         //释放资源，将包中的压缩资源解压出来
         CheckExtractResource();
     }

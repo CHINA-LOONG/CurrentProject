@@ -46,7 +46,7 @@ public class DazhaoExitCheck : MonoBehaviour {
 		}
 	}
 
-	bool	IsExitByPhyAttacked(int attackNumber)
+	public static bool IsExitByPhyAttacked(int attackNumber)
 	{
 		int exitPercent = 1;
 		int randomValue = 100;
