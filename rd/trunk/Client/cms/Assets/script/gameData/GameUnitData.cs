@@ -7,7 +7,8 @@ public enum UnitState
 {
     None,
     Dazhao,
-    ToBeReplaced,
+    ToBeExit,
+    ToBeEnter,
     Dead,
 }
 
@@ -113,6 +114,9 @@ public class GameUnit
     UnitState state = UnitState.None;
     public UnitState State { get { return state; } set { state = value; } }
 
+    //显示数据
+    public Sprite headImg;
+
 	//战斗单元统计数据 
 	public	int attackCount = 0;
 	public 	List<int> lazyList = new List<int>();
@@ -198,6 +202,14 @@ public class GameUnit
             strength = (int)(strength * instData.attackCoef);
             intelligence = (int)(intelligence * instData.attackCoef);
             health = (int)(health * instData.lifeCoef);
+        }
+        else
+        {
+            var headPath = unitRowData.uiAsset;
+            var index = headPath.LastIndexOf('/');
+            var assetbundle = headPath.Substring(0, index);
+            var assetname = headPath.Substring(index + 1, headPath.Length - index - 1);
+            headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetbundle, assetname) as Sprite;
         }
 
         //计算二级属性
@@ -396,6 +408,11 @@ public class GameUnit
 
         state = UnitState.None;
 	    attackCount = 0;
+        buffList.Clear();
+    }
+
+    public void OnDead()
+    {
         buffList.Clear();
     }
 }

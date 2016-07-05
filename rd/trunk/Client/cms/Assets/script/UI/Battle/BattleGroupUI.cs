@@ -96,7 +96,7 @@ public class BattleGroupUI : MonoBehaviour
         BattleUnitUI playerUI = GetPlayerUI(id);
         if (playerUI != null)
         {
-            playerUI.Hide();
+            playerUI.Show(null);
             return;
         }
 

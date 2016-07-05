@@ -257,6 +257,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &132038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 499846}
+  m_Layer: 0
+  m_Name: headnode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &133612
 GameObject:
   m_ObjectHideFlags: 1
@@ -452,6 +467,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &169678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 464616}
+  m_Layer: 0
+  m_Name: root
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &172256
 GameObject:
   m_ObjectHideFlags: 1
@@ -507,7 +537,7 @@ GameObject:
   - 4: {fileID: 408098}
   - 137: {fileID: 13753086}
   m_Layer: 0
-  m_Name: Box01
+  m_Name: monstermesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -680,7 +710,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 460900}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!4 &408856
 Transform:
   m_ObjectHideFlags: 1
@@ -988,6 +1018,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
+  - {fileID: 499846}
+  - {fileID: 464616}
   - {fileID: 497726}
   - {fileID: 408098}
   m_Father: {fileID: 0}
@@ -1004,6 +1036,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 409796}
   m_RootOrder: 0
+--- !u!4 &464616
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 460900}
+  m_RootOrder: 1
 --- !u!4 &465046
 Transform:
   m_ObjectHideFlags: 1
@@ -1136,7 +1180,7 @@ Transform:
   - {fileID: 443330}
   - {fileID: 477224}
   m_Father: {fileID: 460900}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!4 &497862
 Transform:
   m_ObjectHideFlags: 1
@@ -1149,6 +1193,18 @@ Transform:
   m_Children:
   - {fileID: 412962}
   m_Father: {fileID: 439776}
+  m_RootOrder: 0
+--- !u!4 &499846
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.44299996, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 460900}
   m_RootOrder: 0
 --- !u!65 &6574112
 BoxCollider:

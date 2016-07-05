@@ -50,6 +50,19 @@ public class BattleProcess : MonoBehaviour
     GameUnit fireFocusTarget = null;
     string fireAttackWpName = null;
 
+    bool switchingPet = false;
+    public bool SwitchingPet
+    {
+        get
+        {
+            return switchingPet;
+        }
+
+        set 
+        {
+            switchingPet = value;
+        }
+    }
     //换宠cd
     float lastSwitchTime = -BattleConst.switchPetCD;
     public float SwitchPetCD
@@ -198,9 +211,14 @@ public class BattleProcess : MonoBehaviour
                     BattleObject unit = battleGroup.GetPlayerToField();
                     if (unit != null)
                     {
+						//if no unit,don't call exitfield() since the changepetview will show all exited pet
                         battleGroup.OnUnitExitField(deadUnit, slot);
                         battleGroup.OnUnitEnterField(unit, slot);
                         //StartCoroutine(DebugAnim(unit));
+                    }
+                    else
+                    {
+                        BattleController.Instance.GetUIBattle().HideUnitUI(deadUnit.guid);
                     }
                 }
             }
@@ -279,6 +297,7 @@ public class BattleProcess : MonoBehaviour
                 {
                     if (deadUnit.camp == UnitCamp.Player)
                     {
+                        deadUnit.unit.OnDead();
                         deadUnit.gameObject.SetActive(false);
                     }
                     else
@@ -313,8 +332,10 @@ public class BattleProcess : MonoBehaviour
 
         StartCoroutine(Process());
     }
-    public void ClearEvent()
+    public void Clear()
     {
+        insertAction.Clear();
+        SwitchingPet = false;
         spellEventList.Clear();
         lifeChangeEventList.Clear();
         energyEventList.Clear();
@@ -353,7 +374,8 @@ public class BattleProcess : MonoBehaviour
         if (IsClearBuff())
             yield return StartCoroutine(ClearBuff());
 
-        if (processData.index == 0)
+        //NOTE: normal battle index=0, boss's first inde=1
+        if (processData.index <= 1)
             yield return StartCoroutine(PlayCountDownAnim());
 
         RefreshEnemyState();
@@ -393,13 +415,11 @@ public class BattleProcess : MonoBehaviour
 
     IEnumerator PlayCountDownAnim()
     {
-        Logger.Log("[Battle.Process]3...");
-        yield return new WaitForSeconds(1);
-        Logger.Log("[Battle.Process]2...");
-        yield return new WaitForSeconds(1);
-        Logger.Log("[Battle.Process]1...");
-        yield return new WaitForSeconds(1);
-        Logger.Log("[Battle.Process]GO!!!");
+        yield return new WaitForSeconds(1.0f);
+        BattleController.Instance.GetUIBattle().ShowStartBattleUI();
+        yield return new WaitForSeconds(2.0f);
+        BattleController.Instance.GetUIBattle().DestroyStartBattleUI();
+        yield return null;
     }
 
     private void RefreshEnemyState()
@@ -570,6 +590,7 @@ public class BattleProcess : MonoBehaviour
             BattleController.Instance.curBattleScene.TriggerEvent("unitEnter", Time.time, nodeName);
             battleGroup.OnUnitEnterField(enter, slot);
             yield return new WaitForSeconds(BattleConst.unitInTime);
+            switchingPet = false;
         }
         else
         {
@@ -592,13 +613,15 @@ public class BattleProcess : MonoBehaviour
         action.caster = ObjectDataMgr.Instance.GetBattleObject(exitId);
         action.target = ObjectDataMgr.Instance.GetBattleObject(enterId);
 
-        action.target.unit.State = UnitState.ToBeReplaced;
+        action.target.unit.State = UnitState.ToBeEnter;
+        action.caster.unit.State = UnitState.ToBeExit;
         string nodeName = "pos" + action.caster.unit.pbUnit.slot.ToString();
         BattleController.Instance.curBattleScene.TriggerEvent("unitBeReplaced", Time.time, nodeName);
         //action.caster.TriggerEvent("unitBeReplaced", Time.time, null);
 
         InsertAction(action);
         lastSwitchTime = Time.time;
+        switchingPet = true;
     }
 
     public void OnUnitCastDazhao(BattleObject bo)

@@ -6,13 +6,13 @@ state = 1 Remove
 -->
 <AniList>
 	<Ani id="unitBeReplaced" state="0">
-		<Particle asset="zhuyan_wugong" bundle="effect/particle" ani="firemove" parent=""/>
+		<Particle asset="juqihuanguai" bundle="effect/battle" ani="firemove" parent=""/>
 	</Ani>
 	<Ani id="unitExit" state="0">
-		<Particle asset="ershu_wugong" bundle="effect/particle" ani="firemove" parent=""/>
+		<Particle asset="feizou" bundle="effect/battle" ani="firemove" parent=""/>
 	</Ani>
 	<Ani id="unitEnter" state="0">
-		<Particle asset="qingniao_wugong" bundle="effect/particle" ani="firemove" parent=""/>
+		<Particle asset="sankai" bundle="effect/battle" ani="firemove" parent=""/>
 	</Ani>
 	
 	<Ani id="s1" state="0">
@@ -26,6 +26,10 @@ state = 1 Remove
 	
 	<Ani id="dead" state="0">
 		<Motion ani="" key="dead" value="true" />
+	</Ani>
+	
+	<Ani id="win" state="0">
+		<Motion ani="" key="win" value="true" />
 	</Ani>
 	
 	<Ani id="e2" state="0">

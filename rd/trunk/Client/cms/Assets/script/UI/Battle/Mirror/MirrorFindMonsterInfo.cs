@@ -64,6 +64,8 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 					GameUnit unit = WeakPointController.Instance.getGameUnit(subTarget);
 					propertyText.text = subTarget.WeakPointIDAttr;
 					friendShipText.text = unit.friendship.ToString();
+					friendShipText.gameObject.SetActive(true);
+					propertyText.gameObject.SetActive(true);
 					//likeFoodText.text = "subTarget";
 
 					int property = WeakPointController.Instance.GetProperty(subTarget);
@@ -95,8 +97,10 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 	{
 		propertyText.text = "";
 		friendShipText.text = "";
+		friendShipText.gameObject.SetActive (false);
 		likeFoodText.text = "";
 		propertyImage.enabled = false;
+		propertyText.gameObject.SetActive (false);
 
 		WpInfoGroup.Instance.Clear ();
 	}

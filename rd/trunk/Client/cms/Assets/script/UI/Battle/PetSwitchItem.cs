@@ -10,8 +10,11 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     public Image lifeBar;
     public Image energyBar;
     public Image cdmask;
-    public Text deadtext;
     public Text nameText;
+    public Image frame;
+    public Sprite normalFrame;
+    public Sprite emptyFrame;
+    public Sprite deadFrame;
 
     int targetId;
     GameUnit unit;
@@ -50,20 +53,15 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
 
     void InitItem()
     {
-        var unitData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
-        var headPath = unitData.uiAsset;
-        var index = headPath.LastIndexOf('/');
-        var assetbundle = headPath.Substring(0, index);
-        var assetname = headPath.Substring(index + 1, headPath.Length - index - 1);
-        var image = ResourceMgr.Instance.LoadAssetType<Sprite>(assetbundle, assetname) as Sprite;
-
-        head.sprite = image;
+        head.sprite = unit.headImg;
         nameText.text = unit.name;
 
-        if (unit.curLife > 0)
+        if (unit != null && unit.curLife > 0)
         {
             cdmask.gameObject.SetActive(false);
-            deadtext.gameObject.SetActive(false);
+            lifeBar.gameObject.SetActive(true);
+            energyBar.gameObject.SetActive(true);
+            frame.sprite = normalFrame;
         }
         else
         {
@@ -80,7 +78,6 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     {
         nameText.text = "";
         cdmask.gameObject.SetActive(true);
-        deadtext.gameObject.SetActive(true);
         var size = cdmask.rectTransform.sizeDelta;
         size.y = maskHeight;
         cdmask.rectTransform.sizeDelta = size;
@@ -89,15 +86,15 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         size = lifeBar.rectTransform.sizeDelta;
         size.x = 0;
         lifeBar.rectTransform.sizeDelta = size;
+        lifeBar.gameObject.SetActive(false);
 
         //能量为空
         size = energyBar.rectTransform.sizeDelta;
         size.y = 0;
         energyBar.rectTransform.sizeDelta = size;
+        energyBar.gameObject.SetActive(false);
 
-        //TODO: multi language
-        if (isDead == false)
-            deadtext.text = "无怪物";
+        frame.sprite = isDead ? deadFrame : emptyFrame;
 
         gameObject.SetActive(true);
     }

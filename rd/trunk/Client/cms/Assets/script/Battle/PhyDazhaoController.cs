@@ -177,7 +177,7 @@ public class PhyDazhaoController : MonoBehaviour
 			}
 			yield return new WaitForEndOfFrame ();
 		}
-		Debug.LogError ("大招结束.... attack times: " + dazhaoFinishCount);
+		//Debug.LogError ("大招结束.... attack times: " + dazhaoFinishCount);
 		BattleCamera.Instance.animator.SetBool (BattleCamera.AniControlParam.phyDazhao, false);
 		
 		GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.DazhaoActionOver, casterBattleGo);

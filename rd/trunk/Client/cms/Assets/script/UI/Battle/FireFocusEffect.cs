@@ -6,6 +6,8 @@ public class FireFocusEffect : MonoBehaviour
 {
 	RectTransform rectTrans = null;
 	GameObject effectGo;
+	Transform effectTargetTrans;
+	float offsetH = 0.0f;
 
 	void Start()
 	{
@@ -43,9 +45,10 @@ public class FireFocusEffect : MonoBehaviour
 
 	void OnShow(BattleObject bo)
 	{
+		StopCoroutine (RefreshEffectCo ());
 		effectGo.SetActive (true);
 
-		float offsetH = 0.5f;
+		offsetH = 0.5f;
         if (bo.unit.isBoss) 
 		{
 			offsetH = 1.1f;
@@ -66,13 +69,25 @@ public class FireFocusEffect : MonoBehaviour
             }
         }
 
-        Vector3 unitPosition = targetTrans.position + new Vector3(0, offsetH, 0);
-		var screenPos = BattleCamera.Instance.CameraAttr.WorldToScreenPoint (unitPosition);
-		rectTrans.anchoredPosition = new Vector2 (screenPos.x/UIMgr.Instance.CanvasAttr.scaleFactor, screenPos.y/UIMgr.Instance.CanvasAttr.scaleFactor);
+		effectTargetTrans = targetTrans;
+
+		StartCoroutine (RefreshEffectCo ());
+	}
+
+	IEnumerator RefreshEffectCo()
+	{
+		while (true) 
+		{
+			Vector3 unitPosition = effectTargetTrans.position + new Vector3 (0, offsetH, 0);
+			var screenPos = BattleCamera.Instance.CameraAttr.WorldToScreenPoint (unitPosition);
+			rectTrans.anchoredPosition = new Vector2 (screenPos.x / UIMgr.Instance.CanvasAttr.scaleFactor, screenPos.y / UIMgr.Instance.CanvasAttr.scaleFactor);
+			yield return new WaitForEndOfFrame();
+		}
 	}
 
 	void OnHide()
 	{
+		StopCoroutine (RefreshEffectCo ());
 		effectGo.SetActive (false);
 	}
 }

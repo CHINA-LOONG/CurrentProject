@@ -543,8 +543,8 @@ public class Player extends HawkAppObj {
 			int expRemain = getExp() + exp;
 			int targetLevel = getLevel();
 			while (targetLevel != monsterBaseCfg.size() && expRemain >= monsterBaseCfg.get(targetLevel).getNextExp() * levelUpExpRate) {
-				targetLevel += 1;
 				expRemain -= monsterBaseCfg.get(targetLevel).getNextExp() * levelUpExpRate;
+				targetLevel += 1;
 			}
 			playerData.getMonsterEntity(monsterId).setExp(expRemain);
 			playerData.getMonsterEntity(monsterId).setLevel(targetLevel);
@@ -571,8 +571,8 @@ public class Player extends HawkAppObj {
 		int expRemain = getExp() + exp;
 		int targetLevel = getLevel();
 		while (targetLevel != playAttrCfg.size() && expRemain >= playAttrCfg.get(targetLevel).getExp()) {
-			targetLevel += 1;
 			expRemain -= playAttrCfg.get(targetLevel).getExp();
+			targetLevel += 1;
 		}
 		
 		playerData.getPlayerEntity().setExp(expRemain);

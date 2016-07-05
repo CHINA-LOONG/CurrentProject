@@ -16,7 +16,7 @@ public class BattleConst
     public const int maxFieldUnit = 3;
 
     //换宠冷却时间
-    public const float switchPetCD = 10;
+    public const float switchPetCD = 0;
 
     public const int speedK = 1000;
     public const float speedFactorMin = 0.98f;

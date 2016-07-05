@@ -36,7 +36,14 @@ public class LifeBarUI : MonoBehaviour
                 {
                     SetTargetLife(lifeTarget.unit.curLife, lifeTarget.unit.maxLife);
                     currentLife = targetLife;
+                    currentBar.sizeDelta = targetBar.sizeDelta;
                     //lifeSpeed = (int)(lifeTarget.unit.maxLife * lifeRatioSpeed);
+                }
+                else
+                {
+                    var size = targetBar.sizeDelta;
+                    size.x = 0;
+                    currentBar.sizeDelta = targetBar.sizeDelta = size;
                 }
             }
         }

@@ -6,7 +6,12 @@ public class PetSwitchPage : MonoBehaviour
 {
     int petToBeReplace;
     public List<PetSwitchItem> items;
+    RectTransform trans;
 
+    void Awake()
+    {
+        trans = transform as RectTransform;
+    }
     /// <summary>
     /// 创建UI item，创建三个，只需要创建一次
     /// </summary>
@@ -45,43 +50,28 @@ public class PetSwitchPage : MonoBehaviour
         petToBeReplace = args.targetId;
         var idleUnits = BattleController.Instance.BattleGroup.PlayerIdleList;
 
-        //0个显示无怪物
-        if (idleUnits.Count == 0)
+        for (int i = 0; i < items.Count; i++)
         {
-            foreach (var item in items)
-            {
-                item.Hide();
-            }
-            var com = items[0];
-            com.ShowEmpty(false);
-        }
-        else
-        {
-            for (int i = 0; i < items.Count; i++)
-            {
-                var com = items[i];
-                if (i<idleUnits.Count)
-                    com.Show(args.targetId, idleUnits[i]);
-                else
-                    com.Hide();
-            }
+            var com = items[i];
+            if (i < idleUnits.Count)
+                com.Show(args.targetId, idleUnits[i]);
+            else
+                com.ShowEmpty(false);
         }
 
-        var targetGO = ObjectDataMgr.Instance.GetBattleObject(args.targetId);
 
-		//transform.position = RectTransformUtility.WorldToScreenPoint(BattleCamera.Instance.CameraAttr, targetGO.gameObject.transform.position);
-		//transform.position += new Vector3(0, Screen.height*0.4f, 0);
-       
-		var viewPos = BattleCamera.Instance.CameraAttr.WorldToViewportPoint(targetGO.gameObject.transform.position);
+        BattleObject targetGO = ObjectDataMgr.Instance.GetBattleObject(args.targetId);
+        Vector3 pt = BattleCamera.Instance.CameraAttr.WorldToScreenPoint(targetGO.gameObject.transform.position);
+        float scale = UIMgr.Instance.CanvasAttr.scaleFactor;
+        //TODO; change to child node, when gd changes the prefab
+        trans.anchoredPosition = new Vector2(pt.x / scale, pt.y / scale + 100/scale);
 
-        var pos = UICamera.Instance.CameraAttr.ViewportToScreenPoint(viewPos);
-      //  Logger.LogWarning("pos"+pos);
-
-      //  Logger.LogWarning("parent world position" + transform.parent.position);
-
-        var trans = transform as RectTransform;
-        trans.anchoredPosition = pos;
-        trans.anchoredPosition += new Vector2(0, Screen.height * 0.4f);
+        //var targetGO = ObjectDataMgr.Instance.GetBattleObject(args.targetId);
+        //var viewPos = BattleCamera.Instance.CameraAttr.WorldToViewportPoint(targetGO.gameObject.transform.position);
+        //var pos = UICamera.Instance.CameraAttr.ViewportToScreenPoint(viewPos);
+        //var trans = transform as RectTransform;
+        //trans.anchoredPosition = pos;
+        //trans.anchoredPosition += new Vector2(0, Screen.height * 0.4f);
     }
 
     public bool Hide(int id)

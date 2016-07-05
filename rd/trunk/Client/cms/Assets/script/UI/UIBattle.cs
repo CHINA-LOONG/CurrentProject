@@ -23,6 +23,7 @@ public class UIBattle : UIBase
 
 	public Transform bottomLayer = null;
 	public Transform dazhaoGroup = null;
+    public Transform publicTopGroup = null;
 
     public Image m_MirrorImage = null;
     public Button m_ButtonLeft = null;
@@ -37,11 +38,16 @@ public class UIBattle : UIBase
     public PetSwitchPage m_PetPanel;
     public DazhaoTip dazhaoTip;
 
+    public Sprite victorySprite;
+    public Sprite failedSprite;
+
     private MirrorDray m_MirrorDray = null;
 
     private int m_BattleSpeed = 1;
 	private	int	m_MaxSpeed = 3;
 
+    GameObject startBattleUI = null;
+    GameObject endBattleUI = null;
 	Animator animator;
 
 	// Use this for initialization
@@ -86,6 +92,41 @@ public class UIBattle : UIBase
     void OnDestroy()
     {
         UnBindListener();
+    }
+
+    public void ShowStartBattleUI()
+    {
+        GameObject starBattlePrefab = ResourceMgr.Instance.LoadAsset("ui/battle", "startBattle") as GameObject;
+        startBattleUI = Instantiate(starBattlePrefab) as GameObject;
+        startBattleUI.transform.SetParent(publicTopGroup, false);
+        //Animator startBattleUIAni = startBattleUI.GetComponent<Animator>();
+        //startBattleUIAni.gameObject.SetActive(true);
+    }
+
+    public void DestroyStartBattleUI()
+    {
+        Destroy(startBattleUI);
+    }
+
+    public void ShowEndBattleUI(bool success)
+    {
+        GameObject endBattlePrefab = ResourceMgr.Instance.LoadAsset("ui/battle", "endBattle") as GameObject;
+        endBattleUI = Instantiate(endBattlePrefab) as GameObject;
+        endBattleUI.transform.SetParent(publicTopGroup, false);
+        Image endImage = endBattleUI.GetComponent<Image>();
+        if (success)
+        {
+            endImage.sprite = victorySprite;
+        }
+        else 
+        {
+            endImage.sprite = failedSprite;
+        }
+    }
+
+    public void DestroyEndBattleUI()
+    {
+        Destroy(endBattleUI);
     }
 
     public void ChangeBuffState(SpellBuffArgs args)
@@ -140,7 +181,8 @@ public class UIBattle : UIBase
         GameEventMgr.Instance.AddListener(GameEventList.ShowDazhaoTip, OnShowDazhaoTip);
         GameEventMgr.Instance.AddListener(GameEventList.HideDazhaoTip, OnHideDazhaoTip);
 		GameEventMgr.Instance.AddListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
-		GameEventMgr.Instance.AddListener<UiState> (GameEventList.ChangeUIBattleState, OnChangeUIState);
+        GameEventMgr.Instance.AddListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
     }
 
     void UnBindListener()
@@ -149,7 +191,8 @@ public class UIBattle : UIBase
         GameEventMgr.Instance.RemoveListener(GameEventList.ShowDazhaoTip, OnShowDazhaoTip);
         GameEventMgr.Instance.RemoveListener(GameEventList.HideDazhaoTip, OnHideDazhaoTip);
         GameEventMgr.Instance.RemoveListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
-		GameEventMgr.Instance.RemoveListener<UiState> (GameEventList.ChangeUIBattleState, OnChangeUIState);
+        GameEventMgr.Instance.RemoveListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
     }
 
     void AddUIObjectEvent()
@@ -281,13 +324,13 @@ public class UIBattle : UIBase
         var args = sArgs as ShowSwitchPetUIArgs;
         m_PetPanel.Show(args);
 
-        GameEventMgr.Instance.AddListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
+        //GameEventMgr.Instance.AddListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
     }
 
     void OnHideSwitchPetUI(int targetId)
     {
-        if (m_PetPanel.Hide(targetId))
-            GameEventMgr.Instance.RemoveListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
+        if (m_PetPanel.Hide(targetId)) ;
+            //GameEventMgr.Instance.RemoveListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
     }
 
     //dazhao

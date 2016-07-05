@@ -362,7 +362,7 @@ public class WeakPointController : MonoBehaviour
 			subWp = weakPointList[i];
 			
 			WeakPointData wpData = StaticDataMgr.Instance.GetWeakPointData(subWp);
-			if(null == wpData )
+			if(null == wpData || wpData.isSelf == 1)
 			{
 				continue;
 			}

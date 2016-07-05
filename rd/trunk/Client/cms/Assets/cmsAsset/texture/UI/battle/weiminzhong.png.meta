@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 441396d0146cb5242a5882441f17f1bc
-timeCreated: 1433834417
+timeCreated: 1434371342
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
@@ -29,7 +29,7 @@ TextureImporter:
   textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 1
+    filterMode: -1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -49,7 +49,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites: []
-  spritePackingTag: buttle
+  spritePackingTag: 
   userData: 
   assetBundleName: 
   assetBundleVariant: 

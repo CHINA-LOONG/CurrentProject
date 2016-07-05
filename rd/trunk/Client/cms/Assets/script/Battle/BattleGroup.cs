@@ -169,8 +169,8 @@ public class BattleGroup
     {
         for (int i = 0; i < playerField.Length; i++)
         {
-            var unit = playerField[i].unit;
-            if (unit != null && unit.curLife > 0)
+            var unit = playerField[i];
+            if (unit != null && unit.unit.curLife > 0)
                 return false;
         }
 
@@ -192,11 +192,16 @@ public class BattleGroup
     public BattleObject GetPlayerToField()
     {
         List<BattleObject> playerUnitList = GameDataMgr.Instance.PlayerDataAttr.GetMainUnits();
+        BattleObject curObj = null;
         var itor = playerUnitList.GetEnumerator();
         while (itor.MoveNext())
         {
-            int slot = itor.Current.unit.pbUnit.slot;
-            if (slot == BattleConst.offsiteSlot && itor.Current.unit.curLife > 0)
+            curObj = itor.Current;
+            int slot = curObj.unit.pbUnit.slot;
+            if (slot == BattleConst.offsiteSlot &&
+                curObj.unit.curLife > 0 &&
+                curObj.unit.State != UnitState.ToBeEnter
+               )
             {
                 return itor.Current;
             }

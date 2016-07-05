@@ -74,7 +74,14 @@ public class UIBuffView : MonoBehaviour
     private void UpdateBuff()
     {
         if (targetUnit == null)
+        {
+            if (otherBuffList.Count > 0)
+            {
+                otherBuff.RemoveBuff();
+                otherBuffList.Clear();
+            }
             return;
+        }
 
         int buffCount = otherBuffList.Count;
         if (buffCount <= 0)

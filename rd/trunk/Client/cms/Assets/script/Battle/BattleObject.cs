@@ -72,21 +72,22 @@ public class BattleObject : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnEnterField()
     {
-        BattleObject bo = ObjectDataMgr.Instance.GetBattleObject(guid);
-        if (bo != null)
+        unit.State = UnitState.None;
+        //BattleObject bo = ObjectDataMgr.Instance.GetBattleObject(guid);
+        //if (bo != null)
         {
-            bo.gameObject.SetActive(true);
+            gameObject.SetActive(true);
             GameObject slotNode = BattleController.Instance.GetSlotNode(camp, unit.pbUnit.slot, unit.isBoss);
-            bo.transform.position = slotNode.transform.position;
-            bo.transform.rotation = slotNode.transform.rotation;
-            bo.transform.localScale = slotNode.transform.localScale;
-            bo.gameObject.transform.SetParent(GameMain.Instance.transform);
-            if (bo.camp == UnitCamp.Enemy)
+            transform.position = slotNode.transform.position;
+            transform.rotation = slotNode.transform.rotation;
+            transform.localScale = slotNode.transform.localScale;
+            gameObject.transform.SetParent(GameMain.Instance.transform);
+            if (camp == UnitCamp.Enemy)
             {
                 GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.LoadBattleObjectFinished, this);
             }
 
-			shifaGo = Util.FindChildByName(bo.gameObject,"e_shifa_01");
+			shifaGo = Util.FindChildByName(gameObject,"e_shifa_01");
         }
 
         unit.ReCalcSpeed();
@@ -102,10 +103,11 @@ public class BattleObject : MonoBehaviour
         //    unitObject = null;
 
         //}
-        BattleObject unit = ObjectDataMgr.Instance.GetBattleObject(guid);
-        if (unit != null)
+        //BattleObject unit = ObjectDataMgr.Instance.GetBattleObject(guid);
+        //if (unit != null)
         {
-            unit.gameObject.SetActive(false);
+            unit.State = UnitState.None;
+            gameObject.SetActive(false);
             Logger.LogFormat("Unit {0} guid:{1} has exited field", name, guid);
         }
     }

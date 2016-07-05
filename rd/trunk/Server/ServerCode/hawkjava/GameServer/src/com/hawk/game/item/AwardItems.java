@@ -287,6 +287,9 @@ public class AwardItems {
 	public boolean  rewardTakeAffect(Player player, Action action) {
 		try {			
 			for (int i = 0; i < rewardInfo.getRewardItemsBuilderList().size(); ) {
+				
+				System.out.println(rewardInfo.getRewardItemsBuilderList().size());
+				
 				RewardItem.Builder item = rewardInfo.getRewardItemsBuilder(i);
 				SynPlayerAttr.Builder playerBuilder = rewardInfo.getPlayerAttrBuilder();
 				boolean invalidType = false;
@@ -339,32 +342,29 @@ public class AwardItems {
 							invalidType = true;
 						}
 						else {
-							for (Integer monsterId : battleMonsters) {
-								if (player.getPlayerData().getMonsterEntity(monsterId) != null) {
+								if (player.getPlayerData().getMonsterEntity((int)item.getId()) != null) {
 									SynMonsterAttr.Builder monsterBuilder = null;
 
 									player.increaseMonsterExp((int)item.getId(), item.getCount(), action);
 									
 									for (SynMonsterAttr.Builder builder : rewardInfo.getMonstersAttrBuilderList()) {
-										if (builder.getMonsterId() == monsterId) {
+										if (builder.getMonsterId() == (int)item.getId()) {
 											monsterBuilder = builder;
 											break;
 										}
 									}
 									if (monsterBuilder == null) {
 										monsterBuilder = SynMonsterAttr.newBuilder();
-										monsterBuilder.setMonsterId(monsterId);
-										monsterBuilder.setExp(player.getMonsterExp(monsterId));
-										monsterBuilder.setLevel(player.getMonsterLevel(monsterId));
+										monsterBuilder.setMonsterId((int)item.getId());
+										monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
+										monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
 										rewardInfo.addMonstersAttr(monsterBuilder);
 									}
 									else {
-										monsterBuilder.setMonsterId(monsterId);
-										monsterBuilder.setExp(player.getMonsterExp(monsterId));
-										monsterBuilder.setLevel(player.getMonsterLevel(monsterId));
+										monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
+										monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
 									}						
 								}
-							}
 						}
 					}
 				}

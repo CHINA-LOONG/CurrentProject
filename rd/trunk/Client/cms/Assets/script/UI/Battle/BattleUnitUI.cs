@@ -44,7 +44,7 @@ public class BattleUnitUI : MonoBehaviour
         Unit = sUnit;
         if (sUnit == null)
         {
-            Hide();
+            //Hide();
             return;
         }
 

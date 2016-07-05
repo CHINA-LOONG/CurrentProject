@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
+using System.Collections.Generic;
+using System;
 using System.Reflection;
 
 public enum BattleType
@@ -162,7 +163,7 @@ public class BattleController : MonoBehaviour
             GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
             Logger.LogWarning("hit enemy gameobject....");
         }
-        else if (battleGo.camp == UnitCamp.Player)
+        else if (battleGo.camp == UnitCamp.Player && process.SwitchingPet == false)
         {
             //换宠
             ShowSwitchPetUIArgs args = new ShowSwitchPetUIArgs();
@@ -438,10 +439,15 @@ public class BattleController : MonoBehaviour
     public void OnBattleOver(bool isSuccess)
     {
         Debug.LogWarning("Battle " + (isSuccess ? "Success" : "Failed"));
+        StartCoroutine(ProcessBattleOver(isSuccess));
+    }
+    //---------------------------------------------------------------------------------------------
+    IEnumerator ProcessBattleOver(bool isSuccess)
+    {
         //胜利失败动画
-        PlayBalanceAnim();
+        yield return StartCoroutine(PlayBalanceAnim(isSuccess));
         //后置剧情动画
-        PlayPostStoryAnim();
+        yield return StartCoroutine(PlayPostStoryAnim());
         //结算面板UI
         ShowBalanceUI();
 
@@ -450,24 +456,38 @@ public class BattleController : MonoBehaviour
 
         //回到副本层
         UnLoadBattleScene();
-        process.ClearEvent();
+        process.Clear();
         GameMain.Instance.ChangeModule<BuildModule>();
         UIMgr.Instance.CloseUI(UIBattle.ViewName);
     }
     //---------------------------------------------------------------------------------------------
-    private void PlayBalanceAnim()
+    IEnumerator PlayBalanceAnim(bool isSuccess)
     {
-        Logger.Log("[Battle]Playing Balance Anim...");
+        uiBattle.ShowEndBattleUI(isSuccess);
+        string eventName = isSuccess ? "win" : "failed";
+        for (int i = 0; i < battleGroup.EnemyFieldList.Count; ++i)
+        {
+            BattleObject bo = battleGroup.PlayerFieldList[i];
+            if (bo != null && bo.unit.curLife > 0)
+            {
+                battleGroup.PlayerFieldList[i].TriggerEvent(eventName, Time.time, null);
+            }
+        }
+        yield return new WaitForSeconds(3.0f);
+        uiBattle.DestroyEndBattleUI();
+        yield return null;
     }
     //---------------------------------------------------------------------------------------------
-    private void PlayPostStoryAnim()
+    IEnumerator PlayPostStoryAnim()
     {
         Logger.Log("[Battle]Playing Post Story Anim...");
+        yield return null;
     }
     //---------------------------------------------------------------------------------------------
-    private void ShowBalanceUI()
+    IEnumerator ShowBalanceUI()
     {
         Logger.Log("[Battle]Showing Balance UI...");
+        yield return null;
     }
     //---------------------------------------------------------------------------------------------
 }
