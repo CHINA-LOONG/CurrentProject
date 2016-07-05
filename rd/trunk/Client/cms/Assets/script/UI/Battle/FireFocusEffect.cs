@@ -51,7 +51,22 @@ public class FireFocusEffect : MonoBehaviour
 			offsetH = 1.1f;
 		}
 
-        Vector3 unitPosition = bo.gameObject.transform.position + new Vector3(0, offsetH, 0);
+        Transform targetTrans = bo.gameObject.transform;
+        if (bo.unit.attackWpName != null && bo.unit.attackWpName.Length > 0)
+        {
+            WeakPointData wp = StaticDataMgr.Instance.GetWeakPointData(bo.unit.attackWpName);
+            if (wp != null && wp.node != null)
+            {
+                GameObject targetNode = Util.FindChildByName(bo.gameObject, wp.node);
+                if (targetNode != null)
+                {
+                    targetTrans = targetNode.transform;
+                    offsetH = 0.0f;
+                }
+            }
+        }
+
+        Vector3 unitPosition = targetTrans.position + new Vector3(0, offsetH, 0);
 		var screenPos = BattleCamera.Instance.CameraAttr.WorldToScreenPoint (unitPosition);
 		rectTrans.anchoredPosition = new Vector2 (screenPos.x/UIMgr.Instance.CanvasAttr.scaleFactor, screenPos.y/UIMgr.Instance.CanvasAttr.scaleFactor);
 	}

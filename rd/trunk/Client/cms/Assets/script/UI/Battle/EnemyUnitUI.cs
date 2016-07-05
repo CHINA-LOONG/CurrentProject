@@ -8,7 +8,18 @@ public class EnemyUnitUI : MonoBehaviour
 	public Text unitLevel;
 	public LifeBarUI lifeBar;
 
-    public BattleObject Unit { get; set; }
+    public BattleObject Unit
+    {
+        get
+        {
+            return targetUnit;
+        }
+        set
+        {
+            targetUnit = value;
+        }
+    }
+    private BattleObject targetUnit;
     private UIBuffView buffView;
 	//RectTransform rectTrans;
 
@@ -29,14 +40,14 @@ public class EnemyUnitUI : MonoBehaviour
     {
         buffView.SetTargetUnit(sUnit);
         lifeBar.LifeTarget = sUnit;
+        Unit = sUnit;
         if (sUnit == null)
         {
             Hide();
             return;
         }
 
-        Unit = sUnit;
-        unitName.text = sUnit.name;
+        unitName.text = sUnit.unit.name;
         unitLevel.text = sUnit.unit.pbUnit.level.ToString();
 
         gameObject.SetActive(Unit.unit.isVisible == true);

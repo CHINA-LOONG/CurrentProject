@@ -61,6 +61,7 @@ public class GameApp : MonoBehaviour
         GameMain.Instance.Init();
         SpellService.Instance.Init();
         ActorEventService.Instance.Init();
+        GameSpeedService.Instance.Init();
     }
 
     /// <summary>

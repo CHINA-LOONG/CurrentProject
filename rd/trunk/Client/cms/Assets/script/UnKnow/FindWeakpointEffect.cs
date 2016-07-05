@@ -5,9 +5,9 @@ public class FindWeakpointEffect : MonoBehaviour
 {
 
 	public	GameObject effectObject;
-	public void Init()
+	public void Init(string assertName,string prefabName)
 	{
-		GameObject prefab = ResourceMgr.Instance.LoadAsset ("effect/battle", "findweakpointEffect");
+		GameObject prefab = ResourceMgr.Instance.LoadAsset (assertName,prefabName);//
 		effectObject = Instantiate (prefab) as GameObject;
 		if (null == effectObject)
 		{

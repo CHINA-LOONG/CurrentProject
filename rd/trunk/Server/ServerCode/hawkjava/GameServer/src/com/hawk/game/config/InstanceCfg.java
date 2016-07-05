@@ -33,11 +33,13 @@ public class InstanceCfg extends HawkConfigBase {
 	protected final int monster4Amount;
 	protected final String monster5;
 	protected final int monster5Amount;
+	protected final String bossID;
+	protected final String rareID;
+	protected final float rareProbability;
 	
 	// client only
-	protected final String normalValiVic = "";
-	protected final String bossValiVic = "";
-	protected final String bossID = "";
+	protected final String normalValiVic = null;
+	protected final String bossValiVic = null;
 	protected final String bossStoryStartAnimation = null;
 	protected final String bossStoryEndAnimation = null;	
 	protected final String pre1Animation = null;
@@ -61,8 +63,6 @@ public class InstanceCfg extends HawkConfigBase {
 	protected final int is5ClearBuff = 0;
 	protected final String bossValiP5 = null;
 	protected final String rareValiVic = null;
-	protected final String rareID = null;
-	protected final float rareProbability = 0;
 	protected final String rareStoryStartAnimation = null;
 	protected final String rareStoryEndAnimation = null;
 	protected final String preRare1Animation = null;
@@ -87,22 +87,11 @@ public class InstanceCfg extends HawkConfigBase {
 	protected final String rareValiP5 = null;
 		
 	// assemble
-	private Map<String, Integer> monsterAmountList;
-	
-	/**
-	 * 全局静态对象
-	 */
-	private static InstanceCfg instance = null;
-
-	/**
-	 * 获取全局静态对象
-	 */
-	public static InstanceCfg getInstance() {
-		return instance;
-	}
+	protected Map<String, Integer> monsterAmountList;
+	protected Map<String, MonsterCfg> monsterList;
+	private MonsterCfg bossCfg;
 
 	public InstanceCfg() {
-		instance = this;
 		id = "";
 		name = "";
 		level = 0;
@@ -123,6 +112,9 @@ public class InstanceCfg extends HawkConfigBase {
 		monster4Amount = 0;
 		monster5 = "";
 		monster5Amount = 0;
+		bossID = "";
+		rareID = null;
+		rareProbability = 0;
 	}
 	
 	@Override
@@ -149,8 +141,6 @@ public class InstanceCfg extends HawkConfigBase {
 	
 	@Override
 	protected boolean checkValid() {
-		// TODO:检查掉落组
-		
 		int sum = 0;
 		for (Entry<String, Integer> entry : monsterAmountList.entrySet()) {
 			MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, entry.getKey());
@@ -161,6 +151,11 @@ public class InstanceCfg extends HawkConfigBase {
 		}
 		
 		if (sceneAmount * monsterAmount != sum) {
+			return false;
+		}
+		
+		bossCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, bossID);
+		if (bossCfg == null) {
 			return false;
 		}
 		
@@ -214,4 +209,21 @@ public class InstanceCfg extends HawkConfigBase {
 	public int getMonsterAmount(String monsterId) {
 		return monsterAmountList.get(monsterId);
 	}
+	
+	public String getBossId() {
+		return bossID;
+	}
+	
+	public MonsterCfg getBoss() {
+		return bossCfg;
+	}
+	
+	public String getRareId() {
+		return rareID;
+	}
+	
+	public float getRareProbability() {
+		return rareProbability;
+	}
+
 }

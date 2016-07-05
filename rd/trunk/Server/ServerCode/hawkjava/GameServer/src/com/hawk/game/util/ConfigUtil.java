@@ -76,10 +76,10 @@ public class ConfigUtil {
 	 * @param monsterId
 	 * @return
 	 */
-	public static boolean checkMonster(int monsterId) {
-		MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterId);
+	public static boolean checkMonster(String monsterCfgId) {
+		MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterCfgId);
 		if (monsterCfg == null) {
-			HawkLog.errPrintln("monster config not found, dropId：" + monsterId);
+			HawkLog.errPrintln("monster config not found, dropId：" + monsterCfgId);
 			return false;
 		}
 		return true;

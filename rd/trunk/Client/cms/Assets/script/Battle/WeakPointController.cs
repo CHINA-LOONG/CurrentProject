@@ -123,7 +123,15 @@ public class WeakPointController : MonoBehaviour
 			if(null == effectGo.GetComponent<FindWeakpointEffect>())
 			{
 				FindWeakpointEffect fEffect = effectGo.AddComponent<FindWeakpointEffect>();
-				fEffect.Init();
+				if(rowData.isSelf == 1)
+				{
+					fEffect.Init("effect/battle", "monster_ghost");
+				}
+				else
+				{
+					fEffect.Init("effect/battle", "findweakpointEffect");
+				}
+
 				
 				string prefabName = rowData.asset;
 				FindFinishedWeakpointEffect finishEffect = effectGo.AddComponent<FindFinishedWeakpointEffect>();
@@ -194,8 +202,10 @@ public class WeakPointController : MonoBehaviour
 			string wpName = target.WeakPointIDAttr;
 
 			GameObject wpMeshGo = null;
+			bool isMeshActived = true;
 			if(unit.weakPointMeshDic.TryGetValue(wpName,out wpMeshGo))
 			{
+				isMeshActived = wpMeshGo.activeSelf;
 				wpMeshGo.SetActive(true);
 			}
 
@@ -209,14 +219,18 @@ public class WeakPointController : MonoBehaviour
 			{
 				unit.findWeakPointlist.Add (wpName);
 				//光效果
-				ShowWeakpointFireEffect(unit, wpName);
+				if(!target.isSelf || !isMeshActived)
+				{
+					ShowWeakpointFireEffect(unit, wpName);
+				}
 			}
 		
 
 			ShowOrHideFindEffect (unit, wpName, false);
-			ShowOrHideFindFinishedEffect (unit, wpName, true);
-
-			//
+			if(!target.isSelf )
+			{
+				ShowOrHideFindFinishedEffect (unit, wpName, true);
+			}
 		}
 	}
 

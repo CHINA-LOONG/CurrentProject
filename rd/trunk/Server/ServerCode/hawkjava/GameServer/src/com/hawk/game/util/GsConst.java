@@ -49,6 +49,8 @@ public class GsConst {
 
 		// 奖励宠物
 		public static final int PRESENT_MONSTER = 1001;
+		// 玩家统计数据更新
+		public static final int STATISTICS_UPDATE = 1002;
 	}
 
 	/**
@@ -64,9 +66,11 @@ public class GsConst {
 		// 副本模块
 		public static final int INSTANCE_MODULE = 4;
 		// 装备模块
-		public static int ITEM_MODULE = 5;
+		public static final int ITEM_MODULE = 5;
 		// 道具模块
-		public static int EQUIP_MODULE = 6;
+		public static final int EQUIP_MODULE = 6;
+		// 任务模块
+		public static final int QUEST_MODULE = 7;
 		
 		// 空闲模块(保证在最后)
 		public static final int IDLE_MODULE = 100;
@@ -83,9 +87,10 @@ public class GsConst {
 
 		// 个人刷新----------------------------------------------------------
 		public static final int PERS_REFRESH_BEGIN = 100;
-		public static final int SIGN_IN_PERS_REFRESH = 101;
-		public static final int INSTANCE_PERS_REFRESH = 102;
-		public static final int PERS_REFRESH_END = 103;
+		public static final int DAILY_PERS_REFRESH = 101;
+//		public static final int SIGN_IN_PERS_REFRESH = 102;
+//		public static final int INSTANCE_PERS_REFRESH = 103;
+		public static final int PERS_REFRESH_END = 102;
 	}
 
 	/**
@@ -99,6 +104,7 @@ public class GsConst {
 		public static final int HUO_PROPERTY = 4;
 		public static final int TU_PROPERTY = 5;
 	}
+
 	public static class PlayerItemCheckResult {
 		/**
 		 * 金币不足
@@ -124,4 +130,37 @@ public class GsConst {
 		public static final int EQUIP_NOI_ENOUGH = 8;
 	}
 
+	// 循环性
+	public static class Cycle {
+		public static final int NORMAL_CYCLE = 1;
+		public static final int DAILY_CYCLE = 2;
+	}
+	
+	// 任务类型
+	public static class QuestType {
+		public static final int 	STORY_QUEST = 1;
+		public static final int DAILY_QUEST = 2;
+		public static final int BIOGRAPHY_QUEST = 3;
+	}
+
+	// 任务目标类型
+	public static class QuestGoalType {
+		public static final int DIFFICULTY_GOAL = 1;
+		public static final int STAR_GOAL = 2;
+		public static final int INSTANCE_NORMAL_GOAL = 3;
+		public static final int INSTANCE_HARD_GOAL = 4;
+		public static final int INSTANCE_ALL_GOAL = 5;
+		public static final int LEVEL_GOAL = 6;
+		public static final int MONSTER_STAGE_GOAL = 7;
+		public static final int MONSTER_LEVEL_GOAL = 8;
+		public static final int ARENA_GOAL = 9;
+		public static final int TIME_HOLE_GOAL  = 10;
+		public static final int MONSTER_MIX_GOAL  = 11;
+		public static final int ADVENTURE_GOAL  = 12;
+		public static final int BOSSRUSH_GOAL = 13;
+		public static final int EXPLORE_GOAL = 14;
+		public static final int SKILL_UP_GOAL = 15;
+		public static final int EQUIP_UP_GOAL = 16;
+		public static final int BUYCOIN_GOAL = 17;
+	}
 }

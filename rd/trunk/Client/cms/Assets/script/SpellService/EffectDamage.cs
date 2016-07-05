@@ -98,7 +98,8 @@ public class EffectDamage : Effect
             }
             else
             {
-                if (target.attackWpName != null)
+
+				if (target.attackWpName != null)
                 {
                     wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
                 }
@@ -187,6 +188,7 @@ public class EffectDamage : Effect
             //trigger damage event
             {
                 SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+                args.vitalType = (int)VitalType.Vital_Type_Default;
                 args.triggerTime = applyTime;
                 args.casterID = casterID;
                 args.targetID = targetID;
@@ -197,14 +199,20 @@ public class EffectDamage : Effect
                 if (wp != null)
                 {
                     args.wpID = wp.id;
+                    args.wpNode = wp.node;
                 }
                 else 
                 {
                     args.wpID = string.Empty;
+                    args.wpNode = string.Empty;
                 }
                 spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
             }
         }
+
+		//统计攻击次数
+		GameEventMgr.Instance.FireEvent<SpellAttackStatisticsParam> (GameEventList.SpellAttackStatistics, new SpellAttackStatisticsParam (ownedSpell, casterID, targetID));
+
     }
     //---------------------------------------------------------------------------------------------
 }

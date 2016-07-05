@@ -30,7 +30,7 @@
     public const float propertyEnhance = 1.25f;
     public const float propertyWeaken = 0.75f;
 
-    public const int maxEnergy = 100;
+    //public const int maxEnergy = 100;//重复定义，在BattleConst中已存在
 
     public const float aniDelayTime = 1.0f;
     public const float buffShowInterval = 2.0f;
@@ -70,7 +70,16 @@ public enum SpellType
     Spell_Type_Beneficial,
     Spell_Type_Negative,
     Spell_Type_Lazy,
-    Spell_Type_DaZhao,
+    Spell_Type_PhyDaZhao,
+	Spell_Type_MagicDazhao,
 
     Num_Spell_Type
+}
+
+public enum VitalType
+{
+    Vital_Type_Default,
+    Vital_Type_Miss,
+
+    Num_Vital_Type
 }

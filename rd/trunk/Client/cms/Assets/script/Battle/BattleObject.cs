@@ -14,6 +14,8 @@ public class BattleObject : MonoBehaviour
     public UnitCamp camp;
     public int guid;
     public GameUnit unit;
+	public GameObject shifaGo;
+	public GameObject dazhaoPrepareEffect;
 
     public ActorEventService actorEventService;
     public AnimControl aniControl;
@@ -28,7 +30,7 @@ public class BattleObject : MonoBehaviour
         waitEventList = new List<ActorEventData>();
     }
     //---------------------------------------------------------------------------------------------
-    public void TriggerEvent(string eventID, float triggerTime)
+    public void TriggerEvent(string eventID, float triggerTime, string rootNode)
     {
         ActorEventData srcEvent = null;
         if (actorEventService.GetEvent(eventID, out srcEvent))
@@ -47,6 +49,7 @@ public class BattleObject : MonoBehaviour
                 curEvent.particleParent = srcEvent.particleParent;
                 curEvent.cameraAni = srcEvent.cameraAni;
                 curEvent.ps = null;
+                curEvent.rootNode = rootNode;
                 waitEventList.Add(curEvent);
             }
             //remove event
@@ -82,6 +85,8 @@ public class BattleObject : MonoBehaviour
             {
                 GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.LoadBattleObjectFinished, this);
             }
+
+			shifaGo = Util.FindChildByName(bo.gameObject,"e_shifa_01");
         }
 
         unit.ReCalcSpeed();
@@ -140,13 +145,26 @@ public class BattleObject : MonoBehaviour
                 {
                     GameObject prefab = ResourceMgr.Instance.LoadAsset(curEvent.particleBundle, curEvent.particleAsset);
                     curEvent.psObject = GameObject.Instantiate(prefab);
-                    curEvent.psObject.transform.parent = transform;
+                    Transform rootTransform = transform;
+                    if (curEvent.rootNode != null && curEvent.rootNode.Length > 0)
+                    {
+                        GameObject rootParent = Util.FindChildByName(gameObject, curEvent.rootNode);
+                        if (rootParent != null)
+                        {
+                            rootTransform = rootParent.transform;
+                        }
+                    }
+                    curEvent.psObject.transform.parent = rootTransform;
                     //curEvent.psObject.transform.localPosition = prefab.transform.position;
                     //curEvent.psObject.transform.localRotation = prefab.transform.rotation;
                     //curEvent.psObject.transform.localScale = prefab.transform.localScale;
 
                     if (curEvent.particleParent != null && curEvent.particleParent.Length > 0)
                     {
+                        if (curEvent.rootNode != null)
+                        {
+                            Logger.LogWarning("weak point is ignored since event configs the parent node");
+                        }
                         //Transform parentNode = transform.Find(curEvent.particleParent);
                         GameObject parentNode = Util.FindChildByName(gameObject, curEvent.particleParent);
                         if (parentNode != null)
@@ -180,5 +198,58 @@ public class BattleObject : MonoBehaviour
             }
         }
     }
-    //---------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------\
+
+	public void ShowDazhaoPrepareEffect()
+	{
+		GameObject parentNode = shifaGo;
+		if (null == parentNode) 
+		{
+			parentNode = gameObject;
+		}
+
+		if(null != dazhaoPrepareEffect)
+		{
+			Destroy(dazhaoPrepareEffect);
+		}
+		GameObject prefab = ResourceMgr.Instance.LoadAsset("effect/particle","dazhao_prepare") as GameObject;
+		
+		if(prefab != null)
+		{
+			dazhaoPrepareEffect = Instantiate (prefab) as GameObject;
+			dazhaoPrepareEffect.transform.SetParent(parentNode.transform);
+			dazhaoPrepareEffect.transform.localPosition = Vector3.zero;
+		}
+	}
+	//---------------------------------------------------------------------------------------------\
+	public void HideDazhaoPrepareEffect()
+	{
+
+		if(null != dazhaoPrepareEffect)
+		{
+			Destroy(dazhaoPrepareEffect);
+			dazhaoPrepareEffect = null;
+		}
+	}
+	//---------------------------------------------------------------------------------------------
+	public void ShowWeakpointDeadEffect(string wp)
+	{
+		WeakPointData rowData = StaticDataMgr.Instance.GetWeakPointData(wp);
+		if(null!=rowData)
+		{
+			string effectNodeName = rowData.node;
+			GameObject effectGo = Util.FindChildByName (gameObject, effectNodeName);
+			string deadPrefabName = rowData.deadEffect;
+			if(!string.IsNullOrEmpty(deadPrefabName))
+			{
+				GameObject prefab = ResourceMgr.Instance.LoadAsset ("effect/battle",deadPrefabName);//
+				GameObject effectObject = Instantiate (prefab) as GameObject;
+				if (null != effectObject)
+				{
+					effectObject.transform.SetParent (effectGo.transform);
+					effectObject.transform.localPosition = Vector3.zero;
+				}
+			}
+		}
+	}
 }

@@ -113,7 +113,19 @@ namespace PB
       EQUIP_LEVEL_NOT_ENOUGH = 262153,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MAX_STAGE_ALREADY", Value=262154)]
-      EQUIP_MAX_STAGE_ALREADY = 262154
+      EQUIP_MAX_STAGE_ALREADY = 262154,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_DRESS_ALREADY", Value=262160)]
+      EQUIP_DRESS_ALREADY = 262160,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_DRESS_OTHER", Value=262161)]
+      EQUIP_NOT_DRESS_OTHER = 262161,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_DRESS_OTHER_ALREADY", Value=262162)]
+      EQUIP_DRESS_OTHER_ALREADY = 262162,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_DRESSED", Value=262163)]
+      EQUIP_NOT_DRESSED = 262163
     }
   
 }

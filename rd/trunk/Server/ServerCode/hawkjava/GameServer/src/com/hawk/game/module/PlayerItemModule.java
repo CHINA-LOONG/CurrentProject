@@ -174,11 +174,11 @@ public class PlayerItemModule extends PlayerModule{
 			if (consumeItems.checkConsume(player, hsCode) == false) {
 				return;
 			}
-			consumeItems.consumeTakeAffectAndPush(player, Action.TOOL_USE);
+			consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE);
 			
 			List<ItemInfo> targetList = itemCfg.getTargetItemList();
 			awardItems.addItemInfos(targetList);
-			awardItems.rewardTakeAffectAndPush(player,  Action.TOOL_USE);
+			awardItems.rewardTakeAffectAndPush(player,  Action.ITEM_USE);
 		}
 		else if (useType == Const.toolType.BOXTOOL_VALUE) {
 			consumeItems.addItem(itemId, 1);
@@ -187,14 +187,14 @@ public class PlayerItemModule extends PlayerModule{
 				return;
 			}
 			
-			consumeItems.consumeTakeAffectAndPush(player, Action.TOOL_USE);
+			consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE);
 			
 			RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, itemCfg.getRewardId());
 			if (reward == null) {
 				return;
 			}
 			awardItems.addItemInfos(reward.getRewardList());
-			awardItems.rewardTakeAffect(player, Action.TOOL_USE);
+			awardItems.rewardTakeAffect(player, Action.ITEM_USE);
 		}
 		
 		
@@ -232,11 +232,11 @@ public class PlayerItemModule extends PlayerModule{
 			return;
 		}
 		
-		consumeItems.consumeTakeAffectAndPush(player, Action.TOOL_USE);
+		consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE);
 		
 		AwardItems awardItems = new AwardItems();
 		awardItems.addItem(itemId, 1);
-		awardItems.rewardTakeAffect(player, Action.TOOL_USE);
+		awardItems.rewardTakeAffect(player, Action.ITEM_USE);
 		
 		HSItemComposeRet.Builder response = HSItemComposeRet.newBuilder();
 		response.setItemId(itemId);

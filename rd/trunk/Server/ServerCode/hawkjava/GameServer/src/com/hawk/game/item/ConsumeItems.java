@@ -307,31 +307,14 @@ public class ConsumeItems {
 				else if(item.getType() == Const.itemType.ITEM_VALUE){
 					int itemId = item.getItemId();
 					ItemEntity itemEntity = player.consumeItem(itemId, item.getCount(), action);
-					if (itemEntity != null) {					
-						try {
-							BehaviorLogger.log4Platform(player, action, Params.valueOf("id", item.getId()), 
-								Params.valueOf("itemId", item.getItemId()), 
-								Params.valueOf("itemCount", item.getCount()));
-						} catch (Exception e) {
-							HawkException.catchException(e);
-						}
-					}
-					else {
+					if (itemEntity == null) {					
 						consumeInfo.removeConsumeItems(i);
 						continue;
 					}
 				}
 				else if(item.getType() == Const.itemType.EQUIP_VALUE){
 					boolean result = player.consumeEquip(item.getId(), action);
-					if (result == true) {				
-						try {
-							BehaviorLogger.log4Platform(player, action, Params.valueOf("id", item.getId()), 
-								Params.valueOf("itemId", item.getItemId()));
-						} catch (Exception e) {
-							HawkException.catchException(e);
-						}
-					}
-					else {
+					if (result == false) {				
 						consumeInfo.removeConsumeItems(i);
 						continue;
 					}

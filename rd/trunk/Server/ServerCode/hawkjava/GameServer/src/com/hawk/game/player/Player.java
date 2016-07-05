@@ -36,12 +36,13 @@ import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.log.BehaviorLogger.Params;
 import com.hawk.game.log.BehaviorLogger.Source;
-import com.hawk.game.module.PlayerEquipModuel;
+import com.hawk.game.module.PlayerEquipModule;
 import com.hawk.game.module.PlayerIdleModule;
 import com.hawk.game.module.PlayerInstanceModule;
 import com.hawk.game.module.PlayerItemModule;
 import com.hawk.game.module.PlayerLoginModule;
 import com.hawk.game.module.PlayerMonsterModule;
+import com.hawk.game.module.PlayerQuestModule;
 import com.hawk.game.module.PlayerStatisticsModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
@@ -103,7 +104,8 @@ public class Player extends HawkAppObj {
 		registerModule(GsConst.ModuleType.MONSTER_MODULE, new PlayerMonsterModule(this));
 		registerModule(GsConst.ModuleType.INSTANCE_MODULE, new PlayerInstanceModule(this));
 		registerModule(GsConst.ModuleType.ITEM_MODULE, new PlayerItemModule(this));
-		registerModule(GsConst.ModuleType.EQUIP_MODULE, new PlayerEquipModuel(this));
+		registerModule(GsConst.ModuleType.EQUIP_MODULE, new PlayerEquipModule(this));
+		registerModule(GsConst.ModuleType.QUEST_MODULE, new PlayerQuestModule(this));
 
 		// 最后注册空闲模块, 用来消息收尾处理
 		registerModule(GsConst.ModuleType.IDLE_MODULE, new PlayerIdleModule(this));
@@ -447,12 +449,7 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().notifyUpdate(true);
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.playerAttr.GOLD_VALUE), 
-				Params.valueOf("add", gold), 
-				Params.valueOf("after", getGold()));
-
-
-		BehaviorLogger.log4Platform(this, action, Params.valueOf("playerAttr", Const.playerAttr.GOLD_VALUE), 
+				Params.valueOf("playerAttr", Const.changeType.CHANGE_GOLD_VALUE), 
 				Params.valueOf("add", gold), 
 				Params.valueOf("after", getGold()));
 	}
@@ -472,13 +469,9 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().notifyUpdate(true);
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.playerAttr.GOLD_VALUE), 
+				Params.valueOf("playerAttr", Const.changeType.CHANGE_GOLD_VALUE), 
 				Params.valueOf("sub", gold), 
 				Params.valueOf("after", getGold()));
-
-		BehaviorLogger.log4Platform(this, Action.GOLD_COST, Params.valueOf("money", gold),
-				Params.valueOf("wpnum", 1), Params.valueOf("price", gold),
-				Params.valueOf("wpid", 0), Params.valueOf("wptype", action.name()));
 	}
 
 	/**
@@ -496,7 +489,7 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().notifyUpdate(true);
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.playerAttr.COIN_VALUE), 
+				Params.valueOf("playerAttr", Const.changeType.CHANGE_COIN_VALUE), 
 				Params.valueOf("add", coin), 
 				Params.valueOf("after", getCoin()));
 	}
@@ -516,13 +509,9 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().notifyUpdate(true);
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.playerAttr.COIN_VALUE), 
+				Params.valueOf("playerAttr", Const.changeType.CHANGE_COIN_VALUE), 
 				Params.valueOf("sub", coin), 
 				Params.valueOf("after", getCoin()));
-
-		BehaviorLogger.log4Platform(this, Action.COIN_COST, Params.valueOf("money", coin),
-				Params.valueOf("wpnum", 1), Params.valueOf("price", coin),
-				Params.valueOf("wpid", 0), Params.valueOf("wptype", action.name()));
 	}
 
 	/**
@@ -560,6 +549,11 @@ public class Player extends HawkAppObj {
 			playerData.getMonsterEntity(monsterId).setExp(expRemain);
 			playerData.getMonsterEntity(monsterId).setLevel(targetLevel);
 			playerData.getMonsterEntity(monsterId).notifyUpdate(true);
+			
+			BehaviorLogger.log4Service(this, Source.MONSTER_ATTR_CHANGE, action, 
+					Params.valueOf("monsterAttr", Const.changeType.CHANGE_MONSTER_EXP), 
+					Params.valueOf("add", exp), 
+					Params.valueOf("after", getMonsterExp(monsterId)));
 		}
 	}
 
@@ -584,6 +578,11 @@ public class Player extends HawkAppObj {
 		playerData.getPlayerEntity().setExp(expRemain);
 		playerData.getPlayerEntity().setLevel(targetLevel);
 		playerData.getPlayerEntity().notifyUpdate(true);
+		
+		BehaviorLogger.log4Service(this, Source.MONSTER_ATTR_CHANGE, action, 
+				Params.valueOf("monsterAttr", Const.changeType.CHANGE_PLAYER_EXP), 
+				Params.valueOf("add", exp), 
+				Params.valueOf("after", getExp()));
 	}
 
 	/**
@@ -610,7 +609,7 @@ public class Player extends HawkAppObj {
 
 		if (itemEntity.getId() > 0) {
 
-			BehaviorLogger.log4Service(this, Source.TOOLS_ADD, action, 
+			BehaviorLogger.log4Service(this, Source.ITEM_ADD, action, 
 					Params.valueOf("itemId", itemId), 
 					Params.valueOf("id", itemEntity.getId()), 
 					Params.valueOf("add", itemCount), 
@@ -630,7 +629,7 @@ public class Player extends HawkAppObj {
 			itemEntity.setCount(itemEntity.getCount() - itemCount);
 			itemEntity.notifyUpdate(true);
 
-			BehaviorLogger.log4Service(this, Source.TOOLS_REMOVE, action, 
+			BehaviorLogger.log4Service(this, Source.ITEM_REMOVE, action, 
 					Params.valueOf("itemId", itemId), 
 					Params.valueOf("id", itemEntity.getId()), 
 					Params.valueOf("sub", itemCount), 
@@ -704,7 +703,6 @@ public class Player extends HawkAppObj {
 	}
 	 
 	/**
-	 * 
 	 * 每日首次登陆
 	 */
 	public void onFirstLoginDaily(boolean sync) {
@@ -750,9 +748,7 @@ public class Player extends HawkAppObj {
 						statisticsEntity.setRefreshTime(i,  nextRefreshTime);
 
 						switch (i) {
-						case GsConst.RefreshType.SIGN_IN_PERS_REFRESH:
-							break;
-						case GsConst.RefreshType.INSTANCE_PERS_REFRESH:
+						case GsConst.RefreshType.DAILY_PERS_REFRESH:
 							break;
 						default:
 								break;

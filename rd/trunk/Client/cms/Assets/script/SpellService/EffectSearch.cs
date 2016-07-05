@@ -46,7 +46,7 @@ public class EffectSearch : Effect
         List<BattleObject> boList = spellService.GetUnitList(camp);
         foreach (BattleObject bo in boList)
         {
-            if (bo == null)
+            if (bo == null || bo.unit.isVisible == false)
                 continue;
 
             Effect curEffect = spellService.GetEffect(searchProt.effectID);

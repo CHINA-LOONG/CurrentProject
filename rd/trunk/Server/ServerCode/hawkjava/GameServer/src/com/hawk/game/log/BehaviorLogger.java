@@ -37,13 +37,13 @@ public class BehaviorLogger {
 		 */
 		GM_OPERATION,
 		/**
-		 * 武将移除
+		 * 怪物移除
 		 */
-		ROLE_REMOVE,
+		MONSTER_REMOVE,
 		/**
-		 * 角色添加
+		 * 怪物添加
 		 */
-		ROLE_ADD,
+		MONSTER_ADD,
 		/**
 		 * 装备移除
 		 */
@@ -55,32 +55,23 @@ public class BehaviorLogger {
 		/**
 		 * 道具移除
 		 */
-		TOOLS_REMOVE,
+		ITEM_REMOVE,
 		/**
 		 * 道具增加
 		 */
-		TOOLS_ADD,
+		ITEM_ADD,
 		/**
-		 * 属性改变
+		 * 玩家属性改变
 		 */
 		PLAYER_ATTR_CHANGE,
 		/**
-		 * 钻石消耗
+		 * 怪物属性改变
 		 */
-		GOLD_REDUCE,
+		MONSTER_ATTR_CHANGE,
 		/**
 		 * 游戏奖励
 		 */
 		GAME_SYS_REWARD,
-		/**
-		 * 邮件添加
-		 */
-		EMAIL_ADD,
-		/**
-		 * 邮件读取
-		 */
-		EMAIL_REMOVE,
-		
 		/**
 		 * 未知源
 		 */
@@ -121,43 +112,27 @@ public class BehaviorLogger {
 		/**
 		 * 创建角色
 		 */
-		CREATE_ROLE,
-		/**
-		 * 修改姓名
-		 */
-		ROLE_RENAME,
-		/**
-		 * 角色升级
-		 */
-		ROLE_LEVEL_UP,
-		/**
-		 * 首次充值
-		 */
-		FIRST_RECHARGE,
-		/**
-		 * 充值
-		 */
-		RECHARGE,
+		CREATE_PLAYER,
 		/**
 		 * 购买道具
 		 */
-		BUY_TOOL,
+		ITEM_BUY,
 		/**
 		 * 使用道具
 		 */
-		TOOL_USE,
+		ITEM_USE,
 		/**
 		 * 出售道具
 		 */
-		TOOL_SELL,
+		ITEM_SELL,
 		/**
-		 * 刷新神秘商店
+		 * 购买装备
 		 */
-		REFRESH_SHOP,
+		EQUIP_BUY,
 		/**
-		 * 神秘商店购买
+		 * 装备出售
 		 */
-		SHOP_BUY,
+		EQUIP_SELL,
 		/**
 		 * 装备进阶
 		 */
@@ -167,413 +142,37 @@ public class BehaviorLogger {
 		 */
 		EQUIP_EHANCE,
 		/**
-		 * 装备出售
+		 * 装备穿戴
 		 */
-		EQUIP_SELL,
+		EQUIP_DRESS,
 		/**
-		 * 装备洗炼
+		 * 装备脱下
 		 */
-		EQUIP_WASH,
-
+		EQUIP_UNDRESS,
 		/**
-		 * 扩充装备包囊
+		 * 装备替换
 		 */
-		EXT_EQUIP_BAG,
-		/**
-		 * 传书领取 邮件
-		 */
-		SYS_MSG,
-		/**
-		 * GM发放奖励
-		 */
-		GM_AWARD,
-		/**
-		 * CDK兑换
-		 */
-		CDK_REWARD,
-		/**
-		 * 每日首登
-		 */
-		DAILY_FIRST_LOGIN,
-		/**
-		 * 后台充值
-		 */
-		GM_RECHARGE,
-		/**
-		 * 踢出玩家
-		 */
-		GM_KICKOUT,
-		/**
-		 * GM封号处理
-		 */
-		GM_FORBIDEN,
-		/**
-		 * 钻石消耗
-		 */
-		GOLD_COST,
-		/**
-		 * 金币消耗
-		 */
-		COIN_COST,
-		/**
-		 * 使用cdk
-		 */
-		USE_CDK,
+		EQUIP_REPLACE,
 		/**
 		 * 游戏奖励
 		 */
 		GAME_SYS_REWARD,
-
 		/**
-		 * 角色商城刷新
+		 * 邮件奖励
 		 */
-		SHOP_REFASH,
-
-		/**
-		 * 角色商城金币购买
-		 */
-		SHOP_BUY_COIN,
-		/**
-		 * 角色商城钻石购买
-		 */
-		SHOP_BUY_GOLD,
-
-		/**
-		 * 角色商城购买道具
-		 */
-		SHOP_BUY_TOOLS,
-
-		/**
-		 * 邮件奖励道具
-		 */
-		MAIL_REWARD_TOOLS,
-
+		MAIL_REWARD,
 		/**
 		 * 创建邮件
 		 */
-		EMAIL_CREATE,
-
-		/**
-		 * 用钻石购买金币
-		 */
-		SHOP_COIN_BUY,
-		/**
-		 * 公会签到得金币
-		 */
-		ALLIANCE_REPORT_COIN,
-		/**
-		 * 公会签到得贡献
-		 */
-		ALLIANCE_REPORT_CONTRIBUTION,
-		/**
-		 * 公会签到得钻石
-		 */
-		ALLIANCE_REPORT_GOLD,
-		/**
-		 * 公会操作
-		 */
-		ALLIANCE_REPORT_OPER,
-		/**
-		 * 公会开启BOSS
-		 */
-		ALLIANCE_OPEN_BOSS,
-		/**
-		 * 鼓舞扣除钻石
-		 */
-		ALLIANCE_CONSUME_ADD_PROP,
-		/**
-		 * 公会商店消耗贡献
-		 */
-		ALLIANCE_CONSUME_CONTRIBUTION,
-		/**
-		 * 公会创建消耗
-		 */
-		ALLIANCE_CREATE_CONSUME,
-		/**
-		 * 加入公会
-		 */
-		ALLIANCE_JOIN_ALLIANCE,
-		/**
-		 * 自动参加公会boss战扣钻
-		 */
-		ALLIANCE_BOSS_AUTO_JOIN,
-		/**
-		 * 加入公会boss战
-		 */
-		JOIN_ALLIANCE_BOSS,
-		/**
-		 * 装备神器吞噬
-		 */
-		EQUIP_SWALLOW,
-		/**
-		 * 装备打造刷新
-		 */
-		EQUIP_SMELT_REFRESH,
-		/**
-		 * 装备熔炼
-		 */
-		EQUIP_SMELT,
-
-		/**
-		 * 装备打孔
-		 */
-		EQUIP_PUNCH,
-
-		/**
-		 * 购买竞技场挑战次数
-		 */
-		BUY_ARENA_CHALLENGE_TIMES,
-		/**
-		 * 刷新竞技场对手列表
-		 */
-		ARENA_REFRESH_OPPONENT_LIST,
-		/**
-		 * 竞技场挑战
-		 */
-		ARENA_CHALLENGE,
-
-		/**
-		 * 装备打造
-		 */
-		EQUIP_CREATE,
-		/**
-		 * 神器传承
-		 */
-		EQUIP_EXTEND,
-
-		/**
-		 * 任务奖励
-		 */
-		MISSION_BONUS,
-
-		/**
-		 * 角色洗炼
-		 */
-		ROLE_BAPTIZE,
-		/**
-		 * 装备背包扩充
-		 */
-		EQUIP_BAG_EXTEND,
-		/**
-		 * 宝石镶嵌
-		 */
-		EQUIP_STONE_DRESS,
-		/**
-		 * 购买快速战斗
-		 */
-		BUY_FAST_FIGHT_TIMES,
-		/**
-		 * 购买boss挑战次数
-		 */
-		BUY_BOSS_FIGHT_TIMES,
-		/**
-		 * 购买精英副本挑战次数
-		 */
-		BUY_ELITE_MAP_TIMES,
-		/**
-		 * 离线结算
-		 */
-		OFFLINE_ACCOUNT,
-		/**
-		 * 快速战斗
-		 */
-		FAST_FIGHTING,
-		/**
-		 * 地图战斗
-		 */
-		MONSTER_FIGHTING,
-		/**
-		 * 地图Boss战斗
-		 */
-		BOSS_FIGHTING,
-		/**
-		 * 经验副本战斗
-		 */
-		ELITE_MAP_FIGHTING,
-		/**
-		 * 竞技场战斗
-		 */
-		ARENA_FIGHTING,
-		/**
-		 * 团战创建队伍
-		 */
-		TEAM_BATTLE_CREATE_TEAM,
-		/**
-		 * 团战T人
-		 */
-		TEAM_BATTLE_KICK_UP_MEMBER,
-		/**
-		 * 参加团战(报名＋创建队伍)
-		 */
-		TAKE_PART_IN_TEAM_BATTLE,
-		/**
-		 * 取消团战报名
-		 */
-		CANCEL_TEAM_BATTLE,
-		/**
-		 * 参加阵营战斗
-		 */
-		TAKE_PART_IN_CAMPWAR,
-		/**
-		 * 领取礼物
-		 */
-		FETCH_GIFT,
-		/**
-		 * 读取邮件
-		 */
-		EMAIL_READ,
-		/**
-		 * 购买月卡
-		 */
-		MONTH_CARD_BUY,
-		/**
-		 * 月卡领取奖励
-		 */
-		MONTH_CARD_REWARD,
-		/**
-		 * 累计充值奖励
-		 */
-		ACC_RECHARGE_AWARDS,
-		/**
-		 * 连续充值奖励
-		 */
-		CONTINUE_RECHARGE_AWARDS,
-		/**
-		 * 累计消费奖励
-		 */
-		ACC_CONSUME_AWARDS,
-		/**
-		 * 换装
-		 */
-		EQUIP_DRESS,
-		/**
-		 * 卸下
-		 */
-		EQUIP_UNDRESS,
-		/**
-		 * 装备技能
-		 */
-		SKILL_CARRAY,
-		/**
-		 * 购买出售
-		 */
-		ITEM_BUY,
-		/**
-		 * 道具出售
-		 */
-		ITEM_SELL,
-		/**
-		 * 中秋换字兑换
-		 */
-		WORDS_EXCHANGE,
-		/**
-		 * 公测字兑换
-		 */
-		WORDS_EXCHANGE_SPECIAL,
-		/**
-		 * 公测字回收
-		 */
-		WORDS_EXCHANGE_SPECIAL_CYCLE,
-		/**
-		 * boss扫荡
-		 */
-		BOSS_WIPE,
-		/**
-		 * 经验副本扫荡
-		 */
-		ELITE_MAP_WIPE,
-		/**
-		 * 战斗奖励
-		 */
-		BATTLE_REWARD,
-		/**
-		 * 荣誉商店刷新
-		 */
-		HONOR_SHOP_REFRESH,
-		/**
-		 * 荣誉商店购买
-		 */
-		HONOR_SHOP_BUY,
-		/**
-		 * 特殊神器打造
-		 */
-		EQUIP_SPECIAL_CREATE,
-		/**
-		 * 神器合成
-		 */
-		EQUIP_COMPOUND,
-		/**
-		 * 阵营战鼓舞
-		 */
-		CAMPWAR_INSPIRE,
+		MAIL_CREATE,
 		/**
 		 * 开宝箱
 		 */
 		OPEN_TREASURE,
 		/**
-		 * 加入阵营战
+		 * 副本结算
 		 */
-		JOIN_CAMPWAR,
-		/**
-		 * 自动投资阵营战
-		 */
-		AUTO_CAMPWAR,
-		/**
-		 * 熔炼打造装备刷新
-		 */
-		SMELT_EQUIP_REFRESH,
-		/**
-		 * 勾选自动加入boss战
-		 */
-		AUTO_BOSS_FIGHTING,
-		/**
-		 * 公会经验增加, 公会Boss获胜
-		 */
-		ALLIANCE_EXP_ADD,
-		/**
-		 * 每日单笔充值返利
-		 */
-		SINGLE_RECHARGE,
-		/**
-		 * 每日单笔充值奖励
-		 */
-		SINGLE_RECHARGE_AWARDS,
-		/**
-		 * 充值返利活动每日返利
-		 */
-		RECHARGE_REBATE_EVERYDAY_AWARDS,
-		/**
-		 * 称号改变
-		 */
-		TITLE_CHANGE,
-		/**
-		 * 周卡奖励
-		 */
-		WEEK_CARD_REWARD,
-		/**
-		 * 周卡每日奖励
-		 */
-		WEEK_CARD_DAILY_REWARD,
-		/**
-		 * 领取vip福利
-		 */
-		VIP_WELFARE_REWARD,
-		/**
-		 * 增加升星经验
-		 */
-		INC_STAR_EXP,
-		/**
-		 * 光环激活
-		 */
-		ROLE_RING_ACTIVE,
-		/**
-		 * 远征物资道具使用
-		 */
-		EXPEDITION_ITEM_USE,
-		/**
-		 * 经验副本地图
-		 */
-		ELITE_MAP,
+		INSTACE_SETTLE,
 		/**
 		 * 未知行为
 		 */
@@ -658,7 +257,7 @@ public class BehaviorLogger {
 	 * 统计平台日志记录器
 	 */
 	private static final Logger PLATFORM_LOGGER = Logger.getLogger("Platform");
-
+	
 	/**
 	 * 用于数据平台统计的日志输出
 	 * 
@@ -666,7 +265,7 @@ public class BehaviorLogger {
 	 * @param action
 	 * @param params
 	 */
-	public static void log4Platform(Player player, Action action, Params... params) {
+/*	public static void log4Platform(Player player, Action action, Params... params) {
 		try {
 			JSONObject jsonObject = new JSONObject();
 			// 行为时间
@@ -709,13 +308,13 @@ public class BehaviorLogger {
 		}
 	}
 
-	/**
+	*//**
 	 * 用于数据平台统计的日志输出
 	 * 
 	 * @param playerEntity
 	 * @param action
 	 * @param params
-	 */
+	 *//*
 	public static void log4Platform(PlayerEntity playerEntity, Action action, Params... params) {
 		try {
 			JSONObject jsonObject = new JSONObject();
@@ -758,7 +357,7 @@ public class BehaviorLogger {
 			HawkException.catchException(e);
 		}
 	}
-
+*/
 	/**
 	 * 数据流统计，主要用户客服问题查询
 	 * 

@@ -17,6 +17,7 @@ public class WeakPointData
    // public string collider;
     public string mesh;
 	public string deadMesh;
+	public string deadEffect;
     public int initialStatus;
 
 	public int isSelf;

@@ -1,8 +1,0 @@
-2015-05-20 12:36:37,888 - org.hawk.os.HawkException: org.hawk.os.HawkException:config file not exist: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/baseAttr.csv
-org.hawk.config.HawkConfigStorage.loadCsvConfig(HawkConfigStorage.java:174)
-org.hawk.config.HawkConfigStorage.<init>(HawkConfigStorage.java:110)
-org.hawk.config.HawkConfigManager.init(HawkConfigManager.java:178)
-org.hawk.app.HawkApp.init(HawkApp.java:238)
-com.hawk.game.GsApp.init(GsApp.java:111)
-com.hawk.game.GsMain.main(GsMain.java:22)
-

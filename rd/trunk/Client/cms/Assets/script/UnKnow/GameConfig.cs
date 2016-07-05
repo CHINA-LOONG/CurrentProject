@@ -9,12 +9,10 @@ public class GameConfig : MonoBehaviour {
 	{
 		Instance = this;
 	}
-	public string testBattlePrefab;
-	public string testBattleAssetName;
 
 	public float FindWeakPointFinishedNeedTime = 2.0f;
 	public float MirrorRadius = 100f;
-	public Vector2 MirrorCenterOffset = new Vector2(-100, 120);
+	//public Vector2 MirrorCenterOffset = new Vector2(-100, 120);
 	public float FireFocusWpRadius = 50f;
 	public float EnmeyUnitOffsetYForBloodUI  = 1.4f;
 

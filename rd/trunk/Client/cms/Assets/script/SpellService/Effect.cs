@@ -84,6 +84,16 @@ public class Effect
         this.aniDelayTime = aniDelayTime;
 
         SpellEffectArgs args = new SpellEffectArgs();
+        GameUnit target = spellService.GetUnit(targetID);
+        if (target != null)
+        {
+            WeakPointData wp = null;
+            if (target.attackWpName != null)
+            {
+                wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
+            }
+            args.wpNode = wp != null ? wp.node : string.Empty;
+        }
         args.triggerTime = applyTime;
         args.casterID = casterID;
         args.targetID = targetID;
@@ -93,6 +103,7 @@ public class Effect
         if (protoEffect.energy != 0)
         {
             SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+            energyArgs.vitalType = (int)VitalType.Vital_Type_Default;
             energyArgs.triggerTime = applyTime;
             energyArgs.casterID = casterID;
             energyArgs.vitalChange = protoEffect.energy;
@@ -159,11 +170,12 @@ public class Effect
         else 
         {
             //miss event
-            SpellEffectArgs args = new SpellEffectArgs();
+            SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+            args.vitalType = (int)VitalType.Vital_Type_Miss;
             args.triggerTime = applyTime;
             args.casterID = casterID;
             args.targetID = targetID;
-            spellService.TriggerEvent(GameEventList.SpellMiss, args);
+            spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
             return SpellConst.hitMiss;
         }
     }

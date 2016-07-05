@@ -68,19 +68,19 @@ namespace PB
     public enum ClassType
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER", Value=1)]
-      PLAYER = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_TYPE", Value=1)]
+      PLAYER_TYPE = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER", Value=2)]
-      MONSTER = 2
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_TYPE", Value=2)]
+      MONSTER_TYPE = 2
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"itemType")]
     public enum itemType
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"NONE_ITEM", Value=1)]
-      NONE_ITEM = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"NONE_ITEM", Value=0)]
+      NONE_ITEM = 0,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_ATTR", Value=1)]
       PLAYER_ATTR = 1,
@@ -98,7 +98,10 @@ namespace PB
       SKILL = 5,
             
       [global::ProtoBuf.ProtoEnum(Name=@"GROUP", Value=6)]
-      GROUP = 6
+      GROUP = 6,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER", Value=7)]
+      MONSTER = 7
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"moneyType")]

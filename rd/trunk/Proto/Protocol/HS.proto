@@ -30,7 +30,8 @@ enum code
 	MONSTER_INFO_SYNC_S         = 1012;
 	ITEM_INFO_SYNC_S            = 1013;
 	EQUIP_INFO_SYNC_S           = 1014;
-	ASSEMBLE_FINISH_S           = 1015;
+	QUEST_INFO_SYNC_S           = 1015;
+	ASSEMBLE_FINISH_S           = 1016;
 
 	// 角色
 	PLAYER_CREATE_C             = 1101;
@@ -49,12 +50,12 @@ enum code
 	MONSTER_FEED_S              = 2007;
 
 	// 副本
-	INSTANCE_ENTER_C            = 3000;
-	INSTANCE_ENTER_S            = 3001;
-	INSTANCE_SETTLE_C           = 3002;
-	INSTANCE_SETTLE_S           = 3003;
-	INSTANCE_OPEN_CARD_C        = 3004;
-	INSTANCE_OPEN_CARD_S        = 3005;
+	INSTANCE_ENTER_C            = 3001;
+	INSTANCE_ENTER_S            = 3002;
+	INSTANCE_SETTLE_C           = 3003;
+	INSTANCE_SETTLE_S           = 3004;
+	INSTANCE_OPEN_CARD_C        = 3005;
+	INSTANCE_OPEN_CARD_S        = 3006;
 
 	// 道具
 	ITEM_USE_C			        = 4001;
@@ -82,4 +83,9 @@ enum code
 	EQUIP_MONSTER_REPLACE_C     = 4113;
 	EQUIP_MONSTER_REPLACE_S     = 4114;
 
+	// 任务
+	QUEST_SUBMIT_C              = 5001;
+	QUEST_SUBMIT_S              = 5002;
+	QUEST_ACCEPT_S              = 5003;
+	QUEST_UPDATE_S              = 5004;
 }

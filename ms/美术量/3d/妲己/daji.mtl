@@ -1,0 +1,16 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# 创建的文件:19.05.2015 10:19:32
+
+newmtl daji
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.5880 0.5880 0.5880
+	map_Ka D:\work\shanhai\美术量\3d\历史\妲己5.19\妲己\daji.tga
+	map_Kd D:\work\shanhai\美术量\3d\历史\妲己5.19\妲己\daji.tga

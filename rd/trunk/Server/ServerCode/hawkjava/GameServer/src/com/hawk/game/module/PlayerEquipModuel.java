@@ -9,7 +9,10 @@ import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
+import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
+import com.hawk.game.log.BehaviorLogger.Params;
+import com.hawk.game.log.BehaviorLogger.Source;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Equip.HSEquipBuy;
@@ -136,13 +139,13 @@ public class PlayerEquipModuel extends PlayerModule{
 		if (consume.checkConsume(player, hsCode) == false) {
 			return ;
 		}
-		consume.consumeTakeAffectAndPush(player, Action.ITEM_BUY);
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_BUY);
 		
 		AwardItems awardItems = new AwardItems();
 		for (int i = 0; i < equipCount; i++) {
 			awardItems.addEquip(equip, protocol.getStage(), equipCount, protocol.getLevel());
 		}
-		awardItems.rewardTakeAffectAndPush(player, Action.ITEM_BUY);
+		awardItems.rewardTakeAffectAndPush(player, Action.EQUIP_BUY);
 	}
 
 	public void onEquipIncreaseLevel(int hsCode, HSEquipIncreaseLevel protocol)
@@ -183,6 +186,11 @@ public class PlayerEquipModuel extends PlayerModule{
 		response.setStage(equipEntity.getStage());
 		response.setLevel(equipEntity.getLevel());
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_LEVEL_S, response));
+		
+		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_EHANCE,
+				Params.valueOf("itemId", equipEntity.getItemId()),
+				Params.valueOf("equipId", equipEntity.getId()),
+				Params.valueOf("after", equipEntity.getLevel()));	
 	}
 	
 	public void onEquipIncreaseStage(int hsCode, HSEquipIncreaseStage protocol)
@@ -219,7 +227,7 @@ public class PlayerEquipModuel extends PlayerModule{
 			return;
 		}
 	
-		consume.consumeTakeAffectAndPush(player, Action.EQUIP_EHANCE);
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_ADVANCE);
 		equipEntity.setLevel(0);
 		equipEntity.setStage(equipEntity.getStage() + 1);
 		equipEntity.notifyUpdate(true);
@@ -229,6 +237,11 @@ public class PlayerEquipModuel extends PlayerModule{
 		response.setStage(equipEntity.getStage());
 		response.setLevel(equipEntity.getLevel());
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_STAGE_S, response));	
+		
+		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_ADVANCE,
+				Params.valueOf("itemId", equipEntity.getItemId()),
+				Params.valueOf("equipId", equipEntity.getId()),
+				Params.valueOf("after", equipEntity.getStage()));		
 	}
 	
 	public void onEquipDressOnMonster(int hsCode, HSEquipMonsterDress protocol) {
@@ -269,11 +282,15 @@ public class PlayerEquipModuel extends PlayerModule{
 		response.setId(id);
 		response.setMonsterId(monsterId);
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_DRESS_S_VALUE, response));
+		
+		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_DRESS,
+				Params.valueOf("itemId", equipEntity.getItemId()),
+				Params.valueOf("equipId", equipEntity.getId()),
+				Params.valueOf("after", player.getPlayerData().monsterEquipsToString(monsterId)));
 	}
 	
 	public void onEquipUnDressOnMonster(int hsCode, HSEquipMonsterUndress protocol) {
 		long id = protocol.getId();
-		
 		EquipEntity equipEntity = player.getPlayerData().getEquipById(id);
 		if (equipEntity == null) {
 			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
@@ -295,13 +312,19 @@ public class PlayerEquipModuel extends PlayerModule{
 			sendError(hsCode, Status.error.SERVER_ERROR);
 			return ;
 		}
-		
+
+		int monsterId = equipEntity.getMonsterId();
 		equipEntity.setMonsterId(GsConst.EQUIPNOTDRESS);
 		equipEntity.notifyUpdate(true);
 		
 		HSEquipMonsterUndressRet.Builder response = HSEquipMonsterUndressRet.newBuilder();
 		response.setId(id);
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_UNDRESS_S_VALUE, response));
+
+		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_UNDRESS,
+				Params.valueOf("itemId", equipEntity.getItemId()),
+				Params.valueOf("equipId", equipEntity.getId()),
+				Params.valueOf("after", player.getPlayerData().monsterEquipsToString(monsterId)));
 	}
 	
 	public void onEquipReplaceOnMonster(int hsCode, HSEquipMonsterReplace protocol) {
@@ -354,5 +377,12 @@ public class PlayerEquipModuel extends PlayerModule{
 		response.setId(id);
 		response.setMonsterId(monsterId);
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_UNDRESS_S_VALUE, response));
+	
+		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_UNDRESS,
+				Params.valueOf("newItemId", newEntity.getItemId()),
+				Params.valueOf("newEquipId", newEntity.getId()),
+				Params.valueOf("oldItemId", oldEntity.getItemId()),
+				Params.valueOf("oldEquipId", oldEntity.getId()),
+				Params.valueOf("after", player.getPlayerData().monsterEquipsToString(monsterId)));
 	}
 }

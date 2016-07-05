@@ -24,6 +24,7 @@ public class ActorEventData
     public GameObject psObject;
     public ParticleSystem ps;
     public float triggerTime;
+    public string rootNode;
 }
 
 public class ActorEventService

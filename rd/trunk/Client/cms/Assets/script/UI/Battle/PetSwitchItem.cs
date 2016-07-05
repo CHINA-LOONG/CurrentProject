@@ -67,18 +67,7 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            cdmask.gameObject.SetActive(true);
-            deadtext.gameObject.SetActive(true);
-
-            //死亡血条为空
-            var size = lifeBar.rectTransform.sizeDelta;
-            size.x = 0;
-            lifeBar.rectTransform.sizeDelta = size;
-
-            //死亡能量为空
-            size = energyBar.rectTransform.sizeDelta;
-            size.y = 0;
-            energyBar.rectTransform.sizeDelta = size;
+            ShowEmpty(true);
         }
 
         if (BattleController.Instance.Process.SwitchPetCD > 0)
@@ -87,15 +76,17 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void ShowEmpty()
+    public void ShowEmpty(bool isDead)
     {
         nameText.text = "";
         cdmask.gameObject.SetActive(true);
         deadtext.gameObject.SetActive(true);
-        deadtext.text = "无怪物";
+        var size = cdmask.rectTransform.sizeDelta;
+        size.y = maskHeight;
+        cdmask.rectTransform.sizeDelta = size;
 
         //血条为空
-        var size = lifeBar.rectTransform.sizeDelta;
+        size = lifeBar.rectTransform.sizeDelta;
         size.x = 0;
         lifeBar.rectTransform.sizeDelta = size;
 
@@ -103,6 +94,10 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         size = energyBar.rectTransform.sizeDelta;
         size.y = 0;
         energyBar.rectTransform.sizeDelta = size;
+
+        //TODO: multi language
+        if (isDead == false)
+            deadtext.text = "无怪物";
 
         gameObject.SetActive(true);
     }

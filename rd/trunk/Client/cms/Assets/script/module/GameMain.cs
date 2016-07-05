@@ -96,6 +96,8 @@ public class GameMain : MonoBehaviour
 		mCurModule = t;
 		mCurModule.OnEnter(mPrevModule, param0);
 		Destroy(mPrevModule);
+
+        GameSpeedService.Instance.OnModuleChange();
 	}
 
 	public bool IsCurModule<T>() where T : ModuleBase

@@ -129,8 +129,11 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 			finishFindTargett.Clear();
 
 			Vector3 mirrorScreenPos = UIUtil.GetSpacePos(transform as RectTransform,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
-			mirrorScreenPos.x += GameConfig.Instance.MirrorCenterOffset.x;
-			mirrorScreenPos.y += GameConfig.Instance.MirrorCenterOffset.y;
+			mirrorScreenPos.x -= (rectTrans.pivot.x -0.5f)*rectTrans.sizeDelta.x;
+			mirrorScreenPos.y -= (rectTrans.pivot.y -0.5f)*rectTrans.sizeDelta.y;
+
+
+
 			listFindTarget = m_MirrorRaycast.WeakpointRayCast (mirrorScreenPos);
 			if(listFindTarget.Count > 0)
 			{

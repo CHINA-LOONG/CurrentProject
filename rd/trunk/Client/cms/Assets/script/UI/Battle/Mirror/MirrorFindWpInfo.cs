@@ -71,25 +71,33 @@ public class MirrorFindWpInfo : MonoBehaviour
 			lineInspce.y = lineInspce.y + rectTrans.anchoredPosition.y - rectTrans.sizeDelta.y/2;
 			//Vector2 lineInspce = UIUtil.GetSpacePos(rotationLine.rectTransform,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
 			float distance = Vector2.Distance (wpPostion, lineInspce) - 30;
-			if(distance < 0)
+			if(distance < 10)
 			{
-				distance = 0;
+				distance = 10;
 			}
 			Vector2 tempDelta = rotationLine.rectTransform.sizeDelta;
 			tempDelta.x= distance;
 			rotationLine.rectTransform.sizeDelta = tempDelta;
 
-			Vector2 vv = (wpPostion - lineInspce);
-			float cosAngle = Vector2.Dot ( new Vector2(0,1) , vv.normalized );
-			float angle = Mathf.Acos ( cosAngle) * Mathf.Rad2Deg ;
+			Vector2 vv = (wpPostion - lineInspce).normalized;
+			//float cosAngle = Vector2.Dot ( new Vector2(1,0) , vv.normalized );
+			//float angle = Mathf.Acos ( cosAngle) * Mathf.Rad2Deg ;
+
+			float angle = Vector2.Angle(new Vector2(1,0), vv.normalized );
 
 			if(vv.x  < 0)
 			{
-				angle *= -1;
+				if(vv.y < 0)
+				{
+					angle *= -1;
+				}
 			}
 			else
 			{
-				angle += 180;
+				if(vv.y<0)
+				{
+					angle *= -1;
+				}
 			}
 
 			rotationLine.rectTransform.localEulerAngles = new Vector3(0,0,  angle );

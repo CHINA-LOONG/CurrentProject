@@ -7,6 +7,8 @@ public class BattleModule : ModuleBase
     //BattleProcess process;
 	WeakPointController  weakPointController;
     BattleUnitAi battleUnitAi;
+	PhyDazhaoController phyDazhaoController;
+	MagicDazhaoController magicDazhaoController;
 
     void BindListener()
     {
@@ -27,9 +29,6 @@ public class BattleModule : ModuleBase
 
     public override void OnInit(object param)
     {
-		string battlePrefabName = GameConfig.Instance.testBattlePrefab;
-		string assetName = GameConfig.Instance.testBattleAssetName;
-
         controller = gameObject.AddComponent<BattleController>();
         //process = gameObject.AddComponent<BattleProcess>();
         controller.Init();
@@ -40,6 +39,10 @@ public class BattleModule : ModuleBase
 
         battleUnitAi = gameObject.AddComponent<BattleUnitAi>();
 		battleUnitAi.Init ();
+
+		phyDazhaoController = gameObject.AddComponent<PhyDazhaoController> ();
+
+		magicDazhaoController = gameObject.AddComponent<MagicDazhaoController> ();
     }
 
     public override void OnEnter(ModuleBase prevModule, object param)
@@ -61,6 +64,8 @@ public class BattleModule : ModuleBase
         //Destroy(process);
         Destroy(weakPointController);
         Destroy(battleUnitAi);
+		Destroy (phyDazhaoController);
+		Destroy (magicDazhaoController);
         //UIMgr.Instance.CloseUI(UIBattle.ViewName);
     }
 

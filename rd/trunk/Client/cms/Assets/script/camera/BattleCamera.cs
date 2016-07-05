@@ -3,6 +3,11 @@ using System.Collections;
 
 public class BattleCamera : MonoBehaviour
 {
+	public class AniControlParam
+	{
+		public static int  phyDazhao;
+	}
+
 	[SerializeField]
 	Camera	m_camera = null;
 	public	Camera CameraAttr
@@ -17,6 +22,8 @@ public class BattleCamera : MonoBehaviour
 		}
 	}
 
+	public Animator animator = null;
+
 	static BattleCamera mInst = null;
 	public static BattleCamera Instance
 	{
@@ -29,6 +36,7 @@ public class BattleCamera : MonoBehaviour
 			{
 				mInst = go1.GetComponent<BattleCamera>();
 				mInst.CameraAttr = go1.GetComponent<Camera>();
+				mInst.animator = go1.GetComponent<Animator>();
 			}
 			else
 			{
@@ -39,6 +47,7 @@ public class BattleCamera : MonoBehaviour
 					go.name = "BattleCamera";
 					mInst = go.GetComponent<BattleCamera>();
 					mInst.CameraAttr = go.GetComponent<Camera>();
+					mInst.animator = go.GetComponent<Animator>();
 				}
 			}
 			return mInst;
@@ -47,8 +56,11 @@ public class BattleCamera : MonoBehaviour
 
 	public void Init()
 	{
+		AniControlParam.phyDazhao = Animator.StringToHash ("phyDazhao");
 	}
-	
+
+
+
 	public static void DestroyCamera()
 	{
 		Destroy(mInst.gameObject);

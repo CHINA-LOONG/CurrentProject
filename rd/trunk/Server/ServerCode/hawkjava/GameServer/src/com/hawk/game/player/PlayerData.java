@@ -26,6 +26,8 @@ import com.hawk.game.protocol.Item.HSItemInfoSync;
 import com.hawk.game.protocol.Monster.HSMonsterInfoSync;
 import com.hawk.game.protocol.Player.HSPlayerInfoSync;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Quest.HSQuest;
+import com.hawk.game.protocol.Quest.HSQuestInfoSync;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
@@ -60,8 +62,7 @@ public class PlayerData {
 	 * 怪的基础数据
 	 */
 	private Map<Integer, MonsterEntity> monsterEntityList = new HashMap<Integer, MonsterEntity>();
-
-
+	
 	/**
 	 * 物品列表
 	 */
@@ -76,6 +77,11 @@ public class PlayerData {
 	 * 穿戴装备列表
 	 */
 	private Map<Integer, Map<Integer, Long>> dressedEquipMap = null;
+	
+	/**
+	 * 任务列表
+	 */
+	private Map<Integer, HSQuest> questMap = new HashMap<Integer, HSQuest>();
 	
 	/**
 	 * 构造函数
@@ -319,6 +325,41 @@ public class PlayerData {
 		return monsterDressedMap.get(part);	
 	}
 	
+	/**
+	 * 获取怪兽装备列表字符串用于日志
+	 * 
+	 */
+	public String monsterEquipsToString(int monsterId) {
+		StringBuilder builder = new StringBuilder();
+		Map<Integer, Long> monsterDressedMap = dressedEquipMap.get(monsterId);
+		for (Map.Entry<Integer, Long> entry : monsterDressedMap.entrySet()) {
+			builder.append(String.format("%d : %lld; ", entry.getKey(), entry.getValue()));
+		}
+		return builder.toString();
+	}
+
+	/**
+	 * 获取当前任务列表
+	 * 
+	 * @return
+	 */
+	public Map<Integer, HSQuest> getQuestMap() {
+		 return questMap;
+	}
+
+	/**
+	 * 设置任务
+	 * 
+	 * @param
+	 */
+	public void setQuest(HSQuest quest) {
+		questMap.put(quest.getQuestId(), quest);
+	}
+
+	public HSQuest getQuest(int questId){
+		return questMap.get(questId);
+	}
+	
 	/**********************************************************************************************************
 	 * 数据db操作区
 	 **********************************************************************************************************/
@@ -465,7 +506,6 @@ public class PlayerData {
 		player.sendProtocol(protocol);
 	}
 
-
 	/**
 	 * 同步物品信息
 	 */
@@ -514,6 +554,20 @@ public class PlayerData {
 		if (builder.getEquipInfosCount() > 0) {
 			player.sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INFO_SYNC_S, builder));
 		}
+	}
+	
+	/**
+	 * 同步任务信息
+	 */
+	public void syncQuestInfo() {
+		HSQuestInfoSync.Builder builder = HSQuestInfoSync.newBuilder();
+
+		for (Entry<Integer, HSQuest> entry : questMap.entrySet()) {
+			builder.addQuestInfo(entry.getValue());
+		}
+
+		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.QUEST_INFO_SYNC_S, builder);
+		player.sendProtocol(protocol);
 	}
 
 	/**********************************************************************************************************
@@ -598,4 +652,5 @@ public class PlayerData {
 	public void removeEquipEntity(EquipEntity equipEntity) {
 		equipEntities.remove(equipEntity);
 	}
+
 }

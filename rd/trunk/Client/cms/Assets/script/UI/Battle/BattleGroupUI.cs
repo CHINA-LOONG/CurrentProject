@@ -75,11 +75,18 @@ public class BattleGroupUI : MonoBehaviour
         {
             bossUnitUI.Show(unit);
         }
-        else 
+        else if(unit.camp == UnitCamp.Enemy)
         {
             if (slot < enemyUnitUI.Length)
             {
                 enemyUnitUI[slot].Show(unit);
+            }
+        }
+        else 
+        {
+            if (slot < playerUnitUI.Length)
+            {
+                playerUnitUI[slot].Show(unit);
             }
         }
     }
@@ -103,6 +110,9 @@ public class BattleGroupUI : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void ChangeLife(SpellVitalChangeArgs lifeChange)
     {
+        if (lifeChange.vitalType != (int)VitalType.Vital_Type_Default)
+            return;
+
         BattleUnitUI playerUI = GetPlayerUI(lifeChange.targetID);
         if (playerUI != null)
         {

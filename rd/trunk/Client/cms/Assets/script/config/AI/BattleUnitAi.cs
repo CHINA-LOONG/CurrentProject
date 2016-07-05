@@ -104,7 +104,8 @@ public class BattleUnitAi : MonoBehaviour {
 		case (int) SpellType.Spell_Type_Negative:
 			attackTarget = GetAttackTargetUnitBuffStyle (battleUnit,attackResult.useSpell);
 			break;
-		case (int) SpellType.Spell_Type_DaZhao:
+		case (int) SpellType.Spell_Type_PhyDaZhao:
+		case (int) SpellType.Spell_Type_MagicDazhao:
 			attackTarget = GetDazhaoAttackTarget(battleUnit);
 			break;
 		default:
@@ -220,7 +221,8 @@ public class BattleUnitAi : MonoBehaviour {
 		
 		case (int) SpellType.Spell_Type_Lazy:
 			return AiAttackStyle.Lazy;
-		case (int) SpellType.Spell_Type_DaZhao:
+		case (int) SpellType.Spell_Type_PhyDaZhao:
+		case (int) SpellType.Spell_Type_MagicDazhao:
 			return AiAttackStyle.Dazhao;
 			break;
 		case (int) SpellType.Spell_Type_Passive:
@@ -381,7 +383,7 @@ public class BattleUnitAi : MonoBehaviour {
 		if ( UnitCamp.Enemy == battleUnit.pbUnit.camp &&
 		    battleUnit.dazhaoList.Contains (battleUnit.attackCount))
 		{
-			if(battleUnit.energy >= SpellConst.maxEnergy)
+			if(battleUnit.energy >= BattleConst.enegyMax)
 			{
 				return AiAttackStyle.Dazhao;
 			}
@@ -502,7 +504,7 @@ public class BattleUnitAi : MonoBehaviour {
 		for (int i =0; i<battleList.Count; ++i) 
 		{
 			subUnit = battleList[i];
-			if(null!=subUnit && subUnit.unit.curLife > 0)
+			if(null!=subUnit && subUnit.unit.curLife > 0 && subUnit.unit.isVisible)
 			{
 				listField.Add(subUnit.unit);
 			}

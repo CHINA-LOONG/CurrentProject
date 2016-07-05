@@ -9,6 +9,10 @@ import org.hawk.os.HawkTime;
 
 import com.hawk.game.ServerData;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.log.BehaviorLogger;
+import com.hawk.game.log.BehaviorLogger.Action;
+import com.hawk.game.log.BehaviorLogger.Params;
+import com.hawk.game.log.BehaviorLogger.Source;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
@@ -168,6 +172,10 @@ public class PlayerLoginModule extends PlayerModule {
 			HawkLog.errPrintln("post player login message failed: " + playerEntity.getNickname());
 		}
 
+		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.LOGIN_GAME, Params.valueOf("level", player.getLevel()),
+				Params.valueOf("gold", player.getGold()), Params.valueOf("coin", player.getCoin()),
+				Params.valueOf("vipLevel", player.getVipLevel()), Params.valueOf("deviceId", device), Params.valueOf("platform", platform),
+				Params.valueOf("platInfo", platInfo), Params.valueOf("ipaddr", session.getIpAddr()));
 		return true;
 	}
 
@@ -177,6 +185,11 @@ public class PlayerLoginModule extends PlayerModule {
 		player.getEntity().setLogoutTime(HawkTime.getCalendar());
 		// 重要数据下线就存储
 		player.getEntity().notifyUpdate(false);
+		
+		// 行为日志
+		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.LOGOUT_GAME, Params.valueOf("level", player.getLevel()),
+				Params.valueOf("gold", player.getGold()), Params.valueOf("coin", player.getCoin()), Params.valueOf("level", player.getLevel()),
+				Params.valueOf("vipLevel", player.getVipLevel()));
 		return true;
 	}
 }

@@ -371,32 +371,17 @@ public class AwardItems {
 				
 				else if(item.getType() == Const.itemType.ITEM_VALUE){
 					ItemEntity itemEntity = player.increaseItem(item.getItemId(), item.getCount(), action);
-					if (itemEntity != null) {					
-						try {
-							BehaviorLogger.log4Platform(player, action, Params.valueOf("id", itemEntity.getId()), 
-								Params.valueOf("itemId", itemEntity.getItemId()), 
-								Params.valueOf("itemCount", item.getCount()));
-						} catch (Exception e) {
-							HawkException.catchException(e);
-						}
-					}
-					else {
+					if (itemEntity == null) {					
 						rewardFail = true;
 					}
 				}
 				else if(item.getType() == Const.itemType.EQUIP_VALUE){				
-					EquipEntity equipEntity = player.increaseEquip(item.getItemId(), item.getStage(), item.getLevel(), action);
-					EquipUtil.generateAttr(equipEntity, item);
-					if (equipEntity != null) {				
-						try {
-							BehaviorLogger.log4Platform(player, action, Params.valueOf("id", equipEntity.getId()), 
-								Params.valueOf("itemId", equipEntity.getItemId()));
-						} catch (Exception e) {
-							HawkException.catchException(e);
-						}
+					EquipEntity equipEntity = player.increaseEquip(item.getItemId(), item.getStage(), item.getLevel(), action);			
+					if (equipEntity == null) {				
+						rewardFail = true;
 					}
 					else {
-						rewardFail = true;
+						EquipUtil.generateAttr(equipEntity, item);
 					}
 				}
 				else {

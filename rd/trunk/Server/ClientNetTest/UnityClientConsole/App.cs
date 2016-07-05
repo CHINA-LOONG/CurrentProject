@@ -79,8 +79,7 @@ namespace UnityClientConsole
 
                     HSPlayerCreate createRole = new HSPlayerCreate();
                     createRole.puid = puid;
-                    createRole.nickname = "www";
-                    createRole.nickname = "monster01";
+                    createRole.nickname = "monster101";
                     createRole.career = 1;
                     createRole.gender = 0;
                     createRole.eye = 1;

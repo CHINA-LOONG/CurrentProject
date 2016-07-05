@@ -7,10 +7,23 @@ using System;
 
 public class UIBattle : UIBase
 {
+	public enum UiState:int
+	{
+		Normal = 0,
+		Dazhao
+	}
+
+	public class AniControl
+	{
+		public static int	battleUIState = 0;
+	}
+
     public static string ViewName = "UIBattle";
 	public static string AssertName = "ui/battle";
 
 	public Transform bottomLayer = null;
+	public Transform dazhaoGroup = null;
+
     public Image m_MirrorImage = null;
     public Button m_ButtonLeft = null;
     public HomeButton m_ButtonDaoju = null;
@@ -22,14 +35,16 @@ public class UIBattle : UIBase
 
     public BattleGroupUI m_PlayerGroupUI;
     public PetSwitchPage m_PetPanel;
-    public Text dazhaoTip;
+    public DazhaoTip dazhaoTip;
 
     private MirrorDray m_MirrorDray = null;
 
     private int m_BattleSpeed = 1;
 	private	int	m_MaxSpeed = 3;
 
-    // Use this for initialization
+	Animator animator;
+
+	// Use this for initialization
     public void Init()
     {
         if (null != m_MirrorImage)
@@ -47,8 +62,10 @@ public class UIBattle : UIBase
         
 		InitMirrorImage ();
 		InitFindWpInfoGroup ();
+		InitDazhaoTip ();
         m_PetPanel.gameObject.SetActive(false);
-        dazhaoTip.gameObject.SetActive(false);
+        //dazhaoTip.gameObject.SetActive(false);
+		dazhaoTip.Hide ();
 
         m_PlayerGroupUI.gameObject.SetActive(true);
         m_PlayerGroupUI.Init(
@@ -59,7 +76,11 @@ public class UIBattle : UIBase
         AddUIObjectEvent();
         BindListener();
 
+        m_BattleSpeed = (int)(PlayerPrefs.GetFloat("battleSpeed"));
 		UpdateButton ();
+
+		animator = GetComponent<Animator> ();
+		AniControl.battleUIState = Animator.StringToHash ("battleUIState");
     }
 
     void OnDestroy()
@@ -104,9 +125,12 @@ public class UIBattle : UIBase
 
     void Update()
     {
-        if (dazhaoTip.gameObject.activeSelf)
+        if (dazhaoTip.IsShow())
         {
-            dazhaoTip.text = "大招模式点点点！剩余时间：" + (int)BattleController.Instance.Process.DazhaoLeftTime + "秒 剩余次数：" + BattleController.Instance.Process.DazhaoLeftCount;
+			//dazhaoTip.text = "大招模式点点点！剩余时间：" + (int)PhyDazhaoController.Instance.DazhaoLeftTime + "秒 剩余次数：" + PhyDazhaoController.Instance.DazhaoLeftCount;
+			dazhaoTip.SetTipInfo((int)PhyDazhaoController.Instance.DazhaoLeftTime,
+			                     PhyDazhaoController.Instance.DazhaoUseCount,
+			                     PhyDazhaoController.Instance.DazhaoAllCount);
         }
     }
 
@@ -116,6 +140,7 @@ public class UIBattle : UIBase
         GameEventMgr.Instance.AddListener(GameEventList.ShowDazhaoTip, OnShowDazhaoTip);
         GameEventMgr.Instance.AddListener(GameEventList.HideDazhaoTip, OnHideDazhaoTip);
 		GameEventMgr.Instance.AddListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
+		GameEventMgr.Instance.AddListener<UiState> (GameEventList.ChangeUIBattleState, OnChangeUIState);
     }
 
     void UnBindListener()
@@ -124,6 +149,7 @@ public class UIBattle : UIBase
         GameEventMgr.Instance.RemoveListener(GameEventList.ShowDazhaoTip, OnShowDazhaoTip);
         GameEventMgr.Instance.RemoveListener(GameEventList.HideDazhaoTip, OnHideDazhaoTip);
         GameEventMgr.Instance.RemoveListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
+		GameEventMgr.Instance.RemoveListener<UiState> (GameEventList.ChangeUIBattleState, OnChangeUIState);
     }
 
     void AddUIObjectEvent()
@@ -157,6 +183,15 @@ public class UIBattle : UIBase
 		wpInfoGroup.InitWithParent (bottomLayer);
 	}	
 
+	void InitDazhaoTip()
+	{
+		GameObject prefab = ResourceMgr.Instance.LoadAsset ("ui/dazhaotip", "dazhaoTip") as GameObject;
+		GameObject go = Instantiate (prefab) as GameObject;
+		go.transform.SetParent (dazhaoGroup.transform, false);
+		dazhaoTip = go.GetComponent<DazhaoTip> ();
+		dazhaoTip.Hide ();
+	}
+
 	//--------------------------------------------------------------------------------------------------
     void OnButtonLeftCllicked(GameObject go)
     {
@@ -177,6 +212,7 @@ public class UIBattle : UIBase
             m_BattleSpeed = 1;
         }
 
+        GameSpeedService.Instance.SetBattleSpeed(m_BattleSpeed);
 		UpdateButton ();
     }
 
@@ -257,12 +293,19 @@ public class UIBattle : UIBase
     //dazhao
     void OnShowDazhaoTip()
     {
-        dazhaoTip.gameObject.SetActive(true);
+      //  dazhaoTip.gameObject.SetActive(true);
+		dazhaoTip.Show ();
     }
 
     void OnHideDazhaoTip()
     {
-        dazhaoTip.gameObject.SetActive(false);
+       // dazhaoTip.gameObject.SetActive(false);
+		dazhaoTip.Hide ();
     }
+
+	void OnChangeUIState(UiState uiState)
+	{
+		animator.SetInteger (AniControl.battleUIState, (int)uiState);
+	}
 #endregion
 }

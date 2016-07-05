@@ -18,10 +18,12 @@ public class SpellFireArgs : EventArgs
 public class SpellVitalChangeArgs : EventArgs
 {
     //NOTE: if server notify client, make targetID to list
+    public int vitalType;
     public float triggerTime;
     public int casterID;
     public int targetID;
-    public string wpID;
+    public string wpID;//TODO: remove log only
+    public string wpNode;
     public bool isCritical;
     public int vitalChange;
     public int vitalCurrent;
@@ -56,6 +58,7 @@ public class SpellEffectArgs : EventArgs
     public int casterID;
     public int targetID;
     public string effectID;
+    public string wpNode;
 }
 //---------------------------------------------------------------------------------------------
 //miss,immune,stun

@@ -53,7 +53,7 @@ public class PetSwitchPage : MonoBehaviour
                 item.Hide();
             }
             var com = items[0];
-            com.ShowEmpty();
+            com.ShowEmpty(false);
         }
         else
         {
@@ -67,7 +67,7 @@ public class PetSwitchPage : MonoBehaviour
             }
         }
 
-        var targetGO = BattleController.Instance.BattleGroup.GetUnitByGuid(args.targetId);
+        var targetGO = ObjectDataMgr.Instance.GetBattleObject(args.targetId);
 
 		//transform.position = RectTransformUtility.WorldToScreenPoint(BattleCamera.Instance.CameraAttr, targetGO.gameObject.transform.position);
 		//transform.position += new Vector3(0, Screen.height*0.4f, 0);

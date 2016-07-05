@@ -18,22 +18,7 @@ public class MonsterBaseCfg extends HawkConfigBase {
 	protected final int recovery;
 	protected final int output;
 
-	/**
-	 * 全局静态对象
-	 */
-	private static MonsterBaseCfg instance = null;
-
-	/**
-	 * 获取全局静态对象
-	 * 
-	 * @return
-	 */
-	public static MonsterBaseCfg getInstance() {
-		return instance;
-	}
-
 	public MonsterBaseCfg() {
-		instance = this;
 		level = 0;
 		experience = 0;
 		health = 0;

@@ -12,21 +12,8 @@ public class InstanceDropCfg extends HawkConfigBase {
 	
 	// assemble
 	protected RewardCfg rewardCfg;
-	
-	/**
-	 * 全局静态对象
-	 */
-	private static InstanceDropCfg instance = null;
-
-	/**
-	 * 获取全局静态对象
-	 */
-	public static InstanceDropCfg getInstance() {
-		return instance;
-	}
 
 	public InstanceDropCfg() {
-		instance = this;
 		id = "";
 		rewardId = 0;
 	}

@@ -291,7 +291,7 @@ public class GameUnit
         if (wpHpList.TryGetValue(id, out wpRuntimeData))
         {
             wpRuntimeData.hp += damage;
-            if (wpRuntimeData.hp < 0)
+            if (wpRuntimeData.hp <= 0)
             {
 				Logger.LogFormat("weakpoint( ) dead!",id);
                 wpRuntimeData.hp = 0;
@@ -306,6 +306,14 @@ public class GameUnit
 				{
 					deadMeshObj.SetActive(true);
 				}
+				//弱点死亡特效 
+                BattleObject unitGo = ObjectDataMgr.Instance.GetBattleObject(this.pbUnit.guid);
+				if(unitGo!=null)
+				{
+					unitGo.ShowWeakpointDeadEffect(id);
+				}
+
+				GameEventMgr.Instance.FireEvent<GameUnit,string>(GameEventList.WeakpoingDead,this,id);
             }
             else if (wpRuntimeData.hp > wpRuntimeData.maxHp)
             {
@@ -329,8 +337,11 @@ public class GameUnit
     {
         foreach (var item in spellList)
         {
-            if (item.Value.spellData.category == (int)SpellType.Spell_Type_DaZhao)
+			if (item.Value.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao)
                 return item.Value;
+
+			if (item.Value.spellData.category == (int)SpellType.Spell_Type_MagicDazhao)
+				return item.Value;
         }
 
         return null;

@@ -32,20 +32,7 @@ public class TimeCfg extends HawkConfigBase {
 	// 周期
 	protected int cycleField;
 
-	/**
-	 * 全局静态对象
-	 */
-	private static TimeCfg instance = null;
-
-	/**
-	 * 获取全局静态对象
-	 */
-	public static TimeCfg getInstance() {
-		return instance;
-	}
-
 	public TimeCfg() {
-		instance = this;
 		type = 0;
 		minute = 0;
 		hour = 0;
@@ -57,11 +44,11 @@ public class TimeCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean assemble() {
-		if (type <= GsConst.RefreshType.GLOBAL_REFRESH_BEGIN ||
-			type >= GsConst.RefreshType.GLOBAL_REFRESH_END && type <= GsConst.RefreshType.PERS_REFRESH_BEGIN ||
-			type >= GsConst.RefreshType.PERS_REFRESH_END) {
-			return false;
-		}
+//		if (type <= GsConst.RefreshType.GLOBAL_REFRESH_BEGIN ||
+//			type >= GsConst.RefreshType.GLOBAL_REFRESH_END && type <= GsConst.RefreshType.PERS_REFRESH_BEGIN ||
+//			type >= GsConst.RefreshType.PERS_REFRESH_END) {
+//			return false;
+//		}
 
 		// “每周几”和“每月几号”最多配一个
 		if (dayOfWeek != NO_VALUE  && dayOfMonth != NO_VALUE) {

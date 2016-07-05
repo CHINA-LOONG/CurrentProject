@@ -44,7 +44,7 @@ public class BattleTest : MonoBehaviour
             if (i > 2)
                 pbUnit.slot = BattleConst.offsiteSlot;
 
-			pbUnit.character = 4;
+			pbUnit.character = 1;
 			pbUnit.lazy = 4;
 
             proto.enemyList.Add(pbUnit);

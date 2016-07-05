@@ -35,4 +35,9 @@ public class BattleConst
 
     //战斗场景id
     public const int battleSceneGuid = -1;
+
+    //换宠换出去时间
+    public const float unitOutTime = 1.5f;
+    //换宠换进来时间
+    public const float unitInTime = 1.5f;
 }

@@ -51,6 +51,7 @@ public class BattleGroup
         int slot = 0;
         while (itor.MoveNext())
         {
+            itor.Current.unit.ResetAllState();
             if (slot >= BattleConst.slotIndexMin && slot <= BattleConst.slotIndexMax)
             {
                 itor.Current.unit.pbUnit.slot = slot;
@@ -62,8 +63,6 @@ public class BattleGroup
                 itor.Current.unit.pbUnit.slot = BattleConst.offsiteSlot;
                 itor.Current.OnExitField();
             }
-            //test only
-            itor.Current.unit.ResetAllState();
 
             ++slot;
         }
@@ -178,22 +177,6 @@ public class BattleGroup
         return true;
     }
 
-    public BattleObject GetUnitByGuid(int id)
-    {
-        //foreach (var item in playerList)
-        //{
-        //    if (item.pbUnit.guid == id)
-        //        return item;
-        //}
-        BattleObject bo = ObjectDataMgr.Instance.GetBattleObject(id);
-        if (bo == null)
-        {
-            Logger.LogWarning("Battle Unit Not Found: " + id);
-        }
-        return bo;
-
-    }
-
     public BattleObject GetEnemyToField()
     {
         foreach (BattleObject item in enemyList)
@@ -305,8 +288,8 @@ public class BattleGroup
         {
             bo.unit.pbUnit.slot = BattleConst.offsiteSlot;
             field[slot] = null;
-            //if (isdead == false)
-            //    bo.OnExitField();
+            if (bo.unit.State != UnitState.Dead)
+                bo.OnExitField();
         }
     }
 

@@ -41,7 +41,11 @@ public class BattleController : MonoBehaviour
         get { return instance; }
     }
 
-    private BattleObject curBattleScene;
+    public BattleObject curBattleScene
+    {
+        set;
+        get;
+    }
     private UIBattle uiBattle;
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
@@ -87,12 +91,23 @@ public class BattleController : MonoBehaviour
             isMouseOnUI = EventSystem.current.IsPointerOverGameObject();
         }
 
-		if (Input.GetMouseButtonUp (0) && !isMouseOnUI)
+		if (Input.GetMouseButtonUp (0))
 		{
-			if(!LastEvenType.Instance.IsDrag())
-			{
-				RaycastBattleObject (inputPos);
-			}
+            if (!isMouseOnUI)
+            {
+                if (!LastEvenType.Instance.IsDrag())
+                {
+                    RaycastBattleObject(inputPos);
+                }
+            }
+            else 
+            {
+                GameObject curGo = EventSystem.current.currentSelectedGameObject;
+                if (curGo != null && curGo.GetComponent<PetSwitchItem>() == null)
+                {
+                    GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
+                }
+            }
 		}
     }
     //---------------------------------------------------------------------------------------------
@@ -106,7 +121,10 @@ public class BattleController : MonoBehaviour
 			var battleGo = hit.collider.gameObject.GetComponent<BattleObject>();
 			if (battleGo)
 			{
-				OnHitBattleObject(battleGo, GetClickedEnemyWpName(battleGo,inputPos));
+				if(battleGo.unit.isVisible)
+				{
+					OnHitBattleObject(battleGo, GetClickedEnemyWpName(battleGo,inputPos));
+				}
 			}
 			else
 			{
@@ -428,7 +446,7 @@ public class BattleController : MonoBehaviour
         ShowBalanceUI();
 
         //怪物全部退场
-        battleGroup.AllUnitsExitField();
+        //battleGroup.AllUnitsExitField();//do this in UnLoadBattleScen
 
         //回到副本层
         UnLoadBattleScene();

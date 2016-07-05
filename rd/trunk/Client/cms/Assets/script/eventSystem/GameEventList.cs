@@ -15,6 +15,7 @@ public class GameEventList
     //Battle
     public static string StartBattle = "StartBattle";  //param: PbStartBattle  
 	public static string LoadBattleObjectFinished = "LoadBattleObjectFinished";//param GameUnitData
+	public static string ChangeUIBattleState = "ChangeUIBattleState";// param UIBattle.UiState
 
 	//Mirror in the Battle
 	public static string SetMirrorModeState = "SetMirrorModeState"; //param bool 
@@ -37,6 +38,16 @@ public class GameEventList
     public static string HideDazhaoTip = "HideDazhaoTip";
 	public static string ShowFireFocus = "ShowFireFocus";//param GameUnit
 	public static string HideFireFocus = "HideFireFocus";// no param
+	public static string DazhaoActionOver = "DazhaoActionOver";//param BattleObject
+
+	public static string WeakpoingDead = "WeakpointDead";//param GameUnit,string
+
+	//数据统计
+	public static string SpellAttackStatistics = "SpellAttackStatistics";//
+
+	//Dazhao
+	public static string ExitDazhaoByPhyAttacked = "ExitDazhaoByPhyAttacked";//param int(unit.guid)
+	public static string RemoveDazhaoAction = "RemoveDazhaoAction";
 
     //UI in the battle
     public static string ShowBattleUI = "ShowBattleUI";
@@ -57,7 +68,7 @@ public class GameEventList
     public static string SpellUnitDead = "SpellUnitDead";
     public static string SpellBuff = "SpellBuff";
     public static string SpellEffect = "SpellEffect";
-    public static string SpellMiss = "SpellMiss";
+    //public static string SpellMiss = "SpellMiss";
     public static string SpellImmune = "SpellImmune";
     public static string SpellStun = "SpellStun";
 

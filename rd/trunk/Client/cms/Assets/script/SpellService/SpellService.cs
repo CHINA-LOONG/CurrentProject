@@ -171,7 +171,7 @@ public class SpellService : MonoBehaviour
             BattleObject caster = ObjectDataMgr.Instance.GetBattleObject(curArgs.casterID);
             if (caster != null)
             {
-                caster.TriggerEvent(curArgs.spellID, curArgs.triggerTime);
+                caster.TriggerEvent(curArgs.spellID, curArgs.triggerTime, null);
             }
         }
         else if (eventType == GameEventList.SpellLifeChange)
@@ -202,12 +202,12 @@ public class SpellService : MonoBehaviour
             SpellUnitDeadArgs curArgs = args as SpellUnitDeadArgs;
             Logger.LogFormat("[SpellService]{0} killed {1}", curArgs.casterID, curArgs.deathID);
             
-            //trigger motion
-            BattleObject deather = ObjectDataMgr.Instance.GetBattleObject(curArgs.deathID);
-            if (deather != null)
-            {
-                //deather.TriggerEvent("dead", curArgs.triggerTime);
-            }
+            ////trigger motion
+            //BattleObject deather = ObjectDataMgr.Instance.GetBattleObject(curArgs.deathID);
+            //if (deather != null)
+            //{
+            //    //deather.TriggerEvent("dead", curArgs.triggerTime);
+            //}
         }
         else if (eventType == GameEventList.SpellBuff)
         {
@@ -219,7 +219,7 @@ public class SpellService : MonoBehaviour
                 //trigger motion
                 if (target != null)
                 {
-                    target.TriggerEvent(curArgs.buffID, curArgs.triggerTime);
+                    target.TriggerEvent(curArgs.buffID, curArgs.triggerTime, null);
                 }
             }
             else
@@ -228,7 +228,7 @@ public class SpellService : MonoBehaviour
                 //trigger motion
                 if (target != null)
                 {
-                    target.TriggerEvent(curArgs.buffID + "Finish", curArgs.triggerTime);
+                    target.TriggerEvent(curArgs.buffID + "Finish", curArgs.triggerTime, null);
                 }
             }
         }
@@ -240,14 +240,14 @@ public class SpellService : MonoBehaviour
             BattleObject target = ObjectDataMgr.Instance.GetBattleObject(curArgs.targetID);
             if (target != null)
             {
-                target.TriggerEvent(curArgs.effectID, curArgs.triggerTime);
+                target.TriggerEvent(curArgs.effectID, curArgs.triggerTime, curArgs.wpNode);
             }
         }
-        else if (eventType == GameEventList.SpellMiss)
-        {
-            SpellEffectArgs curArgs = args as SpellEffectArgs;
-            Logger.LogFormat("[SpellService]effect {0} missed caster {1} target {2}", curArgs.effectID, curArgs.casterID, curArgs.targetID);
-        }
+        //else if (eventType == GameEventList.SpellMiss)
+        //{
+        //    SpellEffectArgs curArgs = args as SpellEffectArgs;
+        //    Logger.LogFormat("[SpellService]effect {0} missed caster {1} target {2}", curArgs.effectID, curArgs.casterID, curArgs.targetID);
+        //}
         else if (eventType == GameEventList.SpellImmune)
         {
             SpellEffectArgs curArgs = args as SpellEffectArgs;
@@ -260,7 +260,7 @@ public class SpellService : MonoBehaviour
             //trigger motion
             BattleObject target = ObjectDataMgr.Instance.GetBattleObject(curArgs.targetID);
             {
-                target.TriggerEvent("stun", curArgs.triggerTime);
+                target.TriggerEvent("stun", curArgs.triggerTime, null);
             }
         }
 

@@ -15,7 +15,7 @@ public class BattleProcess : MonoBehaviour
 {
     enum ActionType
     {
-        None,
+        None = 0,
         UnitFight,
         SwitchPet,
         Dazhao,
@@ -60,37 +60,6 @@ public class BattleProcess : MonoBehaviour
     //当前行动
     Action curAction = null;
 
-    //大招
-    float dazhaoStartTime = 0;
-    int dazhaoCount = 0;
-    public float DazhaoLeftTime
-    {
-        get 
-        {
-            var spell = curAction.caster.unit.GetDazhao();
-            if (spell != null)
-            {
-                float passTime = Time.time - dazhaoStartTime;
-                return Mathf.Clamp(spell.spellData.channelTime - passTime, 0, spell.spellData.channelTime);
-            }
-            return 0;
-        }
-    }
-
-    public int DazhaoLeftCount
-    {
-        get
-        {
-            var spell = curAction.caster.unit.GetDazhao();
-            if (spell != null)
-            {
-                float passTime = Time.time - dazhaoStartTime;
-                return Mathf.Clamp(spell.spellData.actionCount - dazhaoCount, 0, spell.spellData.actionCount);
-            }
-            return 0;
-        }
-    }
-
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<int, int>(GameEventList.SwitchPet, OnSwitchPet);
@@ -103,6 +72,10 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellEnergyChange, OnEnergyChange);
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellUnitDead, OnUnitDead);
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellBuff, OnBuffChange);
+
+		GameEventMgr.Instance.AddListener<BattleObject> (GameEventList.DazhaoActionOver, OnDazhaoActionOver);
+		GameEventMgr.Instance.AddListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
+		GameEventMgr.Instance.AddListener<GameUnit,string> (GameEventList.WeakpoingDead, OnWeakpointDead);
     }
 
     void UnBindListener()
@@ -110,11 +83,16 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<int, int>(GameEventList.SwitchPet, OnSwitchPet);
         GameEventMgr.Instance.RemoveListener<int, string>(GameEventList.ChangeTarget, OnChangeTarget);
         GameEventMgr.Instance.RemoveListener<BattleObject>(GameEventList.HitDazhaoBtn, OnUnitCastDazhao);
+
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellFire, OnFireSpell);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellLifeChange, OnLifeChange);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellEnergyChange, OnEnergyChange);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellUnitDead, OnUnitDead);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellBuff, OnBuffChange);
+
+		GameEventMgr.Instance.RemoveListener<BattleObject> (GameEventList.DazhaoActionOver, OnDazhaoActionOver);
+		GameEventMgr.Instance.RemoveListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
+		GameEventMgr.Instance.RemoveListener<GameUnit,string> (GameEventList.WeakpoingDead, OnWeakpointDead);
     }
 
     public void Init()
@@ -135,12 +113,6 @@ public class BattleProcess : MonoBehaviour
                 case ActionType.SwitchPet:
                     break;
                 case ActionType.Dazhao:
-                    var spell = curAction.caster.unit.GetDazhao();
-                    if (Time.time - dazhaoStartTime > (spell != null ? spell.spellData.channelTime : BattleConst.dazhaoDefaultTime))
-                    {
-                        GameEventMgr.Instance.FireEvent(GameEventList.HideDazhaoTip);
-                        OnActionOver();
-                    }
                     break;
                 default:
                     break;
@@ -158,15 +130,35 @@ public class BattleProcess : MonoBehaviour
             }
 
             int deadId = args.deathID;
-            var deadUnit = battleGroup.GetUnitByGuid(deadId);
+			GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, deadId);
+            var deadUnit = ObjectDataMgr.Instance.GetBattleObject(deadId);
             deathList.Add(args);
             //Logger.LogWarning("[Battle.Process]OnUnitDead: " + deadUnit.name);
-
-            GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, deadUnit.guid);
-
             int slot = deadUnit.unit.pbUnit.slot;
             deadUnit.unit.State = UnitState.Dead;
-            deadUnit.TriggerEvent("dead", args.triggerTime);
+            deadUnit.TriggerEvent("dead", args.triggerTime, null);
+
+			//检测死亡的怪物是否 发动了大招，如果插入 则从插入事件中删除
+			for (int j =0; j < insertAction.Count; ++j)
+			{
+				Action subAction = insertAction[j];
+				if(subAction.type == ActionType.Dazhao && subAction.caster.guid == deadId)
+				{
+					insertAction.Remove(subAction);
+					break;
+				}
+			}
+			
+			//大招模式下，检查被攻击方 所有怪是否都死亡
+			if (curAction.type == ActionType.Dazhao) 
+			{
+				bool actionOver = battleGroup.IsEnemyAllDead();
+				if(actionOver)
+				{
+					PhyDazhaoController.Instance.FinishDazhaoWithAllEnemyDead();
+				}
+			}
+
 
             //查看是否还有需要上场的单位
             if (deadUnit.camp == UnitCamp.Enemy)
@@ -217,7 +209,29 @@ public class BattleProcess : MonoBehaviour
 
         eventCount = spellEventList.Count;
         for (int i = 0; i < eventCount; ++i)
-        {
+		{
+			SpellFireArgs args = spellEventList[i];
+			if (args.triggerTime < lastUpdateTime || args.triggerTime >= Time.time)
+			{
+				continue;
+			}
+
+			//todo:大招结束处理
+			var casterObject = ObjectDataMgr.Instance.GetBattleObject(args.casterID);
+			if(null == casterObject)
+			{
+				continue;
+			}
+			var useSpell = casterObject.unit.GetSpell(args.spellID);
+
+			if(useSpell.spellData.category == (int) SpellType.Spell_Type_MagicDazhao)
+			{
+			}
+			 else if (useSpell.spellData.category == (int) SpellType.Spell_Type_PhyDaZhao )
+			{
+				PhyDazhaoController.Instance.DazhaoAttackFinished(args.casterID);
+			}
+
 
         }
         eventCount = lifeChangeEventList.Count;
@@ -260,7 +274,7 @@ public class BattleProcess : MonoBehaviour
             SpellUnitDeadArgs args = deathList[i];
             if (lastUpdateTime - args.triggerTime > SpellConst.aniDelayTime * 2)
             {
-                BattleObject deadUnit = battleGroup.GetUnitByGuid(args.deathID);
+                BattleObject deadUnit = ObjectDataMgr.Instance.GetBattleObject(args.deathID);
                 if (deadUnit != null)
                 {
                     if (deadUnit.camp == UnitCamp.Player)
@@ -282,6 +296,11 @@ public class BattleProcess : MonoBehaviour
     {
         UnBindListener();
     }
+
+	void OnDazhaoActionOver(BattleObject casterObject)
+	{
+		OnUnitFightOver (casterObject);
+	}
 
     public void StartProcess(ProcessData process, MethodInfo victorMethod)
     {
@@ -305,7 +324,7 @@ public class BattleProcess : MonoBehaviour
         //for (int i = deathList.Count - 1; i >= 0; --i)
         //{
         //    SpellUnitDeadArgs args = deathList[i];
-        //    BattleObject deadUnit = battleGroup.GetUnitByGuid(args.deathID);
+        //    BattleObject deadUnit = ObjectDataMgr.Instance.GetBattleObject(args.casterID)(args.deathID);
         //    if (deadUnit != null)
         //    {
         //        if (deadUnit.camp == UnitCamp.Player)
@@ -402,10 +421,11 @@ public class BattleProcess : MonoBehaviour
                     RunUnitFightAction(action.caster);
                     break;
                 case ActionType.SwitchPet:
-                    RunSwitchPetAction(action.caster, action.target);
+                    StartCoroutine(RunSwitchPetAction(action.caster, action.target));
                     break;
                 case ActionType.Dazhao:
-                    RunDazhaoAction(action);
+                   // RunDazhaoAction(action);
+				PhyDazhaoController.Instance.RunActionWithDazhao(action.caster);
                     break;
                 default:
                     break;
@@ -488,6 +508,7 @@ public class BattleProcess : MonoBehaviour
 			case BattleUnitAi.AiAttackStyle.Dazhao:
 			//扣除能量
 			SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+            energyArgs.vitalType = (int)VitalType.Vital_Type_Default;
 			energyArgs.triggerTime = Time.time;
 			energyArgs.casterID = bo.guid;
 			energyArgs.vitalChange = BattleConst.enegyMax;
@@ -534,31 +555,32 @@ public class BattleProcess : MonoBehaviour
 
     }
 
-    void RunSwitchPetAction(BattleObject exit, BattleObject enter)
+    IEnumerator RunSwitchPetAction(BattleObject exit, BattleObject enter)
     {
         int slot = exit.unit.pbUnit.slot;
 
-        //TODO 播放动画
-        battleGroup.OnUnitExitField(exit, slot);
-        battleGroup.OnUnitEnterField(enter, slot);
+        if (enter.camp == UnitCamp.Player)
+        {
+            //exit.TriggerEvent("unitExit", Time.time, null);
+            string nodeName = "pos" + slot.ToString();
+            BattleController.Instance.curBattleScene.TriggerEvent("unitExit", Time.time, nodeName);
+            battleGroup.OnUnitExitField(exit, slot);
+            yield return new WaitForSeconds(BattleConst.unitOutTime);
 
-        //StartCoroutine(DebugAnim(enter));
+            BattleController.Instance.curBattleScene.TriggerEvent("unitEnter", Time.time, nodeName);
+            battleGroup.OnUnitEnterField(enter, slot);
+            yield return new WaitForSeconds(BattleConst.unitInTime);
+        }
+        else
+        {
+            battleGroup.OnUnitExitField(exit, slot);
+            battleGroup.OnUnitEnterField(enter, slot);
+        }
 
         OnActionOver();
+        yield return null;
     }
 
-    void RunDazhaoAction(Action act)
-    {
-        Logger.Log("[Battle.Process]Enter Dazhao Mode!!!");
-
-        //倒计时
-        dazhaoStartTime = Time.time;
-        dazhaoCount = 0;
-
-        GameEventMgr.Instance.FireEvent(GameEventList.ShowDazhaoTip);
-
-        //之后在OnHitBattleObject中处理
-    }
     #endregion
 
     #region Event
@@ -567,10 +589,13 @@ public class BattleProcess : MonoBehaviour
     {
         Action action = new Action();
         action.type = ActionType.SwitchPet;
-        action.caster = battleGroup.GetUnitByGuid(exitId);
-        action.target = battleGroup.GetUnitByGuid(enterId);
+        action.caster = ObjectDataMgr.Instance.GetBattleObject(exitId);
+        action.target = ObjectDataMgr.Instance.GetBattleObject(enterId);
 
         action.target.unit.State = UnitState.ToBeReplaced;
+        string nodeName = "pos" + action.caster.unit.pbUnit.slot.ToString();
+        BattleController.Instance.curBattleScene.TriggerEvent("unitBeReplaced", Time.time, nodeName);
+        //action.caster.TriggerEvent("unitBeReplaced", Time.time, null);
 
         InsertAction(action);
         lastSwitchTime = Time.time;
@@ -578,6 +603,12 @@ public class BattleProcess : MonoBehaviour
 
     public void OnUnitCastDazhao(BattleObject bo)
     {
+		if (IsHaveDazhaoAction())
+		{
+			Logger.Log("had a dazhaoAction,can't insert Another!");
+			return;
+		}
+
         Logger.Log("OnUnitCastDazhao");
         Action action = new Action();
         action.type = ActionType.Dazhao;
@@ -587,10 +618,16 @@ public class BattleProcess : MonoBehaviour
 
         action.caster.unit.State = UnitState.Dazhao;
         InsertAction(action);
+
+		PhyDazhaoController.Instance.PrepareDazhao (bo);
     }
 
     public void OnHitBattleObject(BattleObject battleGo, string weakpointName)
     {
+		if (battleGo.unit.curLife < 1) 
+		{
+			return;
+		}
         //if (battleGo.camp == UnitCamp.Enemy)
         {
             if (curAction != null)
@@ -598,23 +635,7 @@ public class BattleProcess : MonoBehaviour
                 switch (curAction.type)
                 {
                     case ActionType.Dazhao:
-                        Logger.Log("Dazhao hit something");
-                        battleGo.unit.attackWpName = weakpointName;
-                        var caster = curAction.caster;
-                        var spell = caster.unit.GetDazhao();
-                        if (spell == null)
-                        {
-                            Logger.LogErrorFormat("[SERIOUS]Unit {0}'s dazhao error! No dazhao is configured! Exit dazhao mode!!!", caster.guid);
-                            OnActionOver();
-                            break;
-                        }
-                        SpellService.Instance.SpellRequest(spell.spellData.id, curAction.caster.unit, battleGo.unit, Time.time);
-                        dazhaoCount++;
-                        if (dazhaoCount >= spell.spellData.actionCount)
-                        {
-                            GameEventMgr.Instance.FireEvent(GameEventList.HideDazhaoTip);
-                            OnActionOver();
-                        }
+					PhyDazhaoController.Instance.HitBattleObjectWithDazhao(battleGo,weakpointName);
                         break;
                     default:
                         OnChangeTarget(battleGo.guid, weakpointName);
@@ -631,12 +652,27 @@ public class BattleProcess : MonoBehaviour
 
     public void OnChangeTarget(int id, string weakpointName)
     {
-        BattleObject unit = battleGroup.GetUnitByGuid(id);
-        fireFocusTarget = unit.unit;
-        fireFocusTarget.attackWpName = weakpointName;
-        fireAttackWpName = weakpointName;
-        GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.ShowFireFocus, unit);
-        Logger.Log("[Battle.Process]Change Fire Targret To " + unit.name + "  weakpoint name : " + weakpointName);
+        BattleObject unit = ObjectDataMgr.Instance.GetBattleObject(id);
+		string lastSelWp = null;
+		if (fireFocusTarget != null)
+		{
+			lastSelWp = fireFocusTarget.attackWpName;
+		}
+
+		if (fireFocusTarget == unit.unit  && lastSelWp == weakpointName) 
+		{
+			//取消集火
+			fireFocusTarget = null;
+			GameEventMgr.Instance.FireEvent(GameEventList.HideFireFocus);
+		}
+		else
+		{
+			fireFocusTarget = unit.unit;
+			fireFocusTarget.attackWpName = weakpointName;
+			fireAttackWpName = weakpointName;
+			GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.ShowFireFocus, unit);
+			Logger.Log("[Battle.Process]Change Fire Targret To " + unit.name + "  weakpoint name : " + weakpointName);
+		} 
     }
 
     public void OnShowHideMonster(int id)
@@ -649,7 +685,7 @@ public class BattleProcess : MonoBehaviour
     {
         SpellFireArgs args = sArgs as SpellFireArgs;
         int movedUnitId = args.casterID;
-        BattleObject movedUnit = battleGroup.GetUnitByGuid(movedUnitId);
+        BattleObject movedUnit = ObjectDataMgr.Instance.GetBattleObject(movedUnitId);
         spellEventList.Add(args);
 
         StartCoroutine(WaitAnim(movedUnit, args.aniTime + SpellConst.aniDelayTime));
@@ -688,6 +724,39 @@ public class BattleProcess : MonoBehaviour
         SpellUnitDeadArgs args = sArgs as SpellUnitDeadArgs;
         deadEventList.Add(args);
     }
+
+	/// <summary>
+	/// 弱点死亡，只处理集火
+	/// </summary>
+	/// <param name="unit">Unit.</param>
+	/// <param name="wp">Wp.</param>
+	void OnWeakpointDead(GameUnit unit,string wp)
+	{
+		if (fireFocusTarget == null || string.IsNullOrEmpty (fireAttackWpName))
+			return;
+
+		if (fireFocusTarget == unit && fireAttackWpName.EndsWith (wp))
+		{
+			fireFocusTarget = null;
+			fireAttackWpName = null;
+			GameEventMgr.Instance.FireEvent(GameEventList.HideFireFocus);
+		}
+	}
+
+	void OnRemoveDazhaoActtion()
+	{
+		for (int i =0; i < insertAction.Count; ++i)
+		{
+			Action subAction = insertAction[i];
+			if(subAction.type == ActionType.Dazhao)
+			{
+				insertAction.Remove(subAction);
+				break;
+			}
+		}
+
+		Debug.LogError ("大招被打断，删除插入事件。。。。!");
+	}
 
     //IEnumerator DebugAnim(GameUnit movedUnit)
     //{
@@ -741,6 +810,22 @@ public class BattleProcess : MonoBehaviour
     {
         insertAction.Add(act);
     }
+
+	bool IsHaveDazhaoAction()
+	{
+		if (curAction.type == ActionType.Dazhao)
+			return true;
+
+		Action action = null;
+		foreach (Action item in insertAction)
+		{
+			if (item.type == ActionType.Dazhao )
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 
     #endregion
 }

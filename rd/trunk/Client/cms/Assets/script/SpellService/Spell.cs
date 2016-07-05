@@ -53,10 +53,11 @@ public class Spell
         if (spellData.energyGenerate > 0)
         {
             caster.energy += spellData.energyGenerate;
-            if (caster.energy > SpellConst.maxEnergy)
-                caster.energy = SpellConst.maxEnergy;
+            if (caster.energy > BattleConst.enegyMax)
+				caster.energy = BattleConst.enegyMax;
 
             SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+            energyArgs.vitalType = (int)VitalType.Vital_Type_Default;
             energyArgs.triggerTime = triggerTime;
             energyArgs.casterID = casterID;
             energyArgs.vitalChange = spellData.energyGenerate;

@@ -21,6 +21,8 @@ import org.hawk.os.HawkTime;
 import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
 
+import sun.security.x509.GeneralName;
+
 import com.google.gson.reflect.TypeToken;
 import com.hawk.game.attr.Attribute;
 
@@ -153,6 +155,11 @@ public class EquipEntity extends HawkDBEntity {
 	public Map<Integer, Integer> GetGemDressMap() {
 		return gemDressMap;
 	}
+
+	public Map<Integer, Integer> GetGemDressString() {
+		gemMapToJson();
+		return gemDressMap;
+	}
 	
 	private void gemDressJsonToMap(){		
 		JSONObject gemJson = JSONObject.fromObject(gemDress);
@@ -174,6 +181,9 @@ public class EquipEntity extends HawkDBEntity {
 				gemJson.put(entry.getKey(), entry.getValue());
 			}
 			gemDress = gemJson.toString();
+		}
+		else {
+			gemDress = null;
 		}
 	}
 	

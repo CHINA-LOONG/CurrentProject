@@ -9,7 +9,18 @@ public class BattleUnitUI : MonoBehaviour
     public LifeBarUI lifeBar;
     public EnegyBarUI enegyBar;
 
-    public BattleObject Unit { get; set; }
+    public BattleObject Unit
+    {
+        get 
+        {
+            return targetUnit;
+        }
+        set
+        {
+            targetUnit = value;
+        } 
+    }
+    private BattleObject targetUnit;
     private UIBuffView buffView;
 
     //---------------------------------------------------------------------------------------------
@@ -30,16 +41,15 @@ public class BattleUnitUI : MonoBehaviour
     {
         buffView.SetTargetUnit(sUnit);
         lifeBar.LifeTarget = sUnit;
+        Unit = sUnit;
         if (sUnit == null)
         {
             Hide();
             return;
         }
 
-        Unit = sUnit;
-
         dazhaoBtn.gameObject.SetActive(false);
-        unitName.text = Unit.name;
+        unitName.text = Unit.unit.name;
         //if (sUnit.gameObject.activeSelf)
         //{
         //    lifeBar.value = Unit.unit.curLife / (float)Unit.unit.maxLife;
@@ -51,17 +61,13 @@ public class BattleUnitUI : MonoBehaviour
             dazhaoBtn.gameObject.SetActive(true);
         }
 
-        //gameObject.SetActive(Unit.unit.isVisible == true);
+        gameObject.SetActive(Unit.unit.isVisible == true);
     }
     //---------------------------------------------------------------------------------------------
     public void SetEnergy(int currentVital)
     {
         enegyBar.value = Mathf.Clamp01(currentVital / (float)BattleConst.enegyMax);
-
-        if (currentVital >= BattleConst.enegyMax)
-        {
-            dazhaoBtn.gameObject.SetActive(true);
-        }
+        dazhaoBtn.gameObject.SetActive(currentVital >= BattleConst.enegyMax);
     }
     //---------------------------------------------------------------------------------------------
     public void Hide()

@@ -19,21 +19,8 @@ public class InstanceRewardCfg extends HawkConfigBase {
 	// assemble
 	protected RewardCfg rewardCfg;
 	protected List<RewardGroupCfg> starRewardCfgList;
-	
-	/**
-	 * 全局静态对象
-	 */
-	private static InstanceRewardCfg instance = null;
-
-	/**
-	 * 获取全局静态对象
-	 */
-	public static InstanceRewardCfg getInstance() {
-		return instance;
-	}
 
 	public InstanceRewardCfg() {
-		instance = this;
 		id = "";
 		rewardId = 0;
 		star1RewardGroupId = 0;

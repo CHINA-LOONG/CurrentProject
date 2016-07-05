@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.net.ssl.SSLEngineResult.HandshakeStatus;
+
 import org.hawk.annotation.ProtocolHandler;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.net.protocol.HawkProtocol;
@@ -16,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import com.hawk.game.config.InstanceCfg;
 import com.hawk.game.config.InstanceDropCfg;
 import com.hawk.game.config.InstanceRewardCfg;
+import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.RewardGroupCfg;
 import com.hawk.game.entity.MonsterEntity;
@@ -88,6 +91,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 生成对局
+		// normal
 		List<String> randMonsterList = new ArrayList<String>();
 		for (Entry<String, Integer> entry : instanceCfg.getMonsterAmountList().entrySet()) {
 			for (int i = entry.getValue(); i > 0; --i) {
@@ -111,11 +115,46 @@ public class PlayerInstanceModule extends PlayerModule {
 					dropList.addAll(dropCfg.getReward().getRewardList());
 				}
 			}
-			
+
 			battle.setDropReward(AwardItems.valueOf(dropList).getBuilder());
 			this.battleList.add(battle.build());
 			this.battleDropList.add(dropList);
 		}
+		
+		// boss
+		HSBattle.Builder bossBattle = HSBattle.newBuilder();
+		bossBattle.setType(BattleType.BOSS);
+		bossBattle.addMonsterCfgId(instanceCfg.getBossId());
+		String instanceMonsterId = instanceId + "_" + instanceCfg.getBossId();
+		InstanceDropCfg dropCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceDropCfg.class, instanceMonsterId);
+		if (dropCfg != null) {
+			 List<ItemInfo> dropList = dropCfg.getReward().getRewardList();
+			bossBattle.setDropReward(AwardItems.valueOf(dropList).getBuilder());
+			this.battleDropList.add(dropList);
+		}
+		else {
+			this.battleDropList.add(new ArrayList<ItemInfo>());
+		}
+		this.battleList.add(bossBattle.build());
+		
+		
+		// rare
+		if (true == HawkRand.randPercentRate((int) (instanceCfg.getRareProbability() * 100))) {
+			HSBattle.Builder rareBattle = HSBattle.newBuilder();
+			rareBattle.setType(BattleType.RARE);
+			rareBattle.addMonsterCfgId(instanceCfg.getRareId());
+			instanceMonsterId = instanceId + "_" + instanceCfg.getRareId();
+			dropCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceDropCfg.class, instanceMonsterId);
+			if (dropCfg != null) {
+				 List<ItemInfo> dropList = dropCfg.getReward().getRewardList();
+				 rareBattle.setDropReward(AwardItems.valueOf(dropList).getBuilder());
+				this.battleDropList.add(dropList);
+			}
+			else {
+				this.battleDropList.add(new ArrayList<ItemInfo>());
+			}
+			this.battleList.add(rareBattle.build());
+		}		
 
 		// 体力修改
 //		PlayerEntity playerEntity = player.getPlayerData().getPlayerEntity();
@@ -155,12 +194,11 @@ public class PlayerInstanceModule extends PlayerModule {
 				return false;
 			}
 			HSBattle battle = battleList.get(i);
-			// TODO:
-			//if (BattleType.BOSS == battle.getType()) {
+			if (BattleType.BOSS == battle.getType()) {
 				complete = true;
 				// TODO: 评价
 				starCount = 3;
-			//}
+			}
 
 			// 掉落奖励
 			dropCompleteReward.addItemInfos(this.battleDropList.get(i));
@@ -190,7 +228,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 发放掉落奖励和完成奖励
-		dropCompleteReward.rewardTakeAffectAndPush(player,  Action.ELITE_MAP_FIGHTING);
+		dropCompleteReward.rewardTakeAffectAndPush(player,  Action.INSTACE_SETTLE);
 		
 		HSInstanceSettleRet.Builder response = HSInstanceSettleRet.newBuilder();
 		response.setStatus(Status.error.NONE_ERROR_VALUE);
@@ -230,7 +268,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 		// TODO: 消耗
 		
-		cardReward.rewardTakeAffectAndPush(player,  Action.ELITE_MAP_FIGHTING);
+		cardReward.rewardTakeAffectAndPush(player,  Action.INSTACE_SETTLE);
 		
 		HSInstanceOpenCardRet.Builder response = HSInstanceOpenCardRet.newBuilder();
 		response.setStatus(Status.error.NONE_ERROR_VALUE);

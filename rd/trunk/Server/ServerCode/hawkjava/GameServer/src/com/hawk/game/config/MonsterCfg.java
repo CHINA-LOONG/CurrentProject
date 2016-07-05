@@ -35,22 +35,7 @@ public class MonsterCfg extends HawkConfigBase {
 	private String[] spellIdListAssemble;
 	private String[] weakpointListAssemble;
 
-	/**
-	 * 全局静态对象
-	 */
-	private static MonsterCfg instance = null;
-
-	/**
-	 * 获取全局静态对象
-	 * 
-	 * @return
-	 */
-	public static MonsterCfg getInstance() {
-		return instance;
-	}
-
 	public MonsterCfg() {
-		instance = this;
 		index = "";
 		assetID = "";
 		uiAsset = "";

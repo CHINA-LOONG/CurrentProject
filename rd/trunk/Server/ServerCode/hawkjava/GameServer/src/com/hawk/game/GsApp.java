@@ -448,46 +448,56 @@ public class GsApp extends HawkApp {
 			LinkedList<Integer> battleMonsterList = new LinkedList<>();
 			
 			MonsterEntity monsterEntity = new MonsterEntity("Unit_Demo_ershu", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
-			monsterEntity.setSkillLevel("s1", 1);
 			monsterEntity.setSkillLevel("attackMedium", 1);
 			monsterEntity.setSkillLevel("magicCureMedium", 1);
 			monsterEntity.setSkillLevel("buffMagic", 1);
+			monsterEntity.setSkillLevel("ultErshu", 1);
+			monsterEntity.setSkillLevel("lazy", 1);
+			monsterEntity.setSkillLevel("defend", 1);
 			if (true == monsterEntity.notifyCreate()) {
 				battleMonsterList.add(monsterEntity.getId());
 			}
 			
 			monsterEntity = new MonsterEntity("Unit_Demo_qingniao", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
-			monsterEntity.setSkillLevel("s1", 1);
 			monsterEntity.setSkillLevel("attackSlight", 1);
 			monsterEntity.setSkillLevel("magicWaterMedium", 1);
 			monsterEntity.setSkillLevel("debuffDefense", 1);
+			monsterEntity.setSkillLevel("ultQingniao", 1);
+			monsterEntity.setSkillLevel("lazy", 1);
+			monsterEntity.setSkillLevel("defend", 1);
 			if (true == monsterEntity.notifyCreate()) {
 				battleMonsterList.add(monsterEntity.getId());
 			}
 			
 			monsterEntity = new MonsterEntity("Unit_Demo_zhuyan", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
-			monsterEntity.setSkillLevel("s1", 1);
-			monsterEntity.setSkillLevel("attackTriStrong", 1);
+			monsterEntity.setSkillLevel("attackStrong", 1);
 			monsterEntity.setSkillLevel("magicFireSlight", 1);
 			monsterEntity.setSkillLevel("buffAttack", 1);
+			monsterEntity.setSkillLevel("ultZhuyan", 1);
+			monsterEntity.setSkillLevel("lazy", 1);
+			monsterEntity.setSkillLevel("defend", 1);
 			if (true == monsterEntity.notifyCreate()) {
 				battleMonsterList.add(monsterEntity.getId());
 			}
 			
 			monsterEntity = new MonsterEntity("Unit_Demo_qingniao", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
-			monsterEntity.setSkillLevel("s1", 1);
 			monsterEntity.setSkillLevel("attackSlight", 1);
 			monsterEntity.setSkillLevel("magicWaterMedium", 1);
 			monsterEntity.setSkillLevel("debuffDefense", 1);
+			monsterEntity.setSkillLevel("ultQingniao", 1);
+			monsterEntity.setSkillLevel("lazy", 1);
+			monsterEntity.setSkillLevel("defend", 1);
 			if (true == monsterEntity.notifyCreate()) {
 				battleMonsterList.add(monsterEntity.getId());
 			}
 			
 			monsterEntity = new MonsterEntity("Unit_Demo_zhuyan", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
-			monsterEntity.setSkillLevel("s1", 1);
-			monsterEntity.setSkillLevel("attackTriStrong", 1);
+			monsterEntity.setSkillLevel("attackStrong", 1);
 			monsterEntity.setSkillLevel("magicFireSlight", 1);
 			monsterEntity.setSkillLevel("buffAttack", 1);
+			monsterEntity.setSkillLevel("ultZhuyan", 1);
+			monsterEntity.setSkillLevel("lazy", 1);
+			monsterEntity.setSkillLevel("defend", 1);
 			if (true == monsterEntity.notifyCreate()) {
 				battleMonsterList.add(monsterEntity.getId());
 			}

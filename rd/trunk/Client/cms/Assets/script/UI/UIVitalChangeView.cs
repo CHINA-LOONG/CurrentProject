@@ -6,11 +6,16 @@ using System.Collections.Generic;
 
 public class UIVitalChangeView : MonoBehaviour
 {
+    //TODO: fontsettings have default mat
     public string aniName;
     public Font damageFont;
+    public Material damageFontMat;
     public Font healFont;
+    public Material healFontMat;
     public Text vitalWnd;
     public Image vitalBackImage;
+    public Sprite criticalSprite;
+    public Sprite missSprite;
     RectTransform trans;
 
     //---------------------------------------------------------------------------------------------
@@ -22,35 +27,54 @@ public class UIVitalChangeView : MonoBehaviour
     public void ShowVitalChange(SpellVitalChangeArgs args, RectTransform parent)
     {
         int vitalChange = args.vitalChange;
-        if (vitalChange == 0)
-            return;
 
         //choose font
         trans.SetParent(parent);
         trans.localScale = Vector3.one;
         trans.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-        if (vitalChange < 0)
+        if (args.vitalType == (int)VitalType.Vital_Type_Default)
         {
-            vitalWnd.font = damageFont;
-            vitalChange *= -1;
+            vitalBackImage.sprite = criticalSprite;
+            vitalBackImage.gameObject.SetActive(args.isCritical == true);
+            vitalWnd.gameObject.SetActive(true);
+            if (vitalChange < 0)
+            {
+                vitalWnd.font = damageFont;
+                vitalWnd.material = damageFontMat;
+                vitalChange *= -1;
+            }
+            else
+            {
+                vitalWnd.font = healFont;
+                vitalWnd.material = healFontMat;
+            }
+            vitalWnd.text = vitalChange.ToString();
         }
-        else
+        else if (args.vitalType == (int)VitalType.Vital_Type_Miss)
         {
-            vitalWnd.font = healFont;
+            vitalBackImage.sprite = missSprite;
+            vitalBackImage.gameObject.SetActive(true);
+            vitalWnd.gameObject.SetActive(false);
         }
-        vitalWnd.text = vitalChange.ToString();
 
         //calculate pos
         BattleObject bo = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
         if (bo != null)
         {
+            Transform targetTrans = bo.gameObject.transform;
+            if (args.wpNode != null && args.wpNode.Length > 0)
+            {
+                GameObject targetNode = Util.FindChildByName(bo.gameObject, args.wpNode);
+                if (targetNode != null)
+                {
+                    targetTrans = targetNode.transform;
+                }
+            }
             //TODO; use a child node
-            Vector3 pt = BattleCamera.Instance.CameraAttr.WorldToScreenPoint(bo.gameObject.transform.position);
+            Vector3 pt = BattleCamera.Instance.CameraAttr.WorldToScreenPoint(targetTrans.position);
             float scale = UIMgr.Instance.CanvasAttr.scaleFactor;
             trans.anchoredPosition = new Vector2(pt.x / scale, pt.y / scale);
         }
-
-        vitalBackImage.gameObject.SetActive(args.isCritical == true);
 
         //play ani
         if (aniName == null || aniName.Length == 0)
