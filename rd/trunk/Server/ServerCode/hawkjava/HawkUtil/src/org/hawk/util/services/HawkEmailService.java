@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.SimpleEmail;
 import org.hawk.app.HawkApp;
+import org.hawk.log.HawkLog;
 import org.hawk.thread.HawkTask;
 import org.hawk.thread.HawkThreadPool;
 
@@ -122,6 +123,9 @@ public class HawkEmailService {
 		@Override
 		protected int run() {
 			try {
+				
+				HawkLog.debugPrintln(String.format("%s %s", emailUser, emailPwd));
+				
 				Email email = new SimpleEmail();
 				email.setHostName(emailHost);
 				email.setSmtpPort(emailPort);

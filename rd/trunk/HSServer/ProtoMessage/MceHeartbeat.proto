@@ -1,6 +1,0 @@
-//package supermarket.protocol;
-//·¢ËÍĞÄÌø
-
-message MceHeartbeat {
-    optional bool update = 1[default = false];
-}

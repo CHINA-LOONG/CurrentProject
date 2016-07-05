@@ -16,15 +16,10 @@ public class UIBuffView : MonoBehaviour
 
 	public void Init ()
     {
-        GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellBuff, OnBuffChanged);
         this.targetUnit = null;
         otherBuffInterval = 0.0f;
         curOtherBuffIndex = 0;
         otherBuffList = new List<string>();
-        ////TODO: 3
-        //dotBuffList = new BuffIcon[3]{};
-        //dotBuffList[0] = 
-        //otherBuff = new BuffIcon();
 	}
 
     public void SetTargetUnit(BattleObject targetUnit)
@@ -33,26 +28,16 @@ public class UIBuffView : MonoBehaviour
         {
             this.targetUnit = targetUnit;
 
-            RefreshBuff();
+            ClearBuff();
         }
     }
 	
 	void Update ()
     {
-        if (dotBuffList[0] == null)
-        {
-            int a = 0;
-        }
         UpdateBuff();
-
 	}
 
-    void OnDestroy()
-    {
-        GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellBuff, OnBuffChanged);
-    }
-
-    private void OnBuffChanged(EventArgs args)
+    public void OnBuffChanged(EventArgs args)
     {
         SpellBuffArgs buffArgs = args as SpellBuffArgs;
         if (targetUnit != null && buffArgs.targetID != targetUnit.guid)
@@ -64,29 +49,7 @@ public class UIBuffView : MonoBehaviour
         //dot类buff
         if (curBuff.category == (int)BuffType.Buff_Type_Dot)
         {
-            if (buffArgs.isAdd)
-            {
-                for (int i = 0; i < dotBuffList.Length; ++i)
-                {
-                    //find first empty dot slot
-                    if (dotBuffList[i].IsActive() == false)
-                    {
-                        dotBuffList[i].ShowBuff(curBuff.icon);
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dotBuffList.Length; ++i)
-                {
-                    if (dotBuffList[i].IsActive() == true && dotBuffList[i].IconName == curBuff.icon)
-                    {
-                        dotBuffList[i].RemoveBuff();
-                        break;
-                    }
-                }
-            }
+            RefreshDotBuff();
         }
         //非dot类buff 刷新buff表
         else 
@@ -118,8 +81,7 @@ public class UIBuffView : MonoBehaviour
             return;
 
         otherBuffInterval += Time.deltaTime;
-        //TODO: 2.0 is buff change time
-        if (otherBuffInterval > 2.0f)
+        if (otherBuffInterval > SpellConst.buffShowInterval)
         {
             otherBuffInterval = 0.0f;
             ++curOtherBuffIndex;
@@ -127,27 +89,32 @@ public class UIBuffView : MonoBehaviour
             otherBuff.ShowBuff(otherBuffList[curOtherBuffIndex]);
         }
     }
-    private void RefreshBuff()
+    private void ClearBuff()
+    {
+        RefreshDotBuff();
+        otherBuff.RemoveBuff();
+        otherBuffList.Clear();
+    }
+
+    private void RefreshDotBuff()
     {
         for (int i = 0; i < dotBuffList.Length; ++i)
         {
             dotBuffList[i].RemoveBuff();
         }
-        otherBuff.RemoveBuff();
-        otherBuffList.Clear();
 
         if (targetUnit == null)
             return;
 
         int buffCount = targetUnit.unit.buffList.Count;
         int dotIndex = 0;
-        BuffPrototype buffPb = null;
+        Buff curBuff = null;
         for (int i = 0; i < buffCount; ++i)
         {
-            buffPb = targetUnit.unit.buffList[i].buffProto;
-            if (buffPb.category == (int)(BuffType.Buff_Type_Dot))
+            curBuff = targetUnit.unit.buffList[i];
+            if (curBuff.IsFinish == false && curBuff.buffProto.category == (int)(BuffType.Buff_Type_Dot))
             {
-                dotBuffList[dotIndex].ShowBuff(buffPb.icon);
+                dotBuffList[dotIndex].ShowBuff(curBuff.buffProto.icon);
                 ++dotIndex;
             }
         }

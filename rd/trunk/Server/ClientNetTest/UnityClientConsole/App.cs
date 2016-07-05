@@ -134,9 +134,13 @@ namespace UnityClientConsole
             {
                 Console.WriteLine("同步完成");
 
-                HSInstanceEnter instanceEnter = new HSInstanceEnter();
-                instanceEnter.cfgId = "demo";
-                NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
+                //HSInstanceEnter instanceEnter = new HSInstanceEnter();
+                //instanceEnter.cfgId = "demo";
+                //NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
+
+                HSItemUse itemUse = new HSItemUse();
+                itemUse.itemId = 40001;
+                NetManager.GetInstance().SendProtocol(code.ITEM_USE_C.GetHashCode(), itemUse);
             }
             // 副本----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.INSTANCE_ENTER_S.GetHashCode()))

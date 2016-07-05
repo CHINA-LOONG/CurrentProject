@@ -1,16 +1,27 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Collections.Generic;
 
 public class LifeBarUI : MonoBehaviour
 {
-    public RectTransform bar;
-    public float value = 1;
+    public Image currentBarImage;
+    public Image targetBarImage;
+    RectTransform currentBar;
+    RectTransform targetBar;
+    public float width = 586;
+    public float lifeRatioSpeed = 0.3f;
+    public float dangerRatio = 0.3f;
+    public Color normalColor = Color.white;
+    public Color dangerColor = Color.red;
 
-    float width = 586;
+    float targetLife = 1.0f;
+    float currentLife = 1.0f;
+    //bool isDanger = false;
+    //int lifeSpeed = 1000;
 
-    private List<SpellVitalChangeArgs> vitalEventList;
+    //private List<SpellVitalChangeArgs> vitalEventList;
     private BattleObject lifeTarget;
     public BattleObject LifeTarget
     {
@@ -19,54 +30,67 @@ public class LifeBarUI : MonoBehaviour
             if (lifeTarget != value)
             {
                 lifeTarget = value;
-                if (vitalEventList != null)
-                    vitalEventList.Clear();
+                //if (vitalEventList != null)
+                //    vitalEventList.Clear();
+                if (lifeTarget != null)
+                {
+                    SetTargetLife(lifeTarget.unit.curLife, lifeTarget.unit.maxLife);
+                    currentLife = targetLife;
+                    //lifeSpeed = (int)(lifeTarget.unit.maxLife * lifeRatioSpeed);
+                }
             }
         }
     }
 
-    void Start()
+    void Awake()
     {
-        //width = GetComponent<RectTransform>().sizeDelta.x;
-        //TODO: use record manager to record event
-        vitalEventList = new List<SpellVitalChangeArgs>();
-        vitalEventList.Clear();
-        GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellLifeChange, OnLifeChange);
+        currentBar = currentBarImage.transform as RectTransform;
+        targetBar = targetBarImage.transform as RectTransform;
     }
 
     void OnDestroy()
     {
         lifeTarget = null;
-        GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellLifeChange, OnLifeChange);
     }
 
     void Update()
     {
-        var size = bar.sizeDelta;
-        size.x =  width *(0.2f+ value*0.8f);
-        bar.sizeDelta = size;
-
-        for (int i = vitalEventList.Count - 1; i >= 0; --i)
+        if (targetLife != currentLife)
         {
-            if (vitalEventList[i].triggerTime <= Time.time)
+            currentLife -= lifeRatioSpeed * Time.deltaTime;
+            if (currentLife < targetLife)
             {
-                value = vitalEventList[i].vitalCurrent/(float)vitalEventList[i].vitalMax;
-                vitalEventList.RemoveAt(i);
+                currentLife = targetLife;
             }
+
+            var size = currentBar.sizeDelta;
+            size.x = width * (0.2f + currentLife * 0.8f);
+            currentBar.sizeDelta = size;
         }
+
     }
 
     public void SetTargetLife(int targetValue, int maxValue)
     {
-        value = targetValue / maxValue;
-    }
+        targetLife = targetValue / (float)maxValue;
+        var size = targetBar.sizeDelta;
+        size.x = width * (0.2f + targetLife * 0.8f);
+        targetBar.sizeDelta = size;
 
-    public void OnLifeChange(EventArgs args)
-    {
-        SpellVitalChangeArgs vitalArgs = args as SpellVitalChangeArgs;
-        if (lifeTarget != null && vitalArgs.targetID == lifeTarget.guid)
+        //加血直接加
+        if (targetLife > currentLife)
         {
-            vitalEventList.Add(vitalArgs);
+            currentLife = targetLife;
+            currentBar.sizeDelta = size;
+        }
+
+        if (targetLife <= dangerRatio)
+        {
+            targetBarImage.color = dangerColor;
+        }
+        else
+        {
+            targetBarImage.color = normalColor;
         }
     }
 }

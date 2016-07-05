@@ -39,7 +39,11 @@ public class MirrorRaycast : MonoBehaviour
 		{
 			foreach(string subWp in attackWpList)
 			{
-				weakpointDumpDic.Add(subWp, gameUnit.weakPointDumpDic[subWp]);
+				GameObject go = null;
+				if(gameUnit.weakPointDumpDic.TryGetValue(subWp,out go))
+				{
+					weakpointDumpDic.Add(subWp, go);
+				}
 			}
 		}
 		MirrorTarget bestTarget = null;

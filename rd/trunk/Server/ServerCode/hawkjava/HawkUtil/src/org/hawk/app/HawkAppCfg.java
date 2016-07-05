@@ -179,8 +179,8 @@ public class HawkAppCfg extends HawkConfigBase {
 		scriptXml = null;
 		configPackages = null;
 		servicePath = null;
-		emailUser = "hawk_exception@163.com";
-		emailPwd = "hawk.dai";
+		emailUser = "gamebugs@163.com";
+		emailPwd = "way4games";
 	}
 	
 	public String getAdmin() {

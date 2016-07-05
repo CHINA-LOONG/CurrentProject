@@ -411,6 +411,7 @@ public class HawkConfigStorage {
 					HawkConfigBase configBase = (HawkConfigBase) cfg;
 					configBase.setStorage(this);
 					
+					
 					while (keys.hasMoreElements()) {
 						String key = keys.nextElement().trim();
 						setAttr(configBase, key, bundle.getString(key).trim());

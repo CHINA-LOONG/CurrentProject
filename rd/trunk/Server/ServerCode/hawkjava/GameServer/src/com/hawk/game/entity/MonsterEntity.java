@@ -125,8 +125,8 @@ public class MonsterEntity extends HawkDBEntity {
 		return level;
 	}
 
-	public void setLevel(short level) {
-		this.level = level;
+	public void setLevel(int level) {
+		this.level = (short)level;
 	}
 
 	public int getExp() {

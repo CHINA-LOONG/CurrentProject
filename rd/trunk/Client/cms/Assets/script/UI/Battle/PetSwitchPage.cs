@@ -100,6 +100,7 @@ public class PetSwitchPage : MonoBehaviour
 
     void Update()
     {
+        //TODO: no need to update, only refresh when show
         if (gameObject.activeSelf)
         {
             var idleUnits = BattleController.Instance.BattleGroup.PlayerIdleList;

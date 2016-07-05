@@ -122,6 +122,14 @@ public class SpellService : MonoBehaviour
                     actualEffect.Init(pt, this);
                 }
                 break;
+            case EffectType.Effect_Type_Switch:
+                {
+                    EffectSwitchPrototype pt = effectPt as EffectSwitchPrototype;
+                    actualEffect = new EffectSwitch();
+                    actualEffect.Init(pt, this);
+                }
+                break;
+              
         }
 
         return actualEffect;

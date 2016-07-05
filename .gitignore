@@ -7,3 +7,8 @@ rd/Server/ServerCode/hawkjava/Package/jars/hibernate-distribution-3.6.10.Final-d
 gd/交互系统/IM系统预研（天下vs梦幻西游）.xlsx
 rd/trunk/Client/cms/Assets/cmsAsset/prefabs/battleScene/cloudmove.anim
 rd/trunk/Client/cms/Assets/cmsAsset/prefabs/battleScene/cloudmove.anim.meta
+rd/trunk/Server/ServerCode/hawkjava/logs/Platform.log.20150528
+rd/trunk/Server/ServerCode/hawkjava/logs/Action.log.20150528
+rd/trunk/Server/ServerCode/hawkjava/logs/Exception.log.20150528
+rd/trunk/Server/ServerCode/hawkjava/logs/Hawk.log.20150528
+rd/trunk/Server/ServerCode/hawkjava/logs/Server.log.20150528

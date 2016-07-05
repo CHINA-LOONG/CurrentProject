@@ -1,0 +1,167 @@
+2015-05-26 15:28:01,241 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-26 15:28:01,257 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-26 15:28:01,257 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-26 15:28:01,257 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-26 15:28:01,305 - parse script/script.xml config
+2015-05-26 15:28:01,307 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-26 15:28:01,639 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-26 15:28:01,674 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-26 15:28:01,708 - zmqversion: 4.0.4
+2015-05-26 15:28:01,709 - init config package: com.hawk.game.config
+2015-05-26 15:28:01,720 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/baseAttr.csv
+2015-05-26 15:28:01,727 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/equipAttr.csv
+2015-05-26 15:28:01,733 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-26 15:28:01,738 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/instance.csv
+2015-05-26 15:28:01,784 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item.csv
+2015-05-26 15:28:01,793 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/unitBaseData.csv
+2015-05-26 15:28:01,800 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/unitData.csv
+2015-05-26 15:28:01,803 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-26 15:28:01,845 - start msgExecutor, threadNum: 4
+2015-05-26 15:28:01,885 - start taskExecutor, threadNum: 4
+2015-05-26 15:28:02,051 - init entity package: com.hawk.game.entity
+2015-05-26 15:28:02,065 - scan database entity: EquipEntity
+2015-05-26 15:28:02,065 - scan database entity: ItemEntity
+2015-05-26 15:28:02,065 - scan database entity: MonsterEntity
+2015-05-26 15:28:02,065 - scan database entity: PlayerEntity
+2015-05-26 15:28:02,065 - scan database entity: RoleEntity
+2015-05-26 15:28:02,601 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-26 15:28:02,641 - start dbExecutor, threadNum: 4
+2015-05-26 15:28:02,642 - init server data......
+2015-05-26 15:28:02,642 - load player count from db......
+2015-05-26 15:28:02,778 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 136
+2015-05-26 15:28:02,778 - load puid and playerId from db......
+2015-05-26 15:28:02,794 - load nickname and playerId from db......
+2015-05-26 15:28:02,798 - install email service......
+2015-05-26 15:28:02,856 - start network, port: 9595
+2015-05-26 15:28:02,856 - server running......
+2015-05-26 15:29:15,095 - session opened, ipaddr: 192.168.199.198, total: 1
+2015-05-26 15:59:47,275 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-26 15:59:47,290 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-26 15:59:47,290 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-26 15:59:47,290 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-26 15:59:47,338 - parse script/script.xml config
+2015-05-26 15:59:47,340 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-26 15:59:47,674 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-26 15:59:47,735 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-26 15:59:47,776 - zmqversion: 4.0.4
+2015-05-26 15:59:47,778 - init config package: com.hawk.game.config
+2015-05-26 15:59:47,805 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/baseAttr.csv
+2015-05-26 15:59:47,812 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/equipAttr.csv
+2015-05-26 15:59:47,818 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-26 15:59:47,823 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/instance.csv
+2015-05-26 15:59:47,872 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item.csv
+2015-05-26 15:59:47,882 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/unitBaseData.csv
+2015-05-26 15:59:47,889 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/unitData.csv
+2015-05-26 15:59:47,892 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-26 15:59:47,892 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/time.csv
+2015-05-26 15:59:47,940 - start msgExecutor, threadNum: 4
+2015-05-26 15:59:47,980 - start taskExecutor, threadNum: 4
+2015-05-26 15:59:48,135 - init entity package: com.hawk.game.entity
+2015-05-26 15:59:48,166 - scan database entity: EquipEntity
+2015-05-26 15:59:48,166 - scan database entity: ItemEntity
+2015-05-26 15:59:48,166 - scan database entity: MonsterEntity
+2015-05-26 15:59:48,166 - scan database entity: PlayerEntity
+2015-05-26 15:59:48,166 - scan database entity: RoleEntity
+2015-05-26 15:59:48,166 - scan database entity: StatisticsEntity
+2015-05-26 15:59:48,732 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-26 15:59:48,772 - start dbExecutor, threadNum: 4
+2015-05-26 15:59:48,773 - init server data......
+2015-05-26 15:59:48,773 - load player count from db......
+2015-05-26 15:59:48,904 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 131
+2015-05-26 15:59:48,904 - load puid and playerId from db......
+2015-05-26 15:59:48,920 - load nickname and playerId from db......
+2015-05-26 15:59:48,924 - install email service......
+2015-05-26 15:59:48,983 - start network, port: 9595
+2015-05-26 15:59:48,983 - server running......
+2015-05-26 16:03:43,830 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:05:00,263 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:05:01,691 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:06:14,560 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:06:15,867 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:09:02,294 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:09:12,523 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:10:55,732 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:10:57,244 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:12:10,497 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:12:11,677 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:13:01,647 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:13:02,974 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:14:11,293 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:14:13,799 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:16:03,427 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:16:04,972 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:16:32,264 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:41:29,528 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-26 16:41:29,543 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-26 16:41:29,543 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-26 16:41:29,543 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-26 16:41:29,592 - parse script/script.xml config
+2015-05-26 16:41:29,594 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-26 16:41:29,939 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-26 16:41:29,975 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-26 16:41:30,009 - zmqversion: 4.0.4
+2015-05-26 16:41:30,011 - init config package: com.hawk.game.config
+2015-05-26 16:41:30,023 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/baseAttr.csv
+2015-05-26 16:41:30,030 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/equipAttr.csv
+2015-05-26 16:41:30,036 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-26 16:41:30,041 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/instance.csv
+2015-05-26 16:41:30,089 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item.csv
+2015-05-26 16:41:30,098 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/unitBaseData.csv
+2015-05-26 16:41:30,106 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/unitData.csv
+2015-05-26 16:41:30,109 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-26 16:41:30,109 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/time.csv
+2015-05-26 16:41:30,152 - start msgExecutor, threadNum: 4
+2015-05-26 16:41:30,192 - start taskExecutor, threadNum: 4
+2015-05-26 16:41:30,334 - init entity package: com.hawk.game.entity
+2015-05-26 16:41:30,347 - scan database entity: EquipEntity
+2015-05-26 16:41:30,347 - scan database entity: ItemEntity
+2015-05-26 16:41:30,348 - scan database entity: MonsterEntity
+2015-05-26 16:41:30,348 - scan database entity: PlayerEntity
+2015-05-26 16:41:30,348 - scan database entity: RoleEntity
+2015-05-26 16:41:30,348 - scan database entity: StatisticsEntity
+2015-05-26 16:41:30,919 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-26 16:41:30,959 - start dbExecutor, threadNum: 4
+2015-05-26 16:41:30,960 - init server data......
+2015-05-26 16:41:30,960 - load player count from db......
+2015-05-26 16:41:31,106 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 146
+2015-05-26 16:41:31,106 - load puid and playerId from db......
+2015-05-26 16:41:31,124 - load nickname and playerId from db......
+2015-05-26 16:41:31,127 - install email service......
+2015-05-26 16:41:31,188 - start network, port: 9595
+2015-05-26 16:41:31,188 - server running......
+2015-05-26 16:41:34,084 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:41:41,967 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:46:56,265 - session idle closed, ipaddr: 127.0.0.1, status: both idle
+2015-05-26 16:46:56,265 - session be closing, ipaddr: 127.0.0.1
+2015-05-26 16:46:56,266 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:48:04,279 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:48:05,790 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:48:09,215 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:48:35,753 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:48:38,183 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:48:40,061 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:49:29,403 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:49:30,506 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:49:32,317 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:50:14,574 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:50:15,706 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:50:17,305 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:51:01,534 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:51:03,813 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:51:05,149 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:52:09,779 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:52:11,636 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:52:14,022 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:53:04,583 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:53:05,788 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:53:06,876 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:53:36,338 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:53:44,591 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:53:45,884 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:55:25,079 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-26 16:55:26,419 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-26 16:55:28,390 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 16:55:30,854 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-26 17:00:30,871 - session idle closed, ipaddr: 127.0.0.1, status: both idle
+2015-05-26 17:00:30,871 - session be closing, ipaddr: 127.0.0.1
+2015-05-26 17:00:30,872 - session closed, ipaddr: 127.0.0.1, total: 0

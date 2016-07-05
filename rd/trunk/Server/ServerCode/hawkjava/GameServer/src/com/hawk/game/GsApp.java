@@ -260,7 +260,7 @@ public class GsApp extends HawkApp {
 		HawkEmailService emailService = HawkEmailService.getInstance();
 		if (emailService != null) {
 			String emailTitle = String.format("exception(%s_%s_%d)", GsConfig.getInstance().getGameId(), GsConfig.getInstance().getPlatform(), GsConfig.getInstance().getServerId());
-			emailService.sendEmail(emailTitle, HawkException.formatStackMsg(e), Arrays.asList("18612791243@163.com"));
+			emailService.sendEmail(emailTitle, HawkException.formatStackMsg(e), Arrays.asList("gamebugs@163.com"));
 		}
 	}
 

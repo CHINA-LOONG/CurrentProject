@@ -34,12 +34,11 @@ public class BattleProcess : MonoBehaviour
     List<Action> insertAction = new List<Action>();
 
     MethodInfo battleVictorMethod;
-    MethodInfo processVictorMethod;
+    //MethodInfo processVictorMethod;
 
     //histroy
     //TODO: use multimap
     float lastUpdateTime;
-    float battleStartTime;
     List<SpellFireArgs> spellEventList = new List<SpellFireArgs>();
     List<SpellVitalChangeArgs> lifeChangeEventList = new List<SpellVitalChangeArgs>();
     List<SpellVitalChangeArgs> energyEventList = new List<SpellVitalChangeArgs>();
@@ -97,6 +96,7 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.AddListener<int, int>(GameEventList.SwitchPet, OnSwitchPet);
         GameEventMgr.Instance.AddListener<BattleObject>(GameEventList.HitDazhaoBtn, OnUnitCastDazhao);
         GameEventMgr.Instance.AddListener<int, string>(GameEventList.ChangeTarget, OnChangeTarget);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.ShowHideMonster, OnShowHideMonster);
 
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellFire, OnFireSpell);
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellLifeChange, OnLifeChange);
@@ -147,6 +147,7 @@ public class BattleProcess : MonoBehaviour
             }
         }
 
+        //TODO: use battle start time as 0, not Time.time
         int eventCount = deadEventList.Count;
         for (int i = 0; i < eventCount; ++i)
         {
@@ -222,17 +223,35 @@ public class BattleProcess : MonoBehaviour
         eventCount = lifeChangeEventList.Count;
         for (int i = 0; i < eventCount; ++i)
         {
+            SpellVitalChangeArgs args = lifeChangeEventList[i];
+            if (args.triggerTime < lastUpdateTime || args.triggerTime >= Time.time)
+            {
+                continue;
+            }
 
+            BattleController.Instance.GetUIBattle().ChangeLife(args);
         }
         eventCount = energyEventList.Count;
         for (int i = 0; i < eventCount; ++i)
         {
+            SpellVitalChangeArgs args = energyEventList[i];
+            if (args.triggerTime < lastUpdateTime || args.triggerTime >= Time.time)
+            {
+                continue;
+            }
 
+            BattleController.Instance.GetUIBattle().ChangeEnergy(args);
         }
         eventCount = buffEventList.Count;
         for (int i = 0; i < eventCount; ++i)
         {
+            SpellBuffArgs args = buffEventList[i];
+            if (args.triggerTime < lastUpdateTime || args.triggerTime >= Time.time)
+            {
+                continue;
+            }
 
+            BattleController.Instance.GetUIBattle().ChangeBuffState(args);
         }
         lastUpdateTime = Time.time;
 
@@ -282,24 +301,25 @@ public class BattleProcess : MonoBehaviour
         energyEventList.Clear();
         deadEventList.Clear();
         buffEventList.Clear();
-        for (int i = deathList.Count - 1; i >= 0; --i)
-        {
-            SpellUnitDeadArgs args = deathList[i];
-            BattleObject deadUnit = battleGroup.GetUnitByGuid(args.deathID);
-            if (deadUnit != null)
-            {
-                if (deadUnit.camp == UnitCamp.Player)
-                {
-                    deadUnit.gameObject.SetActive(false);
-                }
-                else
-                {
-                    ObjectDataMgr.Instance.RemoveBattleObject(args.deathID);
-                }
-            }
+        //enemy has removed in UnLoadScene()
+        //for (int i = deathList.Count - 1; i >= 0; --i)
+        //{
+        //    SpellUnitDeadArgs args = deathList[i];
+        //    BattleObject deadUnit = battleGroup.GetUnitByGuid(args.deathID);
+        //    if (deadUnit != null)
+        //    {
+        //        if (deadUnit.camp == UnitCamp.Player)
+        //        {
+        //            deadUnit.gameObject.SetActive(false);
+        //        }
+        //        else
+        //        {
+        //            ObjectDataMgr.Instance.RemoveBattleObject(args.deathID);
+        //        }
+        //    }
 
-            deathList.RemoveAt(i);
-        }
+        //    deathList.RemoveAt(i);
+        //}
         deathList.Clear();
     }
 
@@ -465,8 +485,16 @@ public class BattleProcess : MonoBehaviour
 
         switch (aiResult.attackStyle)
         {
-            case BattleUnitAi.AiAttackStyle.Dazhao:
-                break;
+			case BattleUnitAi.AiAttackStyle.Dazhao:
+			//扣除能量
+			SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+			energyArgs.triggerTime = Time.time;
+			energyArgs.casterID = bo.guid;
+			energyArgs.vitalChange = BattleConst.enegyMax;
+			energyArgs.vitalCurrent = 0;
+			energyArgs.vitalMax = 0;
+			SpellService.Instance.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
+			break;
             case BattleUnitAi.AiAttackStyle.Lazy:
                 Logger.Log(bo.unit.name + "   lazy");
                 bo.unit.attackCount++;
@@ -609,6 +637,11 @@ public class BattleProcess : MonoBehaviour
         fireAttackWpName = weakpointName;
         GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.ShowFireFocus, unit);
         Logger.Log("[Battle.Process]Change Fire Targret To " + unit.name + "  weakpoint name : " + weakpointName);
+    }
+
+    public void OnShowHideMonster(int id)
+    {
+        BattleController.Instance.GetUIBattle().SetBattleUnitVisible(id, true);
     }
 
     //spell event

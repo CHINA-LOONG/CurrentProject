@@ -34,9 +34,9 @@ enum RewardReason
 enum ClassType
 {
 	// 角色
-	PLAYER = 1;
+	PLAYER_TYPE = 1;
 	// 怪物
-	MONSTER = 2;
+	MONSTER_TYPE = 2;
 }
 
 // 抽象物品类型定义
@@ -46,7 +46,7 @@ enum itemType
 	NONE_ITEM = 0;
 	// 玩家属性
 	PLAYER_ATTR = 1;	
-	// 角色
+	// 角色属性
 	MONSTER_ATTR = 2;
 	// 道具
 	ITEM = 3;
@@ -56,6 +56,8 @@ enum itemType
 	SKILL = 5;
 	// 奖励组
 	GROUP = 6;
+	// 怪物奖励
+	MONSTER = 7;
 }
 
 // 购买价格类型

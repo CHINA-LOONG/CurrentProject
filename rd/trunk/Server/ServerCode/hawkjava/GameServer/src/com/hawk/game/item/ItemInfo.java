@@ -39,7 +39,7 @@ public class ItemInfo {
 		this.itemId = itemId;
 		this.count = count;
 	}
-
+	
 	public ItemInfo(int type, int itemId, int count, int stage, int level) {
 		super();
 		this.type = type;
@@ -94,7 +94,12 @@ public class ItemInfo {
 	}
 
 	public ItemInfo clone() {
-		ItemInfo ret = new ItemInfo(type, itemId, count);
+		ItemInfo ret = new ItemInfo();
+		ret.itemId = this.itemId;
+		ret.type = this.type;
+		ret.stage = this.stage;
+		ret.level = this.level;
+		ret.count = this.count;
 		return ret;
 	}
 
@@ -117,9 +122,15 @@ public class ItemInfo {
 			if (items.length < 3) {
 				return false;
 			}
+			
 			type = Integer.parseInt(items[0]);
 			itemId = Integer.parseInt(items[1]);
 			count = Integer.parseInt(items[2]);
+			if (items.length == 5) {
+				stage = Integer.parseInt(items[3]);
+				level = Integer.parseInt(items[4]);		
+			}
+			
 			return true;
 		}
 		return false;

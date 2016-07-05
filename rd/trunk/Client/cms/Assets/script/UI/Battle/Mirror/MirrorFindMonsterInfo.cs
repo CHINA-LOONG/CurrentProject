@@ -13,6 +13,7 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 	}
 
 	public	Text	propertyText;
+	public  Image 	propertyImage;
 	public	Text	friendShipText;
 	public	Text	likeFoodText;
 
@@ -60,9 +61,19 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 			{
 				if(wpData.tipType == (int)TipInfoType.TipSelf)
 				{
+					GameUnit unit = WeakPointController.Instance.getGameUnit(subTarget);
 					propertyText.text = subTarget.WeakPointIDAttr;
-					friendShipText.text = subTarget.gameObject.name;
-					likeFoodText.text = "subTarget";
+					friendShipText.text = unit.friendship.ToString();
+					//likeFoodText.text = "subTarget";
+
+					int property = WeakPointController.Instance.GetProperty(subTarget);
+					var image = ResourceMgr.Instance.LoadAssetType<Sprite>("ui/property", "property_" + property) as Sprite;
+					if(image != null)
+					{
+						propertyImage.enabled = true;
+						propertyImage.sprite = image;
+					}
+
 				}
 			}
 			else
@@ -85,6 +96,7 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 		propertyText.text = "";
 		friendShipText.text = "";
 		likeFoodText.text = "";
+		propertyImage.enabled = false;
 
 		WpInfoGroup.Instance.Clear ();
 	}

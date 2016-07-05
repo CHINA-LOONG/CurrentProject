@@ -24,6 +24,7 @@ public class GameEventList
 	public static string MirrorClicked = "MirrorClicked";//param vector3
 	public static string ShowFindMonsterInfo = "ShowFindMonsterInfo";//MirrorTarget
 	public static string HideFindMonsterInfo = "HideFindMonsterInfo";//
+    public static string ShowHideMonster = "ShowHideMonster";//find the hide monster in battle
 
 
     //process

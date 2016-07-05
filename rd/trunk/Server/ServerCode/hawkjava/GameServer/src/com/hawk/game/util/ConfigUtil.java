@@ -47,7 +47,7 @@ public class ConfigUtil {
 			itemType == Const.itemType.MONSTER_ATTR_VALUE ||	
 			itemType == Const.itemType.ITEM_VALUE		  ||	
 			itemType == Const.itemType.EQUIP_VALUE		  ||	
-			itemType == Const.itemType.GROUP_VALUE	
+			itemType == Const.itemType.GROUP_VALUE		  
 			) 
 		{
 			return true;

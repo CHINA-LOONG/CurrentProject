@@ -16,9 +16,6 @@ public class BattleUnitAi : MonoBehaviour {
 		UnKown
 	}
 
-	int enemyLazyIndex = 3;
-	int enmeyCharacterIndex = 3;//性格
-
 	public	class AiAttackResult
 	{
 		public	AiAttackStyle attackStyle = AiAttackStyle.UnKown;
@@ -126,10 +123,6 @@ public class BattleUnitAi : MonoBehaviour {
 		int maxGroup = 0;
 
 		int lazyIndex = battleUnit.lazy;
-		if (battleUnit.pbUnit.camp == UnitCamp.Enemy) 
-		{
-			lazyIndex = enemyLazyIndex;
-		}
 		LazyData lazyData = StaticDataMgr.Instance.GetLazyData (lazyIndex);
 		if (null == lazyData) 
 		{
@@ -163,14 +156,14 @@ public class BattleUnitAi : MonoBehaviour {
 
 		maxGroup = attackMaxTimes / dazhaoGroup + 1;
 
-		int rondomIndex = 0;
+		//int rondomIndex = 0;
 		int rondomAdjust = 0;
 		int dazhaoIndex = 0;
 		for (int i = 0; i<maxGroup; ++i)
 		{
-			rondomIndex = Random.Range(0,dazhaoGroup);
+			//rondomIndex = Random.Range(0,dazhaoGroup);
 			rondomAdjust = Random.Range(0,dazhaoAdjust);
-			dazhaoIndex = (i+1) * dazhaoGroup + rondomIndex - rondomAdjust;
+			dazhaoIndex = (i+1) * dazhaoGroup - 1 - rondomAdjust;
 
 			int minDazhaoIndex = i*dazhaoGroup;
 
@@ -343,7 +336,6 @@ public class BattleUnitAi : MonoBehaviour {
 			if(subUnit.curLife/(float)subUnit.maxLife <= GameConfig.Instance.MaxCureMagicLifeRate )
 			{
 				listTarget.Add(subUnit);
-				break;
 			}
 			
 		}
@@ -389,14 +381,13 @@ public class BattleUnitAi : MonoBehaviour {
 		if ( UnitCamp.Enemy == battleUnit.pbUnit.camp &&
 		    battleUnit.dazhaoList.Contains (battleUnit.attackCount))
 		{
-			return AiAttackStyle.Dazhao;
+			if(battleUnit.energy >= SpellConst.maxEnergy)
+			{
+				return AiAttackStyle.Dazhao;
+			}
 		}
 
 		int unitCharacter = battleUnit.character;
-		if (battleUnit.pbUnit.camp == UnitCamp.Enemy) 
-		{
-			unitCharacter = enmeyCharacterIndex;
-		}
 
 		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (unitCharacter);
 		if (null == characterData)

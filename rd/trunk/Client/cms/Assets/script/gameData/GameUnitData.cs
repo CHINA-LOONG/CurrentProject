@@ -55,6 +55,7 @@ public class GameUnit
 	public int character;//性格
 	public int lazy;//勤奋度
 	public bool isVisible = true;//是否可见
+	public int friendship;
     //掉落金币
     //public int goldNoteMin;
   //  public int goldNoteMax;
@@ -100,6 +101,7 @@ public class GameUnit
 	public Dictionary<string,GameObject> weakPointDumpDic;
 	public List<string> findWeakPointlist = null;
 	public Dictionary<string,GameObject> weakPointMeshDic;
+	public Dictionary<string,GameObject> weakPointDeadMeshDic;
 	public Dictionary<string,GameObject> weakPointEffectDic;
 
     //只在客户端计算使用的属性
@@ -133,6 +135,7 @@ public class GameUnit
 		
 		findWeakPointlist = new List<string> ();
 		weakPointMeshDic = new Dictionary<string, GameObject> ();
+		weakPointDeadMeshDic = new Dictionary<string, GameObject> ();
 		weakPointEffectDic = new Dictionary<string, GameObject> ();
 		weakPointDumpDic = new Dictionary<string, GameObject> ();
 		weakPointList = new List<string>();
@@ -236,9 +239,19 @@ public class GameUnit
         }
 
 
-		//性格，勤奋度
-		character = pbUnit.character;
-		lazy = pbUnit.lazy;
+		//性格，勤奋度,//怪物友好度
+		if (isPlayer) 
+		{
+			character = pbUnit.character;
+			lazy = pbUnit.lazy;
+			friendship = 0;//player no use
+		} 
+		else 
+		{
+			character = 3;
+			lazy = 3;
+			friendship = unitRowData.friendship;
+		}
 	}
 	
 	void InitWeakPoint(string strWeak)
@@ -280,13 +293,19 @@ public class GameUnit
             wpRuntimeData.hp += damage;
             if (wpRuntimeData.hp < 0)
             {
+				Logger.LogFormat("weakpoint( ) dead!",id);
                 wpRuntimeData.hp = 0;
 				GameObject meshObj = null;
 				if(weakPointMeshDic.TryGetValue(id,out meshObj))
 				{
 					meshObj.SetActive(false);
 				}
-                //Logger.LogError("TODO: weak point is dead (lws)");
+                
+				GameObject deadMeshObj = null;
+				if(weakPointDeadMeshDic.TryGetValue(id,out deadMeshObj))
+				{
+					deadMeshObj.SetActive(true);
+				}
             }
             else if (wpRuntimeData.hp > wpRuntimeData.maxHp)
             {
@@ -337,13 +356,13 @@ public class GameUnit
         //Logger.LogFormat("Unit {0}: speedCount: {1}, actionOrder: {2}", name, speedCount, actionOrder);
     }
 
-    public void RemoveAllBuff()
-    {
-        foreach (Buff buff in buffList)
-        {
-            buff.Finish();
-        }
-    }
+    //public void RemoveAllBuff()
+    //{
+    //    foreach (Buff buff in buffList)
+    //    {
+    //        buff.Finish();
+    //    }
+    //}
 
     public void ResetAllState()
     {
@@ -366,5 +385,6 @@ public class GameUnit
 
         state = UnitState.None;
 	    attackCount = 0;
+        buffList.Clear();
     }
 }

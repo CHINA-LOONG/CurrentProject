@@ -39,6 +39,7 @@ public class Buff
     public Spell ownedSpell;
     public int casterID;
     public int targetID;
+    public float applyTime;
     private int periodCount;
     private bool isFinish;
     public bool IsFinish
@@ -74,6 +75,7 @@ public class Buff
     {
         periodCount = 0;
         isFinish = false;
+        applyTime = curTime;
         GameUnit target = spellService.GetUnit(targetID);
         AddBuff(target.buffList);
     }
@@ -103,7 +105,7 @@ public class Buff
 
         if (periodCount >= buffProto.duration)
         {
-            Finish();
+            Finish(curTime);
             //buffList.Remove(this);
         }
     }
@@ -138,7 +140,7 @@ public class Buff
 
                     if (dotCount >= 3)
                     {
-                        firstDot.Finish();
+                        firstDot.Finish(applyTime);
                         firstDot.ModifyUnit(true);
                         buffList.Remove(firstDot);
                         break;
@@ -162,7 +164,7 @@ public class Buff
         buffList.Add(this);
         ModifyUnit(false);
         SpellBuffArgs args = new SpellBuffArgs();
-        args.triggerTime = 0;
+        args.triggerTime = applyTime;
         args.casterID = casterID;
         args.targetID = targetID;
         args.isAdd = true;
@@ -170,13 +172,13 @@ public class Buff
         spellService.TriggerEvent(GameEventList.SpellBuff, args);
     }
     //---------------------------------------------------------------------------------------------
-    public void Finish()
+    public void Finish(float finishTime)
     {
         ModifyUnit(true);
         isFinish = true;
 
         SpellBuffArgs args = new SpellBuffArgs();
-        args.triggerTime = 0;
+        args.triggerTime = finishTime;
         args.casterID = casterID;
         args.targetID = targetID;
         args.isAdd = false;
@@ -191,20 +193,18 @@ public class Buff
         //状态改变
         if (buffProto.stun > 0)
         {
-            ++target.stun;
-        }
-        else
-        {
-            --target.stun;
+            if (isRemove)
+                --target.stun;
+            else
+                ++target.stun;
         }
 
         if (buffProto.invincible > 0)
         {
-            ++target.invincible;
-        }
-        else
-        {
-            --target.invincible;
+            if (isRemove)
+                --target.invincible;
+            else
+                ++target.invincible;
         }
 
         //属性改变
@@ -222,7 +222,10 @@ public class Buff
             target.spellIntelligenceRatio += buffProto.intelligenceRatio;
             target.spellSpeedRatio += buffProto.speedRatio;
             target.spellDefenseRatio += buffProto.defenseRatio;
-            target.spellDefenseDamageRatio = buffProto.defenseDamageRatio;
+            if (buffProto.category == (int)BuffType.Buff_Type_Defend)
+            {
+                target.spellDefenseDamageRatio = buffProto.defenseDamageRatio;
+            }
         }
     }
     //---------------------------------------------------------------------------------------------

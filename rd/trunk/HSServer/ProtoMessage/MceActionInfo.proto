@@ -1,8 +1,0 @@
-//package candy.protocol;
-//Gateway.php 
-message MceActionInfo {
-    optional int32 action_idx  =1; // 1:排行榜周 2:排行榜日
-    optional int32 episode_idx =2; // 排行榜的章节数
-    optional int32 rank_start  =3; // 排行榜范围 开始
-    optional int32 rank_end    =4; // 排行榜范围 结束
-}

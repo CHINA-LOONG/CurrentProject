@@ -2,6 +2,7 @@ package com.hawk.game.module;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkException;
 
 import com.hawk.game.config.EquipAttr;
 import com.hawk.game.config.ItemCfg;

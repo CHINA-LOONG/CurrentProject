@@ -12,6 +12,7 @@ public class BattleUnitUI : MonoBehaviour
     public BattleObject Unit { get; set; }
     private UIBuffView buffView;
 
+    //---------------------------------------------------------------------------------------------
     // Use this for initialization
     void Awake()
     {
@@ -19,7 +20,12 @@ public class BattleUnitUI : MonoBehaviour
        buffView = gameObject.GetComponent<UIBuffView>();
        buffView.Init();
     }
-
+    //---------------------------------------------------------------------------------------------
+    public void ChangeBuffState(SpellBuffArgs args)
+    {
+        buffView.OnBuffChanged(args);
+    }
+    //---------------------------------------------------------------------------------------------
     public void Show(BattleObject sUnit)
     {
         buffView.SetTargetUnit(sUnit);
@@ -45,17 +51,28 @@ public class BattleUnitUI : MonoBehaviour
             dazhaoBtn.gameObject.SetActive(true);
         }
 
-        gameObject.SetActive(true);
+        //gameObject.SetActive(Unit.unit.isVisible == true);
     }
+    //---------------------------------------------------------------------------------------------
+    public void SetEnergy(int currentVital)
+    {
+        enegyBar.value = Mathf.Clamp01(currentVital / (float)BattleConst.enegyMax);
 
+        if (currentVital >= BattleConst.enegyMax)
+        {
+            dazhaoBtn.gameObject.SetActive(true);
+        }
+    }
+    //---------------------------------------------------------------------------------------------
     public void Hide()
     {
         gameObject.SetActive(false);
     }
-
+    //---------------------------------------------------------------------------------------------
     void OnDazhaoClick(GameObject go)
     {
         GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.HitDazhaoBtn, Unit);
 		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
     }
+    //---------------------------------------------------------------------------------------------
 }

@@ -40,10 +40,11 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 		float myWith = thisTransform.rect.width;
 		float myHeigth = thisTransform.rect.height;
 
-		m_MinPosX = myWith /2.0f;
-		m_MaxPosX = rootWidth - myWith/2.0f  ;
-		m_MinPosY = 0;
-		m_MaxposY = rootHeight - myHeigth / 2.0f;
+		Vector2 pivot = thisTransform.pivot;
+		m_MinPosX = myWith * pivot.x;
+		m_MaxPosX = rootWidth - myWith*(1 - pivot.x)  ;
+		m_MinPosY = myWith * pivot.y;
+		m_MaxposY = rootHeight - myHeigth * (1-pivot.y);
 	}  
 
 	// 鼠标按下  
@@ -115,6 +116,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 		{
 			GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.MirrorOutWeakPoint,listTarget);
 		}
+		GameEventMgr.Instance.FireEvent(GameEventList.HideFindMonsterInfo);
 	}
 
 	IEnumerator weakPointRayCastCo()
@@ -152,6 +154,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 						if(subTarget.isSelf && battleObject.unit.isVisible)
 						{
 							finishFindTargett.Add(subTarget);
+							lastFindWeakpoint.Add(subTarget,0.0f);
 						}
 						else
 						{

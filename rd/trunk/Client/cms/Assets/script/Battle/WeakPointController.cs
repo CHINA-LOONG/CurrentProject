@@ -149,6 +149,17 @@ public class WeakPointController : MonoBehaviour
 			{
 				meshGo.SetActive(false);
 			}
+
+		}
+		string deadMeshName = rowData.deadMesh;
+		if (!string.IsNullOrEmpty (deadMeshName)) 
+		{
+			GameObject deadMeshGo = Util.FindChildByName (monsterGo, rowData.deadMesh);
+			if(deadMeshGo != null)
+			{
+				bo.unit.weakPointDeadMeshDic[rowData.id] = deadMeshGo;
+				deadMeshGo.SetActive(false);
+			}
 		}
 	}
 
@@ -191,6 +202,7 @@ public class WeakPointController : MonoBehaviour
 			if(target.isSelf)
 			{
 				unit.isVisible = true;
+                GameEventMgr.Instance.FireEvent<int>(GameEventList.ShowHideMonster, unit.pbUnit.guid);
 			}
 
 			if (!unit.findWeakPointlist.Contains (wpName)) 
@@ -221,10 +233,25 @@ public class WeakPointController : MonoBehaviour
 		}
 	}
 
-	GameUnit getGameUnit(MirrorTarget target)
+	public GameUnit getGameUnit(MirrorTarget target)
 	{
 		var battleObject = target.GetComponentInParent<BattleObject> () as BattleObject;
 		return battleObject.unit;
+	}
+
+	public int GetProperty(MirrorTarget target)
+	{
+		int property = -1;
+		WeakPointData wpData = StaticDataMgr.Instance.GetWeakPointData (target.WeakPointIDAttr);
+		if (wpData != null) 
+		{
+			property = wpData.property;
+		}
+		if (-1 == property) 
+		{
+			property = getGameUnit(target).property;
+		}
+		return property;
 	}
 
 	void ShowOrHideFindEffect(GameUnit gUnit,string weakpointID,bool bshow)

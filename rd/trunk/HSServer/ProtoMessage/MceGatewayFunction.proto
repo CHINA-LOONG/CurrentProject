@@ -1,8 +1,0 @@
-//package candy.protocol;
-//Gateway.php 
-message MceGatewayFunction {
-    optional int32 action_idx =1;
-    optional string ServerName =2;
-    optional string	ActionName =3;
-    optional string JsonAttr =4;  
-}

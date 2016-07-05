@@ -65,8 +65,7 @@ public class RewardCfg extends HawkConfigBase  {
 			}	
 			else {
 				i++;
-			}
-			
+			}			
 		}
 		return result;
 	}  

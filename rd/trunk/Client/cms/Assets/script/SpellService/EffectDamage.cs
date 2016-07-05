@@ -156,7 +156,7 @@ public class EffectDamage : Effect
                                     ); //五行相关
                 }
                 //伤害*-1 修正为负数
-                damageAmount *= -10;
+                damageAmount *= -1;
 
                 //弱点伤害计算
                 if (wp != null)

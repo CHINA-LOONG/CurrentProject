@@ -73,4 +73,14 @@ public class SpellFunctions
         }
         return damageRatio;
     }
+
+    public static int IsEnemy(int camp)
+    {
+        return (camp == (int)UnitCamp.Enemy) ? 1 : 0;
+    }
+
+    public static int Default(int args)
+    {
+        return 1;
+    }
 }

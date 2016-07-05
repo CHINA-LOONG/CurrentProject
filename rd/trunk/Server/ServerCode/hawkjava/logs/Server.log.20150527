@@ -1,0 +1,75 @@
+2015-05-27 11:22:12,258 - create player: 20, puid: zhengshuai
+2015-05-27 11:22:12,259 - protocol cost time exception, protocolId: 1000, costTime: 5565ms
+2015-05-27 11:22:48,016 - online user: 0
+2015-05-27 11:22:57,311 - protocol cost time exception, protocolId: 1000, costTime: 16372ms
+2015-05-27 11:24:03,919 - create player: 20, puid: zhengshuai
+2015-05-27 11:24:05,431 - protocol cost time exception, protocolId: 1000, costTime: 5109ms
+2015-05-27 11:24:55,046 - online user: 0
+2015-05-27 11:25:55,036 - online user: 0
+2015-05-27 11:26:55,020 - online user: 0
+2015-05-27 11:28:12,191 - create player: 20, puid: zhengshuai
+2015-05-27 11:28:12,195 - protocol cost time exception, protocolId: 1000, costTime: 4644ms
+2015-05-27 11:29:00,001 - online user: 0
+2015-05-27 11:30:00,024 - online user: 0
+2015-05-27 11:31:00,009 - online user: 0
+2015-05-27 11:32:00,040 - online user: 0
+2015-05-27 11:33:00,026 - online user: 0
+2015-05-27 11:34:00,008 - online user: 0
+2015-05-27 11:35:00,042 - online user: 0
+2015-05-27 11:36:00,986 - create player: 20, puid: zhengshuai
+2015-05-27 11:36:00,990 - protocol cost time exception, protocolId: 1000, costTime: 75ms
+2015-05-27 11:36:55,030 - online user: 0
+2015-05-27 11:38:03,127 - create player: 20, puid: zhengshuai
+2015-05-27 11:38:03,131 - protocol cost time exception, protocolId: 1000, costTime: 74ms
+2015-05-27 11:38:59,042 - online user: 0
+2015-05-27 11:39:32,909 - create player: 20, puid: zhengshuai
+2015-05-27 11:39:32,913 - protocol cost time exception, protocolId: 1000, costTime: 72ms
+2015-05-27 11:40:29,038 - online user: 0
+2015-05-27 11:41:12,795 - create player: 20, puid: zhengshuai
+2015-05-27 11:41:12,799 - protocol cost time exception, protocolId: 1000, costTime: 74ms
+2015-05-27 11:42:10,049 - online user: 0
+2015-05-27 11:43:10,024 - online user: 0
+2015-05-27 11:44:10,026 - online user: 0
+2015-05-27 11:45:10,008 - online user: 0
+2015-05-27 11:46:10,023 - online user: 0
+2015-05-27 11:47:01,460 - create player: 20, puid: zhengshuai
+2015-05-27 11:47:01,464 - protocol cost time exception, protocolId: 1000, costTime: 74ms
+2015-05-27 11:47:58,041 - online user: 0
+2015-05-27 11:48:58,040 - online user: 0
+2015-05-27 11:49:58,021 - online user: 0
+2015-05-27 11:50:58,008 - online user: 0
+2015-05-27 11:51:14,380 - create player: 20, puid: zhengshuai
+2015-05-27 11:51:14,385 - protocol cost time exception, protocolId: 1000, costTime: 77ms
+2015-05-27 11:52:10,017 - online user: 0
+2015-05-27 11:53:10,011 - online user: 0
+2015-05-27 11:54:10,027 - online user: 0
+2015-05-27 11:55:10,028 - online user: 0
+2015-05-27 11:56:10,003 - online user: 0
+2015-05-27 11:57:10,014 - online user: 0
+2015-05-27 11:58:10,028 - online user: 0
+2015-05-27 11:59:10,012 - online user: 0
+2015-05-27 12:00:10,048 - online user: 0
+2015-05-27 12:01:10,049 - online user: 0
+2015-05-27 12:02:10,036 - online user: 0
+2015-05-27 12:03:10,036 - online user: 0
+2015-05-27 12:04:10,038 - online user: 1
+2015-05-27 12:05:10,026 - online user: 0
+2015-05-27 12:06:10,030 - online user: 0
+2015-05-27 12:07:10,019 - online user: 0
+2015-05-27 12:08:10,034 - online user: 0
+2015-05-27 12:09:10,026 - online user: 0
+2015-05-27 12:10:10,034 - online user: 1
+2015-05-27 12:11:10,010 - online user: 1
+2015-05-27 12:12:10,004 - online user: 1
+2015-05-27 12:13:10,022 - online user: 1
+2015-05-27 12:14:10,044 - online user: 1
+2015-05-27 12:15:10,043 - online user: 1
+2015-05-27 12:16:10,016 - online user: 1
+2015-05-27 12:17:10,010 - online user: 1
+2015-05-27 12:18:10,007 - online user: 0
+2015-05-27 12:19:10,006 - online user: 0
+2015-05-27 12:19:22,410 - create player entity: 22, puid: zs
+2015-05-27 12:19:22,457 - create player: 22, puid: zs
+2015-05-27 12:19:22,457 - protocol cost time exception, protocolId: 1101, costTime: 60ms
+2015-05-27 12:20:10,014 - online user: 0
+2015-05-27 12:21:10,040 - online user: 0

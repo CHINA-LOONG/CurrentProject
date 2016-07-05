@@ -1,7 +1,0 @@
-//package candy.protocol;
-//Gateway.php 
-message MseFriendList {
-    optional string JsonResult =4;
-    optional int32 err=5;
-    optional string dbm=6;
-}

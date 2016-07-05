@@ -10,6 +10,7 @@ public class UIBattle : UIBase
     public static string ViewName = "UIBattle";
 	public static string AssertName = "ui/battle";
 
+	public Transform bottomLayer = null;
     public Image m_MirrorImage = null;
     public Button m_ButtonLeft = null;
     public HomeButton m_ButtonDaoju = null;
@@ -50,7 +51,10 @@ public class UIBattle : UIBase
         dazhaoTip.gameObject.SetActive(false);
 
         m_PlayerGroupUI.gameObject.SetActive(true);
-        m_PlayerGroupUI.Init(BattleController.Instance.BattleGroup.PlayerFieldList);
+        m_PlayerGroupUI.Init(
+            BattleController.Instance.BattleGroup.PlayerFieldList,
+            BattleController.Instance.BattleGroup.EnemyFieldList
+            );
 
         AddUIObjectEvent();
         BindListener();
@@ -61,6 +65,41 @@ public class UIBattle : UIBase
     void OnDestroy()
     {
         UnBindListener();
+    }
+
+    public void ChangeBuffState(SpellBuffArgs args)
+    {
+        m_PlayerGroupUI.ChangeBuffState(args);
+    }
+
+    public void ShowUnitUI(BattleObject unit, int slot)
+    {
+        m_PlayerGroupUI.ShowUnit(unit, slot);
+    }
+
+    public void HideUnitUI(int id)
+    {
+        m_PlayerGroupUI.HideUnit(id);
+    }
+
+    public void ChangeLife(SpellVitalChangeArgs lifeChange)
+    {
+        m_PlayerGroupUI.ChangeLife(lifeChange);
+
+        GameObject prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "VitalChange");
+        GameObject go = Instantiate(prefab) as GameObject;
+        UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
+        uiVitalChangeView.ShowVitalChange(lifeChange, gameObject.transform as RectTransform);
+    }
+
+    public void ChangeEnergy(SpellVitalChangeArgs energyChange)
+    {
+        m_PlayerGroupUI.ChangeEnergy(energyChange);
+    }
+
+    public void SetBattleUnitVisible(int id, bool visible)
+    {
+        m_PlayerGroupUI.SetBattleUnitVisible(id, visible);
     }
 
     void Update()
@@ -115,7 +154,7 @@ public class UIBattle : UIBase
 	{
 		//照妖镜发现弱点
 		WpInfoGroup wpInfoGroup = gameObject.AddComponent<WpInfoGroup> ();
-		wpInfoGroup.InitWithParent (transform);
+		wpInfoGroup.InitWithParent (bottomLayer);
 	}	
 
 	//--------------------------------------------------------------------------------------------------
@@ -173,11 +212,16 @@ public class UIBattle : UIBase
 		m_MirrorImage.gameObject.SetActive(isMirrorMode);
 		if (isMirrorMode)
 		{
-			Vector3 tempPos = m_MirrorImage.transform.localPosition;
-			tempPos.x = 0;
-			tempPos.y = 0;
+			float rootWidth = Screen.width /UIMgr.Instance.CanvasAttr.scaleFactor ;
+			float rootHeight =   Screen.height/UIMgr.Instance.CanvasAttr.scaleFactor;
+
+			Vector2 mirrorSize = m_MirrorImage.rectTransform.sizeDelta;
+			Vector2 mirrorPiviot = m_MirrorImage.rectTransform.pivot;
+			Vector2 tempPos = new Vector2(0,0);
+			tempPos.x = rootWidth/2.0f - (0.5f - mirrorPiviot.x)*mirrorSize.x;
+			tempPos.y = rootHeight/2.0f - (0.5f - mirrorPiviot.y)*mirrorSize.y;
 			
-			m_MirrorImage.transform.localPosition = tempPos;
+			m_MirrorImage.rectTransform.anchoredPosition = tempPos;
 		}
 		
 		//

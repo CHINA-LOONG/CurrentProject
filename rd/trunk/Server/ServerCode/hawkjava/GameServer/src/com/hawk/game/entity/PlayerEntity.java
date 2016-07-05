@@ -65,7 +65,7 @@ public class PlayerEntity extends HawkDBEntity {
 	protected long coin = 0;
 	
 	@Column(name = "level")
-	protected short level = 0;
+	protected short level = 1;
 
 	@Column(name = "exp")
 	protected int exp = 0;
@@ -153,8 +153,8 @@ public class PlayerEntity extends HawkDBEntity {
 		return level;
 	}
 
-	public void setLevel(short level) {
-		this.level = level;
+	public void setLevel(int level) {
+		this.level = (short)level;
 	}
 	
 	public byte getCareer() {

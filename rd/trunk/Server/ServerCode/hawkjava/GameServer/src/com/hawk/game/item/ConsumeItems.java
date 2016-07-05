@@ -109,11 +109,12 @@ public class ConsumeItems {
 			consumeItem = ConsumeItem.newBuilder();
 			consumeItem.setType(itemType.ITEM_VALUE);
 			consumeItem.setItemId(itemId);
-			consumeItem.setCount(count);
+			consumeItem.setCount( count);
 			consumeInfo.addConsumeItems(consumeItem);
 		}
-		
-		consumeItem.setCount(consumeItem.getCount() + count);
+		else {
+			consumeItem.setCount(consumeItem.getCount() + count);
+		}
 		return this;
 	}
 
@@ -143,8 +144,11 @@ public class ConsumeItems {
 			consumeItem.setCount(count);
 			consumeInfo.addConsumeItems(consumeItem);
 		}
+		else
+		{
+			consumeItem.setCount(consumeItem.getCount() + count);
+		}	
 		
-		consumeItem.setCount(consumeItem.getCount() + count);
 		return this;
 	}
 	
@@ -286,12 +290,12 @@ public class ConsumeItems {
 				if (item.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
 					// 玩家属性
 					switch (item.getItemId()) {
-					case playerAttr.COIN_VALUE:
+					case changeType.CHANGE_COIN_VALUE:
 						player.consumeCoin(item.getCount(), action);
 						playerBuilder.setCoin(player.getCoin());
 						break;
 
-					case playerAttr.GOLD_VALUE:
+					case changeType.CHANGE_GOLD_VALUE:
 						player.consumeGold(item.getCount(), action);
 						playerBuilder.setGold(player.getGold());
 						break;

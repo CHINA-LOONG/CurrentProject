@@ -33,7 +33,6 @@ public class EffectSet : Effect
         if (setProto == null)
             return;
 
-        Logger.Log("apply EffectSet");
         foreach (string id in setProto.effectList)
         {
             Effect curEffect = spellService.GetEffect(id);

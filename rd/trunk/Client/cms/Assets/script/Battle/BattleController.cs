@@ -42,6 +42,7 @@ public class BattleController : MonoBehaviour
     }
 
     private BattleObject curBattleScene;
+    private UIBattle uiBattle;
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
     public void Init()
@@ -170,10 +171,15 @@ public class BattleController : MonoBehaviour
         PlayPreStoryAnim();
 
         var ui = UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
-        ui.GetComponent<UIBattle>().Init();
-        //ShowUI();
+        uiBattle = ui.GetComponent<UIBattle>();
+        uiBattle.Init();
 
         StartProcess(0);
+    }
+    //---------------------------------------------------------------------------------------------
+    public UIBattle GetUIBattle()
+    {
+        return uiBattle;
     }
     //---------------------------------------------------------------------------------------------
     void LoadBattleScene(string sceneName)

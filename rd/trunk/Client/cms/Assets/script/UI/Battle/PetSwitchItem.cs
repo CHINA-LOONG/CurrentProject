@@ -8,6 +8,7 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
 {
     public Image head;
     public Image lifeBar;
+    public Image energyBar;
     public Image cdmask;
     public Text deadtext;
     public Text nameText;
@@ -17,11 +18,14 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
 
     float maskHeight = 152;
     float lifeBarWidth = 132;
+    float energyBarHeight;
 
     // Use this for initialization
     void Start()
     {
         gameObject.AddComponent<Button>();
+        RectTransform energyBarTrans = energyBar.gameObject.transform as RectTransform;
+        energyBarHeight = energyBarTrans.rect.height;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -70,6 +74,11 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
             var size = lifeBar.rectTransform.sizeDelta;
             size.x = 0;
             lifeBar.rectTransform.sizeDelta = size;
+
+            //死亡能量为空
+            size = energyBar.rectTransform.sizeDelta;
+            size.y = 0;
+            energyBar.rectTransform.sizeDelta = size;
         }
 
         if (BattleController.Instance.Process.SwitchPetCD > 0)
@@ -89,6 +98,11 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         var size = lifeBar.rectTransform.sizeDelta;
         size.x = 0;
         lifeBar.rectTransform.sizeDelta = size;
+
+        //能量为空
+        size = energyBar.rectTransform.sizeDelta;
+        size.y = 0;
+        energyBar.rectTransform.sizeDelta = size;
 
         gameObject.SetActive(true);
     }
@@ -123,6 +137,10 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
                         var size = lifeBar.rectTransform.sizeDelta;
                         size.x = lifeBarWidth * (unit.curLife / (float)unit.maxLife);
                         lifeBar.rectTransform.sizeDelta = size;
+
+                        size = energyBar.rectTransform.sizeDelta;
+                        size.y = energyBarHeight * (unit.energy / (float)BattleConst.enegyMax);
+                        energyBar.rectTransform.sizeDelta = size;
                     }
                 }
             }

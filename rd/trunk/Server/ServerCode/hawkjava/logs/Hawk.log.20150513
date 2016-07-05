@@ -1,0 +1,635 @@
+2015-05-13 11:50:53,651 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 11:50:53,736 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 11:50:53,736 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 11:50:53,736 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 11:50:53,878 - parse script/script.xml config
+2015-05-13 11:50:53,880 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 11:50:54,581 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 11:50:54,615 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 11:50:54,686 - zmqversion: 4.0.4
+2015-05-13 11:50:54,688 - init config package: com.hawk.game.config
+2015-05-13 11:50:54,713 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 11:50:54,718 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 11:50:54,722 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 11:50:54,753 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 11:50:54,827 - start msgExecutor, threadNum: 4
+2015-05-13 11:50:54,867 - start taskExecutor, threadNum: 4
+2015-05-13 11:50:55,578 - init entity package: com.hawk.game.entity
+2015-05-13 11:50:55,603 - scan database entity: ItemEntity
+2015-05-13 11:50:55,603 - scan database entity: MonsterEntity
+2015-05-13 11:50:55,603 - scan database entity: PlayerEntity
+2015-05-13 11:50:55,603 - scan database entity: UserEntity
+2015-05-13 11:50:56,584 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 11:50:56,624 - start dbExecutor, threadNum: 4
+2015-05-13 11:50:56,625 - init server data......
+2015-05-13 11:50:56,625 - load player count from db......
+2015-05-13 11:50:56,792 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 166
+2015-05-13 11:50:56,792 - load puid and playerId from db......
+2015-05-13 11:50:56,807 - load nickname and playerId from db......
+2015-05-13 11:50:56,811 - install email service......
+2015-05-13 11:50:57,042 - start network, port: 9595
+2015-05-13 11:50:57,042 - server running......
+2015-05-13 14:14:33,798 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 14:14:33,811 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 14:14:33,812 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 14:14:33,812 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 14:14:33,857 - parse script/script.xml config
+2015-05-13 14:14:33,860 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 14:14:34,181 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 14:14:34,214 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 14:14:34,247 - zmqversion: 4.0.4
+2015-05-13 14:14:34,249 - init config package: com.hawk.game.config
+2015-05-13 14:14:34,254 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 14:14:34,259 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 14:14:34,262 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 14:14:34,266 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 14:14:34,308 - start msgExecutor, threadNum: 4
+2015-05-13 14:14:34,348 - start taskExecutor, threadNum: 4
+2015-05-13 14:14:34,524 - init entity package: com.hawk.game.entity
+2015-05-13 14:14:34,531 - scan database entity: ItemEntity
+2015-05-13 14:14:34,531 - scan database entity: MonsterEntity
+2015-05-13 14:14:34,531 - scan database entity: PlayerEntity
+2015-05-13 14:14:34,531 - scan database entity: UserEntity
+2015-05-13 14:14:35,187 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 14:14:35,227 - start dbExecutor, threadNum: 4
+2015-05-13 14:14:35,228 - init server data......
+2015-05-13 14:14:35,228 - load player count from db......
+2015-05-13 14:14:35,385 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 157
+2015-05-13 14:14:35,385 - load puid and playerId from db......
+2015-05-13 14:14:35,399 - load nickname and playerId from db......
+2015-05-13 14:14:35,403 - install email service......
+2015-05-13 14:14:35,460 - start network, port: 9595
+2015-05-13 14:14:35,460 - server running......
+2015-05-13 14:15:22,991 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 14:15:26,499 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:15:26,648 - session protocol handle closed, ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:15:26,648 - session be closing, ipaddr: 127.0.0.1
+2015-05-13 14:15:26,649 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 14:18:25,029 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 14:18:31,185 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:19:28,391 - session protocol handle closed, ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:19:28,391 - session be closing, ipaddr: 127.0.0.1
+2015-05-13 14:19:28,392 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 14:19:49,038 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 14:19:49,098 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:23:23,928 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 14:23:23,943 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 14:23:23,943 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 14:23:23,943 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 14:23:23,987 - parse script/script.xml config
+2015-05-13 14:23:23,990 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 14:23:24,312 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 14:23:24,347 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 14:23:24,381 - zmqversion: 4.0.4
+2015-05-13 14:23:24,382 - init config package: com.hawk.game.config
+2015-05-13 14:23:24,387 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 14:23:24,393 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 14:23:24,396 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 14:23:24,400 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 14:23:24,442 - start msgExecutor, threadNum: 4
+2015-05-13 14:23:24,482 - start taskExecutor, threadNum: 4
+2015-05-13 14:23:24,671 - init entity package: com.hawk.game.entity
+2015-05-13 14:23:24,678 - scan database entity: ItemEntity
+2015-05-13 14:23:24,678 - scan database entity: MonsterEntity
+2015-05-13 14:23:24,678 - scan database entity: PlayerEntity
+2015-05-13 14:23:24,678 - scan database entity: UserEntity
+2015-05-13 14:23:25,221 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 14:23:25,262 - start dbExecutor, threadNum: 4
+2015-05-13 14:23:25,263 - init server data......
+2015-05-13 14:23:25,263 - load player count from db......
+2015-05-13 14:23:25,397 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 134
+2015-05-13 14:23:25,397 - load puid and playerId from db......
+2015-05-13 14:23:25,412 - load nickname and playerId from db......
+2015-05-13 14:23:25,415 - install email service......
+2015-05-13 14:23:25,472 - start network, port: 9595
+2015-05-13 14:23:25,472 - server running......
+2015-05-13 14:23:27,236 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 14:23:27,281 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:23:45,864 - session protocol , ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:23:45,888 - session protocol handle closed, ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:23:45,888 - session be closing, ipaddr: 127.0.0.1
+2015-05-13 14:23:45,889 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 14:24:29,161 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 14:24:29,211 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:24:29,220 - session protocol , ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:25:27,339 - session opened, ipaddr: 127.0.0.1, total: 2
+2015-05-13 14:25:27,387 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:25:27,397 - session protocol , ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:25:37,034 - session protocol handle closed, ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:25:37,034 - session be closing, ipaddr: 127.0.0.1
+2015-05-13 14:25:37,035 - session closed, ipaddr: 127.0.0.1, total: 1
+2015-05-13 14:25:43,727 - dbmanager.create timeout, entity: PlayerEntity, costtime: 112
+2015-05-13 14:25:43,728 - session protocol handle closed, ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:25:43,728 - session be closing, ipaddr: 127.0.0.1
+2015-05-13 14:25:43,729 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 14:26:41,582 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 14:26:41,596 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 14:26:41,596 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 14:26:41,596 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 14:26:41,642 - parse script/script.xml config
+2015-05-13 14:26:41,644 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 14:26:41,972 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 14:26:42,008 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 14:26:42,042 - zmqversion: 4.0.4
+2015-05-13 14:26:42,044 - init config package: com.hawk.game.config
+2015-05-13 14:26:42,049 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 14:26:42,054 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 14:26:42,059 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 14:26:42,063 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 14:26:42,105 - start msgExecutor, threadNum: 4
+2015-05-13 14:26:42,145 - start taskExecutor, threadNum: 4
+2015-05-13 14:26:42,330 - init entity package: com.hawk.game.entity
+2015-05-13 14:26:42,338 - scan database entity: ItemEntity
+2015-05-13 14:26:42,338 - scan database entity: MonsterEntity
+2015-05-13 14:26:42,338 - scan database entity: PlayerEntity
+2015-05-13 14:26:42,338 - scan database entity: UserEntity
+2015-05-13 14:26:42,879 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 14:26:42,920 - start dbExecutor, threadNum: 4
+2015-05-13 14:26:42,921 - init server data......
+2015-05-13 14:26:42,921 - load player count from db......
+2015-05-13 14:26:43,053 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 132
+2015-05-13 14:26:43,053 - load puid and playerId from db......
+2015-05-13 14:26:43,068 - load nickname and playerId from db......
+2015-05-13 14:26:43,072 - install email service......
+2015-05-13 14:26:43,128 - start network, port: 9595
+2015-05-13 14:26:43,128 - server running......
+2015-05-13 14:26:56,347 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 14:26:56,382 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:26:56,438 - session protocol , ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:26:56,485 - session protocol handle closed, ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:26:56,485 - session be closing, ipaddr: 127.0.0.1
+2015-05-13 14:26:56,485 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 14:27:58,408 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 14:27:58,423 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 14:27:58,423 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 14:27:58,423 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 14:27:58,469 - parse script/script.xml config
+2015-05-13 14:27:58,471 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 14:27:58,794 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 14:27:58,828 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 14:27:58,860 - zmqversion: 4.0.4
+2015-05-13 14:27:58,862 - init config package: com.hawk.game.config
+2015-05-13 14:27:58,867 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 14:27:58,872 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 14:27:58,876 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 14:27:58,880 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 14:27:58,922 - start msgExecutor, threadNum: 4
+2015-05-13 14:27:58,962 - start taskExecutor, threadNum: 4
+2015-05-13 14:27:59,110 - init entity package: com.hawk.game.entity
+2015-05-13 14:27:59,117 - scan database entity: ItemEntity
+2015-05-13 14:27:59,117 - scan database entity: MonsterEntity
+2015-05-13 14:27:59,117 - scan database entity: PlayerEntity
+2015-05-13 14:27:59,117 - scan database entity: UserEntity
+2015-05-13 14:27:59,662 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 14:27:59,703 - start dbExecutor, threadNum: 4
+2015-05-13 14:27:59,704 - init server data......
+2015-05-13 14:27:59,704 - load player count from db......
+2015-05-13 14:27:59,837 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 133
+2015-05-13 14:27:59,838 - load puid and playerId from db......
+2015-05-13 14:27:59,853 - load nickname and playerId from db......
+2015-05-13 14:27:59,856 - install email service......
+2015-05-13 14:27:59,913 - start network, port: 9595
+2015-05-13 14:27:59,913 - server running......
+2015-05-13 14:28:02,373 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 14:28:02,415 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:28:02,470 - session protocol , ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:28:02,579 - dbmanager.create timeout, entity: PlayerEntity, costtime: 83
+2015-05-13 14:28:02,579 - session protocol handle closed, ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:28:02,579 - session be closing, ipaddr: 127.0.0.1
+2015-05-13 14:28:02,580 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 14:40:06,911 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 14:40:06,926 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 14:40:06,926 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 14:40:06,926 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 14:40:06,975 - parse script/script.xml config
+2015-05-13 14:40:06,977 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 14:40:07,313 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 14:40:07,350 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 14:40:07,384 - zmqversion: 4.0.4
+2015-05-13 14:40:07,386 - init config package: com.hawk.game.config
+2015-05-13 14:40:07,391 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 14:40:07,396 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 14:40:07,400 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 14:40:07,405 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 14:40:07,446 - start msgExecutor, threadNum: 4
+2015-05-13 14:40:07,486 - start taskExecutor, threadNum: 4
+2015-05-13 14:40:07,651 - init entity package: com.hawk.game.entity
+2015-05-13 14:40:07,658 - scan database entity: ItemEntity
+2015-05-13 14:40:07,658 - scan database entity: MonsterEntity
+2015-05-13 14:40:07,658 - scan database entity: PlayerEntity
+2015-05-13 14:40:07,658 - scan database entity: UserEntity
+2015-05-13 14:40:08,219 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 14:40:08,259 - start dbExecutor, threadNum: 4
+2015-05-13 14:40:08,260 - init server data......
+2015-05-13 14:40:08,260 - load player count from db......
+2015-05-13 14:40:08,395 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 135
+2015-05-13 14:40:08,395 - load puid and playerId from db......
+2015-05-13 14:40:08,410 - load nickname and playerId from db......
+2015-05-13 14:40:08,414 - install email service......
+2015-05-13 14:40:08,472 - start network, port: 9595
+2015-05-13 14:40:08,472 - server running......
+2015-05-13 14:40:14,040 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 14:40:14,074 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:40:14,132 - session protocol , ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:40:14,188 - session protocol handle closed, ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:40:14,188 - session be closing, ipaddr: 127.0.0.1
+2015-05-13 14:40:14,188 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 14:43:19,077 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 14:43:19,091 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 14:43:19,091 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 14:43:19,091 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 14:43:19,139 - parse script/script.xml config
+2015-05-13 14:43:19,141 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 14:43:19,474 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 14:43:19,511 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 14:43:19,548 - zmqversion: 4.0.4
+2015-05-13 14:43:19,550 - init config package: com.hawk.game.config
+2015-05-13 14:43:19,555 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 14:43:19,561 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 14:43:19,564 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 14:43:19,569 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 14:43:19,610 - start msgExecutor, threadNum: 4
+2015-05-13 14:43:19,650 - start taskExecutor, threadNum: 4
+2015-05-13 14:43:19,795 - init entity package: com.hawk.game.entity
+2015-05-13 14:43:19,802 - scan database entity: ItemEntity
+2015-05-13 14:43:19,802 - scan database entity: MonsterEntity
+2015-05-13 14:43:19,802 - scan database entity: PlayerEntity
+2015-05-13 14:43:19,803 - scan database entity: UserEntity
+2015-05-13 14:43:20,367 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 14:43:20,408 - start dbExecutor, threadNum: 4
+2015-05-13 14:43:20,409 - init server data......
+2015-05-13 14:43:20,409 - load player count from db......
+2015-05-13 14:43:20,547 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 137
+2015-05-13 14:43:20,547 - load puid and playerId from db......
+2015-05-13 14:43:20,562 - load nickname and playerId from db......
+2015-05-13 14:43:20,566 - install email service......
+2015-05-13 14:43:20,624 - start network, port: 9595
+2015-05-13 14:43:20,624 - server running......
+2015-05-13 14:44:53,903 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 14:44:53,938 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:44:54,013 - session protocol , ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 14:47:55,795 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 14:54:37,402 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 14:54:37,441 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 14:54:37,575 - dbmanager.query timeout, hql: from MonsterEntity where roleId = ? and invalid = 0, costtime: 75
+2015-05-13 14:54:37,612 - send protocol: 1001, size: 10, target: [xid: (1, 4)], protocol: {"status": 1,"playerId": 4,"timeStamp": 1431500077}
+2015-05-13 14:54:37,629 - protocol timeout, protocol: 1000, costtime: 174
+2015-05-13 14:54:37,629 - dispatch protocol failed, protocolId: 1000
+2015-05-13 14:59:37,634 - session idle closed, ipaddr: 127.0.0.1, status: both idle
+2015-05-13 14:59:37,634 - session be closing, ipaddr: 127.0.0.1
+2015-05-13 14:59:37,635 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 14:59:37,637 - post message: 2, target: [xid: (1, 4)], thread: 0
+2015-05-13 14:59:37,648 - dispatch message: 2, target: [xid: (1, 4)]
+2015-05-13 15:00:13,229 - dbmanager.update timeout, entity: PlayerEntity, costtime: 79
+2015-05-13 15:02:44,208 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 15:02:44,222 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 15:02:44,222 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 15:02:44,222 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 15:02:44,269 - parse script/script.xml config
+2015-05-13 15:02:44,271 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 15:02:44,593 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 15:02:44,628 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 15:02:44,663 - zmqversion: 4.0.4
+2015-05-13 15:02:44,665 - init config package: com.hawk.game.config
+2015-05-13 15:02:44,670 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 15:02:44,675 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 15:02:44,679 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 15:02:44,683 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 15:02:44,724 - start msgExecutor, threadNum: 4
+2015-05-13 15:02:44,764 - start taskExecutor, threadNum: 4
+2015-05-13 15:02:44,891 - init entity package: com.hawk.game.entity
+2015-05-13 15:02:44,905 - scan database entity: ItemEntity
+2015-05-13 15:02:44,905 - scan database entity: MonsterEntity
+2015-05-13 15:02:44,905 - scan database entity: PlayerEntity
+2015-05-13 15:02:44,905 - scan database entity: UserEntity
+2015-05-13 15:03:02,686 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 15:03:02,726 - start dbExecutor, threadNum: 4
+2015-05-13 15:03:02,727 - init server data......
+2015-05-13 15:03:02,727 - load player count from db......
+2015-05-13 15:03:02,862 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 135
+2015-05-13 15:03:02,862 - load puid and playerId from db......
+2015-05-13 15:03:02,878 - load nickname and playerId from db......
+2015-05-13 15:03:02,882 - install email service......
+2015-05-13 15:03:02,939 - start network, port: 9595
+2015-05-13 15:03:02,939 - server running......
+2015-05-13 15:03:13,177 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 15:03:13,214 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 15:03:30,014 - hawk start shutting down
+2015-05-13 15:03:30,014 - script shutdown callback invoke
+2015-05-13 15:04:44,635 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 15:04:44,650 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 15:04:44,650 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 15:04:44,650 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 15:04:44,695 - parse script/script.xml config
+2015-05-13 15:04:44,698 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 15:04:45,028 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 15:04:45,063 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 15:04:45,098 - zmqversion: 4.0.4
+2015-05-13 15:04:45,099 - init config package: com.hawk.game.config
+2015-05-13 15:04:45,104 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 15:04:45,110 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 15:04:45,113 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 15:04:45,117 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 15:04:45,159 - start msgExecutor, threadNum: 4
+2015-05-13 15:04:45,199 - start taskExecutor, threadNum: 4
+2015-05-13 15:04:45,328 - init entity package: com.hawk.game.entity
+2015-05-13 15:04:45,341 - scan database entity: ItemEntity
+2015-05-13 15:04:45,341 - scan database entity: MonsterEntity
+2015-05-13 15:04:45,342 - scan database entity: PlayerEntity
+2015-05-13 15:04:45,342 - scan database entity: UserEntity
+2015-05-13 15:27:43,738 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 15:27:43,752 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 15:27:43,752 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 15:27:43,752 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 15:27:43,799 - parse script/script.xml config
+2015-05-13 15:27:43,802 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 15:27:44,129 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 15:27:44,164 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 15:27:44,198 - zmqversion: 4.0.4
+2015-05-13 15:27:44,199 - init config package: com.hawk.game.config
+2015-05-13 15:27:44,205 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 15:27:44,210 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 15:27:44,213 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 15:27:44,217 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 15:27:44,259 - start msgExecutor, threadNum: 4
+2015-05-13 15:27:44,299 - start taskExecutor, threadNum: 4
+2015-05-13 15:27:44,468 - init entity package: com.hawk.game.entity
+2015-05-13 15:27:44,481 - scan database entity: ItemEntity
+2015-05-13 15:27:44,481 - scan database entity: MonsterEntity
+2015-05-13 15:27:44,481 - scan database entity: PlayerEntity
+2015-05-13 15:27:44,481 - scan database entity: UserEntity
+2015-05-13 15:27:52,748 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 15:27:52,788 - start dbExecutor, threadNum: 4
+2015-05-13 15:27:52,789 - init server data......
+2015-05-13 15:27:52,790 - load player count from db......
+2015-05-13 15:27:52,969 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 178
+2015-05-13 15:27:52,969 - load puid and playerId from db......
+2015-05-13 15:27:52,985 - load nickname and playerId from db......
+2015-05-13 15:27:52,989 - install email service......
+2015-05-13 15:27:53,046 - start network, port: 9595
+2015-05-13 15:27:53,046 - server running......
+2015-05-13 15:27:55,108 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 15:27:55,143 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 15:29:19,358 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 15:29:19,373 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 15:29:19,373 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 15:29:19,373 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 15:29:19,420 - parse script/script.xml config
+2015-05-13 15:29:19,422 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 15:29:19,753 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 15:29:19,789 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 15:29:19,824 - zmqversion: 4.0.4
+2015-05-13 15:29:19,826 - init config package: com.hawk.game.config
+2015-05-13 15:29:19,831 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 15:29:19,836 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 15:29:19,841 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 15:29:19,845 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 15:29:19,887 - start msgExecutor, threadNum: 4
+2015-05-13 15:29:19,927 - start taskExecutor, threadNum: 4
+2015-05-13 15:29:20,085 - init entity package: com.hawk.game.entity
+2015-05-13 15:29:20,099 - scan database entity: ItemEntity
+2015-05-13 15:29:20,099 - scan database entity: MonsterEntity
+2015-05-13 15:29:20,099 - scan database entity: PlayerEntity
+2015-05-13 15:29:20,099 - scan database entity: UserEntity
+2015-05-13 15:29:28,753 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 15:29:28,794 - start dbExecutor, threadNum: 4
+2015-05-13 15:29:28,796 - init server data......
+2015-05-13 15:29:28,798 - load player count from db......
+2015-05-13 15:29:28,996 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 198
+2015-05-13 15:29:28,996 - load puid and playerId from db......
+2015-05-13 15:29:29,011 - load nickname and playerId from db......
+2015-05-13 15:29:29,015 - install email service......
+2015-05-13 15:29:29,071 - start network, port: 9595
+2015-05-13 15:29:29,071 - server running......
+2015-05-13 15:29:31,171 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 15:29:31,207 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 15:29:31,347 - send protocol: 1001, size: 10, target: [xid: (1, 4)], protocol: {"status": 1,"playerId": 4,"timeStamp": 1431502171}
+2015-05-13 15:29:31,355 - dispatch protocol failed, protocolId: 1000
+2015-05-13 15:31:48,912 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 15:31:48,926 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 15:31:48,926 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 15:31:48,926 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 15:31:48,972 - parse script/script.xml config
+2015-05-13 15:31:48,975 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 15:31:49,287 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 15:31:49,321 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 15:31:49,355 - zmqversion: 4.0.4
+2015-05-13 15:31:49,356 - init config package: com.hawk.game.config
+2015-05-13 15:31:49,361 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 15:31:49,366 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 15:31:49,370 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 15:31:49,374 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 15:31:49,415 - start msgExecutor, threadNum: 4
+2015-05-13 15:31:49,455 - start taskExecutor, threadNum: 4
+2015-05-13 15:31:49,599 - init entity package: com.hawk.game.entity
+2015-05-13 15:31:49,612 - scan database entity: ItemEntity
+2015-05-13 15:31:49,612 - scan database entity: MonsterEntity
+2015-05-13 15:31:49,612 - scan database entity: PlayerEntity
+2015-05-13 15:31:49,612 - scan database entity: UserEntity
+2015-05-13 15:31:50,141 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 15:31:50,182 - start dbExecutor, threadNum: 4
+2015-05-13 15:31:50,186 - init server data......
+2015-05-13 15:31:50,188 - load player count from db......
+2015-05-13 15:31:50,386 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 198
+2015-05-13 15:31:50,386 - load puid and playerId from db......
+2015-05-13 15:31:50,401 - load nickname and playerId from db......
+2015-05-13 15:31:50,405 - install email service......
+2015-05-13 15:31:50,462 - start network, port: 9595
+2015-05-13 15:31:50,462 - server running......
+2015-05-13 15:31:55,925 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 15:31:55,960 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 15:31:56,080 - send protocol: 1001, size: 10, target: [xid: (1, 4)], protocol: {"status": 1,"playerId": 4,"timeStamp": 1431502316}
+2015-05-13 15:31:56,090 - dispatch protocol failed, protocolId: 1000
+2015-05-13 15:32:40,061 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 15:32:40,075 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 15:32:40,075 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 15:32:40,075 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 15:32:40,120 - parse script/script.xml config
+2015-05-13 15:32:40,122 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 15:32:40,455 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 15:32:40,489 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 15:32:40,522 - zmqversion: 4.0.4
+2015-05-13 15:32:40,524 - init config package: com.hawk.game.config
+2015-05-13 15:32:40,529 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 15:32:40,534 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 15:32:40,538 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 15:32:40,542 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 15:32:40,584 - start msgExecutor, threadNum: 4
+2015-05-13 15:32:40,624 - start taskExecutor, threadNum: 4
+2015-05-13 15:32:40,812 - init entity package: com.hawk.game.entity
+2015-05-13 15:32:40,826 - scan database entity: ItemEntity
+2015-05-13 15:32:40,826 - scan database entity: MonsterEntity
+2015-05-13 15:32:40,826 - scan database entity: PlayerEntity
+2015-05-13 15:32:40,826 - scan database entity: UserEntity
+2015-05-13 15:32:41,355 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 15:32:41,396 - start dbExecutor, threadNum: 4
+2015-05-13 15:32:41,398 - init server data......
+2015-05-13 15:32:41,399 - load player count from db......
+2015-05-13 15:32:41,599 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 200
+2015-05-13 15:32:41,599 - load puid and playerId from db......
+2015-05-13 15:32:41,614 - load nickname and playerId from db......
+2015-05-13 15:32:41,618 - install email service......
+2015-05-13 15:32:41,674 - start network, port: 9595
+2015-05-13 15:32:41,674 - server running......
+2015-05-13 15:32:43,774 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 15:32:43,808 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 15:36:19,523 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 15:36:19,537 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 15:36:19,537 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 15:36:19,537 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 15:36:19,583 - parse script/script.xml config
+2015-05-13 15:36:19,586 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 15:36:19,910 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 15:36:19,945 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 15:36:19,978 - zmqversion: 4.0.4
+2015-05-13 15:36:19,980 - init config package: com.hawk.game.config
+2015-05-13 15:36:19,985 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 15:36:19,990 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 15:36:19,993 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 15:36:19,997 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 15:36:20,039 - start msgExecutor, threadNum: 4
+2015-05-13 15:36:20,079 - start taskExecutor, threadNum: 4
+2015-05-13 15:36:20,244 - init entity package: com.hawk.game.entity
+2015-05-13 15:36:20,258 - scan database entity: ItemEntity
+2015-05-13 15:36:20,258 - scan database entity: MonsterEntity
+2015-05-13 15:36:20,259 - scan database entity: PlayerEntity
+2015-05-13 15:36:20,259 - scan database entity: UserEntity
+2015-05-13 15:36:20,791 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 15:36:20,832 - start dbExecutor, threadNum: 4
+2015-05-13 15:36:20,833 - init server data......
+2015-05-13 15:36:20,833 - load player count from db......
+2015-05-13 15:36:20,965 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 132
+2015-05-13 15:36:20,965 - load puid and playerId from db......
+2015-05-13 15:36:20,980 - load nickname and playerId from db......
+2015-05-13 15:36:20,984 - install email service......
+2015-05-13 15:36:21,040 - start network, port: 9595
+2015-05-13 15:36:21,040 - server running......
+2015-05-13 15:36:24,917 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 15:36:24,952 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 15:36:25,008 - session protocol , ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 15:36:37,819 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 15:36:39,429 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 15:36:39,469 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 15:36:53,078 - send protocol: 1001, size: 10, target: [xid: (1, 5)], protocol: {"status": 1,"playerId": 5,"timeStamp": 1431502609}
+2015-05-13 15:37:11,397 - protocol timeout, protocol: 1000, costtime: 31916
+2015-05-13 15:37:11,397 - dispatch protocol failed, protocolId: 1000
+2015-05-13 15:38:23,076 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 15:38:23,088 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 15:38:23,088 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 15:38:23,088 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 15:38:23,130 - parse script/script.xml config
+2015-05-13 15:38:23,132 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 15:38:23,467 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 15:38:23,500 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 15:38:23,532 - zmqversion: 4.0.4
+2015-05-13 15:38:23,534 - init config package: com.hawk.game.config
+2015-05-13 15:38:23,539 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 15:38:23,544 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 15:38:23,547 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 15:38:23,551 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 15:38:23,592 - start msgExecutor, threadNum: 4
+2015-05-13 15:38:23,632 - start taskExecutor, threadNum: 4
+2015-05-13 15:38:23,794 - init entity package: com.hawk.game.entity
+2015-05-13 15:38:23,800 - scan database entity: ItemEntity
+2015-05-13 15:38:23,800 - scan database entity: MonsterEntity
+2015-05-13 15:38:23,800 - scan database entity: PlayerEntity
+2015-05-13 15:38:23,800 - scan database entity: UserEntity
+2015-05-13 15:38:24,298 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 15:38:24,338 - start dbExecutor, threadNum: 4
+2015-05-13 15:38:24,338 - init server data......
+2015-05-13 15:38:24,339 - load player count from db......
+2015-05-13 15:38:24,468 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 129
+2015-05-13 15:38:24,468 - load puid and playerId from db......
+2015-05-13 15:38:24,483 - load nickname and playerId from db......
+2015-05-13 15:38:24,487 - install email service......
+2015-05-13 15:38:24,541 - start network, port: 9595
+2015-05-13 15:38:24,541 - server running......
+2015-05-13 15:38:28,344 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 15:38:28,381 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 15:38:28,501 - send protocol: 1001, size: 10, target: [xid: (1, 5)], protocol: {"status": 1,"playerId": 5,"timeStamp": 1431502708}
+2015-05-13 15:38:28,510 - send protocol: 1005, size: 34, target: [xid: (1, 5)], protocol: {"playerInfos": [{"playerId": 5,"nickname": "郑帅","career": 1,"level": 0,"exp": 0,"gold": 0,"coin": 0,"gender": 0,"eye": 0,"hair": 1,"hairColor": 1,"recharge": 0,"vipLevel": 0}]}
+2015-05-13 15:38:28,510 - post message: 3, target: [xid: (1, 5)], thread: 1
+2015-05-13 15:38:28,511 - dispatch message: 3, target: [xid: (1, 5)]
+2015-05-13 15:38:28,512 - send protocol: 1010, size: 2, target: [xid: (1, 5)], protocol: {"playerID": 5}
+2015-05-13 15:38:28,512 - post message: 4, target: [xid: (1, 5)], thread: 1
+2015-05-13 15:38:28,512 - dispatch message: 4, target: [xid: (1, 5)]
+2015-05-13 15:38:38,454 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 15:38:38,454 - post message: 2, target: [xid: (1, 5)], thread: 1
+2015-05-13 15:38:38,461 - dispatch message: 2, target: [xid: (1, 5)]
+2015-05-13 15:49:57,390 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 15:49:57,404 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 15:49:57,404 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 15:49:57,404 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 15:49:57,449 - parse script/script.xml config
+2015-05-13 15:49:57,451 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 15:49:57,760 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 15:49:57,794 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 15:49:57,828 - zmqversion: 4.0.4
+2015-05-13 15:49:57,830 - init config package: com.hawk.game.config
+2015-05-13 15:49:57,835 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 15:49:57,840 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 15:49:57,844 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 15:49:57,848 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 15:49:57,889 - start msgExecutor, threadNum: 4
+2015-05-13 15:49:57,929 - start taskExecutor, threadNum: 4
+2015-05-13 15:49:58,071 - init entity package: com.hawk.game.entity
+2015-05-13 15:49:58,084 - scan database entity: ItemEntity
+2015-05-13 15:49:58,084 - scan database entity: MonsterEntity
+2015-05-13 15:49:58,084 - scan database entity: PlayerEntity
+2015-05-13 15:49:58,084 - scan database entity: UserEntity
+2015-05-13 15:49:58,610 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 15:49:58,650 - start dbExecutor, threadNum: 4
+2015-05-13 15:49:58,652 - init server data......
+2015-05-13 15:49:58,653 - load player count from db......
+2015-05-13 15:49:58,810 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 157
+2015-05-13 15:49:58,810 - load puid and playerId from db......
+2015-05-13 15:49:58,825 - load nickname and playerId from db......
+2015-05-13 15:49:58,829 - install email service......
+2015-05-13 15:49:58,884 - start network, port: 9595
+2015-05-13 15:49:58,884 - server running......
+2015-05-13 15:53:51,370 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\cfg/gs.cfg
+2015-05-13 15:53:51,384 - Os: Windows 7, Arch: amd64, Version: 6.1
+2015-05-13 15:53:51,384 - UserDir: F:\rd\Server\ServerCode\hawkjava\GameServer
+2015-05-13 15:53:51,384 - JavaHome: D:\Program Files\Java\jdk1.7\jre
+2015-05-13 15:53:51,430 - parse script/script.xml config
+2015-05-13 15:53:51,432 - compile script, id: onshutdown, class: com.hawk.game.gm.ShutdownCallbackHandler
+2015-05-13 15:53:51,750 - compile script, id: xmlcheck, class: com.hawk.game.gm.XmlReloadHandler
+2015-05-13 15:53:51,783 - compile script, id: sysop, class: com.hawk.game.gm.SysOperationHandler
+2015-05-13 15:53:51,816 - zmqversion: 4.0.4
+2015-05-13 15:53:51,818 - init config package: com.hawk.game.config
+2015-05-13 15:53:51,823 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/grayPuid.xml
+2015-05-13 15:53:51,828 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_data.xml
+2015-05-13 15:53:51,831 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/item_reward_nest.xml
+2015-05-13 15:53:51,835 - load config: F:\rd\Server\ServerCode\hawkjava\GameServer\xml/sysBasic.cfg
+2015-05-13 15:53:51,877 - start msgExecutor, threadNum: 4
+2015-05-13 15:53:51,917 - start taskExecutor, threadNum: 4
+2015-05-13 15:53:52,069 - init entity package: com.hawk.game.entity
+2015-05-13 15:53:52,081 - scan database entity: ItemEntity
+2015-05-13 15:53:52,081 - scan database entity: MonsterEntity
+2015-05-13 15:53:52,082 - scan database entity: PlayerEntity
+2015-05-13 15:53:52,082 - scan database entity: UserEntity
+2015-05-13 15:53:52,605 - init database, connUrl: jdbc:mysql://192.168.199.122:3306/game, userName: gs, pwd: C45D79, hbmXml: cfg/db.xml
+2015-05-13 15:53:52,645 - start dbExecutor, threadNum: 4
+2015-05-13 15:53:52,646 - init server data......
+2015-05-13 15:53:52,646 - load player count from db......
+2015-05-13 15:53:52,778 - dbmanager.count timeout, hql: select count(*) from PlayerEntity, costtime: 132
+2015-05-13 15:53:52,779 - load puid and playerId from db......
+2015-05-13 15:53:52,793 - load nickname and playerId from db......
+2015-05-13 15:53:52,797 - install email service......
+2015-05-13 15:53:52,853 - start network, port: 9595
+2015-05-13 15:53:52,853 - server running......
+2015-05-13 15:54:43,161 - session opened, ipaddr: 127.0.0.1, total: 1
+2015-05-13 15:54:43,198 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 15:54:43,255 - session protocol , ipaddr: 127.0.0.1, protocol: 1101
+2015-05-13 15:54:48,726 - dbmanager.create timeout, entity: PlayerEntity, costtime: 54
+2015-05-13 15:54:48,731 - session protocol , ipaddr: 127.0.0.1, protocol: 1000
+2015-05-13 15:54:48,779 - send protocol: 1001, size: 10, target: [xid: (1, 6)], protocol: {"status": 1,"playerId": 6,"timeStamp": 1431503688}
+2015-05-13 15:54:48,788 - send protocol: 1005, size: 34, target: [xid: (1, 6)], protocol: {"playerInfos": [{"playerId": 6,"nickname": "郑帅","career": 1,"level": 0,"exp": 0,"gold": 0,"coin": 0,"gender": 0,"eye": 0,"hair": 1,"hairColor": 1,"recharge": 0,"vipLevel": 0}]}
+2015-05-13 15:54:48,789 - post message: 3, target: [xid: (1, 6)], thread: 2
+2015-05-13 15:54:48,789 - dispatch message: 3, target: [xid: (1, 6)]
+2015-05-13 15:54:48,791 - send protocol: 1010, size: 2, target: [xid: (1, 6)], protocol: {"playerID": 6}
+2015-05-13 15:54:48,792 - post message: 4, target: [xid: (1, 6)], thread: 2
+2015-05-13 15:54:48,792 - dispatch message: 4, target: [xid: (1, 6)]
+2015-05-13 15:54:56,373 - session closed, ipaddr: 127.0.0.1, total: 0
+2015-05-13 15:54:56,374 - post message: 2, target: [xid: (1, 6)], thread: 2
+2015-05-13 15:54:56,381 - dispatch message: 2, target: [xid: (1, 6)]

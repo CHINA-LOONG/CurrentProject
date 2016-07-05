@@ -259,6 +259,7 @@ public class BattleGroup
         bo.unit.pbUnit.slot = slot;
         field[slot] = bo;
         bo.OnEnterField();
+        BattleController.Instance.GetUIBattle().ShowUnitUI(bo, slot);
     }
 
     public GameUnit RandomUnit(UnitCamp camp)
@@ -293,6 +294,7 @@ public class BattleGroup
             return;
         }
 
+        BattleController.Instance.GetUIBattle().HideUnitUI(bo.guid);
         BattleObject[] field;
         if (bo.camp == UnitCamp.Enemy)
             field = enemyField;

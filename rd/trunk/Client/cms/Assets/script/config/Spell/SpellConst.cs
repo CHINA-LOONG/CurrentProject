@@ -33,6 +33,7 @@
     public const int maxEnergy = 100;
 
     public const float aniDelayTime = 1.0f;
+    public const float buffShowInterval = 2.0f;
 }
 
 public enum EffectType
@@ -42,6 +43,7 @@ public enum EffectType
     Effect_Type_Persistent,
     Effect_Type_Damage,
     Effect_Type_Buff,
+    Effect_Type_Switch,
 
     Num_Effect_Type
 }

@@ -359,47 +359,47 @@ public final class Const {
   public enum ClassType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>PLAYER = 1;</code>
+     * <code>PLAYER_TYPE = 1;</code>
      *
      * <pre>
      * 角色
      * </pre>
      */
-    PLAYER(0, 1),
+    PLAYER_TYPE(0, 1),
     /**
-     * <code>MONSTER = 2;</code>
+     * <code>MONSTER_TYPE = 2;</code>
      *
      * <pre>
      * 怪物
      * </pre>
      */
-    MONSTER(1, 2),
+    MONSTER_TYPE(1, 2),
     ;
 
     /**
-     * <code>PLAYER = 1;</code>
+     * <code>PLAYER_TYPE = 1;</code>
      *
      * <pre>
      * 角色
      * </pre>
      */
-    public static final int PLAYER_VALUE = 1;
+    public static final int PLAYER_TYPE_VALUE = 1;
     /**
-     * <code>MONSTER = 2;</code>
+     * <code>MONSTER_TYPE = 2;</code>
      *
      * <pre>
      * 怪物
      * </pre>
      */
-    public static final int MONSTER_VALUE = 2;
+    public static final int MONSTER_TYPE_VALUE = 2;
 
 
     public final int getNumber() { return value; }
 
     public static ClassType valueOf(int value) {
       switch (value) {
-        case 1: return PLAYER;
-        case 2: return MONSTER;
+        case 1: return PLAYER_TYPE;
+        case 2: return MONSTER_TYPE;
         default: return null;
       }
     }
@@ -461,18 +461,26 @@ public final class Const {
   public enum itemType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>NONE_ITEM = 1;</code>
+     * <code>NONE_ITEM = 0;</code>
      *
      * <pre>
      * 空属性
      * </pre>
      */
-    NONE_ITEM(0, 1),
+    NONE_ITEM(0, 0),
+    /**
+     * <code>PLAYER_ATTR = 1;</code>
+     *
+     * <pre>
+     * 玩家属性
+     * </pre>
+     */
+    PLAYER_ATTR(1, 1),
     /**
      * <code>MONSTER_ATTR = 2;</code>
      *
      * <pre>
-     * 角色
+     * 角色属性
      * </pre>
      */
     MONSTER_ATTR(2, 2),
@@ -508,24 +516,24 @@ public final class Const {
      * </pre>
      */
     GROUP(6, 6),
+    /**
+     * <code>MONSTER = 7;</code>
+     *
+     * <pre>
+     * 怪物奖励
+     * </pre>
+     */
+    MONSTER(7, 7),
     ;
 
     /**
-     * <code>PLAYER_ATTR = 1;</code>
-     *
-     * <pre>
-     * 玩家属性
-     * </pre>
-     */
-    public static final itemType PLAYER_ATTR = NONE_ITEM;
-    /**
-     * <code>NONE_ITEM = 1;</code>
+     * <code>NONE_ITEM = 0;</code>
      *
      * <pre>
      * 空属性
      * </pre>
      */
-    public static final int NONE_ITEM_VALUE = 1;
+    public static final int NONE_ITEM_VALUE = 0;
     /**
      * <code>PLAYER_ATTR = 1;</code>
      *
@@ -538,7 +546,7 @@ public final class Const {
      * <code>MONSTER_ATTR = 2;</code>
      *
      * <pre>
-     * 角色
+     * 角色属性
      * </pre>
      */
     public static final int MONSTER_ATTR_VALUE = 2;
@@ -574,18 +582,28 @@ public final class Const {
      * </pre>
      */
     public static final int GROUP_VALUE = 6;
+    /**
+     * <code>MONSTER = 7;</code>
+     *
+     * <pre>
+     * 怪物奖励
+     * </pre>
+     */
+    public static final int MONSTER_VALUE = 7;
 
 
     public final int getNumber() { return value; }
 
     public static itemType valueOf(int value) {
       switch (value) {
-        case 1: return NONE_ITEM;
+        case 0: return NONE_ITEM;
+        case 1: return PLAYER_ATTR;
         case 2: return MONSTER_ATTR;
         case 3: return ITEM;
         case 4: return EQUIP;
         case 5: return SKILL;
         case 6: return GROUP;
+        case 7: return MONSTER;
         default: return null;
       }
     }
@@ -615,9 +633,7 @@ public final class Const {
       return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(4);
     }
 
-    private static final itemType[] VALUES = {
-      NONE_ITEM, PLAYER_ATTR, MONSTER_ATTR, ITEM, EQUIP, SKILL, GROUP, 
-    };
+    private static final itemType[] VALUES = values();
 
     public static itemType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -2365,37 +2381,37 @@ public final class Const {
       "BIDEN\020\003\022\016\n\nKICKED_OUT\020\004\022\022\n\016SERVER_RESTAR" +
       "T\020\005*L\n\014RewardReason\022\017\n\013SYS_PRESENT\020\001\022\007\n\003" +
       "NPC\020\002\022\t\n\005QUEST\020\003\022\014\n\010ACITVITY\020\004\022\t\n\005CATCH\020" +
-      "\005*$\n\tClassType\022\n\n\006PLAYER\020\001\022\013\n\007MONSTER\020\002*" +
-      "g\n\010itemType\022\r\n\tNONE_ITEM\020\001\022\017\n\013PLAYER_ATT" +
-      "R\020\001\022\020\n\014MONSTER_ATTR\020\002\022\010\n\004ITEM\020\003\022\t\n\005EQUIP",
-      "\020\004\022\t\n\005SKILL\020\005\022\t\n\005GROUP\020\006*+\n\tmoneyType\022\016\n" +
-      "\nMONEY_GOLD\020\001\022\016\n\nMONEY_COIN\020\002*O\n\nplayerA" +
-      "ttr\022\010\n\004GOLD\020\001\022\010\n\004COIN\020\002\022\t\n\005LEVEL\020\003\022\007\n\003EX" +
-      "P\020\004\022\013\n\007FATIGUE\020\005\022\014\n\010VIPLEVEL\020\006*\311\001\n\nchang" +
-      "eType\022\017\n\013CHANGE_GOLD\020\001\022\017\n\013CHANGE_COIN\020\002\022" +
-      "\025\n\021CHANGE_PLAYER_EXP\020\003\022\027\n\023CHANGE_PLAYER_" +
-      "LEVEL\020\004\022\026\n\022CHANGE_MONSTER_EXP\020\005\022\030\n\024CHANG" +
-      "E_MONSTER_LEVEL\020\006\022\022\n\016CHANGE_FATIGUE\020\007\022\016\n" +
-      "\nCHANGE_FAV\020\010\022\023\n\017CHANGE_VIPLEVEL\020\t*\365\001\n\004a" +
-      "ttr\022\r\n\tEMPTYATTR\020\000\022\014\n\010STRENGHT\020\001\022\020\n\014INTE",
-      "LLIGENCE\020\002\022\t\n\005SPEED\020\003\022\013\n\007DEFENSE\020\004\022\n\n\006HE" +
-      "ALTH\020\005\022\021\n\rDEFENSEWEAKEN\020e\022\014\n\010CRITICAL\020f\022" +
-      "\022\n\016CRITICALWEAKEN\020g\022\014\n\010RECOVERY\020h\022\022\n\016CRI" +
-      "TICALDAMAGE\020i\022\013\n\007HITRATE\020j\022\020\n\014CUREINCREA" +
-      "SE\020k\022\020\n\014DAMAGEREDUCE\020l\022\022\n\016DAMAGEINCREASE" +
-      "\020m*+\n\ruserCondition\022\n\n\006BATTLE\020\001\022\016\n\nNON_B" +
-      "ATTLE\020\002*5\n\010bindType\022\014\n\010NON_BIND\020\000\022\014\n\010USE" +
-      "_BIND\020\001\022\r\n\tTAKE_BIND\020\002*b\n\010toolType\022\016\n\nCO" +
-      "MMONTOOL\020\001\022\020\n\014FRAGMENTTOOL\020\002\022\013\n\007GEMTOOL\020" +
-      "\003\022\013\n\007BOXTOOL\020\004\022\013\n\007USETOOL\020\005\022\r\n\tEQUIPTOOL",
-      "\020\007*\204\001\n\tequipPart\022\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022\010" +
-      "\n\004BELT\020\003\022\013\n\007CUIRASS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WE" +
-      "APON2\020\006\022\014\n\010LEGGUARD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOV" +
-      "E\020\t\022\014\n\010NECKLACE\020\n*O\n\014equipQuality\022\t\n\005WHI" +
-      "TE\020\001\022\t\n\005GREEN\020\002\022\010\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n" +
-      "\006ORANGE\020\005\022\007\n\003RED\020\006*,\n\nBattleType\022\n\n\006NORM" +
-      "AL\020\001\022\010\n\004BOSS\020\002\022\010\n\004RARE\020\003B\030\n\026com.hawk.gam" +
-      "e.protocol"
+      "\005*.\n\tClassType\022\017\n\013PLAYER_TYPE\020\001\022\020\n\014MONST" +
+      "ER_TYPE\020\002*t\n\010itemType\022\r\n\tNONE_ITEM\020\000\022\017\n\013" +
+      "PLAYER_ATTR\020\001\022\020\n\014MONSTER_ATTR\020\002\022\010\n\004ITEM\020",
+      "\003\022\t\n\005EQUIP\020\004\022\t\n\005SKILL\020\005\022\t\n\005GROUP\020\006\022\013\n\007MO" +
+      "NSTER\020\007*+\n\tmoneyType\022\016\n\nMONEY_GOLD\020\001\022\016\n\n" +
+      "MONEY_COIN\020\002*O\n\nplayerAttr\022\010\n\004GOLD\020\001\022\010\n\004" +
+      "COIN\020\002\022\t\n\005LEVEL\020\003\022\007\n\003EXP\020\004\022\013\n\007FATIGUE\020\005\022" +
+      "\014\n\010VIPLEVEL\020\006*\311\001\n\nchangeType\022\017\n\013CHANGE_G" +
+      "OLD\020\001\022\017\n\013CHANGE_COIN\020\002\022\025\n\021CHANGE_PLAYER_" +
+      "EXP\020\003\022\027\n\023CHANGE_PLAYER_LEVEL\020\004\022\026\n\022CHANGE" +
+      "_MONSTER_EXP\020\005\022\030\n\024CHANGE_MONSTER_LEVEL\020\006" +
+      "\022\022\n\016CHANGE_FATIGUE\020\007\022\016\n\nCHANGE_FAV\020\010\022\023\n\017" +
+      "CHANGE_VIPLEVEL\020\t*\365\001\n\004attr\022\r\n\tEMPTYATTR\020",
+      "\000\022\014\n\010STRENGHT\020\001\022\020\n\014INTELLIGENCE\020\002\022\t\n\005SPE" +
+      "ED\020\003\022\013\n\007DEFENSE\020\004\022\n\n\006HEALTH\020\005\022\021\n\rDEFENSE" +
+      "WEAKEN\020e\022\014\n\010CRITICAL\020f\022\022\n\016CRITICALWEAKEN" +
+      "\020g\022\014\n\010RECOVERY\020h\022\022\n\016CRITICALDAMAGE\020i\022\013\n\007" +
+      "HITRATE\020j\022\020\n\014CUREINCREASE\020k\022\020\n\014DAMAGERED" +
+      "UCE\020l\022\022\n\016DAMAGEINCREASE\020m*+\n\ruserConditi" +
+      "on\022\n\n\006BATTLE\020\001\022\016\n\nNON_BATTLE\020\002*5\n\010bindTy" +
+      "pe\022\014\n\010NON_BIND\020\000\022\014\n\010USE_BIND\020\001\022\r\n\tTAKE_B" +
+      "IND\020\002*b\n\010toolType\022\016\n\nCOMMONTOOL\020\001\022\020\n\014FRA" +
+      "GMENTTOOL\020\002\022\013\n\007GEMTOOL\020\003\022\013\n\007BOXTOOL\020\004\022\013\n",
+      "\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007*\204\001\n\tequipPart\022" +
+      "\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022\010\n\004BELT\020\003\022\013\n\007CUIRA" +
+      "SS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WEAPON2\020\006\022\014\n\010LEGGUA" +
+      "RD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020\n" +
+      "*O\n\014equipQuality\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022\010" +
+      "\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED\020" +
+      "\006*,\n\nBattleType\022\n\n\006NORMAL\020\001\022\010\n\004BOSS\020\002\022\010\n" +
+      "\004RARE\020\003B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

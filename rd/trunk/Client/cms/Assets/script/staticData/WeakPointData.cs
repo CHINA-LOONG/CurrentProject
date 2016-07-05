@@ -16,13 +16,13 @@ public class WeakPointData
     public string asset;
    // public string collider;
     public string mesh;
+	public string deadMesh;
     public int initialStatus;
 
 	public int isSelf;
 	public int tipType;	
 	public int tipOffsetX;
 	public int tipOffsetY;
-	public int deadType;
 
 }
 

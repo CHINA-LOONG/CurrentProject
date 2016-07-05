@@ -29,7 +29,7 @@ public final class HS {
      * <code>KEY_EXCHANGE = 2;</code>
      *
      * <pre>
-     * 秘钥交换                 
+     * 秘钥交换
      * </pre>
      */
     KEY_EXCHANGE(1, 2),
@@ -37,7 +37,7 @@ public final class HS {
      * <code>HEART_BEAT = 3;</code>
      *
      * <pre>
-     * 心跳通知                 
+     * 心跳通知
      * </pre>
      */
     HEART_BEAT(2, 3),
@@ -45,7 +45,7 @@ public final class HS {
      * <code>ERROR_CODE = 4;</code>
      *
      * <pre>
-     * 错误码提示               
+     * 错误码提示
      * </pre>
      */
     ERROR_CODE(3, 4),
@@ -63,7 +63,7 @@ public final class HS {
      * <code>KEY_EXCHANGE = 2;</code>
      *
      * <pre>
-     * 秘钥交换                 
+     * 秘钥交换
      * </pre>
      */
     public static final int KEY_EXCHANGE_VALUE = 2;
@@ -71,7 +71,7 @@ public final class HS {
      * <code>HEART_BEAT = 3;</code>
      *
      * <pre>
-     * 心跳通知                 
+     * 心跳通知
      * </pre>
      */
     public static final int HEART_BEAT_VALUE = 3;
@@ -79,7 +79,7 @@ public final class HS {
      * <code>ERROR_CODE = 4;</code>
      *
      * <pre>
-     * 错误码提示               
+     * 错误码提示
      * </pre>
      */
     public static final int ERROR_CODE_VALUE = 4;
@@ -148,7 +148,7 @@ public final class HS {
    * Protobuf enum {@code code}
    *
    * <pre>
-   * 游戏协议ID列表(&gt;=100)        
+   * 游戏协议ID列表(&gt;=100)
    * </pre>
    */
   public enum code
@@ -157,7 +157,7 @@ public final class HS {
      * <code>LOGIN_C = 1000;</code>
      *
      * <pre>
-     * 玩家                     
+     * 玩家
      * </pre>
      */
     LOGIN_C(0, 1000),
@@ -213,7 +213,7 @@ public final class HS {
      * <code>PLAYER_CREATE_C = 1101;</code>
      *
      * <pre>
-     * 角色                     
+     * 角色
      * </pre>
      */
     PLAYER_CREATE_C(13, 1101),
@@ -233,7 +233,7 @@ public final class HS {
      * <code>MONSTER_ADD_S = 2001;</code>
      *
      * <pre>
-     * 怪物                     
+     * 怪物
      * </pre>
      */
     MONSTER_ADD_S(17, 2001),
@@ -265,7 +265,7 @@ public final class HS {
      * <code>INSTANCE_ENTER_C = 3000;</code>
      *
      * <pre>
-     * 副本                     
+     * 副本
      * </pre>
      */
     INSTANCE_ENTER_C(24, 3000),
@@ -282,104 +282,112 @@ public final class HS {
      */
     INSTANCE_SETTLE_S(27, 3003),
     /**
+     * <code>INSTANCE_OPEN_CARD_C = 3004;</code>
+     */
+    INSTANCE_OPEN_CARD_C(28, 3004),
+    /**
+     * <code>INSTANCE_OPEN_CARD_S = 3005;</code>
+     */
+    INSTANCE_OPEN_CARD_S(29, 3005),
+    /**
      * <code>ITEM_USE_C = 4001;</code>
      *
      * <pre>
-     * 道具                     
+     * 道具
      * </pre>
      */
-    ITEM_USE_C(28, 4001),
+    ITEM_USE_C(30, 4001),
     /**
      * <code>ITEM_USE_S = 4002;</code>
      */
-    ITEM_USE_S(29, 4002),
+    ITEM_USE_S(31, 4002),
     /**
      * <code>ITEM_SELL_C = 4003;</code>
      */
-    ITEM_SELL_C(30, 4003),
+    ITEM_SELL_C(32, 4003),
     /**
      * <code>ITEM_SELL_S = 4004;</code>
      */
-    ITEM_SELL_S(31, 4004),
+    ITEM_SELL_S(33, 4004),
     /**
      * <code>ITEM_BUY_C = 4005;</code>
      */
-    ITEM_BUY_C(32, 4005),
+    ITEM_BUY_C(34, 4005),
     /**
      * <code>ITEM_BUY_S = 4006;</code>
      */
-    ITEM_BUY_S(33, 4006),
+    ITEM_BUY_S(35, 4006),
     /**
      * <code>ITEM_COMPOSE_C = 4007;</code>
      */
-    ITEM_COMPOSE_C(34, 4007),
+    ITEM_COMPOSE_C(36, 4007),
     /**
      * <code>ITEM_COMPOSE_S = 4008;</code>
      */
-    ITEM_COMPOSE_S(35, 4008),
+    ITEM_COMPOSE_S(37, 4008),
     /**
      * <code>EQUIP_SELL_C = 4101;</code>
      */
-    EQUIP_SELL_C(36, 4101),
+    EQUIP_SELL_C(38, 4101),
     /**
      * <code>EQUIP_BUY_C = 4102;</code>
      */
-    EQUIP_BUY_C(37, 4102),
+    EQUIP_BUY_C(39, 4102),
     /**
      * <code>EQUIP_COMPOSE_C = 4103;</code>
      */
-    EQUIP_COMPOSE_C(38, 4103),
+    EQUIP_COMPOSE_C(40, 4103),
     /**
      * <code>EQUIP_COMPOSE_S = 4104;</code>
      */
-    EQUIP_COMPOSE_S(39, 4104),
+    EQUIP_COMPOSE_S(41, 4104),
     /**
      * <code>EQUIP_INCREASE_LEVEL_C = 4105;</code>
      */
-    EQUIP_INCREASE_LEVEL_C(40, 4105),
+    EQUIP_INCREASE_LEVEL_C(42, 4105),
     /**
      * <code>EQUIP_INCREASE_LEVEL_S = 4106;</code>
      */
-    EQUIP_INCREASE_LEVEL_S(41, 4106),
+    EQUIP_INCREASE_LEVEL_S(43, 4106),
     /**
      * <code>EQUIP_INCREASE_STAGE_C = 4107;</code>
      */
-    EQUIP_INCREASE_STAGE_C(42, 4107),
+    EQUIP_INCREASE_STAGE_C(44, 4107),
     /**
      * <code>EQUIP_INCREASE_STAGE_S = 4108;</code>
      */
-    EQUIP_INCREASE_STAGE_S(43, 4108),
+    EQUIP_INCREASE_STAGE_S(45, 4108),
     /**
      * <code>EQUIP_MONSTER_DRESS_C = 4109;</code>
      */
-    EQUIP_MONSTER_DRESS_C(44, 4109),
+    EQUIP_MONSTER_DRESS_C(46, 4109),
     /**
      * <code>EQUIP_MONSTER_DRESS_S = 4110;</code>
      */
-    EQUIP_MONSTER_DRESS_S(45, 4110),
+    EQUIP_MONSTER_DRESS_S(47, 4110),
     /**
      * <code>EQUIP_MONSTER_UNDRESS_C = 4111;</code>
      */
-    EQUIP_MONSTER_UNDRESS_C(46, 4111),
+    EQUIP_MONSTER_UNDRESS_C(48, 4111),
     /**
      * <code>EQUIP_MONSTER_UNDRESS_S = 4112;</code>
      */
-    EQUIP_MONSTER_UNDRESS_S(47, 4112),
+    EQUIP_MONSTER_UNDRESS_S(49, 4112),
     /**
      * <code>EQUIP_MONSTER_REPLACE_C = 4113;</code>
      */
-    EQUIP_MONSTER_REPLACE_C(48, 4113),
+    EQUIP_MONSTER_REPLACE_C(50, 4113),
     /**
      * <code>EQUIP_MONSTER_REPLACE_S = 4114;</code>
      */
-    EQUIP_MONSTER_REPLACE_S(49, 4114),
+    EQUIP_MONSTER_REPLACE_S(51, 4114),
     ;
 
     /**
      * <code>LOGIN_C = 1000;</code>
      *
      * <pre>
-     * 玩家                     
+     * 玩家
      * </pre>
      */
     public static final int LOGIN_C_VALUE = 1000;
@@ -435,7 +443,7 @@ public final class HS {
      * <code>PLAYER_CREATE_C = 1101;</code>
      *
      * <pre>
-     * 角色                     
+     * 角色
      * </pre>
      */
     public static final int PLAYER_CREATE_C_VALUE = 1101;
@@ -455,7 +463,7 @@ public final class HS {
      * <code>MONSTER_ADD_S = 2001;</code>
      *
      * <pre>
-     * 怪物                     
+     * 怪物
      * </pre>
      */
     public static final int MONSTER_ADD_S_VALUE = 2001;
@@ -487,7 +495,7 @@ public final class HS {
      * <code>INSTANCE_ENTER_C = 3000;</code>
      *
      * <pre>
-     * 副本                     
+     * 副本
      * </pre>
      */
     public static final int INSTANCE_ENTER_C_VALUE = 3000;
@@ -504,10 +512,18 @@ public final class HS {
      */
     public static final int INSTANCE_SETTLE_S_VALUE = 3003;
     /**
+     * <code>INSTANCE_OPEN_CARD_C = 3004;</code>
+     */
+    public static final int INSTANCE_OPEN_CARD_C_VALUE = 3004;
+    /**
+     * <code>INSTANCE_OPEN_CARD_S = 3005;</code>
+     */
+    public static final int INSTANCE_OPEN_CARD_S_VALUE = 3005;
+    /**
      * <code>ITEM_USE_C = 4001;</code>
      *
      * <pre>
-     * 道具                     
+     * 道具
      * </pre>
      */
     public static final int ITEM_USE_C_VALUE = 4001;
@@ -629,6 +645,8 @@ public final class HS {
         case 3001: return INSTANCE_ENTER_S;
         case 3002: return INSTANCE_SETTLE_C;
         case 3003: return INSTANCE_SETTLE_S;
+        case 3004: return INSTANCE_OPEN_CARD_C;
+        case 3005: return INSTANCE_OPEN_CARD_S;
         case 4001: return ITEM_USE_C;
         case 4002: return ITEM_USE_S;
         case 4003: return ITEM_SELL_C;
@@ -713,7 +731,7 @@ public final class HS {
     java.lang.String[] descriptorData = {
       "\n\021Protocol/HS.proto*I\n\003sys\022\020\n\014DATA_WRAPP" +
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
-      "\n\nERROR_CODE\020\004*\335\010\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n" +
+      "\n\nERROR_CODE\020\004*\223\t\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n" +
       "\007LOGIN_S\020\351\007\022\r\n\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353" +
       "\007\022\016\n\tKICKOUT_S\020\354\007\022\017\n\nSYNCINFO_C\020\355\007\022\017\n\nSY" +
       "NCINFO_S\020\356\007\022\027\n\022PLAYER_INFO_SYNC_S\020\362\007\022\033\n\026" +
@@ -728,20 +746,22 @@ public final class HS {
       "\023\n\016MONSTER_FEED_C\020\326\017\022\023\n\016MONSTER_FEED_S\020\327" +
       "\017\022\025\n\020INSTANCE_ENTER_C\020\270\027\022\025\n\020INSTANCE_ENT" +
       "ER_S\020\271\027\022\026\n\021INSTANCE_SETTLE_C\020\272\027\022\026\n\021INSTA" +
-      "NCE_SETTLE_S\020\273\027\022\017\n\nITEM_USE_C\020\241\037\022\017\n\nITEM" +
-      "_USE_S\020\242\037\022\020\n\013ITEM_SELL_C\020\243\037\022\020\n\013ITEM_SELL" +
-      "_S\020\244\037\022\017\n\nITEM_BUY_C\020\245\037\022\017\n\nITEM_BUY_S\020\246\037\022",
-      "\023\n\016ITEM_COMPOSE_C\020\247\037\022\023\n\016ITEM_COMPOSE_S\020\250" +
-      "\037\022\021\n\014EQUIP_SELL_C\020\205 \022\020\n\013EQUIP_BUY_C\020\206 \022\024" +
-      "\n\017EQUIP_COMPOSE_C\020\207 \022\024\n\017EQUIP_COMPOSE_S\020" +
-      "\210 \022\033\n\026EQUIP_INCREASE_LEVEL_C\020\211 \022\033\n\026EQUIP" +
-      "_INCREASE_LEVEL_S\020\212 \022\033\n\026EQUIP_INCREASE_S" +
-      "TAGE_C\020\213 \022\033\n\026EQUIP_INCREASE_STAGE_S\020\214 \022\032" +
-      "\n\025EQUIP_MONSTER_DRESS_C\020\215 \022\032\n\025EQUIP_MONS" +
-      "TER_DRESS_S\020\216 \022\034\n\027EQUIP_MONSTER_UNDRESS_" +
-      "C\020\217 \022\034\n\027EQUIP_MONSTER_UNDRESS_S\020\220 \022\034\n\027EQ" +
-      "UIP_MONSTER_REPLACE_C\020\221 \022\034\n\027EQUIP_MONSTE",
-      "R_REPLACE_S\020\222 B\030\n\026com.hawk.game.protocol"
+      "NCE_SETTLE_S\020\273\027\022\031\n\024INSTANCE_OPEN_CARD_C\020" +
+      "\274\027\022\031\n\024INSTANCE_OPEN_CARD_S\020\275\027\022\017\n\nITEM_US" +
+      "E_C\020\241\037\022\017\n\nITEM_USE_S\020\242\037\022\020\n\013ITEM_SELL_C\020\243",
+      "\037\022\020\n\013ITEM_SELL_S\020\244\037\022\017\n\nITEM_BUY_C\020\245\037\022\017\n\n" +
+      "ITEM_BUY_S\020\246\037\022\023\n\016ITEM_COMPOSE_C\020\247\037\022\023\n\016IT" +
+      "EM_COMPOSE_S\020\250\037\022\021\n\014EQUIP_SELL_C\020\205 \022\020\n\013EQ" +
+      "UIP_BUY_C\020\206 \022\024\n\017EQUIP_COMPOSE_C\020\207 \022\024\n\017EQ" +
+      "UIP_COMPOSE_S\020\210 \022\033\n\026EQUIP_INCREASE_LEVEL" +
+      "_C\020\211 \022\033\n\026EQUIP_INCREASE_LEVEL_S\020\212 \022\033\n\026EQ" +
+      "UIP_INCREASE_STAGE_C\020\213 \022\033\n\026EQUIP_INCREAS" +
+      "E_STAGE_S\020\214 \022\032\n\025EQUIP_MONSTER_DRESS_C\020\215 " +
+      "\022\032\n\025EQUIP_MONSTER_DRESS_S\020\216 \022\034\n\027EQUIP_MO" +
+      "NSTER_UNDRESS_C\020\217 \022\034\n\027EQUIP_MONSTER_UNDR",
+      "ESS_S\020\220 \022\034\n\027EQUIP_MONSTER_REPLACE_C\020\221 \022\034" +
+      "\n\027EQUIP_MONSTER_REPLACE_S\020\222 B\030\n\026com.hawk" +
+      ".game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

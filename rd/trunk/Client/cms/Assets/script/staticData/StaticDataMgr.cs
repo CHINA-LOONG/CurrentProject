@@ -129,6 +129,24 @@ public class StaticDataMgr : MonoBehaviour
                             buffPt.buffID = wholeData.buffID;
                         }
                         break;
+                    case EffectType.Effect_Type_Switch:
+                        {
+                            effectPt = new EffectSwitchPrototype();
+                            EffectSwitchPrototype switchPt = effectPt as EffectSwitchPrototype;
+
+                            string[] effectList = wholeData.periodEffectList.Split(';');
+                            ///ArrayList effectArrayList = MiniJsonExtensions.arrayListFromJson (wholeData.periodEffectList);
+                            for (int i = 0; i < effectList.Length; ++i)
+                            {
+                                string[] effectKV = effectList[i].Split('|');
+                                if (effectKV.Length != 2)
+                                    continue;
+
+                                switchPt.effectList.Add(new KeyValuePair<string, string>(effectKV[0], effectKV[1]));
+                            }
+
+                        }
+                        break;
                 }
                 effectPt.id = wholeData.id;
                 effectPt.effectType = et;

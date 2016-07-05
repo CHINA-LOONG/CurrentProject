@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class BattleModule : ModuleBase
 {
     BattleController controller;
-    BattleProcess process;
+    //BattleProcess process;
 	WeakPointController  weakPointController;
     BattleUnitAi battleUnitAi;
 

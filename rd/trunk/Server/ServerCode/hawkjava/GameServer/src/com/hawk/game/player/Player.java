@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.hawk.app.HawkAppObj;
@@ -21,10 +22,14 @@ import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hawk.game.config.MonsterBaseCfg;
+import com.hawk.game.config.MonsterCfg;
+import com.hawk.game.config.PlayerAttrCfg;
 import com.hawk.game.config.TimeCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.log.BehaviorLogger;
@@ -40,6 +45,7 @@ import com.hawk.game.module.PlayerMonsterModule;
 import com.hawk.game.module.PlayerStatisticsModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Const.playerAttr;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.EquipUtil;
@@ -398,6 +404,23 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
+	 * 获取怪物等级
+	 * 
+	 * @return
+	 */
+	public int getMonsterLevel(int monsterId) {
+		return playerData.getMonsterEntity(monsterId).getExp();
+	}
+
+	/**
+	 * 获取怪物经验
+	 * @return
+	 */
+	public int getMonsterExp(int monsterId) {
+		return playerData.getMonsterEntity(monsterId).getLevel();
+	}
+	
+	/**
 	 * 获取会话ip地址
 	 * 
 	 * @return
@@ -509,7 +532,7 @@ public class Player extends HawkAppObj {
 	 */
 	public void setVipLevel(int level, Action action) {
 		if (level <= 0) {
-			throw new RuntimeException("increaseLevel");
+			throw new RuntimeException("increaseVipLevel");
 		}
 	}
 
@@ -519,9 +542,24 @@ public class Player extends HawkAppObj {
 	 * 
 	 * @param level
 	 */
-	public void increaseLevel(int level, Action action) {
-		if (level <= 0) {
-			throw new RuntimeException("increaseLevel");
+	public void increaseMonsterExp(int monsterId, int exp, Action action) {
+		if (exp <= 0) {
+			throw new RuntimeException("increaseExp");
+		}
+		
+		MonsterEntity monster = playerData.getMonsterEntity(monsterId);
+		if (monster != null) {		
+			float levelUpExpRate = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getCfgId()).getNextExpRate();
+			Map<Object, MonsterBaseCfg> monsterBaseCfg = HawkConfigManager.getInstance().getConfigMap(MonsterBaseCfg.class);	
+			int expRemain = getExp() + exp;
+			int targetLevel = getLevel();
+			while (targetLevel != monsterBaseCfg.size() && expRemain >= monsterBaseCfg.get(targetLevel).getNextExp() * levelUpExpRate) {
+				targetLevel += 1;
+				expRemain -= monsterBaseCfg.get(targetLevel).getNextExp() * levelUpExpRate;
+			}
+			playerData.getMonsterEntity(monsterId).setExp(expRemain);
+			playerData.getMonsterEntity(monsterId).setLevel(targetLevel);
+			playerData.getMonsterEntity(monsterId).notifyUpdate(true);
 		}
 	}
 
@@ -535,6 +573,17 @@ public class Player extends HawkAppObj {
 			throw new RuntimeException("increaseExp");
 		}
 
+		Map<Object, PlayerAttrCfg> playAttrCfg = HawkConfigManager.getInstance().getConfigMap(PlayerAttrCfg.class);
+		int expRemain = getExp() + exp;
+		int targetLevel = getLevel();
+		while (targetLevel != playAttrCfg.size() && expRemain >= playAttrCfg.get(targetLevel).getExp()) {
+			targetLevel += 1;
+			expRemain -= playAttrCfg.get(targetLevel).getExp();
+		}
+		
+		playerData.getPlayerEntity().setExp(expRemain);
+		playerData.getPlayerEntity().setLevel(targetLevel);
+		playerData.getPlayerEntity().notifyUpdate(true);
 	}
 
 	/**
