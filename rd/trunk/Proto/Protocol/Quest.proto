@@ -12,6 +12,7 @@ message HSQuest
 
 // protocol-----------------------------------------------------
 
+// QUEST_INFO_SYNC_S
 message HSQuestInfoSync
 {
 	repeated HSQuest questInfo = 1;
@@ -26,7 +27,7 @@ message HSQuestSubmit
 // QUEST_SUBMIT_S
 message HSQuestSubmitRet
 {
-	required int32 status = 1;
+	required int32 questId = 1;
 }
 
 // QUEST_ACCEPT_S

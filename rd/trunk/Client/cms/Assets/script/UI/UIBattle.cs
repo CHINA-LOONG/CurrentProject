@@ -178,11 +178,13 @@ public class UIBattle : UIBase
         if (dazhaoTip.IsShow())
         {
 			//dazhaoTip.text = "大招模式点点点！剩余时间：" + (int)PhyDazhaoController.Instance.DazhaoLeftTime + "秒 剩余次数：" + PhyDazhaoController.Instance.DazhaoLeftCount;
-			dazhaoTip.SetTipInfo((int)PhyDazhaoController.Instance.DazhaoLeftTime,
+			dazhaoTip.SetTipInfo((int)PhyDazhaoController.Instance.DazhaoLeftTime + 1,
 			                     PhyDazhaoController.Instance.DazhaoUseCount,
 			                     PhyDazhaoController.Instance.DazhaoAllCount);
         }
     }
+
+
 
     void BindListener()
     {

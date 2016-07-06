@@ -70,7 +70,8 @@ public class UIBuild : UIBase
 
     void RareBattleButtonClick(GameObject go)
     {
-        var proto = BattleTest.GenerateRareProto("demo");
+       // var proto = BattleTest.GenerateRareProto("demo");
+		var proto = BattleTest.GenerateHundunBossProto("demo");
         GameEventMgr.Instance.FireEvent<PbStartBattle>(GameEventList.BattleBtnClick, proto);
     }
 

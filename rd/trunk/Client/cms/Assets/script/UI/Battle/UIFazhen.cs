@@ -29,7 +29,7 @@ public class UIFazhen : UIBase
 
 	void InitFazhen()
 	{
-		int fazhenCount = 1;
+		int fazhenCount = BattleConst.magicFazhencount;
 		int index = Random.Range (0, fazhenCount);
 		string prefabName = "fazhenStyle_" + index.ToString ();
 
@@ -41,11 +41,16 @@ public class UIFazhen : UIBase
 
 	IEnumerator updateLeftTimeCo()
 	{
+		float waitTime = 1.0f;
+		if (Time.timeScale > 0)
+		{
+			waitTime = 1.0f * Time.timeScale;
+		}
 		while(leftSecend > 0)
 		{
 			leftTimeText.text = leftSecend.ToString();
 			leftSecend--;
-			yield return new WaitForSeconds(1.0f);
+			yield return new WaitForSeconds(waitTime);
 		}
 		GameEventMgr.Instance.FireEvent<int>(GameEventList.OverMagicShifaWithResult,0);
 	}

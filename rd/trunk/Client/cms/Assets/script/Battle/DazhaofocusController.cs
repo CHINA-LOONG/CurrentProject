@@ -64,8 +64,8 @@ public class DazhaofocusController : MonoBehaviour
 	IEnumerator MonsterShowoffCo()
 	{
 		//monstershowoff
-
-		yield return new WaitForSeconds (1.5f);
+		battleObject.TriggerEvent ("dazhaoxuanyao", Time.timeScale, null);
+		yield return new WaitForSeconds (BattleConst.dazhaoShowOffTime);
 		RestoreBattle ();
 	}
 
@@ -93,9 +93,11 @@ public class DazhaofocusController : MonoBehaviour
 		cameraOldEulerAngles = new Vector3 (cameraTrans.localEulerAngles.x, cameraTrans.localEulerAngles.y, cameraTrans.localEulerAngles.z);
 		
 		//new
-		cameraTrans.position = focusCameraTrans.position;
+		//cameraTrans.position = focusCameraTrans.position;
 		//cameraTrans.localScale = focusCameraTrans.localScale;
-		cameraTrans.eulerAngles = focusCameraTrans.eulerAngles;
+		//cameraTrans.eulerAngles = focusCameraTrans.eulerAngles;
+
+		BattleCamera.Instance.cameraAni.MotionTo (focusCameraTrans, 0, false);
 	}
 
 	private void RestoreBattle()
@@ -105,10 +107,12 @@ public class DazhaofocusController : MonoBehaviour
 		monsterTrans.localScale = unitOldScale;
 		monsterTrans.localEulerAngles = unitOldEulerAngles;
 
-		Transform cameraTrans = BattleCamera.Instance.transform;
-		cameraTrans.position = cameraOldPosition;
-		cameraTrans.localScale = cameraOldScale;
-		cameraTrans.localEulerAngles = cameraOldEulerAngles;
+		//Transform cameraTrans = BattleCamera.Instance.transform;
+		//cameraTrans.position = cameraOldPosition;
+		//cameraTrans.localScale = cameraOldScale;
+		//cameraTrans.localEulerAngles = cameraOldEulerAngles;
+
+		BattleCameraAni.SetDefaultNoAni ();
 
 		focusSceneGo.SetActive (false);
 

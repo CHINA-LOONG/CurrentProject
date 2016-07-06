@@ -24,20 +24,22 @@ public class BattleTest : MonoBehaviour
         //var instanceData = StaticDataMgr.Instance.GetInstanceData(instanceId);
 
         //enemy list
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
             PbUnit pbUnit = new PbUnit();
             pbUnit.guid = i;
             pbUnit.camp = UnitCamp.Enemy;
 			if (i == 0)
-                pbUnit.id = "Unit_Demo_qingniao";
+                pbUnit.id = "Unit_Demo_zhuyan";
 			if (i == 1)
-				pbUnit.id = "Unit_Demo_zhuyan";
+				pbUnit.id = "Unit_Demo_qingniao";
 			if (i == 2)
 				pbUnit.id = "Unit_Demo_ershu";
 			if (i == 3)
 				pbUnit.id = "Unit_Demo_qingniao";
 			if (i == 4)
+				pbUnit.id = "Unit_Demo_zhuyan";
+			if (i == 5)
 				pbUnit.id = "Unit_Demo_ershu";
             pbUnit.level = 50;// instanceData.level;
             pbUnit.slot = i;
@@ -64,7 +66,8 @@ public class BattleTest : MonoBehaviour
 
         //enemy list
         PbUnit pbUnit = new PbUnit();
-        pbUnit.guid = Random.Range(100, 1000);
+        //pbUnit.guid = Random.Range(100, 1000);
+        pbUnit.guid = 100;
         if (StaticDataMgr.Instance.GetUnitRowData(instanceData.bossID) != null)
             pbUnit.id = instanceData.bossID;
         else
@@ -75,6 +78,9 @@ public class BattleTest : MonoBehaviour
 		pbUnit.character = 2;
 		pbUnit.lazy = 2;
 
+		pbUnit.testBossType = 1;//九尾狐
+		//pbUnit.testBossType = 2;//混沌
+
         proto.enemyList.Add(pbUnit);
 
         //player list
@@ -82,6 +88,38 @@ public class BattleTest : MonoBehaviour
 
         return proto;
     }
+
+	public static PbStartBattle GenerateHundunBossProto(string instanceId)
+	{
+		var proto = new PbStartBattle();
+		proto.battleType = (int)BattleType.Boss;
+		proto.instanceId = instanceId;
+		var instanceData = StaticDataMgr.Instance.GetInstanceData(instanceId);
+		
+		//enemy list
+		PbUnit pbUnit = new PbUnit();
+		//pbUnit.guid = Random.Range(100, 1000);
+		pbUnit.guid = 101;
+		if (StaticDataMgr.Instance.GetUnitRowData(instanceData.bossID) != null)
+			pbUnit.id = instanceData.bossID;
+		else
+			pbUnit.id = "Unit_Demo_hundun"; //instanceData.rareID;
+		pbUnit.level = 50;
+		pbUnit.camp = UnitCamp.Enemy;
+		pbUnit.slot = 1;
+		pbUnit.character = 2;
+		pbUnit.lazy = 2;
+		
+		//pbUnit.testBossType = 1;//九尾狐
+		pbUnit.testBossType = 2;//混沌
+		
+		proto.enemyList.Add(pbUnit);
+		
+		//player list
+		//proto.playerList = PlayerList;
+		
+		return proto;
+	}
 
     public static PbStartBattle GenerateRareProto(string instanceId)
     {

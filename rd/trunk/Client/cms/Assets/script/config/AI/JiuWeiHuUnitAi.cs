@@ -21,7 +21,7 @@ public class JiuWeiHuUnitAi : MonoBehaviour {
 		Dictionary<string,Spell> jiuWeihuSpellDic = GetUnitSpellList (jiuWeihuUnit);
 
 		Spell useSpell = null;
-		jiuWeihuSpellDic.TryGetValue ("attackTriStrong", out useSpell);
+		jiuWeihuSpellDic.TryGetValue ("attackCutTriStrong", out useSpell);
 
 		attackResult.attackTarget = GetAttackRandomTarget(jiuWeihuUnit);
 
@@ -30,33 +30,33 @@ public class JiuWeiHuUnitAi : MonoBehaviour {
 		int count = 0;
 		for(int n = wpList.Count -1 ;n > 0;n--)
 		{
-			if (wpList[n] == "jiuweihu_wp2")
+			if (wpList[n] == "jiuweihu_ruodian_3")
 				count++;
-			if (wpList[n] == "jiuweihu_wp4")
+			if (wpList[n] == "jiuweihu_ruodian_5")
 				count++;
-			if (wpList[n] == "jiuweihu_wp5")
+			if (wpList[n] == "jiuweihu_ruodian_7")
 				count++;
-			if (wpList[n] == "jiuweihu_wp9")
+			if (wpList[n] == "jiuweihu_ruodian_9")
 				count++;
 		}
 
 		int i = 1;
-		if (GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 4) 
+		if (GetAttackCount(jiuWeihuUnit) % 3 == 0 && count == 4) 
 		{
 			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu4", out useSpell);
 			attackResult.attackTarget = jiuWeihuUnit;
 		}
-		else if(GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 3) 
+		else if(GetAttackCount(jiuWeihuUnit) % 3 == 0 && count == 3) 
 		{
 			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu3", out useSpell);
 			attackResult.attackTarget = jiuWeihuUnit;
 		}
-		else if(GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 2) 
+		else if(GetAttackCount(jiuWeihuUnit) % 3 == 0 && count == 2) 
 		{
 			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu2", out useSpell);
 			attackResult.attackTarget = jiuWeihuUnit;
 		}
-		else if(GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 1) 
+		else if(GetAttackCount(jiuWeihuUnit) % 3 == 0 && count == 1) 
 		{
 			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu1", out useSpell);
 			attackResult.attackTarget = jiuWeihuUnit;

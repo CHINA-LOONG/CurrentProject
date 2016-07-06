@@ -31,6 +31,8 @@ public class PbUnit
     public int curExp;
     public int starLevel;//升星
     public List<PB.HSSkill> spellPbList;
+
+	public int testBossType =0;//1 九尾狐 2 混沌
 }
 
 [Serializable]
@@ -52,6 +54,7 @@ public class GameUnit
     public int property;//五行属性
     public int recovery;//战后回血
 	public bool isBoss = false;
+	public int bossType = 0;
 	//public string Ai;
 	public int character;//性格
 	public int lazy;//勤奋度
@@ -118,6 +121,7 @@ public class GameUnit
 
     //显示数据
     public Sprite headImg;
+    public BattleObject battleUnit;
 
 	//战斗单元统计数据 
 	public	int attackCount = 0;
@@ -265,6 +269,7 @@ public class GameUnit
 			character = 3;
 			lazy = 3;
 			friendship = unitRowData.friendship;
+			bossType = pbUnit.testBossType;
 		}
 	}
 	

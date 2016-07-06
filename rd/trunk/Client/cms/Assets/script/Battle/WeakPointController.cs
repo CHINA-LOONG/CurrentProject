@@ -249,6 +249,8 @@ public class WeakPointController : MonoBehaviour
 
 	public GameUnit getGameUnit(MirrorTarget target)
 	{
+		if (null == target)
+			return null;
 		var battleObject = target.GetComponentInParent<BattleObject> () as BattleObject;
 		return battleObject.unit;
 	}
@@ -270,8 +272,11 @@ public class WeakPointController : MonoBehaviour
 
 	void ShowOrHideFindEffect(GameUnit gUnit,string weakpointID,bool bshow)
 	{
-		GameObject effectGo = gUnit.weakPointEffectDic[weakpointID];
-		if(effectGo)
+		if (null == gUnit) 
+			return;
+
+		GameObject effectGo = null;
+		if (gUnit.weakPointEffectDic.TryGetValue (weakpointID, out effectGo))
 		{
 			FindWeakpointEffect fe = effectGo.GetComponent<FindWeakpointEffect>();
 			if(fe)
@@ -283,18 +288,17 @@ public class WeakPointController : MonoBehaviour
 
 	void ShowOrHideFindFinishedEffect(GameUnit gUnit,string weakpointID,bool bshow)
 	{
-		GameObject effectGo = gUnit.weakPointEffectDic[weakpointID];
-		if (effectGo) 
+		if (null == gUnit) 
+			return;
+
+		GameObject effectGo = null;
+		if (gUnit.weakPointEffectDic.TryGetValue (weakpointID, out effectGo))
 		{
-			FindFinishedWeakpointEffect ffe = effectGo.GetComponent<FindFinishedWeakpointEffect> ();
-			if (ffe)
+			FindFinishedWeakpointEffect fe = effectGo.GetComponent<FindFinishedWeakpointEffect>();
+			if(fe)
 			{
-				ffe.effectObject.SetActive (bshow);
+				fe.effectObject.SetActive(bshow);
 			}
-		} 
-		else 
-		{
-			Debug.LogError("Error to find finished effectobj with  weakpointID " + weakpointID);
 		}
 	}
 

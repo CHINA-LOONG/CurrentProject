@@ -174,6 +174,10 @@ public class BehaviorLogger {
 		 */
 		INSTACE_SETTLE,
 		/**
+		 * 任务交付
+		 */
+		QUEST_SUBMIT,
+		/**
 		 * 未知行为
 		 */
 		UNKONWN_ACTION;

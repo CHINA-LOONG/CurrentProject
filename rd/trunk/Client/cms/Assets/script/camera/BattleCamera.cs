@@ -23,6 +23,7 @@ public class BattleCamera : MonoBehaviour
 	}
 
 	public Animator animator = null;
+	public CameraAni cameraAni = null;
 
 	static BattleCamera mInst = null;
 	public static BattleCamera Instance
@@ -31,25 +32,19 @@ public class BattleCamera : MonoBehaviour
 		{
 			if (mInst != null)
 				return mInst;
-			GameObject go1 = GameObject.Find("BattleCamera");
-			if (go1 != null)
+
+			GameObject go = GameObject.Find("BattleCamera");
+			if(go == null)
 			{
-				mInst = go1.GetComponent<BattleCamera>();
-				mInst.CameraAttr = go1.GetComponent<Camera>();
-				mInst.animator = go1.GetComponent<Animator>();
+				GameObject prefab =  ResourceMgr.Instance.LoadAsset("camera","BattleCamera");
+				go = Instantiate(prefab) as GameObject;
+				go.name = "BattleCamera";
 			}
-			else
-			{
-				if (mInst == null)
-				{
-					GameObject prefab =  ResourceMgr.Instance.LoadAsset("camera","BattleCamera");
-					GameObject go = Instantiate(prefab) as GameObject;
-					go.name = "BattleCamera";
-					mInst = go.GetComponent<BattleCamera>();
-					mInst.CameraAttr = go.GetComponent<Camera>();
-					mInst.animator = go.GetComponent<Animator>();
-				}
-			}
+			mInst = go.GetComponent<BattleCamera>();
+			mInst.CameraAttr = go.GetComponent<Camera>();
+			mInst.animator = go.GetComponent<Animator>();
+			mInst.cameraAni = go.AddComponent<CameraAni>();
+
 			return mInst;
 		}
 	}

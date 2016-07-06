@@ -54,7 +54,7 @@ import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
-import com.hawk.game.util.RefreshTime;
+import com.hawk.game.util.TimeUtil;
 
 /**
  * 玩家对象
@@ -785,7 +785,7 @@ public class Player extends HawkAppObj {
 						lastRefreshTime.setTimeInMillis(0);
 					}
 
-					shouldRefresh = RefreshTime.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
+					shouldRefresh = TimeUtil.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
 					if (true == shouldRefresh) {
 						statisticsEntity.setRefreshTime(i,  nextRefreshTime);
 

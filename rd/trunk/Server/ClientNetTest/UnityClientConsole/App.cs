@@ -142,14 +142,18 @@ namespace UnityClientConsole
 //                 //instanceEnter.cfgId = "demo";
 //                 //NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
 
-                HSItemBuy itemBuy = new HSItemBuy();
-                itemBuy.itemId = 40001;
-                itemBuy.itemCount = 1;
-                NetManager.GetInstance().SendProtocol(code.ITEM_BUY_C.GetHashCode(), itemBuy);
+//                 HSItemBuy itemBuy = new HSItemBuy();
+//                 itemBuy.itemId = 40001;
+//                 itemBuy.itemCount = 1;
+//                 NetManager.GetInstance().SendProtocol(code.ITEM_BUY_C.GetHashCode(), itemBuy);
+// 
+//                 HSItemUse itemUse = new HSItemUse();
+//                 itemUse.itemId = 40001;
+//                 NetManager.GetInstance().SendProtocol(code.ITEM_USE_C.GetHashCode(), itemUse);
 
-                HSItemUse itemUse = new HSItemUse();
-                itemUse.itemId = 40001;
-                NetManager.GetInstance().SendProtocol(code.ITEM_USE_C.GetHashCode(), itemUse);
+                HSQuestSubmit questSubmit = new HSQuestSubmit();
+                questSubmit.questId = 10003;
+                NetManager.GetInstance().SendProtocol(code.QUEST_SUBMIT_C.GetHashCode(), questSubmit);
             }
             // 副本----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.INSTANCE_ENTER_S.GetHashCode()))
@@ -198,6 +202,11 @@ namespace UnityClientConsole
             {
                 HSQuestAccept questAccept = protocol.GetProtocolBody<HSQuestAccept>();
                 Console.WriteLine("任务接取");
+            }
+            else if (protocol.checkType(code.QUEST_SUBMIT_S.GetHashCode()))
+            {
+                HSQuestSubmitRet questSubmitRet = protocol.GetProtocolBody<HSQuestSubmitRet>();
+                Console.WriteLine("任务交付");
             }
         }
 

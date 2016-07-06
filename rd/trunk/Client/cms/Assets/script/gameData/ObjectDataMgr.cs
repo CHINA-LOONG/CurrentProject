@@ -72,6 +72,7 @@ public class ObjectDataMgr : MonoBehaviour
         BattleObject bo = unitObject.AddComponent<BattleObject>();
         bo.camp = unit.pbUnit.camp;
         bo.guid = unit.pbUnit.guid;
+        unit.battleUnit = bo;
         bo.unit = unit;
         bo.aniControl = unitObject.AddComponent<AnimControl>();
 

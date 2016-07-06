@@ -42,6 +42,7 @@ public class BattleObject : MonoBehaviour
             {
                 ActorEventData curEvent = new ActorEventData();
                 curEvent.triggerTime = triggerTime;
+                curEvent.actorDelay = srcEvent.actorDelay;
                 curEvent.id = srcEvent.id;
                 curEvent.motionKey = srcEvent.motionKey;
                 curEvent.motionValue = srcEvent.motionValue;
@@ -50,6 +51,7 @@ public class BattleObject : MonoBehaviour
                 curEvent.particleAni = srcEvent.particleAni;
                 curEvent.particleParent = srcEvent.particleParent;
                 curEvent.cameraAni = srcEvent.cameraAni;
+                curEvent.controllerName = srcEvent.controllerName;
                 curEvent.ps = null;
                 curEvent.rootNode = rootNode;
                 waitEventList.Add(curEvent);
@@ -138,10 +140,21 @@ public class BattleObject : MonoBehaviour
             if (curEvent.triggerTime <= curTime)
             {
                 activeEventList.Add(curEvent);
-                //TODO: not only bool
-                if (aniControl != null && curEvent.motionKey != null && curEvent.motionKey.Length > 0)
+                if (curEvent.actorDelay > 0 && BattleController.Instance.Process != null)
                 {
-                    aniControl.SetBool(curEvent.motionKey, bool.Parse(curEvent.motionValue));
+                    BattleController.Instance.Process.ActionDelayTime = curEvent.actorDelay;
+                }
+                if (aniControl != null)
+                {
+                    if (curEvent.controllerName != null && curEvent.controllerName.Length > 0)
+                    {
+                        aniControl.SetController(curEvent.controllerName);
+                    }
+                    //TODO: not only bool
+                    if (curEvent.motionKey != null && curEvent.motionKey.Length > 0)
+                    {
+                        aniControl.SetBool(curEvent.motionKey, bool.Parse(curEvent.motionValue));
+                    }
                 }
 
                 if (curEvent.particleAsset != null && curEvent.particleAsset.Length > 0)

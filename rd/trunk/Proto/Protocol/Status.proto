@@ -6,6 +6,8 @@ enum errorMask
 	LOGIN_ERROR            = 0x00010000;
 	PLAYER_ERROR           = 0x00020000;
 	MONSTER_ERROR          = 0x00030000;
+	ITEM_ERROR             = 0x00040000;
+	QUEST_ERROR            = 0x00050000;
 }
 
 enum error
@@ -25,7 +27,7 @@ enum error
 	// 参数错误
 	PARAMS_INVALID         = 0x00000006;
 	// 配置错误
-	CONFIG_NOT_FOUND	   = 0x00000007;
+	CONFIG_NOT_FOUND       = 0x00000007;
 	
 	// 服务器错误
 	SERVER_ERROR           = 0x00001000;
@@ -50,32 +52,42 @@ enum monsterError
 enum itemError
 {
 	// 道具不存在
-	ITEM_NOT_FOUND       = 0x00040001;
+	ITEM_NOT_FOUND             = 0x00040001;
 	// 金币不足
-	COINS_NOT_ENOUGH       = 0x00020002;
+	COINS_NOT_ENOUGH           = 0x00020002;
 	// 钻石不足
-	GOLD_NOT_ENOUGH       = 0x00020003;
+	GOLD_NOT_ENOUGH            = 0x00020003;
 	// 装备不足
-	EQUIP_NOT_FOUND        = 0x00020004;
+	EQUIP_NOT_FOUND            = 0x00020004;
 	// 道具数量不足
-	ITEM_NOT_ENOUGH      = 0x00040005;	
+	ITEM_NOT_ENOUGH            = 0x00040005;
 	// 道具不能买
-	ITEM_BUY_NOT_ALLOW      = 0x00040006;	
+	ITEM_BUY_NOT_ALLOW         = 0x00040006;
 	// 道具不能卖
-	ITEM_SELL_NOT_ALLOW      = 0x00040007;	
+	ITEM_SELL_NOT_ALLOW        = 0x00040007;
 	// 装备最大等级
-	EQUIP_MAX_LEVEL_ALREADY  = 0x00040008;	
+	EQUIP_MAX_LEVEL_ALREADY    = 0x00040008;
 	// 装备等级不够进阶
-	EQUIP_LEVEL_NOT_ENOUGH	 = 0x00040009;	
+	EQUIP_LEVEL_NOT_ENOUGH     = 0x00040009;
 	// 装备最大品级
-	EQUIP_MAX_STAGE_ALREADY  = 0x0004000A;	
+	EQUIP_MAX_STAGE_ALREADY    = 0x0004000A;
 		
 	// 装备不在背包
-	EQUIP_DRESS_ALREADY  = 0x00040010;	
+	EQUIP_DRESS_ALREADY        = 0x00040010;
 	// 该位置没有其他装备
-	EQUIP_NOT_DRESS_OTHER  = 0x00040011;	
+	EQUIP_NOT_DRESS_OTHER      = 0x00040011;
 	// 该位置已经有其他装备
-	EQUIP_DRESS_OTHER_ALREADY  = 0x00040012;	
+	EQUIP_DRESS_OTHER_ALREADY  = 0x00040012;
 	// 装备不在身上
-	EQUIP_NOT_DRESSED  = 0x00040013;	
+	EQUIP_NOT_DRESSED          = 0x00040013;
+}
+
+enum questError
+{
+	// 当前没有该任务
+	QUEST_NOT_ACCEPT        = 0x0050001;
+	// 任务未完成
+	QUEST_NOT_COMPLETE      = 0x0050002;
+	// 现在不可领奖
+	QUEST_NOT_OPEN          = 0x0050003;
 }

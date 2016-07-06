@@ -38,6 +38,13 @@ public class BattleProcess : MonoBehaviour
 		public DazhaoType dazhaoType = DazhaoType.Unkown;
     }
 
+    public float ActionDelayTime
+    {
+        set {actionDelayTime = value;}
+        get {return actionDelayTime;}
+    }
+    float actionDelayTime;
+
     BattleGroup battleGroup;
     ProcessData processData;
 
@@ -86,7 +93,7 @@ public class BattleProcess : MonoBehaviour
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<int, int>(GameEventList.SwitchPet, OnSwitchPet);
-        GameEventMgr.Instance.AddListener<BattleObject>(GameEventList.HitDazhaoBtn, OnUnitCastDazhao);
+		GameEventMgr.Instance.AddListener<BattleObject>(GameEventList.DazhaoBtnClicked, OnUnitCastDazhao);
         GameEventMgr.Instance.AddListener<int, string>(GameEventList.ChangeTarget, OnChangeTarget);
         GameEventMgr.Instance.AddListener<int>(GameEventList.ShowHideMonster, OnShowHideMonster);
 
@@ -105,7 +112,7 @@ public class BattleProcess : MonoBehaviour
     {
         GameEventMgr.Instance.RemoveListener<int, int>(GameEventList.SwitchPet, OnSwitchPet);
         GameEventMgr.Instance.RemoveListener<int, string>(GameEventList.ChangeTarget, OnChangeTarget);
-        GameEventMgr.Instance.RemoveListener<BattleObject>(GameEventList.HitDazhaoBtn, OnUnitCastDazhao);
+		GameEventMgr.Instance.RemoveListener<BattleObject>(GameEventList.DazhaoBtnClicked, OnUnitCastDazhao);
 
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellFire, OnFireSpell);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellLifeChange, OnLifeChange);
@@ -182,7 +189,8 @@ public class BattleProcess : MonoBehaviour
 			}
 			
 			//大招模式下，检查被攻击方 所有怪是否都死亡
-			if (curAction.type == ActionType.Dazhao) 
+			if (curAction!=null && 
+			    curAction.type == ActionType.Dazhao) 
 			{
 				bool actionOver = battleGroup.IsEnemyAllDead();
 				if(actionOver)
@@ -695,6 +703,13 @@ public class BattleProcess : MonoBehaviour
 			Logger.Log("had a dazhaoAction,can't insert Another!");
 			return;
 		}
+		if (IsChangePeting (bo)) 
+		{
+			Logger.LogError("change Pet.....");
+			return ;
+		}
+		//检测是否有换怪
+
 
 		Spell dazhaoSpell = bo.unit.GetDazhao ();
 		if (null == dazhaoSpell)
@@ -706,7 +721,18 @@ public class BattleProcess : MonoBehaviour
         Action action = new Action();
         action.type = ActionType.Dazhao;
         action.caster = bo;
-        bo.unit.energy = 0;
+       // bo.unit.energy = 0;
+		//能量扣除
+		{
+			SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs ();
+			energyArgs.vitalType = (int)VitalType.Vital_Type_Default;
+			energyArgs.triggerTime = Time.time;
+			energyArgs.casterID = bo.guid;
+			energyArgs.vitalChange = BattleConst.enegyMax;
+			energyArgs.vitalCurrent = 0;
+			energyArgs.vitalMax = 0;
+			SpellService.Instance.TriggerEvent (GameEventList.SpellEnergyChange, energyArgs);
+		}
         action.caster.unit.State = UnitState.Dazhao;
 		
 		if (dazhaoSpell.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao) 
@@ -788,7 +814,8 @@ public class BattleProcess : MonoBehaviour
         BattleObject movedUnit = ObjectDataMgr.Instance.GetBattleObject(movedUnitId);
         spellEventList.Add(args);
 
-        StartCoroutine(WaitAnim(movedUnit, args.aniTime + SpellConst.aniDelayTime));
+        StartCoroutine(WaitAnim(movedUnit, args.aniTime + SpellConst.aniDelayTime + actionDelayTime));
+        actionDelayTime = 0.0f;
     }
 
     IEnumerator WaitAnim(BattleObject movedUnit, float waitLen)
@@ -832,6 +859,8 @@ public class BattleProcess : MonoBehaviour
 	/// <param name="wp">Wp.</param>
 	void OnWeakpointDead(GameUnit unit,string wp)
 	{
+        unit.battleUnit.TriggerEvent(wp + "_dead", Time.time, null);
+
 		if (fireFocusTarget == null || string.IsNullOrEmpty (fireAttackWpName))
 			return;
 
@@ -913,6 +942,8 @@ public class BattleProcess : MonoBehaviour
 
 	bool IsHaveDazhaoAction()
 	{
+		if (null == curAction)
+			return false;
 		if (curAction.type == ActionType.Dazhao)
 			return true;
 
@@ -922,6 +953,19 @@ public class BattleProcess : MonoBehaviour
 			if (item.type == ActionType.Dazhao )
 			{
 				return true;
+			}
+		}
+		return false;
+	}
+
+	bool IsChangePeting(BattleObject bo)
+	{
+		foreach (Action item in insertAction)
+		{
+			if (item.type == ActionType.SwitchPet )
+			{
+				if(item.caster.guid == bo.guid)
+					return true;
 			}
 		}
 		return false;

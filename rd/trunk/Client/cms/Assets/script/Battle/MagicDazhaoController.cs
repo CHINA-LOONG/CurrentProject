@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class MagicDazhaoController : MonoBehaviour 
 {
@@ -15,7 +16,6 @@ public class MagicDazhaoController : MonoBehaviour
 	BattleProcess.Action magicAction;//法术攻击action
 	BattleObject  casterBattleGo;
 	Spell dazhaoSpell;
-	float dazhaoStartTime = 0;
 	
 	DazhaoExitCheck  dazhaoExitCheck = null;
 	
@@ -95,7 +95,6 @@ public class MagicDazhaoController : MonoBehaviour
 
 	public void RunActionWithDazhao(BattleObject casterGo)
 	{
-		dazhaoStartTime = Time.time;
 
 		if(casterBattleGo.shifaNodeEffect !=null)
 		{
@@ -111,6 +110,8 @@ public class MagicDazhaoController : MonoBehaviour
 		}
 		dazhaoState = DazhaoState.Prepare;
 
+		//隐藏摄像机 
+		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 		//爆点
 		if (casterGo.shifaNodeEffect != null) 
@@ -146,7 +147,8 @@ public class MagicDazhaoController : MonoBehaviour
 		dazhaoState = DazhaoState.Start;
 		//大招攻击
 		BattleController.Instance.Process.RunMagicDazhao (magicAction);
-		//SpellService.Instance.SpellRequest(dazhaoSpell.spellData.id, casterBattleGo.unit, battleGo.unit, Time.time);
+		//慢镜头
+		GameSpeedService.Instance.SetTmpSpeed (BattleConst.dazhaoAttackTimeScale, BattleConst.dazhaoAttackTimeLength);
 	}
 
 	public void DazhaoAttackFinished(int casterID)
@@ -230,6 +232,13 @@ public class MagicDazhaoController : MonoBehaviour
 			
 			//casterBattleGo.HideDazhaoPrepareEffect();
 			//todo:大招被打断ui提示
+			SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+			args.vitalType = (int)VitalType.Vital_Type_Miss;
+			args.triggerTime = Time.time;
+			args.casterID = 0;
+			args.targetID = casterBattleGo.guid;
+			GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.SpellLifeChange, args);
+
 			DazhaoFinished();
 			
 		}

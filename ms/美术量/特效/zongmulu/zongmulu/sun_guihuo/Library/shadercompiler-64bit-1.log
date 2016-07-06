@@ -1,0 +1,42 @@
+Base path: E:/unity5/unity5ruanjian/Unity/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-1-9584
+Cmd: getPlatforms
+Cmd: preprocess
+  insize=1899 outsize=902 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1298 outsize=1274 kw=SOFTPARTICLES_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1298 outsize=1428 kw=SOFTPARTICLES_OFF ok=1
+Cmd: preprocess
+  insize=953 outsize=1257 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=6924 outsize=3427 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=6924 outsize=1510 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3779 outsize=2517 kw=POINT ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3779 outsize=1250 kw=POINT ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3343 outsize=3200 kw= ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3343 outsize=2647 kw= ok=1
+Cmd: preprocess
+  error: 2 plat 15 at (19): Too many texture interpolators would be used for ForwardBase pass (9 out of max 8), try adding #pragma target 3.0
+  insize=1857 outsize=1359 ok=0
+Cmd: compileSnippet
+  api=4 type=0 insize=1705 outsize=1274 kw=SOFTPARTICLES_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1705 outsize=908 kw=SOFTPARTICLES_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=541 outsize=3517 kw=SHADOWS_DEPTH ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=541 outsize=437 kw=SHADOWS_DEPTH ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3779 outsize=2517 kw=DIRECTIONAL ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3779 outsize=1250 kw=DIRECTIONAL ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=9591 outsize=10342 kw=UNITY_COLORSPACE_GAMMA ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=9591 outsize=2623 kw=UNITY_COLORSPACE_GAMMA ok=1

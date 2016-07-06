@@ -1,6 +1,7 @@
 package com.hawk.game.module;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -13,19 +14,28 @@ import org.hawk.annotation.ProtocolHandler;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.hawk.game.config.QuestCfg;
 import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.item.AwardItems;
+import com.hawk.game.item.ItemInfo;
+import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.Quest.HSQuestAccept;
 import com.hawk.game.protocol.Quest.HSQuest.Builder;
+import com.hawk.game.protocol.Quest.HSQuestSubmit;
+import com.hawk.game.protocol.Quest.HSQuestSubmitRet;
 import com.hawk.game.protocol.Quest.HSQuestUpdate;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.ProtoUtil;
+import com.hawk.game.util.TimeUtil;
 import com.hawk.game.util.GsConst.StatisticsType;
 import com.hawk.game.util.QuestUtil;
 import com.hawk.game.util.GsConst.Cycle;
@@ -68,8 +78,7 @@ public class PlayerQuestModule extends PlayerModule {
 		if (false == updateQuestList.isEmpty()) {
 			HSQuestUpdate.Builder updateBuilder = HSQuestUpdate.newBuilder();
 			updateBuilder.addAllQuestInfo(updateQuestList);
-			HawkProtocol protocol = HawkProtocol.valueOf(HS.code.QUEST_UPDATE_S, updateBuilder);
-			player.sendProtocol(protocol);
+			sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_UPDATE_S, updateBuilder));
 		}
 
 		// 升级，检查未激活任务组，新接任务通知客户端
@@ -78,8 +87,7 @@ public class PlayerQuestModule extends PlayerModule {
 			if (false == acceptQuestList.isEmpty()) {
 				HSQuestAccept.Builder acceptBuilder = HSQuestAccept.newBuilder();
 				acceptBuilder.addAllQuestInfo(acceptQuestList);
-				HawkProtocol protocol = HawkProtocol.valueOf(HS.code.QUEST_ACCEPT_S, acceptBuilder);
-				player.sendProtocol(protocol);
+				sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_ACCEPT_S, acceptBuilder));
 			}
 		}
 
@@ -91,7 +99,69 @@ public class PlayerQuestModule extends PlayerModule {
 	 */
 	@ProtocolHandler(code = HS.code.QUEST_SUBMIT_C_VALUE)
 	private boolean onQuestSubmit(HawkProtocol cmd) {
-		// TODO 接下一个任务
+		Calendar curTime = HawkTime.getCalendar();
+		HSQuestSubmit protocol = cmd.parseProtocol(HSQuestSubmit.getDefaultInstance());
+		int hsCode = cmd.getType();
+		int questId = protocol.getQuestId();
+		QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questId);
+
+		// 验证
+		 Map<Integer, HSQuest> questMap = player.getPlayerData().getQuestMap();
+		 HSQuest quest = questMap.get(questId);
+		if (null == quest) {
+			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.questError.QUEST_NOT_ACCEPT_VALUE, 1));
+			return false;
+		}
+
+		if (quest.getProgress() < questCfg.getGoalCount()) {
+			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.questError.QUEST_NOT_COMPLETE_VALUE, 1));
+			return false;
+		}
+
+		if (null != questCfg.getTimeBegin() && null != questCfg.getTimeEnd()) {
+			if (false == TimeUtil.isTimeInPeriod(curTime, questCfg.getTimeBegin(), questCfg.getTimeEnd())) {
+				sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.questError.QUEST_NOT_OPEN_VALUE, 1));
+				return false;
+			}
+		}
+
+		// 发奖
+		int exp = questCfg.getExpReward(player.getLevel());
+		List<ItemInfo> list = questCfg.getReward().getRewardList();
+		AwardItems awardItems = new AwardItems();
+		awardItems.addExp(exp);
+		awardItems.addItemInfos(list);
+		awardItems.rewardTakeAffectAndPush(player,  Action.QUEST_SUBMIT);
+
+		// 记录
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		if (questCfg.getCycle() == Cycle.NORMAL_CYCLE) {
+			statisticsEntity.getQuestCompleteSet().add(questId);
+		} else if (questCfg.getCycle() == Cycle.DAILY_CYCLE) {
+			statisticsEntity.getQuestCompleteDailySet().add(questId);
+		}
+		statisticsEntity.notifyUpdate(true);
+
+		questMap.remove(questId);
+
+		HSQuestSubmitRet.Builder response = HSQuestSubmitRet.newBuilder();
+		response.setQuestId(questId);
+		sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_SUBMIT_S, response));
+
+		// 如果不是时效性任务组，接取下一个
+		if (null == questCfg.getTimeBegin()) {
+			QuestCfg nextQuestCfg = QuestUtil.getNextQuest(questId);
+			if (null != nextQuestCfg) {
+				List<HSQuest> acceptList = new ArrayList<HSQuest>();
+				acceptQuest(nextQuestCfg, acceptList);
+				if (false == acceptList.isEmpty()) {
+					HSQuestAccept.Builder acceptBuilder = HSQuestAccept.newBuilder();
+					acceptBuilder.addAllQuestInfo(acceptList);
+					sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_ACCEPT_S, acceptBuilder));
+				}
+			}
+		}
+
 		return true;
 	}
 

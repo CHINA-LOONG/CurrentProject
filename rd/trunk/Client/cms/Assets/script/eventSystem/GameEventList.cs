@@ -33,7 +33,6 @@ public class GameEventList
 	public static string ShowSwitchPetUI = "ShowSwitchPetUI";//param  int
     public static string HideSwitchPetUI = "HideSwitchPetUI";//param  int -1则无条件关闭换宠UI，其他则和当前被换宠物id相同才关闭
     public static string ChangeTarget = "ChangeTarget";
-    public static string HitDazhaoBtn = "HitDazhaoBtn";
     public static string ShowDazhaoTip = "ShowDazhaoTip";
     public static string HideDazhaoTip = "HideDazhaoTip";
 	public static string ShowFireFocus = "ShowFireFocus";//param GameUnit
@@ -46,6 +45,7 @@ public class GameEventList
 	public static string SpellAttackStatistics = "SpellAttackStatistics";//
 
 	//Dazhao
+	public static string DazhaoBtnClicked = "DazhaoBtnClicked";
 	public static string ExitDazhaoByPhyAttacked = "ExitDazhaoByPhyAttacked";//param int(unit.guid)
 	public static string RemoveDazhaoAction = "RemoveDazhaoAction";
 
@@ -53,15 +53,11 @@ public class GameEventList
 	public static string MonsterShowoffOver = "MonsterShowoffOver";
 
     //UI in the battle
-    public static string ShowBattleUI = "ShowBattleUI";
 
     //////////////////////////////////////////////////////////////////////////
 
 
     //Ui
-    public static string RestartGame = "RestartGame";
-    public static string RefreshBattleResultUI = "RefreshBattleResultUI";//UIData
-    public static string ResetOperHabit = "ResetOperHabit"; //设置操作习惯
 
 
     //Spell

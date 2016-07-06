@@ -48,6 +48,9 @@ public class BattleController : MonoBehaviour
         get;
     }
     private UIBattle uiBattle;
+
+	private	Dictionary<string,Transform> cameraNodeDic = new Dictionary<string, Transform>();
+
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
     public void Init()
@@ -222,14 +225,28 @@ public class BattleController : MonoBehaviour
         {
             cameraSlotName = "cameraBoss";
         }
+		Transform defaultTrans = null;
+		if (cameraNodeDic.TryGetValue (cameraSlotName, out defaultTrans))
+		{
+			return defaultTrans;
+		}
 
         GameObject cameraNode = Util.FindChildByName(curBattleScene.gameObject, cameraSlotName);
-        return cameraNode.transform;
+		cameraNodeDic.Add (cameraSlotName, cameraNode.transform);
+		return cameraNode.transform;
     }
 	//---------------------------------------------------------------------------------------------
 	public	Transform GetPhyDazhaoCameraNode()
 	{
-		GameObject cameraNode = Util.FindChildByName(curBattleScene.gameObject, "cameraPhyDazhao");
+		string name = "cameraPhyDazhao";
+		Transform dazhaoTrans = null;
+		if (cameraNodeDic.TryGetValue (name, out dazhaoTrans))
+		{
+			return dazhaoTrans;
+		}
+
+		GameObject cameraNode = Util.FindChildByName(curBattleScene.gameObject,name);
+		cameraNodeDic.Add (name, cameraNode.transform);
 		return cameraNode.transform;
 	}
     //---------------------------------------------------------------------------------------------

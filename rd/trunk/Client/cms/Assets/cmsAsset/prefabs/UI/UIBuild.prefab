@@ -345,7 +345,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7A00\u6709\u602A\u6218\u6597"
+  m_Text: "\u6253\u5012\u6B7B\u80D6\u5B50"
 --- !u!114 &11421352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -423,7 +423,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "BOSS\u6218\u6597"
+  m_Text: "\u4E5D\u4E2A\u5C3E\u5DF4\u840C\u840C\u54D2"
 --- !u!114 &11431584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -570,7 +570,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5C0F\u602A\u6218\u6597"
+  m_Text: "\u9752\u9E1F\u53BB\u54EA\u4E86"
 --- !u!114 &11474102
 MonoBehaviour:
   m_ObjectHideFlags: 1

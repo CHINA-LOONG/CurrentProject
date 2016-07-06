@@ -122,6 +122,10 @@ ModelImporter:
     100228: e_ruodian_01
     100230: Object03
     100232: "\u9984\u9968\u914D\u4EF6"
+    100234: hendun_shenti
+    100236: hundun_chibang
+    100238: hundun_shetou
+    100240: hundun_yanzhao
     400000: Bip001
     400002: Bip001 Footsteps
     400004: Bip001 Head
@@ -239,11 +243,23 @@ ModelImporter:
     400228: e_ruodian_01
     400230: Object03
     400232: "\u9984\u9968\u914D\u4EF6"
+    400234: hendun_shenti
+    400236: hundun_chibang
+    400238: hundun_shetou
+    400240: hundun_yanzhao
     4300000: "\u9984\u9968\u914D\u4EF6"
     4300002: Object03
+    4300004: hundun_chibang
+    4300006: hendun_shenti
+    4300008: hundun_yanzhao
+    4300010: hundun_shetou
     9500000: //RootNode
     13700000: Object03
     13700002: "\u9984\u9968\u914D\u4EF6"
+    13700004: hendun_shenti
+    13700006: hundun_chibang
+    13700008: hundun_shetou
+    13700010: hundun_yanzhao
   materials:
     importMaterials: 1
     materialName: 0

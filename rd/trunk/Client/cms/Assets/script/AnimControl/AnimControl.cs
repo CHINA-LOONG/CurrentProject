@@ -16,7 +16,9 @@ public class AnimControl : MonoBehaviour
 	private int hashFagong;
     private int hashLazy;
     private int hashStun;
-    private int hashShouji;
+	private int hashShouji;
+	private int hashFangyu;
+	private int hashDazhaoxuanyao;
     //state hash
     private int hashDeadState;
     private int hashStunState;
@@ -44,8 +46,9 @@ public class AnimControl : MonoBehaviour
         hashWugong = Animator.StringToHash("wugong");
         hashLazy = Animator.StringToHash("lazy");
         hashStun = Animator.StringToHash("stun");
-        hashShouji = Animator.StringToHash("shouji");
-
+		hashShouji = Animator.StringToHash("shouji");
+		hashFangyu = Animator.StringToHash("fangyu");
+		hashDazhaoxuanyao = Animator.StringToHash("dazhaoxuanyao");
         hashDeadState = Animator.StringToHash("Base Layer.siwang");
         hashStunState = Animator.StringToHash("Base Layer.shoukong");
         hashWinState = Animator.StringToHash("Base Layer.shengli");
@@ -103,7 +106,12 @@ public class AnimControl : MonoBehaviour
     public void OnRunEnd()
     {
         animator.SetBool(hashRun, false);
-    }
+	}
+	//---------------------------------------------------------------------------------------------
+	public void OnFangyuEnd()
+	{
+		animator.SetBool(hashFangyu, false);
+	}
     //---------------------------------------------------------------------------------------------
     public void OnWinBegin()
     {
@@ -124,6 +132,11 @@ public class AnimControl : MonoBehaviour
     {
         animator.SetBool(hashDazhao, false);
     }
+	//---------------------------------------------------------------------------------------------
+	public void OnDaZhaoxuanyaoEnd()
+	{
+		animator.SetBool(hashDazhaoxuanyao, false);
+	}
     //---------------------------------------------------------------------------------------------
     public void OnDShoujiBegin()
     {

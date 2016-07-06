@@ -46,9 +46,16 @@ public class FireFocusEffect : MonoBehaviour
 	void OnShow(BattleObject bo)
 	{
 		effectGo.SetActive (true);
-		if (!gameObject.activeSelf)
+		if (!gameObject.activeInHierarchy)
 			return;
-		StopCoroutine (RefreshEffectCo ());
+
+		try
+		{
+			StopCoroutine (RefreshEffectCo ());
+		}
+		catch
+		{
+		}
 
 		offsetH = 0.5f;
         if (bo.unit.isBoss) 
@@ -73,7 +80,14 @@ public class FireFocusEffect : MonoBehaviour
 
 		effectTargetTrans = targetTrans;
 
-		StartCoroutine (RefreshEffectCo ());
+		try
+		{
+			StartCoroutine (RefreshEffectCo ());
+		}
+		catch
+		{
+		}
+
 	}
 
 	IEnumerator RefreshEffectCo()
@@ -92,7 +106,13 @@ public class FireFocusEffect : MonoBehaviour
 
 	void OnHide()
 	{
-		StopCoroutine (RefreshEffectCo ());
+		try
+		{
+			StopCoroutine (RefreshEffectCo ());
+		}
+		catch
+		{
+		}
 		effectGo.SetActive (false);
 	}
 }

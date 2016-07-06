@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using DG.Tweening;
 
 public class PhyDazhaoController : MonoBehaviour 
 {
@@ -82,7 +84,6 @@ public class PhyDazhaoController : MonoBehaviour
 		casterBattleGo = casterGo;
 		dazhaoUseCount = 0;
 		dazhaoFinishCount = 0;
-		dazhaoStartTime = Time.time;
 
 		if(casterBattleGo.shifaNodeEffect !=null)
 		{
@@ -97,8 +98,9 @@ public class PhyDazhaoController : MonoBehaviour
 			return;
 		}
 		dazhaoState = DazhaoState.Prepare;
-		//BattleCamera.Instance.animator.SetBool (BattleCamera.AniControlParam.phyDazhao, true);
 
+		//隐藏摄像机 
+		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 		//爆点
 		if (casterGo.shifaNodeEffect != null) 
@@ -125,16 +127,16 @@ public class PhyDazhaoController : MonoBehaviour
 	{
 		if (dazhaoState != DazhaoState.Prepare)
 			return;
-		Transform testCameraTrans =	BattleCamera.Instance.transform;
-		Vector3 pos = testCameraTrans.position;
-		pos.z -= 2;
-		testCameraTrans.position = pos;
-		StartCoroutine (PrepareDazhaoCo ());
+
+		BattleCameraAni.MotionToPhyDazhao ().OnComplete(PrepareDazhaoCo);
+
+		//StartCoroutine (PrepareDazhaoCo ());
 	}
-	IEnumerator PrepareDazhaoCo()
+	void PrepareDazhaoCo()
 	{
-		yield return new WaitForSeconds (1.0f);
+		//yield return new WaitForSeconds (1.0f);
 		dazhaoState = DazhaoState.Start;
+		dazhaoStartTime = Time.time;
 		GameEventMgr.Instance.FireEvent(GameEventList.ShowDazhaoTip);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 	}
@@ -155,6 +157,8 @@ public class PhyDazhaoController : MonoBehaviour
 		dazhaoUseCount++;
 		if (dazhaoUseCount >= dazhaoSpell.spellData.actionCount)
 		{
+			//慢镜头(最后一次)
+			GameSpeedService.Instance.SetTmpSpeed (BattleConst.dazhaoAttackTimeScale, BattleConst.dazhaoAttackTimeLength);
 			DazhaoFinished();
 		}
 	}
@@ -176,13 +180,19 @@ public class PhyDazhaoController : MonoBehaviour
 			//大招被打断
 			GameEventMgr.Instance.FireEvent(GameEventList.RemoveDazhaoAction);
 
-			//casterBattleGo.HideDazhaoPrepareEffect();
 			if(casterBattleGo.shifaNodeEffect !=null)
 			{
 				casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
 			}
 			//todo:大招被打断ui提示
+			//casterBattleGo.TriggerEvent("",Time.time,null);
 
+			SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+			args.vitalType = (int)VitalType.Vital_Type_Miss;
+			args.triggerTime = Time.time;
+			args.casterID = 0;
+			args.targetID = casterBattleGo.guid;
+			GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.SpellLifeChange, args);
 		}
 		if (null != dazhaoExitCheck)
 		{
@@ -199,7 +209,7 @@ public class PhyDazhaoController : MonoBehaviour
 			return;
 		}
 
-		if (Time.time - dazhaoStartTime >  dazhaoSpell.spellData.channelTime )
+		if (DazhaoLeftTime < 1)
 		{
 			DazhaoFinished();
 		}
@@ -230,21 +240,23 @@ public class PhyDazhaoController : MonoBehaviour
 		}
 		//Debug.LogError ("大招结束.... attack times: " + dazhaoFinishCount);
 		//BattleCamera.Instance.animator.SetBool (BattleCamera.AniControlParam.phyDazhao, false);
-		Transform testCameraTrans =	BattleCamera.Instance.transform;
-		Vector3 pos = testCameraTrans.position;
-		pos.z += 2;
-		testCameraTrans.position = pos;
 
-		GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.DazhaoActionOver, casterBattleGo);
-		GameEventMgr.Instance.FireEvent(GameEventList.HideDazhaoTip);
+		BattleCameraAni.MotionToDefault ().OnComplete (OnExitDazhao);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Normal);
-		
+
 		if (null != dazhaoExitCheck)
 		{
 			Destroy(dazhaoExitCheck);
 			dazhaoExitCheck = null;
 		}
 	}
+
+	void OnExitDazhao()
+	{
+		GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.DazhaoActionOver, casterBattleGo);
+		GameEventMgr.Instance.FireEvent(GameEventList.HideDazhaoTip);
+	}
+
 
 	public void DazhaoAttackFinished(int casterID)
 	{
@@ -261,6 +273,10 @@ public class PhyDazhaoController : MonoBehaviour
 			if (dazhaoSpell != null)
 			{
 				float passTime = Time.time - dazhaoStartTime;
+				if(Time.timeScale > 0)
+				{
+					passTime = passTime/Time.timeScale;
+				}
 				return Mathf.Clamp(dazhaoSpell.spellData.channelTime - passTime, 0, dazhaoSpell.spellData.channelTime);
 			}
 			return 0;

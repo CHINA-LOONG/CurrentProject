@@ -9,6 +9,7 @@ public class ActorEventData
 {
     public string id;
     public int state;
+    public int actorDelay;
     //motion
     public string motionKey;
     public string motionValue;
@@ -19,6 +20,8 @@ public class ActorEventData
     public string particleParent;
     //camera
     public string cameraAni;
+    //controller
+    public string controllerName;
 
     //state data
     public GameObject psObject;
@@ -77,6 +80,10 @@ public class ActorEventService
                 eventList.Add(eventData.id, eventData);
 
                 eventData.state = int.Parse(xe.GetAttribute("state"));
+                eventData.actorDelay = 0;
+                string actorDelay = xe.GetAttribute("action_delay");
+                if (actorDelay.Length > 0)
+                    eventData.actorDelay = int.Parse(xe.GetAttribute("action_delay"));
                 
                 foreach (XmlElement x1 in xe.ChildNodes)
                 {
@@ -95,6 +102,10 @@ public class ActorEventService
                     else if (x1.Name == "Camera")
                     {
                         eventData.cameraAni = x1.GetAttribute("ani");
+                    }
+                    else if (x1.Name == "Controller")
+                    {
+                        eventData.controllerName = x1.GetAttribute("name");
                     }
                 }
 

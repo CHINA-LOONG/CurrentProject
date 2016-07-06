@@ -38,6 +38,7 @@ public class BattleUnitAi : MonoBehaviour {
 	int	attackMaxTimes = 100;
 
 	JiuWeiHuUnitAi jiuWeiHuAi = null;
+	HundunUnitAi    hundunUnitAi = null;
 
 	// Use this for initialization
 	void Start () 
@@ -49,6 +50,7 @@ public class BattleUnitAi : MonoBehaviour {
 	{
 		instance = this;
 		jiuWeiHuAi = gameObject.AddComponent<JiuWeiHuUnitAi> ();
+		hundunUnitAi = gameObject.AddComponent<HundunUnitAi> ();
 	}
 
     void OnDestroy()
@@ -65,7 +67,15 @@ public class BattleUnitAi : MonoBehaviour {
 	{
 		if (battleUnit.isBoss)
 		{
-			return jiuWeiHuAi.GetAiAttackResult(battleUnit);
+			if(battleUnit.bossType == 1)
+			{
+				return jiuWeiHuAi.GetAiAttackResult(battleUnit);
+			}
+			else if (battleUnit.bossType ==2)
+			{
+				return hundunUnitAi.GetAiAttackResult(battleUnit);
+			}
+
 		}
 
 		AiAttackResult attackResult = new AiAttackResult ();
