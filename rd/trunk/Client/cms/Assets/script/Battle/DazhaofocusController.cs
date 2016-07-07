@@ -28,9 +28,9 @@ public class DazhaofocusController : MonoBehaviour
 
 	void OnDestroy()
 	{
-		if (null != focusSceneGo) 
-		{
-			Destroy(focusSceneGo);
+		if (null != focusSceneGo)
+        {
+            ResourceMgr.Instance.DestroyAsset(focusSceneGo);
 		}
 	}
 
@@ -38,8 +38,8 @@ public class DazhaofocusController : MonoBehaviour
 	void Start ()
 	{
 		instance = this;
-		GameObject prefab = ResourceMgr.Instance.LoadAsset ("battlescene/dazhaofocus", "dazhaoFocusScene");
-		focusSceneGo = Instantiate (prefab) as GameObject;
+        focusSceneGo = ResourceMgr.Instance.LoadAsset("battlescene/dazhaofocus", "dazhaoFocusScene");
+		//focusSceneGo = Instantiate (prefab) as GameObject;
 
 		focusUnitTrans = Util.FindChildByName (focusSceneGo, "monsterPosition").transform;
 		MeshRenderer tempMesh = focusUnitTrans.GetComponent<MeshRenderer> ();

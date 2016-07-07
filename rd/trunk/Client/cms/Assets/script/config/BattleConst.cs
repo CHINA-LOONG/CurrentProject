@@ -51,4 +51,6 @@ public class BattleConst
     public const string headNode = "headnode";
     public const string lifeBarNode = "lifebarnode";
     public const float vitalChangeDispearTime = 1.0f;
+
+    public const float unitRotSpeed = 10.0f;
 }

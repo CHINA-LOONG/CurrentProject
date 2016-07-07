@@ -593,6 +593,7 @@ public class BattleProcess : MonoBehaviour
             }
         }
 
+        bool needRotate = false;
         switch (aiResult.attackStyle)
         {
 			case BattleUnitAi.AiAttackStyle.DazhaoPrepare:
@@ -624,15 +625,24 @@ public class BattleProcess : MonoBehaviour
                 //return;
                 break;
             case BattleUnitAi.AiAttackStyle.MagicAttack:
+                needRotate = true;
                 break;
             case BattleUnitAi.AiAttackStyle.PhysicsAttack:
+                needRotate = true;
                 break;
         }
+
 
         var curTarget = aiResult.attackTarget;
         if (null == curTarget)
         {
             Logger.LogError("Error for BattleUnitAI....");
+        }
+
+        if (needRotate == true && curTarget != null)
+        {
+            Vector3 relativePos = curTarget.battleUnit.transform.position - bo.transform.position;
+            bo.SetTargetRotate(Quaternion.LookRotation(relativePos), false);
         }
         bo.unit.attackCount++;
         if (aiResult.useSpell != null)
@@ -938,6 +948,7 @@ public class BattleProcess : MonoBehaviour
     void OnUnitFightOver(BattleObject movedUnit)
     {
         battleGroup.ReCalcActionOrder(movedUnit.guid);
+        movedUnit.SetTargetRotate(Quaternion.identity, true);
         OnActionOver();
     }
 
@@ -966,7 +977,7 @@ public class BattleProcess : MonoBehaviour
 		if (curAction.type == ActionType.Dazhao)
 			return true;
 
-		Action action = null;
+		//Action action = null;
 		foreach (Action item in insertAction)
 		{
 			if (item.type == ActionType.Dazhao )

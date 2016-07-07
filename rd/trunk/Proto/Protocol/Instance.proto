@@ -1,10 +1,21 @@
 import "Protocol/Const.proto";
 import "Protocol/Reward.proto";
 import "Protocol/Consume.proto";
+import "Protocol/Monster.proto";
 
 option java_package = "com.hawk.game.protocol";
 
 // struct-------------------------------------------------------
+
+message HSAssist
+{
+	required int32 playerId = 1;
+	required int32 playerLevel = 2;
+	required int32 playerPower = 3;
+	required string playerName = 4;
+	required bool isFriend = 5;
+	required HSMonster monster = 6;
+}
 
 message HSBattle
 {
@@ -14,6 +25,18 @@ message HSBattle
 }
 
 // protocol-----------------------------------------------------
+
+// INSTANCE_ASSIST_C
+message HSInstanceAssist
+{
+
+}
+
+// INSTANCE_ASSIST_S
+message HSInstanceAssistRet
+{
+	repeated HSAssist assist = 1;
+}
 
 // INSTANCE_ENTER_C
 message HSInstanceEnter

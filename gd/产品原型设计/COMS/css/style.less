@@ -3,12 +3,11 @@
 @color-text: #B0B0B0;
 @color-split: #00d4b4;
 @color-menu-bg: #404040;
-@color-bg: #808080;
+@color-bg: #505050;
 @split-line: 1px solid #585858;
 @color-red: #d73300;
 @color-split-line: #4a4a4a;
 @color-title: #f0f0f0;
-
 
 @custom-scroll-bar-color: #666;
 @custom-scroll-bar-border: 1px solid #ccc;
@@ -21,10 +20,6 @@
 @mobile-panel-color: rgba(16, 16, 16, 0.8);
 @box-border: 1px solid @color-split-line;
 
-@link-border: 1px solid #FF461F;
-@link-always: rgba(255, 70, 31, 0.3);
-@link-hover: rgba(255, 70, 31, 0.2);
-
 @media only screen and (min-device-width: 1280px) {
     /*------start custom scrollbar for webkit browser--------*/
     ::-webkit-scrollbar {
@@ -34,12 +29,12 @@
 
     /*轨道*/
     ::-webkit-scrollbar-track {
-        background: @color-bg;
+        background: rgba(0, 0, 0, 0.2);
     }
 
     /*滑块*/
     ::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.4);
         border-radius: 4px;
     }
 
@@ -62,6 +57,10 @@ html, body {
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 #home-container {
@@ -124,7 +123,6 @@ html, body {
             display: inline-block;
             width: 32px;
             height: 32px;
-            background: url(../assets/logo_32.png) no-repeat;
         }
     }
     .config {
@@ -133,29 +131,65 @@ html, body {
         //padding: 24px 0 16px;
         padding: 10px 0;
         color: @color-text;
+        > div {
+            width: 180px;
+            padding: 8px 0;
+            margin: 0;
+        }
         div {
-            padding: 5px 0;
             input[type=checkbox] {
                 display: none;
             }
             input[type=checkbox] + label {
                 background: @checkbox no-repeat;
-                height: 16px;
                 display: inline-block;
                 padding: 0 0 0 28px;
             }
             input[type=checkbox]:checked + label {
                 background: @checkbox-checked no-repeat;
-                height: 16px;
+            }
+        }
+        .shells {
+            .shell {
                 display: inline-block;
-                padding: 0 0 0 28px;
+                width: 173px;
+                height: 22px;
+                //background-color: #cccccc;
+                //border: none;
+                color: #000000;
+                background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50px' height='50px'><polyline points='46.139,15.518 25.166,36.49 4.193,15.519'/></svg>");
+                background-color: #cccccc;
+                background-repeat: no-repeat;
+                background-position: right 5px top 5px;
+                background-size: 12px 12px;
+                border-radius: 0px;
+                -webkit-border-radius: 0px;
+                -webkit-appearance: none;
+                border: 0;
+                outline: 0;
+                -webkit-transition: 0.3s ease all;
+                -moz-transition: 0.3s ease all;
+                -ms-transition: 0.3s ease all;
+                -o-transition: 0.3s ease all;
+                transition: 0.3s ease all;
+                padding-left: 10px;
+            }
+            .shell:focus {
+                outline: none;
+            }
+        }
+        .background {
+            span {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                margin-right: 2px;
+                background: #d73300;
+                border: 1px solid #000;
             }
         }
         .help {
             cursor: pointer;
-            padding-top: 6px;
-            display: block;
-            border-radius: 100%;
         }
         .help:hover {
             color: @color-red;
@@ -238,7 +272,7 @@ html, body {
         width: 136px;
         height: 136px;
         background-color: #ffffff;
-        margin: 10px 0;
+        margin: 16px 0;
         > div {
             width: 128px;
             height: 128px;
@@ -250,6 +284,7 @@ html, body {
     .footer {
         color: @color-text;
         border-top: @split-line;
+        font-size: 12px;
         a {
             color: @color-red;
             text-decoration: none;
@@ -297,6 +332,7 @@ html, body {
     z-index: 1;
     position: absolute;
     top: 0;
+    overflow: auto;
     .scroll-view {
         position: relative;
         width: 100%;
@@ -310,37 +346,83 @@ html, body {
             .shell {
                 width: 100%;
                 height: 100%;
-                > svg {
+                margin: auto;
+                position: relative;
+                svg {
+                    float: left;
+                }
+                .whole {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    float: left;
+                }
+                .top, .home {
+                    position: absolute;
+                    left: 50%;
+                    -webkit-transform: translateX(-50%);
+                    -moz-transform: translateX(-50%);
+                    -ms-transform: translateX(-50%);
+                    -o-transform: translateX(-50%);
+                    transform: translateX(-50%);
+                }
+                .top {
+                    top: 0;
+                }
+                .home {
+                    bottom: 0;
+                    cursor: pointer;
+                }
+                .screen-placeholder {
+                    background-color: #ffffff;
                     position: absolute;
                 }
-                .header {
-                    top: 0;
+            }
+            .horizontal {
+                .top, .home {
+                    top: 50%;
+                    -webkit-transform: translateY(-50%);
+                    -moz-transform: translateY(-50%);
+                    -ms-transform: translateY(-50%);
+                    -o-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                }
+                .top {
                     left: 0;
                 }
-                .footer {
-                    bottom: 0;
+                .home {
                     right: 0;
-                    .home {
-                        cursor: pointer;
-                    }
-                    .home:hover {
-                        opacity: 0.5;
-                    }
+                    bottom: auto;
+                    left: auto;
                 }
             }
             .screen {
                 position: absolute;
-                background-color: #000;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
                 overflow: hidden;
-                .links {
+                .header, .footer {
+                    z-index: 2;
+                }
+                .middle {
+                    z-index: 1;
+                }
+                .cover {
+                    position: absolute;
+                    width: 100%;
+                    left: 0;
+                    top: 0;
                     > div {
-                        cursor: pointer;
                         position: absolute;
                     }
+                    .link {
+                        cursor: pointer;
+                    }
+                }
+                .footer {
+                    overflow: hidden;
                 }
                 .scroll-bar {
                     position: absolute;
@@ -354,14 +436,15 @@ html, body {
                     -moz-box-sizing: border-box;
                 }
             }
-            .always .links > div {
-                background-color: @link-always;
-            }
-            .always .links > div:hover {
-                background-color: @link-hover;
-            }
-            .hover .links > div:hover {
-                background-color: @link-hover;
+            .outer {
+                position: absolute;
+                width: 0;
+                height: 0;
+                z-index: 2;
+                > div {
+                    position: absolute;
+                    background-size: 100% 100%;
+                }
             }
         }
     }
@@ -369,10 +452,20 @@ html, body {
 
 .v-center {
     top: 50%;
-    transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.h-center {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 .loader {
@@ -394,7 +487,7 @@ html, body {
         .logo {
             width: 114px;
             height: 114px;
-            background: @loading-logo no-repeat;
+            background-size: 114px 114px;
             margin: auto;
         }
         .desc {
@@ -534,6 +627,9 @@ html, body {
                     .playback {
                         background-image: @playback;
                     }
+                    .hide {
+                        background-image: @hide;
+                    }
                 }
             }
             .r-b {
@@ -656,4 +752,16 @@ html, body {
             }
         }
     }
+}
+
+.comment-content {
+    position: absolute;
+    z-index: 999;
+    background-color: #FACF4E;
+    border: 1px solid #333;
+    padding: 5px;
+    max-width: 200px;
+    color: #000000;
+    font-size: 14px;
+    word-break: break-all;
 }

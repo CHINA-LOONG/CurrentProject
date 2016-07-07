@@ -34,8 +34,8 @@ public class UICamera : MonoBehaviour
 			{
 				if (mInst == null)
 				{
-					GameObject prefab =  ResourceMgr.Instance.LoadAsset("camera","UICamera");
-					GameObject go = Instantiate(prefab) as GameObject;
+					GameObject go =  ResourceMgr.Instance.LoadAsset("camera","UICamera");
+					//GameObject go = Instantiate(prefab) as GameObject;
 					go.name = "UICamera";
 					mInst = go.GetComponent<UICamera>();
 					mInst.CameraAttr = go.GetComponent<Camera>();
@@ -51,7 +51,8 @@ public class UICamera : MonoBehaviour
 	
 	public static void DestroyCamera()
 	{
-		Destroy(mInst.gameObject);
+        //Destroy(mInst.gameObject);
+        ResourceMgr.Instance.DestroyAsset(mInst.gameObject);
 		mInst = null;
 	}
 }

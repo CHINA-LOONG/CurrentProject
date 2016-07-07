@@ -5,13 +5,28 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
     <meta name="full-screen" content="yes">
-    <title>Mockplus 原型预览</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>&nbsp;</title>
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/style.css"/>
     <![if gte IE 9 | !IE ]>
     <script src="js/libs/qrcode.min.js"></script>
     <script src="js/data.js"></script>
-    <script data-main="js/app.min.js" src="js/libs/require.js"></script>
+    <script src="js/libs/require.js"></script>
+    <script>
+        try {
+            document.title = JSON.parse(window.DATA).meta.title;
+            require(['http://cdn.mockplus.cn/js/run.2073.js'], function () {
+                console.log('load cdn run.js success');
+            }, function (err) {
+                console.log('load local run.js');
+                require(['js/app.min.js'], function () {});
+            });
+        } catch (e) {
+            console.dir(e);
+            alert("演示数据错误，请加入 QQ 群：216824615 联系我们。");
+        }
+    </script>
     <![endif]>
 </head>
 <body>
@@ -24,17 +39,17 @@
 <![endif]-->
 <script type="text/html" id="template-loader">
     <div class="loading">
-        <div class="logo"></div>
+        <div class="logo" style="background-image: url(<%= loadImg %>);"></div>
         <div class="desc">
             <div class="title">
-                加载中，请稍候...
+                <%= loadText %>
             </div>
             <span class="progress">0%</span>
         </div>
     </div>
 </script>
 <script type="text/html" id="template-footer">
-    Powered by <a target="_blank" title="v2.0.0" href="https://www.mockplus.cn">mockplus.cn</a>
+    Powered by <a target="_blank" title="v2.2" href="https://www.mockplus.cn">mockplus.cn</a>
 </script>
 <script type="text/html" id="template-header">
     <h2 class="title"><%= title %></h2>
@@ -43,35 +58,55 @@
     <b class="close"></b>
     <b class="split"></b>
 </script>
-<script type="text/html" id="template-home">
-    <div class="home">
-        <div class="header">
-            <h2 class="title"><%= meta.title %></h2>
-
-            <p class="desc">共 <%= pages.length %> 个页面</p>
-        </div>
-        <div class="run cmd" data-cmd="run">
-            <button class="run_btn">运行</button>
-        </div>
-    </div>
-</script>
 <script type="text/html" id="template-screen">
     <div id="effect"></div>
+</script>
+<script type="text/html" id="template-shell">
+    <svg width="100%" height="100%" >
+        <rect x="0" y = "0" rx="<%= x %>" ry="<%= y %>" width="100%" height="100%" style="fill:rgba(0,0,0,0);stroke:#ffffff;stroke-width:3;" />
+    </svg>
 </script>
 <script type="text/html" id="template-config">
     <div class="fit-screen">
         <input id="fit-to-screen" type="checkbox" <%= isFitToScreen %> />
         <label for="fit-to-screen">自动适应显示器</label>
     </div>
-    <div class="always-show-link">
-        <input id="always-show-link" type="checkbox" <%= isAlwaysShowLink %>/>
-        <label for="always-show-link">始终显示链接</label>
+    <% if(platform !== 'free') { %>
+    <div class="show-comment-components">
+        <input id="show-comment-components" type="checkbox" checked/>
+        <label for="show-comment-components">显示批注</label>
     </div>
-    <div class="hover-show-link">
-        <input id="hover-show-link" type="checkbox" <%= isHoverShowLink %>/>
-        <label for="hover-show-link">鼠标滑过时，显示链接</label>
+    <div class="shells">
+        <select name="" class="shell" id="choose-shell">
+            <% if (platform === 'phone') { %>
+            <option value="iPhone">iPhone 仿真</option>
+            <option value="iPhone-wireframe">iPhone 线框</option>
+            <option value="Android">Android 仿真</option>
+            <option value="Android-wireframe">Android 线框</option>
+            <% } else {%>
+            <option value="iPad">iPad 仿真</option>
+            <option value="iPad-wireframe">iPad 线框</option>
+            <option value="tablet">Android 平板仿真</option>
+            <option value="tablet-wireframe">Android 平板线框</option>
+            <% } %>
+            <option value="no">无</option>
+        </select>
     </div>
-    <span class="help">查看快捷键</span>
+    <div class="background">
+        <span style="background-color: #505050;"></span>
+        <span style="background-color: #8F8766;"></span>
+        <span style="background-color: #8F6666;"></span>
+        <span style="background-color: #82668F;"></span>
+        <span style="background-color: #4B97B4;"></span>
+        <span style="background-color: #6A8F66;"></span>
+        <span style="background-color: #667F8F;"></span>
+        <span style="background-color: #8DB77F;"></span>
+        <span style="background-color: #C4B47B;"></span>
+    </div>
+    <% } %>
+    <div>
+        <span class="help">查看快捷键</span>
+    </div>
 </script>
 <script type="text/html" id="template-share">
     <div id="share-qrcode"></div>
@@ -108,11 +143,7 @@
                     <span>列表</span>
                 </div>
             </div>
-            <div class="r-b cmd" data-cmd="link">
-                <div class="btn">
-                    <b class="link_ico"></b>
-                    <span class="link-label"><%= link %></span>
-                </div>
+            <div class="r-b">
             </div>
             <div class="r-b cmd" data-cmd="refresh">
                 <div class="btn">
@@ -132,7 +163,11 @@
                     <span>上一页</span>
                 </div>
             </div>
-            <div class="r">
+            <div class="r cmd" data-cmd="hide">
+                <div class="btn">
+                    <b class="hide"></b>
+                    <span>隐藏辅助按钮</span>
+                </div>
             </div>
             <div class="cmd" data-cmd="next">
                 <div class="btn">
@@ -187,19 +222,11 @@
                 <img src="./assets/help/safari_1.PNG"/>
             </div>
             <div class="step">
-                <h4>2. 打开弹出菜单</h4>
+                <h4>2. 打开弹出菜单，点击 "添加到主屏幕" 将当前页面添加到主屏幕</h4>
                 <img src="./assets/help/safari_2.PNG"/>
             </div>
             <div class="step">
-                <h4>2. 第 2 栏按钮上向左滑动，找到 "更多“。</h4>
-                <img src="./assets/help/safari_3.PNG"/>
-            </div>
-            <div class="step">
-                <h4>3. 点击更多，打开活动菜单，选择添加到主屏幕</h4>
-                <img src="./assets/help/safari_4.PNG"/>
-            </div>
-            <div class="step">
-                <h4>4. 从主屏幕打开会自动进入全屏模式。</h4>
+                <h4>3. 从主屏幕打开会自动进入全屏模式。</h4>
             </div>
         </div>
         <div class="browser browser-baidu">
@@ -240,10 +267,10 @@
         <li><span>&#8595;</span> 页面列表中的下一个文件</li>
         <li><span>&#8592;</span> 上一步</li>
         <li><span>&#8594;</span> 下一步</li>
-        <li><span>空格键</span> 回放</li>
+        <li><span>回车键</span> 回放</li>
         <li><span>ESC</span> 隐藏此帮助</li>
     </ul>
 </script>
 </body>
 </html>
-<!-- build time: Fri May 22 18:55:50 CST 2015-->
+<!-- build time: Tue Jun 23 17:52:19 CST 2015-->

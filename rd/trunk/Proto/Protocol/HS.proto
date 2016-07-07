@@ -50,12 +50,14 @@ enum code
 	MONSTER_FEED_S              = 2007;
 
 	// 副本
-	INSTANCE_ENTER_C            = 3001;
-	INSTANCE_ENTER_S            = 3002;
-	INSTANCE_SETTLE_C           = 3003;
-	INSTANCE_SETTLE_S           = 3004;
-	INSTANCE_OPEN_CARD_C        = 3005;
-	INSTANCE_OPEN_CARD_S        = 3006;
+	INSTANCE_ASSIST_C           = 3001;
+	INSTANCE_ASSIST_S           = 3002;
+	INSTANCE_ENTER_C            = 3003;
+	INSTANCE_ENTER_S            = 3004;
+	INSTANCE_SETTLE_C           = 3005;
+	INSTANCE_SETTLE_S           = 3006;
+	INSTANCE_OPEN_CARD_C        = 3007;
+	INSTANCE_OPEN_CARD_S        = 3008;
 
 	// 道具
 	ITEM_USE_C			        = 4001;

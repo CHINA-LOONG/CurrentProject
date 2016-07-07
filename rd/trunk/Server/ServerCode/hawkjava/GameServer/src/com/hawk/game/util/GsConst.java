@@ -135,7 +135,7 @@ public class GsConst {
 		public static final int NORMAL_CYCLE = 1;
 		public static final int DAILY_CYCLE = 2;
 	}
-	
+
 	// 任务类型
 	public static class QuestType {
 		public static final int 	STORY_QUEST = 1;
@@ -163,10 +163,16 @@ public class GsConst {
 		public static final int EQUIP_UP_GOAL = 16;
 		public static final int BUYCOIN_GOAL = 17;
 	}
-	
+
 	// 统计数据类型
 	public static class StatisticsType {
 		public static final int LEVEL_STATISTICS = 1;
 		public static final int OTHER_STATISTICS = 2;
+	}
+
+	// 副本难度
+	public static class InstanceDifficulty {
+		public static final int NORMAL_INSTANCE = 1;
+		public static final int HARD_INSTANCE = 2;
 	}
 }

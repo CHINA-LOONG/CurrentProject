@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -18,8 +19,11 @@ import org.hawk.os.HawkTime;
 import org.hawk.util.HawkJsonUtil;
 
 import com.google.gson.reflect.TypeToken;
+import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.QuestCfg;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.GsConst.Cycle;
 
 /**
@@ -36,6 +40,10 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "playerId", unique = true)
 	private int playerId = 0;
 
+	// 疲劳值
+	@Column(name = "fatigue", nullable = false)
+	private int fatigue = 0;
+	
 	// 任务状态，记录已完成任务Id
 	@Column(name = "questComplete", nullable = false)
 	private String questCompleteJson = "";
@@ -198,27 +206,32 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 每一项刷新时间
 	@Transient
 	protected Map<Integer, Calendar> refreshTimeMap = new HashMap<Integer, Calendar>();
-
 	@Transient
 	protected Set<Integer> questCompleteSet = new HashSet<Integer>();
-
 	@Transient
 	protected Set<Integer> questCompleteDailySet = new HashSet<Integer>();
-
 	@Transient
 	protected Map<String, Integer> instanceStarMap = new HashMap<String, Integer> ();
-	
 	@Transient
 	protected Map<String, Integer> instanceCountDailyMap = new HashMap<String, Integer> ();
-
 	@Transient
 	protected Set<String> monsterCollectSet = new HashSet<String> ();
-
 	@Transient
 	protected Map<Integer, Integer> monsterStageMap = new HashMap<Integer, Integer>();
-
 	@Transient
 	protected Map<Integer, Integer> monsterLevelMap = new HashMap<Integer, Integer>();
+	// 最后普通副本所属章节
+	@Transient
+	protected int normalChapter = 0;
+	// 最后困难副本所属章节
+	@Transient
+	protected int hardChapter = 0;
+	// 最后普通副本章节索引
+	@Transient
+	protected int normalIndex = 0;
+	// 最后困难副本章节索引
+	@Transient
+	protected int hardIndex = 0;
 
 	public StatisticsEntity() {
 		this.createTime = HawkTime.getCalendar();
@@ -253,6 +266,14 @@ public class StatisticsEntity  extends HawkDBEntity {
 		default:
 			break;
 		}
+	}
+
+	public int getFatigue() {
+		return fatigue;
+	}
+	
+	public void setFatigue(int fatigue) {
+		this.fatigue = fatigue;
 	}
 
 	public Set<Integer> getQuestCompleteSet() {
@@ -648,6 +669,22 @@ public class StatisticsEntity  extends HawkDBEntity {
 		totalOnlineTime += onlineTime;
 	}
 
+	public int getNormalInstanceChapter() {
+		return normalChapter;
+	}
+
+	public int getNormalInstanceIndex() {
+		return normalIndex;
+	}
+
+	public int getHardInstanceChapter() {
+		return hardChapter;
+	}
+
+	public int getHardInstanceIndex() {
+		return hardIndex;
+	}
+
 	@Override
 	public boolean assemble() {
 		refreshTimeMap.put(GsConst.RefreshType.DAILY_PERS_REFRESH, dailyRefreshTime);
@@ -672,6 +709,39 @@ public class StatisticsEntity  extends HawkDBEntity {
 		}
 		if (monsterLevelJson != null && false == "".equals(monsterLevelJson) && false == "null".equals(monsterLevelJson)) {
 			monsterLevelMap = HawkJsonUtil.getJsonInstance().fromJson(monsterLevelJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
+		}
+		
+		// 0表示未开始任何章节
+		normalChapter = 0;
+		hardChapter = 0;
+		// 0表示第一个副本
+		normalIndex = 0;
+		hardIndex = 0;
+		for (Entry<String, Integer> entry : instanceStarMap.entrySet()) {
+			InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, entry.getKey());
+			if (entryCfg != null) {
+				if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+					int chapter = entryCfg.getChapter();
+					if (chapter > normalChapter) {
+						normalChapter = chapter;
+						normalIndex = 0;
+					}
+					int index = InstanceUtil.getInstanceChapterIndex(entryCfg.getInstanceId());
+					if (index > normalIndex) {
+						normalIndex = index;
+					}
+				} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+					int chapter = entryCfg.getChapter();
+					if (chapter > hardChapter) {
+						hardChapter = chapter;
+						hardIndex = 0;
+					}
+					int index = InstanceUtil.getInstanceChapterIndex(entryCfg.getInstanceId());
+					if (index > hardIndex) {
+						hardIndex = index;
+					}
+				}
+			}
 		}
 
 		return true;

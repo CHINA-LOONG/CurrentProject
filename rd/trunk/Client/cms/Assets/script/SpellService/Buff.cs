@@ -89,7 +89,7 @@ public class Buff
             return;
         }
 
-        List<Buff> buffList = spellService.GetUnit(targetID).buffList;
+        //List<Buff> buffList = spellService.GetUnit(targetID).buffList;
 
         //hot and dot
         ++periodCount;

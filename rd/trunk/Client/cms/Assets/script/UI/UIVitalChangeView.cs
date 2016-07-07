@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-
 public class UIVitalChangeView : MonoBehaviour
 {
     //TODO: fontsettings have default mat
@@ -102,7 +101,8 @@ public class UIVitalChangeView : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnAnimationFinish()
     {
-        Destroy(gameObject);
+		//Destroy(gameObject);
+		ResourceMgr.Instance.DestroyAsset(gameObject);
     }
     //---------------------------------------------------------------------------------------------
 }

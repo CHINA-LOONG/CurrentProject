@@ -34,8 +34,8 @@ public class UIMgr : MonoBehaviour
 		{
 			if (mInst == null)
 			{
-				Object r = ResourceMgr.Instance.LoadAsset ("ui/root", "UIRoot"); 
-				GameObject ui = Instantiate(r) as GameObject;
+				//Object r = ResourceMgr.Instance.LoadAsset ("ui/root", "UIRoot");
+				GameObject ui = ResourceMgr.Instance.LoadAsset("ui/root", "UIRoot");
 				ui.name = "UIMgr";
 				mInst = ui.AddComponent<UIMgr>();
 			}
@@ -62,12 +62,12 @@ public class UIMgr : MonoBehaviour
 
 	public GameObject OpenUI(string assertName, string uiName)
 	{
-		Object r = ResourceMgr.Instance.LoadAsset (assertName, uiName);
-		if (null == r) 
+		GameObject ui = ResourceMgr.Instance.LoadAsset(assertName, uiName);
+		if (null == ui) 
 		{
 			return null;
 		}
-		GameObject ui = Instantiate(r) as GameObject;
+		//GameObject ui = Instantiate(r) as GameObject;
 
 		RectTransform rt = ui.transform as RectTransform;
 
@@ -90,7 +90,8 @@ public class UIMgr : MonoBehaviour
 
 	public void CloseUI(UIBase vb)
 	{
-		Destroy(vb.gameObject);
+		//Destroy(vb.gameObject);
+		ResourceMgr.Instance.DestroyAsset(vb.gameObject);
 	}
 
 	public void CloseUI(string name)
@@ -100,7 +101,8 @@ public class UIMgr : MonoBehaviour
 		{
 			if (vb.GetType().Name == name)
 			{
-				Destroy(vb.gameObject);
+				//Destroy(vb.gameObject);
+				ResourceMgr.Instance.DestroyAsset(vb.gameObject);
 			}
 		}
 	}

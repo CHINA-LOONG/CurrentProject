@@ -67,11 +67,11 @@ public class SimpleEffect : MonoBehaviour
 	public void ShowEffect(string assetName, string prefabName)
 	{
 		DeleteEffect (prefabName);
-		GameObject prefab = ResourceMgr.Instance.LoadAsset(assetName,prefabName) as GameObject;
+		//GameObject prefab = ResourceMgr.Instance.LoadAsset(assetName,prefabName) as GameObject;
 		
-		if(prefab != null)
+		//if(prefab != null)
 		{
-			GameObject go = Instantiate (prefab) as GameObject;
+            GameObject go = ResourceMgr.Instance.LoadAsset(assetName, prefabName);
 			go.name = prefabName;
 			go.transform.SetParent(transform);
 			go.transform.localPosition = Vector3.zero;
@@ -96,8 +96,8 @@ public class SimpleEffect : MonoBehaviour
 	{
 		GameObject oldEffect = Util.FindChildByName (gameObject, prefabName);
 		if(null != oldEffect)
-		{
-			Destroy(oldEffect);
+        {
+            ResourceMgr.Instance.DestroyAsset(oldEffect);
 		}
 	}
 

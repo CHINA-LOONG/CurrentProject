@@ -7,8 +7,8 @@ public class WeakpointFireEffect : MonoBehaviour
 	public	GameObject effectObject;
 	public void Init()
 	{
-		GameObject prefab = ResourceMgr.Instance.LoadAsset ("effect/battle", "baozha_fire");
-		effectObject = Instantiate (prefab) as GameObject;
+		effectObject = ResourceMgr.Instance.LoadAsset ("effect/battle", "baozha_fire");
+		//effectObject = Instantiate (prefab) as GameObject;
 		if (null == effectObject)
 		{
 			Logger.LogError("can't load weakpointFire");

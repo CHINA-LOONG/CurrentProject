@@ -36,8 +36,8 @@ public class BattleCamera : MonoBehaviour
 			GameObject go = GameObject.Find("BattleCamera");
 			if(go == null)
 			{
-				GameObject prefab =  ResourceMgr.Instance.LoadAsset("camera","BattleCamera");
-				go = Instantiate(prefab) as GameObject;
+				go =  ResourceMgr.Instance.LoadAsset("camera","BattleCamera");
+				//go = Instantiate(prefab) as GameObject;
 				go.name = "BattleCamera";
 			}
 			mInst = go.GetComponent<BattleCamera>();
@@ -58,7 +58,9 @@ public class BattleCamera : MonoBehaviour
 
 	public static void DestroyCamera()
 	{
-		Destroy(mInst.gameObject);
+		//Destroy(mInst.gameObject);
+        //TODO: camera may not need pool
+        ResourceMgr.Instance.DestroyAsset(mInst.gameObject);
 		mInst = null;
 	}
 }

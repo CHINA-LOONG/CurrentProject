@@ -19,15 +19,16 @@ public class PetSwitchPage : MonoBehaviour
     {
         if (items.Count != 3)
         {
-            var prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "petItem");
+            //var prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "petItem");
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < BattleConst.maxFieldUnit; i++)
             {
-                var item = Instantiate(prefab);
+                //TODO: batch load
+                var item = ResourceMgr.Instance.LoadAsset("ui/battle", "petItem");
                 item.transform.SetParent(gameObject.transform, false);
 
-                var trans = item.GetComponent<RectTransform>();
-                trans.anchoredPosition += new Vector2(100 * i, 0);
+                //var trans = item.GetComponent<RectTransform>();
+                //trans.anchoredPosition += new Vector2(100 * i, 0);
 
                 var com = item.GetComponent<PetSwitchItem>();
 

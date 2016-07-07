@@ -8,8 +8,8 @@ public class FindFinishedWeakpointEffect : MonoBehaviour
 
 	public void Init(string assertName,string prefabName)
 	{
-		GameObject prefab = ResourceMgr.Instance.LoadAsset (assertName, prefabName);
-		effectObject = Instantiate (prefab) as GameObject;
+		effectObject = ResourceMgr.Instance.LoadAsset(assertName, prefabName);
+		//effectObject = Instantiate (prefab) as GameObject;
 		if (null == effectObject)
 			return;
 		

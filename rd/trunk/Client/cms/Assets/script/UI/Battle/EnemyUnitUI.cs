@@ -66,8 +66,7 @@ public class EnemyUnitUI : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void Destroy()
     {
-        //TODO: use resourcemanager
-        Destroy(gameObject);
+        ResourceMgr.Instance.DestroyAsset(gameObject);
     }
     //---------------------------------------------------------------------------------------------
     void RefreshPos()

@@ -53,7 +53,7 @@ public class ObjectDataMgr : MonoBehaviour
         BattleObject bo = null;
         if (battleObjectList.TryGetValue(guid, out bo) == true)
         {
-            ResourceMgr.Instance.DestroyAsset(bo.gameObject, bo.type == BattleObjectType.Unit);
+            ResourceMgr.Instance.DestroyAsset(bo.gameObject, bo.type != BattleObjectType.Scene);
 
             battleObjectList.Remove(guid);
         }
@@ -61,8 +61,7 @@ public class ObjectDataMgr : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public BattleObject CreateBattleObject(GameUnit unit, GameObject parent, Vector3 pos, Quaternion rot)
     {
-        var go = ResourceMgr.Instance.LoadAsset("monster", unit.assetID);
-        GameObject unitObject = GameObject.Instantiate(go);
+        GameObject unitObject = ResourceMgr.Instance.LoadAsset("monster", unit.assetID);
         if (parent != null)
         {
             unitObject.transform.parent = parent.transform;
@@ -89,8 +88,7 @@ public class ObjectDataMgr : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public BattleObject CreateSceneObject(int guid, string bundleName, string prefab)
     {
-        var go = ResourceMgr.Instance.LoadAsset(bundleName, prefab);
-        GameObject sceneObj = GameObject.Instantiate(go);
+        GameObject sceneObj = ResourceMgr.Instance.LoadAsset(bundleName, prefab, false);
         BattleObject bo = sceneObj.AddComponent<BattleObject>();
         bo.guid = guid;
         bo.type = BattleObjectType.Scene;

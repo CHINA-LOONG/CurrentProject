@@ -17,11 +17,13 @@ import org.slf4j.LoggerFactory;
 
 import com.hawk.game.config.InstanceCfg;
 import com.hawk.game.config.InstanceDropCfg;
+import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.InstanceRewardCfg;
 import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.RewardGroupCfg;
 import com.hawk.game.entity.MonsterEntity;
+import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ItemInfo;
@@ -33,6 +35,8 @@ import com.hawk.game.protocol.Const.BattleType;
 import com.hawk.game.protocol.Const.itemType;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Instance.HSBattle;
+import com.hawk.game.protocol.Instance.HSInstanceAssist;
+import com.hawk.game.protocol.Instance.HSInstanceAssistRet;
 import com.hawk.game.protocol.Instance.HSInstanceEnter;
 import com.hawk.game.protocol.Instance.HSInstanceEnterRet;
 import com.hawk.game.protocol.Instance.HSInstanceOpenCard;
@@ -43,7 +47,9 @@ import com.hawk.game.protocol.Reward.HSRewardInfo;
 import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.ProtoUtil;
+import com.hawk.game.util.InstanceUtil.InstanceChapter;
 
 public class PlayerInstanceModule extends PlayerModule {
 
@@ -65,7 +71,23 @@ public class PlayerInstanceModule extends PlayerModule {
 		battleDropList = new ArrayList<List<ItemInfo>>();
 		cardRewardList = new ArrayList<ItemInfo>();
 	}
-	
+
+	/**
+	 * 获取助战列表
+	 */
+	@ProtocolHandler(code = HS.code.INSTANCE_ASSIST_C_VALUE)
+	private boolean onInstanceAssist(HawkProtocol cmd) {
+		HSInstanceAssist protocol = cmd.parseProtocol(HSInstanceAssist.getDefaultInstance());
+		int hsCode = cmd.getType();
+		
+		// TODO
+		
+		HSInstanceAssistRet.Builder response = HSInstanceAssistRet.newBuilder();
+		//response.addAllAssist(values);
+		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_ASSIST_S, response));
+		return true;
+	}
+
 	/**
 	 * 副本进入
 	 */
@@ -75,9 +97,68 @@ public class PlayerInstanceModule extends PlayerModule {
 		int hsCode = cmd.getType();
 		String cfgId = protocol.getCfgId();
 
-		// TODO: 检测条件
+		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, cfgId);
+		if (entryCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_ERROR);
+			return false;
+		}
+		
+		int chapterId = entryCfg.getChapter();
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		Map<Integer, InstanceChapter> chapterMap = InstanceUtil.getInstanceChapterMap();
+		InstanceChapter chapter = chapterMap.get(chapterId);
+		
+		// 章节已开启，前置副本完成
+		// 精英副本，必须通关普通章节
+		if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+			int index = chapter.normalList.indexOf(entryCfg);
+			int size = chapter.normalList.size();
+			int curChapterId = statisticsEntity.getNormalInstanceChapter();
+			int curIndex = statisticsEntity.getNormalInstanceIndex();
+			
+			if ((chapterId > curChapterId && (index != size - 1 || chapterId > curChapterId + 1)) ||
+					(chapterId == curChapterId && index > curIndex + 1)) {
+				sendError(hsCode, Status.instanceError.INSTANCE_NOT_OPEN);
+				return false;
+			}
+		} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+			int normalSize = chapter.normalList.size();
+			int normalCurChapterId = statisticsEntity.getNormalInstanceChapter();
+			int normalCurIndex = statisticsEntity.getNormalInstanceIndex();
+			int hardIndex = chapter.hardList.indexOf(entryCfg);
+			int hardSize = chapter.hardList.size();
+			int hardCurChapterId = statisticsEntity.getHardInstanceChapter();
+			int hardCurIndex = statisticsEntity.getHardInstanceIndex();
+
+			if ((chapterId > normalCurChapterId) ||
+					(chapterId == normalCurChapterId && normalCurIndex != normalSize - 1) ||
+					(chapterId > hardCurChapterId && (hardIndex != hardSize - 1 || chapterId > hardCurChapterId + 1)) ||
+					(chapterId == hardCurChapterId && hardIndex > hardCurIndex + 1)) {
+				sendError(hsCode, Status.instanceError.INSTANCE_NOT_OPEN);
+				return false;
+			}
+		}
+
+		// 副本等级
+		if (player.getLevel() < entryCfg.getLevel()) {
+			sendError(hsCode, Status.instanceError.INSTANCE_LEVEL);
+			return false;
+		}
+		
+		// 次数
+		if (statisticsEntity.getInstanceCountDaily(cfgId) >= entryCfg.getCount()) {
+			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
+			return false;
+		}
+		
+		// 体力
+		if (statisticsEntity.getFatigue() < entryCfg.getFatigue()) {
+			sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
+			return false;
+		}
+		
 		InstanceCfg instanceCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, cfgId);
-		if(instanceCfg == null) {
+		if (instanceCfg == null) {
 			sendError(hsCode, Status.error.CONFIG_ERROR);
 			return false;
 		}
@@ -156,10 +237,11 @@ public class PlayerInstanceModule extends PlayerModule {
 			this.battleList.add(rareBattle.build());
 		}		
 
-		// 体力修改
-//		PlayerEntity playerEntity = player.getPlayerData().getPlayerEntity();
-		int fatigueChange = 0;
-//		playerEntity.notifyUpdate(true);
+		// 体力和次数修改
+		int fatigueChange = entryCfg.getFatigue();
+		statisticsEntity.setFatigue(statisticsEntity.getFatigue() - fatigueChange);
+		statisticsEntity.addInstanceCountDaily(cfgId, statisticsEntity.getInstanceCountDaily(cfgId) + 1);
+		statisticsEntity.notifyUpdate(true);
 
 		HSInstanceEnterRet.Builder response = HSInstanceEnterRet.newBuilder();
 		response.setStatus(Status.error.NONE_ERROR_VALUE);
@@ -212,7 +294,7 @@ public class PlayerInstanceModule extends PlayerModule {
 				dropCompleteReward.addItemInfos(list);
 				completeReward.addItemInfos(list);
 			}
-			
+
 			// 生成翻牌奖励
 			RewardGroupCfg starRewardCfg = instanceRewardCfg.getStarRewardGroup(starCount);
 			for (int i = 0; i  < GsConst.INSTANCE_CARD_COUNT; ++i) {
@@ -225,7 +307,27 @@ public class PlayerInstanceModule extends PlayerModule {
 					cardList.add(convertor.getBuilder().getRewardItemsList().get(0));
 				}
 			}
+
+			// 记录副本进度
+			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+			int oldStar = statisticsEntity.getInstanceStar(instanceId);
+			if (starCount > oldStar) {
+				statisticsEntity.addInstanceStar(instanceId, starCount);
+			}
+
+			statisticsEntity.addInstanceAllCount();
+			statisticsEntity.addInstanceAllCountDaily();
+
+			InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
+			if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+				statisticsEntity.addHardCount();
+				statisticsEntity.addHardCountDaily();
+			}
+
+			statisticsEntity.notifyUpdate(true);	
 		}
+
+		// TODO: 体力扣除
 
 		// 发放掉落奖励和完成奖励
 		dropCompleteReward.rewardTakeAffectAndPush(player,  Action.INSTACE_SETTLE);
@@ -279,7 +381,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		
 		return true;
 	}
-	
+
 	@Override
 	protected boolean onPlayerLogin() {
 		// 清空上次副本数据

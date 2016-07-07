@@ -22,7 +22,8 @@ public class BattleObject : MonoBehaviour
     public List<ActorEventData> activeEventList = new List<ActorEventData>();
     public List<ActorEventData> waitEventList = new List<ActorEventData>();
 
-	public SimpleEffect shifaNodeEffect;
+    public SimpleEffect shifaNodeEffect;
+    private Quaternion targetRot;
 
     //---------------------------------------------------------------------------------------------
     void Awake()
@@ -65,7 +66,7 @@ public class BattleObject : MonoBehaviour
                     curEventData = activeEventList[i];
                     if (curEventData.particleAsset == srcEvent.particleAsset)
                     {
-                        Destroy(curEventData.psObject);
+                        ResourceMgr.Instance.DestroyAsset(curEventData.psObject);
                         activeEventList.RemoveAt(i);
                         break;
                     }
@@ -82,20 +83,36 @@ public class BattleObject : MonoBehaviour
         {
             gameObject.SetActive(true);
             GameObject slotNode = BattleController.Instance.GetSlotNode(camp, unit.pbUnit.slot, unit.isBoss);
-            transform.position = slotNode.transform.position;
-            transform.rotation = slotNode.transform.rotation;
+            transform.localPosition = slotNode.transform.position;
+            transform.localRotation = slotNode.transform.rotation;
             transform.localScale = slotNode.transform.localScale;
-            gameObject.transform.SetParent(GameMain.Instance.transform);
+            targetRot = gameObject.transform.localRotation;
+            gameObject.transform.SetParent(GameMain.Instance.transform, false);
             if (camp == UnitCamp.Enemy)
             {
                 GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.LoadBattleObjectFinished, this);
             }
-
         }
 
         unit.ReCalcSpeed();
 
         Logger.LogFormat("Unit {0} guid:{1} has entered field", name, guid);
+    }
+    //---------------------------------------------------------------------------------------------
+    public void SetTargetRotate(Quaternion rot, bool reset)
+    {
+        if (type == BattleObjectType.Scene)
+            return;
+
+        if (reset == false)
+        {
+            targetRot = rot;
+        }
+        else
+        {
+            GameObject slotNode = BattleController.Instance.GetSlotNode(camp, unit.pbUnit.slot, unit.isBoss);
+            targetRot = slotNode.transform.rotation;
+        }
     }
     //---------------------------------------------------------------------------------------------
     public void OnExitField()
@@ -128,7 +145,7 @@ public class BattleObject : MonoBehaviour
             {
                 if (curEventData.psDuration >= 0.0f && Time.time - curEventData.triggerTime >= curEventData.psDuration)
                 {
-                    Destroy(curEventData.psObject);
+                    ResourceMgr.Instance.DestroyAsset(curEventData.psObject);
                     activeEventList.RemoveAt(i);
                 }
             }
@@ -136,6 +153,13 @@ public class BattleObject : MonoBehaviour
             {
                 activeEventList.RemoveAt(i);
             }
+        }
+
+        if (type == BattleObjectType.Unit && false)
+        {
+            float step = BattleConst.unitRotSpeed * Time.deltaTime;
+            //transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRot, step);
+            transform.localRotation = Quaternion.Lerp(transform.rotation, targetRot, step);
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -148,7 +172,7 @@ public class BattleObject : MonoBehaviour
             curEventData = activeEventList[i];
             if (curEventData.psObject != null)
             {
-                Destroy(curEventData.psObject);
+                ResourceMgr.Instance.DestroyAsset(curEventData.psObject);
             }
         }
         activeEventList.Clear();
@@ -161,10 +185,6 @@ public class BattleObject : MonoBehaviour
         for (int i = waitEventList.Count - 1; i >= 0; --i)
         {
             curEvent = waitEventList[i];
-            if (curEvent.id == "magicWaterMediume2")
-            {
-                int a = 0;
-            }
             if (curEvent.triggerTime <= curTime)
             {
                 activeEventList.Add(curEvent);
@@ -190,7 +210,7 @@ public class BattleObject : MonoBehaviour
                     GameObject prefab = ResourceMgr.Instance.LoadAsset(curEvent.particleBundle, curEvent.particleAsset);
                     if (prefab != null)
                     {
-                        curEvent.psObject = GameObject.Instantiate(prefab);
+                        curEvent.psObject = prefab;
                         Transform rootTransform = transform;
                         if (curEvent.rootNode != null && curEvent.rootNode.Length > 0)
                         {
@@ -272,8 +292,8 @@ public class BattleObject : MonoBehaviour
 			string deadPrefabName = rowData.deadEffect;
 			if(!string.IsNullOrEmpty(deadPrefabName))
 			{
-				GameObject prefab = ResourceMgr.Instance.LoadAsset ("effect/battle",deadPrefabName);//
-				GameObject effectObject = Instantiate (prefab) as GameObject;
+                GameObject effectObject = ResourceMgr.Instance.LoadAsset("effect/battle", deadPrefabName);//
+                //GameObject effectObject = Instantiate(prefab) as GameObject;
 				if (null != effectObject)
 				{
 					effectObject.transform.SetParent (effectGo.transform);

@@ -85,8 +85,8 @@ public class BattleUnitUI : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void Destroy()
     {
-        //TODO: use resourcemanager
-        Destroy(gameObject);
+        ResourceMgr.Instance.DestroyAsset(gameObject);
+        //Destroy(gameObject);
     }
     //---------------------------------------------------------------------------------------------
     void OnDazhaoClick(GameObject go)

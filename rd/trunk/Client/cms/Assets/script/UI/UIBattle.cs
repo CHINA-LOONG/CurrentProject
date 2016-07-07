@@ -105,8 +105,8 @@ public class UIBattle : UIBase
 
     public void ShowStartBattleUI()
     {
-        GameObject starBattlePrefab = ResourceMgr.Instance.LoadAsset("ui/battle", "startBattle") as GameObject;
-        startBattleUI = Instantiate(starBattlePrefab) as GameObject;
+        //GameObject starBattlePrefab = ResourceMgr.Instance.LoadAsset("ui/battle", "startBattle") as GameObject;
+        startBattleUI = ResourceMgr.Instance.LoadAsset("ui/battle", "startBattle");
         startBattleUI.transform.SetParent(publicTopGroup, false);
         //Animator startBattleUIAni = startBattleUI.GetComponent<Animator>();
         //startBattleUIAni.gameObject.SetActive(true);
@@ -114,13 +114,13 @@ public class UIBattle : UIBase
 
     public void DestroyStartBattleUI()
     {
-        Destroy(startBattleUI);
+        ResourceMgr.Instance.DestroyAsset(startBattleUI);
     }
 
     public void ShowEndBattleUI(bool success)
     {
-        GameObject endBattlePrefab = ResourceMgr.Instance.LoadAsset("ui/battle", "endBattle") as GameObject;
-        endBattleUI = Instantiate(endBattlePrefab) as GameObject;
+        //GameObject endBattlePrefab = ResourceMgr.Instance.LoadAsset("ui/battle", "endBattle") as GameObject;
+        endBattleUI = ResourceMgr.Instance.LoadAsset("ui/battle", "endBattle");
         endBattleUI.transform.SetParent(publicTopGroup, false);
         Image endImage = endBattleUI.GetComponent<Image>();
         if (success)
@@ -135,7 +135,7 @@ public class UIBattle : UIBase
 
     public void DestroyEndBattleUI()
     {
-        Destroy(endBattleUI);
+        ResourceMgr.Instance.DestroyAsset(endBattleUI);
     }
 
     public void ChangeBuffState(SpellBuffArgs args)
@@ -157,8 +157,8 @@ public class UIBattle : UIBase
     {
         m_PlayerGroupUI.ChangeLife(lifeChange);
 
-        GameObject prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "VitalChange");
-        GameObject go = Instantiate(prefab) as GameObject;
+        //GameObject prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "VitalChange");
+        GameObject go = ResourceMgr.Instance.LoadAsset("ui/battle", "VitalChange");
         UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
         uiVitalChangeView.ShowVitalChange(lifeChange, gameObject.transform as RectTransform);
     }
@@ -178,7 +178,7 @@ public class UIBattle : UIBase
 		gameObject.SetActive (ishow);
         if (ishow == false)
         {
-            gameObject.BroadcastMessage("OnAnimationFinish");
+            gameObject.BroadcastMessage("OnAnimationFinish", SendMessageOptions.DontRequireReceiver);
         }
 	}
 
@@ -230,8 +230,8 @@ public class UIBattle : UIBase
 
 	void InitMirrorImage()
 	{
-		GameObject prefab = ResourceMgr.Instance.LoadAsset ("ui/findmonsterinfo", "MirrorFindMonsterInfo");
-		GameObject go = Instantiate (prefab) as GameObject;
+        GameObject go = ResourceMgr.Instance.LoadAsset("ui/findmonsterinfo", "MirrorFindMonsterInfo");
+		//GameObject go = Instantiate (prefab) as GameObject;
 		go.transform.SetParent (m_MirrorImage.gameObject.transform,false);
 		MirrorFindMonsterInfo mminfo = go.GetComponent<MirrorFindMonsterInfo> ();
 		mminfo.Init ();
@@ -248,8 +248,8 @@ public class UIBattle : UIBase
 
 	void InitDazhaoTip()
 	{
-		GameObject prefab = ResourceMgr.Instance.LoadAsset ("ui/dazhaotip", "dazhaoTip") as GameObject;
-		GameObject go = Instantiate (prefab) as GameObject;
+		GameObject go = ResourceMgr.Instance.LoadAsset ("ui/dazhaotip", "dazhaoTip");
+		//GameObject go = Instantiate (prefab) as GameObject;
 		go.transform.SetParent (dazhaoGroup.transform, false);
 		dazhaoTip = go.GetComponent<DazhaoTip> ();
 		dazhaoTip.Hide ();
@@ -349,7 +349,7 @@ public class UIBattle : UIBase
 
     void OnHideSwitchPetUI(int targetId)
     {
-        if (m_PetPanel.Hide(targetId)) ;
+        m_PetPanel.Hide(targetId);
             //GameEventMgr.Instance.RemoveListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
     }
 

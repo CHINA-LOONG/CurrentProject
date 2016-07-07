@@ -33,8 +33,8 @@ public class UIFazhen : UIBase
 		int index = Random.Range (0, fazhenCount);
 		string prefabName = "fazhenStyle_" + index.ToString ();
 
-		GameObject prefab = ResourceMgr.Instance.LoadAsset ("battle/fazhen", prefabName) as GameObject;
-		GameObject fazhenGo = Instantiate (prefab) as GameObject;
+		//GameObject prefab = ResourceMgr.Instance.LoadAsset ("battle/fazhen", prefabName) as GameObject;
+		GameObject fazhenGo = ResourceMgr.Instance.LoadAsset("battle/fazhen", prefabName);
 
 		fazhenGo.transform.SetParent (this.transform, false);
 
