@@ -139,7 +139,6 @@ public class TimeUtil {
 				return false;
 			}
 
-			nextRefreshTime.set(Calendar.SECOND, 0);
 			nextRefreshTime.set(Calendar.MINUTE, minute);
 			break;
 
@@ -151,7 +150,6 @@ public class TimeUtil {
 				return false;
 			}
 
-			nextRefreshTime.set(Calendar.SECOND, 0);
 			nextRefreshTime.set(Calendar.MINUTE, minute);
 			nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
 			break;
@@ -164,7 +162,6 @@ public class TimeUtil {
 				return false;
 			}
 
-			nextRefreshTime.set(Calendar.SECOND, 0);
 			nextRefreshTime.set(Calendar.MINUTE, minute);
 			nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
 			nextRefreshTime.set(Calendar.DAY_OF_WEEK, dayOfWeek);
@@ -175,14 +172,12 @@ public class TimeUtil {
 				return false;
 			}
 
-			nextRefreshTime.set(Calendar.SECOND, 0);
 			nextRefreshTime.set(Calendar.MINUTE, minute);
 			nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
 			nextRefreshTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 			break;
 
 		case Calendar.MONTH:
-			nextRefreshTime.set(Calendar.SECOND, 0);
 			nextRefreshTime.set(Calendar.MINUTE, minute);
 			nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
 			if (dayOfWeek != TimeCfg.NO_VALUE) {
@@ -194,7 +189,6 @@ public class TimeUtil {
 			break;
 
 		case Calendar.YEAR:
-			nextRefreshTime.set(Calendar.SECOND, 0);
 			nextRefreshTime.set(Calendar.MINUTE, minute);
 			nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
 			if (dayOfWeek != TimeCfg.NO_VALUE) {
@@ -210,6 +204,10 @@ public class TimeUtil {
 			break;
 		}
 
+		// 最小尺度为分，秒和毫秒设为0
+		nextRefreshTime.set(Calendar.SECOND, 0);
+		nextRefreshTime.set(Calendar.MILLISECOND, 0);
+		
 		// 如果下次刷新时间>当前时间，减1个周期
 		if (nextRefreshTime.compareTo(curTime) >= 0) {
 			// 固定时间没有周期

@@ -53,7 +53,7 @@ public static class BossScript
         var bossUnit = BattleController.Instance.BattleGroup.EnemyFieldList[1].unit;
         if (bossUnit != null)
         {
-            if (bossUnit.curLife < bossUnit.maxLife * 0.2f)
+            if (bossUnit.curLife < bossUnit.maxLife * 0.0f)
                 return 1;
         }
         return BattleConst.processContinueRet;

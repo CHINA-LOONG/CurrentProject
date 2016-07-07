@@ -88,4 +88,5 @@ enum code
 	QUEST_SUBMIT_S              = 5002;
 	QUEST_ACCEPT_S              = 5003;
 	QUEST_UPDATE_S              = 5004;
+	QUEST_REMOVE_S              = 5005;
 }

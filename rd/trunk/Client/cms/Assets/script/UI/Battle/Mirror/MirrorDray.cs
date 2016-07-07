@@ -151,6 +151,10 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 						{
 							finishFindTargett.Add(subTarget);
 						}
+						else if (subTarget.isSelf && battleObject.unit.isVisible)
+						{
+							finishFindTargett.Add(subTarget);
+						}
 					}
 					else
 					{

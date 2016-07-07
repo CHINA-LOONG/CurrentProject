@@ -386,7 +386,7 @@ public class BattleUnitAi : MonoBehaviour {
 
 	AiAttackStyle GetAttackStyle(GameUnit battleUnit)
     {
-        if (battleUnit.dazhao > 0)
+        if (battleUnit.dazhao > 0 && battleUnit.dazhaoPrepareCount == 0)
         {
             return AiAttackStyle.Dazhao;
         }

@@ -41,22 +41,22 @@ public class JiuWeiHuUnitAi : MonoBehaviour {
 		}
 
 		int i = 1;
-		if (GetAttackCount(jiuWeihuUnit) % 3 == 0 && count == 4) 
+		if (GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 4) 
 		{
 			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu4", out useSpell);
 			attackResult.attackTarget = jiuWeihuUnit;
 		}
-		else if(GetAttackCount(jiuWeihuUnit) % 3 == 0 && count == 3) 
+		else if(GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 3) 
 		{
 			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu3", out useSpell);
 			attackResult.attackTarget = jiuWeihuUnit;
 		}
-		else if(GetAttackCount(jiuWeihuUnit) % 3 == 0 && count == 2) 
+		else if(GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 2) 
 		{
 			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu2", out useSpell);
 			attackResult.attackTarget = jiuWeihuUnit;
 		}
-		else if(GetAttackCount(jiuWeihuUnit) % 3 == 0 && count == 1) 
+		else if(GetAttackCount(jiuWeihuUnit) % 10 == 0 && count == 1) 
 		{
 			jiuWeihuSpellDic.TryGetValue ("bossJiuweihu1", out useSpell);
 			attackResult.attackTarget = jiuWeihuUnit;

@@ -76,7 +76,7 @@ public class PhyDazhaoController : MonoBehaviour
 			Destroy(dazhaoExitCheck);
 			dazhaoExitCheck = null;
 		}
-		dazhaoExitCheck = casterGo.gameObject.GetComponent<DazhaoExitCheck>();
+		dazhaoExitCheck = casterGo.gameObject.AddComponent<DazhaoExitCheck>();
 	}
 
 	public void RunActionWithDazhao(BattleObject casterGo)
@@ -188,7 +188,7 @@ public class PhyDazhaoController : MonoBehaviour
 			//casterBattleGo.TriggerEvent("",Time.time,null);
 
 			SpellVitalChangeArgs args = new SpellVitalChangeArgs();
-			args.vitalType = (int)VitalType.Vital_Type_Miss;
+            args.vitalType = (int)VitalType.Vital_Type_Interrupt;
 			args.triggerTime = Time.time;
 			args.casterID = 0;
 			args.targetID = casterBattleGo.guid;
@@ -257,6 +257,19 @@ public class PhyDazhaoController : MonoBehaviour
 		GameEventMgr.Instance.FireEvent(GameEventList.HideDazhaoTip);
 	}
 
+
+	public void ClearAll()
+	{
+		if (dazhaoState != DazhaoState.Finished)
+		{
+			dazhaoState = DazhaoState.Finished;
+
+			if(casterBattleGo.shifaNodeEffect !=null)
+			{
+				casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+			}
+		}
+	}
 
 	public void DazhaoAttackFinished(int casterID)
 	{

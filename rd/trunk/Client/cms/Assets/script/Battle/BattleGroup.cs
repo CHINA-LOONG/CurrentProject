@@ -121,23 +121,43 @@ public class BattleGroup
 
     public BattleObject GetNextMoveUnit()
     {
-        BattleObject fastestUnit = null;
-        float fastestOrder = 10000;
+        //check if enemy is preparing dazhao, only enemy need do this
         for (int i = 0; i < enemyField.Length; i++)
         {
             var bo = enemyField[i];
-            if (bo != null && bo.unit.curLife > 0 && bo.unit.ActionOrder < fastestOrder && bo.unit.isVisible)
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.dazhao > 0)
+            {
+                if (--bo.unit.dazhaoPrepareCount == 0)
+                {
+                    return bo;
+                }
+            }
+        }
+
+        BattleObject fastestUnit = null;
+        float fastestOrder = BattleConst.maxSpeed;
+        for (int i = 0; i < enemyField.Length; i++)
+        {
+            var bo = enemyField[i];
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.ActionOrder < fastestOrder && bo.unit.isVisible && bo.unit.dazhao == 0)
             {
                 fastestUnit = bo;
                 fastestOrder = bo.unit.ActionOrder;
             }
         }
 
+		var shifaBo = MagicDazhaoController.Instance.GetCasterBattleObj ();
         for (int i = 0; i < playerField.Length; i++)
         {
             var bo = playerField[i];
             if (bo != null && bo.unit.curLife > 0 && bo.unit.ActionOrder < fastestOrder && bo.unit.isVisible)
             {
+				//施法对象不参与行动序列
+				if(null != shifaBo && shifaBo.guid == bo.guid)
+				{
+					continue;
+				}
+
                 fastestUnit = bo;
                 fastestOrder = bo.unit.ActionOrder;
             }

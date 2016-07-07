@@ -56,11 +56,13 @@ public class BattleProcess : MonoBehaviour
     //histroy
     //TODO: use multimap
     float lastUpdateTime;
+    //TODO: add battleobject event to here for record
     List<SpellFireArgs> spellEventList = new List<SpellFireArgs>();
     List<SpellVitalChangeArgs> lifeChangeEventList = new List<SpellVitalChangeArgs>();
     List<SpellVitalChangeArgs> energyEventList = new List<SpellVitalChangeArgs>();
     List<SpellUnitDeadArgs> deadEventList = new List<SpellUnitDeadArgs>();
     List<SpellBuffArgs> buffEventList = new List<SpellBuffArgs>();
+    List<WeakPointDeadArgs> wpDeadEventList = new List<WeakPointDeadArgs>();
     List<SpellUnitDeadArgs> deathList = new List<SpellUnitDeadArgs>();
 
     //如果没有集火目标，根据怪物各自AI进行战斗
@@ -102,10 +104,10 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellEnergyChange, OnEnergyChange);
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellUnitDead, OnUnitDead);
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellBuff, OnBuffChange);
+        GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.WeakpoingDead, OnWeakPointDead);
 
 		GameEventMgr.Instance.AddListener<BattleObject> (GameEventList.DazhaoActionOver, OnDazhaoActionOver);
 		GameEventMgr.Instance.AddListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
-		GameEventMgr.Instance.AddListener<GameUnit,string> (GameEventList.WeakpoingDead, OnWeakpointDead);
     }
 
     void UnBindListener()
@@ -119,10 +121,10 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellEnergyChange, OnEnergyChange);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellUnitDead, OnUnitDead);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellBuff, OnBuffChange);
+        GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.WeakpoingDead, OnWeakPointDead);
 
 		GameEventMgr.Instance.RemoveListener<BattleObject> (GameEventList.DazhaoActionOver, OnDazhaoActionOver);
 		GameEventMgr.Instance.RemoveListener (GameEventList.RemoveDazhaoAction, OnRemoveDazhaoActtion);
-		GameEventMgr.Instance.RemoveListener<GameUnit,string> (GameEventList.WeakpoingDead, OnWeakpointDead);
     }
 
     public void Init()
@@ -132,22 +134,22 @@ public class BattleProcess : MonoBehaviour
 
     void Update()
     {
-        if (curAction != null)
-        {
-            switch (curAction.type)
-            {
-                case ActionType.None:
-                    break;
-                case ActionType.UnitFight:
-                    break;
-                case ActionType.SwitchPet:
-                    break;
-                case ActionType.Dazhao:
-                    break;
-                default:
-                    break;
-            }
-        }
+        //if (curAction != null)
+        //{
+        //    switch (curAction.type)
+        //    {
+        //        case ActionType.None:
+        //            break;
+        //        case ActionType.UnitFight:
+        //            break;
+        //        case ActionType.SwitchPet:
+        //            break;
+        //        case ActionType.Dazhao:
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
 
         //TODO: use battle start time as 0, not Time.time
         int eventCount = deadEventList.Count;
@@ -284,8 +286,6 @@ public class BattleProcess : MonoBehaviour
 			{
 				PhyDazhaoController.Instance.DazhaoAttackFinished(args.casterID);
 			}
-
-
         }
         eventCount = lifeChangeEventList.Count;
         for (int i = 0; i < eventCount; ++i)
@@ -319,6 +319,33 @@ public class BattleProcess : MonoBehaviour
             }
 
             BattleController.Instance.GetUIBattle().ChangeBuffState(args);
+        }
+        eventCount = wpDeadEventList.Count;
+        for (int i = 0; i < eventCount; ++i)
+        {
+            WeakPointDeadArgs args = wpDeadEventList[i];
+            if (args.triggerTime < lastUpdateTime || args.triggerTime >= Time.time)
+            {
+                continue;
+            }
+
+            int targetID = args.targetID;
+            BattleObject targetOb = ObjectDataMgr.Instance.GetBattleObject(targetID);
+            if (targetOb != null)
+            {
+                targetOb.unit.SetWpDead(args);
+                targetOb.TriggerEvent(args.wpID + "_dead", args.triggerTime + BattleConst.vitalChangeDispearTime, null);
+
+                if (fireFocusTarget == targetOb.unit &&
+                    string.IsNullOrEmpty(fireAttackWpName) == false &&
+                    fireAttackWpName.EndsWith(args.wpID)
+                    )
+                {
+                    fireFocusTarget = null;
+                    fireAttackWpName = null;
+                    GameEventMgr.Instance.FireEvent(GameEventList.HideFireFocus);
+                }
+            }
         }
         lastUpdateTime = Time.time;
 
@@ -376,6 +403,7 @@ public class BattleProcess : MonoBehaviour
         energyEventList.Clear();
         deadEventList.Clear();
         buffEventList.Clear();
+        wpDeadEventList.Clear();
         //enemy has removed in UnLoadScene()
         //for (int i = deathList.Count - 1; i >= 0; --i)
         //{
@@ -580,9 +608,10 @@ public class BattleProcess : MonoBehaviour
 			    break;
             case BattleUnitAi.AiAttackStyle.Lazy:
                 Logger.Log(bo.unit.name + "   lazy");
-                bo.unit.attackCount++;
-                OnUnitFightOver(bo);
-                return;
+               // bo.unit.attackCount++;
+              //  OnUnitFightOver(bo);
+              //  return;
+				break;
             case BattleUnitAi.AiAttackStyle.Defence:
                 Logger.Log(bo.unit.name + "   defence");
                 //unit.attackCount++;
@@ -614,7 +643,6 @@ public class BattleProcess : MonoBehaviour
         {
             SpellService.Instance.SpellRequest("s1", bo.unit, aiResult.attackTarget, Time.time);
         }
-
     }
 
 	public void RunMagicDazhao(Action action)
@@ -721,7 +749,7 @@ public class BattleProcess : MonoBehaviour
         Action action = new Action();
         action.type = ActionType.Dazhao;
         action.caster = bo;
-       // bo.unit.energy = 0;
+        bo.unit.energy = 0;
 		//能量扣除
 		{
 			SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs ();
@@ -852,26 +880,6 @@ public class BattleProcess : MonoBehaviour
         deadEventList.Add(args);
     }
 
-	/// <summary>
-	/// 弱点死亡，只处理集火
-	/// </summary>
-	/// <param name="unit">Unit.</param>
-	/// <param name="wp">Wp.</param>
-	void OnWeakpointDead(GameUnit unit,string wp)
-	{
-        unit.battleUnit.TriggerEvent(wp + "_dead", Time.time, null);
-
-		if (fireFocusTarget == null || string.IsNullOrEmpty (fireAttackWpName))
-			return;
-
-		if (fireFocusTarget == unit && fireAttackWpName.EndsWith (wp))
-		{
-			fireFocusTarget = null;
-			fireAttackWpName = null;
-			GameEventMgr.Instance.FireEvent(GameEventList.HideFireFocus);
-		}
-	}
-
 	void OnRemoveDazhaoActtion()
 	{
 		for (int i =0; i < insertAction.Count; ++i)
@@ -913,9 +921,20 @@ public class BattleProcess : MonoBehaviour
         SpellBuffArgs args = sArgs as SpellBuffArgs;
         buffEventList.Add(args);
     }
+
+    void OnWeakPointDead(EventArgs args)
+    {
+        WeakPointDeadArgs wpDeadArgs = args as WeakPointDeadArgs;
+        wpDeadEventList.Add(wpDeadArgs);
+    }
     #endregion
 
     #region Utils
+    void OnUnitPrepareDazhaoOver(BattleObject moveUnit)
+    {
+
+        OnUnitFightOver(moveUnit);
+    }
     void OnUnitFightOver(BattleObject movedUnit)
     {
         battleGroup.ReCalcActionOrder(movedUnit.guid);

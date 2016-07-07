@@ -74,6 +74,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: fangyu
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -415,6 +421,29 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &110168730
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: fangyu
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 110293254}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: .25
+  m_TransitionOffset: 0
+  m_ExitTime: .75
+  m_HasExitTime: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &110171576
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -467,9 +496,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: lazy
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: dead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110243714}
@@ -530,6 +556,26 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: .605263233
   m_HasExitTime: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &110195344
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 110295918}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: .197368428
+  m_TransitionOffset: 0
+  m_ExitTime: .802631557
+  m_HasExitTime: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -720,6 +766,24 @@ AnimatorState:
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: ca483b584c4e5d44188bc10aae25093f, type: 3}
   m_Tag: 
+--- !u!1102 &110293254
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: fangyu
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 110195344}
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7400000, guid: 4e751f5f92bd8474398faacc473e2826, type: 3}
+  m_Tag: 
 --- !u!1102 &110293440
 AnimatorState:
   serializedVersion: 5
@@ -755,6 +819,7 @@ AnimatorState:
   - {fileID: 110162588}
   - {fileID: 110126810}
   - {fileID: 110139362}
+  - {fileID: 110168730}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -775,7 +840,7 @@ AnimatorStateMachine:
     m_Position: {x: 384, y: 192, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110293198}
-    m_Position: {x: 528, y: -12, z: 0}
+    m_Position: {x: 480, y: -12, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110283406}
     m_Position: {x: 264, y: -12, z: 0}
@@ -790,19 +855,22 @@ AnimatorStateMachine:
     m_Position: {x: 132, y: 156, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110243714}
-    m_Position: {x: 504, y: 396, z: 0}
+    m_Position: {x: 456, y: 396, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110267728}
-    m_Position: {x: 660, y: 204, z: 0}
+    m_Position: {x: 708, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110293032}
-    m_Position: {x: 264, y: 396, z: 0}
+    m_Position: {x: 228, y: 396, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110257836}
-    m_Position: {x: 660, y: 312, z: 0}
+    m_Position: {x: 672, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110270236}
-    m_Position: {x: 624, y: 120, z: 0}
+    m_Position: {x: 696, y: 144, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110293254}
+    m_Position: {x: 636, y: 60, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 110185756}

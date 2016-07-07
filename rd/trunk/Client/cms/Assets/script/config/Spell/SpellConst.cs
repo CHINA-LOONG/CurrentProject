@@ -82,6 +82,7 @@ public enum VitalType
 {
     Vital_Type_Default,
     Vital_Type_Miss,
+    Vital_Type_Interrupt,
 
     Num_Vital_Type
 }

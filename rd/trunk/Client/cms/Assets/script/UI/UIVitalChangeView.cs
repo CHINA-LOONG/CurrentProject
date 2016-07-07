@@ -17,6 +17,7 @@ public class UIVitalChangeView : MonoBehaviour
     public Sprite criticalSprite;
     public Sprite criticalHealSprite;
     public Sprite missSprite;
+    public Sprite interruptSprite;
     RectTransform trans;
 
     //---------------------------------------------------------------------------------------------
@@ -55,6 +56,12 @@ public class UIVitalChangeView : MonoBehaviour
         else if (args.vitalType == (int)VitalType.Vital_Type_Miss)
         {
             vitalBackImage.sprite = missSprite;
+            vitalBackImage.gameObject.SetActive(true);
+            vitalWnd.gameObject.SetActive(false);
+        }
+        else if (args.vitalType == (int)VitalType.Vital_Type_Interrupt)
+        {
+            vitalBackImage.sprite = interruptSprite;
             vitalBackImage.gameObject.SetActive(true);
             vitalWnd.gameObject.SetActive(false);
         }

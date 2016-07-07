@@ -173,6 +173,15 @@ public class UIBattle : UIBase
         m_PlayerGroupUI.SetBattleUnitVisible(id, visible);
     }
 
+	public void ShowUI(bool ishow)
+	{
+		gameObject.SetActive (ishow);
+        if (ishow == false)
+        {
+            gameObject.BroadcastMessage("OnAnimationFinish");
+        }
+	}
+
     void Update()
     {
         if (dazhaoTip.IsShow())

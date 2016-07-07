@@ -1,6 +1,17 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+
+
+//---------------------------------------------------------------------------------------------
+public class WeakPointDeadArgs : EventArgs
+{
+    public float triggerTime;
+    public int targetID;
+    public string wpID;
+}
+//---------------------------------------------------------------------------------------------
 
 public class WeakPointData
 {

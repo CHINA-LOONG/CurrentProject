@@ -84,6 +84,7 @@ public class GameUnit
     public int invincible = 0;//无敌
     public int stun = 0;//眩晕
     public int dazhao = 0;//AI释放大招状态
+    public int dazhaoPrepareCount = 0;//准备大招需要的回合
     public int dazhaoDamageCount=0;//统计AI释放大招模式下受到的物理伤害次数
     public int energy;//能量值
     public float spellStrengthRatio;
@@ -304,7 +305,7 @@ public class GameUnit
 		}
 	}
 
-    public void OnDamageWeakPoint(string id, int damage)
+    public void OnDamageWeakPoint(string id, int damage, float damageTime)
     {
         WeakPointRuntimeData wpRuntimeData = null;
         if (wpHpList.TryGetValue(id, out wpRuntimeData))
@@ -312,32 +313,39 @@ public class GameUnit
             wpRuntimeData.hp += damage;
             if (wpRuntimeData.hp <= 0)
             {
-				Logger.LogFormat("weakpoint( ) dead!",id);
                 wpRuntimeData.hp = 0;
-				GameObject meshObj = null;
-				if(weakPointMeshDic.TryGetValue(id,out meshObj))
-				{
-					meshObj.SetActive(false);
-				}
-                
-				GameObject deadMeshObj = null;
-				if(weakPointDeadMeshDic.TryGetValue(id,out deadMeshObj))
-				{
-					deadMeshObj.SetActive(true);
-				}
-				//弱点死亡特效 
-                BattleObject unitGo = ObjectDataMgr.Instance.GetBattleObject(this.pbUnit.guid);
-				if(unitGo!=null)
-				{
-					unitGo.ShowWeakpointDeadEffect(id);
-				}
-
-				GameEventMgr.Instance.FireEvent<GameUnit,string>(GameEventList.WeakpoingDead,this,id);
+                WeakPointDeadArgs deadArgs = new WeakPointDeadArgs();
+                deadArgs.triggerTime = damageTime;
+                deadArgs.targetID = pbUnit.guid;
+                deadArgs.wpID = id;
+                GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.WeakpoingDead, deadArgs);
             }
             else if (wpRuntimeData.hp > wpRuntimeData.maxHp)
             {
                 wpRuntimeData.hp = wpRuntimeData.maxHp;
             }
+        }
+    }
+
+    public void SetWpDead(EventArgs sArgs)
+    {
+        WeakPointDeadArgs wpDeadArgs = sArgs as WeakPointDeadArgs;
+        Logger.LogFormat("weakpoint( ) dead!", wpDeadArgs.wpID);
+        GameObject meshObj = null;
+        if (weakPointMeshDic.TryGetValue(wpDeadArgs.wpID, out meshObj))
+        {
+            meshObj.SetActive(false);
+        }
+
+        GameObject deadMeshObj = null;
+        if (weakPointDeadMeshDic.TryGetValue(wpDeadArgs.wpID, out deadMeshObj))
+        {
+            deadMeshObj.SetActive(true);
+        }
+        //弱点死亡特效 
+        if (battleUnit != null)
+        {
+            battleUnit.ShowWeakpointDeadEffect(wpDeadArgs.wpID);
         }
     }
 
@@ -400,6 +408,7 @@ public class GameUnit
         stun = 0;
         energy = 0;
         dazhao = 0;
+        dazhaoPrepareCount = 0;
         spellStrengthRatio = 0.0f;
         spellIntelligenceRatio = 0.0f;
         spellSpeedRatio = 0.0f;

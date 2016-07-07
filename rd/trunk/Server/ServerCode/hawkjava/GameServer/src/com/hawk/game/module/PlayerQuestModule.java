@@ -2,6 +2,7 @@ package com.hawk.game.module;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -26,6 +27,7 @@ import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Quest.HSQuestRemove;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.Quest.HSQuestAccept;
@@ -47,21 +49,21 @@ import com.hawk.game.util.QuestUtil.QuestGroup;
  * @author walker
  */
 public class PlayerQuestModule extends PlayerModule {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger("Protocol");
-	private Set<Integer> inactiveQuestGroupSet = new HashSet<Integer>();
-	
+	private Map<Integer, QuestGroup> inactiveQuestGroupMap = new HashMap<Integer, QuestGroup>();
+
 	public PlayerQuestModule(Player player) {
 		super(player);
 	}
-	
+
 	/**
 	 * 玩家统计数据更新
 	 */
 	@MessageHandler(code = GsConst.MsgType.STATISTICS_UPDATE)
 	private boolean onStatisticsUpdate(HawkMsg msg) {
 		int statisticsType = msg.getParam(0);
-		
+
 		// 更新任务进度，通知客户端
 		List<HSQuest> updateQuestList = new ArrayList<HSQuest>();
 		Map<Integer, HSQuest> questMap = player.getPlayerData().getQuestMap();
@@ -71,29 +73,29 @@ public class PlayerQuestModule extends PlayerModule {
 				Builder quest = entry.getValue().toBuilder();
 				quest.setProgress(newProgress);
 				entry.setValue(quest.build());
-				
+
 				updateQuestList.add(entry.getValue());
 			}
 		}
 		if (false == updateQuestList.isEmpty()) {
 			HSQuestUpdate.Builder updateBuilder = HSQuestUpdate.newBuilder();
-			updateBuilder.addAllQuestInfo(updateQuestList);
+			updateBuilder.addAllQuest(updateQuestList);
 			sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_UPDATE_S, updateBuilder));
 		}
 
 		// 升级，检查未激活任务组，新接任务通知客户端
 		if (statisticsType == StatisticsType.LEVEL_STATISTICS) {
-			List<HSQuest> acceptQuestList = checkActiveQuest();
+			List<HSQuest> acceptQuestList = loadQuest(inactiveQuestGroupMap);
 			if (false == acceptQuestList.isEmpty()) {
 				HSQuestAccept.Builder acceptBuilder = HSQuestAccept.newBuilder();
-				acceptBuilder.addAllQuestInfo(acceptQuestList);
+				acceptBuilder.addAllQuest(acceptQuestList);
 				sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_ACCEPT_S, acceptBuilder));
 			}
 		}
 
 		return true;
 	}
-	
+
 	/**
 	 * 任务交付
 	 */
@@ -156,7 +158,7 @@ public class PlayerQuestModule extends PlayerModule {
 				acceptQuest(nextQuestCfg, acceptList);
 				if (false == acceptList.isEmpty()) {
 					HSQuestAccept.Builder acceptBuilder = HSQuestAccept.newBuilder();
-					acceptBuilder.addAllQuestInfo(acceptList);
+					acceptBuilder.addAllQuest(acceptList);
 					sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_ACCEPT_S, acceptBuilder));
 				}
 			}
@@ -166,40 +168,17 @@ public class PlayerQuestModule extends PlayerModule {
 	}
 
 	// 内部函数------------------------------------------------------------------------------------------
-	
-	/**
-	 * 初始化当前任务
-	 */
-	private boolean loadCurrentQuest() {
-		Map<Integer, QuestGroup> questGroupMap = QuestUtil.getQuestGroupMap();
-		for (Entry<Integer, QuestGroup> entry : questGroupMap.entrySet()) {
-			QuestCfg newQuest = getGroupNewQuest(entry.getValue());	
-			if (null == newQuest) {
-				continue;
-			}
-
-			// 接取
-			boolean active = acceptQuest(newQuest, null);
-			if (false == active) {
-				// 任务组未激活
-				inactiveQuestGroupSet.add(entry.getKey());
-				continue;
-			}
-		}
-		return true;
-	}
 
 	/**
-	 * 检查未激活任务组，如可接取则接取并激活
+	 * 从指定任务组集合中接取任务
 	 */
-	private List<HSQuest> checkActiveQuest() {
+	private List<HSQuest> loadQuest(Map<Integer, QuestGroup> questGroupMap) {
 		List<HSQuest> acceptQuestList = new ArrayList<HSQuest>();
-		Map<Integer, QuestGroup> questGroupMap = QuestUtil.getQuestGroupMap();
-		
-		Iterator<Integer> iter = inactiveQuestGroupSet.iterator();
+
+		Iterator<Entry<Integer, QuestGroup>>  iter = questGroupMap.entrySet().iterator();
 		while (iter.hasNext()) {
-			int groupId = iter.next();
-			QuestCfg newQuest = getGroupNewQuest(questGroupMap.get(groupId));
+			Entry<Integer, QuestGroup> entry = iter.next();
+			QuestCfg newQuest = getGroupNewQuest(entry.getValue());
 			if (null == newQuest) {
 				continue;
 			}
@@ -207,11 +186,19 @@ public class PlayerQuestModule extends PlayerModule {
 			// 接取
 			boolean active = acceptQuest(newQuest, acceptQuestList);
 			if (false == active) {
+				// 任务组未激活
+				if (questGroupMap != inactiveQuestGroupMap) {
+					inactiveQuestGroupMap.put(entry.getKey(), entry.getValue());
+				}
 				continue;
+			} else {
+				// 激活任务组
+				if (questGroupMap != inactiveQuestGroupMap) {
+					inactiveQuestGroupMap.remove(entry.getKey());
+				} else {
+					iter.remove();
+				}
 			}
-
-			// 激活任务组
-			iter.remove();
 		}
 
 		return acceptQuestList;
@@ -226,12 +213,12 @@ public class PlayerQuestModule extends PlayerModule {
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 		Set<Integer> questCompleteSet = statisticsEntity.getQuestCompleteSet();
 		Set<Integer> questCompleteDailySet = statisticsEntity.getQuestCompleteDailySet();
-		
+
 		// 逆向查看任务组任务是否已完成，找到最后一个没完成的
 		int index = group.questList.size() - 1;
 		for (; index >= 0; --index) {
 			QuestCfg quest = group.questList.get(index);
-			
+
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
 				if (true == questCompleteSet.contains(quest.getId())) {
 					break;
@@ -245,20 +232,20 @@ public class PlayerQuestModule extends PlayerModule {
 		}
 		return newQuest;
 	}
-	
+
 	/**
 	 * 接取任务
 	 */
 	private boolean acceptQuest(QuestCfg questCfg, List<HSQuest> acceptList) {
 		if (questCfg.getLevel() <= player.getLevel()) {
 			int progress = getQuestProgress(questCfg.getId());
-			
+
 			HSQuest.Builder builder = HSQuest.newBuilder();
 			builder.setQuestId(questCfg.getId());
 			builder.setProgress(progress);
 			HSQuest quest = builder.build();
 			player.getPlayerData().setQuest(quest);
-			
+
 			if (null != acceptList) {
 				acceptList.add(quest);
 			}
@@ -270,7 +257,7 @@ public class PlayerQuestModule extends PlayerModule {
 					acceptQuest(nextQuestCfg, acceptList);
 				}
 			}
-			
+
 			return true;
 		}
 		return false;
@@ -284,7 +271,7 @@ public class PlayerQuestModule extends PlayerModule {
 		int progress = 0;
 		int goalCount = quest.getGoalCount();
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-		
+
 		switch (quest.getGoalType()) {
 		// 特定难度副本
 		case GsConst.QuestGoalType.DIFFICULTY_GOAL: {
@@ -437,8 +424,8 @@ public class PlayerQuestModule extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogin() {
 		// 从统计数据中计算当前任务
-		loadCurrentQuest();
-		
+		loadQuest(QuestUtil.getQuestGroupMap());
+
 		// 同步任务信息
 		player.getPlayerData().syncQuestInfo();
 		return true;
@@ -446,6 +433,41 @@ public class PlayerQuestModule extends PlayerModule {
 
 	@Override
 	protected boolean onPlayerLogout() {
+		return true;
+	}
+
+	@Override
+	protected boolean onRefresh(List<Integer> refreshTypeList) {
+		if (refreshTypeList.contains(GsConst.RefreshType.DAILY_PERS_REFRESH)) {
+			// 清理已过期任务
+			List<Integer> removeList = new ArrayList<Integer>();
+			Map<Integer, HSQuest> questMap = player.getPlayerData().getQuestMap();
+			Iterator<Entry<Integer, HSQuest>>  iter = questMap.entrySet().iterator();
+			while (iter.hasNext()) {
+				Entry<Integer, HSQuest> entry = iter.next();
+				int questId = entry.getValue().getQuestId();
+
+				QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questId);
+				if (questCfg.getCycle() == GsConst.Cycle.DAILY_CYCLE) {
+					removeList.add(questId);
+					iter.remove();
+				}
+			}
+			if (false == removeList.isEmpty()) {
+				HSQuestRemove.Builder builder = HSQuestRemove.newBuilder();
+				builder.addAllQuestId(removeList);
+				sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_REMOVE_S, builder));
+			}
+
+			// 接取新任务
+			Map<Integer, QuestGroup> groupMap = QuestUtil.getCycleQuestGroupMap(GsConst.Cycle.DAILY_CYCLE);
+			List<HSQuest> acceptQuestList = loadQuest(groupMap);
+			if (false == acceptQuestList.isEmpty()) {
+				HSQuestAccept.Builder acceptBuilder = HSQuestAccept.newBuilder();
+				acceptBuilder.addAllQuest(acceptQuestList);
+				sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_ACCEPT_S, acceptBuilder));
+			}
+		}
 		return true;
 	}
 }

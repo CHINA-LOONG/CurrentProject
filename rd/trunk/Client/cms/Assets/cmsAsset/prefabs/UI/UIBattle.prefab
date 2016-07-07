@@ -131,6 +131,7 @@ GameObject:
   - 222: {fileID: 22219106}
   - 114: {fileID: 11497068}
   - 114: {fileID: 11401250}
+  - 225: {fileID: 22574162}
   m_Layer: 5
   m_Name: fireFocusEffect
   m_TagString: Untagged
@@ -2560,7 +2561,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentBarImage: {fileID: 11474118}
   targetBarImage: {fileID: 11438850}
-  width: 586
   lifeRatioSpeed: .300000012
   dangerRatio: .300000012
   normalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4398,6 +4398,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
+--- !u!225 &22574162
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111844}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

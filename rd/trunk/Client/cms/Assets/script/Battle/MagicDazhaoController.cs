@@ -4,7 +4,7 @@ using System;
 
 public class MagicDazhaoController : MonoBehaviour 
 {
-	enum DazhaoState
+	enum DazhaoState:int
 	{
 		Shifa =0,
 		Wait = 1,
@@ -13,6 +13,7 @@ public class MagicDazhaoController : MonoBehaviour
 		Finished
 	}
 
+	bool isActionDo = false;//大招事件进行了
 	BattleProcess.Action magicAction;//法术攻击action
 	BattleObject  casterBattleGo;
 	Spell dazhaoSpell;
@@ -90,7 +91,7 @@ public class MagicDazhaoController : MonoBehaviour
 			Destroy(dazhaoExitCheck);
 			dazhaoExitCheck = null;
 		}
-		dazhaoExitCheck = casterBattleGo.gameObject.GetComponent<DazhaoExitCheck>();
+		dazhaoExitCheck = casterBattleGo.gameObject.AddComponent<DazhaoExitCheck>();
 	}
 
 	public void RunActionWithDazhao(BattleObject casterGo)
@@ -146,6 +147,7 @@ public class MagicDazhaoController : MonoBehaviour
 		yield return new WaitForSeconds (1.0f);
 		dazhaoState = DazhaoState.Start;
 		//大招攻击
+		isActionDo = true;
 		BattleController.Instance.Process.RunMagicDazhao (magicAction);
 		//慢镜头
 		GameSpeedService.Instance.SetTmpSpeed (BattleConst.dazhaoAttackTimeScale, BattleConst.dazhaoAttackTimeLength);
@@ -191,6 +193,11 @@ public class MagicDazhaoController : MonoBehaviour
 	//大招结束
 	void DazhaoFinished()
 	{
+		if(casterBattleGo.shifaNodeEffect !=null)
+		{
+			casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+		}
+
 		dazhaoState = DazhaoState.Finished;
 		
 		StartCoroutine (ExitDazhaoCo());
@@ -199,10 +206,13 @@ public class MagicDazhaoController : MonoBehaviour
 	IEnumerator ExitDazhaoCo()
 	{
 		yield return new WaitForSeconds (1.0f);
-		//Debug.LogError ("大招结束.... attack times: " + dazhaoFinishCount);
-		//BattleCamera.Instance.animator.SetBool (BattleCamera.AniControlParam.phyDazhao, false);
-		
-		GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.DazhaoActionOver, casterBattleGo);
+
+		if (isActionDo)
+		{
+			isActionDo = false;
+			GameEventMgr.Instance.FireEvent<BattleObject> (GameEventList.DazhaoActionOver, casterBattleGo);
+		}
+
 		GameEventMgr.Instance.FireEvent(GameEventList.HideDazhaoTip);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Normal);
 		
@@ -225,15 +235,16 @@ public class MagicDazhaoController : MonoBehaviour
 			Logger.LogErrorFormat("ExitDazhao by PhyAttack Error: dazhao castID = {0}, getCasterID = {1}",casterBattleGo.guid,casterID);
 			return;
 		}
-		if (dazhaoState == DazhaoState.Prepare)
+		if (dazhaoState == DazhaoState.Prepare || dazhaoState == DazhaoState.Shifa)
 		{
 			//大招被打断
-			//GameEventMgr.Instance.FireEvent(GameEventList.RemoveDazhaoAction);
-			
-			//casterBattleGo.HideDazhaoPrepareEffect();
+			if(casterBattleGo.shifaNodeEffect !=null)
+			{
+				casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+			}
 			//todo:大招被打断ui提示
 			SpellVitalChangeArgs args = new SpellVitalChangeArgs();
-			args.vitalType = (int)VitalType.Vital_Type_Miss;
+            args.vitalType = (int)VitalType.Vital_Type_Interrupt;
 			args.triggerTime = Time.time;
 			args.casterID = 0;
 			args.targetID = casterBattleGo.guid;
@@ -246,6 +257,20 @@ public class MagicDazhaoController : MonoBehaviour
 		{
 			Destroy(dazhaoExitCheck);
 			dazhaoExitCheck = null;
+		}
+	}
+
+	public void ClearAll()
+	{
+		if (dazhaoState == DazhaoState.Finished)
+		{
+			return;
+		}
+		dazhaoState = DazhaoState.Finished;
+		CloseFazhenUI ();
+		if(casterBattleGo.shifaNodeEffect !=null)
+		{
+			casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
 		}
 	}
 

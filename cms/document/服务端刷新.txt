@@ -12,3 +12,4 @@ B. 支持的刷新时间
 A. 刷新代码位置
 	1. 服务端全局数据刷新在GsApp.onRefresh()
 	2. 玩家个人数据刷新在Player.onRefresh()
+	3. Player.onRefresh()按模块注册顺序调用各module的onRefresh()函数

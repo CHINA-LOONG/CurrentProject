@@ -1,6 +1,7 @@
 package com.hawk.game.player;
 
 import java.awt.TexturePaint;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
@@ -27,6 +28,7 @@ import org.slf4j.LoggerFactory;
 import com.hawk.game.config.MonsterBaseCfg;
 import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.PlayerAttrCfg;
+import com.hawk.game.config.QuestCfg;
 import com.hawk.game.config.TimeCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
@@ -49,12 +51,17 @@ import com.hawk.game.module.PlayerStatisticsModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Const.playerAttr;
+import com.hawk.game.protocol.Quest.HSQuest;
+import com.hawk.game.protocol.Quest.HSQuestAccept;
+import com.hawk.game.protocol.Quest.HSQuestRemove;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.QuestUtil;
 import com.hawk.game.util.TimeUtil;
+import com.hawk.game.util.QuestUtil.QuestGroup;
 
 /**
  * 玩家对象
@@ -768,10 +775,13 @@ public class Player extends HawkAppObj {
 	 */
 	private void onRefresh() {
 		Calendar curTime = HawkTime.getCalendar();
+
 		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
 		if (null == statisticsEntity) {
 			return;
 		}
+
+		List<Integer> refreshList = new ArrayList<Integer>();
 
 		for (int i = GsConst.RefreshType.PERS_REFRESH_BEGIN + 1; i < GsConst.RefreshType.PERS_REFRESH_END; ++i) {
 			TimeCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, i);
@@ -787,20 +797,26 @@ public class Player extends HawkAppObj {
 
 					shouldRefresh = TimeUtil.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
 					if (true == shouldRefresh) {
-						statisticsEntity.setRefreshTime(i,  nextRefreshTime);
-
-						switch (i) {
-						case GsConst.RefreshType.DAILY_PERS_REFRESH:
-							break;
-						default:
-								break;
-						}
+						statisticsEntity.setRefreshTime(i, nextRefreshTime);
+						refreshList.add(i);
 					}
 				} catch (Exception e) {
 					HawkException.catchException(e);
 				}
 			}
 		}
-	}
 
+		if (false == refreshList.isEmpty()) {
+			statisticsEntity.notifyUpdate(true);
+
+			for (Entry<Integer, HawkObjModule> entry : objModules.entrySet()) {
+				PlayerModule playerModule = (PlayerModule) entry.getValue();
+				try {
+					playerModule.onRefresh(refreshList);
+				} catch (Exception e) {
+					HawkException.catchException(e);
+				}
+			}
+		}
+	}
 }

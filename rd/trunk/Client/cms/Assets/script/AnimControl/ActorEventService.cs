@@ -18,6 +18,8 @@ public class ActorEventData
     public string particleBundle;
     public string particleAni;
     public string particleParent;
+    public string locky;
+    public string attach;
     //camera
     public string cameraAni;
     //controller
@@ -25,7 +27,8 @@ public class ActorEventData
 
     //state data
     public GameObject psObject;
-    public ParticleSystem ps;
+    //public ParticleSystem ps;
+    public float psDuration;
     public float triggerTime;
     public string rootNode;
 }
@@ -98,6 +101,8 @@ public class ActorEventService
                         eventData.particleBundle = x1.GetAttribute("bundle");
                         eventData.particleAni = x1.GetAttribute("ani");
                         eventData.particleParent = x1.GetAttribute("parent");
+                        eventData.locky = x1.GetAttribute("locky");
+                        eventData.attach = x1.GetAttribute("attach");
                     }
                     else if (x1.Name == "Camera")
                     {

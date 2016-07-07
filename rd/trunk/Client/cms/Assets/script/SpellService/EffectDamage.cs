@@ -168,14 +168,14 @@ public class EffectDamage : Effect
                 //伤害*-1 修正为负数
                 damageAmount *= -1;
                 //if (caster.pbUnit.camp == UnitCamp.Enemy)
-                //    damageAmount *= 100;
+                //    damageAmount = -1;
                 //else
                 //    damageAmount = -1;
 
                 //弱点伤害计算
                 if (wp != null)
                 {
-                    target.OnDamageWeakPoint(wp.id, damageAmount);
+                    target.OnDamageWeakPoint(wp.id, damageAmount, applyTime);
                 }
             }
 

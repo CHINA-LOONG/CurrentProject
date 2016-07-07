@@ -10,23 +10,23 @@ import org.hawk.config.HawkConfigManager;
 import com.hawk.game.config.QuestCfg;
 
 public class QuestUtil {
-	
+
 	public static class QuestGroup {
 		public int groupId;
 		public List<QuestCfg> questList = new ArrayList<>();
 	}
-	
+
 	/**
 	 * key: groupId
 	 */
 	private static Map<Integer, QuestGroup> questGroupMap = new HashMap<>();
 	/**
-	 * key: typeId
+	 * key: cycleId
 	 */
-	private static Map<Integer, List<QuestGroup>> questTypeMap = new HashMap<>();
-	
+	private static Map<Integer, Map<Integer, QuestGroup>> cycleQuestGroupMap = new HashMap<>();
+
 	// 构造阶段---------------------------------------------------------------------
-	
+
 	/**
 	 * 添加任务
 	 */
@@ -36,19 +36,19 @@ public class QuestUtil {
 			group = new QuestGroup();
 			group.groupId = (questCfg.getGroup());
 			questGroupMap.put(group.groupId, group);
-			
-			List<QuestGroup> groupList = questTypeMap.get(questCfg.getType());
-			if (groupList == null) {
-				groupList = new ArrayList<QuestGroup>();
-				questTypeMap.put(questCfg.getType(), groupList);
+
+			Map<Integer, QuestGroup> groupMap = cycleQuestGroupMap.get(questCfg.getCycle());
+			if (groupMap == null) {
+				groupMap = new HashMap<Integer, QuestGroup>();
+				cycleQuestGroupMap.put(questCfg.getCycle(), groupMap);
 			}
-			groupList.add(group);
+			groupMap.put(group.groupId, group);
 		}
 		group.questList.add(questCfg);
 	}
-	
+
 	// 使用阶段----------------------------------------------------------------------
-	
+
 	/**
 	 * 获得同组下个任务
 	 */
@@ -62,14 +62,18 @@ public class QuestUtil {
 		if (index < group.questList.size() - 1 && index > -1) {
 			return group.questList.get(index + 1);
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * 获得所有任务组
 	 */
 	public static Map<Integer, QuestGroup> getQuestGroupMap() {
 		return questGroupMap;
+	}
+
+	public static Map<Integer, QuestGroup> getCycleQuestGroupMap(int cycle) {
+		return cycleQuestGroupMap.get(cycle);
 	}
 }

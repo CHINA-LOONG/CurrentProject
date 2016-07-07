@@ -213,9 +213,15 @@ public class Buff
         {
             target.dazhaoDamageCount = 0;
             if (isRemove)
-                --target.dazhao;
+            {
+                target.dazhao = 0;
+                target.dazhaoPrepareCount = 0;
+            }
             else
-                ++target.dazhao;
+            {
+                target.dazhao = buffProto.dazhao;
+                target.dazhaoPrepareCount = target.dazhao;
+            }
         }
 
         //属性改变
@@ -252,6 +258,12 @@ public class Buff
                 if (DazhaoExitCheck.IsExitByPhyAttacked(target.dazhaoDamageCount))
                 {
                     Finish(curTime);
+                    SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+                    args.vitalType = (int)VitalType.Vital_Type_Interrupt;
+                    args.triggerTime = curTime;
+                    args.casterID = 0;
+                    args.targetID = targetID;
+                    spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
                 }
             }
         }

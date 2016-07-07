@@ -37,6 +37,11 @@ public class UIFazhen : UIBase
 		GameObject fazhenGo = Instantiate (prefab) as GameObject;
 
 		fazhenGo.transform.SetParent (this.transform, false);
+
+		RectTransform rectTrans = fazhenGo.transform as RectTransform;
+		Vector3 stylePos = rectTrans.anchoredPosition3D;
+		stylePos.z = -10;
+		rectTrans.anchoredPosition3D = stylePos;
 	}
 
 	IEnumerator updateLeftTimeCo()

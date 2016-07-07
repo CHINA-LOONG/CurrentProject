@@ -258,6 +258,7 @@ public class BattleController : MonoBehaviour
         List<BattleObject> playerUnitList = GameDataMgr.Instance.PlayerDataAttr.GetMainUnits();
         for (int i = 0; i < playerUnitList.Count; ++i)
         {
+            playerUnitList[i].ClearEvent();
             playerUnitList[i].gameObject.SetActive(false);
         }
 
@@ -432,7 +433,7 @@ public class BattleController : MonoBehaviour
             int count = instanceData.bossProcess.Count;
             if (index < 0 || index >= count)
             {
-                Logger.LogError("Boss process error index: " + index);
+                Logger.LogWarningFormat("Boss process error index: " + index);
                 return null;
             }
             else
@@ -444,22 +445,23 @@ public class BattleController : MonoBehaviour
             int count = instanceData.rareProcess.Count;
             if (index < 0 || index >= count)
             {
-                Logger.LogError("Rare process error index: " + index);
+                Logger.LogWarningFormat("Rare process error index: " + index);
                 return null;
             }
             else
                 return instanceData.rareProcess[index];
         }
 
-        Logger.LogError("BattleType error" + battleType);
+        Logger.LogWarningFormat("BattleType error" + battleType);
         return null;
     }
     //---------------------------------------------------------------------------------------------
     public void OnProcessSwitch(int gotoVal)
     {
         //检测下一个process的条件，避免出现跳进程的情况，如：从>50%，一刀砍到<30%
-        var next = GetProcessAtIndex(gotoVal - 1);
-        while (true)
+        ProcessData next = GetProcessAtIndex(gotoVal - 1);
+
+        while (next != null)
         {
             var processRet = (int)next.method.Invoke(null, null);
             if (next.rets.ContainsKey(processRet))
@@ -480,6 +482,8 @@ public class BattleController : MonoBehaviour
     {
         Debug.LogWarning("Battle " + (isSuccess ? "Success" : "Failed"));
         StartCoroutine(ProcessBattleOver(isSuccess));
+		MagicDazhaoController.Instance.ClearAll ();
+		PhyDazhaoController.Instance.ClearAll ();
     }
     //---------------------------------------------------------------------------------------------
     IEnumerator ProcessBattleOver(bool isSuccess)

@@ -24,6 +24,7 @@ public class BattleConst
 
     //能量积攒上限
     public const int enegyMax = 100;
+    public const int maxSpeed = 10000;
 
     public const int processContinueRet = -1;
 
@@ -49,4 +50,5 @@ public class BattleConst
     //头顶节点
     public const string headNode = "headnode";
     public const string lifeBarNode = "lifebarnode";
+    public const float vitalChangeDispearTime = 1.0f;
 }

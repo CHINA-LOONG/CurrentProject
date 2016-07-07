@@ -33,11 +33,17 @@ message HSQuestSubmitRet
 // QUEST_ACCEPT_S
 message HSQuestAccept
 {
-	repeated HSQuest questInfo = 1;
+	repeated HSQuest quest = 1;
 }
 
 // QUEST_UPDATE_S
 message HSQuestUpdate
 {
-	repeated HSQuest questInfo = 1;
+	repeated HSQuest quest = 1;
+}
+
+// QUEST_REMOVE_S
+message HSQuestRemove
+{
+	repeated int32 questId = 1;
 }

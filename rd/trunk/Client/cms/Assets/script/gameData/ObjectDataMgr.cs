@@ -76,7 +76,7 @@ public class ObjectDataMgr : MonoBehaviour
         bo.unit = unit;
         bo.aniControl = unitObject.AddComponent<AnimControl>();
 
-		bo.shifaGo = Util.FindChildByName(unitObject,"e_shifa_01");
+		bo.shifaGo = Util.FindChildByName(unitObject,"e_shifa");
 		if(bo.shifaGo != null)
 		{
 			bo.shifaNodeEffect = bo.shifaGo.AddComponent<SimpleEffect>();

@@ -332,15 +332,24 @@ public class StaticDataMgr : MonoBehaviour
     }
     public SpellProtoType GetSpellProtoData(string id)
     {
-        return spellData[id];
+        if (spellData.ContainsKey(id))
+            return spellData[id];
+
+        return null;
     }
     public EffectPrototype GetEffectProtoData(string id)
     {
-        return effectData[id];
+        if (effectData.ContainsKey(id))
+            return effectData[id];
+
+        return null;
     }
     public BuffPrototype GetBuffProtoData(string id)
     {
-        return buffData[id];
+        if (buffData.ContainsKey(id))
+            return buffData[id];
+
+        return null;
     }
 
     public WeakPointData GetWeakPointData(string id)

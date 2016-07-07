@@ -75,12 +75,12 @@ namespace PB
   {
     public HSQuestSubmitRet() {}
     
-    private int _status;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int status
+    private int _questId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"questId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int questId
     {
-      get { return _status; }
-      set { _status = value; }
+      get { return _questId; }
+      set { _questId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -92,11 +92,11 @@ namespace PB
   {
     public HSQuestAccept() {}
     
-    private readonly global::System.Collections.Generic.List<HSQuest> _questInfo = new global::System.Collections.Generic.List<HSQuest>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"questInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<HSQuest> questInfo
+    private readonly global::System.Collections.Generic.List<HSQuest> _quest = new global::System.Collections.Generic.List<HSQuest>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"quest", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HSQuest> quest
     {
-      get { return _questInfo; }
+      get { return _quest; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;
@@ -109,11 +109,28 @@ namespace PB
   {
     public HSQuestUpdate() {}
     
-    private readonly global::System.Collections.Generic.List<HSQuest> _questInfo = new global::System.Collections.Generic.List<HSQuest>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"questInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<HSQuest> questInfo
+    private readonly global::System.Collections.Generic.List<HSQuest> _quest = new global::System.Collections.Generic.List<HSQuest>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"quest", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HSQuest> quest
     {
-      get { return _questInfo; }
+      get { return _quest; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSQuestRemove")]
+  public partial class HSQuestRemove : global::ProtoBuf.IExtensible
+  {
+    public HSQuestRemove() {}
+    
+    private readonly global::System.Collections.Generic.List<int> _questId = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"questId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> questId
+    {
+      get { return _questId; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;

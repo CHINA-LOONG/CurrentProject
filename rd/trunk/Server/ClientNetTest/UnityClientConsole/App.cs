@@ -79,7 +79,7 @@ namespace UnityClientConsole
 
                     HSPlayerCreate createRole = new HSPlayerCreate();
                     createRole.puid = puid;
-                    createRole.nickname = "quest01";
+                    createRole.nickname = "quest04";
                     createRole.career = 1;
                     createRole.gender = 0;
                     createRole.eye = 1;
@@ -207,6 +207,11 @@ namespace UnityClientConsole
             {
                 HSQuestSubmitRet questSubmitRet = protocol.GetProtocolBody<HSQuestSubmitRet>();
                 Console.WriteLine("任务交付");
+            }
+            else if (protocol.checkType(code.QUEST_REMOVE_S.GetHashCode()))
+            {
+                HSQuestRemove questRemove = protocol.GetProtocolBody<HSQuestRemove>();
+                Console.WriteLine("任务删除");
             }
         }
 

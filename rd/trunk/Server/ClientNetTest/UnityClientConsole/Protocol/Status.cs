@@ -24,7 +24,13 @@ namespace PB
       PLAYER_ERROR = 131072,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_ERROR", Value=196608)]
-      MONSTER_ERROR = 196608
+      MONSTER_ERROR = 196608,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_ERROR", Value=262144)]
+      ITEM_ERROR = 262144,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_ERROR", Value=327680)]
+      QUEST_ERROR = 327680
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"error")]
@@ -126,6 +132,20 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_DRESSED", Value=262163)]
       EQUIP_NOT_DRESSED = 262163
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"questError")]
+    public enum questError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_NOT_ACCEPT", Value=327681)]
+      QUEST_NOT_ACCEPT = 327681,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_NOT_COMPLETE", Value=327682)]
+      QUEST_NOT_COMPLETE = 327682,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_NOT_OPEN", Value=327683)]
+      QUEST_NOT_OPEN = 327683
     }
   
 }

@@ -83,6 +83,9 @@ public class SpellService : MonoBehaviour
     public Effect GetEffect(string id)
     {
         EffectPrototype effectPt = StaticDataMgr.Instance.GetEffectProtoData(id);
+        if (effectPt == null)
+            return null;
+
         EffectType effectType = (EffectType)(effectPt.effectType);
         Effect actualEffect = null;
         switch (effectType)

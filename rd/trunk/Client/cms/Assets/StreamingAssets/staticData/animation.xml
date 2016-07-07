@@ -22,7 +22,7 @@ state = 1 Remove
 		<Motion ani="" key="wugong" value="true" />
 	</Ani>
 	
-	<Ani id="demoDazhao" state="0">
+	<Ani id="demozhuyanDazhaoe2" state="0">
 		<Motion ani="" key="shouji" value="true" />
 		<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
 	</Ani>
@@ -33,6 +33,12 @@ state = 1 Remove
 	
 	<Ani id="dazhaoxuanyao" state="0">
 		<Motion ani="" key="dazhaoxuanyao" value="true" />
+	</Ani>
+	<Ani id="lazy" state="0">
+		<Motion ani="" key="lazy" value="true" />
+	</Ani>
+	<Ani id="defend" state="0">
+		<Motion ani="" key="fangyu" value="true" />
 	</Ani>
 	
 	<Ani id="win" state="0">
@@ -50,7 +56,7 @@ state = 1 Remove
 	
 	<Ani id="attackSlighte2" state="0">
 		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackCutMedium" bundle="effect/particle" ani="" parent=""/>
+		<Particle asset="attackCutMedium" bundle="effect/particle" ani="firemove" parent=""/>
 	</Ani>
 	
 	<Ani id="attackMedium" state="0">
@@ -68,7 +74,7 @@ state = 1 Remove
 	
 	<Ani id="attackStronge2" state="0">
 		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackSmashStrong" bundle="effect/particle" ani="" parent=""/>
+		<Particle asset="attackSmashStrong" bundle="effect/particle" ani="" parent="" locky="true"/>
 	</Ani>
 	
 	<Ani id="attackTriSlight" state="0">
@@ -130,7 +136,7 @@ state = 1 Remove
 	
 	<Ani id="attackSmashStronge2" state="0">
 		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackSmashStrong" bundle="effect/particle" ani="" parent=""/>
+		<Particle asset="attackSmashStrong" bundle="effect/particle" ani="" parent="" locky="true"/>
 	</Ani>
 	
 	<Ani id="magicMetalSlight" state="0">
@@ -159,17 +165,17 @@ state = 1 Remove
 	
 	<Ani id="magicWaterSlight" state="0">
 		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="" parent=""/>
+		<Particle asset="fagong_juqi" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
 	</Ani>
 	
 	<Ani id="magicWaterMedium" state="0">
 		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent=""/>
+		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
 	</Ani>
 	
 	<Ani id="magicWaterMediume2" state="0">
 		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="magicWaterMedium" bundle="effect/particle" ani="firemove" parent=""/>
+		<Particle asset="magicWaterMedium" bundle="effect/particle" ani="" parent="" locky="true"/>
 	</Ani>
 	
 	<Ani id="magicWaterStrong" state="0">
@@ -178,7 +184,7 @@ state = 1 Remove
 	
 	<Ani id="magicFireSlight" state="0">
 		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="" parent=""/>
+		<Particle asset="fagong_juqi" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
 	</Ani>
 	
 	<Ani id="magicFireSlighte2" state="0">
@@ -221,7 +227,7 @@ state = 1 Remove
 	
 	<Ani id="magicCureMedium" state="0">
 		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent=""/>
+		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
 	</Ani>
 	
 	<Ani id="magicCureMediume2" state="0">
@@ -234,7 +240,7 @@ state = 1 Remove
 	
 	<Ani id="buffMagic" state="0">
 		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent=""/>
+		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
 	</Ani>
 	
 	<Ani id="buffMagice2" state="0">
@@ -243,7 +249,7 @@ state = 1 Remove
 	
 	<Ani id="buffAttack" state="0">
 		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent=""/>
+		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
 	</Ani>
 	
 	<Ani id="buffAttacke2" state="0">
@@ -252,7 +258,7 @@ state = 1 Remove
 	
 	<Ani id="debuffDefense" state="0">
 		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent=""/>
+		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
 	</Ani>
 	
 	<Ani id="debuffDefensee2" state="0">
@@ -264,7 +270,7 @@ state = 1 Remove
 		<Motion ani="" key="dazhao" value="true" />
 	</Ani>
 	<Ani id="demoershuDazhaoe4" state="0">
-		<Particle asset="hot" bundle="effect/particle" ani="firemove" parent=""/>
+		<Particle asset="hot" bundle="effect/particle" ani="firemove" parent="" locky="true"/>
 	</Ani>
 	<Ani id="ultQingniao" state="0">
 		<Motion ani="" key="dazhao" value="true" />
@@ -274,6 +280,8 @@ state = 1 Remove
 	</Ani>
 	<Ani id="ultZhuyan" state="0">
 		<Motion ani="" key="dazhao" value="true" />
+
+		
 	</Ani>
 	
 	<Ani id="bossJiuweihu1" state="0">
@@ -313,5 +321,11 @@ state = 1 Remove
 	<Ani id="bossHundune2" state="0">
 		<Motion ani="" key="shouji" value="true" />
 		<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
+	</Ani>
+	<Ani id="dazhaob1" state="0">
+		<Particle asset="jvqi" bundle="effect/particle" ani="" parent=""/>
+	</Ani>
+	<Ani id="dazhaob1Finish" state="1">
+		<Particle asset="jvqi" bundle="effect/particle" ani="" parent=""/>
 	</Ani>
 </AniList>

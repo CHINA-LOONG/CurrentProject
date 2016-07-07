@@ -19,8 +19,8 @@ public class BattleObject : MonoBehaviour
 
     public ActorEventService actorEventService;
     public AnimControl aniControl;
-    public List<ActorEventData> activeEventList;
-    public List<ActorEventData> waitEventList;
+    public List<ActorEventData> activeEventList = new List<ActorEventData>();
+    public List<ActorEventData> waitEventList = new List<ActorEventData>();
 
 	public SimpleEffect shifaNodeEffect;
 
@@ -28,8 +28,6 @@ public class BattleObject : MonoBehaviour
     void Awake()
     {
         actorEventService = ActorEventService.Instance;
-        activeEventList = new List<ActorEventData>();
-        waitEventList = new List<ActorEventData>();
     }
     //---------------------------------------------------------------------------------------------
     public void TriggerEvent(string eventID, float triggerTime, string rootNode)
@@ -50,9 +48,11 @@ public class BattleObject : MonoBehaviour
                 curEvent.particleBundle = srcEvent.particleBundle;
                 curEvent.particleAni = srcEvent.particleAni;
                 curEvent.particleParent = srcEvent.particleParent;
+                curEvent.locky = srcEvent.locky;
                 curEvent.cameraAni = srcEvent.cameraAni;
                 curEvent.controllerName = srcEvent.controllerName;
-                curEvent.ps = null;
+                curEvent.psDuration = 0.0f;
+                curEvent.attach = srcEvent.attach;
                 curEvent.rootNode = rootNode;
                 waitEventList.Add(curEvent);
             }
@@ -118,16 +118,40 @@ public class BattleObject : MonoBehaviour
     void Update()
     {
         UpdateEventsInternal();
+
         ActorEventData curEventData;
         for (int i = activeEventList.Count - 1; i >= 0; --i)
         {
             curEventData = activeEventList[i];
-            if (curEventData.ps != null && curEventData.ps.isStopped)
+
+            if (curEventData.psObject != null)
             {
-                Destroy(curEventData.psObject);
+                if (curEventData.psDuration >= 0.0f && Time.time - curEventData.triggerTime >= curEventData.psDuration)
+                {
+                    Destroy(curEventData.psObject);
+                    activeEventList.RemoveAt(i);
+                }
+            }
+            else
+            {
                 activeEventList.RemoveAt(i);
             }
         }
+    }
+    //---------------------------------------------------------------------------------------------
+    public void ClearEvent()
+    {
+        waitEventList.Clear();
+        ActorEventData curEventData;
+        for (int i = activeEventList.Count - 1; i >= 0; --i)
+        {
+            curEventData = activeEventList[i];
+            if (curEventData.psObject != null)
+            {
+                Destroy(curEventData.psObject);
+            }
+        }
+        activeEventList.Clear();
     }
     //---------------------------------------------------------------------------------------------
     private void UpdateEventsInternal()
@@ -137,6 +161,10 @@ public class BattleObject : MonoBehaviour
         for (int i = waitEventList.Count - 1; i >= 0; --i)
         {
             curEvent = waitEventList[i];
+            if (curEvent.id == "magicWaterMediume2")
+            {
+                int a = 0;
+            }
             if (curEvent.triggerTime <= curTime)
             {
                 activeEventList.Add(curEvent);
@@ -160,47 +188,66 @@ public class BattleObject : MonoBehaviour
                 if (curEvent.particleAsset != null && curEvent.particleAsset.Length > 0)
                 {
                     GameObject prefab = ResourceMgr.Instance.LoadAsset(curEvent.particleBundle, curEvent.particleAsset);
-                    curEvent.psObject = GameObject.Instantiate(prefab);
-                    Transform rootTransform = transform;
-                    if (curEvent.rootNode != null && curEvent.rootNode.Length > 0)
+                    if (prefab != null)
                     {
-                        GameObject rootParent = Util.FindChildByName(gameObject, curEvent.rootNode);
-                        if (rootParent != null)
+                        curEvent.psObject = GameObject.Instantiate(prefab);
+                        Transform rootTransform = transform;
+                        if (curEvent.rootNode != null && curEvent.rootNode.Length > 0)
                         {
-                            rootTransform = rootParent.transform;
+                            GameObject rootParent = Util.FindChildByName(gameObject, curEvent.rootNode);
+                            if (rootParent != null)
+                            {
+                                rootTransform = rootParent.transform;
+                            }
                         }
-                    }
-                    curEvent.psObject.transform.parent = rootTransform;
-                    curEvent.psObject.transform.localPosition = prefab.transform.position;
-                    curEvent.psObject.transform.localRotation = prefab.transform.rotation;
-                    curEvent.psObject.transform.localScale = prefab.transform.localScale;
 
-                    if (curEvent.particleParent != null && curEvent.particleParent.Length > 0)
-                    {
-                        if (curEvent.rootNode != null)
+                        if (curEvent.particleParent != null && curEvent.particleParent.Length > 0)
                         {
-                            Logger.LogWarning("weak point is ignored since event configs the parent node");
+                            if (curEvent.rootNode != null)
+                            {
+                                Logger.LogWarning("weak point is ignored since event configs the parent node");
+                            }
+                            //Transform parentNode = transform.Find(curEvent.particleParent);
+                            GameObject parentNode = Util.FindChildByName(gameObject, curEvent.particleParent);
+                            if (parentNode != null)
+                            {
+                                rootTransform = parentNode.transform;
+                            }
                         }
-                        //Transform parentNode = transform.Find(curEvent.particleParent);
-                        GameObject parentNode = Util.FindChildByName(gameObject, curEvent.particleParent);
-                        if (parentNode != null)
-                        {
-                            curEvent.psObject.transform.parent = parentNode.transform;
-                        }
-                    }
-                    curEvent.ps = curEvent.psObject.GetComponent<ParticleSystem>();
-                    if (curEvent.ps != null)
-                    {
-                        curEvent.ps.Play();
-                    }
 
-                    if (curEvent.particleAni != null && curEvent.particleAni.Length > 0)
-                    {
-                        Animator animator = curEvent.psObject.GetComponentInChildren<Animator>();
-                        int curStateHash = Animator.StringToHash(curEvent.particleAni);
-                        if (animator != null && animator.HasState(0, curStateHash))
+                        if (curEvent.attach == "true")
                         {
-                            animator.Play(curStateHash);
+                            curEvent.psObject.transform.localPosition = prefab.transform.localPosition;
+                            //curEvent.psObject.transform.localRotation = prefab.transform.localRotation;
+                            curEvent.psObject.transform.localRotation = Quaternion.identity;
+                            curEvent.psObject.transform.SetParent(rootTransform, false);
+                            //NOTE: xw said if attach, ignore lock
+                        }
+                        else
+                        {
+                            //curEvent.psObject.transform.parent = transform.parent;
+                            curEvent.psObject.transform.localPosition = rootTransform.position;
+                            curEvent.psObject.transform.localRotation = Quaternion.identity;
+                            //curEvent.psObject.transform.localRotation = rootTransform.rotation;
+                            curEvent.psObject.transform.SetParent(transform.parent, false);
+                            if (curEvent.locky == "true")
+                            {
+                                curEvent.psObject.transform.localRotation = Quaternion.identity;
+                                curEvent.psObject.transform.localPosition = new Vector3(rootTransform.position.x, 0.0f, rootTransform.position.z);
+                            }
+
+                        }
+                        curEvent.psObject.transform.localScale = prefab.transform.localScale;
+                        curEvent.psDuration = Util.ParticleSystemLength(curEvent.psObject.transform);
+
+                        if (curEvent.particleAni != null && curEvent.particleAni.Length > 0)
+                        {
+                            Animator animator = curEvent.psObject.GetComponent<Animator>();
+                            int curStateHash = Animator.StringToHash(curEvent.particleAni);
+                            if (animator != null && animator.HasState(0, curStateHash))
+                            {
+                                animator.Play(curStateHash);
+                            }
                         }
                     }
                 }

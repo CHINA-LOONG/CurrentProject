@@ -1,7 +1,10 @@
 package com.hawk.game.player;
 
+import java.util.List;
+
 import org.hawk.app.HawkObjModule;
 import org.hawk.net.protocol.HawkProtocol;
+
 import com.google.protobuf.ProtocolMessageEnum;
 
 /**
@@ -49,6 +52,15 @@ public class PlayerModule extends HawkObjModule {
 	 * @return
 	 */
 	protected boolean onPlayerLogout() {
+		return true;
+	}
+
+	/**
+	 * 玩家数据刷新
+	 * 
+	 * @return
+	 */
+	protected boolean onRefresh(List<Integer> refreshTypeList) {
 		return true;
 	}
 

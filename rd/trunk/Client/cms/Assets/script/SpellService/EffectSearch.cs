@@ -46,11 +46,11 @@ public class EffectSearch : Effect
         List<BattleObject> boList = spellService.GetUnitList(camp);
         foreach (BattleObject bo in boList)
         {
-            if (bo == null || bo.unit.isVisible == false)
+            if (bo == null || bo.unit.isVisible == false || bo.unit.State == UnitState.Dead)
                 continue;
 
             List<string> wpList = WeakPointController.Instance.GetAiCanAttackWeakpointList(bo.unit);
-            for (int i = 0; i < wpList.Count; ++i)
+            if (wpList.Count == 0)
             {
                 Effect curEffect = spellService.GetEffect(searchProt.effectID);
                 if (curEffect != null)
@@ -58,10 +58,23 @@ public class EffectSearch : Effect
                     curEffect.SetOwnedBuff(ownedBuff);
                     curEffect.SetOwnedSpell(ownedSpell);
                     curEffect.targetID = bo.guid;
-                    curEffect.Apply(applyTime, wpList[i]);
+                    curEffect.Apply(applyTime, string.Empty);
                 }
             }
-
+            else
+            {
+                for (int i = 0; i < wpList.Count; ++i)
+                {
+                    Effect curEffect = spellService.GetEffect(searchProt.effectID);
+                    if (curEffect != null)
+                    {
+                        curEffect.SetOwnedBuff(ownedBuff);
+                        curEffect.SetOwnedSpell(ownedSpell);
+                        curEffect.targetID = bo.guid;
+                        curEffect.Apply(applyTime, wpList[i]);
+                    }
+                }
+            }
         }
     }
     //---------------------------------------------------------------------------------------------

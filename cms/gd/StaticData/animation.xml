@@ -50,7 +50,7 @@ state = 1 Remove
 	
 	<Ani id="attackSlighte2" state="0">
 		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackCutMedium" bundle="effect/particle" ani="" parent=""/>
+		<Particle asset="attackCutMedium" bundle="effect/particle" ani="firemove" parent=""/>
 	</Ani>
 	
 	<Ani id="attackMedium" state="0">

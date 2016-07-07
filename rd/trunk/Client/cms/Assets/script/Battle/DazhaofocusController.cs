@@ -26,6 +26,14 @@ public class DazhaofocusController : MonoBehaviour
 		}
 	}
 
+	void OnDestroy()
+	{
+		if (null != focusSceneGo) 
+		{
+			Destroy(focusSceneGo);
+		}
+	}
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -58,7 +66,7 @@ public class DazhaofocusController : MonoBehaviour
 		focusSceneGo.SetActive (true);
 		StartCoroutine (MonsterShowoffCo ());
 
-		UIBattle.Instance.gameObject.SetActive (false);
+		UIBattle.Instance.ShowUI (false);
 	}
 
 	IEnumerator MonsterShowoffCo()
@@ -118,7 +126,8 @@ public class DazhaofocusController : MonoBehaviour
 
 		GameEventMgr.Instance.FireEvent (GameEventList.MonsterShowoffOver);
 
-		UIBattle.Instance.gameObject.SetActive (true);
+		UIBattle.Instance.ShowUI (true);
+		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 	}
 	
 
