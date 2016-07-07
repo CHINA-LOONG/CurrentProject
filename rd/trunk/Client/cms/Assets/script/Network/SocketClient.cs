@@ -45,8 +45,9 @@ public class SocketClient : MonoBehaviour {
             switch (_event.Key) 
 			{
                 case NetActionType.Connect:
-                    ConnectServer(Const.SocketAddress, Const.SocketPort);
-                break;
+					ConnectServer(Const.ServerType == Const.SERVERTYPE.REMOTE_SERVER_NORMAL ? Const.RemoteAddress : Const.LocalAddress, 
+                                  Const.ServerType == Const.SERVERTYPE.LOCAL_SERVER_TEST ? Const.TestSocketPort : Const.SocketPort);                 
+				break;
                 case NetActionType.Message: 
 					SessionSend( _event.Value );
                 break;
@@ -74,7 +75,7 @@ public class SocketClient : MonoBehaviour {
         } 
 		catch (Exception e) {
             Close(); 
-			Debug.LogError(e.Message);
+			Logger.LogError(e.Message);
         }
     }
 
@@ -113,10 +114,10 @@ public class SocketClient : MonoBehaviour {
                 //NetworkStream stream = client.GetStream(); 
                 byte[] payload = ms.ToArray(); 
                 outStream.BeginWrite(payload, 0, payload.Length, new AsyncCallback(OnWrite), null);
-            } 
+            }
 			else 
 			{
-                Debug.LogError("client.connected----->>false");
+				Logger.LogError("client.connected----->>false");
             }
         }
     }
@@ -162,7 +163,7 @@ public class SocketClient : MonoBehaviour {
 			ResponseState.Exception : ResponseState.Disconnect;
 
         NetworkManager.AddEvent(protocal, null);
-        Debug.LogError("Connection was closed by the server:>" + msg + " Distype:>" + dis);
+		Logger.LogError("Connection was closed by the server:>" + msg + " Distype:>" + dis);
     }
 
     /// <summary>
@@ -174,7 +175,7 @@ public class SocketClient : MonoBehaviour {
         for (int i = 0; i < byteBuffer.Length; i++) {
             returnStr += byteBuffer[i].ToString("X2"); 
         }
-        Debug.LogError(returnStr);
+		Logger.LogError(returnStr);
     }
 
     /// <summary>
@@ -184,7 +185,7 @@ public class SocketClient : MonoBehaviour {
         try {
             outStream.EndWrite(r);
         } catch (Exception ex) {
-            Debug.LogError("OnWrite--->>>" + ex.Message);
+			Logger.LogError("OnWrite--->>>" + ex.Message);
         }
     }
 

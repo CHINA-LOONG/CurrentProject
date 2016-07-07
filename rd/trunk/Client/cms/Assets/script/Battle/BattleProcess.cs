@@ -227,7 +227,7 @@ public class BattleProcess : MonoBehaviour
                     bo.unit.attackWpName = null;
                     fireAttackWpName = null;
                     battleGroup.OnUnitEnterField(bo, slot);
-                    //StartCoroutine(DebugAnim(unit));
+                    //StartCoroutine(LoggerAnim(unit));
                 }
             }
             else
@@ -238,7 +238,7 @@ public class BattleProcess : MonoBehaviour
                     battleGroup.OnUnitExitField(deadUnit, slot);
                     var unit = switchAction.caster;
                     battleGroup.OnUnitEnterField(unit, slot);
-                    //StartCoroutine(DebugAnim(unit));
+                    //StartCoroutine(LoggerAnim(unit));
                     insertAction.Remove(switchAction);
                     Logger.LogWarning("Dead unit was to be replaced, get the replace unit to field.");
                 }
@@ -250,7 +250,7 @@ public class BattleProcess : MonoBehaviour
 						//if no unit,don't call exitfield() since the changepetview will show all exited pet
                         battleGroup.OnUnitExitField(deadUnit, slot);
                         battleGroup.OnUnitEnterField(unit, slot);
-                        //StartCoroutine(DebugAnim(unit));
+                        //StartCoroutine(LoggerAnim(unit));
                     }
                     else
                     {
@@ -632,7 +632,7 @@ public class BattleProcess : MonoBehaviour
         var curTarget = aiResult.attackTarget;
         if (null == curTarget)
         {
-            Debug.LogError("Error for BattleUnitAI....");
+            Logger.LogError("Error for BattleUnitAI....");
         }
         bo.unit.attackCount++;
         if (aiResult.useSpell != null)
@@ -664,7 +664,7 @@ public class BattleProcess : MonoBehaviour
 		}
 		else
 		{
-			Debug.LogError("Error: dazhaoAttack not have Dazhao Spell!");
+			Logger.LogError("Error: dazhaoAttack not have Dazhao Spell!");
 		}
 	}
 
@@ -892,10 +892,10 @@ public class BattleProcess : MonoBehaviour
 			}
 		}
 
-		Debug.LogError ("大招被打断，删除插入事件。。。。!");
+		Logger.LogError ("大招被打断，删除插入事件。。。。!");
 	}
 
-    //IEnumerator DebugAnim(GameUnit movedUnit)
+    //IEnumerator LoggerAnim(GameUnit movedUnit)
     //{
     //    float totalTime = 0.2f;
     //    float speed = 1f;

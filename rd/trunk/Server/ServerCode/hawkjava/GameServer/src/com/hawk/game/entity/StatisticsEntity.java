@@ -48,9 +48,13 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "monsterCollect", nullable = false)
 	private String monsterCollectJson = "";
 
-	// 副本状态，记录已完成副本星级：1-3
-	@Column(name = "instanceComplete", nullable = false)
-	private String instanceCompleteJson = "";
+	// 各副本完成星级：1-3
+	@Column(name = "instanceStar", nullable = false)
+	private String instanceStarJson = "";
+	
+	// 今日各副本完成次数
+	@Column(name = "instanceCountDaily", nullable = false)
+	private String instanceCountDailyJson = "";
 
 	// 历史达到特定品级宠物数量
 	@Column(name = "monsterStage", nullable = false)
@@ -73,12 +77,12 @@ public class StatisticsEntity  extends HawkDBEntity {
 	private int monsterMaxStage = 0;
 
 	// 历史副本完成次数
-	@Column(name = "instanceCount", nullable = false)
-	private int instanceCount = 0;
+	@Column(name = "instanceAllCount", nullable = false)
+	private int instanceAllCount = 0;
 
 	// 今日副本完成次数
-	@Column(name = "instanceCountDaily", nullable = false)
-	private int instanceCountDaily = 0;
+	@Column(name = "instanceAllCountDaily", nullable = false)
+	private int instanceAllCountDaily = 0;
 
 	// 历史精英副本完成次数
 	@Column(name = "hardCount", nullable = false)
@@ -202,7 +206,10 @@ public class StatisticsEntity  extends HawkDBEntity {
 	protected Set<Integer> questCompleteDailySet = new HashSet<Integer>();
 
 	@Transient
-	protected Map<String, Integer> instanceCompleteMap = new HashMap<String, Integer> ();
+	protected Map<String, Integer> instanceStarMap = new HashMap<String, Integer> ();
+	
+	@Transient
+	protected Map<String, Integer> instanceCountDailyMap = new HashMap<String, Integer> ();
 
 	@Transient
 	protected Set<String> monsterCollectSet = new HashSet<String> ();
@@ -281,22 +288,44 @@ public class StatisticsEntity  extends HawkDBEntity {
 		monsterCollectSet.add(monsterCfgId);
 	}
 
-	public Map<String, Integer> getInstanceCompleteMap() {
-		return instanceCompleteMap;
+	public Map<String, Integer> getInstanceStarMap() {
+		return instanceStarMap;
 	}
 
-	public void addInstanceComplete(String instanceId, int starCount) {
-		instanceCompleteMap.put(instanceId, starCount);
+	public void addInstanceStar(String instanceId, int starCount) {
+		instanceStarMap.put(instanceId, starCount);
 	}
 	/**
 	 * @return 副本完成星级，如未完成返回0
 	 */
-	public int getInstanceCompleteState(String instanceId) {
-		Integer state = instanceCompleteMap.get(instanceId);
-		if (null != state) {
-			return state;
+	public int getInstanceStar(String instanceId) {
+		Integer star = instanceStarMap.get(instanceId);
+		if (null != star) {
+			return star;
 		}
 		return 0;
+	}
+	
+	public Map<String, Integer> getInstanceCountDailyMap() {
+		return instanceCountDailyMap;
+	}
+
+	public void addInstanceCountDaily(String instanceId, int count) {
+		instanceCountDailyMap.put(instanceId, count);
+	}
+	/**
+	 * @return 副本完成次数，如未完成返回0
+	 */
+	public int getInstanceCountDaily(String instanceId) {
+		Integer count = instanceCountDailyMap.get(instanceId);
+		if (null != count) {
+			return count;
+		}
+		return 0;
+	}
+	
+	public void clearInstanceCountDaily() {
+		instanceCountDailyMap.clear();
 	}
 
 	public Map<Integer, Integer> getMonsterCountOverStageMap() {
@@ -355,24 +384,24 @@ public class StatisticsEntity  extends HawkDBEntity {
 		this.monsterMaxStage = monsterMaxStage;
 	}
 
-	public int getInstanceCount() {
-		return instanceCount;
+	public int getInstanceAllCount() {
+		return instanceAllCount;
 	}
 
-	public void addInstanceCount() {
-		++instanceCount;
+	public void addInstanceAllCount() {
+		++instanceAllCount;
 	}
 
-	public int getInstanceCountDaily() {
-		return instanceCountDaily;
+	public int getInstanceAllCountDaily() {
+		return instanceAllCountDaily;
 	}
 
-	public void addInstanceCountDaily() {
-		++instanceCountDaily;
+	public void addInstanceAllCountDaily() {
+		++instanceAllCountDaily;
 	}
 
-	public void clearInstanceCountDaily() {
-		instanceCountDaily = 0;
+	public void clearInstanceAllCountDaily() {
+		instanceAllCountDaily = 0;
 	}
 
 	public int getHardCount() {
@@ -632,8 +661,11 @@ public class StatisticsEntity  extends HawkDBEntity {
 		if (monsterCollectJson != null && false == "".equals(monsterCollectJson) && false == "null".equals(monsterCollectJson)) {
 			monsterCollectSet = HawkJsonUtil.getJsonInstance().fromJson(monsterCollectJson, new TypeToken<HashSet<String>>() {}.getType());
 		}
-		if (instanceCompleteJson != null && false == "".equals(instanceCompleteJson) && false == "null".equals(instanceCompleteJson)) {
-			instanceCompleteMap = HawkJsonUtil.getJsonInstance().fromJson(instanceCompleteJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
+		if (instanceStarJson != null && false == "".equals(instanceStarJson) && false == "null".equals(instanceStarJson)) {
+			instanceStarMap = HawkJsonUtil.getJsonInstance().fromJson(instanceStarJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
+		}
+		if (instanceCountDailyJson != null && false == "".equals(instanceCountDailyJson) && false == "null".equals(instanceCountDailyJson)) {
+			instanceCountDailyMap = HawkJsonUtil.getJsonInstance().fromJson(instanceCountDailyJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
 		if (monsterStageJson != null && false == "".equals(monsterStageJson) && false == "null".equals(monsterStageJson)) {
 			monsterStageMap = HawkJsonUtil.getJsonInstance().fromJson(monsterStageJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
@@ -650,7 +682,8 @@ public class StatisticsEntity  extends HawkDBEntity {
 		questCompleteJson = HawkJsonUtil.getJsonInstance().toJson(questCompleteSet);
 		questCompleteDailyJson = HawkJsonUtil.getJsonInstance().toJson(questCompleteDailySet);
 		monsterCollectJson = HawkJsonUtil.getJsonInstance().toJson(monsterCollectSet);
-		instanceCompleteJson = HawkJsonUtil.getJsonInstance().toJson(instanceCompleteMap);
+		instanceStarJson = HawkJsonUtil.getJsonInstance().toJson(instanceStarMap);
+		instanceCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(instanceCountDailyMap);
 		monsterStageJson = HawkJsonUtil.getJsonInstance().toJson(monsterStageMap);
 		monsterLevelJson = HawkJsonUtil.getJsonInstance().toJson(monsterLevelMap);
 		return true;

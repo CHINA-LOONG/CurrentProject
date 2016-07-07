@@ -114,6 +114,7 @@ namespace UnityClientConsole
             }
             else if (protocol.checkType(code.STATISTICS_INFO_SYNC_S.GetHashCode()))
             {
+                HSStatisticsInfoSync statisticsInfo = protocol.GetProtocolBody<HSStatisticsInfoSync>();
                 Console.WriteLine("同步统计信息");
             }
             else if (protocol.checkType(code.MONSTER_INFO_SYNC_S.GetHashCode()))

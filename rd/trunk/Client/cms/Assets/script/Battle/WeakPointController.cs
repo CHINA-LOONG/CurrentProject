@@ -88,7 +88,7 @@ public class WeakPointController : MonoBehaviour
 		GameObject colliderGo = Util.FindChildByName(monsterGo,colliderName);
 		if(null == colliderGo)
 		{
-			Debug.LogError("Can't find monster weakCollider " + colliderName);
+			Logger.LogError("Can't find monster weakCollider " + colliderName);
 			return;
 		}
 

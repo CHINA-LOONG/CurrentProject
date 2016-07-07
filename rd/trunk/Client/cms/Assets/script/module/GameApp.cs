@@ -45,6 +45,12 @@ public class GameApp : MonoBehaviour
 
 		gameObject.AddComponent<GameConfig> ();
 
+		Logger.ConsoleEnable = Const.DebugConsoleEnable;
+		if (Const.DebugConsoleEnable) 
+		{
+			gameObject.AddComponent<OutLog>();
+		}
+
         //释放资源，将包中的压缩资源解压出来
         CheckExtractResource();
     }
@@ -85,7 +91,7 @@ public class GameApp : MonoBehaviour
     {
         string dataPath = Util.ResPath;  //数据目录
         string resPath = Util.AppContentPath(); //游戏包资源目录
-        Debug.Log(Util.ResPath);
+        Logger.Log(Util.ResPath);
 
         if (Directory.Exists(dataPath))
             Directory.Delete(dataPath, true);
@@ -129,7 +135,7 @@ public class GameApp : MonoBehaviour
 
                 if (www.isDone)
                 {
-                    Debug.LogError(infile + " ## " + www.bytes.Length + " ## " + outfile);
+                    Logger.LogError(infile + " ## " + www.bytes.Length + " ## " + outfile);
                     File.WriteAllBytes(outfile, www.bytes);
                 }
                 yield return null;
@@ -176,7 +182,7 @@ public class GameApp : MonoBehaviour
             Debug.LogWarning("LoadUpdate---->>>" + listUrl);
 
         www = new WWW(listUrl);
-        Debug.Log(listUrl);
+        Logger.Log(listUrl);
         yield return www;
         if (www.error != null)
         {
@@ -193,7 +199,7 @@ public class GameApp : MonoBehaviour
         //从下一个index开始更新
         for (int i = versionIndex+1; i < versions.Length; ++i )
         {
-            Debug.Log(url + versions[i]);
+            Logger.Log(url + versions[i]);
             www = new WWW(url + versions[i]);
             yield return www;
             if (www.error != null)
@@ -225,7 +231,7 @@ public class GameApp : MonoBehaviour
     public void OnResourceInited()
     {
         //初始化完成
-        Debug.Log("OnResourceInited");
+        Logger.Log("OnResourceInited");
 
         InitMgr();
     }
@@ -235,7 +241,7 @@ public class GameApp : MonoBehaviour
     /// </summary>
     public void OnInitScene()
     {
-        Debug.Log("OnInitScene-->>" + Application.loadedLevelName);
+        Logger.Log("OnInitScene-->>" + Application.loadedLevelName);
     }
 
     /// <summary>
@@ -243,7 +249,7 @@ public class GameApp : MonoBehaviour
     /// </summary>
     void OnDestroy()
     {
-        Debug.Log("~GameManager was destroyed");
+        Logger.Log("~GameManager was destroyed");
     }
 }
 

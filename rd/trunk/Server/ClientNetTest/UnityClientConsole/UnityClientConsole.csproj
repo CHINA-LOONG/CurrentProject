@@ -80,6 +80,7 @@
     <Compile Include="Protocol\Reward.cs" />
     <Compile Include="Protocol\Role.cs" />
     <Compile Include="Protocol\Skill.cs" />
+    <Compile Include="Protocol\Statistics.cs" />
     <Compile Include="Protocol\Status.cs" />
     <Compile Include="Protocol\SysProtocol.cs" />
   </ItemGroup>

@@ -89,7 +89,7 @@ public class ResourceMgr : MonoBehaviour
         {
             byte[] stream = null;
             string uri = Path.Combine(Util.AssetBundlePath, abname);
-            Debug.Log("LoadFile::>> " + uri);
+            Logger.Log("LoadFile::>> " + uri);
             LoadDependencies(abname);
 
             stream = File.ReadAllBytes(uri);
@@ -111,7 +111,7 @@ public class ResourceMgr : MonoBehaviour
     {
         if (manifest == null)
         {
-            Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
+            Logger.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
             return;
         }
         // Get dependecies from the AssetBundleManifest object..
@@ -168,6 +168,6 @@ public class ResourceMgr : MonoBehaviour
     {
         if (manifest != null) manifest = null;
         Destroy(gameObject);
-        Debug.Log("~ResourceManager was destroy!");
+		Logger.Log("~ResourceManager was destroy!");
     }
 }

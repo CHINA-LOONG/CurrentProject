@@ -14,9 +14,10 @@ import com.hawk.game.protocol.Equip.EquipInfo;
 import com.hawk.game.protocol.Equip.GemInfo;
 import com.hawk.game.protocol.Item.ItemInfo;
 import com.hawk.game.protocol.Monster.HSMonster;
-import com.hawk.game.protocol.Player.HSStatisticsInfoSync;
+import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
 import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Skill.HSSkill;
+import com.hawk.game.protocol.Statistics.InstanceState;
 
 public class BuilderUtil {
 
@@ -45,8 +46,15 @@ public class BuilderUtil {
 	}
 
 	public static HSStatisticsInfoSync.Builder genStatisticsBuilder(StatisticsEntity statisticsEntity) {
-		HSStatisticsInfoSync.Builder builder = HSStatisticsInfoSync.newBuilder();
-//		builder.setInstanceState(statisticsEntity.get());
+		HSStatisticsInfoSync.Builder builder = HSStatisticsInfoSync.newBuilder();		
+		for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
+			InstanceState.Builder instanceState = InstanceState.newBuilder();
+			instanceState.setInstanceId(entry.getKey());
+			instanceState.setStar(entry.getValue());
+			instanceState.setCountDaily(statisticsEntity.getInstanceCountDaily(entry.getKey()));
+			
+			builder.addInstanceState(instanceState);
+		}
 		return builder;
 	}
 

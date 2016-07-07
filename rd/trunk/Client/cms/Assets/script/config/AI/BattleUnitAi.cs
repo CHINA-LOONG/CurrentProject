@@ -125,7 +125,7 @@ public class BattleUnitAi : MonoBehaviour {
 			attackTarget = GetDazhaoAttackTarget(battleUnit);
 			break;
 		default:
-			Debug.LogError("battleAi Can't did the spelltype " + spellType);
+			Logger.LogError("battleAi Can't did the spelltype " + spellType);
 			break;
 		}
 	//	attackTarget.attackWpName = null;
@@ -143,7 +143,7 @@ public class BattleUnitAi : MonoBehaviour {
 		LazyData lazyData = StaticDataMgr.Instance.GetLazyData (lazyIndex);
 		if (null == lazyData) 
 		{
-			Debug.LogError("static lazy data Can't contain index = " + lazyIndex);
+			Logger.LogError("static lazy data Can't contain index = " + lazyIndex);
 			return;
 		}
 
@@ -412,7 +412,7 @@ public class BattleUnitAi : MonoBehaviour {
 		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (unitCharacter);
 		if (null == characterData)
 		{
-			Debug.LogError("Can't Find characterData index = " + battleUnit.character);
+			Logger.LogError("Can't Find characterData index = " + battleUnit.character);
 			return AiAttackStyle.UnKown;
 		}
 
@@ -444,7 +444,7 @@ public class BattleUnitAi : MonoBehaviour {
 		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (battleUnit.character);
 		if (null == characterData)
 		{
-			Debug.LogError("Can't Find  1characterData index = " + battleUnit.character);
+			Logger.LogError("Can't Find  1characterData index = " + battleUnit.character);
 			return 0;
 		}
 

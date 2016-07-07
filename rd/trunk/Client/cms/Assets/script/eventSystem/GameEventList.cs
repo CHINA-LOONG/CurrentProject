@@ -5,8 +5,7 @@ public class GameEventList
 {
     //Login
     public static string LoginClick = "LoginClick";//no param
-
-	public static string CreatePlayerFinished = "CreatePlayerFinished";//no param
+    public static string createPlayerClick = "CreatePlayerClick";//no param
 
     //Build
     public static string BattleBtnClick = "BattleBtnClick";

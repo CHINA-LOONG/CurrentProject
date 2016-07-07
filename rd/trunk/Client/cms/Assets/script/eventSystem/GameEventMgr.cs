@@ -32,7 +32,7 @@ public class GameEventMgr
 	public void MarkAsPermanent(string eventType) 
 	{
 		#if LOG_ALL_MESSAGES
-		Debug.Log("Messenger MarkAsPermanent \t\"" + eventType + "\"");
+		Logger.Log("Messenger MarkAsPermanent \t\"" + eventType + "\"");
 		#endif
 		mPermanentMessages.Add(eventType);
 	}
@@ -40,7 +40,7 @@ public class GameEventMgr
 	public void Cleanup()
 	{
 		#if LOG_ALL_MESSAGES
-		Debug.Log("MESSENGER Cleanup. Make sure that none of necessary listeners are removed.");
+		Logger.Log("MESSENGER Cleanup. Make sure that none of necessary listeners are removed.");
 		#endif
 		
 		List<string> messagesToRemove = new List<string>();
@@ -69,19 +69,19 @@ public class GameEventMgr
 
 	public void PrintEventTable()
 	{
-		Debug.Log("\t\t\t=== MESSENGER PrintEventTable ===");
+		Logger.Log("\t\t\t=== MESSENGER PrintEventTable ===");
 		
 		foreach (KeyValuePair<string, Delegate> pair in mEventTable) {
-			Debug.Log("\t\t\t" + pair.Key + "\t\t" + pair.Value);
+			Logger.Log("\t\t\t" + pair.Key + "\t\t" + pair.Value);
 		}
 		
-		Debug.Log("\n");
+		Logger.Log("\n");
 	}
 
 	public void OnListenerAdding(string eventType, Delegate listenerBeingAdded) 
 	{
 		#if LOG_ALL_MESSAGES || LOG_ADD_LISTENER
-		Debug.Log("MESSENGER OnListenerAdding \t\"" + eventType + "\"\t{" + listenerBeingAdded.Target + " -> " + listenerBeingAdded.Method + "}");
+		Logger.Log("MESSENGER OnListenerAdding \t\"" + eventType + "\"\t{" + listenerBeingAdded.Target + " -> " + listenerBeingAdded.Method + "}");
 		#endif
 		
 		if (!mEventTable.ContainsKey(eventType)) {
@@ -96,7 +96,7 @@ public class GameEventMgr
 
 	public void OnListenerRemoving(string eventType, Delegate listenerBeingRemoved) {
 		#if LOG_ALL_MESSAGES
-		Debug.Log("MESSENGER OnListenerRemoving \t\"" + eventType + "\"\t{" + listenerBeingRemoved.Target + " -> " + listenerBeingRemoved.Method + "}");
+		Logger.Log("MESSENGER OnListenerRemoving \t\"" + eventType + "\"\t{" + listenerBeingRemoved.Target + " -> " + listenerBeingRemoved.Method + "}");
 		#endif
 		
 		if (mEventTable.ContainsKey(eventType)) 
@@ -218,7 +218,7 @@ public class GameEventMgr
 	public void FireEvent(string eventType) 
 	{
 		#if LOG_ALL_MESSAGES || LOG_BROADCAST_MESSAGE
-		Debug.Log("MESSENGER\t" + System.DateTime.Now.ToString("hh:mm:ss.fff") + "\t\t\tInvoking \t\"" + eventType + "\"");
+		Logger.Log("MESSENGER\t" + System.DateTime.Now.ToString("hh:mm:ss.fff") + "\t\t\tInvoking \t\"" + eventType + "\"");
 		#endif
 		OnFireEvent(eventType);
 		Delegate d;
@@ -237,7 +237,7 @@ public class GameEventMgr
 	public void FireEvent<T>(string eventType, T arg1) 
 	{
 		#if LOG_ALL_MESSAGES || LOG_BROADCAST_MESSAGE
-		Debug.Log("MESSENGER\t" + System.DateTime.Now.ToString("hh:mm:ss.fff") + "\t\t\tInvoking \t\"" + eventType + "\"");
+		Logger.Log("MESSENGER\t" + System.DateTime.Now.ToString("hh:mm:ss.fff") + "\t\t\tInvoking \t\"" + eventType + "\"");
 		#endif
 		OnFireEvent(eventType);
 		
@@ -257,7 +257,7 @@ public class GameEventMgr
 	public void FireEvent<T, U>(string eventType, T arg1, U arg2) 
 	{
 		#if LOG_ALL_MESSAGES || LOG_BROADCAST_MESSAGE
-		Debug.Log("MESSENGER\t" + System.DateTime.Now.ToString("hh:mm:ss.fff") + "\t\t\tInvoking \t\"" + eventType + "\"");
+		Logger.Log("MESSENGER\t" + System.DateTime.Now.ToString("hh:mm:ss.fff") + "\t\t\tInvoking \t\"" + eventType + "\"");
 		#endif
 		OnFireEvent(eventType);
 		
@@ -277,7 +277,7 @@ public class GameEventMgr
 	public void FireEvent<T, U, V>(string eventType, T arg1, U arg2, V arg3) 
 	{
 		#if LOG_ALL_MESSAGES || LOG_BROADCAST_MESSAGE
-		Debug.Log("MESSENGER\t" + System.DateTime.Now.ToString("hh:mm:ss.fff") + "\t\t\tInvoking \t\"" + eventType + "\"");
+		Logger.Log("MESSENGER\t" + System.DateTime.Now.ToString("hh:mm:ss.fff") + "\t\t\tInvoking \t\"" + eventType + "\"");
 		#endif
 		OnFireEvent(eventType);
 		

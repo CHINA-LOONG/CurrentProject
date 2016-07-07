@@ -43,15 +43,15 @@ public class NetworkManager : MonoBehaviour
 					GameEventMgr.Instance.FireEvent<int>(NetEventList.NetConnectFinished,0);
 					break;
 				case ResponseState.Disconnect:
-					Debug.LogError("disconnect msg");
+					Logger.LogError("disconnect msg");
 					break;
 				case ResponseState.Exception:
-					Debug.LogError("net Exception");
+					Logger.LogError("net Exception");
 					break;
 				case ResponseState.Message:
 				{ 
 					ProtocolMessage pmsg = _event.Value;
-					Debug.Log("receiv msg : " + pmsg.GetMessageType());
+					Logger.Log("receiv msg : " + pmsg.GetMessageType());
 					GameEventMgr.Instance.FireEvent<ProtocolMessage>(pmsg.GetMessageType().ToString(),pmsg);
 					UINetRequest.Close();
 				}
@@ -60,6 +60,21 @@ public class NetworkManager : MonoBehaviour
                     break;
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// 链接请求完成
+    /// </summary>
+    void OnNetConnectFinished(int state)
+    {
+        if (1 == state)
+        {
+            Debug.LogWarning("OK for net");
+        }
+        else
+        {
+            Debug.LogError("Error for Net");
         }
     }
 
@@ -92,6 +107,6 @@ public class NetworkManager : MonoBehaviour
     /// </summary>
     void OnDestroy()
     {
-        Debug.Log("~NetworkManager was destroy");
+		Logger.Log("~NetworkManager was destroy");
     }
 }

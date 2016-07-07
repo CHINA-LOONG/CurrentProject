@@ -1,0 +1,20 @@
+option java_package = "com.hawk.game.protocol";
+
+// struct-------------------------------------------------------
+
+message InstanceState
+{
+	required string instanceId = 1;
+	required int32 star = 2;
+	required int32 countDaily = 3;
+}
+
+// protocol-----------------------------------------------------
+
+message HSStatisticsInfoSync
+{
+	// 副本状态
+	repeated InstanceState instanceState = 1;
+	// 宠物图鉴
+	repeated string monsterCollect = 2;
+}

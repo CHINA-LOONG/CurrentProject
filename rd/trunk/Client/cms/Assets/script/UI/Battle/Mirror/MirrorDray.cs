@@ -104,12 +104,12 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 		lastFindWeakpoint.Clear ();
 
 
-		StartCoroutine (weakPointRayCastCo());
+		StartCoroutine ("weakPointRayCastCo");
 	}
 
 	void StopRayCast()
 	{
-		StopCoroutine(weakPointRayCastCo());
+		StopCoroutine("weakPointRayCastCo");
 
 		List<MirrorTarget> listTarget = new List<MirrorTarget> (lastFindWeakpoint.Keys);
 		if (null !=listTarget && listTarget.Count > 0) 

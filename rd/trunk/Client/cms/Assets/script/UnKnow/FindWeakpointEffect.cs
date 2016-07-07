@@ -11,7 +11,7 @@ public class FindWeakpointEffect : MonoBehaviour
 		effectObject = Instantiate (prefab) as GameObject;
 		if (null == effectObject)
 		{
-			Debug.LogError("can't load findweakpointEffect");
+			Logger.LogError("can't load findweakpointEffect");
 			return;
 		}
 

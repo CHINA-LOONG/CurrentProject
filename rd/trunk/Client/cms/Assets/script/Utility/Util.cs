@@ -154,7 +154,7 @@ public class Util
 		{
 			if(weightList[i] < 0)
 			{
-				Debug.LogError("RondomWithWeight Eror param sum = " + sum);
+				Logger.LogError("RondomWithWeight Eror param sum = " + sum);
 				return -1;
 			}
 
@@ -162,7 +162,7 @@ public class Util
 		}
 		if (sum <= 0) 
 		{
-			Debug.LogError("RondomWithWeight Eror param sum = " + sum);
+			Logger.LogError("RondomWithWeight Eror param sum = " + sum);
 			return -1;
 		}
 

@@ -276,7 +276,7 @@ public class PlayerQuestModule extends PlayerModule {
 		// 特定难度副本
 		case GsConst.QuestGoalType.DIFFICULTY_GOAL: {
 			String instanceId = (String) quest.getGoalParam();
-			if (0 != statisticsEntity.getInstanceCompleteState(instanceId)) {
+			if (0 != statisticsEntity.getInstanceStar(instanceId)) {
 				progress = 1;
 			}
 			break;
@@ -284,7 +284,7 @@ public class PlayerQuestModule extends PlayerModule {
 		//	特定星级副本
 		case GsConst.QuestGoalType.STAR_GOAL: {
 			String instanceId = (String) quest.getGoalParam();
-			if (3 == statisticsEntity.getInstanceCompleteState(instanceId)) {
+			if (3 == statisticsEntity.getInstanceStar(instanceId)) {
 				progress = 1;
 			}
 			break;
@@ -292,9 +292,9 @@ public class PlayerQuestModule extends PlayerModule {
 		// 普通难度副本
 		case GsConst.QuestGoalType.INSTANCE_NORMAL_GOAL: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getInstanceCount() - statisticsEntity.getHardCount();
+				progress = statisticsEntity.getInstanceAllCount() - statisticsEntity.getHardCount();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getInstanceCountDaily() - statisticsEntity.getHardCountDaily();
+				progress = statisticsEntity.getInstanceAllCountDaily() - statisticsEntity.getHardCountDaily();
 			}
 			break;
 		}
@@ -310,9 +310,9 @@ public class PlayerQuestModule extends PlayerModule {
 		// 所有难度副本
 		case GsConst.QuestGoalType.INSTANCE_ALL_GOAL: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getInstanceCount();
+				progress = statisticsEntity.getInstanceAllCount();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getInstanceCountDaily();
+				progress = statisticsEntity.getInstanceAllCountDaily();
 			}
 			break;
 		}

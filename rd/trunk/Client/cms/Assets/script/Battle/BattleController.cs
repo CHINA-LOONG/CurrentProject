@@ -480,7 +480,7 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnBattleOver(bool isSuccess)
     {
-        Debug.LogWarning("Battle " + (isSuccess ? "Success" : "Failed"));
+		Logger.LogWarning("Battle " + (isSuccess ? "Success" : "Failed"));
         StartCoroutine(ProcessBattleOver(isSuccess));
 		MagicDazhaoController.Instance.ClearAll ();
 		PhyDazhaoController.Instance.ClearAll ();

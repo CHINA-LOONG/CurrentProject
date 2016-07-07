@@ -9,6 +9,7 @@ public class PhyDazhaoController : MonoBehaviour
 	Spell dazhaoSpell;
 	int	dazhaoUseCount = 0;
 	int dazhaoFinishCount =0;
+	int dazhaoLeftTime =0;
 	float dazhaoStartTime = 0;
 
 	DazhaoExitCheck  dazhaoExitCheck = null;
@@ -139,6 +140,21 @@ public class PhyDazhaoController : MonoBehaviour
 		dazhaoStartTime = Time.time;
 		GameEventMgr.Instance.FireEvent(GameEventList.ShowDazhaoTip);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
+		if (dazhaoSpell != null)
+		{
+			dazhaoLeftTime = dazhaoSpell.spellData.channelTime;
+			StopCoroutine("LeftTimeCo");
+			StartCoroutine("LeftTimeCo");
+		}
+	}
+
+	IEnumerator LeftTimeCo()
+	{
+		while (dazhaoLeftTime >0)
+		{
+			yield return new WaitForSeconds( Time.timeScale);
+			dazhaoLeftTime --;
+		}
 	}
 
 	public void  HitBattleObjectWithDazhao(BattleObject battleGo, string weakpointName)
@@ -255,6 +271,7 @@ public class PhyDazhaoController : MonoBehaviour
 	{
 		GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.DazhaoActionOver, casterBattleGo);
 		GameEventMgr.Instance.FireEvent(GameEventList.HideDazhaoTip);
+		StopCoroutine ("LeftTimeCo");
 	}
 
 
@@ -283,16 +300,7 @@ public class PhyDazhaoController : MonoBehaviour
 	{
 		get 
 		{
-			if (dazhaoSpell != null)
-			{
-				float passTime = Time.time - dazhaoStartTime;
-				if(Time.timeScale > 0)
-				{
-					passTime = passTime/Time.timeScale;
-				}
-				return Mathf.Clamp(dazhaoSpell.spellData.channelTime - passTime, 0, dazhaoSpell.spellData.channelTime);
-			}
-			return 0;
+			return dazhaoLeftTime;
 		}
 	}
 

@@ -59,6 +59,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 			statisticsEntity.clearExploreCountDaily();
 			statisticsEntity.clearFatigueClaimCountDaily();
 			statisticsEntity.clearHardCountDaily();
+			statisticsEntity.clearInstanceAllCountDaily();
 			statisticsEntity.clearInstanceCountDaily();
 			statisticsEntity.clearMonsterMixCountDaily();
 			statisticsEntity.clearQuestCompleteDaily();

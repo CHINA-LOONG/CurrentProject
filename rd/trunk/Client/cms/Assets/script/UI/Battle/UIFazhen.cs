@@ -18,7 +18,7 @@ public class UIFazhen : UIBase
 	{
 		InitFazhen ();
 		leftSecend = maxSecend;
-		StartCoroutine (updateLeftTimeCo ());
+		StartCoroutine ("updateLeftTimeCo");
 		ShowErrorTip (false);
 	}
 
@@ -68,7 +68,7 @@ public class UIFazhen : UIBase
 
 	void StopUpdateLeftTime()
 	{
-		StopCoroutine (updateLeftTimeCo ());
+		StopCoroutine ("updateLeftTimeCo");
 	}
 
 	public void ShowErrorTip(bool bshow)

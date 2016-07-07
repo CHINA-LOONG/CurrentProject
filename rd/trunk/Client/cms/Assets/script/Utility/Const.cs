@@ -24,6 +24,8 @@ public class Const
     /// </summary>
     public static bool UpdateMode = false;
 
+	public static	bool	DebugConsoleEnable = true;
+
     public static int TimerInterval = 1;
     //游戏帧频
     public static int GameFrameRate = 30;
@@ -55,7 +57,18 @@ public class Const
     //游戏管理器object名字
     public static string GameAppName = "GameApp";
 
+    public enum SERVERTYPE
+    {
+        LOCAL_SERVER_NORMAL,
+        LOCAL_SERVER_TEST,
+        REMOTE_SERVER_NORMAL,
+
+        NUM_SERVER_TYPE
+    }
+
+    public static SERVERTYPE ServerType = SERVERTYPE.LOCAL_SERVER_NORMAL;     
 	public static int SocketPort = 9595;                          //Socket服务器端口
-	public static string SocketAddress = "192.168.199.122";          //Socket服务器地址
-	//public static string SocketAddress = "192.168.199.178";          // Socket服务器地址
+    public static int TestSocketPort = 9596;                      //测试Socket服务器端口
+    public static string LocalAddress = "192.168.199.122";          //本地Socket服务器地址
+    public static string RemoteAddress = "123.57.249.36";          //远程Socket服务器地址
 }

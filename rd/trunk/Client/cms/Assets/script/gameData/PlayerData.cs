@@ -46,6 +46,10 @@ public class PlayerData : MonoBehaviour
     public List<BattleObject> mainUnitList = new List<BattleObject>();
     public Dictionary<int, PbUnit> unitPbList = new Dictionary<int, PbUnit>();
 
+    //道具
+    public GameItemData gameItemData = new GameItemData();
+    public GameEquipData gameEquipData = new GameEquipData();
+
     //---------------------------------------------------------------------------------------------
     public void InitMainUnitList()
     {

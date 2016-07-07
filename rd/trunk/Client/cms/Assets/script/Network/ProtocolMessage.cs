@@ -52,7 +52,7 @@ public class ProtocolMessage
 	}
 
 
-	private ProtocolHeader header;
+    public ProtocolHeader header;
 	private MemoryStream octets;
 
 	public static ProtocolMessage Create()
@@ -91,8 +91,6 @@ public class ProtocolMessage
 	{
 		header = new ProtocolHeader(type);
 	}
-
-
 
 	public bool CheckMessageType(int msgType)
 	{
@@ -196,11 +194,10 @@ public class ProtocolMessage
 	
 	public bool decode(MemoryStream buffer)
 	{
-	
-		buffer.Seek (0, SeekOrigin.Begin);
+        buffer.Seek(0, SeekOrigin.Begin);
 		if (buffer.Length < HEAD_SIZE) 
 		{
-			Debug.LogError("decode Error ,buffer length = " + buffer.Length);
+			Logger.LogError("decode Error ,buffer length = " + buffer.Length);
 			return false;
 		}
 		
@@ -227,7 +224,7 @@ public class ProtocolMessage
 			if ((buffer.Length - buffer.Position) >= header.size)
 			{
 				
-				if (header.size > 0)
+				if (header.size >= 0)
 				{
 					
 					if (octets == null)
@@ -258,7 +255,7 @@ public class ProtocolMessage
 		}
 		finally
 		{
-			buffer.Position = buffer.Length;
+            buffer.Seek(0, SeekOrigin.Begin);
 		}
 		
 		// crc校验

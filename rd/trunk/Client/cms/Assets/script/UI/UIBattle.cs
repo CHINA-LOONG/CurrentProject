@@ -71,7 +71,7 @@ public class UIBattle : UIBase
         }
         else
         {
-            Debug.LogError("You Should set MirrorImage in the UIBattle prefab!");
+			Logger.LogError("You Should set MirrorImage in the UIBattle prefab!");
         }
 		m_ButtonMirror.IsOn = false;
         
@@ -187,7 +187,7 @@ public class UIBattle : UIBase
         if (dazhaoTip.IsShow())
         {
 			//dazhaoTip.text = "大招模式点点点！剩余时间：" + (int)PhyDazhaoController.Instance.DazhaoLeftTime + "秒 剩余次数：" + PhyDazhaoController.Instance.DazhaoLeftCount;
-			dazhaoTip.SetTipInfo((int)PhyDazhaoController.Instance.DazhaoLeftTime + 1,
+			dazhaoTip.SetTipInfo((int)PhyDazhaoController.Instance.DazhaoLeftTime,
 			                     PhyDazhaoController.Instance.DazhaoUseCount,
 			                     PhyDazhaoController.Instance.DazhaoAllCount);
         }
@@ -295,7 +295,7 @@ public class UIBattle : UIBase
 			}
 		}
 		
-		Debug.Log("battle Speed = " + m_BattleSpeed);
+		Logger.Log("battle Speed = " + m_BattleSpeed);
 	}
 
     void OnToggleMirrorClicked(GameObject go)

@@ -10,6 +10,7 @@ public class UIBuild : UIBase
     public Button m_NormalBattleButton;
     public Button m_BossBattleButton;
     public Button m_RareBattleButton;
+    public Button m_ItemButton;
 
 	public Text levelText;
 	public Text coinText;
@@ -21,6 +22,7 @@ public class UIBuild : UIBase
         EventTriggerListener.Get(m_NormalBattleButton.gameObject).onClick = NormalBattleButtonClick;
         EventTriggerListener.Get(m_BossBattleButton.gameObject).onClick = BossBattleButtonClick;
         EventTriggerListener.Get(m_RareBattleButton.gameObject).onClick = RareBattleButtonClick;
+        EventTriggerListener.Get(m_ItemButton.gameObject).onClick = ItemButtonClick;
 
         //levelText.text = GameDataMgr.Instance.PlayerDataAttr.level.ToString ();
         //coinText.text = GameDataMgr.Instance.PlayerDataAttr.coin.ToString ();
@@ -75,4 +77,8 @@ public class UIBuild : UIBase
         GameEventMgr.Instance.FireEvent<PbStartBattle>(GameEventList.BattleBtnClick, proto);
     }
 
+    void ItemButtonClick(GameObject go)
+    {
+        UIMgr.Instance.OpenUI(UIBag.AssertName, UIBag.ViewName);
+    }
 }

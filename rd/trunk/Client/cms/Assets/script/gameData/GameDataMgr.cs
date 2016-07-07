@@ -74,6 +74,8 @@ public class GameDataMgr : MonoBehaviour
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_INFO_SYNC_S.GetHashCode().ToString(), OnMonsterInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_INFO_SYNC_S.GetHashCode().ToString(), OnItemInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_INFO_SYNC_S.GetHashCode().ToString(), OnEquipInfoSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_CONSUME_S.GetHashCode().ToString(), OnConsume);
 		//GameEventMgr.Instance.AddListener<Coin>(GameEventList.EatCoin, OnEatCoin);
 	}
     //---------------------------------------------------------------------------------------------
@@ -84,6 +86,8 @@ public class GameDataMgr : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_INFO_SYNC_S.GetHashCode().ToString(), OnMonsterInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_INFO_SYNC_S.GetHashCode().ToString(), OnItemInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_INFO_SYNC_S.GetHashCode().ToString(), OnEquipInfoSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_CONSUME_S.GetHashCode().ToString(), OnConsume);
 		//GameEventMgr.Instance.RemoveListener<Coin>(GameEventList.EatCoin, OnEatCoin);
     }
     //---------------------------------------------------------------------------------------------
@@ -156,11 +160,35 @@ public class GameDataMgr : MonoBehaviour
     void OnItemInfoSync(ProtocolMessage msg)
     {
         PB.HSItemInfoSync itemSync = msg.GetProtocolBody<PB.HSItemInfoSync>();
+
+        foreach (PB.ItemInfo itemInfo in itemSync.itemInfos)
+        {
+            mainPlayer.gameItemData.AddItem(itemInfo.itemId, itemInfo.count);
+        }
     }
     //---------------------------------------------------------------------------------------------
     void OnEquipInfoSync(ProtocolMessage msg)
     {
         PB.HSEquipInfoSync equpSync = msg.GetProtocolBody<PB.HSEquipInfoSync>();
+
+        foreach (PB.EquipInfo equipInfo in equpSync.equipInfos)
+        {
+            mainPlayer.gameEquipData.AddEquip(equipInfo.id, equipInfo.equipId, equipInfo.stage, equipInfo.level);
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnReward(ProtocolMessage msg)
+    {
+        PB.HSRewardInfo reward = msg.GetProtocolBody<PB.HSRewardInfo>();
+
+       
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnConsume(ProtocolMessage msg)
+    {
+        PB.HSConsumeInfo reward = msg.GetProtocolBody<PB.HSConsumeInfo>();
+
+
     }
     //---------------------------------------------------------------------------------------------
     //public void AddPlayerData(PlayerData data)

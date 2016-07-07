@@ -10,13 +10,13 @@ public class ByteBuffer {
     BinaryReader reader = null;
 
     public ByteBuffer() {
-		Debug.LogError ("No Use......");
+		Logger.LogError ("No Use......");
         stream = new MemoryStream();
         writer = new BinaryWriter(stream);
     }
 
     public ByteBuffer(byte[] data) {
-		Debug.LogError ("No Use......");
+		Logger.LogError ("No Use......");
         if (data != null) {
             stream = new MemoryStream(data);
             reader = new BinaryReader(stream);

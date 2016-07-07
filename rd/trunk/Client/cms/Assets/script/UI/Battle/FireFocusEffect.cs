@@ -51,7 +51,7 @@ public class FireFocusEffect : MonoBehaviour
 
 		try
 		{
-			StopCoroutine (RefreshEffectCo ());
+			StopCoroutine ("RefreshEffectCo");
 		}
 		catch
 		{
@@ -82,7 +82,7 @@ public class FireFocusEffect : MonoBehaviour
 
 		try
 		{
-			StartCoroutine (RefreshEffectCo ());
+			StartCoroutine ("RefreshEffectCo");
 		}
 		catch
 		{
@@ -108,7 +108,7 @@ public class FireFocusEffect : MonoBehaviour
 	{
 		try
 		{
-			StopCoroutine (RefreshEffectCo ());
+			StopCoroutine ("RefreshEffectCo");
 		}
 		catch
 		{

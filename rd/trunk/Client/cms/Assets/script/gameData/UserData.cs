@@ -17,7 +17,7 @@ public class UserData : MonoBehaviour
 		{
 			guid = "TestGuID" + System.DateTime.Now.ToString();
 			PlayerPrefs.SetString("testGuid",guid);
-			Debug.Log ("New guid = " + guid);
+			Logger.Log ("New guid = " + guid);
 		}
 
 		platform = SystemInfo.deviceModel;

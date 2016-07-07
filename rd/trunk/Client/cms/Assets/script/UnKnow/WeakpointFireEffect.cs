@@ -11,7 +11,7 @@ public class WeakpointFireEffect : MonoBehaviour
 		effectObject = Instantiate (prefab) as GameObject;
 		if (null == effectObject)
 		{
-			Debug.LogError("can't load weakpointFire");
+			Logger.LogError("can't load weakpointFire");
 			return;
 		}
 		
