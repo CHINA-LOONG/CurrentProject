@@ -7,7 +7,7 @@ option java_package = "com.hawk.game.protocol";
 
 // struct-------------------------------------------------------
 
-message HSAssist
+message HSAssist  //未定
 {
 	required int32 playerId = 1;
 	required int32 playerLevel = 2;
@@ -19,9 +19,9 @@ message HSAssist
 
 message HSBattle
 {
-	optional BattleType type = 1 [default = NORMAL];
+	required string battleCfgId = 1;
 	repeated string monsterCfgId = 2;
-	optional HSRewardInfo dropReward = 3;
+	repeated HSRewardInfo monsterDrop = 3;
 }
 
 // protocol-----------------------------------------------------
@@ -29,7 +29,6 @@ message HSBattle
 // INSTANCE_ASSIST_C
 message HSInstanceAssist
 {
-
 }
 
 // INSTANCE_ASSIST_S
@@ -41,17 +40,15 @@ message HSInstanceAssistRet
 // INSTANCE_ENTER_C
 message HSInstanceEnter
 {
-	required string cfgId = 1;
+	required string instanceId = 1;
 	optional int32 friendId = 2;
 }
 
 // INSTANCE_ENTER_S
 message HSInstanceEnterRet
 {
-	required int32 status = 1;
-	required string cfgId = 2;
-	repeated HSBattle battle = 3;
-	optional int32 fatigueChange = 4;
+	required string instanceId = 1;
+	repeated HSBattle battle = 2;
 }
 
 // INSTANCE_SETTLE_C
@@ -64,10 +61,9 @@ message HSInstanceSettle
 // INSTANCE_SETTLE_S
 message HSInstanceSettleRet
 {
-	required int32 status = 1;
-	optional int32 starCount = 2 [default = 0];
-	optional HSRewardInfo completeReward = 3;
-	repeated RewardItem cardReward = 4;
+	optional int32 starCount = 1 [default = 0];
+	optional HSRewardInfo completeReward = 2;
+	repeated RewardItem cardReward = 3;
 }
 
 // INSTANCE_OPEN_CARD_C
@@ -79,7 +75,6 @@ message HSInstanceOpenCard
 // INSTANCE_OPEN_CARD_S
 message HSInstanceOpenCardRet
 {
-	required int32 status = 1;
 }
 
 // INSTANCE_SWEEP_C
@@ -105,5 +100,4 @@ message HSInstanceResetCount
 // INSTANCE_RESET_COUNT_S
 message HSInstanceResetCountRet
 {
-
 }

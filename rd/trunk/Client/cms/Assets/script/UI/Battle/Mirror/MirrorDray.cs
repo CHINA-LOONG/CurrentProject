@@ -141,8 +141,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 				for(int i =0 ; i< listFindTarget.Count; ++i)
 				{
 					subTarget = listFindTarget[i];
-					var battleObject = subTarget.GetComponentInParent<BattleObject> () as BattleObject;
-
+					WeakPointRuntimeData wpRuntime = subTarget.WpRuntimeData;
 
 					if(lastFindWeakpoint.ContainsKey(subTarget))
 					{
@@ -151,24 +150,19 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 						{
 							finishFindTargett.Add(subTarget);
 						}
-						else if (subTarget.isSelf && battleObject.unit.isVisible)
-						{
-							finishFindTargett.Add(subTarget);
-						}
 					}
 					else
 					{
-						if(subTarget.isSelf && battleObject.unit.isVisible)
+						if(wpRuntime.IsFind)
 						{
-							finishFindTargett.Add(subTarget);
 							lastFindWeakpoint.Add(subTarget,0.0f);
+							finishFindTargett.Add(subTarget);
 						}
 						else
 						{
 							lastFindWeakpoint.Add(subTarget,0.0f);
 							newFindTargetList.Add(subTarget);
 						}
-
 					}
 				}
 			}
@@ -176,6 +170,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 			{
 				GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.FindWeakPoint,newFindTargetList);
 			}
+
 			if(finishFindTargett.Count > 0)
 			{
 				GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.FindFinishedWeakPoint,finishFindTargett);
@@ -204,7 +199,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 			}
 
 			//Debug.LogError("finding....."+ transform.position.x);
-			yield return new WaitForSeconds(0.05f);
+			yield return new WaitForFixedUpdate();
 		}
 	}
 

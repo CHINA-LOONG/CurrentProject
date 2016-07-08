@@ -105,6 +105,12 @@ public class ResourceMgr : MonoBehaviour
     /// </summary>
     public void Init()
     {
+        if (assetbundle != null)
+        {
+            Logger.LogError("warning, resource manager is inited already, destroy may failed last time!");
+            return;
+        }
+
         byte[] stream = null;
         string uri = Path.Combine(Util.AssetBundlePath, Const.AssetDirname);
         objectPool = PoolManager.Pools.Create("ObjectPool");

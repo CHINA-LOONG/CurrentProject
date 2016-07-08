@@ -11,7 +11,7 @@ public class SinglePet : MonoBehaviour {
     public Text typeLable;
 
     [HideInInspector]
-    public int guid;
+    public GameUnit unit;
     // Use this for initialization
     void Start()
     {
@@ -28,6 +28,6 @@ public class SinglePet : MonoBehaviour {
     {
         nameLable.text = unit.name;
         avatar.sprite = unit.headImg;
-        propretyLable.text = Util.ConvertProperty(unit.property);
+        propretyLable.text = Util.ConvertProperty(unit.property) + "属性";
     }
 }

@@ -18,4 +18,14 @@ public class UIBase : MonoBehaviour
 			return mViewType;
 		}
 	}
+
+    public virtual void OnOpenUI()
+    {
+
+    }
+
+    public virtual void OnCloseUI()
+    {
+
+    }
 }

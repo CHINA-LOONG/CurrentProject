@@ -56,6 +56,7 @@ public class BattleUnitAi : MonoBehaviour {
     void OnDestroy()
     {
         Destroy(jiuWeiHuAi);
+        Destroy(hundunUnitAi);
     }
 
 	public GameUnit GetMagicDazhaoAttackUnit(GameUnit battleUnit)
@@ -168,8 +169,8 @@ public class BattleUnitAi : MonoBehaviour {
 		int maxGroup = 0;
 
 		InstanceData instanceData = BattleController.Instance.InstanceData;
-		int dazhaoGroup = instanceData.dazhaoGroup;
-		int dazhaoAdjust = instanceData.dazhaoAdjust;
+        int dazhaoGroup = instanceData.instanceProtoData.dazhaoGroup;
+        int dazhaoAdjust = instanceData.instanceProtoData.dazhaoAdjust;
 
 		maxGroup = attackMaxTimes / dazhaoGroup + 1;
 
@@ -213,7 +214,7 @@ public class BattleUnitAi : MonoBehaviour {
 			}
 		}
 
-		Logger.LogWarning("Error for getSpell.. spell Count = " + spellDic.Count);
+		Logger.LogWarning("Error for getSpell.. spell Count = " + spellDic.Count + "  battle name = " + battleUnit.name);
 
 		return subSpel;
 	}
@@ -270,8 +271,13 @@ public class BattleUnitAi : MonoBehaviour {
 
 	private string RandowmAttackWp(GameUnit attackUnit)
 	{
-		
-		List<string> wpList = WeakPointController.Instance.GetAiCanAttackWeakpointList(attackUnit);
+		BattleObject bo = attackUnit.battleUnit;
+		if (null == bo) 
+		{
+			Logger.LogError("Error:RandowmAttackWp unit can't connect battleobj");
+			return null;
+		}
+		List<string> wpList = bo.wpGroup.GetAiCanAttackList ();
 		if(wpList == null || wpList.Count < 1)
 		{
 			return null;

@@ -7,6 +7,7 @@ public class SpellIcon : MonoBehaviour
 	public 	Image	iconImage;
 	public	Image	normalFrame;
 	public	Image	maskFrame;
+	public	Button	iconButton;
 
 	private	int	level;
 	private	string	spellId;
@@ -46,5 +47,14 @@ public class SpellIcon : MonoBehaviour
 	{
 		maskFrame.gameObject.SetActive (bMask);
 		normalFrame.gameObject.SetActive (!bMask);
+	}
+
+	public	void SetBoss()
+	{
+		Sprite iconSp = ResourceMgr.Instance.LoadAssetType<Sprite> (iconAssetName, "bossDazhaoIcon") as Sprite;
+		if (null != iconSp)
+		{
+			iconImage.sprite = iconSp;
+		}
 	}
 }

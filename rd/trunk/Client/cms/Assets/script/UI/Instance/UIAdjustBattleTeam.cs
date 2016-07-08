@@ -3,6 +3,14 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+public class EnterInstanceParam
+{
+		
+	public	List<int> playerTeam;
+	//public	string	friendTeam;
+	public	PB.HSInstanceEnterRet instanceData;
+}
+
 public class UIAdjustBattleTeam : UIBase
 {
 	public static string ViewName = "UIAdjustBattleTeam";
@@ -25,12 +33,29 @@ public class UIAdjustBattleTeam : UIBase
 
 	private Dictionary<string,MonsterIcon> playerAllIconDic = new Dictionary<string, MonsterIcon>();
 
+	EnterInstanceParam enterInstanceParam  = new EnterInstanceParam();
 	// Use this for initialization
 	void Start () 
 	{
 		EventTriggerListener.Get (backButton.gameObject).onClick = OnBackButtonClick;
 		EventTriggerListener.Get (battleButton.gameObject).onClick = OnBattleButtonClick;
 		EventTriggerListener.Get (cancleButton.gameObject).onClick = OnCancleButtonClick;
+		BindListener ();
+	}
+
+	void OnDestroy()
+	{
+		UnBindListener ();
+	}
+
+	void BindListener()
+	{
+		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.INSTANCE_ENTER_S.GetHashCode ().ToString(), OnRequestEnterInstanceFinished);
+	}
+	
+	void UnBindListener()
+	{
+		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.INSTANCE_ENTER_S.GetHashCode ().ToString (), OnRequestEnterInstanceFinished);
 	}
 
 	public	void	SetData(string instanceId,List<string>enmeyList)
@@ -293,13 +318,37 @@ public class UIAdjustBattleTeam : UIBase
 		UIMgr.Instance.CloseUI (this);
 	}
 
+	void	OnCancleButtonClick(GameObject go)
+	{
+		UIMgr.Instance.CloseUI (this);
+	}
+
 	void	OnBattleButtonClick(GameObject go)
 	{
+		List<int> battleTeam = SaveBattleTeam ();
+		if (null == battleTeam) 
+		{
+			MsgBox.PromptMsg.Open ("提示", "请按正确顺序排列出战宠物", "确定");
+		} 
+		else
+		{
+			enterInstanceParam.playerTeam = battleTeam;
+			RequestEnterInstance ();
+		}
+
+	}
+
+	List<int> SaveBattleTeam()
+	{
+		List<int> battleTeam = new List<int> ();
 		bool isNeedSave = false;
 		string guid = null;
 		string tempGuid = null;
 		MonsterIconBg subIconBg;
 		MonsterIcon subIcon;
+
+		bool lastIndexIsNull = false;
+
 		for (int i =0; i < playerTeamBg.Count; ++i) 
 		{
 			subIconBg = playerTeamBg[i];
@@ -307,12 +356,18 @@ public class UIAdjustBattleTeam : UIBase
 			if(null == subIcon)
 			{
 				guid = "";
+				lastIndexIsNull = true;
 			}
 			else
 			{
+				if(lastIndexIsNull)
+				{
+					return null;//不允许前面有空位
+				}
 				guid = subIcon.Id;
+				battleTeam.Add(int.Parse(guid));
 			}
-
+			
 			tempGuid = teamList[i];
 			if(tempGuid != guid)
 			{
@@ -320,17 +375,31 @@ public class UIAdjustBattleTeam : UIBase
 				isNeedSave = true;
 			}
 		}
-
+		
 		if (isNeedSave)
 		{
 			BattleTeamManager.SetTeam(teamList,BattleTeamManager.TeamList.Defualt);
 		}
+
+		return battleTeam;
 	}
 
-	void	OnCancleButtonClick(GameObject go)
+	void RequestEnterInstance()
 	{
-		UIMgr.Instance.CloseUI (this);
+		PB.HSInstanceEnter param = new PB.HSInstanceEnter ();
+		param.instanceId = instanceId;
+
+		GameApp.Instance.netManager.SendMessage (PB.code.INSTANCE_ENTER_C.GetHashCode (), param);
 	}
 
-
+	void OnRequestEnterInstanceFinished(ProtocolMessage msg)
+	{
+		var responseData =  msg.GetProtocolBody<PB.HSInstanceEnterRet> ();
+		enterInstanceParam.instanceData = responseData;
+        //TODO:
+        UIMgr.Instance.CloseUI(UIInstance.ViewName);
+        UIMgr.Instance.CloseUI(UIAdjustBattleTeam.ViewName);
+        GameMain.Instance.ChangeModule<BattleModule>(enterInstanceParam);
+        //GameEventMgr.Instance.FireEvent(GameEventList.StartBattle, proto);
+	}
 }

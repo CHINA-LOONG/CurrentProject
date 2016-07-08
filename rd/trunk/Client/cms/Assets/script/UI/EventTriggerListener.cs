@@ -10,16 +10,15 @@ public class EventTriggerListener : UnityEngine.EventSystems.EventTrigger{
 	public VoidDelegate onUp;
 	public VoidDelegate onSelect;
 	public VoidDelegate onUpdateSelect;
-	
+
 	static public EventTriggerListener Get (GameObject go)
 	{
 		EventTriggerListener listener = go.GetComponent<EventTriggerListener>();
 		if (listener == null) listener = go.AddComponent<EventTriggerListener>();
 		return listener;
 	}
-
 	public override void OnPointerClick(PointerEventData eventData)
-	{
+    {
 		if(onClick != null) 	onClick(gameObject);
 	}
 
@@ -39,7 +38,7 @@ public class EventTriggerListener : UnityEngine.EventSystems.EventTrigger{
 
 	public override void OnPointerUp (PointerEventData eventData)
 	{
-		if(onUp != null) onUp(gameObject);
+        if (onUp != null) onUp(gameObject);
 	}
 
 	public override void OnSelect (BaseEventData eventData)
@@ -51,4 +50,5 @@ public class EventTriggerListener : UnityEngine.EventSystems.EventTrigger{
 	{
 		if(onUpdateSelect != null) onUpdateSelect(gameObject);
 	}
+
 }

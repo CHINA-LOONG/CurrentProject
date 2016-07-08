@@ -11,26 +11,15 @@ public class BuildModule : ModuleBase
 
 	void BindListener()
 	{
-		GameEventMgr.Instance.AddListener<PbStartBattle>(GameEventList.BattleBtnClick, OnBattleBtnClick);
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.SYNCINFO_S.GetHashCode().ToString (), OnRequestPlayerSyncInfoFinished);
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.ASSEMBLE_FINISH_S.GetHashCode ().ToString (), OnRequestPlayerSyncInfoFinished);
 	}
 	
 	void UnBindListener()
 	{
-		GameEventMgr.Instance.RemoveListener<PbStartBattle>(GameEventList.BattleBtnClick, OnBattleBtnClick);
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.SYNCINFO_S.GetHashCode().ToString (), OnRequestPlayerSyncInfoFinished);
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.ASSEMBLE_FINISH_S.GetHashCode ().ToString (), OnRequestPlayerSyncInfoFinished);
 	}
-
-	private void OnBattleBtnClick(PbStartBattle proto)
-	{
-		GameMain.Instance.ChangeModule<BattleModule>();
-		Logger.Log("Enter Battle");
-		UIMgr.Instance.CloseUI(UIBuild.ViewName);
-		GameEventMgr.Instance.FireEvent(GameEventList.StartBattle, proto);
-	}
-
 
 	void RequestPlayerData()
 	{
@@ -49,7 +38,7 @@ public class BuildModule : ModuleBase
 
 	}
 	
-	public override void OnEnter(ModuleBase prevModule, object param)
+	public override void OnEnter(object param)
 	{
 		BindListener();
         if (needSyncInfo)
@@ -64,9 +53,10 @@ public class BuildModule : ModuleBase
 		
 	}
 	
-	public override void OnExit(ModuleBase nextModule)
+	public override void OnExit()
 	{
-		UnBindListener();
+        UnBindListener();
+        UIMgr.Instance.CloseUI(UIBuild.ViewName);
 	}
 
 
@@ -83,7 +73,7 @@ public class BuildModule : ModuleBase
 		{
 			//消息同步完成
 			PB.HSAssembleFinish finishState = msg.GetProtocolBody<PB.HSAssembleFinish>();
-            GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
+            //GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
 			//
 			Debug.LogWarning("player info sync finished!");
 		}

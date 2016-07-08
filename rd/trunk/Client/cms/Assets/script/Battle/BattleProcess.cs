@@ -46,16 +46,22 @@ public class BattleProcess : MonoBehaviour
     float actionDelayTime;
 
     BattleGroup battleGroup;
-    ProcessData processData;
+    //ProcessData processData;
+    BattleLevelData processData = null;
 
     List<Action> insertAction = new List<Action>();
 
-    MethodInfo battleVictorMethod;
+    //MethodInfo battleVictorMethod;
     //MethodInfo processVictorMethod;
 
     //histroy
     //TODO: use multimap
     float lastUpdateTime;
+    int round = 0;
+    public int TotalRound
+    {
+        get { return round; }
+    }
     //TODO: add battleobject event to here for record
     List<SpellFireArgs> spellEventList = new List<SpellFireArgs>();
     List<SpellVitalChangeArgs> lifeChangeEventList = new List<SpellVitalChangeArgs>();
@@ -168,6 +174,7 @@ public class BattleProcess : MonoBehaviour
             //Logger.LogWarning("[Battle.Process]OnUnitDead: " + deadUnit.name);
             int slot = deadUnit.unit.pbUnit.slot;
             deadUnit.unit.State = UnitState.Dead;
+            deadUnit.ClearEvent();
             deadUnit.TriggerEvent("dead", args.triggerTime, null);
 
 			BattleObject dazhaoCaster = MagicDazhaoController.Instance.GetCasterBattleObj();
@@ -383,16 +390,21 @@ public class BattleProcess : MonoBehaviour
 		OnUnitFightOver (casterObject);
 	}
 
-    public void StartProcess(ProcessData process, MethodInfo victorMethod)
+    public void StartProcess(int index, BattleLevelData battleLevelData)
     {
         lastUpdateTime = Time.time;
-        processData = process;
-        battleVictorMethod = victorMethod;
+        //battleVictorMethod = victorMethod;
+        processData = battleLevelData;
 
         Logger.Log("[Battle.Process]Start process");
         battleGroup = BattleController.Instance.BattleGroup;
 
-        StartCoroutine(Process());
+        if (index == 0)
+        {
+            round = 0;
+        }
+
+        StartCoroutine(Process(index));
     }
     public void Clear()
     {
@@ -426,54 +438,32 @@ public class BattleProcess : MonoBehaviour
         deathList.Clear();
     }
 
-    IEnumerator Process()
+    IEnumerator Process(int battleLevelIndex)
     {
-        if (HasProcessAnim())
-            yield return StartCoroutine(PlayProcessAnim());
+        if (string.IsNullOrEmpty(processData.battleProtoData.preStartEvent))
+        {
 
-        if (HasPreAnim())
-            yield return StartCoroutine(PlayPreAnim());
+        }
+        if (string.IsNullOrEmpty(processData.battleProtoData.startEvent))
+        {
 
-        if (IsClearBuff())
-            yield return StartCoroutine(ClearBuff());
+        }
 
-        //NOTE: normal battle index=0, boss's first inde=1
-        if (processData.index <= 1)
+        //if (IsClearBuff())
+        //    yield return StartCoroutine(ClearBuff());
+
+        if (battleLevelIndex == 0)
+        {
             yield return StartCoroutine(PlayCountDownAnim());
+        }
+        else
+        {
+            //TODO fade in && fade out
+        }
 
         RefreshEnemyState();
 
         StartAction();
-    }
-
-    private bool HasProcessAnim()
-    {
-        return processData != null && !string.IsNullOrEmpty(processData.processAnim);
-    }
-
-    IEnumerator PlayProcessAnim()
-    {
-        yield break;
-    }
-
-    private bool HasPreAnim()
-    {
-        return processData != null && !string.IsNullOrEmpty(processData.preAnim);
-    }
-
-    IEnumerator PlayPreAnim()
-    {
-        yield break;
-    }
-
-    private bool IsClearBuff()
-    {
-        return processData != null && processData.needClearBuff;
-    }
-
-    IEnumerator ClearBuff()
-    {
-        yield break;
     }
 
     IEnumerator PlayCountDownAnim()
@@ -543,28 +533,34 @@ public class BattleProcess : MonoBehaviour
 
     void OnActionOver()
     {
+        ++round;
         curAction = null;
 
-        //判断战斗是否胜利
-        var battleRet = (BattleRetCode)battleVictorMethod.Invoke(null, null);
-        if (battleRet == BattleRetCode.Success)
+        //判断进程是否结束
+        //返回不包含在配置表key中的值时，表示当前进程没有结束
+        
+        BattleRetCode battleResult = BattleRetCode.Normal;
+        if (processData.loseFunc != null)
         {
-            BattleController.Instance.OnBattleOver(true);
-            return;
+            battleResult = (BattleRetCode)processData.loseFunc.Invoke(null, null);
         }
-        else if (battleRet == BattleRetCode.Failed)
+        if (processData.winFunc != null)
+        {
+            battleResult = (BattleRetCode)processData.winFunc.Invoke(null, null);
+        }
+        if (battleResult == BattleRetCode.Normal)
+        {
+            battleResult = NormalScript.normalValiVic();
+        }
+
+        if (battleResult == BattleRetCode.Failed)
         {
             BattleController.Instance.OnBattleOver(false);
             return;
         }
-
-        //判断进程是否结束
-        //返回不包含在配置表key中的值时，表示当前进程没有结束
-        var processRet = (int)processData.method.Invoke(null, null);
-        if (processData.rets.ContainsKey(processRet))
+        else if (battleResult == BattleRetCode.Success)
         {
-            var gotoVal = processData.rets[processRet];
-            BattleController.Instance.OnProcessSwitch(gotoVal);
+            StartCoroutine(BattleController.Instance.StartNextProcess());
             return;
         }
 
@@ -619,6 +615,7 @@ public class BattleProcess : MonoBehaviour
                 //OnUnitFightOver(unit);
                 break;
             case BattleUnitAi.AiAttackStyle.Beneficial:
+                needRotate = true;
                 Logger.Log(bo.unit.name + "   Beneficial");
                 //	unit.attackCount++;
                 // OnUnitFightOver(unit);
@@ -684,8 +681,14 @@ public class BattleProcess : MonoBehaviour
 
         if (enter.camp == UnitCamp.Player)
         {
+            GameObject posRoot = BattleController.Instance.GetPositionRoot();
+            if (posRoot == null)
+            {
+                Logger.LogError("root pos can not find");
+            }
+
             //exit.TriggerEvent("unitExit", Time.time, null);
-            string nodeName = "pos" + slot.ToString();
+            string nodeName = posRoot.name + "/pos" + slot.ToString();
             BattleController.Instance.curBattleScene.TriggerEvent("unitExit", Time.time, nodeName);
             battleGroup.OnUnitExitField(exit, slot);
             yield return new WaitForSeconds(BattleConst.unitOutTime);
@@ -725,7 +728,13 @@ public class BattleProcess : MonoBehaviour
 
         action.target.unit.State = UnitState.ToBeEnter;
         action.caster.unit.State = UnitState.ToBeExit;
-        string nodeName = "pos" + action.caster.unit.pbUnit.slot.ToString();
+
+        GameObject posRoot = BattleController.Instance.GetPositionRoot();
+        if (posRoot == null)
+        {
+            Logger.LogError("root pos can not find");
+        }
+        string nodeName = posRoot.name + "/pos" + action.caster.unit.pbUnit.slot.ToString();
         BattleController.Instance.curBattleScene.TriggerEvent("unitBeReplaced", Time.time, nodeName);
         //action.caster.TriggerEvent("unitBeReplaced", Time.time, null);
 

@@ -66,16 +66,16 @@ public class FireFocusEffect : MonoBehaviour
         Transform targetTrans = bo.gameObject.transform;
         if (bo.unit.attackWpName != null && bo.unit.attackWpName.Length > 0)
         {
-            WeakPointData wp = StaticDataMgr.Instance.GetWeakPointData(bo.unit.attackWpName);
-            if (wp != null && wp.node != null)
-            {
-                GameObject targetNode = Util.FindChildByName(bo.gameObject, wp.node);
-                if (targetNode != null)
-                {
-                    targetTrans = targetNode.transform;
-                    offsetH = 0.0f;
-                }
-            }
+			WeakPointRuntimeData wpRuntimeData = null;
+			WeakPointData wp = null;
+
+			if(bo.wpGroup.allWpDic.TryGetValue(bo.unit.attackWpName,out wpRuntimeData))
+			{
+				//wp = wpRuntimeData.staticData;
+				targetTrans = wpRuntimeData.wpMirrorTarget.gameObject.transform;
+				offsetH = 0.0f;
+
+			}
         }
 
 		effectTargetTrans = targetTrans;

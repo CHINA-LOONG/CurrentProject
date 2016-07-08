@@ -28,7 +28,6 @@ GameObject:
   - 222: {fileID: 22234660}
   - 114: {fileID: 11422436}
   - 114: {fileID: 11482784}
-  - 114: {fileID: 11466130}
   m_Layer: 5
   m_Name: skillPanel
   m_TagString: Untagged
@@ -267,19 +266,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u62E5\u6709\u6280\u80FD"
---- !u!114 &11466130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141360}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1741964061, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 1
-  m_VerticalFit: 1
 --- !u!114 &11466714
 MonoBehaviour:
   m_ObjectHideFlags: 1

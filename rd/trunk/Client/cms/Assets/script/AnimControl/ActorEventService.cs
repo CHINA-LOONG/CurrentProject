@@ -94,6 +94,13 @@ public class ActorMeshData
     public string mesh;
 }
 //---------------------------------------------------------------------------------------------
+public class ActorWpStateData
+{
+    public float triggerTime;
+    public string wpName;
+    public int state;
+}
+//---------------------------------------------------------------------------------------------
 public class ActorEventData
 {
     public string id;
@@ -101,12 +108,13 @@ public class ActorEventData
     public int actorDelay;
     public string finishEvent;
 
-    public List<ActorMotionData> actorMotionSequence;// = new List<ActorMotionData>();
-    public List<ActorParticleData> actorParticleSequence;// = new List<ActorParticleData>();
-    public List<ActorCameraData> actorCameraSequence;// = new List<ActorCameraData>();
-    public List<ActorControllerData> actorControllerSequence;// = new List<ActorControllerData>();
-    public List<ActorAudioData> actorAudioSequence;// = new List<ActorAudioData>();
-    public List<ActorMeshData> actorMeshSequence;// = new List<ActorMeshData>();
+    public List<ActorMotionData> actorMotionSequence = new List<ActorMotionData>();
+    public List<ActorParticleData> actorParticleSequence = new List<ActorParticleData>();
+    public List<ActorCameraData> actorCameraSequence = new List<ActorCameraData>();
+    public List<ActorControllerData> actorControllerSequence = new List<ActorControllerData>();
+    public List<ActorAudioData> actorAudioSequence = new List<ActorAudioData>();
+    public List<ActorMeshData> actorMeshSequence = new List<ActorMeshData>();
+    public List<ActorWpStateData> actorWpStateSequence = new List<ActorWpStateData>();
 
     //state data
     public float triggerTime;
@@ -160,7 +168,10 @@ public class ActorEventService
         if(File.Exists (filepath))
         {
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(filepath);
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreComments = true;
+            XmlReader reader = XmlReader.Create(filepath, settings);
+            xmlDoc.Load(reader);
             XmlNodeList nodeList=xmlDoc.SelectSingleNode("AniGroupList").ChildNodes;
             foreach (XmlElement groupNode in nodeList)
             {
@@ -171,12 +182,6 @@ public class ActorEventService
                 foreach (XmlElement aniNode in groupNode.ChildNodes)
                 {
                     ActorEventData eventData = new ActorEventData();
-                    eventData.actorMotionSequence = new List<ActorMotionData>();
-                    eventData.actorParticleSequence = new List<ActorParticleData>();
-                    eventData.actorCameraSequence = new List<ActorCameraData>();
-                    eventData.actorControllerSequence = new List<ActorControllerData>();
-                    eventData.actorAudioSequence = new List<ActorAudioData>();
-                    eventData.actorMeshSequence = new List<ActorMeshData>();
                     eventData.id = aniNode.GetAttribute("id");
                     eventData.finishEvent = aniNode.GetAttribute("finish_event");
                     eventData.state = int.Parse(aniNode.GetAttribute("state"));
@@ -246,10 +251,10 @@ public class ActorEventService
                                 cameraData.parent = cameraNode.GetAttribute("parent");
                                 cameraData.isMover = cameraNode.GetAttribute("is_mover");
                                 cameraData.duration = 0.0f;
-                                str = x1.GetAttribute("duration");
+                                str = cameraNode.GetAttribute("duration");
                                 if (string.IsNullOrEmpty(str) == false)
                                 {
-                                    cameraData.duration = float.Parse("duration");
+                                    cameraData.duration = float.Parse(str);
                                 }
                                 cameraData.moverType = 0;
                                 str = cameraNode.GetAttribute("mover_type");
@@ -306,6 +311,27 @@ public class ActorEventService
                                 meshData.mesh = audioNode.GetAttribute("name");
                                 meshData.state = audioNode.GetAttribute("state");
                                 eventData.actorMeshSequence.Add(meshData);
+                            }
+                        }
+                        else if (x1.Name == "WpStateList")
+                        {
+                            foreach (XmlElement wpNode in x1.ChildNodes)
+                            {
+                                ActorWpStateData wpStateData = new ActorWpStateData();
+                                string str = wpNode.GetAttribute("time");
+                                wpStateData.triggerTime = 0.0f;
+                                if (string.IsNullOrEmpty(str) == false)
+                                {
+                                    wpStateData.triggerTime = float.Parse(str);
+                                }
+                                wpStateData.wpName = wpNode.GetAttribute("name");
+                                wpStateData.state = 0;
+                                str = wpNode.GetAttribute("state");
+                                if (string.IsNullOrEmpty(str) == false)
+                                {
+                                    wpStateData.state = int.Parse(str);
+                                }
+                                eventData.actorWpStateSequence.Add(wpStateData);
                             }
                         }
                     }

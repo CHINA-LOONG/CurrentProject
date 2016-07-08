@@ -229,5 +229,4 @@ enum BattleType
 {
 	NORMAL                 = 1;
 	BOSS                   = 2;
-	RARE                   = 3;
 }

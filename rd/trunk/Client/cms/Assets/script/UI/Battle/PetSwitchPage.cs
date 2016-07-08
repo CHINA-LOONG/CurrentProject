@@ -27,8 +27,8 @@ public class PetSwitchPage : MonoBehaviour
                 var item = ResourceMgr.Instance.LoadAsset("ui/battle", "petItem");
                 item.transform.SetParent(gameObject.transform, false);
 
-                //var trans = item.GetComponent<RectTransform>();
-                //trans.anchoredPosition += new Vector2(100 * i, 0);
+                var trans = item.GetComponent<RectTransform>();
+                trans.anchoredPosition += new Vector2(100 * i, 0);
 
                 var com = item.GetComponent<PetSwitchItem>();
 

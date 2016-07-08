@@ -85,6 +85,8 @@ public class UIMgr : MonoBehaviour
 			rt.SetParent (transform ,false);
 			topPanelTransform.SetSiblingIndex (ui.transform.GetSiblingIndex() + 1);
 		}
+
+        vb.OnOpenUI();
         return ui;
 	}
 
@@ -103,6 +105,7 @@ public class UIMgr : MonoBehaviour
 			{
                 
 				//Destroy(vb.gameObject);
+                vb.OnCloseUI();
 				ResourceMgr.Instance.DestroyAsset(vb.gameObject);
 			}
 		}

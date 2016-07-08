@@ -36,7 +36,7 @@ public class PbUnit
 }
 
 [Serializable]
-public class GameUnit
+public class GameUnit : IComparable
 {
     public PbUnit pbUnit;
 
@@ -104,12 +104,6 @@ public class GameUnit
     public Dictionary<string, Spell> spellList;
     //public List<Equipment> equipmentList;
     public List<string> weakPointList;
-    public Dictionary<string, WeakPointRuntimeData> wpHpList;
-	public Dictionary<string,GameObject> weakPointDumpDic;
-	public List<string> findWeakPointlist = null;
-	public Dictionary<string,GameObject> weakPointMeshDic;
-	public Dictionary<string,GameObject> weakPointDeadMeshDic;
-	public Dictionary<string,GameObject> weakPointEffectDic;
 
     //只在客户端计算使用的属性
     float speedCount = 0;
@@ -143,14 +137,9 @@ public class GameUnit
     void Init(bool isPlayer)
     {
 		buffList = new List<Buff>();
-		
-		findWeakPointlist = new List<string> ();
-		weakPointMeshDic = new Dictionary<string, GameObject> ();
-		weakPointDeadMeshDic = new Dictionary<string, GameObject> ();
-		weakPointEffectDic = new Dictionary<string, GameObject> ();
-		weakPointDumpDic = new Dictionary<string, GameObject> ();
+
 		weakPointList = new List<string>();
-		wpHpList = new Dictionary<string, WeakPointRuntimeData>();
+		//wpHpList = new Dictionary<string, WeakPointRuntimeData>();
 
         GameDataMgr gdMgr = GameDataMgr.Instance;
         UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
@@ -206,9 +195,9 @@ public class GameUnit
             //弱点
             InitWeakPoint(unitRowData.weakpointList);
             //基础属性影响
-            strength = (int)(strength * instData.attackCoef);
-            intelligence = (int)(intelligence * instData.attackCoef);
-            health = (int)(health * instData.lifeCoef);
+            strength = (int)(strength * instData.instanceProtoData.attackCoef);
+            intelligence = (int)(intelligence * instData.instanceProtoData.attackCoef);
+            health = (int)(health * instData.instanceProtoData.lifeCoef);
         }
         else
         {
@@ -259,16 +248,14 @@ public class GameUnit
 
 
 		//性格，勤奋度,//怪物友好度
+        character = pbUnit.character;
+        lazy = pbUnit.lazy;
 		if (isPlayer) 
 		{
-			character = pbUnit.character;
-			lazy = pbUnit.lazy;
 			friendship = 0;//player no use
 		} 
 		else 
 		{
-			character = 3;
-			lazy = 3;
 			friendship = unitRowData.friendship;
 			bossType = pbUnit.testBossType;
 		}
@@ -283,7 +270,7 @@ public class GameUnit
 		ArrayList weakArrayList = MiniJsonExtensions.arrayListFromJson (strWeak);
 
 		weakPointList.Clear();
-        wpHpList.Clear();
+       
         WeakPointData wpData = null;
 		for(int i = 0;weakArrayList !=null && i<weakArrayList.Count;++i)
 		{
@@ -292,14 +279,12 @@ public class GameUnit
             {
                 weakPointList.Add(wpData.id);
 
-                WeakPointRuntimeData wpRuntimeData = new WeakPointRuntimeData();
-                wpRuntimeData.id = wpData.id;
-                wpRuntimeData.maxHp = wpRuntimeData.hp = wpData.health;
-                wpHpList.Add(wpData.id, wpRuntimeData);
-
-				if(wpData.isSelf == 1)
+				if(!isBoss)
 				{
-				  isVisible = wpData.initialStatus == 1;
+					if(wpData.initialStatus == (int)WeakpointState.Hide)
+					{
+						isVisible = false;
+					}
 				}
             }
 		}
@@ -308,7 +293,7 @@ public class GameUnit
     public void OnDamageWeakPoint(string id, int damage, float damageTime)
     {
         WeakPointRuntimeData wpRuntimeData = null;
-        if (wpHpList.TryGetValue(id, out wpRuntimeData))
+        if (battleUnit.wpGroup.allWpDic.TryGetValue(id, out wpRuntimeData))
         {
             wpRuntimeData.hp += damage;
             if (wpRuntimeData.hp <= 0)
@@ -331,22 +316,12 @@ public class GameUnit
     {
         WeakPointDeadArgs wpDeadArgs = sArgs as WeakPointDeadArgs;
         Logger.LogFormat("weakpoint( ) dead!", wpDeadArgs.wpID);
-        GameObject meshObj = null;
-        if (weakPointMeshDic.TryGetValue(wpDeadArgs.wpID, out meshObj))
-        {
-            meshObj.SetActive(false);
-        }
-
-        GameObject deadMeshObj = null;
-        if (weakPointDeadMeshDic.TryGetValue(wpDeadArgs.wpID, out deadMeshObj))
-        {
-            deadMeshObj.SetActive(true);
-        }
-        //弱点死亡特效 
-        if (battleUnit != null)
-        {
-            battleUnit.ShowWeakpointDeadEffect(wpDeadArgs.wpID);
-        }
+       
+		WeakPointRuntimeData wpRuntimeData = null;
+		if (battleUnit.wpGroup.allWpDic.TryGetValue (wpDeadArgs.wpID, out wpRuntimeData))
+		{
+			wpRuntimeData.ChangeState(WeakpointState.Dead);
+		}
     }
 
     public Spell GetSpell(string spellID)
@@ -411,6 +386,55 @@ public class GameUnit
     //        buff.Finish();
     //    }
     //}
+    public void OnStartNextProcess()
+    {
+        if (curLife <= 0 || state == UnitState.Dead)
+        {
+            return;
+        }
+
+        invincible = 0;
+        stun = 0;
+        dazhao = 0;
+        dazhaoPrepareCount = 0;
+        if (pbUnit.slot == BattleConst.offsiteSlot)
+        {
+            curLife += recovery;
+            if (curLife > maxLife)
+            {
+                curLife = maxLife;
+            }
+            return;
+        }
+
+        //战后回血
+        SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+        args.vitalType = (int)VitalType.Vital_Type_Default;
+        //TODO: use battle time
+        args.triggerTime = Time.time;
+        args.casterID = BattleConst.battleSceneGuid;
+        args.targetID = pbUnit.guid;
+        args.isCritical = false;
+        args.vitalChange = recovery;
+        args.vitalCurrent = curLife + recovery;
+        if (args.vitalCurrent >= maxLife)
+        {
+            args.vitalCurrent = maxLife;
+        }
+        args.vitalMax = maxLife;
+        GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.SpellLifeChange, args);
+
+
+        //切对局清buff
+        int buffCout = buffList.Count;
+        for (int index = 0; index < buffCout; ++index)
+        {
+            buffList[index].Finish(Time.time);
+        }
+        buffList.Clear();
+        //战后回血
+        battleUnit.TriggerEvent(BattleConst.levelChangeEvent, Time.time, null);
+    }
 
     public void ResetAllState()
     {
@@ -456,4 +480,46 @@ public class GameUnit
 
         return false;
     }
+
+    public int CompareTo(object obj)
+    {
+        int result;
+        try
+        {
+            GameUnit target = obj as GameUnit;
+
+            if (this.pbUnit.level == target.pbUnit.level)
+            {
+                int selfGrade = StaticDataMgr.Instance.GetUnitRowData(this.pbUnit.id).grade;
+                int targetGrade = StaticDataMgr.Instance.GetUnitRowData(target.pbUnit.id).grade;
+                if (selfGrade == targetGrade)
+                {
+                    if (this.pbUnit.starLevel == target.pbUnit.starLevel)
+                    {
+                        result = 0;
+                    }
+                    else
+                    {
+                        result = this.pbUnit.starLevel > target.pbUnit.starLevel ? -1 : 1;
+                    }
+                }
+                else
+                {
+                    result = selfGrade > targetGrade ? -1 : 1;
+                }
+            }
+            else
+            {
+                result = this.pbUnit.level > target.pbUnit.level ? -1 : 1;
+            }
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+
+        }
+    }
+
 }

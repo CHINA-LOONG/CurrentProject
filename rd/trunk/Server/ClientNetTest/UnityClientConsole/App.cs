@@ -79,7 +79,7 @@ namespace UnityClientConsole
 
                     HSPlayerCreate createRole = new HSPlayerCreate();
                     createRole.puid = puid;
-                    createRole.nickname = "quest04";
+                    createRole.nickname = "instance01";
                     createRole.career = 1;
                     createRole.gender = 0;
                     createRole.eye = 1;
@@ -139,9 +139,9 @@ namespace UnityClientConsole
             {
                 Console.WriteLine("同步完成");
 
-//                 //HSInstanceEnter instanceEnter = new HSInstanceEnter();
-//                 //instanceEnter.cfgId = "demo";
-//                 //NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
+                HSInstanceEnter instanceEnter = new HSInstanceEnter();
+                instanceEnter.instanceId = "demo";
+                NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
 
 //                 HSItemBuy itemBuy = new HSItemBuy();
 //                 itemBuy.itemId = 40001;
@@ -152,9 +152,9 @@ namespace UnityClientConsole
 //                 itemUse.itemId = 40001;
 //                 NetManager.GetInstance().SendProtocol(code.ITEM_USE_C.GetHashCode(), itemUse);
 
-                HSQuestSubmit questSubmit = new HSQuestSubmit();
-                questSubmit.questId = 10003;
-                NetManager.GetInstance().SendProtocol(code.QUEST_SUBMIT_C.GetHashCode(), questSubmit);
+//                 HSQuestSubmit questSubmit = new HSQuestSubmit();
+//                 questSubmit.questId = 10003;
+//                 NetManager.GetInstance().SendProtocol(code.QUEST_SUBMIT_C.GetHashCode(), questSubmit);
             }
             // 副本----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.INSTANCE_ENTER_S.GetHashCode()))
@@ -176,11 +176,20 @@ namespace UnityClientConsole
                 HSInstanceOpenCard openCard = new HSInstanceOpenCard();
                 openCard.openCount = 1;
                 NetManager.GetInstance().SendProtocol(code.INSTANCE_OPEN_CARD_C.GetHashCode(), openCard);
+
+                HSInstanceResetCount resetCount = new HSInstanceResetCount();
+                resetCount.instanceId = "demo";
+                NetManager.GetInstance().SendProtocol(code.INSTANCE_RESET_COUNT_C.GetHashCode(), resetCount);
             }
             else if (protocol.checkType(code.INSTANCE_OPEN_CARD_S.GetHashCode()))
             {
                 HSInstanceOpenCardRet openCardReturn = protocol.GetProtocolBody<HSInstanceOpenCardRet>();
                 Console.WriteLine("翻牌");
+            }
+            else if (protocol.checkType(code.INSTANCE_RESET_COUNT_S.GetHashCode()))
+            {
+                HSInstanceResetCountRet resetCountReturn = protocol.GetProtocolBody<HSInstanceResetCountRet>();
+                Console.WriteLine("重置次数");
             }
             // 物品----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.PLAYER_REWARD_S.GetHashCode()))

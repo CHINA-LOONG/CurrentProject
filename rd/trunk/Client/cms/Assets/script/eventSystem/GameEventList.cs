@@ -13,7 +13,7 @@ public class GameEventList
     //////////////////////////////////////////////////////////////////////////
     //Battle
     public static string StartBattle = "StartBattle";  //param: PbStartBattle  
-	public static string LoadBattleObjectFinished = "LoadBattleObjectFinished";//param GameUnitData
+	//public static string LoadBattleObjectFinished = "LoadBattleObjectFinished";//param GameUnitData
 	public static string ChangeUIBattleState = "ChangeUIBattleState";// param UIBattle.UiState
 
 	//Mirror in the Battle
@@ -69,4 +69,9 @@ public class GameEventList
 	//GameDataChange for ui
 	public static	string LevelChanged = "LeveleChanged";//param int
 	public static   string CoinChanged  = "CoinChanged";//param int
+
+    public static string QuestChanged = "QuestChanged";
+
+    public static string PreUnit = "PreUnit";//param gameUnit
+    public static string NextUnit = "NextUnit";//param gameUnit
 }

@@ -29,8 +29,9 @@ namespace PB
       get { return _star; }
       set { _star = value; }
     }
-    private int _countDaily;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"countDaily", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    private int _countDaily = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"countDaily", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
     public int countDaily
     {
       get { return _countDaily; }

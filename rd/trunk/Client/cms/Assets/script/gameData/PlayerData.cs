@@ -51,6 +51,8 @@ public class PlayerData : MonoBehaviour
     //道具
     public GameItemData gameItemData = new GameItemData();
     public GameEquipData gameEquipData = new GameEquipData();
+    //任务
+    public GameQuestData gameQuestData = new GameQuestData();
 
     //---------------------------------------------------------------------------------------------
     public void InitMainUnitList()
@@ -72,6 +74,15 @@ public class PlayerData : MonoBehaviour
             {
                 Logger.LogErrorFormat("can not find monster id={0}", unitID);
             }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    public void SetMainUnits(List<int> playerTeam)
+    {
+        mainUnitID.Clear();
+        foreach (int unitID in playerTeam)
+        {
+            mainUnitID.Add(unitID);
         }
     }
     //---------------------------------------------------------------------------------------------

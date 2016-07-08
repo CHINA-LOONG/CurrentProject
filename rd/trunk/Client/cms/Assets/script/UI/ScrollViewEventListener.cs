@@ -73,7 +73,7 @@ public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("button: OnPointerDown");
+        //Debug.Log("button: OnPointerDown");
         if (onDown != null) onDown(gameObject);
 
         pressDown = true;
@@ -82,7 +82,7 @@ public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("button: OnPointerUp");
+        //Debug.Log("button: OnPointerUp");
         if (onUp != null) onUp(gameObject);
 
         pressDown = false;

@@ -290,24 +290,6 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsInfoSync")]
-  public partial class HSStatisticsInfoSync : global::ProtoBuf.IExtensible
-  {
-    public HSStatisticsInfoSync() {}
-    
-    private string _instanceState = "";
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"instanceState", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string instanceState
-    {
-      get { return _instanceState; }
-      set { _instanceState = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAssembleFinish")]
   public partial class HSAssembleFinish : global::ProtoBuf.IExtensible
   {

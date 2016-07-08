@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameMain : MonoBehaviour 
 {
@@ -12,8 +13,8 @@ public class GameMain : MonoBehaviour
 			return mCurModule;
 		}
 	}
-	[SerializeField]
-	ModuleBase mPrevModule = null;
+	//[SerializeField]
+	//ModuleBase mPrevModule = null;
 	/*[SerializeField]
 	ModuleBase mNextModule = null;*/
 	
@@ -58,18 +59,19 @@ public class GameMain : MonoBehaviour
 
 	public void ChangeModule<T>(object param0 = null) where T : ModuleBase
 	{
-		string moduleName = typeof(T).ToString();
-		T t = this.gameObject.AddComponent<T>();
-		t.ModuleNameAttr = moduleName;
-		t.OnInit(mParam0);
 		if (mCurModule != null)
 		{
-			mCurModule.OnExit(t);
-		}
-		mPrevModule = mCurModule;
+			mCurModule.OnExit();
+            Destroy(mCurModule);
+        }
+        string moduleName = typeof(T).ToString();
+        T t = this.gameObject.AddComponent<T>();
+        t.ModuleNameAttr = moduleName;
+        t.OnInit(mParam0);
+		//mPrevModule = mCurModule;
 		mCurModule = t;
-		mCurModule.OnEnter(mPrevModule, param0);
-		Destroy(mPrevModule);
+		mCurModule.OnEnter(param0);
+		//Destroy(mPrevModule);
 
         GameSpeedService.Instance.OnModuleChange();
 	}

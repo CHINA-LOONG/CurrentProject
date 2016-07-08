@@ -113,11 +113,11 @@ public class JiuWeiHuUnitAi : MonoBehaviour {
 		return battleUnit.buffList;
 	}
 
-	private List<string> GetAliveWeakPointList(GameUnit battleUnit)
+	private List<string> GetAliveWeakPointList(GameUnit gUnit)
 	{
 		List<string> wpList = new List<string> ();
 
-		foreach (KeyValuePair<string,WeakPointRuntimeData> subWp in battleUnit.wpHpList)
+		foreach (KeyValuePair<string,WeakPointRuntimeData> subWp in gUnit.battleUnit.wpGroup.allWpDic)
 		{
 			WeakPointRuntimeData wpData = subWp.Value;
 			if(wpData.hp > 0)

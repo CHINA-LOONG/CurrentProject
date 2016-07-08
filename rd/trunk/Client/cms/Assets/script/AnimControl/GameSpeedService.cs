@@ -56,6 +56,11 @@ public class GameSpeedService : MonoBehaviour {
         RefreshSpeed();
     }
     //---------------------------------------------------------------------------------------------
+    public float GetBattleSpeed()
+    {
+        return battleSpeedScale;
+    }
+    //---------------------------------------------------------------------------------------------
     public void OnModuleChange()
     {
         RefreshSpeed();

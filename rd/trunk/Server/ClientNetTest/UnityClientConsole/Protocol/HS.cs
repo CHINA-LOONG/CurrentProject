@@ -106,23 +106,41 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_S", Value=2007)]
       MONSTER_FEED_S = 2007,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_C", Value=3001)]
-      INSTANCE_ENTER_C = 3001,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ASSIST_C", Value=3001)]
+      INSTANCE_ASSIST_C = 3001,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_S", Value=3002)]
-      INSTANCE_ENTER_S = 3002,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ASSIST_S", Value=3002)]
+      INSTANCE_ASSIST_S = 3002,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SETTLE_C", Value=3003)]
-      INSTANCE_SETTLE_C = 3003,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_C", Value=3003)]
+      INSTANCE_ENTER_C = 3003,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SETTLE_S", Value=3004)]
-      INSTANCE_SETTLE_S = 3004,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ENTER_S", Value=3004)]
+      INSTANCE_ENTER_S = 3004,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_OPEN_CARD_C", Value=3005)]
-      INSTANCE_OPEN_CARD_C = 3005,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SETTLE_C", Value=3005)]
+      INSTANCE_SETTLE_C = 3005,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_OPEN_CARD_S", Value=3006)]
-      INSTANCE_OPEN_CARD_S = 3006,
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SETTLE_S", Value=3006)]
+      INSTANCE_SETTLE_S = 3006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_OPEN_CARD_C", Value=3007)]
+      INSTANCE_OPEN_CARD_C = 3007,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_OPEN_CARD_S", Value=3008)]
+      INSTANCE_OPEN_CARD_S = 3008,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SWEEP_C", Value=3009)]
+      INSTANCE_SWEEP_C = 3009,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_SWEEP_S", Value=3010)]
+      INSTANCE_SWEEP_S = 3010,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_RESET_COUNT_C", Value=3011)]
+      INSTANCE_RESET_COUNT_C = 3011,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_RESET_COUNT_S", Value=3012)]
+      INSTANCE_RESET_COUNT_S = 3012,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,

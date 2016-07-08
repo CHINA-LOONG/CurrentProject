@@ -334,10 +334,7 @@ namespace PB
       NORMAL = 1,
             
       [global::ProtoBuf.ProtoEnum(Name=@"BOSS", Value=2)]
-      BOSS = 2,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"RARE", Value=3)]
-      RARE = 3
+      BOSS = 2
     }
   
 }

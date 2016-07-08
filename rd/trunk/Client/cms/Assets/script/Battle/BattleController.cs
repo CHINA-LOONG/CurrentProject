@@ -14,8 +14,14 @@ public enum BattleType
 
 public class BattleController : MonoBehaviour
 {
+    int curProcessIndex = 0;
+    int maxProcessIndex = 0;
+    int battleStartID = BattleConst.enemyStartID;
     BattleType battleType;
     InstanceData instanceData;
+    PB.HSInstanceEnterRet curInstance = null;
+    BattleLevelData curBattleLevel = null;
+
     public InstanceData InstanceData
     {
         get { return instanceData; }
@@ -32,7 +38,6 @@ public class BattleController : MonoBehaviour
     {
         get { return battleGroup; }
     }
-
     //战斗胜利method
     MethodInfo victorMethod = null;
 
@@ -118,43 +123,39 @@ public class BattleController : MonoBehaviour
 	void RaycastBattleObject(Vector3 inputPos)
 	{
 		RaycastHit hit;
-		Ray ray = BattleCamera.Instance.GetComponent<Camera>().ScreenPointToRay( inputPos );
+        //Ray ray = BattleCamera.Instance.GetComponentInChildren<Camera>().ScreenPointToRay(inputPos);
+        Ray ray = Camera.main.ScreenPointToRay(inputPos);
 		
-		if (Physics.Raycast(ray, out hit, 100))
+		if (Physics.Raycast(ray, out hit, 1000))
 		{
 			var battleGo = hit.collider.gameObject.GetComponent<BattleObject>();
 			if (battleGo)
 			{
 				if(battleGo.unit.isVisible)
 				{
-					OnHitBattleObject(battleGo, GetClickedEnemyWpName(battleGo,inputPos));
+					OnHitBattleObject(battleGo, null);
 				}
+				return;
 			}
-			else
+
+			var wpTarget = hit.collider.gameObject.GetComponent<WeakpointTarget>();
+			if(wpTarget)
 			{
-                GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
-				Logger.LogWarning("Hit something but not a battle object!");
+				BattleObject bo = wpTarget.battleObject;
+				WeakPointRuntimeData wpRuntimeData = null;
+				if(bo.wpGroup.allWpDic.TryGetValue(wpTarget.wpId,out wpRuntimeData))
+				{
+					if( wpRuntimeData.IsCanFireFocus())
+					{
+						OnHitBattleObject(bo,wpTarget.wpId);
+						return;
+					}
+				}
+
 			}
 		}
-		else
-		{
-            GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
-		}
-	}
-    //---------------------------------------------------------------------------------------------
-	string GetClickedEnemyWpName(BattleObject battleObj,Vector3 inputScreenPos)
-	{
-		if (battleObj.camp == UnitCamp.Player) 
-		{
-			return null;
-		}
-		var gameUnit = battleObj.unit;
-		MirrorTarget findTarget = MirrorRaycast.RaycastFirFocusWeakpoint (gameUnit, inputScreenPos, GameConfig.Instance.FireFocusWpRadius);
-		if (findTarget != null)
-		{
-			return findTarget.WeakPointIDAttr;
-		}
-		return null;
+           
+		GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
 	}
     //---------------------------------------------------------------------------------------------
     void OnHitBattleObject(BattleObject battleGo, string weakpointName)
@@ -175,33 +176,42 @@ public class BattleController : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void StartBattle(PbStartBattle proto)
+    public void StartBattle(EnterInstanceParam enterParam)
     {
-        battleType = (BattleType)proto.battleType;
-        instanceData = StaticDataMgr.Instance.GetInstanceData(proto.instanceId);
+        curProcessIndex = 0;
+        battleStartID = BattleConst.enemyStartID;
+        curInstance = enterParam.instanceData;
+        //battleType = (BattleType)proto.battleType;
+        instanceData = StaticDataMgr.Instance.GetInstanceData(enterParam.instanceData.instanceId);
+        maxProcessIndex = enterParam.instanceData.battle.Count;
 
         if (!InitVictorMethod())
             return;
 
         //加载场景
-        LoadBattleScene(instanceData.sceneBattle);
+        LoadBattleScene(instanceData.instanceProtoData.sceneID);
 
         //设置battlegroup 并且创建模型
-        battleGroup.SetEnemyList(proto.enemyList);
+        //battleGroup.SetEnemyList(proto.enemyList);
+        GameDataMgr.Instance.PlayerDataAttr.SetMainUnits(enterParam.playerTeam);
+        GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
         battleGroup.SetPlayerList();
-
-        PlayPreStoryAnim();
 
         var ui = UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
         uiBattle = ui.GetComponent<UIBattle>();
         uiBattle.Init();
 
-        StartProcess(0);
+        StartProcess(curProcessIndex);
     }
     //---------------------------------------------------------------------------------------------
     public UIBattle GetUIBattle()
     {
         return uiBattle;
+    }
+    //---------------------------------------------------------------------------------------------
+    public GameObject GetSceneRoot()
+    {
+        return (curBattleScene != null) ? curBattleScene.gameObject : null;
     }
     //---------------------------------------------------------------------------------------------
     void LoadBattleScene(string sceneName)
@@ -211,7 +221,11 @@ public class BattleController : MonoBehaviour
         string assetbundle = sceneName.Substring(0, index);
         string assetname = sceneName.Substring(index + 1, sceneName.Length - index - 1);
         curBattleScene = ObjectDataMgr.Instance.CreateSceneObject(BattleConst.battleSceneGuid, assetbundle, assetname);
-
+        SetCameraDefault();
+    }
+    //---------------------------------------------------------------------------------------------
+    public void SetCameraDefault()
+    {
         Transform defaultTrans = GetDefaultCameraNode();
         BattleCamera.Instance.transform.localPosition = defaultTrans.position;
         BattleCamera.Instance.transform.localRotation = defaultTrans.rotation;
@@ -231,13 +245,14 @@ public class BattleController : MonoBehaviour
 			return defaultTrans;
 		}
 
-        GameObject cameraNode = Util.FindChildByName(curBattleScene.gameObject, cameraSlotName);
+        GameObject posParent = GetPositionRoot();
+        GameObject cameraNode = Util.FindChildByName(posParent, cameraSlotName);
 		cameraNodeDic.Add (cameraSlotName, cameraNode.transform);
 		return cameraNode.transform;
     }
 	//---------------------------------------------------------------------------------------------
 	public	Transform GetPhyDazhaoCameraNode()
-	{
+    {
 		string name = "cameraPhyDazhao";
 		Transform dazhaoTrans = null;
 		if (cameraNodeDic.TryGetValue (name, out dazhaoTrans))
@@ -245,7 +260,8 @@ public class BattleController : MonoBehaviour
 			return dazhaoTrans;
 		}
 
-		GameObject cameraNode = Util.FindChildByName(curBattleScene.gameObject,name);
+        GameObject posParent = GetPositionRoot();
+		GameObject cameraNode = Util.FindChildByName(posParent,name);
 		cameraNodeDic.Add (name, cameraNode.transform);
 		return cameraNode.transform;
 	}
@@ -259,9 +275,10 @@ public class BattleController : MonoBehaviour
         for (int i = 0; i < playerUnitList.Count; ++i)
         {
             playerUnitList[i].ClearEvent();
-            playerUnitList[i].gameObject.SetActive(false);
+            ObjectDataMgr.Instance.RemoveBattleObject(playerUnitList[i].guid);
+            //playerUnitList[i].gameObject.SetActive(false);
         }
-
+        battleGroup = null;
         curBattleScene = null;
     }
     //---------------------------------------------------------------------------------------------
@@ -272,6 +289,7 @@ public class BattleController : MonoBehaviour
             Logger.LogError("battle scene is null");
             return GameMain.Instance.gameObject;
         }
+        GameObject posParent = GetPositionRoot();
 
         string nodeName = "pos";
         if (isBoss)
@@ -288,13 +306,25 @@ public class BattleController : MonoBehaviour
             nodeName = nodeName + slotID.ToString();
         }
 
-        GameObject slotNode = Util.FindChildByName(curBattleScene.gameObject, nodeName);
+        GameObject slotNode = Util.FindChildByName(posParent, nodeName);
         if (slotNode != null)
         {
+            string testName = slotNode.name;
             return slotNode;
         }
 
         return GameMain.Instance.gameObject;
+    }
+    //---------------------------------------------------------------------------------------------
+    public GameObject GetPositionRoot()
+    {
+        GameObject posParent = Util.FindChildByName(curBattleScene.gameObject, "battlePosition" + curProcessIndex.ToString());
+        if (posParent == null)
+        {
+            Logger.LogError("can not find pos slot parent!");
+            posParent = curBattleScene.gameObject;
+        }
+        return posParent;
     }
     //---------------------------------------------------------------------------------------------
     /// <summary>
@@ -303,106 +333,101 @@ public class BattleController : MonoBehaviour
     bool InitVictorMethod()
     {
         //获取战斗胜利的func
-        switch (battleType)
-        {
-            case BattleType.Normal:
-                {
-                    if (instanceData.normalValiVicMethod != null)
-                    {
-                        victorMethod = instanceData.normalValiVicMethod;
-                        break;
-                    }
+        //switch (battleType)
+        //{ 
+        //    case BattleType.Normal:
+        //        {
+        //            if (instanceData.normalValiVicMethod != null)
+        //            {
+        //                victorMethod = instanceData.normalValiVicMethod;
+        //                break;
+        //            }
 
-                    string funcName = instanceData.normalValiVic;
-                    var cls = typeof(NormalScript);
-                    victorMethod = cls.GetMethod(funcName);
-                    if (victorMethod == null)
-                    {
-                        Logger.LogErrorFormat("Instance {0}'s normalValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
-                        return false;
-                    }
-                    instanceData.normalValiVicMethod = victorMethod;
-                    break;
-                }
-            case BattleType.Boss:
-                {
-                    if (instanceData.bossValiVicMethod != null)
-                    {
-                        victorMethod = instanceData.bossValiVicMethod;
-                        break;
-                    }
+        //            string funcName = instanceData.normalValiVic;
+        //            var cls = typeof(NormalScript);
+        //            victorMethod = cls.GetMethod(funcName);
+        //            if (victorMethod == null)
+        //            {
+        //                Logger.LogErrorFormat("Instance {0}'s normalValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
+        //                return false;
+        //            }
+        //            instanceData.normalValiVicMethod = victorMethod;
+        //            break;
+        //        }
+        //    case BattleType.Boss:
+        //        {
+        //            if (instanceData.bossValiVicMethod != null)
+        //            {
+        //                victorMethod = instanceData.bossValiVicMethod;
+        //                break;
+        //            }
 
-                    string funcName = instanceData.bossValiVic;
-                    var cls = typeof(BossScript);
-                    victorMethod = cls.GetMethod(funcName);
-                    if (victorMethod == null)
-                    {
-                        Logger.LogErrorFormat("Instance {0}'s bossValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
-                        return false;
-                    }
-                    instanceData.bossValiVicMethod = victorMethod;
+        //            string funcName = instanceData.bossValiVic;
+        //            var cls = typeof(BossScript);
+        //            victorMethod = cls.GetMethod(funcName);
+        //            if (victorMethod == null)
+        //            {
+        //                Logger.LogErrorFormat("Instance {0}'s bossValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
+        //                return false;
+        //            }
+        //            instanceData.bossValiVicMethod = victorMethod;
 
-                    foreach (var item in instanceData.bossProcess)
-                    {
-                        if (item.method != null)
-                            break;
+        //            foreach (var item in instanceData.bossProcess)
+        //            {
+        //                if (item.method != null)
+        //                    break;
 
-                        funcName = item.func;
-                        var method = cls.GetMethod(funcName);
-                        if (method == null)
-                        {
-                            Logger.LogErrorFormat("Instance {0}'s BossProcessValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
-                            return false;
-                        }
-                        item.method = method;
-                    }
-                    break;
-                }
-            case BattleType.Rare:
-                {
-                    if (instanceData.rareValiVicMethod != null)
-                    {
-                        victorMethod = instanceData.rareValiVicMethod;
-                        break;
-                    }
+        //                funcName = item.func;
+        //                var method = cls.GetMethod(funcName);
+        //                if (method == null)
+        //                {
+        //                    Logger.LogErrorFormat("Instance {0}'s BossProcessValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
+        //                    return false;
+        //                }
+        //                item.method = method;
+        //            }
+        //            break;
+        //        }
+        //    case BattleType.Rare:
+        //        {
+        //            if (instanceData.rareValiVicMethod != null)
+        //            {
+        //                victorMethod = instanceData.rareValiVicMethod;
+        //                break;
+        //            }
 
-                    string funcName = instanceData.rareValiVic;
-                    var cls = typeof(RareScript);
-                    victorMethod = cls.GetMethod(funcName);
-                    if (victorMethod == null)
-                    {
-                        Logger.LogErrorFormat("Instance {0}'s rareValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
-                        return false;
-                    }
-                    instanceData.rareValiVicMethod = victorMethod;
+        //            string funcName = instanceData.rareValiVic;
+        //            var cls = typeof(RareScript);
+        //            victorMethod = cls.GetMethod(funcName);
+        //            if (victorMethod == null)
+        //            {
+        //                Logger.LogErrorFormat("Instance {0}'s rareValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
+        //                return false;
+        //            }
+        //            instanceData.rareValiVicMethod = victorMethod;
 
-                    foreach (var item in instanceData.rareProcess)
-                    {
-                        if (item.method != null)
-                            break;
+        //            foreach (var item in instanceData.rareProcess)
+        //            {
+        //                if (item.method != null)
+        //                    break;
 
-                        funcName = item.func;
-                        var method = cls.GetMethod(funcName);
-                        if (method == null)
-                        {
-                            Logger.LogErrorFormat("Instance {0}'s RareProcessValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
-                            return false;
-                        }
-                        item.method = method;
-                    }
-                    break;
-                }
-            default:
-                Logger.LogError("Battle type error" + battleType);
-                return false;
-        }
+        //                funcName = item.func;
+        //                var method = cls.GetMethod(funcName);
+        //                if (method == null)
+        //                {
+        //                    Logger.LogErrorFormat("Instance {0}'s RareProcessValiVic #{1}# can not find! Exit battle!", instanceData.id, funcName);
+        //                    return false;
+        //                }
+        //                item.method = method;
+        //            }
+        //            break;
+        //        }
+        //    default:
+        //        Logger.LogError("Battle type error" + battleType);
+        //        return false;
+        //}
 
         return true;
-    }
-    //---------------------------------------------------------------------------------------------
-    void PlayPreStoryAnim()
-    {
-        Logger.Log("[Battle]Play Story Animation before any process...");
     }
     //---------------------------------------------------------------------------------------------
     //void ShowUI()
@@ -412,70 +437,81 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     void StartProcess(int index)
     {
-        var curProcess = GetProcessAtIndex(index);
-        if (curProcess != null)
-            process.StartProcess(curProcess, victorMethod);
-        else
+        if (index < maxProcessIndex)
+        {
+            uiBattle.SetBattleLevelProcess(index+1, maxProcessIndex);
+            PB.HSBattle curBattle = curInstance.battle[index];
+            curBattleLevel = StaticDataMgr.Instance.GetBattleLevelData(curBattle.battleCfgId);
+            if (curBattleLevel.battleProtoData.id.Contains("boss"))
+            {
+                battleType = BattleType.Boss;
+            }
+            else
+            {
+                battleType = BattleType.Normal;
+            }
+
+            List<PbUnit> pbList = new List<PbUnit>();
+            for (int i = 0; i < curBattle.monsterCfgId.Count; ++i)
+            {
+                PbUnit pbUnit = new PbUnit();
+                //enemy use minus uid
+                pbUnit.guid = --battleStartID;
+                //if (StaticDataMgr.Instance.GetUnitRowData(instanceData.bossID) != null)
+                //    pbUnit.id = instanceData.bossID;
+                //else
+                pbUnit.id = curBattle.monsterCfgId[i]; //instanceData.rareID;
+                pbUnit.level = instanceData.instanceProtoData.level;
+                pbUnit.camp = UnitCamp.Enemy;
+                pbUnit.slot = i;
+                pbUnit.character = BattleConst.defaultCharacter;
+                pbUnit.lazy = BattleConst.defaultLazy;
+
+                //TODO:
+                pbUnit.testBossType = 1;//九尾狐
+                //pbUnit.testBossType = 2;//混沌
+                pbList.Add(pbUnit);
+            }
+
+            battleGroup.SetEnemyList(pbList);
+            process.StartProcess(index, curBattleLevel);
+        }
+        else 
+        {
+            curBattleLevel = null;
             OnBattleOver(true);
+        }
     }
     //---------------------------------------------------------------------------------------------
-    ProcessData GetProcessAtIndex(int index)
+    public IEnumerator StartNextProcess()
     {
-        if (battleType == BattleType.Normal)
+        //对局切换过度
+        int playerCount = battleGroup.PlayerFieldList.Count;
+        for (int index = 0; index < playerCount; ++index)
         {
-            var pProcess = new ProcessData();
-            pProcess.method = victorMethod;
-            return pProcess;
-        }
-
-        if (battleType == BattleType.Boss)
-        {
-            int count = instanceData.bossProcess.Count;
-            if (index < 0 || index >= count)
+            BattleObject bo = battleGroup.PlayerFieldList[index];
+            if (bo != null)
             {
-                Logger.LogWarningFormat("Boss process error index: " + index);
-                return null;
+                bo.unit.OnStartNextProcess();
             }
-            else
-                return instanceData.bossProcess[index];
         }
 
-        if (battleType == BattleType.Rare)
-        {
-            int count = instanceData.rareProcess.Count;
-            if (index < 0 || index >= count)
-            {
-                Logger.LogWarningFormat("Rare process error index: " + index);
-                return null;
-            }
-            else
-                return instanceData.rareProcess[index];
-        }
+        uiBattle.ShowUI(false);
+        float waitTime = BattleConst.unitOutTime * 0.5f * GameSpeedService.Instance.GetBattleSpeed();
+        Fade.FadeOut(waitTime);
+        yield return new WaitForSeconds(waitTime);
 
-        Logger.LogWarningFormat("BattleType error" + battleType);
-        return null;
-    }
-    //---------------------------------------------------------------------------------------------
-    public void OnProcessSwitch(int gotoVal)
-    {
-        //检测下一个process的条件，避免出现跳进程的情况，如：从>50%，一刀砍到<30%
-        ProcessData next = GetProcessAtIndex(gotoVal - 1);
+        ++curProcessIndex;
+        Fade.FadeIn(waitTime);
+        cameraNodeDic.Clear();
+        SetCameraDefault();
+        battleGroup.RefreshPlayerPos();
+        yield return new WaitForSeconds(waitTime);
+        uiBattle.ShowUI(true);
+        //uiBattle.gameObject.BroadcastMessage("OnAnimationFinish");
 
-        while (next != null)
-        {
-            var processRet = (int)next.method.Invoke(null, null);
-            if (next.rets.ContainsKey(processRet))
-            {
-                gotoVal = next.rets[processRet];
-                next = GetProcessAtIndex(gotoVal - 1);
-            }
-            else
-                break;
-        }
-
-        Logger.LogWarning("Switch Process to: " + gotoVal);
-        //进程切换条件达成后
-        StartProcess(gotoVal - 1);
+        StartProcess(curProcessIndex);
+        //TODO: fade in and fade out && end event &&recover life etc
     }
     //---------------------------------------------------------------------------------------------
     public void OnBattleOver(bool isSuccess)

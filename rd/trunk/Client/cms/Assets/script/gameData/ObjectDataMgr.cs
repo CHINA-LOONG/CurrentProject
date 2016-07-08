@@ -88,6 +88,36 @@ public class ObjectDataMgr : MonoBehaviour
 			bo.shifaNodeEffect = bo.shifaGo.AddComponent<SimpleEffect>();
 		}
 
+		//weakpoint
+		if (bo.camp == UnitCamp.Enemy) {
+
+			BoxCollider bc = unitObject.GetComponent<BoxCollider>();
+			if( unit.isBoss)
+			{
+				if(null !=bc)
+				{
+					Destroy(bc);
+				}
+			}
+			else
+			{
+				if(null == bc)
+				{
+					unitObject.AddComponent<BoxCollider>();
+				}
+			}
+
+			bo.wpGroup = WeakPointGroup.CreateWeakpoingGroup(bo);
+		}
+		else 
+		{
+
+			BoxCollider bc = unitObject.GetComponent<BoxCollider>();
+			if(null == bc)
+			{
+				unitObject.AddComponent<BoxCollider>();
+			}
+		}
         AddBattleObject(bo);
 
         return bo;

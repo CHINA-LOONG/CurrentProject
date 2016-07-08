@@ -1,6 +1,8 @@
 package com.hawk.game.config;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -8,157 +10,68 @@ import net.sf.json.JSONArray;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase;
+import org.hawk.util.HawkJsonUtil;
+
+import com.google.gson.reflect.TypeToken;
 
 @HawkConfigManager.CsvResource(file = "xml/instance.csv", struct = "map")
 public class InstanceCfg extends HawkConfigBase {
 
 	@Id
 	protected final String id;
-	protected final String name;
 	protected final int level;
-	protected final float lifeCoef;
-	protected final float attackCoef;
-	protected final float expCoef;
-	protected final float goldCoef;
-	protected final String sceneBattle;
-	protected final int sceneAmount;
-	protected final int monsterAmount;
-	protected final String monster1;
-	protected final int monster1Amount;
-	protected final String monster2;
-	protected final int monster2Amount;
-	protected final String monster3;
-	protected final int monster3Amount;
-	protected final String monster4;
-	protected final int monster4Amount;
-	protected final String monster5;
-	protected final int monster5Amount;
-	protected final String bossID;
-	protected final String rareID;
-	protected final float rareProbability;
-	
+	protected final String battleLevelList;
+	protected final String battleBoss;
+
 	// client only
-	protected final String normalValiVic = null;
-	protected final String bossValiVic = null;
-	protected final String bossStoryStartAnimation = null;
-	protected final String bossStoryEndAnimation = null;	
-	protected final String pre1Animation = null;
-	protected final String process1Animation = null;
-	protected final int is1ClearBuff = 0;
-	protected final String bossValiP1 = null;
-	protected final String pre2Animation = null;
-	protected final String process2Animation = null;
-	protected final int is2ClearBuff = 0;
-	protected final String bossValiP2 = null;
-	protected final String pre3Animation = null;
-	protected final String process3Animation = null;
-	protected final int is3ClearBuff = 0;
-	protected final String bossValiP3 = null;
-	protected final String pre4Animation = null;
-	protected final String process4Animation = null;
-	protected final int is4ClearBuff = 0;
-	protected final String bossValiP4 = null;
-	protected final String pre5Animation = null;
-	protected final String process5Animation = null;
-	protected final int is5ClearBuff = 0;
-	protected final String bossValiP5 = null;
-	protected final String rareValiVic = null;
-	protected final String rareStoryStartAnimation = null;
-	protected final String rareStoryEndAnimation = null;
-	protected final String preRare1Animation = null;
-	protected final String processRare1Animation = null;
-	protected final int isRare1ClearBuff = 0;
-	protected final String rareValiP1 = null;
-	protected final String preRare2Animation = null;
-	protected final String processRare2Animation = null;
-	protected final int isRare2ClearBuff = 0;
-	protected final String rareValiP2 = null;
-	protected final String preRare3Animation = null;
-	protected final String processRare3Animation = null;
-	protected final int isRare3ClearBuff = 0;
-	protected final String rareValiP3 = null;
-	protected final String preRare4Animation = null;
-	protected final String processRare4Animation = null;
-	protected final int isRare4ClearBuff = 0;
-	protected final String rareValiP4 = null;
-	protected final String preRare5Animation = null;
-	protected final String processRare5Animation = null;
-	protected final int isRare5ClearBuff = 0;
-	protected final String rareValiP5 = null;
-		
+	protected final float lifeCoef = 0;
+	protected final float attackCoef = 0;
+	protected final String sceneID = null;
+	protected final int dazhaoGroup = 0;
+	protected final int dazhaoAdjust = 0;
+
 	// assemble
-	protected Map<String, Integer> monsterAmountList;
-	protected Map<String, MonsterCfg> monsterList;
-	private MonsterCfg bossCfg;
+	protected List<String> normalBattleIdList;
+	protected Map<String, Integer> normalBattleMonsterMap;
+	protected Map<String, Integer> bossBattleMonsterMap;
 
 	public InstanceCfg() {
 		id = "";
-		name = "";
 		level = 0;
-		lifeCoef = 1.0f;
-		attackCoef = 1.0f;
-		expCoef = 1.0f;
-		goldCoef = 1.0f;
-		sceneBattle = "";
-		sceneAmount = 0;
-		monsterAmount = 0;
-		monster1 = "";
-		monster1Amount = 0;;
-		monster2 = "";
-		monster2Amount = 0;
-		monster3 = "";
-		monster3Amount = 0;
-		monster4 = "";
-		monster4Amount = 0;
-		monster5 = "";
-		monster5Amount = 0;
-		bossID = "";
-		rareID = null;
-		rareProbability = 0;
+		battleLevelList = "";
+		battleBoss = "";
 	}
 	
 	@Override
 	protected boolean assemble() {
-		monsterAmountList =  new HashMap<String, Integer>();
-		if (monster1 != "" && monster1Amount > 0) {
-			monsterAmountList.put(monster1, monster1Amount);
-		}
-		if (monster2 != "" && monster2Amount > 0) {
-			monsterAmountList.put(monster2, monster2Amount);
-		}
-		if (monster3 != "" && monster3Amount > 0) {
-			monsterAmountList.put(monster3, monster3Amount);
-		}
-		if (monster4 != "" && monster4Amount > 0) {
-			monsterAmountList.put(monster4, monster4Amount);
-		}
-		if (monster5 != "" && monster5Amount > 0) {
-			monsterAmountList.put(monster5, monster5Amount);
-		}
-
+		normalBattleIdList = HawkJsonUtil.getJsonInstance().fromJson(battleLevelList, new TypeToken<List<String>>() {}.getType());
 		return true;
 	}
 	
 	@Override
 	protected boolean checkValid() {
-		int sum = 0;
-		for (Entry<String, Integer> entry : monsterAmountList.entrySet()) {
-			MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, entry.getKey());
-			if(monsterCfg == null) {
+		normalBattleMonsterMap = new HashMap<String, Integer>();
+		for (int i = 0; i < normalBattleIdList.size(); ++i) {
+			BattleLevelCfg battleCfg = HawkConfigManager.getInstance().getConfigByKey(BattleLevelCfg.class, normalBattleIdList.get(i));
+			if (null == battleCfg) {
 				return false;
 			}
-			sum += entry.getValue();
+			
+			for (Entry<String, Integer> entry : battleCfg.getMonsterMap().entrySet()) {
+				Integer count = normalBattleMonsterMap.get(entry.getKey());
+				if (null == count) {
+					count = 0;
+				}
+				normalBattleMonsterMap.put(entry.getKey(), entry.getValue() + count);
+			}
 		}
 		
-		if (sceneAmount * monsterAmount != sum) {
+		BattleLevelCfg bossBattleCfg = HawkConfigManager.getInstance().getConfigByKey(BattleLevelCfg.class, battleBoss);
+		if (null == bossBattleCfg) {
 			return false;
 		}
-		
-		bossCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, bossID);
-		if (bossCfg == null) {
-			return false;
-		}
-		
+		bossBattleMonsterMap = bossBattleCfg.getMonsterMap();
+
 		return true;
 	}
 
@@ -166,64 +79,27 @@ public class InstanceCfg extends HawkConfigBase {
 		return id;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
-	public int getLevel() {
+	public int getMonsterLevel() {
 		return level;
 	}
 	
-	public float getLifeCoef() {
-		return lifeCoef;
+	public List<String> getNormalBattleIdList() {
+		return normalBattleIdList;
 	}
 	
-	public float getAttackCoef() {
-		return attackCoef;
-	}
-	
-	public float getExpCoef() {
-		return expCoef;
-	}
-	
-	public float getGoldCoef() {
-		return goldCoef;
-	}
-	
-	public String getBattleScene() {
-		return sceneBattle;
-	}
-	
-	public int getBattleAmount() {
-		return sceneAmount;
-	}
-	
-	public int getBattleMonsterAmount() {
-		return monsterAmount;
-	}
-	
-	public Map<String,Integer> getMonsterAmountList() {
-		return monsterAmountList;
-	}
-	
-	public int getMonsterAmount(String monsterId) {
-		return monsterAmountList.get(monsterId);
-	}
-	
-	public String getBossId() {
-		return bossID;
-	}
-	
-	public MonsterCfg getBoss() {
-		return bossCfg;
-	}
-	
-	public String getRareId() {
-		return rareID;
-	}
-	
-	public float getRareProbability() {
-		return rareProbability;
+	public String getBossBattleId() {
+		return battleBoss;
 	}
 
+	public int getNormalBattleCount() {
+		return normalBattleIdList.size();
+	}
+	
+	public Map<String, Integer> getNormalBattleMonsterMap() {
+		return normalBattleMonsterMap;
+	}
+	
+	public Map<String, Integer> getBossBattleMonsterMap() {
+		return bossBattleMonsterMap;
+	}
 }

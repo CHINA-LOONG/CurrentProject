@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public enum BattleObjectType
 {
@@ -25,6 +26,8 @@ public class BattleObject : MonoBehaviour
     public SimpleEffect shifaNodeEffect;
     private Quaternion targetRot;
     private float lastUpdateTime;
+
+	public WeakPointGroup wpGroup = null;
 
     //---------------------------------------------------------------------------------------------
     void Awake()
@@ -52,6 +55,7 @@ public class BattleObject : MonoBehaviour
                 curEvent.actorCameraSequence = new List<ActorCameraData>(srcEvent.actorCameraSequence);
                 curEvent.actorControllerSequence = new List<ActorControllerData>(srcEvent.actorControllerSequence);
                 curEvent.actorMeshSequence = new List<ActorMeshData>(srcEvent.actorMeshSequence);
+                curEvent.actorWpStateSequence = new List<ActorWpStateData>(srcEvent.actorWpStateSequence);
                 //copy
                 curEvent.actorParticleSequence = new List<ActorParticleData>();
                 for (int i = 0; i < srcEvent.actorParticleSequence.Count; ++i)
@@ -109,10 +113,10 @@ public class BattleObject : MonoBehaviour
             transform.localScale = slotNode.transform.localScale;
             targetRot = gameObject.transform.localRotation;
             gameObject.transform.SetParent(GameMain.Instance.transform, false);
-            if (camp == UnitCamp.Enemy)
-            {
-                GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.LoadBattleObjectFinished, this);
-            }
+           // if (camp == UnitCamp.Enemy)
+           // {
+               // GameEventMgr.Instance.FireEvent<BattleObject>(GameEventList.LoadBattleObjectFinished, this);
+           // }
         }
 
         unit.ReCalcSpeed();
@@ -147,6 +151,7 @@ public class BattleObject : MonoBehaviour
         //BattleObject unit = ObjectDataMgr.Instance.GetBattleObject(guid);
         //if (unit != null)
         {
+            ClearEvent();
             unit.State = UnitState.None;
             gameObject.SetActive(false);
             Logger.LogFormat("Unit {0} guid:{1} has exited field", name, guid);
@@ -257,7 +262,7 @@ public class BattleObject : MonoBehaviour
                     {
                         curParticleData.psObject = prefab;
                         Transform rootTransform = transform;
-                        if (string.IsNullOrEmpty(curEventData.rootNode))
+                        if (string.IsNullOrEmpty(curEventData.rootNode) == false)
                         {
                             GameObject rootParent = Util.FindChildByName(gameObject, curEventData.rootNode);
                             if (rootParent != null)
@@ -319,31 +324,55 @@ public class BattleObject : MonoBehaviour
             }
 
             //update camera
-            //count = curEventData.actorCameraSequence.Count;
-            //ActorCameraData curCameraData;
-            //for (int index = 0; index < count; ++index)
-            //{
-            //    curCameraData = curEventData.actorCameraSequence[index];
-            //    sequenceTriggerTime = curEventData.triggerTime + curCameraData.triggerTime;
-            //    if (sequenceTriggerTime < lastUpdateTime)
-            //    {
-            //        continue;
-            //    }
-            //    if (sequenceTriggerTime >= curTime)
-            //    {
-            //        finish = false;
-            //        continue;
-            //    }
-            //    finish = false;
+            count = curEventData.actorCameraSequence.Count;
+            ActorCameraData curCameraData;
+            for (int index = 0; index < count; ++index)
+            {
+                curCameraData = curEventData.actorCameraSequence[index];
+                sequenceTriggerTime = curEventData.triggerTime + curCameraData.triggerTime;
+                if (sequenceTriggerTime < lastUpdateTime)
+                {
+                    continue;
+                }
+                if (sequenceTriggerTime >= curTime)
+                {
+                    finish = false;
+                    continue;
+                }
+                finish = false;
 
-            //    //Animator animator = curCameraData.psObject.GetComponent<Animator>();
-            //    //Animation animator = BattleCamera.Instance.CameraAttr;
-            //    //int curStateHash = Animator.StringToHash(curParticleData.particleAni);
-            //    //if (animator != null && animator.HasState(0, curStateHash))
-            //    //{
-            //    //    animator.Play(curStateHash);
-            //    //}
-            //}
+                //TODO: animate battlecamera only?
+                GameObject cameraRoot = BattleCamera.Instance.gameObject;
+                if (string.IsNullOrEmpty(curCameraData.cameraAni) == false)
+                {
+                    Animator animator = cameraRoot.GetComponent<Animator>();
+                    int curAniHash = Animator.StringToHash(curCameraData.cameraAni);
+                    if (animator != null && animator.HasState(0, curAniHash))
+                    {
+                        animator.Play(curAniHash);
+                    }
+                }
+
+                if (string.IsNullOrEmpty(curCameraData.parent) == false)
+                {
+                    GameObject cameraParentTarget = Util.FindChildByName(BattleController.Instance.GetSceneRoot(), curCameraData.parent);
+                    if (cameraParentTarget != null)
+                    {
+                        if (string.IsNullOrEmpty(curCameraData.isMover) || curCameraData.isMover != "true")
+                        {
+                            Transform parentTransform = cameraParentTarget.transform;
+                            cameraRoot.transform.localPosition = parentTransform.position;
+                            cameraRoot.transform.localRotation = parentTransform.rotation;
+                            cameraRoot.transform.SetParent(transform.parent, false);
+                        }
+                        else 
+                        {
+                            cameraRoot.transform.DOMove(cameraParentTarget.transform.position, curCameraData.duration);
+                            cameraRoot.transform.DORotate(cameraParentTarget.transform.rotation.eulerAngles, curCameraData.duration);
+                        }
+                    }
+                }
+            }
 
             //update mesh
             count = curEventData.actorMeshSequence.Count;
@@ -401,6 +430,33 @@ public class BattleObject : MonoBehaviour
                 }
                 //AudioSource as = gameObject.GetComponent<AudioSource>();
             }
+
+            //update wpstate
+            count = curEventData.actorWpStateSequence.Count;
+            ActorWpStateData curWpData = null;
+            for (int index = 0; index < count; ++index)
+            {
+                curWpData = curEventData.actorWpStateSequence[index];
+                sequenceTriggerTime = curEventData.triggerTime + curWpData.triggerTime;
+                if (sequenceTriggerTime < lastUpdateTime)
+                {
+                    continue;
+                }
+                if (sequenceTriggerTime >= curTime)
+                {
+                    finish = false;
+                    continue;
+                }
+                finish = false;
+
+                if (string.IsNullOrEmpty(curWpData.wpName))
+                {
+                    continue;
+                }
+
+                //TODO: Set wpstate
+            }
+
 
             //check particle
             count = curEventData.actorParticleSequence.Count;
@@ -477,27 +533,6 @@ public class BattleObject : MonoBehaviour
             }
         }
         activeEventList.Clear();
-    }
-    //---------------------------------------------------------------------------------------------
-	public void ShowWeakpointDeadEffect(string wp)
-	{
-		WeakPointData rowData = StaticDataMgr.Instance.GetWeakPointData(wp);
-		if(null!=rowData)
-		{
-			string effectNodeName = rowData.node;
-			GameObject effectGo = Util.FindChildByName (gameObject, effectNodeName);
-			string deadPrefabName = rowData.deadEffect;
-			if(!string.IsNullOrEmpty(deadPrefabName))
-			{
-                GameObject effectObject = ResourceMgr.Instance.LoadAsset("effect/battle", deadPrefabName);//
-                //GameObject effectObject = Instantiate(prefab) as GameObject;
-				if (null != effectObject)
-				{
-					effectObject.transform.SetParent (effectGo.transform);
-					effectObject.transform.localPosition = Vector3.zero;
-				}
-			}
-		}
     }
     //---------------------------------------------------------------------------------------------
 }

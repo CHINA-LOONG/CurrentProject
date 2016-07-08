@@ -20,9 +20,14 @@ public abstract class ModuleBase : MonoBehaviour
 
     public abstract void OnInit(object param);
 
-    public abstract void OnEnter(ModuleBase prevModule, object param);
+    public abstract void OnEnter(object param);
 
     public abstract void OnExecute();
 
-    public abstract void OnExit(ModuleBase nextModule);
+    public abstract void OnExit();
+
+    public virtual IEnumerator LoadResource()
+    {
+        yield return null;
+    }
 }

@@ -25,7 +25,7 @@ public class CreatePlayerModule : ModuleBase
 		UIMgr.Instance.OpenUI (UICreatePlayer.AssertName, UICreatePlayer.ViewName);
 	}
 	
-	public override void OnEnter(ModuleBase prevModule, object param)
+	public override void OnEnter(object param)
 	{
 		BindListener();
 	}
@@ -59,7 +59,7 @@ public class CreatePlayerModule : ModuleBase
 		
 	}
 	
-	public override void OnExit(ModuleBase nextModule)
+	public override void OnExit()
 	{
 		UnBindListener();
 	}

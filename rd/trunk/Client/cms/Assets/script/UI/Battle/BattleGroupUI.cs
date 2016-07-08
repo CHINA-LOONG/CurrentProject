@@ -36,8 +36,11 @@ public class BattleGroupUI : MonoBehaviour
         int count = playerUnits.Count;
         for (int i = 0; i < count; ++i)
         {
-            BattleUnitUI bu = AddPlayerUI(playerUnits[i].guid);
-            bu.Show(playerUnits[i]);
+            if (playerUnits[i] != null)
+            {
+                BattleUnitUI bu = AddPlayerUI(playerUnits[i].guid);
+                bu.Show(playerUnits[i]);
+            }
         }
 
         //init enemy unit ui

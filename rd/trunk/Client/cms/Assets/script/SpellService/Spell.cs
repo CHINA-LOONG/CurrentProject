@@ -14,6 +14,10 @@ public class SpellProtoType
     public int category;
     public float levelAdjust;
     //public int cdTime;
+    //显示用数据
+    public string icon;
+    public string tips;
+    public float baseTipValue;
 }
 
 public class Spell

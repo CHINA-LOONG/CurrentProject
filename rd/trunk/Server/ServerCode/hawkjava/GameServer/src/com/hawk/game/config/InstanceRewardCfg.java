@@ -11,6 +11,8 @@ public class InstanceRewardCfg extends HawkConfigBase {
 
 	@Id
 	protected final String id;
+	protected final float expCoef;
+	protected final float goldCoef;
 	protected final int rewardId;
 	protected final int sweepRewardId;
 	protected final int star1RewardGroupId;
@@ -24,6 +26,8 @@ public class InstanceRewardCfg extends HawkConfigBase {
 
 	public InstanceRewardCfg() {
 		id = "";
+		expCoef = 1.0f;
+		goldCoef = 1.0f;
 		rewardId = 0;
 		star1RewardGroupId = 0;
 		star2RewardGroupId = 0;
@@ -76,6 +80,14 @@ public class InstanceRewardCfg extends HawkConfigBase {
 		return id;
 	}
 
+	public float getExpCoef() {
+		return expCoef;
+	}
+	
+	public float getGoldCoef() {
+		return goldCoef;
+	}
+	
 	public RewardCfg getReward() {
 		return rewardCfg;
 	}

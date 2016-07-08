@@ -33,17 +33,17 @@ public class BattleCamera : MonoBehaviour
 			if (mInst != null)
 				return mInst;
 
-			GameObject go = GameObject.Find("BattleCamera");
+			GameObject go = GameObject.Find("BattleCameraRoot");
 			if(go == null)
 			{
-				go =  ResourceMgr.Instance.LoadAsset("camera","BattleCamera");
+				go =  ResourceMgr.Instance.LoadAsset("camera","BattleCameraRoot");
 				//go = Instantiate(prefab) as GameObject;
-				go.name = "BattleCamera";
+                go.name = "BattleCameraRoot";
 			}
 			mInst = go.GetComponent<BattleCamera>();
-			mInst.CameraAttr = go.GetComponent<Camera>();
-			mInst.animator = go.GetComponent<Animator>();
-			mInst.cameraAni = go.AddComponent<CameraAni>();
+			mInst.CameraAttr = go.GetComponentInChildren<Camera>();
+            mInst.animator = go.GetComponentInChildren<Animator>();
+            mInst.cameraAni = go.AddComponent<CameraAni>();
 
 			return mInst;
 		}

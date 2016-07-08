@@ -15,7 +15,6 @@ public class UIMonsterInfo : UIBase
 		mInfo.ShowWithData (guid, monsterid);
 	}
 
-
 	public Button closeButton;
 	public	Text	name;
 	public	Image	propertyImage;
@@ -77,6 +76,7 @@ public class UIMonsterInfo : UIBase
 				continue;
 			}
 			if(spellPt.category == (int)SpellType.Spell_Type_MgicAttack ||
+			   spellPt.category == (int)SpellType.Spell_Type_Cure||
 			   spellPt.category == (int)SpellType.Spell_Type_PhyAttack ||
 			   spellPt.category == (int)SpellType.Spell_Type_Beneficial||
 			   spellPt.category == (int)SpellType.Spell_Type_Negative)
@@ -92,12 +92,36 @@ public class UIMonsterInfo : UIBase
 					AddIcon(spellPt);
 				}
 			}
+
 		}	
+		if (isBoss)
+		{
+			var icon = SpellIcon.CreateWith (skillTrans );
+			icon.SetBoss();
+		}
 	}
 
 	private void AddIcon(SpellProtoType spellType)
 	{
 		var icon = SpellIcon.CreateWith (skillTrans );
 		icon.SetData (1, spellType.id);
+
+		EventTriggerListener.Get (icon.iconButton.gameObject).onEnter = OnPointerEnter;
+		EventTriggerListener.Get (icon.iconButton.gameObject).onExit = OnPointerExit;
+	}
+
+	int test = 0;
+	public	void OnPointerEnter(GameObject go)
+	{
+		//Logger.LogError ("--------" + test++);
+		SpellIcon icon =  go.GetComponentInParent<SpellIcon> ();
+		icon.SetMask (true);
+	}
+
+	public	void OnPointerExit(GameObject go)
+	{
+		//Logger.LogError (test++ + "--------"  );
+		SpellIcon icon =  go.GetComponentInParent<SpellIcon> ();
+		icon.SetMask (false);
 	}
 }

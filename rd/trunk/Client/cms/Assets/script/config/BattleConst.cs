@@ -42,6 +42,8 @@ public class BattleConst
 
     //战斗场景id
     public const int battleSceneGuid = -1;
+    //怪物初始id
+    public const int enemyStartID = -100;
 
     //换宠换出去时间
     public const float unitOutTime = 2.5f;
@@ -53,4 +55,10 @@ public class BattleConst
     public const float vitalChangeDispearTime = 1.0f;
 
     public const float unitRotSpeed = 10.0f;
+
+    //怪物默认性格
+    public const int defaultCharacter = 3;
+    //怪物默认勤奋度
+    public const int defaultLazy = 3;
+    public const string levelChangeEvent = "level_change";
 }

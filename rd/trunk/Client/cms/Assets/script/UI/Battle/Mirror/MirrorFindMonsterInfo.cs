@@ -53,7 +53,17 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 
 		foreach (MirrorTarget subTarget in listTarget)
 		{
-			WeakPointData wpData = StaticDataMgr.Instance.GetWeakPointData(subTarget.WeakPointIDAttr);
+			BattleObject bo = subTarget.battleObject;
+			if(null == bo)
+				continue;
+
+			WeakPointRuntimeData wpRuntimeData = null;
+			bool isok = bo.wpGroup.allWpDic.TryGetValue(subTarget.WeakPointIDAttr,out wpRuntimeData);
+			if(!isok)
+				continue;
+
+
+			WeakPointData wpData = wpRuntimeData.staticData;
 			if(null == wpData || wpData.tipType == (int)TipInfoType.NoTip)
 				continue;
 
@@ -61,14 +71,14 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 			{
 				if(wpData.tipType == (int)TipInfoType.TipSelf)
 				{
-					GameUnit unit = WeakPointController.Instance.getGameUnit(subTarget);
+					GameUnit unit = subTarget.battleObject.unit;
 					//propertyText.text = subTarget.WeakPointIDAttr;
 					friendShipText.text = unit.friendship.ToString();
 					friendShipText.gameObject.SetActive(true);
 					propertyText.gameObject.SetActive(true);
 					//likeFoodText.text = "subTarget";
 
-					int property = WeakPointController.Instance.GetProperty(subTarget);
+					int property = wpRuntimeData.property;
 					var image = ResourceMgr.Instance.LoadAssetType<Sprite>("ui/property", "property_" + property) as Sprite;
 					if(image != null)
 					{

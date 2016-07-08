@@ -29,12 +29,16 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, EffectPrototype> effectData = new Dictionary<string, EffectPrototype>();
     Dictionary<string, SpellProtoType> spellData = new Dictionary<string, SpellProtoType>();
     Dictionary<string, InstanceData> instanceData = new Dictionary<string, InstanceData>();
+    Dictionary<string, BattleLevelData> battleLevelData = new Dictionary<string, BattleLevelData>();
 	Dictionary<int,LazyData>	lazyData = new Dictionary<int, LazyData>();
 	Dictionary<int,CharacterData> characterData = new Dictionary<int, CharacterData>();
 	Dictionary<int,Chapter>	chapterData = new Dictionary<int, Chapter>();
 	Dictionary<string,InstanceEntry> instanceEntryData = new Dictionary<string, InstanceEntry>();
 	Dictionary<int,ItemStaticData> itemData = new Dictionary<int, ItemStaticData>();
 	Dictionary<int,PlayerLevelAttr> playerLevelAttr = new Dictionary<int, PlayerLevelAttr>();
+    Dictionary<int, QuestStaticData> questData = new Dictionary<int, QuestStaticData>();
+    Dictionary<int, RewardData> rewardData = new Dictionary<int, RewardData>();
+    Dictionary<int, TimeStaticData> timeData = new Dictionary<int, TimeStaticData>();
 
     public void Init()
     {
@@ -65,7 +69,7 @@ public class StaticDataMgr : MonoBehaviour
                 buffData.Add(item.id, item);
         }
         {
-            effectData = new Dictionary<string, EffectPrototype>();
+            //effectData = new Dictionary<string, EffectPrototype>();
             var data = InitTable<EffectWholeData>("effect");
             EffectPrototype effectPt = null;
             foreach (EffectWholeData wholeData in data)
@@ -161,213 +165,206 @@ public class StaticDataMgr : MonoBehaviour
         }
         #region instance data
         {
-            var data = InitTable<InstanceData>("instance");
+            var data = InitTable<InstanceProtoData>("instance");
             foreach (var item in data)
             {
-                ProcessData process;
+                InstanceData curInstance = new InstanceData();
+                curInstance.instanceProtoData = item;
 
-                if (!string.IsNullOrEmpty(item.bossValiP1))
+                ArrayList battleArrayList = MiniJsonExtensions.arrayListFromJson(item.battleLevelList);
+                for (int i = 0; i < battleArrayList.Count; ++i)
                 {
-                    process = new ProcessData();
-                    process.index = 1;
-                    process.preAnim = item.pre1Animation;
-                    process.processAnim = item.process1Animation;
-                    process.needClearBuff = item.is1ClearBuff != 0;
-                    process.ParseCondition(item.bossValiP1);
-                    item.bossProcess.Add(process);
+                    curInstance.battleLevelList.Add(battleArrayList[i] as string);
                 }
 
-                if (!string.IsNullOrEmpty(item.bossValiP2))
+                instanceData.Add(curInstance.instanceProtoData.id, curInstance);
+            }
+        }
+        #endregion
+        #region battleLevel data
+        {
+            var data = InitTable<BattleLevelProtoData>("battleLevel");
+            foreach (var item in data)
+            {
+                BattleLevelData blData = new BattleLevelData();
+                blData.battleProtoData = item;
+                if (string.IsNullOrEmpty(item.winFunc) == false)
                 {
-                    process = new ProcessData();
-                    process.index = 2;
-                    process.preAnim = item.pre2Animation;
-                    process.processAnim = item.process2Animation;
-                    process.needClearBuff = item.is2ClearBuff != 0;
-                    process.ParseCondition(item.bossValiP2);
-                    item.bossProcess.Add(process);
+                    var cls = typeof(NormalScript);
+                    blData.winFunc = cls.GetMethod(item.winFunc);
+                }
+                if (string.IsNullOrEmpty(item.loseFunc) == false)
+                {
+                    var cls = typeof(NormalScript);
+                    blData.loseFunc = cls.GetMethod(item.loseFunc);
                 }
 
-                if (!string.IsNullOrEmpty(item.bossValiP3))
+                Hashtable monsterTable = MiniJsonExtensions.hashtableFromJson(item.monsterList);
+                if (monsterTable != null)
                 {
-                    process = new ProcessData();
-                    process.index = 3;
-                    process.preAnim = item.pre3Animation;
-                    process.processAnim = item.process3Animation;
-                    process.needClearBuff = item.is3ClearBuff != 0;
-                    process.ParseCondition(item.bossValiP3);
-                    item.bossProcess.Add(process);
+                    foreach (DictionaryEntry de in monsterTable)
+                    {
+                        blData.monsterList.Add(de.Key.ToString(), int.Parse(de.Value.ToString()));
+                    }
                 }
 
-                if (!string.IsNullOrEmpty(item.bossValiP4))
-                {
-                    process = new ProcessData();
-                    process.index = 4;
-                    process.preAnim = item.pre4Animation;
-                    process.processAnim = item.process4Animation;
-                    process.needClearBuff = item.is4ClearBuff != 0;
-                    process.ParseCondition(item.bossValiP4);
-                    item.bossProcess.Add(process);
-                }
-
-                if (!string.IsNullOrEmpty(item.bossValiP5))
-                {
-                    process = new ProcessData();
-                    process.index = 5;
-                    process.preAnim = item.pre5Animation;
-                    process.processAnim = item.process5Animation;
-                    process.needClearBuff = item.is5ClearBuff != 0;
-                    process.ParseCondition(item.bossValiP5);
-                    item.bossProcess.Add(process);
-                }
-
-                if (!string.IsNullOrEmpty(item.rareValiP1))
-                {
-                    process = new ProcessData();
-                    process.index = 1;
-                    process.preAnim = item.preRare1Animation;
-                    process.processAnim = item.processRare1Animation;
-                    process.needClearBuff = item.isRare1ClearBuff != 0;
-                    process.ParseCondition(item.rareValiP1);
-                    item.rareProcess.Add(process);
-                }
-
-
-                if (!string.IsNullOrEmpty(item.rareValiP2))
-                {
-                    process = new ProcessData();
-                    process.index = 2;
-                    process.preAnim = item.preRare2Animation;
-                    process.processAnim = item.processRare2Animation;
-                    process.needClearBuff = item.isRare2ClearBuff != 0;
-                    process.ParseCondition(item.rareValiP2);
-                    item.rareProcess.Add(process);
-                }
-
-
-                if (!string.IsNullOrEmpty(item.rareValiP3))
-                {
-                    process = new ProcessData();
-                    process.index = 3;
-                    process.preAnim = item.preRare3Animation;
-                    process.processAnim = item.processRare3Animation;
-                    process.needClearBuff = item.isRare3ClearBuff != 0;
-                    process.ParseCondition(item.rareValiP3);
-                    item.rareProcess.Add(process);
-                }
-
-
-                if (!string.IsNullOrEmpty(item.rareValiP4))
-                {
-                    process = new ProcessData();
-                    process.index = 4;
-                    process.preAnim = item.preRare4Animation;
-                    process.processAnim = item.processRare4Animation;
-                    process.needClearBuff = item.isRare4ClearBuff != 0;
-                    process.ParseCondition(item.rareValiP4);
-                    item.rareProcess.Add(process);
-                }
-
-
-                if (!string.IsNullOrEmpty(item.rareValiP5))
-                {
-                    process = new ProcessData();
-                    process.index = 5;
-                    process.preAnim = item.preRare5Animation;
-                    process.processAnim = item.processRare5Animation;
-                    process.needClearBuff = item.isRare5ClearBuff != 0;
-                    process.ParseCondition(item.rareValiP5);
-                    item.rareProcess.Add(process);
-                }
-
-                instanceData.Add(item.id, item);
+                battleLevelData.Add(blData.battleProtoData.id, blData);
             }
         }
         #endregion
         {
             var data = InitTable<WeakPointData>("weakPointData");
             foreach (var item in data)
+			{
+				item.AdaptData();
                 weakPointData.Add(item.id, item);
+			}
         }
 
-		{
-			var data = InitTable<LazyData>("lazy");
-			foreach(var item in data)
-				lazyData.Add(item.index,item);
-		}
+        {
+            var data = InitTable<LazyData>("lazy");
+            foreach (var item in data)
+                lazyData.Add(item.index, item);
+        }
 
-		{
-			var data = InitTable<CharacterData>("character");
-			foreach(var item in data)
-				characterData.Add(item.index,item);
-		}
+        {
+            var data = InitTable<CharacterData>("character");
+            foreach (var item in data)
+                characterData.Add(item.index, item);
+        }
 
-		{
-			var data = InitTable<Chapter>("chapter");
-			foreach(var item in data)
-				chapterData.Add(item.chapter,item);
-		}
-
+        {
+            var data = InitTable<Chapter>("chapter");
+            foreach (var item in data)
+                chapterData.Add(item.chapter, item);
+        }
+		
 		{
 			var data = InitTable<InstanceEntry>("instanceEntry");
 			foreach(var item in data)
 			{
-				item.enemyList = new List<string>();
-				item.rewardList = new List<int>();
+				item.AdaptData();
 
-				if(!string.IsNullOrEmpty(item.enemy1))
-					item.enemyList.Add(item.enemy1);
+                instanceEntryData.Add(item.id, item);
+            }
+        }
 
-				if(!string.IsNullOrEmpty(item.enemy2))
-					item.enemyList.Add(item.enemy2);
+        {
+            var data = InitTable<ItemStaticData>("item");
+            foreach (var item in data)
+                itemData.Add(item.id, item);
+        }
 
-				if(!string.IsNullOrEmpty(item.enemy3))
-					item.enemyList.Add(item.enemy3);
+        {
+            var data = InitTable<PlayerLevelAttr>("playerAttr");
+            foreach (var item in data)
+                playerLevelAttr.Add(item.level, item);
+        }
+        {
+            #region static Quest
+            var data = InitTable<QuestStaticData>("quest");
+            foreach (var item in data)
+            {
+                #region Logger
+                /*****************************************************************************
+                Logger.Log("id:" + item.id + 
+                          "\ngroup:" + item.group + 
+                          "\ntype:" + item.type + 
+                          "\nname:" + item.name + 
+                          "\nicon:" + item.icon + 
+                          "\nlevel:" + item.level + 
+                          "\ncycle:" + item.cycle + 
+                          "\ntimeBeginId:" + item.timeBeginId + 
+                          "\ntimeEndId:" + item.timeEndId + 
+                          "\ngoalType:" + item.goalType + 
+                          "\ngoalParam:" + item.goalParam + 
+                          "\ngoalCount:" + item.goalCount + 
+                          "\nrewardId:" + item.rewardId + 
+                          "\nexpK:" + item.expK + 
+                          "\nexpB:" + item.expB + 
+                          "\nspeechId:" + item.speechId);
+/******************************************************************************/
+                #endregion
+                questData.Add(item.id, item);
+            }
+            #endregion
+        }
+        {
+            #region static Reward
+            var data = InitTable<RewardStaticData>("reward");
+            foreach (var item in data)
+            {
+                RewardData reward = new RewardData();
+                reward.id = item.id;
+                reward.itemList = new List<RewardItemData>();
 
-				if(!string.IsNullOrEmpty(item.enemy4))
-					item.enemyList.Add(item.enemy4);
+                string[] rewardList = item.reward.Split(',');
+                for (int i = 0; i < rewardList.Length; i++)
+                {
+                    string[] rewardAttr = rewardList[i].Split('_');
 
-				if(!string.IsNullOrEmpty(item.enemy5))
-					item.enemyList.Add(item.enemy5);
+                    if ((PB.itemType)int.Parse(rewardAttr[0]) == PB.itemType.EQUIP)
+                    {
+                        if (rewardAttr.Length != 6) continue;
+                    }
+                    else if (rewardAttr.Length != 4) continue;
 
-				if(!string.IsNullOrEmpty(item.enemy6))
-					item.enemyList.Add(item.enemy6);
-
-				if(item.reward1 > 0)
-					item.rewardList.Add(item.reward1);
-
-				if(item.reward2 > 0)
-					item.rewardList.Add(item.reward2);
-
-				if(item.reward3 > 0)
-					item.rewardList.Add(item.reward3);
-				
-				if(item.reward4 > 0)
-					item.rewardList.Add(item.reward4);
-				
-				if(item.reward5 > 0)
-					item.rewardList.Add(item.reward5);
-				
-				if(item.reward6 > 0)
-					item.rewardList.Add(item.reward6);
-
-
-				instanceEntryData.Add(item.id,item);
-			}
-		}
-
-		{
-			var data = InitTable<ItemStaticData>("item");
-			foreach(var item in data)
-				itemData.Add(item.id,item);
-		}
-
-		{
-			var data = InitTable<PlayerLevelAttr>("playerAttr");
-			foreach(var item in data)
-				playerLevelAttr.Add(item.level,item);
-		}
-	}
+                    RewardItemData rewardItem=null;
+                    switch ((PB.itemType)int.Parse(rewardAttr[0]))
+                    {
+                        case PB.itemType.NONE_ITEM:
+                            break;
+                        case PB.itemType.PLAYER_ATTR:
+                        case PB.itemType.MONSTER_ATTR:
+                            rewardItem = new RewardItemData(int.Parse(rewardAttr[0]),
+                                                        int.Parse(rewardAttr[1]),
+                                                        int.Parse(rewardAttr[2]),
+                                                        float.Parse(rewardAttr[3]));
+                            break;
+                        case PB.itemType.ITEM:
+                            rewardItem = new RewardItemData(int.Parse(rewardAttr[0]),
+                                                        int.Parse(rewardAttr[1]),
+                                                        int.Parse(rewardAttr[2]),
+                                                        float.Parse(rewardAttr[3]));
+                            break;
+                        case PB.itemType.EQUIP:
+                            rewardItem = new RewardItemData(int.Parse(rewardAttr[0]),
+                                                        int.Parse(rewardAttr[1]),
+                                                        int.Parse(rewardAttr[2]),
+                                                        int.Parse(rewardAttr[3]),
+                                                        int.Parse(rewardAttr[4]),
+                                                        float.Parse(rewardAttr[5]));
+                            break;
+                        case PB.itemType.SKILL:
+                            break;
+                        case PB.itemType.GROUP:
+                            break;
+                        case PB.itemType.MONSTER:
+                            break;
+                        default:
+                            Logger.Log("not found this itemType");
+                            break;
+                    }
+                    if (rewardItem != null)
+                    {
+                        //Logger.Log("\nitemType :" + rewardItem.itemType + "\nitemId :" + rewardItem.itemId + "\ncount :" + rewardItem.count + "\nstage :" + rewardItem.stage + "\nlevel :" + rewardItem.level + "\nprob :" + rewardItem.prob);
+                        reward.itemList.Add(rewardItem);
+                    }
+                }
+                rewardData.Add(reward.id, reward);
+            }
+            #endregion
+        }
+        {
+            #region static Time
+            var data = InitTable<TimeStaticData>("time");
+            foreach (var item in data)
+            {
+                timeData.Add(item.type, item);
+            }
+            #endregion
+        }
+    }
 
     List<T> InitTable<T>(string filename) where T : new()
     {
@@ -434,7 +431,24 @@ public class StaticDataMgr : MonoBehaviour
 
     public InstanceData GetInstanceData(string id)
     {
-        return instanceData[id];
+        InstanceData data;
+        if (instanceData.TryGetValue(id, out data))
+        {
+            return data;
+        }
+
+        return null;
+    }
+
+    public BattleLevelData GetBattleLevelData(string id)
+    {
+        BattleLevelData blData;
+        if (battleLevelData.TryGetValue(id, out blData))
+        {
+            return blData;
+        }
+
+        return null;
     }
 
 	public LazyData GetLazyData(int index)
@@ -493,6 +507,28 @@ public class StaticDataMgr : MonoBehaviour
 		playerLevelAttr.TryGetValue (level, out levelAttr);
 		return levelAttr;
 	}
+
+    public QuestStaticData GetQuestData(int id)
+    {
+        QuestStaticData item = null;
+        questData.TryGetValue(id, out item);
+        return item;
+    }
+
+    public RewardData GetRewardData(int id)
+    {
+        RewardData item = null;
+        rewardData.TryGetValue(id, out item);
+        return item;
+    }
+
+    public TimeStaticData GetTimeData(int id)
+    {
+        TimeStaticData item = null;
+        timeData.TryGetValue(id, out item);
+        return item;
+    }
+
 
     #endregion
 }

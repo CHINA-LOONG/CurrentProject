@@ -49,7 +49,8 @@ public class EffectSearch : Effect
             if (bo == null || bo.unit.isVisible == false || bo.unit.State == UnitState.Dead)
                 continue;
 
-            List<string> wpList = WeakPointController.Instance.GetAiCanAttackWeakpointList(bo.unit);
+           // List<string> wpList = WeakPointController.Instance.GetAiCanAttackWeakpointList(bo.unit);
+			List<string> wpList = bo.wpGroup.GetAiCanAttackList();
             if (wpList.Count == 0)
             {
                 Effect curEffect = spellService.GetEffect(searchProt.effectID);

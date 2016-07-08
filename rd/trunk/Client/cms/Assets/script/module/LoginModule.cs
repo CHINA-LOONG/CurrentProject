@@ -77,7 +77,7 @@ public class LoginModule : ModuleBase
 		UIMgr.Instance.OpenUI (UILogin.AssertName, UILogin.ViewName);
 	}
 	
-	public override void OnEnter(ModuleBase prevModule, object param)
+	public override void OnEnter(object param)
 	{
 		BindListener();
 	}
@@ -87,7 +87,7 @@ public class LoginModule : ModuleBase
 		
 	}
 	
-	public override void OnExit(ModuleBase nextModule)
+	public override void OnExit()
 	{
 		UnBindListener();
 	}	

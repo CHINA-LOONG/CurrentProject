@@ -37,6 +37,7 @@ public class UIBattle : UIBase
     public BattleGroupUI m_PlayerGroupUI;
     public PetSwitchPage m_PetPanel;
     public DazhaoTip dazhaoTip;
+    public Text levelIndex;
 
     public Sprite victorySprite;
     public Sprite failedSprite;
@@ -103,6 +104,11 @@ public class UIBattle : UIBase
         UnBindListener();
     }
 
+    public void SetBattleLevelProcess(int curIndex, int maxIndex)
+    {
+        levelIndex.text = curIndex.ToString() + "/" + maxIndex.ToString();
+    }
+
     public void ShowStartBattleUI()
     {
         //GameObject starBattlePrefab = ResourceMgr.Instance.LoadAsset("ui/battle", "startBattle") as GameObject;
@@ -160,7 +166,7 @@ public class UIBattle : UIBase
         //GameObject prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "VitalChange");
         GameObject go = ResourceMgr.Instance.LoadAsset("ui/battle", "VitalChange");
         UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
-        uiVitalChangeView.ShowVitalChange(lifeChange, gameObject.transform as RectTransform);
+        uiVitalChangeView.ShowVitalChange(lifeChange, UIMgr.Instance.gameObject.transform as RectTransform);
     }
 
     public void ChangeEnergy(SpellVitalChangeArgs energyChange)
@@ -174,12 +180,12 @@ public class UIBattle : UIBase
     }
 
 	public void ShowUI(bool ishow)
-	{
+    {
+        //if (ishow == false)
+        //{
+        //    gameObject.BroadcastMessage("OnAnimationFinish", SendMessageOptions.DontRequireReceiver);
+        //}
 		gameObject.SetActive (ishow);
-        if (ishow == false)
-        {
-            gameObject.BroadcastMessage("OnAnimationFinish", SendMessageOptions.DontRequireReceiver);
-        }
 	}
 
     void Update()
@@ -192,8 +198,6 @@ public class UIBattle : UIBase
 			                     PhyDazhaoController.Instance.DazhaoAllCount);
         }
     }
-
-
 
     void BindListener()
     {

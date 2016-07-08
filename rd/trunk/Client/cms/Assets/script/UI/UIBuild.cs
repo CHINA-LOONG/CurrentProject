@@ -7,12 +7,11 @@ public class UIBuild : UIBase
     public static string ViewName = "UIBuild";
 	public static string AssertName = "ui/build";
 
-    public Button m_NormalBattleButton;
-    public Button m_BossBattleButton;
-    public Button m_RareBattleButton;
     public Button m_PatButton;
     public Button m_ItemButton;
 	public	Button	instanceButton;
+
+    public Button m_QuestButton;
 
 	public Text levelText;
 	public Text coinText;
@@ -21,12 +20,11 @@ public class UIBuild : UIBase
     // Use this for initialization
     void Start()
     {
-        EventTriggerListener.Get(m_NormalBattleButton.gameObject).onClick = NormalBattleButtonClick;
-        EventTriggerListener.Get(m_BossBattleButton.gameObject).onClick = BossBattleButtonClick;
-        EventTriggerListener.Get(m_RareBattleButton.gameObject).onClick = RareBattleButtonClick;
         EventTriggerListener.Get(m_PatButton.gameObject).onClick = PatButtonClick;
         EventTriggerListener.Get(m_ItemButton.gameObject).onClick = ItemButtonClick;
 		EventTriggerListener.Get (instanceButton.gameObject).onClick = OnInstanceButtonClick;
+        EventTriggerListener.Get(m_QuestButton.gameObject).onClick = OnQuestButtonClick;
+        
 
         //levelText.text = GameDataMgr.Instance.PlayerDataAttr.level.ToString ();
         //coinText.text = GameDataMgr.Instance.PlayerDataAttr.coin.ToString ();
@@ -66,25 +64,6 @@ public class UIBuild : UIBase
 		coinText.text = coin.ToString ();
 	}
 
-    void NormalBattleButtonClick(GameObject go)
-    {
-        var proto = BattleTest.GenerateNormalProto("demo");
-        GameEventMgr.Instance.FireEvent<PbStartBattle>(GameEventList.BattleBtnClick, proto);
-    }
-
-    void BossBattleButtonClick(GameObject go)
-    {
-        var proto = BattleTest.GenerateBossProto("demo");
-        GameEventMgr.Instance.FireEvent<PbStartBattle>(GameEventList.BattleBtnClick, proto);
-    }
-
-    void RareBattleButtonClick(GameObject go)
-    {
-       // var proto = BattleTest.GenerateRareProto("demo");
-		var proto = BattleTest.GenerateHundunBossProto("demo");
-        GameEventMgr.Instance.FireEvent<PbStartBattle>(GameEventList.BattleBtnClick, proto);
-    }
-
     void ItemButtonClick(GameObject go)
     {
         UIMgr.Instance.OpenUI(UIBag.AssertName, UIBag.ViewName);
@@ -104,6 +83,11 @@ public class UIBuild : UIBase
 
 		UIMgr.Instance.OpenUI (UIInstance.AssertName, UIInstance.ViewName);
 	}
+
+    void OnQuestButtonClick(GameObject go)
+    {
+        UIMgr.Instance.OpenUI(UIQuest.AssertName,UIQuest.ViewName);
+    }
 
 	void OnCachMonsterFinished(ProtocolMessage msg)
 	{

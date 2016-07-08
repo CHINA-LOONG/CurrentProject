@@ -52,6 +52,14 @@ public class NetworkManager : MonoBehaviour
 				{ 
 					ProtocolMessage pmsg = _event.Value;
 					Logger.Log("receiv msg : " + pmsg.GetMessageType());
+					if(pmsg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+					{
+						PB.HSErrorCode errorCode = pmsg.GetProtocolBody<PB.HSErrorCode>();
+						if(errorCode != null)
+						{
+							Logger.LogError("error for net request :error code = " + errorCode.errCode);
+						}
+					}
 					GameEventMgr.Instance.FireEvent<ProtocolMessage>(pmsg.GetMessageType().ToString(),pmsg);
 					UINetRequest.Close();
 				}

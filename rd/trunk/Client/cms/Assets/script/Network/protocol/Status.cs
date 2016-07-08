@@ -30,7 +30,10 @@ namespace PB
       ITEM_ERROR = 262144,
             
       [global::ProtoBuf.ProtoEnum(Name=@"QUEST_ERROR", Value=327680)]
-      QUEST_ERROR = 327680
+      QUEST_ERROR = 327680,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ERROR", Value=393216)]
+      INSTANCE_ERROR = 393216
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"error")]
@@ -146,6 +149,23 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"QUEST_NOT_OPEN", Value=327683)]
       QUEST_NOT_OPEN = 327683
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"instanceError")]
+    public enum instanceError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_NOT_OPEN", Value=393217)]
+      INSTANCE_NOT_OPEN = 393217,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_LEVEL", Value=393218)]
+      INSTANCE_LEVEL = 393218,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_COUNT", Value=393219)]
+      INSTANCE_COUNT = 393219,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_FATIGUE", Value=393220)]
+      INSTANCE_FATIGUE = 393220
     }
   
 }

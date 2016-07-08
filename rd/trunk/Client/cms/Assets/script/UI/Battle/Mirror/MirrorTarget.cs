@@ -6,6 +6,8 @@ public class MirrorTarget : MonoBehaviour
 	[SerializeField]
 	string	m_monsterWeakPointID;
 
+	public BattleObject battleObject = null;
+
 	public	string	WeakPointIDAttr
 	{
 		set
@@ -32,5 +34,18 @@ public class MirrorTarget : MonoBehaviour
 	void Start () 
 	{
 	  
+	}
+
+	public	WeakPointRuntimeData WpRuntimeData
+	{
+		get
+		{
+			if(null == battleObject || string.IsNullOrEmpty(m_monsterWeakPointID))
+				return null;
+
+			WeakPointRuntimeData wp = null;
+			battleObject.wpGroup.allWpDic.TryGetValue(m_monsterWeakPointID,out wp);
+			return wp;
+		}
 	}
 }

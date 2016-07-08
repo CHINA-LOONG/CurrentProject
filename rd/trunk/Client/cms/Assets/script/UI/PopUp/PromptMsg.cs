@@ -1,0 +1,48 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+namespace MsgBox
+{
+	public class PromptMsg : UIBase
+	{
+		public static string ViewName = "PromptMsg";
+		public static string AssertName = "ui/promptmsg";
+
+		public static	void Open(string title,string msg,string buttonName)
+		{
+			GameObject go =	UIMgr.Instance.OpenUI (PromptMsg.AssertName, PromptMsg.ViewName);
+			PromptMsg mInfo = go.GetComponent<PromptMsg> ();
+			mInfo.SetData (title, msg, buttonName);
+		}
+
+		public  Text 	titleText;
+		public	Text	msgText;
+		public	Button	titleButton;
+	
+		// Use this for initialization
+		void Start ()
+		{
+			EventTriggerListener.Get (titleButton.gameObject).onClick = OnClose;
+		}
+
+		public	void SetData(string title,string msg, string buttonName)
+		{
+			var buttonTitle = titleButton.GetComponentInChildren<Text> ();
+			if (null != buttonTitle) 
+			{
+				buttonTitle.text = buttonName;
+			}
+
+			titleText.text = title;
+			msgText.text = msg;
+		}
+
+		public void OnClose(GameObject go)
+		{
+			UIMgr.Instance.CloseUI (this);
+		}
+
+	}
+
+}

@@ -85,7 +85,12 @@ public class EffectDamage : Effect
             int damageAmount = 0;
             float spellLevelRatio = ownedSpell.level * ownedSpell.spellData.levelAdjust;
             //弱点
-            WeakPointData wp = null;
+			WeakPointRuntimeData wpRuntime = null;
+			if(!string.IsNullOrEmpty(wpID) )
+			{
+				target.battleUnit.wpGroup.allWpDic.TryGetValue(wpID,out wpRuntime);
+			}
+
             if (damageProto.isHeal == true)
             {
                 //治疗
@@ -99,9 +104,8 @@ public class EffectDamage : Effect
             }
             else
             {
-                wp = StaticDataMgr.Instance.GetWeakPointData(wpID);
 
-                float wpRatio = wp != null ? wp.damageRate : 1.0f;
+                float wpRatio = wpRuntime != null ? wpRuntime.damageRate : 1.0f;
 
                 //物理伤害
                 if (damageProto.damageType == SpellConst.damagePhy)
@@ -151,7 +155,7 @@ public class EffectDamage : Effect
                             break;
                     }
                     //五行相生相克系数
-                    int targetProp = wp != null ? wp.property : target.property;
+                    int targetProp = wpRuntime != null ? wpRuntime.property : target.property;
                     EffectDamageProtoType damagePt = protoEffect as EffectDamageProtoType;
                     propertyDamageRatio *= SpellFunctions.GetPropertyDamageRatio((int)(damagePt.damageProperty), targetProp);
 
@@ -173,17 +177,17 @@ public class EffectDamage : Effect
                 //    damageAmount = -1;
 
                 //弱点伤害计算
-                if (wp != null)
+                if (wpRuntime != null)
                 {
-                    target.OnDamageWeakPoint(wp.id, damageAmount, applyTime);
+                    target.OnDamageWeakPoint(wpRuntime.id, damageAmount, applyTime);
                 }
             }
 
             //没有弱点或者弱点属性关联伤害，则扣除/增加怪物血量
-            if (wp == null || wp.isDamagePoint == 1)
+            if (wpRuntime == null || wpRuntime.staticData.isDamagePoint == 1)
             {
                 target.curLife += damageAmount;
-                if (target.curLife < 0)
+                if (target.curLife <= 0)
                 {
                     target.curLife = 0;
                     SpellUnitDeadArgs args = new SpellUnitDeadArgs();
@@ -209,10 +213,10 @@ public class EffectDamage : Effect
                 args.vitalChange = damageAmount;
                 args.vitalCurrent = target.curLife;//TODO: need weak point life?
                 args.vitalMax = target.maxLife;
-                if (wp != null)
+                if (wpRuntime != null)
                 {
-                    args.wpID = wp.id;
-                    args.wpNode = wp.node;
+                    args.wpID = wpRuntime.id;
+                    args.wpNode = wpRuntime.staticData.node;
                 }
                 else 
                 {

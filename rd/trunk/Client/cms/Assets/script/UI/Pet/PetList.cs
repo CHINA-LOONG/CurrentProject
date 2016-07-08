@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class PetList : MonoBehaviour, TabButtonDelegate
@@ -16,6 +17,7 @@ public class PetList : MonoBehaviour, TabButtonDelegate
 
     public GameObject m_scrollRect = null;
     private GridLayoutGroup m_patContainer = null;
+    private List<GameUnit> typeList = new List<GameUnit>();
 
     // Use this for initialization
     void Start()
@@ -46,63 +48,71 @@ public class PetList : MonoBehaviour, TabButtonDelegate
         m_scrollRect.GetComponent<ScrollRect>().content = container.GetComponent<RectTransform>();
         m_patContainer = container.GetComponent<GridLayoutGroup>();
 
+        typeList.Clear();
+
         if (SortType.ALLTYPE == (SortType)index)
         {
-            foreach (BattleObject monsterObject in GameDataMgr.Instance.PlayerDataAttr.mainUnitList)
-            {
-                AddPatItme(monsterObject.unit);
-            }
+            List<GameUnit> list = GameDataMgr.Instance.PlayerDataAttr.GetAllPet();
+            typeList.AddRange(list);
+                 
         }
         else if (SortType.GOLDTYPE == (SortType)index)
         {
-            foreach (BattleObject monsterObject in GameDataMgr.Instance.PlayerDataAttr.mainUnitList)
+            foreach (GameUnit unit in GameDataMgr.Instance.PlayerDataAttr.GetAllPet())
             {
-                if (monsterObject.unit.property == SpellConst.propertyGold)
+                if (unit.property == SpellConst.propertyGold)
                 {
-                    AddPatItme(monsterObject.unit);
+                    typeList.Add(unit);
                 }
             }
         }
         else if (SortType.WOODTYPE == (SortType)index)
         {
-            foreach (BattleObject monsterObject in GameDataMgr.Instance.PlayerDataAttr.mainUnitList)
+            foreach (GameUnit unit in GameDataMgr.Instance.PlayerDataAttr.GetAllPet())
             {
-                if (monsterObject.unit.property == SpellConst.propertyWood)
+                if (unit.property == SpellConst.propertyWood)
                 {
-                    AddPatItme(monsterObject.unit);
+                    typeList.Add(unit);
                 }
             }
         }
         else if (SortType.WATERTYPE == (SortType)index)
         {
-            foreach (BattleObject monsterObject in GameDataMgr.Instance.PlayerDataAttr.mainUnitList)
+            foreach (GameUnit unit in GameDataMgr.Instance.PlayerDataAttr.GetAllPet())
             {
-                if (monsterObject.unit.property == SpellConst.propertyWater)
+                if (unit.property == SpellConst.propertyWater)
                 {
-                    AddPatItme(monsterObject.unit);
+                    typeList.Add(unit);
                 }
             }
         }
         else if (SortType.FIRETYPE == (SortType)index)
         {
-            foreach (BattleObject monsterObject in GameDataMgr.Instance.PlayerDataAttr.mainUnitList)
+            foreach (GameUnit unit in GameDataMgr.Instance.PlayerDataAttr.GetAllPet())
             {
-                if (monsterObject.unit.property == SpellConst.propertyFire)
+                if (unit.property == SpellConst.propertyFire)
                 {
-                    AddPatItme(monsterObject.unit); ;
+                    typeList.Add(unit); ;
                 }
             }
         }
         else if (SortType.EARTHTYPE == (SortType)index)
         {
-            foreach (BattleObject monsterObject in GameDataMgr.Instance.PlayerDataAttr.mainUnitList)
+            foreach (GameUnit unit in GameDataMgr.Instance.PlayerDataAttr.GetAllPet())
             {
-                if (monsterObject.unit.property == SpellConst.propertyEarth)
+                if (unit.property == SpellConst.propertyEarth)
                 {
-                    AddPatItme(monsterObject.unit);
+                    typeList.Add(unit);
                 }
             }
         }
+
+        typeList.Sort();
+
+        foreach (GameUnit unit in typeList)
+        {
+            AddPatItme(unit);
+        } 
     }
 
     void AddPatItme(GameUnit unit)
@@ -113,7 +123,7 @@ public class PetList : MonoBehaviour, TabButtonDelegate
             go.transform.localScale = Vector3.one;
             go.transform.SetParent(m_patContainer.transform, false);
             SinglePet patScript = go.GetComponent<SinglePet>();
-            patScript.guid = unit.pbUnit.guid;
+            patScript.unit = unit;
             patScript.ReloadPatData(unit);
             ScrollViewEventListener.Get(go).onClick = SinglePetClick;
         }
@@ -121,7 +131,6 @@ public class PetList : MonoBehaviour, TabButtonDelegate
 
     void SinglePetClick(GameObject go)
     {
-        Debug.Log(go.GetComponent<SinglePet>().guid);
-        UIMgr.Instance.OpenUI(UIPetDetail.AssertName, UIPetDetail.ViewName);
+        UIMgr.Instance.OpenUI(UIPetDetail.AssertName, UIPetDetail.ViewName).GetComponent<UIPetDetail>().SetTypeList(go.GetComponent<SinglePet>().unit, typeList);
     }
 }

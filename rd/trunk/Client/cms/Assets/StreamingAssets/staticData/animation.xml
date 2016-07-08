@@ -6,6 +6,11 @@ state = 1 Remove
 -->
 <AniGroupList>
 	<AniList group="common">
+		<Ani id = "level_change" state = "0" action_delay="0">
+			<ParticleList>
+				<Particle time= "0" asset="hot" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
 		<Ani id = "test_sequence" state = "0" action_delay="0">
 			<ControllerList>
 				<Controller time="0" name="monsters/hundun/boss_hundun_state2" />
@@ -27,6 +32,9 @@ state = 1 Remove
 			<MeshStateList>
 				<Mesh time="0" name="" state="show" />
 			</MeshStateList>
+			<WpStateList>
+				<Wp time="0" name="" state="" />
+			</WpStateList>
 		</Ani>
 		<Ani id="hundun_ruodian_4_dead" state="0" action_delay="2">
 			<ControllerList>
@@ -335,8 +343,7 @@ state = 1 Remove
 				<Particle asset="magicFireSlight" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="sound/dogmw" />
-				<Audio time="5" name="sound/forhorde" />
+				<Audio time="0" name="sound/forhorde" />
 			</AudioList>
 		</Ani>
 		

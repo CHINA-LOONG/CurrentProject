@@ -49,7 +49,12 @@ public class UIInstance : UIBase,TabButtonDelegate
 		GameObject go = ResourceMgr.Instance.LoadAsset ("ui/instanceinfo", "InstanceInfo");
 		go.transform.SetParent (infoLayer, false);
 		instanceInfo = go.GetComponent<InstanceInfo> ();
-		instanceInfo.SetShow (false);
+        instanceInfo.SetShow(false);
+
+        //test only(重置副本)
+        PB.HSInstanceResetCount resetCount = new PB.HSInstanceResetCount();
+        resetCount.instanceId = "demo";
+        GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_RESET_COUNT_C.GetHashCode(), resetCount);
 	}
 
 

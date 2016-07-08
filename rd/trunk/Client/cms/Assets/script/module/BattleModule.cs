@@ -13,13 +13,13 @@ public class BattleModule : ModuleBase
 
     void BindListener()
     {
-        GameEventMgr.Instance.AddListener<PbStartBattle>(GameEventList.StartBattle, controller.StartBattle);
+        //GameEventMgr.Instance.AddListener<PbStartBattle>(GameEventList.StartBattle, controller.StartBattle);
         //GameEventMgr.Instance.AddListener(GameEventList.ShowBattleUI, OnShowBattleUI);
     }
 
     void UnBindListener()
     {
-        GameEventMgr.Instance.RemoveListener<PbStartBattle>(GameEventList.StartBattle, controller.StartBattle);
+        //GameEventMgr.Instance.RemoveListener<PbStartBattle>(GameEventList.StartBattle, controller.StartBattle);
         //GameEventMgr.Instance.RemoveListener(GameEventList.ShowBattleUI, OnShowBattleUI);
     }
 
@@ -48,9 +48,15 @@ public class BattleModule : ModuleBase
 		dazhaoFocusController = gameObject.AddComponent<DazhaofocusController> ();
     }
 
-    public override void OnEnter(ModuleBase prevModule, object param)
+    public override void OnEnter(object param)
     {
         BindListener();
+        EnterInstanceParam enterParam = param as EnterInstanceParam;
+        if (enterParam != null)
+        {
+            //StartCoroutine(LoadResource());
+            controller.StartBattle(enterParam);
+        }
         //var ui = UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
         //ui.GetComponent<UIBattle>().Init();
     }
@@ -60,7 +66,13 @@ public class BattleModule : ModuleBase
 
     }
 
-    public override void OnExit(ModuleBase nextModule)
+    public override IEnumerator LoadResource()
+    {
+        //ResourceMgr.Instance.loa
+        yield return null;
+    }
+
+    public override void OnExit()
     {
         UnBindListener();
         Destroy(controller);

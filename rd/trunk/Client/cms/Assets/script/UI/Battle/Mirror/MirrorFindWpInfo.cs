@@ -28,6 +28,10 @@ public class MirrorFindWpInfo : MonoBehaviour
 
 	public	void Show(MirrorTarget wpTarget,int offsetX, int offsetY)
 	{
+		WeakPointRuntimeData wpRuntime = wpTarget.WpRuntimeData;
+		if (null == wpRuntime)
+			return;
+
 		Vector2 wpPostion =  BattleCamera.Instance.CameraAttr.WorldToScreenPoint (wpTarget.gameObject.transform.position);
 		wpPostion.x = wpPostion.x / UIMgr.Instance.CanvasAttr.scaleFactor ;
 		wpPostion.y = wpPostion.y / UIMgr.Instance.CanvasAttr.scaleFactor ; 
@@ -37,7 +41,7 @@ public class MirrorFindWpInfo : MonoBehaviour
 		rectTrans.anchoredPosition = tipPostion;
 		//wpInfoText.text = wpTarget.WeakPointIDAttr;
 
-		int property = WeakPointController.Instance.GetProperty(wpTarget);
+		int property = wpRuntime.property;
 		var image = ResourceMgr.Instance.LoadAssetType<Sprite>("ui/property", "property_" + property) as Sprite;
 		if(image != null)
 		{

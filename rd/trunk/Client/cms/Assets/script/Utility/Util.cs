@@ -130,7 +130,19 @@ public class Util
 	/// <param name="name">Name.</param>
 	public static GameObject FindChildByName(GameObject go, string name)
 	{
-		Transform[] trans = go.GetComponentsInChildren<Transform> ();
+        if (go == null)
+        {
+            return null;
+        }
+
+        //use transform.find() first,since sometimes the node has same name with different parent, we find them use exact address
+        Transform curTran = go.transform.Find(name);
+        if (curTran != null)
+        {
+            return curTran.gameObject;
+        }
+
+		Transform[] trans = go.transform.GetComponentsInChildren<Transform> (true);
 		foreach (Transform tran in trans)
 		{
 			if (tran.name == name) 
@@ -251,16 +263,16 @@ public class Util
     public static string ConvertProperty(int property)
     {
         if (property == SpellConst.propertyGold)
-            return "金属性";
+            return "金";
         else if (property == SpellConst.propertyWood)
-            return "木属性";
+            return "木";
         else if (property == SpellConst.propertyWater)
-            return "水属性";
+            return "水";
         else if (property == SpellConst.propertyFire)
-            return "火属性";
+            return "火";
         else if (property == SpellConst.propertyEarth)
-            return "土属性";
+            return "土";
 
-        return "无属性";
+        return "无";
     }
 }

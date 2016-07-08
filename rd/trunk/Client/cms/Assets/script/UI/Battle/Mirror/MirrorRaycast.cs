@@ -25,63 +25,28 @@ public class MirrorRaycast : MonoBehaviour
 				continue;
 			}
 			MirrorTarget bestTarget = null;
-			List<MirrorTarget> listFind  = RaycastFromAllWeakpoint(subUnit.unit,startPosInScreen,GameConfig.Instance.MirrorRadius*UIMgr.Instance.CanvasAttr.scaleFactor , out bestTarget);
+			List<MirrorTarget> listFind = RaycastWeakPoint(subUnit,startPosInScreen,GameConfig.Instance.MirrorRadius*UIMgr.Instance.CanvasAttr.scaleFactor,out bestTarget);
 			returnList.AddRange(listFind);
 		}
 		return returnList;
 	}
 
-	public static	MirrorTarget RaycastFirFocusWeakpoint( GameUnit gameUnit,Vector3 inputScreenPos,float maxDistance)
-	{
-		Dictionary<string,GameObject> weakpointDumpDic = new Dictionary<string, GameObject> ();
-		List<string> attackWpList = WeakPointController.Instance.GetFireFocusAttackWeakpointList (gameUnit);
-		if (null != attackWpList)
-		{
-			foreach(string subWp in attackWpList)
-			{
-				GameObject go = null;
-				if(gameUnit.weakPointDumpDic.TryGetValue(subWp,out go))
-				{
-					weakpointDumpDic.Add(subWp, go);
-				}
-			}
-		}
-		MirrorTarget bestTarget = null;
-		RaycastWeakPoint (gameUnit, inputScreenPos, maxDistance, weakpointDumpDic,out bestTarget);
-		return bestTarget;
-	}
-
-	public static	List<MirrorTarget> RaycastFromAllWeakpoint(GameUnit gameUnit, Vector3 startPosInScreen, float maxDistance,out MirrorTarget bestTarget)
-	{
-		Dictionary<string,GameObject> weakpointDumpDic = gameUnit.weakPointDumpDic;
-
-		return RaycastWeakPoint (gameUnit, startPosInScreen, maxDistance, weakpointDumpDic,out bestTarget);
-	}
-
-	private  static	List<MirrorTarget> RaycastWeakPoint(GameUnit gameUnit,Vector3 startPosInScreen,float maxDistance,Dictionary<string,GameObject> weakpointDumpDic,out MirrorTarget bestTarget)
+	private  static	List<MirrorTarget> RaycastWeakPoint(BattleObject bo,Vector3 startPosInScreen,float maxDistance,out MirrorTarget bestTarget)
 	{
 		List<MirrorTarget> allFindTarget  = new List<MirrorTarget>();
 		bestTarget = null;
 		GameObject subWeakpointObj = null;
 
-		foreach(KeyValuePair<string,GameObject> subWeak in weakpointDumpDic)
+
+		foreach(KeyValuePair<string,WeakPointRuntimeData> subWeak in bo.wpGroup.allWpDic)
 		{
-			WeakPointRuntimeData wpHp = null;
-			if(gameUnit.wpHpList.TryGetValue(subWeak.Key, out wpHp))
-			{
-				if(wpHp.hp < 1)
-				{
-					continue;
-				}
-			}
-
-			subWeakpointObj = subWeak.Value;
-			MirrorTarget mTarget = subWeakpointObj.GetComponent<MirrorTarget>();
-
-			if(!gameUnit.isVisible && !mTarget.isSelf)
+			WeakPointRuntimeData wpRuntimeData = subWeak.Value;
+			if(!wpRuntimeData.IsCanMirror())
 			{
 				continue;
 			}
+			subWeakpointObj = wpRuntimeData.wpMirrorTarget.gameObject;
+			MirrorTarget mTarget = wpRuntimeData.wpMirrorTarget;
 
 
 			Vector2	dumpPos = RectTransformUtility.WorldToScreenPoint(BattleCamera.Instance.CameraAttr,subWeakpointObj.transform.position);
