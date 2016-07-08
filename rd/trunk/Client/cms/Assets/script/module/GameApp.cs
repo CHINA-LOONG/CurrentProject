@@ -62,9 +62,10 @@ public class GameApp : MonoBehaviour
         StaticDataMgr.Instance.Init();
         ObjectDataMgr.Instance.Init();
         GameDataMgr.Instance.Init();
+        StatisticsDataMgr.Instance.Init();
 		LayerConst.Init ();
         //NetMgr.Instance.Init();
-       
+        
         UIMgr.Instance.Init();
         GameMain.Instance.Init();
         SpellService.Instance.Init();

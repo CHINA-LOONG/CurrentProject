@@ -38,7 +38,7 @@ public class NetworkManager : MonoBehaviour
 				case ResponseState.Connect:
 					GameEventMgr.Instance.FireEvent<int>(NetEventList.NetConnectFinished,1);
 					UINetRequest.Close();
-					break;
+					break; 
 				case ResponseState.UnConnect:
 					GameEventMgr.Instance.FireEvent<int>(NetEventList.NetConnectFinished,0);
 					break;
@@ -52,16 +52,27 @@ public class NetworkManager : MonoBehaviour
 				{ 
 					ProtocolMessage pmsg = _event.Value;
 					Logger.Log("receiv msg : " + pmsg.GetMessageType());
-					if(pmsg.GetMessageType() == (int)PB.sys.ERROR_CODE)
-					{
-						PB.HSErrorCode errorCode = pmsg.GetProtocolBody<PB.HSErrorCode>();
-						if(errorCode != null)
-						{
-							Logger.LogError("error for net request :error code = " + errorCode.errCode);
-						}
-					}
-					GameEventMgr.Instance.FireEvent<ProtocolMessage>(pmsg.GetMessageType().ToString(),pmsg);
-					UINetRequest.Close();
+                    if (pmsg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+                    {
+                        PB.HSErrorCode errorCode = pmsg.GetProtocolBody<PB.HSErrorCode>();
+
+                        if (errorCode != null)
+                        {
+                            if (GameEventMgr.Instance.IsListenEvent(errorCode.hpCode.ToString()) == true)
+                            {
+                                GameEventMgr.Instance.FireEvent<ProtocolMessage>(errorCode.hpCode.ToString(), pmsg);
+                            }
+                            else
+                            {
+                                Logger.LogError("error for net request :error code = " + errorCode.errCode);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        GameEventMgr.Instance.FireEvent<ProtocolMessage>(pmsg.GetMessageType().ToString(), pmsg);
+                    }
+					
 				}
 					break;
                 default:
@@ -98,16 +109,19 @@ public class NetworkManager : MonoBehaviour
     /// <summary>
     /// ·¢ËÍSOCKETÏûÏ¢
     /// </summary>
-	public void SendMessage(ProtocolMessage buffer)
+    public void SendMessage(ProtocolMessage buffer, bool showMask = true)
     {
         SocketClient.SendMessage(buffer);
-		UINetRequest.Open ();
+        if (showMask)
+        {
+            UINetRequest.Open();
+        }
     }
 
-	public void SendMessage(int messageType, ProtoBuf.IExtensible builder)
+	public void SendMessage(int messageType, ProtoBuf.IExtensible builder, bool showMask = true)
 	{
 		ProtocolMessage pbmsg = ProtocolMessage.Create (messageType, builder);
-		SendMessage (pbmsg);
+		SendMessage (pbmsg, showMask);
 	}
 
     /// <summary>

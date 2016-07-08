@@ -41,6 +41,13 @@ message HSEquipBuy
 	optional int32 level = 4;
 }
 
+// 装备购买道具
+message HSEquipBuyRet
+{
+	required int32 equipId = 1;	
+	required int32 equipCount = 2;
+}
+
 // 合成装备
 message HSEquipCompose
 {

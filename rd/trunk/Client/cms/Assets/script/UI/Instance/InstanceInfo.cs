@@ -47,7 +47,14 @@ public class InstanceInfo : MonoBehaviour
 
 		int allAttackCount = data.staticData.count;
 		int leftCount = allAttackCount - data.countDaily;
-		attackCountText.text = "可挑战次数: " + leftCount.ToString() + "/" + allAttackCount.ToString() ;
+		if (allAttackCount < 1)
+		{
+			attackCountText.text = "";
+		} 
+		else
+		{
+			attackCountText.text = "可挑战次数: " + leftCount.ToString () + "/" + allAttackCount.ToString ();
+		}
 		clearCountText.text = "todo:扫荡券数量";
 
 		SetEnemy (data.staticData);
@@ -111,7 +118,13 @@ public class InstanceInfo : MonoBehaviour
 		}
 
 		unitIcon.SetMonsterStaticId (monsterId);
-		unitIcon.SetLevel (20 + index);
+		unitIcon.SetLevel (instanceData.staticData.level);
+		unitIcon.SetStage (1);
+		if (unitData.assetID.Contains("boss_"))
+		{
+			unitIcon.ShowBossItem(true);
+		}
+		//unitIcon.SetName (unitData.nickName);
 	}
 
 	void SetReward(InstanceEntry entryData)
@@ -172,7 +185,7 @@ public class InstanceInfo : MonoBehaviour
 	{
 		GameObject uiGo =  UIMgr.Instance.OpenUI (UIAdjustBattleTeam.AssertName, UIAdjustBattleTeam.ViewName);
 		var adjustUi = uiGo.GetComponent<UIAdjustBattleTeam> ();
-		adjustUi.SetData (instanceData.instanceId, instanceData.staticData.enemyList);
+		adjustUi.SetData (instanceData.instanceId, instanceData.staticData.enemyList,instanceData.staticData.level);
 	}
 
 }

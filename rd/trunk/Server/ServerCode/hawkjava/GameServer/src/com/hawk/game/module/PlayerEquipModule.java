@@ -17,6 +17,7 @@ import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Equip.HSEquipBuy;
 import com.hawk.game.protocol.Const;
+import com.hawk.game.protocol.Equip.HSEquipBuyRet;
 import com.hawk.game.protocol.Equip.HSEquipIncreaseLevel;
 import com.hawk.game.protocol.Equip.HSEquipIncreaseLevelRet;
 import com.hawk.game.protocol.Equip.HSEquipIncreaseStage;
@@ -110,14 +111,14 @@ public class PlayerEquipModule extends PlayerModule{
 
 	public void onEquipBuy(int hsCode, HSEquipBuy protocol)
 	{
-		int equip = protocol.getEquipId();
+		int equid = protocol.getEquipId();
 		int equipCount = protocol.getEquipCount();
-		if (equip <= 0 || equipCount <= 0) {
+		if (equid <= 0 || equipCount <= 0) {
 			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return ;
 		}
 		
-		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equip);
+		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equid);
 		if(itemCfg == null) {
 			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
 			return ;
@@ -143,9 +144,14 @@ public class PlayerEquipModule extends PlayerModule{
 		
 		AwardItems awardItems = new AwardItems();
 		for (int i = 0; i < equipCount; i++) {
-			awardItems.addEquip(equip, protocol.getStage(), equipCount, protocol.getLevel());
+			awardItems.addEquip(equid, protocol.getStage(), equipCount, protocol.getLevel());
 		}
 		awardItems.rewardTakeAffectAndPush(player, Action.EQUIP_BUY);
+		
+		HSEquipBuyRet.Builder response = HSEquipBuyRet.newBuilder();
+		response.setEquipCount(equipCount);
+		response.setEquipId(equid);
+		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_BUY_S_VALUE, response));
 	}
 
 	public void onEquipIncreaseLevel(int hsCode, HSEquipIncreaseLevel protocol)
@@ -173,7 +179,7 @@ public class PlayerEquipModule extends PlayerModule{
 	
 		ConsumeItems consume = new ConsumeItems();
 		consume.addItemInfos(EquipAttr.getDemandList(equipEntity.getItemId(), equipEntity.getStage(), equipEntity.getLevel() + 1));
-		if (consume.checkConsume(player) == false) {
+		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}
 	
@@ -223,7 +229,7 @@ public class PlayerEquipModule extends PlayerModule{
 		
 		ConsumeItems consume = new ConsumeItems();
 		consume.addItemInfos(EquipAttr.getDemandList(equipEntity.getItemId(), equipEntity.getStage() + 1, 0));
-		if (consume.checkConsume(player) == false) {
+		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}
 	

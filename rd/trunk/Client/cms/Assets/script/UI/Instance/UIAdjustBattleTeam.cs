@@ -27,6 +27,7 @@ public class UIAdjustBattleTeam : UIBase
 
 	private string instanceId  = null;
 	private	List<string>	enemyList =null;
+	private int enemyLevel = 1;
 
 	private	List<string> teamList;
 	private int prepareIndex = -1;//准备上阵的空位索引
@@ -51,17 +52,20 @@ public class UIAdjustBattleTeam : UIBase
 	void BindListener()
 	{
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.INSTANCE_ENTER_S.GetHashCode ().ToString(), OnRequestEnterInstanceFinished);
-	}
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
+    }
 	
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.INSTANCE_ENTER_S.GetHashCode ().ToString (), OnRequestEnterInstanceFinished);
-	}
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
+    }
 
-	public	void	SetData(string instanceId,List<string>enmeyList)
+	public	void	SetData(string instanceId,List<string>enmeyList,int enemyLevel)
 	{
 		this.instanceId = instanceId;
 		this.enemyList = enmeyList;
+		this.enemyLevel = enemyLevel;
 		StartCoroutine( RefreshUICo ());
 	}
 	
@@ -92,6 +96,28 @@ public class UIAdjustBattleTeam : UIBase
 				rectTrans.localScale  = new Vector3(0.6f,0.6f,0.6f);
 
 				subIcon.SetMonsterStaticId(monsterId);
+				subIcon.SetStage(1);
+				subIcon.SetLevel(enemyLevel);
+
+				UnitData unitRow = StaticDataMgr.Instance.GetUnitRowData(monsterId);
+				if(unitRow != null)
+				{
+					if(unitRow.assetID.Contains("boss_"))
+					{
+						subIcon.ShowBossItem(true);
+						RectTransform rt = subBg.transform as RectTransform;
+						Vector2 oldPivot = rt.pivot;
+						Vector2 newPivot = new Vector2(0,1);
+						Vector2 newpos = new Vector2(0,0);
+						newpos.x = rt.anchoredPosition.x - (oldPivot.x - newPivot.x)*rt.sizeDelta.x;
+						newpos.y = rt.anchoredPosition.y -(oldPivot.y -newPivot.y)*rt.sizeDelta.y;
+
+						rt.pivot = newPivot;
+						rt.anchoredPosition = newpos;
+						float scale = GameConfig.Instance.BossEnemyIconScale;
+						subBg.transform.localScale = new Vector3(scale, scale, scale);
+					}
+				}
 				
 				EventTriggerListener.Get(subIcon.iconButton.gameObject).onClick = OnEnmeyIconClick;
 				subBg.gameObject.SetActive(true);
@@ -149,6 +175,8 @@ public class UIAdjustBattleTeam : UIBase
 				
 				subIcon.SetId(guid);
 				subIcon.SetMonsterStaticId(unit.pbUnit.id);
+				subIcon.SetLevel(unit.pbUnit.level);
+				subIcon.SetStage(unit.pbUnit.starLevel);
 				
 				EventTriggerListener.Get(subIcon.iconButton.gameObject).onClick = OnPlayerTeamIconClick;
 			}
@@ -172,12 +200,15 @@ public class UIAdjustBattleTeam : UIBase
 			scrollView.AddElement(icon.gameObject);
 			icon.SetMonsterStaticId(monsterId);
 			icon.SetId(subUnit.pbUnit.guid.ToString());
+			icon.SetLevel(subUnit.pbUnit.level);
+			icon.SetStage(subUnit.pbUnit.starLevel);
 
 			playerAllIconDic.Add(icon.Id,icon);
 
 			if(teamList.Contains(subUnit.pbUnit.guid.ToString()))
 			{
 				icon.ShowSelectImage(true);
+				icon.ShowMaskImage();
 			}
 		}
 	}
@@ -212,14 +243,18 @@ public class UIAdjustBattleTeam : UIBase
 			PlayerWarehouseToBattleTeam(micon.Id);
 		}
 		micon.ShowSelectImage (!isSel);
+		micon.ShowMaskImage (!isSel);
 	}
 
 	void OnPlayerWarehouseIconPressEnter(GameObject go)
 	{
 		MonsterIcon micon = go.GetComponentInParent<MonsterIcon> ();
 
-		string guid = micon.Id;
-		UIMonsterInfo.Open (int.Parse(guid), micon.monsterId);
+		int guid = int.Parse(micon.Id);
+		GameUnit unit = null;
+
+		GameDataMgr.Instance.PlayerDataAttr.allUnitDic.TryGetValue (guid, out unit);
+		UIMonsterInfo.Open (guid, micon.monsterId,unit.pbUnit.level,unit.pbUnit.starLevel);
 	}
 
 	void	OnFriendWarehouseIconClick(GameObject go)
@@ -233,7 +268,7 @@ public class UIAdjustBattleTeam : UIBase
 
 		string monsterId = mIcon.monsterId;
 
-		UIMonsterInfo.Open (-1, monsterId);
+		UIMonsterInfo.Open (-1, monsterId,enemyLevel,1);
 	}
 
 	#region 上阵 --下阵
@@ -259,6 +294,8 @@ public class UIAdjustBattleTeam : UIBase
 
 		GameUnit unit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey (int.Parse (guid));
 		subIcon.SetMonsterStaticId (unit.pbUnit.id);
+		subIcon.SetLevel (unit.pbUnit.level);
+		subIcon.SetStage (unit.pbUnit.starLevel);
 
 		//新的prepareindex
 		UpdatePrepareIndex ();
@@ -269,6 +306,7 @@ public class UIAdjustBattleTeam : UIBase
 	{
 		MonsterIcon playerIcon = playerAllIconDic [guid];
 		playerIcon.ShowSelectImage (false);
+		playerIcon.ShowMaskImage (false);
 
 		MonsterIconBg subBg = null;
 		for (int i =0; i<playerTeamBg.Count; ++i) 
@@ -394,6 +432,13 @@ public class UIAdjustBattleTeam : UIBase
 
 	void OnRequestEnterInstanceFinished(ProtocolMessage msg)
 	{
+        UINetRequest.Close();
+
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        
 		var responseData =  msg.GetProtocolBody<PB.HSInstanceEnterRet> ();
 		enterInstanceParam.instanceData = responseData;
         //TODO:

@@ -11,7 +11,9 @@ public class UIPetDetail : UIBase{
     public Button m_closeButton;
 
     public PetDetailLeft m_leftView;
-    public PetDetailRight m_rightView;
+    public GameObject m_rightContainer;
+
+    private PetDetailRight m_rightView = null;
 
     private GameObject m_cameRaObject;
     public Button m_preButton;
@@ -20,6 +22,8 @@ public class UIPetDetail : UIBase{
     public Button m_skillButton;
     public Button m_attrButton;
     public Button m_stageButton;
+    public Button m_advanceButton;
+    public Button m_equipButton;
 
     private List<GameUnit> m_curTypeList = null;
     private int m_currentIndex = 0;
@@ -32,6 +36,8 @@ public class UIPetDetail : UIBase{
         EventTriggerListener.Get(m_skillButton.gameObject).onClick = SkillButtonDown;
         EventTriggerListener.Get(m_attrButton.gameObject).onClick = DetailAttrButtonDown;
         EventTriggerListener.Get(m_stageButton.gameObject).onClick = StageButtonDown;
+        EventTriggerListener.Get(m_advanceButton.gameObject).onClick = AdvanceButtonDown;
+        EventTriggerListener.Get(m_equipButton.gameObject).onClick = EquipButtonDown;
     }
 
     void CloseBagButtonDown(GameObject go)
@@ -61,44 +67,58 @@ public class UIPetDetail : UIBase{
     void AddRightView(string assetName)
     {
         //clear
-        GameObject rightView = Util.FindChildByName(m_rightView.gameObject, "contentView");
-        if (rightView != null)
+        if (m_rightView != null)
         {
-            ResourceMgr.Instance.DestroyAsset(rightView);
+            ResourceMgr.Instance.DestroyAsset(m_rightView.gameObject);
+            m_rightView = null;
         }
 
-        GameObject newView = ResourceMgr.Instance.LoadAsset("ui/petdetail", assetName);
-        newView.transform.SetParent(m_rightView.transform);
-        newView.transform.localPosition = Vector3.zero;
-        newView.transform.localScale = Vector3.one;
-        newView.name = "contentView";
+        m_rightView = ResourceMgr.Instance.LoadAsset("ui/petdetail", assetName).GetComponent<PetDetailRight>();
+        m_rightView.transform.SetParent(m_rightContainer.transform, false);
+        m_rightView.transform.localScale = Vector3.one;
+        m_rightView.gameObject.name = "contentView";
     }
 
     void SkillButtonDown(GameObject go)
     {
         AddRightView("skillPanel");
+        m_rightView.ReloadData(m_curTypeList[m_currentIndex]);
     }
 
     void DetailAttrButtonDown(GameObject go)
     {
         AddRightView("attrPanel");
+        m_rightView.ReloadData(m_curTypeList[m_currentIndex]);
     }
 
     void StageButtonDown(GameObject go)
     {
         AddRightView("stagePanel");
+        m_rightView.ReloadData(m_curTypeList[m_currentIndex]);
+    }
+
+    void AdvanceButtonDown(GameObject go)
+    {
+        AddRightView("advancePanel");
+        m_rightView.ReloadData(m_curTypeList[m_currentIndex]);
+    }
+
+    void EquipButtonDown(GameObject go)
+    {
+        AddRightView("equipPanel");
+        m_rightView.ReloadData(m_curTypeList[m_currentIndex]);
     }
 
     void PreButtonDown(GameObject go)
     {
         m_currentIndex = (m_currentIndex - 1 + m_curTypeList.Count) % m_curTypeList.Count;
-        ReloadUnitData(m_curTypeList[m_currentIndex]);
+        ReloadData(m_curTypeList[m_currentIndex]);
     }
 
     void NextButtonDown(GameObject go)
     {
         m_currentIndex = (m_currentIndex + 1) % m_curTypeList.Count;
-        ReloadUnitData(m_curTypeList[m_currentIndex]);
+        ReloadData(m_curTypeList[m_currentIndex]);
     }
 
     public void SetTypeList(GameUnit unit, List<GameUnit> unitList)
@@ -119,10 +139,12 @@ public class UIPetDetail : UIBase{
             return;
         }
 
-        ReloadUnitData(unit);
+        //默认选中属性界面
+        AddRightView("attrPanel");
+        ReloadData(unit);
     }
 
-    void ReloadUnitData(GameUnit unit)
+    void ReloadData(GameUnit unit)
     {
         m_leftView.ReloadData(unit);
         m_rightView.ReloadData(unit);

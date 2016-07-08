@@ -13,7 +13,10 @@ public class MonsterIcon : MonoBehaviour
 	public	Image	bossImage;
 	public	Image	friendImage;
 	public	Image	selectImage;
+	public  Image  	maskImage;
 	public	Text	levelText;
+	public	Text	qualityText;
+	public Text 	nickNameText;
 
 	private	List<Transform> listItems;
 
@@ -31,11 +34,11 @@ public class MonsterIcon : MonoBehaviour
 		return micon;
 	}
 
-	// Use this for initialization
-	void Start ()
+	void Awake()
 	{
-
+		nickNameText.text = "";
 	}
+	// Use this for initialization
 
 	public void Init()
 	{
@@ -76,20 +79,65 @@ public class MonsterIcon : MonoBehaviour
 		
 		monsterImage.sprite = headImg;
 
-		SetQuality (unitData.grade);
-
 		HideItems ();
 	}
 
-	private void	SetQuality(int quallity)
+	public void	SetStage(int stage)
 	{
-		if (quallity < 1 || quallity > 6)
-			return;
+		int quallity = 0;
+		int plusQuality = 0;
+		CalculationQuality (stage, out quallity, out plusQuality);
+
 		string assetbundle = "ui/grade";
 		string assetname = "grade_" + quallity.ToString ();
 		Sprite headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetbundle, assetname) as Sprite;
 		if (null != headImg)
 			qualityImage.sprite = headImg;
+
+		string temp = "";
+		if (plusQuality > 0)
+		{
+			temp = "+" + plusQuality.ToString();
+		}
+		qualityText.text = temp;
+	}
+
+	private	void	CalculationQuality(int stage, out int quality ,out int plusQuality )
+	{
+		quality = 1;
+		plusQuality = 0;
+
+		if (stage < 0 || stage > 15)
+			return;
+
+		if (stage == 0)
+		{
+			quality = 1;
+		} 
+		else if (stage < 3)
+		{
+			quality = 2;
+			plusQuality = stage - 1;
+		} 
+		else if (stage < 6)
+		{
+			quality = 3;
+			plusQuality = stage - 3;
+		} 
+		else if (stage < 10)
+		{
+			quality = 4;
+			plusQuality = stage - 6;
+		} 
+		else if (stage < 15)
+		{
+			quality = 5;
+			plusQuality = stage - 10;
+		}
+		else 
+		{
+			quality = 6;
+		}
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------
@@ -113,17 +161,27 @@ public class MonsterIcon : MonoBehaviour
 
 	public	void	ShowSelectImage(bool bshow = true)
 	{
-		friendImage.gameObject.SetActive (bshow);
+		selectImage.gameObject.SetActive (bshow);
+	}
+
+	public void ShowMaskImage(bool bshow = true)
+	{
+		maskImage.gameObject.SetActive (bshow);
 	}
 
 	public	bool	IsSelected()
 	{
-		return friendImage.gameObject.activeSelf;
+		return selectImage.gameObject.activeSelf;
 	}
 
 	public	void	SetLevel(int level)
 	{
 		levelText.gameObject.SetActive (true);
 		levelText.text = level.ToString ();
+	}
+
+	public void SetName(string nickname)
+	{
+		nickNameText.text = nickname;
 	}
 }

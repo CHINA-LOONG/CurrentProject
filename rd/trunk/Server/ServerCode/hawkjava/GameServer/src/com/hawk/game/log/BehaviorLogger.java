@@ -182,6 +182,10 @@ public class BehaviorLogger {
 		 */
 		QUEST_SUBMIT,
 		/**
+		 * 技能升级
+		 */
+		SKILL_UP,
+		/**
 		 * 未知行为
 		 */
 		UNKONWN_ACTION;

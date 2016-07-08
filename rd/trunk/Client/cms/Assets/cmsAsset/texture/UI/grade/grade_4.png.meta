@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 65faca293e3bc43409b3ce401f3e5814
-timeCreated: 1435907555
+guid: 13654bd474ff1de4b85f36776e208e1f
+timeCreated: 1437043827
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -49,7 +49,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites: []
-  spritePackingTag: grade
+  spritePackingTag: 
   userData: 
   assetBundleName: ui/grade
   assetBundleVariant: 

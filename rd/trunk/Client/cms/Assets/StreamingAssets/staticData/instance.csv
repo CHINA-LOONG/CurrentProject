@@ -1,4 +1,4 @@
-#TEXT,NUM,FLOAT,FLOAT,TEXT,NUM,NUM,TEXT,TEXT
+ï»¿#TEXT,NUM,FLOAT,FLOAT,TEXT,NUM,NUM,TEXT,TEXT
 id,level,lifeCoef,attackCoef,sceneID,dazhaoGroup,dazhaoAdjust,battleLevelList,battleBoss
-#¸±±¾id,#¸±±¾¹ÖÎïµÈ¼¶,#ÑªÁ¿ĞŞÕı,#ÉËº¦ĞŞÕı,#¶Ô¾Ö³¡¾°,Ò»´Î´óÕĞ¹¥»÷ĞèÒªµÄ³öÊÖ´ÎÊı,´óÕĞ¹¥»÷´ÎĞòµ÷Õû,¶Ô¾ÖÊıÁĞ±í,#boss¶Ô¾Ö
+#å‰¯æœ¬id,#å‰¯æœ¬æ€ªç‰©ç­‰çº§,#è¡€é‡ä¿®æ­£,#ä¼¤å®³ä¿®æ­£,#å¯¹å±€åœºæ™¯,ä¸€æ¬¡å¤§æ‹›æ”»å‡»éœ€è¦çš„å‡ºæ‰‹æ¬¡æ•°,å¤§æ‹›æ”»å‡»æ¬¡åºè°ƒæ•´,å¯¹å±€æ•°åˆ—è¡¨,#bosså¯¹å±€
 demo,30,1,1,battlescene/test/yunmengiii,10,3,"[""demo_1_level1"",""demo_1_level2""]",boss_jiuweihu_level

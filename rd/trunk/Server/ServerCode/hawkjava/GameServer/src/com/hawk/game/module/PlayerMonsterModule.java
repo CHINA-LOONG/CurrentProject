@@ -1,29 +1,40 @@
 package com.hawk.game.module;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
 import org.hawk.annotation.MessageHandler;
 import org.hawk.annotation.ProtocolHandler;
 import org.hawk.app.HawkApp;
+import org.hawk.config.HawkConfigManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hawk.game.config.InstanceEntryCfg;
+import com.hawk.game.config.SkillUpPriceCfg;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.item.AwardItems;
+import com.hawk.game.item.ConsumeItems;
+import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const.RewardReason;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Instance.HSInstanceSweepRet;
 import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.HSMonsterAdd;
 import com.hawk.game.protocol.Monster.HSMonsterBreakRet;
 import com.hawk.game.protocol.Monster.HSMonsterCatch;
 import com.hawk.game.protocol.Monster.HSMonsterFeed;
 import com.hawk.game.protocol.Monster.HSMonsterFeedRet;
+import com.hawk.game.protocol.Monster.HSMonsterSkillUp;
+import com.hawk.game.protocol.Monster.HSMonsterSkillUpRet;
 import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Monster.HSMonsterBreak;
@@ -139,6 +150,82 @@ public class PlayerMonsterModule extends PlayerModule {
 		}
 
 		return addMonster(RewardReason.CATCH, monsterEntity);
+	}
+
+	/**
+	 * 技能升级
+	 */
+	@ProtocolHandler(code = HS.code.MONSTER_SKILL_UP_C_VALUE)
+	private boolean onMonsterSkillUp(HawkProtocol cmd) {
+		HSMonsterSkillUp protocol = cmd.parseProtocol(HSMonsterSkillUp.getDefaultInstance());
+		int hsCode = cmd.getType();
+		int monsterId = protocol.getMonsterId();
+		String skillId = protocol.getSkillId();
+
+		MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
+		if (monsterEntity == null) {
+			sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
+			return false;
+		}
+		
+		int newSkillLevel = 1 + monsterEntity.getSkillLevel(skillId);
+		// 验证技能等级
+		if (newSkillLevel > monsterEntity.getLevel()) {
+			sendError(hsCode, Status.monsterError.SKILL_LEVEL_LIMIT_VALUE);
+			return false;
+		}
+		
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		// 更新技能点
+		Calendar beginTime = statisticsEntity.getSkillPointBeginTime();
+		Calendar curTime = HawkTime.getCalendar();
+		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
+		int curSkillPoint = statisticsEntity.getSkillPoint() + delta / GsConst.SKILL_POINT_TIME;
+		if (curSkillPoint > GsConst.MAX_SKILL_POINT) {
+			curSkillPoint = GsConst.MAX_SKILL_POINT;
+		}
+		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.SKILL_POINT_TIME  * 1000);
+
+		// 验证点数
+		if (curSkillPoint < 1) {
+			sendError(hsCode, Status.monsterError.SKILL_POINT_NOT_ENOUGH);
+			return false;
+		}
+
+		// 验证金币
+		SkillUpPriceCfg priceCfg = HawkConfigManager.getInstance().getConfigByKey(SkillUpPriceCfg.class, newSkillLevel);
+		if (priceCfg == null) {
+			sendError(hsCode, Status.error.PARAMS_INVALID);
+			return false;
+		}
+		ConsumeItems consume = ConsumeItems.valueOf();
+		consume.addCoin(priceCfg.getCoin());
+		if (false == consume.checkConsume(player, hsCode)) {
+			return false;
+		}
+		consume.consumeTakeAffectAndPush(player, Action.SKILL_UP);
+
+		// 更新技能点
+		if (curSkillPoint == GsConst.MAX_SKILL_POINT) {
+			beginTime = curTime;
+		}
+		curSkillPoint -= 1;
+
+		statisticsEntity.setSkillPoint(curSkillPoint);
+		statisticsEntity.setSkillPointBeginTime(beginTime);
+		statisticsEntity.addSkillUpCount();
+		statisticsEntity.addSkillUpCountDaily();
+		statisticsEntity.notifyUpdate(true);
+		
+		monsterEntity.setSkillLevel(skillId, newSkillLevel);
+		monsterEntity.notifyUpdate(true);
+
+		HSMonsterSkillUpRet.Builder response = HSMonsterSkillUpRet.newBuilder();
+		response.setSkillPoint(curSkillPoint);
+		response.setSkillPointTimeStamp((int)(beginTime.getTimeInMillis() / 1000));
+		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_SKILL_UP_S, response));
+
+		return true;
 	}
 
 	/**

@@ -345,4 +345,52 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterSkillUp")]
+  public partial class HSMonsterSkillUp : global::ProtoBuf.IExtensible
+  {
+    public HSMonsterSkillUp() {}
+    
+    private int _monsterId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"monsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int monsterId
+    {
+      get { return _monsterId; }
+      set { _monsterId = value; }
+    }
+    private string _skillId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"skillId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string skillId
+    {
+      get { return _skillId; }
+      set { _skillId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterSkillUpRet")]
+  public partial class HSMonsterSkillUpRet : global::ProtoBuf.IExtensible
+  {
+    public HSMonsterSkillUpRet() {}
+    
+    private int _skillPoint;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"skillPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int skillPoint
+    {
+      get { return _skillPoint; }
+      set { _skillPoint = value; }
+    }
+    private int _skillPointTimeStamp;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"skillPointTimeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int skillPointTimeStamp
+    {
+      get { return _skillPointTimeStamp; }
+      set { _skillPointTimeStamp = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

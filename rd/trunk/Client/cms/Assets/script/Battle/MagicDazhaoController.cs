@@ -22,6 +22,8 @@ public class MagicDazhaoController : MonoBehaviour
 	
 	DazhaoState dazhaoState = DazhaoState.Finished;
 
+	DazhaofocusController dazhaoFocusController = null;
+
 	static MagicDazhaoController instance = null;
 	public static MagicDazhaoController Instance
 	{
@@ -36,6 +38,7 @@ public class MagicDazhaoController : MonoBehaviour
 	{
 		instance = this;
 		BindListener ();
+		dazhaoFocusController = DazhaofocusController.Create (true);
 	}
 
 	void OnDestroy()
@@ -76,10 +79,11 @@ public class MagicDazhaoController : MonoBehaviour
 
 		//蓄气
 		//casterBattleGo.ShowDazhaoPrepareEffect ();
-		if(casterBattleGo.shifaNodeEffect !=null)
-		{
-			casterBattleGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoPreprare);
-		}
+		//if(casterBattleGo.shifaNodeEffect !=null)
+		//{
+			//casterBattleGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoPreprare);
+		//}
+		casterBattleGo.TriggerEvent ("magicDazhaoPrepare", Time.time, null);
 
 		//显示法阵
 		OpenFazhenUI ();
@@ -97,10 +101,11 @@ public class MagicDazhaoController : MonoBehaviour
 	public void RunActionWithDazhao(BattleObject casterGo)
 	{
 
-		if(casterBattleGo.shifaNodeEffect !=null)
-		{
-			casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
-		}
+		//if(casterBattleGo.shifaNodeEffect !=null)
+		//{
+		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+		//}
+		casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 		
 		dazhaoSpell = casterBattleGo.unit.GetDazhao ();
 		if (dazhaoSpell == null)
@@ -115,10 +120,11 @@ public class MagicDazhaoController : MonoBehaviour
 		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 		//爆点
-		if (casterGo.shifaNodeEffect != null) 
-		{
-			casterGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoReady);
-		}
+		//if (casterGo.shifaNodeEffect != null) 
+	//	{
+			//casterGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoReady);
+		//}
+		casterBattleGo.TriggerEvent ("magicDazhaoReady", Time.time, null);
 
 		StartCoroutine (showOffCo());
 	}
@@ -127,11 +133,13 @@ public class MagicDazhaoController : MonoBehaviour
 	{
 		yield return new WaitForSeconds (1.0f);
 
-		if (casterBattleGo.shifaNodeEffect != null) 
-		{
-			casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoReady);
-		}
-		DazhaofocusController.Instance.ShowoffDazhao (casterBattleGo);
+		//if (casterBattleGo.shifaNodeEffect != null) 
+		//{
+		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoReady);
+		//}
+		casterBattleGo.TriggerEvent ("magicDazhaoRead_Finish", Time.time, null);
+
+		dazhaoFocusController.ShowoffDazhao (casterBattleGo);
 	}
 
 	void OnMonsterShowoffOver()
@@ -193,10 +201,11 @@ public class MagicDazhaoController : MonoBehaviour
 	//大招结束
 	void DazhaoFinished()
 	{
-		if(casterBattleGo.shifaNodeEffect !=null)
-		{
-			casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
-		}
+		//if(casterBattleGo.shifaNodeEffect !=null)
+		//{
+		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+		//}
+		casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 
 		dazhaoState = DazhaoState.Finished;
 		
@@ -238,10 +247,11 @@ public class MagicDazhaoController : MonoBehaviour
 		if (dazhaoState == DazhaoState.Prepare || dazhaoState == DazhaoState.Shifa)
 		{
 			//大招被打断
-			if(casterBattleGo.shifaNodeEffect !=null)
-			{
-				casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
-			}
+			//if(casterBattleGo.shifaNodeEffect !=null)
+			//{
+			//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+			//}
+			casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 			//todo:大招被打断ui提示
 			SpellVitalChangeArgs args = new SpellVitalChangeArgs();
             args.vitalType = (int)VitalType.Vital_Type_Interrupt;
@@ -268,10 +278,11 @@ public class MagicDazhaoController : MonoBehaviour
 		}
 		dazhaoState = DazhaoState.Finished;
 		CloseFazhenUI ();
-		if(casterBattleGo.shifaNodeEffect !=null)
-		{
-			casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
-		}
+		//if(casterBattleGo.shifaNodeEffect !=null)
+		//{
+		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+		//}
+		casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 	}
 
 	private void OpenFazhenUI()

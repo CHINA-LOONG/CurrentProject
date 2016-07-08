@@ -9,8 +9,8 @@ public class SpellIcon : MonoBehaviour
 	public	Image	maskFrame;
 	public	Button	iconButton;
 
-	private	int	level;
-	private	string	spellId;
+	public	int	level = 1;
+	public	string	spellId;
 
 	static  string iconAssetName = "ui/skillicon";
 

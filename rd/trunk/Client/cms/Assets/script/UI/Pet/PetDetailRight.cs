@@ -13,7 +13,7 @@ public class PetDetailRight : MonoBehaviour {
 	
 	}
 
-    public void ReloadData(GameUnit unit)
+    virtual public void ReloadData(GameUnit unit)
     {
 
     }

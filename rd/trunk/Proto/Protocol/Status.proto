@@ -48,6 +48,10 @@ enum monsterError
 	MONSTER_MAX_SIZE           = 0x00030001;
 	// 怪物不存在
 	MONSTER_NOT_EXIST          = 0x00030002;
+	// 技能点不足
+	SKILL_POINT_NOT_ENOUGH     = 0x00030003;
+	// 技能等级达到上限
+	SKILL_LEVEL_LIMIT          = 0x00030004;
 }
 
 enum itemError
@@ -55,11 +59,11 @@ enum itemError
 	// 道具不存在
 	ITEM_NOT_FOUND             = 0x00040001;
 	// 金币不足
-	COINS_NOT_ENOUGH           = 0x00020002;
+	COINS_NOT_ENOUGH           = 0x00040002;
 	// 钻石不足
-	GOLD_NOT_ENOUGH            = 0x00020003;
+	GOLD_NOT_ENOUGH            = 0x00040003;
 	// 装备不足
-	EQUIP_NOT_FOUND            = 0x00020004;
+	EQUIP_NOT_FOUND            = 0x00040004;
 	// 道具数量不足
 	ITEM_NOT_ENOUGH            = 0x00040005;
 	// 道具不能买

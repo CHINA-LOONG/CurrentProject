@@ -165,7 +165,7 @@ public class MonsterEntity extends HawkDBEntity {
 		return skillMap;
 	}
 
-	public Integer getSkillLevel(int skillId) {
+	public Integer getSkillLevel(String skillId) {
 		return skillMap.get(skillId);
 	}
 

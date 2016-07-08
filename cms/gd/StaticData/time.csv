@@ -1,6 +1,0 @@
-﻿#NUM,NUM,NUM,NUM,NUM,NUM,NUM
-type,minute,hour,dayOfWeek,dayOfMonth,month,year
-#类型,每小时几分,每天几点,每周几,每月几号,每年几月,年
-1,0,0,7,-1,-1,-1
-101,0,0,-1,-1,7,2015
-102,0,0,-1,1,-1,-1

@@ -292,4 +292,9 @@ public class GameEventMgr
 			}
 		}
 	}
+
+    public bool IsListenEvent(string eventType)
+    {
+       return mEventTable.ContainsKey(eventType);
+    }
 }

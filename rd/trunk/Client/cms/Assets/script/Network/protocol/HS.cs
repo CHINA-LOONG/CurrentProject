@@ -106,6 +106,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_S", Value=2007)]
       MONSTER_FEED_S = 2007,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_SKILL_UP_C", Value=2008)]
+      MONSTER_SKILL_UP_C = 2008,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_SKILL_UP_S", Value=2009)]
+      MONSTER_SKILL_UP_S = 2009,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ASSIST_C", Value=3001)]
       INSTANCE_ASSIST_C = 3001,
             
@@ -169,44 +175,50 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SELL_C", Value=4101)]
       EQUIP_SELL_C = 4101,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_BUY_C", Value=4102)]
-      EQUIP_BUY_C = 4102,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SELL_S", Value=4102)]
+      EQUIP_SELL_S = 4102,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_C", Value=4103)]
-      EQUIP_COMPOSE_C = 4103,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_BUY_C", Value=4103)]
+      EQUIP_BUY_C = 4103,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_S", Value=4104)]
-      EQUIP_COMPOSE_S = 4104,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_BUY_S", Value=4104)]
+      EQUIP_BUY_S = 4104,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_C", Value=4105)]
-      EQUIP_INCREASE_LEVEL_C = 4105,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_C", Value=4105)]
+      EQUIP_COMPOSE_C = 4105,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_S", Value=4106)]
-      EQUIP_INCREASE_LEVEL_S = 4106,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_S", Value=4106)]
+      EQUIP_COMPOSE_S = 4106,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_C", Value=4107)]
-      EQUIP_INCREASE_STAGE_C = 4107,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_C", Value=4107)]
+      EQUIP_INCREASE_LEVEL_C = 4107,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_S", Value=4108)]
-      EQUIP_INCREASE_STAGE_S = 4108,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_S", Value=4108)]
+      EQUIP_INCREASE_LEVEL_S = 4108,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_C", Value=4109)]
-      EQUIP_MONSTER_DRESS_C = 4109,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_C", Value=4109)]
+      EQUIP_INCREASE_STAGE_C = 4109,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_S", Value=4110)]
-      EQUIP_MONSTER_DRESS_S = 4110,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_S", Value=4110)]
+      EQUIP_INCREASE_STAGE_S = 4110,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_UNDRESS_C", Value=4111)]
-      EQUIP_MONSTER_UNDRESS_C = 4111,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_C", Value=4120)]
+      EQUIP_MONSTER_DRESS_C = 4120,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_UNDRESS_S", Value=4112)]
-      EQUIP_MONSTER_UNDRESS_S = 4112,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_S", Value=4121)]
+      EQUIP_MONSTER_DRESS_S = 4121,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_REPLACE_C", Value=4113)]
-      EQUIP_MONSTER_REPLACE_C = 4113,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_UNDRESS_C", Value=4122)]
+      EQUIP_MONSTER_UNDRESS_C = 4122,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_REPLACE_S", Value=4114)]
-      EQUIP_MONSTER_REPLACE_S = 4114,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_UNDRESS_S", Value=4123)]
+      EQUIP_MONSTER_UNDRESS_S = 4123,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_REPLACE_C", Value=4124)]
+      EQUIP_MONSTER_REPLACE_C = 4124,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_REPLACE_S", Value=4125)]
+      EQUIP_MONSTER_REPLACE_S = 4125,
             
       [global::ProtoBuf.ProtoEnum(Name=@"QUEST_SUBMIT_C", Value=5001)]
       QUEST_SUBMIT_C = 5001,

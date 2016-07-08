@@ -28,6 +28,7 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, BuffPrototype> buffData = new Dictionary<string, BuffPrototype>();
     Dictionary<string, EffectPrototype> effectData = new Dictionary<string, EffectPrototype>();
     Dictionary<string, SpellProtoType> spellData = new Dictionary<string, SpellProtoType>();
+    Dictionary<int, int> spellUpLevelData = new Dictionary<int, int>();
     Dictionary<string, InstanceData> instanceData = new Dictionary<string, InstanceData>();
     Dictionary<string, BattleLevelData> battleLevelData = new Dictionary<string, BattleLevelData>();
 	Dictionary<int,LazyData>	lazyData = new Dictionary<int, LazyData>();
@@ -62,6 +63,11 @@ public class StaticDataMgr : MonoBehaviour
             var data = InitTable<SpellProtoType>("spell");
             foreach (var item in data)
                 spellData.Add(item.id, item);
+        }
+        {
+            var data = InitTable<SpellUpLevelPrice>("skillUpPrice");
+            foreach (var item in data)
+                spellUpLevelData.Add(item.level, item.coin);
         }
         {
             var data = InitTable<BuffPrototype>("buff");
@@ -403,6 +409,13 @@ public class StaticDataMgr : MonoBehaviour
             return spellData[id];
 
         return null;
+    }
+    public int GetSPellLevelPrice(int nextLevel)
+    {
+        if (spellUpLevelData.ContainsKey(nextLevel))
+            return spellUpLevelData[nextLevel];
+       
+        return 0;
     }
     public EffectPrototype GetEffectProtoData(string id)
     {

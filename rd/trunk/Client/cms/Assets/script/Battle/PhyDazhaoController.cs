@@ -16,6 +16,7 @@ public class PhyDazhaoController : MonoBehaviour
 
 	DazhaoState dazhaoState = DazhaoState.Finished;
 
+	DazhaofocusController  dazhaoFocusController;
 
 	enum DazhaoState
 	{
@@ -39,10 +40,12 @@ public class PhyDazhaoController : MonoBehaviour
 	{
 		BindListener ();
 		instance = this;
+		dazhaoFocusController = DazhaofocusController.Create (false);
 	}
 	void OnDestroy()
 	{
 		UnBindListener ();
+		Destroy (dazhaoFocusController);
 	}
 	
 	void BindListener()
@@ -64,11 +67,7 @@ public class PhyDazhaoController : MonoBehaviour
 		dazhaoState = DazhaoState.Wait;
 
 		//蓄气效果
-	//	casterGo.ShowDazhaoPrepareEffect ();
-		if(casterBattleGo.shifaNodeEffect != null)
-		{
-			casterBattleGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoPreprare);
-		}
+		casterBattleGo.TriggerEvent ("phyDazhaoPrepare", Time.time, null);
 
 		//中断检测
 		dazhaoExitCheck = casterGo.gameObject.GetComponent<DazhaoExitCheck> ();
@@ -86,10 +85,7 @@ public class PhyDazhaoController : MonoBehaviour
 		dazhaoUseCount = 0;
 		dazhaoFinishCount = 0;
 
-		if(casterBattleGo.shifaNodeEffect !=null)
-		{
-			casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
-		}
+		casterBattleGo.TriggerEvent ("phyDazhaoPrepare_Finish", Time.time, null);
 
 		dazhaoSpell = casterBattleGo.unit.GetDazhao ();
 		if (dazhaoSpell == null)
@@ -104,10 +100,7 @@ public class PhyDazhaoController : MonoBehaviour
 		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 		//爆点
-		if (casterGo.shifaNodeEffect != null) 
-		{
-			casterGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoReady);
-		}
+		casterBattleGo.TriggerEvent ("magicDazhaoReady", Time.time, null);
 		
 		StartCoroutine (showOffCo ());
 	}
@@ -115,12 +108,8 @@ public class PhyDazhaoController : MonoBehaviour
 	IEnumerator showOffCo()
 	{
 		yield return new WaitForSeconds (1.0f);
-		
-		if (casterBattleGo.shifaNodeEffect != null) 
-		{
-			casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoReady);
-		}
-		DazhaofocusController.Instance.ShowoffDazhao (casterBattleGo);
+		casterBattleGo.TriggerEvent ("phyDazhaoRead_Finish", Time.time, null);
+		dazhaoFocusController.ShowoffDazhao (casterBattleGo);
 	}
 
 
@@ -131,11 +120,9 @@ public class PhyDazhaoController : MonoBehaviour
 
 		BattleCameraAni.MotionToPhyDazhao ().OnComplete(PrepareDazhaoCo);
 
-		//StartCoroutine (PrepareDazhaoCo ());
 	}
 	void PrepareDazhaoCo()
 	{
-		//yield return new WaitForSeconds (1.0f);
 		dazhaoState = DazhaoState.Start;
 		dazhaoStartTime = Time.time;
 		GameEventMgr.Instance.FireEvent(GameEventList.ShowDazhaoTip);
@@ -170,14 +157,44 @@ public class PhyDazhaoController : MonoBehaviour
 		battleGo.unit.attackWpName = weakpointName;
 	
 		SpellService.Instance.SpellRequest(dazhaoSpell.spellData.id, casterBattleGo.unit, battleGo.unit, Time.time);
+
 		dazhaoUseCount++;
+		int comboIndex = dazhaoUseCount;
 		if (dazhaoUseCount >= dazhaoSpell.spellData.actionCount)
 		{
 			//慢镜头(最后一次)
 			GameSpeedService.Instance.SetTmpSpeed (BattleConst.dazhaoAttackTimeScale, BattleConst.dazhaoAttackTimeLength);
 			DazhaoFinished();
+			comboIndex = -1;
+		}
+
+		//combo
+		WeakPointRuntimeData weakRuntime = null;
+		if (battleGo.unit.isBoss) 
+		{
+			battleGo.wpGroup.allWpDic.TryGetValue(weakpointName,out weakRuntime);
+		}
+		else
+		{
+			foreach(var subWp in battleGo.wpGroup.allWpDic.Values)
+			{
+				weakRuntime = subWp;
+			}
+		}
+
+		if (null != weakRuntime)
+		{
+			Vector3 wpPos3D= weakRuntime.wpMirrorTarget.transform.position;
+			Vector2	wpPosInScreen = RectTransformUtility.WorldToScreenPoint(BattleCamera.Instance.CameraAttr,wpPos3D);
+			float uiScale = UIMgr.Instance.CanvasAttr.scaleFactor;
+
+			wpPosInScreen.x /= uiScale;
+			wpPosInScreen.y /= uiScale;
+			Transform comboParent =  BattleController.Instance.GetUIBattle().publicTopGroup;
+			HitCombo.ShowCombo(comboParent,comboIndex,wpPosInScreen.x,wpPosInScreen.y);
 		}
 	}
+
 	
 	private void OnExitByPhyAttacked( int casterID)
 	{
@@ -196,10 +213,11 @@ public class PhyDazhaoController : MonoBehaviour
 			//大招被打断
 			GameEventMgr.Instance.FireEvent(GameEventList.RemoveDazhaoAction);
 
-			if(casterBattleGo.shifaNodeEffect !=null)
-			{
-				casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
-			}
+			//if(casterBattleGo.shifaNodeEffect !=null)
+			//{
+			//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+			//}
+			casterBattleGo.TriggerEvent ("phyDazhaoPrepare_Finish", Time.time, null);
 			//todo:大招被打断ui提示
 			//casterBattleGo.TriggerEvent("",Time.time,null);
 
@@ -281,10 +299,11 @@ public class PhyDazhaoController : MonoBehaviour
 		{
 			dazhaoState = DazhaoState.Finished;
 
-			if(casterBattleGo.shifaNodeEffect !=null)
-			{
-				casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
-			}
+		//	if(casterBattleGo.shifaNodeEffect !=null)
+		//	{
+		//		casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+		//	}
+			casterBattleGo.TriggerEvent ("phyDazhaoPrepare_Finish", Time.time, null);
 		}
 	}
 

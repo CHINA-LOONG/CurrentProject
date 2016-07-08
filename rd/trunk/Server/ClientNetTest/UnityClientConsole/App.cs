@@ -139,9 +139,14 @@ namespace UnityClientConsole
             {
                 Console.WriteLine("同步完成");
 
-                HSInstanceEnter instanceEnter = new HSInstanceEnter();
-                instanceEnter.instanceId = "demo";
-                NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
+                HSMonsterSkillUp skillUp = new HSMonsterSkillUp();
+                skillUp.monsterId = 230;
+                skillUp.skillId = "buffMagic";
+                NetManager.GetInstance().SendProtocol(code.MONSTER_SKILL_UP_C.GetHashCode(), skillUp);
+
+//                 HSInstanceEnter instanceEnter = new HSInstanceEnter();
+//                 instanceEnter.instanceId = "demo";
+//                 NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
 
 //                 HSItemBuy itemBuy = new HSItemBuy();
 //                 itemBuy.itemId = 40001;
@@ -222,6 +227,12 @@ namespace UnityClientConsole
             {
                 HSQuestRemove questRemove = protocol.GetProtocolBody<HSQuestRemove>();
                 Console.WriteLine("任务删除");
+            }
+            // 怪物----------------------------------------------------------------------------------------------------------
+            else if (protocol.checkType(code.MONSTER_SKILL_UP_S.GetHashCode()))
+            {
+                HSMonsterSkillUpRet questUpdate = protocol.GetProtocolBody<HSMonsterSkillUpRet>();
+                Console.WriteLine("技能升级");
             }
         }
 

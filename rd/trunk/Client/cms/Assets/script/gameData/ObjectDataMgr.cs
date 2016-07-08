@@ -54,10 +54,6 @@ public class ObjectDataMgr : MonoBehaviour
         if (battleObjectList.TryGetValue(guid, out bo) == true)
         {
             Destroy(bo.aniControl);
-            if (bo.shifaNodeEffect != null)
-            {
-                Destroy(bo.shifaNodeEffect);
-            }
             Destroy(bo);
 
             ResourceMgr.Instance.DestroyAsset(bo.gameObject, bo.type != BattleObjectType.Scene);
@@ -83,10 +79,6 @@ public class ObjectDataMgr : MonoBehaviour
         bo.aniControl = unitObject.AddComponent<AnimControl>();
 
 		bo.shifaGo = Util.FindChildByName(unitObject,"e_shifa");
-		if(bo.shifaGo != null)
-		{
-			bo.shifaNodeEffect = bo.shifaGo.AddComponent<SimpleEffect>();
-		}
 
 		//weakpoint
 		if (bo.camp == UnitCamp.Enemy) {

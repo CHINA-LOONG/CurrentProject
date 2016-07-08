@@ -426,7 +426,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 扫荡券
 		ConsumeItems consume = ConsumeItems.valueOf();
 		consume.addItem(GsConst.SWEEP_TICKET, count);
-		if (false == consume.checkConsume(player)) {
+		if (false == consume.checkConsume(player, hsCode)) {
 			return false;
 		}
 		consume.consumeTakeAffectAndPush(player, Action.INSTANCE_SWEEP);

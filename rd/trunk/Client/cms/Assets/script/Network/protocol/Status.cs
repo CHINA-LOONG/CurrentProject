@@ -87,7 +87,13 @@ namespace PB
       MONSTER_MAX_SIZE = 196609,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_NOT_EXIST", Value=196610)]
-      MONSTER_NOT_EXIST = 196610
+      MONSTER_NOT_EXIST = 196610,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SKILL_POINT_NOT_ENOUGH", Value=196611)]
+      SKILL_POINT_NOT_ENOUGH = 196611,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SKILL_LEVEL_LIMIT", Value=196612)]
+      SKILL_LEVEL_LIMIT = 196612
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"itemError")]
@@ -97,14 +103,14 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_FOUND", Value=262145)]
       ITEM_NOT_FOUND = 262145,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"COINS_NOT_ENOUGH", Value=131074)]
-      COINS_NOT_ENOUGH = 131074,
+      [global::ProtoBuf.ProtoEnum(Name=@"COINS_NOT_ENOUGH", Value=262146)]
+      COINS_NOT_ENOUGH = 262146,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=131075)]
-      GOLD_NOT_ENOUGH = 131075,
+      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=262147)]
+      GOLD_NOT_ENOUGH = 262147,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=131076)]
-      EQUIP_NOT_FOUND = 131076,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=262148)]
+      EQUIP_NOT_FOUND = 262148,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_ENOUGH", Value=262149)]
       ITEM_NOT_ENOUGH = 262149,

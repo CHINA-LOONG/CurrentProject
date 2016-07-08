@@ -30,51 +30,69 @@ public class questItem : MonoBehaviour
     public void SetQuest(QuestInfo info)
     {
         this.info = info;
-        text_Name.text = info.staticData.name+info.staticData.id;
-        //TODO: extend
-        #region Desc
+        //TODO: set path and name*********************
+        string iconName = info.staticData.icon;
+        int k = iconName.LastIndexOf('/');
+        string assetbundle = iconName.Substring(0, k);
+        string assetname = iconName.Substring(k + 1, iconName.Length - k - 1);
+        //********************************************
 
-        string desc;
-        switch (info.staticData.goalType)
-        {
-            case "difficulty":
-                desc = "通关特定难度的副本"; break;
-            case "3stars":
-                desc = "通关特定星级的副本"; break;
-            case "normal":
-                desc = "通关普通难度的副本X次"; break;
-            case "hard":
-                desc = "通关精英难度的副本X次"; break;
-            case "all":
-                desc = "通关副本X次"; break;
-            case "level":
-                desc = "提升等级到X级"; break;
-            case "petquality":
-                desc = "携带的固定品级的伙伴数量达到N个"; break;
-            case "petlevel":
-                desc = "携带的伙伴中最高等级达到X级"; break;
-            case "arena":
-                desc = "完成一定次数的竞技场"; break;
-            case "time":
-                desc = "完成一定次数的时光之穴"; break;
-            case "petmix":
-                desc = "完成一定次数的炼妖炉"; break;
-            case "adventure":
-                desc = "完成一定次数的大冒险"; break;
-            case "bossrush":
-                desc = "完成一定次数的bossrush"; break;
-            case "explore":
-                desc = "完成一定次数的稀有探索"; break;
-            case "skill":
-                desc = "升级一定次数的宠物技能"; break;
-            case "equip":
-                desc = "升级一定次数的宠物装备"; break;
-            case "buycoin":
-                desc = "进行一定次数的钻石买钱操作"; break;
-            default:
-                desc = "类型扩展没有做……";
-                break;
-        }
+        img_QuestIcon.sprite =ResourceMgr.Instance.LoadAssetType<Sprite>(assetbundle, assetname) as Sprite;
+        text_Name.text = info.staticData.name;
+        //TODO: extend  need to modify
+        #region Desc
+        string desc = string.Format(info.staticData.desc,info.staticData.goalParam);
+        //switch (info.staticData.descType)
+        //{
+        //    case "":
+        //        desc = string.Format(info.staticData.desc,"   ");
+        //        break;
+        //    default:
+        //        break;
+        //}
+        #region old version
+        //switch (info.staticData.goalType)
+        //{
+        //    case "difficulty":
+        //        desc = "通关特定难度的副本"; break;
+        //    case "3stars":
+        //        desc = "通关特定星级的副本"; break;
+        //    case "normal":
+        //        desc = "通关普通难度的副本X次"; break;
+        //    case "hard":
+        //        desc = "通关精英难度的副本X次"; break;
+        //    case "all":
+        //        desc = "通关副本X次"; break;
+        //    case "level":
+        //        desc = "提升等级到X级"; break;
+        //    case "petquality":
+        //        desc = "携带的固定品级的伙伴数量达到N个"; break;
+        //    case "petlevel":
+        //        desc = "携带的伙伴中最高等级达到X级"; break;
+        //    case "arena":
+        //        desc = "完成一定次数的竞技场"; break;
+        //    case "time":
+        //        desc = "完成一定次数的时光之穴"; break;
+        //    case "petmix":
+        //        desc = "完成一定次数的炼妖炉"; break;
+        //    case "adventure":
+        //        desc = "完成一定次数的大冒险"; break;
+        //    case "bossrush":
+        //        desc = "完成一定次数的bossrush"; break;
+        //    case "explore":
+        //        desc = "完成一定次数的稀有探索"; break;
+        //    case "skill":
+        //        desc = "升级一定次数的宠物技能"; break;
+        //    case "equip":
+        //        desc = "升级一定次数的宠物装备"; break;
+        //    case "buycoin":
+        //        desc = "进行一定次数的钻石买钱操作"; break;
+        //    default:
+        //        desc = "类型扩展没有做……";
+        //        break;
+        //}
+        #endregion
+
         text_Desc.text = desc;
 
         #endregion
@@ -84,6 +102,7 @@ public class questItem : MonoBehaviour
         if (info.staticData.group == 4 && 
             StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId) < GameTimeMgr.Instance.GetTime())
         {
+            //TODO： test message；
             SetState(false, false, "时间未到");
         }
         else
@@ -128,7 +147,15 @@ public class questItem : MonoBehaviour
 
         for (int i = 0; i < list.Count; i++)
         {
-            rewards[i].SetItem(list[i]);
+            if (list[i].itemType == (int)PB.itemType.PLAYER_ATTR &&
+                list[i].itemId == (int)PB.changeType.CHANGE_PLAYER_EXP)
+            {
+                rewards[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
+            }
+            else
+            {
+                rewards[i].SetItem(list[i]);
+            }
         }
 
     }
@@ -138,32 +165,38 @@ public class questItem : MonoBehaviour
     {
         //TODO:  
         Logger.Log("因为提交任务逻辑已经做了，由于无法完成任务。此处为了测试提交任务的弹窗");
-
         UIQuestInfo.Open(this.info);
     }
     void OnClickSubmit(GameObject go)
     {
-        //TODO:
         PB.HSQuestSubmit param = new PB.HSQuestSubmit();
         param.questId = info.serverData.questId;
         GameApp.Instance.netManager.SendMessage(PB.code.QUEST_SUBMIT_C.GetHashCode(), param);
     }
 
 
+    void OnEnable()
+    {
+        BindListener();
+    }
+    void OnDisable()
+    {
+        UnBindListener();
+    }
+
     void BindListener()
     {
         //TODO:
         //GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_S);
     }
-
     void UnBindListener()
     {
+        //TODO:
         //GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_S.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
     }
 
 
     //sort reward item
-
     public static int SortReward(RewardItemData a, RewardItemData b)
     {
         int result=0;
@@ -193,5 +226,6 @@ public class questItem : MonoBehaviour
         }
         return result;
     }
+
 
 }

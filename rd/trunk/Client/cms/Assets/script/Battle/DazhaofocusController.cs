@@ -17,45 +17,49 @@ public class DazhaofocusController : MonoBehaviour
 	private Vector3 cameraOldScale;
 	private Vector3 cameraOldEulerAngles;
 
-	static DazhaofocusController instance = null;
-	public static DazhaofocusController Instance 
+	public static	DazhaofocusController Create(bool isMagicDazhao)
 	{
-		get
+		GameObject go = null;
+		if (isMagicDazhao)
 		{
-			return instance;
+			go =  ResourceMgr.Instance.LoadAsset("battlescene/dazhaofocus", "dazhaoFocusSceneMagic");;
 		}
-	}
+		else 
+		{
+			go =  ResourceMgr.Instance.LoadAsset("battlescene/dazhaofocus", "dazhaoFocusScene");
+		}
+		go.transform.localScale = Vector3.one;
+		go.transform.localPosition = Vector3.zero;
+		go.transform.localEulerAngles = Vector3.zero;
 
-	void OnDestroy()
-	{
-		if (null != focusSceneGo)
-        {
-            ResourceMgr.Instance.DestroyAsset(focusSceneGo);
-		}
+		DazhaofocusController focus = go.AddComponent<DazhaofocusController> ();
+		focus.InitWithType (isMagicDazhao);
+
+		go.SetActive (false);
+
+		return focus;
 	}
 
 	// Use this for initialization
 	void Start ()
 	{
-		instance = this;
-        focusSceneGo = ResourceMgr.Instance.LoadAsset("battlescene/dazhaofocus", "dazhaoFocusScene");
-		//focusSceneGo = Instantiate (prefab) as GameObject;
+	}
 
-		focusUnitTrans = Util.FindChildByName (focusSceneGo, "monsterPosition").transform;
+	public void InitWithType(bool isMagicDazhao)
+	{
+		focusUnitTrans = Util.FindChildByName (gameObject, "monsterPosition").transform;
 		MeshRenderer tempMesh = focusUnitTrans.GetComponent<MeshRenderer> ();
 		if (null != tempMesh) 
 		{
 			tempMesh.enabled = false;
 		}
-
-		focusCameraTrans = Util.FindChildByName (focusSceneGo, "cameraPosition").transform;
+		
+		focusCameraTrans = Util.FindChildByName (gameObject, "cameraPosition").transform;
 		tempMesh = focusCameraTrans.GetComponent<MeshRenderer> ();
 		if (null != tempMesh) 
 		{
 			tempMesh.enabled = false;
 		}
-
-		focusSceneGo.SetActive (false);
 	}
 	
 	public void ShowoffDazhao(BattleObject battleObj)
@@ -63,7 +67,7 @@ public class DazhaofocusController : MonoBehaviour
 		battleObject = battleObj;
 		SetMonster ();
 		SetCamera ();
-		focusSceneGo.SetActive (true);
+		gameObject.SetActive (true);
 		StartCoroutine (MonsterShowoffCo ());
 
 		UIBattle.Instance.ShowUI (false);
@@ -124,7 +128,7 @@ public class DazhaofocusController : MonoBehaviour
 
 		BattleCameraAni.SetDefaultNoAni ();
 
-		focusSceneGo.SetActive (false);
+		gameObject.SetActive (false);
 
 		GameEventMgr.Instance.FireEvent (GameEventList.MonsterShowoffOver);
 

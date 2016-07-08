@@ -3,6 +3,8 @@ package com.hawk.game.util;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.hawk.os.HawkTime;
+
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
@@ -46,15 +48,21 @@ public class BuilderUtil {
 	}
 
 	public static HSStatisticsInfoSync.Builder genStatisticsBuilder(StatisticsEntity statisticsEntity) {
-		HSStatisticsInfoSync.Builder builder = HSStatisticsInfoSync.newBuilder();		
+		HSStatisticsInfoSync.Builder builder = HSStatisticsInfoSync.newBuilder();
+
 		for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
 			InstanceState.Builder instanceState = InstanceState.newBuilder();
 			instanceState.setInstanceId(entry.getKey());
 			instanceState.setStar(entry.getValue());
 			instanceState.setCountDaily(statisticsEntity.getInstanceCountDaily(entry.getKey()));
-			
+
 			builder.addInstanceState(instanceState);
 		}
+
+		builder.setSkillPoint(statisticsEntity.getSkillPoint());
+		builder.setSkillPointTimeStamp((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
+		builder.setTimeStamp(HawkTime.getSeconds());
+
 		return builder;
 	}
 
@@ -104,7 +112,6 @@ public class BuilderUtil {
 		builder.setEquipId(equipEntity.getItemId());
 		builder.setStage(equipEntity.getStage());
 		builder.setLevel(equipEntity.getLevel());
-		builder.setStage(equipEntity.getStage());
 		builder.setStatus(0);
 		if (equipEntity.getExpireTime() != null) {
 			builder.setExpireTime((int)equipEntity.getExpireTime().getTimeInMillis() / 1000);

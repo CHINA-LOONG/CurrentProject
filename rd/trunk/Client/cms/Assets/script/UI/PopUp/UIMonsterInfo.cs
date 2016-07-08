@@ -8,11 +8,11 @@ public class UIMonsterInfo : UIBase
 	public static string ViewName = "UIMonsterInfo";
 	public static string AssertName = "ui/monsterinfo";
 
-	public static void Open(int guid, string monsterid)
+	public static void Open(int guid, string monsterid,int level,int stage)
 	{
 	 	GameObject go =	UIMgr.Instance.OpenUI (UIMonsterInfo.AssertName, UIMonsterInfo.ViewName);
 		UIMonsterInfo mInfo = go.GetComponent<UIMonsterInfo> ();
-		mInfo.ShowWithData (guid, monsterid);
+		mInfo.ShowWithData (guid, monsterid,level,stage);
 	}
 
 	public Button closeButton;
@@ -20,12 +20,14 @@ public class UIMonsterInfo : UIBase
 	public	Image	propertyImage;
 	public	Transform iconTrans;
 	public	Transform	skillTrans;
+	public	SkilTips	skilTips;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
 		EventTriggerListener.Get (closeButton.gameObject).onClick = OnCloseButtonClick;
 		name.text = null; 
+		skilTips.gameObject.SetActive (false);
 	}
 
 	void	OnCloseButtonClick(GameObject go)
@@ -33,7 +35,7 @@ public class UIMonsterInfo : UIBase
 		UIMgr.Instance.CloseUI (this);
 	}
 
-	public	void	ShowWithData(int guid, string monsterid)
+	public	void	ShowWithData(int guid, string monsterid,int level,int stage)
 	{
 		UnitData unitData = StaticDataMgr.Instance.GetUnitRowData (monsterid);
 		if (null == unitData) 
@@ -48,7 +50,8 @@ public class UIMonsterInfo : UIBase
 		icon.transform.SetParent (iconTrans, false);
 
 		icon.SetMonsterStaticId (monsterid);
-
+		icon.SetStage (level);
+		icon.SetLevel (stage);
 		SetSpellIcon (unitData);
 	}
 
@@ -84,8 +87,7 @@ public class UIMonsterInfo : UIBase
 				AddIcon(spellPt);
 			}
 			else if(spellPt.category == (int)SpellType.Spell_Type_MagicDazhao ||
-			        spellPt.category == (int)SpellType.Spell_Type_PhyDaZhao ||
-			        spellPt.category == (int)SpellType.Spell_Type_PrepareDazhao)
+			        spellPt.category == (int)SpellType.Spell_Type_PhyDaZhao)
 			{
 				if(!isBoss)
 				{
@@ -116,6 +118,17 @@ public class UIMonsterInfo : UIBase
 		//Logger.LogError ("--------" + test++);
 		SpellIcon icon =  go.GetComponentInParent<SpellIcon> ();
 		icon.SetMask (true);
+		skilTips.gameObject.SetActive (true);
+		skilTips.SetSpellId (icon.spellId, icon.level);
+
+		RectTransform iconTrans =	icon.transform as RectTransform;
+		RectTransform tipsTrans = skilTips.transform as RectTransform;
+
+		Vector2 iconPos = iconTrans.anchoredPosition;
+		Vector2 tipsPos = tipsTrans.anchoredPosition;
+		tipsPos.x = iconPos.x + 120;
+
+		tipsTrans.anchoredPosition = tipsPos;
 	}
 
 	public	void OnPointerExit(GameObject go)
@@ -123,5 +136,6 @@ public class UIMonsterInfo : UIBase
 		//Logger.LogError (test++ + "--------"  );
 		SpellIcon icon =  go.GetComponentInParent<SpellIcon> ();
 		icon.SetMask (false);
+		skilTips.gameObject.SetActive (false);
 	}
 }

@@ -13,6 +13,8 @@ public class UIQuest : UIBase
 
     void Start()
     {
+        //TODO
+        OnLanguageChanged();
         EventTriggerListener.Get(btn_Close.gameObject).onClick = ClickCloseButton;
     }
 
@@ -26,4 +28,11 @@ public class UIQuest : UIBase
         UIMgr.Instance.CloseUI(this);
 #endif
     }
+
+    void OnLanguageChanged()
+    {
+        //TODO: change language
+        text_Title.text = "任务";
+    }
+
 }

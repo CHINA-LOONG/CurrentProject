@@ -24,11 +24,20 @@ public class Const
     /// </summary>
     public static bool UpdateMode = false;
 
-	public static	bool	DebugConsoleEnable = true;
+	public static bool DebugConsoleEnable = true;
 
     public static int TimerInterval = 1;
     //游戏帧频
     public static int GameFrameRate = 30;
+    //心跳间隔
+    public static int HeartBreakInterval = 5;
+    //时间同步误差
+    public static int TimSynInterval = 5;
+    //技能点数最大值
+    public static int MaxSkillPoint = 10;
+    //技能恢复时间
+    public static int SkillPointTime = 6 * 60;
+
 
     //更新地址
     public static string WebUrl = "http://localhost/versions/";

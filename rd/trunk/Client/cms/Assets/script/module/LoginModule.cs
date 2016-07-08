@@ -13,6 +13,7 @@ public class LoginModule : ModuleBase
         GameEventMgr.Instance.AddListener<int>(NetEventList.NetConnectFinished, OnNetConnectFinished);
 		GameEventMgr.Instance.AddListener (GameEventList.LoginClick, OnLoginClick);
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.LOGIN_S.GetHashCode ().ToString(), OnNetLoginFinished);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.LOGIN_C.GetHashCode().ToString(), OnNetLoginFinished);
 	}
 	
 	void UnBindListener()
@@ -20,6 +21,7 @@ public class LoginModule : ModuleBase
         GameEventMgr.Instance.RemoveListener<int>(NetEventList.NetConnectFinished, OnNetConnectFinished);
 		GameEventMgr.Instance.RemoveListener (GameEventList.LoginClick, OnLoginClick);	
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.LOGIN_S.GetHashCode ().ToString (), OnNetLoginFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.LOGIN_C.GetHashCode().ToString(), OnNetLoginFinished);
 	}
 
 	void OnLoginClick()
@@ -51,12 +53,14 @@ public class LoginModule : ModuleBase
     }
 
 	void OnNetLoginFinished(ProtocolMessage  msg)
-	{
-		if (msg.GetMessageType () != PB.code.LOGIN_S.GetHashCode ())
-		{
-			Logger.LogError("Error msgType " + msg.GetMessageType());
-			return;
-		}
+    {
+        UINetRequest.Close();
+
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+
+            return;
+        }
 
         BuildModule.needSyncInfo = true;
 		PB.HSLoginRet loginS = msg.GetProtocolBody<PB.HSLoginRet> ();

@@ -16,6 +16,12 @@ public class GsConst {
 	
 	// 扫荡券Id
 	public static final int SWEEP_TICKET = 10003;
+	
+	// 最大技能点数
+	public static final int MAX_SKILL_POINT = 10;
+
+	// 技能点增长秒数
+	public static final int SKILL_POINT_TIME = 6 * 60;
 
 	/**
 	 * 对象类型
@@ -157,14 +163,15 @@ public class GsConst {
 		public static final int MONSTER_STAGE_GOAL = 7;
 		public static final int MONSTER_LEVEL_GOAL = 8;
 		public static final int ARENA_GOAL = 9;
-		public static final int TIME_HOLE_GOAL  = 10;
+		public static final int TIMEHOLE_GOAL  = 10;
 		public static final int MONSTER_MIX_GOAL  = 11;
 		public static final int ADVENTURE_GOAL  = 12;
 		public static final int BOSSRUSH_GOAL = 13;
 		public static final int EXPLORE_GOAL = 14;
 		public static final int SKILL_UP_GOAL = 15;
 		public static final int EQUIP_UP_GOAL = 16;
-		public static final int BUYCOIN_GOAL = 17;
+		public static final int BUY_COIN_GOAL = 17;
+		public static final int GET_FATIGUE_GOAL = 18;
 	}
 
 	// 统计数据类型

@@ -23,7 +23,7 @@ namespace UnityClientConsole
         {
             //设定服务器IP地址  
             if (App.GetInstance().Init("127.0.0.1", 9595, "instance01") == false)
-            //if (App.GetInstance().Init("192.168.199.122", 9596, "monster04") == false)
+            //if (App.GetInstance().Init("192.168.199.122", 9595, "monster04") == false)
                 return;
 
             App.GetInstance().Run();

@@ -23,7 +23,7 @@ public class BattleObject : MonoBehaviour
     public List<ActorEventData> activeEventList = new List<ActorEventData>();
     public List<ActorEventData> waitEventList = new List<ActorEventData>();
 
-    public SimpleEffect shifaNodeEffect;
+    //public SimpleEffect shifaNodeEffect;
     private Quaternion targetRot;
     private float lastUpdateTime;
 

@@ -106,6 +106,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_S", Value=2007)]
       MONSTER_FEED_S = 2007,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_SKILL_UP_C", Value=2008)]
+      MONSTER_SKILL_UP_C = 2008,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_SKILL_UP_S", Value=2009)]
+      MONSTER_SKILL_UP_S = 2009,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ASSIST_C", Value=3001)]
       INSTANCE_ASSIST_C = 3001,
             

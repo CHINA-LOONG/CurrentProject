@@ -24,7 +24,9 @@ public class UIQuestInfo : UIBase
 
 
     public Button btn_confirm;
-    public Text text_title;
+    public Text text_Title;
+    public Text text_Finish;
+    public Text text_Quest;
 
     public Transform rewardParent;
 
@@ -35,12 +37,14 @@ public class UIQuestInfo : UIBase
 
     void Start()
     {
+        //TODO:
+        OnLanguageChanged();
         EventTriggerListener.Get(btn_confirm.gameObject).onClick = ClickConfirmButton;
     }
 
     void ShowWithData(QuestInfo info)
     {
-        text_title.text = info.staticData.name;
+        text_Quest.text =info.staticData.name;
         SetReward(info.staticData.rewardId);
     }
 
@@ -83,7 +87,15 @@ public class UIQuestInfo : UIBase
 
         for (int i = 0; i < list.Count; i++)
         {
-            rewards[i].SetItem(list[i]);
+            if (list[i].itemType == (int)PB.itemType.PLAYER_ATTR &&
+                list[i].itemId == (int)PB.changeType.CHANGE_PLAYER_EXP)
+            {
+                rewards[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
+            }
+            else
+            {
+                rewards[i].SetItem(list[i]);
+            }
         }
 
 
@@ -119,4 +131,12 @@ public class UIQuestInfo : UIBase
         return result;
     }
 
+
+
+    void OnLanguageChanged()
+    {
+        //TODO: change language
+        text_Title.text = "任务奖励";
+        text_Finish.text = "完成任务";
+    }
 }

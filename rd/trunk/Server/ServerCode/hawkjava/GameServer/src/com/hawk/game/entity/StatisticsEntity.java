@@ -44,6 +44,14 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "fatigue", nullable = false)
 	private int fatigue = 0;
 	
+	// 技能点
+	@Column(name = "skillPoint", nullable = false)
+	private int skillPoint = 0;
+	
+	// 技能点开始计时时间
+	@Column(name = "skillPointBeginTime")
+	private Calendar skillPointBeginTime = null;
+	
 	// 任务状态，记录已完成任务Id
 	@Column(name = "questComplete", nullable = false)
 	private String questCompleteJson = "";
@@ -236,12 +244,14 @@ public class StatisticsEntity  extends HawkDBEntity {
 	public StatisticsEntity() {
 		this.createTime = HawkTime.getCalendar();
 		this.dailyRefreshTime = HawkTime.getCalendar();
+		this.skillPointBeginTime = HawkTime.getCalendar();
 	}
 
 	public StatisticsEntity(int playerId) {
 		this.playerId = playerId;
 		this.createTime = HawkTime.getCalendar();
 		this.dailyRefreshTime = HawkTime.getCalendar();
+		this.skillPointBeginTime = HawkTime.getCalendar();
 	}
 
 	public int getPlayerId() {
@@ -274,6 +284,22 @@ public class StatisticsEntity  extends HawkDBEntity {
 	
 	public void setFatigue(int fatigue) {
 		this.fatigue = fatigue;
+	}
+
+	public int getSkillPoint() {
+		return skillPoint;
+	}
+
+	public void setSkillPoint(int point) {
+		this.skillPoint = point;
+	}
+
+	public Calendar getSkillPointBeginTime() {
+		return skillPointBeginTime;
+	}
+
+	public void setSkillPointBeginTime(Calendar time) {
+		this.skillPointBeginTime = time;
 	}
 
 	public Set<Integer> getQuestCompleteSet() {

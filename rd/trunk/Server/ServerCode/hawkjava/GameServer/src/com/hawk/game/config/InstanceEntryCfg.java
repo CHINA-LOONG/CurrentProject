@@ -38,7 +38,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 
 	// assemble
 	protected List<MonsterCfg> enemyList;
-	protected List<RewardCfg> rewardList;
+	protected List<ItemCfg> rewardItemList;
 
 	public InstanceEntryCfg() {
 		id = "";
@@ -59,7 +59,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		InstanceUtil.addInstance(this);
 		
 		enemyList = new ArrayList<MonsterCfg>();
-		rewardList = new ArrayList<RewardCfg>();
+		rewardItemList = new ArrayList<ItemCfg>();
 		return true;
 	}
 	
@@ -111,46 +111,46 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		
 		// 检测奖励是否存在，并建立引用
 		if (reward1 != 0) {
-			RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, reward1);
+			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward1);
 			if (null == reward) {
 				return false;
 			}
-			rewardList.add(reward);
+			rewardItemList.add(reward);
 		}
 		if (reward2 != 0) {
-			RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, reward2);
+			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward2);
 			if (null == reward) {
 				return false;
 			}
-			rewardList.add(reward);
+			rewardItemList.add(reward);
 		}
 		if (reward3 != 0) {
-			RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, reward3);
+			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward3);
 			if (null == reward) {
 				return false;
 			}
-			rewardList.add(reward);
+			rewardItemList.add(reward);
 		}
 		if (reward4 != 0) {
-			RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, reward4);
+			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward4);
 			if (null == reward) {
 				return false;
 			}
-			rewardList.add(reward);
+			rewardItemList.add(reward);
 		}
 		if (reward5 != 0) {
-			RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, reward5);
+			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward5);
 			if (null == reward) {
 				return false;
 			}
-			rewardList.add(reward);
+			rewardItemList.add(reward);
 		}
 		if (reward6 != 0) {
-			RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, reward6);
+			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward6);
 			if (null == reward) {
 				return false;
 			}
-			rewardList.add(reward);
+			rewardItemList.add(reward);
 		}
 
 		return true;
@@ -192,8 +192,8 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		return enemyList;
 	}
 	
-	public List<RewardCfg> getRewardList() {
-		return rewardList;
+	public List<ItemCfg> getRewardList() {
+		return rewardItemList;
 	}
 	
 }

@@ -9,7 +9,6 @@ public class BattleModule : ModuleBase
     BattleUnitAi battleUnitAi;
 	PhyDazhaoController phyDazhaoController;
 	MagicDazhaoController magicDazhaoController;
-	DazhaofocusController dazhaoFocusController;
 
     void BindListener()
     {
@@ -44,8 +43,7 @@ public class BattleModule : ModuleBase
 		phyDazhaoController = gameObject.AddComponent<PhyDazhaoController> ();
 
 		magicDazhaoController = gameObject.AddComponent<MagicDazhaoController> ();
-
-		dazhaoFocusController = gameObject.AddComponent<DazhaofocusController> ();
+		
     }
 
     public override void OnEnter(object param)
@@ -81,7 +79,6 @@ public class BattleModule : ModuleBase
         Destroy(battleUnitAi);
 		Destroy (phyDazhaoController);
 		Destroy (magicDazhaoController);
-		Destroy (dazhaoFocusController);
         //UIMgr.Instance.CloseUI(UIBattle.ViewName);
     }
 

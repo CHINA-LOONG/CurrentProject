@@ -87,7 +87,13 @@ namespace PB
       MONSTER_MAX_SIZE = 196609,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_NOT_EXIST", Value=196610)]
-      MONSTER_NOT_EXIST = 196610
+      MONSTER_NOT_EXIST = 196610,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SKILL_POINT_NOT_ENOUGH", Value=196611)]
+      SKILL_POINT_NOT_ENOUGH = 196611,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SKILL_LEVEL_LIMIT", Value=196612)]
+      SKILL_LEVEL_LIMIT = 196612
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"itemError")]

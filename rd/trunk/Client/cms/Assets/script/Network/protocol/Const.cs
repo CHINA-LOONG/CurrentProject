@@ -326,15 +326,4 @@ namespace PB
       RED = 6
     }
   
-    [global::ProtoBuf.ProtoContract(Name=@"BattleType")]
-    public enum BattleType
-    {
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"NORMAL", Value=1)]
-      NORMAL = 1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"BOSS", Value=2)]
-      BOSS = 2
-    }
-  
 }

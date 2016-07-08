@@ -12,12 +12,14 @@ public class CreatePlayerModule : ModuleBase
 	{
         GameEventMgr.Instance.AddListener<string> (GameEventList.createPlayerClick, OnCreatePlayerClick);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_CREATE_S.GetHashCode().ToString(), OnNetCreatePlayerFinished);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_CREATE_C.GetHashCode().ToString(), OnNetCreatePlayerFinished);
 	}
 	
 	void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<string>(GameEventList.createPlayerClick, OnCreatePlayerClick);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_CREATE_S.GetHashCode().ToString(), OnNetCreatePlayerFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_CREATE_C.GetHashCode().ToString(), OnNetCreatePlayerFinished);
 	}
 	
 	public override void OnInit(object param)
@@ -46,6 +48,13 @@ public class CreatePlayerModule : ModuleBase
 
     void OnNetCreatePlayerFinished(ProtocolMessage msg)
     {
+        UINetRequest.Close();
+
+        if (msg.GetMessageType() == (int) PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+
         Debug.Log("create player finish");
 
         PB.HSPlayerCreateRet response = msg.GetProtocolBody<PB.HSPlayerCreateRet>();

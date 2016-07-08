@@ -85,3 +85,17 @@ message HSMonsterFeedRet
 	optional int32 exp = 4;
 	optional int32 level = 5;
 }
+
+// MONSTER_SKILL_UP_C
+message HSMonsterSkillUp
+{
+	required int32 monsterId = 1;
+	required string skillId = 2;
+}
+
+// MONSTER_SKILL_UP_S
+message HSMonsterSkillUpRet
+{
+	required int32 skillPoint = 1;
+	required int32 skillPointTimeStamp = 2;
+}

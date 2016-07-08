@@ -37,7 +37,6 @@ public class MirrorRaycast : MonoBehaviour
 		bestTarget = null;
 		GameObject subWeakpointObj = null;
 
-
 		foreach(KeyValuePair<string,WeakPointRuntimeData> subWeak in bo.wpGroup.allWpDic)
 		{
 			WeakPointRuntimeData wpRuntimeData = subWeak.Value;

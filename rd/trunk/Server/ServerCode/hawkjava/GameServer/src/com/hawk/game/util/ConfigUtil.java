@@ -70,18 +70,4 @@ public class ConfigUtil {
 		
 		return false;
 	}
-	
-	/**
-	 * 怪物检测
-	 * @param monsterId
-	 * @return
-	 */
-	public static boolean checkMonster(String monsterCfgId) {
-		MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterCfgId);
-		if (monsterCfg == null) {
-			HawkLog.errPrintln("monster config not found, dropId：" + monsterCfgId);
-			return false;
-		}
-		return true;
-	}
 }

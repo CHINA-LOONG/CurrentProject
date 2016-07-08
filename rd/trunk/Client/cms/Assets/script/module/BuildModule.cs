@@ -12,13 +12,15 @@ public class BuildModule : ModuleBase
 	void BindListener()
 	{
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.SYNCINFO_S.GetHashCode().ToString (), OnRequestPlayerSyncInfoFinished);
+        GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.SYNCINFO_C.GetHashCode().ToString(), OnRequestPlayerSyncInfoFinished);
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.ASSEMBLE_FINISH_S.GetHashCode ().ToString (), OnRequestPlayerSyncInfoFinished);
 	}
 	
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.SYNCINFO_S.GetHashCode().ToString (), OnRequestPlayerSyncInfoFinished);
-		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.ASSEMBLE_FINISH_S.GetHashCode ().ToString (), OnRequestPlayerSyncInfoFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNCINFO_C.GetHashCode().ToString(), OnRequestPlayerSyncInfoFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ASSEMBLE_FINISH_S.GetHashCode().ToString(), OnRequestPlayerSyncInfoFinished);
 	}
 
 	void RequestPlayerData()
@@ -61,21 +63,30 @@ public class BuildModule : ModuleBase
 
 
 	//net message
-
 	void OnRequestPlayerSyncInfoFinished(ProtocolMessage msg)
 	{
+
+        if (msg.GetMessageType() == (int) PB.sys.ERROR_CODE)
+        {
+            UINetRequest.Close();
+            return;
+        }
+
 		int msgType = msg.GetMessageType ();
 		if (msgType == PB.code.SYNCINFO_S.GetHashCode ())
 		{
 			PB.HSSyncInfoRet  response = msg.GetProtocolBody<PB.HSSyncInfoRet>();
 		}
 		else if ( msgType == PB.code.ASSEMBLE_FINISH_S.GetHashCode() )
-		{
+		{           
+            UINetRequest.Close();
+
 			//消息同步完成
 			PB.HSAssembleFinish finishState = msg.GetProtocolBody<PB.HSAssembleFinish>();
             //GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
-			//
 			Debug.LogWarning("player info sync finished!");
+
+            StatisticsDataMgr.Instance.BeginHeartBreak();
 		}
 	}
 }

@@ -343,7 +343,7 @@ public class PlayerQuestModule extends PlayerModule {
 			break;
 		}
 		//	时光之穴次数
-		case GsConst.QuestGoalType.TIME_HOLE_GOAL: {
+		case GsConst.QuestGoalType.TIMEHOLE_GOAL: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
 				progress = statisticsEntity.getTimeholeCount();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
@@ -406,12 +406,17 @@ public class PlayerQuestModule extends PlayerModule {
 			break;
 		}
 		// 购买金币次数
-		case GsConst.QuestGoalType.BUYCOIN_GOAL: {
+		case GsConst.QuestGoalType.BUY_COIN_GOAL: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
 				progress = statisticsEntity.getCoinOrderCount();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
 				progress = statisticsEntity.getCoinOrderCountDaily();
 			}
+			break;
+		}
+		// 领取体力
+		case GsConst.QuestGoalType.GET_FATIGUE_GOAL: {
+			// TODO
 			break;
 		}
 		default:

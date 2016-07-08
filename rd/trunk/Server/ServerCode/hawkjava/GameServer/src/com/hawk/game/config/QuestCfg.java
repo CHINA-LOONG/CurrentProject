@@ -27,6 +27,8 @@ public class QuestCfg extends HawkConfigBase {
 	// client only
 	private final String name = null;
 	private final String icon = null;
+	private final String descType = null;
+	private final String desc = null;
 	private final String speechId = null;
 	
 	// assemble
@@ -100,7 +102,7 @@ public class QuestCfg extends HawkConfigBase {
 			break;
 		//	时光之穴次数
 		case "time":
-			goalTypeValue = GsConst.QuestGoalType.TIME_HOLE_GOAL;
+			goalTypeValue = GsConst.QuestGoalType.TIMEHOLE_GOAL;
 			break;
 		// 炼妖炉次数
 		case "petmix":
@@ -128,8 +130,11 @@ public class QuestCfg extends HawkConfigBase {
 			break;
 		// 购买金币次数
 		case "buycoin":
-			goalTypeValue = GsConst.QuestGoalType.BUYCOIN_GOAL;
+			goalTypeValue = GsConst.QuestGoalType.BUY_COIN_GOAL;
 			break;
+		// 领取体力
+		case "fatigue":
+			goalTypeValue = GsConst.QuestGoalType.GET_FATIGUE_GOAL;
 		default:
 			return false;
 		}

@@ -3110,12 +3110,14 @@ MonoBehaviour:
   mViewType: 0
   m_closeButton: {fileID: 11419212}
   m_leftView: {fileID: 11484044}
-  m_rightView: {fileID: 11424554}
+  m_rightContainer: {fileID: 189312}
   m_preButton: {fileID: 11476544}
   m_nextButton: {fileID: 11457176}
   m_skillButton: {fileID: 11481556}
   m_attrButton: {fileID: 11470802}
   m_stageButton: {fileID: 11480374}
+  m_advanceButton: {fileID: 11484914}
+  m_equipButton: {fileID: 11406350}
 --- !u!114 &11499670
 MonoBehaviour:
   m_ObjectHideFlags: 1

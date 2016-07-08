@@ -17,4 +17,10 @@ message HSStatisticsInfoSync
 	repeated InstanceState instanceState = 1;
 	// 宠物图鉴
 	repeated string monsterCollect = 2;
+	// 当前技能点
+	required int32 skillPoint = 3;
+	// 下个技能点开始计时时间戳
+	required int32 skillPointTimeStamp = 4;
+	// 服务器时间戳
+	optional int32 timeStamp = 5;
 }

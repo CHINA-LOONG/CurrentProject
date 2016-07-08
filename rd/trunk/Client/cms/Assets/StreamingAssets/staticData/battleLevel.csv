@@ -1,7 +1,7 @@
-#TEXT,TEXT,TEXT,TEXT,NUM,TEXT,TEXT,TEXT,TEXT
+ï»¿#TEXT,TEXT,TEXT,TEXT,NUM,TEXT,TEXT,TEXT,TEXT
 id,preStartEvent,startEvent,endStartEvent,appearType,winFunc,loseFunc,endEvent,monsterList
-#¶Ô¾Öid,#µÚÒ»½ø³ÌÇ°ÊÂ¼ş,#¿ª³¡¶¯»­,#Ë¢¹ÖÍê±ÏÊÂ¼ş,#³öÏÖ·½Ê½,#Ê¤ÀûÌõ¼ş,#Ê§°ÜÌõ¼ş,#½áÊø¾çÇé¶¯»­,¹ÖÎïÁĞ±í
+#å¯¹å±€id,#ç¬¬ä¸€è¿›ç¨‹å‰äº‹ä»¶,#å¼€åœºåŠ¨ç”»,#åˆ·æ€ªå®Œæ¯•äº‹ä»¶,#å‡ºç°æ–¹å¼,#èƒœåˆ©æ¡ä»¶,#å¤±è´¥æ¡ä»¶,#ç»“æŸå‰§æƒ…åŠ¨ç”»,æ€ªç‰©åˆ—è¡¨
 boss_jiuweihu_level,,,,0,,,,"{""Unit_Demo_jiuweihu"":""1"",""Unit_Demo_ershu"":""1""}"
 boss_hundun_level,,,,0,,,,"{""Unit_Demo_hundun"":""1""}"
-demo_1_level1,,,,0,,,,"{""Unit_Demo_ershu"":""2""}"
+demo_1_level1,,,,0,,,,"{""Unit_Demo_ershu"":""2"",""Unit_Demo_zhuyan"":""2""}"
 demo_1_level2,,,,0,,,,"{""Unit_Demo_zhuyan"":""2""}"

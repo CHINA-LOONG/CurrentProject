@@ -62,7 +62,8 @@ public class HawkTime {
 	 * @return
 	 */
 	public static int getSeconds() {
-		return (int) ((getCalendar().getTimeInMillis() + getMsOffset()) / 1000);
+		//return (int) ((getCalendar().getTimeInMillis() + getMsOffset()) / 1000);
+		return (int) ((getCalendar().getTimeInMillis()) / 1000);
 	}
 
 	/**

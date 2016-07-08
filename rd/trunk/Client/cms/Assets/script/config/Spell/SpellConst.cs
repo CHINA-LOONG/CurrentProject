@@ -74,6 +74,7 @@ public enum SpellType
     Spell_Type_PhyDaZhao,
 	Spell_Type_MagicDazhao,
     Spell_Type_PrepareDazhao,
+	Spell_Type_Dot,
 
     Num_Spell_Type
 }

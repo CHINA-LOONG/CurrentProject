@@ -17,5 +17,8 @@ public class GameConfig : MonoBehaviour {
 	public float EnmeyUnitOffsetYForBloodUI  = 1.4f;
 
 	public	float	MaxCureMagicLifeRate  = 0.75f;	
+
+	//副本入口
+	public float	BossEnemyIconScale = 1.2f;
 	
 }

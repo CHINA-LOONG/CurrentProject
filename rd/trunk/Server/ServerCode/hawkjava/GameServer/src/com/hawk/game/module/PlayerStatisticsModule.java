@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.hawk.config.HawkConfigManager;
+import org.hawk.os.HawkTime;
 
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.PlayerAttrCfg;
@@ -29,8 +30,21 @@ public class PlayerStatisticsModule  extends PlayerModule {
 		StatisticsEntity statisticsEntity = player.getPlayerData().loadStatistics();
 
 		statisticsEntity.addLoginCount();
-		statisticsEntity.notifyUpdate(true);
 
+		// 更新技能点
+		Calendar beginTime = statisticsEntity.getSkillPointBeginTime();
+		Calendar curTime = HawkTime.getCalendar();
+		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
+		int curSkillPoint = statisticsEntity.getSkillPoint() + delta / GsConst.SKILL_POINT_TIME;
+		if (curSkillPoint > GsConst.MAX_SKILL_POINT) {
+			curSkillPoint = GsConst.MAX_SKILL_POINT;
+		}
+		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.SKILL_POINT_TIME  * 1000);
+		statisticsEntity.setSkillPoint(curSkillPoint);
+		statisticsEntity.setSkillPointBeginTime(beginTime);
+		
+		statisticsEntity.notifyUpdate(true);
+		
 		// 同步统计信息
 		player.getPlayerData().syncStatisticsInfo();
 		return true;
@@ -78,6 +92,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 
 			statisticsEntity.notifyUpdate(true);
 		}
+		
 		return true;
 	}
 }

@@ -38,8 +38,10 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
     // Use this for initialization
     void Start()
     {
+        //TODO:
+        OnLanguageChanged();
+
         GetComponentInChildren<TabButtonGroup>().InitWithDelegate(this);
-        OnQuestChanged();
         OnTabButtonChanged(0);
     }
 
@@ -78,6 +80,7 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
     void OnEnable()
     {
         Logger.Log("OnEnable");
+        OnQuestChanged();
         BindListener();
     }
 
@@ -99,29 +102,31 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
 
     void OnQuestChanged()
     {
+
 #if XL_DEBUG
+        
         #region XL:quest test
 
-        List<QuestData> list = new List<QuestData>();
-        list.Add(new QuestData() { questId = 10001, progress = 0 });
-        list.Add(new QuestData() { questId = 20011, progress = 2 });
-        list.Add(new QuestData() { questId = 10002, progress = 1 });
-        list.Add(new QuestData() { questId = 30008, progress = 0 });
-        list.Add(new QuestData() { questId = 10003, progress = 0 });
-        list.Add(new QuestData() { questId = 30012, progress = 2 });
-        list.Add(new QuestData() { questId = 20005, progress = 2 });
-
+        Dictionary<int, QuestData> list = new Dictionary<int, QuestData>();
+        list.Add(10001, new QuestData() { questId = 10001, progress = 0 });
+        list.Add(20011, new QuestData() { questId = 20011, progress = 2 });
+        list.Add(10002, new QuestData() { questId = 10002, progress = 1 });
+        list.Add(30008, new QuestData() { questId = 30008, progress = 0 });
+        list.Add(10003, new QuestData() { questId = 10003, progress = 0 });
+        list.Add(30012, new QuestData() { questId = 30012, progress = 2 });
+        list.Add(20005, new QuestData() { questId = 20005, progress = 2 });
         #endregion
 #else
         Dictionary<int,QuestData> list= GameDataMgr.Instance.PlayerDataAttr.gameQuestData.questList;
 #endif
         QuestInfo group4 = null;
+        Logger.Log("Dictionary<int, QuestData> list:" + list.Count);
         foreach (KeyValuePair<int,QuestData> item in list)
         {
             QuestInfo info = new QuestInfo();
             info.serverData = item.Value;
             info.staticData = StaticDataMgr.Instance.GetQuestData(item.Value.questId);
-            if (info.staticData == null) continue;
+            if (info.staticData == null)  continue;
             if (info.staticData.group==4)
             {
                 TimeStaticData beginTime = StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId);
@@ -167,6 +172,13 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
                 OtherList.Add(group4);
         }
 
+    }
+
+    void OnLanguageChanged()
+    {
+        text_story.text = "剧情任务";
+        text_daily.text = "日常任务";
+        text_other.text = "列传任务";
     }
 
     public static int SortQuest(QuestInfo a, QuestInfo b)

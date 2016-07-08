@@ -3,6 +3,13 @@ using System;
 using System.Collections;
 
 [Serializable]
+public class SpellUpLevelPrice
+{
+    public int level;
+    public int coin;
+}
+
+[Serializable]
 public class SpellProtoType
 {
     public string id;
@@ -18,6 +25,37 @@ public class SpellProtoType
     public string icon;
     public string tips;
     public float baseTipValue;
+
+	public	string GetTips(int level)
+	{
+		return string.Format (tips, baseTipValue + (level - 1) * levelAdjust);
+	}
+
+    public string GetTypeName()
+    {
+        if (category == (int)SpellType.Spell_Type_PhyAttack)
+        {
+            return "物理技能";
+        }
+        else if (category == (int)SpellType.Spell_Type_MgicAttack || category == (int)SpellType.Spell_Type_Cure)
+        {
+            return "法术技能";
+        }
+        else if (category == (int)SpellType.Spell_Type_Dot || category == (int)SpellType.Spell_Type_Beneficial || category == (int)SpellType.Spell_Type_Negative)
+        {
+            return "Buff技能";
+        }
+        else if (category == (int)SpellType.Spell_Type_Passive)
+        {
+            return "被动技能";
+        }
+        else if (category == (int)SpellType.Spell_Type_PhyDaZhao || category == (int)SpellType.Spell_Type_MagicDazhao)
+        {
+            return "大招";
+        }
+
+        return "默认技能";
+    }
 }
 
 public class Spell

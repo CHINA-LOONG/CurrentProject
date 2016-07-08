@@ -223,10 +223,3 @@ enum equipQuality
 	// 红
 	RED = 6;
 }
-
-// 对局类型
-enum BattleType
-{
-	NORMAL                 = 1;
-	BOSS                   = 2;
-}
