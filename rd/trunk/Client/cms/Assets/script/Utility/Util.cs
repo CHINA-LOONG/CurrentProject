@@ -246,4 +246,21 @@ public class Util
         }
         return maxDuration;
     }
+
+    //装换属性名称
+    public static string ConvertProperty(int property)
+    {
+        if (property == SpellConst.propertyGold)
+            return "金属性";
+        else if (property == SpellConst.propertyWood)
+            return "木属性";
+        else if (property == SpellConst.propertyWater)
+            return "水属性";
+        else if (property == SpellConst.propertyFire)
+            return "火属性";
+        else if (property == SpellConst.propertyEarth)
+            return "土属性";
+
+        return "无属性";
+    }
 }

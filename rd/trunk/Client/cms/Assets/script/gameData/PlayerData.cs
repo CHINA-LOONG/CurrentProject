@@ -17,7 +17,7 @@ public class PlayerData : MonoBehaviour
 	public	int	hairColor;
 	public	int	recharget;
 	public	int	vipLevel;
-
+	public	int	fatigue = 199;//疲劳值
 
     //主角装备加成
     public int equipHealth;
@@ -41,10 +41,12 @@ public class PlayerData : MonoBehaviour
     public float waterDamageRatio;
     public float fireDamageRatio;
     public float earthDamageRatio;
+    
     //上阵宠物
     public List<int> mainUnitID = new List<int>();
     public List<BattleObject> mainUnitList = new List<BattleObject>();
     public Dictionary<int, PbUnit> unitPbList = new Dictionary<int, PbUnit>();
+	public Dictionary<int,GameUnit> allUnitDic = new Dictionary<int, GameUnit> ();
 
     //道具
     public GameItemData gameItemData = new GameItemData();
@@ -77,6 +79,21 @@ public class PlayerData : MonoBehaviour
     {
         return mainUnitList;
     }
+	//---------------------------------------------------------------------------------------------
+	public List<GameUnit> GetAllPet()
+	{
+		List<GameUnit> allPet = new List<GameUnit> ();
+		allPet.AddRange (allUnitDic.Values);
+		return allPet;
+	}
+
+	public GameUnit GetPetWithKey(int guid)
+	{
+		GameUnit unit = null;
+		allUnitDic.TryGetValue (guid, out unit);
+		return unit;
+	}
+
     //---------------------------------------------------------------------------------------------
     public void SyncPlayerInof(ProtocolMessage msg)
     {

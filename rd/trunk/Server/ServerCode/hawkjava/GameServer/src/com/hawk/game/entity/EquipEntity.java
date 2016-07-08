@@ -216,7 +216,7 @@ public class EquipEntity extends HawkDBEntity {
 	}
 
 	@Override
-	public boolean assemble() {
+	public boolean decode() {
 		if (additionAttr != null && false == "".equals(additionAttr) && false == "null".equals(additionAttr)) {
 			attr = Attribute.valueOf(additionAttr);
 		}
@@ -227,7 +227,7 @@ public class EquipEntity extends HawkDBEntity {
 	}
 
 	@Override
-	public boolean disassemble() {
+	public boolean encode() {
 		gemMapToJson();
 		if(attr != null){
 			this.additionAttr = attr.toString();

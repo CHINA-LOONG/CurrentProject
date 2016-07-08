@@ -120,7 +120,7 @@ public class MagicDazhaoController : MonoBehaviour
 			casterGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoReady);
 		}
 
-		StartCoroutine (showOffCo ());
+		StartCoroutine (showOffCo());
 	}
 
 	IEnumerator showOffCo()

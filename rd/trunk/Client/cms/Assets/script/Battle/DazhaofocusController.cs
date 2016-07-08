@@ -72,7 +72,7 @@ public class DazhaofocusController : MonoBehaviour
 	IEnumerator MonsterShowoffCo()
 	{
 		//monstershowoff
-		battleObject.TriggerEvent ("dazhaoxuanyao", Time.timeScale, null);
+		battleObject.TriggerEvent ("dazhaoxuanyao", Time.time, null);
 		yield return new WaitForSeconds (BattleConst.dazhaoShowOffTime);
 		RestoreBattle ();
 	}
@@ -88,7 +88,9 @@ public class DazhaofocusController : MonoBehaviour
 		//new
 		monsterTrans.position = focusUnitTrans.position;
 		monsterTrans.localScale = focusUnitTrans.localScale;
-		monsterTrans.localEulerAngles = focusUnitTrans.localEulerAngles;
+        monsterTrans.localRotation = focusUnitTrans.localRotation;
+
+        battleObject.SetTargetRotate(battleObject.transform.localRotation, false);
 	}
 
 	void SetCamera()

@@ -278,7 +278,7 @@ public class PlayerEntity extends HawkDBEntity {
 	}
 	
 	@Override
-	public boolean assemble() {
+	public boolean decode() {
 		if (battleMonsterJson != null && false == "".equals(battleMonsterJson) && false == "null".equals(battleMonsterJson)) {
 			battleMonsterList = HawkJsonUtil.getJsonInstance().fromJson(battleMonsterJson, new TypeToken<List<Integer>>() {}.getType());
 		}
@@ -286,7 +286,7 @@ public class PlayerEntity extends HawkDBEntity {
 	}
 	
 	@Override
-	public boolean disassemble() {
+	public boolean encode() {
 		battleMonsterJson = HawkJsonUtil.getJsonInstance().toJson(battleMonsterList);
 		return true;
 	}

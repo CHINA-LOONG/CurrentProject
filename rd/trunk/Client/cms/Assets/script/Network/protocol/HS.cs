@@ -200,7 +200,10 @@ namespace PB
       QUEST_ACCEPT_S = 5003,
             
       [global::ProtoBuf.ProtoEnum(Name=@"QUEST_UPDATE_S", Value=5004)]
-      QUEST_UPDATE_S = 5004
+      QUEST_UPDATE_S = 5004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_REMOVE_S", Value=5005)]
+      QUEST_REMOVE_S = 5005
     }
   
 }

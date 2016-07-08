@@ -51,12 +51,8 @@ public class GameEventList
 	public static string OverMagicShifaWithResult = "OverMagicShifaWithResult";//0 failed,  1 succ
 	public static string MonsterShowoffOver = "MonsterShowoffOver";
 
-    //UI in the battle
-
-    //////////////////////////////////////////////////////////////////////////
-
-
-    //Ui
+    //副本 
+	public static	string	FinishedInstance = "FinishedInstance";//param(int ,string) star instanceid
 
 
     //Spell

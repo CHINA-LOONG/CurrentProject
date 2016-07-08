@@ -507,7 +507,7 @@ public class BattleProcess : MonoBehaviour
 				StartCoroutine(RunSwitchPetAction(action.caster, action.target));
 				break;
 			case ActionType.Dazhao:
-				if(action.dazhaoType == DazhaoType.Phyics)
+				if (action.dazhaoType == DazhaoType.Phyics)
 				{
 					PhyDazhaoController.Instance.RunActionWithDazhao(action.caster);
 				}

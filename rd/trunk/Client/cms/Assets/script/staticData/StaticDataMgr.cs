@@ -31,6 +31,10 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, InstanceData> instanceData = new Dictionary<string, InstanceData>();
 	Dictionary<int,LazyData>	lazyData = new Dictionary<int, LazyData>();
 	Dictionary<int,CharacterData> characterData = new Dictionary<int, CharacterData>();
+	Dictionary<int,Chapter>	chapterData = new Dictionary<int, Chapter>();
+	Dictionary<string,InstanceEntry> instanceEntryData = new Dictionary<string, InstanceEntry>();
+	Dictionary<int,ItemStaticData> itemData = new Dictionary<int, ItemStaticData>();
+	Dictionary<int,PlayerLevelAttr> playerLevelAttr = new Dictionary<int, PlayerLevelAttr>();
 
     public void Init()
     {
@@ -297,7 +301,73 @@ public class StaticDataMgr : MonoBehaviour
 			foreach(var item in data)
 				characterData.Add(item.index,item);
 		}
-    }
+
+		{
+			var data = InitTable<Chapter>("chapter");
+			foreach(var item in data)
+				chapterData.Add(item.chapter,item);
+		}
+
+		{
+			var data = InitTable<InstanceEntry>("instanceEntry");
+			foreach(var item in data)
+			{
+				item.enemyList = new List<string>();
+				item.rewardList = new List<int>();
+
+				if(!string.IsNullOrEmpty(item.enemy1))
+					item.enemyList.Add(item.enemy1);
+
+				if(!string.IsNullOrEmpty(item.enemy2))
+					item.enemyList.Add(item.enemy2);
+
+				if(!string.IsNullOrEmpty(item.enemy3))
+					item.enemyList.Add(item.enemy3);
+
+				if(!string.IsNullOrEmpty(item.enemy4))
+					item.enemyList.Add(item.enemy4);
+
+				if(!string.IsNullOrEmpty(item.enemy5))
+					item.enemyList.Add(item.enemy5);
+
+				if(!string.IsNullOrEmpty(item.enemy6))
+					item.enemyList.Add(item.enemy6);
+
+				if(item.reward1 > 0)
+					item.rewardList.Add(item.reward1);
+
+				if(item.reward2 > 0)
+					item.rewardList.Add(item.reward2);
+
+				if(item.reward3 > 0)
+					item.rewardList.Add(item.reward3);
+				
+				if(item.reward4 > 0)
+					item.rewardList.Add(item.reward4);
+				
+				if(item.reward5 > 0)
+					item.rewardList.Add(item.reward5);
+				
+				if(item.reward6 > 0)
+					item.rewardList.Add(item.reward6);
+
+
+				instanceEntryData.Add(item.id,item);
+			}
+		}
+
+		{
+			var data = InitTable<ItemStaticData>("item");
+			foreach(var item in data)
+				itemData.Add(item.id,item);
+		}
+
+		{
+			var data = InitTable<PlayerLevelAttr>("playerAttr");
+			foreach(var item in data)
+				playerLevelAttr.Add(item.level,item);
+		}
+	}
 
     List<T> InitTable<T>(string filename) where T : new()
     {
@@ -379,6 +449,49 @@ public class StaticDataMgr : MonoBehaviour
 		CharacterData cData = null;
 		characterData.TryGetValue (index, out cData);
 		return cData;
+	}
+
+	public Chapter GetChapterData(int chapterIndex)
+	{
+		Chapter chapter = null;
+		chapterData.TryGetValue (chapterIndex, out chapter);
+		return chapter;
+	}
+
+	public InstanceEntry GetInstanceEntry(string instanceId)
+	{
+		InstanceEntry entry = null;
+		instanceEntryData.TryGetValue (instanceId, out entry);
+		return	entry;
+	}
+
+	public List<InstanceEntry> GetInstanceEntryList(int diffculty,int chapter)
+	{
+		List<InstanceEntry> listReturn = new List<InstanceEntry> ();
+
+		foreach (InstanceEntry subEntry in instanceEntryData.Values) 
+		{
+			if(subEntry.difficulty == diffculty &&
+			   subEntry.chapter == chapter)
+			{
+				listReturn.Add(subEntry);
+			}
+		}
+		return listReturn;
+	}
+
+	public ItemStaticData GetItemData(int id)
+	{
+		ItemStaticData item = null;
+		itemData.TryGetValue (id, out item);
+		return item;
+	}
+
+	public	PlayerLevelAttr GetPlayerLevelAttr(int level)
+	{
+		PlayerLevelAttr levelAttr = null;
+		playerLevelAttr.TryGetValue (level, out levelAttr);
+		return levelAttr;
 	}
 
     #endregion

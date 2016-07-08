@@ -3,6 +3,10 @@ package com.hawk.game.module;
 import java.util.Calendar;
 import java.util.List;
 
+import org.hawk.config.HawkConfigManager;
+
+import com.hawk.game.config.InstanceEntryCfg;
+import com.hawk.game.config.PlayerAttrCfg;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
@@ -51,6 +55,12 @@ public class PlayerStatisticsModule  extends PlayerModule {
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
 		if (refreshTypeList.contains(GsConst.RefreshType.DAILY_PERS_REFRESH)) {
+			// 恢复体力
+			PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, player.getLevel());
+			if (null != attrCfg) {
+				statisticsEntity.setFatigue(attrCfg.getFatigue());
+			}
+
 			statisticsEntity.clearAdventureCountDaily();
 			statisticsEntity.clearArenaCountDaily();
 			statisticsEntity.clearBossrushCountDaily();
@@ -65,7 +75,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 			statisticsEntity.clearQuestCompleteDaily();
 			statisticsEntity.clearSkillUpCountDaily();
 			statisticsEntity.clearTimeholeCountDaily();
-			
+
 			statisticsEntity.notifyUpdate(true);
 		}
 		return true;

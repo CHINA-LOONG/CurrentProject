@@ -1,5 +1,6 @@
-﻿#NUM,#NUM,#NUM
+#NUM,#NUM,#NUM
 level,exp,fatigue
+#level,exp,fatigue
 1,100,100
 2,200,200
 3,300,300

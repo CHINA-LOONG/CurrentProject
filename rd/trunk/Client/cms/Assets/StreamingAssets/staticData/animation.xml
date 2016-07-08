@@ -4,328 +4,559 @@ state = 0 Add
 state = 1 Remove
 <Camera ani="" />
 -->
-<AniList>
-	<Ani id="hundun_ruodian_4_dead" state="0" action_delay="2">
-		<Controller name="monsters/hundun/boss_hundun_state2" />
-	</Ani>
-	<Ani id="unitBeReplaced" state="0">
-		<Particle asset="juqihuanguai" bundle="effect/battle" ani="firemove" parent=""/>
-	</Ani>
-	<Ani id="unitExit" state="0">
-		<Particle asset="feizou" bundle="effect/battle" ani="firemove" parent=""/>
-	</Ani>
-	<Ani id="unitEnter" state="0">
-		<Particle asset="sankai" bundle="effect/battle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="s1" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="demozhuyanDazhaoe2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
-	</Ani>
-	
-	<Ani id="dead" state="0">
-		<Motion ani="" key="dead" value="true" />
-	</Ani>
-	
-	<Ani id="dazhaoxuanyao" state="0">
-		<Motion ani="" key="dazhaoxuanyao" value="true" />
-	</Ani>
-	<Ani id="lazy" state="0">
-		<Motion ani="" key="lazy" value="true" />
-	</Ani>
-	<Ani id="defend" state="0">
-		<Motion ani="" key="fangyu" value="true" />
-	</Ani>
-	
-	<Ani id="win" state="0">
-		<Motion ani="" key="win" value="true" />
-	</Ani>
-	
-	<Ani id="e2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="zhuyan_wugong" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="attackSlight" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="attackSlighte2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackCutMedium" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="attackMedium" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="attackMediume2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackStabStrong" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="attackStrong" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="attackStronge2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackSmashStrong" bundle="effect/particle" ani="" parent="" locky="true"/>
-	</Ani>
-	
-	<Ani id="attackTriSlight" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="attackTriMedium" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="attackTriStrong" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="attackTriStronge2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackCutStrong" bundle="effect/particle" ani="" parent=""/>
-	</Ani>
-	
-	<Ani id="attackCutMedium" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="attackCutMediume2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackCutMedium" bundle="effect/particle" ani="" parent=""/>
-	</Ani>
-	
-	<Ani id="attackCutTriStrong" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="attackCutTriStronge2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackCutStrong" bundle="effect/particle" ani="" parent=""/>
-	</Ani>
-	
-	<Ani id="attackStabSlight" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="attackStabSlighte2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackStabSlight" bundle="effect/particle" ani="" parent=""/>
-	</Ani>
-	
-	<Ani id="attackStabStrong" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="attackStabStronge2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
-	</Ani>
-	
-	<Ani id="attackSmashStrong" state="0">
-		<Motion ani="" key="wugong" value="true" />
-	</Ani>
-	
-	<Ani id="attackSmashStronge2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackSmashStrong" bundle="effect/particle" ani="" parent="" locky="true"/>
-	</Ani>
-	
-	<Ani id="magicMetalSlight" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="magicMetalMedium" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="magicMetalStrong" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="magicPlantSlight" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="magicPlantMedium" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="magicPlantStrong" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="magicWaterSlight" state="0">
-		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
-	</Ani>
-	
-	<Ani id="magicWaterMedium" state="0">
-		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
-	</Ani>
-	
-	<Ani id="magicWaterMediume2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="magicWaterMedium" bundle="effect/particle" ani="" parent="" locky="true"/>
-	</Ani>
-	
-	<Ani id="magicWaterStrong" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="magicFireSlight" state="0">
-		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
-	</Ani>
-	
-	<Ani id="magicFireSlighte2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="magicFireSlight" bundle="effect/particle" ani="" parent=""/>
-	</Ani>
-	
-	<Ani id="magicFireMedium" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="magicFireStrong" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="magicEarthSlight" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-
-	<Ani id="magicEarthSlighte2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="magicEarthSlight" bundle="effect/particle" ani="" parent=""/>
-	</Ani>
-	
-	<Ani id="magicEarthMedium" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="magicEarthStrong" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="magicCureSlight" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-
-	<Ani id="magicCureSlighte2" state="0">
-		<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="magicCureMedium" state="0">
-		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
-	</Ani>
-	
-	<Ani id="magicCureMediume2" state="0">
-		<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="magicCureStrong" state="0">
-		<Motion ani="" key="fagong" value="true" />
-	</Ani>
-	
-	<Ani id="buffMagic" state="0">
-		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
-	</Ani>
-	
-	<Ani id="buffMagice2" state="0">
-		<Particle asset="applyBuff" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="buffAttack" state="0">
-		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
-	</Ani>
-	
-	<Ani id="buffAttacke2" state="0">
-		<Particle asset="applyBuff" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="debuffDefense" state="0">
-		<Motion ani="" key="fagong" value="true" />
-		<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
-	</Ani>
-	
-	<Ani id="debuffDefensee2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="applyDebuff" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="ultErshu" state="0">
-		<Motion ani="" key="dazhao" value="true" />
-	</Ani>
-	<Ani id="demoershuDazhaoe4" state="0">
-		<Particle asset="hot" bundle="effect/particle" ani="firemove" parent="" locky="true"/>
-	</Ani>
-	<Ani id="ultQingniao" state="0">
-		<Motion ani="" key="dazhao" value="true" />
-	</Ani>
-	<Ani id="demoqingniaoDazhaoe3" state="0">
-		<Particle asset="applyDebuff" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	<Ani id="ultZhuyan" state="0">
-		<Motion ani="" key="dazhao" value="true" />
-
+<AniGroupList>
+	<AniList group="common">
+		<Ani id = "test_sequence" state = "0" action_delay="0">
+			<ControllerList>
+				<Controller time="0" name="monsters/hundun/boss_hundun_state2" />
+			</ControllerList>
+			<MotionList>
+				<Motion time="0" ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle time= "0" asset="juqihuanguai" bundle="effect/battle" ani="firemove" parent=""/>
+				<Particle time="1" asset="juqihuanguai" bundle="effect/battle" ani="firemove" parent=""/>
+			</ParticleList>
+			<CameraMotionList>
+				<Camera time="0" ani="" parent="" is_mover="" duration="" mover_type="" />
+				<Camera time="1" ani="" parent="" is_mover="" duration="" mover_type=""/>
+			</CameraMotionList>
+			<AudioList>
+				<Audio time="0" name="sound/dogmw.mp3" />
+			</AudioList>
+			<MeshStateList>
+				<Mesh time="0" name="" state="show" />
+			</MeshStateList>
+		</Ani>
+		<Ani id="hundun_ruodian_4_dead" state="0" action_delay="2">
+			<ControllerList>
+				<Controller time="0" name="monsters/hundun/boss_hundun_state2" />
+			</ControllerList>
+		</Ani>
+		<Ani id="unitBeReplaced" state="0">
+			<ParticleList>
+				<Particle asset="juqihuanguai" bundle="effect/battle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="unitExit" state="0">
+			<ParticleList>
+				<Particle asset="feizou" bundle="effect/battle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="unitEnter" state="0">
+			<ParticleList>
+				<Particle asset="sankai" bundle="effect/battle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
 		
-	</Ani>
-	
-	<Ani id="bossJiuweihu1" state="0">
-		<Motion ani="" key="dazhao" value="true" />
-	</Ani>
-	
-	<Ani id="bossJiuweihu1e2" state="0">
-		<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="bossJiuweihu2" state="0">
-		<Motion ani="" key="dazhao" value="true" />
-	</Ani>
-	
-	<Ani id="bossJiuweihu2e2" state="0">
-		<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="bossJiuweihu3" state="0">
-		<Motion ani="" key="dazhao" value="true" />
-	</Ani>
-	
-	<Ani id="bossJiuweihu3e2" state="0">
-		<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	
-	<Ani id="bossJiuweihu4" state="0">
-		<Motion ani="" key="dazhao" value="true" />
-	</Ani>
-	
-	<Ani id="bossJiuweihu4e2" state="0">
-		<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
-	</Ani>
-	<Ani id="bossHundun" state="0">
-		<Motion ani="" key="dazhao" value="true" />
-	</Ani>
-	<Ani id="bossHundune2" state="0">
-		<Motion ani="" key="shouji" value="true" />
-		<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
-	</Ani>
-	<Ani id="dazhaob1" state="0">
-		<Particle asset="jvqi" bundle="effect/particle" ani="" parent=""/>
-	</Ani>
-	<Ani id="dazhaob1Finish" state="1">
-		<Particle asset="jvqi" bundle="effect/particle" ani="" parent=""/>
-	</Ani>
-</AniList>
+		<Ani id="s1" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="demozhuyanDazhaoe2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="dead" state="0">
+			<MotionList>
+				<Motion ani="" key="dead" value="true" />
+			</MotionList>
+			<Camera ani="" />
+		</Ani>
+		
+		<Ani id="dazhaoxuanyao" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhaoxuanyao" value="true" />
+			</MotionList>
+		</Ani>
+		<Ani id="lazy" state="0">
+			<MotionList>
+				<Motion ani="" key="lazy" value="true" />
+			</MotionList>
+		</Ani>
+		<Ani id="defend" state="0">
+			<MotionList>
+				<Motion ani="" key="fangyu" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="win" state="0">
+			<MotionList>
+				<Motion ani="" key="win" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="e2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="zhuyan_wugong" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="attackSlight" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="attackSlighte2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackCutMedium" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="attackMedium" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="attackMediume2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackStabStrong" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="attackStrong" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="attackStronge2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackSmashStrong" bundle="effect/particle" ani="" parent="" locky="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="attackTriSlight" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="attackTriMedium" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="attackTriStrong" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="attackTriStronge2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackCutStrong" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="attackCutMedium" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="attackCutMediume2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackCutMedium" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="attackCutTriStrong" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="attackCutTriStronge2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackCutStrong" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="attackStabSlight" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="attackStabSlighte2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackStabSlight" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="attackStabStrong" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="attackStabStronge2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="attackSmashStrong" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="attackSmashStronge2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackSmashStrong" bundle="effect/particle" ani="" parent="" locky="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="magicMetalSlight" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="magicMetalMedium" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="magicMetalStrong" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="magicPlantSlight" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="magicPlantMedium" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="magicPlantStrong" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="magicWaterSlight" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="fagong_juqi" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="magicWaterMedium" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="magicWaterMediume2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="magicWaterMedium" bundle="effect/particle" ani="" parent="" locky="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="magicWaterStrong" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="magicFireSlight" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="fagong_juqi" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="magicFireSlighte2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="magicFireSlight" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="sound/dogmw" />
+				<Audio time="5" name="sound/forhorde" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="magicFireMedium" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="magicFireStrong" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="magicEarthSlight" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+
+		<Ani id="magicEarthSlighte2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="magicEarthSlight" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="magicEarthMedium" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="magicEarthStrong" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="magicCureSlight" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+
+		<Ani id="magicCureSlighte2" state="0">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="magicCureMedium" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="magicCureMediume2" state="0">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="magicCureStrong" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="buffMagic" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="buffMagice2" state="0">
+			<ParticleList>
+				<Particle asset="applyBuff" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="buffAttack" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="buffAttacke2" state="0">
+			<ParticleList>
+				<Particle asset="applyBuff" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="debuffDefense" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="fagong_juqi" bundle="effect/particle" ani="firemove" parent="e_shifa" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="debuffDefensee2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="applyDebuff" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="ultErshu" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true" />
+			</MotionList>
+		</Ani>
+		<Ani id="demoershuDazhaoe4" state="0">
+			<ParticleList>
+				<Particle asset="hot" bundle="effect/particle" ani="firemove" parent="" locky="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="ultQingniao" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true" />
+			</MotionList>
+		</Ani>
+		<Ani id="demoqingniaoDazhaoe3" state="0">
+			<ParticleList>
+				<Particle asset="applyDebuff" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="ultZhuyan" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true" />
+			</MotionList>
+
+			
+		</Ani>
+		
+		<Ani id="bossJiuweihu1" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="bossJiuweihu1e2" state="0">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="bossJiuweihu2" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="bossJiuweihu2e2" state="0">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="bossJiuweihu3" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="bossJiuweihu3e2" state="0">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="bossJiuweihu4" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="bossJiuweihu4e2" state="0">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="bossHundun" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true" />
+			</MotionList>
+		</Ani>
+		<Ani id="bossHundune2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="dazhaob1" state="0">
+			<ParticleList>
+				<Particle asset="jvqi" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="dazhaob1Finish" state="1" finish_event="dazhaob1">
+			<ParticleList>
+				<Particle asset="jvqi" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+	</AniList>
+</AniGroupList>

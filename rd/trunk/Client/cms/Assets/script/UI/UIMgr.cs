@@ -96,11 +96,12 @@ public class UIMgr : MonoBehaviour
 
 	public void CloseUI(string name)
 	{
-		UIBase[] vbs = GetComponentsInChildren<UIBase>();
+        UIBase[] vbs = GetComponentsInChildren<UIBase>();
 		foreach (UIBase vb in vbs)
 		{
 			if (vb.GetType().Name == name)
 			{
+                
 				//Destroy(vb.gameObject);
 				ResourceMgr.Instance.DestroyAsset(vb.gameObject);
 			}

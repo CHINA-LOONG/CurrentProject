@@ -62,18 +62,18 @@ public abstract class HawkDBEntity implements Serializable {
 	}
 	
 	/**
-	 * entity加载完成后手动调用, 进行数据重新构建 
+	 * entity加载完成后手动调用, 进行数据解码构建
 	 * 备注: 返回true表示格式正确, 否则数据发生错误
 	 */
-	public boolean assemble() {
+	public boolean decode() {
 		return true;
 	}
 	
 	/**
-	 * entity更新或创建前自动调用, 进行数据反向编译 
+	 * entity更新或创建前自动调用, 进行数据压缩编码
 	 * 备注: 返回true表示格式正确, 否则数据发生错误
 	 */
-	public boolean disassemble() {
+	public boolean encode() {
 		return true;
 	}
 	
@@ -84,7 +84,7 @@ public abstract class HawkDBEntity implements Serializable {
 	 */
 	public boolean notifyCreate() {
 		setCreateTime(HawkTime.getCalendar());
-		disassemble();
+		encode();
 		
 		return HawkDBManager.getInstance().create(this);
 	}
@@ -120,7 +120,7 @@ public abstract class HawkDBEntity implements Serializable {
 	 */
 	public void notifyUpdate(boolean async) {
 		setUpdateTime(HawkTime.getCalendar());
-		disassemble();
+		encode();
 		
 		if (async) {
 			HawkDBManager.getInstance().updateAsync(this);

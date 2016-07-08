@@ -30,12 +30,14 @@ public class Packager
         paths.Clear();
         files.Clear();
         Recursive(Util.BuildPath);
-
+        
+       
         FileStream fs = new FileStream(newFilePath, FileMode.CreateNew);
         StreamWriter sw = new StreamWriter(fs);
         for (int i = 0; i < files.Count; i++)
         {
             string file = files[i];
+            Debug.Log(file);
             string ext = Path.GetExtension(file);
             if (ext.Equals(".meta")) continue;
             if (ext.Equals(".exe")) continue;
@@ -45,7 +47,8 @@ public class Packager
             string value = file.Replace(Util.BuildPath, string.Empty);
             sw.WriteLine(value);
         }
-        sw.Close(); fs.Close();
+        sw.Close();
+        fs.Close();
         AssetDatabase.Refresh();
         Debug.Log("Generated files.txt at:" + newFilePath);
     }

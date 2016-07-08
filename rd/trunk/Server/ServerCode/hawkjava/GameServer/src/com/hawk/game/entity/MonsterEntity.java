@@ -174,7 +174,7 @@ public class MonsterEntity extends HawkDBEntity {
 	}
 
 	@Override
-	public boolean assemble() {
+	public boolean decode() {
 		if (skillJson != null && false == "".equals(skillJson) && false == "null".equals(skillJson)) {
 			skillMap = HawkJsonUtil.getJsonInstance().fromJson(skillJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
@@ -182,7 +182,7 @@ public class MonsterEntity extends HawkDBEntity {
 	}
 
 	@Override
-	public boolean disassemble() {
+	public boolean encode() {
 		skillJson = HawkJsonUtil.getJsonInstance().toJson(skillMap);
 		return true;
 	}

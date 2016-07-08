@@ -1,4 +1,4 @@
-#TEXT,NUM,TEXT,NUM,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,TEXT
+﻿#TEXT,NUM,TEXT,NUM,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,TEXT
 id,category,periodEffectID,duration,stun,invincible,dazhao,strengthRatio,intelligenceRatio,defenseRatio,defenseDamageRatio,speedRatio,icon
 #id,category,periodEffectID,duration,stun,invincible,dazhao,strengthRatio,intelligenceRatio,defenseRatio,defenseDamageRatio,speedRatio,icon
 b1,1,e1,5,0,0,0,1,1,1,0,1,ui/monster/soul

@@ -53,6 +53,13 @@ public class ObjectDataMgr : MonoBehaviour
         BattleObject bo = null;
         if (battleObjectList.TryGetValue(guid, out bo) == true)
         {
+            Destroy(bo.aniControl);
+            if (bo.shifaNodeEffect != null)
+            {
+                Destroy(bo.shifaNodeEffect);
+            }
+            Destroy(bo);
+
             ResourceMgr.Instance.DestroyAsset(bo.gameObject, bo.type != BattleObjectType.Scene);
 
             battleObjectList.Remove(guid);

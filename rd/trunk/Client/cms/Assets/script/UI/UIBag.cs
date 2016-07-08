@@ -11,11 +11,21 @@ public class UIBag : UIBase {
 
     void Start()
     {
-        GridLayoutGroup layout = gameObject.GetComponentInChildren<GridLayoutGroup>();
-        GameObject content = layout.gameObject;
-        EventTriggerListener.Get(m_closeButton.gameObject).onClick = CloseBagButtonDown;
+        ScrollViewContainer container = gameObject.GetComponent<ScrollViewContainer>();
+        var go = ResourceMgr.Instance.LoadAsset("ui/bag", "bagItem");
+        for (int i = 0; i < 25; ++i)
+        {
+            GameObject bagItem = GameObject.Instantiate(go);
+            if (bagItem != null)
+            {
+                bagItem.transform.SetParent(gameObject.transform, false);
+                bagItem.transform.localScale = Vector3.one;
+                bagItem.transform.localPosition = Vector3.zero;
+                container.AddElement(bagItem);
+            }
+        }
 
-        content.GetComponent<ScrollPanel>().AddContent("ui/bag", "bagItem", 100);
+        EventTriggerListener.Get(m_closeButton.gameObject).onClick = CloseBagButtonDown;
     }
 
     void CloseBagButtonDown(GameObject go)

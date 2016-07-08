@@ -58,6 +58,10 @@ enum code
 	INSTANCE_SETTLE_S           = 3006;
 	INSTANCE_OPEN_CARD_C        = 3007;
 	INSTANCE_OPEN_CARD_S        = 3008;
+	INSTANCE_SWEEP_C            = 3009;
+	INSTANCE_SWEEP_S            = 3010;
+	INSTANCE_RESET_COUNT_C      = 3011;
+	INSTANCE_RESET_COUNT_S      = 3012;
 
 	// 道具
 	ITEM_USE_C			        = 4001;

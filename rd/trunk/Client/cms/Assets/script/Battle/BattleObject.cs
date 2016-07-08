@@ -24,16 +24,18 @@ public class BattleObject : MonoBehaviour
 
     public SimpleEffect shifaNodeEffect;
     private Quaternion targetRot;
+    private float lastUpdateTime;
 
     //---------------------------------------------------------------------------------------------
     void Awake()
     {
         actorEventService = ActorEventService.Instance;
+        lastUpdateTime = 0.0f;
     }
     //---------------------------------------------------------------------------------------------
     public void TriggerEvent(string eventID, float triggerTime, string rootNode)
     {
-        ActorEventData srcEvent = null;
+        ActorEventData srcEvent;
         if (actorEventService.GetEvent(eventID, out srcEvent))
         {
             //trigger event
@@ -41,34 +43,53 @@ public class BattleObject : MonoBehaviour
             {
                 ActorEventData curEvent = new ActorEventData();
                 curEvent.triggerTime = triggerTime;
+                curEvent.rootNode = rootNode;
                 curEvent.actorDelay = srcEvent.actorDelay;
                 curEvent.id = srcEvent.id;
-                curEvent.motionKey = srcEvent.motionKey;
-                curEvent.motionValue = srcEvent.motionValue;
-                curEvent.particleAsset = srcEvent.particleAsset;
-                curEvent.particleBundle = srcEvent.particleBundle;
-                curEvent.particleAni = srcEvent.particleAni;
-                curEvent.particleParent = srcEvent.particleParent;
-                curEvent.locky = srcEvent.locky;
-                curEvent.cameraAni = srcEvent.cameraAni;
-                curEvent.controllerName = srcEvent.controllerName;
-                curEvent.psDuration = 0.0f;
-                curEvent.attach = srcEvent.attach;
-                curEvent.rootNode = rootNode;
+                curEvent.finishEvent = srcEvent.finishEvent;
+                //NOTE: refrence
+                curEvent.actorMotionSequence = new List<ActorMotionData>(srcEvent.actorMotionSequence);
+                curEvent.actorCameraSequence = new List<ActorCameraData>(srcEvent.actorCameraSequence);
+                curEvent.actorControllerSequence = new List<ActorControllerData>(srcEvent.actorControllerSequence);
+                curEvent.actorMeshSequence = new List<ActorMeshData>(srcEvent.actorMeshSequence);
+                //copy
+                curEvent.actorParticleSequence = new List<ActorParticleData>();
+                for (int i = 0; i < srcEvent.actorParticleSequence.Count; ++i)
+                {
+                    curEvent.actorParticleSequence.Add((ActorParticleData)srcEvent.actorParticleSequence[i].Clone());
+                }
+
+                curEvent.actorAudioSequence = new List<ActorAudioData>(srcEvent.actorAudioSequence);
+                for (int i = 0; i < srcEvent.actorAudioSequence.Count; ++i)
+                {
+                    curEvent.actorAudioSequence.Add((ActorAudioData)srcEvent.actorAudioSequence[i].Clone());
+                }
+
                 waitEventList.Add(curEvent);
             }
             //remove event
             else
             {
-                ActorEventData curEventData;
-                for (int i = activeEventList.Count - 1; i >= 0; --i)
+                if (string.IsNullOrEmpty(srcEvent.finishEvent) == false)
                 {
-                    curEventData = activeEventList[i];
-                    if (curEventData.particleAsset == srcEvent.particleAsset)
+                    ActorEventData curEventData;
+                    for (int i = activeEventList.Count - 1; i >= 0; --i)
                     {
-                        ResourceMgr.Instance.DestroyAsset(curEventData.psObject);
-                        activeEventList.RemoveAt(i);
-                        break;
+                        curEventData = activeEventList[i];
+                        if (curEventData.id == srcEvent.finishEvent)
+                        {
+                            int particleCount = curEventData.actorParticleSequence.Count;
+                            for (int index = 0; index < particleCount; ++index)
+                            {
+                                if (curEventData.actorParticleSequence[index].psObject != null)
+                                {
+                                    ResourceMgr.Instance.DestroyAsset(curEventData.actorParticleSequence[index].psObject);
+                                }
+                            }
+                            //NOTE: xw said only need to destroy particle
+
+                            activeEventList.RemoveAt(i);
+                        }
                     }
                 }
             }
@@ -134,28 +155,301 @@ public class BattleObject : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     void Update()
     {
-        UpdateEventsInternal();
-
+        //update event list
+        float curTime = Time.time;
         ActorEventData curEventData;
+        for (int i = waitEventList.Count - 1; i >= 0; --i)
+        {
+            curEventData = waitEventList[i];
+            if (curEventData.triggerTime <= curTime)
+            {
+                activeEventList.Add(curEventData);
+                if (curEventData.actorDelay > 0 && BattleController.Instance.Process != null)
+                {
+                    BattleController.Instance.Process.ActionDelayTime = curEventData.actorDelay;
+                }
+                waitEventList.RemoveAt(i);
+            }
+        }
+
+        //update sequence
+        int count = 0;
+        bool finish = true;
+        float sequenceTriggerTime = 0.0f;
         for (int i = activeEventList.Count - 1; i >= 0; --i)
         {
+            finish = true;
             curEventData = activeEventList[i];
-
-            if (curEventData.psObject != null)
+            if (aniControl != null)
             {
-                if (curEventData.psDuration >= 0.0f && Time.time - curEventData.triggerTime >= curEventData.psDuration)
+                //TODO: use template
+                //update controller
+                count = curEventData.actorControllerSequence.Count;
+                ActorControllerData curControllerData;
+                for (int index = 0; index < count; ++index)
                 {
-                    ResourceMgr.Instance.DestroyAsset(curEventData.psObject);
-                    activeEventList.RemoveAt(i);
+                    curControllerData = curEventData.actorControllerSequence[index];
+                    sequenceTriggerTime = curEventData.triggerTime + curControllerData.triggerTime;
+                    if (sequenceTriggerTime < lastUpdateTime)
+                    {
+                        continue;
+                    }
+                    if (sequenceTriggerTime >= curTime)
+                    {
+                        finish = false;
+                        continue;
+                    }
+                    finish = false;
+
+                    if (string.IsNullOrEmpty(curControllerData.controllerName) == false)
+                    {
+                        aniControl.SetController(curControllerData.controllerName);
+                    }
+                }
+
+                //update motion 
+                count = curEventData.actorMotionSequence.Count;
+                ActorMotionData curMotionData;
+                for (int index = 0; index < count; ++index)
+                {
+                    curMotionData = curEventData.actorMotionSequence[index];
+                    sequenceTriggerTime = curEventData.triggerTime + curMotionData.triggerTime;
+                    if (sequenceTriggerTime < lastUpdateTime)
+                    {
+                        continue;
+                    }
+                    if (sequenceTriggerTime >= curTime)
+                    {
+                        finish = false;
+                        continue;
+                    }
+                    finish = false;
+
+                    if (string.IsNullOrEmpty(curMotionData.motionKey) == false)
+                    {
+                        aniControl.SetBool(curMotionData.motionKey, bool.Parse(curMotionData.motionValue));
+                    }
                 }
             }
-            else
+
+            //update particle
+            count = curEventData.actorParticleSequence.Count;
+            ActorParticleData curParticleData;
+            for (int index = 0; index < count; ++index)
+            {
+                curParticleData = curEventData.actorParticleSequence[index];
+                sequenceTriggerTime = curEventData.triggerTime + curParticleData.triggerTime;
+                if (sequenceTriggerTime < lastUpdateTime)
+                {
+                    continue;
+                }
+                if (sequenceTriggerTime >= curTime)
+                {
+                    finish = false;
+                    continue;
+                }
+                finish = false;
+
+                if (string.IsNullOrEmpty(curParticleData.particleAsset) == false)
+                {
+                    GameObject prefab = ResourceMgr.Instance.LoadAsset(curParticleData.particleBundle, curParticleData.particleAsset);
+                    if (prefab != null)
+                    {
+                        curParticleData.psObject = prefab;
+                        Transform rootTransform = transform;
+                        if (string.IsNullOrEmpty(curEventData.rootNode))
+                        {
+                            GameObject rootParent = Util.FindChildByName(gameObject, curEventData.rootNode);
+                            if (rootParent != null)
+                            {
+                                rootTransform = rootParent.transform;
+                            }
+                        }
+
+                        if (curParticleData.particleParent != null && curParticleData.particleParent.Length > 0)
+                        {
+                            if (curEventData.rootNode != null)
+                            {
+                                Logger.LogWarning("weak point is ignored since event configs the parent node");
+                            }
+                            //Transform parentNode = transform.Find(curEvent.particleParent);
+                            GameObject parentNode = Util.FindChildByName(gameObject, curParticleData.particleParent);
+                            if (parentNode != null)
+                            {
+                                rootTransform = parentNode.transform;
+                            }
+                        }
+
+                        if (curParticleData.attach == "true")
+                        {
+                            curParticleData.psObject.transform.localPosition = prefab.transform.localPosition;
+                            //curParticleData.psObject.transform.localRotation = prefab.transform.localRotation;
+                            curParticleData.psObject.transform.localRotation = Quaternion.identity;
+                            curParticleData.psObject.transform.SetParent(rootTransform, false);
+                            //NOTE: xw said if attach, ignore lock
+                        }
+                        else
+                        {
+                            //curEvent.psObject.transform.parent = transform.parent;
+                            curParticleData.psObject.transform.localPosition = rootTransform.position;
+                            curParticleData.psObject.transform.localRotation = Quaternion.identity;
+                            //curParticleData.psObject.transform.localRotation = rootTransform.rotation;
+                            curParticleData.psObject.transform.SetParent(transform.parent, false);
+                            if (curParticleData.locky == "true")
+                            {
+                                curParticleData.psObject.transform.localRotation = Quaternion.identity;
+                                curParticleData.psObject.transform.localPosition = new Vector3(rootTransform.position.x, 0.0f, rootTransform.position.z);
+                            }
+
+                        }
+                        curParticleData.psObject.transform.localScale = prefab.transform.localScale;
+                        curParticleData.psDuration = Util.ParticleSystemLength(curParticleData.psObject.transform);
+
+                        if (curParticleData.particleAni != null && curParticleData.particleAni.Length > 0)
+                        {
+                            Animator animator = curParticleData.psObject.GetComponent<Animator>();
+                            int curStateHash = Animator.StringToHash(curParticleData.particleAni);
+                            if (animator != null && animator.HasState(0, curStateHash))
+                            {
+                                animator.Play(curStateHash);
+                            }
+                        }
+                    }
+                }
+            }
+
+            //update camera
+            //count = curEventData.actorCameraSequence.Count;
+            //ActorCameraData curCameraData;
+            //for (int index = 0; index < count; ++index)
+            //{
+            //    curCameraData = curEventData.actorCameraSequence[index];
+            //    sequenceTriggerTime = curEventData.triggerTime + curCameraData.triggerTime;
+            //    if (sequenceTriggerTime < lastUpdateTime)
+            //    {
+            //        continue;
+            //    }
+            //    if (sequenceTriggerTime >= curTime)
+            //    {
+            //        finish = false;
+            //        continue;
+            //    }
+            //    finish = false;
+
+            //    //Animator animator = curCameraData.psObject.GetComponent<Animator>();
+            //    //Animation animator = BattleCamera.Instance.CameraAttr;
+            //    //int curStateHash = Animator.StringToHash(curParticleData.particleAni);
+            //    //if (animator != null && animator.HasState(0, curStateHash))
+            //    //{
+            //    //    animator.Play(curStateHash);
+            //    //}
+            //}
+
+            //update mesh
+            count = curEventData.actorMeshSequence.Count;
+            ActorMeshData curActorMeshData;
+            for (int index = 0; index < count; ++index)
+            {
+                curActorMeshData = curEventData.actorMeshSequence[index];
+                sequenceTriggerTime = curEventData.triggerTime + curActorMeshData.triggerTime;
+                if (sequenceTriggerTime < lastUpdateTime)
+                {
+                    continue;
+                }
+                if (sequenceTriggerTime >= curTime)
+                {
+                    finish = false;
+                    continue;
+                }
+                finish = false;
+
+                if (string.IsNullOrEmpty(curActorMeshData.mesh))
+                {
+                    continue;
+                }
+                GameObject mesh = Util.FindChildByName(transform.gameObject, curActorMeshData.mesh);
+                mesh.SetActive(curActorMeshData.state == "show");
+            }
+
+            //update audio
+            count = curEventData.actorAudioSequence.Count;
+            ActorAudioData curAudioData;
+            for (int index = 0; index < count; ++index)
+            {
+                curAudioData = curEventData.actorAudioSequence[index];
+                sequenceTriggerTime = curEventData.triggerTime + curAudioData.triggerTime;
+                if (sequenceTriggerTime < lastUpdateTime)
+                {
+                    continue;
+                }
+                if (sequenceTriggerTime >= curTime)
+                {
+                    finish = false;
+                    continue;
+                }
+                finish = false;
+
+                if (string.IsNullOrEmpty(curAudioData.audioName))
+                {
+                    continue;
+                }
+
+                AudioClip ac = (AudioClip)Resources.Load(curAudioData.audioName, typeof(AudioClip));
+                if (ac != null)
+                {
+                    AudioSource.PlayClipAtPoint(ac, transform.position);
+                }
+                //AudioSource as = gameObject.GetComponent<AudioSource>();
+            }
+
+            //check particle
+            count = curEventData.actorParticleSequence.Count;
+            for (int index = 0; index < count; ++index)
+            {
+                curParticleData = curEventData.actorParticleSequence[index];
+                if (curParticleData.psObject != null)
+                {
+                    //TODO: replace Time.time to battle time
+                    if (curParticleData.psDuration >= 0.0f && curTime - curEventData.triggerTime - curParticleData.triggerTime >= curParticleData.psDuration)
+                    {
+                        ResourceMgr.Instance.DestroyAsset(curParticleData.psObject);
+                        curParticleData.psObject = null;
+                        //activeEventList.RemoveAt(i);
+                    }
+                    else 
+                    {
+                        finish = false;
+                    }
+                }
+            }
+
+            //check audio
+            //count = curEventData.actorAudioSequence.Count;
+            //for (int index = 0; index < count; ++index)
+            //{
+            //    curAudioData = curEventData.actorAudioSequence[index];
+            //    if (curAudioData.clip != null && curAudioData.clip.)
+            //    {
+            //        //TODO: replace Time.time to battle time
+            //        if (curParticleData.psDuration >= 0.0f && curTime - curEventData.triggerTime - curParticleData.triggerTime >= curParticleData.psDuration)
+            //        {
+            //            ResourceMgr.Instance.DestroyAsset(curParticleData.psObject);
+            //            curParticleData.psObject = null;
+            //            //activeEventList.RemoveAt(i);
+            //        }
+            //    }
+            //}
+
+            if (finish == true)
             {
                 activeEventList.RemoveAt(i);
             }
         }
 
-        if (type == BattleObjectType.Unit && false)
+        lastUpdateTime = curTime;
+
+        //rotate unit if necessary
+        if (type == BattleObjectType.Unit && transform.localRotation != targetRot)
         {
             float step = BattleConst.unitRotSpeed * Time.deltaTime;
             //transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRot, step);
@@ -170,118 +464,21 @@ public class BattleObject : MonoBehaviour
         for (int i = activeEventList.Count - 1; i >= 0; --i)
         {
             curEventData = activeEventList[i];
-            if (curEventData.psObject != null)
+            int count = curEventData.actorParticleSequence.Count;
+            ActorParticleData curParticleData;
+            for (int index = 0; index < count; ++index)
             {
-                ResourceMgr.Instance.DestroyAsset(curEventData.psObject);
+                curParticleData = curEventData.actorParticleSequence[index];
+                if (curParticleData.psObject != null)
+                {
+                    ResourceMgr.Instance.DestroyAsset(curParticleData.psObject);
+                    curParticleData.psObject = null;
+                }
             }
         }
         activeEventList.Clear();
     }
     //---------------------------------------------------------------------------------------------
-    private void UpdateEventsInternal()
-    {
-        float curTime = Time.time;
-        ActorEventData curEvent;
-        for (int i = waitEventList.Count - 1; i >= 0; --i)
-        {
-            curEvent = waitEventList[i];
-            if (curEvent.triggerTime <= curTime)
-            {
-                activeEventList.Add(curEvent);
-                if (curEvent.actorDelay > 0 && BattleController.Instance.Process != null)
-                {
-                    BattleController.Instance.Process.ActionDelayTime = curEvent.actorDelay;
-                }
-                if (aniControl != null)
-                {
-                    if (curEvent.controllerName != null && curEvent.controllerName.Length > 0)
-                    {
-                        aniControl.SetController(curEvent.controllerName);
-                    }
-                    //TODO: not only bool
-                    if (curEvent.motionKey != null && curEvent.motionKey.Length > 0)
-                    {
-                        aniControl.SetBool(curEvent.motionKey, bool.Parse(curEvent.motionValue));
-                    }
-                }
-
-                if (curEvent.particleAsset != null && curEvent.particleAsset.Length > 0)
-                {
-                    GameObject prefab = ResourceMgr.Instance.LoadAsset(curEvent.particleBundle, curEvent.particleAsset);
-                    if (prefab != null)
-                    {
-                        curEvent.psObject = prefab;
-                        Transform rootTransform = transform;
-                        if (curEvent.rootNode != null && curEvent.rootNode.Length > 0)
-                        {
-                            GameObject rootParent = Util.FindChildByName(gameObject, curEvent.rootNode);
-                            if (rootParent != null)
-                            {
-                                rootTransform = rootParent.transform;
-                            }
-                        }
-
-                        if (curEvent.particleParent != null && curEvent.particleParent.Length > 0)
-                        {
-                            if (curEvent.rootNode != null)
-                            {
-                                Logger.LogWarning("weak point is ignored since event configs the parent node");
-                            }
-                            //Transform parentNode = transform.Find(curEvent.particleParent);
-                            GameObject parentNode = Util.FindChildByName(gameObject, curEvent.particleParent);
-                            if (parentNode != null)
-                            {
-                                rootTransform = parentNode.transform;
-                            }
-                        }
-
-                        if (curEvent.attach == "true")
-                        {
-                            curEvent.psObject.transform.localPosition = prefab.transform.localPosition;
-                            //curEvent.psObject.transform.localRotation = prefab.transform.localRotation;
-                            curEvent.psObject.transform.localRotation = Quaternion.identity;
-                            curEvent.psObject.transform.SetParent(rootTransform, false);
-                            //NOTE: xw said if attach, ignore lock
-                        }
-                        else
-                        {
-                            //curEvent.psObject.transform.parent = transform.parent;
-                            curEvent.psObject.transform.localPosition = rootTransform.position;
-                            curEvent.psObject.transform.localRotation = Quaternion.identity;
-                            //curEvent.psObject.transform.localRotation = rootTransform.rotation;
-                            curEvent.psObject.transform.SetParent(transform.parent, false);
-                            if (curEvent.locky == "true")
-                            {
-                                curEvent.psObject.transform.localRotation = Quaternion.identity;
-                                curEvent.psObject.transform.localPosition = new Vector3(rootTransform.position.x, 0.0f, rootTransform.position.z);
-                            }
-
-                        }
-                        curEvent.psObject.transform.localScale = prefab.transform.localScale;
-                        curEvent.psDuration = Util.ParticleSystemLength(curEvent.psObject.transform);
-
-                        if (curEvent.particleAni != null && curEvent.particleAni.Length > 0)
-                        {
-                            Animator animator = curEvent.psObject.GetComponent<Animator>();
-                            int curStateHash = Animator.StringToHash(curEvent.particleAni);
-                            if (animator != null && animator.HasState(0, curStateHash))
-                            {
-                                animator.Play(curStateHash);
-                            }
-                        }
-                    }
-                }
-
-                if (curEvent.cameraAni != null && curEvent.cameraAni.Length > 0)
-                {
-
-                }
-
-                waitEventList.RemoveAt(i);
-            }
-        }
-    }
-
 	public void ShowWeakpointDeadEffect(string wp)
 	{
 		WeakPointData rowData = StaticDataMgr.Instance.GetWeakPointData(wp);
@@ -301,5 +498,6 @@ public class BattleObject : MonoBehaviour
 				}
 			}
 		}
-	}
+    }
+    //---------------------------------------------------------------------------------------------
 }

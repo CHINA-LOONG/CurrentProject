@@ -45,6 +45,16 @@ public class GameDataMgr : MonoBehaviour
 			return userData;
 		}
 	}
+
+	[SerializeField]
+	InstanceState	instanceState;
+	public	InstanceState	InstanceStateAttr
+	{
+		get
+		{
+			return instanceState;
+		}
+	}
     //---------------------------------------------------------------------------------------------
 	public void Init()
 	{
@@ -58,6 +68,11 @@ public class GameDataMgr : MonoBehaviour
 		userDataGo.transform.SetParent (transform);
 		userData = userDataGo.AddComponent<UserData>();
 		userData.Init ();
+
+		GameObject instanceGo = new GameObject("InstanceState");
+		instanceGo.transform.SetParent (transform);
+		instanceState = userDataGo.AddComponent<InstanceState>();
+		instanceState.Init ();
 
         BindListener();
 	}
@@ -132,11 +147,13 @@ public class GameDataMgr : MonoBehaviour
     void OnStatisticsInfoSync(ProtocolMessage msg)
     {
         PB.HSStatisticsInfoSync playerSync = msg.GetProtocolBody<PB.HSStatisticsInfoSync>();
-
     }
     //---------------------------------------------------------------------------------------------
     void OnMonsterInfoSync(ProtocolMessage msg)
     {
+		mainPlayer.unitPbList.Clear ();
+		mainPlayer.allUnitDic.Clear ();
+
         PB.HSMonsterInfoSync monsterSync = msg.GetProtocolBody<PB.HSMonsterInfoSync>();
         int monsterCount = monsterSync.monsterInfo.Count;
         for (int i = 0; i < monsterCount; ++i)
@@ -154,6 +171,9 @@ public class GameDataMgr : MonoBehaviour
             unit.starLevel = monster.stage;
             unit.spellPbList = monster.skill;
             mainPlayer.unitPbList.Add(unit.guid, unit);
+
+			mainPlayer.allUnitDic.Add(unit.guid,GameUnit.FromPb(unit,true));
+
         }
     }
     //---------------------------------------------------------------------------------------------

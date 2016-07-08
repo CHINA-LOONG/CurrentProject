@@ -397,7 +397,7 @@ public class PlayerData {
 			List<PlayerEntity> playerEntitys = HawkDBManager.getInstance().query("from PlayerEntity where puid = ? and invalid = 0", puid);
 			if (playerEntitys != null && playerEntitys.size() > 0) {
 				playerEntity = playerEntitys.get(0);
-				playerEntity.assemble();
+				playerEntity.decode();
 //				try {
 //					if (playerEntity.getSilentTime() != null && playerEntity.getSilentTime().getTime() > HawkTime.getMillisecond()) {
 //						ServerData.getInstance().addDisablePhone(playerEntity.getPhoneInfo());
@@ -417,7 +417,7 @@ public class PlayerData {
 			List<StatisticsEntity> statisticsEntitys = HawkDBManager.getInstance().query("from StatisticsEntity where playerId = ? and invalid = 0", getId());
 			if (statisticsEntitys != null && statisticsEntitys.size() > 0) {
 				statisticsEntity = statisticsEntitys.get(0);
-				statisticsEntity.assemble();
+				statisticsEntity.decode();
 
 //				// 新号上报数据
 //				if (statisticsEntity.getPlatformData() != null && statisticsEntity.getPlatformData().indexOf("65535") > 0) {
@@ -444,7 +444,7 @@ public class PlayerData {
 		List<MonsterEntity> monsterEntitys = HawkDBManager.getInstance().query("from MonsterEntity where playerId = ? and invalid = 0", getId());
 		if (monsterEntitys != null && monsterEntitys.size() > 0) {
 			for (MonsterEntity monsterEntity : monsterEntitys) {
-				monsterEntity.assemble();
+				monsterEntity.decode();
 				monsterEntityList.put(monsterEntity.getId(), monsterEntity);
 			}
 		}
@@ -462,7 +462,7 @@ public class PlayerData {
 		
 		if (itemEntities != null && itemEntities.size() > 0) {
 			for (ItemEntity itemEntity : itemEntities) {
-				itemEntity.assemble();
+				itemEntity.decode();
 			}
 		}
 		
@@ -481,7 +481,7 @@ public class PlayerData {
 		
 		if (equipEntities != null && equipEntities.size() > 0) {
 			for (EquipEntity equipEntity : equipEntities) {
-				equipEntity.assemble();
+				equipEntity.decode();
 			}
 		}
 		

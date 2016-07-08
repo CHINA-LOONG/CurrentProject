@@ -14,6 +14,9 @@ public class GsConst {
 	// 装备在背包时monsterId
 	public static final int EQUIPNOTDRESS = -1;
 	
+	// 扫荡券Id
+	public static final int SWEEP_TICKET = 10003;
+
 	/**
 	 * 对象类型
 	 * 

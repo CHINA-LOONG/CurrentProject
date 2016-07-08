@@ -174,6 +174,10 @@ public class BehaviorLogger {
 		 */
 		INSTACE_SETTLE,
 		/**
+		 * 副本扫荡
+		 */
+		INSTANCE_SWEEP,
+		/**
 		 * 任务交付
 		 */
 		QUEST_SUBMIT,

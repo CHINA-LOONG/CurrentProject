@@ -4,6 +4,36 @@ using System.Collections.Generic;
 using System.IO;
 using PathologicalGames;
 
+//---------------------------------------------------------------------------------------------
+// call backs
+public delegate void AssetLoadedCallBack(GameObject instance, System.EventArgs args, AssetBundle bundle);
+
+// asynchronous request
+public class AssetRequest
+{
+    //public bool isScene = false;
+    //public SceneLoadedCallBack sceneCallBack = null;
+    public string name = null;
+    public string bundleName = null;
+
+    public System.EventArgs args = null;
+    public AssetLoadedCallBack assetCallBack = null;
+
+    public AssetRequest(string bundleName, string name)
+    {
+        this.bundleName = bundleName;
+        this.name = name;
+    }
+
+    public AssetRequest(string bundleName, string name, AssetLoadedCallBack callBack, System.EventArgs args = null)
+    {
+        this.bundleName = bundleName;
+        this.name = name;
+        this.assetCallBack = callBack;
+        this.args = args;
+    }
+}
+//---------------------------------------------------------------------------------------------
 public class LoadedAssetBundle
 {
     public AssetBundle assetBundle;
@@ -15,7 +45,7 @@ public class LoadedAssetBundle
         referencedCount = 1;
     }
 }
-
+//---------------------------------------------------------------------------------------------
 public class ResourceMgr : MonoBehaviour
 {
     private string[] m_Variants = { };
@@ -24,8 +54,13 @@ public class ResourceMgr : MonoBehaviour
     private Dictionary<string, LoadedAssetBundle> loadedAssetBundleList = new Dictionary<string, LoadedAssetBundle>();
     private Dictionary<string, string[]> dependenceList = new Dictionary<string, string[]>();
 
+    private List<string> abRequestToRemoveList = new List<string>();
+    private Dictionary<string, AssetBundleCreateRequest> abRequestList = new Dictionary<string, AssetBundleCreateRequest>();
+
     static ResourceMgr mInst = null;
     public SpawnPool objectPool = null;
+    //pooled prefab
+    private Dictionary<string, GameObject> battlePoolList = new Dictionary<string,GameObject>();
 
     public static ResourceMgr Instance
     {
@@ -40,6 +75,30 @@ public class ResourceMgr : MonoBehaviour
         }
     }
 
+    //---------------------------------------------------------------------------------------------
+    void Update()
+    {
+        //update bundle request
+        foreach (var keyValue in abRequestList)
+        {
+            AssetBundleCreateRequest abRequest = keyValue.Value;
+            if (abRequest.isDone)
+            {
+                LoadedAssetBundle loadedBundle = new LoadedAssetBundle(abRequest.assetBundle);
+                loadedAssetBundleList.Add(keyValue.Key, loadedBundle);
+
+                abRequestToRemoveList.Add(keyValue.Key);
+            }
+        }
+
+        // Remove the finished WWWs.
+        foreach (var key in abRequestToRemoveList)
+        {
+            abRequestList.Remove(key);
+        }
+
+        abRequestList.Clear();
+    }
     //---------------------------------------------------------------------------------------------
     /// <summary>
     /// ≥ı ºªØ
@@ -65,18 +124,54 @@ public class ResourceMgr : MonoBehaviour
         GameApp.Instance.OnResourceInited();
     }
     //---------------------------------------------------------------------------------------------
-    //public void Destroy()
-    //{
-    //    objectPool.DespawnAll();
-    //}
+    public void LoadAssetAsyn(string abname, string name, AssetLoadedCallBack callBack = null, System.EventArgs args = null)
+    {
+        GameObject obj;
+        if ((obj = GetPoolObject(name)) != null)
+        {
+            if (callBack != null)
+            {
+                callBack(obj, args, null);
+            }
+            return;
+        }
+
+        StartCoroutine(LoadAssetRequest(new AssetRequest(abname, name, callBack, args)));
+    }
+    //---------------------------------------------------------------------------------------------
+    public IEnumerator LoadAssetRequest(AssetRequest request)
+    {
+        LoadAssetBundleAsync(request.bundleName);
+        AssetBundleLoadAssetOperationFull loadAssetOperate = new AssetBundleLoadAssetOperationFull(
+            request.bundleName,
+            request.name,
+            typeof(GameObject)
+            );
+
+        if (loadAssetOperate == null)
+            yield break;
+
+        yield return StartCoroutine(loadAssetOperate);
+
+        GameObject prefab = loadAssetOperate.GetAsset<GameObject>();
+        CreatePoolObject(prefab);
+        if (request.assetCallBack != null)
+        {
+            request.assetCallBack(Instantiate(prefab), request.args, GetLoadedAssetBundle(request.bundleName).assetBundle);
+        }
+
+        UnloadAssetBundle(request.bundleName);
+        Resources.UnloadUnusedAssets();
+        System.GC.Collect();
+    }
     //---------------------------------------------------------------------------------------------
     /// <summary>
     /// ‘ÿ»ÎÀÿ≤ƒ
     /// </summary>
     /// TODO: remove cache
-    public GameObject LoadAsset(string abname, string assetname, bool cache = true)
+    public GameObject LoadAsset(string abname, string assetname, bool cache = false)
     {
-        GameObject obj = GetPoolObject(assetname); 
+        GameObject obj = GetPoolObject(assetname);
         if (obj != null)
         {
             return obj;
@@ -103,21 +198,25 @@ public class ResourceMgr : MonoBehaviour
         if (cache == true)
         {
             CreatePoolObject(prefab);
-            go = objectPool.Spawn(prefab.transform, prefab.transform.localPosition, prefab.transform.localRotation).gameObject;
+            //go = objectPool.Spawn(prefab.transform, prefab.transform.localPosition, prefab.transform.localRotation).gameObject;
+            go = GetPoolObject(prefab.name);
         }
-        else 
+        else
         {
-            go = Instantiate(prefab);
+            CreatePoolObject(prefab);
+            //go = objectPool.Spawn(prefab.transform, prefab.transform.localPosition, prefab.transform.localRotation).gameObject;
+            go = GetPoolObject(prefab.name);
+            //go = Instantiate(prefab);
         }
 
         UnloadAssetBundle(abname);
-        Resources.UnloadUnusedAssets();
+        //Resources.UnloadUnusedAssets();
         System.GC.Collect();
 
         return go;
     }
     //---------------------------------------------------------------------------------------------
-    public void LoadAssetBatch(List<KeyValuePair<string, string>> assetList)
+    public IEnumerator LoadAssetBatch(List<KeyValuePair<string, string>> assetList)
     {
         int count = assetList.Count;
         List<string> requestBundleList = new List<string>();
@@ -128,33 +227,44 @@ public class ResourceMgr : MonoBehaviour
             assetName = assetList[i].Key;
             bundleName = assetList[i].Value;
             
-            GameObject obj = GetPoolObject(assetName);
-            if (obj != null)
-            {
-                continue;
-            }
+            //GameObject obj = GetPoolObject(assetName);
+            //if (obj != null)
+            //{
+            //    continue;
+            //}
 
             bundleName = bundleName.ToLower();
-            AssetBundle bundle = LoadAssetBundle(bundleName);
-            if (bundle == null)
-            {
-                Logger.LogErrorFormat("Load bundle{0} faild", bundleName);
-            }
-            GameObject prefab = bundle.LoadAsset<GameObject>(assetName);
-            if (prefab == null)
-            {
-                Logger.LogErrorFormat("Load asset{0} faild", assetName);
-            }
+            LoadAssetBundleAsync(bundleName);
+            AssetBundleLoadAssetOperationFull loadAssetOperate = new AssetBundleLoadAssetOperationFull(
+                bundleName,
+                assetName,
+                typeof(GameObject)
+                );
 
+            if (loadAssetOperate == null)
+                yield break;
+
+            yield return StartCoroutine(loadAssetOperate);
+
+            GameObject prefab = loadAssetOperate.GetAsset<GameObject>();
             CreatePoolObject(prefab);
+            //yield return StartCoroutine(LoadAssetRequest(new AssetRequest(bundleName, name)));
+            //CreatePoolObject(prefab);
         }
-
         for (int i = 0; i < count; ++i)
         {
-            UnloadAssetBundle(assetList[i].Value);
-            Resources.UnloadUnusedAssets();
+            bundleName = assetList[i].Value;
+            UnloadAssetBundle(bundleName);
+            //Resources.UnloadUnusedAssets();
         }
         System.GC.Collect();
+
+        //for (int i = 0; i < count; ++i)
+        //{
+        //    UnloadAssetBundle(assetList[i].Value);
+        //    Resources.UnloadUnusedAssets();
+        //}
+        //System.GC.Collect();
     }
     //---------------------------------------------------------------------------------------------
     public T LoadAssetType<T>(string abname, string assetname) where T:Object
@@ -175,32 +285,39 @@ public class ResourceMgr : MonoBehaviour
         //return obj;
     }
     //---------------------------------------------------------------------------------------------
-    public void DestroyAsset(GameObject target, bool cache = true)
+    public void DestroyAsset(GameObject target, bool cache = false)
     {
         if (cache == true)
         {
-            objectPool.Despawn(target.transform);
-            float defaultZ = target.transform.localPosition.z;
-            target.transform.SetParent(objectPool.transform, false);
-            //target.transform.parent = objectPool.transform;
-            //target.transform.localPosition = new Vector3(0, 0, defaultZ);
+            Destroy(target);
+            //objectPool.Despawn(target.transform);
+            //float defaultZ = target.transform.localPosition.z;
+            //target.transform.SetParent(objectPool.transform, false);
+            ////target.transform.parent = objectPool.transform;
+            ////target.transform.localPosition = new Vector3(0, 0, defaultZ);
         }
         else
         {
             Destroy(target);
         }
 
-        Resources.UnloadUnusedAssets();
-        System.GC.Collect();
+        //Resources.UnloadUnusedAssets();
+        //System.GC.Collect();
     }
     //---------------------------------------------------------------------------------------------
     public GameObject GetPoolObject(string name)
     {
-        if (objectPool.prefabs.ContainsKey(name))
+        //if (objectPool.prefabs.ContainsKey(name))
+        //{
+        //    Transform trans = objectPool.Spawn(name);
+        //    if (trans != null)
+        //        return trans.gameObject;
+        //}
+
+        GameObject go;
+        if (battlePoolList.TryGetValue(name, out go))
         {
-            Transform trans = objectPool.Spawn(name);
-            if (trans != null)
-                return trans.gameObject;
+            return Instantiate(go);
         }
 
         return null;
@@ -208,16 +325,46 @@ public class ResourceMgr : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void CreatePoolObject(GameObject srcObj)
     {
-        PrefabPool prefab = new PrefabPool(srcObj.transform);
-        prefab.preloadAmount = 0;
-        prefab.limitFIFO = false;
-        prefab.limitInstances = true;
-        prefab.cullAbove = 10;
-        //prefab.cullDespawned = true;
-        //prefab.cullAbove = 0;
-        //prefab.cullDelay = 60;
-        objectPool._perPrefabPoolOptions.Add(prefab);
-        objectPool.CreatePrefabPool(prefab);
+        if (battlePoolList.ContainsKey(srcObj.name) == false)
+        {
+            battlePoolList.Add(srcObj.name, srcObj);
+        }
+        //PrefabPool prefab = new PrefabPool(srcObj.transform);
+        //prefab.preloadAmount = 0;
+        //prefab.limitFIFO = false;
+        //prefab.limitInstances = true;
+        //prefab.cullAbove = 10;
+        ////prefab.cullDespawned = true;
+        ////prefab.cullAbove = 0;
+        ////prefab.cullDelay = 60;
+        //objectPool._perPrefabPoolOptions.Add(prefab);
+        //objectPool.CreatePrefabPool(prefab);
+    }
+    //---------------------------------------------------------------------------------------------
+    bool LoadAssetBundleAsync(string abname)
+    {
+        if (!abname.EndsWith(Const.ExtName))
+        {
+            abname += Const.ExtName;
+        }
+
+        LoadedAssetBundle loadedBundle;
+        if (loadedAssetBundleList.TryGetValue(abname, out loadedBundle) == true)
+        {
+            ++loadedBundle.referencedCount;
+            return true;
+        }
+
+        byte[] stream = null;
+        string uri = Path.Combine(Util.AssetBundlePath, abname);
+        Logger.Log("LoadFile::>> " + uri);
+        LoadDependencies(abname, true);
+
+        stream = File.ReadAllBytes(uri);
+        AssetBundleCreateRequest abRequest = AssetBundle.CreateFromMemory(stream);
+        abRequestList.Add(abname, abRequest);
+
+        return false;
     }
     //---------------------------------------------------------------------------------------------
     /// <summary>
@@ -252,6 +399,17 @@ public class ResourceMgr : MonoBehaviour
         }
 
         return loadedBundle.assetBundle;
+    }
+    //---------------------------------------------------------------------------------------------
+    public LoadedAssetBundle GetLoadedAssetBundle(string bundleName)
+    {
+        LoadedAssetBundle bundle;
+        if (loadedAssetBundleList.TryGetValue(bundleName, out bundle) == true)
+        {
+            return bundle;
+        }
+
+        return null;
     }
     //---------------------------------------------------------------------------------------------
     void UnloadAssetBundle(string abname)
@@ -289,7 +447,7 @@ public class ResourceMgr : MonoBehaviour
     /// ‘ÿ»Î“¿¿µ
     /// </summary>
     /// <param name="name"></param>
-    void LoadDependencies(string name, bool save = false)
+    void LoadDependencies(string name, bool async = false)
     {
         if (manifest == null)
         {
@@ -305,9 +463,19 @@ public class ResourceMgr : MonoBehaviour
 
         dependenceList.Add(name, dependencies);
         // Record and load all dependencies.
-        for (int i = 0; i < dependencies.Length; i++)
+        if (async == false)
         {
-            LoadAssetBundle(dependencies[i]);
+            for (int i = 0; i < dependencies.Length; i++)
+            {
+                LoadAssetBundle(dependencies[i]);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < dependencies.Length; i++)
+            {
+                LoadAssetBundleAsync(dependencies[i]);
+            }
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -365,6 +533,13 @@ public class ResourceMgr : MonoBehaviour
     void OnDestroy()
     {
         if (manifest != null) manifest = null;
+
+        //var itor = battlePoolList.GetEnumerator();
+        //while (itor.MoveNext())
+        //{
+        //    Destroy(itor.Current.Value);
+        //}
+        battlePoolList.Clear();
         Destroy(gameObject);
 		Logger.Log("~ResourceManager was destroy!");
     }

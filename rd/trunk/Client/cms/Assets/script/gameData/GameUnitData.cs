@@ -374,6 +374,16 @@ public class GameUnit
         return null;
     }
 
+	public	Spell GetSpellWithType(SpellType spellType)
+	{
+		foreach (var item in spellList)
+		{
+			if(item.Value.spellData.category == (int) spellType)
+				return item.Value;
+		}
+		return null;
+	}
+
     /// <summary>
     /// 累计速度，计算order值
     /// </summary>

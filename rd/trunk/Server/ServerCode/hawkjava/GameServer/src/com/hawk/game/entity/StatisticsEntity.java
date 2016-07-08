@@ -313,7 +313,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 		return instanceStarMap;
 	}
 
-	public void addInstanceStar(String instanceId, int starCount) {
+	public void setInstanceStar(String instanceId, int starCount) {
 		instanceStarMap.put(instanceId, starCount);
 	}
 	/**
@@ -326,14 +326,24 @@ public class StatisticsEntity  extends HawkDBEntity {
 		}
 		return 0;
 	}
-	
+
 	public Map<String, Integer> getInstanceCountDailyMap() {
 		return instanceCountDailyMap;
 	}
 
-	public void addInstanceCountDaily(String instanceId, int count) {
+	public void addInstanceCountDaily(String instanceId, int addCount) {
+		int curCount = 0;
+		Integer oldCount = instanceCountDailyMap.get(instanceId);
+		if (null != oldCount) {
+			curCount = oldCount;
+		}
+		instanceCountDailyMap.put(instanceId, curCount + addCount);
+	}
+
+	public void setInstanceCountDaily(String instanceId, int count) {
 		instanceCountDailyMap.put(instanceId, count);
 	}
+
 	/**
 	 * @return 副本完成次数，如未完成返回0
 	 */
@@ -344,7 +354,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 		}
 		return 0;
 	}
-	
+
 	public void clearInstanceCountDaily() {
 		instanceCountDailyMap.clear();
 	}
@@ -686,7 +696,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 	}
 
 	@Override
-	public boolean assemble() {
+	public boolean decode() {
 		refreshTimeMap.put(GsConst.RefreshType.DAILY_PERS_REFRESH, dailyRefreshTime);
 
 		if (questCompleteJson != null && false == "".equals(questCompleteJson) && false == "null".equals(questCompleteJson)) {
@@ -748,7 +758,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 	}
 
 	@Override
-	public boolean disassemble() {
+	public boolean encode() {
 		questCompleteJson = HawkJsonUtil.getJsonInstance().toJson(questCompleteSet);
 		questCompleteDailyJson = HawkJsonUtil.getJsonInstance().toJson(questCompleteDailySet);
 		monsterCollectJson = HawkJsonUtil.getJsonInstance().toJson(monsterCollectSet);
