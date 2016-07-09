@@ -6,7 +6,7 @@ public class WeakPointGroup
 {
 	public	Dictionary<string,WeakPointRuntimeData> allWpDic = new Dictionary<string, WeakPointRuntimeData>();
 
-	public	static	WeakPointGroup	CreateWeakpoingGroup(BattleObject unit)
+	public	static	WeakPointGroup	CreateWeakpointGroup(BattleObject unit)
 	{
 		WeakPointGroup wpGroup = new WeakPointGroup ();
 		wpGroup.SetBattleObject (unit);
@@ -46,7 +46,9 @@ public class WeakPointGroup
 			InitMirrorTarget(wpRealData,battleObj);
 
 			InitWeakPointState(wpRealData, battleObj);
-			
+
+			wpRealData.InitBoxColliders();
+			wpRealData.UpdateBoxCollider();
 		}
 	}
 
@@ -131,6 +133,7 @@ public class WeakPointGroup
 				continue;
 			}
 
+			/*
 			if(wpRealData.battleObject.unit.isBoss &&
 			   state == WeakpointState.Normal1 ||
 			   state == WeakpointState.Normal2)
@@ -151,6 +154,7 @@ public class WeakPointGroup
 				wpTarget.battleObject = wpRealData.battleObject;
 			}
 
+			*/
 			meshGo.SetActive(state == wpRealData.wpState);
 
 			wpRealData.wpMeshDic.Add(state,meshGo);
@@ -187,7 +191,7 @@ public class WeakPointGroup
 		return listReturn;
 	}
 
-	public	List<string> GetCanFirFocsList()
+	public	List<string> GetCanFireFocsList()
 	{
 		List<string> listReturn = new List<string> ();
 		foreach (var subItem in allWpDic.Values)

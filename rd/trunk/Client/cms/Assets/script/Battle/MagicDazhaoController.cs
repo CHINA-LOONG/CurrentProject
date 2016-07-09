@@ -44,6 +44,7 @@ public class MagicDazhaoController : MonoBehaviour
 	void OnDestroy()
 	{
 		UnBindListener ();
+		ResourceMgr.Instance.DestroyAsset (dazhaoFocusController.gameObject);
 	}
 	
 	void BindListener()
@@ -158,7 +159,7 @@ public class MagicDazhaoController : MonoBehaviour
 		isActionDo = true;
 		BattleController.Instance.Process.RunMagicDazhao (magicAction);
 		//慢镜头
-		GameSpeedService.Instance.SetTmpSpeed (BattleConst.dazhaoAttackTimeScale, BattleConst.dazhaoAttackTimeLength);
+		//GameSpeedService.Instance.SetTmpSpeed (BattleConst.dazhaoAttackTimeScale, BattleConst.dazhaoAttackTimeLength);
 	}
 
 	public void DazhaoAttackFinished(int casterID)
@@ -276,8 +277,14 @@ public class MagicDazhaoController : MonoBehaviour
 		{
 			return;
 		}
+
 		dazhaoState = DazhaoState.Finished;
 		CloseFazhenUI ();
+		if (null != dazhaoExitCheck)
+		{
+			Destroy(dazhaoExitCheck);
+			dazhaoExitCheck = null;
+		}
 		//if(casterBattleGo.shifaNodeEffect !=null)
 		//{
 		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);

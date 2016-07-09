@@ -12,7 +12,7 @@ message ConsumeItem
 	// 唯一Id
 	optional int64 id = 2;
 	// 物品编号
-	required int32 itemId = 3;
+	required string itemId = 3;
 	// 实体对象直接移除对象
 	optional int32 count = 4;
 }

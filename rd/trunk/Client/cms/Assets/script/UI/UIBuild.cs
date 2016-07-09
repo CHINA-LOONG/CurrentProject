@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class UIBuild : UIBase
+public class UIBuild : UIBase,PopupListIndextDelegate
 {
     public static string ViewName = "UIBuild";
 	public static string AssertName = "ui/build";
@@ -12,19 +13,29 @@ public class UIBuild : UIBase
 	public	Button	instanceButton;
 
     public Button m_QuestButton;
+    public Button m_SpeechButton;
+    public InputField m_SpeechInput;
+
+    public PopupList m_LangPopup;
 
 	public Text levelText;
 	public Text coinText;
 	public Text nameText;
+
 
     // Use this for initialization
     void Start()
     {
         EventTriggerListener.Get(m_PatButton.gameObject).onClick = PatButtonClick;
         EventTriggerListener.Get(m_ItemButton.gameObject).onClick = ItemButtonClick;
-		EventTriggerListener.Get (instanceButton.gameObject).onClick = OnInstanceButtonClick;
+        EventTriggerListener.Get(instanceButton.gameObject).onClick = OnInstanceButtonClick;
         EventTriggerListener.Get(m_QuestButton.gameObject).onClick = OnQuestButtonClick;
-        
+        EventTriggerListener.Get(m_SpeechButton.gameObject).onClick = OnSpeechButtonClick;
+
+        m_LangPopup.Initialize<PopupListIndextDelegate>(this);
+        m_LangPopup.AddItem((int)Language.Chinese, StaticDataMgr.Instance.GetTextByID("chinese"));
+        m_LangPopup.AddItem((int)Language.English, StaticDataMgr.Instance.GetTextByID("english"));
+        m_LangPopup.SetSelection((int)LanguageMgr.Instance.Lang);
 
         //levelText.text = GameDataMgr.Instance.PlayerDataAttr.level.ToString ();
         //coinText.text = GameDataMgr.Instance.PlayerDataAttr.coin.ToString ();
@@ -89,8 +100,26 @@ public class UIBuild : UIBase
         UIMgr.Instance.OpenUI(UIQuest.AssertName,UIQuest.ViewName);
     }
 
+    void OnSpeechButtonClick(GameObject go)
+    {
+        UISpeech.Open(m_SpeechInput.text);
+    }
+
 	void OnCachMonsterFinished(ProtocolMessage msg)
 	{
 
 	}
+
+    public void OnPopupListChanged(int index)
+    {
+        Language lang = (Language)index;
+        if (lang != LanguageMgr.Instance.Lang)
+        {
+            LanguageMgr.Instance.Lang = lang;
+            StaticDataMgr.Instance.OnLanguageChange(lang);
+            m_LangPopup.RefrshItem((int)Language.Chinese, StaticDataMgr.Instance.GetTextByID("chinese"));
+            m_LangPopup.RefrshItem((int)Language.English, StaticDataMgr.Instance.GetTextByID("english"));
+            //GameMain.Instance.ChangeModule<LoginModule>();
+        }
+    }
 }

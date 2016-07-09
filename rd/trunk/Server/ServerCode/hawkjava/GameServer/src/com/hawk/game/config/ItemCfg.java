@@ -16,7 +16,7 @@ public class ItemCfg extends HawkConfigBase {
 	 * 配置id
 	 */
 	@Id
-	protected final int id ;
+	protected final String id ;
 	/**
 	 * 1角色2怪物
 	 */
@@ -68,7 +68,7 @@ public class ItemCfg extends HawkConfigBase {
 	/**
 	 * 宝箱的奖励列表
 	 */
-	protected final int rewardId;
+	protected final String rewardId;
 	/**
 	 * 合成该装备需要的道具列表
 	 */
@@ -134,7 +134,7 @@ public class ItemCfg extends HawkConfigBase {
 	private List<ItemInfo> targetItemList;
 	
 	public ItemCfg(){				
-		id  = 0;
+		id  = null;
 		classType = 0;
 		type = 0;
 		grade = 0;
@@ -149,7 +149,7 @@ public class ItemCfg extends HawkConfigBase {
 		componentItem = null;
 		needItem = null;
 		stack = 0;
-		rewardId = 0;
+		rewardId = null;
 		targetItem = null;
 		needCount = 0;
 		addAttrType = 0;
@@ -169,7 +169,7 @@ public class ItemCfg extends HawkConfigBase {
 		targetItemList = new LinkedList<ItemInfo>();
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -228,7 +228,7 @@ public class ItemCfg extends HawkConfigBase {
 	}
 
 
-	public int getRewardId() {
+	public String getRewardId() {
 		return rewardId;
 	}
 
@@ -296,7 +296,6 @@ public class ItemCfg extends HawkConfigBase {
 		this.needItemList = needItemList;
 	}
 
-
 	public List<ItemInfo> getTargetItemList() {
 		return targetItemList;
 	}
@@ -318,7 +317,7 @@ public class ItemCfg extends HawkConfigBase {
 				if (items.length == 3) {
 					ItemInfo itemInfo = new ItemInfo();
 					itemInfo.setType(Integer.valueOf(items[0]));
-					itemInfo.setItemId(Integer.valueOf(items[1]));
+					itemInfo.setItemId(items[1]);
 					itemInfo.setCount(Integer.valueOf(items[2]));
 					componentItemList.add(itemInfo);
 				}
@@ -328,7 +327,7 @@ public class ItemCfg extends HawkConfigBase {
 					}
 					ItemInfo itemInfo = new ItemInfo();
 					itemInfo.setType(Integer.valueOf(items[0]));
-					itemInfo.setItemId(Integer.valueOf(items[1]));
+					itemInfo.setItemId(items[1]);
 					itemInfo.setCount(Integer.valueOf(items[2]));
 					itemInfo.setStage(Integer.valueOf(items[3]));
 					itemInfo.setLevel(Integer.valueOf(items[4]));
@@ -349,7 +348,7 @@ public class ItemCfg extends HawkConfigBase {
 					if (items.length == 3) {
 						ItemInfo itemInfo = new ItemInfo();
 						itemInfo.setType(Integer.valueOf(items[0]));
-						itemInfo.setItemId(Integer.valueOf(items[1]));
+						itemInfo.setItemId(items[1]);
 						itemInfo.setCount(Integer.valueOf(items[2]));
 						targetItemList.add(itemInfo);
 					}
@@ -359,7 +358,7 @@ public class ItemCfg extends HawkConfigBase {
 						}
 						ItemInfo itemInfo = new ItemInfo();
 						itemInfo.setType(Integer.valueOf(items[0]));
-						itemInfo.setItemId(Integer.valueOf(items[1]));
+						itemInfo.setItemId(items[1]);
 						itemInfo.setCount(Integer.valueOf(items[2]));
 						itemInfo.setStage(Integer.valueOf(items[3]));
 						itemInfo.setLevel(Integer.valueOf(items[4]));
@@ -380,7 +379,7 @@ public class ItemCfg extends HawkConfigBase {
 					if (items.length == 3) {
 						ItemInfo itemInfo = new ItemInfo();
 						itemInfo.setType(Integer.valueOf(items[0]));
-						itemInfo.setItemId(Integer.valueOf(items[1]));
+						itemInfo.setItemId(items[1]);
 						itemInfo.setCount(Integer.valueOf(items[2]));
 						needItemList.add(itemInfo);
 					}
@@ -390,7 +389,7 @@ public class ItemCfg extends HawkConfigBase {
 						}
 						ItemInfo itemInfo = new ItemInfo();
 						itemInfo.setType(Integer.valueOf(items[0]));
-						itemInfo.setItemId(Integer.valueOf(items[1]));
+						itemInfo.setItemId(items[1]);
 						itemInfo.setCount(Integer.valueOf(items[2]));
 						itemInfo.setStage(Integer.valueOf(items[3]));
 						itemInfo.setLevel(Integer.valueOf(items[4]));
@@ -410,11 +409,9 @@ public class ItemCfg extends HawkConfigBase {
 		if (this.type == Const.toolType.FRAGMENTTOOL_VALUE && this.getNeedCount() <= 0 ) {
 			return false;
 		}
-		else if (this.type == Const.toolType.BOXTOOL_VALUE && this.getRewardId() == 0) {
+		else if (this.type == Const.toolType.BOXTOOL_VALUE && (this.getRewardId() == null || this.getRewardId().equals(""))) {
 			return false;
 		}
-		
-		
 		return true;
 	}
 }

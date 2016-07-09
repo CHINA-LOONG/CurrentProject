@@ -6,6 +6,11 @@ state = 1 Remove
 -->
 <AniGroupList>
 	<AniList group="common">
+		<Ani id = "test_move" state = "0" action_delay="0">
+			<CameraMotionList>
+				<Camera time="0" ani="" parent="battlePosition1" is_mover="true" duration="5" mover_type="" />
+			</CameraMotionList>
+		</Ani>
 		<Ani id = "level_change" state = "0" action_delay="0">
 			<ParticleList>
 				<Particle time= "0" asset="hot" bundle="effect/particle" ani="firemove" parent=""/>
@@ -35,6 +40,9 @@ state = 1 Remove
 			<WpStateList>
 				<Wp time="0" name="" state="" />
 			</WpStateList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="" duration=""/>
+			</SpeedList>
 		</Ani>
 		<Ani id="hundun_ruodian_4_dead" state="0" action_delay="2">
 			<ControllerList>
@@ -56,6 +64,11 @@ state = 1 Remove
 				<Particle asset="sankai" bundle="effect/battle" ani="firemove" parent=""/>
 			</ParticleList>
 		</Ani>
+		<Ani id="unitExitandenter" state="0">
+			<MotionList>
+				<Motion ani="" key="run" value="true" />
+			</MotionList>
+		</Ani>
 		
 		<Ani id="s1" state="0">
 			<MotionList>
@@ -76,6 +89,9 @@ state = 1 Remove
 			<MotionList>
 				<Motion ani="" key="dead" value="true" />
 			</MotionList>
+			<ParticleList>
+				<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
 			<Camera ani="" />
 		</Ani>
 		
@@ -565,6 +581,26 @@ state = 1 Remove
 				<Particle asset="jvqi" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
 		</Ani>
+		<Ani id="phyDazhaoPrepare" state="0">
+			<ParticleList>
+				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="phyDazhaoPrepare_Finish" state="1" finish_event="phyDazhaoPrepare">
+			<ParticleList>
+				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicDazhaoPrepare" state="0">
+			<ParticleList>
+				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicDazhaoPrepare_Finish" state="1" finish_event="magicDazhaoPrepare">
+			<ParticleList>
+				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
 		<Ani id="yincangxiaoguai" state="0">
 			<ParticleList>
 				<Particle asset="monster_ghost" bundle="effect/particle" ani="firemove" parent=""/>
@@ -599,6 +635,19 @@ state = 1 Remove
 			<WpStateList>
 				<Wp time="0" name="jiuweihu_ruodian_2" state="3" />
 			</WpStateList>
+		</Ani>
+		<Ani id="phyDazhaoSlowMotion" state="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.2" duration="2"/>
+			</SpeedList>
+		</Ani>
+		<Ani id="demoershuDazhaoe7" state="0">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.2" duration="2"/>
+			</SpeedList>
 		</Ani>
 	</AniList>
 </AniGroupList>

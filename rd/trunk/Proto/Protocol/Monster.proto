@@ -99,3 +99,15 @@ message HSMonsterSkillUpRet
 	required int32 skillPoint = 1;
 	required int32 skillPointTimeStamp = 2;
 }
+
+// MONSTER_STAGE_UP_C
+message HSMonsterStageUp
+{
+	required int32 monsterId = 1;
+	repeated int32 consumeMonsterId = 2;
+}
+
+// MONSTER_STAGE_UP_S
+message HSMonsterStageUpRet
+{
+}

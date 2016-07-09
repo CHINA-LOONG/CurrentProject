@@ -13,11 +13,11 @@ public class InstanceRewardCfg extends HawkConfigBase {
 	protected final String id;
 	protected final float expCoef;
 	protected final float goldCoef;
-	protected final int rewardId;
-	protected final int sweepRewardId;
-	protected final int star1RewardGroupId;
-	protected final int star2RewardGroupId;
-	protected final int star3RewardGroupId;
+	protected final String rewardId;
+	protected final String sweepRewardId;
+	protected final String star1RewardGroupId;
+	protected final String star2RewardGroupId;
+	protected final String star3RewardGroupId;
 
 	// assemble
 	protected RewardCfg rewardCfg;
@@ -28,12 +28,11 @@ public class InstanceRewardCfg extends HawkConfigBase {
 		id = "";
 		expCoef = 1.0f;
 		goldCoef = 1.0f;
-		rewardId = 0;
-		star1RewardGroupId = 0;
-		star2RewardGroupId = 0;
-		star3RewardGroupId = 0;
-		sweepRewardId = 0;
-
+		rewardId = "";
+		star1RewardGroupId = "";
+		star2RewardGroupId = "";
+		star3RewardGroupId = "";
+		sweepRewardId = "";
 		starRewardCfgList = new ArrayList<RewardGroupCfg>();
 	}
 

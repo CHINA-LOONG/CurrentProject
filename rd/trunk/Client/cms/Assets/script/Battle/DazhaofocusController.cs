@@ -29,7 +29,7 @@ public class DazhaofocusController : MonoBehaviour
 			go =  ResourceMgr.Instance.LoadAsset("battlescene/dazhaofocus", "dazhaoFocusScene");
 		}
 		go.transform.localScale = Vector3.one;
-		go.transform.localPosition = Vector3.zero;
+		//go.transform.localPosition = Vector3.zero;
 		go.transform.localEulerAngles = Vector3.zero;
 
 		DazhaofocusController focus = go.AddComponent<DazhaofocusController> ();
@@ -121,6 +121,7 @@ public class DazhaofocusController : MonoBehaviour
 		monsterTrans.localScale = unitOldScale;
 		monsterTrans.localEulerAngles = unitOldEulerAngles;
 
+		battleObject.SetTargetRotate(battleObject.transform.localRotation, true);
 		//Transform cameraTrans = BattleCamera.Instance.transform;
 		//cameraTrans.position = cameraOldPosition;
 		//cameraTrans.localScale = cameraOldScale;

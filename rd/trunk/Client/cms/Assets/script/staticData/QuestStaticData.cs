@@ -20,7 +20,7 @@ public class QuestStaticData
     public string goalParam;    //目标参数
     public int goalCount;       //目标值	
 
-    public int rewardId;        //奖励
+    public string rewardId;        //奖励
     public int expK;            //经验系数k	
     public int expB;            //经验系数b	
 

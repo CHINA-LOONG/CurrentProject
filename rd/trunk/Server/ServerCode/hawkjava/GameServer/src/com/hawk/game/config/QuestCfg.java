@@ -20,7 +20,7 @@ public class QuestCfg extends HawkConfigBase {
 	protected final String goalType;
 	protected final String goalParam;
 	protected final int goalCount;
-	protected final int rewardId;
+	protected final String rewardId;
 	protected final float expK;
 	protected final float expB;
 
@@ -49,7 +49,7 @@ public class QuestCfg extends HawkConfigBase {
 		goalType = "";
 		goalParam = "";
 		goalCount = 0;
-		rewardId = 0;
+		rewardId = "";
 		expK = 0;
 		expB = 0;
 	}

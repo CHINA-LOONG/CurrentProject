@@ -26,27 +26,30 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
 
     //quest list
     public GameObject list_Content;
+    public ScrollRect scrollView;
     //not find quest
     public Text text_tips;
 
     private List<questItem> quests = new List<questItem>();
 
+    private Dictionary<int, QuestInfo> QuestList = new Dictionary<int, QuestInfo>();
     private List<QuestInfo> StoryList = new List<QuestInfo>();
     private List<QuestInfo> DailyList = new List<QuestInfo>();
     private List<QuestInfo> OtherList = new List<QuestInfo>();
 
+    private int tabIndex = 0;
     // Use this for initialization
     void Start()
     {
         //TODO:
         OnLanguageChanged();
-
         GetComponentInChildren<TabButtonGroup>().InitWithDelegate(this);
-        OnTabButtonChanged(0);
+        //OnTabButtonChanged(tabIndex);
     }
 
     public void OnTabButtonChanged(int index)
     {
+        tabIndex = index;
         List<QuestInfo> list;
         if ((QuestType)index == QuestType.StoryType) list = StoryList;
         else if ((QuestType)index == QuestType.DailyType) list = DailyList;
@@ -54,12 +57,12 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
         else { Logger.Log("error: tabview bug"); return; }
 
         list.Sort(SortQuest);
-
         for (int i = 0; i < quests.Count; i++)
         {
             if (i >= list.Count) quests[i].gameObject.SetActive(false);
             else quests[i].gameObject.SetActive(true);
         }
+
         for (int i = quests.Count; i < list.Count; i++)
         {
             GameObject go = ResourceMgr.Instance.LoadAsset("ui/quest", "questItem");
@@ -75,6 +78,9 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
         {
             quests[i].SetQuest(list[i]);
         }
+        if (list.Count <= 0) { text_tips.gameObject.SetActive(true); return; }
+        else { text_tips.gameObject.SetActive(false); }
+        scrollView.verticalNormalizedPosition = 1.0f;
     }
 
     void OnEnable()
@@ -93,11 +99,40 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
     void BindListener()
     {
         GameEventMgr.Instance.AddListener(GameEventList.QuestChanged, OnQuestChanged);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.QUEST_SUBMIT_S.GetHashCode().ToString(), OnSubmitReturn);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.QUEST_SUBMIT_C.GetHashCode().ToString(), OnSubmitError);
     }
 
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener(GameEventList.QuestChanged, OnQuestChanged);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.QUEST_SUBMIT_S.GetHashCode().ToString(), OnSubmitReturn);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.QUEST_SUBMIT_C.GetHashCode().ToString(), OnSubmitError);
+    }
+
+    void OnSubmitReturn(ProtocolMessage msg)
+    {
+        UINetRequest.Close();
+        if (msg == null)
+            return;
+        PB.HSQuestSubmitRet result = msg.GetProtocolBody<PB.HSQuestSubmitRet>();
+        QuestInfo item=null;
+        QuestList.TryGetValue(result.questId, out item);
+        if (item != null)
+        {
+            UIQuestInfo.Open(QuestList[result.questId]);
+            GameDataMgr.Instance.PlayerDataAttr.gameQuestData.RemoveQuest(result.questId);
+            Logger.Log("任务数量："+GameDataMgr.Instance.PlayerDataAttr.gameQuestData.questList.Count);
+            OnQuestChanged();
+        }
+    }
+    void OnSubmitError(ProtocolMessage msg)
+    {
+        UINetRequest.Close();
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
     }
 
     void OnQuestChanged()
@@ -119,39 +154,36 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
 #else
         Dictionary<int,QuestData> list= GameDataMgr.Instance.PlayerDataAttr.gameQuestData.questList;
 #endif
-        QuestInfo group4 = null;
+        QuestList.Clear();
+        StoryList.Clear();
+        DailyList.Clear();
+        OtherList.Clear();
         Logger.Log("Dictionary<int, QuestData> list:" + list.Count);
+        Dictionary<int, QuestInfo> groupUsedTime = new Dictionary<int, QuestInfo>();
         foreach (KeyValuePair<int,QuestData> item in list)
         {
             QuestInfo info = new QuestInfo();
             info.serverData = item.Value;
             info.staticData = StaticDataMgr.Instance.GetQuestData(item.Value.questId);
             if (info.staticData == null)  continue;
-            if (info.staticData.group==4)
+            QuestList.Add(info.serverData.questId, info);
+            TimeStaticData beginTime = StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId);
+            TimeStaticData endTime = StaticDataMgr.Instance.GetTimeData(info.staticData.timeEndId);
+            if (beginTime != null && endTime != null)
             {
-                TimeStaticData beginTime = StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId);
-                TimeStaticData endTime = StaticDataMgr.Instance.GetTimeData(info.staticData.timeEndId);
-                Logger.Log(beginTime + "      " + endTime);
-                if (beginTime == null || endTime == null) continue;
-                if (endTime < GameTimeMgr.Instance.GetTime())
-                    continue;
-                if (group4 != null)
+                if (endTime < GameTimeMgr.Instance.GetTime()) continue;
+                if (groupUsedTime.ContainsKey(info.staticData.group))
                 {
-                    if (beginTime < StaticDataMgr.Instance.GetTimeData(group4.staticData.timeBeginId))
+                    if (beginTime < StaticDataMgr.Instance.GetTimeData(groupUsedTime[info.staticData.group].staticData.timeBeginId))
                     {
-                        group4 = info;
-                        continue;
-                    }
-                    else
-                    {
-                        continue;
+                        groupUsedTime[info.staticData.group] = info;
                     }
                 }
                 else
                 {
-                    group4 = info; 
-                    continue;
+                    groupUsedTime.Add(info.staticData.group, info);
                 }
+                continue;
             }
 
             if ((QuestType)(info.staticData.type - 1) == QuestType.StoryType)
@@ -161,16 +193,18 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
             else if ((QuestType)(info.staticData.type - 1) == QuestType.OtherType)
                 OtherList.Add(info);
         }
-
-        if (group4 != null)
+        foreach (QuestInfo item in groupUsedTime.Values)
         {
-            if ((QuestType)(group4.staticData.type - 1) == QuestType.StoryType)
-                StoryList.Add(group4);
-            else if ((QuestType)(group4.staticData.type - 1) == QuestType.DailyType)
-                DailyList.Add(group4);
-            else if ((QuestType)(group4.staticData.type - 1) == QuestType.OtherType)
-                OtherList.Add(group4);
+            if ((QuestType)(item.staticData.type - 1) == QuestType.StoryType)
+                StoryList.Add(item);
+            else if ((QuestType)(item.staticData.type - 1) == QuestType.DailyType)
+                DailyList.Add(item);
+            else if ((QuestType)(item.staticData.type - 1) == QuestType.OtherType)
+                OtherList.Add(item);
         }
+
+
+        OnTabButtonChanged(tabIndex);
 
     }
 

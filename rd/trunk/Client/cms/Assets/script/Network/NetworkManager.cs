@@ -51,7 +51,7 @@ public class NetworkManager : MonoBehaviour
 				case ResponseState.Message:
 				{ 
 					ProtocolMessage pmsg = _event.Value;
-					Logger.Log("receiv msg : " + pmsg.GetMessageType());
+					//Logger.Log("receiv msg : " + pmsg.GetMessageType());
                     if (pmsg.GetMessageType() == (int)PB.sys.ERROR_CODE)
                     {
                         PB.HSErrorCode errorCode = pmsg.GetProtocolBody<PB.HSErrorCode>();
@@ -62,10 +62,8 @@ public class NetworkManager : MonoBehaviour
                             {
                                 GameEventMgr.Instance.FireEvent<ProtocolMessage>(errorCode.hpCode.ToString(), pmsg);
                             }
-                            else
-                            {
-                                Logger.LogError("error for net request :error code = " + errorCode.errCode);
-                            }
+							//Logger.LogError("error for net request :error code =  " + errorCode.errCode);
+							Logger.LogErrorFormat("error for net request :error code =  {0:X} " , errorCode.errCode);
                         }
                     }
                     else

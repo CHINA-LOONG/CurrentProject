@@ -1,4 +1,4 @@
-﻿#NUM,NUM,NUM,TEXT,TEXT,NUM,NUM,NUM,NUM,TEXT,TEXT,TEXT,TEXT,NUM,NUM,NUM,NUM,TEXT
+﻿#NUM,NUM,NUM,TEXT,TEXT,NUM,NUM,NUM,NUM,TEXT,TEXT,TEXT,TEXT,NUM,TEXT,NUM,NUM,TEXT
 id,group,type,name,icon,level,cycle,timeBeginId,timeEndId,descType,desc,goalType,goalParam,goalCount,rewardId,expK,expB,speechId
 #任务Id,任务组,类别,名称,图标,接取等级,循环性,开放时间配置Id,关闭时间配置Id,描述参数类型,任务描述,目标类型,目标参数,目标值,奖励,经验系数k,经验系数b,后续对话Id
 10002,1,1,通关【那缥缈的人生】,ui/quest/task_rmb_icon,101,2,0,0,,通关副本{0},difficulty,demo,1,10003,5,100,

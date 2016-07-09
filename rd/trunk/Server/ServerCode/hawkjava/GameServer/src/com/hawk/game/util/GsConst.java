@@ -15,7 +15,7 @@ public class GsConst {
 	public static final int EQUIPNOTDRESS = -1;
 	
 	// 扫荡券Id
-	public static final int SWEEP_TICKET = 10003;
+	public static final String SWEEP_TICKET = "10003";
 	
 	// 最大技能点数
 	public static final int MAX_SKILL_POINT = 10;
@@ -114,6 +114,17 @@ public class GsConst {
 		public static final int TU_PROPERTY = 5;
 	}
 
+	/**
+	 * item 配置解析类型
+	 */
+	public static class ItemParseType {
+		
+		public static final int PARSE_DEFAULT = 0;
+		public static final int PARSE_MONSTER_STAGE = 1;		
+		
+	}
+	
+	
 	public static class PlayerItemCheckResult {
 		/**
 		 * 金币不足
@@ -137,6 +148,10 @@ public class GsConst {
 		 * 装备不足
 		 */
 		public static final int EQUIP_NOI_ENOUGH = 8;
+		/**
+		 * 宠物不足
+		 */
+		public static final int MONSTER_NOI_ENOUGH = 8;
 	}
 
 	// 循环性

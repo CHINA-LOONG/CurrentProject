@@ -193,7 +193,7 @@ public class PlayerEntity extends HawkDBEntity {
 		return battleMonsterList;
 	}
 	
-	public void setBattleMonsterList(LinkedList<Integer> list) {
+	public void setBattleMonsterList(List<Integer> list) {
 		this.battleMonsterList = list;
 	}
 	

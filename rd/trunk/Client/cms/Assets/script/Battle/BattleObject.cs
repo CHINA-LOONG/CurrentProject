@@ -56,6 +56,7 @@ public class BattleObject : MonoBehaviour
                 curEvent.actorControllerSequence = new List<ActorControllerData>(srcEvent.actorControllerSequence);
                 curEvent.actorMeshSequence = new List<ActorMeshData>(srcEvent.actorMeshSequence);
                 curEvent.actorWpStateSequence = new List<ActorWpStateData>(srcEvent.actorWpStateSequence);
+                curEvent.actorSpeedSequence = new List<ActorSpeedData>(srcEvent.actorSpeedSequence);
                 //copy
                 curEvent.actorParticleSequence = new List<ActorParticleData>();
                 for (int i = 0; i < srcEvent.actorParticleSequence.Count; ++i)
@@ -103,6 +104,7 @@ public class BattleObject : MonoBehaviour
     public void OnEnterField()
     {
         unit.State = UnitState.None;
+        unit.backUp = false;
         //BattleObject bo = ObjectDataMgr.Instance.GetBattleObject(guid);
         //if (bo != null)
         {
@@ -119,7 +121,7 @@ public class BattleObject : MonoBehaviour
            // }
         }
 
-        unit.ReCalcSpeed();
+        unit.RecalcCurActionOrder();
 
         Logger.LogFormat("Unit {0} guid:{1} has entered field", name, guid);
     }
@@ -152,7 +154,10 @@ public class BattleObject : MonoBehaviour
         //if (unit != null)
         {
             ClearEvent();
-            unit.State = UnitState.None;
+            if (unit.State != UnitState.Dead)
+            {
+                unit.State = UnitState.None;
+            }
             gameObject.SetActive(false);
             Logger.LogFormat("Unit {0} guid:{1} has exited field", name, guid);
         }
@@ -454,7 +459,28 @@ public class BattleObject : MonoBehaviour
                     continue;
                 }
 
-                //TODO: Set wpstate
+                wpGroup.ChangeState(curWpData.wpName, (WeakpointState)curWpData.state);
+            }
+
+            //update speed
+            count = curEventData.actorSpeedSequence.Count;
+            ActorSpeedData curSpeedData = null;
+            for (int index = 0; index < count; ++index)
+            {
+                curSpeedData = curEventData.actorSpeedSequence[index];
+                sequenceTriggerTime = curEventData.triggerTime + curSpeedData.triggerTime;
+                if (sequenceTriggerTime < lastUpdateTime)
+                {
+                    continue;
+                }
+                if (sequenceTriggerTime >= curTime)
+                {
+                    finish = false;
+                    continue;
+                }
+                finish = false;
+
+                GameSpeedService.Instance.SetTmpSpeed(curSpeedData.speedRatio, curSpeedData.duration);
             }
 
 
@@ -509,7 +535,7 @@ public class BattleObject : MonoBehaviour
         {
             float step = BattleConst.unitRotSpeed * Time.deltaTime;
             //transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRot, step);
-            transform.localRotation = Quaternion.Lerp(transform.rotation, targetRot, step);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRot, step);
         }
     }
     //---------------------------------------------------------------------------------------------

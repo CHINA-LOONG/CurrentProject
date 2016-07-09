@@ -16,6 +16,8 @@ public enum UnitState
 /// <summary>
 /// 模拟战斗协议，只做测试用途
 /// </summary>
+/// 
+[Serializable]
 public class PbUnit
 {
     //站位，0，1，2表示，-1表示在场下
@@ -106,13 +108,14 @@ public class GameUnit : IComparable
     public List<string> weakPointList;
 
     //只在客户端计算使用的属性
-    float speedCount = 0;
-    float actionOrder = 0;
+    float lastActionOrder = 0.0f;
+    float actionOrder = 0.0f;
     public float ActionOrder { get { return actionOrder; } }
     public string attackWpName = null;
 
     UnitState state = UnitState.None;
     public UnitState State { get { return state; } set { state = value; } }
+    public bool backUp = false;
 
     //显示数据
     public Sprite headImg;
@@ -360,23 +363,37 @@ public class GameUnit : IComparable
 	}
 
     /// <summary>
-    /// 累计速度，计算order值
+    /// 计算下次行动序列
     /// </summary>
-    public void CalcSpeed()
+    public void CalcNextActionOrder(float fixPreOrder = -1.0f)
     {
-        speedCount += speed * (1.0f + spellSpeedRatio) * UnityEngine.Random.Range(BattleConst.speedFactorMin, BattleConst.speedFactorMax);
-        actionOrder = BattleConst.speedK / speedCount;
-        //Logger.LogFormat("Unit {0}: speedCount: {1}, actionOrder: {2}", name, speedCount, actionOrder);
+        float nextOrderCost = BattleConst.speedK / (speed * (1.0f + spellSpeedRatio) * UnityEngine.Random.Range(BattleConst.speedFactorMin, BattleConst.speedFactorMax));
+        if (fixPreOrder > 0.0f)
+        {
+            lastActionOrder = fixPreOrder;
+            actionOrder = fixPreOrder + nextOrderCost;
+        }
+        else
+        {
+            lastActionOrder = actionOrder;
+            actionOrder += nextOrderCost;
+        }
     }
 
     /// <summary>
-    /// 不累计速度，计算order值
+    /// 重新计算本次行动序列（速度改变时）
     /// </summary>
-    public void ReCalcSpeed()
+    public void RecalcCurActionOrder(float fixPreOrder = -1.0f)
     {
-        speedCount = speed * (1.0f + spellSpeedRatio) + UnityEngine.Random.Range(BattleConst.speedFactorMin, BattleConst.speedFactorMax);
-        actionOrder = BattleConst.speedK / speedCount;
-        //Logger.LogFormat("Unit {0}: speedCount: {1}, actionOrder: {2}", name, speedCount, actionOrder);
+        if (fixPreOrder > 0.0f)
+        {
+            lastActionOrder = actionOrder = fixPreOrder;
+        }
+        else
+        {
+            float nextOrderCost = BattleConst.speedK / (speed * (1.0f + spellSpeedRatio) * UnityEngine.Random.Range(BattleConst.speedFactorMin, BattleConst.speedFactorMax));
+            actionOrder = lastActionOrder + nextOrderCost;
+        }
     }
 
     //public void RemoveAllBuff()
@@ -386,6 +403,11 @@ public class GameUnit : IComparable
     //        buff.Finish();
     //    }
     //}
+    public void ResetAcionOrder()
+    {
+        actionOrder = lastActionOrder = 0.0f;
+    }
+
     public void OnStartNextProcess()
     {
         if (curLife <= 0 || state == UnitState.Dead)
@@ -393,6 +415,7 @@ public class GameUnit : IComparable
             return;
         }
 
+        ResetAcionOrder();
         invincible = 0;
         stun = 0;
         dazhao = 0;
@@ -438,6 +461,7 @@ public class GameUnit : IComparable
 
     public void ResetAllState()
     {
+        backUp = false;
         invincible = 0;
         stun = 0;
         energy = 0;
@@ -453,7 +477,7 @@ public class GameUnit : IComparable
         //二级属性
         curLife = maxLife;
 
-        speedCount = 0;
+        lastActionOrder = 0;
         actionOrder = 0;
         attackWpName = null;
 

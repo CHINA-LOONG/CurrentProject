@@ -172,18 +172,18 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 生成对局
 		// normal
-		List<String> randMonsterList = new ArrayList<String>();
+		List<String> orderedMonsterList = new ArrayList<String>();
 
 		// 乱序
 		for (Entry<String, Integer> entry : instanceCfg.getNormalBattleMonsterMap().entrySet()) {
 			for (int i = entry.getValue(); i > 0; --i) {
-				randMonsterList.add(entry.getKey());
+				orderedMonsterList.add(entry.getKey());
 			}
 		}
-		HawkRand.randomOrder(randMonsterList);
-		int battleMonsterCount = randMonsterList.size() / instanceCfg.getNormalBattleCount();
+		HawkRand.randomOrder(orderedMonsterList);
+		int battleMonsterCount = orderedMonsterList.size() / instanceCfg.getNormalBattleCount();
 
-		Iterator<String> iter = randMonsterList.iterator();
+		Iterator<String> iter = orderedMonsterList.iterator();
 		for (int i = 0; i < instanceCfg.getNormalBattleCount(); ++i) {
 			HSBattle.Builder battle = HSBattle.newBuilder();
 			battle.setBattleCfgId(instanceCfg.getNormalBattleIdList().get(i));
@@ -214,19 +214,19 @@ public class PlayerInstanceModule extends PlayerModule {
 		HSBattle.Builder bossBattle = HSBattle.newBuilder();
 		bossBattle.setBattleCfgId(instanceCfg.getBossBattleId());
 
-		// 乱序
-		randMonsterList.clear();
+		// boss对局不乱序
+		orderedMonsterList.clear();
 		for (Entry<String, Integer> entry : instanceCfg.getBossBattleMonsterMap().entrySet()) {
 			for (int i = entry.getValue(); i > 0; --i) {
-				randMonsterList.add(entry.getKey());
+				orderedMonsterList.add(entry.getKey());
 			}
 		}
-		HawkRand.randomOrder(randMonsterList);
+		//HawkRand.randomOrder(orderedMonsterList);
 
-		iter = randMonsterList.iterator();
+		iter = orderedMonsterList.iterator();
 		List<ItemInfo> battleDropList = new ArrayList<ItemInfo>();
-		for (int i = 0; i < randMonsterList.size(); ++i) {
-			String monsterCfgId = randMonsterList.get(i);
+		for (int i = 0; i < orderedMonsterList.size(); ++i) {
+			String monsterCfgId = orderedMonsterList.get(i);
 			String instanceMonsterId = instanceId + "_" + monsterCfgId;
 			List<ItemInfo> monsterDropList = null;
 			

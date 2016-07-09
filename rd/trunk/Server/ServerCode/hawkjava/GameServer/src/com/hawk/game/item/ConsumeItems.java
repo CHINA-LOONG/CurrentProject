@@ -9,6 +9,7 @@ import org.hawk.os.HawkException;
 import com.google.protobuf.ProtocolMessageEnum;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.log.BehaviorLogger.Params;
@@ -96,10 +97,10 @@ public class ConsumeItems {
 		return null;
 	}
 	
-	public ConsumeItems addItem(int itemId, int count) {		
+	public ConsumeItems addItem(String itemId, int count) {		
 		ConsumeItem.Builder consumeItem = null;
 		for (ConsumeItem.Builder consume :  consumeInfo.getConsumeItemsBuilderList()) {
-			if (consume.getType() == itemType.ITEM_VALUE && consume.getItemId() == itemId) {
+			if (consume.getType() == itemType.ITEM_VALUE && consume.getItemId().equals(itemId)) {
 				consumeItem = consume;
 				break;
 			}
@@ -118,7 +119,7 @@ public class ConsumeItems {
 		return this;
 	}
 
-	public ConsumeItems addEquip(long id, int equipId) {
+	public ConsumeItems addEquip(long id, String equipId) {
 		ConsumeItem.Builder consumeItem = ConsumeItem.newBuilder();
 		consumeItem.setType(Const.itemType.EQUIP_VALUE);
 		consumeItem.setItemId(equipId);
@@ -128,15 +129,14 @@ public class ConsumeItems {
 		return this;
 	}
 	
-	public ConsumeItems addAttr(int attrType, int count) {
+	public ConsumeItems addAttr(String attrType, int count) {
 		ConsumeItem.Builder consumeItem = null;
 		for (ConsumeItem.Builder consume :  consumeInfo.getConsumeItemsBuilderList()) {
-			if (consume.getType() == itemType.PLAYER_ATTR_VALUE && consume.getItemId() == attrType) {
+			if (consume.getType() == itemType.PLAYER_ATTR_VALUE && consume.getItemId().equals(attrType)) {
 				consumeItem = consume;
 				break;
 			}
-		}
-		
+		}		
 		if (consumeItem == null) {
 			consumeItem = ConsumeItem.newBuilder();
 			consumeItem.setType(itemType.PLAYER_ATTR_VALUE);
@@ -147,8 +147,20 @@ public class ConsumeItems {
 		else
 		{
 			consumeItem.setCount(consumeItem.getCount() + count);
-		}	
-		
+		}			
+		return this;
+	}
+	
+	public ConsumeItems addAttr(int attrType, int count) {		
+		return addAttr(String.valueOf(attrType), count);
+	}
+	
+	//目前怪物的消耗都是通过制定Id的
+	public ConsumeItems addMonster(int id) {
+		ConsumeItem.Builder consumeItem = ConsumeItem.newBuilder();
+		consumeItem.setType(Const.itemType.MONSTER_VALUE);
+		consumeItem.setId(id);
+		consumeInfo.addConsumeItems(consumeItem);
 		return this;
 	}
 	
@@ -165,11 +177,13 @@ public class ConsumeItems {
 		else if (itemInfo.getType() == itemType.ITEM_VALUE) {
 			addItem(itemInfo.getItemId(), itemInfo.getCount());
 		}
+		else if (itemInfo.getType() == itemType.MONSTER_VALUE) {
+			throw new RuntimeException("unsupport config consume type");
+		}
 		//配置的消耗类型不包括装备
 		else if (itemInfo.getType() == itemType.EQUIP_VALUE) {
 			throw new RuntimeException("unsupport config consume type");
 		}
-		
 		return this;
 	}
 	
@@ -190,11 +204,6 @@ public class ConsumeItems {
 
 	public ConsumeItems addCoin(int coin) {
 		addAttr(changeType.CHANGE_COIN_VALUE, coin);
-		return this;
-	}
-
-	public ConsumeItems addExp(int exp) {
-		addAttr(changeType.CHANGE_PLAYER_EXP_VALUE, exp);
 		return this;
 	}
 
@@ -248,12 +257,12 @@ public class ConsumeItems {
 	private int checkConsumeInternal(Player player) {
 		for(ConsumeItem consumeItem : consumeInfo.getConsumeItemsList()) {
 			if(consumeItem.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
-				if (consumeItem.getItemId() == Const.changeType.CHANGE_COIN_VALUE) {
+				if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_COIN_VALUE) {
 					if(player.getCoin() < consumeItem.getCount()) {
 						return PlayerItemCheckResult.COINS_NOT_ENOUGH;
 					} 
 				}
-				else if (consumeItem.getItemId() == Const.changeType.CHANGE_GOLD_VALUE) {
+				else if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_GOLD_VALUE) {
 					if (player.getGold() < consumeItem.getCount()) {
 						return PlayerItemCheckResult.GOLD_NOT_ENOUGH;
 					}
@@ -261,14 +270,21 @@ public class ConsumeItems {
 			}
 			else if(consumeItem.getType() == Const.itemType.EQUIP_VALUE) {
 				//检测装备 
-				long equipId = consumeItem.getId();
-				EquipEntity equipEntity = player.getPlayerData().getEquipById(equipId);
+				EquipEntity equipEntity = player.getPlayerData().getEquipById(consumeItem.getId());
 				if(equipEntity == null) {
 					return PlayerItemCheckResult.EQUIP_NOI_ENOUGH;
 				}
-			} else if(consumeItem.getType() == Const.itemType.ITEM_VALUE) {
+			} 
+			else if(consumeItem.getType() == Const.itemType.MONSTER_VALUE) {
+				//检测装备 
+				MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity((int)consumeItem.getId());
+				if(monsterEntity == null) {
+					return PlayerItemCheckResult.MONSTER_NOI_ENOUGH;
+				}
+			}
+			else if(consumeItem.getType() == Const.itemType.ITEM_VALUE) {
 				//检测道具
-				int itemId = (int) consumeItem.getItemId();
+				String itemId = consumeItem.getItemId();
 				ItemEntity itemEntity = player.getPlayerData().getItemByItemId(itemId);
 				if(itemEntity == null || itemEntity.getCount() <= 0 || itemEntity.getCount() < consumeItem.getCount()) {
 					return PlayerItemCheckResult.TOOLS_NOT_ENOUGH;
@@ -289,7 +305,7 @@ public class ConsumeItems {
 				SynPlayerAttr.Builder playerBuilder = consumeInfo.getPlayerAttrBuilder();
 				if (item.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
 					// 玩家属性
-					switch (item.getItemId()) {
+					switch (Integer.valueOf(item.getItemId()).intValue()) {
 					case changeType.CHANGE_COIN_VALUE:
 						player.consumeCoin(item.getCount(), action);
 						playerBuilder.setCoin(player.getCoin());
@@ -305,8 +321,7 @@ public class ConsumeItems {
 					}
 				}
 				else if(item.getType() == Const.itemType.ITEM_VALUE){
-					int itemId = item.getItemId();
-					ItemEntity itemEntity = player.consumeItem(itemId, item.getCount(), action);
+					ItemEntity itemEntity = player.consumeItem(item.getItemId(), item.getCount(), action);
 					if (itemEntity == null) {					
 						consumeInfo.removeConsumeItems(i);
 						continue;
@@ -314,6 +329,13 @@ public class ConsumeItems {
 				}
 				else if(item.getType() == Const.itemType.EQUIP_VALUE){
 					boolean result = player.consumeEquip(item.getId(), action);
+					if (result == false) {				
+						consumeInfo.removeConsumeItems(i);
+						continue;
+					}
+				}
+				else if(item.getType() == Const.itemType.MONSTER_VALUE ){
+					boolean result = player.consumeMonster((int)item.getId(), action);
 					if (result == false) {				
 						consumeInfo.removeConsumeItems(i);
 						continue;

@@ -253,6 +253,12 @@ public class BattleUnitAi : MonoBehaviour {
 		List<GameUnit> listTarget;
 		listTarget = GetOppositeSideFiledList (battleUnit);
 
+		if (null == listTarget) 
+		{
+			Logger.LogError("Error: OppositeSide no BattleObject!");
+			return null;
+		}
+
 		int iIndex = Random.Range (0, listTarget.Count);
 
 		GameUnit attackResult = listTarget [iIndex];

@@ -13,7 +13,7 @@ message GemInfo
 message EquipInfo
 {
 	required int64  id = 1;
-	required int32  equipId = 2;
+	required string  equipId = 2;
 	//装备品级
 	required int32  stage = 3;
 	//装备强化等级
@@ -35,7 +35,7 @@ message HSEquipInfoSync
 // 装备购买道具
 message HSEquipBuy
 {
-	required int32 equipId = 1;	
+	required string equipId = 1;	
 	required int32 equipCount = 2;
 	required int32 stage = 3;
 	optional int32 level = 4;
@@ -44,21 +44,21 @@ message HSEquipBuy
 // 装备购买道具
 message HSEquipBuyRet
 {
-	required int32 equipId = 1;	
+	required string equipId = 1;	
 	required int32 equipCount = 2;
 }
 
 // 合成装备
 message HSEquipCompose
 {
-	required int32 equipId = 1;
+	required string equipId = 1;
 	required int32 relatedItemId = 2;
 }
 
 // 合成装备返回
 message HSEquipComposeRet
 {
-	required int32 equipId = 1;
+	required string equipId = 1;
 	optional int32 stage = 2;
 	optional int32 level = 3;
 }

@@ -21,15 +21,20 @@ public final class Item {
      */
     long getId();
 
-    // required int32 itemId = 2;
+    // required string itemId = 2;
     /**
-     * <code>required int32 itemId = 2;</code>
+     * <code>required string itemId = 2;</code>
      */
     boolean hasItemId();
     /**
-     * <code>required int32 itemId = 2;</code>
+     * <code>required string itemId = 2;</code>
      */
-    int getItemId();
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
 
     // required int32 count = 3;
     /**
@@ -111,9 +116,9 @@ public final class Item {
               id_ = input.readInt64();
               break;
             }
-            case 16: {
+            case 18: {
               bitField0_ |= 0x00000002;
-              itemId_ = input.readInt32();
+              itemId_ = input.readBytes();
               break;
             }
             case 24: {
@@ -182,20 +187,47 @@ public final class Item {
       return id_;
     }
 
-    // required int32 itemId = 2;
+    // required string itemId = 2;
     public static final int ITEMID_FIELD_NUMBER = 2;
-    private int itemId_;
+    private java.lang.Object itemId_;
     /**
-     * <code>required int32 itemId = 2;</code>
+     * <code>required string itemId = 2;</code>
      */
     public boolean hasItemId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 itemId = 2;</code>
+     * <code>required string itemId = 2;</code>
      */
-    public int getItemId() {
-      return itemId_;
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     // required int32 count = 3;
@@ -232,7 +264,7 @@ public final class Item {
 
     private void initFields() {
       id_ = 0L;
-      itemId_ = 0;
+      itemId_ = "";
       count_ = 0;
       status_ = 0;
     }
@@ -268,7 +300,7 @@ public final class Item {
         output.writeInt64(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, itemId_);
+        output.writeBytes(2, getItemIdBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, count_);
@@ -291,7 +323,7 @@ public final class Item {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, itemId_);
+          .computeBytesSize(2, getItemIdBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -423,7 +455,7 @@ public final class Item {
         super.clear();
         id_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        itemId_ = 0;
+        itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -493,7 +525,9 @@ public final class Item {
           setId(other.getId());
         }
         if (other.hasItemId()) {
-          setItemId(other.getItemId());
+          bitField0_ |= 0x00000002;
+          itemId_ = other.itemId_;
+          onChanged();
         }
         if (other.hasCount()) {
           setCount(other.getCount());
@@ -577,35 +611,76 @@ public final class Item {
         return this;
       }
 
-      // required int32 itemId = 2;
-      private int itemId_ ;
+      // required string itemId = 2;
+      private java.lang.Object itemId_ = "";
       /**
-       * <code>required int32 itemId = 2;</code>
+       * <code>required string itemId = 2;</code>
        */
       public boolean hasItemId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 itemId = 2;</code>
+       * <code>required string itemId = 2;</code>
        */
-      public int getItemId() {
-        return itemId_;
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 itemId = 2;</code>
+       * <code>required string itemId = 2;</code>
        */
-      public Builder setItemId(int value) {
-        bitField0_ |= 0x00000002;
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 2;</code>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
         itemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 itemId = 2;</code>
+       * <code>required string itemId = 2;</code>
        */
       public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        itemId_ = 0;
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 2;</code>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        itemId_ = value;
         onChanged();
         return this;
       }
@@ -1384,15 +1459,20 @@ public final class Item {
   public interface HSItemUseOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     boolean hasItemId();
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    int getItemId();
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
   }
   /**
    * Protobuf type {@code HSItemUse}
@@ -1449,9 +1529,9 @@ public final class Item {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              itemId_ = input.readInt32();
+              itemId_ = input.readBytes();
               break;
             }
           }
@@ -1494,24 +1574,51 @@ public final class Item {
     }
 
     private int bitField0_;
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     public static final int ITEMID_FIELD_NUMBER = 1;
-    private int itemId_;
+    private java.lang.Object itemId_;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     public boolean hasItemId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    public int getItemId() {
-      return itemId_;
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private void initFields() {
-      itemId_ = 0;
+      itemId_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1530,7 +1637,7 @@ public final class Item {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, itemId_);
+        output.writeBytes(1, getItemIdBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1543,7 +1650,7 @@ public final class Item {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, itemId_);
+          .computeBytesSize(1, getItemIdBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1665,7 +1772,7 @@ public final class Item {
 
       public Builder clear() {
         super.clear();
-        itemId_ = 0;
+        itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
@@ -1716,7 +1823,9 @@ public final class Item {
       public Builder mergeFrom(com.hawk.game.protocol.Item.HSItemUse other) {
         if (other == com.hawk.game.protocol.Item.HSItemUse.getDefaultInstance()) return this;
         if (other.hasItemId()) {
-          setItemId(other.getItemId());
+          bitField0_ |= 0x00000001;
+          itemId_ = other.itemId_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1749,35 +1858,76 @@ public final class Item {
       }
       private int bitField0_;
 
-      // required int32 itemId = 1;
-      private int itemId_ ;
+      // required string itemId = 1;
+      private java.lang.Object itemId_ = "";
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public boolean hasItemId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public int getItemId() {
-        return itemId_;
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public Builder setItemId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         itemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        itemId_ = 0;
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
         onChanged();
         return this;
       }
@@ -1796,15 +1946,20 @@ public final class Item {
   public interface HSItemUseRetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     boolean hasItemId();
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    int getItemId();
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
   }
   /**
    * Protobuf type {@code HSItemUseRet}
@@ -1861,9 +2016,9 @@ public final class Item {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              itemId_ = input.readInt32();
+              itemId_ = input.readBytes();
               break;
             }
           }
@@ -1906,24 +2061,51 @@ public final class Item {
     }
 
     private int bitField0_;
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     public static final int ITEMID_FIELD_NUMBER = 1;
-    private int itemId_;
+    private java.lang.Object itemId_;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     public boolean hasItemId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    public int getItemId() {
-      return itemId_;
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private void initFields() {
-      itemId_ = 0;
+      itemId_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1942,7 +2124,7 @@ public final class Item {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, itemId_);
+        output.writeBytes(1, getItemIdBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1955,7 +2137,7 @@ public final class Item {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, itemId_);
+          .computeBytesSize(1, getItemIdBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2077,7 +2259,7 @@ public final class Item {
 
       public Builder clear() {
         super.clear();
-        itemId_ = 0;
+        itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
@@ -2128,7 +2310,9 @@ public final class Item {
       public Builder mergeFrom(com.hawk.game.protocol.Item.HSItemUseRet other) {
         if (other == com.hawk.game.protocol.Item.HSItemUseRet.getDefaultInstance()) return this;
         if (other.hasItemId()) {
-          setItemId(other.getItemId());
+          bitField0_ |= 0x00000001;
+          itemId_ = other.itemId_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2161,35 +2345,76 @@ public final class Item {
       }
       private int bitField0_;
 
-      // required int32 itemId = 1;
-      private int itemId_ ;
+      // required string itemId = 1;
+      private java.lang.Object itemId_ = "";
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public boolean hasItemId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public int getItemId() {
-        return itemId_;
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public Builder setItemId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         itemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        itemId_ = 0;
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
         onChanged();
         return this;
       }
@@ -2208,15 +2433,20 @@ public final class Item {
   public interface HSItemBuyOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     boolean hasItemId();
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    int getItemId();
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
 
     // required int32 itemCount = 2;
     /**
@@ -2283,9 +2513,9 @@ public final class Item {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              itemId_ = input.readInt32();
+              itemId_ = input.readBytes();
               break;
             }
             case 16: {
@@ -2333,20 +2563,47 @@ public final class Item {
     }
 
     private int bitField0_;
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     public static final int ITEMID_FIELD_NUMBER = 1;
-    private int itemId_;
+    private java.lang.Object itemId_;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     public boolean hasItemId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    public int getItemId() {
-      return itemId_;
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     // required int32 itemCount = 2;
@@ -2366,7 +2623,7 @@ public final class Item {
     }
 
     private void initFields() {
-      itemId_ = 0;
+      itemId_ = "";
       itemCount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -2390,7 +2647,7 @@ public final class Item {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, itemId_);
+        output.writeBytes(1, getItemIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, itemCount_);
@@ -2406,7 +2663,7 @@ public final class Item {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, itemId_);
+          .computeBytesSize(1, getItemIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -2532,7 +2789,7 @@ public final class Item {
 
       public Builder clear() {
         super.clear();
-        itemId_ = 0;
+        itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         itemCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -2589,7 +2846,9 @@ public final class Item {
       public Builder mergeFrom(com.hawk.game.protocol.Item.HSItemBuy other) {
         if (other == com.hawk.game.protocol.Item.HSItemBuy.getDefaultInstance()) return this;
         if (other.hasItemId()) {
-          setItemId(other.getItemId());
+          bitField0_ |= 0x00000001;
+          itemId_ = other.itemId_;
+          onChanged();
         }
         if (other.hasItemCount()) {
           setItemCount(other.getItemCount());
@@ -2629,35 +2888,76 @@ public final class Item {
       }
       private int bitField0_;
 
-      // required int32 itemId = 1;
-      private int itemId_ ;
+      // required string itemId = 1;
+      private java.lang.Object itemId_ = "";
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public boolean hasItemId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public int getItemId() {
-        return itemId_;
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public Builder setItemId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         itemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        itemId_ = 0;
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
         onChanged();
         return this;
       }
@@ -2709,15 +3009,20 @@ public final class Item {
   public interface HSItemBuyRetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     boolean hasItemId();
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    int getItemId();
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
 
     // required int32 itemCount = 2;
     /**
@@ -2784,9 +3089,9 @@ public final class Item {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              itemId_ = input.readInt32();
+              itemId_ = input.readBytes();
               break;
             }
             case 16: {
@@ -2834,20 +3139,47 @@ public final class Item {
     }
 
     private int bitField0_;
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     public static final int ITEMID_FIELD_NUMBER = 1;
-    private int itemId_;
+    private java.lang.Object itemId_;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     public boolean hasItemId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    public int getItemId() {
-      return itemId_;
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     // required int32 itemCount = 2;
@@ -2867,7 +3199,7 @@ public final class Item {
     }
 
     private void initFields() {
-      itemId_ = 0;
+      itemId_ = "";
       itemCount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -2891,7 +3223,7 @@ public final class Item {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, itemId_);
+        output.writeBytes(1, getItemIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, itemCount_);
@@ -2907,7 +3239,7 @@ public final class Item {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, itemId_);
+          .computeBytesSize(1, getItemIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3033,7 +3365,7 @@ public final class Item {
 
       public Builder clear() {
         super.clear();
-        itemId_ = 0;
+        itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         itemCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -3090,7 +3422,9 @@ public final class Item {
       public Builder mergeFrom(com.hawk.game.protocol.Item.HSItemBuyRet other) {
         if (other == com.hawk.game.protocol.Item.HSItemBuyRet.getDefaultInstance()) return this;
         if (other.hasItemId()) {
-          setItemId(other.getItemId());
+          bitField0_ |= 0x00000001;
+          itemId_ = other.itemId_;
+          onChanged();
         }
         if (other.hasItemCount()) {
           setItemCount(other.getItemCount());
@@ -3130,35 +3464,76 @@ public final class Item {
       }
       private int bitField0_;
 
-      // required int32 itemId = 1;
-      private int itemId_ ;
+      // required string itemId = 1;
+      private java.lang.Object itemId_ = "";
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public boolean hasItemId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public int getItemId() {
-        return itemId_;
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public Builder setItemId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         itemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        itemId_ = 0;
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
         onChanged();
         return this;
       }
@@ -3210,15 +3585,20 @@ public final class Item {
   public interface HSItemComposeOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     boolean hasItemId();
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    int getItemId();
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
   }
   /**
    * Protobuf type {@code HSItemCompose}
@@ -3275,9 +3655,9 @@ public final class Item {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              itemId_ = input.readInt32();
+              itemId_ = input.readBytes();
               break;
             }
           }
@@ -3320,24 +3700,51 @@ public final class Item {
     }
 
     private int bitField0_;
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     public static final int ITEMID_FIELD_NUMBER = 1;
-    private int itemId_;
+    private java.lang.Object itemId_;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     public boolean hasItemId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    public int getItemId() {
-      return itemId_;
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private void initFields() {
-      itemId_ = 0;
+      itemId_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3356,7 +3763,7 @@ public final class Item {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, itemId_);
+        output.writeBytes(1, getItemIdBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -3369,7 +3776,7 @@ public final class Item {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, itemId_);
+          .computeBytesSize(1, getItemIdBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3491,7 +3898,7 @@ public final class Item {
 
       public Builder clear() {
         super.clear();
-        itemId_ = 0;
+        itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
@@ -3542,7 +3949,9 @@ public final class Item {
       public Builder mergeFrom(com.hawk.game.protocol.Item.HSItemCompose other) {
         if (other == com.hawk.game.protocol.Item.HSItemCompose.getDefaultInstance()) return this;
         if (other.hasItemId()) {
-          setItemId(other.getItemId());
+          bitField0_ |= 0x00000001;
+          itemId_ = other.itemId_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -3575,35 +3984,76 @@ public final class Item {
       }
       private int bitField0_;
 
-      // required int32 itemId = 1;
-      private int itemId_ ;
+      // required string itemId = 1;
+      private java.lang.Object itemId_ = "";
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public boolean hasItemId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public int getItemId() {
-        return itemId_;
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public Builder setItemId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         itemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        itemId_ = 0;
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
         onChanged();
         return this;
       }
@@ -3622,15 +4072,20 @@ public final class Item {
   public interface HSItemComposeRetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     boolean hasItemId();
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    int getItemId();
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
   }
   /**
    * Protobuf type {@code HSItemComposeRet}
@@ -3687,9 +4142,9 @@ public final class Item {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              itemId_ = input.readInt32();
+              itemId_ = input.readBytes();
               break;
             }
           }
@@ -3732,24 +4187,51 @@ public final class Item {
     }
 
     private int bitField0_;
-    // required int32 itemId = 1;
+    // required string itemId = 1;
     public static final int ITEMID_FIELD_NUMBER = 1;
-    private int itemId_;
+    private java.lang.Object itemId_;
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
     public boolean hasItemId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 itemId = 1;</code>
+     * <code>required string itemId = 1;</code>
      */
-    public int getItemId() {
-      return itemId_;
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private void initFields() {
-      itemId_ = 0;
+      itemId_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3768,7 +4250,7 @@ public final class Item {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, itemId_);
+        output.writeBytes(1, getItemIdBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -3781,7 +4263,7 @@ public final class Item {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, itemId_);
+          .computeBytesSize(1, getItemIdBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3903,7 +4385,7 @@ public final class Item {
 
       public Builder clear() {
         super.clear();
-        itemId_ = 0;
+        itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
@@ -3954,7 +4436,9 @@ public final class Item {
       public Builder mergeFrom(com.hawk.game.protocol.Item.HSItemComposeRet other) {
         if (other == com.hawk.game.protocol.Item.HSItemComposeRet.getDefaultInstance()) return this;
         if (other.hasItemId()) {
-          setItemId(other.getItemId());
+          bitField0_ |= 0x00000001;
+          itemId_ = other.itemId_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -3987,35 +4471,76 @@ public final class Item {
       }
       private int bitField0_;
 
-      // required int32 itemId = 1;
-      private int itemId_ ;
+      // required string itemId = 1;
+      private java.lang.Object itemId_ = "";
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public boolean hasItemId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public int getItemId() {
-        return itemId_;
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
-      public Builder setItemId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         itemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 itemId = 1;</code>
+       * <code>required string itemId = 1;</code>
        */
       public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        itemId_ = 0;
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
         onChanged();
         return this;
       }
@@ -4081,15 +4606,15 @@ public final class Item {
   static {
     java.lang.String[] descriptorData = {
       "\n\023Protocol/Item.proto\"E\n\010ItemInfo\022\n\n\002id\030" +
-      "\001 \002(\003\022\016\n\006itemId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\016\n\006" +
+      "\001 \002(\003\022\016\n\006itemId\030\002 \002(\t\022\r\n\005count\030\003 \002(\005\022\016\n\006" +
       "status\030\004 \002(\005\".\n\016HSItemInfoSync\022\034\n\titemIn" +
       "fos\030\001 \003(\0132\t.ItemInfo\"\033\n\tHSItemUse\022\016\n\006ite" +
-      "mId\030\001 \002(\005\"\036\n\014HSItemUseRet\022\016\n\006itemId\030\001 \002(" +
-      "\005\".\n\tHSItemBuy\022\016\n\006itemId\030\001 \002(\005\022\021\n\titemCo" +
+      "mId\030\001 \002(\t\"\036\n\014HSItemUseRet\022\016\n\006itemId\030\001 \002(" +
+      "\t\".\n\tHSItemBuy\022\016\n\006itemId\030\001 \002(\t\022\021\n\titemCo" +
       "unt\030\002 \002(\005\"1\n\014HSItemBuyRet\022\016\n\006itemId\030\001 \002(" +
-      "\005\022\021\n\titemCount\030\002 \002(\005\"\037\n\rHSItemCompose\022\016\n" +
-      "\006itemId\030\001 \002(\005\"\"\n\020HSItemComposeRet\022\016\n\006ite" +
-      "mId\030\001 \002(\005B\030\n\026com.hawk.game.protocol"
+      "\t\022\021\n\titemCount\030\002 \002(\005\"\037\n\rHSItemCompose\022\016\n" +
+      "\006itemId\030\001 \002(\t\"\"\n\020HSItemComposeRet\022\016\n\006ite" +
+      "mId\030\001 \002(\tB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

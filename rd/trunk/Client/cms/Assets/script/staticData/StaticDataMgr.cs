@@ -35,11 +35,13 @@ public class StaticDataMgr : MonoBehaviour
 	Dictionary<int,CharacterData> characterData = new Dictionary<int, CharacterData>();
 	Dictionary<int,Chapter>	chapterData = new Dictionary<int, Chapter>();
 	Dictionary<string,InstanceEntry> instanceEntryData = new Dictionary<string, InstanceEntry>();
-	Dictionary<int,ItemStaticData> itemData = new Dictionary<int, ItemStaticData>();
+	Dictionary<string,ItemStaticData> itemData = new Dictionary<string, ItemStaticData>();
 	Dictionary<int,PlayerLevelAttr> playerLevelAttr = new Dictionary<int, PlayerLevelAttr>();
     Dictionary<int, QuestStaticData> questData = new Dictionary<int, QuestStaticData>();
-    Dictionary<int, RewardData> rewardData = new Dictionary<int, RewardData>();
+    Dictionary<string, RewardData> rewardData = new Dictionary<string, RewardData>();
     Dictionary<int, TimeStaticData> timeData = new Dictionary<int, TimeStaticData>();
+    Dictionary<string, SpeechData> speechData = new Dictionary<string, SpeechData>();
+    Dictionary<string, string> langData = new Dictionary<string, string>();
 
     public void Init()
     {
@@ -315,7 +317,7 @@ public class StaticDataMgr : MonoBehaviour
                     }
                     else if (rewardAttr.Length != 4) continue;
 
-                    RewardItemData rewardItem=null;
+                    RewardItemData rewardItem = null;
                     switch ((PB.itemType)int.Parse(rewardAttr[0]))
                     {
                         case PB.itemType.NONE_ITEM:
@@ -323,19 +325,19 @@ public class StaticDataMgr : MonoBehaviour
                         case PB.itemType.PLAYER_ATTR:
                         case PB.itemType.MONSTER_ATTR:
                             rewardItem = new RewardItemData(int.Parse(rewardAttr[0]),
-                                                        int.Parse(rewardAttr[1]),
+                                                        rewardAttr[1],
                                                         int.Parse(rewardAttr[2]),
                                                         float.Parse(rewardAttr[3]));
                             break;
                         case PB.itemType.ITEM:
                             rewardItem = new RewardItemData(int.Parse(rewardAttr[0]),
-                                                        int.Parse(rewardAttr[1]),
+                                                        rewardAttr[1],
                                                         int.Parse(rewardAttr[2]),
                                                         float.Parse(rewardAttr[3]));
                             break;
                         case PB.itemType.EQUIP:
                             rewardItem = new RewardItemData(int.Parse(rewardAttr[0]),
-                                                        int.Parse(rewardAttr[1]),
+                                                        rewardAttr[1],
                                                         int.Parse(rewardAttr[2]),
                                                         int.Parse(rewardAttr[3]),
                                                         int.Parse(rewardAttr[4]),
@@ -370,6 +372,76 @@ public class StaticDataMgr : MonoBehaviour
             }
             #endregion
         }
+        {
+            #region speech
+            var data = InitTable<SpeechStaticData>("speech");
+
+            foreach (var item in data)
+            {
+                if (speechData.ContainsKey(item.id))
+                {
+                    speechData[item.id].speechList.Add(item);
+                    continue;
+                }
+                else if (!string.IsNullOrEmpty(item.id))
+                {
+                    SpeechData speech = new SpeechData();
+                    speech.id = item.id;
+                    speech.skip = item.skip;
+                    speech.speechList.Add(item);
+                    speechData.Add(speech.id, speech);
+                }
+                else if (speechData.Count > 0)
+                {
+                    speechData.Values.Last<SpeechData>().speechList.Add(item);
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            //Logger.Log(speechData.Count);
+            //foreach (var item in speechData)
+            //{
+            //    Logger.Log(item.Key);
+            //    foreach (var info in item.Value.speechList)
+            //    {
+            //        Logger.Log(info.name);
+            //    }
+            //}
+            #endregion
+        }
+        {
+            #region language
+            OnLanguageChange(LanguageMgr.Instance.Lang);
+            #endregion
+        }
+    }
+
+    public void OnLanguageChange(Language lang)
+    {
+        #region language
+        string name;
+        switch (lang)
+        {
+            case Language.English:
+                name = "english";
+                break;
+            case Language.Chinese:
+                name = "chinese";
+                break;
+            default:
+                name = "english";
+                break;
+        }
+        var data = InitTable<LangStaticData>(name);
+        langData.Clear();
+        foreach (var item in data)
+        {
+            langData.Add(item.id, item.content);
+        }
+        #endregion
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -507,7 +579,7 @@ public class StaticDataMgr : MonoBehaviour
 		return listReturn;
 	}
 
-	public ItemStaticData GetItemData(int id)
+	public ItemStaticData GetItemData(string id)
 	{
 		ItemStaticData item = null;
 		itemData.TryGetValue (id, out item);
@@ -528,7 +600,7 @@ public class StaticDataMgr : MonoBehaviour
         return item;
     }
 
-    public RewardData GetRewardData(int id)
+    public RewardData GetRewardData(string id)
     {
         RewardData item = null;
         rewardData.TryGetValue(id, out item);
@@ -543,5 +615,19 @@ public class StaticDataMgr : MonoBehaviour
     }
 
 
+    public SpeechData GetSpeechData(string id)
+    {
+        SpeechData item = null;
+        speechData.TryGetValue(id, out item);
+        return item;
+    }
+
+
+    public string GetTextByID(string id)
+    {
+        string text = id;
+        langData.TryGetValue(id, out text);
+        return text;
+    }
     #endregion
 }

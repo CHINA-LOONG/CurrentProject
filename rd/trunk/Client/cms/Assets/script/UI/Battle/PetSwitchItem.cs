@@ -15,8 +15,14 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     public Sprite normalFrame;
     public Sprite emptyFrame;
     public Sprite deadFrame;
+    public Sprite defaulthead;
+    public Sprite toBeEntreFrame;
 
-    int targetId;
+    public int targetId
+    {
+        set;
+        get;
+    }
     GameUnit unit;
 
     float maskHeight = 152;
@@ -35,7 +41,11 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     {
         if (BattleController.Instance.Process.SwitchPetCD == 0)
         {
-            if (unit != null && unit.curLife > 0)
+            if (unit != null &&
+                unit.curLife > 0 &&
+                unit.State != UnitState.Dead &&
+                unit.State != UnitState.ToBeEnter
+                )
             {
                 GameEventMgr.Instance.FireEvent<int, int>(GameEventList.SwitchPet, targetId, unit.pbUnit.guid);
                 GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
@@ -43,20 +53,20 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void Show(int targetId, GameUnit unit)
-    {
-        this.targetId = targetId;
-        this.unit = unit;
+    //public void Show(int targetId, GameUnit unit)
+    //{
+    //    this.targetId = targetId;
+    //    this.unit = unit;
 
-        InitItem();
-    }
+    //    InitItem();
+    //}
 
     void InitItem()
     {
         head.sprite = unit.headImg;
         nameText.text = unit.name;
 
-        if (unit != null && unit.curLife > 0)
+        if (unit != null && (unit.curLife > 0 && unit.State != UnitState.Dead))
         {
             cdmask.gameObject.SetActive(false);
             lifeBar.gameObject.SetActive(true);
@@ -76,13 +86,10 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
 
     public void ShowEmpty(bool isDead)
     {
-        cdmask.gameObject.SetActive(true);
-        var size = cdmask.rectTransform.sizeDelta;
-        size.y = maskHeight;
-        cdmask.rectTransform.sizeDelta = size;
+        ShowCDmask();
 
         //血条为空
-        size = lifeBar.rectTransform.sizeDelta;
+        var size = lifeBar.rectTransform.sizeDelta;
         size.x = 0;
         lifeBar.rectTransform.sizeDelta = size;
         lifeBar.gameObject.SetActive(false);
@@ -101,6 +108,7 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         {
             nameText.text = "";
             frame.sprite = emptyFrame;
+            head.sprite = defaulthead;
         }
 
         gameObject.SetActive(true);
@@ -123,13 +131,17 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
             }
             else
             {
-                if (unit.curLife > 0)
+                if (unit.curLife > 0 && unit.State != UnitState.Dead)
                 {
                     if (BattleController.Instance.Process.SwitchPetCD > 0)
                     {
                         var size = cdmask.rectTransform.sizeDelta;
                         size.y = maskHeight * (BattleController.Instance.Process.SwitchPetCD / BattleConst.switchPetCD);
                         cdmask.rectTransform.sizeDelta = size;
+                    }
+                    else 
+                    {
+                        cdmask.gameObject.SetActive(false);
                     }
 
                     {
@@ -141,10 +153,28 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
                         size.y = energyBarHeight * (unit.energy / (float)BattleConst.enegyMax);
                         energyBar.rectTransform.sizeDelta = size;
                     }
+
+                    if (unit.State == UnitState.ToBeEnter)
+                    {
+                        frame.sprite = toBeEntreFrame;
+                        ShowCDmask();
+                    }
+                }
+                else 
+                {
+                    ShowEmpty(true);
                 }
             }
         }
         else
             Hide();
+    }
+
+    void ShowCDmask()
+    {
+        cdmask.gameObject.SetActive(true);
+        var size = cdmask.rectTransform.sizeDelta;
+        size.y = maskHeight;
+        cdmask.rectTransform.sizeDelta = size;
     }
 }

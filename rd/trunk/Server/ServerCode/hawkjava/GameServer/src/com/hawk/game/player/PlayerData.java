@@ -1,26 +1,19 @@
 package com.hawk.game.player;
 
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.Map.Entry;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBManager;
 import org.hawk.net.protocol.HawkProtocol;
-import org.hawk.os.HawkTime;
-
-import com.hawk.game.ServerData;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.StatisticsEntity;
-import com.hawk.game.protocol.Equip.EquipInfo;
 import com.hawk.game.protocol.Equip.HSEquipInfoSync;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
 import com.hawk.game.protocol.Monster.HSMonsterInfoSync;
@@ -30,8 +23,6 @@ import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.Quest.HSQuestInfoSync;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
-import com.hawk.game.util.ProtoUtil;
-import com.sun.xml.internal.stream.Entity;
 
 /**
  * 管理所有玩家数据集合
@@ -166,6 +157,13 @@ public class PlayerData {
 	 */
 	public void setMonsterEntity(MonsterEntity monsterEntity) {
 		monsterEntityList.put(monsterEntity.getId(), monsterEntity);
+	}
+
+	public boolean removeMonsterEntity(int monsterId) {
+		if (null == monsterEntityList.remove(monsterId)) {
+			return false;
+		}
+		return true;
 	}
 
 	public MonsterEntity getMonsterEntity(int monsterId){
@@ -612,9 +610,9 @@ public class PlayerData {
 	 * 
 	 * @return
 	 */
-	public ItemEntity getItemByItemId(int itemId) {
+	public ItemEntity getItemByItemId(String itemId) {
 		for (ItemEntity itemEntity : itemEntities) {
-			if (itemId == itemEntity.getItemId()) {
+			if (itemId.equals(itemEntity.getItemId())) {
 				return itemEntity;
 			}
 		}

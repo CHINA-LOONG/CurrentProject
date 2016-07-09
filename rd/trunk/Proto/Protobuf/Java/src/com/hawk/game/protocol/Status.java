@@ -29,6 +29,18 @@ public final class Status {
      * <code>MONSTER_ERROR = 196608;</code>
      */
     MONSTER_ERROR(3, 196608),
+    /**
+     * <code>ITEM_ERROR = 262144;</code>
+     */
+    ITEM_ERROR(4, 262144),
+    /**
+     * <code>QUEST_ERROR = 327680;</code>
+     */
+    QUEST_ERROR(5, 327680),
+    /**
+     * <code>INSTANCE_ERROR = 393216;</code>
+     */
+    INSTANCE_ERROR(6, 393216),
     ;
 
     /**
@@ -47,6 +59,18 @@ public final class Status {
      * <code>MONSTER_ERROR = 196608;</code>
      */
     public static final int MONSTER_ERROR_VALUE = 196608;
+    /**
+     * <code>ITEM_ERROR = 262144;</code>
+     */
+    public static final int ITEM_ERROR_VALUE = 262144;
+    /**
+     * <code>QUEST_ERROR = 327680;</code>
+     */
+    public static final int QUEST_ERROR_VALUE = 327680;
+    /**
+     * <code>INSTANCE_ERROR = 393216;</code>
+     */
+    public static final int INSTANCE_ERROR_VALUE = 393216;
 
 
     public final int getNumber() { return value; }
@@ -57,6 +81,9 @@ public final class Status {
         case 65536: return LOGIN_ERROR;
         case 131072: return PLAYER_ERROR;
         case 196608: return MONSTER_ERROR;
+        case 262144: return ITEM_ERROR;
+        case 327680: return QUEST_ERROR;
+        case 393216: return INSTANCE_ERROR;
         default: return null;
       }
     }
@@ -444,6 +471,46 @@ public final class Status {
      * </pre>
      */
     MONSTER_NOT_EXIST(1, 196610),
+    /**
+     * <code>SKILL_POINT_NOT_ENOUGH = 196611;</code>
+     *
+     * <pre>
+     * 技能点不足
+     * </pre>
+     */
+    SKILL_POINT_NOT_ENOUGH(2, 196611),
+    /**
+     * <code>SKILL_LEVEL_LIMIT = 196612;</code>
+     *
+     * <pre>
+     * 技能等级达到上限
+     * </pre>
+     */
+    SKILL_LEVEL_LIMIT(3, 196612),
+    /**
+     * <code>STAGE_LIMIT = 196613;</code>
+     *
+     * <pre>
+     * 品级达到上限
+     * </pre>
+     */
+    STAGE_LIMIT(4, 196613),
+    /**
+     * <code>STAGE_LEVEL_NOT_ENOUGH = 196614;</code>
+     *
+     * <pre>
+     * 进阶等级不足
+     * </pre>
+     */
+    STAGE_LEVEL_NOT_ENOUGH(5, 196614),
+    /**
+     * <code>STAGE_CONSUME = 196615;</code>
+     *
+     * <pre>
+     * 进阶材料不足
+     * </pre>
+     */
+    STAGE_CONSUME(6, 196615),
     ;
 
     /**
@@ -462,6 +529,46 @@ public final class Status {
      * </pre>
      */
     public static final int MONSTER_NOT_EXIST_VALUE = 196610;
+    /**
+     * <code>SKILL_POINT_NOT_ENOUGH = 196611;</code>
+     *
+     * <pre>
+     * 技能点不足
+     * </pre>
+     */
+    public static final int SKILL_POINT_NOT_ENOUGH_VALUE = 196611;
+    /**
+     * <code>SKILL_LEVEL_LIMIT = 196612;</code>
+     *
+     * <pre>
+     * 技能等级达到上限
+     * </pre>
+     */
+    public static final int SKILL_LEVEL_LIMIT_VALUE = 196612;
+    /**
+     * <code>STAGE_LIMIT = 196613;</code>
+     *
+     * <pre>
+     * 品级达到上限
+     * </pre>
+     */
+    public static final int STAGE_LIMIT_VALUE = 196613;
+    /**
+     * <code>STAGE_LEVEL_NOT_ENOUGH = 196614;</code>
+     *
+     * <pre>
+     * 进阶等级不足
+     * </pre>
+     */
+    public static final int STAGE_LEVEL_NOT_ENOUGH_VALUE = 196614;
+    /**
+     * <code>STAGE_CONSUME = 196615;</code>
+     *
+     * <pre>
+     * 进阶材料不足
+     * </pre>
+     */
+    public static final int STAGE_CONSUME_VALUE = 196615;
 
 
     public final int getNumber() { return value; }
@@ -470,6 +577,11 @@ public final class Status {
       switch (value) {
         case 196609: return MONSTER_MAX_SIZE;
         case 196610: return MONSTER_NOT_EXIST;
+        case 196611: return SKILL_POINT_NOT_ENOUGH;
+        case 196612: return SKILL_LEVEL_LIMIT;
+        case 196613: return STAGE_LIMIT;
+        case 196614: return STAGE_LEVEL_NOT_ENOUGH;
+        case 196615: return STAGE_CONSUME;
         default: return null;
       }
     }
@@ -535,29 +647,29 @@ public final class Status {
      */
     ITEM_NOT_FOUND(0, 262145),
     /**
-     * <code>COINS_NOT_ENOUGH = 131074;</code>
+     * <code>COINS_NOT_ENOUGH = 262146;</code>
      *
      * <pre>
      * 金币不足
      * </pre>
      */
-    COINS_NOT_ENOUGH(1, 131074),
+    COINS_NOT_ENOUGH(1, 262146),
     /**
-     * <code>GOLD_NOT_ENOUGH = 131075;</code>
+     * <code>GOLD_NOT_ENOUGH = 262147;</code>
      *
      * <pre>
      * 钻石不足
      * </pre>
      */
-    GOLD_NOT_ENOUGH(2, 131075),
+    GOLD_NOT_ENOUGH(2, 262147),
     /**
-     * <code>EQUIP_NOT_FOUND = 131076;</code>
+     * <code>EQUIP_NOT_FOUND = 262148;</code>
      *
      * <pre>
      * 装备不足
      * </pre>
      */
-    EQUIP_NOT_FOUND(3, 131076),
+    EQUIP_NOT_FOUND(3, 262148),
     /**
      * <code>ITEM_NOT_ENOUGH = 262149;</code>
      *
@@ -649,29 +761,29 @@ public final class Status {
      */
     public static final int ITEM_NOT_FOUND_VALUE = 262145;
     /**
-     * <code>COINS_NOT_ENOUGH = 131074;</code>
+     * <code>COINS_NOT_ENOUGH = 262146;</code>
      *
      * <pre>
      * 金币不足
      * </pre>
      */
-    public static final int COINS_NOT_ENOUGH_VALUE = 131074;
+    public static final int COINS_NOT_ENOUGH_VALUE = 262146;
     /**
-     * <code>GOLD_NOT_ENOUGH = 131075;</code>
+     * <code>GOLD_NOT_ENOUGH = 262147;</code>
      *
      * <pre>
      * 钻石不足
      * </pre>
      */
-    public static final int GOLD_NOT_ENOUGH_VALUE = 131075;
+    public static final int GOLD_NOT_ENOUGH_VALUE = 262147;
     /**
-     * <code>EQUIP_NOT_FOUND = 131076;</code>
+     * <code>EQUIP_NOT_FOUND = 262148;</code>
      *
      * <pre>
      * 装备不足
      * </pre>
      */
-    public static final int EQUIP_NOT_FOUND_VALUE = 131076;
+    public static final int EQUIP_NOT_FOUND_VALUE = 262148;
     /**
      * <code>ITEM_NOT_ENOUGH = 262149;</code>
      *
@@ -759,9 +871,9 @@ public final class Status {
     public static itemError valueOf(int value) {
       switch (value) {
         case 262145: return ITEM_NOT_FOUND;
-        case 131074: return COINS_NOT_ENOUGH;
-        case 131075: return GOLD_NOT_ENOUGH;
-        case 131076: return EQUIP_NOT_FOUND;
+        case 262146: return COINS_NOT_ENOUGH;
+        case 262147: return GOLD_NOT_ENOUGH;
+        case 262148: return EQUIP_NOT_FOUND;
         case 262149: return ITEM_NOT_ENOUGH;
         case 262150: return ITEM_BUY_NOT_ALLOW;
         case 262151: return ITEM_SELL_NOT_ALLOW;
@@ -823,6 +935,229 @@ public final class Status {
     // @@protoc_insertion_point(enum_scope:itemError)
   }
 
+  /**
+   * Protobuf enum {@code questError}
+   */
+  public enum questError
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>QUEST_NOT_ACCEPT = 327681;</code>
+     *
+     * <pre>
+     * 当前没有该任务
+     * </pre>
+     */
+    QUEST_NOT_ACCEPT(0, 327681),
+    /**
+     * <code>QUEST_NOT_COMPLETE = 327682;</code>
+     *
+     * <pre>
+     * 任务未完成
+     * </pre>
+     */
+    QUEST_NOT_COMPLETE(1, 327682),
+    /**
+     * <code>QUEST_NOT_OPEN = 327683;</code>
+     *
+     * <pre>
+     * 现在不可领奖
+     * </pre>
+     */
+    QUEST_NOT_OPEN(2, 327683),
+    ;
+
+    /**
+     * <code>QUEST_NOT_ACCEPT = 327681;</code>
+     *
+     * <pre>
+     * 当前没有该任务
+     * </pre>
+     */
+    public static final int QUEST_NOT_ACCEPT_VALUE = 327681;
+    /**
+     * <code>QUEST_NOT_COMPLETE = 327682;</code>
+     *
+     * <pre>
+     * 任务未完成
+     * </pre>
+     */
+    public static final int QUEST_NOT_COMPLETE_VALUE = 327682;
+    /**
+     * <code>QUEST_NOT_OPEN = 327683;</code>
+     *
+     * <pre>
+     * 现在不可领奖
+     * </pre>
+     */
+    public static final int QUEST_NOT_OPEN_VALUE = 327683;
+
+
+    public final int getNumber() { return value; }
+
+    public static questError valueOf(int value) {
+      switch (value) {
+        case 327681: return QUEST_NOT_ACCEPT;
+        case 327682: return QUEST_NOT_COMPLETE;
+        case 327683: return QUEST_NOT_OPEN;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<questError>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<questError>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<questError>() {
+            public questError findValueByNumber(int number) {
+              return questError.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(5);
+    }
+
+    private static final questError[] VALUES = values();
+
+    public static questError valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private questError(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:questError)
+  }
+
+  /**
+   * Protobuf enum {@code instanceError}
+   */
+  public enum instanceError
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>INSTANCE_NOT_OPEN = 393217;</code>
+     *
+     * <pre>
+     * 副本未开启
+     * </pre>
+     */
+    INSTANCE_NOT_OPEN(0, 393217),
+    /**
+     * <code>INSTANCE_LEVEL = 393218;</code>
+     */
+    INSTANCE_LEVEL(1, 393218),
+    /**
+     * <code>INSTANCE_COUNT = 393219;</code>
+     */
+    INSTANCE_COUNT(2, 393219),
+    /**
+     * <code>INSTANCE_FATIGUE = 393220;</code>
+     */
+    INSTANCE_FATIGUE(3, 393220),
+    ;
+
+    /**
+     * <code>INSTANCE_NOT_OPEN = 393217;</code>
+     *
+     * <pre>
+     * 副本未开启
+     * </pre>
+     */
+    public static final int INSTANCE_NOT_OPEN_VALUE = 393217;
+    /**
+     * <code>INSTANCE_LEVEL = 393218;</code>
+     */
+    public static final int INSTANCE_LEVEL_VALUE = 393218;
+    /**
+     * <code>INSTANCE_COUNT = 393219;</code>
+     */
+    public static final int INSTANCE_COUNT_VALUE = 393219;
+    /**
+     * <code>INSTANCE_FATIGUE = 393220;</code>
+     */
+    public static final int INSTANCE_FATIGUE_VALUE = 393220;
+
+
+    public final int getNumber() { return value; }
+
+    public static instanceError valueOf(int value) {
+      switch (value) {
+        case 393217: return INSTANCE_NOT_OPEN;
+        case 393218: return INSTANCE_LEVEL;
+        case 393219: return INSTANCE_COUNT;
+        case 393220: return INSTANCE_FATIGUE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<instanceError>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<instanceError>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<instanceError>() {
+            public instanceError findValueByNumber(int number) {
+              return instanceError.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(6);
+    }
+
+    private static final instanceError[] VALUES = values();
+
+    public static instanceError valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private instanceError(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:instanceError)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -832,28 +1167,37 @@ public final class Status {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025Protocol/Status.proto*Y\n\terrorMask\022\020\n\014" +
-      "NORMAL_ERROR\020\000\022\021\n\013LOGIN_ERROR\020\200\200\004\022\022\n\014PLA" +
-      "YER_ERROR\020\200\200\010\022\023\n\rMONSTER_ERROR\020\200\200\014*\300\001\n\005e" +
-      "rror\022\016\n\nNONE_ERROR\020\000\022\020\n\014CONFIG_ERROR\020\001\022\024" +
-      "\n\020ONLINE_MAX_LIMIT\020\002\022\026\n\022REGISTER_MAX_LIM" +
-      "IT\020\003\022\025\n\021SERVER_GRAY_STATE\020\004\022\023\n\017DATA_BASE" +
-      "_ERROR\020\005\022\022\n\016PARAMS_INVALID\020\006\022\024\n\020CONFIG_N" +
-      "OT_FOUND\020\007\022\021\n\014SERVER_ERROR\020\200 *B\n\013PlayerE" +
-      "rror\022\026\n\020PLAYER_NOT_EXIST\020\201\200\010\022\033\n\025PLAYER_N" +
-      "ICKNAME_EXIST\020\202\200\010*?\n\014monsterError\022\026\n\020MON",
-      "STER_MAX_SIZE\020\201\200\014\022\027\n\021MONSTER_NOT_EXIST\020\202" +
-      "\200\014*\201\003\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026" +
-      "\n\020COINS_NOT_ENOUGH\020\202\200\010\022\025\n\017GOLD_NOT_ENOUG" +
-      "H\020\203\200\010\022\025\n\017EQUIP_NOT_FOUND\020\204\200\010\022\025\n\017ITEM_NOT" +
-      "_ENOUGH\020\205\200\020\022\030\n\022ITEM_BUY_NOT_ALLOW\020\206\200\020\022\031\n" +
-      "\023ITEM_SELL_NOT_ALLOW\020\207\200\020\022\035\n\027EQUIP_MAX_LE" +
-      "VEL_ALREADY\020\210\200\020\022\034\n\026EQUIP_LEVEL_NOT_ENOUG" +
-      "H\020\211\200\020\022\035\n\027EQUIP_MAX_STAGE_ALREADY\020\212\200\020\022\031\n\023" +
-      "EQUIP_DRESS_ALREADY\020\220\200\020\022\033\n\025EQUIP_NOT_DRE" +
-      "SS_OTHER\020\221\200\020\022\037\n\031EQUIP_DRESS_OTHER_ALREAD",
-      "Y\020\222\200\020\022\027\n\021EQUIP_NOT_DRESSED\020\223\200\020B\030\n\026com.ha" +
-      "wk.game.protocol"
+      "\n\025Protocol/Status.proto*\224\001\n\terrorMask\022\020\n" +
+      "\014NORMAL_ERROR\020\000\022\021\n\013LOGIN_ERROR\020\200\200\004\022\022\n\014PL" +
+      "AYER_ERROR\020\200\200\010\022\023\n\rMONSTER_ERROR\020\200\200\014\022\020\n\nI" +
+      "TEM_ERROR\020\200\200\020\022\021\n\013QUEST_ERROR\020\200\200\024\022\024\n\016INST" +
+      "ANCE_ERROR\020\200\200\030*\300\001\n\005error\022\016\n\nNONE_ERROR\020\000" +
+      "\022\020\n\014CONFIG_ERROR\020\001\022\024\n\020ONLINE_MAX_LIMIT\020\002" +
+      "\022\026\n\022REGISTER_MAX_LIMIT\020\003\022\025\n\021SERVER_GRAY_" +
+      "STATE\020\004\022\023\n\017DATA_BASE_ERROR\020\005\022\022\n\016PARAMS_I" +
+      "NVALID\020\006\022\024\n\020CONFIG_NOT_FOUND\020\007\022\021\n\014SERVER" +
+      "_ERROR\020\200 *B\n\013PlayerError\022\026\n\020PLAYER_NOT_E",
+      "XIST\020\201\200\010\022\033\n\025PLAYER_NICKNAME_EXIST\020\202\200\010*\274\001" +
+      "\n\014monsterError\022\026\n\020MONSTER_MAX_SIZE\020\201\200\014\022\027" +
+      "\n\021MONSTER_NOT_EXIST\020\202\200\014\022\034\n\026SKILL_POINT_N" +
+      "OT_ENOUGH\020\203\200\014\022\027\n\021SKILL_LEVEL_LIMIT\020\204\200\014\022\021" +
+      "\n\013STAGE_LIMIT\020\205\200\014\022\034\n\026STAGE_LEVEL_NOT_ENO" +
+      "UGH\020\206\200\014\022\023\n\rSTAGE_CONSUME\020\207\200\014*\201\003\n\titemErr" +
+      "or\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026\n\020COINS_NOT_EN" +
+      "OUGH\020\202\200\020\022\025\n\017GOLD_NOT_ENOUGH\020\203\200\020\022\025\n\017EQUIP" +
+      "_NOT_FOUND\020\204\200\020\022\025\n\017ITEM_NOT_ENOUGH\020\205\200\020\022\030\n" +
+      "\022ITEM_BUY_NOT_ALLOW\020\206\200\020\022\031\n\023ITEM_SELL_NOT",
+      "_ALLOW\020\207\200\020\022\035\n\027EQUIP_MAX_LEVEL_ALREADY\020\210\200" +
+      "\020\022\034\n\026EQUIP_LEVEL_NOT_ENOUGH\020\211\200\020\022\035\n\027EQUIP" +
+      "_MAX_STAGE_ALREADY\020\212\200\020\022\031\n\023EQUIP_DRESS_AL" +
+      "READY\020\220\200\020\022\033\n\025EQUIP_NOT_DRESS_OTHER\020\221\200\020\022\037" +
+      "\n\031EQUIP_DRESS_OTHER_ALREADY\020\222\200\020\022\027\n\021EQUIP" +
+      "_NOT_DRESSED\020\223\200\020*T\n\nquestError\022\026\n\020QUEST_" +
+      "NOT_ACCEPT\020\201\200\024\022\030\n\022QUEST_NOT_COMPLETE\020\202\200\024" +
+      "\022\024\n\016QUEST_NOT_OPEN\020\203\200\024*l\n\rinstanceError\022" +
+      "\027\n\021INSTANCE_NOT_OPEN\020\201\200\030\022\024\n\016INSTANCE_LEV" +
+      "EL\020\202\200\030\022\024\n\016INSTANCE_COUNT\020\203\200\030\022\026\n\020INSTANCE",
+      "_FATIGUE\020\204\200\030B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

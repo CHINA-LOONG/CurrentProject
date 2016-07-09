@@ -99,7 +99,7 @@ public class ObjectDataMgr : MonoBehaviour
 				}
 			}
 
-			bo.wpGroup = WeakPointGroup.CreateWeakpoingGroup(bo);
+			bo.wpGroup = WeakPointGroup.CreateWeakpointGroup(bo);
 		}
 		else 
 		{

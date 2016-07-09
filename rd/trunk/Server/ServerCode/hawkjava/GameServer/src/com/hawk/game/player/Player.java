@@ -50,10 +50,14 @@ import com.hawk.game.module.PlayerQuestModule;
 import com.hawk.game.module.PlayerStatisticsModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Const.RewardReason;
 import com.hawk.game.protocol.Const.playerAttr;
+import com.hawk.game.protocol.Monster.HSMonster;
+import com.hawk.game.protocol.Monster.HSMonsterAdd;
 import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.Quest.HSQuestAccept;
 import com.hawk.game.protocol.Quest.HSQuestRemove;
+import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.EquipUtil;
@@ -637,7 +641,7 @@ public class Player extends HawkAppObj {
 	/**
 	 * 增加物品
 	 */
-	public ItemEntity increaseItem(int itemId, int itemCount, Action action) {
+	public ItemEntity increaseItem(String itemId, int itemCount, Action action) {
 		if(!ConfigUtil.check(Const.itemType.ITEM_VALUE, itemId)) {
 			return null;
 		}
@@ -672,7 +676,7 @@ public class Player extends HawkAppObj {
 	/**
 	 * 消耗物品
 	 */
-	public ItemEntity consumeItem(int itemId, int itemCount, Action action) {
+	public ItemEntity consumeItem(String itemId, int itemCount, Action action) {
 		ItemEntity itemEntity = playerData.getItemByItemId(itemId);
 		if (itemEntity != null && itemEntity.getCount() >= itemCount) {
 			itemEntity.setCount(itemEntity.getCount() - itemCount);
@@ -692,14 +696,14 @@ public class Player extends HawkAppObj {
 	/**
 	 * 增加装备
 	 */
-	public EquipEntity increaseEquip(int equipId, Action action) {
+	public EquipEntity increaseEquip(String equipId, Action action) {
 		return increaseEquip(equipId,0,0,action);
 	}
 
 	/**
 	 * 增加装备
 	 */
-	public EquipEntity increaseEquip(int equipId, int stage, int level, Action action) {
+	public EquipEntity increaseEquip(String equipId, int stage, int level, Action action) {
 		if(!ConfigUtil.check(Const.itemType.EQUIP_VALUE, equipId)) {
 			return null;
 		}
@@ -750,7 +754,127 @@ public class Player extends HawkAppObj {
 		}
 		return removeFailEquipIds;
 	}
-	 
+
+	/**
+	 * 增加怪物
+	 */
+	public MonsterEntity increaseMonster(String monsterCfgId, int stage, Action action) {
+		MonsterCfg monster = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monsterCfgId);
+		if (null == monster) {
+			return null;
+		}
+
+		int playerId = getId();
+		short level = 1;
+		int exp = 0;
+		byte lazy = 1;
+		int lazyExp = 0;
+		byte disposition = 1;
+		String[] skillList = monster.getSpellIdList();
+
+		MonsterEntity monsterEntity = new MonsterEntity(monsterCfgId, playerId, (byte)stage, level, exp, lazy, lazyExp, disposition);
+		for (String skillId : skillList) {
+			monsterEntity.setSkillLevel(skillId, 1);
+		}
+
+		if (true == monsterEntity.notifyCreate()) {
+			playerData.setMonsterEntity(monsterEntity);
+			onIncreaseMonster(monsterEntity);
+			
+			BehaviorLogger.log4Service(this, Source.MONSTER_ADD, action, 
+					Params.valueOf("monsterCfgId", monsterCfgId), 
+					Params.valueOf("monsterId", monsterEntity.getId()));
+			
+			return monsterEntity;
+		}
+		return null;
+	}
+
+	/**
+	 * 统计增加怪物
+	 */
+	public boolean onIncreaseMonster(MonsterEntity monsterEntity) {
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity(); 
+		boolean update = false;
+
+		// collection
+		if (false == statisticsEntity.getMonsterCollectSet().contains(monsterEntity.getCfgId())) {
+			statisticsEntity.addMonsterCollect(monsterEntity.getCfgId());
+			update = true;
+		}
+
+		// level
+		int level = monsterEntity.getLevel();
+		int history = statisticsEntity.getMonsterCountOverLevel(level);
+		int cur = playerData.getMonsterCountOverLevel(level);
+		if (cur > history) {
+			statisticsEntity.setMonsterCountOverLevel(level, cur);
+			update = true;
+		}
+		
+		history = statisticsEntity.getMonsterMaxLevel();
+		if (level > history) {
+			statisticsEntity.setMonsterMaxLevel(level);
+			update = true;
+		}
+
+		// stage
+		int stage = monsterEntity.getStage();
+		history = statisticsEntity.getMonsterCountOverStage(stage);
+		cur = playerData.getMonsterCountOverStage(stage);
+		if (cur > history) {
+			statisticsEntity.setMonsterCountOverStage(stage, cur);
+			update = true;
+		}
+		
+		history = statisticsEntity.getMonsterMaxStage();
+		if (stage > history) {
+			statisticsEntity.setMonsterMaxStage(stage);
+			update = true;
+		}
+		
+		// count
+		history = statisticsEntity.getMonsterMaxCount();
+		cur = playerData.getMonsterEntityList().size();
+		if (cur > history) {
+			statisticsEntity.setMonsterMaxCount(cur);
+			update = true;
+		}
+		
+		if (true == update) {
+			statisticsEntity.notifyUpdate(true);
+			
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
+			msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
+			if (false == HawkApp.getInstance().postMsg(msg)) {
+				HawkLog.errPrintln("post statistics update message failed: " + getName());
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * 消耗怪物
+	 */
+	public boolean consumeMonster(int id, Action action) {
+		MonsterEntity monsterEntity = playerData.getMonsterEntity(id);
+		if (null != monsterEntity) {
+			monsterEntity.setInvalid(true);
+			monsterEntity.notifyUpdate(true);
+			playerData.removeMonsterEntity(id);
+			List<Integer> battleMonsterList = playerData.getPlayerEntity().getBattleMonsterList();
+			battleMonsterList.remove(monsterEntity.getId());
+
+			BehaviorLogger.log4Service(this, Source.MONSTER_REMOVE, action, 
+					Params.valueOf("monsterId", id));
+
+			return true;
+		}
+
+		return false;
+	}
+
 	/**
 	 * 每日首次登陆
 	 */

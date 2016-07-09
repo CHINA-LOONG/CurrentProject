@@ -7,6 +7,7 @@ public class UIVitalChangeView : MonoBehaviour
 {
     //TODO: fontsettings have default mat
     public string aniName;
+    public string criticalAniName;
     public Font damageFont;
     public Material damageFontMat;
     public Font healFont;
@@ -90,12 +91,23 @@ public class UIVitalChangeView : MonoBehaviour
         }
 
         //play ani
-        if (aniName == null || aniName.Length == 0)
-            return;
         Animator animator = gameObject.GetComponent<Animator>();
         if (animator != null)
         {
-            animator.Play(aniName);
+            if (args.isCritical)
+            {
+                if (string.IsNullOrEmpty(criticalAniName) == false)
+                {
+                    animator.Play(criticalAniName);
+                }
+            }
+            else 
+            {
+                if (string.IsNullOrEmpty(aniName) == false)
+                {
+                    animator.Play(aniName);
+                }
+            }
         }
     }
     //---------------------------------------------------------------------------------------------

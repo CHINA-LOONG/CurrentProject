@@ -101,6 +101,13 @@ public class ActorWpStateData
     public int state;
 }
 //---------------------------------------------------------------------------------------------
+public class ActorSpeedData
+{
+    public float triggerTime;
+    public float duration;
+    public float speedRatio;
+}
+//---------------------------------------------------------------------------------------------
 public class ActorEventData
 {
     public string id;
@@ -115,6 +122,7 @@ public class ActorEventData
     public List<ActorAudioData> actorAudioSequence = new List<ActorAudioData>();
     public List<ActorMeshData> actorMeshSequence = new List<ActorMeshData>();
     public List<ActorWpStateData> actorWpStateSequence = new List<ActorWpStateData>();
+    public List<ActorSpeedData> actorSpeedSequence = new List<ActorSpeedData>();
 
     //state data
     public float triggerTime;
@@ -332,6 +340,32 @@ public class ActorEventService
                                     wpStateData.state = int.Parse(str);
                                 }
                                 eventData.actorWpStateSequence.Add(wpStateData);
+                            }
+                        }
+                        else if (x1.Name == "SpeedList")
+                        {
+                            foreach (XmlElement speedNode in x1.ChildNodes)
+                            {
+                                ActorSpeedData speedData = new ActorSpeedData();
+                                string str = speedNode.GetAttribute("time");
+                                speedData.triggerTime = 0.0f;
+                                if (string.IsNullOrEmpty(str) == false)
+                                {
+                                    speedData.triggerTime = float.Parse(str);
+                                }
+                                speedData.speedRatio = 1.0f;
+                                str = speedNode.GetAttribute("speed_ratio");
+                                if (string.IsNullOrEmpty(str) == false)
+                                {
+                                    speedData.speedRatio = float.Parse(str);
+                                }
+                                speedData.duration = -1.0f;
+                                str = speedNode.GetAttribute("duration");
+                                if (string.IsNullOrEmpty(str) == false)
+                                {
+                                    speedData.duration = float.Parse(str);
+                                }
+                                eventData.actorSpeedSequence.Add(speedData);
                             }
                         }
                     }

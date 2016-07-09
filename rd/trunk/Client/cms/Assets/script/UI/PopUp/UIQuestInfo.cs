@@ -48,9 +48,6 @@ public class UIQuestInfo : UIBase
         SetReward(info.staticData.rewardId);
     }
 
-
-
-
     void ClickConfirmButton(GameObject go)
     {
         Logger.Log("click uiQuestInfo confirm Button");
@@ -59,12 +56,16 @@ public class UIQuestInfo : UIBase
         Destroy(gameObject);
 #else
         UIMgr.Instance.CloseUI(this);
+        if (!string.IsNullOrEmpty(info.staticData.speechId))
+        { 
+            UISpeech.Open(info.staticData.speechId); 
+        }
 #endif
     }
 
 
 
-    void SetReward(int rewardId)
+    void SetReward(string rewardId)
     {
         List<RewardItemData> list = new List<RewardItemData>(StaticDataMgr.Instance.GetRewardData(rewardId).itemList);
         list.Sort(SortReward);
@@ -88,7 +89,7 @@ public class UIQuestInfo : UIBase
         for (int i = 0; i < list.Count; i++)
         {
             if (list[i].itemType == (int)PB.itemType.PLAYER_ATTR &&
-                list[i].itemId == (int)PB.changeType.CHANGE_PLAYER_EXP)
+                int.Parse(list[i].itemId) == (int)PB.changeType.CHANGE_PLAYER_EXP)
             {
                 rewards[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
             }
@@ -108,7 +109,7 @@ public class UIQuestInfo : UIBase
         if ((a.itemType <= (int)PB.itemType.MONSTER_ATTR && b.itemType <= (int)PB.itemType.MONSTER_ATTR)
             || (a.itemType > (int)PB.itemType.MONSTER_ATTR && b.itemType > (int)PB.itemType.MONSTER_ATTR))
         {
-            if (a.itemId < b.itemId)
+            if (int.Parse(a.itemId) < int.Parse(b.itemId))
             {
                 result = -1;
             }

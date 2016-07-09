@@ -1,6 +1,9 @@
 package com.hawk.game.module;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,18 +18,17 @@ import org.hawk.os.HawkTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.hawk.game.config.InstanceEntryCfg;
+import com.hawk.game.config.MonsterStageCfg;
 import com.hawk.game.config.SkillUpPriceCfg;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.StatisticsEntity;
-import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
+import com.hawk.game.item.ItemInfo;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const.RewardReason;
 import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Instance.HSInstanceSweepRet;
 import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.HSMonsterAdd;
 import com.hawk.game.protocol.Monster.HSMonsterBreakRet;
@@ -35,6 +37,8 @@ import com.hawk.game.protocol.Monster.HSMonsterFeed;
 import com.hawk.game.protocol.Monster.HSMonsterFeedRet;
 import com.hawk.game.protocol.Monster.HSMonsterSkillUp;
 import com.hawk.game.protocol.Monster.HSMonsterSkillUpRet;
+import com.hawk.game.protocol.Monster.HSMonsterStageUp;
+import com.hawk.game.protocol.Monster.HSMonsterStageUpRet;
 import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Monster.HSMonsterBreak;
@@ -224,6 +228,107 @@ public class PlayerMonsterModule extends PlayerModule {
 		response.setSkillPoint(curSkillPoint);
 		response.setSkillPointTimeStamp((int)(beginTime.getTimeInMillis() / 1000));
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_SKILL_UP_S, response));
+
+		return true;
+	}
+
+	/**
+	 * 进阶
+	 */
+	@ProtocolHandler(code = HS.code.MONSTER_STAGE_UP_C_VALUE)
+	private boolean onMonsterStageUp(HawkProtocol cmd) {
+		HSMonsterStageUp protocol = cmd.parseProtocol(HSMonsterStageUp.getDefaultInstance());
+		int hsCode = cmd.getType();
+		int monsterId = protocol.getMonsterId();
+		List<Integer> consumeMonsterIdList = protocol.getConsumeMonsterIdList();
+
+		MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
+		if (monsterEntity == null) {
+			sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST);
+			return false;
+		}
+
+		int newStage = 1 + monsterEntity.getStage();
+
+		// 验证品级上限
+		MonsterStageCfg stageCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterStageCfg.class, newStage);
+		if (stageCfg == null) {
+			sendError(hsCode, Status.monsterError.STAGE_LIMIT);
+			return false;
+		}
+
+		// 验证等级
+		if (monsterEntity.getLevel() < stageCfg.getDemandLevel()) {
+			sendError(hsCode, Status.monsterError.STAGE_LEVEL_NOT_ENOUGH);
+			return false;
+		}
+
+		// 验证金币和物品消耗
+		ConsumeItems consume = ConsumeItems.valueOf();
+		consume.addCoin(stageCfg.getDemandCoin());
+		consume.addItemInfos(stageCfg.getDemandItemList());
+
+		if (false == consume.checkConsume(player, hsCode)) {
+			return false;
+		}
+		
+		// 验证怪物消耗
+		List<ItemInfo> demandMonsterList = new LinkedList<>(stageCfg.getDemandMonsterList());
+
+		List<MonsterEntity> consumeMonsterList = new ArrayList<>();
+		for (int id : consumeMonsterIdList) {
+			MonsterEntity consumeMonsterEntity = player.getPlayerData().getMonsterEntity(id);
+			if (consumeMonsterEntity == null) {
+				sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
+				return false;
+			}
+
+			// 找到最大能满足的需求
+			boolean valid = false;
+			Iterator<ItemInfo> iter = demandMonsterList.iterator();
+			while (iter.hasNext()) {
+				ItemInfo demandMonster = (ItemInfo) iter.next();
+				if (demandMonster.getItemId() == consumeMonsterEntity.getCfgId() &&
+						demandMonster.getStage() <=	consumeMonsterEntity.getStage()) {
+					valid = true;
+					int count = demandMonster.getCount() - 1;
+					demandMonster.setCount(count);
+					if (count <= 0) {
+						iter.remove();
+						break;
+					}
+				}
+			}
+			if (false == valid) {
+				sendError(hsCode, Status.monsterError.STAGE_CONSUME);
+				return false;
+			}
+			
+			consumeMonsterList.add(consumeMonsterEntity);
+		}
+		if (false == demandMonsterList.isEmpty()) {
+			sendError(hsCode, Status.monsterError.STAGE_CONSUME);
+			return false;
+		}
+
+		// 更新
+		consume.consumeTakeAffectAndPush(player, Action.STAGE_UP);
+
+		List<Integer> battleMonsterList = player.getPlayerData().getPlayerEntity().getBattleMonsterList();
+		for (int i = 0; i < consumeMonsterList.size(); ++i) {
+			MonsterEntity consumeMonster = consumeMonsterList.get(i);
+			consumeMonster.setInvalid(true);
+			consumeMonster.notifyUpdate(true);
+			player.getPlayerData().removeMonsterEntity(consumeMonster.getId());
+			battleMonsterList.remove(consumeMonster.getId());
+		}
+//     player.getPlayerData().getPlayerEntity().setBattleMonsterList(battleMonsterList);
+		
+		monsterEntity.setStage((byte)newStage);
+		monsterEntity.notifyUpdate(true);
+
+		HSMonsterStageUpRet.Builder response = HSMonsterStageUpRet.newBuilder();
+		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_STAGE_UP_S, response));
 
 		return true;
 	}

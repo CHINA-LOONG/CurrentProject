@@ -51,8 +51,9 @@ public class BattleGroup
             }
             else 
             {
-                //bo.OnExitField();
-                OnUnitExitField(bo, pb.slot);
+                bo.unit.pbUnit.slot = BattleConst.offsiteSlot;
+                bo.OnExitField();
+                //OnUnitExitField(bo, pb.slot);
             }
             enemyList.Add(bo);
         }
@@ -69,6 +70,7 @@ public class BattleGroup
             if (slot >= BattleConst.slotIndexMin && slot <= BattleConst.slotIndexMax)
             {
                 itor.Current.unit.pbUnit.slot = slot;
+                itor.Current.unit.backUp = false;
                 playerField[slot] = itor.Current;
                 itor.Current.OnEnterField();
                 //OnUnitEnterField(itor.Current, slot);
@@ -76,6 +78,7 @@ public class BattleGroup
             else
             {
                 itor.Current.unit.pbUnit.slot = BattleConst.offsiteSlot;
+                itor.Current.unit.backUp = true;
                 itor.Current.OnExitField();
                 //OnUnitExitField(itor.Current, slot);
             }
@@ -90,7 +93,7 @@ public class BattleGroup
         var itor = playerUnitList.GetEnumerator();
         while (itor.MoveNext())
         {
-            if (itor.Current.unit.pbUnit.slot != BattleConst.offsiteSlot)
+            if (itor.Current.unit.pbUnit.slot != BattleConst.offsiteSlot && itor.Current.unit.State != UnitState.Dead)
             {
                 itor.Current.OnEnterField();
             }
@@ -104,24 +107,30 @@ public class BattleGroup
     //    return all;
     //}
 
-    public void CalcActionOrder()
+    public void ResetActionOrder()
     {
         for (int i = 0; i < enemyField.Count; i++)
         {
-            var unit = enemyField[i].unit;
-            if (unit != null)
-                unit.CalcSpeed();
+            var bo = enemyField[i];
+            if (bo != null && bo.unit != null && bo.unit.State != UnitState.Dead)
+            {
+                bo.unit.ResetAcionOrder();
+                bo.unit.CalcNextActionOrder();
+            }
         }
 
         for (int i = 0; i < playerField.Count; i++)
         {
-            var unit = playerField[i].unit;
-            if (unit != null)
-                unit.CalcSpeed();
+            var bo = playerField[i];
+            if (bo != null && bo.unit.State != UnitState.Dead)
+            {
+                bo.unit.ResetAcionOrder();
+                bo.unit.CalcNextActionOrder();
+            }
         }
     }
 
-    public void ReCalcActionOrder(int movedUnitId)
+    public void CalcUnitNextAction(int movedUnitId)
     {
         for (int i = 0; i < enemyField.Count; i++)
         {
@@ -129,9 +138,10 @@ public class BattleGroup
             if (bo != null)
             {
                 if (bo.guid == movedUnitId)
-                    bo.unit.ReCalcSpeed();
-                else
-                    bo.unit.CalcSpeed();
+                {
+                    bo.unit.CalcNextActionOrder();
+                    return;
+                }
             }
         }
 
@@ -141,9 +151,10 @@ public class BattleGroup
             if (bo != null)
             {
                 if (bo.guid == movedUnitId)
-                    bo.unit.ReCalcSpeed();
-                else
-                    bo.unit.CalcSpeed();
+                {
+                    bo.unit.CalcNextActionOrder();
+                    return;
+                }
             }
         }
     }
@@ -154,7 +165,7 @@ public class BattleGroup
         for (int i = 0; i < enemyField.Count; i++)
         {
             var bo = enemyField[i];
-            if (bo != null && bo.unit.curLife > 0 && bo.unit.dazhao > 0)
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.dazhao > 0 && bo.unit.State != UnitState.Dead)
             {
                 if (--bo.unit.dazhaoPrepareCount == 0)
                 {
@@ -168,10 +179,18 @@ public class BattleGroup
         for (int i = 0; i < enemyField.Count; i++)
         {
             var bo = enemyField[i];
-            if (bo != null && bo.unit.curLife > 0 && bo.unit.ActionOrder < fastestOrder && bo.unit.isVisible && bo.unit.dazhao == 0)
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.isVisible && bo.unit.dazhao == 0 && bo.unit.State != UnitState.Dead)
             {
-                fastestUnit = bo;
-                fastestOrder = bo.unit.ActionOrder;
+                if (bo.unit.ActionOrder < fastestOrder)
+                {
+                    fastestUnit = bo;
+                    fastestOrder = bo.unit.ActionOrder;
+                }
+                else if (fastestUnit != null && bo.unit.ActionOrder == fastestOrder && bo.unit.speed > fastestUnit.unit.speed)
+                {
+                    fastestUnit = bo;
+                    fastestOrder = bo.unit.ActionOrder;
+                }
             }
         }
 
@@ -179,16 +198,24 @@ public class BattleGroup
         for (int i = 0; i < playerField.Count; i++)
         {
             var bo = playerField[i];
-            if (bo != null && bo.unit.curLife > 0 && bo.unit.ActionOrder < fastestOrder && bo.unit.isVisible)
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.isVisible)
             {
 				//施法对象不参与行动序列
 				if(null != shifaBo && shifaBo.guid == bo.guid)
 				{
 					continue;
 				}
+                if (bo.unit.ActionOrder < fastestOrder)
+                {
+                    fastestUnit = bo;
+                    fastestOrder = bo.unit.ActionOrder;
 
-                fastestUnit = bo;
-                fastestOrder = bo.unit.ActionOrder;
+                }
+                else if (fastestUnit != null && bo.unit.ActionOrder == fastestOrder && bo.unit.speed > fastestUnit.unit.speed && bo.unit.State != UnitState.Dead)
+                {
+                    fastestUnit = bo;
+                    fastestOrder = bo.unit.ActionOrder;
+                }
             }
         }
 
@@ -202,10 +229,11 @@ public class BattleGroup
 
     public bool IsEnemyAllDead()
     {
-        for (int i = 0; i < enemyField.Count; i++)
+        int enemyCount = enemyList.Count;
+        for (int i = 0; i < enemyCount; i++)
         {
-            var bo = enemyField[i];
-            if (bo != null && bo.unit.curLife > 0 && bo.unit.isVisible)
+            var bo = enemyList[i];
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.isVisible && bo.unit.State != UnitState.Dead)
 			{
                 return false;
 			}
@@ -216,11 +244,16 @@ public class BattleGroup
 
     public bool IsPlayerAllDead()
     {
-        for (int i = 0; i < playerField.Count; i++)
+        List<BattleObject> playerUnitList = GameDataMgr.Instance.PlayerDataAttr.GetMainUnits();
+        int playerCount = playerUnitList.Count;
+        BattleObject playerUnit = null;
+        for (int i = 0; i < playerCount; ++i)
         {
-            var unit = playerField[i];
-            if (unit != null && unit.unit.curLife > 0)
+            playerUnit = playerUnitList[i];
+            if (playerUnit != null && playerUnit.unit.curLife > 0 && playerUnit.unit.State != UnitState.Dead)
+            {
                 return false;
+            }
         }
 
         return true;
@@ -230,7 +263,11 @@ public class BattleGroup
     {
         foreach (BattleObject item in enemyList)
         {
-            if (item.unit.pbUnit.slot == BattleConst.offsiteSlot && item.unit.curLife > 0)
+            if (item.unit.pbUnit.slot == BattleConst.offsiteSlot &&
+                item.unit.curLife > 0 &&
+                item.unit.State != UnitState.Dead &&
+                item.unit.State != UnitState.ToBeEnter
+                )
             {
                 return item;
             }
@@ -249,6 +286,7 @@ public class BattleGroup
             int slot = curObj.unit.pbUnit.slot;
             if (slot == BattleConst.offsiteSlot &&
                 curObj.unit.curLife > 0 &&
+                curObj.unit.State != UnitState.Dead &&
                 curObj.unit.State != UnitState.ToBeEnter
                )
             {

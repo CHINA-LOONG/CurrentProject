@@ -8,14 +8,14 @@ public class InstanceDropCfg extends HawkConfigBase {
 
 	@Id
 	protected final String id;
-	protected final int rewardId;
+	protected final String rewardId;
 	
 	// assemble
 	protected RewardCfg rewardCfg;
 
 	public InstanceDropCfg() {
 		id = "";
-		rewardId = 0;
+		rewardId = "";
 	}
 	
 	@Override

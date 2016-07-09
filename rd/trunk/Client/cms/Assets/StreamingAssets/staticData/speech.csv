@@ -1,9 +1,8 @@
 ﻿#TEXT,TEXT,TEXT,TEXT,TEXT,TEXT
 id,skip,campType,name,image,speakId
 #对话编号Id,是否可跳过,阵营,发言人名称,立绘,对话多语言编号
-speech_test,1,a,兔桑,ui/monster/Unit_Demo_ershu,speak_001
-,,b,雪姬,ui/monster/Unit_Demo_qingniao,speak_002
-,,a,兔桑,ui/monster/Unit_Demo_ershu,speak_003
-,,b,雪姬,ui/monster/Unit_Demo_qingniao,speak_004
-,,a,兔桑,ui/monster/Unit_Demo_ershu,speak_005
-,,a,玩家统一称呼,ui/monster/Unit_Demo_zhuyan,speak_006
+speech_test,1,a,雪姬,ui/speech/npc_teamb_eg_03,speak_001
+,,b,兔桑,ui/speech/npc_teama_eg_02,speak_002
+,,a,雪姬,ui/speech/npc_teamb_eg_01,speak_003
+,,b,兔桑,ui/speech/npc_teama_eg_01,speak_004
+,,a,雪姬,ui/speech/npc_teamb_eg_03,speak_005

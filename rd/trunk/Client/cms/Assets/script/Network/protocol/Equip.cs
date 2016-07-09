@@ -47,9 +47,9 @@ namespace PB
       get { return _id; }
       set { _id = value; }
     }
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }
@@ -124,9 +124,9 @@ namespace PB
   {
     public HSEquipBuy() {}
     
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }
@@ -163,9 +163,9 @@ namespace PB
   {
     public HSEquipBuyRet() {}
     
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }
@@ -187,9 +187,9 @@ namespace PB
   {
     public HSEquipCompose() {}
     
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }
@@ -211,9 +211,9 @@ namespace PB
   {
     public HSEquipComposeRet() {}
     
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }

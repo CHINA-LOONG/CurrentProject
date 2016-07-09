@@ -17,9 +17,9 @@ public class ItemData
 
 public class GameItemData
 {
-    public Dictionary<int, ItemData> itemList = new Dictionary<int, ItemData>();
+    public Dictionary<String, ItemData> itemList = new Dictionary<String, ItemData>();
 
-    public void AddItem(int itemId, int count)
+    public void AddItem(String itemId, int count)
     {
         ItemData itemData;
         if (itemList.TryGetValue(itemId, out itemData))
@@ -32,7 +32,7 @@ public class GameItemData
         }
     }
 
-    public bool RemoveItem(int itemId, int count)
+    public bool RemoveItem(String itemId, int count)
     {
         ItemData itemData;
         if (itemList.TryGetValue(itemId, out itemData))

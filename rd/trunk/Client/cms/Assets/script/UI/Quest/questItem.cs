@@ -22,9 +22,6 @@ public class questItem : MonoBehaviour
     {
         EventTriggerListener.Get(btn_Todoit.gameObject).onClick = OnClickTodoit;
         EventTriggerListener.Get(btn_Submit.gameObject).onClick = OnClickSubmit;
-
-        //TODO:Debug
-        btn_Todoit.gameObject.SetActive(true);
     }
 
     public void SetQuest(QuestInfo info)
@@ -98,10 +95,10 @@ public class questItem : MonoBehaviour
         #endregion
 
         text_progress.text = info.serverData.progress + "/" + info.staticData.goalCount;
-
-        if (info.staticData.group == 4 && 
-            StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId) < GameTimeMgr.Instance.GetTime())
+        if (StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId) != null &&
+            GameTimeMgr.Instance.GetTime() < StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId))
         {
+            Debug.Log("时间未到");
             //TODO： test message；
             SetState(false, false, "时间未到");
         }
@@ -124,7 +121,7 @@ public class questItem : MonoBehaviour
         else btn_Todoit.gameObject.SetActive(true);
     }
 
-    void SetReward(int rewardId)
+    void SetReward(string rewardId)
     {
         List<RewardItemData> list =new List<RewardItemData>(StaticDataMgr.Instance.GetRewardData(rewardId).itemList);
         list.Sort(SortReward);
@@ -148,7 +145,7 @@ public class questItem : MonoBehaviour
         for (int i = 0; i < list.Count; i++)
         {
             if (list[i].itemType == (int)PB.itemType.PLAYER_ATTR &&
-                list[i].itemId == (int)PB.changeType.CHANGE_PLAYER_EXP)
+                int.Parse(list[i].itemId) == (int)PB.changeType.CHANGE_PLAYER_EXP)
             {
                 rewards[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
             }
@@ -164,8 +161,8 @@ public class questItem : MonoBehaviour
     void OnClickTodoit(GameObject go)
     {
         //TODO:  
-        Logger.Log("因为提交任务逻辑已经做了，由于无法完成任务。此处为了测试提交任务的弹窗");
-        UIQuestInfo.Open(this.info);
+
+        GameEventMgr.Instance.FireEvent<ProtocolMessage>(PB.code.QUEST_SUBMIT_S.GetHashCode().ToString(),null);
     }
     void OnClickSubmit(GameObject go)
     {
@@ -173,6 +170,7 @@ public class questItem : MonoBehaviour
         param.questId = info.serverData.questId;
         GameApp.Instance.netManager.SendMessage(PB.code.QUEST_SUBMIT_C.GetHashCode(), param);
     }
+
 
 
     void OnEnable()
@@ -186,16 +184,11 @@ public class questItem : MonoBehaviour
 
     void BindListener()
     {
-        //TODO:
-        //GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_S);
     }
+
     void UnBindListener()
     {
-        //TODO:
-        //GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_S.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
     }
-
-
     //sort reward item
     public static int SortReward(RewardItemData a, RewardItemData b)
     {
@@ -204,7 +197,7 @@ public class questItem : MonoBehaviour
         if ((a.itemType <= (int)PB.itemType.MONSTER_ATTR && b.itemType <= (int)PB.itemType.MONSTER_ATTR)
             || (a.itemType > (int)PB.itemType.MONSTER_ATTR && b.itemType > (int)PB.itemType.MONSTER_ATTR))
         {
-            if (a.itemId < b.itemId)
+            if (int.Parse(a.itemId) < int.Parse(b.itemId))
             {
                 result = -1;
             }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class RewardStaticData
 {
-    public int id;
+    public string id;
     public string reward;
 }
 
@@ -13,7 +13,7 @@ public class RewardItemData
     public int itemType;
     
     //if it is PLAYER_ATTR or MONSTER_ATTR 
-    public int itemId;
+    public string itemId;
     public int count;
     public float prob;
 
@@ -22,7 +22,7 @@ public class RewardItemData
     public int level;
     /////////////////
 
-    public RewardItemData(int itemType,int itemId,int count,float prob)
+    public RewardItemData(int itemType,string itemId,int count,float prob)
     {
         this.itemType = itemType;
         this.itemId = itemId;
@@ -30,7 +30,7 @@ public class RewardItemData
         this.prob = prob;
     }
 
-    public RewardItemData(int itemType, int itemId, int count, int stage, int level, float prob)
+    public RewardItemData(int itemType, string itemId, int count, int stage, int level, float prob)
     {
         this.itemType = itemType;
         this.itemId = itemId;
@@ -45,6 +45,6 @@ public class RewardItemData
 
 public class RewardData
 {
-    public int id;
+    public string id;
     public List<RewardItemData> itemList;
 }

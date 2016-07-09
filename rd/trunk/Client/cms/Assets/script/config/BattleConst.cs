@@ -31,9 +31,9 @@ public class BattleConst
     //大招 怪物炫耀时长
     public const float dazhaoShowOffTime = 3;
 	//大招慢镜头速度
-	public	const	float	dazhaoAttackTimeScale = 0.4f;
+	public	const	float	dazhaoAttackTimeScale = 1.0f;
 	//大招慢镜头时长 
-	public	const float	dazhaoAttackTimeLength = 2.0f;
+	public	const float	dazhaoAttackTimeLength = 0.0f;
 	//法阵样式数量
 	public	const	int	magicFazhencount = 5;
 
@@ -61,4 +61,5 @@ public class BattleConst
     //怪物默认勤奋度
     public const int defaultLazy = 3;
     public const string levelChangeEvent = "level_change";
+    public const float distance = 3.0f;
 }

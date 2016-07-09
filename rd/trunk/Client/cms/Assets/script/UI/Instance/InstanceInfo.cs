@@ -129,7 +129,7 @@ public class InstanceInfo : MonoBehaviour
 
 	void SetReward(InstanceEntry entryData)
 	{
-		int  itemId = 0;
+		string  itemId = "";
 		
 		itemId = entryData.reward1;
 		SetSubReward (0, itemId);
@@ -150,7 +150,7 @@ public class InstanceInfo : MonoBehaviour
 		SetSubReward (5, itemId);
 	}
 	
-	void	SetSubReward(int index, int itemId)
+	void	SetSubReward(int index, string itemId)
 	{
 		GameObject tempGo = rewardGroup [index].gameObject;
 		

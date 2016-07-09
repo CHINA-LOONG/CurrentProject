@@ -11,6 +11,7 @@ import org.hibernate.type.IntegerType;
 import com.hawk.game.attr.Attribute;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.log.BehaviorLogger.Params;
@@ -99,10 +100,10 @@ public class AwardItems {
 		return null;
 	}
 
-	public AwardItems addItem(int itemId, int count) {
+	public AwardItems addItem(String itemId, int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
-			if (reward.getType() == itemType.ITEM_VALUE && reward.getItemId() == itemId) {
+			if (reward.getType() == itemType.ITEM_VALUE && reward.getItemId().equals(itemId)) {
 				rewardItem = reward;
 				break;
 			}
@@ -122,14 +123,14 @@ public class AwardItems {
 		return this;
 	}
 
-	public AwardItems addEquip(int equipId, int count, int stage, int level) {
+	public AwardItems addEquip(String equipId, int count, int stage, int level) {
 		for (int i = 0; i < count; i++) {
 			addEquip(equipId, stage, level);
 		}
 		return this;
 	}
 
-	public AwardItems addEquip(int equipId, int stage, int level) {
+	public AwardItems addEquip(String equipId, int stage, int level) {
 		RewardItem.Builder rewardItem = RewardItem.newBuilder();
 		rewardItem.setType(Const.itemType.EQUIP_VALUE);
 		rewardItem.setItemId(equipId);
@@ -138,11 +139,27 @@ public class AwardItems {
 		rewardInfo.addRewardItems(rewardItem);
 		return this;
 	}
+
+	public AwardItems  addMonster(String monsterId, int count, int stage) {
+		for (int i = 0; i < count; i++) {
+			addMonster(monsterId, stage);
+		}
+		return this;
+	}
 	
-	public AwardItems addAttr(int attrType, int count) {
+	public AwardItems  addMonster(String monsterId, int stage) {
+		RewardItem.Builder rewardItem = RewardItem.newBuilder();
+		rewardItem.setType(Const.itemType.MONSTER_VALUE);
+		rewardItem.setItemId(monsterId);
+		rewardItem.setStage(stage);
+		rewardInfo.addRewardItems(rewardItem);
+		return this;
+	}
+	
+	public AwardItems addAttr(String attrType, int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
-			if (reward.getType() == itemType.PLAYER_ATTR_VALUE && reward.getItemId() == attrType) {
+			if (reward.getType() == itemType.PLAYER_ATTR_VALUE && reward.getItemId().equals(attrType)) {
 				rewardItem = reward;
 				break;
 			}
@@ -162,10 +179,14 @@ public class AwardItems {
 		return this;
 	}
 	
-	public AwardItems addMonsterAttr(int attrType, int count, int monsterId) {
+	public AwardItems addAttr(int attrType, int count) {		
+		return addAttr(String.valueOf(attrType), count);
+	}
+	
+	public AwardItems addMonsterAttr(String attrType, int count, int id) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
-			if (reward.getType() == itemType.MONSTER_ATTR_VALUE && reward.getItemId() == attrType && reward.getId() == monsterId) {
+			if (reward.getType() == itemType.MONSTER_ATTR_VALUE && reward.getItemId().equals(attrType)  && reward.getId() == id) {
 				rewardItem = reward;
 				break;
 			}
@@ -175,7 +196,7 @@ public class AwardItems {
 			rewardItem = RewardItem.newBuilder();
 			rewardItem.setType(itemType.MONSTER_ATTR_VALUE);
 			rewardItem.setItemId(attrType);
-			rewardItem.setId(monsterId);
+			rewardItem.setId(id);
 			rewardInfo.addRewardItems(rewardItem);
 		}
 		else
@@ -185,10 +206,10 @@ public class AwardItems {
 		return this;
 	}
 	
-	public AwardItems addMonsterAttr(int attrType, int count) {
+	public AwardItems addMonsterAttr(String attrType, int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
-			if (reward.getType() == itemType.MONSTER_ATTR_VALUE && reward.getItemId() == attrType && reward.getId() == 0) {
+			if (reward.getType() == itemType.MONSTER_ATTR_VALUE && reward.getItemId().equals(attrType)  && reward.getId() == 0) {
 				rewardItem = reward;
 				break;
 			}
@@ -225,7 +246,15 @@ public class AwardItems {
 			else {
 				addEquip(itemInfo.getItemId(), itemInfo.getStage(), itemInfo.getLevel());
 			}
-		}			
+		}		
+		else if (itemInfo.getType() == itemType.MONSTER_VALUE) {
+			if (itemInfo.getCount() > 0) {
+				addMonster(itemInfo.getItemId(), itemInfo.getCount(), itemInfo.getStage());
+			}
+			else {
+				addMonster(itemInfo.getItemId(), itemInfo.getStage());
+			}
+		}
 		return this;
 	}
 
@@ -296,7 +325,7 @@ public class AwardItems {
 				boolean rewardFail = false;
 				if (item.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
 					// 玩家属性
-					switch (item.getItemId()) {
+					switch (Integer.parseInt(item.getItemId())) {
 					case changeType.CHANGE_COIN_VALUE:
 						player.increaseCoin(item.getCount(), action);
 						playerBuilder.setCoin(player.getCoin());
@@ -324,14 +353,14 @@ public class AwardItems {
 					}
 				}
 				else if (item.getType() == Const.itemType.MONSTER_ATTR_VALUE) {					
-					if (item.getItemId() == changeType.CHANGE_MONSTER_EXP_VALUE) {
+					if (Integer.parseInt(item.getItemId())== changeType.CHANGE_MONSTER_EXP_VALUE) {
 						List<Integer> battleMonsters = player.getPlayerData().getPlayerEntity().getBattleMonsterList();
 						if (item.getId() == 0) {
 							for (Integer monsterId : battleMonsters) {
 								if (player.getPlayerData().getMonsterEntity(monsterId) != null) {
 									RewardItem.Builder builder = RewardItem.newBuilder();
 									builder.setType(itemType.MONSTER_ATTR_VALUE);
-									builder.setItemId(changeType.CHANGE_MONSTER_EXP_VALUE);
+									builder.setItemId(String.valueOf(changeType.CHANGE_MONSTER_EXP_VALUE));
 									builder.setCount(item.getCount());
 									builder.setId(monsterId);
 									rewardInfo.addRewardItems(builder);
@@ -382,6 +411,13 @@ public class AwardItems {
 					}
 					else {
 						EquipUtil.generateAttr(equipEntity, item);
+					}
+				}
+				else if(item.getType() == Const.itemType.MONSTER_VALUE){				
+				
+					MonsterEntity monsterEntity = player.increaseMonster(item.getItemId(), item.getStage(), action);			
+					if (monsterEntity == null) {				
+						rewardFail = true;
 					}
 				}
 				else {

@@ -20,20 +20,20 @@ public class InstanceEntry
 	public	string	enemy4;
 	public	string	enemy5;
 	public	string	enemy6;
-	public	int	reward1;
-	public	int	reward2;
-	public	int	reward3;
-	public	int	reward4;
-	public	int	reward5;
-	public	int	reward6;
+    public  string reward1;
+    public  string reward2;
+    public  string reward3;
+    public  string reward4;
+    public  string reward5;
+	public	string	reward6;
 
 	public List<string> enemyList;
-	public List<int> rewardList;
+	public List<string> rewardList;
 
 	public void AdaptData()
 	{
 		enemyList = new List<string>();
-		rewardList = new List<int>();
+        rewardList = new List<string>();
 		
 		if(!string.IsNullOrEmpty(enemy1))
 			enemyList.Add(enemy1);
@@ -52,23 +52,23 @@ public class InstanceEntry
 		
 		if(!string.IsNullOrEmpty(enemy6))
 			enemyList.Add(enemy6);
-		
-		if(reward1 > 0)
+
+        if (reward1 != null && reward4.Equals("") == false)
 			rewardList.Add(reward1);
-		
-		if(reward2 > 0)
+
+        if (reward2 != null && reward4.Equals("") == false)
 			rewardList.Add(reward2);
-		
-		if(reward3 > 0)
+
+        if (reward3 != null && reward4.Equals("") == false)
 			rewardList.Add(reward3);
-		
-		if(reward4 > 0)
+
+        if (reward4 != null && reward4.Equals("") == false)
 			rewardList.Add(reward4);
-		
-		if(reward5 > 0)
+
+        if (reward5 != null && reward4.Equals("") == false)
 			rewardList.Add(reward5);
-		
-		if(reward6 > 0)
+
+        if (reward6 != null && reward4.Equals("") == false)
 			rewardList.Add(reward6);
 
 	}

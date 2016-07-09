@@ -47,9 +47,9 @@ public final class Consume {
      */
     long getId();
 
-    // required int32 itemId = 3;
+    // required string itemId = 3;
     /**
-     * <code>required int32 itemId = 3;</code>
+     * <code>required string itemId = 3;</code>
      *
      * <pre>
      * 物品编号
@@ -57,13 +57,22 @@ public final class Consume {
      */
     boolean hasItemId();
     /**
-     * <code>required int32 itemId = 3;</code>
+     * <code>required string itemId = 3;</code>
      *
      * <pre>
      * 物品编号
      * </pre>
      */
-    int getItemId();
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 3;</code>
+     *
+     * <pre>
+     * 物品编号
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
 
     // optional int32 count = 4;
     /**
@@ -149,9 +158,9 @@ public final class Consume {
               id_ = input.readInt64();
               break;
             }
-            case 24: {
+            case 26: {
               bitField0_ |= 0x00000004;
-              itemId_ = input.readInt32();
+              itemId_ = input.readBytes();
               break;
             }
             case 32: {
@@ -247,11 +256,11 @@ public final class Consume {
       return id_;
     }
 
-    // required int32 itemId = 3;
+    // required string itemId = 3;
     public static final int ITEMID_FIELD_NUMBER = 3;
-    private int itemId_;
+    private java.lang.Object itemId_;
     /**
-     * <code>required int32 itemId = 3;</code>
+     * <code>required string itemId = 3;</code>
      *
      * <pre>
      * 物品编号
@@ -261,14 +270,45 @@ public final class Consume {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required int32 itemId = 3;</code>
+     * <code>required string itemId = 3;</code>
      *
      * <pre>
      * 物品编号
      * </pre>
      */
-    public int getItemId() {
-      return itemId_;
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 3;</code>
+     *
+     * <pre>
+     * 物品编号
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     // optional int32 count = 4;
@@ -298,7 +338,7 @@ public final class Consume {
     private void initFields() {
       type_ = 0;
       id_ = 0L;
-      itemId_ = 0;
+      itemId_ = "";
       count_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -328,7 +368,7 @@ public final class Consume {
         output.writeInt64(2, id_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, itemId_);
+        output.writeBytes(3, getItemIdBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, count_);
@@ -352,7 +392,7 @@ public final class Consume {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, itemId_);
+          .computeBytesSize(3, getItemIdBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
@@ -483,7 +523,7 @@ public final class Consume {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
-        itemId_ = 0;
+        itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
         count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -554,7 +594,9 @@ public final class Consume {
           setId(other.getId());
         }
         if (other.hasItemId()) {
-          setItemId(other.getItemId());
+          bitField0_ |= 0x00000004;
+          itemId_ = other.itemId_;
+          onChanged();
         }
         if (other.hasCount()) {
           setCount(other.getCount());
@@ -692,10 +734,10 @@ public final class Consume {
         return this;
       }
 
-      // required int32 itemId = 3;
-      private int itemId_ ;
+      // required string itemId = 3;
+      private java.lang.Object itemId_ = "";
       /**
-       * <code>required int32 itemId = 3;</code>
+       * <code>required string itemId = 3;</code>
        *
        * <pre>
        * 物品编号
@@ -705,30 +747,62 @@ public final class Consume {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required int32 itemId = 3;</code>
+       * <code>required string itemId = 3;</code>
        *
        * <pre>
        * 物品编号
        * </pre>
        */
-      public int getItemId() {
-        return itemId_;
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 itemId = 3;</code>
+       * <code>required string itemId = 3;</code>
        *
        * <pre>
        * 物品编号
        * </pre>
        */
-      public Builder setItemId(int value) {
-        bitField0_ |= 0x00000004;
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 3;</code>
+       *
+       * <pre>
+       * 物品编号
+       * </pre>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
         itemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 itemId = 3;</code>
+       * <code>required string itemId = 3;</code>
        *
        * <pre>
        * 物品编号
@@ -736,7 +810,24 @@ public final class Consume {
        */
       public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        itemId_ = 0;
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 3;</code>
+       *
+       * <pre>
+       * 物品编号
+       * </pre>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        itemId_ = value;
         onChanged();
         return this;
       }
@@ -2370,7 +2461,7 @@ public final class Consume {
       "\n\026Protocol/Consume.proto\032\025Protocol/Playe" +
       "r.proto\032\026Protocol/Monster.proto\"F\n\013Consu" +
       "meItem\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \001(\003\022\016\n\006item" +
-      "Id\030\003 \002(\005\022\r\n\005count\030\004 \001(\005\"~\n\rHSConsumeInfo" +
+      "Id\030\003 \002(\t\022\r\n\005count\030\004 \001(\005\"~\n\rHSConsumeInfo" +
       "\022\"\n\nplayerAttr\030\001 \001(\0132\016.SynPlayerAttr\022%\n\014" +
       "monstersAttr\030\002 \003(\0132\017.SynMonsterAttr\022\"\n\014c" +
       "onsumeItems\030\003 \003(\0132\014.ConsumeItemB\030\n\026com.h" +

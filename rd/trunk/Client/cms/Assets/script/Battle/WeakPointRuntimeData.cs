@@ -78,6 +78,9 @@ public class WeakPointRuntimeData
 	public	ParticleEffect	appraisalWpStateEffect = null;
 	public	ParticleEffect	appraisalWpEffect = null;
 
+	//boxCollider
+	public List<WeakpointTarget>  listBoxCollider = new List<WeakpointTarget> ();
+
 	public	WeakPointData	staticData;
 
 	public void ChangeState(WeakpointState state)
@@ -101,8 +104,33 @@ public class WeakPointRuntimeData
 			{
 				battleObject.TriggerEvent(effectId,Time.time,null);
 			}
-
 		}
+
+		if (lastWpstate == WeakpointState.Dead) 
+		{
+			hp = maxHp;
+			IsFind = false;
+		}
+		if (lastWpstate == WeakpointState.Normal1 &&
+			wpState == WeakpointState.Normal2) 
+		{
+			IsFind = false;
+		}
+		if (lastWpstate == WeakpointState.Normal2 &&
+			wpState == WeakpointState.Normal1)
+		{
+			IsFind = false;
+		}
+		//检测是否取消集火
+		string fireFocuWpName = BattleController.Instance.Process.fireAttackWpName;
+		if (!string.IsNullOrEmpty (fireFocuWpName))
+		{
+			if(fireFocuWpName.EndsWith(id))
+			{
+				BattleController.Instance.Process.HideFireFocus();
+			}
+		}
+		UpdateBoxCollider ();
 	}
 
 	public GameObject GetMeshWithState(WeakpointState state)
@@ -149,6 +177,53 @@ public class WeakPointRuntimeData
 			return false;
 		}
 		return true;
+	}
+
+	public void InitBoxColliders()
+	{
+		if (!battleObject.unit.isBoss)
+			return;
+
+		if (string.IsNullOrEmpty (staticData.boxColliders))
+			return;
+
+		ArrayList colliders = MiniJsonExtensions.arrayListFromJson (staticData.boxColliders) as ArrayList;
+		if (null == colliders)
+			return;
+		listBoxCollider.Clear ();
+
+		foreach (string subCollider in colliders) 
+		{
+			GameObject boxGo = Util.FindChildByName(battleObject.gameObject,subCollider);
+			if(null == boxGo)
+				continue;
+			WeakpointTarget wpTarget = boxGo.GetComponent<WeakpointTarget>();
+			if(null == wpTarget)
+			{
+				wpTarget = boxGo.AddComponent<WeakpointTarget>();
+			}
+			wpTarget.wpId = id;
+			wpTarget.battleObject = battleObject;
+
+			var bc = boxGo.GetComponent<BoxCollider>();
+			if(null == bc)
+				boxGo.AddComponent<BoxCollider>();
+		}
+	}
+
+	public void UpdateBoxCollider()
+	{
+		foreach (var wpTarget in listBoxCollider) 
+		{
+			if(IsCanFireFocus())
+			{
+				wpTarget.gameObject.SetActive(true);
+			}
+			else
+			{
+				wpTarget.gameObject.SetActive(false);
+			}
+		}
 	}
 }
 

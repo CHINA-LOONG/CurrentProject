@@ -25,6 +25,7 @@ public class UIBattle : UIBase
 	public Transform dazhaoGroup = null;
     public Transform publicTopGroup = null;
 
+	public Image mirrorUI = null;
     public Image m_MirrorImage = null;
     public Button m_ButtonLeft = null;
     public HomeButton m_ButtonDaoju = null;
@@ -64,16 +65,7 @@ public class UIBattle : UIBase
     public void Init()
     {
 		instance = this;
-        if (null != m_MirrorImage)
-        {
-            m_MirrorDray = m_MirrorImage.gameObject.AddComponent<MirrorDray>();
-			m_MirrorDray.Init();
-			//Debug.LogError("liwsTest: UIBattle is Load And MirrorDray component added");
-        }
-        else
-        {
-			Logger.LogError("You Should set MirrorImage in the UIBattle prefab!");
-        }
+        
 		m_ButtonMirror.IsOn = false;
         
 		InitMirrorImage ();
@@ -234,13 +226,27 @@ public class UIBattle : UIBase
 
 	void InitMirrorImage()
 	{
+		if (null != m_MirrorImage)
+		{
+			m_MirrorDray = m_MirrorImage.gameObject.AddComponent<MirrorDray>();
+			m_MirrorDray.Init(mirrorUI);
+			//Debug.LogError("liwsTest: UIBattle is Load And MirrorDray component added");
+		}
+		else
+		{
+			Logger.LogError("You Should set MirrorImage in the UIBattle prefab!");
+		}
+
         GameObject go = ResourceMgr.Instance.LoadAsset("ui/findmonsterinfo", "MirrorFindMonsterInfo");
 		//GameObject go = Instantiate (prefab) as GameObject;
 		go.transform.SetParent (m_MirrorImage.gameObject.transform,false);
 		MirrorFindMonsterInfo mminfo = go.GetComponent<MirrorFindMonsterInfo> ();
+		go.SetActive (false);
 		mminfo.Init ();
 
-		m_MirrorImage.gameObject.SetActive(false);
+		//m_MirrorImage.gameObject.SetActive(false);
+
+		//
 	}
 
 	void InitFindWpInfoGroup()
@@ -273,6 +279,9 @@ public class UIBattle : UIBase
 
     void OnButtonSpeedClicked(GameObject go)
     {
+        if (BattleController.Instance.processStart == false)
+            return;
+
         m_BattleSpeed++;
 		if (m_BattleSpeed > m_MaxSpeed)
         {
@@ -304,15 +313,16 @@ public class UIBattle : UIBase
 
     void OnToggleMirrorClicked(GameObject go)
     {
-		bool isMirrorMode = m_ButtonMirror.IsOn;
-		OnSetMirrorModeState (isMirrorMode);
+		//bool isMirrorMode = m_ButtonMirror.IsOn;
+		//OnSetMirrorModeState (isMirrorMode);
 		//GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, isMirrorMode);
     }
 
 	void OnSetMirrorModeState(bool isMirrorMode)
 	{
+		/*
 		m_ButtonMirror.IsOn = isMirrorMode;
-		m_MirrorImage.gameObject.SetActive(isMirrorMode);
+	//	m_MirrorImage.gameObject.SetActive(isMirrorMode);
 		if (isMirrorMode)
 		{
 			float rootWidth = Screen.width /UIMgr.Instance.CanvasAttr.scaleFactor ;
@@ -326,7 +336,7 @@ public class UIBattle : UIBase
 			
 			m_MirrorImage.rectTransform.anchoredPosition = tempPos;
 		}
-		
+		*/
 		//
 		m_MirrorDray.OnSetMirrorModeState (isMirrorMode);
 	}

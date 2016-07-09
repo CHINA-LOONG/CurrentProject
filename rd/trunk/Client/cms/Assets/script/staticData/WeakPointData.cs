@@ -11,7 +11,8 @@ public class WeakPointData
     public int health;
     public byte isTarget;
 
-    public string node;
+	public string node;
+	public string boxColliders;
 
 	//鉴定效果
 	public string findWpEffect;

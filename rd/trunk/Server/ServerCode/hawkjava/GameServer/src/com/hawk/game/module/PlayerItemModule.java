@@ -99,9 +99,9 @@ public class PlayerItemModule extends PlayerModule{
 	 * @param protocol
 	 */
 	private void onItemBuy(int hsCode, HSItemBuy protocol) {
-		int itemId = protocol.getItemId();
+		String itemId = protocol.getItemId();
 		int itemCount = protocol.getItemCount();
-		if (itemId <= 0 || itemCount <= 0) {
+		if (itemCount <= 0) {
 			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return ;
 		}
@@ -145,12 +145,7 @@ public class PlayerItemModule extends PlayerModule{
 	 * @param protocol
 	 */
 	private void onItemUse(int hsCode, HSItemUse protocol) {
-		int itemId = protocol.getItemId();
-		
-		if (itemId <= 0 ) {
-			sendError(hsCode, Status.error.PARAMS_INVALID);
-			return ;
-		}
+		String itemId = protocol.getItemId();
 		 
 		ItemEntity itemEntity = player.getPlayerData().getItemByItemId(itemId);
 		if(itemEntity == null) {
@@ -209,11 +204,7 @@ public class PlayerItemModule extends PlayerModule{
 	 * @param protocol
 	 */
 	private void onItemCompose(int hsCode, HSItemCompose protocol) {
-		int itemId = protocol.getItemId();
-		if (itemId <= 0 ) {
-			sendError(hsCode, Status.error.PARAMS_INVALID);
-			return ;
-		}
+		String itemId = protocol.getItemId();
 		
 		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId);
 		if(itemCfg == null) {

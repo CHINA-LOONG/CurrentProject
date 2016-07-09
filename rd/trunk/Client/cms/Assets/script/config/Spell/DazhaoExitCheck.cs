@@ -30,14 +30,12 @@ public class DazhaoExitCheck : MonoBehaviour {
 	
 	void OnSpellAttackStatistics(SpellAttackStatisticsParam param)
 	{
-		if (param.useSpell == null || attackedByPhysics == 0 || checkBattle == null)
+		if (param.useSpell == null  || checkBattle == null || checkBattle.guid != param.targetID)
 			return;
 
 		if (param.useSpell.spellData.category != (int)SpellType.Spell_Type_PhyAttack)
 			return;
 
-		if (param.targetID != checkBattle.guid)
-			return;
 
 		attackedByPhysics ++;
 

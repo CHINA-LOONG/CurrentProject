@@ -16,7 +16,7 @@ public class DazhaoTip : MonoBehaviour
 	public void SetTipInfo(int timeLeft,int useAttack,int allAttack)
 	{
 		timeText.text = timeLeft.ToString ();
-		attackText.text = useAttack.ToString () + "/" + allAttack.ToString ();
+		//attackText.text = useAttack.ToString () + "/" + allAttack.ToString ();
 	}
 
 	public void Show()

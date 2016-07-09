@@ -45,7 +45,8 @@ public class PhyDazhaoController : MonoBehaviour
 	void OnDestroy()
 	{
 		UnBindListener ();
-		Destroy (dazhaoFocusController);
+		//Destroy (dazhaoFocusController);
+		ResourceMgr.Instance.DestroyAsset (dazhaoFocusController.gameObject);
 	}
 	
 	void BindListener()
@@ -163,7 +164,8 @@ public class PhyDazhaoController : MonoBehaviour
 		if (dazhaoUseCount >= dazhaoSpell.spellData.actionCount)
 		{
 			//慢镜头(最后一次)
-			GameSpeedService.Instance.SetTmpSpeed (BattleConst.dazhaoAttackTimeScale, BattleConst.dazhaoAttackTimeLength);
+			//GameSpeedService.Instance.SetTmpSpeed (BattleConst.dazhaoAttackTimeScale, BattleConst.dazhaoAttackTimeLength);
+			battleGo.TriggerEvent("phyDazhaoSlowMotion",Time.time,"");
 			DazhaoFinished();
 			comboIndex = -1;
 		}
@@ -191,7 +193,7 @@ public class PhyDazhaoController : MonoBehaviour
 			wpPosInScreen.x /= uiScale;
 			wpPosInScreen.y /= uiScale;
 			Transform comboParent =  BattleController.Instance.GetUIBattle().publicTopGroup;
-			HitCombo.ShowCombo(comboParent,comboIndex,wpPosInScreen.x,wpPosInScreen.y);
+			HitCombo.ShowCombo(comboParent,comboIndex,wpPosInScreen.x - 75,wpPosInScreen.y + 10);
 		}
 	}
 

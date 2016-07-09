@@ -1,4 +1,4 @@
-﻿#NUM,NUM ,NUM,NUM,NUM,TEXT,TEXT
+﻿#TEXT,NUM ,NUM,NUM,NUM,TEXT,TEXT
 id,stage,level,baseAttrId,rollCount,additionAttr,demand
 #id,品级,强化级别,基础属性索引,roll次数,附加属性,消耗列表
 70001,1,0,1,0,,

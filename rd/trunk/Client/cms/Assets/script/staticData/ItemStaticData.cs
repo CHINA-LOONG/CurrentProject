@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ItemStaticData 
 {
-	public int id;
+	public  string id;
 	public	string	name;
 	public	int	classType;
 	public	string	asset;

@@ -43,7 +43,7 @@ public class EquipEntity extends HawkDBEntity {
 	private long id = 0;
 
 	@Column(name = "itemId")
-	private int itemId = 0;
+	private String itemId = null;
 
 	@Column(name = "status")
 	protected byte status = 0;
@@ -88,7 +88,8 @@ public class EquipEntity extends HawkDBEntity {
 		this.createTime = HawkTime.getCalendar();
 	}
 
-	public EquipEntity(int itemId, byte status, short slot, short count, byte stage, byte level, Calendar expireTime) {
+	public EquipEntity(String itemId, byte status, short slot, short count, byte stage, byte level, Calendar expireTime) {
+		this.itemId = itemId;
 		this.status = status;
 		this.stage = stage;
 		this.level = level;
@@ -104,11 +105,11 @@ public class EquipEntity extends HawkDBEntity {
 		this.id = id;
 	}
 
-	public int getItemId() {
+	public String getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(int itemId) {
+	public void setItemId(String itemId) {
 		this.itemId = itemId;
 	}
 	

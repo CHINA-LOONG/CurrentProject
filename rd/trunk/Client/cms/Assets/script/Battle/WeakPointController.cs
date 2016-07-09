@@ -91,6 +91,7 @@ public class WeakPointController : MonoBehaviour
 				if(null != wpRuntime.appraisalWpEffect &&
 				   wpRuntime.appraisalWpStateEffect != null)
 				{
+					wpRuntime.appraisalWpEffect.Show(false);
 					wpRuntime.appraisalWpEffect.Show(true);
 				}
 			}
@@ -112,6 +113,11 @@ public class WeakPointController : MonoBehaviour
 
 
 			bo.unit.isVisible =  true;
+
+			if(!bo.unit.isBoss)
+			{
+				GameEventMgr.Instance.FireEvent<int>(GameEventList.ShowHideMonster, bo.unit.pbUnit.guid);
+			}
 		}
 	}
 

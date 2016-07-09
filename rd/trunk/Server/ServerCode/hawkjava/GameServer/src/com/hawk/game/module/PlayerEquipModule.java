@@ -111,9 +111,9 @@ public class PlayerEquipModule extends PlayerModule{
 
 	public void onEquipBuy(int hsCode, HSEquipBuy protocol)
 	{
-		int equid = protocol.getEquipId();
+		String equid = protocol.getEquipId();
 		int equipCount = protocol.getEquipCount();
-		if (equid <= 0 || equipCount <= 0) {
+		if (equipCount <= 0) {
 			sendError(hsCode, Status.error.PARAMS_INVALID);
 			return ;
 		}

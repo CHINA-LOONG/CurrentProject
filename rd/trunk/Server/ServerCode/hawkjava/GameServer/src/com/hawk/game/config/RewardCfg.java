@@ -19,7 +19,7 @@ public class RewardCfg extends HawkConfigBase  {
 	 * 配置id
 	 */
 	@Id
-	protected final int id ;
+	protected final String id ;
 	/**
 	 * 奖励配置
 	 */
@@ -30,7 +30,7 @@ public class RewardCfg extends HawkConfigBase  {
 	private List<RatioItem<ItemInfo>> ratioList;
 	
 	public RewardCfg() {
-		id = 0;
+		id = null;
 		reward = null;
 		ratioList = new LinkedList<RatioItem<ItemInfo>>();
 	}
@@ -79,7 +79,7 @@ public class RewardCfg extends HawkConfigBase  {
 			for (String itemArray : itemArrays) {
 				String[] items = itemArray.split("_");
 				if (items.length == 4) {
-					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), Integer.valueOf(items[1]), Integer.valueOf(items[2]));
+					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]));
 					if (ConfigUtil.checkIsNotEquip(item.getType()))
 					{
 						ratioList.add(RatioItem.valueOf(item, Float.valueOf(items[3])));
@@ -89,7 +89,7 @@ public class RewardCfg extends HawkConfigBase  {
 					}	
 				}
 				else if (items.length == 6) {
-					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), Integer.valueOf(items[1]), Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]));
+					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]));
 					if (ConfigUtil.checkIsNotEquip(item.getType()))
 					{
 						ratioList.add(RatioItem.valueOf(item, Float.valueOf(items[5])));

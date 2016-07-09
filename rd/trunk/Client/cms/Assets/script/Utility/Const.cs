@@ -78,6 +78,6 @@ public class Const
     public static SERVERTYPE ServerType = SERVERTYPE.LOCAL_SERVER_NORMAL;     
 	public static int SocketPort = 9595;                          //Socket服务器端口
     public static int TestSocketPort = 9596;                      //测试Socket服务器端口
-    public static string LocalAddress = "192.168.199.122";          //本地Socket服务器地址
+    public static string LocalAddress = "192.168.199.122";              //本地Socket服务器地址
     public static string RemoteAddress = "123.59.45.55";          //远程Socket服务器地址
 }

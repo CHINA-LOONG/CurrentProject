@@ -244,6 +244,11 @@ public class Buff
                 target.spellDefenseDamageRatio = buffProto.defenseDamageRatio;
             }
         }
+
+        if (buffProto.speedRatio != 0.0f)
+        {
+            target.RecalcCurActionOrder();
+        }
     }
     //---------------------------------------------------------------------------------------------
     //now only dazhao buff need response

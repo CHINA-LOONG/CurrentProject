@@ -1,7 +1,10 @@
 package com.hawk.game.item;
-/**
- * 物品结构体定义
- */
+
+import java.util.LinkedList;
+import java.util.List;
+
+import com.hawk.game.util.GsConst.ItemParseType;
+
 public class ItemInfo {
 	/**
 	 * 种类
@@ -10,7 +13,7 @@ public class ItemInfo {
 	/**
 	 * itemId
 	 */
-	int itemId;
+	String itemId;
 	/**
 	 * 数量
 	 */
@@ -27,20 +30,20 @@ public class ItemInfo {
 	public ItemInfo() {
 		super();
 		this.type = 0;
-		this.itemId = 0;
+		this.itemId = "";
 		this.count = 0;
 		this.stage = 0;
 		this.level = 0;
 	}
 
-	public ItemInfo(int type, int itemId, int count) {
+	public ItemInfo(int type, String itemId, int count) {
 		super();
 		this.type = type;
 		this.itemId = itemId;
 		this.count = count;
 	}
 	
-	public ItemInfo(int type, int itemId, int count, int stage, int level) {
+	public ItemInfo(int type, String itemId, int count, int stage, int level) {
 		super();
 		this.type = type;
 		this.itemId = itemId;
@@ -49,10 +52,6 @@ public class ItemInfo {
 		this.level = level;
 	}
 	
-	public ItemInfo(String info) {
-		initByString(info);
-	}
-
 	public int getType() {
 		return type;
 	}
@@ -61,11 +60,11 @@ public class ItemInfo {
 		this.type = type;
 	}
 
-	public int getItemId() {
+	public String getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(int itemId) {
+	public void setItemId(String itemId) {
 		this.itemId = itemId;
 	}
 
@@ -108,15 +107,15 @@ public class ItemInfo {
 		return String.format("%d_%d_%d", type, itemId, count);
 	}
 
-	public static ItemInfo valueOf(int type, int itemId, int quantity) {
+	public static ItemInfo valueOf(int type, String itemId, int quantity) {
 		return new ItemInfo(type, itemId, quantity);
 	}
 
-	public static ItemInfo valueOf(int type, int itemId, int quantity, int stage, int level) {
+	public static ItemInfo valueOf(int type, String itemId, int quantity, int stage, int level) {
 		return new ItemInfo(type, itemId, quantity, stage, level);
 	}
 	
-	public boolean initByString(String info) {
+	public boolean initByString(String info, int parseType) {
 		if (info != null && info.length() > 0 && !info.equals("0") && !info.equals("none")) {
 			String[] items = info.split("_");
 			if (items.length < 3) {
@@ -124,11 +123,18 @@ public class ItemInfo {
 			}
 			
 			type = Integer.parseInt(items[0]);
-			itemId = Integer.parseInt(items[1]);
+			itemId = items[1];
 			count = Integer.parseInt(items[2]);
-			if (items.length == 5) {
-				stage = Integer.parseInt(items[3]);
-				level = Integer.parseInt(items[4]);		
+			
+			if (parseType == ItemParseType.PARSE_MONSTER_STAGE) {
+				if (items.length == 4)
+				{
+					stage = Integer.parseInt(items[3]);	
+				}
+				else if (items.length == 5) {
+					stage = Integer.parseInt(items[3]);
+					level = Integer.parseInt(items[4]);		
+				}
 			}
 			
 			return true;
@@ -136,11 +142,24 @@ public class ItemInfo {
 		return false;
 	}
 
-	public static ItemInfo valueOf(String info) {
+	public static ItemInfo valueOf(String info, int parseType) {
 		ItemInfo itemInfo = new ItemInfo();
-		if (itemInfo.initByString(info)) {
+		if (true == itemInfo.initByString(info, parseType)) {
 			return itemInfo;
 		}
 		return null;
 	}
+	
+	public static List<ItemInfo> GetItemInfo(String info, int parseType) {	
+		List<ItemInfo> result = new LinkedList<ItemInfo>();
+		String[] items = info.split(",");
+		for(String item : items) {
+			ItemInfo itemInfo = ItemInfo.valueOf(item, parseType);
+			if (itemInfo != null) {
+				result.add(itemInfo);
+			}
+		}
+		return result;
+	}
+	
 }

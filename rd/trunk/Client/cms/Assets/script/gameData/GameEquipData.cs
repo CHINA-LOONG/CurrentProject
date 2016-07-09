@@ -6,9 +6,9 @@ public class EquipData
 {
     public int stage;
     public int level;
-    public int equipId;
+    public string equipId;
 
-    public static EquipData valueof(int equipId, int stage, int level)
+    public static EquipData valueof(string equipId, int stage, int level)
     {
         EquipData equipData = new EquipData();
         equipData.stage = stage;
@@ -22,10 +22,10 @@ public class GameEquipData
 {
     public Dictionary<long, EquipData> equipList = new Dictionary<long, EquipData>();
 
-    public void AddEquip(long id, int equipId, int stage, int level)
+    public void AddEquip(long id, string equipId, int stage, int level)
     {
         EquipData equipData;
-        if (equipList.TryGetValue(equipId, out equipData))
+        if (equipList.TryGetValue(id, out equipData))
         {
             equipData.equipId = equipId;
             equipData.stage = stage;

@@ -578,15 +578,20 @@ public final class Equip {
      */
     long getId();
 
-    // required int32 equipId = 2;
+    // required string equipId = 2;
     /**
-     * <code>required int32 equipId = 2;</code>
+     * <code>required string equipId = 2;</code>
      */
     boolean hasEquipId();
     /**
-     * <code>required int32 equipId = 2;</code>
+     * <code>required string equipId = 2;</code>
      */
-    int getEquipId();
+    java.lang.String getEquipId();
+    /**
+     * <code>required string equipId = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getEquipIdBytes();
 
     // required int32 stage = 3;
     /**
@@ -790,9 +795,9 @@ public final class Equip {
               id_ = input.readInt64();
               break;
             }
-            case 16: {
+            case 18: {
               bitField0_ |= 0x00000002;
-              equipId_ = input.readInt32();
+              equipId_ = input.readBytes();
               break;
             }
             case 24: {
@@ -893,20 +898,47 @@ public final class Equip {
       return id_;
     }
 
-    // required int32 equipId = 2;
+    // required string equipId = 2;
     public static final int EQUIPID_FIELD_NUMBER = 2;
-    private int equipId_;
+    private java.lang.Object equipId_;
     /**
-     * <code>required int32 equipId = 2;</code>
+     * <code>required string equipId = 2;</code>
      */
     public boolean hasEquipId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 equipId = 2;</code>
+     * <code>required string equipId = 2;</code>
      */
-    public int getEquipId() {
-      return equipId_;
+    public java.lang.String getEquipId() {
+      java.lang.Object ref = equipId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          equipId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string equipId = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEquipIdBytes() {
+      java.lang.Object ref = equipId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        equipId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     // required int32 stage = 3;
@@ -1103,7 +1135,7 @@ public final class Equip {
 
     private void initFields() {
       id_ = 0L;
-      equipId_ = 0;
+      equipId_ = "";
       stage_ = 0;
       level_ = 0;
       gemInfos_ = java.util.Collections.emptyList();
@@ -1159,7 +1191,7 @@ public final class Equip {
         output.writeInt64(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, equipId_);
+        output.writeBytes(2, getEquipIdBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, stage_);
@@ -1194,7 +1226,7 @@ public final class Equip {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, equipId_);
+          .computeBytesSize(2, getEquipIdBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1340,7 +1372,7 @@ public final class Equip {
         super.clear();
         id_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        equipId_ = 0;
+        equipId_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         stage_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -1452,7 +1484,9 @@ public final class Equip {
           setId(other.getId());
         }
         if (other.hasEquipId()) {
-          setEquipId(other.getEquipId());
+          bitField0_ |= 0x00000002;
+          equipId_ = other.equipId_;
+          onChanged();
         }
         if (other.hasStage()) {
           setStage(other.getStage());
@@ -1610,35 +1644,76 @@ public final class Equip {
         return this;
       }
 
-      // required int32 equipId = 2;
-      private int equipId_ ;
+      // required string equipId = 2;
+      private java.lang.Object equipId_ = "";
       /**
-       * <code>required int32 equipId = 2;</code>
+       * <code>required string equipId = 2;</code>
        */
       public boolean hasEquipId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 equipId = 2;</code>
+       * <code>required string equipId = 2;</code>
        */
-      public int getEquipId() {
-        return equipId_;
+      public java.lang.String getEquipId() {
+        java.lang.Object ref = equipId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          equipId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 equipId = 2;</code>
+       * <code>required string equipId = 2;</code>
        */
-      public Builder setEquipId(int value) {
-        bitField0_ |= 0x00000002;
+      public com.google.protobuf.ByteString
+          getEquipIdBytes() {
+        java.lang.Object ref = equipId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          equipId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string equipId = 2;</code>
+       */
+      public Builder setEquipId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
         equipId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 equipId = 2;</code>
+       * <code>required string equipId = 2;</code>
        */
       public Builder clearEquipId() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        equipId_ = 0;
+        equipId_ = getDefaultInstance().getEquipId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string equipId = 2;</code>
+       */
+      public Builder setEquipIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        equipId_ = value;
         onChanged();
         return this;
       }
@@ -3139,15 +3214,20 @@ public final class Equip {
   public interface HSEquipBuyOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 equipId = 1;
+    // required string equipId = 1;
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
     boolean hasEquipId();
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
-    int getEquipId();
+    java.lang.String getEquipId();
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getEquipIdBytes();
 
     // required int32 equipCount = 2;
     /**
@@ -3234,9 +3314,9 @@ public final class Equip {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              equipId_ = input.readInt32();
+              equipId_ = input.readBytes();
               break;
             }
             case 16: {
@@ -3294,20 +3374,47 @@ public final class Equip {
     }
 
     private int bitField0_;
-    // required int32 equipId = 1;
+    // required string equipId = 1;
     public static final int EQUIPID_FIELD_NUMBER = 1;
-    private int equipId_;
+    private java.lang.Object equipId_;
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
     public boolean hasEquipId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
-    public int getEquipId() {
-      return equipId_;
+    public java.lang.String getEquipId() {
+      java.lang.Object ref = equipId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          equipId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEquipIdBytes() {
+      java.lang.Object ref = equipId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        equipId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     // required int32 equipCount = 2;
@@ -3359,7 +3466,7 @@ public final class Equip {
     }
 
     private void initFields() {
-      equipId_ = 0;
+      equipId_ = "";
       equipCount_ = 0;
       stage_ = 0;
       level_ = 0;
@@ -3389,7 +3496,7 @@ public final class Equip {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, equipId_);
+        output.writeBytes(1, getEquipIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, equipCount_);
@@ -3411,7 +3518,7 @@ public final class Equip {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, equipId_);
+          .computeBytesSize(1, getEquipIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3545,7 +3652,7 @@ public final class Equip {
 
       public Builder clear() {
         super.clear();
-        equipId_ = 0;
+        equipId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         equipCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -3614,7 +3721,9 @@ public final class Equip {
       public Builder mergeFrom(com.hawk.game.protocol.Equip.HSEquipBuy other) {
         if (other == com.hawk.game.protocol.Equip.HSEquipBuy.getDefaultInstance()) return this;
         if (other.hasEquipId()) {
-          setEquipId(other.getEquipId());
+          bitField0_ |= 0x00000001;
+          equipId_ = other.equipId_;
+          onChanged();
         }
         if (other.hasEquipCount()) {
           setEquipCount(other.getEquipCount());
@@ -3664,35 +3773,76 @@ public final class Equip {
       }
       private int bitField0_;
 
-      // required int32 equipId = 1;
-      private int equipId_ ;
+      // required string equipId = 1;
+      private java.lang.Object equipId_ = "";
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
       public boolean hasEquipId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
-      public int getEquipId() {
-        return equipId_;
+      public java.lang.String getEquipId() {
+        java.lang.Object ref = equipId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          equipId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
-      public Builder setEquipId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getEquipIdBytes() {
+        java.lang.Object ref = equipId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          equipId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public Builder setEquipId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         equipId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
       public Builder clearEquipId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        equipId_ = 0;
+        equipId_ = getDefaultInstance().getEquipId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public Builder setEquipIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        equipId_ = value;
         onChanged();
         return this;
       }
@@ -3807,18 +3957,599 @@ public final class Equip {
     // @@protoc_insertion_point(class_scope:HSEquipBuy)
   }
 
-  public interface HSEquipComposeOrBuilder
+  public interface HSEquipBuyRetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 equipId = 1;
+    // required string equipId = 1;
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
     boolean hasEquipId();
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
-    int getEquipId();
+    java.lang.String getEquipId();
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getEquipIdBytes();
+
+    // required int32 equipCount = 2;
+    /**
+     * <code>required int32 equipCount = 2;</code>
+     */
+    boolean hasEquipCount();
+    /**
+     * <code>required int32 equipCount = 2;</code>
+     */
+    int getEquipCount();
+  }
+  /**
+   * Protobuf type {@code HSEquipBuyRet}
+   *
+   * <pre>
+   * 装备购买道具
+   * </pre>
+   */
+  public static final class HSEquipBuyRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSEquipBuyRetOrBuilder {
+    // Use HSEquipBuyRet.newBuilder() to construct.
+    private HSEquipBuyRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSEquipBuyRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSEquipBuyRet defaultInstance;
+    public static HSEquipBuyRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSEquipBuyRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSEquipBuyRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              equipId_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              equipCount_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipBuyRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipBuyRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Equip.HSEquipBuyRet.class, com.hawk.game.protocol.Equip.HSEquipBuyRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSEquipBuyRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSEquipBuyRet>() {
+      public HSEquipBuyRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSEquipBuyRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSEquipBuyRet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string equipId = 1;
+    public static final int EQUIPID_FIELD_NUMBER = 1;
+    private java.lang.Object equipId_;
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    public boolean hasEquipId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    public java.lang.String getEquipId() {
+      java.lang.Object ref = equipId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          equipId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEquipIdBytes() {
+      java.lang.Object ref = equipId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        equipId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 equipCount = 2;
+    public static final int EQUIPCOUNT_FIELD_NUMBER = 2;
+    private int equipCount_;
+    /**
+     * <code>required int32 equipCount = 2;</code>
+     */
+    public boolean hasEquipCount() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 equipCount = 2;</code>
+     */
+    public int getEquipCount() {
+      return equipCount_;
+    }
+
+    private void initFields() {
+      equipId_ = "";
+      equipCount_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasEquipId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasEquipCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getEquipIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, equipCount_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getEquipIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, equipCount_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Equip.HSEquipBuyRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipBuyRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipBuyRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipBuyRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipBuyRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipBuyRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipBuyRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipBuyRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipBuyRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipBuyRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Equip.HSEquipBuyRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSEquipBuyRet}
+     *
+     * <pre>
+     * 装备购买道具
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Equip.HSEquipBuyRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipBuyRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipBuyRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Equip.HSEquipBuyRet.class, com.hawk.game.protocol.Equip.HSEquipBuyRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Equip.HSEquipBuyRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        equipId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        equipCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipBuyRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipBuyRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Equip.HSEquipBuyRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipBuyRet build() {
+        com.hawk.game.protocol.Equip.HSEquipBuyRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipBuyRet buildPartial() {
+        com.hawk.game.protocol.Equip.HSEquipBuyRet result = new com.hawk.game.protocol.Equip.HSEquipBuyRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.equipId_ = equipId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.equipCount_ = equipCount_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Equip.HSEquipBuyRet) {
+          return mergeFrom((com.hawk.game.protocol.Equip.HSEquipBuyRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Equip.HSEquipBuyRet other) {
+        if (other == com.hawk.game.protocol.Equip.HSEquipBuyRet.getDefaultInstance()) return this;
+        if (other.hasEquipId()) {
+          bitField0_ |= 0x00000001;
+          equipId_ = other.equipId_;
+          onChanged();
+        }
+        if (other.hasEquipCount()) {
+          setEquipCount(other.getEquipCount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasEquipId()) {
+          
+          return false;
+        }
+        if (!hasEquipCount()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Equip.HSEquipBuyRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Equip.HSEquipBuyRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string equipId = 1;
+      private java.lang.Object equipId_ = "";
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public boolean hasEquipId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public java.lang.String getEquipId() {
+        java.lang.Object ref = equipId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          equipId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getEquipIdBytes() {
+        java.lang.Object ref = equipId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          equipId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public Builder setEquipId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        equipId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public Builder clearEquipId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        equipId_ = getDefaultInstance().getEquipId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public Builder setEquipIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        equipId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 equipCount = 2;
+      private int equipCount_ ;
+      /**
+       * <code>required int32 equipCount = 2;</code>
+       */
+      public boolean hasEquipCount() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 equipCount = 2;</code>
+       */
+      public int getEquipCount() {
+        return equipCount_;
+      }
+      /**
+       * <code>required int32 equipCount = 2;</code>
+       */
+      public Builder setEquipCount(int value) {
+        bitField0_ |= 0x00000002;
+        equipCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 equipCount = 2;</code>
+       */
+      public Builder clearEquipCount() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        equipCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSEquipBuyRet)
+    }
+
+    static {
+      defaultInstance = new HSEquipBuyRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSEquipBuyRet)
+  }
+
+  public interface HSEquipComposeOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string equipId = 1;
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    boolean hasEquipId();
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    java.lang.String getEquipId();
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getEquipIdBytes();
 
     // required int32 relatedItemId = 2;
     /**
@@ -3885,9 +4616,9 @@ public final class Equip {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              equipId_ = input.readInt32();
+              equipId_ = input.readBytes();
               break;
             }
             case 16: {
@@ -3935,20 +4666,47 @@ public final class Equip {
     }
 
     private int bitField0_;
-    // required int32 equipId = 1;
+    // required string equipId = 1;
     public static final int EQUIPID_FIELD_NUMBER = 1;
-    private int equipId_;
+    private java.lang.Object equipId_;
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
     public boolean hasEquipId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
-    public int getEquipId() {
-      return equipId_;
+    public java.lang.String getEquipId() {
+      java.lang.Object ref = equipId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          equipId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEquipIdBytes() {
+      java.lang.Object ref = equipId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        equipId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     // required int32 relatedItemId = 2;
@@ -3968,7 +4726,7 @@ public final class Equip {
     }
 
     private void initFields() {
-      equipId_ = 0;
+      equipId_ = "";
       relatedItemId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -3992,7 +4750,7 @@ public final class Equip {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, equipId_);
+        output.writeBytes(1, getEquipIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, relatedItemId_);
@@ -4008,7 +4766,7 @@ public final class Equip {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, equipId_);
+          .computeBytesSize(1, getEquipIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -4134,7 +4892,7 @@ public final class Equip {
 
       public Builder clear() {
         super.clear();
-        equipId_ = 0;
+        equipId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         relatedItemId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -4191,7 +4949,9 @@ public final class Equip {
       public Builder mergeFrom(com.hawk.game.protocol.Equip.HSEquipCompose other) {
         if (other == com.hawk.game.protocol.Equip.HSEquipCompose.getDefaultInstance()) return this;
         if (other.hasEquipId()) {
-          setEquipId(other.getEquipId());
+          bitField0_ |= 0x00000001;
+          equipId_ = other.equipId_;
+          onChanged();
         }
         if (other.hasRelatedItemId()) {
           setRelatedItemId(other.getRelatedItemId());
@@ -4231,35 +4991,76 @@ public final class Equip {
       }
       private int bitField0_;
 
-      // required int32 equipId = 1;
-      private int equipId_ ;
+      // required string equipId = 1;
+      private java.lang.Object equipId_ = "";
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
       public boolean hasEquipId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
-      public int getEquipId() {
-        return equipId_;
+      public java.lang.String getEquipId() {
+        java.lang.Object ref = equipId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          equipId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
-      public Builder setEquipId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getEquipIdBytes() {
+        java.lang.Object ref = equipId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          equipId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public Builder setEquipId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         equipId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
       public Builder clearEquipId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        equipId_ = 0;
+        equipId_ = getDefaultInstance().getEquipId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public Builder setEquipIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        equipId_ = value;
         onChanged();
         return this;
       }
@@ -4311,15 +5112,20 @@ public final class Equip {
   public interface HSEquipComposeRetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 equipId = 1;
+    // required string equipId = 1;
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
     boolean hasEquipId();
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
-    int getEquipId();
+    java.lang.String getEquipId();
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getEquipIdBytes();
 
     // optional int32 stage = 2;
     /**
@@ -4396,9 +5202,9 @@ public final class Equip {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              equipId_ = input.readInt32();
+              equipId_ = input.readBytes();
               break;
             }
             case 16: {
@@ -4451,20 +5257,47 @@ public final class Equip {
     }
 
     private int bitField0_;
-    // required int32 equipId = 1;
+    // required string equipId = 1;
     public static final int EQUIPID_FIELD_NUMBER = 1;
-    private int equipId_;
+    private java.lang.Object equipId_;
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
     public boolean hasEquipId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 equipId = 1;</code>
+     * <code>required string equipId = 1;</code>
      */
-    public int getEquipId() {
-      return equipId_;
+    public java.lang.String getEquipId() {
+      java.lang.Object ref = equipId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          equipId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string equipId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEquipIdBytes() {
+      java.lang.Object ref = equipId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        equipId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     // optional int32 stage = 2;
@@ -4500,7 +5333,7 @@ public final class Equip {
     }
 
     private void initFields() {
-      equipId_ = 0;
+      equipId_ = "";
       stage_ = 0;
       level_ = 0;
     }
@@ -4521,7 +5354,7 @@ public final class Equip {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, equipId_);
+        output.writeBytes(1, getEquipIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, stage_);
@@ -4540,7 +5373,7 @@ public final class Equip {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, equipId_);
+          .computeBytesSize(1, getEquipIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -4670,7 +5503,7 @@ public final class Equip {
 
       public Builder clear() {
         super.clear();
-        equipId_ = 0;
+        equipId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         stage_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -4733,7 +5566,9 @@ public final class Equip {
       public Builder mergeFrom(com.hawk.game.protocol.Equip.HSEquipComposeRet other) {
         if (other == com.hawk.game.protocol.Equip.HSEquipComposeRet.getDefaultInstance()) return this;
         if (other.hasEquipId()) {
-          setEquipId(other.getEquipId());
+          bitField0_ |= 0x00000001;
+          equipId_ = other.equipId_;
+          onChanged();
         }
         if (other.hasStage()) {
           setStage(other.getStage());
@@ -4772,35 +5607,76 @@ public final class Equip {
       }
       private int bitField0_;
 
-      // required int32 equipId = 1;
-      private int equipId_ ;
+      // required string equipId = 1;
+      private java.lang.Object equipId_ = "";
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
       public boolean hasEquipId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
-      public int getEquipId() {
-        return equipId_;
+      public java.lang.String getEquipId() {
+        java.lang.Object ref = equipId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          equipId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
-      public Builder setEquipId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getEquipIdBytes() {
+        java.lang.Object ref = equipId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          equipId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public Builder setEquipId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         equipId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 equipId = 1;</code>
+       * <code>required string equipId = 1;</code>
        */
       public Builder clearEquipId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        equipId_ = 0;
+        equipId_ = getDefaultInstance().getEquipId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string equipId = 1;</code>
+       */
+      public Builder setEquipIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        equipId_ = value;
         onChanged();
         return this;
       }
@@ -9736,6 +10612,11 @@ public final class Equip {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSEquipBuy_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSEquipBuyRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSEquipBuyRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSEquipCompose_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -9807,30 +10688,32 @@ public final class Equip {
       "\n\024Protocol/Equip.proto\032\030Protocol/Attribu" +
       "te.proto\")\n\007GemInfo\022\013\n\003pos\030\001 \002(\005\022\021\n\tgemI" +
       "temId\030\002 \002(\005\"\240\001\n\tEquipInfo\022\n\n\002id\030\001 \002(\003\022\017\n" +
-      "\007equipId\030\002 \002(\005\022\r\n\005stage\030\003 \002(\005\022\r\n\005level\030\004" +
+      "\007equipId\030\002 \002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005level\030\004" +
       " \002(\005\022\032\n\010gemInfos\030\005 \003(\0132\010.GemInfo\022\030\n\tattr" +
       "Datas\030\006 \003(\0132\005.Attr\022\016\n\006status\030\007 \002(\005\022\022\n\nex" +
       "pireTime\030\010 \001(\005\"1\n\017HSEquipInfoSync\022\036\n\nequ" +
       "ipInfos\030\001 \003(\0132\n.EquipInfo\"O\n\nHSEquipBuy\022" +
-      "\017\n\007equipId\030\001 \002(\005\022\022\n\nequipCount\030\002 \002(\005\022\r\n\005" +
-      "stage\030\003 \002(\005\022\r\n\005level\030\004 \001(\005\"8\n\016HSEquipCom",
-      "pose\022\017\n\007equipId\030\001 \002(\005\022\025\n\rrelatedItemId\030\002" +
-      " \002(\005\"B\n\021HSEquipComposeRet\022\017\n\007equipId\030\001 \002" +
-      "(\005\022\r\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\"\n\024HSEq" +
-      "uipIncreaseLevel\022\n\n\002id\030\001 \002(\003\"C\n\027HSEquipI" +
-      "ncreaseLevelRet\022\n\n\002id\030\001 \002(\003\022\r\n\005stage\030\002 \001" +
-      "(\005\022\r\n\005level\030\003 \001(\005\"\"\n\024HSEquipIncreaseStag" +
-      "e\022\n\n\002id\030\001 \002(\003\"C\n\027HSEquipIncreaseStageRet" +
-      "\022\n\n\002id\030\001 \002(\003\022\r\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001" +
-      "(\005\"4\n\023HSEquipMonsterDress\022\n\n\002id\030\001 \002(\003\022\021\n" +
-      "\tmonsterId\030\002 \002(\005\"7\n\026HSEquipMonsterDressR",
-      "et\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterId\030\002 \001(\005\"#\n\025HSE" +
-      "quipMonsterUndress\022\n\n\002id\030\001 \002(\003\"9\n\030HSEqui" +
-      "pMonsterUndressRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmonste" +
-      "rId\030\002 \001(\005\"6\n\025HSEquipMonsterReplace\022\n\n\002id" +
-      "\030\001 \002(\003\022\021\n\tmonsterId\030\002 \001(\005\"9\n\030HSEquipMons" +
-      "terReplaceRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterId\030\002" +
-      " \001(\005B\030\n\026com.hawk.game.protocol"
+      "\017\n\007equipId\030\001 \002(\t\022\022\n\nequipCount\030\002 \002(\005\022\r\n\005" +
+      "stage\030\003 \002(\005\022\r\n\005level\030\004 \001(\005\"4\n\rHSEquipBuy",
+      "Ret\022\017\n\007equipId\030\001 \002(\t\022\022\n\nequipCount\030\002 \002(\005" +
+      "\"8\n\016HSEquipCompose\022\017\n\007equipId\030\001 \002(\t\022\025\n\rr" +
+      "elatedItemId\030\002 \002(\005\"B\n\021HSEquipComposeRet\022" +
+      "\017\n\007equipId\030\001 \002(\t\022\r\n\005stage\030\002 \001(\005\022\r\n\005level" +
+      "\030\003 \001(\005\"\"\n\024HSEquipIncreaseLevel\022\n\n\002id\030\001 \002" +
+      "(\003\"C\n\027HSEquipIncreaseLevelRet\022\n\n\002id\030\001 \002(" +
+      "\003\022\r\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\"\n\024HSEqu" +
+      "ipIncreaseStage\022\n\n\002id\030\001 \002(\003\"C\n\027HSEquipIn" +
+      "creaseStageRet\022\n\n\002id\030\001 \002(\003\022\r\n\005stage\030\002 \001(" +
+      "\005\022\r\n\005level\030\003 \001(\005\"4\n\023HSEquipMonsterDress\022",
+      "\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId\030\002 \002(\005\"7\n\026HSEqui" +
+      "pMonsterDressRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterI" +
+      "d\030\002 \001(\005\"#\n\025HSEquipMonsterUndress\022\n\n\002id\030\001" +
+      " \002(\003\"9\n\030HSEquipMonsterUndressRet\022\n\n\002id\030\001" +
+      " \001(\003\022\021\n\tmonsterId\030\002 \001(\005\"6\n\025HSEquipMonste" +
+      "rReplace\022\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId\030\002 \001(\005\"" +
+      "9\n\030HSEquipMonsterReplaceRet\022\n\n\002id\030\001 \001(\003\022" +
+      "\021\n\tmonsterId\030\002 \001(\005B\030\n\026com.hawk.game.prot" +
+      "ocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9861,74 +10744,80 @@ public final class Equip {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipBuy_descriptor,
               new java.lang.String[] { "EquipId", "EquipCount", "Stage", "Level", });
-          internal_static_HSEquipCompose_descriptor =
+          internal_static_HSEquipBuyRet_descriptor =
             getDescriptor().getMessageTypes().get(4);
+          internal_static_HSEquipBuyRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSEquipBuyRet_descriptor,
+              new java.lang.String[] { "EquipId", "EquipCount", });
+          internal_static_HSEquipCompose_descriptor =
+            getDescriptor().getMessageTypes().get(5);
           internal_static_HSEquipCompose_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipCompose_descriptor,
               new java.lang.String[] { "EquipId", "RelatedItemId", });
           internal_static_HSEquipComposeRet_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_HSEquipComposeRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipComposeRet_descriptor,
               new java.lang.String[] { "EquipId", "Stage", "Level", });
           internal_static_HSEquipIncreaseLevel_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_HSEquipIncreaseLevel_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipIncreaseLevel_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_HSEquipIncreaseLevelRet_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_HSEquipIncreaseLevelRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipIncreaseLevelRet_descriptor,
               new java.lang.String[] { "Id", "Stage", "Level", });
           internal_static_HSEquipIncreaseStage_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_HSEquipIncreaseStage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipIncreaseStage_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_HSEquipIncreaseStageRet_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_HSEquipIncreaseStageRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipIncreaseStageRet_descriptor,
               new java.lang.String[] { "Id", "Stage", "Level", });
           internal_static_HSEquipMonsterDress_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_HSEquipMonsterDress_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterDress_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterDressRet_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_HSEquipMonsterDressRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterDressRet_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterUndress_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_HSEquipMonsterUndress_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterUndress_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_HSEquipMonsterUndressRet_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_HSEquipMonsterUndressRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterUndressRet_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterReplace_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_HSEquipMonsterReplace_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterReplace_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterReplaceRet_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_HSEquipMonsterReplaceRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterReplaceRet_descriptor,

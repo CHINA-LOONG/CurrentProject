@@ -20,7 +20,7 @@ import javax.smartcardio.ATR;
 public class EquipAttr extends HawkConfigBase{
 
 	private static Map<Integer, EquipStageItem> stageList = new LinkedHashMap<Integer, EquipStageItem>();
-	private static Map<Integer, Map<Integer, EquipStageItem>> equipList = new LinkedHashMap<Integer, Map<Integer, EquipStageItem>>();
+	private static Map<String, Map<Integer, EquipStageItem>> equipList = new LinkedHashMap<String, Map<Integer, EquipStageItem>>();
 
 	private class EquipStageItem{
 		/**
@@ -149,7 +149,7 @@ public class EquipAttr extends HawkConfigBase{
 					}
 					ItemInfo itemInfo = new ItemInfo();
 					itemInfo.setType(Integer.valueOf(items[0]));
-					itemInfo.setItemId(Integer.valueOf(items[1]));
+					itemInfo.setItemId(items[1]);
 					itemInfo.setCount(Integer.valueOf(items[2]));
 					demandList.add(itemInfo);
 				}
@@ -176,7 +176,7 @@ public class EquipAttr extends HawkConfigBase{
 	/**
 	 * 配置id
 	 */
-	protected final int id ;
+	protected final String id ;
 	/**
 	 * 品级
 	 */
@@ -203,7 +203,7 @@ public class EquipAttr extends HawkConfigBase{
 	protected final String demand;				
 
 	public  EquipAttr() {
-		id = 0;
+		id = null;
 		stage = 0;
 		level = 0;
 		baseAttrId = 0;
@@ -215,7 +215,7 @@ public class EquipAttr extends HawkConfigBase{
 	/**
 	 * 随机附加属性
 	 */
-	public static Attribute getAdditionAttr(int equip, int stage){
+	public static Attribute getAdditionAttr(String equip, int stage){
 		if (stage <= 1) {
 			return null;
 		}
@@ -240,7 +240,7 @@ public class EquipAttr extends HawkConfigBase{
 	/**
 	 * 获取消耗列表
 	 */
-	public static List<ItemInfo> getDemandList(int equip, int stage, int level){
+	public static List<ItemInfo> getDemandList(String equip, int stage, int level){
 		List<EquipLevelItem> levelList = equipList.get(equip).get(stage).getLevelList();
 		if (level >= levelList.size()) {
 			return null;
@@ -251,7 +251,7 @@ public class EquipAttr extends HawkConfigBase{
 	/**
 	 * 获取基础属性列表
 	 */
-	public static BaseAttrCfg getBaseAttrCfg(int equip, int stage, int level){		
+	public static BaseAttrCfg getBaseAttrCfg(String equip, int stage, int level){		
 		List<EquipLevelItem> levelList = equipList.get(equip).get(stage).getLevelList();
 		if (level >= levelList.size()) {
 			return null;
@@ -262,7 +262,7 @@ public class EquipAttr extends HawkConfigBase{
 	/**
 	 * 获取品级下级别个数
 	 */
-	public static int getLevelSize(int equip, int stage){
+	public static int getLevelSize(String equip, int stage){
 		List<EquipLevelItem> levelList = equipList.get(equip).get(stage).getLevelList();
 		return levelList.size();
 	}
@@ -270,7 +270,7 @@ public class EquipAttr extends HawkConfigBase{
 	/**
 	 * 获取品级下级别个数
 	 */
-	public static int getStageSize(int equip){
+	public static int getStageSize(String equip){
 		return equipList.get(equip).size();
 	}
 	
@@ -291,14 +291,14 @@ public class EquipAttr extends HawkConfigBase{
 	/**
 	 * 获取装备列表
 	 */
-	public static Map<Integer, Map<Integer, EquipStageItem>> getEquipList() {
+	public static Map<String, Map<Integer, EquipStageItem>> getEquipList() {
 		return equipList;
 	}
 
 	/**
 	 * 设置装备列表
 	 */
-	public static void setEquipList(Map<Integer, Map<Integer, EquipStageItem>> equipList) {
+	public static void setEquipList(Map<String, Map<Integer, EquipStageItem>> equipList) {
 		EquipAttr.equipList = equipList;
 	}
 	

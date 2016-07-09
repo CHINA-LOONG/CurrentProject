@@ -5,35 +5,21 @@ using System.Collections.Generic;
 public class PetSwitchPage : MonoBehaviour
 {
     int petToBeReplace;
-    public List<PetSwitchItem> items;
+    public List<PetSwitchItem> items = new List<PetSwitchItem>();
     RectTransform trans;
 
     void Awake()
     {
         trans = transform as RectTransform;
-    }
-    /// <summary>
-    /// 创建UI item，创建三个，只需要创建一次
-    /// </summary>
-    void CreateItems()
-    {
-        if (items.Count != 3)
+        for (int i = 0; i < BattleConst.maxFieldUnit; ++i)
         {
-            //var prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "petItem");
+            var item = ResourceMgr.Instance.LoadAsset("ui/battle", "petItem");
+            item.transform.SetParent(gameObject.transform, false);
+            var itemTrans = item.GetComponent<RectTransform>();
+            itemTrans.anchoredPosition += new Vector2(100 * i, 0);
+            var com = item.GetComponent<PetSwitchItem>();
 
-            for (int i = 0; i < BattleConst.maxFieldUnit; i++)
-            {
-                //TODO: batch load
-                var item = ResourceMgr.Instance.LoadAsset("ui/battle", "petItem");
-                item.transform.SetParent(gameObject.transform, false);
-
-                var trans = item.GetComponent<RectTransform>();
-                trans.anchoredPosition += new Vector2(100 * i, 0);
-
-                var com = item.GetComponent<PetSwitchItem>();
-
-                items.Add(com);
-            }
+            items.Add(com);
         }
     }
 
@@ -45,21 +31,8 @@ public class PetSwitchPage : MonoBehaviour
 
         gameObject.SetActive(true);
 
-        //查看是否需要创建UI items
-        CreateItems();
-
         petToBeReplace = args.targetId;
-        var idleUnits = BattleController.Instance.BattleGroup.PlayerIdleList;
-
-        for (int i = 0; i < items.Count; i++)
-        {
-            var com = items[i];
-            if (i < idleUnits.Count)
-                com.Show(args.targetId, idleUnits[i]);
-            else
-                com.ShowEmpty(false);
-        }
-
+        RefreshPetItems();
 
         BattleObject targetGO = ObjectDataMgr.Instance.GetBattleObject(args.targetId);
         Transform targetTrans = targetGO.transform;
@@ -99,13 +72,31 @@ public class PetSwitchPage : MonoBehaviour
         //TODO: no need to update, only refresh when show
         if (gameObject.activeSelf)
         {
-            var idleUnits = BattleController.Instance.BattleGroup.PlayerIdleList;
-            for (int i = 0; i < items.Count; i++)
+            RefreshPetItems();
+        }
+    }
+
+    void RefreshPetItems()
+    {
+        var idleUnits = BattleController.Instance.BattleGroup.PlayerIdleList;
+        int j = 0;
+        GameUnit gameUnit;
+        for (int i = 0; i < idleUnits.Count; ++i)
+        {
+            gameUnit = idleUnits[i];
+            if (gameUnit != null &&
+                gameUnit.backUp == true
+                )
             {
-                var com = items[i];
-                if (i < idleUnits.Count)
-                    com.UpdateData(idleUnits[i]);
+                items[j].targetId = petToBeReplace;
+                items[j].UpdateData(gameUnit);
+                ++j;
             }
+        }
+
+        for (; j < BattleConst.maxFieldUnit; ++j)
+        {
+            items[j].ShowEmpty(false);
         }
     }
 }

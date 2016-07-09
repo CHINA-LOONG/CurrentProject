@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
-public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPointerClickHandler
+public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, IDragHandler,IPointerClickHandler
 {
 
 	float	m_MinPosX = 0f;
@@ -20,14 +20,36 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 	List<MirrorTarget> newFindTargetList =new List<MirrorTarget>();
 	List<MirrorTarget> finishFindTargett = new List<MirrorTarget>();
 	List<MirrorTarget> outFindTarget = new List<MirrorTarget> ();
+	Image mirrorUi;
+	Image MirrorDragImage;
 
 	bool isDragging = false;
 
-	public void Init()
+	public void Init(Image mirrorUi)
 	{
 		m_MirrorRaycast = gameObject.AddComponent<MirrorRaycast> ();
 		rectTrans = transform as RectTransform;
+		this.mirrorUi = mirrorUi;
+
+		MirrorDragImage = Util.FindChildByName (gameObject, "MirrorDragImage").GetComponent<Image> ();
+
+		ResetMirror ();
 	}
+
+	public void ResetMirror()
+	{
+		MirrorDragImage.gameObject.SetActive (false);
+		mirrorUi.gameObject.SetActive (true);
+		RectTransform mirrorUiRt = mirrorUi.rectTransform;
+
+		Vector3 screenPos = UICamera.Instance.CameraAttr.WorldToScreenPoint (mirrorUiRt.position);
+		screenPos /= UIMgr.Instance.CanvasAttr.scaleFactor ;
+
+		screenPos.x += (rectTrans.pivot.x - 0.5f) * rectTrans.sizeDelta.x;
+		screenPos.y += (rectTrans.pivot.y - 0.5f) * rectTrans.sizeDelta.y;
+		rectTrans.anchoredPosition = screenPos ;
+	}
+
 
 	void Awake ()
 	{  
@@ -47,11 +69,25 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 		m_MaxposY = rootHeight - myHeigth * (1-pivot.y);
 	}  
 
+
 	// 鼠标按下  
-	public void OnPointerDown (PointerEventData data) 
-	{  
+	public void OnPointerDown (PointerEventData data)
+    {
+        if (BattleController.Instance.processStart == false)
+            return;
+
 		isDragging = false;
+		MirrorDragImage.gameObject.SetActive (true);
+		mirrorUi.gameObject.SetActive (false);
+		rectTrans.anchoredPosition = GetMirrorScreenPosition (Input.mousePosition);	
+		OnSetMirrorModeState (true);
 	}  
+
+	//鼠标抬起
+	public void OnPointerUp (PointerEventData eventData)
+	{
+		OnSetMirrorModeState (false);
+	}
 	// 拖动  
 	public void OnDrag (PointerEventData data)
 	{  
@@ -72,7 +108,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 	{
 		Vector2 newPos = new Vector2 (mousePosition.x / UIMgr.Instance.CanvasAttr.scaleFactor , mousePosition.y / UIMgr.Instance.CanvasAttr.scaleFactor);
 
-		if (newPos.x < m_MinPosX) {
+		/*if (newPos.x < m_MinPosX) {
 			newPos.x = m_MinPosX;
 		}
 		if (newPos.x > m_MaxPosX) {
@@ -84,6 +120,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 		if (newPos.y > m_MaxposY) {
 			newPos.y = m_MaxposY;
 		}
+		*/
 		return newPos;
 	}
 
@@ -95,6 +132,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IDragHandler,IPoint
 		} 
 		else 
 		{
+			ResetMirror();
 			StopRayCast();
 		}
 	}

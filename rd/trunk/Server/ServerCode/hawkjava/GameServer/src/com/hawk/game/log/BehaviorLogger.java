@@ -186,6 +186,10 @@ public class BehaviorLogger {
 		 */
 		SKILL_UP,
 		/**
+		 * 宠物进阶
+		 */
+		STAGE_UP,
+		/**
 		 * 未知行为
 		 */
 		UNKONWN_ACTION;

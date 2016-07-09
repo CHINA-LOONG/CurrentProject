@@ -21,7 +21,7 @@ public class ConfigUtil {
 	 * @param itemId
 	 * @return
 	 */
-	public static boolean check(int itemType, int itemId) {
+	public static boolean check(int itemType, String itemId) {
 		if (itemType == Const.itemType.PLAYER_ATTR_VALUE) {
 			return true;
 		} 

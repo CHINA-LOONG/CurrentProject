@@ -136,7 +136,7 @@ public class GsApp extends HawkApp {
 		HawkLog.logPrintln("init server data......");
 		ServerData.getInstance().init();
 
-		ItemCfg test = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, 10001);
+		ItemCfg test = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, "10001");
 		System.out.println(test);
 
 		// cdk服务初始化
@@ -447,7 +447,7 @@ public class GsApp extends HawkApp {
 			// TEST: 给予默认宠物------------------------------------
 			LinkedList<Integer> battleMonsterList = new LinkedList<>();
 			
-			MonsterEntity monsterEntity = new MonsterEntity("Unit_Demo_ershu", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)3);
+			MonsterEntity monsterEntity = new MonsterEntity("UnitDemoErshu", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)3);
 			monsterEntity.setSkillLevel("attackMedium", 1);
 			monsterEntity.setSkillLevel("magicCureMedium", 1);
 			monsterEntity.setSkillLevel("buffMagic", 1);
@@ -458,7 +458,7 @@ public class GsApp extends HawkApp {
 				battleMonsterList.add(monsterEntity.getId());
 			}
 			
-			monsterEntity = new MonsterEntity("Unit_Demo_qingniao", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)2);
+			monsterEntity = new MonsterEntity("UnitDemoQingniao", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)2);
 			monsterEntity.setSkillLevel("attackSlight", 1);
 			monsterEntity.setSkillLevel("magicWaterMedium", 1);
 			monsterEntity.setSkillLevel("debuffDefense", 1);
@@ -469,7 +469,7 @@ public class GsApp extends HawkApp {
 				battleMonsterList.add(monsterEntity.getId());
 			}
 			
-			monsterEntity = new MonsterEntity("Unit_Demo_zhuyan", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
+			monsterEntity = new MonsterEntity("UnitDemoZhuyan", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
 			monsterEntity.setSkillLevel("attackStrong", 1);
 			monsterEntity.setSkillLevel("magicFireSlight", 1);
 			monsterEntity.setSkillLevel("buffAttack", 1);
@@ -480,7 +480,7 @@ public class GsApp extends HawkApp {
 				battleMonsterList.add(monsterEntity.getId());
 			}
 			
-			monsterEntity = new MonsterEntity("Unit_Demo_qingniao", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)2);
+			monsterEntity = new MonsterEntity("UnitDemoQingniao", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)2);
 			monsterEntity.setSkillLevel("attackSlight", 1);
 			monsterEntity.setSkillLevel("magicWaterMedium", 1);
 			monsterEntity.setSkillLevel("debuffDefense", 1);
@@ -491,7 +491,7 @@ public class GsApp extends HawkApp {
 				battleMonsterList.add(monsterEntity.getId());
 			}
 			
-			monsterEntity = new MonsterEntity("Unit_Demo_zhuyan", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
+			monsterEntity = new MonsterEntity("UnitDemoZhuyan", playerId, (byte)1, (short)1, 1, (byte)1, 1, (byte)1);
 			monsterEntity.setSkillLevel("attackStrong", 1);
 			monsterEntity.setSkillLevel("magicFireSlight", 1);
 			monsterEntity.setSkillLevel("buffAttack", 1);

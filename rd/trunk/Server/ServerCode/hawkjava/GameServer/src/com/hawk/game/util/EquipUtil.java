@@ -38,7 +38,7 @@ public class EquipUtil {
 	 * @param punchSize 
 	 * @return
 	 */
-	public static EquipEntity generateEquip(Player player, int equipId) {
+	public static EquipEntity generateEquip(Player player, String equipId) {
 		return generateEquip(player,equipId,0,0);
 	}
 
@@ -50,7 +50,7 @@ public class EquipUtil {
 	 * @param punchSize 
 	 * @return
 	 */
-	public static EquipEntity generateEquip(Player player, int equipId, int stage, int level) {
+	public static EquipEntity generateEquip(Player player, String equipId, int stage, int level) {
 		try {
 			ItemCfg equipCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipId);
 			if (equipCfg == null) {
