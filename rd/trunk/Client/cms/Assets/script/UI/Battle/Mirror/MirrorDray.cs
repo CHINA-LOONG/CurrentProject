@@ -53,7 +53,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 
 	void Awake ()
 	{  
-		RectTransform parentTransform = transform.parent as RectTransform;
+		//RectTransform parentTransform = transform.parent as RectTransform;
 		float rootWidth = Screen.width /UIMgr.Instance.CanvasAttr.scaleFactor ;
 		float rootHeight =   Screen.height/UIMgr.Instance.CanvasAttr.scaleFactor;
 		

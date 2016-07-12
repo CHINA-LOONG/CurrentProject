@@ -5,8 +5,6 @@ using UnityEngine.UI;
 public class UIQuest : UIBase
 {
     public static string ViewName = "UIQuest";
-    public static string AssertName = "ui/quest";
-
 
     public Button btn_Close;
     public Text text_Title;
@@ -32,7 +30,7 @@ public class UIQuest : UIBase
     void OnLanguageChanged()
     {
         //TODO: change language
-        text_Title.text = "任务";
+        text_Title.text = StaticDataMgr.Instance.GetTextByID("quest_title");
     }
 
 }

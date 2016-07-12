@@ -3,8 +3,6 @@ using System.Collections;
 
 public class DazhaofocusController : MonoBehaviour 
 {
-
-	private GameObject 		focusSceneGo;
 	private	Transform		focusCameraTrans;
 	private	Transform		focusUnitTrans;
 	private BattleObject 	battleObject;
@@ -22,11 +20,11 @@ public class DazhaofocusController : MonoBehaviour
 		GameObject go = null;
 		if (isMagicDazhao)
 		{
-			go =  ResourceMgr.Instance.LoadAsset("battlescene/dazhaofocus", "dazhaoFocusSceneMagic");;
+            go = ResourceMgr.Instance.LoadAsset("dazhaoFocusSceneMagic");
 		}
 		else 
 		{
-			go =  ResourceMgr.Instance.LoadAsset("battlescene/dazhaofocus", "dazhaoFocusScene");
+			go =  ResourceMgr.Instance.LoadAsset("dazhaoFocusScene");
 		}
 		go.transform.localScale = Vector3.one;
 		//go.transform.localPosition = Vector3.zero;

@@ -30,6 +30,8 @@ public class EffectWholeData
     public string searchEffect;
     //set
     public string effectList;
+    //dispel
+    public int dispelCategory;
 }
 
 [Serializable]
@@ -59,7 +61,7 @@ public class Effect
     public int casterID;
     public int targetID;
     public float applyTime;
-    public float aniDelayTime;
+    //public float aniDelayTime;
     public Buff ownedBuff;
     public Spell ownedSpell;
     
@@ -77,11 +79,10 @@ public class Effect
         spellService = owner;
     }
     //---------------------------------------------------------------------------------------------
-    public virtual void Apply(float applyTime, string wpID, float aniDelayTime = 0.0f)
+    public virtual void Apply(float applyTime, string wpID)
     {
         GenerateTarget(casterID, targetID);
         this.applyTime = applyTime;
-        this.aniDelayTime = aniDelayTime;
 
         SpellEffectArgs args = new SpellEffectArgs();
         GameUnit target = spellService.GetUnit(targetID);

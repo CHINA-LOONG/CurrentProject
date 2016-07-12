@@ -1,9 +1,3 @@
-hs@hs-All-Series:~$ cd GameServer/jar
-hs@hs-All-Series:~/GameServer/jar$ ./stop.sh
---修改数据库--
-hs@hs-All-Series:~/GameServer/jar$ ./run.sh
-
-
 测试服端口号：9596
 修改文件位置：script/network/protocol/const.cs 58行
 
@@ -11,3 +5,14 @@ hs@hs-All-Series:~$ cd GameServer_QA/jar
 hs@hs-All-Series:~/GameServer_QA/jar$ ./stop.sh
 --修改数据库--
 hs@hs-All-Series:~/GameServer_QA/jar$ ./run.sh
+
+
+测试服启动方法：
+http://192.168.199.122:8080/
+用户名gm 密码gm
+server_deploy_QA运行job
+需要更新svn最新配置的运行server_release的job
+
+手动修改测试服配置方法：
+\\HS-ALL-SERIES\HSshare\server\release\xml
+修改这里的配置文件后执行重启测试服job即可

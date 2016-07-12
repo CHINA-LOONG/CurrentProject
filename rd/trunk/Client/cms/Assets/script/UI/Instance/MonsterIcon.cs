@@ -28,7 +28,7 @@ public class MonsterIcon : MonoBehaviour
 
 	public	static MonsterIcon	CreateIcon()
 	{
-		GameObject go = ResourceMgr.Instance.LoadAsset ("ui/monstericon", "monsterIcon");
+		GameObject go = ResourceMgr.Instance.LoadAsset ("monsterIcon");
 		MonsterIcon micon =  go.GetComponent<MonsterIcon>();
 		micon.Init ();
 		return micon;
@@ -43,6 +43,10 @@ public class MonsterIcon : MonoBehaviour
 	public void Init()
 	{
 		listItems = new List<Transform> ();
+		if (itemsParent == null)
+		{
+            Debug.Log("123");
+		}
 		
 		Transform[] subItems = itemsParent.GetComponentsInChildren<Transform> ();
 		foreach (Transform subitem in subItems)
@@ -71,11 +75,7 @@ public class MonsterIcon : MonoBehaviour
 			return;
 		}
 		
-		var headPath = unitData.uiAsset;
-		var k = headPath.LastIndexOf('/');
-		var assetbundle = headPath.Substring(0, k);
-		var assetname = headPath.Substring(k + 1, headPath.Length - k - 1);
-		Sprite headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetbundle, assetname) as Sprite;
+		Sprite headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(unitData.uiAsset) as Sprite;
 		
 		monsterImage.sprite = headImg;
 
@@ -86,11 +86,10 @@ public class MonsterIcon : MonoBehaviour
 	{
 		int quallity = 0;
 		int plusQuality = 0;
-		CalculationQuality (stage, out quallity, out plusQuality);
+		UIUtil.CalculationQuality (stage, out quallity, out plusQuality);
 
-		string assetbundle = "ui/grade";
 		string assetname = "grade_" + quallity.ToString ();
-		Sprite headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetbundle, assetname) as Sprite;
+		Sprite headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetname) as Sprite;
 		if (null != headImg)
 			qualityImage.sprite = headImg;
 
@@ -101,45 +100,6 @@ public class MonsterIcon : MonoBehaviour
 		}
 		qualityText.text = temp;
 	}
-
-	private	void	CalculationQuality(int stage, out int quality ,out int plusQuality )
-	{
-		quality = 1;
-		plusQuality = 0;
-
-		if (stage < 0 || stage > 15)
-			return;
-
-		if (stage == 0)
-		{
-			quality = 1;
-		} 
-		else if (stage < 3)
-		{
-			quality = 2;
-			plusQuality = stage - 1;
-		} 
-		else if (stage < 6)
-		{
-			quality = 3;
-			plusQuality = stage - 3;
-		} 
-		else if (stage < 10)
-		{
-			quality = 4;
-			plusQuality = stage - 6;
-		} 
-		else if (stage < 15)
-		{
-			quality = 5;
-			plusQuality = stage - 10;
-		}
-		else 
-		{
-			quality = 6;
-		}
-	}
-
 	//--------------------------------------------------------------------------------------------------------------------
 	private	void	HideItems()
 	{

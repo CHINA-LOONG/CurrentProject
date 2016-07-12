@@ -42,7 +42,7 @@ public class MirrorFindWpInfo : MonoBehaviour
 		//wpInfoText.text = wpTarget.WeakPointIDAttr;
 
 		int property = wpRuntime.property;
-		var image = ResourceMgr.Instance.LoadAssetType<Sprite>("ui/property", "property_" + property) as Sprite;
+		var image = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + property) as Sprite;
 		if(image != null)
 		{
 			wpInfoImage.enabled = true;

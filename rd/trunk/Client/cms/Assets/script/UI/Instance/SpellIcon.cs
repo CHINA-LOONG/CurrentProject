@@ -12,11 +12,9 @@ public class SpellIcon : MonoBehaviour
 	public	int	level = 1;
 	public	string	spellId;
 
-	static  string iconAssetName = "ui/skillicon";
-
 	public static SpellIcon	CreateWith(Transform parentTrans,float scaleRat = 1.0f)
 	{
-		GameObject go = ResourceMgr.Instance.LoadAsset ("ui/spellIcon", "spellIcon");
+		GameObject go = ResourceMgr.Instance.LoadAsset ("spellIcon");
 		SpellIcon icon =  go.GetComponent<SpellIcon>();
 
 		go.transform.SetParent (parentTrans, false);
@@ -36,7 +34,7 @@ public class SpellIcon : MonoBehaviour
 		level = ilevel;
 		spellId = spellid;
 
-		Sprite iconSp = ResourceMgr.Instance.LoadAssetType<Sprite> (iconAssetName, spellId) as Sprite;
+		Sprite iconSp = ResourceMgr.Instance.LoadAssetType<Sprite> (spellId) as Sprite;
 		if (null != iconSp)
 		{
 			iconImage.sprite = iconSp;
@@ -51,7 +49,7 @@ public class SpellIcon : MonoBehaviour
 
 	public	void SetBoss()
 	{
-		Sprite iconSp = ResourceMgr.Instance.LoadAssetType<Sprite> (iconAssetName, "bossDazhaoIcon") as Sprite;
+		Sprite iconSp = ResourceMgr.Instance.LoadAssetType<Sprite> ("bossDazhaoIcon") as Sprite;
 		if (null != iconSp)
 		{
 			iconImage.sprite = iconSp;

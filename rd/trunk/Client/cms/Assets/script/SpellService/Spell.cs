@@ -25,36 +25,24 @@ public class SpellProtoType
     public string icon;
     public string tips;
     public float baseTipValue;
+    public int isAoe;
+
+	public string TipAttr
+	{
+		get
+		{
+			return StaticDataMgr.Instance.GetTextByID(tips);
+		}
+	}
 
 	public	string GetTips(int level)
 	{
-		return string.Format (tips, baseTipValue + (level - 1) * levelAdjust);
+		return string.Format (TipAttr, baseTipValue + (level - 1) * levelAdjust);
 	}
 
     public string GetTypeName()
     {
-        if (category == (int)SpellType.Spell_Type_PhyAttack)
-        {
-            return "物理技能";
-        }
-        else if (category == (int)SpellType.Spell_Type_MgicAttack || category == (int)SpellType.Spell_Type_Cure)
-        {
-            return "法术技能";
-        }
-        else if (category == (int)SpellType.Spell_Type_Dot || category == (int)SpellType.Spell_Type_Beneficial || category == (int)SpellType.Spell_Type_Negative)
-        {
-            return "Buff技能";
-        }
-        else if (category == (int)SpellType.Spell_Type_Passive)
-        {
-            return "被动技能";
-        }
-        else if (category == (int)SpellType.Spell_Type_PhyDaZhao || category == (int)SpellType.Spell_Type_MagicDazhao)
-        {
-            return "大招";
-        }
-
-        return "默认技能";
+		return SkilTips.GetCategoryDesc (category);
     }
 }
 
@@ -136,14 +124,15 @@ public class Spell
         {
             rootEffect.SetOwnedSpell(this);
             rootEffect.Apply(triggerTime, wpID);
+            spellLength = spellLength - triggerTime;
         }
 
         args.aniTime = spellLength;
         spellService.TriggerEvent(GameEventList.SpellFire, args);
     }
 
-    public void AddSpellLength(float delayTime)
+    public void SetSpellEndTime(float delayTime)
     {
-        spellLength += delayTime;
+        spellLength = delayTime;
     }
 }

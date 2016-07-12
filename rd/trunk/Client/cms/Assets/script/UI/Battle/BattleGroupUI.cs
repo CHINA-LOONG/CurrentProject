@@ -199,7 +199,7 @@ public class BattleGroupUI : MonoBehaviour
         EnemyUnitUI curEnemyUI = null;
         if (isBoss == false)
         {
-            GameObject go = ResourceMgr.Instance.LoadAsset(bundleName, enemyUIName);
+            GameObject go = ResourceMgr.Instance.LoadAsset(enemyUIName);
             curEnemyUI = go.GetComponent<EnemyUnitUI>();
             enemyUIList.Add(id, curEnemyUI);
             curEnemyUI.transform.SetParent(enemyGroupTrans);
@@ -226,7 +226,7 @@ public class BattleGroupUI : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     BattleUnitUI AddPlayerUI(int id)
     {
-        GameObject playerUI = ResourceMgr.Instance.LoadAsset(bundleName, playerUIName);
+        GameObject playerUI = ResourceMgr.Instance.LoadAsset(playerUIName);
         //GameObject go = Instantiate(playerUISrc) as GameObject;
         BattleUnitUI curPlayerUI = null;
         curPlayerUI = playerUI.GetComponent<BattleUnitUI>();

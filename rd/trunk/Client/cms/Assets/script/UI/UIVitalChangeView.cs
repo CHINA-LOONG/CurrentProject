@@ -18,6 +18,7 @@ public class UIVitalChangeView : MonoBehaviour
     public Sprite criticalHealSprite;
     public Sprite missSprite;
     public Sprite interruptSprite;
+    public Text hitResult;
     RectTransform trans;
 
     //---------------------------------------------------------------------------------------------
@@ -51,19 +52,26 @@ public class UIVitalChangeView : MonoBehaviour
                 vitalBackImage.sprite = criticalHealSprite;
             }
             vitalBackImage.gameObject.SetActive(args.isCritical == true);
+            hitResult.gameObject.SetActive(false);
             vitalWnd.text = vitalChange.ToString();
         }
         else if (args.vitalType == (int)VitalType.Vital_Type_Miss)
         {
-            vitalBackImage.sprite = missSprite;
-            vitalBackImage.gameObject.SetActive(true);
-            vitalWnd.gameObject.SetActive(false);
+            //vitalBackImage.sprite = missSprite;
+            vitalBackImage.gameObject.SetActive(false);
+            vitalWnd.gameObject.SetActive(true);
+            vitalWnd.text = string.Empty;
+            hitResult.gameObject.SetActive(true);
+            hitResult.text = StaticDataMgr.Instance.GetTextByID("spell_hit_miss");
         }
         else if (args.vitalType == (int)VitalType.Vital_Type_Interrupt)
         {
-            vitalBackImage.sprite = interruptSprite;
-            vitalBackImage.gameObject.SetActive(true);
-            vitalWnd.gameObject.SetActive(false);
+            //vitalBackImage.sprite = interruptSprite;
+            vitalBackImage.gameObject.SetActive(false);
+            vitalWnd.gameObject.SetActive(true);
+            vitalWnd.text = string.Empty;
+            hitResult.gameObject.SetActive(true);
+            hitResult.text = StaticDataMgr.Instance.GetTextByID("spell_hit_immune");
         }
 
         //calculate pos

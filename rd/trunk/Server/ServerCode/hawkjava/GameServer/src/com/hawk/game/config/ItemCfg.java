@@ -10,7 +10,7 @@ import com.hawk.game.protocol.Const;
 import java.util.LinkedList;
 import java.util.List;
 
-@HawkConfigManager.CsvResource(file = "xml/item.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/item.csv", struct = "map")
 public class ItemCfg extends HawkConfigBase {
 	/**
 	 * 配置id

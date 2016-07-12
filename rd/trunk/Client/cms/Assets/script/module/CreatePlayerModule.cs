@@ -24,7 +24,7 @@ public class CreatePlayerModule : ModuleBase
 	
 	public override void OnInit(object param)
 	{
-		UIMgr.Instance.OpenUI (UICreatePlayer.AssertName, UICreatePlayer.ViewName);
+		UIMgr.Instance.OpenUI (UICreatePlayer.ViewName);
 	}
 	
 	public override void OnEnter(object param)

@@ -83,7 +83,7 @@ GameObject:
   - 222: {fileID: 22287692}
   - 114: {fileID: 11491162}
   m_Layer: 5
-  m_Name: Text 4
+  m_Name: myhoubeiText 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,7 +377,7 @@ GameObject:
   - 222: {fileID: 22201098}
   - 114: {fileID: 11413176}
   m_Layer: 5
-  m_Name: Text
+  m_Name: yongyouText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -499,7 +499,7 @@ GameObject:
   - 222: {fileID: 22239166}
   - 114: {fileID: 11425196}
   m_Layer: 5
-  m_Name: Text
+  m_Name: myzhenrongText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,7 +533,7 @@ GameObject:
   - 222: {fileID: 22201110}
   - 114: {fileID: 11477146}
   m_Layer: 5
-  m_Name: Text 2
+  m_Name: myshangzhenText 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -655,7 +655,7 @@ GameObject:
   - 222: {fileID: 22204360}
   - 114: {fileID: 11469698}
   m_Layer: 5
-  m_Name: Text 1
+  m_Name: enemyzhenrongText 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -690,7 +690,7 @@ GameObject:
   - 222: {fileID: 22237388}
   - 114: {fileID: 11488288}
   m_Layer: 5
-  m_Name: Text
+  m_Name: friendText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -707,7 +707,7 @@ GameObject:
   - 222: {fileID: 22291736}
   - 114: {fileID: 11415186}
   m_Layer: 5
-  m_Name: Text 3
+  m_Name: enemyshangzhenText 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -976,6 +976,14 @@ MonoBehaviour:
   backButton: {fileID: 11413704}
   battleButton: {fileID: 11419896}
   cancleButton: {fileID: 11483780}
+  lbMyZhenrong: {fileID: 11425196}
+  lbEnemyZhenrong: {fileID: 11469698}
+  lbMyShangzhen: {fileID: 11477146}
+  lbEnemyShangzhen: {fileID: 11415186}
+  lbMyHoubei: {fileID: 11491162}
+  lbYongyou: {fileID: 11413176}
+  lbFriend: {fileID: 11488288}
+  lbZhenrongTiaozheng: {fileID: 11468124}
   playerTeamBg:
   - {fileID: 11413530}
   - {fileID: 11449324}

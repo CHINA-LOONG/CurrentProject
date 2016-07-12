@@ -98,12 +98,13 @@ public class WeakPointRuntimeData
 		if (curMesh != null) 
 		{
 			curMesh.SetActive(true);
-			string effectId = "";
-			wpStateEffectDic.TryGetValue(wpState,out effectId);
-			if(!string.IsNullOrEmpty(effectId))
-			{
-				battleObject.TriggerEvent(effectId,Time.time,null);
-			}
+		}
+
+		string effectId = "";
+		wpStateEffectDic.TryGetValue(wpState,out effectId);
+		if(!string.IsNullOrEmpty(effectId))
+		{
+			battleObject.TriggerEvent(effectId,Time.time,null);
 		}
 
 		if (lastWpstate == WeakpointState.Dead) 

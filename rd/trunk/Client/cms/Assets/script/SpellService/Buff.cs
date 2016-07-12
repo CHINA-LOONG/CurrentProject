@@ -174,7 +174,7 @@ public class Buff
         spellService.TriggerEvent(GameEventList.SpellBuff, args);
     }
     //---------------------------------------------------------------------------------------------
-    public void Finish(float finishTime)
+    public void Finish(float finishTime, BuffFinisType finishType = BuffFinisType.Buff_Finish_Expire)
     {
         ModifyUnit(true);
         isFinish = true;

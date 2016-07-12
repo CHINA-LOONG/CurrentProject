@@ -26,7 +26,7 @@ public class EffectSwitch : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, string wpID, float aniDelayTime)
+    public override void Apply(float applyTime, string wpID)
     {
         base.Apply(applyTime, wpID);
 

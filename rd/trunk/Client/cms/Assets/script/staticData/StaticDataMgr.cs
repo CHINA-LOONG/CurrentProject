@@ -41,7 +41,11 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, RewardData> rewardData = new Dictionary<string, RewardData>();
     Dictionary<int, TimeStaticData> timeData = new Dictionary<int, TimeStaticData>();
     Dictionary<string, SpeechData> speechData = new Dictionary<string, SpeechData>();
-    Dictionary<string, string> langData = new Dictionary<string, string>();
+    Dictionary<int, UnitStageData> unitStageData = new Dictionary<int, UnitStageData>();
+
+    Dictionary<string, string> assetMapping = new Dictionary<string, string>();
+    Dictionary<string, LangStaticData> langData = new Dictionary<string, LangStaticData>();
+    Dictionary<string, AssetLangData> assetLang = new Dictionary<string, AssetLangData>();
 
     public void Init()
     {
@@ -160,7 +164,13 @@ public class StaticDataMgr : MonoBehaviour
 
                                 switchPt.effectList.Add(new KeyValuePair<string, string>(effectKV[0], effectKV[1]));
                             }
-
+                        }
+                        break;
+                    case EffectType.Effect_Type_Dispel:
+                        {
+                            effectPt = new EffectDispelProtoType();
+                            EffectDispelProtoType dispelPt = effectPt as EffectDispelProtoType;
+                            dispelPt.dispelCategory = wholeData.dispelCategory;
                         }
                         break;
                 }
@@ -223,10 +233,10 @@ public class StaticDataMgr : MonoBehaviour
         {
             var data = InitTable<WeakPointData>("weakPointData");
             foreach (var item in data)
-			{
-				item.AdaptData();
+            {
+                item.AdaptData();
                 weakPointData.Add(item.id, item);
-			}
+            }
         }
 
         {
@@ -414,34 +424,81 @@ public class StaticDataMgr : MonoBehaviour
         }
         {
             #region language
-            OnLanguageChange(LanguageMgr.Instance.Lang);
+            var data = InitTable<LangStaticData>("languageUI");
+
+            System.Action<LangStaticData> addElement = item =>
+            {
+                if (langData.ContainsKey(item.id))
+                {
+                    langData[item.id] = item;
+                    Logger.LogError("error: Found the same Text ID");
+                }
+                else
+                {
+                    langData.Add(item.id, item);
+                }
+            };
+
+            foreach (var item in data)
+            {
+                addElement(item);
+            }
+            var data2 = InitTable<LangStaticData>("languageStatic");
+            foreach (var item in data2)
+            {
+                addElement(item);
+            }
             #endregion
         }
-    }
+        {
+            #region unitStage
+            var data = InitTable<UnitStageData>("unitStage");
+            foreach (var item in data)
+            {
+                item.demandItemList = ItemInfo.getItemInfoList(item.demandItem, ItemParseType.StageItemType);
+                item.demandMonsterList = ItemInfo.getItemInfoList(item.demandMonster, ItemParseType.StageItemType);
+                unitStageData.Add(item.stage, item);
+                //Logger.Log(item.id + "\t" + item.english);
+            }
+            #endregion
+        }
 
-    public void OnLanguageChange(Language lang)
-    {
-        #region language
-        string name;
-        switch (lang)
+
+
         {
-            case Language.English:
-                name = "english";
-                break;
-            case Language.Chinese:
-                name = "chinese";
-                break;
-            default:
-                name = "english";
-                break;
+            #region assetMap
+            var data = InitTable<AssetMapData>("assetMap");
+            foreach (var item in data)
+            {
+                if (assetMapping.ContainsKey(item.asset))
+                {
+                    assetMapping[item.asset] = item.bundle;
+                    Logger.LogError("error: Found the same resource name");
+                }
+                else
+                {
+                    assetMapping.Add(item.asset, item.bundle);
+                }
+            }
+            #endregion
         }
-        var data = InitTable<LangStaticData>(name);
-        langData.Clear();
-        foreach (var item in data)
         {
-            langData.Add(item.id, item.content);
+            #region assetLang
+            var data = InitTable<AssetLangData>("assetLang");
+            foreach (var item in data)
+            {
+                if (assetLang.ContainsKey(item.source))
+                {
+                    assetLang[item.source] = item;
+                    Logger.LogError("error: Found the same resource name");
+                }
+                else
+                {
+                    assetLang.Add(item.source, item);
+                }
+            }
+            #endregion
         }
-        #endregion
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -622,12 +679,39 @@ public class StaticDataMgr : MonoBehaviour
         return item;
     }
 
+    public UnitStageData getUnitStageData(int stage)
+    {
+        UnitStageData item = null;
+        unitStageData.TryGetValue(stage, out item);
+        return item;
+    }
+    public string GetRealName(string asset)
+    {
+        AssetLangData item = null;
+        assetLang.TryGetValue(asset, out item);
+        if (item == null) return asset;
+        else if (LanguageMgr.Instance.Lang == Language.English) return string.IsNullOrEmpty(item.english) ? asset : item.english;
+        else if (LanguageMgr.Instance.Lang == Language.Chinese) return string.IsNullOrEmpty(item.chinese) ? asset : item.chinese;
+        else return asset;
+    }
+
+    public string GetBundleName(string asset)
+    {
+        string bundle = "";
+        assetMapping.TryGetValue(asset,out bundle);
+        return bundle;
+    }
 
     public string GetTextByID(string id)
     {
-        string text = id;
-        langData.TryGetValue(id, out text);
-        return text;
+        LangStaticData item = null;
+        langData.TryGetValue(id, out item);
+
+        if (item == null) return id;
+        else if (LanguageMgr.Instance.Lang == Language.English) return string.IsNullOrEmpty(item.english) ? id : item.english;
+        else if (LanguageMgr.Instance.Lang == Language.Chinese) return string.IsNullOrEmpty(item.chinese) ? item.english : item.chinese;
+        else return item.english;
     }
+
     #endregion
 }

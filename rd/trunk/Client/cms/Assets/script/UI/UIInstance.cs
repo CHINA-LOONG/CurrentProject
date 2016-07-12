@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class UIInstance : UIBase,TabButtonDelegate
 {
 	public static string ViewName = "UIInstance";
-	public static string AssertName = "ui/instance";
 	private	static	UIInstance instance;
 	public	static	UIInstance Instance
 	{
@@ -46,7 +45,7 @@ public class UIInstance : UIBase,TabButtonDelegate
 
 	void InitInstanceInfo()
 	{
-		GameObject go = ResourceMgr.Instance.LoadAsset ("ui/instanceinfo", "InstanceInfo");
+		GameObject go = ResourceMgr.Instance.LoadAsset ("InstanceInfo");
 		go.transform.SetParent (infoLayer, false);
 		instanceInfo = go.GetComponent<InstanceInfo> ();
         instanceInfo.SetShow(false);
@@ -67,7 +66,7 @@ public class UIInstance : UIBase,TabButtonDelegate
 		
 		string name = string.Format ("instanceChapter_{0}_{1}", difficulty, chapter);
 		
-		GameObject go = ResourceMgr.Instance.LoadAsset ("ui/instancechapter", name);
+		GameObject go = ResourceMgr.Instance.LoadAsset (name);
 		
 		go.transform.SetParent (chapterTranform, false);
 
@@ -88,7 +87,7 @@ public class UIInstance : UIBase,TabButtonDelegate
 
 			subRuntimeButton = listEntry[i];
 			subButton.SetStar(subRuntimeButton.star);
-			subButton.SetName(subRuntimeButton.staticData.name);
+			subButton.SetName(subRuntimeButton.staticData.NameAttr);
 			subButton.instanceId = subRuntimeButton.instanceId;
 		}
 	}

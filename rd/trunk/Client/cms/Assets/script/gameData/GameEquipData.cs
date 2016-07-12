@@ -47,5 +47,16 @@ public class GameEquipData
 
         return false;
     }
+
+    public EquipData GetEquip(long id)
+    {
+        EquipData equipData;
+        if (equipList.TryGetValue(id, out equipData))
+        {
+            return equipData;
+        }
+
+        return null;
+    }
 }
 

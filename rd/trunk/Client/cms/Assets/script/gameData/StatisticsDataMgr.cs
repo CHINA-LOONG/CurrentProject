@@ -53,18 +53,18 @@ public class StatisticsDataMgr : MonoBehaviour {
     public int GetSkillPoint()
     {
         int clientTime = GameTimeMgr.Instance.TimeStamp();
-        int currentPoint = (GameTimeMgr.Instance.TimeStamp() + timeDiffer - skillTimeBegin) / Const.SkillPointTime + SkillPoints;
-        return  currentPoint > Const.MaxSkillPoint ? Const.MaxSkillPoint : currentPoint;  
+        int currentPoint = (GameTimeMgr.Instance.TimeStamp() + timeDiffer - skillTimeBegin) / GameConfig.SkillPointTime + SkillPoints;
+        return currentPoint > GameConfig.MaxSkillPoint ? GameConfig.MaxSkillPoint : currentPoint;  
     }
 
     public int GetSkillPointLeftTime()
     {
-        return Const.SkillPointTime - (GameTimeMgr.Instance.TimeStamp() + timeDiffer - skillTimeBegin) % Const.SkillPointTime;
+        return GameConfig.SkillPointTime - (GameTimeMgr.Instance.TimeStamp() + timeDiffer - skillTimeBegin) % GameConfig.SkillPointTime;
     }
 
     public bool isMaxPoint()
     {
-        return GetSkillPoint() >= Const.MaxSkillPoint;
+        return GetSkillPoint() >= GameConfig.MaxSkillPoint;
     }
 
     public void BeginHeartBreak()
@@ -79,7 +79,7 @@ public class StatisticsDataMgr : MonoBehaviour {
        {
         PB.HSHeartBeat heartBeat = new PB.HSHeartBeat();
         GameApp.Instance.netManager.SendMessage(PB.sys.HEART_BEAT.GetHashCode(), heartBeat, false);
-        yield return new WaitForSeconds(Const.HeartBreakInterval);
+        yield return new WaitForSeconds(GameConfig.HeartBreakInterval);
        }
     }
 
@@ -92,7 +92,7 @@ public class StatisticsDataMgr : MonoBehaviour {
     void UpdateServerTime(int serverTime)
     {
         int currentTimeDiff = (int)GameTimeMgr.Instance.TimeStamp() - serverTime;
-        if (currentTimeDiff - timeDiffer < -Const.TimSynInterval || currentTimeDiff - timeDiffer > Const.TimSynInterval)
+        if (currentTimeDiff - timeDiffer < -GameConfig.TimSynInterval || currentTimeDiff - timeDiffer > GameConfig.TimSynInterval)
         {
             timeDiffer = currentTimeDiff;
         }

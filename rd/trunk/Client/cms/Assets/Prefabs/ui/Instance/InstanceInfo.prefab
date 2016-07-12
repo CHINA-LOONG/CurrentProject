@@ -640,6 +640,8 @@ MonoBehaviour:
   needFatigueText: {fileID: 11416574}
   attackCountText: {fileID: 11472688}
   clearCountText: {fileID: 11443778}
+  lbEnmeyList: {fileID: 11438842}
+  lbRewardList: {fileID: 11410904}
   fatigueUi: {fileID: 11454698}
   enemyGroup:
   - {fileID: 22436840}

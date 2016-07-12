@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class UILogin : UIBase, TabButtonDelegate
 {
 	public static	string	ViewName = "UILogin";
-	public static string AssertName = "ui/login";
 	public Text testTipInfo = null;
 
 	public Button m_LoginButton;

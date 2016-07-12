@@ -729,7 +729,8 @@ public class Player extends HawkAppObj {
 		EquipEntity equipEntity = playerData.getEquipById(id);
 		if (equipEntity != null) {
 			playerData.removeEquipEntity(equipEntity);
-			equipEntity.delete();
+			equipEntity.setInvalid(true);
+			equipEntity.notifyUpdate(true);
 
 			BehaviorLogger.log4Service(this, Source.EQUIP_REMOVE, action, 
 					Params.valueOf("equipId", equipEntity.getItemId()), 
@@ -864,7 +865,7 @@ public class Player extends HawkAppObj {
 			monsterEntity.notifyUpdate(true);
 			playerData.removeMonsterEntity(id);
 			List<Integer> battleMonsterList = playerData.getPlayerEntity().getBattleMonsterList();
-			battleMonsterList.remove(monsterEntity.getId());
+			battleMonsterList.remove(Integer.valueOf(monsterEntity.getId()));
 
 			BehaviorLogger.log4Service(this, Source.MONSTER_REMOVE, action, 
 					Params.valueOf("monsterId", id));

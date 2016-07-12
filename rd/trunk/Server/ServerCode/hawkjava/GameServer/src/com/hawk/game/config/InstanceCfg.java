@@ -14,7 +14,7 @@ import org.hawk.util.HawkJsonUtil;
 
 import com.google.gson.reflect.TypeToken;
 
-@HawkConfigManager.CsvResource(file = "xml/instance.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/instance.csv", struct = "map")
 public class InstanceCfg extends HawkConfigBase {
 
 	@Id

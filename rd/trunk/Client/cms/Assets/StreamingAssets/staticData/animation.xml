@@ -13,7 +13,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id = "level_change" state = "0" action_delay="0">
 			<ParticleList>
-				<Particle time= "0" asset="hot" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle time= "0" asset="effect_hot" bundle="effect/particle" ani="firemove" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id = "test_sequence" state = "0" action_delay="0">
@@ -66,7 +66,8 @@ state = 1 Remove
 		</Ani>
 		<Ani id="unitExitandenter" state="0">
 			<MotionList>
-				<Motion ani="" key="run" value="true" />
+				<Motion time="0" ani="" key="run" value="true" />
+				<Motion time="1.3" ani="" key="run" value="false" />
 			</MotionList>
 		</Ani>
 		
@@ -90,9 +91,8 @@ state = 1 Remove
 				<Motion ani="" key="dead" value="true" />
 			</MotionList>
 			<ParticleList>
-				<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="juqihuanguai" bundle="effect/battle" ani="firemove" parent=""/>
 			</ParticleList>
-			<Camera ani="" />
 		</Ani>
 		
 		<Ani id="dazhaoxuanyao" state="0">
@@ -490,7 +490,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="demoershuDazhaoe4" state="0">
 			<ParticleList>
-				<Particle asset="hot" bundle="effect/particle" ani="firemove" parent="" locky="true"/>
+				<Particle asset="effect_hot" bundle="effect/particle" ani="firemove" parent="" locky="true"/>
 			</ParticleList>
 		</Ani>
 		<Ani id="ultQingniao" state="0">
@@ -603,38 +603,68 @@ state = 1 Remove
 		</Ani>
 		<Ani id="yincangxiaoguai" state="0">
 			<ParticleList>
-				<Particle asset="monster_ghost" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id="jiuweihuweiba1_state1" state="0">
 			<ParticleList>
-				<Particle asset="hot" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="effect_hot" bundle="effect/particle" ani="firemove" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id="jiuweihuweiba1_state2" state="0">
 			<ParticleList>
-				<Particle asset="hot" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="effect_hot" bundle="effect/particle" ani="firemove" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id="jiuweihuweiba1_frozen" state="0">
 			<ParticleList>
-				<Particle asset="hot" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="effect_hot" bundle="effect/particle" ani="firemove" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id="jiuweihuweiba1_dead" state="0">
 			<ParticleList>
-				<Particle asset="hot" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_ruodian_01"/>
 			</ParticleList>
 		</Ani>
-		<Ani id="jiuweihuqiehuan_state2" state="0" action_delay="">
-			<WpStateList>
-				<Wp time="0" name="jiuweihu_ruodian_2" state="2" />
-			</WpStateList>
+		<Ani id="jiuweihuweiba2_dead" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_ruodian_02"/>
+			</ParticleList>
 		</Ani>
-		<Ani id="jiuweihuqiehuan_frozen" state="0" action_delay="">
-			<WpStateList>
-				<Wp time="0" name="jiuweihu_ruodian_2" state="3" />
-			</WpStateList>
+		<Ani id="jiuweihuweiba3_dead" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_ruodian_03"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="jiuweihuweiba4_dead" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_ruodian_04"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="jiuweihuweiba5_dead" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_ruodian_05"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="jiuweihuweiba6_dead" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_ruodian_06"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="jiuweihuweiba7_dead" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_ruodian_07"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="jiuweihuweiba8_dead" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_ruodian_08"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="jiuweihuweiba9_dead" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_ruodian_09"/>
+			</ParticleList>
 		</Ani>
 		<Ani id="phyDazhaoSlowMotion" state="0">
 			<SpeedList>

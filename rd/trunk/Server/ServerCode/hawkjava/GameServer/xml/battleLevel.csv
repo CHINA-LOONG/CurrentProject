@@ -1,7 +1,0 @@
-﻿#TEXT,TEXT,TEXT,TEXT,NUM,TEXT,TEXT,TEXT,TEXT
-id,preStartEvent,startEvent,endStartEvent,appearType,winFunc,loseFunc,endEvent,monsterList
-#对局id,#第一进程前事件,#开场动画,#刷怪完毕事件,#出现方式,#胜利条件,#失败条件,#结束剧情动画,怪物列表
-boss_jiuweihu_level,,,,0,,,,"{""UnitDemoJiuweihu"":""1"",""UnitDemoErshu"":""1""}"
-boss_hundun_level,,,,0,,,,"{""UnitDemoHundun"":""1""}"
-demo_1_level1,,,,0,,,,"{""UnitDemoErshu"":""2"",""UnitDemoZhuyan"":""2""}"
-demo_1_level2,,,,0,,,,"{""UnitDemoZhuyan"":""2""}"

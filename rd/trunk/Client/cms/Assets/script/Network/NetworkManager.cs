@@ -36,8 +36,8 @@ public class NetworkManager : MonoBehaviour
                 switch (_event.Key)
                 {
 				case ResponseState.Connect:
+                    UINetRequest.Close();
 					GameEventMgr.Instance.FireEvent<int>(NetEventList.NetConnectFinished,1);
-					UINetRequest.Close();
 					break; 
 				case ResponseState.UnConnect:
 					GameEventMgr.Instance.FireEvent<int>(NetEventList.NetConnectFinished,0);

@@ -30,6 +30,22 @@ public class InstanceEntry
 	public List<string> enemyList;
 	public List<string> rewardList;
 
+	public string NameAttr
+	{
+		get
+		{
+			return StaticDataMgr.Instance.GetTextByID(name);
+		}
+	}
+
+	public string DescAttr
+	{
+		get
+		{
+			return StaticDataMgr.Instance.GetTextByID(desc);
+		}
+	}
+
 	public void AdaptData()
 	{
 		enemyList = new List<string>();

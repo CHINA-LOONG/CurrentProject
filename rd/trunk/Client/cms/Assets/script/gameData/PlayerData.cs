@@ -90,6 +90,22 @@ public class PlayerData : MonoBehaviour
     {
         return mainUnitList;
     }
+    //---------------------------------------------------------------------------------------------
+    public bool RemoveUnit(int guid)
+    {
+        if (allUnitDic.ContainsKey(guid))
+        {
+            allUnitDic.Remove(guid);
+            unitPbList.Remove(guid);
+            mainUnitID.Remove(guid);
+            InitMainUnitList();
+
+            return true;
+        }
+
+        return false;
+    }
+
 	//---------------------------------------------------------------------------------------------
 	public List<GameUnit> GetAllPet()
 	{
@@ -97,7 +113,20 @@ public class PlayerData : MonoBehaviour
 		allPet.AddRange (allUnitDic.Values);
 		return allPet;
 	}
-
+    //---------------------------------------------------------------------------------------------
+    public List<GameUnit> GetAllPet(string monsterId, int stage)
+    {
+        List<GameUnit> allPet = new List<GameUnit>();
+        foreach (GameUnit unit in allUnitDic.Values)
+        {
+            if (unit.pbUnit.id.Equals(monsterId) == true && unit.pbUnit.stage >= stage)
+            {
+                allPet.Add(unit);
+            }
+        }
+        return allPet;
+    }
+    //---------------------------------------------------------------------------------------------
 	public GameUnit GetPetWithKey(int guid)
 	{
 		GameUnit unit = null;

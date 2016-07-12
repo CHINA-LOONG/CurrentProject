@@ -23,7 +23,7 @@ public class InstanceChapter : MonoBehaviour
 	{
 		var subButton = go.transform.parent.GetComponent<InstanceButton> ();
 		//Debug.LogError ("Clicked button... index = " + subButton.index);
-		int index = subButton.index;
+		//int index = subButton.index;
 		var instanceId = subButton.instanceId;
 		var data = InstanceMapService.Instance.GetRuntimeInstance (instanceId);
 		UIInstance.Instance.instanceInfo.ShowWithData (data);

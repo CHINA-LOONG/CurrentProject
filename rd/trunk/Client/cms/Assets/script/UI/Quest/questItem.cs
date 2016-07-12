@@ -13,13 +13,17 @@ public class questItem : MonoBehaviour
 
     public Button btn_Todoit;
     public Button btn_Submit;
+    public Text text_Todoit;
+    public Text text_Submit;
     public Text text_Cause;
+    private string causeId="";
 
     public Transform rewardParent;
     private List<rewardItemIcon> rewards = new List<rewardItemIcon>();
     private QuestInfo info;
     void Start()
     {
+        OnLanguageChanged();
         EventTriggerListener.Get(btn_Todoit.gameObject).onClick = OnClickTodoit;
         EventTriggerListener.Get(btn_Submit.gameObject).onClick = OnClickSubmit;
     }
@@ -27,84 +31,28 @@ public class questItem : MonoBehaviour
     public void SetQuest(QuestInfo info)
     {
         this.info = info;
-        //TODO: set path and name*********************
-        string iconName = info.staticData.icon;
-        int k = iconName.LastIndexOf('/');
-        string assetbundle = iconName.Substring(0, k);
-        string assetname = iconName.Substring(k + 1, iconName.Length - k - 1);
-        //********************************************
-
-        img_QuestIcon.sprite =ResourceMgr.Instance.LoadAssetType<Sprite>(assetbundle, assetname) as Sprite;
+        img_QuestIcon.sprite =ResourceMgr.Instance.LoadAssetType<Sprite>(info.staticData.icon) as Sprite;
         text_Name.text = info.staticData.name;
         //TODO: extend  need to modify
         #region Desc
-        string desc = string.Format(info.staticData.desc,info.staticData.goalParam);
-        //switch (info.staticData.descType)
-        //{
-        //    case "":
-        //        desc = string.Format(info.staticData.desc,"   ");
-        //        break;
-        //    default:
-        //        break;
-        //}
-        #region old version
-        //switch (info.staticData.goalType)
-        //{
-        //    case "difficulty":
-        //        desc = "通关特定难度的副本"; break;
-        //    case "3stars":
-        //        desc = "通关特定星级的副本"; break;
-        //    case "normal":
-        //        desc = "通关普通难度的副本X次"; break;
-        //    case "hard":
-        //        desc = "通关精英难度的副本X次"; break;
-        //    case "all":
-        //        desc = "通关副本X次"; break;
-        //    case "level":
-        //        desc = "提升等级到X级"; break;
-        //    case "petquality":
-        //        desc = "携带的固定品级的伙伴数量达到N个"; break;
-        //    case "petlevel":
-        //        desc = "携带的伙伴中最高等级达到X级"; break;
-        //    case "arena":
-        //        desc = "完成一定次数的竞技场"; break;
-        //    case "time":
-        //        desc = "完成一定次数的时光之穴"; break;
-        //    case "petmix":
-        //        desc = "完成一定次数的炼妖炉"; break;
-        //    case "adventure":
-        //        desc = "完成一定次数的大冒险"; break;
-        //    case "bossrush":
-        //        desc = "完成一定次数的bossrush"; break;
-        //    case "explore":
-        //        desc = "完成一定次数的稀有探索"; break;
-        //    case "skill":
-        //        desc = "升级一定次数的宠物技能"; break;
-        //    case "equip":
-        //        desc = "升级一定次数的宠物装备"; break;
-        //    case "buycoin":
-        //        desc = "进行一定次数的钻石买钱操作"; break;
-        //    default:
-        //        desc = "类型扩展没有做……";
-        //        break;
-        //}
-        #endregion
-
-        text_Desc.text = desc;
-
+        string param="";
+        if (string.IsNullOrEmpty(info.staticData.descType))
+        {
+            param = info.staticData.goalParam;
+        }
+        text_Desc.text = string.Format(StaticDataMgr.Instance.GetTextByID(info.staticData.desc), param);
         #endregion
 
         text_progress.text = info.serverData.progress + "/" + info.staticData.goalCount;
         if (StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId) != null &&
             GameTimeMgr.Instance.GetTime() < StaticDataMgr.Instance.GetTimeData(info.staticData.timeBeginId))
         {
-            Debug.Log("时间未到");
             //TODO： test message；
-            SetState(false, false, "时间未到");
+            SetState(false, false, "quest_shijianweidao");
         }
         else
         {
-            SetState((info.serverData.progress >= info.staticData.goalCount), true, "");
+            SetState((info.serverData.progress >= info.staticData.goalCount), true);
         }
 
         SetReward(info.staticData.rewardId);
@@ -116,7 +64,12 @@ public class questItem : MonoBehaviour
         btn_Todoit.gameObject.SetActive(false);
         btn_Submit.gameObject.SetActive(false);
         text_Cause.gameObject.SetActive(false);
-        if (!accept) { text_Cause.gameObject.SetActive(true); text_Cause.text = cause; }
+        if (!accept) 
+        { 
+            text_Cause.gameObject.SetActive(true);
+            causeId = cause;
+            text_Cause.text = StaticDataMgr.Instance.GetTextByID(causeId); 
+        }
         else if (finish) btn_Submit.gameObject.SetActive(true);
         else btn_Todoit.gameObject.SetActive(true);
     }
@@ -132,7 +85,7 @@ public class questItem : MonoBehaviour
         }
         for (int i = rewards.Count; i < list.Count; i++)
         {
-            GameObject go = ResourceMgr.Instance.LoadAsset("ui/quest", "rewardItemIcon");
+            GameObject go = ResourceMgr.Instance.LoadAsset("rewardItemIcon");
             if (go!=null)
             {
                 go.transform.localScale = Vector3.one;
@@ -221,4 +174,13 @@ public class questItem : MonoBehaviour
     }
 
 
+
+
+    void OnLanguageChanged()
+    {
+        //TODO: change language
+        text_Todoit.text = StaticDataMgr.Instance.GetTextByID("quest_lijiqianwang");
+        text_Submit.text = StaticDataMgr.Instance.GetTextByID("quest_lingqujiangli");
+        text_Cause.text = StaticDataMgr.Instance.GetTextByID(causeId); 
+    }
 }

@@ -19,7 +19,6 @@ public class UIBattle : UIBase
 	}
 
     public static string ViewName = "UIBattle";
-	public static string AssertName = "ui/battle";
 
 	public Transform bottomLayer = null;
 	public Transform dazhaoGroup = null;
@@ -103,8 +102,8 @@ public class UIBattle : UIBase
 
     public void ShowStartBattleUI()
     {
-        //GameObject starBattlePrefab = ResourceMgr.Instance.LoadAsset("ui/battle", "startBattle") as GameObject;
-        startBattleUI = ResourceMgr.Instance.LoadAsset("ui/battle", "startBattle");
+        //GameObject starBattlePrefab = ResourceMgr.Instance.LoadAsset("startBattle") as GameObject;
+        startBattleUI = ResourceMgr.Instance.LoadAsset("startBattle");
         startBattleUI.transform.SetParent(publicTopGroup, false);
         //Animator startBattleUIAni = startBattleUI.GetComponent<Animator>();
         //startBattleUIAni.gameObject.SetActive(true);
@@ -117,8 +116,8 @@ public class UIBattle : UIBase
 
     public void ShowEndBattleUI(bool success)
     {
-        //GameObject endBattlePrefab = ResourceMgr.Instance.LoadAsset("ui/battle", "endBattle") as GameObject;
-        endBattleUI = ResourceMgr.Instance.LoadAsset("ui/battle", "endBattle");
+        //GameObject endBattlePrefab = ResourceMgr.Instance.LoadAsset("endBattle") as GameObject;
+        endBattleUI = ResourceMgr.Instance.LoadAsset("endBattle");
         endBattleUI.transform.SetParent(publicTopGroup, false);
         Image endImage = endBattleUI.GetComponent<Image>();
         if (success)
@@ -156,9 +155,9 @@ public class UIBattle : UIBase
         m_PlayerGroupUI.ChangeLife(lifeChange);
 
         //GameObject prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "VitalChange");
-        GameObject go = ResourceMgr.Instance.LoadAsset("ui/battle", "VitalChange");
+        GameObject go = ResourceMgr.Instance.LoadAsset("VitalChange");
         UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
-        uiVitalChangeView.ShowVitalChange(lifeChange, UIMgr.Instance.gameObject.transform as RectTransform);
+        uiVitalChangeView.ShowVitalChange(lifeChange, gameObject.transform as RectTransform);
     }
 
     public void ChangeEnergy(SpellVitalChangeArgs energyChange)
@@ -237,7 +236,7 @@ public class UIBattle : UIBase
 			Logger.LogError("You Should set MirrorImage in the UIBattle prefab!");
 		}
 
-        GameObject go = ResourceMgr.Instance.LoadAsset("ui/findmonsterinfo", "MirrorFindMonsterInfo");
+        GameObject go = ResourceMgr.Instance.LoadAsset("MirrorFindMonsterInfo");
 		//GameObject go = Instantiate (prefab) as GameObject;
 		go.transform.SetParent (m_MirrorImage.gameObject.transform,false);
 		MirrorFindMonsterInfo mminfo = go.GetComponent<MirrorFindMonsterInfo> ();
@@ -258,7 +257,7 @@ public class UIBattle : UIBase
 
 	void InitDazhaoTip()
 	{
-		GameObject go = ResourceMgr.Instance.LoadAsset ("ui/dazhaotip", "dazhaoTip");
+		GameObject go = ResourceMgr.Instance.LoadAsset ("dazhaoTip");
 		//GameObject go = Instantiate (prefab) as GameObject;
 		go.transform.SetParent (dazhaoGroup.transform, false);
 		dazhaoTip = go.GetComponent<DazhaoTip> ();

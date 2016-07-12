@@ -10,7 +10,7 @@ import sun.print.resources.serviceui;
 
 import com.hawk.game.util.InstanceUtil;
 
-@HawkConfigManager.CsvResource(file = "xml/instanceEntry.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/instanceEntry.csv", struct = "map")
 public class InstanceEntryCfg extends HawkConfigBase {
 
 	@Id

@@ -5,20 +5,19 @@ using UnityEngine.UI;
 public class UISpeech : UIBase
 {
     public static string ViewName = "UISpeech";
-    public static string AssertName = "ui/speech";
-
     
-
-    public static void Open(string speechId)
+    public static void Open(string speechId,System.Action<float> callBack=null)
     {
         SpeechData info = StaticDataMgr.Instance.GetSpeechData(speechId);
         if (info==null)
         {
-            Logger.Log("缺少本地数据配置，如果遇到这种情况请拨打110");
+            Logger.Log("缺少本地数据配置…………");
             return;
         }
-        GameObject go = UIMgr.Instance.OpenUI(UISpeech.AssertName, UISpeech.ViewName);
+        GameObject go = UIMgr.Instance.OpenUI(UISpeech.ViewName);
         UISpeech speech = go.GetComponent<UISpeech>();
+        speech.info = info;
+        speech.endEvent = callBack;
         speech.ShowWithData(info);
     }
 
@@ -36,6 +35,7 @@ public class UISpeech : UIBase
 
 
     private SpeechData info;
+    private System.Action<float> endEvent;
     private int index = 0;
 
     private Image imgCurrent;
@@ -85,7 +85,6 @@ public class UISpeech : UIBase
 
     public void ShowWithData(SpeechData info)
     {
-        this.info = info;
         if (info.skip != "1")
             btnSkip.gameObject.SetActive(false);
         else
@@ -101,13 +100,7 @@ public class UISpeech : UIBase
         if (index == (info.speechList.Count - 1)) { imgNextTip.gameObject.SetActive(false); }
         SpeechStaticData data = info.speechList[index];
         Camp = data.campType;
-        //TODO: Set Asset.modify****************************
-        string iconName = data.image;
-        int k = iconName.LastIndexOf('/');
-        string assetbundle = iconName.Substring(0, k);
-        string assetname = iconName.Substring(k + 1, iconName.Length - k - 1);
-        //**************************************************
-        imgCurrent.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(assetbundle, assetname);
+        imgCurrent.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(data.image);
         textCurrent.text = data.name;
 
         textContent.text = StaticDataMgr.Instance.GetTextByID(data.speakId);
@@ -126,6 +119,8 @@ public class UISpeech : UIBase
 
     void EndOfSpeech()
     {
+        if (endEvent!=null)
+            endEvent(0.0f);
         UIMgr.Instance.CloseUI(this);
     }
 

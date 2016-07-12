@@ -1,0 +1,6 @@
+﻿#NUM,TEXT,NUM,TEXT,TEXT
+id,title,linkPicture,linkTitle,linkContent
+#id,标题多语言,资源名称,链接标题多语言,内容多语言
+1,facebook_share_title1,http://d319uocyz6h3ja.cloudfront.net/fb1.jpg,facebook_share_linktitle1,facebook_share_content1
+2,facebook_share_title2,http://d319uocyz6h3ja.cloudfront.net/fb2.jpg,facebook_share_linktitle2,facebook_share_content2
+3,facebook_share_title1,http://d319uocyz6h3ja.cloudfront.net/fb1.jpg,facebook_share_linktitle1,facebook_share_content1

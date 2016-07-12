@@ -22,6 +22,11 @@ public class BattleController : MonoBehaviour
     InstanceData instanceData;
     PB.HSInstanceEnterRet curInstance = null;
     BattleLevelData curBattleLevel = null;
+    int instanceStar = 0;
+    public int InstanceStar
+    {
+        get { return instanceStar; }
+    }
 
     public InstanceData InstanceData
     {
@@ -139,6 +144,15 @@ public class BattleController : MonoBehaviour
 				}
 				return;
 			}
+            if (hit.collider.gameObject.tag == "DropItem")
+            {
+                Transform parent = hit.collider.gameObject.transform.parent;
+                DropItems dropItems = parent.GetComponent<DropItems>();
+                if (dropItems != null)
+                {                    
+                    dropItems.OnHit();
+                }
+            }
 
 			var wpTarget = hit.collider.gameObject.GetComponent<WeakpointTarget>();
 			if(wpTarget)
@@ -187,7 +201,7 @@ public class BattleController : MonoBehaviour
         //battleType = (BattleType)proto.battleType;
         instanceData = StaticDataMgr.Instance.GetInstanceData(enterParam.instanceData.instanceId);
         maxProcessIndex = enterParam.instanceData.battle.Count;
-
+        instanceStar = InstanceMapService.Instance.GetRuntimeInstance(enterParam.instanceData.instanceId).star;
         if (!InitVictorMethod())
             return;
 
@@ -200,7 +214,7 @@ public class BattleController : MonoBehaviour
         GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
         battleGroup.SetPlayerList();
 
-        var ui = UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
+        var ui = UIMgr.Instance.OpenUI(UIBattle.ViewName);
         uiBattle = ui.GetComponent<UIBattle>();
         uiBattle.Init();
 
@@ -271,6 +285,7 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     void UnLoadBattleScene()
     {
+        battleGroup.DestroyEnemys();
         curBattleScene.ClearEvent();
         ObjectDataMgr.Instance.RemoveBattleObject(BattleConst.battleSceneGuid);
         //Destroy(curBattleScene);
@@ -489,9 +504,22 @@ public class BattleController : MonoBehaviour
                     process.AddRewardItem(pbUnit.guid, curBattle.monsterDrop[i]);
                 }
             }
-
             battleGroup.SetEnemyList(pbList);
-            process.StartProcess(index, curBattleLevel);
+            //TODO:动画1
+            System.Action<float> preStartEvent = (delayTime) =>
+            {
+                process.StartProcess(index, curBattleLevel);
+            };
+            //Debug.Log("当前副本ID：" + curBattleLevel.battleProtoData.id);
+            //demo_1_level2
+            if (!string.IsNullOrEmpty(curBattleLevel.battleProtoData.preStartEvent) && InstanceStar == 0)
+            {
+                UISpeech.Open(curBattleLevel.battleProtoData.preStartEvent, preStartEvent);
+            }
+            else
+            {
+                preStartEvent(0.0f);
+            }
         }
         else 
         {
@@ -500,8 +528,13 @@ public class BattleController : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
-    public IEnumerator StartNextProcess()
+    public IEnumerator StartNextProcess(float delayTime)
     {
+        if (delayTime > 0.0f)
+        {
+            yield return new WaitForSeconds(delayTime);
+        }
+
         //对局切换过度
         battleGroup.DestroyEnemys();
         int playerCount = battleGroup.PlayerFieldList.Count;
@@ -522,18 +555,20 @@ public class BattleController : MonoBehaviour
         uiBattle.ShowUI(false);
         float waitTime = BattleConst.unitOutTime * 0.5f * GameSpeedService.Instance.GetBattleSpeed();
         Appearance(false, waitTime);
-        Fade.FadeOut(waitTime);
+        //Fade.FadeOut(waitTime);
+        ItemDropManager.Instance.ClearDropItem();
+        GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
         yield return new WaitForSeconds(waitTime);
 
         ++curProcessIndex;
-        Fade.FadeIn(waitTime);
+        //Fade.FadeIn(waitTime);
         cameraNodeDic.Clear();
         SetCameraDefault();
         Appearance(true, waitTime);
         yield return new WaitForSeconds(waitTime);
         battleGroup.RefreshPlayerPos();
         uiBattle.ShowUI(true);
-        //uiBattle.gameObject.BroadcastMessage("OnAnimationFinish");
+        uiBattle.gameObject.BroadcastMessage("OnAnimationFinish");
 
         StartProcess(curProcessIndex);
         //TODO: fade in and fade out && end event &&recover life etc
@@ -574,15 +609,16 @@ public class BattleController : MonoBehaviour
             }
             battleGroup.PlayerFieldList[i].transform.localPosition = newPos;
             battleGroup.PlayerFieldList[i].transform.DOMove(moveTag, moveTime);
+            battleObj.TriggerEvent(BattleConst.unitExitandenter, Time.time, null);
         }
     }
     //---------------------------------------------------------------------------------------------
     public void OnBattleOver(bool isSuccess)
     {
+        ItemDropManager.Instance.ClearDropItem();
         processStart = false;
 		Logger.LogWarning("Battle " + (isSuccess ? "Success" : "Failed"));
         StartCoroutine(ProcessBattleOver(isSuccess));
-        battleGroup.DestroyEnemys();
 		MagicDazhaoController.Instance.ClearAll ();
 		PhyDazhaoController.Instance.ClearAll ();
 		process.HideFireFocus ();

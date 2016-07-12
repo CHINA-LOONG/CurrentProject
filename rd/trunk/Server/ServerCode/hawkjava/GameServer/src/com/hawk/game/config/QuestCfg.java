@@ -6,7 +6,7 @@ import org.hawk.config.HawkConfigManager;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.QuestUtil;
 
-@HawkConfigManager.CsvResource(file = "xml/quest.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/quest.csv", struct = "map")
 public class QuestCfg extends HawkConfigBase {
 	
 	@Id

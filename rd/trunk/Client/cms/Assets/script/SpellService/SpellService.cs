@@ -7,7 +7,7 @@ public class SpellService : MonoBehaviour
 {
     //---------------------------------------------------------------------------------------------
     static SpellService mInst = null;
-    private Dictionary<int, EventArgs> deadList;
+    private Dictionary<int, EventArgs> deadList = new Dictionary<int, EventArgs>();
     public static SpellService Instance
     {
         get
@@ -27,7 +27,7 @@ public class SpellService : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void Init()
     {
-        deadList = new Dictionary<int, EventArgs>();
+        //deadList = new Dictionary<int, EventArgs>();
     }
     //---------------------------------------------------------------------------------------------
     public void AddDeadData(SpellUnitDeadArgs args)
@@ -129,6 +129,13 @@ public class SpellService : MonoBehaviour
                 {
                     EffectSwitchPrototype pt = effectPt as EffectSwitchPrototype;
                     actualEffect = new EffectSwitch();
+                    actualEffect.Init(pt, this);
+                }
+                break;
+            case EffectType.Effect_Type_Dispel:
+                {
+                    EffectDispelProtoType pt = effectPt as EffectDispelProtoType;
+                    actualEffect = new EffectDispel();
                     actualEffect.Init(pt, this);
                 }
                 break;

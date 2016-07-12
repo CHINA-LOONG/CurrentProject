@@ -3,7 +3,7 @@ package com.hawk.game.config;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase;
 
-@HawkConfigManager.CsvResource(file = "xml/unitBaseData.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/unitBaseData.csv", struct = "map")
 public class MonsterBaseCfg extends HawkConfigBase {
 
 	@Id

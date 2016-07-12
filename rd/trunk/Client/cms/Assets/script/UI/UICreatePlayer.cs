@@ -6,7 +6,6 @@ using System.Collections;
 public class UICreatePlayer : UIBase
 {
 	public static	string	ViewName = "UICreatePlayer";
-	public static string AssertName = "ui/createplayer";
 
 	public Button 		createButton;
 	public InputField   nameInputFileld;

@@ -13,7 +13,7 @@ public class PetSwitchPage : MonoBehaviour
         trans = transform as RectTransform;
         for (int i = 0; i < BattleConst.maxFieldUnit; ++i)
         {
-            var item = ResourceMgr.Instance.LoadAsset("ui/battle", "petItem");
+            var item = ResourceMgr.Instance.LoadAsset("petItem");
             item.transform.SetParent(gameObject.transform, false);
             var itemTrans = item.GetComponent<RectTransform>();
             itemTrans.anchoredPosition += new Vector2(100 * i, 0);

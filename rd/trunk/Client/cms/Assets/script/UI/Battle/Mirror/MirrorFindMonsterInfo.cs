@@ -79,7 +79,7 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 					//likeFoodText.text = "subTarget";
 
 					int property = wpRuntimeData.property;
-					var image = ResourceMgr.Instance.LoadAssetType<Sprite>("ui/property", "property_" + property) as Sprite;
+					var image = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + property) as Sprite;
 					if(image != null)
 					{
 						propertyImage.enabled = true;

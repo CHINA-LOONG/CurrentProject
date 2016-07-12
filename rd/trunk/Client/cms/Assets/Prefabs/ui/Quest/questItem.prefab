@@ -272,6 +272,8 @@ MonoBehaviour:
   text_progress: {fileID: 11450012}
   btn_Todoit: {fileID: 11465622}
   btn_Submit: {fileID: 11418916}
+  text_Todoit: {fileID: 11470378}
+  text_Submit: {fileID: 11439292}
   text_Cause: {fileID: 11400868}
   rewardParent: {fileID: 22404458}
 --- !u!114 &11414582
@@ -405,7 +407,7 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u9886\u53D6\u5956\u52B1"
@@ -521,7 +523,7 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u7ACB\u5373\u524D\u5F80"

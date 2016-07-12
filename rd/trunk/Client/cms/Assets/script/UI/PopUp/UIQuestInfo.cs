@@ -7,14 +7,13 @@ public class UIQuestInfo : UIBase
 {
 
     public static string ViewName = "UIQuestInfo";
-    public static string AssertName = "ui/quest";
 
     //public static void Open(int questId)
     public static void Open(QuestInfo quest)
     {
         //questItem quest = StaticDataMgr.Instance.GetQuestData(questId);
 
-        GameObject go = UIMgr.Instance.OpenUI(UIQuestInfo.AssertName, UIQuestInfo.ViewName);
+        GameObject go = UIMgr.Instance.OpenUI(UIQuestInfo.ViewName);
         UIQuestInfo mInfo = go.GetComponent<UIQuestInfo>();
         mInfo.info = quest;
         mInfo.ShowWithData(quest);
@@ -76,7 +75,7 @@ public class UIQuestInfo : UIBase
         }
         for (int i = rewards.Count; i < list.Count; i++)
         {
-            GameObject go = ResourceMgr.Instance.LoadAsset("ui/quest", "rewardItemIcon");
+            GameObject go = ResourceMgr.Instance.LoadAsset("rewardItemIcon");
             if (go != null)
             {
                 go.transform.localScale = Vector3.one;
@@ -137,7 +136,7 @@ public class UIQuestInfo : UIBase
     void OnLanguageChanged()
     {
         //TODO: change language
-        text_Title.text = "任务奖励";
-        text_Finish.text = "完成任务";
+        text_Title.text = StaticDataMgr.Instance.GetTextByID("quest_renwujiangli");
+        text_Finish.text = StaticDataMgr.Instance.GetTextByID("quest_wanchengrenwu");
     }
 }

@@ -1,0 +1,8 @@
+﻿#NUM,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,NUM,TEXT,NUM,NUM,NUM,NUM
+id,comments,name,title,desc,image,pointIcon,level,recharge,offlineDay,timeBegin,timeEnd,retained
+#页签id,注释,名称,标题,描述,底图,货币图标,等级,充值段,离线天数,开始时间id,结束时间id,结束后是否保留数据(1=保留，0=清除)
+102,累计登录,gift_name_102,gift_name_102,gift_desc_102,,,1,0_9999999,0,401,402,0
+103,连续登录,gift_name_103,gift_name_103,gift_desc_103,,,1,0_9999999,0,401,402,0
+104,冲级,gift_name_104,gift_name_104,gift_desc_104,,,1,0_9999999,0,401,402,1
+105,开服有礼,gift_name_105,gift_name_105,gift_desc_105,,,1,0_9999999,0,401,402,0
+106,先行者礼包,gift_name_106,gift_name_106,gift_desc_106,libao_tianshizhang,icon_tianxingzhesuipian,20,0_9999999,0,403,404,0

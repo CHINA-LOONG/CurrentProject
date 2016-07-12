@@ -93,7 +93,16 @@ namespace PB
       SKILL_POINT_NOT_ENOUGH = 196611,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SKILL_LEVEL_LIMIT", Value=196612)]
-      SKILL_LEVEL_LIMIT = 196612
+      SKILL_LEVEL_LIMIT = 196612,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STAGE_LIMIT", Value=196613)]
+      STAGE_LIMIT = 196613,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STAGE_LEVEL_NOT_ENOUGH", Value=196614)]
+      STAGE_LEVEL_NOT_ENOUGH = 196614,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STAGE_CONSUME", Value=196615)]
+      STAGE_CONSUME = 196615
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"itemError")]

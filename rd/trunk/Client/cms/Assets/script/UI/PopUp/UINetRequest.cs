@@ -6,13 +6,12 @@ public class UINetRequest : UIBase
 {
 
 	public static string ViewName = "UINetRequest";
-	public static string AssertName = "ui/netRequest";
 
 	public Button closeButton;
 
 	public static void Open()
 	{
-		UIMgr.Instance.OpenUI (UINetRequest.AssertName, UINetRequest.ViewName);
+		UIMgr.Instance.OpenUI (UINetRequest.ViewName);
 	}
 
 	public static void Close()

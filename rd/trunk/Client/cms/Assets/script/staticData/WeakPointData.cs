@@ -17,13 +17,6 @@ public class WeakPointData
 	//鉴定效果
 	public string findWpEffect;
 	public string appraisalStateEffect;
-
-	//---------------对原始资源的处理，方便使用------------
-	public string findWpEffectAsset;
-	public string findWpEffectPrefab;
-
-	public string appraisalStateEffectAsset;
-	public string appraisalStateEffectPrefab;
 	//-----------------------------------------
 
     public int initialStatus;
@@ -64,20 +57,6 @@ public class WeakPointData
 		stateparam2 = null;
 		stateparam3 = null;
 		stateparam4 = null;
-
-		if (!string.IsNullOrEmpty (findWpEffect)) 
-		{
-			int index = findWpEffect.LastIndexOf('/');
-			findWpEffectAsset = findWpEffect.Substring(0,index);
-			findWpEffectPrefab = findWpEffect.Substring(index +1,findWpEffect.Length - index -1);
-		}
-
-		if (!string.IsNullOrEmpty (appraisalStateEffect)) 
-		{
-			int index = findWpEffect.LastIndexOf('/');
-			appraisalStateEffectAsset = appraisalStateEffect.Substring(0,index);
-			appraisalStateEffectPrefab = appraisalStateEffect.Substring(index +1,appraisalStateEffect.Length - index -1);
-		}
 	}
 }
 

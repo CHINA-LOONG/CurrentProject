@@ -67,7 +67,7 @@ public class FireFocusEffect : MonoBehaviour
         if (bo.unit.attackWpName != null && bo.unit.attackWpName.Length > 0)
         {
 			WeakPointRuntimeData wpRuntimeData = null;
-			WeakPointData wp = null;
+			//WeakPointData wp = null;
 
 			if(bo.wpGroup.allWpDic.TryGetValue(bo.unit.attackWpName,out wpRuntimeData))
 			{

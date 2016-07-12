@@ -11,7 +11,7 @@ import org.hawk.os.HawkTime;
 
 import com.hawk.game.util.GsConst;
 
-@HawkConfigManager.CsvResource(file = "xml/time.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/time.csv", struct = "map")
 public class TimeCfg extends HawkConfigBase {
 
 	public static final int NO_VALUE = -1;

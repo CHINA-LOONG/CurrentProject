@@ -1,0 +1,17 @@
+﻿#TEXT,TEXT,NUM
+name,desc,needlevel
+#功能名称,功能描述,开启等级
+hecheng_name,hecheng_desc,25
+fenjie_name,fenjie_desc,22
+dazao_name,dazao_desc,6
+saodang_name,saodang_desc,8
+saodangN_name,saodang_desc,15
+putongshangdian_name,putongshangdian_desc,8
+jingjichang_name,hecheng_desc,12
+gonghui_name,hecheng_desc,20
+damaoxian_name,hecheng_desc,22
+tongtianta_name,hecheng_desc,12
+xuyuanshu_name,hecheng_desc,10
+xiangqian_name,hecheng_desc,20
+shengji_name,hecheng_desc,8
+huanchong_name,hecheng_desc,6

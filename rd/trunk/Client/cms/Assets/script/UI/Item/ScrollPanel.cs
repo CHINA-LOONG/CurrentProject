@@ -14,9 +14,9 @@ public class ScrollPanel : MonoBehaviour {
 	
 	}
 
-    public void AddContent(string abname, string assetname, int count)
+    public void AddContent(string assetname, int count)
     {
-        var go = ResourceMgr.Instance.LoadAsset(abname, assetname);
+        var go = ResourceMgr.Instance.LoadAsset(assetname);
         for (int i = 0; i < count; ++i)
         {
             GameObject bagItem = GameObject.Instantiate(go);

@@ -3,7 +3,7 @@ package com.hawk.game.config;
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 
-@HawkConfigManager.CsvResource(file = "xml/playerAttr.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/playerAttr.csv", struct = "map")
 public class PlayerAttrCfg extends HawkConfigBase {
 	/**
 	 * 配置id

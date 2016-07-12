@@ -393,4 +393,38 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterStageUp")]
+  public partial class HSMonsterStageUp : global::ProtoBuf.IExtensible
+  {
+    public HSMonsterStageUp() {}
+    
+    private int _monsterId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"monsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int monsterId
+    {
+      get { return _monsterId; }
+      set { _monsterId = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _consumeMonsterId = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"consumeMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> consumeMonsterId
+    {
+      get { return _consumeMonsterId; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterStageUpRet")]
+  public partial class HSMonsterStageUpRet : global::ProtoBuf.IExtensible
+  {
+    public HSMonsterStageUpRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

@@ -1,0 +1,6 @@
+﻿#NUM,NUM,NUM,TEXT
+id,contentId,awardCount,comments
+#id,内容id,奖励数量,注释
+1,1,1,facebook:副本死亡
+2,2,2,facebook:pvp点数不足
+3,3,20,facebook:分享体力

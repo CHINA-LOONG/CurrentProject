@@ -48,7 +48,7 @@ public class WeakPointController : MonoBehaviour
 	{
 		foreach (MirrorTarget findTarget in newFindList) 
 		{
-			GameUnit curGameUnit = findTarget.battleObject.unit;
+			//GameUnit curGameUnit = findTarget.battleObject.unit;
 			string curWeakPointName = findTarget.WeakPointIDAttr;
 
 			WeakPointRuntimeData wpRuntime = null;

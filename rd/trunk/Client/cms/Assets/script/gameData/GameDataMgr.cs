@@ -178,12 +178,10 @@ public class GameDataMgr : MonoBehaviour
             unit.lazy = monster.lazy;
             unit.level = monster.level;
             unit.curExp = monster.exp;
-            unit.starLevel = monster.stage;
+            unit.stage = monster.stage;
             unit.spellPbList = monster.skill;
             mainPlayer.unitPbList.Add(unit.guid, unit);
-
             mainPlayer.allUnitDic.Add(unit.guid, GameUnit.FromPb(unit, true));
-
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -257,15 +255,67 @@ public class GameDataMgr : MonoBehaviour
     void OnReward(ProtocolMessage msg)
     {
         PB.HSRewardInfo reward = msg.GetProtocolBody<PB.HSRewardInfo>();
+        foreach (PB.RewardItem item in reward.RewardItems)
+        {
+            if (item.type == (int)PB.itemType.PLAYER_ATTR)
+            {
+                if ((int)PB.changeType.CHANGE_COIN == int.Parse(item.itemId))
+                {
+                    GameDataMgr.Instance.mainPlayer.coin += item.count;
+                    GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, mainPlayer.coin);
+                }
+                else if ((int)PB.changeType.CHANGE_GOLD == int.Parse(item.itemId))
+                {
+                    GameDataMgr.Instance.mainPlayer.gold += item.count;
+                }
 
+            }
+            else if (item.type == (int)PB.itemType.ITEM)
+            {
+                GameDataMgr.Instance.mainPlayer.gameItemData.AddItem(item.itemId, item.count);
+            }
+            else if (item.type == (int)PB.itemType.EQUIP)
+            {
+                GameDataMgr.Instance.mainPlayer.gameEquipData.AddEquip(item.id, item.itemId, item.stage, item.level);
+            }
+            else if (item.type == (int)PB.itemType.MONSTER)
+            {
 
+            }
+        }
     }
     //---------------------------------------------------------------------------------------------
     void OnConsume(ProtocolMessage msg)
     {
         PB.HSConsumeInfo reward = msg.GetProtocolBody<PB.HSConsumeInfo>();
+        foreach (PB.ConsumeItem item in reward.consumeItems)
+        {
+            if (item.type == (int)PB.itemType.PLAYER_ATTR)
+            {
+                if ((int)PB.changeType.CHANGE_COIN == int.Parse(item.itemId))
+                {
+                    GameDataMgr.Instance.mainPlayer.coin -= item.count;
+                    GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, mainPlayer.coin);
+                }
+                else if ((int)PB.changeType.CHANGE_GOLD == int.Parse(item.itemId))
+                {
+                    GameDataMgr.Instance.mainPlayer.gold -= item.count;
+                }
 
-
+            }
+            if (item.type == (int)PB.itemType.ITEM)
+            {
+                GameDataMgr.Instance.mainPlayer.gameItemData.RemoveItem(item.itemId, item.count);
+            }
+            else if (item.type == (int)PB.itemType.EQUIP)
+            {
+                GameDataMgr.Instance.mainPlayer.gameEquipData.RemoveEquip(item.id);
+            }
+            else if (item.type == (int)PB.itemType.MONSTER)
+            {
+                GameDataMgr.Instance.mainPlayer.RemoveUnit((int)item.id);
+            }
+        }
     }
 
     //---------------------------------------------------------------------------------------------

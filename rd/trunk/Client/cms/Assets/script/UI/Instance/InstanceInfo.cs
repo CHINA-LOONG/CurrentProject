@@ -16,6 +16,9 @@ public class InstanceInfo : MonoBehaviour
 	public	Text	attackCountText;
 	public	Text	clearCountText;
 
+	public	Text	lbEnmeyList;
+	public	Text	lbRewardList;
+
 	public FatigueUI fatigueUi;
 
 	public	List<Transform>	enemyGroup = new List<Transform> ();
@@ -30,6 +33,13 @@ public class InstanceInfo : MonoBehaviour
 		EventTriggerListener.Get (clearButton.gameObject).onClick = OnClearButtonClick;
 		EventTriggerListener.Get (clearTenButton.gameObject).onClick = OnClearTenButtoClick;
 		EventTriggerListener.Get (acceptButton.gameObject).onClick = OnAcceptButtonClick;
+
+		lbEnmeyList.text = StaticDataMgr.Instance.GetTextByID ("instance_difangzhenrong");
+		lbRewardList.text = StaticDataMgr.Instance.GetTextByID ("instance_jiangliList");
+
+		clearButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("instance_saodang");
+		clearTenButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("instance_saodang10");
+		acceptButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("instance_yingzhan");
 	}
 
 	public	void	SetShow(bool bshow)
@@ -41,10 +51,9 @@ public class InstanceInfo : MonoBehaviour
 	{
 		instanceData = data;
 		SetShow (true);
-		nameText.text = data.staticData.name;
+		nameText.text = data.staticData.NameAttr;
 		descText.text = data.staticData.desc;
-		needFatigueText.text = "消耗体力: " + data.staticData.fatigue.ToString();
-
+		needFatigueText.text = string.Format (StaticDataMgr.Instance.GetTextByID ("instance_tilixiaohao"), data.staticData.fatigue.ToString ());
 		int allAttackCount = data.staticData.count;
 		int leftCount = allAttackCount - data.countDaily;
 		if (allAttackCount < 1)
@@ -53,9 +62,9 @@ public class InstanceInfo : MonoBehaviour
 		} 
 		else
 		{
-			attackCountText.text = "可挑战次数: " + leftCount.ToString () + "/" + allAttackCount.ToString ();
+			attackCountText.text = string.Format(StaticDataMgr.Instance.GetTextByID("instance_tiaozhancishu"),leftCount,allAttackCount);
 		}
-		clearCountText.text = "todo:扫荡券数量";
+		clearCountText.text =  string.Format(StaticDataMgr.Instance.GetTextByID("instance_saodangquanNumber"),-999);
 
 		SetEnemy (data.staticData);
 		SetReward (data.staticData);
@@ -162,7 +171,7 @@ public class InstanceInfo : MonoBehaviour
 		}
 		Text subText = tempGo.GetComponentInChildren<Text> ();
 		if(null != subText)
-			subText.text = itemData.name;
+			subText.text = itemData.NameAttr;
 		tempGo.SetActive (true);
 	}
 	
@@ -183,7 +192,7 @@ public class InstanceInfo : MonoBehaviour
 
 	void	OnAcceptButtonClick(GameObject go)
 	{
-		GameObject uiGo =  UIMgr.Instance.OpenUI (UIAdjustBattleTeam.AssertName, UIAdjustBattleTeam.ViewName);
+		GameObject uiGo =  UIMgr.Instance.OpenUI (UIAdjustBattleTeam.ViewName);
 		var adjustUi = uiGo.GetComponent<UIAdjustBattleTeam> ();
 		adjustUi.SetData (instanceData.instanceId, instanceData.staticData.enemyList,instanceData.staticData.level);
 	}

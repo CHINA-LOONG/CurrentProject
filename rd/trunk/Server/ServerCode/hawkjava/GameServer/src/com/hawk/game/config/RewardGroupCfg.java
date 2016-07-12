@@ -12,7 +12,7 @@ import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.WeightUtil;
 import com.hawk.game.util.WeightUtil.WeightItem;
 
-@HawkConfigManager.CsvResource(file = "xml/rewardGroup.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/rewardGroup.csv", struct = "map")
 public class RewardGroupCfg extends HawkConfigBase  {
 	/**
 	 * 配置id

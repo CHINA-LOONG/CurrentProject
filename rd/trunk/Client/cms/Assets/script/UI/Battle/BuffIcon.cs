@@ -23,10 +23,7 @@ public class BuffIcon : MonoBehaviour
         if (curIcon != icon)
         {
             curIcon = icon;
-            var index = icon.LastIndexOf('/');
-            var assetbundle = icon.Substring(0, index);
-            var assetname = icon.Substring(index + 1, icon.Length - index - 1);
-            var image = ResourceMgr.Instance.LoadAssetType<Sprite>(assetbundle, assetname) as Sprite;
+            var image = ResourceMgr.Instance.LoadAssetType<Sprite>(curIcon) as Sprite;
             buffIcon.sprite = image;
         }
         gameObject.SetActive(true);

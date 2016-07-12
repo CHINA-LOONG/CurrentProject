@@ -5,44 +5,44 @@ using UnityEngine.UI;
 
 public class UIPetDetail : UIBase{
 
-    public static string ViewName = "UIPetDetail";
-    public static string AssertName = "ui/petdetail";
+    public static string ViewName = PetViewConst.UIPetDetailAssetName;
 
-    public Button m_closeButton;
+    public Button closeButton;
+    public Button preButton;
+    public Button nextButton;
+    public Button skillButton;
+    public Button attrButton;
+    public Button stageButton;
+    public Button advanceButton;
+   // public Button equipButton;
 
-    public PetDetailLeft m_leftView;
-    public GameObject m_rightContainer;
+    public Button addExpButton;
+    public PetDetailLeft leftView;
+    public GameObject rightView;
 
-    private PetDetailRight m_rightView = null;
+    PetDetailRightBase m_rightDetail = null;
+    GameObject m_cameraObject = null;
 
-    private GameObject m_cameRaObject;
-    public Button m_preButton;
-    public Button m_nextButton;
-
-    public Button m_skillButton;
-    public Button m_attrButton;
-    public Button m_stageButton;
-    public Button m_advanceButton;
-    public Button m_equipButton;
-
-    private List<GameUnit> m_curTypeList = null;
-    private int m_currentIndex = 0;
+    List<GameUnit> m_curTypeList = null;
+    int m_currentIndex = 0;
+    
+    PetViewConst.RightPanelType currentRightType = PetViewConst.RightPanelType.NULL_RIGHT_TYPE;
 
     void Start()
     {
-        EventTriggerListener.Get(m_closeButton.gameObject).onClick = CloseBagButtonDown;
-        EventTriggerListener.Get(m_preButton.gameObject).onClick = PreButtonDown;
-        EventTriggerListener.Get(m_nextButton.gameObject).onClick = NextButtonDown;
-        EventTriggerListener.Get(m_skillButton.gameObject).onClick = SkillButtonDown;
-        EventTriggerListener.Get(m_attrButton.gameObject).onClick = DetailAttrButtonDown;
-        EventTriggerListener.Get(m_stageButton.gameObject).onClick = StageButtonDown;
-        EventTriggerListener.Get(m_advanceButton.gameObject).onClick = AdvanceButtonDown;
-        EventTriggerListener.Get(m_equipButton.gameObject).onClick = EquipButtonDown;
+        EventTriggerListener.Get(closeButton.gameObject).onClick = CloseButtonDown;
+        EventTriggerListener.Get(preButton.gameObject).onClick = PreButtonDown;
+        EventTriggerListener.Get(nextButton.gameObject).onClick = NextButtonDown;
+        EventTriggerListener.Get(skillButton.gameObject).onClick = SkillButtonDown;
+        EventTriggerListener.Get(attrButton.gameObject).onClick = DetailAttrButtonDown;
+        EventTriggerListener.Get(stageButton.gameObject).onClick = StageButtonDown;
+        EventTriggerListener.Get(advanceButton.gameObject).onClick = AdvanceButtonDown;
+        //EventTriggerListener.Get(equipButton.gameObject).onClick = EquipButtonDown;
     }
 
-    void CloseBagButtonDown(GameObject go)
+    void CloseButtonDown(GameObject go)
     {
-        UIMgr.Instance.CloseUI(ViewName);
+        UIMgr.Instance.CloseUI(UIPetDetail.ViewName);
     }
 	
 	// Update is called once per frame
@@ -50,73 +50,126 @@ public class UIPetDetail : UIBase{
 	
 	}
 
+    void OnDestroy()
+    {
+
+        Debug.Log("123123123");
+    }
+
     public override void OnOpenUI()
     {
-        m_cameRaObject = ResourceMgr.Instance.LoadAsset("ui/petdetail", "petCamera");
-        m_cameRaObject.name = "petCamera";
+        m_cameraObject = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetModelCameraAssetName);
+        m_cameraObject.name = PetViewConst.UIPetModelCameraAssetName;
     }
 
     public override void OnCloseUI()
     {
-        if (m_cameRaObject != null)
+        if (m_cameraObject != null)
         {
-            ResourceMgr.Instance.DestroyAsset(m_cameRaObject);
+            ResourceMgr.Instance.DestroyAsset(m_cameraObject);
         }
     }
 
     void AddRightView(string assetName)
     {
         //clear
-        if (m_rightView != null)
+        if (m_rightDetail != null)
         {
-            ResourceMgr.Instance.DestroyAsset(m_rightView.gameObject);
-            m_rightView = null;
+            ResourceMgr.Instance.DestroyAsset(m_rightDetail.gameObject);
+            m_rightDetail = null;
         }
 
-        m_rightView = ResourceMgr.Instance.LoadAsset("ui/petdetail", assetName).GetComponent<PetDetailRight>();
-        m_rightView.transform.SetParent(m_rightContainer.transform, false);
-        m_rightView.transform.localScale = Vector3.one;
-        m_rightView.gameObject.name = "contentView";
+        m_rightDetail = ResourceMgr.Instance.LoadAsset(assetName).GetComponent<PetDetailRightBase>();
+        m_rightDetail.transform.SetParent(rightView.transform, false);
+        m_rightDetail.transform.localScale = Vector3.one;
+        m_rightDetail.gameObject.name = "contentView";
     }
 
     void SkillButtonDown(GameObject go)
     {
-        AddRightView("skillPanel");
-        m_rightView.ReloadData(m_curTypeList[m_currentIndex]);
+        if (currentRightType == PetViewConst.RightPanelType.SKILL_PANEL_TYPE)
+        {
+            return;
+        }
+
+        currentRightType = PetViewConst.RightPanelType.SKILL_PANEL_TYPE;
+        AddRightView(PetViewConst.UIPetSkillAssetName);
+        m_rightDetail.ReloadData(m_curTypeList[m_currentIndex]);
     }
 
     void DetailAttrButtonDown(GameObject go)
     {
-        AddRightView("attrPanel");
-        m_rightView.ReloadData(m_curTypeList[m_currentIndex]);
+        if (currentRightType == PetViewConst.RightPanelType.DETAIL_ATTR_TYPE)
+        {
+            return;
+        }
+
+        currentRightType = PetViewConst.RightPanelType.DETAIL_ATTR_TYPE;
+        AddRightView(PetViewConst.UIPetAttrAssetName);
+        m_rightDetail.ReloadData(m_curTypeList[m_currentIndex]);
     }
 
     void StageButtonDown(GameObject go)
     {
-        AddRightView("stagePanel");
-        m_rightView.ReloadData(m_curTypeList[m_currentIndex]);
+        if (UIUtil.CheckIsEnoughLevel(m_curTypeList[m_currentIndex]) == false)
+        {
+            UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(m_curTypeList[m_currentIndex].pbUnit.stage + 1);
+            MsgBox.PromptMsg.Open("提示", string.Format("该宠物等级达到{0}级才能进阶", unitStageData.demandLevel), "确定");
+            return;
+        }
+
+        if (currentRightType == PetViewConst.RightPanelType.STAGE_PANEL_TYPE)
+        {
+            return;
+        }
+
+        currentRightType = PetViewConst.RightPanelType.STAGE_PANEL_TYPE;
+        AddRightView(PetViewConst.UIPetStageAssetName);
+        m_rightDetail.ReloadData(m_curTypeList[m_currentIndex]);
     }
 
     void AdvanceButtonDown(GameObject go)
     {
-        AddRightView("advancePanel");
-        m_rightView.ReloadData(m_curTypeList[m_currentIndex]);
+        if (currentRightType == PetViewConst.RightPanelType.ADVANCE_PANEL_TYPE)
+        {
+            return;
+        }
+
+        currentRightType = PetViewConst.RightPanelType.ADVANCE_PANEL_TYPE;
+        AddRightView(PetViewConst.UIPetAdvanceAssetName);
+        m_rightDetail.ReloadData(m_curTypeList[m_currentIndex]);
     }
 
     void EquipButtonDown(GameObject go)
     {
-        AddRightView("equipPanel");
-        m_rightView.ReloadData(m_curTypeList[m_currentIndex]);
+        if (currentRightType == PetViewConst.RightPanelType.EQUIP_PANEL_TYPE)
+        {
+            return;
+        }
+
+        currentRightType = PetViewConst.RightPanelType.EQUIP_PANEL_TYPE;
+        AddRightView(PetViewConst.UIPetEquipAssetName);
+        m_rightDetail.ReloadData(m_curTypeList[m_currentIndex]);
     }
 
     void PreButtonDown(GameObject go)
     {
+        if (m_curTypeList.Count == 1)
+        {
+            return;
+        }
+
         m_currentIndex = (m_currentIndex - 1 + m_curTypeList.Count) % m_curTypeList.Count;
         ReloadData(m_curTypeList[m_currentIndex]);
     }
 
     void NextButtonDown(GameObject go)
     {
+        if (m_curTypeList.Count == 1)
+        {
+            return;
+        }
+
         m_currentIndex = (m_currentIndex + 1) % m_curTypeList.Count;
         ReloadData(m_curTypeList[m_currentIndex]);
     }
@@ -140,13 +193,13 @@ public class UIPetDetail : UIBase{
         }
 
         //默认选中属性界面
-        AddRightView("attrPanel");
-        ReloadData(unit);
+        SkillButtonDown(null);
+        leftView.ReloadData(unit);
     }
 
     void ReloadData(GameUnit unit)
     {
-        m_leftView.ReloadData(unit);
-        m_rightView.ReloadData(unit);
+        leftView.ReloadData(unit);
+        m_rightDetail.ReloadData(unit);
     }
 }

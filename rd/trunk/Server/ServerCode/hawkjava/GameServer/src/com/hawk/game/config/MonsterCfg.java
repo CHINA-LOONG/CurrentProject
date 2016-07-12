@@ -5,7 +5,7 @@ import net.sf.json.JSONArray;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase;
 
-@HawkConfigManager.CsvResource(file = "xml/unitData.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/unitData.csv", struct = "map")
 public class MonsterCfg extends HawkConfigBase {
 
 	@Id

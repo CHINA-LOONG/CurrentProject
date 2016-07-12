@@ -34,8 +34,7 @@ public class UIMgr : MonoBehaviour
 		{
 			if (mInst == null)
 			{
-				//Object r = ResourceMgr.Instance.LoadAsset ("ui/root", "UIRoot");
-				GameObject ui = ResourceMgr.Instance.LoadAsset("ui/root", "UIRoot");
+				GameObject ui = ResourceMgr.Instance.LoadAsset("UIRoot");
 				ui.name = "UIMgr";
 				mInst = ui.AddComponent<UIMgr>();
 			}
@@ -60,9 +59,9 @@ public class UIMgr : MonoBehaviour
 
 	}
 
-	public GameObject OpenUI(string assertName, string uiName)
+	public GameObject OpenUI(string uiName)
 	{
-		GameObject ui = ResourceMgr.Instance.LoadAsset(assertName, uiName);
+		GameObject ui = ResourceMgr.Instance.LoadAsset(uiName);
 		if (null == ui) 
 		{
 			return null;

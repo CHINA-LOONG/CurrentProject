@@ -47,7 +47,17 @@ public class GameItemData
         }
 
         return false;
+    }
 
+    public ItemData getItem(String itemId)
+    {
+        ItemData itemData;
+        if (itemList.TryGetValue(itemId, out itemData))
+        {
+            return itemData;
+        }
+
+        return null;
     }
 }
 

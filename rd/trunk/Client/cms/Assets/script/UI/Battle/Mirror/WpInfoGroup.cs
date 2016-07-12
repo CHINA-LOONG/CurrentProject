@@ -23,12 +23,10 @@ public class WpInfoGroup :MonoBehaviour
 
 	public void InitWithParent(Transform parentTrans)
 	{
-		//GameObject prefab = ResourceMgr.Instance.LoadAsset ("ui/findwpinfo", "MirrorFindWpInfo");
-
 		for (int i = 0; i < MaxWpCount; ++i)
 		{
             //TODO: batch load(zz)
-            GameObject go = ResourceMgr.Instance.LoadAsset("ui/findwpinfo", "MirrorFindWpInfo");
+            GameObject go = ResourceMgr.Instance.LoadAsset("MirrorFindWpInfo");
 			go.transform.SetParent (parentTrans,false);
 
 			MirrorFindWpInfo subWpInfo = go.GetComponent<MirrorFindWpInfo>();

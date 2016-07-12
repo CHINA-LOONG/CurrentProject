@@ -83,9 +83,9 @@ public class WeakPointGroup
 	{
 		WeakPointData rowData = wpData.staticData;
 
-		wpData.findWpEffect = ParticleEffect.CreateEffect (effectGo.transform, rowData.findWpEffectAsset, rowData.findWpEffectPrefab);
-		wpData.appraisalWpStateEffect = ParticleEffect.CreateEffect (effectGo.transform, rowData.appraisalStateEffectAsset, rowData.appraisalStateEffectPrefab);
-		wpData.appraisalWpEffect = ParticleEffect.CreateEffect (effectGo.transform, "effect/battle", "baozha_fire");
+		wpData.findWpEffect = ParticleEffect.CreateEffect (effectGo.transform, rowData.findWpEffect);
+		wpData.appraisalWpStateEffect = ParticleEffect.CreateEffect (effectGo.transform, rowData.appraisalStateEffect);
+		wpData.appraisalWpEffect = ParticleEffect.CreateEffect (effectGo.transform, "baozha_fire");
 	}
 	//every weakstate have one mesh
 	void InitWeakPointState(WeakPointRuntimeData wpRealData,BattleObject bo)
@@ -120,6 +120,13 @@ public class WeakPointGroup
 			if(null == ht)
 				continue;
 
+			//effect
+			string effectName = ht["effect"] as string;
+			if(!string.IsNullOrEmpty(effectName))
+			{
+				wpRealData.wpStateEffectDic.Add(state,effectName);
+			}
+
 			//mesh
 			string meshNodeName = ht["mesh"] as string;
 			if(string.IsNullOrEmpty(meshNodeName))
@@ -133,38 +140,9 @@ public class WeakPointGroup
 				continue;
 			}
 
-			/*
-			if(wpRealData.battleObject.unit.isBoss &&
-			   state == WeakpointState.Normal1 ||
-			   state == WeakpointState.Normal2)
-			{
-				var skinMesh = meshGo.GetComponent<SkinnedMeshRenderer>();
-				if(null != skinMesh)
-				{
-					MeshCollider meshCollider = meshGo.GetComponent<MeshCollider>();
-					if(meshCollider == null)
-					{
-						meshCollider = meshGo.AddComponent<MeshCollider>();
-						meshCollider.sharedMesh = skinMesh.sharedMesh;
-					}
-				}
-
-				var wpTarget = meshGo.AddComponent<WeakpointTarget>();
-				wpTarget.wpId = wpRealData.id;
-				wpTarget.battleObject = wpRealData.battleObject;
-			}
-
-			*/
 			meshGo.SetActive(state == wpRealData.wpState);
 
 			wpRealData.wpMeshDic.Add(state,meshGo);
-
-			//effect
-			string effectName = ht["effect"] as string;
-			if(!string.IsNullOrEmpty(effectName))
-			{
-				wpRealData.wpStateEffectDic.Add(state,effectName);
-			}
 		}
 	}
 

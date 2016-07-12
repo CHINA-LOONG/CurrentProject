@@ -1,0 +1,15 @@
+﻿#NUM,TEXT,TEXT
+grade,reward1,reward2
+#段位,奖励,界面显示奖励
+12,pvp_gradereward1,pvp_gradereward1
+11,pvp_gradereward2,pvp_gradereward2
+10,pvp_gradereward3,pvp_gradereward3
+9,pvp_gradereward4,pvp_gradereward4
+8,pvp_gradereward5,pvp_gradereward5
+7,pvp_gradereward6,pvp_gradereward6
+6,pvp_gradereward7,pvp_gradereward7
+5,pvp_gradereward8,pvp_gradereward8
+4,pvp_gradereward9,pvp_gradereward9
+3,pvp_gradereward10,pvp_gradereward10
+2,pvp_gradereward11,pvp_gradereward11
+1,pvp_gradereward12,pvp_gradereward12

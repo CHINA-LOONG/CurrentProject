@@ -416,7 +416,8 @@ public class PlayerQuestModule extends PlayerModule {
 		}
 		// 领取体力
 		case GsConst.QuestGoalType.GET_FATIGUE_GOAL: {
-			// TODO
+			// 永远是完成状态
+			progress = goalCount;
 			break;
 		}
 		default:

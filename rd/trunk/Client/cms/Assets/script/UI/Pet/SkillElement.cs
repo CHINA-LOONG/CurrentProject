@@ -18,7 +18,8 @@ public class SkillElement : MonoBehaviour {
     public Button levelBtn;
     public SkillElementDelegate eventDelegate = null;
 
-    private string m_spellId = null ;
+    string m_spellId = null ;
+    Spell m_spell = null;
 
 	// Use this for initialization
 	void Start () {        
@@ -26,7 +27,18 @@ public class SkillElement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+      
+        if (cost != null && m_spell != null)
+        {
+            if (GameDataMgr.Instance.PlayerDataAttr.coin < StaticDataMgr.Instance.GetSPellLevelPrice(m_spell.level + 1))
+            {
+                cost.color = Color.red;
+            }
+            else
+            {
+                cost.color = Color.black;
+            }
+        }   
 	}
 
     public void LevelButtonDown(GameObject go)
@@ -40,12 +52,22 @@ public class SkillElement : MonoBehaviour {
     public void ReloadData(string spellId, Spell spell, GameUnit unit)
     {
         m_spellId = spellId;
+        m_spell = spell;
 
         type.text = spell.spellData.GetTypeName();
         level.text = string.Format("( {0} / {1})", spell.level, unit.pbUnit.level);
+        
         currentTips.text = spell.spellData.GetTips(spell.level);
-        nextTips.text = spell.spellData.GetTips(spell.level + 1);
-        cost.text = StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1).ToString();
+        if (spell.level == GameConfig.MaxMonsterLevel)
+        {
+            nextTips.text = "已经是最大等级";
+            cost.text = "";
+        }
+        else
+        {
+            nextTips.text = spell.spellData.GetTips(spell.level + 1);
+            cost.text = StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1).ToString();
+        }
 
         if (spell.level >= unit.pbUnit.level)
         {

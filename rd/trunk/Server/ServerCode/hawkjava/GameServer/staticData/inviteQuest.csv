@@ -1,0 +1,8 @@
+﻿#NUM,TEXT,NUM,NUM,TEXT
+id,desc,level,num,rewardId
+#任务id,任务描述,达到等级,目标量,奖励
+1,facebookshare_condition1,15,1,invite01
+2,facebookshare_condition2,20,2,invite02
+3,facebookshare_condition3,30,3,invite03
+4,facebookshare_condition4,35,5,invite04
+5,facebookshare_condition5,40,10,invite05

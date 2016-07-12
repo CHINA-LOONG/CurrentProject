@@ -3,7 +3,7 @@ package com.hawk.game.config;
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 
-@HawkConfigManager.CsvResource(file = "xml/variablePrice.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/variablePrice.csv", struct = "map")
 public class VariablePriceCfg extends HawkConfigBase {
 
 	@Id

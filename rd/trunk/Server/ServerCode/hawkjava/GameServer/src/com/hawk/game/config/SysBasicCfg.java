@@ -3,7 +3,7 @@ package com.hawk.game.config;
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 
-@HawkConfigManager.KVResource(file = "xml/sysBasic.cfg")
+@HawkConfigManager.KVResource(file = "sysData/sysBasic.cfg")
 public class SysBasicCfg extends HawkConfigBase {
 	/**
 	 * 玩家对象缓存时间

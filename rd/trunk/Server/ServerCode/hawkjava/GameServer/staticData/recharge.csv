@@ -1,0 +1,12 @@
+#TEXT,TEXT,NUM,NUM,NUM
+id,image,gold,gift,extra
+#产品Id,商品图标,钻石数量,首冲倍数,额外赠送
+com.diandian.undergroundguardian.diamond_1,chongzhi_zuanshi1,120,1,0
+com.diandian.undergroundguardian.diamond_5,chongzhi_zuanshi2,600,1,30
+com.diandian.undergroundguardian.diamond_10,chongzhi_zuanshi3,1200,1,100
+com.diandian.undergroundguardian.diamond_25,chongzhi_zuanshi4,3000,1,500
+com.diandian.undergroundguardian.diamond_50,chongzhi_zuanshi5,6000,1,1500
+com.diandian.undergroundguardian.diamond_100,chongzhi_zuanshi6,12000,1,4000
+com.diandian.undergroundguardian.diamond_test1,,0,0,0
+com.diandian.undergroundguardian.diamond_test2,,0,0,0
+com.diandian.undergroundguardian.diamond_test3,,0,0,0

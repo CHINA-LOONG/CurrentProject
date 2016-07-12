@@ -44,6 +44,7 @@ public enum EffectType
     Effect_Type_Damage,
     Effect_Type_Buff,
     Effect_Type_Switch,
+    Effect_Type_Dispel,
 
     Num_Effect_Type
 }
@@ -61,8 +62,30 @@ public enum BuffType
     Num_Buff_Type
 }
 
+public enum BuffFinisType
+{
+    Buff_Finish_Expire,
+    Buff_Finish_Dispel,
+
+    Num_Buff_FinishType
+}
+
 public enum SpellType
 {
+    /*
+     * 0=物理技能，
+     * 1=法术技能，
+     * 2=治疗技能，
+     * 3=防御技能，
+     * 4=被动技能，
+     * 5=增益buff技能，
+     * 6=减益buff技能，
+     * 7=偷懒技能，
+     * 8=物理大招技能，
+     * 9=法术大招技能，
+     * 10=怪物AI释放大招准备Buff，
+     * 11=dot技能
+     */
     Spell_Type_PhyAttack,
     Spell_Type_MgicAttack,
     Spell_Type_Cure,

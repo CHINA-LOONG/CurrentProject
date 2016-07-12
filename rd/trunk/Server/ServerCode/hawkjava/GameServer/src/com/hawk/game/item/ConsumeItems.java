@@ -156,10 +156,11 @@ public class ConsumeItems {
 	}
 	
 	//目前怪物的消耗都是通过制定Id的
-	public ConsumeItems addMonster(int id) {
+	public ConsumeItems addMonster(int id, String monsterId) {
 		ConsumeItem.Builder consumeItem = ConsumeItem.newBuilder();
 		consumeItem.setType(Const.itemType.MONSTER_VALUE);
 		consumeItem.setId(id);
+		consumeItem.setItemId(monsterId);
 		consumeInfo.addConsumeItems(consumeItem);
 		return this;
 	}

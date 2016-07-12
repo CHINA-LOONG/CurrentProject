@@ -65,7 +65,7 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
 
         for (int i = quests.Count; i < list.Count; i++)
         {
-            GameObject go = ResourceMgr.Instance.LoadAsset("ui/quest", "questItem");
+            GameObject go = ResourceMgr.Instance.LoadAsset("questItem");
             if (go != null)
             {
                 go.transform.localScale = Vector3.one;
@@ -210,9 +210,10 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
 
     void OnLanguageChanged()
     {
-        text_story.text = "剧情任务";
-        text_daily.text = "日常任务";
-        text_other.text = "列传任务";
+        text_tips.text = StaticDataMgr.Instance.GetTextByID("tip_NotFoundQuest");
+        text_story.text = StaticDataMgr.Instance.GetTextByID("quest_juqingrenwu");
+        text_daily.text = StaticDataMgr.Instance.GetTextByID("quest_richangrenwu");
+        text_other.text = StaticDataMgr.Instance.GetTextByID("quest_liezhuanrenwu");
     }
 
     public static int SortQuest(QuestInfo a, QuestInfo b)

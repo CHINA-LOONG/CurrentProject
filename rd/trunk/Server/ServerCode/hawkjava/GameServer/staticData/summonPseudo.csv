@@ -1,0 +1,6 @@
+﻿#NUM,NUM,TEXT,TEXT
+id,times,reward,comments
+#id,次数,rewardId,注释
+1,0,zuanshi1st,前1次钻石收费单抽
+2,0,zuanshiten1st,第1次钻石十连抽
+3,1,zuanshi1st,第1次钻石免费单抽

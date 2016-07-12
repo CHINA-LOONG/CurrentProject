@@ -64,7 +64,7 @@ public class ObjectDataMgr : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public BattleObject CreateBattleObject(GameUnit unit, GameObject parent, Vector3 pos, Quaternion rot)
     {
-        GameObject unitObject = ResourceMgr.Instance.LoadAsset("monster", unit.assetID);
+        GameObject unitObject = ResourceMgr.Instance.LoadAsset(unit.assetID);
         if (parent != null)
         {
             unitObject.transform.parent = parent.transform;
@@ -117,7 +117,7 @@ public class ObjectDataMgr : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public BattleObject CreateSceneObject(int guid, string bundleName, string prefab)
     {
-        GameObject sceneObj = ResourceMgr.Instance.LoadAsset(bundleName, prefab, false);
+        GameObject sceneObj = ResourceMgr.Instance.LoadAsset(prefab, false);
         BattleObject bo = sceneObj.AddComponent<BattleObject>();
         bo.guid = guid;
         bo.type = BattleObjectType.Scene;

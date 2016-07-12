@@ -36,5 +36,21 @@ public class ItemStaticData
 	public	int	part;
 	public	int	durability;
 	public	int	equipAttId;
+
+	public	string	NameAttr
+	{
+		get
+		{
+			return StaticDataMgr.Instance.GetTextByID(name);
+		}
+	}
+
+	public string TipsAttr
+	{
+		get
+		{
+			return StaticDataMgr.Instance.GetTextByID(tips);
+		}
+	}
 	
 }

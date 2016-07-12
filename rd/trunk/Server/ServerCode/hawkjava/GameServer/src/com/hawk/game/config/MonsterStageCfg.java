@@ -15,7 +15,7 @@ import org.hawk.os.HawkException;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.util.GsConst.ItemParseType;
 
-@HawkConfigManager.CsvResource(file = "xml/unitStage.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/unitStage.csv", struct = "map")
 public class MonsterStageCfg extends HawkConfigBase {
 
 	@Id
@@ -40,19 +40,6 @@ public class MonsterStageCfg extends HawkConfigBase {
 	protected final String demandMonster;
 
 	// assemble
-//	public static class ItemConsume {
-//		public int itemCfgId;
-//		public int count;
-//	}
-//	
-//	public static class MonsterConsume {
-//		public String monsterCfgId;
-//		public int stage;
-//		public int count;
-//	}
-//
-//	protected List<ItemConsume> demandItemList;
-//	protected List<MonsterConsume> demandMonsterList;
 	List<ItemInfo> demandItemList;
 	List<ItemInfo> demandMonsterList;
 
@@ -77,33 +64,6 @@ public class MonsterStageCfg extends HawkConfigBase {
 		// TODO: 合并重复的
 
 		try {
-//			demandItemList = new ArrayList<>();
-//			String[] unitList = demandItem.split("\\|");
-//			for (String unit : unitList) {
-//				String[] fieldList = unit.split(";");
-//				if (fieldList.length != 2) {
-//					return false;
-//				}
-//				ItemConsume item = new ItemConsume();
-//				item.itemCfgId = Integer.parseInt(fieldList[0]);
-//				item.count = Integer.parseInt(fieldList[1]);
-//				demandItemList.add(item);
-//			}
-//
-//			demandMonsterList = new ArrayList<>();
-//			unitList = demandMonster.split("\\|");
-//			for (String unit : unitList) {
-//				String[] fieldList = unit.split(";");
-//				if (fieldList.length != 3) {
-//					return false;
-//				}
-//				MonsterConsume monster = new MonsterConsume();
-//				monster.monsterCfgId = fieldList[0];
-//				monster.stage = Integer.parseInt(fieldList[1]);
-//				monster.count = Integer.parseInt(fieldList[2]);
-//				demandMonsterList.add(monster);
-//			}
-			
 			demandItemList = ItemInfo.GetItemInfo(demandItem, ItemParseType.PARSE_MONSTER_STAGE);
 			demandMonsterList = ItemInfo.GetItemInfo(demandMonster, ItemParseType.PARSE_MONSTER_STAGE);
 		} catch (Exception e) {

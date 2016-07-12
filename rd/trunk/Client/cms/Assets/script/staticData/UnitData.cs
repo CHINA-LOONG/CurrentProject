@@ -33,4 +33,12 @@ public class UnitData
     public string spellIDList;
     public string weakpointList;
 	public int	friendship;
+
+	public string NickNameAttr
+	{
+		get
+		{
+			return StaticDataMgr.Instance.GetTextByID(nickName);
+		}
+	}
 }

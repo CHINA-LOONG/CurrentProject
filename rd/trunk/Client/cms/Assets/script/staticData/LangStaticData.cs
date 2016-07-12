@@ -4,7 +4,6 @@ using System.Collections;
 public class LangStaticData
 {
     public string id;
-    public string content;
-
-
+    public string chinese;
+    public string english;
 }

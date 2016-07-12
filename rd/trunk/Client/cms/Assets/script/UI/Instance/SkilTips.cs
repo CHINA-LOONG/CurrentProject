@@ -28,28 +28,28 @@ public class SkilTips : MonoBehaviour
 		skillDescText.text = spellDesc;
 	}
 
-	public string GetCategoryDesc(int category)
+	public static	string GetCategoryDesc(int category)
 	{
 		switch (category) 
 		{
 		case (int)SpellType.Spell_Type_PhyAttack:
-			return "物理技能";
+			return StaticDataMgr.Instance.GetTextByID("spell_wuli_name");
 			break;
 		case (int)SpellType.Spell_Type_MgicAttack:
 		case (int)SpellType.Spell_Type_Cure:
-			return "法术技能";
+			return StaticDataMgr.Instance.GetTextByID("spell_magic_name");
 			break;
 		case (int)SpellType.Spell_Type_Passive:
-			return "被动技能";
+			return StaticDataMgr.Instance.GetTextByID("spell_beidong_name");
 			break;
 		case (int)SpellType.Spell_Type_Beneficial:
 		case (int)SpellType.Spell_Type_Negative:
 		case (int)SpellType.Spell_Type_Dot:
-			return "buff技能";
+			return StaticDataMgr.Instance.GetTextByID("spell_buff_name");
 			
 		case (int)SpellType.Spell_Type_PhyDaZhao:
 		case (int)SpellType.Spell_Type_MagicDazhao:
-			return "大招技能";
+			return StaticDataMgr.Instance.GetTextByID("spell_dazhao_name");
 		default:
 			return "";
 			break;

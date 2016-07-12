@@ -12,7 +12,7 @@ public class HitCombo : MonoBehaviour
 
 	public	static	void	ShowCombo(Transform parent,int comboNum,float posX, float posY)
 	{
-		GameObject go = ResourceMgr.Instance.LoadAsset ("ui/hitcombo", "hitCombo");
+		GameObject go = ResourceMgr.Instance.LoadAsset ("hitCombo");
 		go.transform.SetParent (parent);
 		go.transform.localScale = Vector3.one;
 
@@ -33,7 +33,7 @@ public class HitCombo : MonoBehaviour
 			comboName = "combo_" + comboNum.ToString();
 		}
 		
-		Sprite comboSprite = ResourceMgr.Instance.LoadAssetType<Sprite> ("ui/combo", comboName) as Sprite;
+		Sprite comboSprite = ResourceMgr.Instance.LoadAssetType<Sprite> (comboName) as Sprite;
 		if (null != comboSprite)
 		{
 			comboImage.sprite = comboSprite;

@@ -78,7 +78,7 @@ public class LoginModule : ModuleBase
 
 	public override void OnInit(object param)
 	{
-		UIMgr.Instance.OpenUI (UILogin.AssertName, UILogin.ViewName);
+		UIMgr.Instance.OpenUI (UILogin.ViewName);
 	}
 	
 	public override void OnEnter(object param)

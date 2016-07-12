@@ -51,6 +51,12 @@ public class Packager
         fs.Close();
         AssetDatabase.Refresh();
         Debug.Log("Generated files.txt at:" + newFilePath);
+
+
+        Debug.Log("start create asset----bundle mapping");
+        AssetBundleMapList.GetMapData();
+        AssetDatabase.Refresh();
+        Debug.Log("create asset----bundle mapping   <color=#00ff00ff> success </color>");
     }
 
     /// <summary>

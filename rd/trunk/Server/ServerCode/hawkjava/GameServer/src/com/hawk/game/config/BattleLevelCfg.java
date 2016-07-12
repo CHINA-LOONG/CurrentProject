@@ -10,7 +10,7 @@ import org.hawk.util.HawkJsonUtil;
 
 import com.google.gson.reflect.TypeToken;
 
-@HawkConfigManager.CsvResource(file = "xml/battleLevel.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/battleLevel.csv", struct = "map")
 public class BattleLevelCfg extends HawkConfigBase {
 
 	@Id

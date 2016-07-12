@@ -46,7 +46,8 @@ public class BattleConst
     public const int enemyStartID = -100;
 
     //换宠换出去时间
-    public const float unitOutTime = 2.5f;
+    public const float unitOutTime = 1.0f;
+    public const float battleProcessTime = 3.0f;
     //换宠换进来时间
     public const float unitInTime = 0.5f;
     //头顶节点
@@ -62,4 +63,5 @@ public class BattleConst
     public const int defaultLazy = 3;
     public const string levelChangeEvent = "level_change";
     public const float distance = 3.0f;
+    public const string unitExitandenter = "unitExitandenter";
 }

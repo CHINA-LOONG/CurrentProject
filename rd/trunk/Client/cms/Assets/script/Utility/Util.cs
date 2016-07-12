@@ -259,20 +259,5 @@ public class Util
         return maxDuration;
     }
 
-    //装换属性名称
-    public static string ConvertProperty(int property)
-    {
-        if (property == SpellConst.propertyGold)
-            return "金";
-        else if (property == SpellConst.propertyWood)
-            return "木";
-        else if (property == SpellConst.propertyWater)
-            return "水";
-        else if (property == SpellConst.propertyFire)
-            return "火";
-        else if (property == SpellConst.propertyEarth)
-            return "土";
 
-        return "无";
-    }
 }

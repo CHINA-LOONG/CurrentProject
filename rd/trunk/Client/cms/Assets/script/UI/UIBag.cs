@@ -5,14 +5,13 @@ using UnityEngine.UI;
 public class UIBag : UIBase {
     
     public static string ViewName = "UIBag";
-    public static string AssertName = "ui/bag";
 
     public Button m_closeButton;
 
     void Start()
     {
         ScrollViewContainer container = gameObject.GetComponent<ScrollViewContainer>();
-        var go = ResourceMgr.Instance.LoadAsset("ui/bag", "bagItem");
+        var go = ResourceMgr.Instance.LoadAsset("bagItem");
         for (int i = 0; i < 25; ++i)
         {
             GameObject bagItem = GameObject.Instantiate(go);

@@ -7,11 +7,10 @@ namespace MsgBox
 	public class PromptMsg : UIBase
 	{
 		public static string ViewName = "PromptMsg";
-		public static string AssertName = "ui/promptmsg";
 
 		public static	void Open(string title,string msg,string buttonName)
 		{
-			GameObject go =	UIMgr.Instance.OpenUI (PromptMsg.AssertName, PromptMsg.ViewName);
+			GameObject go =	UIMgr.Instance.OpenUI (PromptMsg.ViewName);
 			PromptMsg mInfo = go.GetComponent<PromptMsg> ();
 			mInfo.SetData (title, msg, buttonName);
 		}

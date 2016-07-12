@@ -34,7 +34,7 @@ public class UICamera : MonoBehaviour
 			{
 				if (mInst == null)
 				{
-					GameObject go =  ResourceMgr.Instance.LoadAsset("camera","UICamera");
+					GameObject go =  ResourceMgr.Instance.LoadAsset("UICamera");
 					//GameObject go = Instantiate(prefab) as GameObject;
 					go.name = "UICamera";
 					mInst = go.GetComponent<UICamera>();

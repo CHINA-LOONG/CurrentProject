@@ -5,7 +5,6 @@ using System.Collections;
 public class UIFazhen : UIBase
 {
 	public static string ViewName = "UIFazhen";
-	public static string AssertName = "ui/fazhen";
 	
 	public Text leftTimeText;
 	public Text errorTip;
@@ -33,8 +32,7 @@ public class UIFazhen : UIBase
 		int index = Random.Range (0, fazhenCount);
 		string prefabName = "fazhenStyle_" + index.ToString ();
 
-		//GameObject prefab = ResourceMgr.Instance.LoadAsset ("battle/fazhen", prefabName) as GameObject;
-		GameObject fazhenGo = ResourceMgr.Instance.LoadAsset("battle/fazhen", prefabName);
+		GameObject fazhenGo = ResourceMgr.Instance.LoadAsset(prefabName);
 
 		fazhenGo.transform.SetParent (this.transform, false);
 

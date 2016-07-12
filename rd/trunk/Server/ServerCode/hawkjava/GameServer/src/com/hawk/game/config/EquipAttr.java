@@ -16,7 +16,7 @@ import java.util.Map;
 
 import javax.smartcardio.ATR;
 
-@HawkConfigManager.CsvResource(file = "xml/equipAttr.csv", struct = "list")
+@HawkConfigManager.CsvResource(file = "staticData/equipAttr.csv", struct = "list")
 public class EquipAttr extends HawkConfigBase{
 
 	private static Map<Integer, EquipStageItem> stageList = new LinkedHashMap<Integer, EquipStageItem>();

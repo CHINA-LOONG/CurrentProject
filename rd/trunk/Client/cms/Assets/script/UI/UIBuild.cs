@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class UIBuild : UIBase,PopupListIndextDelegate
 {
     public static string ViewName = "UIBuild";
-	public static string AssertName = "ui/build";
 
     public Button m_PatButton;
     public Button m_ItemButton;
@@ -33,8 +32,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         EventTriggerListener.Get(m_SpeechButton.gameObject).onClick = OnSpeechButtonClick;
 
         m_LangPopup.Initialize<PopupListIndextDelegate>(this);
-        m_LangPopup.AddItem((int)Language.Chinese, StaticDataMgr.Instance.GetTextByID("chinese"));
-        m_LangPopup.AddItem((int)Language.English, StaticDataMgr.Instance.GetTextByID("english"));
+        m_LangPopup.AddItem((int)Language.Chinese, StaticDataMgr.Instance.GetTextByID("ui_chinese"));
+        m_LangPopup.AddItem((int)Language.English, StaticDataMgr.Instance.GetTextByID("ui_english"));
         m_LangPopup.SetSelection((int)LanguageMgr.Instance.Lang);
 
         //levelText.text = GameDataMgr.Instance.PlayerDataAttr.level.ToString ();
@@ -77,12 +76,12 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     void ItemButtonClick(GameObject go)
     {
-        UIMgr.Instance.OpenUI(UIBag.AssertName, UIBag.ViewName);
+        UIMgr.Instance.OpenUI(UIBag.ViewName);
     }
 
     void PatButtonClick(GameObject go)
     {
-        UIMgr.Instance.OpenUI(UIPet.AssertName, UIPet.ViewName);
+        UIMgr.Instance.OpenUI(UIPetList.ViewName);
     }
 
 	void OnInstanceButtonClick(GameObject go)
@@ -92,12 +91,12 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
 	//	GameApp.Instance.netManager.SendMessage (ProtocolMessage.Create (PB.code.MONSTER_CATCH_C.GetHashCode(), mcache));
 
-		UIMgr.Instance.OpenUI (UIInstance.AssertName, UIInstance.ViewName);
+		UIMgr.Instance.OpenUI (UIInstance.ViewName);
 	}
 
     void OnQuestButtonClick(GameObject go)
     {
-        UIMgr.Instance.OpenUI(UIQuest.AssertName,UIQuest.ViewName);
+        UIMgr.Instance.OpenUI(UIQuest.ViewName);
     }
 
     void OnSpeechButtonClick(GameObject go)
@@ -116,9 +115,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         if (lang != LanguageMgr.Instance.Lang)
         {
             LanguageMgr.Instance.Lang = lang;
-            StaticDataMgr.Instance.OnLanguageChange(lang);
-            m_LangPopup.RefrshItem((int)Language.Chinese, StaticDataMgr.Instance.GetTextByID("chinese"));
-            m_LangPopup.RefrshItem((int)Language.English, StaticDataMgr.Instance.GetTextByID("english"));
+            m_LangPopup.RefrshItem((int)Language.Chinese, StaticDataMgr.Instance.GetTextByID("ui_chinese"));
+            m_LangPopup.RefrshItem((int)Language.English, StaticDataMgr.Instance.GetTextByID("ui_english"));
             //GameMain.Instance.ChangeModule<LoginModule>();
         }
     }

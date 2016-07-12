@@ -262,7 +262,7 @@ public class BattleObject : MonoBehaviour
 
                 if (string.IsNullOrEmpty(curParticleData.particleAsset) == false)
                 {
-                    GameObject prefab = ResourceMgr.Instance.LoadAsset(curParticleData.particleBundle, curParticleData.particleAsset);
+                    GameObject prefab = ResourceMgr.Instance.LoadAsset(curParticleData.particleAsset);
                     if (prefab != null)
                     {
                         curParticleData.psObject = prefab;

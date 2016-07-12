@@ -288,7 +288,7 @@ public class PlayerMonsterModule extends PlayerModule {
 			Iterator<ItemInfo> iter = demandMonsterList.iterator();
 			while (iter.hasNext()) {
 				ItemInfo demandMonster = (ItemInfo) iter.next();
-				if (demandMonster.getItemId() == consumeMonsterEntity.getCfgId() &&
+				if (demandMonster.getItemId().equals(consumeMonsterEntity.getCfgId()) &&
 						demandMonster.getStage() <=	consumeMonsterEntity.getStage()) {
 					valid = true;
 					int count = demandMonster.getCount() - 1;
@@ -305,23 +305,23 @@ public class PlayerMonsterModule extends PlayerModule {
 			}
 			
 			consumeMonsterList.add(consumeMonsterEntity);
+			consume.addMonster(id, consumeMonsterEntity.getCfgId());
 		}
+		
 		if (false == demandMonsterList.isEmpty()) {
 			sendError(hsCode, Status.monsterError.STAGE_CONSUME);
 			return false;
 		}
-
-		// 更新
-		consume.consumeTakeAffectAndPush(player, Action.STAGE_UP);
-
+		
 		List<Integer> battleMonsterList = player.getPlayerData().getPlayerEntity().getBattleMonsterList();
 		for (int i = 0; i < consumeMonsterList.size(); ++i) {
 			MonsterEntity consumeMonster = consumeMonsterList.get(i);
-			consumeMonster.setInvalid(true);
-			consumeMonster.notifyUpdate(true);
-			player.getPlayerData().removeMonsterEntity(consumeMonster.getId());
-			battleMonsterList.remove(consumeMonster.getId());
+			battleMonsterList.remove(Integer.valueOf(consumeMonster.getId()));
 		}
+		
+		// 更新
+		consume.consumeTakeAffectAndPush(player, Action.STAGE_UP);
+		
 //     player.getPlayerData().getPlayerEntity().setBattleMonsterList(battleMonsterList);
 		
 		monsterEntity.setStage((byte)newStage);

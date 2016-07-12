@@ -1,10 +1,10 @@
-#TEXT,TEXT
+ï»¿#TEXT,TEXT
 id,content
-#ÎÄ×ÖId,ÎÄ×ÖÄÚÈİ
-speak_001,ÍÃÉ££¬ÍÃÉ££¬what are you doing now£¿
-speak_002,Nothing£¿
-speak_003,Has the operation finished?/(¨Òo¨Ò)/~~
-speak_004,What's the operation's progress£¡
+#æ–‡å­—Id,æ–‡å­—å†…å®¹
+speak_001,å…”æ¡‘ï¼Œå…”æ¡‘ï¼Œwhat are you doing nowï¼Ÿ
+speak_002,Nothingï¼Ÿ
+speak_003,Has the operation finished?/(ã„’oã„’)/~~
+speak_004,What's the operation's progressï¼
 speak_005,Has the operation finished?
 english,English
 chinese,Chinese

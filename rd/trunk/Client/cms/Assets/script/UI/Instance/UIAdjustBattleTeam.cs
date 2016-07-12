@@ -14,11 +14,19 @@ public class EnterInstanceParam
 public class UIAdjustBattleTeam : UIBase
 {
 	public static string ViewName = "UIAdjustBattleTeam";
-	public static string AssertName = "ui/adjustBattleTeam" ;
 
 	public	Button	backButton;
 	public	Button	battleButton;
 	public	Button	cancleButton;
+
+	public	Text	lbMyZhenrong;
+	public  Text	lbEnemyZhenrong;
+	public	Text	lbMyShangzhen;
+	public	Text	lbEnemyShangzhen;
+	public	Text	lbMyHoubei;
+	public	Text	lbYongyou;
+	public	Text	lbFriend;
+	public  Text	lbZhenrongTiaozheng;
 
 	public	List<MonsterIconBg>	playerTeamBg	= new	List<MonsterIconBg>();
 	public	List<MonsterIconBg>	enemyTeamBg		= new	List<MonsterIconBg>();
@@ -42,6 +50,18 @@ public class UIAdjustBattleTeam : UIBase
 		EventTriggerListener.Get (battleButton.gameObject).onClick = OnBattleButtonClick;
 		EventTriggerListener.Get (cancleButton.gameObject).onClick = OnCancleButtonClick;
 		BindListener ();
+
+		lbEnemyShangzhen.text = StaticDataMgr.Instance.GetTextByID ("instance_shangzhen");
+		lbEnemyZhenrong.text = StaticDataMgr.Instance.GetTextByID ("instance_difangzhenrong");
+		lbFriend.text = StaticDataMgr.Instance.GetTextByID ("instance_haoyou");
+		lbMyHoubei.text = StaticDataMgr.Instance.GetTextByID ("instance_houbei");
+		lbMyShangzhen.text = StaticDataMgr.Instance.GetTextByID ("instance_shangzhen");
+		lbMyZhenrong.text = StaticDataMgr.Instance.GetTextByID ("instance_wofangzhenrong");
+		lbYongyou.text = StaticDataMgr.Instance.GetTextByID ("instance_yongyou");
+		lbZhenrongTiaozheng.text = StaticDataMgr.Instance.GetTextByID ("instance_zhenrongtiaozheng");
+
+		battleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID ("instance_kaishizhandou");
+		cancleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID ("instance_quxiaozhandou");
 	}
 
 	void OnDestroy()
@@ -176,7 +196,7 @@ public class UIAdjustBattleTeam : UIBase
 				subIcon.SetId(guid);
 				subIcon.SetMonsterStaticId(unit.pbUnit.id);
 				subIcon.SetLevel(unit.pbUnit.level);
-				subIcon.SetStage(unit.pbUnit.starLevel);
+                subIcon.SetStage(unit.pbUnit.stage);
 				
 				EventTriggerListener.Get(subIcon.iconButton.gameObject).onClick = OnPlayerTeamIconClick;
 			}
@@ -201,7 +221,7 @@ public class UIAdjustBattleTeam : UIBase
 			icon.SetMonsterStaticId(monsterId);
 			icon.SetId(subUnit.pbUnit.guid.ToString());
 			icon.SetLevel(subUnit.pbUnit.level);
-			icon.SetStage(subUnit.pbUnit.starLevel);
+			icon.SetStage(subUnit.pbUnit.stage);
 
 			playerAllIconDic.Add(icon.Id,icon);
 
@@ -254,7 +274,7 @@ public class UIAdjustBattleTeam : UIBase
 		GameUnit unit = null;
 
 		GameDataMgr.Instance.PlayerDataAttr.allUnitDic.TryGetValue (guid, out unit);
-		UIMonsterInfo.Open (guid, micon.monsterId,unit.pbUnit.level,unit.pbUnit.starLevel);
+        UIMonsterInfo.Open(guid, micon.monsterId, unit.pbUnit.level, unit.pbUnit.stage);
 	}
 
 	void	OnFriendWarehouseIconClick(GameObject go)
@@ -295,7 +315,7 @@ public class UIAdjustBattleTeam : UIBase
 		GameUnit unit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey (int.Parse (guid));
 		subIcon.SetMonsterStaticId (unit.pbUnit.id);
 		subIcon.SetLevel (unit.pbUnit.level);
-		subIcon.SetStage (unit.pbUnit.starLevel);
+        subIcon.SetStage(unit.pbUnit.stage);
 
 		//新的prepareindex
 		UpdatePrepareIndex ();
@@ -366,7 +386,9 @@ public class UIAdjustBattleTeam : UIBase
 		List<int> battleTeam = SaveBattleTeam ();
 		if (null == battleTeam) 
 		{
-			MsgBox.PromptMsg.Open ("提示", "请按正确顺序排列出战宠物", "确定");
+			MsgBox.PromptMsg.Open(StaticDataMgr.Instance.GetTextByID("ui_tishi"),
+			                      StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"),
+			                      StaticDataMgr.Instance.GetTextByID("ui_queding"));
 		} 
 		else
 		{

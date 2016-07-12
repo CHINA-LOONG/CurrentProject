@@ -76,13 +76,13 @@ public class BattleLevelProtoData
 
     //public string bossID;
     //public string sceneID;
-    public string preStartEvent;
-    public string startEvent;
-    public string endStartEvent;
+    public string preStartEvent;//开场前对话
+    public string startEvent;//开场动画
+    public string endStartEvent;//开场动画结束了对话
     public int appearType;
     public string winFunc;
     public string loseFunc;
-    public string endEvent;
+    public string endEvent;//对局结束对话
     public string monsterList;
 }
 

@@ -32,7 +32,7 @@ public class EffectPersistent : Effect
         base.Init(pt,owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, string wpID, float aniDelayTime)
+    public override void Apply(float applyTime, string wpID)
     {
         base.Apply(applyTime, wpID);
 
@@ -48,7 +48,7 @@ public class EffectPersistent : Effect
             startEffect.SetOwnedBuff(ownedBuff);
             startEffect.SetOwnedSpell(ownedSpell);
             startEffect.targetID = targetID;
-            startEffect.Apply(applyTime + persistProto.startDelayTime, wpID, persistProto.startDelayTime);
+            startEffect.Apply(applyTime + persistProto.startDelayTime, wpID);
         }
 
         foreach (KeyValuePair<float, string> effect in persistProto.effectList)
@@ -60,12 +60,12 @@ public class EffectPersistent : Effect
                 curEffect.SetOwnedBuff(ownedBuff);
                 curEffect.SetOwnedSpell(ownedSpell);
                 curEffect.targetID = targetID;
-                curEffect.Apply(applyTime + delayTime, wpID, delayTime);
+                curEffect.Apply(applyTime + delayTime, wpID);
             }
         }
 
         //cache spell length
-        ownedSpell.AddSpellLength(delayTime);
+        ownedSpell.SetSpellEndTime(applyTime + delayTime);
     }
     //---------------------------------------------------------------------------------------------
 }

@@ -239,8 +239,31 @@ public class BattleProcess : MonoBehaviour
                 PB.HSRewardInfo rewardInfo;
                 if (rewardInfoList.TryGetValue(deadId, out rewardInfo) == true)
                 {
-                }
+                    PB.RewardItem reward = null;
+                    if (rewardInfoList.TryGetValue(deadId, out rewardInfo) == true)
+                    {
+                        int rewardID = 0;
+                        foreach (var item in rewardInfo.RewardItems)
+                        {
+                            if (item.type == (int)PB.itemType.NONE_ITEM)
+                                continue;
+                            if (item.type <= (int)PB.itemType.MONSTER_ATTR)
+                            {
+                                rewardID = int.Parse(item.itemId);
+                                if (rewardID > (int)PB.playerAttr.COIN)
+                                    continue;
+                            }
+                            else if (item.type == (int)PB.itemType.ITEM || item.type == (int)PB.itemType.EQUIP)
+                            {
+                                rewardID = item.type;
+                            }
+                            ItemDropManager.Instance.Fall(rewardID, deadUnit.transform);
 
+                        }
+                        //ItemDropManager.Instance.Fall(1, deadUnit.transform);
+                        //ItemDropManager.Instance.Fall(3, deadUnit.transform);
+                    }
+                }
                 if (fireFocusTarget != null && fireFocusTarget.pbUnit.guid == deadUnit.guid)
                 {
 					HideFireFocus();
@@ -436,7 +459,20 @@ public class BattleProcess : MonoBehaviour
         lastActionOrder = 0.0f;
         battleGroup.ResetActionOrder();
 
-        StartCoroutine(Process(index));
+        System.Action<float> endStartEvent = (delayTime) =>
+        {
+            StartCoroutine(Process(index));
+        };
+        if (!string.IsNullOrEmpty(processData.battleProtoData.endStartEvent) && BattleController.Instance.InstanceStar == 0)
+        {
+            UISpeech.Open(processData.battleProtoData.endStartEvent, endStartEvent);
+        }
+        else
+        {
+            endStartEvent(0.0f);
+        }
+
+        
     }
 
     public void ClearRewardItem()
@@ -484,15 +520,10 @@ public class BattleProcess : MonoBehaviour
 
     IEnumerator Process(int battleLevelIndex)
     {
-        if (string.IsNullOrEmpty(processData.battleProtoData.preStartEvent))
-        {
-
-        }
         if (string.IsNullOrEmpty(processData.battleProtoData.startEvent))
         {
 
         }
-
         //if (IsClearBuff())
         //    yield return StartCoroutine(ClearBuff());
 
@@ -611,18 +642,39 @@ public class BattleProcess : MonoBehaviour
 
         if (battleResult == BattleRetCode.Failed)
         {
-            BattleController.Instance.OnBattleOver(false);
+            System.Action<float> failProcess = (delayTime) =>
+            {
+                BattleController.Instance.OnBattleOver(false);
+            };
+            if (!string.IsNullOrEmpty(processData.battleProtoData.endEvent) && BattleController.Instance.InstanceStar == 0)
+                UISpeech.Open(processData.battleProtoData.endEvent, failProcess);
+            else
+                failProcess(0.0f);
             return;
         }
         else if (battleResult == BattleRetCode.Success)
         {
             if (BattleController.Instance.HasNextProcess())
             {
-                StartCoroutine(BattleController.Instance.StartNextProcess());
+                System.Action<float> nextProcess = (delayTime) =>
+                {
+                    StartCoroutine(BattleController.Instance.StartNextProcess(delayTime));
+                };
+                if (!string.IsNullOrEmpty(processData.battleProtoData.endEvent) && BattleController.Instance.InstanceStar == 0)
+                    UISpeech.Open(processData.battleProtoData.endEvent, nextProcess);
+                else
+                    nextProcess(BattleConst.battleProcessTime);
             }
             else 
             {
-                BattleController.Instance.OnBattleOver(true);
+                System.Action<float> successProcess = (delayTime) =>
+                {
+                    BattleController.Instance.OnBattleOver(true);
+                };
+                if (!string.IsNullOrEmpty(processData.battleProtoData.endEvent) && BattleController.Instance.InstanceStar == 0)
+                    UISpeech.Open(processData.battleProtoData.endEvent, successProcess);
+                else
+                    successProcess(0.0f);
             }
             return;
         }
@@ -690,6 +742,9 @@ public class BattleProcess : MonoBehaviour
             case BattleUnitAi.AiAttackStyle.PhysicsAttack:
                 needRotate = true;
                 break;
+            case BattleUnitAi.AiAttackStyle.Dazhao:
+                needRotate = (aiResult.useSpell != null && aiResult.useSpell.spellData.isAoe == 0);
+                break;
         }
 
         var curTarget = aiResult.attackTarget;
@@ -729,6 +784,11 @@ public class BattleProcess : MonoBehaviour
 		Spell dazhaoSpell = action.caster.unit.GetDazhao ();
 		if (null != dazhaoSpell) 
 		{
+            if (dazhaoSpell.spellData.isAoe == 0)
+            {
+                Vector3 relativePos = attackTarget.battleUnit.transform.position - action.caster.transform.position;
+                action.caster.SetTargetRotate(Quaternion.LookRotation(relativePos), false);
+            }
 			SpellService.Instance.SpellRequest (dazhaoSpell.spellData.id, action.caster.unit, attackTarget, Time.time);
 		}
 		else
@@ -807,7 +867,7 @@ public class BattleProcess : MonoBehaviour
     IEnumerator RunReplaceDeadAction(ReplaceDeadUnitAction action)
     {
         int slotID = action.slot;
-        float triggerTime = action.triggerTime;
+        //float triggerTime = action.triggerTime;
         BattleObject enter = action.caster;
 
         //++replaceDeadUnitCount;
@@ -922,7 +982,7 @@ public class BattleProcess : MonoBehaviour
 		else if (dazhaoSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao) 
 		{
 			action.dazhaoType = DazhaoType.Magic;
-			MagicDazhaoController.Instance.PrepareShifa(action);
+            MagicDazhaoController.Instance.PrepareShifa(action);
 		}
     }
 

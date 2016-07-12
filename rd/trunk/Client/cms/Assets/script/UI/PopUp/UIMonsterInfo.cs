@@ -6,11 +6,10 @@ public class UIMonsterInfo : UIBase
 {
 
 	public static string ViewName = "UIMonsterInfo";
-	public static string AssertName = "ui/monsterinfo";
 
 	public static void Open(int guid, string monsterid,int level,int stage)
 	{
-	 	GameObject go =	UIMgr.Instance.OpenUI (UIMonsterInfo.AssertName, UIMonsterInfo.ViewName);
+	 	GameObject go =	UIMgr.Instance.OpenUI (UIMonsterInfo.ViewName);
 		UIMonsterInfo mInfo = go.GetComponent<UIMonsterInfo> ();
 		mInfo.ShowWithData (guid, monsterid,level,stage);
 	}
@@ -43,7 +42,7 @@ public class UIMonsterInfo : UIBase
 			Logger.LogError("Error:instance info , monsterId config error :" + monsterid);
 			return;
 		}
-		name.text = unitData.nickName;
+		name.text = unitData.NickNameAttr;
 		SetProperty (unitData.property);
 
 		MonsterIcon icon = MonsterIcon.CreateIcon ();
@@ -57,7 +56,7 @@ public class UIMonsterInfo : UIBase
 
 	private void SetProperty(int property)
 	{
-		var image = ResourceMgr.Instance.LoadAssetType<Sprite>("ui/property", "property_" + property) as Sprite;
+		var image = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + property) as Sprite;
 		if(image != null)
 		{
 			propertyImage.sprite = image;
@@ -67,7 +66,7 @@ public class UIMonsterInfo : UIBase
 	private void SetSpellIcon(UnitData unitData)
 	{
 		bool isBoss = unitData.assetID.Contains ("boss_");
-		Spell tempSpell = null;
+		//Spell tempSpell = null;
 
 		ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson(unitData.spellIDList);
 		for (int i = 0; i < spellArrayList.Count; ++i)

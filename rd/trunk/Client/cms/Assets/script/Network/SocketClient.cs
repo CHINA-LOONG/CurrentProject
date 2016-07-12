@@ -105,7 +105,7 @@ public class SocketClient : MonoBehaviour {
 		{
             ms.Position = 0;
             BinaryWriter writer = new BinaryWriter(ms);
-            ushort msglen = (ushort)message.Length;
+            //ushort msglen = (ushort)message.Length;
            // writer.Write(msglen);
             writer.Write(message);
             writer.Flush();
@@ -198,11 +198,11 @@ public class SocketClient : MonoBehaviour {
         memStream.Write(bytes, 0, length);
         //Reset to beginning
         memStream.Seek(0, SeekOrigin.Begin);
-        while (RemainingBytes() > ProtocolMessage.HEAD_SIZE)
+        while (RemainingBytes() >= ProtocolMessage.HEAD_SIZE)
 		{
             Byte[] tempBuffer = new Byte[sizeof(int)];
             memStream.Read(tempBuffer, 0, sizeof(int));
-            int type = IPAddress.NetworkToHostOrder(System.BitConverter.ToInt32(tempBuffer, 0));
+            //int type = IPAddress.NetworkToHostOrder(System.BitConverter.ToInt32(tempBuffer, 0));
             memStream.Read(tempBuffer, 0, sizeof(int));
             int size = IPAddress.NetworkToHostOrder(System.BitConverter.ToInt32(tempBuffer, 0));
             memStream.Seek(0, SeekOrigin.Begin);

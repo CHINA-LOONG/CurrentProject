@@ -31,7 +31,7 @@ public class PbUnit
 	public int lazy;
     public int level;
     public int curExp;
-    public int starLevel;//升星
+    public int stage;//升星
     public List<PB.HSSkill> spellPbList;
 
 	public int testBossType =0;//1 九尾狐 2 混沌
@@ -204,11 +204,7 @@ public class GameUnit : IComparable
         }
         else
         {
-            var headPath = unitRowData.uiAsset;
-            var index = headPath.LastIndexOf('/');
-            var assetbundle = headPath.Substring(0, index);
-            var assetname = headPath.Substring(index + 1, headPath.Length - index - 1);
-            headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetbundle, assetname) as Sprite;
+            headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(unitRowData.uiAsset) as Sprite;
         }
 
         //计算二级属性
@@ -488,6 +484,7 @@ public class GameUnit : IComparable
 
     public void OnDead()
     {
+        battleUnit.ClearEvent();
         buffList.Clear();
     }
 
@@ -518,13 +515,13 @@ public class GameUnit : IComparable
                 int targetGrade = StaticDataMgr.Instance.GetUnitRowData(target.pbUnit.id).grade;
                 if (selfGrade == targetGrade)
                 {
-                    if (this.pbUnit.starLevel == target.pbUnit.starLevel)
+                    if (this.pbUnit.stage == target.pbUnit.stage)
                     {
                         result = 0;
                     }
                     else
                     {
-                        result = this.pbUnit.starLevel > target.pbUnit.starLevel ? -1 : 1;
+                        result = this.pbUnit.stage > target.pbUnit.stage ? -1 : 1;
                     }
                 }
                 else

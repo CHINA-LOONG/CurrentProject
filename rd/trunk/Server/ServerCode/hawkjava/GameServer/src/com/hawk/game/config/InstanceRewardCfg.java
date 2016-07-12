@@ -6,7 +6,7 @@ import java.util.List;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase;
 
-@HawkConfigManager.CsvResource(file = "xml/instanceReward.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/instanceReward.csv", struct = "map")
 public class InstanceRewardCfg extends HawkConfigBase {
 
 	@Id

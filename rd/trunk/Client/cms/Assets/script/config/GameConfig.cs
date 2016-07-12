@@ -20,5 +20,19 @@ public class GameConfig : MonoBehaviour {
 
 	//副本入口
 	public float	BossEnemyIconScale = 1.2f;
-	
+
+    //心跳间隔
+    public static int HeartBreakInterval = 5;
+    //时间同步误差
+    public static int TimSynInterval = 5;
+    //技能点数最大值
+    public static int MaxSkillPoint = 10;
+    //技能恢复时间
+    public static int SkillPointTime = 90;
+
+    public static int MaxMonsterStage = 15;
+
+    public static int MaxMonsterCount = 180;
+
+    public static int MaxMonsterLevel = 99;
 }

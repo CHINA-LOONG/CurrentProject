@@ -175,15 +175,16 @@ public class ResourceMgr : MonoBehaviour
     /// 载入素材
     /// </summary>
     /// TODO: remove cache
-    public GameObject LoadAsset(string abname, string assetname, bool cache = false)
+    public GameObject LoadAsset(string assetname, bool cache = false)
     {
+        assetname = StaticDataMgr.Instance.GetRealName(assetname);
+
         GameObject obj = GetPoolObject(assetname);
         if (obj != null)
         {
             return obj;
         }
-
-        abname = abname.ToLower();
+        string abname = StaticDataMgr.Instance.GetBundleName(assetname).ToLower();
         AssetBundle bundle = LoadAssetBundle(abname);
         if (bundle == null)
         {
@@ -225,7 +226,7 @@ public class ResourceMgr : MonoBehaviour
     public IEnumerator LoadAssetBatch(List<KeyValuePair<string, string>> assetList)
     {
         int count = assetList.Count;
-        List<string> requestBundleList = new List<string>();
+        //List<string> requestBundleList = new List<string>();
         string bundleName;
         string assetName;
         for (int i = 0; i < count; ++i)
@@ -273,8 +274,10 @@ public class ResourceMgr : MonoBehaviour
         //System.GC.Collect();
     }
     //---------------------------------------------------------------------------------------------
-    public T LoadAssetType<T>(string abname, string assetname) where T:Object
+    public T LoadAssetType<T>(string assetname) where T:Object
     {
+        //assetname = StaticDataMgr.Instance.GetRealName(assetname);
+        string abname = StaticDataMgr.Instance.GetBundleName(assetname).ToLower();
         abname = abname.ToLower();
         AssetBundle bundle = LoadAssetBundle(abname);
 
@@ -392,7 +395,6 @@ public class ResourceMgr : MonoBehaviour
             string uri = Path.Combine(Util.AssetBundlePath, abname);
             Logger.Log("LoadFile::>> " + uri);
             LoadDependencies(abname);
-
             stream = File.ReadAllBytes(uri);
             AssetBundle bundle = AssetBundle.CreateFromMemoryImmediate(stream); //关联数据的素材绑定
             loadedBundle = new LoadedAssetBundle(bundle);
@@ -464,8 +466,8 @@ public class ResourceMgr : MonoBehaviour
         string[] dependencies = manifest.GetAllDependencies(name);
         if (dependencies.Length == 0) return;
 
-        for (int i = 0; i < dependencies.Length; i++)
-            dependencies[i] = RemapVariantName(dependencies[i]);
+        for (int i = 0; i < dependencies.Length; i++){
+            dependencies[i] = RemapVariantName(dependencies[i]);}
 
         dependenceList.Add(name, dependencies);
         // Record and load all dependencies.
@@ -504,7 +506,6 @@ public class ResourceMgr : MonoBehaviour
     string RemapVariantName(string assetBundleName)
     {
         string[] bundlesWithVariant = manifest.GetAllAssetBundlesWithVariant();
-
         // If the asset bundle doesn't have variant, simply return.
         if (System.Array.IndexOf(bundlesWithVariant, assetBundleName) < 0)
             return assetBundleName;

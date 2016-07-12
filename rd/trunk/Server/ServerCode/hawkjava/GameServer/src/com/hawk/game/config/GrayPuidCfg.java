@@ -3,7 +3,7 @@ package com.hawk.game.config;
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 
-@HawkConfigManager.XmlResource(file = "xml/grayPuid.xml", struct = "map")
+@HawkConfigManager.XmlResource(file = "sysData/grayPuid.xml", struct = "map")
 public class GrayPuidCfg extends HawkConfigBase {
 	/**
 	 * 灰度账号

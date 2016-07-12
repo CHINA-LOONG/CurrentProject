@@ -1,0 +1,7 @@
+﻿#TEXT,TEXT
+module,state
+鍔熻兘,鐘舵€?
+showExp,1
+showFps,1
+showGM,1
+serverListURL,http://119.254.209.126:9101/fetch_gameserver

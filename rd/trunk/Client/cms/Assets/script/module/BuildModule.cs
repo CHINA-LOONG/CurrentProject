@@ -36,7 +36,7 @@ public class BuildModule : ModuleBase
 
 	public override void OnInit(object param)
 	{
-		UIMgr.Instance.OpenUI (UIBuild.AssertName, UIBuild.ViewName);
+		UIMgr.Instance.OpenUI (UIBuild.ViewName);
 
 	}
 	

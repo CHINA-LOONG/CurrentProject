@@ -10,9 +10,9 @@ public class ParticleEffect : MonoBehaviour
 	
 	}
 
-	public	static	ParticleEffect	CreateEffect(Transform parent,string assertName,string prefabName)
+	public	static	ParticleEffect	CreateEffect(Transform parent,string prefabName)
 	{
-		GameObject go = ResourceMgr.Instance.LoadAsset (assertName,prefabName);
+		GameObject go = ResourceMgr.Instance.LoadAsset (prefabName);
 		if (null == go)
 			return null;
 		go.name = prefabName;
@@ -30,6 +30,4 @@ public class ParticleEffect : MonoBehaviour
 	{
 		gameObject.SetActive (bshow);
 	}
-
-
 }

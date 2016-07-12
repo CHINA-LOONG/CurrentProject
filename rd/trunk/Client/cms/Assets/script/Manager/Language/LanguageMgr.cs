@@ -19,6 +19,7 @@ public class LanguageMgr
             if (mInst == null)
             {
                 mInst = new LanguageMgr();
+                mInst.lang = (Language)PlayerPrefs.GetInt(mInst.strKeyLanguage, (int)Language.Chinese);
             }
             return mInst;
         }
@@ -31,7 +32,7 @@ public class LanguageMgr
     {
         get
         {
-            lang = (Language)PlayerPrefs.GetInt(strKeyLanguage, (int)Language.Chinese);
+            //lang = (Language)PlayerPrefs.GetInt(strKeyLanguage, (int)Language.Chinese);
             return lang;
         }
         set
@@ -40,5 +41,4 @@ public class LanguageMgr
             PlayerPrefs.SetInt(strKeyLanguage, (int)lang);
         }
     }
-
 }

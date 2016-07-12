@@ -36,7 +36,7 @@ public class BattleCamera : MonoBehaviour
 			GameObject go = GameObject.Find("BattleCameraRoot");
 			if(go == null)
 			{
-				go =  ResourceMgr.Instance.LoadAsset("camera","BattleCameraRoot");
+				go =  ResourceMgr.Instance.LoadAsset("BattleCameraRoot");
 				//go = Instantiate(prefab) as GameObject;
                 go.name = "BattleCameraRoot";
 			}

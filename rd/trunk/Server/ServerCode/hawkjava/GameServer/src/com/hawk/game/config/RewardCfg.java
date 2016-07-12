@@ -13,7 +13,7 @@ import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.RatioUtil;
 import com.hawk.game.util.RatioUtil.RatioItem;
 
-@HawkConfigManager.CsvResource(file = "xml/reward.csv", struct = "map")
+@HawkConfigManager.CsvResource(file = "staticData/reward.csv", struct = "map")
 public class RewardCfg extends HawkConfigBase  {
 	/**
 	 * 配置id
