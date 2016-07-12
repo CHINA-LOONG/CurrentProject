@@ -7,6 +7,7 @@ public class SelectMonsterElement : MonoBehaviour {
     public Text nameLabel;
     public Text characterLabel;
     public Text battleLabel;
+    public Text battle;
     public GameObject maskView;
     public GameObject eventObject;
     public MonsterIcon avatar;
@@ -54,7 +55,8 @@ public class SelectMonsterElement : MonoBehaviour {
         guid = unit.pbUnit.guid;
         nameLabel.text = unit.name;
         characterLabel.text = unit.character.ToString();
-        battleLabel.text = unit.attackCount.ToString();
+        battleLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageBattle);
+        battle.text = unit.attackCount.ToString();
 
         avatar.Init();
         avatar.SetMonsterStaticId(unit.pbUnit.id);

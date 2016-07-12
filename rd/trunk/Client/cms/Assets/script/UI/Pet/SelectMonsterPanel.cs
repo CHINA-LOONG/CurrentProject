@@ -10,6 +10,7 @@ public class SelectMonsterPanel : MonoBehaviour {
 
     public Button closeButton;
     public Text countLabel;
+    public Text demandLabel;
     public GameObject elementContainer;
     public MonsterIcon avatar;
 
@@ -32,6 +33,7 @@ public class SelectMonsterPanel : MonoBehaviour {
 
     public void init(ItemInfo itemInfo, List<int> selectMonster, int selfId){
 
+        demandLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageMonster);
         m_currentSelectMonster = selectMonster;
         m_itemInfo = itemInfo;
 

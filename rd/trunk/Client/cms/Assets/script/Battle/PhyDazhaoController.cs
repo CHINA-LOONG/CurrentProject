@@ -42,11 +42,10 @@ public class PhyDazhaoController : MonoBehaviour
 		instance = this;
 		dazhaoFocusController = DazhaofocusController.Create (false);
 	}
+ 
 	void OnDestroy()
 	{
 		UnBindListener ();
-		//Destroy (dazhaoFocusController);
-		ResourceMgr.Instance.DestroyAsset (dazhaoFocusController.gameObject);
 	}
 	
 	void BindListener()
@@ -61,6 +60,10 @@ public class PhyDazhaoController : MonoBehaviour
 		GameEventMgr.Instance.RemoveListener (GameEventList.MonsterShowoffOver, OnMonsterShowoffOver);
 	}
 
+    public void DestroyController()
+    {
+        ResourceMgr.Instance.DestroyAsset(dazhaoFocusController.gameObject);
+    }
 
 	public void PrepareDazhao(BattleObject casterGo)
 	{

@@ -724,6 +724,7 @@ MonoBehaviour:
   scrollView: {fileID: 11470268}
   closeButton: {fileID: 11416258}
   countLabel: {fileID: 11440904}
+  demandLabel: {fileID: 11492696}
   elementContainer: {fileID: 152764}
   avatar: {fileID: 11458482}
 --- !u!114 &11464118

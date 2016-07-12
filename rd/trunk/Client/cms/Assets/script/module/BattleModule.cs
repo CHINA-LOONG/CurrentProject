@@ -77,6 +77,8 @@ public class BattleModule : ModuleBase
         //Destroy(process);
         Destroy(weakPointController);
         Destroy(battleUnitAi);
+        phyDazhaoController.DestroyController();
+        magicDazhaoController.DestroyController();
 		Destroy (phyDazhaoController);
 		Destroy (magicDazhaoController);
         //UIMgr.Instance.CloseUI(UIBattle.ViewName);

@@ -107,6 +107,7 @@ public enum VitalType
     Vital_Type_Default,
     Vital_Type_Miss,
     Vital_Type_Interrupt,
+    Vital_Type_FirstSpell,
 
     Num_Vital_Type
 }

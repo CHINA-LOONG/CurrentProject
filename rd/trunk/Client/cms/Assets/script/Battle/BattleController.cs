@@ -563,7 +563,6 @@ public class BattleController : MonoBehaviour
         ++curProcessIndex;
         //Fade.FadeIn(waitTime);
         cameraNodeDic.Clear();
-        SetCameraDefault();
         Appearance(true, waitTime);
         yield return new WaitForSeconds(waitTime);
         battleGroup.RefreshPlayerPos();
@@ -571,6 +570,7 @@ public class BattleController : MonoBehaviour
         uiBattle.gameObject.BroadcastMessage("OnAnimationFinish");
 
         StartProcess(curProcessIndex);
+        SetCameraDefault();
         //TODO: fade in and fade out && end event &&recover life etc
     }
     //---------------------------------------------------------------------------------------------

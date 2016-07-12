@@ -259,5 +259,17 @@ public class Util
         return maxDuration;
     }
 
-
+    //通过物体包含组件来设置事件
+    static public void SetChild_UsedT<T>(Transform t, System.Action<Transform> action) where T : Component
+    {
+        for (int i = 0; i < t.childCount; ++i)
+        {
+            Transform child = t.GetChild(i);
+            if (child.GetComponent<T>() != null && action != null)
+            {
+                action(child);
+            }
+            SetChild_UsedT<T>(child, action);
+        }
+    }
 }

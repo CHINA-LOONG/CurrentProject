@@ -1,49 +1,82 @@
 ﻿#TEXT,TEXT,TEXT
 id,chinese,english
-#文字Id,文字内容,文字内容
+#����Id,��������,��������
 ui_english,English,English
-ui_chinese,简体中文,Chinese
+ui_chinese,��������,Chinese
 tips_XXXXX,,
 common,,
-ui_fanhui,返回,
-ui_queding,确定,
-ui_quxiao,取消,
-spell_wuli_name,物理技能,
-spell_magic_name,法术技能,
-spell_beidong_name,被动技能,
-spell_buff_name,buff技能,
-spell_dazhao_name,大招技能,
-ui_tishi,提示,Tip
-liws,李文生,Eric
-instance_wofangzhenrong,我方阵容,
-instance_difangzhenrong,敌方阵容,
-instance_jiangliList,可获得奖励,
-instance_tilixiaohao,体力消耗:{0},
-instance_tiaozhancishu,可挑战次数:{0}/{1},
-instance_saodang,扫荡,
-instance_saodangquanNumber,扫荡券数量:{0},
-instance_saodang10,扫荡10次,
-instance_yingzhan,应战,
-instance_shangzhen,上阵,
-instance_houbei,后备,
-instance_yongyou,拥有,
-instance_haoyou,好友,
-instance_kaishizhandou,开始战斗,
-instance_quxiaozhandou,取消战斗,
-instance_zhenrongtiaozheng,阵容调整,
-tip_zhenrongError,请按正确顺序排列出战宠物,
+ui_fanhui,����,
+ui_queding,ȷ��,
+ui_quxiao,ȡ��,
+spell_wuli_name,�������,
+spell_magic_name,��������,
+spell_beidong_name,��������,
+spell_buff_name,buff����,
+spell_dazhao_name,���м���,
+ui_tishi,��ʾ,Tip
+liws,������,Eric
+instance_wofangzhenrong,�ҷ�����,
+instance_difangzhenrong,�з�����,
+instance_jiangliList,�ɻ�ý���,
+instance_tilixiaohao,��������:{0},
+instance_tiaozhancishu,����ս����:{0}/{1},
+instance_saodang,ɨ��,
+instance_saodangquanNumber,ɨ��ȯ����:{0},
+instance_saodang10,ɨ��10��,
+instance_yingzhan,Ӧս,
+instance_shangzhen,����,
+instance_houbei,��,
+instance_yongyou,ӵ��,
+instance_haoyou,����,
+instance_kaishizhandou,��ʼս��,
+instance_quxiaozhandou,ȡ��ս��,
+instance_zhenrongtiaozheng,���ݵ���,
+tip_zhenrongError,�밴��ȷ˳�����г�ս����,
 xf,,
 ss,,
 zz,,
-spell_hit_miss,未命中,Miss
-spell_hit_immune,免疫,Immune
-xl,薛龙,Loong
-quest_title,任务,QUEST
-quest_juqingrenwu,剧情任务,
-quest_richangrenwu,日常任务,
-quest_liezhuanrenwu,列传任务,
-quest_renwujiangli,任务奖励,
-quest_wanchengrenwu,完成任务,
-quest_shijianweidao,时间未到,
-quest_lijiqianwang,立即前往,
-quest_lingqujiangli,领取奖励,
+spell_hit_miss,δ����,Miss
+spell_hit_immune,����,Immune
+spell_hit_interrupt,�����,Interrupt
+spell_first_spell,���ü���,Test my blade!
+xl,Ѧ��,Loong
+quest_title,����,QUEST
+quest_juqingrenwu,��������,
+quest_richangrenwu,�ճ�����,
+quest_liezhuanrenwu,�д�����,
+quest_renwujiangli,������,
+quest_wanchengrenwu,�������,
+quest_shijianweidao,ʱ��δ��,
+quest_lijiqianwang,����ǰ��,
+quest_lingqujiangli,��ȡ����,
+zs,,
+pet_list_type,ʥ��,shengshou
+pet_detail_left_property,���ԣ�,property:
+pet_detail_left_battle,ս��{0},battle{0}
+pet_detail_left_experience,����ֵ,experience
+pet_detail_left_character,�Ը�,character
+pet_detail_left_attr,����,attribute
+pet_detail_left_attr_health,����  {0},health  {0}
+pet_detail_left_attr_defence,����  {0},defence  {0}
+pet_detail_left_attr_speed,�ٶ�  {0},speed  {0}
+pet_detail_left_attr_strenth,����  {0},strenth {0}
+pet_detail_left_attr_intelligence,����  {0},intelligence {0}
+pet_detail_left_change_character,���,change
+pet_detail_left_detail_attr,��ϸ����,DetailAttr
+pet_detail_left_skill,����,skill
+pet_detail_left_stage,����,stage
+pet_detail_left_advance,����,advance
+pet_detail_left_main_pet,����,main
+pet_detail_skill_level,�ȼ�,level
+pet_detail_skill_current_level,��ǰ��,current
+pet_detail_skill_next_level,��һ��,next
+pet_detail_skill_max_level,��ǰ�Ѿ���󼶱�,already max level
+pet_detail_skill_current_point,��ǰ���ܵ���,current skill point
+pet_detail_skill_max_point,���ܵ�����,already max skill point
+pet_detail_stage_attr,��������,base attribute
+pet_detail_stage_demand_level,����ȼ�,demand level
+pet_detail_stage_demand_item,�������,demand item
+pet_detail_stage,����,stageUp
+pet_detail_stage_full,�������,stageFull
+pet_detail_stage_monster,��Ҫ�Ĺ���,demand monster
+pet_detail_stage_battle,ս��,battle

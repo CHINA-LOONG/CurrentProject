@@ -44,7 +44,6 @@ public class MagicDazhaoController : MonoBehaviour
 	void OnDestroy()
 	{
 		UnBindListener ();
-		ResourceMgr.Instance.DestroyAsset (dazhaoFocusController.gameObject);
 	}
 	
 	void BindListener()
@@ -60,6 +59,11 @@ public class MagicDazhaoController : MonoBehaviour
 		GameEventMgr.Instance.RemoveListener<int > (GameEventList.OverMagicShifaWithResult, OnOverMagicShifaWithResult);
 		GameEventMgr.Instance.RemoveListener (GameEventList.MonsterShowoffOver, OnMonsterShowoffOver);
 	}
+
+    public void DestroyController()
+    {
+        ResourceMgr.Instance.DestroyAsset(dazhaoFocusController.gameObject);
+    }
 
 	public BattleObject GetCasterBattleObj()
 	{

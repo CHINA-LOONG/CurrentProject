@@ -423,7 +423,87 @@ public class BattleGroup
     {
         foreach (BattleObject item in enemyList)
         {
+            item.ClearEvent();
             ObjectDataMgr.Instance.RemoveBattleObject(item.guid);
+        }
+    }
+
+    public void OnStartNewBattle(float triggerTime)
+    {
+        GameUnit curUnit = null;
+        List<BattleObject> playerUnitList = GameDataMgr.Instance.PlayerDataAttr.GetMainUnits();
+        int count = playerUnitList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            curUnit = playerUnitList[i].unit;
+            curUnit.CastPassiveSpell(triggerTime);
+        }
+        
+        count = enemyList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            curUnit = enemyList[i].unit;
+            curUnit.CastPassiveSpell(triggerTime);
+        }
+    }
+
+    public void CastFirstSpell()
+    {
+        List<GameUnit> hasFirstSpellList = new List<GameUnit>();
+
+        for (int i = 0; i < enemyField.Count; ++i)
+        {
+            var bo = enemyField[i];
+            if (bo != null && bo.unit != null && bo.unit.State != UnitState.Dead)
+            {
+                InsertFirstSpellUnit(hasFirstSpellList, bo.unit);
+            }
+        }
+
+        for (int i = 0; i < playerField.Count; ++i)
+        {
+            var bo = playerField[i];
+            if (bo != null && bo.unit.State != UnitState.Dead)
+            {
+                InsertFirstSpellUnit(hasFirstSpellList, bo.unit);
+            }
+        }
+
+        int count = hasFirstSpellList.Count;
+        string firstSpellID;
+        GameUnit curUnit;
+        for (int i = 0; i < count; ++i)
+        {
+            curUnit = hasFirstSpellList[i];
+            firstSpellID = curUnit.GetFirstSpell();
+            if (firstSpellID != null)
+            {
+                BattleController.Instance.Process.InsertFirstSpellAction(curUnit.battleUnit, firstSpellID);
+            }
+        }
+        hasFirstSpellList.Clear();
+        hasFirstSpellList = null;
+    }
+
+    void InsertFirstSpellUnit(List<GameUnit> firstSpellList, GameUnit unit)
+    {
+        int count = firstSpellList.Count;
+        if (count == 0)
+        {
+            firstSpellList.Add(unit);
+        }
+        else 
+        {
+            for (int i = 0; i < count; ++i)
+            {
+                GameUnit curUnit = firstSpellList[i];
+                if (curUnit.speed < unit.speed)
+                {
+                    firstSpellList.Insert(i, unit);
+                    return;
+                }
+            }
+            firstSpellList.Add(unit);
         }
     }
 }

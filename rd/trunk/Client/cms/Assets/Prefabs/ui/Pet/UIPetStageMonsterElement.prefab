@@ -361,7 +361,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameLabel: {fileID: 11467204}
   characterLabel: {fileID: 11488864}
-  battleLabel: {fileID: 11450830}
+  battleLabel: {fileID: 11473912}
+  battle: {fileID: 11450830}
   maskView: {fileID: 109572}
   eventObject: {fileID: 196610}
   avatar: {fileID: 11471408}

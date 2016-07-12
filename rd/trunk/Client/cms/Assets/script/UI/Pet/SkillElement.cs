@@ -18,6 +18,10 @@ public class SkillElement : MonoBehaviour {
     public Button levelBtn;
     public SkillElementDelegate eventDelegate = null;
 
+    public Text levelLabel;
+    public Text currentLevelLabel;
+    public Text nextlevelLabel;
+
     string m_spellId = null ;
     Spell m_spell = null;
 
@@ -54,13 +58,17 @@ public class SkillElement : MonoBehaviour {
         m_spellId = spellId;
         m_spell = spell;
 
+        levelLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillLevel);
+        currentLevelLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillCurrentLeve);
+        nextlevelLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillNextLeve);
+
         type.text = spell.spellData.GetTypeName();
         level.text = string.Format("( {0} / {1})", spell.level, unit.pbUnit.level);
         
         currentTips.text = spell.spellData.GetTips(spell.level);
         if (spell.level == GameConfig.MaxMonsterLevel)
         {
-            nextTips.text = "已经是最大等级";
+            nextTips.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillMaxLeve);
             cost.text = "";
         }
         else

@@ -71,7 +71,15 @@ public class UIVitalChangeView : MonoBehaviour
             vitalWnd.gameObject.SetActive(true);
             vitalWnd.text = string.Empty;
             hitResult.gameObject.SetActive(true);
-            hitResult.text = StaticDataMgr.Instance.GetTextByID("spell_hit_immune");
+            hitResult.text = StaticDataMgr.Instance.GetTextByID("spell_hit_interrupt");
+        }
+        else if (args.vitalType == (int)VitalType.Vital_Type_FirstSpell)
+        {
+            vitalBackImage.gameObject.SetActive(false);
+            vitalWnd.gameObject.SetActive(true);
+            vitalWnd.text = string.Empty;
+            hitResult.gameObject.SetActive(true);
+            hitResult.text = StaticDataMgr.Instance.GetTextByID("spell_first_spell");
         }
 
         //calculate pos

@@ -22,8 +22,7 @@ public class StageAttrPanel : MonoBehaviour {
 	}
 
     void OnDestroy()
-    {
-        Debug.Log("123123");
+    { 
     }
 
     public void ReloadData(GameUnit unit, int stage)
@@ -37,11 +36,11 @@ public class StageAttrPanel : MonoBehaviour {
         int defence = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * (unit.health + unitStageData.defense));
         int speed = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * (unit.health + unitStageData.speed));
 
-        phyValue.text = health.ToString();
-        strengthValue.text = strength.ToString();
-        inteligenceValue.text = inteligence.ToString();
-        defenceValue.text = defence.ToString();
-        speedValue.text = speed.ToString();
+        phyValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrHealth), health);
+        strengthValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrDefence), strength);
+        defenceValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrSpeed), defence);
+        inteligenceValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrStrenth), inteligence);
+        speedValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrIntelligence), speed);
 
         icon.Init();
         icon.SetId(unit.pbUnit.guid.ToString());

@@ -37,12 +37,22 @@ public class WeakPointData
 	public string stateparam3;
 	public string stateparam4;
 
+	public string desc;
+
 	//
 	public Hashtable state0;
 	public Hashtable state1;
 	public Hashtable state2;
 	public Hashtable state3;
 	public Hashtable state4;
+
+	public string DescAttr
+	{
+		get
+		{
+			return StaticDataMgr.Instance.GetTextByID(desc);
+		}
+	}
 
 	public void AdaptData()
 	{

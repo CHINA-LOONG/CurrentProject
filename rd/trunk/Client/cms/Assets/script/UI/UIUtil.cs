@@ -123,7 +123,7 @@ public class UIUtil
         }
     }
 
-    public static bool CheckIsEnoughMaterial(GameUnit unit)
+    public static bool CheckIsEnoughMaterial(GameUnit unit, bool checkCoin = true)
     {
         if (unit.pbUnit.stage == GameConfig.MaxMonsterStage)
         {
@@ -149,6 +149,13 @@ public class UIUtil
         {
             return false;
         }
+    
+        //金钱判断
+        if (checkCoin == true && GameDataMgr.Instance.PlayerDataAttr.coin <= unitStageData.demandCoin)
+        {
+            return false;
+        }
+
 
         if (NeedChangeGrade(unit.pbUnit.stage) == false)
         {
@@ -172,8 +179,6 @@ public class UIUtil
         {
             return false;
         }
-
-        //金钱判断
 
         return true;
     }
@@ -230,7 +235,7 @@ public class UIUtil
         }
         else
         {
-            label.text = string.Format("{0} +{1}", unit.name, plusQuality);
+            label.text = string.Format("{0} +{1}", StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id).NickNameAttr, plusQuality);
         }
 
     }

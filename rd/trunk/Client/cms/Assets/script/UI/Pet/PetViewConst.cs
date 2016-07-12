@@ -67,7 +67,33 @@ public class PetViewConst{
     public static string PetDetailLeftBattle = "pet_detail_left_battle";
     public static string PetDetailLeftexperience = "pet_detail_left_experience";
     public static string PetDetailLeftcharacter = "pet_detail_left_character";
+    public static string PetDetailLeftAttr = "pet_detail_left_attr";
+  
+    public static string PetDetailLeftAttrHealth = "pet_detail_left_attr_health";
+    public static string PetDetailLeftAttrDefence = "pet_detail_left_attr_defence";
+    public static string PetDetailLeftAttrSpeed = "pet_detail_left_attr_speed";
+    public static string PetDetailLeftAttrStrenth = "pet_detail_left_attr_strenth";
+    public static string PetDetailLeftAttrIntelligence = "pet_detail_left_attr_intelligence";
 
-    public static string PetDetailLeftPropretyLabel = "pet_detail_left_property_label";
-    
+    public static string PetDetailLeftChangeCharacter = "pet_detail_left_change_character";
+    public static string PetDetailLeftDetailAttr = "pet_detail_left_detail_attr";
+    public static string PetDetailLeftSkill = "pet_detail_left_skill";
+    public static string PetDetailLeftStage = "pet_detail_left_stage";
+    public static string PetDetailLeftAdvance = "pet_detail_left_advance";
+    public static string PetDetailLeftMainPet = "pet_detail_left_main_pet";
+
+    public static string PetDetailSkillLevel = "pet_detail_skill_level";
+    public static string PetDetailSkillCurrentLeve = "pet_detail_skill_current_level";
+    public static string PetDetailSkillNextLeve = "pet_detail_skill_next_level";
+    public static string PetDetailSkillMaxLeve = "pet_detail_skill_max_level";
+    public static string PetDetailSkillCurrentPoint = "pet_detail_skill_current_point";
+    public static string PetDetailSkillMaxPoint = "pet_detail_skill_max_point";
+
+    public static string PetDetailStageAttr = "pet_detail_stage_attr";
+    public static string PetDetailStageDemandItem = "pet_detail_stage_demand_item";
+    public static string PetDetailStageDemandLevel = "pet_detail_stage_demand_level";
+    public static string PetDetailStage = "pet_detail_stage";
+    public static string PetDetailStageFull = "pet_detail_stage_full";
+    public static string PetDetailStageMonster = "pet_detail_stage_monster";
+    public static string PetDetailStageBattle = "pet_detail_stage_battle";
 }

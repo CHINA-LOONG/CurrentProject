@@ -27,6 +27,11 @@ public class UIPetList :  UIBase, TabButtonDelegate {
         ReloadPetList();
     }
 
+    void Update()
+    {
+        ShowScrollIcon();
+    }
+
     void OnDestroy()
     {
         GameEventMgr.Instance.RemoveListener(PetViewConst.ReloadPetStageNotify, ReloadPetList);
@@ -47,7 +52,7 @@ public class UIPetList :  UIBase, TabButtonDelegate {
 
     void ShowScrollIcon()
     {
-        if (m_patContainer != null && m_patContainer.transform.childCount > 6)
+        if (m_patContainer != null && m_patContainer.transform.childCount > 6 && scrollRect.GetComponent<ScrollRect>().normalizedPosition.y > 0.01)
         {
             srcollIcon.gameObject.SetActive(true);
         }
@@ -140,8 +145,6 @@ public class UIPetList :  UIBase, TabButtonDelegate {
         {
             AddPatItme(unit);
         }
-
-        ShowScrollIcon();
     }
 
     void AddPatItme(GameUnit unit)

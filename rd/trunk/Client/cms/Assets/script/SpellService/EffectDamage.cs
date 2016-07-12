@@ -126,7 +126,7 @@ public class EffectDamage : Effect
                     {
                         if (buffList[i].buffProto.category == (int)(BuffType.Buff_Type_Dazhao))
                         {
-                            buffList[i].DamageResponse(applyTime);
+                            buffList[i].CheckDazhaoInterrupt(applyTime);
                             break;
                         }
                     }

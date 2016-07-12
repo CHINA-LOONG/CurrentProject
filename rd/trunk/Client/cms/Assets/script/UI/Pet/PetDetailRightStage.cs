@@ -21,7 +21,13 @@ public class PetDetailRightStage : PetDetailRightBase{
     public Text monster1Label;
     public Text monster2Label;
 
+    public Text demandLabel;
+    public Text levelLabel;
+    public Text levelValue;
+    public Text attrLabel;
     public Text coinLabel;
+    public Text stageFull;
+
     public Button stageButton;
 
     GameObject m_selectMonsterView;
@@ -65,6 +71,15 @@ public class PetDetailRightStage : PetDetailRightBase{
         m_monsterList2.Clear();
         m_unit = unit;
 
+        stageFullView.SetActive(true);
+        stageUpView.SetActive(true);
+
+        levelLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageDemandLevel);
+        demandLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageDemandItem);
+        attrLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageAttr);
+        stageFull.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageFull);
+        stageButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStage);
+
         curAttrPanel.ReloadData(unit, unit.pbUnit.stage);
 
         if (unit.pbUnit.stage == GameConfig.MaxMonsterStage)
@@ -81,8 +96,17 @@ public class PetDetailRightStage : PetDetailRightBase{
             nextAttrPanel.ReloadData(unit, unit.pbUnit.stage + 1);
         }
 
-
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(unit.pbUnit.stage + 1);
+        levelValue.text = unitStageData.demandLevel.ToString();
+        if (UIUtil.CheckIsEnoughLevel(m_unit) == false)
+        {
+            levelValue.color = Color.red;
+        }
+        else
+        {
+            levelValue.color = Color.black;
+        }
+
         if ((UIUtil.NeedChangeGrade(unit.pbUnit.stage) == true && unitStageData.demandMonsterList.Count != 2) || unitStageData.demandItemList.Count != 2)
         {
             return;
@@ -109,8 +133,19 @@ public class PetDetailRightStage : PetDetailRightBase{
     void OpenMonsterSelectUI(GameObject go)
     {
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(m_unit.pbUnit.stage + 1);
-        if (GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandMonsterList[0].itemId) == null ||
-            GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandMonsterList[0].itemId).count == 0)
+        ItemInfo itemInfo  = null;
+        if (go == monster1Icon.gameObject)
+        {
+            itemInfo = unitStageData.demandMonsterList[0];
+        }
+        else if (go == monster2Icon.gameObject)
+        {
+            itemInfo = unitStageData.demandMonsterList[1];
+        }
+         
+        List<GameUnit> material = GameDataMgr.Instance.PlayerDataAttr.GetAllPet(itemInfo.itemId, itemInfo.stage);
+        material.Remove(m_unit);
+        if (material.Count == 0)
         {
             MsgBox.PromptMsg.Open("提示","当前无此宠物","确定");
             return;
@@ -146,15 +181,12 @@ public class PetDetailRightStage : PetDetailRightBase{
 
     void UpdateMaterails()
     {
-        bool itemEnough = true;
-
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(m_unit.pbUnit.stage + 1);
         ItemData itemData = null;
         itemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandItemList[0].itemId);
-        item1Label.text = string.Format("{0}/{1}", itemData == null ? 0 : itemData.count, unitStageData.demandItemList[0].count);
+        item1Label.text = ShowFormatMaterailCount(itemData == null ? 0 : itemData.count, unitStageData.demandItemList[0].count, 999);
         if (itemData == null || itemData.count < unitStageData.demandItemList[0].count)
         {
-            itemEnough = false;
             item1Label.color = Color.red;
         }
         else
@@ -163,10 +195,9 @@ public class PetDetailRightStage : PetDetailRightBase{
         }
 
         itemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandItemList[1].itemId);
-        item2Label.text = string.Format("{0}/{1}", itemData == null ? 0 : itemData.count, unitStageData.demandItemList[1].count);
+        item2Label.text = ShowFormatMaterailCount(itemData == null ? 0 : itemData.count, unitStageData.demandItemList[1].count, 999);
         if (itemData == null || itemData.count < unitStageData.demandItemList[1].count)
         {
-            itemEnough = false;
             item2Label.color = Color.red;
         }
         else
@@ -178,16 +209,19 @@ public class PetDetailRightStage : PetDetailRightBase{
         {
             monster1Label.text = string.Format("{0}/{1}", m_monsterList1.Count, unitStageData.demandMonsterList[0].count);
             monster2Label.text = string.Format("{0}/{1}", m_monsterList2.Count, unitStageData.demandMonsterList[1].count);
-
-            if (m_monsterList1.Count < unitStageData.demandMonsterList[0].count || m_monsterList2.Count < unitStageData.demandMonsterList[1].count)
-            {
-                itemEnough = false;
-            }
         }
 
         coinLabel.text = unitStageData.demandCoin.ToString();
+        if (GameDataMgr.Instance.PlayerDataAttr.coin >= unitStageData.demandCoin)
+        {
+            coinLabel.color = Color.black;
+        }
+        else
+        {
+            coinLabel.color = Color.red;
+        }
 
-        if (itemEnough == true)
+        if (UIUtil.CheckIsEnoughMaterial(m_unit, false) == true && UIUtil.CheckIsEnoughLevel(m_unit) == true)
         {
             stageButton.interactable = true;
             EventTriggerListener.Get(stageButton.gameObject).onClick = StageUpButtonDown;
@@ -228,5 +262,38 @@ public class PetDetailRightStage : PetDetailRightBase{
         ReloadData(m_unit);
 
         GameEventMgr.Instance.FireEvent(PetViewConst.ReloadPetStageNotify);
+    }
+
+    string ShowFormatMaterailCount(int currentCount, int needCount, int currentMaxCount)
+    {
+        currentCount = currentCount > currentMaxCount ? currentMaxCount : currentCount;
+        if (currentCount< 10)
+        {
+            if (needCount < 10)
+                return string.Format("{0}/{1}",currentCount,needCount);
+            else if (needCount < 100)
+                return string.Format(" {0}/{1}", currentCount, needCount);
+            else
+                return string.Format("  {0}/{1}", currentCount, needCount);
+        }
+        else if (currentCount < 100)
+        {
+            if (needCount < 10)
+                return string.Format("{0}/{1} ", currentCount, needCount);
+            else if (needCount < 100)
+                return string.Format("{0}/{1}", currentCount, needCount);
+            else
+                return string.Format(" {0}/{1}", currentCount, needCount);
+        }
+        else
+        {
+            if (needCount < 10)
+                return string.Format("{0}/{1}  ", currentCount, needCount);
+            else if (needCount < 100)
+                return string.Format("{0}/{1} ", currentCount, needCount);
+            else
+                return string.Format("{0}/{1}", currentCount, needCount);
+        }
+
     }
 }

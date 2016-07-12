@@ -543,4 +543,32 @@ public class GameUnit : IComparable
         }
     }
 
+    public void CastPassiveSpell(float triggerTime)
+    {
+        var itor = spellList.GetEnumerator();
+        while (itor.MoveNext())
+        {
+            Spell curSpell = itor.Current.Value;
+            if (curSpell.spellData.category == (int)SpellType.Spell_Type_Passive && string.IsNullOrEmpty(curSpell.spellData.firstSpell) == true)
+            {
+                SpellService.Instance.SpellRequest(curSpell.spellData.id, this, this, triggerTime);
+            }
+        }
+    }
+
+    public string GetFirstSpell()
+    {
+        var itor = spellList.GetEnumerator();
+        while (itor.MoveNext())
+        {
+            Spell curSpell = itor.Current.Value;
+            if (curSpell.spellData.category == (int)SpellType.Spell_Type_Passive && string.IsNullOrEmpty(curSpell.spellData.firstSpell) == false)
+            {
+                return curSpell.spellData.id;
+            }
+        }
+
+        return null;
+    }
+
 }

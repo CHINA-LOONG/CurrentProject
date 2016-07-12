@@ -26,6 +26,13 @@ public class BuffPrototype
 
     //显示相关
     public string icon;
+
+    //buff response
+    public int responseCount;
+    public KeyValuePair<string, string> perRoundResponse;
+    public KeyValuePair<string, string> injuryResponse;
+    public KeyValuePair<string, string> castSpellResponse;
+    public KeyValuePair<string, string> deadResponse;
 }
 
 public class BuffPrototypes : ScriptableObject
@@ -104,6 +111,10 @@ public class Buff
                 eft.Apply(curTime, "");
             }
         }
+
+        //response
+
+
 
         if (periodCount >= buffProto.duration)
         {
@@ -252,7 +263,7 @@ public class Buff
     }
     //---------------------------------------------------------------------------------------------
     //now only dazhao buff need response
-    public void DamageResponse(float curTime)
+    public void CheckDazhaoInterrupt(float curTime)
     {
         GameUnit target = spellService.GetUnit(targetID);
         if (target != null)

@@ -72,6 +72,8 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
                 go.transform.SetParent(list_Content.transform, false);
                 questItem item = go.GetComponent<questItem>();
                 quests.Add(item);
+
+                LanguageMgr.Instance.SetLanguageFont(go);
             }
         }
         for (int i = 0; i < list.Count; i++)

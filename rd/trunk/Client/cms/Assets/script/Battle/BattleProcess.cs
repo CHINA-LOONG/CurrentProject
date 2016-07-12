@@ -19,6 +19,7 @@ public class BattleProcess : MonoBehaviour
         UnitFight,
         SwitchPet,
         UnitReplaceDead,//替换死亡怪物出场
+        FirstSpell,//先置技能
         Dazhao
     }
 
@@ -42,6 +43,12 @@ public class BattleProcess : MonoBehaviour
     public class ReplaceDeadUnitAction : Action
     {
         public int slot;
+        public float triggerTime;
+    }
+
+    public class FirstSpellAction : Action
+    {
+        public string firstSpellID;
         public float triggerTime;
     }
 
@@ -458,6 +465,8 @@ public class BattleProcess : MonoBehaviour
         round = 0;
         lastActionOrder = 0.0f;
         battleGroup.ResetActionOrder();
+        battleGroup.OnStartNewBattle(Time.time);//TODO: trigger time use leveltime
+        battleGroup.CastFirstSpell();
 
         System.Action<float> endStartEvent = (delayTime) =>
         {
@@ -471,8 +480,6 @@ public class BattleProcess : MonoBehaviour
         {
             endStartEvent(0.0f);
         }
-
-        
     }
 
     public void ClearRewardItem()
@@ -591,9 +598,12 @@ public class BattleProcess : MonoBehaviour
 				}
 				
 				break;
-                case ActionType.UnitReplaceDead:
-                    StartCoroutine(RunReplaceDeadAction(curAction as ReplaceDeadUnitAction));
-                    break;
+            case ActionType.UnitReplaceDead:
+                StartCoroutine(RunReplaceDeadAction(curAction as ReplaceDeadUnitAction));
+                break;
+            case ActionType.FirstSpell:
+                RunFirstSpell(curAction);
+                break;
 			default:
 				break;
 			}
@@ -646,10 +656,10 @@ public class BattleProcess : MonoBehaviour
             {
                 BattleController.Instance.OnBattleOver(false);
             };
-            if (!string.IsNullOrEmpty(processData.battleProtoData.endEvent) && BattleController.Instance.InstanceStar == 0)
-                UISpeech.Open(processData.battleProtoData.endEvent, failProcess);
-            else
-                failProcess(0.0f);
+            //if (!string.IsNullOrEmpty(processData.battleProtoData.endEvent) && BattleController.Instance.InstanceStar == 0)
+            //    UISpeech.Open(processData.battleProtoData.endEvent, failProcess);
+            //else
+            failProcess(0.0f);
             return;
         }
         else if (battleResult == BattleRetCode.Success)
@@ -766,6 +776,32 @@ public class BattleProcess : MonoBehaviour
         else
         {
             SpellService.Instance.SpellRequest("s1", bo.unit, aiResult.attackTarget, Time.time);
+        }
+    }
+
+    void RunFirstSpell(Action action)
+    {
+        FirstSpellAction curAction = action as FirstSpellAction;
+        if (curAction == null)
+            return;
+
+        Dictionary<string, Spell> casterSpellList = curAction.caster.unit.spellList;
+        Spell firstSpell;
+        if (casterSpellList.TryGetValue(curAction.firstSpellID, out firstSpell) == true)
+        {
+            GameUnit target = BattleUnitAi.Instance.GetTargetThroughSpell(firstSpell, curAction.caster.unit);
+            SpellService.Instance.SpellRequest(curAction.firstSpellID, curAction.caster.unit, target, Time.time);
+
+            SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+            args.vitalType = (int)VitalType.Vital_Type_FirstSpell;
+            args.triggerTime = Time.time;
+            args.casterID = curAction.caster.guid;
+            args.targetID = args.casterID;
+            args.isCritical = false;
+            args.vitalChange = 0;
+            args.vitalCurrent = 0;//TODO: need weak point life?
+            args.vitalMax = 0;
+            BattleController.Instance.GetUIBattle().ChangeLife(args);
         }
     }
 
@@ -1051,17 +1087,17 @@ public class BattleProcess : MonoBehaviour
         BattleObject movedUnit = ObjectDataMgr.Instance.GetBattleObject(movedUnitId);
         spellEventList.Add(args);
 
-        StartCoroutine(WaitAnim(movedUnit, args.aniTime + SpellConst.aniDelayTime + actionDelayTime));
+        StartCoroutine(WaitAnim(movedUnit, args.aniTime + SpellConst.aniDelayTime + actionDelayTime, args.firstSpell));
         actionDelayTime = 0.0f;
     }
 
-    IEnumerator WaitAnim(BattleObject movedUnit, float waitLen)
+    IEnumerator WaitAnim(BattleObject movedUnit, float waitLen, string firstSpell)
     {
         if (curAction == null ||  curAction.type != ActionType.Dazhao)
         {
             yield return new WaitForSeconds(waitLen);
 
-            OnUnitFightOver(movedUnit);
+            OnUnitFightOver(movedUnit, string.IsNullOrEmpty(firstSpell));
         }
     }
 
@@ -1183,6 +1219,17 @@ public class BattleProcess : MonoBehaviour
     public void InsertAction(Action act)
     {
         insertAction.Add(act);
+    }
+
+    public void InsertFirstSpellAction(BattleObject caster, string spellID)
+    {
+        FirstSpellAction action = new FirstSpellAction();
+        action.type = ActionType.FirstSpell;
+        action.caster = caster;
+        action.target = caster;
+        action.firstSpellID = spellID;
+        //action.triggerTime = Time.time;//NOTE: not request triggerTime yet
+        InsertAction(action);
     }
 
 	bool IsHaveDazhaoAction()

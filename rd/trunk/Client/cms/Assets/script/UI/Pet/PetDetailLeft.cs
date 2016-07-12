@@ -9,9 +9,13 @@ public class PetDetailLeft : MonoBehaviour {
     public Text     level;
     public Text     property;
     public Image     proIcon;
+
+    public Text     expLabel;
+    public Text     characterLabel;
     public Slider   expProgress;
     public Text     expContent;
 
+    public Text     attrLabel;
     public Text     health;
     public Text     strength;
     public Text     defense;
@@ -19,6 +23,13 @@ public class PetDetailLeft : MonoBehaviour {
     public Text     speed;
     public Image    stageBadge;
     public Button   addExpBtn;
+
+    public Button   changeCharacterBtn;
+    public Button   detailAttrBtn;
+    public Button   skillpBtn;
+    public Button   stageBtn;
+    public Button   advanceBtn;
+    public Button   mainPet;
 
     public RawImage modelImage;
 
@@ -72,18 +83,23 @@ public class PetDetailLeft : MonoBehaviour {
         
         UIUtil.SetStageColor(name, unit);
 
+        expLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftexperience);
+        characterLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftcharacter);
+        attrLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttr);
+
+        zhanli.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftBattle), unit.attackCount);
         level.text = "Lv." + unit.pbUnit.level;
-        property.text = "属性";
+        property.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftProprety);
 
         var image = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + unit.property) as Sprite;
         if (image != null)
         {
             proIcon.sprite = image;
         }
-          
+        
         if (unit.pbUnit.level >= GameConfig.MaxMonsterLevel)
         {
-            expContent.text = "";
+            expContent.text = "max";
             expProgress.value = 1.0f;
             addExpBtn.interactable = false;
         }
@@ -95,11 +111,26 @@ public class PetDetailLeft : MonoBehaviour {
             addExpBtn.interactable = true;
         }
 
-        health.text = unit.health.ToString();
-        strength.text = unit.strength.ToString();
-        defense.text = unit.defense.ToString();
-        intellgence.text = unit.intelligence.ToString();
-        speed.text = unit.speed.ToString();
+        mainPet.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftMainPet);
+        changeCharacterBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftChangeCharacter);
+        detailAttrBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftDetailAttr);
+        skillpBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftSkill);
+        stageBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftStage);
+        advanceBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAdvance);
+
+        UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(unit.pbUnit.stage);
+        UnitData unitData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
+        int healthValue = (int)((1 + unitStageData.modifyRate) * unitData.healthModifyRate * (unit.health + unitStageData.health));
+        int strengthValue = (int)((1 + unitStageData.modifyRate) * unitData.strengthModifyRate * (unit.health + unitStageData.strength));
+        int inteligenceValue = (int)((1 + unitStageData.modifyRate) * unitData.intelligenceModifyRate * (unit.health + unitStageData.intelligence));
+        int defenceValue = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * (unit.health + unitStageData.defense));
+        int speedValue = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * (unit.health + unitStageData.speed));
+
+        health.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrHealth), healthValue);
+        strength.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrDefence), strengthValue);
+        defense.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrSpeed), defenceValue);
+        intellgence.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrStrenth), inteligenceValue);
+        speed.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrIntelligence), speedValue);
 
         if (UIUtil.CheckIsEnoughMaterial(unit) == true)
         {
@@ -111,4 +142,4 @@ public class PetDetailLeft : MonoBehaviour {
         }
         
     }
-}
+}	   

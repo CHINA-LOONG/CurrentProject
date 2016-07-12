@@ -92,6 +92,7 @@ public class questItem : MonoBehaviour
                 go.transform.SetParent(rewardParent, false);
                 rewardItemIcon item = go.GetComponent<rewardItemIcon>();
                 rewards.Add(item);
+                LanguageMgr.Instance.SetLanguageFont(go);
             }
         }
 

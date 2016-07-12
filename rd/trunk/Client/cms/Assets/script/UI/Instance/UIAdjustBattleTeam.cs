@@ -384,7 +384,7 @@ public class UIAdjustBattleTeam : UIBase
 	void	OnBattleButtonClick(GameObject go)
 	{
 		List<int> battleTeam = SaveBattleTeam ();
-		if (null == battleTeam) 
+		if (null == battleTeam || battleTeam.Count < 1) 
 		{
 			MsgBox.PromptMsg.Open(StaticDataMgr.Instance.GetTextByID("ui_tishi"),
 			                      StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"),

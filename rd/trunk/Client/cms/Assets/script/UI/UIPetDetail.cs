@@ -52,8 +52,6 @@ public class UIPetDetail : UIBase{
 
     void OnDestroy()
     {
-
-        Debug.Log("123123123");
     }
 
     public override void OnOpenUI()
@@ -111,13 +109,6 @@ public class UIPetDetail : UIBase{
 
     void StageButtonDown(GameObject go)
     {
-        if (UIUtil.CheckIsEnoughLevel(m_curTypeList[m_currentIndex]) == false)
-        {
-            UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(m_curTypeList[m_currentIndex].pbUnit.stage + 1);
-            MsgBox.PromptMsg.Open("提示", string.Format("该宠物等级达到{0}级才能进阶", unitStageData.demandLevel), "确定");
-            return;
-        }
-
         if (currentRightType == PetViewConst.RightPanelType.STAGE_PANEL_TYPE)
         {
             return;

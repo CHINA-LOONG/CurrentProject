@@ -8,6 +8,9 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
     public SkillElement[] skillElements;
     public Text point;
     public Text status;
+    public Text pointLabel;
+    public Image scrollIcon;
+    public ScrollRect scrollrect;
 
     GameUnit m_unit;
     string m_currentSpellId;
@@ -43,7 +46,14 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
     // Update is called once per frame
     void Update()
     {
-
+        if (scrollrect != null && scrollrect.normalizedPosition.y > 0.01)
+        {
+            scrollIcon.gameObject.SetActive(true);
+        }
+        else
+        {
+            scrollIcon.gameObject.SetActive(false);
+        }
     }
 
     public void OnLevelButtonDown(string spellId)
@@ -65,7 +75,7 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
 
             if (error.errCode == (int)PB.monsterError.SKILL_POINT_NOT_ENOUGH)
             {
-                MsgBox.PromptMsg.Open("提示", "技能点不足", "确定");
+                MsgBox.PromptMsg.Open("提示","技能点不足", "确定");
             }
 
             return;
@@ -75,7 +85,6 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
         m_unit.spellList[m_currentSpellId].level += 1;
         StatisticsDataMgr.Instance.ResetSkillPointState(skillUpResponse.skillPoint, skillUpResponse.skillPointTimeStamp);
         ReloadElement(m_currentSpellId, m_unit.spellList[m_currentSpellId], m_unit);
-
     }
 
     override public void ReloadData(GameUnit unit)
@@ -83,6 +92,8 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
         m_unit = unit;
         StopAllCoroutines();
         StartCoroutine(IncreasePoint());
+
+        pointLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillCurrentPoint);
         skillElements[(int)PetViewConst.SkillIndex.SKILL_BUFF_INDEX].gameObject.SetActive(false);
         foreach (KeyValuePair<string, Spell> element in unit.spellList)
         {
@@ -126,7 +137,7 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
             }
             else
             {
-                status.text = @"技能点已满";
+                status.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillMaxPoint);
             }
 
             yield return new WaitForSeconds(1);

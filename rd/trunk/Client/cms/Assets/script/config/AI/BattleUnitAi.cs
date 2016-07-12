@@ -64,6 +64,50 @@ public class BattleUnitAi : MonoBehaviour {
 		return GetAttackTargetNormalStyle (battleUnit);
 	}
 
+    public GameUnit GetTargetThroughSpell(Spell spell, GameUnit caster)
+    {
+        if (spell == null)
+            return null;
+
+
+        GameUnit attackTarget = null;
+        int spellType = spell.spellData.category;
+        switch (spellType)
+        {
+            case (int)SpellType.Spell_Type_Defense:
+            case (int)SpellType.Spell_Type_Lazy:
+            case (int)SpellType.Spell_Type_Passive:
+                attackTarget = caster;
+                break;
+
+            case (int)SpellType.Spell_Type_PhyAttack:
+            case (int)SpellType.Spell_Type_MgicAttack:
+            case (int)SpellType.Spell_Type_PrepareDazhao:
+                {
+                    attackTarget = GetAttackTargetNormalStyle(caster);
+                }
+                break;
+
+            case (int)SpellType.Spell_Type_Cure:
+                attackTarget = GetCurveAiTarget(caster);
+                break;
+
+            case (int)SpellType.Spell_Type_Beneficial:
+            case (int)SpellType.Spell_Type_Negative:
+                attackTarget = GetAttackTargetUnitBuffStyle(caster, spell);
+                break;
+            case (int)SpellType.Spell_Type_PhyDaZhao:
+            case (int)SpellType.Spell_Type_MagicDazhao:
+                attackTarget = GetDazhaoAttackTarget(caster);
+                break;
+            default:
+                Logger.LogError("battleAi Can't did the spelltype " + spellType);
+                break;
+        }
+
+        return attackTarget;
+    }
+
 	public	AiAttackResult GetAiAttackResult(GameUnit battleUnit)
 	{
 		if (battleUnit.isBoss)
@@ -95,42 +139,7 @@ public class BattleUnitAi : MonoBehaviour {
 
 		attackResult.useSpell = GetSpell (attackResult.attackStyle, battleUnit);
 
-		GameUnit attackTarget = null;
-
-		int spellType = attackResult.useSpell.spellData.category;
-		switch ( spellType )
-		{
-		case (int) SpellType.Spell_Type_Defense:
-		case (int) SpellType.Spell_Type_Lazy:
-			attackTarget = battleUnit;
-			break;
-
-		case (int) SpellType.Spell_Type_PhyAttack:
-        case (int)SpellType.Spell_Type_MgicAttack:
-        case (int)SpellType.Spell_Type_PrepareDazhao:
-		{
-			attackTarget = GetAttackTargetNormalStyle (battleUnit);
-		}
-			break;
-
-		case (int) SpellType.Spell_Type_Cure:
-			attackTarget = GetCurveAiTarget(battleUnit);
-			break;
-		
-		case (int) SpellType.Spell_Type_Beneficial:
-		case (int) SpellType.Spell_Type_Negative:
-			attackTarget = GetAttackTargetUnitBuffStyle (battleUnit,attackResult.useSpell);
-			break;
-		case (int) SpellType.Spell_Type_PhyDaZhao:
-		case (int) SpellType.Spell_Type_MagicDazhao:
-			attackTarget = GetDazhaoAttackTarget(battleUnit);
-			break;
-		default:
-			Logger.LogError("battleAi Can't did the spelltype " + spellType);
-			break;
-		}
-	//	attackTarget.attackWpName = null;
-		attackResult.attackTarget = attackTarget;
+        attackResult.attackTarget = GetTargetThroughSpell(attackResult.useSpell, battleUnit);
 
 		return attackResult;
 	}

@@ -26,6 +26,7 @@ public class SpellProtoType
     public string tips;
     public float baseTipValue;
     public int isAoe;
+    public string firstSpell;
 
 	public string TipAttr
 	{
@@ -128,6 +129,7 @@ public class Spell
         }
 
         args.aniTime = spellLength;
+        args.firstSpell = (spellData.category == (int)SpellType.Spell_Type_Passive) ? spellData.firstSpell : null;
         spellService.TriggerEvent(GameEventList.SpellFire, args);
     }
 
