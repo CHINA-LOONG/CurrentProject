@@ -95,6 +95,10 @@ public class GameUnit : IComparable
     public float spellDefenseRatio;
     public float spellEnduranceRatio;
     public float spellDefenseDamageRatio;
+    public float spellphyReduceInjury;//物理减伤
+    public float spellmgReduceInjury;//法术减伤
+    public float spellPhyShield;//物理护盾
+    public float spellMagicShield;//法术护盾
 
     //二级属性
     public int curLife;
@@ -175,6 +179,10 @@ public class GameUnit : IComparable
         minusDamageRatio = 0.0f;
         additionHealRatio = 0.0f;
         defensePierce = 0.0f;
+        spellphyReduceInjury = 0.0f;
+        spellmgReduceInjury = 0.0f;
+        spellPhyShield = 0;
+        spellMagicShield = 0;
 
         //战斗状态值初始化
         invincible = 0;
@@ -469,6 +477,10 @@ public class GameUnit : IComparable
         spellDefenseRatio = 0.0f;
         spellEnduranceRatio = 0.0f;
         spellDefenseDamageRatio = 0.0f;
+        spellphyReduceInjury = 0.0f;
+        spellmgReduceInjury = 0.0f;
+        spellPhyShield = 0;
+        spellMagicShield = 0;
 
         //二级属性
         curLife = maxLife;

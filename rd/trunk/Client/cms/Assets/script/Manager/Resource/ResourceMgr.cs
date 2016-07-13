@@ -125,9 +125,7 @@ public class ResourceMgr : MonoBehaviour
         {
             Logger.LogWarning("Assets file not exists!!! Ignoring...");
         }
-
-        //资源初始化完成，回调游戏管理器，执行后续操作 
-        GameApp.Instance.OnResourceInited();
+		
     }
     //---------------------------------------------------------------------------------------------
     public void LoadAssetAsyn(string abname, string name, AssetLoadedCallBack callBack = null, System.EventArgs args = null)

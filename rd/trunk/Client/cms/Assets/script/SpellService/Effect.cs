@@ -32,6 +32,8 @@ public class EffectWholeData
     public string effectList;
     //dispel
     public int dispelCategory;
+    //
+    public float fixLifeRatio;
 }
 
 [Serializable]

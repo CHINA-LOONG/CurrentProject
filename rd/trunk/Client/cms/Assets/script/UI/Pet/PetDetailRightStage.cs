@@ -13,13 +13,15 @@ public class PetDetailRightStage : PetDetailRightBase{
 
     public Image item1;
     public Image item2;
-    public Image monster1Icon;
-    public Image monster2Icon;
+    public Image monster1Add;
+    public Image monster2Add;
+    public MonsterIcon monster1Icon;
+    public MonsterIcon monster2Icon;
 
-    public Text item1Label;
-    public Text item2Label;
-    public Text monster1Label;
-    public Text monster2Label;
+    public PetMaterialLabel item1Label;
+    public PetMaterialLabel item2Label;
+    public PetMaterialLabel monster1Label;
+    public PetMaterialLabel monster2Label;
 
     public Text demandLabel;
     public Text levelLabel;
@@ -38,7 +40,9 @@ public class PetDetailRightStage : PetDetailRightBase{
     // Use this for initialization
     void Start()
     {
-        EventTriggerListener.Get(monster1Icon.gameObject).onClick = OpenMonsterSelectUI;
+        EventTriggerListener.Get(monster1Add.gameObject).onClick = OpenMonsterSelectUI;
+        EventTriggerListener.Get(monster2Add.gameObject).onClick = OpenMonsterSelectUI;
+        EventTriggerListener.Get(monster2Icon.gameObject).onClick = OpenMonsterSelectUI;
         EventTriggerListener.Get(monster2Icon.gameObject).onClick = OpenMonsterSelectUI;
         BindListerner();
     }
@@ -114,13 +118,24 @@ public class PetDetailRightStage : PetDetailRightBase{
 
         if (UIUtil.NeedChangeGrade(unit.pbUnit.stage) == true)
         {
+            monster1Add.gameObject.SetActive(true);
+            monster2Add.gameObject.SetActive(true);
             monster1Icon.gameObject.SetActive(true);
             monster2Icon.gameObject.SetActive(true);
             monster1Label.gameObject.SetActive(true);
             monster2Label.gameObject.SetActive(true);
+
+            monster1Icon.Init();
+            monster2Icon.Init();
+            monster1Icon.SetMonsterStaticId(unitStageData.demandMonsterList[0].itemId);
+            monster1Icon.SetStage(unitStageData.demandMonsterList[0].stage);
+            monster2Icon.SetMonsterStaticId(unitStageData.demandMonsterList[1].itemId);
+            monster2Icon.SetStage(unitStageData.demandMonsterList[1].stage);
         }
         else
         {
+            monster1Add.gameObject.SetActive(false);
+            monster2Add.gameObject.SetActive(false);
             monster1Icon.gameObject.SetActive(false);
             monster2Icon.gameObject.SetActive(false);
             monster1Label.gameObject.SetActive(false);
@@ -134,22 +149,14 @@ public class PetDetailRightStage : PetDetailRightBase{
     {
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(m_unit.pbUnit.stage + 1);
         ItemInfo itemInfo  = null;
-        if (go == monster1Icon.gameObject)
+        if (go == monster1Icon.gameObject || go == monster1Add.gameObject)
         {
             itemInfo = unitStageData.demandMonsterList[0];
         }
-        else if (go == monster2Icon.gameObject)
+        else if (go == monster2Icon.gameObject || go == monster2Add.gameObject)
         {
             itemInfo = unitStageData.demandMonsterList[1];
-        }
-         
-        List<GameUnit> material = GameDataMgr.Instance.PlayerDataAttr.GetAllPet(itemInfo.itemId, itemInfo.stage);
-        material.Remove(m_unit);
-        if (material.Count == 0)
-        {
-            MsgBox.PromptMsg.Open("提示","当前无此宠物","确定");
-            return;
-        }
+        }      
 
         m_selectMonsterView = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetStageMonsterSelectAssetName);
         m_selectMonsterView.transform.localScale = Vector3.one;
@@ -157,12 +164,12 @@ public class PetDetailRightStage : PetDetailRightBase{
         m_selectMonsterView.transform.localEulerAngles = Vector3.zero;
         m_selectMonsterView.transform.SetParent(gameObject.transform.parent.parent, false);
         EventTriggerListener.Get(m_selectMonsterView.GetComponent<SelectMonsterPanel>().closeButton.gameObject).onClick = CloseButtonDown;
-        
-        if (go == monster1Icon.gameObject)
+
+        if (go == monster1Icon.gameObject || go == monster1Add.gameObject)
         {
             m_selectMonsterView.GetComponent<SelectMonsterPanel>().init(unitStageData.demandMonsterList[0], m_monsterList1, m_unit.pbUnit.guid);
         }
-        else if (go == monster2Icon.gameObject)
+        else if (go == monster2Icon.gameObject || go == monster2Add.gameObject)
         {
             m_selectMonsterView.GetComponent<SelectMonsterPanel>().init(unitStageData.demandMonsterList[1], m_monsterList2, m_unit.pbUnit.guid);
         }
@@ -184,44 +191,46 @@ public class PetDetailRightStage : PetDetailRightBase{
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(m_unit.pbUnit.stage + 1);
         ItemData itemData = null;
         itemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandItemList[0].itemId);
-        item1Label.text = ShowFormatMaterailCount(itemData == null ? 0 : itemData.count, unitStageData.demandItemList[0].count, 999);
-        if (itemData == null || itemData.count < unitStageData.demandItemList[0].count)
-        {
-            item1Label.color = Color.red;
-        }
-        else
-        {
-            item1Label.color = Color.black;
-        }
+        item1Label.ReloadData(itemData == null ? 0 : itemData.count, unitStageData.demandItemList[0].count, 9999);
 
         itemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandItemList[1].itemId);
-        item2Label.text = ShowFormatMaterailCount(itemData == null ? 0 : itemData.count, unitStageData.demandItemList[1].count, 999);
-        if (itemData == null || itemData.count < unitStageData.demandItemList[1].count)
+        item2Label.ReloadData(itemData == null ? 0 : itemData.count, unitStageData.demandItemList[1].count, 9999);
+
+        if (UIUtil.NeedChangeGrade(m_unit.pbUnit.stage) == true)
         {
-            item2Label.color = Color.red;
-        }
-        else
-        {
-            item2Label.color = Color.black;
+            monster1Label.ReloadData(m_monsterList1.Count, unitStageData.demandMonsterList[0].count, 9999);
+            monster2Label.ReloadData(m_monsterList2.Count, unitStageData.demandMonsterList[1].count, 9999);
         }
 
         if (UIUtil.NeedChangeGrade(m_unit.pbUnit.stage) == true)
         {
-            monster1Label.text = string.Format("{0}/{1}", m_monsterList1.Count, unitStageData.demandMonsterList[0].count);
-            monster2Label.text = string.Format("{0}/{1}", m_monsterList2.Count, unitStageData.demandMonsterList[1].count);
+            if (m_monsterList1.Count > 0)
+            {
+                monster1Add.gameObject.SetActive(false);
+                monster1Icon.gameObject.SetActive(true);
+            }
+            else
+            {
+                monster1Add.gameObject.SetActive(true);
+                monster1Icon.gameObject.SetActive(false);
+            }
+
+            if (m_monsterList2.Count > 0)
+            {
+                monster2Add.gameObject.SetActive(false);
+                monster2Icon.gameObject.SetActive(true);
+            }
+            else
+            {
+                monster2Add.gameObject.SetActive(true);
+                monster2Icon.gameObject.SetActive(false);
+            }
         }
 
         coinLabel.text = unitStageData.demandCoin.ToString();
-        if (GameDataMgr.Instance.PlayerDataAttr.coin >= unitStageData.demandCoin)
-        {
-            coinLabel.color = Color.black;
-        }
-        else
-        {
-            coinLabel.color = Color.red;
-        }
+        ResetMaterialColor(coinLabel, unitStageData.demandCoin, (int)GameDataMgr.Instance.PlayerDataAttr.coin);      
 
-        if (UIUtil.CheckIsEnoughMaterial(m_unit, false) == true && UIUtil.CheckIsEnoughLevel(m_unit) == true)
+        if (UIUtil.CheckIsEnoughMaterial(m_unit) == true)
         {
             stageButton.interactable = true;
             EventTriggerListener.Get(stageButton.gameObject).onClick = StageUpButtonDown;
@@ -267,33 +276,18 @@ public class PetDetailRightStage : PetDetailRightBase{
     string ShowFormatMaterailCount(int currentCount, int needCount, int currentMaxCount)
     {
         currentCount = currentCount > currentMaxCount ? currentMaxCount : currentCount;
-        if (currentCount< 10)
+        return string.Format("{0}/{1}", currentCount, needCount);
+    }
+
+    void ResetMaterialColor(Text label, int targetCount, int currentCount)
+    {
+        if (currentCount < targetCount)
         {
-            if (needCount < 10)
-                return string.Format("{0}/{1}",currentCount,needCount);
-            else if (needCount < 100)
-                return string.Format(" {0}/{1}", currentCount, needCount);
-            else
-                return string.Format("  {0}/{1}", currentCount, needCount);
-        }
-        else if (currentCount < 100)
-        {
-            if (needCount < 10)
-                return string.Format("{0}/{1} ", currentCount, needCount);
-            else if (needCount < 100)
-                return string.Format("{0}/{1}", currentCount, needCount);
-            else
-                return string.Format(" {0}/{1}", currentCount, needCount);
+            label.color = Color.red;
         }
         else
         {
-            if (needCount < 10)
-                return string.Format("{0}/{1}  ", currentCount, needCount);
-            else if (needCount < 100)
-                return string.Format("{0}/{1} ", currentCount, needCount);
-            else
-                return string.Format("{0}/{1}", currentCount, needCount);
+            label.color = Color.black;
         }
-
     }
 }

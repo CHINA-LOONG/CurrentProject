@@ -26,6 +26,8 @@ public class MonsterIcon : MonoBehaviour
 	[HideInInspector]
 	public string monsterId;
 
+    private bool init = false;
+
 	public	static MonsterIcon	CreateIcon()
 	{
 		GameObject go = ResourceMgr.Instance.LoadAsset ("monsterIcon");
@@ -42,11 +44,12 @@ public class MonsterIcon : MonoBehaviour
 
 	public void Init()
 	{
+        if (init == true)
+        {
+            return;
+        }
+        
 		listItems = new List<Transform> ();
-		if (itemsParent == null)
-		{
-            Debug.Log("123");
-		}
 		
 		Transform[] subItems = itemsParent.GetComponentsInChildren<Transform> ();
 		foreach (Transform subitem in subItems)
@@ -57,6 +60,8 @@ public class MonsterIcon : MonoBehaviour
 				subitem.gameObject.SetActive(false);
 			}
 		}
+
+        init = true;
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------

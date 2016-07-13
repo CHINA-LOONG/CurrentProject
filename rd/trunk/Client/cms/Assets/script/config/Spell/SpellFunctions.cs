@@ -83,4 +83,60 @@ public class SpellFunctions
     {
         return 1;
     }
+
+    // buff response validators
+    public static int BuffValidatorSample(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+        //血量低于xx触发示例
+        if (damageEffect != null)
+        {
+            GameUnit target = spellService.GetUnit(triggerEffect.targetID);
+            float lifeRatio = target.curLife / (float)target.maxLife;
+            if (lifeRatio < 0.05f)
+                return 1;
+        }
+        //受到某个类型伤害触发示例
+        if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+        {
+            EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+            if (damageProto.isHeal == false && damageProto.damageType == SpellConst.damagePhy)//SpellConst.damageMagic)
+            {
+                return 1;
+            }
+        }
+        //造成某个类型伤害触发示例
+        if (damageEffect != null && damageEffect.casterID == triggerBuff.targetID)
+        {
+            EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+            //造成某类伤害示例
+            if (damageProto.isHeal == false && damageProto.damageType == SpellConst.damagePhy)//SpellConst.damageMagic)
+            {
+                return 1;
+            }
+        }
+        //使用某类技能造成伤害触发示例
+        if (triggerEffect != null && triggerEffect.casterID == triggerBuff.targetID)
+        {
+            Spell ownedSpell = triggerEffect.ownedSpell;
+            if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_MgicAttack)
+            {
+                return 1;
+            }
+        }
+
+        //触发几率示例
+        float randNum = Random.Range(0.0f, 1.0f);
+        if (randNum > 0.5f)
+        {
+            return 1;
+        }
+
+        return 0;
+    }
 }

@@ -64,7 +64,7 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     void InitItem()
     {
         head.sprite = unit.headImg;
-        nameText.text = unit.name;
+        nameText.text = StaticDataMgr.Instance.GetTextByID(unit.name);
 
         if (unit != null && (unit.curLife > 0 && unit.State != UnitState.Dead))
         {

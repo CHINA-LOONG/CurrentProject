@@ -61,6 +61,7 @@ public class PetViewConst{
     public static string ReloadPetListNotify = "reloadPetListNotify";
     public static string ReloadPetStageNotify = "reloadPetStageNotify";
 
+    public static string PetListFull = "pet_tip_full";
     public static string PetListProperty = "pet_list_proprety";
     public static string PetListType = "pet_list_type";
     public static string PetDetailLeftProprety = "pet_detail_left_property";
@@ -88,6 +89,7 @@ public class PetViewConst{
     public static string PetDetailSkillMaxLeve = "pet_detail_skill_max_level";
     public static string PetDetailSkillCurrentPoint = "pet_detail_skill_current_point";
     public static string PetDetailSkillMaxPoint = "pet_detail_skill_max_point";
+    public static string PetDetailSkillPointNotEnough = "pet_skill_point_not_enough";
 
     public static string PetDetailStageAttr = "pet_detail_stage_attr";
     public static string PetDetailStageDemandItem = "pet_detail_stage_demand_item";
@@ -96,4 +98,20 @@ public class PetViewConst{
     public static string PetDetailStageFull = "pet_detail_stage_full";
     public static string PetDetailStageMonster = "pet_detail_stage_monster";
     public static string PetDetailStageBattle = "pet_detail_stage_battle";
+    public static string PetDetailStageNoneMonster = "pet_detail_stage_none_monster";
+    public static string PetDetailSkillNoUpgrade = "pet_detail_skill_no_upgrade";
+
+    public static string PetListTitle = "pet_list_title";
+    public static string PetProprety1 = "monster_property1";
+    public static string PetProprety2 = "monster_property2";
+    public static string PetProprety3 = "monster_property3";
+    public static string PetProprety4 = "monster_property4";
+    public static string PetProprety5 = "monster_property5";
+
+
 }
+
+
+
+
+

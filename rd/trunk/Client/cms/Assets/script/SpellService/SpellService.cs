@@ -7,7 +7,13 @@ public class SpellService : MonoBehaviour
 {
     //---------------------------------------------------------------------------------------------
     static SpellService mInst = null;
-    private Dictionary<int, EventArgs> deadList = new Dictionary<int, EventArgs>();
+    struct DeadData
+    {
+        public EventArgs deadEventArgs;
+        public GameUnit deadUnit;
+        public EffectDamage causeDeadEffect;
+    }
+    private Dictionary<int, DeadData> deadList = new Dictionary<int, DeadData>();
     public static SpellService Instance
     {
         get
@@ -27,22 +33,50 @@ public class SpellService : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void Init()
     {
-        //deadList = new Dictionary<int, EventArgs>();
     }
     //---------------------------------------------------------------------------------------------
-    public void AddDeadData(SpellUnitDeadArgs args)
+    public void AddDeadData(SpellUnitDeadArgs args, GameUnit deadUnit, EffectDamage causeDeadEffect)
     {
         if (deadList.ContainsKey(args.deathID))
             return;
 
-        deadList.Add(args.deathID, args);
+        DeadData deadInfo = new DeadData();
+        deadInfo.deadEventArgs = args;
+        deadInfo.deadUnit = deadUnit;
+        deadInfo.causeDeadEffect = causeDeadEffect;
+        deadList.Add(args.deathID, deadInfo);
+    }
+    //---------------------------------------------------------------------------------------------
+    public bool IsInDeathList(int guid)
+    {
+        return deadList.ContainsKey(guid);
     }
     //---------------------------------------------------------------------------------------------
     public void Update()
     {
-        foreach (KeyValuePair<int, EventArgs> args in deadList)
+        DeadData deadData;
+        List<Buff> buffList;
+        var itor = deadList.GetEnumerator();
+        while(itor.MoveNext())
         {
-            TriggerEvent(GameEventList.SpellUnitDead, args.Value);
+            deadData = itor.Current.Value;
+            if (deadData.deadUnit != null)
+            {
+                buffList = deadData.deadUnit.buffList;
+                for (int i = 0; i < buffList.Count; ++i)
+                {
+                    //TODO: use level time
+                    buffList[i].DeadResponse(Time.time, itor.Current.Value.causeDeadEffect);
+                }
+            }
+        }
+
+        foreach (KeyValuePair<int, DeadData> deadInfo in deadList)
+        {
+            if (deadInfo.Value.deadUnit.curLife <= 0)
+            {
+                TriggerEvent(GameEventList.SpellUnitDead, deadInfo.Value.deadEventArgs);
+            }
         }
 
         deadList.Clear();

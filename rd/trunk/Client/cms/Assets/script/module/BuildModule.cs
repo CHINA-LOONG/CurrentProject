@@ -27,8 +27,8 @@ public class BuildModule : ModuleBase
 	{
 		PB.HSSyncInfo param = new PB.HSSyncInfo ();
 		param.deviceId = GameDataMgr.Instance.UserDataAttr.deviceID;
-		param.platform = GameDataMgr.Instance.UserDataAttr.platform;
-		param.version = GameDataMgr.Instance.UserDataAttr.version;
+		param.platform = Const.platform;
+		param.version = Const.versionName;
 
 		GameApp.Instance.netManager.SendMessage (ProtocolMessage.Create (PB.code.SYNCINFO_C.GetHashCode (), param));
 	}

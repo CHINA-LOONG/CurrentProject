@@ -32,7 +32,7 @@ public class questItem : MonoBehaviour
     {
         this.info = info;
         img_QuestIcon.sprite =ResourceMgr.Instance.LoadAssetType<Sprite>(info.staticData.icon) as Sprite;
-        text_Name.text = info.staticData.name;
+        text_Name.text = StaticDataMgr.Instance.GetTextByID(info.staticData.name);
         //TODO: extend  need to modify
         #region Desc
         string param="";

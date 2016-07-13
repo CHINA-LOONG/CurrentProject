@@ -29,6 +29,12 @@ public class UIVitalChangeView : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void ShowVitalChange(SpellVitalChangeArgs args, RectTransform parent)
     {
+        if (
+            args.vitalType == (int)VitalType.Vital_Type_FixLife ||
+            args.vitalType == (int)VitalType.Vital_Type_Shield
+            )
+            return;
+
         int vitalChange = args.vitalChange;
 
         //choose font
@@ -73,13 +79,17 @@ public class UIVitalChangeView : MonoBehaviour
             hitResult.gameObject.SetActive(true);
             hitResult.text = StaticDataMgr.Instance.GetTextByID("spell_hit_interrupt");
         }
-        else if (args.vitalType == (int)VitalType.Vital_Type_FirstSpell)
+        else if (
+            args.vitalType == (int)VitalType.Vital_Type_FirstSpell ||
+            args.vitalType == (int)VitalType.Vital_Type_Absorbed
+            )
         {
+            string textID = (args.vitalType == (int)VitalType.Vital_Type_FirstSpell) ? "spell_first_spell" : "spell_shield";
             vitalBackImage.gameObject.SetActive(false);
             vitalWnd.gameObject.SetActive(true);
             vitalWnd.text = string.Empty;
             hitResult.gameObject.SetActive(true);
-            hitResult.text = StaticDataMgr.Instance.GetTextByID("spell_first_spell");
+            hitResult.text = StaticDataMgr.Instance.GetTextByID(textID);
         }
 
         //calculate pos

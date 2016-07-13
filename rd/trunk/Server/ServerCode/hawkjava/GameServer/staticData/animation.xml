@@ -7970,25 +7970,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Audio time="0" name="metale1"/>
 			</AudioList>
 		</Ani>
-		
-		<Ani id="bosskongdao75Sheshou13e5" state="0" AniType="Damage">
-			<ParticleList>
-				<Particle time="0" asset="magicMetalColumnp" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
-			<AudioList>
-				<Audio time="0" name="metale1"/>
-			</AudioList>
-		</Ani>
-		
-		<Ani id="bosskongdao75Sheshou13e7" state="0" AniType="Damage">
-			<ParticleList>
-				<Particle time="0" asset="magicMetalColumnp" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
-			<AudioList>
-				<Audio time="0" name="metale1"/>
-			</AudioList>
-		</Ani>
-		
+				
 		<Ani id="bosskongdao75Sheshou14" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
@@ -8012,25 +7994,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Audio time="0" name="metale1"/>
 			</AudioList>
 		</Ani>
-		
-		<Ani id="bosskongdao75Sheshou14e5" state="0" AniType="Damage">
-			<ParticleList>
-				<Particle time="0" asset="magicMetalColumnp" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
-			<AudioList>
-				<Audio time="0" name="metale1"/>
-			</AudioList>
-		</Ani>
-		
-		<Ani id="bosskongdao75Sheshou14e7" state="0" AniType="Damage">
-			<ParticleList>
-				<Particle time="0" asset="magicMetalColumnp" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
-			<AudioList>
-				<Audio time="0" name="metale1"/>
-			</AudioList>
-		</Ani>
-		
+				
 		<Ani id="bosskongdao75Sheshou15" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="fagong" value="true"/>
@@ -10693,7 +10657,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossrenjie83Amute3awaken1e4" state="0" AniType="Damage">
+		<Ani id="bossrenjie83Amute3awaken1e5" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="attackWaterSmash" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>

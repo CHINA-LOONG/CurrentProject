@@ -27,14 +27,8 @@ public class StageAttrPanel : MonoBehaviour {
 
     public void ReloadData(GameUnit unit, int stage)
     {
-        int grade = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id).grade;
-        UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(stage);
-        UnitData unitData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
-        int health = (int)((1 + unitStageData.modifyRate) * unitData.healthModifyRate * (unit.health + unitStageData.health));
-        int strength = (int)((1 + unitStageData.modifyRate) * unitData.strengthModifyRate * (unit.health + unitStageData.strength));
-        int inteligence = (int)((1 + unitStageData.modifyRate) * unitData.intelligenceModifyRate * (unit.health + unitStageData.intelligence));
-        int defence = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * (unit.health + unitStageData.defense));
-        int speed = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * (unit.health + unitStageData.speed));
+        int health, strength, inteligence, defence, speed;
+        UIUtil.GetAttrValue(unit, stage, out health, out strength, out inteligence, out defence, out speed);
 
         phyValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrHealth), health);
         strengthValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrDefence), strength);

@@ -7,10 +7,13 @@ using System.Collections.Generic;
 public class SelectMonsterPanel : MonoBehaviour {
 
     public ScrollViewContainer scrollView;
+    public ScrollRect scrollRect;
 
     public Button closeButton;
     public Text countLabel;
+    public Text nonoMonsterLabel;
     public Text demandLabel;
+    public Image scrollIcon;
     public GameObject elementContainer;
     public MonsterIcon avatar;
 
@@ -28,11 +31,14 @@ public class SelectMonsterPanel : MonoBehaviour {
         if (m_itemInfo != null && m_currentSelectMonster != null)
         {
             countLabel.text = string.Format("{0}/{1}", m_currentSelectMonster.Count, m_itemInfo.count);
-        }       
+        }
+
+        ShowScrollIcon();
 	}
 
     public void init(ItemInfo itemInfo, List<int> selectMonster, int selfId){
 
+        nonoMonsterLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageNoneMonster);
         demandLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageMonster);
         m_currentSelectMonster = selectMonster;
         m_itemInfo = itemInfo;
@@ -47,6 +53,15 @@ public class SelectMonsterPanel : MonoBehaviour {
                 go.GetComponent<SelectMonsterElement>().ReloadData(unit, m_currentSelectMonster.Contains(unit.pbUnit.guid));
                 ScrollViewEventListener.Get(go.GetComponent<SelectMonsterElement>().eventObject).onClick = SelectButtonDown;
             }
+        }
+
+        if (elementContainer != null && elementContainer.transform.childCount > 0)
+        {
+            nonoMonsterLabel.gameObject.SetActive(false);
+        }
+        else
+        {
+            nonoMonsterLabel.gameObject.SetActive(true);
         }
 
         avatar.Init();
@@ -102,5 +117,17 @@ public class SelectMonsterPanel : MonoBehaviour {
         }
 
         UpdateSelectState();
+    }
+
+    void ShowScrollIcon()
+    {
+        if (scrollRect != null && elementContainer.transform.childCount > 3 && scrollRect.GetComponent<ScrollRect>().normalizedPosition.y > 0.01)
+        {
+            scrollIcon.gameObject.SetActive(true);
+        }
+        else
+        {
+            scrollIcon.gameObject.SetActive(false);
+        }
     }
 }

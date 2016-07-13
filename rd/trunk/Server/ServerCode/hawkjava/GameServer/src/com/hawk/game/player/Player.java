@@ -792,6 +792,27 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
+	 * 消耗怪物
+	 */
+	public boolean consumeMonster(int id, Action action) {
+		MonsterEntity monsterEntity = playerData.getMonsterEntity(id);
+		if (null != monsterEntity) {
+			monsterEntity.setInvalid(true);
+			monsterEntity.notifyUpdate(true);
+			playerData.removeMonsterEntity(id);
+			List<Integer> battleMonsterList = playerData.getPlayerEntity().getBattleMonsterList();
+			battleMonsterList.remove(Integer.valueOf(monsterEntity.getId()));
+
+			BehaviorLogger.log4Service(this, Source.MONSTER_REMOVE, action, 
+					Params.valueOf("monsterId", id));
+
+			return true;
+		}
+
+		return false;
+	}
+	
+	/**
 	 * 统计增加怪物
 	 */
 	public boolean onIncreaseMonster(MonsterEntity monsterEntity) {
@@ -856,28 +877,40 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
-	 * 消耗怪物
+	 * 首次登录
 	 */
-	public boolean consumeMonster(int id, Action action) {
-		MonsterEntity monsterEntity = playerData.getMonsterEntity(id);
-		if (null != monsterEntity) {
-			monsterEntity.setInvalid(true);
-			monsterEntity.notifyUpdate(true);
-			playerData.removeMonsterEntity(id);
-			List<Integer> battleMonsterList = playerData.getPlayerEntity().getBattleMonsterList();
-			battleMonsterList.remove(Integer.valueOf(monsterEntity.getId()));
+	public void onFirstLogin() {
+		StatisticsEntity statisticsEntity = playerData.loadStatistics();
+		// default skill point
+		statisticsEntity.setSkillPoint(10);
+		statisticsEntity.notifyUpdate(true);
 
-			BehaviorLogger.log4Service(this, Source.MONSTER_REMOVE, action, 
-					Params.valueOf("monsterId", id));
+		// default monster
+		LinkedList<Integer> battleMonsterList = new LinkedList<>();
+		MonsterEntity monsterEntity = null;
 
-			return true;
+		if (null != (monsterEntity = increaseMonster("UnitDemoErshu", 1, Action.SYSTEM))) {
+			battleMonsterList.add(monsterEntity.getId());
+		}
+		if (null != (monsterEntity = increaseMonster("UnitDemoQingniao", 1, Action.SYSTEM))) {
+			battleMonsterList.add(monsterEntity.getId());
+		}
+		if (null != (monsterEntity = increaseMonster("UnitDemoZhuyan", 1, Action.SYSTEM))) {
+			battleMonsterList.add(monsterEntity.getId());
+		}
+		if (null != (monsterEntity = increaseMonster("UnitDemoQingniao", 1, Action.SYSTEM))) {
+			battleMonsterList.add(monsterEntity.getId());
+		}
+		if (null != (monsterEntity = increaseMonster("UnitDemoZhuyan", 1, Action.SYSTEM))) {
+			battleMonsterList.add(monsterEntity.getId());
 		}
 
-		return false;
+		getEntity().setBattleMonsterList(battleMonsterList);
+		getEntity().notifyUpdate(false);
 	}
 
 	/**
-	 * 每日首次登陆
+	 * 每日首次登录
 	 */
 	public void onFirstLoginDaily(boolean sync) {
 		StatisticsEntity statisticsEntity = playerData.loadStatistics();

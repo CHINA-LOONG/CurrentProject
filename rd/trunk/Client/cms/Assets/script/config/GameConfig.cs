@@ -28,7 +28,7 @@ public class GameConfig : MonoBehaviour {
     //技能点数最大值
     public static int MaxSkillPoint = 10;
     //技能恢复时间
-    public static int SkillPointTime = 90;
+    public static int SkillPointTime = 360;
 
     public static int MaxMonsterStage = 15;
 

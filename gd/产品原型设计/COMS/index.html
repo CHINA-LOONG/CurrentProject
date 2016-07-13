@@ -6,6 +6,10 @@
     <meta name="renderer" content="webkit">
     <meta name="full-screen" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="logo.png"/>
+    <link rel="apple-touch-startup-image" href="logo.png"/>
+    <link rel="shortcut icon" href="logo.png"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>&nbsp;</title>
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/style.css"/>
@@ -14,18 +18,12 @@
     <script src="js/data.js"></script>
     <script src="js/libs/require.js"></script>
     <script>
-        try {
-            document.title = JSON.parse(window.DATA).meta.title;
-            require(['http://cdn.mockplus.cn/js/run.2073.js'], function () {
-                console.log('load cdn run.js success');
-            }, function (err) {
-                console.log('load local run.js');
-                require(['js/app.min.js'], function () {});
-            });
-        } catch (e) {
-            console.dir(e);
-            alert("演示数据错误，请加入 QQ 群：216824615 联系我们。");
-        }
+        require(['http://cdn.mockplus.cn/js/run.208.c0ad7098b7d3597455d8688191200df5.js'], function () {
+            console.log('load cdn run.js success');
+        }, function (err) {
+            console.log('load local run.js');
+            require(['js/app.min.js'], function () {});
+        });
     </script>
     <![endif]>
 </head>
@@ -44,7 +42,7 @@
             <div class="title">
                 <%= loadText %>
             </div>
-            <span class="progress">0%</span>
+            <!--<span class="progress">0%</span>-->
         </div>
     </div>
 </script>
@@ -69,43 +67,46 @@
 <script type="text/html" id="template-config">
     <div class="fit-screen">
         <input id="fit-to-screen" type="checkbox" <%= isFitToScreen %> />
-        <label for="fit-to-screen">自动适应显示器</label>
+        <label for="fit-to-screen"><%= i18n.fitToScreen %></label>
     </div>
-    <% if(platform !== 'free') { %>
     <div class="show-comment-components">
         <input id="show-comment-components" type="checkbox" checked/>
-        <label for="show-comment-components">显示批注</label>
+        <label for="show-comment-components"><%= i18n.showComments %></label>
     </div>
+    <% if(platform === 'phone' || platform === 'tablet') { %>
     <div class="shells">
         <select name="" class="shell" id="choose-shell">
             <% if (platform === 'phone') { %>
-            <option value="iPhone">iPhone 仿真</option>
-            <option value="iPhone-wireframe">iPhone 线框</option>
-            <option value="Android">Android 仿真</option>
-            <option value="Android-wireframe">Android 线框</option>
+            <option value="iPhone"><%= i18n.iPhone %></option>
+            <option value="iPhone-wireframe"><%= i18n.iPhone_wireframe %></option>
+            <option value="Android"><%= i18n.Android %></option>
+            <option value="Android-wireframe"><%= i18n.Android_wireframe %></option>
             <% } else {%>
-            <option value="iPad">iPad 仿真</option>
-            <option value="iPad-wireframe">iPad 线框</option>
-            <option value="tablet">Android 平板仿真</option>
-            <option value="tablet-wireframe">Android 平板线框</option>
+            <option value="iPad"><%= i18n.iPad %></option>
+            <option value="iPad-wireframe"><%= i18n.iPad_wireframe %></option>
+            <option value="tablet"><%= i18n.tablet %></option>
+            <option value="tablet-wireframe"><%= i18n.tablet_wireframe %></option>
             <% } %>
-            <option value="no">无</option>
+            <option value="no"><%= i18n.none %></option>
         </select>
     </div>
+    <% } %>
+    <% if(platform!=='web') { %>
     <div class="background">
-        <span style="background-color: #505050;"></span>
-        <span style="background-color: #8F8766;"></span>
-        <span style="background-color: #8F6666;"></span>
-        <span style="background-color: #82668F;"></span>
-        <span style="background-color: #4B97B4;"></span>
-        <span style="background-color: #6A8F66;"></span>
-        <span style="background-color: #667F8F;"></span>
-        <span style="background-color: #8DB77F;"></span>
-        <span style="background-color: #C4B47B;"></span>
+        <span style="background-color:#707070;"></span>
+        <span style="background-color:#8DB77F;"></span>
+        <span style="background-color:#6A8F66;"></span>
+        <span style="background-color:#8F8766;"></span>
+        <span style="background-color:#4B97B4;"></span>
+        <span style="background-color:#667F8F;"></span>
+        <span style="background-color:#C4B47B;"></span>
+        <span style="background-color:#82668F;"></span>
+        <span style="background-color:#8F6666;"></span>
+        <span style="background-color:#FFFFFF;"></span>
     </div>
     <% } %>
     <div>
-        <span class="help">查看快捷键</span>
+        <span class="help"><%= i18n.help_shortcut %></span>
     </div>
 </script>
 <script type="text/html" id="template-share">
@@ -118,7 +119,8 @@
     </div>
 </script>
 <script type="text/html" id="template-tree-item">
-    <li><%= title %>
+    <li>
+        <b><em></em><%= title %></b>
         <ul></ul>
     </li>
 </script>
@@ -128,19 +130,19 @@
             <div class="r-b cmd" data-cmd="home">
                 <div class="btn">
                     <b class="home_ico"></b>
-                    <span>首页</span>
+                    <span><%= i18n.menu_home %></span>
                 </div>
             </div>
             <div class="r-b cmd" data-cmd="fullscreen">
                 <div class="btn fullscreen">
                     <b class="full_ico"></b>
-                    <span>全屏</span>
+                    <span><%= i18n.menu_full_screen %></span>
                 </div>
             </div>
             <div class="b cmd" data-cmd="menu">
                 <div class="btn">
                     <b class="tree_ico"></b>
-                    <span>列表</span>
+                    <span><%= i18n.menu_list %></span>
                 </div>
             </div>
             <div class="r-b">
@@ -148,31 +150,31 @@
             <div class="r-b cmd" data-cmd="refresh">
                 <div class="btn">
                     <b class="refresh"></b>
-                    <span>刷新</span>
+                    <span><%= i18n.menu_refresh %></span>
                 </div>
             </div>
             <div class="b cmd" data-cmd="playback">
                 <div class="btn">
                     <b class="playback"></b>
-                    <span>回放</span>
+                    <span><%= i18n.menu_playback %></span>
                 </div>
             </div>
             <div class="r cmd" data-cmd="prev">
                 <div class="btn">
                     <b class="prev"></b>
-                    <span>上一页</span>
+                    <span><%= i18n.menu_previous %></span>
                 </div>
             </div>
             <div class="r cmd" data-cmd="hide">
                 <div class="btn">
                     <b class="hide"></b>
-                    <span>隐藏辅助按钮</span>
+                    <span><%= i18n.menu_hide %></span>
                 </div>
             </div>
             <div class="cmd" data-cmd="next">
                 <div class="btn">
                     <b class="next"></b>
-                    <span>下一页</span>
+                    <span><%= i18n.menu_next %></span>
                 </div>
             </div>
         </div>
@@ -192,85 +194,87 @@
 </script>
 <script type="text/html" id="template-help-full-screen">
     <div class="content">
-        <p>抱歉，你的浏览器无法直接开启全屏功能。</p>
-        <div class="browser browser-360">
-            <h3>360 浏览器开启全屏方法</h3>
+        <p><%= i18n.help_can_not_full_screen %></p>
+        <div class="browser browser-safari">
+            <h3><%= i18n.help_safari %></h3>
             <div class="step">
-                <h4>1. 点击底部菜单栏中间的菜单键打开菜单；</h4>
+                <h4><%= i18n.help_safari_1 %></h4>
+                <img src="<%= i18n.help_img_safari_1 %>"/>
+            </div>
+            <div class="step">
+                <h4><%= i18n.help_safari_2 %></h4>
+                <img src="<%= i18n.help_img_safari_2 %>"/>
+            </div>
+            <div class="step">
+                <h4><%= i18n.help_safari_3 %></h4>
+            </div>
+        </div>
+        <% if(i18n.lang === 'zh-CN') { %>
+        <div class="browser browser-360">
+            <h3><%= i18n.help_360 %></h3>
+            <div class="step">
+                <h4><%= i18n.help_360_1 %></h4>
                 <img src="./assets/help/360_1.jpg"/>
             </div>
             <div class="step">
-                <h4>2. 向右滑动菜单，打开第 2 屏菜单，点击其中的全屏模式按钮。</h4>
+                <h4>@<%= i18n.help_360_2 %></h4>
                 <img src="./assets/help/360_2.jpg"/>
             </div>
         </div>
         <div class="browser browser-sogou">
-            <h3>搜狗浏览器开启全屏方法</h3>
+            <h3><%= i18n.help_sogou %></h3>
             <div class="step">
-                <h4>1. 点击底部菜单栏上的菜单键打开菜单；</h4>
+                <h4><%= i18n.help_sogou_1 %></h4>
                 <img src="./assets/help/sougou_1.jpg"/>
             </div>
             <div class="step">
-                <h4>2. 向右滑动菜单，打开第 2 屏菜单，点击其中的全屏按钮。</h4>
+                <h4><%= i18n.help_sogou_2 %></h4>
                 <img src="./assets/help/sougou_2.jpg"/>
             </div>
         </div>
-        <div class="browser browser-safari">
-            <h3>Safari 浏览器开启全屏方法</h3>
-            <div class="step">
-                <h4>1. 点击底部中间的按钮</h4>
-                <img src="./assets/help/safari_1.PNG"/>
-            </div>
-            <div class="step">
-                <h4>2. 打开弹出菜单，点击 "添加到主屏幕" 将当前页面添加到主屏幕</h4>
-                <img src="./assets/help/safari_2.PNG"/>
-            </div>
-            <div class="step">
-                <h4>3. 从主屏幕打开会自动进入全屏模式。</h4>
-            </div>
-        </div>
         <div class="browser browser-baidu">
-            <h3>百度浏览器中开启全屏方法</h3>
+            <h3><%= i18n.help_baidu %></h3>
             <div class="step">
-                <h4>1. 点击底部的菜单键打开菜单</h4>
+                <h4><%= i18n.help_baidu_1 %></h4>
                 <img src="./assets/help/baidu_1.jpg"/>
             </div>
             <div class="step">
-                <h4>2. 向右滑动菜单，打开第 2 屏菜单，点击其中的 "全屏浏览"</h4>
+                <h4><%= i18n.help_baidu_2 %></h4>
                 <img src="./assets/help/baidu_2.jpg"/>
             </div>
         </div>
         <div class="browser browser-wechat">
-            <h3>微信中开启全屏方法</h3>
+            <h3><%= i18n.help_wechat %></h3>
             <div class="step">
-                <h4>微信中无法直接开启全屏，请在右上角点击菜单，选择 “在浏览器中打开” 使用其他浏览器查看。</h4>
+                <h4><%= i18n.help_wechat_1 %></h4>
                 <img src="./assets/help/wechat.jpg"/>
             </div>
         </div>
         <div class="browser browser-unknown">
-            <h3>其他浏览器</h3>
-            <p>更多浏览器的帮助文档正在整理中，建议在菜单中查找全屏功能。如果没有找到，可以暂时换用以下浏览器：</p>
+            <h3><%= i18n.help_other_browsers %></h3>
+            <p><%= i18n.help_other_browsers_1 %></p>
             <ul>
-                <li>Google Chrome</li>
-                <li>UC</li>
-                <li>QQ</li>
-                <li>百度</li>
+                <li><%= i18n.help_other_browsers_advice_1 %></li>
+                <li><%= i18n.help_other_browsers_advice_2 %></li>
+                <li><%= i18n.help_other_browsers_advice_3 %></li>
+                <li><%= i18n.help_other_browsers_advice_4 %></li>
             </ul>
         </div>
-        <button class="close">我知道了</button>
+        <% } %>
+        <button class="close"><%= i18n.help_ok %></button>
     </div>
 </script>
 <script type="text/html" id="template-help-shortcut">
-    <h3>快捷键</h3>
+    <h3><%= i18n.shorct %></h3>
     <ul>
-        <li><span>&#8593;</span> 页面列表中的上一个文件</li>
-        <li><span>&#8595;</span> 页面列表中的下一个文件</li>
-        <li><span>&#8592;</span> 上一步</li>
-        <li><span>&#8594;</span> 下一步</li>
-        <li><span>回车键</span> 回放</li>
-        <li><span>ESC</span> 隐藏此帮助</li>
+        <li><span>&#8593;</span> <%= i18n.shortcut_up %></li>
+        <li><span>&#8595;</span> <%= i18n.shortcut_down %></li>
+        <li><span>&#8592;</span> <%= i18n.shortcut_previous %></li>
+        <li><span>&#8594;</span> <%= i18n.shortcut_next %></li>
+        <li><span>&#8629;</span> <%= i18n.shortcut_playback %></li>
     </ul>
+    <b class="close"></b>
 </script>
 </body>
 </html>
-<!-- build time: Tue Jun 23 17:52:19 CST 2015-->
+<!-- build time: Fri Jul 31 18:49:53 CST 2015-->

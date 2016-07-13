@@ -128,21 +128,38 @@ public class BattleGroupUI : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void ChangeLife(SpellVitalChangeArgs lifeChange)
     {
-        if (lifeChange.vitalType != (int)VitalType.Vital_Type_Default)
+        if (lifeChange.vitalType != (int)VitalType.Vital_Type_Default &&
+            lifeChange.vitalType != (int)VitalType.Vital_Type_FixLife &&
+            lifeChange.vitalType != (int)VitalType.Vital_Type_Shield
+            )
             return;
 
         BattleUnitUI playerUI = GetPlayerUI(lifeChange.targetID);
         if (playerUI != null)
         {
-            playerUI.lifeBar.SetTargetLife(lifeChange.vitalCurrent, lifeChange.vitalMax);
-            return;
+            if (lifeChange.vitalType!=(int)VitalType.Vital_Type_Shield)
+            {
+                playerUI.lifeBar.SetTargetLife(lifeChange.vitalCurrent, lifeChange.vitalMax);
+                return;
+            }
+            else
+            {
+                playerUI.lifeBar.RefreshShieldUI();
+            }
         }
 
         EnemyUnitUI enemyUI = GetEnemyUI(lifeChange.targetID);
         if (enemyUI != null)
         {
-            enemyUI.lifeBar.SetTargetLife(lifeChange.vitalCurrent, lifeChange.vitalMax);
-            return;
+            if (lifeChange.vitalType != (int)VitalType.Vital_Type_Shield)
+            {
+                enemyUI.lifeBar.SetTargetLife(lifeChange.vitalCurrent, lifeChange.vitalMax);
+                return;
+            }
+            else
+            {
+                playerUI.lifeBar.RefreshShieldUI();
+            }
         }
     }
     //---------------------------------------------------------------------------------------------

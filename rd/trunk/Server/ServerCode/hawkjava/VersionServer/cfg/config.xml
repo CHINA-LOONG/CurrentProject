@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+
+	<app>
+		<addr>0.0.0.0</addr>
+		<port>9000</port>
+		<pool>4</pool>
+		<chanel>test</chanel>
+		<platform>ios</platform>
+		<resourceServer>http://192.168.199.122/resource</resourceServer>
+	</app>
+	
+	<db>
+		<dbConnUrl>jdbc:mysql://192.168.199.122:3306/version</dbConnUrl>
+		<dbUserName>root</dbUserName>
+		<dbPassWord>root</dbPassWord>
+		<dbHbmXml>/cfg/db.xml</dbHbmXml>
+		<entityPackages>com.hawk.version.entity</entityPackages>
+	</db>
+	
+</config>

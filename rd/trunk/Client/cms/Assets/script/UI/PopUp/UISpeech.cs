@@ -5,11 +5,11 @@ using UnityEngine.UI;
 public class UISpeech : UIBase
 {
     public static string ViewName = "UISpeech";
-    
-    public static void Open(string speechId,System.Action<float> callBack=null)
+
+    public static void Open(string speechId, System.Action<float> callBack = null)
     {
         SpeechData info = StaticDataMgr.Instance.GetSpeechData(speechId);
-        if (info==null)
+        if (info == null)
         {
             Logger.Log("缺少本地数据配置…………");
             return;
@@ -101,7 +101,7 @@ public class UISpeech : UIBase
         SpeechStaticData data = info.speechList[index];
         Camp = data.campType;
         imgCurrent.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(data.image);
-        textCurrent.text = data.name;
+        textCurrent.text = StaticDataMgr.Instance.GetAudioByID(data.name);
 
         textContent.text = StaticDataMgr.Instance.GetTextByID(data.speakId);
 

@@ -37,6 +37,12 @@ public class EffectApplyBuff : Effect
             Buff curBuff = spellService.GetBuff(applyBuffProt.buffID);
             if (curBuff != null)
             {
+                GameUnit caster = spellService.GetUnit(casterID);
+                int buffCount = caster.buffList.Count;
+                for (int i = 0; i < buffCount; ++i)
+                {
+                    caster.buffList[i].DamageResponse(applyTime, this);
+                }
                 curBuff.casterID = casterID;
                 curBuff.targetID = targetID;
                 curBuff.SetOwnedSpell(ownedSpell);

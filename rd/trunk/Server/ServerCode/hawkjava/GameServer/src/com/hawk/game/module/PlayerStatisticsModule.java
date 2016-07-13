@@ -28,6 +28,11 @@ public class PlayerStatisticsModule  extends PlayerModule {
 	protected boolean onPlayerLogin() {
 		// 加载统计数据
 		StatisticsEntity statisticsEntity = player.getPlayerData().loadStatistics();
+		
+		// 首次登陆，初始化数据
+		if (statisticsEntity.getLoginCount() == 0) {
+			player.onFirstLogin();
+		}
 
 		statisticsEntity.addLoginCount();
 

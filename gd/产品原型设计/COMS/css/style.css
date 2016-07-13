@@ -26,7 +26,7 @@ body {
   width: 100%;
   height: 100%;
   font: 14px/1 Arial, Microsoft YaHei, Lucida Sans Unicode, Lucida Grande;
-  background-color: #505050;
+  background-color: #707070;
   overflow: hidden;
   user-select: none;
   -moz-user-select: none;
@@ -62,7 +62,7 @@ body {
   height: 100%;
   background-color: #404040;
   position: fixed;
-  padding-left: 20px;
+  padding-left: 10px;
   padding-right: 20px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -85,14 +85,6 @@ body {
   border-bottom: 1px solid #585858;
   padding-bottom: 30px;
 }
-#menu .header h2 {
-  word-break: break-all;
-  font-size: 24px;
-  color: #ffffff;
-  font-weight: 300;
-  margin: 0;
-  line-height: 1.2em;
-}
 #menu .header .logo {
   display: inline-block;
   width: 32px;
@@ -101,11 +93,11 @@ body {
 #menu .config {
   border-bottom: 1px solid #585858;
   border-top: 1px solid #585858;
-  padding: 10px 0;
+  padding: 10px 0 10px 10px;
   color: #b0b0b0;
 }
 #menu .config > div {
-  width: 180px;
+  width: 220px;
   padding: 8px 0;
   margin: 0;
 }
@@ -146,12 +138,19 @@ body {
   outline: none;
 }
 #menu .config .background span {
+  float: left;
   display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 2px;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
   background: #d73300;
   border: 1px solid #000;
+  box-sizing: border-box;
+}
+#menu .config .background:after {
+  content: '';
+  clear: both;
+  display: inline-block;
 }
 #menu .config .help {
   cursor: pointer;
@@ -171,8 +170,9 @@ body {
   color: #ffffff;
   font-weight: 300;
   margin: 0;
-  line-height: 1em;
+  line-height: 1.4em;
   padding-bottom: 24px;
+  padding-left: 10px;
 }
 #menu .tree-view .tree-container {
   overflow: auto;
@@ -193,6 +193,27 @@ body {
 #menu .tree-view ul ul {
   margin-left: 5px;
 }
+#menu .tree-view b {
+  cursor: default;
+}
+#menu .tree-view b em {
+  cursor: default;
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAFnRFWHRDcmVhdGlvbiBUaW1lADA3LzA3LzE1L9wkmQAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAAACZJREFUeNpj+P//PwM6XrNmTQJWQSDGLogigSwIl0AXBEtgEwRhAJoFaFl/conzAAAAAElFTkSuQmCC);
+  margin-right: 6px;
+  margin-bottom: 2px;
+}
+#menu .tree-view .page:before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: transparent;
+  margin-right: 6px;
+}
 #menu .tree-view li {
   margin: 0;
   padding: 0 0 0 1em;
@@ -207,7 +228,7 @@ body {
   width: 136px;
   height: 136px;
   background-color: #ffffff;
-  margin: 16px 0;
+  margin: 16px 0 0 10px;
 }
 #menu .share > div {
   width: 128px;
@@ -238,7 +259,7 @@ body {
   background-color: #404040;
   cursor: col-resize;
   border-left: 2px solid #404040;
-  border-right: 2px solid #505050;
+  border-right: 2px solid #707070;
 }
 #mini-menu {
   position: fixed;
@@ -252,7 +273,7 @@ body {
   width: 24px;
   height: 24px;
   display: inline-block;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFnRFWHRDcmVhdGlvbiBUaW1lADAxLzE0LzE1Y9mX/QAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAABBF0RVh0WE1MOmNvbS5hZG9iZS54bXAAPD94cGFja2V0IGJlZ2luPSIgICAiIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNC4xLWMwMzQgNDYuMjcyOTc2LCBTYXQgSmFuIDI3IDIwMDcgMjI6Mzc6MzcgICAgICAgICI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhhcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyI+CiAgICAgICAgIDx4YXA6Q3JlYXRvclRvb2w+QWRvYmUgRmlyZXdvcmtzIENTMzwveGFwOkNyZWF0b3JUb29sPgogICAgICAgICA8eGFwOkNyZWF0ZURhdGU+MjAxNS0wMS0xNFQxMDozNDoxN1o8L3hhcDpDcmVhdGVEYXRlPgogICAgICAgICA8eGFwOk1vZGlmeURhdGU+MjAxNS0wMS0xNFQxMDozODozOVo8L3hhcDpNb2RpZnlEYXRlPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIj4KICAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9wbmc8L2RjOmZvcm1hdD4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0FuLygAAADJJREFUeNrt0sEJADAMAzHvv7SzRKEkyOC3Ppe2+fGAweDz8IvtgsUlLnGJS1xgMPgQPJd756Xm1bqYAAAAAElFTkSuQmCC) no-repeat;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M1cbXjNgAAADNJREFUeNpj+P//PwO1MIOxsfF/amGwYadOnaIY08YwqnmTqhEweA0bTRqjSWM0aVALAwAYe619KIDpWgAAAABJRU5ErkJggg==) no-repeat;
   opacity: 0.7;
 }
 #mini-menu .menu-icon:hover {
@@ -653,11 +674,8 @@ body {
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
-  box-shadow: 2px 2px 2px #000;
-  -webkit-box-shadow: 2px 2px 2px #000;
-  -moz-box-shadow: 2px 2px 2px #000;
-  -ms-box-shadow: 2px 2px 2px #000;
-  -o-box-shadow: 2px 2px 2px #000;
+  border: 1px solid #404040;
+  display: none;
 }
 .help-shortcut h3 {
   margin: 0;
@@ -672,6 +690,16 @@ body {
 }
 .help-shortcut ul li span {
   margin-right: 20px;
+}
+.help-shortcut b {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFnRFWHRDcmVhdGlvbiBUaW1lADAxLzE0LzE1Y9mX/QAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAAAFFJREFUeNpj+P//PwMtMcOoBaMW0NaCK1eu/AdhcuWJtgCbIfjkSAoibAYRazjRcYBsICmGkxTJ5Bg+eCygaRDRNJJpnkxpntFGC7tRCwaHBQCKsdMzuhXV/wAAAABJRU5ErkJggg==) no-repeat;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
 }
 .comment-content {
   position: absolute;

@@ -7,10 +7,12 @@ public class UIPetList :  UIBase, TabButtonDelegate {
 
     public static string ViewName = PetViewConst.UIPetListAssetName;
 
+    public Text title;
     public Button closeButton;
     public GameObject scrollRect;
     public TabButtonGroup tabGroup;
     public Image srcollIcon;
+
 
     int m_currentIndex = 0;
     GridLayoutGroup m_patContainer = null;
@@ -41,8 +43,12 @@ public class UIPetList :  UIBase, TabButtonDelegate {
     {
        if (GameDataMgr.Instance.PlayerDataAttr.GetAllPet().Count >= GameConfig.MaxMonsterCount)
        {
-           MsgBox.PromptMsg.Open("提示", "拥有过多宠物,快去消耗一些吧\n 有可能不会继续获得宠物", "确定");
+           MsgBox.PromptMsg.Open(StaticDataMgr.Instance.GetTextByID("ui_tishi"),
+                                 StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListFull),
+                                 StaticDataMgr.Instance.GetTextByID("ui_queding"));
        }
+
+       title.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListTitle);
     }
 
     void ReloadPetList()

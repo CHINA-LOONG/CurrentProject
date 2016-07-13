@@ -46,6 +46,7 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, string> assetMapping = new Dictionary<string, string>();
     Dictionary<string, LangStaticData> langData = new Dictionary<string, LangStaticData>();
     Dictionary<string, AssetLangData> assetLang = new Dictionary<string, AssetLangData>();
+    Dictionary<string, string> audioMapping = new Dictionary<string, string>();
 
     public void Init()
     {
@@ -139,6 +140,8 @@ public class StaticDataMgr : MonoBehaviour
                             damagePt.attackFactor = wholeData.attackFactor;
                             damagePt.isHeal = wholeData.isHeal > 0;
                             damagePt.damageProperty = wholeData.damageProperty;
+
+                            damagePt.fixLifeRatio = wholeData.fixLifeRatio;
                         }
                         break;
                     case EffectType.Effect_Type_Buff:
@@ -256,12 +259,12 @@ public class StaticDataMgr : MonoBehaviour
             foreach (var item in data)
                 chapterData.Add(item.chapter, item);
         }
-		
-		{
-			var data = InitTable<InstanceEntry>("instanceEntry");
-			foreach(var item in data)
-			{
-				item.AdaptData();
+
+        {
+            var data = InitTable<InstanceEntry>("instanceEntry");
+            foreach (var item in data)
+            {
+                item.AdaptData();
 
                 instanceEntryData.Add(item.id, item);
             }
@@ -499,6 +502,21 @@ public class StaticDataMgr : MonoBehaviour
             }
             #endregion
         }
+        {
+            #region audioData
+            var data = InitTable<AudioStaticData>("soundinfo");
+            foreach (var item in data)
+            {
+                if (audioMapping.ContainsKey(item.id))
+                {
+                    audioMapping[item.id] = item.sound;
+                    Logger.LogError("error:found the same audio keys");
+                }
+                audioMapping.Add(item.id, item.sound);
+                Debug.Log("id:" + item.id + "\tsound:" + item.sound);
+            }
+            #endregion
+        }
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -707,10 +725,17 @@ public class StaticDataMgr : MonoBehaviour
         LangStaticData item = null;
         langData.TryGetValue(id, out item);
 
-        if (item == null) return id;
-        else if (LanguageMgr.Instance.Lang == Language.English) return string.IsNullOrEmpty(item.english) ? id : item.english;
+        if (item == null) return id+"Œ¥≈‰÷√”Ô—‘";
+        else if (LanguageMgr.Instance.Lang == Language.English) return string.IsNullOrEmpty(item.english) ? id+"”¢ŒƒŒ¥≈‰÷√" : item.english;
         else if (LanguageMgr.Instance.Lang == Language.Chinese) return string.IsNullOrEmpty(item.chinese) ? item.english : item.chinese;
         else return item.english;
+    }
+
+    public string GetAudioByID(string id)
+    {
+        string audio = "";
+        audioMapping.TryGetValue(id, out audio);
+        return audio;
     }
 
     #endregion

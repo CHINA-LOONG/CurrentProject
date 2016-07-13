@@ -122,6 +122,8 @@ MonoBehaviour:
   normalFrame: {fileID: 11458882}
   maskFrame: {fileID: 11422960}
   iconButton: {fileID: 11440124}
+  level: 1
+  spellId: 
 --- !u!114 &11433618
 MonoBehaviour:
   m_ObjectHideFlags: 1

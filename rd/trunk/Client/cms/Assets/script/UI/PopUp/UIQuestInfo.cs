@@ -43,7 +43,7 @@ public class UIQuestInfo : UIBase
 
     void ShowWithData(QuestInfo info)
     {
-        text_Quest.text =info.staticData.name;
+        text_Quest.text =StaticDataMgr.Instance.GetTextByID(info.staticData.name);
         SetReward(info.staticData.rewardId);
     }
 
@@ -136,7 +136,7 @@ public class UIQuestInfo : UIBase
     void OnLanguageChanged()
     {
         //TODO: change language
-        text_Title.text = StaticDataMgr.Instance.GetTextByID("quest_renwujiangli");
-        text_Finish.text = StaticDataMgr.Instance.GetTextByID("quest_wanchengrenwu");
+        text_Title.text = StaticDataMgr.Instance.GetTextByID("quest_reward_title");
+        text_Finish.text = StaticDataMgr.Instance.GetTextByID("quest_reward_wancheng");
     }
 }

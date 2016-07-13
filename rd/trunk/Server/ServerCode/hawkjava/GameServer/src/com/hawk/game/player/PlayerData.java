@@ -423,6 +423,7 @@ public class PlayerData {
 //				}
 			} else {
 				statisticsEntity = new StatisticsEntity(getId());
+				statisticsEntity.setSkillPoint(10);
 				statisticsEntity.notifyCreate();
 
 //				// 新号上报数据

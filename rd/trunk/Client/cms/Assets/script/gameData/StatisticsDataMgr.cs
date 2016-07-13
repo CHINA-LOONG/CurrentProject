@@ -53,13 +53,13 @@ public class StatisticsDataMgr : MonoBehaviour {
     public int GetSkillPoint()
     {
         int clientTime = GameTimeMgr.Instance.TimeStamp();
-        int currentPoint = (GameTimeMgr.Instance.TimeStamp() + timeDiffer - skillTimeBegin) / GameConfig.SkillPointTime + SkillPoints;
+        int currentPoint = (GameTimeMgr.Instance.TimeStamp() - timeDiffer - skillTimeBegin) / GameConfig.SkillPointTime + SkillPoints;
         return currentPoint > GameConfig.MaxSkillPoint ? GameConfig.MaxSkillPoint : currentPoint;  
     }
 
     public int GetSkillPointLeftTime()
     {
-        return GameConfig.SkillPointTime - (GameTimeMgr.Instance.TimeStamp() + timeDiffer - skillTimeBegin) % GameConfig.SkillPointTime;
+        return GameConfig.SkillPointTime - (GameTimeMgr.Instance.TimeStamp() - timeDiffer - skillTimeBegin) % GameConfig.SkillPointTime;
     }
 
     public bool isMaxPoint()

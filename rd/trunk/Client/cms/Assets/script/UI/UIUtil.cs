@@ -123,7 +123,7 @@ public class UIUtil
         }
     }
 
-    public static bool CheckIsEnoughMaterial(GameUnit unit, bool checkCoin = true)
+    public static bool CheckIsEnoughMaterial(GameUnit unit)
     {
         if (unit.pbUnit.stage == GameConfig.MaxMonsterStage)
         {
@@ -151,7 +151,7 @@ public class UIUtil
         }
     
         //金钱判断
-        if (checkCoin == true && GameDataMgr.Instance.PlayerDataAttr.coin <= unitStageData.demandCoin)
+        if (GameDataMgr.Instance.PlayerDataAttr.coin <= unitStageData.demandCoin)
         {
             return false;
         }
@@ -238,5 +238,17 @@ public class UIUtil
             label.text = string.Format("{0} +{1}", StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id).NickNameAttr, plusQuality);
         }
 
+    }
+
+    public static void GetAttrValue(GameUnit unit, int stage, out int health, out int strength, out int inteligence, out int defence, out int speed)
+    {
+        int grade = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id).grade;
+        UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(stage);
+        UnitData unitData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
+        health = (int)((1 + unitStageData.modifyRate) * unitData.healthModifyRate * (unit.health + unitStageData.health));
+        strength = (int)((1 + unitStageData.modifyRate) * unitData.strengthModifyRate * (unit.strength + unitStageData.strength));
+        inteligence = (int)((1 + unitStageData.modifyRate) * unitData.intelligenceModifyRate * (unit.intelligence + unitStageData.intelligence));
+        defence = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * (unit.defense + unitStageData.defense));
+        speed = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * (unit.speed + unitStageData.speed));
     }
 }

@@ -5,8 +5,8 @@ public class UserData : MonoBehaviour
 {
 	public	string guid ;
 	public	string deviceID ;
-	public	string platform;
-	public 	string	version;
+	//public	string platform;
+	//public 	string	version;
 	public	string	token;
 
 	public void Init()
@@ -20,8 +20,7 @@ public class UserData : MonoBehaviour
 			Logger.Log ("New guid = " + guid);
 		}
 
-		platform = SystemInfo.deviceModel;
-		version = "0.2.1";
+		//platform = SystemInfo.deviceModel;
 		token = "tokenT";
 	}
 }

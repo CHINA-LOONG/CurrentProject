@@ -32,7 +32,7 @@ public class PopupList : MonoBehaviour
     }
     public Position position = Position.Above;
 
-    public Font textFont;
+    //public Font textFont;
     public Color fontColor = new Color(0, 0, 0);
     public TextAnchor itemAnchor=TextAnchor.MiddleCenter;
     public FontStyle itemStyle=FontStyle.Normal;
@@ -204,7 +204,7 @@ public class PopupList : MonoBehaviour
             item.transform.localPosition = Vector3.zero;
             item.transform.localScale = Vector3.one;
             Text text = item.GetComponentInChildren<Text>();
-            text.font = textFont;
+			text.font = m_cutText.font;
             text.color = fontColor;
             text.fontStyle = itemStyle;
             text.alignment = itemAnchor;

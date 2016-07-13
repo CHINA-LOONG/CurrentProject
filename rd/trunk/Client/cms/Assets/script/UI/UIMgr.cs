@@ -34,8 +34,8 @@ public class UIMgr : MonoBehaviour
 		{
 			if (mInst == null)
 			{
-				GameObject ui = ResourceMgr.Instance.LoadAsset("UIRoot");
-				ui.name = "UIMgr";
+				GameObject ui = GameObject.Find("/UIRoot");
+				//ui.name = "UIMgr";
 				mInst = ui.AddComponent<UIMgr>();
 			}
 			return mInst;

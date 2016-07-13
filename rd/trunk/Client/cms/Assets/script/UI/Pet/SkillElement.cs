@@ -53,7 +53,7 @@ public class SkillElement : MonoBehaviour {
         }
     }
 
-    public void ReloadData(string spellId, Spell spell, GameUnit unit)
+    public void ReloadData(string spellId, Spell spell, GameUnit unit, bool canUpgrade)
     {
         m_spellId = spellId;
         m_spell = spell;
@@ -63,29 +63,40 @@ public class SkillElement : MonoBehaviour {
         nextlevelLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillNextLeve);
 
         type.text = spell.spellData.GetTypeName();
-        level.text = string.Format("( {0} / {1})", spell.level, unit.pbUnit.level);
+        level.text = string.Format("( {0} / {1})", spell.level, GameConfig.MaxMonsterLevel);
         
         currentTips.text = spell.spellData.GetTips(spell.level);
-        if (spell.level == GameConfig.MaxMonsterLevel)
+        if (canUpgrade == true)
         {
-            nextTips.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillMaxLeve);
-            cost.text = "";
-        }
-        else
-        {
-            nextTips.text = spell.spellData.GetTips(spell.level + 1);
-            cost.text = StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1).ToString();
-        }
+            if (spell.level == GameConfig.MaxMonsterLevel)
+            {
+                nextTips.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillMaxLeve);
+                cost.text = "0";
+            }
+            else
+            {
+                nextTips.text = spell.spellData.GetTips(spell.level + 1);
+                cost.text = StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1).ToString();
+            }
 
-        if (spell.level >= unit.pbUnit.level)
-        {
-            levelBtn.interactable = false;
-            EventTriggerListener.Get(levelBtn.gameObject).onClick = null;
+            levelBtn.gameObject.SetActive(true);
+
+            if (spell.level >= unit.pbUnit.level)
+            {
+                levelBtn.interactable = false;
+                EventTriggerListener.Get(levelBtn.gameObject).onClick = null;
+            }
+            else
+            {
+                levelBtn.interactable = true;
+                EventTriggerListener.Get(levelBtn.gameObject).onClick = LevelButtonDown;
+            }
         }
         else
         {
-            levelBtn.interactable = true;
-            EventTriggerListener.Get(levelBtn.gameObject).onClick = LevelButtonDown;
-        }
+            nextTips.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillNoUpgrade);
+            levelBtn.gameObject.SetActive(false);
+            cost.text = "0";
+        }   
     }
 }

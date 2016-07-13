@@ -75,7 +75,9 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
 
             if (error.errCode == (int)PB.monsterError.SKILL_POINT_NOT_ENOUGH)
             {
-                MsgBox.PromptMsg.Open("提示","技能点不足", "确定");
+                MsgBox.PromptMsg.Open(StaticDataMgr.Instance.GetTextByID("ui_tishi"),
+                                      StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillPointNotEnough),
+                                      StaticDataMgr.Instance.GetTextByID("ui_queding"));
             }
 
             return;
@@ -105,24 +107,24 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
     {
         if (spell.spellData.category == (int)SpellType.Spell_Type_PhyAttack)
         {
-            skillElements[(int)PetViewConst.SkillIndex.SKILL_PHY_INDEX].ReloadData(spellId, spell, unit);
+            skillElements[(int)PetViewConst.SkillIndex.SKILL_PHY_INDEX].ReloadData(spellId, spell, unit, true);
         }
         else if (spell.spellData.category == (int)SpellType.Spell_Type_MgicAttack || spell.spellData.category == (int)SpellType.Spell_Type_Cure)
         {
-            skillElements[(int)PetViewConst.SkillIndex.SKILL_MAGIC_INDEX].ReloadData(spellId, spell, unit);
+            skillElements[(int)PetViewConst.SkillIndex.SKILL_MAGIC_INDEX].ReloadData(spellId, spell, unit, true);
         }
-        else if (spell.spellData.category == (int)SpellType.Spell_Type_Dot)
+        else if (spell.spellData.category == (int)SpellType.Spell_Type_Dot || spell.spellData.category == (int)SpellType.Spell_Type_Beneficial || spell.spellData.category == (int)SpellType.Spell_Type_Negative)
         {
             skillElements[(int)PetViewConst.SkillIndex.SKILL_BUFF_INDEX].gameObject.SetActive(true);
-            skillElements[(int)PetViewConst.SkillIndex.SKILL_BUFF_INDEX].ReloadData(spellId, spell, unit);
+            skillElements[(int)PetViewConst.SkillIndex.SKILL_BUFF_INDEX].ReloadData(spellId, spell, unit, spell.spellData.category == (int)SpellType.Spell_Type_Dot ? true : false);
         }
         else if (spell.spellData.category == (int)SpellType.Spell_Type_Passive)
         {
-            skillElements[(int)PetViewConst.SkillIndex.SKILL_PASSIVE_INDEX].ReloadData(spellId, spell, unit);
+            skillElements[(int)PetViewConst.SkillIndex.SKILL_PASSIVE_INDEX].ReloadData(spellId, spell, unit, false);
         }
         else if (spell.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao || spell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao)
         {
-            skillElements[(int)PetViewConst.SkillIndex.SKILL_DAZHAO_INDEX].ReloadData(spellId, spell, unit);
+            skillElements[(int)PetViewConst.SkillIndex.SKILL_DAZHAO_INDEX].ReloadData(spellId, spell, unit, true);
         }
     }
 

@@ -38,6 +38,7 @@ public class WeakPointData
 	public string stateparam4;
 
 	public string desc;
+	public int descOnRight;
 
 	//
 	public Hashtable state0;

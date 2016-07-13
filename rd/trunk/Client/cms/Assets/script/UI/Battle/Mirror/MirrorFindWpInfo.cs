@@ -4,7 +4,8 @@ using System.Collections;
 
 public class MirrorFindWpInfo : MonoBehaviour
 {
-	public Text wpInfoText;
+	public Text wpInfoTextRight;
+	public Text wpInfoTextLeft;
 	public Image wpInfoImage;
 
 	RectTransform rectTrans;
@@ -16,7 +17,8 @@ public class MirrorFindWpInfo : MonoBehaviour
 	
 	public void Clear()
 	{
-		wpInfoText.text = "";
+		wpInfoTextRight.text = "";
+		wpInfoTextLeft.text = "";
 		wpInfoImage.enabled = false;
 	}
 
@@ -43,6 +45,15 @@ public class MirrorFindWpInfo : MonoBehaviour
 			wpInfoImage.sprite = image;
 		}
 
-		wpInfoText.text = wpRuntime.staticData.DescAttr;
+		if (wpRuntime.staticData.descOnRight == 1)
+		{
+			wpInfoTextRight.text = wpRuntime.staticData.DescAttr;
+			wpInfoTextLeft.text = "";
+		} 
+		else
+		{
+			wpInfoTextLeft.text = wpRuntime.staticData.DescAttr;
+			wpInfoTextRight.text = "";
+		}
 	}
 }

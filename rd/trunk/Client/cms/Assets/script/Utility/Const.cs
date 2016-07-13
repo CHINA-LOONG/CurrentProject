@@ -13,7 +13,8 @@ public class Const
     {
         get
         {
-            return !Application.isMobilePlatform;
+			//return false;
+           return !Application.isMobilePlatform;
         }
     }
 
@@ -22,7 +23,7 @@ public class Const
     /// 更新模式下会从web server上获取version list，然后下载更新包更新版本
     /// ios初审时请关闭
     /// </summary>
-    public static bool UpdateMode = false;
+    public static bool UpdateMode = true;
 
 	public static bool DebugConsoleEnable = true;
 
@@ -31,16 +32,16 @@ public class Const
     public static int GameFrameRate = 30;
 
     //更新地址
-    public static string WebUrl = "http://localhost/versions/";
+	public static string WebUrl = "http://192.168.199.122:9000/resource_control";
     public static string UpdateUrl
     {
         get
         {
             string url = WebUrl;
 #if UNITY_IOS
-            url += "ios/";
+          //  url += "ios/";
 #else
-            url += "android/";
+          //  url += "android/";
 #endif
             return url;
         }
@@ -71,4 +72,29 @@ public class Const
     public static int TestSocketPort = 9596;                      //测试Socket服务器端口
     public static string LocalAddress = "192.168.199.122";              //本地Socket服务器地址
     public static string RemoteAddress = "123.59.45.55";          //远程Socket服务器地址
+
+	//关于打包的一些配置 todo:move to config file for auto package
+	public	static	int		versionCode = 1;//程序版本号
+	public	static	string	versionName = "1.0.0";
+	private	static	int		resouceCode = 1;//资源版本号 
+
+	public	static	string	channel = "test";//渠道号
+	public	static	string	platform = "ios";//平台 ios  android
+
+	public	static	int	ResouceCodeAttr
+	{
+		get
+		{
+			int savecode = PlayerPrefs.GetInt("resouceCode");
+			if(savecode < resouceCode)
+				return resouceCode;
+			return savecode;
+		}
+	}
+
+	public static void SetResouceCode(int resCode)
+	{
+		PlayerPrefs.SetInt ("resouceCode", resCode);
+	}
+
 }

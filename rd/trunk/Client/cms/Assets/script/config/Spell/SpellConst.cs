@@ -58,7 +58,10 @@ public enum BuffType
     Buff_Type_Debuff,
     Buff_Type_Benefit,
     Buff_Type_Dazhao,
-
+    Buff_Type_PhyJanshang,
+    Buff_Type_MgJanshang,
+    Buff_Type_PhyShield,
+    Buff_Type_MgShield,
     Num_Buff_Type
 }
 
@@ -66,6 +69,7 @@ public enum BuffFinisType
 {
     Buff_Finish_Expire,
     Buff_Finish_Dispel,
+    Buff_Finish_Replace,
 
     Num_Buff_FinishType
 }
@@ -108,6 +112,9 @@ public enum VitalType
     Vital_Type_Miss,
     Vital_Type_Interrupt,
     Vital_Type_FirstSpell,
+    Vital_Type_FixLife,//置血量
+    Vital_Type_Absorbed,//吸收
+    Vital_Type_Shield,//物理护盾/法术护盾
 
     Num_Vital_Type
 }

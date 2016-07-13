@@ -19,7 +19,7 @@ public class InstanceButton : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		EventTriggerListener.Get (button.gameObject).onClick = OnButtonClick;		
+		//EventTriggerListener.Get (button.gameObject).onClick = OnButtonClick;		
 	}
 
 	void OnButtonClick(GameObject go)

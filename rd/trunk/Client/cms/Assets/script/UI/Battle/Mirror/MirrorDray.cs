@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;  
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, IDragHandler,IPointerClickHandler
 {
@@ -20,31 +21,49 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 	List<MirrorTarget> newFindTargetList =new List<MirrorTarget>();
 	List<MirrorTarget> finishFindTargett = new List<MirrorTarget>();
 	List<MirrorTarget> outFindTarget = new List<MirrorTarget> ();
-	Image mirrorUi;
+	//Image mirrorUi;
 	Image MirrorDragImage;
+	Animator mirrorUIAnimator;
+
 
 	bool isDragging = false;
 
-	public void Init(Image mirrorUi)
+	int mirrorStateHash = -1;
+
+	ParticleEffect mirrorExitEffect = null;
+
+	public void Init(GameObject mirrorUi)
 	{
+		mirrorStateHash = Animator.StringToHash ("mirrorState");
 		m_MirrorRaycast = gameObject.AddComponent<MirrorRaycast> ();
 		rectTrans = transform as RectTransform;
-		this.mirrorUi = mirrorUi;
+
+		mirrorUIAnimator = mirrorUi.GetComponent < Animator> ();
 
 		MirrorDragImage = Util.FindChildByName (gameObject, "MirrorDragImage").GetComponent<Image> ();
+
+		//baozha_fire
+		mirrorExitEffect = ParticleEffect.CreateEffect (BattleController.Instance.GetUIBattle ().publicTopGroup, "baozha_fire");
+		mirrorExitEffect.gameObject.SetActive (false);
 
 		ResetMirror ();
 	}
 
 	public void ResetMirror()
 	{
-		MirrorDragImage.gameObject.SetActive (false);
-		mirrorUi.gameObject.SetActive (true);
-		RectTransform mirrorUiRt = mirrorUi.rectTransform;
+		//MirrorDragImage.gameObject.SetActive (false);
+		MirrorDragImage.DOFade (0, 1.5f).OnComplete (OnResetMiirror);
+	//	mirrorUi.gameObject.SetActive (true);
+		mirrorUIAnimator.SetInteger (mirrorStateHash, 2);
+	}
 
+	void OnResetMiirror()
+	{
+		RectTransform mirrorUiRt = mirrorUIAnimator.transform.parent.transform as RectTransform;
+		
 		Vector3 screenPos = UICamera.Instance.CameraAttr.WorldToScreenPoint (mirrorUiRt.position);
 		screenPos /= UIMgr.Instance.CanvasAttr.scaleFactor ;
-
+		
 		screenPos.x += (rectTrans.pivot.x - 0.5f) * rectTrans.sizeDelta.x;
 		screenPos.y += (rectTrans.pivot.y - 0.5f) * rectTrans.sizeDelta.y;
 		rectTrans.anchoredPosition = screenPos ;
@@ -77,8 +96,11 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
             return;
 
 		isDragging = false;
-		MirrorDragImage.gameObject.SetActive (true);
-		mirrorUi.gameObject.SetActive (false);
+		//MirrorDragImage.gameObject.SetActive (true);
+		MirrorDragImage.DOFade (1.0f, 0.5f);
+
+		//mirrorUi.gameObject.SetActive (false);
+		mirrorUIAnimator.SetInteger (mirrorStateHash, 1);
 		rectTrans.anchoredPosition = GetMirrorScreenPosition (Input.mousePosition);	
 		OnSetMirrorModeState (true);
 	}  
@@ -128,12 +150,31 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 	{
 		if (isMirror) 
 		{
+			mirrorExitEffect.gameObject.SetActive(false);
 			StartRayCast();
 		} 
 		else 
 		{
 			ResetMirror();
 			StopRayCast();
+			mirrorExitEffect.gameObject.SetActive(true);
+			RectTransform rt = mirrorExitEffect.transform as RectTransform;
+			//rt.anchoredPosition = new Vector2(300,300);
+			if(rt != null )
+			{
+				Vector3 mirrorScreenPos = UIUtil.GetSpacePos(transform as RectTransform,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
+				mirrorScreenPos.x -= (rectTrans.pivot.x -0.5f)*rectTrans.sizeDelta.x;
+				mirrorScreenPos.y -= (rectTrans.pivot.y -0.5f)*rectTrans.sizeDelta.y;
+
+				float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
+				rt.anchoredPosition = new Vector2(mirrorScreenPos.x/fscale,mirrorScreenPos.y/fscale);
+			}
+			else
+			{
+				//test
+				mirrorExitEffect.transform.position = Vector3.zero;
+			}
+
 		}
 	}
 

@@ -12,6 +12,7 @@ public class PetDetailLeft : MonoBehaviour {
 
     public Text     expLabel;
     public Text     characterLabel;
+    public Text     character;
     public Slider   expProgress;
     public Text     expContent;
 
@@ -86,7 +87,7 @@ public class PetDetailLeft : MonoBehaviour {
         expLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftexperience);
         characterLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftcharacter);
         attrLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttr);
-
+        character.text = unit.pbUnit.character.ToString();
         zhanli.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftBattle), unit.attackCount);
         level.text = "Lv." + unit.pbUnit.level;
         property.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftProprety);
@@ -118,13 +119,8 @@ public class PetDetailLeft : MonoBehaviour {
         stageBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftStage);
         advanceBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAdvance);
 
-        UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(unit.pbUnit.stage);
-        UnitData unitData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
-        int healthValue = (int)((1 + unitStageData.modifyRate) * unitData.healthModifyRate * (unit.health + unitStageData.health));
-        int strengthValue = (int)((1 + unitStageData.modifyRate) * unitData.strengthModifyRate * (unit.health + unitStageData.strength));
-        int inteligenceValue = (int)((1 + unitStageData.modifyRate) * unitData.intelligenceModifyRate * (unit.health + unitStageData.intelligence));
-        int defenceValue = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * (unit.health + unitStageData.defense));
-        int speedValue = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * (unit.health + unitStageData.speed));
+        int healthValue, strengthValue, defenceValue, inteligenceValue, speedValue;
+        UIUtil.GetAttrValue(unit, unit.pbUnit.stage, out healthValue, out strengthValue, out inteligenceValue, out defenceValue, out speedValue);
 
         health.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrHealth), healthValue);
         strength.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrDefence), strengthValue);

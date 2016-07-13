@@ -102,6 +102,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     void OnSpeechButtonClick(GameObject go)
     {
         UISpeech.Open(m_SpeechInput.text);
+        AudioSystemMgr.Instance.PlaySound(go,SoundType.Click);
     }
 
 	void OnCachMonsterFinished(ProtocolMessage msg)

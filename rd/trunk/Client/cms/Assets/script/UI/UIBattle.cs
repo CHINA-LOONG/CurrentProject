@@ -228,7 +228,18 @@ public class UIBattle : UIBase
 		if (null != m_MirrorImage)
 		{
 			m_MirrorDray = m_MirrorImage.gameObject.AddComponent<MirrorDray>();
-			m_MirrorDray.Init(mirrorUI);
+
+			GameObject uigo = ResourceMgr.Instance.LoadAsset("MirrorUI");
+			uigo.transform.SetParent(mirrorUI.transform,false);
+			uigo.transform.localPosition = Vector3.zero;
+
+			var img = mirrorUI.GetComponent<Image>();
+			if(null != img)
+			{
+				img.enabled = false;
+			}
+
+			m_MirrorDray.Init(uigo);
 			//Debug.LogError("liwsTest: UIBattle is Load And MirrorDray component added");
 		}
 		else

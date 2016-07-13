@@ -119,7 +119,6 @@ public class Spell
         //    spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
         //}
 
-
         Effect rootEffect = spellService.GetEffect(spellData.rootEffectID);
         if (rootEffect != null)
         {
