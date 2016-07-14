@@ -129,6 +129,7 @@ public class Spell
 
         args.aniTime = spellLength;
         args.firstSpell = (spellData.category == (int)SpellType.Spell_Type_Passive) ? spellData.firstSpell : null;
+        args.category = spellData.category;
         spellService.TriggerEvent(GameEventList.SpellFire, args);
     }
 

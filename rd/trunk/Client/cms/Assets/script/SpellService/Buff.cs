@@ -144,7 +144,7 @@ public class Buff
 
         //hot and dot
         ++periodCount;
-        if (buffProto.periodEffectID.Length > 0)
+		if (!string.IsNullOrEmpty(buffProto.periodEffectID))
         {
             Logger.Log("[SpellService]take periodic effect");
             Effect eft = spellService.GetEffect(buffProto.periodEffectID);
@@ -437,14 +437,18 @@ public class Buff
                 {
                     if (phyShield + damageAmount >= 0)
                     {
-                        //TODO: trigger shield event
                         phyShield += damageAmount;
                         damageAmount = 0;
                         //trigger shield ui event
                         SpellVitalChangeArgs args = new SpellVitalChangeArgs();
                         args.vitalType = (int)VitalType.Vital_Type_Absorbed;
+                        args.targetID = targetID;
                         args.triggerTime = curTime;
                         spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
+
+                        SpellEffectArgs effectArgs = new SpellEffectArgs();
+                        effectArgs.targetID = targetID;
+                        spellService.TriggerEvent(GameEventList.SpellAbsrobed, effectArgs);
                     }
                     else
                     {
@@ -456,6 +460,7 @@ public class Buff
                     SpellVitalChangeArgs phyShieldArgs = new SpellVitalChangeArgs();
                     phyShieldArgs.vitalType = (int)VitalType.Vital_Type_Shield;
                     phyShieldArgs.triggerTime = curTime;
+                    phyShieldArgs.targetID = targetID;
                     phyShieldArgs.vitalCurrent = phyShield;
                     phyShieldArgs.vitalMax = (int)BuffType.Buff_Type_PhyShield;
                     spellService.TriggerEvent(GameEventList.SpellLifeChange, phyShieldArgs);
@@ -467,7 +472,6 @@ public class Buff
                 {
                     if (magicShield + damageAmount >= 0)
                     {
-                        //TODO: trigger shield event
                         magicShield += damageAmount;
                         damageAmount = 0;
                         //trigger shield ui event
@@ -475,6 +479,10 @@ public class Buff
                         args.vitalType = (int)VitalType.Vital_Type_Absorbed;
                         args.triggerTime = curTime;
                         spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
+
+                        SpellEffectArgs effectArgs = new SpellEffectArgs();
+                        effectArgs.targetID = targetID;
+                        spellService.TriggerEvent(GameEventList.SpellAbsrobed, effectArgs);
                     }
                     else
                     {
@@ -527,6 +535,7 @@ public class Buff
                     curEffect.SetOwnedSpell(ownedSpell);
                     curEffect.casterID = targetID;
                     curEffect.targetID = triggerEffect.casterID;
+                    curEffect.noDamageResponse = true;
                     curEffect.Apply(curTime, null);
                 }
             }

@@ -4,6 +4,10 @@ using System.Collections;
 
 public class DazhaoTip : MonoBehaviour 
 {
+	public	Text lbDazhao;
+	public	Text lbClick;
+	public	Text lbShifang;
+
 	public Text timeText;
 	public Text attackText;
 	private bool isShow = false;
@@ -23,6 +27,9 @@ public class DazhaoTip : MonoBehaviour
 	{
 		isShow = true;
 		gameObject.SetActive (true);
+		lbDazhao.text = StaticDataMgr.Instance.GetTextByID ("dazhao_jieduan");
+		lbClick.text = StaticDataMgr.Instance.GetTextByID ("dazhao_click");
+		lbShifang.text = StaticDataMgr.Instance.GetTextByID ("dazhao_shifang");
 	}
 
 	public void Hide()

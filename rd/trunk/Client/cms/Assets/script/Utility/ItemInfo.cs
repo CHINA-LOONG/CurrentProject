@@ -92,6 +92,9 @@ public class ItemInfo
     public static List<ItemInfo> getItemInfoList(string info, ItemParseType type)
     {        
         List<ItemInfo> itemInfos = new List<ItemInfo>();
+		if (string.IsNullOrEmpty (info))
+			return itemInfos;
+
         string[] items = info.Split(',');
         for (int i = 0; i < items.Length; i++)
         {

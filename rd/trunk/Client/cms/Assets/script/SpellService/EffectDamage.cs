@@ -31,10 +31,13 @@ public class EffectDamage : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, string wpID)
+    public override bool Apply(float applyTime, string wpID)
     {
-        base.Apply(applyTime, wpID);
+        if (base.Apply(applyTime, wpID) == false)
+            return false;
+
         CalculateDamage(wpID);
+        return true;
     }
     //---------------------------------------------------------------------------------------------
     public override int CalculateHit()
@@ -227,18 +230,22 @@ public class EffectDamage : Effect
                     if (damageAmount < 0)
                     {
                         //伤害反应
-                        //caster
-                        buffCount = caster.buffList.Count;
-                        for (int i = 0; i < buffCount; ++i)
+                        if (noDamageResponse == false)
                         {
-                            caster.buffList[i].DamageResponse(applyTime, this);
+                            //caster
+                            buffCount = caster.buffList.Count;
+                            for (int i = 0; i < buffCount; ++i)
+                            {
+                                caster.buffList[i].DamageResponse(applyTime, this);
+                            }
+                            //target
+                            buffCount = target.buffList.Count;
+                            for (int i = 0; i < buffCount; ++i)
+                            {
+                                target.buffList[i].DamageResponse(applyTime, this);
+                            }
                         }
-                        //target
-                        buffCount = target.buffList.Count;
-                        for (int i = 0; i < buffCount; ++i)
-                        {
-                            target.buffList[i].DamageResponse(applyTime, this);
-                        }
+
                         target.curLife += damageAmount;
                         if (target.curLife <= 0)
                         {
@@ -279,6 +286,16 @@ public class EffectDamage : Effect
                         args.wpNode = string.Empty;
                     }
                     spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
+                }
+
+                //link effect
+                Effect curEffect = spellService.GetEffect(protoEffect.linkEffect);
+                if (curEffect != null)
+                {
+                    curEffect.SetOwnedBuff(ownedBuff);
+                    curEffect.SetOwnedSpell(ownedSpell);
+                    curEffect.targetID = targetID;
+                    curEffect.Apply(applyTime, wpID);
                 }
             }
         }       

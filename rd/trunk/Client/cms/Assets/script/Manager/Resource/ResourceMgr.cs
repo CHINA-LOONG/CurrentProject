@@ -11,26 +11,24 @@ public delegate void AssetLoadedCallBack(GameObject instance, System.EventArgs a
 // asynchronous request
 public class AssetRequest
 {
-    //public bool isScene = false;
+    public bool isAdditive = false;//
     //public SceneLoadedCallBack sceneCallBack = null;
     public string name = null;
-    public string bundleName = null;
 
     public System.EventArgs args = null;
     public AssetLoadedCallBack assetCallBack = null;
 
-    public AssetRequest(string bundleName, string name)
+    public AssetRequest(string name)
     {
-        this.bundleName = bundleName;
         this.name = name;
     }
 
-    public AssetRequest(string bundleName, string name, AssetLoadedCallBack callBack, System.EventArgs args = null)
+    public AssetRequest(string name, AssetLoadedCallBack callBack, System.EventArgs args = null, bool additive = false)
     {
-        this.bundleName = bundleName;
         this.name = name;
         this.assetCallBack = callBack;
         this.args = args;
+        this.isAdditive = additive;
     }
 }
 //---------------------------------------------------------------------------------------------
@@ -57,10 +55,16 @@ public class ResourceMgr : MonoBehaviour
     private List<string> abRequestToRemoveList = new List<string>();
     private Dictionary<string, AssetBundleCreateRequest> abRequestList = new Dictionary<string, AssetBundleCreateRequest>();
 
+    private List<AssetBundleLoadOperation> inProgressLoadList = new List<AssetBundleLoadOperation>();
     static ResourceMgr mInst = null;
     public SpawnPool objectPool = null;
     //pooled prefab
     private Dictionary<string, GameObject> battlePoolList = new Dictionary<string,GameObject>();
+
+    void Awake()
+    {
+        int a = 0;
+    }
 
     public static ResourceMgr Instance
     {
@@ -97,7 +101,17 @@ public class ResourceMgr : MonoBehaviour
             abRequestList.Remove(key);
         }
 
-        abRequestList.Clear();
+        abRequestToRemoveList.Clear();
+
+        for (int i = 0; i < inProgressLoadList.Count; )
+        {
+            if (!inProgressLoadList[i].Update())
+            {
+                inProgressLoadList.RemoveAt(i);
+            }
+            else
+                i++;
+        }
     }
     //---------------------------------------------------------------------------------------------
     /// <summary>
@@ -105,6 +119,7 @@ public class ResourceMgr : MonoBehaviour
     /// </summary>
     public void Init()
     {
+        DontDestroyOnLoad(gameObject);
         if (assetbundle != null)
         {
             Logger.LogError("warning, resource manager is inited already, destroy may failed last time!");
@@ -127,9 +142,43 @@ public class ResourceMgr : MonoBehaviour
         }
 		
     }
-    //---------------------------------------------------------------------------------------------
-    public void LoadAssetAsyn(string abname, string name, AssetLoadedCallBack callBack = null, System.EventArgs args = null)
+    public void LoadLevelAsyn(string levelName, bool isAdditive, AssetLoadedCallBack callBack = null, System.EventArgs args = null)
     {
+        name = StaticDataMgr.Instance.GetRealName(levelName);
+        StartCoroutine(LoadLevelRequest(new AssetRequest(levelName, callBack, args, isAdditive)));
+    }
+    //---------------------------------------------------------------------------------------------
+    public IEnumerator LoadLevelRequest(AssetRequest request)
+    {
+        string abname = StaticDataMgr.Instance.GetBundleName(request.name).ToLower();
+        LoadAssetBundleAsync(abname);
+        AssetLevelLoadOperation loadLevelOperation = new AssetLevelLoadOperation(
+            abname,
+            request.name,
+            typeof(GameObject),
+            request.isAdditive
+            );
+
+        if (loadLevelOperation == null)
+            yield break;
+
+
+        inProgressLoadList.Add(loadLevelOperation);
+        yield return StartCoroutine(loadLevelOperation);
+
+        //if (request.assetCallBack != null)
+        //{
+        //    request.assetCallBack(, request.args, GetLoadedAssetBundle(abname).assetBundle);
+        //}
+
+        UnloadAssetBundle(abname);
+        Resources.UnloadUnusedAssets();
+        System.GC.Collect();
+    }
+    //---------------------------------------------------------------------------------------------
+    public void LoadAssetAsyn(string name, AssetLoadedCallBack callBack = null, System.EventArgs args = null)
+    {
+        name = StaticDataMgr.Instance.GetRealName(name);
         GameObject obj;
         if ((obj = GetPoolObject(name)) != null)
         {
@@ -140,14 +189,15 @@ public class ResourceMgr : MonoBehaviour
             return;
         }
 
-        StartCoroutine(LoadAssetRequest(new AssetRequest(abname, name, callBack, args)));
+        StartCoroutine(LoadAssetRequest(new AssetRequest(name, callBack, args)));
     }
     //---------------------------------------------------------------------------------------------
     public IEnumerator LoadAssetRequest(AssetRequest request)
     {
-        LoadAssetBundleAsync(request.bundleName);
+        string abname = StaticDataMgr.Instance.GetBundleName(request.name).ToLower();
+        LoadAssetBundleAsync(abname);
         AssetBundleLoadAssetOperationFull loadAssetOperate = new AssetBundleLoadAssetOperationFull(
-            request.bundleName,
+            abname,
             request.name,
             typeof(GameObject)
             );
@@ -155,16 +205,17 @@ public class ResourceMgr : MonoBehaviour
         if (loadAssetOperate == null)
             yield break;
 
+        inProgressLoadList.Add(loadAssetOperate);
         yield return StartCoroutine(loadAssetOperate);
 
         GameObject prefab = loadAssetOperate.GetAsset<GameObject>();
         CreatePoolObject(prefab);
         if (request.assetCallBack != null)
         {
-            request.assetCallBack(Instantiate(prefab), request.args, GetLoadedAssetBundle(request.bundleName).assetBundle);
+            request.assetCallBack(Instantiate(prefab), request.args, GetLoadedAssetBundle(abname).assetBundle);
         }
 
-        UnloadAssetBundle(request.bundleName);
+        UnloadAssetBundle(abname);
         Resources.UnloadUnusedAssets();
         System.GC.Collect();
     }
@@ -249,6 +300,7 @@ public class ResourceMgr : MonoBehaviour
             if (loadAssetOperate == null)
                 yield break;
 
+            inProgressLoadList.Add(loadAssetOperate);
             yield return StartCoroutine(loadAssetOperate);
 
             GameObject prefab = loadAssetOperate.GetAsset<GameObject>();

@@ -1087,6 +1087,13 @@ public class BattleProcess : MonoBehaviour
         BattleObject movedUnit = ObjectDataMgr.Instance.GetBattleObject(movedUnitId);
         spellEventList.Add(args);
 
+        //cast passive spell no need to run next action
+        if (args.category == (int)SpellType.Spell_Type_Passive && string.IsNullOrEmpty(args.firstSpell))
+        {
+            return;
+        }
+
+
         StartCoroutine(WaitAnim(movedUnit, args.aniTime + SpellConst.aniDelayTime + actionDelayTime, args.firstSpell));
         actionDelayTime = 0.0f;
     }

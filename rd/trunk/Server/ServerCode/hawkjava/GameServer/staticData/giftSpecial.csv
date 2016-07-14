@@ -1,9 +1,9 @@
 ﻿#NUM,TEXT,TEXT,TEXT,TEXT,TEXT,NUM,TEXT,TEXT,TEXT,TEXT,NUM,NUM,NUM,NUM,NUM
 id,comments,name,title,desc,image,type,children,rechargeId,baseGift,extraGift,timeBegin,timeEnd,buyTime,duration,weight
 #礼包id,注释,名称,标题,描述,底图,类型(1-进阶礼包/2-碎片礼包/101-活动礼包/102-选择礼【103】),子礼包,充值ID,基本奖励,额外奖励,开始时间id,结束时间id,最大购买次数,活动时间（小时）,权重
-101,进阶礼包,,,,,1,0,com.diandian.undergroundguardian.giftspecial.1,110005,110006,-1,-1,1,24,100
-102,碎片礼包,,,,,2,0,com.diandian.undergroundguardian.giftspecial.2,110005,110006,-1,-1,1,24,100
-201,活动礼包,,,,,101,0,com.diandian.undergroundguardian.giftspecial.101,110005,110006,405,406,10,-1,100
+101,进阶礼包,,,,,1,0,com.diandian.undergroundguardian.giftspecial.9.99,110005,110006,-1,-1,1,24,100
+102,碎片礼包,,,,,2,0,com.diandian.undergroundguardian.giftspecial.14.99,110005,110006,-1,-1,1,24,100
+201,活动礼包,,,,,101,0,com.diandian.undergroundguardian.giftspecial.24.99,110005,110006,405,406,10,-1,100
 202,选择礼包父礼包,,,,,102,"203,204",,,,405,406,1,-1,100
-203,选择礼包子礼包,,,,,103,0,com.diandian.undergroundguardian.giftspecial.102.1,110005,110006,-1,-1,1,-1,100
-204,选择礼包子礼包,,,,,103,0,com.diandian.undergroundguardian.giftspecial.102.2,110005,110006,-1,-1,1,-1,100
+203,选择礼包子礼包,,,,,103,0,com.diandian.undergroundguardian.giftspecial.49.99,110005,110006,-1,-1,1,-1,100
+204,选择礼包子礼包,,,,,103,0,com.diandian.undergroundguardian.giftspecial.99.99,110005,110006,-1,-1,1,-1,100

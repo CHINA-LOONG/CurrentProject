@@ -29,12 +29,6 @@ public class UIVitalChangeView : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void ShowVitalChange(SpellVitalChangeArgs args, RectTransform parent)
     {
-        if (
-            args.vitalType == (int)VitalType.Vital_Type_FixLife ||
-            args.vitalType == (int)VitalType.Vital_Type_Shield
-            )
-            return;
-
         int vitalChange = args.vitalChange;
 
         //choose font

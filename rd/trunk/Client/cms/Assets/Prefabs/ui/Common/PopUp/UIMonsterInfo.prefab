@@ -451,6 +451,7 @@ MonoBehaviour:
   iconTrans: {fileID: 22460934}
   skillTrans: {fileID: 22467768}
   skilTips: {fileID: 11481336}
+  haveSpell: {fileID: 11431808}
 --- !u!114 &11481336
 MonoBehaviour:
   m_ObjectHideFlags: 1

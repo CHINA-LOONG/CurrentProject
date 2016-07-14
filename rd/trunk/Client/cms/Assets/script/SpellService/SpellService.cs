@@ -116,6 +116,9 @@ public class SpellService : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public Effect GetEffect(string id)
     {
+		if (string.IsNullOrEmpty (id))
+			return null;
+
         EffectPrototype effectPt = StaticDataMgr.Instance.GetEffectProtoData(id);
         if (effectPt == null)
             return null;
@@ -305,6 +308,14 @@ public class SpellService : MonoBehaviour
             BattleObject target = ObjectDataMgr.Instance.GetBattleObject(curArgs.targetID);
             {
                 target.TriggerEvent("stun", curArgs.triggerTime, null);
+            }
+        }
+        else if (eventType == GameEventList.SpellAbsrobed)
+        {
+            SpellEffectArgs curArgs = args as SpellEffectArgs;
+            BattleObject target = ObjectDataMgr.Instance.GetBattleObject(curArgs.targetID);
+            {
+                target.TriggerEvent("absorbed", curArgs.triggerTime, null);
             }
         }
 

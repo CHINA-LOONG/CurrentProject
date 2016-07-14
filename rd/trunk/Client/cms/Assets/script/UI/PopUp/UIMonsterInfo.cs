@@ -20,12 +20,13 @@ public class UIMonsterInfo : UIBase
 	public	Transform iconTrans;
 	public	Transform	skillTrans;
 	public	SkilTips	skilTips;
+	public Text	haveSpell;
 
 	// Use this for initialization
 	void Awake ()
 	{
 		EventTriggerListener.Get (closeButton.gameObject).onClick = OnCloseButtonClick;
-		name.text = null; 
+		name.text = ""; 
 		skilTips.gameObject.SetActive (false);
 	}
 
@@ -43,6 +44,7 @@ public class UIMonsterInfo : UIBase
 			return;
 		}
 		name.text = unitData.NickNameAttr;
+		haveSpell.text = StaticDataMgr.Instance.GetTextByID ("spell_yongyoujineng");
 		SetProperty (unitData.property);
 
 		MonsterIcon icon = MonsterIcon.CreateIcon ();

@@ -163,7 +163,11 @@ public class InstanceInfo : MonoBehaviour
 	{
 		GameObject tempGo = rewardGroup [index].gameObject;
 		
-		ItemStaticData itemData = StaticDataMgr.Instance.GetItemData (itemId);
+		ItemStaticData itemData = null;
+		if (!string.IsNullOrEmpty (itemId))
+		{
+			itemData = StaticDataMgr.Instance.GetItemData (itemId);
+		}
 		if (null == itemData) 
 		{
 			tempGo.SetActive(false);

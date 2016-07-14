@@ -158,7 +158,7 @@ public class BattleGroupUI : MonoBehaviour
             }
             else
             {
-                playerUI.lifeBar.RefreshShieldUI();
+                enemyUI.lifeBar.RefreshShieldUI();
             }
         }
     }

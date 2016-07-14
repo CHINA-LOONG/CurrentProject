@@ -56,6 +56,7 @@ public class InstanceProtoData
     public string monsterList;
     public string battleLevelList;
     public string battleBoss;
+    public string backgroundmusic;
 
 	public int dazhaoGroup;
 	public int dazhaoAdjust;

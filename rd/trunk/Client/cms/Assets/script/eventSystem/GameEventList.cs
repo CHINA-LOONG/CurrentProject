@@ -65,6 +65,7 @@ public class GameEventList
     //public static string SpellMiss = "SpellMiss";
     public static string SpellImmune = "SpellImmune";
     public static string SpellStun = "SpellStun";
+    public static string SpellAbsrobed = "SpellAbsorbed";
 
 	//GameDataChange for ui
 	public static	string LevelChanged = "LeveleChanged";//param int

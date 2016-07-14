@@ -8,36 +8,43 @@ common,,
 ui_fanhui,返回,
 ui_queding,确定,
 ui_quxiao,取消,
-spell_wuli_name,物理技能,
-spell_magic_name,法术技能,
-spell_beidong_name,被动技能,
-spell_buff_name,buff技能,
-spell_dazhao_name,大招技能,
+spell_wuli_name,物理技能,Physical
+spell_magic_name,法术技能,Magical
+spell_beidong_name,被动技能,Passive
+spell_buff_name,buff技能,Buff
+spell_dazhao_name,大招技能,Ultimate
 ui_tishi,提示,Tip
 liws,李文生,Eric
-instance_wofangzhenrong,我方阵容,
-instance_difangzhenrong,敌方阵容,
-instance_jiangliList,可获得奖励,
+instance_wofangzhenrong,我方阵容,My Monsters
+instance_difangzhenrong,敌方阵容,Enemies
+instance_jiangliList,可获得奖励,Drop Info
 instance_tilixiaohao,体力消耗:{0},
-instance_tiaozhancishu,可挑战次数:{0}/{1},
-instance_saodang,扫荡,
-instance_saodangquanNumber,扫荡券数量:{0},
-instance_saodang10,扫荡10次,
+instance_tiaozhancishu,可挑战次数:{0}/{1},Times:{0}/{1}
+instance_saodang,扫荡,Raid
+instance_saodangquanNumber,扫荡券数量:{0},Tickets:{0}
+instance_saodang10,扫荡10次,Raid 10
 instance_yingzhan,应战,
-instance_shangzhen,上阵,
+instance_shangzhen,上阵,Starter
 instance_houbei,后备,
-instance_yongyou,拥有,
-instance_haoyou,好友,
-instance_kaishizhandou,开始战斗,
-instance_quxiaozhandou,取消战斗,
-instance_zhenrongtiaozheng,阵容调整,
-tip_zhenrongError,请按正确顺序排列出战宠物,
+instance_yongyou,拥有,Monster
+instance_haoyou,好友,Friend
+instance_kaishizhandou,开始战斗,Start Battle
+instance_quxiaozhandou,取消战斗,Cancel
+instance_zhenrongtiaozheng,阵容调整,Line-up
+tip_zhenrongError,请按正确顺序排列出战宠物,Please arrange the monsters in right order
+spell_yongyoujineng,拥有技能,Skill
+dazhao_jieduan,大招阶段，请,Please
+dazhao_click,点击,Click
+dazhao_shifang,怪物释放大招,monster  to  cast physical ultimate skill
+dazhao_huazhenshibai,画阵失败，请重试,Failed，please
 xf,,
 ss,,
 zz,,
 spell_hit_miss,未命中,Miss
 spell_hit_immune,免疫,Immune
 spell_hit_interrupt,被打断,Interrupt
+spell_shield,吸收,absorbed
+spell_first_spell,先置技能,go go go
 xl,薛龙,Loong
 quest_title,任务,QUEST
 quest_juqingrenwu,剧情任务,

@@ -181,6 +181,8 @@ public class StaticDataMgr : MonoBehaviour
                 effectPt.effectType = et;
                 effectPt.targetType = wholeData.targetType;
                 effectPt.casterType = wholeData.casterType;
+                effectPt.linkEffect = wholeData.linkEffect;
+                effectPt.chance = wholeData.chance;
                 effectData.Add(effectPt.id, effectPt);
             }
         }
@@ -391,6 +393,9 @@ public class StaticDataMgr : MonoBehaviour
 
             foreach (var item in data)
             {
+				if(string.IsNullOrEmpty(item.id))
+					continue;
+
                 if (speechData.ContainsKey(item.id))
                 {
                     speechData[item.id].speechList.Add(item);
@@ -725,8 +730,8 @@ public class StaticDataMgr : MonoBehaviour
         LangStaticData item = null;
         langData.TryGetValue(id, out item);
 
-        if (item == null) return id+"Œ¥≈‰÷√”Ô—‘";
-        else if (LanguageMgr.Instance.Lang == Language.English) return string.IsNullOrEmpty(item.english) ? id+"”¢ŒƒŒ¥≈‰÷√" : item.english;
+        if (item == null) return id + "Not configured";
+        else if (LanguageMgr.Instance.Lang == Language.English) return string.IsNullOrEmpty(item.english) ? id+"Not configured" : item.english;
         else if (LanguageMgr.Instance.Lang == Language.Chinese) return string.IsNullOrEmpty(item.chinese) ? item.english : item.chinese;
         else return item.english;
     }

@@ -21,9 +21,11 @@ public class EffectApplyBuff : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, string wpName)
+    public override bool Apply(float applyTime, string wpName)
     {
-        base.Apply(applyTime, wpName);
+        if (base.Apply(applyTime, wpName) == false)
+            return false;
+
         int hitResult = CalculateHit();
 
         Logger.Log("[SpellService]trigger apply buff effect");
@@ -32,7 +34,7 @@ public class EffectApplyBuff : Effect
             EffectApplyBuffPrototype applyBuffProt = protoEffect as EffectApplyBuffPrototype;
             if (applyBuffProt == null)
             {
-                return;
+                return false;
             }
             Buff curBuff = spellService.GetBuff(applyBuffProt.buffID);
             if (curBuff != null)
@@ -48,7 +50,19 @@ public class EffectApplyBuff : Effect
                 curBuff.SetOwnedSpell(ownedSpell);
                 curBuff.Apply(applyTime);
             }
+
+            //link effect
+            Effect curEffect = spellService.GetEffect(protoEffect.linkEffect);
+            if (curEffect != null)
+            {
+                curEffect.SetOwnedBuff(ownedBuff);
+                curEffect.SetOwnedSpell(ownedSpell);
+                curEffect.targetID = targetID;
+                curEffect.Apply(applyTime, wpName);
+            }
         }
+
+        return true;
     }
     //---------------------------------------------------------------------------------------------
     public override int CalculateHit()

@@ -26,13 +26,14 @@ public class EffectSwitch : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, string wpID)
+    public override bool Apply(float applyTime, string wpID)
     {
-        base.Apply(applyTime, wpID);
+        if (base.Apply(applyTime, wpID) == false)
+            return false;
 
         EffectSwitchPrototype setProto = protoEffect as EffectSwitchPrototype;
         if (setProto == null)
-            return;
+            return false;
 
         GameUnit caster = spellService.GetUnit(casterID);
         var cls = typeof(SpellFunctions);
@@ -52,10 +53,12 @@ public class EffectSwitch : Effect
                     curEffect.targetID = targetID;
                     curEffect.Apply(applyTime, wpID);
 
-                    return;
+                    return true;
                 }
             }
         }
+
+        return true;
     }
     //---------------------------------------------------------------------------------------------
 }

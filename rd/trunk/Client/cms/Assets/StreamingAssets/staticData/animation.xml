@@ -679,5 +679,226 @@ state = 1 Remove
 				<Speed time="0" speed_ratio="0.2" duration="2"/>
 			</SpeedList>
 		</Ani>
+		
+		<Ani id="bossminghe18Karong1" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+			<MeshStateList>
+				<Mesh time="0" name="mesh_leftarm1" state="show" />
+				<Mesh time="2" name="mesh_leftarm1" state="hide" />
+			</MeshStateList>
+		</Ani>
+		
+		<Ani id="bossminghe18Karong1e2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="magicEarthStrong" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossminghe18Karong2" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_shifa1" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossminghe18Karong2e3" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="magicEarthSlight" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossminghe18Karong3" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="bossminghe18Karong3e3" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackCutStrong" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossminghe18Karong4" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_shifa2" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="bossminghe18Karong4e2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="magicEarthStrong" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossminghe18Karong5" state="0">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="bossminghe18Karong5e3" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="attackCutSlight" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossminghe18Karong6" state="0">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_shifa2" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="bossminghe18Karong6e2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="magicEarthStrong" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+				
+		<Ani id="karong_stage1to2_shuihuo" state="0" action_delay="2">
+			<ControllerList>
+				<Controller time="0" name="monsters/karong/bossNetherriver18Karong@moxing" />
+			</ControllerList>
+			<WpStateList>
+				<Wp time="0" name="bossminghe18Karongwp01" state="3" />
+				<Wp time="0" name="bossminghe18Karongwp02" state="3" />
+				<Wp time="0" name="bossminghe18Karongwp03" state="1" />
+				<Wp time="0" name="bossminghe18Karongwp04" state="1" />
+				<Wp time="0" name="bossminghe18Karongwp05" state="1" />
+			</WpStateList>
+		</Ani>
+		
+		<Ani id="karong_stage1to2_shuisi" state="0" action_delay="2">
+			<ControllerList>
+				<Controller time="0" name="monsters/karong/bossNetherriver18Karong@moxing2" />
+			</ControllerList>
+			<WpStateList>
+				<Wp time="0" name="bossminghe18Karongwp01" state="3" />
+				<Wp time="0" name="bossminghe18Karongwp03" state="1" />
+				<Wp time="0" name="bossminghe18Karongwp04" state="1" />
+				<Wp time="0" name="bossminghe18Karongwp05" state="1" />
+			</WpStateList>
+		</Ani>
+
+		<Ani id="karong_shuijingqiusiwang" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="wp_orb"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="karong_leftarmsiwang" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="wp_leftarm1"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="karong_rightarmsiwang" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="wp_rightarm1"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	
+	<AniList group="uncle_lee">
+		<Ani id="test1" state="0">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.2" duration="2"/>
+			</SpeedList>
+		</Ani>
+	</AniList>
+	
+	<AniList group="long">
+		<Ani id="ultLangrene2" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultPanshenPre" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+		<Ani id="ultMantuoluoe2" state="0">
+			<ParticleList>
+				<Particle asset="ultMantuoluoPre" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="" />
+			</AudioList>
+		</Ani>
+	</AniList>
+	
+	<AniList group="fei">
+		<Ani id="test3" state="0">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="firemove" parent=""/>
+			</ParticleList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.2" duration="2"/>
+			</SpeedList>
+		</Ani>
 	</AniList>
 </AniGroupList>

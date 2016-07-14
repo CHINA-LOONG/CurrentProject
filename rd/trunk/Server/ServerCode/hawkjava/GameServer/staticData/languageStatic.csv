@@ -870,56 +870,45 @@ speechname_binglong,冰龙,Ice Dragon
 speechname_karong,卡戎,Charon
 speechname_lisa,丽莎,Lisa
 speechname_yafogemeng,亚弗戈蒙,Aforgomon
-speech_summon1,咳咳……,Arghhh…
-speech_summon2,她好像伤得很重。,What wrong with her? She seems injured…
-speech_summon3,嗯，妖怪没有足够的信仰之力维持，就会消失。,"You see, when a monster doesn't have enough mytho essence, they begin to disappear."
-speech_summon4,那个……我们能救救她吗，感觉有点可怜……,So… So what are we gonna do? I sorta feel bad for her…
-speech_summon5,没想到你还是个好心肠的人。救冰雪女王很简单，只要你和她结成契约就好了。,"I didn't know you were so kind-hearted. Saving her is quite simple actually, you just need to seal a monster pact with her."
-speech_summon6,契约？,Monster… pact?
-speech_summon7,就像刚才我们的契约一样，你使用记载着冰雪女王信息的古书，就可以通过契约将冰雪女王召唤过来。。,Just like the one you and I made a moment ago. You use the ancient records of Chione and you will be able to summon her.
-speech_summon8,不过以你现在的力量，召唤冰雪女王的话，就无法维持我的作战状态了。,"But in your current state, if you summon Chione, you won't be able to also use me for battle."
-speech_summon9,救人要紧！,Well let's save her first and see!
+speech_summon1,我们打败了冰雪女王！？难道她不是希腊神话中赫赫有名的怪物吗？到底怎么回事？,We defeated Chione?! Isn't she the famous legends from Greek Mythology? What's going on?
+speech_summon2,在异界，存在许多像我们这样的传奇妖怪正处于战争之中！我们需要你，帮助我们恢复世界的秩序！,"Mythos, the world that allow legends like us to exist, is at war now! And we need your help to restore order!"
+speech_summon3,我在你房间中创造了一个魔法召唤之书，你可以用它召唤新的怪物来组建你的队伍。,Let me place a Magic Summon Book in your room now so that you might collect new monster to form a team.
 speech_zhenrongxuanze1,你们竟然救了我……,"Ohh, so you saved me after all…"
-speech_zhenrongxuanze2,哼，虽然有些不爽，不过你也和这家伙结成了契约，我们之间也没有战斗的必要了。,"Hmmph, even though I don't like it, you've sealed a monster pact with this guy. We have no reason to fight each other anymore."
-speech_zhenrongxuanze3,现在以你的灵力，不足够同时驱使我和雪女两个这样等级的妖怪。我就先休息，让她来保护你吧。,"At your current strength, you're not able to use a high level monster like Chione along with me at the same time. So I'll go take a break, and you can let Chione protect you for now."
-speech_zhenrongxuanze4,现在你们应该给我解释下状况了吧……,So now you can finally explain what all of this is about…
-speech_zhenrongxuanze5,别慌，好像有家伙循着味道过来了……我们先把这些家伙干掉再说。,Ahh don't worry about it! It seems that someone has followed my scent here… Let's take care of that first!
+speech_zhenrongxuanze2,别担心，你没事了。能通过召唤之书把你救回来真是太好了！,"No worries, you have been used! Its nice to see you back thru the Summon Book."
+speech_zhenrongxuanze3,现在你们应该给我解释下状况了吧……,So now you can finally explain what all of this is about…
+speech_zhenrongxuanze4,我们先去通过战斗收集一些宠物吧！你收集的宠物越多，你就会越强大！,"Lets go battle and collect more monsters first! The more monster you collect, the stronger you will become!"
 speech_shanghuapotips,新伙伴花魄也是可以上阵的哦~还记得如何操作吧！,Our new Flower Pixie can also join the team. Remember how to add monsters to the team?
-speech_shangmantuoluotips,新伙伴曼陀罗是个超级奶妈，回血全靠他啦！,"Our new Mandrake is a healer, so you can rely on it to recover your monsters' HP!"
-speech_exp1,击败妖怪，得到这些像火苗一样的东西，就是信仰之力。,Defeating monsters will give you this stuff that looks like fire. That's Mytho Essence.
-speech_exp2,只要吃下信仰之力，妖怪就会成长，试试吧？,"If you feed a monster this essence, it will grow. Let's give it a try!"
+speech_shangmantuoluotips,新伙伴曼陀罗是个超级<color=#ffcc00>奶妈</color>，回血全靠他啦！,"Our new Mandrake is a <color=#ffcc00>healer</color>, so you can rely on it to recover your monsters' HP!"
+speech_exp1,只要吃下信仰之力，妖怪就会成长，试试吧？,"If you feed a monster this essence, it will grow. Let's give it a try!"
 speech_exp3,你看，是不是觉得变强了~除了宠物能够升级，宠物技能也是能够升级的哦~,"See? Don't I look stronger? (And more beautiful...) Not only the monster is upgraded, its abilities can be upgraded further too."
 speech_exp4,获得了信仰之力，我们就会更强大！我们快去抢信仰之力吧！,We will become stronger when we receive more Mytho Essence! Let's go and get more!
 speech_exp5,其实有很多办法获得信仰之力，不一定非要抢其他妖怪的……,"Actually there are a lot of ways to get mytho essence, you don't always have to steal it from other monsters…"
 speech_exp6,不可能，现在镇上的妖怪都知道，这是最快的获得信仰之力的办法。,Who are you kidding? All the monsters in town know that's the quickest way to get more mytho essence.
 speech_exp7,肯定有人在散布谣言，这样下去大家都会死的。,"Hmm, I wonder who started spreading this kind of rumor. Everyone will die if this keeps up."
-speech_exp8,喂，你现在是我们的宿主，是跟我们绑定在一起的，只有跟我们一起行动去阻止妖怪自相残杀了。,"Hey, you're supposed to be our keeper and you are bound with us. You can only stop monsters from killing each other by taking action together."
-speech_exp9,……,…
-speech_exp10,你一定要小心，契约双方有一方死亡，另一方也会死亡的……,"You should be careful. When the monster pact is sealed with between a monster and its keeper, if one dies, the other will die too…"
 speech_equip1,哼，笨影子还不是乖乖被我打趴下了，有了代行者的力量，本狐狸今非昔比了~,"See, I told you I could beat that stupid shadow! With my new keeper, I'm better than ever!"
-speech_equip2,你不是说来谈判吗，怎么上来就开打了……,Didn't you say we should try to negotiate? Why did we just run up and start swinging?
 speech_equip3,能动手解决的，为什么要动口~多亏了笨影子，我们拿到了好东西呢。,"Sometimes it's better just to save your breath for the fight. Anyway, thanks to that stupid shadow, we got something super useful!"
 speech_equip4,什么东西？,Like what?
 speech_equip5,装备，看来笨影子来人界的时候还带过来了异界的装备，有了这些我们的实力也有了提高。,A piece of Equipment! It looks like that puppet brought some equipment from Mythos. With this we will be much stronger!
 speech_houbeiwei,支援位置开启，可以统御更多的宠物了。多余三只宠物时，可以认真考虑一下让谁做前排，让谁做替补了哦！,"Backup positions unlocked. You can control more monsters now. When you want to use more than 3 monsters, you should consider which to be active at the start, and which to be your backup."
 speech_shop,商店会有自动刷新时间，当然，也可以通过消耗钻石刷新，多来看看吧~,"The store automatically refreshes at a set time, but of course you may also spend some diamonds to manually refresh. Make sure to check often!"
-speech_xinshoushilian,愿望树生长着两颗果实，金色果实通往拥有无限金币的米达斯宫，银色果实通往可以获得大量信仰之力的至福乐土。,"The Wishing Tree has 2 fruits: the golden fruit which leads to Palace of Midas and mountains of coins, and the silver fruit which leads to the Fields of Elysium with tons of Mytho Essence."
+speech_xinshoushilian1,愿望树生长着两颗果实，金色果实通往拥有无限<color=#ffcc00>金币</color>的米达斯宫，银色果实通往可以获得大量<color=#ffcc00>信仰之力</color>的至福乐土。,"The Wishing Tree has 2 fruits: the golden fruit which leads to Palace of Midas and mountains of <color=#ffcc00>coins</color>, and the silver fruit which leads to the Fields of Elysium with tons of <color=#ffcc00>Mytho Essence</color>."
+speech_xinshoushilian2,想要获得金币和信仰之力的奖励？来接受我和黄金之灵的考验吧！,Want to get Gold and Mytho Essence rewards? Accept the drill from me and the Soul of Gold.
 speech_xinshoutower1,拥有通天塔的钥匙，就可以解救被黑暗组织囚禁在里面的妖怪了。,"With the Tower of Darkness key, you can rescue  monsters that have been captured by the dark organization."
 speech_xinshoutower2,通天塔一共有3座，分别是“试炼之塔”、“死亡之塔”、“绝望之塔”。,"The Tower of Darkness has 3 stages: Tower of Guantlets, Tower of Death, and the Tower of Despair."
-speech_xinshoutower3,参与通天塔玩法能够获得暗黑碎片，在通天塔商店购买装备打造材料、稀有宠物碎片哦~,"By playing the Tower of Darkness, you can get dark fragments, which can be used to purchase equipment forge materials and rare monster fragments in the Tower Store."
+speech_xinshoutower3,参与通天塔玩法能够获得暗黑碎片，在通天塔商店购买<color=#ffcc00>装备打造材料、稀有宠物碎片</color>哦~,"By playing the Tower of Darkness, you can get dark fragments, which can be used to purchase <color=#ffcc00>equipment forge materials</color> and <color=#ffcc00>rare monster fragments</color> in the Tower Store."
 speech_xinshoutower4,为了安全起见，我们先去拯救被囚禁在第一座通天塔——试炼之塔的妖怪吧~,"To play it safe, let's go rescue the monsters being held in the first tower - the Tower of Gauntlets."
 speech_xinshoupvp1,这里是竞技场，是代行者们磨练技巧的地方了。,This is the Arena! Here is where all keepers battle to their master techniques.
 speech_xinshoupvp2,每次竞技会消耗竞技次数，赢得胜利可以获得荣誉点。,An Arena Entry will be used each time you enter the Arena. 
-speech_xinshoupvp3,荣誉点可以在竞技商店购买宠物进阶材料、稀有宠物碎片哦~,A victory will reward you with Honor Points which can then be exchanged in the Arena Store for monster advancement materials and rare monster fragments!
+speech_xinshoupvp3,荣誉点可以在竞技商店购买<color=#ffcc00>宠物进阶材料、稀有宠物碎片</color>哦~,A victory will reward you with Honor Points which can then be exchanged in the Arena Store for <color=#ffcc00>monster advancement materials</color> and <color=#ffcc00>rare monster fragments</color>!
 speech_xinshoucompose,低级的纹章或材料可以通过合成魔法变成更高级的纹章或材料，有不用的材料时就来合成吧。,Crafting allows players to turn low grade insignia and materials into high grade insignia and materials. Simply use any of your uneeded materials.
 speech_xinshouguild1,公会是志同道合的代行者伙伴们交流信息的地方。,Joining a guild is the best way to meet and chat with other monster keepers.
 speech_xinshouguild2,在公会许愿池，每天可以进行一次许愿。向三位命运女神许愿的效果不同，付出越多收获越大。,"You can make a wish once a day at the Guild Wish. Making a wish via the 3 different goddesses will yield different effects, and the more spent, the more you shall receive. "
 speech_xinshouguild3,公会会向代行者们发布一些任务。,Guilds will post quests for their members to participate in. 
-speech_xinshouguild4,完成任务不但能得到大量贡献值和金币，还可能得到一些不得了的材料呢。,"Completing these quests will not only give large amounts of contribution points and coins, but may also possibly drop some awesome materials."
+speech_xinshouguild4,完成任务不但能得到大量贡献值和金币，还可能得到一些不得了的材料呢。记得查看额外奖励哦！,"Completing these missions will not only give large amounts of contribution points and coins, but may also possibly drop some awesome materials. Remember to check for extra rewards!"
 speech_xinshouguild5,公会任务需要组队完成，不过队长会有额外奖励呢。,"Guild quests will require the efforts of player teams to be completed, and team captains will get extra rewards."
 speech_xinshouguild6,这里是公会基地，可以将自己的妖怪作为佣兵派遣到这里，公会伙伴们就可以雇佣了~,This is the guild base. You may dispatch some of your monsters as mercenaries here to be hired and used by other players.
 speech_xinshouguild7,当然，雇佣会有相应的佣金，来试试看吧~,Of course players will have to pay a fee when hiring mercenary monsters. Let's give it a try!
-speech_xinshouadventure1,这可是个将空闲不用的宠物派遣锻炼的好去处，还可以得到丰厚的回报哦~,This is a good place to send some idle monsters to train and even bring back some awesome rewards.
+speech_xinshouadventure1,这可是个将空闲不用的宠物派遣锻炼的好去处，还可以得到丰厚的回报哦~不同的大冒险会获得不同的奖励。,This is a good place to send some idle monsters to train and bring back some awesome rewards. Remember to check adventure type for different kinds of rewards.
 speech_xinshouadventure2,大冒险根据产出不同，分为“强化”、“进阶”、“究极”三个种类，冒险的时间也有5h、8h、12h可以选择呢，要根据自己的需求合理参与哦~,"Adventures are divided into three types based on their output: upgrades, evolution, and ultimate. Adventure time can also be selected: 5h, 8h, or 12h. Simply choose whichever suits your needs."
 speech_xinshouadventure3,先来跟我一起看看“强化”冒险吧~,"Come with me and let's check out the ""upgrades"" adventure!"
 speech_xinshouadventure4,每个冒险任务会列出一系列“获得额外奖励条件”。,"Each adventure quest will list a series of ""bonus reward requirements."" "
@@ -939,42 +928,39 @@ speech_xinshouxiangqian3,如果开到的孔不满意，还可以重复开孔，�
 speech_xinshouxiangqian4,每次开孔，开出孔的数量和形状都是随机的，运气不好的话，打开的孔也可能被重新锁上。。。自己试试吧~,"Each time you open slots, the amount and type of slots are randomized. If you are not having any luck with it, slots that have been opened can be re-locked. Let's give it a try!"
 speech_xinshoulock1,是否担心开到了心仪的孔在下次开孔时被换掉呢，锁孔功能就可以帮到你啦！跟我看看锁孔吧~,Worried that the slots you are happy with will be changed the next time you open more? Try locking them! Let me show you how!
 speech_xinshoulock2,在这里，可以将想保留形状的孔锁住。锁住孔后，每次开孔都会消耗一定量的钻石来保证这个孔不变化哦~,"Here you can save the types of slots you would like to keep. After locking a slot, opening other slots will consume a set amount of Diamonds to ensure that the locked slots are not changed."
-speech_0fightqian1,小狐狸，你就别挣扎了，乖乖将信仰之力交给我吧。,"Hello little fox, ohh don't struggle... Be a good fox now and give me your Mytho Essence!"
-speech_0fightqian2,你们是谁？！为什么会出现在我的房间里？,"Who are you, and why are you in my room?!"
-speech_0fightqian3,来不及解释了，快点战斗，不然我们都得死！（吟唱咒语）从现在起，我九尾天狐与你结成契约，你是我在人界的代行者。,"No time to explain! Quick, we must fight them off, otherwise it will be the end of us both! From now on, we have a pact, you and I! You will be my Monster Keeper in the real world!"
-speech_0fightqian4,怎……怎么回事？啊！,Wha… What's going on? Hey!!
-speech_0fightzhong1,怎么办，好像攻击不起作用了。,What do we do now? Our attacks are useless!
-speech_0fightzhong2,快戴上你的眼镜！,"Quick, put on your eyepiece!"
-speech_0fightzhong3,眼镜？这个是装饰品呀。,"Eyepiece! I dunno, it looks like an antique!"
-speech_0fightzhong4,没时间了，快戴上，你就可以看到她的弱点。,No time to worry about that now! Just put it on and you will be able to see their weakpoints!
+speech_0fightqian1,你以为我堂堂九尾狐，和这个臭家伙——冰雪女王，是到你房间里玩的么！？,You think a Snow Queen and a Nine-Tail Fox come to your room for fun!?
+speech_0fightqian2,冰雪女王是来抢你的照妖镜的！就是你那个眼镜！看我怎么收拾她！,The Snow Queen (Chione) is after you and your Mytho Lens…..your precious eyepiece! Let me fight her off now!
+speech_0fightqian3,怎……怎么回事？啊！,Wha… What's going on? Hey!!
+speech_0fightzhong1,怎么办啊，她太强了，你根本打不过她啊！,What do we do now? She seems too strong for you!
+speech_0fightzhong2,哼！每个怪物都有弱点，只有你的照妖镜（眼镜）才能找到弱点！,Every Monster's got a weakpoint and your Mytho Lens (the eyepiece) can reveal it!
+speech_0fightzhong3,我教你怎么用它吧！,"Now, follow my instructions!"
 speech_0fighthou1,呼……胜利了，没想到你还挺能干嘛。,Whew… We won! I wasn't sure if you had it in ya.
-speech_0fighthou2,我叫九尾，从今天起就是你的契约妖怪了，你叫什么名字？,"My name is Nine-Tails, and from today I will be your assigned monster. And your name is…"
 speech_0fightruodian,界面左侧列出了怪物所有受击点，第一个点是默认受击点。,"Monster target points are listed on the left, with the first weakpoint selected by default."
 speech_0fightruodian1,攻击默认受击点可不是明智的选择哦~要找到怪物真正的弱点，才能有效地打击怪物~,Attacking the default target point is not always the best choice. You should search for the monster's real weakpoints to attack it more effectively.
-speech_0fightjihuo,太棒了！我们找到了冰雪女王的弱点！点击弱点，发出集火指令。,Nice! We have found Chione's weakpoint! Tap it to concentrate your attacks on it.
-speech_0fightjihuo1,干的漂亮，下面一鼓作气击破冰雪女王的弱点吧！,Great job! Now let's go for it and destroy Chione's weakpoint!
-speech_kaijiaxing1,有没有发现这个弱点有些特别？没错！它是有血条的！有血条的弱点是可以被打掉的。,Notice anything special about this weakpoint? That's right! It has an HP bar. Weakpoints with HP bars can be destroyed.
-speech_kaijiaxing2,打掉这类弱点大多数时候会削弱boss能力或者暴露更多弱点，但是也有例外哦~自己小心鉴别吧~,"Destroying this kind of weakpoint will usually weaken the boss' abilities or reveal more weakpoints, but there are exceptions. You'll have to decide yourself."
+speech_0fightjihuo,太棒了！我们找到了冰雪女王的弱点！,Nice! We have found Chione's weakpoint! 
+speech_0fightjihuo1,干的漂亮，一鼓作气打败冰雪女王吧！,Great Job! Let's defeat Chione now!
+speech_kaijiaxing1,有没有发现这个弱点有些特别？没错！它是有血条的！有血条的弱点是可以被打掉的。,Notice anything special about this weakpoint? That's right! These secret point can be destroyed. 
+speech_kaijiaxing2,打掉这类弱点大多数时候会削弱boss能力或者暴露更多弱点~快集火花魄的花瓣吧！,Destroying this kind of secret points will usually weaken the boss' abilities or reveal more secret points. Now tap on Flower Pixie's petal to concentrate your attack!
 speech_kaijiaxing3,有没有发现这个弱点有些特别？没错！它是有血条的！有血条的弱点是可以被打掉的。,Did you notice anything special about this weakpoint? That's right! It has an HP bar. Weakpoints with HP bars can be destroyed.
-speech_kaijiaxing4,打掉这类弱点大多数时候会削弱boss能力或者暴露更多弱点，但是也有例外哦~自己小心鉴别吧~,"Destroying this kind of weakpoint will usually weaken the boss' abilities or reveal more weakpoints, but there are exceptions. You'll have to decide yourself."
+speech_kaijiaxing4,打掉这类弱点大多数时候会削弱boss能力或者暴露更多弱点~快集火曼陀罗的根吧！,Destroying this kind of secret points will usually weaken the boss' abilities or reveal more secret points. Now tap on Mandrake's root to concentrate your attack!
 speech_element1,对面水属性小怪均被我方木属性宠物克制，容易击杀。,The enemy water type monsters can be countered and defeated easily by our grass type monsters.
-speech_element2,敌方阵容变强了，出现了克制我方属性的小怪！要利用属性克制关系，好好应对哦！,"The enemy formation has become stronger, and contains monsters that counter our own! Remember the elemental affinity to deal with them!"
+speech_element2,敌方阵容变强了，出现了克制我方属性的小怪！要收集更多的怪应对不同的敌方组合哦！,"The enemy formation has become stronger, and contains monster that counter our own! Get more monster to deal with different affinity."
 speech_duoruodian,boss有多个弱点哦，鉴定成功后，考虑一下合适的攻击顺序吧~,"Bosses can have many weakpoints, so after discovering them, consider the best order for attacking them."
 speech_yincangruodian,注意到了吗？有些弱点的图标以问号形式出现，是不会提示位置的呢，需要自己找到哦~,Notice that some weakpoints have a question mark? Is it indicating a certain spot? You'll have to find out yourself!
 guide_0dazhao,<color=#ffcc00>大招</color>能量已满，<color=#ffcc00>点击</color>释放,"Power is full, <color=#ffcc00>tap</color> to cast <color=#ffcc00>ultimate ability</color>."
 guide_0findwp,根据提示<color=#ffcc00>形状</color>找到<color=#ffcc00>弱点</color>,"Find the <color=#ffcc00>weakpoint</color> on the monster 
 according to these <color=#ffcc00>shapes</color>. "
-guide_tips,看形状,Notice the shape
-guide_tips1,找同形状弱点,Find the same shape weakpoint
+guide_tips,查看形状,Notice the shape.
+guide_tips1,使用照妖镜<color=#ffcc00>查看怪物</color>,Use Mytho Lens to <color=#ffcc00>detect Monster</color>.
 guide_0zhaoyaojing,"拖动<color=#ffcc00>照妖镜</color>至
-弱点位置进行<color=#ffcc00>鉴定</color>","Hold the <color=#ffcc00>Mytho Lens</color> on the monster 
-until the weak point is <color=#ffcc00>revealed</color>."
+弱点位置进行<color=#ffcc00>鉴定</color>","Drag and Hold the <color=#ffcc00>Mytho Lens</color> over the
+Monster's weakpoint to <color=#ffcc00>revealed</color> it. ."
 guide_drag,拖动,Drag
 guide_hold,停留,Hold
-guide_0jihuo,<color=#ffcc00>点击</color>头部，<color=#ffcc00>集火</color>弱点,"<color=#ffcc00>Tap</color> the head to <color=#ffcc00>concentrate
-your attacks</color>  on it."
-guide_0dazhao1,注意使用<color=#ffcc00>大招</color>，尽快打败冰雪女王！,"Be sure to use your <color=#ffcc00>ultimate abilities</color>
-and quickly defeat Chione!"
+guide_0jihuo,<color=#ffcc00>点击</color>头部，<color=#ffcc00>集火</color>弱点,"Now,<color=#ffcc00>tap</color> the head once 
+to <color=#ffcc00>concentrate attack</color>."
+guide_0dazhao1,注意使用<color=#ffcc00>大招</color>，尽快打败冰雪女王！,"Remember to use <color=#ffcc00>ultimate</color>
+to quickly defeat Chione!"
 guide_1PhyDazhao1,<color=#ffcc00>点击</color>释放<color=#ffcc00>大招</color>,"<color=#ffcc00>Tap</color> to cast 
 <color=#ffcc00>ultimate ability</color>"
 guide_1PhyDazhao2,"<color=#ffcc00>快速点击</color>怪物！
@@ -991,22 +977,18 @@ quickly swap it out for a backup monster!"
 guide_Fadazhao,"冰雪女王大招对<color=#ffcc00>多个目标</color>
 造成伤害，<color=#ffcc00>点击</color>图标施放","Chione's ultimate deals damage to 
 <color=#ffcc00>multiple targets</color>. <color=#ffcc00>Tap</color> the icon to cast it."
-guide_Picruodian1,"<color=#ffcc00>长按图标</color>可查看<color=#ffcc00>弱点说明</color>，
-没有花瓣的花魄就没有连击了","<color=#ffcc00>Tap and hold</color> the icon to view the 
-<color=#ffcc00>weakpoint info</color>. A Flower Pixie with 
-no pedals has no combo attack."
-guide_Picruodian2,"<color=#ffcc00>长按图标</color>可查看<color=#ffcc00>弱点说明</color>，
-没有根的曼陀罗就不会治疗自己了","<color=#ffcc00>Tap and hold</color> the icon to view the 
-<color=#ffcc00>weakpoint info</color>. A Mandrake with 
-no root won't be able to heal itself."
+guide_Picruodian1,<color=#ffcc00>长按图标</color>可查看<color=#ffcc00>弱点说明</color>,"<color=#ffcc00>Tap and hold</color> the icon to view the 
+<color=#ffcc00>weakpoint info</color>. "
+guide_Picruodian2,<color=#ffcc00>长按图标</color>可查看<color=#ffcc00>弱点说明</color>,"<color=#ffcc00>Tap and hold</color> the icon to view the 
+<color=#ffcc00>weakpoint info</color>."
 guide_Jihuoxiaoguai,<color=#ffcc00>点击</color>水哇鬼，<color=#ffcc00>集火</color>击杀小怪,"<color=#ffcc00>Tap</color> the Phase Frog to 
 <color=#ffcc00>concentrate your attacks</color> on it."
-guide_summon1,这里能够<color=#ffcc00>召唤</color>到宠物，与宠物结成契约,"You can <color=#ffcc00>summon</color> monsters 
-here and seal the monster pact."
-guide_summon2,试试夜之召唤,Give Dusk Summon a try!
-guide_summon3,看看能不能救出冰雪女王！,See if you can rescue Chione!
-guide_task1,完成了新的任务！,You have completed a new quest!
-guide_task2,可以领取奖励了！,You can collect a reward!
+guide_summon1,这里能够<color=#ffcc00>召唤</color>到宠物，成为宠物的主人,"<color=#ffcc00>Summon</color> Monster here and 
+become their Monster Keeper."
+guide_summon2,使用夜之召唤,Use Dusk Summon now.
+guide_summon3,召唤一只新的宠物吧！,Press to summon a new monster.
+guide_task1,点击这里查看已完成的任务！,Press to see completed Quests!
+guide_task2,可以领取奖励了！,Collect reward now!
 guide_task3,看看这次会有什么奖励哦~,"See what kind of reward 
 you get this time!"
 guide_task4,"很棒哦~领取奖励就可以
@@ -1024,8 +1006,9 @@ guide_hechengpet4,"有了花魄的加入，
 team is much stronger!"
 guide_hechengpet5,太棒了！已经拿到足够合成<color=#ffcc00>花魄的碎片</color>了！,"Great! You now have enough 
 <color=#ffcc00>fragments to craft Flower Pixie</color>!"
-guide_hechengpet6,现在就去与花魄签订契约吧！,"Go and seal the monster 
-pact with Flower Pixie now!"
+guide_hechengpet6,"除了召唤之书，合成宠物
+碎片也能获得宠物哦！","Besides summon book, you can craft 
+monster with their fragments too."
 guide_hechengpet7,现在就去与曼陀罗签订契约吧！,"Go and seal the monster 
 pact with Mandrake!"
 guide_hechengpet8,"记得这里吗？合成宠物
@@ -1040,7 +1023,7 @@ guide_instance3,先来试试第一个副本,Let's try the first stage.
 guide_instance4,<color=#ffcc00>点击</color>图标上阵宠物,"<color=#ffcc00>Tap</color> the icons to 
 select monsters 
 for your team."
-guide_instance5,战斗会消耗<color=#ffcc00>活力值</color>，开始战斗吧,"Battles consume <color=#ffcc00>Energy</color>, so go and fight!"
+guide_instance5,让我们去战斗收集更多的宠物吧！,Go fight and collect more monsters now!
 guide_exp1,现在就去给<color=#ffcc00>宠物升级</color>吧！,Let's go <color=#ffcc00>upgrade our monsters</color>!
 guide_exp2,升级能使宠物战力提升呢！,"Upgrading a monster increases 
 its battle point (BP)."
@@ -1051,21 +1034,22 @@ guide_exp6,"提高技能等级，可以
 提升技能伤害呢~","Increasing abilities can increase 
 damage against enemies."
 guide_ability1,"跟我来看看如何给
-宠物升级技能吧","跟我来看看如何给
-宠物升级技能吧"
-guide_ability2,要常来这里关注自己的宠物,要常来这里关注自己的宠物
-guide_ability3,试试给这只宠物升级技能,试试给这只宠物升级技能
+宠物<color=#ffcc00>升级技能</color>吧！","Come and see how we can <color=#ffcc00>increase</color> 
+the power of the <color=#ffcc00>Monster abilities</color>."
+guide_ability2,要常来这里升级宠物,Come back often to upgrade your monsters.
+guide_ability3,试试给这只宠物升级技能,"Try to upgrade the 
+abilities of this monster."
 guide_ability4,"第一个技能是战斗
-中手动施放的大招","第一个技能是战斗
-中手动施放的大招"
-guide_ability5,"其他技能战斗中自动施放，
-点击切换技能","其他技能战斗中自动施放，
-点击切换技能"
+中<color=#ffcc00>手动施放的大招</color>","The first ability is the <color=#ffcc00>Ultimate 
+abilitiy released manually</color>."
+guide_ability5,"其他技能战斗中<color=#ffcc00>自动施放</color>，
+点击切换技能","Other abilities are <color=#ffcc00>used automatically</color> by the 
+monster itself.Try tapping on other abilities."
 guide_ability6,"有些技能可以升级，升级
-技能要消耗金币和技能点
-（点击任意位置结束）","有些技能可以升级，升级
-技能要消耗金币和技能点
-（点击任意位置结束）"
+技能要消耗<color=#ffcc00>金币和技能点</color>
+（点击任意位置结束）","Most abilities can be upgraded 
+with <color=#ffcc00>coins and abilitiy points</color>. 
+(Tap anywhere to continue)"
 guide_equip1,"获得了<color=#ffcc00>宠物装备</color>，
 去给宠物穿上吧！","You've received some <color=#ffcc00>monster equipment</color>, 
 let's go put it on now!"
@@ -1147,25 +1131,16 @@ bingxuenvwang3normal_body,默认,Default
 bingxuenvwang3normal_head,弱点,Weakpoint
 bossxinshouBingxuenvwang3wp01,身体,Body
 bossxinshouBingxuenvwang3wp02,头,Head
-speech_blt_11_1,为什么街上会有妖怪！这到底是怎么回事？你们是谁，从哪里来，为什么在我的书房里？,"Umm…why are there monsters in the streets? Can someone please tell me what's going on here? Who are you guys, and where did you come from? And why are you in my study?!"
-speech_blt_11_2,你这人好多问题呀，难道看不出来吗，我们是妖怪呀，当然是来自异界。,"Oh so many questions! Can't you see? We're monsters! So we came from Mythos, of course."
-speech_blt_11_3,……,…
-speech_blt_11_4,喂，小狐狸，这个人看起来好笨呀，真的能放心结成契约吗？,"Well little fox, you sure found yourself a slow one here… Are you sure we should go on with this one as your Keeper?"
-speech_blt_11_5,……呃解释太复杂你也听不懂，总之我们是异界的妖怪，是通过古书这种媒介来到人界的,"Uh, it's complicated, and you wouldn't understand anyway. The point is we are monsters from Mythos, and we came to your world through the Book of Ancient."
-speech_blt_11_6,总之，我来到这里后就被冰雪女王追杀，慌乱中开了异界传送门，没想到连到了你的书柜……,"Let's put it this way, when I got here, Chione tried to kill me. I frantically opened the Mythos teleport gates, and I ended up flying out of your bookcase…"
-speech_blt_11_7,异界！？,Mythos?!
-speech_blt_11_8,是呀，现在异界的很多妖怪都来到了人界，因为那边……,"Yep! There are already a lot of monsters that have come to the real world, because you know in Mythos…"
-speech_blt_11_9,总之，妖怪是依靠人类对我们的信仰生存的，所以很多妖怪来到人界，是为了获得信仰之力。,"Simply put, monsters rely on the belief of mankind to exist. That's their mytho essence. That's why many monsters have come to the real world, they want to get the power of more people believing."
-speech_blt_11_10,信仰之力，那是什么？,Mytho… essence? What do you mean?
-speech_blt_11_11,总之跟你说你也不懂，跟我一起来见识一下吧,"So basically… Ah forget it, you wouldn't get it anyway! Let's just go have a look instead."
+speech_blt_11_1,太棒了！我们打破了花魄！但是为什么街上会有这么多妖怪呢？,Great!We defeated the Flower Pixie! But why are there monsters in the street?
+speech_blt_11_2,是呀，现在异界的很多妖怪都来到了人界，正如我告诉你的那样，异界正处于战争之中！,"Yep! There are already a lot of monsters that have come to the real world. As I have told you, the Mythos is at war!"
+speech_blt_11_3,总之，妖怪是依靠人类对我们的信仰生存的，所以很多妖怪来到人界，是为了获得信仰之力。,"Simply put, monsters rely on the belief of mankind to exist. That's their mytho essence. That's why many monsters have come to the real world, they want to get the power of more people believing."
+speech_blt_11_4,信仰之力，那是什么？,Mytho… essence? What do you mean?
+speech_blt_11_5,总之跟你说你也不懂，简而言之，信仰之力是我们的能量之源，而异界的信仰之力正在急剧减少。,"So basically… Ah forget it, you wouldn't get it anyway! In short, Mytho Essence is our source of energy and its running short in our Mythos."
 speech_blt_14_1,镇上的妖怪好像形成了集团。,All the monsters in town seem to have divided into groups.
 speech_blt_14_2,是呀，现在镇上有三个大妖怪集团呢，要想说服他们不再厮杀可不容易。,"Yes, there are currently three main groups of monsters in town. It will be difficult to convince them all to stop fighting with each other."
-speech_blt_14_3,时间紧急，我们分头行动吧。你和我分别去劝说一个妖怪集团。,"We're running short on time! Let's split up, and each of us will try to persuade a different monster group."
-speech_blt_14_4,哼，闻到这些喽啰们的气味我就知道，这个地方的首领肯定是皮影。,"Hmm... from the reek of these bandits, I can tell right away that their leader is Shadow Puppet."
-speech_blt_14_5,皮影？,Shadow Puppet?
-speech_blt_14_6,是呀，一种掌控影子的怪物，如果不小心，就会被他拖进永恒的黑暗！,"Yeah, a monster that controls the shadows. If we're not careful, we'll be dragged into eternal darkness!"
-speech_blt_14_7,（你们之前是有过过节吗……）,(Sounds like you guys were fighting before...)
-speech_blt_14_8,总之如果是皮影的话，那就要做好充分的准备，看来我要拿出点本事了。,"Point is, if it's Shadow Puppet, then we need to be prepared. Looks like I'm gonna have to bust out some more serious abilities."
+speech_blt_14_3,哼，闻到这些喽啰们的气味我就知道，这个地方的首领肯定是皮影。,"Hmm... from the reek of these bandits, I can tell right away that their leader is Shadow Puppet."
+speech_blt_14_4,皮影？,Shadow Puppet?
+speech_blt_14_5,是呀，一种掌控影子的怪物，如果不小心，就会被他拖进永恒的黑暗！,"Yeah, a monster that controls the shadows. If we're not careful, we'll be dragged into eternal darkness!"
 speech_blt_15_1,好了，我们看看雪娃娃那边怎么样了,"Ok, let's see how our little snow princess is doing!"
 speech_blt_15_2,…………,…
 speech_blt_15_3,嗯？你怎么这幅表情？,Huh? I don't like that look… What's wrong?
@@ -1173,7 +1148,6 @@ speech_blt_15_4,被……全灭了……那里的妖怪被……全灭了……,
 speech_blt_15_5,怎么回事？！是谁干的？,What do you mean? Who could do such a thing?
 speech_blt_15_6,小妖怪们说，好像是一个人类……,Some other monsters said that they believe a human is behind it…
 speech_blt_15_7,人类？我知道了！一定是散布流言的那个人，只要妖怪们互相吞并，他最后只要干掉最大的妖怪，就能获得全部信仰之力！,"A human? I know! It must be the one who was spreading all those rumors! He wants the monsters to destroy each other, leaving only the last monster for him to defeat! Then take all the myth essence."
-speech_blt_15_8,如果是这样的话，他下一个目标一定是最后那个妖怪集团，我们快去！,"If that's so, then his next target will be the last remaining group of monsters. Let's go!"
 speech_blt_15_9,刚才小妖怪们说，那个人类似乎还有妖怪帮手,"Just now, a little monster told me that the human has monsters helping him."
 speech_blt_15_10,这么说的话，他也是代行者……我们要小心应付,"If that's true, then he is also a monster keeper... We should be careful."
 speech_blt_17_1,前面就是了，我感受到了很恐怖的力量！我们一定要做好万全的准备。,"It's just ahead! I sense a terrible power here, so let's be on our guard!"
@@ -1195,28 +1169,19 @@ speech_blt_18_15,嗯？你的眼镜…………,Huh? That eyepiece…
 speech_blt_18_16,这部手机给你，如果想知道妖怪和你所戴眼镜的事情，就来找我吧。,"Here, take this phone. If you ever want to know more about monsters or the eyepiece you carry, just find me."
 speech_blt_18_17,那个老头是谁，这么厉害竟然能一下干掉一条守护龙。,Who was that? Strong enough to take out a Guardian Dragon with one shot!
 speech_blt_18_18,……我总觉得他有些面熟，是在哪里见过呢……,"I feel like I've seen that person before, but where…"
-speech_blt_18_19,这个手机……,"So, this phone…"
-speech_blt_18_20,我看看……这好像是被特殊加工过的手机，只能接收到特定的信号。,Lemme see... It seems this phone has been modified. It can only receive certain signals…
 speech_blt_18_21,那老头让你用这个找他，可这里面没有他的信息呀，是不是老糊涂了……,So that mysterious person wants you to use this to contact him… But he didn't leave any info about himself… Maybe he's just old and confused?
-speech_blt_18_22,咦，手机自己响了……有信息？,"Wow, the phone just beeped… What's the message?"
-speech_blt_18_23,SOS……这是一条求救信息！,SOS… That's all it says!
-speech_blt_18_24,可是只有一个SOS怎么去找呀。,But what good is a SOS if we can't find the location?
-speech_blt_18_25,带上手机，我觉得如果接近目标它还会有反应的。,"Just bring the phone along. If we come close to the target, I'm sure it will activate somehow."
-speech_blt_21_1,这边的反应比较弱，我们再去别的地方看看吧。,"The phone doesn't seem to be doing anything yet, let's move on and try elsewhere."
-speech_blt_22_1,这边的反应也不强呀，小狐狸你是不是迷路了。,There is no activity here either. Are you sure we're not lost little fox?
-speech_blt_22_2,……别胡说,Don't be silly…
 speech_blt_23_1,之前我听凯尔说什么“墙”，那是怎么回事呀……,"I heard Kyle mention something about a ""wall."" What was all that about..."
 speech_blt_23_2,在人界和异界之间有一道屏障，如果一边的生物想穿越到对面的世界，就会被屏障附上新世界的“规则”,"There is a barrier between the real world and Mythos. If a creature want to travel from one world to the other, the barrier will force it to conform to the rules of the world it is entering."
 speech_blt_23_3,比如在人界，本来是没有妖怪存在的，所以我要过来的话，妖力会被大大减弱到这个世界可以允许的水平,"For example, the real world originally didn't have any monsters. So if a monster crosses the barrier, it will be weakened to a level that the real world can accept."
 speech_blt_23_4,诶！这么说你们在异界比在这里强大多了！,Wow! So that means that in Mythos you monsters are actually much stronger!
-speech_blt_23_5,那还用说，如果在异界，哪还用像现在这样费事，哪怕千里之外的SOS信号，我也能立刻找到目标。,"Of course! Why, if we were in Mythos, we wouldn't need to go to all this trouble. Even if an SOS signal came from thousands of miles away, we could find the source in an instant!"
+speech_blt_23_5,那还用说，如果在异界，哪还用像现在这样费事。,"Of course! Why, if we were in Mythos, we wouldn't need to go to all this trouble."
 speech_blt_23_6,嘘，好像接近目标了,"Shhh, it seems we are getting close to our target."
 speech_blt_24_1,呃……我想了想不对呀，这么说来，人类之前的传说和神话都是翻墙来的妖怪了？,I knew something wasn't right. So that means that mankind's early legends and myths were all monsters that crossed the barrier to the real world?
 speech_blt_24_2,……不，在之前，异界和人界是没有墙的,Nope. Originally there was no barrier between Mythos and the real world.
 speech_blt_24_3,没有墙？也就是说之前这两个世界之间是可以自由往来的？那墙是怎么出现的？,No barrier… That means you could freely cross between the two worlds? Then where did the barrier come from?
 speech_blt_24_4,我也不是很清楚……我的记忆很模糊，在我知道的时候，墙已经在那里了,"I don't really know… My memories aren't very clear. As far as I can remember, it was always there."
 speech_blt_24_5,九尾狐不是至少活了一千年吗，难道一千年前……,But haven't you already lived for a 1000 years? So that means that 1000 years before…
-speech_blt_24_6,你们别说话了，手机又有反应了，求救的人就在前面。,You two can discuss this later. Look! The phone is acting up again. The distress signal is coming from just ahead!
+speech_blt_24_6,你们别说话了，手机有反应了，求救的人就在前面。,You two can discuss this later. Look! The phone is acting up. The distress signal is coming from just ahead!
 speech_blt_24_7,啊……得救了，还以为会被这些妖怪吃了……,"You've saved me!! Boy, I thought I was going to be eaten alive by those monsters…"
 speech_blt_24_8,谢谢你们，我是阿曼达,"Yes, much appreciated! I am Amanda."
 speech_blt_24_9,阿曼达？！你是那个著名的插画师？！画河童漫画的那个？,Amanda?! Aren't you that famous artist? The one who makes that Kappa manga?
@@ -1236,8 +1201,6 @@ speech_blt_26_1,你们真厉害，刚才我们就是被神社里的幻术困住�
 speech_blt_26_2,幻术？什么幻术，我怎么没感觉到……,Illusions? What illusions? I didn't see anything…
 speech_blt_26_3,咦，小狐狸，这里有你的雕像！,"Hey, look little fox, it's a statue of you!"
 speech_blt_26_4,我的雕像？等等，我好像想起什么了……这里，好像是我们家族在人界的栖息地？,"A statue? Wait, this reminds me of something... This place seems to be the habitat of our family here in the real world?"
-speech_blt_26_5,怪不得你不会被这里的幻术控制,No wonder you're not affected by the illusions.
-speech_blt_27_1,小心，有妖怪过来了！咦？他们好像被控制了？,"Careful, more monsters are coming! And it seems that they are being somehow controlled?"
 speech_blt_28_1,叽叽！,Squeak squeak!
 speech_blt_28_2,这是什么，好恶心！,"Eww, what is this? Disgusting!"
 speech_blt_28_3,好像就是他们控制了这些妖怪,It seems it was them who were controlling the monsters.

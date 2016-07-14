@@ -25,13 +25,14 @@ public class EffectSet : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, string wpID)
+    public override bool Apply(float applyTime, string wpID)
     {
-        base.Apply(applyTime, wpID);
+        if (base.Apply(applyTime, wpID) == false)
+            return false;
 
         EffectSetPrototype setProto = protoEffect as EffectSetPrototype;
         if (setProto == null)
-            return;
+            return false;
 
         foreach (string id in setProto.effectList)
         {
@@ -41,9 +42,13 @@ public class EffectSet : Effect
                 curEffect.SetOwnedBuff(ownedBuff);
                 curEffect.SetOwnedSpell(ownedSpell);
                 curEffect.targetID = targetID;
+                //NOTE: if put this to config file, remove this
+                curEffect.noDamageResponse = noDamageResponse;
                 curEffect.Apply(applyTime, wpID);
             }
         }
+
+        return true;
     }
     //---------------------------------------------------------------------------------------------
 }

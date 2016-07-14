@@ -19,6 +19,7 @@ public class UIFazhen : UIBase
 		leftSecend = maxSecend;
 		StartCoroutine ("updateLeftTimeCo");
 		ShowErrorTip (false);
+		errorTip.text = StaticDataMgr.Instance.GetTextByID ("dazhao_huazhenshibai");
 	}
 
 	void OnDestroy()

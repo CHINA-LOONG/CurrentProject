@@ -85,7 +85,7 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 				
 				if (www.isDone)
 				{
-					Logger.LogError(infile + " ## " + www.bytes.Length + " ## " + outfile);
+					//Logger.LogError(infile + " ## " + www.bytes.Length + " ## " + outfile);
 					File.WriteAllBytes(outfile, www.bytes);
 				}
 				yield return null;

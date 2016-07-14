@@ -69,22 +69,23 @@ public class InstanceEntry
 		if(!string.IsNullOrEmpty(enemy6))
 			enemyList.Add(enemy6);
 
-        if (reward1 != null && reward4.Equals("") == false)
+
+		if (!string.IsNullOrEmpty (reward1))
 			rewardList.Add(reward1);
 
-        if (reward2 != null && reward4.Equals("") == false)
+		if (!string.IsNullOrEmpty (reward2))
 			rewardList.Add(reward2);
 
-        if (reward3 != null && reward4.Equals("") == false)
+		if (!string.IsNullOrEmpty (reward3))
 			rewardList.Add(reward3);
 
-        if (reward4 != null && reward4.Equals("") == false)
+		if (!string.IsNullOrEmpty (reward4))
 			rewardList.Add(reward4);
 
-        if (reward5 != null && reward4.Equals("") == false)
+		if (!string.IsNullOrEmpty (reward5))
 			rewardList.Add(reward5);
 
-        if (reward6 != null && reward4.Equals("") == false)
+		if (!string.IsNullOrEmpty (reward6))
 			rewardList.Add(reward6);
 
 	}

@@ -153,11 +153,17 @@ public class UIBattle : UIBase
     public void ChangeLife(SpellVitalChangeArgs lifeChange)
     {
         m_PlayerGroupUI.ChangeLife(lifeChange);
-
-        //GameObject prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "VitalChange");
-        GameObject go = ResourceMgr.Instance.LoadAsset("VitalChange");
-        UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
-        uiVitalChangeView.ShowVitalChange(lifeChange, gameObject.transform as RectTransform);
+        
+        if (
+            lifeChange.vitalType != (int)VitalType.Vital_Type_FixLife &&
+            lifeChange.vitalType != (int)VitalType.Vital_Type_Shield
+            )
+        {
+            //GameObject prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "VitalChange");
+            GameObject go = ResourceMgr.Instance.LoadAsset("VitalChange");
+            UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
+            uiVitalChangeView.ShowVitalChange(lifeChange, gameObject.transform as RectTransform);
+        }
     }
 
     public void ChangeEnergy(SpellVitalChangeArgs energyChange)

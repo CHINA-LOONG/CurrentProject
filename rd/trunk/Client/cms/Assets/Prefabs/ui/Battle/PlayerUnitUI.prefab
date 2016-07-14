@@ -354,7 +354,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167800}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 587, y: -36, z: 0}
+  m_LocalPosition: {x: 586.25, y: -36.2000008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22488218}
@@ -799,8 +799,8 @@ MonoBehaviour:
   dangerRatio: .300000012
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   dangerColor: {r: 1, g: 0, b: 0, a: 1}
-  ShieldImage: {fileID: 11466376}
-  ShieldEff: {fileID: 167800}
+  shieldImage: {fileID: 11466376}
+  shieldEffect: {fileID: 167800}
 --- !u!114 &11481836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1072,7 +1072,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 1
     startSize:
-      scalar: .300000012
+      scalar: .400000006
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1139,7 +1139,7 @@ ParticleSystem:
       minMaxState: 0
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 100
+    maxNumParticles: 150
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -1158,7 +1158,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 25
+      scalar: 30
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1200,14 +1200,14 @@ ParticleSystem:
     time3: 0
     m_BurstCount: 0
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: .471544713
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1270,15 +1270,15 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 2566782275
+          rgba: 2556428543
         key1:
           serializedVersion: 2
-          rgba: 4294236497
+          rgba: 4294201774
         key2:
           serializedVersion: 2
           rgba: 0

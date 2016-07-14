@@ -1226,7 +1226,7 @@ Midasigong - 5,米达斯宫 - 5,Palace of Midas - 5
 Midasigong - 6,米达斯宫 - 6,Palace of Midas - 6
 guide_level_name,街道,Streets
 pvp_level_name,竞技场,Arena
-login_create_001,告诉我你的名字吧,Please tell me your name
+login_create_001,干的漂亮！你的名字是？,Excellent job! What is your name?
 guid_level_failed,"战斗失败，是不是没有找到弱点？
 让时间倒流回战斗开始吧~","Defeated! Did you not search for any enemy weakpoints?
 Return to the start of the battle. "
@@ -1552,11 +1552,13 @@ invite_alreadyinvite,领取,Collect
 invite_paihangbang,排行榜,Rankings
 invite_fuzhi,快速邀请,Quick Invite
 invite_imtext,我的id是{0}，快来接收我的邀请吧！,"My id is {0}, please accept my invitation!"
-facebookshare_fuhuo,立即获得免费复活机会（每天1次）！,Immediately revive for free (once per day)!
+facebookshare_fuhuo,立即获得免费复活机会（每天1次）！,"Immediately revive for free 
+(once per day)!"
 facebook_share,分享,Share
 facebook_link,连接,Connect
 facebookshare_zhengwen,竞技次数不足,Insufficient Arena Entries
-facebookshare_pvp,立即获得竞技次数*2（每天1次）！,Get 2 Arena Entries immediately (once per day)!
+facebookshare_pvp,立即获得竞技次数*2（每天1次）！,"Get 2 Arena Entries immediate
+ly (once per day)!"
 facebookshare_energy,立即获得20活力（每天1次）！,Get 20 Energy immediately (once per day)!
 facebookshare_condition1,1个好友等级达到15级,1 friend reaches level 15
 facebookshare_condition2,2个好友等级达到20级,2 friends reach level 20
@@ -1595,3 +1597,4 @@ specialsell_buy,成功购买{0}礼包！,You have purchased the {0} package!
 spell_hit_stunImmune,免疫眩晕,Stun Immune
 main_icon_huodong,活动礼包,Event Package
 main_icon_xuanze,新手礼包,New Player Package
+loading_special,各个国家都存在传说和神话。我们的存在绝非偶然。,Legends and Gods exist in every country and culture. Our existence is no coincidence.

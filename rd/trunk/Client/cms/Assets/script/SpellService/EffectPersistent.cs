@@ -32,13 +32,14 @@ public class EffectPersistent : Effect
         base.Init(pt,owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, string wpID)
+    public override bool Apply(float applyTime, string wpID)
     {
-        base.Apply(applyTime, wpID);
+        if (base.Apply(applyTime, wpID) == false)
+            return false;
 
         EffectPersistentProtoType persistProto = protoEffect as EffectPersistentProtoType;
         if (persistProto == null)
-            return;
+            return false;
 
         Logger.Log("apply EffectPersistent");
         float delayTime = persistProto.startDelayTime;
@@ -48,6 +49,8 @@ public class EffectPersistent : Effect
             startEffect.SetOwnedBuff(ownedBuff);
             startEffect.SetOwnedSpell(ownedSpell);
             startEffect.targetID = targetID;
+            //NOTE: if put this to config file, remove this
+            startEffect.noDamageResponse = noDamageResponse;
             startEffect.Apply(applyTime + persistProto.startDelayTime, wpID);
         }
 
@@ -60,12 +63,16 @@ public class EffectPersistent : Effect
                 curEffect.SetOwnedBuff(ownedBuff);
                 curEffect.SetOwnedSpell(ownedSpell);
                 curEffect.targetID = targetID;
+                //NOTE: if put this to config file, remove this
+                curEffect.noDamageResponse = noDamageResponse;
                 curEffect.Apply(applyTime + delayTime, wpID);
             }
         }
 
         //cache spell length
         ownedSpell.SetSpellEndTime(applyTime + delayTime);
+
+        return true;
     }
     //---------------------------------------------------------------------------------------------
 }

@@ -23,6 +23,11 @@ public class BuffIcon : MonoBehaviour
         if (curIcon != icon)
         {
             curIcon = icon;
+            if (string.IsNullOrEmpty(icon))
+            {
+                return;
+            }
+
             var image = ResourceMgr.Instance.LoadAssetType<Sprite>(curIcon) as Sprite;
             buffIcon.sprite = image;
         }

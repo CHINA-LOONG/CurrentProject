@@ -34,6 +34,8 @@ public class EffectWholeData
     public int dispelCategory;
     //
     public float fixLifeRatio;
+    public string linkEffect;
+    public float chance;
 }
 
 [Serializable]
@@ -46,6 +48,8 @@ public class EffectPrototype
     public int energy;
 
     public EffectType effectType;
+    public string linkEffect;
+    public float chance;
 }
 
 public class EffectPrototypes : ScriptableObject
@@ -66,6 +70,7 @@ public class Effect
     //public float aniDelayTime;
     public Buff ownedBuff;
     public Spell ownedSpell;
+    public bool noDamageResponse = false;
     
     //---------------------------------------------------------------------------------------------
     //methods
@@ -77,12 +82,17 @@ public class Effect
         protoEffect.targetType = pt.targetType;
         protoEffect.energy = pt.energy;
         protoEffect.effectType = pt.effectType;
+        protoEffect.linkEffect = pt.linkEffect;
+        protoEffect.chance = pt.chance;
 
         spellService = owner;
     }
     //---------------------------------------------------------------------------------------------
-    public virtual void Apply(float applyTime, string wpID)
+    public virtual bool Apply(float applyTime, string wpID)
     {
+        if (IsTriggeredSuccess() == false)
+            return false;
+
         GenerateTarget(casterID, targetID);
         this.applyTime = applyTime;
 
@@ -115,6 +125,18 @@ public class Effect
             spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
 
         }
+
+        return true;
+    }
+    //---------------------------------------------------------------------------------------------
+    public bool IsTriggeredSuccess()
+    {
+        if (protoEffect.chance < 1.0f)
+        {
+            return UnityEngine.Random.Range(0.0f, 1.0f) <= protoEffect.chance; 
+        }
+
+        return true;
     }
     //---------------------------------------------------------------------------------------------
     public void SetOwnedBuff(Buff buffOwner)

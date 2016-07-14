@@ -26,9 +26,10 @@ public class EffectSearch : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, string wpName)
+    public override bool Apply(float applyTime, string wpName)
     {
-        base.Apply(applyTime, wpName);
+        if (base.Apply(applyTime, wpName) == false)
+            return false;
 
         Logger.Log("[SpellService]trigger search effect");
         EffectSearchPrototype searchProt = protoEffect as EffectSearchPrototype;
@@ -63,6 +64,8 @@ public class EffectSearch : Effect
                     curEffect.SetOwnedBuff(ownedBuff);
                     curEffect.SetOwnedSpell(ownedSpell);
                     curEffect.targetID = bo.guid;
+                    //NOTE: if put this to config file, remove this
+                    curEffect.noDamageResponse = noDamageResponse;
                     curEffect.Apply(applyTime, string.Empty);
                 }
             }
@@ -76,11 +79,15 @@ public class EffectSearch : Effect
                         curEffect.SetOwnedBuff(ownedBuff);
                         curEffect.SetOwnedSpell(ownedSpell);
                         curEffect.targetID = bo.guid;
+                        //NOTE: if put this to config file, remove this
+                        curEffect.noDamageResponse = noDamageResponse;
                         curEffect.Apply(applyTime, wpList[i]);
                     }
                 }
             }
         }
+
+        return true;
     }
     //---------------------------------------------------------------------------------------------
 }

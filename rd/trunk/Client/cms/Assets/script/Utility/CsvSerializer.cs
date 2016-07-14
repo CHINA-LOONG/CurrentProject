@@ -237,6 +237,11 @@ namespace Csv.Serialization
                     string value = parts[i];
                     var field = header[i];
 
+					if(string.IsNullOrEmpty(value))
+					{
+						continue;
+					}
+
                     try
                     {
                         FieldInfo p = null;

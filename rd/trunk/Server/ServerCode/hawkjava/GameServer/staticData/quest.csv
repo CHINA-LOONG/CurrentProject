@@ -158,10 +158,10 @@ id,group,type,comments,name,desc,icon,level,cycle,timeBeginId,timeEndId,goalType
 4010,4,1,为装备开孔10次,biaoti4010,mubiao4010,task_rmb_icon,30,1,-1,-1,equipslot,,10,40010,0,0,,8_1
 4011,4,1,强化打造5件装备至蓝色品质,biaoti4011,mubiao4011,task_rmb_icon,35,1,-1,-1,equipstage-x,3,5,40011,0,0,,8_1
 4012,4,1,强化打造1件装备至紫色品质,biaoti4012,mubiao4012,task_rmb_icon,40,1,-1,-1,equipstage-x,4,1,40012,0,0,,8_1
-4013,4,1,合成1次2级纹章,biaoti4013,mubiao4013,task_rmb_icon,45,1,-1,-1,synlevel-x,2,1,40013,0,0,,8_1
+4013,4,1,合成1次2级纹章,biaoti4013,mubiao4013,task_rmb_icon,45,1,-1,-1,synlevel-x,2,1,40013,0,0,,2_1
 4014,4,1,强化打造3件装备至紫色品质,biaoti4014,mubiao4014,task_rmb_icon,45,1,-1,-1,equipstage-x,4,3,40014,0,0,,8_1
-4015,4,1,合成3次2级纹章,biaoti4015,mubiao4015,task_rmb_icon,50,1,-1,-1,synlevel-x,2,3,40015,0,0,,8_1
-4016,4,1,合成1次3级纹章,biaoti4016,mubiao4016,task_rmb_icon,55,1,-1,-1,synlevel-x,3,1,40016,0,0,,8_1
+4015,4,1,合成3次2级纹章,biaoti4015,mubiao4015,task_rmb_icon,50,1,-1,-1,synlevel-x,2,3,40015,0,0,,2_1
+4016,4,1,合成1次3级纹章,biaoti4016,mubiao4016,task_rmb_icon,55,1,-1,-1,synlevel-x,3,1,40016,0,0,,2_1
 4017,4,1,强化打造1件装备至橙色品质,biaoti4017,mubiao4017,task_rmb_icon,60,1,-1,-1,equipstage-x,5,1,40017,0,0,,8_1
 5009,5,1,领取第一章普通难度全部星级奖励,biaoti5009,mubiao5009,task_rmb_icon,7,1,-1,-1,chapternormal-x,1,3,50009,0,0,,9_1_0
 8001,10,2,每日首次登陆后领取,biaoti8001,mubiao8001,task_rmb_icon,8,2,-1,-1,free,,1,80001,0,0,,

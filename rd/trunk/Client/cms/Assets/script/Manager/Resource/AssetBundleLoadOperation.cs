@@ -75,6 +75,50 @@ public class AssetBundleLoadAssetOperationFull : AssetBundleLoadAssetOperation
 	}
 }
 
+public class AssetLevelLoadOperation : AssetBundleLoadAssetOperation
+{
+    protected string mAssetBundleName;
+    protected string mAssetName;
+    protected bool mIsAdditive;
+    protected System.Type mType;
+    protected AsyncOperation mRequest = null;
+
+    public override T GetAsset<T>()
+    {
+        return null;
+    }
+    public AssetLevelLoadOperation(string bundleName, string assetName, System.Type type, bool isAdditive)
+    {
+        mAssetBundleName = bundleName;
+        mAssetName = assetName;
+        mType = type;
+        mIsAdditive = isAdditive;
+    }
+
+    // Returns true if more Update calls are required.
+    public override bool Update()
+    {
+        if (mRequest != null)
+            return false;
+
+        LoadedAssetBundle bundle = ResourceMgr.Instance.GetLoadedAssetBundle(mAssetBundleName);
+        if (bundle != null)
+        {
+            if (mIsAdditive)
+                mRequest = Application.LoadLevelAdditiveAsync(mAssetName);
+            else
+                mRequest = Application.LoadLevelAsync(mAssetName);
+            return false;
+        }
+        else
+            return true;
+    }
+
+    public override bool IsDone()
+    {
+        return mRequest != null && mRequest.isDone;
+    }
+}
 //public class AssetBundleLoadManifestOperation : AssetBundleLoadAssetOperationFull
 //{
 //    public AssetBundleLoadManifestOperation (string bundleName, string assetName, System.Type type)

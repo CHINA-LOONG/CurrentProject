@@ -1,6 +1,6 @@
-﻿#TEXT,TEXT,NUM,NUM,NUM,NUM,NUM,FLOAT,TEXT,TEXT,NUM,NUM,TEXT
+﻿ee,TEXT,NUM,NUM,NUM,NUM,NUM,FLOAT,TEXT,TEXT,NUM,NUM,TEXT
 id,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,category,levelAdjust,icon,tips,baseTipValue,isAoe,firstSpell
-#id,rootEffectID,��������,����ʱ��,energyCost,energyGenerate,category,levelAdjust,ͼ��,tips,1��ʱtips��ʾ��ֵ,�ж��Ƿ�ת��,���ü���
+#id,rootEffectID,????????,???????,energyCost,energyGenerate,category,levelAdjust,???,tips,1???tips??????,?ж???????,???ü???
 s1,e1,0,0,0,10,0,0,,This is spell {0},10,0,0
 s2,e2,0,0,0,10,0,0,,This is spell {0},10,0,0
 s3,e2,3,5,100,0,0,0,,This is spell {0},10,0,0
@@ -57,3 +57,31 @@ ultQingniao,demoqingniaoDazhaoe1,0,10,100,0,9,0,,This is spell {0},10,1,0
 ultZhuyan,demozhuyanDazhaoe1,5,10,100,0,8,0,,This is spell {0},10,0,0
 bossHundun,bossHundune1,0,0,0,0,1,0,,This is spell {0},10,0,0
 dazhaoPrepare,dazhaoPreparee1,0,0,0,0,10,0,,,0,0,0
+bossminghe18Karong1,bossminghe18Karong1e1,0,0,0,20,0,0,,This is spell {0},10,0,0
+bossminghe18Karong2,bossminghe18Karong2e1,0,0,0,20,0,0,,This is spell {0},10,0,0
+bossminghe18Karong3,bossminghe18Karong3e1,0,0,0,20,0,0,,This is spell {0},10,0,0
+bossminghe18Karong4,bossminghe18Karong4e1,0,0,0,20,0,0,,This is spell {0},10,0,0
+bossminghe18Karong5,bossminghe18Karong5e1,0,0,0,20,0,0,,This is spell {0},10,0,0
+bossminghe18Karong6,bossminghe18Karong6e1,0,0,0,20,0,0,,This is spell {0},10,0,0
+psvbossLonggongtongzi,psvLonggongtongzie1,0,0,0,20,4,0,,This is spell {0},10,0,0
+psvHapi,psvHapie1,0,0,0,20,4,0,,This is spell {0},10,0,psvHapi
+psvHetong,psvHetonge1,0,0,0,20,4,0,,This is spell {0},10,0,psvHetong
+psvLonggongtongzi,psvLonggongtongzie1,0,0,0,20,4,0,,This is spell {0},10,0,0
+psvWagui,psvWaguie1,0,0,0,20,4,0,,This is spell {0},10,0,0
+ultHapi,ultHapie1,0,10,100,0,9,0,,This is spell {0},10,0,0
+ultHetong,ultHetonge1,0,10,100,0,9,0,,This is spell {0},10,0,0
+ultWagui,ultWaguie1,0,10,100,0,9,0,,This is spell {0},10,0,0
+ultLonggongtongzi,ultLonggongtongzie1,0,10,100,0,9,0,,This is spell {0},10,0,0
+ultbossLonggongtongzi,ultLonggongtongzie1,0,10,100,0,9,0,,This is spell {0},10,0,0
+ultHuapo,ultHuapoe1,10,10,100,0,8,0,,This is spell {0},10,0,0
+ultAmute,ultAmutee1,0,0,100,0,9,0,,This is spell {0},10,1,0
+ultLangren,ultLangrene1,7,10,100,0,8,0,,This is spell {0},10,0,0
+ultMantuoluo,ultMantuoluoe1,0,0,100,0,9,0,,This is spell {0},10,1,0
+ultboosMantuoluo,ultboosMantuoluoe1,0,0,100,0,9,0,,This is spell {0},10,1,0
+ultAnpusha,ultAnpushae1,0,0,100,0,9,0,,This is spell {0},10,1,0
+psvHuapo,psvHuapoe1,0,0,0,0,4,0,,This is spell {0},10,0,0
+psvAmute,psvAmutee1,0,0,0,0,4,0,,This is spell {0},10,0,0
+psvLangren,psvLangrene1,0,0,0,0,4,0,,This is spell {0},10,0,0
+psvMantuoluo,psvMantuoluoe1,0,0,0,0,4,0,,This is spell {0},10,0,0
+psvbossMantuoluo,psvbossMantuoluoe1,0,0,0,0,4,0,,This is spell {0},10,0,attackCutSlight
+psvAnpusha,psvAnpushae1,0,0,0,0,4,0,,This is spell {0},10,0,0

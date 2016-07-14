@@ -576,7 +576,7 @@ public class GameUnit : IComparable
             Spell curSpell = itor.Current.Value;
             if (curSpell.spellData.category == (int)SpellType.Spell_Type_Passive && string.IsNullOrEmpty(curSpell.spellData.firstSpell) == false)
             {
-                return curSpell.spellData.id;
+                return curSpell.spellData.firstSpell;
             }
         }
 

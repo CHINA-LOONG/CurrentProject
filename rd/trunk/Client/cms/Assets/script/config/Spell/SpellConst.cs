@@ -62,6 +62,8 @@ public enum BuffType
     Buff_Type_MgJanshang,
     Buff_Type_PhyShield,
     Buff_Type_MgShield,
+    Buff_Type_Passive,
+
     Num_Buff_Type
 }
 

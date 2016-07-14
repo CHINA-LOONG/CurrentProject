@@ -82,26 +82,31 @@ public class LifeBarUI : MonoBehaviour
             var size = currentBar.sizeDelta;
             size.x = width * (0.2f + currentLife * 0.8f);
             currentBar.sizeDelta = size;
+			RefreshShieldUI((int)(currentLife*lifeTarget.unit.maxLife));
         }
     }
 
-    public void RefreshShieldUI()
+    public void RefreshShieldUI(int currentLife = -1)
     {
         if (lifeTarget==null)
             return;
         if (shieldImage == null)
             return;
-
         if (lifeTarget.unit.spellMagicShield != 0 || lifeTarget.unit.spellPhyShield != 0)
         {
+			int curLife = lifeTarget.unit.curLife;;
+            if (currentLife != -1)
+            {
+                curLife = currentLife;
+            }
             float shieldNum = 0.0f;
             if (lifeTarget.unit.spellMagicShield > lifeTarget.unit.spellPhyShield)
             {
-                shieldNum = 1.0f / lifeTarget.unit.maxLife * (lifeTarget.unit.curLife + lifeTarget.unit.spellMagicShield);
+                shieldNum = 1.0f / lifeTarget.unit.maxLife * (curLife + lifeTarget.unit.spellMagicShield);
             }
             else
             {
-                shieldNum = 1.0f / lifeTarget.unit.maxLife * (lifeTarget.unit.curLife + lifeTarget.unit.spellPhyShield);
+                shieldNum = 1.0f / lifeTarget.unit.maxLife * (curLife + lifeTarget.unit.spellPhyShield);
             }
             if (shieldNum>=1)
             {
@@ -114,7 +119,6 @@ public class LifeBarUI : MonoBehaviour
             }
             shieldImage.enabled = true;
             shieldImage.transform.localScale = new Vector3(shieldNum, 1.0f, 1.0f);
-
         }
         else
         {

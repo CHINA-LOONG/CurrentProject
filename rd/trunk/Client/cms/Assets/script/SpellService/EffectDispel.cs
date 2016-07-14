@@ -21,17 +21,18 @@ public class EffectDispel : Effect
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
-    public override void Apply(float applyTime, string wpID)
+    public override bool Apply(float applyTime, string wpID)
     {
-        base.Apply(applyTime, wpID);
+        if (base.Apply(applyTime, wpID) == false)
+            return false;
 
         EffectDispelProtoType dispelPt = protoEffect as EffectDispelProtoType;
         if (dispelPt == null)
-            return;
+            return false;
 
         GameUnit target = spellService.GetUnit(targetID);
         if (target == null)
-            return;
+            return false;
 
         List<Buff> targetBuffList = target.buffList;
         int buffCount = targetBuffList.Count;
@@ -42,6 +43,8 @@ public class EffectDispel : Effect
             if (curBuff != null && curBuff.buffProto.category == dispelPt.dispelCategory)
                 curBuff.Finish(applyTime);
         }
+
+        return true;
     }
     //---------------------------------------------------------------------------------------------
 }
