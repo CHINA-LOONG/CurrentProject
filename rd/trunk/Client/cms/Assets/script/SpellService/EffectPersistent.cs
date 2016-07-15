@@ -70,8 +70,7 @@ public class EffectPersistent : Effect
         }
 
         //cache spell length
-        ownedSpell.SetSpellEndTime(applyTime + delayTime);
-
+        spellService.SetSpellEndTime(applyTime + delayTime);
         return true;
     }
     //---------------------------------------------------------------------------------------------

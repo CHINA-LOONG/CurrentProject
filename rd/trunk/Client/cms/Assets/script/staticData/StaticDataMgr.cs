@@ -69,7 +69,10 @@ public class StaticDataMgr : MonoBehaviour
         {
             var data = InitTable<SpellProtoType>("spell");
             foreach (var item in data)
+            {
+                Debug.Log(item.id);
                 spellData.Add(item.id, item);
+            }
         }
         {
             var data = InitTable<SpellUpLevelPrice>("skillUpPrice");
@@ -79,7 +82,16 @@ public class StaticDataMgr : MonoBehaviour
         {
             var data = InitTable<BuffPrototype>("buff");
             foreach (var item in data)
-                buffData.Add(item.id, item);
+			{
+				try
+				{
+                	buffData.Add(item.id, item);
+				}
+				catch
+				{
+					Logger.LogError("repeat key :" + item.id);
+				}
+			}
         }
         {
             //effectData = new Dictionary<string, EffectPrototype>();
@@ -119,15 +131,18 @@ public class StaticDataMgr : MonoBehaviour
 
                             persistPt.effectStartID = wholeData.effectStartID;
                             persistPt.startDelayTime = wholeData.startDelayTime;
-                            string[] effectList = wholeData.periodEffectList.Split(';');
-                            ///ArrayList effectArrayList = MiniJsonExtensions.arrayListFromJson (wholeData.periodEffectList);
-                            for (int i = 0; i < effectList.Length; ++i)
+                            if (wholeData.periodEffectList != null)
                             {
-                                string[] effectKV = effectList[i].Split('|');
-                                if (effectKV.Length != 2)
-                                    continue;
+                                string[] effectList = wholeData.periodEffectList.Split(';');
+                                ///ArrayList effectArrayList = MiniJsonExtensions.arrayListFromJson (wholeData.periodEffectList);
+                                for (int i = 0; i < effectList.Length; ++i)
+                                {
+                                    string[] effectKV = effectList[i].Split('|');
+                                    if (effectKV.Length != 2)
+                                        continue;
 
-                                persistPt.effectList.Add(new KeyValuePair<float, string>(float.Parse(effectKV[0]), effectKV[1]));
+                                    persistPt.effectList.Add(new KeyValuePair<float, string>(float.Parse(effectKV[0]), effectKV[1]));
+                                }
                             }
                         }
                         break;
@@ -183,6 +198,8 @@ public class StaticDataMgr : MonoBehaviour
                 effectPt.casterType = wholeData.casterType;
                 effectPt.linkEffect = wholeData.linkEffect;
                 effectPt.chance = wholeData.chance;
+
+                Debug.Log(effectPt.id);
                 effectData.Add(effectPt.id, effectPt);
             }
         }

@@ -1241,8 +1241,8 @@ psvshiliantaNvyao5Tips,使用法术技能时，10%降低被攻击者80%防御力
 psvshiliantaWeitianshi5Tips,使用buff技能时，25%回复自身60%生命值；免疫物理伤害[被动],"Whenever you cast a Buff ability, there is a 25% chance of recovering 60% HP; immunity to physical damage [Passive]"
 bossshiliantaPanshen21Tips,战斗开始时，优先进行一次物理攻击；免疫物理伤害,"At the start of battle, have precedence in carrying out one physical attack; immunity to physical damage"
 bossshiliantaKairuisi56Tips,免疫法术伤害,Immunity to magic damage
-psvshiliantaXiaochou2Tips,永久提升10%智力；死亡时，给群体目标回复2000%法攻的生命值[被动],"Permanently increases INT by 10%; upon dying, recover (2000% of magic ATK) HP for all allies [Passive]"
-psvshiliantaXiaochou4Tips,永久提升10%智力；死亡时，给群体目标造成1000%法攻的火属性法术伤害[被动],"Permanently increases INT by 10%; upon dying, deal (1000% of magic ATK) fire type magic damage to all enemy targets [Passive]"
+psvshiliantaXiaochou2Tips,永久提升10%智力；死亡时，给群体目标回复600%法攻的生命值[被动],"Permanently increases INT by 10%; upon dying, recover (600% of magic ATK) HP for all allies [Passive]"
+psvshiliantaXiaochou4Tips,永久提升10%智力；死亡时，给群体目标造成300%法攻的火属性法术伤害[被动],"Permanently increases INT by 10%; upon dying, deal (300% of magic ATK) fire type magic damage to all enemy targets [Passive]"
 bossshiliantaIfrit46Tips,提升自身100%力量,Increases your STR by 100%
 psvshiliantaChange1Tips,使用法术技能时，若目标拥有减益效果则伤害量提升25%；免疫法术伤害[被动],"Whenever you cast a magic ability, if the target is affected by a debuff effect, the damage is increased by 25%; immunity to magic damage [Passive]"
 psvshiliantaDujiaoshou1Tips,血量首次小于等于总血量50%时，给自身添加物理和法术吸收护盾；免疫法术伤害[被动],"When HP drops below 50% of max HP for the first time, add a shield for yourself the absorbs physical and magic damage; immunity to magic damage [Passive]"
@@ -1562,7 +1562,7 @@ bosskongdao77Longnv12Tips,攻击敌方群体，造成{0}%法攻光属性伤害,D
 bosskongdao77Longnv13Tips,攻击敌方群体，造成{0}%法攻光属性伤害100%几率附带眩晕效果,Deals ({0}% of magic ATK) light type damage to all enemy targets with a 100% chance of stun
 bosskongdao78Jinglingwang11Tips,攻击敌方单体，造成{0}%法攻光属性伤害，附加回复{0}%法攻的生命；,"Deals ({0}% of magic ATK) light type damage to a single target, and recovers ({0}% of magic ATK) HP;"
 bosskongdao78Jinglingwang13Tips,给自己回复{0}%法攻的生命，并附加速度提升50%持续3回合,"Recovers ({0}% of magic ATK) of your HP, and increases your SPD by 50% for 3 turns"
-bosskongdao78Jinglingwang16Tips,若有debuff效果则添加3回合护盾，同时清除自身debuff,"Clears any debuffs you are affected by and if you have debuffs, then casts a physical and magic shield, reducing damage received by 100%"
+bosskongdao78Jinglingwang16Tips,若有debuff效果则添加3回合护盾，同时清除自身debuff，若没有debuf效果则攻击敌方群体，造成{0}%法攻光属性伤害,"Clears any debuffs you are affected by and if you have debuffs, then casts a physical and magic shield, reducing damage received by 100% 3 turns.If not,then deals ({0}% of magic ATK) light type damage to all enemy targets"
 bosskongdao78Jinglingwang17Tips,攻击敌方群体，造成{0}%法攻光属性伤害，50%概率附加眩晕效果2回合,Deals ({0}% of magic ATK) light type damage to all enemy targets with a 50% chance of stun for 2 turns
 bossrenjie81Huapo2awaken1Tips,攻击敌方单体，造成{0}%物攻草属性伤害,Deals ({0}% of physical ATK) grass type physical damage to a single target
 bossrenjie81Huapo2awaken2Tips,攻击敌方单体，造成{0}%法攻草属性伤害，附加{0}%法攻草dot,Deals ({0}% of magic ATK) grass type magic damage to a single target with additional ({0}% of magic ATK) grass type DOT
@@ -1584,7 +1584,7 @@ bossrenjie84Anpusha5awaken3Tips,攻击敌方单体，造成{0}%法攻暗属性�
 bossrenjie84Anpusha5awaken5Tips,受到非暗属性伤害降低50%，对非暗属性伤害提升50%,"Reduces damage received from non-dark type monsters by 50%, and increases damage to non-dark type monsters by 50%"
 bossrenjie85Dujiaoshou1awaken1Tips,攻击敌方单体，造成{0}%法攻光属性伤害，附加光属性弱dot,Deals ({0}% of magic ATK) light type damage to a single target with additional weak light type DOT
 bossrenjie85Dujiaoshou1awaken2Tips,提高自己{0}%速度，持续3回合,Increases your SPD by {0}% for 3 turns
-bossrenjie85Dujiaoshou1awaken3Tips,若有buff则使用恢复{0}%血量，若有debuff则使用恢复{0}%血量,"If target has buffs, then recover ({0}% percentage) HP. If target has debuffs, then recover ({0}% percentage) HP."
+bossrenjie85Dujiaoshou1awaken3Tips,若有buff则使用恢复{0}%血量，若有debuff则使用恢复{0}%血量，否则恢复(0)%血量,"If target has buffs, then recover ({0}% percentage) HP. If target has debuffs, then recover ({0}% percentage) HP."
 bossrenjie85Dujiaoshou1awaken5Tips,回复自身全部血量,Recovers all of your HP
 bossrenjie85Dujiaoshou1awaken9Tips,对非光属性的怪伤害效果提升50%,Increases damage to non-light type monsters by 50%
 bossrenjie86Landuo21Tips,攻击敌方单体，造成{0}%法攻草属性伤害,Deals ({0}% of magic ATK) grass type damage to a single target
@@ -1595,7 +1595,7 @@ bossrenjie87Baonu41Tips,挥舞巨锤对敌方单体造成{0}%物攻火属性伤�
 bossrenjie87Baonu43Tips,怒吼着对敌方群体造成{0}%物攻火属性伤害，同时附带100%眩晕效果,"Roar to deal ({0}% of physical ATK) fire type damage to all enemy targets, with a 100% chance of stun"
 bossrenjie87Baonu45Tips,狂暴效果，提升自身200%力量，同时降低自身防御力50%,"Enrage effect, increases your STR by 200% while reducing your DEF by 50%"
 bossrenjie88Yafogemeng51Tips,攻击敌方单体，造成{0}%物攻暗属性伤害,Deals ({0}% of physical ATK) dark type damage to a single target
-bossrenjie88Yafogemeng52Tips,若血量低于90%则大幅度增加血量，若血量高于90%则附带力量提升{0}%,"If HP is less than 90%, then greatly increase HP amount. If HP is over 90%, increases strength of yourself by 80% for 3 turns"
+bossrenjie88Yafogemeng52Tips,若生命值低于90%则大幅度增加生命值，若生命值高于90%则附带力量提升{0}%，持续3回合,"If HP is less than 90%, then greatly increase HP amount. If HP is over 90%, increases strength of yourself by 80% for 3 turns"
 bossrenjie88Yafogemeng54Tips,攻击敌方群体，造成{0}%法攻暗属性伤害同时附加100%眩晕,"Deals ({0}% of magic ATK) dark type damage to all enemy targets, with a 100% chance of stun"
 bossrenjie88Yafogemeng58Tips,若未在一定时间内死亡，则扭转时空回到过去,"If Jester doesn't die in a set amount of time, then she will travel back in time"
 ultNvyao1Name,光明审判,Light Judgement
@@ -1617,7 +1617,7 @@ ultJinglingwang2Tips,给单体目标造成{0}%法攻的草属性法术伤害并�
 ultKahuna2Tips,嘲讽敌方全体，附加回复自身{0}%法攻的生命值,Provoke all enemy targets and recovers ({0}% of magic ATK) HP for yourself
 ultYifanmumian1Tips,给群体目标造成{0}%物攻的光属性伤害概率附加嘲讽效果,"Deals ({0}% of physical ATK) light type physical damage to a single target, with a chance of Provoke effect"
 psvNvyao1Tips,使用法术技能时，20%给被攻击者附加智力下降[被动],"Whenever you cast a magic ability, there is a 20% chance of dealing your target an additional Reduces intelligence effect [Passive]"
-psvLuoxinfu1Tips,使用法术技能时，20%给被攻击者附加耀斑效果[被动],"Whenever you cast a magic ability, there is a 20% chance of dealing your target an additional Flare effect [Passive]"
+psvLuoxinfu1Tips,使用法术技能时，20%给被攻击者附加光属性法术伤害[被动],"Whenever you cast a magic ability, there is a 20% chance of dealing your target a light type magic damage [Passive]"
 psvPiying1Tips,使用法术技能时，20%给被攻击者附加耀斑效果[被动],"Whenever you cast a magic ability, there is a 20% chance of dealing your target an additional Flare effect [Passive]"
 psvJinglingwang2Tips,使用技能时，恢复自身50%物攻的生命值[被动],"Whenever you cast a ability, recovering (50% of physical ATK) HP [Passive] "
 psvKahuna2Tips,永久提升15%体力、10%防御力[被动],Increases Power permanently by 15% and Increases your DEF by 10% for 3 turns[Passive]
@@ -1652,3 +1652,5 @@ bossrenjie82Huoniao4awaken4Name,惹火,Infuriate
 bossrenjie85Dujiaoshou1awaken5Name,光之护盾,Light Shield
 bossrenjie88Yafogemeng55Name,暗之护盾,Dark Shield
 bossrenjie88Yafogemeng52Name,能量补充,Regeneration Aura
+bossrenjie88Yafogemeng56Name,净化,purification
+bossrenjie88Yafogemeng59Name,复生,Reincarnation

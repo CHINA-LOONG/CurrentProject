@@ -101,13 +101,39 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     void OnSpeechButtonClick(GameObject go)
     {
-        UISpeech.Open(m_SpeechInput.text);
-        AudioSystemMgr.Instance.PlaySound(go,SoundType.Click);
+        //UISpeech.Open(m_SpeechInput.text);
+        //AudioSystemMgr.Instance.PlaySound(go,SoundType.Click);
+        PB.HSMonsterCatch mcache = new PB.HSMonsterCatch();
+
+        mcache.cfgId = m_SpeechInput.text.ToString();// Unit_Demo_jiuweihu  Unit_Demo_qingniao.
+        UnitData monster = StaticDataMgr.Instance.GetUnitRowData(mcache.cfgId);
+        if (monster == null) return;
+        ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson(monster.spellIDList);
+        for (int i = 0; i < spellArrayList.Count; ++i)
+        {
+            string spellID = spellArrayList[i] as string;
+            mcache.skill.Add(new PB.HSSkill() { skillId = spellID, level = 2 });
+        }	
+
+        GameApp.Instance.netManager.SendMessage(ProtocolMessage.Create(PB.code.MONSTER_CATCH_C.GetHashCode(), mcache));
     }
 
 	void OnCachMonsterFinished(ProtocolMessage msg)
-	{
+    {
+        if (msg == null)
+            return;
+        PB.HSMonsterCatchRet result = msg.GetProtocolBody<PB.HSMonsterCatchRet>();
+        if (result!=null&&result.status==1)
+        {
+            GameObject go = new GameObject("tips");
+            go.transform.parent = m_SpeechButton.transform;
+            go.transform.localPosition = new Vector3(50, 50, -10);
+            Text tex = go.AddComponent<Text>();
+            tex.text = "获取成功";
 
+            Destroy(go, 5.0f);
+        }
+        
 	}
 
     public void OnPopupListChanged(int index)

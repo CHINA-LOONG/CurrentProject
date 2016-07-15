@@ -101,7 +101,7 @@ public class UISpeech : UIBase
         SpeechStaticData data = info.speechList[index];
         Camp = data.campType;
         imgCurrent.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(data.image);
-        textCurrent.text = StaticDataMgr.Instance.GetAudioByID(data.name);
+        textCurrent.text = StaticDataMgr.Instance.GetTextByID(data.name);
 
         textContent.text = StaticDataMgr.Instance.GetTextByID(data.speakId);
 

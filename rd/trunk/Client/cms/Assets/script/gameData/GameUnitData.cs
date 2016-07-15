@@ -99,6 +99,7 @@ public class GameUnit : IComparable
     public float spellmgReduceInjury;//法术减伤
     public float spellPhyShield;//物理护盾
     public float spellMagicShield;//法术护盾
+    public int tauntTargetID = BattleConst.battleSceneGuid;//sceneGuid means no taunt target
 
     //二级属性
     public int curLife;

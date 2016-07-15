@@ -1,6 +1,8 @@
 ﻿#TEXT,NUM,NUM,NUM,FLOAT,FLOAT,NUM,NUM,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,NUM,NUM,NUM,NUM,TEXT,NUM
 id,isDamagePoint,health,isTarget,damageRate1,damageRate2,property1,property2,node,boxColliders,findWpEffect,appraisalStateEffect,stateparam0,stateparam1,stateparam2,stateparam3,stateparam4,initialStatus,tipType,tipOffsetX,tipOffsetY,desc,descOnRight
 #弱点id,是否关联boss减血,弱点hp,ai选择目标是否可以选择到,弱点系数（正常状态1),弱点系数( 正常状态2),弱点五行(正常状态1),弱点五行(正常状态2),弱点的节点,"弱点碰撞检测的盒子（一个模型身上的所有弱点，不能拥有相同的碰撞检测box,只针对与boss，小怪可以不填写）",开始鉴定效果,完成鉴定效果,状态0对应参数,状态1对应参数,状态2对应参数,状态3对应参数,状态4对应参数,部位初始状态(0 隐藏，1正常状态1，2正常状态2，3冻结，4死亡,提示信息类别(0 不做提示，1 提示介绍信息 2 提示五行),提示信息偏移,提示信息偏移,弱点描述,描述显示在右侧
+xgwp,1,-1,1,0,1,-1,-1,e_shouji,,findweakpointEffect,weakpointEffect1,,,,,,1,2,0,0,,1
+xgwpHide,2,-1,1,0,1,-1,-1,e_shouji,,findweakpointEffect,weakpointEffect1,,"{""mesh"":""monstermesh"",""effect"":""yincangxiaoguai""",,,,0,2,0,0,,1
 1jiuweihu_wp1,1,-1,1,0.7,0.7,-1,-1,jiuweihu_wp1,"[""box1"",""box1""]",findweakpointEffect,weakpointEffect1,"{""mesh"":""test1"",""effect"":""test2""}",,"{""mesh"":""test1"",""effect"":""test3""}",,"{""mesh"":""test1"",""effect"":""test4""}",1,1,0,0,miaoshuKey1,1
 1jiuweihu_wp2,1,200,1,0.45,0.45,1,1,jiuweihu_wp1,"[""box1"",""box2""]",findweakpointEffect,weakpointEffect1,"{""mesh"":""test1"",""effect"":""test3""}",,"{""mesh"":""test1"",""effect"":""test4""}",,"{""mesh"":""test1"",""effect"":""test5""}",0,1,0,0,miaoshuKey2,1
 1jiuweihu_wp3,0,200,1,0.45,0.45,2,2,jiuweihu_wp1,"[""box1"",""box3""]",findweakpointEffect,weakpointEffect1,"{""mesh"":""test1"",""effect"":""test4""}",,"{""mesh"":""test1"",""effect"":""test5""}",,"{""mesh"":""test1"",""effect"":""test6""}",1,1,0,0,miaoshuKey3,1
@@ -31,9 +33,19 @@ bossminghe18Karongwp02,0,200,0,2,2,-1,-1,wp_orb,["ruodian05_box1"],findweakpoint
 bossminghe18Karongwp03,1,999999,1,1,1,-1,-1,wp_body,["ruodian03_box1"],findweakpointEffect,weakpointEffect1,,"{""mesh"":""mesh_body"",""effect"":""""}",,"{""mesh"":"""",""effect"":""""}",,3,2,0,0,,1
 bossminghe18Karongwp04,1,10,1,0.15,0.15,-1,-1,wp_leftarm1,["ruodian02_box1"],findweakpointEffect,weakpointEffect1,,"{""mesh"":""mesh_leftarm1"",""effect"":""""}",,"{""mesh"":"""",""effect"":""""}","{""mesh"":""mesh_leftarm2"",""effect"":""karong_leftarmsiwang""}",3,2,0,0,miaoshu_karong4,1
 bossminghe18Karongwp05,1,10,1,0.15,0.15,-1,-1,wp_rightarm1,["ruodian08_box1"],findweakpointEffect,weakpointEffect1,,"{""mesh"":""mesh_rightarm1"",""effect"":""""}",,"{""mesh"":"""",""effect"":""""}","{""mesh"":""mesh_rightarm2"",""effect"":""karong_rightarmsiwang""}",3,2,0,0,miaoshu_karong5,0
-xgLonggongtongzi_wp1,0,,0,,,-1,-1,e_shouji,,findweakpointEffect,weakpointEffect1,,,,,,1,2,0,0,,1
-xgHapi_wp1,0,,0,,,-1,-1,e_shouji,,findweakpointEffect,weakpointEffect1,,,,,,1,2,0,0,,1
-xgHetong_wp1,0,,0,,,-1,-1,e_shouji,,findweakpointEffect,weakpointEffect1,,,,,,1,2,0,0,,1
-xgWagui_wp1,0,,0,,,-1,-1,e_shouji,,findweakpointEffect,weakpointEffect1,,,,,,1,2,0,0,,1
-bossminghe12Longgongtongzi_wp_body,1,9999999,1,0.5,0.5,-1,-1,wp_body,,findweakpointEffect,weakpointEffect1,,,,,,1,2,0,0,,1
-bossminghe12Longgongtongzi_wp_head,1,9999999,1,1,1,-1,-1,wp_head,,findweakpointEffect,weakpointEffect1,,,,,,1,2,0,0,,1
+bossYueguangsenlin14Luoxinfuwp01,1,999999,1,1,1,5,5,wp_body,"[""ruodian10_box1"",""ruodian10_box2"",""ruodian10_box3""]",findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_body"},,,,1,2,0,0
+bossYueguangsenlin14Luoxinfuwp02,0,200,1,0.5,0.5,-1,-1,wp_leg1,["ruodian03_box1"],findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_leg1"},,,,1,2,0,0,miaoshu_bossluoxinfu01,0
+bossYueguangsenlin14Luoxinfuwp03,0,200,1,0.5,0.5,-1,-1,wp_leg2,"[""ruodian07_box1"",""ruodian07_box2""]",findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_leg2"},,,,1,2,0,0,miaoshu_bossluoxinfu02,1
+bossYueguangsenlin14Luoxinfuwp04,0,200,1,0.5,0.5,-1,-1,wp_leg3,["ruodian02_box1"],findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_leg3"},,,,1,2,0,0,miaoshu_bossluoxinfu03,0
+bossYueguangsenlin14Luoxinfuwp05,0,200,1,0.5,0.5,-1,-1,wp_leg4,["ruodian08_box1"],findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_leg4"},,,,1,2,0,0,miaoshu_bossluoxinfu04,1
+bossYueguangsenlin14Luoxinfuwp06,0,200,1,0.5,0.5,-1,-1,wp_leg5,"[""ruodian01_box1"",""ruodian01_box1""]",findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_leg5"},,,,1,2,0,0,miaoshu_bossluoxinfu05,0
+bossYueguangsenlin14Luoxinfuwp07,0,200,1,0.5,0.5,-1,-1,wp_leg6,"[""ruodian09_box1"",""ruodian09_box2""]",findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_leg6"},,,,1,2,0,0,miaoshu_bossluoxinfu06,1
+bossYueguangsenlin18Meidushawp01,1,999999,1,0.5,1,-1,-1,wp_body,"[""ruodian10_box1"",""ruodian10_box2"",""ruodian10_box3""]",findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_body"},{"mesh":"mesh_body1"},,,1,1,0,0,miaoshu_meidushawp01,1
+bossYueguangsenlin18Meidushawp02,0,200,1,1,1,-1,-1,wp_she1,"[""ruodian01_box1"",""ruodian01_box2""]",findweakpointEffect,weakpointEffect2,,{"mesh":"mesh_she1"},,,{"mesh":"mesh_sishe1"},1,1,0,0,miaoshu_meidushawp02,1
+bossYueguangsenlin18Meidushawp03,0,200,1,1,1,-1,-1,wp_she2,["ruodian02_box1"],findweakpointEffect,weakpointEffect3,,{"mesh":"mesh_she2"},,,{"mesh":"mesh_sishe2"},1,1,0,0,miaoshu_meidushawp03,1
+bossYueguangsenlin18Meidushawp04,0,200,1,1,1,-1,-1,wp_she3,"[""ruodian07_box1"",""ruodian07_box2""]",findweakpointEffect,weakpointEffect4,,{"mesh":"mesh_she3"},,,{"mesh":"mesh_sishe3"},1,2,0,0,,0
+bossYueguangsenlin18Meidushawp05,0,200,1,1,1,-1,-1,wp_she4,"[""ruodian09_box1"",""ruodian09_box2""]",findweakpointEffect,weakpointEffect5,,{"mesh":"mesh_she4"},,,{"mesh":"mesh_sishe4"},1,2,0,0,,0
+bossminghe12Longgongtongziwp01,1,9999999,1,1,1,-1,-1,wp_head,,findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_head"},,,,1,2,0,0,miaoshu_bosslonggongtognziwp02,1
+bossminghe12Longgongtongziwp02,1,9999999,1,0.5,0.5,-1,-1,wp_body,,findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_body"},,,,1,2,0,0,miaoshu_bosslonggongtognziwp01,1
+bossMinghe13Zouyincaowp01,1,999999,1,0.5,0.5,-1,-1,wp_head,,findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_head"},,,,1,2,0,0,miaoshu_bosszouyincao01,1
+bossMinghe13Zouyincaowp02,1,999999,1,1,1,-1,-1,wp_body,,findweakpointEffect,weakpointEffect1,,{"mesh":"mesh_body"},,,,1,2,0,0,miaoshu_bosszouyincao02,1

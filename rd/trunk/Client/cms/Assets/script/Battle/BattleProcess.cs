@@ -714,6 +714,15 @@ public class BattleProcess : MonoBehaviour
             }
         }
 
+        if (bo.unit.tauntTargetID != BattleConst.battleSceneGuid)
+        {
+            BattleObject tauntTarget = ObjectDataMgr.Instance.GetBattleObject(bo.unit.tauntTargetID);
+            if (tauntTarget != null)
+            {
+                aiResult.attackTarget = tauntTarget.unit;
+            }
+        }
+
         bool needRotate = false;
         switch (aiResult.attackStyle)
         {
@@ -1085,14 +1094,16 @@ public class BattleProcess : MonoBehaviour
         SpellFireArgs args = sArgs as SpellFireArgs;
         int movedUnitId = args.casterID;
         BattleObject movedUnit = ObjectDataMgr.Instance.GetBattleObject(movedUnitId);
-        spellEventList.Add(args);
-
+        //NOTE: if spellid is null, means cast spell failed
+        if (string.IsNullOrEmpty(args.spellID) == false)
+        {
+            spellEventList.Add(args);
+        }
         //cast passive spell no need to run next action
         if (args.category == (int)SpellType.Spell_Type_Passive && string.IsNullOrEmpty(args.firstSpell))
         {
             return;
         }
-
 
         StartCoroutine(WaitAnim(movedUnit, args.aniTime + SpellConst.aniDelayTime + actionDelayTime, args.firstSpell));
         actionDelayTime = 0.0f;

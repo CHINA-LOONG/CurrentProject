@@ -441,6 +441,13 @@ public class BattleUnitAi : MonoBehaviour {
 		weightSz[0] = characterData.physicsWeight;
 		weightSz[1] = GetMagicWeight(battleUnit);
 		weightSz[2] = characterData.gainWeight;
+
+        Spell buffSpell = GetSpell(AiAttackStyle.Beneficial, battleUnit);
+        if (null == buffSpell)
+        {
+            weightSz[2] = 0;
+        }
+
 		weightSz[3] = characterData.defenseWeight;
 		List<int> listWeight = new List<int> (weightSz);
 

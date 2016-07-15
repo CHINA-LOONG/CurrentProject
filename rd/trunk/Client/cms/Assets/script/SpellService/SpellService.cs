@@ -26,6 +26,8 @@ public class SpellService : MonoBehaviour
             return mInst;
         }
     }
+
+    Spell mCurActionSpell = null;
     //---------------------------------------------------------------------------------------------
     public void Start()
     {
@@ -84,13 +86,28 @@ public class SpellService : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void SpellRequest(string spellID, GameUnit caster, GameUnit target, float curTime)
     {
-        Spell curSpell = caster.GetSpell(spellID);
-        if (curSpell != null)
+		mCurActionSpell = null;
+        if (caster.stun <= 0)
         {
-            curSpell.Init(this);
-            curSpell.casterID = caster.pbUnit.guid;
-            curSpell.targetID = target.pbUnit.guid;
-            curSpell.Apply(curTime, target.attackWpName);
+            Spell curSpell = caster.GetSpell(spellID);
+            if (curSpell != null)
+            {
+                mCurActionSpell = curSpell;
+                curSpell.Init(this);
+                curSpell.casterID = caster.pbUnit.guid;
+                curSpell.targetID = target.pbUnit.guid;
+                curSpell.Apply(curTime, target.attackWpName);
+            }
+        }
+        else 
+        {
+            //generate spell event
+            SpellFireArgs args = new SpellFireArgs();
+            args.triggerTime = curTime;
+            args.casterID = caster.pbUnit.guid;
+            args.spellID = null;
+            args.aniTime = SpellConst.aniDelayTime;
+            TriggerEvent(GameEventList.SpellFire, args);
         }
 
         //buff list可能会在update里被修改，只会被增加，删除buff下面单独处理，避免遍历出错
@@ -216,7 +233,7 @@ public class SpellService : MonoBehaviour
 
             //trigger motion
             BattleObject caster = ObjectDataMgr.Instance.GetBattleObject(curArgs.casterID);
-            if (caster != null)
+            if (caster != null && string.IsNullOrEmpty(curArgs.spellID) == false)
             {
                 caster.TriggerEvent(curArgs.spellID, curArgs.triggerTime, null);
             }
@@ -302,12 +319,19 @@ public class SpellService : MonoBehaviour
         }
         else if (eventType == GameEventList.SpellStun)
         {
-            SpellEffectArgs curArgs = args as SpellEffectArgs;
-            Logger.LogFormat("[SpellService]{0} is stun", curArgs.targetID);
-            //trigger motion
+            SpellBuffArgs curArgs = args as SpellBuffArgs;
             BattleObject target = ObjectDataMgr.Instance.GetBattleObject(curArgs.targetID);
+            if (target != null)
             {
-                target.TriggerEvent("stun", curArgs.triggerTime, null);
+                //casterID refers buff is removed or added
+                if (curArgs.casterID == 0)
+                {
+                    target.TriggerEvent("stunFinish", curArgs.triggerTime, null);
+                }
+                else
+                {
+                    target.TriggerEvent("stun", curArgs.triggerTime, null);
+                }
             }
         }
         else if (eventType == GameEventList.SpellAbsrobed)
@@ -320,6 +344,15 @@ public class SpellService : MonoBehaviour
         }
 
         GameEventMgr.Instance.FireEvent<EventArgs>(eventType, args);
+    }
+    //---------------------------------------------------------------------------------------------
+    public void SetSpellEndTime(float delayTime)
+    {
+        //NOTE: use curActionSpell instead of owned spell,for buff response 
+        if (mCurActionSpell != null)
+        {
+            mCurActionSpell.SetSpellEndTime(delayTime);
+        }
     }
     //---------------------------------------------------------------------------------------------
 }

@@ -139,4 +139,106 @@ public class SpellFunctions
 
         return 0;
     }
+    //生命值低于0.25
+    public static int LifeLower_0_25(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        if (damageEffect != null)
+        {
+            GameUnit target = spellService.GetUnit(triggerEffect.targetID);
+            float lifeRatio = target.curLife / (float)target.maxLife;
+            if (lifeRatio < 0.25f)
+                return 1;
+        }
+        return 0;
+    }
+    //使用物理攻击
+    public static int UsingPhysical(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        //造成某个类型伤害触发示例
+        if (damageEffect != null && damageEffect.casterID == triggerBuff.targetID)
+        {
+            EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+            //造成某类伤害示例
+            if (damageProto.isHeal == false && damageProto.damageType == SpellConst.damagePhy)//SpellConst.damageMagic)
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }    
+    //使用魔法攻击
+    public static int UsingMagic(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+
+        //造成某个类型伤害触发示例
+        if (damageEffect != null && damageEffect.casterID == triggerBuff.targetID)
+        {
+            EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+            //造成某类伤害示例
+            if (damageProto.isHeal == false && damageProto.damageType == SpellConst.damageMagic)
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+    //死亡致命伤害
+    public static int DeadFatal(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+        if (damageEffect != null)
+        {
+            GameUnit target = spellService.GetUnit(triggerEffect.targetID);
+            float lifeRatio = target.curLife / (float)target.maxLife;
+            if (lifeRatio <= 0.0f)
+                return 1;
+        }
+        return 0;
+    }
+    //受到物理攻击
+    public static int DamagePhysical(
+        Buff triggerBuff,
+        Effect triggerEffect,
+        SpellService spellService
+        )
+    {
+        EffectDamage damageEffect = triggerEffect as EffectDamage;
+        EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
+        //受到某个类型伤害触发示例
+        if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
+        {
+            EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+            if (damageProto.isHeal == false && damageProto.damageType == SpellConst.damagePhy)
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
 }

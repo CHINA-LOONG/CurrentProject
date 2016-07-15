@@ -206,7 +206,8 @@ public class Buff
                 buffProto.category == (int)(BuffType.Buff_Type_PhyJanshang) ||
                 buffProto.category == (int)(BuffType.Buff_Type_MgJanshang) ||
                 buffProto.category == (int)(BuffType.Buff_Type_PhyShield) ||
-                buffProto.category == (int)(BuffType.Buff_Type_MgShield)
+                buffProto.category == (int)(BuffType.Buff_Type_MgShield) ||
+                buffProto.category == (int)(BuffType.Buff_Type_Taunt)
                 )
         {
             ReplaceSameCategoryBuff(buffProto.category, ref buffList);
@@ -271,9 +272,58 @@ public class Buff
         if (buffProto.stun > 0)
         {
             if (isRemove)
+            {
                 --target.stun;
+                if (target.stun == 0)
+                {
+                    SpellBuffArgs args = new SpellBuffArgs();
+                    args.triggerTime = curTime;
+                    args.casterID = 0;
+                    args.targetID = targetID;
+                    args.isAdd = false;
+                    args.buffID = buffProto.id;
+                    spellService.TriggerEvent(GameEventList.SpellStun, args);
+                }
+            }
             else
+            {
+                if (target.stun == 0)
+                {
+                    SpellBuffArgs args = new SpellBuffArgs();
+                    args.triggerTime = curTime;
+                    args.casterID = 1;
+                    args.targetID = targetID;
+                    args.isAdd = false;
+                    args.buffID = buffProto.id;
+                    spellService.TriggerEvent(GameEventList.SpellStun, args);
+
+                    //interrupt if in dazhao
+                    if (target.pbUnit.camp == UnitCamp.Enemy)
+                    {
+                        List<Buff> buffList = target.buffList;
+                        int count = buffList.Count;
+                        for (int i = 0; i < count; ++i)
+                        {
+                            if (buffList[i].buffProto.category == (int)(BuffType.Buff_Type_Dazhao) && buffList[i].isFinish == false)
+                            {
+                                buffList[i].Finish(curTime);
+                                SpellVitalChangeArgs interruptArgs = new SpellVitalChangeArgs();
+                                interruptArgs.vitalType = (int)VitalType.Vital_Type_Interrupt;
+                                interruptArgs.triggerTime = curTime;
+                                interruptArgs.casterID = 0;
+                                interruptArgs.targetID = targetID;
+                                spellService.TriggerEvent(GameEventList.SpellLifeChange, interruptArgs);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        GameEventMgr.Instance.FireEvent<int>(GameEventList.ExitDazhaoByPhyAttacked, target.pbUnit.guid);
+                    }
+                }
                 ++target.stun;
+            }
         }
 
         if (buffProto.invincible > 0)
@@ -296,6 +346,19 @@ public class Buff
             {
                 target.dazhao = buffProto.dazhao;
                 target.dazhaoPrepareCount = target.dazhao;
+            }
+        }
+
+        //嘲讽
+        if (buffProto.category == (int)BuffType.Buff_Type_Taunt)
+        {
+            if (isRemove)
+            {
+                target.tauntTargetID = BattleConst.battleSceneGuid;
+            }
+            else 
+            {
+                target.tauntTargetID = casterID;
             }
         }
 
