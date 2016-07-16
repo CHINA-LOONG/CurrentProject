@@ -1,5 +1,7 @@
-﻿package com.hawk.collector.http;
+package com.hawk.collector.http;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.BindException;
 import java.net.InetSocketAddress;
@@ -11,6 +13,7 @@ import java.util.concurrent.Executors;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 
+import com.hawk.collector.handler.report.ReportAccountServerHandler;
 import com.hawk.collector.handler.report.ReportDataHandler;
 import com.hawk.collector.handler.report.ReportGoldInfoHandler;
 import com.hawk.collector.handler.report.ReportLoginHandler;
@@ -19,6 +22,7 @@ import com.hawk.collector.handler.report.ReportRegisterHandler;
 import com.hawk.collector.handler.report.ReportServerInfoHandler;
 import com.hawk.collector.handler.report.ReportTutorialHandler;
 import com.hawk.collector.handler.service.DailyAnalyzeHandler;
+import com.hawk.collector.handler.service.FetchAccountServerInfoHandler;
 import com.hawk.collector.handler.service.FetchBillsInfoHandler;
 import com.hawk.collector.handler.service.FetchGameInfoHandler;
 import com.hawk.collector.handler.service.FetchGeneralInfoHandler;
@@ -104,6 +108,7 @@ public class CollectorHttpServer {
 			httpServer.createContext("/report_recharge", new ReportRechargeHandler());
 			httpServer.createContext("/report_gold", new ReportGoldInfoHandler());
 			httpServer.createContext("/report_server", new ReportServerInfoHandler());
+			httpServer.createContext("/report_accountServer", new ReportAccountServerHandler());
 			httpServer.createContext("/report_data", new ReportDataHandler());
 			httpServer.createContext("/report_tutorial", new ReportTutorialHandler());
 			
@@ -111,6 +116,7 @@ public class CollectorHttpServer {
 			httpServer.createContext("/daily_analyze", new DailyAnalyzeHandler());
 			
 			httpServer.createContext("/fetch_myip", new FetchMyIpInfoHandler());
+			httpServer.createContext("/fetch_accountServer", new FetchAccountServerInfoHandler());
 			httpServer.createContext("/fetch_game", new FetchGameInfoHandler());
 			httpServer.createContext("/fetch_server", new FetchServerInfoHandler());
 			httpServer.createContext("/fetch_operation", new FetchOperationInfoHandler());
@@ -178,7 +184,26 @@ public class CollectorHttpServer {
 		Map<String, String> paramMap = new HashMap<String, String>();
 		try {
 			String uriPath = httpExchange.getRequestURI().getPath();
-			String uriQuery = httpExchange.getRequestURI().getQuery();
+			String uriQuery = null;
+
+			if (httpExchange.getRequestMethod().toLowerCase().equals("post")) {
+				InputStream in = httpExchange.getRequestBody();
+				try {
+				    ByteArrayOutputStream out = new ByteArrayOutputStream();
+				    byte buf[] = new byte[4096];
+				    for (int n = in.read(buf); n > 0; n = in.read(buf)) {
+				        out.write(buf, 0, n);
+				    }
+				    uriQuery = new String(out.toByteArray(), "UTF-8");
+				} finally {
+				    in.close();
+				}
+			}
+			else
+			{
+				uriQuery = httpExchange.getRequestURI().getQuery();
+			}
+			
 			if (uriQuery != null && uriQuery.length() > 0) {
 				uriQuery = URLDecoder.decode(uriQuery, "UTF-8");
 				HawkLog.logPrintln("UriQuery: " + uriPath + "?" + uriQuery);

@@ -8,14 +8,14 @@
 	</httpserver>
 	
 	<zmqserver>
-		<addr>tcp://0.0.0.0:9901</addr>
-		<pool>8</pool>
+		<addr>tcp://0.0.0.0:9002</addr>
+		<pool>2</pool>
 	</zmqserver>
 	
 	<database>
-		<dbHost>127.0.0.1:3306</dbHost>
+		<dbHost>192.168.199.122:3306</dbHost>
 		<userName>root</userName>
-		<passWord>123456</passWord>
-		<threads>8</threads>
+		<passWord>root</passWord>
+		<threads>2</threads>
 	</database>	
 </config>

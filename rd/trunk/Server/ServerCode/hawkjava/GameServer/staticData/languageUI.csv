@@ -1577,10 +1577,10 @@ facebook_share_content1,大批神话中的妖怪突然降临人界！点击前�
 facebook_share_title2,我在《LegendsAwake》中发起了一次挑战,I have sent a challenge in <LegendsAwake>.
 facebook_share_linktitle2,★一封神秘的挑战书,A mysterious challenge letter.
 facebook_share_content2,收到了一封神秘的挑战书，以代行者的身份召唤妖怪应战吧！,You have received a mysterious challenge letter! Summon some monsters and battle as a monster keeper!
-specialgift_activityTips,{0}-{1}~{2}-{3}期间，只有{4}次机会,{0}-{1}~{2}-{3}期间，只有{4}次机会
-specialgift_advanceTime,剩余时间：,Time remaining:
-specialgift_advanceCount,剩余次数：,Remaining
-specialgift_choiceTime,剩余时间：,Time remaining:
+specialgift_activityTips,<color=#ffcc00>{0}-{1}~{2}-{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会,<color=#ffcc00>{0}-{1}~{2}-{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会
+specialgift_advanceTime,剩余时间 ,Time left 
+specialgift_advanceCount,剩余次数 ,Remaining 
+specialgift_choiceTime,剩余时间 ,Time left 
 language_day,天,Day
 language_hour,小时,Hour
 language_minute,分钟,Minute
@@ -1588,13 +1588,23 @@ language_second,秒,Second
 language_suipianTips,随机获得20枚宠物碎片，稀有碎片在等着你哦！,Open to get 20 random monster fragments. Rare monster fragments are waiting for you!
 specialsell_event_title,活动礼包,Event Package
 specialsell_new_title,新手礼包,New Player Package
-specialsell_new_desc,只能购买其中一个礼包哦！,Can only be purchased once!
+specialsell_new_desc,只能购买其中<color=#ffcc00>一个</color>礼包哦！,Can only be purchased <color=#ffcc00>once</color>!
 specialsell_jinjie_title,宠物进阶礼包,Monster Advancement Package
-specialsell_jinjie_desc,快速提升宠物战力的绝佳方式！,The best way to quickly increase monster BP!
+specialsell_jinjie_desc,快速提升<color=#ffcc00>宠物战力</color>的绝佳方式！,The best way to quickly increase <color=#ffcc00>monster BP</color>!
 specialsell_suipian_title,惊喜碎片礼包,Surprise Fragment Package
 specialsell_suipian_desc,可以获得珍惜宠物碎片哦！,Get rare monster fragments!
-specialsell_buy,成功购买{0}礼包！,You have purchased the {0} package!
+specialsell_buy,成功购买<color=#ffcc00>{0}</color>礼包！,You have purchased the <color=#ffcc00>{0}</color> package!
 spell_hit_stunImmune,免疫眩晕,Stun Immune
 main_icon_huodong,活动礼包,Event Package
 main_icon_xuanze,新手礼包,New Player Package
 loading_special,各个国家都存在传说和神话。我们的存在绝非偶然。,Legends and Gods exist in every country and culture. Our existence is no coincidence.
+giftspecial_jinjie1_name,宠物进阶礼包,Monster Advancement Package
+giftspecial_suipian1_name,惊喜碎片礼包,Surprise Fragment Package
+giftspecial_huodong1_name,活动礼包,Event Package
+giftspecial_xuanze1_name,新手礼包,New Player Package
+giftspecial_jinjie1_desc,快速提升宠物战力的绝佳方式！,The best way to quickly increase monster BP!
+giftspecial_suipian1_desc,可以获得珍惜宠物碎片哦！,Get rare monster fragments!
+giftspecial_huodong1_desc,首次付费测试礼包，绝对超值体验！,首次付费测试礼包，绝对超值体验！
+specialgift_title,活动礼包,Event Package
+giftspecial_jinjie_name,宠物进阶礼包,Monster Advancement Package
+giftspecial_suipian_name,惊喜碎片礼包,Surprise Fragment Package

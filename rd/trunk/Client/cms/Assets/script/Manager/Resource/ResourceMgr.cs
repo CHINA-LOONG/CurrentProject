@@ -233,7 +233,13 @@ public class ResourceMgr : MonoBehaviour
         {
             return obj;
         }
-        string abname = StaticDataMgr.Instance.GetBundleName(assetname).ToLower();
+		string abname = StaticDataMgr.Instance.GetBundleName (assetname);
+		if (string.IsNullOrEmpty (abname))
+		{
+			//Logger.LogErrorFormat("Load asset   {0}  faild", assetname);
+			return null;
+		}
+		abname = abname.ToLower();
         AssetBundle bundle = LoadAssetBundle(abname);
         if (bundle == null)
         {
@@ -327,7 +333,12 @@ public class ResourceMgr : MonoBehaviour
     public T LoadAssetType<T>(string assetname) where T:Object
     {
         //assetname = StaticDataMgr.Instance.GetRealName(assetname);
-        string abname = StaticDataMgr.Instance.GetBundleName(assetname).ToLower();
+		string abname = StaticDataMgr.Instance.GetBundleName (assetname);
+		if (string.IsNullOrEmpty (abname))
+		{
+			Logger.LogError("Load assetType error: no asset : " + assetname);
+			return null;
+		}
         abname = abname.ToLower();
         AssetBundle bundle = LoadAssetBundle(abname);
 

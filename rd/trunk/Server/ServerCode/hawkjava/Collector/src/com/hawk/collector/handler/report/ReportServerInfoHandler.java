@@ -6,9 +6,11 @@ import java.util.Map;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 
+import com.google.gson.JsonObject;
 import com.hawk.collector.Collector;
 import com.hawk.collector.db.DBManager;
 import com.hawk.collector.http.CollectorHttpServer;
+import com.hawk.collector.zmq.CollectorZmqServer;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -31,6 +33,7 @@ public class ReportServerInfoHandler implements HttpHandler {
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		} finally {
+			
 			CollectorHttpServer.response(httpExchange, null);
 		}
 	}

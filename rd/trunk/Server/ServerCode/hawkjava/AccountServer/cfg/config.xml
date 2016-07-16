@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	<app>
+		<game>hawk</game>
+		<channel>test</channel>
+		<platform>ios</platform>
+		<serverId>account1</serverId>
+	</app>
+	
+	<httpServer>
+		<addr>0.0.0.0</addr>
+		<port>9101</port>
+		<pool>1</pool>
+	</httpServer>
+	
+	<zmqServer>
+		<addr>tcp://0.0.0.0:9102</addr>
+		<pool>8</pool>
+	</zmqServer>
+	
+	<collectorServer>
+		<httpServer>http://127.0.0.1:9001</httpServer>
+		<httpTimeout>500</httpTimeout>
+	</collectorServer>
+	
+	<db>
+		<dbConnUrl>192.168.199.122:3306</dbConnUrl>
+		<dbUserName>root</dbUserName>
+		<dbPassWord>root</dbPassWord>
+	</db>
+	
+</config>

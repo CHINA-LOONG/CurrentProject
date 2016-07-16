@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class bossminghe18Karong : MonoBehaviour {
+public class bossMinghe18Karong : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () 
@@ -30,71 +30,71 @@ public class bossminghe18Karong : MonoBehaviour {
 		wpList = GetAliveWeakPointList (karongUnit);
 
 
-		if (NormalScript.GetWpLifeLeftRatio (karongUnit.battleUnit, "bossminghe18Karongwp02") > 0 && karongUnit.curLife > karongUnit.maxLife * 0.7) 
+		if (NormalScript.GetWpLifeLeftRatio (karongUnit.battleUnit, "bossMinghe18Karongwp02") > 0 && karongUnit.curLife > karongUnit.maxLife * 0.7) 
 		{									
 			float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
 			if (randkey >= 0.5) {
-				karongSpellDic.TryGetValue ("bossminghe18Karong1", out useSpell);
+				karongSpellDic.TryGetValue ("bossMinghe18Karong1", out useSpell);
 			} 
 			else 
 			{
-				karongSpellDic.TryGetValue ("bossminghe18Karong2", out useSpell);
+				karongSpellDic.TryGetValue ("bossMinghe18Karong2", out useSpell);
 			}
 
 		} 
 		else 
 		{
-			if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossminghe18Karongwp04")>0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossminghe18Karongwp05")>0)
+			if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp04")>0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp05")>0)
 			{
 				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
 				if (randkey >= 0.5) {
-					karongSpellDic.TryGetValue ("bossminghe18Karong4", out useSpell);
+					karongSpellDic.TryGetValue ("bossMinghe18Karong4", out useSpell);
 				} 
 				else 
 				{
-					karongSpellDic.TryGetValue ("bossminghe18Karong3", out useSpell);
+					karongSpellDic.TryGetValue ("bossMinghe18Karong3", out useSpell);
 				}
 			}
-			else if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossminghe18Karongwp04")>0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossminghe18Karongwp05")==0)
+			else if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp04")>0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp05")==0)
 			{
 				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
 				if (randkey >= 0.5) {
-					karongSpellDic.TryGetValue ("bossminghe18Karong6", out useSpell);
+					karongSpellDic.TryGetValue ("bossMinghe18Karong6", out useSpell);
 				} 
 				else 
 				{
-					karongSpellDic.TryGetValue ("bossminghe18Karong3", out useSpell);
+					karongSpellDic.TryGetValue ("bossMinghe18Karong3", out useSpell);
 				}
 			}
-			else if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossminghe18Karongwp04")==0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossminghe18Karongwp05")>0)
+			else if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp04")==0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp05")>0)
 			{
 				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
 				if (randkey >= 0.5) {
-					karongSpellDic.TryGetValue ("bossminghe18Karong4", out useSpell);
+					karongSpellDic.TryGetValue ("bossMinghe18Karong4", out useSpell);
 				} 
 				else 
 				{
-					karongSpellDic.TryGetValue ("bossminghe18Karong5", out useSpell);
+					karongSpellDic.TryGetValue ("bossMinghe18Karong5", out useSpell);
 				}
 			}
 			else
 			{
 				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
 				if (randkey >= 0.5) {
-					karongSpellDic.TryGetValue ("bossminghe18Karong6", out useSpell);
+					karongSpellDic.TryGetValue ("bossMinghe18Karong6", out useSpell);
 				} 
 				else 
 				{
-					karongSpellDic.TryGetValue ("bossminghe18Karong5", out useSpell);
+					karongSpellDic.TryGetValue ("bossMinghe18Karong5", out useSpell);
 				}
 			}
 
 		}
 
-		if ((NormalScript.GetWpLifeLeftRatio(karongUnit.battleUnit,"bossminghe18Karongwp02") == 0 && jishu == 0)|| (karongUnit.curLife <= karongUnit.maxLife*0.7 && jishu == 0))									
+		if ((NormalScript.GetWpLifeLeftRatio(karongUnit.battleUnit,"bossMinghe18Karongwp02") == 0 && jishu == 0)|| (karongUnit.curLife <= karongUnit.maxLife*0.7 && jishu == 0))									
 		{	
 				
-			if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossminghe18Karongwp02")>0 )
+			if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp02")>0 )
 			{
 				karongUnit.battleUnit.TriggerEvent("karong_stage1to2_shuihuo", Time.time, null);
 				jishu ++;

@@ -2523,7 +2523,7 @@ Animator:
   m_GameObject: {fileID: 111088}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9cbb2fbb28ff1af4b86da32ecaf71568, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2cd96f8fefbc28a44a60660c70105528, type: 2}
+  m_Controller: {fileID: 9100000, guid: fc192aee64c0b9b468cf23a12ba90302, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2759,6 +2759,10 @@ Prefab:
       propertyPath: m_Name
       value: mesh_girl
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc192aee64c0b9b468cf23a12ba90302, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 111088}

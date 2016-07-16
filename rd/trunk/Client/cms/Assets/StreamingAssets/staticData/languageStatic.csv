@@ -1,5 +1,12 @@
 ﻿#TEXT,TEXT,TEXT
 id,chinese,english
+miaoshu_bossamute01,面具下隐藏着弱点
+miaoshu_bossluoxinfu01,爪子十分锋利，但是看起来很易碎。
+miaoshu_bossluoxinfu02,爪子十分锋利，但是看起来很易碎。
+miaoshu_bossluoxinfu03,爪子十分锋利，但是看起来很易碎。
+miaoshu_bossluoxinfu04,爪子十分锋利，但是看起来很易碎。
+miaoshu_bossluoxinfu05,爪子十分锋利，但是看起来很易碎。
+miaoshu_bossluoxinfu06,爪子十分锋利，但是看起来很易碎。
 #文字Id,文字内容,文字内容
 speak_001,兔桑，兔桑，你干啥呐？,兔桑，兔桑，what are you doing now？
 speak_002,没干啥，你又要干啥？,Nothing？
@@ -20,6 +27,13 @@ miaoshu_ershu,我是耳鼠思密达,wo is Ear Mouse
 miaoshu_zhuyan,我是朱燕思密达,wo is Zhu Yan
 miaoshu_qingniao,我是青鸟思密达,wo is Qing Bird
 miaoshu_karong1,似乎被什么东西控制了,Seems to be controlled by something
+miaoshu_karong1,似乎被什么东西控制了
 miaoshu_karong2,脉动的韵文，释放出强大的魔力,"The pulsation of the verse, the release of powerful magic?"
+miaoshu_karong2,脉动的韵文，释放出强大的魔力
 miaoshu_karong4,外装甲看起来不那么结实,The armor looks not so strong
+miaoshu_karong4,外装甲看起来不那么结实
 miaoshu_karong5,外装甲看起来不那么结实,The armor looks not so strong
+miaoshu_karong5,外装甲看起来不那么结实
+miaoshu_meidushawp01,自认为美艳的美杜莎会对没有头发感到愤怒！
+miaoshu_meidushawp02,会对物理攻击进行压制
+miaoshu_meidushawp03,会对法术攻击进行压制

@@ -207,7 +207,7 @@ public class BattleController : MonoBehaviour
 
         //加载场景
         LoadBattleScene(instanceData.instanceProtoData.sceneID);
-
+        AudioSystemMgr.Instance.PlayMusic(instanceData.instanceProtoData.backgroundmusic);
         //设置battlegroup 并且创建模型
         //battleGroup.SetEnemyList(proto.enemyList);
         GameDataMgr.Instance.PlayerDataAttr.SetMainUnits(enterParam.playerTeam);

@@ -13,6 +13,7 @@ public class ShutdownCallback extends HawkCallback {
 			if (script != null) {
 				script.action(null, null);
 			}
+			
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		}

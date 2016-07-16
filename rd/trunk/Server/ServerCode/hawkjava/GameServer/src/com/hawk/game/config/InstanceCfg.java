@@ -29,6 +29,7 @@ public class InstanceCfg extends HawkConfigBase {
 	protected final String sceneID = null;
 	protected final int dazhaoGroup = 0;
 	protected final int dazhaoAdjust = 0;
+	protected final String backgroundmusic = null;
 
 	// assemble
 	protected List<String> normalBattleIdList;

@@ -102,7 +102,7 @@ public class CollectorZmqServer extends HawkTickable {
 	 */
 	public boolean setup(String addr, int pool) {
 		// 创建通用缓冲区
-		bytes = new byte[1024 * 1024 * 1024];
+		bytes = new byte[1024 * 1024];
 		CollectorServices.getInstance().addTickable(this);
 
 		this.zmqAddr = addr;

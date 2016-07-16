@@ -1,0 +1,154 @@
+2015-08-13 14:23:17,120 - fetch my hostIp success, 127.0.0.1
+2015-08-13 14:23:17,141 - Account Http Server [0.0.0.0:9101] Start OK.
+2015-08-13 14:23:17,141 - Setup HttpServer Success, 0.0.0.0:9101
+2015-08-13 14:23:17,148 - Init DBManager Success, dbConnUrl: 192.168.199.122:3306
+2015-08-13 14:23:17,315 - create dbsession success, dbHost: jdbc:mysql://192.168.199.122:3306/account?useUnicode=true&amp;characterEncoding=UTF-8, dbUser: root, dbPwd: root, poolSize: 4
+2015-08-13 14:23:17,315 - Create Database Session Success
+2015-08-13 14:23:17,320 - zmqversion: 4.0.4
+2015-08-13 14:23:17,406 - zmq service thread pool running......
+2015-08-13 14:23:17,406 - Setup Zmqserver Success: tcp://0.0.0.0:9102
+2015-08-13 14:23:17,416 - Regist AccountServer Success
+2015-08-13 14:23:17,416 - MainLoop Running OK.
+2015-08-13 14:23:21,628 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:23:39,709 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:23:39,709 - ##############
+2015-08-13 14:23:39,829 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:23:39,829 - ##############
+2015-08-13 14:25:52,648 - fetch my hostIp success, 127.0.0.1
+2015-08-13 14:25:52,669 - Account Http Server [0.0.0.0:9101] Start OK.
+2015-08-13 14:25:52,669 - Setup HttpServer Success, 0.0.0.0:9101
+2015-08-13 14:25:52,676 - Init DBManager Success, dbConnUrl: 192.168.199.122:3306
+2015-08-13 14:25:52,844 - create dbsession success, dbHost: jdbc:mysql://192.168.199.122:3306/account?useUnicode=true&amp;characterEncoding=UTF-8, dbUser: root, dbPwd: root, poolSize: 4
+2015-08-13 14:25:52,844 - Create Database Session Success
+2015-08-13 14:25:52,849 - zmqversion: 4.0.4
+2015-08-13 14:25:52,934 - zmq service thread pool running......
+2015-08-13 14:25:52,935 - Setup Zmqserver Success: tcp://0.0.0.0:9102
+2015-08-13 14:25:52,943 - Regist AccountServer Success
+2015-08-13 14:25:52,943 - MainLoop Running OK.
+2015-08-13 14:25:56,759 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:26:57,698 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:26:59,150 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:27:18,049 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:27:19,746 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:27:19,846 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:30:37,649 - fetch my hostIp success, 127.0.0.1
+2015-08-13 14:30:37,670 - Account Http Server [0.0.0.0:9101] Start OK.
+2015-08-13 14:30:37,670 - Setup HttpServer Success, 0.0.0.0:9101
+2015-08-13 14:30:37,677 - Init DBManager Success, dbConnUrl: 192.168.199.122:3306
+2015-08-13 14:30:37,851 - create dbsession success, dbHost: jdbc:mysql://192.168.199.122:3306/account?useUnicode=true&amp;characterEncoding=UTF-8, dbUser: root, dbPwd: root, poolSize: 4
+2015-08-13 14:30:37,851 - Create Database Session Success
+2015-08-13 14:30:37,861 - zmqversion: 4.0.4
+2015-08-13 14:30:37,950 - zmq service thread pool running......
+2015-08-13 14:30:37,950 - Setup Zmqserver Success: tcp://0.0.0.0:9102
+2015-08-13 14:30:37,956 - Regist AccountServer Success
+2015-08-13 14:30:37,956 - MainLoop Running OK.
+2015-08-13 14:30:41,781 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:31:57,753 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:32:19,867 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:32:47,242 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:33:01,653 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:33:15,417 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:33:20,260 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:33:51,911 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:34:32,178 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:34:36,385 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:35:09,600 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:35:44,628 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:35:50,218 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:36:22,823 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:37:13,406 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:37:19,018 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:37:26,831 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:37:45,172 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:38:22,351 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:38:29,190 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:46:26,833 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:47:05,731 - ZmqReport: game=hawk&platform=ios&channel=&server=正式服&ip=127.0.0.1&port=9595
+2015-08-13 14:47:31,361 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 14:47:31,362 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 14:47:38,591 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 14:47:38,592 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 14:47:56,220 - ZmqReport: game=hawk&platform=ios&channel=&server=正式服
+2015-08-13 14:47:56,342 - ZmqReport: game=hawk&platform=ios&channel=&server=正式服
+2015-08-13 14:48:14,212 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 14:48:14,212 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 14:51:56,450 - fetch my hostIp success, 127.0.0.1
+2015-08-13 14:51:56,472 - Account Http Server [0.0.0.0:9101] Start OK.
+2015-08-13 14:51:56,472 - Setup HttpServer Success, 0.0.0.0:9101
+2015-08-13 14:51:56,478 - Init DBManager Success, dbConnUrl: 192.168.199.122:3306
+2015-08-13 14:51:56,643 - create dbsession success, dbHost: jdbc:mysql://192.168.199.122:3306/account?useUnicode=true&amp;characterEncoding=UTF-8, dbUser: root, dbPwd: root, poolSize: 4
+2015-08-13 14:51:56,643 - Create Database Session Success
+2015-08-13 14:51:56,648 - zmqversion: 4.0.4
+2015-08-13 14:51:56,733 - zmq service thread pool running......
+2015-08-13 14:51:56,734 - Setup Zmqserver Success: tcp://0.0.0.0:9102
+2015-08-13 14:51:56,740 - Regist AccountServer Success
+2015-08-13 14:51:56,740 - MainLoop Running OK.
+2015-08-13 14:51:59,788 - ZmqReport: game=hawk&platform=ios&channel=&server=正式服&ip=127.0.0.1&port=9595
+2015-08-13 14:52:05,059 - ZmqReport: game=hawk&platform=ios&channel=&server=正式服
+2015-08-13 14:52:05,228 - ZmqReport: game=hawk&platform=ios&channel=&server=正式服
+2015-08-13 14:52:48,855 - fetch my hostIp success, 127.0.0.1
+2015-08-13 14:52:48,877 - Account Http Server [0.0.0.0:9101] Start OK.
+2015-08-13 14:52:48,877 - Setup HttpServer Success, 0.0.0.0:9101
+2015-08-13 14:52:48,883 - Init DBManager Success, dbConnUrl: 192.168.199.122:3306
+2015-08-13 14:52:49,049 - create dbsession success, dbHost: jdbc:mysql://192.168.199.122:3306/account?useUnicode=true&amp;characterEncoding=UTF-8, dbUser: root, dbPwd: root, poolSize: 4
+2015-08-13 14:52:49,049 - Create Database Session Success
+2015-08-13 14:52:49,054 - zmqversion: 4.0.4
+2015-08-13 14:52:49,139 - zmq service thread pool running......
+2015-08-13 14:52:49,140 - Setup Zmqserver Success: tcp://0.0.0.0:9102
+2015-08-13 14:52:49,147 - Regist AccountServer Success
+2015-08-13 14:52:49,147 - MainLoop Running OK.
+2015-08-13 14:52:52,803 - ZmqReport: game=hawk&platform=ios&channel=&server=正式服&ip=127.0.0.1&port=9595
+2015-08-13 14:52:53,952 - ZmqReport: game=hawk&platform=ios&channel=&server=正式服
+2015-08-13 14:52:53,952 - {platform=ios, server=正式服, game=hawk}
+2015-08-13 14:54:12,575 - fetch my hostIp success, 127.0.0.1
+2015-08-13 14:54:12,595 - Account Http Server [0.0.0.0:9101] Start OK.
+2015-08-13 14:54:12,595 - Setup HttpServer Success, 0.0.0.0:9101
+2015-08-13 14:54:12,602 - Init DBManager Success, dbConnUrl: 192.168.199.122:3306
+2015-08-13 14:54:12,768 - create dbsession success, dbHost: jdbc:mysql://192.168.199.122:3306/account?useUnicode=true&amp;characterEncoding=UTF-8, dbUser: root, dbPwd: root, poolSize: 4
+2015-08-13 14:54:12,768 - Create Database Session Success
+2015-08-13 14:54:12,777 - zmqversion: 4.0.4
+2015-08-13 14:54:12,866 - zmq service thread pool running......
+2015-08-13 14:54:12,867 - Setup Zmqserver Success: tcp://0.0.0.0:9102
+2015-08-13 14:54:12,876 - Regist AccountServer Success
+2015-08-13 14:54:12,876 - MainLoop Running OK.
+2015-08-13 14:54:17,661 - ZmqReport: game=hawk&platform=ios&channel=&server=正式服&ip=127.0.0.1&port=9595
+2015-08-13 14:54:36,094 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:54:46,258 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 14:54:46,259 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 14:55:36,487 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:55:36,487 - {platform=ios, server=测试服, game=hawk}
+2015-08-13 14:55:36,559 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:55:36,559 - {platform=ios, server=测试服, game=hawk}
+2015-08-13 14:55:45,339 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 14:55:45,339 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 14:56:03,165 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服&ip=127.0.0.1&port=9596
+2015-08-13 14:56:08,154 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 14:56:08,155 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 14:57:57,010 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 14:57:57,011 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 14:59:08,080 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 14:59:08,081 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 14:59:45,634 - ZmqReport: game=hawk&platform=ios&channel=&server=测试服
+2015-08-13 14:59:45,634 - {platform=ios, server=测试服, game=hawk}
+2015-08-13 14:59:52,563 - ZmqReport: game=hawk&platform=ios&channel=&server=1&ip=127.0.0.1&port=9596
+2015-08-13 15:00:08,643 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 15:00:08,644 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 15:04:00,736 - ZmqReport: game=hawk&platform=ios&channel=&server=1
+2015-08-13 15:04:00,736 - {platform=ios, server=1, game=hawk}
+2015-08-13 15:04:00,827 - ZmqReport: game=hawk&platform=ios&channel=&server=1
+2015-08-13 15:04:00,827 - {platform=ios, server=1, game=hawk}
+2015-08-13 15:15:59,422 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 15:15:59,423 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 15:16:18,328 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 15:16:18,328 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 15:19:08,417 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 15:19:08,418 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 15:19:31,536 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 15:19:31,536 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 15:21:02,091 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 15:21:02,091 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 15:21:21,194 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/10/2015 7:54:27 PM
+2015-08-13 15:21:21,194 - select server, level, nickname from role where puid='TestGuID8/10/2015 7:54:27 PM'
+2015-08-13 15:34:20,703 - UriQuery: /fetch_gameServer?game=hawk&platform=ios&channel=test&puid=TestGuID8/13/2015 3:34:19 PM
+2015-08-13 15:34:20,703 - select server, level, nickname from role where puid='TestGuID8/13/2015 3:34:19 PM'
+2015-08-13 16:25:53,938 - ZmqReport: game=hawk&platform=ios&channel=&server=1&ip=127.0.0.1&port=9596

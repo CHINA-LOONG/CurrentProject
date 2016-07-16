@@ -1,4 +1,4 @@
-﻿package com.hawk.collector.db;
+package com.hawk.collector.db;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -202,7 +202,7 @@ public class DBManager {
 	     }
 		return "";
 	}
-	
+	 
 	/**
 	 * 创建收集信息的对应数据库
 	 * 

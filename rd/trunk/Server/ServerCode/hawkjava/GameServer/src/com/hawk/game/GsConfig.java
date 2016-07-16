@@ -20,7 +20,7 @@ public class GsConfig extends HawkAppCfg {
 	/**
 	 * 服务器id
 	 */
-	protected final int serverId;
+	protected final String serverId;
 	/**
 	 * 灰度状态
 	 */
@@ -85,7 +85,7 @@ public class GsConfig extends HawkAppCfg {
 
 		gameId = "";
 		platform = "";
-		serverId = 0;
+		serverId = "";
 		registerMaxSize = 0;
 		roleMaxSize = 0;
 		grayState = 0;
@@ -106,7 +106,7 @@ public class GsConfig extends HawkAppCfg {
 		return platform;
 	}
 
-	public int getServerId() {
+	public String getServerId() {
 		return serverId;
 	}
 

@@ -53,8 +53,8 @@ public class AnalyserManager extends HawkTickable {
 		lastCheckYearDay = HawkTime.getYearDay();
 		CollectorServices.getInstance().addTickable(this);
 	}
-	
 	public boolean init(int pool) {
+		
 		if (threadPool == null) {
 			threadPool = new HawkThreadPool(getName());
 			threadPool.initPool(pool);

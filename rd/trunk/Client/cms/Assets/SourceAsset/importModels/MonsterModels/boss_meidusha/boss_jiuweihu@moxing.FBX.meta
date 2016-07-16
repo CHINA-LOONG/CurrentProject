@@ -1,0 +1,252 @@
+fileFormatVersion: 2
+guid: 3eca63265e3ded0408f933723861b026
+timeCreated: 1439458597
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Bip001
+    100002: Bip001 Footsteps
+    100004: Bip001 Head
+    100006: Bip001 HeadNub
+    100008: Bip001 L Calf
+    100010: Bip001 L Clavicle
+    100012: Bip001 L Finger0
+    100014: Bip001 L Finger0Nub
+    100016: Bip001 L Foot
+    100018: Bip001 L Forearm
+    100020: Bip001 L Hand
+    100022: Bip001 L HorseLink
+    100024: Bip001 L Thigh
+    100026: Bip001 L Toe0
+    100028: Bip001 L Toe0Nub
+    100030: Bip001 L UpperArm
+    100032: Bip001 Neck
+    100034: Bip001 Pelvis
+    100036: Bip001 R Calf
+    100038: Bip001 R Clavicle
+    100040: Bip001 R Finger0
+    100042: Bip001 R Finger0Nub
+    100044: Bip001 R Foot
+    100046: Bip001 R Forearm
+    100048: Bip001 R Hand
+    100050: Bip001 R HorseLink
+    100052: Bip001 R Thigh
+    100054: Bip001 R Toe0
+    100056: Bip001 R Toe0Nub
+    100058: Bip001 R UpperArm
+    100060: Bip001 Spine
+    100062: Bip001 Spine1
+    100064: Bone001
+    100066: Bone002
+    100068: Bone003
+    100070: Bone030
+    100072: Bone030(mirrored)
+    100074: Bone031
+    100076: Bone031(mirrored)
+    100078: Bone036
+    100080: Bone037
+    100082: Bone044
+    100084: Bone044(mirrored)
+    100086: Bone045
+    100088: Bone045(mirrored)
+    100090: Bone046
+    100092: Bone046(mirrored)
+    100094: Bone047
+    100096: Bone047(mirrored)
+    100098: Bone048
+    100100: Bone048(mirrored)
+    100102: Bone049
+    100104: Bone049(mirrored)
+    100106: Bone051
+    100108: Bone052
+    100110: Bone052(mirrored)
+    100112: //RootNode
+    100114: e_ruodian_01
+    100116: e_ruodian_02
+    100118: e_ruodian_03
+    100120: e_ruodian_04
+    100122: e_ruodian_05
+    100124: e_ruodian_06
+    100126: e_ruodian_07
+    100128: e_ruodian_08
+    100130: e_ruodian_09
+    100132: e_ruodian_10
+    100134: objobjpolySurface40
+    100136: objpolySurface79
+    100138: jiuweihu_shenti
+    100140: jiuweihu_weiba1
+    100142: jiuweihu_weiba2
+    100144: jiuweihu_weiba3
+    100146: jiuweihu_weiba4
+    100148: jiuweihu_weiba5
+    100150: jiuweihu_weiba6
+    100152: jiuweihu_weiba7
+    100154: jiuweihu_weiba8
+    100156: jiuweihu_weiba9
+    400000: Bip001
+    400002: Bip001 Footsteps
+    400004: Bip001 Head
+    400006: Bip001 HeadNub
+    400008: Bip001 L Calf
+    400010: Bip001 L Clavicle
+    400012: Bip001 L Finger0
+    400014: Bip001 L Finger0Nub
+    400016: Bip001 L Foot
+    400018: Bip001 L Forearm
+    400020: Bip001 L Hand
+    400022: Bip001 L HorseLink
+    400024: Bip001 L Thigh
+    400026: Bip001 L Toe0
+    400028: Bip001 L Toe0Nub
+    400030: Bip001 L UpperArm
+    400032: Bip001 Neck
+    400034: Bip001 Pelvis
+    400036: Bip001 R Calf
+    400038: Bip001 R Clavicle
+    400040: Bip001 R Finger0
+    400042: Bip001 R Finger0Nub
+    400044: Bip001 R Foot
+    400046: Bip001 R Forearm
+    400048: Bip001 R Hand
+    400050: Bip001 R HorseLink
+    400052: Bip001 R Thigh
+    400054: Bip001 R Toe0
+    400056: Bip001 R Toe0Nub
+    400058: Bip001 R UpperArm
+    400060: Bip001 Spine
+    400062: Bip001 Spine1
+    400064: Bone001
+    400066: Bone002
+    400068: Bone003
+    400070: Bone030
+    400072: Bone030(mirrored)
+    400074: Bone031
+    400076: Bone031(mirrored)
+    400078: Bone036
+    400080: Bone037
+    400082: Bone044
+    400084: Bone044(mirrored)
+    400086: Bone045
+    400088: Bone045(mirrored)
+    400090: Bone046
+    400092: Bone046(mirrored)
+    400094: Bone047
+    400096: Bone047(mirrored)
+    400098: Bone048
+    400100: Bone048(mirrored)
+    400102: Bone049
+    400104: Bone049(mirrored)
+    400106: Bone051
+    400108: Bone052
+    400110: Bone052(mirrored)
+    400112: //RootNode
+    400114: e_ruodian_01
+    400116: e_ruodian_02
+    400118: e_ruodian_03
+    400120: e_ruodian_04
+    400122: e_ruodian_05
+    400124: e_ruodian_06
+    400126: e_ruodian_07
+    400128: e_ruodian_08
+    400130: e_ruodian_09
+    400132: e_ruodian_10
+    400134: objobjpolySurface40
+    400136: objpolySurface79
+    400138: jiuweihu_shenti
+    400140: jiuweihu_weiba1
+    400142: jiuweihu_weiba2
+    400144: jiuweihu_weiba3
+    400146: jiuweihu_weiba4
+    400148: jiuweihu_weiba5
+    400150: jiuweihu_weiba6
+    400152: jiuweihu_weiba7
+    400154: jiuweihu_weiba8
+    400156: jiuweihu_weiba9
+    4300000: objobjpolySurface40
+    4300002: objpolySurface79
+    4300004: jiuweihu_weiba1
+    4300006: jiuweihu_shenti
+    4300008: jiuweihu_weiba2
+    4300010: jiuweihu_weiba3
+    4300012: jiuweihu_weiba4
+    4300014: jiuweihu_weiba5
+    4300016: jiuweihu_weiba6
+    4300018: jiuweihu_weiba7
+    4300020: jiuweihu_weiba8
+    4300022: jiuweihu_weiba9
+    9500000: //RootNode
+    13700000: objobjpolySurface40
+    13700002: objpolySurface79
+    13700004: jiuweihu_shenti
+    13700006: jiuweihu_weiba1
+    13700008: jiuweihu_weiba2
+    13700010: jiuweihu_weiba3
+    13700012: jiuweihu_weiba4
+    13700014: jiuweihu_weiba5
+    13700016: jiuweihu_weiba6
+    13700018: jiuweihu_weiba7
+    13700020: jiuweihu_weiba8
+    13700022: jiuweihu_weiba9
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

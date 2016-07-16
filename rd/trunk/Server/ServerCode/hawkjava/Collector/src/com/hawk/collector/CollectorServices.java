@@ -1,4 +1,4 @@
-﻿package com.hawk.collector;
+package com.hawk.collector;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -30,6 +30,30 @@ import com.hawk.collector.zmq.CollectorZmqServer;
  * @author hawk
  */
 public class CollectorServices {
+	
+	/**
+	 * 账号服务器信息
+	 */
+	public static class AccountServer{
+		public String game;
+		public String server;
+		public String platform;
+		public String channel;
+		public String ipAddr;
+		public int    httpPort;
+		public int    zmqPort;
+		
+		public AccountServer(String game, String server, String platform, String channel, String ipAddr, int httpPort, int zmqPort) {
+			this.game = game;
+			this.server = server;
+			this.platform = platform;
+			this.channel = channel;
+			this.ipAddr = ipAddr;
+			this.httpPort = httpPort;
+			this.zmqPort = zmqPort;		
+		}
+	}
+	
 	/**
 	 * 服务器是否允许中
 	 */
@@ -42,6 +66,12 @@ public class CollectorServices {
 	 * 当前游戏平台列表
 	 */
 	Map<String, GamePlatform> gamePlatforms;
+	
+	/**
+	 * 当前账号服务器列表
+	 */
+	Map<String, AccountServer> accountServices;
+	
 	/**
 	 * 单例对象
 	 */
@@ -65,6 +95,7 @@ public class CollectorServices {
 		running = true;
 		tickableSet = new HashSet<HawkTickable>();
 		gamePlatforms = new ConcurrentHashMap<String, GamePlatform>();
+		accountServices = new ConcurrentHashMap<String, AccountServer>();
 	}
 
 	/**
@@ -97,6 +128,41 @@ public class CollectorServices {
 	}
 
 	/**
+	 * 添加账号服务器对象
+	 * 
+	 * @param tickable
+	 */
+	public void addAccountServer(AccountServer accountServer) {
+		accountServices.put(accountServer.server, accountServer);
+	}
+
+	/**
+	 * 移除可更新对象
+	 * 
+	 * @param tickable
+	 */
+	public void removeAccount(String server) {
+		tickableSet.remove(server);
+	}
+
+	/**
+	 * 获取账号服务器对象
+	 * 
+	 * @param tickable
+	 */
+	public AccountServer GetAccountServer(String game, String platform, String channel, String serverId) {
+		AccountServer accountServer = null;
+		for (Map.Entry<String, AccountServer> entry : accountServices.entrySet()) {
+			if (entry.getValue().game.equals(game) && entry.getValue().platform.equals(platform)) {
+				accountServer = entry.getValue();
+				break;
+			}
+		}
+
+		return accountServer;
+	}
+	
+	/**
 	 * 添加可更新对象列表
 	 * 
 	 * @param tickable
@@ -113,7 +179,7 @@ public class CollectorServices {
 	public void removeTickable(HawkTickable tickable) {
 		tickableSet.remove(tickable);
 	}
-
+	
 	/**
 	 * 使用配置文件初始化
 	 * 

@@ -168,13 +168,9 @@ public class AudioSystemMgr : MonoBehaviour {
         {
             if (audioMusic == null)
             {
-                audioMusic = gameObject.GetComponent<AudioSource>();
-                audioMusic.playOnAwake = false;
-                audioMusic.loop = true;
-            }
-            if (audioMusic == null)
-            {
-                audioMusic = gameObject.AddComponent<AudioSource>();
+                GameObject obj = new GameObject("bgMusic");
+                obj.transform.parent = transform;
+                audioMusic = obj.AddComponent<AudioSource>();
                 audioMusic.playOnAwake = false;
                 audioMusic.loop = true;
             }
@@ -183,9 +179,14 @@ public class AudioSystemMgr : MonoBehaviour {
     }
 
     //播放效果音效
-    public void PlaySound(string clipId)
+    public void PlaySoundByID(string clipId)
     {
         AudioClip clip = ResourceMgr.Instance.LoadAssetType<AudioClip>(StaticDataMgr.Instance.GetAudioByID(clipId));
+        AudioSource.PlayClipAtPoint(clip, transform.position, SoundVolume);
+    }
+    public void PlaySoundByName(string clipName)
+    {
+        AudioClip clip = ResourceMgr.Instance.LoadAssetType<AudioClip>(clipName);
         AudioSource.PlayClipAtPoint(clip, transform.position, SoundVolume);
     }
     //播放界面音效
@@ -206,13 +207,24 @@ public class AudioSystemMgr : MonoBehaviour {
                 clipId = sound.Sound1;
                 break;
         }
-        PlaySound(clipId);
+        PlaySoundByID(clipId);
     }
 
     public void PlayMusic(string clipId)
     {
-        AudioMusic.clip = ResourceMgr.Instance.LoadAssetType<AudioClip>(StaticDataMgr.Instance.GetAudioByID(clipId));
+        if (clipId == null) return;
+        AudioClip clip = ResourceMgr.Instance.LoadAssetType<AudioClip>(StaticDataMgr.Instance.GetAudioByID(clipId));
+        if (clip == null) return;
+        AudioMusic.clip = clip;
         AudioMusic.Play();
+    }
+    public void PauseMusic()
+    {
+        AudioMusic.Pause();
+    }
+    public void StopMusic()
+    {
+        AudioMusic.Stop();
     }
 }
 

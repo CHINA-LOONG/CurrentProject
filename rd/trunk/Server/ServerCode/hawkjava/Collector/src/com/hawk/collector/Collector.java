@@ -1,4 +1,4 @@
-﻿package com.hawk.collector;
+package com.hawk.collector;
 
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;

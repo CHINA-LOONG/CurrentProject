@@ -1,4 +1,4 @@
-﻿package com.hawk.collector.handler.report;
+package com.hawk.collector.handler.report;
 
 import java.io.IOException;
 import java.util.Map;

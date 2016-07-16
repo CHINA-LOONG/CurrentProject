@@ -203,7 +203,7 @@ public class SpellFunctions
         return 0;
     }
     //死亡致命伤害
-    public static int DeadFatal(
+    public static int DamageFatal(
         Buff triggerBuff,
         Effect triggerEffect,
         SpellService spellService

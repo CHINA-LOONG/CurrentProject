@@ -199,7 +199,15 @@ public class ActorEventService
                     {
                         eventData.actorDelay = int.Parse(aniNode.GetAttribute("action_delay"));
                     }
-                    eventGroupData.actorEventList.Add(eventData.id, eventData);
+					try
+					{
+
+                    	eventGroupData.actorEventList.Add(eventData.id, eventData);
+					}
+					catch
+					{
+						Logger.LogError("animation.xml repeat key = " + eventData.id);
+					}
 
                     foreach (XmlElement x1 in aniNode.ChildNodes)
                     {

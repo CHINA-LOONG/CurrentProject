@@ -51,12 +51,12 @@ public class BattleObject : MonoBehaviour
                 curEvent.id = srcEvent.id;
                 curEvent.finishEvent = srcEvent.finishEvent;
                 //NOTE: refrence
-                curEvent.actorMotionSequence = new List<ActorMotionData>(srcEvent.actorMotionSequence);
-                curEvent.actorCameraSequence = new List<ActorCameraData>(srcEvent.actorCameraSequence);
-                curEvent.actorControllerSequence = new List<ActorControllerData>(srcEvent.actorControllerSequence);
-                curEvent.actorMeshSequence = new List<ActorMeshData>(srcEvent.actorMeshSequence);
-                curEvent.actorWpStateSequence = new List<ActorWpStateData>(srcEvent.actorWpStateSequence);
-                curEvent.actorSpeedSequence = new List<ActorSpeedData>(srcEvent.actorSpeedSequence);
+                curEvent.actorMotionSequence = srcEvent.actorMotionSequence;
+                curEvent.actorCameraSequence = srcEvent.actorCameraSequence;
+                curEvent.actorControllerSequence = srcEvent.actorControllerSequence;
+                curEvent.actorMeshSequence = srcEvent.actorMeshSequence;
+                curEvent.actorWpStateSequence = srcEvent.actorWpStateSequence;
+                curEvent.actorSpeedSequence = srcEvent.actorSpeedSequence;
                 //copy
                 curEvent.actorParticleSequence = new List<ActorParticleData>();
                 for (int i = 0; i < srcEvent.actorParticleSequence.Count; ++i)
@@ -64,11 +64,8 @@ public class BattleObject : MonoBehaviour
                     curEvent.actorParticleSequence.Add((ActorParticleData)srcEvent.actorParticleSequence[i].Clone());
                 }
 
-                curEvent.actorAudioSequence = new List<ActorAudioData>(srcEvent.actorAudioSequence);
-                for (int i = 0; i < srcEvent.actorAudioSequence.Count; ++i)
-                {
-                    curEvent.actorAudioSequence.Add((ActorAudioData)srcEvent.actorAudioSequence[i].Clone());
-                }
+                curEvent.actorAudioSequence = srcEvent.actorAudioSequence;
+
 
                 waitEventList.Add(curEvent);
             }
@@ -427,13 +424,8 @@ public class BattleObject : MonoBehaviour
                 {
                     continue;
                 }
-
-                AudioClip ac = (AudioClip)Resources.Load(curAudioData.audioName, typeof(AudioClip));
-                if (ac != null)
-                {
-                    AudioSource.PlayClipAtPoint(ac, transform.position);
-                }
-                //AudioSource as = gameObject.GetComponent<AudioSource>();
+                //Debug.LogError("Play Sound:\t" + curAudioData.audioName);
+                AudioSystemMgr.Instance.PlaySoundByName(curAudioData.audioName);
             }
 
             //update wpstate

@@ -300,7 +300,7 @@ public class HawkReportService extends HawkTickable {
 	}
 	
 	/**
-	 * 上报充值数据
+	 * 上报服务器数据
 	 * 
 	 * @author hawk
 	 */
@@ -421,6 +421,7 @@ public class HawkReportService extends HawkTickable {
 	private static final String serverPath = "/report_server";
 	private static final String commonPath = "/report_data";
 	private static final String fetchIpPath = "/fetch_myip";
+	private static final String fetchAccountServerPath = "/fetch_accountServer";
 	
 	// 所有的query都能添加token作为服务器校验令牌
 	private static final String rechargeQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playername=%s&playerlevel=%d&orderid=%s&productid=%s&pay=%d&currency=%s&time=%s";
@@ -430,7 +431,7 @@ public class HawkReportService extends HawkTickable {
 	private static final String loginQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&period=%d&time=%s";
 	private static final String serverQuery = "game=%s&platform=%s&server=%s&ip=%s&folder=%s&listen_port=%d&script_port=%d&dburl=%s&dbuser=%s&dbpwd=%s";
 	private static final String commonQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&time=%s";
-
+	private static final String fetchAccountServerQuery = "game=%s&platform=%s&server=%s&channel=%s";
 	/**
 	 * 服务器信息
 	 */
@@ -490,7 +491,15 @@ public class HawkReportService extends HawkTickable {
 		}
 	}
 
-
+	/**
+	 * 获取host地址
+	 * 
+	 * @return
+	 */
+	public String getHostIp() {
+		return myHostIp;
+	}
+	
 	/**
 	 * 初始化cdk服务
 	 * 
@@ -653,6 +662,44 @@ public class HawkReportService extends HawkTickable {
 		return "";
 	}
 
+	/**
+	 * 获取账号服务器的地址和端口
+	 * 
+	 * @return
+	 */
+	public int fetchAccountServerInfo(HawkAppCfg appCfg, StringBuilder accountAddr) {
+		int accountZmqPort = 0;
+		try {
+			String queryParam = String.format(fetchAccountServerQuery, gameName, platform, serverId, "test");
+			queryParam = URLEncoder.encode(queryParam, "UTF-8");
+			getMethod.setQueryString(queryParam);
+			getMethod.setPath(fetchAccountServerPath);
+			int status = httpClient.executeMethod(getMethod);
+			if (status == HttpStatus.SC_OK) {
+				String accountInfo = new String(getMethod.getResponseBody());
+				if (accountInfo != null && accountInfo.length() > 0) {
+					reportLogger.info("account server info: " + accountInfo);
+
+					JSONObject jsonObject = JSONObject.fromObject(accountInfo);
+					if (jsonObject.containsKey("hostIp")) {
+						accountAddr.append((String) jsonObject.get("hostIp"));
+					}
+
+					if (jsonObject.containsKey("zmqPort")) {
+						accountZmqPort = (Integer) jsonObject.get("zmqPort");
+					}
+				}
+			}
+			else {
+				reportLogger.info("fetch account server fail status: " + status);
+			}
+		} catch (Exception e) {
+			reportLogger.info("fetch account server fail");
+		}
+		
+		return accountZmqPort;
+	}
+	
 	/**
 	 * 设置校验令牌
 	 * 
