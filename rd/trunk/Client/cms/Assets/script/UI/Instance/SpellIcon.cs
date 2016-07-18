@@ -34,7 +34,9 @@ public class SpellIcon : MonoBehaviour
 		level = ilevel;
 		spellId = spellid;
 
-		Sprite iconSp = ResourceMgr.Instance.LoadAssetType<Sprite> (spellId) as Sprite;
+		SpellProtoType spell = StaticDataMgr.Instance.GetSpellProtoData (spellid);
+		
+		Sprite iconSp = ResourceMgr.Instance.LoadAssetType<Sprite> (spell.icon) as Sprite;
 		if (null != iconSp)
 		{
 			iconImage.sprite = iconSp;

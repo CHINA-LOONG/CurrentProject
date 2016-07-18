@@ -37,9 +37,6 @@ public class BattleUnitAi : MonoBehaviour {
 
 	int	attackMaxTimes = 100;
 
-	JiuWeiHuUnitAi jiuWeiHuAi = null;
-	HundunUnitAi    hundunUnitAi = null;
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -49,14 +46,10 @@ public class BattleUnitAi : MonoBehaviour {
 	public	void	Init()
 	{
 		instance = this;
-		jiuWeiHuAi = gameObject.AddComponent<JiuWeiHuUnitAi> ();
-		hundunUnitAi = gameObject.AddComponent<HundunUnitAi> ();
 	}
 
     void OnDestroy()
     {
-        Destroy(jiuWeiHuAi);
-        Destroy(hundunUnitAi);
     }
 
 	public GameUnit GetMagicDazhaoAttackUnit(GameUnit battleUnit)
@@ -110,20 +103,27 @@ public class BattleUnitAi : MonoBehaviour {
 
 	public	AiAttackResult GetAiAttackResult(GameUnit battleUnit)
 	{
-		if (battleUnit.isBoss)
+		var  bossAi = battleUnit.battleUnit.GetComponent<BossAi> ();
+		if (null != bossAi) 
 		{
-			if(battleUnit.bossType == 1)
-			{
-				return jiuWeiHuAi.GetAiAttackResult(battleUnit);
-			}
-			else if (battleUnit.bossType ==2)
-			{
-				return hundunUnitAi.GetAiAttackResult(battleUnit);
-			}
-
+            if (bossAi.isUseXgAi)
+            {
+                AiAttackResult xgAiReulst = GetXgAi(battleUnit);
+                return bossAi.GetAiAttackResult(battleUnit,xgAiReulst);
+            }
+            else
+            {
+                return bossAi.GetAiAttackResult(battleUnit);
+            }
+			
 		}
 
-		AiAttackResult attackResult = new AiAttackResult ();
+        return GetXgAi(battleUnit);
+	}
+
+    AiAttackResult  GetXgAi(GameUnit battleUnit)
+    {
+        AiAttackResult attackResult = new AiAttackResult ();
 
 
 		if ( battleUnit.lazyList.Count < 1)
@@ -142,7 +142,7 @@ public class BattleUnitAi : MonoBehaviour {
         attackResult.attackTarget = GetTargetThroughSpell(attackResult.useSpell, battleUnit);
 
 		return attackResult;
-	}
+    }
 
 	void	InitLazyList(GameUnit battleUnit)
 	{

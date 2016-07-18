@@ -42,6 +42,9 @@ public class EffectDamage : Effect
     //---------------------------------------------------------------------------------------------
     public override int CalculateHit()
     {
+        if (absoluteHit == true)
+            return SpellConst.hitSuccess;
+
         EffectDamageProtoType damageProto = protoEffect as EffectDamageProtoType;
         if (damageProto.isHeal)
         {
@@ -227,25 +230,24 @@ public class EffectDamage : Effect
                     {
                         target.buffList[i].OnShield(applyTime, this, ref damageAmount);
                     }
-                    if (damageAmount < 0)
+                    if (damageAmount < 0 || damageProto.isHeal == true)
                     {
-                        //伤害反应
-                        if (noDamageResponse == false)
-                        {
-                            //caster
-                            buffCount = caster.buffList.Count;
-                            for (int i = 0; i < buffCount; ++i)
-                            {
-                                caster.buffList[i].DamageResponse(applyTime, this);
-                            }
-                            //target
-                            buffCount = target.buffList.Count;
-                            for (int i = 0; i < buffCount; ++i)
-                            {
-                                target.buffList[i].DamageResponse(applyTime, this);
-                            }
-                        }
-
+						//大招受击事件
+						if (damageProto.isHeal != true)
+						{
+							SpellEffectArgs effectArgs = new SpellEffectArgs();
+							if (ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao ||
+							    ownedSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao || critical)
+							{
+								effectArgs.targetID = targetID;
+								spellService.TriggerEvent(GameEventList.BashHit, effectArgs);
+							}
+							else
+							{
+								effectArgs.targetID = targetID;
+								spellService.TriggerEvent(GameEventList.NormalHit, effectArgs);
+							}
+						}
                         target.curLife += damageAmount;
                         if (target.curLife <= 0)
                         {
@@ -264,7 +266,7 @@ public class EffectDamage : Effect
                 }
 
                 //trigger damage event
-                if (damageAmount < 0)
+                if (damageAmount < 0 || damageProto.isHeal == true)
                 {
                     SpellVitalChangeArgs args = new SpellVitalChangeArgs();
                     args.vitalType = (int)VitalType.Vital_Type_Default;
@@ -286,6 +288,23 @@ public class EffectDamage : Effect
                         args.wpNode = string.Empty;
                     }
                     spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
+
+                    //伤害反应
+                    if (noDamageResponse == false)
+                    {
+                        //caster
+                        int buffCount = caster.buffList.Count;
+                        for (int i = 0; i < buffCount; ++i)
+                        {
+                            caster.buffList[i].DamageResponse(applyTime, this);
+                        }
+                        //target
+                        buffCount = target.buffList.Count;
+                        for (int i = 0; i < buffCount; ++i)
+                        {
+                            target.buffList[i].DamageResponse(applyTime, this);
+                        }
+                    }
                 }
 
                 //link effect
@@ -295,6 +314,7 @@ public class EffectDamage : Effect
                     curEffect.SetOwnedBuff(ownedBuff);
                     curEffect.SetOwnedSpell(ownedSpell);
                     curEffect.targetID = targetID;
+                    curEffect.absoluteHit = true;
                     curEffect.Apply(applyTime, wpID);
                 }
             }

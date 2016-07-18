@@ -47,8 +47,9 @@ public class Const
         }
     }
 
+    public static string CollectorUrl = "http://123.59.45.55:9001/fetch_accountServer";
     //应用程序名称
-    public static string AppName = "game"; 
+    public static string AppName = "hawk"; 
     //应用程序前缀
     public static string AppPrefix = AppName + "_";
     //素材扩展名
@@ -66,12 +67,6 @@ public class Const
 
         NUM_SERVER_TYPE
     }
-
-    public static SERVERTYPE ServerType = SERVERTYPE.LOCAL_SERVER_NORMAL;     
-	public static int SocketPort = 9595;                          //Socket服务器端口
-    public static int TestSocketPort = 9596;                      //测试Socket服务器端口
-    public static string LocalAddress = "192.168.199.122";              //本地Socket服务器地址
-    public static string RemoteAddress = "123.59.45.55";          //远程Socket服务器地址
 
 	//关于打包的一些配置 todo:move to config file for auto package
 	public	static	int		versionCode = 1;//程序版本号

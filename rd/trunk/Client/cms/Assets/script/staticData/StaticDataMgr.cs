@@ -456,7 +456,7 @@ public class StaticDataMgr : MonoBehaviour
                 if (langData.ContainsKey(item.id))
                 {
                     langData[item.id] = item;
-                    Logger.LogError("error: Found the same Text ID");
+                    Logger.LogError("error: Found the same Text ID:"+item.id);
                 }
                 else
                 {
@@ -738,12 +738,14 @@ public class StaticDataMgr : MonoBehaviour
     public string GetBundleName(string asset)
     {
         string bundle = "";
+        if (string.IsNullOrEmpty(asset)) return bundle;
         assetMapping.TryGetValue(asset,out bundle);
         return bundle;
     }
 
     public string GetTextByID(string id)
     {
+        if (string.IsNullOrEmpty(id)) return "";
         LangStaticData item = null;
         langData.TryGetValue(id, out item);
 
@@ -756,6 +758,7 @@ public class StaticDataMgr : MonoBehaviour
     public string GetAudioByID(string id)
     {
         string audio = "";
+        if (string.IsNullOrEmpty(id)) return audio;
         audioMapping.TryGetValue(id, out audio);
         return audio;
     }

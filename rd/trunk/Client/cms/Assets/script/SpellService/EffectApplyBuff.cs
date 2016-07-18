@@ -58,6 +58,7 @@ public class EffectApplyBuff : Effect
                 curEffect.SetOwnedBuff(ownedBuff);
                 curEffect.SetOwnedSpell(ownedSpell);
                 curEffect.targetID = targetID;
+                curEffect.absoluteHit = true;
                 curEffect.Apply(applyTime, wpName);
             }
         }
@@ -67,6 +68,8 @@ public class EffectApplyBuff : Effect
     //---------------------------------------------------------------------------------------------
     public override int CalculateHit()
     {
+        if (absoluteHit == true)
+            return SpellConst.hitSuccess;
         //TODO:
         //1 check buff replace
 

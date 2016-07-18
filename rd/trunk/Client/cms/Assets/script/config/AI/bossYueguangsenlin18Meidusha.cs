@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class bossYueguangsenlin18Meidusha : MonoBehaviour {
+public class bossYueguangsenlin18Meidusha : BossAi {
 
 	// Use this for initialization
 	void Start () 
@@ -14,7 +14,7 @@ public class bossYueguangsenlin18Meidusha : MonoBehaviour {
     int count = 0; //state chage count
     int attck_count = 0;
 
-	public	 BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit meidushaUnit)
+	public	 override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit meidushaUnit)
 	{
 		BattleUnitAi.AiAttackResult attackResult = new BattleUnitAi.AiAttackResult ();
 
@@ -167,64 +167,5 @@ public class bossYueguangsenlin18Meidusha : MonoBehaviour {
 
 		attackResult.useSpell = useSpell;
 		return attackResult;
-	}
-
-	private List<GameUnit> GetCanAttackList(GameUnit meidushaUnit)
-	{
-		return BattleUnitAi.Instance.GetOppositeSideFiledList(meidushaUnit);
-	}
-
-	private GameUnit GetAttackRandomTarget(GameUnit meidushaUnit)
-	{
-		List<GameUnit> listTarge = GetCanAttackList (meidushaUnit);
-		
-		int index = Random.Range (0, listTarge.Count);
-		
-		return listTarge[index];
-	}
-
-	private int GetAttackCount(GameUnit meidushaUnit)
-	{
-		return meidushaUnit.attackCount;
-	}
-
-	private Dictionary<string,Spell> GetUnitSpellList(GameUnit battleUnit)
-	{
-		return battleUnit.spellList;
-	}
-
-	private List<Buff> GetUnitBuffList(GameUnit battleUnit)
-	{
-		return battleUnit.buffList;
-	}
-
-	private List<string> GetAliveWeakPointList(GameUnit gUnit)
-	{
-		List<string> wpList = new List<string> ();
-
-		foreach (KeyValuePair<string,WeakPointRuntimeData> subWp in gUnit.battleUnit.wpGroup.allWpDic)
-		{
-			WeakPointRuntimeData wpData = subWp.Value;
-			if(wpData.hp > 0)
-			{
-				wpList.Add(subWp.Key);
-			}
-		}
-		return wpList;
-	}
-
-	private int GetUnitMaxHp(GameUnit battleUnit)
-	{
-		return battleUnit.maxLife;
-	}
-
-	private int GetUnitMinHp(GameUnit battleUnit)
-	{
-		return battleUnit.curLife;
-	}
-
-	private int GetUnitHp(GameUnit battleUnit)
-	{
-		return battleUnit.curLife;
-	}
+	}    
 }

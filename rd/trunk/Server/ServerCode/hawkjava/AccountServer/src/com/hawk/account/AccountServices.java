@@ -317,7 +317,9 @@ public class AccountServices {
 				if (jsonObject.containsKey("myIp")) {
 					hostIpAddr = (String) jsonObject.get("myIp");
 					//TODO
-					hostIpAddr = InetAddress.getLocalHost().getHostAddress();
+					if (hostIpAddr.equals("127.0.0.1") || hostIpAddr.equalsIgnoreCase("123.126.3.94")) {
+						hostIpAddr = InetAddress.getLocalHost().getHostAddress();
+					}
 				}
 			}
 			else

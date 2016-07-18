@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class bossMinghe18Karong : MonoBehaviour {
+public class bossMinghe18Karong : BossAi {
 
 	// Use this for initialization
 	void Start () 
@@ -11,7 +11,7 @@ public class bossMinghe18Karong : MonoBehaviour {
 	}
 	int jishu = 0 ;
 
-	public	 BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit karongUnit)
+	public	override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit karongUnit)
 	{
 		BattleUnitAi.AiAttackResult attackResult = new BattleUnitAi.AiAttackResult ();
 
@@ -109,64 +109,5 @@ public class bossMinghe18Karong : MonoBehaviour {
 		attackResult.useSpell = useSpell;
 
 		return attackResult;
-	}
-
-	private List<GameUnit> GetCanAttackList(GameUnit karongUnit)
-	{
-		return BattleUnitAi.Instance.GetOppositeSideFiledList(karongUnit);
-	}
-
-	private GameUnit GetAttackRandomTarget(GameUnit karongUnit)
-	{
-		List<GameUnit> listTarge = GetCanAttackList (karongUnit);
-		
-		int index = Random.Range (0, listTarge.Count);
-		
-		return listTarge[index];
-	}
-
-	private int GetAttackCount(GameUnit karongUnit)
-	{
-		return karongUnit.attackCount;
-	}
-
-	private Dictionary<string,Spell> GetUnitSpellList(GameUnit battleUnit)
-	{
-		return battleUnit.spellList;
-	}
-
-	private List<Buff> GetUnitBuffList(GameUnit battleUnit)
-	{
-		return battleUnit.buffList;
-	}
-
-	private List<string> GetAliveWeakPointList(GameUnit gUnit)
-	{
-		List<string> wpList = new List<string> ();
-
-		foreach (KeyValuePair<string,WeakPointRuntimeData> subWp in gUnit.battleUnit.wpGroup.allWpDic)
-		{
-			WeakPointRuntimeData wpData = subWp.Value;
-			if(wpData.hp > 0)
-			{
-				wpList.Add(subWp.Key);
-			}
-		}
-		return wpList;
-	}
-
-	private int GetUnitMaxHp(GameUnit battleUnit)
-	{
-		return battleUnit.maxLife;
-	}
-
-	private int GetUnitMinHp(GameUnit battleUnit)
-	{
-		return battleUnit.curLife;
-	}
-
-	private int GetUnitHp(GameUnit battleUnit)
-	{
-		return battleUnit.curLife;
-	}
+	}	
 }

@@ -3524,7 +3524,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="Jinglingwang2pre" bundle="effect/particle" parent="" attach="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Ladong51"/>
+				<Audio time="0" name="jinglingwang21"/>
 			</AudioList>
 		</Ani>
 		
@@ -3551,7 +3551,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="Jinglingwang2pre" bundle="effect/particle" parent="" attach="true" locky=""/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Ladong51"/>
+				<Audio time="0" name="jinglingwang21"/>
 			</AudioList>
 		</Ani>
 		
@@ -5844,12 +5844,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	
 		<Ani id="ultDatiangou4Cast" state="0" AniType="Skill">
 			<MotionList>
-				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
+				<Motion time="0" ani="" key="dazhao" value="true"/>
+				<!--Motion time="2.63" key="dazhao" value="true"/>
 				<Motion time="2.93" key="dazhao" value="true"/>
 				<Motion time="3.23" key="dazhao" value="true"/>
 				<Motion time="3.53" key="dazhao" value="true"/>
-				<Motion time="3.83" key="dazhao" value="true"/>
+				<Motion time="3.83" key="dazhao" value="true"/-->
 			</MotionList>
 			<ParticleList>
 				<Particle time="0" asset="ultdatiangou4pre_wuqi" bundle="effect/particle" parent="wp_fan" attach="true"/>

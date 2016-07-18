@@ -360,7 +360,19 @@ public class BattleProcess : MonoBehaviour
             }
 
             BattleController.Instance.GetUIBattle().ChangeLife(args);
+
+            int targetID = args.targetID;
+            BattleObject targetOb = ObjectDataMgr.Instance.GetBattleObject(targetID);
+            if (targetOb != null)
+            {
+                BossAi bossAi = targetOb.GetComponent<BossAi>();
+                if (bossAi != null)
+                {
+                    bossAi.OnVitalChange(args);
+                }
+            }
         }
+
         eventCount = energyEventList.Count;
         for (int i = 0; i < eventCount; ++i)
         {
@@ -397,6 +409,7 @@ public class BattleProcess : MonoBehaviour
             if (targetOb != null)
             {
                 targetOb.unit.SetWpDead(args);
+                //TODO: remove to boss ai
                 targetOb.TriggerEvent(args.wpID + "_dead", args.triggerTime + BattleConst.vitalChangeDispearTime, null);
 
                 if (fireFocusTarget == targetOb.unit &&
@@ -405,6 +418,12 @@ public class BattleProcess : MonoBehaviour
                     )
                 {
 					HideFireFocus();
+                }
+
+                BossAi bossAi = targetOb.GetComponent<BossAi>();
+                if (bossAi != null)
+                {
+                    bossAi.OnWpDead(args);
                 }
             }
         }
@@ -652,6 +671,7 @@ public class BattleProcess : MonoBehaviour
 
         if (battleResult == BattleRetCode.Failed)
         {
+            insertAction.Clear();
             System.Action<float> failProcess = (delayTime) =>
             {
                 BattleController.Instance.OnBattleOver(false);
@@ -664,6 +684,7 @@ public class BattleProcess : MonoBehaviour
         }
         else if (battleResult == BattleRetCode.Success)
         {
+            insertAction.Clear();
             if (BattleController.Instance.HasNextProcess())
             {
                 System.Action<float> nextProcess = (delayTime) =>
@@ -799,7 +820,7 @@ public class BattleProcess : MonoBehaviour
         if (casterSpellList.TryGetValue(curAction.firstSpellID, out firstSpell) == true)
         {
             GameUnit target = BattleUnitAi.Instance.GetTargetThroughSpell(firstSpell, curAction.caster.unit);
-            SpellService.Instance.SpellRequest(curAction.firstSpellID, curAction.caster.unit, target, Time.time);
+            SpellService.Instance.SpellRequest(curAction.firstSpellID, curAction.caster.unit, target, Time.time, true);
 
             SpellVitalChangeArgs args = new SpellVitalChangeArgs();
             args.vitalType = (int)VitalType.Vital_Type_FirstSpell;
@@ -810,7 +831,9 @@ public class BattleProcess : MonoBehaviour
             args.vitalChange = 0;
             args.vitalCurrent = 0;//TODO: need weak point life?
             args.vitalMax = 0;
-            BattleController.Instance.GetUIBattle().ChangeLife(args);
+
+            GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.SpellLifeChange, args);
+            //BattleController.Instance.GetUIBattle().ChangeLife(args);
         }
     }
 
@@ -1086,6 +1109,12 @@ public class BattleProcess : MonoBehaviour
     public void OnShowHideMonster(int id)
     {
         BattleController.Instance.GetUIBattle().SetBattleUnitVisible(id, true);
+
+        BattleObject showUnit = ObjectDataMgr.Instance.GetBattleObject(id);
+        if (showUnit != null)
+        {
+            showUnit.unit.CalcNextActionOrder(lastActionOrder);
+        }
     }
 
     //spell event
@@ -1100,7 +1129,7 @@ public class BattleProcess : MonoBehaviour
             spellEventList.Add(args);
         }
         //cast passive spell no need to run next action
-        if (args.category == (int)SpellType.Spell_Type_Passive && string.IsNullOrEmpty(args.firstSpell))
+        if (args.category == (int)SpellType.Spell_Type_Passive && args.firstSpell == false)
         {
             return;
         }
@@ -1109,13 +1138,13 @@ public class BattleProcess : MonoBehaviour
         actionDelayTime = 0.0f;
     }
 
-    IEnumerator WaitAnim(BattleObject movedUnit, float waitLen, string firstSpell)
+    IEnumerator WaitAnim(BattleObject movedUnit, float waitLen, bool firstSpell)
     {
         if (curAction == null ||  curAction.type != ActionType.Dazhao)
         {
             yield return new WaitForSeconds(waitLen);
 
-            OnUnitFightOver(movedUnit, string.IsNullOrEmpty(firstSpell));
+            OnUnitFightOver(movedUnit, firstSpell == false);
         }
     }
 

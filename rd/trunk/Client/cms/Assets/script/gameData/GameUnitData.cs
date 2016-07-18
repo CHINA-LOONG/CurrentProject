@@ -89,6 +89,7 @@ public class GameUnit : IComparable
     public int dazhaoPrepareCount = 0;//准备大招需要的回合
     public int dazhaoDamageCount=0;//统计AI释放大招模式下受到的物理伤害次数
     public int energy;//能量值
+    public float spellHealthRatio;
     public float spellStrengthRatio;
     public float spellIntelligenceRatio;
     public float spellSpeedRatio;
@@ -169,7 +170,7 @@ public class GameUnit : IComparable
 
         isEvolutionable = unitRowData.isEvolutionable!=0;
         evolutionID = unitRowData.evolutionID;
-        name = unitRowData.nickName;
+        name = unitRowData.NickNameAttr;
 		//Ai = unitRowData.AI;
 
         //TODO: 装备系统附加值
@@ -189,6 +190,8 @@ public class GameUnit : IComparable
         invincible = 0;
         stun = 0;
         energy = 0;
+        
+        spellHealthRatio = 0.0f;
         spellStrengthRatio = 0.0f;
         spellIntelligenceRatio = 0.0f;
         spellSpeedRatio = 0.0f;
@@ -472,6 +475,7 @@ public class GameUnit : IComparable
         energy = 0;
         dazhao = 0;
         dazhaoPrepareCount = 0;
+        spellHealthRatio = 0.0f;
         spellStrengthRatio = 0.0f;
         spellIntelligenceRatio = 0.0f;
         spellSpeedRatio = 0.0f;
@@ -582,6 +586,29 @@ public class GameUnit : IComparable
         }
 
         return null;
+    }
+
+    public void OnHealthChange(float curTime)
+    {
+        //NOTE: health changes only through passive spell,so don't think life compensate
+        float curMaxLife = maxLife;
+        maxLife = (int)(SpellConst.healthToLife * health * (1.0f + spellHealthRatio));
+        if (state != UnitState.Dead)
+        {
+            curLife = maxLife;
+        }
+
+        //fire vitalchange event to modify lifebar
+        SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+        args.vitalType = (int)VitalType.Vital_Type_FixLife;
+        args.triggerTime = curTime;
+        args.casterID = pbUnit.guid;
+        args.targetID = pbUnit.guid;
+        args.isCritical = false;
+        args.vitalChange = 0;
+        args.vitalCurrent = curLife;
+        args.vitalMax = maxLife;
+        GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.SpellLifeChange, args);
     }
 
 }

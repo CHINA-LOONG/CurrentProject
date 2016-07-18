@@ -7,8 +7,7 @@ using UnityEditor.Animations;
 public class GenerateAnimatorController
 {
     static List<string> motionNameList = new List<string>();
-    static List<string> paths = new List<string>();
-
+    static List<string> paths = new List<string>();    
     struct AnimatorData
     {
         public string aniKey;
@@ -18,9 +17,10 @@ public class GenerateAnimatorController
     [MenuItem("Builder/Build Animator Controller")]
     public static void BuildAssetResource()
     {
+        
 		motionNameList.Clear ();
 		paths.Clear ();
-
+        bool isdazhao = false;//是否有大招
         var controllerDirPath = EditorUtility.OpenFolderPanel("选择读取路径", @"C:/Users/The Second Lock/Desktop/Project/rd/trunk/Client/cms/Assets/SourceAsset/importModels/MonsterModels", "");
         if (string.IsNullOrEmpty(controllerDirPath))
             return;
@@ -48,15 +48,19 @@ public class GenerateAnimatorController
         AnimatorData dazhaoState = new AnimatorData();
         AnimatorData toulanState = new AnimatorData();
         AnimatorData shoujiState = new AnimatorData();
-        AnimatorData paoluState = new AnimatorData();
+        AnimatorData paobuState = new AnimatorData();
+        AnimatorData chuchangState = new AnimatorData();
+
 
         AnimationEvent newEvent = new AnimationEvent();
+        ModelImporterClipAnimation newAnimation = new ModelImporterClipAnimation();
         string stateName;
         for (int index = 0; index < motionNameList.Count; ++index)
         {
             string name = motionNameList[index];
-            AnimationClip newClip = AssetDatabase.LoadAssetAtPath(name, typeof(AnimationClip)) as AnimationClip;            
-          
+            AnimationClip newClip = AssetDatabase.LoadAssetAtPath(name, typeof(AnimationClip)) as AnimationClip;
+            
+            
             if (newClip == null)
                 continue;
             stateName = newClip.name;
@@ -75,6 +79,8 @@ public class GenerateAnimatorController
                 daijiState.aniState = curState;
                 daijiState.aniKey = stateName;
                 daijiState.aniState.motion = newClip;
+                newAnimation.loopTime = true;
+                newAnimation.loopPose = true;
             }
             else if (name.Contains("siwang") == true)
             {
@@ -90,18 +96,16 @@ public class GenerateAnimatorController
                 shengliState.aniState = curState;
                 shengliState.aniKey = stateName;
                 shengliState.aniState.motion = newClip;
-                newEvent.functionName = "OnShengliEnd";
-                newEvent.time = newClip.length;
-                AnimationUtility.SetAnimationEvents(newClip, new AnimationEvent[] { newEvent });
+                newAnimation.loopTime = true;
+                newAnimation.loopPose = true;
             }
             else if (name.Contains("shoukong") == true)
             {
                 shoukongState.aniState = curState;
                 shoukongState.aniKey = stateName;
                 shoukongState.aniState.motion = newClip;
-                newEvent.functionName = "OnDaShoukongEnd";
-                newEvent.time = newClip.length;
-                AnimationUtility.SetAnimationEvents(newClip, new AnimationEvent[] { newEvent });
+                newAnimation.loopTime = true;
+                newAnimation.loopPose = true;
             }
             else if (name.Contains("wugong") == true)
             {
@@ -139,7 +143,7 @@ public class GenerateAnimatorController
                 newEvent.time = newClip.length;
                 AnimationUtility.SetAnimationEvents(newClip, new AnimationEvent[] { newEvent });
             }
-            else if (name.Contains("dazhao") == true && name.Contains("dazhaoxuanyao") == false)
+            else if (name.Contains("dazhao") == true )
             {
                 dazhaoState.aniState = curState;
                 dazhaoState.aniKey = stateName;
@@ -147,6 +151,7 @@ public class GenerateAnimatorController
                 newEvent.functionName = "OnDaZhaoEnd";
                 newEvent.time = newClip.length;
                 AnimationUtility.SetAnimationEvents(newClip, new AnimationEvent[]{newEvent});
+                isdazhao = true;
             }
             else if (name.Contains("toulan") == true)
             {
@@ -166,11 +171,22 @@ public class GenerateAnimatorController
                 newEvent.time = newClip.length;
                 AnimationUtility.SetAnimationEvents(newClip, new AnimationEvent[] { newEvent });
             }
-            else if (name.Contains("paolu") == true)
+            else if (name.Contains("paobu") == true)
             {
-                paoluState.aniState = curState;
-                paoluState.aniKey = stateName;
-                paoluState.aniState.motion = newClip;
+                paobuState.aniState = curState;
+                paobuState.aniKey = stateName;
+                paobuState.aniState.motion = newClip;
+                newAnimation.loopTime = true;
+                newAnimation.loopPose = true;
+            }
+            else if (name.Contains("chuchang") == true)
+            {
+                chuchangState.aniState = curState;
+                chuchangState.aniKey = stateName;
+                chuchangState.aniState.motion = newClip;
+                newEvent.functionName = "OnChuChangEnd";
+                newEvent.time = newClip.length;
+                AnimationUtility.SetAnimationEvents(newClip, new AnimationEvent[] { newEvent });
             }
         }
 
@@ -189,12 +205,13 @@ public class GenerateAnimatorController
 
         AnimatorStateTransition toshoukong = rootStateMachine.AddAnyStateTransition(shoukongState.aniState);
         toshoukong.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shoukongState.aniKey);
-        toshoukong.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey); 
-       
+        toshoukong.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
 
+        rootStateMachine.defaultState = daijiState.aniState;
 
         
         //daiji->?
+
         AnimatorStateTransition daijiToWugongTrans = daijiState.aniState.AddTransition(wugongState.aniState);
         daijiToWugongTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, wugongState.aniKey);
         daijiToWugongTrans.hasExitTime = false;
@@ -204,12 +221,19 @@ public class GenerateAnimatorController
         AnimatorStateTransition daijiToFangyuTrans = daijiState.aniState.AddTransition(fangyuState.aniState);
         daijiToFangyuTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, fangyuState.aniKey);
         daijiToFangyuTrans.hasExitTime = false;
+        if (isdazhao)//是否创建大招
+        {
+            AnimatorStateTransition daijiToDazhaoTrans = daijiState.aniState.AddTransition(dazhaoState.aniState);
+            daijiToDazhaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, dazhaoState.aniKey);
+            daijiToDazhaoTrans.hasExitTime = false;
+
+            AnimatorStateTransition dazhaoToDaijiTrans = dazhaoState.aniState.AddTransition(daijiState.aniState);
+            dazhaoToDaijiTrans.hasExitTime = true;
+        }
         AnimatorStateTransition daijiToDazhaoxuanyaoTrans = daijiState.aniState.AddTransition(dazhaoxuanyaoState.aniState);
         daijiToDazhaoxuanyaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, dazhaoxuanyaoState.aniKey);
         daijiToDazhaoxuanyaoTrans.hasExitTime = false;
-        AnimatorStateTransition daijiToDazhaoTrans = daijiState.aniState.AddTransition(dazhaoState.aniState);
-        daijiToDazhaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, dazhaoState.aniKey);
-        daijiToDazhaoTrans.hasExitTime = false;
+        
 
         AnimatorStateTransition daijiToToulanTrans = daijiState.aniState.AddTransition(toulanState.aniState);
         daijiToToulanTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, toulanState.aniKey);
@@ -219,10 +243,14 @@ public class GenerateAnimatorController
         daijiToShoujiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shoujiState.aniKey);
         daijiToShoujiTrans.hasExitTime = false;
 
-        AnimatorStateTransition daijiToPaoluTrans = daijiState.aniState.AddTransition(paoluState.aniState);
-        daijiToPaoluTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, paoluState.aniKey);
+        AnimatorStateTransition daijiToPaoluTrans = daijiState.aniState.AddTransition(paobuState.aniState);
+        daijiToPaoluTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, paobuState.aniKey);
         daijiToPaoluTrans.duration = 0.0f;
         daijiToPaoluTrans.hasExitTime = false;
+
+        AnimatorStateTransition daijiToChuchangTrans = daijiState.aniState.AddTransition(chuchangState.aniState);
+        daijiToChuchangTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, chuchangState.aniKey);
+        daijiToChuchangTrans.hasExitTime = false;
         
         //?->daiji
         AnimatorStateTransition wugongToDaijiTrans = wugongState.aniState.AddTransition(daijiState.aniState);
@@ -232,15 +260,20 @@ public class GenerateAnimatorController
         AnimatorStateTransition fangyuToDaijiTrans = fangyuState.aniState.AddTransition(daijiState.aniState);
         fangyuToDaijiTrans.hasExitTime = true;
         AnimatorStateTransition dazhaoxuanyaoToDaijiTrans = dazhaoxuanyaoState.aniState.AddTransition(daijiState.aniState);
-        dazhaoxuanyaoToDaijiTrans.hasExitTime = true;
-        AnimatorStateTransition dazhaoToDaijiTrans = dazhaoState.aniState.AddTransition(daijiState.aniState);
-        dazhaoToDaijiTrans.hasExitTime = true;
+        dazhaoxuanyaoToDaijiTrans.hasExitTime = true;        
+
         AnimatorStateTransition toulanToDaijiTrans = toulanState.aniState.AddTransition(daijiState.aniState);
         toulanToDaijiTrans.hasExitTime = true;
         AnimatorStateTransition shoujiToDaijiTrans = shoujiState.aniState.AddTransition(daijiState.aniState);
+        shoujiToDaijiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, shoukongState.aniKey);
         shoujiToDaijiTrans.hasExitTime = true;
-        AnimatorStateTransition paoluToDaijiTrans = paoluState.aniState.AddTransition(daijiState.aniState);
-        paoluToDaijiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, paoluState.aniKey);
+        AnimatorStateTransition shoujiToShoukongTrans = shoujiState.aniState.AddTransition(shoukongState.aniState);
+        shoujiToShoukongTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shoukongState.aniKey);
+        shoujiToShoukongTrans.hasExitTime = true;
+
+
+        AnimatorStateTransition paoluToDaijiTrans = paobuState.aniState.AddTransition(daijiState.aniState);
+        paoluToDaijiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, paobuState.aniKey);
         paoluToDaijiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
         paoluToDaijiTrans.hasExitTime = true;
         
@@ -253,6 +286,11 @@ public class GenerateAnimatorController
         AnimatorStateTransition shoukongToDajiTrans = shoukongState.aniState.AddTransition(daijiState.aniState);
         shoukongToDajiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, shoukongState.aniKey);
         shoukongToDajiTrans.hasExitTime = true;
+
+        AnimatorStateTransition shoukongToShoujiTrans = shoukongState.aniState.AddTransition(shoujiState.aniState);
+        shoukongToShoujiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shoujiState.aniKey);
+
+        AnimatorStateTransition chuchangToDaijiTrans = chuchangState.aniState.AddTransition(daijiState.aniState);
     }
 
     static void Recursive(string path)

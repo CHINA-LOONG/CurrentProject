@@ -2,15 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class JiuWeiHuUnitAi : MonoBehaviour {
+public class JiuWeiHuUnitAi : BossAi {
 
 	// Use this for initialization
 	void Start () 
 	{
 	
 	}
-	
-	public	 BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit jiuWeihuUnit)
+
+
+	public	override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit jiuWeihuUnit)
 	{
 		BattleUnitAi.AiAttackResult attackResult = new BattleUnitAi.AiAttackResult ();
 

@@ -84,7 +84,7 @@ public class SpellService : MonoBehaviour
         deadList.Clear();
     }
     //---------------------------------------------------------------------------------------------
-    public void SpellRequest(string spellID, GameUnit caster, GameUnit target, float curTime)
+    public void SpellRequest(string spellID, GameUnit caster, GameUnit target, float curTime, bool isFirstSpell = false)
     {
 		mCurActionSpell = null;
         if (caster.stun <= 0)
@@ -96,7 +96,7 @@ public class SpellService : MonoBehaviour
                 curSpell.Init(this);
                 curSpell.casterID = caster.pbUnit.guid;
                 curSpell.targetID = target.pbUnit.guid;
-                curSpell.Apply(curTime, target.attackWpName);
+                curSpell.Apply(curTime, target.attackWpName, isFirstSpell);
             }
         }
         else 
@@ -107,6 +107,7 @@ public class SpellService : MonoBehaviour
             args.casterID = caster.pbUnit.guid;
             args.spellID = null;
             args.aniTime = SpellConst.aniDelayTime;
+            args.firstSpell = false;
             TriggerEvent(GameEventList.SpellFire, args);
         }
 
@@ -202,6 +203,9 @@ public class SpellService : MonoBehaviour
     public Buff GetBuff(string id)
     {
         BuffPrototype buffPt = StaticDataMgr.Instance.GetBuffProtoData(id);
+        if (buffPt == null)
+            return null;
+
         Buff actualBuff = new Buff();
         actualBuff.Init(buffPt, this);
         return actualBuff;
@@ -340,6 +344,22 @@ public class SpellService : MonoBehaviour
             BattleObject target = ObjectDataMgr.Instance.GetBattleObject(curArgs.targetID);
             {
                 target.TriggerEvent("absorbed", curArgs.triggerTime, null);
+            }
+        }
+        else if (eventType==GameEventList.NormalHit)
+        {
+            SpellEffectArgs curArgs = args as SpellEffectArgs;
+            BattleObject target = ObjectDataMgr.Instance.GetBattleObject(curArgs.targetID);
+            {
+                target.TriggerEvent("normalHit", curArgs.triggerTime, null);
+            }
+        }
+        else if (eventType==GameEventList.BashHit)
+        {
+            SpellEffectArgs curArgs = args as SpellEffectArgs;
+            BattleObject target = ObjectDataMgr.Instance.GetBattleObject(curArgs.targetID);
+            {
+                target.TriggerEvent("bashHit", curArgs.triggerTime, null);
             }
         }
 

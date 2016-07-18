@@ -344,7 +344,7 @@ im_monster_unlock,宠物解锁成功,Monster is now unlocked.
 pet_detail_skill_current_level,本级:,Current:
 pet_detail_skill_next_level,下一级:,Next LVL:
 pet_detail_skill_max_level,当前技能已达到最高等级,Ability currently at its max LVL
-pet_detail_skill_current_point,目前的技能点数:,Current Ability Points:
+pet_detail_skill_current_point,技能点数:,Ability Points:
 pet_detail_skill_current_huifu,({0}之后回复1点),({0}till 1 point)
 pet_detail_skill_max_point,(点数已满),(Full)
 pet_detail_skill_cannt_level,该技能不可升级,This ability cannot be leveled up.
@@ -753,6 +753,10 @@ towerBoss_3_38,死亡之塔 - 38,Tower Of Death - 38
 towerBoss_3_39,死亡之塔 - 39,Tower Of Death - 39
 towerBoss_3_40,死亡之塔 - 40,Tower Of Death - 40
 im_battle_002,己方宠物正在释放大招，请稍后再试,"Your monsters are currently casting their ults, please try again later."
+im_battle_004,10级即可开启托管功能,10级即可开启托管功能
+im_battle_005,通关后即可开启托管功能,通关后即可开启托管功能
+im_battle_006,托管状态，无法进行换怪操作,托管状态，无法进行换怪操作
+im_battle_007,托管状态，无法手动释放大招,托管状态，无法手动释放大招
 im_battle_001,正在进行换怪，不能施放大招,"Swapping monsters, unable to cast ult now."
 im_spell_001,当前宠物处于眩晕状态，无法释放大招,"Monster is currently stunned, unable to cast ult now."
 passive,被动,Passive
@@ -996,10 +1000,10 @@ arrayselect_bp_001,综合战力,Team BP
 adventure_filter,筛选,Filter
 adventure_record_012,该宠物正在PVP防守，无法上阵哦,This monster is currently in PvP defense and cannot be used.
 summon_titlecoin,昼之召唤,Dawn
-summon_tipscoin,召唤获得物品,Summoning gives items
+summon_tipscoin,召唤获得道具或宠物碎片,"Summoning gives items,fregaments"
 summon_free,免费,Free
 summon_titlegold,夜之召唤,Dusk
-summon_tipsgold,十连召唤必得宠物,Summoning 10 guarantees a monster
+summon_tipsgold,召唤获得高品质道具、宠物碎片或宠物,"Summoning gives items,fregaments and monster"
 summon_onetime,召唤1次,Summon 1
 summon_lefttimecoin,免费次数：{0}/5,Free chances: {0}/5
 summon_recovertimecoin,{0}后免费,Free in {0}
@@ -1121,7 +1125,13 @@ pvp_rewardstips,排名奖励在月结算时邮件发放，段位奖励在周结�
 pvp_pingjutips,确定以平局结束本次战斗吗？,Confirm end current match in a draw?
 pvp_pingjutips1,（平局只能获得1荣誉点，积分变化以平局结果计算）,"(A 'draw' will reward 1 Honor Point, and points will be calculated according to a draw)"
 pvp_record_001,防守设置保存成功,Defense settings saved
-pvp_record_002,竞技次数已用完,No remaining Arena entries
+pvp_record_002,"竞技次数已用完
+
+
+","No remaining Arena entries
+
+
+"
 pvp_record_003,防御至少要安排一个以上的宠物,one at  least
 pvp_battle,开战,Start Battle
 pvp_titleshengduan,进阶成功！,Advancement complete!
@@ -1545,7 +1555,7 @@ invite_limitlevel,角色{0}级前输入有效，限一次,"Valid for players bel
 invite_sureget,领奖,Collect
 invite_myinviter,我的邀请人：,My inviter: 
 invite_getalready,已领奖,Collected
-invite_littletitle2,好友达到以下条件可领奖,Complete the following requirements for a reward
+invite_littletitle2,好友达到以下条件可领奖,Complete requirements for rewards
 gift_event_getrewardalready,已领取,Collected
 gift_event_notreach,未达成,In progress
 invite_alreadyinvite,领取,Collect
@@ -1577,7 +1587,7 @@ facebook_share_content1,大批神话中的妖怪突然降临人界！点击前�
 facebook_share_title2,我在《LegendsAwake》中发起了一次挑战,I have sent a challenge in <LegendsAwake>.
 facebook_share_linktitle2,★一封神秘的挑战书,A mysterious challenge letter.
 facebook_share_content2,收到了一封神秘的挑战书，以代行者的身份召唤妖怪应战吧！,You have received a mysterious challenge letter! Summon some monsters and battle as a monster keeper!
-specialgift_activityTips,<color=#ffcc00>{0}-{1}~{2}-{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会,<color=#ffcc00>{0}-{1}~{2}-{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会
+specialgift_activityTips,<color=#ffcc00>{0}.{1}~{2}.{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会,<color=#ffcc00>{0}.{1}~{2}.{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会
 specialgift_advanceTime,剩余时间 ,Time left 
 specialgift_advanceCount,剩余次数 ,Remaining 
 specialgift_choiceTime,剩余时间 ,Time left 
@@ -1608,3 +1618,7 @@ giftspecial_huodong1_desc,首次付费测试礼包，绝对超值体验！,首�
 specialgift_title,活动礼包,Event Package
 giftspecial_jinjie_name,宠物进阶礼包,Monster Advancement Package
 giftspecial_suipian_name,惊喜碎片礼包,Surprise Fragment Package
+pet_detail_skill_buy10,购买<color=#ffcc00>10</color>点技能点数,购买<color=#ffcc00>10</color>点技能点数
+pet_detail_skill_buytimes,今日可买：{0}/{1},Can purchase today : {0}/{1}
+monster_record_017,购买10点技能点数成功,购买10点技能点数成功
+summon_tipsgoldmust,再抽<color=#ffcc00>{0}</color>次必得<color=#ffcc00>A级及以上</color>宠物,<color=#ffcc00>{0}</color> times more guarantees <color=#ffcc00>Class A (or above)</color> Monster.

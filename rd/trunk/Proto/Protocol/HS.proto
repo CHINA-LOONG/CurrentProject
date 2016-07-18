@@ -31,7 +31,8 @@ enum code
 	ITEM_INFO_SYNC_S            = 1013;
 	EQUIP_INFO_SYNC_S           = 1014;
 	QUEST_INFO_SYNC_S           = 1015;
-	ASSEMBLE_FINISH_S           = 1016;
+	MAIL_INFO_SYNC_S            = 1016;
+	ASSEMBLE_FINISH_S           = 1017;
 
 	// 角色
 	PLAYER_CREATE_C             = 1101;
@@ -101,4 +102,12 @@ enum code
 	QUEST_ACCEPT_S              = 5003;
 	QUEST_UPDATE_S              = 5004;
 	QUEST_REMOVE_S              = 5005;
+
+	// 邮件
+	MAIL_READ_C                 = 6001;
+	MAIL_RECEIVE_C              = 6002;
+	MAIL_RECEIVE_S              = 6003;
+	MAIL_RECEIVE_ALL_C          = 6004;
+	MAIL_RECEIVE_ALL_S          = 6005;
+	MAIL_NEW_S                  = 6006;
 }

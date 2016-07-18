@@ -15,9 +15,11 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 
 	RectTransform rectTrans;
 
+	Tweener  mirrorTween = null;
+
 	Dictionary<MirrorTarget, float> lastFindWeakpoint = new Dictionary<MirrorTarget, float> ();
 
-	MirrorRaycast m_MirrorRaycast;
+	MirrorRaycast m_MirrorRaycast = null;
 	List<MirrorTarget> newFindTargetList =new List<MirrorTarget>();
 	List<MirrorTarget> finishFindTargett = new List<MirrorTarget>();
 	List<MirrorTarget> outFindTarget = new List<MirrorTarget> ();
@@ -35,7 +37,10 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 	public void Init(GameObject mirrorUi)
 	{
 		mirrorStateHash = Animator.StringToHash ("mirrorState");
-		m_MirrorRaycast = gameObject.AddComponent<MirrorRaycast> ();
+		if (null == m_MirrorRaycast)
+		{
+			m_MirrorRaycast = gameObject.AddComponent<MirrorRaycast> ();
+		}
 		rectTrans = transform as RectTransform;
 
 		mirrorUIAnimator = mirrorUi.GetComponent < Animator> ();
@@ -52,7 +57,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 	public void ResetMirror()
 	{
 		//MirrorDragImage.gameObject.SetActive (false);
-		MirrorDragImage.DOFade (0, 1.5f).OnComplete (OnResetMiirror);
+		mirrorTween = MirrorDragImage.DOFade (0, 1.5f).OnComplete (OnResetMiirror);
 	//	mirrorUi.gameObject.SetActive (true);
 		mirrorUIAnimator.SetInteger (mirrorStateHash, 2);
 	}
@@ -94,6 +99,12 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
     {
         if (BattleController.Instance.processStart == false)
             return;
+
+		if (mirrorTween != null &&
+		    mirrorTween.IsPlaying())
+		{
+			mirrorTween.Kill(true);
+		}
 
 		isDragging = false;
 		//MirrorDragImage.gameObject.SetActive (true);

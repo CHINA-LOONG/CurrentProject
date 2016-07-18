@@ -98,7 +98,7 @@ public class questItem : MonoBehaviour
 
         for (int i = 0; i < list.Count; i++)
         {
-            if (list[i].itemType == (int)PB.itemType.PLAYER_ATTR &&
+            if (list[i].type == (int)PB.itemType.PLAYER_ATTR &&
                 int.Parse(list[i].itemId) == (int)PB.changeType.CHANGE_PLAYER_EXP)
             {
                 rewards[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
@@ -148,8 +148,8 @@ public class questItem : MonoBehaviour
     {
         int result=0;
         //    显示顺序为：钻石、金币、经验、道具（道具图标按照道具表中的顺序）	
-        if ((a.itemType <= (int)PB.itemType.MONSTER_ATTR && b.itemType <= (int)PB.itemType.MONSTER_ATTR)
-            || (a.itemType > (int)PB.itemType.MONSTER_ATTR && b.itemType > (int)PB.itemType.MONSTER_ATTR))
+        if ((a.type <= (int)PB.itemType.MONSTER_ATTR && b.type <= (int)PB.itemType.MONSTER_ATTR)
+            || (a.type > (int)PB.itemType.MONSTER_ATTR && b.type > (int)PB.itemType.MONSTER_ATTR))
         {
             if (int.Parse(a.itemId) < int.Parse(b.itemId))
             {
@@ -162,7 +162,7 @@ public class questItem : MonoBehaviour
         }
         else
         {
-            if (a.itemType < b.itemType)
+            if (a.type < b.type)
             {
                 result = -1;
             }

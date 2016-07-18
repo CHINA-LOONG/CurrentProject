@@ -1,0 +1,63 @@
+import "Protocol/Reward.proto";
+
+option java_package = "com.hawk.game.protocol";
+
+// struct-------------------------------------------------------
+
+message HSMail
+{
+	required int32 mailId = 1;
+	required int32 state = 2;
+	required int32 sendTimeStamp = 7;
+	required int32 senderId = 3;
+	required string senderName = 4;
+	required string subject = 5;
+	required string content = 6;
+	repeated RewardItem reward = 8;
+}
+
+// protocol-----------------------------------------------------
+
+message HSMailInfoSync
+{
+	repeated HSMail mailInfo = 1;
+}
+
+// MAIL_READ_C
+message HSMailRead
+{
+	required int32 mailId = 1;
+}
+
+// MAIL_RECEIVE_C
+message HSMailReceive
+{
+	required int32 mailId = 1;
+}
+
+// MAIL_RECEIVE_S
+message HSMailReceiveRet
+{
+	required int32 mailId = 1;
+}
+
+// MAIL_RECEIVE_ALL_C
+message HSMailReceiveAll
+{
+}
+
+// MAIL_RECEIVE_ALL_S
+message HSMailReceiveAllRet
+{
+	// 0:全部收取，其它：错误码，未全部收取
+	required int32 status = 1;
+	// 如未全部收取，返回已收取的邮件Id列表
+	repeated int32 receiveMailId = 2;
+}
+
+// MAIL_NEW_S
+message HSMailNew
+{
+	required HSMail mail = 1;
+	optional int32 overflowMailId = 2;
+}

@@ -118,6 +118,7 @@ public enum VitalType
     Vital_Type_FixLife,//置血量
     Vital_Type_Absorbed,//吸收
     Vital_Type_Shield,//物理护盾/法术护盾
+    Vital_Type_Stun,
 
     Num_Vital_Type
 }

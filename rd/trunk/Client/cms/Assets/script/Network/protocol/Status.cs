@@ -33,7 +33,10 @@ namespace PB
       QUEST_ERROR = 327680,
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ERROR", Value=393216)]
-      INSTANCE_ERROR = 393216
+      INSTANCE_ERROR = 393216,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_ERROR", Value=458752)]
+      MAIL_ERROR = 458752
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"error")]
@@ -181,6 +184,23 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_FATIGUE", Value=393220)]
       INSTANCE_FATIGUE = 393220
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"mailError")]
+    public enum mailError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_NOT_EXIST", Value=458753)]
+      MAIL_NOT_EXIST = 458753,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_NONE", Value=458754)]
+      MAIL_NONE = 458754,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_COIN_FULL", Value=458755)]
+      MAIL_COIN_FULL = 458755,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_GOLD_FULL", Value=458756)]
+      MAIL_GOLD_FULL = 458756
     }
   
 }

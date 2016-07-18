@@ -41,6 +41,10 @@ public final class Status {
      * <code>INSTANCE_ERROR = 393216;</code>
      */
     INSTANCE_ERROR(6, 393216),
+    /**
+     * <code>MAIL_ERROR = 458752;</code>
+     */
+    MAIL_ERROR(7, 458752),
     ;
 
     /**
@@ -71,6 +75,10 @@ public final class Status {
      * <code>INSTANCE_ERROR = 393216;</code>
      */
     public static final int INSTANCE_ERROR_VALUE = 393216;
+    /**
+     * <code>MAIL_ERROR = 458752;</code>
+     */
+    public static final int MAIL_ERROR_VALUE = 458752;
 
 
     public final int getNumber() { return value; }
@@ -84,6 +92,7 @@ public final class Status {
         case 262144: return ITEM_ERROR;
         case 327680: return QUEST_ERROR;
         case 393216: return INSTANCE_ERROR;
+        case 458752: return MAIL_ERROR;
         default: return null;
       }
     }
@@ -1158,6 +1167,138 @@ public final class Status {
     // @@protoc_insertion_point(enum_scope:instanceError)
   }
 
+  /**
+   * Protobuf enum {@code mailError}
+   */
+  public enum mailError
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>MAIL_NOT_EXIST = 458753;</code>
+     *
+     * <pre>
+     * 邮件不存在
+     * </pre>
+     */
+    MAIL_NOT_EXIST(0, 458753),
+    /**
+     * <code>MAIL_NONE = 458754;</code>
+     *
+     * <pre>
+     * 没有邮件
+     * </pre>
+     */
+    MAIL_NONE(1, 458754),
+    /**
+     * <code>MAIL_COIN_FULL = 458755;</code>
+     *
+     * <pre>
+     * 金币已满收取失败
+     * </pre>
+     */
+    MAIL_COIN_FULL(2, 458755),
+    /**
+     * <code>MAIL_GOLD_FULL = 458756;</code>
+     *
+     * <pre>
+     * 钻石已满收取失败
+     * </pre>
+     */
+    MAIL_GOLD_FULL(3, 458756),
+    ;
+
+    /**
+     * <code>MAIL_NOT_EXIST = 458753;</code>
+     *
+     * <pre>
+     * 邮件不存在
+     * </pre>
+     */
+    public static final int MAIL_NOT_EXIST_VALUE = 458753;
+    /**
+     * <code>MAIL_NONE = 458754;</code>
+     *
+     * <pre>
+     * 没有邮件
+     * </pre>
+     */
+    public static final int MAIL_NONE_VALUE = 458754;
+    /**
+     * <code>MAIL_COIN_FULL = 458755;</code>
+     *
+     * <pre>
+     * 金币已满收取失败
+     * </pre>
+     */
+    public static final int MAIL_COIN_FULL_VALUE = 458755;
+    /**
+     * <code>MAIL_GOLD_FULL = 458756;</code>
+     *
+     * <pre>
+     * 钻石已满收取失败
+     * </pre>
+     */
+    public static final int MAIL_GOLD_FULL_VALUE = 458756;
+
+
+    public final int getNumber() { return value; }
+
+    public static mailError valueOf(int value) {
+      switch (value) {
+        case 458753: return MAIL_NOT_EXIST;
+        case 458754: return MAIL_NONE;
+        case 458755: return MAIL_COIN_FULL;
+        case 458756: return MAIL_GOLD_FULL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<mailError>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<mailError>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<mailError>() {
+            public mailError findValueByNumber(int number) {
+              return mailError.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(7);
+    }
+
+    private static final mailError[] VALUES = values();
+
+    public static mailError valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private mailError(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:mailError)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1167,37 +1308,40 @@ public final class Status {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025Protocol/Status.proto*\224\001\n\terrorMask\022\020\n" +
+      "\n\025Protocol/Status.proto*\246\001\n\terrorMask\022\020\n" +
       "\014NORMAL_ERROR\020\000\022\021\n\013LOGIN_ERROR\020\200\200\004\022\022\n\014PL" +
       "AYER_ERROR\020\200\200\010\022\023\n\rMONSTER_ERROR\020\200\200\014\022\020\n\nI" +
       "TEM_ERROR\020\200\200\020\022\021\n\013QUEST_ERROR\020\200\200\024\022\024\n\016INST" +
-      "ANCE_ERROR\020\200\200\030*\300\001\n\005error\022\016\n\nNONE_ERROR\020\000" +
-      "\022\020\n\014CONFIG_ERROR\020\001\022\024\n\020ONLINE_MAX_LIMIT\020\002" +
-      "\022\026\n\022REGISTER_MAX_LIMIT\020\003\022\025\n\021SERVER_GRAY_" +
-      "STATE\020\004\022\023\n\017DATA_BASE_ERROR\020\005\022\022\n\016PARAMS_I" +
-      "NVALID\020\006\022\024\n\020CONFIG_NOT_FOUND\020\007\022\021\n\014SERVER" +
-      "_ERROR\020\200 *B\n\013PlayerError\022\026\n\020PLAYER_NOT_E",
-      "XIST\020\201\200\010\022\033\n\025PLAYER_NICKNAME_EXIST\020\202\200\010*\274\001" +
-      "\n\014monsterError\022\026\n\020MONSTER_MAX_SIZE\020\201\200\014\022\027" +
-      "\n\021MONSTER_NOT_EXIST\020\202\200\014\022\034\n\026SKILL_POINT_N" +
-      "OT_ENOUGH\020\203\200\014\022\027\n\021SKILL_LEVEL_LIMIT\020\204\200\014\022\021" +
-      "\n\013STAGE_LIMIT\020\205\200\014\022\034\n\026STAGE_LEVEL_NOT_ENO" +
-      "UGH\020\206\200\014\022\023\n\rSTAGE_CONSUME\020\207\200\014*\201\003\n\titemErr" +
-      "or\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026\n\020COINS_NOT_EN" +
-      "OUGH\020\202\200\020\022\025\n\017GOLD_NOT_ENOUGH\020\203\200\020\022\025\n\017EQUIP" +
-      "_NOT_FOUND\020\204\200\020\022\025\n\017ITEM_NOT_ENOUGH\020\205\200\020\022\030\n" +
-      "\022ITEM_BUY_NOT_ALLOW\020\206\200\020\022\031\n\023ITEM_SELL_NOT",
-      "_ALLOW\020\207\200\020\022\035\n\027EQUIP_MAX_LEVEL_ALREADY\020\210\200" +
-      "\020\022\034\n\026EQUIP_LEVEL_NOT_ENOUGH\020\211\200\020\022\035\n\027EQUIP" +
-      "_MAX_STAGE_ALREADY\020\212\200\020\022\031\n\023EQUIP_DRESS_AL" +
-      "READY\020\220\200\020\022\033\n\025EQUIP_NOT_DRESS_OTHER\020\221\200\020\022\037" +
-      "\n\031EQUIP_DRESS_OTHER_ALREADY\020\222\200\020\022\027\n\021EQUIP" +
-      "_NOT_DRESSED\020\223\200\020*T\n\nquestError\022\026\n\020QUEST_" +
-      "NOT_ACCEPT\020\201\200\024\022\030\n\022QUEST_NOT_COMPLETE\020\202\200\024" +
-      "\022\024\n\016QUEST_NOT_OPEN\020\203\200\024*l\n\rinstanceError\022" +
-      "\027\n\021INSTANCE_NOT_OPEN\020\201\200\030\022\024\n\016INSTANCE_LEV" +
-      "EL\020\202\200\030\022\024\n\016INSTANCE_COUNT\020\203\200\030\022\026\n\020INSTANCE",
-      "_FATIGUE\020\204\200\030B\030\n\026com.hawk.game.protocol"
+      "ANCE_ERROR\020\200\200\030\022\020\n\nMAIL_ERROR\020\200\200\034*\300\001\n\005err" +
+      "or\022\016\n\nNONE_ERROR\020\000\022\020\n\014CONFIG_ERROR\020\001\022\024\n\020" +
+      "ONLINE_MAX_LIMIT\020\002\022\026\n\022REGISTER_MAX_LIMIT" +
+      "\020\003\022\025\n\021SERVER_GRAY_STATE\020\004\022\023\n\017DATA_BASE_E" +
+      "RROR\020\005\022\022\n\016PARAMS_INVALID\020\006\022\024\n\020CONFIG_NOT" +
+      "_FOUND\020\007\022\021\n\014SERVER_ERROR\020\200 *B\n\013PlayerErr",
+      "or\022\026\n\020PLAYER_NOT_EXIST\020\201\200\010\022\033\n\025PLAYER_NIC" +
+      "KNAME_EXIST\020\202\200\010*\274\001\n\014monsterError\022\026\n\020MONS" +
+      "TER_MAX_SIZE\020\201\200\014\022\027\n\021MONSTER_NOT_EXIST\020\202\200" +
+      "\014\022\034\n\026SKILL_POINT_NOT_ENOUGH\020\203\200\014\022\027\n\021SKILL" +
+      "_LEVEL_LIMIT\020\204\200\014\022\021\n\013STAGE_LIMIT\020\205\200\014\022\034\n\026S" +
+      "TAGE_LEVEL_NOT_ENOUGH\020\206\200\014\022\023\n\rSTAGE_CONSU" +
+      "ME\020\207\200\014*\201\003\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201" +
+      "\200\020\022\026\n\020COINS_NOT_ENOUGH\020\202\200\020\022\025\n\017GOLD_NOT_E" +
+      "NOUGH\020\203\200\020\022\025\n\017EQUIP_NOT_FOUND\020\204\200\020\022\025\n\017ITEM" +
+      "_NOT_ENOUGH\020\205\200\020\022\030\n\022ITEM_BUY_NOT_ALLOW\020\206\200",
+      "\020\022\031\n\023ITEM_SELL_NOT_ALLOW\020\207\200\020\022\035\n\027EQUIP_MA" +
+      "X_LEVEL_ALREADY\020\210\200\020\022\034\n\026EQUIP_LEVEL_NOT_E" +
+      "NOUGH\020\211\200\020\022\035\n\027EQUIP_MAX_STAGE_ALREADY\020\212\200\020" +
+      "\022\031\n\023EQUIP_DRESS_ALREADY\020\220\200\020\022\033\n\025EQUIP_NOT" +
+      "_DRESS_OTHER\020\221\200\020\022\037\n\031EQUIP_DRESS_OTHER_AL" +
+      "READY\020\222\200\020\022\027\n\021EQUIP_NOT_DRESSED\020\223\200\020*T\n\nqu" +
+      "estError\022\026\n\020QUEST_NOT_ACCEPT\020\201\200\024\022\030\n\022QUES" +
+      "T_NOT_COMPLETE\020\202\200\024\022\024\n\016QUEST_NOT_OPEN\020\203\200\024" +
+      "*l\n\rinstanceError\022\027\n\021INSTANCE_NOT_OPEN\020\201" +
+      "\200\030\022\024\n\016INSTANCE_LEVEL\020\202\200\030\022\024\n\016INSTANCE_COU",
+      "NT\020\203\200\030\022\026\n\020INSTANCE_FATIGUE\020\204\200\030*^\n\tmailEr" +
+      "ror\022\024\n\016MAIL_NOT_EXIST\020\201\200\034\022\017\n\tMAIL_NONE\020\202" +
+      "\200\034\022\024\n\016MAIL_COIN_FULL\020\203\200\034\022\024\n\016MAIL_GOLD_FU" +
+      "LL\020\204\200\034B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

@@ -21,105 +21,77 @@ descrip_compassion,善于运用治疗技能，可以恢复队伍的生命和状�
 descrip_humility,善于运用嘲讽技能，主要为队伍承担伤害,Provokes enemies and absorbs large amounts of enemy damage
 miaoshu_bossamute01,面具下隐藏着弱点,Find what underlies the mask.
 wpName24,脸,Face
-wpName25,胸,Body
 wpName26,面具,Mask
-wpName33,胸,Body
 wpName34,头,Head
-wpName35,胸,Body
 wpName36,根部,Root
-wpName37,胸,Body
-wpName38,左腕带,Left Cuff
-wpName39,右腕带,Right Cuff
-wpName40,胸,Body
-wpName41,右半身,Right Body
-wpName42,左半身,Left Body
+wpName38,左腕带,Left Bracer
+wpName39,右腕带,Right Bracer
+wpName41,右半身,Right Shadow
+wpName42,左半身,Left Shadow
 wpName43,头,Head
-wpName44,胸,Body
-wpName45,花瓣,Flower
-wpName46,胸,Body
-wpName47,锤子,Weapon
-wpName48,胸,Body
+wpName45,花瓣,Petal
+wpName47,锤子,Hammer
 wpName49,喇叭,Trumpet
-wpName50,胸,Body
 wpName51,角,Horn
 wpName52,球,Ball
-wpName53,胸,Body
-wpName54,手,Hand
-wpName55,爪,Weapon
-wpName56,胸,Body
+wpName54,手,Claw
+wpName55,爪,Bracelet
 wpName57,玫瑰,Rose
-wpName58,胸,Body
 wpName59,宝箱,Box
 wpName60,右脚,Right Leg
-wpName61,乌鸦,Bird
-wpName62,胸,Body
+wpName61,乌鸦,Crow
 wpName63,头,Head
-wpName64,镰刀,Weapon
-wpName65,胸,Body
+wpName64,镰刀,Sickle
 wpName66,头,Head
-wpName67,球,Ball
-wpName68,胸,Body
+wpName67,球,Magical Ball
 wpName69,头顶,Skull
 wpName70,围巾,Scarf
 xiaochou4hide_head,猜猜我在哪,Find me
-mantuoluo2hide_root,猜猜我在哪,Find me
-langren3hide_lcuff,猜猜我在哪,Find me
-langren3hide_rcuff,猜猜我在哪,Find me
-piying5hide_lbody,猜猜我在哪,Find me
-piying5hide_rbody,猜猜我在哪,Find me
-piying5hide_head,猜猜我在哪,Find me
-huapo2hide_flower,猜猜我在哪,Find me
-zouyincao2hide_trumpet,猜猜我在哪,Find me
-wushi4hide_horn,猜猜我在哪,Find me
-wushi4hide_ball,猜猜我在哪,Find me
-xiyiren2hide_hand,猜猜我在哪,Find me
-xiyiren2hide_claw,猜猜我在哪,Find me
-panshen2hide_eye,猜猜我在哪,Find me
-shuigui3hide_box,猜猜我在哪,Find me
-shuigui3hide_rfoot,猜猜我在哪,Find me
-shuigui3hide_bird,猜猜我在哪,Find me
-kairuisi5hide_head,猜猜我在哪,Find me
-kairuisi5hide_weapon,猜猜我在哪,Find me
-longgongtongzi3hide_head,猜猜我在哪,Find me
-longgongtongzi3hide_ball,猜猜我在哪,Find me
-hetong2hide_head,猜猜我在哪,Find me
-hetong2hide_scarf,猜猜我在哪,Find me
-xiaochou4normal1_body,默认,Default
+mantuoluo2hide_root,曼陀罗看似在用根部吸取养分,Mandrake's Root is her secret to Massive Recovery.
+langren3hide_lcuff,狼人左手的腕带,His Bracer seems to be his secret.
+langren3hide_rcuff,狼人右手的腕带,His Bracer seems to be his secret.
+piying5hide_lbody,三个秘密——右半身的秘密,Three secrets? One on his right Shadow?
+piying5hide_rbody,三个秘密——左半身的秘密,Three secrets? One on his left Shadow?
+piying5hide_head,三个秘密——头部神秘的眼罩,Three secrets? Could it in be his head?
+huapo2hide_flower,空中漂浮的花瓣，隐藏着怎样的秘密？,Notice the Petal hovering around?
+zouyincao2hide_trumpet,疯狂舞动的喇叭,The secret is in its Crazy Trumpet.
+wushi4hide_horn,舞狮头顶尖尖角,This shape looks like a horn?
+wushi4hide_ball,舞狮看起来很喜欢他的球呢,It seems to love the Magic Ball.
+xiyiren2hide_hand,蜥蜴人的小绿手,His Claw could a secret?
+xiyiren2hide_claw,锋利的爪子,Attack its Bracelet could be where its secret lies.
+panshen2hide_eye,口中的玫瑰，散发着迷人的香气,The rose in his mouth is emitting a strange scent.
+shuigui3hide_box,船长保护的东西藏在哪呢？在脚边么？,"This secret is hidden, could it besides his legs?"
+shuigui3hide_rfoot,船长的右脚已经失去了保护,His Right leg seems exposed.
+shuigui3hide_bird,注意到船长头顶的乌鸦了么？,Notice there is a Crow on his head?
+kairuisi5hide_head,帽子下掩藏的头部会是他的弱点么？,This shape looks like her hood?
+kairuisi5hide_weapon,手中挥舞的镰刀,How about her Sickle？
+longgongtongzi3hide_head,十分诡异的头部,Is this his head？
+longgongtongzi3hide_ball,梦幻的水晶球,Looks like it's the Magical Ball
+hetong2hide_head,河童的头？少了点什么…,What is missing on his head?
+hetong2hide_scarf,河童身上也有秘密,Looks a secret on his body
 xiaochou4normal1_head,弱点,Weakpoint
-mantuoluo2normal1_body,默认,Default
-mantuoluo2normal1_root,强力恢复生命值,Massive Recovery
-langren3normal1_body,默认,Default
-langren3normal1_lcuff,提高防御,Increase Defense
-langren3normal1_rcuff,提高防御,Increase Defense
-piying5normal1_body,默认,Default
-piying5normal1_lbody,压制敌方力量,Decrease Enemy's Strength
-piying5normal1_rbody,压制敌方智力,Decrease Enemy's Intelligence
-piying5normal1_head,弱点,Weakpoint
-huapo2normal1_body,默认,Default
-huapo2normal1_flower,提高大招连击次数,Increase Number of Strikes per turn
-zouyincao2normal1_body,默认,Default
-zouyincao2normal1_trumpet,提高智力,Increase Intelligence
-wushi4normal1_body,默认,Default
-wushi4normal1_horn,弱点,Weakpoint
-wushi4normal1_ball,提高智力,Increase Intelligence
-xiyiren2normal1_body,默认,Default
-xiyiren2normal1_hand,弱点,Weakpoint
-xiyiren2normal1_claw,保护弱点,Protect Weakpoint
-panshen2normal1_body,默认,Default
-panshen2normal1_eye,弱点,Weakpoint
-shuigui3normal1_body,默认,Default
-shuigui3normal1_box,带来眩晕效果,Increases stun  effect
+mantuoluo2normal1_root,根部是强大回血力量的源泉,Attack her root to stop Mandrake from healing herself.
+langren3normal1_lcuff,腕带是狼人保护罩的支撑,Bracer provides strong defense.
+langren3normal1_rcuff,腕带是狼人保护罩的支撑,Bracer provides strong defense.
+piying5normal1_lbody,右半身能够压制我方物理攻击力,Right shadow cripples all physical attack. 
+piying5normal1_rbody,左半身能够压制我方法术攻击力,Left shadow cripples all magical attack.
+piying5normal1_head,皮影的软肋就在头部,His head is his weakest links!
+huapo2normal1_flower,花魄高连击的永动机,The Petal increases the Pixie number of Strikes.
+zouyincao2normal1_trumpet,疯狂的旋律，疯狂的法术攻击,Crazy Trumpet increases his magical attacks.
+wushi4normal1_horn,尖尖角竟是舞狮的弱点！,The Horn is where it's weakpoint lies.
+wushi4normal1_ball,打破它的球！压制他的法术攻击！,This Magic Ball can increase the Lion's magical abilities.
+xiyiren2normal1_hand,蜥蜴人的薄弱所在,His Claw is his weakpoint.
+xiyiren2normal1_claw,干掉爪子！看看爪子下隐藏着怎样的黑手！,Destroy the Bracelet to reveal another secret.
+panshen2normal1_eye,攻击玫瑰会让潘神心碎,Let's break his heart by attacking the Rose.
+shuigui3normal1_box,击破宝箱，船长会丧失眩晕我方的能力,This Magic Chest Box can increase in Stunning Effect
 siwangtashuigui3normal1_box,附加炸弹效果,Increases bomb effect
-shuigui3normal1_rfoot,弱点,Weakpoint
-shuigui3normal1_bird,保护弱点,Protect Weakpoint
-kairuisi5normal1_body,默认,Default
-kairuisi5normal1_head,弱点,Weakpoint
-kairuisi5normal1_weapon,提升攻击和治疗效果,Increases attack and healing effects
-longgongtongzi3normal1_body,默认,Default
-longgongtongzi3normal1_head,弱点,Weakpoint
-longgongtongzi3normal1_ball,提供重生效果,Increases revive effect
-hetong2normal1_body,默认,Default
-hetong2normal1_head,弱点,Weakpoint
+shuigui3normal1_rfoot,船长的脚，不堪一击….,Attack his Right leg now.
+shuigui3normal1_bird,乌鸦似乎在保护着什么…打掉它看看,The Crow could be protect his weakpoint.
+kairuisi5normal1_head,凯瑞斯的软肋,This is her weakpoint.
+kairuisi5normal1_weapon,镰刀不仅提升法术攻击，还能够治疗凯瑞斯！,This Sickle increases her attack and healing power.
+longgongtongzi3normal1_head,龙宫童子的头部十分脆弱,His head is his weakpoint.
+longgongtongzi3normal1_ball,水晶球是龙宫童子重生的魔力支撑,The Magic Ball has strong healing effect.
+hetong2normal1_head,看起来是个河童的破绽,This is his weakpoint
 hetong2normal1_scarf,最好不要碰它,Don't touch it
 bigTaskname201,富商的委托,Merchant's Task
 bigTaskname202,公会的委托,Guild Task
@@ -195,22 +167,21 @@ taskDesc3,精灵之羽不错吧,Fairy Feathers are delicate and fine
 taskDesc4,金币用处多,The uses of gold are many
 taskDesc5,成功之路,Victory path is the one to follow
 wpName71,树干,Trunk
-wpName72,精灵,Spirit
+wpName72,精灵,Kodami
 wpName73,左侧树洞,Left Branch
-wpName74,精灵,Spirit
+wpName74,精灵,Kodami
 wpName75,中间树洞,Middle Branch
-wpName76,精灵,Spirit
+wpName76,精灵,Kodami
 wpName77,右侧树洞,Right Branch
-muling2hide_hole1,猜猜我在哪,Find me
-muling2hide_hole2,猜猜我在哪,Find me
-muling2hide_hole3,猜猜我在哪,Find me
-muling2normal1_body,默认,Default
-muling2normal1_child1,弱点,Weakpoint
-muling2normal1_hole1,保护弱点,Protect Weakpoint
-muling2normal1_child2,弱点,Weakpoint
-muling2normal1_hole2,保护弱点,Protect Weakpoint
-muling2normal1_child3,弱点,Weakpoint
-muling2normal1_hole3,保护弱点,Protect Weakpoint
+muling2hide_hole1,试试搜索三个树洞,Try searching the Tree Branches.
+muling2hide_hole2,试试搜索三个树洞,Try searching the Tree Branches.
+muling2hide_hole3,试试搜索三个树洞,Try searching the Tree Branches.
+muling2normal1_child1,这个淘气的精灵控制着大树,The Kodami is controlling the Tree.
+muling2normal1_hole1,树洞里隐藏着什么呢？,What could hide under this Tree Branches.
+muling2normal1_child2,这个淘气的精灵控制着大树,The Kodami is controlling the Tree.
+muling2normal1_hole2,树洞里隐藏着什么呢？,What could hide under this Tree Branches.
+muling2normal1_child3,这个淘气的精灵控制着大树,The Kodami is controlling the Tree.
+muling2normal1_hole3,树洞里隐藏着什么呢？,What could hide under this Tree Branches.
 adventure_conditions1,{0}只光属性宠物,{0} light type monsters
 adventure_conditions2,{0}只木属性宠物,{0} grass type monsters
 adventure_conditions3,{0}只水属性宠物,{0} water type monsters
@@ -652,207 +623,156 @@ tili3,吃宵夜了,Midnight Snack
 tilitips1,点击即送30点活力12:00~14:00 {0} 限时领取,"Tap to collect 30 Energy, available 12:00 - 14:00 {0} "
 tilitips2,点击即送30点活力18:00~20:00 {0} 限时领取,"Tap to collect 30 Energy, available 18:00 - 20:00 {0} "
 tilitips3,点击即送30点活力21:00~23:00 {0} 限时领取,"Tap to collect 30 Energy, available 21:00 - 23:00 {0} "
-bosssenlin31Wendige2wp01,身体,Body
 bosssenlin31Wendige2wp02,左角,Left Horn
 bosssenlin31Wendige2wp03,右角,Right Horn
-bosssenlin32Longnv3wp01,身体,Body
 bosssenlin32Longnv3wp02,头,Head
 bosssenlin32Longnv3wp03,左灵印,Left Sigil
 bosssenlin32Longnv3wp04,右灵印,Right Sigil
-bosssenlin33Luoxinfu5wp01,身体,Body
-bosssenlin33Luoxinfu5wp02,左下蜘蛛爪,Lower-left Leg
-bosssenlin33Luoxinfu5wp03,右下蜘蛛爪,Lower-right Leg
-bosssenlin33Luoxinfu5wp04,右上蜘蛛爪,Upper-right Leg
-bosssenlin33Luoxinfu5wp05,左上蜘蛛爪,Upper-left Leg
-bosssenlin34Amute3wp01,身体,Body
+bosssenlin33Luoxinfu5wp02,左下蜘蛛爪,Lower-left Claw
+bosssenlin33Luoxinfu5wp03,右下蜘蛛爪,Lower-right Claw
+bosssenlin33Luoxinfu5wp04,右上蜘蛛爪,Upper-right Claw
+bosssenlin33Luoxinfu5wp05,左上蜘蛛爪,Upper-left Claw
 bosssenlin34Amute3wp02,脸,Face
 bosssenlin34Amute3wp03,面具,Mask
-bosssenlin35Xiaochou2wp01,身体,Body
-bosssenlin35Xiaochou2wp02,武器,Weapon
-bosssenlin36Momo1wp01,身体,Body
+bosssenlin35Xiaochou2wp02,锤子,Hammer
 bosssenlin36Momo1wp02,盾,Shield
-bosssenlin37Hapi1wp01,身体,Body
 bosssenlin37Hapi1wp02,左翅膀,Left Wing
 bosssenlin37Hapi1wp03,右翅膀,Right Wing
-bosshuoshan41Hongniu4wp01,身体,Body
 bosshuoshan41Hongniu4wp02,左角,Life Horn
 bosshuoshan41Hongniu4wp03,右角,Right Horn
-bosshuoshan42Daochengsizhong4wp01,身体,Body
 bosshuoshan42Daochengsizhong4wp02,钟,Bell
 bosshuoshan42Daochengsizhong4wp03,心脏,Heart
-bosshuoshan43Huoniao4wp01,身体,Body
 bosshuoshan43Huoniao4wp02,左羽毛,Left Feather
 bosshuoshan43Huoniao4wp03,中羽毛,Mid Feather
 bosshuoshan43Huoniao4wp04,右羽毛,Right Feather
-bosshuoshan44Datiangou4wp01,默认,Default
 bosshuoshan44Datiangou4wp02,左翅膀,Left Wing
 bosshuoshan44Datiangou4wp03,右翅膀,Right Wing
 bosshuoshan44Datiangou4wp04,扇子,Fan
-bosshuoshan45Saibulesi4wp01,身体,Body
 bosshuoshan45Saibulesi4wp02,左头,Left Head
 bosshuoshan45Saibulesi4wp03,中头,Mid Head
 bosshuoshan45Saibulesi4wp04,右头,Right Head
-bosshuoshan46Tianshizhang4wp01,默认,Default
 bosshuoshan46Tianshizhang4wp02,左翅膀,Left Wing
 bosshuoshan46Tianshizhang4wp03,右翅膀,Right Wing
-bosshuoshan46Tianshizhang4wp04,光环,Halo
-bosshuoshan46Tianshizhang4wp05,武器,Weapon
-bosshuoshan47Ifrit4wp01,身体,Body
-bosshuoshan47Ifrit4wp02,左裤脚,Left Trousers
-bosshuoshan47Ifrit4wp03,右裤脚,Right Trousers
-bosshuoshan47Ifrit4wp04,武器,Weapon
-bosssenlin38Meidusha2wp01,身体,Body
-bosssenlin38Meidusha2wp02,右下蛇头,Lower-right Snake
-bosssenlin38Meidusha2wp03,左下蛇头,Lower-left Snake
-bosssenlin38Meidusha2wp04,右上蛇头,Upper-right Snake
-bosssenlin38Meidusha2wp05,左上蛇头,Upper-left Snake
-bosshuoshan48Hehuaisituosi4wp01,眼睛,Eyes
-bosshuoshan48Hehuaisituosi4wp02,右上武器,Upper Right Weapon
-bosshuoshan48Hehuaisituosi4wp03,右下武器,Lower Right Weapon
-bosshuoshan48Hehuaisituosi4wp04,左上武器,Upper Left Weapon
-bosshuoshan48Hehuaisituosi4wp05,左下武器,Lower Left Weapon
-bosshuoshan48Hehuaisituosi4wp06,头,Head
-wendige2hide_lhorn,猜猜我在哪,Find me
-wendige2hide_rhorn,猜猜我在哪,Find me
-longnv3hide_body,猜猜我在哪,Find me
-longnv3hide_head,猜猜我在哪,Find me
-luoxinfu5hide_body,猜猜我在哪,Find me
-luoxinfu5hide_leg6,猜猜我在哪,Find me
-luoxinfu5hide_leg5,猜猜我在哪,Find me
-luoxinfu5hide_leg1,猜猜我在哪,Find me
-luoxinfu5hide_leg2,猜猜我在哪,Find me
-amutehide_shenti,猜猜我在哪,Find me
-amutehide_lian,猜猜我在哪,Find me
-amutehide_mianju,猜猜我在哪,Find me
-xiaochou2hide_body,猜猜我在哪,Find me
-xiaochou2hide_weapon,猜猜我在哪,Find me
-momo1hide_body,猜猜我在哪,Find me
-momo1hide_dun,猜猜我在哪,Find me
-meidushahide_zuoshetou,猜猜我在哪,Find me
-meidushahide_youshetou,猜猜我在哪,Find me
-meidushahide_xiaoshetou,猜猜我在哪,Find me
-wendige2normal1_body,默认,Default
-wendige2normal1_lhorn,添加dot效果,Increases DOT effect
-wendige2normal1_rhorn,添加dot效果,Increases DOT effect
-longnv3normal1_body,默认,Default
-longnv3normal1_head,弱点,Weakpoint
+bosshuoshan46Tianshizhang4wp04,光环,Aura
+bosshuoshan46Tianshizhang4wp05,长剑,Sword
+bosshuoshan47Ifrit4wp02,左暗火,Left Dark Fire
+bosshuoshan47Ifrit4wp03,右暗火,Right Dark Fire
+bosshuoshan47Ifrit4wp04,法杖,Staff
+bosssenlin38Meidusha2wp02,右下蛇头,Lower-right Snake Head
+bosssenlin38Meidusha2wp03,左下蛇头,Lower-left Snake Head
+bosssenlin38Meidusha2wp04,右上蛇头,Upper-right Snake Head
+bosssenlin38Meidusha2wp05,左上蛇头,Upper-left Snake Head
+bosshuoshan48Hehuaisituosi4wp01,右上工具,Upper Right Tool
+bosshuoshan48Hehuaisituosi4wp02,右下工具,Lower Right Tool
+bosshuoshan48Hehuaisituosi4wp03,左上工具,Upper Left Tool
+bosshuoshan48Hehuaisituosi4wp04,左下工具,Lower Left Tool
+bosshuoshan48Hehuaisituosi4wp05,头,Head
+bosshuoshan48Hehuaisituosi4wp06,眼睛,Eyes
+wendige2hide_lhorn,根据图形提示找到弱点,Find this shape on Wendigo's head
+wendige2hide_rhorn,根据图形提示找到弱点,Find this shape on Wendigo's head
+longnv3hide_head,根据图形提示找到弱点,Find this shape on Dragon Girl
+luoxinfu5hide_leg6,根据图形提示找到弱点,Find this shape on one of her claws
+luoxinfu5hide_leg5,根据图形提示找到弱点,Find this shape on one of her claws
+luoxinfu5hide_leg1,根据图形提示找到弱点,Find this shape on one of her claws
+luoxinfu5hide_leg2,根据图形提示找到弱点,Find this shape on one of her claws
+amutehide_lian,根据图形提示找到弱点,Find this shape on him.
+amutehide_mianju,根据图形提示找到弱点,Find this shape on him.
+xiaochou2hide_weapon,根据图形提示找到弱点,Find this shape on the Joker.
+momo1hide_dun,得莫菲的周围好像有什么诡异的力量,Find this shape around Demovoy.
+meidushahide_zuoshetou,美杜莎的秘密,Medusa's secret.
+meidushahide_youshetou,美杜莎的秘密,Medusa's secret.
+meidushahide_xiaoshetou,美杜莎的秘密,Medusa's secret.
+wendige2normal1_lhorn,双角是dot效果的源动力,His horn provides higher damage over time
+wendige2normal1_rhorn,双角是dot效果的源动力,His horn provides higher damage over time
+longnv3normal1_head,龙女的要害,This is her weakpoint.
 longnv3normal1_lingyin1,破坏2处灵印护盾将被击碎,Break the two Sigils to shatter the shield
 longnv3normal1_lingyin2,破坏2处灵印护盾将被击碎,Break the two Sigils to shatter the shield
-luoxinfu5normal1_body,默认,Default
-luoxinfu5normal1_leg6,提高大招连击次数,Increase Number of Strikes per turn
-luoxinfu5normal1_leg5,提高大招连击次数,Increase Number of Strikes per turn
-luoxinfu5normal1_leg1,提高大招连击次数,Increase Number of Strikes per turn
-luoxinfu5normal1_leg2,提高大招连击次数,Increase Number of Strikes per turn
-amutenormal1_shenti,默认,Default
-amutenormal1_lian,弱点,Weakpoint
-amutenormal1_mianju,保护弱点,Protect Weakpoint
-xiaochou2normal1_body,默认,Default
-xiaochou2normal1_weapon,提高智力,Increase Intelligence
-momo1normal1_body,默认,Default
-momo1normal1_dun,反伤护盾,Counter Attack Shield
-meidushanormal1_xiong,一定有别的方法摧毁它,There must be other ways to destroy it
+luoxinfu5normal1_leg6,废掉她的爪子，削弱她的连击,Destroy a claw can decrease her strikes.
+luoxinfu5normal1_leg5,废掉她的爪子，削弱她的连击,Destroy a claw can decrease her strikes.
+luoxinfu5normal1_leg1,废掉她的爪子，削弱她的连击,Destroy a claw can decrease her strikes.
+luoxinfu5normal1_leg2,废掉她的爪子，削弱她的连击,Destroy a claw can decrease her strikes.
+amutenormal1_lian,让攻击打的更猛烈些吧！,Concentrate your fire on this weakpoint.
+amutenormal1_mianju,面具保护着鳄鱼判官的真正弱点,This Mask seems to protect a weakpoint.
+xiaochou2normal1_weapon,干掉锤子！压制小丑的法术攻击力！,Destroy the Hammer! Cripple the Joker's Magical Power!
+momo1normal1_dun,摧毁它！阻止它反射我方的攻击！,Destroy and stop him from counter attack.
 meidushanormal1_zuoshetou,美杜莎很在意它的头发,Medusa really cares about her hair
 meidushanormal1_youshetou,美杜莎很在意它的头发,Medusa really cares about her hair
 meidushanormal1_xiaoshetou,美杜莎很在意它的头发,Medusa really cares about her hair
-hapi1hide_lwing,猜猜我在哪,Find me
-hapi1hide_rwing,猜猜我在哪,Find me
-hongniu4hide_lhorn,猜猜我在哪,Find me
-hongniu4hide_rhorn,猜猜我在哪,Find me
-daochengsizhong4hide_bell,猜猜我在哪,Find me
-daochengsizhong4hide_heart,猜猜我在哪,Find me
-huoniao4hide_ltail,猜猜我在哪,Find me
-huoniao4hide_mtail,猜猜我在哪,Find me
-huoniao4hide_rtail,猜猜我在哪,Find me
-datiangou4hide_lwing,猜猜我在哪,Find me
-datiangou4hide_rwing,猜猜我在哪,Find me
-datiangou4hide_fun,猜猜我在哪,Find me
-saibulesi4hide_lhead,猜猜我在哪,Find me
-saibulesi4hide_mhead,猜猜我在哪,Find me
-saibulesi4hide_rhead,猜猜我在哪,Find me
-tianshizhang4hide_lwing,猜猜我在哪,Find me
-tianshizhang4hide_rwing,猜猜我在哪,Find me
-tianshizhang4hide_aura,猜猜我在哪,Find me
-tianshizhang4hide_weapon,猜猜我在哪,Find me
-ifrit4hide_lleg,猜猜我在哪,Find me
-ifrit4hide_rleg,猜猜我在哪,Find me
-ifrit4hide_stone,猜猜我在哪,Find me
-hapi1normal_body,默认,Default
-hapi1normal_lwing,提高速度,Increase Speed
-hapi1normal_rwing,提高速度,Increase Speed
-hongniu4normal_body,默认,Default
-hongniu4normal_lhorn,提高力量,Increase Strength
-hongniu4normal_rhorn,提高力量,Increase Strength
-daochengsizhong4normal_body,默认,Default
-daochengsizhong4normal_bell,保护弱点,Protect Weakpoint
-daochengsizhong4normal_heart,弱点,Weakpoint
-huoniao4normal_body,默认,Default
-huoniao4normal_ltail,强力恢复生命值,Massive Recovery
-huoniao4normal_mtail,强力恢复生命值,Massive Recovery
-huoniao4normal_rtail,强力恢复生命值,Massive Recovery
-datiangou4normal_body,默认,Default
-datiangou4normal_lwing,提高速度,Increase Speed
-datiangou4normal_rwing,提高速度,Increase Speed
-datiangou4normal_fun,提高智力,Increase Intelligence
-saibulesi4normal_body,默认,Default
-saibulesi4normal_lhead,提高大招连击次数,Increase Number of Strikes per turn
-saibulesi4normal_mhead,提高大招连击次数,Increase Number of Strikes per turn
-saibulesi4normal_rhead,提高大招连击次数,Increase Number of Strikes per turn
-tianshizhang4normal_body,默认,Default
-tianshizhang4normal_lwing,提高速度,Increase Speed
-tianshizhang4normal_rwing,提高速度,Increase Speed
-tianshizhang4normal_aura,大招能源,Ult energy source
-tianshizhang4normal_weapon,提升攻击和治疗效果,Increases attack and healing effects
-ifrit4normal_body,默认,Default
-ifrit4normal_lleg,添加dot效果,Increases DOT effect
-ifrit4normal_rleg,添加dot效果,Increases DOT effect
-ifrit4normal_stone,提高智力,Increase Strength
-hehuaisituosi4hide_eye,猜猜我在哪,Find me
-hehuaisituosi4hide_luweapon,猜猜我在哪,Find me
-hehuaisituosi4hide_ruweapon,猜猜我在哪,Find me
-hehuaisituosi4hide_ldweapon,猜猜我在哪,Find me
-hehuaisituosi4hide_rdweapon,猜猜我在哪,Find me
-hehuaisituosi4hide_head,猜猜我在哪,Find me
-hehuaisituosi4normal_eye,弱点,Weakpoint
+hapi1hide_lwing,根据图形提示找到弱点,Find this shape on Harpy.
+hapi1hide_rwing,根据图形提示找到弱点,Find this shape on Harpy.
+hongniu4hide_lhorn,根据图形提示找到弱点,Find this shape on Minotaur.
+hongniu4hide_rhorn,根据图形提示找到弱点,Find this shape on Minotaur.
+daochengsizhong4hide_bell,根据图形提示找到弱点,Find this shape on Maiden Dojoji.
+daochengsizhong4hide_heart,根据图形提示找到弱点,Find this shape on Maiden Dojoji.
+huoniao4hide_ltail,根据图形提示找到弱点,Find this shape on the Firebird.
+huoniao4hide_mtail,根据图形提示找到弱点,Find this shape on the Firebird.
+huoniao4hide_rtail,根据图形提示找到弱点,Find this shape on the Firebird.
+datiangou4hide_lwing,根据图形提示找到弱点,Find this shape on Tengu.
+datiangou4hide_rwing,根据图形提示找到弱点,Find this shape on Tengu.
+datiangou4hide_fun,大天狗的宝贝藏在哪里？,What gives him strong attack?
+saibulesi4hide_lhead,根据图形提示找到弱点,Hellhound's special feature?
+saibulesi4hide_mhead,根据图形提示找到弱点,Hellhound's special feature?
+saibulesi4hide_rhead,根据图形提示找到弱点,Hellhound's special feature?
+tianshizhang4hide_lwing,根据图形提示找到弱点,Find this shape on Archangel.
+tianshizhang4hide_rwing,根据图形提示找到弱点,Find this shape on Archangel.
+tianshizhang4hide_aura,天使长的秘密武器？,His source of Energy?
+tianshizhang4hide_weapon,根据图形提示找到弱点,What gives him strong attack?
+ifrit4hide_lleg,根据图形提示找到弱点,Find this shape on Ifrit.
+ifrit4hide_rleg,根据图形提示找到弱点,Find this shape on Ifrit.
+ifrit4hide_stone,是什么让伊芙利特攻击如此可怕？,What gives him strong attack?
+hapi1normal_lwing,翅膀让哈皮拥有更快的攻击速度,Her wings increases her speed.
+hapi1normal_rwing,翅膀让哈皮拥有更快的攻击速度,Her wings increases her speed.
+hongniu4normal_lhorn,干掉牛角！搞垮红牛的物理攻击！,His horns increases his attack.
+hongniu4normal_rhorn,干掉牛角！搞垮红牛的物理攻击！,His horns increases his attack.
+daochengsizhong4normal_bell,钟的内部隐藏着什么？,What's the secret inside this Bell?
+daochengsizhong4normal_heart,摧毁她的心吧！,Break her Heart!
+huoniao4normal_ltail,打掉所有羽毛，火鸟就无法回血了！,Like the Legend of the Phoenix…..
+huoniao4normal_mtail,打掉所有羽毛，火鸟就无法回血了！,Like the Legend of the Phoenix…..
+huoniao4normal_rtail,打掉所有羽毛，火鸟就无法回血了！,Like the Legend of the Phoenix…..
+datiangou4normal_lwing,翅膀让大天狗拥有更快的攻击速度,His wings increases his speed.
+datiangou4normal_rwing,翅膀让大天狗拥有更快的攻击速度,His wings increases his speed.
+datiangou4normal_fun,扇子凝聚着提高法术攻击力的力量,His Fan increases his Attack.
+saibulesi4normal_lhead,干掉狗头！削弱他的连击！,"More heads, more strikes!"
+saibulesi4normal_mhead,干掉狗头！削弱他的连击！,"More heads, more strikes!"
+saibulesi4normal_rhead,干掉狗头！削弱他的连击！,"More heads, more strikes!"
+tianshizhang4normal_lwing,翅膀让天使长拥有更快的攻击速度,His wings increases his speed.
+tianshizhang4normal_rwing,翅膀让天使长拥有更快的攻击速度,His wings increases his speed.
+tianshizhang4normal_aura,光环是天使长大招能量的源泉,His Ultimate energy increases with his Aura.
+tianshizhang4normal_weapon,长剑是天使长高攻击和自我治疗的保障,His Sword increases his attack.
+ifrit4normal_lleg,两侧暗火是dot效果的源动力,His Dark Fire increases his damage over time.
+ifrit4normal_rleg,两侧暗火是dot效果的源动力,His Dark Fire increases his damage over time.
+ifrit4normal_stone,敲断他的法杖！削弱他的法术攻击！,His Staff enhances his attack.
+hehuaisituosi4hide_luweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.
+hehuaisituosi4hide_ruweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.
+hehuaisituosi4hide_ldweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.
+hehuaisituosi4hide_rdweapon,是什么让工匠之神如此可怕？,Find what tools for her to Craft.
+hehuaisituosi4normal_eye,快攻击！工匠之神漏出了要害！,Focus attack on her weakpoint!
 hehuaisituosi4normal_luweapon,潘多拉盒子制作工具,Tool used to make Pandora's Box
 hehuaisituosi4normal_ruweapon,潘多拉盒子制作工具,Tool used to make Pandora's Box
 hehuaisituosi4normal_ldweapon,炎镣铐制作工具,Tool used to make Searing Shackles
 hehuaisituosi4normal_rdweapon,炎镣铐制作工具,Tool used to make Searing Shackles
-hehuaisituosi4normal_head,默认,Default
-jiuweihu4hide_body,默认,Default
-jiuweihu4hide_head,猜猜我在哪,Find me
-huangjinzhiling1hide_body,默认,Default
-huangjinzhiling1hide_head,猜猜我在哪,Find me
-huangjinzhiling1hide_shell,默认,Default
-huangjinzhiling1hide_spirit,猜猜我在哪,Find me
-jiuweihu4normal_body,默认,Default
-jiuweihu4normal_head,弱点,Weakpoint
-huangjinzhiling1normal_body,默认,Default
-huangjinzhiling1normal_head,弱点,Weakpoint
-huangjinzhiling1normal_shell,默认,Default
-huangjinzhiling1normal_spirit,弱点,Weakpoint
-bosszhifuletuJiuweihu4wp01,身体,Body
+jiuweihu4hide_head,根据图形提示找到弱点,Find this shape on 9 Tail.
+huangjinzhiling1hide_head,根据图形提示找到弱点,Find this shape on Soul of Gold.
+huangjinzhiling1hide_spirit,根据图形提示找到弱点,Find this shape within the Soul of Gold.
+jiuweihu4normal_head,九尾狐的要害,This is her weakpoint.
+huangjinzhiling1normal_head,黄金之灵的要害,This is his weakpoint.
+huangjinzhiling1normal_spirit,小小的精灵，控制着黄金之灵,The Real Soul who control the Gold.
 bosszhifuletuJiuweihu4wp02,头,Head
-bossmidasigongHuangjinzhiling1wp01,身体,Body
 bossmidasigongHuangjinzhiling1wp02,头,Head
 bossmidasigongHuangjinzhiling1wp03,外壳,Shell
 bossmidasigongHuangjinzhiling1wp04,精灵,Spirit
-huocike4hide_shell,猜猜我在哪,Find me
-huocike4normal1_body,默认,Default
-huocike4normal1_shell,反伤护盾,Against injury
-bossdajie13Cike4wp01,头,Head
+huocike4hide_shell,胸前的圆形扣一定有古怪,Anything special with his Button?
+huocike4normal1_shell,摧毁它！阻止它反射我方的攻击！,Destroy the Shell to stop him from counter attacking.
+bossdajie13Cike4wp01,胸,Body
 bossdajie13Cike4wp02,龟壳,Shell
-bossdajie11Moguguai4wp01,胸,Body
 bossdajie11Moguguai4wp02,蘑菇,Mushroom
-moguguai4hide_mushroom,猜猜我在哪,Find me
-moguguai4normal_body,默认,Default
-moguguai4normal_mushroom,弱点,Weakpoint
-bossdajie18Ladong5wp01,胸,Body
+moguguai4hide_mushroom,蘑菇盖会不会是它的保护伞呢？,Would his Cap be the secret to Mantango?
+moguguai4normal_mushroom,原来蘑菇盖是他的弱点！全力攻击！,Mantango's Cap is its weakpoint! Concentrate your fire at it!
 bossdajie18Ladong5wp02,头,Head
 bossdajie18Ladong5wp03,金苹果,Golden Apple
-ladong5normal_body,默认,Default
-ladong5hide_head,猜猜我在哪,Find me
+ladong5hide_head,屠龙先揍头,Try hitting it's Head first?
 ladong5normal_head,让守护龙头晕目眩,Make Guardian Dragon dizzy
-ladong5normal_goldenapple,弱点,Weakpoint
+ladong5normal_goldenapple,金苹果是守护龙的弱点所在，狠狠地攻击！,The Golden Apple is the dragon's real weakpoint!
 speechname_jiuwei,九尾狐,9-Tails
 speechname_bingxuenvwang,冰雪女王,Chione
 speechname_wo,我,Me
@@ -1126,10 +1046,8 @@ push_summon,可以进行免费召唤啦，去试试运气吧~,"You have a free m
 push_shop,商店都重新进货了，快去瞧瞧吧~,"The store is full of new items now, go and take a look!"
 push_huoli,活力值已满，带领宠物战斗吧！,"Your Energy is full, get out there and take your monsters to battle!"
 push_long,你的宠物都在等你指挥， 快回来帮他们找信仰之力。,Your monsters are awaiting your command. Go and help them collect more Mytho Essence!
-bingxuenvwang3hide_head,猜猜我在哪,Find me
-bingxuenvwang3normal_body,默认,Default
-bingxuenvwang3normal_head,弱点,Weakpoint
-bossxinshouBingxuenvwang3wp01,身体,Body
+bingxuenvwang3hide_head,根据图形提示找到弱点,Looks like her head is the weakpoint.
+bingxuenvwang3normal_head,冰雪女王的要害,This is Chione's weakpoint.
 bossxinshouBingxuenvwang3wp02,头,Head
 speech_blt_11_1,太棒了！我们打破了花魄！但是为什么街上会有这么多妖怪呢？,Great!We defeated the Flower Pixie! But why are there monsters in the street?
 speech_blt_11_2,是呀，现在异界的很多妖怪都来到了人界，正如我告诉你的那样，异界正处于战争之中！,"Yep! There are already a lot of monsters that have come to the real world. As I have told you, the Mythos is at war!"
@@ -1312,160 +1230,126 @@ speech_blt_48_10,啊啊啊啊不好了！,"Uh oh, not good!!!"
 speech_blt_48_11,？,???
 speech_blt_48_12,工匠之神一害怕的时候就会大哭，一大哭的时候就会释放吞噬天地的爆炎之力,"As soon as God of Craft is scared, he will cry. Once he starts crying, he releases his powers, engulfing everything around him in flames!"
 speech_blt_48_13,呜呜……好可怕……哇哇哇！！！,So… SCARY!!! Waaaaaa!!!!
-langren5hide_lcuff,猜猜我在哪,Find me
-langren5hide_rcuff,猜猜我在哪,Find me
-langren5normal1_body,默认,Default
-langren5normal1_lcuff,提高攻击，降低速度,Increase Attack，decrease Speed
-langren5normal1_rcuff,提高攻击，降低速度,Increase Attack，decrease Speed
-mengyan5hide_head,猜猜我在哪,Find me
-mengyan5normal_body,默认,Default
-mengyan5normal_head,弱点,Weakpoint
-xiaochou3hide_weapon,猜猜我在哪,Find me
-xiaochou3normal1_body,默认,Default
-xiaochou3normal1_weapon,提高智力,Increase Intelligence
-bingyan3hide_head,猜猜我在哪,Find me
-bingyan3hide_larm,猜猜我在哪,Find me
-bingyan3hide_rarm,猜猜我在哪,Find me
-bingyan3normal_body,默认,Default
-bingyan3normal_head,默认,Default
-bingyan3normal_larm,默认,Default
-bingyan3normal_rarm,默认,Default
-bingyan3normal_head1,弱点,Weakpoint
-bingyan3normal_larm1,弱点,Weakpoint
-bingyan3normal_rarm1,弱点,Weakpoint
-sheshou3hide_weapon,猜猜我在哪,Find me
-sheshou3normal1_body,默认,Default
-sheshou3normal1_weapon,提高力量,Increase Strength
-huoniao3hide_ltail,猜猜我在哪,Find me
-huoniao3hide_mtail,猜猜我在哪,Find me
-huoniao3hide_rtail,猜猜我在哪,Find me
-huoniao3normal_body,默认,Default
-huoniao3normal_ltail,让自己眩晕,Make self dizzy
-huoniao3normal_mtail,让自己眩晕,Make self dizzy
-huoniao3normal_rtail,让自己眩晕,Make self dizzy
-wendige3hide_lhorn,猜猜我在哪,Find me
-wendige3hide_rhorn,猜猜我在哪,Find me
-wendige3hide_heart,猜猜我在哪,Find me
-wendige3normal1_body,默认,Default
-wendige3normal1_lhorn,让自己眩晕,Make self dizzy
-wendige3normal1_rhorn,让自己眩晕,Make self dizzy
-wendige3normal1_heart,弱点,Weakpoint
-dujiaoshou5hide_horn,猜猜我在哪,Find me
-dujiaoshou5hide_lwing,猜猜我在哪,Find me
-dujiaoshou5hide_rwing,猜猜我在哪,Find me
-dujiaoshou5normal_body,默认,Default
-dujiaoshou5normal_horn,添加驱散效果,Adds a dispel effect
-dujiaoshou5normal_lwing,提高速度,Increase Speed
-dujiaoshou5normal_rwing,提高速度,Increase Speed
-anpusha5hide_heart,猜猜我在哪,Find me
-anpusha5normal1_body,默认,Default
-anpusha5normal1_heart,添加减益效果,Adds a debuff effect
-ifrit5hide_lleg,猜猜我在哪,Find me
-ifrit5hide_rleg,猜猜我在哪,Find me
-ifrit5hide_stone,猜猜我在哪,Find me
-ifrit5normal_body,默认,Default
-ifrit5normal_lleg,附加dot,Increases DOT effect
-ifrit5normal_rleg,附加dot,Increases DOT effect
-ifrit5normal_stone,提高力量,Increase Strength
-nvyao5hide_mask,猜猜我在哪,Find me
-nvyao5hide_head,猜猜我在哪,Find me
-nvyao5hide_lsoul,猜猜我在哪,Find me
-nvyao5hide_rsoul,猜猜我在哪,Find me
-nvyao5normal_body,默认,Default
-nvyao5normal_mask,保护弱点,Protect Weakpoint
-nvyao5normal_head,弱点,Weakpoint
-nvyao5normal_lsoul,提供重生效果,Increases revive effect
-nvyao5normal_rsoul,提供重生效果,Increases revive effect
-weitianshi5hide_aura,猜猜我在哪,Find me
-weitianshi5normal1_body,默认,Default
-weitianshi5normal1_aura,提供禁止回血效果,Inhibits HP regen
-saibulesi5hide_lhead,猜猜我在哪,Find me
-saibulesi5hide_mhead,猜猜我在哪,Find me
-saibulesi5hide_rhead,猜猜我在哪,Find me
-saibulesi5normal_body,默认,Default
-saibulesi5normal_lhead,提高大招连击次数,Increase Number of Strikes per turn
-saibulesi5normal_mhead,提高大招连击次数,Increase Number of Strikes per turn
-saibulesi5normal_rhead,提高大招连击次数,Increase Number of Strikes per turn
-change5hide_rabbit,猜猜我在哪,Find me
-change5hide_necklace,猜猜我在哪,Find me
-change5normal_body,默认,Default
+langren5hide_lcuff,根据图形提示找到弱点,Find this shape on Werewolf.
+langren5hide_rcuff,根据图形提示找到弱点,Find this shape on Werewolf.
+langren5normal1_lcuff,打掉双腕带，削弱狼人攻击！但会提升他的速度...,His bracer increases his attack but decreases his speed.
+langren5normal1_rcuff,打掉双腕带，削弱狼人攻击！但会提升他的速度…,His bracer increases his attack but decreases his speed.
+mengyan5hide_head,邪恶的梦魇，完美的隐藏了自己的弱点,Its weakpoint is hiding within.
+mengyan5normal_head,梦魇的要害,Attack this weakpoint.
+xiaochou3hide_weapon,根据图形提示找到弱点,Find this shape on Joker.
+xiaochou3normal1_weapon,干掉锤子！压制小丑的法术攻击力！,This Hammer increases her attack.
+bingyan3hide_head,史莱姆的身体构造十分神奇,Slime has a transforming body.
+bingyan3hide_larm,史莱姆的身体构造十分神奇,Slime has a transforming body.
+bingyan3hide_rarm,史莱姆的身体构造十分神奇,Slime has a transforming body.
+bingyan3normal_head1,这才是真正的弱点！,This is the Real weakpoint.
+bingyan3normal_larm1,这才是真正的弱点！,This is the Real weakpoint.
+bingyan3normal_rarm1,这才是真正的弱点！,This is the Real weakpoint.
+sheshou3hide_weapon,根据图形提示找到弱点,Find her secret from this shape.
+sheshou3normal1_weapon,弓箭大幅提升了射手座的物理攻击力,Her bow makes her attack massively powerful!
+huoniao3hide_ltail,根据图形提示找到弱点,Find this shape on the Fire Bird.
+huoniao3hide_mtail,根据图形提示找到弱点,Find this shape on the Fire Bird.
+huoniao3hide_rtail,根据图形提示找到弱点,Find this shape on the Fire Bird.
+huoniao3normal_ltail,失去羽毛的鸟会迷失攻击的方向（眩晕）,"Without wings, she loses direction and get stunned."
+huoniao3normal_mtail,失去羽毛的鸟会迷失攻击的方向（眩晕）,"Without wings, she loses direction and get stunned."
+huoniao3normal_rtail,失去羽毛的鸟会迷失攻击的方向（眩晕）,"Without wings, she loses direction and get stunned."
+wendige3hide_lhorn,根据图形提示找到弱点,Find this shape on Wendigo's head
+wendige3hide_rhorn,根据图形提示找到弱点,Find this shape on Wendigo's head
+wendige3hide_heart,根据图形提示找到弱点,Find this shape on Wendigo's body.
+wendige3normal1_lhorn,失去所有角的温迪戈会迷失攻击的方向（眩晕）,"Without horns, Wendigo loses direction and get stunned."
+wendige3normal1_rhorn,失去所有角的温迪戈会迷失攻击的方向（眩晕）,"Without horns, Wendigo loses direction and get stunned."
+wendige3normal1_heart,全力攻击要害！,"Focus attack on its weakpoint, Quick!"
+dujiaoshou5hide_horn,根据图形提示找到弱点,Following the shape to find her secret.
+dujiaoshou5hide_lwing,根据图形提示找到弱点,Following the shape to find her secret.
+dujiaoshou5hide_rwing,根据图形提示找到弱点,Following the shape to find her secret.
+dujiaoshou5normal_horn,没有了角的独角兽就无法驱散自身效果了,This is where she can dispel other effects.
+dujiaoshou5normal_lwing,翅膀让独角兽拥有更快的攻击速度,The wings increases her speed.
+dujiaoshou5normal_rwing,翅膀让独角兽拥有更快的攻击速度,The wings increases her speed.
+anpusha5hide_heart,根据图形提示找到弱点,Find this heart on Empusae.
+anpusha5normal1_heart,没有了心的安普莎就无法给我方添加减益效果了,Her heart provides debuff to her enemies.
+ifrit5hide_lleg,根据图形提示找到弱点,Find this shape on Ifrit.
+ifrit5hide_rleg,根据图形提示找到弱点,Find this shape on Ifrit.
+ifrit5hide_stone,根据图形提示找到弱点,Find this shape on Ifrit.
+ifrit5normal_lleg,两侧暗火是dot效果的源动力,This Dark Fire could burn you over a few rounds.
+ifrit5normal_rleg,两侧暗火是dot效果的源动力,This Dark Fire could burn you over a few rounds.
+ifrit5normal_stone,敲断他的法杖！削弱他的物理攻击！,This Staff increases her attack.
+nvyao5hide_mask,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao5hide_head,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao5hide_lsoul,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao5hide_rsoul,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao5normal_mask,女妖面罩下是怎样的面庞？,This Mask seems to protect a weakpoint.
+nvyao5normal_head,女妖真正的弱点,This is the Real weakpoint.
+nvyao5normal_lsoul,双魂器的存在，保证了女妖的永生,Secret of Banshee Revive is right here.
+nvyao5normal_rsoul,双魂器的存在，保证了女妖的永生,Secret of Banshee Revive is right here.
+weitianshi5hide_aura,天使也会有弱点？,Where could be the secret of Archangel?
+weitianshi5normal1_aura,被光环光芒照射到的宠物将无法回血,The Aura stops her enemies from Healing!
+saibulesi5hide_lhead,根据图形提示找到弱点,Hellhound's special feature?
+saibulesi5hide_mhead,根据图形提示找到弱点,Hellhound's special feature?
+saibulesi5hide_rhead,根据图形提示找到弱点,Hellhound's special feature?
+saibulesi5normal_lhead,干掉狗头！削弱他的连击！,Each head provides a higher number of strikes!
+saibulesi5normal_mhead,干掉狗头！削弱他的连击！,Each head provides a higher number of strikes!
+saibulesi5normal_rhead,干掉狗头！削弱他的连击！,Each head provides a higher number of strikes!
+change5hide_rabbit,嫦娥的心爱之物在哪里？,See where is Moon Devine's Pet?
+change5hide_necklace,根据图形提示找到弱点,Find this shape on the Moon Devine.
 change5normal_rabbit,最好不要碰它,Don't touch it
-change5normal_necklace,提升智力,Increase Intelligence
-Yimier3hide_lwing,猜猜我在哪,Find me
-Yimier3hide_rwing,猜猜我在哪,Find me
-Yimier3hide_bone,猜猜我在哪,Find me
-Yimier3hide_skull,猜猜我在哪,Find me
-yimiernormal_body,默认,Default
-yimiernormal_lwing,提升攻击,Increases attack effect
-yimiernormal_rwing,提升攻击,Increases attack effect
-yimiernormal_bone,提升攻击,Increases attack effect
-yimiernormal_skull,提升攻击,Increases attack effect
-karong5hide_orb,猜猜我在哪,Find me
-karong5hide_body,猜猜我在哪,Find me
-karong5hide_leftarm,猜猜我在哪,Find me
-karong5hide_rightarm1,猜猜我在哪,Find me
-karong5normal_girl,默认,Default
-karong5normal_orb,保护卡戎,Protect Charon
-karong5normal_body,默认,Default
-karong5normal_leftarm,提高智力,Increase Intelligence
-karong5normal_rightarm1,提高力量,Increase Strength
-bosschaoxue52Mengyan5wp01,胸,Body
+change5normal_necklace,吊坠散发的魔力，提升了嫦娥的法术攻击,This Pendant increases her Power.
+Yimier3hide_lwing,弱点会在身体上么？,Is this secret on his body?
+Yimier3hide_rwing,弱点会在身体上么？,Is this secret on his body?
+Yimier3hide_bone,到处都是骨头，弱点在哪呢？,"Lots of bones around, where is this secret?"
+Yimier3hide_skull,到处都是骨头，弱点在哪呢？,"Lots of bones around, where is this secret?"
+yimiernormal_lwing,两侧翅膀提升了他的攻击力！,His wings increases his Power!
+yimiernormal_rwing,两侧翅膀提升了他的攻击力！,His wings increases his Power!
+yimiernormal_bone,骨盘提升了他的攻击力！,His Bone Halo increases his Power!
+yimiernormal_skull,头骨提升了他的攻击力！,His Bone Skull increases his Power!
+karong5hide_orb,空气中闪烁着邪恶的光,This secret is hovering above her.
+karong5hide_body,——,——
+karong5hide_leftarm,这个恶魔的弱点会在哪呢？,Where is this secret?
+karong5hide_rightarm1,这个恶魔的弱点会在哪呢？,Where is this secret?
+karong5normal_orb,悬浮的宝石，在保护着什么？,This secret seems to be hiding something.
+karong5normal_leftarm,左爪保证卡戎的高法术攻击,Left claws has high magical power.
+karong5normal_rightarm1,右爪保证卡戎的高物理攻击,Right claws has high physical power.
 bosschaoxue52Mengyan5wp02,灵魂之源,Soul Source
-bosschaoxue54Bingyan3wp01,胸,Body
 bosschaoxue54Bingyan3wp02,头,Head
 bosschaoxue54Bingyan3wp03,左臂,Left Arm
 bosschaoxue54Bingyan3wp04,右臂,Right Arm
 bosschaoxue54Bingyan3wp05,头,Head
 bosschaoxue54Bingyan3wp06,左臂,Left Arm
 bosschaoxue54Bingyan3wp07,右臂,Right Arm
-bosschaoxue55Sheshou3wp01,胸,Body
-bosschaoxue55Sheshou3wp02,武器,Weapon
-bosschaoxue56Huoniao3wp01,胸,Body
+bosschaoxue55Sheshou3wp02,弓箭,Bow
 bosschaoxue56Huoniao3wp02,左羽毛,Left Feather
 bosschaoxue56Huoniao3wp03,中羽毛,Mid Feather
 bosschaoxue56Huoniao3wp04,右羽毛,Right Feather
-bosschaoxue57Wendige3wp01,胸,Body
 bosschaoxue57Wendige3wp02,左角,Left Horn
 bosschaoxue57Wendige3wp03,右角,Right Horn
 bosschaoxue57Wendige3wp04,心脏,Heart
-bossminghe61Dujiaoshou5wp01,胸,Body
 bossminghe61Dujiaoshou5wp02,角,Horn
 bossminghe61Dujiaoshou5wp03,左翅膀,Left Wing
 bossminghe61Dujiaoshou5wp04,右翅膀,Right Wing
-bossminghe62Anpusha5wp01,胸,Body
 bossminghe62Anpusha5wp02,心,Heart
-bossminghe63Ifrit5wp01,胸,Body
-bossminghe63Ifrit5wp02,左裤脚,Left Trousers
-bossminghe63Ifrit5wp03,右裤脚,Right Trousers
-bossminghe63Ifrit5wp04,武器,Weapon
-bossminghe64Nvyao5wp01,胸,Body
+bossminghe63Ifrit5wp02,左暗火,Left Dark Fire
+bossminghe63Ifrit5wp03,右暗火,Right Dark Fire
+bossminghe63Ifrit5wp04,法杖,Staff
 bossminghe64Nvyao5wp02,面罩,Mask
 bossminghe64Nvyao5wp03,头,Head
 bossminghe64Nvyao5wp04,左魂器,Left Soul
 bossminghe64Nvyao5wp05,右魂器,Right Soul
-bossminghe65Weitianshi5wp01,胸,Body
 bossminghe65Weitianshi5wp02,光环,Aura
-bossminghe66Saibulesi5wp01,胸,Body
 bossminghe66Saibulesi5wp02,左头,Left Head
 bossminghe66Saibulesi5wp03,中头,Mid Head
 bossminghe66Saibulesi5wp04,右头,Right Head
-bossminghe67Change5wp01,胸,Body
 bossminghe67Change5wp02,兔子,Rabbit
 bossminghe67Change5wp03,吊坠,Pendant
-bosschaoxue58Yimier3wp01,胸,Body
 bosschaoxue58Yimier3wp02,左翅膀,Left Wing
 bosschaoxue58Yimier3wp03,右翅膀,Right Wing
-bosschaoxue58Yimier3wp04,骨盘,Bone
+bosschaoxue58Yimier3wp04,骨盘,Bone Halo
 bosschaoxue58Yimier3wp05,头骨,Skull
 bossminghe68Karong5wp01,女孩,Girl
 bossminghe68Karong5wp02,宝石,Gem
-bossminghe68Karong5wp03,身体,Body
 bossminghe68Karong5wp04,左爪,Left Claw
 bossminghe68Karong5wp05,右爪,Right Claw
 bosssiwangtaDatiangou4wp04,面具,Mask
 bosssiwangtaDatiangou4wp05,脸,Face
-datiangou4hide_mask,猜猜我在哪,Find me
-datiangou4hide_head,猜猜我在哪,Find me
+datiangou4hide_mask,身上隐藏的邪恶力量？,An evil power embodied in him!
+datiangou4hide_head,根据图形提示找到弱点,Find this shape on Tengu.
 datiangou4normal_mask,保护弱点,Protect Weakpoint
 datiangou4normal_head,弱点,Weakpoint
 speech_blt_51_1,这里就是你的雪之国吗？,So this is your Snow Kingdom?
@@ -2038,16 +1922,16 @@ bosskongdao72Nvyao1wp02,面罩,Mask
 bosskongdao72Nvyao1wp03,头,Head
 bosskongdao72Nvyao1wp04,左魂器,Left Soul
 bosskongdao72Nvyao1wp05,右魂器,Right Soul
-bosskongdao73Luoxinfu1wp02,左下蜘蛛爪,Lower-left Leg
-bosskongdao73Luoxinfu1wp03,右下蜘蛛爪,Lower-right Leg
-bosskongdao73Luoxinfu1wp04,左蜘蛛爪,Left Leg
-bosskongdao73Luoxinfu1wp05,右蜘蛛爪,Right Leg
-bosskongdao73Luoxinfu1wp06,右上蜘蛛爪,Upper-right Leg
-bosskongdao73Luoxinfu1wp07,左上蜘蛛爪,Upper-left Leg
-bosskongdao74Piying1wp02,右半身,Right Body
-bosskongdao74Piying1wp03,左半身,Left Body
+bosskongdao73Luoxinfu1wp02,左下蜘蛛爪,Lower-left Claw
+bosskongdao73Luoxinfu1wp03,右下蜘蛛爪,Lower-right Claw
+bosskongdao73Luoxinfu1wp04,左蜘蛛爪,Left Claw
+bosskongdao73Luoxinfu1wp05,右蜘蛛爪,Right Claw
+bosskongdao73Luoxinfu1wp06,右上蜘蛛爪,Upper-right Claw
+bosskongdao73Luoxinfu1wp07,左上蜘蛛爪,Upper-left Claw
+bosskongdao74Piying1wp02,右半身,Right Shadow
+bosskongdao74Piying1wp03,左半身,Left Shadow
 bosskongdao74Piying1wp04,头,Head
-bosskongdao75Sheshou1wp02,武器,Weapon
+bosskongdao75Sheshou1wp02,弓箭,Bow
 bosskongdao75Sheshou1wp03,头,Head
 bosskongdao76Yifanmumian1wp02,吊坠,Pendant
 bosskongdao76Yifanmumian1wp03,左大手,Left Hand
@@ -2056,15 +1940,15 @@ bosskongdao77Longnv1wp02,头,Head
 bosskongdao77Longnv1wp03,左灵印,Left Sigil
 bosskongdao77Longnv1wp04,右灵印,Right Sigil
 bosskongdao78Jinglingwang1wp02,皇冠,Crown
-bosskongdao78Jinglingwang1wp03,左上翅膀,luwing
-bosskongdao78Jinglingwang1wp04,左下翅膀,ldwing
-bosskongdao78Jinglingwang1wp05,右上翅膀,ruwing
-bosskongdao78Jinglingwang1wp06,右下翅膀,rdwing
-bossrenjie81Huapo2awakenwp02,花瓣,Flower
-bossrenjie81Huapo2awakenwp03,花瓣,Flower
-bossrenjie81Huapo2awakenwp04,花瓣,Flower
-bossrenjie81Huapo2awakenwp05,花瓣,Flower
-bossrenjie81Huapo2awakenwp06,花瓣,Flower
+bosskongdao78Jinglingwang1wp03,左上翅膀,Upper-left Wing
+bosskongdao78Jinglingwang1wp04,左下翅膀,Lower-left Wing
+bosskongdao78Jinglingwang1wp05,右上翅膀,Upper-right Wing
+bosskongdao78Jinglingwang1wp06,右下翅膀,Lower-right Wing
+bossrenjie81Huapo2awakenwp02,花瓣,Petal
+bossrenjie81Huapo2awakenwp03,花瓣,Petal
+bossrenjie81Huapo2awakenwp04,花瓣,Petal
+bossrenjie81Huapo2awakenwp05,花瓣,Petal
+bossrenjie81Huapo2awakenwp06,花瓣,Petal
 bossrenjie82Huoniao4awakenwp02,左羽毛,Left Feather
 bossrenjie82Huoniao4awakenwp03,中羽毛,Mid Feather
 bossrenjie82Huoniao4awakenwp04,右羽毛,Right Feather
@@ -2081,7 +1965,7 @@ bossrenjie86Landuo2wp02,光环,Aura
 bossrenjie86Landuo2wp03,左翅膀,Left Wing
 bossrenjie86Landuo2wp04,右翅膀,Right Wing
 bossrenjie86Landuo2wp05,泡泡,Bubble
-bossrenjie87Baonu4wp02,头盔,Armet
+bossrenjie87Baonu4wp02,头盔,Helmet
 bossrenjie87Baonu4wp03,左侧骨节,Left Bone
 bossrenjie87Baonu4wp04,左侧骨节,Left Bone
 bossrenjie87Baonu4wp05,左侧骨节,Left Bone
@@ -2096,130 +1980,128 @@ bossrenjie88Yafogemeng5wp04,左手,Left Hand
 bossrenjie88Yafogemeng5wp05,右手,Right Hand
 bossrenjie88Yafogemeng5wp06,左翅膀,Left Wing
 bossrenjie88Yafogemeng5wp07,右翅膀,Right Wing
-weitianshi1hide_aura,猜猜我在哪,Find me
-weitianshi1hide_lwing,猜猜我在哪,Find me
-weitianshi1hide_rwing,猜猜我在哪,Find me
-nvyao1hide_mask,猜猜我在哪,Find me
-nvyao1hide_head,猜猜我在哪,Find me
-nvyao1hide_lsoul,猜猜我在哪,Find me
-nvyao1hide_rsoul,猜猜我在哪,Find me
-luoxinfu1hide_leg1,猜猜我在哪,Find me
-luoxinfu1hide_leg2,猜猜我在哪,Find me
-luoxinfu1hide_leg3,猜猜我在哪,Find me
-luoxinfu1hide_leg4,猜猜我在哪,Find me
-luoxinfu1hide_leg5,猜猜我在哪,Find me
-luoxinfu1hide_leg6,猜猜我在哪,Find me
-piying1hide_lbody,猜猜我在哪,Find me
-piying1hide_rbody,猜猜我在哪,Find me
-piying1hide_head,猜猜我在哪,Find me
-sheshou1hide_weapon,猜猜我在哪,Find me
-sheshou1hide_head,猜猜我在哪,Find me
-yifanmumian1hide_pendant,猜猜我在哪,Find me
-yifanmumian1hide_larm,猜猜我在哪,Find me
-yifanmumian1hide_rarm,猜猜我在哪,Find me
-longnv1hide_body,猜猜我在哪,Find me
-longnv1hide_head,猜猜我在哪,Find me
-longnv1hide_lingyin1,猜猜我在哪,Find me
-longnv1hide_lingyin2,猜猜我在哪,Find me
-jinglingwang2hide_crown,猜猜我在哪,Find me
-jinglingwang2hide_luwing,猜猜我在哪,Find me
-jinglingwang2hide_ldwing,猜猜我在哪,Find me
-jinglingwang2hide_ruwing,猜猜我在哪,Find me
-jinglingwang2hide_rdwing,猜猜我在哪,Find me
-huapo2awakenhide_flower,猜猜我在哪,Find me
-huoniao4awakenhide_ltail,猜猜我在哪,Find me
-huoniao4awakenhide_mtail,猜猜我在哪,Find me
-huoniao4awakenhide_rtail,猜猜我在哪,Find me
-huoniao4awakenhide_crown,猜猜我在哪,Find me
-amute3awakenhide_shenti,猜猜我在哪,Find me
-amute3awakenhide_lian,猜猜我在哪,Find me
-amute3awakenhide_mianju,猜猜我在哪,Find me
-anpusha5awakenhide_heart,猜猜我在哪,Find me
-anpusha5awakenhide_lwing,猜猜我在哪,Find me
-anpusha5awakenhide_rwing,猜猜我在哪,Find me
-dujiaoshou1awakenhide_horn,猜猜我在哪,Find me
-dujiaoshou1awakenhide_lwing,猜猜我在哪,Find me
-dujiaoshou1awakenhide_rwing,猜猜我在哪,Find me
-landuo2hide_ring,猜猜我在哪,Find me
-landuo2hide_lwing,猜猜我在哪,Find me
-landuo2hide_rwing,猜猜我在哪,Find me
-landuo2hide_bubble,猜猜我在哪,Find me
-baonu4hide_armet,猜猜我在哪,Find me
-baonu4hide_lbone1,猜猜我在哪,Find me
-baonu4hide_lbone2,猜猜我在哪,Find me
-baonu4hide_lbone3,猜猜我在哪,Find me
-baonu4hide_lbone4,猜猜我在哪,Find me
-baonu4hide_rbone1,猜猜我在哪,Find me
-baonu4hide_rbone2,猜猜我在哪,Find me
-baonu4hide_rbone3,猜猜我在哪,Find me
-baonu4hide_rbone4,猜猜我在哪,Find me
-yafogemeng5hide_head,猜猜我在哪,Find me
-yafogemeng5hide_aura,猜猜我在哪,Find me
-yafogemeng5hide_larm,猜猜我在哪,Find me
-yafogemeng5hide_rarm,猜猜我在哪,Find me
-yafogemeng5hide_lwing,猜猜我在哪,Find me
-yafogemeng5hide_rwing,猜猜我在哪,Find me
-weitianshi1normal1_aura,弱点,Weakpoint
-weitianshi1normal1_lwing,提高智力,Increase Intelligence
-weitianshi1normal1_rwing,提高智力,Increase Intelligence
-nvyao1normal1_mask,保护弱点,Protect Weakness
-nvyao1normal1_head,弱点,Weakness
-nvyao1normal1_lsoul,提高智力,Increase Intelligence
-nvyao1normal1_rsoul,提高智力,Increase Intelligence
-luoxinfu1normal1_leg1,弱点,Weakness
-luoxinfu1normal1_leg2,弱点,Weakness
-luoxinfu1normal1_leg3,弱点,Weakness
-luoxinfu1normal1_leg4,弱点,Weakness
-luoxinfu1normal1_leg5,弱点,Weakness
-luoxinfu1normal1_leg6,弱点,Weakness
-piying1normal1_lbody,提供护盾效果,Provides a shield effect
-piying1normal1_rbody,提供护盾效果,Provides a shield effect
-piying1normal1_head,弱点,Weakness
-sheshou1normal1_weapon,提高力量,Increase Strength
-sheshou1normal1_head,弱点,Weakness
-yifanmumian1normal1_pendant,提供护盾效果,Provides a shield effect
-yifanmumian1normal1_larm,提高智力,Increase Intelligence
-yifanmumian1normal1_rarm,提高智力,Increase Intelligence
-longnv1normal1_head,弱点,Weakness
-longnv1normal1_lingyin1,带来眩晕效果,Increases stun  effect
-longnv1normal1_lingyin2,带来眩晕效果,Increases stun  effect
-jinglingwang2normal1_crown,强力恢复生命值,Massive Recovery
-jinglingwang2normal1_luwing,提高速度,Increase Speed
-jinglingwang2normal1_ldwing,提高速度,Increase Speed
-jinglingwang2normal1_ruwing,提供护盾效果,Provides a shield effect
-jinglingwang2normal1_rdwing,提供护盾效果,Provides a shield effect
-huapo2awakennormal1_flower,提升技能能力,Increases ability effects
-huoniao4awakennormal1_ltail,羽毛是灵魂,Feather is the soul
-huoniao4awakennormal1_mtail,羽毛是灵魂,Feather is the soul
-huoniao4awakennormal1_rtail,羽毛是灵魂,Feather is the soul
-huoniao4awakennormal1_crown,这是火鸟的骄傲,This is the pride of the firebird
-amute3awakennormal1_lian,弱点,Weakness
-amute3awakennormal1_mianju,保护弱点,Protect Weakness
-anpusha5awakennormal1_heart,添加减益效果,Adds a debuff effect
-anpusha5awakennormal1_lwing,带来眩晕效果,Increases stun  effect
-anpusha5awakennormal1_rwing,带来眩晕效果,Increases stun  effect
-dujiaoshou1awakennormal1_horn,提升技能能力,Increases ability effects
-dujiaoshou1awakennormal1_lwing,提供重生效果,Increases revive effect
-dujiaoshou1awakennormal1_rwing,提供重生效果,Increases revive effect
-landuo2normal1_ring,提高智力,Increase Intelligence
-landuo2normal1_lwing,提高智力,Increase Intelligence
-landuo2normal1_rwing,提高智力,Increase Intelligence
-landuo2normal1_bubble,带来眩晕效果,Increases stun  effect
-baonu4normal1_armet,带来眩晕效果,Increases stun  effect
-baonu4normal1_lbone1,提高力量,Increase Strength
-baonu4normal1_lbone2,提高力量,Increase Strength
-baonu4normal1_lbone3,提高力量,Increase Strength
-baonu4normal1_lbone4,提高力量,Increase Strength
-baonu4normal1_rbone1,提高力量,Increase Strength
-baonu4normal1_rbone2,提高力量,Increase Strength
-baonu4normal1_rbone3,提高力量,Increase Strength
-baonu4normal1_rbone4,提高力量,Increase Strength
-yafogemeng5normal1_head,强力恢复生命值,Massive Recovery
-yafogemeng5normal1_aura,提供护盾效果,Provides a shield effect
-yafogemeng5normal1_larm,强力恢复生命值,Massive Recovery
-yafogemeng5normal1_rarm,强力恢复生命值,Massive Recovery
-yafogemeng5normal1_lwing,强力恢复生命值,Massive Recovery
-yafogemeng5normal1_rwing,强力恢复生命值,Massive Recovery
+weitianshi1hide_aura,根据图形提示找到弱点,Find this shape on Fallen Angel.
+weitianshi1hide_lwing,根据图形提示找到弱点,Find this shape on Fallen Angel.
+weitianshi1hide_rwing,根据图形提示找到弱点,Find this shape on Fallen Angel.
+nvyao1hide_mask,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao1hide_head,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao1hide_lsoul,根据图形提示找到弱点,Find this shape on Banshee.
+nvyao1hide_rsoul,根据图形提示找到弱点,Find this shape on Banshee.
+luoxinfu1hide_leg1,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+luoxinfu1hide_leg2,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+luoxinfu1hide_leg3,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+luoxinfu1hide_leg4,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+luoxinfu1hide_leg5,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+luoxinfu1hide_leg6,疯狂的蜘蛛爪子…,Spider Claws moving wildly!
+piying1hide_lbody,根据图形提示找到弱点,Where is his secret?
+piying1hide_rbody,根据图形提示找到弱点,Where is his secret?
+piying1hide_head,根据图形提示找到弱点,Where is his secret?
+sheshou1hide_weapon,根据图形提示找到弱点,Find her weapon!
+sheshou1hide_head,根据图形提示找到弱点,Find this secret!
+yifanmumian1hide_pendant,一反木棉身上的秘密藏在哪呢？,What's the secret on Ittan Momen？
+yifanmumian1hide_larm,根据图形提示找到弱点,Where is her secret!?
+yifanmumian1hide_rarm,根据图形提示找到弱点,Where is her secret!?
+longnv1hide_head,根据图形提示找到弱点,Find her secret from this shape.
+longnv1hide_lingyin1,龙女的灵力隐藏在哪里？,Where could be the secret of her?
+longnv1hide_lingyin2,龙女的灵力隐藏在哪里？,Where could be the secret of her?
+jinglingwang2hide_crown,精灵王的秘密遍布周身,His weakpoint could be anywhere!
+jinglingwang2hide_luwing,根据图形提示找到弱点,Find this shape on Prince Elve.
+jinglingwang2hide_ldwing,精灵王的秘密遍布周身,His weakpoint could be anywhere!
+jinglingwang2hide_ruwing,根据图形提示找到弱点,Find this shape on Prince Elve.
+jinglingwang2hide_rdwing,精灵王的秘密遍布周身,His weakpoint could be anywhere!
+huapo2awakenhide_flower,花魄四周好像存在着某种神秘的力量,Her secret power hovers around her!
+huoniao4awakenhide_ltail,根据图形提示找到弱点,Find her secret from this shape.
+huoniao4awakenhide_mtail,根据图形提示找到弱点,Find her secret from this shape.
+huoniao4awakenhide_rtail,根据图形提示找到弱点,Find her secret from this shape.
+huoniao4awakenhide_crown,火鸟的秘密又在哪里？,Where could be the Real secret!?
+amute3awakenhide_lian,根据图形提示找到弱点,Find Amute's secret from this shape!
+amute3awakenhide_mianju,根据图形提示找到弱点,Find Amute's secret from this shape!
+anpusha5awakenhide_heart,根据图形提示找到弱点,Find her secret from this shape.
+anpusha5awakenhide_lwing,根据图形提示找到弱点,Find her secret from this shape.
+anpusha5awakenhide_rwing,根据图形提示找到弱点,Find her secret from this shape.
+dujiaoshou1awakenhide_horn,是什么让独角兽散发着神秘的光芒？,Where is this sparkling secret!?
+dujiaoshou1awakenhide_lwing,根据图形提示找到弱点,Find her secret from this shape.
+dujiaoshou1awakenhide_rwing,根据图形提示找到弱点,Find her secret from this shape.
+landuo2hide_ring,根据图形提示找到弱点,Find his secret according to this shape.
+landuo2hide_lwing,根据图形提示找到弱点,Find his secret according to this shape.
+landuo2hide_rwing,根据图形提示找到弱点,Find his secret according to this shape.
+landuo2hide_bubble,好多泡泡呀，是可爱亦或是危险？,These bubbles looks cute…. but dangerous too.
+baonu4hide_armet,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_lbone1,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_lbone2,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_lbone3,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_lbone4,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_rbone1,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_rbone2,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_rbone3,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+baonu4hide_rbone4,到处都是骨头，弱点在哪呢？,"Bones everywhere, where are the secrets!?"
+yafogemeng5hide_head,一个头？两个头？,One Head? Two Heads?
+yafogemeng5hide_aura,光！神秘而邪恶的光！,"Light, evil and secret light!"
+yafogemeng5hide_larm,根据图形提示找到弱点,Find the secret accordng to the shape!
+yafogemeng5hide_rarm,根据图形提示找到弱点,Find the secret accordng to the shape!
+yafogemeng5hide_lwing,根据图形提示找到弱点,Find the secret accordng to the shape!
+yafogemeng5hide_rwing,根据图形提示找到弱点,Find the secret accordng to the shape!
+weitianshi1normal1_aura,伪天使真正的弱点,Attack this real weakpoint!
+weitianshi1normal1_lwing,舞动的左翅！犀利的法攻！,Left wing increases her Magical Power!
+weitianshi1normal1_rwing,舞动的右翅！犀利的法攻！,Right wing increases her Magical Power!
+nvyao1normal1_mask,女妖面罩下是怎样的面庞？,What could be hiding under this Mask?
+nvyao1normal1_head,女妖真正的弱点,Attack this real weakpoint!
+nvyao1normal1_lsoul,双魂器的存在，保证了女妖的永生,"When both soul container exist, Banshee shall never die."
+nvyao1normal1_rsoul,双魂器的存在，保证了女妖的永生,"When both soul container exist, Banshee shall never die."
+luoxinfu1normal1_leg1,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+luoxinfu1normal1_leg2,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+luoxinfu1normal1_leg3,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+luoxinfu1normal1_leg4,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+luoxinfu1normal1_leg5,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+luoxinfu1normal1_leg6,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
+piying1normal1_lbody,右半身保护皮影免受法术攻击的侵袭,Right Shadow can immune Shadow Puppet from all magical attack.
+piying1normal1_rbody,左半身保护皮影免受物理攻击的侵袭,Left Shadow can immune Shadow Puppet from all physical attack.
+piying1normal1_head,皮影真正的弱点,This is a real weakpoint!
+sheshou1normal1_weapon,弓箭是射手高物理攻击的保证,The bow guarantees her high physical attack!
+sheshou1normal1_head,射手的软肋在头部,This is a real weakpoint!
+yifanmumian1normal1_pendant,吊坠为一反木棉提供强大的护盾效果,The Pendant can protect her!
+yifanmumian1normal1_larm,大手的存在，大幅提高了她的法术攻击,Her hands increases her Magical Power!
+yifanmumian1normal1_rarm,大手的存在，大幅提高了她的法术攻击,Her hands increases her Magical Power!
+longnv1normal1_head,龙女的要害,This is her Real weakpoint!
+longnv1normal1_lingyin1,灵印的法力会让我方眩晕,Sigil provide stun power to Dragon Girl.
+longnv1normal1_lingyin2,灵印的法力会让我方眩晕,Sigil provide stun power to Dragon Girl.
+jinglingwang2normal1_crown,精灵王回复效果的能源,This is where he heal himself!
+jinglingwang2normal1_luwing,左上翅膀让精灵王拥有更快的攻击速度,This increases his speed!
+jinglingwang2normal1_ldwing,左下翅膀为精灵王提供强大的护盾,This protects himself!
+jinglingwang2normal1_ruwing,右上翅膀让精灵王拥有更快的攻击速度,This increases his speed!
+jinglingwang2normal1_rdwing,右下翅膀为精灵王提供强大的护盾,This protects himself!
+huapo2awakennormal1_flower,花瓣在源源不断向花魄输送着魔力,These petals give her more magial power!
+huoniao4awakennormal1_ltail,羽毛是灵魂,Soul from the feather!
+huoniao4awakennormal1_mtail,羽毛是灵魂,Soul from the feather!
+huoniao4awakennormal1_rtail,羽毛是灵魂,Soul from the feather!
+huoniao4awakennormal1_crown,不仅提升火鸟的攻击，更为火鸟提供强大的护盾！,"Not only increases Firebird attack, but also provide a powerful shield."
+amute3awakennormal1_lian,让攻击打的更猛烈些吧！,Attack this Real Weakpoint!
+amute3awakennormal1_mianju,面具保护着鳄鱼判官的真正弱点,This mask seems to protect another secret!
+anpusha5awakennormal1_heart,没有心的安普莎将失去添加减益效果的能力,Her heart provide power to debuff!
+anpusha5awakennormal1_lwing,打掉她的翅膀！让她失去眩晕我方的能力！,Her wings could stun her enemies!
+anpusha5awakennormal1_rwing,打掉她的翅膀！让她失去眩晕我方的能力！,Her wings could stun her enemies!
+dujiaoshou1awakennormal1_horn,让光芒消失！削弱独角兽的能力！,Destroy and take away her power!
+dujiaoshou1awakennormal1_lwing,翅膀让独角兽能够永生,Her wings provide her power to live forever!
+dujiaoshou1awakennormal1_rwing,翅膀让独角兽能够永生,Her wings provide her power to live forever!
+landuo2normal1_ring,光环的能量是玛蒙高法术攻击的支撑,The Aura provides massive magical attack power!
+landuo2normal1_lwing,坚韧的翅膀是增强了法术攻击,The wings provide magical power too!
+landuo2normal1_rwing,坚韧的翅膀是增强了法术攻击,The wings provide magical power too!
+landuo2normal1_bubble,神秘的泡泡会使我方怪物迷失（眩晕）,The bubbles can stun its enemies!
+baonu4normal1_armet,头盔会让我方宠物头晕目眩,The Helmet can stun its enemies!
+baonu4normal1_lbone1,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_lbone2,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_lbone3,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_lbone4,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_rbone1,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_rbone2,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_rbone3,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+baonu4normal1_rbone4,盘根交错的骨节是他强大物理攻击的保证,These provides high physical attack power!
+yafogemeng5normal1_head,是强大恢复生命能力的保证,This can massively heal himself.
+yafogemeng5normal1_aura,光环保护亚弗戈蒙免受法术伤害的侵袭,The Aura can immune Archangel from all magical attack.
+yafogemeng5normal1_larm,是强大恢复生命能力的保证,This can massively heal himself.
+yafogemeng5normal1_rarm,是强大恢复生命能力的保证,This can massively heal himself.
+yafogemeng5normal1_lwing,是强大恢复生命能力的保证,This can massively heal himself.
+yafogemeng5normal1_rwing,是强大恢复生命能力的保证,This can massively heal himself.
 speech_blt_71_1,咳咳咳……,Ughhh... 
 speech_blt_71_2,呼……小狐狸他醒了，他终于醒了！,"Hey, Little Fox, he woke up! He finally woke up!"
 speech_blt_71_3,你终于醒了。,You've finally awoken.
@@ -2296,3 +2178,6 @@ speech_blt_88_3end_1,咳咳……这个怪物是丽莎召唤出来的吗！,Ughh
 speech_blt_88_3end_2,丽莎，你这是怎么回事，啊九尾你快看，丽莎好像不对劲。,"Lisa, what's going on? Nine-tails, come quickly! Something's wrong with Lisa!"
 speech_blt_88_3end_3,别过去，她身上缠绕着十分可怕的力量，被碰到我们都会粉碎！,Don't move. Lisa's body is wrapped in a terrible force. Touch her and we will all be destroyed!
 speech_blt_88_3end_4,……献上知性的亚弗戈蒙之力，回应我的祈祷吧，存在于所有未来中的幻象，将于此间成型……降临于人世吧，幻界大图书馆！,"An offering for the power of Aforgomon, answer my prayers. The existance of all future visions will take shape here... It's coming to the world, the magic world's Great Library!"
+bingyan3normal_head,普通受击点,This is not a weakpoint.
+bingyan3normal_larm,普通受击点,This is not a weakpoint.
+bingyan3normal_rarm,普通受击点,This is not a weakpoint.

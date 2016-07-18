@@ -2270,6 +2270,142 @@ public final class Const {
     // @@protoc_insertion_point(enum_scope:equipQuality)
   }
 
+  /**
+   * Protobuf enum {@code mailState}
+   *
+   * <pre>
+   * 邮件状态
+   * </pre>
+   */
+  public enum mailState
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>UNREAD = 1;</code>
+     *
+     * <pre>
+     * 未读
+     * </pre>
+     */
+    UNREAD(0, 1),
+    /**
+     * <code>READ = 2;</code>
+     *
+     * <pre>
+     * 已读
+     * </pre>
+     */
+    READ(1, 2),
+    /**
+     * <code>RECEIVE = 3;</code>
+     *
+     * <pre>
+     * 已领取奖励
+     * </pre>
+     */
+    RECEIVE(2, 3),
+    /**
+     * <code>OVERFLOW = 4;</code>
+     *
+     * <pre>
+     * 已溢出删除
+     * </pre>
+     */
+    OVERFLOW(3, 4),
+    ;
+
+    /**
+     * <code>UNREAD = 1;</code>
+     *
+     * <pre>
+     * 未读
+     * </pre>
+     */
+    public static final int UNREAD_VALUE = 1;
+    /**
+     * <code>READ = 2;</code>
+     *
+     * <pre>
+     * 已读
+     * </pre>
+     */
+    public static final int READ_VALUE = 2;
+    /**
+     * <code>RECEIVE = 3;</code>
+     *
+     * <pre>
+     * 已领取奖励
+     * </pre>
+     */
+    public static final int RECEIVE_VALUE = 3;
+    /**
+     * <code>OVERFLOW = 4;</code>
+     *
+     * <pre>
+     * 已溢出删除
+     * </pre>
+     */
+    public static final int OVERFLOW_VALUE = 4;
+
+
+    public final int getNumber() { return value; }
+
+    public static mailState valueOf(int value) {
+      switch (value) {
+        case 1: return UNREAD;
+        case 2: return READ;
+        case 3: return RECEIVE;
+        case 4: return OVERFLOW;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<mailState>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<mailState>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<mailState>() {
+            public mailState findValueByNumber(int number) {
+              return mailState.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(14);
+    }
+
+    private static final mailState[] VALUES = values();
+
+    public static mailState valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private mailState(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:mailState)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2315,7 +2451,9 @@ public final class Const {
       "RD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020\n" +
       "*O\n\014equipQuality\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022\010" +
       "\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED\020" +
-      "\006B\030\n\026com.hawk.game.protocol"
+      "\006*<\n\tmailState\022\n\n\006UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007" +
+      "RECEIVE\020\003\022\014\n\010OVERFLOW\020\004B\030\n\026com.hawk.game" +
+      ".protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

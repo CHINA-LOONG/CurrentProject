@@ -75,10 +75,23 @@ public class UIVitalChangeView : MonoBehaviour
         }
         else if (
             args.vitalType == (int)VitalType.Vital_Type_FirstSpell ||
-            args.vitalType == (int)VitalType.Vital_Type_Absorbed
+            args.vitalType == (int)VitalType.Vital_Type_Absorbed ||
+            args.vitalType == (int)VitalType.Vital_Type_Stun
             )
         {
-            string textID = (args.vitalType == (int)VitalType.Vital_Type_FirstSpell) ? "spell_first_spell" : "spell_shield";
+            string textID;
+            if(args.vitalType == (int)VitalType.Vital_Type_FirstSpell)
+            {
+                textID = "spell_first_spell";
+            }
+            else if (args.vitalType == (int)VitalType.Vital_Type_Absorbed)
+            {
+                textID = "spell_shield";
+            }
+            else 
+            {
+                textID = "spell_stun";
+            }
             vitalBackImage.gameObject.SetActive(false);
             vitalWnd.gameObject.SetActive(true);
             vitalWnd.text = string.Empty;

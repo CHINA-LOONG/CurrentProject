@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public enum SoundType
@@ -17,7 +18,7 @@ public enum TriggerType
 }
 
 [ExecuteInEditMode]
-public class PlaySound : MonoBehaviour
+public class PlaySound : MonoBehaviour,IPointerClickHandler
 {
     [HideInInspector][SerializeField]SoundType type = SoundType.Click;
 
@@ -40,5 +41,12 @@ public class PlaySound : MonoBehaviour
     {
         get { return sound2; }
         set { sound2 = value; }
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (type==SoundType.Click&&!string.IsNullOrEmpty(sound1))
+        {
+            AudioSystemMgr.Instance.PlaySoundByID(sound1);
+        }
     }
 }

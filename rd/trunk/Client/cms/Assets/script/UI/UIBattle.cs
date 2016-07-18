@@ -183,6 +183,14 @@ public class UIBattle : UIBase
         //    gameObject.BroadcastMessage("OnAnimationFinish", SendMessageOptions.DontRequireReceiver);
         //}
 		gameObject.SetActive (ishow);
+		if (ishow) 
+		{
+			InitMirrorDray();
+		}
+		else 
+		{
+			DestroyMirrorDray();
+		}
 	}
 
     void Update()
@@ -233,19 +241,7 @@ public class UIBattle : UIBase
 	{
 		if (null != m_MirrorImage)
 		{
-			m_MirrorDray = m_MirrorImage.gameObject.AddComponent<MirrorDray>();
-
-			GameObject uigo = ResourceMgr.Instance.LoadAsset("MirrorUI");
-			uigo.transform.SetParent(mirrorUI.transform,false);
-			uigo.transform.localPosition = Vector3.zero;
-
-			var img = mirrorUI.GetComponent<Image>();
-			if(null != img)
-			{
-				img.enabled = false;
-			}
-
-			m_MirrorDray.Init(uigo);
+			InitMirrorDray();
 			//Debug.LogError("liwsTest: UIBattle is Load And MirrorDray component added");
 		}
 		else
@@ -263,6 +259,38 @@ public class UIBattle : UIBase
 		//m_MirrorImage.gameObject.SetActive(false);
 
 		//
+	}
+
+	void InitMirrorDray()
+	{
+		DestroyMirrorDray ();
+		if (null == m_MirrorDray) 
+		{
+			m_MirrorDray = m_MirrorImage.gameObject.AddComponent<MirrorDray> ();
+		}
+		
+		GameObject uigo = ResourceMgr.Instance.LoadAsset("MirrorUI");
+		uigo.name = "MirrorUI";
+		uigo.transform.SetParent(mirrorUI.transform,false);
+		uigo.transform.localPosition = Vector3.zero;
+		
+		var img = mirrorUI.GetComponent<Image>();
+		if(null != img)
+		{
+			img.enabled = false;
+		}
+		
+		m_MirrorDray.Init(uigo);
+	}
+
+	void DestroyMirrorDray()
+	{		
+		var v = mirrorUI.GetComponentsInChildren<Animator> (true);
+		if (v != null && v.Length > 0)
+		{
+			Destroy(v[0]);
+			Destroy(v[0].gameObject);
+		}
 	}
 
 	void InitFindWpInfoGroup()

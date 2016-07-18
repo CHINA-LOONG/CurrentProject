@@ -8,7 +8,8 @@ enum errorMask
 	MONSTER_ERROR              = 0x00030000;
 	ITEM_ERROR                 = 0x00040000;
 	QUEST_ERROR                = 0x00050000;
-	INSTANCE_ERROR             = 0X00060000;
+	INSTANCE_ERROR             = 0x00060000;
+	MAIL_ERROR                 = 0x00070000;
 }
 
 enum error
@@ -56,7 +57,7 @@ enum monsterError
 	// 进阶等级不足
 	STAGE_LEVEL_NOT_ENOUGH     = 0x00030006;
 	// 进阶材料不足
-	STAGE_CONSUME              = 0X00030007;              
+	STAGE_CONSUME              = 0X00030007;
 }
 
 enum itemError
@@ -109,4 +110,16 @@ enum instanceError
 	INSTANCE_LEVEL             = 0x0060002;
 	INSTANCE_COUNT             = 0x0060003;
 	INSTANCE_FATIGUE           = 0x0060004;
+}
+
+enum mailError
+{
+	// 邮件不存在
+	MAIL_NOT_EXIST             = 0x0070001;
+	// 没有邮件
+	MAIL_NONE                  = 0x0070002;
+	// 金币已满收取失败
+	MAIL_COIN_FULL             = 0x0070003;
+	// 钻石已满收取失败
+	MAIL_GOLD_FULL             = 0x0070004;
 }

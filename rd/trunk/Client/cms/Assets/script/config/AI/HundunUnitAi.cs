@@ -2,14 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class HundunUnitAi : MonoBehaviour {
+public class HundunUnitAi : BossAi {
 
 	void Start () 
 	{
 		
 	}
 	
-	public	 BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit HundunUnit)
+	public	 override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit HundunUnit)
 	{
 		BattleUnitAi.AiAttackResult attackResult = new BattleUnitAi.AiAttackResult ();
 		

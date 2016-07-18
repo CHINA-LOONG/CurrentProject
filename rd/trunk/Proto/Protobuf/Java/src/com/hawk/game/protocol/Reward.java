@@ -34,7 +34,7 @@ public final class Reward {
      * <code>optional int64 id = 2;</code>
      *
      * <pre>
-     * 唯一Id
+     * 数据库id
      * </pre>
      */
     boolean hasId();
@@ -42,7 +42,7 @@ public final class Reward {
      * <code>optional int64 id = 2;</code>
      *
      * <pre>
-     * 唯一Id
+     * 数据库id
      * </pre>
      */
     long getId();
@@ -52,7 +52,7 @@ public final class Reward {
      * <code>required string itemId = 3;</code>
      *
      * <pre>
-     * 物品编号
+     * 配置id
      * </pre>
      */
     boolean hasItemId();
@@ -60,7 +60,7 @@ public final class Reward {
      * <code>required string itemId = 3;</code>
      *
      * <pre>
-     * 物品编号
+     * 配置id
      * </pre>
      */
     java.lang.String getItemId();
@@ -68,7 +68,7 @@ public final class Reward {
      * <code>required string itemId = 3;</code>
      *
      * <pre>
-     * 物品编号
+     * 配置id
      * </pre>
      */
     com.google.protobuf.ByteString
@@ -79,7 +79,7 @@ public final class Reward {
      * <code>optional int32 count = 4;</code>
      *
      * <pre>
-     * 实体对象直接移除对象
+     * 数量
      * </pre>
      */
     boolean hasCount();
@@ -87,7 +87,7 @@ public final class Reward {
      * <code>optional int32 count = 4;</code>
      *
      * <pre>
-     * 实体对象直接移除对象
+     * 数量
      * </pre>
      */
     int getCount();
@@ -342,7 +342,7 @@ public final class Reward {
      * <code>optional int64 id = 2;</code>
      *
      * <pre>
-     * 唯一Id
+     * 数据库id
      * </pre>
      */
     public boolean hasId() {
@@ -352,7 +352,7 @@ public final class Reward {
      * <code>optional int64 id = 2;</code>
      *
      * <pre>
-     * 唯一Id
+     * 数据库id
      * </pre>
      */
     public long getId() {
@@ -366,7 +366,7 @@ public final class Reward {
      * <code>required string itemId = 3;</code>
      *
      * <pre>
-     * 物品编号
+     * 配置id
      * </pre>
      */
     public boolean hasItemId() {
@@ -376,7 +376,7 @@ public final class Reward {
      * <code>required string itemId = 3;</code>
      *
      * <pre>
-     * 物品编号
+     * 配置id
      * </pre>
      */
     public java.lang.String getItemId() {
@@ -397,7 +397,7 @@ public final class Reward {
      * <code>required string itemId = 3;</code>
      *
      * <pre>
-     * 物品编号
+     * 配置id
      * </pre>
      */
     public com.google.protobuf.ByteString
@@ -421,7 +421,7 @@ public final class Reward {
      * <code>optional int32 count = 4;</code>
      *
      * <pre>
-     * 实体对象直接移除对象
+     * 数量
      * </pre>
      */
     public boolean hasCount() {
@@ -431,7 +431,7 @@ public final class Reward {
      * <code>optional int32 count = 4;</code>
      *
      * <pre>
-     * 实体对象直接移除对象
+     * 数量
      * </pre>
      */
     public int getCount() {
@@ -995,7 +995,7 @@ public final class Reward {
        * <code>optional int64 id = 2;</code>
        *
        * <pre>
-       * 唯一Id
+       * 数据库id
        * </pre>
        */
       public boolean hasId() {
@@ -1005,7 +1005,7 @@ public final class Reward {
        * <code>optional int64 id = 2;</code>
        *
        * <pre>
-       * 唯一Id
+       * 数据库id
        * </pre>
        */
       public long getId() {
@@ -1015,7 +1015,7 @@ public final class Reward {
        * <code>optional int64 id = 2;</code>
        *
        * <pre>
-       * 唯一Id
+       * 数据库id
        * </pre>
        */
       public Builder setId(long value) {
@@ -1028,7 +1028,7 @@ public final class Reward {
        * <code>optional int64 id = 2;</code>
        *
        * <pre>
-       * 唯一Id
+       * 数据库id
        * </pre>
        */
       public Builder clearId() {
@@ -1044,7 +1044,7 @@ public final class Reward {
        * <code>required string itemId = 3;</code>
        *
        * <pre>
-       * 物品编号
+       * 配置id
        * </pre>
        */
       public boolean hasItemId() {
@@ -1054,7 +1054,7 @@ public final class Reward {
        * <code>required string itemId = 3;</code>
        *
        * <pre>
-       * 物品编号
+       * 配置id
        * </pre>
        */
       public java.lang.String getItemId() {
@@ -1072,7 +1072,7 @@ public final class Reward {
        * <code>required string itemId = 3;</code>
        *
        * <pre>
-       * 物品编号
+       * 配置id
        * </pre>
        */
       public com.google.protobuf.ByteString
@@ -1092,7 +1092,7 @@ public final class Reward {
        * <code>required string itemId = 3;</code>
        *
        * <pre>
-       * 物品编号
+       * 配置id
        * </pre>
        */
       public Builder setItemId(
@@ -1109,7 +1109,7 @@ public final class Reward {
        * <code>required string itemId = 3;</code>
        *
        * <pre>
-       * 物品编号
+       * 配置id
        * </pre>
        */
       public Builder clearItemId() {
@@ -1122,7 +1122,7 @@ public final class Reward {
        * <code>required string itemId = 3;</code>
        *
        * <pre>
-       * 物品编号
+       * 配置id
        * </pre>
        */
       public Builder setItemIdBytes(
@@ -1142,7 +1142,7 @@ public final class Reward {
        * <code>optional int32 count = 4;</code>
        *
        * <pre>
-       * 实体对象直接移除对象
+       * 数量
        * </pre>
        */
       public boolean hasCount() {
@@ -1152,7 +1152,7 @@ public final class Reward {
        * <code>optional int32 count = 4;</code>
        *
        * <pre>
-       * 实体对象直接移除对象
+       * 数量
        * </pre>
        */
       public int getCount() {
@@ -1162,7 +1162,7 @@ public final class Reward {
        * <code>optional int32 count = 4;</code>
        *
        * <pre>
-       * 实体对象直接移除对象
+       * 数量
        * </pre>
        */
       public Builder setCount(int value) {
@@ -1175,7 +1175,7 @@ public final class Reward {
        * <code>optional int32 count = 4;</code>
        *
        * <pre>
-       * 实体对象直接移除对象
+       * 数量
        * </pre>
        */
       public Builder clearCount() {

@@ -7,11 +7,11 @@ public static class NormalScript
     //默认对局胜利失败
     public static BattleRetCode normalValiVic()
     {
-        if (BattleController.Instance.BattleGroup.IsEnemyAllDead())
-            return BattleRetCode.Success;
-
         if (BattleController.Instance.BattleGroup.IsPlayerAllDead())
             return BattleRetCode.Failed;
+
+        if (BattleController.Instance.BattleGroup.IsEnemyAllDead())
+            return BattleRetCode.Success;
 
         return BattleRetCode.Normal;
     }

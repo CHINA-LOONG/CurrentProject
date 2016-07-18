@@ -125,7 +125,7 @@ public class BattleObject : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void SetTargetRotate(Quaternion rot, bool reset)
     {
-        if (type == BattleObjectType.Scene)
+        if (type == BattleObjectType.Scene || unit.stun > 0)
             return;
 
         if (reset == false)

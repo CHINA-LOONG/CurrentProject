@@ -51,6 +51,10 @@ public class WeakPointData
 	{
 		get
 		{
+            if (string.IsNullOrEmpty(desc))
+            {
+                return "";
+            }
 			return StaticDataMgr.Instance.GetTextByID(desc);
 		}
 	}

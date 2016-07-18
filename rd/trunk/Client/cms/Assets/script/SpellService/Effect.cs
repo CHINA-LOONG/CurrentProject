@@ -71,6 +71,7 @@ public class Effect
     public Buff ownedBuff;
     public Spell ownedSpell;
     public bool noDamageResponse = false;
+    public bool absoluteHit;
     
     //---------------------------------------------------------------------------------------------
     //methods
@@ -85,6 +86,7 @@ public class Effect
         protoEffect.linkEffect = pt.linkEffect;
         protoEffect.chance = pt.chance;
 
+        absoluteHit = false;
         spellService = owner;
     }
     //---------------------------------------------------------------------------------------------
@@ -182,6 +184,9 @@ public class Effect
     //---------------------------------------------------------------------------------------------
     public virtual int CalculateHit()
     {
+        if (absoluteHit == true)
+            return SpellConst.hitSuccess;
+
         GameUnit caster = spellService.GetUnit(casterID);
         GameUnit target = spellService.GetUnit(targetID);
         //max(N+L(lv1-lv2))+总附加命中率,60%

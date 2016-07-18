@@ -10,11 +10,11 @@ message RewardItem
 {
 	// 类型
 	required int32 type = 1;
-	// 唯一Id
+	// 数据库id
 	optional int64 id = 2;
-	// 物品编号
+	// 配置id
 	required string itemId = 3;
-	// 实体对象直接移除对象
+	// 数量
 	optional int32 count = 4;
 	
 	// 是装备的附加属性

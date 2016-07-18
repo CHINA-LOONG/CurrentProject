@@ -44,7 +44,8 @@ spell_hit_miss,未命中,Miss
 spell_hit_immune,免疫,Immune
 spell_hit_interrupt,被打断,Interrupt
 spell_shield,吸收,absorbed
-spell_first_spell,先置技能,go go go
+spell_first_spell,这bug真无聊,go go go
+spell_stun,眩晕,stun
 xl,薛龙,Loong
 quest_title,任务,QUEST
 quest_juqingrenwu,剧情任务,

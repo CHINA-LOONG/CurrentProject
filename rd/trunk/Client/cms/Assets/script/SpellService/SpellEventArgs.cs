@@ -11,7 +11,7 @@ public class SpellFireArgs : EventArgs
     public int casterID;
     public int targetID;
     public float aniTime;
-    public string firstSpell;
+    public bool firstSpell;
     public int category;
     //public int castResult;
 }

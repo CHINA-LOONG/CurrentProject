@@ -45,7 +45,7 @@ enum itemType
 	// 空属性
 	NONE_ITEM = 0;
 	// 玩家属性
-	PLAYER_ATTR = 1;	
+	PLAYER_ATTR = 1;
 	// 角色属性
 	MONSTER_ATTR = 2;
 	// 道具
@@ -222,4 +222,17 @@ enum equipQuality
 	ORANGE = 5;
 	// 红
 	RED = 6;
+}
+
+// 邮件状态
+enum mailState
+{
+	// 未读
+	UNREAD = 1;
+	// 已读
+	READ = 2;
+	// 已领取奖励
+	RECEIVE = 3;
+	// 已溢出删除
+	OVERFLOW = 4;
 }

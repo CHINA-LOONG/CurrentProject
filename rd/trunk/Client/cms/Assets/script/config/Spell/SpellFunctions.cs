@@ -15,25 +15,22 @@ public class SpellFunctions
 
     public static float GetPropertyDamageRatio(int casterProp, int targetProp)
     {
+        //propertyGold->guang propertyEarth->an
         float damageRatio = 1.0f;
         if (casterProp == SpellConst.propertyGold)
-        {
-            if (targetProp == SpellConst.propertyWood)
-            {
-                return SpellConst.propertyEnhance;
-            }
-            else if (targetProp == SpellConst.propertyFire)
-            {
-                return SpellConst.propertyWeaken;
-            }
-        }
-        else if (casterProp == SpellConst.propertyWood)
         {
             if (targetProp == SpellConst.propertyEarth)
             {
                 return SpellConst.propertyEnhance;
             }
-            else if (targetProp == SpellConst.propertyGold)
+        }
+        else if (casterProp == SpellConst.propertyWood)
+        {
+            if (targetProp == SpellConst.propertyWater)
+            {
+                return SpellConst.propertyEnhance;
+            }
+            else if (targetProp == SpellConst.propertyFire)
             {
                 return SpellConst.propertyWeaken;
             }
@@ -44,14 +41,14 @@ public class SpellFunctions
             {
                 return SpellConst.propertyEnhance;
             }
-            else if (targetProp == SpellConst.propertyEarth)
+            else if (targetProp == SpellConst.propertyWood)
             {
                 return SpellConst.propertyWeaken;
             }
         }
         else if (casterProp == SpellConst.propertyFire)
         {
-            if (targetProp == SpellConst.propertyGold)
+            if (targetProp == SpellConst.propertyWood)
             {
                 return SpellConst.propertyEnhance;
             }
@@ -62,13 +59,9 @@ public class SpellFunctions
         }
         else if (casterProp == SpellConst.propertyEarth)
         {
-            if (targetProp == SpellConst.propertyWater)
+            if (targetProp == SpellConst.propertyGold)
             {
                 return SpellConst.propertyEnhance;
-            }
-            else if (targetProp == SpellConst.propertyWood)
-            {
-                return SpellConst.propertyWeaken;
             }
         }
         return damageRatio;

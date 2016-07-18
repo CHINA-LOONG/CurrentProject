@@ -1,12 +1,12 @@
 ﻿#TEXT,TEXT,TEXT
 id,chinese,english
-miaoshu_bossamute01,面具下隐藏着弱点
-miaoshu_bossluoxinfu01,爪子十分锋利，但是看起来很易碎。
-miaoshu_bossluoxinfu02,爪子十分锋利，但是看起来很易碎。
-miaoshu_bossluoxinfu03,爪子十分锋利，但是看起来很易碎。
-miaoshu_bossluoxinfu04,爪子十分锋利，但是看起来很易碎。
-miaoshu_bossluoxinfu05,爪子十分锋利，但是看起来很易碎。
-miaoshu_bossluoxinfu06,爪子十分锋利，但是看起来很易碎。
+miaoshu_bossamute01,面具下隐藏着弱点,
+miaoshu_bossluoxinfu01,爪子十分锋利，但是看起来很易碎。,
+miaoshu_bossluoxinfu02,爪子十分锋利，但是看起来很易碎。,
+miaoshu_bossluoxinfu03,爪子十分锋利，但是看起来很易碎。,
+miaoshu_bossluoxinfu04,爪子十分锋利，但是看起来很易碎。,
+miaoshu_bossluoxinfu05,爪子十分锋利，但是看起来很易碎。,
+miaoshu_bossluoxinfu06,爪子十分锋利，但是看起来很易碎。,
 #文字Id,文字内容,文字内容
 speak_001,兔桑，兔桑，你干啥呐？,兔桑，兔桑，what are you doing now？
 speak_002,没干啥，你又要干啥？,Nothing？
@@ -27,13 +27,36 @@ miaoshu_ershu,我是耳鼠思密达,wo is Ear Mouse
 miaoshu_zhuyan,我是朱燕思密达,wo is Zhu Yan
 miaoshu_qingniao,我是青鸟思密达,wo is Qing Bird
 miaoshu_karong1,似乎被什么东西控制了,Seems to be controlled by something
-miaoshu_karong1,似乎被什么东西控制了
 miaoshu_karong2,脉动的韵文，释放出强大的魔力,"The pulsation of the verse, the release of powerful magic?"
-miaoshu_karong2,脉动的韵文，释放出强大的魔力
 miaoshu_karong4,外装甲看起来不那么结实,The armor looks not so strong
-miaoshu_karong4,外装甲看起来不那么结实
 miaoshu_karong5,外装甲看起来不那么结实,The armor looks not so strong
-miaoshu_karong5,外装甲看起来不那么结实
-miaoshu_meidushawp01,自认为美艳的美杜莎会对没有头发感到愤怒！
-miaoshu_meidushawp02,会对物理攻击进行压制
-miaoshu_meidushawp03,会对法术攻击进行压制
+miaoshu_meidushawp01,自认为美艳的美杜莎会对没有头发感到愤怒！,
+miaoshu_meidushawp02,会对物理攻击进行压制,
+miaoshu_meidushawp03,会对法术攻击进行压制,
+Lizardman,蜥蜴人,Lizardman
+Flower Spirit,花魄,Flower Spirit
+Pans,潘神,Pans
+Mandrake,曼陀罗,Mandrake
+Ammut,阿穆特,Ammut
+Phantom Frog,蛙鬼,Phantom Frog
+Kappa,河童,Kappa
+Water Tyke,龙宫童子,Water Tyke
+Werewolf,狼人,Werewolf
+Empusae,安普莎,Empusae
+Keres,凯瑞斯,Keres
+Nephila,络新妇,Nephila
+Momo,Momo,Momo
+Harpy,哈皮,Harpy
+Melody Bulb,Melody Bulb,Melody Bulb
+Medusa,美杜莎,Medusa
+Charon,卡戎,Charon
+Moon Forest - 1,月光森林 - 1,Moon Forest - 1
+Moon Forest - 2,月光森林 - 2,Moon Forest - 2
+Moon Forest - 4,月光森林 - 4,Moon Forest - 4
+Moon Forest - 7,月光森林 - 7,Moon Forest - 7
+Moon Forest - 8,月光森林 - 8,Moon Forest - 8
+Nether River - 2,冥河 - 2,Nether River - 2
+Nether River - 3,冥河 - 3,Nether River - 3
+Nether River - 4,冥河 - 4,Nether River - 4
+Nether River - 7,冥河 - 7,Nether River - 7
+Nether River - 8,冥河 - 8,Nether River - 8

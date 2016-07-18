@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 public class NetworkManager : MonoBehaviour
 {
+    public int GameServerPort = 9595;                      //测试Socket服务器端口
+    public string GameServerAdd = "127.0.0.1";              //本地Socket服务器地址
+
     private int count;
     private TimerInfo timer;
 	private static Queue<KeyValuePair<int, ProtocolMessage>> sEvents = new Queue<KeyValuePair<int, ProtocolMessage>>();

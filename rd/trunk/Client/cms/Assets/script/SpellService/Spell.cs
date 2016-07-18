@@ -69,7 +69,7 @@ public class Spell
         spellService = owner;
     }
 
-    public void Apply(float triggerTime, string wpID)
+    public void Apply(float triggerTime, string wpID, bool isFirstSpell)
     {
         //generate spell event
         SpellFireArgs args = new SpellFireArgs();
@@ -128,7 +128,8 @@ public class Spell
         }
 
         args.aniTime = spellLength;
-        args.firstSpell = (spellData.category == (int)SpellType.Spell_Type_Passive) ? spellData.firstSpell : null;
+        //args.firstSpell = (spellData.category == (int)SpellType.Spell_Type_Passive) ? spellData.firstSpell : null;
+        args.firstSpell = isFirstSpell;
         args.category = spellData.category;
         spellService.TriggerEvent(GameEventList.SpellFire, args);
     }

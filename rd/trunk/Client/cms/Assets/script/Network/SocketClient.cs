@@ -45,8 +45,7 @@ public class SocketClient : MonoBehaviour {
             switch (_event.Key) 
 			{
                 case NetActionType.Connect:
-					ConnectServer(Const.ServerType == Const.SERVERTYPE.REMOTE_SERVER_NORMAL ? Const.RemoteAddress : Const.LocalAddress, 
-                                  Const.ServerType == Const.SERVERTYPE.LOCAL_SERVER_TEST ? Const.TestSocketPort : Const.SocketPort);                 
+                    ConnectServer(GameApp.Instance.netManager.GameServerAdd, GameApp.Instance.netManager.GameServerPort);                 
 				break;
                 case NetActionType.Message: 
 					SessionSend( _event.Value );

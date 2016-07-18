@@ -454,7 +454,7 @@ public class BattleGroup
         for (int i = 0; i < enemyField.Count; ++i)
         {
             var bo = enemyField[i];
-            if (bo != null && bo.unit != null && bo.unit.State != UnitState.Dead)
+            if (bo != null && bo.unit != null && bo.unit.State != UnitState.Dead && bo.unit.isVisible)
             {
                 InsertFirstSpellUnit(hasFirstSpellList, bo.unit);
             }
@@ -463,7 +463,7 @@ public class BattleGroup
         for (int i = 0; i < playerField.Count; ++i)
         {
             var bo = playerField[i];
-            if (bo != null && bo.unit.State != UnitState.Dead)
+            if (bo != null && bo.unit.State != UnitState.Dead && bo.unit.isVisible)
             {
                 InsertFirstSpellUnit(hasFirstSpellList, bo.unit);
             }

@@ -28,8 +28,13 @@ public class BuffPrototype
     public float phyReduceInjury;//物理减伤护盾
     public float mgReduceInjury;//物理减伤护盾
 
-    public int phyShield;//物理吸收护盾
-    public int magicShield;//法术吸收护盾
+    public int shieldNum;//吸收护盾固定值
+    public float shieldRatio;//吸收护盾比例
+    public byte shieldBaseAttr;//吸收护盾依赖属性（力量 智力）
+
+    public float healthRatio;//体力
+    public float hitRatio;//命中率
+    public float criticalRatio;//暴击率
 
     //显示相关
     public string icon;
@@ -90,16 +95,20 @@ public class Buff
         buffProto.noDead = buffPt.noDead;
         buffProto.phyReduceInjury = buffPt.phyReduceInjury;
         buffProto.mgReduceInjury = buffPt.mgReduceInjury;
-        buffProto.phyShield = buffPt.phyShield;
-        buffProto.magicShield = buffPt.magicShield;
+        buffProto.shieldNum = buffPt.shieldNum;
+        buffProto.shieldRatio = buffPt.shieldRatio;
+        buffProto.shieldBaseAttr = buffPt.shieldBaseAttr;
         buffProto.deadResponse = buffPt.deadResponse;
         buffProto.damageResponse = buffPt.damageResponse;
         buffProto.responseCount = buffPt.responseCount;
+        buffProto.criticalRatio = buffPt.criticalRatio;
+        buffProto.hitRatio = buffPt.hitRatio;
+        buffProto.healthRatio = buffPt.healthRatio;
         isFinish = false;
 
+        phyShield = magicShield = 0;
         responseCount = buffPt.responseCount;
-        phyShield = buffPt.phyShield;
-        magicShield = buffPt.magicShield;
+
         if (string.IsNullOrEmpty(buffProto.damageResponse) == false)
         {
             string[] res = buffProto.damageResponse.Split(',');
@@ -130,7 +139,7 @@ public class Buff
         isFinish = false;
         applyTime = curTime;
         GameUnit target = spellService.GetUnit(targetID);
-        AddBuff(target.buffList);
+        AddBuff(target);
     }
     //---------------------------------------------------------------------------------------------
     public void Update(float curTime)
@@ -170,8 +179,19 @@ public class Buff
         isFinish = false;
     }
     //---------------------------------------------------------------------------------------------
-    void AddBuff(List<Buff> buffList)
+    void AddBuff(GameUnit target)
     {
+        if (target == null)
+            return;
+
+        List<Buff> buffList = target.buffList;
+        if (buffProto.category == (int)(BuffType.Buff_Type_Dot) || buffProto.category == (int)(BuffType.Buff_Type_Debuff))
+        {
+            SpellEffectArgs effectArgs = new SpellEffectArgs();
+            effectArgs.targetID = targetID;
+            spellService.TriggerEvent(GameEventList.BashHit, effectArgs);
+        }
+
         if (buffProto.category == (int)(BuffType.Buff_Type_Dot))
         {
             Buff firstDot = null;
@@ -211,6 +231,16 @@ public class Buff
                 )
         {
             ReplaceSameCategoryBuff(buffProto.category, ref buffList);
+            if (buffProto.category == (int)BuffType.Buff_Type_PhyShield)
+            {
+                int attr = (buffProto.shieldBaseAttr == 0) ? target.strength : target.intelligence;
+                phyShield = (int)(buffProto.shieldNum + buffProto.shieldRatio * attr);
+            }
+            else if (buffProto.category == (int)BuffType.Buff_Type_MgShield)
+            {
+                int attr = (buffProto.shieldBaseAttr == 0) ? target.strength : target.intelligence;
+                magicShield = (int)(buffProto.shieldNum + buffProto.shieldRatio * attr);
+            }
         }
         else
         {
@@ -240,10 +270,10 @@ public class Buff
     {
         foreach (Buff buff in buffList)
         {
-            if (buff.buffProto.category == category)
+            if (buff.buffProto.category == category && buff.isFinish == false)
             {
                 buff.Finish(applyTime, BuffFinisType.Buff_Finish_Replace);
-                buff.ModifyUnit(true, applyTime);
+                //buff.ModifyUnit(true, applyTime);
                 break;
             }
         }
@@ -251,9 +281,12 @@ public class Buff
     //---------------------------------------------------------------------------------------------
     public void Finish(float finishTime, BuffFinisType finishType = BuffFinisType.Buff_Finish_Expire)
     {
-        ModifyUnit(true, finishTime);
+        if (isFinish == true)
+            return;
+
         isFinish = true;
         this.finishType = finishType;
+        ModifyUnit(true, finishTime);
 
         SpellBuffArgs args = new SpellBuffArgs();
         args.triggerTime = finishTime;
@@ -287,6 +320,18 @@ public class Buff
             }
             else
             {
+                //trigger stun event
+                SpellVitalChangeArgs stunArgs = new SpellVitalChangeArgs();
+                stunArgs.vitalType = (int)VitalType.Vital_Type_Stun;
+                stunArgs.triggerTime = Time.time;
+                stunArgs.casterID = casterID;
+                stunArgs.targetID = targetID;
+                stunArgs.isCritical = false;
+                stunArgs.vitalChange = 0;
+                stunArgs.vitalCurrent = 0;
+                stunArgs.vitalMax = 0;
+                spellService.TriggerEvent(GameEventList.SpellLifeChange, stunArgs);
+
                 if (target.stun == 0)
                 {
                     SpellBuffArgs args = new SpellBuffArgs();
@@ -365,10 +410,18 @@ public class Buff
         //属性改变
         if (isRemove)
         {
+            target.hitRatio -= buffProto.hitRatio;
+            target.criticalRatio -= buffProto.criticalRatio;
             target.spellStrengthRatio -= buffProto.strengthRatio;
             target.spellIntelligenceRatio -= buffProto.intelligenceRatio;
             target.spellSpeedRatio -= buffProto.speedRatio;
             target.spellDefenseRatio -= buffProto.defenseRatio;
+            if (buffProto.healthRatio != 0.0f)
+            {
+                target.spellHealthRatio -= buffProto.healthRatio;
+                target.OnHealthChange(curTime);
+            }
+
             if (buffProto.category == (int)BuffType.Buff_Type_Defend)
             {
                 target.spellDefenseDamageRatio = 0.0f;
@@ -412,10 +465,18 @@ public class Buff
         }
         else
         {
+            target.hitRatio += buffProto.hitRatio;
+            target.criticalRatio += buffProto.criticalRatio;
             target.spellStrengthRatio += buffProto.strengthRatio;
             target.spellIntelligenceRatio += buffProto.intelligenceRatio;
             target.spellSpeedRatio += buffProto.speedRatio;
             target.spellDefenseRatio += buffProto.defenseRatio;
+            if (buffProto.healthRatio != 0.0f)
+            {
+                target.spellHealthRatio += buffProto.healthRatio;
+                target.OnHealthChange(curTime);
+            }
+
             if (buffProto.category == (int)BuffType.Buff_Type_Defend)
             {
                 target.spellDefenseDamageRatio = buffProto.defenseDamageRatio;
@@ -430,11 +491,25 @@ public class Buff
             }
             else if (buffProto.category == (int)BuffType.Buff_Type_PhyShield)
             {
-                target.spellPhyShield = buffProto.phyShield;
+                target.spellPhyShield = phyShield;
+                //trigger shield ui event
+                SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+                args.vitalType = (int)VitalType.Vital_Type_Shield;
+                args.triggerTime = curTime;
+                args.vitalCurrent = phyShield;
+                args.vitalMax = (int)BuffType.Buff_Type_PhyShield;
+                spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
             }
             else if (buffProto.category == (int)BuffType.Buff_Type_MgShield)
             {
-                target.spellMagicShield = buffProto.magicShield;
+                target.spellMagicShield = magicShield;
+                //trigger shield ui event
+                SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+                args.vitalType = (int)VitalType.Vital_Type_Shield;
+                args.triggerTime = curTime;
+                args.vitalCurrent = magicShield;
+                args.vitalMax = (int)BuffType.Buff_Type_MgShield;
+                spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
             }
         }
 
@@ -540,6 +615,7 @@ public class Buff
                         //trigger shield ui event
                         SpellVitalChangeArgs args = new SpellVitalChangeArgs();
                         args.vitalType = (int)VitalType.Vital_Type_Absorbed;
+                        args.targetID = targetID;
                         args.triggerTime = curTime;
                         spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
 
@@ -563,7 +639,7 @@ public class Buff
                 }
             }
 
-            if (phyShield == 0 && magicShield == 0 && (buffProto.phyShield > 0 || buffProto.magicShield > 0))
+            if (phyShield == 0 && magicShield == 0 && (buffProto.category == (int)BuffType.Buff_Type_MgShield || buffProto.category == (int)BuffType.Buff_Type_PhyShield))
             {
                 Finish(curTime);
             }

@@ -5,6 +5,7 @@ public class GameEventList
 {
     //Login
     public static string LoginClick = "LoginClick";//no param
+    public static string ServerClick = "ServerClick";//param hashtable
     public static string createPlayerClick = "CreatePlayerClick";//no param
 
     //Build
@@ -66,6 +67,9 @@ public class GameEventList
     public static string SpellImmune = "SpellImmune";
     public static string SpellStun = "SpellStun";
     public static string SpellAbsrobed = "SpellAbsorbed";
+
+    public static string NormalHit = "NormalHit";
+    public static string BashHit = "BashHit";
 
 	//GameDataChange for ui
 	public static	string LevelChanged = "LeveleChanged";//param int

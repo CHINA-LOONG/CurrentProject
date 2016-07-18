@@ -70,8 +70,11 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1015)]
       QUEST_INFO_SYNC_S = 1015,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1016)]
-      ASSEMBLE_FINISH_S = 1016,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_INFO_SYNC_S", Value=1016)]
+      MAIL_INFO_SYNC_S = 1016,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1017)]
+      ASSEMBLE_FINISH_S = 1017,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CREATE_C", Value=1101)]
       PLAYER_CREATE_C = 1101,
@@ -239,7 +242,25 @@ namespace PB
       QUEST_UPDATE_S = 5004,
             
       [global::ProtoBuf.ProtoEnum(Name=@"QUEST_REMOVE_S", Value=5005)]
-      QUEST_REMOVE_S = 5005
+      QUEST_REMOVE_S = 5005,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_READ_C", Value=6001)]
+      MAIL_READ_C = 6001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_RECEIVE_C", Value=6002)]
+      MAIL_RECEIVE_C = 6002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_RECEIVE_S", Value=6003)]
+      MAIL_RECEIVE_S = 6003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_RECEIVE_ALL_C", Value=6004)]
+      MAIL_RECEIVE_ALL_C = 6004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_RECEIVE_ALL_S", Value=6005)]
+      MAIL_RECEIVE_ALL_S = 6005,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_NEW_S", Value=6006)]
+      MAIL_NEW_S = 6006
     }
   
 }

@@ -1,142 +1,142 @@
 ﻿ee,TEXT,NUM,NUM,NUM,NUM,NUM,FLOAT,TEXT,TEXT,NUM,NUM,TEXT
 id,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,category,levelAdjust,icon,tips,baseTipValue,isAoe,firstSpell
 #id,rootEffectID,????????,???????,energyCost,energyGenerate,category,levelAdjust,???,tips,1???tips??????,?ж???????,???ü???
-s1,e1,0,0,0,10,0,0,,This is spell {0},10,0,0
-s2,e2,0,0,0,10,0,0,,This is spell {0},10,0,0
-s3,e2,3,5,100,0,0,0,,This is spell {0},10,0,0
-lazy,,0,0,0,0,7,0,,This is spell {0},10,0,0
-defend,defende1,0,0,0,0,3,0,,This is spell {0},10,0,0
-attackSlight,attackSlighte1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackMedium,attackMediume1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackStrong,attackStronge1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackTriSlight,attackTriSlighte1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackTriMedium,attackTriMediume1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackTriStrong,attackTriStronge1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackCutSlight,attackCutSlighte1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackCutMedium,attackCutMediume1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackCutStrong,attackCutStronge1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackCutTriSlight,attackCutTriSlighte1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackCutTriMedium,attackCutTriMediume1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackCutTriStrong,attackCutTriStronge1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackStabSlight,attackStabSlighte1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackStabMedium,attackStabMediume1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackStabStrong,attackStabStronge1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackStabTriSlight,attackStabTriSlighte1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackStabTriMedium,attackStabTriMediume1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackStabTriStrong,attackStabTriStronge1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackSmashSlight,attackSmashSlighte1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackSmashMedium,attackSmashMediume1,0,0,0,100,0,0,,This is spell {0},10,0,0
-attackSmashStrong,attackSmashStronge1,0,0,0,100,0,0,,This is spell {0},10,0,0
-magicMetalSlight,magicMetalSlighte1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicMetalMedium,magicMetalMediume1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicMetalStrong,magicMetalStronge1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicPlantSlight,magicPlantSlighte1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicPlantMedium,magicPlantMediume1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicPlantStrong,magicPlantStronge1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicWaterSlight,magicWaterSlighte1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicWaterMedium,magicWaterMediume1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicWaterStrong,magicWaterStronge1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicFireSlight,magicFireSlighte1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicFireMedium,magicFireMediume1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicFireStrong,magicFireStronge1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicEarthSlight,magicEarthSlighte1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicEarthMedium,magicEarthMediume1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicEarthStrong,magicEarthStronge1,0,0,0,100,1,0,,This is spell {0},10,0,0
-magicCureSlight,magicCureSlighte1,0,0,0,100,2,0,,This is spell {0},10,0,0
-magicCureMedium,magicCureMediume1,0,0,0,100,2,0,,This is spell {0},10,0,0
-magicCureStrong,magicCureStronge1,0,0,0,100,2,0,,This is spell {0},10,0,0
-buffSpeed,buffSpeede1,0,0,0,100,5,0,,This is spell {0},10,0,0
-buffSpeedSelf,buffSpeedSelfe1,0,0,0,100,5,0,,This is spell {0},10,0,0
-buffMagic,buffMagice1,0,0,0,100,5,0,,This is spell {0},10,0,0
-buffMagicSelf,buffMagicSelfe1,0,0,0,100,5,0,,This is spell {0},10,0,0
-buffAttack,buffAttacke1,0,0,0,100,4,0,,This is spell {0},10,0,buffAttack
-buffDefense,buffDefensee1,0,0,0,100,5,0,,This is spell {0},10,0,0
-buffAttackSelf,buffAttackSelfe1,0,0,0,100,5,0,,This is spell {0},10,0,0
-buffDefenseSelf,buffDefenseSelfe1,0,0,0,100,5,0,,This is spell {0},10,0,0
-debuffDefense,debuffDefensee1,0,0,0,100,6,0,,This is spell {0},10,0,0
-bossJiuweihu1,bossJiuweihu1e1,0,0,0,100,2,0,,This is spell {0},10,0,0
-bossJiuweihu2,bossJiuweihu2e1,0,0,0,100,2,0,,This is spell {0},10,0,0
-bossJiuweihu3,bossJiuweihu3e1,0,0,0,100,2,0,,This is spell {0},10,0,0
-bossJiuweihu4,bossJiuweihu4e1,0,0,0,100,2,0,,This is spell {0},10,0,0
-ultErshu,demoershuDazhaoe1,0,10,100,0,9,0,,This is spell {0},10,1,0
-ultQingniao,demoqingniaoDazhaoe1,0,10,100,0,9,0,,This is spell {0},10,1,0
-ultZhuyan,demozhuyanDazhaoe1,5,10,100,0,8,0,,This is spell {0},10,0,0
-bossHundun,bossHundune1,0,0,0,0,1,0,,This is spell {0},10,0,0
-dazhaoPrepare,dazhaoPreparee1,0,0,0,0,10,0,,,0,0,0
-bossMinghe18Karong1,bossMinghe18Karong1e1,0,0,0,20,0,0,,This is spell {0},10,0,0
-bossMinghe18Karong2,bossMinghe18Karong2e1,0,0,0,20,0,0,,This is spell {0},10,0,0
-bossMinghe18Karong3,bossMinghe18Karong3e1,0,0,0,20,0,0,,This is spell {0},10,0,0
-bossMinghe18Karong4,bossMinghe18Karong4e1,0,0,0,20,0,0,,This is spell {0},10,0,0
-bossMinghe18Karong5,bossMinghe18Karong5e1,0,0,0,20,0,0,,This is spell {0},10,0,0
-bossMinghe18Karong6,bossMinghe18Karong6e1,0,0,0,20,0,0,,This is spell {0},10,0,0
-bossYueguangsenlin14Luoxinfu1,bossYueguangsenlin14Luoxinfu1e1,0,0,0,20,0,0,,This is spell {0},10,0,
-bossYueguangsenlin14Luoxinfu2,bossYueguangsenlin14Luoxinfu2e1,0,0,0,20,0,0,,This is spell {0},10,0,
-bossYueguangsenlin14Luoxinfu3,bossYueguangsenlin14Luoxinfu3e1,0,0,0,20,0,0,,This is spell {0},10,0,
-bossYueguangsenlin18Meidusha1,bossYueguangsenlin18Meidusha1e1,0,0,0,10,0,0,,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha2,bossYueguangsenlin18Meidusha2e1,0,0,0,10,0,0,,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha3,bossYueguangsenlin18Meidusha3e1,0,0,0,10,0,0,,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha4,bossYueguangsenlin18Meidusha4e1,0,0,0,10,0,0,,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha5,bossYueguangsenlin18Meidusha5e1,0,0,0,10,6,0,,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha6,bossYueguangsenlin18Meidusha6e1,0,0,0,10,6,0,,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha7,bossYueguangsenlin18Meidusha7e1,0,0,0,10,6,0,,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha8,bossYueguangsenlin18Meidusha8e1,0,0,0,10,6,0,,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha9,bossYueguangsenlin18Meidusha9e1,0,0,0,10,0,0,,This is spell {0},10,0,0
-psvbossLonggongtongzi,psvLonggongtongzie1,0,0,0,20,4,0,,This is spell {0},10,0,
-psvHapi,psvHapie1,0,0,0,20,4,0,,This is spell {0},10,0,
-psvHetong,psvHetonge1,0,0,0,20,4,0,,This is spell {0},10,0,
-psvLonggongtongzi,psvLonggongtongzie1,0,0,0,20,4,0,,This is spell {0},10,0,
-psvWagui,psvWaguie1,0,0,0,20,4,0,,This is spell {0},10,0,
-ultHapi,ultHapie1,0,10,100,0,9,0,,This is spell {0},10,0,0
-ultHetong,ultHetonge1,0,10,100,0,9,0,,This is spell {0},10,0,0
-ultWagui,ultWaguie1,0,10,100,0,9,0,,This is spell {0},10,0,0
-ultLonggongtongzi,ultLonggongtongzie1,0,10,100,0,9,0,,This is spell {0},10,0,0
-ultbossLonggongtongzi,ultLonggongtongzie1,0,10,100,0,9,0,,This is spell {0},10,0,0
-ultbossLuoxinfu,ultbossLuoxinfue1,6,10,100,0,1,0,,This is spell {0},10,0,
-ultHuapo,ultHuapoe1,10,10,100,0,8,0,,This is spell {0},10,0,0
-ultAmute,ultAmutee1,0,0,100,0,9,0,,This is spell {0},10,1,0
-ultLangren,ultLangrene1,7,10,100,0,8,0,,This is spell {0},10,0,0
-ultMantuoluo,ultMantuoluoe1,0,0,100,0,9,0,,This is spell {0},10,1,0
-ultboosMantuoluo,ultboosMantuoluoe1,0,0,100,0,9,0,,This is spell {0},10,1,0
-ultAnpusha,ultAnpushae1,0,0,100,0,9,0,,This is spell {0},10,1,0
-psvHuapo,psvHuapoe1,0,0,0,0,4,0,,This is spell {0},10,0,
-psvAmute,psvAmutee1,0,0,0,0,4,0,,This is spell {0},10,0,
-psvLangren,psvLangrene1,0,0,0,0,4,0,,This is spell {0},10,0,
-psvMantuoluo,psvMantuoluoe1,0,0,0,0,4,0,,This is spell {0},10,0,
-psvbossMantuoluo,psvbossMantuoluoe1,0,0,0,0,4,0,,This is spell {0},10,0,attackCutSlight
-psvAnpusha,psvAnpushae1,0,0,0,0,4,0,,This is spell {0},10,0,
-ultbossZouyincao,ultbossZouyincaoe1,,10,100,,9,,,,,,
-psvbossZouyincao,psvbossZouyincaoe1,,,,,4,,,,,,
-buffHot,buffHote1,,,,,5,,,,,,
-debuffAttack,debuffAttacke1,,,,,6,,,,,,
-debuffMagic,debuffMagice1,,,,,6,,,,,,
-debuffSpeed,debuffSpeede1,,,,,6,,,,,,
-debuffDotSlight,debuffDotSlighte1,,,,,6,,,,,,
-debuffDotMedium,debuffDotMediume1,,,,,6,,,,,,
-debuffDotStrong,debuffDotStronge1,,,,,6,,,,,,
-debuffFireDotSlight,debuffFireDotSlighte1,,,,,6,,,,,,
-debuffFireDotMedium,debuffFireDotMediume1,,,,,6,,,,,,
-debuffFireDotStrong,debuffFireDotStronge1,,,,,6,,,,,,
-debuffWaterDotSlight,debuffWaterDotSlighte1,,,,,6,,,,,,
-debuffWateDotMedium,debuffWateDotMediume1,,,,,6,,,,,,
-debuffWateDotStrong,debuffWateDotStronge1,,,,,6,,,,,,
-debuffPlantDotSlight,debuffPlantDotSlighte1,,,,,6,,,,,,
-debuffPlantDotMedium,debuffPlantDotMediume1,,,,,6,,,,,,
-debuffPlantDotStrong,debuffPlantDotStronge1,,,,,6,,,,,,
-debuffMetalDotSlight,debuffMetalDotSlighte1,,,,,6,,,,,,
-debuffMetalDotMedium,debuffMetalDotMediume1,,,,,6,,,,,,
-debuffMetalDotStrong,debuffMetalDotStronge1,,,,,6,,,,,,
-debuffEarthDotSlight,debuffEarthDotSlighte1,,,,,6,,,,,,
-debuffEarthDotMedium,debuffEarthDotMediume1,,,,,6,,,,,,
-debuffEarthDotStrong,debuffEarthDotStronge1,0,0,0,20,11,0,,This is spell {0},10,0,
-ultMomo,ultMomoe1,0,0,100,0,9,0,,This is spell {0},10,1,0
-psvMomo,psvMomoe1,0,0,0,0,4,0,,This is spell {0},10,0,
-ultXiyiren,ultXiyirene1,5,10,100,0,8,0,,This is spell {0},10,0,0
-psvXiyiren,psvXiyirene1,0,0,0,0,4,0,,This is spell {0},10,0,
-ultPanshen,ultPanshene1,10,10,100,0,8,0,,This is spell {0},10,0,0
-psvPanshen,psvPanshene1,0,0,0,0,4,0,,This is spell {0},10,0,attackStabMedium
-ultKairuisi,ultKairuisie1,0,0,100,0,9,0,,This is spell {0},10,1,0
-psvKairuisi,psvKairuisie1,0,0,0,0,4,0,,This is spell {0},10,0,
-ultLuoxinfu,ultLuolxinfue1,6,10,100,0,8,0,,This is spell {0},10,0,0
-psvLuoxinfu,psvLuoxinfue1,0,0,0,0,4,0,,This is spell {0},10,0,
-ultbossXiyiren,ultbossXiyirene1,0,0,100,0,8,0,,This is spell {0},10,0,0
-psvbossXiyiren,psvbossXiyirene1,0,0,0,0,4,0,,This is spell {0},10,0,0
+s1,e1,0,0,0,10,0,0,icon_s1,This is spell {0},10,0,0
+s2,e2,0,0,0,10,0,0,icon_s2,This is spell {0},10,0,0
+s3,e2,3,5,100,0,0,0,icon_s3,This is spell {0},10,0,0
+lazy,,0,0,0,0,7,0,icon_lazy,This is spell {0},10,0,0
+defend,defende1,0,0,0,0,3,0,icon_defend,This is spell {0},10,0,0
+attackSlight,attackSlighte1,0,0,0,100,0,0,icon_attackSlight,This is spell {0},10,0,0
+attackMedium,attackMediume1,0,0,0,100,0,0,icon_attackMedium,This is spell {0},10,0,0
+attackStrong,attackStronge1,0,0,0,100,0,0,icon_attackStrong,This is spell {0},10,0,0
+attackTriSlight,attackTriSlighte1,0,0,0,100,0,0,icon_attackTriSlight,This is spell {0},10,0,0
+attackTriMedium,attackTriMediume1,0,0,0,100,0,0,icon_attackTriMedium,This is spell {0},10,0,0
+attackTriStrong,attackTriStronge1,0,0,0,100,0,0,icon_attackTriStrong,This is spell {0},10,0,0
+attackCutSlight,attackCutSlighte1,0,0,0,100,0,0,icon_attackCutSlight,This is spell {0},10,0,0
+attackCutMedium,attackCutMediume1,0,0,0,100,0,0,icon_attackCutMedium,This is spell {0},10,0,0
+attackCutStrong,attackCutStronge1,0,0,0,100,0,0,icon_attackCutStrong,This is spell {0},10,0,0
+attackCutTriSlight,attackCutTriSlighte1,0,0,0,100,0,0,icon_attackCutTriSlight,This is spell {0},10,0,0
+attackCutTriMedium,attackCutTriMediume1,0,0,0,100,0,0,icon_attackCutTriMedium,This is spell {0},10,0,0
+attackCutTriStrong,attackCutTriStronge1,0,0,0,100,0,0,icon_attackCutTriStrong,This is spell {0},10,0,0
+attackStabSlight,attackStabSlighte1,0,0,0,100,0,0,icon_attackStabSlight,This is spell {0},10,0,0
+attackStabMedium,attackStabMediume1,0,0,0,100,0,0,icon_attackStabMedium,This is spell {0},10,0,0
+attackStabStrong,attackStabStronge1,0,0,0,100,0,0,icon_attackStabStrong,This is spell {0},10,0,0
+attackStabTriSlight,attackStabTriSlighte1,0,0,0,100,0,0,icon_attackStabTriSlight,This is spell {0},10,0,0
+attackStabTriMedium,attackStabTriMediume1,0,0,0,100,0,0,icon_attackStabTriMedium,This is spell {0},10,0,0
+attackStabTriStrong,attackStabTriStronge1,0,0,0,100,0,0,icon_attackStabTriStrong,This is spell {0},10,0,0
+attackSmashSlight,attackSmashSlighte1,0,0,0,100,0,0,icon_attackSmashSlight,This is spell {0},10,0,0
+attackSmashMedium,attackSmashMediume1,0,0,0,100,0,0,icon_attackSmashMedium,This is spell {0},10,0,0
+attackSmashStrong,attackSmashStronge1,0,0,0,100,0,0,icon_attackSmashStrong,This is spell {0},10,0,0
+magicMetalSlight,magicMetalSlighte1,0,0,0,100,1,0,icon_magicMetalSlight,This is spell {0},10,0,0
+magicMetalMedium,magicMetalMediume1,0,0,0,100,1,0,icon_magicMetalMedium,This is spell {0},10,0,0
+magicMetalStrong,magicMetalStronge1,0,0,0,100,1,0,icon_magicMetalStrong,This is spell {0},10,0,0
+magicPlantSlight,magicPlantSlighte1,0,0,0,100,1,0,icon_magicPlantSlight,This is spell {0},10,0,0
+magicPlantMedium,magicPlantMediume1,0,0,0,100,1,0,icon_magicPlantMedium,This is spell {0},10,0,0
+magicPlantStrong,magicPlantStronge1,0,0,0,100,1,0,icon_magicPlantStrong,This is spell {0},10,0,0
+magicWaterSlight,magicWaterSlighte1,0,0,0,100,1,0,icon_magicWaterSlight,This is spell {0},10,0,0
+magicWaterMedium,magicWaterMediume1,0,0,0,100,1,0,icon_magicWaterMedium,This is spell {0},10,0,0
+magicWaterStrong,magicWaterStronge1,0,0,0,100,1,0,icon_magicWaterStrong,This is spell {0},10,0,0
+magicFireSlight,magicFireSlighte1,0,0,0,100,1,0,icon_magicFireSlight,This is spell {0},10,0,0
+magicFireMedium,magicFireMediume1,0,0,0,100,1,0,icon_magicFireMedium,This is spell {0},10,0,0
+magicFireStrong,magicFireStronge1,0,0,0,100,1,0,icon_magicFireStrong,This is spell {0},10,0,0
+magicEarthSlight,magicEarthSlighte1,0,0,0,100,1,0,icon_magicEarthSlight,This is spell {0},10,0,0
+magicEarthMedium,magicEarthMediume1,0,0,0,100,1,0,icon_magicEarthMedium,This is spell {0},10,0,0
+magicEarthStrong,magicEarthStronge1,0,0,0,100,1,0,icon_magicEarthStrong,This is spell {0},10,0,0
+magicCureSlight,magicCureSlighte1,0,0,0,100,2,0,icon_magicCureSlight,This is spell {0},10,0,0
+magicCureMedium,magicCureMediume1,0,0,0,100,2,0,icon_magicCureMedium,This is spell {0},10,0,0
+magicCureStrong,magicCureStronge1,0,0,0,100,2,0,icon_magicCureStrong,This is spell {0},10,0,0
+buffSpeed,buffSpeede1,0,0,0,100,5,0,icon_buffSpeed,This is spell {0},10,0,0
+buffSpeedSelf,buffSpeedSelfe1,0,0,0,100,5,0,icon_buffSpeedSelf,This is spell {0},10,0,0
+buffMagic,buffMagice1,0,0,0,100,5,0,icon_buffMagic,This is spell {0},10,0,0
+buffMagicSelf,buffMagicSelfe1,0,0,0,100,5,0,icon_buffMagicSelf,This is spell {0},10,0,0
+buffAttack,buffAttacke1,0,0,0,100,4,0,icon_buffAttack,This is spell {0},10,0,buffAttack
+buffDefense,buffDefensee1,0,0,0,100,5,0,icon_buffDefense,This is spell {0},10,0,0
+buffAttackSelf,buffAttackSelfe1,0,0,0,100,5,0,icon_buffAttackSelf,This is spell {0},10,0,0
+buffDefenseSelf,buffDefenseSelfe1,0,0,0,100,5,0,icon_buffDefenseSelf,This is spell {0},10,0,0
+debuffDefense,debuffDefensee1,0,0,0,100,6,0,icon_debuffDefense,This is spell {0},10,0,0
+bossJiuweihu1,bossJiuweihu1e1,0,0,0,100,2,0,icon_bossJiuweihu1,This is spell {0},10,0,0
+bossJiuweihu2,bossJiuweihu2e1,0,0,0,100,2,0,icon_bossJiuweihu2,This is spell {0},10,0,0
+bossJiuweihu3,bossJiuweihu3e1,0,0,0,100,2,0,icon_bossJiuweihu3,This is spell {0},10,0,0
+bossJiuweihu4,bossJiuweihu4e1,0,0,0,100,2,0,icon_bossJiuweihu4,This is spell {0},10,0,0
+ultErshu,demoershuDazhaoe1,0,10,100,0,9,0,icon_ultErshu,This is spell {0},10,1,0
+ultQingniao,demoqingniaoDazhaoe1,0,10,100,0,9,0,icon_ultQingniao,This is spell {0},10,1,0
+ultZhuyan,demozhuyanDazhaoe1,5,10,100,0,8,0,icon_ultZhuyan,This is spell {0},10,0,0
+bossHundun,bossHundune1,0,0,0,0,1,0,icon_bossHundun,This is spell {0},10,0,0
+dazhaoPrepare,dazhaoPreparee1,0,0,0,0,10,0,icon_dazhaoPrepare,,0,0,0
+bossMinghe18Karong1,bossMinghe18Karong1e1,0,0,0,20,0,0,icon_bossMinghe18Karong1,This is spell {0},10,0,0
+bossMinghe18Karong2,bossMinghe18Karong2e1,0,0,0,20,0,0,icon_bossMinghe18Karong2,This is spell {0},10,0,0
+bossMinghe18Karong3,bossMinghe18Karong3e1,0,0,0,20,0,0,icon_bossMinghe18Karong3,This is spell {0},10,0,0
+bossMinghe18Karong4,bossMinghe18Karong4e1,0,0,0,20,0,0,icon_bossMinghe18Karong4,This is spell {0},10,0,0
+bossMinghe18Karong5,bossMinghe18Karong5e1,0,0,0,20,0,0,icon_bossMinghe18Karong5,This is spell {0},10,0,0
+bossMinghe18Karong6,bossMinghe18Karong6e1,0,0,0,20,0,0,icon_bossMinghe18Karong6,This is spell {0},10,0,0
+bossYueguangsenlin14Luoxinfu1,bossYueguangsenlin14Luoxinfu1e1,0,0,0,20,0,0,icon_bossYueguangsenlin14Luoxinfu1,This is spell {0},10,0,
+bossYueguangsenlin14Luoxinfu2,bossYueguangsenlin14Luoxinfu2e1,0,0,0,20,0,0,icon_bossYueguangsenlin14Luoxinfu2,This is spell {0},10,0,
+bossYueguangsenlin14Luoxinfu3,bossYueguangsenlin14Luoxinfu3e1,0,0,0,20,0,0,icon_bossYueguangsenlin14Luoxinfu3,This is spell {0},10,0,
+bossYueguangsenlin18Meidusha1,bossYueguangsenlin18Meidusha1e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha1,This is spell {0},10,0,0
+bossYueguangsenlin18Meidusha2,bossYueguangsenlin18Meidusha2e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha2,This is spell {0},10,0,0
+bossYueguangsenlin18Meidusha3,bossYueguangsenlin18Meidusha3e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha3,This is spell {0},10,0,0
+bossYueguangsenlin18Meidusha4,bossYueguangsenlin18Meidusha4e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha4,This is spell {0},10,0,0
+bossYueguangsenlin18Meidusha5,bossYueguangsenlin18Meidusha5e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha5,This is spell {0},10,0,0
+bossYueguangsenlin18Meidusha6,bossYueguangsenlin18Meidusha6e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha6,This is spell {0},10,0,0
+bossYueguangsenlin18Meidusha7,bossYueguangsenlin18Meidusha7e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha7,This is spell {0},10,0,0
+bossYueguangsenlin18Meidusha8,bossYueguangsenlin18Meidusha8e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha8,This is spell {0},10,0,0
+bossYueguangsenlin18Meidusha9,bossYueguangsenlin18Meidusha9e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha9,This is spell {0},10,0,0
+psvbossLonggongtongzi,psvLonggongtongzie1,0,0,0,20,4,0,icon_psvbossLonggongtongzi,This is spell {0},10,0,
+psvHapi,psvHapie1,0,0,0,20,4,0,icon_psvHapi,This is spell {0},10,0,
+psvHetong,psvHetonge1,0,0,0,20,4,0,icon_psvHetong,This is spell {0},10,0,
+psvLonggongtongzi,psvLonggongtongzie1,0,0,0,20,4,0,icon_psvLonggongtongzi,This is spell {0},10,0,
+psvWagui,psvWaguie1,0,0,0,20,4,0,icon_psvWagui,This is spell {0},10,0,
+ultHapi,ultHapie1,0,10,100,0,9,0,icon_ultHapi,This is spell {0},10,0,0
+ultHetong,ultHetonge1,0,10,100,0,9,0,icon_ultHetong,This is spell {0},10,0,0
+ultWagui,ultWaguie1,0,10,100,0,9,0,icon_ultWagui,This is spell {0},10,0,0
+ultLonggongtongzi,ultLonggongtongzie1,0,10,100,0,9,0,icon_ultLonggongtongzi,This is spell {0},10,0,0
+ultbossLonggongtongzi,ultLonggongtongzie1,0,10,100,0,9,0,icon_ultbossLonggongtongzi,This is spell {0},10,0,0
+ultbossLuoxinfu,ultbossLuoxinfue1,6,10,100,0,1,0,icon_ultbossLuoxinfu,This is spell {0},10,0,
+ultHuapo,ultHuapoe1,10,10,100,0,8,0,icon_ultHuapo,This is spell {0},10,0,0
+ultAmute,ultAmutee1,0,0,100,0,9,0,icon_ultAmute,This is spell {0},10,1,0
+ultLangren,ultLangrene1,7,10,100,0,8,0,icon_ultLangren,This is spell {0},10,0,0
+ultMantuoluo,ultMantuoluoe1,0,0,100,0,9,0,icon_ultMantuoluo,This is spell {0},10,1,0
+ultboosMantuoluo,ultboosMantuoluoe1,0,0,100,0,9,0,icon_ultboosMantuoluo,This is spell {0},10,1,0
+ultAnpusha,ultAnpushae1,0,0,100,0,9,0,icon_ultAnpusha,This is spell {0},10,1,0
+psvHuapo,psvHuapoe1,0,0,0,0,4,0,icon_psvHuapo,This is spell {0},10,0,
+psvAmute,psvAmutee1,0,0,0,0,4,0,icon_psvAmute,This is spell {0},10,0,
+psvLangren,psvLangrene1,0,0,0,0,4,0,icon_psvLangren,This is spell {0},10,0,
+psvMantuoluo,psvMantuoluoe1,0,0,0,0,4,0,icon_psvMantuoluo,This is spell {0},10,0,
+psvbossMantuoluo,,0,0,0,0,4,0,icon_psvbossMantuoluo,This is spell {0},10,0,attackCutSlight
+psvAnpusha,psvAnpushae1,0,0,0,0,4,0,icon_psvAnpusha,This is spell {0},10,0,
+ultbossZouyincao,ultbossZouyincaoe1,,10,100,,9,,icon_ultbossZouyincao,,,,
+psvbossZouyincao,psvbossZouyincaoe1,,,,,4,,icon_psvbossZouyincao,,,,
+buffHot,buffHote1,,,,,5,,icon_buffHot,,,,
+debuffAttack,debuffAttacke1,,,,,6,,icon_debuffAttack,,,,
+debuffMagic,debuffMagice1,,,,,6,,icon_debuffMagic,,,,
+debuffSpeed,debuffSpeede1,,,,,6,,icon_debuffSpeed,,,,
+debuffDotSlight,debuffDotSlighte1,,,,,6,,icon_debuffDotSlight,,,,
+debuffDotMedium,debuffDotMediume1,,,,,6,,icon_debuffDotMedium,,,,
+debuffDotStrong,debuffDotStronge1,,,,,6,,icon_debuffDotStrong,,,,
+debuffFireDotSlight,debuffFireDotSlighte1,,,,,6,,icon_debuffFireDotSlight,,,,
+debuffFireDotMedium,debuffFireDotMediume1,,,,,6,,icon_debuffFireDotMedium,,,,
+debuffFireDotStrong,debuffFireDotStronge1,,,,,6,,icon_debuffFireDotStrong,,,,
+debuffWaterDotSlight,debuffWaterDotSlighte1,,,,,6,,icon_debuffWaterDotSlight,,,,
+debuffWateDotMedium,debuffWateDotMediume1,,,,,6,,icon_debuffWateDotMedium,,,,
+debuffWateDotStrong,debuffWateDotStronge1,,,,,6,,icon_debuffWateDotStrong,,,,
+debuffPlantDotSlight,debuffPlantDotSlighte1,,,,,6,,icon_debuffPlantDotSlight,,,,
+debuffPlantDotMedium,debuffPlantDotMediume1,,,,,6,,icon_debuffPlantDotMedium,,,,
+debuffPlantDotStrong,debuffPlantDotStronge1,,,,,6,,icon_debuffPlantDotStrong,,,,
+debuffMetalDotSlight,debuffMetalDotSlighte1,,,,,6,,icon_debuffMetalDotSlight,,,,
+debuffMetalDotMedium,debuffMetalDotMediume1,,,,,6,,icon_debuffMetalDotMedium,,,,
+debuffMetalDotStrong,debuffMetalDotStronge1,,,,,6,,icon_debuffMetalDotStrong,,,,
+debuffEarthDotSlight,debuffEarthDotSlighte1,,,,,6,,icon_debuffEarthDotSlight,,,,
+debuffEarthDotMedium,debuffEarthDotMediume1,,,,,6,,icon_debuffEarthDotMedium,,,,
+debuffEarthDotStrong,debuffEarthDotStronge1,0,0,0,20,11,0,icon_debuffEarthDotStrong,This is spell {0},10,0,
+ultMomo,ultMomoe1,0,0,100,0,9,0,icon_ultMomo,This is spell {0},10,1,0
+psvMomo,psvMomoe1,0,0,0,0,4,0,icon_psvMomo,This is spell {0},10,0,
+ultXiyiren,ultXiyirene1,5,10,100,0,8,0,icon_ultXiyiren,This is spell {0},10,0,0
+psvXiyiren,psvXiyirene1,0,0,0,0,4,0,icon_psvXiyiren,This is spell {0},10,0,
+ultPanshen,ultPanshene1,10,10,100,0,8,0,icon_ultPanshen,This is spell {0},10,0,0
+psvPanshen,psvPanshene1,0,0,0,0,4,0,icon_psvPanshen,This is spell {0},10,0,attackStabMedium
+ultKairuisi,ultKairuisie1,0,0,100,0,9,0,icon_ultKairuisi,This is spell {0},10,1,0
+psvKairuisi,psvKairuisie1,0,0,0,0,4,0,icon_psvKairuisi,This is spell {0},10,0,
+ultLuoxinfu,ultLuolxinfue1,6,10,100,0,8,0,icon_ultLuoxinfu,This is spell {0},10,0,0
+psvLuoxinfu,psvLuoxinfue1,0,0,0,0,4,0,icon_psvLuoxinfu,This is spell {0},10,0,
+ultbossXiyiren,ultbossXiyirene1,0,0,100,0,8,0,icon_ultbossXiyiren,This is spell {0},10,0,0
+psvbossXiyiren,psvbossXiyirene1,0,0,0,0,4,0,icon_psvbossXiyiren,This is spell {0},10,0,0
