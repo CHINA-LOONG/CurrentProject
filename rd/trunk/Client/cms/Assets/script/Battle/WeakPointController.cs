@@ -111,12 +111,14 @@ public class WeakPointController : MonoBehaviour
 				wpRuntime.ChangeState(WeakpointState.Normal1);
 			}
 
-
-			bo.unit.isVisible =  true;
-
-			if(!bo.unit.isBoss)
+			if(!bo.unit.isVisible)
 			{
-				GameEventMgr.Instance.FireEvent<int>(GameEventList.ShowHideMonster, bo.unit.pbUnit.guid);
+				bo.unit.isVisible =  true;
+				
+				if(!bo.unit.isBoss)
+				{
+					GameEventMgr.Instance.FireEvent<int>(GameEventList.ShowHideMonster, bo.unit.pbUnit.guid);
+				}
 			}
 		}
 	}

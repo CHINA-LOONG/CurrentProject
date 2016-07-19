@@ -1,0 +1,12 @@
+﻿#NUM,TEXT,TEXT,TEXT
+index,name,closedbook,openedbook
+#关卡,关卡名字,关闭的书,已经打开的书
+1,Valor,descrip_valor,icon_dps
+2,Spiritual,descrip_spiritual,icon_dps
+3,Mischievous,descrip_mischievous,icon_support
+4,Collaborate,descrip_collaborate,icon_support
+5,Compassion,descrip_compassion,icon_heal
+6,Humility,descrip_humility,icon_tank
+7,Humility,descrip_humility,icon_tank
+8,Humility,descrip_humility,icon_tank
+9,Humility,descrip_humility,icon_tank

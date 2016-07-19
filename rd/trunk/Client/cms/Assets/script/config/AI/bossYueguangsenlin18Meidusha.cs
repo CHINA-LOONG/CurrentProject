@@ -55,19 +55,19 @@ public class bossYueguangsenlin18Meidusha : BossAi {
         }
         else if (wp_count == 3)
         {
-            if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp03"; })&&wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp04"; }))
+            if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp02"; })&&wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp03"; }))
             {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha5",out useSpell);
                 yazhi_count=4;
             }
-            else if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp03"; }))
+            else if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp02"; }))
             {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha6",out useSpell);
                 yazhi_count=4;
             }
-            else if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp04"; }))
+            else if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp03"; }))
             {
-                meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha5",out useSpell);
+                meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha7",out useSpell);
                 yazhi_count=4;
             }
             else if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.2)
@@ -83,19 +83,19 @@ public class bossYueguangsenlin18Meidusha : BossAi {
         }
         else if (wp_count == 2)
         {
-            if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp03"; })&&wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp04"; }))
+            if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp02"; })&&wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp03"; }))
             {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha5",out useSpell);
                 yazhi_count=4;
             }
-            else if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp03"; }))
+            else if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp02"; }))
             {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha6",out useSpell);
                 yazhi_count=4;
             }
-            else if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp04"; }))
+            else if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp03"; }))
             {
-                meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha5",out useSpell);
+                meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha7",out useSpell);
                 yazhi_count=4;
             }
             else if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.2)
@@ -111,14 +111,14 @@ public class bossYueguangsenlin18Meidusha : BossAi {
         }
         else if (wp_count == 1)
         {
-            if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp03"; }))
+            if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp02"; }))
             {
-                meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha5",out useSpell);
+                meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha6",out useSpell);
                 yazhi_count=4;
             }
-            else if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp04"; }))
+            else if (yazhi_count<=0 && wpList.Exists(delegate(string wp) { return wp == "bossYueguangsenlin18Meidushawp03"; }))
             {
-                meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha5",out useSpell);
+                meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha7",out useSpell);
                 yazhi_count=4;
             }
             else if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.2)
@@ -136,7 +136,7 @@ public class bossYueguangsenlin18Meidusha : BossAi {
         {
             if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.2)
             {
-                meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha4",out useSpell);
+                meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha8",out useSpell);
                 yazhi_count--;
             }
             else
@@ -147,12 +147,7 @@ public class bossYueguangsenlin18Meidusha : BossAi {
         }
         #endregion
         //statechange
-        #region       
-        if (wp_count==0 && count ==0)
-        {
-            meidushaUnit.battleUnit.TriggerEvent("meidusha_state1to2",Time.time,null);           
-            attck_count = GetAttackCount(meidushaUnit);
-        }
+        #region
         if ((GetAttackCount(meidushaUnit)-attck_count)<=5 && wp_count==0)
         {
             count++;
@@ -167,5 +162,20 @@ public class bossYueguangsenlin18Meidusha : BossAi {
 
 		attackResult.useSpell = useSpell;
 		return attackResult;
-	}    
+	}
+    //---------------------------------------------------------------------------------------------
+    public override void OnVitalChange(SpellVitalChangeArgs args)
+    {
+
+    }
+    //---------------------------------------------------------------------------------------------
+    public override void OnWpDead(WeakPointDeadArgs args)
+    {
+        BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+        if (GetAliveWeakPointList(target.unit).Count-1 == 0 && count == 0)
+        {
+            target.TriggerEvent("meidusha_state1to2", Time.time, null);
+            attck_count = GetAttackCount(target.unit);
+        }
+    }
 }

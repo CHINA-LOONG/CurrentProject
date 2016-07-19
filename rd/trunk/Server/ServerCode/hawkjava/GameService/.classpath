@@ -6,5 +6,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ServerProto"/>
 	<classpathentry kind="lib" path="/HawkUtil/lib/protobuf-java-2.5.0.jar" sourcepath="/Package/jars/protobuf-2.5.0.zip"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/HawkUtil"/>
+	<classpathentry kind="lib" path="/HawkUtil/lib/gson-1.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

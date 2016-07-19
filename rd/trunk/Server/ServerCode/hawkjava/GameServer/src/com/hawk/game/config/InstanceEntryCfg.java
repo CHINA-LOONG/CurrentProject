@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.log.HawkLog;
 
 import sun.print.resources.serviceui;
 
@@ -71,6 +72,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (enemy1 != "") {
 			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy1);
 			if (null == enemy) {
+				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy1));
 				return false;
 			}
 			enemyList.add(enemy);
@@ -78,6 +80,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (enemy2 != "") {
 			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy2);
 			if (null == enemy) {
+				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy2));
 				return false;
 			}
 			enemyList.add(enemy);
@@ -85,6 +88,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (enemy3 != "") {
 			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy3);
 			if (null == enemy) {
+				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy3));
 				return false;
 			}
 			enemyList.add(enemy);
@@ -92,6 +96,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (enemy4 != "") {
 			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy4);
 			if (null == enemy) {
+				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy4));
 				return false;
 			}
 			enemyList.add(enemy);
@@ -99,6 +104,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (enemy5 != "") {
 			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy5);
 			if (null == enemy) {
+				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy5));
 				return false;
 			}
 			enemyList.add(enemy);
@@ -106,6 +112,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (enemy6 != "") {
 			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy6);
 			if (null == enemy) {
+				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy6));
 				return false;
 			}
 			enemyList.add(enemy);
@@ -115,6 +122,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (reward1 != null && reward1.equals("") == false) {
 			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward1);
 			if (null == reward) {
+				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", reward1));
 				return false;
 			}
 			rewardItemList.add(reward);
@@ -122,6 +130,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (reward2 != null && reward2.equals("") == false) {
 			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward2);
 			if (null == reward) {
+				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", reward2));
 				return false;
 			}
 			rewardItemList.add(reward);
@@ -129,6 +138,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (reward3 != null && reward3.equals("") == false) {
 			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward3);
 			if (null == reward) {
+				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", reward3));
 				return false;
 			}
 			rewardItemList.add(reward);
@@ -136,6 +146,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (reward4 != null && reward4.equals("") == false) {
 			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward4);
 			if (null == reward) {
+				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", reward4));
 				return false;
 			}
 			rewardItemList.add(reward);
@@ -143,6 +154,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (reward5 != null && reward5.equals("") == false) {
 			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward5);
 			if (null == reward) {
+				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", reward5));
 				return false;
 			}
 			rewardItemList.add(reward);
@@ -150,6 +162,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		if (reward6 != null && reward6.equals("") == false) {
 			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward6);
 			if (null == reward) {
+				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", reward6));
 				return false;
 			}
 			rewardItemList.add(reward);

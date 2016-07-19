@@ -14,6 +14,7 @@ public class DazhaofocusController : MonoBehaviour
 	private Vector3 cameraOldPosition;
 	private Vector3 cameraOldScale;
 	private Vector3 cameraOldEulerAngles;
+	private bool isMagicDazhao = false;
 
 	public static	DazhaofocusController Create(bool isMagicDazhao)
 	{
@@ -45,6 +46,7 @@ public class DazhaofocusController : MonoBehaviour
 
 	public void InitWithType(bool isMagicDazhao)
 	{
+		this.isMagicDazhao = isMagicDazhao;
 		focusUnitTrans = Util.FindChildByName (gameObject, "monsterPosition").transform;
 		MeshRenderer tempMesh = focusUnitTrans.GetComponent<MeshRenderer> ();
 		if (null != tempMesh) 
@@ -74,7 +76,15 @@ public class DazhaofocusController : MonoBehaviour
 	IEnumerator MonsterShowoffCo()
 	{
 		//monstershowoff
-		battleObject.TriggerEvent ("dazhaoxuanyao", Time.time, null);
+		if (isMagicDazhao)
+		{
+			battleObject.TriggerEvent ("dazhaoxuanyao_wuli", Time.time, null);
+		}
+		else 
+		{
+			battleObject.TriggerEvent ("dazhaoxuanyao_fashu", Time.time, null);
+		}
+
 		yield return new WaitForSeconds (BattleConst.dazhaoShowOffTime);
 		RestoreBattle ();
 	}

@@ -1,220 +1,220 @@
-ï»¿#TEXT,TEXT,TEXT
+#TEXT,TEXT,TEXT
 id,chinese,english
-miaoshu_bossamute01,é¢å…·ä¸‹éšè—ç€å¼±ç‚¹,
-miaoshu_bossluoxinfu01,çˆªå­ååˆ†é”‹åˆ©ï¼Œä½†æ˜¯çœ‹èµ·æ¥å¾ˆæ˜“ç¢ã€‚,
-miaoshu_bossluoxinfu02,çˆªå­ååˆ†é”‹åˆ©ï¼Œä½†æ˜¯çœ‹èµ·æ¥å¾ˆæ˜“ç¢ã€‚,
-miaoshu_bossluoxinfu03,çˆªå­ååˆ†é”‹åˆ©ï¼Œä½†æ˜¯çœ‹èµ·æ¥å¾ˆæ˜“ç¢ã€‚,
-miaoshu_bossluoxinfu04,çˆªå­ååˆ†é”‹åˆ©ï¼Œä½†æ˜¯çœ‹èµ·æ¥å¾ˆæ˜“ç¢ã€‚,
-miaoshu_bossluoxinfu05,çˆªå­ååˆ†é”‹åˆ©ï¼Œä½†æ˜¯çœ‹èµ·æ¥å¾ˆæ˜“ç¢ã€‚,
-miaoshu_bossluoxinfu06,çˆªå­ååˆ†é”‹åˆ©ï¼Œä½†æ˜¯çœ‹èµ·æ¥å¾ˆæ˜“ç¢ã€‚,
-#æ–‡å­—Id,æ–‡å­—å†…å®¹,æ–‡å­—å†…å®¹
-speak_001,å…”æ¡‘ï¼Œå…”æ¡‘ï¼Œä½ å¹²å•¥å‘ï¼Ÿ,å…”æ¡‘ï¼Œå…”æ¡‘ï¼Œwhat are you doing nowï¼Ÿ
-speak_002,æ²¡å¹²å•¥ï¼Œä½ åˆè¦å¹²å•¥ï¼Ÿ,Nothingï¼Ÿ
-speak_003,æ²¡äº‹å“ˆï¼Œæˆ‘è¿™æœ‰å¥½åƒçš„ï¼Œæˆ‘é—®é—®ä½ åƒä¸åƒ/(ã„’oã„’)/~~,Has the operation finished?/(ã„’oã„’)/~~
-speak_004,åƒå•Šï¼Œå½“ç„¶åƒï¼Œå“ªæœ‰æˆ‘ä¸åƒçš„ï¼,What's the operation's progressï¼
-speak_005,åƒäº†æˆ‘çš„ä¸œè¥¿å°±è¦ç»™æˆ‘å¹²æ´»ï¼ï¼ï¼å•Šå“ˆå“ˆ,Has the operation finished?
-miaoshu_jiuwei1,ä¹å°¾ç‹èŒèŒå“’çš„å°¾å·´1,The fox with nine tails 1
-miaoshu_jiuwei2,ä¹å°¾ç‹èŒèŒå“’çš„å°¾å·´2,The fox with nine tails 2
-miaoshu_jiuwei3,ä¹å°¾ç‹èŒèŒå“’çš„å°¾å·´3,The fox with nine tails 3
-miaoshu_jiuwei4,ä¹å°¾ç‹èŒèŒå“’çš„å°¾å·´4,The fox with nine tails 4
-miaoshu_jiuwei5,ä¹å°¾ç‹èŒèŒå“’çš„å°¾å·´5,The fox with nine tails 5
-miaoshu_jiuwei6,ä¹å°¾ç‹èŒèŒå“’çš„å°¾å·´6,The fox with nine tails 6
-miaoshu_jiuwei7,ä¹å°¾ç‹èŒèŒå“’çš„å°¾å·´7,The fox with nine tails 7
-miaoshu_jiuwei8,ä¹å°¾ç‹èŒèŒå“’çš„å°¾å·´8,The fox with nine tails 8
-miaoshu_jiuwei9,ä¹å°¾ç‹èŒèŒå“’çš„å°¾å·´9,The fox with nine tails 9
-miaoshu_jiuwei10,ä¹å°¾ç‹èŒèŒå“’çš„å°¾å·´10,The fox with nine tails 10
-miaoshu_ershu,æˆ‘æ˜¯è€³é¼ æ€å¯†è¾¾,wo is Ear Mouse
-miaoshu_zhuyan,æˆ‘æ˜¯æœ±ç‡•æ€å¯†è¾¾,wo is Zhu Yan
-miaoshu_qingniao,æˆ‘æ˜¯é’é¸Ÿæ€å¯†è¾¾,wo is Qing Bird
-miaoshu_karong1,ä¼¼ä¹è¢«ä»€ä¹ˆä¸œè¥¿æ§åˆ¶äº†,Seems to be controlled by something
-miaoshu_karong2,è„‰åŠ¨çš„éŸµæ–‡ï¼Œé‡Šæ”¾å‡ºå¼ºå¤§çš„é­”åŠ›,"The pulsation of the verse, the release of powerful magic?"
-miaoshu_karong4,å¤–è£…ç”²çœ‹èµ·æ¥ä¸é‚£ä¹ˆç»“å®,The armor looks not so strong
-miaoshu_karong5,å¤–è£…ç”²çœ‹èµ·æ¥ä¸é‚£ä¹ˆç»“å®,The armor looks not so strong
-miaoshu_meidushawp01,è‡ªè®¤ä¸ºç¾è‰³çš„ç¾æœèä¼šå¯¹æ²¡æœ‰å¤´å‘æ„Ÿåˆ°æ„¤æ€’ï¼,
-miaoshu_meidushawp02,ä¼šå¯¹ç‰©ç†æ”»å‡»è¿›è¡Œå‹åˆ¶,
-miaoshu_meidushawp03,ä¼šå¯¹æ³•æœ¯æ”»å‡»è¿›è¡Œå‹åˆ¶,
-Lizardman,èœ¥èœ´äºº,Lizardman
-Flower Spirit,èŠ±é­„,Flower Spirit
-Pans,æ½˜ç¥,Pans
-Mandrake,æ›¼é™€ç½—,Mandrake
-Ammut,é˜¿ç©†ç‰¹,Ammut
-Phantom Frog,è›™é¬¼,Phantom Frog
-Kappa,æ²³ç«¥,Kappa
-Water Tyke,é¾™å®«ç«¥å­,Water Tyke
-Werewolf,ç‹¼äºº,Werewolf
-Empusae,å®‰æ™®è,Empusae
-Keres,å‡¯ç‘æ–¯,Keres
-Nephila,ç»œæ–°å¦‡,Nephila
+miaoshu_bossamute01,Ãæ¾ßÏÂÒş²Ø×ÅÈõµã,Underneath the mask lies the weakpoint.
+miaoshu_bossluoxinfu01,×¦×ÓÊ®·Ö·æÀû£¬µ«ÊÇ¿´ÆğÀ´ºÜÒ×Ëé¡£,
+miaoshu_bossluoxinfu02,×¦×ÓÊ®·Ö·æÀû£¬µ«ÊÇ¿´ÆğÀ´ºÜÒ×Ëé¡£,
+miaoshu_bossluoxinfu03,×¦×ÓÊ®·Ö·æÀû£¬µ«ÊÇ¿´ÆğÀ´ºÜÒ×Ëé¡£,
+miaoshu_bossluoxinfu04,×¦×ÓÊ®·Ö·æÀû£¬µ«ÊÇ¿´ÆğÀ´ºÜÒ×Ëé¡£,
+miaoshu_bossluoxinfu05,×¦×ÓÊ®·Ö·æÀû£¬µ«ÊÇ¿´ÆğÀ´ºÜÒ×Ëé¡£,
+miaoshu_bossluoxinfu06,×¦×ÓÊ®·Ö·æÀû£¬µ«ÊÇ¿´ÆğÀ´ºÜÒ×Ëé¡£,
+#ÎÄ×ÖId,ÎÄ×ÖÄÚÈİ,ÎÄ×ÖÄÚÈİ
+speak_001,ÍÃÉ££¬ÍÃÉ££¬Äã¸ÉÉ¶ÄÅ£¿,ÍÃÉ££¬ÍÃÉ££¬what are you doing now£¿
+speak_002,Ã»¸ÉÉ¶£¬ÄãÓÖÒª¸ÉÉ¶£¿,Nothing£¿
+speak_003,Ã»ÊÂ¹ş£¬ÎÒÕâÓĞºÃ³ÔµÄ£¬ÎÒÎÊÎÊÄã³Ô²»³Ô/(¨Òo¨Ò)/~~,Has the operation finished?/(¨Òo¨Ò)/~~
+speak_004,³Ô°¡£¬µ±È»³Ô£¬ÄÄÓĞÎÒ²»³ÔµÄ£¡,What's the operation's progress£¡
+speak_005,³ÔÁËÎÒµÄ¶«Î÷¾ÍÒª¸øÎÒ¸É»î£¡£¡£¡°¡¹ş¹ş,Has the operation finished?
+miaoshu_jiuwei1,¾ÅÎ²ºüÃÈÃÈßÕµÄÎ²°Í1,The fox with nine tails 1
+miaoshu_jiuwei2,¾ÅÎ²ºüÃÈÃÈßÕµÄÎ²°Í2,The fox with nine tails 2
+miaoshu_jiuwei3,¾ÅÎ²ºüÃÈÃÈßÕµÄÎ²°Í3,The fox with nine tails 3
+miaoshu_jiuwei4,¾ÅÎ²ºüÃÈÃÈßÕµÄÎ²°Í4,The fox with nine tails 4
+miaoshu_jiuwei5,¾ÅÎ²ºüÃÈÃÈßÕµÄÎ²°Í5,The fox with nine tails 5
+miaoshu_jiuwei6,¾ÅÎ²ºüÃÈÃÈßÕµÄÎ²°Í6,The fox with nine tails 6
+miaoshu_jiuwei7,¾ÅÎ²ºüÃÈÃÈßÕµÄÎ²°Í7,The fox with nine tails 7
+miaoshu_jiuwei8,¾ÅÎ²ºüÃÈÃÈßÕµÄÎ²°Í8,The fox with nine tails 8
+miaoshu_jiuwei9,¾ÅÎ²ºüÃÈÃÈßÕµÄÎ²°Í9,The fox with nine tails 9
+miaoshu_jiuwei10,¾ÅÎ²ºüÃÈÃÈßÕµÄÎ²°Í10,The fox with nine tails 10
+miaoshu_ershu,ÎÒÊÇ¶úÊóË¼ÃÜ´ï,wo is Ear Mouse
+miaoshu_zhuyan,ÎÒÊÇÖìÑàË¼ÃÜ´ï,wo is Zhu Yan
+miaoshu_qingniao,ÎÒÊÇÇàÄñË¼ÃÜ´ï,wo is Qing Bird
+miaoshu_karong1,ËÆºõ±»Ê²Ã´¶«Î÷¿ØÖÆÁË,It seems as if she is being controlled by something.
+miaoshu_karong2,Âö¶¯µÄÔÏÎÄ£¬ÊÍ·Å³öÇ¿´óµÄÄ§Á¦,The flowing verses release powerful magic.
+miaoshu_karong4,Íâ×°¼×¿´ÆğÀ´²»ÄÇÃ´½áÊµ,The claws doesn't seem to be that tough.
+miaoshu_karong5,Íâ×°¼×¿´ÆğÀ´²»ÄÇÃ´½áÊµ,The claws doesn't seem to be that tough.
+miaoshu_meidushawp01,×ÔÈÏÎªÃÀÑŞµÄÃÀ¶ÅÉ¯»á¶ÔÃ»ÓĞÍ··¢¸Ğµ½·ßÅ­£¡,The beautiful Medusa would be quite upset without hair.
+miaoshu_meidushawp02,»á¶ÔÎïÀí¹¥»÷½øĞĞÑ¹ÖÆ,Suppresses physical attacks. 
+miaoshu_meidushawp03,»á¶Ô·¨Êõ¹¥»÷½øĞĞÑ¹ÖÆ,Suppresses magic attacks.
+Lizardman,òáòæÈË,Lizardman
+Flower Spirit,»¨ÆÇ,Flower Spirit
+Pans,ÅËÉñ,Pans
+Mandrake,ÂüÍÓÂŞ,Mandrake
+Ammut,°¢ÄÂÌØ,Ammut
+Phantom Frog,ÍÜ¹í,Phantom Frog
+Kappa,ºÓÍ¯,Kappa
+Water Tyke,Áú¹¬Í¯×Ó,Water Tyke
+Werewolf,ÀÇÈË,Werewolf
+Empusae,°²ÆÕÉ¯,Empusae
+Keres,¿­ÈğË¹,Keres
+Nephila,ÂçĞÂ¸¾,Nephila
 Momo,Momo,Momo
-Harpy,å“ˆçš®,Harpy
+Harpy,¹şÆ¤,Harpy
 Melody Bulb,Melody Bulb,Melody Bulb
-Medusa,ç¾æœè,Medusa
-Charon,å¡æˆ,Charon
-Moon Forest - 1,æœˆå…‰æ£®æ— - 1,Moon Forest - 1
-Moon Forest - 2,æœˆå…‰æ£®æ— - 2,Moon Forest - 2
-Moon Forest - 4,æœˆå…‰æ£®æ— - 4,Moon Forest - 4
-Moon Forest - 7,æœˆå…‰æ£®æ— - 7,Moon Forest - 7
-Moon Forest - 8,æœˆå…‰æ£®æ— - 8,Moon Forest - 8
-Nether River - 2,å†¥æ²³ - 2,Nether River - 2
-Nether River - 3,å†¥æ²³ - 3,Nether River - 3
-Nether River - 4,å†¥æ²³ - 4,Nether River - 4
-Nether River - 7,å†¥æ²³ - 7,Nether River - 7
-Nether River - 8,å†¥æ²³ - 8,Nether River - 8
-s1Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-s2Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-s3Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackTriSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackTriMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackTriStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackCutSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackCutMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackCutStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackCutTriSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackCutTriMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackCutTriStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackStabSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackStabMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackStabStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackStabTriSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackStabTriMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackStabTriStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackSmashSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackSmashMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-attackSmashStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicMetalSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicMetalMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicMetalStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicPlantSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicPlantMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicPlantStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicWaterSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicWaterMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicWaterStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicFireSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicFireMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicFireStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicEarthSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicEarthMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicEarthStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicCureSlightTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicCureMediumTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-magicCureStrongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-buffSpeedTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-buffSpeedSelfTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-buffMagicTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-buffMagicSelfTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-buffAttackTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-buffDefenseTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-buffAttackSelfTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-buffDefenseSelfTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-debuffDefenseTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-bossJiuweihu1Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossJiuweihu2Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossJiuweihu3Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossJiuweihu4Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultErshuTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultQingniaoTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultZhuyanTips,"æŠ€èƒ½æè¿°,{0} Two param{1}","Spell Desc,{0} two param{1}"
-bossHundunTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong1Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong2Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong3Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong4Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong5Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong6Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin14Luoxinfu1Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin14Luoxinfu2Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin14Luoxinfu3Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin18Meidusha1Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin18Meidusha2Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin18Meidusha3Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin18Meidusha4Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin18Meidusha5Tips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-bossYueguangsenlin18Meidusha6Tips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-bossYueguangsenlin18Meidusha7Tips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-bossYueguangsenlin18Meidusha8Tips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-bossYueguangsenlin18Meidusha9Tips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-psvbossLonggongtongziTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-psvHapiTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-psvHetongTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-psvLonggongtongziTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-psvWaguiTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-ultHapiTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultHetongTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultWaguiTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultLonggongtongziTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultbossLonggongtongziTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultbossLuoxinfuTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultHuapoTips,"æŠ€èƒ½æè¿°,{0} Two param{1}","Spell Desc,{0} two param{1}"
-ultAmuteTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultLangrenTips,"æŠ€èƒ½æè¿°,{0} Two param{1}","Spell Desc,{0} two param{1}"
-ultMantuoluoTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultboosMantuoluoTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultAnpushaTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-psvHuapoTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-psvAmuteTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-psvLangrenTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-psvMantuoluoTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-psvbossMantuoluoTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-psvAnpushaTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-debuffEarthDotStrongTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-ultMomoTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-psvMomoTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-ultXiyirenTips,"æŠ€èƒ½æè¿°,{0} Two param{1}","Spell Desc,{0} two param{1}"
-psvXiyirenTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultPanshenTips,"æŠ€èƒ½æè¿°,{0} Two param{1}","Spell Desc,{0} two param{1}"
-psvPanshenTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-ultKairuisiTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-psvKairuisiTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultLuoxinfuTips,"æŠ€èƒ½æè¿°,{0} Two param{1}","Spell Desc,{0} two param{1}"
-psvLuoxinfuTips,"æŠ€èƒ½æè¿°,one param{0}","Spell Desc,one param{0}"
-ultbossXiyirenTips,"æŠ€èƒ½æè¿°,{0} Two param{1}","Spell Desc,{0} two param{1}"
-psvbossXiyirenTips,æŠ€èƒ½æè¿°ï¼ŒnoParam,Spell Desc no Param
-attackCutSlightName,å¼±æ”»å‡»,Weak Attack
-attackCutMediumName,æ”»å‡»,Attack
-attackCutStrongName,å¼ºåŠ›æ”»å‡»,Strong Attack
-attackCutTriSlightName,ä¸‰è¿å¼±å‡»,Weak Triple Strike
-attackCutTriMediumName,ä¸‰è¿å‡»,Triple Strike
-attackCutTriStrongName,ä¸‰è¿å¼ºå‡»,Strong Triple Strike
-attackStabSlightName,å¼±æ”»å‡»,Weak Attack
-attackStabMediumName,æ”»å‡»,Attack
-attackStabStrongName,å¼ºåŠ›æ”»å‡»,Strong Attack
-attackStabTriSlightName,ä¸‰è¿å¼±å‡»,Weak Triple Strike
-attackStabTriMediumName,ä¸‰è¿å‡»,Triple Strike
-attackStabTriStrongName,ä¸‰è¿å¼ºå‡»,Strong Triple Strike
-attackSmashSlightName,å¼±æ”»å‡»,Weak Attack
-attackSmashMediumName,æ”»å‡»,Attack
-attackSmashStrongName,å¼ºåŠ›æ”»å‡»,Strong Attack
-magicMetalSlightName,åœ£å…‰å¼¹,Holy Bolt
-magicMetalMediumName,åœ£å…‰ä¸€å‡»,Holy Strike
-magicMetalStrongName,åœ£å…‰é‡å‡»,Divine Blast
-magicPlantSlightName,é£å¶æ–©,Leaf Darts
-magicPlantMediumName,è†æ£˜ç©¿åˆº,Piercing Spikes
-magicPlantStrongName,ç–¯ç‹‚ç”Ÿé•¿,Wild Growth
-magicWaterSlightName,æ°´æµæœ¯,Water Splash
-magicWaterMediumName,ç€‘å¸ƒå†²å‡»,Waterfall
-magicWaterStrongName,æ°´é¾™å·,Waterspout
-magicFireSlightName,ç«è‹—æœ¯,Flame Blast
-magicFireMediumName,ç‚½ç„°å‡»,Blaze
-magicFireStrongName,åœ°ç‹±çƒˆç„°,Hell Blaze
-magicEarthSlightName,æš—å½±çªè¢­,Shadow Swipe
-magicEarthMediumName,æš—å½±çˆª,Shadow Claw
-magicEarthStrongName,æš—å½±å¼ºè¢­,Shadow Strike
-magicCureSlightName,å›å¤æœ¯,Lesser Healing
-magicCureMediumName,æ²»ç–—æœ¯,Healing
-magicCureStrongName,å¼ºæ•ˆæ²»ç–—,Potent Healing
-buffSpeedName,åŠ é€Ÿæœ¯,Haste
-buffSpeedSelfName,é€Ÿåº¦çˆ†å‘,Dash
-buffMagicName,æ™ºæ…§æœ¯,Insight
-buffMagicSelfName,æ™ºåŠ›çˆ†å‘,High Intellect
-buffAttackName,æ¿€åŠ±æœ¯,Inspire
-buffDefenseName,åŠ æŠ¤æœ¯,Ward
-buffAttackSelfName,åŠ›é‡çˆ†å‘,Overwhelming Strength
-buffDefenseSelfName,é˜²å¾¡å§¿æ€,Defensive Stance
-debuffDefenseName,ç ´ç”²æœ¯,Sunder
+Medusa,ÃÀ¶ÅÉ¯,Medusa
+Charon,¿¨ÈÖ,Charon
+Moon Forest - 1,ÔÂ¹âÉ­ÁÖ - 1,Moon Forest - 1
+Moon Forest - 2,ÔÂ¹âÉ­ÁÖ - 2,Moon Forest - 2
+Moon Forest - 4,ÔÂ¹âÉ­ÁÖ - 4,Moon Forest - 4
+Moon Forest - 7,ÔÂ¹âÉ­ÁÖ - 7,Moon Forest - 7
+Moon Forest - 8,ÔÂ¹âÉ­ÁÖ - 8,Moon Forest - 8
+Nether River - 2,Ú¤ºÓ - 2,Nether River - 2
+Nether River - 3,Ú¤ºÓ - 3,Nether River - 3
+Nether River - 4,Ú¤ºÓ - 4,Nether River - 4
+Nether River - 7,Ú¤ºÓ - 7,Nether River - 7
+Nether River - 8,Ú¤ºÓ - 8,Nether River - 8
+s1Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+s2Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+s3Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackTriSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackTriMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackTriStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackCutSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackCutMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackCutStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackCutTriSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackCutTriMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackCutTriStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackStabSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackStabMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackStabStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackStabTriSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackStabTriMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackStabTriStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackSmashSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackSmashMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+attackSmashStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicMetalSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicMetalMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicMetalStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicPlantSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicPlantMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicPlantStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicWaterSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicWaterMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicWaterStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicFireSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicFireMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicFireStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicEarthSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicEarthMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicEarthStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicCureSlightTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicCureMediumTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+magicCureStrongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+buffSpeedTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+buffSpeedSelfTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+buffMagicTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+buffMagicSelfTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+buffAttackTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+buffDefenseTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+buffAttackSelfTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+buffDefenseSelfTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+debuffDefenseTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+bossJiuweihu1Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossJiuweihu2Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossJiuweihu3Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossJiuweihu4Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultErshuTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultQingniaoTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultZhuyanTips,"¼¼ÄÜÃèÊö,{0} Two param{1}","Spell Desc,{0} two param{1}"
+bossHundunTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong1Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong2Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong3Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong4Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong5Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong6Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin14Luoxinfu1Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin14Luoxinfu2Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin14Luoxinfu3Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin18Meidusha1Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin18Meidusha2Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin18Meidusha3Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin18Meidusha4Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin18Meidusha5Tips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+bossYueguangsenlin18Meidusha6Tips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+bossYueguangsenlin18Meidusha7Tips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+bossYueguangsenlin18Meidusha8Tips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+bossYueguangsenlin18Meidusha9Tips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+psvbossLonggongtongziTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+psvHapiTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+psvHetongTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+psvLonggongtongziTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+psvWaguiTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+ultHapiTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultHetongTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultWaguiTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultLonggongtongziTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultbossLonggongtongziTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultbossLuoxinfuTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultHuapoTips,"¼¼ÄÜÃèÊö,{0} Two param{1}","Spell Desc,{0} two param{1}"
+ultAmuteTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultLangrenTips,"¼¼ÄÜÃèÊö,{0} Two param{1}","Spell Desc,{0} two param{1}"
+ultMantuoluoTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultboosMantuoluoTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultAnpushaTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+psvHuapoTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+psvAmuteTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+psvLangrenTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+psvMantuoluoTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+psvbossMantuoluoTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+psvAnpushaTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+debuffEarthDotStrongTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+ultMomoTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+psvMomoTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+ultXiyirenTips,"¼¼ÄÜÃèÊö,{0} Two param{1}","Spell Desc,{0} two param{1}"
+psvXiyirenTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultPanshenTips,"¼¼ÄÜÃèÊö,{0} Two param{1}","Spell Desc,{0} two param{1}"
+psvPanshenTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+ultKairuisiTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+psvKairuisiTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultLuoxinfuTips,"¼¼ÄÜÃèÊö,{0} Two param{1}","Spell Desc,{0} two param{1}"
+psvLuoxinfuTips,"¼¼ÄÜÃèÊö,one param{0}","Spell Desc,one param{0}"
+ultbossXiyirenTips,"¼¼ÄÜÃèÊö,{0} Two param{1}","Spell Desc,{0} two param{1}"
+psvbossXiyirenTips,¼¼ÄÜÃèÊö£¬noParam,Spell Desc no Param
+attackCutSlightName,Èõ¹¥»÷,Weak Attack
+attackCutMediumName,¹¥»÷,Attack
+attackCutStrongName,Ç¿Á¦¹¥»÷,Strong Attack
+attackCutTriSlightName,ÈıÁ¬Èõ»÷,Weak Triple Strike
+attackCutTriMediumName,ÈıÁ¬»÷,Triple Strike
+attackCutTriStrongName,ÈıÁ¬Ç¿»÷,Strong Triple Strike
+attackStabSlightName,Èõ¹¥»÷,Weak Attack
+attackStabMediumName,¹¥»÷,Attack
+attackStabStrongName,Ç¿Á¦¹¥»÷,Strong Attack
+attackStabTriSlightName,ÈıÁ¬Èõ»÷,Weak Triple Strike
+attackStabTriMediumName,ÈıÁ¬»÷,Triple Strike
+attackStabTriStrongName,ÈıÁ¬Ç¿»÷,Strong Triple Strike
+attackSmashSlightName,Èõ¹¥»÷,Weak Attack
+attackSmashMediumName,¹¥»÷,Attack
+attackSmashStrongName,Ç¿Á¦¹¥»÷,Strong Attack
+magicMetalSlightName,Ê¥¹âµ¯,Holy Bolt
+magicMetalMediumName,Ê¥¹âÒ»»÷,Holy Strike
+magicMetalStrongName,Ê¥¹âÖØ»÷,Divine Blast
+magicPlantSlightName,·ÉÒ¶Õ¶,Leaf Darts
+magicPlantMediumName,¾£¼¬´©´Ì,Piercing Spikes
+magicPlantStrongName,·è¿ñÉú³¤,Wild Growth
+magicWaterSlightName,Ë®Á÷Êõ,Water Splash
+magicWaterMediumName,ÆÙ²¼³å»÷,Waterfall
+magicWaterStrongName,Ë®Áú¾í,Waterspout
+magicFireSlightName,»ğÃçÊõ,Flame Blast
+magicFireMediumName,³ãÑæ»÷,Blaze
+magicFireStrongName,µØÓüÁÒÑæ,Hell Blaze
+magicEarthSlightName,°µÓ°Í»Ï®,Shadow Swipe
+magicEarthMediumName,°µÓ°×¦,Shadow Claw
+magicEarthStrongName,°µÓ°Ç¿Ï®,Shadow Strike
+magicCureSlightName,»Ø¸´Êõ,Lesser Healing
+magicCureMediumName,ÖÎÁÆÊõ,Healing
+magicCureStrongName,Ç¿Ğ§ÖÎÁÆ,Potent Healing
+buffSpeedName,¼ÓËÙÊõ,Haste
+buffSpeedSelfName,ËÙ¶È±¬·¢,Dash
+buffMagicName,ÖÇ»ÛÊõ,Insight
+buffMagicSelfName,ÖÇÁ¦±¬·¢,High Intellect
+buffAttackName,¼¤ÀøÊõ,Inspire
+buffDefenseName,¼Ó»¤Êõ,Ward
+buffAttackSelfName,Á¦Á¿±¬·¢,Overwhelming Strength
+buffDefenseSelfName,·ÀÓù×ËÌ¬,Defensive Stance
+debuffDefenseName,ÆÆ¼×Êõ,Sunder
 bossJiuweihu1Name,,
 bossJiuweihu2Name,,
 bossJiuweihu3Name,,
@@ -267,28 +267,28 @@ psvbossMantuoluoName,,
 psvAnpushaName,,
 ultbossZouyincaoName,,
 psvbossZouyincaoName,,
-buffHotName,æ¢å¤æœ¯,Recover
-debuffAttackName,è™šå¼±æœ¯,Disable
-debuffMagicName,å¤±å¿ƒæœ¯,Stupefy
-debuffSpeedName,ç¼“é€Ÿæœ¯,Inhibit
-debuffDotSlightName,æ’•è£‚ï¼ˆå¼±ï¼‰,Tear (Weak)
-debuffDotMediumName,æ’•è£‚ï¼ˆä¸­ï¼‰,Tear (Normal)
-debuffDotStrongName,æ’•è£‚ï¼ˆå¼ºï¼‰,Tear (Strong)
-debuffFireDotSlightName,ç‚¹ç‡ƒï¼ˆå¼±ï¼‰,Ignite (Weak)
-debuffFireDotMediumName,ç‚¹ç‡ƒï¼ˆä¸­ï¼‰,Ignite (Normal)
-debuffFireDotStrongName,ç‚¹ç‡ƒï¼ˆå¼ºï¼‰,Ignite (Strong)
-debuffWaterDotSlightName,æººæ°´ï¼ˆå¼±ï¼‰,Gush (Weak)
-debuffWateDotMediumName,æººæ°´ï¼ˆä¸­ï¼‰,Gush (Normal)
-debuffWateDotStrongName,æººæ°´ï¼ˆå¼ºï¼‰,Gush (Strong)
-debuffPlantDotSlightName,æ–½æ¯’ï¼ˆå¼±ï¼‰,Poison (Weak)
-debuffPlantDotMediumName,æ–½æ¯’ï¼ˆä¸­ï¼‰,Poison (Normal)
-debuffPlantDotStrongName,æ–½æ¯’ï¼ˆå¼ºï¼‰,Poison (Strong)
-debuffMetalDotSlightName,è€€æ–‘ï¼ˆå¼±ï¼‰,Flare (Weak)
-debuffMetalDotMediumName,è€€æ–‘ï¼ˆä¸­ï¼‰,Flare (Normal)
-debuffMetalDotStrongName,è€€æ–‘ï¼ˆå¼ºï¼‰,Flare (Strong)
-debuffEarthDotSlightName,ç—›æ¥šï¼ˆå¼±ï¼‰,Anguish (Weak)
-debuffEarthDotMediumName,ç—›æ¥šï¼ˆä¸­ï¼‰,Anguish (Normal)
-debuffEarthDotStrongName,ç—›æ¥šï¼ˆå¼ºï¼‰,Anguish (Strong)
+buffHotName,»Ö¸´Êõ,Recover
+debuffAttackName,ĞéÈõÊõ,Disable
+debuffMagicName,Ê§ĞÄÊõ,Stupefy
+debuffSpeedName,»ºËÙÊõ,Inhibit
+debuffDotSlightName,ËºÁÑ£¨Èõ£©,Tear (Weak)
+debuffDotMediumName,ËºÁÑ£¨ÖĞ£©,Tear (Normal)
+debuffDotStrongName,ËºÁÑ£¨Ç¿£©,Tear (Strong)
+debuffFireDotSlightName,µãÈ¼£¨Èõ£©,Ignite (Weak)
+debuffFireDotMediumName,µãÈ¼£¨ÖĞ£©,Ignite (Normal)
+debuffFireDotStrongName,µãÈ¼£¨Ç¿£©,Ignite (Strong)
+debuffWaterDotSlightName,ÄçË®£¨Èõ£©,Gush (Weak)
+debuffWateDotMediumName,ÄçË®£¨ÖĞ£©,Gush (Normal)
+debuffWateDotStrongName,ÄçË®£¨Ç¿£©,Gush (Strong)
+debuffPlantDotSlightName,Ê©¶¾£¨Èõ£©,Poison (Weak)
+debuffPlantDotMediumName,Ê©¶¾£¨ÖĞ£©,Poison (Normal)
+debuffPlantDotStrongName,Ê©¶¾£¨Ç¿£©,Poison (Strong)
+debuffMetalDotSlightName,Ò«°ß£¨Èõ£©,Flare (Weak)
+debuffMetalDotMediumName,Ò«°ß£¨ÖĞ£©,Flare (Normal)
+debuffMetalDotStrongName,Ò«°ß£¨Ç¿£©,Flare (Strong)
+debuffEarthDotSlightName,Í´³ş£¨Èõ£©,Anguish (Weak)
+debuffEarthDotMediumName,Í´³ş£¨ÖĞ£©,Anguish (Normal)
+debuffEarthDotStrongName,Í´³ş£¨Ç¿£©,Anguish (Strong)
 ultMomoName,,
 psvMomoName,,
 ultXiyirenName,,

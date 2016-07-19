@@ -343,9 +343,11 @@ public class EquipAttr extends HawkConfigBase{
 	
 	@Override
 	protected boolean checkValid() {
-		if(HawkConfigManager.getInstance().getConfigByKey(BaseAttrCfg.class, this.baseAttrId) == null)
+		if(HawkConfigManager.getInstance().getConfigByKey(BaseAttrCfg.class, this.baseAttrId) == null) {
+			HawkLog.errPrintln(String.format("config invalid BaseAttrCfg : %d", this.baseAttrId));
 			return false;
-		
+		}
+	
 		return true;
 	}
 }

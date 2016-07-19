@@ -145,10 +145,95 @@ public final class HS {
   }
 
   /**
+   * Protobuf enum {@code gm}
+   *
+   * <pre>
+   * GM协议ID列表(100&lt;=gm&lt;1000)
+   * </pre>
+   */
+  public enum gm
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>GEN_TEST_ACCOUNT = 100;</code>
+     *
+     * <pre>
+     * 生成测试账号
+     * </pre>
+     */
+    GEN_TEST_ACCOUNT(0, 100),
+    ;
+
+    /**
+     * <code>GEN_TEST_ACCOUNT = 100;</code>
+     *
+     * <pre>
+     * 生成测试账号
+     * </pre>
+     */
+    public static final int GEN_TEST_ACCOUNT_VALUE = 100;
+
+
+    public final int getNumber() { return value; }
+
+    public static gm valueOf(int value) {
+      switch (value) {
+        case 100: return GEN_TEST_ACCOUNT;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<gm>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<gm>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<gm>() {
+            public gm findValueByNumber(int number) {
+              return gm.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.HS.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final gm[] VALUES = values();
+
+    public static gm valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private gm(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:gm)
+  }
+
+  /**
    * Protobuf enum {@code code}
    *
    * <pre>
-   * 游戏协议ID列表(&gt;=100)
+   * 游戏协议ID列表(&gt;=1000)
    * </pre>
    */
   public enum code
@@ -936,7 +1021,7 @@ public final class HS {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.HS.getDescriptor().getEnumTypes().get(1);
+      return com.hawk.game.protocol.HS.getDescriptor().getEnumTypes().get(2);
     }
 
     private static final code[] VALUES = values();
@@ -972,51 +1057,52 @@ public final class HS {
     java.lang.String[] descriptorData = {
       "\n\021Protocol/HS.proto*I\n\003sys\022\020\n\014DATA_WRAPP" +
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
-      "\n\nERROR_CODE\020\004*\313\r\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n" +
-      "\007LOGIN_S\020\351\007\022\r\n\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353" +
-      "\007\022\016\n\tKICKOUT_S\020\354\007\022\017\n\nSYNCINFO_C\020\355\007\022\017\n\nSY" +
-      "NCINFO_S\020\356\007\022\027\n\022PLAYER_INFO_SYNC_S\020\362\007\022\033\n\026" +
-      "STATISTICS_INFO_SYNC_S\020\363\007\022\030\n\023MONSTER_INF" +
-      "O_SYNC_S\020\364\007\022\025\n\020ITEM_INFO_SYNC_S\020\365\007\022\026\n\021EQ" +
-      "UIP_INFO_SYNC_S\020\366\007\022\026\n\021QUEST_INFO_SYNC_S\020" +
-      "\367\007\022\025\n\020MAIL_INFO_SYNC_S\020\370\007\022\026\n\021ASSEMBLE_FI",
-      "NISH_S\020\371\007\022\024\n\017PLAYER_CREATE_C\020\315\010\022\024\n\017PLAYE" +
-      "R_CREATE_S\020\316\010\022\025\n\020PLAYER_CONSUME_S\020\317\010\022\024\n\017" +
-      "PLAYER_REWARD_S\020\320\010\022\022\n\rMONSTER_ADD_S\020\321\017\022\024" +
-      "\n\017MONSTER_CATCH_C\020\322\017\022\024\n\017MONSTER_CATCH_S\020" +
-      "\323\017\022\024\n\017MONSTER_BREAK_C\020\324\017\022\024\n\017MONSTER_BREA" +
-      "K_S\020\325\017\022\023\n\016MONSTER_FEED_C\020\326\017\022\023\n\016MONSTER_F" +
-      "EED_S\020\327\017\022\027\n\022MONSTER_SKILL_UP_C\020\330\017\022\027\n\022MON" +
-      "STER_SKILL_UP_S\020\331\017\022\027\n\022MONSTER_STAGE_UP_C" +
-      "\020\332\017\022\027\n\022MONSTER_STAGE_UP_S\020\333\017\022\026\n\021INSTANCE" +
-      "_ASSIST_C\020\271\027\022\026\n\021INSTANCE_ASSIST_S\020\272\027\022\025\n\020",
-      "INSTANCE_ENTER_C\020\273\027\022\025\n\020INSTANCE_ENTER_S\020" +
-      "\274\027\022\026\n\021INSTANCE_SETTLE_C\020\275\027\022\026\n\021INSTANCE_S" +
-      "ETTLE_S\020\276\027\022\031\n\024INSTANCE_OPEN_CARD_C\020\277\027\022\031\n" +
-      "\024INSTANCE_OPEN_CARD_S\020\300\027\022\025\n\020INSTANCE_SWE" +
-      "EP_C\020\301\027\022\025\n\020INSTANCE_SWEEP_S\020\302\027\022\033\n\026INSTAN" +
-      "CE_RESET_COUNT_C\020\303\027\022\033\n\026INSTANCE_RESET_CO" +
-      "UNT_S\020\304\027\022\017\n\nITEM_USE_C\020\241\037\022\017\n\nITEM_USE_S\020" +
-      "\242\037\022\020\n\013ITEM_SELL_C\020\243\037\022\020\n\013ITEM_SELL_S\020\244\037\022\017" +
-      "\n\nITEM_BUY_C\020\245\037\022\017\n\nITEM_BUY_S\020\246\037\022\023\n\016ITEM" +
-      "_COMPOSE_C\020\247\037\022\023\n\016ITEM_COMPOSE_S\020\250\037\022\021\n\014EQ",
-      "UIP_SELL_C\020\205 \022\021\n\014EQUIP_SELL_S\020\206 \022\020\n\013EQUI" +
-      "P_BUY_C\020\207 \022\020\n\013EQUIP_BUY_S\020\210 \022\024\n\017EQUIP_CO" +
-      "MPOSE_C\020\211 \022\024\n\017EQUIP_COMPOSE_S\020\212 \022\033\n\026EQUI" +
-      "P_INCREASE_LEVEL_C\020\213 \022\033\n\026EQUIP_INCREASE_" +
-      "LEVEL_S\020\214 \022\033\n\026EQUIP_INCREASE_STAGE_C\020\215 \022" +
-      "\033\n\026EQUIP_INCREASE_STAGE_S\020\216 \022\032\n\025EQUIP_MO" +
-      "NSTER_DRESS_C\020\230 \022\032\n\025EQUIP_MONSTER_DRESS_" +
-      "S\020\231 \022\034\n\027EQUIP_MONSTER_UNDRESS_C\020\232 \022\034\n\027EQ" +
-      "UIP_MONSTER_UNDRESS_S\020\233 \022\034\n\027EQUIP_MONSTE" +
-      "R_REPLACE_C\020\234 \022\034\n\027EQUIP_MONSTER_REPLACE_",
-      "S\020\235 \022\023\n\016QUEST_SUBMIT_C\020\211\'\022\023\n\016QUEST_SUBMI" +
-      "T_S\020\212\'\022\023\n\016QUEST_ACCEPT_S\020\213\'\022\023\n\016QUEST_UPD" +
-      "ATE_S\020\214\'\022\023\n\016QUEST_REMOVE_S\020\215\'\022\020\n\013MAIL_RE" +
-      "AD_C\020\361.\022\023\n\016MAIL_RECEIVE_C\020\362.\022\023\n\016MAIL_REC" +
-      "EIVE_S\020\363.\022\027\n\022MAIL_RECEIVE_ALL_C\020\364.\022\027\n\022MA" +
-      "IL_RECEIVE_ALL_S\020\365.\022\017\n\nMAIL_NEW_S\020\366.B\030\n\026" +
-      "com.hawk.game.protocol"
+      "\n\nERROR_CODE\020\004*\032\n\002gm\022\024\n\020GEN_TEST_ACCOUNT" +
+      "\020d*\313\r\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022" +
+      "\r\n\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICKOUT" +
+      "_S\020\354\007\022\017\n\nSYNCINFO_C\020\355\007\022\017\n\nSYNCINFO_S\020\356\007\022" +
+      "\027\n\022PLAYER_INFO_SYNC_S\020\362\007\022\033\n\026STATISTICS_I" +
+      "NFO_SYNC_S\020\363\007\022\030\n\023MONSTER_INFO_SYNC_S\020\364\007\022" +
+      "\025\n\020ITEM_INFO_SYNC_S\020\365\007\022\026\n\021EQUIP_INFO_SYN" +
+      "C_S\020\366\007\022\026\n\021QUEST_INFO_SYNC_S\020\367\007\022\025\n\020MAIL_I",
+      "NFO_SYNC_S\020\370\007\022\026\n\021ASSEMBLE_FINISH_S\020\371\007\022\024\n" +
+      "\017PLAYER_CREATE_C\020\315\010\022\024\n\017PLAYER_CREATE_S\020\316" +
+      "\010\022\025\n\020PLAYER_CONSUME_S\020\317\010\022\024\n\017PLAYER_REWAR" +
+      "D_S\020\320\010\022\022\n\rMONSTER_ADD_S\020\321\017\022\024\n\017MONSTER_CA" +
+      "TCH_C\020\322\017\022\024\n\017MONSTER_CATCH_S\020\323\017\022\024\n\017MONSTE" +
+      "R_BREAK_C\020\324\017\022\024\n\017MONSTER_BREAK_S\020\325\017\022\023\n\016MO" +
+      "NSTER_FEED_C\020\326\017\022\023\n\016MONSTER_FEED_S\020\327\017\022\027\n\022" +
+      "MONSTER_SKILL_UP_C\020\330\017\022\027\n\022MONSTER_SKILL_U" +
+      "P_S\020\331\017\022\027\n\022MONSTER_STAGE_UP_C\020\332\017\022\027\n\022MONST" +
+      "ER_STAGE_UP_S\020\333\017\022\026\n\021INSTANCE_ASSIST_C\020\271\027",
+      "\022\026\n\021INSTANCE_ASSIST_S\020\272\027\022\025\n\020INSTANCE_ENT" +
+      "ER_C\020\273\027\022\025\n\020INSTANCE_ENTER_S\020\274\027\022\026\n\021INSTAN" +
+      "CE_SETTLE_C\020\275\027\022\026\n\021INSTANCE_SETTLE_S\020\276\027\022\031" +
+      "\n\024INSTANCE_OPEN_CARD_C\020\277\027\022\031\n\024INSTANCE_OP" +
+      "EN_CARD_S\020\300\027\022\025\n\020INSTANCE_SWEEP_C\020\301\027\022\025\n\020I" +
+      "NSTANCE_SWEEP_S\020\302\027\022\033\n\026INSTANCE_RESET_COU" +
+      "NT_C\020\303\027\022\033\n\026INSTANCE_RESET_COUNT_S\020\304\027\022\017\n\n" +
+      "ITEM_USE_C\020\241\037\022\017\n\nITEM_USE_S\020\242\037\022\020\n\013ITEM_S" +
+      "ELL_C\020\243\037\022\020\n\013ITEM_SELL_S\020\244\037\022\017\n\nITEM_BUY_C" +
+      "\020\245\037\022\017\n\nITEM_BUY_S\020\246\037\022\023\n\016ITEM_COMPOSE_C\020\247",
+      "\037\022\023\n\016ITEM_COMPOSE_S\020\250\037\022\021\n\014EQUIP_SELL_C\020\205" +
+      " \022\021\n\014EQUIP_SELL_S\020\206 \022\020\n\013EQUIP_BUY_C\020\207 \022\020" +
+      "\n\013EQUIP_BUY_S\020\210 \022\024\n\017EQUIP_COMPOSE_C\020\211 \022\024" +
+      "\n\017EQUIP_COMPOSE_S\020\212 \022\033\n\026EQUIP_INCREASE_L" +
+      "EVEL_C\020\213 \022\033\n\026EQUIP_INCREASE_LEVEL_S\020\214 \022\033" +
+      "\n\026EQUIP_INCREASE_STAGE_C\020\215 \022\033\n\026EQUIP_INC" +
+      "REASE_STAGE_S\020\216 \022\032\n\025EQUIP_MONSTER_DRESS_" +
+      "C\020\230 \022\032\n\025EQUIP_MONSTER_DRESS_S\020\231 \022\034\n\027EQUI" +
+      "P_MONSTER_UNDRESS_C\020\232 \022\034\n\027EQUIP_MONSTER_" +
+      "UNDRESS_S\020\233 \022\034\n\027EQUIP_MONSTER_REPLACE_C\020",
+      "\234 \022\034\n\027EQUIP_MONSTER_REPLACE_S\020\235 \022\023\n\016QUES" +
+      "T_SUBMIT_C\020\211\'\022\023\n\016QUEST_SUBMIT_S\020\212\'\022\023\n\016QU" +
+      "EST_ACCEPT_S\020\213\'\022\023\n\016QUEST_UPDATE_S\020\214\'\022\023\n\016" +
+      "QUEST_REMOVE_S\020\215\'\022\020\n\013MAIL_READ_C\020\361.\022\023\n\016M" +
+      "AIL_RECEIVE_C\020\362.\022\023\n\016MAIL_RECEIVE_S\020\363.\022\027\n" +
+      "\022MAIL_RECEIVE_ALL_C\020\364.\022\027\n\022MAIL_RECEIVE_A" +
+      "LL_S\020\365.\022\017\n\nMAIL_NEW_S\020\366.B\030\n\026com.hawk.gam" +
+      "e.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

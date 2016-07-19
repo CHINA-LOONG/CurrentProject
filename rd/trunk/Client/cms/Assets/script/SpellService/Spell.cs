@@ -62,7 +62,7 @@ public class SpellProtoType
 		case (int)SpellType.Spell_Type_MgicAttack:
 		case (int)SpellType.Spell_Type_Cure:
 		case (int)SpellType.Spell_Type_MagicDazhao:
-			return string.Format (TipAttr, baseTipValue + (level - 1) * levelAdjust);
+			return string.Format (TipAttr, (baseTipValue + (level - 1) * levelAdjust)*100);
 			
 		case (int)SpellType.Spell_Type_Beneficial:
 		case (int)SpellType.Spell_Type_Negative:
@@ -71,7 +71,7 @@ public class SpellProtoType
 			return TipAttr;
 			
 		case (int)SpellType.Spell_Type_PhyDaZhao:
-			return string.Format (TipAttr, actionCount, baseTipValue + (level - 1) * levelAdjust);
+			return string.Format (TipAttr, actionCount, (baseTipValue + (level - 1) * levelAdjust)*100);
 		default:
 			return TipAttr;
 		}

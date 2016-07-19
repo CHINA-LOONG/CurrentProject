@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase;
+import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 
 import com.hawk.game.item.ItemInfo;
@@ -79,6 +80,7 @@ public class MonsterStageCfg extends HawkConfigBase {
 		for (ItemInfo item: demandItemList) {
 			ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, item.getItemId());
 			if (null == itemCfg) {
+				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", item.getItemId()));
 				return false;
 			}
 		}
@@ -86,6 +88,7 @@ public class MonsterStageCfg extends HawkConfigBase {
 		for (ItemInfo monster : demandMonsterList) {
 			MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getItemId());
 			if (null == monsterCfg) {
+				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", monster.getItemId()));
 				return false;
 			}
 		}

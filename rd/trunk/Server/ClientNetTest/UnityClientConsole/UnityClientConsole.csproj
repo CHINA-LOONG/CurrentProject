@@ -70,6 +70,7 @@
     <Compile Include="Protocol\Const.cs" />
     <Compile Include="Protocol\Consume.cs" />
     <Compile Include="Protocol\Equip.cs" />
+    <Compile Include="Protocol\GM.cs" />
     <Compile Include="Protocol\HS.cs" />
     <Compile Include="Protocol\Instance.cs" />
     <Compile Include="Protocol\Item.cs" />

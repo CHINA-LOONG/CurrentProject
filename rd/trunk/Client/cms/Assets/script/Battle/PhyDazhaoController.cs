@@ -104,7 +104,7 @@ public class PhyDazhaoController : MonoBehaviour
 		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 		//爆点
-		casterBattleGo.TriggerEvent ("magicDazhaoReady", Time.time, null);
+		casterBattleGo.TriggerEvent ("phyDazhaoReady", Time.time, null);
 		
 		StartCoroutine (showOffCo ());
 	}

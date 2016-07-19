@@ -791,7 +791,7 @@ public class Player extends HawkAppObj {
 			BehaviorLogger.log4Service(this, Source.MONSTER_ADD, action, 
 					Params.valueOf("monsterCfgId", monsterCfgId), 
 					Params.valueOf("monsterId", monsterEntity.getId()));
-			
+
 			return monsterEntity;
 		}
 		return null;
@@ -928,28 +928,32 @@ public class Player extends HawkAppObj {
 		statisticsEntity.setSkillPoint(10);
 		statisticsEntity.notifyUpdate(true);
 
+		// TEST ----------------------------------------------------------------------------------------
 		// default monster
-		LinkedList<Integer> battleMonsterList = new LinkedList<>();
-		MonsterEntity monsterEntity = null;
+		if (statisticsEntity.getMonsterMaxCount() == 0) {
+			LinkedList<Integer> battleMonsterList = new LinkedList<>();
+			MonsterEntity monsterEntity = null;
 
-		if (null != (monsterEntity = increaseMonster("UnitDemoErshu", 1, Action.SYSTEM))) {
-			battleMonsterList.add(monsterEntity.getId());
-		}
-		if (null != (monsterEntity = increaseMonster("UnitDemoQingniao", 1, Action.SYSTEM))) {
-			battleMonsterList.add(monsterEntity.getId());
-		}
-		if (null != (monsterEntity = increaseMonster("UnitDemoZhuyan", 1, Action.SYSTEM))) {
-			battleMonsterList.add(monsterEntity.getId());
-		}
-		if (null != (monsterEntity = increaseMonster("UnitDemoQingniao", 1, Action.SYSTEM))) {
-			battleMonsterList.add(monsterEntity.getId());
-		}
-		if (null != (monsterEntity = increaseMonster("UnitDemoZhuyan", 1, Action.SYSTEM))) {
-			battleMonsterList.add(monsterEntity.getId());
-		}
+			if (null != (monsterEntity = increaseMonster("UnitDemoErshu", 1, Action.SYSTEM))) {
+				battleMonsterList.add(monsterEntity.getId());
+			}
+			if (null != (monsterEntity = increaseMonster("UnitDemoQingniao", 1, Action.SYSTEM))) {
+				battleMonsterList.add(monsterEntity.getId());
+			}
+			if (null != (monsterEntity = increaseMonster("UnitDemoZhuyan", 1, Action.SYSTEM))) {
+				battleMonsterList.add(monsterEntity.getId());
+			}
+			if (null != (monsterEntity = increaseMonster("UnitDemoQingniao", 1, Action.SYSTEM))) {
+				battleMonsterList.add(monsterEntity.getId());
+			}
+			if (null != (monsterEntity = increaseMonster("UnitDemoZhuyan", 1, Action.SYSTEM))) {
+				battleMonsterList.add(monsterEntity.getId());
+			}
 
-		getEntity().setBattleMonsterList(battleMonsterList);
-		getEntity().notifyUpdate(false);
+			getEntity().setBattleMonsterList(battleMonsterList);
+			getEntity().notifyUpdate(false);
+		}
+		// TEST END-------------------------------------------------------------------------------------
 	}
 
 	/**

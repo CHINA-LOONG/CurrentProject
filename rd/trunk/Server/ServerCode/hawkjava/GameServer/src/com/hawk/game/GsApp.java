@@ -2,8 +2,6 @@ package com.hawk.game;
 
 import java.net.InetAddress;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -11,7 +9,6 @@ import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigStorage;
-import org.hawk.db.HawkDBManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.HawkSession;
@@ -26,13 +23,11 @@ import org.hawk.util.services.HawkCdkService;
 import org.hawk.util.services.HawkEmailService;
 import org.hawk.util.services.HawkReportService;
 import org.hawk.xid.HawkXID;
-import org.hibernate.type.IntegerType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.hawk.game.callback.ShutdownCallback;
 import com.hawk.game.config.GrayPuidCfg;
-import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
@@ -182,7 +177,7 @@ public class GsApp extends HawkApp {
 		}
 		
 		// 初始化邮件服务
-		if (GsConfig.getInstance().getEmailUser().length() > 0) {
+		if (GsConfig.getInstance().getEmailUser() != null && GsConfig.getInstance().getEmailUser().length() > 0) {
 			HawkLog.logPrintln("install email service......");
 			HawkEmailService.getInstance().install("smtp.163.com", 25,
 					GsConfig.getInstance().getEmailUser(),
@@ -293,7 +288,7 @@ public class GsApp extends HawkApp {
 	@Override
 	public void reportException(Exception e) {
 		HawkEmailService emailService = HawkEmailService.getInstance();
-		if (emailService != null) {
+		if (true == emailService.checkValid()) {
 			String emailTitle = String.format("exception(%s_%s_%s)", GsConfig
 					.getInstance().getGameId(), GsConfig.getInstance()
 					.getPlatform(), GsConfig.getInstance().getServerId());

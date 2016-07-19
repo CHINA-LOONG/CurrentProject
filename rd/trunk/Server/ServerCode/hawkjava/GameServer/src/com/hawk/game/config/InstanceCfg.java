@@ -10,6 +10,7 @@ import net.sf.json.JSONArray;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase;
+import org.hawk.log.HawkLog;
 import org.hawk.util.HawkJsonUtil;
 
 import com.google.gson.reflect.TypeToken;
@@ -55,6 +56,7 @@ public class InstanceCfg extends HawkConfigBase {
 		for (int i = 0; i < normalBattleIdList.size(); ++i) {
 			BattleLevelCfg battleCfg = HawkConfigManager.getInstance().getConfigByKey(BattleLevelCfg.class, normalBattleIdList.get(i));
 			if (null == battleCfg) {
+				HawkLog.errPrintln(String.format("config invalid BattleLevelCfg : %s", normalBattleIdList.get(i)));
 				return false;
 			}
 			
@@ -69,6 +71,7 @@ public class InstanceCfg extends HawkConfigBase {
 		
 		BattleLevelCfg bossBattleCfg = HawkConfigManager.getInstance().getConfigByKey(BattleLevelCfg.class, battleBoss);
 		if (null == bossBattleCfg) {
+			HawkLog.errPrintln(String.format("config invalid BattleLevelCfg : %s", battleBoss));
 			return false;
 		}
 		bossBattleMonsterMap = bossBattleCfg.getMonsterMap();

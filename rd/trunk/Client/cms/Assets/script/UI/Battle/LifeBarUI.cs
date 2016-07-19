@@ -16,6 +16,8 @@ public class LifeBarUI : MonoBehaviour
     public Color normalColor = Color.white;
     public Color dangerColor = Color.red;
     public Image shieldImage;//盾
+    RectTransform shieldRect;
+    float shieldWidth = 0.0f;
     public GameObject shieldEffect;//护盾满格效果
 
     float targetLife = 1.0f;
@@ -56,13 +58,17 @@ public class LifeBarUI : MonoBehaviour
     {
         currentBar = currentBarImage.transform as RectTransform;
         targetBar = targetBarImage.transform as RectTransform;
-
+        
         width = currentBar.rect.width;
+
         if (shieldImage!=null)
         {
+            shieldRect = shieldImage.transform as RectTransform;
+            shieldWidth = shieldRect.rect.width;
             shieldImage.enabled = false;
             shieldEffect.SetActive(false);
-        }        
+        }
+        
     }
 
     void OnDestroy()
@@ -92,25 +98,35 @@ public class LifeBarUI : MonoBehaviour
             return;
         if (shieldImage == null)
             return;
-        if (lifeTarget.unit.spellMagicShield != 0 || lifeTarget.unit.spellPhyShield != 0)
+        if (lifeTarget.unit.spellMagicShield > 0 || lifeTarget.unit.spellPhyShield > 0)
         {
 			int curLife = lifeTarget.unit.curLife;;
             if (currentLife != -1)
             {
                 curLife = currentLife;
             }
-            float shieldNum = 0.0f;
+            var shieldNum = shieldRect.sizeDelta;
+            float life = 0.0f;
             if (lifeTarget.unit.spellMagicShield > lifeTarget.unit.spellPhyShield)
             {
-                shieldNum = 1.0f / lifeTarget.unit.maxLife * (curLife + lifeTarget.unit.spellMagicShield);
+                life = width / lifeTarget.unit.maxLife * lifeTarget.unit.spellMagicShield;
+                if (targetBar.sizeDelta.x + life > width)
+                    shieldNum.x = width + 100;
+                else
+                    shieldNum.x = targetBar.sizeDelta.x + life;              
             }
             else
             {
-                shieldNum = 1.0f / lifeTarget.unit.maxLife * (curLife + lifeTarget.unit.spellPhyShield);
+                life = width / lifeTarget.unit.maxLife *  lifeTarget.unit.spellPhyShield;
+                if (targetBar.sizeDelta.x + life > width)
+                    shieldNum.x = width + 100;
+                else
+                    shieldNum.x = targetBar.sizeDelta.x + life;
             }
-            if (shieldNum>=1)
+
+            if (shieldNum.x >= shieldWidth)
             {
-                shieldNum = 1.0f;
+                shieldNum.x = shieldWidth;
                 shieldEffect.SetActive(true);
             }
             else
@@ -118,11 +134,13 @@ public class LifeBarUI : MonoBehaviour
                 shieldEffect.SetActive(false);
             }
             shieldImage.enabled = true;
-            shieldImage.transform.localScale = new Vector3(shieldNum, 1.0f, 1.0f);
+            shieldRect.sizeDelta = shieldNum;
+           
         }
         else
         {
             shieldImage.enabled = false;
+			shieldEffect.SetActive(false);
         }
     }
     public void SetTargetLife(int targetValue, int maxValue)

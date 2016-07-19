@@ -89,25 +89,31 @@ public class bossMinghe18Karong : BossAi {
 				}
 			}
 
-		}
-
-		if ((NormalScript.GetWpLifeLeftRatio(karongUnit.battleUnit,"bossMinghe18Karongwp02") == 0 && jishu == 0)|| (karongUnit.curLife <= karongUnit.maxLife*0.7 && jishu == 0))									
-		{	
-				
-			if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp02")>0 )
-			{
-				karongUnit.battleUnit.TriggerEvent("karong_stage1to2_shuihuo", Time.time, null);
-				jishu ++;
-			}
-			else
-			{
-				karongUnit.battleUnit.TriggerEvent("karong_stage1to2_shuisi", Time.time, null);
-				jishu ++;
-			}
-											
-		}									
+		}			
 		attackResult.useSpell = useSpell;
 
 		return attackResult;
-	}	
+    }
+    //---------------------------------------------------------------------------------------------
+    public override void OnVitalChange(SpellVitalChangeArgs args)
+    {
+        BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+        if (target.unit.curLife <= target.unit.maxLife * 0.7 && jishu == 0)
+        {
+            target.TriggerEvent("karong_stage1to2_shuihuo", Time.time, null);
+            jishu++;
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    public override void OnWpDead(WeakPointDeadArgs args)
+    {
+        if (args.wpID == "bossMinghe18Karongwp02" && jishu == 0)
+        {
+            BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+            target.TriggerEvent("karong_shuijingqiusiwang", Time.time, null);
+            target.TriggerEvent("karong_stage1to2_shuisi", Time.time, null);
+			jishu ++;
+        }
+    }
+    //---------------------------------------------------------------------------------------------
 }

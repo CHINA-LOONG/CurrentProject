@@ -79,7 +79,7 @@ namespace UnityClientConsole
 
                     HSPlayerCreate createRole = new HSPlayerCreate();
                     createRole.puid = puid;
-                    createRole.nickname = "mail01";
+                    createRole.nickname = "NuWa";
                     createRole.career = 1;
                     createRole.gender = 0;
                     createRole.eye = 1;
@@ -144,6 +144,9 @@ namespace UnityClientConsole
             {
                 Console.WriteLine("同步完成");
 
+//                 GMGenTestAccount genAccount = new GMGenTestAccount();
+//                 NetManager.GetInstance().SendProtocol(gm.GEN_TEST_ACCOUNT.GetHashCode(), genAccount);
+
 //                 HSMailRead mailRead = new HSMailRead();
 //                 mailRead.mailId = 2;
 //                 NetManager.GetInstance().SendProtocol(code.MAIL_READ_C.GetHashCode(), mailRead);
@@ -152,8 +155,8 @@ namespace UnityClientConsole
 //                 mailReceive.mailId = 2;
 //                 NetManager.GetInstance().SendProtocol(code.MAIL_RECEIVE_C.GetHashCode(), mailReceive);
 
-                HSMailReceiveAll mailReceiveAll = new HSMailReceiveAll();
-                NetManager.GetInstance().SendProtocol(code.MAIL_RECEIVE_ALL_C.GetHashCode(), mailReceiveAll);
+//                 HSMailReceiveAll mailReceiveAll = new HSMailReceiveAll();
+//                 NetManager.GetInstance().SendProtocol(code.MAIL_RECEIVE_ALL_C.GetHashCode(), mailReceiveAll);
 
 //                 HSMonsterStageUp stageUp = new HSMonsterStageUp();
 //                 stageUp.monsterId;

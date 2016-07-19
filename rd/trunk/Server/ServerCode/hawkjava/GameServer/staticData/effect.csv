@@ -1397,7 +1397,7 @@ bosskongdao72Nvyao12e2,0,1,0,0,"[""bosskongdao72Nvyao12e3"",""bosskongdao72Nvyao
 bosskongdao72Nvyao12e3,3,1,0,0,,,,,,,,1,1,0,1,,12345,,,,1
 bosskongdao72Nvyao12e4,4,1,1,0,,,,,,,,,,,,buffMagicb1,12345,,,,0.5
 bosskongdao72Nvyao13e1,2,1,0,0,,,,,bosskongdao72Nvyao13e2,1,,,,,,,12345,,,,1
-bosskongdao72Nvyao13e2,0,1,1,0,"[""bosskongdao72Nvyao13e3"",""bosskongdao72Nvyao13e4""]",,,,,,,,,,,,12345,,,,1
+bosskongdao72Nvyao13e2,0,1,0,0,"[""bosskongdao72Nvyao13e3"",""bosskongdao72Nvyao13e4""]",,,,,,,,,,,,12345,,,,1
 bosskongdao72Nvyao13e4,4,1,1,0,,,,,,,,,,,,buffMagicb1,12345,,,,0.5
 bosskongdao72Nvyao13e3,3,1,0,0,,,,,,,,1,1,0,1,,12345,,,,1
 bosskongdao72Nvyao14e1,5,1,0,0,,,,,,,ContainsBeneficialBufftarget|bosskongdao72Nvyao14e2;Default|bosskongdao72Nvyao14e4;,,,,,,12345,,,,1
@@ -1682,9 +1682,9 @@ bossrenjie83Amute3awaken7e1,0,1,1,0,"[""bossrenjie83Amute3awaken7e4"",""bossrenj
 bossrenjie83Amute3awaken7e4,1,1,0,0,,,0,bossrenjie83Amute3awaken7e2,,,"""""",,,,,,1245,,,,1
 bossrenjie83Amute3awaken7e2,2,1,0,0,,,,,bossrenjie83Amute3awaken7e3,0,,,,,,,1245,,,,1
 bossrenjie83Amute3awaken7e3,4,1,0,0,,,,,,,,,,,,bossrenjie83Amute3awaken7b1,1245,,,,1
-bossrenjie83Amute3awaken7e5,1,1,0,0,,,1,bossrenjie83Amute3awaken7e10,,,"""""",,,,,,1245,,,,1
-bossrenjie83Amute3awaken7e10,2,1,0,0,,,,,bossrenjie83Amute3awaken7e6,0,,,,,,,1245,,,,1
-bossrenjie83Amute3awaken7e6,4,1,0,0,,,,,,,,,,,,bossrenjie83Amute3awaken7b2,1245,,,,1
+bossrenjie83Amute3awaken7e5,1,1,0,0,,,1,bossrenjie83Amute3awaken7e10,,,"""""",,,,,,12345,,,,1
+bossrenjie83Amute3awaken7e10,2,1,0,0,,,,,bossrenjie83Amute3awaken7e6,0,,,,,,,12345,,,,1
+bossrenjie83Amute3awaken7e6,4,1,0,0,,,,,,,,,,,,bossrenjie83Amute3awaken7b2,12345,,,,1
 bossrenjie83Amute3awaken7e7,0,1,0,0,"[""bossrenjie83Amute3awaken7e8"",""bossrenjie83Amute3awaken7e9""]",,,,,,,,,,,,12345,,,,1
 bossrenjie83Amute3awaken7e8,4,1,0,0,,,,,,,,,,,,bossrenjie83Amute3awaken4b1,12345,,,,0.5
 bossrenjie83Amute3awaken7e9,4,1,0,0,,,,,,,,,,,,bossrenjie83Amute3awaken4b2,12345,,,,0.5

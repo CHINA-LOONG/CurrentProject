@@ -1605,7 +1605,7 @@ specialsell_jinjie_title,宠物进阶礼包,Monster Advancement Package
 specialsell_jinjie_desc,快速提升<color=#ffcc00>宠物战力</color>的绝佳方式！,The best way to quickly increase <color=#ffcc00>monster BP</color>!
 specialsell_suipian_title,惊喜碎片礼包,Surprise Fragment Package
 specialsell_suipian_desc,可以获得珍惜宠物碎片哦！,Get rare monster fragments!
-specialsell_buy,成功购买<color=#ffcc00>{0}</color>礼包！,You have purchased the <color=#ffcc00>{0}</color> package!
+specialgift_buySuccess,成功购买<color=#ffcc00>{0}</color>礼包！,You have purchased the <color=#ffcc00>{0}</color> package!
 spell_hit_stunImmune,免疫眩晕,Stun Immune
 main_icon_huodong,活动礼包,Event Package
 main_icon_xuanze,新手礼包,New Player Package

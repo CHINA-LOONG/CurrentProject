@@ -13,7 +13,14 @@ enum sys
 	ERROR_CODE                  = 4;
 }
 
-// 游戏协议ID列表(>=100)
+// GM协议ID列表(100<=gm<1000)
+enum gm
+{
+	// 生成测试账号
+	GEN_TEST_ACCOUNT            = 100;
+}
+
+// 游戏协议ID列表(>=1000)
 enum code
 {
 	// 玩家

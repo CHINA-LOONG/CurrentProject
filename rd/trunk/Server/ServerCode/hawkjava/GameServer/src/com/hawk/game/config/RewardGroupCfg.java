@@ -81,9 +81,6 @@ public class RewardGroupCfg extends HawkConfigBase  {
 	
 	@Override
 	protected boolean checkValid() {
-	
-		
-		
 		return true;
 	}
 }

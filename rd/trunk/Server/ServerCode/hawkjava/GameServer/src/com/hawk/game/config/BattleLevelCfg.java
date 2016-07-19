@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.log.HawkLog;
 import org.hawk.util.HawkJsonUtil;
 
 import com.google.gson.reflect.TypeToken;
@@ -45,6 +46,7 @@ public class BattleLevelCfg extends HawkConfigBase {
 		for (Entry<String, Integer> entry : monsterMap.entrySet()) {
 			MonsterCfg monster = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, entry.getKey());
 			if (null == monster) {
+				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", entry.getKey()));
 				return false;
 			}
 		}

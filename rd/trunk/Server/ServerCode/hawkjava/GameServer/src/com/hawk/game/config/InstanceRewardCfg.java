@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase;
+import org.hawk.log.HawkLog;
 
 @HawkConfigManager.CsvResource(file = "staticData/instanceReward.csv", struct = "map")
 public class InstanceRewardCfg extends HawkConfigBase {
@@ -46,28 +47,33 @@ public class InstanceRewardCfg extends HawkConfigBase {
 		// 检测奖励是否存在，并建立引用
 		rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, rewardId);
 		if (null == rewardCfg) {
+			HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", rewardId));
 			return false;
 		}
 
 		sweepRewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, sweepRewardId);
 		if (null == sweepRewardCfg) {
+			HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", sweepRewardId));
 			return false;
 		}
 
 		RewardGroupCfg rewardGroupCfg = HawkConfigManager.getInstance().getConfigByKey(RewardGroupCfg.class, star1RewardGroupId);
 		if (null == rewardGroupCfg) {
+			HawkLog.errPrintln(String.format("config invalid RewardGroupCfg : %s", star1RewardGroupId));
 			return false;
 		}
 		starRewardCfgList.add(rewardGroupCfg);
 
 		rewardGroupCfg = HawkConfigManager.getInstance().getConfigByKey(RewardGroupCfg.class, star2RewardGroupId);
 		if (null == rewardGroupCfg) {
+			HawkLog.errPrintln(String.format("config invalid RewardGroupCfg : %s", star2RewardGroupId));
 			return false;
 		}
 		starRewardCfgList.add(rewardGroupCfg);
 
 		rewardGroupCfg = HawkConfigManager.getInstance().getConfigByKey(RewardGroupCfg.class, star3RewardGroupId);
 		if (null == rewardGroupCfg) {
+			HawkLog.errPrintln(String.format("config invalid RewardGroupCfg : %s", star3RewardGroupId));
 			return false;
 		}
 		starRewardCfgList.add(rewardGroupCfg);

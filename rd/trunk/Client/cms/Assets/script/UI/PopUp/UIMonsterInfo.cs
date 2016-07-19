@@ -67,44 +67,20 @@ public class UIMonsterInfo : UIBase
 
 	private void SetSpellIcon(UnitData unitData)
 	{
-		bool isBoss = unitData.assetID.Contains ("boss_");
-		//Spell tempSpell = null;
-
 		ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson(unitData.spellIDList);
-		for (int i = 0; i < spellArrayList.Count; ++i)
+		for (int i = 0; i < spellArrayList.Count; ++i) 
 		{
-			string spellID = spellArrayList[i] as string;
-			SpellProtoType spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellID);
-			if (spellPt == null)
+			string spellID = spellArrayList [i] as string;
+			SpellProtoType spellPt = StaticDataMgr.Instance.GetSpellProtoData (spellID);
+			if (spellPt == null) 
 			{
 				continue;
 			}
-			if(string.IsNullOrEmpty(spellPt.tips))
+			if (string.IsNullOrEmpty (spellPt.tips)) 
 			{
 				continue;
 			}
-			if(spellPt.category == (int)SpellType.Spell_Type_MgicAttack ||
-			   spellPt.category == (int)SpellType.Spell_Type_Cure||
-			   spellPt.category == (int)SpellType.Spell_Type_PhyAttack ||
-			   spellPt.category == (int)SpellType.Spell_Type_Beneficial||
-			   spellPt.category == (int)SpellType.Spell_Type_Negative)
-			{
-				AddIcon(spellPt);
-			}
-			else if(spellPt.category == (int)SpellType.Spell_Type_MagicDazhao ||
-			        spellPt.category == (int)SpellType.Spell_Type_PhyDaZhao)
-			{
-				if(!isBoss)
-				{
-					AddIcon(spellPt);
-				}
-			}
-
-		}	
-		if (isBoss)
-		{
-			var icon = SpellIcon.CreateWith (skillTrans );
-			icon.SetBoss();
+			AddIcon (spellPt);
 		}
 	}
 

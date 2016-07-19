@@ -95,17 +95,28 @@ state = 1 Remove
 		
 		<Ani id="dead" state="0">
 			<MotionList>
-				<Motion ani="" key="dead" value="true" />
+				<Motion ani="" key="siwang" value="true" />
 			</MotionList>
 			<ParticleList>
 				<Particle asset="juqihuanguai" bundle="effect/battle" ani="firemove" parent=""/>
 			</ParticleList>
 		</Ani>
 		
-		<Ani id="dazhaoxuanyao" state="0">
+		<Ani id="dazhaoxuanyao_wuli" state="0">
 			<MotionList>
 				<Motion ani="" key="dazhaoxuanyao" value="true" />
 			</MotionList>
+			<ParticleList>
+				<Particle asset="dazhao_wulitexie" bundle="effect/battle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="dazhaoxuanyao_fashu" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhaoxuanyao" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="dazhao_fashutexie" bundle="effect/battle" ani="" parent=""/>
+			</ParticleList>
 		</Ani>
 		<Ani id="lazy" state="0">
 			<MotionList>
@@ -120,7 +131,7 @@ state = 1 Remove
 		
 		<Ani id="win" state="0">
 			<MotionList>
-				<Motion ani="" key="win" value="true" />
+				<Motion ani="" key="shengli" value="true" />
 			</MotionList>
 		</Ani>
 		
@@ -258,7 +269,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cmetal" />
@@ -283,7 +294,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cmetal" />
@@ -308,7 +319,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cmetal" />
@@ -333,7 +344,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cplant" />
@@ -353,7 +364,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cplant" />
@@ -378,7 +389,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cplant" />
@@ -403,7 +414,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
 			</ParticleList>
       <AudioList>
         <Audio time="0" name="cwater" />
@@ -431,7 +442,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cwater" />
@@ -459,7 +470,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle  asset="castWater" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle  asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cwater" />
@@ -487,7 +498,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
 			</ParticleList>
       <AudioList>
         <Audio time="0" name="cfire" />
@@ -515,7 +526,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cfire" />
@@ -543,7 +554,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cfire" />
@@ -569,7 +580,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cearth" />
@@ -586,7 +597,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cearth" />
@@ -611,7 +622,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
       <ParticleList>
-        <Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+        <Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
       </ParticleList>
       <AudioList>
         <Audio time="0" name="cearth" />
@@ -889,14 +900,25 @@ state = 1 Remove
 		</Ani>
 		<Ani id="phyDazhaoPrepare" state="0">
 			<ParticleList>
-				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="dazhao_wulijuqi" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id="phyDazhaoPrepare_Finish" state="1" finish_event="phyDazhaoPrepare">
 			<ParticleList>
-				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
 		</Ani>
+		<Ani id="phyDazhaoReady" state="0">
+			<ParticleList>
+				<Particle asset="dazhao_wulibaoqi" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="phyDazhaoReady_Finish" state="1" finish_event="phyDazhaoReady">
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		
 		<Ani id="magicDazhaoPrepare" state="0">
 			<ParticleList>
 				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent=""/>
@@ -907,6 +929,18 @@ state = 1 Remove
 				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
 		</Ani>
+		
+		<Ani id="magicDazhaoReady" state="0">
+			<ParticleList>
+				<Particle asset="dazhao_ready" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicDazhaoReady_Finish" state="1" finish_event="magicDazhaoReady">
+			<ParticleList>
+				<Particle asset="" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		
 		<Ani id="yincangxiaoguai" state="0">
 			<ParticleList>
 				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent=""/>
@@ -988,12 +1022,24 @@ state = 1 Remove
 		
 		<Ani id="bossMinghe18Karong1" state="0" AniType="Skill">
 			<MotionList>
-				<Motion ani="" key="wugong" value="true" />
+				<Motion ani="" key="anyingzhua" value="true" />
 			</MotionList>
 			<MeshStateList>
 				<Mesh time="0" name="mesh_leftarm1" state="show" />
 				<Mesh time="2" name="mesh_leftarm1" state="hide" />
 			</MeshStateList>
+		</Ani>
+		
+		<Ani id="normalHit" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="bashHit" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true" />
+			</MotionList>
 		</Ani>
 		
 		<Ani id="bossMinghe18Karong1e2" state="0" AniType="Damage">
@@ -1007,7 +1053,7 @@ state = 1 Remove
 		
 		<Ani id="bossMinghe18Karong2" state="0" AniType="Skill">
 			<MotionList>
-				<Motion ani="" key="fagong" value="true" />
+				<Motion ani="" key="anyingbo" value="true" />
 			</MotionList>
 			<ParticleList>
 				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_shifa1" attach="true"/>
@@ -1028,7 +1074,7 @@ state = 1 Remove
 		
 		<Ani id="bossMinghe18Karong3" state="0" AniType="Skill">
 			<MotionList>
-				<Motion ani="" key="wugong" value="true" />
+				<Motion ani="" key="anyingqiangxi" value="true" />
 			</MotionList>
 		</Ani>
 		
@@ -1043,7 +1089,7 @@ state = 1 Remove
 		
 		<Ani id="bossMinghe18Karong4" state="0" AniType="Skill">
 			<MotionList>
-				<Motion ani="" key="fagong" value="true" />
+				<Motion ani="" key="jingshenkongzhi" value="true" />
 			</MotionList>
 			<ParticleList>
 				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_shifa2" attach="true"/>
@@ -1061,7 +1107,7 @@ state = 1 Remove
 		
 		<Ani id="bossMinghe18Karong5" state="0"  AniType="Skill">
 			<MotionList>
-				<Motion ani="" key="wugong" value="true" />
+				<Motion ani="" key="anyingqiangxi" value="true" />
 			</MotionList>
 		</Ani>
 		
@@ -1076,7 +1122,7 @@ state = 1 Remove
 		
 		<Ani id="bossMinghe18Karong6" state="0" AniType="Skill">
 			<MotionList>
-				<Motion ani="" key="fagong" value="true" />
+				<Motion ani="" key="jingshenkongzhi" value="true" />
 			</MotionList>
 			<ParticleList>
 				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="e_shifa2" attach="true"/>
@@ -1095,6 +1141,9 @@ state = 1 Remove
 		
 
 		<Ani id="karong_shuijingqiusiwang" state="0" >
+			<MotionList>
+				<Motion ani="" key="shuijingqiusi" value="true" />
+			</MotionList>
 			<ParticleList>
 				<Particle asset="baozha_fire" bundle="effect/particle" ani="firemove" parent="wp_orb"/>
 			</ParticleList>
@@ -2443,27 +2492,28 @@ state = 1 Remove
   
 	</AniList>	
 	<AniList group="State_chage">
-		<Ani id="karong_stage1to2_shuihuo" state="0" action_delay="2">
+		<Ani id="karong_stage1to2_shuihuo" state="0" action_delay="0">
 			<ControllerList>
-				<Controller time="0" name="monsters/karong/Karong_boss1" />
+				<Controller time="2.6" name="monsters/karong/Karong_boss1" />
 			</ControllerList>
 			<WpStateList>
-				<Wp time="0" name="bossMinghe18Karongwp01" state="3" />
-				<Wp time="0" name="bossMinghe18Karongwp02" state="3" />
-				<Wp time="0" name="bossMinghe18Karongwp03" state="1" />
-				<Wp time="0" name="bossMinghe18Karongwp04" state="1" />
-				<Wp time="0" name="bossMinghe18Karongwp05" state="1" />
+				<Wp time="2.6" name="bossMinghe18Karongwp01" state="3" />
+				<Wp time="2.6" name="bossMinghe18Karongwp02" state="3" />
+				<Wp time="2.6" name="bossMinghe18Karongwp03" state="1" />
+				<Wp time="2.6" name="bossMinghe18Karongwp04" state="1" />
+				<Wp time="2.6" name="bossMinghe18Karongwp05" state="1" />
 			</WpStateList>
 		</Ani>		
-		<Ani id="karong_stage1to2_shuisi" state="0" action_delay="2">
+		<Ani id="karong_stage1to2_shuisi" state="0" action_delay="0">
 			<ControllerList>
-				<Controller time="0" name="monsters/karong/Karong_boss2" />
+				<Controller time="2.6" name="monsters/karong/Karong_boss2" />
 			</ControllerList>
 			<WpStateList>
-				<Wp time="0" name="bossMinghe18Karongwp01" state="3" />
-				<Wp time="0" name="bossMinghe18Karongwp03" state="1" />
-				<Wp time="0" name="bossMinghe18Karongwp04" state="1" />
-				<Wp time="0" name="bossMinghe18Karongwp05" state="1" />
+				<Wp time="2.6" name="bossMinghe18Karongwp01" state="3" />
+				<Wp time="2.6" name="bossMinghe18Karongwp02" state="3" />
+				<Wp time="2.6" name="bossMinghe18Karongwp03" state="1" />
+				<Wp time="2.6" name="bossMinghe18Karongwp04" state="1" />
+				<Wp time="2.6" name="bossMinghe18Karongwp05" state="1" />
 			</WpStateList>
 		</Ani>
 		<Ani id="meidusha_state1to2" state="0" action_delay="2">
@@ -2473,8 +2523,8 @@ state = 1 Remove
 		</Ani>
 		<Ani id="meidusha_state2to1" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp01" state="1" />
-				<Wp time="0" name="bossYueguangsenlin18Meidushawp02" state="1" />
+				<Wp time="0" name="bossYueguangsenlin18Meidushawp01" state="3" />
+				<Wp time="0" name="bossYueguangsenlin18Meidushawp02" state="3" />
 				<Wp time="0" name="bossYueguangsenlin18Meidushawp03" state="1" />
 				<Wp time="0" name="bossYueguangsenlin18Meidushawp04" state="1" />
 				<Wp time="0" name="bossYueguangsenlin18Meidushawp05" state="1" />
@@ -2484,6 +2534,9 @@ state = 1 Remove
 			<WpStateList>
 				<Wp time="0" name="bossMinghe14Amutewp01" state="1" />
 			</WpStateList>
+			<CameraMotionList>
+				<Camera time="0" ani="" parent="" is_mover="true" duration="5" mover_type="0" />
+			</CameraMotionList>
 		</Ani>
 	</AniList>
 </AniGroupList>

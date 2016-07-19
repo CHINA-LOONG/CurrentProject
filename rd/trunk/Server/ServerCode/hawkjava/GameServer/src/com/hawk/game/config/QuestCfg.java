@@ -2,6 +2,7 @@ package com.hawk.game.config;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.log.HawkLog;
 
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.QuestUtil;
@@ -147,17 +148,20 @@ public class QuestCfg extends HawkConfigBase {
 		if (timeBeginId != 0) {
 			timeBeginCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, timeBeginId);
 			if (timeBeginCfg == null) {
+				HawkLog.errPrintln(String.format("config invalid TimeCfg : %d", timeBeginId));
 				return false;
 			}
 		}
 		if (timeEndId != 0) {
 			timeEndCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, timeEndId);
 			if (timeEndCfg == null) {
+				HawkLog.errPrintln(String.format("config invalid TimeCfg : %d", timeEndId));
 				return false;
 			}
 		}
 		rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, rewardId);
 		if (null == rewardCfg) {
+			HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", rewardId));
 			return false;
 		}
 		

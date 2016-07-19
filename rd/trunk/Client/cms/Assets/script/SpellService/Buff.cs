@@ -189,7 +189,7 @@ public class Buff
         {
             SpellEffectArgs effectArgs = new SpellEffectArgs();
             effectArgs.targetID = targetID;
-            spellService.TriggerEvent(GameEventList.BashHit, effectArgs);
+            spellService.TriggerEvent(GameEventList.NormalHit, effectArgs);
         }
 
         if (buffProto.category == (int)(BuffType.Buff_Type_Dot))

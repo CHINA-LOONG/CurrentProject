@@ -2,6 +2,7 @@ package com.hawk.game.config;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.log.HawkLog;
 
 @HawkConfigManager.CsvResource(file = "staticData/instanceDrop.csv", struct = "map")
 public class InstanceDropCfg extends HawkConfigBase {
@@ -28,6 +29,7 @@ public class InstanceDropCfg extends HawkConfigBase {
 		// 检测奖励是否存在，并建立引用
 		rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, rewardId);
 		if (null == rewardCfg) {
+			HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", rewardId));
 			return false;
 		}
 		return true;

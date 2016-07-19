@@ -11,9 +11,7 @@ public class bossMinghe14Amute : BossAi
 	
 	}
 
-    int yazhi_count = 0 ;
-    int count = 0; //state chage count
-    int attck_count = 0;
+    int jishu = 0 ;
 
     public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit amuteUnit, BattleUnitAi.AiAttackResult xgAiResult)
 	{
@@ -24,13 +22,23 @@ public class bossMinghe14Amute : BossAi
         wpList = GetAliveWeakPointList (amuteUnit);
         int wp_count = wpList.Count -1;
 
-        if (NormalScript.GetWpLifeLeft(amuteUnit.battleUnit, "bossMinghe14Amutewp03") <= 0)
-        {
-            amuteUnit.battleUnit.TriggerEvent("amute_stage1to2", Time.time, null);
-        }
-       
         attackResult = xgAiResult;
 		return attackResult;
 	}
+    //---------------------------------------------------------------------------------------------
+    public override void OnVitalChange(SpellVitalChangeArgs args)
+    {
+
+    }
+    //---------------------------------------------------------------------------------------------
+    public override void OnWpDead(WeakPointDeadArgs args)
+    {
+        if (args.wpID == "bossMinghe14Amutewp03" &&jishu==0)
+        {
+            BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+            target.TriggerEvent("amute_stage1to2", Time.time, null);
+            jishu++;
+        }
+    }
 
 }

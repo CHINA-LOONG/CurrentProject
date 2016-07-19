@@ -140,10 +140,16 @@ public class WeakPointGroup
 				continue;
 			}
 
-			meshGo.SetActive(state == wpRealData.wpState);
+			meshGo.SetActive(false);
 
 			wpRealData.wpMeshDic.Add(state,meshGo);
 		}
+
+        GameObject curStateMesh = wpRealData.GetMeshWithState(wpRealData.wpState);
+        if (null != curStateMesh)
+        {
+            curStateMesh.SetActive(true);
+        }
 	}
 
 
