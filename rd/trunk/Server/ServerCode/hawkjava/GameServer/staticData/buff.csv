@@ -6,10 +6,10 @@ buffSpeedSelfb1,5,,3,0,0,0,0,0,0,0,0.4,bufficon_buffSpeed,0,,0,0,0,0,,,1,0,0,0,,
 bossrenjie85Dujiaoshou1awaken2b1,5,,3,0,0,0,0,0,0,0,0.4,bufficon_buffSpeed,0,,0,0,0,0,,,1,0,0,0,,-1
 buffMagicb1,5,,3,0,0,0,0,0.8,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
 buffMagicSelfb1,5,,3,0,0,0,0,0.8,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
-bossrenjie86Landuo25b1,11,,999,0,0,0,0,0.5,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
-bossrenjie86Landuo26b1,11,,999,0,0,0,0,0.5,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
-bossrenjie86Landuo27b1,11,,999,0,0,0,0,0.5,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
-bossrenjie86Landuo28b1,11,,999,0,0,0,0,0.5,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
+bossrenjie86Landuo25b1,11,,999,0,0,0,0,2,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
+bossrenjie86Landuo26b1,11,,999,0,0,0,0,-0.5,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
+bossrenjie86Landuo27b1,11,,999,0,0,0,0,-0.5,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
+bossrenjie86Landuo28b1,11,,999,0,0,0,0,-0.5,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
 bossrenjie82Huoniao4awaken6b1,5,,3,0,0,0,0,1.5,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
 bossrenjie83Amute3awaken2b1,5,,999,0,0,0,0,1.5,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
 bossrenjie83Amute3awaken2b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateAddbuffAmute3awaken_100,bossrenjie83Amute3awaken2e2",,1,0,0,0,,-1
@@ -89,7 +89,7 @@ psvAttackb1,11,,999,,,,0.2,,,,,,,,,,,,,,,0,0,0,,-1
 psvXiyiren2b1,11,,999,0,0,0,,,,,,,,,,,,,"UsingPhysicalRate_100,psvXiyiren2e2",,999,0,0,0,,-1
 psvMantuoluo2b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRate_10,buffMagicSelfe2",,999,0,0,0,,-1
 psvCriticalRateb1,11,,999,,,,,,,,,,,,,,,,,,,0,0,0.16,,-1
-bosskongdao76Yifanmumian15b1,5,,3,,,,,,,,,,,,,,,,,,,0,0,0.16,,-1
+bosskongdao76Yifanmumian15b1,5,,3,,,,,,,,,bufficon_buffCritical,,,,,,,,,,0,0,0.16,,-1
 bossrenjie82Huoniao4awaken2b1,1,bossrenjie82Huoniao4awaken2e12,3,0,0,0,0,0,0,0,0,bufficon_debuffFireDot,0,,0,0,0,0,,,0,0,0,0,,-1
 bossrenjie82Huoniao4awaken2b2,1,bossrenjie82Huoniao4awaken2e12,3,0,0,0,0,0,0,0,0,bufficon_debuffFireDot,0,,0,0,0,0,,,0,0,0,0,,-1
 bossrenjie82Huoniao4awaken3b1,1,bossrenjie82Huoniao4awaken2e13,3,0,0,0,0,0,0,0,0,bufficon_debuffFireDot,0,,0,0,0,0,,,0,0,0,0,,-1
@@ -277,5 +277,4 @@ bossrenjie82Huoniao4awaken9b1,11,,999,,,,,,,,,,,,,,,,,,,0,0,0,,-1
 bossrenjie83Amute3awaken7b1,11,,999,,,,,,,,,,,,,,,,,,,0,0,0,,-1
 bossrenjie84Anpusha5awaken5b1,11,,999,,,,,,,,,,,,,,,,,,,0,0,0,,-1
 bossrenjie85Dujiaoshou1awaken9b1,11,,999,,,,,,,,,,,,,,,,,,,0,0,0,,-1
-bossrenjie83Amute3awaken7b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRate1245_100,bossrenjie83Amute3awaken7e7",,1,0,0,0,,-1
-bossrenjie88Yafogemeng57b1,11,,999,0,0,0,,,,,,,,,,,,,,"uncondition,bossrenjie88Yafogemeng57e3",999,0,0,0,,-1
+bossrenjie83Amute3awaken7b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRate1245_100,bossrenjie83Amute3awaken7e7",,999,0,0,0,,-1

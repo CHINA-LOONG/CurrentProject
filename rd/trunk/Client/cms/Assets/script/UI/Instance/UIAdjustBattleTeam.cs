@@ -189,7 +189,8 @@ public class UIAdjustBattleTeam : UIBase
 	{
 		prepareIndex = -1;
 		teamList =  BattleTeamManager.GetTeamWithKey (BattleTeamManager.TeamList.Defualt);
-		
+        CleanAllPlayersIcons();
+
 		MonsterIconBg subBg = null;
 		RectTransform rectTrans = null;
 		for (int i = 0; i<playerTeamBg.Count; ++ i)
@@ -386,21 +387,29 @@ public class UIAdjustBattleTeam : UIBase
 			{
 				if(guid == subIcon.Id)
 				{
+                    playerIcons.Remove(subIcon);
                     ResourceMgr.Instance.DestroyAsset(subIcon.gameObject);
 					break;
 				}
 			}
 		}
-		if (prepareIndex != -1)
-		{
-			subBg = playerTeamBg [prepareIndex];
-			subBg.SetEffectShow(false);
-		}
-		UpdatePrepareIndex ();
-
-		subBg = playerTeamBg [prepareIndex];
-		subBg.SetEffectShow (true);
+        StartCoroutine(_UpdatePrepareIndex());
 	}
+    IEnumerator _UpdatePrepareIndex()
+    {
+        yield return new WaitForEndOfFrame();
+        MonsterIconBg subBg = null;
+        if (prepareIndex != -1)
+        {
+            subBg = playerTeamBg[prepareIndex];
+            subBg.SetEffectShow(false);
+        }
+        UpdatePrepareIndex();
+
+        subBg = playerTeamBg[prepareIndex];
+        subBg.SetEffectShow(true);
+    }
+
 	//---------------------------------------------------------------------------------------------------------------------
 	void UpdatePrepareIndex()
 	{
@@ -513,7 +522,16 @@ public class UIAdjustBattleTeam : UIBase
 		var responseData =  msg.GetProtocolBody<PB.HSInstanceEnterRet> ();
 		enterInstanceParam.instanceData = responseData;
         //TODO:
-        GameMain.Instance.ChangeModule<BattleModule>(enterInstanceParam);
+        //------------------------------------------------------------------------
+        //InstanceData instanceData = StaticDataMgr.Instance.GetInstanceData(enterInstanceParam.instanceData.instanceId);
+
+        GameMain.Instance.LoadBattleLevel(enterInstanceParam);
+        //GameEventMgr.Instance.FireEvent(GameEventList.SwitchLevel, slArgs);
+        //切换场景
+        //ResourceMgr.Instance.LoadLevelAsyn(instanceData.instanceProtoData.sceneID, false, OnSceneLoaded);
+        //------------------------------------------------------------------------
+        //GameMain.Instance.ChangeModule<BattleModule>(enterInstanceParam);
         //GameEventMgr.Instance.FireEvent(GameEventList.StartBattle, proto);
 	}
+    //---------------------------------------------------------------------------------------------
 }

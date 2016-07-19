@@ -5,18 +5,23 @@ using System.Collections.Generic;
 public class PetSwitchPage : MonoBehaviour
 {
     int petToBeReplace;
+    public List<Transform> itemPos = new List<Transform>();
     public List<PetSwitchItem> items = new List<PetSwitchItem>();
     RectTransform trans;
 
     void Awake()
     {
         trans = transform as RectTransform;
+        if (BattleConst.maxFieldUnit>itemPos.Count)
+        {
+            Logger.LogError("error:pet count ");
+        }
         for (int i = 0; i < BattleConst.maxFieldUnit; ++i)
         {
             var item = ResourceMgr.Instance.LoadAsset("petItem");
-            item.transform.SetParent(gameObject.transform, false);
+            item.transform.SetParent(itemPos[i].transform, false);
             var itemTrans = item.GetComponent<RectTransform>();
-            itemTrans.anchoredPosition += new Vector2(100 * i, 0);
+            //itemTrans.anchoredPosition += new Vector2(100 * i, 0);
             var com = item.GetComponent<PetSwitchItem>();
 
             items.Add(com);

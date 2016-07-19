@@ -220,13 +220,17 @@ public class ResourceMgr : MonoBehaviour
         Resources.UnloadUnusedAssets();
         System.GC.Collect();
     }
+    //---------------------------------------------------------------------------------------------
     public void ClearCache()
     {
         var itor = battlePoolList.GetEnumerator();
-        //while (itor.MoveNext())
-        //{
-        //    Destroy(itor.Current.Value);
-        //}
+        string abname;
+        while (itor.MoveNext())
+        {
+            abname = StaticDataMgr.Instance.GetBundleName(itor.Current.Key);
+            if (string.IsNullOrEmpty(abname) == false)
+                UnloadAssetBundle(abname);
+        }
         battlePoolList.Clear();
         Resources.UnloadUnusedAssets();
         System.GC.Collect();
@@ -283,9 +287,9 @@ public class ResourceMgr : MonoBehaviour
             //go = Instantiate(prefab);
         }
 
-        UnloadAssetBundle(abname);
+        //UnloadAssetBundle(abname);
         //Resources.UnloadUnusedAssets();
-        System.GC.Collect();
+        //System.GC.Collect();
 
         return go;
     }

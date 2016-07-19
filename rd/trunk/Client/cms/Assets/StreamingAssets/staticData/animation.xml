@@ -655,7 +655,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicCureSlighte2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicCureSlight" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+				<Particle asset="magicCureSlight" bundle="effect/particle" ani="" parent="e_shouji" locky ="true" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="curep1" />
@@ -675,7 +675,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicCureMediume2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicCureMedium" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="" parent="e_shouji" locky ="true" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="curep1" />
@@ -695,7 +695,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="magicCureStronge2" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle asset="magicCureStrong" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
+				<Particle asset="magicCureStrong" bundle="effect/particle" ani="" parent="e_shouji" locky ="true" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="curep1" />
@@ -715,7 +715,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="buffMagice2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="commonBuff" bundle="effect/particle" ani="firemove"  locky ="true" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="buff" />
@@ -735,7 +735,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="buffAttacke2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="commonBuff" bundle="effect/particle" ani="firemove" locky ="true" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="buff" />
@@ -755,7 +755,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="buffDefensee2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonBuff" bundle="effect/particle" ani="" locky ="true" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="buff" />
@@ -775,7 +775,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffAttacke2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonBuff" bundle="effect/particle"   locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1375,7 +1375,7 @@ state = 1 Remove
 		
 		<Ani id="buffSpeede2" state ="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="commonBuff" bundle="effect/particle" locky ="true"  ani="firemove" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="buff" />
@@ -1394,7 +1394,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="buffSpeedSelfe2" state ="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="commonBuff" bundle="effect/particle"  locky ="true" ani="firemove" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="buff" />
@@ -1414,7 +1414,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="buffMagicSelfe2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="commonBuff" bundle="effect/particle" locky ="true"  ani="firemove" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="buff" />
@@ -1425,7 +1425,7 @@ state = 1 Remove
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
 			<ParticleList>
-				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+				<Particle asset="castMetal" bundle="effect/particle" ani=""  parent="e_shifa" attach="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="cmetal" />
@@ -1433,7 +1433,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="buffAttackSelfe2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="commonBuff" bundle="effect/particle"  locky ="true" ani="firemove" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="buff" />
@@ -1453,7 +1453,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="buffDefenseSelfe2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="commonBuff" bundle="effect/particle" locky ="true"  ani="firemove" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="buff" />
@@ -1478,7 +1478,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="buffHote2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="commonBuff" bundle="effect/particle"  locky ="true"  ani="firemove" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="buff" />
@@ -1499,7 +1499,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffMagice2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1519,7 +1519,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffSpeede2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky ="true"  ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1539,7 +1539,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffDotSlighte2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1564,7 +1564,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffDotMediume2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky ="true"  ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1589,7 +1589,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffDotStronge2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky ="true"  ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1614,7 +1614,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffFireDotSlighte2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1639,7 +1639,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffFireDotMediume2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1664,7 +1664,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffFireDotStronge2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1689,7 +1689,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffWaterDotSlighte2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true"  ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1714,7 +1714,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffWateDotMediume2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky ="true"  ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1739,7 +1739,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffWateDotStronge2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1764,7 +1764,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffPlantDotSlighte2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky ="true"  ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1789,7 +1789,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffPlantDotMediume2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1814,7 +1814,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffPlantDotStronge2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1839,7 +1839,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffMetalDotSlighte2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky ="true"  ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1864,7 +1864,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffMetalDotMediume2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1889,7 +1889,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffMetalDotStronge2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1914,7 +1914,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffEarthDotSlighte2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1939,7 +1939,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffEarthDotMediume2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky = "true" ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -1964,7 +1964,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="debuffEarthDotStronge2" state="0" AniType="Buff">
 			<ParticleList>
-				<Particle asset="commonDebuff" bundle="effect/particle" ani="" parent=""/>
+				<Particle asset="commonDebuff" bundle="effect/particle"  locky ="true"  ani="" parent=""/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="debuff" />
@@ -2014,7 +2014,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="ultHapie2" state="0" AniType="Dispel">
 			<ParticleList>
-				<Particle asset="commonBuff" bundle="effect/particle" ani="firemove" parent=""/>
+				<Particle asset="commonBuff" bundle="effect/particle"   ani="firemove" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id="ultHapie2Finish" state="1" finish_event="ultHapie2">

@@ -3216,35 +3216,18 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	</AniList>
 	<AniList group="xgHetong2">
 	
-		<Ani id="ultHetong2Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultHetong2Pre" bundle="effect/particle" parent="" locky="true"/>
-				<Particle asset="ultHetong2Hit" bundle="effect/particle" parent="" attach="true"/>
-			</ParticleList>
-			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
-				<Motion time="3.83" key="dazhao" value="true"/>
-			</MotionList>
+		<Ani id="ultHetong2" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0" name="Hetong21"/>
 			</AudioList>
 		</Ani>
 		
-		<Ani id="ultHetong2" state="0" AniType="Skill">
+		<Ani id="ultHetong2Cast" state="0" AniType="Skill">
 			<MotionList>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
-			<ParticleList>
-				<!--Particle asset="ultHetong2Pre" bundle="effect/particle" parent="" attach="" locky=""/-->
-			</ParticleList>
-			<AudioList>
-				<Audio time="0" name="Hetong21"/>
-			</AudioList>
 		</Ani>
-	
+			
 		<Ani id="txHetong2" state="0" AniType="Skill">
 			<ParticleList>
 				<Particle asset="ultHetong2Pre" bundle="effect/particle" parent="" attach="true"/>
@@ -3269,19 +3252,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	<AniList group="xgChange5">
 	
 		<Ani id="ultChange5Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultChange5pre" bundle="effect/particle" parent="" locky="true"/>
-				<Particle asset="ultChange5pre_rhand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
-			</ParticleList>
 			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
-				<Motion time="3.83" key="dazhao" value="true"/>
-				<Motion time="4.13" key="dazhao" value="true"/>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
+		</Ani>
+		
+		<Ani id="ultChange5" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0" name="Change51"/>
 			</AudioList>
@@ -3344,36 +3320,18 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	</AniList>
 	<AniList group="xgXiaochou4">
 	
-		<Ani id="ultXiaochou4Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultxiaochou4Pre" bundle="effect/particle" parent="hook_001" attach="" ignore_rot=""/>
-			</ParticleList>
-			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.33" key="dazhao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
-				<Motion time="3.83" key="dazhao" value="true"/>
-			</MotionList>
-			<AudioList>
-				<Audio time="0" name="Xiaochou41"/>
-			</AudioList>
-		</Ani>
-	
 		<Ani id="ultXiaochou4" state="0" AniType="Skill">
-			<MotionList>
-			</MotionList>
-			<ParticleList>
-				<!--Particle asset="ultxiaochou4Pre_weapon" bundle="effect/particle" parent="wp_weapon" attach="true"/--><!--这个是dazhao的特效-->
-				<!--Particle asset="ultxiaochou4Pre" bundle="effect/particle" parent="" attach="" locky=""/-->
-			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Xiaochou41"/>
 			</AudioList>
 		</Ani>
 		
+		<Ani id="ultXiaochou4Cast" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" key="dazhao" value="true"/>
+			</MotionList>
+		</Ani>
+			
 		<Ani id="ultXiaochou4e2" state="0" AniType="Damage">
 			<MotionList>
 			</MotionList>
@@ -3558,33 +3516,18 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	</AniList>
 	<AniList group="xgPanshen2">
 	
-		<Ani id="ultPanshen2Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultPanshenPre" bundle="effect/particle" parent="hook_001" attach="" locky=""/>
-			</ParticleList>
-			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.0" key="dazhao" value="true"/>
-				<Motion time="2.33" key="dazhao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
-			</MotionList>
+		<Ani id="ultPanshen2" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0" name="Xiyiren21"/>
 			</AudioList>
 		</Ani>
 		
-		<Ani id="ultPanshen2" state="0" AniType="Skill">
+		<Ani id="ultPanshen2Cast" state="0" AniType="Skill">
 			<MotionList>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
-			<ParticleList>
-			</ParticleList>
-			<AudioList>
-			</AudioList>
 		</Ani>
-		
+				
 		<Ani id="ultPanshen2e2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="attackPlantStab" bundle="effect/particle" parent="" locky=""/>
@@ -3606,36 +3549,17 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	</AniList>
 	<AniList group="xgHuapo2">
 	
-		<Ani id="ultHuapo2Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultHuapoPre" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
-			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
-				<Motion time="3.83" key="dazhao" value="true"/>
-			</MotionList>
+		<Ani id="ultHuapo2" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0" name="Huapo21"/>
 			</AudioList>
 		</Ani>
 		
-		<Ani id="ultHuapo2" state="0" AniType="Skill">
+		<Ani id="ultHuapo2Cast" state="0" AniType="Skill">
 			<MotionList>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
-			<ParticleList>
-				<!--Particle asset="ultHuapoPre" bundle="effect/particle" parent="" attach="true"/>
-				<Particle asset="ultHuapo2Pre01" bundle="effect/particle" parent="" attach="true"/-->
-			</ParticleList>
-			<AudioList>
-				<!--Audio time="0" name="Huapo21"/>
-				<Audio time="3.75" name="Huapo22"/-->
-			</AudioList>
 		</Ani>
-		
 		<Ani id="ultHuapo2e2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="attackPlantStab" bundle="effect/particle" parent="" locky=""/>
@@ -3659,33 +3583,17 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	<AniList group="xgWushi3">
 	
 		<Ani id="ultWushi3Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultwushi4Pre" bundle="effect/particle" parent="Bone008" attach="true"/>
-			</ParticleList>
 			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.33" key="dazhao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
+		</Ani>
+		
+		<Ani id="ultWushi3" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0" name="Wushi41"/>
 			</AudioList>
 		</Ani>
-		
-		<Ani id="ultWushi3" state="0" AniType="Skill">
-			<MotionList>
-			</MotionList>
-			<ParticleList>
-				<Particle asset="ultwushi4Hit_1" bundle="effect/particle" parent="" attach="true" locky=""/>
-			</ParticleList>
-			<AudioList>
-				<!--Audio time="0" name="Wushi31"/-->
-			</AudioList>
-		</Ani>
-		
+				
 		<Ani id="ultWushi3e2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicWaterColumnp" bundle="effect/particle" parent="" locky="true"/>
@@ -3766,35 +3674,17 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	<AniList group="xgXiyiren4">
 	
 		<Ani id="ultXiyiren4Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultxiyiren3Pre" bundle="effect/particle" parent="Bip002 L Hand" attach="true"/>
-				<Particle asset="ultxiyiren3Pre" bundle="effect/particle" parent="Bip002 R Hand" attach="true"/>
-			</ParticleList>
 			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.0" key="dazhao" value="true"/>
-				<Motion time="2.33" key="dazhao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
+		</Ani>
+		
+		<Ani id="ultXiyiren4" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0" name="Xiyiren21"/>
 			</AudioList>
 		</Ani>
-		
-		<Ani id="ultXiyiren4" state="0" AniType="Skill">
-			<MotionList>
-			</MotionList>
-			<ParticleList>
-				<!--Particle asset="ultxiyiren3Hit" bundle="effect/particle" parent="" attach="true" locky=""/-->
-			</ParticleList>
-			<AudioList>
-				<!--Audio time="0" name="Xiyiren41"/-->
-			</AudioList>
-		</Ani>
-	
+			
 		<Ani id="ultXiyiren4e2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="attackFireCut" bundle="effect/particle" parent="" locky=""/>
@@ -3980,33 +3870,18 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	<AniList group="xgLangren5">
 	
 		<Ani id="ultLangren5Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultLangrenPre" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
 			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.0" key="dazhao" value="true"/>
-				<Motion time="2.33" key="dazhao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
-				<Audio time="0" name="Langren51"/>
-				<Audio time="3.75" name="Langren52"/>
 		</Ani>
 		
 		<Ani id="ultLangren5" state="0" AniType="Skill">
-			<MotionList>
-			</MotionList>
-			<ParticleList>
-			</ParticleList>
 			<AudioList>
-				<!--Audio time="0" name="Langren51"/>
-				<Audio time="3.75" name="Langren52"/-->
+				<Audio time="0" name="Langren51"/>
+				<Audio time="3.75" name="Langren52"/>
 			</AudioList>
 		</Ani>
-		
+				
 		<Ani id="ultLangren5e2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="attackEarthCut" bundle="effect/particle" parent="" ignore_rot="true"/>
@@ -4373,18 +4248,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	<AniList group="xgWendige3">
 	
 		<Ani id="ultWendige3Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultWendige3Pre" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
 			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.0" key="dazhao" value="true"/>
-				<Motion time="2.33" key="dazhao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
+		</Ani>
+		
+		<Ani id="ultWendige3" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0.75" name="Wendige21"/>
 			</AudioList>
@@ -4412,18 +4281,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	<AniList group="xgWendige2">
 	
 		<Ani id="ultWendige2Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultWendige2Pre" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
 			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.0" key="dazhao" value="true"/>
-				<Motion time="2.33" key="dazhao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
+		</Ani>
+		
+		<Ani id="ultWendige2" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0.75" name="Wendige21"/>
 			</AudioList>
@@ -4820,18 +4683,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	<AniList group="xgSaibulesi5">
 	
 		<Ani id="ultSaibulesi5Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultSaibulesi5Pre" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
 			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.0" key="dazhao" value="true"/>
-				<Motion time="2.33" key="dazhao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
+		</Ani>
+		
+		<Ani id="ultSaibulesi5" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0" name="Saibulesi41"/>
 			</AudioList>
@@ -4859,34 +4716,17 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	<AniList group="xgSaibulesi4">
 	
 		<Ani id="ultSaibulesi4Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultSaibulesi4Pre" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
 			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.0" key="dazhao" value="true"/>
-				<Motion time="2.33" key="dazhao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
+		</Ani>
+		
+		<Ani id="ultSaibulesi4" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0" name="Saibulesi41"/>
 			</AudioList>
 		</Ani>
-		
-		<Ani id="ultSaibulesi4" state="0" AniType="Skill">
-			<MotionList>
-			</MotionList>
-			<ParticleList>
-			</ParticleList>
-			<AudioList>
-				<!--Audio time="0" name="Saibulesi41"/>
-				<Audio time="3.75" name="Saibulesi42"/-->
-			</AudioList>
-		</Ani>
-		
+				
 		<Ani id="ultSaibulesi4e2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="attackFireStab" bundle="effect/particle" parent="e_shouji" attach="true"/>
@@ -4910,18 +4750,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	<AniList group="xgHongniu4">
 	
 		<Ani id="ultHongniu4Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ulthongniu4pre" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
 			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.0" key="dazhao" value="true"/>
-				<Motion time="2.33" key="dazhao" value="true"/>
-				<Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
+		</Ani>
+		
+		<Ani id="ultHongniu4" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0" name="hongniu41"/>
 			</AudioList>
@@ -4966,18 +4800,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 	<AniList group="xgMengyan5">
 	
 		<Ani id="ultMengyan5Cast" state="0" AniType="Skill">
-			<ParticleList>
-				<Particle asset="ultMengyan5Pre" bundle="effect/particle" parent="" locky="true"/>
-				<Particle asset="ultMengyan5Pre_head" bundle="effect/particle" parent="Bip01 Head" attach="true"/>
-			</ParticleList>
 			<MotionList>
-				<Motion time="0" key="dazhaoxuanyao" value="true"/>
-				<Motion time="2.75" key="dazhao" value="true"/>
-				<Motion time="3.05" key="dazhao" value="true"/>
-				<Motion time="3.35" key="dazhao" value="true"/>
-				<Motion time="3.65" key="dazhao" value="true"/>
-				<Motion time="3.95" key="dazhao" value="true"/>
+				<Motion time="0" key="dazhao" value="true"/>
 			</MotionList>
+		</Ani>
+		
+		<Ani id="ultMengyan5" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0" name="Mengyan51"/>
 			</AudioList>
@@ -5845,16 +5673,10 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		<Ani id="ultDatiangou4Cast" state="0" AniType="Skill">
 			<MotionList>
 				<Motion time="0" ani="" key="dazhao" value="true"/>
-				<!--Motion time="2.63" key="dazhao" value="true"/>
-				<Motion time="2.93" key="dazhao" value="true"/>
-				<Motion time="3.23" key="dazhao" value="true"/>
-				<Motion time="3.53" key="dazhao" value="true"/>
-				<Motion time="3.83" key="dazhao" value="true"/-->
 			</MotionList>
-			<ParticleList>
-				<Particle time="0" asset="ultdatiangou4pre_wuqi" bundle="effect/particle" parent="wp_fan" attach="true"/>
-				<Particle time="0" asset="ultdatiangou4pre" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
+		</Ani>
+		
+		<Ani id="ultDatiangou4" state="0" AniType="Skill">
 			<AudioList>
 				<Audio time="0" name="Datiangou41"/>
 			</AudioList>
@@ -11620,11 +11442,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="0" ani="" key="bossrehuo" value="true"/>
 			</MotionList>
 		</Ani>
-		<Ani id="bossrenjie82Huoniao4awaken6" state="0" AniType="Skill">
-			<MotionList>
-				<Motion time="0" ani="" key="bossrehuo" value="true"/>
-			</MotionList>
-		</Ani>
 		
 	</AniList>
 	
@@ -14439,6 +14256,11 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<AudioList>
 				<Audio time="0" name="landuosuxing"/>
 			</AudioList>
+		</Ani>
+		<Ani id="huoniao4awaken_wp02030405" state="0" action_delay="2">
+			<MotionList>
+				<Motion time="0" ani="" key="bossrehuo" value="true"/>
+			</MotionList>
 		</Ani>
 	</AniList>
 </AniGroupList>

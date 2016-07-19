@@ -594,7 +594,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 426440}
   m_Layer: 0
-  m_Name: e_shifaw
+  m_Name: e_shifa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1326,8 +1326,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187510}
-  m_LocalRotation: {x: .669970691, y: .226140052, z: -.669970691, w: .226140052}
-  m_LocalPosition: {x: -.0984540507, y: .269688368, z: 7.24792471e-07}
+  m_LocalRotation: {x: .630504012, y: -.320101053, z: .630504131, w: .320101023}
+  m_LocalPosition: {x: -.0984498113, y: .269684196, z: 1.16965202e-06}
   m_LocalScale: {x: 1.00000012, y: 1.00000012, z: .99999994}
   m_Children: []
   m_Father: {fileID: 415960}

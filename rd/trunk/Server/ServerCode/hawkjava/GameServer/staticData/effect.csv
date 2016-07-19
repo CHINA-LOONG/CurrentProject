@@ -329,9 +329,9 @@ ultHetong2e3,2,1,0,0,,,,,ultHetong2Cast,0,2.33|ultHetong2e2;0.18|ultHetong2e2;,,
 ultHetong2Cast,2,1,1,0,,,,,,,,,,,,,12345,,,,1
 ultWagui3e1,2,1,0,0,,,,,ultWagui3e2,0,,,,,,,12345,,,,1
 ultWagui3e2,3,1,0,0,,,,,,,,1,3.5,0,3,,12345,,,,1
-ultHuapo2e1,5,1,0,0,,,,,,,IsEnemy|ultHuapo2e3;Default|ultHuapo2e2;,,,,,,12345,,,,1
+ultHuapo2e1,5,1,0,0,,,,,,,IsDazhaoManaged|ultHuapo2e3;Default|ultHuapo2e2;,,,,,,12345,,,,1
 ultHuapo2e2,3,1,0,0,,,,,,,,0,0.175,0,2,,12345,,,,1
-ultHuapo2e3,2,1,0,0,,,,,ultHuapo2Cast,0,2.33|ultHuapo2e2;0.18|ultHuapo2e2;,,,,,,12345,,,,1
+ultHuapo2e3,2,1,0,0,,,,,ultHuapo2Cast,0,0|ultHuapo2e2;0.18|ultHuapo2e2;,,,,,,12345,,,,1
 ultHuapo2Cast,2,1,1,0,,,,,,,,,,,,,12345,,,,1
 ultCike4e1,1,1,0,0,,,1,ultCike4e2,,,"""""",,,,,,12345,,,,1
 ultCike4e2,2,1,0,0,,,,,ultCike4e3,0,,,,,,,12345,,,,1
@@ -1713,9 +1713,9 @@ bossrenjie84Anpusha5awaken4e1,2,1,0,0,,,,,bossrenjie84Anpusha5awaken4e2,2.5,,,,,
 bossrenjie84Anpusha5awaken4e2,3,1,0,0,,,,,,,,1,2,0,5,,12345,,,,1
 bossrenjie84Anpusha5awaken4e4,2,1,0,0,,,,,bossrenjie84Anpusha5awaken4e5,2.5,,,,,,,12345,,,,1
 bossrenjie84Anpusha5awaken4e5,3,1,0,0,,,,,,,,1,2,0,5,,12345,,,,1
-bossrenjie84Anpusha5awaken5e1,1,1,0,0,,,1,bossrenjie84Anpusha5awaken5e2,,,"""""",,,,,,1234,,,,1
+bossrenjie84Anpusha5awaken5e1,1,1,0,0,,,0,bossrenjie84Anpusha5awaken5e2,,,"""""",,,,,,1234,,,,1
 bossrenjie84Anpusha5awaken5e2,2,1,0,0,,,,,bossrenjie84Anpusha5awaken5e3,0,,,,,,,1234,,,,1
-bossrenjie84Anpusha5awaken5e3,4,1,1,0,,,,,,,,,,,,bossrenjie84Anpusha5awaken5b1,1234,,,,1
+bossrenjie84Anpusha5awaken5e3,4,1,0,0,,,,,,,,,,,,bossrenjie84Anpusha5awaken5b1,1234,,,,1
 bossrenjie84Anpusha5awaken6e1,4,1,1,0,,,,,,,,,,,,bossrenjie84Anpusha5awaken6b1,1234,,,,1
 bossrenjie84Anpusha5awaken6e3,2,1,0,0,,,,,bossrenjie84Anpusha5awaken4e2,1.5,,,,,,,12345,,,,1
 bossrenjie84Anpusha5awaken6e2,3,1,0,0,,,,,,,,1,2,0,5,,12345,,,,1
@@ -1834,10 +1834,8 @@ bossrenjie88Yafogemeng54e1,1,1,0,0,,,1,bossrenjie88Yafogemeng54e2,,,"""""",,,,,,
 bossrenjie88Yafogemeng54e2,2,1,0,0,,,,,bossrenjie88Yafogemeng54e3,1,,,,,,,12345,,,,1
 bossrenjie88Yafogemeng54e3,4,1,0,0,,,,,,,,,,,,debuffstunb1,12345,,,,1
 bossrenjie88Yafogemeng56e2,4,1,1,0,,,,,,,,,,,,MagicImmuneb1,12345,,,,1
-bossrenjie88Yafogemeng56e1,2,1,0,0,,,,,bossrenjie88Yafogemeng56e3,1.5,,,,,,,12345,,,,1
+bossrenjie88Yafogemeng56e1,2,1,1,0,,,,,bossrenjie88Yafogemeng56e3,1.5,,,,,,,12345,,,,1
 bossrenjie88Yafogemeng56e3,0,1,1,0,"[""dispelNegativee1"",""bossrenjie88Yafogemeng56e2""]",,,,,,,,,,,,12345,,,,1
-bossrenjie88Yafogemeng57e1,4,1,1,0,,,,,,,,,,,,bossrenjie88Yafogemeng57b1,12345,,,,1
-bossrenjie88Yafogemeng57e3,2,1,0,0,,,,,bossrenjie88Yafogemeng57e2,0,,,,,,,12345,,,,1
-bossrenjie88Yafogemeng57e2,4,1,1,0,,,,,,,,,,,,StunImmuneb1,12345,,,,1
+bossrenjie88Yafogemeng57e1,4,1,1,0,,,,,,,,,,,,StunImmuneb1,12345,,,,1
 bossrenjie88Yafogemeng58e1,2,1,0,0,,,,,,,,,,,,,12345,,,,1
 bossrenjie88Yafogemeng59e1,2,1,0,0,,,,,,,,,,,,,12345,,,,1

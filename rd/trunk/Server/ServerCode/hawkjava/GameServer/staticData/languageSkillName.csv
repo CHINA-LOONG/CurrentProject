@@ -1577,11 +1577,11 @@ bossrenjie83Amute3awaken1Tips,攻击敌方单体，造成{0}%法攻水属性伤�
 bossrenjie83Amute3awaken2Tips,提升自身{0}%智力,Increases your INT by {0}%
 bossrenjie83Amute3awaken3Tips,攻击敌方群体，造成{0}%法攻水属性伤害,Deals ({0}% of magic ATK) water type damage to all enemy targets
 bossrenjie83Amute3awaken4Tips,给己方单体目标添加{0}%法攻的物理、法术吸收护盾同时恢复{0}%法攻的血量,"Add a ({0}% of magic ATK) physical and magic absorption shield to a single ally target, and recovers ({0}% of magic ATK) of target's HP"
-bossrenjie83Amute3awaken7Tips,受到来自非水属性的伤害效果降低25%,Reduces damage received from non-water type monsters by 25%
+bossrenjie83Amute3awaken7Tips,对非水属性的怪伤害效果提升50%，受到来自非水属性伤害时50%几率触发物理法术护盾,"Increases damage to non-water type monsters by 50%；whenever you take damage from non-water type monsters, there is a 50% chance of casting a shield absorbing physical and magic damage"
 bossrenjie84Anpusha5awaken1Tips,攻击敌方单体，造成{0}%法攻暗属性伤害,Deals ({0}% of magic ATK) dark type damage to a single target
 bossrenjie84Anpusha5awaken2Tips,攻击敌方群体，造成{0}%法攻暗属性伤害,Deals ({0}% of magic ATK) dark type damage to all enemy targets
 bossrenjie84Anpusha5awaken3Tips,攻击敌方单体，造成{0}%法攻暗属性伤害附带力量，智力下降{0}%,Deals ({0}% of magic ATK) dark type damage to a single target and reduces the target's STR and INT by {0}%
-bossrenjie84Anpusha5awaken5Tips,受到非暗属性伤害降低50%，对非暗属性伤害提升50%,"Reduces damage received from non-dark type monsters by 50%, and increases damage to non-dark type monsters by 50%"
+bossrenjie84Anpusha5awaken5Tips,对非暗属性的怪伤害效果提升50%,Increases damage to non-dark type monsters by 50%
 bossrenjie85Dujiaoshou1awaken1Tips,攻击敌方单体，造成{0}%法攻光属性伤害，附加光属性弱dot,Deals ({0}% of magic ATK) light type damage to a single target with additional weak light type DOT
 bossrenjie85Dujiaoshou1awaken2Tips,提高自己{0}%速度，持续3回合,Increases your SPD by {0}% for 3 turns
 bossrenjie85Dujiaoshou1awaken3Tips,若有buff则使用恢复{0}%血量，若有debuff则使用恢复{0}%血量，否则恢复(0)%血量,"If target has buffs, then recover ({0}% percentage) HP. If target has debuffs, then recover ({0}% percentage) HP."

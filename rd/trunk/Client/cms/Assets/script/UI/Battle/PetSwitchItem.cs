@@ -11,7 +11,7 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     public Image energyBar;
     public Image cdmask;
     public Text nameText;
-    public Image frame;
+    public Image tips;
     public Sprite normalFrame;
     public Sprite emptyFrame;
     public Sprite deadFrame;
@@ -25,16 +25,13 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
     }
     GameUnit unit;
 
-    float maskHeight = 152;
-    float lifeBarWidth = 132;
-    float energyBarHeight;
+    float maskHeight;
 
     // Use this for initialization
     void Start()
     {
         gameObject.AddComponent<Button>();
-        RectTransform energyBarTrans = energyBar.gameObject.transform as RectTransform;
-        energyBarHeight = energyBarTrans.rect.height;
+        maskHeight = cdmask.rectTransform.sizeDelta.y;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -68,48 +65,37 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
 
         if (unit != null && (unit.curLife > 0 && unit.State != UnitState.Dead))
         {
-            cdmask.gameObject.SetActive(false);
             lifeBar.gameObject.SetActive(true);
             energyBar.gameObject.SetActive(true);
-            frame.sprite = normalFrame;
+            tips.gameObject.SetActive(false);
         }
         else
         {
             ShowEmpty(true);
         }
-
-        if (BattleController.Instance.Process.SwitchPetCD > 0)
-        {
-            cdmask.gameObject.SetActive(true);
-        }
     }
 
     public void ShowEmpty(bool isDead)
     {
-        ShowCDmask();
-
         //血条为空
-        var size = lifeBar.rectTransform.sizeDelta;
-        size.x = 0;
-        lifeBar.rectTransform.sizeDelta = size;
+        lifeBar.fillAmount = 0.0f;
         lifeBar.gameObject.SetActive(false);
 
         //能量为空
-        size = energyBar.rectTransform.sizeDelta;
-        size.y = 0;
-        energyBar.rectTransform.sizeDelta = size;
+        energyBar.fillAmount = 0.0f;
         energyBar.gameObject.SetActive(false);
-
+        tips.gameObject.SetActive(true);
         if (isDead)
         {
-            frame.sprite = deadFrame;
+            tips.sprite = deadFrame;
         }
         else
         {
             nameText.text = "";
-            frame.sprite = emptyFrame;
+            tips.sprite = emptyFrame;
             head.sprite = defaulthead;
         }
+        tips.SetNativeSize();
 
         gameObject.SetActive(true);
     }
@@ -133,48 +119,44 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
             {
                 if (unit.curLife > 0 && unit.State != UnitState.Dead)
                 {
-                    if (BattleController.Instance.Process.SwitchPetCD > 0)
-                    {
-                        var size = cdmask.rectTransform.sizeDelta;
-                        size.y = maskHeight * (BattleController.Instance.Process.SwitchPetCD / BattleConst.switchPetCD);
-                        cdmask.rectTransform.sizeDelta = size;
-                    }
-                    else 
-                    {
-                        cdmask.gameObject.SetActive(false);
-                    }
 
                     {
-                        var size = lifeBar.rectTransform.sizeDelta;
-                        size.x = lifeBarWidth * (unit.curLife / (float)unit.maxLife);
-                        lifeBar.rectTransform.sizeDelta = size;
-
-                        size = energyBar.rectTransform.sizeDelta;
-                        size.y = energyBarHeight * (unit.energy / (float)BattleConst.enegyMax);
-                        energyBar.rectTransform.sizeDelta = size;
+                        lifeBar.fillAmount = Mathf.Clamp01(unit.curLife / (float)unit.maxLife);
+                        energyBar.fillAmount = Mathf.Clamp01(unit.energy / (float)BattleConst.enegyMax);
                     }
 
                     if (unit.State == UnitState.ToBeEnter)
                     {
-                        frame.sprite = toBeEntreFrame;
-                        ShowCDmask();
+                        tips.gameObject.SetActive(true);
+                        tips.sprite = toBeEntreFrame;
+                        tips.SetNativeSize();
+                    }
+                    else if (BattleController.Instance.Process.SwitchPetCD > 0)
+                    {
+                        if (!cdmask.gameObject.activeInHierarchy)
+                        {
+                            cdmask.gameObject.SetActive(true);
+                        }
+                        var size = cdmask.rectTransform.sizeDelta;
+                        size.y = maskHeight * (BattleController.Instance.Process.SwitchPetCD / BattleConst.switchPetCD);
+                        cdmask.rectTransform.sizeDelta = size;
+                    }
+                    else if (cdmask.gameObject.activeInHierarchy)
+                    {
+                        cdmask.gameObject.SetActive(false);
                     }
                 }
                 else 
                 {
-                    ShowEmpty(true);
+                    ShowEmpty(true); 
+                    if (cdmask.gameObject.activeInHierarchy)
+                    {
+                        cdmask.gameObject.SetActive(false);
+                    }
                 }
             }
         }
         else
             Hide();
-    }
-
-    void ShowCDmask()
-    {
-        cdmask.gameObject.SetActive(true);
-        var size = cdmask.rectTransform.sizeDelta;
-        size.y = maskHeight;
-        cdmask.rectTransform.sizeDelta = size;
     }
 }

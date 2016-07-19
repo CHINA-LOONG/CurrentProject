@@ -16,7 +16,7 @@ public class DazhaofocusController : MonoBehaviour
 	private Vector3 cameraOldEulerAngles;
 	private bool isMagicDazhao = false;
 
-	public static DazhaofocusController Create(bool isMagicDazhao)
+	public static DazhaofocusController Create(bool isMagicDazhao, string testname = "")
 	{
 		GameObject go = null;
 		if (isMagicDazhao)
@@ -34,6 +34,9 @@ public class DazhaofocusController : MonoBehaviour
 		focus.InitWithType (isMagicDazhao);
 
 		go.SetActive (false);
+
+        if (string.IsNullOrEmpty(testname) == false)
+            go.name = testname;
 
 		return focus;
 	}

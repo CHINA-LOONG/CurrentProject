@@ -1091,8 +1091,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149786}
-  m_LocalRotation: {x: .722164392, y: .568616271, z: .0298982523, w: -.39275977}
-  m_LocalPosition: {x: -.366847992, y: -.00703842146, z: .00672042836}
+  m_LocalRotation: {x: -.373658538, y: .781511247, z: -.243323788, w: .436363518}
+  m_LocalPosition: {x: -.366838306, y: -.00707967905, z: .00674156845}
   m_LocalScale: {x: .999999821, y: .999999821, z: 1.00000024}
   m_Children: []
   m_Father: {fileID: 440046}
@@ -1103,8 +1103,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198820}
-  m_LocalRotation: {x: .707106769, y: .00028151006, z: -.707106769, w: .00028151006}
-  m_LocalPosition: {x: -.118905485, y: .323284954, z: -3.89099114e-06}
+  m_LocalRotation: {x: -.500000179, y: .499999791, z: -.499999881, w: -.50000006}
+  m_LocalPosition: {x: -.118905477, y: .323285133, z: -2.65769268e-06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486908}
@@ -1692,8 +1692,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142738}
-  m_LocalRotation: {x: .707106769, y: .00028151006, z: -.707106769, w: .00028151006}
-  m_LocalPosition: {x: -.118905485, y: .323284984, z: -3.89099114e-06}
+  m_LocalRotation: {x: -.500000238, y: .499999821, z: -.499999911, w: -.500000119}
+  m_LocalPosition: {x: -.118905477, y: .323285133, z: -2.65769268e-06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486908}
@@ -1849,7 +1849,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197344}
-  m_LocalRotation: {x: .224078029, y: -.104830965, z: -.577983677, w: .77764678}
+  m_LocalRotation: {x: .224078, y: -.10483095, z: -.577983618, w: .777646661}
   m_LocalPosition: {x: -.159480363, y: 0, z: 7.62939436e-08}
   m_LocalScale: {x: 1.00000012, y: 1, z: 1.00000012}
   m_Children:

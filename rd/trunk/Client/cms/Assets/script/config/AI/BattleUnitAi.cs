@@ -60,6 +60,7 @@ public class BattleUnitAi : MonoBehaviour {
         int spellType = spell.spellData.category;
 		switch (spellType)
 		{
+		case (int)SpellType.Spell_Type_Passive:
 		case (int)SpellType.Spell_Type_Defense:
 		case (int)SpellType.Spell_Type_Lazy:
 			attackTarget = caster;
@@ -368,9 +369,7 @@ public class BattleUnitAi : MonoBehaviour {
 			
 		case (int)SpellType.Spell_Type_PrepareDazhao:
 			return AiAttackStyle.DazhaoPrepare;
-			
-		case (int) SpellType.Spell_Type_Passive:
-			break;
+
 		default:
 			return AiAttackStyle.UnKown;
 		}

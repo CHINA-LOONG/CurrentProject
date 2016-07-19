@@ -265,8 +265,8 @@ psvLangrenName,,
 psvMantuoluoName,,
 psvbossMantuoluoName,,
 psvAnpushaName,,
-ultbossZouyincaoName,,
-psvbossZouyincaoName,,
+ultZouyincaoName,,
+psvZouyincaoName,,
 buffHotName,恢复术,Recover
 debuffAttackName,虚弱术,Disable
 debuffMagicName,失心术,Stupefy
@@ -301,3 +301,9 @@ ultLuoxinfuName,,
 psvLuoxinfuName,,
 ultbossXiyirenName,,
 psvbossXiyirenName,,
+Valor,勇敢,Valor
+Spiritual,聪慧,Spiritual
+Mischievous,狡猾,Mischievous
+Collaborate,互助,Collaborate
+Compassion,善良,Compassion
+Humility,谨慎,Humility

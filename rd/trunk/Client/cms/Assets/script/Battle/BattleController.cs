@@ -231,12 +231,28 @@ public class BattleController : MonoBehaviour
     void LoadBattleScene(string sceneName)
     {
         battleGroup = new BattleGroup();
-        //int index = sceneName.LastIndexOf('/');
-        //string assetbundle = sceneName.Substring(0, index);
-        //string assetname = sceneName.Substring(index + 1, sceneName.Length - index - 1);
-        //curBattleScene = ObjectDataMgr.Instance.CreateSceneObject(BattleConst.battleSceneGuid, "", "scene_root");
-        //OnSceneLoaded(null, null);
-        ResourceMgr.Instance.LoadLevelAsyn(sceneName, false, OnSceneLoaded);
+        ////int index = sceneName.LastIndexOf('/');
+        ////string assetbundle = sceneName.Substring(0, index);
+        ////string assetname = sceneName.Substring(index + 1, sceneName.Length - index - 1);
+        ////curBattleScene = ObjectDataMgr.Instance.CreateSceneObject(BattleConst.battleSceneGuid, "", "scene_root");
+        ////OnSceneLoaded(null, null);
+
+        //ResourceMgr.Instance.LoadLevelAsyn(sceneName, false, OnSceneLoaded);
+        GameObject sceneRoot = GameObject.Find("Root");
+        if (sceneRoot == null)
+        {
+            Logger.LogError("can not find pos slot parent!");
+            sceneRoot = gameObject;
+        }
+        curBattleScene = ObjectDataMgr.Instance.AddSceneObject(BattleConst.battleSceneGuid, sceneRoot);
+
+        GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
+        battleGroup.SetPlayerList();
+        SetCameraDefault();
+
+        uiBattle = UIMgr.Instance.OpenUI_(UIBattle.ViewName) as UIBattle;
+        uiBattle.Initialize();
+        StartProcess(curProcessIndex);
     }
     //---------------------------------------------------------------------------------------------
     public void OnSceneLoaded(GameObject instance, System.EventArgs args)
@@ -254,12 +270,13 @@ public class BattleController : MonoBehaviour
     public IEnumerator LoadBattleUI()
     {
         yield return new WaitForSeconds(1.0f);
-        SetCameraDefault();
+        //SetCameraDefault();
 
         GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
         battleGroup.SetPlayerList();
 
         uiBattle = UIMgr.Instance.OpenUI_(UIBattle.ViewName) as UIBattle;
+        //uiBattle = ui.GetComponent<UIBattle>();
         uiBattle.Initialize();
         StartProcess(curProcessIndex);
     }

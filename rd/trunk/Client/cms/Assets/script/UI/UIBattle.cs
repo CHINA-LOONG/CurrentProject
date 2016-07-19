@@ -143,6 +143,7 @@ public class UIBattle : UIBase
         {
             endImage.sprite = failedSprite;
         }
+        endImage.SetNativeSize();
     }
 
     public void DestroyEndBattleUI()

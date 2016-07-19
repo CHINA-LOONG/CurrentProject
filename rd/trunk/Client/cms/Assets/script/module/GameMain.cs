@@ -115,4 +115,55 @@ public class GameMain : MonoBehaviour
 		}
 		return null;
 	}
+
+    //---------------------------------------------------------------------------------------------
+    //TODO: put where?
+    public void LoadBattleLevel(EnterInstanceParam enterInstanceParam)
+    {
+        //ClearModule();
+        InstanceData instanceData = StaticDataMgr.Instance.GetInstanceData(enterInstanceParam.instanceData.instanceId);
+        SwitchLevelEventArgs args = new SwitchLevelEventArgs();
+        args.enterParam = enterInstanceParam;
+        ResourceMgr.Instance.LoadLevelAsyn(instanceData.instanceProtoData.sceneID, false, OnSceneLoaded, args);
+    }
+    //---------------------------------------------------------------------------------------------
+    public void OnSceneLoaded(GameObject instance, System.EventArgs args)
+    {
+        ClearModule();
+        StartCoroutine(FuckingU3d(args));
+    }
+    //---------------------------------------------------------------------------------------------
+    public IEnumerator FuckingU3d(System.EventArgs args)
+    {
+        SwitchLevelEventArgs slArgs = args as SwitchLevelEventArgs;
+        //fucking u3d 0.5s, or it will crash
+        yield return new WaitForSeconds(0.5f);
+        ChangeModuleDirect<BattleModule>(slArgs.enterParam);
+    }
+    //---------------------------------------------------------------------------------------------
+    public void ClearModule()
+    {
+        if (mCurModule != null)
+        {
+            mCurModule.OnExit();
+            Destroy(mCurModule);
+            ResourceMgr.Instance.ClearCache();
+            mCurModule = null;
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    public void ChangeModuleDirect<T>(object param0 = null) where T : ModuleBase
+    {
+        string moduleName = typeof(T).ToString();
+        T t = this.gameObject.AddComponent<T>();
+        t.ModuleNameAttr = moduleName;
+        t.OnInit(mParam0);
+        //mPrevModule = mCurModule;
+        mCurModule = t;
+        mCurModule.OnEnter(param0);
+        //Destroy(mPrevModule);
+
+        GameSpeedService.Instance.OnModuleChange();
+    }
+    //---------------------------------------------------------------------------------------------
 }
