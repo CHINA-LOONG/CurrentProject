@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class UIMgr : MonoBehaviour 
@@ -24,6 +25,7 @@ public class UIMgr : MonoBehaviour
 		}
 	}
 
+    private Transform uiPanelTransform;
 	private Transform topPanelTransform;
 
 
@@ -36,11 +38,15 @@ public class UIMgr : MonoBehaviour
 			{
 				GameObject ui = GameObject.Find("/UIRoot");
 				//ui.name = "UIMgr";
-				mInst = ui.AddComponent<UIMgr>();
+                mInst = ui.AddComponent<UIMgr>();
+                DontDestroyOnLoad(ui);
 			}
 			return mInst;
 		}
 	}
+
+    public Dictionary<string, UIBase> uiList = new Dictionary<string, UIBase>();
+
 	void Start()
 	{
 		m_rootRectTransform = transform as RectTransform;
@@ -48,65 +54,123 @@ public class UIMgr : MonoBehaviour
 
 	public void Init()
 	{
-		DontDestroyOnLoad(gameObject);
 		canVas = gameObject.GetComponent<Canvas> ();
 
 		UICamera.Instance.Init ();
 		canVas.worldCamera = UICamera.Instance.CameraAttr;
 
+        GameObject uiGo = Util.FindChildByName(gameObject, "uiPanel");
+        uiPanelTransform = uiGo.transform;
 		GameObject topGo = Util.FindChildByName(gameObject,"topPanel");
 		topPanelTransform = topGo.transform;
 
 	}
 
-	public GameObject OpenUI(string uiName)
-	{
-		GameObject ui = ResourceMgr.Instance.LoadAsset(uiName);
-		if (null == ui) 
-		{
-			return null;
-		}
-		//GameObject ui = Instantiate(r) as GameObject;
+    public UIBase GetUI(string uiName)
+    {
+        if (string.IsNullOrEmpty(uiName))
+        {
+            return null;
+        }
+        UIBase uiItem = null;
+        uiList.TryGetValue(uiName, out uiItem);
+        return uiItem;
+    }
 
-		RectTransform rt = ui.transform as RectTransform;
+    UIBase CreateUI(string uiName,bool cache=true)
+    {
+        UIBase uiItem = null;
+        GameObject ui = ResourceMgr.Instance.LoadAsset(uiName);
+        if (null == ui)
+        {
+            return null;
+        }
+        uiItem = ui.GetComponent<UIBase>();
+        if (cache)
+        {
+            uiList.Add(uiName, uiItem);
+        }
+        RectTransform rt = ui.transform as RectTransform;
 
-		rt.localScale = Vector3.one;
-		rt.localEulerAngles = Vector3.zero;
-		ui.name = uiName;
+        rt.localScale = Vector3.one;
+        rt.localEulerAngles = Vector3.zero;
+        ui.name = uiName;
 
-		UIBase vb = ui.GetComponent<UIBase>();
-		if (vb.ViewTypeAttr == UIBase.ViewType.VT_POPUP)
-		{
-			rt.SetParent (topPanelTransform ,false);
-		}
-		else 
-		{
-			rt.SetParent (transform ,false);
-			topPanelTransform.SetSiblingIndex (ui.transform.GetSiblingIndex() + 1);
-		}
+        if (uiItem.ViewTypeAttr == UIBase.ViewType.VT_POPUP)
+        {
+            rt.SetParent(topPanelTransform, false);
+        }
+        else
+        {
+            rt.SetParent(uiPanelTransform, false);
+        }
+        return uiItem;
+    }
 
-        vb.OnOpenUI();
-        return ui;
-	}
+    public UIBase OpenUI_(string uiName,bool cache=true)
+    {
+        UIBase uiItem=null;
+        if (cache)
+        {
+            uiItem = GetUI(uiName);
+            if (uiItem != null)
+            {
+                uiItem.gameObject.SetActive(true);
+            }
+        }
+        if (uiItem == null)
+        {
+            uiItem = CreateUI(uiName, cache);
+        }
+        uiItem.transform.SetAsLastSibling();
+        uiItem.Init();
+        return uiItem;
+    }
 
-	public void CloseUI(UIBase vb)
-	{
-		//Destroy(vb.gameObject);
-		ResourceMgr.Instance.DestroyAsset(vb.gameObject);
-	}
+    public void CloseUI_(string uiName)
+    {
+        CloseUI_(GetUI(uiName));
+    }
+    public void CloseUI_(UIBase uiItem)
+    {
+        if (uiItem != null)
+        {
+            if (uiList.ContainsValue(uiItem))
+            {
+                uiItem.gameObject.SetActive(false);
+            }
+            else
+            {
+                DestroyUI(uiItem);
+            }
+        }
+    }
 
-	public void CloseUI(string name)
-	{
-        UIBase[] vbs = GetComponentsInChildren<UIBase>();
-		foreach (UIBase vb in vbs)
-		{
-			if (vb.GetType().Name == name)
-			{
-                
-				//Destroy(vb.gameObject);
-                vb.OnCloseUI();
-				ResourceMgr.Instance.DestroyAsset(vb.gameObject);
-			}
-		}
-	}
+    public void DestroyUI(string uiName)
+    {
+        UIBase uiItem = GetUI(uiName);
+        DestroyUI(uiItem);
+    }
+    public void DestroyUI(UIBase uiItem)
+    {
+        if (uiItem == null)
+        {
+            return;
+        }
+        if (uiList.ContainsValue(uiItem))
+        {
+            string uiName = "";
+            foreach (var item in uiList)
+            {
+                if (item.Value == uiItem)
+                {
+                    uiName = item.Key;
+                    break;
+                }
+            }
+            uiList.Remove(uiName);
+        }
+        uiItem.Clean();
+        ResourceMgr.Instance.DestroyAsset(uiItem.gameObject);
+    }
 }

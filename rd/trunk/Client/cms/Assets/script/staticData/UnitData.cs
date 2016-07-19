@@ -54,6 +54,7 @@ public class UnitData
     public string spellIDList;
     public string weakpointList;
 	public int	friendship;
+	public int character;
 
 	public string NickNameAttr
 	{

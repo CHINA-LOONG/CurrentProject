@@ -216,42 +216,28 @@ public class EffectDamage : Effect
                     //if (caster.pbUnit.camp == UnitCamp.Enemy)
                     //    damageAmount = -1;
                     //else
-                    //    damageAmount = -1;
-
-                    //弱点伤害计算
-                    if (wpRuntime != null)
-                    {
-                        target.OnDamageWeakPoint(wpRuntime.id, damageAmount, applyTime);
-                    }
+                    //    damageAmount = -1;                    
                 }
-
-                //没有弱点或者弱点属性关联伤害，则扣除/增加怪物血量
+                if (damageProto.isHeal == false)
+				{
+					//检测护盾
+					int buffCount1 = target.buffList.Count;
+					for (int i = 0; i < buffCount1; ++i)
+					{
+						target.buffList[i].OnShield(applyTime, this, ref damageAmount);						
+					}
+					//弱点伤害计算
+					if (wpRuntime != null)
+					{
+						target.OnDamageWeakPoint(wpRuntime.id, damageAmount, applyTime);
+					}  
+				}
+				
+				//没有弱点或者弱点属性关联伤害，则扣除/增加怪物血量
                 if (wpRuntime == null || wpRuntime.staticData.isDamagePoint == 1)
                 {
-                    //检测护盾
-                    int buffCount = target.buffList.Count;
-                    for (int i = 0; i < buffCount; ++i)
-                    {
-                        target.buffList[i].OnShield(applyTime, this, ref damageAmount);
-                    }
                     if (damageAmount < 0 || damageProto.isHeal == true)
-                    {
-						//大招受击事件
-						if (damageProto.isHeal != true)
-						{
-							SpellEffectArgs effectArgs = new SpellEffectArgs();
-							if (ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao ||
-                                ownedSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao || isCritical)
-							{
-								effectArgs.targetID = targetID;
-								spellService.TriggerEvent(GameEventList.BashHit, effectArgs);
-							}
-							else
-							{
-								effectArgs.targetID = targetID;
-								spellService.TriggerEvent(GameEventList.NormalHit, effectArgs);
-							}
-						}
+                    {				
                         target.curLife += damageAmount;
                         if (target.curLife <= 0)
                         {
@@ -276,6 +262,25 @@ public class EffectDamage : Effect
                         }
                     }
                 }
+				
+				//大招受击事件
+				if (damageAmount < 0 && damageProto.isHeal == false)
+				{
+					SpellEffectArgs effectArgs = new SpellEffectArgs();
+					if (ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao ||
+						ownedSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao || isCritical)
+					{
+						effectArgs.targetID = targetID;
+						effectArgs.triggerTime = applyTime;
+						spellService.TriggerEvent(GameEventList.BashHit, effectArgs);
+					}
+					else
+					{
+						effectArgs.targetID = targetID;
+						effectArgs.triggerTime = applyTime;
+						spellService.TriggerEvent(GameEventList.NormalHit, effectArgs);
+					}
+				}                		
 
                 //trigger damage event
                 if (damageAmount < 0 || damageProto.isHeal == true)
@@ -316,7 +321,6 @@ public class EffectDamage : Effect
                         args.wpNode = string.Empty;
                     }
                     spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
-
                     //伤害反应
                     if (noDamageResponse == false)
                     {

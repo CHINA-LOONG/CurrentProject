@@ -8,21 +8,21 @@ public class AnimControl : MonoBehaviour
 
     private Animator animator;
     //param hash
-    private int hashDead;
-    private int hashRun;
-    private int hashWin;
+    private int hashSiwang;
+    private int hashPaobu;
+    private int hashShengli;
     private int hashDazhao;
 	private int hashWugong;
 	private int hashFagong;
-    private int hashLazy;
-    private int hashStun;
+    private int hashToulan;
+    private int hashShoukong;
 	private int hashShouji;
 	private int hashFangyu;
 	private int hashDazhaoxuanyao;
     //state hash
-    private int hashDeadState;
-    private int hashStunState;
-    private int hashWinState;
+    private int hashSiwangState;
+    private int hashShoukongState;
+    private int hashShengliState;
 
     //public delegate void AnimEvent(string clipName);
     //public static event AnimEvent OnAnimationBegin;
@@ -37,21 +37,21 @@ public class AnimControl : MonoBehaviour
 
         actualControler.runtimeAnimatorController = curController;
         animator.runtimeAnimatorController = actualControler;
-        
-        hashDead = Animator.StringToHash("dead");
-        hashRun = Animator.StringToHash("run");
-        hashWin = Animator.StringToHash("win");
+
+        hashSiwang = Animator.StringToHash("siwang");
+        hashPaobu = Animator.StringToHash("paobu");
+        hashShengli = Animator.StringToHash("shengli");
 		hashDazhao = Animator.StringToHash("dazhao");
 		hashFagong = Animator.StringToHash("fagong");
         hashWugong = Animator.StringToHash("wugong");
-        hashLazy = Animator.StringToHash("lazy");
-        hashStun = Animator.StringToHash("stun");
+        hashToulan = Animator.StringToHash("toulan");
+        hashShoukong = Animator.StringToHash("shoukong");
 		hashShouji = Animator.StringToHash("shouji");
 		hashFangyu = Animator.StringToHash("fangyu");
 		hashDazhaoxuanyao = Animator.StringToHash("dazhaoxuanyao");
-        hashDeadState = Animator.StringToHash("Base Layer.siwang");
-        hashStunState = Animator.StringToHash("Base Layer.shoukong");
-        hashWinState = Animator.StringToHash("Base Layer.shengli");
+        hashSiwangState = Animator.StringToHash("Base Layer.siwang");
+        hashShoukongState = Animator.StringToHash("Base Layer.shoukong");
+        hashShengliState = Animator.StringToHash("Base Layer.shengli");
     }
     //---------------------------------------------------------------------------------------------
     public void SetController(string controllerName)
@@ -105,7 +105,7 @@ public class AnimControl : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnRunEnd()
     {
-        animator.SetBool(hashRun, false);
+        animator.SetBool(hashPaobu, false);
 	}
 	//---------------------------------------------------------------------------------------------
 	public void OnFangyuEnd()
@@ -120,7 +120,7 @@ public class AnimControl : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnWinEnd()
     {
-        animator.SetBool(hashWin, false);
+        animator.SetBool(hashShengli, false);
     }
     //---------------------------------------------------------------------------------------------
     public void OnDaZhaoBegin()
@@ -175,7 +175,7 @@ public class AnimControl : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnLazyEnd()
     {
-        animator.SetBool(hashLazy, false);
+        animator.SetBool(hashToulan, false);
     }
     //---------------------------------------------------------------------------------------------
     public void OnStunBegin()
@@ -185,7 +185,7 @@ public class AnimControl : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnStunEnd()
     {
-        animator.SetBool(hashStun, false);
+        animator.SetBool(hashShoukong, false);
     }
     //---------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------

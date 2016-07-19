@@ -41,11 +41,6 @@ public class PetDetailLeft : MonoBehaviour {
         GameEventMgr.Instance.AddListener(PetViewConst.ReloadPetStageNotify, ReloadPetStage);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     void OnDestroy()
     {
         GameEventMgr.Instance.RemoveListener(PetViewConst.ReloadPetStageNotify, ReloadPetStage);

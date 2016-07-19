@@ -39,7 +39,8 @@ public class GameMain : MonoBehaviour
 			if (mInst == null)
 			{
 				GameObject go = new GameObject("GameMain");
-				mInst = go.AddComponent<GameMain>();
+                mInst = go.AddComponent<GameMain>();
+                DontDestroyOnLoad(go);
 			}
 			return mInst;
 		}
@@ -47,7 +48,7 @@ public class GameMain : MonoBehaviour
 	
 	public void Init()
 	{
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 		//SkillMgr.Instance.Init();
 		ChangeModule<LoginModule>();
 	}
@@ -63,6 +64,7 @@ public class GameMain : MonoBehaviour
 		{
 			mCurModule.OnExit();
             Destroy(mCurModule);
+            ResourceMgr.Instance.ClearCache();
         }
         string moduleName = typeof(T).ToString();
         T t = this.gameObject.AddComponent<T>();

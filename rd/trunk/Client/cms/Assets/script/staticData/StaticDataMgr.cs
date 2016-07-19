@@ -200,7 +200,13 @@ public class StaticDataMgr : MonoBehaviour
                 effectPt.chance = wholeData.chance;
 
                 //Debug.Log(effectPt.id);
-                effectData.Add(effectPt.id, effectPt);
+				try{
+					effectData.Add(effectPt.id, effectPt);
+				}
+				catch
+				{
+					Logger.LogError("effect csv , key: " + effectPt.id);
+				}
             }
         }
         #region instance data

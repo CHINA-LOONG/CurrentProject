@@ -29,7 +29,10 @@ public class MonsterCfg extends HawkConfigBase {
 	protected final String spellIDList;
 	protected final String weakpointList;
 	protected final int friendship;
-
+	
+	//client only
+	protected final int character = 0;
+	
 	// assemble
 	boolean canEvolve;
 	private String[] spellIdListAssemble;

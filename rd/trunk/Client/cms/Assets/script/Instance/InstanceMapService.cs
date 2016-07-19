@@ -30,7 +30,10 @@ public class InstanceMapService : MonoBehaviour
 			if (mInst == null)
 			{
 				GameObject go = new GameObject("InstanceMapService");
-				mInst = go.AddComponent<InstanceMapService>();
+                mInst = go.AddComponent<InstanceMapService>();
+
+                //TODO: move to ManagerInit?
+                DontDestroyOnLoad(go);
 			}
 			return mInst;
 		}

@@ -14,8 +14,7 @@ public class UISpeech : UIBase
             Logger.Log("缺少本地数据配置…………");
             return;
         }
-        GameObject go = UIMgr.Instance.OpenUI(UISpeech.ViewName);
-        UISpeech speech = go.GetComponent<UISpeech>();
+        UISpeech speech = UIMgr.Instance.OpenUI_(UISpeech.ViewName) as UISpeech;
         speech.info = info;
         speech.endEvent = callBack;
         speech.ShowWithData(info);
@@ -121,7 +120,7 @@ public class UISpeech : UIBase
     {
         if (endEvent!=null)
             endEvent(0.0f);
-        UIMgr.Instance.CloseUI(this);
+        UIMgr.Instance.DestroyUI(this);
     }
 
 }

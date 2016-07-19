@@ -27,6 +27,14 @@ namespace PB
       ERROR_CODE = 4
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"gm")]
+    public enum gm
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GEN_TEST_ACCOUNT", Value=100)]
+      GEN_TEST_ACCOUNT = 100
+    }
+  
     [global::ProtoBuf.ProtoContract(Name=@"code")]
     public enum code
     {

@@ -14,6 +14,8 @@ public class AudioSystemMgr : MonoBehaviour {
                 GameObject go = new GameObject("AudioSystemMgr");
                 mInst = go.AddComponent<AudioSystemMgr>();
                 //mInst.Init();
+                //TODO: remove
+                DontDestroyOnLoad(go);
             }
             return AudioSystemMgr.mInst; 
         }
@@ -148,7 +150,7 @@ public class AudioSystemMgr : MonoBehaviour {
     //    audioObj.source.Play();
     //    StartCoroutine(_clearUserFlag(audioObj));
     //}
-    private float musicVolume = 1.0f;
+    private float musicVolume = 0.7f;
     private float soundVolume = 1.0f;
     private AudioSource audioMusic;
 
@@ -181,12 +183,22 @@ public class AudioSystemMgr : MonoBehaviour {
     //播放效果音效
     public void PlaySoundByID(string clipId)
     {
-        AudioClip clip = ResourceMgr.Instance.LoadAssetType<AudioClip>(StaticDataMgr.Instance.GetAudioByID(clipId));
-        AudioSource.PlayClipAtPoint(clip, transform.position, SoundVolume);
+        string clipName = StaticDataMgr.Instance.GetAudioByID(clipId);
+        if (string.IsNullOrEmpty(clipName))
+        {
+            Logger.LogError("not found soundclip by Id:" + clipId);
+            return;
+        } 
+        PlaySoundByName(clipName);
     }
     public void PlaySoundByName(string clipName)
     {
         AudioClip clip = ResourceMgr.Instance.LoadAssetType<AudioClip>(clipName);
+        if (clip==null)
+        {
+            Logger.LogError("not found soundclip by Name:" + clipName);
+            return;
+        }
         AudioSource.PlayClipAtPoint(clip, transform.position, SoundVolume);
     }
     //播放界面音效
@@ -212,9 +224,22 @@ public class AudioSystemMgr : MonoBehaviour {
 
     public void PlayMusic(string clipId)
     {
-        if (clipId == null) return;
-        AudioClip clip = ResourceMgr.Instance.LoadAssetType<AudioClip>(StaticDataMgr.Instance.GetAudioByID(clipId));
-        if (clip == null) return;
+        if (string.IsNullOrEmpty(clipId))
+        {
+            Logger.LogError("ClipId is Null");
+            return;
+        }
+        string clipName = StaticDataMgr.Instance.GetAudioByID(clipId);
+        if (string.IsNullOrEmpty(clipName))
+        {
+            Logger.LogError("Can not found ClipId:" + clipId);
+        }
+        AudioClip clip = ResourceMgr.Instance.LoadAssetType<AudioClip>(clipName);
+        if (clip == null)
+        {
+            Logger.LogError("Can not found clipName:" + clipName);
+            return;
+        }
         AudioMusic.clip = clip;
         AudioMusic.Play();
     }

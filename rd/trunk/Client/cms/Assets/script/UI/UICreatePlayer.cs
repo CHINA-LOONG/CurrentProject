@@ -16,10 +16,6 @@ public class UICreatePlayer : UIBase
 		EventTriggerListener.Get (createButton.gameObject).onClick = OnCreateButtonClick;
 	}
 
-	void OnDestroy()
-	{
-	}
-
 	void OnCreateButtonClick(GameObject go)
 	{
         if (string.IsNullOrEmpty(nameInputFileld.text))

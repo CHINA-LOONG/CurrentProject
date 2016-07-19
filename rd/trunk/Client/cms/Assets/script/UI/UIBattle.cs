@@ -41,6 +41,8 @@ public class UIBattle : UIBase
 
     public Sprite victorySprite;
     public Sprite failedSprite;
+    [HideInInspector]
+    public UIFazhen uiFazhen;
 
     private MirrorDray m_MirrorDray = null;
 
@@ -61,10 +63,10 @@ public class UIBattle : UIBase
 	}
 
 	// Use this for initialization
-    public void Init()
+    public void Initialize()
     {
 		instance = this;
-        
+
 		m_ButtonMirror.IsOn = false;
         
 		InitMirrorImage ();
@@ -80,14 +82,27 @@ public class UIBattle : UIBase
             BattleController.Instance.BattleGroup.EnemyFieldList
             );
 
-        AddUIObjectEvent();
-        BindListener();
-
         m_BattleSpeed = (int)(PlayerPrefs.GetFloat("battleSpeed"));
 		UpdateButton ();
 
 		animator = GetComponent<Animator> ();
 		AniControl.battleUIState = Animator.StringToHash ("battleUIState");
+    }
+
+    public override void Init()
+    {
+        //TODO：战斗界面不会隐藏了，只会删除
+    }
+
+    public override void Clean()
+    {
+        UIMgr.Instance.DestroyUI(uiFazhen);
+    }
+
+    void Start()
+    {
+        AddUIObjectEvent();
+        BindListener();
     }
 
     void OnDestroy()
@@ -227,8 +242,8 @@ public class UIBattle : UIBase
     void AddUIObjectEvent()
     {
         EventTriggerListener.Get(m_ButtonLeft.gameObject).onClick = OnButtonLeftCllicked;
-		m_ButtonDaoju.onClick = OnButtonDaojuClicked;
         EventTriggerListener.Get(m_ButtonSpeed.gameObject).onClick = OnButtonSpeedClicked;
+		m_ButtonDaoju.onClick = OnButtonDaojuClicked;
 
 		m_ButtonMirror.onClick = OnToggleMirrorClicked;
 		m_ButtonTuoguan.onClick = OnTuoguanButtonClick;

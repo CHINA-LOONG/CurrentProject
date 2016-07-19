@@ -9,8 +9,7 @@ public class UIMonsterInfo : UIBase
 
 	public static void Open(int guid, string monsterid,int level,int stage)
 	{
-	 	GameObject go =	UIMgr.Instance.OpenUI (UIMonsterInfo.ViewName);
-		UIMonsterInfo mInfo = go.GetComponent<UIMonsterInfo> ();
+        UIMonsterInfo mInfo = UIMgr.Instance.OpenUI_(UIMonsterInfo.ViewName) as UIMonsterInfo;
 		mInfo.ShowWithData (guid, monsterid,level,stage);
 	}
 
@@ -21,18 +20,27 @@ public class UIMonsterInfo : UIBase
 	public	Transform	skillTrans;
 	public	SkilTips	skilTips;
 	public Text	haveSpell;
+	private int guid = -1;
 
 	// Use this for initialization
 	void Awake ()
 	{
 		EventTriggerListener.Get (closeButton.gameObject).onClick = OnCloseButtonClick;
+	}
+
+    public override void Init()
+    {
 		name.text = ""; 
 		skilTips.gameObject.SetActive (false);
-	}
+    }
+    public override void Clean()
+    {
+        //TODO: destroy MonsterIcon
+    }
 
 	void	OnCloseButtonClick(GameObject go)
 	{
-		UIMgr.Instance.CloseUI (this);
+		UIMgr.Instance.DestroyUI (this);
 	}
 
 	public	void	ShowWithData(int guid, string monsterid,int level,int stage)
@@ -43,6 +51,7 @@ public class UIMonsterInfo : UIBase
 			Logger.LogError("Error:instance info , monsterId config error :" + monsterid);
 			return;
 		}
+		this.guid = guid;
 		name.text = unitData.NickNameAttr;
 		haveSpell.text = StaticDataMgr.Instance.GetTextByID ("spell_yongyoujineng");
 		SetProperty (unitData.property);
@@ -87,7 +96,20 @@ public class UIMonsterInfo : UIBase
 	private void AddIcon(SpellProtoType spellType)
 	{
 		var icon = SpellIcon.CreateWith (skillTrans );
-		icon.SetData (1, spellType.id);
+		int spellLevel = 1;
+		if (guid != -1)
+		{
+			GameUnit pet = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(guid);
+			if(pet != null)
+			{
+				Spell sp = pet.GetSpell(spellType.id);
+				if(sp!=null)
+				{
+					spellLevel = sp.level;
+				}
+			}
+		}
+		icon.SetData (spellLevel, spellType.id);
 
 		EventTriggerListener.Get (icon.iconButton.gameObject).onEnter = OnPointerEnter;
 		EventTriggerListener.Get (icon.iconButton.gameObject).onExit = OnPointerExit;

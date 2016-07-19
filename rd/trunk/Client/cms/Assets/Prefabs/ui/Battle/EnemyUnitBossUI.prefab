@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: .977941155, g: .977941155, b: .977941155, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0847a10b7de231749b65e58160ac6f67, type: 3}
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
     m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
@@ -493,12 +493,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentBarImage: {fileID: 11485778}
   targetBarImage: {fileID: 11421056}
+  shieldImage: {fileID: 11402220}
   lifeRatioSpeed: .300000012
   dangerRatio: .300000012
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   dangerColor: {r: 1, g: 0, b: 0, a: 1}
-  shieldImage: {fileID: 11402220}
   shieldEffect: {fileID: 147518}
+  targetLife: 1
 --- !u!114 &11444044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -527,7 +528,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0847a10b7de231749b65e58160ac6f67, type: 3}
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
     m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0

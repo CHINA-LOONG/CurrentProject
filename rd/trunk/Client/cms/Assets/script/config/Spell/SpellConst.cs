@@ -106,6 +106,7 @@ public enum SpellType
 	Spell_Type_MagicDazhao,
     Spell_Type_PrepareDazhao,
 	Spell_Type_Dot,
+	Spell_Type_Hot,
 
     Num_Spell_Type
 }

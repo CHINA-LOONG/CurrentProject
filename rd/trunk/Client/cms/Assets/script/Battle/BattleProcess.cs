@@ -773,7 +773,7 @@ public class BattleProcess : MonoBehaviour
                 //unit.attackCount++;
                 //OnUnitFightOver(unit);
                 break;
-            case BattleUnitAi.AiAttackStyle.Beneficial:
+            case BattleUnitAi.AiAttackStyle.Buff:
                 needRotate = true;
                 Logger.Log(bo.unit.name + "   Beneficial");
                 //	unit.attackCount++;

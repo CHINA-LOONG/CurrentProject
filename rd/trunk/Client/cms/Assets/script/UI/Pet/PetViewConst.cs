@@ -42,7 +42,6 @@ public class PetViewConst{
     //public static string UIPetAdvanceBuddleName = "ui/petrightadvance";
 
     public static string UIPetListAssetName = "UIPetList";
-    public static string UIPetListContainerAssetName = "UIPetListContainer";
     public static string UIPetListElementAssetName = "UIPetListElement";
     public static string UIPetDetailAssetName = "UIPetDetail";
     public static string UIPetModelAssetName = "PetModel";

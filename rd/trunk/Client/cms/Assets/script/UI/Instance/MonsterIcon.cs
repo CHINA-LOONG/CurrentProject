@@ -28,13 +28,13 @@ public class MonsterIcon : MonoBehaviour
 
     private bool init = false;
 
-	public	static MonsterIcon	CreateIcon()
-	{
-		GameObject go = ResourceMgr.Instance.LoadAsset ("monsterIcon");
-		MonsterIcon micon =  go.GetComponent<MonsterIcon>();
-		micon.Init ();
-		return micon;
-	}
+    public static MonsterIcon CreateIcon()
+    {
+        GameObject go = ResourceMgr.Instance.LoadAsset("monsterIcon");
+        MonsterIcon micon = go.GetComponent<MonsterIcon>();
+        micon.Init();
+        return micon;
+    }
 
 	void Awake()
 	{

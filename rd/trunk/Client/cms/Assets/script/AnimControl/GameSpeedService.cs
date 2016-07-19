@@ -26,6 +26,8 @@ public class GameSpeedService : MonoBehaviour {
     //---------------------------------------------------------------------------------------------
     public void Init()
     {
+        //TODO: move to ManagerInit?
+        DontDestroyOnLoad(gameObject);
         battleSpeedScale = PlayerPrefs.GetFloat("battleSpeed");
         if (battleSpeedScale == 0.0f)
         {

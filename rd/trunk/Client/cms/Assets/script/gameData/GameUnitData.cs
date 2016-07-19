@@ -33,11 +33,9 @@ public class PbUnit
     public int curExp;
     public int stage;//升星
     public List<PB.HSSkill> spellPbList;
-
-	public int testBossType =0;//1 九尾狐 2 混沌
 }
 
-[Serializable]
+//[Serializable]
 public class GameUnit : IComparable
 {
     public PbUnit pbUnit;
@@ -259,16 +257,17 @@ public class GameUnit : IComparable
 
 
 		//性格，勤奋度,//怪物友好度
-        character = pbUnit.character;
+      
         lazy = pbUnit.lazy;
 		if (isPlayer) 
 		{
 			friendship = 0;//player no use
+			character = pbUnit.character;
 		} 
 		else 
 		{
 			friendship = unitRowData.friendship;
-			bossType = pbUnit.testBossType;
+			character = unitRowData.character;
 		}
 	}
 	
@@ -306,6 +305,11 @@ public class GameUnit : IComparable
         WeakPointRuntimeData wpRuntimeData = null;
         if (battleUnit.wpGroup.allWpDic.TryGetValue(id, out wpRuntimeData))
         {
+			if(wpRuntimeData.hp <=0)
+			{
+				return ;
+			}
+
             wpRuntimeData.hp += damage;
             if (wpRuntimeData.hp <= 0)
             {

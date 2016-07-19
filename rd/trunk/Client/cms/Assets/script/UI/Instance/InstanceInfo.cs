@@ -26,7 +26,7 @@ public class InstanceInfo : MonoBehaviour
 	
 	private InstanceEntryRuntimeData  instanceData;
 
-	// Use this for initialization
+
 	void Start ()
 	{
 		EventTriggerListener.Get (backButton.gameObject).onClick = OnBackButtonClick;
@@ -47,7 +47,7 @@ public class InstanceInfo : MonoBehaviour
 		gameObject.SetActive (bshow);
 	}
 
-	public	void	ShowWithData(InstanceEntryRuntimeData data)
+	public void ShowWithData(InstanceEntryRuntimeData data)
 	{
 		instanceData = data;
 		SetShow (true);
@@ -196,8 +196,12 @@ public class InstanceInfo : MonoBehaviour
 
 	void	OnAcceptButtonClick(GameObject go)
 	{
-		GameObject uiGo =  UIMgr.Instance.OpenUI (UIAdjustBattleTeam.ViewName);
-		var adjustUi = uiGo.GetComponent<UIAdjustBattleTeam> ();
+        UIAdjustBattleTeam adjustUi = UIMgr.Instance.OpenUI_(UIAdjustBattleTeam.ViewName) as UIAdjustBattleTeam;
+        UIBuild uiBuild= UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+        if (uiBuild!=null)
+        {
+            uiBuild.uiAdjustBattleTeam = adjustUi;
+        }
 		adjustUi.SetData (instanceData.instanceId, instanceData.staticData.enemyList,instanceData.staticData.level);
 	}
 

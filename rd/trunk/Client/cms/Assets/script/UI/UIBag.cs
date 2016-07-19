@@ -27,9 +27,16 @@ public class UIBag : UIBase {
         EventTriggerListener.Get(m_closeButton.gameObject).onClick = CloseBagButtonDown;
     }
 
+    public override void Init()
+    {
+    }
+    public override void Clean()
+    {
+    }
+
     void CloseBagButtonDown(GameObject go)
     {
-        UIMgr.Instance.CloseUI(ViewName);
+        UIMgr.Instance.CloseUI_(this);
     }
 }
 

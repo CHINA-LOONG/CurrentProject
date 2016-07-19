@@ -10,8 +10,7 @@ namespace MsgBox
 
 		public static	void Open(string title,string msg,string buttonName)
 		{
-			GameObject go =	UIMgr.Instance.OpenUI (PromptMsg.ViewName);
-			PromptMsg mInfo = go.GetComponent<PromptMsg> ();
+            PromptMsg mInfo = UIMgr.Instance.OpenUI_(PromptMsg.ViewName,false) as PromptMsg;
 			mInfo.SetData (title, msg, buttonName);
 		}
 
@@ -39,7 +38,7 @@ namespace MsgBox
 
 		public void OnClose(GameObject go)
 		{
-			UIMgr.Instance.CloseUI (this);
+			UIMgr.Instance.DestroyUI (this);
 		}
 
 	}

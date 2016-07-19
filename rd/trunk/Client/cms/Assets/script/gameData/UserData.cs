@@ -13,13 +13,6 @@ public class UserData : MonoBehaviour
 	{
 		deviceID = SystemInfo.deviceUniqueIdentifier;
 		guid = PlayerPrefs.GetString ("testGuid");
-		if (string.IsNullOrEmpty (guid)) 
-		{
-			guid = "TestGuID" + System.DateTime.Now.ToString();
-			PlayerPrefs.SetString("testGuid",guid);
-			Logger.Log ("New guid = " + guid);
-		}
-
 		//platform = SystemInfo.deviceModel;
 		token = "tokenT";
 	}

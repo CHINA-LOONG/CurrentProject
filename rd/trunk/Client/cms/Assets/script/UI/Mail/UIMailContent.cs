@@ -27,11 +27,18 @@ public class UIMailContent : MonoBehaviour
     private UIMail uiMail;
     private PB.HSMail info;
 
+    private List<GameObject> tips = new List<GameObject>();
+    private List<ObjectItem> items = new List<ObjectItem>();
+
     void Start()
     {
         OnLanguageChanged();
         EventTriggerListener.Get(btnReceive.gameObject).onClick = OnClickReveive;
-        SetMailContentActive(false);
+    }
+
+    public void Clean()
+    {
+        CleanRewards();
     }
 
     public void SetMailContent(PB.HSMail info)
@@ -51,15 +58,10 @@ public class UIMailContent : MonoBehaviour
         content.SetActive(active);
     }
 
-    private List<ObjectItem> items = new List<ObjectItem>();
 
     void SetReward(List<PB.RewardItem> infos)
     {
-        for (int i = items.Count - 1; i >= 0; i--)
-        {
-            Destroy(items[i].gameObject);
-        }
-        items.Clear();
+        CleanRewards();
 
         annexNone.SetActive(infos.Count <= 0);
         btnReceive.gameObject.SetActive(infos.Count>0);
@@ -80,6 +82,20 @@ public class UIMailContent : MonoBehaviour
         {
             //TODO： 
         }
+    }
+
+    void CleanRewards()
+    {
+        for (int i = tips.Count - 1; i >= 0; i--)
+        {
+            ResourceMgr.Instance.DestroyAsset(tips[i]);
+        }
+        tips.Clear();
+        for (int i = items.Count - 1; i >= 0; i--)
+        {
+            ResourceMgr.Instance.DestroyAsset(items[i].gameObject);
+        }
+        items.Clear();
     }
 
     void OnClickReveive(GameObject go)
@@ -117,6 +133,7 @@ public class UIMailContent : MonoBehaviour
             {
                 go.transform.localScale = Vector3.one;
                 go.transform.SetParent(item.transform, false);
+                tips.Add(go);
             }
         }
         btnReceive.gameObject.SetActive(false);

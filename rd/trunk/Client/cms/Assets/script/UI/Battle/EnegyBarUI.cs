@@ -4,29 +4,45 @@ using System.Collections;
 public class EnegyBarUI : MonoBehaviour
 {
     public RectTransform mask;
-    public RectTransform thumb;
+    //public RectTransform thumb;
 
-    public float value;
-
-    float startY = -45;
-    float baseHeight = 5;
-    float height = 45;
-
-    // Use this for initialization
-    void Start()
+    float curValue;
+    public float value 
     {
-        startY = thumb.anchoredPosition.y;
+        get { return curValue; }
+        set { curValue = value; SetMask(curValue); }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        var pos = mask.anchoredPosition;
-        pos.y = startY - startY * value;
-        thumb.anchoredPosition = pos;
+    //float startY = -45;
+    //float baseHeight = 5;
+    float height = 45;
 
-        var size = thumb.sizeDelta;
-        size.y = baseHeight + height * value;
+    //// Use this for initialization
+    //void Start()
+    //{
+    //    startY = thumb.anchoredPosition.y;
+    //}
+
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    var pos = mask.anchoredPosition;
+    //    pos.y = startY - startY * value;
+    //    thumb.anchoredPosition = pos;
+
+    //    var size = thumb.sizeDelta;
+    //    size.y = baseHeight + height * value;
+    //    mask.sizeDelta = size;
+    //}
+
+    void Start()
+    {
+        height = mask.sizeDelta.y;
+    }
+    void SetMask(float value)
+    {
+        Vector2 size = mask.sizeDelta;
+        size.y = height * (1 - value);
         mask.sizeDelta = size;
     }
 }

@@ -210,19 +210,12 @@ public class BattleController : MonoBehaviour
         if (!InitVictorMethod())
             return;
         AudioSystemMgr.Instance.PlayMusic(instanceData.instanceProtoData.backgroundmusic);
-        //加载场景
-        LoadBattleScene(instanceData.instanceProtoData.sceneID);
         //设置battlegroup 并且创建模型
         //battleGroup.SetEnemyList(proto.enemyList);
         GameDataMgr.Instance.PlayerDataAttr.SetMainUnits(enterParam.playerTeam);
-        GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
-        battleGroup.SetPlayerList();
 
-        var ui = UIMgr.Instance.OpenUI(UIBattle.ViewName);
-        uiBattle = ui.GetComponent<UIBattle>();
-        uiBattle.Init();
-
-        StartProcess(curProcessIndex);
+        //加载场景
+        LoadBattleScene(instanceData.instanceProtoData.sceneID);
     }
     //---------------------------------------------------------------------------------------------
     public UIBattle GetUIBattle()
@@ -238,11 +231,37 @@ public class BattleController : MonoBehaviour
     void LoadBattleScene(string sceneName)
     {
         battleGroup = new BattleGroup();
-        int index = sceneName.LastIndexOf('/');
-        string assetbundle = sceneName.Substring(0, index);
-        string assetname = sceneName.Substring(index + 1, sceneName.Length - index - 1);
-        curBattleScene = ObjectDataMgr.Instance.CreateSceneObject(BattleConst.battleSceneGuid, assetbundle, assetname);
+        //int index = sceneName.LastIndexOf('/');
+        //string assetbundle = sceneName.Substring(0, index);
+        //string assetname = sceneName.Substring(index + 1, sceneName.Length - index - 1);
+        //curBattleScene = ObjectDataMgr.Instance.CreateSceneObject(BattleConst.battleSceneGuid, "", "scene_root");
+        //OnSceneLoaded(null, null);
+        ResourceMgr.Instance.LoadLevelAsyn(sceneName, false, OnSceneLoaded);
+    }
+    //---------------------------------------------------------------------------------------------
+    public void OnSceneLoaded(GameObject instance, System.EventArgs args)
+    {
+        GameObject sceneRoot = GameObject.Find("Root");
+        if (sceneRoot == null)
+        {
+            Logger.LogError("can not find pos slot parent!");
+            sceneRoot = gameObject;
+        }
+        curBattleScene = ObjectDataMgr.Instance.AddSceneObject(BattleConst.battleSceneGuid, sceneRoot);
+        StartCoroutine(LoadBattleUI());
+    }
+    //---------------------------------------------------------------------------------------------
+    public IEnumerator LoadBattleUI()
+    {
+        yield return new WaitForSeconds(1.0f);
         SetCameraDefault();
+
+        GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
+        battleGroup.SetPlayerList();
+
+        uiBattle = UIMgr.Instance.OpenUI_(UIBattle.ViewName) as UIBattle;
+        uiBattle.Initialize();
+        StartProcess(curProcessIndex);
     }
     //---------------------------------------------------------------------------------------------
     public void SetCameraDefault()
@@ -302,6 +321,16 @@ public class BattleController : MonoBehaviour
         }
         battleGroup = null;
         curBattleScene = null;
+
+        process.Clear();
+        GameMain.Instance.ChangeModule<BuildModule>();
+        UIMgr.Instance.DestroyUI(UIBattle.ViewName);
+
+        ResourceMgr.Instance.LoadLevelAsyn("firstScene", false, OnBattleOver);
+    }
+    //---------------------------------------------------------------------------------------------
+    public void OnBattleOver(GameObject instance, System.EventArgs args)
+    {
     }
     //---------------------------------------------------------------------------------------------
     public GameObject GetSlotNode(UnitCamp camp, int slotID, bool isBoss)
@@ -495,12 +524,8 @@ public class BattleController : MonoBehaviour
                 pbUnit.level = instanceData.instanceProtoData.level;
                 pbUnit.camp = UnitCamp.Enemy;
                 pbUnit.slot = i;
-                pbUnit.character = BattleConst.defaultCharacter;
                 pbUnit.lazy = BattleConst.defaultLazy;
 
-                //TODO:
-                pbUnit.testBossType = 1;//九尾狐
-                //pbUnit.testBossType = 2;//混沌
                 pbList.Add(pbUnit);
 
                 if (i < dropCount)
@@ -650,7 +675,7 @@ public class BattleController : MonoBehaviour
         StartCoroutine(ProcessBattleOver(isSuccess));
 		MagicDazhaoController.Instance.ClearAll ();
 		PhyDazhaoController.Instance.ClearAll ();
-		process.HideFireFocus ();
+		process.HideFireFocus();
     }
     //---------------------------------------------------------------------------------------------
     IEnumerator ProcessBattleOver(bool isSuccess)
@@ -670,11 +695,6 @@ public class BattleController : MonoBehaviour
 
         //回到副本层
         UnLoadBattleScene();
-        process.Clear();
-        GameMain.Instance.ChangeModule<BuildModule>();
-        UIMgr.Instance.CloseUI(UIBattle.ViewName);
-
-		UIMgr.Instance.CloseUI (UIFazhen.ViewName);
     }
     //---------------------------------------------------------------------------------------------
     IEnumerator PlayBalanceAnim(bool isSuccess)

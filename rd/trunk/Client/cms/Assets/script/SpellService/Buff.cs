@@ -189,6 +189,7 @@ public class Buff
         {
             SpellEffectArgs effectArgs = new SpellEffectArgs();
             effectArgs.targetID = targetID;
+            effectArgs.triggerTime = applyTime;
             spellService.TriggerEvent(GameEventList.NormalHit, effectArgs);
         }
 

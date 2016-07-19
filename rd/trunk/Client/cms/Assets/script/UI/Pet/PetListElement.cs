@@ -12,16 +12,9 @@ public class PetListElement : MonoBehaviour {
 
     public GameUnit unit;
 
-    // Use this for initialization
-    void Start()
+    public void Init()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+ 
     }
 
     public void ReloadPatData(GameUnit unit)

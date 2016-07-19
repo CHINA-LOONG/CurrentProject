@@ -16,7 +16,7 @@ public class DazhaofocusController : MonoBehaviour
 	private Vector3 cameraOldEulerAngles;
 	private bool isMagicDazhao = false;
 
-	public static	DazhaofocusController Create(bool isMagicDazhao)
+	public static DazhaofocusController Create(bool isMagicDazhao)
 	{
 		GameObject go = null;
 		if (isMagicDazhao)
@@ -27,9 +27,8 @@ public class DazhaofocusController : MonoBehaviour
 		{
 			go =  ResourceMgr.Instance.LoadAsset("dazhaoFocusScene");
 		}
-		go.transform.localScale = Vector3.one;
-		//go.transform.localPosition = Vector3.zero;
-		go.transform.localEulerAngles = Vector3.zero;
+        //NOTE: gamemain is set as don't destroy, the controller should not destroy
+        go.transform.SetParent(GameMain.Instance.gameObject.transform, false);
 
 		DazhaofocusController focus = go.AddComponent<DazhaofocusController> ();
 		focus.InitWithType (isMagicDazhao);
@@ -144,6 +143,4 @@ public class DazhaofocusController : MonoBehaviour
 		UIBattle.Instance.ShowUI (true);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 	}
-	
-
 }

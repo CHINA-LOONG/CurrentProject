@@ -217,6 +217,8 @@ public class UIUpdate : MonoBehaviour ,IPointerUpHandler
 		SpellService.Instance.Init();
 		ActorEventService.Instance.Init();
 		GameSpeedService.Instance.Init();
+
+        ResourceMgr.Instance.LoadLevelAsyn("firstScene", false);
 		Destroy (gameObject);
 	}
 

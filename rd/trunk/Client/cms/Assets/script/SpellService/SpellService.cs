@@ -87,9 +87,9 @@ public class SpellService : MonoBehaviour
     public void SpellRequest(string spellID, GameUnit caster, GameUnit target, float curTime, bool isFirstSpell = false)
     {
 		mCurActionSpell = null;
+        Spell curSpell = caster.GetSpell(spellID);
         if (caster.stun <= 0)
         {
-            Spell curSpell = caster.GetSpell(spellID);
             if (curSpell != null)
             {
                 mCurActionSpell = curSpell;
@@ -102,13 +102,19 @@ public class SpellService : MonoBehaviour
         else 
         {
             //generate spell event
-            SpellFireArgs args = new SpellFireArgs();
-            args.triggerTime = curTime;
-            args.casterID = caster.pbUnit.guid;
-            args.spellID = null;
-            args.aniTime = SpellConst.aniDelayTime;
-            args.firstSpell = false;
-            TriggerEvent(GameEventList.SpellFire, args);
+            if (curSpell != null)
+            {
+                if (caster.pbUnit.camp == UnitCamp.Enemy || curSpell.spellData.category != (int)SpellType.Spell_Type_MagicDazhao)
+                {
+                    SpellFireArgs args = new SpellFireArgs();
+                    args.triggerTime = curTime;
+                    args.casterID = caster.pbUnit.guid;
+                    args.spellID = null;
+                    args.aniTime = SpellConst.aniDelayTime;
+                    args.firstSpell = false;
+                    TriggerEvent(GameEventList.SpellFire, args);
+                }
+            }
         }
 
         //buff list可能会在update里被修改，只会被增加，删除buff下面单独处理，避免遍历出错

@@ -23,8 +23,14 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 	public Text coinText;
 	public Text nameText;
 
+    public UIMail uiMail;
+    public UIQuest uiQuest;
+    public UIBag uiBag;
+    public UIInstance uiInstance;
+    public UIPetList uiPetList;
+    public UIAdjustBattleTeam uiAdjustBattleTeam;
 
-    // Use this for initialization
+
     void Start()
     {
         EventTriggerListener.Get(m_PatButton.gameObject).onClick = PatButtonClick;
@@ -79,12 +85,12 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     void ItemButtonClick(GameObject go)
     {
-        UIMgr.Instance.OpenUI(UIBag.ViewName);
+        uiBag = UIMgr.Instance.OpenUI_(UIBag.ViewName)as UIBag;
     }
 
     void PatButtonClick(GameObject go)
     {
-        UIMgr.Instance.OpenUI(UIPetList.ViewName);
+        uiPetList= UIMgr.Instance.OpenUI_(UIPetList.ViewName) as UIPetList;
     }
 
 	void OnInstanceButtonClick(GameObject go)
@@ -94,17 +100,17 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
 	//	GameApp.Instance.netManager.SendMessage (ProtocolMessage.Create (PB.code.MONSTER_CATCH_C.GetHashCode(), mcache));
 
-		UIMgr.Instance.OpenUI (UIInstance.ViewName);
+        uiInstance = UIMgr.Instance.OpenUI_(UIInstance.ViewName) as UIInstance;
 	}
 
     void OnQuestButtonClick(GameObject go)
     {
-        UIMgr.Instance.OpenUI(UIQuest.ViewName);
+        uiQuest= UIMgr.Instance.OpenUI_(UIQuest.ViewName) as UIQuest;
     }
 
     void OnMailButtonClick(GameObject go)
     {
-        UIMgr.Instance.OpenUI(UIMail.ViewName);
+        uiMail = UIMgr.Instance.OpenUI_(UIMail.ViewName) as UIMail;
     }
 
 
@@ -155,5 +161,19 @@ public class UIBuild : UIBase,PopupListIndextDelegate
             m_LangPopup.RefrshItem((int)Language.English, StaticDataMgr.Instance.GetTextByID("ui_english"));
             //GameMain.Instance.ChangeModule<LoginModule>();
         }
+    }
+
+    public override void Init()
+    {
+
+    }
+    public override void Clean()
+    {
+        UIMgr.Instance.DestroyUI(uiQuest);
+        UIMgr.Instance.DestroyUI(uiMail);
+        UIMgr.Instance.DestroyUI(uiBag);
+        UIMgr.Instance.DestroyUI(uiInstance);
+        UIMgr.Instance.DestroyUI(uiPetList);
+        UIMgr.Instance.DestroyUI(uiAdjustBattleTeam);
     }
 }

@@ -11,15 +11,19 @@ public class UINetRequest : UIBase
 
 	public static void Open()
 	{
-		UIMgr.Instance.OpenUI (UINetRequest.ViewName);
+		UIMgr.Instance.OpenUI_(UINetRequest.ViewName);
 	}
 
 	public static void Close()
 	{
-		UIMgr.Instance.CloseUI (UINetRequest.ViewName);
+		UIMgr.Instance.CloseUI_(UINetRequest.ViewName);
 	}
 
-
+    public override void Init()
+    {
+        //前置
+        
+    }
 
 	// Use this for initialization
 	void Start () 

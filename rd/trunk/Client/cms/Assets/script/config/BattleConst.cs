@@ -57,8 +57,6 @@ public class BattleConst
 
     public const float unitRotSpeed = 10.0f;
 
-    //怪物默认性格
-    public const int defaultCharacter = 3;
     //怪物默认勤奋度
     public const int defaultLazy = 3;
     public const string levelChangeEvent = "level_change";

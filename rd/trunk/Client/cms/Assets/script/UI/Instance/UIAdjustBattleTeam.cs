@@ -28,8 +28,10 @@ public class UIAdjustBattleTeam : UIBase
 	public	Text	lbFriend;
 	public  Text	lbZhenrongTiaozheng;
 
-	public	List<MonsterIconBg>	playerTeamBg	= new	List<MonsterIconBg>();
-	public	List<MonsterIconBg>	enemyTeamBg		= new	List<MonsterIconBg>();
+    public List<MonsterIconBg> playerTeamBg = new List<MonsterIconBg>();
+    private List<MonsterIcon> playerIcons = new List<MonsterIcon>();
+    public List<MonsterIconBg> enemyTeamBg = new List<MonsterIconBg>();
+    private List<MonsterIcon> enemyIcons = new List<MonsterIcon>();
 
 	public ScrollView scrollView;
 
@@ -49,7 +51,6 @@ public class UIAdjustBattleTeam : UIBase
 		EventTriggerListener.Get (backButton.gameObject).onClick = OnBackButtonClick;
 		EventTriggerListener.Get (battleButton.gameObject).onClick = OnBattleButtonClick;
 		EventTriggerListener.Get (cancleButton.gameObject).onClick = OnCancleButtonClick;
-		BindListener ();
 
 		lbEnemyShangzhen.text = StaticDataMgr.Instance.GetTextByID ("instance_shangzhen");
 		lbEnemyZhenrong.text = StaticDataMgr.Instance.GetTextByID ("instance_difangzhenrong");
@@ -64,10 +65,25 @@ public class UIAdjustBattleTeam : UIBase
 		cancleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID ("instance_quxiaozhandou");
 	}
 
-	void OnDestroy()
-	{
-		UnBindListener ();
-	}
+    public override void Init()
+    {
+
+    }
+    public override void Clean()
+    {
+        //TODO: destroy MonsterIcon
+        CleanAllPlayersIcons();
+    }
+
+    void OnEnable()
+    {
+        BindListener();
+    }
+
+    void OnDisable()
+    {
+        UnBindListener();
+    }
 
 	void BindListener()
 	{
@@ -81,7 +97,7 @@ public class UIAdjustBattleTeam : UIBase
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
     }
 
-	public	void	SetData(string instanceId,List<string>enmeyList,int enemyLevel)
+	public void SetData(string instanceId,List<string>enmeyList,int enemyLevel)
 	{
 		this.instanceId = instanceId;
 		this.enemyList = enmeyList;
@@ -91,12 +107,14 @@ public class UIAdjustBattleTeam : UIBase
 	
 	IEnumerator RefreshUICo()
 	{
-		yield return StartCoroutine (RefreshEnmeyIcon ());
-		yield return StartCoroutine (RefreshPlayerIcon ());
+		yield return StartCoroutine (RefreshEnmeyIcons());
+		yield return StartCoroutine (RefreshPlayerIcons());
 	}
 
-	IEnumerator RefreshEnmeyIcon()
+	IEnumerator RefreshEnmeyIcons()
 	{
+        CleanAllEnemyIcons();//清空敌方怪物列表
+
 		int enmeyCount = enemyList.Count;
 		string monsterId = null;
 		MonsterIconBg subBg = null;
@@ -109,6 +127,8 @@ public class UIAdjustBattleTeam : UIBase
 				monsterId  = enemyList[i];
 
 				MonsterIcon subIcon = MonsterIcon.CreateIcon();
+                enemyIcons.Add(subIcon);        //加入列表用于维护
+
 				subIcon.transform.SetParent(subBg.transform,false);
 				
 				rectTrans = subIcon.transform as RectTransform;
@@ -149,12 +169,20 @@ public class UIAdjustBattleTeam : UIBase
 		}
 		yield return new WaitForEndOfFrame ();
 	}
+    void CleanAllEnemyIcons()
+    {
+        for (int i = 0; i < enemyIcons.Count; i++)
+        {
+            ResourceMgr.Instance.DestroyAsset(enemyIcons[i].gameObject);
+        }
+        enemyIcons.Clear();
+    }
 
-	IEnumerator RefreshPlayerIcon()
+	IEnumerator RefreshPlayerIcons()
 	{
 		InitPlayerTeamIcons ();
 		yield return new WaitForEndOfFrame ();
-		InitAllPlayersIcons ();
+		InitAllPlayerPetsIcons ();
 	}
 
 	void InitPlayerTeamIcons()
@@ -187,6 +215,8 @@ public class UIAdjustBattleTeam : UIBase
 			else
 			{
 				MonsterIcon subIcon = MonsterIcon.CreateIcon();
+                playerIcons.Add(subIcon);//添加列表用于维护
+
 				subIcon.transform.SetParent(subBg.transform,false);
 				
 				rectTrans = subIcon.transform as RectTransform;
@@ -202,17 +232,29 @@ public class UIAdjustBattleTeam : UIBase
 			}
 		}
 	}
+    void CleanAllPlayersIcons()
+    {
+        for (int i = 0; i < playerIcons.Count; i++)
+        {
+            ResourceMgr.Instance.DestroyAsset(playerIcons[i].gameObject);
+        }
+        playerIcons.Clear();
+    }
 
-	void InitAllPlayersIcons()
+	void InitAllPlayerPetsIcons()
 	{
+        //清理所有宠物Icon
+        CleanAllPlayerPetsIcons();
+
 		List<GameUnit> listUnit = GameDataMgr.Instance.PlayerDataAttr.GetAllPet ();
-		
+
 		GameUnit subUnit = null;
 		for (int i =0; i< listUnit.Count; ++i) 
 		{
+
 			subUnit = listUnit[i];
 			string monsterId = subUnit.pbUnit.id;
-			
+
 			MonsterIcon icon = MonsterIcon.CreateIcon();
 			//EventTriggerListener.Get(icon.iconButton.gameObject).onClick = OnPlayerWarehouseIconClick;
 			ScrollViewEventListener.Get(icon.iconButton.gameObject).onClick = OnPlayerWarehouseIconClick;
@@ -232,7 +274,14 @@ public class UIAdjustBattleTeam : UIBase
 			}
 		}
 	}
-	
+    void CleanAllPlayerPetsIcons()
+    {
+        foreach (var item in playerAllIconDic)
+        {
+            ResourceMgr.Instance.DestroyAsset(item.Value.gameObject);
+        }
+        playerAllIconDic.Clear();
+    }
 	//---------------------------------------------------------------------------------------------------------------------
 
 	void	OnPlayerTeamIconClick(GameObject go)
@@ -337,7 +386,7 @@ public class UIAdjustBattleTeam : UIBase
 			{
 				if(guid == subIcon.Id)
 				{
-					DestroyImmediate(subIcon.gameObject);
+                    ResourceMgr.Instance.DestroyAsset(subIcon.gameObject);
 					break;
 				}
 			}
@@ -373,12 +422,12 @@ public class UIAdjustBattleTeam : UIBase
 	//---------------------------------------------------------------------------------------------------------------------
 	void	OnBackButtonClick(GameObject go)
 	{
-		UIMgr.Instance.CloseUI (this);
+		UIMgr.Instance.CloseUI_(this);
 	}
 
 	void	OnCancleButtonClick(GameObject go)
 	{
-		UIMgr.Instance.CloseUI (this);
+		UIMgr.Instance.CloseUI_(this);
 	}
 
 	void	OnBattleButtonClick(GameObject go)
@@ -464,8 +513,6 @@ public class UIAdjustBattleTeam : UIBase
 		var responseData =  msg.GetProtocolBody<PB.HSInstanceEnterRet> ();
 		enterInstanceParam.instanceData = responseData;
         //TODO:
-        UIMgr.Instance.CloseUI(UIInstance.ViewName);
-        UIMgr.Instance.CloseUI(UIAdjustBattleTeam.ViewName);
         GameMain.Instance.ChangeModule<BattleModule>(enterInstanceParam);
         //GameEventMgr.Instance.FireEvent(GameEventList.StartBattle, proto);
 	}

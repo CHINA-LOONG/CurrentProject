@@ -6,15 +6,6 @@ public class UISelectServer : UIBase {
     public static string ViewName = "UISelectServer";
     public ScrollView container;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public void ResetServerList(ArrayList serverLists)
     {
@@ -36,8 +27,7 @@ public class UISelectServer : UIBase {
             {
                 serverElement.nickName.text = "该服务器上无角色";
             }
-        }
-        
+        }        
     }
     
     void ServerSelect(GameObject go)

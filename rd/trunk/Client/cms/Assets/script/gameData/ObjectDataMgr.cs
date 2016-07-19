@@ -127,6 +127,18 @@ public class ObjectDataMgr : MonoBehaviour
         return bo;
     }
     //---------------------------------------------------------------------------------------------
+    public BattleObject AddSceneObject(int guid, GameObject sceneRoot)
+    {
+        //GameObject sceneObj = ResourceMgr.Instance.LoadAsset(prefab, false);
+        BattleObject bo = sceneRoot.AddComponent<BattleObject>();
+        bo.guid = guid;
+        bo.type = BattleObjectType.Scene;
+
+        AddBattleObject(bo);
+
+        return bo;
+    }
+    //---------------------------------------------------------------------------------------------
     void OnDestroy()
     {
         Destroy(gameObject);

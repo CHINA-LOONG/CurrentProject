@@ -79,7 +79,10 @@ namespace PB
       PLAYER_NOT_EXIST = 131073,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_NICKNAME_EXIST", Value=131074)]
-      PLAYER_NICKNAME_EXIST = 131074
+      PLAYER_NICKNAME_EXIST = 131074,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PUID_EXIST", Value=131075)]
+      PUID_EXIST = 131075
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"monsterError")]

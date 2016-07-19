@@ -931,27 +931,22 @@ public class Player extends HawkAppObj {
 		// TEST ----------------------------------------------------------------------------------------
 		// default monster
 		if (statisticsEntity.getMonsterMaxCount() == 0) {
-			LinkedList<Integer> battleMonsterList = new LinkedList<>();
 			MonsterEntity monsterEntity = null;
 
-			if (null != (monsterEntity = increaseMonster("UnitDemoErshu", 1, Action.SYSTEM))) {
-				battleMonsterList.add(monsterEntity.getId());
-			}
-			if (null != (monsterEntity = increaseMonster("UnitDemoQingniao", 1, Action.SYSTEM))) {
-				battleMonsterList.add(monsterEntity.getId());
-			}
-			if (null != (monsterEntity = increaseMonster("UnitDemoZhuyan", 1, Action.SYSTEM))) {
-				battleMonsterList.add(monsterEntity.getId());
-			}
-			if (null != (monsterEntity = increaseMonster("UnitDemoQingniao", 1, Action.SYSTEM))) {
-				battleMonsterList.add(monsterEntity.getId());
-			}
-			if (null != (monsterEntity = increaseMonster("UnitDemoZhuyan", 1, Action.SYSTEM))) {
-				battleMonsterList.add(monsterEntity.getId());
-			}
-
-			getEntity().setBattleMonsterList(battleMonsterList);
-			getEntity().notifyUpdate(false);
+			increaseMonster("xgXiyiren", 1, Action.SYSTEM);
+			increaseMonster("xgHuapo", 1, Action.SYSTEM);
+			increaseMonster("xgPanshen", 1, Action.SYSTEM);
+			increaseMonster("xgMantuoluo", 1, Action.SYSTEM);
+			increaseMonster("xgAmute", 1, Action.SYSTEM);
+			increaseMonster("xgWagui", 1, Action.SYSTEM);
+			increaseMonster("xgHetong", 1, Action.SYSTEM);
+			increaseMonster("xgLonggongtongzi", 1, Action.SYSTEM);
+			increaseMonster("xgLangren", 1, Action.SYSTEM);
+			increaseMonster("xgAnpusha", 1, Action.SYSTEM);
+			increaseMonster("xgKairuisi", 1, Action.SYSTEM);
+			increaseMonster("xgLuoxinfu", 1, Action.SYSTEM);
+			increaseMonster("xgMomo", 1, Action.SYSTEM);
+			increaseMonster("xgHapi", 1, Action.SYSTEM);
 		}
 		// TEST END-------------------------------------------------------------------------------------
 	}

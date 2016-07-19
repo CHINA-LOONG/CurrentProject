@@ -298,11 +298,14 @@ public class MagicDazhaoController : MonoBehaviour
 
 	private void OpenFazhenUI()
 	{
-		UIMgr.Instance.OpenUI (UIFazhen.ViewName);
+        if (UIBattle.Instance != null)
+        {
+            UIBattle.Instance.uiFazhen = UIMgr.Instance.OpenUI_(UIFazhen.ViewName) as UIFazhen;
+        }
 	}
 
 	private void CloseFazhenUI()
 	{
-		UIMgr.Instance.CloseUI (UIFazhen.ViewName);
+		UIMgr.Instance.CloseUI_(UIFazhen.ViewName);
 	}
 }

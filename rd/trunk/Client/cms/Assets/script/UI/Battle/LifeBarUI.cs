@@ -8,6 +8,7 @@ public class LifeBarUI : MonoBehaviour
 {
     public Image currentBarImage;
     public Image targetBarImage;
+    public Image shieldImage;//盾
     RectTransform currentBar;
     RectTransform targetBar;
     float  width = 586;
@@ -15,12 +16,11 @@ public class LifeBarUI : MonoBehaviour
     public float dangerRatio = 0.3f;
     public Color normalColor = Color.white;
     public Color dangerColor = Color.red;
-    public Image shieldImage;//盾
     RectTransform shieldRect;
     float shieldWidth = 0.0f;
     public GameObject shieldEffect;//护盾满格效果
 
-    float targetLife = 1.0f;
+    public float targetLife = 1.0f;
     float currentLife = 1.0f;
     //bool isDanger = false;
     //int lifeSpeed = 1000;
@@ -65,7 +65,7 @@ public class LifeBarUI : MonoBehaviour
         {
             shieldRect = shieldImage.transform as RectTransform;
             shieldWidth = shieldRect.rect.width;
-            shieldImage.enabled = false;
+            shieldImage.gameObject.SetActive(false);
             shieldEffect.SetActive(false);
         }
         
@@ -75,7 +75,7 @@ public class LifeBarUI : MonoBehaviour
     {
         lifeTarget = null;
     }
-    
+
     void Update()
     {
         if (targetLife != currentLife)
@@ -86,7 +86,9 @@ public class LifeBarUI : MonoBehaviour
                 currentLife = targetLife;
             }
             var size = currentBar.sizeDelta;
-            size.x = width * (0.2f + currentLife * 0.8f);
+            //modify:xiaolong 2015-8-27 14:23:05
+            //size.x = width * (0.2f + currentLife * 0.8f);
+            size.x = width * currentLife;
             currentBar.sizeDelta = size;
 			RefreshShieldUI((int)(currentLife*lifeTarget.unit.maxLife));
         }
@@ -100,7 +102,7 @@ public class LifeBarUI : MonoBehaviour
             return;
         if (lifeTarget.unit.spellMagicShield > 0 || lifeTarget.unit.spellPhyShield > 0)
         {
-			int curLife = lifeTarget.unit.curLife;;
+			int curLife = lifeTarget.unit.curLife;
             if (currentLife != -1)
             {
                 curLife = currentLife;
@@ -133,21 +135,25 @@ public class LifeBarUI : MonoBehaviour
             {
                 shieldEffect.SetActive(false);
             }
-            shieldImage.enabled = true;
+            shieldImage.gameObject.SetActive(true);
             shieldRect.sizeDelta = shieldNum;
            
         }
         else
         {
-            shieldImage.enabled = false;
+            shieldImage.gameObject.SetActive(false);
 			shieldEffect.SetActive(false);
         }
     }
+
     public void SetTargetLife(int targetValue, int maxValue)
     {
         targetLife = targetValue / (float)maxValue;
+        targetLife = Mathf.Clamp01(targetLife);
         var size = targetBar.sizeDelta;
-        size.x = width * (0.2f + targetLife * 0.8f);
+        //modify:xiaolong 2015-8-27 14:22:05
+        //size.x = width * (0.2f + targetLife * 0.8f);
+        size.x = width * targetLife;
         targetBar.sizeDelta = size;
         //加血直接加
         if (targetLife > currentLife)

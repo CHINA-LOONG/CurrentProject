@@ -9,18 +9,15 @@ public class UIQuestInfo : UIBase
     public static string ViewName = "UIQuestInfo";
 
     //public static void Open(int questId)
-    public static void Open(QuestInfo quest)
+    public static UIQuestInfo Open(QuestInfo quest)
     {
         //questItem quest = StaticDataMgr.Instance.GetQuestData(questId);
 
-        GameObject go = UIMgr.Instance.OpenUI(UIQuestInfo.ViewName);
-        UIQuestInfo mInfo = go.GetComponent<UIQuestInfo>();
+        UIQuestInfo mInfo = UIMgr.Instance.OpenUI_(UIQuestInfo.ViewName)as UIQuestInfo;
         mInfo.info = quest;
         mInfo.ShowWithData(quest);
+        return mInfo;
     }
-
-
-
 
     public Button btn_confirm;
     public Text text_Title;
@@ -31,7 +28,7 @@ public class UIQuestInfo : UIBase
 
 
     private QuestInfo info;
-    private List<rewardItemIcon> rewards = new List<rewardItemIcon>();
+    private List<rewardItemIcon> items = new List<rewardItemIcon>();
 
 
     void Start()
@@ -39,6 +36,20 @@ public class UIQuestInfo : UIBase
         //TODO:
         OnLanguageChanged();
         EventTriggerListener.Get(btn_confirm.gameObject).onClick = ClickConfirmButton;
+    }
+
+    public override void Init()
+    {
+
+    }
+
+    public override void Clean()
+    {
+        for (int i = items.Count - 1; i >= 0; i++)
+        {
+            ResourceMgr.Instance.DestroyAsset(items[i].gameObject);
+        }
+        items.Clear();
     }
 
     void ShowWithData(QuestInfo info)
@@ -51,29 +62,23 @@ public class UIQuestInfo : UIBase
     {
         Logger.Log("click uiQuestInfo confirm Button");
 
-#if XL_DEBUG
-        Destroy(gameObject);
-#else
-        UIMgr.Instance.CloseUI(this);
+        UIMgr.Instance.CloseUI_(this);
         if (!string.IsNullOrEmpty(info.staticData.speechId))
         { 
             UISpeech.Open(info.staticData.speechId); 
         }
-#endif
     }
-
-
 
     void SetReward(string rewardId)
     {
         List<RewardItemData> list = new List<RewardItemData>(StaticDataMgr.Instance.GetRewardData(rewardId).itemList);
-        list.Sort(SortReward);
-        for (int i = 0; i < rewards.Count; i++)
+        list.Sort(questItem.SortReward);
+        for (int i = 0; i < items.Count; i++)
         {
-            if (i >= list.Count) rewards[i].gameObject.SetActive(false);
-            else rewards[i].gameObject.SetActive(true); ;
+            if (i >= list.Count) items[i].gameObject.SetActive(false);
+            else items[i].gameObject.SetActive(true); ;
         }
-        for (int i = rewards.Count; i < list.Count; i++)
+        for (int i = items.Count; i < list.Count; i++)
         {
             GameObject go = ResourceMgr.Instance.LoadAsset("rewardItemIcon");
             if (go != null)
@@ -81,7 +86,7 @@ public class UIQuestInfo : UIBase
                 go.transform.localScale = Vector3.one;
                 go.transform.SetParent(rewardParent, false);
                 rewardItemIcon item = go.GetComponent<rewardItemIcon>();
-                rewards.Add(item);
+                items.Add(item);
             }
         }
 
@@ -90,49 +95,14 @@ public class UIQuestInfo : UIBase
             if (list[i].protocolData.type == (int)PB.itemType.PLAYER_ATTR &&
                 int.Parse(list[i].protocolData.itemId) == (int)PB.changeType.CHANGE_PLAYER_EXP)
             {
-                rewards[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
+                items[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
             }
             else
             {
-                rewards[i].SetItem(list[i]);
+                items[i].SetItem(list[i]);
             }
         }
-
-
     }
-
-    public static int SortReward(RewardItemData a, RewardItemData b)
-    {
-        int result = 0;
-        //    显示顺序为：钻石、金币、经验、道具（道具图标按照道具表中的顺序）	
-        if ((a.protocolData.type <= (int)PB.itemType.MONSTER_ATTR && b.protocolData.type <= (int)PB.itemType.MONSTER_ATTR)
-            || (a.protocolData.type > (int)PB.itemType.MONSTER_ATTR && b.protocolData.type > (int)PB.itemType.MONSTER_ATTR))
-        {
-            if (int.Parse(a.protocolData.itemId) < int.Parse(b.protocolData.itemId))
-            {
-                result = -1;
-            }
-            else
-            {
-                result = 1;
-            }
-        }
-        else
-        {
-            if (a.protocolData.type < b.protocolData.type)
-            {
-                result = -1;
-            }
-            else
-            {
-                result = 1;
-            }
-        }
-        return result;
-    }
-
-
-
     void OnLanguageChanged()
     {
         //TODO: change language

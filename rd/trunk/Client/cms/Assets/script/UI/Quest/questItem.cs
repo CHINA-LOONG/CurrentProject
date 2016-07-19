@@ -19,13 +19,22 @@ public class questItem : MonoBehaviour
     private string causeId="";
 
     public Transform rewardParent;
-    private List<rewardItemIcon> rewards = new List<rewardItemIcon>();
+    private List<rewardItemIcon> items = new List<rewardItemIcon>();
     private QuestInfo info;
     void Start()
     {
         OnLanguageChanged();
         EventTriggerListener.Get(btn_Todoit.gameObject).onClick = OnClickTodoit;
         EventTriggerListener.Get(btn_Submit.gameObject).onClick = OnClickSubmit;
+    }
+    //清理资源对象
+    public void Clean()
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            ResourceMgr.Instance.DestroyAsset(items[i].gameObject);
+        }
+        items.Clear();
     }
 
     public void SetQuest(QuestInfo info)
@@ -78,12 +87,12 @@ public class questItem : MonoBehaviour
     {
         List<RewardItemData> list =new List<RewardItemData>(StaticDataMgr.Instance.GetRewardData(rewardId).itemList);
         list.Sort(SortReward);
-        for (int i = 0; i < rewards.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            if (i >= list.Count) rewards[i].gameObject.SetActive(false);
-            else rewards[i].gameObject.SetActive(true); ;
+            if (i >= list.Count) items[i].gameObject.SetActive(false);
+            else items[i].gameObject.SetActive(true); ;
         }
-        for (int i = rewards.Count; i < list.Count; i++)
+        for (int i = items.Count; i < list.Count; i++)
         {
             GameObject go = ResourceMgr.Instance.LoadAsset("rewardItemIcon");
             if (go!=null)
@@ -91,7 +100,7 @@ public class questItem : MonoBehaviour
                 go.transform.localScale = Vector3.one;
                 go.transform.SetParent(rewardParent, false);
                 rewardItemIcon item = go.GetComponent<rewardItemIcon>();
-                rewards.Add(item);
+                items.Add(item);
                 LanguageMgr.Instance.SetLanguageFont(go);
             }
         }
@@ -101,16 +110,15 @@ public class questItem : MonoBehaviour
             if (list[i].protocolData.type == (int)PB.itemType.PLAYER_ATTR &&
                 int.Parse(list[i].protocolData.itemId) == (int)PB.changeType.CHANGE_PLAYER_EXP)
             {
-                rewards[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
+                items[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
             }
             else
             {
-                rewards[i].SetItem(list[i]);
+                items[i].SetItem(list[i]);
             }
         }
 
     }
-
 
     void OnClickTodoit(GameObject go)
     {
@@ -153,9 +161,6 @@ public class questItem : MonoBehaviour
         }
         return result;
     }
-
-
-
 
     void OnLanguageChanged()
     {

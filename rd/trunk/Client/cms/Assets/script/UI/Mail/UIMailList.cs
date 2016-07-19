@@ -22,6 +22,20 @@ public class UIMailList : MonoBehaviour
         OnLanguageChanged();
     }
 
+    public void Clean()
+    {
+        for (int i = items.Count - 1; i >= 0; i++)
+        {
+            ResourceMgr.Instance.DestroyAsset(items[i].gameObject);
+        }
+        items.Clear();
+        for (int i = itemsPool.Count - 1; i >= 0; i++)
+        {
+            ResourceMgr.Instance.DestroyAsset(itemsPool[i].gameObject);
+        }
+        itemsPool.Clear();
+    }
+
     public void RefreshList(List<PB.HSMail> list)
     {
         DeleteAllElement();
@@ -34,12 +48,12 @@ public class UIMailList : MonoBehaviour
 
         for (int i = 0; i < list.Count; i++)
         {
-            mailItem item = AddElement();
+            mailItem item = GetElement();
             item.SetMailItem(list[i]);
         }
     }
 
-    public mailItem AddElement()
+    public mailItem GetElement()
     {
         mailItem item = null;
         if (itemsPool.Count<=0)

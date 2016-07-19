@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0847a10b7de231749b65e58160ac6f67, type: 3}
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
     m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
@@ -676,69 +676,6 @@ MonoBehaviour:
   typeLable: {fileID: 11471662}
   avatar: {fileID: 11492782}
   badge: {fileID: 11461934}
-  unit:
-    pbUnit:
-      slot: 0
-      guid: 0
-      camp: 0
-      id: 
-      character: 0
-      lazy: 0
-      level: 0
-      curExp: 0
-      stage: 0
-      spellPbList: []
-      testBossType: 0
-    name: 
-    assetID: 
-    health: 0
-    strength: 0
-    intelligence: 0
-    speed: 0
-    defense: 0
-    endurance: 0
-    property: 0
-    recovery: 0
-    isBoss: 0
-    bossType: 0
-    character: 0
-    lazy: 0
-    isVisible: 1
-    friendship: 0
-    criticalRatio: 0
-    antiCriticalRatio: 0
-    criticalDamageRatio: 0
-    hitRatio: 0
-    additionDamageRatio: 0
-    minusDamageRatio: 0
-    additionHealRatio: 0
-    defensePierce: 0
-    isEvolutionable: 0
-    evolutionID: 
-    invincible: 0
-    stun: 0
-    dazhao: 0
-    dazhaoPrepareCount: 0
-    dazhaoDamageCount: 0
-    energy: 0
-    spellStrengthRatio: 0
-    spellIntelligenceRatio: 0
-    spellSpeedRatio: 0
-    spellDefenseRatio: 0
-    spellEnduranceRatio: 0
-    spellDefenseDamageRatio: 0
-    curLife: 0
-    maxLife: 0
-    magicAttack: 0
-    phyAttack: 0
-    weakPointList: []
-    attackWpName: 
-    backUp: 0
-    headImg: {fileID: 0}
-    battleUnit: {fileID: 0}
-    attackCount: 0
-    lazyList: 
-    dazhaoList: 
 --- !u!114 &11439386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -795,7 +732,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0847a10b7de231749b65e58160ac6f67, type: 3}
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
     m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
@@ -940,7 +877,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0847a10b7de231749b65e58160ac6f67, type: 3}
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -1008,7 +945,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0847a10b7de231749b65e58160ac6f67, type: 3}
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -1100,7 +1037,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0847a10b7de231749b65e58160ac6f67, type: 3}
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0

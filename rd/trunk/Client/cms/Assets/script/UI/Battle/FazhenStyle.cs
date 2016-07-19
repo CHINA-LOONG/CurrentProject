@@ -16,7 +16,7 @@ public class FazhenStyle : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	{
 		userTouchedList.Clear ();
 		touchParticleTrans.gameObject.SetActive (false);
-		fazhen = transform.parent.gameObject.GetComponent<UIFazhen>();
+		fazhen = UIBattle.Instance.uiFazhen;
 
 		Transform subTrans = null;
 		for (int i =0; i< touchList.Count; ++i)

@@ -6,14 +6,6 @@ using UnityEngine.UI;
 public class UIInstance : UIBase,TabButtonDelegate
 {
 	public static string ViewName = "UIInstance";
-	private	static	UIInstance instance;
-	public	static	UIInstance Instance
-	{
-		get
-		{
-			return instance;
-		}
-	}
 
 	public Text		chapterText;
 	public	Button	closeButton;
@@ -22,32 +14,59 @@ public class UIInstance : UIBase,TabButtonDelegate
 	public	Transform	chapterTranform;
 	public	Transform	infoLayer;//副本信息
 
-	[HideInInspector]
+	//[HideInInspector]
 	public	InstanceInfo	instanceInfo;
-
-	[HideInInspector]
+    //[HideInInspector]
+    public InstanceChapter insChapter;
+	//[HideInInspector]
 	public int difficulty;
 
+
+    private TabButtonGroup tabGroup;
+
 	// Use this for initialization
-	IEnumerator Start () 
+	void Start () 
 	{
 		EventTriggerListener.Get (closeButton.gameObject).onClick = OnCloseInstance;
 		EventTriggerListener.Get (leftButton.gameObject).onClick = OnLeftButtonClick;
 		EventTriggerListener.Get (rightButton.gameObject).onClick = OnRightButtonClcked;
-		yield return new WaitForEndOfFrame ();
-		InitInstanceInfo ();
-		yield return new WaitForEndOfFrame ();
-		GetComponent<TabButtonGroup> ().InitWithDelegate (this);
-		RefreshInstance ();
-
-		instance = this;
 	}
+
+    public override void Init()
+    {
+        if (insChapter != null)
+        {
+            ResourceMgr.Instance.DestroyAsset(insChapter.gameObject);
+        }
+        if (tabGroup == null)
+        {
+            tabGroup = GetComponentInChildren<TabButtonGroup>();
+            tabGroup.InitWithDelegate(this);
+        }
+		InitInstanceInfo ();
+		RefreshInstance ();
+    }
+    public override void Clean()
+    {
+        if (instanceInfo!=null)
+        {
+            ResourceMgr.Instance.DestroyAsset(instanceInfo.gameObject);
+        }
+        if (insChapter!=null)
+        {
+            ResourceMgr.Instance.DestroyAsset(insChapter.gameObject);
+        }
+    }
+
 
 	void InitInstanceInfo()
 	{
-		GameObject go = ResourceMgr.Instance.LoadAsset ("InstanceInfo");
-		go.transform.SetParent (infoLayer, false);
-		instanceInfo = go.GetComponent<InstanceInfo> ();
+        if (instanceInfo == null)
+        {
+            GameObject go = ResourceMgr.Instance.LoadAsset("InstanceInfo");
+            go.transform.SetParent(infoLayer, false);
+            instanceInfo = go.GetComponent<InstanceInfo>();
+        }
         instanceInfo.SetShow(false);
 
         //test only(重置副本)
@@ -70,7 +89,7 @@ public class UIInstance : UIBase,TabButtonDelegate
 		
 		go.transform.SetParent (chapterTranform, false);
 
-		InstanceChapter insChapter = go.GetComponent<InstanceChapter> ();
+		insChapter = go.GetComponent<InstanceChapter> ();
 
 		List<InstanceButton> listInsButton = insChapter.instanceButtonList;
 
@@ -94,7 +113,7 @@ public class UIInstance : UIBase,TabButtonDelegate
 
 	void OnCloseInstance(GameObject go)
 	{
-		UIMgr.Instance.CloseUI (this);
+		UIMgr.Instance.CloseUI_(this);
 	}
 
 	void OnLeftButtonClick(GameObject go)

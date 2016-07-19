@@ -1,0 +1,459 @@
+Message-ID: <106914255.429.1437983785163.JavaMail.root@internalservice.localdomain>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_428_660082551.1437983785163"
+
+------=_Part_428_660082551.1437983785163
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Translation Cache API</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+#main {
+    padding-bottom: 1em !important; /* The default padding of 6em is too mu=
+ch for printouts */
+}
+
+body {
+    font-family: Arial, Helvetica, FreeSans, sans-serif;
+    font-size: 10pt;
+    line-height: 1.2;
+}
+
+body, #full-height-container, #main, #page, #content, .has-personal-sidebar=
+ #content {
+    background: #fff    !important;
+    color: #000         !important;
+    border: 0           !important;
+    width: 100%         !important;
+    height: auto        !important;
+    min-height: auto    !important;
+    margin: 0           !important;
+    padding: 0          !important;
+    display: block      !important;
+}
+
+a, a:link, a:visited, a:focus, a:hover, a:active {
+    color: #000;
+}
+#content h1,
+#content h2,
+#content h3,
+#content h4,
+#content h5,
+#content h6 {
+    font-family: Arial, Helvetica, FreeSans, sans-serif;
+    page-break-after: avoid;
+}
+pre {
+    font-family: Monaco, "Courier New", monospace;
+}
+
+#header,
+.aui-header-inner,
+#navigation,
+#sidebar,
+.sidebar,
+#personal-info-sidebar,
+.ia-fixed-sidebar,
+.page-actions,
+.navmenu,
+.ajs-menu-bar,
+.noprint,
+.inline-control-link,
+.inline-control-link a,
+a.show-labels-editor,
+.global-comment-actions,
+.comment-actions,
+.quick-comment-container,
+#addcomment {
+    display: none !important;
+}
+
+.comment .date::before {
+    content: none !important; /* remove middot for print view */
+}
+
+h1.pagetitle img {
+    height: auto;
+    width: auto;
+}
+
+.print-only {
+    display: block;
+}
+#footer {
+    position: relative !important; /* CONF-17506 Place the footer at end of=
+ the content */
+    margin: 0;
+    padding: 0;
+    background: none;
+    clear: both;
+}
+
+#poweredby {
+    border-top: none;
+    background: none;
+}
+
+#poweredby li.print-only {
+    display: list-item;
+    font-style: italic;
+}
+
+#poweredby li.noprint {
+    display:none;
+}
+
+
+/* no width controls in print */
+.wiki-content .table-wrap,
+.wiki-content p,
+.panel .codeContent,
+.panel .codeContent pre,
+.image-wrap {
+    overflow: visible !important;
+}
+
+/* TODO - should this work? */
+#children-section,
+#comments-section .comment,
+#comments-section .comment .comment-body,
+#comments-section .comment .comment-content,
+#comments-section .comment p {
+    page-break-inside: avoid;
+}
+
+#page-children a {
+    text-decoration: none;
+}
+
+/**
+ hide twixies
+
+ the specificity here is a hack because print styles
+ are getting loaded before the base styles. */
+#comments-section.pageSection .section-header,
+#comments-section.pageSection .section-title,
+#children-section.pageSection .section-header,
+#children-section.pageSection .section-title,
+.children-show-hide {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.children-show-hide.icon {
+    display: none;
+}
+
+/* personal sidebar */
+.has-personal-sidebar #content {
+    margin-right: 0px;
+}
+
+.has-personal-sidebar #content .pageSection {
+    margin-right: 0px;
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Translation Cache API</h1>
+    <div class=3D"Section1">
+        <p>=E5=8C=85=E5=90=AB=E4=B8=A4=E9=83=A8=E5=88=86</p>
+<div>
+1. shunter&nbsp;
+</div>
+<div>
+2. cache
+</div>
+<div>
+=E8=B0=83=E7=94=A8=E6=96=B9=E8=AE=BE=E7=BD=AE=E8=B0=83=E7=94=A8=E6=A8=A1=E5=
+=BC=8F(mode)=E6=9D=A5=E5=86=B3=E5=AE=9A=E6=98=AFserver2server=E8=B0=83=E7=
+=94=A8=E8=BF=98=E6=98=AFclient2server=E8=B0=83=E7=94=A8
+</div>
+<div>
+=E5=85=88=E8=B0=83=E7=94=A8shunter=E5=BE=97=E5=88=B0fromCache=E5=80=BC=EF=
+=BC=8C=E5=A6=82=E6=9E=9C=E6=98=AF1=EF=BC=8C=E5=8F=AF=E4=BB=A5=E5=BE=97=E5=
+=88=B0cacheServer(mode=3Dc2s)=E6=88=96=E8=80=85cacheServer=E5=88=97=E8=A1=
+=A8(mode=3Ds2s)=EF=BC=8C=E5=86=8D=E7=94=A8cacheServer=E7=9A=84=E5=80=BC=E9=
+=80=9A=E8=BF=87cache=E8=B0=83=E7=94=A8=E7=BF=BB=E8=AF=91
+</div>
+<div>
+=E5=A6=82=E6=9E=9CfromCache=E7=9A=84=E5=80=BC=E6=98=AF0=EF=BC=8C=E9=82=A3=
+=E4=B9=88=E5=B0=B1=E7=9B=B4=E6=8E=A5=E8=B0=83=E7=94=A8=E7=BF=BB=E8=AF=91(
+<a href=3D"http://translate.funplusgame.com/api/v1/translate" class=3D"exte=
+rnal-link" rel=3D"nofollow">http://translate.funplusgame.com/api/v1/transla=
+te</a>&nbsp;, =E5=8F=82=E8=80=83
+<a href=3D"/display/translation/Translation+API+-+Production+Servers">Trans=
+lation API - Production Servers</a>)
+</div>
+<div>
+=E6=B3=A8=E6=84=8F1=EF=BC=9Acache=E7=9A=84host=E5=92=8Cport=E4=B8=8D=E8=A6=
+=81=E5=86=99=E6=AD=BB=E5=9C=A8code=E9=87=8C=EF=BC=8C=E8=A6=81=E9=80=9A=E8=
+=BF=87shunter=E5=8A=A8=E6=80=81=E7=9A=84=E5=8F=96=E3=80=82
+</div>
+<div>
+=E6=B3=A8=E6=84=8F2=EF=BC=9A=E8=B0=83=E7=94=A8=E6=96=B9=E6=97=A0=E8=AE=BA=
+=E6=98=AFc2s=E8=BF=98=E6=98=AFs2s=E9=83=BD=E8=A6=81=E5=AE=9A=E6=9C=9F=E5=92=
+=8Cshunter=E5=90=8C=E6=AD=A5=E8=8E=B7=E5=8F=96=E6=9C=80=E6=96=B0=E7=9A=84fr=
+omCache=E5=92=8CcacheServer=E7=9A=84=E5=80=BC
+</div>
+<div>
+=E6=B3=A8=E6=84=8F3=EF=BC=9A=E5=A6=82=E6=9E=9C=E6=98=AFs2s=E6=A8=A1=E5=BC=
+=8F=EF=BC=8C=E8=B0=83=E7=94=A8=E6=96=B9=E8=A6=81=E8=87=AA=E5=B7=B1=E5=86=99=
+=E7=AE=97=E6=B3=95=E6=9D=A5=E5=9C=A8=E8=BF=94=E5=9B=9E=E7=9A=84=E6=9C=8D=E5=
+=8A=A1=E5=99=A8=E5=88=97=E8=A1=A8=E9=87=8C=E9=80=89=E6=8B=A9=EF=BC=8C=E5=8F=
+=AF=E9=80=89=E6=8B=A9=E9=A1=BA=E5=BA=8F=E8=BD=AE=E8=AF=A2=E6=88=96=E8=80=85=
+roundrobin=E7=AD=89=E7=AE=97=E6=B3=95
+</div>
+<h2 id=3D"TranslationCacheAPI-ShunterAPI"><strong>Shunter API</strong></h2>
+<h3 id=3D"TranslationCacheAPI-RequestURI%3A">Request URI:&nbsp;</h3>
+<div>
+<a href=3D"http://translate.funplusgame.com/api/v1/shunter" class=3D"extern=
+al-link" rel=3D"nofollow">http://translate.funplusgame.com/api/v1/shunter</=
+a>
+</div>
+<h3 id=3D"TranslationCacheAPI-HTTPRequestHeader%3A">HTTP Request Header: &n=
+bsp;</h3>
+<div>
+Accept: application/json;charset=3DUTF-8
+</div>
+<h3 id=3D"TranslationCacheAPI-Method%3A">Method:</h3>
+<div>
+GET
+</div>
+<h3 id=3D"TranslationCacheAPI-Parameters%3A">Parameters:</h3>
+<div class=3D"table-wrap">
+<table class=3D"confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Parameter</th>
+<th class=3D"confluenceTh">Required</th>
+<th class=3D"confluenceTh">Description</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">appId</td>
+<td class=3D"confluenceTd">Required</td>
+<td class=3D"confluenceTd">=E9=A1=B9=E7=9B=AEID=EF=BC=8C=E7=94=B1NLP=E7=BB=
+=84=E5=88=86=E9=85=8D=E7=9A=84=E5=94=AF=E4=B8=80ID</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">mode</td>
+<td class=3D"confluenceTd">Optional</td>
+<td class=3D"confluenceTd">c2s=E6=88=96=E8=80=85s2s=E3=80=82cache=E8=AE=BF=
+=E9=97=AE=E6=A8=A1=E5=BC=8F=EF=BC=8C=E9=BB=98=E8=AE=A4=E4=B8=BAc2s</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id=3D"TranslationCacheAPI-Response%3A">Response:</h3>
+<p>1. =E6=88=90=E5=8A=9F=EF=BC=8C=E9=80=9A=E8=BF=87Cache=E8=B0=83=E7=94=A8=
+=E7=BF=BB=E8=AF=91=EF=BC=8CCache=E6=9C=8D=E5=8A=A1=E5=99=A8=E5=9C=B0=E5=9D=
+=80, mode=3Dc2s</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"theme: Confluence; brush: java; gutter: false" style=3D"font-=
+size:12px;">{&quot;errorCode&quot;:0,&quot;errorMessage&quot;:&quot;OK&quot=
+;,&quot;fromCache&quot;:1,&quot;cacheServer&quot;:&quot;54.201.213.48:13140=
+&quot;}</pre>=20
+</div>
+</div>
+<p>&nbsp;</p>
+<p>2.=E6=88=90=E5=8A=9F=EF=BC=8C =E7=9B=B4=E6=8E=A5=E8=B0=83=E7=94=A8=E7=BF=
+=BB=E8=AF=91=EF=BC=8C=E6=B2=A1=E6=9C=89Cache=E6=9C=8D=E5=8A=A1=E5=99=A8=E5=
+=9C=B0=E5=9D=80</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"theme: Confluence; brush: java; gutter: false" style=3D"font-=
+size:12px;">{&quot;errorCode&quot;:0,&quot;errorMessage&quot;:&quot;OK&quot=
+;,&quot;fromCache&quot;:0}</pre>=20
+</div>
+</div>
+<p>3.=E6=88=90=E5=8A=9F=EF=BC=8C=E9=80=9A=E8=BF=87Cache=E8=B0=83=E7=94=A8=
+=E7=BF=BB=E8=AF=91=EF=BC=8CCache=E6=9C=8D=E5=8A=A1=E5=99=A8=E5=9C=B0=E5=9D=
+=80, mode=3Ds2s</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"theme: Confluence; brush: java; gutter: false" style=3D"font-=
+size:12px;">{&quot;errorCode&quot;:0,&quot;errorMessage&quot;:&quot;OK&quot=
+;,&quot;fromCache&quot;:1,&quot;cacheServers&quot;:[&quot;127.0.0.1:8091&qu=
+ot;,&quot;127.0.0.1:8092&quot;]}</pre>=20
+</div>
+</div>
+<p>4. =E5=A4=B1=E8=B4=A5</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"theme: Confluence; brush: java; gutter: false" style=3D"font-=
+size:12px;">{&quot;errorCode&quot;:2000,&quot;errorMessage&quot;:&quot;Miss=
+ing Parameter&quot;}</pre>=20
+</div>
+</div>
+<div>
+<div>
+<div class=3D"mail_quote_1AA14F29EAC74FFCBF7ACE228C16998B">
+<div>
+<div class=3D"mail_quote_AC43A8130D9F4B7DAA3AD5ABA92987F4">
+<h2 id=3D"TranslationCacheAPI-CacheHttpAPI"><strong>Cache Http API</strong>=
+</h2>
+<h3 id=3D"TranslationCacheAPI-RequestURI%3A.1">Request URI:&nbsp;</h3>
+<div>
+<a href=3D"http://ipAddressport" class=3D"external-link" rel=3D"nofollow">h=
+ttp://ipAddress:port/service/translate</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class=3D"mail_quote_1AA14F29EAC74FFCBF7ACE228C16998B">
+<div>
+<div class=3D"mail_quote_AC43A8130D9F4B7DAA3AD5ABA92987F4">
+<h3 id=3D"TranslationCacheAPI-HTTPRequestHeader%3A.1">HTTP Request Header: =
+&nbsp;</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div class=3D"mail_quote_1AA14F29EAC74FFCBF7ACE228C16998B">
+<div>
+<div class=3D"mail_quote_AC43A8130D9F4B7DAA3AD5ABA92987F4">
+<div>
+Accept: application/json;charset=3DUTF-8
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div class=3D"mail_quote_1AA14F29EAC74FFCBF7ACE228C16998B">
+<div>
+<div class=3D"mail_quote_AC43A8130D9F4B7DAA3AD5ABA92987F4">
+<div>
+Content-Type: application/json
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class=3D"mail_quote_1AA14F29EAC74FFCBF7ACE228C16998B">
+<div>
+<div class=3D"mail_quote_AC43A8130D9F4B7DAA3AD5ABA92987F4">
+<h3 id=3D"TranslationCacheAPI-Method%3A.1">Method:</h3>
+<div>
+POST
+</div>
+<h3 id=3D"TranslationCacheAPI-Body%3A">Body:&nbsp;</h3>
+<div>
+=E5=8F=82=E6=95=B0=E4=B8=8ETranslation API=E4=B8=80=E8=87=B4=EF=BC=8C=E5=8F=
+=AF=E5=8F=82=E8=80=83
+<a href=3D"/display/translation/Translation+API+-+Production+Servers">Trans=
+lation API - Production Servers</a>
+</div>
+<div>
+<p>&nbsp;</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"theme: Confluence; brush: java; gutter: false" style=3D"font-=
+size:12px;">{&quot;q&quot;:&quot;hello world.&quot;,&quot;source&quot;:&quo=
+t;en&quot;,&quot;target&quot;:&quot;zh-CN&quot;,&quot;appId&quot;:&quot;dea=
+dwalk&quot;}</pre>=20
+</div>
+</div>
+<p>&nbsp;</p>
+</div>
+<h3 id=3D"TranslationCacheAPI-Response%3A.1">Response:</h3>
+<div>
+1. =E6=88=90=E5=8A=9F
+</div>
+<div>
+<p>&nbsp;</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"theme: Confluence; brush: java; gutter: false" style=3D"font-=
+size:12px;">{&quot;source&quot;:&quot;en&quot;, &quot;target&quot;:&quot;zh=
+-CN&quot;, &quot;sourceText&quot;:&quot;hello world.&quot;, &quot;targetTex=
+t&quot;:&quot;=E4=BD=A0=E5=A5=BD=E4=B8=96=E7=95=8C=E3=80=82&quot;}</pre>=20
+</div>
+</div>
+<p>&nbsp;</p>
+</div>
+<div>
+2. =E5=A4=B1=E8=B4=A5
+</div>
+<div>
+<p>&nbsp;</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"theme: Confluence; brush: java; gutter: false" style=3D"font-=
+size:12px;">{&quot;code&quot;:10009, &quot;ex&quot;:&quot;(10009) at _find =
+in FPReader.cpp:26 --- KEY:appId NOT FOUND&quot;, &quot;raiser&quot;:&quot;=
+Socket: 5, address: 106.49.97.227:6379&quot;}</pre>=20
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_428_660082551.1437983785163--

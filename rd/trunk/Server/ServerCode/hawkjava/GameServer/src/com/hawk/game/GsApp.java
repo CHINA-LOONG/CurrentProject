@@ -323,18 +323,14 @@ public class GsApp extends HawkApp {
 				if (session.getAppObject() == null) {
 					// 登陆协议
 					if (protocol.checkType(HS.code.LOGIN_C)) {
-						String puid = protocol
-								.parseProtocol(HSLogin.getDefaultInstance())
-								.getPuid().trim().toLowerCase();
+						String puid = protocol.parseProtocol(HSLogin.getDefaultInstance()).getPuid().trim().toLowerCase();
 						if (!checkPuidValid(puid, session)) {
 							return true;
 						}
 
 						// 登陆协议时间间隔控制
 						synchronized (puidLoginTime) {
-							if (puidLoginTime.containsKey(puid)
-									&& HawkTime.getMillisecond() <= puidLoginTime
-											.get(puid) + 5000) {
+							if (puidLoginTime.containsKey(puid) && HawkTime.getMillisecond() <= puidLoginTime.get(puid) + 5000) {
 								return true;
 							}
 							puidLoginTime.put(puid, HawkTime.getMillisecond());
@@ -428,11 +424,8 @@ public class GsApp extends HawkApp {
 		if (playerId == 0) {
 			// 注册人数达到上限
 			int registerMaxSize = GsConfig.getInstance().getRegisterMaxSize();
-			if (registerMaxSize > 0
-					&& ServerData.getInstance().getRegisterPlayer() >= registerMaxSize) {
-				session.sendProtocol(ProtoUtil.genErrorProtocol(
-						HS.code.LOGIN_C_VALUE,
-						Status.error.REGISTER_MAX_LIMIT_VALUE, 1));
+			if (registerMaxSize > 0 && ServerData.getInstance().getRegisterPlayer() >= registerMaxSize) {
+				session.sendProtocol(ProtoUtil.genErrorProtocol(HS.code.LOGIN_C_VALUE,Status.error.REGISTER_MAX_LIMIT_VALUE, 1));
 				return false;
 			}
 		}
@@ -459,8 +452,7 @@ public class GsApp extends HawkApp {
 			HSLoginRet.Builder response = HSLoginRet.newBuilder();
 			response.setStatus(Status.error.NONE_ERROR_VALUE);
 			response.setPlayerId(0);
-			session.sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S_VALUE,
-					response));
+			session.sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S_VALUE, response));
 			return false;
 		}
 
@@ -476,39 +468,35 @@ public class GsApp extends HawkApp {
 	private boolean CreateNewPlayer(String puid, HawkSession session, HawkProtocol cmd) {
 		int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
 		if (playerId == 0) {
-			HSPlayerCreate protocol = cmd.parseProtocol(HSPlayerCreate
-					.getDefaultInstance());
+			HSPlayerCreate protocol = cmd.parseProtocol(HSPlayerCreate.getDefaultInstance());
 			if (ServerData.getInstance().isExistName(protocol.getNickname())) {
 				HSErrorCode.Builder error = HSErrorCode.newBuilder();
 				error.setErrCode(Status.PlayerError.PLAYER_NICKNAME_EXIST_VALUE);
 				error.setHpCode(HS.code.PLAYER_CREATE_C_VALUE);
-				session.sendProtocol(HawkProtocol.valueOf(HS.sys.ERROR_CODE,
-						error));
+				session.sendProtocol(HawkProtocol.valueOf(HS.sys.ERROR_CODE, error));
 				return false;
 			}
 
-			PlayerEntity playerEntity = new PlayerEntity(puid,
-					protocol.getNickname(), (byte) (protocol.getCareer()),
-					protocol.getGender(), protocol.getEye(),
-					protocol.getHair(), protocol.getHairColor());
+			PlayerEntity playerEntity = new PlayerEntity(puid, protocol.getNickname(), (byte) (protocol.getCareer()), protocol.getGender(), protocol.getEye(), protocol.getHair(), protocol.getHairColor());
 			if (false == playerEntity.notifyCreate()) {
 				return false;
 			}
 
 			playerId = playerEntity.getId();
-			ServerData.getInstance().addNameAndPlayerId(protocol.getNickname(),
-					playerId);
+			ServerData.getInstance().addNameAndPlayerId(protocol.getNickname(), playerId);
 			ServerData.getInstance().addPuidAndPlayerId(puid, playerId);
 			logger.info("create player entity: {}, puid: {}", playerId, puid);
 
 			HSPlayerCreateRet.Builder response = HSPlayerCreateRet.newBuilder();
 			response.setStatus(Status.error.NONE_ERROR_VALUE);
 			response.setPalyerID(playerId);
-			session.sendProtocol(HawkProtocol.valueOf(
-					HS.code.PLAYER_CREATE_S_VALUE, response));
+			session.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_CREATE_S_VALUE, response));
 
 			HawkAccountService.getInstance().report(new HawkAccountService.CreateRoleData(puid, playerId, protocol.getNickname()));
 			return true;
+		}
+		else {
+			session.sendProtocol(ProtoUtil.genErrorProtocol(HS.code.PLAYER_CREATE_C_VALUE, Status.PlayerError.PUID_EXIST_VALUE, 1));
 		}
 		return false;
 	}

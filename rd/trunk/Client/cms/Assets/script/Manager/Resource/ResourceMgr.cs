@@ -6,7 +6,7 @@ using PathologicalGames;
 
 //---------------------------------------------------------------------------------------------
 // call backs
-public delegate void AssetLoadedCallBack(GameObject instance, System.EventArgs args, AssetBundle bundle);
+public delegate void AssetLoadedCallBack(GameObject instance, System.EventArgs args);
 
 // asynchronous request
 public class AssetRequest
@@ -63,7 +63,6 @@ public class ResourceMgr : MonoBehaviour
 
     void Awake()
     {
-        int a = 0;
     }
 
     public static ResourceMgr Instance
@@ -140,17 +139,20 @@ public class ResourceMgr : MonoBehaviour
         {
             Logger.LogWarning("Assets file not exists!!! Ignoring...");
         }
-		
     }
     public void LoadLevelAsyn(string levelName, bool isAdditive, AssetLoadedCallBack callBack = null, System.EventArgs args = null)
     {
-        name = StaticDataMgr.Instance.GetRealName(levelName);
+        levelName = StaticDataMgr.Instance.GetRealName(levelName);
         StartCoroutine(LoadLevelRequest(new AssetRequest(levelName, callBack, args, isAdditive)));
     }
     //---------------------------------------------------------------------------------------------
     public IEnumerator LoadLevelRequest(AssetRequest request)
     {
-        string abname = StaticDataMgr.Instance.GetBundleName(request.name).ToLower();
+        string abname = StaticDataMgr.Instance.GetBundleName(request.name);
+        if (abname == null)
+            yield return null;
+
+        abname = abname.ToLower();
         LoadAssetBundleAsync(abname);
         AssetLevelLoadOperation loadLevelOperation = new AssetLevelLoadOperation(
             abname,
@@ -162,14 +164,13 @@ public class ResourceMgr : MonoBehaviour
         if (loadLevelOperation == null)
             yield break;
 
-
         inProgressLoadList.Add(loadLevelOperation);
         yield return StartCoroutine(loadLevelOperation);
 
-        //if (request.assetCallBack != null)
-        //{
-        //    request.assetCallBack(, request.args, GetLoadedAssetBundle(abname).assetBundle);
-        //}
+        if (request.assetCallBack != null)
+        {
+            request.assetCallBack(null, request.args);
+        }
 
         UnloadAssetBundle(abname);
         Resources.UnloadUnusedAssets();
@@ -184,7 +185,7 @@ public class ResourceMgr : MonoBehaviour
         {
             if (callBack != null)
             {
-                callBack(obj, args, null);
+                callBack(obj, args);
             }
             return;
         }
@@ -212,10 +213,21 @@ public class ResourceMgr : MonoBehaviour
         CreatePoolObject(prefab);
         if (request.assetCallBack != null)
         {
-            request.assetCallBack(Instantiate(prefab), request.args, GetLoadedAssetBundle(abname).assetBundle);
+            request.assetCallBack(Instantiate(prefab), request.args);
         }
 
         UnloadAssetBundle(abname);
+        Resources.UnloadUnusedAssets();
+        System.GC.Collect();
+    }
+    public void ClearCache()
+    {
+        var itor = battlePoolList.GetEnumerator();
+        //while (itor.MoveNext())
+        //{
+        //    Destroy(itor.Current.Value);
+        //}
+        battlePoolList.Clear();
         Resources.UnloadUnusedAssets();
         System.GC.Collect();
     }
@@ -342,9 +354,10 @@ public class ResourceMgr : MonoBehaviour
         abname = abname.ToLower();
         AssetBundle bundle = LoadAssetBundle(abname);
 
-        return bundle.LoadAsset<T>(assetname);
+        //T obj = bundle.LoadAsset<T>(assetname);
 
-        //TODO: pool object too
+        return bundle.LoadAsset<T>(assetname);
+        ////TODO: pool object too
         //T prefab = bundle.LoadAsset<T>(assetname);
         //T obj = Object.Instantiate(prefab);
 

@@ -40,6 +40,8 @@ enum PlayerError
 	PLAYER_NOT_EXIST           = 0x00020001;
 	// 昵称存在
 	PLAYER_NICKNAME_EXIST      = 0x00020002;
+	// 账号名成重复
+	PUID_EXIST           	   = 0x00020003;
 }
 
 enum monsterError

@@ -12,7 +12,7 @@ public class BattleUnitAi : MonoBehaviour {
 		PhysicsAttack,
 		MagicAttack,
 		Defence,
-		Beneficial,
+		Buff,
         DazhaoPrepare,
 		UnKown
 	}
@@ -34,15 +34,8 @@ public class BattleUnitAi : MonoBehaviour {
 	}
 
 	// 
-
 	int	attackMaxTimes = 100;
 
-	// Use this for initialization
-	void Start () 
-	{
-	
-	}
-	
 	public	void	Init()
 	{
 		instance = this;
@@ -54,50 +47,51 @@ public class BattleUnitAi : MonoBehaviour {
 
 	public GameUnit GetMagicDazhaoAttackUnit(GameUnit battleUnit)
 	{
-		return GetAttackTargetNormalStyle (battleUnit);
+		return GetMagicAttackTarget (battleUnit);
 	}
 
+	//Ai 目标
     public GameUnit GetTargetThroughSpell(Spell spell, GameUnit caster)
     {
         if (spell == null)
             return null;
-
-
+		
         GameUnit attackTarget = null;
         int spellType = spell.spellData.category;
-        switch (spellType)
-        {
-            case (int)SpellType.Spell_Type_Defense:
-            case (int)SpellType.Spell_Type_Lazy:
-            case (int)SpellType.Spell_Type_Passive:
-                attackTarget = caster;
-                break;
+		switch (spellType)
+		{
+		case (int)SpellType.Spell_Type_Defense:
+		case (int)SpellType.Spell_Type_Lazy:
+			attackTarget = caster;
+			break;
+			
+		case (int)SpellType.Spell_Type_PhyAttack:
+		case (int)SpellType.Spell_Type_PhyDaZhao:
+			attackTarget = GetPhyAttackTarget(caster);
+			break;
+		case (int)SpellType.Spell_Type_MgicAttack:
+		case (int)SpellType.Spell_Type_MagicDazhao:
+			attackTarget = GetMagicAttackTarget(caster);
+			break;
+		case (int)SpellType.Spell_Type_Cure:
+			attackTarget = GetCurveAiTarget(caster);
+			break;
 
-            case (int)SpellType.Spell_Type_PhyAttack:
-            case (int)SpellType.Spell_Type_MgicAttack:
-            case (int)SpellType.Spell_Type_PrepareDazhao:
-                {
-                    attackTarget = GetAttackTargetNormalStyle(caster);
-                }
-                break;
-
-            case (int)SpellType.Spell_Type_Cure:
-                attackTarget = GetCurveAiTarget(caster);
-                break;
-
-            case (int)SpellType.Spell_Type_Beneficial:
-            case (int)SpellType.Spell_Type_Negative:
-                attackTarget = GetAttackTargetUnitBuffStyle(caster, spell);
-                break;
-            case (int)SpellType.Spell_Type_PhyDaZhao:
-            case (int)SpellType.Spell_Type_MagicDazhao:
-                attackTarget = GetDazhaoAttackTarget(caster);
-                break;
-            default:
-                Logger.LogError("battleAi Can't did the spelltype " + spellType);
-                break;
-        }
-
+		case (int)SpellType.Spell_Type_Hot:
+		case (int)SpellType.Spell_Type_Beneficial:
+			attackTarget = GetValidGainBuffTarget(caster, spellType);
+			break;
+		case (int)SpellType.Spell_Type_Negative:
+		case (int)SpellType.Spell_Type_Dot:
+			attackTarget = GetValidNegativeBuffTarget(caster,spellType);
+			break;
+		case (int)SpellType.Spell_Type_PrepareDazhao://todo:liws need diff magic and phy
+			attackTarget = GetPhyAttackTarget(caster);
+			break;
+		default:
+			Logger.LogError("battleAi Can't did the spelltype " + spellType);
+			break;
+		}
         return attackTarget;
     }
 
@@ -115,16 +109,13 @@ public class BattleUnitAi : MonoBehaviour {
             {
                 return bossAi.GetAiAttackResult(battleUnit);
             }
-			
 		}
-
         return GetXgAi(battleUnit);
 	}
 
     AiAttackResult  GetXgAi(GameUnit battleUnit)
     {
         AiAttackResult attackResult = new AiAttackResult ();
-
 
 		if ( battleUnit.lazyList.Count < 1)
 		{
@@ -204,6 +195,447 @@ public class BattleUnitAi : MonoBehaviour {
 			}
 		}
 	}
+	#region  -----------------------  AttackStyle---------------
+
+	AiAttackStyle GetAttackStyle(GameUnit battleUnit)
+	{
+		if (battleUnit.dazhao > 0 && battleUnit.dazhaoPrepareCount == 0)
+		{
+			return AiAttackStyle.Dazhao;
+		}
+		
+		//lazy 
+		if (battleUnit.lazyList.Contains (battleUnit.attackCount))
+		{
+			return AiAttackStyle.Lazy;
+		}
+		
+		//大招
+		if ( UnitCamp.Enemy == battleUnit.pbUnit.camp &&
+		    battleUnit.dazhaoList.Contains (battleUnit.attackCount))
+		{
+			if(battleUnit.energy >= BattleConst.enegyMax)
+			{
+				return AiAttackStyle.DazhaoPrepare;
+			}
+		}
+		
+		int unitCharacter = battleUnit.character;
+		
+		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (unitCharacter);
+		if (null == characterData)
+		{
+			Logger.LogError("Can't Find characterData index = " + battleUnit.character);
+			return AiAttackStyle.UnKown;
+		}
+		
+		int [] weightSz = new int[4];
+		weightSz[0] = characterData.physicsWeight;
+		
+		weightSz[1] = GetMagicWeight(battleUnit);
+		weightSz [2] = GetBuffWeight (battleUnit); 
+		weightSz[3] = GetDefenseWeight(battleUnit);
+		
+		
+		List<int> listWeight = new List<int> (weightSz);
+		
+		int rondomIndex = Util.RondomWithWeight (listWeight);
+		switch (rondomIndex)
+		{
+		case 0:
+			return AiAttackStyle.PhysicsAttack;
+		case 1:
+			return AiAttackStyle.MagicAttack;
+		case 2:
+			return AiAttackStyle.Buff;
+		case 3:
+			return AiAttackStyle.Defence;
+		}
+		
+		return AiAttackStyle.UnKown;
+	}
+
+
+	int	GetMagicWeight(GameUnit battleUnit)
+	{
+		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (battleUnit.character);
+		if (null == characterData)
+		{
+			Logger.LogError("Can't Find  1characterData index = " + battleUnit.character);
+			return 0;
+		}
+		
+		int magicWeight = characterData.magicWeight;
+		if (IsCureMagic (battleUnit)) 
+		{
+			List<GameUnit> listUnit = GetOurSideFiledList(battleUnit);
+			bool isCanCureMagic = false;
+			foreach(GameUnit subUnit in listUnit)
+			{
+				if(subUnit.curLife/(float)subUnit.maxLife <= GameConfig.Instance.MaxCureMagicLifeRate )
+				{
+					isCanCureMagic = true;
+					magicWeight = characterData.cureMagicWeight;
+					break;
+				}
+				
+			}
+			if(!isCanCureMagic)
+			{
+				magicWeight = 0;
+			}
+		}
+		return magicWeight;
+	}
+	
+	int GetBuffWeight(GameUnit battleUnit)
+	{
+		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (battleUnit.character);
+		Spell buffSpell = GetSpell(AiAttackStyle.Buff, battleUnit);
+		if (null == buffSpell)
+		{
+			return 0;
+		}
+		if (buffSpell.spellData.category == (int)SpellType.Spell_Type_Beneficial ||
+		    buffSpell.spellData.category == (int)SpellType.Spell_Type_Hot)
+		{
+			if(null == GetValidGainBuffTarget(battleUnit,buffSpell.spellData.category))
+			{
+				return 0;
+			}
+			return characterData.gainWeight;
+		}
+		else
+		{
+			if(null == GetValidNegativeBuffTarget(battleUnit,buffSpell.spellData.category))
+			{
+				return 0;
+			}
+			return characterData.negativeWeight;
+		}
+	}
+	
+	int GetDefenseWeight(GameUnit battleUnit)
+	{
+		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (battleUnit.character);
+		
+		Spell buffSpell = GetSpell(AiAttackStyle.Buff, battleUnit);
+		if (null == buffSpell)
+		{
+			return 0;
+		}
+		List<GameUnit> targetList =  GetOppositeSideFiledList (battleUnit);
+		foreach (GameUnit subUnit in targetList) 
+		{
+			if(subUnit.tauntTargetID == battleUnit.pbUnit.guid)
+			{
+				return characterData.tauntDefenseWeight;
+			}
+		}
+		
+		return characterData.defenseWeight;
+	}
+
+	#endregion
+
+	#region  -----------------------  AttackTarget--------------
+	AiAttackStyle GetAttackStyleWithSpellType(int spelltype )
+	{
+		switch (spelltype)
+		{
+		case (int) SpellType.Spell_Type_PhyAttack:
+			return AiAttackStyle.PhysicsAttack;
+			
+		case (int) SpellType.Spell_Type_MgicAttack:
+		case (int) SpellType.Spell_Type_Cure:
+			return AiAttackStyle.MagicAttack;
+			
+		case (int) SpellType.Spell_Type_Defense:
+			return AiAttackStyle.Defence;
+			
+		case (int) SpellType.Spell_Type_Beneficial:
+		case (int) SpellType.Spell_Type_Hot:
+		case (int) SpellType.Spell_Type_Negative:
+		case (int) SpellType.Spell_Type_Dot:
+			return AiAttackStyle.Buff;
+			
+		case (int) SpellType.Spell_Type_Lazy:
+			return AiAttackStyle.Lazy;
+			
+		case (int) SpellType.Spell_Type_PhyDaZhao:
+		case (int) SpellType.Spell_Type_MagicDazhao:
+			return AiAttackStyle.Dazhao;
+			
+		case (int)SpellType.Spell_Type_PrepareDazhao:
+			return AiAttackStyle.DazhaoPrepare;
+			
+		case (int) SpellType.Spell_Type_Passive:
+			break;
+		default:
+			return AiAttackStyle.UnKown;
+		}
+		return AiAttackStyle.UnKown;
+	}
+
+
+	GameUnit GetTauntTarget(GameUnit casterUnit)
+	{
+		int tauntId = casterUnit.tauntTargetID;
+		if (BattleConst.battleSceneGuid != tauntId) 
+		{
+			BattleObject tauntTarget = ObjectDataMgr.Instance.GetBattleObject( tauntId );
+			if(null != tauntTarget)
+			{
+				return tauntTarget.unit;
+			}
+		}
+		return null;
+	}
+	
+	GameUnit GetFireFocusTarget(GameUnit casterUnit)
+	{
+		if (casterUnit.pbUnit.camp == UnitCamp.Player) 
+		{
+			GameUnit fireTarget = BattleController.Instance.Process.fireFocusTarget;
+			if (fireTarget != null) 
+			{
+				fireTarget.attackWpName = BattleController.Instance.Process.fireAttackWpName;
+				return fireTarget;
+			}
+		}
+		return null;
+	}
+	
+	GameUnit GetMinLifeTarget(List<GameUnit> listTarget)
+	{
+		if (null == listTarget || listTarget.Count == 0)
+		{
+			return null;
+		}
+		int attackIndex = 0;
+		int minLife = 99999999;
+		GameUnit subUnit =null;
+		for(int i =0;i<listTarget.Count;++i)
+		{
+			subUnit = listTarget[i];
+			if(subUnit.curLife < minLife)
+			{
+				minLife = subUnit.curLife;
+				attackIndex = i;
+			}
+		}
+		return listTarget[attackIndex];
+	}
+
+	GameUnit GetPhyAttackTarget(GameUnit casterUnit)
+	{
+		GameUnit tauntTarget = GetTauntTarget (casterUnit);
+		if (null != tauntTarget)
+		{
+			return tauntTarget;
+		}
+		GameUnit fireFocus = GetFireFocusTarget (casterUnit);
+		if (null != fireFocus)
+		{
+			return fireFocus;
+		}
+		List<GameUnit> listTarget = GetOppositeSideFiledList (casterUnit);
+		
+		return GetMinLifeTarget (listTarget);
+	}
+	
+	GameUnit GetMagicAttackTarget(GameUnit casterUnit)
+	{
+		GameUnit tauntTarget = GetTauntTarget (casterUnit);
+		if (null != tauntTarget)
+		{
+			return tauntTarget;
+		}
+		GameUnit fireFocus = GetFireFocusTarget (casterUnit);
+		if (null != fireFocus)
+		{
+			return fireFocus;
+		}
+		
+		int bestAttackProperty = GetBestAttackProperty (casterUnit.property);
+		List<GameUnit> listTarget = GetOppositeSideFiledList (casterUnit);
+		
+		if (listTarget.Count == 0)
+		{
+			Logger.LogError("Error:Opposide no unit");
+			return null;
+		}
+		if (listTarget.Count == 1)
+		{
+			return listTarget[0];
+		}
+		
+		List<GameUnit> bestAttackList = new List<GameUnit> ();
+		foreach (GameUnit subUnit in listTarget)
+		{
+			if(subUnit.property == bestAttackProperty)
+			{
+				bestAttackList.Add(subUnit);
+			}
+		}
+		if (bestAttackList.Count > 0)
+		{
+			return GetMinLifeTarget(bestAttackList);
+		}
+		
+		int randomIndex = Random.Range (0, listTarget.Count);
+		return listTarget [randomIndex];
+	}
+
+	GameUnit GetCurveAiTarget(GameUnit battleUnit)
+	{
+		List<GameUnit>	allTarget = GetOurSideFiledList (battleUnit);
+		List<GameUnit> listTarget = new List<GameUnit> ();
+		foreach(GameUnit subUnit in allTarget)
+		{
+			if(subUnit.curLife/(float)subUnit.maxLife <= GameConfig.Instance.MaxCureMagicLifeRate )
+			{
+				listTarget.Add(subUnit);
+			}
+		}
+		
+		int iIndex = 0;
+		if (listTarget.Count > 0) 
+		{
+			float cureValue =  -1;
+			
+			for(int i = 0; i < listTarget.Count; ++i)
+			{
+				GameUnit subTargetUnit = listTarget[i];
+				float tempValue = 0;
+				tempValue = (subTargetUnit.maxLife - subTargetUnit.curLife)/GetInjuryRatio(battleUnit,subTargetUnit);
+				if(tempValue > cureValue)
+				{
+					iIndex = i;
+					cureValue = tempValue;
+				}
+			}
+			return listTarget [iIndex];
+		}
+		else
+		{
+			iIndex = Random.Range(0,allTarget.Count);
+			return allTarget[iIndex];
+		}
+	}
+
+	GameUnit GetValidGainBuffTarget(GameUnit battleUnit, int spellType)
+	{
+		Spell selfBuffSpell = GetSpell(AiAttackStyle.Buff, battleUnit);
+		
+		if (null == selfBuffSpell)
+			return null;
+		
+		if (selfBuffSpell.spellData.category != spellType)
+			return null;
+		
+		bool isBuffSelf = false;
+		if (selfBuffSpell.spellData.id.Contains ("Self")) 
+		{
+			isBuffSelf = true;
+		}
+		
+		List<GameUnit> listValidTarget = new List<GameUnit> ();
+		
+		List<GameUnit> listTarget = GetOurSideFiledList (battleUnit);
+		GameUnit subUnit;
+		for (int i =0; i < listTarget.Count; ++i) 
+		{
+			subUnit = listTarget[i];
+			if(isBuffSelf)
+			{
+				if(subUnit != battleUnit)
+					continue;
+			}
+			if(IsGameUnitHaveBuff(subUnit,selfBuffSpell.spellData.id))
+				continue;
+			
+			if(spellType == (int)SpellType.Spell_Type_Beneficial)
+				listValidTarget.Add(subUnit);
+			
+			if(spellType == (int)SpellType.Spell_Type_Hot &&
+			   subUnit.curLife/subUnit.maxLife < 0.9f)
+				listValidTarget.Add(subUnit);
+		}
+		
+		if (0 == listValidTarget.Count)
+		{
+			return null;
+		}
+		else if (1 == listValidTarget.Count) 
+		{
+			return listValidTarget [0];
+		}
+		else
+		{
+			if(spellType == (int)SpellType.Spell_Type_Beneficial)
+			{
+				int tempIndex = Random.Range(0,listValidTarget.Count);
+				return listValidTarget[tempIndex];
+			}
+			
+			int selIndex = 0;
+			float maxInjuryValue = -1;
+			for(int i = 0; i < listValidTarget.Count; ++i)
+			{
+				float injuryValue = GetInjuryRatio(battleUnit,listValidTarget[i]);
+				if(injuryValue > maxInjuryValue)
+				{
+					maxInjuryValue = injuryValue;
+					selIndex = i;
+				}
+			}
+			return listValidTarget[selIndex];
+		}
+	}
+	
+	GameUnit GetValidNegativeBuffTarget(GameUnit battleUnit, int spellType)
+	{
+		Spell buffSpell = GetSpell(AiAttackStyle.Buff, battleUnit);
+		
+		if (null == buffSpell)
+			return null;
+		
+		if (buffSpell.spellData.category != spellType)
+			return null;
+		
+		GameUnit fireTarget = GetFireFocusTarget (battleUnit);
+		if (null != fireTarget)
+		{
+			if(!IsGameUnitHaveBuff(fireTarget,buffSpell.spellData.id))
+			{
+				return fireTarget;
+			}
+		}
+		
+		List<GameUnit> listTarget = GetOppositeSideFiledList (battleUnit);
+		List<GameUnit> listValidTarget = new List<GameUnit> ();
+		
+		GameUnit subUnit = null;
+		for (int i = 0; i< listTarget.Count; ++i)
+		{
+			subUnit = listTarget[i];
+			if(!IsGameUnitHaveBuff(subUnit,buffSpell.spellData.id))
+			{
+				listValidTarget.Add(subUnit);
+			}
+		}
+		
+		if (0 == listValidTarget.Count)
+			return null;
+		
+		int rondomIndex = Random.Range (0, listValidTarget.Count);
+		return listValidTarget [rondomIndex];
+	}
+	
+	#endregion
+
+
 
 	Spell	GetSpell( AiAttackStyle attackStyle, GameUnit battleUnit )
 	{
@@ -225,64 +657,34 @@ public class BattleUnitAi : MonoBehaviour {
 
 		Logger.LogWarning("Error for getSpell.. spell Count = " + spellDic.Count + "  battle name = " + battleUnit.name);
 
-		return subSpel;
+		return null;
 	}
 
-	AiAttackStyle GetAttackStyleWithSpellType(int spelltype )
+	int GetBestAttackProperty(int property)
 	{
-		switch (spelltype)
+		int attackProperty = 1;
+		switch (property)
 		{
-		case (int) SpellType.Spell_Type_PhyAttack:
-			return AiAttackStyle.PhysicsAttack;
-		case (int) SpellType.Spell_Type_MgicAttack:
-		case (int) SpellType.Spell_Type_Cure:
-			return AiAttackStyle.MagicAttack;
-		case (int) SpellType.Spell_Type_Defense:
-			return AiAttackStyle.Defence;
-		case (int) SpellType.Spell_Type_Beneficial:
-		case (int) SpellType.Spell_Type_Negative:
-			return AiAttackStyle.Beneficial;
-		case (int) SpellType.Spell_Type_Lazy:
-			return AiAttackStyle.Lazy;
-		case (int) SpellType.Spell_Type_PhyDaZhao:
-		case (int) SpellType.Spell_Type_MagicDazhao:
-            return AiAttackStyle.Dazhao;
-        case (int)SpellType.Spell_Type_PrepareDazhao:
-            return AiAttackStyle.DazhaoPrepare;
-		case (int) SpellType.Spell_Type_Passive:
+		case  SpellConst.propertyGold :
+			attackProperty = SpellConst.propertyEarth;
 			break;
-		default:
-			return AiAttackStyle.UnKown;
+		case SpellConst.propertyWood :
+			attackProperty = SpellConst.propertyWater;
+			break;
+		case SpellConst.propertyWater :
+			attackProperty = SpellConst.propertyFire;
+			break;
+		case SpellConst.propertyFire:
+			attackProperty = SpellConst.propertyWood;
+			break;
+		case  SpellConst.propertyEarth:
+			attackProperty = SpellConst.propertyGold;
+			break;
 		}
-		return AiAttackStyle.UnKown;
+		return attackProperty;
 	}
 
-	GameUnit GetAttackTargetNormalStyle(GameUnit battleUnit)
-	{
-		List<GameUnit> listTarget;
-		listTarget = GetOppositeSideFiledList (battleUnit);
-
-		if (null == listTarget) 
-		{
-			Logger.LogError("Error: OppositeSide no BattleObject!");
-			return null;
-		}
-
-		int iIndex = Random.Range (0, listTarget.Count);
-
-		GameUnit attackResult = listTarget [iIndex];
-
-		if (attackResult.pbUnit.camp == UnitCamp.Enemy) 
-		{
-			string wpName = RandowmAttackWp(attackResult);
-			if(!string.IsNullOrEmpty(wpName))
-			{
-				attackResult.attackWpName = wpName;
-			}
-		}
-
-		return attackResult;
-	}
+	#region --------------help function-----------------------
 
 	private string RandowmAttackWp(GameUnit attackUnit)
 	{
@@ -301,92 +703,6 @@ public class BattleUnitAi : MonoBehaviour {
 		return wpList [rindex];
 	}
 
-	GameUnit GetAttackTargetUnitBuffStyle(GameUnit battleUnit,Spell casterSpell)
-	{
-		int spellType = casterSpell.spellData.category;
-
-		List<GameUnit> listTarget;
-
-		if (spellType == (int)SpellType.Spell_Type_Beneficial)
-		{
-			listTarget = GetOurSideFiledList (battleUnit);
-		}
-		else if ( spellType == (int)SpellType.Spell_Type_Negative )
-		{
-			listTarget = GetOppositeSideFiledList (battleUnit);
-		}
-		else
-		{
-			Logger.LogError("Attack Spell should buffer,  but curSpelltype = " + spellType);
-			return null;
-		}
-		if (listTarget.Count < 1) 
-		{
-			return null;
-		}
-
-		List<GameUnit> listValidTarget = new List<GameUnit> ();
-
-		GameUnit subUnit;
-		for (int i =0; i< listTarget.Count; ++ i)
-		{
-			subUnit = listTarget[i];
-			if(!IsGameUnitHaveBuff(subUnit,casterSpell.spellData.id))
-			{
-				listValidTarget.Add(subUnit);
-			}
-		}
-		if (listValidTarget.Count < 1)
-		{
-			int rondomIndex = Random.Range (0, listTarget.Count);
-			return listTarget [rondomIndex];
-		} 
-		else if (listValidTarget.Count == 1) 
-		{
-			return listValidTarget [0];
-		} 
-		else 
-		{
-			int rondomIndex = Random.Range (0, listValidTarget.Count);
-			return listValidTarget [rondomIndex];
-		}
-	}
-
-	GameUnit GetDazhaoAttackTarget(GameUnit battleUnit)
-	{
-		List<GameUnit> listTarget;
-		listTarget = GetOppositeSideFiledList (battleUnit);
-		
-		int iIndex = Random.Range (0, listTarget.Count);
-		
-		GameUnit attackResult = listTarget [iIndex];
-		return attackResult;
-	}
-
-	GameUnit GetCurveAiTarget(GameUnit battleUnit)
-	{
-	 	 List<GameUnit>	allTarget = GetOurSideFiledList (battleUnit);
-		List<GameUnit> listTarget = new List<GameUnit> ();
-		foreach(GameUnit subUnit in allTarget)
-		{
-			if(subUnit.curLife/(float)subUnit.maxLife <= GameConfig.Instance.MaxCureMagicLifeRate )
-			{
-				listTarget.Add(subUnit);
-			}
-			
-		}
-		int iIndex = 0;
-		if (listTarget.Count > 0) 
-		{
-			iIndex = Random.Range (0, listTarget.Count);
-			return listTarget [iIndex];
-		}
-		else
-		{
-			iIndex = Random.Range(0,allTarget.Count);
-			return allTarget[iIndex];
-		}
-	}
 
 	bool IsGameUnitHaveBuff(GameUnit unit,string spellID)
 	{
@@ -405,97 +721,13 @@ public class BattleUnitAi : MonoBehaviour {
 		return false;
 	}
 
-	AiAttackStyle GetAttackStyle(GameUnit battleUnit)
-    {
-        if (battleUnit.dazhao > 0 && battleUnit.dazhaoPrepareCount == 0)
-        {
-            return AiAttackStyle.Dazhao;
-        }
 
-		//lazy 
-		if (battleUnit.lazyList.Contains (battleUnit.attackCount))
-		{
-			return AiAttackStyle.Lazy;
-		}
-		
-		//大招
-		if ( UnitCamp.Enemy == battleUnit.pbUnit.camp &&
-		    battleUnit.dazhaoList.Contains (battleUnit.attackCount))
-		{
-			if(battleUnit.energy >= BattleConst.enegyMax)
-			{
-				return AiAttackStyle.DazhaoPrepare;
-			}
-		}
-
-		int unitCharacter = battleUnit.character;
-
-		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (unitCharacter);
-		if (null == characterData)
-		{
-			Logger.LogError("Can't Find characterData index = " + battleUnit.character);
-			return AiAttackStyle.UnKown;
-		}
-
-		int [] weightSz = new int[4];
-		weightSz[0] = characterData.physicsWeight;
-		weightSz[1] = GetMagicWeight(battleUnit);
-		weightSz[2] = characterData.gainWeight;
-
-        Spell buffSpell = GetSpell(AiAttackStyle.Beneficial, battleUnit);
-        if (null == buffSpell)
-        {
-            weightSz[2] = 0;
-        }
-
-		weightSz[3] = characterData.defenseWeight;
-		List<int> listWeight = new List<int> (weightSz);
-
-		int rondomIndex = Util.RondomWithWeight (listWeight);
-		switch (rondomIndex)
-		{
-		case 0:
-			return AiAttackStyle.PhysicsAttack;
-		case 1:
-			return AiAttackStyle.MagicAttack;
-		case 2:
-			return AiAttackStyle.Beneficial;
-		case 3:
-			return AiAttackStyle.Defence;
-		}
-
-		return AiAttackStyle.UnKown;
-	}
-
-	int	GetMagicWeight(GameUnit battleUnit)
+	float GetInjuryRatio(GameUnit caster, GameUnit target)
 	{
-		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (battleUnit.character);
-		if (null == characterData)
-		{
-			Logger.LogError("Can't Find  1characterData index = " + battleUnit.character);
-			return 0;
-		}
-
-		int magicWeight = characterData.magicWeight;
-		if (IsCureMagic (battleUnit)) 
-		{
-			List<GameUnit> listUnit = GetOurSideFiledList(battleUnit);
-			bool isCanCureMagic = false;
-			foreach(GameUnit subUnit in listUnit)
-			{
-				if(subUnit.curLife/(float)subUnit.maxLife <= GameConfig.Instance.MaxCureMagicLifeRate )
-				{
-					isCanCureMagic = true;
-					break;
-				}
-
-			}
-			if(!isCanCureMagic)
-			{
-				magicWeight = 0;
-			}
-		}
-		return magicWeight;
+		//受伤比计算 max(1/(1+总防御力/I(min(lv1,lv2))),25%)
+		float injuryRatio = 1.0f / (1.0f + (target.defense) / SpellFunctions.GetInjuryAdjustNum(caster.pbUnit.level, target.pbUnit.level));
+		injuryRatio = injuryRatio < 0.25f ? 0.25f : injuryRatio;
+		return injuryRatio;
 	}
 
 	bool IsCureMagic(GameUnit battleUnit)
@@ -557,5 +789,7 @@ public class BattleUnitAi : MonoBehaviour {
 		}
 		return  listField;
 	}
+
+	#endregion
 	
 }

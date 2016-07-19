@@ -26,6 +26,11 @@ public class InstanceChapter : MonoBehaviour
 		//int index = subButton.index;
 		var instanceId = subButton.instanceId;
 		var data = InstanceMapService.Instance.GetRuntimeInstance (instanceId);
-		UIInstance.Instance.instanceInfo.ShowWithData (data);
+
+        UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+        if (uiBuild != null && uiBuild.uiInstance != null)
+        {
+            uiBuild.uiInstance.instanceInfo.ShowWithData(data);
+        }
 	}
 }

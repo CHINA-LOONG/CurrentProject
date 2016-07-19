@@ -12,15 +12,28 @@ public class UIFazhen : UIBase
 	int maxSecend = 10;
 	int leftSecend = 0;
 
+    private GameObject fazhenStyle;
+
 	// Use this for initialization
 	void Start()
 	{
-		InitFazhen ();
+		errorTip.text = StaticDataMgr.Instance.GetTextByID ("dazhao_huazhenshibai");
+	}
+
+    public override void Init()
+    {
+        InitFazhen();
 		leftSecend = maxSecend;
 		StartCoroutine ("updateLeftTimeCo");
 		ShowErrorTip (false);
-		errorTip.text = StaticDataMgr.Instance.GetTextByID ("dazhao_huazhenshibai");
-	}
+    }
+    public override void Clean()
+    {
+        if (fazhenStyle != null)
+        {
+            ResourceMgr.Instance.DestroyAsset(fazhenStyle);
+        }
+    }
 
 	void OnDestroy()
 	{
@@ -33,11 +46,15 @@ public class UIFazhen : UIBase
 		int index = Random.Range (0, fazhenCount);
 		string prefabName = "fazhenStyle_" + index.ToString ();
 
-		GameObject fazhenGo = ResourceMgr.Instance.LoadAsset(prefabName);
+        if (fazhenStyle != null)
+        {
+            ResourceMgr.Instance.DestroyAsset(fazhenStyle);
+        }
+        fazhenStyle = ResourceMgr.Instance.LoadAsset(prefabName);
 
-		fazhenGo.transform.SetParent (this.transform, false);
+        fazhenStyle.transform.SetParent(this.transform, false);
 
-		RectTransform rectTrans = fazhenGo.transform as RectTransform;
+        RectTransform rectTrans = fazhenStyle.transform as RectTransform;
 		Vector3 stylePos = rectTrans.anchoredPosition3D;
 		stylePos.z = -10;
 		rectTrans.anchoredPosition3D = stylePos;

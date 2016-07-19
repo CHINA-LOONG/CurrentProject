@@ -36,14 +36,25 @@ public class UIMail : UIBase,TabButtonDelegate
 	void Start () 
     {
         OnLanguageChanged();
-        tabGroup.InitWithDelegate(this);
         mailList.actionReadMail = ActionReadMail;
         mailContent.actionReceiveMail = ActionReceiveMail;
         EventTriggerListener.Get(btnClose.gameObject).onClick = ClickCloseButton;
         EventTriggerListener.Get(btnOnekey.gameObject).onClick = ClickReceiveAll;
-        
-        OnMailChanged();
+
+
 	}
+    public override void Init()
+    {
+        tabGroup.InitWithDelegate(this);
+        mailContent.SetMailContentActive(false);
+        OnMailChanged();
+        tabGroup.OnChangeItem(0);
+    }
+    public override void Clean()
+    {
+        mailList.Clean();
+        mailContent.Clean();
+    }
 
     void OnMailChanged()
     {
@@ -161,7 +172,7 @@ public class UIMail : UIBase,TabButtonDelegate
     //界面关闭处理
     void CloseUIMail()
     {
-        UIMgr.Instance.CloseUI(this);
+        UIMgr.Instance.CloseUI_(this);
     }
 
 

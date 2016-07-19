@@ -36,7 +36,7 @@ public class BuildModule : ModuleBase
 
 	public override void OnInit(object param)
 	{
-		UIMgr.Instance.OpenUI (UIBuild.ViewName);
+		UIMgr.Instance.OpenUI_(UIBuild.ViewName);
 
 	}
 	
@@ -58,7 +58,7 @@ public class BuildModule : ModuleBase
 	public override void OnExit()
 	{
         UnBindListener();
-        UIMgr.Instance.CloseUI(UIBuild.ViewName);
+        UIMgr.Instance.DestroyUI(UIBuild.ViewName);
 	}
 
 

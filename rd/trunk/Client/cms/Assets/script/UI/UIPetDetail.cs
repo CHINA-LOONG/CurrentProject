@@ -37,30 +37,24 @@ public class UIPetDetail : UIBase{
         EventTriggerListener.Get(attrButton.gameObject).onClick = DetailAttrButtonDown;
         EventTriggerListener.Get(stageButton.gameObject).onClick = StageButtonDown;
         EventTriggerListener.Get(advanceButton.gameObject).onClick = AdvanceButtonDown;
+
         //EventTriggerListener.Get(equipButton.gameObject).onClick = EquipButtonDown;
     }
 
     void CloseButtonDown(GameObject go)
     {
-        UIMgr.Instance.CloseUI(UIPetDetail.ViewName);
+        UIMgr.Instance.CloseUI_(UIPetDetail.ViewName);
     }
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    void OnDestroy()
+    public override void Init()
     {
+        if (m_cameraObject == null)
+        {
+            m_cameraObject = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetModelCameraAssetName);
+            m_cameraObject.name = PetViewConst.UIPetModelCameraAssetName;
+        }
     }
-
-    public override void OnOpenUI()
-    {
-        m_cameraObject = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetModelCameraAssetName);
-        m_cameraObject.name = PetViewConst.UIPetModelCameraAssetName;
-    }
-
-    public override void OnCloseUI()
+    public override void Clean()
     {
         if (m_cameraObject != null)
         {

@@ -3,20 +3,30 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UIPetList :  UIBase, TabButtonDelegate {
+public class UIPetList :  UIBase, TabButtonDelegate 
+{
 
     public static string ViewName = PetViewConst.UIPetListAssetName;
 
     public Text title;
     public Button closeButton;
-    public GameObject scrollRect;
     public TabButtonGroup tabGroup;
     public Image srcollIcon;
 
+    public ScrollRect scrollView;
+    public GameObject content;
 
     int m_currentIndex = 0;
     GridLayoutGroup m_patContainer = null;
-    List<GameUnit> m_typeList = new List<GameUnit>();
+    private List<GameUnit> m_typeList = new List<GameUnit>();
+    private List<PetListElement> items = new List<PetListElement>();
+    private List<PetListElement> itemsPool = new List<PetListElement>();
+
+    private UIPetDetail uiPetDetail;
+    public UIPetDetail UIPetDetail
+    {
+        get { return uiPetDetail; }
+    }
 
     void Start()
     {
@@ -38,17 +48,21 @@ public class UIPetList :  UIBase, TabButtonDelegate {
     {
         GameEventMgr.Instance.RemoveListener(PetViewConst.ReloadPetStageNotify, ReloadPetList);
     }
-
-    public override void OnOpenUI()
+    public override void Init()
     {
-       if (GameDataMgr.Instance.PlayerDataAttr.GetAllPet().Count >= GameConfig.MaxMonsterCount)
-       {
-           MsgBox.PromptMsg.Open(StaticDataMgr.Instance.GetTextByID("ui_tishi"),
-                                 StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListFull),
-                                 StaticDataMgr.Instance.GetTextByID("ui_queding"));
-       }
+        if (GameDataMgr.Instance.PlayerDataAttr.GetAllPet().Count >= GameConfig.MaxMonsterCount)
+        {
+            MsgBox.PromptMsg.Open(StaticDataMgr.Instance.GetTextByID("ui_tishi"),
+                                  StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListFull),
+                                  StaticDataMgr.Instance.GetTextByID("ui_queding"));
+        }
 
-       title.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListTitle);
+        title.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListTitle);
+    }
+
+    public override void Clean()
+    {
+        UIMgr.Instance.DestroyUI(UIPetDetail);
     }
 
     void ReloadPetList()
@@ -58,7 +72,7 @@ public class UIPetList :  UIBase, TabButtonDelegate {
 
     void ShowScrollIcon()
     {
-        if (m_patContainer != null && m_patContainer.transform.childCount > 6 && scrollRect.GetComponent<ScrollRect>().normalizedPosition.y > 0.01)
+        if (m_patContainer != null && m_patContainer.transform.childCount > 6 && scrollView.normalizedPosition.y > 0.01)
         {
             srcollIcon.gameObject.SetActive(true);
         }
@@ -71,20 +85,6 @@ public class UIPetList :  UIBase, TabButtonDelegate {
     public void OnTabButtonChanged(int index)
     {
         m_currentIndex = index;
-
-        GameObject container = Util.FindChildByName(scrollRect, PetViewConst.UIPetListContainerAssetName);
-        if (container != null)
-        {
-            Destroy(container);
-            m_patContainer = null;
-        }
-
-        container = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetListContainerAssetName, false);
-        container.transform.localScale = Vector3.one;
-        container.transform.SetParent(scrollRect.transform, false);
-        container.name = PetViewConst.UIPetListContainerAssetName;
-        scrollRect.GetComponent<ScrollRect>().content = container.GetComponent<RectTransform>();
-        m_patContainer = container.GetComponent<GridLayoutGroup>();
 
         m_typeList.Clear();
 
@@ -146,33 +146,58 @@ public class UIPetList :  UIBase, TabButtonDelegate {
         }
 
         m_typeList.Sort();
-
-        foreach (GameUnit unit in m_typeList)
+        DeleteAllElement();
+        for (int i = 0; i < m_typeList.Count; i++)
         {
-            AddPatItme(unit);
+            GetPatItme().ReloadPatData(m_typeList[i]);
         }
     }
 
-    void AddPatItme(GameUnit unit)
+    PetListElement GetPatItme()
     {
-        GameObject go = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetListElementAssetName, false);
-        if (go != null)
+        PetListElement item = null;
+        if (itemsPool.Count <= 0)
         {
-            go.transform.localScale = Vector3.one;
-            go.transform.SetParent(m_patContainer.transform, false);
-            PetListElement petScript = go.GetComponent<PetListElement>();
-            petScript.ReloadPatData(unit);
-            ScrollViewEventListener.Get(go).onClick = SinglePetClick;
+            GameObject go = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetListElementAssetName);
+            if (null != go)
+            {
+                go.transform.localScale = Vector3.one;
+                go.transform.SetParent(content.transform, false);
+                item = go.GetComponent<PetListElement>();
+                ScrollViewEventListener.Get(go).onClick = SinglePetClick;
+            }
+        }
+        else
+        {
+            item = itemsPool[itemsPool.Count - 1];
+            item.gameObject.SetActive(true);
+            itemsPool.Remove(item);
+        }
+        items.Add(item);
+        return item;
+
+    }
+
+    public void DeleteAllElement()
+    {
+        PetListElement item = null;
+        for (int i = items.Count - 1; i >= 0; i--)
+        {
+            item = items[i];
+            item.gameObject.SetActive(false);
+            items.Remove(item);
+            itemsPool.Add(item);
         }
     }
 
     void SinglePetClick(GameObject go)
     {
-        UIMgr.Instance.OpenUI(UIPetDetail.ViewName).GetComponent<UIPetDetail>().SetTypeList(go.GetComponent<PetListElement>().unit, m_typeList);
+        uiPetDetail = UIMgr.Instance.OpenUI_(UIPetDetail.ViewName) as UIPetDetail;
+        UIPetDetail.SetTypeList(go.GetComponent<PetListElement>().unit, m_typeList);
     }
 
     void CloseButtonDown(GameObject go)
     {
-        UIMgr.Instance.CloseUI(UIPetList.ViewName);
+        UIMgr.Instance.CloseUI_(UIPetList.ViewName);
     }
 }

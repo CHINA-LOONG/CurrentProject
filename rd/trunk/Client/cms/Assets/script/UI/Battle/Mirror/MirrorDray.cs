@@ -47,8 +47,8 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 
 		MirrorDragImage = Util.FindChildByName (gameObject, "MirrorDragImage").GetComponent<Image> ();
 
-		//baozha_fire
-		mirrorExitEffect = ParticleEffect.CreateEffect (BattleController.Instance.GetUIBattle ().publicTopGroup, "baozha_fire");
+        //baozha_fire
+		mirrorExitEffect = ParticleEffect.CreateEffect (BattleController.Instance.GetUIBattle().publicTopGroup, "baozha_fire");
 		mirrorExitEffect.gameObject.SetActive (false);
 
 		ResetMirror ();

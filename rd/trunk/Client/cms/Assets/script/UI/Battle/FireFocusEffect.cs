@@ -13,16 +13,17 @@ public class FireFocusEffect : MonoBehaviour
 	{
 		rectTrans = transform as RectTransform;
 		BindListener ();
-		effectGo = Util.FindChildByName (gameObject, "fireFocusImage");
-		if (null == effectGo)
-		{
-			Logger.LogError ("Canpt Find SubGameobject: " + "fireFocusImage");
-		} 
-		else 
-		{
-			effectGo.SetActive (false);
-		}
-
+        //modify:xiaolong 2015-8-27 16:39:11
+        //effectGo = Util.FindChildByName (gameObject, "fireFocusImage");
+        //if (null == effectGo)
+        //{
+        //    Logger.LogError ("Canpt Find SubGameobject: " + "fireFocusImage");
+        //} 
+        //else 
+        //{
+        //    effectGo.SetActive(false);
+        //}
+        gameObject.SetActive(false);
 	}
 
 	void OnDestroy()
@@ -44,8 +45,10 @@ public class FireFocusEffect : MonoBehaviour
 
 
 	void OnShow(BattleObject bo)
-	{
-		effectGo.SetActive (true);
+    {
+        //modify:xiaolong 2015-8-27 16:40:02
+        //effectGo.SetActive(true);
+        gameObject.SetActive (true);
 		if (!gameObject.activeInHierarchy)
 			return;
 
@@ -113,6 +116,8 @@ public class FireFocusEffect : MonoBehaviour
 		catch
 		{
 		}
-		effectGo.SetActive (false);
+        //modify:xiaolong 2015-8-27 16:40:29
+        //effectGo.SetActive(false);
+        gameObject.SetActive(false);
 	}
 }

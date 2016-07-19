@@ -40,7 +40,7 @@ public class LoginModule : ModuleBase
         GameApp.Instance.netManager.GameServerPort = int.Parse(serverInfo["port"].ToString());
 
         GameApp.Instance.netManager.SendConnect();
-        UIMgr.Instance.CloseUI(UISelectServer.ViewName);
+        UIMgr.Instance.DestroyUI(UISelectServer.ViewName);
     }
 
     IEnumerator GetGameServer()
@@ -107,8 +107,11 @@ public class LoginModule : ModuleBase
         }
 
         Debug.Log("连接账号服务器成功");
-
-        UIMgr.Instance.OpenUI(UISelectServer.ViewName).GetComponent<UISelectServer>().ResetServerList(serverList);
+        UISelectServer uiSelectServer = UIMgr.Instance.OpenUI_(UISelectServer.ViewName) as UISelectServer;
+        if (uiSelectServer != null)
+        {
+            uiSelectServer.ResetServerList(serverList);
+        }
         UINetRequest.Close();
     }
 
@@ -123,11 +126,19 @@ public class LoginModule : ModuleBase
         {
             Debug.LogWarning("OK for net");
 
-            PB.HSLogin hsLogin = new PB.HSLogin();
-            hsLogin.puid = GameDataMgr.Instance.UserDataAttr.guid;
-            hsLogin.token = GameDataMgr.Instance.UserDataAttr.token;
-
-            GameApp.Instance.netManager.SendMessage(PB.code.LOGIN_C.GetHashCode(), hsLogin);
+            if (string.IsNullOrEmpty(PlayerPrefs.GetString("testGuid")) == false)
+            {
+                PB.HSLogin hsLogin = new PB.HSLogin();
+                hsLogin.puid = PlayerPrefs.GetString("testGuid");
+                hsLogin.token = GameDataMgr.Instance.UserDataAttr.token;
+                GameApp.Instance.netManager.SendMessage(PB.code.LOGIN_C.GetHashCode(), hsLogin);
+            }
+            else
+            {
+                UINetRequest.Close();
+                UIMgr.Instance.DestroyUI(UILogin.ViewName);
+                GameMain.Instance.ChangeModule<CreatePlayerModule>();
+            }
         }
         else
         {
@@ -147,7 +158,7 @@ public class LoginModule : ModuleBase
 
         BuildModule.needSyncInfo = true;
 		PB.HSLoginRet loginS = msg.GetProtocolBody<PB.HSLoginRet> ();
-		UIMgr.Instance.CloseUI (UILogin.ViewName);
+		UIMgr.Instance.DestroyUI(UILogin.ViewName);
 		if (loginS.playerId > 0) 
 		{
 			GameDataMgr.Instance.PlayerDataAttr.playerId = loginS.playerId;
@@ -161,7 +172,7 @@ public class LoginModule : ModuleBase
 
 	public override void OnInit(object param)
 	{
-		UIMgr.Instance.OpenUI (UILogin.ViewName);
+		UIMgr.Instance.OpenUI_(UILogin.ViewName);
 	}
 	
 	public override void OnEnter(object param)
