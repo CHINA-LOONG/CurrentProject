@@ -58,14 +58,14 @@ public static class NormalScript
                     maxLife += itor.Current.Value.maxHp;
                 }
 
-                lifeRatio = curLife / maxLife;
+                lifeRatio = (float)curLife / maxLife;
             }
             else 
             {
                 WeakPointRuntimeData wpRuntionData;
                 if (wpRutimeDataList.TryGetValue(wpName, out wpRuntionData))
                 {
-                    lifeRatio = wpRuntionData.hp / wpRuntionData.maxHp;
+                    lifeRatio = (float)wpRuntionData.hp / wpRuntionData.maxHp;
                 }
             }
         }

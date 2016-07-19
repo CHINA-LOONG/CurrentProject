@@ -72,6 +72,7 @@ public class Effect
     public Spell ownedSpell;
     public bool noDamageResponse = false;
     public bool absoluteHit;
+    protected bool autoGenerateEvet = true;
     
     //---------------------------------------------------------------------------------------------
     //methods
@@ -87,6 +88,7 @@ public class Effect
         protoEffect.chance = pt.chance;
 
         absoluteHit = false;
+        autoGenerateEvet = true;
         spellService = owner;
     }
     //---------------------------------------------------------------------------------------------
@@ -98,22 +100,25 @@ public class Effect
         GenerateTarget(casterID, targetID);
         this.applyTime = applyTime;
 
-        SpellEffectArgs args = new SpellEffectArgs();
-        GameUnit target = spellService.GetUnit(targetID);
-        if (target != null)
+        if (autoGenerateEvet == true)
         {
-            WeakPointData wp = null;
-            if (target.attackWpName != null)
+            SpellEffectArgs args = new SpellEffectArgs();
+            GameUnit target = spellService.GetUnit(targetID);
+            if (target != null)
             {
-                wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
+                WeakPointData wp = null;
+                if (target.attackWpName != null)
+                {
+                    wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
+                }
+                args.wpNode = wp != null ? wp.node : string.Empty;
             }
-            args.wpNode = wp != null ? wp.node : string.Empty;
+            args.triggerTime = applyTime;
+            args.casterID = casterID;
+            args.targetID = targetID;
+            args.effectID = protoEffect.id;
+            spellService.TriggerEvent(GameEventList.SpellEffect, args);
         }
-        args.triggerTime = applyTime;
-        args.casterID = casterID;
-        args.targetID = targetID;
-        args.effectID = protoEffect.id;
-        spellService.TriggerEvent(GameEventList.SpellEffect, args);
 
         if (protoEffect.energy != 0)
         {

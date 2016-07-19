@@ -166,6 +166,10 @@ public class BehaviorLogger {
 		 */
 		MAIL_CREATE,
 		/**
+		 * 邮件溢出
+		 */
+		MAIL_OVERFLOW,
+		/**
 		 * 开宝箱
 		 */
 		OPEN_TREASURE,

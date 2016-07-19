@@ -17,6 +17,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     public PopupList m_LangPopup;
 
+    public Button btnMail;
+
 	public Text levelText;
 	public Text coinText;
 	public Text nameText;
@@ -30,6 +32,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         EventTriggerListener.Get(instanceButton.gameObject).onClick = OnInstanceButtonClick;
         EventTriggerListener.Get(m_QuestButton.gameObject).onClick = OnQuestButtonClick;
         EventTriggerListener.Get(m_SpeechButton.gameObject).onClick = OnSpeechButtonClick;
+        EventTriggerListener.Get(btnMail.gameObject).onClick = OnMailButtonClick;
 
         m_LangPopup.Initialize<PopupListIndextDelegate>(this);
         m_LangPopup.AddItem((int)Language.Chinese, StaticDataMgr.Instance.GetTextByID("ui_chinese"));
@@ -98,6 +101,12 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     {
         UIMgr.Instance.OpenUI(UIQuest.ViewName);
     }
+
+    void OnMailButtonClick(GameObject go)
+    {
+        UIMgr.Instance.OpenUI(UIMail.ViewName);
+    }
+
 
     void OnSpeechButtonClick(GameObject go)
     {

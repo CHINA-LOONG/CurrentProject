@@ -79,6 +79,10 @@ public class UIMonsterInfo : UIBase
 			{
 				continue;
 			}
+			if(string.IsNullOrEmpty(spellPt.tips))
+			{
+				continue;
+			}
 			if(spellPt.category == (int)SpellType.Spell_Type_MgicAttack ||
 			   spellPt.category == (int)SpellType.Spell_Type_Cure||
 			   spellPt.category == (int)SpellType.Spell_Type_PhyAttack ||

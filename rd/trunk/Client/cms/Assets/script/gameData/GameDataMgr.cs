@@ -89,10 +89,14 @@ public class GameDataMgr : MonoBehaviour
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_INFO_SYNC_S.GetHashCode().ToString(), OnMonsterInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_INFO_SYNC_S.GetHashCode().ToString(), OnItemInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_INFO_SYNC_S.GetHashCode().ToString(), OnEquipInfoSync);
+
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.QUEST_INFO_SYNC_S.GetHashCode().ToString(), OnQuestInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.QUEST_ACCEPT_S.GetHashCode().ToString(), OnQuestAccept);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.QUEST_UPDATE_S.GetHashCode().ToString(), OnQuestUpdate);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.QUEST_REMOVE_S.GetHashCode().ToString(), OnQuestRemove);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_INFO_SYNC_S.GetHashCode().ToString(), OnMailInfoSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_NEW_S.GetHashCode().ToString(), OnMailNew);
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_CONSUME_S.GetHashCode().ToString(), OnConsume);
@@ -106,10 +110,14 @@ public class GameDataMgr : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_INFO_SYNC_S.GetHashCode().ToString(), OnMonsterInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_INFO_SYNC_S.GetHashCode().ToString(), OnItemInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_INFO_SYNC_S.GetHashCode().ToString(), OnEquipInfoSync);
+
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.QUEST_INFO_SYNC_S.GetHashCode().ToString(), OnQuestInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.QUEST_ACCEPT_S.GetHashCode().ToString(), OnQuestAccept);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.QUEST_UPDATE_S.GetHashCode().ToString(), OnQuestUpdate);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.QUEST_REMOVE_S.GetHashCode().ToString(), OnQuestRemove);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_INFO_SYNC_S.GetHashCode().ToString(), OnMailInfoSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_NEW_S.GetHashCode().ToString(), OnMailNew);
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_CONSUME_S.GetHashCode().ToString(), OnConsume);
@@ -204,7 +212,7 @@ public class GameDataMgr : MonoBehaviour
             mainPlayer.gameEquipData.AddEquip(equipInfo.id, equipInfo.equipId, equipInfo.stage, equipInfo.level);
         }
     }
-    //---------------------------------------------------------------------------------------------
+    //quest------------------------------------------------------------------------------------------
     void OnQuestInfoSync(ProtocolMessage msg)
     {
         PB.HSQuestInfoSync questSync = msg.GetProtocolBody<PB.HSQuestInfoSync>();
@@ -215,11 +223,6 @@ public class GameDataMgr : MonoBehaviour
             mainPlayer.gameQuestData.AddQuest(questInfo.questId, questInfo.progress);
         }
         GameEventMgr.Instance.FireEvent(GameEventList.QuestChanged);
-    }
-    //QUEST_SUBMIT_S
-    void OnQuestSubit(ProtocolMessage msg)
-    {
-        
     }
     void OnQuestAccept(ProtocolMessage msg)
     {
@@ -249,7 +252,31 @@ public class GameDataMgr : MonoBehaviour
         }
         GameEventMgr.Instance.FireEvent(GameEventList.QuestChanged);
     }
+    //mail----------------------------------------------------------------------------------------------
+    void OnMailInfoSync(ProtocolMessage msg)
+    {
+        PB.HSMailInfoSync mailSync = msg.GetProtocolBody<PB.HSMailInfoSync>();
+        Logger.Log("mailCount:" + mailSync.mailInfo.Count);
+        mainPlayer.gameMailData.ClearMail();
+        foreach (PB.HSMail mailInfo in mailSync.mailInfo)
+        {
+            mainPlayer.gameMailData.AddMail(mailInfo);
+            //Debug.Log("mail" + mailInfo.mailId + "\t" + mailInfo.reward.Count + "\t" + mailInfo.senderId + "\t" + mailInfo.senderName +"\t"+ mailInfo.sendTimeStamp);
+        }
+    }
+    void OnMailNew(ProtocolMessage msg)
+    {
+        PB.HSMailNew mailNew = msg.GetProtocolBody<PB.HSMailNew>();
 
+        if (mailNew.overflowMailId != 0)
+        {
+            mainPlayer.gameMailData.RemoveMail(mailNew.overflowMailId);
+        }
+        if (mailNew.mail!=null)
+        {
+            mainPlayer.gameMailData.AddMail(mailNew.mail);
+        }
+    }
 
     //---------------------------------------------------------------------------------------------
     void OnReward(ProtocolMessage msg)

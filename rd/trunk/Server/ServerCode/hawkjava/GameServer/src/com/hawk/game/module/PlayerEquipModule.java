@@ -104,7 +104,7 @@ public class PlayerEquipModule extends PlayerModule{
 	 */
 	@Override
 	protected boolean onPlayerLogin() {
-		player.getPlayerData().loadEquipEntities();
+		player.getPlayerData().loadAllEquip();
 		player.getPlayerData().syncEquipInfo();
 		return true;
 	}

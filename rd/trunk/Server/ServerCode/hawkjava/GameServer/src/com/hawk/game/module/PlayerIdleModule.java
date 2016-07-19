@@ -1,15 +1,23 @@
 package com.hawk.game.module;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hawk.app.HawkApp;
+import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 
 import com.hawk.game.ServerData;
+import com.hawk.game.config.MailSysCfg;
+import com.hawk.game.log.BehaviorLogger.Action;
+import com.hawk.game.log.BehaviorLogger.Source;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Player.HSAssembleFinish;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.MailUtil;
 
 /**
  * 空闲模块, 所有模块最后操作
@@ -56,6 +64,14 @@ public class PlayerIdleModule extends PlayerModule {
 		player.setAssembleFinish(true);
 		// 添加在线信息
 		ServerData.getInstance().addOnlinePlayerId(player.getId());
+		
+		// TEST
+		MailSysCfg mailSysCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, "mail_sys_001");
+		if (mailSysCfg != null) {
+			List<Integer> receiverList = new ArrayList<>();
+			receiverList.add(player.getId());
+			MailUtil.SendSysMail(mailSysCfg, receiverList, Source.SYS_OPERATION, Action.MAIL_REWARD);
+		}
 		return true;
 	}
 

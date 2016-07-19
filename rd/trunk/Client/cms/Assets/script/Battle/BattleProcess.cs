@@ -735,10 +735,14 @@ public class BattleProcess : MonoBehaviour
             }
         }
 
-        if (bo.unit.tauntTargetID != BattleConst.battleSceneGuid)
+        if (bo.unit.tauntTargetID != BattleConst.battleSceneGuid && aiResult.attackTarget.pbUnit.camp != bo.unit.pbUnit.camp)
         {
             BattleObject tauntTarget = ObjectDataMgr.Instance.GetBattleObject(bo.unit.tauntTargetID);
-            if (tauntTarget != null)
+            if (tauntTarget != null && 
+                tauntTarget.unit.pbUnit.slot >= BattleConst.slotIndexMin && 
+                tauntTarget.unit.pbUnit.slot <= BattleConst.slotIndexMax &&
+                tauntTarget.unit.State != UnitState.Dead
+                )
             {
                 aiResult.attackTarget = tauntTarget.unit;
             }

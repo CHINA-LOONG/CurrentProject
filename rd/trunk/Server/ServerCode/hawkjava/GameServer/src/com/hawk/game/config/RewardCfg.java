@@ -25,7 +25,7 @@ public class RewardCfg extends HawkConfigBase  {
 	 */
 	protected final String reward;
 	/**
-	 * 奖励权重列表列表
+	 * 奖励概率列表
 	 */
 	private List<RatioItem<ItemInfo>> ratioList;
 	
@@ -44,11 +44,12 @@ public class RewardCfg extends HawkConfigBase  {
 	}
 	
 	public  List<ItemInfo> getRewardList() {
-		RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, id);
-		if (reward == null) {
-			return null;
-		}
-		List<ItemInfo> result = RatioUtil.random(reward.getRatioList());
+//		RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, id);
+//		if (reward == null) {
+//			return null;
+//		}
+//		List<ItemInfo> result = RatioUtil.random(reward.getRatioList());
+		List<ItemInfo> result = RatioUtil.random(getRatioList());
 		for (int i = 0; i < result.size();) {
 			ItemInfo item = result.get(i);
 			if (item.getType() == Const.itemType.GROUP_VALUE) {

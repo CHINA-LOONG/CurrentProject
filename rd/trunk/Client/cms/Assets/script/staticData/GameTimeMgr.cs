@@ -27,6 +27,7 @@ public class GameTimeMgr
         return (int)(Now - TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1))).TotalSeconds;
     }
 
+
     public TimeStaticData GetTime()
     {
         TimeStaticData time = new TimeStaticData();
@@ -60,5 +61,10 @@ public class GameTimeMgr
         return Now.Second;
     }
 
+    public static DateTime GetTime(long timestamp)
+    {
+        DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+        return startTime.AddSeconds(timestamp);
+    }
 
 }

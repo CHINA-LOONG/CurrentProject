@@ -18,7 +18,7 @@ public class rewardItemIcon : MonoBehaviour
 
     public void SetItem(RewardItemData info, int k = 1, int b = 0)
     {
-        SetItem("", info.count * k + b);
+        SetItem("", info.protocolData.count * k + b);
     }
 
 }

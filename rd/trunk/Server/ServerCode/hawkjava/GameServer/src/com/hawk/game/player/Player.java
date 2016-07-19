@@ -33,6 +33,7 @@ import com.hawk.game.config.TimeCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
+import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.StatisticsEntity;
@@ -45,6 +46,7 @@ import com.hawk.game.module.PlayerIdleModule;
 import com.hawk.game.module.PlayerInstanceModule;
 import com.hawk.game.module.PlayerItemModule;
 import com.hawk.game.module.PlayerLoginModule;
+import com.hawk.game.module.PlayerMailModule;
 import com.hawk.game.module.PlayerMonsterModule;
 import com.hawk.game.module.PlayerQuestModule;
 import com.hawk.game.module.PlayerStatisticsModule;
@@ -52,6 +54,7 @@ import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Const.RewardReason;
 import com.hawk.game.protocol.Const.playerAttr;
+import com.hawk.game.protocol.Mail.HSMail;
 import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.HSMonsterAdd;
 import com.hawk.game.protocol.Quest.HSQuest;
@@ -63,8 +66,10 @@ import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.MailUtil;
 import com.hawk.game.util.QuestUtil;
 import com.hawk.game.util.TimeUtil;
+import com.hawk.game.util.MailUtil.MailInfo;
 import com.hawk.game.util.QuestUtil.QuestGroup;
 
 /**
@@ -119,6 +124,7 @@ public class Player extends HawkAppObj {
 		registerModule(GsConst.ModuleType.ITEM_MODULE, new PlayerItemModule(this));
 		registerModule(GsConst.ModuleType.EQUIP_MODULE, new PlayerEquipModule(this));
 		registerModule(GsConst.ModuleType.QUEST_MODULE, new PlayerQuestModule(this));
+		registerModule(GsConst.ModuleType.MAIL_MODULE, new PlayerMailModule(this));
 
 		// 最后注册空闲模块, 用来消息收尾处理
 		registerModule(GsConst.ModuleType.IDLE_MODULE, new PlayerIdleModule(this));
@@ -857,7 +863,7 @@ public class Player extends HawkAppObj {
 		
 		// count
 		history = statisticsEntity.getMonsterMaxCount();
-		cur = playerData.getMonsterEntityList().size();
+		cur = playerData.getMonsterEntityMap().size();
 		if (cur > history) {
 			statisticsEntity.setMonsterMaxCount(cur);
 			update = true;
@@ -874,6 +880,43 @@ public class Player extends HawkAppObj {
 		}
 
 		return true;
+	}
+
+	/**
+	 * 发送邮件
+	 */
+	public boolean SendMail(MailInfo mailInfo, int receiverId, Source source, Action action) {
+		int mailId = MailUtil.SendMail(mailInfo, receiverId, getId(), getName(), source, action);
+		if (mailId > 0) {
+			BehaviorLogger.log4Service(this, source, action, 
+					Params.valueOf("id", mailId));
+					Params.valueOf("receiverId", receiverId);
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 删除多余邮件，从队列头开始删除
+	 * @return 删除的邮件Id列表
+	 */
+	public List<Integer> RemoveOverflowMail() {
+		List<Integer> overflowList = new ArrayList<>();
+
+		List<MailEntity> mailList = playerData.getMailEntityList();
+		while (mailList.size() > GsConst.MAX_MAIL_COUNT) {
+			MailEntity mailEntity = mailList.get(0);
+			mailEntity.setState((byte)Const.mailState.OVERFLOW_VALUE);
+			mailEntity.setInvalid(true);
+			mailEntity.notifyUpdate(true);
+			overflowList.add(mailEntity.getId());
+			mailList.remove(0);
+
+			BehaviorLogger.log4Service(this, Source.SYS_OPERATION, Action.MAIL_OVERFLOW, 
+					Params.valueOf("id", mailEntity.getId()));
+		}
+
+		return overflowList;
 	}
 
 	/**

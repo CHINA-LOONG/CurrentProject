@@ -11,9 +11,6 @@ public class bossYueguangsenlin14Luoxinfu : BossAi
 	
 	}
 
-    int yazhi_count = 0 ;
-    int count = 0; //state chage count
-    int attck_count = 0;
 
     public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit luoxinfuUnit, BattleUnitAi.AiAttackResult xgAiResult)
 	{

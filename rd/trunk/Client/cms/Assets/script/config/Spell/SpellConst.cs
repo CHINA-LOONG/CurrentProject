@@ -64,6 +64,7 @@ public enum BuffType
     Buff_Type_MgShield,
     Buff_Type_Passive,
     Buff_Type_Taunt,//嘲讽
+    Buff_Type_Stun,
 
     Num_Buff_Type
 }

@@ -586,6 +586,7 @@ public class Buff
 
                         SpellEffectArgs effectArgs = new SpellEffectArgs();
                         effectArgs.targetID = targetID;
+                        effectArgs.triggerTime = curTime;
                         spellService.TriggerEvent(GameEventList.SpellAbsrobed, effectArgs);
                     }
                     else
@@ -621,6 +622,7 @@ public class Buff
 
                         SpellEffectArgs effectArgs = new SpellEffectArgs();
                         effectArgs.targetID = targetID;
+                        effectArgs.triggerTime = curTime;
                         spellService.TriggerEvent(GameEventList.SpellAbsrobed, effectArgs);
                     }
                     else
@@ -674,6 +676,10 @@ public class Buff
                     curEffect.SetOwnedSpell(ownedSpell);
                     curEffect.casterID = targetID;
                     curEffect.targetID = triggerEffect.casterID;
+                    if (curEffect.targetID == curEffect.casterID)
+                    {
+                        curEffect.targetID = triggerEffect.targetID;
+                    }
                     curEffect.noDamageResponse = true;
                     curEffect.Apply(curTime, null);
                 }

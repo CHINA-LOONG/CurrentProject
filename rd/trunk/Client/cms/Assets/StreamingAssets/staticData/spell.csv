@@ -1,142 +1,142 @@
-﻿ee,TEXT,NUM,NUM,NUM,NUM,NUM,FLOAT,TEXT,TEXT,NUM,NUM,TEXT
-id,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,category,levelAdjust,icon,tips,baseTipValue,isAoe,firstSpell
-#id,rootEffectID,????????,???????,energyCost,energyGenerate,category,levelAdjust,???,tips,1???tips??????,?ж???????,???ü???
-s1,e1,0,0,0,10,0,0,icon_s1,This is spell {0},10,0,0
-s2,e2,0,0,0,10,0,0,icon_s2,This is spell {0},10,0,0
-s3,e2,3,5,100,0,0,0,icon_s3,This is spell {0},10,0,0
-lazy,,0,0,0,0,7,0,icon_lazy,This is spell {0},10,0,0
-defend,defende1,0,0,0,0,3,0,icon_defend,This is spell {0},10,0,0
-attackSlight,attackSlighte1,0,0,0,100,0,0,icon_attackSlight,This is spell {0},10,0,0
-attackMedium,attackMediume1,0,0,0,100,0,0,icon_attackMedium,This is spell {0},10,0,0
-attackStrong,attackStronge1,0,0,0,100,0,0,icon_attackStrong,This is spell {0},10,0,0
-attackTriSlight,attackTriSlighte1,0,0,0,100,0,0,icon_attackTriSlight,This is spell {0},10,0,0
-attackTriMedium,attackTriMediume1,0,0,0,100,0,0,icon_attackTriMedium,This is spell {0},10,0,0
-attackTriStrong,attackTriStronge1,0,0,0,100,0,0,icon_attackTriStrong,This is spell {0},10,0,0
-attackCutSlight,attackCutSlighte1,0,0,0,100,0,0,icon_attackCutSlight,This is spell {0},10,0,0
-attackCutMedium,attackCutMediume1,0,0,0,100,0,0,icon_attackCutMedium,This is spell {0},10,0,0
-attackCutStrong,attackCutStronge1,0,0,0,100,0,0,icon_attackCutStrong,This is spell {0},10,0,0
-attackCutTriSlight,attackCutTriSlighte1,0,0,0,100,0,0,icon_attackCutTriSlight,This is spell {0},10,0,0
-attackCutTriMedium,attackCutTriMediume1,0,0,0,100,0,0,icon_attackCutTriMedium,This is spell {0},10,0,0
-attackCutTriStrong,attackCutTriStronge1,0,0,0,100,0,0,icon_attackCutTriStrong,This is spell {0},10,0,0
-attackStabSlight,attackStabSlighte1,0,0,0,100,0,0,icon_attackStabSlight,This is spell {0},10,0,0
-attackStabMedium,attackStabMediume1,0,0,0,100,0,0,icon_attackStabMedium,This is spell {0},10,0,0
-attackStabStrong,attackStabStronge1,0,0,0,100,0,0,icon_attackStabStrong,This is spell {0},10,0,0
-attackStabTriSlight,attackStabTriSlighte1,0,0,0,100,0,0,icon_attackStabTriSlight,This is spell {0},10,0,0
-attackStabTriMedium,attackStabTriMediume1,0,0,0,100,0,0,icon_attackStabTriMedium,This is spell {0},10,0,0
-attackStabTriStrong,attackStabTriStronge1,0,0,0,100,0,0,icon_attackStabTriStrong,This is spell {0},10,0,0
-attackSmashSlight,attackSmashSlighte1,0,0,0,100,0,0,icon_attackSmashSlight,This is spell {0},10,0,0
-attackSmashMedium,attackSmashMediume1,0,0,0,100,0,0,icon_attackSmashMedium,This is spell {0},10,0,0
-attackSmashStrong,attackSmashStronge1,0,0,0,100,0,0,icon_attackSmashStrong,This is spell {0},10,0,0
-magicMetalSlight,magicMetalSlighte1,0,0,0,100,1,0,icon_magicMetalSlight,This is spell {0},10,0,0
-magicMetalMedium,magicMetalMediume1,0,0,0,100,1,0,icon_magicMetalMedium,This is spell {0},10,0,0
-magicMetalStrong,magicMetalStronge1,0,0,0,100,1,0,icon_magicMetalStrong,This is spell {0},10,0,0
-magicPlantSlight,magicPlantSlighte1,0,0,0,100,1,0,icon_magicPlantSlight,This is spell {0},10,0,0
-magicPlantMedium,magicPlantMediume1,0,0,0,100,1,0,icon_magicPlantMedium,This is spell {0},10,0,0
-magicPlantStrong,magicPlantStronge1,0,0,0,100,1,0,icon_magicPlantStrong,This is spell {0},10,0,0
-magicWaterSlight,magicWaterSlighte1,0,0,0,100,1,0,icon_magicWaterSlight,This is spell {0},10,0,0
-magicWaterMedium,magicWaterMediume1,0,0,0,100,1,0,icon_magicWaterMedium,This is spell {0},10,0,0
-magicWaterStrong,magicWaterStronge1,0,0,0,100,1,0,icon_magicWaterStrong,This is spell {0},10,0,0
-magicFireSlight,magicFireSlighte1,0,0,0,100,1,0,icon_magicFireSlight,This is spell {0},10,0,0
-magicFireMedium,magicFireMediume1,0,0,0,100,1,0,icon_magicFireMedium,This is spell {0},10,0,0
-magicFireStrong,magicFireStronge1,0,0,0,100,1,0,icon_magicFireStrong,This is spell {0},10,0,0
-magicEarthSlight,magicEarthSlighte1,0,0,0,100,1,0,icon_magicEarthSlight,This is spell {0},10,0,0
-magicEarthMedium,magicEarthMediume1,0,0,0,100,1,0,icon_magicEarthMedium,This is spell {0},10,0,0
-magicEarthStrong,magicEarthStronge1,0,0,0,100,1,0,icon_magicEarthStrong,This is spell {0},10,0,0
-magicCureSlight,magicCureSlighte1,0,0,0,100,2,0,icon_magicCureSlight,This is spell {0},10,0,0
-magicCureMedium,magicCureMediume1,0,0,0,100,2,0,icon_magicCureMedium,This is spell {0},10,0,0
-magicCureStrong,magicCureStronge1,0,0,0,100,2,0,icon_magicCureStrong,This is spell {0},10,0,0
-buffSpeed,buffSpeede1,0,0,0,100,5,0,icon_buffSpeed,This is spell {0},10,0,0
-buffSpeedSelf,buffSpeedSelfe1,0,0,0,100,5,0,icon_buffSpeedSelf,This is spell {0},10,0,0
-buffMagic,buffMagice1,0,0,0,100,5,0,icon_buffMagic,This is spell {0},10,0,0
-buffMagicSelf,buffMagicSelfe1,0,0,0,100,5,0,icon_buffMagicSelf,This is spell {0},10,0,0
-buffAttack,buffAttacke1,0,0,0,100,4,0,icon_buffAttack,This is spell {0},10,0,buffAttack
-buffDefense,buffDefensee1,0,0,0,100,5,0,icon_buffDefense,This is spell {0},10,0,0
-buffAttackSelf,buffAttackSelfe1,0,0,0,100,5,0,icon_buffAttackSelf,This is spell {0},10,0,0
-buffDefenseSelf,buffDefenseSelfe1,0,0,0,100,5,0,icon_buffDefenseSelf,This is spell {0},10,0,0
-debuffDefense,debuffDefensee1,0,0,0,100,6,0,icon_debuffDefense,This is spell {0},10,0,0
-bossJiuweihu1,bossJiuweihu1e1,0,0,0,100,2,0,icon_bossJiuweihu1,This is spell {0},10,0,0
-bossJiuweihu2,bossJiuweihu2e1,0,0,0,100,2,0,icon_bossJiuweihu2,This is spell {0},10,0,0
-bossJiuweihu3,bossJiuweihu3e1,0,0,0,100,2,0,icon_bossJiuweihu3,This is spell {0},10,0,0
-bossJiuweihu4,bossJiuweihu4e1,0,0,0,100,2,0,icon_bossJiuweihu4,This is spell {0},10,0,0
-ultErshu,demoershuDazhaoe1,0,10,100,0,9,0,icon_ultErshu,This is spell {0},10,1,0
-ultQingniao,demoqingniaoDazhaoe1,0,10,100,0,9,0,icon_ultQingniao,This is spell {0},10,1,0
-ultZhuyan,demozhuyanDazhaoe1,5,10,100,0,8,0,icon_ultZhuyan,This is spell {0},10,0,0
-bossHundun,bossHundune1,0,0,0,0,1,0,icon_bossHundun,This is spell {0},10,0,0
-dazhaoPrepare,dazhaoPreparee1,0,0,0,0,10,0,icon_dazhaoPrepare,,0,0,0
-bossMinghe18Karong1,bossMinghe18Karong1e1,0,0,0,20,0,0,icon_bossMinghe18Karong1,This is spell {0},10,0,0
-bossMinghe18Karong2,bossMinghe18Karong2e1,0,0,0,20,0,0,icon_bossMinghe18Karong2,This is spell {0},10,0,0
-bossMinghe18Karong3,bossMinghe18Karong3e1,0,0,0,20,0,0,icon_bossMinghe18Karong3,This is spell {0},10,0,0
-bossMinghe18Karong4,bossMinghe18Karong4e1,0,0,0,20,0,0,icon_bossMinghe18Karong4,This is spell {0},10,0,0
-bossMinghe18Karong5,bossMinghe18Karong5e1,0,0,0,20,0,0,icon_bossMinghe18Karong5,This is spell {0},10,0,0
-bossMinghe18Karong6,bossMinghe18Karong6e1,0,0,0,20,0,0,icon_bossMinghe18Karong6,This is spell {0},10,0,0
-bossYueguangsenlin14Luoxinfu1,bossYueguangsenlin14Luoxinfu1e1,0,0,0,20,0,0,icon_bossYueguangsenlin14Luoxinfu1,This is spell {0},10,0,
-bossYueguangsenlin14Luoxinfu2,bossYueguangsenlin14Luoxinfu2e1,0,0,0,20,0,0,icon_bossYueguangsenlin14Luoxinfu2,This is spell {0},10,0,
-bossYueguangsenlin14Luoxinfu3,bossYueguangsenlin14Luoxinfu3e1,0,0,0,20,0,0,icon_bossYueguangsenlin14Luoxinfu3,This is spell {0},10,0,
-bossYueguangsenlin18Meidusha1,bossYueguangsenlin18Meidusha1e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha1,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha2,bossYueguangsenlin18Meidusha2e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha2,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha3,bossYueguangsenlin18Meidusha3e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha3,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha4,bossYueguangsenlin18Meidusha4e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha4,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha5,bossYueguangsenlin18Meidusha5e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha5,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha6,bossYueguangsenlin18Meidusha6e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha6,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha7,bossYueguangsenlin18Meidusha7e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha7,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha8,bossYueguangsenlin18Meidusha8e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha8,This is spell {0},10,0,0
-bossYueguangsenlin18Meidusha9,bossYueguangsenlin18Meidusha9e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha9,This is spell {0},10,0,0
-psvbossLonggongtongzi,psvLonggongtongzie1,0,0,0,20,4,0,icon_psvbossLonggongtongzi,This is spell {0},10,0,
-psvHapi,psvHapie1,0,0,0,20,4,0,icon_psvHapi,This is spell {0},10,0,
-psvHetong,psvHetonge1,0,0,0,20,4,0,icon_psvHetong,This is spell {0},10,0,
-psvLonggongtongzi,psvLonggongtongzie1,0,0,0,20,4,0,icon_psvLonggongtongzi,This is spell {0},10,0,
-psvWagui,psvWaguie1,0,0,0,20,4,0,icon_psvWagui,This is spell {0},10,0,
-ultHapi,ultHapie1,0,10,100,0,9,0,icon_ultHapi,This is spell {0},10,0,0
-ultHetong,ultHetonge1,0,10,100,0,9,0,icon_ultHetong,This is spell {0},10,0,0
-ultWagui,ultWaguie1,0,10,100,0,9,0,icon_ultWagui,This is spell {0},10,0,0
-ultLonggongtongzi,ultLonggongtongzie1,0,10,100,0,9,0,icon_ultLonggongtongzi,This is spell {0},10,0,0
-ultbossLonggongtongzi,ultLonggongtongzie1,0,10,100,0,9,0,icon_ultbossLonggongtongzi,This is spell {0},10,0,0
-ultbossLuoxinfu,ultbossLuoxinfue1,6,10,100,0,1,0,icon_ultbossLuoxinfu,This is spell {0},10,0,
-ultHuapo,ultHuapoe1,10,10,100,0,8,0,icon_ultHuapo,This is spell {0},10,0,0
-ultAmute,ultAmutee1,0,0,100,0,9,0,icon_ultAmute,This is spell {0},10,1,0
-ultLangren,ultLangrene1,7,10,100,0,8,0,icon_ultLangren,This is spell {0},10,0,0
-ultMantuoluo,ultMantuoluoe1,0,0,100,0,9,0,icon_ultMantuoluo,This is spell {0},10,1,0
-ultboosMantuoluo,ultboosMantuoluoe1,0,0,100,0,9,0,icon_ultboosMantuoluo,This is spell {0},10,1,0
-ultAnpusha,ultAnpushae1,0,0,100,0,9,0,icon_ultAnpusha,This is spell {0},10,1,0
-psvHuapo,psvHuapoe1,0,0,0,0,4,0,icon_psvHuapo,This is spell {0},10,0,
-psvAmute,psvAmutee1,0,0,0,0,4,0,icon_psvAmute,This is spell {0},10,0,
-psvLangren,psvLangrene1,0,0,0,0,4,0,icon_psvLangren,This is spell {0},10,0,
-psvMantuoluo,psvMantuoluoe1,0,0,0,0,4,0,icon_psvMantuoluo,This is spell {0},10,0,
-psvbossMantuoluo,,0,0,0,0,4,0,icon_psvbossMantuoluo,This is spell {0},10,0,attackCutSlight
-psvAnpusha,psvAnpushae1,0,0,0,0,4,0,icon_psvAnpusha,This is spell {0},10,0,
-ultbossZouyincao,ultbossZouyincaoe1,,10,100,,9,,icon_ultbossZouyincao,,,,
-psvbossZouyincao,psvbossZouyincaoe1,,,,,4,,icon_psvbossZouyincao,,,,
-buffHot,buffHote1,,,,,5,,icon_buffHot,,,,
-debuffAttack,debuffAttacke1,,,,,6,,icon_debuffAttack,,,,
-debuffMagic,debuffMagice1,,,,,6,,icon_debuffMagic,,,,
-debuffSpeed,debuffSpeede1,,,,,6,,icon_debuffSpeed,,,,
-debuffDotSlight,debuffDotSlighte1,,,,,6,,icon_debuffDotSlight,,,,
-debuffDotMedium,debuffDotMediume1,,,,,6,,icon_debuffDotMedium,,,,
-debuffDotStrong,debuffDotStronge1,,,,,6,,icon_debuffDotStrong,,,,
-debuffFireDotSlight,debuffFireDotSlighte1,,,,,6,,icon_debuffFireDotSlight,,,,
-debuffFireDotMedium,debuffFireDotMediume1,,,,,6,,icon_debuffFireDotMedium,,,,
-debuffFireDotStrong,debuffFireDotStronge1,,,,,6,,icon_debuffFireDotStrong,,,,
-debuffWaterDotSlight,debuffWaterDotSlighte1,,,,,6,,icon_debuffWaterDotSlight,,,,
-debuffWateDotMedium,debuffWateDotMediume1,,,,,6,,icon_debuffWateDotMedium,,,,
-debuffWateDotStrong,debuffWateDotStronge1,,,,,6,,icon_debuffWateDotStrong,,,,
-debuffPlantDotSlight,debuffPlantDotSlighte1,,,,,6,,icon_debuffPlantDotSlight,,,,
-debuffPlantDotMedium,debuffPlantDotMediume1,,,,,6,,icon_debuffPlantDotMedium,,,,
-debuffPlantDotStrong,debuffPlantDotStronge1,,,,,6,,icon_debuffPlantDotStrong,,,,
-debuffMetalDotSlight,debuffMetalDotSlighte1,,,,,6,,icon_debuffMetalDotSlight,,,,
-debuffMetalDotMedium,debuffMetalDotMediume1,,,,,6,,icon_debuffMetalDotMedium,,,,
-debuffMetalDotStrong,debuffMetalDotStronge1,,,,,6,,icon_debuffMetalDotStrong,,,,
-debuffEarthDotSlight,debuffEarthDotSlighte1,,,,,6,,icon_debuffEarthDotSlight,,,,
-debuffEarthDotMedium,debuffEarthDotMediume1,,,,,6,,icon_debuffEarthDotMedium,,,,
-debuffEarthDotStrong,debuffEarthDotStronge1,0,0,0,20,11,0,icon_debuffEarthDotStrong,This is spell {0},10,0,
-ultMomo,ultMomoe1,0,0,100,0,9,0,icon_ultMomo,This is spell {0},10,1,0
-psvMomo,psvMomoe1,0,0,0,0,4,0,icon_psvMomo,This is spell {0},10,0,
-ultXiyiren,ultXiyirene1,5,10,100,0,8,0,icon_ultXiyiren,This is spell {0},10,0,0
-psvXiyiren,psvXiyirene1,0,0,0,0,4,0,icon_psvXiyiren,This is spell {0},10,0,
-ultPanshen,ultPanshene1,10,10,100,0,8,0,icon_ultPanshen,This is spell {0},10,0,0
-psvPanshen,psvPanshene1,0,0,0,0,4,0,icon_psvPanshen,This is spell {0},10,0,attackStabMedium
-ultKairuisi,ultKairuisie1,0,0,100,0,9,0,icon_ultKairuisi,This is spell {0},10,1,0
-psvKairuisi,psvKairuisie1,0,0,0,0,4,0,icon_psvKairuisi,This is spell {0},10,0,
-ultLuoxinfu,ultLuolxinfue1,6,10,100,0,8,0,icon_ultLuoxinfu,This is spell {0},10,0,0
-psvLuoxinfu,psvLuoxinfue1,0,0,0,0,4,0,icon_psvLuoxinfu,This is spell {0},10,0,
-ultbossXiyiren,ultbossXiyirene1,0,0,100,0,8,0,icon_ultbossXiyiren,This is spell {0},10,0,0
-psvbossXiyiren,psvbossXiyirene1,0,0,0,0,4,0,icon_psvbossXiyiren,This is spell {0},10,0,0
+﻿ee,TEXT,NUM,NUM,NUM,NUM,NUM,FLOAT,TEXT,TEXT,TEXT,NUM,NUM,TEXT
+id,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,category,levelAdjust,icon,name,tips,baseTipValue,isAoe,firstSpell
+#id,rootEffectID,????????,???????,energyCost,energyGenerate,category,levelAdjust,???,name,tips,1???tips??????,?ж???????,???ü???
+s1,e1,0,0,0,10,0,0,icon_s1,s1Name,s1Tips,10,0,
+s2,e2,0,0,0,10,0,0,icon_s2,s2Name,s2Tips,10,0,
+s3,e2,3,5,100,0,0,0,icon_s3,s3Name,s3Tips,10,0,
+lazy,,0,0,0,0,7,0,icon_lazy,lazyName,lazyTips,10,0,
+defend,defende1,0,0,0,0,3,0,icon_defend,defendName,defendTips,10,0,
+attackSlight,attackSlighte1,0,0,0,20,0,0.01,icon_attackSlight,attackSlightName,attackSlightTips,10,0,
+attackMedium,attackMediume1,0,0,0,20,0,0.01,icon_attackMedium,attackMediumName,attackMediumTips,10,0,
+attackStrong,attackStronge1,0,0,0,20,0,0.01,icon_attackStrong,attackStrongName,attackStrongTips,10,0,
+attackTriSlight,attackTriSlighte1,0,0,0,20,0,0.01,icon_attackTriSlight,attackTriSlightName,attackTriSlightTips,10,0,
+attackTriMedium,attackTriMediume1,0,0,0,20,0,0.01,icon_attackTriMedium,attackTriMediumName,attackTriMediumTips,10,0,
+attackTriStrong,attackTriStronge1,0,0,0,20,0,0.01,icon_attackTriStrong,attackTriStrongName,attackTriStrongTips,10,0,
+attackCutSlight,attackCutSlighte1,0,0,0,20,0,0.01,icon_attackCutSlight,attackCutSlightName,attackCutSlightTips,10,0,
+attackCutMedium,attackCutMediume1,0,0,0,20,0,0.01,icon_attackCutMedium,attackCutMediumName,attackCutMediumTips,10,0,
+attackCutStrong,attackCutStronge1,0,0,0,20,0,0.01,icon_attackCutStrong,attackCutStrongName,attackCutStrongTips,10,0,
+attackCutTriSlight,attackCutTriSlighte1,0,0,0,20,0,0.01,icon_attackCutTriSlight,attackCutTriSlightName,attackCutTriSlightTips,10,0,
+attackCutTriMedium,attackCutTriMediume1,0,0,0,20,0,0.01,icon_attackCutTriMedium,attackCutTriMediumName,attackCutTriMediumTips,10,0,
+attackCutTriStrong,attackCutTriStronge1,0,0,0,20,0,0.01,icon_attackCutTriStrong,attackCutTriStrongName,attackCutTriStrongTips,10,0,
+attackStabSlight,attackStabSlighte1,0,0,0,20,0,0.01,icon_attackStabSlight,attackStabSlightName,attackStabSlightTips,10,0,
+attackStabMedium,attackStabMediume1,0,0,0,20,0,0.01,icon_attackStabMedium,attackStabMediumName,attackStabMediumTips,10,0,
+attackStabStrong,attackStabStronge1,0,0,0,20,0,0.01,icon_attackStabStrong,attackStabStrongName,attackStabStrongTips,10,0,
+attackStabTriSlight,attackStabTriSlighte1,0,0,0,20,0,0.01,icon_attackStabTriSlight,attackStabTriSlightName,attackStabTriSlightTips,10,0,
+attackStabTriMedium,attackStabTriMediume1,0,0,0,20,0,0.01,icon_attackStabTriMedium,attackStabTriMediumName,attackStabTriMediumTips,10,0,
+attackStabTriStrong,attackStabTriStronge1,0,0,0,20,0,0.01,icon_attackStabTriStrong,attackStabTriStrongName,attackStabTriStrongTips,10,0,
+attackSmashSlight,attackSmashSlighte1,0,0,0,20,0,0.01,icon_attackSmashSlight,attackSmashSlightName,attackSmashSlightTips,10,0,
+attackSmashMedium,attackSmashMediume1,0,0,0,20,0,0.01,icon_attackSmashMedium,attackSmashMediumName,attackSmashMediumTips,10,0,
+attackSmashStrong,attackSmashStronge1,0,0,0,20,0,0.01,icon_attackSmashStrong,attackSmashStrongName,attackSmashStrongTips,10,0,
+magicMetalSlight,magicMetalSlighte1,0,0,0,20,1,0.01,icon_magicMetalSlight,magicMetalSlightName,magicMetalSlightTips,10,0,
+magicMetalMedium,magicMetalMediume1,0,0,0,20,1,0.01,icon_magicMetalMedium,magicMetalMediumName,magicMetalMediumTips,10,0,
+magicMetalStrong,magicMetalStronge1,0,0,0,20,1,0.01,icon_magicMetalStrong,magicMetalStrongName,magicMetalStrongTips,10,0,
+magicPlantSlight,magicPlantSlighte1,0,0,0,20,1,0.01,icon_magicPlantSlight,magicPlantSlightName,magicPlantSlightTips,10,0,
+magicPlantMedium,magicPlantMediume1,0,0,0,20,1,0.01,icon_magicPlantMedium,magicPlantMediumName,magicPlantMediumTips,10,0,
+magicPlantStrong,magicPlantStronge1,0,0,0,20,1,0.01,icon_magicPlantStrong,magicPlantStrongName,magicPlantStrongTips,10,0,
+magicWaterSlight,magicWaterSlighte1,0,0,0,20,1,0.01,icon_magicWaterSlight,magicWaterSlightName,magicWaterSlightTips,10,0,
+magicWaterMedium,magicWaterMediume1,0,0,0,20,1,0.01,icon_magicWaterMedium,magicWaterMediumName,magicWaterMediumTips,10,0,
+magicWaterStrong,magicWaterStronge1,0,0,0,20,1,0.01,icon_magicWaterStrong,magicWaterStrongName,magicWaterStrongTips,10,0,
+magicFireSlight,magicFireSlighte1,0,0,0,20,1,0.01,icon_magicFireSlight,magicFireSlightName,magicFireSlightTips,10,0,
+magicFireMedium,magicFireMediume1,0,0,0,20,1,0.01,icon_magicFireMedium,magicFireMediumName,magicFireMediumTips,10,0,
+magicFireStrong,magicFireStronge1,0,0,0,20,1,0.01,icon_magicFireStrong,magicFireStrongName,magicFireStrongTips,10,0,
+magicEarthSlight,magicEarthSlighte1,0,0,0,20,1,0.01,icon_magicEarthSlight,magicEarthSlightName,magicEarthSlightTips,10,0,
+magicEarthMedium,magicEarthMediume1,0,0,0,20,1,0.01,icon_magicEarthMedium,magicEarthMediumName,magicEarthMediumTips,10,0,
+magicEarthStrong,magicEarthStronge1,0,0,0,20,1,0.01,icon_magicEarthStrong,magicEarthStrongName,magicEarthStrongTips,10,0,
+magicCureSlight,magicCureSlighte1,0,0,0,20,2,0.01,icon_magicCureSlight,magicCureSlightName,magicCureSlightTips,10,0,
+magicCureMedium,magicCureMediume1,0,0,0,20,2,0.01,icon_magicCureMedium,magicCureMediumName,magicCureMediumTips,10,0,
+magicCureStrong,magicCureStronge1,0,0,0,20,2,0.01,icon_magicCureStrong,magicCureStrongName,magicCureStrongTips,10,0,
+buffSpeed,buffSpeede1,0,0,0,20,5,0,icon_buffSpeed,buffSpeedName,buffSpeedTips,10,0,
+buffSpeedSelf,buffSpeedSelfe1,0,0,0,20,5,0,icon_buffSpeedSelf,buffSpeedSelfName,buffSpeedSelfTips,10,0,
+buffMagic,buffMagice1,0,0,0,20,5,0,icon_buffMagic,buffMagicName,buffMagicTips,10,0,
+buffMagicSelf,buffMagicSelfe1,0,0,0,20,5,0,icon_buffMagicSelf,buffMagicSelfName,buffMagicSelfTips,10,0,
+buffAttack,buffAttacke1,0,0,0,20,4,0,icon_buffAttack,buffAttackName,buffAttackTips,10,0,buffAttack
+buffDefense,buffDefensee1,0,0,0,20,5,0,icon_buffDefense,buffDefenseName,buffDefenseTips,10,0,
+buffAttackSelf,buffAttackSelfe1,0,0,0,20,5,0,icon_buffAttackSelf,buffAttackSelfName,buffAttackSelfTips,10,0,
+buffDefenseSelf,buffDefenseSelfe1,0,0,0,20,5,0,icon_buffDefenseSelf,buffDefenseSelfName,buffDefenseSelfTips,10,0,
+debuffDefense,debuffDefensee1,0,0,0,20,6,0,icon_debuffDefense,debuffDefenseName,debuffDefenseTips,10,0,
+bossJiuweihu1,bossJiuweihu1e1,0,0,0,20,2,0,icon_bossJiuweihu1,bossJiuweihu1Name,bossJiuweihu1Tips,10,0,
+bossJiuweihu2,bossJiuweihu2e1,0,0,0,20,2,0,icon_bossJiuweihu2,bossJiuweihu2Name,bossJiuweihu2Tips,10,0,
+bossJiuweihu3,bossJiuweihu3e1,0,0,0,20,2,0,icon_bossJiuweihu3,bossJiuweihu3Name,bossJiuweihu3Tips,10,0,
+bossJiuweihu4,bossJiuweihu4e1,0,0,0,20,2,0,icon_bossJiuweihu4,bossJiuweihu4Name,bossJiuweihu4Tips,10,0,
+ultErshu,demoershuDazhaoe1,0,10,100,0,9,0,icon_ultErshu,ultErshuName,ultErshuTips,10,1,
+ultQingniao,demoqingniaoDazhaoe1,0,10,100,0,9,0,icon_ultQingniao,ultQingniaoName,ultQingniaoTips,10,1,
+ultZhuyan,demozhuyanDazhaoe1,5,10,100,0,8,0,icon_ultZhuyan,ultZhuyanName,ultZhuyanTips,10,0,
+bossHundun,bossHundune1,0,0,0,0,1,0,icon_bossHundun,bossHundunName,bossHundunTips,10,0,
+dazhaoPrepare,dazhaoPreparee1,0,0,0,0,10,0,icon_dazhaoPrepare,dazhaoPrepareName,,0,0,
+bossMinghe18Karong1,bossMinghe18Karong1e1,0,0,0,20,0,0,icon_bossMinghe18Karong1,bossMinghe18Karong1Name,bossMinghe18Karong1Tips,10,0,
+bossMinghe18Karong2,bossMinghe18Karong2e1,0,0,0,20,0,0,icon_bossMinghe18Karong2,bossMinghe18Karong2Name,bossMinghe18Karong2Tips,10,0,
+bossMinghe18Karong3,bossMinghe18Karong3e1,0,0,0,20,0,0,icon_bossMinghe18Karong3,bossMinghe18Karong3Name,bossMinghe18Karong3Tips,10,0,
+bossMinghe18Karong4,bossMinghe18Karong4e1,0,0,0,20,0,0,icon_bossMinghe18Karong4,bossMinghe18Karong4Name,bossMinghe18Karong4Tips,10,0,
+bossMinghe18Karong5,bossMinghe18Karong5e1,0,0,0,20,0,0,icon_bossMinghe18Karong5,bossMinghe18Karong5Name,bossMinghe18Karong5Tips,10,0,
+bossMinghe18Karong6,bossMinghe18Karong6e1,0,0,0,20,0,0,icon_bossMinghe18Karong6,bossMinghe18Karong6Name,bossMinghe18Karong6Tips,10,0,
+bossYueguangsenlin14Luoxinfu1,bossYueguangsenlin14Luoxinfu1e1,0,0,0,20,0,0,icon_bossYueguangsenlin14Luoxinfu1,bossYueguangsenlin14Luoxinfu1Name,bossYueguangsenlin14Luoxinfu1Tips,10,0,
+bossYueguangsenlin14Luoxinfu2,bossYueguangsenlin14Luoxinfu2e1,0,0,0,20,0,0,icon_bossYueguangsenlin14Luoxinfu2,bossYueguangsenlin14Luoxinfu2Name,bossYueguangsenlin14Luoxinfu2Tips,10,0,
+bossYueguangsenlin14Luoxinfu3,bossYueguangsenlin14Luoxinfu3e1,0,0,0,20,0,0,icon_bossYueguangsenlin14Luoxinfu3,bossYueguangsenlin14Luoxinfu3Name,bossYueguangsenlin14Luoxinfu3Tips,10,0,
+bossYueguangsenlin18Meidusha1,bossYueguangsenlin18Meidusha1e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha1,bossYueguangsenlin18Meidusha1Name,bossYueguangsenlin18Meidusha1Tips,10,0,
+bossYueguangsenlin18Meidusha2,bossYueguangsenlin18Meidusha2e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha2,bossYueguangsenlin18Meidusha2Name,bossYueguangsenlin18Meidusha2Tips,10,0,
+bossYueguangsenlin18Meidusha3,bossYueguangsenlin18Meidusha3e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha3,bossYueguangsenlin18Meidusha3Name,bossYueguangsenlin18Meidusha3Tips,10,0,
+bossYueguangsenlin18Meidusha4,bossYueguangsenlin18Meidusha4e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha4,bossYueguangsenlin18Meidusha4Name,bossYueguangsenlin18Meidusha4Tips,10,0,
+bossYueguangsenlin18Meidusha5,bossYueguangsenlin18Meidusha5e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha5,bossYueguangsenlin18Meidusha5Name,bossYueguangsenlin18Meidusha5Tips,10,0,
+bossYueguangsenlin18Meidusha6,bossYueguangsenlin18Meidusha6e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha6,bossYueguangsenlin18Meidusha6Name,bossYueguangsenlin18Meidusha6Tips,10,0,
+bossYueguangsenlin18Meidusha7,bossYueguangsenlin18Meidusha7e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha7,bossYueguangsenlin18Meidusha7Name,bossYueguangsenlin18Meidusha7Tips,10,0,
+bossYueguangsenlin18Meidusha8,bossYueguangsenlin18Meidusha8e1,0,0,0,10,6,0,icon_bossYueguangsenlin18Meidusha8,bossYueguangsenlin18Meidusha8Name,bossYueguangsenlin18Meidusha8Tips,10,0,
+bossYueguangsenlin18Meidusha9,bossYueguangsenlin18Meidusha9e1,0,0,0,10,0,0,icon_bossYueguangsenlin18Meidusha9,bossYueguangsenlin18Meidusha9Name,bossYueguangsenlin18Meidusha9Tips,10,0,
+psvbossLonggongtongzi,psvLonggongtongzie1,0,0,0,0,4,0,icon_psvbossLonggongtongzi,psvbossLonggongtongziName,psvbossLonggongtongziTips,10,0,
+psvHapi,psvHapie1,0,0,0,0,4,0,icon_psvHapi,psvHapiName,psvHapiTips,10,0,
+psvHetong,psvHetonge1,0,0,0,0,4,0,icon_psvHetong,psvHetongName,psvHetongTips,10,0,
+psvLonggongtongzi,psvLonggongtongzie1,0,0,0,0,4,0,icon_psvLonggongtongzi,psvLonggongtongziName,psvLonggongtongziTips,10,0,
+psvWagui,psvWaguie1,0,0,0,0,4,0,icon_psvWagui,psvWaguiName,psvWaguiTips,10,0,
+ultHapi,ultHapie1,0,10,100,0,9,0,icon_ultHapi,ultHapiName,ultHapiTips,10,0,
+ultHetong,ultHetonge1,0,10,100,0,9,0,icon_ultHetong,ultHetongName,ultHetongTips,10,0,
+ultWagui,ultWaguie1,0,10,100,0,9,0,icon_ultWagui,ultWaguiName,ultWaguiTips,10,0,
+ultLonggongtongzi,ultLonggongtongzie1,0,10,100,0,9,0,icon_ultLonggongtongzi,ultLonggongtongziName,ultLonggongtongziTips,10,0,
+ultbossLonggongtongzi,ultLonggongtongzie1,0,10,100,0,9,0,icon_ultbossLonggongtongzi,ultbossLonggongtongziName,ultbossLonggongtongziTips,10,0,
+ultbossLuoxinfu,ultbossLuoxinfue1,6,10,100,0,1,0,icon_ultbossLuoxinfu,ultbossLuoxinfuName,ultbossLuoxinfuTips,10,0,
+ultHuapo,ultHuapoe1,10,10,100,0,8,0,icon_ultHuapo,ultHuapoName,ultHuapoTips,10,0,
+ultAmute,ultAmutee1,0,0,100,0,9,0,icon_ultAmute,ultAmuteName,ultAmuteTips,10,1,
+ultLangren,ultLangrene1,7,10,100,0,8,0,icon_ultLangren,ultLangrenName,ultLangrenTips,10,0,
+ultMantuoluo,ultMantuoluoe1,0,0,100,0,9,0,icon_ultMantuoluo,ultMantuoluoName,ultMantuoluoTips,10,1,
+ultboosMantuoluo,ultboosMantuoluoe1,0,0,100,0,9,0,icon_ultboosMantuoluo,ultboosMantuoluoName,ultboosMantuoluoTips,10,1,
+ultAnpusha,ultAnpushae1,0,0,100,0,9,0,icon_ultAnpusha,ultAnpushaName,ultAnpushaTips,10,1,
+psvHuapo,psvHuapoe1,0,0,0,0,4,0,icon_psvHuapo,psvHuapoName,psvHuapoTips,10,0,
+psvAmute,psvAmutee1,0,0,0,0,4,0,icon_psvAmute,psvAmuteName,psvAmuteTips,10,0,
+psvLangren,psvLangrene1,0,0,0,0,4,0,icon_psvLangren,psvLangrenName,psvLangrenTips,10,0,
+psvMantuoluo,psvMantuoluoe1,0,0,0,0,4,0,icon_psvMantuoluo,psvMantuoluoName,psvMantuoluoTips,10,0,
+psvbossMantuoluo,,0,0,0,0,4,0,icon_psvbossMantuoluo,psvbossMantuoluoName,psvbossMantuoluoTips,10,0,attackCutSlight
+psvAnpusha,psvAnpushae1,0,0,0,0,4,0,icon_psvAnpusha,psvAnpushaName,psvAnpushaTips,10,0,
+ultbossZouyincao,ultbossZouyincaoe1,0,10,100,0,9,0,icon_ultbossZouyincao,ultbossZouyincaoName,,10,0,
+psvbossZouyincao,psvbossZouyincaoe1,0,0,0,0,4,0,icon_psvbossZouyincao,psvbossZouyincaoName,,10,0,
+buffHot,buffHote1,0,0,0,20,5,0,icon_buffHot,buffHotName,,10,0,
+debuffAttack,debuffAttacke1,0,0,0,20,6,0,icon_debuffAttack,debuffAttackName,,10,0,
+debuffMagic,debuffMagice1,0,0,0,20,6,0,icon_debuffMagic,debuffMagicName,,10,0,
+debuffSpeed,debuffSpeede1,0,0,0,20,6,0,icon_debuffSpeed,debuffSpeedName,,10,0,
+debuffDotSlight,debuffDotSlighte1,0,0,0,20,6,0.003,icon_debuffDotSlight,debuffDotSlightName,,10,0,
+debuffDotMedium,debuffDotMediume1,0,0,0,20,6,0.003,icon_debuffDotMedium,debuffDotMediumName,,10,0,
+debuffDotStrong,debuffDotStronge1,0,0,0,20,6,0.003,icon_debuffDotStrong,debuffDotStrongName,,10,0,
+debuffFireDotSlight,debuffFireDotSlighte1,0,0,0,20,6,0.003,icon_debuffFireDotSlight,debuffFireDotSlightName,,10,0,
+debuffFireDotMedium,debuffFireDotMediume1,0,0,0,20,6,0.003,icon_debuffFireDotMedium,debuffFireDotMediumName,,10,0,
+debuffFireDotStrong,debuffFireDotStronge1,0,0,0,20,6,0.003,icon_debuffFireDotStrong,debuffFireDotStrongName,,10,0,
+debuffWaterDotSlight,debuffWaterDotSlighte1,0,0,0,20,6,0.003,icon_debuffWaterDotSlight,debuffWaterDotSlightName,,10,0,
+debuffWateDotMedium,debuffWateDotMediume1,0,0,0,20,6,0.003,icon_debuffWateDotMedium,debuffWateDotMediumName,,10,0,
+debuffWateDotStrong,debuffWateDotStronge1,0,0,0,20,6,0.003,icon_debuffWateDotStrong,debuffWateDotStrongName,,10,0,
+debuffPlantDotSlight,debuffPlantDotSlighte1,0,0,0,20,6,0.003,icon_debuffPlantDotSlight,debuffPlantDotSlightName,,10,0,
+debuffPlantDotMedium,debuffPlantDotMediume1,0,0,0,20,6,0.003,icon_debuffPlantDotMedium,debuffPlantDotMediumName,,10,0,
+debuffPlantDotStrong,debuffPlantDotStronge1,0,0,0,20,6,0.003,icon_debuffPlantDotStrong,debuffPlantDotStrongName,,10,0,
+debuffMetalDotSlight,debuffMetalDotSlighte1,0,0,0,20,6,0.003,icon_debuffMetalDotSlight,debuffMetalDotSlightName,,10,0,
+debuffMetalDotMedium,debuffMetalDotMediume1,0,0,0,20,6,0.003,icon_debuffMetalDotMedium,debuffMetalDotMediumName,,10,0,
+debuffMetalDotStrong,debuffMetalDotStronge1,0,0,0,20,6,0.003,icon_debuffMetalDotStrong,debuffMetalDotStrongName,,10,0,
+debuffEarthDotSlight,debuffEarthDotSlighte1,0,0,0,20,6,0.003,icon_debuffEarthDotSlight,debuffEarthDotSlightName,,10,0,
+debuffEarthDotMedium,debuffEarthDotMediume1,0,0,0,20,6,0.003,icon_debuffEarthDotMedium,debuffEarthDotMediumName,,10,0,
+debuffEarthDotStrong,debuffEarthDotStronge1,0,0,0,20,11,0.003,icon_debuffEarthDotStrong,debuffEarthDotStrongName,debuffEarthDotStrongTips,10,0,
+ultMomo,ultMomoe1,0,0,100,0,9,0,icon_ultMomo,ultMomoName,ultMomoTips,10,1,
+psvMomo,psvMomoe1,0,0,0,0,4,0,icon_psvMomo,psvMomoName,psvMomoTips,10,0,
+ultXiyiren,ultXiyirene1,5,10,100,0,8,0,icon_ultXiyiren,ultXiyirenName,ultXiyirenTips,10,0,
+psvXiyiren,psvXiyirene1,0,0,0,0,4,0,icon_psvXiyiren,psvXiyirenName,psvXiyirenTips,10,0,
+ultPanshen,ultPanshene1,10,10,100,0,8,0,icon_ultPanshen,ultPanshenName,ultPanshenTips,10,0,
+psvPanshen,psvPanshene1,0,0,0,0,4,0,icon_psvPanshen,psvPanshenName,psvPanshenTips,10,0,attackStabMedium
+ultKairuisi,ultKairuisie1,0,0,100,0,9,0,icon_ultKairuisi,ultKairuisiName,ultKairuisiTips,10,1,
+psvKairuisi,psvKairuisie1,0,0,0,0,4,0,icon_psvKairuisi,psvKairuisiName,psvKairuisiTips,10,0,
+ultLuoxinfu,ultLuolxinfue1,6,10,100,0,8,0,icon_ultLuoxinfu,ultLuoxinfuName,ultLuoxinfuTips,10,0,
+psvLuoxinfu,psvLuoxinfue1,0,0,0,0,4,0,icon_psvLuoxinfu,psvLuoxinfuName,psvLuoxinfuTips,10,0,
+ultbossXiyiren,ultbossXiyirene1,0,0,100,0,8,0,icon_ultbossXiyiren,ultbossXiyirenName,ultbossXiyirenTips,10,0,
+psvbossXiyiren,psvbossXiyirene1,0,0,0,0,4,0,icon_psvbossXiyiren,psvbossXiyirenName,psvbossXiyirenTips,10,0,

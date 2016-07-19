@@ -1,0 +1,4 @@
+﻿#TEXT,TEXT,TEXT,TEXT,TEXT,TEXT
+id,reason,sender,subject,content,rewardId
+#mail_系统名_001,原因,发信人,主题,内容,附件
+mail_sys_001,大过年的,系统,压岁钱,啦啦啦,10001

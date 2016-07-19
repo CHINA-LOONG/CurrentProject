@@ -23,6 +23,7 @@ public class SpellProtoType
     //public int cdTime;
     //显示用数据
     public string icon;
+	public string name;
     public string tips;
     public float baseTipValue;
     public int isAoe;
@@ -32,13 +33,48 @@ public class SpellProtoType
 	{
 		get
 		{
-			return StaticDataMgr.Instance.GetTextByID(tips);
+			if(!string.IsNullOrEmpty(tips))
+			{
+				return StaticDataMgr.Instance.GetTextByID(tips);
+			}
+			else
+			{
+				return "";
+			}
+		}
+	}
+	public string NameAttr
+	{
+		get
+		{
+			return StaticDataMgr.Instance.GetTextByID(name);
 		}
 	}
 
 	public	string GetTips(int level)
 	{
-		return string.Format (TipAttr, baseTipValue + (level - 1) * levelAdjust);
+		if (string.IsNullOrEmpty (TipAttr))
+			return "";
+		
+		switch (category)
+		{
+		case (int)SpellType.Spell_Type_PhyAttack:
+		case (int)SpellType.Spell_Type_MgicAttack:
+		case (int)SpellType.Spell_Type_Cure:
+		case (int)SpellType.Spell_Type_MagicDazhao:
+			return string.Format (TipAttr, baseTipValue + (level - 1) * levelAdjust);
+			
+		case (int)SpellType.Spell_Type_Beneficial:
+		case (int)SpellType.Spell_Type_Negative:
+		case (int)SpellType.Spell_Type_Dot:
+		case (int)SpellType.Spell_Type_Passive:
+			return TipAttr;
+			
+		case (int)SpellType.Spell_Type_PhyDaZhao:
+			return string.Format (TipAttr, actionCount, baseTipValue + (level - 1) * levelAdjust);
+		default:
+			return TipAttr;
+		}
 	}
 
     public string GetTypeName()

@@ -46,7 +46,7 @@ spell_hit_interrupt,被打断,Interrupt
 spell_shield,吸收,absorbed
 spell_first_spell,这bug真无聊,go go go
 spell_stun,眩晕,stun
-xl,薛龙,Loong
+xl_quest,薛龙_任务界面,Loong
 quest_title,任务,QUEST
 quest_juqingrenwu,剧情任务,
 quest_richangrenwu,日常任务,
@@ -58,6 +58,23 @@ quest_lingqujiangli,领取奖励,
 quest_reward_title,任务奖励,
 quest_reward_wancheng,好的,
 tip_NotFoundQuest,当前类型没有可以进行的任务哦！,
+,,
+xl_mail,薛龙_邮箱界面,
+mail_title,邮箱,
+mail_tab1,系统邮件,
+mail_yijianlingqu,一键领取,
+mail_fujian,附件,
+mail_laizi,来自:,
+mail_shouqu,收取,
+mail_meiyouyoujian,没有邮件哦...,
+mail_meiyoufujian,没有附件哦...,
+mail_record_001,没有可操作的邮件哦！,
+mail_record_002,收取成功！,
+mail_record_003,金币要装不下啦，收取失败！,
+mail_record_004,钻石要装不下啦，收取失败！,
+mail_youxiangjiangman,邮箱即将爆仓，请及时收取邮件,
+mail_youxiangyiman,邮箱已经爆仓，快快收取邮件,
+mail_queding,确定,
 zs,,
 pet_list_type,圣兽,shengshou
 pet_detail_left_property,属性：,property:

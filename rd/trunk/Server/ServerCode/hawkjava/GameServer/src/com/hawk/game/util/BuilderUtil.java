@@ -7,19 +7,23 @@ import org.hawk.os.HawkTime;
 
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
+import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.item.AwardItems;
 import com.hawk.game.protocol.Attribute.Attr;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Equip.EquipInfo;
 import com.hawk.game.protocol.Equip.GemInfo;
 import com.hawk.game.protocol.Item.ItemInfo;
+import com.hawk.game.protocol.Mail.HSMail;
 import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
 import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Statistics.InstanceState;
+import com.hawk.game.util.MailUtil.MailInfo;
 
 public class BuilderUtil {
 
@@ -134,8 +138,20 @@ public class BuilderUtil {
 				builder.addAttrDatas(attrInfo);
 			}
 		}
-		
-		
+		return builder;
+	}
+
+	public static HSMail.Builder genMailBuilder(MailEntity mailEntity) {
+		HSMail.Builder builder = HSMail.newBuilder();
+		builder.setMailId(mailEntity.getId());
+		builder.setState(mailEntity.getState());
+		builder.setSendTimeStamp((int)(mailEntity.getCreateTime().getTimeInMillis() / 1000));
+		builder.setSenderId(mailEntity.getSenderId());
+		builder.setSenderName(mailEntity.getSenderName());
+		builder.setSubject(mailEntity.getSubject());
+		builder.setContent(mailEntity.getContent());
+		AwardItems convetor = AwardItems.valueOf(mailEntity.getRewardList());
+		builder.addAllReward(convetor.getBuilder().getRewardItemsList());
 		return builder;
 	}
 }

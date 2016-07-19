@@ -60,3 +60,244 @@ Nether River - 3,冥河 - 3,Nether River - 3
 Nether River - 4,冥河 - 4,Nether River - 4
 Nether River - 7,冥河 - 7,Nether River - 7
 Nether River - 8,冥河 - 8,Nether River - 8
+s1Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+s2Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+s3Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackTriSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackTriMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackTriStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackCutSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackCutMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackCutStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackCutTriSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackCutTriMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackCutTriStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackStabSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackStabMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackStabStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackStabTriSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackStabTriMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackStabTriStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackSmashSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackSmashMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+attackSmashStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicMetalSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicMetalMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicMetalStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicPlantSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicPlantMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicPlantStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicWaterSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicWaterMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicWaterStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicFireSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicFireMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicFireStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicEarthSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicEarthMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicEarthStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicCureSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicCureMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+magicCureStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+buffSpeedTips,技能描述，noParam,Spell Desc no Param
+buffSpeedSelfTips,技能描述，noParam,Spell Desc no Param
+buffMagicTips,技能描述，noParam,Spell Desc no Param
+buffMagicSelfTips,技能描述，noParam,Spell Desc no Param
+buffAttackTips,技能描述，noParam,Spell Desc no Param
+buffDefenseTips,技能描述，noParam,Spell Desc no Param
+buffAttackSelfTips,技能描述，noParam,Spell Desc no Param
+buffDefenseSelfTips,技能描述，noParam,Spell Desc no Param
+debuffDefenseTips,技能描述，noParam,Spell Desc no Param
+bossJiuweihu1Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossJiuweihu2Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossJiuweihu3Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossJiuweihu4Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultErshuTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultQingniaoTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultZhuyanTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
+bossHundunTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong1Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong2Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong3Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong4Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong5Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossMinghe18Karong6Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin14Luoxinfu1Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin14Luoxinfu2Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin14Luoxinfu3Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin18Meidusha1Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin18Meidusha2Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin18Meidusha3Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin18Meidusha4Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+bossYueguangsenlin18Meidusha5Tips,技能描述，noParam,Spell Desc no Param
+bossYueguangsenlin18Meidusha6Tips,技能描述，noParam,Spell Desc no Param
+bossYueguangsenlin18Meidusha7Tips,技能描述，noParam,Spell Desc no Param
+bossYueguangsenlin18Meidusha8Tips,技能描述，noParam,Spell Desc no Param
+bossYueguangsenlin18Meidusha9Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
+psvbossLonggongtongziTips,技能描述，noParam,Spell Desc no Param
+psvHapiTips,技能描述，noParam,Spell Desc no Param
+psvHetongTips,技能描述，noParam,Spell Desc no Param
+psvLonggongtongziTips,技能描述，noParam,Spell Desc no Param
+psvWaguiTips,技能描述，noParam,Spell Desc no Param
+ultHapiTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultHetongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultWaguiTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultLonggongtongziTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultbossLonggongtongziTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultbossLuoxinfuTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultHuapoTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
+ultAmuteTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultLangrenTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
+ultMantuoluoTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultboosMantuoluoTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultAnpushaTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+psvHuapoTips,技能描述，noParam,Spell Desc no Param
+psvAmuteTips,技能描述，noParam,Spell Desc no Param
+psvLangrenTips,技能描述，noParam,Spell Desc no Param
+psvMantuoluoTips,技能描述，noParam,Spell Desc no Param
+psvbossMantuoluoTips,技能描述，noParam,Spell Desc no Param
+psvAnpushaTips,技能描述，noParam,Spell Desc no Param
+debuffEarthDotStrongTips,技能描述，noParam,Spell Desc no Param
+ultMomoTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+psvMomoTips,技能描述，noParam,Spell Desc no Param
+ultXiyirenTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
+psvXiyirenTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultPanshenTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
+psvPanshenTips,技能描述，noParam,Spell Desc no Param
+ultKairuisiTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+psvKairuisiTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultLuoxinfuTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
+psvLuoxinfuTips,"技能描述,one param{0}","Spell Desc,one param{0}"
+ultbossXiyirenTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
+psvbossXiyirenTips,技能描述，noParam,Spell Desc no Param
+attackCutSlightName,弱攻击,Weak Attack
+attackCutMediumName,攻击,Attack
+attackCutStrongName,强力攻击,Strong Attack
+attackCutTriSlightName,三连弱击,Weak Triple Strike
+attackCutTriMediumName,三连击,Triple Strike
+attackCutTriStrongName,三连强击,Strong Triple Strike
+attackStabSlightName,弱攻击,Weak Attack
+attackStabMediumName,攻击,Attack
+attackStabStrongName,强力攻击,Strong Attack
+attackStabTriSlightName,三连弱击,Weak Triple Strike
+attackStabTriMediumName,三连击,Triple Strike
+attackStabTriStrongName,三连强击,Strong Triple Strike
+attackSmashSlightName,弱攻击,Weak Attack
+attackSmashMediumName,攻击,Attack
+attackSmashStrongName,强力攻击,Strong Attack
+magicMetalSlightName,圣光弹,Holy Bolt
+magicMetalMediumName,圣光一击,Holy Strike
+magicMetalStrongName,圣光重击,Divine Blast
+magicPlantSlightName,飞叶斩,Leaf Darts
+magicPlantMediumName,荆棘穿刺,Piercing Spikes
+magicPlantStrongName,疯狂生长,Wild Growth
+magicWaterSlightName,水流术,Water Splash
+magicWaterMediumName,瀑布冲击,Waterfall
+magicWaterStrongName,水龙卷,Waterspout
+magicFireSlightName,火苗术,Flame Blast
+magicFireMediumName,炽焰击,Blaze
+magicFireStrongName,地狱烈焰,Hell Blaze
+magicEarthSlightName,暗影突袭,Shadow Swipe
+magicEarthMediumName,暗影爪,Shadow Claw
+magicEarthStrongName,暗影强袭,Shadow Strike
+magicCureSlightName,回复术,Lesser Healing
+magicCureMediumName,治疗术,Healing
+magicCureStrongName,强效治疗,Potent Healing
+buffSpeedName,加速术,Haste
+buffSpeedSelfName,速度爆发,Dash
+buffMagicName,智慧术,Insight
+buffMagicSelfName,智力爆发,High Intellect
+buffAttackName,激励术,Inspire
+buffDefenseName,加护术,Ward
+buffAttackSelfName,力量爆发,Overwhelming Strength
+buffDefenseSelfName,防御姿态,Defensive Stance
+debuffDefenseName,破甲术,Sunder
+bossJiuweihu1Name,,
+bossJiuweihu2Name,,
+bossJiuweihu3Name,,
+bossJiuweihu4Name,,
+ultErshuName,,
+ultQingniaoName,,
+ultZhuyanName,,
+bossHundunName,,
+dazhaoPrepareName,,
+bossMinghe18Karong1Name,,
+bossMinghe18Karong2Name,,
+bossMinghe18Karong3Name,,
+bossMinghe18Karong4Name,,
+bossMinghe18Karong5Name,,
+bossMinghe18Karong6Name,,
+bossYueguangsenlin14Luoxinfu1Name,,
+bossYueguangsenlin14Luoxinfu2Name,,
+bossYueguangsenlin14Luoxinfu3Name,,
+bossYueguangsenlin18Meidusha1Name,,
+bossYueguangsenlin18Meidusha2Name,,
+bossYueguangsenlin18Meidusha3Name,,
+bossYueguangsenlin18Meidusha4Name,,
+bossYueguangsenlin18Meidusha5Name,,
+bossYueguangsenlin18Meidusha6Name,,
+bossYueguangsenlin18Meidusha7Name,,
+bossYueguangsenlin18Meidusha8Name,,
+bossYueguangsenlin18Meidusha9Name,,
+psvbossLonggongtongziName,,
+psvHapiName,,
+psvHetongName,,
+psvLonggongtongziName,,
+psvWaguiName,,
+ultHapiName,,
+ultHetongName,,
+ultWaguiName,,
+ultLonggongtongziName,,
+ultbossLonggongtongziName,,
+ultbossLuoxinfuName,,
+ultHuapoName,,
+ultAmuteName,,
+ultLangrenName,,
+ultMantuoluoName,,
+ultboosMantuoluoName,,
+ultAnpushaName,,
+psvHuapoName,,
+psvAmuteName,,
+psvLangrenName,,
+psvMantuoluoName,,
+psvbossMantuoluoName,,
+psvAnpushaName,,
+ultbossZouyincaoName,,
+psvbossZouyincaoName,,
+buffHotName,恢复术,Recover
+debuffAttackName,虚弱术,Disable
+debuffMagicName,失心术,Stupefy
+debuffSpeedName,缓速术,Inhibit
+debuffDotSlightName,撕裂（弱）,Tear (Weak)
+debuffDotMediumName,撕裂（中）,Tear (Normal)
+debuffDotStrongName,撕裂（强）,Tear (Strong)
+debuffFireDotSlightName,点燃（弱）,Ignite (Weak)
+debuffFireDotMediumName,点燃（中）,Ignite (Normal)
+debuffFireDotStrongName,点燃（强）,Ignite (Strong)
+debuffWaterDotSlightName,溺水（弱）,Gush (Weak)
+debuffWateDotMediumName,溺水（中）,Gush (Normal)
+debuffWateDotStrongName,溺水（强）,Gush (Strong)
+debuffPlantDotSlightName,施毒（弱）,Poison (Weak)
+debuffPlantDotMediumName,施毒（中）,Poison (Normal)
+debuffPlantDotStrongName,施毒（强）,Poison (Strong)
+debuffMetalDotSlightName,耀斑（弱）,Flare (Weak)
+debuffMetalDotMediumName,耀斑（中）,Flare (Normal)
+debuffMetalDotStrongName,耀斑（强）,Flare (Strong)
+debuffEarthDotSlightName,痛楚（弱）,Anguish (Weak)
+debuffEarthDotMediumName,痛楚（中）,Anguish (Normal)
+debuffEarthDotStrongName,痛楚（强）,Anguish (Strong)
+ultMomoName,,
+psvMomoName,,
+ultXiyirenName,,
+psvXiyirenName,,
+ultPanshenName,,
+psvPanshenName,,
+ultKairuisiName,,
+psvKairuisiName,,
+ultLuoxinfuName,,
+psvLuoxinfuName,,
+ultbossXiyirenName,,
+psvbossXiyirenName,,

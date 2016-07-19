@@ -17,14 +17,16 @@ public class EquipData
         return equipData;
     }
 }
-//Modify: xiaolong   2015-8-18 09:51:17
-public class AttrData
-{
-    // 属性id(参考Const.attr)
-    public int attrId;
-    // 属性值
-    public float attrValue;
-}
+////Modify: xiaolong   2015-8-18 09:51:17
+//public class AttrData
+//{
+//    // 属性id(参考Const.attr)
+//    public int attrId;
+//    // 属性值
+//    public float attrValue;
+
+//    public AttrData(PB)
+//}
 
 public class GameEquipData
 {

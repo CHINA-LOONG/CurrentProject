@@ -17,14 +17,13 @@ public class SkilTips : MonoBehaviour
 	public	void	SetSpellId(string spellId,int level)
 	{
 		SpellProtoType spell = StaticDataMgr.Instance.GetSpellProtoData (spellId);
-		string spellTypeName = "";
+		if (null == spell)
+			return;
+
+		skillTypeText.text = spell.NameAttr;
+
 		string spellDesc = "";
-		if (spell != null) 
-		{
-			spellTypeName = GetCategoryDesc(spell.category);
-			spellDesc = spell.GetTips(level);
-		}
-		skillTypeText.text = spellTypeName;
+		spellDesc = spell.GetTips(level);
 		skillDescText.text = spellDesc;
 	}
 

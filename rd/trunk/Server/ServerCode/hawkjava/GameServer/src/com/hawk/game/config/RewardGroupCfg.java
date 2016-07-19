@@ -24,7 +24,7 @@ public class RewardGroupCfg extends HawkConfigBase  {
 	 */
 	protected final String rewardGroup;
 	/**
-	 * 奖励权重列表列表
+	 * 奖励权重列表
 	 */
 	private List<WeightItem<ItemInfo>> weightList;
 	

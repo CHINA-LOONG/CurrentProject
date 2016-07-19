@@ -8,20 +8,18 @@ package com.hawk.game.util;
 public class GsConst {
 	// 刷新间隔帧
 	public static final int REFRESH_PERIOD = 100;
-	
+	// 副本翻牌数量
 	public static final int INSTANCE_CARD_COUNT = 4;
-
 	// 装备在背包时monsterId
 	public static final int EQUIPNOTDRESS = -1;
-	
 	// 扫荡券Id
 	public static final String SWEEP_TICKET = "10003";
-	
 	// 最大技能点数
 	public static final int MAX_SKILL_POINT = 10;
-
 	// 技能点增长秒数
 	public static final int SKILL_POINT_TIME = 6 * 60;
+	// 最大邮件数
+	public static final int MAX_MAIL_COUNT = 300;
 
 	/**
 	 * 对象类型
@@ -60,6 +58,8 @@ public class GsConst {
 		public static final int PRESENT_MONSTER = 1001;
 		// 玩家统计数据更新
 		public static final int STATISTICS_UPDATE = 1002;
+		// 玩家收到新邮件
+		public static final int MAIL_NEW = 1003;
 	}
 
 	/**
@@ -80,6 +80,8 @@ public class GsConst {
 		public static final int EQUIP_MODULE = 6;
 		// 任务模块
 		public static final int QUEST_MODULE = 7;
+		// 邮件模块
+		public static final int MAIL_MODULE = 8;
 		
 		// 空闲模块(保证在最后)
 		public static final int IDLE_MODULE = 100;
@@ -118,40 +120,25 @@ public class GsConst {
 	 * item 配置解析类型
 	 */
 	public static class ItemParseType {
-		
 		public static final int PARSE_DEFAULT = 0;
 		public static final int PARSE_MONSTER_STAGE = 1;		
-		
 	}
 	
 	
 	public static class PlayerItemCheckResult {
-		/**
-		 * 金币不足
-		 */
+		// 金币不足
 		public static final int COINS_NOT_ENOUGH = 1;
-		/**
-		 * 钻石不足
-		 */
+		// 钻石不足
 		public static final int GOLD_NOT_ENOUGH = 2;
-
 		public static final int LEVEL_NOT_ENOUGH = 4;
-
 		public static final int EXP_NOT_ENOUGH = 5;
-
 		public static final int VIPLEVEL_NOT_ENOUGH = 6;
-		/**
-		 * 道具不足
-		 */
+		// 道具不足
 		public static final int TOOLS_NOT_ENOUGH = 7;
-		/**
-		 * 装备不足
-		 */
-		public static final int EQUIP_NOI_ENOUGH = 8;
-		/**
-		 * 宠物不足
-		 */
-		public static final int MONSTER_NOI_ENOUGH = 8;
+		// 装备不足
+		public static final int EQUIP_NOT_ENOUGH = 8;
+		// 宠物不足
+		public static final int MONSTER_NOT_ENOUGH = 8;
 	}
 
 	// 循环性

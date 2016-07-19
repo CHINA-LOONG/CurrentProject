@@ -234,7 +234,7 @@ public class ConsumeItems {
 					case PlayerItemCheckResult.GOLD_NOT_ENOUGH:
 						player.sendError(hpCode, Status.itemError.GOLD_NOT_ENOUGH_VALUE);
 						break;
-					case PlayerItemCheckResult.EQUIP_NOI_ENOUGH:
+					case PlayerItemCheckResult.EQUIP_NOT_ENOUGH:
 						player.sendError(hpCode, Status.itemError.EQUIP_NOT_FOUND_VALUE);
 						break;
 					case PlayerItemCheckResult.TOOLS_NOT_ENOUGH:
@@ -273,14 +273,14 @@ public class ConsumeItems {
 				//检测装备 
 				EquipEntity equipEntity = player.getPlayerData().getEquipById(consumeItem.getId());
 				if(equipEntity == null) {
-					return PlayerItemCheckResult.EQUIP_NOI_ENOUGH;
+					return PlayerItemCheckResult.EQUIP_NOT_ENOUGH;
 				}
 			} 
 			else if(consumeItem.getType() == Const.itemType.MONSTER_VALUE) {
 				//检测装备 
 				MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity((int)consumeItem.getId());
 				if(monsterEntity == null) {
-					return PlayerItemCheckResult.MONSTER_NOI_ENOUGH;
+					return PlayerItemCheckResult.MONSTER_NOT_ENOUGH;
 				}
 			}
 			else if(consumeItem.getType() == Const.itemType.ITEM_VALUE) {

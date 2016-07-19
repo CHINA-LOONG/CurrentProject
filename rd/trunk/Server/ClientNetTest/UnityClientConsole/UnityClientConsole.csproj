@@ -74,6 +74,7 @@
     <Compile Include="Protocol\Instance.cs" />
     <Compile Include="Protocol\Item.cs" />
     <Compile Include="Protocol\Login.cs" />
+    <Compile Include="Protocol\Mail.cs" />
     <Compile Include="Protocol\Monster.cs" />
     <Compile Include="Protocol\Player.cs" />
     <Compile Include="Protocol\Quest.cs" />

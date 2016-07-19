@@ -50,10 +50,12 @@ public class PlayerData : MonoBehaviour
 
     //道具
     public GameItemData gameItemData = new GameItemData();
+    //装备
     public GameEquipData gameEquipData = new GameEquipData();
     //任务
     public GameQuestData gameQuestData = new GameQuestData();
-
+    //邮件
+    public GameMailData gameMailData = new GameMailData();
     //---------------------------------------------------------------------------------------------
     public void InitMainUnitList()
     {

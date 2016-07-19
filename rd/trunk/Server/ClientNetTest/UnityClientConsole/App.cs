@@ -79,7 +79,7 @@ namespace UnityClientConsole
 
                     HSPlayerCreate createRole = new HSPlayerCreate();
                     createRole.puid = puid;
-                    createRole.nickname = "instance01";
+                    createRole.nickname = "mail01";
                     createRole.career = 1;
                     createRole.gender = 0;
                     createRole.eye = 1;
@@ -135,14 +135,35 @@ namespace UnityClientConsole
                 HSQuestInfoSync questInfo = protocol.GetProtocolBody<HSQuestInfoSync>();
                 Console.WriteLine("同步任务信息");
             }
+            else if (protocol.checkType(code.MAIL_INFO_SYNC_S.GetHashCode()))
+            {
+                HSMailInfoSync mailInfo = protocol.GetProtocolBody<HSMailInfoSync>();
+                Console.WriteLine("同步邮件信息");
+            }
             else if (protocol.checkType(code.ASSEMBLE_FINISH_S.GetHashCode()))
             {
                 Console.WriteLine("同步完成");
 
-                HSMonsterSkillUp skillUp = new HSMonsterSkillUp();
-                skillUp.monsterId = 230;
-                skillUp.skillId = "buffMagic";
-                NetManager.GetInstance().SendProtocol(code.MONSTER_SKILL_UP_C.GetHashCode(), skillUp);
+//                 HSMailRead mailRead = new HSMailRead();
+//                 mailRead.mailId = 2;
+//                 NetManager.GetInstance().SendProtocol(code.MAIL_READ_C.GetHashCode(), mailRead);
+
+//                 HSMailReceive mailReceive = new HSMailReceive();
+//                 mailReceive.mailId = 2;
+//                 NetManager.GetInstance().SendProtocol(code.MAIL_RECEIVE_C.GetHashCode(), mailReceive);
+
+                HSMailReceiveAll mailReceiveAll = new HSMailReceiveAll();
+                NetManager.GetInstance().SendProtocol(code.MAIL_RECEIVE_ALL_C.GetHashCode(), mailReceiveAll);
+
+//                 HSMonsterStageUp stageUp = new HSMonsterStageUp();
+//                 stageUp.monsterId;
+//                 stageUp.consumeMonsterId;
+//                 NetManager.GetInstance().SendProtocol(code.MONSTER_STAGE_UP_C.GetHashCode(), stageUp);
+
+//                 HSMonsterSkillUp skillUp = new HSMonsterSkillUp();
+//                 skillUp.monsterId = 240;
+//                 skillUp.skillId = "buffMagic";
+//                 NetManager.GetInstance().SendProtocol(code.MONSTER_SKILL_UP_C.GetHashCode(), skillUp);
 
 //                 HSInstanceEnter instanceEnter = new HSInstanceEnter();
 //                 instanceEnter.instanceId = "demo";
@@ -152,7 +173,7 @@ namespace UnityClientConsole
 //                 itemBuy.itemId = 40001;
 //                 itemBuy.itemCount = 1;
 //                 NetManager.GetInstance().SendProtocol(code.ITEM_BUY_C.GetHashCode(), itemBuy);
-// 
+ 
 //                 HSItemUse itemUse = new HSItemUse();
 //                 itemUse.itemId = 40001;
 //                 NetManager.GetInstance().SendProtocol(code.ITEM_USE_C.GetHashCode(), itemUse);
@@ -231,8 +252,29 @@ namespace UnityClientConsole
             // 怪物----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.MONSTER_SKILL_UP_S.GetHashCode()))
             {
-                HSMonsterSkillUpRet questUpdate = protocol.GetProtocolBody<HSMonsterSkillUpRet>();
+                HSMonsterSkillUpRet skillUp = protocol.GetProtocolBody<HSMonsterSkillUpRet>();
                 Console.WriteLine("技能升级");
+            }
+            else if (protocol.checkType(code.MONSTER_STAGE_UP_S.GetHashCode()))
+            {
+                HSMonsterStageUpRet stageUp = protocol.GetProtocolBody<HSMonsterStageUpRet>();
+                Console.WriteLine("进阶");
+            }
+            // 邮件----------------------------------------------------------------------------------------------------------
+            else if (protocol.checkType(code.MAIL_RECEIVE_S.GetHashCode()))
+            {
+                HSMailReceiveRet mailReceive = protocol.GetProtocolBody<HSMailReceiveRet>();
+                Console.WriteLine("邮件收取");
+            }
+            else if (protocol.checkType(code.MAIL_RECEIVE_ALL_S.GetHashCode()))
+            {
+                HSMailReceiveAllRet mailReceive = protocol.GetProtocolBody<HSMailReceiveAllRet>();
+                Console.WriteLine("邮件全部收取");
+            }
+            else if (protocol.checkType(code.MAIL_NEW_S.GetHashCode()))
+            {
+                HSMailNew mailNew = protocol.GetProtocolBody<HSMailNew>();
+                Console.WriteLine("新邮件");
             }
         }
 

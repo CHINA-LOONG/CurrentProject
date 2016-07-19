@@ -79,7 +79,7 @@ public class PlayerItemModule extends PlayerModule{
 	 */
 	@Override
 	protected boolean onPlayerLogin() {
-		player.getPlayerData().loadItemEntities();
+		player.getPlayerData().loadAllItem();
 		player.getPlayerData().syncItemInfo();
 		return true;
 	}

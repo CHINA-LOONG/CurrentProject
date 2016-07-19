@@ -326,4 +326,21 @@ namespace PB
       RED = 6
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"mailState")]
+    public enum mailState
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UNREAD", Value=1)]
+      UNREAD = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"READ", Value=2)]
+      READ = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RECEIVE", Value=3)]
+      RECEIVE = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"OVERFLOW", Value=4)]
+      OVERFLOW = 4
+    }
+  
 }

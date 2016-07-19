@@ -58,7 +58,7 @@ public class AwardItems {
 	}
 
 	public static AwardItems valueOf(List<ItemInfo> infos) {
-		AwardItems awards =    new AwardItems();
+		AwardItems awards = new AwardItems();
 		awards.addItemInfos(infos);
 		return awards;
 	}
@@ -100,6 +100,15 @@ public class AwardItems {
 		return null;
 	}
 
+	/**
+	 * 直接设置奖励列表
+	 */
+	public AwardItems setRewardItemList(List<RewardItem> rewardList) {
+		rewardInfo.clearRewardItems();
+		rewardInfo.addAllRewardItems(rewardList);
+		return this;
+	}
+	
 	public AwardItems addItem(String itemId, int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {

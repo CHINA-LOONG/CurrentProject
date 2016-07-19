@@ -218,6 +218,13 @@ public class AudioSystemMgr : MonoBehaviour {
         AudioMusic.clip = clip;
         AudioMusic.Play();
     }
+    public void PlayMusic()
+    {
+        if (AudioMusic.clip!=null)
+        {
+            AudioMusic.Play();
+        }
+    }
     public void PauseMusic()
     {
         AudioMusic.Pause();

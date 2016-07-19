@@ -8,7 +8,7 @@ id,condition,successStepIndex,battleStepIDList
 106,GBV_ChangePet,1,"[""g5_s1""]"
 107,GBV_ChangePetLowLife,1,"[""g6_s1""]"
 108,GBV_Magic_EnergyFull,1,"[""g7_s1""]"
-117,GBV_Weakpointpicture,1,"[""g15_s1""]"
+117,GBV_Weakpointpicture,1,"[""g16_s1"",""g15_s1""]"
 109,GBV_FindBossWeakpoint,2,"[""g8_s1"",""g8_s2""]"
 110,GBV_FindBossWeakpoint1,1,"[""g9_s1""]"
 111,GBV_CompleteGuide,1,"[""g10_s1""]"

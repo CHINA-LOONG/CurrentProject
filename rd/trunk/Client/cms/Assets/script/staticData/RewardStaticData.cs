@@ -10,35 +10,36 @@ public class RewardStaticData
 
 public class RewardItemData
 {
-    public int type;
-    //database id
-    public int id;
-    //if it is PLAYER_ATTR or MONSTER_ATTR 
-    public string itemId;
-    public int count;
-    public float prob;
+    //public int type;
+    ////database id
+    //public int id;
+    ////if it is PLAYER_ATTR or MONSTER_ATTR 
+    //public string itemId;
+    //public int count;
 
-    //If it is EQUIP
-    public int stage;
-    public int level;
-    public List<AttrData> attrDatas=new List<AttrData>();
-    /////////////////
+    ////If it is EQUIP
+    //public int stage;
+    //public int level;
+    //public List<PB.Attr> attrDatas = new List<PB.Attr>();
+
+    public PB.RewardItem protocolData=new PB.RewardItem();
+    public float prob;
 
     public RewardItemData(int type, string itemId, int count, float prob)
     {
-        this.type = type;
-        this.itemId = itemId;
-        this.count = count;
+        this.protocolData.type = type;
+        this.protocolData.itemId = itemId;
+        this.protocolData.count = count;
         this.prob = prob;
     }
 
     public RewardItemData(int type, string itemId, int count, int stage, int level, float prob)
     {
-        this.type = type;
-        this.itemId = itemId;
-        this.count = count;
-        this.stage = stage;
-        this.level = level;
+        this.protocolData.type = type;
+        this.protocolData.itemId = itemId;
+        this.protocolData.count = count;
+        this.protocolData.stage = stage;
+        this.protocolData.level = level;
         this.prob = prob;
     }
 

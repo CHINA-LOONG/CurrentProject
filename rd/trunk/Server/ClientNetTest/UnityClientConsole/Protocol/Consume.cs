@@ -32,9 +32,9 @@ namespace PB
       get { return _id; }
       set { _id = value; }
     }
-    private int _itemId;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int itemId
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
     {
       get { return _itemId; }
       set { _itemId = value; }

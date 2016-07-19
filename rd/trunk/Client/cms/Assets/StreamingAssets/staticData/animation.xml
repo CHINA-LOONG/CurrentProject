@@ -88,9 +88,6 @@ state = 1 Remove
 		</Ani>
 		
 		<Ani id="demozhuyanDazhaoe2" state="0">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
 			<ParticleList>
 				<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -143,9 +140,6 @@ state = 1 Remove
 		</Ani>
 		
 		<Ani id="attackSlighte2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
 			<ParticleList>
 				<Particle asset="attackCutMedium" bundle="effect/particle" ani="firemove" parent=""/>
 			</ParticleList>
@@ -158,9 +152,6 @@ state = 1 Remove
 		</Ani>
 		
 		<Ani id="attackMediume2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
 			<ParticleList>
 				<Particle asset="attackStabStrong" bundle="effect/particle" ani="firemove" parent=""/>
 			</ParticleList>
@@ -173,9 +164,6 @@ state = 1 Remove
 		</Ani>
 		
 		<Ani id="attackStronge2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
 			<ParticleList>
 				<Particle asset="attackSmashStrong" bundle="effect/particle" ani="" parent="" locky="true"/>
 			</ParticleList>
@@ -200,9 +188,6 @@ state = 1 Remove
 		</Ani>
 		
 		<Ani id="attackTriStronge2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
 			<ParticleList>
 				<Particle asset="attackCutStrong" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -215,9 +200,6 @@ state = 1 Remove
 		</Ani>
 		
 		<Ani id="attackCutMediume2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
 			<ParticleList>
 				<Particle asset="attackCutMedium" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -230,9 +212,6 @@ state = 1 Remove
 		</Ani>
 		
 		<Ani id="attackCutTriStronge2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
 			<ParticleList>
 				<Particle asset="attackCutStrong" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -245,9 +224,6 @@ state = 1 Remove
 		</Ani>
 		
 		<Ani id="attackStabSlighte2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
 			<ParticleList>
 				<Particle asset="attackStabSlight" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -260,9 +236,6 @@ state = 1 Remove
 		</Ani>
 		
 		<Ani id="attackStabStronge2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
 			<ParticleList>
 				<Particle asset="attackStabStrong" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -275,9 +248,6 @@ state = 1 Remove
 		</Ani>
 		
 		<Ani id="attackSmashStronge2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
 			<ParticleList>
 				<Particle asset="attackSmashStrong" bundle="effect/particle" ani="" parent="" locky="true"/>
 			</ParticleList>
@@ -1016,7 +986,7 @@ state = 1 Remove
 			</SpeedList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong1" state="0" AniType="Skill">
+		<Ani id="bossMinghe18Karong1" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="wugong" value="true" />
 			</MotionList>
@@ -1026,10 +996,7 @@ state = 1 Remove
 			</MeshStateList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong1e2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
+		<Ani id="bossMinghe18Karong1e2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicEarthStrong" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -1038,7 +1005,7 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong2" state="0" AniType="Skill">
+		<Ani id="bossMinghe18Karong2" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
@@ -1050,10 +1017,7 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong2e3" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
+		<Ani id="bossMinghe18Karong2e3" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicEarthSlight" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -1062,16 +1026,13 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong3" state="0" AniType="Skill">
+		<Ani id="bossMinghe18Karong3" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="wugong" value="true" />
 			</MotionList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong3e3" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
+		<Ani id="bossMinghe18Karong3e3" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="attackCutStrong" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -1080,7 +1041,7 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong4" state="0" AniType="Skill">
+		<Ani id="bossMinghe18Karong4" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
@@ -1089,10 +1050,7 @@ state = 1 Remove
 			</ParticleList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong4e2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
+		<Ani id="bossMinghe18Karong4e2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicEarthStrong" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -1101,16 +1059,13 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong5" state="0"  AniType="Skill">
+		<Ani id="bossMinghe18Karong5" state="0"  AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="wugong" value="true" />
 			</MotionList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong5e3" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
+		<Ani id="bossMinghe18Karong5e3" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="attackCutSlight" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -1119,7 +1074,7 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong6" state="0" AniType="Skill">
+		<Ani id="bossMinghe18Karong6" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="fagong" value="true" />
 			</MotionList>
@@ -1128,10 +1083,7 @@ state = 1 Remove
 			</ParticleList>
 		</Ani>
 		
-		<Ani id="bossminghe18Karong6e2" state="0" AniType="Damage">
-			<MotionList>
-				<Motion ani="" key="shouji" value="true" />
-			</MotionList>
+		<Ani id="bossMinghe18Karong6e2" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicEarthStrong" bundle="effect/particle" ani="" parent=""/>
 			</ParticleList>
@@ -2496,11 +2448,11 @@ state = 1 Remove
 				<Controller time="0" name="monsters/karong/Karong_boss1" />
 			</ControllerList>
 			<WpStateList>
-				<Wp time="0" name="bossminghe18Karongwp01" state="3" />
-				<Wp time="0" name="bossminghe18Karongwp02" state="3" />
-				<Wp time="0" name="bossminghe18Karongwp03" state="1" />
-				<Wp time="0" name="bossminghe18Karongwp04" state="1" />
-				<Wp time="0" name="bossminghe18Karongwp05" state="1" />
+				<Wp time="0" name="bossMinghe18Karongwp01" state="3" />
+				<Wp time="0" name="bossMinghe18Karongwp02" state="3" />
+				<Wp time="0" name="bossMinghe18Karongwp03" state="1" />
+				<Wp time="0" name="bossMinghe18Karongwp04" state="1" />
+				<Wp time="0" name="bossMinghe18Karongwp05" state="1" />
 			</WpStateList>
 		</Ani>		
 		<Ani id="karong_stage1to2_shuisi" state="0" action_delay="2">
@@ -2508,10 +2460,10 @@ state = 1 Remove
 				<Controller time="0" name="monsters/karong/Karong_boss2" />
 			</ControllerList>
 			<WpStateList>
-				<Wp time="0" name="bossminghe18Karongwp01" state="3" />
-				<Wp time="0" name="bossminghe18Karongwp03" state="1" />
-				<Wp time="0" name="bossminghe18Karongwp04" state="1" />
-				<Wp time="0" name="bossminghe18Karongwp05" state="1" />
+				<Wp time="0" name="bossMinghe18Karongwp01" state="3" />
+				<Wp time="0" name="bossMinghe18Karongwp03" state="1" />
+				<Wp time="0" name="bossMinghe18Karongwp04" state="1" />
+				<Wp time="0" name="bossMinghe18Karongwp05" state="1" />
 			</WpStateList>
 		</Ani>
 		<Ani id="meidusha_state1to2" state="0" action_delay="2">
@@ -2526,6 +2478,11 @@ state = 1 Remove
 				<Wp time="0" name="bossYueguangsenlin18Meidushawp03" state="1" />
 				<Wp time="0" name="bossYueguangsenlin18Meidushawp04" state="1" />
 				<Wp time="0" name="bossYueguangsenlin18Meidushawp05" state="1" />
+			</WpStateList>
+		</Ani>
+		<Ani id="amute_stage1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossMinghe14Amutewp01" state="1" />
 			</WpStateList>
 		</Ani>
 	</AniList>

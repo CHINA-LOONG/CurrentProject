@@ -6,10 +6,10 @@ buffSpeedSelfb1,5,,3,0,0,0,0,0,0,0,0.4,bufficon_buffSpeed,0,,0,0,0,0,,,1,0,0,0,,
 bossrenjie85Dujiaoshou1awaken2b1,5,,3,0,0,0,0,0,0,0,0.4,bufficon_buffSpeed,0,,0,0,0,0,,,1,0,0,0,,-1
 buffMagicb1,5,,3,0,0,0,0,0.8,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
 buffMagicSelfb1,5,,3,0,0,0,0,0.8,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
-bossrenjie86Landuo25b1,11,,999,0,0,0,0,0.5,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
-bossrenjie86Landuo26b1,11,,999,0,0,0,0,1,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
-bossrenjie86Landuo27b1,11,,999,0,0,0,0,1.5,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
-bossrenjie86Landuo28b1,11,,999,0,0,0,0,2,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
+bossrenjie86Landuo25b1,11,,999,0,0,0,0,0.5,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
+bossrenjie86Landuo26b1,11,,999,0,0,0,0,0.5,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
+bossrenjie86Landuo27b1,11,,999,0,0,0,0,0.5,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
+bossrenjie86Landuo28b1,11,,999,0,0,0,0,0.5,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
 bossrenjie82Huoniao4awaken6b1,5,,3,0,0,0,0,1.5,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
 bossrenjie83Amute3awaken2b1,5,,999,0,0,0,0,1.5,0,0,0,bufficon_buffMagic,0,,0,0,0,0,,,1,0,0,0,,-1
 bossrenjie83Amute3awaken2b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateAddbuffAmute3awaken_100,bossrenjie83Amute3awaken2e2",,1,0,0,0,,-1
@@ -23,6 +23,10 @@ bossrenjie87Baonu45b1,11,,999,0,0,0,2,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
 bossrenjie87Baonu45b2,11,,999,0,0,0,0,0,-0.5,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
 bossrenjie87Baonu45b3,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatebaonu05_100,bossrenjie87Baonu45e2",,1,0,0,0,,-1
 bossrenjie87Baonu46b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatebaonu06_100,bossrenjie87Baonu46e3",,1,0,0,0,,-1
+bossrenjie86Landuo25b2,11,,999,0,0,0,,,,,,,,,,,,,"LifeLower_15,bossrenjie86Landuo25e3",,1,0,0,0,,-1
+bossrenjie86Landuo26b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatelanduo02_100,bossrenjie86Landuo25e3",,1,0,0,0,,-1
+bossrenjie86Landuo27b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatelanduo03_100,bossrenjie86Landuo25e3",,1,0,0,0,,-1
+bossrenjie86Landuo28b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatelanduo04_100,bossrenjie86Landuo25e3",,1,0,0,0,,-1
 debuffDefenseb1,4,,3,0,0,0,0,0,-0.8,0,0,bufficon_debuffDefense,0,,0,0,0,0,,,1,0,0,0,,-1
 defendb1,3,,1,0,0,0,0,0,0,-0.2,0,,0,,0,0,0,0,,,1,0,0,0,,-1
 phydazhaoPrepareb1,6,,1,0,0,1,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1

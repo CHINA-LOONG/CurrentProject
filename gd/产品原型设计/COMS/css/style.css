@@ -220,6 +220,7 @@ body {
   line-height: 2em;
   position: relative;
   cursor: pointer;
+  word-break: break-all;
 }
 #menu .tree-view .current {
   color: #d73300;

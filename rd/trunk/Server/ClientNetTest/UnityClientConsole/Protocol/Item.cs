@@ -22,9 +22,9 @@ namespace PB
       get { return _id; }
       set { _id = value; }
     }
-    private int _itemId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int itemId
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
     {
       get { return _itemId; }
       set { _itemId = value; }
@@ -70,9 +70,9 @@ namespace PB
   {
     public HSItemUse() {}
     
-    private int _itemId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int itemId
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
     {
       get { return _itemId; }
       set { _itemId = value; }
@@ -87,9 +87,9 @@ namespace PB
   {
     public HSItemUseRet() {}
     
-    private int _itemId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int itemId
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
     {
       get { return _itemId; }
       set { _itemId = value; }
@@ -104,9 +104,9 @@ namespace PB
   {
     public HSItemBuy() {}
     
-    private int _itemId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int itemId
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
     {
       get { return _itemId; }
       set { _itemId = value; }
@@ -128,9 +128,9 @@ namespace PB
   {
     public HSItemBuyRet() {}
     
-    private int _itemId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int itemId
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
     {
       get { return _itemId; }
       set { _itemId = value; }
@@ -152,9 +152,9 @@ namespace PB
   {
     public HSItemCompose() {}
     
-    private int _itemId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int itemId
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
     {
       get { return _itemId; }
       set { _itemId = value; }
@@ -169,9 +169,9 @@ namespace PB
   {
     public HSItemComposeRet() {}
     
-    private int _itemId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int itemId
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
     {
       get { return _itemId; }
       set { _itemId = value; }

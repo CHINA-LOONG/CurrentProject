@@ -72,7 +72,7 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
                 go.transform.SetParent(list_Content.transform, false);
                 questItem item = go.GetComponent<questItem>();
                 quests.Add(item);
-
+                //TODO:
                 LanguageMgr.Instance.SetLanguageFont(go);
             }
         }
@@ -80,9 +80,9 @@ public class UIQuestList : MonoBehaviour, TabButtonDelegate
         {
             quests[i].SetQuest(list[i]);
         }
-        if (list.Count <= 0) { text_tips.gameObject.SetActive(true); return; }
-        else { text_tips.gameObject.SetActive(false); }
+
         scrollView.verticalNormalizedPosition = 1.0f;
+        text_tips.gameObject.SetActive(list.Count <= 0);
     }
 
     void OnEnable()

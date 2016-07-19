@@ -18,7 +18,7 @@ public class InstanceUtil {
 	}
 
 	/**
-	 * key: chapterId
+	 * @key chapterId
 	 */
 	public static Map<Integer, InstanceChapter> chapterMap = new HashMap<>();
 

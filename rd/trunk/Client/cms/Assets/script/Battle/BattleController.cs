@@ -23,6 +23,11 @@ public class BattleController : MonoBehaviour
     PB.HSInstanceEnterRet curInstance = null;
     BattleLevelData curBattleLevel = null;
     int instanceStar = 0;
+    GameObject occlusionY;
+    GameObject occlusion1;
+    GameObject occlusion2;
+    Animator occlusionAnimator;
+
     public int InstanceStar
     {
         get { return instanceStar; }
@@ -204,10 +209,9 @@ public class BattleController : MonoBehaviour
         instanceStar = InstanceMapService.Instance.GetRuntimeInstance(enterParam.instanceData.instanceId).star;
         if (!InitVictorMethod())
             return;
-
+        AudioSystemMgr.Instance.PlayMusic(instanceData.instanceProtoData.backgroundmusic);
         //加载场景
         LoadBattleScene(instanceData.instanceProtoData.sceneID);
-        AudioSystemMgr.Instance.PlayMusic(instanceData.instanceProtoData.backgroundmusic);
         //设置battlegroup 并且创建模型
         //battleGroup.SetEnemyList(proto.enemyList);
         GameDataMgr.Instance.PlayerDataAttr.SetMainUnits(enterParam.playerTeam);
@@ -505,6 +509,10 @@ public class BattleController : MonoBehaviour
                 }
             }
             battleGroup.SetEnemyList(pbList);
+            //if (index == 0)
+            //{
+            //    AudioSystemMgr.Instance.PlayMusic(BattleController.Instance.InstanceData.instanceProtoData.backgroundmusic);
+            //}
             //TODO:动画1
             System.Action<float> preStartEvent = (delayTime) =>
             {
@@ -555,6 +563,7 @@ public class BattleController : MonoBehaviour
         uiBattle.ShowUI(false);
         float waitTime = BattleConst.unitOutTime * 0.5f * GameSpeedService.Instance.GetBattleSpeed();
         Appearance(false, waitTime);
+        IsOcclusion(true);
         //Fade.FadeOut(waitTime);
         ItemDropManager.Instance.ClearDropItem();
         GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
@@ -564,6 +573,7 @@ public class BattleController : MonoBehaviour
         //Fade.FadeIn(waitTime);
         cameraNodeDic.Clear();
         Appearance(true, waitTime);
+        IsOcclusion(false);
         yield return new WaitForSeconds(waitTime);
         battleGroup.RefreshPlayerPos();
         uiBattle.ShowUI(true);
@@ -577,6 +587,25 @@ public class BattleController : MonoBehaviour
     public bool HasNextProcess()
     {
         return curProcessIndex + 1 < maxProcessIndex;
+    }
+    //---------------------------------------------------------------------------------------------
+    public void IsOcclusion(bool goOut)
+    {
+         if (occlusionY == null)
+         {
+             occlusionY = GameObject.Find("UIRoot/OcclusionY");
+             if (occlusionY==null)
+             {
+                 return;
+             }
+             occlusion1 = occlusionY.transform.FindChild("y1").gameObject;
+             occlusion2 = occlusionY.transform.FindChild("y2").gameObject;
+             occlusion1.SetActive(true);
+             occlusion2.SetActive(true);
+             occlusionAnimator = occlusionY.GetComponent<Animator>();
+         }
+         occlusionAnimator.SetBool("out", !goOut);
+         occlusionAnimator.SetBool("go", goOut);
     }
     //---------------------------------------------------------------------------------------------
     public void Appearance(bool goOut, float moveTime)//move out/move in
@@ -631,6 +660,8 @@ public class BattleController : MonoBehaviour
         yield return StartCoroutine(PlayBalanceAnim(isSuccess));
         //后置剧情动画
         yield return StartCoroutine(PlayPostStoryAnim());
+        //结束副本音乐
+        AudioSystemMgr.Instance.StopMusic();
         //结算面板UI
         ShowBalanceUI();
 

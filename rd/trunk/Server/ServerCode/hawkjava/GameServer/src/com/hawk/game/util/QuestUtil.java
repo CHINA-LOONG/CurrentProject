@@ -17,11 +17,11 @@ public class QuestUtil {
 	}
 
 	/**
-	 * key: groupId
+	 * @key groupId
 	 */
 	private static Map<Integer, QuestGroup> questGroupMap = new HashMap<>();
 	/**
-	 * key: cycleId
+	 * @key cycleId
 	 */
 	private static Map<Integer, Map<Integer, QuestGroup>> cycleQuestGroupMap = new HashMap<>();
 

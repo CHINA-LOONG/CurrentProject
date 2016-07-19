@@ -313,6 +313,7 @@ public class ItemCfg extends HawkConfigBase {
 		if (this.componentItem != null && this.componentItem.length() > 0 && !"0".equals(this.componentItem)) {
 			String[] itemArrays = componentItem.split(",");
 			for (String itemArray : itemArrays) {
+				// TODO: 调用ItemInfo函数替换
 				String[] items = itemArray.split("_");
 				if (items.length == 3) {
 					ItemInfo itemInfo = new ItemInfo();
@@ -344,6 +345,7 @@ public class ItemCfg extends HawkConfigBase {
 			if (this.targetItem != null && this.targetItem.length() > 0 && !"0".equals(this.targetItem)) {
 				String[] itemArrays = targetItem.split(",");
 				for (String itemArray : itemArrays) {
+					// TODO: 调用ItemInfo函数替换
 					String[] items = itemArray.split("_");
 					if (items.length == 3) {
 						ItemInfo itemInfo = new ItemInfo();
@@ -375,6 +377,7 @@ public class ItemCfg extends HawkConfigBase {
 			if (this.needItem != null && this.needItem.length() > 0 && !"0".equals(this.needItem)) {
 				String[] itemArrays = needItem.split(",");
 				for (String itemArray : itemArrays) {
+					// TODO: 调用ItemInfo函数替换
 					String[] items = itemArray.split("_");
 					if (items.length == 3) {
 						ItemInfo itemInfo = new ItemInfo();

@@ -399,7 +399,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		
 		// count
 		history = statisticsEntity.getMonsterMaxCount();
-		cur = player.getPlayerData().getMonsterEntityList().size();
+		cur = player.getPlayerData().getMonsterEntityMap().size();
 		if (cur > history) {
 			statisticsEntity.setMonsterMaxCount(cur);
 			update = true;
@@ -430,7 +430,7 @@ public class PlayerMonsterModule extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogout() {
 		// 重要数据下线就存储
-		for (Map.Entry<Integer, MonsterEntity> entry : player.getPlayerData().getMonsterEntityList().entrySet()) {
+		for (Map.Entry<Integer, MonsterEntity> entry : player.getPlayerData().getMonsterEntityMap().entrySet()) {
 			entry.getValue().notifyUpdate(false);
 		}
 		return true;

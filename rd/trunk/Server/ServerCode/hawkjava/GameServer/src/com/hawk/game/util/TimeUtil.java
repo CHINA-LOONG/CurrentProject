@@ -7,7 +7,8 @@ import com.hawk.game.config.TimeCfg;
 
 public class TimeUtil {
 	
-	public static final int fieldList[] = {Calendar.YEAR,
+	public static final int fieldList[] = {
+		Calendar.YEAR,
 		Calendar.MONTH,
 		Calendar.DAY_OF_MONTH,
 		Calendar.DAY_OF_WEEK,
@@ -19,21 +20,24 @@ public class TimeUtil {
 	public static final int FURTHER= 3;
 	
 	public static boolean isTimeInPeriod(Calendar time, TimeCfg timeBegin, TimeCfg timeEnd) {
-		int valueList[] = {time.get(Calendar.YEAR),
+		int valueList[] = {
+			time.get(Calendar.YEAR),
 			time.get(Calendar.MONTH),
 			time.get(Calendar.DAY_OF_MONTH),
 			time.get(Calendar.DAY_OF_WEEK),
 			time.get(Calendar.HOUR_OF_DAY),
 			time.get(Calendar.MINUTE)
 			};
-		int leftList[] = {timeBegin.getYear(),
+		int leftList[] = {
+			timeBegin.getYear(),
 			timeBegin.getMonth(),
 			timeBegin.getDayOfMonth(),
 			timeBegin.getDayOfWeek(),
 			timeBegin.getHour(),
 			timeBegin.getMinute()
 			};
-		int rightList[] = {timeEnd.getYear(),
+		int rightList[] = {
+			timeEnd.getYear(),
 			timeEnd.getMonth(),
 			timeEnd.getDayOfMonth(),
 			timeEnd.getDayOfWeek(),

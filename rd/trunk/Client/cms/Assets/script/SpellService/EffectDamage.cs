@@ -16,7 +16,10 @@ public class EffectDamageProtoType : EffectPrototype
 
 public class EffectDamage : Effect
 {
+    //for spellfunctions use
     public int damageAmount = 0;
+    public bool isCritical = false;
+
     //---------------------------------------------------------------------------------------------
     public override void Init(EffectPrototype pt, SpellService owner)
     {
@@ -29,6 +32,7 @@ public class EffectDamage : Effect
         damagePt.damageProperty = damagePtOut.damageProperty;
         damagePt.fixLifeRatio = damagePtOut.fixLifeRatio;
         base.Init(pt, owner);
+        autoGenerateEvet = false;
     }
     //---------------------------------------------------------------------------------------------
     public override bool Apply(float applyTime, string wpID)
@@ -100,8 +104,8 @@ public class EffectDamage : Effect
                 float damageRatio = 1.0f;
                 float randKey = UnityEngine.Random.Range(0.0f, 1.0f);
                 //暴击率 = 暴击常数 + 施法者暴击率 - 目标抗暴
-                bool critical = randKey <= (SpellConst.criticalRatio + caster.criticalRatio - target.antiCriticalRatio);
-                if (critical)
+                isCritical = randKey <= (SpellConst.criticalRatio + caster.criticalRatio - target.antiCriticalRatio);
+                if (isCritical)
                 {
                     //暴击加成 =   暴击加成常数 + 附加暴击加成
                     damageRatio = SpellConst.criticalDamgeRatio + caster.criticalDamageRatio;
@@ -237,7 +241,7 @@ public class EffectDamage : Effect
 						{
 							SpellEffectArgs effectArgs = new SpellEffectArgs();
 							if (ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao ||
-							    ownedSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao || critical)
+                                ownedSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao || isCritical)
 							{
 								effectArgs.targetID = targetID;
 								spellService.TriggerEvent(GameEventList.BashHit, effectArgs);
@@ -257,6 +261,14 @@ public class EffectDamage : Effect
                             args.casterID = casterID;
                             args.deathID = targetID;
                             spellService.AddDeadData(args, target, this);
+
+                            //death response
+                            List<Buff> buffList = target.buffList;
+                            for (int i = 0; i < buffList.Count; ++i)
+                            {
+                                //TODO: use level time
+                                buffList[i].DeadResponse(Time.time, this);
+                            }
                         }
                         else if (target.curLife > target.maxLife)
                         {
@@ -268,12 +280,28 @@ public class EffectDamage : Effect
                 //trigger damage event
                 if (damageAmount < 0 || damageProto.isHeal == true)
                 {
+                    SpellEffectArgs effectArgs = new SpellEffectArgs();
+                    if (target != null)
+                    {
+                        WeakPointData wp = null;
+                        if (target.attackWpName != null)
+                        {
+                            wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
+                        }
+                        effectArgs.wpNode = wp != null ? wp.node : string.Empty;
+                    }
+                    effectArgs.triggerTime = applyTime;
+                    effectArgs.casterID = casterID;
+                    effectArgs.targetID = targetID;
+                    effectArgs.effectID = protoEffect.id;
+                    spellService.TriggerEvent(GameEventList.SpellEffect, effectArgs);
+
                     SpellVitalChangeArgs args = new SpellVitalChangeArgs();
                     args.vitalType = (int)VitalType.Vital_Type_Default;
                     args.triggerTime = applyTime;
                     args.casterID = casterID;
                     args.targetID = targetID;
-                    args.isCritical = critical;
+                    args.isCritical = isCritical;
                     args.vitalChange = damageAmount;
                     args.vitalCurrent = target.curLife;//TODO: need weak point life?
                     args.vitalMax = target.maxLife;

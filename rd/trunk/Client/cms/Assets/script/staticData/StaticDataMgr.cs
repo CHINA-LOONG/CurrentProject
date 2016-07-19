@@ -70,7 +70,7 @@ public class StaticDataMgr : MonoBehaviour
             var data = InitTable<SpellProtoType>("spell");
             foreach (var item in data)
             {
-                Debug.Log(item.id);
+                //Debug.Log(item.id);
                 spellData.Add(item.id, item);
             }
         }
@@ -199,7 +199,7 @@ public class StaticDataMgr : MonoBehaviour
                 effectPt.linkEffect = wholeData.linkEffect;
                 effectPt.chance = wholeData.chance;
 
-                Debug.Log(effectPt.id);
+                //Debug.Log(effectPt.id);
                 effectData.Add(effectPt.id, effectPt);
             }
         }
@@ -453,10 +453,12 @@ public class StaticDataMgr : MonoBehaviour
 
             System.Action<LangStaticData> addElement = item =>
             {
+                if (string.IsNullOrEmpty(item.id)) 
+					return;
                 if (langData.ContainsKey(item.id))
                 {
                     langData[item.id] = item;
-                    Logger.LogError("error: Found the same Text ID:"+item.id);
+                    Logger.LogError("error: Found the same Text ID:" + item.id);
                 }
                 else
                 {

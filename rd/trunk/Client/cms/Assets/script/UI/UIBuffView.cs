@@ -29,6 +29,9 @@ public class UIBuffView : MonoBehaviour
             this.targetUnit = targetUnit;
 
             ClearBuff();
+            //TODO: merge
+            RefreshDotBuff();
+            RefreshOtherBuff();
         }
     }
 	
@@ -54,27 +57,7 @@ public class UIBuffView : MonoBehaviour
         //非dot类buff 刷新buff表
         else 
         {
-            if (targetUnit == null)
-                return;
-
-            int buffCount = targetUnit.unit.buffList.Count;
-            otherBuffList.Clear();
-            BuffPrototype buffPb = null;
-            for (int i = 0; i < buffCount; ++i)
-            {
-                buffPb = targetUnit.unit.buffList[i].buffProto;
-                
-                if (//buffPb.category != (int)(BuffType.Buff_Type_Dot) && 
-                    targetUnit.unit.buffList[i].IsFinish == false ||
-                    buffPb.category == (int)(BuffType.Buff_Type_Normal) ||
-                    buffPb.category == (int)(BuffType.Buff_Type_Hot) ||
-                    buffPb.category == (int)(BuffType.Buff_Type_Debuff) ||
-                    buffPb.category == (int)(BuffType.Buff_Type_Benefit) 
-                    )
-                {
-                    otherBuffList.Add(buffPb.icon);
-                }
-            }
+            RefreshOtherBuff();
         }
     }
 
@@ -110,7 +93,12 @@ public class UIBuffView : MonoBehaviour
     }
     private void ClearBuff()
     {
-        RefreshDotBuff();
+        //RefreshDotBuff();
+
+        for (int i = 0; i < dotBuffList.Length; ++i)
+        {
+            dotBuffList[i].RemoveBuff();
+        } 
         otherBuff.RemoveBuff();
         otherBuffList.Clear();
     }
@@ -135,6 +123,32 @@ public class UIBuffView : MonoBehaviour
             {
                 dotBuffList[dotIndex].ShowBuff(curBuff.buffProto.icon);
                 ++dotIndex;
+            }
+        }
+    }
+
+    private void RefreshOtherBuff()
+    {
+        if (targetUnit == null)
+            return;
+
+        int buffCount = targetUnit.unit.buffList.Count;
+        otherBuffList.Clear();
+        BuffPrototype buffPb = null;
+        for (int i = 0; i < buffCount; ++i)
+        {
+            buffPb = targetUnit.unit.buffList[i].buffProto;
+
+            if (targetUnit.unit.buffList[i].IsFinish == false &&
+                    (
+                    buffPb.category == (int)(BuffType.Buff_Type_Normal) ||
+                    buffPb.category == (int)(BuffType.Buff_Type_Hot) ||
+                    buffPb.category == (int)(BuffType.Buff_Type_Debuff) ||
+                    buffPb.category == (int)(BuffType.Buff_Type_Benefit)
+                    )
+                )
+            {
+                otherBuffList.Add(buffPb.icon);
             }
         }
     }

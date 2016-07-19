@@ -47,9 +47,9 @@ namespace PB
       get { return _id; }
       set { _id = value; }
     }
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }
@@ -124,9 +124,9 @@ namespace PB
   {
     public HSEquipBuy() {}
     
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }
@@ -158,14 +158,38 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipBuyRet")]
+  public partial class HSEquipBuyRet : global::ProtoBuf.IExtensible
+  {
+    public HSEquipBuyRet() {}
+    
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
+    {
+      get { return _equipId; }
+      set { _equipId = value; }
+    }
+    private int _equipCount;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"equipCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int equipCount
+    {
+      get { return _equipCount; }
+      set { _equipCount = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipCompose")]
   public partial class HSEquipCompose : global::ProtoBuf.IExtensible
   {
     public HSEquipCompose() {}
     
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }
@@ -187,9 +211,9 @@ namespace PB
   {
     public HSEquipComposeRet() {}
     
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }

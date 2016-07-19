@@ -56,22 +56,22 @@ public class SpellService : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void Update()
     {
-        DeadData deadData;
-        List<Buff> buffList;
-        var itor = deadList.GetEnumerator();
-        while(itor.MoveNext())
-        {
-            deadData = itor.Current.Value;
-            if (deadData.deadUnit != null)
-            {
-                buffList = deadData.deadUnit.buffList;
-                for (int i = 0; i < buffList.Count; ++i)
-                {
-                    //TODO: use level time
-                    buffList[i].DeadResponse(Time.time, itor.Current.Value.causeDeadEffect);
-                }
-            }
-        }
+        //DeadData deadData;
+        //List<Buff> buffList;
+        //var itor = deadList.GetEnumerator();
+        //while(itor.MoveNext())
+        //{
+        //    deadData = itor.Current.Value;
+        //    if (deadData.deadUnit != null)
+        //    {
+        //        buffList = deadData.deadUnit.buffList;
+        //        for (int i = 0; i < buffList.Count; ++i)
+        //        {
+        //            //TODO: use level time
+        //            buffList[i].DeadResponse(Time.time, itor.Current.Value.causeDeadEffect);
+        //        }
+        //    }
+        //}
 
         foreach (KeyValuePair<int, DeadData> deadInfo in deadList)
         {

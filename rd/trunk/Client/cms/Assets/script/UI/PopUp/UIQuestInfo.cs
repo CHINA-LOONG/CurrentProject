@@ -87,8 +87,8 @@ public class UIQuestInfo : UIBase
 
         for (int i = 0; i < list.Count; i++)
         {
-            if (list[i].type == (int)PB.itemType.PLAYER_ATTR &&
-                int.Parse(list[i].itemId) == (int)PB.changeType.CHANGE_PLAYER_EXP)
+            if (list[i].protocolData.type == (int)PB.itemType.PLAYER_ATTR &&
+                int.Parse(list[i].protocolData.itemId) == (int)PB.changeType.CHANGE_PLAYER_EXP)
             {
                 rewards[i].SetItem(list[i], info.staticData.expK, info.staticData.expB);
             }
@@ -105,10 +105,10 @@ public class UIQuestInfo : UIBase
     {
         int result = 0;
         //    显示顺序为：钻石、金币、经验、道具（道具图标按照道具表中的顺序）	
-        if ((a.type <= (int)PB.itemType.MONSTER_ATTR && b.type <= (int)PB.itemType.MONSTER_ATTR)
-            || (a.type > (int)PB.itemType.MONSTER_ATTR && b.type > (int)PB.itemType.MONSTER_ATTR))
+        if ((a.protocolData.type <= (int)PB.itemType.MONSTER_ATTR && b.protocolData.type <= (int)PB.itemType.MONSTER_ATTR)
+            || (a.protocolData.type > (int)PB.itemType.MONSTER_ATTR && b.protocolData.type > (int)PB.itemType.MONSTER_ATTR))
         {
-            if (int.Parse(a.itemId) < int.Parse(b.itemId))
+            if (int.Parse(a.protocolData.itemId) < int.Parse(b.protocolData.itemId))
             {
                 result = -1;
             }
@@ -119,7 +119,7 @@ public class UIQuestInfo : UIBase
         }
         else
         {
-            if (a.type < b.type)
+            if (a.protocolData.type < b.protocolData.type)
             {
                 result = -1;
             }

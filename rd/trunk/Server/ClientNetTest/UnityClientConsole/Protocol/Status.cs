@@ -33,7 +33,10 @@ namespace PB
       QUEST_ERROR = 327680,
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ERROR", Value=393216)]
-      INSTANCE_ERROR = 393216
+      INSTANCE_ERROR = 393216,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_ERROR", Value=458752)]
+      MAIL_ERROR = 458752
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"error")]
@@ -93,7 +96,16 @@ namespace PB
       SKILL_POINT_NOT_ENOUGH = 196611,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SKILL_LEVEL_LIMIT", Value=196612)]
-      SKILL_LEVEL_LIMIT = 196612
+      SKILL_LEVEL_LIMIT = 196612,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STAGE_LIMIT", Value=196613)]
+      STAGE_LIMIT = 196613,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STAGE_LEVEL_NOT_ENOUGH", Value=196614)]
+      STAGE_LEVEL_NOT_ENOUGH = 196614,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STAGE_CONSUME", Value=196615)]
+      STAGE_CONSUME = 196615
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"itemError")]
@@ -103,14 +115,14 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_FOUND", Value=262145)]
       ITEM_NOT_FOUND = 262145,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"COINS_NOT_ENOUGH", Value=131074)]
-      COINS_NOT_ENOUGH = 131074,
+      [global::ProtoBuf.ProtoEnum(Name=@"COINS_NOT_ENOUGH", Value=262146)]
+      COINS_NOT_ENOUGH = 262146,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=131075)]
-      GOLD_NOT_ENOUGH = 131075,
+      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=262147)]
+      GOLD_NOT_ENOUGH = 262147,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=131076)]
-      EQUIP_NOT_FOUND = 131076,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=262148)]
+      EQUIP_NOT_FOUND = 262148,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_ENOUGH", Value=262149)]
       ITEM_NOT_ENOUGH = 262149,
@@ -172,6 +184,23 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_FATIGUE", Value=393220)]
       INSTANCE_FATIGUE = 393220
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"mailError")]
+    public enum mailError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_NOT_EXIST", Value=458753)]
+      MAIL_NOT_EXIST = 458753,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_NONE", Value=458754)]
+      MAIL_NONE = 458754,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_COIN_FULL", Value=458755)]
+      MAIL_COIN_FULL = 458755,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_GOLD_FULL", Value=458756)]
+      MAIL_GOLD_FULL = 458756
     }
   
 }

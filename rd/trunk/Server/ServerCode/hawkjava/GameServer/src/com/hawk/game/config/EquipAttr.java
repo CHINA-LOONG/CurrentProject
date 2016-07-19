@@ -140,6 +140,7 @@ public class EquipAttr extends HawkConfigBase{
 			this.baseAttrId = baseAttrID;
 			demandList.clear();
 			
+			// TODO: 调用ItemInfo函数替换
 			if (costList != null && costList.length() > 0 && !"0".equals(costList)) {
 				String[] itemArrays = costList.split(",");
 				for (String itemArray : itemArrays) {
@@ -153,7 +154,7 @@ public class EquipAttr extends HawkConfigBase{
 					itemInfo.setCount(Integer.valueOf(items[2]));
 					demandList.add(itemInfo);
 				}
-			}	
+			}
 			
 			return true;
 		}

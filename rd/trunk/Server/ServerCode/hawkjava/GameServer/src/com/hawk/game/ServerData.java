@@ -192,7 +192,7 @@ public class ServerData {
 	 * @param playerId
 	 */
 	public void addNameAndPlayerId(String name, int playerId) {
-		nameMap.put(name, playerId);
+		nameMap.put(name.toLowerCase(), playerId);
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class ServerData {
 	 * @return
 	 */
 	public boolean isExistName(String name) {
-		return nameMap.containsKey(name);
+		return nameMap.containsKey(name.toLowerCase());
 	}
 
 	/**

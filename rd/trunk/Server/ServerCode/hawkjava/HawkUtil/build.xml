@@ -10,6 +10,9 @@
     <property name="Collector.location" value="../Collector"/>
     <property name="GameClient.location" value="../GameClient"/>
     <property name="GameServer.location" value="../GameServer"/>
+    <property name="GameService.location" value="../GameService"/>
+    <property name="Http2Tcp.location" value="../Http2Tcp"/>
+    <property name="IpServer.location" value="../IpServer"/>
     <property name="ShellAgent.location" value="../ShellAgent"/>
     <property name="VersionServer.location" value="../VersionServer"/>
     <property name="debuglevel" value="source,lines,vars"/>
@@ -55,7 +58,6 @@
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
-                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -75,64 +77,24 @@
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects">
         <ant antfile="build.xml" dir="${AccountServer.location}" inheritAll="false" target="clean"/>
-        <ant antfile="build.xml" dir="${AccountServer.location}" inheritAll="false" target="build">
-            <propertyset>
-                <propertyref name="build.compiler"/>
-            </propertyset>
-        </ant>
+        <ant antfile="build.xml" dir="${AccountServer.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${CdkServer.location}" inheritAll="false" target="clean"/>
-        <ant antfile="build.xml" dir="${CdkServer.location}" inheritAll="false" target="build">
-            <propertyset>
-                <propertyref name="build.compiler"/>
-            </propertyset>
-        </ant>
+        <ant antfile="build.xml" dir="${CdkServer.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${Collector.location}" inheritAll="false" target="clean"/>
-        <ant antfile="build.xml" dir="${Collector.location}" inheritAll="false" target="build">
-            <propertyset>
-                <propertyref name="build.compiler"/>
-            </propertyset>
-        </ant>
+        <ant antfile="build.xml" dir="${Collector.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${GameClient.location}" inheritAll="false" target="clean"/>
-        <ant antfile="build.xml" dir="${GameClient.location}" inheritAll="false" target="build">
-            <propertyset>
-                <propertyref name="build.compiler"/>
-            </propertyset>
-        </ant>
+        <ant antfile="build.xml" dir="${GameClient.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${GameServer.location}" inheritAll="false" target="clean"/>
-        <ant antfile="build.xml" dir="${GameServer.location}" inheritAll="false" target="build">
-            <propertyset>
-                <propertyref name="build.compiler"/>
-            </propertyset>
-        </ant>
+        <ant antfile="build.xml" dir="${GameServer.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${GameService.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${GameService.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${Http2Tcp.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${Http2Tcp.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${IpServer.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${IpServer.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${ShellAgent.location}" inheritAll="false" target="clean"/>
-        <ant antfile="build.xml" dir="${ShellAgent.location}" inheritAll="false" target="build">
-            <propertyset>
-                <propertyref name="build.compiler"/>
-            </propertyset>
-        </ant>
+        <ant antfile="build.xml" dir="${ShellAgent.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${VersionServer.location}" inheritAll="false" target="clean"/>
-        <ant antfile="build.xml" dir="${VersionServer.location}" inheritAll="false" target="build">
-            <propertyset>
-                <propertyref name="build.compiler"/>
-            </propertyset>
-        </ant>
-    </target>
-    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
-        <copy todir="${ant.library.dir}">
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </copy>
-        <unzip dest="${ant.library.dir}">
-            <patternset includes="jdtCompilerAdapter.jar"/>
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </unzip>
-    </target>
-    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
-        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
-        <antcall target="build"/>
-    </target>
-    <target name="ASTFrame (1)">
-        <java classname="antlr.debug.misc.ASTFrame" failonerror="true" fork="yes">
-            <classpath refid="HawkUtil.classpath"/>
-        </java>
+        <ant antfile="build.xml" dir="${VersionServer.location}" inheritAll="false" target="build"/>
     </target>
 </project>

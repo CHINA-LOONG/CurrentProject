@@ -1000,10 +1000,10 @@ arrayselect_bp_001,综合战力,Team BP
 adventure_filter,筛选,Filter
 adventure_record_012,该宠物正在PVP防守，无法上阵哦,This monster is currently in PvP defense and cannot be used.
 summon_titlecoin,昼之召唤,Dawn
-summon_tipscoin,召唤获得道具或宠物碎片,"Summoning gives items,fregaments"
+summon_tipscoin,召唤获得道具或宠物碎片,Summon to get items or monster fragments
 summon_free,免费,Free
 summon_titlegold,夜之召唤,Dusk
-summon_tipsgold,召唤获得高品质道具、宠物碎片或宠物,"Summoning gives items,fregaments and monster"
+summon_tipsgold,召唤获得高品质道具、宠物碎片或宠物,"Summon to get high quality items, monster fragments, or whole monsters"
 summon_onetime,召唤1次,Summon 1
 summon_lefttimecoin,免费次数：{0}/5,Free chances: {0}/5
 summon_recovertimecoin,{0}后免费,Free in {0}
@@ -1562,12 +1562,14 @@ invite_alreadyinvite,领取,Collect
 invite_paihangbang,排行榜,Rankings
 invite_fuzhi,快速邀请,Quick Invite
 invite_imtext,我的id是{0}，快来接收我的邀请吧！,"My id is {0}, please accept my invitation!"
-facebookshare_fuhuo,立即获得免费复活机会（每天1次）！,"Immediately revive for free 
+facebookshare_fuhuo,"立即获得免费复活机会
+（每天1次）！","Immediately revive for free 
 (once per day)!"
 facebook_share,分享,Share
 facebook_link,连接,Connect
 facebookshare_zhengwen,竞技次数不足,Insufficient Arena Entries
-facebookshare_pvp,立即获得竞技次数*2（每天1次）！,"Get 2 Arena Entries immediate
+facebookshare_pvp,"立即获得竞技次数*2
+（每天1次）！","Get 2 Arena Entries immediate
 ly (once per day)!"
 facebookshare_energy,立即获得20活力（每天1次）！,Get 20 Energy immediately (once per day)!
 facebookshare_condition1,1个好友等级达到15级,1 friend reaches level 15
@@ -1584,7 +1586,7 @@ facebook_record_008,邀请已成功发送到系统频道,Invite successfully sen
 facebook_share_title1,我发现了神怪的踪迹！,I have found some traces of monsters!
 facebook_share_linktitle1,★传说中的妖怪降临,Legendary monsters have appeared!
 facebook_share_content1,大批神话中的妖怪突然降临人界！点击前往调查他们的踪迹吧！,Large numbers of monsters from ancient legends have appeared! Tap here to see their traces!
-facebook_share_title2,我在《LegendsAwake》中发起了一次挑战,I have sent a challenge in <LegendsAwake>.
+facebook_share_title2,我在《Legends Awake》中发起了一次挑战,I have sent a challenge in <Legends Awake>.
 facebook_share_linktitle2,★一封神秘的挑战书,A mysterious challenge letter.
 facebook_share_content2,收到了一封神秘的挑战书，以代行者的身份召唤妖怪应战吧！,You have received a mysterious challenge letter! Summon some monsters and battle as a monster keeper!
 specialgift_activityTips,<color=#ffcc00>{0}.{1}~{2}.{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会,<color=#ffcc00>{0}.{1}~{2}.{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会
@@ -1608,8 +1610,10 @@ spell_hit_stunImmune,免疫眩晕,Stun Immune
 main_icon_huodong,活动礼包,Event Package
 main_icon_xuanze,新手礼包,New Player Package
 loading_special,各个国家都存在传说和神话。我们的存在绝非偶然。,Legends and Gods exist in every country and culture. Our existence is no coincidence.
-giftspecial_jinjie1_name,宠物进阶礼包,Monster Advancement Package
-giftspecial_suipian1_name,惊喜碎片礼包,Surprise Fragment Package
+giftspecial_jinjie1_name,宠物进阶礼包,"Monster Advancement
+Package"
+giftspecial_suipian1_name,惊喜碎片礼包,"Surprise Fragment
+Package"
 giftspecial_huodong1_name,活动礼包,Event Package
 giftspecial_xuanze1_name,新手礼包,New Player Package
 giftspecial_jinjie1_desc,快速提升宠物战力的绝佳方式！,The best way to quickly increase monster BP!
@@ -1618,7 +1622,12 @@ giftspecial_huodong1_desc,首次付费测试礼包，绝对超值体验！,首�
 specialgift_title,活动礼包,Event Package
 giftspecial_jinjie_name,宠物进阶礼包,Monster Advancement Package
 giftspecial_suipian_name,惊喜碎片礼包,Surprise Fragment Package
-pet_detail_skill_buy10,购买<color=#ffcc00>10</color>点技能点数,购买<color=#ffcc00>10</color>点技能点数
+pet_detail_skill_buy10,购买<color=#ffcc00>10</color>点技能点数,Purchase <color=#ffcc00>10</color> ability points
 pet_detail_skill_buytimes,今日可买：{0}/{1},Can purchase today : {0}/{1}
-monster_record_017,购买10点技能点数成功,购买10点技能点数成功
+monster_record_017,购买10点技能点数成功,Purchased 10 ability points!
 summon_tipsgoldmust,再抽<color=#ffcc00>{0}</color>次必得<color=#ffcc00>A级及以上</color>宠物,<color=#ffcc00>{0}</color> times more guarantees <color=#ffcc00>Class A (or above)</color> Monster.
+giftspecial_event_title,特殊礼包购买,特殊礼包购买
+giftspecial_event_desc,可以在此购买已经触发的特殊礼包！,可以在此购买已经触发的特殊礼包！
+giftspecial_xuanze1_desc,只能购买其中<color=#ffcc00>一个</color>礼包哦！,Can only be purchased <color=#ffcc00>once</color>!
+giftspecial_xuanze11_desc,剩余时间 ,Time left 
+giftspecial_xuanze12_desc,剩余时间 ,Time left 
