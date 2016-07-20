@@ -348,10 +348,18 @@ public class BattleObject : MonoBehaviour
                 if (string.IsNullOrEmpty(curCameraData.cameraAni) == false)
                 {
                     Animator animator = cameraRoot.GetComponent<Animator>();
-                    int curAniHash = Animator.StringToHash(curCameraData.cameraAni);
-                    if (animator != null && animator.HasState(0, curAniHash))
+                    if (animator != null)
                     {
-                        animator.Play(curAniHash);
+                        int curAniHash = 0;
+                        for (int layerIndex = 0; layerIndex < 2; ++layerIndex)
+                        {
+                            curAniHash = Animator.StringToHash(curCameraData.cameraAni);
+                            if (animator.HasState(layerIndex, curAniHash))
+                            {
+                                animator.Play(curAniHash);
+                                break;
+                            }
+                        }
                     }
                 }
 

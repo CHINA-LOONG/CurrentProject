@@ -8,6 +8,8 @@ public class BattleUnitUI : MonoBehaviour
     public Text unitName;
     public LifeBarUI lifeBar;
     public EnegyBarUI enegyBar;
+    [HideInInspector]
+    public Image dazhaoImg;
 
     public BattleObject Unit
     {
@@ -29,6 +31,7 @@ public class BattleUnitUI : MonoBehaviour
     void Awake()
     {
         trans = transform as RectTransform;
+        dazhaoImg = dazhaoBtn.GetComponent<Image>();
         EventTriggerListener.Get(dazhaoBtn.gameObject).onClick = OnDazhaoClick;
         buffView = gameObject.GetComponent<UIBuffView>();
         buffView.Init();
@@ -57,6 +60,7 @@ public class BattleUnitUI : MonoBehaviour
 
         dazhaoBtn.gameObject.SetActive(false);
         unitName.text = Unit.unit.name;
+        //dazhaoImg.mainTexture=
         //if (sUnit.gameObject.activeSelf)
         //{
         //    lifeBar.value = Unit.unit.curLife / (float)Unit.unit.maxLife;

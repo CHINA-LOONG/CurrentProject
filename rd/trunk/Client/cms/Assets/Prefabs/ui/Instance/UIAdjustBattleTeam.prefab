@@ -400,7 +400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &159242
 GameObject:
   m_ObjectHideFlags: 1
@@ -990,7 +990,6 @@ MonoBehaviour:
   - {fileID: 11444736}
   - {fileID: 11423288}
   - {fileID: 11483076}
-  - {fileID: 11486248}
   enemyTeamBg:
   - {fileID: 11420502}
   - {fileID: 11449904}

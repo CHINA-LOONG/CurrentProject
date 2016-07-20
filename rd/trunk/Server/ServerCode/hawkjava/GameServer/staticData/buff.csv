@@ -24,9 +24,9 @@ bossrenjie87Baonu45b2,11,,999,0,0,0,0,0,-0.5,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
 bossrenjie87Baonu45b3,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatebaonu05_100,bossrenjie87Baonu45e2",,1,0,0,0,,-1
 bossrenjie87Baonu46b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatebaonu06_100,bossrenjie87Baonu46e3",,1,0,0,0,,-1
 bossrenjie86Landuo25b2,11,,999,0,0,0,,,,,,,,,,,,,"LifeLower_15,bossrenjie86Landuo25e3",,1,0,0,0,,-1
-bossrenjie86Landuo26b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatelanduo02_100,bossrenjie86Landuo25e3",,1,0,0,0,,-1
-bossrenjie86Landuo27b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatelanduo03_100,bossrenjie86Landuo25e3",,1,0,0,0,,-1
-bossrenjie86Landuo28b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatelanduo04_100,bossrenjie86Landuo25e3",,1,0,0,0,,-1
+bossrenjie86Landuo26b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatelanduo02_100,bossrenjie86Landuo26e3",,1,0,0,0,,-1
+bossrenjie86Landuo27b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatelanduo03_100,bossrenjie86Landuo27e3",,1,0,0,0,,-1
+bossrenjie86Landuo28b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatelanduo04_100,bossrenjie86Landuo28e3",,1,0,0,0,,-1
 debuffDefenseb1,4,,3,0,0,0,0,0,-0.8,0,0,bufficon_debuffDefense,0,,0,0,0,0,,,1,0,0,0,,-1
 defendb1,3,,1,0,0,0,0,0,0,-0.2,0,,0,,0,0,0,0,,,1,0,0,0,,-1
 phydazhaoPrepareb1,6,,1,0,0,1,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0,,-1
@@ -135,14 +135,10 @@ bossrenjie83Amute3awaken4b1,9,,2,0,0,0,0,0,0,0,0,,1,100,1.2,0,0,0,,,1,0,0,0,,-1
 bossrenjie83Amute3awaken4b2,10,,2,0,0,0,0,0,0,0,0,,1,100,1.2,0,0,0,,,1,0,0,0,,-1
 bosskongdao76Yifanmumian13b1,9,,2,0,0,0,0,0,0,0,0,,1,100,1.2,0,0,0,,,1,0,0,0,,-1
 bosskongdao76Yifanmumian13b2,10,,2,0,0,0,0,0,0,0,0,,1,100,1.2,0,0,0,,,1,0,0,0,,-1
-bossrenjie85Dujiaoshou1awaken5b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateAddbuffdujiaoshou_100,bossrenjie85Dujiaoshou1awaken5e2",,1,0,0,0,,-1
-bossrenjie85Dujiaoshou1awaken6b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateAddbuffdujiaoshou_wp03_100,bossrenjie85Dujiaoshou1awaken6e3",,1,0,0,0,,-1
-bossrenjie85Dujiaoshou1awaken7b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateAddbuffdujiaoshou_wp04_100,bossrenjie85Dujiaoshou1awaken7e6",,1,0,0,0,,-1
 bossrenjie84Anpusha5awaken6b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateanpusha_wp02_100,bossrenjie84Anpusha5awaken6e3",,1,0,0,0,,-1
 bossrenjie84Anpusha5awaken7b1,11,,999,0,0,0,,,,,,,,,,,,,,"uncondition,bossrenjie84Anpusha5awaken7e1",1,0,0,0,,-1
 bossrenjie84Anpusha5awaken8b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRateanpusha_wp0304_100,bossrenjie84Anpusha5awaken8e3",,1,0,0,0,,-1
 bossrenjie82Huoniao4awaken6b2,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatehuoniao_wp3_100,bossrenjie82Huoniao4awaken6e6",,1,0,0,0,,-1
-bossrenjie82Huoniao4awaken8b1,11,,999,0,0,0,,,,,,,,,,,,,"HurtbyPhysicalMagicRatehuoniao_wp05_100,bossrenjie82Huoniao4awaken8e3",,1,0,0,0,,-1
 bosskongdao78Jinglingwang16b1,9,,2,0,0,0,0,0,0,0,0,,1,100,1.2,0,0,0,,,1,0,0,0,,-1
 bosskongdao78Jinglingwang16b2,10,,2,0,0,0,0,0,0,0,0,,1,100,1.2,0,0,0,,,1,0,0,0,,-1
 bosskongdao78Jinglingwang18b1,9,,2,0,0,0,0,0,0,0,0,,1,50,1.2,0,0,0,,,1,0,0,0,,-1

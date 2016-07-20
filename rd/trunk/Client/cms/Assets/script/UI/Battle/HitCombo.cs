@@ -6,8 +6,8 @@ using DG.Tweening;
 
 public class HitCombo : MonoBehaviour
 {
-	public	Image	comboImage;
-
+	//public	Image	comboImage;
+    public Text comboImage;
 	static	int	ComboMax = 10;
 
 	public	static	void	ShowCombo(Transform parent,int comboNum,float posX, float posY)
@@ -26,17 +26,17 @@ public class HitCombo : MonoBehaviour
 		string comboName;
 		if (comboNum < 1 || comboNum > ComboMax) 
 		{
-			comboName = "combomax";
+			comboName = "M";
 		}
 		else
 		{
-			comboName = "combo_" + comboNum.ToString();
+			comboName = comboNum.ToString();
 		}
 		
-		Sprite comboSprite = ResourceMgr.Instance.LoadAssetType<Sprite> (comboName) as Sprite;
-		if (null != comboSprite)
+		//Sprite comboSprite = ResourceMgr.Instance.LoadAssetType<Sprite> (comboName) as Sprite;
+        if (null != comboImage)
 		{
-			comboImage.sprite = comboSprite;
+            comboImage.text = comboName;
 		}
 		
 		RectTransform rt = transform as RectTransform;

@@ -28,6 +28,10 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 10021,name_10021_gongpin,-1,icon_gonghuigongpin1,1,5,2,0,1,-1,tips_10021_gongpin,1,1000,2,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,,1
 10022,name_10022_gongpin,-1,icon_gonghuigongpin2,1,5,2,0,1,-1,tips_10022_gongpin,1,1000,2,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,,1
 10023,name_10023_gongpin,-1,icon_gonghuigongpin3,1,5,3,0,1,-1,tips_10023_gongpin,1,2000,2,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,,1
+10024,name_10021_gongpin,-1,icon_gonghuigongpin1,1,7,1,0,1,-1,tips_10021_gongpin,1,1000,2,200,1,100,1,,,,3_10025_1,3,-1,-1,,-1,-1,-1,,1
+10025,name_10021_gongpin,-1,icon_gonghuigongpin1,1,7,2,0,1,-1,tips_10021_gongpin,1,1000,2,200,1,100,1,,,,3_10026_1,3,-1,-1,,-1,-1,-1,,1
+10026,name_10021_gongpin,-1,icon_gonghuigongpin1,1,7,3,0,1,-1,tips_10021_gongpin,1,1000,2,200,1,100,1,,,,3_10027_1,3,-1,-1,,-1,-1,-1,,1
+10027,name_10021_gongpin,-1,icon_gonghuigongpin1,1,7,4,0,1,-1,tips_10021_gongpin,1,1000,2,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,,1
 20001,name_20001_suipian_common,-1,icon_wannengsuipian,2,1,1,0,1,-1,tips_20001_suipian_common,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,12_2,1
 20002,name_20002_suipian_xiaochou3,-1,icon_xgXiaochou_lan,2,1,1,0,1,-1,tips_20002_suipian_xiaochou3,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,"1_senlin23,1_minghe23",1
 20003,name_20003_suipian_kairuisi4,-1,icon_xgKairuisi_hong,2,1,1,0,1,-1,tips_20003_suipian_kairuisi4,1,-1,-1,200,1,100,1,,,,,-1,-1,-1,,-1,-1,-1,6,0

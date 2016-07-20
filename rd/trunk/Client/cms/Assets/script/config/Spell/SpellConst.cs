@@ -12,8 +12,8 @@
 
     public const float criticalDamgeRatio = 1.5f;
     public const float criticalRatio = 0.1f;
-    public const float hitRatio = 0.80f;
-    public const float minHitRatio = 0.6f;
+    public const float hitRatio = 1.0f;
+    public const float minHitRatio = 1.0f;
 
     public const int damagePhy = 0;
     public const int damageMagic = 1;

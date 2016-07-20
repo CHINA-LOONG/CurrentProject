@@ -320,7 +320,7 @@ public class BattleUnitAi : MonoBehaviour {
 	{
 		CharacterData characterData = StaticDataMgr.Instance.GetCharacterData (battleUnit.character);
 		
-		Spell buffSpell = GetSpell(AiAttackStyle.Buff, battleUnit);
+		Spell buffSpell = GetSpell(AiAttackStyle.Defence, battleUnit);
 		if (null == buffSpell)
 		{
 			return 0;

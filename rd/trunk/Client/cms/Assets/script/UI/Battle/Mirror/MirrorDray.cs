@@ -15,7 +15,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 
 	RectTransform rectTrans;
 
-	Tweener  mirrorTween = null;
+	//Tweener  mirrorTween = null;
 
 	Dictionary<MirrorTarget, float> lastFindWeakpoint = new Dictionary<MirrorTarget, float> ();
 
@@ -24,7 +24,8 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 	List<MirrorTarget> finishFindTargett = new List<MirrorTarget>();
 	List<MirrorTarget> outFindTarget = new List<MirrorTarget> ();
 	//Image mirrorUi;
-	Image MirrorDragImage;
+	//Image MirrorDragImage;
+	GameObject mirrorParticle;
 	Animator mirrorUIAnimator;
 
 
@@ -45,11 +46,14 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 
 		mirrorUIAnimator = mirrorUi.GetComponent < Animator> ();
 
-		MirrorDragImage = Util.FindChildByName (gameObject, "MirrorDragImage").GetComponent<Image> ();
-
+		//MirrorDragImage = Util.FindChildByName (gameObject, "MirrorDragImage").GetComponent<Image> ();
+		mirrorParticle = Util.FindChildByName (gameObject, "zhaoyaojing");
         //baozha_fire
-		mirrorExitEffect = ParticleEffect.CreateEffect (BattleController.Instance.GetUIBattle().publicTopGroup, "baozha_fire");
-		mirrorExitEffect.gameObject.SetActive (false);
+		if (null == mirrorExitEffect)
+		{
+			mirrorExitEffect = ParticleEffect.CreateEffect (BattleController.Instance.GetUIBattle ().publicTopGroup, "zhaoyaojingbaozhatexiao");
+			mirrorExitEffect.gameObject.SetActive (false);
+		}
 
 		ResetMirror ();
 	}
@@ -57,9 +61,11 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 	public void ResetMirror()
 	{
 		//MirrorDragImage.gameObject.SetActive (false);
-		mirrorTween = MirrorDragImage.DOFade (0, 1.5f).OnComplete (OnResetMiirror);
-	//	mirrorUi.gameObject.SetActive (true);
+	//	mirrorTween = MirrorDragImage.DOFade (0, 1.5f).OnComplete (OnResetMiirror);
+		mirrorParticle.SetActive (false);
+		//	mirrorUi.gameObject.SetActive (true);
 		mirrorUIAnimator.SetInteger (mirrorStateHash, 2);
+		OnResetMiirror ();
 	}
 
 	void OnResetMiirror()
@@ -100,15 +106,16 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
         if (BattleController.Instance.processStart == false)
             return;
 
-		if (mirrorTween != null &&
-		    mirrorTween.IsPlaying())
-		{
-			mirrorTween.Kill(true);
-		}
+		//if (mirrorTween != null &&
+		//    mirrorTween.IsPlaying())
+		//{
+		//	mirrorTween.Kill(true);
+		//}
 
 		isDragging = false;
 		//MirrorDragImage.gameObject.SetActive (true);
-		MirrorDragImage.DOFade (1.0f, 0.5f);
+		//MirrorDragImage.DOFade (1.0f, 0.5f);
+		mirrorParticle.SetActive (true);
 
 		//mirrorUi.gameObject.SetActive (false);
 		mirrorUIAnimator.SetInteger (mirrorStateHash, 1);
@@ -166,14 +173,16 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		} 
 		else 
 		{
-			ResetMirror();
+
 			StopRayCast();
 			mirrorExitEffect.gameObject.SetActive(true);
 			RectTransform rt = mirrorExitEffect.transform as RectTransform;
 			//rt.anchoredPosition = new Vector2(300,300);
 			if(rt != null )
 			{
-				Vector3 mirrorScreenPos = UIUtil.GetSpacePos(transform as RectTransform,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
+				Vector3 mirrorScreenPos = UIUtil.GetSpacePos(rectTrans,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
+
+
 				mirrorScreenPos.x -= (rectTrans.pivot.x -0.5f)*rectTrans.sizeDelta.x;
 				mirrorScreenPos.y -= (rectTrans.pivot.y -0.5f)*rectTrans.sizeDelta.y;
 
@@ -185,6 +194,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 				//test
 				mirrorExitEffect.transform.position = Vector3.zero;
 			}
+			ResetMirror();
 
 		}
 	}

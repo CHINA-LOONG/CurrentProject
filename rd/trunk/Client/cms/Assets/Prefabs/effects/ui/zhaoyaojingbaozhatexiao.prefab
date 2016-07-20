@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 449356}
   - 33: {fileID: 3310772}
   - 23: {fileID: 2399032}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: bao01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +31,7 @@ GameObject:
   - 23: {fileID: 2368442}
   - 64: {fileID: 6499902}
   - 95: {fileID: 9517484}
+  - 225: {fileID: 22533376}
   m_Layer: 5
   m_Name: zhaoyaojingbaozhatexiao
   m_TagString: Untagged
@@ -48,7 +49,7 @@ GameObject:
   - 4: {fileID: 401952}
   - 33: {fileID: 3371904}
   - 23: {fileID: 2367018}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: bao04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +66,7 @@ GameObject:
   - 4: {fileID: 484818}
   - 33: {fileID: 3331904}
   - 23: {fileID: 2356708}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: bao02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +83,7 @@ GameObject:
   - 4: {fileID: 439134}
   - 33: {fileID: 3352716}
   - 23: {fileID: 2392060}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: bao03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,11 +365,22 @@ RectTransform:
   - {fileID: 401952}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 588, y: 320}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
+--- !u!225 &22533376
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117944}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

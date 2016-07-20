@@ -9733,7 +9733,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 		
 		<Ani id="bosskongdao76Yifanmumian12e5" state="0" AniType="Damage">
 			<ParticleList>
-				<Particle time="0" asset="commonBuff" bundle="effect/particle" parent="" attach=""/>
+				<Particle time="0" asset="commonBuff" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="buff"/>
@@ -9765,6 +9765,24 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<AudioList>
 				<Audio time="0" name="buff"/>
 			</AudioList>
+		</Ani>
+		
+		<Ani id="bosskongdao76Yifanmumian13b1" state="0" AniType="">
+			<ParticleList>
+				<Particle asset="bd_wulixishou" bundle="effect/particle" attach="true" locky="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="bosskongdao76Yifanmumian13b1Finish" state="1" finish_event="bosskongdao76Yifanmumian13b1">
+		</Ani>	
+		
+		<Ani id="bosskongdao76Yifanmumian13b2" state="0" AniType="">
+			<ParticleList>
+				<Particle asset="bd_mofaxishou" bundle="effect/particle" attach="true" locky="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="bosskongdao76Yifanmumian13b2Finish" state="1" finish_event="bosskongdao76Yifanmumian13b2">
 		</Ani>
 		
 		<Ani id="bosskongdao76Yifanmumian17" state="0" AniType="Skill">
@@ -9903,7 +9921,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="yifanmumian1pre_rhand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name=""/>
+				<Audio time="0" name="yifanmumian11"/>
 			</AudioList>
 		</Ani>
 		
@@ -9935,7 +9953,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="yifanmumian1pre_rhand" bundle="effect/particle" parent="Bip001 R Hand" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name=""/>
+				<Audio time="0" name="yifanmumian11"/>
 			</AudioList>
 		</Ani>
 		

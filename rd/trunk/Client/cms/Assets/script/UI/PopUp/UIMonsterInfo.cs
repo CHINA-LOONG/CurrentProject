@@ -22,6 +22,8 @@ public class UIMonsterInfo : UIBase
 	public Text	haveSpell;
 	private int guid = -1;
 
+	private int level = 1;
+
 	// Use this for initialization
 	void Awake ()
 	{
@@ -51,6 +53,7 @@ public class UIMonsterInfo : UIBase
 			Logger.LogError("Error:instance info , monsterId config error :" + monsterid);
 			return;
 		}
+		this.level = level;
 		this.guid = guid;
 		name.text = unitData.NickNameAttr;
 		haveSpell.text = StaticDataMgr.Instance.GetTextByID ("spell_yongyoujineng");
@@ -96,7 +99,7 @@ public class UIMonsterInfo : UIBase
 	private void AddIcon(SpellProtoType spellType)
 	{
 		var icon = SpellIcon.CreateWith (skillTrans );
-		int spellLevel = 1;
+		int spellLevel = this.level;
 		if (guid != -1)
 		{
 			GameUnit pet = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(guid);

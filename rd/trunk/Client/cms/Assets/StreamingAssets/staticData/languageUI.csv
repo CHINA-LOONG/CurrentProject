@@ -33,10 +33,10 @@ instance_quxiaozhandou,取消战斗,Cancel
 instance_zhenrongtiaozheng,阵容调整,Line-up
 tip_zhenrongError,请按正确顺序排列出战宠物,Please arrange the monsters in right order
 spell_yongyoujineng,拥有技能,Skill
-dazhao_jieduan,大招阶段，请,Please
-dazhao_click,点击,Click
-dazhao_shifang,怪物释放大招,monster  to  cast physical ultimate skill
-dazhao_huazhenshibai,画阵失败，请重试,Failed，please
+dazhao_jieduan,请,Please
+dazhao_click,点击,tap on
+dazhao_shifang,怪物,a monster
+dazhao_huazhenshibai,画阵失败，请重试,"Failed,please"
 xf,,
 ss,,
 zz,,

@@ -35,7 +35,7 @@ public class EnegyBarUI : MonoBehaviour
     //    mask.sizeDelta = size;
     //}
 
-    void Start()
+    void Awake()
     {
         height = mask.sizeDelta.y;
     }

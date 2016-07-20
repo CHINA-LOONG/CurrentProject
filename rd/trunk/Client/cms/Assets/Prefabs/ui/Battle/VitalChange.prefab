@@ -10,13 +10,14 @@ GameObject:
   - 224: {fileID: 22430812}
   - 222: {fileID: 22242464}
   - 114: {fileID: 11454562}
+  - 114: {fileID: 11487914}
   m_Layer: 5
   m_Name: HitResult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &114436
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +93,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114436}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -118,10 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 79efdc5e2f5002b4e8bf65e5ca091e26, type: 2}
+  m_Material: {fileID: 2100000, guid: f53219b41ba573c419888f419a93a6ac, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8a754c5bb6ab49248aa1ba5e5b7864e9, type: 2}
+    m_Font: {fileID: 12800000, guid: b3ca372a7fe572b46bae93d81764ec54, type: 2}
     m_FontSize: 0
     m_FontStyle: 0
     m_BestFit: 0
@@ -146,10 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aniName: fadeout
   criticalAniName: critical_fadeout
-  damageFont: {fileID: 12800000, guid: 8a754c5bb6ab49248aa1ba5e5b7864e9, type: 2}
-  damageFontMat: {fileID: 2100000, guid: 79efdc5e2f5002b4e8bf65e5ca091e26, type: 2}
-  healFont: {fileID: 12800000, guid: fdfb00d41f4390347abb2e231706e593, type: 2}
-  healFontMat: {fileID: 2100000, guid: f8e02368bf93b9246ba86a5c24239b36, type: 2}
+  damageFont: {fileID: 12800000, guid: b3ca372a7fe572b46bae93d81764ec54, type: 2}
+  healFont: {fileID: 12800000, guid: 3172aabf19bdf434e98207d347e70252, type: 2}
   vitalWnd: {fileID: 11410706}
   vitalBackImage: {fileID: 11404220}
   criticalSprite: {fileID: 21300000, guid: 16a8c9f57d8962e49b810e7a9a5c8000, type: 3}
@@ -169,10 +168,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .034331724, g: .933823526, b: .524399579, a: 1}
+  m_Color: {r: 1, g: .939056695, b: .705882311, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 34
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -182,7 +181,21 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: miss
+--- !u!114 &11487914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: .588235259, g: .477150679, b: .0129757905, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!222 &22222478
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -219,10 +232,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22442320}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: .5}
-  m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: 0, y: 11.7999668}
-  m_SizeDelta: {x: -44, y: 30}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -3.81469727e-06, y: 0}
+  m_SizeDelta: {x: 158.100006, y: 59.2999992}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22442320
 RectTransform:
@@ -239,8 +252,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -16.3000031}
-  m_SizeDelta: {x: 204, y: 108}
+  m_AnchoredPosition: {x: 0, y: -4.46000004}
+  m_SizeDelta: {x: 204, y: 96.0800018}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22475784
 RectTransform:
@@ -275,7 +288,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 50.7000008, y: 23.3299999}
   m_SizeDelta: {x: 205, y: 107}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000

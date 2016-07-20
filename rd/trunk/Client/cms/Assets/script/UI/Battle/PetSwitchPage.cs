@@ -101,7 +101,7 @@ public class PetSwitchPage : MonoBehaviour
 
         for (; j < BattleConst.maxFieldUnit; ++j)
         {
-            items[j].ShowEmpty(false);
+            items[j].UpdateData(null);
         }
     }
 }

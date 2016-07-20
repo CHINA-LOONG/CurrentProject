@@ -58,7 +58,7 @@ public class BattleConst
     public const float unitRotSpeed = 10.0f;
 
     //怪物默认勤奋度
-    public const int defaultLazy = 3;
+    public const int defaultLazy = 1;
     public const string levelChangeEvent = "level_change";
     public const float distance = 3.0f;
     public const string unitExitandenter = "unitExitandenter";

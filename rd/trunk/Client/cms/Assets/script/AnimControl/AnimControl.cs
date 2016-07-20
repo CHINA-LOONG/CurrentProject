@@ -19,6 +19,7 @@ public class AnimControl : MonoBehaviour
 	private int hashShouji;
 	private int hashFangyu;
 	private int hashDazhaoxuanyao;
+    private int hashChuchang;
     //state hash
     private int hashSiwangState;
     private int hashShoukongState;
@@ -48,6 +49,7 @@ public class AnimControl : MonoBehaviour
         hashShoukong = Animator.StringToHash("shoukong");
 		hashShouji = Animator.StringToHash("shouji");
 		hashFangyu = Animator.StringToHash("fangyu");
+        hashChuchang = Animator.StringToHash("chuchang");
 		hashDazhaoxuanyao = Animator.StringToHash("dazhaoxuanyao");
         hashSiwangState = Animator.StringToHash("Base Layer.siwang");
         hashShoukongState = Animator.StringToHash("Base Layer.shoukong");
@@ -97,6 +99,7 @@ public class AnimControl : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnDeadEnd()
     {
+        animator.SetBool(hashSiwang, false);
     }
     //---------------------------------------------------------------------------------------------
     public void OnRunBegin()
@@ -194,4 +197,8 @@ public class AnimControl : MonoBehaviour
         animator.SetBool(str, false);
     }
     //---------------------------------------------------------------------------------------------
+    public void OnChuChangEnd()
+    {
+        animator.SetBool(hashChuchang, false);
+    }
 }

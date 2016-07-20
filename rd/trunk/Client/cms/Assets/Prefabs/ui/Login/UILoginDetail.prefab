@@ -255,7 +255,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8BF7\u8F93\u5165\u6635\u79F0"
+  m_Text: input nickname
 --- !u!114 &11411178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -506,7 +506,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u786E\u5B9A"
+  m_Text: GO
 --- !u!114 &11470280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -617,7 +617,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6E05\u7A7A"
+  m_Text: clear
 --- !u!114 &11472028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -643,7 +643,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8BF7\u8F93\u5165\u7528\u6237\u540D"
+  m_Text: input username
 --- !u!114 &11473900
 MonoBehaviour:
   m_ObjectHideFlags: 1

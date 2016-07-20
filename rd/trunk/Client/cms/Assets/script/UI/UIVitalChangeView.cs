@@ -9,9 +9,7 @@ public class UIVitalChangeView : MonoBehaviour
     public string aniName;
     public string criticalAniName;
     public Font damageFont;
-    public Material damageFontMat;
     public Font healFont;
-    public Material healFontMat;
     public Text vitalWnd;
     public Image vitalBackImage;
     public Sprite criticalSprite;
@@ -41,14 +39,12 @@ public class UIVitalChangeView : MonoBehaviour
             if (vitalChange < 0)
             {
                 vitalWnd.font = damageFont;
-                vitalWnd.material = damageFontMat;
                 vitalChange *= -1;
                 vitalBackImage.sprite = criticalSprite;
             }
             else
             {
                 vitalWnd.font = healFont;
-                vitalWnd.material = healFontMat;
                 vitalBackImage.sprite = criticalHealSprite;
             }
             vitalBackImage.gameObject.SetActive(args.isCritical == true);

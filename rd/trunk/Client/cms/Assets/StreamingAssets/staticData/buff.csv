@@ -18,7 +18,7 @@ ultLonggongtongzib1,10,,2,,,,,,,,,,0,1,0.1,,,,,,,0,0,0
 psvWaguib1,11,,999,,,,,,,,,,,,,,,,"HurtbyPhysicalMagicRate_80,debuffSpeede2",,999,0,0,0
 psvMagicb1,11,,999,,,,,0.1,,,,,,,,,,,,,,0,0,0
 psvHuapob1,11,,999,0,0,0,,,,,,,,,,,,,"UsingPhysicalRate_40,buffAttackSelfe2",,999,0,0,0
-psvAmuteb1,11,,999,0,0,0,,,,,,,,,,,,1,,"uncondition,psvfixLifee1",1,0,0,0
+psvAmuteb1,11,,999,0,0,0,,,,,,,,,,,,1,,"uncondition,fixLifee1",1,0,0,0
 psvLangrenb1,11,,999,0,0,0,,,,,,,,,,,,,"LifeLower_25,psvLangrene2",,999,0,0,0
 psvLangrenb2,5,,1,0,0,0,0.1,,,,,,,,,,,,,,0,0,0,0
 psvLonggongtongzib1,11,,999,0,0,0,0,0,0,0,0,,0,,,,,,"UsingCureRate_10,magicShilede1",,,0,0,0
