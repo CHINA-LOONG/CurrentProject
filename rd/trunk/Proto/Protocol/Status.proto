@@ -93,6 +93,14 @@ enum itemError
 	EQUIP_DRESS_OTHER_ALREADY  = 0x00040012;
 	// 装备不在身上
 	EQUIP_NOT_DRESSED          = 0x00040013;
+	// 槽位已经镶嵌宝石
+	EQUIP_SLOT_NOT_EMPTY       = 0x00040014;
+	// 槽位没有镶嵌宝石
+	EQUIP_SLOT_EMPTY           = 0x00040015;
+	// 槽位没有镶嵌宝石
+	EQUIP_GEM_NOT_FOUND        = 0x00040016;
+	// 装备不能开孔
+	EQUIP_CAN_NOT_OPEN_SLOT	   = 0x00040017;
 }
 
 enum questError

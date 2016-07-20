@@ -93,6 +93,22 @@ public class EffectDamage : Effect
             args.vitalCurrent = target.curLife;//TODO: need weak point life?
             args.vitalMax = target.maxLife;
             spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
+
+            SpellEffectArgs effectArgs = new SpellEffectArgs();
+            if (target != null)
+            {
+                WeakPointData wp = null;
+                if (target.attackWpName != null)
+                {
+                    wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
+                }
+                effectArgs.wpNode = wp != null ? wp.node : "e_shouji";
+            }
+            effectArgs.triggerTime = applyTime;
+            effectArgs.casterID = casterID;
+            effectArgs.targetID = targetID;
+            effectArgs.effectID = protoEffect.id;
+            spellService.TriggerEvent(GameEventList.SpellEffect, effectArgs);
         }
         else
         {

@@ -254,7 +254,10 @@ public class SpellService : MonoBehaviour
             BattleObject caster = ObjectDataMgr.Instance.GetBattleObject(curArgs.casterID);
             if (caster != null && string.IsNullOrEmpty(curArgs.spellID) == false)
             {
-                caster.TriggerEvent(curArgs.spellID, curArgs.triggerTime, null);
+                if (caster.camp == UnitCamp.Enemy || curArgs.category != (int)SpellType.Spell_Type_MagicDazhao)
+                {
+                    caster.TriggerEvent(curArgs.spellID, curArgs.triggerTime, null);
+                }
             }
         }
         else if (eventType == GameEventList.SpellLifeChange)

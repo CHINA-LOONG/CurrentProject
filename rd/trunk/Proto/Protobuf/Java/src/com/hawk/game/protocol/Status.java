@@ -776,6 +776,38 @@ public final class Status {
      * </pre>
      */
     EQUIP_NOT_DRESSED(13, 262163),
+    /**
+     * <code>EQUIP_SLOT_NOT_EMPTY = 262164;</code>
+     *
+     * <pre>
+     * 槽位已经镶嵌宝石
+     * </pre>
+     */
+    EQUIP_SLOT_NOT_EMPTY(14, 262164),
+    /**
+     * <code>EQUIP_SLOT_EMPTY = 262165;</code>
+     *
+     * <pre>
+     * 槽位没有镶嵌宝石
+     * </pre>
+     */
+    EQUIP_SLOT_EMPTY(15, 262165),
+    /**
+     * <code>EQUIP_GEM_NOT_FOUND = 262166;</code>
+     *
+     * <pre>
+     * 槽位没有镶嵌宝石
+     * </pre>
+     */
+    EQUIP_GEM_NOT_FOUND(16, 262166),
+    /**
+     * <code>EQUIP_CAN_NOT_OPEN_SLOT = 262167;</code>
+     *
+     * <pre>
+     * 装备不能开孔
+     * </pre>
+     */
+    EQUIP_CAN_NOT_OPEN_SLOT(17, 262167),
     ;
 
     /**
@@ -890,6 +922,38 @@ public final class Status {
      * </pre>
      */
     public static final int EQUIP_NOT_DRESSED_VALUE = 262163;
+    /**
+     * <code>EQUIP_SLOT_NOT_EMPTY = 262164;</code>
+     *
+     * <pre>
+     * 槽位已经镶嵌宝石
+     * </pre>
+     */
+    public static final int EQUIP_SLOT_NOT_EMPTY_VALUE = 262164;
+    /**
+     * <code>EQUIP_SLOT_EMPTY = 262165;</code>
+     *
+     * <pre>
+     * 槽位没有镶嵌宝石
+     * </pre>
+     */
+    public static final int EQUIP_SLOT_EMPTY_VALUE = 262165;
+    /**
+     * <code>EQUIP_GEM_NOT_FOUND = 262166;</code>
+     *
+     * <pre>
+     * 槽位没有镶嵌宝石
+     * </pre>
+     */
+    public static final int EQUIP_GEM_NOT_FOUND_VALUE = 262166;
+    /**
+     * <code>EQUIP_CAN_NOT_OPEN_SLOT = 262167;</code>
+     *
+     * <pre>
+     * 装备不能开孔
+     * </pre>
+     */
+    public static final int EQUIP_CAN_NOT_OPEN_SLOT_VALUE = 262167;
 
 
     public final int getNumber() { return value; }
@@ -910,6 +974,10 @@ public final class Status {
         case 262161: return EQUIP_NOT_DRESS_OTHER;
         case 262162: return EQUIP_DRESS_OTHER_ALREADY;
         case 262163: return EQUIP_NOT_DRESSED;
+        case 262164: return EQUIP_SLOT_NOT_EMPTY;
+        case 262165: return EQUIP_SLOT_EMPTY;
+        case 262166: return EQUIP_GEM_NOT_FOUND;
+        case 262167: return EQUIP_CAN_NOT_OPEN_SLOT;
         default: return null;
       }
     }
@@ -1341,7 +1409,7 @@ public final class Status {
       "NSTER_NOT_EXIST\020\202\200\014\022\034\n\026SKILL_POINT_NOT_E" +
       "NOUGH\020\203\200\014\022\027\n\021SKILL_LEVEL_LIMIT\020\204\200\014\022\021\n\013ST" +
       "AGE_LIMIT\020\205\200\014\022\034\n\026STAGE_LEVEL_NOT_ENOUGH\020" +
-      "\206\200\014\022\023\n\rSTAGE_CONSUME\020\207\200\014*\201\003\n\titemError\022\024" +
+      "\206\200\014\022\023\n\rSTAGE_CONSUME\020\207\200\014*\357\003\n\titemError\022\024" +
       "\n\016ITEM_NOT_FOUND\020\201\200\020\022\026\n\020COINS_NOT_ENOUGH" +
       "\020\202\200\020\022\025\n\017GOLD_NOT_ENOUGH\020\203\200\020\022\025\n\017EQUIP_NOT" +
       "_FOUND\020\204\200\020\022\025\n\017ITEM_NOT_ENOUGH\020\205\200\020\022\030\n\022ITE",
@@ -1351,15 +1419,17 @@ public final class Status {
       "_STAGE_ALREADY\020\212\200\020\022\031\n\023EQUIP_DRESS_ALREAD" +
       "Y\020\220\200\020\022\033\n\025EQUIP_NOT_DRESS_OTHER\020\221\200\020\022\037\n\031EQ" +
       "UIP_DRESS_OTHER_ALREADY\020\222\200\020\022\027\n\021EQUIP_NOT" +
-      "_DRESSED\020\223\200\020*T\n\nquestError\022\026\n\020QUEST_NOT_" +
-      "ACCEPT\020\201\200\024\022\030\n\022QUEST_NOT_COMPLETE\020\202\200\024\022\024\n\016" +
-      "QUEST_NOT_OPEN\020\203\200\024*l\n\rinstanceError\022\027\n\021I" +
-      "NSTANCE_NOT_OPEN\020\201\200\030\022\024\n\016INSTANCE_LEVEL\020\202",
-      "\200\030\022\024\n\016INSTANCE_COUNT\020\203\200\030\022\026\n\020INSTANCE_FAT" +
-      "IGUE\020\204\200\030*^\n\tmailError\022\024\n\016MAIL_NOT_EXIST\020" +
-      "\201\200\034\022\017\n\tMAIL_NONE\020\202\200\034\022\024\n\016MAIL_COIN_FULL\020\203" +
-      "\200\034\022\024\n\016MAIL_GOLD_FULL\020\204\200\034B\030\n\026com.hawk.gam" +
-      "e.protocol"
+      "_DRESSED\020\223\200\020\022\032\n\024EQUIP_SLOT_NOT_EMPTY\020\224\200\020" +
+      "\022\026\n\020EQUIP_SLOT_EMPTY\020\225\200\020\022\031\n\023EQUIP_GEM_NO" +
+      "T_FOUND\020\226\200\020\022\035\n\027EQUIP_CAN_NOT_OPEN_SLOT\020\227" +
+      "\200\020*T\n\nquestError\022\026\n\020QUEST_NOT_ACCEPT\020\201\200\024",
+      "\022\030\n\022QUEST_NOT_COMPLETE\020\202\200\024\022\024\n\016QUEST_NOT_" +
+      "OPEN\020\203\200\024*l\n\rinstanceError\022\027\n\021INSTANCE_NO" +
+      "T_OPEN\020\201\200\030\022\024\n\016INSTANCE_LEVEL\020\202\200\030\022\024\n\016INST" +
+      "ANCE_COUNT\020\203\200\030\022\026\n\020INSTANCE_FATIGUE\020\204\200\030*^" +
+      "\n\tmailError\022\024\n\016MAIL_NOT_EXIST\020\201\200\034\022\017\n\tMAI" +
+      "L_NONE\020\202\200\034\022\024\n\016MAIL_COIN_FULL\020\203\200\034\022\024\n\016MAIL" +
+      "_GOLD_FULL\020\204\200\034B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

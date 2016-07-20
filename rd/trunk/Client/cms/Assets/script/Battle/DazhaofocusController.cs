@@ -148,7 +148,7 @@ public class DazhaofocusController : MonoBehaviour
 		GameEventMgr.Instance.FireEvent (GameEventList.MonsterShowoffOver);
 
         UIBattle.Instance.ShowUI(true);
-        UIBattle.Instance.gameObject.BroadcastMessage("OnAnimationFinish");
+        UIBattle.Instance.gameObject.BroadcastMessage("OnAnimationFinish", SendMessageOptions.DontRequireReceiver);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 	}
 }

@@ -105,14 +105,22 @@ public class bossMinghe18Karong : BossAi {
     }
     //---------------------------------------------------------------------------------------------
     public override void OnWpDead(WeakPointDeadArgs args)
-    {
+	{
+		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
         if (args.wpID == "bossMinghe18Karongwp02" && jishu == 0)
         {
-            BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
             target.TriggerEvent("karong_shuijingqiusiwang", Time.time, null);
             target.TriggerEvent("karong_stage1to2_shuisi", Time.time, null);
 			jishu ++;
         }
+		if (args.wpID == "bossMinghe18Karongwp05" && jishu ==1)
+		{
+			target.TriggerEvent("karong_leftarmsiwang",Time.time,null);
+		}
+		if (args.wpID == "bossMinghe18Karongwp04" && jishu ==1)
+		{
+			target.TriggerEvent("karong_rightarmsiwang",Time.time,null);
+		}
     }
     //---------------------------------------------------------------------------------------------
 }

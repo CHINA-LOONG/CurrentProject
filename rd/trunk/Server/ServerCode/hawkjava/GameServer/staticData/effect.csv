@@ -1809,11 +1809,13 @@ bossrenjie88Yafogemeng51e2,3,1,0,0,,,,,,,,0,1,0,5,,12345,,,,1
 bossrenjie88Yafogemeng52e1,5,1,0,0,,,,,,,LifeLowerSwitch_90_100|bossrenjie88Yafogemeng52e4;Default|bossrenjie88Yafogemeng52e2;,,,,,,12345,,,,1
 bossrenjie88Yafogemeng52e2,2,1,1,0,,,,,bossrenjie88Yafogemeng52e3,1.2,"""""",,,,,,12345,,,,1
 bossrenjie88Yafogemeng52e3,3,1,1,0,,,,,,,,0,0.62,1,0,,12345,,0,,1
-bossrenjie88Yafogemeng52e4,4,1,1,0,,,,,,,,,,,,bossrenjie88Yafogemeng52b1,12345,,,,1
+bossrenjie88Yafogemeng52e4,2,1,1,0,,,,,bossrenjie88Yafogemeng52e5,1.2,"""""",,,,,,12345,,,,1
+bossrenjie88Yafogemeng52e5,4,1,1,0,,,,,,,,,,,,bossrenjie88Yafogemeng52b1,12345,,,,1
 bossrenjie88Yafogemeng53e1,5,1,0,0,,,,,,,LifeLowerSwitch_90_100|bossrenjie88Yafogemeng53e4;Default|bossrenjie88Yafogemeng53e2;,,,,,,12345,,,,1
 bossrenjie88Yafogemeng53e2,2,1,1,0,,,,,bossrenjie88Yafogemeng53e3,1.2,"""""",,,,,,12345,,,,1
 bossrenjie88Yafogemeng53e3,3,1,1,0,,,,,,,,0,0.62,1,0,,12345,,0,,1
-bossrenjie88Yafogemeng53e4,4,1,1,0,,,,,,,,,,,,bossrenjie88Yafogemeng53b1,12345,,,,1
+bossrenjie88Yafogemeng53e4,2,1,1,0,,,,,bossrenjie88Yafogemeng53e5,1.2,"""""",,,,,,12345,,,,1
+bossrenjie88Yafogemeng53e5,4,1,1,0,,,,,,,,,,,,bossrenjie88Yafogemeng53b1,12345,,,,1
 bossrenjie88Yafogemeng54e1,1,1,0,0,,,1,bossrenjie88Yafogemeng54e2,,,"""""",,,,,,12345,,,,1
 bossrenjie88Yafogemeng54e2,2,1,0,0,,,,,bossrenjie88Yafogemeng54e3,1,,,,,,,12345,,,,1
 bossrenjie88Yafogemeng54e3,4,1,0,0,,,,,,,,,,,,debuffstunb1,12345,,,,1

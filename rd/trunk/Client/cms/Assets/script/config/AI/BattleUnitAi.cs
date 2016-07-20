@@ -86,8 +86,20 @@ public class BattleUnitAi : MonoBehaviour {
 		case (int)SpellType.Spell_Type_Dot:
 			attackTarget = GetValidNegativeBuffTarget(caster,spellType);
 			break;
-		case (int)SpellType.Spell_Type_PrepareDazhao://todo:liws need diff magic and phy
-			attackTarget = GetPhyAttackTarget(caster);
+		case (int)SpellType.Spell_Type_PrepareDazhao:
+			Spell dazhaoSpell = GetSpell(AiAttackStyle.Dazhao,caster);
+			if(null != dazhaoSpell)
+			{
+				if(dazhaoSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack)
+				{
+					attackTarget = GetPhyAttackTarget(caster);
+				}
+				else
+				{
+					attackTarget = GetMagicAttackTarget(caster);
+				}
+			}
+
 			break;
 		default:
 			Logger.LogError("battleAi Can't did the spelltype " + spellType);

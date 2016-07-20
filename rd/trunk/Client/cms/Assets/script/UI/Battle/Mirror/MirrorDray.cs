@@ -31,6 +31,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 
 	bool isDragging = false;
 	bool	isShowMirrorExitEffect = false;
+	bool 	isCanShowMirrorExitEffect = false;
 
 	int mirrorStateHash = -1;
 
@@ -113,6 +114,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		//	mirrorTween.Kill(true);
 		//}
 		isShowMirrorExitEffect = false;
+		isCanShowMirrorExitEffect = true;
 		isDragging = false;
 		//MirrorDragImage.gameObject.SetActive (true);
 		//MirrorDragImage.DOFade (1.0f, 0.5f);
@@ -129,6 +131,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 	{
 		isShowMirrorExitEffect = true;
 		OnSetMirrorModeState (false);
+		isCanShowMirrorExitEffect = false;
 	}
 	// 拖动  
 	public void OnDrag (PointerEventData data)
@@ -177,7 +180,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		{
 
 			StopRayCast();
-			if(isShowMirrorExitEffect)
+			if(isShowMirrorExitEffect && isCanShowMirrorExitEffect)
 			{
 				isShowMirrorExitEffect  = false;
 				mirrorExitEffect.gameObject.SetActive(true);
@@ -201,7 +204,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 			}
 
 
-
+			isCanShowMirrorExitEffect = false;
 			ResetMirror();
 
 		}

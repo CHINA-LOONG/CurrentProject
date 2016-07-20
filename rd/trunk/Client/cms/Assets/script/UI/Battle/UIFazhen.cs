@@ -9,8 +9,8 @@ public class UIFazhen : UIBase
 	public Text leftTimeText;
 	public Text errorTip;
 
-	int maxSecend = 10;
-	int leftSecend = 0;
+	//int maxSecend = 10;
+    float leftSecend = 0.0f;
 
     private GameObject fazhenStyle;
 
@@ -23,8 +23,8 @@ public class UIFazhen : UIBase
     public override void Init()
     {
         InitFazhen();
-		leftSecend = maxSecend;
-		StartCoroutine ("updateLeftTimeCo");
+        leftSecend = 10.0f;
+		//StartCoroutine ("updateLeftTimeCo");
 		ShowErrorTip (false);
     }
     public override void Clean()
@@ -37,8 +37,25 @@ public class UIFazhen : UIBase
 
 	void OnDestroy()
 	{
-		StopUpdateLeftTime ();
+		//StopUpdateLeftTime ();
 	}
+
+    void Update()
+    {
+        if (leftSecend > -100.0f)
+        {
+            leftSecend -= Time.unscaledDeltaTime;
+            if (leftSecend > 0.0f)
+            {
+                leftTimeText.text = Mathf.CeilToInt(leftSecend).ToString();   //Math.Ceiling(Convert.ToDecimal(d)).ToString())
+            }
+            else
+            {
+                leftSecend = -100.0f;//invalidate time;
+                GameEventMgr.Instance.FireEvent<int>(GameEventList.OverMagicShifaWithResult, 0);
+            }
+        }
+    }
 
 	void InitFazhen()
 	{
@@ -60,32 +77,32 @@ public class UIFazhen : UIBase
 		rectTrans.anchoredPosition3D = stylePos;
 	}
 
-	IEnumerator updateLeftTimeCo()
-	{
-		float waitTime = 1.0f;
-		if (Time.timeScale > 0)
-		{
-			waitTime = 1.0f * Time.timeScale;
-		}
-		while(leftSecend > 0)
-		{
-			leftTimeText.text = leftSecend.ToString();
-			leftSecend--;
-			yield return new WaitForSeconds(waitTime);
-		}
-		GameEventMgr.Instance.FireEvent<int>(GameEventList.OverMagicShifaWithResult,0);
-	}
+    //IEnumerator updateLeftTimeCo()
+    //{
+    //    float waitTime = 1.0f;
+    //    if (Time.timeScale > 0)
+    //    {
+    //        waitTime = 1.0f * Time.timeScale;
+    //    }
+    //    while(leftSecend > 0)
+    //    {
+    //        leftTimeText.text = leftSecend.ToString();
+    //        leftSecend--;
+    //        yield return new WaitForSeconds(waitTime);
+    //    }
+    //    GameEventMgr.Instance.FireEvent<int>(GameEventList.OverMagicShifaWithResult,0);
+    //}
 
 	public void ShifaSucc()
 	{
-		StopUpdateLeftTime ();
+		//StopUpdateLeftTime ();
 		GameEventMgr.Instance.FireEvent<int>(GameEventList.OverMagicShifaWithResult,1);
 	}
 
-	void StopUpdateLeftTime()
-	{
-		StopCoroutine ("updateLeftTimeCo");
-	}
+    //void StopUpdateLeftTime()
+    //{
+    //    StopCoroutine ("updateLeftTimeCo");
+    //}
 
 	public void ShowErrorTip(bool bshow)
 	{

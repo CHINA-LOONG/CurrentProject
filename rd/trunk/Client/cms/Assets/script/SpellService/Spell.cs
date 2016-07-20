@@ -167,7 +167,10 @@ public class Spell
         //args.firstSpell = (spellData.category == (int)SpellType.Spell_Type_Passive) ? spellData.firstSpell : null;
         args.firstSpell = isFirstSpell;
         args.category = spellData.category;
-        spellService.TriggerEvent(GameEventList.SpellFire, args);
+        //if (caster.pbUnit.camp == UnitCamp.Enemy || spellData.category != (int)SpellType.Spell_Type_MagicDazhao)
+        {
+            spellService.TriggerEvent(GameEventList.SpellFire, args);
+        }
     }
 
     public void SetSpellEndTime(float delayTime)

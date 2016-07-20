@@ -304,12 +304,12 @@ public class SpellFunctions
 		float randNum = Random.Range(0.0f, 1.0f);
         if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
         {
-            Spell ownedSpell = damageEffect.ownedSpell;
-            if (ownedSpell != null && 
-                ((ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack)||(ownedSpell.spellData.category == (int)SpellType.Spell_Type_MgicAttack)) && randNum <= 0.8f)
+            EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+            if (damageProto.isHeal == false && (damageProto.damageType == SpellConst.damagePhy || damageProto.damageType == SpellConst.damageMagic) && randNum <= 0.8f)
             {
                 return 1;
             }
+			
         }
         return 0;
     }
@@ -325,8 +325,8 @@ public class SpellFunctions
 		float randNum = Random.Range(0.0f, 1.0f);
         if (damageEffect != null && damageEffect.targetID == triggerBuff.targetID)
         {
-            Spell ownedSpell = damageEffect.ownedSpell;
-            if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack && randNum <= 0.8f)
+            EffectDamageProtoType damageProto = damageEffect.protoEffect as EffectDamageProtoType;
+            if (damageProto.isHeal == false && damageProto.damageType == SpellConst.damagePhy && randNum <= 0.8f)
             {
                 return 1;
             }

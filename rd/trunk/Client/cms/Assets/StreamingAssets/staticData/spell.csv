@@ -88,7 +88,7 @@ psvLonggongtongzi,psvLonggongtongzie1,0,0,0,0,4,0,icon_psvLonggongtongzi,psvLong
 psvWagui,psvWaguie1,0,0,0,0,4,0,icon_psvWagui,psvWaguiName,psvWaguiTips,0,0,
 ultHapi,ultHapie1,0,10,100,0,9,0,icon_ultHapi,ultHapiName,ultHapiTips,0,1,
 ultHetong,ultHetonge1,0,10,100,0,9,0,icon_ultHetong,ultHetongName,ultHetongTips,0.5,1,
-ultWagui,ultWaguie1,0,10,100,0,9,0,icon_ultWagui,ultWaguiName,ultWaguiTips,3.3,0,
+ultWagui,ultWaguie1,0,10,100,0,9,0,icon_ultWagui,ultWaguiName,ultWaguiTips,3.3,1,
 ultLonggongtongzi,ultLonggongtongzie1,0,10,100,0,9,0,icon_ultLonggongtongzi,ultLonggongtongziName,ultLonggongtongziTips,0.3,1,
 ultHuapo,ultHuapoe1,10,10,100,0,8,0,icon_ultHuapo,ultHuapoName,ultHuapoTips,0.325,0,
 ultAmute,ultAmutee1,0,0,100,0,9,0,icon_ultAmute,ultAmuteName,ultAmuteTips,0,1,

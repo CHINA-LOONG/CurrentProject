@@ -21,8 +21,9 @@ public class FetchAccountServerInfoHandler implements HttpHandler {
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
 		try {
-			Map<String, String> params = CollectorHttpServer.parseHttpParam(httpExchange);
+			HawkLog.logPrintln("fetch Collector accountserver");
 			
+			Map<String, String> params = CollectorHttpServer.parseHttpParam(httpExchange);
 			Collector.checkToken(params.get("token"));
 			AccountServer accountServer = CollectorServices.getInstance().GetAccountServer(params.get("game"), params.get("platform"), params.get("channel"), params.get("server"));
 			if (accountServer != null) {
@@ -36,6 +37,7 @@ public class FetchAccountServerInfoHandler implements HttpHandler {
 					jsonObject.addProperty("zmqPort", accountServer.zmqPort);
 				}
 				HawkLog.logPrintln(jsonObject.toString());
+				HawkLog.logPrintln("fetch Collector accountserver :" + jsonObject.toString());
 				CollectorHttpServer.response(httpExchange, jsonObject.toString());
 			}
 			else {

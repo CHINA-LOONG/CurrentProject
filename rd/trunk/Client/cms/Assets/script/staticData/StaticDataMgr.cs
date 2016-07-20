@@ -488,8 +488,8 @@ public class StaticDataMgr : MonoBehaviour
             var data = InitTable<UnitStageData>("unitStage");
             foreach (var item in data)
             {
-                item.demandItemList = ItemInfo.getItemInfoList(item.demandItem, ItemParseType.StageItemType);
-                item.demandMonsterList = ItemInfo.getItemInfoList(item.demandMonster, ItemParseType.StageItemType);
+                item.demandItemList = ItemInfo.getItemInfoList(item.demandItem, ItemParseType.DemandItemType);
+                item.demandMonsterList = ItemInfo.getItemInfoList(item.demandMonster, ItemParseType.DemandMonsterType);
                 unitStageData.Add(item.stage, item);
                 //Logger.Log(item.id + "\t" + item.english);
             }

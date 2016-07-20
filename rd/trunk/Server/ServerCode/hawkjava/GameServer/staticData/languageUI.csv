@@ -76,12 +76,12 @@ shop_purchase,首次充值,"1st
 Purchase"
 shop_recharge,确认用{0}购买吗？,Use {0} to purchase?
 xf,,
-equip_Helmet,<头盔>,<Helmet>
-equip_Weapon,<武器>,<Weapon>
-equip_Armor,<护甲>,<Armor>
-equip_Bracer,<护手>,<Gauntlet>
-equip_Ring,<鞋子>,<Shoes>
-equip_Jewelry,<戒指>,<Ring>
+equip_Helmet,头盔,Helmet
+equip_Weapon,武器,Weapon
+equip_Armor,护甲,Armor
+equip_Bracer,护手,Gauntlet
+equip_Ring,鞋子,Shoes
+equip_Jewelry,戒指,Ring
 equip_gem_NotSet,未镶嵌,Not Attached
 equip_gem_NotKong,未开孔：开孔后将获得纹章槽,"No slots opened: after opening, an Insignia slot will be opened."
 equip_Change,更换,Change
@@ -266,7 +266,7 @@ compose_record_007,操作失败，至少要保留1只宠物,"Action failed, at l
 xl_monsterbook,,
 handbook_btn,图鉴,Monsterbook
 handbook_owned,拥有宠物,Owned
-handbook_shouji,收集宠物,Collected
+handbook_shouji,图鉴,Monsterbook
 item_type_chip,碎片,Fragment
 handbook_tips,*灵魂本源最大能替换{0:0%}的宠物碎片哟！,Lore cores can be used for up to {0:0%} of this monster's fragments.
 handbook_zhaohuan,合成,Craft
@@ -337,6 +337,7 @@ pet_detail,,
 pet_detail_left_detail_attr,详细属性,Details
 detail_title2,战斗属性,Battle Attributes
 pet_detail_left_skill,技能,Abilities
+pet_detail_left_skill1,宠物技能,Monster Abilities
 pet_detail_left_advance,觉醒,Awaken
 pet_detail_roles,性格,roles
 im_monster_lock,宠物锁定成功,Monster is now locked.
@@ -352,6 +353,7 @@ pet_detail_stage_attr,基础属性,Base Attributes
 pet_detail_stage_demand_level,需求等级,Req. LVL
 pet_detail_stage_demand_item,需求材料,Req. Materials
 pet_detail_stage,进阶,Advance
+pet_detail_stage1,宠物进阶,Monster Advance
 pet_detail_stage_full,恭喜！进阶已完成!,Congratulations! Advancement complete!
 pet_detail_stage_monster,需要的怪物,Req. Monsters:
 pet_detail_skill_dazhaobiaoshi,大招,Ult
@@ -368,7 +370,7 @@ monster_record_009,宠物解锁成功,Monster is now unlocked.
 monster_record_010,角色升级后才能继续打造！,Increase your character level to continue forging!
 monster_record_011,宠物等级不足,Monster level too low.
 monster_record_012,程序大大正在紧张制作中…,The monster engineers are making it now…
-monster_record_013,请提升宠物等级,Please level up your monster.
+monster_record_013,技能等级不能高于宠物等级,Please level up your monster.
 monster_record_014,技能点不足,Insufficient Ability Points.
 monster_record_015,战力下降{0},BP decrease {0}
 pet_detail_skill_no_upgrade,该技能不能升级,this skill cannot upgrade
@@ -753,10 +755,11 @@ towerBoss_3_38,死亡之塔 - 38,Tower Of Death - 38
 towerBoss_3_39,死亡之塔 - 39,Tower Of Death - 39
 towerBoss_3_40,死亡之塔 - 40,Tower Of Death - 40
 im_battle_002,己方宠物正在释放大招，请稍后再试,"Your monsters are currently casting their ults, please try again later."
-im_battle_004,10级即可开启托管功能,10级即可开启托管功能
-im_battle_005,通关后即可开启托管功能,通关后即可开启托管功能
-im_battle_006,托管状态，无法进行换怪操作,托管状态，无法进行换怪操作
-im_battle_007,托管状态，无法手动释放大招,托管状态，无法手动释放大招
+im_battle_003,达到5级即可开启加速功能,Reach level 5 to unlock the speed-up feature
+im_battle_004,达到10级即可开启托管功能,Reach level 10 to unlock the auto-battle feature
+im_battle_005,通关后即可开启托管功能,Clear the stage to unlock the auto-battle feature
+im_battle_006,托管状态，无法进行换怪操作,"In auto-battle, unable to do any monster actions"
+im_battle_007,托管状态，无法手动释放大招,"In auto-battle, unable to manually cast abilities"
 im_battle_001,正在进行换怪，不能施放大招,"Swapping monsters, unable to cast ult now."
 im_spell_001,当前宠物处于眩晕状态，无法释放大招,"Monster is currently stunned, unable to cast ult now."
 passive,被动,Passive
@@ -1608,20 +1611,18 @@ specialsell_suipian_desc,可以获得珍惜宠物碎片哦！,Get rare monster f
 specialgift_buySuccess,成功购买<color=#ffcc00>{0}</color>礼包！,You have purchased the <color=#ffcc00>{0}</color> package!
 spell_hit_stunImmune,免疫眩晕,Stun Immune
 main_icon_huodong,活动礼包,Event Package
-main_icon_xuanze,新手礼包,New Player Package
+main_icon_xuanze,新人礼,New Player Gift
 loading_special,各个国家都存在传说和神话。我们的存在绝非偶然。,Legends and Gods exist in every country and culture. Our existence is no coincidence.
-giftspecial_jinjie1_name,宠物进阶礼包,"Monster Advancement
-Package"
-giftspecial_suipian1_name,惊喜碎片礼包,"Surprise Fragment
-Package"
+giftspecial_jinjie1_name,宠物进阶,Monster Advancement
+giftspecial_suipian1_name,惊喜碎片,Surprise Fragment
 giftspecial_huodong1_name,活动礼包,Event Package
-giftspecial_xuanze1_name,新手礼包,New Player Package
+giftspecial_xuanze1_name,新人礼,New Player Gift
 giftspecial_jinjie1_desc,快速提升宠物战力的绝佳方式！,The best way to quickly increase monster BP!
 giftspecial_suipian1_desc,可以获得珍惜宠物碎片哦！,Get rare monster fragments!
 giftspecial_huodong1_desc,首次付费测试礼包，绝对超值体验！,首次付费测试礼包，绝对超值体验！
 specialgift_title,活动礼包,Event Package
-giftspecial_jinjie_name,宠物进阶礼包,Monster Advancement Package
-giftspecial_suipian_name,惊喜碎片礼包,Surprise Fragment Package
+giftspecial_jinjie_name,宠物进阶,Monster Advancement
+giftspecial_suipian_name,惊喜碎片,Surprise Fragment
 pet_detail_skill_buy10,购买<color=#ffcc00>10</color>点技能点数,Purchase <color=#ffcc00>10</color> ability points
 pet_detail_skill_buytimes,今日可买：{0}/{1},Can purchase today : {0}/{1}
 monster_record_017,购买10点技能点数成功,Purchased 10 ability points!
@@ -1631,3 +1632,15 @@ giftspecial_event_desc,可以在此购买已经触发的特殊礼包！,可以�
 giftspecial_xuanze1_desc,只能购买其中<color=#ffcc00>一个</color>礼包哦！,Can only be purchased <color=#ffcc00>once</color>!
 giftspecial_xuanze11_desc,剩余时间 ,Time left 
 giftspecial_xuanze12_desc,剩余时间 ,Time left 
+common_attr_health_tips,增加体力可增加生命值,增加体力可增加生命值
+common_attr_strenth_tips,增加力量可提升物理攻击力,增加力量可提升物理攻击力
+common_attr_intelligence_tips,增加智力可提升法术攻击力,增加智力可提升法术攻击力
+common_attr_defence_tips,增加防御可降低所受伤害,增加防御可降低所受伤害
+common_attr_speed_tips,速度快的单位更早出手,速度快的单位更早出手
+detail_life_tips,受到伤害时损失生命值,受到伤害时损失生命值
+detail_physatk_tips,增加物理伤害效果,增加物理伤害效果
+detail_magicatk_tips,增加法术伤害效果,增加法术伤害效果
+common_attr_critical_ratio_tips,提高暴击的几率,提高暴击的几率
+common_attr_critical_dmg_tips,提高暴击时伤害效果,提高暴击时伤害效果
+common_attr_heal_ratio_tips,提高被治疗的效果,提高被治疗的效果
+common_attr_energy_tips,增加前置能量可更早使用大招,增加前置能量可更早使用大招

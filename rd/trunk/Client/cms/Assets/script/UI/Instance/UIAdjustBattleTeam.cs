@@ -353,6 +353,7 @@ public class UIAdjustBattleTeam : UIBase
 		if (null == subIcon) 
 		{
 			subIcon = MonsterIcon.CreateIcon();
+            playerIcons.Add(subIcon);
 			subIcon.transform.SetParent(iconBg.transform,false);
 			
 			RectTransform rectTrans = subIcon.transform as RectTransform;

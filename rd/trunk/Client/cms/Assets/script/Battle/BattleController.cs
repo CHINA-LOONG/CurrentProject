@@ -613,16 +613,15 @@ public class BattleController : MonoBehaviour
 
         ++curProcessIndex;
         //Fade.FadeIn(waitTime);
-        cameraNodeDic.Clear();
-        Appearance(true, waitTime);
+        cameraNodeDic.Clear();        
         IsOcclusion(false);
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(waitTime);        
         battleGroup.RefreshPlayerPos();
         uiBattle.ShowUI(true);
         uiBattle.gameObject.BroadcastMessage("OnAnimationFinish");
-
         StartProcess(curProcessIndex);
         SetCameraDefault();
+        Appearance(true, waitTime);
         //TODO: fade in and fade out && end event &&recover life etc
     }
     //---------------------------------------------------------------------------------------------
@@ -717,14 +716,23 @@ public class BattleController : MonoBehaviour
     IEnumerator PlayBalanceAnim(bool isSuccess)
     {
         uiBattle.ShowEndBattleUI(isSuccess);
-        string eventName = isSuccess ? "win" : "failed";
+        string selfEvent = isSuccess ? "win" : "failed";
+        string enemyEvent = isSuccess ? "failed" : "win";
         float curTime = Time.time;
-        for (int i = 0; i < battleGroup.EnemyFieldList.Count; ++i)
+        for (int i = 0; i < battleGroup.PlayerFieldList.Count; ++i)
         {
             BattleObject bo = battleGroup.PlayerFieldList[i];
             if (bo != null && bo.unit.curLife > 0 && bo.unit.State != UnitState.Dead)
             {
-                battleGroup.PlayerFieldList[i].TriggerEvent(eventName, curTime, null);
+                battleGroup.PlayerFieldList[i].TriggerEvent(selfEvent, curTime, null);
+            }
+        }
+        for (int i = 0; i < battleGroup.EnemyFieldList.Count; ++i)
+        {
+            BattleObject bo = battleGroup.EnemyFieldList[i];
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.State != UnitState.Dead)
+            {
+                battleGroup.EnemyFieldList[i].TriggerEvent(enemyEvent, curTime, null);
             }
         }
         yield return new WaitForSeconds(3.0f);

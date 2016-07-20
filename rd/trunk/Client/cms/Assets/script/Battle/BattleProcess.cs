@@ -183,7 +183,7 @@ public class BattleProcess : MonoBehaviour
         for (int i = 0; i < eventCount; ++i)
         {
             SpellUnitDeadArgs args = deadEventList[i];
-            if (args.triggerTime < lastUpdateTime || args.triggerTime > curTime)
+            if (args.triggerTime < lastUpdateTime || args.triggerTime >= curTime)
             {
                 continue;
             }
@@ -201,7 +201,7 @@ public class BattleProcess : MonoBehaviour
             //Logger.LogWarning("[Battle.Process]OnUnitDead: " + deadUnit.name);
             int slot = deadUnit.unit.pbUnit.slot;
             deadUnit.unit.State = UnitState.Dead;
-            deadUnit.ClearEvent();
+            //deadUnit.ClearEvent();
             deadUnit.TriggerEvent("dead", args.triggerTime, null);
 
 			BattleObject dazhaoCaster = MagicDazhaoController.Instance.GetCasterBattleObj();
@@ -681,9 +681,21 @@ public class BattleProcess : MonoBehaviour
             battleResult = NormalScript.normalValiVic();
         }
 
-        if (insertAction.Count > 0)
+        if (battleResult != BattleRetCode.Normal && insertAction.Count > 0)
         {
-            battleResult = BattleRetCode.Normal;
+            for (int i = insertAction.Count - 1; i >= 0; --i)
+            {
+                if (insertAction[i].type == ActionType.SwitchPet ||
+                    insertAction[i].type == ActionType.UnitReplaceDead
+                    )
+                {
+                    battleResult = BattleRetCode.Normal;
+                }
+                else 
+                {
+                    insertAction.RemoveAt(i);
+                }
+            }
         }
 
         if (battleResult == BattleRetCode.Failed)

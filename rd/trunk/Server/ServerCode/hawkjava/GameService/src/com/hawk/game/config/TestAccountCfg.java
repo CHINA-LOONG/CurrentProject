@@ -14,9 +14,10 @@ public class TestAccountCfg extends HawkConfigBase {
 
 	protected final String puid;
 	protected final String nickname;
+	protected final int pLevel;
 	protected final String monsterId;
 	protected final int stage;
-	protected final int level;
+	protected final int mLevel;
 	protected final int exp;
 	protected final int lazy;
 	protected final int lazyExp;
@@ -29,9 +30,10 @@ public class TestAccountCfg extends HawkConfigBase {
 	public TestAccountCfg() {
 		puid = "";
 		nickname = "";
+		pLevel = 0;
 		monsterId = "";
 		stage = 0;
-		level = 0;
+		mLevel = 0;
 		exp = 0;
 		lazy = 0;
 		lazyExp = 0;
@@ -58,6 +60,10 @@ public class TestAccountCfg extends HawkConfigBase {
 		return nickname;
 	}
 
+	public short getPlayerLevel() {
+		return (short)pLevel;
+	}
+
 	public String getMonsterId() {
 		return monsterId;
 	}
@@ -66,8 +72,8 @@ public class TestAccountCfg extends HawkConfigBase {
 		return (byte)stage;
 	}
 
-	public short getLevel() {
-		return (short)level;
+	public short getMonsterLevel() {
+		return (short)mLevel;
 	}
 
 	public int getExp() {

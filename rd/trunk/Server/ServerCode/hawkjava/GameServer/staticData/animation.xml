@@ -14005,7 +14005,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time = "0" ani="" key="bossfuhuo" value="true"/>
 			</MotionList>
 			<WpStateList>
-				<Wp time="0.5" name="bosskongdao72Nvyao1wp04" state="0"/>
+				<Wp time="2.5" name="bosskongdao72Nvyao1wp04" state="0"/>
 			</WpStateList>
 		</Ani>
 		
@@ -14014,101 +14014,101 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time = "0" ani="" key="bossfuhuo" value="true"/>
 			</MotionList>
 			<WpStateList>
-				<Wp time="0.5" name="bosskongdao72Nvyao1wp04" state="0"/>
+				<Wp time="2.5" name="bosskongdao72Nvyao1wp04" state="0"/>
 			</WpStateList>
 		</Ani>
 		
-		<Ani id="luoxinfu1_wp2" state="0" action_delay="2">
+		<Ani id="luoxinfu1_wp2" state="0" action_delay="3">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
 			<WpStateList>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp02" state="0"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp03" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp04" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp05" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp06" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp02" state="0"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp03" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp04" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp05" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp06" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="luoxinfu1_wp3" state="0" action_delay="2">
+		<Ani id="luoxinfu1_wp3" state="0" action_delay="3">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
 			<WpStateList>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp02" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp03" state="0"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp04" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp05" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp06" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp02" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp03" state="0"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp04" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp05" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp06" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="luoxinfu1_wp4" state="0" action_delay="2">
+		<Ani id="luoxinfu1_wp4" state="0" action_delay="3">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
 			<WpStateList>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp02" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp03" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp04" state="0"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp05" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp06" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp02" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp03" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp04" state="0"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp05" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp06" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="luoxinfu1_wp5" state="0" action_delay="2">
+		<Ani id="luoxinfu1_wp5" state="0" action_delay="3">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
 			<WpStateList>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp02" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp03" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp04" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp05" state="0"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp06" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp02" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp03" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp04" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp05" state="0"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp06" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="luoxinfu1_wp6" state="0" action_delay="2">
+		<Ani id="luoxinfu1_wp6" state="0" action_delay="3">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
 			<WpStateList>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp02" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp03" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp04" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp05" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp06" state="0"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp02" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp03" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp04" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp05" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp06" state="0"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="luoxinfu1_wp7" state="0" action_delay="2">
+		<Ani id="luoxinfu1_wp7" state="0" action_delay="3">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
 			<WpStateList>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp02" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp03" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp04" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp05" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp06" state="3"/>
-				<Wp time="0.5" name="bosskongdao73Luoxinfu1wp07" state="0"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp02" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp03" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp04" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp05" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp06" state="3"/>
+				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="0"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="piying1_wprefresh" state="0" action_delay="4">
 			<MotionList>
-				<Motion time = "0" ani="" key="bossjianxiao" value="true"/>
+				<Motion time = "2" ani="" key="bossjianxiao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle time="0" asset="piying1pre_qiehuan" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="2" asset="piying1pre_qiehuan" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="piyingqiehuan"/>
+				<Audio time="2.5" name="piyingqiehuan"/>
 			</AudioList>
 			<WpStateList>
-				<Wp time="0.5" name="bosskongdao74Piying1wp02" state="0"/>
-				<Wp time="0.5" name="bosskongdao74Piying1wp03" state="0"/>
+				<Wp time="2.0" name="bosskongdao74Piying1wp02" state="0"/>
+				<Wp time="2.0" name="bosskongdao74Piying1wp03" state="0"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="longnv1_chongzhi" state="0" action_delay="2">
@@ -14181,13 +14181,18 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie85Dujiaoshou1awakenwp01" state="1"/>
 				<Wp time="0.5" name="bossrenjie85Dujiaoshou1awakenwp05" state="3"/>
+				<Wp time="0.5" name="bossrenjie85Dujiaoshou1awakenwp03" state="3"/>
+				<Wp time="0.5" name="bossrenjie85Dujiaoshou1awakenwp04" state="3"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="huoniao4awaken_wp05" state="0" action_delay="2">
 			<WpStateList>
-				<Wp time="0.5" name="bossrenjie82Huoniao4awakenwp06" state="3"/>
-				<Wp time="0.5" name="bossrenjie82Huoniao4awakenwp01" state="1"/>
+				<Wp time="2.5" name="bossrenjie82Huoniao4awakenwp06" state="3"/>
+				<Wp time="2.5" name="bossrenjie82Huoniao4awakenwp01" state="1"/>
 			</WpStateList>
+			<MotionList>
+				<Motion time="0" ani="" key="bossrehuo" value="true"/>
+			</MotionList>
 		</Ani>
 		<Ani id="landuo2wp05_state0" state="0" action_delay="2">
 			<WpStateList>

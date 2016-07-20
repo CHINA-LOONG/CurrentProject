@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public enum ItemParseType
 {
-    StageItemType,
+    DemandItemType,
 
-    StageItemNum
+    DemandMonsterType
 }
 
 public class ItemInfo 
@@ -53,40 +53,42 @@ public class ItemInfo
         this.level = 0;
     }
 
-    public bool initStageByString(string info)
+    public static ItemInfo valueof(string info, ItemParseType type)
     {
         if (info != null && info.Equals("") == false)
         {
+            ItemInfo itemInfo = new ItemInfo();
             string[] items = info.Split('_');
             if (items.Length < 3)
             {
-                return false;
+                return null;
             }
 
-            type = int.Parse(items[0]);
-            itemId = items[1];
-            count = int.Parse(items[2]);
-            if (items.Length == 4)
+            itemInfo.type = int.Parse(items[0]);
+            itemInfo.itemId = items[1];
+            itemInfo.count = int.Parse(items[2]);
+
+            switch (type)
             {
-                stage = int.Parse(items[3]);
+                case ItemParseType.DemandMonsterType:
+                    if (items.Length == 4)
+                    {
+                        itemInfo.stage = int.Parse(items[3]);
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                                      
+                    break;
+                default:
+                    break;
             }
-            return true;
+
+            return itemInfo;
         }
 
-        return false;
-    }
-
-    public static ItemInfo valueof(string info, ItemParseType type)
-    {
-        ItemInfo itemInfo = new ItemInfo();
-        switch (type)
-        {
-            case ItemParseType.StageItemType:
-                itemInfo.initStageByString(info);
-        	    break;
-        }
-
-        return itemInfo;
+        return null;
     }
 
     public static List<ItemInfo> getItemInfoList(string info, ItemParseType type)

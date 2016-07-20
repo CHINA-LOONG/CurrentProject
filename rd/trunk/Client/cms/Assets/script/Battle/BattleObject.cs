@@ -24,7 +24,7 @@ public class BattleObject : MonoBehaviour
     public List<ActorEventData> waitEventList = new List<ActorEventData>();
 
     //public SimpleEffect shifaNodeEffect;
-    private Quaternion targetRot;
+    private Quaternion targetRot = Quaternion.identity;
     private float lastUpdateTime;
 
 	public WeakPointGroup wpGroup = null;
@@ -150,17 +150,19 @@ public class BattleObject : MonoBehaviour
         //BattleObject unit = ObjectDataMgr.Instance.GetBattleObject(guid);
         //if (unit != null)
         {
-            ClearEvent();
+            //ClearEvent();
             if (unit.State != UnitState.Dead)
             {
                 unit.State = UnitState.None;
             }
-            gameObject.SetActive(false);
+
+            gameObject.transform.localPosition = new Vector3(0.0f, 10000f, 0.0f);
+            //gameObject.SetActive(false);
             Logger.LogFormat("Unit {0} guid:{1} has exited field", name, guid);
         }
     }
     //---------------------------------------------------------------------------------------------
-    void Update()
+    void LateUpdate()
     {
         //update event list
         float curTime = Time.time;
@@ -259,10 +261,9 @@ public class BattleObject : MonoBehaviour
 
                 if (string.IsNullOrEmpty(curParticleData.particleAsset) == false)
                 {
-                    GameObject prefab = ResourceMgr.Instance.LoadAsset(curParticleData.particleAsset);
-                    if (prefab != null)
+                    curParticleData.psObject = ResourceMgr.Instance.LoadAsset(curParticleData.particleAsset);
+                    if (curParticleData.psObject != null)
                     {
-                        curParticleData.psObject = prefab;
                         Transform rootTransform = transform;
                         if (string.IsNullOrEmpty(curEventData.rootNode) == false)
                         {
@@ -289,7 +290,6 @@ public class BattleObject : MonoBehaviour
 
                         if (curParticleData.attach == "true")
                         {
-                            curParticleData.psObject.transform.localPosition = prefab.transform.localPosition;
                             //curParticleData.psObject.transform.localRotation = prefab.transform.localRotation;
                             curParticleData.psObject.transform.localRotation = Quaternion.identity;
                             curParticleData.psObject.transform.SetParent(rootTransform, false);
@@ -309,7 +309,6 @@ public class BattleObject : MonoBehaviour
                             }
 
                         }
-                        curParticleData.psObject.transform.localScale = prefab.transform.localScale;
                         curParticleData.psDuration = Util.ParticleSystemLength(curParticleData.psObject.transform);
 
                         if (curParticleData.particleAni != null && curParticleData.particleAni.Length > 0)
@@ -345,6 +344,34 @@ public class BattleObject : MonoBehaviour
 
                 //TODO: animate battlecamera only?
                 GameObject cameraRoot = BattleCamera.Instance.gameObject;
+                if (string.IsNullOrEmpty(curCameraData.parent) == false)
+                {
+                    GameObject cameraParentTarget = null;
+                    if (curCameraData.parent == "default")
+                    {
+                        cameraParentTarget = BattleController.Instance.GetDefaultCameraNode().gameObject;
+                    }
+                    else
+                    {
+                        cameraParentTarget = Util.FindChildByName(gameObject, curCameraData.parent);
+                    }
+                    if (cameraParentTarget != null)
+                    {
+                        if (string.IsNullOrEmpty(curCameraData.isMover) || curCameraData.isMover != "true")
+                        {
+                            Transform parentTransform = cameraParentTarget.transform;
+                            cameraRoot.transform.localPosition = parentTransform.position;
+                            cameraRoot.transform.localRotation = parentTransform.rotation;
+                            cameraRoot.transform.SetParent(transform.parent, false);
+                        }
+                        else 
+                        {
+                            cameraRoot.transform.DOMove(cameraParentTarget.transform.position, curCameraData.duration);
+                            cameraRoot.transform.DORotate(cameraParentTarget.transform.rotation.eulerAngles, curCameraData.duration);
+                        }
+                    }
+                }
+
                 if (string.IsNullOrEmpty(curCameraData.cameraAni) == false)
                 {
                     Animator animator = cameraRoot.GetComponent<Animator>();
@@ -359,26 +386,6 @@ public class BattleObject : MonoBehaviour
                                 animator.Play(curAniHash);
                                 break;
                             }
-                        }
-                    }
-                }
-
-                if (string.IsNullOrEmpty(curCameraData.parent) == false)
-                {
-                    GameObject cameraParentTarget = Util.FindChildByName(BattleController.Instance.GetSceneRoot(), curCameraData.parent);
-                    if (cameraParentTarget != null)
-                    {
-                        if (string.IsNullOrEmpty(curCameraData.isMover) || curCameraData.isMover != "true")
-                        {
-                            Transform parentTransform = cameraParentTarget.transform;
-                            cameraRoot.transform.localPosition = parentTransform.position;
-                            cameraRoot.transform.localRotation = parentTransform.rotation;
-                            cameraRoot.transform.SetParent(transform.parent, false);
-                        }
-                        else 
-                        {
-                            cameraRoot.transform.DOMove(cameraParentTarget.transform.position, curCameraData.duration);
-                            cameraRoot.transform.DORotate(cameraParentTarget.transform.rotation.eulerAngles, curCameraData.duration);
                         }
                     }
                 }

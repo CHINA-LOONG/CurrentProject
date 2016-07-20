@@ -82,12 +82,15 @@ public class GmService extends GameService {
 
 		// 生成账号-------------------------------------------------------------------------------------
 		for (Entry<String, List<TestAccountCfg>> entry : accountMap.entrySet()) {
-			String puid = entry.getKey();
+			String puid = entry.getKey().toLowerCase();
+			// 创建player entity
 			int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
 			if (playerId == 0) {
 				String nickname = entry.getValue().get(0).getNickname();
+				short level = entry.getValue().get(0).getPlayerLevel();
 
 				PlayerEntity playerEntity = new PlayerEntity(puid, nickname, (byte)1, 1, 1, 1, 1);
+				playerEntity.setLevel(level);
 				if (false == playerEntity.notifyCreate()) {
 					continue;
 				}
@@ -102,7 +105,7 @@ public class GmService extends GameService {
 				continue;
 			}
 
-			// 创建player
+			// 创建player object
 			GsApp app = GsApp.getInstance();
 			HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId);
 			HawkObjBase<HawkXID, HawkAppObj> objBase = app.lockObject(xid);
@@ -133,7 +136,7 @@ public class GmService extends GameService {
 						}
 
 						MonsterEntity monsterEntity = new MonsterEntity(cfg.getMonsterId(), playerId,
-								cfg.getStage(), cfg.getLevel(), cfg.getExp(), cfg.getLazy(), cfg.getLazyExp(), cfg.getDisposition());
+								cfg.getStage(), cfg.getMonsterLevel(), cfg.getExp(), cfg.getLazy(), cfg.getLazyExp(), cfg.getDisposition());
 
 						Map<String, Integer> skillMap = cfg.getSkillLevelMap();
 						for (Entry<String, Integer> skill : skillMap.entrySet()) {

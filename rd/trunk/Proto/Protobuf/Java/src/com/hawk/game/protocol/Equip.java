@@ -8,30 +8,30 @@ public final class Equip {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface GemInfoOrBuilder
+  public interface GemPunchOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 pos = 1;
+    // required int32 type = 1;
     /**
-     * <code>required int32 pos = 1;</code>
+     * <code>required int32 type = 1;</code>
      *
      * <pre>
-     * 宝石位置
+     * 宝石形状
      * </pre>
      */
-    boolean hasPos();
+    boolean hasType();
     /**
-     * <code>required int32 pos = 1;</code>
+     * <code>required int32 type = 1;</code>
      *
      * <pre>
-     * 宝石位置
+     * 宝石形状
      * </pre>
      */
-    int getPos();
+    int getType();
 
-    // required int32 gemItemId = 2;
+    // required string gemItemId = 2;
     /**
-     * <code>required int32 gemItemId = 2;</code>
+     * <code>required string gemItemId = 2;</code>
      *
      * <pre>
      * 宝石id
@@ -39,33 +39,42 @@ public final class Equip {
      */
     boolean hasGemItemId();
     /**
-     * <code>required int32 gemItemId = 2;</code>
+     * <code>required string gemItemId = 2;</code>
      *
      * <pre>
      * 宝石id
      * </pre>
      */
-    int getGemItemId();
+    java.lang.String getGemItemId();
+    /**
+     * <code>required string gemItemId = 2;</code>
+     *
+     * <pre>
+     * 宝石id
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getGemItemIdBytes();
   }
   /**
-   * Protobuf type {@code GemInfo}
+   * Protobuf type {@code GemPunch}
    */
-  public static final class GemInfo extends
+  public static final class GemPunch extends
       com.google.protobuf.GeneratedMessage
-      implements GemInfoOrBuilder {
-    // Use GemInfo.newBuilder() to construct.
-    private GemInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements GemPunchOrBuilder {
+    // Use GemPunch.newBuilder() to construct.
+    private GemPunch(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private GemInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private GemPunch(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final GemInfo defaultInstance;
-    public static GemInfo getDefaultInstance() {
+    private static final GemPunch defaultInstance;
+    public static GemPunch getDefaultInstance() {
       return defaultInstance;
     }
 
-    public GemInfo getDefaultInstanceForType() {
+    public GemPunch getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -75,7 +84,7 @@ public final class Equip {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private GemInfo(
+    private GemPunch(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -100,12 +109,12 @@ public final class Equip {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              pos_ = input.readInt32();
+              type_ = input.readInt32();
               break;
             }
-            case 16: {
+            case 18: {
               bitField0_ |= 0x00000002;
-              gemItemId_ = input.readInt32();
+              gemItemId_ = input.readBytes();
               break;
             }
           }
@@ -122,61 +131,61 @@ public final class Equip {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Equip.internal_static_GemInfo_descriptor;
+      return com.hawk.game.protocol.Equip.internal_static_GemPunch_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.Equip.internal_static_GemInfo_fieldAccessorTable
+      return com.hawk.game.protocol.Equip.internal_static_GemPunch_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.Equip.GemInfo.class, com.hawk.game.protocol.Equip.GemInfo.Builder.class);
+              com.hawk.game.protocol.Equip.GemPunch.class, com.hawk.game.protocol.Equip.GemPunch.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<GemInfo> PARSER =
-        new com.google.protobuf.AbstractParser<GemInfo>() {
-      public GemInfo parsePartialFrom(
+    public static com.google.protobuf.Parser<GemPunch> PARSER =
+        new com.google.protobuf.AbstractParser<GemPunch>() {
+      public GemPunch parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GemInfo(input, extensionRegistry);
+        return new GemPunch(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GemInfo> getParserForType() {
+    public com.google.protobuf.Parser<GemPunch> getParserForType() {
       return PARSER;
     }
 
     private int bitField0_;
-    // required int32 pos = 1;
-    public static final int POS_FIELD_NUMBER = 1;
-    private int pos_;
+    // required int32 type = 1;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
     /**
-     * <code>required int32 pos = 1;</code>
+     * <code>required int32 type = 1;</code>
      *
      * <pre>
-     * 宝石位置
+     * 宝石形状
      * </pre>
      */
-    public boolean hasPos() {
+    public boolean hasType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 pos = 1;</code>
+     * <code>required int32 type = 1;</code>
      *
      * <pre>
-     * 宝石位置
+     * 宝石形状
      * </pre>
      */
-    public int getPos() {
-      return pos_;
+    public int getType() {
+      return type_;
     }
 
-    // required int32 gemItemId = 2;
+    // required string gemItemId = 2;
     public static final int GEMITEMID_FIELD_NUMBER = 2;
-    private int gemItemId_;
+    private java.lang.Object gemItemId_;
     /**
-     * <code>required int32 gemItemId = 2;</code>
+     * <code>required string gemItemId = 2;</code>
      *
      * <pre>
      * 宝石id
@@ -186,26 +195,57 @@ public final class Equip {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 gemItemId = 2;</code>
+     * <code>required string gemItemId = 2;</code>
      *
      * <pre>
      * 宝石id
      * </pre>
      */
-    public int getGemItemId() {
-      return gemItemId_;
+    public java.lang.String getGemItemId() {
+      java.lang.Object ref = gemItemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          gemItemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string gemItemId = 2;</code>
+     *
+     * <pre>
+     * 宝石id
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getGemItemIdBytes() {
+      java.lang.Object ref = gemItemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        gemItemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private void initFields() {
-      pos_ = 0;
-      gemItemId_ = 0;
+      type_ = 0;
+      gemItemId_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasPos()) {
+      if (!hasType()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -221,10 +261,10 @@ public final class Equip {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, pos_);
+        output.writeInt32(1, type_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, gemItemId_);
+        output.writeBytes(2, getGemItemIdBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -237,11 +277,11 @@ public final class Equip {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, pos_);
+          .computeInt32Size(1, type_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, gemItemId_);
+          .computeBytesSize(2, getGemItemIdBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -255,53 +295,53 @@ public final class Equip {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.Equip.GemInfo parseFrom(
+    public static com.hawk.game.protocol.Equip.GemPunch parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Equip.GemInfo parseFrom(
+    public static com.hawk.game.protocol.Equip.GemPunch parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Equip.GemInfo parseFrom(byte[] data)
+    public static com.hawk.game.protocol.Equip.GemPunch parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Equip.GemInfo parseFrom(
+    public static com.hawk.game.protocol.Equip.GemPunch parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Equip.GemInfo parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Equip.GemPunch parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Equip.GemInfo parseFrom(
+    public static com.hawk.game.protocol.Equip.GemPunch parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Equip.GemInfo parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Equip.GemPunch parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.Equip.GemInfo parseDelimitedFrom(
+    public static com.hawk.game.protocol.Equip.GemPunch parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Equip.GemInfo parseFrom(
+    public static com.hawk.game.protocol.Equip.GemPunch parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Equip.GemInfo parseFrom(
+    public static com.hawk.game.protocol.Equip.GemPunch parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -310,7 +350,7 @@ public final class Equip {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.Equip.GemInfo prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.Equip.GemPunch prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -322,24 +362,24 @@ public final class Equip {
       return builder;
     }
     /**
-     * Protobuf type {@code GemInfo}
+     * Protobuf type {@code GemPunch}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.Equip.GemInfoOrBuilder {
+       implements com.hawk.game.protocol.Equip.GemPunchOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.Equip.internal_static_GemInfo_descriptor;
+        return com.hawk.game.protocol.Equip.internal_static_GemPunch_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.Equip.internal_static_GemInfo_fieldAccessorTable
+        return com.hawk.game.protocol.Equip.internal_static_GemPunch_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.Equip.GemInfo.class, com.hawk.game.protocol.Equip.GemInfo.Builder.class);
+                com.hawk.game.protocol.Equip.GemPunch.class, com.hawk.game.protocol.Equip.GemPunch.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.Equip.GemInfo.newBuilder()
+      // Construct using com.hawk.game.protocol.Equip.GemPunch.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -359,9 +399,9 @@ public final class Equip {
 
       public Builder clear() {
         super.clear();
-        pos_ = 0;
+        type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        gemItemId_ = 0;
+        gemItemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -372,29 +412,29 @@ public final class Equip {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.Equip.internal_static_GemInfo_descriptor;
+        return com.hawk.game.protocol.Equip.internal_static_GemPunch_descriptor;
       }
 
-      public com.hawk.game.protocol.Equip.GemInfo getDefaultInstanceForType() {
-        return com.hawk.game.protocol.Equip.GemInfo.getDefaultInstance();
+      public com.hawk.game.protocol.Equip.GemPunch getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Equip.GemPunch.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.Equip.GemInfo build() {
-        com.hawk.game.protocol.Equip.GemInfo result = buildPartial();
+      public com.hawk.game.protocol.Equip.GemPunch build() {
+        com.hawk.game.protocol.Equip.GemPunch result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.Equip.GemInfo buildPartial() {
-        com.hawk.game.protocol.Equip.GemInfo result = new com.hawk.game.protocol.Equip.GemInfo(this);
+      public com.hawk.game.protocol.Equip.GemPunch buildPartial() {
+        com.hawk.game.protocol.Equip.GemPunch result = new com.hawk.game.protocol.Equip.GemPunch(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.pos_ = pos_;
+        result.type_ = type_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -405,28 +445,30 @@ public final class Equip {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.Equip.GemInfo) {
-          return mergeFrom((com.hawk.game.protocol.Equip.GemInfo)other);
+        if (other instanceof com.hawk.game.protocol.Equip.GemPunch) {
+          return mergeFrom((com.hawk.game.protocol.Equip.GemPunch)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.Equip.GemInfo other) {
-        if (other == com.hawk.game.protocol.Equip.GemInfo.getDefaultInstance()) return this;
-        if (other.hasPos()) {
-          setPos(other.getPos());
+      public Builder mergeFrom(com.hawk.game.protocol.Equip.GemPunch other) {
+        if (other == com.hawk.game.protocol.Equip.GemPunch.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
         }
         if (other.hasGemItemId()) {
-          setGemItemId(other.getGemItemId());
+          bitField0_ |= 0x00000002;
+          gemItemId_ = other.gemItemId_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasPos()) {
+        if (!hasType()) {
           
           return false;
         }
@@ -441,11 +483,11 @@ public final class Equip {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.Equip.GemInfo parsedMessage = null;
+        com.hawk.game.protocol.Equip.GemPunch parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.Equip.GemInfo) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.Equip.GemPunch) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -456,59 +498,59 @@ public final class Equip {
       }
       private int bitField0_;
 
-      // required int32 pos = 1;
-      private int pos_ ;
+      // required int32 type = 1;
+      private int type_ ;
       /**
-       * <code>required int32 pos = 1;</code>
+       * <code>required int32 type = 1;</code>
        *
        * <pre>
-       * 宝石位置
+       * 宝石形状
        * </pre>
        */
-      public boolean hasPos() {
+      public boolean hasType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 pos = 1;</code>
+       * <code>required int32 type = 1;</code>
        *
        * <pre>
-       * 宝石位置
+       * 宝石形状
        * </pre>
        */
-      public int getPos() {
-        return pos_;
+      public int getType() {
+        return type_;
       }
       /**
-       * <code>required int32 pos = 1;</code>
+       * <code>required int32 type = 1;</code>
        *
        * <pre>
-       * 宝石位置
+       * 宝石形状
        * </pre>
        */
-      public Builder setPos(int value) {
+      public Builder setType(int value) {
         bitField0_ |= 0x00000001;
-        pos_ = value;
+        type_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 pos = 1;</code>
+       * <code>required int32 type = 1;</code>
        *
        * <pre>
-       * 宝石位置
+       * 宝石形状
        * </pre>
        */
-      public Builder clearPos() {
+      public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        pos_ = 0;
+        type_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 gemItemId = 2;
-      private int gemItemId_ ;
+      // required string gemItemId = 2;
+      private java.lang.Object gemItemId_ = "";
       /**
-       * <code>required int32 gemItemId = 2;</code>
+       * <code>required string gemItemId = 2;</code>
        *
        * <pre>
        * 宝石id
@@ -518,30 +560,62 @@ public final class Equip {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 gemItemId = 2;</code>
+       * <code>required string gemItemId = 2;</code>
        *
        * <pre>
        * 宝石id
        * </pre>
        */
-      public int getGemItemId() {
-        return gemItemId_;
+      public java.lang.String getGemItemId() {
+        java.lang.Object ref = gemItemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          gemItemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 gemItemId = 2;</code>
+       * <code>required string gemItemId = 2;</code>
        *
        * <pre>
        * 宝石id
        * </pre>
        */
-      public Builder setGemItemId(int value) {
-        bitField0_ |= 0x00000002;
+      public com.google.protobuf.ByteString
+          getGemItemIdBytes() {
+        java.lang.Object ref = gemItemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          gemItemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string gemItemId = 2;</code>
+       *
+       * <pre>
+       * 宝石id
+       * </pre>
+       */
+      public Builder setGemItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
         gemItemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 gemItemId = 2;</code>
+       * <code>required string gemItemId = 2;</code>
        *
        * <pre>
        * 宝石id
@@ -549,20 +623,37 @@ public final class Equip {
        */
       public Builder clearGemItemId() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        gemItemId_ = 0;
+        gemItemId_ = getDefaultInstance().getGemItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string gemItemId = 2;</code>
+       *
+       * <pre>
+       * 宝石id
+       * </pre>
+       */
+      public Builder setGemItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        gemItemId_ = value;
         onChanged();
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:GemInfo)
+      // @@protoc_insertion_point(builder_scope:GemPunch)
     }
 
     static {
-      defaultInstance = new GemInfo(true);
+      defaultInstance = new GemPunch(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:GemInfo)
+    // @@protoc_insertion_point(class_scope:GemPunch)
   }
 
   public interface EquipInfoOrBuilder
@@ -629,49 +720,49 @@ public final class Equip {
      */
     int getLevel();
 
-    // repeated .GemInfo gemInfos = 5;
+    // repeated .GemPunch gemItems = 5;
     /**
-     * <code>repeated .GemInfo gemInfos = 5;</code>
+     * <code>repeated .GemPunch gemItems = 5;</code>
      *
      * <pre>
      *宝石信息
      * </pre>
      */
-    java.util.List<com.hawk.game.protocol.Equip.GemInfo> 
-        getGemInfosList();
+    java.util.List<com.hawk.game.protocol.Equip.GemPunch> 
+        getGemItemsList();
     /**
-     * <code>repeated .GemInfo gemInfos = 5;</code>
+     * <code>repeated .GemPunch gemItems = 5;</code>
      *
      * <pre>
      *宝石信息
      * </pre>
      */
-    com.hawk.game.protocol.Equip.GemInfo getGemInfos(int index);
+    com.hawk.game.protocol.Equip.GemPunch getGemItems(int index);
     /**
-     * <code>repeated .GemInfo gemInfos = 5;</code>
+     * <code>repeated .GemPunch gemItems = 5;</code>
      *
      * <pre>
      *宝石信息
      * </pre>
      */
-    int getGemInfosCount();
+    int getGemItemsCount();
     /**
-     * <code>repeated .GemInfo gemInfos = 5;</code>
+     * <code>repeated .GemPunch gemItems = 5;</code>
      *
      * <pre>
      *宝石信息
      * </pre>
      */
-    java.util.List<? extends com.hawk.game.protocol.Equip.GemInfoOrBuilder> 
-        getGemInfosOrBuilderList();
+    java.util.List<? extends com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+        getGemItemsOrBuilderList();
     /**
-     * <code>repeated .GemInfo gemInfos = 5;</code>
+     * <code>repeated .GemPunch gemItems = 5;</code>
      *
      * <pre>
      *宝石信息
      * </pre>
      */
-    com.hawk.game.protocol.Equip.GemInfoOrBuilder getGemInfosOrBuilder(
+    com.hawk.game.protocol.Equip.GemPunchOrBuilder getGemItemsOrBuilder(
         int index);
 
     // repeated .Attr attrDatas = 6;
@@ -812,10 +903,10 @@ public final class Equip {
             }
             case 42: {
               if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                gemInfos_ = new java.util.ArrayList<com.hawk.game.protocol.Equip.GemInfo>();
+                gemItems_ = new java.util.ArrayList<com.hawk.game.protocol.Equip.GemPunch>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              gemInfos_.add(input.readMessage(com.hawk.game.protocol.Equip.GemInfo.PARSER, extensionRegistry));
+              gemItems_.add(input.readMessage(com.hawk.game.protocol.Equip.GemPunch.PARSER, extensionRegistry));
               break;
             }
             case 50: {
@@ -845,7 +936,7 @@ public final class Equip {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-          gemInfos_ = java.util.Collections.unmodifiableList(gemInfos_);
+          gemItems_ = java.util.Collections.unmodifiableList(gemItems_);
         }
         if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           attrDatas_ = java.util.Collections.unmodifiableList(attrDatas_);
@@ -989,60 +1080,60 @@ public final class Equip {
       return level_;
     }
 
-    // repeated .GemInfo gemInfos = 5;
-    public static final int GEMINFOS_FIELD_NUMBER = 5;
-    private java.util.List<com.hawk.game.protocol.Equip.GemInfo> gemInfos_;
+    // repeated .GemPunch gemItems = 5;
+    public static final int GEMITEMS_FIELD_NUMBER = 5;
+    private java.util.List<com.hawk.game.protocol.Equip.GemPunch> gemItems_;
     /**
-     * <code>repeated .GemInfo gemInfos = 5;</code>
+     * <code>repeated .GemPunch gemItems = 5;</code>
      *
      * <pre>
      *宝石信息
      * </pre>
      */
-    public java.util.List<com.hawk.game.protocol.Equip.GemInfo> getGemInfosList() {
-      return gemInfos_;
+    public java.util.List<com.hawk.game.protocol.Equip.GemPunch> getGemItemsList() {
+      return gemItems_;
     }
     /**
-     * <code>repeated .GemInfo gemInfos = 5;</code>
+     * <code>repeated .GemPunch gemItems = 5;</code>
      *
      * <pre>
      *宝石信息
      * </pre>
      */
-    public java.util.List<? extends com.hawk.game.protocol.Equip.GemInfoOrBuilder> 
-        getGemInfosOrBuilderList() {
-      return gemInfos_;
+    public java.util.List<? extends com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+        getGemItemsOrBuilderList() {
+      return gemItems_;
     }
     /**
-     * <code>repeated .GemInfo gemInfos = 5;</code>
+     * <code>repeated .GemPunch gemItems = 5;</code>
      *
      * <pre>
      *宝石信息
      * </pre>
      */
-    public int getGemInfosCount() {
-      return gemInfos_.size();
+    public int getGemItemsCount() {
+      return gemItems_.size();
     }
     /**
-     * <code>repeated .GemInfo gemInfos = 5;</code>
+     * <code>repeated .GemPunch gemItems = 5;</code>
      *
      * <pre>
      *宝石信息
      * </pre>
      */
-    public com.hawk.game.protocol.Equip.GemInfo getGemInfos(int index) {
-      return gemInfos_.get(index);
+    public com.hawk.game.protocol.Equip.GemPunch getGemItems(int index) {
+      return gemItems_.get(index);
     }
     /**
-     * <code>repeated .GemInfo gemInfos = 5;</code>
+     * <code>repeated .GemPunch gemItems = 5;</code>
      *
      * <pre>
      *宝石信息
      * </pre>
      */
-    public com.hawk.game.protocol.Equip.GemInfoOrBuilder getGemInfosOrBuilder(
+    public com.hawk.game.protocol.Equip.GemPunchOrBuilder getGemItemsOrBuilder(
         int index) {
-      return gemInfos_.get(index);
+      return gemItems_.get(index);
     }
 
     // repeated .Attr attrDatas = 6;
@@ -1138,7 +1229,7 @@ public final class Equip {
       equipId_ = "";
       stage_ = 0;
       level_ = 0;
-      gemInfos_ = java.util.Collections.emptyList();
+      gemItems_ = java.util.Collections.emptyList();
       attrDatas_ = java.util.Collections.emptyList();
       status_ = 0;
       expireTime_ = 0;
@@ -1168,8 +1259,8 @@ public final class Equip {
         memoizedIsInitialized = 0;
         return false;
       }
-      for (int i = 0; i < getGemInfosCount(); i++) {
-        if (!getGemInfos(i).isInitialized()) {
+      for (int i = 0; i < getGemItemsCount(); i++) {
+        if (!getGemItems(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -1199,8 +1290,8 @@ public final class Equip {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, level_);
       }
-      for (int i = 0; i < gemInfos_.size(); i++) {
-        output.writeMessage(5, gemInfos_.get(i));
+      for (int i = 0; i < gemItems_.size(); i++) {
+        output.writeMessage(5, gemItems_.get(i));
       }
       for (int i = 0; i < attrDatas_.size(); i++) {
         output.writeMessage(6, attrDatas_.get(i));
@@ -1236,9 +1327,9 @@ public final class Equip {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, level_);
       }
-      for (int i = 0; i < gemInfos_.size(); i++) {
+      for (int i = 0; i < gemItems_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, gemInfos_.get(i));
+          .computeMessageSize(5, gemItems_.get(i));
       }
       for (int i = 0; i < attrDatas_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -1360,7 +1451,7 @@ public final class Equip {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getGemInfosFieldBuilder();
+          getGemItemsFieldBuilder();
           getAttrDatasFieldBuilder();
         }
       }
@@ -1378,11 +1469,11 @@ public final class Equip {
         bitField0_ = (bitField0_ & ~0x00000004);
         level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        if (gemInfosBuilder_ == null) {
-          gemInfos_ = java.util.Collections.emptyList();
+        if (gemItemsBuilder_ == null) {
+          gemItems_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000010);
         } else {
-          gemInfosBuilder_.clear();
+          gemItemsBuilder_.clear();
         }
         if (attrDatasBuilder_ == null) {
           attrDatas_ = java.util.Collections.emptyList();
@@ -1438,14 +1529,14 @@ public final class Equip {
           to_bitField0_ |= 0x00000008;
         }
         result.level_ = level_;
-        if (gemInfosBuilder_ == null) {
+        if (gemItemsBuilder_ == null) {
           if (((bitField0_ & 0x00000010) == 0x00000010)) {
-            gemInfos_ = java.util.Collections.unmodifiableList(gemInfos_);
+            gemItems_ = java.util.Collections.unmodifiableList(gemItems_);
             bitField0_ = (bitField0_ & ~0x00000010);
           }
-          result.gemInfos_ = gemInfos_;
+          result.gemItems_ = gemItems_;
         } else {
-          result.gemInfos_ = gemInfosBuilder_.build();
+          result.gemItems_ = gemItemsBuilder_.build();
         }
         if (attrDatasBuilder_ == null) {
           if (((bitField0_ & 0x00000020) == 0x00000020)) {
@@ -1494,29 +1585,29 @@ public final class Equip {
         if (other.hasLevel()) {
           setLevel(other.getLevel());
         }
-        if (gemInfosBuilder_ == null) {
-          if (!other.gemInfos_.isEmpty()) {
-            if (gemInfos_.isEmpty()) {
-              gemInfos_ = other.gemInfos_;
+        if (gemItemsBuilder_ == null) {
+          if (!other.gemItems_.isEmpty()) {
+            if (gemItems_.isEmpty()) {
+              gemItems_ = other.gemItems_;
               bitField0_ = (bitField0_ & ~0x00000010);
             } else {
-              ensureGemInfosIsMutable();
-              gemInfos_.addAll(other.gemInfos_);
+              ensureGemItemsIsMutable();
+              gemItems_.addAll(other.gemItems_);
             }
             onChanged();
           }
         } else {
-          if (!other.gemInfos_.isEmpty()) {
-            if (gemInfosBuilder_.isEmpty()) {
-              gemInfosBuilder_.dispose();
-              gemInfosBuilder_ = null;
-              gemInfos_ = other.gemInfos_;
+          if (!other.gemItems_.isEmpty()) {
+            if (gemItemsBuilder_.isEmpty()) {
+              gemItemsBuilder_.dispose();
+              gemItemsBuilder_ = null;
+              gemItems_ = other.gemItems_;
               bitField0_ = (bitField0_ & ~0x00000010);
-              gemInfosBuilder_ = 
+              gemItemsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getGemInfosFieldBuilder() : null;
+                   getGemItemsFieldBuilder() : null;
             } else {
-              gemInfosBuilder_.addAllMessages(other.gemInfos_);
+              gemItemsBuilder_.addAllMessages(other.gemItems_);
             }
           }
         }
@@ -1577,8 +1668,8 @@ public final class Equip {
           
           return false;
         }
-        for (int i = 0; i < getGemInfosCount(); i++) {
-          if (!getGemInfos(i).isInitialized()) {
+        for (int i = 0; i < getGemItemsCount(); i++) {
+          if (!getGemItems(i).isInitialized()) {
             
             return false;
           }
@@ -1816,316 +1907,316 @@ public final class Equip {
         return this;
       }
 
-      // repeated .GemInfo gemInfos = 5;
-      private java.util.List<com.hawk.game.protocol.Equip.GemInfo> gemInfos_ =
+      // repeated .GemPunch gemItems = 5;
+      private java.util.List<com.hawk.game.protocol.Equip.GemPunch> gemItems_ =
         java.util.Collections.emptyList();
-      private void ensureGemInfosIsMutable() {
+      private void ensureGemItemsIsMutable() {
         if (!((bitField0_ & 0x00000010) == 0x00000010)) {
-          gemInfos_ = new java.util.ArrayList<com.hawk.game.protocol.Equip.GemInfo>(gemInfos_);
+          gemItems_ = new java.util.ArrayList<com.hawk.game.protocol.Equip.GemPunch>(gemItems_);
           bitField0_ |= 0x00000010;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.hawk.game.protocol.Equip.GemInfo, com.hawk.game.protocol.Equip.GemInfo.Builder, com.hawk.game.protocol.Equip.GemInfoOrBuilder> gemInfosBuilder_;
+          com.hawk.game.protocol.Equip.GemPunch, com.hawk.game.protocol.Equip.GemPunch.Builder, com.hawk.game.protocol.Equip.GemPunchOrBuilder> gemItemsBuilder_;
 
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public java.util.List<com.hawk.game.protocol.Equip.GemInfo> getGemInfosList() {
-        if (gemInfosBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(gemInfos_);
+      public java.util.List<com.hawk.game.protocol.Equip.GemPunch> getGemItemsList() {
+        if (gemItemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(gemItems_);
         } else {
-          return gemInfosBuilder_.getMessageList();
+          return gemItemsBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public int getGemInfosCount() {
-        if (gemInfosBuilder_ == null) {
-          return gemInfos_.size();
+      public int getGemItemsCount() {
+        if (gemItemsBuilder_ == null) {
+          return gemItems_.size();
         } else {
-          return gemInfosBuilder_.getCount();
+          return gemItemsBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public com.hawk.game.protocol.Equip.GemInfo getGemInfos(int index) {
-        if (gemInfosBuilder_ == null) {
-          return gemInfos_.get(index);
+      public com.hawk.game.protocol.Equip.GemPunch getGemItems(int index) {
+        if (gemItemsBuilder_ == null) {
+          return gemItems_.get(index);
         } else {
-          return gemInfosBuilder_.getMessage(index);
+          return gemItemsBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public Builder setGemInfos(
-          int index, com.hawk.game.protocol.Equip.GemInfo value) {
-        if (gemInfosBuilder_ == null) {
+      public Builder setGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch value) {
+        if (gemItemsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureGemInfosIsMutable();
-          gemInfos_.set(index, value);
+          ensureGemItemsIsMutable();
+          gemItems_.set(index, value);
           onChanged();
         } else {
-          gemInfosBuilder_.setMessage(index, value);
+          gemItemsBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public Builder setGemInfos(
-          int index, com.hawk.game.protocol.Equip.GemInfo.Builder builderForValue) {
-        if (gemInfosBuilder_ == null) {
-          ensureGemInfosIsMutable();
-          gemInfos_.set(index, builderForValue.build());
+      public Builder setGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch.Builder builderForValue) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.set(index, builderForValue.build());
           onChanged();
         } else {
-          gemInfosBuilder_.setMessage(index, builderForValue.build());
+          gemItemsBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public Builder addGemInfos(com.hawk.game.protocol.Equip.GemInfo value) {
-        if (gemInfosBuilder_ == null) {
+      public Builder addGemItems(com.hawk.game.protocol.Equip.GemPunch value) {
+        if (gemItemsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureGemInfosIsMutable();
-          gemInfos_.add(value);
+          ensureGemItemsIsMutable();
+          gemItems_.add(value);
           onChanged();
         } else {
-          gemInfosBuilder_.addMessage(value);
+          gemItemsBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public Builder addGemInfos(
-          int index, com.hawk.game.protocol.Equip.GemInfo value) {
-        if (gemInfosBuilder_ == null) {
+      public Builder addGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch value) {
+        if (gemItemsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureGemInfosIsMutable();
-          gemInfos_.add(index, value);
+          ensureGemItemsIsMutable();
+          gemItems_.add(index, value);
           onChanged();
         } else {
-          gemInfosBuilder_.addMessage(index, value);
+          gemItemsBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public Builder addGemInfos(
-          com.hawk.game.protocol.Equip.GemInfo.Builder builderForValue) {
-        if (gemInfosBuilder_ == null) {
-          ensureGemInfosIsMutable();
-          gemInfos_.add(builderForValue.build());
+      public Builder addGemItems(
+          com.hawk.game.protocol.Equip.GemPunch.Builder builderForValue) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.add(builderForValue.build());
           onChanged();
         } else {
-          gemInfosBuilder_.addMessage(builderForValue.build());
+          gemItemsBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public Builder addGemInfos(
-          int index, com.hawk.game.protocol.Equip.GemInfo.Builder builderForValue) {
-        if (gemInfosBuilder_ == null) {
-          ensureGemInfosIsMutable();
-          gemInfos_.add(index, builderForValue.build());
+      public Builder addGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch.Builder builderForValue) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.add(index, builderForValue.build());
           onChanged();
         } else {
-          gemInfosBuilder_.addMessage(index, builderForValue.build());
+          gemItemsBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public Builder addAllGemInfos(
-          java.lang.Iterable<? extends com.hawk.game.protocol.Equip.GemInfo> values) {
-        if (gemInfosBuilder_ == null) {
-          ensureGemInfosIsMutable();
-          super.addAll(values, gemInfos_);
+      public Builder addAllGemItems(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Equip.GemPunch> values) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          super.addAll(values, gemItems_);
           onChanged();
         } else {
-          gemInfosBuilder_.addAllMessages(values);
+          gemItemsBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public Builder clearGemInfos() {
-        if (gemInfosBuilder_ == null) {
-          gemInfos_ = java.util.Collections.emptyList();
+      public Builder clearGemItems() {
+        if (gemItemsBuilder_ == null) {
+          gemItems_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
-          gemInfosBuilder_.clear();
+          gemItemsBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public Builder removeGemInfos(int index) {
-        if (gemInfosBuilder_ == null) {
-          ensureGemInfosIsMutable();
-          gemInfos_.remove(index);
+      public Builder removeGemItems(int index) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.remove(index);
           onChanged();
         } else {
-          gemInfosBuilder_.remove(index);
+          gemItemsBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public com.hawk.game.protocol.Equip.GemInfo.Builder getGemInfosBuilder(
+      public com.hawk.game.protocol.Equip.GemPunch.Builder getGemItemsBuilder(
           int index) {
-        return getGemInfosFieldBuilder().getBuilder(index);
+        return getGemItemsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public com.hawk.game.protocol.Equip.GemInfoOrBuilder getGemInfosOrBuilder(
+      public com.hawk.game.protocol.Equip.GemPunchOrBuilder getGemItemsOrBuilder(
           int index) {
-        if (gemInfosBuilder_ == null) {
-          return gemInfos_.get(index);  } else {
-          return gemInfosBuilder_.getMessageOrBuilder(index);
+        if (gemItemsBuilder_ == null) {
+          return gemItems_.get(index);  } else {
+          return gemItemsBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public java.util.List<? extends com.hawk.game.protocol.Equip.GemInfoOrBuilder> 
-           getGemInfosOrBuilderList() {
-        if (gemInfosBuilder_ != null) {
-          return gemInfosBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+           getGemItemsOrBuilderList() {
+        if (gemItemsBuilder_ != null) {
+          return gemItemsBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(gemInfos_);
+          return java.util.Collections.unmodifiableList(gemItems_);
         }
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public com.hawk.game.protocol.Equip.GemInfo.Builder addGemInfosBuilder() {
-        return getGemInfosFieldBuilder().addBuilder(
-            com.hawk.game.protocol.Equip.GemInfo.getDefaultInstance());
+      public com.hawk.game.protocol.Equip.GemPunch.Builder addGemItemsBuilder() {
+        return getGemItemsFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Equip.GemPunch.getDefaultInstance());
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public com.hawk.game.protocol.Equip.GemInfo.Builder addGemInfosBuilder(
+      public com.hawk.game.protocol.Equip.GemPunch.Builder addGemItemsBuilder(
           int index) {
-        return getGemInfosFieldBuilder().addBuilder(
-            index, com.hawk.game.protocol.Equip.GemInfo.getDefaultInstance());
+        return getGemItemsFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Equip.GemPunch.getDefaultInstance());
       }
       /**
-       * <code>repeated .GemInfo gemInfos = 5;</code>
+       * <code>repeated .GemPunch gemItems = 5;</code>
        *
        * <pre>
        *宝石信息
        * </pre>
        */
-      public java.util.List<com.hawk.game.protocol.Equip.GemInfo.Builder> 
-           getGemInfosBuilderList() {
-        return getGemInfosFieldBuilder().getBuilderList();
+      public java.util.List<com.hawk.game.protocol.Equip.GemPunch.Builder> 
+           getGemItemsBuilderList() {
+        return getGemItemsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.hawk.game.protocol.Equip.GemInfo, com.hawk.game.protocol.Equip.GemInfo.Builder, com.hawk.game.protocol.Equip.GemInfoOrBuilder> 
-          getGemInfosFieldBuilder() {
-        if (gemInfosBuilder_ == null) {
-          gemInfosBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.hawk.game.protocol.Equip.GemInfo, com.hawk.game.protocol.Equip.GemInfo.Builder, com.hawk.game.protocol.Equip.GemInfoOrBuilder>(
-                  gemInfos_,
+          com.hawk.game.protocol.Equip.GemPunch, com.hawk.game.protocol.Equip.GemPunch.Builder, com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+          getGemItemsFieldBuilder() {
+        if (gemItemsBuilder_ == null) {
+          gemItemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Equip.GemPunch, com.hawk.game.protocol.Equip.GemPunch.Builder, com.hawk.game.protocol.Equip.GemPunchOrBuilder>(
+                  gemItems_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
-          gemInfos_ = null;
+          gemItems_ = null;
         }
-        return gemInfosBuilder_;
+        return gemItemsBuilder_;
       }
 
       // repeated .Attr attrDatas = 6;
@@ -3249,13 +3340,13 @@ public final class Equip {
      */
     int getStage();
 
-    // optional int32 level = 4;
+    // required int32 level = 4;
     /**
-     * <code>optional int32 level = 4;</code>
+     * <code>required int32 level = 4;</code>
      */
     boolean hasLevel();
     /**
-     * <code>optional int32 level = 4;</code>
+     * <code>required int32 level = 4;</code>
      */
     int getLevel();
   }
@@ -3449,17 +3540,17 @@ public final class Equip {
       return stage_;
     }
 
-    // optional int32 level = 4;
+    // required int32 level = 4;
     public static final int LEVEL_FIELD_NUMBER = 4;
     private int level_;
     /**
-     * <code>optional int32 level = 4;</code>
+     * <code>required int32 level = 4;</code>
      */
     public boolean hasLevel() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional int32 level = 4;</code>
+     * <code>required int32 level = 4;</code>
      */
     public int getLevel() {
       return level_;
@@ -3485,6 +3576,10 @@ public final class Equip {
         return false;
       }
       if (!hasStage()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLevel()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3751,6 +3846,10 @@ public final class Equip {
           
           return false;
         }
+        if (!hasLevel()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -3913,22 +4012,22 @@ public final class Equip {
         return this;
       }
 
-      // optional int32 level = 4;
+      // required int32 level = 4;
       private int level_ ;
       /**
-       * <code>optional int32 level = 4;</code>
+       * <code>required int32 level = 4;</code>
        */
       public boolean hasLevel() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional int32 level = 4;</code>
+       * <code>required int32 level = 4;</code>
        */
       public int getLevel() {
         return level_;
       }
       /**
-       * <code>optional int32 level = 4;</code>
+       * <code>required int32 level = 4;</code>
        */
       public Builder setLevel(int value) {
         bitField0_ |= 0x00000008;
@@ -3937,7 +4036,7 @@ public final class Equip {
         return this;
       }
       /**
-       * <code>optional int32 level = 4;</code>
+       * <code>required int32 level = 4;</code>
        */
       public Builder clearLevel() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -7730,6 +7829,2627 @@ public final class Equip {
     // @@protoc_insertion_point(class_scope:HSEquipIncreaseStageRet)
   }
 
+  public interface HSEquipPunchOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int64 id = 1;
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    long getId();
+  }
+  /**
+   * Protobuf type {@code HSEquipPunch}
+   *
+   * <pre>
+   * 装备打孔
+   * </pre>
+   */
+  public static final class HSEquipPunch extends
+      com.google.protobuf.GeneratedMessage
+      implements HSEquipPunchOrBuilder {
+    // Use HSEquipPunch.newBuilder() to construct.
+    private HSEquipPunch(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSEquipPunch(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSEquipPunch defaultInstance;
+    public static HSEquipPunch getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSEquipPunch getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSEquipPunch(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipPunch_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipPunch_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Equip.HSEquipPunch.class, com.hawk.game.protocol.Equip.HSEquipPunch.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSEquipPunch> PARSER =
+        new com.google.protobuf.AbstractParser<HSEquipPunch>() {
+      public HSEquipPunch parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSEquipPunch(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSEquipPunch> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int64 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private long id_;
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    public long getId() {
+      return id_;
+    }
+
+    private void initFields() {
+      id_ = 0L;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(1, id_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, id_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Equip.HSEquipPunch parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunch parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunch parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunch parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunch parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunch parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunch parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunch parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunch parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunch parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Equip.HSEquipPunch prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSEquipPunch}
+     *
+     * <pre>
+     * 装备打孔
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Equip.HSEquipPunchOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipPunch_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipPunch_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Equip.HSEquipPunch.class, com.hawk.game.protocol.Equip.HSEquipPunch.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Equip.HSEquipPunch.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipPunch_descriptor;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipPunch getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Equip.HSEquipPunch.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipPunch build() {
+        com.hawk.game.protocol.Equip.HSEquipPunch result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipPunch buildPartial() {
+        com.hawk.game.protocol.Equip.HSEquipPunch result = new com.hawk.game.protocol.Equip.HSEquipPunch(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Equip.HSEquipPunch) {
+          return mergeFrom((com.hawk.game.protocol.Equip.HSEquipPunch)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Equip.HSEquipPunch other) {
+        if (other == com.hawk.game.protocol.Equip.HSEquipPunch.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Equip.HSEquipPunch parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Equip.HSEquipPunch) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int64 id = 1;
+      private long id_ ;
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public long getId() {
+        return id_;
+      }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public Builder setId(long value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSEquipPunch)
+    }
+
+    static {
+      defaultInstance = new HSEquipPunch(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSEquipPunch)
+  }
+
+  public interface HSEquipPunchRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .GemPunch gemItems = 1;
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    java.util.List<com.hawk.game.protocol.Equip.GemPunch> 
+        getGemItemsList();
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    com.hawk.game.protocol.Equip.GemPunch getGemItems(int index);
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    int getGemItemsCount();
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+        getGemItemsOrBuilderList();
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    com.hawk.game.protocol.Equip.GemPunchOrBuilder getGemItemsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code HSEquipPunchRet}
+   *
+   * <pre>
+   * 装备打孔返回
+   * </pre>
+   */
+  public static final class HSEquipPunchRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSEquipPunchRetOrBuilder {
+    // Use HSEquipPunchRet.newBuilder() to construct.
+    private HSEquipPunchRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSEquipPunchRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSEquipPunchRet defaultInstance;
+    public static HSEquipPunchRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSEquipPunchRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSEquipPunchRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                gemItems_ = new java.util.ArrayList<com.hawk.game.protocol.Equip.GemPunch>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              gemItems_.add(input.readMessage(com.hawk.game.protocol.Equip.GemPunch.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          gemItems_ = java.util.Collections.unmodifiableList(gemItems_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipPunchRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipPunchRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Equip.HSEquipPunchRet.class, com.hawk.game.protocol.Equip.HSEquipPunchRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSEquipPunchRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSEquipPunchRet>() {
+      public HSEquipPunchRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSEquipPunchRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSEquipPunchRet> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .GemPunch gemItems = 1;
+    public static final int GEMITEMS_FIELD_NUMBER = 1;
+    private java.util.List<com.hawk.game.protocol.Equip.GemPunch> gemItems_;
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    public java.util.List<com.hawk.game.protocol.Equip.GemPunch> getGemItemsList() {
+      return gemItems_;
+    }
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+        getGemItemsOrBuilderList() {
+      return gemItems_;
+    }
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    public int getGemItemsCount() {
+      return gemItems_.size();
+    }
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    public com.hawk.game.protocol.Equip.GemPunch getGemItems(int index) {
+      return gemItems_.get(index);
+    }
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    public com.hawk.game.protocol.Equip.GemPunchOrBuilder getGemItemsOrBuilder(
+        int index) {
+      return gemItems_.get(index);
+    }
+
+    private void initFields() {
+      gemItems_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getGemItemsCount(); i++) {
+        if (!getGemItems(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < gemItems_.size(); i++) {
+        output.writeMessage(1, gemItems_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < gemItems_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, gemItems_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Equip.HSEquipPunchRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunchRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunchRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunchRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunchRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunchRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunchRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunchRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunchRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipPunchRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Equip.HSEquipPunchRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSEquipPunchRet}
+     *
+     * <pre>
+     * 装备打孔返回
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Equip.HSEquipPunchRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipPunchRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipPunchRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Equip.HSEquipPunchRet.class, com.hawk.game.protocol.Equip.HSEquipPunchRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Equip.HSEquipPunchRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getGemItemsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (gemItemsBuilder_ == null) {
+          gemItems_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          gemItemsBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipPunchRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipPunchRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Equip.HSEquipPunchRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipPunchRet build() {
+        com.hawk.game.protocol.Equip.HSEquipPunchRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipPunchRet buildPartial() {
+        com.hawk.game.protocol.Equip.HSEquipPunchRet result = new com.hawk.game.protocol.Equip.HSEquipPunchRet(this);
+        int from_bitField0_ = bitField0_;
+        if (gemItemsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            gemItems_ = java.util.Collections.unmodifiableList(gemItems_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.gemItems_ = gemItems_;
+        } else {
+          result.gemItems_ = gemItemsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Equip.HSEquipPunchRet) {
+          return mergeFrom((com.hawk.game.protocol.Equip.HSEquipPunchRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Equip.HSEquipPunchRet other) {
+        if (other == com.hawk.game.protocol.Equip.HSEquipPunchRet.getDefaultInstance()) return this;
+        if (gemItemsBuilder_ == null) {
+          if (!other.gemItems_.isEmpty()) {
+            if (gemItems_.isEmpty()) {
+              gemItems_ = other.gemItems_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureGemItemsIsMutable();
+              gemItems_.addAll(other.gemItems_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.gemItems_.isEmpty()) {
+            if (gemItemsBuilder_.isEmpty()) {
+              gemItemsBuilder_.dispose();
+              gemItemsBuilder_ = null;
+              gemItems_ = other.gemItems_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              gemItemsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getGemItemsFieldBuilder() : null;
+            } else {
+              gemItemsBuilder_.addAllMessages(other.gemItems_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getGemItemsCount(); i++) {
+          if (!getGemItems(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Equip.HSEquipPunchRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Equip.HSEquipPunchRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .GemPunch gemItems = 1;
+      private java.util.List<com.hawk.game.protocol.Equip.GemPunch> gemItems_ =
+        java.util.Collections.emptyList();
+      private void ensureGemItemsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          gemItems_ = new java.util.ArrayList<com.hawk.game.protocol.Equip.GemPunch>(gemItems_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Equip.GemPunch, com.hawk.game.protocol.Equip.GemPunch.Builder, com.hawk.game.protocol.Equip.GemPunchOrBuilder> gemItemsBuilder_;
+
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Equip.GemPunch> getGemItemsList() {
+        if (gemItemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(gemItems_);
+        } else {
+          return gemItemsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public int getGemItemsCount() {
+        if (gemItemsBuilder_ == null) {
+          return gemItems_.size();
+        } else {
+          return gemItemsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public com.hawk.game.protocol.Equip.GemPunch getGemItems(int index) {
+        if (gemItemsBuilder_ == null) {
+          return gemItems_.get(index);
+        } else {
+          return gemItemsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder setGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch value) {
+        if (gemItemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGemItemsIsMutable();
+          gemItems_.set(index, value);
+          onChanged();
+        } else {
+          gemItemsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder setGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch.Builder builderForValue) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          gemItemsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder addGemItems(com.hawk.game.protocol.Equip.GemPunch value) {
+        if (gemItemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGemItemsIsMutable();
+          gemItems_.add(value);
+          onChanged();
+        } else {
+          gemItemsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder addGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch value) {
+        if (gemItemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGemItemsIsMutable();
+          gemItems_.add(index, value);
+          onChanged();
+        } else {
+          gemItemsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder addGemItems(
+          com.hawk.game.protocol.Equip.GemPunch.Builder builderForValue) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.add(builderForValue.build());
+          onChanged();
+        } else {
+          gemItemsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder addGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch.Builder builderForValue) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          gemItemsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder addAllGemItems(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Equip.GemPunch> values) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          super.addAll(values, gemItems_);
+          onChanged();
+        } else {
+          gemItemsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder clearGemItems() {
+        if (gemItemsBuilder_ == null) {
+          gemItems_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          gemItemsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder removeGemItems(int index) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.remove(index);
+          onChanged();
+        } else {
+          gemItemsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public com.hawk.game.protocol.Equip.GemPunch.Builder getGemItemsBuilder(
+          int index) {
+        return getGemItemsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public com.hawk.game.protocol.Equip.GemPunchOrBuilder getGemItemsOrBuilder(
+          int index) {
+        if (gemItemsBuilder_ == null) {
+          return gemItems_.get(index);  } else {
+          return gemItemsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+           getGemItemsOrBuilderList() {
+        if (gemItemsBuilder_ != null) {
+          return gemItemsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(gemItems_);
+        }
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public com.hawk.game.protocol.Equip.GemPunch.Builder addGemItemsBuilder() {
+        return getGemItemsFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Equip.GemPunch.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public com.hawk.game.protocol.Equip.GemPunch.Builder addGemItemsBuilder(
+          int index) {
+        return getGemItemsFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Equip.GemPunch.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Equip.GemPunch.Builder> 
+           getGemItemsBuilderList() {
+        return getGemItemsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Equip.GemPunch, com.hawk.game.protocol.Equip.GemPunch.Builder, com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+          getGemItemsFieldBuilder() {
+        if (gemItemsBuilder_ == null) {
+          gemItemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Equip.GemPunch, com.hawk.game.protocol.Equip.GemPunch.Builder, com.hawk.game.protocol.Equip.GemPunchOrBuilder>(
+                  gemItems_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          gemItems_ = null;
+        }
+        return gemItemsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSEquipPunchRet)
+    }
+
+    static {
+      defaultInstance = new HSEquipPunchRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSEquipPunchRet)
+  }
+
+  public interface HSEquipGemOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int64 id = 1;
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    long getId();
+
+    // required int32 type = 2;
+    /**
+     * <code>required int32 type = 2;</code>
+     */
+    boolean hasType();
+    /**
+     * <code>required int32 type = 2;</code>
+     */
+    int getType();
+
+    // required string newGem = 3;
+    /**
+     * <code>required string newGem = 3;</code>
+     */
+    boolean hasNewGem();
+    /**
+     * <code>required string newGem = 3;</code>
+     */
+    java.lang.String getNewGem();
+    /**
+     * <code>required string newGem = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getNewGemBytes();
+
+    // optional string oldGem = 4;
+    /**
+     * <code>optional string oldGem = 4;</code>
+     */
+    boolean hasOldGem();
+    /**
+     * <code>optional string oldGem = 4;</code>
+     */
+    java.lang.String getOldGem();
+    /**
+     * <code>optional string oldGem = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getOldGemBytes();
+  }
+  /**
+   * Protobuf type {@code HSEquipGem}
+   *
+   * <pre>
+   * 镶嵌宝石
+   * </pre>
+   */
+  public static final class HSEquipGem extends
+      com.google.protobuf.GeneratedMessage
+      implements HSEquipGemOrBuilder {
+    // Use HSEquipGem.newBuilder() to construct.
+    private HSEquipGem(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSEquipGem(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSEquipGem defaultInstance;
+    public static HSEquipGem getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSEquipGem getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSEquipGem(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              type_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              newGem_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              oldGem_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipGem_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipGem_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Equip.HSEquipGem.class, com.hawk.game.protocol.Equip.HSEquipGem.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSEquipGem> PARSER =
+        new com.google.protobuf.AbstractParser<HSEquipGem>() {
+      public HSEquipGem parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSEquipGem(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSEquipGem> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int64 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private long id_;
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    public long getId() {
+      return id_;
+    }
+
+    // required int32 type = 2;
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private int type_;
+    /**
+     * <code>required int32 type = 2;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 type = 2;</code>
+     */
+    public int getType() {
+      return type_;
+    }
+
+    // required string newGem = 3;
+    public static final int NEWGEM_FIELD_NUMBER = 3;
+    private java.lang.Object newGem_;
+    /**
+     * <code>required string newGem = 3;</code>
+     */
+    public boolean hasNewGem() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string newGem = 3;</code>
+     */
+    public java.lang.String getNewGem() {
+      java.lang.Object ref = newGem_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          newGem_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string newGem = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNewGemBytes() {
+      java.lang.Object ref = newGem_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        newGem_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string oldGem = 4;
+    public static final int OLDGEM_FIELD_NUMBER = 4;
+    private java.lang.Object oldGem_;
+    /**
+     * <code>optional string oldGem = 4;</code>
+     */
+    public boolean hasOldGem() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional string oldGem = 4;</code>
+     */
+    public java.lang.String getOldGem() {
+      java.lang.Object ref = oldGem_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          oldGem_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string oldGem = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOldGemBytes() {
+      java.lang.Object ref = oldGem_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        oldGem_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      id_ = 0L;
+      type_ = 0;
+      newGem_ = "";
+      oldGem_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNewGem()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, type_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getNewGemBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getOldGemBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, type_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getNewGemBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getOldGemBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Equip.HSEquipGem parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGem parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGem parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGem parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGem parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGem parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGem parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGem parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGem parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGem parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Equip.HSEquipGem prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSEquipGem}
+     *
+     * <pre>
+     * 镶嵌宝石
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Equip.HSEquipGemOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipGem_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipGem_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Equip.HSEquipGem.class, com.hawk.game.protocol.Equip.HSEquipGem.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Equip.HSEquipGem.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        newGem_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        oldGem_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipGem_descriptor;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipGem getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Equip.HSEquipGem.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipGem build() {
+        com.hawk.game.protocol.Equip.HSEquipGem result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipGem buildPartial() {
+        com.hawk.game.protocol.Equip.HSEquipGem result = new com.hawk.game.protocol.Equip.HSEquipGem(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.newGem_ = newGem_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.oldGem_ = oldGem_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Equip.HSEquipGem) {
+          return mergeFrom((com.hawk.game.protocol.Equip.HSEquipGem)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Equip.HSEquipGem other) {
+        if (other == com.hawk.game.protocol.Equip.HSEquipGem.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasNewGem()) {
+          bitField0_ |= 0x00000004;
+          newGem_ = other.newGem_;
+          onChanged();
+        }
+        if (other.hasOldGem()) {
+          bitField0_ |= 0x00000008;
+          oldGem_ = other.oldGem_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
+        if (!hasType()) {
+          
+          return false;
+        }
+        if (!hasNewGem()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Equip.HSEquipGem parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Equip.HSEquipGem) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int64 id = 1;
+      private long id_ ;
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public long getId() {
+        return id_;
+      }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public Builder setId(long value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // required int32 type = 2;
+      private int type_ ;
+      /**
+       * <code>required int32 type = 2;</code>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 type = 2;</code>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>required int32 type = 2;</code>
+       */
+      public Builder setType(int value) {
+        bitField0_ |= 0x00000002;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 type = 2;</code>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string newGem = 3;
+      private java.lang.Object newGem_ = "";
+      /**
+       * <code>required string newGem = 3;</code>
+       */
+      public boolean hasNewGem() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string newGem = 3;</code>
+       */
+      public java.lang.String getNewGem() {
+        java.lang.Object ref = newGem_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          newGem_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string newGem = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNewGemBytes() {
+        java.lang.Object ref = newGem_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          newGem_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string newGem = 3;</code>
+       */
+      public Builder setNewGem(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        newGem_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string newGem = 3;</code>
+       */
+      public Builder clearNewGem() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        newGem_ = getDefaultInstance().getNewGem();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string newGem = 3;</code>
+       */
+      public Builder setNewGemBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        newGem_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string oldGem = 4;
+      private java.lang.Object oldGem_ = "";
+      /**
+       * <code>optional string oldGem = 4;</code>
+       */
+      public boolean hasOldGem() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string oldGem = 4;</code>
+       */
+      public java.lang.String getOldGem() {
+        java.lang.Object ref = oldGem_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          oldGem_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string oldGem = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOldGemBytes() {
+        java.lang.Object ref = oldGem_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          oldGem_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string oldGem = 4;</code>
+       */
+      public Builder setOldGem(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        oldGem_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string oldGem = 4;</code>
+       */
+      public Builder clearOldGem() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        oldGem_ = getDefaultInstance().getOldGem();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string oldGem = 4;</code>
+       */
+      public Builder setOldGemBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        oldGem_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSEquipGem)
+    }
+
+    static {
+      defaultInstance = new HSEquipGem(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSEquipGem)
+  }
+
+  public interface HSEquipGemRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .GemPunch gemItems = 1;
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    java.util.List<com.hawk.game.protocol.Equip.GemPunch> 
+        getGemItemsList();
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    com.hawk.game.protocol.Equip.GemPunch getGemItems(int index);
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    int getGemItemsCount();
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+        getGemItemsOrBuilderList();
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    com.hawk.game.protocol.Equip.GemPunchOrBuilder getGemItemsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code HSEquipGemRet}
+   *
+   * <pre>
+   * 镶嵌宝石返回
+   * </pre>
+   */
+  public static final class HSEquipGemRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSEquipGemRetOrBuilder {
+    // Use HSEquipGemRet.newBuilder() to construct.
+    private HSEquipGemRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSEquipGemRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSEquipGemRet defaultInstance;
+    public static HSEquipGemRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSEquipGemRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSEquipGemRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                gemItems_ = new java.util.ArrayList<com.hawk.game.protocol.Equip.GemPunch>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              gemItems_.add(input.readMessage(com.hawk.game.protocol.Equip.GemPunch.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          gemItems_ = java.util.Collections.unmodifiableList(gemItems_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipGemRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipGemRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Equip.HSEquipGemRet.class, com.hawk.game.protocol.Equip.HSEquipGemRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSEquipGemRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSEquipGemRet>() {
+      public HSEquipGemRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSEquipGemRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSEquipGemRet> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .GemPunch gemItems = 1;
+    public static final int GEMITEMS_FIELD_NUMBER = 1;
+    private java.util.List<com.hawk.game.protocol.Equip.GemPunch> gemItems_;
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    public java.util.List<com.hawk.game.protocol.Equip.GemPunch> getGemItemsList() {
+      return gemItems_;
+    }
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+        getGemItemsOrBuilderList() {
+      return gemItems_;
+    }
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    public int getGemItemsCount() {
+      return gemItems_.size();
+    }
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    public com.hawk.game.protocol.Equip.GemPunch getGemItems(int index) {
+      return gemItems_.get(index);
+    }
+    /**
+     * <code>repeated .GemPunch gemItems = 1;</code>
+     */
+    public com.hawk.game.protocol.Equip.GemPunchOrBuilder getGemItemsOrBuilder(
+        int index) {
+      return gemItems_.get(index);
+    }
+
+    private void initFields() {
+      gemItems_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getGemItemsCount(); i++) {
+        if (!getGemItems(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < gemItems_.size(); i++) {
+        output.writeMessage(1, gemItems_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < gemItems_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, gemItems_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Equip.HSEquipGemRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGemRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGemRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGemRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGemRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGemRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGemRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGemRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGemRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipGemRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Equip.HSEquipGemRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSEquipGemRet}
+     *
+     * <pre>
+     * 镶嵌宝石返回
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Equip.HSEquipGemRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipGemRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipGemRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Equip.HSEquipGemRet.class, com.hawk.game.protocol.Equip.HSEquipGemRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Equip.HSEquipGemRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getGemItemsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (gemItemsBuilder_ == null) {
+          gemItems_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          gemItemsBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipGemRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipGemRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Equip.HSEquipGemRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipGemRet build() {
+        com.hawk.game.protocol.Equip.HSEquipGemRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipGemRet buildPartial() {
+        com.hawk.game.protocol.Equip.HSEquipGemRet result = new com.hawk.game.protocol.Equip.HSEquipGemRet(this);
+        int from_bitField0_ = bitField0_;
+        if (gemItemsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            gemItems_ = java.util.Collections.unmodifiableList(gemItems_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.gemItems_ = gemItems_;
+        } else {
+          result.gemItems_ = gemItemsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Equip.HSEquipGemRet) {
+          return mergeFrom((com.hawk.game.protocol.Equip.HSEquipGemRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Equip.HSEquipGemRet other) {
+        if (other == com.hawk.game.protocol.Equip.HSEquipGemRet.getDefaultInstance()) return this;
+        if (gemItemsBuilder_ == null) {
+          if (!other.gemItems_.isEmpty()) {
+            if (gemItems_.isEmpty()) {
+              gemItems_ = other.gemItems_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureGemItemsIsMutable();
+              gemItems_.addAll(other.gemItems_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.gemItems_.isEmpty()) {
+            if (gemItemsBuilder_.isEmpty()) {
+              gemItemsBuilder_.dispose();
+              gemItemsBuilder_ = null;
+              gemItems_ = other.gemItems_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              gemItemsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getGemItemsFieldBuilder() : null;
+            } else {
+              gemItemsBuilder_.addAllMessages(other.gemItems_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getGemItemsCount(); i++) {
+          if (!getGemItems(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Equip.HSEquipGemRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Equip.HSEquipGemRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .GemPunch gemItems = 1;
+      private java.util.List<com.hawk.game.protocol.Equip.GemPunch> gemItems_ =
+        java.util.Collections.emptyList();
+      private void ensureGemItemsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          gemItems_ = new java.util.ArrayList<com.hawk.game.protocol.Equip.GemPunch>(gemItems_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Equip.GemPunch, com.hawk.game.protocol.Equip.GemPunch.Builder, com.hawk.game.protocol.Equip.GemPunchOrBuilder> gemItemsBuilder_;
+
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Equip.GemPunch> getGemItemsList() {
+        if (gemItemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(gemItems_);
+        } else {
+          return gemItemsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public int getGemItemsCount() {
+        if (gemItemsBuilder_ == null) {
+          return gemItems_.size();
+        } else {
+          return gemItemsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public com.hawk.game.protocol.Equip.GemPunch getGemItems(int index) {
+        if (gemItemsBuilder_ == null) {
+          return gemItems_.get(index);
+        } else {
+          return gemItemsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder setGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch value) {
+        if (gemItemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGemItemsIsMutable();
+          gemItems_.set(index, value);
+          onChanged();
+        } else {
+          gemItemsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder setGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch.Builder builderForValue) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          gemItemsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder addGemItems(com.hawk.game.protocol.Equip.GemPunch value) {
+        if (gemItemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGemItemsIsMutable();
+          gemItems_.add(value);
+          onChanged();
+        } else {
+          gemItemsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder addGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch value) {
+        if (gemItemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGemItemsIsMutable();
+          gemItems_.add(index, value);
+          onChanged();
+        } else {
+          gemItemsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder addGemItems(
+          com.hawk.game.protocol.Equip.GemPunch.Builder builderForValue) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.add(builderForValue.build());
+          onChanged();
+        } else {
+          gemItemsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder addGemItems(
+          int index, com.hawk.game.protocol.Equip.GemPunch.Builder builderForValue) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          gemItemsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder addAllGemItems(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Equip.GemPunch> values) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          super.addAll(values, gemItems_);
+          onChanged();
+        } else {
+          gemItemsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder clearGemItems() {
+        if (gemItemsBuilder_ == null) {
+          gemItems_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          gemItemsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public Builder removeGemItems(int index) {
+        if (gemItemsBuilder_ == null) {
+          ensureGemItemsIsMutable();
+          gemItems_.remove(index);
+          onChanged();
+        } else {
+          gemItemsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public com.hawk.game.protocol.Equip.GemPunch.Builder getGemItemsBuilder(
+          int index) {
+        return getGemItemsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public com.hawk.game.protocol.Equip.GemPunchOrBuilder getGemItemsOrBuilder(
+          int index) {
+        if (gemItemsBuilder_ == null) {
+          return gemItems_.get(index);  } else {
+          return gemItemsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+           getGemItemsOrBuilderList() {
+        if (gemItemsBuilder_ != null) {
+          return gemItemsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(gemItems_);
+        }
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public com.hawk.game.protocol.Equip.GemPunch.Builder addGemItemsBuilder() {
+        return getGemItemsFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Equip.GemPunch.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public com.hawk.game.protocol.Equip.GemPunch.Builder addGemItemsBuilder(
+          int index) {
+        return getGemItemsFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Equip.GemPunch.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .GemPunch gemItems = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Equip.GemPunch.Builder> 
+           getGemItemsBuilderList() {
+        return getGemItemsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Equip.GemPunch, com.hawk.game.protocol.Equip.GemPunch.Builder, com.hawk.game.protocol.Equip.GemPunchOrBuilder> 
+          getGemItemsFieldBuilder() {
+        if (gemItemsBuilder_ == null) {
+          gemItemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Equip.GemPunch, com.hawk.game.protocol.Equip.GemPunch.Builder, com.hawk.game.protocol.Equip.GemPunchOrBuilder>(
+                  gemItems_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          gemItems_ = null;
+        }
+        return gemItemsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSEquipGemRet)
+    }
+
+    static {
+      defaultInstance = new HSEquipGemRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSEquipGemRet)
+  }
+
   public interface HSEquipMonsterDressOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -10592,10 +13312,10 @@ public final class Equip {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_GemInfo_descriptor;
+    internal_static_GemPunch_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_GemInfo_fieldAccessorTable;
+      internal_static_GemPunch_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_EquipInfo_descriptor;
   private static
@@ -10647,6 +13367,26 @@ public final class Equip {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSEquipIncreaseStageRet_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSEquipPunch_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSEquipPunch_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSEquipPunchRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSEquipPunchRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSEquipGem_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSEquipGem_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSEquipGemRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSEquipGemRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSEquipMonsterDress_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -10686,52 +13426,57 @@ public final class Equip {
   static {
     java.lang.String[] descriptorData = {
       "\n\024Protocol/Equip.proto\032\030Protocol/Attribu" +
-      "te.proto\")\n\007GemInfo\022\013\n\003pos\030\001 \002(\005\022\021\n\tgemI" +
-      "temId\030\002 \002(\005\"\240\001\n\tEquipInfo\022\n\n\002id\030\001 \002(\003\022\017\n" +
-      "\007equipId\030\002 \002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005level\030\004" +
-      " \002(\005\022\032\n\010gemInfos\030\005 \003(\0132\010.GemInfo\022\030\n\tattr" +
-      "Datas\030\006 \003(\0132\005.Attr\022\016\n\006status\030\007 \002(\005\022\022\n\nex" +
-      "pireTime\030\010 \001(\005\"1\n\017HSEquipInfoSync\022\036\n\nequ" +
-      "ipInfos\030\001 \003(\0132\n.EquipInfo\"O\n\nHSEquipBuy\022" +
-      "\017\n\007equipId\030\001 \002(\t\022\022\n\nequipCount\030\002 \002(\005\022\r\n\005" +
-      "stage\030\003 \002(\005\022\r\n\005level\030\004 \001(\005\"4\n\rHSEquipBuy",
-      "Ret\022\017\n\007equipId\030\001 \002(\t\022\022\n\nequipCount\030\002 \002(\005" +
-      "\"8\n\016HSEquipCompose\022\017\n\007equipId\030\001 \002(\t\022\025\n\rr" +
-      "elatedItemId\030\002 \002(\005\"B\n\021HSEquipComposeRet\022" +
-      "\017\n\007equipId\030\001 \002(\t\022\r\n\005stage\030\002 \001(\005\022\r\n\005level" +
-      "\030\003 \001(\005\"\"\n\024HSEquipIncreaseLevel\022\n\n\002id\030\001 \002" +
-      "(\003\"C\n\027HSEquipIncreaseLevelRet\022\n\n\002id\030\001 \002(" +
-      "\003\022\r\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\"\n\024HSEqu" +
-      "ipIncreaseStage\022\n\n\002id\030\001 \002(\003\"C\n\027HSEquipIn" +
-      "creaseStageRet\022\n\n\002id\030\001 \002(\003\022\r\n\005stage\030\002 \001(" +
-      "\005\022\r\n\005level\030\003 \001(\005\"4\n\023HSEquipMonsterDress\022",
-      "\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId\030\002 \002(\005\"7\n\026HSEqui" +
-      "pMonsterDressRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterI" +
-      "d\030\002 \001(\005\"#\n\025HSEquipMonsterUndress\022\n\n\002id\030\001" +
-      " \002(\003\"9\n\030HSEquipMonsterUndressRet\022\n\n\002id\030\001" +
-      " \001(\003\022\021\n\tmonsterId\030\002 \001(\005\"6\n\025HSEquipMonste" +
-      "rReplace\022\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId\030\002 \001(\005\"" +
-      "9\n\030HSEquipMonsterReplaceRet\022\n\n\002id\030\001 \001(\003\022" +
-      "\021\n\tmonsterId\030\002 \001(\005B\030\n\026com.hawk.game.prot" +
-      "ocol"
+      "te.proto\"+\n\010GemPunch\022\014\n\004type\030\001 \002(\005\022\021\n\tge" +
+      "mItemId\030\002 \002(\t\"\241\001\n\tEquipInfo\022\n\n\002id\030\001 \002(\003\022" +
+      "\017\n\007equipId\030\002 \002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005level" +
+      "\030\004 \002(\005\022\033\n\010gemItems\030\005 \003(\0132\t.GemPunch\022\030\n\ta" +
+      "ttrDatas\030\006 \003(\0132\005.Attr\022\016\n\006status\030\007 \002(\005\022\022\n" +
+      "\nexpireTime\030\010 \001(\005\"1\n\017HSEquipInfoSync\022\036\n\n" +
+      "equipInfos\030\001 \003(\0132\n.EquipInfo\"O\n\nHSEquipB" +
+      "uy\022\017\n\007equipId\030\001 \002(\t\022\022\n\nequipCount\030\002 \002(\005\022" +
+      "\r\n\005stage\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\"4\n\rHSEquip",
+      "BuyRet\022\017\n\007equipId\030\001 \002(\t\022\022\n\nequipCount\030\002 " +
+      "\002(\005\"8\n\016HSEquipCompose\022\017\n\007equipId\030\001 \002(\t\022\025" +
+      "\n\rrelatedItemId\030\002 \002(\005\"B\n\021HSEquipComposeR" +
+      "et\022\017\n\007equipId\030\001 \002(\t\022\r\n\005stage\030\002 \001(\005\022\r\n\005le" +
+      "vel\030\003 \001(\005\"\"\n\024HSEquipIncreaseLevel\022\n\n\002id\030" +
+      "\001 \002(\003\"C\n\027HSEquipIncreaseLevelRet\022\n\n\002id\030\001" +
+      " \002(\003\022\r\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\"\n\024HS" +
+      "EquipIncreaseStage\022\n\n\002id\030\001 \002(\003\"C\n\027HSEqui" +
+      "pIncreaseStageRet\022\n\n\002id\030\001 \002(\003\022\r\n\005stage\030\002" +
+      " \001(\005\022\r\n\005level\030\003 \001(\005\"\032\n\014HSEquipPunch\022\n\n\002i",
+      "d\030\001 \002(\003\".\n\017HSEquipPunchRet\022\033\n\010gemItems\030\001" +
+      " \003(\0132\t.GemPunch\"F\n\nHSEquipGem\022\n\n\002id\030\001 \002(" +
+      "\003\022\014\n\004type\030\002 \002(\005\022\016\n\006newGem\030\003 \002(\t\022\016\n\006oldGe" +
+      "m\030\004 \001(\t\",\n\rHSEquipGemRet\022\033\n\010gemItems\030\001 \003" +
+      "(\0132\t.GemPunch\"4\n\023HSEquipMonsterDress\022\n\n\002" +
+      "id\030\001 \002(\003\022\021\n\tmonsterId\030\002 \002(\005\"7\n\026HSEquipMo" +
+      "nsterDressRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterId\030\002" +
+      " \001(\005\"#\n\025HSEquipMonsterUndress\022\n\n\002id\030\001 \002(" +
+      "\003\"9\n\030HSEquipMonsterUndressRet\022\n\n\002id\030\001 \001(" +
+      "\003\022\021\n\tmonsterId\030\002 \001(\005\"6\n\025HSEquipMonsterRe",
+      "place\022\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId\030\002 \001(\005\"9\n\030" +
+      "HSEquipMonsterReplaceRet\022\n\n\002id\030\001 \001(\003\022\021\n\t" +
+      "monsterId\030\002 \001(\005B\030\n\026com.hawk.game.protoco" +
+      "l"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_GemInfo_descriptor =
+          internal_static_GemPunch_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_GemInfo_fieldAccessorTable = new
+          internal_static_GemPunch_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_GemInfo_descriptor,
-              new java.lang.String[] { "Pos", "GemItemId", });
+              internal_static_GemPunch_descriptor,
+              new java.lang.String[] { "Type", "GemItemId", });
           internal_static_EquipInfo_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_EquipInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_EquipInfo_descriptor,
-              new java.lang.String[] { "Id", "EquipId", "Stage", "Level", "GemInfos", "AttrDatas", "Status", "ExpireTime", });
+              new java.lang.String[] { "Id", "EquipId", "Stage", "Level", "GemItems", "AttrDatas", "Status", "ExpireTime", });
           internal_static_HSEquipInfoSync_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSEquipInfoSync_fieldAccessorTable = new
@@ -10786,38 +13531,62 @@ public final class Equip {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipIncreaseStageRet_descriptor,
               new java.lang.String[] { "Id", "Stage", "Level", });
-          internal_static_HSEquipMonsterDress_descriptor =
+          internal_static_HSEquipPunch_descriptor =
             getDescriptor().getMessageTypes().get(11);
+          internal_static_HSEquipPunch_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSEquipPunch_descriptor,
+              new java.lang.String[] { "Id", });
+          internal_static_HSEquipPunchRet_descriptor =
+            getDescriptor().getMessageTypes().get(12);
+          internal_static_HSEquipPunchRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSEquipPunchRet_descriptor,
+              new java.lang.String[] { "GemItems", });
+          internal_static_HSEquipGem_descriptor =
+            getDescriptor().getMessageTypes().get(13);
+          internal_static_HSEquipGem_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSEquipGem_descriptor,
+              new java.lang.String[] { "Id", "Type", "NewGem", "OldGem", });
+          internal_static_HSEquipGemRet_descriptor =
+            getDescriptor().getMessageTypes().get(14);
+          internal_static_HSEquipGemRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSEquipGemRet_descriptor,
+              new java.lang.String[] { "GemItems", });
+          internal_static_HSEquipMonsterDress_descriptor =
+            getDescriptor().getMessageTypes().get(15);
           internal_static_HSEquipMonsterDress_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterDress_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterDressRet_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_HSEquipMonsterDressRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterDressRet_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterUndress_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_HSEquipMonsterUndress_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterUndress_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_HSEquipMonsterUndressRet_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_HSEquipMonsterUndressRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterUndressRet_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterReplace_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_HSEquipMonsterReplace_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterReplace_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterReplaceRet_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_HSEquipMonsterReplaceRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterReplaceRet_descriptor,

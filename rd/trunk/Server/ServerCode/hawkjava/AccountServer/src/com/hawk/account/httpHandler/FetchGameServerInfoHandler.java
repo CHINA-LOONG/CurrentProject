@@ -41,6 +41,8 @@ public class FetchGameServerInfoHandler implements HttpHandler{
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
 		try {
+			
+			HawkLog.logPrintln("fetch Account gameserver");
 			Map<String, String> params = AccountHttpServer.parseHttpParam(httpExchange);
 			Map<String, RoleServerInfo> roleServerInfos = fetchGameServer(params.get("puid"));			
 			
@@ -58,7 +60,9 @@ public class FetchGameServerInfoHandler implements HttpHandler{
 					jsonObject.add("role", roleInfo);
 				}				
 				jsonArray.add(jsonObject);
-			}			
+			}						
+			
+			HawkLog.logPrintln("fetch Account gameserver response: " + jsonArray.toString());
 			AccountHttpServer.response(httpExchange, jsonArray.toString());
 		} catch (Exception e) {
 			HawkException.catchException(e);

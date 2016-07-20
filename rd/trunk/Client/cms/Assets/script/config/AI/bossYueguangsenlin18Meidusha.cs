@@ -187,4 +187,12 @@ public class bossYueguangsenlin18Meidusha : BossAi {
 			target.TriggerEvent("shefasi4",Time.time,null);
 		}
     }
+	public override void OnVitalChange(SpellVitalChangeArgs args)
+	{
+		if (args.vitalCurrent==0)
+		{
+			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+			target.TriggerEvent("meidushasi",Time.time,null);
+		}
+	}
 }

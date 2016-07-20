@@ -499,29 +499,45 @@ public final class HS {
      */
     EQUIP_INCREASE_STAGE_S(59, 4110),
     /**
+     * <code>EQUIP_PUNCH_C = 4111;</code>
+     */
+    EQUIP_PUNCH_C(60, 4111),
+    /**
+     * <code>EQUIP_PUNCH_S = 4112;</code>
+     */
+    EQUIP_PUNCH_S(61, 4112),
+    /**
+     * <code>EQUIP_GEM_C = 4113;</code>
+     */
+    EQUIP_GEM_C(62, 4113),
+    /**
+     * <code>EQUIP_GEM_S = 4114;</code>
+     */
+    EQUIP_GEM_S(63, 4114),
+    /**
      * <code>EQUIP_MONSTER_DRESS_C = 4120;</code>
      */
-    EQUIP_MONSTER_DRESS_C(60, 4120),
+    EQUIP_MONSTER_DRESS_C(64, 4120),
     /**
      * <code>EQUIP_MONSTER_DRESS_S = 4121;</code>
      */
-    EQUIP_MONSTER_DRESS_S(61, 4121),
+    EQUIP_MONSTER_DRESS_S(65, 4121),
     /**
      * <code>EQUIP_MONSTER_UNDRESS_C = 4122;</code>
      */
-    EQUIP_MONSTER_UNDRESS_C(62, 4122),
+    EQUIP_MONSTER_UNDRESS_C(66, 4122),
     /**
      * <code>EQUIP_MONSTER_UNDRESS_S = 4123;</code>
      */
-    EQUIP_MONSTER_UNDRESS_S(63, 4123),
+    EQUIP_MONSTER_UNDRESS_S(67, 4123),
     /**
      * <code>EQUIP_MONSTER_REPLACE_C = 4124;</code>
      */
-    EQUIP_MONSTER_REPLACE_C(64, 4124),
+    EQUIP_MONSTER_REPLACE_C(68, 4124),
     /**
      * <code>EQUIP_MONSTER_REPLACE_S = 4125;</code>
      */
-    EQUIP_MONSTER_REPLACE_S(65, 4125),
+    EQUIP_MONSTER_REPLACE_S(69, 4125),
     /**
      * <code>QUEST_SUBMIT_C = 5001;</code>
      *
@@ -529,23 +545,23 @@ public final class HS {
      * 任务
      * </pre>
      */
-    QUEST_SUBMIT_C(66, 5001),
+    QUEST_SUBMIT_C(70, 5001),
     /**
      * <code>QUEST_SUBMIT_S = 5002;</code>
      */
-    QUEST_SUBMIT_S(67, 5002),
+    QUEST_SUBMIT_S(71, 5002),
     /**
      * <code>QUEST_ACCEPT_S = 5003;</code>
      */
-    QUEST_ACCEPT_S(68, 5003),
+    QUEST_ACCEPT_S(72, 5003),
     /**
      * <code>QUEST_UPDATE_S = 5004;</code>
      */
-    QUEST_UPDATE_S(69, 5004),
+    QUEST_UPDATE_S(73, 5004),
     /**
      * <code>QUEST_REMOVE_S = 5005;</code>
      */
-    QUEST_REMOVE_S(70, 5005),
+    QUEST_REMOVE_S(74, 5005),
     /**
      * <code>MAIL_READ_C = 6001;</code>
      *
@@ -553,27 +569,27 @@ public final class HS {
      * 邮件
      * </pre>
      */
-    MAIL_READ_C(71, 6001),
+    MAIL_READ_C(75, 6001),
     /**
      * <code>MAIL_RECEIVE_C = 6002;</code>
      */
-    MAIL_RECEIVE_C(72, 6002),
+    MAIL_RECEIVE_C(76, 6002),
     /**
      * <code>MAIL_RECEIVE_S = 6003;</code>
      */
-    MAIL_RECEIVE_S(73, 6003),
+    MAIL_RECEIVE_S(77, 6003),
     /**
      * <code>MAIL_RECEIVE_ALL_C = 6004;</code>
      */
-    MAIL_RECEIVE_ALL_C(74, 6004),
+    MAIL_RECEIVE_ALL_C(78, 6004),
     /**
      * <code>MAIL_RECEIVE_ALL_S = 6005;</code>
      */
-    MAIL_RECEIVE_ALL_S(75, 6005),
+    MAIL_RECEIVE_ALL_S(79, 6005),
     /**
      * <code>MAIL_NEW_S = 6006;</code>
      */
-    MAIL_NEW_S(76, 6006),
+    MAIL_NEW_S(80, 6006),
     ;
 
     /**
@@ -837,6 +853,22 @@ public final class HS {
      */
     public static final int EQUIP_INCREASE_STAGE_S_VALUE = 4110;
     /**
+     * <code>EQUIP_PUNCH_C = 4111;</code>
+     */
+    public static final int EQUIP_PUNCH_C_VALUE = 4111;
+    /**
+     * <code>EQUIP_PUNCH_S = 4112;</code>
+     */
+    public static final int EQUIP_PUNCH_S_VALUE = 4112;
+    /**
+     * <code>EQUIP_GEM_C = 4113;</code>
+     */
+    public static final int EQUIP_GEM_C_VALUE = 4113;
+    /**
+     * <code>EQUIP_GEM_S = 4114;</code>
+     */
+    public static final int EQUIP_GEM_S_VALUE = 4114;
+    /**
      * <code>EQUIP_MONSTER_DRESS_C = 4120;</code>
      */
     public static final int EQUIP_MONSTER_DRESS_C_VALUE = 4120;
@@ -978,6 +1010,10 @@ public final class HS {
         case 4108: return EQUIP_INCREASE_LEVEL_S;
         case 4109: return EQUIP_INCREASE_STAGE_C;
         case 4110: return EQUIP_INCREASE_STAGE_S;
+        case 4111: return EQUIP_PUNCH_C;
+        case 4112: return EQUIP_PUNCH_S;
+        case 4113: return EQUIP_GEM_C;
+        case 4114: return EQUIP_GEM_S;
         case 4120: return EQUIP_MONSTER_DRESS_C;
         case 4121: return EQUIP_MONSTER_DRESS_S;
         case 4122: return EQUIP_MONSTER_UNDRESS_C;
@@ -1058,7 +1094,7 @@ public final class HS {
       "\n\021Protocol/HS.proto*I\n\003sys\022\020\n\014DATA_WRAPP" +
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
       "\n\nERROR_CODE\020\004*\032\n\002gm\022\024\n\020GEN_TEST_ACCOUNT" +
-      "\020d*\313\r\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022" +
+      "\020d*\227\016\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022" +
       "\r\n\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICKOUT" +
       "_S\020\354\007\022\017\n\nSYNCINFO_C\020\355\007\022\017\n\nSYNCINFO_S\020\356\007\022" +
       "\027\n\022PLAYER_INFO_SYNC_S\020\362\007\022\033\n\026STATISTICS_I" +
@@ -1091,18 +1127,20 @@ public final class HS {
       "\n\017EQUIP_COMPOSE_S\020\212 \022\033\n\026EQUIP_INCREASE_L" +
       "EVEL_C\020\213 \022\033\n\026EQUIP_INCREASE_LEVEL_S\020\214 \022\033" +
       "\n\026EQUIP_INCREASE_STAGE_C\020\215 \022\033\n\026EQUIP_INC" +
-      "REASE_STAGE_S\020\216 \022\032\n\025EQUIP_MONSTER_DRESS_" +
-      "C\020\230 \022\032\n\025EQUIP_MONSTER_DRESS_S\020\231 \022\034\n\027EQUI" +
-      "P_MONSTER_UNDRESS_C\020\232 \022\034\n\027EQUIP_MONSTER_" +
-      "UNDRESS_S\020\233 \022\034\n\027EQUIP_MONSTER_REPLACE_C\020",
-      "\234 \022\034\n\027EQUIP_MONSTER_REPLACE_S\020\235 \022\023\n\016QUES" +
-      "T_SUBMIT_C\020\211\'\022\023\n\016QUEST_SUBMIT_S\020\212\'\022\023\n\016QU" +
-      "EST_ACCEPT_S\020\213\'\022\023\n\016QUEST_UPDATE_S\020\214\'\022\023\n\016" +
-      "QUEST_REMOVE_S\020\215\'\022\020\n\013MAIL_READ_C\020\361.\022\023\n\016M" +
-      "AIL_RECEIVE_C\020\362.\022\023\n\016MAIL_RECEIVE_S\020\363.\022\027\n" +
-      "\022MAIL_RECEIVE_ALL_C\020\364.\022\027\n\022MAIL_RECEIVE_A" +
-      "LL_S\020\365.\022\017\n\nMAIL_NEW_S\020\366.B\030\n\026com.hawk.gam" +
-      "e.protocol"
+      "REASE_STAGE_S\020\216 \022\022\n\rEQUIP_PUNCH_C\020\217 \022\022\n\r" +
+      "EQUIP_PUNCH_S\020\220 \022\020\n\013EQUIP_GEM_C\020\221 \022\020\n\013EQ" +
+      "UIP_GEM_S\020\222 \022\032\n\025EQUIP_MONSTER_DRESS_C\020\230 " +
+      "\022\032\n\025EQUIP_MONSTER_DRESS_S\020\231 \022\034\n\027EQUIP_MO",
+      "NSTER_UNDRESS_C\020\232 \022\034\n\027EQUIP_MONSTER_UNDR" +
+      "ESS_S\020\233 \022\034\n\027EQUIP_MONSTER_REPLACE_C\020\234 \022\034" +
+      "\n\027EQUIP_MONSTER_REPLACE_S\020\235 \022\023\n\016QUEST_SU" +
+      "BMIT_C\020\211\'\022\023\n\016QUEST_SUBMIT_S\020\212\'\022\023\n\016QUEST_" +
+      "ACCEPT_S\020\213\'\022\023\n\016QUEST_UPDATE_S\020\214\'\022\023\n\016QUES" +
+      "T_REMOVE_S\020\215\'\022\020\n\013MAIL_READ_C\020\361.\022\023\n\016MAIL_" +
+      "RECEIVE_C\020\362.\022\023\n\016MAIL_RECEIVE_S\020\363.\022\027\n\022MAI" +
+      "L_RECEIVE_ALL_C\020\364.\022\027\n\022MAIL_RECEIVE_ALL_S" +
+      "\020\365.\022\017\n\nMAIL_NEW_S\020\366.B\030\n\026com.hawk.game.pr" +
+      "otocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

@@ -1,4 +1,4 @@
-#TEXT,NUM,TEXT,NUM,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,TEXT,NUM,NUM,FLOAT,FLOAT,FLOAT,NUM,TEXT,TEXT,NUM,FLOAT,FLOAT,FLOAT
+﻿#TEXT,NUM,TEXT,NUM,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,TEXT,NUM,NUM,FLOAT,FLOAT,FLOAT,NUM,TEXT,TEXT,NUM,FLOAT,FLOAT,FLOAT
 id,category,periodEffectID,duration,stun,invincible,dazhao,strengthRatio,intelligenceRatio,defenseRatio,defenseDamageRatio,speedRatio,icon,shieldNum,shieldBaseAttr,shieldRatio,phyReduceInjury,mgReduceInjury,noDead,damageResponse,deadResponse,responseCount,healthRatio,hitRatio,criticalRatio
 #id,category,periodEffectID,duration,stun,invincible,dazhao,strengthRatio,intelligenceRatio,defenseRatio,defenseDamageRatio,speedRatio,icon,phyShield,shieldBaseAttr,magicShield,phyReduceInjury,mgReduceInjury,noDead,damageResponse,deadResponse,responseCount,healthRatio,hitRatio,criticalRatio
 b1,1,e1,5,0,0,0,1,1,1,0,1,soul,0,0,1,0,0,0,"BuffValidatorSample,e1","BuffValidatorSample,e6",1,0,0,0
@@ -22,7 +22,7 @@ psvHuapob1,11,,999,0,0,0,,,,,,,,,,,,,"UsingPhysicalRate_40,buffAttackSelfe2",,99
 psvAmuteb1,11,,999,0,0,0,,,,,,,,,,,,1,,"uncondition,fixLifee1",1,0,0,0
 psvLangrenb1,11,,999,0,0,0,,,,,,,,,,,,,"LifeLower_25,psvLangrene2",,999,0,0,0
 psvLangrenb2,5,,1,0,0,0,0.1,,,,,bufficon_buffAttack,,,,,,,,,0,0,0,0
-psvLonggongtongzib1,11,,999,0,0,0,0,0,0,0,0,,0,,,,,,"UsingCureRate_10,magicShilede1",,,0,0,0
+psvLonggongtongzib1,11,,999,0,0,0,0,0,0,0,0,,0,,,,,,"UsingCureRate_10,magicShilede1",,999,0,0,0
 magicShiledb1,10,,3,,,,,,,,,,0,0,0.4,,,,,,,0,0,0
 psvMantuoluob1,11,,999,0,0,0,,,,,,,,,,,,,"UsingMagicRate_20,psvCuree1",,999,0,0,0
 psvAnpushab1,11,,999,0,0,0,,,,,,,,,,,,,"UsingMagicRate_50,psvCuree1",,999,0,0,0
