@@ -278,7 +278,11 @@ public class AccountServices {
 			queryParam = URLEncoder.encode(queryParam, "UTF-8");
 			getMethod.setPath(serverPath);
 			getMethod.setQueryString(queryParam);
-			httpClient.executeMethod(getMethod);
+			int status = httpClient.executeMethod(getMethod);
+			if (status != HttpStatus.SC_OK) {
+				accountLogger.info("register account server info failed status : " + status );
+				return false;
+			}
 			accountLogger.info("register account server info success: " + serverPath + "?" + queryParam);
 		} catch (Exception e) {
 			System.out.println(e);

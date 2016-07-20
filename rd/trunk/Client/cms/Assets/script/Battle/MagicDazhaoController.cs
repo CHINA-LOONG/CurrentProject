@@ -205,16 +205,19 @@ public class MagicDazhaoController : MonoBehaviour
 	
 	//大招结束
 	void DazhaoFinished()
-	{
-		//if(casterBattleGo.shifaNodeEffect !=null)
-		//{
-		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
-		//}
-		casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
+    {
+        if (dazhaoState != DazhaoState.Finished)
+        {
+            //if(casterBattleGo.shifaNodeEffect !=null)
+            //{
+            //	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
+            //}
+            casterBattleGo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
 
-		dazhaoState = DazhaoState.Finished;
-		
-		StartCoroutine (ExitDazhaoCo());
+            dazhaoState = DazhaoState.Finished;
+
+            StartCoroutine(ExitDazhaoCo());
+        }
 	}
 
 	IEnumerator ExitDazhaoCo()

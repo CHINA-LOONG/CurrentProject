@@ -1,27 +1,21 @@
 package com.hawk.game.util;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import org.hawk.config.HawkConfigManager;
-import org.hawk.db.HawkDBManager;
-import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
-import org.hawk.os.HawkRand;
 
 import com.hawk.game.attr.Attribute;
 import com.hawk.game.config.EquipAttr;
 import com.hawk.game.config.ItemCfg;
-import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.EquipEntity;
-import com.hawk.game.entity.RoleEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Attribute.Attr;
-import com.hawk.game.protocol.Const;
-import com.hawk.game.protocol.Const.attr;
 import com.hawk.game.protocol.Const.equipPart;
+import com.hawk.game.protocol.Const.equipQuality;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Reward.RewardItem;
+import com.hawk.game.util.GsConst.EquipStagePunch;
 
 /**
  * 装备帮助类
@@ -84,17 +78,46 @@ public class EquipUtil {
 	 * @return
 	 */
 	public static void generateAttr(EquipEntity equipEntity, RewardItem.Builder rewardItem) {
-		try {			
-			for (Map.Entry<Const.attr, Float> entry : equipEntity.getAttr().getAttrMap().entrySet()){
-				Attr.Builder attr = Attr.newBuilder();
-				attr.setAttrId(entry.getKey().getNumber());
-				attr.setAttrValue(entry.getValue());
-				rewardItem.addAttrDatas(attr);
+		if (equipEntity.getAttr() != null) {
+			try {			
+				for (Map.Entry<Const.attr, Float> entry : equipEntity.getAttr().getAttrMap().entrySet()){
+					Attr.Builder attr = Attr.newBuilder();
+					attr.setAttrId(entry.getKey().getNumber());
+					attr.setAttrValue(entry.getValue());
+					rewardItem.addAttrDatas(attr);
+				}
+				
+			} catch (Exception e) {
+				HawkException.catchException(e);
 			}
-			
-		} catch (Exception e) {
-			HawkException.catchException(e);
+		}	
+	}
+
+	/**
+	 * 获取装备打孔数量
+	 */
+	public static int getPunchCount(EquipEntity equipEntity)
+	{
+		if (equipEntity.getStage() == EquipStagePunch.WHITE_STAGE.ordinal()) {
+			return EquipStagePunch.WHITE_STAGE.GetCount();
 		}
+		else if (equipEntity.getStage() == EquipStagePunch.GREEN_STAGE.ordinal()) {
+			return EquipStagePunch.GREEN_STAGE.GetCount();
+		}
+		else if (equipEntity.getStage() == EquipStagePunch.BLUE_STAGE.ordinal()) {
+			return EquipStagePunch.BLUE_STAGE.GetCount();
+		}
+		else if (equipEntity.getStage() == EquipStagePunch.PURPLE_STAGE.ordinal()) {
+			return EquipStagePunch.PURPLE_STAGE.GetCount();
+		}
+		else if (equipEntity.getStage() == EquipStagePunch.ORANGE_STAGE.ordinal()) {
+			return EquipStagePunch.ORANGE_STAGE.GetCount();
+		}
+		else if (equipEntity.getStage() == EquipStagePunch.RED_STAGE.ordinal()) {
+			return EquipStagePunch.RED_STAGE.GetCount();
+		}
+		
+		return EquipStagePunch.NONE_STAGE.GetCount();
 	}
 	
 }

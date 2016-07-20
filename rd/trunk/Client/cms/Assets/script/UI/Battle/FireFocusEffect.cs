@@ -5,9 +5,10 @@ using System.Collections;
 public class FireFocusEffect : MonoBehaviour
 {
 	RectTransform rectTrans = null;
-	GameObject effectGo;
+	public GameObject effectGo;
 	Transform effectTargetTrans;
 	float offsetH = 0.0f;
+    bool isActive = false;
 
 	void Start()
 	{
@@ -23,7 +24,7 @@ public class FireFocusEffect : MonoBehaviour
         //{
         //    effectGo.SetActive(false);
         //}
-        gameObject.SetActive(false);
+        effectGo.SetActive(false);
 	}
 
 	void OnDestroy()
@@ -43,22 +44,37 @@ public class FireFocusEffect : MonoBehaviour
 		GameEventMgr.Instance.RemoveListener(GameEventList.HideFireFocus, OnHide);
 	}
 
+    void OnEnable()
+    {
+        if (isActive)
+        {
+            try
+            {
+                StartCoroutine("RefreshEffectCo");
+            }
+            catch
+            {
+            }
+        }
+    }
 
 	void OnShow(BattleObject bo)
     {
         //modify:xiaolong 2015-8-27 16:40:02
         //effectGo.SetActive(true);
-        gameObject.SetActive (true);
-		if (!gameObject.activeInHierarchy)
-			return;
+        isActive = true;
+        if (!gameObject.activeInHierarchy)
+            return;
 
-		try
-		{
-			StopCoroutine ("RefreshEffectCo");
-		}
-		catch
-		{
-		}
+        effectGo.SetActive(true);
+
+        try
+        {
+            StopCoroutine("RefreshEffectCo");
+        }
+        catch
+        {
+        }
 
 		offsetH = 0.5f;
         if (bo.unit.isBoss) 
@@ -83,13 +99,13 @@ public class FireFocusEffect : MonoBehaviour
 
 		effectTargetTrans = targetTrans;
 
-		try
-		{
-			StartCoroutine ("RefreshEffectCo");
-		}
-		catch
-		{
-		}
+        try
+        {
+            StartCoroutine("RefreshEffectCo");
+        }
+        catch
+        {
+        }
 
 	}
 
@@ -108,16 +124,19 @@ public class FireFocusEffect : MonoBehaviour
 	}
 
 	void OnHide()
-	{
-		try
-		{
-			StopCoroutine ("RefreshEffectCo");
-		}
-		catch
-		{
-		}
+    {
+        try
+        {
+            StopCoroutine("RefreshEffectCo");
+        }
+        catch
+        {
+        }
         //modify:xiaolong 2015-8-27 16:40:29
         //effectGo.SetActive(false);
-        gameObject.SetActive(false);
+        isActive = false;
+        effectGo.SetActive(false);
 	}
+
+
 }

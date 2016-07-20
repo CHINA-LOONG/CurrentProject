@@ -86,6 +86,10 @@ public class DazhaofocusController : MonoBehaviour
 		{
 			battleObject.TriggerEvent ("dazhaoxuanyao_fashu", Time.time, null);
 		}
+        if (string.IsNullOrEmpty(battleObject.unit.closeUp) == false)
+        {
+            battleObject.TriggerEvent(battleObject.unit.closeUp, Time.time, null);
+        }
 
 		yield return new WaitForSeconds (BattleConst.dazhaoShowOffTime);
 		RestoreBattle ();
@@ -143,7 +147,8 @@ public class DazhaofocusController : MonoBehaviour
 
 		GameEventMgr.Instance.FireEvent (GameEventList.MonsterShowoffOver);
 
-		UIBattle.Instance.ShowUI (true);
+        UIBattle.Instance.ShowUI(true);
+        UIBattle.Instance.gameObject.BroadcastMessage("OnAnimationFinish");
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Dazhao);
 	}
 }

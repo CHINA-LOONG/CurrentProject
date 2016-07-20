@@ -1,19 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using ProtoBuf;
+
+public class GemInfo
+{
+    int type;
+    string gemId;
+
+    public GemInfo(int type, string gemId) {
+        this.type = type;
+        this.gemId = gemId;
+    }
+
+    public GemInfo(PB.GemPunch gem)
+    {
+        this.type = gem.type;
+        this.gemId = gem.gemItemId;
+    }
+}
 
 public class EquipData
 {
     public int stage;
     public int level;
     public string equipId;
+    public List<GemInfo> gemList;
 
-    public static EquipData valueof(string equipId, int stage, int level)
+    public static EquipData valueof(string equipId, int stage, int level, List<PB.GemPunch> gemList)
     {
         EquipData equipData = new EquipData();
         equipData.stage = stage;
         equipData.level = level;
         equipData.equipId = equipId;
+        equipData.gemList = new List<GemInfo>();
+
+        foreach (PB.GemPunch element in gemList)
+        {
+            GemInfo gemInfo = new GemInfo(element);
+            equipData.gemList.Add(gemInfo);
+        }
+
         return equipData;
     }
 }
@@ -32,7 +59,7 @@ public class GameEquipData
 {
     public Dictionary<long, EquipData> equipList = new Dictionary<long, EquipData>();
 
-    public void AddEquip(long id, string equipId, int stage, int level)
+    public void AddEquip(long id, string equipId, int stage, int level, List<PB.GemPunch> gemList)
     {
         EquipData equipData;
         if (equipList.TryGetValue(id, out equipData))
@@ -40,10 +67,16 @@ public class GameEquipData
             equipData.equipId = equipId;
             equipData.stage = stage;
             equipData.level = level;
+            equipData.gemList.Clear();
+            foreach (PB.GemPunch element in gemList)
+            {
+                GemInfo gemInfo = new GemInfo(element);
+                equipData.gemList.Add(gemInfo);
+            }
         }
         else
         {
-            equipList.Add(id, EquipData.valueof(equipId, stage, level));
+            equipList.Add(id, EquipData.valueof(equipId, stage, level, gemList));
         }
     }
 

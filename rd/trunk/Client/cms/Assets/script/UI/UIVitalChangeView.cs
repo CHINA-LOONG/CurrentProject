@@ -14,8 +14,9 @@ public class UIVitalChangeView : MonoBehaviour
     public Image vitalBackImage;
     public Sprite criticalSprite;
     public Sprite criticalHealSprite;
-    public Sprite missSprite;
-    public Sprite interruptSprite;
+    //modify: xuelong 2015-8-31 11:50:51  由于图片中心点不同。不能直接设置
+    //public Sprite missSprite;
+    //public Sprite interruptSprite;
     public Text hitResult;
     RectTransform trans;
 

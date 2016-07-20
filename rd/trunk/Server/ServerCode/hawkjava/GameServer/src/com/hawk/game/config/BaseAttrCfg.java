@@ -8,7 +8,7 @@ public class BaseAttrCfg extends HawkConfigBase{
 	 * 配置id
 	 */
 	@Id
-	protected final int id ;
+	protected final String id;
 	/**
 	 * 力量
 	 */
@@ -31,7 +31,7 @@ public class BaseAttrCfg extends HawkConfigBase{
 	protected final int health;
 	
 	public BaseAttrCfg(){
-		this.id = 0;
+		this.id = null;
 		this.strength = 0;
 		this.intelligence = 0;
 		this.health = 0;
@@ -39,7 +39,7 @@ public class BaseAttrCfg extends HawkConfigBase{
 		this.speed = 0;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 

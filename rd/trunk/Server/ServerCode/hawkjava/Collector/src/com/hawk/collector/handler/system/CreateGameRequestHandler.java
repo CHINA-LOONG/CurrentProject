@@ -44,7 +44,7 @@ public class CreateGameRequestHandler implements HttpHandler {
 		String logUserName = params.containsKey("logUserName")? params.get("logUserName") : "";
 		String logUserPwd = params.containsKey("logUserPwd")? params.get("logUserPwd") : "";
 		String logPath = params.containsKey("logPath")? params.get("logPath") : "";
-		String sshPort = params.containsKey("sshPort")? params.get("sshPort") : "";
+		String sshPort = params.containsKey("sshPort")? params.get("sshPort") : "0";
 		
 		int status = 0;
 		if (gamePlatform != null) {

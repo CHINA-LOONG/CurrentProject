@@ -325,9 +325,6 @@ public class AwardItems {
 	public boolean  rewardTakeAffect(Player player, Action action) {
 		try {			
 			for (int i = 0; i < rewardInfo.getRewardItemsBuilderList().size(); ) {
-				
-				System.out.println(rewardInfo.getRewardItemsBuilderList().size());
-				
 				RewardItem.Builder item = rewardInfo.getRewardItemsBuilder(i);
 				SynPlayerAttr.Builder playerBuilder = rewardInfo.getPlayerAttrBuilder();
 				boolean invalidType = false;

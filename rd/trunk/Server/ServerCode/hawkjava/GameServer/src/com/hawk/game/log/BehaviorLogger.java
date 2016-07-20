@@ -142,6 +142,14 @@ public class BehaviorLogger {
 		 */
 		EQUIP_EHANCE,
 		/**
+		 * 装备打孔
+		 */
+		EQUIP_PUNCH,
+		/**
+		 * 宝石镶嵌
+		 */
+		EQUIP_GEM,
+		/**
 		 * 装备穿戴
 		 */
 		EQUIP_DRESS,

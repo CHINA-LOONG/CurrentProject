@@ -31,7 +31,7 @@ public class ItemStaticData
 	public	int	addAttrType;
 	public	int	addAttrValue;
 	public	int	gemId;
-	public	int	maxGem;
+    public int gemType;
 
 	public	int	part;
 	public	int	durability;

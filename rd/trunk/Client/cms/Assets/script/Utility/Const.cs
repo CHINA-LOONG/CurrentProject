@@ -23,7 +23,7 @@ public class Const
     /// 更新模式下会从web server上获取version list，然后下载更新包更新版本
     /// ios初审时请关闭
     /// </summary>
-    public static bool UpdateMode = true;
+    public static bool UpdateMode = false;
 
 	public static bool DebugConsoleEnable = true;
 

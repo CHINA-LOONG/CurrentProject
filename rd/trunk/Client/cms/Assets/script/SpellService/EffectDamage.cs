@@ -131,7 +131,7 @@ public class EffectDamage : Effect
                         //治疗
                         damageAmount = (int)(
                                         damageRatio * SpellConst.intelligenceToAttack * caster.intelligence *  //暴击伤害系数 * 攻击
-                                        (1.0f + gdMgr.PlayerDataAttr.equipIntelligenceRatio + caster.additionHealRatio) * //主角和怪物装备加成
+                                        (1.0f + caster.additionHealRatio) * //主角和怪物装备加成
                                         (damageProto.attackFactor + spellLevelRatio) * //技能加成
                                         (1.0f + caster.spellIntelligenceRatio)
                                         );//buff加成(队长技 etc)
@@ -152,7 +152,7 @@ public class EffectDamage : Effect
                         curInjuryRatio = curInjuryRatio < 0.0f ? 0.0f : curInjuryRatio;
                         damageAmount = (int)(
                                         damageRatio * curInjuryRatio * SpellConst.strengthToAttack * caster.strength *  //暴击伤害系数 * 受伤比 * 攻击
-                                        (1.0f + gdMgr.PlayerDataAttr.equipStrengthRatio + caster.additionDamageRatio - target.minusDamageRatio) * //主角和怪物装备加成
+                                        (1.0f + caster.additionDamageRatio - target.minusDamageRatio) * //主角和怪物装备加成
                                         (damageProto.attackFactor + spellLevelRatio) * //技能加成
                                         (1.0f + caster.spellStrengthRatio) *
                                         wpRatio *

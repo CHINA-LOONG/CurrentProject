@@ -125,7 +125,6 @@ public class ItemInfo {
 			type = Integer.parseInt(items[0]);
 			itemId = items[1];
 			count = Integer.parseInt(items[2]);
-			
 			if (parseType == ItemParseType.PARSE_MONSTER_STAGE) {
 				if (items.length == 4)
 				{

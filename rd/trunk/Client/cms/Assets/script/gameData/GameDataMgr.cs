@@ -209,7 +209,7 @@ public class GameDataMgr : MonoBehaviour
 
         foreach (PB.EquipInfo equipInfo in equpSync.equipInfos)
         {
-            mainPlayer.gameEquipData.AddEquip(equipInfo.id, equipInfo.equipId, equipInfo.stage, equipInfo.level);
+            mainPlayer.gameEquipData.AddEquip(equipInfo.id, equipInfo.equipId, equipInfo.stage, equipInfo.level, equipInfo.gemItems);
         }
     }
     //quest------------------------------------------------------------------------------------------
@@ -303,7 +303,7 @@ public class GameDataMgr : MonoBehaviour
             }
             else if (item.type == (int)PB.itemType.EQUIP)
             {
-                GameDataMgr.Instance.mainPlayer.gameEquipData.AddEquip(item.id, item.itemId, item.stage, item.level);
+                GameDataMgr.Instance.mainPlayer.gameEquipData.AddEquip(item.id, item.itemId, item.stage, item.level, null);
             }
             else if (item.type == (int)PB.itemType.MONSTER)
             {

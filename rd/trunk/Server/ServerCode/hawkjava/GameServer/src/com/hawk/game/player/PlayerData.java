@@ -84,7 +84,7 @@ public class PlayerData {
 	 * 任务列表
 	 */
 	private Map<Integer, HSQuest> questMap = new HashMap<>();
-
+	
 	/**
 	 * 构造函数
 	 * 

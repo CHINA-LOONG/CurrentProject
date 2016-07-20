@@ -29,9 +29,9 @@ public class bossMinghe18Karong : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (karongUnit);
 
-
-		if (NormalScript.GetWpLifeLeftRatio (karongUnit.battleUnit, "bossMinghe18Karongwp02") > 0 && karongUnit.curLife > karongUnit.maxLife * 0.7) 
-		{									
+		float t = NormalScript.GetWpLifeLeftRatio (karongUnit.battleUnit, "bossMinghe18Karongwp02");
+		if ( NormalScript.GetWpLifeLeftRatio (karongUnit.battleUnit, "bossMinghe18Karongwp02")> 0 && karongUnit.curLife > karongUnit.maxLife * 0.7 && jishu == 0) 
+		{
 			float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
 			if (randkey >= 0.5) {
 				karongSpellDic.TryGetValue ("bossMinghe18Karong1", out useSpell);

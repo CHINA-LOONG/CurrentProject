@@ -60,6 +60,7 @@ public class GameUnit : IComparable
 	public int lazy;//勤奋度
 	public bool isVisible = true;//是否可见
 	public int friendship;
+    public string closeUp;
     //掉落金币
     //public int goldNoteMin;
   //  public int goldNoteMax;
@@ -250,7 +251,22 @@ public class GameUnit : IComparable
                 spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellID);
                 if (spellPt != null)
                 {
-                    spellList.Add(spellID, new Spell(spellPt, 1));
+                    if (
+                        spellPt.category == (int)SpellType.Spell_Type_Defense ||
+                        spellPt.category == (int)SpellType.Spell_Type_Passive ||
+                        spellPt.category == (int)SpellType.Spell_Type_Beneficial ||
+                        spellPt.category == (int)SpellType.Spell_Type_Negative ||
+                        spellPt.category == (int)SpellType.Spell_Type_Lazy ||
+                        spellPt.category == (int)SpellType.Spell_Type_PrepareDazhao ||
+                        spellPt.category == (int)SpellType.Spell_Type_Hot
+                        )
+                    {
+                        spellList.Add(spellID, new Spell(spellPt, 1));
+                    }
+                    else
+                    {
+                        spellList.Add(spellID, new Spell(spellPt, pbUnit.level));
+                    }
                 }
             }	
         }
@@ -259,6 +275,7 @@ public class GameUnit : IComparable
 		//性格，勤奋度,//怪物友好度
       
         lazy = pbUnit.lazy;
+        closeUp = unitRowData.closeUp;
 		if (isPlayer) 
 		{
 			friendship = 0;//player no use

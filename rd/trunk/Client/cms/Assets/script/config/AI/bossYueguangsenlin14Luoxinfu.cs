@@ -16,7 +16,7 @@ public class bossYueguangsenlin14Luoxinfu : BossAi
 	{
 
 		BattleUnitAi.AiAttackResult attackResult = new BattleUnitAi.AiAttackResult ();
-
+		attackResult = xgAiResult;
 		//spell todo
 		Dictionary<string,Spell> luoxinfuSpellDic = GetUnitSpellList (luoxinfuUnit);
 
@@ -47,11 +47,7 @@ public class bossYueguangsenlin14Luoxinfu : BossAi
             attackResult.attackStyle = BattleUnitAi.AiAttackStyle.PhysicsAttack;
             attackResult.useSpell = useSpell;
         }
-        else
-        {
-            attackResult = xgAiResult;
-        }
-
+        
 		return attackResult;
 	}
 

@@ -23,6 +23,7 @@ import org.hawk.util.services.HawkCdkService;
 import org.hawk.util.services.HawkEmailService;
 import org.hawk.util.services.HawkReportService;
 import org.hawk.xid.HawkXID;
+import org.omg.CORBA.IntHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -128,52 +129,58 @@ public class GsApp extends HawkApp {
 		// cdk服务初始化
 		if (GsConfig.getInstance().getCdkHost().length() > 0) {
 			HawkLog.logPrintln("install cdk service......");
-			HawkCdkService.getInstance().install(
-					GsConfig.getInstance().getGameId(),
-					GsConfig.getInstance().getPlatform(),
-					GsConfig.getInstance().getServerId(),
-					GsConfig.getInstance().getCdkHost(),
-					GsConfig.getInstance().getCdkTimeout());
+			 HawkCdkService.getInstance().install(
+					 GsConfig.getInstance().getGameId(),
+					 GsConfig.getInstance().getPlatform(),
+					 GsConfig.getInstance().getServerId(),
+					 GsConfig.getInstance().getCdkHost(),
+					 GsConfig.getInstance().getCdkTimeout());
 		}
 		// 数据上报服务初始化并获取账号服务器地址
 		if (GsConfig.getInstance().getReportHost().length() > 0) {
-			HawkLog.logPrintln("install report service......");
-			HawkReportService.getInstance().install(
-					GsConfig.getInstance().getGameId(),
-					GsConfig.getInstance().getPlatform(),
-					GsConfig.getInstance().getServerId(),
-					GsConfig.getInstance().getReportHost(),
-					GsConfig.getInstance().getReportTimeout());
-			
-			HawkLog.logPrintln("get account server......");			
-			StringBuilder accountZmqHost = new StringBuilder();
-			int accountZmqPort = HawkReportService.getInstance().fetchAccountServerInfo(appCfg, accountZmqHost);
-			if (accountZmqPort == 0) {
-				HawkLog.logPrintln("get account fail......");
+			HawkLog.logPrintln("install report service......");	
+			if (!HawkReportService.getInstance().install(
+					 GsConfig.getInstance().getGameId(), 
+					 GsConfig.getInstance().getPlatform(),
+					 GsConfig.getInstance().getServerId(),
+					 GsConfig.getInstance().getReportHost(),
+					 GsConfig.getInstance().getReportTimeout())) 
+			{
+				HawkLog.logPrintln("install report service fail");
 			}
 			else
 			{
-				HawkLog.logPrintln("install account service......");				
-				if (HawkAccountService.getInstance().install(GsConfig.getInstance().getGameId(), 
-															 GsConfig.getInstance().getPlatform(), 
-						                                     GsConfig.getInstance().getServerId(), 
-						                                     GsConfig.getInstance().getReportTimeout(),
-						                                     accountZmqHost.toString(), accountZmqPort)) {
-					HawkLog.logPrintln("register game server");
-					try {
-						// TODO
-						String ip = HawkReportService.getInstance().getHostIp();
-						HawkLog.debugPrintln("1#####" + ip);
-						if (HawkReportService.getInstance().getHostIp().equals("127.0.0.1") || HawkReportService.getInstance().getHostIp().equals("123.126.3.94")) {
-							ip = InetAddress.getLocalHost().getHostAddress();
-							HawkLog.debugPrintln("2#####" + ip);
-						}
-						HawkAccountService.getInstance().report(new HawkAccountService.RegitsterGameServer(ip, GsConfig.getInstance().getAcceptorPort()));
-					} catch (Exception e) {
-						HawkLog.logPrintln("get ip fail");
-					}
+				HawkLog.logPrintln("get account server......");			
+				StringBuilder accountZmqHost = new StringBuilder();
+				IntHolder zmqPort = new IntHolder();
+				if (!HawkReportService.getInstance().fetchAccountServerInfo(appCfg, accountZmqHost, zmqPort)) {
+					HawkLog.logPrintln("get account fail......");
 				}
-			}		
+				else
+				{
+					HawkLog.logPrintln("install account service......");				
+					if (HawkAccountService.getInstance().install(
+							GsConfig.getInstance().getGameId(), 												 
+							GsConfig.getInstance().getPlatform(), 
+							GsConfig.getInstance().getServerId(), 
+							GsConfig.getInstance().getReportTimeout(),
+							accountZmqHost.toString(), zmqPort.value)) 
+					{
+						HawkLog.logPrintln("register game server");
+						try {
+							// TODO
+							String ip = HawkReportService.getInstance().getHostIp();
+							if (ip.equals("127.0.0.1") || ip.equals("123.126.3.94")) {
+								ip = InetAddress.getLocalHost().getHostAddress();
+							}
+							HawkAccountService.getInstance().report(new HawkAccountService.RegitsterGameServer(ip, GsConfig.getInstance().getAcceptorPort()));
+						} 
+						catch (Exception e) {
+							HawkLog.logPrintln("get ip fail");
+						}
+					}
+				}		
+			}
 		}
 		
 		// 初始化邮件服务

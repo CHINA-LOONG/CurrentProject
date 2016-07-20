@@ -30,6 +30,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 
 
 	bool isDragging = false;
+	bool	isShowMirrorExitEffect = false;
 
 	int mirrorStateHash = -1;
 
@@ -126,6 +127,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 	//鼠标抬起
 	public void OnPointerUp (PointerEventData eventData)
 	{
+		isShowMirrorExitEffect = true;
 		OnSetMirrorModeState (false);
 	}
 	// 拖动  
@@ -175,25 +177,27 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		{
 
 			StopRayCast();
-			mirrorExitEffect.gameObject.SetActive(true);
-			RectTransform rt = mirrorExitEffect.transform as RectTransform;
-			//rt.anchoredPosition = new Vector2(300,300);
-			if(rt != null )
+			if(isShowMirrorExitEffect)
 			{
-				Vector3 mirrorScreenPos = UIUtil.GetSpacePos(rectTrans,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
-
-
-				mirrorScreenPos.x -= (rectTrans.pivot.x -0.5f)*rectTrans.sizeDelta.x;
-				mirrorScreenPos.y -= (rectTrans.pivot.y -0.5f)*rectTrans.sizeDelta.y;
-
-				float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
-				rt.anchoredPosition = new Vector2(mirrorScreenPos.x/fscale,mirrorScreenPos.y/fscale);
+				isShowMirrorExitEffect  = false;
+				mirrorExitEffect.gameObject.SetActive(true);
+				RectTransform rt = mirrorExitEffect.transform as RectTransform;
+				//rt.anchoredPosition = new Vector2(300,300);
+				if(rt != null )
+				{
+					Vector3 mirrorScreenPos = UIUtil.GetSpacePos(rectTrans,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
+					
+					
+					mirrorScreenPos.x -= (rectTrans.pivot.x -0.5f)*rectTrans.sizeDelta.x;
+					mirrorScreenPos.y -= (rectTrans.pivot.y -0.5f)*rectTrans.sizeDelta.y;
+					
+					float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
+					rt.anchoredPosition = new Vector2(mirrorScreenPos.x/fscale,mirrorScreenPos.y/fscale);
+				}
 			}
-			else
-			{
-				//test
-				mirrorExitEffect.transform.position = Vector3.zero;
-			}
+
+
+
 			ResetMirror();
 
 		}

@@ -262,9 +262,11 @@ public class PhyDazhaoController : MonoBehaviour
 	//大招结束
 	void DazhaoFinished()
 	{
-		dazhaoState = DazhaoState.Finished;
-
-		StartCoroutine (ExitDazhaoCo());
+        if (dazhaoState != DazhaoState.Finished)
+        {
+            dazhaoState = DazhaoState.Finished;
+            StartCoroutine(ExitDazhaoCo());
+        }
 	}
 
 	IEnumerator ExitDazhaoCo()

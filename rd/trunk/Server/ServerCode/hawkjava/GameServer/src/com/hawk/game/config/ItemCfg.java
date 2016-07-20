@@ -98,9 +98,9 @@ public class ItemCfg extends HawkConfigBase {
 	 */
 	protected final String gemId;
 	/**
-	 * 宝石增益属性ID
+	 * 宝石形状
 	 */
-	protected final int maxGem;
+	protected final int gemType;
 	/**
 	 * 装备部位
 	 */
@@ -155,7 +155,7 @@ public class ItemCfg extends HawkConfigBase {
 		addAttrType = 0;
 		addAttrValue = 0;
 		gemId = null;
-		maxGem = 0;
+		gemType = 0;
 		part = 0;
 		durability = 0;
 		equipAttId = 0;
@@ -250,10 +250,17 @@ public class ItemCfg extends HawkConfigBase {
 		return gemId;
 	}
 
-	public int getMaxGem() {
-		return maxGem;
+	
+	public int getGemType() {
+		return gemType;
+	}
+	
+	
+	public int getMaxType() {
+		return gemType;
 	}
 
+	
 	public int getPart() {
 		return part;
 	}

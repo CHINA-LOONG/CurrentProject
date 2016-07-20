@@ -13,7 +13,8 @@ buffAttackSelfb1,5,,3,0,0,0,0.1,0,0,0,0,bufficon_buffAttack,0,,0,0,0,0,,,1,0,0,0
 debuffDefenseb1,4,,3,0,0,0,0,0,-0.5,0,0,bufficon_debuffDefense,0,,0,0,0,0,,,1,0,0,0
 defendb1,3,,2,0,0,0,0,0,0,-0.2,0,,0,,0,0,0,0,,,1,0,0,0
 hotb1,2,demoershuDazhaoe4,3,0,0,0,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0
-dazhaob1,6,,2,0,0,4,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0
+phydazhaoPrepareb1,6,,2,0,0,6,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0
+magicdazhaoPrepareb1,6,,2,0,0,6,0,0,0,0,0,,0,,0,0,0,0,,,1,0,0,0
 ultLonggongtongzib1,10,,2,,,,,,,,,,0,1,0.1,,,,,,,0,0,0
 psvWaguib1,11,,999,,,,,,,,,,,,,,,,"HurtbyPhysicalMagicRate_80,debuffSpeede2",,999,0,0,0
 psvMagicb1,11,,999,,,,,0.1,,,,,,,,,,,,,,0,0,0

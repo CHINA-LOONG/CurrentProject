@@ -1,8 +1,9 @@
 package com.hawk.game.entity;
 
+import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,20 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import net.sf.json.JSON;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+
+
 
 import org.hawk.db.HawkDBEntity;
-import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
-import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
 
-import sun.security.x509.GeneralName;
-
-import com.google.gson.reflect.TypeToken;
 import com.hawk.game.attr.Attribute;
+import com.hawk.game.item.GemInfo;
+import com.hawk.game.util.GsConst;
 
 /**
  * 玩家基础数据
@@ -60,6 +57,9 @@ public class EquipEntity extends HawkDBEntity {
 	@Column(name = "level")
 	protected byte level = 0;
 	
+	@Column(name = "punchCount")
+	protected byte punchCount = 0;
+	
 	@Column(name = "gemDress")
 	protected String gemDress = null;
 
@@ -79,7 +79,7 @@ public class EquipEntity extends HawkDBEntity {
 	protected boolean invalid;
 
 	@Transient
-	protected Map<Integer, Integer> gemDressMap = new HashMap<Integer, Integer>();
+	protected List<GemInfo> gemDressList = new LinkedList<GemInfo>();
 
 	@Transient
 	Attribute attr = null;
@@ -152,52 +152,73 @@ public class EquipEntity extends HawkDBEntity {
 	public void setLevel(int level) {
 		this.level = (byte) level;
 	}
-
-	public Map<Integer, Integer> GetGemDressMap() {
-		return gemDressMap;
+	
+	public void setPunchCount(int punchCount) {
+		this.punchCount = (byte) punchCount;
 	}
 
-	public Map<Integer, Integer> GetGemDressString() {
-		gemMapToJson();
-		return gemDressMap;
+	public byte getPunchCount() {
+		return punchCount;
 	}
 	
-	private void gemDressJsonToMap(){		
-		JSONObject gemJson = JSONObject.fromObject(gemDress);
-		if (gemJson == null) {
-			HawkException.catchException(new HawkException("db gem data invalid: " + this.id));
-		}
-		else {
-			for (Object k : gemJson.keySet()) {
-				Object v = gemJson.get(k);
-				gemDressMap.put((Integer)k, (Integer)v);
+	public List<GemInfo> GetGemDressList() {
+		return gemDressList;
+	}
+	
+	public String gemListToString() {
+		gemDress = "";
+		if (gemDressList.isEmpty() == false) {
+			for (GemInfo element : gemDressList) {
+				gemDress = gemDress + element.getType() + "," + element.getGemId() + "_";
 			}
-		} 
+		}
+		
+		return gemDress;
 	}
 
-	private void gemMapToJson() {
-		if (gemDressMap.isEmpty() == false) {
-			JSONObject gemJson = new JSONObject();
-			for (Map.Entry<Integer, Integer> entry : gemDressMap.entrySet()) {
-				gemJson.put(entry.getKey(), entry.getValue());
+	private void gemDressToList(){		
+		gemDressList.clear();
+		if (gemDress != null && !"".equals(gemDress)) {
+			for (String element : Arrays.asList(gemDress.split("_"))) {
+				if (element != null && !"".equals(element)) {
+					String[] result = element.split(",");
+					if (result.length == 2) {
+						gemDressList.add(new GemInfo(Integer.valueOf(result[0]), result[1]));
+					}
+				}
 			}
-			gemDress = gemJson.toString();
-		}
-		else {
-			gemDress = null;
 		}
 	}
 	
-	public void addGem(int index, int gemId)
-	{
-		// TODO valid of gemId
-		GetGemDressMap().put(index, gemId);
+	public void addGem(int type) {
+		gemDressList.add(new GemInfo(type, GsConst.EQUIP_GEM_NONE));
 	}
 	
-	public void remvoeGem(int index)
+	public void addGem(int type, String gemId)
 	{
-		// TODO valid of gemId
-		GetGemDressMap().remove(index);
+		for (GemInfo element : gemDressList) {
+			if (element.getType() == type && element.getGemId().equals(GsConst.EQUIP_GEM_NONE)) {
+				element.setGemId(gemId);
+			}
+		}
+	}
+	
+	public void removeGem(String gemId)
+	{
+		for (GemInfo element : gemDressList) {
+			if (element.getGemId().equals(gemId) == true) {
+				element.setGemId(GsConst.EQUIP_GEM_NONE);
+			}
+		}
+	}
+	
+	public void replaceGem(String oldGemId, String newgemId)
+	{
+		for (GemInfo element : gemDressList) {
+			if (element.getGemId().equals(oldGemId) == true) {
+				element.setGemId(newgemId);
+			}
+		}
 	}
 	
 	public Attribute getAttr() {
@@ -222,14 +243,14 @@ public class EquipEntity extends HawkDBEntity {
 			attr = Attribute.valueOf(additionAttr);
 		}
 		if (gemDress != null && false == "".equals(gemDress) && false == "null".equals(gemDress)) {
-			gemDressJsonToMap();
+			gemDressToList();
 		}
 		return true;
 	}
 
 	@Override
 	public boolean encode() {
-		gemMapToJson();
+		gemListToString();
 		if(attr != null){
 			this.additionAttr = attr.toString();
 		}

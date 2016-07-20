@@ -219,6 +219,18 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_S", Value=4110)]
       EQUIP_INCREASE_STAGE_S = 4110,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_PUNCH_C", Value=4111)]
+      EQUIP_PUNCH_C = 4111,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_PUNCH_S", Value=4112)]
+      EQUIP_PUNCH_S = 4112,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_C", Value=4113)]
+      EQUIP_GEM_C = 4113,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_S", Value=4114)]
+      EQUIP_GEM_S = 4114,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_C", Value=4120)]
       EQUIP_MONSTER_DRESS_C = 4120,
             

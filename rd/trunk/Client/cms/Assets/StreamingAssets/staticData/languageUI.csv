@@ -23,6 +23,7 @@ instance_tiaozhancishu,可挑战次数:{0}/{1},Times:{0}/{1}
 instance_saodang,扫荡,Raid
 instance_saodangquanNumber,扫荡券数量:{0},Tickets:{0}
 instance_saodang10,扫荡10次,Raid 10
+instance_back,返回,back
 instance_yingzhan,应战,
 instance_shangzhen,上阵,Starter
 instance_houbei,后备,
@@ -60,7 +61,7 @@ quest_reward_wancheng,好的,
 tip_NotFoundQuest,当前类型没有可以进行的任务哦！,
 ,,
 xl_mail,薛龙_邮箱界面,
-mail_title,邮箱,
+mail_title,邮箱,Mail
 mail_tab1,系统邮件,
 mail_yijianlingqu,一键领取,
 mail_fujian,附件,
@@ -74,7 +75,7 @@ mail_record_003,金币要装不下啦，收取失败！,
 mail_record_004,钻石要装不下啦，收取失败！,
 mail_youxiangjiangman,邮箱即将爆仓，请及时收取邮件,
 mail_youxiangyiman,邮箱已经爆仓，快快收取邮件,
-mail_queding,确定,
+mail_queding,确定,confirm
 zs,,
 pet_list_type,圣兽,shengshou
 pet_detail_left_property,属性：,property:

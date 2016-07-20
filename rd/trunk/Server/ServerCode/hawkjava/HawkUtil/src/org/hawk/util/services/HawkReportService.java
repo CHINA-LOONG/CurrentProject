@@ -24,6 +24,7 @@ import org.hawk.script.HawkScriptManager;
 import org.hawk.util.HawkTickable;
 import org.hawk.zmq.HawkZmq;
 import org.hawk.zmq.HawkZmqManager;
+import org.omg.CORBA.IntHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -544,11 +545,14 @@ public class HawkReportService extends HawkTickable {
 				}
 
 				if (appCfg != null) {
-					initInnerService(appCfg);
+					if (!initInnerService(appCfg)) {
+						return false;
+					}
 				}
 			}
 		} catch (Exception e) {
 			HawkException.catchException(e);
+			return false;
 		}
 
 		if (!isValid()) {
@@ -581,6 +585,7 @@ public class HawkReportService extends HawkTickable {
 			}
 		} catch (Exception e) {
 			HawkException.catchException(e);
+			return false;
 		}
 
 		// 创建zmq连接
@@ -595,11 +600,15 @@ public class HawkReportService extends HawkTickable {
 
 				if (createReportZmq(zmqHost)) {
 					reportLogger.info("create report zmq service success: " + zmqHost);
-				} else {
+				} 
+				else {
 					reportLogger.info("create report zmq service failed: " + zmqHost);
+					return false;
 				}
-			} catch (Exception e) {
+			} 
+			catch (Exception e) {
 				HawkException.catchException(e);
+				return false;
 			}
 		}
 
@@ -623,6 +632,7 @@ public class HawkReportService extends HawkTickable {
 			reportLogger.info("report server info success: " + serverPath + "?" + queryParam);
 		} catch (Exception e) {
 			reportLogger.info("report server info failed: " + serverPath + "?" + queryParam);
+			return false;
 		}
 
 		return true;
@@ -667,8 +677,7 @@ public class HawkReportService extends HawkTickable {
 	 * 
 	 * @return
 	 */
-	public int fetchAccountServerInfo(HawkAppCfg appCfg, StringBuilder accountAddr) {
-		int accountZmqPort = 0;
+	public boolean fetchAccountServerInfo(HawkAppCfg appCfg, StringBuilder accountAddr, IntHolder zmqPort) {
 		try {
 			String queryParam = String.format(fetchAccountServerQuery, gameName, platform, serverId, "test");
 			queryParam = URLEncoder.encode(queryParam, "UTF-8");
@@ -686,18 +695,20 @@ public class HawkReportService extends HawkTickable {
 					}
 
 					if (jsonObject.containsKey("zmqPort")) {
-						accountZmqPort = (Integer) jsonObject.get("zmqPort");
+						zmqPort.value = (int) jsonObject.get("zmqPort");
 					}
 				}
 			}
 			else {
 				reportLogger.info("fetch account server fail status: " + status);
+				return false;
 			}
 		} catch (Exception e) {
 			reportLogger.info("fetch account server fail");
+			return false;
 		}
 		
-		return accountZmqPort;
+		return true;
 	}
 	
 	/**

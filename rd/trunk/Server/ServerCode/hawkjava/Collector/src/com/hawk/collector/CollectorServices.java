@@ -327,9 +327,9 @@ public class CollectorServices {
 	 * @return
 	 */
 	public boolean createGamePlatform(GamePlatform gamePlatform) {
-		String sql = String.format("INSERT INTO game(game, platform, channel, logUserName, logUserPwd, logPath, sshPort, time) VALUES('%s', '%s', '%s', '%s', '%s', '%s', %s, '%s');", 
+		String sql = String.format("INSERT INTO game(game, platform, channel, logUserName, logUserPwd, logPath, sshPort, time) VALUES('%s', '%s', '%s', '%s', '%s', '%s', %d, '%s');", 
 				gamePlatform.getGame(), gamePlatform.getPlatform(), gamePlatform.getChannel(), 
-				gamePlatform.getLogUserName(), gamePlatform.getLogUserPwd(), gamePlatform.getLogPath(), gamePlatform.getSshPort(), HawkTime.getTimeString());
+				gamePlatform.getLogUserName(), gamePlatform.getLogUserPwd(), gamePlatform.getLogPath(), Integer.valueOf(gamePlatform.getSshPort()), HawkTime.getTimeString());
 
 		HawkLog.logPrintln(String.format("create_game, game: %s, platform: %s, channel: %s, logUserName: %s, logUserPwd: %s, logPath: %s, sshPort: %s", 
 				gamePlatform.getGame(), gamePlatform.getPlatform(), gamePlatform.getChannel(), 

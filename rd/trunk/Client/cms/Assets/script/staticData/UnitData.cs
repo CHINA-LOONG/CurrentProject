@@ -55,6 +55,7 @@ public class UnitData
     public string weakpointList;
 	public int	friendship;
 	public int character;
+    public string closeUp;
 
 	public string NickNameAttr
 	{

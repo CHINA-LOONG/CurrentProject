@@ -19,24 +19,33 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: {x: 1, y: 1, z: 1}
-        inSlope: {x: -.399999976, y: -.399999976, z: -.399999976}
-        outSlope: {x: -.399999976, y: -.399999976, z: -.399999976}
+        inSlope: {x: -.399999976, y: -.399999976, z: 0}
+        outSlope: {x: -.399999976, y: -.399999976, z: 0}
         tangentMode: 0
       - time: .5
-        value: {x: .800000012, y: .800000012, z: .800000012}
+        value: {x: .800000012, y: .800000012, z: 1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - time: 1
         value: {x: 1, y: 1, z: 1}
-        inSlope: {x: .399999976, y: .399999976, z: .399999976}
-        outSlope: {x: .399999976, y: .399999976, z: .399999976}
+        inSlope: {x: .399999976, y: .399999976, z: 0}
+        outSlope: {x: .399999976, y: .399999976, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: 
+    path: fireFocusImage1
   m_FloatCurves: []
-  m_PPtrCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 0}
+    - time: .483333319
+      value: {fileID: 0}
+    attribute: effectGo
+    path: normalGroup/fireFocusEffect
+    classID: 114
+    script: {fileID: 11500000, guid: da6849db88f25054ab10b2b897244fd3, type: 3}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -44,13 +53,21 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 0
+    - path: 1940483705
       attribute: 3
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    pptrCurveMapping: []
+    - path: 2886395616
+      attribute: 2188255609
+      script: {fileID: 11500000, guid: da6849db88f25054ab10b2b897244fd3, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 0}
+    - {fileID: 0}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
@@ -90,7 +107,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalScale.x
-    path: 
+    path: fireFocusImage1
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -114,7 +131,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalScale.y
-    path: 
+    path: fireFocusImage1
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -122,23 +139,18 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 1
-        inSlope: -.399999976
-        outSlope: -.399999976
-        tangentMode: 10
-      - time: .5
-        value: .800000012
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       - time: 1
         value: 1
-        inSlope: .399999976
-        outSlope: .399999976
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalScale.z
-    path: 
+    path: fireFocusImage1
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []

@@ -1,23 +1,32 @@
 package com.hawk.game.module;
 
+import java.util.Random;
+
 import org.hawk.config.HawkConfigManager;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
+import org.hawk.os.HawkRand;
 
 import com.hawk.game.config.EquipAttr;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
+import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
+import com.hawk.game.item.GemInfo;
 import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.log.BehaviorLogger.Params;
 import com.hawk.game.log.BehaviorLogger.Source;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
+import com.hawk.game.protocol.Const.toolType;
+import com.hawk.game.protocol.Equip.GemPunch;
 import com.hawk.game.protocol.Equip.HSEquipBuy;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Equip.HSEquipBuyRet;
+import com.hawk.game.protocol.Equip.HSEquipGem;
+import com.hawk.game.protocol.Equip.HSEquipGemRet;
 import com.hawk.game.protocol.Equip.HSEquipIncreaseLevel;
 import com.hawk.game.protocol.Equip.HSEquipIncreaseLevelRet;
 import com.hawk.game.protocol.Equip.HSEquipIncreaseStage;
@@ -29,8 +38,11 @@ import com.hawk.game.protocol.Equip.HSEquipMonsterReplace;
 import com.hawk.game.protocol.Equip.HSEquipMonsterReplaceRet;
 import com.hawk.game.protocol.Equip.HSEquipMonsterUndress;
 import com.hawk.game.protocol.Equip.HSEquipMonsterUndressRet;
+import com.hawk.game.protocol.Equip.HSEquipPunch;
+import com.hawk.game.protocol.Equip.HSEquipPunchRet;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.GsConst;
 
 public class PlayerEquipModule extends PlayerModule{
@@ -48,6 +60,8 @@ public class PlayerEquipModule extends PlayerModule{
 		listenProto(HS.code.EQUIP_MONSTER_DRESS_C);
 		listenProto(HS.code.EQUIP_MONSTER_UNDRESS_C);
 		listenProto(HS.code.EQUIP_MONSTER_REPLACE_C);
+		listenProto(HS.code.EQUIP_PUNCH_C);
+		listenProto(HS.code.EQUIP_GEM_C);
 	}
 	
 	/**
@@ -69,13 +83,23 @@ public class PlayerEquipModule extends PlayerModule{
 			return true;
 		}
 		else if(protocol.checkType(HS.code.EQUIP_INCREASE_LEVEL_C)) {
-			//买装备
+			//升级
 			onEquipIncreaseLevel(HS.code.EQUIP_INCREASE_LEVEL_C_VALUE, protocol.parseProtocol(HSEquipIncreaseLevel.getDefaultInstance()));
 			return true;
 		}
 		else if(protocol.checkType(HS.code.EQUIP_INCREASE_STAGE_C)) {
-			//买装备
+			//进阶
 			onEquipIncreaseStage(HS.code.EQUIP_INCREASE_STAGE_C_VALUE, protocol.parseProtocol(HSEquipIncreaseStage.getDefaultInstance()));
+			return true;
+		}
+		else if(protocol.checkType(HS.code.EQUIP_PUNCH_C)) {
+			// 打孔
+			onEquipPunch(HS.code.EQUIP_PUNCH_C_VALUE, protocol.parseProtocol(HSEquipPunch.getDefaultInstance()));
+			return true;
+		}
+		else if(protocol.checkType(HS.code.EQUIP_GEM_C)) {
+			// 镶嵌宝石
+			onEquipGem(HS.code.EQUIP_GEM_C_VALUE, protocol.parseProtocol(HSEquipGem.getDefaultInstance()));
 			return true;
 		}
 		else if(protocol.checkType(HS.code.EQUIP_MONSTER_DRESS_C)) {
@@ -93,7 +117,7 @@ public class PlayerEquipModule extends PlayerModule{
 			onEquipReplaceOnMonster(HS.code.EQUIP_MONSTER_REPLACE_C_VALUE, protocol.parseProtocol(HSEquipMonsterReplace.getDefaultInstance()));
 			return true;
 		}
-
+		
 		return false;
 	}
 	
@@ -143,9 +167,7 @@ public class PlayerEquipModule extends PlayerModule{
 		consume.consumeTakeAffectAndPush(player, Action.EQUIP_BUY);
 		
 		AwardItems awardItems = new AwardItems();
-		for (int i = 0; i < equipCount; i++) {
-			awardItems.addEquip(equid, protocol.getStage(), equipCount, protocol.getLevel());
-		}
+		awardItems.addEquip(equid, equipCount, protocol.getStage(), protocol.getLevel());
 		awardItems.rewardTakeAffectAndPush(player, Action.EQUIP_BUY);
 		
 		HSEquipBuyRet.Builder response = HSEquipBuyRet.newBuilder();
@@ -156,9 +178,7 @@ public class PlayerEquipModule extends PlayerModule{
 
 	public void onEquipIncreaseLevel(int hsCode, HSEquipIncreaseLevel protocol)
 	{
-		long id = protocol.getId();
-		
-		EquipEntity equipEntity = player.getPlayerData().getEquipById(id);
+		EquipEntity equipEntity = player.getPlayerData().getEquipById(protocol.getId());
 		if (equipEntity == null) {
 			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
 			return ;
@@ -171,14 +191,13 @@ public class PlayerEquipModule extends PlayerModule{
 		}
 		
 		// level 从0开始
-		int maxLevel = EquipAttr.getLevelSize(equipEntity.getItemId(), equipEntity.getStage());
-		if (equipEntity.getLevel() >= maxLevel - 1) {
+		if (equipEntity.getLevel() >= GsConst.EQUIP_MAX_LEVEL) {
 			sendError(hsCode, Status.itemError.EQUIP_MAX_LEVEL_ALREADY);
 			return ;
 		}
 	
 		ConsumeItems consume = new ConsumeItems();
-		consume.addItemInfos(EquipAttr.getDemandList(equipEntity.getItemId(), equipEntity.getStage(), equipEntity.getLevel() + 1));
+		consume.addItemInfos(EquipAttr.getLevelDemandList(equipEntity.getItemId(), equipEntity.getStage()));
 		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}
@@ -188,7 +207,7 @@ public class PlayerEquipModule extends PlayerModule{
 		equipEntity.notifyUpdate(true);
 		
 		HSEquipIncreaseLevelRet.Builder response = HSEquipIncreaseLevelRet.newBuilder();
-		response.setId(id);
+		response.setId(equipEntity.getId());
 		response.setStage(equipEntity.getStage());
 		response.setLevel(equipEntity.getLevel());
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_LEVEL_S, response));
@@ -201,9 +220,7 @@ public class PlayerEquipModule extends PlayerModule{
 	
 	public void onEquipIncreaseStage(int hsCode, HSEquipIncreaseStage protocol)
 	{
-		long id = protocol.getId();
-		
-		EquipEntity equipEntity = player.getPlayerData().getEquipById(id);
+		EquipEntity equipEntity = player.getPlayerData().getEquipById(protocol.getId());
 		if (equipEntity == null) {
 			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
 			return ;
@@ -215,20 +232,18 @@ public class PlayerEquipModule extends PlayerModule{
 			return ;
 		}
 		
-		int maxLevel = EquipAttr.getLevelSize(equipEntity.getItemId(), equipEntity.getStage());
-		if (equipEntity.getLevel() < maxLevel - 1) {
+		if (equipEntity.getLevel() < GsConst.EQUIP_MAX_LEVEL) {
 			sendError(hsCode, Status.itemError.EQUIP_LEVEL_NOT_ENOUGH_VALUE);
 			return ;
 		}	
 		
-		int maxStage = EquipAttr.getStageSize(equipEntity.getItemId());
-		if (equipEntity.getStage() >= maxStage) {
+		if (equipEntity.getStage() >= GsConst.EQUIP_MAX_STAGE) {
 			sendError(hsCode, Status.itemError.EQUIP_MAX_STAGE_ALREADY_VALUE);
 			return ;
 		}
 		
 		ConsumeItems consume = new ConsumeItems();
-		consume.addItemInfos(EquipAttr.getDemandList(equipEntity.getItemId(), equipEntity.getStage() + 1, 0));
+		consume.addItemInfos(EquipAttr.getStageDemandList(equipEntity.getItemId(), equipEntity.getStage() + 1));
 		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}
@@ -239,15 +254,175 @@ public class PlayerEquipModule extends PlayerModule{
 		equipEntity.notifyUpdate(true);
 		
 		HSEquipIncreaseStageRet.Builder response = HSEquipIncreaseStageRet.newBuilder();
-		response.setId(id);
+		response.setId(equipEntity.getId());
 		response.setStage(equipEntity.getStage());
 		response.setLevel(equipEntity.getLevel());
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INCREASE_STAGE_S, response));	
 		
 		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_ADVANCE,
-				Params.valueOf("itemId", equipEntity.getItemId()),
-				Params.valueOf("equipId", equipEntity.getId()),
+				Params.valueOf("equipId", equipEntity.getItemId()),
+				Params.valueOf("Id", equipEntity.getId()),
 				Params.valueOf("after", equipEntity.getStage()));		
+	}
+	
+	public void onEquipGem(int hsCode, HSEquipGem protocol)
+	{
+		EquipEntity equipEntity = player.getPlayerData().getEquipById(protocol.getId());
+		if (equipEntity == null) {
+			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
+			return ;
+		}
+		
+		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipEntity.getItemId());
+		if(itemCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
+			return ;
+		}
+		
+		if (protocol.getOldGem().equals("") && protocol.getNewGem().equals("")) {
+			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+			return ;
+		}
+		
+		AwardItems award = new AwardItems();
+		ConsumeItems consume = new ConsumeItems();
+		
+		if (protocol.getNewGem().equals("") == false) {
+			ItemEntity itemEntity = player.getPlayerData().getItemByItemId(protocol.getNewGem());
+			if (itemEntity == null) {
+				sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
+				return ;
+			}
+			
+			ItemCfg gemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, protocol.getNewGem());
+			if (gemCfg == null) {
+				sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
+				return ;
+			}
+			
+			if (gemCfg.getType() != Const.toolType.GEMTOOL_VALUE || gemCfg.getGemType() != protocol.getType()) {
+				sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+				return ;
+			}
+			
+			consume.addItem(protocol.getNewGem(), 1);
+		}
+		
+		if (protocol.getOldGem().equals("") == false) {
+			boolean found = false;
+			for (GemInfo element : equipEntity.GetGemDressList()) {
+				if (element.getGemId().equals(protocol.getOldGem()) && element.getType() == protocol.getType()) {
+					found = true;
+					break;
+				}
+			}
+			if (found == false) {
+				sendError(hsCode, Status.itemError.EQUIP_GEM_NOT_FOUND_VALUE);
+				return ;
+			}
+			
+			award.addItem(protocol.getOldGem(), 1);
+		}
+		else {
+			boolean found = false;
+			for (GemInfo element : equipEntity.GetGemDressList()) {
+				if (element.getType() == protocol.getType()) {
+					found = true;
+					break;
+				}
+			}
+			if (found == false) {
+				sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+				return ;
+			}
+		}
+		
+		if (!protocol.getNewGem().equals("") && !protocol.getOldGem().equals("")) {
+			equipEntity.replaceGem(protocol.getOldGem(), protocol.getNewGem());
+		}
+		else if(!protocol.getNewGem().equals(""))
+		{
+			equipEntity.addGem(protocol.getType(), protocol.getNewGem());
+		}
+		else
+		{
+			equipEntity.removeGem(protocol.getOldGem());
+		}	
+		
+		equipEntity.notifyUpdate(true);
+		award.rewardTakeAffectAndPush(player, Action.EQUIP_GEM);
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_GEM);
+		
+		HSEquipGemRet.Builder response = HSEquipGemRet.newBuilder();
+		for (GemInfo element : equipEntity.GetGemDressList()) {
+			GemPunch.Builder gemPunch = GemPunch.newBuilder();
+			gemPunch.setType(element.getType());
+			gemPunch.setGemItemId(element.getGemId());
+			response.addGemItems(gemPunch);
+		}
+		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_GEM_S_VALUE, response));
+		
+		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_GEM,
+				Params.valueOf("equipId", equipEntity.getItemId()),
+				Params.valueOf("id", equipEntity.getId()),
+				Params.valueOf("gemInfo", equipEntity.gemListToString()));
+	}
+	
+	public void onEquipPunch(int hsCode, HSEquipPunch protocol)
+	{
+		EquipEntity equipEntity = player.getPlayerData().getEquipById(protocol.getId());
+		if (equipEntity == null) {
+			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
+			return ;
+		}
+		
+		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equipEntity.getItemId());
+		if(itemCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
+			return ;
+		}
+		
+		if (EquipUtil.getPunchCount(equipEntity) == 0) {
+			sendError(hsCode, Status.itemError.EQUIP_CAN_NOT_OPEN_SLOT);
+			return ;
+		}
+		
+		AwardItems rewardItems = null;
+		if (equipEntity.GetGemDressList().isEmpty() == false) {
+			rewardItems = new AwardItems();
+			for (GemInfo gemInfo : equipEntity.GetGemDressList()) {
+				rewardItems.addItem(gemInfo.getGemId(), 1);
+			}
+		}
+	
+		HSEquipPunchRet.Builder response = HSEquipPunchRet.newBuilder();
+		equipEntity.GetGemDressList().clear();		
+		try {
+			int newPunchCount = HawkRand.randInt(1, EquipUtil.getPunchCount(equipEntity));
+			for (int i = 0; i < newPunchCount; i++) {
+				int type = HawkRand.randInt(1, GsConst.GEM_MAX_TYPE);
+				equipEntity.addGem(type);
+				GemPunch.Builder gemInfo = GemPunch.newBuilder();
+				gemInfo.setType(type);
+				gemInfo.setGemItemId(GsConst.EQUIP_GEM_NONE);
+				response.addGemItems(gemInfo);
+			}
+		} 
+		catch (HawkException e) {
+			HawkException.catchException(e);
+			return;
+		}
+		
+		equipEntity.notifyUpdate(true);		
+		if (rewardItems != null) {
+			rewardItems.rewardTakeAffectAndPush(player, Action.EQUIP_PUNCH);
+		}
+		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_PUNCH_S_VALUE, response));
+		
+		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_PUNCH,
+				Params.valueOf("equipId", equipEntity.getItemId()),
+				Params.valueOf("id", equipEntity.getId()),
+				Params.valueOf("gemInfo", equipEntity.gemListToString()));
 	}
 	
 	public void onEquipDressOnMonster(int hsCode, HSEquipMonsterDress protocol) {
@@ -290,8 +465,8 @@ public class PlayerEquipModule extends PlayerModule{
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_DRESS_S_VALUE, response));
 		
 		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_DRESS,
-				Params.valueOf("itemId", equipEntity.getItemId()),
-				Params.valueOf("equipId", equipEntity.getId()),
+				Params.valueOf("equipId", equipEntity.getItemId()),
+				Params.valueOf("Id", equipEntity.getId()),
 				Params.valueOf("after", player.getPlayerData().monsterEquipsToString(monsterId)));
 	}
 	
@@ -328,8 +503,8 @@ public class PlayerEquipModule extends PlayerModule{
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_UNDRESS_S_VALUE, response));
 
 		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_UNDRESS,
-				Params.valueOf("itemId", equipEntity.getItemId()),
-				Params.valueOf("equipId", equipEntity.getId()),
+				Params.valueOf("equipId", equipEntity.getItemId()),
+				Params.valueOf("Id", equipEntity.getId()),
 				Params.valueOf("after", player.getPlayerData().monsterEquipsToString(monsterId)));
 	}
 	

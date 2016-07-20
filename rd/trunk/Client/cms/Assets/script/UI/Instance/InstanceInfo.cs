@@ -37,6 +37,7 @@ public class InstanceInfo : MonoBehaviour
 		lbEnmeyList.text = StaticDataMgr.Instance.GetTextByID ("instance_difangzhenrong");
 		lbRewardList.text = StaticDataMgr.Instance.GetTextByID ("instance_jiangliList");
 
+        backButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("instance_back");
 		clearButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("instance_saodang");
 		clearTenButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("instance_saodang10");
 		acceptButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("instance_yingzhan");

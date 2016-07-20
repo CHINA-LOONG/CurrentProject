@@ -31,7 +31,6 @@ public class FetchMyIpInfoHandler implements HttpHandler {
 			JsonObject jsonObject = new JsonObject();
 			jsonObject.addProperty("myIp", remoteIp);
 			jsonObject.addProperty("zmqPort", CollectorZmqServer.getInstance().getPort());
-			HawkLog.logPrintln(jsonObject.toString());
 			CollectorHttpServer.response(httpExchange, jsonObject.toString());
 		} catch (Exception e) {
 			HawkException.catchException(e);

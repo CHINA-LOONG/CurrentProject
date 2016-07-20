@@ -12,10 +12,11 @@ import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
+import com.hawk.game.item.GemInfo;
 import com.hawk.game.protocol.Attribute.Attr;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Equip.EquipInfo;
-import com.hawk.game.protocol.Equip.GemInfo;
+import com.hawk.game.protocol.Equip.GemPunch;
 import com.hawk.game.protocol.Item.ItemInfo;
 import com.hawk.game.protocol.Mail.HSMail;
 import com.hawk.game.protocol.Monster.HSMonster;
@@ -23,7 +24,6 @@ import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
 import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Statistics.InstanceState;
-import com.hawk.game.util.MailUtil.MailInfo;
 
 public class BuilderUtil {
 
@@ -122,11 +122,11 @@ public class BuilderUtil {
 		}
 
 		//组装镶嵌宝石数据
-		for (Map.Entry<Integer, Integer> entry : equipEntity.GetGemDressMap().entrySet()) {
-			GemInfo.Builder gemInfo = GemInfo.newBuilder();
-			gemInfo.setPos(entry.getKey());
-			gemInfo.setGemItemId(entry.getValue());
-			builder.addGemInfos(gemInfo);
+		for (GemInfo element : equipEntity.GetGemDressList()) {
+			GemPunch.Builder punchInfo = GemPunch.newBuilder();
+			punchInfo.setType(element.getType());
+			punchInfo.setGemItemId(element.getGemId());
+			builder.addGemItems(punchInfo.build());
 		}
 
 		if (equipEntity.getAttr() != null) {

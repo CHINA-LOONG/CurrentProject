@@ -20,7 +20,15 @@ public class GsConst {
 	public static final int SKILL_POINT_TIME = 6 * 60;
 	// 最大邮件数
 	public static final int MAX_MAIL_COUNT = 300;
-
+	// 最大品级数
+	public static final int EQUIP_MAX_STAGE = 6;
+	// 最大级别数
+	public static final int EQUIP_MAX_LEVEL = 10;
+	// 宝石最大类别数
+	public static final int GEM_MAX_TYPE = 3;
+	// 宝石镶嵌占位
+	public static final String EQUIP_GEM_NONE = "0";
+	
 	/**
 	 * 对象类型
 	 * 
@@ -121,10 +129,37 @@ public class GsConst {
 	 */
 	public static class ItemParseType {
 		public static final int PARSE_DEFAULT = 0;
-		public static final int PARSE_MONSTER_STAGE = 1;		
+		public static final int PARSE_MONSTER_STAGE = 1;	
+		public static final int PARSE_EQUIP_ATTR = 2;	
 	}
 	
+	/**
+	 * equip 品级对应的打孔数量
+	 */
+	public enum EquipStagePunch
+	{
+		NONE_STAGE(0),
+		WHITE_STAGE(0),
+		GREEN_STAGE(0),
+		BLUE_STAGE(1),
+		PURPLE_STAGE(2),
+		ORANGE_STAGE(3),
+		RED_STAGE(4);
+		
+		private int punchCount;
+		
+		private EquipStagePunch(int count) {
+			this.punchCount = count;
+		}
+		
+		public int GetCount(){
+			return punchCount;
+		}
+	}
 	
+	/**
+	 * item 消耗检查内容
+	 */
 	public static class PlayerItemCheckResult {
 		// 金币不足
 		public static final int COINS_NOT_ENOUGH = 1;

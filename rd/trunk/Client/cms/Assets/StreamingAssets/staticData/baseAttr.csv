@@ -1,4 +1,4 @@
-﻿#NUM,NUM,NUM,NUM,NUM,NUM
+﻿#TEXT,NUM,NUM,NUM,NUM,NUM
 id,strength,intelligence,speed,defense,health
 #id,力量,智力,速度,防御,体力
 1,10,10,10,10,10

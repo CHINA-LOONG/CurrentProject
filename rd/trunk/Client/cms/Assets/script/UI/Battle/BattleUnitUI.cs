@@ -5,11 +5,10 @@ using UnityEngine.UI;
 public class BattleUnitUI : MonoBehaviour
 {
     public Button dazhaoBtn;
+    public Image unitDazhao;
     public Text unitName;
     public LifeBarUI lifeBar;
     public EnegyBarUI enegyBar;
-    [HideInInspector]
-    public Image dazhaoImg;
 
     public BattleObject Unit
     {
@@ -31,7 +30,6 @@ public class BattleUnitUI : MonoBehaviour
     void Awake()
     {
         trans = transform as RectTransform;
-        dazhaoImg = dazhaoBtn.GetComponent<Image>();
         EventTriggerListener.Get(dazhaoBtn.gameObject).onClick = OnDazhaoClick;
         buffView = gameObject.GetComponent<UIBuffView>();
         buffView.Init();
@@ -60,7 +58,11 @@ public class BattleUnitUI : MonoBehaviour
 
         dazhaoBtn.gameObject.SetActive(false);
         unitName.text = Unit.unit.name;
-        //dazhaoImg.mainTexture=
+        string icon = Unit.unit.GetDazhao().spellData.icon;
+        if (!string.IsNullOrEmpty(icon))
+        {
+            unitDazhao.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(icon) as Sprite;
+        }
         //if (sUnit.gameObject.activeSelf)
         //{
         //    lifeBar.value = Unit.unit.curLife / (float)Unit.unit.maxLife;

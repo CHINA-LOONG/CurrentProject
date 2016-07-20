@@ -14,11 +14,17 @@ public class LifeBarUI : MonoBehaviour
     float  width = 586;
     public float lifeRatioSpeed = 0.3f;
     public float dangerRatio = 0.3f;
-    public Color normalColor = Color.white;
-    public Color dangerColor = Color.red;
+    //public Color normalColor = Color.white;
+    //public Color dangerColor = Color.red;
+    //modify:xuelong 2015-8-30 19:02:09
+    public Sprite normalSprite;
+    public Sprite dangerSprite;
+
     RectTransform shieldRect;
     float shieldWidth = 0.0f;
-    public GameObject shieldEffect;//护盾满格效果
+    //add xuelong 2015-8-31 09:20:26
+    int shieldMax = 0;
+    public Image shieldEffect;//护盾满格效果
 
     public float targetLife = 1.0f;
     float currentLife = 1.0f;
@@ -26,7 +32,7 @@ public class LifeBarUI : MonoBehaviour
     //int lifeSpeed = 1000;
 
     //private List<SpellVitalChangeArgs> vitalEventList;
-    private BattleObject lifeTarget;
+    private BattleObject lifeTarget=new BattleObject();
     public BattleObject LifeTarget
     {
         set 
@@ -66,7 +72,9 @@ public class LifeBarUI : MonoBehaviour
             shieldRect = shieldImage.transform as RectTransform;
             shieldWidth = shieldRect.rect.width;
             shieldImage.gameObject.SetActive(false);
-            shieldEffect.SetActive(false);
+			//shieldEffect.SetActive(false);
+            //modify xiaolong 2015-8-30 17:36:57
+            shieldEffect.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }
         
     }
@@ -75,7 +83,7 @@ public class LifeBarUI : MonoBehaviour
     {
         lifeTarget = null;
     }
-
+    
     void Update()
     {
         if (targetLife != currentLife)
@@ -129,11 +137,16 @@ public class LifeBarUI : MonoBehaviour
             if (shieldNum.x >= shieldWidth)
             {
                 shieldNum.x = shieldWidth;
-                shieldEffect.SetActive(true);
+
+                //shieldEffect.SetActive(true);
+                //modify:xiaolong 2015-8-27 14:23:05
+                SetShildMaxImage(true);
             }
             else
             {
-                shieldEffect.SetActive(false);
+                //shieldEffect.SetActive(false);
+                //modify:xiaolong 2015-8-27 14:23:05
+                SetShildMaxImage(false);
             }
             shieldImage.gameObject.SetActive(true);
             shieldRect.sizeDelta = shieldNum;
@@ -142,8 +155,41 @@ public class LifeBarUI : MonoBehaviour
         else
         {
             shieldImage.gameObject.SetActive(false);
-			shieldEffect.SetActive(false);
+			//shieldEffect.SetActive(false);
+            //modify:xiaolong 2015-8-27 14:23:05
+            SetShildMaxImage(false);
         }
+    }
+    //add xuelong 2015-8-30 17:37:29
+    void SetShildMaxImage(bool isMax)
+    {
+        if (shieldMax==(isMax?1:-1))
+        {
+            return;
+        }
+        float curAlpha = shieldEffect.color.a;
+        if (isMax)
+        {
+            shieldMax = 0;
+            curAlpha += Time.deltaTime / 0.5f;
+            if (curAlpha>=1.0f)
+	        {
+                shieldMax=1;
+	        }
+        }
+        else
+        {
+            shieldMax = 0;
+            curAlpha -= Time.deltaTime / 0.5f;
+            if (curAlpha <= 0.0f)
+            {
+                shieldMax = -1;
+            }
+        }
+        curAlpha=Mathf.Clamp01(curAlpha);
+        Color color = shieldEffect.color;
+        color.a = curAlpha;
+        shieldEffect.color = color;
     }
 
     public void SetTargetLife(int targetValue, int maxValue)
@@ -164,11 +210,13 @@ public class LifeBarUI : MonoBehaviour
 
         if (targetLife <= dangerRatio)
         {
-            targetBarImage.color = dangerColor;
+            //targetBarImage.color = dangerColor;
+            targetBarImage.sprite = dangerSprite;
         }
         else
         {
-            targetBarImage.color = normalColor;
+            //targetBarImage.color = normalColor;
+            targetBarImage.sprite = normalSprite;
         }
         RefreshShieldUI();
     }

@@ -32,10 +32,9 @@ public class bossYueguangsenlin18Meidusha : BossAi {
 		List<string> wpList = null;
         wpList = GetAliveWeakPointList (meidushaUnit);
         int wp_count = wpList.Count -1;
-
         //spell_AI
-        #region
-        if (wp_count == 4)
+#region
+      if (wp_count == 4)
         {
             if (yazhi_count <= 0 )
             {
@@ -152,22 +151,10 @@ public class bossYueguangsenlin18Meidusha : BossAi {
         {
             count++;
         }
-        if (count ==6)
-        {
-            meidushaUnit.battleUnit.TriggerEvent("meidusha_state2to1",Time.time,null); 
-            count = 0;
-        }
-
         #endregion
-
 		attackResult.useSpell = useSpell;
 		return attackResult;
 	}
-    //---------------------------------------------------------------------------------------------
-    public override void OnVitalChange(SpellVitalChangeArgs args)
-    {
-
-    }
     //---------------------------------------------------------------------------------------------
     public override void OnWpDead(WeakPointDeadArgs args)
     {
@@ -177,5 +164,27 @@ public class bossYueguangsenlin18Meidusha : BossAi {
             target.TriggerEvent("meidusha_state1to2", Time.time, null);
             attck_count = GetAttackCount(target.unit);
         }
+		if (count ==6)
+		{
+			target.TriggerEvent("meidusha_state2to1", Time.time, null);
+			attck_count = GetAttackCount(target.unit);
+		}
+
+		if (args.wpID=="bossYueguangsenlin18Meidushawp02" && count ==0)
+		{
+			target.TriggerEvent("shefasi1",Time.time,null);
+		}
+		if (args.wpID=="bossYueguangsenlin18Meidushawp03" && count ==0)
+		{
+			target.TriggerEvent("shefasi2",Time.time,null);
+		}
+		if (args.wpID=="bossYueguangsenlin18Meidushawp04" && count ==0)
+		{
+			target.TriggerEvent("shefasi3",Time.time,null);
+		}
+		if (args.wpID=="bossYueguangsenlin18Meidushawp05" && count ==0)
+		{
+			target.TriggerEvent("shefasi4",Time.time,null);
+		}
     }
 }

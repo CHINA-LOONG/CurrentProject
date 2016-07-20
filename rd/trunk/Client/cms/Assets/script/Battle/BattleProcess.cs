@@ -675,6 +675,11 @@ public class BattleProcess : MonoBehaviour
             battleResult = NormalScript.normalValiVic();
         }
 
+        if (insertAction.Count > 0)
+        {
+            battleResult = BattleRetCode.Normal;
+        }
+
         if (battleResult == BattleRetCode.Failed)
         {
             insertAction.Clear();
@@ -947,6 +952,10 @@ public class BattleProcess : MonoBehaviour
 
     IEnumerator RunReplaceDeadAction(ReplaceDeadUnitAction action)
     {
+        if (action.isInsert == true)
+        {
+            hasInsertReplaceDeadUnitAction = false;
+        }
         int slotID = action.slot;
         //float triggerTime = action.triggerTime;
         BattleObject enter = action.caster;
@@ -973,10 +982,6 @@ public class BattleProcess : MonoBehaviour
         enter.unit.CalcNextActionOrder(lastActionOrder);
         battleGroup.OnUnitEnterField(enter, action.slot);
 
-        if (action.isInsert == true)
-        {
-            hasInsertReplaceDeadUnitAction = false;
-        }
         if (--replaceDeadUnitCount == 0 && inDazhaoAction == false)
         {
             OnActionOver();
@@ -1026,12 +1031,18 @@ public class BattleProcess : MonoBehaviour
 			Logger.Log("had a dazhaoAction,can't insert Another!");
 			return;
 		}
+		//检测是否有换怪
 		if (IsChangePeting (bo)) 
 		{
 			Logger.LogError("change Pet.....");
 			return ;
 		}
-		//检测是否有换怪
+        //是否眩晕
+        if (bo.unit.stun > 0)
+        {
+            Logger.Log("unit is stun");
+            return;
+        }
 
 
 		Spell dazhaoSpell = bo.unit.GetDazhao ();

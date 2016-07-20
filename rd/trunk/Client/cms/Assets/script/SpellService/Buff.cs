@@ -333,16 +333,15 @@ public class Buff
                 stunArgs.vitalMax = 0;
                 spellService.TriggerEvent(GameEventList.SpellLifeChange, stunArgs);
 
+                SpellBuffArgs args = new SpellBuffArgs();
+                args.triggerTime = curTime;
+                args.casterID = 1;
+                args.targetID = targetID;
+                args.isAdd = false;
+                args.buffID = buffProto.id;
+                spellService.TriggerEvent(GameEventList.SpellStun, args);
                 if (target.stun == 0)
                 {
-                    SpellBuffArgs args = new SpellBuffArgs();
-                    args.triggerTime = curTime;
-                    args.casterID = 1;
-                    args.targetID = targetID;
-                    args.isAdd = false;
-                    args.buffID = buffProto.id;
-                    spellService.TriggerEvent(GameEventList.SpellStun, args);
-
                     //interrupt if in dazhao
                     if (target.pbUnit.camp == UnitCamp.Enemy)
                     {
@@ -443,6 +442,7 @@ public class Buff
                     //trigger shield ui event
                     SpellVitalChangeArgs args = new SpellVitalChangeArgs();
                     args.vitalType = (int)VitalType.Vital_Type_Shield;
+                    args.targetID = targetID;
                     args.triggerTime = curTime;
                     args.vitalCurrent = 0;
                     args.vitalMax = (int)BuffType.Buff_Type_PhyShield;
@@ -457,6 +457,7 @@ public class Buff
                     //trigger shield ui event
                     SpellVitalChangeArgs args = new SpellVitalChangeArgs();
                     args.vitalType = (int)VitalType.Vital_Type_Shield;
+                    args.targetID = targetID;
                     args.triggerTime = curTime;
                     args.vitalCurrent = 0;
                     args.vitalMax = (int)BuffType.Buff_Type_MgShield;
@@ -496,6 +497,7 @@ public class Buff
                 //trigger shield ui event
                 SpellVitalChangeArgs args = new SpellVitalChangeArgs();
                 args.vitalType = (int)VitalType.Vital_Type_Shield;
+                args.targetID = targetID;
                 args.triggerTime = curTime;
                 args.vitalCurrent = phyShield;
                 args.vitalMax = (int)BuffType.Buff_Type_PhyShield;
@@ -507,6 +509,7 @@ public class Buff
                 //trigger shield ui event
                 SpellVitalChangeArgs args = new SpellVitalChangeArgs();
                 args.vitalType = (int)VitalType.Vital_Type_Shield;
+                args.targetID = targetID;
                 args.triggerTime = curTime;
                 args.vitalCurrent = magicShield;
                 args.vitalMax = (int)BuffType.Buff_Type_MgShield;
@@ -564,7 +567,7 @@ public class Buff
         if (isFinish == true)
             return;
 
-        bool shield = false;
+        //bool shield = false;
         EffectDamageProtoType damageProto = triggerEffect.protoEffect as EffectDamageProtoType;
         //check shield
         if (damageProto.isHeal == false)
