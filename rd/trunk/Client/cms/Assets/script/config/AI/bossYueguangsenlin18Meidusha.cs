@@ -41,7 +41,7 @@ public class bossYueguangsenlin18Meidusha : BossAi {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha5",out useSpell);
                 yazhi_count=4;
             }
-            else if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.2)
+            else if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.1)
             {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha8",out useSpell);
                 yazhi_count--;
@@ -69,7 +69,7 @@ public class bossYueguangsenlin18Meidusha : BossAi {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha7",out useSpell);
                 yazhi_count=4;
             }
-            else if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.2)
+            else if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.1)
             {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha8",out useSpell);
                 yazhi_count--;
@@ -97,7 +97,7 @@ public class bossYueguangsenlin18Meidusha : BossAi {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha7",out useSpell);
                 yazhi_count=4;
             }
-            else if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.2)
+            else if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.1)
             {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha8",out useSpell);
                 yazhi_count--;
@@ -120,7 +120,7 @@ public class bossYueguangsenlin18Meidusha : BossAi {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha7",out useSpell);
                 yazhi_count=4;
             }
-            else if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.2)
+            else if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.1)
             {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha8",out useSpell);
                 yazhi_count--;
@@ -133,7 +133,7 @@ public class bossYueguangsenlin18Meidusha : BossAi {
         }
         else
         {
-            if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.2)
+            if (UnityEngine.Random.Range(0.0f, 1.0f) <= 0.1)
             {
                 meidushaSpellDic.TryGetValue("bossYueguangsenlin18Meidusha8",out useSpell);
                 yazhi_count--;

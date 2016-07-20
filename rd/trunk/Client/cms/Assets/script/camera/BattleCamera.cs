@@ -52,9 +52,14 @@ public class BattleCamera : MonoBehaviour
 	public void Init()
 	{
 		//AniControlParam.phyDazhao = Animator.StringToHash ("phyDazhao");
-        DontDestroyOnLoad(gameObject);
+        //mInst = null;
+        //DontDestroyOnLoad(gameObject);
 	}
 
+    void OnDestroy()
+    {
+        mInst = null;
+    }
 
 
 	public static void DestroyCamera()

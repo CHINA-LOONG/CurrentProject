@@ -671,7 +671,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 424654}
   - 95: {fileID: 9556334}
-  - 114: {fileID: 11418300}
   - 65: {fileID: 6587742}
   m_Layer: 0
   m_Name: xgAmute@moxing
@@ -1874,7 +1873,7 @@ Animator:
   m_GameObject: {fileID: 168128}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e4c9b44cf1a0e9b4a82aec7c1b88b92e, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3c3df017da7117f4594a1fb6efdd637b, type: 2}
+  m_Controller: {fileID: 9100000, guid: a803f2c2e8778d749ad04ca29e25946b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1882,17 +1881,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11418300
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 168128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2eca50ba0e20a4282e593fed96142c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!137 &13719264
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2056,7 +2044,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 3c3df017da7117f4594a1fb6efdd637b, type: 2}
+      objectReference: {fileID: 9100000, guid: a803f2c2e8778d749ad04ca29e25946b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168128}

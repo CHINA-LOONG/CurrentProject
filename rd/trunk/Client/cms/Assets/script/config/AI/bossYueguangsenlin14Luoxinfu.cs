@@ -29,25 +29,27 @@ public class bossYueguangsenlin14Luoxinfu : BossAi
         wpList = GetAliveWeakPointList (luoxinfuUnit);
         int wp_count = wpList.Count -1;
 
-        if (wp_count >2 && wp_count <=4)
-        {
-            luoxinfuSpellDic.TryGetValue("bossYueguangsenlin14Luoxinfu1", out useSpell);
-            attackResult.attackStyle = BattleUnitAi.AiAttackStyle.PhysicsAttack;
-            attackResult.useSpell = useSpell;
-        }
-        else if (wp_count > 0 && wp_count <= 2)
-        {
-            luoxinfuSpellDic.TryGetValue("bossYueguangsenlin14Luoxinfu2", out useSpell);
-            attackResult.attackStyle = BattleUnitAi.AiAttackStyle.PhysicsAttack;
-            attackResult.useSpell = useSpell;
-        }
-        else if (wp_count == 0)
-        {
-            luoxinfuSpellDic.TryGetValue("bossYueguangsenlin14Luoxinfu3", out useSpell);
-            attackResult.attackStyle = BattleUnitAi.AiAttackStyle.PhysicsAttack;
-            attackResult.useSpell = useSpell;
-        }
-        
+		if (attackResult.useSpell.spellData.id == "attackStabTriSlight")
+		{
+	        if (wp_count >2 && wp_count <=4)
+	        {
+	            luoxinfuSpellDic.TryGetValue("bossYueguangsenlin14Luoxinfu1", out useSpell);
+	            attackResult.attackStyle = BattleUnitAi.AiAttackStyle.PhysicsAttack;
+	            attackResult.useSpell = useSpell;
+	        }
+	        else if (wp_count > 0 && wp_count <= 2)
+	        {
+	            luoxinfuSpellDic.TryGetValue("bossYueguangsenlin14Luoxinfu2", out useSpell);
+	            attackResult.attackStyle = BattleUnitAi.AiAttackStyle.PhysicsAttack;
+	            attackResult.useSpell = useSpell;
+	        }
+	        else if (wp_count == 0)
+	        {
+	            luoxinfuSpellDic.TryGetValue("bossYueguangsenlin14Luoxinfu3", out useSpell);
+	            attackResult.attackStyle = BattleUnitAi.AiAttackStyle.PhysicsAttack;
+	            attackResult.useSpell = useSpell;
+	        }
+		}
 		return attackResult;
 	}
 

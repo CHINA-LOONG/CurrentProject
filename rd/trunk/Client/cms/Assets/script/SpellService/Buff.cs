@@ -173,10 +173,24 @@ public class Buff
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void Reset()
+    public void Reset(float curTime)
     {
         periodCount = 0;
         isFinish = false;
+        if (buffProto.category == (int)BuffType.Buff_Type_Stun)
+        {
+            //trigger stun event
+            SpellVitalChangeArgs stunArgs = new SpellVitalChangeArgs();
+            stunArgs.vitalType = (int)VitalType.Vital_Type_Stun;
+            stunArgs.triggerTime = curTime;
+            stunArgs.casterID = casterID;
+            stunArgs.targetID = targetID;
+            stunArgs.isCritical = false;
+            stunArgs.vitalChange = 0;
+            stunArgs.vitalCurrent = 0;
+            stunArgs.vitalMax = 0;
+            spellService.TriggerEvent(GameEventList.SpellLifeChange, stunArgs);
+        }
     }
     //---------------------------------------------------------------------------------------------
     void AddBuff(GameUnit target)
@@ -209,7 +223,7 @@ public class Buff
                     //同源同id，刷新
                     if (buff.casterID == casterID && buff.buffProto.id == buffProto.id)
                     {
-                        buff.Reset();
+                        buff.Reset(applyTime);
                         return;
                     }
 
@@ -250,7 +264,7 @@ public class Buff
                 //同名刷新，不区分来源
                 if (buff.buffProto.id == buffProto.id)
                 {
-                    buff.Reset();
+                    buff.Reset(applyTime);
                     return;
                 }
             }
@@ -324,7 +338,7 @@ public class Buff
                 //trigger stun event
                 SpellVitalChangeArgs stunArgs = new SpellVitalChangeArgs();
                 stunArgs.vitalType = (int)VitalType.Vital_Type_Stun;
-                stunArgs.triggerTime = Time.time;
+                stunArgs.triggerTime = curTime;
                 stunArgs.casterID = casterID;
                 stunArgs.targetID = targetID;
                 stunArgs.isCritical = false;

@@ -252,8 +252,7 @@ public class EffectDamage : Effect
                             List<Buff> buffList = target.buffList;
                             for (int i = 0; i < buffList.Count; ++i)
                             {
-                                //TODO: use level time
-                                buffList[i].DeadResponse(Time.time, this);
+                                buffList[i].DeadResponse(applyTime, this);
                             }
                         }
                         else if (target.curLife > target.maxLife)
@@ -293,7 +292,7 @@ public class EffectDamage : Effect
                         {
                             wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
                         }
-                        effectArgs.wpNode = wp != null ? wp.node : string.Empty;
+                        effectArgs.wpNode = wp != null ? wp.node : "e_shouji";
                     }
                     effectArgs.triggerTime = applyTime;
                     effectArgs.casterID = casterID;
@@ -317,8 +316,8 @@ public class EffectDamage : Effect
                     }
                     else
                     {
-                        args.wpID = string.Empty;
-                        args.wpNode = string.Empty;
+                        args.wpID = "e_shouji";
+                        args.wpNode = "e_shouji";
                     }
                     spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
                     //伤害反应

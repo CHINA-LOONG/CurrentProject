@@ -111,7 +111,7 @@ public class Effect
                 {
                     wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
                 }
-                args.wpNode = wp != null ? wp.node : string.Empty;
+                args.wpNode = wp != null ? wp.node : "e_shouji";
             }
             args.triggerTime = applyTime;
             args.casterID = casterID;

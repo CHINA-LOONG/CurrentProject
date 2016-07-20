@@ -8,7 +8,7 @@ name_10003_duihuanquan,扫荡券,Raid Ticket
 name_10004_chujiqianghuacailiao,初级装备强化石,basic upgrade stone
 name_11001_chujizhuangbeiqianghuashi,初级灵铁,Basic Raw Iron
 name_11002_zhongjizhuangbeiqianghuashi,中级灵铁,Average Raw Iron
-name_11003_gaojizhuangbeiqianghuashi,高级灵铁,Pure Raw Iron
+name_11003_gaojizhuangbeiqianghuashi,高级灵铁,Advanced Raw Iron
 name_10005_zhuangbeijinjieshi,妖力结晶,Crystal Ball
 name_10006_zhuangbeijinjiecailiao2,装备进阶卷轴,Advanced scroll
 name_10007_baoshikaikongcailiao,纹章开孔石,Insignia Stone
@@ -197,9 +197,9 @@ name_40056_pvprankreward,C级宠物碎片箱子（中）,Class C Monster Fragmen
 name_40057_pvprankreward,B级宠物碎片箱子（中）,Class B Monster Fragments(Medium)
 name_40058_pvprankreward,A级宠物碎片箱子（中）,Class A Monster Fragments(Medium)
 name_40059_pvprankreward,S级宠物碎片箱子（中）,Class S Monster Fragments(Medium)
-name_40060_pvprankxianshisuipian,普通宠物碎片箱子,Common Monster Fragment Chest
-name_40061_pvprankxianshisuipian,高级宠物碎片箱子,Rare Monster Fragment Chest
-name_40062_pvprankxianshisuipian,稀有宠物碎片箱子,Epic Monster Fragment Chest
+name_40060_pvprankxianshisuipian,中级宠物碎片箱子,Average Monster Fragment Chest
+name_40061_pvprankxianshisuipian,高级宠物碎片箱子,Advanced Monster Fragment Chest
+name_40062_pvprankxianshisuipian,史诗宠物碎片箱子,Epic Monster Fragment Chest
 name_40063_advanturegoldbox,钻石箱子,Diamond Chest
 name_40064_pvpbox,竞技场碎片箱子,Arena Chest
 name_40065_towerbox,通天塔碎片箱子,Tower Chest
@@ -207,9 +207,9 @@ name_40066_bfregmentda,B级宠物碎片箱子（大）,Class B Monster Fragments
 name_40067_afregmentda,A级宠物碎片箱子（大）,Class A Monster Fragments(Giant)
 name_40068_bigTaskleader601,领袖宝箱（金币）lv5,Leader Chest(coins) (lv5)
 name_40069_bigTaskleader602,领袖宝箱（补给品）lv5,Leader Chest(supplies) (lv5)
-name_40070_commonfregmentda,普通宠物碎片箱子,Common Monster Fragment Chest
-name_40071_rarefregmentda,高级宠物碎片箱子,Rare Monster Fragment Chest
-name_40072_epicfregmentda,稀有宠物碎片箱子,Epic Monster Fragment Chest
+name_40070_commonfregmentda,中级宠物碎片箱子,Average Monster Fragment Chest
+name_40071_rarefregmentda,高级宠物碎片箱子,Advanced Monster Fragment Chest
+name_40072_epicfregmentda,史诗宠物碎片箱子,Epic Monster Fragment Chest
 name_50001_jingyanyaoshui,经验药水,expMedicine
 name_50002_chujichongwujingyanyaoshui,初级信仰之力,Basic Mytho Essence
 name_50003_zhongjichongwujingyanyaoshui,中级信仰之力,Average Mytho Essence
@@ -464,9 +464,9 @@ tips_40068_bigTaskleader601,公会任务发给队长的宝箱，内有  <color=#
 <color=#FFCC00>Guild Pts*200,Coin*60000</color> sent to Team Leaders from Guild Quests"
 tips_40069_bigTaskleader602,公会任务发给队长的宝箱，内有  <color=#FFCC00>个人贡献值*200，黄金宝箱钥匙*1</color>,"Chest filled with 
 <color=#FFCC00>Guild Pts*200,Golden Strongbox key*1</color> sent to Team Leaders from Guild Quests"
-tips_40070_commonfregmentda,随机开出B级宠物，小概率开出A级宠物,Class B Monster Fragments (30 pcs) or small chance of Class A Monster Fragments (50 pcs)
-tips_40071_rarefregmentda,随机开出A级宠物，小概率开出S级宠物,Class A Monster Fragments (50 pcs) or small chance of Class S Monster Fragments (80 pcs)
-tips_40072_epicfregmentda,随机开出S级宠物，小概率开出SS级宠物,Class S Monster Fragments (80 pcs) or small chance of Class SS Monster Fragments (120 pcs)
+tips_40070_commonfregmentda,随机开出整只B级宠物(通过碎片方式)，小概率开出A级宠物(通过碎片方式),"Reward one Class B Monster (by ways of fragments), or small chance of one Class A Monster (by ways of fragments)"
+tips_40071_rarefregmentda,随机开出整只A级宠物(通过碎片方式)，小概率开出S级宠物(通过碎片方式),"Reward one Class A Monster (by ways of fragments), or small chance of one Class S Monster (by ways of fragments)"
+tips_40072_epicfregmentda,随机开出整只S级宠物(通过碎片方式)，小概率开出SS级宠物(通过碎片方式),"Reward one Class S Monster (by ways of fragments), or small chance of one Class SS Monster (by ways of fragments)"
 tips_50001_jingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_50002_chujichongwujingyanyaoshui,宠物经验提升 60点,Increases a monster's EXP by 60
 tips_50003_zhongjichongwujingyanyaoshui,宠物经验提升 300点,Increases a monster's EXP by 300

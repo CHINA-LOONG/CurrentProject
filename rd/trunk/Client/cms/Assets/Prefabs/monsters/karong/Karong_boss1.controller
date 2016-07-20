@@ -8,84 +8,78 @@ AnimatorController:
   m_Name: Karong_boss1
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: dead
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: run
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: win
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: dazhao
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: wugong
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: lazy
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: stun
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: fagong
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: testTrigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: shouji
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: anyingzhua
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: anyingbo
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: shuijingqiusi
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
+  - m_Name: paobu
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: shengli
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: shoukong
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: siwang
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -206,8 +200,8 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: stun
+  - m_ConditionMode: 1
+    m_ConditionEvent: shoukong
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110295918}
@@ -366,7 +360,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: dead
+    m_ConditionEvent: siwang
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110284570}
@@ -390,10 +384,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: stun
+    m_ConditionEvent: shoukong
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: dead
+  - m_ConditionMode: 1
+    m_ConditionEvent: siwang
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110234942}
@@ -636,28 +630,28 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 110295918}
-    m_Position: {x: 384, y: 204, z: 0}
+    m_Position: {x: -228, y: 96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110293198}
-    m_Position: {x: 336, y: -36, z: 0}
+    m_Position: {x: -276, y: -144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110234942}
-    m_Position: {x: 96, y: 240, z: 0}
+    m_Position: {x: -516, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110284570}
-    m_Position: {x: 108, y: 156, z: 0}
+    m_Position: {x: -504, y: 48, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110267728}
-    m_Position: {x: 576, y: -36, z: 0}
+    m_Position: {x: -36, y: -144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110215130}
-    m_Position: {x: 324, y: 348, z: 0}
+    m_Position: {x: -288, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110237776}
-    m_Position: {x: -216, y: 276, z: 0}
+    m_Position: {x: -828, y: 168, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110215878}
-    m_Position: {x: 630, y: 319, z: 0}
+    m_Position: {x: 24, y: 216, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 110185756}
@@ -668,9 +662,9 @@ AnimatorStateMachine:
       first: {fileID: 110750272}
       second: []
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -228, y: 156, z: 0}
-  m_EntryPosition: {x: 12, y: -60, z: 0}
-  m_ExitPosition: {x: -120, y: 72, z: 0}
+  m_AnyStatePosition: {x: -840, y: 48, z: 0}
+  m_EntryPosition: {x: -600, y: -168, z: 0}
+  m_ExitPosition: {x: -732, y: -24, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 110295918}
 --- !u!1107 &110791920

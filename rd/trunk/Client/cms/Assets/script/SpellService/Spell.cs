@@ -62,11 +62,11 @@ public class SpellProtoType
 		case (int)SpellType.Spell_Type_MgicAttack:
 		case (int)SpellType.Spell_Type_Cure:
 		case (int)SpellType.Spell_Type_MagicDazhao:
+		case (int)SpellType.Spell_Type_Dot:
 			return string.Format (TipAttr, (baseTipValue + (level - 1) * levelAdjust)*100);
 			
 		case (int)SpellType.Spell_Type_Beneficial:
 		case (int)SpellType.Spell_Type_Negative:
-		case (int)SpellType.Spell_Type_Dot:
 		case (int)SpellType.Spell_Type_Passive:
 			return TipAttr;
 			

@@ -167,7 +167,7 @@ public class SpellFunctions
 
         return 0;
     }
-    public static int UsingPhysicalRate_20(
+    public static int UsingPhysicalRate_35(
         Buff triggerBuff,
         Effect triggerEffect,
         SpellService spellService
@@ -184,7 +184,7 @@ public class SpellFunctions
 			if (damageProto.isHeal == false)
 			{
 				Spell ownedSpell = triggerEffect.ownedSpell;
-				if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack && randNum <= 0.2f)
+				if (ownedSpell != null && ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack && randNum <= 0.35f)
 				{
 					return 1;
 				}
@@ -306,7 +306,7 @@ public class SpellFunctions
         {
             Spell ownedSpell = damageEffect.ownedSpell;
             if (ownedSpell != null && 
-                ((ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack)||(ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack)) && randNum <= 0.8f)
+                ((ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyAttack)||(ownedSpell.spellData.category == (int)SpellType.Spell_Type_MgicAttack)) && randNum <= 0.8f)
             {
                 return 1;
             }
@@ -345,7 +345,8 @@ public class SpellFunctions
         EffectDamage damageEffect = triggerEffect as EffectDamage;
         EffectApplyBuff buffEffect = triggerEffect as EffectApplyBuff;
 
-        if (damageEffect != null)
+        if (damageEffect != null &&
+		    damageEffect.targetID == triggerBuff.targetID)
         {
             GameUnit target = spellService.GetUnit(triggerEffect.targetID);
             float lifeRatio = target.curLife / (float)target.maxLife;

@@ -1,12 +1,5 @@
 ﻿#TEXT,TEXT,TEXT
 id,chinese,english
-miaoshu_bossamute01,面具下隐藏着弱点,Underneath the mask lies the weakpoint.
-miaoshu_bossluoxinfu01,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
-miaoshu_bossluoxinfu02,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
-miaoshu_bossluoxinfu03,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
-miaoshu_bossluoxinfu04,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
-miaoshu_bossluoxinfu05,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
-miaoshu_bossluoxinfu06,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
 #文字Id,文字内容,文字内容
 speak_001,兔桑，兔桑，你干啥呐？,兔桑，兔桑，what are you doing now？
 speak_002,没干啥，你又要干啥？,Nothing？
@@ -60,119 +53,111 @@ Nether River - 3,冥河 - 3,Nether River - 3
 Nether River - 4,冥河 - 4,Nether River - 4
 Nether River - 7,冥河 - 7,Nether River - 7
 Nether River - 8,冥河 - 8,Nether River - 8
-s1Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-s2Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-s3Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackTriSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackTriMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackTriStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackCutSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackCutMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackCutStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackCutTriSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackCutTriMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackCutTriStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackStabSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackStabMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackStabStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackStabTriSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackStabTriMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackStabTriStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackSmashSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackSmashMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-attackSmashStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicMetalSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicMetalMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicMetalStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicPlantSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicPlantMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicPlantStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicWaterSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicWaterMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicWaterStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicFireSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicFireMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicFireStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicEarthSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicEarthMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicEarthStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicCureSlightTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicCureMediumTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-magicCureStrongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-buffSpeedTips,技能描述，noParam,Spell Desc no Param
-buffSpeedSelfTips,技能描述，noParam,Spell Desc no Param
-buffMagicTips,技能描述，noParam,Spell Desc no Param
-buffMagicSelfTips,技能描述，noParam,Spell Desc no Param
-buffAttackTips,技能描述，noParam,Spell Desc no Param
-buffDefenseTips,技能描述，noParam,Spell Desc no Param
-buffAttackSelfTips,技能描述，noParam,Spell Desc no Param
-buffDefenseSelfTips,技能描述，noParam,Spell Desc no Param
-debuffDefenseTips,技能描述，noParam,Spell Desc no Param
-bossJiuweihu1Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossJiuweihu2Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossJiuweihu3Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossJiuweihu4Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultErshuTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultQingniaoTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultZhuyanTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
-bossHundunTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong1Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong2Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong3Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong4Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong5Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossMinghe18Karong6Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin14Luoxinfu1Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin14Luoxinfu2Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin14Luoxinfu3Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin18Meidusha1Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin18Meidusha2Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin18Meidusha3Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin18Meidusha4Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-bossYueguangsenlin18Meidusha5Tips,技能描述，noParam,Spell Desc no Param
-bossYueguangsenlin18Meidusha6Tips,技能描述，noParam,Spell Desc no Param
-bossYueguangsenlin18Meidusha7Tips,技能描述，noParam,Spell Desc no Param
-bossYueguangsenlin18Meidusha8Tips,技能描述，noParam,Spell Desc no Param
-bossYueguangsenlin18Meidusha9Tips,"技能描述,one param{0}","Spell Desc,one param{0}"
-psvbossLonggongtongziTips,技能描述，noParam,Spell Desc no Param
-psvHapiTips,技能描述，noParam,Spell Desc no Param
-psvHetongTips,技能描述，noParam,Spell Desc no Param
-psvLonggongtongziTips,技能描述，noParam,Spell Desc no Param
-psvWaguiTips,技能描述，noParam,Spell Desc no Param
-ultHapiTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultHetongTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultWaguiTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultLonggongtongziTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultbossLonggongtongziTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultbossLuoxinfuTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultHuapoTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
-ultAmuteTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultLangrenTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
-ultMantuoluoTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultboosMantuoluoTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultAnpushaTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-psvHuapoTips,技能描述，noParam,Spell Desc no Param
-psvAmuteTips,技能描述，noParam,Spell Desc no Param
-psvLangrenTips,技能描述，noParam,Spell Desc no Param
-psvMantuoluoTips,技能描述，noParam,Spell Desc no Param
-psvbossMantuoluoTips,技能描述，noParam,Spell Desc no Param
-psvAnpushaTips,技能描述，noParam,Spell Desc no Param
-debuffEarthDotStrongTips,技能描述，noParam,Spell Desc no Param
-ultMomoTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-psvMomoTips,技能描述，noParam,Spell Desc no Param
-ultXiyirenTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
-psvXiyirenTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultPanshenTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
-psvPanshenTips,技能描述，noParam,Spell Desc no Param
-ultKairuisiTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-psvKairuisiTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultLuoxinfuTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
-psvLuoxinfuTips,"技能描述,one param{0}","Spell Desc,one param{0}"
-ultbossXiyirenTips,"技能描述,{0} Two param{1}","Spell Desc,{0} two param{1}"
-psvbossXiyirenTips,技能描述，noParam,Spell Desc no Param
+attackCutSlightTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackCutMediumTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackCutStrongTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackCutTriSlightTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackCutTriMediumTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackCutTriStrongTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackStabSlightTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackStabMediumTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackStabStrongTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackStabTriSlightTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackStabTriMediumTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackStabTriStrongTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackSmashSlightTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackSmashMediumTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackSmashStrongTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+magicMetalSlightTips,给单体目标造成{0}%法攻的光属性伤害,Deals ({0}% of magic ATK) light type magic damage to a single target
+magicMetalMediumTips,给单体目标造成{0}%法攻的光属性伤害,Deals ({0}% of magic ATK) light type magic damage to a single target
+magicMetalStrongTips,给单体目标造成{0}%法攻的光属性伤害,Deals ({0}% of magic ATK) light type magic damage to a single target
+magicPlantSlightTips,给单体目标造成{0}%法攻的木属性伤害,Deals ({0}% of magic ATK) grass type magic damage to a single target
+magicPlantMediumTips,给单体目标造成{0}%法攻的木属性伤害,Deals ({0}% of magic ATK) grass type magic damage to a single target
+magicPlantStrongTips,给单体目标造成{0}%法攻的木属性伤害,Deals ({0}% of magic ATK) grass type magic damage to a single target
+magicWaterSlightTips,给单体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
+magicWaterMediumTips,给单体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
+magicWaterStrongTips,给单体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
+magicFireSlightTips,给单体目标造成{0}%法攻的火属性伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+magicFireMediumTips,给单体目标造成{0}%法攻的火属性伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+magicFireStrongTips,给单体目标造成{0}%法攻的火属性伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+magicEarthSlightTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
+magicEarthMediumTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
+magicEarthStrongTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
+magicCureSlightTips,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
+magicCureMediumTips,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
+magicCureStrongTips,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
+buffSpeedTips,使单体目标速度提升10%，持续3回合,Increases speed of a single target by 10% for 3 turns
+buffSpeedSelfTips,使自身速度提升10%，持续3回合,Increases your speed by 10% for 3 turns
+buffMagicTips,使单体目标智力提升10%，持续3回合,Increases intelligence of a single target by 10% for 3 turns
+buffMagicSelfTips,使自身智力提升10%，持续3回合,Increases your intelligence by 10% for 3 turns
+buffAttackTips,使单体目标力量提升10%，持续3回合,Increases strength of a single target by 10% for 3 turns
+buffAttackSelfTips,使自身力量提升10%，持续3回合,Increases your strength by 10% for 3 turns
+buffDefenseTips,使单体目标防御力提升10%，持续3回合,Increases resistance of a single target by 10% for 3 turns
+buffDefenseSelfTips,使自身防御力提升10%，持续3回合,Increases your resistance by 10% for 3 turns
+buffHotTips,使单体目标每回合回复30%法攻的生命值，持续3回合,Recovers (30% of magic ATK) HP for a single target each turn for 3 turns
+debuffDefenseTips,使单体目标防御力降低10%，持续3回合,Reduces resistance of a single target by 10% for 3 turns
+debuffAttackTips,使单体目标力量降低10%，持续3回合,Reduces strength of a single target by 10% for 3 turns
+debuffMagicTips,使单体目标智力降低10%，持续3回合,Reduces intelligence of a single target by 10% for 3 turns
+debuffSpeedTips,使单体目标速度降低10%，持续3回合,Reduces speed of a single target by 10% for 3 turns
+debuffDotSlightTips,"给单体目标每回合造成{0}%物攻的物理伤害,持续3回合",Deals ({0}% of physical ATK) physical damage to a single target each turn for 3 turns
+debuffDotMediumTips,"给单体目标每回合造成{0}%物攻的物理伤害,持续3回合",Deals ({0}% of physical ATK) physical damage to a single target each turn for 3 turns
+debuffDotStrongTips,"给单体目标每回合造成{0}%物攻的物理伤害,持续3回合",Deals ({0}% of physical ATK) physical damage to a single target each turn for 3 turns
+debuffFireDotSlightTips,"给单体目标每回合造成{0}%法攻的火属性伤害,持续3回合",Deals ({0}% of magic ATK) fire type damage to a single target each turn for 3 turns
+debuffFireDotMediumTips,"给单体目标每回合造成{0}%法攻的火属性伤害,持续3回合",Deals ({0}% of magic ATK) fire type damage to a single target each turn for 3 turns
+debuffFireDotStrongTips,"给单体目标每回合造成{0}%法攻的火属性伤害,持续3回合",Deals ({0}% of magic ATK) fire type damage to a single target each turn for 3 turns
+debuffWaterDotSlightTips,"给单体目标每回合造成{0}%法攻的水属性伤害,持续3回合",Deals ({0}% of magic ATK) water type damage to a single target each turn for 3 turns
+debuffWateDotMediumTips,"给单体目标每回合造成{0}%法攻的水属性伤害,持续3回合",Deals ({0}% of magic ATK) water type damage to a single target each turn for 3 turns
+debuffWateDotStrongTips,"给单体目标每回合造成{0}%法攻的水属性伤害,持续3回合",Deals ({0}% of magic ATK) water type damage to a single target each turn for 3 turns
+debuffPlantDotSlightTips,"给单体目标每回合造成{0}%法攻的木属性伤害,持续3回合",Deals ({0}% of magic ATK) grass type damage to a single target each turn for 3 turns
+debuffPlantDotMediumTips,"给单体目标每回合造成{0}%法攻的木属性伤害,持续3回合",Deals ({0}% of magic ATK) grass type damage to a single target each turn for 3 turns
+debuffPlantDotStrongTips,"给单体目标每回合造成{0}%法攻的木属性伤害,持续3回合",Deals ({0}% of magic ATK) grass type damage to a single target each turn for 3 turns
+debuffMetalDotSlightTips,"给单体目标每回合造成{0}%法攻的光属性伤害,持续3回合",Deals ({0}% of magic ATK) light type damage to a single target each turn for 3 turns
+debuffMetalDotMediumTips,"给单体目标每回合造成{0}%法攻的光属性伤害,持续3回合",Deals ({0}% of magic ATK) light type damage to a single target each turn for 3 turns
+debuffMetalDotStrongTips,"给单体目标每回合造成{0}%法攻的光属性伤害,持续3回合",Deals ({0}% of magic ATK) light type damage to a single target each turn for 3 turns
+debuffEarthDotSlightTips,"给单体目标每回合造成{0}%法攻的暗属性伤害,持续3回合",Deals ({0}% of magic ATK) dark type damage to a single target each turn for 3 turns
+debuffEarthDotMediumTips,"给单体目标每回合造成{0}%法攻的暗属性伤害,持续3回合",Deals ({0}% of magic ATK) dark type damage to a single target each turn for 3 turns
+debuffEarthDotStrongTips,"给单体目标每回合造成{0}%法攻的暗属性伤害,持续3回合",Deals ({0}% of magic ATK) dark type damage to a single target each turn for 3 turns
+bossMinghe18Karong1Tips,给单体目标造成3次66.7%物攻的物理伤害,Deals (66.7% of physical ATK) physical damage 3 times to a single target
+bossMinghe18Karong2Tips,给全体目标造成100%法攻的暗属性伤害,Deals (100% of magic ATK) dark type damage to all targets
+bossMinghe18Karong3Tips,给全体目标造成100%物攻的物理伤害,Deals (100% of physical ATK) physical damage to all targets
+bossMinghe18Karong4Tips,给单体目标造成150%法攻的暗属性伤害并眩晕目标1回合,Deals (150% of your magic ATK) dark type damage to a single target with stun for 1 turn
+bossMinghe18Karong5Tips,给全体目标造成40%物攻的物理伤害,Deals (40% of physical ATK) physical damage to all targets
+bossMinghe18Karong6Tips,给单体目标造成70%法攻的暗属性伤害,Deals (70% of your magic ATK) dark type damage to a single target
+bossYueguangsenlin14Luoxinfu1Tips,给单体目标造成物理伤害，伤害会根据弱点个数调整,Deals physical damage to a single target; damage is adjusted according to number of weakpoints
+bossYueguangsenlin18Meidusha1Tips,给全体目标造成物理伤害，伤害会根据弱点个数调整,Deals physical damage to all targets; damage is adjusted according to number of weakpoints
+bossYueguangsenlin18Meidusha5Tips,对全体目标释放减益buff，buff会根据弱点个数调整,Casts a debuff on all targets; the debuff is adjusted according to number of weakpoints
+bossYueguangsenlin18Meidusha8Tips,给全体目标造成200%法攻的暗属性伤害并10%概率眩晕目标1回合,Deals (200% of magic ATK) dark type damage to all targets with a 10% chance of stun for 1 turn
+bossYueguangsenlin18Meidusha9Tips,给单体目标造成50%物攻的物理伤害,Deals (50% of physical ATK) physical damage to a single target
+ultXiyirenTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害并大概率附加嘲讽效果,"Can carry out {0} actions, each time dealing {1}% physical damage with a high chance of taunt"
+psvXiyirenTips,受到物理伤害时，80%几率提升自身50%防御力，持续3回合,Gives an 80% chance of increasing your defense by 50% whenever you take damage for 3 turns
+ultHuapoTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害,"Can carry out {0} actions, each dealing {1}% physical damage to a single target"
+psvHuapoTips,使用物理技能时，40%几率提升自身10%力量，持续3回合,Gives a 40% chance of increasing your strength by 10% whenever casting a physical ability  for 3 turns
+ultPanshenTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害,"Can carry out {0} actions, each time dealing {1}% physical damage"
+psvPanshenTips,战斗开始时，优先进行一次物理攻击,"At the start of battle, have precedence in carrying out one physical attack"
+ultMantuoluoTips,给全体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for all targets
+psvMantuoluoTips,使用法术技能时，20%几率恢复自身血量,Gives a 20% chance of restoring your HP whenever casting a magic ability
+ultAmuteTips,给全体目标添加24%物攻的物理与魔法吸收护盾,Summons a shield that absorbs (24% of physical ATK) physical and magic damage for all targets
+psvAmuteTips,首次死亡时，血量回复为10%血量上限,Recovers 10% of max HP upon dying the first time
+ultWaguiTips,给单体目标造成{0}%法攻的水属性伤害并大概率附加眩晕效果,Deals ({0}% of magic ATK) water type damage to a single target with a high chance of stun
+psvWaguiTips,受到伤害时，80%几率降低攻击者10%速度，持续3回合,Gives an 80% chance of decreasing attacker's speed by 10% whenever you take damage for 3 turns
+ultHetongTips,给全体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type damage to all targets
+psvHetongTips,战斗开始时，提升己方全体50%防御力，持续3回合,Increase all allies' resistance by 50% at the start of battle for 3 turns
+ultLonggongtongziTips,给全体目标回复{0}%法攻的生命值并附带法术吸收护盾,Recovers ({0}% of magic ATK) HP for all targets and summons a shield that abosrbs magic damage
+psvLonggongtongziTips,使用治疗技能时，10%几率附加法术吸收护盾,Gives a 10% chance of summoning a shield that absorbs magic damage whenever casting a healing ability
+ultLangrenTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害并小概率附加流血dot,"Can carry out {0} actions, each dealing {1}% physical damage to all targets with a low chance of tearing"
+psvLangrenTips,血量小于等于总血量25%时，提升自身10%力量,Increases your strength by 10% whenever HP drops to 25% or below
+ultAnpushaTips,给全体目标造成{0}%法攻的暗属性伤害并附加虚弱和破甲效果,Deals ({0}% of magic ATK) dark type damage to all targets as well as weakening and armor reduction
+psvAnpushaTips,使用法术技能时，50%几率恢复自身血量,Gives an 50% chance of restoring your HP whenever casting a magic ability
+ultKairuisiTips,给全体目标造成{0}%法攻的暗属性伤害并附加失心术效果,Deals ({0}% of magic ATK) dark type damage to all targets with a dishearten effect
+psvKairuisiTips,使用物理技能时，50%几率驱散敌方增益效果,Gives a 50% chance of dispelling enemy buffs whenever casting a physical ability 
+ultLuoxinfuTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害并小概率附加眩晕效果和痛楚,"Can carry out {0} actions, each dealing {1}% physical damage to a single target with a small chance of stun and anguish"
+psvLuoxinfuTips,使用物理技能时，35%几率附带痛楚,Gives a 35% chance of anguish whenever casting a physical ability 
+ultMomoTips,给全体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for all targets' 
+psvMomoTips,受到物理伤害时，80%几率给自身添加物理伤害减免护盾,Gives an 80% chance of providing a shield that reduces physical damage whenever you take damage
+ultHapiTips,驱散己方全体妨害效果,Dispells all debuff effects that affect allies' damage
+psvHapiTips,永久提升自身10%智力,Increases intelligence permanently by 10%
+ultZouyincaoTips,给全体目标提升10%力量并驱散妨害效果,Increases strength by 10% for all targets with dispells all debuff effects
+psvZouyincaoTips,永久提升自身10%速度,Increases speed permanently by 10%
 attackCutSlightName,弱攻击,Weak Attack
 attackCutMediumName,攻击,Attack
 attackCutStrongName,强力攻击,Strong Attack
@@ -211,63 +196,11 @@ buffSpeedSelfName,速度爆发,Dash
 buffMagicName,智慧术,Insight
 buffMagicSelfName,智力爆发,High Intellect
 buffAttackName,激励术,Inspire
-buffDefenseName,加护术,Ward
 buffAttackSelfName,力量爆发,Overwhelming Strength
+buffDefenseName,加护术,Ward
 buffDefenseSelfName,防御姿态,Defensive Stance
-debuffDefenseName,破甲术,Sunder
-bossJiuweihu1Name,,
-bossJiuweihu2Name,,
-bossJiuweihu3Name,,
-bossJiuweihu4Name,,
-ultErshuName,,
-ultQingniaoName,,
-ultZhuyanName,,
-bossHundunName,,
-dazhaoPrepareName,,
-bossMinghe18Karong1Name,,
-bossMinghe18Karong2Name,,
-bossMinghe18Karong3Name,,
-bossMinghe18Karong4Name,,
-bossMinghe18Karong5Name,,
-bossMinghe18Karong6Name,,
-bossYueguangsenlin14Luoxinfu1Name,,
-bossYueguangsenlin14Luoxinfu2Name,,
-bossYueguangsenlin14Luoxinfu3Name,,
-bossYueguangsenlin18Meidusha1Name,,
-bossYueguangsenlin18Meidusha2Name,,
-bossYueguangsenlin18Meidusha3Name,,
-bossYueguangsenlin18Meidusha4Name,,
-bossYueguangsenlin18Meidusha5Name,,
-bossYueguangsenlin18Meidusha6Name,,
-bossYueguangsenlin18Meidusha7Name,,
-bossYueguangsenlin18Meidusha8Name,,
-bossYueguangsenlin18Meidusha9Name,,
-psvbossLonggongtongziName,,
-psvHapiName,,
-psvHetongName,,
-psvLonggongtongziName,,
-psvWaguiName,,
-ultHapiName,,
-ultHetongName,,
-ultWaguiName,,
-ultLonggongtongziName,,
-ultbossLonggongtongziName,,
-ultbossLuoxinfuName,,
-ultHuapoName,,
-ultAmuteName,,
-ultLangrenName,,
-ultMantuoluoName,,
-ultboosMantuoluoName,,
-ultAnpushaName,,
-psvHuapoName,,
-psvAmuteName,,
-psvLangrenName,,
-psvMantuoluoName,,
-psvbossMantuoluoName,,
-psvAnpushaName,,
-ultZouyincaoName,,
-psvZouyincaoName,,
 buffHotName,恢复术,Recover
+debuffDefenseName,破甲术,Sunder
 debuffAttackName,虚弱术,Disable
 debuffMagicName,失心术,Stupefy
 debuffSpeedName,缓速术,Inhibit
@@ -289,21 +222,57 @@ debuffMetalDotStrongName,耀斑（强）,Flare (Strong)
 debuffEarthDotSlightName,痛楚（弱）,Anguish (Weak)
 debuffEarthDotMediumName,痛楚（中）,Anguish (Normal)
 debuffEarthDotStrongName,痛楚（强）,Anguish (Strong)
-ultMomoName,,
-psvMomoName,,
-ultXiyirenName,,
-psvXiyirenName,,
-ultPanshenName,,
-psvPanshenName,,
-ultKairuisiName,,
-psvKairuisiName,,
-ultLuoxinfuName,,
-psvLuoxinfuName,,
-ultbossXiyirenName,,
-psvbossXiyirenName,,
+bossMinghe18Karong1Name,暗影爪,Shadow Claw
+bossMinghe18Karong2Name,暗影波,Shadow Wave
+bossMinghe18Karong3Name,暗影强袭,Shadow Strike
+bossMinghe18Karong4Name,精神控制,Mind Control
+bossMinghe18Karong5Name,横扫,Sweep
+bossMinghe18Karong6Name,暗影攻击,Shadow Blast
+bossYueguangsenlin14Luoxinfu1Name,三连弱击,Weak Triple Strike
+bossYueguangsenlin18Meidusha1Name,群蛇乱舞,Serpent Fury
+bossYueguangsenlin18Meidusha5Name,压制,Suppress
+bossYueguangsenlin18Meidusha8Name,石化攻击,Petrify
+bossYueguangsenlin18Meidusha9Name,拍打攻击,Batter
+ultXiyirenName,嘲讽射击,Sneering Shots
+psvXiyirenName,保护色,Protective color
+ultHuapoName,花刺扫射,Spike Spray
+psvHuapoName,自然生长,Natural Growth
+ultPanshenName,狂冲乱撞,Pummel
+psvPanshenName,冲锋,Step Ahead
+ultMantuoluoName,缓释,Restoration
+psvMantuoluoName,灵光一现,Healing Intellect
+ultAmuteName,护佑,Broad Barrier
+psvAmuteName,坚韧之血,Tenacity
+ultWaguiName,粘性喷吐,Viscuos Spew
+psvWaguiName,粘性皮肤,Adhesive Skin
+ultHetongName,水龙弹,Torrent Bombs
+psvHetongName,强固阵型,Strong Formation
+ultLonggongtongziName,生命之盾,Healing Nova
+psvLonggongtongziName,庇护治愈,Sheltering Cure
+ultLangrenName,疯狂撕裂,Rapid Jabs
+psvLangrenName,不屈之力,Indomitable Force
+ultAnpushaName,暗黑干预,Coherent Darkness
+psvAnpushaName,意外之喜,Serendipity
+ultKairuisiName,黑幕,Unnerving Darkness
+psvKairuisiName,散佚,Disseminate
+ultLuoxinfuName,猛击,Vexbane Strikes
+psvLuoxinfuName,余韵犹存,Lingering Blow
+ultMomoName,博爱,Erudite Mending
+psvMomoName,灵机应变,Lesser Ward
+ultHapiName,烟消云散,Dissipation
+psvHapiName,洞察,Clairvoyance
+ultZouyincaoName,提神号角,Bright Horn
+psvZouyincaoName,顺风,Tailwind
 Valor,勇敢,Valor
 Spiritual,聪慧,Spiritual
 Mischievous,狡猾,Mischievous
 Collaborate,互助,Collaborate
 Compassion,善良,Compassion
 Humility,谨慎,Humility
+miaoshu_bossamute01,面具下隐藏着弱点,Underneath the mask lies the weakpoint.
+miaoshu_bossluoxinfu01,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
+miaoshu_bossluoxinfu02,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
+miaoshu_bossluoxinfu03,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
+miaoshu_bossluoxinfu04,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
+miaoshu_bossluoxinfu05,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
+miaoshu_bossluoxinfu06,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."

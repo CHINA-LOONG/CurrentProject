@@ -160,7 +160,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: .195238099
+      - time: 0
         functionName: OnDaZhaoEnd
         data: 
         objectReferenceParameter: {instanceID: 0}

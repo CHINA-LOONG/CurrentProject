@@ -80,11 +80,11 @@ public class DazhaofocusController : MonoBehaviour
 		//monstershowoff
 		if (isMagicDazhao)
 		{
-			battleObject.TriggerEvent ("dazhaoxuanyao_wuli", Time.time, null);
+			battleObject.TriggerEvent ("dazhaoxuanyao_fashu", Time.time, null);
 		}
 		else 
 		{
-			battleObject.TriggerEvent ("dazhaoxuanyao_fashu", Time.time, null);
+			battleObject.TriggerEvent ("dazhaoxuanyao_wuli", Time.time, null);
 		}
         if (string.IsNullOrEmpty(battleObject.unit.closeUp) == false)
         {

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class UILogin : UIBase, TabButtonDelegate
+public class UILogin : UIBase
 {
 	public static	string	ViewName = "UILogin";
 	public Text testTipInfo = null;
@@ -17,7 +17,6 @@ public class UILogin : UIBase, TabButtonDelegate
 		
 		yield return new WaitForEndOfFrame ();
 		yield return new WaitForEndOfFrame ();
-		GetComponent<TabButtonGroup> ().InitWithDelegate (this);
 	}
 	
 	void  onLoginButtonClicked(GameObject go)
@@ -30,10 +29,5 @@ public class UILogin : UIBase, TabButtonDelegate
 	{
 		//Debug.Log ("Login Button Click!!");
 		PlayerPrefs.DeleteKey ("testGuid");
-	}
-
-	public void OnTabButtonChanged(int index)
-	{
-		testTipInfo.text = "changeItemIndex: " + index.ToString();
 	}
 }

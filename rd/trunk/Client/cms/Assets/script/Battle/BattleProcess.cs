@@ -158,7 +158,7 @@ public class BattleProcess : MonoBehaviour
         BindListener();
     }
 
-    void Update()
+    void LateUpdate()
     {
         //if (curAction != null)
         //{
@@ -179,10 +179,11 @@ public class BattleProcess : MonoBehaviour
 
         //TODO: use battle start time as 0, not Time.time
         int eventCount = deadEventList.Count;
+        float curTime = Time.time;
         for (int i = 0; i < eventCount; ++i)
         {
             SpellUnitDeadArgs args = deadEventList[i];
-            if (args.triggerTime < lastUpdateTime || args.triggerTime >= Time.time)
+            if (args.triggerTime < lastUpdateTime || args.triggerTime > curTime)
             {
                 continue;
             }
@@ -329,7 +330,7 @@ public class BattleProcess : MonoBehaviour
         for (int i = 0; i < eventCount; ++i)
 		{
 			SpellFireArgs args = spellEventList[i];
-			if (args.triggerTime < lastUpdateTime || args.triggerTime >= Time.time)
+            if (args.triggerTime < lastUpdateTime || args.triggerTime >= curTime)
 			{
 				continue;
 			}
@@ -357,7 +358,7 @@ public class BattleProcess : MonoBehaviour
         for (int i = 0; i < eventCount; ++i)
         {
             SpellVitalChangeArgs args = lifeChangeEventList[i];
-            if (args.triggerTime < lastUpdateTime || args.triggerTime >= Time.time)
+            if (args.triggerTime < lastUpdateTime || args.triggerTime >= curTime)
             {
                 continue;
             }
@@ -380,7 +381,7 @@ public class BattleProcess : MonoBehaviour
         for (int i = 0; i < eventCount; ++i)
         {
             SpellVitalChangeArgs args = energyEventList[i];
-            if (args.triggerTime < lastUpdateTime || args.triggerTime >= Time.time)
+            if (args.triggerTime < lastUpdateTime || args.triggerTime >= curTime)
             {
                 continue;
             }
@@ -391,7 +392,7 @@ public class BattleProcess : MonoBehaviour
         for (int i = 0; i < eventCount; ++i)
         {
             SpellBuffArgs args = buffEventList[i];
-            if (args.triggerTime < lastUpdateTime || args.triggerTime >= Time.time)
+            if (args.triggerTime < lastUpdateTime || args.triggerTime >= curTime)
             {
                 continue;
             }
@@ -402,7 +403,7 @@ public class BattleProcess : MonoBehaviour
         for (int i = 0; i < eventCount; ++i)
         {
             WeakPointDeadArgs args = wpDeadEventList[i];
-            if (args.triggerTime < lastUpdateTime || args.triggerTime >= Time.time)
+            if (args.triggerTime < lastUpdateTime || args.triggerTime >= curTime)
             {
                 continue;
             }
@@ -430,7 +431,7 @@ public class BattleProcess : MonoBehaviour
                 }
             }
         }
-        lastUpdateTime = Time.time;
+        lastUpdateTime = curTime;
 
         for (int i = deathList.Count - 1; i >= 0; --i)
         {
@@ -594,6 +595,11 @@ public class BattleProcess : MonoBehaviour
         GameUnit actionCaster = null;
 		if (action != null)
 		{
+			if(curAction.caster ==null)
+			{
+				OnActionOver();
+				return;
+			}
             actionCaster = curAction.caster.unit;
 			switch (action.type)
 			{
@@ -864,6 +870,12 @@ public class BattleProcess : MonoBehaviour
 		{
 			attackTarget = BattleUnitAi.Instance.GetMagicDazhaoAttackUnit(action.caster.unit);
 		}
+		if (null == attackTarget) 
+		{
+			Logger.LogError("no Target unit,ActionOver!");
+			OnActionOver();
+			return;
+		}
 		Spell dazhaoSpell = action.caster.unit.GetDazhao ();
 		if (null != dazhaoSpell) 
 		{
@@ -982,9 +994,15 @@ public class BattleProcess : MonoBehaviour
         enter.unit.CalcNextActionOrder(lastActionOrder);
         battleGroup.OnUnitEnterField(enter, action.slot);
 
-        if (--replaceDeadUnitCount == 0 && inDazhaoAction == false)
+        --replaceDeadUnitCount;
+        if (inDazhaoAction == false)
         {
-            OnActionOver();
+            if (replaceDeadUnitCount == 0 ||    //the last action
+                (replaceDeadUnitCount == 1 && hasInsertReplaceDeadUnitAction == true)
+                )
+            {
+                OnActionOver();
+            }
         }
 
         yield return null;

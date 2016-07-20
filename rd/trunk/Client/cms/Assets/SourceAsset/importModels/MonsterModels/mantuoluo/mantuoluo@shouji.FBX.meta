@@ -161,7 +161,7 @@ ModelImporter:
       name: shouji
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 26
+      lastFrame: 25
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -180,7 +180,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: .609756112
+      - time: 0
         functionName: OnShoujiEnd
         data: 
         objectReferenceParameter: {instanceID: 0}

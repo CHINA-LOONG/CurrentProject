@@ -132,6 +132,7 @@ public class BattleUnitAi : MonoBehaviour {
 		attackResult.useSpell = GetSpell (attackResult.attackStyle, battleUnit);
 
         attackResult.attackTarget = GetTargetThroughSpell(attackResult.useSpell, battleUnit);
+		CheckBossWeakPoint (attackResult.attackTarget);
 
 		return attackResult;
     }
@@ -562,7 +563,7 @@ public class BattleUnitAi : MonoBehaviour {
 				listValidTarget.Add(subUnit);
 			
 			if(spellType == (int)SpellType.Spell_Type_Hot &&
-			   subUnit.curLife/subUnit.maxLife < 0.9f)
+			   (float)subUnit.curLife/(float)subUnit.maxLife < 0.9f)
 				listValidTarget.Add(subUnit);
 		}
 		
@@ -587,9 +588,12 @@ public class BattleUnitAi : MonoBehaviour {
 			for(int i = 0; i < listValidTarget.Count; ++i)
 			{
 				float injuryValue = GetInjuryRatio(battleUnit,listValidTarget[i]);
-				if(injuryValue > maxInjuryValue)
+				float tempValue = 0;
+
+				tempValue = (listValidTarget[i].maxLife - listValidTarget[i].curLife)/injuryValue;
+				if(tempValue > maxInjuryValue)
 				{
-					maxInjuryValue = injuryValue;
+					maxInjuryValue = tempValue;
 					selIndex = i;
 				}
 			}
@@ -635,7 +639,29 @@ public class BattleUnitAi : MonoBehaviour {
 		int rondomIndex = Random.Range (0, listValidTarget.Count);
 		return listValidTarget [rondomIndex];
 	}
-	
+
+	void	CheckBossWeakPoint(GameUnit targetUnit)
+	{
+		if (null == targetUnit)
+			return;
+		if (!targetUnit.isBoss)
+			return;
+		targetUnit.attackWpName = null;
+		if (targetUnit == BattleController.Instance.Process.fireFocusTarget)
+		{
+			targetUnit.attackWpName = BattleController.Instance.Process.fireAttackWpName;
+		}
+		
+		if (!string.IsNullOrEmpty (targetUnit.attackWpName))
+			return;
+		List<string> wpList = targetUnit.battleUnit.wpGroup.GetAiCanAttackList ();
+		if (wpList != null && wpList.Count > 0) 
+		{
+			int rondomIndex = Random.Range(0,wpList.Count);
+			targetUnit.attackWpName = wpList[rondomIndex];
+		}
+	}
+
 	#endregion
 
 

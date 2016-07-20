@@ -29,11 +29,10 @@ public class bossMinghe18Karong : BossAi {
 		List<string> wpList = null;
 		wpList = GetAliveWeakPointList (karongUnit);
 
-		float t = NormalScript.GetWpLifeLeftRatio (karongUnit.battleUnit, "bossMinghe18Karongwp02");
 		if ( NormalScript.GetWpLifeLeftRatio (karongUnit.battleUnit, "bossMinghe18Karongwp02")> 0 && karongUnit.curLife > karongUnit.maxLife * 0.7 && jishu == 0) 
 		{
 			float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
-			if (randkey >= 0.5) {
+			if (randkey >= 0.8) {
 				karongSpellDic.TryGetValue ("bossMinghe18Karong1", out useSpell);
 			} 
 			else 
@@ -47,7 +46,7 @@ public class bossMinghe18Karong : BossAi {
 			if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp04")>0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp05")>0)
 			{
 				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
-				if (randkey >= 0.5) {
+				if (randkey >= 0.9) {
 					karongSpellDic.TryGetValue ("bossMinghe18Karong4", out useSpell);
 				} 
 				else 
@@ -58,7 +57,7 @@ public class bossMinghe18Karong : BossAi {
 			else if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp04")>0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp05")==0)
 			{
 				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
-				if (randkey >= 0.5) {
+				if (randkey >= 0.9) {
 					karongSpellDic.TryGetValue ("bossMinghe18Karong6", out useSpell);
 				} 
 				else 
@@ -69,7 +68,7 @@ public class bossMinghe18Karong : BossAi {
 			else if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp04")==0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp05")>0)
 			{
 				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
-				if (randkey >= 0.5) {
+				if (randkey >= 0.9) {
 					karongSpellDic.TryGetValue ("bossMinghe18Karong4", out useSpell);
 				} 
 				else 
@@ -80,7 +79,7 @@ public class bossMinghe18Karong : BossAi {
 			else
 			{
 				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
-				if (randkey >= 0.5) {
+				if (randkey >= 0.9) {
 					karongSpellDic.TryGetValue ("bossMinghe18Karong6", out useSpell);
 				} 
 				else 
@@ -98,7 +97,7 @@ public class bossMinghe18Karong : BossAi {
     public override void OnVitalChange(SpellVitalChangeArgs args)
     {
         BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-        if (target.unit.curLife <= target.unit.maxLife * 0.7 && jishu == 0)
+        if (target.unit.curLife <= target.unit.maxLife * 0.82 && jishu == 0)
         {
             target.TriggerEvent("karong_stage1to2_shuihuo", Time.time, null);
             jishu++;

@@ -112,7 +112,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		//{
 		//	mirrorTween.Kill(true);
 		//}
-
+		isShowMirrorExitEffect = false;
 		isDragging = false;
 		//MirrorDragImage.gameObject.SetActive (true);
 		//MirrorDragImage.DOFade (1.0f, 0.5f);
@@ -194,6 +194,10 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 					float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
 					rt.anchoredPosition = new Vector2(mirrorScreenPos.x/fscale,mirrorScreenPos.y/fscale);
 				}
+			}
+			else
+			{
+				mirrorExitEffect.gameObject.SetActive(false);
 			}
 
 
