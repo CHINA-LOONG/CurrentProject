@@ -5,8 +5,8 @@ using ProtoBuf;
 
 public class GemInfo
 {
-    int type;
-    string gemId;
+    public int type;
+    public string gemId;
 
     public GemInfo(int type, string gemId) {
         this.type = type;
@@ -22,10 +22,13 @@ public class GemInfo
 
 public class EquipData
 {
+    public long id;
     public int stage;
     public int level;
     public string equipId;
+    public int monsterId;
     public List<GemInfo> gemList;
+
     //显示用数据
     public int health;
     public int strength;
@@ -39,12 +42,14 @@ public class EquipData
     public int defenseStrengthen;
     public int speedStrengthen;
 
-    public static EquipData valueof(string equipId, int stage, int level, List<PB.GemPunch> gemList)
+    public static EquipData valueof(long id, string equipId, int stage, int level,int monsterId, List<PB.GemPunch> gemList)
     {
         EquipData equipData = new EquipData();
+        equipData.id = id;
         equipData.stage = stage;
         equipData.level = level;
         equipData.equipId = equipId;
+        equipData.monsterId = monsterId;
         equipData.gemList = new List<GemInfo>();
         EquipProtoData item = StaticDataMgr.Instance.GetEquipProtoData(equipId, stage);
         EquipLevelData baseAttr = StaticDataMgr.Instance.GetEquipLevelData(item.stageAttrId);
@@ -89,24 +94,37 @@ public class GameEquipData
 {
     public Dictionary<long, EquipData> equipList = new Dictionary<long, EquipData>();
 
-    public void AddEquip(long id, string equipId, int stage, int level, List<PB.GemPunch> gemList)
+    //modify: xiaolong 2015-9-9 18:41:28
+    //public void AddEquip(long id, string equipId, int stage, int level, List<PB.GemPunch> gemList)
+    //{
+    //    EquipData equipData;
+    //    if (equipList.TryGetValue(id, out equipData))
+    //    {
+    //        equipData.id = id;
+    //        equipData.equipId = equipId;
+    //        equipData.stage = stage;
+    //        equipData.level = level;
+    //        equipData.gemList.Clear();
+    //        foreach (PB.GemPunch element in gemList)
+    //        {
+    //            GemInfo gemInfo = new GemInfo(element);
+    //            equipData.gemList.Add(gemInfo);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        equipList.Add(id, EquipData.valueof(id,equipId, stage, level, gemList));
+    //    }
+    //}
+    public void AddEquip(EquipData data)
     {
-        EquipData equipData;
-        if (equipList.TryGetValue(id, out equipData))
+        if (equipList.ContainsKey(data.id))
         {
-            equipData.equipId = equipId;
-            equipData.stage = stage;
-            equipData.level = level;
-            equipData.gemList.Clear();
-            foreach (PB.GemPunch element in gemList)
-            {
-                GemInfo gemInfo = new GemInfo(element);
-                equipData.gemList.Add(gemInfo);
-            }
+            equipList[data.id] = data;
         }
         else
         {
-            equipList.Add(id, EquipData.valueof(equipId, stage, level, gemList));
+            equipList.Add(data.id, data);
         }
     }
 

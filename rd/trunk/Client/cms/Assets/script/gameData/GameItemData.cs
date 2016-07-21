@@ -5,11 +5,13 @@ using System.Collections.Generic;
 
 public class ItemData
 {
+    public string itemId;
     public int count;
 
-    public static ItemData valueof(int count) 
+    public static ItemData valueof(string itemId, int count) 
     {
         ItemData itemData = new ItemData();
+        itemData.itemId = itemId;
         itemData.count = count;
         return itemData;
     }
@@ -17,9 +19,9 @@ public class ItemData
 
 public class GameItemData
 {
-    public Dictionary<String, ItemData> itemList = new Dictionary<String, ItemData>();
+    public Dictionary<string, ItemData> itemList = new Dictionary<string, ItemData>();
 
-    public void AddItem(String itemId, int count)
+    public void AddItem(string itemId, int count)
     {
         ItemData itemData;
         if (itemList.TryGetValue(itemId, out itemData))
@@ -28,11 +30,11 @@ public class GameItemData
         }
         else
         {
-            itemList.Add(itemId, ItemData.valueof(count));
+            itemList.Add(itemId, ItemData.valueof(itemId, count));
         }
     }
 
-    public bool RemoveItem(String itemId, int count)
+    public bool RemoveItem(string itemId, int count)
     {
         ItemData itemData;
         if (itemList.TryGetValue(itemId, out itemData))
@@ -49,7 +51,7 @@ public class GameItemData
         return false;
     }
 
-    public ItemData getItem(String itemId)
+    public ItemData getItem(string itemId)
     {
         ItemData itemData;
         if (itemList.TryGetValue(itemId, out itemData))

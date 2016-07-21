@@ -207,9 +207,18 @@ public class GameDataMgr : MonoBehaviour
     {
         PB.HSEquipInfoSync equpSync = msg.GetProtocolBody<PB.HSEquipInfoSync>();
 
+        Logger.Log("equipCount:" + equpSync.equipInfos.Count);
         foreach (PB.EquipInfo equipInfo in equpSync.equipInfos)
         {
-            mainPlayer.gameEquipData.AddEquip(equipInfo.id, equipInfo.equipId, equipInfo.stage, equipInfo.level, equipInfo.gemItems);
+            EquipData equip = EquipData.valueof(equipInfo.id, equipInfo.equipId, equipInfo.stage, equipInfo.level,equipInfo.monsterId, equipInfo.gemItems);
+            
+            mainPlayer.gameEquipData.AddEquip(equip);
+            
+            if (mainPlayer.allUnitDic.ContainsKey(equipInfo.monsterId))
+            {
+                ItemStaticData item = StaticDataMgr.Instance.GetItemData(equipInfo.equipId);
+                mainPlayer.allUnitDic[equipInfo.monsterId].equipList[item.part] = equip;
+            }
         }
     }
     //quest------------------------------------------------------------------------------------------
@@ -303,7 +312,7 @@ public class GameDataMgr : MonoBehaviour
             }
             else if (item.type == (int)PB.itemType.EQUIP)
             {
-                GameDataMgr.Instance.mainPlayer.gameEquipData.AddEquip(item.id, item.itemId, item.stage, item.level, null);
+                GameDataMgr.Instance.mainPlayer.gameEquipData.AddEquip(EquipData.valueof(item.id, item.itemId, item.stage, item.level, -1, null));
             }
             else if (item.type == (int)PB.itemType.MONSTER)
             {

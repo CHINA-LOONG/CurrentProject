@@ -7,6 +7,15 @@ public enum UnitCamp
     Enemy,
 }
 
+public enum AttrType
+{
+    Strength,
+    Health,
+    Intelligence,
+    Defense,
+    Speed
+}
+
 public class BattleConst
 {
     public const int offsiteSlot = -1;
@@ -30,12 +39,12 @@ public class BattleConst
 
     //大招 怪物炫耀时长
     public const float dazhaoShowOffTime = 2;
-	//大招慢镜头速度
-	public	const	float	dazhaoAttackTimeScale = 1.0f;
-	//大招慢镜头时长 
-	public	const float	dazhaoAttackTimeLength = 0.0f;
-	//法阵样式数量
-	public	const	int	magicFazhencount = 5;
+    //大招慢镜头速度
+    public const float dazhaoAttackTimeScale = 1.0f;
+    //大招慢镜头时长 
+    public const float dazhaoAttackTimeLength = 0.0f;
+    //法阵样式数量
+    public const int magicFazhencount = 5;
 
     //无条件关闭换宠UI
     public const int closeSwitchPetUI = -1;
@@ -68,4 +77,15 @@ public class BattleConst
     public const float magicDazhaoDelay = 3.0f;
     public const float battleEndDelay = 2.0f;
     public const float entranceTime = 1.5f;
+
+    //无效的宠物id -1；
+    public const int invalidMonsterID = -1;
+    //最大最小装备等级 9 0
+    public const int maxEquipLevel = 9;
+    public const int minEquipLevel = 0;
+    //最大最小装备品阶 6 1
+    public const int maxEquipStage = 6;
+    public const int minEquipStage = 1;
+
+
 }

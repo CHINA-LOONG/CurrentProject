@@ -19,8 +19,9 @@ public class PetViewConst{
         DETAIL_ATTR_TYPE,
         SKILL_PANEL_TYPE,
         STAGE_PANEL_TYPE,
-        EQUIP_PANEL_TYPE,
-        ADVANCE_PANEL_TYPE
+        ADVANCE_PANEL_TYPE,
+        EQUIP_INFO_TYPE,
+        EQUIP_LIST_TYPE      
     }
 
     public enum SkillIndex
@@ -32,6 +33,7 @@ public class PetViewConst{
         SKILL_PASSIVE_INDEX
     }
 
+
     // asset & buddle name
     //public static string UIPetListBuddleName = "ui/petlist";
     //public static string UIPetDetailBuddleName = "ui/petdetail";
@@ -41,21 +43,24 @@ public class PetViewConst{
     //public static string UIPetEquipBuddleName = "ui/petrightequip";
     //public static string UIPetAdvanceBuddleName = "ui/petrightadvance";
 
-    public static string UIPetListAssetName = "UIPetList";
-    public static string UIPetListElementAssetName = "UIPetListElement";
-    public static string UIPetDetailAssetName = "UIPetDetail";
-    public static string UIPetModelAssetName = "PetModel";
-    public static string UIPetModelCameraAssetName = "UIPetModelCamera";
-    public static string UIPetAdvanceAssetName = "UIPetAdvance";
-    public static string UIPetAttrAssetName = "UIPetAttr";
-    public static string UIPetAttrElementAssetName = "UIPetAttrElement";
-    public static string UIPetEquipAssetName = "UIPetEquip";
-    public static string UIPetSkillAssetName = "UIPetSkill";
-    public static string UIPetSkillElementAssetName = "UIPetSkillElement";
-    public static string UIPetStageAssetName = "UIPetStage";
-    public static string UIPetStageMonsterElementAssetName = "UIPetStageMonsterElement";
-    public static string UIPetStageMonsterSelectAssetName = "UIPetStageMonsterSelect";
-    public static string UIPetTypeBtnAssetName = "UIPetTypeBtn";
+    public const string UIPetListAssetName = "UIPetList";
+    public const string UIPetListElementAssetName = "UIPetListElement";
+    public const string UIPetDetailAssetName = "UIPetDetail";
+    public const string UIPetModelAssetName = "PetModel";
+    public const string UIPetModelCameraAssetName = "UIPetModelCamera";
+    public const string UIPetAdvanceAssetName = "UIPetAdvance";
+    public const string UIPetAttrAssetName = "UIPetAttr";
+    public const string UIPetAttrElementAssetName = "UIPetAttrElement";
+    public const string UIPetEquipAssetName = "UIPetEquip";
+    public const string UIPetSkillAssetName = "UIPetSkill";
+    public const string UIPetSkillElementAssetName = "UIPetSkillElement";
+    public const string UIPetStageAssetName = "UIPetStage";
+    public const string UIPetStageMonsterElementAssetName = "UIPetStageMonsterElement";
+    public const string UIPetStageMonsterSelectAssetName = "UIPetStageMonsterSelect";
+    public const string UIPetTypeBtnAssetName = "UIPetTypeBtn";
+    public const string UIPetEquipInfoAssetName = "UIPetEquipInfo";
+    public const string UIPetEquipListAssetName = "UIPetEquipList";
+
 
     public static string ReloadPetListNotify = "reloadPetListNotify";
     public static string ReloadPetStageNotify = "reloadPetStageNotify";
@@ -106,7 +111,6 @@ public class PetViewConst{
     public static string PetProprety3 = "monster_property3";
     public static string PetProprety4 = "monster_property4";
     public static string PetProprety5 = "monster_property5";
-
 
 }
 

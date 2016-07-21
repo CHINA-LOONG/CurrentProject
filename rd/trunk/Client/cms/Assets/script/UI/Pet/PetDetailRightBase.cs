@@ -1,19 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public class PetRightParamBase
+{
+    public GameUnit unit; 
+}
+
 public class PetDetailRightBase : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    virtual public void ReloadData(GameUnit unit)
+    private UIPetDetail parentNode;
+    public UIPetDetail ParentNode
+    {
+        get
+        {
+            if (parentNode == null)
+            {
+                parentNode = transform.GetComponentInParent<UIPetDetail>();
+            }
+            return parentNode;
+        }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="param"></param>
+    virtual public void ReloadData(PetRightParamBase param)
     {
 
     }

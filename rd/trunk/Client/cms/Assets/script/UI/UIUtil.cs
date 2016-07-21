@@ -251,4 +251,12 @@ public class UIUtil
         defence = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * (unit.defense + unitStageData.defense));
         speed = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * (unit.speed + unitStageData.speed));
     }
+
+    public static void SetParentReset(Transform child, Transform parent)
+    {
+        child.SetParent(parent,false);
+        child.localPosition = Vector3.zero;
+        child.localScale = Vector3.one;
+    }
+
 }

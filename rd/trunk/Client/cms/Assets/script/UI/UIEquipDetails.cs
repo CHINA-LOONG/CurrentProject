@@ -8,8 +8,18 @@ public enum EquipState
     showGem,
     hide
 }
+public interface IEquipCallBack
+{
+    void Reinforced(EquipData data);
+    void Inlay(EquipData data);
+    void Unload();//卸载
+    void Replacement(GameUnit unit,int equipPart);//换装
+}
+
 public class UIEquipDetails : MonoBehaviour
-{   
+{
+    public IEquipCallBack equipCallBack;
+
     public Text equipNmae;//装备名称 
     public Text strengthenNum;//装备强化
     public Text equipType;//装备类型
@@ -18,19 +28,25 @@ public class UIEquipDetails : MonoBehaviour
     public Text lvLimit;//装备等级限制
     public GameObject equipOperation;
     public GameObject equipOperation1;
-    public GameObject exit;//退出   
     public GameObject[] basicsAttribute;//基础属性列表
     public Text[] basicsAttributeNum;
     public Text[] basicsAttributePlusNum;
     public GameObject[] gemAttribute;//宝石
     public string[] part = new string[6] { "Weapon", "Waist", "Armor", "Bracelet", "Ring", "Charm" };
     public string[] equipTypeId = new string[4] { "Defend", "Physics", "Magic", "Support" };
+    public GameObject reinforcedButton;//强化
+    public GameObject inlayButton;//镶嵌
+    public GameObject unloadButton;//卸下
+    public GameObject reloadButton;//更换
+    EquipData equipDate;
+    GameUnit unitDate;
+    ItemStaticData itemData;
     public static UIEquipDetails CreateEquip()
     {
         GameObject equip = ResourceMgr.Instance.LoadAsset("equipDetails");
         return equip.GetComponent<UIEquipDetails>();
     }
-    public void Show(long id, EquipState Type)
+    public void Show(EquipData equip, GameUnit unit, EquipState Type)
     {
         Hide();
         int w = 0;
@@ -49,8 +65,9 @@ public class UIEquipDetails : MonoBehaviour
             equipOperation.SetActive(false);
             equipOperation1.SetActive(false);
         }
-        EquipData equipDate = GameDataMgr.Instance.PlayerDataAttr.gameEquipData.GetEquip(id);
-        ItemStaticData itemData = StaticDataMgr.Instance.GetItemData(equipDate.equipId);
+        equipDate = equip;
+        unitDate = unit;
+        itemData = StaticDataMgr.Instance.GetItemData(equipDate.equipId);
         equipNmae.text = itemData.name;
         lvLimit.text = itemData.minLevel.ToString();
         if (itemData.part > -1&&itemData.part < 6)//装备超出
@@ -133,5 +150,81 @@ public class UIEquipDetails : MonoBehaviour
             gemAttribute[i].SetActive(false);
         }        
         strengthenNum.enabled = false;
+    }
+
+    void OnClick(GameObject go)
+    {
+        if (go.name == reinforcedButton.name)
+        {
+            equipCallBack.Reinforced(equipDate);  
+        }
+        else if (go.name == inlayButton.name)
+        {
+            equipCallBack.Inlay(equipDate);
+        }
+        else if (go.name == unloadButton.name)
+        {
+            OnUnloadEquip(equipDate);
+        }
+        else if (go.name == reloadButton.name)
+        {            
+           equipCallBack.Replacement(unitDate,itemData.part);
+        }
+    }
+
+    public void OnUnloadEquip(EquipData equip)
+    {
+        ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
+            PB.HSEquipMonsterUndress param = new PB.HSEquipMonsterUndress()
+            {
+                id = equip.id,
+            };
+            GameApp.Instance.netManager.SendMessage(PB.code.EQUIP_MONSTER_UNDRESS_C.GetHashCode(), param);
+    }
+
+    void OnEquipUnloadReturn(ProtocolMessage msg)
+    {
+        UINetRequest.Close();
+        if (msg == null || msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            return;
+        }
+        PB.HSEquipMonsterUndressRet result = msg.GetProtocolBody<PB.HSEquipMonsterUndressRet>();
+        GameUnit monster = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(result.monsterId);
+        EquipData equip = GameDataMgr.Instance.PlayerDataAttr.gameEquipData.GetEquip(result.id);
+        ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
+        monster.equipList[itemInfo.part] = null;
+        equip.monsterId = BattleConst.invalidMonsterID;
+        equipCallBack.Unload();
+    }
+
+    void OnEnable()
+    {
+        BindListener();
+    }
+
+    void OnDisable()
+    {
+        UnBindListener();
+    }
+
+    void BindListener()
+    {
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_MONSTER_UNDRESS_C.GetHashCode().ToString(), OnEquipUnloadReturn);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_MONSTER_UNDRESS_S.GetHashCode().ToString(), OnEquipUnloadReturn);
+    }
+
+    void UnBindListener()
+    {
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_MONSTER_UNDRESS_C.GetHashCode().ToString(), OnEquipUnloadReturn);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_MONSTER_UNDRESS_S.GetHashCode().ToString(), OnEquipUnloadReturn);
+    }
+    
+    void Start()
+    { 
+        EventTriggerListener.Get(reinforcedButton).onClick = OnClick;
+        EventTriggerListener.Get(inlayButton).onClick = OnClick;
+        EventTriggerListener.Get(unloadButton).onClick = OnClick;
+        EventTriggerListener.Get(reloadButton).onClick = OnClick;
     }
 }

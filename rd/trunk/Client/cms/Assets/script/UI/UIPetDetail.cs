@@ -3,20 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class UIPetDetail : UIBase{
+public class UIPetDetail : UIBase
+{
 
     public static string ViewName = PetViewConst.UIPetDetailAssetName;
 
     public Button closeButton;
     public Button preButton;
     public Button nextButton;
-    public Button skillButton;
-    public Button attrButton;
-    public Button stageButton;
-    public Button advanceButton;
-   // public Button equipButton;
-
-    public Button addExpButton;
     public PetDetailLeft leftView;
     public GameObject rightView;
 
@@ -25,27 +19,27 @@ public class UIPetDetail : UIBase{
 
     List<GameUnit> m_curTypeList = null;
     int m_currentIndex = 0;
-    
-    PetViewConst.RightPanelType currentRightType = PetViewConst.RightPanelType.NULL_RIGHT_TYPE;
+    public GameUnit CurrentUnit { get { return m_curTypeList[m_currentIndex]; } }
+
+    int m_currentPart = 0;
+
+    //UI 
+    public Dictionary<string, PetDetailRightBase> uiRights = new Dictionary<string, PetDetailRightBase>();
+    string currentRightType = "";
+
 
     void Start()
     {
         EventTriggerListener.Get(closeButton.gameObject).onClick = CloseButtonDown;
         EventTriggerListener.Get(preButton.gameObject).onClick = PreButtonDown;
         EventTriggerListener.Get(nextButton.gameObject).onClick = NextButtonDown;
-        EventTriggerListener.Get(skillButton.gameObject).onClick = SkillButtonDown;
-        EventTriggerListener.Get(attrButton.gameObject).onClick = DetailAttrButtonDown;
-        EventTriggerListener.Get(stageButton.gameObject).onClick = StageButtonDown;
-        EventTriggerListener.Get(advanceButton.gameObject).onClick = AdvanceButtonDown;
-
-        //EventTriggerListener.Get(equipButton.gameObject).onClick = EquipButtonDown;
     }
 
     void CloseButtonDown(GameObject go)
     {
         UIMgr.Instance.CloseUI_(UIPetDetail.ViewName);
     }
-	
+
     public override void Init()
     {
         if (m_cameraObject == null)
@@ -77,64 +71,36 @@ public class UIPetDetail : UIBase{
         m_rightDetail.gameObject.name = "contentView";
     }
 
-    void SkillButtonDown(GameObject go)
+    public void SkillButtonDown()
     {
-        if (currentRightType == PetViewConst.RightPanelType.SKILL_PANEL_TYPE)
-        {
-            return;
-        }
-
-        currentRightType = PetViewConst.RightPanelType.SKILL_PANEL_TYPE;
-        AddRightView(PetViewConst.UIPetSkillAssetName);
-        m_rightDetail.ReloadData(m_curTypeList[m_currentIndex]);
+        ReloadRigthData(PetViewConst.UIPetSkillAssetName);
     }
 
-    void DetailAttrButtonDown(GameObject go)
+    public void DetailAttrButtonDown()
     {
-        if (currentRightType == PetViewConst.RightPanelType.DETAIL_ATTR_TYPE)
-        {
-            return;
-        }
-
-        currentRightType = PetViewConst.RightPanelType.DETAIL_ATTR_TYPE;
-        AddRightView(PetViewConst.UIPetAttrAssetName);
-        m_rightDetail.ReloadData(m_curTypeList[m_currentIndex]);
+        ReloadRigthData(PetViewConst.UIPetAttrAssetName);
     }
 
-    void StageButtonDown(GameObject go)
+    public void StageButtonDown()
     {
-        if (currentRightType == PetViewConst.RightPanelType.STAGE_PANEL_TYPE)
-        {
-            return;
-        }
-
-        currentRightType = PetViewConst.RightPanelType.STAGE_PANEL_TYPE;
-        AddRightView(PetViewConst.UIPetStageAssetName);
-        m_rightDetail.ReloadData(m_curTypeList[m_currentIndex]);
+        ReloadRigthData(PetViewConst.UIPetStageAssetName);
     }
 
-    void AdvanceButtonDown(GameObject go)
+    public void AdvanceButtonDown()
     {
-        if (currentRightType == PetViewConst.RightPanelType.ADVANCE_PANEL_TYPE)
-        {
-            return;
-        }
-
-        currentRightType = PetViewConst.RightPanelType.ADVANCE_PANEL_TYPE;
-        AddRightView(PetViewConst.UIPetAdvanceAssetName);
-        m_rightDetail.ReloadData(m_curTypeList[m_currentIndex]);
+        ReloadRigthData(PetViewConst.UIPetAdvanceAssetName);
     }
 
-    void EquipButtonDown(GameObject go)
+    public void OpenEquipInfo(PartType part,EquipData data)
     {
-        if (currentRightType == PetViewConst.RightPanelType.EQUIP_PANEL_TYPE)
-        {
-            return;
-        }
-
-        currentRightType = PetViewConst.RightPanelType.EQUIP_PANEL_TYPE;
-        AddRightView(PetViewConst.UIPetEquipAssetName);
-        m_rightDetail.ReloadData(m_curTypeList[m_currentIndex]);
+        ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(data.equipId);
+        m_currentPart = itemInfo.part;
+        ReloadRigthData(PetViewConst.UIPetEquipInfoAssetName);
+    }
+    public void OpenEquipList(PartType part)
+    {
+        m_currentPart = (int)part;
+        ReloadRigthData(PetViewConst.UIPetEquipListAssetName);
     }
 
     void PreButtonDown(GameObject go)
@@ -145,7 +111,7 @@ public class UIPetDetail : UIBase{
         }
 
         m_currentIndex = (m_currentIndex - 1 + m_curTypeList.Count) % m_curTypeList.Count;
-        ReloadData(m_curTypeList[m_currentIndex]);
+        ReloadData();
     }
 
     void NextButtonDown(GameObject go)
@@ -156,7 +122,53 @@ public class UIPetDetail : UIBase{
         }
 
         m_currentIndex = (m_currentIndex + 1) % m_curTypeList.Count;
-        ReloadData(m_curTypeList[m_currentIndex]);
+        ReloadData();
+    }
+
+    public void ReloadData()
+    {
+        ReloadLeftData();
+        ReloadRigthData(currentRightType);
+    }
+
+    public void ReloadLeftData()
+    {
+        leftView.ReloadData(CurrentUnit);
+    }
+    public void ReloadRigthData(string rightAsset)
+    {
+        if (currentRightType != rightAsset)
+        {
+            currentRightType = rightAsset;
+            AddRightView(currentRightType);
+        }
+        PetRightParamBase param=null;
+        #region InitaLize Param
+        switch (currentRightType)
+        {
+            case PetViewConst.UIPetSkillAssetName:
+            case PetViewConst.UIPetAttrAssetName:
+            case PetViewConst.UIPetStageAssetName:
+            case PetViewConst.UIPetAdvanceAssetName:
+                param = new PetRightParamBase()
+                {
+                    unit = CurrentUnit
+                };
+                break;
+            case PetViewConst.UIPetEquipInfoAssetName:
+            case PetViewConst.UIPetEquipListAssetName:
+                param = new UIPetEquipParam()
+                {
+                    unit = CurrentUnit,
+                    part = (PartType)m_currentPart
+                };
+                break;
+            default:
+                break;
+        }
+        #endregion
+
+        m_rightDetail.ReloadData(param);
     }
 
     public void SetTypeList(GameUnit unit, List<GameUnit> unitList)
@@ -178,13 +190,7 @@ public class UIPetDetail : UIBase{
         }
 
         //默认选中属性界面
-        SkillButtonDown(null);
+        SkillButtonDown();
         leftView.ReloadData(unit);
-    }
-
-    void ReloadData(GameUnit unit)
-    {
-        leftView.ReloadData(unit);
-        m_rightDetail.ReloadData(unit);
     }
 }

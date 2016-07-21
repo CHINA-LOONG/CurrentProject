@@ -69,11 +69,12 @@ public class PetDetailRightStage : PetDetailRightBase{
 
     }
 
-    override public void ReloadData(GameUnit unit)
+    public override void ReloadData(PetRightParamBase param)
     {
         m_monsterList1.Clear();
         m_monsterList2.Clear();
-        m_unit = unit;
+
+        m_unit = param.unit;
 
         stageFullView.SetActive(true);
         stageUpView.SetActive(true);
@@ -84,23 +85,23 @@ public class PetDetailRightStage : PetDetailRightBase{
         stageFull.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageFull);
         stageButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStage);
 
-        curAttrPanel.ReloadData(unit, unit.pbUnit.stage);
+        curAttrPanel.ReloadData(m_unit, m_unit.pbUnit.stage);
 
-        if (unit.pbUnit.stage == GameConfig.MaxMonsterStage)
+        if (m_unit.pbUnit.stage == GameConfig.MaxMonsterStage)
         {
             stageFullView.SetActive(true);
             stageUpView.SetActive(false);
-            nextAttrPanel.ReloadData(unit, GameConfig.MaxMonsterStage);
+            nextAttrPanel.ReloadData(m_unit, GameConfig.MaxMonsterStage);
             return;
         }
         else
         {
             stageFullView.SetActive(false);
             stageUpView.SetActive(true);
-            nextAttrPanel.ReloadData(unit, unit.pbUnit.stage + 1);
+            nextAttrPanel.ReloadData(m_unit, m_unit.pbUnit.stage + 1);
         }
 
-        UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(unit.pbUnit.stage + 1);
+        UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(m_unit.pbUnit.stage + 1);
         levelValue.text = unitStageData.demandLevel.ToString();
         if (UIUtil.CheckIsEnoughLevel(m_unit) == false)
         {
@@ -111,12 +112,12 @@ public class PetDetailRightStage : PetDetailRightBase{
             levelValue.color = Color.black;
         }
 
-        if ((UIUtil.NeedChangeGrade(unit.pbUnit.stage) == true && unitStageData.demandMonsterList.Count != 2) || unitStageData.demandItemList.Count != 2)
+        if ((UIUtil.NeedChangeGrade(m_unit.pbUnit.stage) == true && unitStageData.demandMonsterList.Count != 2) || unitStageData.demandItemList.Count != 2)
         {
             return;
         }
 
-        if (UIUtil.NeedChangeGrade(unit.pbUnit.stage) == true)
+        if (UIUtil.NeedChangeGrade(m_unit.pbUnit.stage) == true)
         {
             monster1Add.gameObject.SetActive(true);
             monster2Add.gameObject.SetActive(true);
@@ -268,7 +269,7 @@ public class PetDetailRightStage : PetDetailRightBase{
         }
 
         m_unit.pbUnit.stage += 1;
-        ReloadData(m_unit);
+        ReloadData(new PetRightParamBase() { unit = m_unit });
 
         GameEventMgr.Instance.FireEvent(PetViewConst.ReloadPetStageNotify);
     }

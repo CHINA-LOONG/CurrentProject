@@ -82,15 +82,22 @@ namespace PB
       get { return _attrDatas; }
     }
   
+    private int _monsterId;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"monsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int monsterId
+    {
+      get { return _monsterId; }
+      set { _monsterId = value; }
+    }
     private int _status;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int status
     {
       get { return _status; }
       set { _status = value; }
     }
     private int _expireTime = default(int);
-    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"expireTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"expireTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int expireTime
     {

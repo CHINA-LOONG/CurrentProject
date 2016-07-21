@@ -129,7 +129,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &44601797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +317,52 @@ Transform:
   m_GameObject: {fileID: 1576260690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+--- !u!1 &1945576147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1945576149}
+  - 114: {fileID: 1945576148}
+  m_Layer: 0
+  m_Name: HockeyAppUnityIOS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1945576148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1945576147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9988a4f0ea7cd451b957935d6ba405eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appID: b0bcf476eb061a5581c9464ea8de8f6f
+  authenticatorType: 0
+  secret: 9840c7950c17a9ca29a9a40b2bd05d89
+  serverURL: 
+  autoUpload: 0
+  exceptionLogging: 1
+  updateManager: 1
+--- !u!4 &1945576149
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1945576147}
+  m_LocalRotation: {x: .0754783675, y: -.0869052112, z: .00660347566, w: .993331254}
+  m_LocalPosition: {x: -1.62201369, y: 2.88380432, z: 3.42924213}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

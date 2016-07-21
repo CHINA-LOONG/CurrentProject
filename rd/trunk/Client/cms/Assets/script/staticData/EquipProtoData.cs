@@ -15,16 +15,33 @@ public class EquipProtoData
     public int rollCount;
     public string additionAttr;
 
-    public List<ItemInfo> stageDemand1(List<ItemInfo> stageinfo)
+    public void  GetStageDemand(ref List<ItemInfo> stageinfo)//传来一个作为存储用的
     {
-        return ItemInfo.getItemInfoList1(stageinfo, stageDemand, ItemParseType.DemandItemType);
+        ItemInfo.getItemInfoList1(stageinfo, this.stageDemand, ItemParseType.DemandItemType);
     }
-    public List<ItemInfo> levelDemand1(List<ItemInfo> leveinfo)
+    public void GetLevelDemand(ref List<ItemInfo> leveinfo)
     {
-        return ItemInfo.getItemInfoList1(leveinfo, levelDemand, ItemParseType.DemandItemType);
+        ItemInfo.getItemInfoList1(leveinfo, this.levelDemand, ItemParseType.DemandItemType);
     }
-    public List<ItemInfo> punchDemand1(List<ItemInfo> punchinfo)
+    public void GetPunchDemand(ref List<ItemInfo> punchinfo)
     {
-        return ItemInfo.getItemInfoList1(punchinfo, punchDemand, ItemParseType.DemandItemType);
+        ItemInfo.getItemInfoList1(punchinfo, this.punchDemand, ItemParseType.DemandItemType);
+    }
+    //强化数据
+    public Dictionary<AttrType, int> leveAttribute(int level)
+    {
+        EquipLevelData baseAttr = StaticDataMgr.Instance.GetEquipLevelData(this.stageAttrId);
+        Dictionary<AttrType, int> attr = new Dictionary<AttrType, int>();
+        if (baseAttr.health!=0)        
+            attr.Add(AttrType.Health, baseAttr.health * level);
+        if (baseAttr.strength != 0)
+            attr.Add(AttrType.Strength, baseAttr.strength * level);
+        if (baseAttr.intelligence != 0)
+            attr.Add(AttrType.Intelligence, baseAttr.intelligence * level);
+        if (baseAttr.defense != 0)
+            attr.Add(AttrType.Defense, baseAttr.defense * level);
+        if (baseAttr.speed != 0)
+            attr.Add(AttrType.Speed, baseAttr.speed * level);
+        return attr;        
     }
 }

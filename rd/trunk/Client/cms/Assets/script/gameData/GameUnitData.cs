@@ -111,6 +111,8 @@ public class GameUnit : IComparable
     public Dictionary<string, Spell> spellList;
     //public List<Equipment> equipmentList;
     public List<string> weakPointList;
+    //add: xiaolong 2015-9-9 15:41:15
+    public EquipData[] equipList = new EquipData[6];
 
     //只在客户端计算使用的属性
     float lastActionOrder = 0.0f;

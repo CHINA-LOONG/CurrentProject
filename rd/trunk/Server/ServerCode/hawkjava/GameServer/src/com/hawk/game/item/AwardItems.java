@@ -417,13 +417,18 @@ public class AwardItems {
 					}
 					else {
 						EquipUtil.generateAttr(equipEntity, item);
+						item.setId(equipEntity.getId());
 					}
+					
 				}
-				else if(item.getType() == Const.itemType.MONSTER_VALUE){				
-				
+				else if(item.getType() == Const.itemType.MONSTER_VALUE){
 					MonsterEntity monsterEntity = player.increaseMonster(item.getItemId(), item.getStage(), action);			
 					if (monsterEntity == null) {				
 						rewardFail = true;
+					}
+					else
+					{
+						item.setId(monsterEntity.getId());
 					}
 				}
 				else {

@@ -2,45 +2,68 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class PetDetailLeft : MonoBehaviour {
+public class PetDetailLeft : MonoBehaviour,IEquipField
+{
+    public Text textName;
+    public Text textZhanli;
+    public Text textLevel;
+    public Image imgProIcon;
 
-    public Text     name;
-    public Text     zhanli;
-    public Text     level;
-    public Text     property;
-    public Image     proIcon;
+    public Text text_Exp;
+    public Text textExp;
+    public Slider progressExp;
 
-    public Text     expLabel;
-    public Text     characterLabel;
-    public Text     character;
-    public Slider   expProgress;
-    public Text     expContent;
+    public Button btnAddExp;
 
-    public Text     attrLabel;
-    public Text     health;
-    public Text     strength;
-    public Text     defense;
-    public Text     intellgence;
-    public Text     speed;
-    public Image    stageBadge;
-    public Button   addExpBtn;
+    public Button btnDetailAttr;
 
-    public Button   changeCharacterBtn;
-    public Button   detailAttrBtn;
-    public Button   skillpBtn;
-    public Button   stageBtn;
-    public Button   advanceBtn;
-    public Button   mainPet;
+    public Button btnSkill;
+    public Button btnStage;
+    public Image stageBadge;
+    public Button btnAdvance;
 
     public RawImage modelImage;
 
+    public EquipField[] fields;
+
+    private UIPetDetail parentNode;
+    public UIPetDetail ParentNode
+    {
+        get 
+        {
+            if (parentNode==null)
+            {
+                parentNode = transform.GetComponentInParent<UIPetDetail>();
+            }
+            return parentNode; 
+        }
+    }
+
     GameUnit m_unit;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         GameEventMgr.Instance.AddListener(PetViewConst.ReloadPetStageNotify, ReloadPetStage);
-	}
-	
+
+        text_Exp.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftexperience);
+
+        EventTriggerListener.Get(btnDetailAttr.gameObject).onClick = DetailAttrButtonDown;
+        EventTriggerListener.Get(btnSkill.gameObject).onClick = SkillButtonDown;
+        EventTriggerListener.Get(btnStage.gameObject).onClick = StageButtonDown;
+        EventTriggerListener.Get(btnAdvance.gameObject).onClick = AdvanceButtonDown;
+
+        btnDetailAttr.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftDetailAttr);
+        btnSkill.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftSkill);
+        btnStage.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftStage);
+        btnAdvance.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAdvance);
+
+        foreach (EquipField item in fields)
+        {
+            item.iClickBack = this;
+        }
+    }
+
     void OnDestroy()
     {
         GameEventMgr.Instance.RemoveListener(PetViewConst.ReloadPetStageNotify, ReloadPetStage);
@@ -57,6 +80,8 @@ public class PetDetailLeft : MonoBehaviour {
     public void ReloadData(GameUnit unit, bool reloadUnit = true)
     {
         m_unit = unit;
+        #region set monster role
+        
         if (reloadUnit == true)
         {
             GameObject petCamera = GameObject.Find(PetViewConst.UIPetModelCameraAssetName);
@@ -76,52 +101,40 @@ public class PetDetailLeft : MonoBehaviour {
 
             modelImage.texture = petCamera.GetComponent<Camera>().targetTexture;
         }
-        
-        UIUtil.SetStageColor(name, unit);
 
-        expLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftexperience);
-        characterLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftcharacter);
-        attrLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttr);
-        character.text = unit.pbUnit.character.ToString();
-        zhanli.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftBattle), unit.attackCount);
-        level.text = "Lv." + unit.pbUnit.level;
-        property.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftProprety);
+        #endregion
+
+        UIUtil.SetStageColor(textName, unit);
+        //刷新装备
+        RefreshEquip(unit.equipList);
+
+        textZhanli.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftBattle), unit.attackCount);
+        textLevel.text = "Lv." + unit.pbUnit.level;
 
         var image = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + unit.property) as Sprite;
         if (image != null)
         {
-            proIcon.sprite = image;
+            imgProIcon.sprite = image;
         }
-        
+
         if (unit.pbUnit.level >= GameConfig.MaxMonsterLevel)
         {
-            expContent.text = "max";
-            expProgress.value = 1.0f;
-            addExpBtn.interactable = false;
+            textExp.text = "max";
+            progressExp.value = 1.0f;
+            btnAddExp.interactable = false;
         }
         else
         {
             int maxExp = StaticDataMgr.Instance.GetUnitBaseRowData(unit.pbUnit.level).experience;
-            expContent.text = unit.pbUnit.curExp + "/" + maxExp;
-            expProgress.value = unit.pbUnit.curExp * 1.0f / maxExp;
-            addExpBtn.interactable = true;
+            textExp.text = unit.pbUnit.curExp + "/" + maxExp;
+            progressExp.value = unit.pbUnit.curExp * 1.0f / maxExp;
+            btnAddExp.interactable = true;
         }
 
-        mainPet.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftMainPet);
-        changeCharacterBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftChangeCharacter);
-        detailAttrBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftDetailAttr);
-        skillpBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftSkill);
-        stageBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftStage);
-        advanceBtn.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAdvance);
 
         int healthValue, strengthValue, defenceValue, inteligenceValue, speedValue;
         UIUtil.GetAttrValue(unit, unit.pbUnit.stage, out healthValue, out strengthValue, out inteligenceValue, out defenceValue, out speedValue);
 
-        health.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrHealth), healthValue);
-        strength.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrDefence), strengthValue);
-        defense.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrSpeed), defenceValue);
-        intellgence.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrStrenth), inteligenceValue);
-        speed.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrIntelligence), speedValue);
 
         if (UIUtil.CheckIsEnoughMaterial(unit) == true)
         {
@@ -131,6 +144,52 @@ public class PetDetailLeft : MonoBehaviour {
         {
             stageBadge.gameObject.SetActive(false);
         }
-        
     }
-}	   
+
+    void RefreshEquip(EquipData[] equips)
+    {
+        if (fields.Length!=equips.Length)
+        {
+            Logger.LogError("error: field count != equip count");
+            return;
+        }
+        for (int i = 0; i < equips.Length; i++)
+        {
+            fields[i].Part = (PartType)i;
+            fields[i].Data=equips[i];
+        }
+    }
+
+    void SkillButtonDown(GameObject go)
+    {
+        ParentNode.SkillButtonDown();
+    }
+
+    void DetailAttrButtonDown(GameObject go)
+    {
+        ParentNode.DetailAttrButtonDown();
+    }
+
+    void StageButtonDown(GameObject go)
+    {
+        ParentNode.StageButtonDown();
+    }
+
+    void AdvanceButtonDown(GameObject go)
+    {
+        ParentNode.AdvanceButtonDown();
+    }
+
+    //接口函数
+    public void OnSelectEquipField(PartType part, EquipData data)
+    {
+        if (data==null)
+        {
+            ParentNode.OpenEquipList(part);
+        }
+        else
+        {
+            ParentNode.OpenEquipInfo(part, data);
+        }
+    }
+}

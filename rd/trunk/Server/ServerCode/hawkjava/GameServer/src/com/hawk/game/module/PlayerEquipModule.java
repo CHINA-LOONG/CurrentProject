@@ -169,7 +169,7 @@ public class PlayerEquipModule extends PlayerModule{
 		AwardItems awardItems = new AwardItems();
 		awardItems.addEquip(equid, equipCount, protocol.getStage(), protocol.getLevel());
 		awardItems.rewardTakeAffectAndPush(player, Action.EQUIP_BUY);
-		
+
 		HSEquipBuyRet.Builder response = HSEquipBuyRet.newBuilder();
 		response.setEquipCount(equipCount);
 		response.setEquipId(equid);
@@ -500,6 +500,7 @@ public class PlayerEquipModule extends PlayerModule{
 		
 		HSEquipMonsterUndressRet.Builder response = HSEquipMonsterUndressRet.newBuilder();
 		response.setId(id);
+		response.setMonsterId(monsterId);
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_UNDRESS_S_VALUE, response));
 
 		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_UNDRESS,
@@ -547,7 +548,6 @@ public class PlayerEquipModule extends PlayerModule{
 			return ;
 		}
 		
-		
 		newEntity.setMonsterId(monsterId);
 		newEntity.notifyUpdate(true);
 		
@@ -557,9 +557,9 @@ public class PlayerEquipModule extends PlayerModule{
 		HSEquipMonsterReplaceRet.Builder response = HSEquipMonsterReplaceRet.newBuilder();
 		response.setId(id);
 		response.setMonsterId(monsterId);
-		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_UNDRESS_S_VALUE, response));
+		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_MONSTER_REPLACE_S_VALUE, response));
 	
-		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_UNDRESS,
+		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_REPLACE,
 				Params.valueOf("newItemId", newEntity.getItemId()),
 				Params.valueOf("newEquipId", newEntity.getId()),
 				Params.valueOf("oldItemId", oldEntity.getItemId()),

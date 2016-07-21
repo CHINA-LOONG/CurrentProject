@@ -19,20 +19,11 @@ public class PetDetailRightAttr : PetDetailRightBase {
     public Text minusDamageRatioLabel;
     public Text additionDamageRatioLabel;
 
-    // Use this for initialization
-    void Start()
+
+    public override void ReloadData(PetRightParamBase obj)
     {
+        GameUnit unit = obj.unit;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    override public void ReloadData(GameUnit unit)
-    {
         lifeLabel.text = unit.maxLife.ToString();
         defenseLabel.text = unit.defense.ToString();
         phyAttactLabel.text = unit.phyAttack.ToString();

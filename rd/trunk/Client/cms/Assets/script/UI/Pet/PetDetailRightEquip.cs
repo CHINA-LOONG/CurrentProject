@@ -3,18 +3,10 @@ using System.Collections;
 
 public class PetDetailRightEquip : PetDetailRightBase {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
+    public GameUnit m_unit;
 
-    override public void ReloadData(GameUnit unit)
+    public override void ReloadData(PetRightParamBase param)
     {
 
     }

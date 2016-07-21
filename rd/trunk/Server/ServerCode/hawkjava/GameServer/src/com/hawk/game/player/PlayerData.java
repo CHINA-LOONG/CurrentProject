@@ -244,6 +244,8 @@ public class PlayerData {
 			return false;
 		}
 		
+		monsterDressedMap.remove(part);
+		
 		if (monsterDressedMap.size() == 0) {
 			dressedEquipMap.remove(equipEntity.getMonsterId());
 		}
@@ -331,9 +333,14 @@ public class PlayerData {
 	public String monsterEquipsToString(int monsterId) {
 		StringBuilder builder = new StringBuilder();
 		Map<Integer, Long> monsterDressedMap = dressedEquipMap.get(monsterId);
-		for (Map.Entry<Integer, Long> entry : monsterDressedMap.entrySet()) {
-			builder.append(String.format("%d : %lld; ", entry.getKey(), entry.getValue()));
+		if (monsterDressedMap == null) {
+			return builder.toString();
 		}
+		
+		for (Map.Entry<Integer, Long> entry : monsterDressedMap.entrySet()) {
+			builder.append(String.format("%d : %d; ", entry.getKey(), entry.getValue()));
+		}
+
 		return builder.toString();
 	}
 

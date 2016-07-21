@@ -89,17 +89,18 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
         ReloadElement(m_currentSpellId, m_unit.spellList[m_currentSpellId], m_unit);
     }
 
-    override public void ReloadData(GameUnit unit)
+    public override void ReloadData(PetRightParamBase param)
     {
-        m_unit = unit;
+        m_unit = param.unit;
+
         StopAllCoroutines();
         StartCoroutine(IncreasePoint());
 
         pointLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillCurrentPoint);
         skillElements[(int)PetViewConst.SkillIndex.SKILL_BUFF_INDEX].gameObject.SetActive(false);
-        foreach (KeyValuePair<string, Spell> element in unit.spellList)
+        foreach (KeyValuePair<string, Spell> element in m_unit.spellList)
         {
-            ReloadElement(element.Key, element.Value, unit);
+            ReloadElement(element.Key, element.Value, m_unit);
         }
     }
 

@@ -84,7 +84,6 @@ public class ItemInfo
                 default:
                     break;
             }
-
             return itemInfo;
         }
 
@@ -94,18 +93,19 @@ public class ItemInfo
     public static List<ItemInfo> getItemInfoList(string info, ItemParseType type)
     {        
         List<ItemInfo> itemInfos = new List<ItemInfo>();
-        return getItemInfoList1(itemInfos, info, type);
+        getItemInfoList1(itemInfos, info, type);
+        return itemInfos;
     }
 
-    public static List<ItemInfo> getItemInfoList1(List<ItemInfo> itemInfos, string info, ItemParseType type)
+    public static void getItemInfoList1(List<ItemInfo> itemInfos, string info, ItemParseType type)
     {
-        if (string.IsNullOrEmpty(info))
-            return itemInfos;
-        string[] items = info.Split(',');
-        for (int i = 0; i < items.Length; i++)
-        {
-            itemInfos.Add(ItemInfo.valueof(items[i], type));
+        if (string.IsNullOrEmpty(info) == false)
+        { 
+            string[] items = info.Split(',');
+            for (int i = 0; i < items.Length; i++)
+            {
+                itemInfos.Add(ItemInfo.valueof(items[i], type));
+            }
         }
-        return itemInfos;
     }
 }
