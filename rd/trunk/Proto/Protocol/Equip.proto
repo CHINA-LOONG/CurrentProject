@@ -22,8 +22,9 @@ message EquipInfo
 	repeated GemPunch gemItems = 5;
 	//附加属性信息
 	repeated Attr  attrDatas = 6;
-	required int32  status = 7;
-	optional  int32 expireTime = 8;
+	required int32   monsterId = 7;
+	required int32  status = 8;
+	optional int32 expireTime = 9;
 }
 
 //装备信息同步

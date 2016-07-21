@@ -213,7 +213,7 @@ public class Buff
             int dotCount = 0;
             foreach (Buff buff in buffList)
             {
-                if (buff.buffProto.category == (int)(BuffType.Buff_Type_Dot))
+                if (buff.buffProto.category == (int)(BuffType.Buff_Type_Dot) && buff.isFinish == false)
                 {
                     if (++dotCount == 1)
                     {
@@ -540,6 +540,9 @@ public class Buff
     //now only dazhao buff need response
     public void CheckDazhaoInterrupt(float curTime)
     {
+        if (IsFinish == true)
+            return;
+
         GameUnit target = spellService.GetUnit(targetID);
         if (target != null)
         {

@@ -121,7 +121,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &171312
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -192,11 +192,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 406092}
-  - {fileID: 441944}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &404936
@@ -218,7 +217,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.949999988, y: .319999993, z: -.150999993}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 411002}
@@ -229,6 +228,7 @@ Transform:
   - {fileID: 479398}
   - {fileID: 478626}
   - {fileID: 417790}
+  - {fileID: 441944}
   m_Father: {fileID: 404396}
   m_RootOrder: 0
 --- !u!4 &411002
@@ -261,12 +261,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171312}
-  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -.949999988, y: .319999993, z: -.150999993}
+  m_LocalRotation: {x: -.707106829, y: -5.4892304e-08, z: 1.14782623e-07, w: .707106769}
+  m_LocalPosition: {x: -0, y: -1.01300001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 404396}
-  m_RootOrder: 1
+  m_Father: {fileID: 406092}
+  m_RootOrder: 8
 --- !u!4 &444640
 Transform:
   m_ObjectHideFlags: 1
@@ -334,7 +334,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167094}
   lengthInSec: .100000001
-  startDelay: 2
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -1371,8 +1371,8 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171312}
-  lengthInSec: 5
-  startDelay: 1.60000002
+  lengthInSec: 3
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -1405,7 +1405,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 3
     startSpeed:
-      scalar: 1
+      scalar: 15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1420,7 +1420,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .300000012
+          value: .666666687
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -2045,7 +2045,7 @@ ParticleSystem:
     enabled: 0
     multiplier: 1
   ClampVelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       scalar: 1
       maxCurve:
@@ -2146,7 +2146,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     magnitude:
-      scalar: 1
+      scalar: .430000007
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2180,7 +2180,7 @@ ParticleSystem:
       minMaxState: 0
     separateAxis: 0
     inWorldSpace: 0
-    dampen: 1
+    dampen: .400000006
   SizeBySpeedModule:
     enabled: 0
     curve:
@@ -2385,7 +2385,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113786}
   lengthInSec: .100000001
-  startDelay: 2
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -3408,7 +3408,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148770}
   lengthInSec: .100000001
-  startDelay: 2
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -4456,7 +4456,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185808}
   lengthInSec: 5
-  startDelay: 2
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -4762,13 +4762,18 @@ ParticleSystem:
         m_Curve:
         - time: 0
           value: .233716458
+          inSlope: .766283453
+          outSlope: .766283453
+          tangentMode: 10
+        - time: .584499538
+          value: .681608796
           inSlope: .766283512
           outSlope: .766283512
           tangentMode: 10
         - time: 1
           value: 1
-          inSlope: .766283512
-          outSlope: .766283512
+          inSlope: .766283631
+          outSlope: .766283631
           tangentMode: 10
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -5509,7 +5514,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115808}
   lengthInSec: .100000001
-  startDelay: 2
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -6557,7 +6562,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143750}
   lengthInSec: .100000001
-  startDelay: 2
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -7600,7 +7605,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125130}
   lengthInSec: 5
-  startDelay: 2
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -8633,7 +8638,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135610}
   lengthInSec: .100000001
-  startDelay: 2
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0
@@ -9681,7 +9686,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171632}
   lengthInSec: .100000001
-  startDelay: 2
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 0

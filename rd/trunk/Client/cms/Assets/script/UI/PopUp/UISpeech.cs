@@ -25,8 +25,12 @@ public class UISpeech : UIBase
     public Button btnNext;
     public Image imgNextTip;
 
+    public GameObject panelCampA;
+    public GameObject panelCampB;
     public Image imgCampA;
     public Image imgCampB;
+    public GameObject nameCampA;
+    public GameObject nameCampB;
     public Text textCampA;
     public Text textCampB;
 
@@ -38,6 +42,7 @@ public class UISpeech : UIBase
     private int index = 0;
 
     private Image imgCurrent;
+    public GameObject nameCurrent;
     private Text textCurrent;
     private string camp="";
     public string Camp
@@ -57,15 +62,18 @@ public class UISpeech : UIBase
 
         if (camp=="a")
         {
-            imgCampA.gameObject.SetActive(true);
-            imgCampB.gameObject.SetActive(false);
+            panelCampA.gameObject.SetActive(true);
+            panelCampB.gameObject.SetActive(false);
+            nameCurrent = nameCampA;
             imgCurrent = imgCampA;
             textCurrent = textCampA;
         }
         else if(camp=="b")
         {
-            imgCampB.gameObject.SetActive(true);
-            imgCampA.gameObject.SetActive(false);
+            panelCampB.gameObject.SetActive(true);
+            panelCampA.gameObject.SetActive(false);
+
+            nameCurrent = nameCampB;
             imgCurrent = imgCampB;
             textCurrent = textCampB;
         }
@@ -99,12 +107,15 @@ public class UISpeech : UIBase
         if (index == (info.speechList.Count - 1)) { imgNextTip.gameObject.SetActive(false); }
         SpeechStaticData data = info.speechList[index];
         Camp = data.campType;
+
         imgCurrent.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(data.image);
+        nameCurrent.SetActive(!string.IsNullOrEmpty(data.name));
+
         textCurrent.text = StaticDataMgr.Instance.GetTextByID(data.name);
-
         textContent.text = StaticDataMgr.Instance.GetTextByID(data.speakId);
-
     }
+
+
 
     void OnClickSkip(GameObject go)
     {

@@ -116,6 +116,7 @@ public class BuilderUtil {
 		builder.setEquipId(equipEntity.getItemId());
 		builder.setStage(equipEntity.getStage());
 		builder.setLevel(equipEntity.getLevel());
+		builder.setMonsterId(equipEntity.getMonsterId());
 		builder.setStatus(0);
 		if (equipEntity.getExpireTime() != null) {
 			builder.setExpireTime((int)equipEntity.getExpireTime().getTimeInMillis() / 1000);

@@ -754,7 +754,7 @@ public class BattleUnitAi : MonoBehaviour {
 		}
 		foreach (Buff subBuff in listBuffer)
 		{
-			if(subBuff.ownedSpell.spellData.id == spellID)
+			if(subBuff.IsFinish == false && subBuff.ownedSpell.spellData.id == spellID)
 			{
 				return true;
 			}

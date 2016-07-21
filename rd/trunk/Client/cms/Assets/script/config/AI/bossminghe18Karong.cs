@@ -59,7 +59,7 @@ public class bossMinghe18Karong : BossAi {
 			else if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp04")>0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp05")==0)
 			{
 				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
-				if (randkey >= 0.9) {
+				if (randkey >= 0.1) {
 					karongSpellDic.TryGetValue ("bossMinghe18Karong6", out useSpell);
 				} 
 				else 

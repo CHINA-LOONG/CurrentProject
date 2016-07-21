@@ -810,23 +810,33 @@ public final class Equip {
     com.hawk.game.protocol.Attribute.AttrOrBuilder getAttrDatasOrBuilder(
         int index);
 
-    // required int32 status = 7;
+    // required int32 monsterId = 7;
     /**
-     * <code>required int32 status = 7;</code>
+     * <code>required int32 monsterId = 7;</code>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 7;</code>
+     */
+    int getMonsterId();
+
+    // required int32 status = 8;
+    /**
+     * <code>required int32 status = 8;</code>
      */
     boolean hasStatus();
     /**
-     * <code>required int32 status = 7;</code>
+     * <code>required int32 status = 8;</code>
      */
     int getStatus();
 
-    // optional int32 expireTime = 8;
+    // optional int32 expireTime = 9;
     /**
-     * <code>optional int32 expireTime = 8;</code>
+     * <code>optional int32 expireTime = 9;</code>
      */
     boolean hasExpireTime();
     /**
-     * <code>optional int32 expireTime = 8;</code>
+     * <code>optional int32 expireTime = 9;</code>
      */
     int getExpireTime();
   }
@@ -919,11 +929,16 @@ public final class Equip {
             }
             case 56: {
               bitField0_ |= 0x00000010;
-              status_ = input.readInt32();
+              monsterId_ = input.readInt32();
               break;
             }
             case 64: {
               bitField0_ |= 0x00000020;
+              status_ = input.readInt32();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000040;
               expireTime_ = input.readInt32();
               break;
             }
@@ -1192,33 +1207,49 @@ public final class Equip {
       return attrDatas_.get(index);
     }
 
-    // required int32 status = 7;
-    public static final int STATUS_FIELD_NUMBER = 7;
-    private int status_;
+    // required int32 monsterId = 7;
+    public static final int MONSTERID_FIELD_NUMBER = 7;
+    private int monsterId_;
     /**
-     * <code>required int32 status = 7;</code>
+     * <code>required int32 monsterId = 7;</code>
      */
-    public boolean hasStatus() {
+    public boolean hasMonsterId() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 status = 7;</code>
+     * <code>required int32 monsterId = 7;</code>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    // required int32 status = 8;
+    public static final int STATUS_FIELD_NUMBER = 8;
+    private int status_;
+    /**
+     * <code>required int32 status = 8;</code>
+     */
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required int32 status = 8;</code>
      */
     public int getStatus() {
       return status_;
     }
 
-    // optional int32 expireTime = 8;
-    public static final int EXPIRETIME_FIELD_NUMBER = 8;
+    // optional int32 expireTime = 9;
+    public static final int EXPIRETIME_FIELD_NUMBER = 9;
     private int expireTime_;
     /**
-     * <code>optional int32 expireTime = 8;</code>
+     * <code>optional int32 expireTime = 9;</code>
      */
     public boolean hasExpireTime() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional int32 expireTime = 8;</code>
+     * <code>optional int32 expireTime = 9;</code>
      */
     public int getExpireTime() {
       return expireTime_;
@@ -1231,6 +1262,7 @@ public final class Equip {
       level_ = 0;
       gemItems_ = java.util.Collections.emptyList();
       attrDatas_ = java.util.Collections.emptyList();
+      monsterId_ = 0;
       status_ = 0;
       expireTime_ = 0;
     }
@@ -1252,6 +1284,10 @@ public final class Equip {
         return false;
       }
       if (!hasLevel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMonsterId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1297,10 +1333,13 @@ public final class Equip {
         output.writeMessage(6, attrDatas_.get(i));
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(7, status_);
+        output.writeInt32(7, monsterId_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(8, expireTime_);
+        output.writeInt32(8, status_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt32(9, expireTime_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1337,11 +1376,15 @@ public final class Equip {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, status_);
+          .computeInt32Size(7, monsterId_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, expireTime_);
+          .computeInt32Size(8, status_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, expireTime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1481,10 +1524,12 @@ public final class Equip {
         } else {
           attrDatasBuilder_.clear();
         }
-        status_ = 0;
+        monsterId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        expireTime_ = 0;
+        status_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
+        expireTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -1550,9 +1595,13 @@ public final class Equip {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.status_ = status_;
+        result.monsterId_ = monsterId_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000020;
+        }
+        result.status_ = status_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000040;
         }
         result.expireTime_ = expireTime_;
         result.bitField0_ = to_bitField0_;
@@ -1637,6 +1686,9 @@ public final class Equip {
             }
           }
         }
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
         }
@@ -1661,6 +1713,10 @@ public final class Equip {
           return false;
         }
         if (!hasLevel()) {
+          
+          return false;
+        }
+        if (!hasMonsterId()) {
           
           return false;
         }
@@ -2531,67 +2587,100 @@ public final class Equip {
         return attrDatasBuilder_;
       }
 
-      // required int32 status = 7;
-      private int status_ ;
+      // required int32 monsterId = 7;
+      private int monsterId_ ;
       /**
-       * <code>required int32 status = 7;</code>
+       * <code>required int32 monsterId = 7;</code>
        */
-      public boolean hasStatus() {
+      public boolean hasMonsterId() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>required int32 status = 7;</code>
+       * <code>required int32 monsterId = 7;</code>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 7;</code>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000040;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 7;</code>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 status = 8;
+      private int status_ ;
+      /**
+       * <code>required int32 status = 8;</code>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required int32 status = 8;</code>
        */
       public int getStatus() {
         return status_;
       }
       /**
-       * <code>required int32 status = 7;</code>
+       * <code>required int32 status = 8;</code>
        */
       public Builder setStatus(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         status_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 status = 7;</code>
+       * <code>required int32 status = 8;</code>
        */
       public Builder clearStatus() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         status_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 expireTime = 8;
+      // optional int32 expireTime = 9;
       private int expireTime_ ;
       /**
-       * <code>optional int32 expireTime = 8;</code>
+       * <code>optional int32 expireTime = 9;</code>
        */
       public boolean hasExpireTime() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>optional int32 expireTime = 8;</code>
+       * <code>optional int32 expireTime = 9;</code>
        */
       public int getExpireTime() {
         return expireTime_;
       }
       /**
-       * <code>optional int32 expireTime = 8;</code>
+       * <code>optional int32 expireTime = 9;</code>
        */
       public Builder setExpireTime(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         expireTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 expireTime = 8;</code>
+       * <code>optional int32 expireTime = 9;</code>
        */
       public Builder clearExpireTime() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         expireTime_ = 0;
         onChanged();
         return this;
@@ -13427,38 +13516,38 @@ public final class Equip {
     java.lang.String[] descriptorData = {
       "\n\024Protocol/Equip.proto\032\030Protocol/Attribu" +
       "te.proto\"+\n\010GemPunch\022\014\n\004type\030\001 \002(\005\022\021\n\tge" +
-      "mItemId\030\002 \002(\t\"\241\001\n\tEquipInfo\022\n\n\002id\030\001 \002(\003\022" +
+      "mItemId\030\002 \002(\t\"\264\001\n\tEquipInfo\022\n\n\002id\030\001 \002(\003\022" +
       "\017\n\007equipId\030\002 \002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005level" +
       "\030\004 \002(\005\022\033\n\010gemItems\030\005 \003(\0132\t.GemPunch\022\030\n\ta" +
-      "ttrDatas\030\006 \003(\0132\005.Attr\022\016\n\006status\030\007 \002(\005\022\022\n" +
-      "\nexpireTime\030\010 \001(\005\"1\n\017HSEquipInfoSync\022\036\n\n" +
-      "equipInfos\030\001 \003(\0132\n.EquipInfo\"O\n\nHSEquipB" +
-      "uy\022\017\n\007equipId\030\001 \002(\t\022\022\n\nequipCount\030\002 \002(\005\022" +
-      "\r\n\005stage\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\"4\n\rHSEquip",
-      "BuyRet\022\017\n\007equipId\030\001 \002(\t\022\022\n\nequipCount\030\002 " +
-      "\002(\005\"8\n\016HSEquipCompose\022\017\n\007equipId\030\001 \002(\t\022\025" +
-      "\n\rrelatedItemId\030\002 \002(\005\"B\n\021HSEquipComposeR" +
-      "et\022\017\n\007equipId\030\001 \002(\t\022\r\n\005stage\030\002 \001(\005\022\r\n\005le" +
-      "vel\030\003 \001(\005\"\"\n\024HSEquipIncreaseLevel\022\n\n\002id\030" +
-      "\001 \002(\003\"C\n\027HSEquipIncreaseLevelRet\022\n\n\002id\030\001" +
-      " \002(\003\022\r\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\"\n\024HS" +
-      "EquipIncreaseStage\022\n\n\002id\030\001 \002(\003\"C\n\027HSEqui" +
-      "pIncreaseStageRet\022\n\n\002id\030\001 \002(\003\022\r\n\005stage\030\002" +
-      " \001(\005\022\r\n\005level\030\003 \001(\005\"\032\n\014HSEquipPunch\022\n\n\002i",
-      "d\030\001 \002(\003\".\n\017HSEquipPunchRet\022\033\n\010gemItems\030\001" +
-      " \003(\0132\t.GemPunch\"F\n\nHSEquipGem\022\n\n\002id\030\001 \002(" +
-      "\003\022\014\n\004type\030\002 \002(\005\022\016\n\006newGem\030\003 \002(\t\022\016\n\006oldGe" +
-      "m\030\004 \001(\t\",\n\rHSEquipGemRet\022\033\n\010gemItems\030\001 \003" +
-      "(\0132\t.GemPunch\"4\n\023HSEquipMonsterDress\022\n\n\002" +
-      "id\030\001 \002(\003\022\021\n\tmonsterId\030\002 \002(\005\"7\n\026HSEquipMo" +
-      "nsterDressRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterId\030\002" +
-      " \001(\005\"#\n\025HSEquipMonsterUndress\022\n\n\002id\030\001 \002(" +
-      "\003\"9\n\030HSEquipMonsterUndressRet\022\n\n\002id\030\001 \001(" +
-      "\003\022\021\n\tmonsterId\030\002 \001(\005\"6\n\025HSEquipMonsterRe",
-      "place\022\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId\030\002 \001(\005\"9\n\030" +
-      "HSEquipMonsterReplaceRet\022\n\n\002id\030\001 \001(\003\022\021\n\t" +
-      "monsterId\030\002 \001(\005B\030\n\026com.hawk.game.protoco" +
-      "l"
+      "ttrDatas\030\006 \003(\0132\005.Attr\022\021\n\tmonsterId\030\007 \002(\005" +
+      "\022\016\n\006status\030\010 \002(\005\022\022\n\nexpireTime\030\t \001(\005\"1\n\017" +
+      "HSEquipInfoSync\022\036\n\nequipInfos\030\001 \003(\0132\n.Eq" +
+      "uipInfo\"O\n\nHSEquipBuy\022\017\n\007equipId\030\001 \002(\t\022\022" +
+      "\n\nequipCount\030\002 \002(\005\022\r\n\005stage\030\003 \002(\005\022\r\n\005lev",
+      "el\030\004 \002(\005\"4\n\rHSEquipBuyRet\022\017\n\007equipId\030\001 \002" +
+      "(\t\022\022\n\nequipCount\030\002 \002(\005\"8\n\016HSEquipCompose" +
+      "\022\017\n\007equipId\030\001 \002(\t\022\025\n\rrelatedItemId\030\002 \002(\005" +
+      "\"B\n\021HSEquipComposeRet\022\017\n\007equipId\030\001 \002(\t\022\r" +
+      "\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\"\n\024HSEquipI" +
+      "ncreaseLevel\022\n\n\002id\030\001 \002(\003\"C\n\027HSEquipIncre" +
+      "aseLevelRet\022\n\n\002id\030\001 \002(\003\022\r\n\005stage\030\002 \001(\005\022\r" +
+      "\n\005level\030\003 \001(\005\"\"\n\024HSEquipIncreaseStage\022\n\n" +
+      "\002id\030\001 \002(\003\"C\n\027HSEquipIncreaseStageRet\022\n\n\002" +
+      "id\030\001 \002(\003\022\r\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\032",
+      "\n\014HSEquipPunch\022\n\n\002id\030\001 \002(\003\".\n\017HSEquipPun" +
+      "chRet\022\033\n\010gemItems\030\001 \003(\0132\t.GemPunch\"F\n\nHS" +
+      "EquipGem\022\n\n\002id\030\001 \002(\003\022\014\n\004type\030\002 \002(\005\022\016\n\006ne" +
+      "wGem\030\003 \002(\t\022\016\n\006oldGem\030\004 \001(\t\",\n\rHSEquipGem" +
+      "Ret\022\033\n\010gemItems\030\001 \003(\0132\t.GemPunch\"4\n\023HSEq" +
+      "uipMonsterDress\022\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId" +
+      "\030\002 \002(\005\"7\n\026HSEquipMonsterDressRet\022\n\n\002id\030\001" +
+      " \001(\003\022\021\n\tmonsterId\030\002 \001(\005\"#\n\025HSEquipMonste" +
+      "rUndress\022\n\n\002id\030\001 \002(\003\"9\n\030HSEquipMonsterUn" +
+      "dressRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterId\030\002 \001(\005\"",
+      "6\n\025HSEquipMonsterReplace\022\n\n\002id\030\001 \002(\003\022\021\n\t" +
+      "monsterId\030\002 \001(\005\"9\n\030HSEquipMonsterReplace" +
+      "Ret\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterId\030\002 \001(\005B\030\n\026co" +
+      "m.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13476,7 +13565,7 @@ public final class Equip {
           internal_static_EquipInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_EquipInfo_descriptor,
-              new java.lang.String[] { "Id", "EquipId", "Stage", "Level", "GemItems", "AttrDatas", "Status", "ExpireTime", });
+              new java.lang.String[] { "Id", "EquipId", "Stage", "Level", "GemItems", "AttrDatas", "MonsterId", "Status", "ExpireTime", });
           internal_static_HSEquipInfoSync_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSEquipInfoSync_fieldAccessorTable = new

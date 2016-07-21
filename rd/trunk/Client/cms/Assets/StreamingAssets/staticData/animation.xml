@@ -2029,7 +2029,7 @@ state = 1 Remove
 	
 		<Ani id="ultLuoxinfuCast" state="0" AniType="Skill">
 			<ParticleList>
-				<Particle asset="ultLuoxinfuPre01" bundle="effect/particle" parent="e_shouji" attach="true"/>
+				<Particle asset="ultLuoxinfuPre02" bundle="effect/particle" parent="e_shouji" attach=""/>
 			</ParticleList>
 			<MotionList>
 				<Motion ani="" key="wugong" value="true"/>
@@ -2293,10 +2293,10 @@ state = 1 Remove
 	
 		<Ani id="ultWaguie1" state="0" AniType="Persistent">
 			<ParticleList>
-				<Particle time="1.5" asset="magicWaterSlightp" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="0" asset="magicWaterSlightp" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="1.5" name="waterp1"/>
+				<Audio time="0" name="waterp1"/>
 			</AudioList>
 		</Ani>
 		
@@ -2353,7 +2353,7 @@ state = 1 Remove
 		
 		<Ani id="ultAmuteb2" state="0" AniType="">
 			<ParticleList>
-				<Particle asset="bd_mofaxishou" bundle="effect/particle" attach="true" parent=""/>
+				<Particle asset="bd_mofajianmian" bundle="effect/particle" attach="true" parent=""/>
 			</ParticleList>
 		</Ani>
 		
@@ -2517,6 +2517,16 @@ state = 1 Remove
 		<Ani id="ultXiyiren" state="0" AniType="Skill">
 			<MotionList>
 				<Motion ani="" key="dazhao" value="true"/>
+			</MotionList>
+		</Ani>
+		
+		<Ani id="ultXiyirenCast" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" key="dazhao" value="true"/>
+				<Motion time="0.5" key="dazhao" value="true"/>
+				<Motion time="1" key="dazhao" value="true"/>
+				<Motion time="1.5" key="dazhao" value="true"/>
+				<Motion time="2" key="dazhao" value="true"/>
 			</MotionList>
 		</Ani>
 		

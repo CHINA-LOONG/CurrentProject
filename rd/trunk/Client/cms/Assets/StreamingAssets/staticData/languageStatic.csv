@@ -94,7 +94,7 @@ buffAttackTips,使单体目标力量提升10%，持续3回合,Increases strength
 buffAttackSelfTips,使自身力量提升10%，持续3回合,Increases your strength by 10% for 3 turns
 buffDefenseTips,使单体目标防御力提升10%，持续3回合,Increases defense of a single target by 10% for 3 turns
 buffDefenseSelfTips,使自身防御力提升10%，持续3回合,Increases your defense by 10% for 3 turns
-buffHotTips,使单体目标每回合回复30%法攻的生命值，持续3回合,Recovers (30% of magic ATK) HP for a single target each turn for 3 turns
+buffHotTips,使单体目标每回合回复40%法攻的生命值，持续3回合,Recovers (40% of magic ATK) HP for a single target each turn for 3 turns
 debuffDefenseTips,使单体目标防御力降低10%，持续3回合,Reduces defense of a single target by 10% for 3 turns
 debuffAttackTips,使单体目标力量降低10%，持续3回合,Reduces strength of a single target by 10% for 3 turns
 debuffMagicTips,使单体目标智力降低10%，持续3回合,Reduces intelligence of a single target by 10% for 3 turns
@@ -127,7 +127,7 @@ bossYueguangsenlin14Luoxinfu1Tips,给单体目标造成物理伤害，伤害会�
 bossYueguangsenlin18Meidusha1Tips,给全体目标造成物理伤害，伤害会根据弱点个数调整,Deals physical damage to all targets; damage is adjusted according to number of weakpoints
 bossYueguangsenlin18Meidusha5Tips,对全体目标释放减益buff，buff会根据弱点个数调整,Casts a debuff on all targets; the debuff is adjusted according to number of weakpoints
 bossYueguangsenlin18Meidusha8Tips,给全体目标造成200%法攻的暗属性伤害并10%概率眩晕目标1回合,Deals (200% of magic ATK) dark type damage to all targets with a 10% chance of stun for 1 turn
-bossYueguangsenlin18Meidusha9Tips,给单体目标造成50%物攻的物理伤害,Deals (50% of physical ATK) physical damage to a single target
+bossYueguangsenlin18Meidusha9Tips,给单体目标造成800%物攻的物理伤害,Deals (800% of physical ATK) physical damage to a single target
 ultXiyirenTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害并大概率附加嘲讽效果,"Can carry out {0} actions, each time dealing {1}% physical damage with a high chance of taunt"
 psvXiyirenTips,受到物理伤害时，80%几率提升自身50%防御力，持续3回合,Gives an 80% chance of increasing your defense for 3 turns by 50% whenever you take damage 
 ultHuapoTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害,"Can carry out {0} actions, each dealing {1}% physical damage to a single target"
@@ -276,3 +276,6 @@ miaoshu_bossluoxinfu03,爪子十分锋利，但是看起来很易碎。,"Claws a
 miaoshu_bossluoxinfu04,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
 miaoshu_bossluoxinfu05,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
 miaoshu_bossluoxinfu06,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_wp,弱点,Weakpoint
+miaoshu_np,普通,Normalpoint
+speak_006,Tips：要找到弱点，记得使用魔法水晶哦。,Tips : Remember to use Magic Crystal to find out enemy's weakpoint.

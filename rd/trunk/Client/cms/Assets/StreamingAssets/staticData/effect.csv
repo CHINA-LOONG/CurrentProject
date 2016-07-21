@@ -156,7 +156,7 @@ bossMinghe18Karong5e1,1,1,0,0,,,1,bossMinghe18Karong5e2,,,,,,,,,,,,1
 bossMinghe18Karong5e2,2,1,0,0,,,,,bossMinghe18Karong5e3,1,"""""",,,,,,,,,1
 bossMinghe18Karong5e3,3,1,0,0,,,,,,,,0,0.4,0,0,,,0,,1
 bossMinghe18Karong6e1,2,1,0,0,,,,,bossMinghe18Karong6e2,1.5,"""""",,,,,,,,,1
-bossMinghe18Karong6e2,3,1,0,0,,,,,,,,1,0.7,0,5,,,0,,1
+bossMinghe18Karong6e2,3,1,0,0,,,,,,,,1,1.2,0,5,,,0,,1
 bossYueguangsenlin14Luoxinfu1e1,2,1,0,0,,,,,bossYueguangsenlin14Luoxinfu1e2,1,0.15|bossYueguangsenlin14Luoxinfu1e2,,,,,,,,,1
 bossYueguangsenlin14Luoxinfu1e2,3,1,0,0,,,,,,,,0,0.7,0,0,,,0,,1
 bossYueguangsenlin14Luoxinfu2e1,2,1,0,0,,,,,bossYueguangsenlin14Luoxinfu2e2,1,,,,,,,,,,1
@@ -202,7 +202,7 @@ ultHetonge1,1,1,0,0,,,1,ultHetonge2,,,,,,,,,,,,1
 ultHetonge2,2,1,0,0,,,,,ultHetonge3,0.5,"""""",,,,,,,,,1
 ultHetonge3,3,1,0,0,,,,,,,,1,1,0,,,,,,1
 psvHetonge1,1,1,0,0,,,0,buffDefensee1,,,,,,,,,,,,1
-ultWaguie1,2,1,0,0,,,,,ultWaguie2,0.5,"""""",,,,,,,,,1
+ultWaguie1,2,1,0,0,,,,,ultWaguie2,0.3,"""""",,,,,,,,,1
 ultWaguie2,3,1,0,0,,,,,,,,1,3.3,,,,,,ultWaguie3,1
 ultWaguie3,4,1,0,,,,,,,,,,,,,debuffstunb1,,,,0.8
 psvWaguie1,4,1,1,,,,,,,,,,,,,psvWaguib1,,,,1
@@ -220,7 +220,7 @@ ultAmutee3,4,1,0,0,,,,,,,,,,,,ultAmuteb1,,,,1
 ultAmutee4,4,1,0,0,,,,,,,,,,,,ultAmuteb2,,,,1
 ultLangrene1,5,1,0,0,,,,,,,IsEnemy|ultLangrene3;Default|ultLangrene2,,,,,,,,,1
 ultLangrene2,3,1,0,0,,,,,,,,0,0.43,0,0,,,0,ultLangrene4,1
-ultLangrene3,2,1,0,0,,,,,ultLangrenCast,1,0.5|ultLangrene2;0.5|ultLangrene2;0.5|ultLangrene2;0.5|ultLangrene2;0.5|ultLangrene2;0.5|ultLangrene2;0.5|ultLangrene2,,,,,,,,,1
+ultLangrene3,2,1,0,0,,,,,ultLangrenCast,0,0.5|ultLangrene2;0.5|ultLangrene2;0.5|ultLangrene2;0.5|ultLangrene2;0.5|ultLangrene2;0.5|ultLangrene2;0.5|ultLangrene2,,,,,,,,,1
 ultLangrene4,4,1,0,0,,,,,,,,,,,,debuffDotSlightb1,,,,0.2
 ultLangrenCast,2,1,1,0,,,,,,,,,,,,,,,,1
 ultMantuoluoe1,2,1,0,,,,,,ultMantuoluoe2,0.5,"""""",,,,,,,,,1
@@ -308,14 +308,16 @@ debuffEarthDotMediume3,3,1,0,0,,,,,,,,1,0.4,0,5,,,,,1
 debuffEarthDotStronge1,2,1,0,0,,,,,debuffEarthDotStronge2,1.5,"""""",,,,,,,,,1
 debuffEarthDotStronge2,4,1,0,0,,,,,,,,,,,,debuffEarthDotStrongb1,,,,1
 debuffEarthDotStronge3,3,1,0,0,,,,,,,,1,0.47,0,5,,,0,,1
-ultMomoe1,1,1,0,0,,,0,ultMomoe2,,,,,,,,,,,,1
+ultMomoe1,1,1,0,0,,,0,ultMomoe3,,,,,,,,,,,,1
 ultMomoe2,3,1,0,0,,,,,,,,1,0.9,1,1,,,0,,1
+ultMomoe3,2,1,0,0,,,,,ultMomoe2,0.5,,,,,,,,,,1
 psvMomoe1,4,1,1,0,,,,,,,,,,,,psvMomob1,,,,1
 phyReducee1,4,1,1,0,,,,,,,,,,,,phyReduceb1,,,,1
 ultXiyirene1,5,1,0,0,,,,,,,IsEnemy|ultXiyirene3;Default|ultXiyirene2;,,,,,,,,,1
 ultXiyirene2,3,1,0,0,,,,,,,,0,0.15,0,2,,,0,ultXiyirene4,1
-ultXiyirene3,2,1,0,0,,,,,ultXiyirene2,0.5,0.5|ultXiyirene2;0.5|ultXiyirene2;0.5|ultXiyirene2;0.5|ultXiyirene2;,,,,,,,,,1
+ultXiyirene3,2,1,0,0,,,,,ultXiyirenCast,0.5,0.5|ultXiyirene2;0.5|ultXiyirene2;0.5|ultXiyirene2;0.5|ultXiyirene2;0.5|ultXiyirene2;,,,,,,,,,1
 ultXiyirene4,4,1,0,0,,,,,,,,,,,,buffTauntb1,,,,0.6
+ultXiyirenCast,2,1,1,0,,,,,,,,,,,,,,,,1
 psvXiyirene1,4,1,1,0,,,,,,,,,,,,psvXiyirenb1,,,,1
 ultPanshene1,5,1,0,0,,,,,,,IsEnemy|ultPanshene3;Default|ultPanshene2;,,,,,,,,,1
 ultPanshene2,3,1,0,0,,,,,,,,0,0.39,0,5,,,0,,1
@@ -328,7 +330,7 @@ ultKairuisie4,4,1,0,0,,,,,,,,,,,,debuffMagicb1,,,,0.5
 psvKairuisie1,4,1,1,0,,,,,,,,,,,,psvKairuisib1,,,,1
 ultLuoxinfue1,5,1,0,0,,,,,,,IsEnemy|ultLuoxinfue3;Default|ultLuoxinfue2;,,,,,,,,,1
 ultLuoxinfue2,3,1,0,0,,,,,,,,0,0.09,0,5,,,0,ultLuoxinfue4,1
-ultLuoxinfue3,2,1,0,0,,,,,ultLuoxinfue2,0.5,0|ultLuoxinfuCast;1.5|ultLuoxinfue2;0.09|ultLuoxinfue2;0.09|ultLuoxinfue2;0.09|ultLuoxinfue2;0.09|ultLuoxinfue2;,,,,,,,,,1
+ultLuoxinfue3,2,1,0,0,,,,,ultLuoxinfuCast,0.5,0|ultLuoxinfue2;1.5|ultLuoxinfue2;0.09|ultLuoxinfue2;0.09|ultLuoxinfue2;0.09|ultLuoxinfue2;0.09|ultLuoxinfue2;,,,,,,,,,1
 ultLuoxinfuCast,2,1,1,0,,,,,,,,,,,,,,,,1
 ultLuoxinfue4,0,1,0,0,"[""ultLuoxinfue5"",""ultLuoxinfue6""]",,,,,,,,,,,,,,,1
 ultLuoxinfue5,4,1,0,0,,,,,,,,,,,,debuffstunb1,,,,0.2

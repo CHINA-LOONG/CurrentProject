@@ -9,10 +9,26 @@ GameObject:
   m_Component:
   - 4: {fileID: 464740}
   - 114: {fileID: 11450390}
-  - 95: {fileID: 9503000}
-  - 114: {fileID: 11485130}
+  - 95: {fileID: 9597580}
+  - 114: {fileID: 11441862}
   m_Layer: 0
   m_Name: BattleCameraRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &168664
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 497914}
+  - 114: {fileID: 11406110}
+  m_Layer: 0
+  m_Name: HockeyAppUnityIOS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,8 +76,21 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 497914}
   m_Father: {fileID: 464740}
+  m_RootOrder: 0
+--- !u!4 &497914
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168664}
+  m_LocalRotation: {x: 3.3442646e-08, y: -.978705466, z: .205269501, w: -1.59451361e-07}
+  m_LocalPosition: {x: .449997693, y: -1.0408659, z: 8.15548897}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 481414}
   m_RootOrder: 0
 --- !u!20 &2085466
 Camera:
@@ -110,7 +139,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196878}
   m_Enabled: 1
---- !u!95 &9503000
+--- !u!95 &9597580
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -127,15 +156,44 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11406110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9988a4f0ea7cd451b957935d6ba405eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appID: b0bcf476eb061a5581c9464ea8de8f6f
+  authenticatorType: 0
+  secret: 9840c7950c17a9ca29a9a40b2bd05d89
+  serverURL: 
+  autoUpload: 0
+  exceptionLogging: 1
+  updateManager: 1
 --- !u!114 &11428968
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196878}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b13c09d98621d74297e2571286d61b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11441862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2eca50ba0e20a4282e593fed96142c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11450390
@@ -152,17 +210,6 @@ MonoBehaviour:
   m_camera: {fileID: 0}
   animator: {fileID: 0}
   cameraAni: {fileID: 0}
---- !u!114 &11485130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 126942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2eca50ba0e20a4282e593fed96142c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!124 &12430322
 Behaviour:
   m_ObjectHideFlags: 1

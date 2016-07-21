@@ -74,23 +74,41 @@ public class BattleObject : MonoBehaviour
             {
                 if (string.IsNullOrEmpty(srcEvent.finishEvent) == false)
                 {
+                    bool findFinishEvent = false;
                     ActorEventData curEventData;
-                    for (int i = activeEventList.Count - 1; i >= 0; --i)
+                    //find waitEventList first,since,may remove one event triggered in same frame
+                    for (int i = waitEventList.Count - 1; i >= 0; --i)
                     {
-                        curEventData = activeEventList[i];
+                        curEventData = waitEventList[i];
                         if (curEventData.id == srcEvent.finishEvent)
                         {
-                            int particleCount = curEventData.actorParticleSequence.Count;
-                            for (int index = 0; index < particleCount; ++index)
-                            {
-                                if (curEventData.actorParticleSequence[index].psObject != null)
-                                {
-                                    ResourceMgr.Instance.DestroyAsset(curEventData.actorParticleSequence[index].psObject);
-                                }
-                            }
-                            //NOTE: xw said only need to destroy particle
+                            findFinishEvent = true;
+                            waitEventList.RemoveAt(i);
+                            //TODO:not trigger or trigger and delete immediate
+                            break;
+                        }
+                    }
 
-                            activeEventList.RemoveAt(i);
+                    if (findFinishEvent == false)
+                    {
+                        for (int i = activeEventList.Count - 1; i >= 0; --i)
+                        {
+                            curEventData = activeEventList[i];
+                            if (curEventData.id == srcEvent.finishEvent)
+                            {
+                                int particleCount = curEventData.actorParticleSequence.Count;
+                                for (int index = 0; index < particleCount; ++index)
+                                {
+                                    if (curEventData.actorParticleSequence[index].psObject != null)
+                                    {
+                                        ResourceMgr.Instance.DestroyAsset(curEventData.actorParticleSequence[index].psObject);
+                                    }
+                                }
+                                //NOTE: xw said only need to destroy particle
+
+                                activeEventList.RemoveAt(i);
+                                //TODO:need break? or delete all same name event
+                            }
                         }
                     }
                 }

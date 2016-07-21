@@ -65,7 +65,7 @@ public class BattleConst
     public const string unitExitandenter = "unitExitandenter";
 
     public const float floorHeight = 0.01f;
-    public const float magicDazhaoDelay = 2.0f;
+    public const float magicDazhaoDelay = 3.0f;
     public const float battleEndDelay = 2.0f;
     public const float entranceTime = 1.5f;
 }

@@ -1,6 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum PartType
+{
+    Head,
+    Body,
+    Waist,
+    Neck,
+    Wrist,
+    Finger
+}
+
+
 public class ItemStaticData 
 {
 	public  string id;
@@ -8,6 +19,7 @@ public class ItemStaticData
 	public	int	classType;
 	public	string	asset;
 	public	int	type;
+    public int subType;
 
 	public	int	grade;
 	public	int	minLevel;
