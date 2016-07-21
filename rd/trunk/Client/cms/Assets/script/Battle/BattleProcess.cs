@@ -552,6 +552,9 @@ public class BattleProcess : MonoBehaviour
 
     IEnumerator Process(int battleLevelIndex)
     {
+        BattleController.Instance.PlayEntranceAnim();
+        yield return new WaitForSeconds(BattleConst.entranceTime);
+
         if (string.IsNullOrEmpty(processData.battleProtoData.startEvent))
         {
 
@@ -594,7 +597,12 @@ public class BattleProcess : MonoBehaviour
 		curAction = action;
         GameUnit actionCaster = null;
 		if (action != null)
-		{
+        {
+            if (curAction.caster == null)
+            {
+                OnActionOver();
+                return;
+            }
             actionCaster = curAction.caster.unit;
 			switch (action.type)
 			{
@@ -613,11 +621,6 @@ public class BattleProcess : MonoBehaviour
 				StartCoroutine(RunSwitchPetAction(action.caster, action.target));
 				break;
             case ActionType.Dazhao:
-                if (curAction.caster == null || curAction.target == null)
-                {
-                    OnActionOver();
-                    return;
-                }
 				if (action.dazhaoType == DazhaoType.Phyics)
                 {
                     inDazhaoAction = true;
@@ -810,11 +813,7 @@ public class BattleProcess : MonoBehaviour
                 //return;
                 break;
             case BattleUnitAi.AiAttackStyle.MagicAttack:
-                needRotate = true;
-                break;
             case BattleUnitAi.AiAttackStyle.PhysicsAttack:
-                needRotate = true;
-                break;
             case BattleUnitAi.AiAttackStyle.Dazhao:
                 needRotate = (aiResult.useSpell != null && aiResult.useSpell.spellData.isAoe == 0);
                 break;
@@ -845,11 +844,12 @@ public class BattleProcess : MonoBehaviour
     void RunFirstSpell(Action action)
     {
         FirstSpellAction curAction = action as FirstSpellAction;
-        if (curAction == null)
-            return;
 
-        if (curAction.caster == null || curAction.caster.unit.State == UnitState.Dead)
+        if (curAction == null || curAction.caster == null || curAction.caster.unit.State == UnitState.Dead)
+        {
+            OnActionOver();
             return;
+        }
 
 
         Dictionary<string, Spell> casterSpellList = curAction.caster.unit.spellList;

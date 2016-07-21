@@ -90,6 +90,7 @@ public class Spell
     public SpellProtoType spellData;
     public SpellService spellService;
     public int level;
+    bool needAddDazhaoDelay = true;
 
     private float spellLength;
 
@@ -103,6 +104,7 @@ public class Spell
     {
         spellLength = 0.0f;
         spellService = owner;
+        needAddDazhaoDelay = false;
     }
 
     public void Apply(float triggerTime, string wpID, bool isFirstSpell)
@@ -164,8 +166,12 @@ public class Spell
                 dazhaoDelay = BattleConst.magicDazhaoDelay;
             }
             rootEffect.SetOwnedSpell(this);
-            rootEffect.Apply(triggerTime, wpID);
-            spellLength = spellLength - triggerTime + dazhaoDelay;
+            rootEffect.Apply(triggerTime + dazhaoDelay, wpID);
+            spellLength = spellLength - triggerTime;
+            if (needAddDazhaoDelay)
+            {
+                spellLength += dazhaoDelay;
+            }
         }
 
         args.aniTime = spellLength;
@@ -181,5 +187,6 @@ public class Spell
     public void SetSpellEndTime(float delayTime)
     {
         spellLength = delayTime;
+        needAddDazhaoDelay = false;
     }
 }

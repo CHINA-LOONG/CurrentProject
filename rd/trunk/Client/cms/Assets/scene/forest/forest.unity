@@ -1073,7 +1073,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 198841497}
   m_LocalRotation: {x: -.335094839, y: -.622664869, z: -.622664869, w: .335094839}
-  m_LocalPosition: {x: 9.68000031, y: .00999999978, z: 3.83999991}
+  m_LocalPosition: {x: 9.68000031, y: .00499999989, z: 3.83999991}
   m_LocalScale: {x: 5.21192551, y: 5.21192932, z: 5.21192884}
   m_Children: []
   m_Father: {fileID: 878323397}
@@ -3205,7 +3205,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 528653465}
   m_LocalRotation: {x: -.62955457, y: -.321964473, z: -.321964413, w: .62955451}
-  m_LocalPosition: {x: 13.7299995, y: .00100000005, z: -.970000029}
+  m_LocalPosition: {x: 13.7299995, y: .00499999989, z: -.970000029}
   m_LocalScale: {x: 4.93175745, y: 4.93175697, z: 4.93175745}
   m_Children: []
   m_Father: {fileID: 878323397}
@@ -4492,7 +4492,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 793571663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.40833282, y: 0, z: -25.9750004}
+  m_LocalPosition: {x: -8.40833282, y: -.00499999989, z: -25.9750004}
   m_LocalScale: {x: .833333313, y: .833333313, z: .833333313}
   m_Children: []
   m_Father: {fileID: 878323397}
@@ -7438,7 +7438,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 408662, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.26999998
+      value: 7.88999987
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7446,7 +7446,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: .660000026
+      value: .689999998
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_LocalRotation.x
@@ -7542,15 +7542,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_LocalScale.x
-      value: .833333373
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_LocalScale.y
-      value: .833333313
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_LocalScale.z
-      value: .833333313
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 416798, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7861,7 +7861,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1490571030}
   m_LocalRotation: {x: -.506204426, y: -.493717611, z: -.493717611, w: .506204426}
-  m_LocalPosition: {x: 13.0410004, y: .00999999978, z: 2.66700006}
+  m_LocalPosition: {x: 13.0410004, y: .00499999989, z: 2.66700006}
   m_LocalScale: {x: 4.66891098, y: 4.66891146, z: 4.66891146}
   m_Children: []
   m_Father: {fileID: 878323397}
@@ -8714,7 +8714,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1658423233}
   m_LocalRotation: {x: .0299524032, y: -.70647198, z: -.706472278, w: -.0299524628}
-  m_LocalPosition: {x: .884349823, y: .00999999978, z: 3.14066124}
+  m_LocalPosition: {x: .884349823, y: .00499999989, z: 3.14066124}
   m_LocalScale: {x: 4.56634951, y: 4.56634855, z: 4.56634855}
   m_Children: []
   m_Father: {fileID: 878323397}
@@ -9603,7 +9603,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1785835815}
   m_LocalRotation: {x: -.506204426, y: -.493717611, z: -.493717611, w: .506204426}
-  m_LocalPosition: {x: 6.6500001, y: .00100000005, z: 3.07599998}
+  m_LocalPosition: {x: 6.6500001, y: .00499999989, z: 3.07599998}
   m_LocalScale: {x: 4.66891146, y: 4.66891146, z: 4.66891146}
   m_Children: []
   m_Father: {fileID: 878323397}

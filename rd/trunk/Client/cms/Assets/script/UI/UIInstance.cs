@@ -101,7 +101,8 @@ public class UIInstance : UIBase,TabButtonDelegate
 
 			subRuntimeButton = listEntry[i];
 			subButton.SetStar(subRuntimeButton.star);
-			subButton.SetName(subRuntimeButton.staticData.NameAttr);
+		//	subButton.SetName(subRuntimeButton.staticData.NameAttr);
+			subButton.SetName("");
 			subButton.instanceId = subRuntimeButton.instanceId;
 		}
 	}

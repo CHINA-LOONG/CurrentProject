@@ -26,11 +26,19 @@ public class InstanceChapter : MonoBehaviour
 		//int index = subButton.index;
 		var instanceId = subButton.instanceId;
 		var data = InstanceMapService.Instance.GetRuntimeInstance (instanceId);
-
+		/*
         UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
         if (uiBuild != null && uiBuild.uiInstance != null)
         {
             uiBuild.uiInstance.instanceInfo.ShowWithData(data);
         }
+		*/
+		UIAdjustBattleTeam adjustUi = UIMgr.Instance.OpenUI_(UIAdjustBattleTeam.ViewName) as UIAdjustBattleTeam;
+		UIBuild uiBuild= UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+		if (uiBuild!=null)
+		{
+			uiBuild.uiAdjustBattleTeam = adjustUi;
+		}
+		adjustUi.SetData (data.instanceId, data.staticData.enemyList,data.staticData.level);
 	}
 }

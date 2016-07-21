@@ -6,6 +6,7 @@ import java.net.InetAddress;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -95,7 +96,7 @@ public class AccountServices {
 		// 初始化变量
 		running = true;
 		tickableSet = new HashSet<HawkTickable>();
-		serverList = new HashMap<String, GameServer>();
+		serverList = new LinkedHashMap<String, GameServer>();
 	}
 	
 	/**

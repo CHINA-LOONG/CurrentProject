@@ -32,7 +32,7 @@ public class LifeBarUI : MonoBehaviour
     //int lifeSpeed = 1000;
 
     //private List<SpellVitalChangeArgs> vitalEventList;
-    private BattleObject lifeTarget=new BattleObject();
+    private BattleObject lifeTarget;//=new BattleObject();
     public BattleObject LifeTarget
     {
         set 

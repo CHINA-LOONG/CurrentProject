@@ -25,7 +25,7 @@ public class Const
     /// </summary>
     public static bool UpdateMode = false;
 
-	public static bool DebugConsoleEnable = true;
+	public static bool DebugConsoleEnable = false;
 
     public static int TimerInterval = 1;
     //游戏帧频

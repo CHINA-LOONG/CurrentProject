@@ -15,6 +15,7 @@ public enum BattleType
 
 public class BattleController : MonoBehaviour
 {
+    public static float floorHeight = 0.0f;
     int curProcessIndex = 0;
     int maxProcessIndex = 0;
     int battleStartID = BattleConst.enemyStartID;
@@ -503,6 +504,9 @@ public class BattleController : MonoBehaviour
     {
         if (index < maxProcessIndex)
         {
+            GameObject slotNode = BattleController.Instance.GetSlotNode(UnitCamp.Player, 0, false);
+            floorHeight = slotNode.transform.position.y;
+
             uiBattle.SetBattleLevelProcess(index+1, maxProcessIndex);
             process.ClearRewardItem();
             PB.HSBattle curBattle = curInstance.battle[index];
@@ -566,8 +570,6 @@ public class BattleController : MonoBehaviour
             {
                 preStartEvent(0.0f);
             }
-
-            StartCoroutine(PlayEntranceAnim());
         }
         else 
         {
@@ -676,7 +678,7 @@ public class BattleController : MonoBehaviour
                 moveTag = BattleConst.distance * vec + playerNode.transform.position;
             }
             battleGroup.PlayerFieldList[i].transform.localPosition = newPos;
-            battleGroup.PlayerFieldList[i].transform.DOMove(moveTag, moveTime);
+            battleGroup.PlayerFieldList[i].transform.DOMove(moveTag, BattleConst.moveTime);
             battleObj.TriggerEvent(BattleConst.unitExitandenter, Time.time, null);
         }
     }
@@ -738,7 +740,7 @@ public class BattleController : MonoBehaviour
         yield return null;
     }
     //---------------------------------------------------------------------------------------------
-    IEnumerator PlayEntranceAnim()
+    public void PlayEntranceAnim()
     {
         float curTime = Time.time;
         for (int i = 0; i < battleGroup.EnemyFieldList.Count; ++i)
@@ -750,7 +752,6 @@ public class BattleController : MonoBehaviour
                 battleGroup.EnemyFieldList[i].TriggerEvent("chuchang", curTime, null);
             }
         }
-        yield return null;
     }
     //---------------------------------------------------------------------------------------------
     IEnumerator PlayPostStoryAnim()

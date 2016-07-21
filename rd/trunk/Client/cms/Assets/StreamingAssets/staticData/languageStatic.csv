@@ -19,13 +19,13 @@ miaoshu_jiuwei10,九尾狐萌萌哒的尾巴10,The fox with nine tails 10
 miaoshu_ershu,我是耳鼠思密达,wo is Ear Mouse
 miaoshu_zhuyan,我是朱燕思密达,wo is Zhu Yan
 miaoshu_qingniao,我是青鸟思密达,wo is Qing Bird
-miaoshu_karong1,似乎被什么东西控制了,It seems as if she is being controlled by something.
-miaoshu_karong2,脉动的韵文，释放出强大的魔力,The flowing verses release powerful magic.
-miaoshu_karong4,外装甲看起来不那么结实,The claws doesn't seem to be that tough.
-miaoshu_karong5,外装甲看起来不那么结实,The claws doesn't seem to be that tough.
-miaoshu_meidushawp01,自认为美艳的美杜莎会对没有头发感到愤怒！,The beautiful Medusa would be quite upset without hair.
-miaoshu_meidushawp02,会对物理攻击进行压制,Suppresses physical attacks. 
-miaoshu_meidushawp03,会对法术攻击进行压制,Suppresses magic attacks.
+miaoshu_karong1,似乎被什么东西控制了,Find out what is controlling her!
+miaoshu_karong2,脉动的韵文，释放出强大的魔力,Flowing verses release powerful magic.
+miaoshu_karong4,外装甲看起来不那么结实,This doesn't seem to be that tough.
+miaoshu_karong5,外装甲看起来不那么结实,This doesn't seem to be that tough.
+miaoshu_meidushawp01,自认为美艳的美杜莎会对没有头发感到愤怒！,Medusa will be upset without hair.
+miaoshu_meidushawp02,会对物理攻击进行压制,Suppresses Phy ATK.
+miaoshu_meidushawp03,会对法术攻击进行压制,Suppresses Magic ATK.
 Lizardman,蜥蜴人,Lizardman
 Flower Spirit,花魄,Flower Spirit
 Pans,潘神,Pans
@@ -263,16 +263,16 @@ ultHapiName,烟消云散,Dissipation
 psvHapiName,洞察,Clairvoyance
 ultZouyincaoName,提神号角,Bright Horn
 psvZouyincaoName,顺风,Tailwind
-Valor,勇敢,Valor
-Spiritual,聪慧,Spiritual
-Mischievous,狡猾,Mischievous
-Collaborate,互助,Collaborate
-Compassion,善良,Compassion
-Humility,谨慎,Humility
-miaoshu_bossamute01,面具下隐藏着弱点,Underneath the mask lies the weakpoint.
-miaoshu_bossluoxinfu01,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
-miaoshu_bossluoxinfu02,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
-miaoshu_bossluoxinfu03,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
-miaoshu_bossluoxinfu04,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
-miaoshu_bossluoxinfu05,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
-miaoshu_bossluoxinfu06,爪子十分锋利，但是看起来很易碎。,"The claws are very sharp, but fragile."
+Valor,勇敢,Attack - Physical 
+Spiritual,聪慧,Attack - Magical
+Mischievous,狡猾,Support - Harmful Effects
+Collaborate,互助,Support - Beneficial Effects
+Compassion,善良,Healer
+Humility,谨慎,Defense
+miaoshu_bossamute01,面具下隐藏着弱点,Find what underlies the mask.
+miaoshu_bossluoxinfu01,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_bossluoxinfu02,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_bossluoxinfu03,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_bossluoxinfu04,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_bossluoxinfu05,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_bossluoxinfu06,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."

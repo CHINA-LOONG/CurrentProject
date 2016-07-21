@@ -131,7 +131,7 @@ public class FazhenStyle : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 			if(intersect(lastMousePosition,mousePosition,corners[0],corners[1]) ||
 			   intersect(lastMousePosition,mousePosition,corners[2],corners[3]))
 			{
-				Logger.LogError("touch a item...................");
+				//Logger.LogError("touch a item...................");
 				if(!userTouchedList.Contains(touchItem))
 				{
 					userTouchedList.Add(touchItem);

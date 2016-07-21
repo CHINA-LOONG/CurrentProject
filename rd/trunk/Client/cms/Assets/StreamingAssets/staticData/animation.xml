@@ -1553,8 +1553,8 @@ state = 1 Remove
 				<Motion ani="" key="anyingzhua" value="true"/>
 			</MotionList>
 			<MeshStateList>
-				<Mesh time="0" name="mesh_leftarm1" state="show"/>
-				<Mesh time="2" name="mesh_leftarm1" state="hide"/>
+				<Mesh time="1.5" name="mesh_leftarmeffect" state="show"/>
+				<Mesh time="3.2" name="mesh_leftarmeffect" state="hide"/>
 			</MeshStateList>
 		</Ani>
 		<Ani id="bossMinghe18Karong1e2" state="0" AniType="Damage">
@@ -1570,8 +1570,16 @@ state = 1 Remove
 				<Motion ani="" key="anyingbo" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle asset="karongAnyingbo" bundle="effect/particle" parent="e_shifa1" attach="true"/>
+				<Particle asset="karongAnyingbo" bundle="effect/particle" parent="wp_body" locky="true"/>
 			</ParticleList>
+			<MeshStateList>
+				<Mesh time="1" name="mesh_bodyeffect" state="show"/>
+				<Mesh time="1" name="mesh_leftarmeffect" state="show"/>
+				<Mesh time="1" name="mesh_rightarmeffect" state="show"/>
+				<Mesh time="1.7" name="mesh_bodyeffect" state="hide"/>
+				<Mesh time="1.7" name="mesh_leftarmeffect" state="hide"/>
+				<Mesh time="1.7" name="mesh_rightarmeffect" state="hide"/>
+			</MeshStateList>
 			<AudioList>
 				<Audio time="0" name="cearth"/>
 			</AudioList>
@@ -2325,14 +2333,14 @@ state = 1 Remove
 			</AudioList>
 		</Ani>
 		
-		<Ani id="ultAmutee5" state="0" AniType="">
+		<!--Ani id="ultAmutee5" state="0" AniType="">
 			<ParticleList>
 				<Particle asset="ultAmuteBuff" bundle="effect/particle" locky="true" parent="e_shouji"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Amute2"/>
 			</AudioList>
-		</Ani>
+		</Ani-->
 		
 		<Ani id="ultAmuteb1" state="0" AniType="">
 			<ParticleList>
@@ -2360,7 +2368,6 @@ state = 1 Remove
 				<Audio time="0" name="Amute1"/>
 			</AudioList>
 		</Ani>
-		
 	</AniList>
 	<AniList group="xgMantuoluo">
 	
@@ -2568,7 +2575,48 @@ state = 1 Remove
 		</Ani>
 		
 	</AniList>
+	<AniList group="bossAmute">
 	
+		<Ani id="ultbossMinghe14Amute" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultAmutePre" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Amute1"/>
+			</AudioList>
+		</Ani>
+		
+		<!--Ani id="ultbossMinghe14Amutee5" state="0" AniType="">
+			<ParticleList>
+				<Particle asset="ultAmuteBuff" bundle="effect/particle" locky="true" parent="e_shouji"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Amute2"/>
+			</AudioList>
+		</Ani-->
+		
+		<Ani id="ultbossMinghe14Amuteb1" state="0" AniType="">
+			<ParticleList>
+				<Particle asset="bd_wulixishou" bundle="effect/particle" attach="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="ultbossMinghe14Amuteb1Finish" state="1" finish_event="ultbossMinghe14Amuteb1">
+		</Ani>	
+		
+		<Ani id="ultbossMinghe14Amuteb2" state="0" AniType="">
+			<ParticleList>
+				<Particle asset="bd_mofaxishou" bundle="effect/particle" attach="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="ultbossMinghe14Amuteb2Finish" state="1" finish_event="ultbossMinghe14Amuteb2">
+		</Ani>
+		
+	</AniList>
 	<AniList group="State_chage">
 		<Ani id="karong_stage1to2_shuihuo" state="0" action_delay="0">
 			<ControllerList>

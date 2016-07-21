@@ -249,7 +249,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131450}
-  lengthInSec: 1.60000002
+  lengthInSec: 1
   startDelay: 0
   speed: 1
   randomSeed: 0

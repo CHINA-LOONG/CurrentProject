@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -115,11 +117,11 @@ public class bossMinghe18Karong : BossAi {
         }
 		if (args.wpID == "bossMinghe18Karongwp05" && jishu ==1)
 		{
-			target.TriggerEvent("karong_leftarmsiwang",Time.time,null);
+			target.TriggerEvent("karong_rightarmsiwang",Time.time,null);
 		}
 		if (args.wpID == "bossMinghe18Karongwp04" && jishu ==1)
 		{
-			target.TriggerEvent("karong_rightarmsiwang",Time.time,null);
+			target.TriggerEvent("karong_leftarmsiwang",Time.time,null);
 		}
     }
     //---------------------------------------------------------------------------------------------

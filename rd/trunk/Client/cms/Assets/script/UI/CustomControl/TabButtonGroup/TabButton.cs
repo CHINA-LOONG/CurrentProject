@@ -18,7 +18,8 @@ public class TabButton : MonoBehaviour
 
 	public void SetIsOn(bool isOn)
 	{
-		homeButton.IsOn = isOn;
+		if(homeButton != null)
+			homeButton.IsOn = isOn;
 	}
 	
 	public	void	OnTabButtonClicked(GameObject go)

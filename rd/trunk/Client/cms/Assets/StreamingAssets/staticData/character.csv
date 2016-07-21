@@ -1,9 +1,9 @@
 ﻿#NUM,TEXT,NUM,NUM,NUM,NUM,NUM,NUM,NUM
 index,desc,physicsWeight,magicWeight,cureMagicWeight,gainWeight,negativeWeight,defenseWeight,tauntDefenseWeight
 #性格ID,性格描述,物理攻击权重,法术攻击权重,治疗法术权重，与法术攻击权重互斥,增益效果攻击权重,减益效果权重，和gainWeight互斥,防御效果权重,有自身嘲讽buff防御的权重，与防御互斥
-1,Valor,8,1,1,1,1,0.5,0
-2,Spiritual,1,8,1,1,1,0.5,0
-3,Mischievous,1,1,1,1,8,0.5,0
-4,Collaborate,1,1,1,8,1,0.5,0
-5,Compassion,1,5,35,10,1,0.25,0
+1,Valor,16,2,2,2,2,1,0
+2,Spiritual,2,16,2,2,2,1,0
+3,Mischievous,2,2,2,2,16,1,0
+4,Collaborate,2,2,2,16,2,1,0
+5,Compassion,10,50,350,100,10,1,0
 6,Humility,1,1,1,1,1,5,8

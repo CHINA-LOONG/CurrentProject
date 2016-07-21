@@ -58,5 +58,5 @@ debuffEarthDotSlightb1,1,debuffEarthDotSlighte3,3,0,0,0,0,0,0,0,0,bufficon_debuf
 debuffEarthDotMediumb1,1,debuffEarthDotMediume3,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0
 debuffEarthDotStrongb1,1,debuffEarthDotStronge3,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0
 buffTauntb1,12,,3,0,0,0,0,0,0,0,0,,0,,0,0,0,0,,,0,0,0,0
-ultbossAmuteb1,9,,8,0,0,0,,,,,,,0,0,0.6,,,,,,0,0,0,0
-ultbossAmuteb2,10,,8,0,0,0,,,,,,,0,0,0.6,,0,,,,0,0,0,0
+ultbossMinghe14Amuteb1,9,,8,0,0,0,,,,,,,0,0,0.6,,,,,,0,0,0,0
+ultbossMinghe14Amuteb2,10,,8,0,0,0,,,,,,,0,0,0.6,,0,,,,0,0,0,0

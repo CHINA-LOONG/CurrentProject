@@ -188,7 +188,8 @@ public class AnimControl : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnStunEnd()
     {
-        animator.SetBool(hashShoukong, false);
+        animator.SetBool(hashFagong, false);
+        animator.SetBool(hashWugong, false);
     }
     //---------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------

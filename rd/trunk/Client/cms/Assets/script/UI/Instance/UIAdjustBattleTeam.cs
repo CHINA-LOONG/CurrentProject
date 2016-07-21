@@ -61,7 +61,7 @@ public class UIAdjustBattleTeam : UIBase
 		lbYongyou.text = StaticDataMgr.Instance.GetTextByID ("instance_yongyou");
 		lbZhenrongTiaozheng.text = StaticDataMgr.Instance.GetTextByID ("instance_zhenrongtiaozheng");
 
-        backButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("instance_back");
+       // backButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("instance_back");
 		battleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID ("instance_kaishizhandou");
 		cancleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID ("instance_quxiaozhandou");
 	}

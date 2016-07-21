@@ -29,7 +29,7 @@ public class BattleConst
     public const int processContinueRet = -1;
 
     //大招 怪物炫耀时长
-    public const float dazhaoShowOffTime = 3;
+    public const float dazhaoShowOffTime = 2;
 	//大招慢镜头速度
 	public	const	float	dazhaoAttackTimeScale = 1.0f;
 	//大招慢镜头时长 
@@ -61,9 +61,11 @@ public class BattleConst
     public const int defaultLazy = 1;
     //public const string levelChangeEvent = "level_change";
     public const float distance = 3.0f;
+    public const float moveTime = 0.8f;
     public const string unitExitandenter = "unitExitandenter";
 
-    public const float floorHeight = 1.0f;
-    public const float magicDazhaoDelay = 1.0f;
+    public const float floorHeight = 0.01f;
+    public const float magicDazhaoDelay = 2.0f;
     public const float battleEndDelay = 2.0f;
+    public const float entranceTime = 1.5f;
 }

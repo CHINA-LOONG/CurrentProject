@@ -58,9 +58,9 @@ public class GenerateAnimatorController
             AnimationClip newClip = AssetDatabase.LoadAssetAtPath(name, typeof(AnimationClip)) as AnimationClip;
             if (newClip == null)
                 continue;
-            //AnimationEvent startEvent = new AnimationEvent();
-            //List<AnimationEvent> events = new List<AnimationEvent>(AnimationUtility.GetAnimationEvents(newClip));
-            //startEvent.time = 0.01f;
+            AnimationEvent startEvent = new AnimationEvent();
+            List<AnimationEvent> events = new List<AnimationEvent>(AnimationUtility.GetAnimationEvents(newClip));
+            startEvent.time = 0.01f;
             stateName = newClip.name;
             //create state, param and trans 
             AnimatorState curState = rootStateMachine.AddState(stateName);
@@ -74,122 +74,138 @@ public class GenerateAnimatorController
                 daijiState.aniState = curState;
                 daijiState.aniKey = stateName;
                 daijiState.aniState.motion = newClip;
+                AnimationClipSettings clipSetting = AnimationUtility.GetAnimationClipSettings(newClip);
+                clipSetting.loopTime = true;
+                AnimationUtility.SetAnimationClipSettings(newClip, clipSetting);
             }
             else if (name.Contains("siwang") == true)
             {
                 siwangState.aniState = curState;
                 siwangState.aniKey = stateName;
                 siwangState.aniState.motion = newClip;
-                //startEvent.functionName = "OnDeadEnd";
-                //events.Add(startEvent);
-                //AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
+                startEvent.functionName = "OnDeadEnd";
+                events.Add(startEvent);
+                AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
             }
             else if (name.Contains("shengli") == true)
             {
                 shengliState.aniState = curState;
                 shengliState.aniKey = stateName;
                 shengliState.aniState.motion = newClip;
+                AnimationClipSettings clipSetting = AnimationUtility.GetAnimationClipSettings(newClip);
+                clipSetting.loopTime = true;
+                AnimationUtility.SetAnimationClipSettings(newClip, clipSetting);
             }
             else if (name.Contains("shoukong") == true)
             {
                 shoukongState.aniState = curState;
                 shoukongState.aniKey = stateName;
                 shoukongState.aniState.motion = newClip;
+                AnimationClipSettings clipSetting = AnimationUtility.GetAnimationClipSettings(newClip);
+                clipSetting.loopTime = true;
+                AnimationUtility.SetAnimationClipSettings(newClip, clipSetting);
             }
             else if (name.Contains("wugong") == true)
             {
                 wugongState.aniState = curState;
                 wugongState.aniKey = stateName;
                 wugongState.aniState.motion = newClip;
-                //startEvent.functionName = "OnWuGongEnd";
-                //events.Add(startEvent);
-                //AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
+                startEvent.functionName = "OnWuGongEnd";
+                events.Add(startEvent);
+                AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
             }
             else if (name.Contains("fagong") == true)
             {
                 fagongState.aniState = curState;
                 fagongState.aniKey = stateName;
                 fagongState.aniState.motion = newClip;
-                //startEvent.functionName = "OnFaGongEnd";
-                //events.Add(startEvent);
-                //AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
+                startEvent.functionName = "OnFaGongEnd";
+                events.Add(startEvent);
+                AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
             }
             else if (name.Contains("fangyu") == true)
             {
                 fangyuState.aniState = curState;
                 fangyuState.aniKey = stateName;
                 fangyuState.aniState.motion = newClip;
-                //startEvent.functionName = "OnFangyuEnd";
-                //events.Add(startEvent);
-                //AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
+                startEvent.functionName = "OnFangyuEnd";
+                events.Add(startEvent);
+                AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
             }
             else if (name.Contains("dazhaoxuanyao") == true)
             {
                 dazhaoxuanyaoState.aniState = curState;
                 dazhaoxuanyaoState.aniKey = stateName;
                 dazhaoxuanyaoState.aniState.motion = newClip;
-                //startEvent.functionName = "OnDaZhaoxuanyaoEnd";
-                //events.Add(startEvent);
-                //AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
+                startEvent.functionName = "OnDaZhaoxuanyaoEnd";
+                events.Add(startEvent);
+                AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
             }
-            else if (name.Contains("dazhao") == true )
+            else if (name.Contains("dazhao") == true)
             {
                 dazhaoState.aniState = curState;
                 dazhaoState.aniKey = stateName;
                 dazhaoState.aniState.motion = newClip;
                 isdazhao = true;
-                //startEvent.functionName = "OnDaZhaoEnd";
-                //events.Add(startEvent);
-                //AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
+                startEvent.functionName = "OnDaZhaoEnd";
+                events.Add(startEvent);
+                AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
             }
             else if (name.Contains("toulan") == true)
             {
                 toulanState.aniState = curState;
                 toulanState.aniKey = stateName;
                 toulanState.aniState.motion = newClip;
-                //startEvent.functionName = "OnLazyEnd";
-                //events.Add(startEvent);
-                //AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
+                startEvent.functionName = "OnLazyEnd";
+                events.Add(startEvent);
+                AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
             }
             else if (name.Contains("shouji") == true)
             {
                 shoujiState.aniState = curState;
                 shoujiState.aniKey = stateName;
                 shoujiState.aniState.motion = newClip;
-                //startEvent.functionName = "OnShoujiEnd";
-                //events.Add(startEvent);
-                //AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
+                startEvent.functionName = "OnShoujiEnd";
+                events.Add(startEvent);
+                AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
             }
             else if (name.Contains("paobu") == true)
             {
                 paobuState.aniState = curState;
                 paobuState.aniKey = stateName;
                 paobuState.aniState.motion = newClip;
+                AnimationClipSettings clipSetting = AnimationUtility.GetAnimationClipSettings(newClip);
+                clipSetting.loopTime = true;
+                AnimationUtility.SetAnimationClipSettings(newClip, clipSetting);
             }
             else if (name.Contains("chuchang") == true)
             {
                 chuchangState.aniState = curState;
                 chuchangState.aniKey = stateName;
                 chuchangState.aniState.motion = newClip;
-                //startEvent.functionName = "OnChuChangEnd";
-                //events.Add(startEvent);
-                //AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
+                startEvent.functionName = "OnChuChangEnd";
+                events.Add(startEvent);
+                AnimationUtility.SetAnimationEvents(newClip, events.ToArray());
             }
         }
         //add trans
         
-        //any->siwang        
+        //any->siwang       
 
         AnimatorStateTransition tosiwangTrans = rootStateMachine.AddAnyStateTransition(siwangState.aniState);        
         tosiwangTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, siwangState.aniKey);
+        tosiwangTrans.canTransitionToSelf = false;
         AnimatorStateTransition toshengliTrans = rootStateMachine.AddAnyStateTransition(shengliState.aniState);
         toshengliTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shengliState.aniKey);
         toshengliTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
         toshengliTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, shoukongState.aniKey);
+        toshengliTrans.canTransitionToSelf = false;
         AnimatorStateTransition toshoukong = rootStateMachine.AddAnyStateTransition(shoukongState.aniState);
         toshoukong.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shoukongState.aniKey);
         toshoukong.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
+        toshoukong.canTransitionToSelf = false;
         rootStateMachine.defaultState = daijiState.aniState;
+
         
         //daiji->?
         AnimatorStateTransition daijiToWugongTrans = daijiState.aniState.AddTransition(wugongState.aniState);
@@ -209,9 +225,9 @@ public class GenerateAnimatorController
 
             AnimatorStateTransition dazhaoToDaijiTrans = dazhaoState.aniState.AddTransition(daijiState.aniState);
             dazhaoToDaijiTrans.hasExitTime = true;
-            //AnimatorStateTransition dazhaoToDazhaoTrans = dazhaoState.aniState.AddTransition(dazhaoState.aniState);
-            //dazhaoToDazhaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, dazhaoState.aniKey);
-            //dazhaoToDazhaoTrans.hasExitTime = true;
+            AnimatorStateTransition dazhaoToDazhaoTrans = dazhaoState.aniState.AddTransition(dazhaoState.aniState);
+            dazhaoToDazhaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, dazhaoState.aniKey);
+            dazhaoToDazhaoTrans.hasExitTime = false;
         }
         AnimatorStateTransition daijiToDazhaoxuanyaoTrans = daijiState.aniState.AddTransition(dazhaoxuanyaoState.aniState);
         daijiToDazhaoxuanyaoTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, dazhaoxuanyaoState.aniKey);
@@ -239,7 +255,7 @@ public class GenerateAnimatorController
         fagongToDaijiTrans.exitTime = 0.99f;
         AnimatorStateTransition fangyuToDaijiTrans = fangyuState.aniState.AddTransition(daijiState.aniState);
         fangyuToDaijiTrans.exitTime = 0.99f;
-        fangyuToDaijiTrans.hasExitTime = true;
+        fangyuToDaijiTrans.hasExitTime =  true;
         AnimatorStateTransition dazhaoxuanyaoToDaijiTrans = dazhaoxuanyaoState.aniState.AddTransition(daijiState.aniState);
         dazhaoxuanyaoToDaijiTrans.exitTime = 0.99f;
         dazhaoxuanyaoToDaijiTrans.hasExitTime = true;   
@@ -254,9 +270,10 @@ public class GenerateAnimatorController
         shoujiToShoukongTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shoukongState.aniKey);
         shoujiToShoukongTrans.exitTime = 0.99f;
         shoujiToShoukongTrans.hasExitTime = true;
-        //AnimatorStateTransition shoujiToShoujiTrans = shoujiState.aniState.AddTransition(shoujiState.aniState);
-        //shoujiToShoujiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shoujiState.aniKey);
-        //shoujiToShoujiTrans.hasExitTime = false;
+        AnimatorStateTransition shoujiToShoujiTrans = shoujiState.aniState.AddTransition(shoujiState.aniState);
+        shoujiToShoujiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.If, 0, shoujiState.aniKey);
+        shoujiToShoujiTrans.hasExitTime = false;
+
         AnimatorStateTransition paobuToDaijiTrans = paobuState.aniState.AddTransition(daijiState.aniState);
         paobuToDaijiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, paobuState.aniKey);
         paobuToDaijiTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.IfNot, 0, siwangState.aniKey);
@@ -290,7 +307,7 @@ public class GenerateAnimatorController
         foreach (string filename in names)
         {
             string ext = Path.GetExtension(filename);
-            if (ext.Equals(".fbx") || ext.Equals(".FBX"))
+            if (ext.Equals(".fbx") || ext.Equals(".FBX") || ext.Equals(".anim"))
             {
                 if (filename.Contains("moxing") == true)
                     continue;

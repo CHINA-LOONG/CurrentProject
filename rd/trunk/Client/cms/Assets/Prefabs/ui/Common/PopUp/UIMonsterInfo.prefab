@@ -475,8 +475,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!114 &11462018
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .147491321, g: .658763707, b: .911764681, a: 1}
+  m_Color: {r: .841000021, g: .852999985, b: .847000003, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -708,7 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .0873702392, g: .742647052, b: .335923523, a: .865999997}
+  m_Color: {r: .541000009, g: .533999979, b: .527999997, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1192,8 +1192,8 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -68.5, y: 94.5}
-  m_SizeDelta: {x: 160, y: 45}
+  m_AnchoredPosition: {x: -48.5000076, y: 94.5}
+  m_SizeDelta: {x: 200, y: 45}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22498630
 RectTransform:

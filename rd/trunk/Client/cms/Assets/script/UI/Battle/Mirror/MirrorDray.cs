@@ -239,9 +239,9 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 			outFindTarget.Clear();
 			finishFindTargett.Clear();
 
-			Vector3 mirrorScreenPos = UIUtil.GetSpacePos(transform as RectTransform,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
-			mirrorScreenPos.x -= (rectTrans.pivot.x -0.5f)*rectTrans.sizeDelta.x;
-			mirrorScreenPos.y -= (rectTrans.pivot.y -0.5f)*rectTrans.sizeDelta.y;
+			Vector3 mirrorScreenPos = UIUtil.GetSpacePos(mirrorParticle.transform as RectTransform,UIMgr.Instance.CanvasAttr,UICamera.Instance.CameraAttr);
+			//mirrorScreenPos.x -= (rectTrans.pivot.x -0.5f)*rectTrans.sizeDelta.x;
+			//mirrorScreenPos.y -= (rectTrans.pivot.y -0.5f)*rectTrans.sizeDelta.y;
 
 
 

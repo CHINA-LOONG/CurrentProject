@@ -5,9 +5,9 @@ ui_english,English,English
 ui_chinese,简体中文,Chinese
 tips_XXXXX,,
 common,,
-ui_fanhui,返回,
-ui_queding,确定,
-ui_quxiao,取消,
+ui_fanhui,返回,Back
+ui_queding,确定,OK
+ui_quxiao,取消,Cancel
 spell_wuli_name,物理技能,Physical
 spell_magic_name,法术技能,Magical
 spell_beidong_name,被动技能,Passive
@@ -25,9 +25,9 @@ instance_saodangquanNumber,扫荡券数量:{0},Tickets:{0}
 instance_saodang10,扫荡10次,Raid 10
 instance_back,返回,back
 instance_yingzhan,应战,Fight
-instance_shangzhen,上阵,Starter
-instance_houbei,后备,spare
-instance_yongyou,拥有,Monster
+instance_shangzhen,上阵,First Team
+instance_houbei,后备,Backups
+instance_yongyou,拥有,Monsters Available
 instance_haoyou,好友,Friend
 instance_kaishizhandou,开始战斗,Start Battle
 instance_quxiaozhandou,取消战斗,Cancel
@@ -38,7 +38,7 @@ spell_yongyoujineng_special,特殊技能,Special Skills
 dazhao_jieduan,请,Please
 dazhao_click,点击,tap on
 dazhao_shifang,怪物,a monster
-dazhao_huazhenshibai,画阵失败，请重试,"Failed,please"
+dazhao_huazhenshibai,画阵失败，请重试,"Failed,please try again"
 xf,,
 ss,,
 zz,,
@@ -46,7 +46,7 @@ spell_hit_miss,未命中,Miss
 spell_hit_immune,免疫,Immune
 spell_hit_interrupt,被打断,Interrupt
 spell_shield,吸收,absorbed
-spell_first_spell,先置攻击,Preemptive attack
+spell_first_spell,先置攻击,First Strike
 spell_stun,眩晕,stun
 xl_quest,薛龙_任务界面,Loong
 quest_title,任务,QUEST

@@ -120,7 +120,8 @@ public class UIMonsterInfo : UIBase
 	{
 		Transform parentTrans = null;
 		if (spellType.category == (int)SpellType.Spell_Type_MagicDazhao ||
-			spellType.category == (int)SpellType.Spell_Type_PhyDaZhao) 
+			spellType.category == (int)SpellType.Spell_Type_PhyDaZhao||
+		    spellType.category == (int)SpellType.Spell_Type_Passive) 
 		{
 			parentTrans = specialSkillTrans;
 		}

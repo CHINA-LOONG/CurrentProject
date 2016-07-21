@@ -51,7 +51,7 @@ public class FetchGameServerInfoHandler implements HttpHandler{
 				JsonObject jsonObject = new JsonObject();
 				jsonObject.addProperty("server", entry.getValue().server);
 				jsonObject.addProperty("hostIp", entry.getValue().hostIp);
-				jsonObject.addProperty("port",entry.getValue().port);	
+				jsonObject.addProperty("port",entry.getValue().port);
 				RoleServerInfo roleServerInfo = roleServerInfos.get(entry.getValue().server);
 				if (roleServerInfo != null) {
 					JsonObject roleInfo = new JsonObject();
