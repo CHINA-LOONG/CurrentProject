@@ -56,10 +56,7 @@ speech_xinshouadventure4,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_p
 speech_xinshouadventure5,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouadventure7
 speech_xinshouadventure6,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouadventure8
 speech_xinshoudecompose,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshoudecompose
-speech_chongwuqianghuashi,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_chongwuqianghuashi
 speech_xinshouchongwujinjie,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouchongwujinjie
-speech_xinshoukaikongshi,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshoukaikongshi1
-,,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshoukaikongshi2
 speech_xinshouxiangqian,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouxiangqian1
 ,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouxiangqian2
 ,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_xinshouxiangqian3
@@ -73,8 +70,6 @@ speech_0fightzhong,0,b,speechname_wo,lihui_wo,lihui_wo,"0,0",speech_0fightzhong1
 ,,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_0fightzhong2
 ,,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_0fightzhong3
 speech_0fighthou,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_kaixin,"258,142",speech_0fighthou1
-speech_0fightruodian,0,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_0fightruodian
-,,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_0fightruodian1
 speech_0fightjihuo,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_0fightjihuo
 speech_0fightjihuo1,0,a,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_0fightjihuo1
 speech_kaijiaxing1,0,b,speechname_jiuwei,lihui_jiuweihu4,lihui_jiuweihu4_putong,"258,142",speech_kaijiaxing1

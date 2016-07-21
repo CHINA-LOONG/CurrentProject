@@ -15,11 +15,14 @@ public class UIMonsterInfo : UIBase
 
 	public Button closeButton;
 	public	Text	name;
+	public  Text	character;
 	public	Image	propertyImage;
 	public	Transform iconTrans;
-	public	Transform	skillTrans;
+	public	Transform	normalSkillTrans;
+	public  Transform	specialSkillTrans;
 	public	SkilTips	skilTips;
-	public Text	haveSpell;
+	public Text	haveNomralSpell;
+	public Text haveSpecialSpell;
 	private int guid = -1;
 
 	private int level = 1;
@@ -56,16 +59,33 @@ public class UIMonsterInfo : UIBase
 		this.level = level;
 		this.guid = guid;
 		name.text = unitData.NickNameAttr;
-		haveSpell.text = StaticDataMgr.Instance.GetTextByID ("spell_yongyoujineng");
+		haveNomralSpell.text = StaticDataMgr.Instance.GetTextByID ("spell_yongyoujineng_normal");
+		haveSpecialSpell.text = StaticDataMgr.Instance.GetTextByID ("spell_yongyoujineng_special");
+
 		SetProperty (unitData.property);
 
 		MonsterIcon icon = MonsterIcon.CreateIcon ();
 		icon.transform.SetParent (iconTrans, false);
 
 		icon.SetMonsterStaticId (monsterid);
-		icon.SetStage (level);
-		icon.SetLevel (stage);
+		icon.SetStage (stage);
+		icon.SetLevel (level);
 		SetSpellIcon (unitData);
+
+		int monsterCharacter = unitData.character;
+		if (guid != -1)
+		{
+			GameUnit pet = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(guid);
+			if(pet != null)
+			{
+				monsterCharacter = pet.character;
+			}
+		}
+		CharacterData cData = StaticDataMgr.Instance.GetCharacterData (monsterCharacter);
+		if (null != cData)
+		{
+			character.text = cData.DescAttr;
+		}
 	}
 
 	private void SetProperty(int property)
@@ -98,7 +118,17 @@ public class UIMonsterInfo : UIBase
 
 	private void AddIcon(SpellProtoType spellType)
 	{
-		var icon = SpellIcon.CreateWith (skillTrans );
+		Transform parentTrans = null;
+		if (spellType.category == (int)SpellType.Spell_Type_MagicDazhao ||
+			spellType.category == (int)SpellType.Spell_Type_PhyDaZhao) 
+		{
+			parentTrans = specialSkillTrans;
+		}
+		else 
+		{
+			parentTrans = normalSkillTrans;
+		}
+		var icon = SpellIcon.CreateWith (parentTrans );
 		int spellLevel = this.level;
 		if (guid != -1)
 		{
@@ -133,6 +163,9 @@ public class UIMonsterInfo : UIBase
 		Vector2 iconPos = iconTrans.anchoredPosition;
 		Vector2 tipsPos = tipsTrans.anchoredPosition;
 		tipsPos.x = iconPos.x + 120;
+
+		RectTransform iconParent = icon.transform.parent as RectTransform;
+		tipsPos.y = iconParent.anchoredPosition.y + 120;
 
 		tipsTrans.anchoredPosition = tipsPos;
 	}

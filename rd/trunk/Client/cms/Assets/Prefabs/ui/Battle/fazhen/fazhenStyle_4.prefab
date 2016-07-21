@@ -27,6 +27,7 @@ GameObject:
   - 224: {fileID: 22432722}
   - 222: {fileID: 22234834}
   - 114: {fileID: 11462482}
+  - 225: {fileID: 22525476}
   m_Layer: 5
   m_Name: touchImg0
   m_TagString: Untagged
@@ -44,6 +45,7 @@ GameObject:
   - 224: {fileID: 22452976}
   - 222: {fileID: 22207434}
   - 114: {fileID: 11463446}
+  - 225: {fileID: 22587538}
   m_Layer: 5
   m_Name: touchImg2
   m_TagString: Untagged
@@ -95,6 +97,7 @@ GameObject:
   - 224: {fileID: 22474018}
   - 222: {fileID: 22296558}
   - 114: {fileID: 11442128}
+  - 225: {fileID: 22588636}
   m_Layer: 5
   m_Name: touchImg1
   m_TagString: Untagged
@@ -1401,16 +1404,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112354}
-  m_LocalRotation: {x: 0, y: 0, z: .299160123, w: .95420295}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -13}
-  m_LocalScale: {x: 1.79190767, y: .333009303, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22433424}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 389, y: 299}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchoredPosition: {x: 374, y: 320}
+  m_SizeDelta: {x: 134, y: 147}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22433424
 RectTransform:
@@ -1457,16 +1460,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124526}
-  m_LocalRotation: {x: 0, y: 0, z: -.213073656, w: .977036178}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: .23347792, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22433424}
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 591, y: 295}
-  m_SizeDelta: {x: 140, y: 120}
+  m_AnchoredPosition: {x: 596.900024, y: 318.5}
+  m_SizeDelta: {x: 172, y: 150}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22474018
 RectTransform:
@@ -1476,22 +1479,63 @@ RectTransform:
   m_GameObject: {fileID: 171068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .525033534, y: 2.74323773, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22433424}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 495, y: 146}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchoredPosition: {x: 488, y: 149}
+  m_SizeDelta: {x: 141, y: 170}
   m_Pivot: {x: .5, y: .5}
+--- !u!225 &22525476
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112354}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!225 &22587538
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124526}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!225 &22588636
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171068}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146692}

@@ -343,11 +343,7 @@ public class BattleController : MonoBehaviour
         GameMain.Instance.ChangeModule<BuildModule>();
         UIMgr.Instance.DestroyUI(UIBattle.ViewName);
 
-        ResourceMgr.Instance.LoadLevelAsyn("firstScene", false, OnBattleOver);
-    }
-    //---------------------------------------------------------------------------------------------
-    public void OnBattleOver(GameObject instance, System.EventArgs args)
-    {
+        ResourceMgr.Instance.LoadLevelAsyn("firstScene", false, null);
     }
     //---------------------------------------------------------------------------------------------
     public GameObject GetSlotNode(UnitCamp camp, int slotID, bool isBoss)
@@ -570,6 +566,8 @@ public class BattleController : MonoBehaviour
             {
                 preStartEvent(0.0f);
             }
+
+            StartCoroutine(PlayEntranceAnim());
         }
         else 
         {
@@ -696,7 +694,7 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     IEnumerator ProcessBattleOver(bool isSuccess)
     {
-        //yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(BattleConst.battleEndDelay);
         //胜利失败动画
         yield return StartCoroutine(PlayBalanceAnim(isSuccess));
         //后置剧情动画
@@ -737,6 +735,21 @@ public class BattleController : MonoBehaviour
         }
         yield return new WaitForSeconds(3.0f);
         uiBattle.DestroyEndBattleUI();
+        yield return null;
+    }
+    //---------------------------------------------------------------------------------------------
+    IEnumerator PlayEntranceAnim()
+    {
+        float curTime = Time.time;
+        for (int i = 0; i < battleGroup.EnemyFieldList.Count; ++i)
+        {
+            BattleObject bo = battleGroup.EnemyFieldList[i];
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.State != UnitState.Dead)
+            {
+                //TODO: use level time
+                battleGroup.EnemyFieldList[i].TriggerEvent("chuchang", curTime, null);
+            }
+        }
         yield return null;
     }
     //---------------------------------------------------------------------------------------------

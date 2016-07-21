@@ -92,6 +92,7 @@ public class UIBattle : UIBase
     public override void Init()
     {
         //TODO：战斗界面不会隐藏了，只会删除
+        m_PetPanel.Hide(BattleConst.closeSwitchPetUI);
     }
 
     public override void Clean()

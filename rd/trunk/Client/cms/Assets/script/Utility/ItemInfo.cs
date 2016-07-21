@@ -78,7 +78,7 @@ public class ItemInfo
                     else
                     {
                         return null;
-                    }
+                    } 
                                       
                     break;
                 default:
@@ -94,16 +94,18 @@ public class ItemInfo
     public static List<ItemInfo> getItemInfoList(string info, ItemParseType type)
     {        
         List<ItemInfo> itemInfos = new List<ItemInfo>();
-		if (string.IsNullOrEmpty (info))
-			return itemInfos;
+        return getItemInfoList1(itemInfos, info, type);
+    }
 
+    public static List<ItemInfo> getItemInfoList1(List<ItemInfo> itemInfos, string info, ItemParseType type)
+    {
+        if (string.IsNullOrEmpty(info))
+            return itemInfos;
         string[] items = info.Split(',');
         for (int i = 0; i < items.Length; i++)
         {
             itemInfos.Add(ItemInfo.valueof(items[i], type));
         }
-
         return itemInfos;
     }
-
 }

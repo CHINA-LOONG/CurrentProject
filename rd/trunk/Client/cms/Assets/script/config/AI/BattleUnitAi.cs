@@ -652,7 +652,7 @@ public class BattleUnitAi : MonoBehaviour {
 		return listValidTarget [rondomIndex];
 	}
 
-	void	CheckBossWeakPoint(GameUnit targetUnit)
+	public void	CheckBossWeakPoint(GameUnit targetUnit)
 	{
 		if (null == targetUnit)
 			return;

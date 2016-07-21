@@ -246,12 +246,13 @@ public class MagicDazhaoController : MonoBehaviour
 			return;
 		if (null == casterBattleGo)
 			return;
-		CloseFazhenUI ();
+
 		if (casterBattleGo.guid != casterID)
 		{
 			Logger.LogErrorFormat("ExitDazhao by PhyAttack Error: dazhao castID = {0}, getCasterID = {1}",casterBattleGo.guid,casterID);
 			return;
 		}
+		CloseFazhenUI ();
 		if (dazhaoState == DazhaoState.Prepare || dazhaoState == DazhaoState.Shifa)
 		{
 			//大招被打断

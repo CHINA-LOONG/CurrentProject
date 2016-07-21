@@ -83,14 +83,18 @@ public class FireFocusEffect : MonoBehaviour
 		}
 
         Transform targetTrans = bo.gameObject.transform;
-        if (bo.unit.attackWpName != null && bo.unit.attackWpName.Length > 0)
+		string wpName = bo.unit.attackWpName;
+		if (!bo.unit.isBoss)
+		{
+			wpName = "xgwp";
+		}
+		if (!string.IsNullOrEmpty(wpName))
         {
 			WeakPointRuntimeData wpRuntimeData = null;
 			//WeakPointData wp = null;
 
-			if(bo.wpGroup.allWpDic.TryGetValue(bo.unit.attackWpName,out wpRuntimeData))
+			if(bo.wpGroup.allWpDic.TryGetValue(wpName,out wpRuntimeData))
 			{
-				//wp = wpRuntimeData.staticData;
 				targetTrans = wpRuntimeData.wpMirrorTarget.gameObject.transform;
 				offsetH = 0.0f;
 

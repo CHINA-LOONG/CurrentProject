@@ -72,6 +72,7 @@ public class CreatePlayerModule : ModuleBase
         }
 
         Debug.Log("create player finish");
+        BuildModule.needSyncInfo = true;
         PlayerPrefs.SetString("testGuid", GameDataMgr.Instance.UserDataAttr.guid);       
         PB.HSPlayerCreateRet response = msg.GetProtocolBody<PB.HSPlayerCreateRet>();
         GameDataMgr.Instance.PlayerDataAttr.playerId = response.palyerID;

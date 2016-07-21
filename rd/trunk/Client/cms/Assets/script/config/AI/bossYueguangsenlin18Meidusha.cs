@@ -189,7 +189,7 @@ public class bossYueguangsenlin18Meidusha : BossAi {
     }
 	public override void OnVitalChange(SpellVitalChangeArgs args)
 	{
-		if (args.vitalCurrent==0)
+		if (args.vitalCurrent==0 && args.vitalType == (int)VitalType.Vital_Type_Default)
 		{
 			BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
 			target.TriggerEvent("meidushasi",Time.time,null);

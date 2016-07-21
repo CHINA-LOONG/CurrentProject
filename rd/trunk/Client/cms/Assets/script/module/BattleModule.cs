@@ -82,6 +82,8 @@ public class BattleModule : ModuleBase
 		Destroy (phyDazhaoController);
 		Destroy (magicDazhaoController);
         //UIMgr.Instance.CloseUI(UIBattle.ViewName);
+        //destroy battle camera manual,since camera may attach to gamemain throw ani
+        Destroy(BattleCamera.Instance.gameObject);
     }
 
 #region  Event

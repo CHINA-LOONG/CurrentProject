@@ -209,21 +209,16 @@ public class WeakPointRuntimeData
 			var bc = boxGo.GetComponent<BoxCollider>();
 			if(null == bc)
 				boxGo.AddComponent<BoxCollider>();
+			listBoxCollider.Add(wpTarget);
 		}
 	}
 
 	public void UpdateBoxCollider()
 	{
+		bool isCanFire = IsCanFireFocus ();
 		foreach (var wpTarget in listBoxCollider) 
 		{
-			if(IsCanFireFocus())
-			{
-				wpTarget.gameObject.SetActive(true);
-			}
-			else
-			{
-				wpTarget.gameObject.SetActive(false);
-			}
+			wpTarget.gameObject.SetActive(isCanFire);
 		}
 	}
 }

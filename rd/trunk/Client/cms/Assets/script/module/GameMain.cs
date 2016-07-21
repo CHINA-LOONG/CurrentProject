@@ -130,6 +130,7 @@ public class GameMain : MonoBehaviour
     public void OnSceneLoaded(GameObject instance, System.EventArgs args)
     {
         ClearModule();
+        UIMgr.Instance.OpenUI_(UILoading.ViewName);
         StartCoroutine(FuckingU3d(args));
     }
     //---------------------------------------------------------------------------------------------
@@ -139,6 +140,7 @@ public class GameMain : MonoBehaviour
         //fucking u3d 0.5s, or it will crash
         yield return new WaitForSeconds(0.5f);
         ChangeModuleDirect<BattleModule>(slArgs.enterParam);
+        UIMgr.Instance.CloseUI_(UILoading.ViewName);
     }
     //---------------------------------------------------------------------------------------------
     public void ClearModule()

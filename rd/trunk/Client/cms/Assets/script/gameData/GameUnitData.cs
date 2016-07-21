@@ -445,6 +445,13 @@ public class GameUnit : IComparable
         }
 
         ResetAcionOrder();
+        //切对局清buff
+        int buffCout = buffList.Count;
+        for (int index = 0; index < buffCout; ++index)
+        {
+            buffList[index].Finish(Time.time);
+        }
+        buffList.Clear();
         invincible = 0;
         stun = 0;
         dazhao = 0;
@@ -475,17 +482,7 @@ public class GameUnit : IComparable
         }
         args.vitalMax = maxLife;
         GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.SpellLifeChange, args);
-
-
-        //切对局清buff
-        int buffCout = buffList.Count;
-        for (int index = 0; index < buffCout; ++index)
-        {
-            buffList[index].Finish(Time.time);
-        }
-        buffList.Clear();
-        //战后回血
-        battleUnit.TriggerEvent(BattleConst.levelChangeEvent, Time.time, null);
+        //battleUnit.TriggerEvent(BattleConst.levelChangeEvent, Time.time, null);
     }
 
     public void ResetAllState()
@@ -524,6 +521,11 @@ public class GameUnit : IComparable
     {
         battleUnit.ClearEvent();
         buffList.Clear();
+        invincible = 0;
+        stun = 0;
+        energy = 0;
+        dazhao = 0;
+        dazhaoPrepareCount = 0;
     }
 
     public bool IsPrepareDazhao()

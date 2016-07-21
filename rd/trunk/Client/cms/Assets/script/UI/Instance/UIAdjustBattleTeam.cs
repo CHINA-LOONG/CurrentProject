@@ -159,8 +159,9 @@ public class UIAdjustBattleTeam : UIBase
 						subBg.transform.localScale = new Vector3(scale, scale, scale);
 					}
 				}
-				
-				EventTriggerListener.Get(subIcon.iconButton.gameObject).onClick = OnEnmeyIconClick;
+
+				ScrollViewEventListener.Get(subIcon.iconButton.gameObject).onClick = OnEnmeyIconClick;
+				ScrollViewEventListener.Get(subIcon.iconButton.gameObject).onPressEnter = OnEnmeyIconClick;
 				subBg.gameObject.SetActive(true);
 			}
 			else

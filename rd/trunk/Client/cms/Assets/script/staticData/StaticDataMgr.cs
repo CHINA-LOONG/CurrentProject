@@ -47,6 +47,8 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, LangStaticData> langData = new Dictionary<string, LangStaticData>();
     Dictionary<string, AssetLangData> assetLang = new Dictionary<string, AssetLangData>();
     Dictionary<string, string> audioMapping = new Dictionary<string, string>();
+    Dictionary<string, Dictionary<int, EquipProtoData>> equipData = new Dictionary<string, Dictionary<int, EquipProtoData>>();
+    Dictionary<int, EquipLevelData> baseAttrData = new Dictionary<int, EquipLevelData>();
 
     public void Init()
     {
@@ -82,16 +84,16 @@ public class StaticDataMgr : MonoBehaviour
         {
             var data = InitTable<BuffPrototype>("buff");
             foreach (var item in data)
-			{
-				try
-				{
-                	buffData.Add(item.id, item);
-				}
-				catch
-				{
-					Logger.LogError("repeat key :" + item.id);
-				}
-			}
+            {
+                try
+                {
+                    buffData.Add(item.id, item);
+                }
+                catch
+                {
+                    Logger.LogError("repeat key :" + item.id);
+                }
+            }
         }
         {
             //effectData = new Dictionary<string, EffectPrototype>();
@@ -140,7 +142,6 @@ public class StaticDataMgr : MonoBehaviour
                                     string[] effectKV = effectList[i].Split('|');
                                     if (effectKV.Length != 2)
                                         continue;
-
                                     persistPt.effectList.Add(new KeyValuePair<float, string>(float.Parse(effectKV[0]), effectKV[1]));
                                 }
                             }
@@ -200,13 +201,14 @@ public class StaticDataMgr : MonoBehaviour
                 effectPt.chance = wholeData.chance;
 
                 //Debug.Log(effectPt.id);
-				try{
-					effectData.Add(effectPt.id, effectPt);
-				}
-				catch
-				{
-					Logger.LogError("effect csv , key: " + effectPt.id);
-				}
+                try
+                {
+                    effectData.Add(effectPt.id, effectPt);
+                }
+                catch
+                {
+                    Logger.LogError("effect csv , key: " + effectPt.id);
+                }
             }
         }
         #region instance data
@@ -416,8 +418,8 @@ public class StaticDataMgr : MonoBehaviour
 
             foreach (var item in data)
             {
-				if(string.IsNullOrEmpty(item.id))
-					continue;
+                if (string.IsNullOrEmpty(item.id))
+                    continue;
 
                 if (speechData.ContainsKey(item.id))
                 {
@@ -459,8 +461,8 @@ public class StaticDataMgr : MonoBehaviour
 
             System.Action<LangStaticData> addElement = item =>
             {
-                if (string.IsNullOrEmpty(item.id)) 
-					return;
+                if (string.IsNullOrEmpty(item.id))
+                    return;
                 if (langData.ContainsKey(item.id))
                 {
                     langData[item.id] = item;
@@ -547,6 +549,37 @@ public class StaticDataMgr : MonoBehaviour
             }
             #endregion
         }
+        {
+            #region equip
+            var data = InitTable<EquipProtoData>("equipAttr");
+            Dictionary<int, EquipProtoData> equipData1 = null;
+            foreach (var item in data)
+            {          
+                if (!equipData.TryGetValue(item.id, out equipData1))
+                {
+                    equipData1 = new Dictionary<int, EquipProtoData>();
+                    equipData.Add(item.id, equipData1);
+                }
+                if (equipData1.ContainsKey(item.stage))
+                {
+                    Logger.LogError("error: Enhanced level duplication");
+                }
+                else
+                {
+                    equipData1.Add(item.stage, item);
+                }
+            }
+            #endregion
+        }
+        {
+            #region
+            var data = InitTable<EquipLevelData>("baseAttr");
+            foreach (var item in data)
+            {
+                baseAttrData.Add(item.id, item);
+            }
+            #endregion
+        }
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -561,15 +594,21 @@ public class StaticDataMgr : MonoBehaviour
                 rows.Add(rowData);
                 rowData = new List<string>();
             }
-
             var serializer = new CsvSerializer<T>();
             var data = serializer.Deserialize(rows[1], rows.GetRange(3, rows.Count - 3));
-
             return data;
         }
     }
-
+     
     #region Get Data
+
+    public EquipLevelData GetEquipLevelData(int id)
+    {
+        EquipLevelData item = null;
+        baseAttrData.TryGetValue(id, out item);
+        return item;
+    }
+
     public UnitBaseData GetUnitBaseRowData(int level)
     {
         return unitBaseData[level];
@@ -584,7 +623,6 @@ public class StaticDataMgr : MonoBehaviour
     {
         if (spellData.ContainsKey(id))
             return spellData[id];
-
         return null;
     }
     public int GetSPellLevelPrice(int nextLevel)
@@ -691,6 +729,21 @@ public class StaticDataMgr : MonoBehaviour
 		return item;
 	}
 
+    public EquipProtoData GetEquipProtoData(string id, int state)
+    {
+        EquipProtoData item = null;
+        Dictionary<int, EquipProtoData> item2 = null;
+        if (id != string.Empty)
+        {
+            equipData.TryGetValue(id, out item2);
+        }        
+        if (item2 != null && item2.Count > 0)
+        {
+            item2.TryGetValue(state, out item);            
+        }
+        return item;
+    }
+
 	public	PlayerLevelAttr GetPlayerLevelAttr(int level)
 	{
 		PlayerLevelAttr levelAttr = null;
@@ -718,7 +771,7 @@ public class StaticDataMgr : MonoBehaviour
         timeData.TryGetValue(id, out item);
         return item;
     }
-
+       
 
     public SpeechData GetSpeechData(string id)
     {
@@ -733,6 +786,9 @@ public class StaticDataMgr : MonoBehaviour
         unitStageData.TryGetValue(stage, out item);
         return item;
     }
+       
+
+
     public string GetRealName(string asset)
     {
         AssetLangData item = null;

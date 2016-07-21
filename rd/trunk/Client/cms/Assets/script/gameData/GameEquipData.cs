@@ -26,6 +26,18 @@ public class EquipData
     public int level;
     public string equipId;
     public List<GemInfo> gemList;
+    //显示用数据
+    public int health;
+    public int strength;
+    public int intelligence;
+    public int defense;
+    public int speed;
+    //强化属性
+    public int healthStrengthen;
+    public int strengthStrengthen;
+    public int intelligenceStrengthen;
+    public int defenseStrengthen;
+    public int speedStrengthen;
 
     public static EquipData valueof(string equipId, int stage, int level, List<PB.GemPunch> gemList)
     {
@@ -34,13 +46,31 @@ public class EquipData
         equipData.level = level;
         equipData.equipId = equipId;
         equipData.gemList = new List<GemInfo>();
-
+        EquipProtoData item = StaticDataMgr.Instance.GetEquipProtoData(equipId, stage);
+        EquipLevelData baseAttr = StaticDataMgr.Instance.GetEquipLevelData(item.stageAttrId);
+        //基础属性id
+        equipData.health = baseAttr.health;
+        equipData.strength = baseAttr.strength;
+        equipData.intelligence = baseAttr.intelligence;
+        equipData.defense = baseAttr.defense;
+        equipData.speed = baseAttr.speed;
+        //强化属性
+        if (level != 0)
+        {
+            baseAttr = StaticDataMgr.Instance.GetEquipLevelData(item.levelAttrId);
+            //基础属性id
+            equipData.healthStrengthen = baseAttr.health * level;
+            equipData.strengthStrengthen = baseAttr.strength * level;
+            equipData.intelligenceStrengthen = baseAttr.intelligence * level;
+            equipData.defenseStrengthen = baseAttr.defense * level;
+            equipData.speedStrengthen = baseAttr.speed * level;
+        }
         foreach (PB.GemPunch element in gemList)
         {
             GemInfo gemInfo = new GemInfo(element);
             equipData.gemList.Add(gemInfo);
         }
-
+        //
         return equipData;
     }
 }
@@ -98,7 +128,6 @@ public class GameEquipData
         {
             return equipData;
         }
-
         return null;
     }
 }

@@ -33,7 +33,8 @@ instance_kaishizhandou,开始战斗,Start Battle
 instance_quxiaozhandou,取消战斗,Cancel
 instance_zhenrongtiaozheng,阵容调整,Line-up
 tip_zhenrongError,请按正确顺序排列出战宠物,Please arrange the monsters in right order
-spell_yongyoujineng,拥有技能,Skill
+spell_yongyoujineng_normal,一般技能,Normal Skills
+spell_yongyoujineng_special,特殊技能,Special Skills
 dazhao_jieduan,请,Please
 dazhao_click,点击,tap on
 dazhao_shifang,怪物,a monster

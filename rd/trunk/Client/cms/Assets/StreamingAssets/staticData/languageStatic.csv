@@ -92,10 +92,10 @@ buffMagicTips,使单体目标智力提升10%，持续3回合,Increases intellige
 buffMagicSelfTips,使自身智力提升10%，持续3回合,Increases your intelligence by 10% for 3 turns
 buffAttackTips,使单体目标力量提升10%，持续3回合,Increases strength of a single target by 10% for 3 turns
 buffAttackSelfTips,使自身力量提升10%，持续3回合,Increases your strength by 10% for 3 turns
-buffDefenseTips,使单体目标防御力提升10%，持续3回合,Increases resistance of a single target by 10% for 3 turns
-buffDefenseSelfTips,使自身防御力提升10%，持续3回合,Increases your resistance by 10% for 3 turns
+buffDefenseTips,使单体目标防御力提升10%，持续3回合,Increases defense of a single target by 10% for 3 turns
+buffDefenseSelfTips,使自身防御力提升10%，持续3回合,Increases your defense by 10% for 3 turns
 buffHotTips,使单体目标每回合回复30%法攻的生命值，持续3回合,Recovers (30% of magic ATK) HP for a single target each turn for 3 turns
-debuffDefenseTips,使单体目标防御力降低10%，持续3回合,Reduces resistance of a single target by 10% for 3 turns
+debuffDefenseTips,使单体目标防御力降低10%，持续3回合,Reduces defense of a single target by 10% for 3 turns
 debuffAttackTips,使单体目标力量降低10%，持续3回合,Reduces strength of a single target by 10% for 3 turns
 debuffMagicTips,使单体目标智力降低10%，持续3回合,Reduces intelligence of a single target by 10% for 3 turns
 debuffSpeedTips,使单体目标速度降低10%，持续3回合,Reduces speed of a single target by 10% for 3 turns
@@ -129,7 +129,7 @@ bossYueguangsenlin18Meidusha5Tips,对全体目标释放减益buff，buff会根�
 bossYueguangsenlin18Meidusha8Tips,给全体目标造成200%法攻的暗属性伤害并10%概率眩晕目标1回合,Deals (200% of magic ATK) dark type damage to all targets with a 10% chance of stun for 1 turn
 bossYueguangsenlin18Meidusha9Tips,给单体目标造成50%物攻的物理伤害,Deals (50% of physical ATK) physical damage to a single target
 ultXiyirenTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害并大概率附加嘲讽效果,"Can carry out {0} actions, each time dealing {1}% physical damage with a high chance of taunt"
-psvXiyirenTips,受到物理伤害时，80%几率提升自身50%防御力，持续3回合,Gives an 80% chance of increasing your defense by 50% whenever you take damage for 3 turns
+psvXiyirenTips,受到物理伤害时，80%几率提升自身50%防御力，持续3回合,Gives an 80% chance of increasing your defense for 3 turns by 50% whenever you take damage 
 ultHuapoTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害,"Can carry out {0} actions, each dealing {1}% physical damage to a single target"
 psvHuapoTips,使用物理技能时，40%几率提升自身10%力量，持续3回合,Gives a 40% chance of increasing your strength by 10% whenever casting a physical ability  for 3 turns
 ultPanshenTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害,"Can carry out {0} actions, each time dealing {1}% physical damage"
@@ -139,12 +139,12 @@ psvMantuoluoTips,使用法术技能时，20%几率恢复自身血量,Gives a 20%
 ultAmuteTips,给全体目标添加24%物攻的物理与魔法吸收护盾,Summons a shield that absorbs (24% of physical ATK) physical and magic damage for all targets
 psvAmuteTips,首次死亡时，血量回复为10%血量上限,Recovers 10% of max HP upon dying the first time
 ultWaguiTips,给单体目标造成{0}%法攻的水属性伤害并大概率附加眩晕效果,Deals ({0}% of magic ATK) water type damage to a single target with a high chance of stun
-psvWaguiTips,受到伤害时，80%几率降低攻击者10%速度，持续3回合,Gives an 80% chance of decreasing attacker's speed by 10% whenever you take damage for 3 turns
+psvWaguiTips,受到伤害时，80%几率降低攻击者10%速度，持续3回合,Gives an 80% chance of decreasing attacker's speed by 10%  for 3 turns whenever you take damage
 ultHetongTips,给全体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type damage to all targets
-psvHetongTips,战斗开始时，提升己方全体50%防御力，持续3回合,Increase all allies' resistance by 50% at the start of battle for 3 turns
+psvHetongTips,战斗开始时，提升己方全体50%防御力，持续3回合,Increase all allies' defense by 50% at the start of battle for 3 turns
 ultLonggongtongziTips,给全体目标回复{0}%法攻的生命值并附带法术吸收护盾,Recovers ({0}% of magic ATK) HP for all targets and summons a shield that abosrbs magic damage
 psvLonggongtongziTips,使用治疗技能时，10%几率附加法术吸收护盾,Gives a 10% chance of summoning a shield that absorbs magic damage whenever casting a healing ability
-ultLangrenTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害并小概率附加流血dot,"Can carry out {0} actions, each dealing {1}% physical damage to all targets with a low chance of tearing"
+ultLangrenTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害并小概率附加撕裂,"Can carry out {0} actions, each dealing {1}% physical damage to all targets with a low chance of tearing"
 psvLangrenTips,血量小于等于总血量25%时，提升自身10%力量,Increases your strength by 10% whenever HP drops to 25% or below
 ultAnpushaTips,给全体目标造成{0}%法攻的暗属性伤害并附加虚弱和破甲效果,Deals ({0}% of magic ATK) dark type damage to all targets as well as weakening and armor reduction
 psvAnpushaTips,使用法术技能时，50%几率恢复自身血量,Gives an 50% chance of restoring your HP whenever casting a magic ability
@@ -153,7 +153,7 @@ psvKairuisiTips,使用物理技能时，50%几率驱散敌方增益效果,Gives 
 ultLuoxinfuTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害并小概率附加眩晕效果和痛楚,"Can carry out {0} actions, each dealing {1}% physical damage to a single target with a small chance of stun and anguish"
 psvLuoxinfuTips,使用物理技能时，35%几率附带痛楚,Gives a 35% chance of anguish whenever casting a physical ability 
 ultMomoTips,给全体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for all targets' 
-psvMomoTips,受到物理伤害时，80%几率给自身添加物理伤害减免护盾,Gives an 80% chance of providing a shield that reduces physical damage whenever you take damage
+psvMomoTips,受到物理伤害时，80%几率给自身添加物理伤害减免护盾,Gives an 80% chance of providing a shield that reduces physical damage whenever you take physical damage
 ultHapiTips,驱散己方全体妨害效果,Dispells all debuff effects that affect allies' damage
 psvHapiTips,永久提升自身10%智力,Increases intelligence permanently by 10%
 ultZouyincaoTips,给全体目标提升10%力量并驱散妨害效果,Increases strength by 10% for all targets with dispells all debuff effects

@@ -595,11 +595,6 @@ public class BattleProcess : MonoBehaviour
         GameUnit actionCaster = null;
 		if (action != null)
 		{
-			if(curAction.caster ==null)
-			{
-				OnActionOver();
-				return;
-			}
             actionCaster = curAction.caster.unit;
 			switch (action.type)
 			{
@@ -617,7 +612,12 @@ public class BattleProcess : MonoBehaviour
 			case ActionType.SwitchPet:
 				StartCoroutine(RunSwitchPetAction(action.caster, action.target));
 				break;
-			case ActionType.Dazhao:
+            case ActionType.Dazhao:
+                if (curAction.caster == null || curAction.target == null)
+                {
+                    OnActionOver();
+                    return;
+                }
 				if (action.dazhaoType == DazhaoType.Phyics)
                 {
                     inDazhaoAction = true;
@@ -848,11 +848,16 @@ public class BattleProcess : MonoBehaviour
         if (curAction == null)
             return;
 
+        if (curAction.caster == null || curAction.caster.unit.State == UnitState.Dead)
+            return;
+
+
         Dictionary<string, Spell> casterSpellList = curAction.caster.unit.spellList;
         Spell firstSpell;
         if (casterSpellList.TryGetValue(curAction.firstSpellID, out firstSpell) == true)
         {
             GameUnit target = BattleUnitAi.Instance.GetTargetThroughSpell(firstSpell, curAction.caster.unit);
+            BattleUnitAi.Instance.CheckBossWeakPoint(target);
             SpellService.Instance.SpellRequest(curAction.firstSpellID, curAction.caster.unit, target, Time.time, true);
 
             SpellVitalChangeArgs args = new SpellVitalChangeArgs();

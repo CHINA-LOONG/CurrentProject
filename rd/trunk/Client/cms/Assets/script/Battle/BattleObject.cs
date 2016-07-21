@@ -305,7 +305,7 @@ public class BattleObject : MonoBehaviour
                             if (curParticleData.locky == "true")
                             {
                                 curParticleData.psObject.transform.localRotation = Quaternion.identity;
-                                curParticleData.psObject.transform.localPosition = new Vector3(rootTransform.position.x, 0.0f, rootTransform.position.z);
+                                curParticleData.psObject.transform.localPosition = new Vector3(rootTransform.position.x, BattleConst.floorHeight, rootTransform.position.z);
                             }
 
                         }

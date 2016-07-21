@@ -773,7 +773,7 @@ bossdajie18Ladong5wp03,金苹果,Golden Apple
 ladong5hide_head,屠龙先揍头,Try hitting it's Head first?
 ladong5normal_head,让守护龙头晕目眩,Make Guardian Dragon dizzy
 ladong5normal_goldenapple,金苹果是守护龙的弱点所在，狠狠地攻击！,The Golden Apple is the dragon's real weakpoint!
-speechname_jiuwei,九尾狐,9-Tails
+speechname_jiuwei,九尾狐,Nine Tails
 speechname_bingxuenvwang,冰雪女王,Chione
 speechname_wo,我,Me
 speechname_chitiangou,大天狗,Tengu
@@ -824,7 +824,7 @@ speech_xinshoucompose,<color=#ffcc00>低级的纹章或材料可以通过合成�
 speech_xinshouguild1,公会是志同道合的代行者伙伴们交流信息的地方。,Joining a guild is the best way to meet and chat with other monster keepers.
 speech_xinshouguild2,在<color=#ffcc00>公会许愿池</color>，每天可以进行<color=#ffcc00>一次许愿</color>。向三位命运女神许愿的效果不同，付出越多收获越大。,"You can <color=#ffcc00>make a wish once a day at the Guild Wish</color>. Making a wish via the 3 different goddesses will yield different effects, and the more spent, the more you shall receive. "
 speech_xinshouguild3,公会会向代行者们发布一些任务。,Guilds will post quests for their members to participate in. 
-speech_xinshouguild4,完成任务不但能得到在<color=#ffcc00>大量贡献值和金币</color>，还可能得到一些在<color=#ffcc00>不得了的材料</color>呢。记得查看额外奖励哦！,"Completing these missions will not only give <color=#ffcc00>large amounts of contribution points and coins</color>, but may also possibly drop some <color=#ffcc00>awesome materials</color>. Remember to check for extra rewards!"
+speech_xinshouguild4,完成任务不但能得到<color=#ffcc00>大量贡献值和金币</color>，还可能得到一些<color=#ffcc00>不得了的材料</color>呢。记得查看额外奖励哦！,"Completing these missions will not only give <color=#ffcc00>large amounts of contribution points and coins</color>, but may also possibly drop some <color=#ffcc00>awesome materials</color>. Remember to check for extra rewards!"
 speech_xinshouguild5,公会任务需要组队完成，不过<color=#ffcc00>队长会有额外奖励</color>呢。,"Guild quests will require the efforts of player teams to be completed, and <color=#ffcc00>team captains will get extra rewards</color>."
 speech_xinshouguild6,这里是<color=#ffcc00>公会基地</color>，可以将自己的妖怪作为<color=#ffcc00>佣兵</color>派遣到这里，公会伙伴们就可以雇佣了~,This is the <color=#ffcc00>guild base</color>. You may dispatch some of your monsters as <color=#ffcc00>mercenaries</color> here to be hired and used by other players.
 speech_xinshouguild7,当然，雇佣会有相应的佣金，来试试看吧~,Of course players will have to pay a fee when hiring mercenary monsters. Let's give it a try!
@@ -838,10 +838,7 @@ speech_xinshouadventure6,当你选择好冒险的5只宠物后，点击<color=#f
 speech_xinshouadventure7,悄悄的告诉你，如果不想等待冒险时间，也可以<color=#ffcc00>通过花费钻石快速完成探险</color>~跟我来看看吧~,"I'll let you in on a little secret… If you don't want to wait for the adventure time, you can also <color=#ffcc00>spend some diamonds to speed up the exploration</color>. Let's give it a shot!"
 speech_xinshouadventure8,这里列出了你所有小队的探险情况哟，点击“<color=#ffcc00>立即完成</color>”按钮，就可以<color=#ffcc00>立即召回冒险的宠物并获得冒险奖励</color>。,"The statuses of all your adventure teams are listed here. Tap the ""<color=#ffcc00>Complete Now</color>"" button to <color=#ffcc00>immediately recall your monsters and receive the adventure rewards</color>. "
 speech_xinshoudecompose,可以将没用的<color=#ffcc00>装备和宠物分解掉</color>，转化成<color=#ffcc00>打造或者进阶材料</color>，这可是变废为宝的好方法哦~,You may <color=#ffcc00>discard any useless monsters or equipment</color> and turn them into <color=#ffcc00>forge or evolution materials</color>. This is the best way to get value from any unused items.
-speech_chongwuqianghuashi,恭喜获得了贤者墨水！玩家等级达到8级时，在宠物界面可以进阶宠物，能够大幅提升宠物战斗力哦！,Congratulations! You've received some Sage's Ink! Players can advance their monsters via the monsters menu after reaching level 8. Advancing monsters can greatly increase their BP!
 speech_xinshouchongwujinjie,当然，满足一定的<color=#ffcc00>道具、金币和等级要求</color>才能完成进阶哦~,"Of course, you must first <color=#ffcc00>meet the set item, coin, and level requirements</color> to advance a monster."
-speech_xinshoukaikongshi1,恭喜获得了装备开孔石！玩家等级达到20级时，在宠物界面可以装备开孔，开孔后的装备能够镶嵌纹章。,Nice! You've received an Insignia Stone! Players can use insignia stones on equipment via the monsters menu to open slots for attaching insignias after reaching level 20. 
-speech_xinshoukaikongshi2,镶嵌纹章能够大幅提升宠物战斗力哦！,Attaching insignias can greatly increase monsters' BP!
 speech_xinshouxiangqian1,装备达到<color=#ffcc00>蓝色品质</color>后就可以开孔了，<color=#ffcc00>品质越高，开孔上限越高</color>。,"<color=#ffcc00>Blue</color> equipment or higher can have slots, and <color=#ffcc00>the higher the grade of the equipment, the higher the slot limit</color>."
 speech_xinshouxiangqian2,开孔后，就可以将形状对应的<color=#ffcc00>纹章镶嵌</color>进去了，纹章分为9种，给装备附加的属性各不相同。,"After opening a slot, you can <color=#ffcc00>attach the corresponding insignia</color>. There are 9 types of insignia, each boosting different stats for the equipment."
 speech_xinshouxiangqian3,如果开到的孔不满意，还可以重复开孔，直到开到满意的形状为止~,"If you are not happy with the slots, you can re-open the slots until you are satisfied with the results."
@@ -855,21 +852,17 @@ speech_0fightzhong1,怎么办啊，她太强了，你根本打不过她啊！,Wh
 speech_0fightzhong2,哼！每个怪物都有弱点，只有你的<color=#ffcc00>照妖镜</color>（眼镜）才能找到弱点！,Every Monster got a weakpoint and your <color=#ffcc00>Mytho Lens</color> (the eyepiece) can reveal it!
 speech_0fightzhong3,别担心，现在我就教你怎么用！,"Don't worry, follow my instruction now!"
 speech_0fighthou1,呼……胜利了，没想到你还挺能干嘛。,Whew… We won! I wasn't sure if you had it in ya.
-speech_0fightruodian,界面左侧列出了怪物所有受击点，第一个点是默认受击点。,"Monster target points are listed on the left, with the first weakpoint selected by default."
-speech_0fightruodian1,攻击默认受击点可不是明智的选择哦~要找到怪物真正的弱点，才能有效地打击怪物~,Attacking the default target point is not always the best choice. You should search for the monster's real weakpoints to attack it more effectively.
 speech_0fightjihuo,太棒了！我们找到了冰雪女王的<color=#ffcc00>弱点</color>！,Nice! We have found Chione's <color=#ffcc00>weakpoint</color>! 
 speech_0fightjihuo1,干的漂亮，一鼓作气打败冰雪女王吧！,Great Job! Let's defeat Chione now!
 speech_kaijiaxing1,有没有发现这个弱点有些特别？没错！它是有血条的！<color=#ffcc00>有血条的弱点是可以被打掉的</color>。,Notice anything special about this weakpoint? That's right! <color=#ffcc00>These secret point can be destroyed</color>. 
 speech_kaijiaxing2,打掉这类弱点大多数时候会<color=#ffcc00>削弱boss能力或者暴露更多弱点</color>~快集火<color=#ffcc00>花魄的花瓣</color>吧！,Destroying this kind of secret points will usually <color=#ffcc00>weaken the boss' abilities or reveal more secret points</color>. Now tap on <color=#ffcc00>Flower Pixie's petal</color> to concentrate your attack!
 speech_kaijiaxing3,有没有发现这个弱点有些特别？没错！它是有血条的！<color=#ffcc00>有血条的弱点是可以被打掉的</color>。,Notice anything special about this weakpoint? That's right! <color=#ffcc00>These secret point can be destroyed</color>. 
 speech_kaijiaxing4,打掉这类弱点大多数时候会<color=#ffcc00>削弱boss能力或者暴露更多弱点</color>~快集火<color=#ffcc00>曼陀罗的根</color>吧！,Destroying this kind of secret points will usually <color=#ffcc00>weaken the boss' abilities or reveal more secret points</color>. Now tap on <color=#ffcc00>Mandrake's root</color> to concentrate your attack!
-speech_element1,对面<color=#ffcc00>水属性小怪</color>均被我<color=#ffcc00>方木属性宠物克制</color>，容易击杀。,The enemy <color=#ffcc00>water type monsters</color> can be <color=#ffcc00>countered</color> and defeated easily by our <color=#ffcc00>grass type monsters</color>.
+speech_element1,对面<color=#ffcc00>水属性小怪</color>均被我方<color=#ffcc00>木属性宠物克制</color>，容易击杀。,The enemy <color=#ffcc00>water type monsters</color> can be <color=#ffcc00>countered</color> and defeated easily by our <color=#ffcc00>grass type monsters</color>.
 speech_element2,敌方阵容变强了，出现了<color=#ffcc00>克制我方属性的小怪</color>！要收集更多的怪应对不同的敌方组合哦！,"The enemy formation has become stronger, and contains <color=#ffcc00>monster that counter our own</color>! Get more monster to deal with different affinity."
 speech_duoruodian,boss有<color=#ffcc00>多个弱点</color>哦，鉴定成功后，考虑一下<color=#ffcc00>合适的攻击顺序</color>吧~,"Bosses can have <color=#ffcc00>many weakpoints</color>, so after discovering them, consider <color=#ffcc00>the best order for attacking them</color>."
 speech_yincangruodian,注意到了吗？有些弱点的图标以<color=#ffcc00>问号形式</color>出现，是不会提示位置的呢，<color=#ffcc00>需要自己找到哦</color>~,Notice that some weakpoints have <color=#ffcc00>a question mark</color>? Is it indicating a certain spot? <color=#ffcc00>You'll have to find out yourself</color>!
 guide_0dazhao,<color=#ffcc00>大招</color>能量已满，<color=#ffcc00>点击</color>释放,"Power is full, <color=#ffcc00>tap</color> to cast <color=#ffcc00>ultimate ability</color>."
-guide_0findwp,根据提示<color=#ffcc00>形状</color>找到<color=#ffcc00>弱点</color>,"Find the <color=#ffcc00>weakpoint</color> on the monster 
-according to these <color=#ffcc00>shapes</color>. "
 guide_tips,查看形状,Notice the shape.
 guide_tips1,使用照妖镜<color=#ffcc00>查看怪物</color>,Use Mytho Lens to <color=#ffcc00>detect Monster</color>.
 guide_0zhaoyaojing,"拖动<color=#ffcc00>照妖镜</color>至
@@ -949,10 +942,6 @@ guide_exp2,升级能使宠物战力提升呢！,"Upgrading a monster increases
 its battle point (BP)."
 guide_exp3,这里列出了所有<color=#ffcc00>信仰之力</color>,All of your <color=#ffcc00>Mytho Essence</color> is listed here.
 guide_exp4,<color=#ffcc00>点击或者长按</color>可以使用信仰之力哦！,<color=#ffcc00>Tap or tap and hold</color> to use the Mytho Essence.
-guide_exp5,再看看如何<color=#ffcc00>升级技能</color>吧~,Now take a look at how to upgrade your abilities.
-guide_exp6,"提高技能等级，可以
-提升技能伤害呢~","Increasing abilities can increase 
-damage against enemies."
 guide_ability1,"跟我来看看如何给
 宠物<color=#ffcc00>升级技能</color>吧！","Come and see how we can <color=#ffcc00>increase</color> 
 the power of the <color=#ffcc00>Monster abilities</color>."
@@ -965,8 +954,8 @@ abilitiy released manually</color>."
 guide_ability5,"其他技能战斗中<color=#ffcc00>自动施放</color>，
 点击切换技能","Other abilities are <color=#ffcc00>used automatically</color> by the 
 monster itself.Try tapping on other abilities."
-guide_ability6,"有些技能可以升级，升级
-技能要消耗<color=#ffcc00>金币和技能点</color>
+guide_ability6,"大多数技能可以升级，但
+需要消耗<color=#ffcc00>金币和技能点</color>
 （点击任意位置结束）","Most abilities can be upgraded 
 with <color=#ffcc00>coins and abilitiy points</color>. 
 (Tap anywhere to continue)"
@@ -1035,7 +1024,7 @@ equipment</color>  without forging your equipment."
 guide_zhuangbeilock1,"<color=#ffcc00>锁孔</color>可以防止
 心仪的孔消失哦！","You can <color=#ffcc00>lock slots</color> to 
 keep them from being changed."
-push_linghuoli,九尾狐送来了一箱苹果， 给你补给活力。,9-Tails sent you a box of apple to give you Energy.
+push_linghuoli,九尾狐送来了一箱苹果， 给你补给活力。,Nine Tails sent you a box of apple to give you Energy.
 push_guildtask1,公会任务倒计时即将结束，没完成的要抓紧咯~,"Guild Quests will expire when the time limit is reached, so make sure to complete them on time! "
 push_guildtask2,公会任务已完成，记得去领取奖励哦！,"Guild Quest already completed, remember to go collect the rewards!"
 push_tongtianta1,通天塔已刷新！重新挑战，领取丰厚奖励吧。,Tower Of Darkness has refreshed. Go and battle for some more rewards.
@@ -1049,7 +1038,7 @@ push_long,你的宠物都在等你指挥， 快回来帮他们找信仰之力。
 bingxuenvwang3hide_head,根据图形提示找到弱点,Looks like her head is the weakpoint.
 bingxuenvwang3normal_head,冰雪女王的要害,This is Chione's weakpoint.
 bossxinshouBingxuenvwang3wp02,头,Head
-speech_blt_11_1,太棒了！我们打破了花魄！但是为什么街上会有这么多妖怪呢？,Great! We defeated the Flower Pixie! But why are there monsters in the street?
+speech_blt_11_1,太棒了！我们打败了花魄！但是为什么街上会有这么多妖怪呢？,Great! We defeated the Flower Pixie! But why are there monsters in the street?
 speech_blt_11_2,是呀，现在异界的很多妖怪都来到了人界，正如我告诉你的那样，异界正处于战争之中！,"Yep! There are already a lot of monsters that have come to the real world. As I have told you, the Mythos is at war!"
 speech_blt_11_3,总之，妖怪是依靠人类对我们的信仰生存的，所以很多妖怪来到人界，是为了获得信仰之力。,"Simply put, monsters rely on the belief of mankind to exist. That's their mytho essence. That's why many monsters have come to the real world, they want to get the power of more people believing."
 speech_blt_11_4,信仰之力，那是什么？,Mytho… essence? What do you mean?
@@ -1171,7 +1160,7 @@ speech_blt_38_6,说起来，到底异界发生了什么，为什么妖怪会来�
 speech_blt_38_7,………………,…
 speech_blt_38_8,我们去异界看个清楚吧,Why don't we go to Mythos and you can see for ourselves?
 speech_blt_38_9,………………,…
-speech_blt_38_10,九尾？,9-Tails?
+speech_blt_38_10,九尾？,Nine Tails?
 speech_blt_38_11,…………好吧，不过回到异界唯一的办法就是房间里的传送门了,Alright… But the only way back to Mythos is through the portal in the bedroom.
 speech_blt_41_1,这里是哪里？,Where is this?
 speech_blt_41_2,啊！为什么传到了这么讨厌的地方！,Ah! How did we end up here?!
@@ -1214,7 +1203,7 @@ speech_blt_44_20,嗯……算了没事……你回到故乡的时候千万要小
 speech_blt_44_21,？,?
 speech_blt_45_1,按照大天狗所说，出了前面的山谷就应该能看到火神殿了。,"According to Tengu, we should be able to see the Ember Palace once we get out the valley."
 speech_blt_46_1,距离火神殿还有一段路,We still have a ways to go before we reach the Ember Palace.
-speech_blt_46_2,喂喂，九尾，打底异界发生了什么，为什么你们会到人界去呢？,"Hey, 9-Tails! So what exactly happened in Mythos. Why did you guys ever want to come to the real world?"
+speech_blt_46_2,喂喂，九尾，打底异界发生了什么，为什么你们会到人界去呢？,"Hey, Nine Tails! So what exactly happened in Mythos. Why did you guys ever want to come to the real world?"
 speech_blt_46_3,…………你到了就知道了,You'll understand when we get there.
 speech_blt_47_1,这里就是火神殿的前面了，不出意外的话，会有伊芙利特守卫在这里，我们要小心。,"This is the front of Ember Palace. If we avoid any other problems, there should be Ifrit guards here. We should be careful."
 speech_blt_48_1,前面马上就要进入火神殿了,Ok the entrance to the palace should be just ahead.
@@ -1411,7 +1400,7 @@ speech_blt_64_2,女妖的魂器里装满了灵魂，这是她的法力源泉。,
 speech_blt_65_1,堕落的天使，圣洁的光环反而成了杀人的凶器。,"Fallen Angel, her holy halo has now become a weapon for murder."
 speech_blt_66_1,地狱的守门犬，每一个头颅都不可小觑。,Hellhound.... Don't underestimate any of its heads.
 speech_blt_67_1,那不是嫦娥吗，她为什么跑到这里来了,Could that be Moon Devine? What is she doing here?
-speech_blt_67_2,你不是九尾狐狸吗，为什么到死亡之国来了,"Why, aren't you 9 Tails? Why have you come to the Death Kingdom?"
+speech_blt_67_2,你不是九尾狐狸吗，为什么到死亡之国来了,"Why, aren't you Nine Tails? Why have you come to the Death Kingdom?"
 speech_blt_67_3,我还想问你呢,I was just about to ask you the same!
 speech_blt_67_4,冥王说有一股邪恶力量从人界而来，让我帮忙这里的驻兵防守下，你看我这身黑色的衣服是不是特别应景，嘻嘻～对了，那邪恶势力不会是你们吧？,"Hades said that an evil force had come from the real world and decided to send me here. I got this black outfit just for the occasion! Hehe, by the way, that evil force wouldn't happen to be you guys?"
 speech_blt_67_5,……才不是，我们也是追着那股力量而来的,Of course not! We are also chasing after the same thing!
@@ -2120,7 +2109,7 @@ speech_blt_72_5,没有问题呀，在这光之国有没有人能够打开通道�
 speech_blt_72_6,光之国最厉害的，应该是精灵王子了吧，或许你可以试试去拜托他,The Light Kingdom is the most powerful of all! The Prince Elve should be able to help... Perhaps we can try asking him.
 speech_blt_72_7,嗯，那我们去找精灵王子吧,"Ok, let's go find him."
 speech_blt_74_1,（东张西望）…………,(looking around) ... 
-speech_blt_74_2,九尾！你看那个人！,Nine-tails! Look who it is!
+speech_blt_74_2,九尾！你看那个人！,Nine Tails! Look who it is!
 speech_blt_74_3,竟然是那个代行者老头，他怎么会在异界，我们快跟上去！,So it's that old monster keeper. How could he be on Mythos? Let's catch up to him and see!
 speech_blt_75_1,（东张西望）…………,(looking around) ... 
 speech_blt_75_2,（低声）他好像还没有发现我们,(Whispering) He doesn't seem to have noticed us.
@@ -2161,7 +2150,7 @@ speech_blt_86_2,有一股十分邪恶的力量过来了，要小心！,"A very e
 speech_blt_86_3_1,刚才那个…是地狱七君主？！看来这个废墟下封印着不得了的东西……,Were those... The 7 Deadly Sins? These ruins must contain something incredible...  
 speech_blt_87_1,啊啊啊，又来了！,Ahhh... They're here again!
 speech_blt_87_2,小心，可能又是地狱七君主之一！,Careful! It could be another one of the Deadly Sins!
-speech_blt_88_1,九尾，这个废墟里面竟然有这么可怕的怪物，这个废墟原来到底是什么东西？,"Nine-tails, with such terrible monsters roaming around here, what could these ruins have originally been?"
+speech_blt_88_1,九尾，这个废墟里面竟然有这么可怕的怪物，这个废墟原来到底是什么东西？,"Nine Tails, with such terrible monsters roaming around here, what could these ruins have originally been?"
 speech_blt_88_2,我也不知道，不过看起来像是图书馆之类的……,"I'm not entirely sure either, but it seems to have been a library of some sort... "
 speech_blt_88_3,…………,... 
 speech_blt_88_2_1,头好痛……,"Uh, my head... "
@@ -2175,7 +2164,7 @@ speech_blt_88_3_5,……知晓一切的未来，所有未来化成的神灵…�
 speech_blt_88_3_6,桀桀桀桀桀桀桀……,Mwahahahaha…
 speech_blt_88_3_7,！！！！！！,!!!!!
 speech_blt_88_3end_1,咳咳……这个怪物是丽莎召唤出来的吗！,Ughh... Was this monster summoned by Lisa!
-speech_blt_88_3end_2,丽莎，你这是怎么回事，啊九尾你快看，丽莎好像不对劲。,"Lisa, what's going on? Nine-tails, come quickly! Something's wrong with Lisa!"
+speech_blt_88_3end_2,丽莎，你这是怎么回事，啊九尾你快看，丽莎好像不对劲。,"Lisa, what's going on? Nine Tails, come quickly! Something's wrong with Lisa!"
 speech_blt_88_3end_3,别过去，她身上缠绕着十分可怕的力量，被碰到我们都会粉碎！,Don't move. Lisa's body is wrapped in a terrible force. Touch her and we will all be destroyed!
 speech_blt_88_3end_4,……献上知性的亚弗戈蒙之力，回应我的祈祷吧，存在于所有未来中的幻象，将于此间成型……降临于人世吧，幻界大图书馆！,"An offering for the power of Aforgomon, answer my prayers. The existance of all future visions will take shape here... It's coming to the world, the magic world's Great Library!"
 bingyan3normal_head,普通受击点,This is not a weakpoint.

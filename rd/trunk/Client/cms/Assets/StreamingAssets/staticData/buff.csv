@@ -26,8 +26,8 @@ psvLonggongtongzib1,11,,999,0,0,0,0,0,0,0,0,,0,,,,,,"UsingCureRate_10,magicShile
 magicShiledb1,10,,3,,,,,,,,,,0,0,0.4,,,,,,,0,0,0
 psvMantuoluob1,11,,999,0,0,0,,,,,,,,,,,,,"UsingMagicRate_20,psvCuree1",,999,0,0,0
 psvAnpushab1,11,,999,0,0,0,,,,,,,,,,,,,"UsingMagicRate_50,psvCuree1",,999,0,0,0
-ultAmuteb1,9,,2,0,0,0,,,,,,,0,0,0.24,,,,,,0,0,0,0
-ultAmuteb2,10,,2,0,0,0,,,,,,,0,0,0.24,,0,,,,0,0,0,0
+ultAmuteb1,9,,4,0,0,0,,,,,,,0,0,0.6,,,,,,0,0,0,0
+ultAmuteb2,10,,4,0,0,0,,,,,,,0,0,0.6,,0,,,,0,0,0,0
 psvMomob1,11,,999,,,,,,,,,,,,,,,,"HurtbyPhysicalRate_80,phyReducee1",,999,0,0,0
 phyReduceb1,7,,3,0,0,0,0,0,0,0,0,,0,,0,0.2,0,0,,,999,0,0,0
 psvKairuisib1,11,,999,0,0,0,0,0,0,0,0,,0,,0,0,0,0,"UsingPhysicalRate_50,dispelBeneficiale1",,999,0,0,0
@@ -57,4 +57,6 @@ debuffMetalDotStrongb1,1,debuffMetalDotStronge3,3,0,0,0,0,0,0,0,0,bufficon_debuf
 debuffEarthDotSlightb1,1,debuffEarthDotSlighte3,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0
 debuffEarthDotMediumb1,1,debuffEarthDotMediume3,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0
 debuffEarthDotStrongb1,1,debuffEarthDotStronge3,3,0,0,0,0,0,0,0,0,bufficon_debuffEarthDot,0,,0,0,0,0,,,0,0,0,0
-buffTauntb1,12,,2,0,0,0,0,0,0,0,0,,0,,0,0,0,0,,,0,0,0,0
+buffTauntb1,12,,3,0,0,0,0,0,0,0,0,,0,,0,0,0,0,,,0,0,0,0
+ultbossAmuteb1,9,,8,0,0,0,,,,,,,0,0,0.6,,,,,,0,0,0,0
+ultbossAmuteb2,10,,8,0,0,0,,,,,,,0,0,0.6,,0,,,,0,0,0,0

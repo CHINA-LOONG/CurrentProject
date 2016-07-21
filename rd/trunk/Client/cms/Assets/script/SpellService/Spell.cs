@@ -158,9 +158,14 @@ public class Spell
         Effect rootEffect = spellService.GetEffect(spellData.rootEffectID);
         if (rootEffect != null)
         {
+            float dazhaoDelay = 0.0f;
+            if (spellData.category == (int)SpellType.Spell_Type_MagicDazhao && caster.battleUnit.camp == UnitCamp.Enemy)
+            {
+                dazhaoDelay = BattleConst.magicDazhaoDelay;
+            }
             rootEffect.SetOwnedSpell(this);
             rootEffect.Apply(triggerTime, wpID);
-            spellLength = spellLength - triggerTime;
+            spellLength = spellLength - triggerTime + dazhaoDelay;
         }
 
         args.aniTime = spellLength;

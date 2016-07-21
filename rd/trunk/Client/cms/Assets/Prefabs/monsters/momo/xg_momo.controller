@@ -186,7 +186,10 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: siwang
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110253740}
   m_Solo: 0
@@ -1016,7 +1019,7 @@ AnimatorStateMachine:
     m_Position: {x: 480, y: 520, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110228852}
-    m_Position: {x: -12, y: 48, z: 0}
+    m_Position: {x: -168, y: 72, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110288354}
     m_Position: {x: 550, y: 650, z: 0}

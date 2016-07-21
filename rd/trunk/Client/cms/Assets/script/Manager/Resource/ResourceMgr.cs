@@ -57,7 +57,7 @@ public class ResourceMgr : MonoBehaviour
 
     private List<AssetBundleLoadOperation> inProgressLoadList = new List<AssetBundleLoadOperation>();
     static ResourceMgr mInst = null;
-    public SpawnPool objectPool = null;
+    //public SpawnPool objectPool = null;
     //pooled prefab
     private Dictionary<string, GameObject> battlePoolList = new Dictionary<string,GameObject>();
 
@@ -127,7 +127,7 @@ public class ResourceMgr : MonoBehaviour
 
         byte[] stream = null;
         string uri = Path.Combine(Util.AssetBundlePath, Const.AssetDirname);
-        objectPool = PoolManager.Pools.Create("ObjectPool");
+        //objectPool = PoolManager.Pools.Create("ObjectPool");
 
         if (File.Exists(uri))
         {
@@ -234,6 +234,43 @@ public class ResourceMgr : MonoBehaviour
         battlePoolList.Clear();
         Resources.UnloadUnusedAssets();
         System.GC.Collect();
+    }
+    //---------------------------------------------------------------------------------------------
+    public GameObject LoadUI(string assetname)
+    {
+        assetname = StaticDataMgr.Instance.GetRealName(assetname);
+        GameObject obj = GetPoolObject(assetname);
+        if (obj != null)
+        {
+            return obj;
+        }
+        string abname = StaticDataMgr.Instance.GetBundleName(assetname);
+        if (string.IsNullOrEmpty(abname))
+        {
+            //Logger.LogErrorFormat("Load asset   {0}  faild", assetname);
+            return null;
+        }
+        abname = abname.ToLower();
+        AssetBundle bundle = LoadAssetBundle(abname);
+        if (bundle == null)
+        {
+            Logger.LogErrorFormat("Load bundle{0} faild", abname);
+            return null;
+        }
+        GameObject prefab = bundle.LoadAsset<GameObject>(assetname);
+        if (prefab == null)
+        {
+            Logger.LogErrorFormat("Load asset{0} faild", assetname);
+            return null;
+        }
+
+        GameObject go = null;
+        {
+            CreatePoolObject(prefab);
+            go = GetPoolObject(prefab.name);
+        }
+
+        return go;
     }
     //---------------------------------------------------------------------------------------------
     /// <summary>
@@ -525,8 +562,8 @@ public class ResourceMgr : MonoBehaviour
     public void DespawnAllBattleObj()
     {
         //TODO: seprate pool
-        objectPool.DespawnAll();
-        Destroy(objectPool);
+        //objectPool.DespawnAll();
+        //Destroy(objectPool);
     }
     //---------------------------------------------------------------------------------------------
     /// <summary>
