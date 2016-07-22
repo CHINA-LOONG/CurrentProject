@@ -18,8 +18,13 @@ import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
+import com.hawk.game.protocol.Const.shopType;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Shop.HSShopDataInit;
+import com.hawk.game.protocol.Shop.HSShopDataInitRet;
 import com.hawk.game.protocol.Shop.HSShopDataSynRet;
+import com.hawk.game.protocol.Shop.HSShopGold2Coin;
+import com.hawk.game.protocol.Shop.HSShopGold2CoinRet;
 import com.hawk.game.protocol.Shop.HSShopRefreshRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Shop.HSShopDataSyn;
@@ -45,11 +50,46 @@ public class PlayerShopModule extends PlayerModule{
 
 	@Override
 	protected boolean onPlayerLogin() {
-		player.getPlayerData().loadShopData();
+		player.getPlayerData().loadShop();
 		
 		return true;
 	}
 
+	@ProtocolHandler(code = HS.code.ShopGold2CoinC_VALUE)
+	private boolean onShopGold2Coin(HawkProtocol cmd){
+		HSShopGold2Coin protocol = cmd.parseProtocol(HSShopGold2Coin.getDefaultInstance());
+		ConsumeItems consume = new ConsumeItems();
+		consume.addGold(100);
+		
+		if (consume.checkConsume(player, HS.code.ShopGold2CoinC_VALUE) == false) {
+			return true;
+		}
+		
+		AwardItems award = new AwardItems();
+		award.addCoin(10000/player.getPlayerData().getStatisticsEntity().getCoinOrderCount());
+		consume.consumeTakeAffectAndPush(player, Action.SHOP_GOLD2COIN);
+		award.rewardTakeAffectAndPush(player, Action.SHOP_GOLD2COIN);
+		
+		player.getPlayerData().getStatisticsEntity().addCoinOrderCount();
+		player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
+		
+		HSShopGold2CoinRet.Builder response = HSShopGold2CoinRet.newBuilder();
+		response.setChangeCount(player.getPlayerData().getStatisticsEntity().getCoinOrderCount());
+		sendProtocol(HawkProtocol.valueOf(HS.code.ShopGold2CoinS, response));
+		return true;
+	}
+	
+	@ProtocolHandler(code = HS.code.ShopDataInitC_VALUE)
+	private boolean onShopDataInit(HawkProtocol cmd){
+		HSShopDataInit protocol = cmd.parseProtocol(HSShopDataInit.getDefaultInstance());
+		HSShopDataInitRet.Builder response = HSShopDataInitRet.newBuilder();
+		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.NORMALSHOP_VALUE));
+		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.ALLIANCESHOP_VALUE));
+		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.OTHERSHOP_VALUE));
+		sendProtocol(HawkProtocol.valueOf(HS.code.ShopDataInitS_VALUE, response));
+		return true;
+	} 
+	
 	@ProtocolHandler(code = HS.code.ShopDataSynC_VALUE)
 	private boolean onShopDataSyn(HawkProtocol cmd){
 		HSShopDataSyn protocol = cmd.parseProtocol(HSShopDataSyn.getDefaultInstance());
@@ -129,7 +169,7 @@ public class PlayerShopModule extends PlayerModule{
 		AwardItems award = new AwardItems();
 		award.addItem(itemInfo.getItemId(), itemInfo.getCount());
 		consume.consumeTakeAffectAndPush(player, Action.SHOP_ITEM_BUY);
-		award.rewardTakeAffect(player, Action.SHOP_ITEM_BUY);
+		award.rewardTakeAffectAndPush(player, Action.SHOP_ITEM_BUY);
 		shopEntity.getShopItemsList(protocol.getType()).get(protocol.getSlot()).setHasBuy(true);
 		shopEntity.notifyUpdate(true);
 

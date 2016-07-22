@@ -79,4 +79,7 @@ public class GameEventList
 
     public static string PreUnit = "PreUnit";//param gameUnit
     public static string NextUnit = "NextUnit";//param gameUnit
+
+	//Shop
+	public	static	string	RefreshShopUi = "RefreshShopUi";//parama no
 }

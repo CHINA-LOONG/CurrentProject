@@ -20,7 +20,7 @@ message HSImChatSend
 	required string text = 2;
 }
 
-// IM_CHAT_PUSH_S
+// IM_PUSH_S
 message HSImPush
 {
 	repeated HSImMsg imMsg = 1;

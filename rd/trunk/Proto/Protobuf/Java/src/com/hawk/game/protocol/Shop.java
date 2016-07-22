@@ -2080,6 +2080,1001 @@ public final class Shop {
     // @@protoc_insertion_point(class_scope:ShopData)
   }
 
+  public interface HSShopDataInitOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSShopDataInit}
+   */
+  public static final class HSShopDataInit extends
+      com.google.protobuf.GeneratedMessage
+      implements HSShopDataInitOrBuilder {
+    // Use HSShopDataInit.newBuilder() to construct.
+    private HSShopDataInit(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSShopDataInit(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSShopDataInit defaultInstance;
+    public static HSShopDataInit getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSShopDataInit getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSShopDataInit(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Shop.internal_static_HSShopDataInit_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Shop.internal_static_HSShopDataInit_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Shop.HSShopDataInit.class, com.hawk.game.protocol.Shop.HSShopDataInit.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSShopDataInit> PARSER =
+        new com.google.protobuf.AbstractParser<HSShopDataInit>() {
+      public HSShopDataInit parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSShopDataInit(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSShopDataInit> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Shop.HSShopDataInit parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInit parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInit parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInit parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInit parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInit parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInit parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInit parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInit parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInit parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Shop.HSShopDataInit prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSShopDataInit}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Shop.HSShopDataInitOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopDataInit_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopDataInit_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Shop.HSShopDataInit.class, com.hawk.game.protocol.Shop.HSShopDataInit.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Shop.HSShopDataInit.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopDataInit_descriptor;
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopDataInit getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Shop.HSShopDataInit.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopDataInit build() {
+        com.hawk.game.protocol.Shop.HSShopDataInit result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopDataInit buildPartial() {
+        com.hawk.game.protocol.Shop.HSShopDataInit result = new com.hawk.game.protocol.Shop.HSShopDataInit(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Shop.HSShopDataInit) {
+          return mergeFrom((com.hawk.game.protocol.Shop.HSShopDataInit)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Shop.HSShopDataInit other) {
+        if (other == com.hawk.game.protocol.Shop.HSShopDataInit.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Shop.HSShopDataInit parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Shop.HSShopDataInit) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSShopDataInit)
+    }
+
+    static {
+      defaultInstance = new HSShopDataInit(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSShopDataInit)
+  }
+
+  public interface HSShopDataInitRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .ShopData shopDatas = 1;
+    /**
+     * <code>repeated .ShopData shopDatas = 1;</code>
+     */
+    java.util.List<com.hawk.game.protocol.Shop.ShopData> 
+        getShopDatasList();
+    /**
+     * <code>repeated .ShopData shopDatas = 1;</code>
+     */
+    com.hawk.game.protocol.Shop.ShopData getShopDatas(int index);
+    /**
+     * <code>repeated .ShopData shopDatas = 1;</code>
+     */
+    int getShopDatasCount();
+    /**
+     * <code>repeated .ShopData shopDatas = 1;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Shop.ShopDataOrBuilder> 
+        getShopDatasOrBuilderList();
+    /**
+     * <code>repeated .ShopData shopDatas = 1;</code>
+     */
+    com.hawk.game.protocol.Shop.ShopDataOrBuilder getShopDatasOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code HSShopDataInitRet}
+   */
+  public static final class HSShopDataInitRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSShopDataInitRetOrBuilder {
+    // Use HSShopDataInitRet.newBuilder() to construct.
+    private HSShopDataInitRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSShopDataInitRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSShopDataInitRet defaultInstance;
+    public static HSShopDataInitRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSShopDataInitRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSShopDataInitRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                shopDatas_ = new java.util.ArrayList<com.hawk.game.protocol.Shop.ShopData>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              shopDatas_.add(input.readMessage(com.hawk.game.protocol.Shop.ShopData.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          shopDatas_ = java.util.Collections.unmodifiableList(shopDatas_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Shop.internal_static_HSShopDataInitRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Shop.internal_static_HSShopDataInitRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Shop.HSShopDataInitRet.class, com.hawk.game.protocol.Shop.HSShopDataInitRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSShopDataInitRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSShopDataInitRet>() {
+      public HSShopDataInitRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSShopDataInitRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSShopDataInitRet> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .ShopData shopDatas = 1;
+    public static final int SHOPDATAS_FIELD_NUMBER = 1;
+    private java.util.List<com.hawk.game.protocol.Shop.ShopData> shopDatas_;
+    /**
+     * <code>repeated .ShopData shopDatas = 1;</code>
+     */
+    public java.util.List<com.hawk.game.protocol.Shop.ShopData> getShopDatasList() {
+      return shopDatas_;
+    }
+    /**
+     * <code>repeated .ShopData shopDatas = 1;</code>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Shop.ShopDataOrBuilder> 
+        getShopDatasOrBuilderList() {
+      return shopDatas_;
+    }
+    /**
+     * <code>repeated .ShopData shopDatas = 1;</code>
+     */
+    public int getShopDatasCount() {
+      return shopDatas_.size();
+    }
+    /**
+     * <code>repeated .ShopData shopDatas = 1;</code>
+     */
+    public com.hawk.game.protocol.Shop.ShopData getShopDatas(int index) {
+      return shopDatas_.get(index);
+    }
+    /**
+     * <code>repeated .ShopData shopDatas = 1;</code>
+     */
+    public com.hawk.game.protocol.Shop.ShopDataOrBuilder getShopDatasOrBuilder(
+        int index) {
+      return shopDatas_.get(index);
+    }
+
+    private void initFields() {
+      shopDatas_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getShopDatasCount(); i++) {
+        if (!getShopDatas(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < shopDatas_.size(); i++) {
+        output.writeMessage(1, shopDatas_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < shopDatas_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, shopDatas_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Shop.HSShopDataInitRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInitRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInitRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInitRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInitRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInitRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInitRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInitRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInitRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopDataInitRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Shop.HSShopDataInitRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSShopDataInitRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Shop.HSShopDataInitRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopDataInitRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopDataInitRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Shop.HSShopDataInitRet.class, com.hawk.game.protocol.Shop.HSShopDataInitRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Shop.HSShopDataInitRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getShopDatasFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (shopDatasBuilder_ == null) {
+          shopDatas_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          shopDatasBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopDataInitRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopDataInitRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Shop.HSShopDataInitRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopDataInitRet build() {
+        com.hawk.game.protocol.Shop.HSShopDataInitRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopDataInitRet buildPartial() {
+        com.hawk.game.protocol.Shop.HSShopDataInitRet result = new com.hawk.game.protocol.Shop.HSShopDataInitRet(this);
+        int from_bitField0_ = bitField0_;
+        if (shopDatasBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            shopDatas_ = java.util.Collections.unmodifiableList(shopDatas_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.shopDatas_ = shopDatas_;
+        } else {
+          result.shopDatas_ = shopDatasBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Shop.HSShopDataInitRet) {
+          return mergeFrom((com.hawk.game.protocol.Shop.HSShopDataInitRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Shop.HSShopDataInitRet other) {
+        if (other == com.hawk.game.protocol.Shop.HSShopDataInitRet.getDefaultInstance()) return this;
+        if (shopDatasBuilder_ == null) {
+          if (!other.shopDatas_.isEmpty()) {
+            if (shopDatas_.isEmpty()) {
+              shopDatas_ = other.shopDatas_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureShopDatasIsMutable();
+              shopDatas_.addAll(other.shopDatas_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.shopDatas_.isEmpty()) {
+            if (shopDatasBuilder_.isEmpty()) {
+              shopDatasBuilder_.dispose();
+              shopDatasBuilder_ = null;
+              shopDatas_ = other.shopDatas_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              shopDatasBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getShopDatasFieldBuilder() : null;
+            } else {
+              shopDatasBuilder_.addAllMessages(other.shopDatas_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getShopDatasCount(); i++) {
+          if (!getShopDatas(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Shop.HSShopDataInitRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Shop.HSShopDataInitRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .ShopData shopDatas = 1;
+      private java.util.List<com.hawk.game.protocol.Shop.ShopData> shopDatas_ =
+        java.util.Collections.emptyList();
+      private void ensureShopDatasIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          shopDatas_ = new java.util.ArrayList<com.hawk.game.protocol.Shop.ShopData>(shopDatas_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Shop.ShopData, com.hawk.game.protocol.Shop.ShopData.Builder, com.hawk.game.protocol.Shop.ShopDataOrBuilder> shopDatasBuilder_;
+
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Shop.ShopData> getShopDatasList() {
+        if (shopDatasBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(shopDatas_);
+        } else {
+          return shopDatasBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public int getShopDatasCount() {
+        if (shopDatasBuilder_ == null) {
+          return shopDatas_.size();
+        } else {
+          return shopDatasBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public com.hawk.game.protocol.Shop.ShopData getShopDatas(int index) {
+        if (shopDatasBuilder_ == null) {
+          return shopDatas_.get(index);
+        } else {
+          return shopDatasBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public Builder setShopDatas(
+          int index, com.hawk.game.protocol.Shop.ShopData value) {
+        if (shopDatasBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureShopDatasIsMutable();
+          shopDatas_.set(index, value);
+          onChanged();
+        } else {
+          shopDatasBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public Builder setShopDatas(
+          int index, com.hawk.game.protocol.Shop.ShopData.Builder builderForValue) {
+        if (shopDatasBuilder_ == null) {
+          ensureShopDatasIsMutable();
+          shopDatas_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          shopDatasBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public Builder addShopDatas(com.hawk.game.protocol.Shop.ShopData value) {
+        if (shopDatasBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureShopDatasIsMutable();
+          shopDatas_.add(value);
+          onChanged();
+        } else {
+          shopDatasBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public Builder addShopDatas(
+          int index, com.hawk.game.protocol.Shop.ShopData value) {
+        if (shopDatasBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureShopDatasIsMutable();
+          shopDatas_.add(index, value);
+          onChanged();
+        } else {
+          shopDatasBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public Builder addShopDatas(
+          com.hawk.game.protocol.Shop.ShopData.Builder builderForValue) {
+        if (shopDatasBuilder_ == null) {
+          ensureShopDatasIsMutable();
+          shopDatas_.add(builderForValue.build());
+          onChanged();
+        } else {
+          shopDatasBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public Builder addShopDatas(
+          int index, com.hawk.game.protocol.Shop.ShopData.Builder builderForValue) {
+        if (shopDatasBuilder_ == null) {
+          ensureShopDatasIsMutable();
+          shopDatas_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          shopDatasBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public Builder addAllShopDatas(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Shop.ShopData> values) {
+        if (shopDatasBuilder_ == null) {
+          ensureShopDatasIsMutable();
+          super.addAll(values, shopDatas_);
+          onChanged();
+        } else {
+          shopDatasBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public Builder clearShopDatas() {
+        if (shopDatasBuilder_ == null) {
+          shopDatas_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          shopDatasBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public Builder removeShopDatas(int index) {
+        if (shopDatasBuilder_ == null) {
+          ensureShopDatasIsMutable();
+          shopDatas_.remove(index);
+          onChanged();
+        } else {
+          shopDatasBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public com.hawk.game.protocol.Shop.ShopData.Builder getShopDatasBuilder(
+          int index) {
+        return getShopDatasFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public com.hawk.game.protocol.Shop.ShopDataOrBuilder getShopDatasOrBuilder(
+          int index) {
+        if (shopDatasBuilder_ == null) {
+          return shopDatas_.get(index);  } else {
+          return shopDatasBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Shop.ShopDataOrBuilder> 
+           getShopDatasOrBuilderList() {
+        if (shopDatasBuilder_ != null) {
+          return shopDatasBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(shopDatas_);
+        }
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public com.hawk.game.protocol.Shop.ShopData.Builder addShopDatasBuilder() {
+        return getShopDatasFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Shop.ShopData.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public com.hawk.game.protocol.Shop.ShopData.Builder addShopDatasBuilder(
+          int index) {
+        return getShopDatasFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Shop.ShopData.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ShopData shopDatas = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Shop.ShopData.Builder> 
+           getShopDatasBuilderList() {
+        return getShopDatasFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Shop.ShopData, com.hawk.game.protocol.Shop.ShopData.Builder, com.hawk.game.protocol.Shop.ShopDataOrBuilder> 
+          getShopDatasFieldBuilder() {
+        if (shopDatasBuilder_ == null) {
+          shopDatasBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Shop.ShopData, com.hawk.game.protocol.Shop.ShopData.Builder, com.hawk.game.protocol.Shop.ShopDataOrBuilder>(
+                  shopDatas_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          shopDatas_ = null;
+        }
+        return shopDatasBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSShopDataInitRet)
+    }
+
+    static {
+      defaultInstance = new HSShopDataInitRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSShopDataInitRet)
+  }
+
   public interface HSShopDataSynOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -3019,16 +4014,6 @@ public final class Shop {
      * <code>required int32 type = 1;</code>
      */
     int getType();
-
-    // required int32 shopId = 2;
-    /**
-     * <code>required int32 shopId = 2;</code>
-     */
-    boolean hasShopId();
-    /**
-     * <code>required int32 shopId = 2;</code>
-     */
-    int getShopId();
   }
   /**
    * Protobuf type {@code HSShopRefresh}
@@ -3084,11 +4069,6 @@ public final class Shop {
             case 8: {
               bitField0_ |= 0x00000001;
               type_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              shopId_ = input.readInt32();
               break;
             }
           }
@@ -3147,25 +4127,8 @@ public final class Shop {
       return type_;
     }
 
-    // required int32 shopId = 2;
-    public static final int SHOPID_FIELD_NUMBER = 2;
-    private int shopId_;
-    /**
-     * <code>required int32 shopId = 2;</code>
-     */
-    public boolean hasShopId() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required int32 shopId = 2;</code>
-     */
-    public int getShopId() {
-      return shopId_;
-    }
-
     private void initFields() {
       type_ = 0;
-      shopId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3173,10 +4136,6 @@ public final class Shop {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasShopId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3190,9 +4149,6 @@ public final class Shop {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, type_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, shopId_);
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3205,10 +4161,6 @@ public final class Shop {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, type_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, shopId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3328,8 +4280,6 @@ public final class Shop {
         super.clear();
         type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        shopId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -3362,10 +4312,6 @@ public final class Shop {
           to_bitField0_ |= 0x00000001;
         }
         result.type_ = type_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.shopId_ = shopId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3385,19 +4331,12 @@ public final class Shop {
         if (other.hasType()) {
           setType(other.getType());
         }
-        if (other.hasShopId()) {
-          setShopId(other.getShopId());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasType()) {
-          
-          return false;
-        }
-        if (!hasShopId()) {
           
           return false;
         }
@@ -3452,39 +4391,6 @@ public final class Shop {
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
         type_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required int32 shopId = 2;
-      private int shopId_ ;
-      /**
-       * <code>required int32 shopId = 2;</code>
-       */
-      public boolean hasShopId() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required int32 shopId = 2;</code>
-       */
-      public int getShopId() {
-        return shopId_;
-      }
-      /**
-       * <code>required int32 shopId = 2;</code>
-       */
-      public Builder setShopId(int value) {
-        bitField0_ |= 0x00000002;
-        shopId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 shopId = 2;</code>
-       */
-      public Builder clearShopId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        shopId_ = 0;
         onChanged();
         return this;
       }
@@ -4914,6 +5820,719 @@ public final class Shop {
     // @@protoc_insertion_point(class_scope:HSShopItemBuyRet)
   }
 
+  public interface HSShopGold2CoinOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSShopGold2Coin}
+   */
+  public static final class HSShopGold2Coin extends
+      com.google.protobuf.GeneratedMessage
+      implements HSShopGold2CoinOrBuilder {
+    // Use HSShopGold2Coin.newBuilder() to construct.
+    private HSShopGold2Coin(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSShopGold2Coin(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSShopGold2Coin defaultInstance;
+    public static HSShopGold2Coin getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSShopGold2Coin getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSShopGold2Coin(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Shop.internal_static_HSShopGold2Coin_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Shop.internal_static_HSShopGold2Coin_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Shop.HSShopGold2Coin.class, com.hawk.game.protocol.Shop.HSShopGold2Coin.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSShopGold2Coin> PARSER =
+        new com.google.protobuf.AbstractParser<HSShopGold2Coin>() {
+      public HSShopGold2Coin parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSShopGold2Coin(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSShopGold2Coin> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Shop.HSShopGold2Coin parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2Coin parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2Coin parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2Coin parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2Coin parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2Coin parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2Coin parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2Coin parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2Coin parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2Coin parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Shop.HSShopGold2Coin prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSShopGold2Coin}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Shop.HSShopGold2CoinOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopGold2Coin_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopGold2Coin_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Shop.HSShopGold2Coin.class, com.hawk.game.protocol.Shop.HSShopGold2Coin.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Shop.HSShopGold2Coin.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopGold2Coin_descriptor;
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopGold2Coin getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Shop.HSShopGold2Coin.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopGold2Coin build() {
+        com.hawk.game.protocol.Shop.HSShopGold2Coin result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopGold2Coin buildPartial() {
+        com.hawk.game.protocol.Shop.HSShopGold2Coin result = new com.hawk.game.protocol.Shop.HSShopGold2Coin(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Shop.HSShopGold2Coin) {
+          return mergeFrom((com.hawk.game.protocol.Shop.HSShopGold2Coin)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Shop.HSShopGold2Coin other) {
+        if (other == com.hawk.game.protocol.Shop.HSShopGold2Coin.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Shop.HSShopGold2Coin parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Shop.HSShopGold2Coin) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSShopGold2Coin)
+    }
+
+    static {
+      defaultInstance = new HSShopGold2Coin(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSShopGold2Coin)
+  }
+
+  public interface HSShopGold2CoinRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 changeCount = 1;
+    /**
+     * <code>required int32 changeCount = 1;</code>
+     */
+    boolean hasChangeCount();
+    /**
+     * <code>required int32 changeCount = 1;</code>
+     */
+    int getChangeCount();
+  }
+  /**
+   * Protobuf type {@code HSShopGold2CoinRet}
+   */
+  public static final class HSShopGold2CoinRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSShopGold2CoinRetOrBuilder {
+    // Use HSShopGold2CoinRet.newBuilder() to construct.
+    private HSShopGold2CoinRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSShopGold2CoinRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSShopGold2CoinRet defaultInstance;
+    public static HSShopGold2CoinRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSShopGold2CoinRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSShopGold2CoinRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              changeCount_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Shop.internal_static_HSShopGold2CoinRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Shop.internal_static_HSShopGold2CoinRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Shop.HSShopGold2CoinRet.class, com.hawk.game.protocol.Shop.HSShopGold2CoinRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSShopGold2CoinRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSShopGold2CoinRet>() {
+      public HSShopGold2CoinRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSShopGold2CoinRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSShopGold2CoinRet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 changeCount = 1;
+    public static final int CHANGECOUNT_FIELD_NUMBER = 1;
+    private int changeCount_;
+    /**
+     * <code>required int32 changeCount = 1;</code>
+     */
+    public boolean hasChangeCount() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 changeCount = 1;</code>
+     */
+    public int getChangeCount() {
+      return changeCount_;
+    }
+
+    private void initFields() {
+      changeCount_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasChangeCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, changeCount_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, changeCount_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Shop.HSShopGold2CoinRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2CoinRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2CoinRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2CoinRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2CoinRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2CoinRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2CoinRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2CoinRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2CoinRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopGold2CoinRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Shop.HSShopGold2CoinRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSShopGold2CoinRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Shop.HSShopGold2CoinRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopGold2CoinRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopGold2CoinRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Shop.HSShopGold2CoinRet.class, com.hawk.game.protocol.Shop.HSShopGold2CoinRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Shop.HSShopGold2CoinRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        changeCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopGold2CoinRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopGold2CoinRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Shop.HSShopGold2CoinRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopGold2CoinRet build() {
+        com.hawk.game.protocol.Shop.HSShopGold2CoinRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopGold2CoinRet buildPartial() {
+        com.hawk.game.protocol.Shop.HSShopGold2CoinRet result = new com.hawk.game.protocol.Shop.HSShopGold2CoinRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.changeCount_ = changeCount_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Shop.HSShopGold2CoinRet) {
+          return mergeFrom((com.hawk.game.protocol.Shop.HSShopGold2CoinRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Shop.HSShopGold2CoinRet other) {
+        if (other == com.hawk.game.protocol.Shop.HSShopGold2CoinRet.getDefaultInstance()) return this;
+        if (other.hasChangeCount()) {
+          setChangeCount(other.getChangeCount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasChangeCount()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Shop.HSShopGold2CoinRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Shop.HSShopGold2CoinRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 changeCount = 1;
+      private int changeCount_ ;
+      /**
+       * <code>required int32 changeCount = 1;</code>
+       */
+      public boolean hasChangeCount() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 changeCount = 1;</code>
+       */
+      public int getChangeCount() {
+        return changeCount_;
+      }
+      /**
+       * <code>required int32 changeCount = 1;</code>
+       */
+      public Builder setChangeCount(int value) {
+        bitField0_ |= 0x00000001;
+        changeCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 changeCount = 1;</code>
+       */
+      public Builder clearChangeCount() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        changeCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSShopGold2CoinRet)
+    }
+
+    static {
+      defaultInstance = new HSShopGold2CoinRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSShopGold2CoinRet)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_ShopItem_descriptor;
   private static
@@ -4924,6 +6543,16 @@ public final class Shop {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ShopData_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSShopDataInit_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSShopDataInit_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSShopDataInitRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSShopDataInitRet_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSShopDataSyn_descriptor;
   private static
@@ -4954,6 +6583,16 @@ public final class Shop {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSShopItemBuyRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSShopGold2Coin_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSShopGold2Coin_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSShopGold2CoinRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSShopGold2CoinRet_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4968,14 +6607,17 @@ public final class Shop {
       "\n\005stage\030\004 \001(\005\022\r\n\005level\030\005 \001(\005\022\014\n\004slot\030\006 \002" +
       "(\005\022\016\n\006hasBuy\030\007 \002(\010\"F\n\010ShopData\022\014\n\004type\030\001" +
       " \002(\005\022\016\n\006shopId\030\002 \002(\005\022\034\n\titemInfos\030\003 \003(\0132" +
-      "\t.ShopItem\"\035\n\rHSShopDataSyn\022\014\n\004type\030\001 \002(" +
-      "\005\"/\n\020HSShopDataSynRet\022\033\n\010shopData\030\001 \002(\0132" +
-      "\t.ShopData\"-\n\rHSShopRefresh\022\014\n\004type\030\001 \002(" +
-      "\005\022\016\n\006shopId\030\002 \002(\005\"/\n\020HSShopRefreshRet\022\033\n" +
-      "\010shopData\030\001 \002(\0132\t.ShopData\";\n\rHSShopItem",
-      "Buy\022\014\n\004type\030\001 \002(\005\022\014\n\004slot\030\002 \002(\005\022\016\n\006shopI" +
-      "d\030\003 \002(\005\"\022\n\020HSShopItemBuyRetB\030\n\026com.hawk." +
-      "game.protocol"
+      "\t.ShopItem\"\020\n\016HSShopDataInit\"1\n\021HSShopDa" +
+      "taInitRet\022\034\n\tshopDatas\030\001 \003(\0132\t.ShopData\"" +
+      "\035\n\rHSShopDataSyn\022\014\n\004type\030\001 \002(\005\"/\n\020HSShop" +
+      "DataSynRet\022\033\n\010shopData\030\001 \002(\0132\t.ShopData\"" +
+      "\035\n\rHSShopRefresh\022\014\n\004type\030\001 \002(\005\"/\n\020HSShop",
+      "RefreshRet\022\033\n\010shopData\030\001 \002(\0132\t.ShopData\"" +
+      ";\n\rHSShopItemBuy\022\014\n\004type\030\001 \002(\005\022\014\n\004slot\030\002" +
+      " \002(\005\022\016\n\006shopId\030\003 \002(\005\"\022\n\020HSShopItemBuyRet" +
+      "\"\021\n\017HSShopGold2Coin\")\n\022HSShopGold2CoinRe" +
+      "t\022\023\n\013changeCount\030\001 \002(\005B\030\n\026com.hawk.game." +
+      "protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4994,42 +6636,66 @@ public final class Shop {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_ShopData_descriptor,
               new java.lang.String[] { "Type", "ShopId", "ItemInfos", });
-          internal_static_HSShopDataSyn_descriptor =
+          internal_static_HSShopDataInit_descriptor =
             getDescriptor().getMessageTypes().get(2);
+          internal_static_HSShopDataInit_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSShopDataInit_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSShopDataInitRet_descriptor =
+            getDescriptor().getMessageTypes().get(3);
+          internal_static_HSShopDataInitRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSShopDataInitRet_descriptor,
+              new java.lang.String[] { "ShopDatas", });
+          internal_static_HSShopDataSyn_descriptor =
+            getDescriptor().getMessageTypes().get(4);
           internal_static_HSShopDataSyn_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSShopDataSyn_descriptor,
               new java.lang.String[] { "Type", });
           internal_static_HSShopDataSynRet_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_HSShopDataSynRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSShopDataSynRet_descriptor,
               new java.lang.String[] { "ShopData", });
           internal_static_HSShopRefresh_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_HSShopRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSShopRefresh_descriptor,
-              new java.lang.String[] { "Type", "ShopId", });
+              new java.lang.String[] { "Type", });
           internal_static_HSShopRefreshRet_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_HSShopRefreshRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSShopRefreshRet_descriptor,
               new java.lang.String[] { "ShopData", });
           internal_static_HSShopItemBuy_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_HSShopItemBuy_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSShopItemBuy_descriptor,
               new java.lang.String[] { "Type", "Slot", "ShopId", });
           internal_static_HSShopItemBuyRet_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_HSShopItemBuyRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSShopItemBuyRet_descriptor,
               new java.lang.String[] { });
+          internal_static_HSShopGold2Coin_descriptor =
+            getDescriptor().getMessageTypes().get(10);
+          internal_static_HSShopGold2Coin_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSShopGold2Coin_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSShopGold2CoinRet_descriptor =
+            getDescriptor().getMessageTypes().get(11);
+          internal_static_HSShopGold2CoinRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSShopGold2CoinRet_descriptor,
+              new java.lang.String[] { "ChangeCount", });
           return null;
         }
       };

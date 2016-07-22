@@ -116,10 +116,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_Color: {r: .984313786, g: .945098102, b: .847058892, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -142,10 +142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_Color: {r: .984313786, g: .945098102, b: .847058892, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -210,10 +210,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_Color: {r: .984313786, g: .945098102, b: .847058892, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -223,7 +223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 99999
 --- !u!114 &11482092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 44362575de9d9994387a075c75a7d9e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -257,10 +257,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_Color: {r: .984313786, g: .945098102, b: .847058892, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -320,9 +320,9 @@ RectTransform:
   - {fileID: 22407180}
   m_Father: {fileID: 22425614}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: .5}
-  m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 15.8000002, y: 0}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -143.300003, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: .5}
 --- !u!224 &22407180
@@ -339,7 +339,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 75, y: 0}
+  m_AnchoredPosition: {x: 43.9000015, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: .5}
 --- !u!224 &22425614
@@ -375,9 +375,9 @@ RectTransform:
   - {fileID: 22456452}
   m_Father: {fileID: 22425614}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: .5}
-  m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 219.478912, y: -1.39474869e-05}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 29, y: -1.44839287e-05}
   m_SizeDelta: {x: 65, y: 30}
   m_Pivot: {x: 0, y: .5}
 --- !u!224 &22455806
@@ -394,8 +394,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 80.0000305, y: 1.78813934e-05}
-  m_SizeDelta: {x: 25, y: 25}
+  m_AnchoredPosition: {x: 64.1999969, y: -1}
+  m_SizeDelta: {x: 35, y: 31}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22456452
 RectTransform:
@@ -411,7 +411,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 100, y: 1.58547937e-05}
+  m_AnchoredPosition: {x: 78.9000015, y: 1.58547937e-05}
   m_SizeDelta: {x: 65, y: 30}
   m_Pivot: {x: 0, y: .5}
 --- !u!1001 &100100000

@@ -326,6 +326,20 @@ namespace PB
       RED = 6
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"shopType")]
+    public enum shopType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"NORMALSHOP", Value=1)]
+      NORMALSHOP = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCESHOP", Value=2)]
+      ALLIANCESHOP = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"OTHERSHOP", Value=3)]
+      OTHERSHOP = 3
+    }
+  
     [global::ProtoBuf.ProtoContract(Name=@"mailState")]
     public enum mailState
     {
@@ -364,14 +378,14 @@ namespace PB
     public enum ImChannel
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"WORLD", Value=1)]
-      WORLD = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"PERSON", Value=1)]
+      PERSON = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"GUILD", Value=2)]
-      GUILD = 2,
+      [global::ProtoBuf.ProtoEnum(Name=@"WORLD", Value=2)]
+      WORLD = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SELF", Value=3)]
-      SELF = 3
+      [global::ProtoBuf.ProtoEnum(Name=@"GUILD", Value=3)]
+      GUILD = 3
     }
   
 }

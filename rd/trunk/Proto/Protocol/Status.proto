@@ -11,6 +11,8 @@ enum errorMask
 	INSTANCE_ERROR             = 0x00060000;
 	MAIL_ERROR                 = 0x00070000;
 	ALLIANCE_ERROR             = 0x00080000;
+	SHOP_ERROR                 = 0x00090000;
+	IM_ERROR                   = 0x00100000;
 }
 
 enum error
@@ -42,7 +44,7 @@ enum PlayerError
 	// 昵称存在
 	PLAYER_NICKNAME_EXIST      = 0x00020002;
 	// 账号名成重复
-	PUID_EXIST           	   = 0x00020003;
+	PUID_EXIST                 = 0x00020003;
 }
 
 enum monsterError
@@ -150,9 +152,17 @@ enum allianceError
 enum shopError
 {
 	// 商店过期
-	SHOP_REFRESH_TIMEOUT     = 0x0090001;
+	SHOP_REFRESH_TIMEOUT       = 0x0090001;
 	// 商品已经买过了
-	SHOP_ITEM_ALREADY_BUY    = 0x0090002;
+	SHOP_ITEM_ALREADY_BUY      = 0x0090002;
 	// 商品刷新最大次数
-	SHOP_REFRESH_MAX_COUNT    = 0x0090003;
+	SHOP_REFRESH_MAX_COUNT     = 0x0090003;
+	// 商品刷新最大次数
+	SHOP_GOLD2COIN_MAX_COUNT   = 0x0090003;
+}
+
+enum imError
+{
+	// 聊天内容太长
+	IM_CHAT_LENGTH             = 0x0100001;
 }

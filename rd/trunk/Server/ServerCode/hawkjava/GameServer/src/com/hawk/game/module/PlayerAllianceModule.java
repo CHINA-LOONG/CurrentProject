@@ -4,6 +4,7 @@ import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 
@@ -30,14 +31,19 @@ public class PlayerAllianceModule extends PlayerModule {
 	protected boolean onPlayerLogin() {
 		// 加载公会数据
 		PlayerAllianceEntity allianceEntity = player.getPlayerData().loadPlayerAlliance();
-
-		if (allianceEntity.getAllianceId() != 0) {
-		
+		int allianceId = allianceEntity.getAllianceId();
+		if (allianceId != 0) {
+			ImManager.getInstance().joinGuild(allianceId, player);
+			
 		}
 		return true;
 	}
 	
 	protected boolean onPlayerLogout() {
+		int allianceId = player.getPlayerData().getPlayerAllianceEntity().getAllianceId();
+		if (allianceId != 0) {
+			ImManager.getInstance().quitGuild(allianceId, player.getId());
+		}
 		return true;
 	}
 

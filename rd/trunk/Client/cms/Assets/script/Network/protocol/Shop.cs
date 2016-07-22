@@ -102,6 +102,33 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSShopDataInit")]
+  public partial class HSShopDataInit : global::ProtoBuf.IExtensible
+  {
+    public HSShopDataInit() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSShopDataInitRet")]
+  public partial class HSShopDataInitRet : global::ProtoBuf.IExtensible
+  {
+    public HSShopDataInitRet() {}
+    
+    private readonly global::System.Collections.Generic.List<ShopData> _shopDatas = new global::System.Collections.Generic.List<ShopData>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"shopDatas", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<ShopData> shopDatas
+    {
+      get { return _shopDatas; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSShopDataSyn")]
   public partial class HSShopDataSyn : global::ProtoBuf.IExtensible
   {
@@ -147,13 +174,6 @@ namespace PB
     {
       get { return _type; }
       set { _type = value; }
-    }
-    private int _shopId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"shopId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int shopId
-    {
-      get { return _shopId; }
-      set { _shopId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -213,6 +233,33 @@ namespace PB
   {
     public HSShopItemBuyRet() {}
     
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSShopGold2Coin")]
+  public partial class HSShopGold2Coin : global::ProtoBuf.IExtensible
+  {
+    public HSShopGold2Coin() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSShopGold2CoinRet")]
+  public partial class HSShopGold2CoinRet : global::ProtoBuf.IExtensible
+  {
+    public HSShopGold2CoinRet() {}
+    
+    private int _changeCount;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"changeCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int changeCount
+    {
+      get { return _changeCount; }
+      set { _changeCount = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

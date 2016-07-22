@@ -493,6 +493,7 @@ public class GsApp extends HawkApp {
 			playerId = playerEntity.getId();
 			ServerData.getInstance().addNameAndPlayerId(protocol.getNickname(), playerId);
 			ServerData.getInstance().addPuidAndPlayerId(puid, playerId);
+			ServerData.getInstance().addPlayerId(playerId);
 			logger.info("create player entity: {}, puid: {}", playerId, puid);
 
 			HSPlayerCreateRet.Builder response = HSPlayerCreateRet.newBuilder();

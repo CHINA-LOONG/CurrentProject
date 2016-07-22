@@ -49,7 +49,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites: []
-  spritePackingTag: icon
+  spritePackingTag: buff_icon
   userData: 
-  assetBundleName: ui/buff
+  assetBundleName: texture/icon
   assetBundleVariant: 

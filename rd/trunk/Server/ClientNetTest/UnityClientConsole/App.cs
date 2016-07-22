@@ -79,7 +79,7 @@ namespace UnityClientConsole
 
                     HSPlayerCreate createRole = new HSPlayerCreate();
                     createRole.puid = puid;
-                    createRole.nickname = "im_3";
+                    createRole.nickname = "mail_test";
                     createRole.career = 1;
                     createRole.gender = 0;
                     createRole.eye = 1;
@@ -143,6 +143,12 @@ namespace UnityClientConsole
             else if (protocol.checkType(code.ASSEMBLE_FINISH_S.GetHashCode()))
             {
                 Console.WriteLine("同步完成");
+
+                HSSettingBlock settingBlock = new HSSettingBlock();
+                settingBlock.playerId = 795; //im_1
+                settingBlock.isBlock = false;
+                NetManager.GetInstance().SendProtocol(code.SETTING_BLOCK_C.GetHashCode(), settingBlock);
+                Console.WriteLine("屏蔽");
 
                 HSImChatSend chatSend = new HSImChatSend();
                 chatSend.channel = ImChannel.WORLD.GetHashCode();
@@ -287,7 +293,7 @@ namespace UnityClientConsole
                 Console.WriteLine("新邮件");
             }
             // IM------------------------------------------------------------------------------------------------------------
-            else if (protocol.checkType(code.IM_CHAT_PUSH_S.GetHashCode()))
+            else if (protocol.checkType(code.IM_PUSH_S.GetHashCode()))
             {
                 HSImPush chatPush = protocol.GetProtocolBody<HSImPush>();
                 Console.WriteLine("IM世界新消息");

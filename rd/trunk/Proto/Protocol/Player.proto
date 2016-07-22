@@ -36,9 +36,10 @@ message PlayerInfo
 
 // ------------------------------------------------------- protocol-----------------------------------------------------
 
+// KICKOUT_S
 message HSPlayerKickout
 {
-	required int32 reason = 1;	
+	required int32 reason = 1;
 }
 
 // PLAYER_CREATE_C
@@ -60,19 +61,15 @@ message HSPlayerCreateRet
 	optional int32 palyerID = 2;
 }
 
+// PLAYER_INFO_SYNC_S
 message HSPlayerInfoSync
 {
 	required PlayerInfo info = 1;
 }
 
+// ASSEMBLE_FINISH_S
 message HSAssembleFinish
 {
 	required int32 playerID = 1;
 }
-
-
-
-
-
-
 

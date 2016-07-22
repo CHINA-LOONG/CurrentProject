@@ -398,8 +398,9 @@ namespace PB
       get { return _type; }
       set { _type = value; }
     }
-    private string _newGem;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"newGem", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private string _newGem = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"newGem", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string newGem
     {
       get { return _newGem; }

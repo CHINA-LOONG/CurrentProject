@@ -49,6 +49,8 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, string> audioMapping = new Dictionary<string, string>();
     Dictionary<string, Dictionary<int, EquipProtoData>> equipData = new Dictionary<string, Dictionary<int, EquipProtoData>>();
     Dictionary<int, EquipLevelData> baseAttrData = new Dictionary<int, EquipLevelData>();
+	Dictionary<int,ShopAutoRefreshData> shopAutoRefreshData = new Dictionary<int, ShopAutoRefreshData>();
+	List<ShopStaticData>	shopStaticDataList = new List<ShopStaticData>();
 
     public void Init()
     {
@@ -575,7 +577,7 @@ public class StaticDataMgr : MonoBehaviour
             #endregion
         }
         {
-            #region
+			#region baseAttr
             var data = InitTable<EquipLevelData>("baseAttr");
             foreach (var item in data)
             {
@@ -583,6 +585,23 @@ public class StaticDataMgr : MonoBehaviour
             }
             #endregion
         }
+
+		{
+			var data = InitTable<ShopAutoRefreshData>("shopAutoRefresh");
+			foreach(var item in data)
+			{
+				shopAutoRefreshData.Add(item.type,item);
+			}
+		}
+
+		{
+			var data = InitTable<ShopStaticData>("shop");
+			foreach(var item in data)
+			{
+				shopStaticDataList.Add(item);
+			}
+		}
+
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -789,7 +808,18 @@ public class StaticDataMgr : MonoBehaviour
         unitStageData.TryGetValue(stage, out item);
         return item;
     }
-       
+      
+	public ShopAutoRefreshData GetShopAutoRefreshData(int shopType)
+	{
+		ShopAutoRefreshData item = null;
+		shopAutoRefreshData.TryGetValue (shopType, out item);
+		return item;
+	}
+
+	public List<ShopStaticData> GetShopStaticDataList()
+	{
+		return shopStaticDataList;
+	}
 
 
     public string GetRealName(string asset)
@@ -829,6 +859,7 @@ public class StaticDataMgr : MonoBehaviour
         audioMapping.TryGetValue(id, out audio);
         return audio;
     }
+
 
     #endregion
 }

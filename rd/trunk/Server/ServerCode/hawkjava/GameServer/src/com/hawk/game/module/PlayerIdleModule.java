@@ -2,6 +2,8 @@ package com.hawk.game.module;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.hawk.app.HawkApp;
 import org.hawk.config.HawkConfigManager;
@@ -65,13 +67,20 @@ public class PlayerIdleModule extends PlayerModule {
 		// 添加在线信息
 		ServerData.getInstance().addOnlinePlayerId(player.getId());
 		
-		// TEST
-		MailSysCfg mailSysCfg = HawkConfigManager.getInstance().getConfigByKey(MailSysCfg.class, "mail_sys_001");
-		if (mailSysCfg != null) {
-			List<Integer> receiverList = new ArrayList<>();
-			receiverList.add(player.getId());
-			MailUtil.SendSysMail(mailSysCfg, receiverList, Source.SYS_OPERATION, Action.MAIL_REWARD);
+		// TEST------------------------------------------------------------------------------------------
+		Map<Object, MailSysCfg> mailSysCfgMap = HawkConfigManager.getInstance().getConfigMap(MailSysCfg.class);
+		if (mailSysCfgMap != null) {
+			for (Entry<Object, MailSysCfg> entry : mailSysCfgMap.entrySet()) {
+				MailSysCfg mailSysCfg = entry.getValue();
+				List<Integer> receiverList = new ArrayList<>();
+				int testerId = ServerData.getInstance().getPlayerIdByPuid("mail_test");
+				if (testerId != 0 && true == ServerData.getInstance().isPlayerOnline(testerId)) {
+					receiverList.add(testerId);
+				}
+				MailUtil.SendSysMail(mailSysCfg, receiverList, Source.SYS_OPERATION, Action.MAIL_REWARD);
+			}
 		}
+		// TEST END-------------------------------------------------------------------------------------
 		return true;
 	}
 

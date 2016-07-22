@@ -756,7 +756,7 @@ towerBoss_3_39,死亡之塔 - 39,Tower Of Death - 39
 towerBoss_3_40,死亡之塔 - 40,Tower Of Death - 40
 im_battle_002,己方宠物正在释放大招，请稍后再试,"Your monsters are currently casting their ults, please try again later."
 im_battle_003,达到5级即可开启加速功能,Reach level 5 to unlock the speed-up feature
-im_battle_004,达到10级即可开启托管功能,Reach level 10 to unlock the auto-battle feature
+im_battle_004,达到8级即可开启托管功能,Reach level 8 to unlock the auto-battle feature
 im_battle_005,通关后即可开启托管功能,Clear the stage to unlock the auto-battle feature
 im_battle_006,托管状态，无法进行换怪操作,"In auto-battle, unable to do any monster actions"
 im_battle_007,托管状态，无法手动释放大招,"In auto-battle, unable to manually cast abilities"
@@ -1655,3 +1655,4 @@ monster_record_019,该宠物正在大冒险，无法选择,该宠物正在大冒
 monster_record_020,该宠物正驻守在公会基地，无法选择,该宠物正驻守在公会基地，无法选择
 monster_record_021,该宠物已被锁定，无法选择,该宠物已被锁定，无法选择
 monster_record_022,该宠物正在出战，无法选择,该宠物正在出战，无法选择
+shenhuashouhuzhe_name,神话守护者,神话守护者

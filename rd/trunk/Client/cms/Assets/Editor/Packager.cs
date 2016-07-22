@@ -15,11 +15,22 @@ public class Packager
     [MenuItem("Builder/Build AssetBundles and filelist")]
     public static void BuildAssetResource()
     {
+        BuildAssetInternal(BuildAssetBundleOptions.None);
+    }
+
+    [MenuItem("Builder/ReBuild AssetBundles and filelist")]
+    public static void ReBuildAssetResource()
+    {
+        BuildAssetInternal(BuildAssetBundleOptions.ForceRebuildAssetBundle);
+    }
+
+    static void BuildAssetInternal(BuildAssetBundleOptions options)
+    {
         //build assetbundle: Assets/StreamingAssets/assetbundle
         string abPath = Path.Combine(Util.BuildPath, Const.AssetDirname);
         if (!Directory.Exists(abPath))
             Directory.CreateDirectory(abPath);
-        BuildPipeline.BuildAssetBundles(abPath, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
+        BuildPipeline.BuildAssetBundles(abPath, options, EditorUserBuildSettings.activeBuildTarget);
 
         //build lua file list: Assets/StreamingAssets/files.txt
         ///----------------------创建文件列表-----------------------
@@ -30,8 +41,8 @@ public class Packager
         paths.Clear();
         files.Clear();
         Recursive(Util.BuildPath);
-        
-       
+
+
         FileStream fs = new FileStream(newFilePath, FileMode.CreateNew);
         StreamWriter sw = new StreamWriter(fs);
         for (int i = 0; i < files.Count; i++)

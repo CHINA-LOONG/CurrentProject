@@ -39,7 +39,13 @@ namespace PB
       MAIL_ERROR = 458752,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_ERROR", Value=524288)]
-      ALLIANCE_ERROR = 524288
+      ALLIANCE_ERROR = 524288,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_ERROR", Value=589824)]
+      SHOP_ERROR = 589824,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_ERROR", Value=1048576)]
+      IM_ERROR = 1048576
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"error")]
@@ -249,7 +255,18 @@ namespace PB
       SHOP_ITEM_ALREADY_BUY = 589826,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SHOP_REFRESH_MAX_COUNT", Value=589827)]
-      SHOP_REFRESH_MAX_COUNT = 589827
+      SHOP_REFRESH_MAX_COUNT = 589827,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_GOLD2COIN_MAX_COUNT", Value=589827)]
+      SHOP_GOLD2COIN_MAX_COUNT = 589827
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"imError")]
+    public enum imError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_LENGTH", Value=1048577)]
+      IM_CHAT_LENGTH = 1048577
     }
   
 }

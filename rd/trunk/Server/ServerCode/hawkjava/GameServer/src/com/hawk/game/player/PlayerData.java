@@ -1,13 +1,18 @@
 package com.hawk.game.player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.persistence.Embeddable;
+
 import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBManager;
 import org.hawk.net.protocol.HawkProtocol;
+
+import sun.rmi.runtime.Log;
 
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
@@ -18,6 +23,7 @@ import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.protocol.Const.equipPart;
 import com.hawk.game.protocol.Equip.HSEquipInfoSync;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
@@ -26,6 +32,9 @@ import com.hawk.game.protocol.Monster.HSMonsterInfoSync;
 import com.hawk.game.protocol.Player.HSPlayerInfoSync;
 import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.Quest.HSQuestInfoSync;
+import com.hawk.game.protocol.Setting.HSSetting;
+import com.hawk.game.protocol.Setting.HSSettingInfoSync;
+import com.hawk.game.protocol.Status.itemError;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
 
@@ -44,7 +53,7 @@ public class PlayerData {
 	 * 玩家对象
 	 */
 	private Player player = null;
-	
+
 	/**
 	 * 玩家基础数据
 	 */
@@ -59,16 +68,16 @@ public class PlayerData {
 	 * 怪的基础数据
 	 */
 	private Map<Integer, MonsterEntity> monsterEntityMap = null;
-	
+
 	/**
 	 * 物品列表
 	 */
-	private List<ItemEntity> itemEntityList = null;
+	private Map<String, ItemEntity> itemEntityMap = null;
 
 	/**
 	 * 装备列表
 	 */
-	private List<EquipEntity> equipEntityList = null;
+	private Map<Long, EquipEntity> equipEntityMap = null;
 
 	/**
 	 * 穿戴装备列表
@@ -89,7 +98,7 @@ public class PlayerData {
 	 * 角色商城数据
 	 */
 	private ShopEntity shopEntity = null;
-	
+
 	/**
 	 * 公会基本信息
 	 */
@@ -120,7 +129,7 @@ public class PlayerData {
 	public String getPuid() {
 		return this.puid;
 	}
-	
+
 	/**
 	 * 获取数据对应玩家对象
 	 * 
@@ -199,7 +208,7 @@ public class PlayerData {
 	public ShopEntity getShopEntity() {
 		return shopEntity;
 	}
-	
+
 	/**
 	 * 获取玩家公会实体
 	 * 
@@ -209,7 +218,7 @@ public class PlayerData {
 		return playerAllianceEntity;
 	}
 
-	
+
 	/**
 	 * 获取当前角色的统计数据实体
 	 */
@@ -222,17 +231,17 @@ public class PlayerData {
 	 */
 	public void initMonsterDressedEquip() {
 		dressedEquipMap = new HashMap<>();
-		for (EquipEntity equip : equipEntityList) {
-			if (equip.getMonsterId() != GsConst.EQUIPNOTDRESS) {
-				int monsterId = equip.getMonsterId();
-				ItemCfg itemcfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, equip.getItemId());
+		for (Map.Entry<Long, EquipEntity> entry : equipEntityMap.entrySet()) {
+			if (entry.getValue().getMonsterId() != GsConst.EQUIPNOTDRESS) {
+				int monsterId = entry.getValue().getMonsterId();
+				ItemCfg itemcfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, entry.getValue().getItemId());
 				if (itemcfg != null) {
-					addMonsterEquip(monsterId, equip, itemcfg.getPart());
+					addMonsterEquip(monsterId, entry.getValue(), itemcfg.getPart());
 				}
 			}
 		}
 	}
-	
+
 	/**
 	 * 添加装备  不修改entity
 	 * 
@@ -248,15 +257,15 @@ public class PlayerData {
 			monsterDressedMap = new HashMap<>();
 			dressedEquipMap.put(monsterId, monsterDressedMap);
 		}
-		
+
 		if (monsterDressedMap.containsKey(part)) {
 			return false;
 		}
-		
+
 		monsterDressedMap.put(part, equipEntity.getId());
 		return true;
 	}
-	
+
 	/**
 	 * 脱掉装备
 	 */
@@ -266,94 +275,94 @@ public class PlayerData {
 			return false;
 		}
 		monsterDressedMap = dressedEquipMap.get(equipEntity.getMonsterId());
-		
+
 		if (monsterDressedMap.get(part) != equipEntity.getId()) {
 			return false;
 		}
-		
+
 		monsterDressedMap.remove(part);
-		
+
 		if (monsterDressedMap.size() == 0) {
 			dressedEquipMap.remove(equipEntity.getMonsterId());
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * 替换装备
 	 * 不修改entity
 	 */
-	public boolean replaceMonsterEquip(int monsterId, EquipEntity oldEquip, EquipEntity newEquip, int part) {	
+	public boolean replaceMonsterEquip(int monsterId, EquipEntity oldEquip, EquipEntity newEquip, int part) {
 		if (newEquip.getMonsterId() != -1 || oldEquip.getMonsterId() != monsterId) {
 			return false;
 		}
-		
+
 		Map<Integer, Long> monsterDressedMap = null;
 		if (!dressedEquipMap.containsKey(monsterId)) {
 			return false;
 		}
-		
-		monsterDressedMap = dressedEquipMap.get(monsterId);		
+
+		monsterDressedMap = dressedEquipMap.get(monsterId);
 		if (monsterDressedMap.get(part) != oldEquip.getId()) {
 			return false;
 		}
-		
+
 		monsterDressedMap.put(part, newEquip.getId());
-		return true;	
+		return true;
 	}
-	
+
 	/**
 	 * 指定位置是否有装备
 	 */
-	public boolean isMonsterEquipOnPart(int monsterId, int part) {	
+	public boolean isMonsterEquipOnPart(int monsterId, int part) {
 		Map<Integer, Long> monsterDressedMap = null;
 		if (!dressedEquipMap.containsKey(monsterId)) {
 			return false;
 		}
-		
-		monsterDressedMap = dressedEquipMap.get(monsterId);		
+
+		monsterDressedMap = dressedEquipMap.get(monsterId);
 		if (!monsterDressedMap.containsKey(part)) {
 			return false;
 		}
-		
-		return true;	
+
+		return true;
 	}
-	
+
 	/**
 	 * 指定位置是否有装备id
 	 */
-	public boolean isMonsterEquipOnPart(int monsterId, int part, long id) {	
+	public boolean isMonsterEquipOnPart(int monsterId, int part, long id) {
 		Map<Integer, Long> monsterDressedMap = null;
 		if (!dressedEquipMap.containsKey(monsterId)) {
 			return false;
 		}
-		
-		monsterDressedMap = dressedEquipMap.get(monsterId);		
+
+		monsterDressedMap = dressedEquipMap.get(monsterId);
 		if (monsterDressedMap.get(part) != id) {
 			return false;
 		}
-		
-		return true;	
+
+		return true;
 	}
 
 	/**
 	 * 获取某一个位置装备Id
 	 */
-	public long getMonsterEquipIdOnPart(int monsterId, int part) {	
+	public long getMonsterEquipIdOnPart(int monsterId, int part) {
 		Map<Integer, Long> monsterDressedMap = null;
 		if (!dressedEquipMap.containsKey(monsterId)) {
 			return 0;
 		}
-		
-		monsterDressedMap = dressedEquipMap.get(monsterId);		
+
+		monsterDressedMap = dressedEquipMap.get(monsterId);
 		if (monsterDressedMap.containsKey(part) == false) {
 			return 0;
 		}
-		
-		return monsterDressedMap.get(part);	
+
+		return monsterDressedMap.get(part);
 	}
-	
+
 	/**
 	 * 获取怪兽装备列表字符串用于日志
 	 */
@@ -363,7 +372,7 @@ public class PlayerData {
 		if (monsterDressedMap == null) {
 			return builder.toString();
 		}
-		
+
 		for (Map.Entry<Integer, Long> entry : monsterDressedMap.entrySet()) {
 			builder.append(String.format("%d : %d; ", entry.getKey(), entry.getValue()));
 		}
@@ -418,9 +427,9 @@ public class PlayerData {
 	 * @return
 	 */
 	public ItemEntity getItemById(int id) {
-		for (ItemEntity itemEntity : itemEntityList) {
-			if (id == itemEntity.getId()) {
-				return itemEntity;
+		for (Map.Entry<String, ItemEntity> entry : itemEntityMap.entrySet()) {
+			if (id == entry.getValue().getId()) {
+				return entry.getValue();
 			}
 		}
 		return null;
@@ -432,12 +441,7 @@ public class PlayerData {
 	 * @return
 	 */
 	public ItemEntity getItemByItemId(String itemId) {
-		for (ItemEntity itemEntity : itemEntityList) {
-			if (itemId.equals(itemEntity.getItemId())) {
-				return itemEntity;
-			}
-		}
-		return null;
+		return itemEntityMap.get(itemId);
 	}
 
 	/**
@@ -446,7 +450,7 @@ public class PlayerData {
 	 * @return
 	 */
 	public void addItemEntity(ItemEntity itemEntity) {
-		itemEntityList.add(itemEntity);
+		itemEntityMap.put(itemEntity.getItemId(), itemEntity);
 	}
 
 	/**
@@ -454,8 +458,8 @@ public class PlayerData {
 	 * 
 	 * @return
 	 */
-	public List<EquipEntity> getequipEntityList() {
-		return equipEntityList;
+	public Map<Long, EquipEntity> getequipEntityMap() {
+		return equipEntityMap;
 	}
 
 	/**
@@ -464,14 +468,7 @@ public class PlayerData {
 	 * @return
 	 */
 	public EquipEntity getEquipById(long id) {
-		if (equipEntityList != null) {
-			for (EquipEntity equipEntity : equipEntityList) {
-				if (id == equipEntity.getId()) {
-					return equipEntity;
-				}
-			}
-		}
-		return null;
+		return equipEntityMap.get(id);
 	}
 
 	/**
@@ -480,7 +477,7 @@ public class PlayerData {
 	 * @return
 	 */
 	public void addEquipEntity(EquipEntity equipEntity) {
-		equipEntityList.add(equipEntity);
+		equipEntityMap.put(equipEntity.getId(), equipEntity);
 	}
 
 	/**
@@ -489,7 +486,7 @@ public class PlayerData {
 	 * @param equipEntity
 	 */
 	public void removeEquipEntity(EquipEntity equipEntity) {
-		equipEntityList.remove(equipEntity);
+		equipEntityMap.remove(equipEntity);
 	}
 
 	/**
@@ -530,11 +527,11 @@ public class PlayerData {
 	 * 
 	 * @return
 	 */
-	public PlayerEntity loadPlayer() {	
+	public PlayerEntity loadPlayer() {
 		if (this.puid == null) {
 			return null;
 		}
-		
+
 		if (playerEntity == null) {
 			List<PlayerEntity> resultList = HawkDBManager.getInstance().query("from PlayerEntity where puid = ? and invalid = 0", puid);
 			if (resultList != null && resultList.size() > 0) {
@@ -600,11 +597,13 @@ public class PlayerData {
 	 * @return
 	 */
 	public void loadAllItem() {
-		if (itemEntityList == null) {
-			itemEntityList = HawkDBManager.getInstance().query("from ItemEntity where playerId = ? and invalid = 0 order by id asc", getId());
-			if (itemEntityList.size() > 0) {
-				for (ItemEntity itemEntity : itemEntityList) {
+		if (itemEntityMap == null) {
+			itemEntityMap = new HashMap<>();
+			List<ItemEntity> resultList = HawkDBManager.getInstance().query("from ItemEntity where playerId = ? and invalid = 0 order by id asc", getId());
+			if (resultList != null && resultList.size() > 0) {
+				for (ItemEntity itemEntity : resultList) {
 					itemEntity.decode();
+					itemEntityMap.put(itemEntity.getItemId(), itemEntity);
 				}
 			}
 		}
@@ -616,13 +615,15 @@ public class PlayerData {
 	 * @return
 	 */
 	public void loadAllEquip() {
-		if (equipEntityList == null) {
-			equipEntityList = HawkDBManager.getInstance().query("from EquipEntity where playerId = ? and invalid = 0 order by id asc", getId());
-			if (equipEntityList.size() > 0) {
-				for (EquipEntity equipEntity : equipEntityList) {
+		if (equipEntityMap == null) {
+			equipEntityMap = new HashMap<>();
+			List<EquipEntity> resultList = HawkDBManager.getInstance().query("from EquipEntity where playerId = ? and invalid = 0 order by id asc", getId());
+			if (resultList != null && resultList.size() > 0) {
+				for (EquipEntity equipEntity : resultList) {
 					equipEntity.decode();
+					equipEntityMap.put(equipEntity.getId(), equipEntity);
 				}
-			}	
+			}
 		}
 	}
 
@@ -632,54 +633,54 @@ public class PlayerData {
 	public void loadAllMail() {
 		if (mailEntityList == null) {
 			mailEntityList = HawkDBManager.getInstance().query("from MailEntity where receiverId = ? and invalid = 0 order by id asc", getId());
+			if (mailEntityList == null) {
+				mailEntityList = new ArrayList<>();
+				return;
+			}
 			if (mailEntityList.size() > 0) {
 				for (MailEntity mailEntity : mailEntityList) {
 					mailEntity.decode();
 				}
 			}
-		}	
+		}
 	}
-	
+
 	/**
 	 * 加载角色商城
-	 * 
-	 * @param puid
 	 */
-	public ShopEntity loadShopData() {
-		if (this.shopEntity == null) {
-			List<ShopEntity> shopEntities = HawkDBManager.getInstance().query("from ShopEntity where playerId = ? and invalid = 0", playerEntity.getId());
-			if (shopEntities != null && shopEntities.size() > 0) {
-				shopEntity = shopEntities.get(0);
+	public ShopEntity loadShop() {
+		if (shopEntity == null) {
+			List<ShopEntity> resultList = HawkDBManager.getInstance().query("from ShopEntity where playerId = ? and invalid = 0", getId());
+			if (resultList != null && resultList.size() > 0) {
+				shopEntity = resultList.get(0);
 				shopEntity.decode();
 			} else {
 				shopEntity= new ShopEntity();
 				shopEntity.setPlayerId(player.getId());
-				HawkDBManager.getInstance().create(shopEntity);
+				shopEntity.notifyCreate();
 			}
 		}
-		return this.shopEntity;
+		return shopEntity;
 	}
-	
+
 	/**
 	 * 加载公会个人信息
-	 * 
-	 * @return
 	 */
 	public PlayerAllianceEntity loadPlayerAlliance() {
 		if (playerAllianceEntity == null) {
-			List<PlayerAllianceEntity> playerEntitys = HawkDBManager.getInstance().query("from PlayerAllianceEntity where playerId = ? and invalid = 0", playerEntity.getId());
-			if (playerEntitys != null && playerEntitys.size() > 0) {
-				playerAllianceEntity = playerEntitys.get(0);
+			List<PlayerAllianceEntity> resultList = HawkDBManager.getInstance().query("from PlayerAllianceEntity where playerId = ? and invalid = 0", getId());
+			if (resultList != null && resultList.size() > 0) {
+				playerAllianceEntity = resultList.get(0);
 			}
 			if (playerAllianceEntity == null) {
 				playerAllianceEntity = new PlayerAllianceEntity();
 				playerAllianceEntity.setPlayerId(playerEntity.getId());
-				HawkDBManager.getInstance().create(playerAllianceEntity);
+				playerAllianceEntity.notifyCreate();
 			}
 		}
 		return playerAllianceEntity;
 	}
-	
+
 	/**********************************************************************************************************
 	 * 数据同步区
 	 **********************************************************************************************************/
@@ -699,7 +700,22 @@ public class PlayerData {
 	public void syncStatisticsInfo() {
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_INFO_SYNC_S, BuilderUtil.genStatisticsBuilder(statisticsEntity)));
 	}
-	
+
+	/**
+	 * 同步系统设置信息
+	 */
+	public void syncSettingInfo() {
+		HSSettingInfoSync.Builder builder = HSSettingInfoSync.newBuilder();
+
+		HSSetting.Builder setting = HSSetting.newBuilder();
+		setting.setLanguage(playerEntity.getLanguage());
+		setting.addAllBlockPlayerId(playerEntity.getBlockPlayerList());
+		builder.setSetting(setting);
+
+		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.SETTING_INFO_SYNC_S, builder);
+		player.sendProtocol(protocol);
+	}
+
 	/**
 	 * 同步怪物信息(0表示同步所有)
 	 */
@@ -724,9 +740,9 @@ public class PlayerData {
 	public void syncItemInfo(int... ids) {
 		HSItemInfoSync.Builder builder = HSItemInfoSync.newBuilder();
 		for (Integer id : ids) {
-			for (ItemEntity itemEntity : itemEntityList) {
-				if ((id == 0 || id == itemEntity.getId()) && itemEntity.getCount() > 0 && !itemEntity.isInvalid()) {
-					builder.addItemInfos(BuilderUtil.genItemBuilder(itemEntity));
+			for (Map.Entry<String, ItemEntity> entry : itemEntityMap.entrySet()) {
+				if ((id == 0 || id == entry.getValue().getId()) && entry.getValue().getCount() > 0 && !entry.getValue().isInvalid()) {
+					builder.addItemInfos(BuilderUtil.genItemBuilder(entry.getValue()));
 				}
 			}
 		}
@@ -739,13 +755,13 @@ public class PlayerData {
 	 */
 	public void syncItemInfo() {
 		HSItemInfoSync.Builder builder = HSItemInfoSync.newBuilder();
-		for (ItemEntity itemEntity : itemEntityList) {
-			if (itemEntity.getCount() > 0 && !itemEntity.isInvalid()) {
-				ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemEntity.getItemId());
+		for (Map.Entry<String, ItemEntity> entry : itemEntityMap.entrySet()) {
+			if (entry.getValue().getCount() > 0 && !entry.getValue().isInvalid()) {
+				ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, entry.getValue().getItemId());
 				if (itemCfg == null) {
 					continue;
 				}
-				builder.addItemInfos(BuilderUtil.genItemBuilder(itemEntity));
+				builder.addItemInfos(BuilderUtil.genItemBuilder(entry.getValue()));
 			}
 		}
 		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.ITEM_INFO_SYNC_S, builder);
@@ -757,9 +773,9 @@ public class PlayerData {
 	 */
 	public void syncEquipInfo() {
 		HSEquipInfoSync.Builder builder = HSEquipInfoSync.newBuilder();
-		for (EquipEntity equipEntity : equipEntityList) {
-			if (!equipEntity.isInvalid()) {
-				builder.addEquipInfos(BuilderUtil.genEquipBuilder(equipEntity));
+		for (Map.Entry<Long, EquipEntity> entry : equipEntityMap.entrySet()) {
+			if (!entry.getValue().isInvalid()) {
+				builder.addEquipInfos(BuilderUtil.genEquipBuilder(entry.getValue()));
 			}
 		}
 
@@ -767,7 +783,7 @@ public class PlayerData {
 			player.sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INFO_SYNC_S, builder));
 		}
 	}
-	
+
 	/**
 	 * 同步任务信息
 	 */

@@ -29,7 +29,6 @@ GameObject:
   - 20: {fileID: 2085466}
   - 92: {fileID: 9247924}
   - 124: {fileID: 12430322}
-  - 81: {fileID: 8154634}
   - 114: {fileID: 11428968}
   m_Layer: 0
   m_Name: BattleCamera
@@ -96,13 +95,6 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
   m_StereoMirrorMode: 0
---- !u!81 &8154634
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196878}
-  m_Enabled: 1
 --- !u!92 &9247924
 Behaviour:
   m_ObjectHideFlags: 1

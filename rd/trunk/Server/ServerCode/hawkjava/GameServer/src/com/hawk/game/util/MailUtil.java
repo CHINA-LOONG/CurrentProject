@@ -9,6 +9,7 @@ import org.hawk.xid.HawkXID;
 
 import com.hawk.game.ServerData;
 import com.hawk.game.config.MailSysCfg;
+import com.hawk.game.config.RewardCfg;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ItemInfo;
@@ -32,8 +33,11 @@ public class MailUtil {
 		MailInfo mailInfo = new MailInfo();
 		mailInfo.subject = mailCfg.getSubject();
 		mailInfo.content = mailCfg.getContent();
-		mailInfo.rewardList = mailCfg.getReward().getRewardList();
-		
+		RewardCfg reward = mailCfg.getReward();
+		if (reward != null) {
+			mailInfo.rewardList = reward.getRewardList();
+		}
+
 		SendMail(mailInfo, receiverIdList, 0, mailCfg.getSender(), source, action);
 	}
 	
@@ -58,7 +62,9 @@ public class MailUtil {
 		mailEntity.setState((byte)Const.mailState.UNREAD_VALUE);
 		mailEntity.setSubject(mailInfo.subject);
 		mailEntity.setContent(mailInfo.content);
-		mailEntity.setRewardList(mailInfo.rewardList);
+		if (mailInfo.rewardList != null) {
+			mailEntity.setRewardList(mailInfo.rewardList);
+		}
 
 		if (true == mailEntity.notifyCreate()) {
 			// 如果receiver在线，发msg

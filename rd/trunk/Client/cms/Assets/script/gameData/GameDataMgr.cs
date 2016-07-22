@@ -55,6 +55,17 @@ public class GameDataMgr : MonoBehaviour
             return instanceState;
         }
     }
+
+	[SerializeField]
+	ShopDataMgr shopDataMgr;
+	public ShopDataMgr ShopDataMgrAttr
+	{
+		get
+		{
+			return shopDataMgr;
+		}
+	}
+
     //---------------------------------------------------------------------------------------------
     public void Init()
     {
@@ -73,6 +84,12 @@ public class GameDataMgr : MonoBehaviour
         instanceGo.transform.SetParent(transform);
         instanceState = userDataGo.AddComponent<InstanceState>();
         instanceState.Init();
+
+		GameObject shopDataGo = new GameObject ("ShopDataMgr");
+		shopDataGo.transform.SetParent (transform);
+		shopDataMgr = shopDataGo.AddComponent<ShopDataMgr> ();
+		shopDataMgr.Init ();
+
 
         BindListener();
     }

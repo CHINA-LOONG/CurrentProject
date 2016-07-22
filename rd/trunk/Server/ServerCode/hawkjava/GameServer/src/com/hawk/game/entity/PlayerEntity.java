@@ -39,47 +39,50 @@ public class PlayerEntity extends HawkDBEntity {
 	protected String puid = "";
 
 	@Column(name = "nickname", unique = true, nullable = false)
-	protected String nickname = "";	
+	protected String nickname = "";
 
 	@Column(name = "gender")
 	protected byte gender = 0;
-	
+
 	@Column(name = "eye")
 	protected byte eye = 0;
 
 	@Column(name = "hair")
 	protected byte hair = 0;
-	
+
 	@Column(name = "hairColor")
 	protected byte hairColor = 0;
-	
+
 	@Column(name = "career")
 	protected byte career = 0;
-	
+
 	@Column(name = "recharge")
 	protected int recharge = 0;
 
 	@Column(name = "vipLevel")
 	protected int vipLevel = 0;
-	
+
 	@Column(name = "coin")
 	protected long coin = 0;
-	
+
 	@Column(name = "level")
 	protected short level = 1;
 
 	@Column(name = "exp")
 	protected int exp = 0;
-	
+
 	@Column(name = "gold")
 	protected int gold = 0;
-	
+
 	@Column(name = "battleMonster", nullable = false)
 	protected String battleMonsterJson = "";
-	
+
+	@Column(name = "blockPlayer", nullable = false)
+	protected String blockPlayerJson = "";
+
 	@Column(name = "language", nullable = false)
 	protected String language = GsConst.DEFAULT_LANGUAGE;
-	
+
 	@Column(name = "device", nullable = false)
 	protected String device = "";
 
@@ -88,7 +91,7 @@ public class PlayerEntity extends HawkDBEntity {
 
 	@Column(name = "phoneInfo", nullable = false)
 	protected String phoneInfo = "";
-	
+
 	@Column(name = "loginTime")
 	protected Calendar loginTime = null;
 
@@ -109,7 +112,10 @@ public class PlayerEntity extends HawkDBEntity {
 
 	@Transient
 	private List<Integer> battleMonsterList = new LinkedList<Integer>();
-	
+
+	@Transient
+	private List<Integer> blockPlayerList = new LinkedList<Integer>();
+
 	public PlayerEntity() {
 		this.createTime = HawkTime.getCalendar();
 		this.loginTime = HawkTime.getCalendar();
@@ -120,7 +126,7 @@ public class PlayerEntity extends HawkDBEntity {
 		this.createTime = HawkTime.getCalendar();
 		this.loginTime = HawkTime.getCalendar();
 	}
-	
+
 	public PlayerEntity(String puid, String nickname, byte career, int gender, int eye, int hair, int hairColor){
 		this.puid = puid;
 		this.createTime = HawkTime.getCalendar();
@@ -148,11 +154,11 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setPuid(String puid) {
 		this.puid = puid;
 	}
-	
+
 	public String getNickname() {
 		return this.nickname;
 	}
-	
+
 	public short getLevel() {
 		return level;
 	}
@@ -160,7 +166,7 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setLevel(int level) {
 		this.level = (short)level;
 	}
-	
+
 	public byte getCareer() {
 		return career;
 	}
@@ -168,7 +174,7 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setCareer(byte career) {
 		this.career = career;
 	}
-	
+
 	public long getCoin() {
 		return coin;
 	}
@@ -184,7 +190,7 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setExp(int exp) {
 		this.exp = exp;
 	}
-	
+
 	public int getGold() {
 		return gold;
 	}
@@ -192,13 +198,27 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setGold(int gold) {
 		this.gold = gold;
 	}
-	
+
 	public List<Integer> getBattleMonsterList() {
 		return battleMonsterList;
 	}
 
 	public void setBattleMonsterList(List<Integer> list) {
 		this.battleMonsterList = list;
+	}
+
+	public List<Integer> getBlockPlayerList() {
+		return blockPlayerList;
+	}
+
+	public void addBlockPlayer(int playerId) {
+		if (false == blockPlayerList.contains(playerId)) {
+			blockPlayerList.add(playerId);
+		}
+	}
+
+	public void removeBlockPlayer(int playerId) {
+		blockPlayerList.remove(Integer.valueOf(playerId));
 	}
 
 	public String getLanguage() {
@@ -224,15 +244,15 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setVipLevel(int vipLevel) {
 		this.vipLevel = vipLevel;
 	}
-	
-	public int getGender() {	
+
+	public int getGender() {
 		return this.gender;
 	}
-	
+
 	public int getEye() {
 		return this.eye;
 	}
-	
+
 	public int getHair() {
 		return this.hair;
 	}
@@ -240,7 +260,7 @@ public class PlayerEntity extends HawkDBEntity {
 	public int getHairColor() {
 		return this.hairColor;
 	}
-	
+
 	public String getDevice() {
 		return device;
 	}
@@ -288,18 +308,24 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setResetTime(Calendar resetTime) {
 		this.resetTime = resetTime;
 	}
-	
+
 	@Override
 	public boolean decode() {
 		if (battleMonsterJson != null && false == "".equals(battleMonsterJson) && false == "null".equals(battleMonsterJson)) {
 			battleMonsterList = HawkJsonUtil.getJsonInstance().fromJson(battleMonsterJson, new TypeToken<List<Integer>>() {}.getType());
 		}
+
+		if (blockPlayerJson != null && false == "".equals(blockPlayerJson) && false == "null".equals(blockPlayerJson)) {
+			blockPlayerList = HawkJsonUtil.getJsonInstance().fromJson(blockPlayerJson, new TypeToken<List<Integer>>() {}.getType());
+		}
+
 		return true;
 	}
-	
+
 	@Override
 	public boolean encode() {
 		battleMonsterJson = HawkJsonUtil.getJsonInstance().toJson(battleMonsterList);
+		blockPlayerJson = HawkJsonUtil.getJsonInstance().toJson(blockPlayerList);
 		return true;
 	}
 
@@ -307,7 +333,7 @@ public class PlayerEntity extends HawkDBEntity {
 	public Calendar getCreateTime() {
 		return createTime;
 	}
-	
+
 	@Override
 	public void setCreateTime(Calendar createTime) {
 		this.createTime = createTime;

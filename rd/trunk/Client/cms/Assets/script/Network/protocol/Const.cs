@@ -378,14 +378,14 @@ namespace PB
     public enum ImChannel
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"WORLD", Value=1)]
-      WORLD = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"PERSON", Value=1)]
+      PERSON = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"GUILD", Value=2)]
-      GUILD = 2,
+      [global::ProtoBuf.ProtoEnum(Name=@"WORLD", Value=2)]
+      WORLD = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SELF", Value=3)]
-      SELF = 3
+      [global::ProtoBuf.ProtoEnum(Name=@"GUILD", Value=3)]
+      GUILD = 3
     }
   
 }

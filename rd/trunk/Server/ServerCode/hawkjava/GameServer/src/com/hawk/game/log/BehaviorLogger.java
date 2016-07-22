@@ -210,6 +210,10 @@ public class BehaviorLogger {
 		 */
 		SHOP_REFRESH,
 		/**
+		 * 钻石兑换金币
+		 */
+		SHOP_GOLD2COIN,	
+		/**
 		 * 公会创建
 		 */
 		ALLIANCE_CREATE_CONSUME,

@@ -2575,6 +2575,10 @@ public final class Player {
   }
   /**
    * Protobuf type {@code HSPlayerKickout}
+   *
+   * <pre>
+   * KICKOUT_S
+   * </pre>
    */
   public static final class HSPlayerKickout extends
       com.google.protobuf.GeneratedMessage
@@ -2800,6 +2804,10 @@ public final class Player {
     }
     /**
      * Protobuf type {@code HSPlayerKickout}
+     *
+     * <pre>
+     * KICKOUT_S
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -4572,6 +4580,10 @@ public final class Player {
   }
   /**
    * Protobuf type {@code HSPlayerInfoSync}
+   *
+   * <pre>
+   * PLAYER_INFO_SYNC_S
+   * </pre>
    */
   public static final class HSPlayerInfoSync extends
       com.google.protobuf.GeneratedMessage
@@ -4815,6 +4827,10 @@ public final class Player {
     }
     /**
      * Protobuf type {@code HSPlayerInfoSync}
+     *
+     * <pre>
+     * PLAYER_INFO_SYNC_S
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -5091,6 +5107,10 @@ public final class Player {
   }
   /**
    * Protobuf type {@code HSAssembleFinish}
+   *
+   * <pre>
+   * ASSEMBLE_FINISH_S
+   * </pre>
    */
   public static final class HSAssembleFinish extends
       com.google.protobuf.GeneratedMessage
@@ -5316,6 +5336,10 @@ public final class Player {
     }
     /**
      * Protobuf type {@code HSAssembleFinish}
+     *
+     * <pre>
+     * ASSEMBLE_FINISH_S
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>

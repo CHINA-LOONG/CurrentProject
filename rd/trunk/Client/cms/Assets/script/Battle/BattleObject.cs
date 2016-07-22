@@ -28,6 +28,7 @@ public class BattleObject : MonoBehaviour
     private float lastUpdateTime;
 
 	public WeakPointGroup wpGroup = null;
+    public float originalScale = 1.0f;
 
     //---------------------------------------------------------------------------------------------
     void Awake()
@@ -127,7 +128,7 @@ public class BattleObject : MonoBehaviour
             GameObject slotNode = BattleController.Instance.GetSlotNode(camp, unit.pbUnit.slot, unit.isBoss);
             transform.localPosition = slotNode.transform.position;
             transform.localRotation = slotNode.transform.rotation;
-            transform.localScale = slotNode.transform.localScale;
+            transform.localScale = slotNode.transform.localScale * originalScale;
             targetRot = gameObject.transform.localRotation;
             gameObject.transform.SetParent(GameMain.Instance.transform, false);
            // if (camp == UnitCamp.Enemy)

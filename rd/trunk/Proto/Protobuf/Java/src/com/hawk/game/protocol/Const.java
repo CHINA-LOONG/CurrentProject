@@ -2647,64 +2647,64 @@ public final class Const {
   public enum ImChannel
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>WORLD = 1;</code>
+     * <code>PERSON = 1;</code>
+     *
+     * <pre>
+     * 私人
+     * </pre>
+     */
+    PERSON(0, 1),
+    /**
+     * <code>WORLD = 2;</code>
      *
      * <pre>
      * 公共
      * </pre>
      */
-    WORLD(0, 1),
+    WORLD(1, 2),
     /**
-     * <code>GUILD = 2;</code>
+     * <code>GUILD = 3;</code>
      *
      * <pre>
      * 公会
      * </pre>
      */
-    GUILD(1, 2),
-    /**
-     * <code>SELF = 3;</code>
-     *
-     * <pre>
-     * 自己
-     * </pre>
-     */
-    SELF(2, 3),
+    GUILD(2, 3),
     ;
 
     /**
-     * <code>WORLD = 1;</code>
+     * <code>PERSON = 1;</code>
+     *
+     * <pre>
+     * 私人
+     * </pre>
+     */
+    public static final int PERSON_VALUE = 1;
+    /**
+     * <code>WORLD = 2;</code>
      *
      * <pre>
      * 公共
      * </pre>
      */
-    public static final int WORLD_VALUE = 1;
+    public static final int WORLD_VALUE = 2;
     /**
-     * <code>GUILD = 2;</code>
+     * <code>GUILD = 3;</code>
      *
      * <pre>
      * 公会
      * </pre>
      */
-    public static final int GUILD_VALUE = 2;
-    /**
-     * <code>SELF = 3;</code>
-     *
-     * <pre>
-     * 自己
-     * </pre>
-     */
-    public static final int SELF_VALUE = 3;
+    public static final int GUILD_VALUE = 3;
 
 
     public final int getNumber() { return value; }
 
     public static ImChannel valueOf(int value) {
       switch (value) {
-        case 1: return WORLD;
-        case 2: return GUILD;
-        case 3: return SELF;
+        case 1: return PERSON;
+        case 2: return WORLD;
+        case 3: return GUILD;
         default: return null;
       }
     }
@@ -2805,9 +2805,9 @@ public final class Const {
       "ESHOP\020\002\022\r\n\tOTHERSHOP\020\003*<\n\tmailState\022\n\n\006U" +
       "NREAD\020\001\022\010\n\004READ\020\002\022\013\n\007RECEIVE\020\003\022\014\n\010OVERFL" +
       "OW\020\004*7\n\006ImType\022\010\n\004CHAT\020\001\022\013\n\007LANTERN\020\002\022\n\n",
-      "\006PROMPT\020\003\022\n\n\006NOTICE\020\004*+\n\tImChannel\022\t\n\005WO" +
-      "RLD\020\001\022\t\n\005GUILD\020\002\022\010\n\004SELF\020\003B\030\n\026com.hawk.g" +
-      "ame.protocol"
+      "\006PROMPT\020\003\022\n\n\006NOTICE\020\004*-\n\tImChannel\022\n\n\006PE" +
+      "RSON\020\001\022\t\n\005WORLD\020\002\022\t\n\005GUILD\020\003B\030\n\026com.hawk" +
+      ".game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

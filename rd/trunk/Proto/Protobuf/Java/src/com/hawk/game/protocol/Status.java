@@ -49,6 +49,14 @@ public final class Status {
      * <code>ALLIANCE_ERROR = 524288;</code>
      */
     ALLIANCE_ERROR(8, 524288),
+    /**
+     * <code>SHOP_ERROR = 589824;</code>
+     */
+    SHOP_ERROR(9, 589824),
+    /**
+     * <code>IM_ERROR = 1048576;</code>
+     */
+    IM_ERROR(10, 1048576),
     ;
 
     /**
@@ -87,6 +95,14 @@ public final class Status {
      * <code>ALLIANCE_ERROR = 524288;</code>
      */
     public static final int ALLIANCE_ERROR_VALUE = 524288;
+    /**
+     * <code>SHOP_ERROR = 589824;</code>
+     */
+    public static final int SHOP_ERROR_VALUE = 589824;
+    /**
+     * <code>IM_ERROR = 1048576;</code>
+     */
+    public static final int IM_ERROR_VALUE = 1048576;
 
 
     public final int getNumber() { return value; }
@@ -102,6 +118,8 @@ public final class Status {
         case 393216: return INSTANCE_ERROR;
         case 458752: return MAIL_ERROR;
         case 524288: return ALLIANCE_ERROR;
+        case 589824: return SHOP_ERROR;
+        case 1048576: return IM_ERROR;
         default: return null;
       }
     }
@@ -1557,6 +1575,14 @@ public final class Status {
     ;
 
     /**
+     * <code>SHOP_GOLD2COIN_MAX_COUNT = 589827;</code>
+     *
+     * <pre>
+     * 商品刷新最大次数
+     * </pre>
+     */
+    public static final shopError SHOP_GOLD2COIN_MAX_COUNT = SHOP_REFRESH_MAX_COUNT;
+    /**
      * <code>SHOP_REFRESH_TIMEOUT = 589825;</code>
      *
      * <pre>
@@ -1580,6 +1606,14 @@ public final class Status {
      * </pre>
      */
     public static final int SHOP_REFRESH_MAX_COUNT_VALUE = 589827;
+    /**
+     * <code>SHOP_GOLD2COIN_MAX_COUNT = 589827;</code>
+     *
+     * <pre>
+     * 商品刷新最大次数
+     * </pre>
+     */
+    public static final int SHOP_GOLD2COIN_MAX_COUNT_VALUE = 589827;
 
 
     public final int getNumber() { return value; }
@@ -1618,7 +1652,9 @@ public final class Status {
       return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(9);
     }
 
-    private static final shopError[] VALUES = values();
+    private static final shopError[] VALUES = {
+      SHOP_REFRESH_TIMEOUT, SHOP_ITEM_ALREADY_BUY, SHOP_REFRESH_MAX_COUNT, SHOP_GOLD2COIN_MAX_COUNT, 
+    };
 
     public static shopError valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -1640,6 +1676,87 @@ public final class Status {
     // @@protoc_insertion_point(enum_scope:shopError)
   }
 
+  /**
+   * Protobuf enum {@code imError}
+   */
+  public enum imError
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>IM_CHAT_LENGTH = 1048577;</code>
+     *
+     * <pre>
+     * 聊天内容太长
+     * </pre>
+     */
+    IM_CHAT_LENGTH(0, 1048577),
+    ;
+
+    /**
+     * <code>IM_CHAT_LENGTH = 1048577;</code>
+     *
+     * <pre>
+     * 聊天内容太长
+     * </pre>
+     */
+    public static final int IM_CHAT_LENGTH_VALUE = 1048577;
+
+
+    public final int getNumber() { return value; }
+
+    public static imError valueOf(int value) {
+      switch (value) {
+        case 1048577: return IM_CHAT_LENGTH;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<imError>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<imError>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<imError>() {
+            public imError findValueByNumber(int number) {
+              return imError.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(10);
+    }
+
+    private static final imError[] VALUES = values();
+
+    public static imError valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private imError(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:imError)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1649,50 +1766,52 @@ public final class Status {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025Protocol/Status.proto*\274\001\n\terrorMask\022\020\n" +
+      "\n\025Protocol/Status.proto*\336\001\n\terrorMask\022\020\n" +
       "\014NORMAL_ERROR\020\000\022\021\n\013LOGIN_ERROR\020\200\200\004\022\022\n\014PL" +
       "AYER_ERROR\020\200\200\010\022\023\n\rMONSTER_ERROR\020\200\200\014\022\020\n\nI" +
       "TEM_ERROR\020\200\200\020\022\021\n\013QUEST_ERROR\020\200\200\024\022\024\n\016INST" +
       "ANCE_ERROR\020\200\200\030\022\020\n\nMAIL_ERROR\020\200\200\034\022\024\n\016ALLI" +
-      "ANCE_ERROR\020\200\200 *\300\001\n\005error\022\016\n\nNONE_ERROR\020\000" +
-      "\022\020\n\014CONFIG_ERROR\020\001\022\024\n\020ONLINE_MAX_LIMIT\020\002" +
-      "\022\026\n\022REGISTER_MAX_LIMIT\020\003\022\025\n\021SERVER_GRAY_" +
-      "STATE\020\004\022\023\n\017DATA_BASE_ERROR\020\005\022\022\n\016PARAMS_I" +
-      "NVALID\020\006\022\024\n\020CONFIG_NOT_FOUND\020\007\022\021\n\014SERVER",
-      "_ERROR\020\200 *T\n\013PlayerError\022\026\n\020PLAYER_NOT_E" +
-      "XIST\020\201\200\010\022\033\n\025PLAYER_NICKNAME_EXIST\020\202\200\010\022\020\n" +
-      "\nPUID_EXIST\020\203\200\010*\274\001\n\014monsterError\022\026\n\020MONS" +
-      "TER_MAX_SIZE\020\201\200\014\022\027\n\021MONSTER_NOT_EXIST\020\202\200" +
-      "\014\022\034\n\026SKILL_POINT_NOT_ENOUGH\020\203\200\014\022\027\n\021SKILL" +
-      "_LEVEL_LIMIT\020\204\200\014\022\021\n\013STAGE_LIMIT\020\205\200\014\022\034\n\026S" +
-      "TAGE_LEVEL_NOT_ENOUGH\020\206\200\014\022\023\n\rSTAGE_CONSU" +
-      "ME\020\207\200\014*\357\003\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201" +
-      "\200\020\022\026\n\020COINS_NOT_ENOUGH\020\202\200\020\022\025\n\017GOLD_NOT_E" +
-      "NOUGH\020\203\200\020\022\025\n\017EQUIP_NOT_FOUND\020\204\200\020\022\025\n\017ITEM",
-      "_NOT_ENOUGH\020\205\200\020\022\030\n\022ITEM_BUY_NOT_ALLOW\020\206\200" +
-      "\020\022\031\n\023ITEM_SELL_NOT_ALLOW\020\207\200\020\022\035\n\027EQUIP_MA" +
-      "X_LEVEL_ALREADY\020\210\200\020\022\034\n\026EQUIP_LEVEL_NOT_E" +
-      "NOUGH\020\211\200\020\022\035\n\027EQUIP_MAX_STAGE_ALREADY\020\212\200\020" +
-      "\022\031\n\023EQUIP_DRESS_ALREADY\020\220\200\020\022\033\n\025EQUIP_NOT" +
-      "_DRESS_OTHER\020\221\200\020\022\037\n\031EQUIP_DRESS_OTHER_AL" +
-      "READY\020\222\200\020\022\027\n\021EQUIP_NOT_DRESSED\020\223\200\020\022\032\n\024EQ" +
-      "UIP_SLOT_NOT_EMPTY\020\224\200\020\022\026\n\020EQUIP_SLOT_EMP" +
-      "TY\020\225\200\020\022\031\n\023EQUIP_GEM_NOT_FOUND\020\226\200\020\022\035\n\027EQU" +
-      "IP_CAN_NOT_OPEN_SLOT\020\227\200\020*T\n\nquestError\022\026",
-      "\n\020QUEST_NOT_ACCEPT\020\201\200\024\022\030\n\022QUEST_NOT_COMP" +
-      "LETE\020\202\200\024\022\024\n\016QUEST_NOT_OPEN\020\203\200\024*l\n\rinstan" +
-      "ceError\022\027\n\021INSTANCE_NOT_OPEN\020\201\200\030\022\024\n\016INST" +
-      "ANCE_LEVEL\020\202\200\030\022\024\n\016INSTANCE_COUNT\020\203\200\030\022\026\n\020" +
-      "INSTANCE_FATIGUE\020\204\200\030*^\n\tmailError\022\024\n\016MAI" +
-      "L_NOT_EXIST\020\201\200\034\022\017\n\tMAIL_NONE\020\202\200\034\022\024\n\016MAIL" +
-      "_COIN_FULL\020\203\200\034\022\024\n\016MAIL_GOLD_FULL\020\204\200\034*\201\001\n" +
-      "\rallianceError\022\037\n\031ALLIANCE_LEVEL_NOT_ENO" +
-      "UGH\020\201\200 \022\031\n\023ALLIANCE_ALREADY_IN\020\202\200 \022\031\n\023AL" +
-      "LIANCE_NAME_ERROR\020\203\200 \022\031\n\023ALLIANCE_NAME_E",
-      "XIST\020\204\200 *b\n\tshopError\022\032\n\024SHOP_REFRESH_TI" +
-      "MEOUT\020\201\200$\022\033\n\025SHOP_ITEM_ALREADY_BUY\020\202\200$\022\034" +
-      "\n\026SHOP_REFRESH_MAX_COUNT\020\203\200$B\030\n\026com.hawk" +
-      ".game.protocol"
+      "ANCE_ERROR\020\200\200 \022\020\n\nSHOP_ERROR\020\200\200$\022\016\n\010IM_E" +
+      "RROR\020\200\200@*\300\001\n\005error\022\016\n\nNONE_ERROR\020\000\022\020\n\014CO" +
+      "NFIG_ERROR\020\001\022\024\n\020ONLINE_MAX_LIMIT\020\002\022\026\n\022RE" +
+      "GISTER_MAX_LIMIT\020\003\022\025\n\021SERVER_GRAY_STATE\020" +
+      "\004\022\023\n\017DATA_BASE_ERROR\020\005\022\022\n\016PARAMS_INVALID",
+      "\020\006\022\024\n\020CONFIG_NOT_FOUND\020\007\022\021\n\014SERVER_ERROR" +
+      "\020\200 *T\n\013PlayerError\022\026\n\020PLAYER_NOT_EXIST\020\201" +
+      "\200\010\022\033\n\025PLAYER_NICKNAME_EXIST\020\202\200\010\022\020\n\nPUID_" +
+      "EXIST\020\203\200\010*\274\001\n\014monsterError\022\026\n\020MONSTER_MA" +
+      "X_SIZE\020\201\200\014\022\027\n\021MONSTER_NOT_EXIST\020\202\200\014\022\034\n\026S" +
+      "KILL_POINT_NOT_ENOUGH\020\203\200\014\022\027\n\021SKILL_LEVEL" +
+      "_LIMIT\020\204\200\014\022\021\n\013STAGE_LIMIT\020\205\200\014\022\034\n\026STAGE_L" +
+      "EVEL_NOT_ENOUGH\020\206\200\014\022\023\n\rSTAGE_CONSUME\020\207\200\014" +
+      "*\357\003\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026\n\020" +
+      "COINS_NOT_ENOUGH\020\202\200\020\022\025\n\017GOLD_NOT_ENOUGH\020",
+      "\203\200\020\022\025\n\017EQUIP_NOT_FOUND\020\204\200\020\022\025\n\017ITEM_NOT_E" +
+      "NOUGH\020\205\200\020\022\030\n\022ITEM_BUY_NOT_ALLOW\020\206\200\020\022\031\n\023I" +
+      "TEM_SELL_NOT_ALLOW\020\207\200\020\022\035\n\027EQUIP_MAX_LEVE" +
+      "L_ALREADY\020\210\200\020\022\034\n\026EQUIP_LEVEL_NOT_ENOUGH\020" +
+      "\211\200\020\022\035\n\027EQUIP_MAX_STAGE_ALREADY\020\212\200\020\022\031\n\023EQ" +
+      "UIP_DRESS_ALREADY\020\220\200\020\022\033\n\025EQUIP_NOT_DRESS" +
+      "_OTHER\020\221\200\020\022\037\n\031EQUIP_DRESS_OTHER_ALREADY\020" +
+      "\222\200\020\022\027\n\021EQUIP_NOT_DRESSED\020\223\200\020\022\032\n\024EQUIP_SL" +
+      "OT_NOT_EMPTY\020\224\200\020\022\026\n\020EQUIP_SLOT_EMPTY\020\225\200\020" +
+      "\022\031\n\023EQUIP_GEM_NOT_FOUND\020\226\200\020\022\035\n\027EQUIP_CAN",
+      "_NOT_OPEN_SLOT\020\227\200\020*T\n\nquestError\022\026\n\020QUES" +
+      "T_NOT_ACCEPT\020\201\200\024\022\030\n\022QUEST_NOT_COMPLETE\020\202" +
+      "\200\024\022\024\n\016QUEST_NOT_OPEN\020\203\200\024*l\n\rinstanceErro" +
+      "r\022\027\n\021INSTANCE_NOT_OPEN\020\201\200\030\022\024\n\016INSTANCE_L" +
+      "EVEL\020\202\200\030\022\024\n\016INSTANCE_COUNT\020\203\200\030\022\026\n\020INSTAN" +
+      "CE_FATIGUE\020\204\200\030*^\n\tmailError\022\024\n\016MAIL_NOT_" +
+      "EXIST\020\201\200\034\022\017\n\tMAIL_NONE\020\202\200\034\022\024\n\016MAIL_COIN_" +
+      "FULL\020\203\200\034\022\024\n\016MAIL_GOLD_FULL\020\204\200\034*\201\001\n\rallia" +
+      "nceError\022\037\n\031ALLIANCE_LEVEL_NOT_ENOUGH\020\201\200" +
+      " \022\031\n\023ALLIANCE_ALREADY_IN\020\202\200 \022\031\n\023ALLIANCE",
+      "_NAME_ERROR\020\203\200 \022\031\n\023ALLIANCE_NAME_EXIST\020\204" +
+      "\200 *\202\001\n\tshopError\022\032\n\024SHOP_REFRESH_TIMEOUT" +
+      "\020\201\200$\022\033\n\025SHOP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026SHO" +
+      "P_REFRESH_MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COI" +
+      "N_MAX_COUNT\020\203\200$*\037\n\007imError\022\024\n\016IM_CHAT_LE" +
+      "NGTH\020\201\200@B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

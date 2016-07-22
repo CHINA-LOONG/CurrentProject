@@ -22,6 +22,15 @@ message ShopData
 
 // ------------------------------------------------------- protocol-----------------------------------------------------
 
+message HSShopDataInit
+{
+}
+
+message HSShopDataInitRet
+{
+	repeated ShopData shopDatas = 1;
+}
+
 message HSShopDataSyn
 {
 	required int32 type   = 1;
@@ -35,7 +44,6 @@ message HSShopDataSynRet
 message HSShopRefresh
 {
 	required int32 type   = 1;
-	required int32 shopId = 2;
 }
 
 message HSShopRefreshRet
@@ -53,4 +61,13 @@ message HSShopItemBuy
 message HSShopItemBuyRet
 {
 	
+}
+
+message HSShopGold2Coin
+{
+}
+
+message HSShopGold2CoinRet
+{
+	required int32 changeCount = 1;
 }

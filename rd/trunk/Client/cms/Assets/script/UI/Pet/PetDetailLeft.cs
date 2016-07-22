@@ -108,8 +108,8 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         //刷新装备
         RefreshEquip(unit.equipList);
 
-        textZhanli.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftBattle), unit.attackCount);
-        textLevel.text = "Lv." + unit.pbUnit.level;
+        textZhanli.text = unit.attackCount.ToString();
+        textLevel.text = unit.pbUnit.level.ToString();
 
         var image = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + unit.property) as Sprite;
         if (image != null)

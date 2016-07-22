@@ -80,7 +80,7 @@ public class AllianceCreateHandler implements HawkProtocolHandler {
 		allianceEntity.setName(name);
 		allianceEntity.setCreateAllianceTime(System.currentTimeMillis());
 		allianceEntity.getMemberList().add(player.getId());
-		HawkDBManager.getInstance().create(allianceEntity);
+		allianceEntity.notifyCreate();
 		//标记为会长
 		player.getPlayerData().getPlayerAllianceEntity().setPostion(GsConst.Alliance.ALLIANCE_POS_MAIN);
 		player.getPlayerData().getPlayerAllianceEntity().setAllianceId(allianceEntity.getId());

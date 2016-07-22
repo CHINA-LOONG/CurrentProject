@@ -39,6 +39,10 @@ public class ServerData {
 	 */
 	protected Map<String, Integer> nameMap;
 	/**
+	 * 所有玩家列表
+	 */
+	protected Map<Integer, Integer> playerMap;
+	/**
 	 * 在线玩家列表
 	 */
 	protected Map<Integer, Integer> onlineMap;
@@ -76,6 +80,7 @@ public class ServerData {
 		onlinePlayer = new AtomicInteger();
 		puidMap = new ConcurrentHashMap<String, Integer>();
 		nameMap = new ConcurrentHashMap<String, Integer>();
+		playerMap = new ConcurrentHashMap<Integer, Integer>();
 		onlineMap = new ConcurrentHashMap<Integer, Integer>();
 		disablePhoneMap = new ConcurrentHashMap<String, String>();
 		lastShowTime = HawkTime.getSeconds();
@@ -104,6 +109,7 @@ public class ServerData {
 			for (Object rowInfo : rowInfos) {
 				Object[] colInfos = (Object[]) rowInfo;
 				addPuidAndPlayerId((String) colInfos[0], (Integer) colInfos[1]);
+				addPlayerId((Integer) colInfos[1]);
 			}
 		} catch (Exception e) {
 			HawkException.catchException(e);
@@ -193,6 +199,21 @@ public class ServerData {
 	 */
 	public void addNameAndPlayerId(String name, int playerId) {
 		nameMap.put(name.toLowerCase(), playerId);
+	}
+
+	/**
+	 * 增加玩家Id
+	 * @param playerId
+	 */
+	public void addPlayerId(int playerId) {
+		playerMap.put(playerId, playerId);
+	}
+
+	/**
+	 * 是否存在玩家
+	 */
+	public boolean isExistPlayer(int playerId) {
+		return playerMap.containsKey(playerId);
 	}
 
 	/**

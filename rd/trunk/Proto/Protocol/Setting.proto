@@ -1,0 +1,42 @@
+option java_package = "com.hawk.game.protocol";
+
+// struct-------------------------------------------------------
+message HSSetting
+{
+	optional string language = 1;
+	repeated int32 blockPlayerId = 2;
+}
+
+// protocol-----------------------------------------------------
+
+// SETTING_INFO_SYNC_S
+message HSSettingInfoSync
+{
+	required HSSetting setting = 1;
+}
+
+// SETTING_LANGUAGE_C
+message HSSettingLanguage
+{
+	required string language = 1;
+}
+
+// SETTING_LANGUAGE_S
+message HSSettingLanguageRet
+{
+	required string language = 1;
+}
+
+// SETTING_BLOCK_C
+message HSSettingBlock
+{
+	required int32 playerId = 1;
+	required bool isBlock = 2;
+}
+
+// SETTING_BLOCK_S
+message HSSettingBlockRet
+{
+	required int32 playerId = 1;
+	required bool isBlock = 2;
+}

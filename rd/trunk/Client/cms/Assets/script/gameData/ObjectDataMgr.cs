@@ -76,6 +76,7 @@ public class ObjectDataMgr : MonoBehaviour
         bo.guid = unit.pbUnit.guid;
         unit.battleUnit = bo;
         bo.unit = unit;
+        bo.originalScale = unitObject.transform.localScale.x;
         bo.aniControl = unitObject.AddComponent<AnimControl>();
 
 		bo.shifaGo = Util.FindChildByName(unitObject,"e_shifa");

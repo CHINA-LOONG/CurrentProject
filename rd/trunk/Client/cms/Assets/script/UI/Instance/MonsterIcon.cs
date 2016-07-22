@@ -14,6 +14,7 @@ public class MonsterIcon : MonoBehaviour
 	public	Image	friendImage;
 	public	Image	selectImage;
 	public  Image  	maskImage;
+    public Image levelImage;
 	public	Text	levelText;
 	public	Text	qualityText;
 	public Text 	nickNameText;
@@ -139,8 +140,9 @@ public class MonsterIcon : MonoBehaviour
 		return selectImage.gameObject.activeSelf;
 	}
 
-	public	void	SetLevel(int level)
+	public	void	SetLevel(int level,bool bshow=true)
 	{
+        levelImage.gameObject.SetActive(true);
 		levelText.gameObject.SetActive (true);
 		levelText.text = level.ToString ();
 	}

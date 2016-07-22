@@ -1682,7 +1682,7 @@ public final class Im {
    * Protobuf type {@code HSImPush}
    *
    * <pre>
-   * IM_CHAT_PUSH_S
+   * IM_PUSH_S
    * </pre>
    */
   public static final class HSImPush extends
@@ -1938,7 +1938,7 @@ public final class Im {
      * Protobuf type {@code HSImPush}
      *
      * <pre>
-     * IM_CHAT_PUSH_S
+     * IM_PUSH_S
      * </pre>
      */
     public static final class Builder extends

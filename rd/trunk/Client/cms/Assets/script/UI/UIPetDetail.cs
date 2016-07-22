@@ -24,6 +24,7 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
     int m_currentPart = 0;
 
     //UI 
+    [HideInInspector]
     public UIEquipSetting uiEquipSetting;
     public Dictionary<string, PetDetailRightBase> uiRights = new Dictionary<string, PetDetailRightBase>();
     string currentRightType = "";

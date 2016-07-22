@@ -49,7 +49,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites: []
-  spritePackingTag: battle
+  spritePackingTag: ui_temp
   userData: 
-  assetBundleName: 
+  assetBundleName: texture/temp
   assetBundleVariant: 

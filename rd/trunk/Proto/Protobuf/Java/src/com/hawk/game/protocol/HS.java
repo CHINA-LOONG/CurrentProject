@@ -279,29 +279,33 @@ public final class HS {
      */
     STATISTICS_INFO_SYNC_S(8, 1011),
     /**
-     * <code>MONSTER_INFO_SYNC_S = 1012;</code>
+     * <code>SETTING_INFO_SYNC_S = 1012;</code>
      */
-    MONSTER_INFO_SYNC_S(9, 1012),
+    SETTING_INFO_SYNC_S(9, 1012),
     /**
-     * <code>ITEM_INFO_SYNC_S = 1013;</code>
+     * <code>MONSTER_INFO_SYNC_S = 1013;</code>
      */
-    ITEM_INFO_SYNC_S(10, 1013),
+    MONSTER_INFO_SYNC_S(10, 1013),
     /**
-     * <code>EQUIP_INFO_SYNC_S = 1014;</code>
+     * <code>ITEM_INFO_SYNC_S = 1014;</code>
      */
-    EQUIP_INFO_SYNC_S(11, 1014),
+    ITEM_INFO_SYNC_S(11, 1014),
     /**
-     * <code>QUEST_INFO_SYNC_S = 1015;</code>
+     * <code>EQUIP_INFO_SYNC_S = 1015;</code>
      */
-    QUEST_INFO_SYNC_S(12, 1015),
+    EQUIP_INFO_SYNC_S(12, 1015),
     /**
-     * <code>MAIL_INFO_SYNC_S = 1016;</code>
+     * <code>QUEST_INFO_SYNC_S = 1016;</code>
      */
-    MAIL_INFO_SYNC_S(13, 1016),
+    QUEST_INFO_SYNC_S(13, 1016),
     /**
-     * <code>ASSEMBLE_FINISH_S = 1017;</code>
+     * <code>MAIL_INFO_SYNC_S = 1017;</code>
      */
-    ASSEMBLE_FINISH_S(14, 1017),
+    MAIL_INFO_SYNC_S(14, 1017),
+    /**
+     * <code>ASSEMBLE_FINISH_S = 1018;</code>
+     */
+    ASSEMBLE_FINISH_S(15, 1018),
     /**
      * <code>PLAYER_CREATE_C = 1101;</code>
      *
@@ -309,19 +313,19 @@ public final class HS {
      * 角色
      * </pre>
      */
-    PLAYER_CREATE_C(15, 1101),
+    PLAYER_CREATE_C(16, 1101),
     /**
      * <code>PLAYER_CREATE_S = 1102;</code>
      */
-    PLAYER_CREATE_S(16, 1102),
+    PLAYER_CREATE_S(17, 1102),
     /**
      * <code>PLAYER_CONSUME_S = 1103;</code>
      */
-    PLAYER_CONSUME_S(17, 1103),
+    PLAYER_CONSUME_S(18, 1103),
     /**
      * <code>PLAYER_REWARD_S = 1104;</code>
      */
-    PLAYER_REWARD_S(18, 1104),
+    PLAYER_REWARD_S(19, 1104),
     /**
      * <code>MONSTER_ADD_S = 2001;</code>
      *
@@ -329,47 +333,47 @@ public final class HS {
      * 怪物
      * </pre>
      */
-    MONSTER_ADD_S(19, 2001),
+    MONSTER_ADD_S(20, 2001),
     /**
      * <code>MONSTER_CATCH_C = 2002;</code>
      */
-    MONSTER_CATCH_C(20, 2002),
+    MONSTER_CATCH_C(21, 2002),
     /**
      * <code>MONSTER_CATCH_S = 2003;</code>
      */
-    MONSTER_CATCH_S(21, 2003),
+    MONSTER_CATCH_S(22, 2003),
     /**
      * <code>MONSTER_BREAK_C = 2004;</code>
      */
-    MONSTER_BREAK_C(22, 2004),
+    MONSTER_BREAK_C(23, 2004),
     /**
      * <code>MONSTER_BREAK_S = 2005;</code>
      */
-    MONSTER_BREAK_S(23, 2005),
+    MONSTER_BREAK_S(24, 2005),
     /**
      * <code>MONSTER_FEED_C = 2006;</code>
      */
-    MONSTER_FEED_C(24, 2006),
+    MONSTER_FEED_C(25, 2006),
     /**
      * <code>MONSTER_FEED_S = 2007;</code>
      */
-    MONSTER_FEED_S(25, 2007),
+    MONSTER_FEED_S(26, 2007),
     /**
      * <code>MONSTER_SKILL_UP_C = 2008;</code>
      */
-    MONSTER_SKILL_UP_C(26, 2008),
+    MONSTER_SKILL_UP_C(27, 2008),
     /**
      * <code>MONSTER_SKILL_UP_S = 2009;</code>
      */
-    MONSTER_SKILL_UP_S(27, 2009),
+    MONSTER_SKILL_UP_S(28, 2009),
     /**
      * <code>MONSTER_STAGE_UP_C = 2010;</code>
      */
-    MONSTER_STAGE_UP_C(28, 2010),
+    MONSTER_STAGE_UP_C(29, 2010),
     /**
      * <code>MONSTER_STAGE_UP_S = 2011;</code>
      */
-    MONSTER_STAGE_UP_S(29, 2011),
+    MONSTER_STAGE_UP_S(30, 2011),
     /**
      * <code>INSTANCE_ASSIST_C = 3001;</code>
      *
@@ -377,51 +381,51 @@ public final class HS {
      * 副本
      * </pre>
      */
-    INSTANCE_ASSIST_C(30, 3001),
+    INSTANCE_ASSIST_C(31, 3001),
     /**
      * <code>INSTANCE_ASSIST_S = 3002;</code>
      */
-    INSTANCE_ASSIST_S(31, 3002),
+    INSTANCE_ASSIST_S(32, 3002),
     /**
      * <code>INSTANCE_ENTER_C = 3003;</code>
      */
-    INSTANCE_ENTER_C(32, 3003),
+    INSTANCE_ENTER_C(33, 3003),
     /**
      * <code>INSTANCE_ENTER_S = 3004;</code>
      */
-    INSTANCE_ENTER_S(33, 3004),
+    INSTANCE_ENTER_S(34, 3004),
     /**
      * <code>INSTANCE_SETTLE_C = 3005;</code>
      */
-    INSTANCE_SETTLE_C(34, 3005),
+    INSTANCE_SETTLE_C(35, 3005),
     /**
      * <code>INSTANCE_SETTLE_S = 3006;</code>
      */
-    INSTANCE_SETTLE_S(35, 3006),
+    INSTANCE_SETTLE_S(36, 3006),
     /**
      * <code>INSTANCE_OPEN_CARD_C = 3007;</code>
      */
-    INSTANCE_OPEN_CARD_C(36, 3007),
+    INSTANCE_OPEN_CARD_C(37, 3007),
     /**
      * <code>INSTANCE_OPEN_CARD_S = 3008;</code>
      */
-    INSTANCE_OPEN_CARD_S(37, 3008),
+    INSTANCE_OPEN_CARD_S(38, 3008),
     /**
      * <code>INSTANCE_SWEEP_C = 3009;</code>
      */
-    INSTANCE_SWEEP_C(38, 3009),
+    INSTANCE_SWEEP_C(39, 3009),
     /**
      * <code>INSTANCE_SWEEP_S = 3010;</code>
      */
-    INSTANCE_SWEEP_S(39, 3010),
+    INSTANCE_SWEEP_S(40, 3010),
     /**
      * <code>INSTANCE_RESET_COUNT_C = 3011;</code>
      */
-    INSTANCE_RESET_COUNT_C(40, 3011),
+    INSTANCE_RESET_COUNT_C(41, 3011),
     /**
      * <code>INSTANCE_RESET_COUNT_S = 3012;</code>
      */
-    INSTANCE_RESET_COUNT_S(41, 3012),
+    INSTANCE_RESET_COUNT_S(42, 3012),
     /**
      * <code>ITEM_USE_C = 4001;</code>
      *
@@ -429,115 +433,115 @@ public final class HS {
      * 道具
      * </pre>
      */
-    ITEM_USE_C(42, 4001),
+    ITEM_USE_C(43, 4001),
     /**
      * <code>ITEM_USE_S = 4002;</code>
      */
-    ITEM_USE_S(43, 4002),
+    ITEM_USE_S(44, 4002),
     /**
      * <code>ITEM_SELL_C = 4003;</code>
      */
-    ITEM_SELL_C(44, 4003),
+    ITEM_SELL_C(45, 4003),
     /**
      * <code>ITEM_SELL_S = 4004;</code>
      */
-    ITEM_SELL_S(45, 4004),
+    ITEM_SELL_S(46, 4004),
     /**
      * <code>ITEM_BUY_C = 4005;</code>
      */
-    ITEM_BUY_C(46, 4005),
+    ITEM_BUY_C(47, 4005),
     /**
      * <code>ITEM_BUY_S = 4006;</code>
      */
-    ITEM_BUY_S(47, 4006),
+    ITEM_BUY_S(48, 4006),
     /**
      * <code>ITEM_COMPOSE_C = 4007;</code>
      */
-    ITEM_COMPOSE_C(48, 4007),
+    ITEM_COMPOSE_C(49, 4007),
     /**
      * <code>ITEM_COMPOSE_S = 4008;</code>
      */
-    ITEM_COMPOSE_S(49, 4008),
+    ITEM_COMPOSE_S(50, 4008),
     /**
      * <code>EQUIP_SELL_C = 4101;</code>
      */
-    EQUIP_SELL_C(50, 4101),
+    EQUIP_SELL_C(51, 4101),
     /**
      * <code>EQUIP_SELL_S = 4102;</code>
      */
-    EQUIP_SELL_S(51, 4102),
+    EQUIP_SELL_S(52, 4102),
     /**
      * <code>EQUIP_BUY_C = 4103;</code>
      */
-    EQUIP_BUY_C(52, 4103),
+    EQUIP_BUY_C(53, 4103),
     /**
      * <code>EQUIP_BUY_S = 4104;</code>
      */
-    EQUIP_BUY_S(53, 4104),
+    EQUIP_BUY_S(54, 4104),
     /**
      * <code>EQUIP_COMPOSE_C = 4105;</code>
      */
-    EQUIP_COMPOSE_C(54, 4105),
+    EQUIP_COMPOSE_C(55, 4105),
     /**
      * <code>EQUIP_COMPOSE_S = 4106;</code>
      */
-    EQUIP_COMPOSE_S(55, 4106),
+    EQUIP_COMPOSE_S(56, 4106),
     /**
      * <code>EQUIP_INCREASE_LEVEL_C = 4107;</code>
      */
-    EQUIP_INCREASE_LEVEL_C(56, 4107),
+    EQUIP_INCREASE_LEVEL_C(57, 4107),
     /**
      * <code>EQUIP_INCREASE_LEVEL_S = 4108;</code>
      */
-    EQUIP_INCREASE_LEVEL_S(57, 4108),
+    EQUIP_INCREASE_LEVEL_S(58, 4108),
     /**
      * <code>EQUIP_INCREASE_STAGE_C = 4109;</code>
      */
-    EQUIP_INCREASE_STAGE_C(58, 4109),
+    EQUIP_INCREASE_STAGE_C(59, 4109),
     /**
      * <code>EQUIP_INCREASE_STAGE_S = 4110;</code>
      */
-    EQUIP_INCREASE_STAGE_S(59, 4110),
+    EQUIP_INCREASE_STAGE_S(60, 4110),
     /**
      * <code>EQUIP_PUNCH_C = 4111;</code>
      */
-    EQUIP_PUNCH_C(60, 4111),
+    EQUIP_PUNCH_C(61, 4111),
     /**
      * <code>EQUIP_PUNCH_S = 4112;</code>
      */
-    EQUIP_PUNCH_S(61, 4112),
+    EQUIP_PUNCH_S(62, 4112),
     /**
      * <code>EQUIP_GEM_C = 4113;</code>
      */
-    EQUIP_GEM_C(62, 4113),
+    EQUIP_GEM_C(63, 4113),
     /**
      * <code>EQUIP_GEM_S = 4114;</code>
      */
-    EQUIP_GEM_S(63, 4114),
+    EQUIP_GEM_S(64, 4114),
     /**
      * <code>EQUIP_MONSTER_DRESS_C = 4120;</code>
      */
-    EQUIP_MONSTER_DRESS_C(64, 4120),
+    EQUIP_MONSTER_DRESS_C(65, 4120),
     /**
      * <code>EQUIP_MONSTER_DRESS_S = 4121;</code>
      */
-    EQUIP_MONSTER_DRESS_S(65, 4121),
+    EQUIP_MONSTER_DRESS_S(66, 4121),
     /**
      * <code>EQUIP_MONSTER_UNDRESS_C = 4122;</code>
      */
-    EQUIP_MONSTER_UNDRESS_C(66, 4122),
+    EQUIP_MONSTER_UNDRESS_C(67, 4122),
     /**
      * <code>EQUIP_MONSTER_UNDRESS_S = 4123;</code>
      */
-    EQUIP_MONSTER_UNDRESS_S(67, 4123),
+    EQUIP_MONSTER_UNDRESS_S(68, 4123),
     /**
      * <code>EQUIP_MONSTER_REPLACE_C = 4124;</code>
      */
-    EQUIP_MONSTER_REPLACE_C(68, 4124),
+    EQUIP_MONSTER_REPLACE_C(69, 4124),
     /**
      * <code>EQUIP_MONSTER_REPLACE_S = 4125;</code>
      */
-    EQUIP_MONSTER_REPLACE_S(69, 4125),
+    EQUIP_MONSTER_REPLACE_S(70, 4125),
     /**
      * <code>QUEST_SUBMIT_C = 5001;</code>
      *
@@ -545,23 +549,23 @@ public final class HS {
      * 任务
      * </pre>
      */
-    QUEST_SUBMIT_C(70, 5001),
+    QUEST_SUBMIT_C(71, 5001),
     /**
      * <code>QUEST_SUBMIT_S = 5002;</code>
      */
-    QUEST_SUBMIT_S(71, 5002),
+    QUEST_SUBMIT_S(72, 5002),
     /**
      * <code>QUEST_ACCEPT_S = 5003;</code>
      */
-    QUEST_ACCEPT_S(72, 5003),
+    QUEST_ACCEPT_S(73, 5003),
     /**
      * <code>QUEST_UPDATE_S = 5004;</code>
      */
-    QUEST_UPDATE_S(73, 5004),
+    QUEST_UPDATE_S(74, 5004),
     /**
      * <code>QUEST_REMOVE_S = 5005;</code>
      */
-    QUEST_REMOVE_S(74, 5005),
+    QUEST_REMOVE_S(75, 5005),
     /**
      * <code>MAIL_READ_C = 6001;</code>
      *
@@ -569,27 +573,27 @@ public final class HS {
      * 邮件
      * </pre>
      */
-    MAIL_READ_C(75, 6001),
+    MAIL_READ_C(76, 6001),
     /**
      * <code>MAIL_RECEIVE_C = 6002;</code>
      */
-    MAIL_RECEIVE_C(76, 6002),
+    MAIL_RECEIVE_C(77, 6002),
     /**
      * <code>MAIL_RECEIVE_S = 6003;</code>
      */
-    MAIL_RECEIVE_S(77, 6003),
+    MAIL_RECEIVE_S(78, 6003),
     /**
      * <code>MAIL_RECEIVE_ALL_C = 6004;</code>
      */
-    MAIL_RECEIVE_ALL_C(78, 6004),
+    MAIL_RECEIVE_ALL_C(79, 6004),
     /**
      * <code>MAIL_RECEIVE_ALL_S = 6005;</code>
      */
-    MAIL_RECEIVE_ALL_S(79, 6005),
+    MAIL_RECEIVE_ALL_S(80, 6005),
     /**
      * <code>MAIL_NEW_S = 6006;</code>
      */
-    MAIL_NEW_S(80, 6006),
+    MAIL_NEW_S(81, 6006),
     /**
      * <code>IM_CHAT_SEND_C = 7001;</code>
      *
@@ -597,43 +601,55 @@ public final class HS {
      * 即时通讯
      * </pre>
      */
-    IM_CHAT_SEND_C(81, 7001),
+    IM_CHAT_SEND_C(82, 7001),
     /**
-     * <code>IM_CHAT_PUSH_S = 7002;</code>
-     *
-     * <pre>
-     * IM_NOTICE_               = 7003;  
-     * </pre>
+     * <code>IM_PUSH_S = 7002;</code>
      */
-    IM_CHAT_PUSH_S(82, 7002),
+    IM_PUSH_S(83, 7002),
     /**
-     * <code>ShopRefreshC = 8001;</code>
+     * <code>ShopDataInitC = 8001;</code>
      *
      * <pre>
      * 商店
      * </pre>
      */
-    ShopRefreshC(83, 8001),
+    ShopDataInitC(84, 8001),
     /**
-     * <code>ShopRefreshS = 8002;</code>
+     * <code>ShopDataInitS = 8002;</code>
      */
-    ShopRefreshS(84, 8002),
+    ShopDataInitS(85, 8002),
     /**
-     * <code>ShopItemBuyC = 8003;</code>
+     * <code>ShopRefreshC = 8003;</code>
      */
-    ShopItemBuyC(85, 8003),
+    ShopRefreshC(86, 8003),
     /**
-     * <code>ShopItemBuyS = 8004;</code>
+     * <code>ShopRefreshS = 8004;</code>
      */
-    ShopItemBuyS(86, 8004),
+    ShopRefreshS(87, 8004),
     /**
-     * <code>ShopDataSynC = 8005;</code>
+     * <code>ShopItemBuyC = 8005;</code>
      */
-    ShopDataSynC(87, 8005),
+    ShopItemBuyC(88, 8005),
     /**
-     * <code>ShopDataSynS = 8006;</code>
+     * <code>ShopItemBuyS = 8006;</code>
      */
-    ShopDataSynS(88, 8006),
+    ShopItemBuyS(89, 8006),
+    /**
+     * <code>ShopDataSynC = 8007;</code>
+     */
+    ShopDataSynC(90, 8007),
+    /**
+     * <code>ShopDataSynS = 8008;</code>
+     */
+    ShopDataSynS(91, 8008),
+    /**
+     * <code>ShopGold2CoinC = 8009;</code>
+     */
+    ShopGold2CoinC(92, 8009),
+    /**
+     * <code>ShopGold2CoinS = 8010;</code>
+     */
+    ShopGold2CoinS(93, 8010),
     /**
      * <code>AllianceCreateC = 9001;</code>
      *
@@ -641,11 +657,31 @@ public final class HS {
      * 公会
      * </pre>
      */
-    AllianceCreateC(89, 9001),
+    AllianceCreateC(94, 9001),
     /**
      * <code>AllianceCreateS = 9002;</code>
      */
-    AllianceCreateS(90, 9002),
+    AllianceCreateS(95, 9002),
+    /**
+     * <code>SETTING_LANGUAGE_C = 10001;</code>
+     *
+     * <pre>
+     * 系统设置
+     * </pre>
+     */
+    SETTING_LANGUAGE_C(96, 10001),
+    /**
+     * <code>SETTING_LANGUAGE_S = 10002;</code>
+     */
+    SETTING_LANGUAGE_S(97, 10002),
+    /**
+     * <code>SETTING_BLOCK_C = 10003;</code>
+     */
+    SETTING_BLOCK_C(98, 10003),
+    /**
+     * <code>SETTING_BLOCK_S = 10004;</code>
+     */
+    SETTING_BLOCK_S(99, 10004),
     ;
 
     /**
@@ -689,29 +725,33 @@ public final class HS {
      */
     public static final int STATISTICS_INFO_SYNC_S_VALUE = 1011;
     /**
-     * <code>MONSTER_INFO_SYNC_S = 1012;</code>
+     * <code>SETTING_INFO_SYNC_S = 1012;</code>
      */
-    public static final int MONSTER_INFO_SYNC_S_VALUE = 1012;
+    public static final int SETTING_INFO_SYNC_S_VALUE = 1012;
     /**
-     * <code>ITEM_INFO_SYNC_S = 1013;</code>
+     * <code>MONSTER_INFO_SYNC_S = 1013;</code>
      */
-    public static final int ITEM_INFO_SYNC_S_VALUE = 1013;
+    public static final int MONSTER_INFO_SYNC_S_VALUE = 1013;
     /**
-     * <code>EQUIP_INFO_SYNC_S = 1014;</code>
+     * <code>ITEM_INFO_SYNC_S = 1014;</code>
      */
-    public static final int EQUIP_INFO_SYNC_S_VALUE = 1014;
+    public static final int ITEM_INFO_SYNC_S_VALUE = 1014;
     /**
-     * <code>QUEST_INFO_SYNC_S = 1015;</code>
+     * <code>EQUIP_INFO_SYNC_S = 1015;</code>
      */
-    public static final int QUEST_INFO_SYNC_S_VALUE = 1015;
+    public static final int EQUIP_INFO_SYNC_S_VALUE = 1015;
     /**
-     * <code>MAIL_INFO_SYNC_S = 1016;</code>
+     * <code>QUEST_INFO_SYNC_S = 1016;</code>
      */
-    public static final int MAIL_INFO_SYNC_S_VALUE = 1016;
+    public static final int QUEST_INFO_SYNC_S_VALUE = 1016;
     /**
-     * <code>ASSEMBLE_FINISH_S = 1017;</code>
+     * <code>MAIL_INFO_SYNC_S = 1017;</code>
      */
-    public static final int ASSEMBLE_FINISH_S_VALUE = 1017;
+    public static final int MAIL_INFO_SYNC_S_VALUE = 1017;
+    /**
+     * <code>ASSEMBLE_FINISH_S = 1018;</code>
+     */
+    public static final int ASSEMBLE_FINISH_S_VALUE = 1018;
     /**
      * <code>PLAYER_CREATE_C = 1101;</code>
      *
@@ -1009,41 +1049,53 @@ public final class HS {
      */
     public static final int IM_CHAT_SEND_C_VALUE = 7001;
     /**
-     * <code>IM_CHAT_PUSH_S = 7002;</code>
-     *
-     * <pre>
-     * IM_NOTICE_               = 7003;  
-     * </pre>
+     * <code>IM_PUSH_S = 7002;</code>
      */
-    public static final int IM_CHAT_PUSH_S_VALUE = 7002;
+    public static final int IM_PUSH_S_VALUE = 7002;
     /**
-     * <code>ShopRefreshC = 8001;</code>
+     * <code>ShopDataInitC = 8001;</code>
      *
      * <pre>
      * 商店
      * </pre>
      */
-    public static final int ShopRefreshC_VALUE = 8001;
+    public static final int ShopDataInitC_VALUE = 8001;
     /**
-     * <code>ShopRefreshS = 8002;</code>
+     * <code>ShopDataInitS = 8002;</code>
      */
-    public static final int ShopRefreshS_VALUE = 8002;
+    public static final int ShopDataInitS_VALUE = 8002;
     /**
-     * <code>ShopItemBuyC = 8003;</code>
+     * <code>ShopRefreshC = 8003;</code>
      */
-    public static final int ShopItemBuyC_VALUE = 8003;
+    public static final int ShopRefreshC_VALUE = 8003;
     /**
-     * <code>ShopItemBuyS = 8004;</code>
+     * <code>ShopRefreshS = 8004;</code>
      */
-    public static final int ShopItemBuyS_VALUE = 8004;
+    public static final int ShopRefreshS_VALUE = 8004;
     /**
-     * <code>ShopDataSynC = 8005;</code>
+     * <code>ShopItemBuyC = 8005;</code>
      */
-    public static final int ShopDataSynC_VALUE = 8005;
+    public static final int ShopItemBuyC_VALUE = 8005;
     /**
-     * <code>ShopDataSynS = 8006;</code>
+     * <code>ShopItemBuyS = 8006;</code>
      */
-    public static final int ShopDataSynS_VALUE = 8006;
+    public static final int ShopItemBuyS_VALUE = 8006;
+    /**
+     * <code>ShopDataSynC = 8007;</code>
+     */
+    public static final int ShopDataSynC_VALUE = 8007;
+    /**
+     * <code>ShopDataSynS = 8008;</code>
+     */
+    public static final int ShopDataSynS_VALUE = 8008;
+    /**
+     * <code>ShopGold2CoinC = 8009;</code>
+     */
+    public static final int ShopGold2CoinC_VALUE = 8009;
+    /**
+     * <code>ShopGold2CoinS = 8010;</code>
+     */
+    public static final int ShopGold2CoinS_VALUE = 8010;
     /**
      * <code>AllianceCreateC = 9001;</code>
      *
@@ -1056,6 +1108,26 @@ public final class HS {
      * <code>AllianceCreateS = 9002;</code>
      */
     public static final int AllianceCreateS_VALUE = 9002;
+    /**
+     * <code>SETTING_LANGUAGE_C = 10001;</code>
+     *
+     * <pre>
+     * 系统设置
+     * </pre>
+     */
+    public static final int SETTING_LANGUAGE_C_VALUE = 10001;
+    /**
+     * <code>SETTING_LANGUAGE_S = 10002;</code>
+     */
+    public static final int SETTING_LANGUAGE_S_VALUE = 10002;
+    /**
+     * <code>SETTING_BLOCK_C = 10003;</code>
+     */
+    public static final int SETTING_BLOCK_C_VALUE = 10003;
+    /**
+     * <code>SETTING_BLOCK_S = 10004;</code>
+     */
+    public static final int SETTING_BLOCK_S_VALUE = 10004;
 
 
     public final int getNumber() { return value; }
@@ -1071,12 +1143,13 @@ public final class HS {
         case 1006: return SYNCINFO_S;
         case 1010: return PLAYER_INFO_SYNC_S;
         case 1011: return STATISTICS_INFO_SYNC_S;
-        case 1012: return MONSTER_INFO_SYNC_S;
-        case 1013: return ITEM_INFO_SYNC_S;
-        case 1014: return EQUIP_INFO_SYNC_S;
-        case 1015: return QUEST_INFO_SYNC_S;
-        case 1016: return MAIL_INFO_SYNC_S;
-        case 1017: return ASSEMBLE_FINISH_S;
+        case 1012: return SETTING_INFO_SYNC_S;
+        case 1013: return MONSTER_INFO_SYNC_S;
+        case 1014: return ITEM_INFO_SYNC_S;
+        case 1015: return EQUIP_INFO_SYNC_S;
+        case 1016: return QUEST_INFO_SYNC_S;
+        case 1017: return MAIL_INFO_SYNC_S;
+        case 1018: return ASSEMBLE_FINISH_S;
         case 1101: return PLAYER_CREATE_C;
         case 1102: return PLAYER_CREATE_S;
         case 1103: return PLAYER_CONSUME_S;
@@ -1144,15 +1217,23 @@ public final class HS {
         case 6005: return MAIL_RECEIVE_ALL_S;
         case 6006: return MAIL_NEW_S;
         case 7001: return IM_CHAT_SEND_C;
-        case 7002: return IM_CHAT_PUSH_S;
-        case 8001: return ShopRefreshC;
-        case 8002: return ShopRefreshS;
-        case 8003: return ShopItemBuyC;
-        case 8004: return ShopItemBuyS;
-        case 8005: return ShopDataSynC;
-        case 8006: return ShopDataSynS;
+        case 7002: return IM_PUSH_S;
+        case 8001: return ShopDataInitC;
+        case 8002: return ShopDataInitS;
+        case 8003: return ShopRefreshC;
+        case 8004: return ShopRefreshS;
+        case 8005: return ShopItemBuyC;
+        case 8006: return ShopItemBuyS;
+        case 8007: return ShopDataSynC;
+        case 8008: return ShopDataSynS;
+        case 8009: return ShopGold2CoinC;
+        case 8010: return ShopGold2CoinS;
         case 9001: return AllianceCreateC;
         case 9002: return AllianceCreateS;
+        case 10001: return SETTING_LANGUAGE_C;
+        case 10002: return SETTING_LANGUAGE_S;
+        case 10003: return SETTING_BLOCK_C;
+        case 10004: return SETTING_BLOCK_S;
         default: return null;
       }
     }
@@ -1216,58 +1297,63 @@ public final class HS {
       "\n\021Protocol/HS.proto*I\n\003sys\022\020\n\014DATA_WRAPP" +
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
       "\n\nERROR_CODE\020\004*\032\n\002gm\022\024\n\020GEN_TEST_ACCOUNT" +
-      "\020d*\337\017\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022" +
+      "\020d*\244\021\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022" +
       "\r\n\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICKOUT" +
       "_S\020\354\007\022\017\n\nSYNCINFO_C\020\355\007\022\017\n\nSYNCINFO_S\020\356\007\022" +
       "\027\n\022PLAYER_INFO_SYNC_S\020\362\007\022\033\n\026STATISTICS_I" +
-      "NFO_SYNC_S\020\363\007\022\030\n\023MONSTER_INFO_SYNC_S\020\364\007\022" +
-      "\025\n\020ITEM_INFO_SYNC_S\020\365\007\022\026\n\021EQUIP_INFO_SYN" +
-      "C_S\020\366\007\022\026\n\021QUEST_INFO_SYNC_S\020\367\007\022\025\n\020MAIL_I",
-      "NFO_SYNC_S\020\370\007\022\026\n\021ASSEMBLE_FINISH_S\020\371\007\022\024\n" +
-      "\017PLAYER_CREATE_C\020\315\010\022\024\n\017PLAYER_CREATE_S\020\316" +
-      "\010\022\025\n\020PLAYER_CONSUME_S\020\317\010\022\024\n\017PLAYER_REWAR" +
-      "D_S\020\320\010\022\022\n\rMONSTER_ADD_S\020\321\017\022\024\n\017MONSTER_CA" +
-      "TCH_C\020\322\017\022\024\n\017MONSTER_CATCH_S\020\323\017\022\024\n\017MONSTE" +
-      "R_BREAK_C\020\324\017\022\024\n\017MONSTER_BREAK_S\020\325\017\022\023\n\016MO" +
-      "NSTER_FEED_C\020\326\017\022\023\n\016MONSTER_FEED_S\020\327\017\022\027\n\022" +
-      "MONSTER_SKILL_UP_C\020\330\017\022\027\n\022MONSTER_SKILL_U" +
-      "P_S\020\331\017\022\027\n\022MONSTER_STAGE_UP_C\020\332\017\022\027\n\022MONST" +
-      "ER_STAGE_UP_S\020\333\017\022\026\n\021INSTANCE_ASSIST_C\020\271\027",
-      "\022\026\n\021INSTANCE_ASSIST_S\020\272\027\022\025\n\020INSTANCE_ENT" +
-      "ER_C\020\273\027\022\025\n\020INSTANCE_ENTER_S\020\274\027\022\026\n\021INSTAN" +
-      "CE_SETTLE_C\020\275\027\022\026\n\021INSTANCE_SETTLE_S\020\276\027\022\031" +
-      "\n\024INSTANCE_OPEN_CARD_C\020\277\027\022\031\n\024INSTANCE_OP" +
-      "EN_CARD_S\020\300\027\022\025\n\020INSTANCE_SWEEP_C\020\301\027\022\025\n\020I" +
-      "NSTANCE_SWEEP_S\020\302\027\022\033\n\026INSTANCE_RESET_COU" +
-      "NT_C\020\303\027\022\033\n\026INSTANCE_RESET_COUNT_S\020\304\027\022\017\n\n" +
-      "ITEM_USE_C\020\241\037\022\017\n\nITEM_USE_S\020\242\037\022\020\n\013ITEM_S" +
-      "ELL_C\020\243\037\022\020\n\013ITEM_SELL_S\020\244\037\022\017\n\nITEM_BUY_C" +
-      "\020\245\037\022\017\n\nITEM_BUY_S\020\246\037\022\023\n\016ITEM_COMPOSE_C\020\247",
-      "\037\022\023\n\016ITEM_COMPOSE_S\020\250\037\022\021\n\014EQUIP_SELL_C\020\205" +
-      " \022\021\n\014EQUIP_SELL_S\020\206 \022\020\n\013EQUIP_BUY_C\020\207 \022\020" +
-      "\n\013EQUIP_BUY_S\020\210 \022\024\n\017EQUIP_COMPOSE_C\020\211 \022\024" +
-      "\n\017EQUIP_COMPOSE_S\020\212 \022\033\n\026EQUIP_INCREASE_L" +
-      "EVEL_C\020\213 \022\033\n\026EQUIP_INCREASE_LEVEL_S\020\214 \022\033" +
-      "\n\026EQUIP_INCREASE_STAGE_C\020\215 \022\033\n\026EQUIP_INC" +
-      "REASE_STAGE_S\020\216 \022\022\n\rEQUIP_PUNCH_C\020\217 \022\022\n\r" +
-      "EQUIP_PUNCH_S\020\220 \022\020\n\013EQUIP_GEM_C\020\221 \022\020\n\013EQ" +
-      "UIP_GEM_S\020\222 \022\032\n\025EQUIP_MONSTER_DRESS_C\020\230 " +
-      "\022\032\n\025EQUIP_MONSTER_DRESS_S\020\231 \022\034\n\027EQUIP_MO",
-      "NSTER_UNDRESS_C\020\232 \022\034\n\027EQUIP_MONSTER_UNDR" +
-      "ESS_S\020\233 \022\034\n\027EQUIP_MONSTER_REPLACE_C\020\234 \022\034" +
-      "\n\027EQUIP_MONSTER_REPLACE_S\020\235 \022\023\n\016QUEST_SU" +
-      "BMIT_C\020\211\'\022\023\n\016QUEST_SUBMIT_S\020\212\'\022\023\n\016QUEST_" +
-      "ACCEPT_S\020\213\'\022\023\n\016QUEST_UPDATE_S\020\214\'\022\023\n\016QUES" +
-      "T_REMOVE_S\020\215\'\022\020\n\013MAIL_READ_C\020\361.\022\023\n\016MAIL_" +
-      "RECEIVE_C\020\362.\022\023\n\016MAIL_RECEIVE_S\020\363.\022\027\n\022MAI" +
-      "L_RECEIVE_ALL_C\020\364.\022\027\n\022MAIL_RECEIVE_ALL_S" +
-      "\020\365.\022\017\n\nMAIL_NEW_S\020\366.\022\023\n\016IM_CHAT_SEND_C\020\331" +
-      "6\022\023\n\016IM_CHAT_PUSH_S\020\3326\022\021\n\014ShopRefreshC\020\301",
-      ">\022\021\n\014ShopRefreshS\020\302>\022\021\n\014ShopItemBuyC\020\303>\022" +
-      "\021\n\014ShopItemBuyS\020\304>\022\021\n\014ShopDataSynC\020\305>\022\021\n" +
-      "\014ShopDataSynS\020\306>\022\024\n\017AllianceCreateC\020\251F\022\024" +
-      "\n\017AllianceCreateS\020\252FB\030\n\026com.hawk.game.pr" +
-      "otocol"
+      "NFO_SYNC_S\020\363\007\022\030\n\023SETTING_INFO_SYNC_S\020\364\007\022" +
+      "\030\n\023MONSTER_INFO_SYNC_S\020\365\007\022\025\n\020ITEM_INFO_S" +
+      "YNC_S\020\366\007\022\026\n\021EQUIP_INFO_SYNC_S\020\367\007\022\026\n\021QUES",
+      "T_INFO_SYNC_S\020\370\007\022\025\n\020MAIL_INFO_SYNC_S\020\371\007\022" +
+      "\026\n\021ASSEMBLE_FINISH_S\020\372\007\022\024\n\017PLAYER_CREATE" +
+      "_C\020\315\010\022\024\n\017PLAYER_CREATE_S\020\316\010\022\025\n\020PLAYER_CO" +
+      "NSUME_S\020\317\010\022\024\n\017PLAYER_REWARD_S\020\320\010\022\022\n\rMONS" +
+      "TER_ADD_S\020\321\017\022\024\n\017MONSTER_CATCH_C\020\322\017\022\024\n\017MO" +
+      "NSTER_CATCH_S\020\323\017\022\024\n\017MONSTER_BREAK_C\020\324\017\022\024" +
+      "\n\017MONSTER_BREAK_S\020\325\017\022\023\n\016MONSTER_FEED_C\020\326" +
+      "\017\022\023\n\016MONSTER_FEED_S\020\327\017\022\027\n\022MONSTER_SKILL_" +
+      "UP_C\020\330\017\022\027\n\022MONSTER_SKILL_UP_S\020\331\017\022\027\n\022MONS" +
+      "TER_STAGE_UP_C\020\332\017\022\027\n\022MONSTER_STAGE_UP_S\020",
+      "\333\017\022\026\n\021INSTANCE_ASSIST_C\020\271\027\022\026\n\021INSTANCE_A" +
+      "SSIST_S\020\272\027\022\025\n\020INSTANCE_ENTER_C\020\273\027\022\025\n\020INS" +
+      "TANCE_ENTER_S\020\274\027\022\026\n\021INSTANCE_SETTLE_C\020\275\027" +
+      "\022\026\n\021INSTANCE_SETTLE_S\020\276\027\022\031\n\024INSTANCE_OPE" +
+      "N_CARD_C\020\277\027\022\031\n\024INSTANCE_OPEN_CARD_S\020\300\027\022\025" +
+      "\n\020INSTANCE_SWEEP_C\020\301\027\022\025\n\020INSTANCE_SWEEP_" +
+      "S\020\302\027\022\033\n\026INSTANCE_RESET_COUNT_C\020\303\027\022\033\n\026INS" +
+      "TANCE_RESET_COUNT_S\020\304\027\022\017\n\nITEM_USE_C\020\241\037\022" +
+      "\017\n\nITEM_USE_S\020\242\037\022\020\n\013ITEM_SELL_C\020\243\037\022\020\n\013IT" +
+      "EM_SELL_S\020\244\037\022\017\n\nITEM_BUY_C\020\245\037\022\017\n\nITEM_BU",
+      "Y_S\020\246\037\022\023\n\016ITEM_COMPOSE_C\020\247\037\022\023\n\016ITEM_COMP" +
+      "OSE_S\020\250\037\022\021\n\014EQUIP_SELL_C\020\205 \022\021\n\014EQUIP_SEL" +
+      "L_S\020\206 \022\020\n\013EQUIP_BUY_C\020\207 \022\020\n\013EQUIP_BUY_S\020" +
+      "\210 \022\024\n\017EQUIP_COMPOSE_C\020\211 \022\024\n\017EQUIP_COMPOS" +
+      "E_S\020\212 \022\033\n\026EQUIP_INCREASE_LEVEL_C\020\213 \022\033\n\026E" +
+      "QUIP_INCREASE_LEVEL_S\020\214 \022\033\n\026EQUIP_INCREA" +
+      "SE_STAGE_C\020\215 \022\033\n\026EQUIP_INCREASE_STAGE_S\020" +
+      "\216 \022\022\n\rEQUIP_PUNCH_C\020\217 \022\022\n\rEQUIP_PUNCH_S\020" +
+      "\220 \022\020\n\013EQUIP_GEM_C\020\221 \022\020\n\013EQUIP_GEM_S\020\222 \022\032" +
+      "\n\025EQUIP_MONSTER_DRESS_C\020\230 \022\032\n\025EQUIP_MONS",
+      "TER_DRESS_S\020\231 \022\034\n\027EQUIP_MONSTER_UNDRESS_" +
+      "C\020\232 \022\034\n\027EQUIP_MONSTER_UNDRESS_S\020\233 \022\034\n\027EQ" +
+      "UIP_MONSTER_REPLACE_C\020\234 \022\034\n\027EQUIP_MONSTE" +
+      "R_REPLACE_S\020\235 \022\023\n\016QUEST_SUBMIT_C\020\211\'\022\023\n\016Q" +
+      "UEST_SUBMIT_S\020\212\'\022\023\n\016QUEST_ACCEPT_S\020\213\'\022\023\n" +
+      "\016QUEST_UPDATE_S\020\214\'\022\023\n\016QUEST_REMOVE_S\020\215\'\022" +
+      "\020\n\013MAIL_READ_C\020\361.\022\023\n\016MAIL_RECEIVE_C\020\362.\022\023" +
+      "\n\016MAIL_RECEIVE_S\020\363.\022\027\n\022MAIL_RECEIVE_ALL_" +
+      "C\020\364.\022\027\n\022MAIL_RECEIVE_ALL_S\020\365.\022\017\n\nMAIL_NE" +
+      "W_S\020\366.\022\023\n\016IM_CHAT_SEND_C\020\3316\022\016\n\tIM_PUSH_S",
+      "\020\3326\022\022\n\rShopDataInitC\020\301>\022\022\n\rShopDataInitS" +
+      "\020\302>\022\021\n\014ShopRefreshC\020\303>\022\021\n\014ShopRefreshS\020\304" +
+      ">\022\021\n\014ShopItemBuyC\020\305>\022\021\n\014ShopItemBuyS\020\306>\022" +
+      "\021\n\014ShopDataSynC\020\307>\022\021\n\014ShopDataSynS\020\310>\022\023\n" +
+      "\016ShopGold2CoinC\020\311>\022\023\n\016ShopGold2CoinS\020\312>\022" +
+      "\024\n\017AllianceCreateC\020\251F\022\024\n\017AllianceCreateS" +
+      "\020\252F\022\027\n\022SETTING_LANGUAGE_C\020\221N\022\027\n\022SETTING_" +
+      "LANGUAGE_S\020\222N\022\024\n\017SETTING_BLOCK_C\020\223N\022\024\n\017S" +
+      "ETTING_BLOCK_S\020\224NB\030\n\026com.hawk.game.proto" +
+      "col"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

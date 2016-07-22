@@ -422,7 +422,7 @@ public class HawkSession {
 		HawkLog.errPrintln(String.format("send message failed, active: %s", active?"true":"false"));
 		return false;
 	}
-	
+
 	/**
 	 * 关闭会话
 	 * 

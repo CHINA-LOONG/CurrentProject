@@ -66,23 +66,26 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_INFO_SYNC_S", Value=1011)]
       STATISTICS_INFO_SYNC_S = 1011,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_INFO_SYNC_S", Value=1012)]
-      MONSTER_INFO_SYNC_S = 1012,
+      [global::ProtoBuf.ProtoEnum(Name=@"SETTING_INFO_SYNC_S", Value=1012)]
+      SETTING_INFO_SYNC_S = 1012,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_INFO_SYNC_S", Value=1013)]
-      ITEM_INFO_SYNC_S = 1013,
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_INFO_SYNC_S", Value=1013)]
+      MONSTER_INFO_SYNC_S = 1013,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INFO_SYNC_S", Value=1014)]
-      EQUIP_INFO_SYNC_S = 1014,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_INFO_SYNC_S", Value=1014)]
+      ITEM_INFO_SYNC_S = 1014,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1015)]
-      QUEST_INFO_SYNC_S = 1015,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INFO_SYNC_S", Value=1015)]
+      EQUIP_INFO_SYNC_S = 1015,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_INFO_SYNC_S", Value=1016)]
-      MAIL_INFO_SYNC_S = 1016,
+      [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1016)]
+      QUEST_INFO_SYNC_S = 1016,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1017)]
-      ASSEMBLE_FINISH_S = 1017,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_INFO_SYNC_S", Value=1017)]
+      MAIL_INFO_SYNC_S = 1017,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1018)]
+      ASSEMBLE_FINISH_S = 1018,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CREATE_C", Value=1101)]
       PLAYER_CREATE_C = 1101,
@@ -285,32 +288,56 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_SEND_C", Value=7001)]
       IM_CHAT_SEND_C = 7001,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_PUSH_S", Value=7002)]
-      IM_CHAT_PUSH_S = 7002,
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_PUSH_S", Value=7002)]
+      IM_PUSH_S = 7002,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopRefreshC", Value=8001)]
-      ShopRefreshC = 8001,
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataInitC", Value=8001)]
+      ShopDataInitC = 8001,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopRefreshS", Value=8002)]
-      ShopRefreshS = 8002,
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataInitS", Value=8002)]
+      ShopDataInitS = 8002,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopItemBuyC", Value=8003)]
-      ShopItemBuyC = 8003,
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopRefreshC", Value=8003)]
+      ShopRefreshC = 8003,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopItemBuyS", Value=8004)]
-      ShopItemBuyS = 8004,
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopRefreshS", Value=8004)]
+      ShopRefreshS = 8004,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataSynC", Value=8005)]
-      ShopDataSynC = 8005,
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopItemBuyC", Value=8005)]
+      ShopItemBuyC = 8005,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataSynS", Value=8006)]
-      ShopDataSynS = 8006,
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopItemBuyS", Value=8006)]
+      ShopItemBuyS = 8006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataSynC", Value=8007)]
+      ShopDataSynC = 8007,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataSynS", Value=8008)]
+      ShopDataSynS = 8008,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopGold2CoinC", Value=8009)]
+      ShopGold2CoinC = 8009,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopGold2CoinS", Value=8010)]
+      ShopGold2CoinS = 8010,
             
       [global::ProtoBuf.ProtoEnum(Name=@"AllianceCreateC", Value=9001)]
       AllianceCreateC = 9001,
             
       [global::ProtoBuf.ProtoEnum(Name=@"AllianceCreateS", Value=9002)]
-      AllianceCreateS = 9002
+      AllianceCreateS = 9002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SETTING_LANGUAGE_C", Value=10001)]
+      SETTING_LANGUAGE_C = 10001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SETTING_LANGUAGE_S", Value=10002)]
+      SETTING_LANGUAGE_S = 10002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SETTING_BLOCK_C", Value=10003)]
+      SETTING_BLOCK_C = 10003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SETTING_BLOCK_S", Value=10004)]
+      SETTING_BLOCK_S = 10004
     }
   
 }

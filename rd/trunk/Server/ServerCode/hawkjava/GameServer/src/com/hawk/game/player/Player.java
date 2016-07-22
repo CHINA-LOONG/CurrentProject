@@ -52,6 +52,7 @@ import com.hawk.game.module.PlayerLoginModule;
 import com.hawk.game.module.PlayerMailModule;
 import com.hawk.game.module.PlayerMonsterModule;
 import com.hawk.game.module.PlayerQuestModule;
+import com.hawk.game.module.PlayerSettingModule;
 import com.hawk.game.module.PlayerShopModule;
 import com.hawk.game.module.PlayerStatisticsModule;
 import com.hawk.game.protocol.Const;
@@ -123,15 +124,16 @@ public class Player extends HawkAppObj {
 	public void initModules() {
 		registerModule(GsConst.ModuleType.LOGIN_MODULE, new PlayerLoginModule(this));
 		registerModule(GsConst.ModuleType.STATISTICS_MODULE, new PlayerStatisticsModule(this));
+		registerModule(GsConst.ModuleType.SETTING_MODULE, new PlayerSettingModule(this));
 		registerModule(GsConst.ModuleType.MONSTER_MODULE, new PlayerMonsterModule(this));
 		registerModule(GsConst.ModuleType.INSTANCE_MODULE, new PlayerInstanceModule(this));
 		registerModule(GsConst.ModuleType.ITEM_MODULE, new PlayerItemModule(this));
 		registerModule(GsConst.ModuleType.EQUIP_MODULE, new PlayerEquipModule(this));
 		registerModule(GsConst.ModuleType.QUEST_MODULE, new PlayerQuestModule(this));
 		registerModule(GsConst.ModuleType.MAIL_MODULE, new PlayerMailModule(this));
+		registerModule(GsConst.ModuleType.IM_MODULE, new PlayerImModule(this));
 		registerModule(GsConst.ModuleType.SHOP_MODULE, new PlayerShopModule(this));	
 		registerModule(GsConst.ModuleType.ALLIANCE_MODULE, new PlayerAllianceModule(this));
-		registerModule(GsConst.ModuleType.MAIL_MODULE, new PlayerImModule(this));
 
 		// 最后注册空闲模块, 用来消息收尾处理
 		registerModule(GsConst.ModuleType.IDLE_MODULE, new PlayerIdleModule(this));
@@ -944,6 +946,7 @@ public class Player extends HawkAppObj {
 		statisticsEntity.notifyUpdate(true);
 
 		// TEST ----------------------------------------------------------------------------------------
+		playerData.loadAllMonster();
 		// default monster
 		if (statisticsEntity.getMonsterMaxCount() == 0) {
 			increaseMonster("xgXiyiren", 1, Action.SYSTEM);

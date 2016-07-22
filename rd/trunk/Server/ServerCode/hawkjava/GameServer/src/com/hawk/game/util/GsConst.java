@@ -28,6 +28,8 @@ public class GsConst {
 	public static final int GEM_MAX_TYPE = 3;
 	// 宝石镶嵌占位
 	public static final String EQUIP_GEM_NONE = "0";
+	// 聊天最大长度
+	public static final int MAX_IM_CHAT_LENGTH = 500;
 	// 翻译系统appId
 	//public static final String TRANSLATE_APP_ID = "hawk";
 	// 翻译系统模式
@@ -90,24 +92,26 @@ public class GsConst {
 		public static final int LOGIN_MODULE = 1;
 		// 统计模块
 		public static final int STATISTICS_MODULE = 2;
+		// 系统设置模块
+		public static final int SETTING_MODULE = 3;
 		// 怪物模块
-		public static final int MONSTER_MODULE = 3;
+		public static final int MONSTER_MODULE = 4;
 		// 副本模块
-		public static final int INSTANCE_MODULE = 4;
+		public static final int INSTANCE_MODULE = 5;
 		// 装备模块
-		public static final int ITEM_MODULE = 5;
+		public static final int ITEM_MODULE = 6;
 		// 道具模块
-		public static final int EQUIP_MODULE = 6;
+		public static final int EQUIP_MODULE = 7;
 		// 任务模块
-		public static final int QUEST_MODULE = 7;
+		public static final int QUEST_MODULE = 8;
 		// 邮件模块
-		public static final int MAIL_MODULE = 8;
+		public static final int MAIL_MODULE = 9;
 		// IM模块
-		public static final int IM_MODULE = 9;
+		public static final int IM_MODULE = 10;
 		// 商店模块
-		public static final int SHOP_MODULE = 10;
+		public static final int SHOP_MODULE = 11;
 		// 公会模块
-		public static final int ALLIANCE_MODULE = 11;
+		public static final int ALLIANCE_MODULE = 12;
 
 		// 空闲模块(保证在最后)
 		public static final int IDLE_MODULE = 100;

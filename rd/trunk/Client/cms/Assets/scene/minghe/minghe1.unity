@@ -229,12 +229,12 @@ RenderSettings:
   m_FogDensity: .00999999978
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: .311366498, g: .316176474, b: .302227497, a: 1}
+  m_AmbientSkyColor: {r: .10980393, g: .121568635, b: .24313727, a: 1}
   m_AmbientEquatorColor: {r: .114, g: .125, b: .133000001, a: 1}
   m_AmbientGroundColor: {r: .0469999984, g: .0430000015, b: .0350000001, a: 1}
   m_AmbientIntensity: 0
-  m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 2100000, guid: f9380225b311b504db6a4950c3b09c36, type: 2}
+  m_AmbientMode: 3
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 1
@@ -245,7 +245,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 154349405}
+  m_Sun: {fileID: 0}
 --- !u!127 &3
 LevelGameManager:
   m_ObjectHideFlags: 0
@@ -254,7 +254,7 @@ LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
   m_GIWorkflowMode: 1
-  m_LightmapsMode: 2
+  m_LightmapsMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -263,22 +263,22 @@ LightmapSettings:
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 3
     m_Resolution: 1
-    m_BakeResolution: 4
-    m_TextureWidth: 512
+    m_BakeResolution: 8
+    m_TextureWidth: 1024
     m_TextureHeight: 1024
     m_AOMaxDistance: 1
     m_Padding: 5
     m_CompAOExponent: 8.43999958
-    m_LightmapParameters: {fileID: 111300000, guid: 312ef696d5e6ce646a9514026e8b1485,
-      type: 2}
+    m_LightmapParameters: {fileID: 15200, guid: 0000000000000000f000000000000000,
+      type: 0}
     m_TextureCompression: 1
     m_FinalGather: 1
     m_FinalGatherRayCount: 50
-  m_LightmapSnapshot: {fileID: 112000000, guid: 085ca91dd4201144e9965767c83c2896,
+  m_LightmapSnapshot: {fileID: 112000000, guid: 62f50e4ea9aedfc41ac87fa8027f2ee6,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5

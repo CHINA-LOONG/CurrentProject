@@ -17,6 +17,8 @@ public class GameTimeMgr
         }
     }
 
+	private TimeStaticData timeNow = new TimeStaticData();
+
     public DateTime Now
     {
         get { return DateTime.Now; }
@@ -30,10 +32,10 @@ public class GameTimeMgr
 
     public TimeStaticData GetTime()
     {
-        TimeStaticData time = new TimeStaticData();
-        time.hour = GetHour();
-        time.minute = GetMinute();
-        return time;
+       // TimeStaticData time = new TimeStaticData();
+		timeNow.hour = GetHour();
+		timeNow.minute = GetMinute();
+		return timeNow;
     }
 
     public int GetYear()

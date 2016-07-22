@@ -9,8 +9,8 @@ public class PlayerData : MonoBehaviour
 	public	int career;
 	public	int level;
 	public	int	exp;
-	public	int	gold;
-	public	long coin;
+	public	int	gold;//钻石
+	public	long coin;//金币
 	public	int	gender;
 	public	int	eye;
 	public	int	hair;

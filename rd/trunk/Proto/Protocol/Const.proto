@@ -123,8 +123,8 @@ enum attr
 	//防御力
 	DEFENSE = 4;
 	//体力
-    HEALTH = 5;
-	
+	HEALTH = 5;
+
 	//防御穿透
 	DEFENSEWEAKEN = 101;
 	//暴击率
@@ -227,9 +227,9 @@ enum equipQuality
 // 商店类型
 enum shopType
 {
-   NORMALSHOP = 1;
-   ALLIANCESHOP = 2;
-   OTHERSHOP = 3;
+	NORMALSHOP = 1;
+	ALLIANCESHOP = 2;
+	OTHERSHOP = 3;
 }
 
 // 邮件状态
@@ -261,10 +261,10 @@ enum ImType
 // IM频道
 enum ImChannel
 {
+	// 私人
+	PERSON = 1;
 	// 公共
-	WORLD = 1;
+	WORLD = 2;
 	// 公会
-	GUILD = 2;
-	// 自己
-	SELF = 3;
+	GUILD = 3;
 }

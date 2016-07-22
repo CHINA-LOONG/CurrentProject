@@ -11,7 +11,8 @@ public class AudioSystemMgr : MonoBehaviour {
         {
             if (mInst==null)
             {
-                GameObject go = new GameObject("AudioSystemMgr");
+                GameObject go = new GameObject("AudioSystemMgr"); 
+                go.AddComponent<AudioListener>();
                 mInst = go.AddComponent<AudioSystemMgr>();
                 //mInst.Init();
                 //TODO: remove

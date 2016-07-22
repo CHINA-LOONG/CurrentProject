@@ -34,12 +34,14 @@ enum code
 
 	PLAYER_INFO_SYNC_S          = 1010;
 	STATISTICS_INFO_SYNC_S      = 1011;
-	MONSTER_INFO_SYNC_S         = 1012;
-	ITEM_INFO_SYNC_S            = 1013;
-	EQUIP_INFO_SYNC_S           = 1014;
-	QUEST_INFO_SYNC_S           = 1015;
-	MAIL_INFO_SYNC_S            = 1016;
-	ASSEMBLE_FINISH_S           = 1017;
+	SETTING_INFO_SYNC_S         = 1012;
+	MONSTER_INFO_SYNC_S         = 1013;
+	ITEM_INFO_SYNC_S            = 1014;
+	EQUIP_INFO_SYNC_S           = 1015;
+	QUEST_INFO_SYNC_S           = 1016;
+	MAIL_INFO_SYNC_S            = 1017;
+
+	ASSEMBLE_FINISH_S           = 1018;
 
 	// 角色
 	PLAYER_CREATE_C             = 1101;
@@ -95,10 +97,10 @@ enum code
 	EQUIP_INCREASE_LEVEL_S      = 4108;
 	EQUIP_INCREASE_STAGE_C      = 4109;
 	EQUIP_INCREASE_STAGE_S      = 4110;
-	EQUIP_PUNCH_C      			= 4111;
-	EQUIP_PUNCH_S		        = 4112;
-	EQUIP_GEM_C				    = 4113;
-	EQUIP_GEM_S 	    		= 4114;
+	EQUIP_PUNCH_C               = 4111;
+	EQUIP_PUNCH_S               = 4112;
+	EQUIP_GEM_C                 = 4113;
+	EQUIP_GEM_S                 = 4114;
 
 	EQUIP_MONSTER_DRESS_C       = 4120;
 	EQUIP_MONSTER_DRESS_S       = 4121;
@@ -121,21 +123,30 @@ enum code
 	MAIL_RECEIVE_ALL_C          = 6004;
 	MAIL_RECEIVE_ALL_S          = 6005;
 	MAIL_NEW_S                  = 6006;
-	
+
 	// 即时通讯
 	IM_CHAT_SEND_C              = 7001;
-	IM_CHAT_PUSH_S              = 7002;
-	// IM_NOTICE_               = 7003;  
-	
+	IM_PUSH_S                   = 7002;
+
 	// 商店
-	ShopRefreshC                = 8001;
-	ShopRefreshS				= 8002;
-	ShopItemBuyC                = 8003;
-	ShopItemBuyS			    = 8004;
-	ShopDataSynC			    = 8005;
-	ShopDataSynS			    = 8006;
-	
+	ShopDataInitC               = 8001;
+	ShopDataInitS               = 8002;
+	ShopRefreshC                = 8003;
+	ShopRefreshS                = 8004;
+	ShopItemBuyC                = 8005;
+	ShopItemBuyS                = 8006;
+	ShopDataSynC                = 8007;
+	ShopDataSynS                = 8008;
+	ShopGold2CoinC              = 8009;
+	ShopGold2CoinS              = 8010;
+
 	// 公会
-	AllianceCreateC				= 9001;
-	AllianceCreateS				= 9002;
+	AllianceCreateC             = 9001;
+	AllianceCreateS             = 9002;
+
+	// 系统设置
+	SETTING_LANGUAGE_C          = 10001;
+	SETTING_LANGUAGE_S          = 10002;
+	SETTING_BLOCK_C             = 10003;
+	SETTING_BLOCK_S             = 10004;
 }

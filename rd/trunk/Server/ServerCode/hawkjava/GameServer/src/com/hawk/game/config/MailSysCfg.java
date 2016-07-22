@@ -34,12 +34,15 @@ public class MailSysCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean checkValid() {
-		// 检测奖励是否存在，并建立引用
-		rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, rewardId);
-		if (null == rewardCfg) {
-			HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", rewardId));
-			return false;
+		if (rewardId != "") {
+			// 检测奖励是否存在，并建立引用
+			rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, rewardId);
+			if (null == rewardCfg) {
+				HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", rewardId));
+				return false;
+			}
 		}
+
 		return true;
 	}
 

@@ -46,26 +46,38 @@ public class ImManager extends HawkAppObj {
 		public String senderName;
 		public String origLang;
 		public String origText;
-		/**
-		 * @key 语言IOS代码
-		 */
+		/** @key 语言IOS代码 */
 		public Map<String, String> transText;
+		// 可选的
 		public int guildId;
+		public int receiverId;
+		public ImPlayer receiver;
 	}
 
+	/**
+	 * 封装只读的Player，不需锁定
+	 */
 	public class ImPlayer {
-		public String language;
-		public HawkSession session;
+		private Player playerObj;
 
-		public ImPlayer(String language, HawkSession session) {
-			this.language = language;
-			this.session = session;
+		public ImPlayer(Player playerObj) {
+			this.playerObj = playerObj;
+		}
+		public String getLanguage() {
+			return playerObj.getLanguage();
+		}
+		public HawkSession getSession() {
+			return playerObj.getSession();
+		}
+		public List<Integer> getBlockPlayerList() {
+			return playerObj.getEntity().getBlockPlayerList();
 		}
 	}
 
 	// 属性----------------------------------------------------------------------------------------------------------
 	// 翻译批次大小
 	public static final int TRANSLATE_BATCH_SIZE = 5;
+	// 推送批次大小
 	public static final int PUSH_BATCH_SIZE = 20;
 
 	private static final Logger logger = LoggerFactory.getLogger("Server");
@@ -98,6 +110,7 @@ public class ImManager extends HawkAppObj {
 	/**
 	 * 待推送消息队列
 	 */
+	private ConcurrentLinkedQueue<ImMsg> personMsgQueue;
 	private ConcurrentLinkedQueue<ImMsg> worldMsgQueue;
 	private ConcurrentHashMap<Integer, ConcurrentLinkedQueue<ImMsg>> guildMsgQueueMap;
 
@@ -121,6 +134,7 @@ public class ImManager extends HawkAppObj {
 		worldLangMap = new ConcurrentHashMap<String, Integer>();
 		guildPlayerMap = new ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, ImPlayer>>();
 		guildLangMap = new ConcurrentHashMap<Integer, ConcurrentHashMap<String, Integer>>();
+		personMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
 		worldMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
 		guildMsgQueueMap = new ConcurrentHashMap<Integer, ConcurrentLinkedQueue<ImMsg>>();
 		transMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
@@ -129,16 +143,16 @@ public class ImManager extends HawkAppObj {
 	/**
 	 * 加入世界频道
 	 */
-	public void joinWorld(int playerId, String language, HawkSession session) {
-		if (session != null) {
-			worldPlayerMap.put(playerId, new ImPlayer(language, session));
+	public void joinWorld(Player playerObj) {
+		if (playerObj != null) {
+			worldPlayerMap.put(playerObj.getId(), new ImPlayer(playerObj));
 
 			synchronized (worldLangMap) {
-				Integer count = worldLangMap.get(language);
+				Integer count = worldLangMap.get(playerObj.getLanguage());
 				if (count == null) {
 					count = 0;
 				}
-				worldLangMap.put(language, count + 1);
+				worldLangMap.put(playerObj.getLanguage(), count + 1);
 			}
 		}
 	}
@@ -146,8 +160,8 @@ public class ImManager extends HawkAppObj {
 	/**
 	 * 加入公会频道
 	 */
-	public void joinGuild(int guildId, int playerId, String language, HawkSession session) {
-		if (session != null) {
+	public void joinGuild(int guildId, Player playerObj) {
+		if (playerObj != null) {
 			ConcurrentHashMap<Integer, ImPlayer> playerMap = null;
 			synchronized (guildPlayerMap) {
 				playerMap = guildPlayerMap.get(guildId);
@@ -157,7 +171,7 @@ public class ImManager extends HawkAppObj {
 				}
 			}
 			// 直接覆盖，不需同步
-			playerMap.put(playerId, new ImPlayer(language, session));
+			playerMap.put(playerObj.getId(), new ImPlayer(playerObj));
 
 			synchronized (guildLangMap) {
 				ConcurrentHashMap<String, Integer> langMap = guildLangMap.get(guildId);
@@ -166,11 +180,11 @@ public class ImManager extends HawkAppObj {
 					guildLangMap.put(guildId, langMap);
 				}
 
-				Integer count = langMap.get(language);
+				Integer count = langMap.get(playerObj.getLanguage());
 				if (count == null) {
 					count = 0;
 				}
-				langMap.put(language, count + 1);
+				langMap.put(playerObj.getLanguage(), count + 1);
 			}
 		}
 	}
@@ -182,9 +196,9 @@ public class ImManager extends HawkAppObj {
 		ImPlayer imPlayer = worldPlayerMap.remove(playerId);
 		if (imPlayer != null) {
 			synchronized (worldLangMap) {
-				Integer count = worldLangMap.get(imPlayer.language);
+				Integer count = worldLangMap.get(imPlayer.getLanguage());
 				if (count != null && count != 0) {
-					worldLangMap.put(imPlayer.language, count - 1);
+					worldLangMap.put(imPlayer.getLanguage(), count - 1);
 				}
 			}
 		}
@@ -201,9 +215,9 @@ public class ImManager extends HawkAppObj {
 				Map<String, Integer> langMap = guildLangMap.get(guildId);
 				if (langMap != null) {
 					synchronized(langMap) {
-						Integer count = langMap.get(imPlayer.language);
+						Integer count = langMap.get(imPlayer.getLanguage());
 						if (count != null && count != 0) {
-							langMap.put(imPlayer.language, count - 1);
+							langMap.put(imPlayer.getLanguage(), count - 1);
 						}
 					}
 				}
@@ -217,6 +231,40 @@ public class ImManager extends HawkAppObj {
 	public void removeGuild(int guildId) {
 		guildPlayerMap.remove(guildId);
 		guildLangMap.remove(guildId);
+	}
+	
+	/**
+	 * 切换语言
+	 */
+	public void changeLanguage(String oldLang, String newLang, int guildId) {
+		synchronized (worldLangMap) {
+			Integer count = worldLangMap.get(oldLang);
+			if (count != null && count != 0) {
+				worldLangMap.put(oldLang, count - 1);
+			}
+			count = worldLangMap.get(newLang);
+			if (count == null) {
+				count = 0;
+			}
+			worldLangMap.put(newLang, count + 1);
+		}
+
+		if (guildId != 0) {
+			Map<String, Integer> langMap = guildLangMap.get(guildId);
+			if (langMap != null) {
+				synchronized(langMap) {
+					Integer count = langMap.get(oldLang);
+					if (count != null && count != 0) {
+						langMap.put(oldLang, count - 1);
+					}		
+					count = langMap.get(newLang);
+					if (count == null) {
+						count = 0;
+					}
+					langMap.put(newLang, count + 1);
+				}
+			}
+		}
 	}
 
 	/**
@@ -233,9 +281,7 @@ public class ImManager extends HawkAppObj {
 		msgObj.transText = null;
 
 		if (channel == Const.ImChannel.GUILD_VALUE) {
-			// TODO
-			//int guildId = player.getGuildId();
-			msgObj.guildId = 0;
+			msgObj.guildId = player.getPlayerData().getPlayerAllianceEntity().getAllianceId();
 		}
 
 		post(msgObj);
@@ -245,6 +291,16 @@ public class ImManager extends HawkAppObj {
 	 * 投递消息
 	 */
 	public void post(ImMsg msgObj) {
+		// 接收者是否在线
+		if (msgObj.channel == Const.ImChannel.PERSON_VALUE) {
+			ImPlayer receiver = worldPlayerMap.get(msgObj.receiverId);
+			if (receiver == null) {
+				return;
+			} else {
+				msgObj.receiver = receiver;
+			}
+		}
+
 		if (true == GsConfig.getInstance().isTranslate()) {
 			// 加入待翻译列表
 			if (false == transMsgQueue.offer(msgObj)) {
@@ -266,7 +322,6 @@ public class ImManager extends HawkAppObj {
 		if (false == worldMsgQueue.isEmpty() || false == guildMsgQueueMap.isEmpty()) {
 			HawkApp.getInstance().postCommonTask(new ImPushTask());
 		}
-
 		// 翻译
 		if (false == transMsgQueue.isEmpty()) {
 			HawkApp.getInstance().postCommonTask(new ImTransBatchTask());
@@ -277,6 +332,34 @@ public class ImManager extends HawkAppObj {
 
 	// 内部----------------------------------------------------------------------------------------------------------
 
+	/**
+	 * 消息进队列
+	 */
+	private void enqueueMsg(ImMsg msgObj) {
+		switch (msgObj.channel) {
+			case Const.ImChannel.PERSON_VALUE: {
+				personMsgQueue.offer(msgObj);
+				break;
+			}
+			case Const.ImChannel.WORLD_VALUE: {
+				worldMsgQueue.offer(msgObj);
+				break;
+			}
+			case Const.ImChannel.GUILD_VALUE: {
+				ConcurrentLinkedQueue<ImMsg> guildMsgQueue = null;
+				synchronized (guildMsgQueueMap) {
+					guildMsgQueue = guildMsgQueueMap.get(msgObj.guildId);
+					if (null == guildMsgQueue) {
+						guildMsgQueue = new ConcurrentLinkedQueue<>();
+						guildMsgQueueMap.put(msgObj.guildId, guildMsgQueue);
+					}
+				}
+				guildMsgQueue.offer(msgObj);
+				break;
+			}
+		}
+	}
+	
 	/**
 	 * IM批量翻译任务
 	 */
@@ -308,25 +391,34 @@ public class ImManager extends HawkAppObj {
 			for (int i = 0; i < transList.size(); ++i) {
 				ImMsg msgObj = transList.get(i);
 				msgObj.transText = new HashMap<String, String>();
-
-				Map<String, Integer> langMap = null;
-				if (msgObj.channel == Const.ImChannel.WORLD_VALUE) {
-					langMap = worldLangMap;
-				} else if (msgObj.channel == Const.ImChannel.GUILD_VALUE) {
-					langMap = guildLangMap.get(msgObj.guildId);
+				
+				List<String> langList = new ArrayList<String>();
+				switch (msgObj.channel) {
+					case Const.ImChannel.PERSON_VALUE: {
+						langList.add(msgObj.receiver.getLanguage());
+						break;
+					}
+					case Const.ImChannel.WORLD_VALUE: {
+						for (Entry<String, Integer> entry : worldLangMap.entrySet()) {
+							if (entry.getValue() > 0) {
+								langList.add(entry.getKey());
+							}
+						}
+						break;
+					}
+					case Const.ImChannel.GUILD_VALUE: {
+						for (Entry<String, Integer> entry : guildLangMap.get(msgObj.guildId).entrySet()) {
+							if (entry.getValue() > 0) {
+								langList.add(entry.getKey());
+							}
+						}
+						break;
+					}
 				}
 
 				requestArray[i] = new TranslateRequest();
 				requestArray[i].sourceText = msgObj.origText;
 				requestArray[i].sourceLang = msgObj.origLang;
-
-				List<String> langList = new ArrayList<String>();
-				for (Entry<String, Integer> entry : langMap.entrySet()) {
-					if (entry.getValue() > 0) {
-						langList.add(entry.getKey());
-					}
-				}
-
 				requestArray[i].targetLangArray = new String[langList.size()];
 				for (int j = 0; j < langList.size(); ++j) {
 					requestArray[i].targetLangArray[j] = langList.get(j);
@@ -362,20 +454,37 @@ public class ImManager extends HawkAppObj {
 
 		@Override
 		protected int run() {
-			List<ImMsg> pushWorldList = new ArrayList<ImMsg>();
-			Map<Integer, List<ImMsg>> pushGuildMap = new HashMap<>();
+			ImMsg msgObj = null;
 
-			for (int i = 0; i < PUSH_BATCH_SIZE; ++i) {
-				ImMsg msgObj = worldMsgQueue.poll();
-				if (msgObj != null) {
-					pushWorldList.add(msgObj);
-				} else {
-					break;
+			// 推送私人频道
+			Map<ImPlayer, List<ImMsg>> pushPersonMap = new HashMap<>();
+			while ((msgObj = personMsgQueue.poll()) != null) {
+				List<ImMsg> pushList = pushPersonMap.get(msgObj.receiver);
+				if (pushList == null) {
+					pushList = new ArrayList<ImMsg>();
+					pushPersonMap.put(msgObj.receiver, pushList);
+				}
+				pushList.add(msgObj);
+			}
+			if (false == pushPersonMap.isEmpty()) {
+				for (Entry<ImPlayer, List<ImMsg>> entry : pushPersonMap.entrySet()) {
+					push(entry.getValue(), entry.getKey());
 				}
 			}
 
-			// TODO 根据运行情况考虑是否移除空queue
+			// 推送世界频道
+			List<ImMsg> pushWorldList = new ArrayList<ImMsg>();
+			while ((msgObj = worldMsgQueue.poll()) != null) {
+				pushWorldList.add(msgObj);
+			}
+			if (false == pushWorldList.isEmpty()) {
+				push(pushWorldList, worldPlayerMap);
+			}
+
+			// 推送公会频道
+			Map<Integer, List<ImMsg>> pushGuildMap = new HashMap<>();
 			for (Entry<Integer, ConcurrentLinkedQueue<ImMsg>> entry : guildMsgQueueMap.entrySet()) {
+				// TODO 根据运行情况考虑是否移除空queue
 				Queue<ImMsg> queue = entry.getValue();
 				if (true == queue.isEmpty()) {
 					continue;
@@ -384,117 +493,66 @@ public class ImManager extends HawkAppObj {
 				List<ImMsg> pushGuildList = new ArrayList<ImMsg>();
 				pushGuildMap.put(entry.getKey(), pushGuildList);
 
-				for (int i = 0; i < PUSH_BATCH_SIZE; ++i) {
-					ImMsg msgObj = queue.poll();
-					if (msgObj != null) {
-						pushGuildList.add(msgObj);
-					} else {
-						break;
-					}
+				while ((msgObj = queue.poll()) != null) {
+					pushGuildList.add(msgObj);
 				}
 			}
-
-			// 推送世界频道
-			if (false == pushWorldList.isEmpty()) {
-				// 生成每个语言builder
-				Map<String, HSImPush.Builder> worldBuilderMap = new HashMap<>();
-				genBuilderMap(pushWorldList, worldLangMap, worldBuilderMap);
-				// 广播
-				broadcast(worldPlayerMap, worldBuilderMap);
-			}
-
-			// 推送公会频道
 			if (false == pushGuildMap.isEmpty()) {
-				// 生成每个语言builder
-				Map<Integer, Map<String, HSImPush.Builder>> guildBuilderMap = new HashMap<>();
-
-				for (Entry<Integer, ConcurrentHashMap<String, Integer>> guildLangEntry : guildLangMap.entrySet()) {
-					int guildId = guildLangEntry.getKey();
-					List<ImMsg> pushGuildList = pushGuildMap.get(guildId);
-					if (pushGuildList != null && pushGuildList.size() > 0) {
-						Map<String, HSImPush.Builder> builderMap = new HashMap<>();
-						guildBuilderMap.put(guildId, builderMap);
-						genBuilderMap(pushGuildList, guildLangEntry.getValue(), builderMap);
-					}
-				}
-				// 广播
-				for(Entry<Integer, Map<String, HSImPush.Builder>> guildBuilderEntry : guildBuilderMap.entrySet()) {
-					Map<String, HSImPush.Builder> builderMap = guildBuilderEntry.getValue();
-					ConcurrentHashMap<Integer, ImPlayer> playerMap = guildPlayerMap.get(guildBuilderEntry.getKey());
+				for(Entry<Integer, List<ImMsg>> pushGuildEntry : pushGuildMap.entrySet()) {
+					List<ImMsg> pushGuildList = pushGuildEntry.getValue();
+					ConcurrentHashMap<Integer, ImPlayer> playerMap = guildPlayerMap.get(pushGuildEntry.getKey());
 					if (playerMap != null) {
-						broadcast(playerMap, builderMap);
+						push(pushGuildList, playerMap);
 					}
 				}
 			}
+
 			return 0;
 		}
 	}
 
 	/**
-	 * 消息进队列
-	 */
-	private void enqueueMsg(ImMsg msgObj) {
-		if (msgObj.channel == Const.ImChannel.WORLD_VALUE) {
-			worldMsgQueue.offer(msgObj);
-		} else if (msgObj.channel == Const.ImChannel.GUILD_VALUE) {
-			ConcurrentLinkedQueue<ImMsg> guildMsgQueue = null;
-			synchronized (guildMsgQueueMap) {
-				guildMsgQueue = guildMsgQueueMap.get(msgObj.guildId);
-				if (null == guildMsgQueue) {
-					guildMsgQueue = new ConcurrentLinkedQueue<>();
-					guildMsgQueueMap.put(msgObj.guildId, guildMsgQueue);
-				}
-			}
-			guildMsgQueue.offer(msgObj);
-		}
-	}
-
-	/**
-	 * 生成builder
+	 * 广播推送消息
 	 * @param imMsgList 消息队列
-	 * @param langMap 每个语言计数表
-	 * @param builderMap 每个语言builder表，由每个线程提供，不需同步
-	 */
-	private void genBuilderMap(List<ImMsg> imMsgList, Map<String, Integer> langMap, Map<String, HSImPush.Builder> langBuilderMap) {
-		if (true == GsConfig.getInstance().isTranslate()) {
-			for (Entry<String, Integer> entry : langMap.entrySet()) {
-				if (entry.getValue() > 0) {
-					HSImPush.Builder builder = HSImPush.newBuilder();
-					for (ImMsg msgObj : imMsgList) {
-						builder.addImMsg(BuilderUtil.genImMsgBuilder(msgObj, entry.getKey()));
-					}
-					langBuilderMap.put(entry.getKey(), builder);
-				}
-			}
-		}
-
-		HSImPush.Builder nullLangBuilder = HSImPush.newBuilder();
-		for (ImMsg msgObj : imMsgList) {
-			nullLangBuilder.addImMsg(BuilderUtil.genImMsgBuilder(msgObj, GsConst.TRANSLATE_LANGUAGE_NULL));
-		}
-		langBuilderMap.put(GsConst.TRANSLATE_LANGUAGE_NULL, nullLangBuilder);
-	}
-
-	/**
-	 * 广播聊天消息
 	 * @param playerMap 玩家表，需要同步
-	 * @param langBuilderMap 每个语言builder表
 	 */
-	private void broadcast(ConcurrentHashMap<Integer, ImPlayer> playerMap, Map<String, HSImPush.Builder> langBuilderMap) {
+	private void push(List<ImMsg> imMsgList, ConcurrentHashMap<Integer, ImPlayer> playerMap) {
 		Iterator<Entry<Integer, ImPlayer>> iterator = playerMap.entrySet().iterator();
 		while (iterator.hasNext()) {
 			Entry<Integer, ImPlayer> entry = iterator.next();
-			HSImPush.Builder builder = langBuilderMap.get(entry.getValue().language);
-			if (builder == null) {
-				builder = langBuilderMap.get(GsConst.TRANSLATE_LANGUAGE_NULL);
-			}
-
-			entry.getValue().session.sendProtocol(HawkProtocol.valueOf(HS.code.IM_CHAT_PUSH_S, builder));
-
-			if (false == entry.getValue().session.isActive()) {
+			push(imMsgList, entry.getValue());
+			
+			if (false == entry.getValue().getSession().isActive()) {
 				iterator.remove();
 			}
 		}
 	}
 
+	/**
+	 * 单人推送消息
+	 * @param imMsgList 消息队列
+	 * @param playerObj 玩家
+	 */
+	private void push(List<ImMsg> imMsgList,  ImPlayer playerObj) {
+		int size = 0;
+		HSImPush.Builder builder = HSImPush.newBuilder();
+
+		for (ImMsg msgObj : imMsgList) {
+			// 检查屏蔽
+			if (false == playerObj.getBlockPlayerList().contains(msgObj.senderId)) {
+				builder.addImMsg(BuilderUtil.genImMsgBuilder(msgObj, playerObj.getLanguage()));
+				++size;
+			}
+
+			// 分批发送
+			if (size >= PUSH_BATCH_SIZE) {
+				size = 0;
+				playerObj.getSession().sendProtocol(HawkProtocol.valueOf(HS.code.IM_PUSH_S, builder));
+				builder.clear();
+			}
+		}
+		if (size > 0) {
+			playerObj.getSession().sendProtocol(HawkProtocol.valueOf(HS.code.IM_PUSH_S, builder));
+		}
+	}
 }

@@ -13,6 +13,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     public Button m_QuestButton;
     public Button m_SpeechButton;
+	public Button shopButton;
     public InputField m_SpeechInput;
 
     public PopupList m_LangPopup;
@@ -29,6 +30,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public UIInstance uiInstance;
     public UIPetList uiPetList;
     public UIAdjustBattleTeam uiAdjustBattleTeam;
+	public UIShop uiShop;
 
 
     void Start()
@@ -39,6 +41,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         EventTriggerListener.Get(m_QuestButton.gameObject).onClick = OnQuestButtonClick;
         EventTriggerListener.Get(m_SpeechButton.gameObject).onClick = OnSpeechButtonClick;
         EventTriggerListener.Get(btnMail.gameObject).onClick = OnMailButtonClick;
+		EventTriggerListener.Get (shopButton.gameObject).onClick = OnShopButtonClick;
 
         m_LangPopup.Initialize<PopupListIndextDelegate>(this);
         m_LangPopup.AddItem((int)Language.Chinese, StaticDataMgr.Instance.GetTextByID("ui_chinese"));
@@ -113,6 +116,17 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         uiMail = UIMgr.Instance.OpenUI_(UIMail.ViewName) as UIMail;
     }
 
+	public	UIShop OpenShop(int shopType)
+	{
+		uiShop = UIMgr.Instance.OpenUI_ (UIShop.ViewName) as UIShop;
+		uiShop.RefreshShopData (shopType);
+		return uiShop;
+	}
+
+	void OnShopButtonClick( GameObject go)
+	{
+		OpenShop ((int)PB.shopType.NORMALSHOP);
+	}
 
     void OnSpeechButtonClick(GameObject go)
     {
@@ -175,5 +189,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         UIMgr.Instance.DestroyUI(uiInstance);
         UIMgr.Instance.DestroyUI(uiPetList);
         UIMgr.Instance.DestroyUI(uiAdjustBattleTeam);
+		UIMgr.Instance.DestroyUI (uiShop);
     }
 }
