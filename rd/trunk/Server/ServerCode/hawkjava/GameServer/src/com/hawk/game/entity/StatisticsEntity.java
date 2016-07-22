@@ -1,6 +1,9 @@
 package com.hawk.game.entity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -15,13 +18,13 @@ import javax.persistence.Transient;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBEntity;
+import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 import org.hawk.util.HawkJsonUtil;
 
 import com.google.gson.reflect.TypeToken;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.QuestCfg;
-import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.GsConst.Cycle;
@@ -188,9 +191,9 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "fatigueClaimCountDaily", nullable = false)
 	private int fatigueClaimCountDaily = 0;
 
-	// 每日通用刷新时间
-	@Column(name = "dailyRefreshTime")
-	private Calendar dailyRefreshTime = null;
+	// 刷新时间
+	@Column(name = "refreshTime")
+	private String refreshTime = null;
 
 	// 签到次数
 	@Column(name = "signInCount", nullable = false)
@@ -214,6 +217,8 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 每一项刷新时间
 	@Transient
 	protected Map<Integer, Calendar> refreshTimeMap = new HashMap<Integer, Calendar>();
+	@Transient
+	protected Map<Integer, String> refreshStringMap = new HashMap<Integer, String>();
 	@Transient
 	protected Set<Integer> questCompleteSet = new HashSet<Integer>();
 	@Transient
@@ -240,17 +245,17 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 最后困难副本章节索引
 	@Transient
 	protected int hardIndex = 0;
-
+	@Transient
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	public StatisticsEntity() {
 		this.createTime = HawkTime.getCalendar();
-		this.dailyRefreshTime = HawkTime.getCalendar();
 		this.skillPointBeginTime = HawkTime.getCalendar();
 	}
 
 	public StatisticsEntity(int playerId) {
 		this.playerId = playerId;
 		this.createTime = HawkTime.getCalendar();
-		this.dailyRefreshTime = HawkTime.getCalendar();
 		this.skillPointBeginTime = HawkTime.getCalendar();
 	}
 
@@ -268,14 +273,6 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public void setRefreshTime(int type, Calendar time) {
 		this.refreshTimeMap.put(type, time);
-
-		switch (type) {
-		case GsConst.RefreshType.DAILY_PERS_REFRESH:
-			this.dailyRefreshTime.setTimeInMillis(time.getTimeInMillis());
-			break;
-		default:
-			break;
-		}
 	}
 
 	public int getFatigue() {
@@ -723,8 +720,20 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	@Override
 	public boolean decode() {
-		refreshTimeMap.put(GsConst.RefreshType.DAILY_PERS_REFRESH, dailyRefreshTime);
-
+		if (refreshTime != null && false == "".equals(refreshTime) && false == "null".equals(refreshTime)) {
+			refreshStringMap = HawkJsonUtil.getJsonInstance().fromJson(refreshTime, new TypeToken<HashMap<Integer, String>>() {}.getType());
+			for (Map.Entry<Integer, String> entry : refreshStringMap.entrySet()) {				
+				try {
+					Date date = dateFormat.parse(entry.getValue());
+					Calendar calendar = Calendar.getInstance();
+					calendar.setTime(date);
+					refreshTimeMap.put(entry.getKey(), calendar);
+				} catch (ParseException e) {
+					HawkException.catchException(e);
+					return false;
+				}
+			}					
+		}
 		if (questCompleteJson != null && false == "".equals(questCompleteJson) && false == "null".equals(questCompleteJson)) {
 			questCompleteSet = HawkJsonUtil.getJsonInstance().fromJson(questCompleteJson, new TypeToken<HashSet<Integer>>() {}.getType());
 		}
@@ -792,6 +801,13 @@ public class StatisticsEntity  extends HawkDBEntity {
 		instanceCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(instanceCountDailyMap);
 		monsterStageJson = HawkJsonUtil.getJsonInstance().toJson(monsterStageMap);
 		monsterLevelJson = HawkJsonUtil.getJsonInstance().toJson(monsterLevelMap);
+		
+		refreshStringMap.clear();
+		for (Map.Entry<Integer, Calendar> entry : refreshTimeMap.entrySet()) {
+			refreshStringMap.put(entry.getKey(), dateFormat.format(entry.getValue().getTime()));
+		}
+		refreshTime = HawkJsonUtil.getJsonInstance().toJson(refreshStringMap);	
+		
 		return true;
 	}
 

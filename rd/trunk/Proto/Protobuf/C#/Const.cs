@@ -326,15 +326,52 @@ namespace PB
       RED = 6
     }
   
-    [global::ProtoBuf.ProtoContract(Name=@"BattleType")]
-    public enum BattleType
+    [global::ProtoBuf.ProtoContract(Name=@"mailState")]
+    public enum mailState
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"NORMAL", Value=1)]
-      NORMAL = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"UNREAD", Value=1)]
+      UNREAD = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"BOSS", Value=2)]
-      BOSS = 2
+      [global::ProtoBuf.ProtoEnum(Name=@"READ", Value=2)]
+      READ = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RECEIVE", Value=3)]
+      RECEIVE = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"OVERFLOW", Value=4)]
+      OVERFLOW = 4
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ImType")]
+    public enum ImType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAT", Value=1)]
+      CHAT = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LANTERN", Value=2)]
+      LANTERN = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PROMPT", Value=3)]
+      PROMPT = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"NOTICE", Value=4)]
+      NOTICE = 4
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ImChannel")]
+    public enum ImChannel
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WORLD", Value=1)]
+      WORLD = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GUILD", Value=2)]
+      GUILD = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SELF", Value=3)]
+      SELF = 3
     }
   
 }

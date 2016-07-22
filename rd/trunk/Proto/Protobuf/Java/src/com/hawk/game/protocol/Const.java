@@ -2271,6 +2271,101 @@ public final class Const {
   }
 
   /**
+   * Protobuf enum {@code shopType}
+   *
+   * <pre>
+   * 商店类型
+   * </pre>
+   */
+  public enum shopType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>NORMALSHOP = 1;</code>
+     */
+    NORMALSHOP(0, 1),
+    /**
+     * <code>ALLIANCESHOP = 2;</code>
+     */
+    ALLIANCESHOP(1, 2),
+    /**
+     * <code>OTHERSHOP = 3;</code>
+     */
+    OTHERSHOP(2, 3),
+    ;
+
+    /**
+     * <code>NORMALSHOP = 1;</code>
+     */
+    public static final int NORMALSHOP_VALUE = 1;
+    /**
+     * <code>ALLIANCESHOP = 2;</code>
+     */
+    public static final int ALLIANCESHOP_VALUE = 2;
+    /**
+     * <code>OTHERSHOP = 3;</code>
+     */
+    public static final int OTHERSHOP_VALUE = 3;
+
+
+    public final int getNumber() { return value; }
+
+    public static shopType valueOf(int value) {
+      switch (value) {
+        case 1: return NORMALSHOP;
+        case 2: return ALLIANCESHOP;
+        case 3: return OTHERSHOP;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<shopType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<shopType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<shopType>() {
+            public shopType findValueByNumber(int number) {
+              return shopType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(14);
+    }
+
+    private static final shopType[] VALUES = values();
+
+    public static shopType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private shopType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:shopType)
+  }
+
+  /**
    * Protobuf enum {@code mailState}
    *
    * <pre>
@@ -2381,7 +2476,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(14);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(15);
     }
 
     private static final mailState[] VALUES = values();
@@ -2404,6 +2499,261 @@ public final class Const {
     }
 
     // @@protoc_insertion_point(enum_scope:mailState)
+  }
+
+  /**
+   * Protobuf enum {@code ImType}
+   *
+   * <pre>
+   * IM类型
+   * </pre>
+   */
+  public enum ImType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>CHAT = 1;</code>
+     *
+     * <pre>
+     * 聊天
+     * </pre>
+     */
+    CHAT(0, 1),
+    /**
+     * <code>LANTERN = 2;</code>
+     *
+     * <pre>
+     * 走马灯
+     * </pre>
+     */
+    LANTERN(1, 2),
+    /**
+     * <code>PROMPT = 3;</code>
+     *
+     * <pre>
+     * 系统提示
+     * </pre>
+     */
+    PROMPT(2, 3),
+    /**
+     * <code>NOTICE = 4;</code>
+     *
+     * <pre>
+     * 系统公告
+     * </pre>
+     */
+    NOTICE(3, 4),
+    ;
+
+    /**
+     * <code>CHAT = 1;</code>
+     *
+     * <pre>
+     * 聊天
+     * </pre>
+     */
+    public static final int CHAT_VALUE = 1;
+    /**
+     * <code>LANTERN = 2;</code>
+     *
+     * <pre>
+     * 走马灯
+     * </pre>
+     */
+    public static final int LANTERN_VALUE = 2;
+    /**
+     * <code>PROMPT = 3;</code>
+     *
+     * <pre>
+     * 系统提示
+     * </pre>
+     */
+    public static final int PROMPT_VALUE = 3;
+    /**
+     * <code>NOTICE = 4;</code>
+     *
+     * <pre>
+     * 系统公告
+     * </pre>
+     */
+    public static final int NOTICE_VALUE = 4;
+
+
+    public final int getNumber() { return value; }
+
+    public static ImType valueOf(int value) {
+      switch (value) {
+        case 1: return CHAT;
+        case 2: return LANTERN;
+        case 3: return PROMPT;
+        case 4: return NOTICE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ImType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<ImType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ImType>() {
+            public ImType findValueByNumber(int number) {
+              return ImType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(16);
+    }
+
+    private static final ImType[] VALUES = values();
+
+    public static ImType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private ImType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ImType)
+  }
+
+  /**
+   * Protobuf enum {@code ImChannel}
+   *
+   * <pre>
+   * IM频道
+   * </pre>
+   */
+  public enum ImChannel
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>WORLD = 1;</code>
+     *
+     * <pre>
+     * 公共
+     * </pre>
+     */
+    WORLD(0, 1),
+    /**
+     * <code>GUILD = 2;</code>
+     *
+     * <pre>
+     * 公会
+     * </pre>
+     */
+    GUILD(1, 2),
+    /**
+     * <code>SELF = 3;</code>
+     *
+     * <pre>
+     * 自己
+     * </pre>
+     */
+    SELF(2, 3),
+    ;
+
+    /**
+     * <code>WORLD = 1;</code>
+     *
+     * <pre>
+     * 公共
+     * </pre>
+     */
+    public static final int WORLD_VALUE = 1;
+    /**
+     * <code>GUILD = 2;</code>
+     *
+     * <pre>
+     * 公会
+     * </pre>
+     */
+    public static final int GUILD_VALUE = 2;
+    /**
+     * <code>SELF = 3;</code>
+     *
+     * <pre>
+     * 自己
+     * </pre>
+     */
+    public static final int SELF_VALUE = 3;
+
+
+    public final int getNumber() { return value; }
+
+    public static ImChannel valueOf(int value) {
+      switch (value) {
+        case 1: return WORLD;
+        case 2: return GUILD;
+        case 3: return SELF;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ImChannel>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<ImChannel>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ImChannel>() {
+            public ImChannel findValueByNumber(int number) {
+              return ImChannel.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(17);
+    }
+
+    private static final ImChannel[] VALUES = values();
+
+    public static ImChannel valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private ImChannel(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ImChannel)
   }
 
 
@@ -2451,9 +2801,13 @@ public final class Const {
       "RD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020\n" +
       "*O\n\014equipQuality\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022\010" +
       "\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED\020" +
-      "\006*<\n\tmailState\022\n\n\006UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007" +
-      "RECEIVE\020\003\022\014\n\010OVERFLOW\020\004B\030\n\026com.hawk.game" +
-      ".protocol"
+      "\006*;\n\010shopType\022\016\n\nNORMALSHOP\020\001\022\020\n\014ALLIANC" +
+      "ESHOP\020\002\022\r\n\tOTHERSHOP\020\003*<\n\tmailState\022\n\n\006U" +
+      "NREAD\020\001\022\010\n\004READ\020\002\022\013\n\007RECEIVE\020\003\022\014\n\010OVERFL" +
+      "OW\020\004*7\n\006ImType\022\010\n\004CHAT\020\001\022\013\n\007LANTERN\020\002\022\n\n",
+      "\006PROMPT\020\003\022\n\n\006NOTICE\020\004*+\n\tImChannel\022\t\n\005WO" +
+      "RLD\020\001\022\t\n\005GUILD\020\002\022\010\n\004SELF\020\003B\030\n\026com.hawk.g" +
+      "ame.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

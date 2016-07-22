@@ -13,23 +13,32 @@ public class AssetRequest
 {
     public bool isAdditive = false;//
     //public SceneLoadedCallBack sceneCallBack = null;
-    public string name = null;
+    public string assetName = null;
 
     public System.EventArgs args = null;
     public AssetLoadedCallBack assetCallBack = null;
+    public bool loaded = false;
 
     public AssetRequest(string name)
     {
-        this.name = name;
+        this.assetName = name;
+        loaded = false;
     }
 
     public AssetRequest(string name, AssetLoadedCallBack callBack, System.EventArgs args = null, bool additive = false)
     {
-        this.name = name;
+        this.assetName = name;
         this.assetCallBack = callBack;
         this.args = args;
         this.isAdditive = additive;
+        loaded = false;
     }
+}
+//---------------------------------------------------------------------------------------------
+public class AbRequestData
+{
+   public AssetBundleCreateRequest abRequest;
+   public int referencedCount;
 }
 //---------------------------------------------------------------------------------------------
 public class LoadedAssetBundle
@@ -53,13 +62,14 @@ public class ResourceMgr : MonoBehaviour
     private Dictionary<string, string[]> dependenceList = new Dictionary<string, string[]>();
 
     private List<string> abRequestToRemoveList = new List<string>();
-    private Dictionary<string, AssetBundleCreateRequest> abRequestList = new Dictionary<string, AssetBundleCreateRequest>();
+    private Dictionary<string, AbRequestData> abRequestList = new Dictionary<string, AbRequestData>();
 
     private List<AssetBundleLoadOperation> inProgressLoadList = new List<AssetBundleLoadOperation>();
     static ResourceMgr mInst = null;
     //public SpawnPool objectPool = null;
     //pooled prefab
     private Dictionary<string, GameObject> battlePoolList = new Dictionary<string,GameObject>();
+    public Dictionary<string, AssetRequest> assetRequestList = new Dictionary<string, AssetRequest>();
 
     void Awake()
     {
@@ -84,10 +94,11 @@ public class ResourceMgr : MonoBehaviour
         //update bundle request
         foreach (var keyValue in abRequestList)
         {
-            AssetBundleCreateRequest abRequest = keyValue.Value;
+            AssetBundleCreateRequest abRequest = keyValue.Value.abRequest;
             if (abRequest.isDone)
             {
                 LoadedAssetBundle loadedBundle = new LoadedAssetBundle(abRequest.assetBundle);
+                loadedBundle.referencedCount = keyValue.Value.referencedCount;
                 loadedAssetBundleList.Add(keyValue.Key, loadedBundle);
 
                 abRequestToRemoveList.Add(keyValue.Key);
@@ -111,6 +122,8 @@ public class ResourceMgr : MonoBehaviour
             else
                 i++;
         }
+
+        UpdateAssetRequest();
     }
     //---------------------------------------------------------------------------------------------
     /// <summary>
@@ -148,7 +161,7 @@ public class ResourceMgr : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public IEnumerator LoadLevelRequest(AssetRequest request)
     {
-        string abname = StaticDataMgr.Instance.GetBundleName(request.name);
+        string abname = StaticDataMgr.Instance.GetBundleName(request.assetName);
         if (abname == null)
             yield return null;
 
@@ -156,7 +169,7 @@ public class ResourceMgr : MonoBehaviour
         LoadAssetBundleAsync(abname);
         AssetLevelLoadOperation loadLevelOperation = new AssetLevelLoadOperation(
             abname,
-            request.name,
+            request.assetName,
             typeof(GameObject),
             request.isAdditive
             );
@@ -177,51 +190,7 @@ public class ResourceMgr : MonoBehaviour
         System.GC.Collect();
     }
     //---------------------------------------------------------------------------------------------
-    public void LoadAssetAsyn(string name, AssetLoadedCallBack callBack = null, System.EventArgs args = null)
-    {
-        name = StaticDataMgr.Instance.GetRealName(name);
-        GameObject obj;
-        if ((obj = GetPoolObject(name)) != null)
-        {
-            if (callBack != null)
-            {
-                callBack(obj, args);
-            }
-            return;
-        }
-
-        StartCoroutine(LoadAssetRequest(new AssetRequest(name, callBack, args)));
-    }
-    //---------------------------------------------------------------------------------------------
-    public IEnumerator LoadAssetRequest(AssetRequest request)
-    {
-        string abname = StaticDataMgr.Instance.GetBundleName(request.name).ToLower();
-        LoadAssetBundleAsync(abname);
-        AssetBundleLoadAssetOperationFull loadAssetOperate = new AssetBundleLoadAssetOperationFull(
-            abname,
-            request.name,
-            typeof(GameObject)
-            );
-
-        if (loadAssetOperate == null)
-            yield break;
-
-        inProgressLoadList.Add(loadAssetOperate);
-        yield return StartCoroutine(loadAssetOperate);
-
-        GameObject prefab = loadAssetOperate.GetAsset<GameObject>();
-        CreatePoolObject(prefab);
-        if (request.assetCallBack != null)
-        {
-            request.assetCallBack(Instantiate(prefab), request.args);
-        }
-
-        UnloadAssetBundle(abname);
-        Resources.UnloadUnusedAssets();
-        System.GC.Collect();
-    }
-    //---------------------------------------------------------------------------------------------
-    public void ClearCache()
+    public void UnloadCachedBundles(bool clearPoolList = false)
     {
         var itor = battlePoolList.GetEnumerator();
         string abname;
@@ -231,8 +200,16 @@ public class ResourceMgr : MonoBehaviour
             if (string.IsNullOrEmpty(abname) == false)
                 UnloadAssetBundle(abname);
         }
-        battlePoolList.Clear();
-        Resources.UnloadUnusedAssets();
+        if (clearPoolList == true)
+        {
+            battlePoolList.Clear();
+            if (assetRequestList.Count > 0)
+            {
+                Logger.LogError("loading not finish!");
+            }
+            Resources.UnloadUnusedAssets();
+        }
+
         System.GC.Collect();
     }
     //---------------------------------------------------------------------------------------------
@@ -270,6 +247,10 @@ public class ResourceMgr : MonoBehaviour
             go = GetPoolObject(prefab.name);
         }
 
+        UnloadAssetBundle(abname);
+        Resources.UnloadUnusedAssets();
+        System.GC.Collect();
+
         return go;
     }
     //---------------------------------------------------------------------------------------------
@@ -279,6 +260,7 @@ public class ResourceMgr : MonoBehaviour
     /// TODO: remove cache
     public GameObject LoadAsset(string assetname, bool cache = false)
     {
+        //Logger.LogWarningFormat("[#################]LoadAsset assetname={0}[##################]", assetname);
         assetname = StaticDataMgr.Instance.GetRealName(assetname);
 
         GameObject obj = GetPoolObject(assetname);
@@ -331,55 +313,88 @@ public class ResourceMgr : MonoBehaviour
         return go;
     }
     //---------------------------------------------------------------------------------------------
-    public IEnumerator LoadAssetBatch(List<KeyValuePair<string, string>> assetList)
+    public void AddAssetRequest(AssetRequest request)
     {
-        int count = assetList.Count;
-        //List<string> requestBundleList = new List<string>();
-        string bundleName;
-        string assetName;
-        for (int i = 0; i < count; ++i)
+        string realName = StaticDataMgr.Instance.GetRealName(request.assetName);
+
+        if (assetRequestList.ContainsKey(realName))
+            return;
+
+        if (battlePoolList.ContainsKey(realName))
+            return;
+
+        assetRequestList.Add(realName, request);
+    }
+    //---------------------------------------------------------------------------------------------
+    public int GetAssetRequestCount()
+    {
+        return assetRequestList.Count;
+    }
+    //---------------------------------------------------------------------------------------------
+    public void UpdateAssetRequest()
+    {
+        LoadAssetBatch(ref assetRequestList);
+    }
+    //---------------------------------------------------------------------------------------------
+    private void LoadAssetBatch(ref Dictionary<string, AssetRequest> requestList)
+    {
+        var itr = requestList.GetEnumerator();
+        while (itr.MoveNext())
         {
-            assetName = assetList[i].Key;
-            bundleName = assetList[i].Value;
-            
-            //GameObject obj = GetPoolObject(assetName);
-            //if (obj != null)
-            //{
-            //    continue;
-            //}
-
-            bundleName = bundleName.ToLower();
-            LoadAssetBundleAsync(bundleName);
-            AssetBundleLoadAssetOperationFull loadAssetOperate = new AssetBundleLoadAssetOperationFull(
-                bundleName,
-                assetName,
-                typeof(GameObject)
-                );
-
-            if (loadAssetOperate == null)
-                yield break;
-
-            inProgressLoadList.Add(loadAssetOperate);
-            yield return StartCoroutine(loadAssetOperate);
-
-            GameObject prefab = loadAssetOperate.GetAsset<GameObject>();
-            CreatePoolObject(prefab);
-            //yield return StartCoroutine(LoadAssetRequest(new AssetRequest(bundleName, name)));
-            //CreatePoolObject(prefab);
+            LoadAssetAsyn(itr.Current.Value);
         }
-        for (int i = 0; i < count; ++i)
+    }
+    //---------------------------------------------------------------------------------------------
+    public void LoadAssetAsyn(AssetRequest request)
+    {
+        if (request.loaded == true)
+            return;
+
+        request.loaded = true;
+        string realName = StaticDataMgr.Instance.GetRealName(request.assetName);
+        GameObject obj;
+        if ((obj = GetPoolObject(realName)) != null)
         {
-            bundleName = assetList[i].Value;
-            UnloadAssetBundle(bundleName);
-            //Resources.UnloadUnusedAssets();
+            if (request.assetCallBack != null)
+            {
+                request.assetCallBack(obj, request.args);
+            }
+            return;
         }
-        System.GC.Collect();
 
-        //for (int i = 0; i < count; ++i)
-        //{
-        //    UnloadAssetBundle(assetList[i].Value);
-        //    Resources.UnloadUnusedAssets();
-        //}
+        StartCoroutine(LoadAssetRequest(request));
+    }
+    //---------------------------------------------------------------------------------------------
+    public IEnumerator LoadAssetRequest(AssetRequest request)
+    {
+        string realName = StaticDataMgr.Instance.GetRealName(request.assetName);
+        string abname = StaticDataMgr.Instance.GetBundleName(realName).ToLower();
+        LoadAssetBundleAsync(abname);
+        AssetBundleLoadAssetOperationFull loadAssetOperate = new AssetBundleLoadAssetOperationFull(
+            abname,
+            realName,
+            typeof(GameObject)
+            );
+
+        if (loadAssetOperate == null)
+            yield break;
+
+        inProgressLoadList.Add(loadAssetOperate);
+        yield return StartCoroutine(loadAssetOperate);
+
+        GameObject prefab = loadAssetOperate.GetAsset<GameObject>();
+        CreatePoolObject(prefab);
+        if (request.assetCallBack != null)
+        {
+            request.assetCallBack(Instantiate(prefab), request.args);
+        }
+
+        if (assetRequestList.ContainsKey(realName))
+        {
+            assetRequestList.Remove(realName);
+        }
+        //UnloadAssetBundle(abname);
+        //Resources.UnloadUnusedAssets();
         //System.GC.Collect();
     }
     //---------------------------------------------------------------------------------------------
@@ -479,14 +494,25 @@ public class ResourceMgr : MonoBehaviour
             return true;
         }
 
-        byte[] stream = null;
-        string uri = Path.Combine(Util.AssetBundlePath, abname);
-        Logger.Log("LoadFile::>> " + uri);
-        LoadDependencies(abname, true);
+        AbRequestData abRequestData = null;
+        if (abRequestList.TryGetValue(abname, out abRequestData) == false)
+        {
+            byte[] stream = null;
+            string uri = Path.Combine(Util.AssetBundlePath, abname);
+            Logger.Log("LoadFile::>> " + uri);
+            LoadDependencies(abname, true);
+            stream = File.ReadAllBytes(uri);
+            AssetBundleCreateRequest abRequest = AssetBundle.CreateFromMemory(stream);
 
-        stream = File.ReadAllBytes(uri);
-        AssetBundleCreateRequest abRequest = AssetBundle.CreateFromMemory(stream);
-        abRequestList.Add(abname, abRequest);
+            abRequestData = new AbRequestData();
+            abRequestData.abRequest = abRequest;
+            abRequestData.referencedCount = 1;
+            abRequestList.Add(abname, abRequestData);
+        }
+        else 
+        {
+            abRequestData.referencedCount++;
+        }
 
         return false;
     }

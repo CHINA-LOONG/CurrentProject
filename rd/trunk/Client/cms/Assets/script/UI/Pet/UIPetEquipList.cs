@@ -32,8 +32,16 @@ public class UIPetEquipList : PetDetailRightBase,IUIEquipListCallBack
 
     }
 
+    public void OnSelectEquip(GameUnit unit, EquipData equip)
+    {
+        UIEquipPopup uiEquipDetails = UIMgr.Instance.OpenUI_(UIEquipPopup.ViewName, false) as UIEquipPopup;
+        uiEquipDetails.Refresh(equip);
+        uiEquipDetails.IEquipPopupDeletage = ParentNode;
+    }
+
     public void OnEquipDressOrReplace()
     {
         ParentNode.ReloadData();
     }
+
 }

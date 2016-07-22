@@ -243,7 +243,7 @@ public class PlayerEquipModule extends PlayerModule{
 		}
 		
 		ConsumeItems consume = new ConsumeItems();
-		consume.addItemInfos(EquipAttr.getStageDemandList(equipEntity.getItemId(), equipEntity.getStage() + 1));
+		consume.addItemInfos(EquipAttr.getStageDemandList(equipEntity.getItemId(), equipEntity.getStage()));
 		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}
@@ -394,7 +394,13 @@ public class PlayerEquipModule extends PlayerModule{
 				rewardItems.addItem(gemInfo.getGemId(), 1);
 			}
 		}
-	
+		
+		ConsumeItems consume = new ConsumeItems();
+		consume.addItemInfos(EquipAttr.getPunchDemandList(equipEntity.getItemId(), equipEntity.getStage() + 1));
+		if (consume.checkConsume(player, hsCode) == false) {
+			return;
+		}
+		
 		HSEquipPunchRet.Builder response = HSEquipPunchRet.newBuilder();
 		equipEntity.GetGemDressList().clear();		
 		try {
@@ -417,6 +423,7 @@ public class PlayerEquipModule extends PlayerModule{
 		if (rewardItems != null) {
 			rewardItems.rewardTakeAffectAndPush(player, Action.EQUIP_PUNCH);
 		}
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_PUNCH);
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_PUNCH_S_VALUE, response));
 		
 		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_PUNCH,

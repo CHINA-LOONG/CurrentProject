@@ -64,7 +64,8 @@ public class GameMain : MonoBehaviour
 		{
 			mCurModule.OnExit();
             Destroy(mCurModule);
-            ResourceMgr.Instance.ClearCache();
+            ResourceMgr.Instance.UnloadCachedBundles(true);
+            UIMgr.Instance.DestroyAllPopup();
         }
         string moduleName = typeof(T).ToString();
         T t = this.gameObject.AddComponent<T>();
@@ -140,7 +141,11 @@ public class GameMain : MonoBehaviour
         //fucking u3d 0.5s, or it will crash
         yield return new WaitForSeconds(0.5f);
         ChangeModuleDirect<BattleModule>(slArgs.enterParam);
-        UIMgr.Instance.CloseUI_(UILoading.ViewName);
+    }
+    //---------------------------------------------------------------------------------------------
+    public void LoadBattleLevelFinish()
+    {
+
     }
     //---------------------------------------------------------------------------------------------
     public void ClearModule()
@@ -149,7 +154,8 @@ public class GameMain : MonoBehaviour
         {
             mCurModule.OnExit();
             Destroy(mCurModule);
-            ResourceMgr.Instance.ClearCache();
+            ResourceMgr.Instance.UnloadCachedBundles(true);
+            UIMgr.Instance.DestroyAllPopup();
             mCurModule = null;
         }
     }

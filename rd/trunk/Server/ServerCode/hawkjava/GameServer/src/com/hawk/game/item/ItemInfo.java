@@ -107,12 +107,12 @@ public class ItemInfo {
 		return String.format("%d_%d_%d", type, itemId, count);
 	}
 
-	public static ItemInfo valueOf(int type, String itemId, int quantity) {
-		return new ItemInfo(type, itemId, quantity);
+	public static ItemInfo valueOf(int type, String itemId, int count) {
+		return new ItemInfo(type, itemId, count);
 	}
 
-	public static ItemInfo valueOf(int type, String itemId, int quantity, int stage, int level) {
-		return new ItemInfo(type, itemId, quantity, stage, level);
+	public static ItemInfo valueOf(int type, String itemId, int count, int stage, int level) {
+		return new ItemInfo(type, itemId, count, stage, level);
 	}
 	
 	public boolean initByString(String info, int parseType) {

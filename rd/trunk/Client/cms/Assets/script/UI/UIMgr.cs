@@ -45,7 +45,8 @@ public class UIMgr : MonoBehaviour
 		}
 	}
 
-    public Dictionary<string, UIBase> uiList = new Dictionary<string, UIBase>();
+    Dictionary<string, UIBase> uiList = new Dictionary<string, UIBase>();
+    List<UIBase> popupList = new List<UIBase>();
 
 	void Start()
 	{
@@ -86,24 +87,21 @@ public class UIMgr : MonoBehaviour
             return null;
         }
         uiItem = ui.GetComponent<UIBase>();
-        if (cache)
-        {
-            uiList.Add(uiName, uiItem);
-        }
-        RectTransform rt = ui.transform as RectTransform;
-
-        rt.localScale = Vector3.one;
-        rt.localEulerAngles = Vector3.zero;
         ui.name = uiName;
-
         if (uiItem.ViewTypeAttr == UIBase.ViewType.VT_POPUP)
         {
-            rt.SetParent(topPanelTransform, false);
+            UIUtil.SetParentReset(ui.transform, topPanelTransform);
+            popupList.Add(uiItem);
         }
         else
         {
-            rt.SetParent(uiPanelTransform, false);
+            UIUtil.SetParentReset(ui.transform, uiPanelTransform);
+            if (cache)
+            {
+                uiList.Add(uiName, uiItem);
+            }
         }
+
         return uiItem;
     }
 
@@ -131,6 +129,7 @@ public class UIMgr : MonoBehaviour
     {
         CloseUI_(GetUI(uiName));
     }
+
     public void CloseUI_(UIBase uiItem)
     {
         if (uiItem != null)
@@ -146,11 +145,6 @@ public class UIMgr : MonoBehaviour
         }
     }
 
-    public void DestroyUI(string uiName)
-    {
-        UIBase uiItem = GetUI(uiName);
-        DestroyUI(uiItem);
-    }
     public void DestroyUI(UIBase uiItem)
     {
         if (uiItem == null)
@@ -170,7 +164,33 @@ public class UIMgr : MonoBehaviour
             }
             uiList.Remove(uiName);
         }
+        if (popupList.Contains(uiItem))
+        {
+            popupList.Remove(uiItem);
+        }
         uiItem.Clean();
         ResourceMgr.Instance.DestroyAsset(uiItem.gameObject);
     }
+
+    public void DestroyAllPopup()
+    {
+        for (int i = popupList.Count - 1; i >= 0; i--)
+        {
+            if (popupList[i] == null)
+                continue;
+            ResourceMgr.Instance.DestroyAsset(popupList[i].gameObject);
+        }
+        popupList.Clear();
+    }
+
+    //private UIBuyEquip buyEquip;
+
+    //public void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.B))
+    //    {
+    //        buyEquip = OpenUI_(UIBuyEquip.ViewName) as UIBuyEquip;
+    //    }
+    //}
+
 }

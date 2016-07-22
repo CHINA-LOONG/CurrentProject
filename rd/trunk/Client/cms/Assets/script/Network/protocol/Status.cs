@@ -36,7 +36,10 @@ namespace PB
       INSTANCE_ERROR = 393216,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MAIL_ERROR", Value=458752)]
-      MAIL_ERROR = 458752
+      MAIL_ERROR = 458752,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_ERROR", Value=524288)]
+      ALLIANCE_ERROR = 524288
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"error")]
@@ -216,6 +219,37 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"MAIL_GOLD_FULL", Value=458756)]
       MAIL_GOLD_FULL = 458756
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"allianceError")]
+    public enum allianceError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LEVEL_NOT_ENOUGH", Value=524289)]
+      ALLIANCE_LEVEL_NOT_ENOUGH = 524289,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_ALREADY_IN", Value=524290)]
+      ALLIANCE_ALREADY_IN = 524290,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NAME_ERROR", Value=524291)]
+      ALLIANCE_NAME_ERROR = 524291,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NAME_EXIST", Value=524292)]
+      ALLIANCE_NAME_EXIST = 524292
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"shopError")]
+    public enum shopError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_REFRESH_TIMEOUT", Value=589825)]
+      SHOP_REFRESH_TIMEOUT = 589825,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_ITEM_ALREADY_BUY", Value=589826)]
+      SHOP_ITEM_ALREADY_BUY = 589826,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_REFRESH_MAX_COUNT", Value=589827)]
+      SHOP_REFRESH_MAX_COUNT = 589827
     }
   
 }

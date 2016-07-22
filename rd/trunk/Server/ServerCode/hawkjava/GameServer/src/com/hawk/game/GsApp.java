@@ -31,6 +31,8 @@ import com.hawk.game.callback.ShutdownCallback;
 import com.hawk.game.config.GrayPuidCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.manager.ImManager;
+import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
@@ -191,6 +193,10 @@ public class GsApp extends HawkApp {
 					GsConfig.getInstance().getEmailPwd());
 		}
 
+		// 公会初始化
+		//HawkLog.logPrintln("init alliance manager......");
+		//AllianceManager.getInstance().init();
+		
 		return true;
 	}
 
@@ -207,9 +213,12 @@ public class GsApp extends HawkApp {
 		long timeout = SysBasicCfg.getInstance().getPlayerCacheTime();
 		objMan.setObjTimeout(timeout);
 
-		// 创建全局管理器, 并注册应用对象
+		// 创建全局管理区, 并注册应用对象
 		objMan = createObjMan(GsConst.ObjType.MANAGER);
+		// 应用管理器
 		objMan.allocObject(getXid(), this);
+		// IM管理器
+		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.IM));
 
 		return true;
 	}
@@ -225,13 +234,6 @@ public class GsApp extends HawkApp {
 		}
 
 		if (super.onTick()) {
-			// 数据上报
-			try {
-				HawkReportService.getInstance().onTick();
-			} catch (Exception e) {
-				HawkException.catchException(e);
-			}
-
 			// 显示服务器信息
 			ServerData.getInstance().showServerInfo();
 			return true;
@@ -267,7 +269,9 @@ public class GsApp extends HawkApp {
 		HawkAppObj appObj = null;
 		// 创建管理器
 		if (xid.getType() == GsConst.ObjType.MANAGER) {
-
+			if (xid.getId() == GsConst.ObjId.IM) {
+				appObj = new ImManager(xid);
+			}
 		} else if (xid.getType() == GsConst.ObjType.PLAYER) {
 			appObj = new Player(xid);
 		}
@@ -417,12 +421,9 @@ public class GsApp extends HawkApp {
 		int grayState = GsConfig.getInstance().getGrayState();
 		// 灰度状态下, 限制灰度账号
 		if (grayState > 0) {
-			GrayPuidCfg grayPuid = HawkConfigManager.getInstance()
-					.getConfigByKey(GrayPuidCfg.class, puid);
+			GrayPuidCfg grayPuid = HawkConfigManager.getInstance().getConfigByKey(GrayPuidCfg.class, puid);
 			if (grayPuid == null) {
-				session.sendProtocol(ProtoUtil.genErrorProtocol(
-						HS.code.LOGIN_C_VALUE,
-						Status.error.SERVER_GRAY_STATE_VALUE, 1));
+				session.sendProtocol(ProtoUtil.genErrorProtocol(HS.code.LOGIN_C_VALUE, Status.error.SERVER_GRAY_STATE_VALUE, 1));
 				return false;
 			}
 		}

@@ -13,10 +13,13 @@ import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.GemInfo;
+import com.hawk.game.manager.ImManager.ImMsg;
 import com.hawk.game.protocol.Attribute.Attr;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Equip.EquipInfo;
 import com.hawk.game.protocol.Equip.GemPunch;
+import com.hawk.game.protocol.Im.HSImMsg;
+import com.hawk.game.protocol.Im.HSImPush;
 import com.hawk.game.protocol.Item.ItemInfo;
 import com.hawk.game.protocol.Mail.HSMail;
 import com.hawk.game.protocol.Monster.HSMonster;
@@ -153,6 +156,26 @@ public class BuilderUtil {
 		builder.setContent(mailEntity.getContent());
 		AwardItems convetor = AwardItems.valueOf(mailEntity.getRewardList());
 		builder.addAllReward(convetor.getBuilder().getRewardItemsList());
+		return builder;
+	}
+
+	public static HSImMsg.Builder genImMsgBuilder(ImMsg imMsg, String language) {
+		HSImMsg.Builder builder = HSImMsg.newBuilder();
+		builder.setType(imMsg.type);
+		builder.setChannel(imMsg.channel);
+		builder.setSenderId(imMsg.senderId);
+		builder.setOrigText(imMsg.origText);
+
+		if (imMsg.senderName != null) {
+			builder.setSenderName(imMsg.senderName);
+		}
+
+		if (imMsg.transText != null) {
+			String transMsg = imMsg.transText.get(language);
+			if (transMsg != null) {
+				builder.setTransText(transMsg);
+			}
+		}
 		return builder;
 	}
 }

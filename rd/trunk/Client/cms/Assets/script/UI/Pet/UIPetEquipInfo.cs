@@ -35,12 +35,12 @@ public class UIPetEquipInfo : PetDetailRightBase,IEquipCallBack
     //强化
     public void Reinforced(EquipData data)
     {
-        //TODO:
+        ParentNode.ReloadRigthData(PetViewConst.UIPetEquipInlayAssetName, new UIPetInlayParam() { equip = data, tabIndex = 0, selIndex = -1 });
     }
     //镶嵌
     public void Inlay(EquipData data)
     {
-        //TODO:
+        ParentNode.ReloadRigthData(PetViewConst.UIPetEquipInlayAssetName, new UIPetInlayParam() { equip = data, tabIndex = 1, selIndex = -1 });
     }
     //卸载
     public void Unload()
@@ -51,6 +51,6 @@ public class UIPetEquipInfo : PetDetailRightBase,IEquipCallBack
     //打开列表
     public void Replacement(GameUnit unit, int equipPart)
     {
-
+        ParentNode.ReloadRigthData(PetViewConst.UIPetEquipListAssetName);
     }
 }

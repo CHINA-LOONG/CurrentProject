@@ -864,6 +864,7 @@ MonoBehaviour:
   nextButton: {fileID: 11438120}
   leftView: {fileID: 11484238}
   rightView: {fileID: 136046}
+  uiEquipPopup: {fileID: 0}
 --- !u!114 &11400772
 MonoBehaviour:
   m_ObjectHideFlags: 1

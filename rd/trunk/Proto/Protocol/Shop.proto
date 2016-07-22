@@ -1,0 +1,56 @@
+option java_package = "com.hawk.game.protocol";
+
+// ------------------------------------------------------- message -----------------------------------------------------
+
+message ShopItem
+{
+	required int32  type = 1;
+	required string itemId = 2;//配置id
+	required int32  count = 3;//物品数量
+	optional int32  stage = 4;// 品级
+	optional int32  level = 5;// 级别
+	required int32  slot = 6;//位置
+	required bool   hasBuy = 7;//是否已经购买
+}
+
+message ShopData
+{
+	required int32 type = 1;
+	required int32 shopId = 2;
+	repeated ShopItem itemInfos = 3;
+}
+
+// ------------------------------------------------------- protocol-----------------------------------------------------
+
+message HSShopDataSyn
+{
+	required int32 type   = 1;
+}
+
+message HSShopDataSynRet
+{
+	required ShopData shopData = 1;
+}
+
+message HSShopRefresh
+{
+	required int32 type   = 1;
+	required int32 shopId = 2;
+}
+
+message HSShopRefreshRet
+{
+	required ShopData shopData = 1;
+}
+
+message HSShopItemBuy
+{
+	required int32 type = 1;
+	required int32 slot = 2;
+	required int32 shopId = 3;
+}
+
+message HSShopItemBuyRet
+{
+	
+}

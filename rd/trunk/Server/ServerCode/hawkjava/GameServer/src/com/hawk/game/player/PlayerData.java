@@ -1,8 +1,6 @@
 package com.hawk.game.player;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -16,14 +14,16 @@ import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
+import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.protocol.Equip.HSEquipInfoSync;
+import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
 import com.hawk.game.protocol.Mail.HSMailInfoSync;
 import com.hawk.game.protocol.Monster.HSMonsterInfoSync;
 import com.hawk.game.protocol.Player.HSPlayerInfoSync;
-import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.Quest.HSQuestInfoSync;
 import com.hawk.game.util.BuilderUtil;
@@ -58,17 +58,17 @@ public class PlayerData {
 	/**
 	 * 怪的基础数据
 	 */
-	private Map<Integer, MonsterEntity> monsterEntityMap = new HashMap<>();
+	private Map<Integer, MonsterEntity> monsterEntityMap = null;
 	
 	/**
 	 * 物品列表
 	 */
-	private List<ItemEntity> itemEntityList = new ArrayList<>();
+	private List<ItemEntity> itemEntityList = null;
 
 	/**
 	 * 装备列表
 	 */
-	private List<EquipEntity> equipEntityList = new ArrayList<>();
+	private List<EquipEntity> equipEntityList = null;
 
 	/**
 	 * 穿戴装备列表
@@ -78,13 +78,22 @@ public class PlayerData {
 	/**
 	 * 邮件列表
 	 */
-	private List<MailEntity> mailEntityList = new ArrayList<>();
+	private List<MailEntity> mailEntityList = null;
 
 	/**
 	 * 任务列表
 	 */
 	private Map<Integer, HSQuest> questMap = new HashMap<>();
+
+	/**
+	 * 角色商城数据
+	 */
+	private ShopEntity shopEntity = null;
 	
+	/**
+	 * 公会基本信息
+	 */
+	private PlayerAllianceEntity playerAllianceEntity = null;
 	/**
 	 * 构造函数
 	 * 
@@ -183,6 +192,24 @@ public class PlayerData {
 		this.monsterEntityMap.clear();
 	}
 
+	/**
+	 * 获取商店实体对象
+	 * @return
+	 */
+	public ShopEntity getShopEntity() {
+		return shopEntity;
+	}
+	
+	/**
+	 * 获取玩家公会实体
+	 * 
+	 * @return
+	 */
+	public PlayerAllianceEntity getPlayerAllianceEntity() {
+		return playerAllianceEntity;
+	}
+
+	
 	/**
 	 * 获取当前角色的统计数据实体
 	 */
@@ -555,12 +582,14 @@ public class PlayerData {
 	 * @return
 	 */
 	public void loadAllMonster() {
-		monsterEntityMap.clear();
-		List<MonsterEntity> resultList = HawkDBManager.getInstance().query("from MonsterEntity where playerId = ? and invalid = 0", getId());
-		if (resultList != null && resultList.size() > 0) {
-			for (MonsterEntity monsterEntity : resultList) {
-				monsterEntity.decode();
-				monsterEntityMap.put(monsterEntity.getId(), monsterEntity);
+		if (monsterEntityMap == null) {
+			monsterEntityMap = new HashMap<>();
+			List<MonsterEntity> resultList = HawkDBManager.getInstance().query("from MonsterEntity where playerId = ? and invalid = 0", getId());
+			if (resultList != null && resultList.size() > 0) {
+				for (MonsterEntity monsterEntity : resultList) {
+					monsterEntity.decode();
+					monsterEntityMap.put(monsterEntity.getId(), monsterEntity);
+				}
 			}
 		}
 	}
@@ -571,13 +600,13 @@ public class PlayerData {
 	 * @return
 	 */
 	public void loadAllItem() {
-		itemEntityList.clear();
-		List<ItemEntity> resultList = HawkDBManager.getInstance().query("from ItemEntity where playerId = ? and invalid = 0 order by id asc", getId());
-		if (resultList != null && resultList.size() > 0) {
-			for (ItemEntity itemEntity : resultList) {
-				itemEntity.decode();
+		if (itemEntityList == null) {
+			itemEntityList = HawkDBManager.getInstance().query("from ItemEntity where playerId = ? and invalid = 0 order by id asc", getId());
+			if (itemEntityList.size() > 0) {
+				for (ItemEntity itemEntity : itemEntityList) {
+					itemEntity.decode();
+				}
 			}
-			itemEntityList = resultList;
 		}
 	}
 
@@ -587,13 +616,13 @@ public class PlayerData {
 	 * @return
 	 */
 	public void loadAllEquip() {
-		equipEntityList.clear();
-		List<EquipEntity> resultList = HawkDBManager.getInstance().query("from EquipEntity where playerId = ? and invalid = 0 order by id asc", getId());
-		if (resultList != null && resultList.size() > 0) {
-			for (EquipEntity equipEntity : resultList) {
-				equipEntity.decode();
-			}
-			equipEntityList = resultList;
+		if (equipEntityList == null) {
+			equipEntityList = HawkDBManager.getInstance().query("from EquipEntity where playerId = ? and invalid = 0 order by id asc", getId());
+			if (equipEntityList.size() > 0) {
+				for (EquipEntity equipEntity : equipEntityList) {
+					equipEntity.decode();
+				}
+			}	
 		}
 	}
 
@@ -601,16 +630,56 @@ public class PlayerData {
 	 * 加载邮件信息
 	 */
 	public void loadAllMail() {
-		mailEntityList.clear();
-		List<MailEntity> resultList = HawkDBManager.getInstance().query("from MailEntity where receiverId = ? and invalid = 0 order by id asc", getId());
-		if (resultList != null && resultList.size() > 0) {
-			for (MailEntity mailEntity : resultList) {
-				mailEntity.decode();
+		if (mailEntityList == null) {
+			mailEntityList = HawkDBManager.getInstance().query("from MailEntity where receiverId = ? and invalid = 0 order by id asc", getId());
+			if (mailEntityList.size() > 0) {
+				for (MailEntity mailEntity : mailEntityList) {
+					mailEntity.decode();
+				}
 			}
-			mailEntityList = resultList;
-		}
+		}	
 	}
-
+	
+	/**
+	 * 加载角色商城
+	 * 
+	 * @param puid
+	 */
+	public ShopEntity loadShopData() {
+		if (this.shopEntity == null) {
+			List<ShopEntity> shopEntities = HawkDBManager.getInstance().query("from ShopEntity where playerId = ? and invalid = 0", playerEntity.getId());
+			if (shopEntities != null && shopEntities.size() > 0) {
+				shopEntity = shopEntities.get(0);
+				shopEntity.decode();
+			} else {
+				shopEntity= new ShopEntity();
+				shopEntity.setPlayerId(player.getId());
+				HawkDBManager.getInstance().create(shopEntity);
+			}
+		}
+		return this.shopEntity;
+	}
+	
+	/**
+	 * 加载公会个人信息
+	 * 
+	 * @return
+	 */
+	public PlayerAllianceEntity loadPlayerAlliance() {
+		if (playerAllianceEntity == null) {
+			List<PlayerAllianceEntity> playerEntitys = HawkDBManager.getInstance().query("from PlayerAllianceEntity where playerId = ? and invalid = 0", playerEntity.getId());
+			if (playerEntitys != null && playerEntitys.size() > 0) {
+				playerAllianceEntity = playerEntitys.get(0);
+			}
+			if (playerAllianceEntity == null) {
+				playerAllianceEntity = new PlayerAllianceEntity();
+				playerAllianceEntity.setPlayerId(playerEntity.getId());
+				HawkDBManager.getInstance().create(playerAllianceEntity);
+			}
+		}
+		return playerAllianceEntity;
+	}
+	
 	/**********************************************************************************************************
 	 * 数据同步区
 	 **********************************************************************************************************/

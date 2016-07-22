@@ -120,7 +120,7 @@ public class GmService extends GameService {
 
 				if (objBase != null) {
 					Player player = (Player) objBase.getImpl();
-					
+
 					// 设置玩家puid
 					player.getPlayerData().setPuid(puid);
 

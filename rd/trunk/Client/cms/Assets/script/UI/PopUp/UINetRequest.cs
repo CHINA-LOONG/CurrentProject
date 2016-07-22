@@ -6,17 +6,29 @@ public class UINetRequest : UIBase
 {
 
 	public static string ViewName = "UINetRequest";
+    public static UINetRequest Inst = null;
 
 	public Button closeButton;
 
 	public static void Open()
 	{
-		UIMgr.Instance.OpenUI_(UINetRequest.ViewName);
+        if (Inst != null)
+        {
+            Inst.gameObject.SetActive(true);
+        }
+        else
+        {
+            Inst = UIMgr.Instance.OpenUI_(UINetRequest.ViewName) as UINetRequest;
+        }
 	}
 
 	public static void Close()
 	{
-		UIMgr.Instance.CloseUI_(UINetRequest.ViewName);
+        if (Inst != null)
+        {
+            Inst.gameObject.SetActive(false);
+        }
+		//UIMgr.Instance.CloseUI_(UINetRequest.ViewName);
 	}
 
     public override void Init()

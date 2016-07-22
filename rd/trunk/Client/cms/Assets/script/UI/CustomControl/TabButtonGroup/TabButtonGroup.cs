@@ -16,11 +16,6 @@ public class TabButtonGroup : MonoBehaviour {
 
 	// Use this for initialization
 
-	void Awake()
-	{
-
-	}
-
 	public void InitWithDelegate( TabButtonDelegate pDelegate)
 	{
 		TabButton subButton = null;
@@ -36,8 +31,8 @@ public class TabButtonGroup : MonoBehaviour {
 
 	public void OnChangeItem(int itemIndex)
 	{
-		if (itemIndex == selectedIndex)
-			return;
+        //if (itemIndex == selectedIndex)
+        //    return;
 		if (itemIndex < 0 || itemIndex > tabButtonList.Count - 1)
 			return;
 		tabButtonList [selectedIndex].SetIsOn (false);

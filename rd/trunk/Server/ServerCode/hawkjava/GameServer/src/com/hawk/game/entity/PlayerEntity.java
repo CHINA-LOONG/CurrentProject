@@ -17,6 +17,7 @@ import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.google.gson.reflect.TypeToken;
+import com.hawk.game.util.GsConst;
 
 /**
  * 玩家基础数据
@@ -75,6 +76,9 @@ public class PlayerEntity extends HawkDBEntity {
 	
 	@Column(name = "battleMonster", nullable = false)
 	protected String battleMonsterJson = "";
+	
+	@Column(name = "language", nullable = false)
+	protected String language = GsConst.DEFAULT_LANGUAGE;
 	
 	@Column(name = "device", nullable = false)
 	protected String device = "";
@@ -192,11 +196,19 @@ public class PlayerEntity extends HawkDBEntity {
 	public List<Integer> getBattleMonsterList() {
 		return battleMonsterList;
 	}
-	
+
 	public void setBattleMonsterList(List<Integer> list) {
 		this.battleMonsterList = list;
 	}
-	
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
 	public int getRecharge() {
 		return recharge;
 	}

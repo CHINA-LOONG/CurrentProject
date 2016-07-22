@@ -23,11 +23,21 @@ public class GsConst {
 	// 最大品级数
 	public static final int EQUIP_MAX_STAGE = 6;
 	// 最大级别数
-	public static final int EQUIP_MAX_LEVEL = 10;
+	public static final int EQUIP_MAX_LEVEL = 9;
 	// 宝石最大类别数
 	public static final int GEM_MAX_TYPE = 3;
 	// 宝石镶嵌占位
 	public static final String EQUIP_GEM_NONE = "0";
+	// 翻译系统appId
+	//public static final String TRANSLATE_APP_ID = "hawk";
+	// 翻译系统模式
+	//public static final String TRANSLATE_MODE = "s2s";
+	// 翻译系统cache更新时间间隔秒数
+	//public static final int TRANSLATE_CACHE_TIME = 10 * 60;
+	// 没有语言
+	public static final String TRANSLATE_LANGUAGE_NULL = "";
+	// 默认语言
+	public static final String DEFAULT_LANGUAGE = "en";
 	
 	/**
 	 * 对象类型
@@ -48,7 +58,9 @@ public class GsConst {
 	 */
 	public static class ObjId {
 		// 应用程序
-		public static final int APP = 100;
+		public static final int APP = 1;
+		// 即时通讯
+		public static final int IM = 2;
 	}
 
 	/**
@@ -90,7 +102,13 @@ public class GsConst {
 		public static final int QUEST_MODULE = 7;
 		// 邮件模块
 		public static final int MAIL_MODULE = 8;
-		
+		// IM模块
+		public static final int IM_MODULE = 9;
+		// 商店模块
+		public static final int SHOP_MODULE = 10;
+		// 公会模块
+		public static final int ALLIANCE_MODULE = 11;
+
 		// 空闲模块(保证在最后)
 		public static final int IDLE_MODULE = 100;
 	}
@@ -109,7 +127,16 @@ public class GsConst {
 		public static final int DAILY_PERS_REFRESH = 101;
 //		public static final int SIGN_IN_PERS_REFRESH = 102;
 //		public static final int INSTANCE_PERS_REFRESH = 103;
-		public static final int PERS_REFRESH_END = 102;
+
+		public static final int SHOP_REFRESH_TIME_FIRST = 104;
+		public static final int SHOP_REFRESH_TIME_SECOND = 105;
+		public static final int SHOP_REFRESH_TIME_THIRD = 106;
+
+		public static final int ALLIANCE_REFRESH_TIME_FIRST = 107;
+		public static final int ALLIANCE_REFRESH_TIME_SECOND = 108;
+		public static final int ALLIANCE_REFRESH_TIME_THIRD = 109;
+
+		public static final int PERS_REFRESH_END = 110;
 	}
 
 	/**
@@ -132,7 +159,7 @@ public class GsConst {
 		public static final int PARSE_MONSTER_STAGE = 1;	
 		public static final int PARSE_EQUIP_ATTR = 2;	
 	}
-	
+
 	/**
 	 * equip 品级对应的打孔数量
 	 */
@@ -156,7 +183,7 @@ public class GsConst {
 			return punchCount;
 		}
 	}
-	
+
 	/**
 	 * item 消耗检查内容
 	 */
@@ -221,5 +248,14 @@ public class GsConst {
 	public static class InstanceDifficulty {
 		public static final int NORMAL_INSTANCE = 1;
 		public static final int HARD_INSTANCE = 2;
+	}
+
+	public static class Alliance {
+		/*
+		 * 0:普通成员, 1:副会长, 2:会长
+		 */
+		public static final int ALLIANCE_POS_COMMON = 0;
+		public static final int ALLIANCE_POS_COPYMAIN = 1;
+		public static final int ALLIANCE_POS_MAIN = 2;
 	}
 }

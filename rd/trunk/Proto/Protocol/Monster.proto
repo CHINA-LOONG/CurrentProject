@@ -1,5 +1,6 @@
 import "Protocol/Const.proto";
 import "Protocol/Skill.proto";
+import "Protocol/Equip.proto";
 
 option java_package = "com.hawk.game.protocol";
 
@@ -23,6 +24,7 @@ message HSMonster
 	required int32 lazyExp = 7;
 	required int32 disposition = 8;
 	repeated HSSkill skill = 9;
+	repeated EquipInfo equipInfos = 10;
 }
 
 // protocol-----------------------------------------------------

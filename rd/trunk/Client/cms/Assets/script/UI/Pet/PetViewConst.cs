@@ -21,7 +21,8 @@ public class PetViewConst{
         STAGE_PANEL_TYPE,
         ADVANCE_PANEL_TYPE,
         EQUIP_INFO_TYPE,
-        EQUIP_LIST_TYPE      
+        EQUIP_LIST_TYPE,
+        EQUIP_INLAY_TYPE
     }
 
     public enum SkillIndex
@@ -60,6 +61,7 @@ public class PetViewConst{
     public const string UIPetTypeBtnAssetName = "UIPetTypeBtn";
     public const string UIPetEquipInfoAssetName = "UIPetEquipInfo";
     public const string UIPetEquipListAssetName = "UIPetEquipList";
+    public const string UIPetEquipInlayAssetName = "UIPetEquipInlay";
 
 
     public static string ReloadPetListNotify = "reloadPetListNotify";

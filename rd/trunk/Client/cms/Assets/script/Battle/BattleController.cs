@@ -68,7 +68,7 @@ public class BattleController : MonoBehaviour
     public bool processStart;
 
 	private	Dictionary<string,Transform> cameraNodeDic = new Dictionary<string, Transform>();
-
+    private EnterInstanceParam curInstanceParam;
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
     public void Init()
@@ -198,22 +198,64 @@ public class BattleController : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void StartBattle(EnterInstanceParam enterParam)
+    public void StartBattlePrepare(EnterInstanceParam enterParam)
     {
+        curInstanceParam = enterParam;
+        //add player to load
+        PbUnit pb = null;
+        Dictionary<int, PbUnit> unitPbList = GameDataMgr.Instance.PlayerDataAttr.unitPbList;
+        int count = enterParam.playerTeam.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            if (unitPbList.TryGetValue(enterParam.playerTeam[i], out pb))
+            {
+                AddUnitDataRequestInternal(pb.id);
+            }
+        }
+        //add enemy to load
+        curInstance = enterParam.instanceData;
+        instanceData = StaticDataMgr.Instance.GetInstanceData(enterParam.instanceData.instanceId);
+        count = curInstance.battle.Count;
+        for (int index = 0; index < count; ++index)
+        {
+            PB.HSBattle curBattle = curInstance.battle[index];
+            int monsterCount = curBattle.monsterCfgId.Count;
+            for (int i = 0; i < curBattle.monsterCfgId.Count; ++i)
+            {
+                AddUnitDataRequestInternal(curBattle.monsterCfgId[i]);
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    private void AddUnitDataRequestInternal(string assetID)
+    {
+        ResourceMgr resMgr = ResourceMgr.Instance;
+        UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(assetID);
+        if (unitRowData != null)
+        {
+            resMgr.AddAssetRequest(new AssetRequest(unitRowData.assetID));
+        }
+        //TODO:add spell request
+    }
+    //---------------------------------------------------------------------------------------------
+    public void StartBattle()
+    {
+        UIMgr.Instance.CloseUI_(UILoading.ViewName);
+        ResourceMgr.Instance.UnloadCachedBundles(false);
         curProcessIndex = 0;
         processStart = false;
         battleStartID = BattleConst.enemyStartID;
-        curInstance = enterParam.instanceData;
+        curInstance = curInstanceParam.instanceData;
         //battleType = (BattleType)proto.battleType;
-        instanceData = StaticDataMgr.Instance.GetInstanceData(enterParam.instanceData.instanceId);
-        maxProcessIndex = enterParam.instanceData.battle.Count;
-        instanceStar = InstanceMapService.Instance.GetRuntimeInstance(enterParam.instanceData.instanceId).star;
+        instanceData = StaticDataMgr.Instance.GetInstanceData(curInstanceParam.instanceData.instanceId);
+        maxProcessIndex = curInstanceParam.instanceData.battle.Count;
+        instanceStar = InstanceMapService.Instance.GetRuntimeInstance(curInstanceParam.instanceData.instanceId).star;
         if (!InitVictorMethod())
             return;
         AudioSystemMgr.Instance.PlayMusic(instanceData.instanceProtoData.backgroundmusic);
         //设置battlegroup 并且创建模型
         //battleGroup.SetEnemyList(proto.enemyList);
-        GameDataMgr.Instance.PlayerDataAttr.SetMainUnits(enterParam.playerTeam);
+        GameDataMgr.Instance.PlayerDataAttr.SetMainUnits(curInstanceParam.playerTeam);
 
         //加载场景
         LoadBattleScene(instanceData.instanceProtoData.sceneID);
@@ -342,8 +384,7 @@ public class BattleController : MonoBehaviour
 
         process.Clear();
         GameMain.Instance.ChangeModule<BuildModule>();
-        UIMgr.Instance.DestroyUI(UIBattle.ViewName);
-
+        UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UIBattle.ViewName));
         ResourceMgr.Instance.LoadLevelAsyn("firstScene", false, null);
     }
     //---------------------------------------------------------------------------------------------
@@ -692,6 +733,7 @@ public class BattleController : MonoBehaviour
 		MagicDazhaoController.Instance.ClearAll ();
 		PhyDazhaoController.Instance.ClearAll ();
 		process.HideFireFocus();
+        curInstanceParam = null;
     }
     //---------------------------------------------------------------------------------------------
     IEnumerator ProcessBattleOver(bool isSuccess)

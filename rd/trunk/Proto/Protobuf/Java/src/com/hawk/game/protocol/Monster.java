@@ -686,6 +686,31 @@ public final class Monster {
      */
     com.hawk.game.protocol.Skill.HSSkillOrBuilder getSkillOrBuilder(
         int index);
+
+    // repeated .EquipInfo equipInfos = 10;
+    /**
+     * <code>repeated .EquipInfo equipInfos = 10;</code>
+     */
+    java.util.List<com.hawk.game.protocol.Equip.EquipInfo> 
+        getEquipInfosList();
+    /**
+     * <code>repeated .EquipInfo equipInfos = 10;</code>
+     */
+    com.hawk.game.protocol.Equip.EquipInfo getEquipInfos(int index);
+    /**
+     * <code>repeated .EquipInfo equipInfos = 10;</code>
+     */
+    int getEquipInfosCount();
+    /**
+     * <code>repeated .EquipInfo equipInfos = 10;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Equip.EquipInfoOrBuilder> 
+        getEquipInfosOrBuilderList();
+    /**
+     * <code>repeated .EquipInfo equipInfos = 10;</code>
+     */
+    com.hawk.game.protocol.Equip.EquipInfoOrBuilder getEquipInfosOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code HSMonster}
@@ -786,6 +811,14 @@ public final class Monster {
               skill_.add(input.readMessage(com.hawk.game.protocol.Skill.HSSkill.PARSER, extensionRegistry));
               break;
             }
+            case 82: {
+              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+                equipInfos_ = new java.util.ArrayList<com.hawk.game.protocol.Equip.EquipInfo>();
+                mutable_bitField0_ |= 0x00000200;
+              }
+              equipInfos_.add(input.readMessage(com.hawk.game.protocol.Equip.EquipInfo.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -796,6 +829,9 @@ public final class Monster {
       } finally {
         if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
           skill_ = java.util.Collections.unmodifiableList(skill_);
+        }
+        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+          equipInfos_ = java.util.Collections.unmodifiableList(equipInfos_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1020,6 +1056,42 @@ public final class Monster {
       return skill_.get(index);
     }
 
+    // repeated .EquipInfo equipInfos = 10;
+    public static final int EQUIPINFOS_FIELD_NUMBER = 10;
+    private java.util.List<com.hawk.game.protocol.Equip.EquipInfo> equipInfos_;
+    /**
+     * <code>repeated .EquipInfo equipInfos = 10;</code>
+     */
+    public java.util.List<com.hawk.game.protocol.Equip.EquipInfo> getEquipInfosList() {
+      return equipInfos_;
+    }
+    /**
+     * <code>repeated .EquipInfo equipInfos = 10;</code>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Equip.EquipInfoOrBuilder> 
+        getEquipInfosOrBuilderList() {
+      return equipInfos_;
+    }
+    /**
+     * <code>repeated .EquipInfo equipInfos = 10;</code>
+     */
+    public int getEquipInfosCount() {
+      return equipInfos_.size();
+    }
+    /**
+     * <code>repeated .EquipInfo equipInfos = 10;</code>
+     */
+    public com.hawk.game.protocol.Equip.EquipInfo getEquipInfos(int index) {
+      return equipInfos_.get(index);
+    }
+    /**
+     * <code>repeated .EquipInfo equipInfos = 10;</code>
+     */
+    public com.hawk.game.protocol.Equip.EquipInfoOrBuilder getEquipInfosOrBuilder(
+        int index) {
+      return equipInfos_.get(index);
+    }
+
     private void initFields() {
       monsterId_ = 0;
       cfgId_ = "";
@@ -1030,6 +1102,7 @@ public final class Monster {
       lazyExp_ = 0;
       disposition_ = 0;
       skill_ = java.util.Collections.emptyList();
+      equipInfos_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1074,6 +1147,12 @@ public final class Monster {
           return false;
         }
       }
+      for (int i = 0; i < getEquipInfosCount(); i++) {
+        if (!getEquipInfos(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -1107,6 +1186,9 @@ public final class Monster {
       }
       for (int i = 0; i < skill_.size(); i++) {
         output.writeMessage(9, skill_.get(i));
+      }
+      for (int i = 0; i < equipInfos_.size(); i++) {
+        output.writeMessage(10, equipInfos_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1152,6 +1234,10 @@ public final class Monster {
       for (int i = 0; i < skill_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, skill_.get(i));
+      }
+      for (int i = 0; i < equipInfos_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, equipInfos_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1262,6 +1348,7 @@ public final class Monster {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getSkillFieldBuilder();
+          getEquipInfosFieldBuilder();
         }
       }
       private static Builder create() {
@@ -1291,6 +1378,12 @@ public final class Monster {
           bitField0_ = (bitField0_ & ~0x00000100);
         } else {
           skillBuilder_.clear();
+        }
+        if (equipInfosBuilder_ == null) {
+          equipInfos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000200);
+        } else {
+          equipInfosBuilder_.clear();
         }
         return this;
       }
@@ -1361,6 +1454,15 @@ public final class Monster {
         } else {
           result.skill_ = skillBuilder_.build();
         }
+        if (equipInfosBuilder_ == null) {
+          if (((bitField0_ & 0x00000200) == 0x00000200)) {
+            equipInfos_ = java.util.Collections.unmodifiableList(equipInfos_);
+            bitField0_ = (bitField0_ & ~0x00000200);
+          }
+          result.equipInfos_ = equipInfos_;
+        } else {
+          result.equipInfos_ = equipInfosBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1429,6 +1531,32 @@ public final class Monster {
             }
           }
         }
+        if (equipInfosBuilder_ == null) {
+          if (!other.equipInfos_.isEmpty()) {
+            if (equipInfos_.isEmpty()) {
+              equipInfos_ = other.equipInfos_;
+              bitField0_ = (bitField0_ & ~0x00000200);
+            } else {
+              ensureEquipInfosIsMutable();
+              equipInfos_.addAll(other.equipInfos_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.equipInfos_.isEmpty()) {
+            if (equipInfosBuilder_.isEmpty()) {
+              equipInfosBuilder_.dispose();
+              equipInfosBuilder_ = null;
+              equipInfos_ = other.equipInfos_;
+              bitField0_ = (bitField0_ & ~0x00000200);
+              equipInfosBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getEquipInfosFieldBuilder() : null;
+            } else {
+              equipInfosBuilder_.addAllMessages(other.equipInfos_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1468,6 +1596,12 @@ public final class Monster {
         }
         for (int i = 0; i < getSkillCount(); i++) {
           if (!getSkill(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getEquipInfosCount(); i++) {
+          if (!getEquipInfos(i).isInitialized()) {
             
             return false;
           }
@@ -2037,6 +2171,246 @@ public final class Monster {
           skill_ = null;
         }
         return skillBuilder_;
+      }
+
+      // repeated .EquipInfo equipInfos = 10;
+      private java.util.List<com.hawk.game.protocol.Equip.EquipInfo> equipInfos_ =
+        java.util.Collections.emptyList();
+      private void ensureEquipInfosIsMutable() {
+        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
+          equipInfos_ = new java.util.ArrayList<com.hawk.game.protocol.Equip.EquipInfo>(equipInfos_);
+          bitField0_ |= 0x00000200;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Equip.EquipInfo, com.hawk.game.protocol.Equip.EquipInfo.Builder, com.hawk.game.protocol.Equip.EquipInfoOrBuilder> equipInfosBuilder_;
+
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Equip.EquipInfo> getEquipInfosList() {
+        if (equipInfosBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(equipInfos_);
+        } else {
+          return equipInfosBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public int getEquipInfosCount() {
+        if (equipInfosBuilder_ == null) {
+          return equipInfos_.size();
+        } else {
+          return equipInfosBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public com.hawk.game.protocol.Equip.EquipInfo getEquipInfos(int index) {
+        if (equipInfosBuilder_ == null) {
+          return equipInfos_.get(index);
+        } else {
+          return equipInfosBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public Builder setEquipInfos(
+          int index, com.hawk.game.protocol.Equip.EquipInfo value) {
+        if (equipInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEquipInfosIsMutable();
+          equipInfos_.set(index, value);
+          onChanged();
+        } else {
+          equipInfosBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public Builder setEquipInfos(
+          int index, com.hawk.game.protocol.Equip.EquipInfo.Builder builderForValue) {
+        if (equipInfosBuilder_ == null) {
+          ensureEquipInfosIsMutable();
+          equipInfos_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          equipInfosBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public Builder addEquipInfos(com.hawk.game.protocol.Equip.EquipInfo value) {
+        if (equipInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEquipInfosIsMutable();
+          equipInfos_.add(value);
+          onChanged();
+        } else {
+          equipInfosBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public Builder addEquipInfos(
+          int index, com.hawk.game.protocol.Equip.EquipInfo value) {
+        if (equipInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEquipInfosIsMutable();
+          equipInfos_.add(index, value);
+          onChanged();
+        } else {
+          equipInfosBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public Builder addEquipInfos(
+          com.hawk.game.protocol.Equip.EquipInfo.Builder builderForValue) {
+        if (equipInfosBuilder_ == null) {
+          ensureEquipInfosIsMutable();
+          equipInfos_.add(builderForValue.build());
+          onChanged();
+        } else {
+          equipInfosBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public Builder addEquipInfos(
+          int index, com.hawk.game.protocol.Equip.EquipInfo.Builder builderForValue) {
+        if (equipInfosBuilder_ == null) {
+          ensureEquipInfosIsMutable();
+          equipInfos_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          equipInfosBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public Builder addAllEquipInfos(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Equip.EquipInfo> values) {
+        if (equipInfosBuilder_ == null) {
+          ensureEquipInfosIsMutable();
+          super.addAll(values, equipInfos_);
+          onChanged();
+        } else {
+          equipInfosBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public Builder clearEquipInfos() {
+        if (equipInfosBuilder_ == null) {
+          equipInfos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000200);
+          onChanged();
+        } else {
+          equipInfosBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public Builder removeEquipInfos(int index) {
+        if (equipInfosBuilder_ == null) {
+          ensureEquipInfosIsMutable();
+          equipInfos_.remove(index);
+          onChanged();
+        } else {
+          equipInfosBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public com.hawk.game.protocol.Equip.EquipInfo.Builder getEquipInfosBuilder(
+          int index) {
+        return getEquipInfosFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public com.hawk.game.protocol.Equip.EquipInfoOrBuilder getEquipInfosOrBuilder(
+          int index) {
+        if (equipInfosBuilder_ == null) {
+          return equipInfos_.get(index);  } else {
+          return equipInfosBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Equip.EquipInfoOrBuilder> 
+           getEquipInfosOrBuilderList() {
+        if (equipInfosBuilder_ != null) {
+          return equipInfosBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(equipInfos_);
+        }
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public com.hawk.game.protocol.Equip.EquipInfo.Builder addEquipInfosBuilder() {
+        return getEquipInfosFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Equip.EquipInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public com.hawk.game.protocol.Equip.EquipInfo.Builder addEquipInfosBuilder(
+          int index) {
+        return getEquipInfosFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Equip.EquipInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .EquipInfo equipInfos = 10;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Equip.EquipInfo.Builder> 
+           getEquipInfosBuilderList() {
+        return getEquipInfosFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Equip.EquipInfo, com.hawk.game.protocol.Equip.EquipInfo.Builder, com.hawk.game.protocol.Equip.EquipInfoOrBuilder> 
+          getEquipInfosFieldBuilder() {
+        if (equipInfosBuilder_ == null) {
+          equipInfosBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Equip.EquipInfo, com.hawk.game.protocol.Equip.EquipInfo.Builder, com.hawk.game.protocol.Equip.EquipInfoOrBuilder>(
+                  equipInfos_,
+                  ((bitField0_ & 0x00000200) == 0x00000200),
+                  getParentForChildren(),
+                  isClean());
+          equipInfos_ = null;
+        }
+        return equipInfosBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:HSMonster)
@@ -9163,33 +9537,35 @@ public final class Monster {
   static {
     java.lang.String[] descriptorData = {
       "\n\026Protocol/Monster.proto\032\024Protocol/Const" +
-      ".proto\032\024Protocol/Skill.proto\"?\n\016SynMonst" +
-      "erAttr\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005level\030\002 \001(\005" +
-      "\022\013\n\003exp\030\003 \001(\005\"\245\001\n\tHSMonster\022\021\n\tmonsterId" +
-      "\030\001 \002(\005\022\r\n\005cfgId\030\002 \002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005" +
-      "level\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004lazy\030\006 \002(\005\022\017" +
-      "\n\007lazyExp\030\007 \002(\005\022\023\n\013disposition\030\010 \002(\005\022\027\n\005" +
-      "skill\030\t \003(\0132\010.HSSkill\"4\n\021HSMonsterInfoSy" +
-      "nc\022\037\n\013monsterInfo\030\001 \003(\0132\n.HSMonster\"W\n\014H" +
-      "SMonsterAdd\022\033\n\007monster\030\001 \002(\0132\n.HSMonster",
-      "\022*\n\006reason\030\002 \001(\0162\r.RewardReason:\013SYS_PRE" +
-      "SENT\"\205\001\n\016HSMonsterCatch\022\r\n\005cfgId\030\001 \002(\t\022\020" +
-      "\n\005stage\030\002 \001(\005:\0010\022\020\n\005level\030\003 \001(\005:\0011\022\017\n\004la" +
-      "zy\030\004 \001(\005:\0011\022\026\n\013disposition\030\005 \001(\005:\0011\022\027\n\005s" +
-      "kill\030\006 \003(\0132\010.HSSkill\"#\n\021HSMonsterCatchRe" +
-      "t\022\016\n\006status\030\001 \002(\005\"#\n\016HSMonsterBreak\022\021\n\tm" +
-      "onsterId\030\001 \002(\005\"6\n\021HSMonsterBreakRet\022\016\n\006s" +
-      "tatus\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\"9\n\rHSMons" +
-      "terFeed\022\021\n\tmonsterId\030\001 \002(\005\022\025\n\rfoodMonste" +
-      "rId\030\002 \002(\005\"h\n\020HSMonsterFeedRet\022\016\n\006status\030",
-      "\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\022\025\n\rfoodMonsterI" +
-      "d\030\003 \002(\005\022\013\n\003exp\030\004 \001(\005\022\r\n\005level\030\005 \001(\005\"6\n\020H" +
-      "SMonsterSkillUp\022\021\n\tmonsterId\030\001 \002(\005\022\017\n\007sk" +
-      "illId\030\002 \002(\t\"F\n\023HSMonsterSkillUpRet\022\022\n\nsk" +
-      "illPoint\030\001 \002(\005\022\033\n\023skillPointTimeStamp\030\002 " +
-      "\002(\005\"?\n\020HSMonsterStageUp\022\021\n\tmonsterId\030\001 \002" +
-      "(\005\022\030\n\020consumeMonsterId\030\002 \003(\005\"\025\n\023HSMonste" +
-      "rStageUpRetB\030\n\026com.hawk.game.protocol"
+      ".proto\032\024Protocol/Skill.proto\032\024Protocol/E" +
+      "quip.proto\"?\n\016SynMonsterAttr\022\021\n\tmonsterI" +
+      "d\030\001 \002(\005\022\r\n\005level\030\002 \001(\005\022\013\n\003exp\030\003 \001(\005\"\305\001\n\t" +
+      "HSMonster\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005cfgId\030\002 " +
+      "\002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003exp" +
+      "\030\005 \002(\005\022\014\n\004lazy\030\006 \002(\005\022\017\n\007lazyExp\030\007 \002(\005\022\023\n" +
+      "\013disposition\030\010 \002(\005\022\027\n\005skill\030\t \003(\0132\010.HSSk" +
+      "ill\022\036\n\nequipInfos\030\n \003(\0132\n.EquipInfo\"4\n\021H" +
+      "SMonsterInfoSync\022\037\n\013monsterInfo\030\001 \003(\0132\n.",
+      "HSMonster\"W\n\014HSMonsterAdd\022\033\n\007monster\030\001 \002" +
+      "(\0132\n.HSMonster\022*\n\006reason\030\002 \001(\0162\r.RewardR" +
+      "eason:\013SYS_PRESENT\"\205\001\n\016HSMonsterCatch\022\r\n" +
+      "\005cfgId\030\001 \002(\t\022\020\n\005stage\030\002 \001(\005:\0010\022\020\n\005level\030" +
+      "\003 \001(\005:\0011\022\017\n\004lazy\030\004 \001(\005:\0011\022\026\n\013disposition" +
+      "\030\005 \001(\005:\0011\022\027\n\005skill\030\006 \003(\0132\010.HSSkill\"#\n\021HS" +
+      "MonsterCatchRet\022\016\n\006status\030\001 \002(\005\"#\n\016HSMon" +
+      "sterBreak\022\021\n\tmonsterId\030\001 \002(\005\"6\n\021HSMonste" +
+      "rBreakRet\022\016\n\006status\030\001 \002(\005\022\021\n\tmonsterId\030\002" +
+      " \002(\005\"9\n\rHSMonsterFeed\022\021\n\tmonsterId\030\001 \002(\005",
+      "\022\025\n\rfoodMonsterId\030\002 \002(\005\"h\n\020HSMonsterFeed" +
+      "Ret\022\016\n\006status\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\022\025" +
+      "\n\rfoodMonsterId\030\003 \002(\005\022\013\n\003exp\030\004 \001(\005\022\r\n\005le" +
+      "vel\030\005 \001(\005\"6\n\020HSMonsterSkillUp\022\021\n\tmonster" +
+      "Id\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\t\"F\n\023HSMonsterSk" +
+      "illUpRet\022\022\n\nskillPoint\030\001 \002(\005\022\033\n\023skillPoi" +
+      "ntTimeStamp\030\002 \002(\005\"?\n\020HSMonsterStageUp\022\021\n" +
+      "\tmonsterId\030\001 \002(\005\022\030\n\020consumeMonsterId\030\002 \003" +
+      "(\005\"\025\n\023HSMonsterStageUpRetB\030\n\026com.hawk.ga" +
+      "me.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9207,7 +9583,7 @@ public final class Monster {
           internal_static_HSMonster_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonster_descriptor,
-              new java.lang.String[] { "MonsterId", "CfgId", "Stage", "Level", "Exp", "Lazy", "LazyExp", "Disposition", "Skill", });
+              new java.lang.String[] { "MonsterId", "CfgId", "Stage", "Level", "Exp", "Lazy", "LazyExp", "Disposition", "Skill", "EquipInfos", });
           internal_static_HSMonsterInfoSync_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSMonsterInfoSync_fieldAccessorTable = new
@@ -9288,6 +9664,7 @@ public final class Monster {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.hawk.game.protocol.Const.getDescriptor(),
           com.hawk.game.protocol.Skill.getDescriptor(),
+          com.hawk.game.protocol.Equip.getDescriptor(),
         }, assigner);
   }
 

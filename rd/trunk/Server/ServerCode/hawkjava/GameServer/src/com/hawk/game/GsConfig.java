@@ -65,6 +65,10 @@ public class GsConfig extends HawkAppCfg {
 	 * ip服务超时
 	 */
 	protected final int ipProxyTimeout;
+	/**
+	 * 是否开启翻译
+	 */
+	protected final boolean translate;
 
 	/**
 	 * 全局静态对象
@@ -96,6 +100,7 @@ public class GsConfig extends HawkAppCfg {
 		serviceDate = "20150101";
 		ipProxyAddr = "";
 		ipProxyTimeout = 1000;
+		translate = false;
 	}
 
 	public String getGameId() {
@@ -113,11 +118,11 @@ public class GsConfig extends HawkAppCfg {
 	public int getRegisterMaxSize() {
 		return registerMaxSize;
 	}
-	
+
 	public int getRoleMaxSize() {
 		return roleMaxSize;
 	}
-	
+
 	public int getGrayState() {
 		return grayState;
 	}
@@ -152,6 +157,10 @@ public class GsConfig extends HawkAppCfg {
 
 	public Date getServerOpenDate() {
 		return serverOpenDate;
+	}
+
+	public boolean isTranslate() {
+		return translate;
 	}
 
 	@Override

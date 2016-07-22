@@ -1,0 +1,43 @@
+option java_package = "com.hawk.game.protocol";
+
+// ------------------------------------------------------- message -----------------------------------------------------
+
+//公会成员信息
+message AllianceMember
+{
+	required int32  level = 1;//等级
+	required string  name = 2;//名字
+	required int32  battlePoint = 3;//战斗力
+	required int32  contribution = 4;//贡献值
+	required int32  postion = 5;//职位: 0:普通成员,2:会长,1:副会长
+	required int32  id = 6;//唯一ID
+	required bool hasReported = 7; // 今日是否已经签到
+}
+
+//返回的公会基础信息
+message AllianceInfo
+{
+	required int32  id = 1;//公会ID
+	required int32  level = 2;//等级
+	required int32  currentExp = 3;//当前经验
+	required int32  nextExp = 4;//升级经验
+	required int32  currentPop = 5;//当前人数
+	required int32  maxPop = 6;//最大人数
+	required string annoucement = 7; // 公会公告
+	required int32  battleLimit = 8; //战力限制条件
+	required int32  remGold = 9;//剩余钻石
+	required string name = 10; // 公会名称
+}
+
+// ------------------------------------------------------- protocol-----------------------------------------------------
+
+//公会创建
+message HSAllianceCreateC
+{
+	required string name = 1;//公会名字
+}
+
+message HSAllianceCreateS
+{
+	required AllianceInfo allianceInfo = 1;//公会信息
+}

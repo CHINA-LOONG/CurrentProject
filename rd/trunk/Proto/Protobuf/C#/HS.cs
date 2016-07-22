@@ -27,6 +27,14 @@ namespace PB
       ERROR_CODE = 4
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"gm")]
+    public enum gm
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GEN_TEST_ACCOUNT", Value=100)]
+      GEN_TEST_ACCOUNT = 100
+    }
+  
     [global::ProtoBuf.ProtoContract(Name=@"code")]
     public enum code
     {
@@ -70,8 +78,11 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INFO_SYNC_S", Value=1015)]
       QUEST_INFO_SYNC_S = 1015,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1016)]
-      ASSEMBLE_FINISH_S = 1016,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_INFO_SYNC_S", Value=1016)]
+      MAIL_INFO_SYNC_S = 1016,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ASSEMBLE_FINISH_S", Value=1017)]
+      ASSEMBLE_FINISH_S = 1017,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_CREATE_C", Value=1101)]
       PLAYER_CREATE_C = 1101,
@@ -105,6 +116,18 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_FEED_S", Value=2007)]
       MONSTER_FEED_S = 2007,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_SKILL_UP_C", Value=2008)]
+      MONSTER_SKILL_UP_C = 2008,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_SKILL_UP_S", Value=2009)]
+      MONSTER_SKILL_UP_S = 2009,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_STAGE_UP_C", Value=2010)]
+      MONSTER_STAGE_UP_C = 2010,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_STAGE_UP_S", Value=2011)]
+      MONSTER_STAGE_UP_S = 2011,
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ASSIST_C", Value=3001)]
       INSTANCE_ASSIST_C = 3001,
@@ -169,44 +192,62 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SELL_C", Value=4101)]
       EQUIP_SELL_C = 4101,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_BUY_C", Value=4102)]
-      EQUIP_BUY_C = 4102,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SELL_S", Value=4102)]
+      EQUIP_SELL_S = 4102,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_C", Value=4103)]
-      EQUIP_COMPOSE_C = 4103,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_BUY_C", Value=4103)]
+      EQUIP_BUY_C = 4103,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_S", Value=4104)]
-      EQUIP_COMPOSE_S = 4104,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_BUY_S", Value=4104)]
+      EQUIP_BUY_S = 4104,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_C", Value=4105)]
-      EQUIP_INCREASE_LEVEL_C = 4105,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_C", Value=4105)]
+      EQUIP_COMPOSE_C = 4105,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_S", Value=4106)]
-      EQUIP_INCREASE_LEVEL_S = 4106,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_COMPOSE_S", Value=4106)]
+      EQUIP_COMPOSE_S = 4106,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_C", Value=4107)]
-      EQUIP_INCREASE_STAGE_C = 4107,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_C", Value=4107)]
+      EQUIP_INCREASE_LEVEL_C = 4107,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_S", Value=4108)]
-      EQUIP_INCREASE_STAGE_S = 4108,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_LEVEL_S", Value=4108)]
+      EQUIP_INCREASE_LEVEL_S = 4108,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_C", Value=4109)]
-      EQUIP_MONSTER_DRESS_C = 4109,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_C", Value=4109)]
+      EQUIP_INCREASE_STAGE_C = 4109,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_S", Value=4110)]
-      EQUIP_MONSTER_DRESS_S = 4110,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_S", Value=4110)]
+      EQUIP_INCREASE_STAGE_S = 4110,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_UNDRESS_C", Value=4111)]
-      EQUIP_MONSTER_UNDRESS_C = 4111,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_PUNCH_C", Value=4111)]
+      EQUIP_PUNCH_C = 4111,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_UNDRESS_S", Value=4112)]
-      EQUIP_MONSTER_UNDRESS_S = 4112,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_PUNCH_S", Value=4112)]
+      EQUIP_PUNCH_S = 4112,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_REPLACE_C", Value=4113)]
-      EQUIP_MONSTER_REPLACE_C = 4113,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_C", Value=4113)]
+      EQUIP_GEM_C = 4113,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_REPLACE_S", Value=4114)]
-      EQUIP_MONSTER_REPLACE_S = 4114,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_S", Value=4114)]
+      EQUIP_GEM_S = 4114,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_C", Value=4120)]
+      EQUIP_MONSTER_DRESS_C = 4120,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_S", Value=4121)]
+      EQUIP_MONSTER_DRESS_S = 4121,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_UNDRESS_C", Value=4122)]
+      EQUIP_MONSTER_UNDRESS_C = 4122,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_UNDRESS_S", Value=4123)]
+      EQUIP_MONSTER_UNDRESS_S = 4123,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_REPLACE_C", Value=4124)]
+      EQUIP_MONSTER_REPLACE_C = 4124,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_REPLACE_S", Value=4125)]
+      EQUIP_MONSTER_REPLACE_S = 4125,
             
       [global::ProtoBuf.ProtoEnum(Name=@"QUEST_SUBMIT_C", Value=5001)]
       QUEST_SUBMIT_C = 5001,
@@ -221,7 +262,31 @@ namespace PB
       QUEST_UPDATE_S = 5004,
             
       [global::ProtoBuf.ProtoEnum(Name=@"QUEST_REMOVE_S", Value=5005)]
-      QUEST_REMOVE_S = 5005
+      QUEST_REMOVE_S = 5005,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_READ_C", Value=6001)]
+      MAIL_READ_C = 6001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_RECEIVE_C", Value=6002)]
+      MAIL_RECEIVE_C = 6002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_RECEIVE_S", Value=6003)]
+      MAIL_RECEIVE_S = 6003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_RECEIVE_ALL_C", Value=6004)]
+      MAIL_RECEIVE_ALL_C = 6004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_RECEIVE_ALL_S", Value=6005)]
+      MAIL_RECEIVE_ALL_S = 6005,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_NEW_S", Value=6006)]
+      MAIL_NEW_S = 6006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_SEND_C", Value=7001)]
+      IM_CHAT_SEND_C = 7001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_PUSH_S", Value=7002)]
+      IM_CHAT_PUSH_S = 7002
     }
   
 }

@@ -590,6 +590,62 @@ public final class HS {
      * <code>MAIL_NEW_S = 6006;</code>
      */
     MAIL_NEW_S(80, 6006),
+    /**
+     * <code>IM_CHAT_SEND_C = 7001;</code>
+     *
+     * <pre>
+     * 即时通讯
+     * </pre>
+     */
+    IM_CHAT_SEND_C(81, 7001),
+    /**
+     * <code>IM_CHAT_PUSH_S = 7002;</code>
+     *
+     * <pre>
+     * IM_NOTICE_               = 7003;  
+     * </pre>
+     */
+    IM_CHAT_PUSH_S(82, 7002),
+    /**
+     * <code>ShopRefreshC = 8001;</code>
+     *
+     * <pre>
+     * 商店
+     * </pre>
+     */
+    ShopRefreshC(83, 8001),
+    /**
+     * <code>ShopRefreshS = 8002;</code>
+     */
+    ShopRefreshS(84, 8002),
+    /**
+     * <code>ShopItemBuyC = 8003;</code>
+     */
+    ShopItemBuyC(85, 8003),
+    /**
+     * <code>ShopItemBuyS = 8004;</code>
+     */
+    ShopItemBuyS(86, 8004),
+    /**
+     * <code>ShopDataSynC = 8005;</code>
+     */
+    ShopDataSynC(87, 8005),
+    /**
+     * <code>ShopDataSynS = 8006;</code>
+     */
+    ShopDataSynS(88, 8006),
+    /**
+     * <code>AllianceCreateC = 9001;</code>
+     *
+     * <pre>
+     * 公会
+     * </pre>
+     */
+    AllianceCreateC(89, 9001),
+    /**
+     * <code>AllianceCreateS = 9002;</code>
+     */
+    AllianceCreateS(90, 9002),
     ;
 
     /**
@@ -944,6 +1000,62 @@ public final class HS {
      * <code>MAIL_NEW_S = 6006;</code>
      */
     public static final int MAIL_NEW_S_VALUE = 6006;
+    /**
+     * <code>IM_CHAT_SEND_C = 7001;</code>
+     *
+     * <pre>
+     * 即时通讯
+     * </pre>
+     */
+    public static final int IM_CHAT_SEND_C_VALUE = 7001;
+    /**
+     * <code>IM_CHAT_PUSH_S = 7002;</code>
+     *
+     * <pre>
+     * IM_NOTICE_               = 7003;  
+     * </pre>
+     */
+    public static final int IM_CHAT_PUSH_S_VALUE = 7002;
+    /**
+     * <code>ShopRefreshC = 8001;</code>
+     *
+     * <pre>
+     * 商店
+     * </pre>
+     */
+    public static final int ShopRefreshC_VALUE = 8001;
+    /**
+     * <code>ShopRefreshS = 8002;</code>
+     */
+    public static final int ShopRefreshS_VALUE = 8002;
+    /**
+     * <code>ShopItemBuyC = 8003;</code>
+     */
+    public static final int ShopItemBuyC_VALUE = 8003;
+    /**
+     * <code>ShopItemBuyS = 8004;</code>
+     */
+    public static final int ShopItemBuyS_VALUE = 8004;
+    /**
+     * <code>ShopDataSynC = 8005;</code>
+     */
+    public static final int ShopDataSynC_VALUE = 8005;
+    /**
+     * <code>ShopDataSynS = 8006;</code>
+     */
+    public static final int ShopDataSynS_VALUE = 8006;
+    /**
+     * <code>AllianceCreateC = 9001;</code>
+     *
+     * <pre>
+     * 公会
+     * </pre>
+     */
+    public static final int AllianceCreateC_VALUE = 9001;
+    /**
+     * <code>AllianceCreateS = 9002;</code>
+     */
+    public static final int AllianceCreateS_VALUE = 9002;
 
 
     public final int getNumber() { return value; }
@@ -1031,6 +1143,16 @@ public final class HS {
         case 6004: return MAIL_RECEIVE_ALL_C;
         case 6005: return MAIL_RECEIVE_ALL_S;
         case 6006: return MAIL_NEW_S;
+        case 7001: return IM_CHAT_SEND_C;
+        case 7002: return IM_CHAT_PUSH_S;
+        case 8001: return ShopRefreshC;
+        case 8002: return ShopRefreshS;
+        case 8003: return ShopItemBuyC;
+        case 8004: return ShopItemBuyS;
+        case 8005: return ShopDataSynC;
+        case 8006: return ShopDataSynS;
+        case 9001: return AllianceCreateC;
+        case 9002: return AllianceCreateS;
         default: return null;
       }
     }
@@ -1094,7 +1216,7 @@ public final class HS {
       "\n\021Protocol/HS.proto*I\n\003sys\022\020\n\014DATA_WRAPP" +
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
       "\n\nERROR_CODE\020\004*\032\n\002gm\022\024\n\020GEN_TEST_ACCOUNT" +
-      "\020d*\227\016\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022" +
+      "\020d*\337\017\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022" +
       "\r\n\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICKOUT" +
       "_S\020\354\007\022\017\n\nSYNCINFO_C\020\355\007\022\017\n\nSYNCINFO_S\020\356\007\022" +
       "\027\n\022PLAYER_INFO_SYNC_S\020\362\007\022\033\n\026STATISTICS_I" +
@@ -1139,7 +1261,12 @@ public final class HS {
       "T_REMOVE_S\020\215\'\022\020\n\013MAIL_READ_C\020\361.\022\023\n\016MAIL_" +
       "RECEIVE_C\020\362.\022\023\n\016MAIL_RECEIVE_S\020\363.\022\027\n\022MAI" +
       "L_RECEIVE_ALL_C\020\364.\022\027\n\022MAIL_RECEIVE_ALL_S" +
-      "\020\365.\022\017\n\nMAIL_NEW_S\020\366.B\030\n\026com.hawk.game.pr" +
+      "\020\365.\022\017\n\nMAIL_NEW_S\020\366.\022\023\n\016IM_CHAT_SEND_C\020\331" +
+      "6\022\023\n\016IM_CHAT_PUSH_S\020\3326\022\021\n\014ShopRefreshC\020\301",
+      ">\022\021\n\014ShopRefreshS\020\302>\022\021\n\014ShopItemBuyC\020\303>\022" +
+      "\021\n\014ShopItemBuyS\020\304>\022\021\n\014ShopDataSynC\020\305>\022\021\n" +
+      "\014ShopDataSynS\020\306>\022\024\n\017AllianceCreateC\020\251F\022\024" +
+      "\n\017AllianceCreateS\020\252FB\030\n\026com.hawk.game.pr" +
       "otocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =

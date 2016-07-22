@@ -202,6 +202,18 @@ public class BehaviorLogger {
 		 */
 		STAGE_UP,
 		/**
+		 * 商店物品购买
+		 */
+		SHOP_ITEM_BUY,	
+		/**
+		 * 商店物品刷新
+		 */
+		SHOP_REFRESH,
+		/**
+		 * 公会创建
+		 */
+		ALLIANCE_CREATE_CONSUME,
+		/**
 		 * 未知行为
 		 */
 		UNKONWN_ACTION;

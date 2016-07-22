@@ -259,4 +259,83 @@ public class UIUtil
         child.localScale = Vector3.one;
     }
 
+    public static void SetDisPlayAttr(EquipLevelData data, Text attr1, Text value1, Text attr2, Text value2)
+    {
+        attr2.text = "";
+        value2.text = "";
+        if (data==null)
+        {
+            return;
+        }
+        int index = 0;
+        if (data.strength!=0)
+        {
+            attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_strenth");
+            value1.text = data.strength.ToString();
+            index++;
+        }
+        if (data.intelligence != 0)
+        {
+            if (index == 0)
+            {
+                attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
+                value1.text = data.strength.ToString();
+                index++;
+            }
+            else
+            {
+                attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
+                value2.text = data.strength.ToString();
+                return;
+            }
+        }
+        if (data.speed != 0)
+        {
+            if (index == 0)
+            {
+                attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
+                value1.text = data.strength.ToString();
+                index++;
+            }
+            else
+            {
+                attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
+                value2.text = data.strength.ToString();
+                return;
+            }
+        }
+        if (data.defense != 0)
+        {
+            if (index == 0)
+            {
+                attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
+                value1.text = data.strength.ToString();
+                index++;
+            }
+            else
+            {
+                attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
+                value2.text = data.strength.ToString();
+                return;
+            }
+        }
+        if (data.health != 0)
+        {
+            if (index == 0)
+            {
+                attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
+                value1.text = data.strength.ToString();
+                index++;
+            }
+            else
+            {
+                attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
+                value2.text = data.strength.ToString();
+                return;
+            }
+        }
+
+
+    }
+
 }

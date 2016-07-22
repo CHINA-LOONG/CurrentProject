@@ -120,3 +120,4 @@ Id,trigerView,purpose,rotationZ,talkId,posObject,redPosObject,tipsX,tipsY,tipsCo
 127,UIPetDetails,第一个技能,,,gd_petDetail_ability1,,-20,-40,guide_ability4,,,
 128,UIPetDetails,第二个技能,,,gd_petDetail_ability2,,-20,-40,guide_ability5,,,
 129,UIPetDetails,升级按钮,0,,gd_petDetail_skillUp,,-100,,guide_ability6,1,,
+130,UIBuild,主界面的信仰之路按钮,0,,gd_build_road,,50,,guide_road1,,1,

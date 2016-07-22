@@ -109,7 +109,7 @@ message HSEquipGem
 {
 	required int64 id = 1;
 	required int32 type = 2;
-	required string newGem = 3;
+	optional string newGem = 3;
 	optional string oldGem = 4;
 }
 
@@ -153,7 +153,7 @@ message HSEquipMonsterReplace
 	optional int32 monsterId = 2;
 }
 
-// 装备卸载返回
+// 装备替换返回
 message HSEquipMonsterReplaceRet
 {
 	optional int64 id  = 1;

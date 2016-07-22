@@ -26,6 +26,10 @@ public class ItemCfg extends HawkConfigBase {
 	 */
 	protected final int type;
 	/**
+	 * 子类型
+	 */
+	protected final int subType;
+	/**
 	 * 品级
 	 */
 	protected final int grade;
@@ -137,6 +141,7 @@ public class ItemCfg extends HawkConfigBase {
 		id  = null;
 		classType = 0;
 		type = 0;
+		subType = 0;
 		grade = 0;
 		minLevel = 0;
 		condition = 0;
@@ -181,6 +186,10 @@ public class ItemCfg extends HawkConfigBase {
 		return type;
 	}
 
+	public int getSubType() {
+		return subType;
+	}
+	
 	public int getGrade() {
 		return grade;
 	}

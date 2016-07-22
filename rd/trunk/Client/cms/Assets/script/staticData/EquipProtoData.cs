@@ -28,7 +28,7 @@ public class EquipProtoData
         ItemInfo.getItemInfoList1(punchinfo, this.punchDemand, ItemParseType.DemandItemType);
     }
     //强化数据
-    public Dictionary<AttrType, int> leveAttribute(int level)
+    public Dictionary<AttrType,int> leveAttribute(int level)
     {
         EquipLevelData baseAttr = StaticDataMgr.Instance.GetEquipLevelData(this.stageAttrId);
         Dictionary<AttrType, int> attr = new Dictionary<AttrType, int>();

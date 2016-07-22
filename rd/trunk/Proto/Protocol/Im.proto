@@ -1,0 +1,27 @@
+option java_package = "com.hawk.game.protocol";
+
+// struct-------------------------------------------------------
+message HSImMsg
+{
+	required int32 type = 1;
+	required int32 channel = 2;
+	required int32 senderId = 3;
+	optional string senderName = 4;
+	required string origText = 5;
+	optional string transText = 6;
+}
+
+// protocol-----------------------------------------------------
+
+// IM_CHAT_SEND_C
+message HSImChatSend
+{
+	required int32 channel = 1;
+	required string text = 2;
+}
+
+// IM_CHAT_PUSH_S
+message HSImPush
+{
+	repeated HSImMsg imMsg = 1;
+}

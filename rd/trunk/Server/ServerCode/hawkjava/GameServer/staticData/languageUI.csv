@@ -357,8 +357,8 @@ pet_detail_stage1,宠物进阶,Monster Advance
 pet_detail_stage_full,恭喜！进阶已完成!,Congratulations! Advancement complete!
 pet_detail_stage_monster,需要的怪物,Req. Monsters:
 pet_detail_skill_dazhaobiaoshi,大招,Ult
-pet_detail_stage_choise,选择宠物,Select monsters
-pet_detail_stage_xuanchongtips,需要目标宠物作为进阶材料,Target monster required as advancement material
+pet_detail_stage_choise,选择进阶材料,Select monsters
+pet_detail_stage_xuanchongtips,宠物或道具的品质至少满足以下条件,Target monster required as advancement material
 list_wenzhangzhiyin,参加公会玩法能够获得纹章,You can get insignias via guild game modes
 monster_record_002,宠物等级不得高于角色等级！,Monster level cannot exceed character level.
 monster_record_004,需求道具不足,Insufficient amount of required items.
@@ -1645,3 +1645,13 @@ common_attr_critical_dmg_tips,提高暴击时伤害效果,提高暴击时伤害�
 common_attr_heal_ratio_tips,提高被治疗的效果,提高被治疗的效果
 common_attr_energy_tips,增加前置能量可更早使用大招,增加前置能量可更早使用大招
 facebook_record_009,不可以填写自己的ID哦,Your own ID is not allowed.
+pet_detail_stage_suretips,包含高于进阶要求的最低品质的宠物或道具，是否确认选择？,包含高于进阶要求的最低品质的宠物或道具，是否确认选择？
+pet_detail_stage_neednum,需求数量：{0}/{1},需求数量：{0}/{1}
+pet_detail_stage_minneed,请选择：,请选择：
+pet_detail_stage_or,或,或
+pet_detail_stage_monsternum,已选：{0},已选：{0}
+monster_record_018,该宠物正在PVP防守，无法选择,该宠物正在PVP防守，无法选择
+monster_record_019,该宠物正在大冒险，无法选择,该宠物正在大冒险，无法选择
+monster_record_020,该宠物正驻守在公会基地，无法选择,该宠物正驻守在公会基地，无法选择
+monster_record_021,该宠物已被锁定，无法选择,该宠物已被锁定，无法选择
+monster_record_022,该宠物正在出战，无法选择,该宠物正在出战，无法选择

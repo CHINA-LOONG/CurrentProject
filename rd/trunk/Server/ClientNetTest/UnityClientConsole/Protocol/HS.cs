@@ -219,6 +219,18 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_INCREASE_STAGE_S", Value=4110)]
       EQUIP_INCREASE_STAGE_S = 4110,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_PUNCH_C", Value=4111)]
+      EQUIP_PUNCH_C = 4111,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_PUNCH_S", Value=4112)]
+      EQUIP_PUNCH_S = 4112,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_C", Value=4113)]
+      EQUIP_GEM_C = 4113,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_S", Value=4114)]
+      EQUIP_GEM_S = 4114,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_C", Value=4120)]
       EQUIP_MONSTER_DRESS_C = 4120,
             
@@ -268,7 +280,13 @@ namespace PB
       MAIL_RECEIVE_ALL_S = 6005,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MAIL_NEW_S", Value=6006)]
-      MAIL_NEW_S = 6006
+      MAIL_NEW_S = 6006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_SEND_C", Value=7001)]
+      IM_CHAT_SEND_C = 7001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_PUSH_S", Value=7002)]
+      IM_CHAT_PUSH_S = 7002
     }
   
 }

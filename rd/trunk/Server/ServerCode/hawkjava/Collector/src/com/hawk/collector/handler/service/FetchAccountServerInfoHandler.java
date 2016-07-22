@@ -36,7 +36,7 @@ public class FetchAccountServerInfoHandler implements HttpHandler {
 				{
 					jsonObject.addProperty("zmqPort", accountServer.zmqPort);
 				}
-				HawkLog.logPrintln(jsonObject.toString());
+				
 				HawkLog.logPrintln("fetch Collector accountserver :" + jsonObject.toString());
 				CollectorHttpServer.response(httpExchange, jsonObject.toString());
 			}

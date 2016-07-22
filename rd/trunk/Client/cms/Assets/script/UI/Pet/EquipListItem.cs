@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public interface IClickUsedEquip
 {
+    void OnSelectEquip(EquipData equip);
     void OnUsedEquip(EquipData equip);
 }
 
@@ -19,6 +20,7 @@ public class EquipListItem : MonoBehaviour
     public Text textZhanli_lang;
     public Text textDengji_lang;
 
+    public Button btnSelect;
     public Button btnUsed;
 
     public IClickUsedEquip ClickDelegate;
@@ -38,10 +40,12 @@ public class EquipListItem : MonoBehaviour
 
     void Start()
     {
-        textDengji_lang.text = "";
-        textZhanli_lang.text = "";
-        btnUsed.GetComponentInChildren<Text>().text = "";
-        EventTriggerListener.Get(btnUsed.gameObject).onClick = OnClickUsedEquip;
+        textDengji_lang.text = StaticDataMgr.Instance.GetTextByID("equip_List_xianzhidengji");
+        textZhanli_lang.text = StaticDataMgr.Instance.GetTextByID("equip_List_zhanli");
+        btnUsed.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_List_zhuangbei");
+
+        ScrollViewEventListener.Get(btnSelect.gameObject).onClick = OnClickSelectEquip;
+        ScrollViewEventListener.Get(btnUsed.gameObject).onClick = OnClickUsedEquip;
     }
 
     public void Refresh(EquipData data)
@@ -106,6 +110,11 @@ public class EquipListItem : MonoBehaviour
         items.ForEach(delegate(EquipGemItem item) { item.gameObject.SetActive(false); });
         itemPool.AddRange(items);
         items.Clear();
+    }
+
+    void OnClickSelectEquip(GameObject go)
+    {
+        ClickDelegate.OnSelectEquip(info.equipData);
     }
 
     void OnClickUsedEquip(GameObject go)

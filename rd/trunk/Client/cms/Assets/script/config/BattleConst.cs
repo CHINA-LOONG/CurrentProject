@@ -80,6 +80,10 @@ public class BattleConst
 
     //无效的宠物id -1；
     public const int invalidMonsterID = -1;
+    //无效的装备id 
+    public const long invalidEquipID = -1;
+    //无效的宝石id
+    public const string invalidGemID = "0";
     //最大最小装备等级 9 0
     public const int maxEquipLevel = 9;
     public const int minEquipLevel = 0;

@@ -6,7 +6,7 @@ using System.Linq;
 
 public interface IUIEquipListCallBack
 {
-    //void OnSelectEquip(GameUnit unit, EquipData equip);
+    void OnSelectEquip(GameUnit unit, EquipData equip);
     void OnEquipDressOrReplace();
 }
 
@@ -107,7 +107,7 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
 
     public void OnSelectEquip(EquipData equip)
     {
-        //listDelegate.OnSelectEquip(m_unit, equip);
+        listDelegate.OnSelectEquip(m_unit, equip);
     }
 
     public void OnUsedEquip(EquipData equip)

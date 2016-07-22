@@ -40,7 +40,7 @@ public class LoginModule : ModuleBase
         GameApp.Instance.netManager.GameServerPort = int.Parse(serverInfo["port"].ToString());
 
         GameApp.Instance.netManager.SendConnect();
-        UIMgr.Instance.DestroyUI(UISelectServer.ViewName);
+        UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UISelectServer.ViewName));
     }
 
     IEnumerator GetGameServer()
@@ -136,7 +136,7 @@ public class LoginModule : ModuleBase
             else
             {
                 UINetRequest.Close();
-                UIMgr.Instance.DestroyUI(UILogin.ViewName);
+                UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UILogin.ViewName));
                 GameMain.Instance.ChangeModule<CreatePlayerModule>();
             }
         }
@@ -158,7 +158,7 @@ public class LoginModule : ModuleBase
 
         BuildModule.needSyncInfo = true;
 		PB.HSLoginRet loginS = msg.GetProtocolBody<PB.HSLoginRet> ();
-		UIMgr.Instance.DestroyUI(UILogin.ViewName);
+		UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UILogin.ViewName));
 		if (loginS.playerId > 0) 
 		{
 			GameDataMgr.Instance.PlayerDataAttr.playerId = loginS.playerId;

@@ -10,6 +10,7 @@
 // Generated from: Protocol/Monster.proto
 // Note: requires additional types generated from: Protocol/Const.proto
 // Note: requires additional types generated from: Protocol/Skill.proto
+// Note: requires additional types generated from: Protocol/Equip.proto
 namespace PB
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SynMonsterAttr")]
@@ -111,6 +112,13 @@ namespace PB
     public global::System.Collections.Generic.List<HSSkill> skill
     {
       get { return _skill; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<EquipInfo> _equipInfos = new global::System.Collections.Generic.List<EquipInfo>();
+    [global::ProtoBuf.ProtoMember(10, Name=@"equipInfos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<EquipInfo> equipInfos
+    {
+      get { return _equipInfos; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;

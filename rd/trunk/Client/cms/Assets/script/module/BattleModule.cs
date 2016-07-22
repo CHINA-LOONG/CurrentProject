@@ -9,6 +9,7 @@ public class BattleModule : ModuleBase
     BattleUnitAi battleUnitAi;
 	PhyDazhaoController phyDazhaoController;
 	MagicDazhaoController magicDazhaoController;
+    bool startBattle = false;
 
     void BindListener()
     {
@@ -25,6 +26,25 @@ public class BattleModule : ModuleBase
     void Start()
     {
         BattleCamera.Instance.Init();
+    }
+
+    void Update()
+    {
+        if (startBattle == true)
+        {
+            if (ResourceMgr.Instance.GetAssetRequestCount() == 0)
+            {
+                startBattle = false;
+                StartCoroutine(FinishLoad());
+            }
+        }
+    }
+
+    IEnumerator FinishLoad()
+    {
+        //wait for ui
+        yield return new WaitForFixedUpdate();
+        controller.StartBattle();
     }
 
     public override void OnInit(object param)
@@ -53,10 +73,16 @@ public class BattleModule : ModuleBase
         if (enterParam != null)
         {
             //StartCoroutine(LoadResource());
-            controller.StartBattle(enterParam);
+            controller.StartBattlePrepare(enterParam);
+            UILoading loading = UIMgr.Instance.GetUI(UILoading.ViewName) as UILoading;
+            if (loading)
+            {
+                loading.UpdateTotalAssetCount();
+            }
         }
         //var ui = UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
         //ui.GetComponent<UIBattle>().Init();
+        startBattle = true;
     }
 
     public override void OnExecute()
@@ -84,6 +110,7 @@ public class BattleModule : ModuleBase
         //UIMgr.Instance.CloseUI(UIBattle.ViewName);
         //destroy battle camera manual,since camera may attach to gamemain throw ani
         Destroy(BattleCamera.Instance.gameObject);
+        startBattle = false;
     }
 
 #region  Event

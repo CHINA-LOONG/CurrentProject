@@ -343,4 +343,35 @@ namespace PB
       OVERFLOW = 4
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"ImType")]
+    public enum ImType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAT", Value=1)]
+      CHAT = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LANTERN", Value=2)]
+      LANTERN = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PROMPT", Value=3)]
+      PROMPT = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"NOTICE", Value=4)]
+      NOTICE = 4
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ImChannel")]
+    public enum ImChannel
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WORLD", Value=1)]
+      WORLD = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GUILD", Value=2)]
+      GUILD = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SELF", Value=3)]
+      SELF = 3
+    }
+  
 }

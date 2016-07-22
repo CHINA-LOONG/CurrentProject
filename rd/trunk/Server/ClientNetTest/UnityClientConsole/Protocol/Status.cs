@@ -79,7 +79,10 @@ namespace PB
       PLAYER_NOT_EXIST = 131073,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_NICKNAME_EXIST", Value=131074)]
-      PLAYER_NICKNAME_EXIST = 131074
+      PLAYER_NICKNAME_EXIST = 131074,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PUID_EXIST", Value=131075)]
+      PUID_EXIST = 131075
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"monsterError")]
@@ -152,7 +155,19 @@ namespace PB
       EQUIP_DRESS_OTHER_ALREADY = 262162,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_DRESSED", Value=262163)]
-      EQUIP_NOT_DRESSED = 262163
+      EQUIP_NOT_DRESSED = 262163,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_NOT_EMPTY", Value=262164)]
+      EQUIP_SLOT_NOT_EMPTY = 262164,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_EMPTY", Value=262165)]
+      EQUIP_SLOT_EMPTY = 262165,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_NOT_FOUND", Value=262166)]
+      EQUIP_GEM_NOT_FOUND = 262166,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_CAN_NOT_OPEN_SLOT", Value=262167)]
+      EQUIP_CAN_NOT_OPEN_SLOT = 262167
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"questError")]

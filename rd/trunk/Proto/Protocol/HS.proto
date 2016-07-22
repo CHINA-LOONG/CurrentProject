@@ -121,4 +121,21 @@ enum code
 	MAIL_RECEIVE_ALL_C          = 6004;
 	MAIL_RECEIVE_ALL_S          = 6005;
 	MAIL_NEW_S                  = 6006;
+	
+	// 即时通讯
+	IM_CHAT_SEND_C              = 7001;
+	IM_CHAT_PUSH_S              = 7002;
+	// IM_NOTICE_               = 7003;  
+	
+	// 商店
+	ShopRefreshC                = 8001;
+	ShopRefreshS				= 8002;
+	ShopItemBuyC                = 8003;
+	ShopItemBuyS			    = 8004;
+	ShopDataSynC			    = 8005;
+	ShopDataSynS			    = 8006;
+	
+	// 公会
+	AllianceCreateC				= 9001;
+	AllianceCreateS				= 9002;
 }

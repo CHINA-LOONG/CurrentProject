@@ -11,21 +11,21 @@
 // Note: requires additional types generated from: Protocol/Attribute.proto
 namespace PB
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GemInfo")]
-  public partial class GemInfo : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GemPunch")]
+  public partial class GemPunch : global::ProtoBuf.IExtensible
   {
-    public GemInfo() {}
+    public GemPunch() {}
     
-    private int _pos;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"pos", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int pos
+    private int _type;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int type
     {
-      get { return _pos; }
-      set { _pos = value; }
+      get { return _type; }
+      set { _type = value; }
     }
-    private int _gemItemId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"gemItemId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int gemItemId
+    private string _gemItemId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"gemItemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string gemItemId
     {
       get { return _gemItemId; }
       set { _gemItemId = value; }
@@ -47,9 +47,9 @@ namespace PB
       get { return _id; }
       set { _id = value; }
     }
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }
@@ -68,11 +68,11 @@ namespace PB
       get { return _level; }
       set { _level = value; }
     }
-    private readonly global::System.Collections.Generic.List<GemInfo> _gemInfos = new global::System.Collections.Generic.List<GemInfo>();
-    [global::ProtoBuf.ProtoMember(5, Name=@"gemInfos", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<GemInfo> gemInfos
+    private readonly global::System.Collections.Generic.List<GemPunch> _gemItems = new global::System.Collections.Generic.List<GemPunch>();
+    [global::ProtoBuf.ProtoMember(5, Name=@"gemItems", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<GemPunch> gemItems
     {
-      get { return _gemInfos; }
+      get { return _gemItems; }
     }
   
     private readonly global::System.Collections.Generic.List<Attr> _attrDatas = new global::System.Collections.Generic.List<Attr>();
@@ -82,15 +82,22 @@ namespace PB
       get { return _attrDatas; }
     }
   
+    private int _monsterId;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"monsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int monsterId
+    {
+      get { return _monsterId; }
+      set { _monsterId = value; }
+    }
     private int _status;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int status
     {
       get { return _status; }
       set { _status = value; }
     }
     private int _expireTime = default(int);
-    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"expireTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"expireTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int expireTime
     {
@@ -124,9 +131,9 @@ namespace PB
   {
     public HSEquipBuy() {}
     
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }
@@ -145,13 +152,36 @@ namespace PB
       get { return _stage; }
       set { _stage = value; }
     }
-    private int _level = default(int);
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _level;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int level
     {
       get { return _level; }
       set { _level = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipBuyRet")]
+  public partial class HSEquipBuyRet : global::ProtoBuf.IExtensible
+  {
+    public HSEquipBuyRet() {}
+    
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
+    {
+      get { return _equipId; }
+      set { _equipId = value; }
+    }
+    private int _equipCount;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"equipCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int equipCount
+    {
+      get { return _equipCount; }
+      set { _equipCount = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -163,9 +193,9 @@ namespace PB
   {
     public HSEquipCompose() {}
     
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }
@@ -187,9 +217,9 @@ namespace PB
   {
     public HSEquipComposeRet() {}
     
-    private int _equipId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int equipId
+    private string _equipId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string equipId
     {
       get { return _equipId; }
       set { _equipId = value; }
@@ -310,6 +340,97 @@ namespace PB
       get { return _level; }
       set { _level = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipPunch")]
+  public partial class HSEquipPunch : global::ProtoBuf.IExtensible
+  {
+    public HSEquipPunch() {}
+    
+    private long _id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long id
+    {
+      get { return _id; }
+      set { _id = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipPunchRet")]
+  public partial class HSEquipPunchRet : global::ProtoBuf.IExtensible
+  {
+    public HSEquipPunchRet() {}
+    
+    private readonly global::System.Collections.Generic.List<GemPunch> _gemItems = new global::System.Collections.Generic.List<GemPunch>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"gemItems", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<GemPunch> gemItems
+    {
+      get { return _gemItems; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipGem")]
+  public partial class HSEquipGem : global::ProtoBuf.IExtensible
+  {
+    public HSEquipGem() {}
+    
+    private long _id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long id
+    {
+      get { return _id; }
+      set { _id = value; }
+    }
+    private int _type;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int type
+    {
+      get { return _type; }
+      set { _type = value; }
+    }
+    private string _newGem = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"newGem", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string newGem
+    {
+      get { return _newGem; }
+      set { _newGem = value; }
+    }
+    private string _oldGem = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"oldGem", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string oldGem
+    {
+      get { return _oldGem; }
+      set { _oldGem = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipGemRet")]
+  public partial class HSEquipGemRet : global::ProtoBuf.IExtensible
+  {
+    public HSEquipGemRet() {}
+    
+    private readonly global::System.Collections.Generic.List<GemPunch> _gemItems = new global::System.Collections.Generic.List<GemPunch>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"gemItems", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<GemPunch> gemItems
+    {
+      get { return _gemItems; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

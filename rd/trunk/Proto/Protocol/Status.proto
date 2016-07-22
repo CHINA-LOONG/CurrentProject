@@ -10,6 +10,7 @@ enum errorMask
 	QUEST_ERROR                = 0x00050000;
 	INSTANCE_ERROR             = 0x00060000;
 	MAIL_ERROR                 = 0x00070000;
+	ALLIANCE_ERROR             = 0x00080000;
 }
 
 enum error
@@ -97,7 +98,7 @@ enum itemError
 	EQUIP_SLOT_NOT_EMPTY       = 0x00040014;
 	// 槽位没有镶嵌宝石
 	EQUIP_SLOT_EMPTY           = 0x00040015;
-	// 槽位没有镶嵌宝石
+	// 宝石不存在
 	EQUIP_GEM_NOT_FOUND        = 0x00040016;
 	// 装备不能开孔
 	EQUIP_CAN_NOT_OPEN_SLOT	   = 0x00040017;
@@ -132,4 +133,26 @@ enum mailError
 	MAIL_COIN_FULL             = 0x0070003;
 	// 钻石已满收取失败
 	MAIL_GOLD_FULL             = 0x0070004;
+}
+
+enum allianceError
+{
+	// 创建公会等级不足
+	ALLIANCE_LEVEL_NOT_ENOUGH  = 0x0080001;
+	// 已经在公会中
+	ALLIANCE_ALREADY_IN        = 0x0080002;
+	// 公会名称错误
+	ALLIANCE_NAME_ERROR        = 0x0080003;
+	// 已经名称重复
+	ALLIANCE_NAME_EXIST        = 0x0080004;
+}
+
+enum shopError
+{
+	// 商店过期
+	SHOP_REFRESH_TIMEOUT     = 0x0090001;
+	// 商品已经买过了
+	SHOP_ITEM_ALREADY_BUY    = 0x0090002;
+	// 商品刷新最大次数
+	SHOP_REFRESH_MAX_COUNT    = 0x0090003;
 }

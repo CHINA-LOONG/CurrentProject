@@ -224,6 +224,14 @@ enum equipQuality
 	RED = 6;
 }
 
+// 商店类型
+enum shopType
+{
+   NORMALSHOP = 1;
+   ALLIANCESHOP = 2;
+   OTHERSHOP = 3;
+}
+
 // 邮件状态
 enum mailState
 {
@@ -235,4 +243,28 @@ enum mailState
 	RECEIVE = 3;
 	// 已溢出删除
 	OVERFLOW = 4;
+}
+
+// IM类型
+enum ImType
+{
+	// 聊天
+	CHAT = 1;
+	// 走马灯
+	LANTERN = 2;
+	// 系统提示
+	PROMPT = 3;
+	// 系统公告
+	NOTICE = 4;
+}
+
+// IM频道
+enum ImChannel
+{
+	// 公共
+	WORLD = 1;
+	// 公会
+	GUILD = 2;
+	// 自己
+	SELF = 3;
 }

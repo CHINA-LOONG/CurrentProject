@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class UIPetDetail : UIBase
+public class UIPetDetail : UIBase, IEquipPopupCallBack
 {
 
     public static string ViewName = PetViewConst.UIPetDetailAssetName;
@@ -24,10 +24,11 @@ public class UIPetDetail : UIBase
     int m_currentPart = 0;
 
     //UI 
+    public UIEquipSetting uiEquipSetting;
     public Dictionary<string, PetDetailRightBase> uiRights = new Dictionary<string, PetDetailRightBase>();
     string currentRightType = "";
 
-
+    
     void Start()
     {
         EventTriggerListener.Get(closeButton.gameObject).onClick = CloseButtonDown;
@@ -54,6 +55,7 @@ public class UIPetDetail : UIBase
         {
             ResourceMgr.Instance.DestroyAsset(m_cameraObject);
         }
+        UIMgr.Instance.DestroyUI(uiEquipSetting);
     }
 
     void AddRightView(string assetName)
@@ -128,43 +130,66 @@ public class UIPetDetail : UIBase
     public void ReloadData()
     {
         ReloadLeftData();
-        ReloadRigthData(currentRightType);
+        //if (currentRightType.Equals(PetViewConst.UIPetEquipInfoAssetName) && CurrentUnit.equipList[m_currentPart]==null)
+        //{
+        //    ReloadRigthData(PetViewConst.UIPetEquipListAssetName);
+        //}
+        //else if (currentRightType.Equals(PetViewConst.UIPetEquipListAssetName) && CurrentUnit.equipList[m_currentPart] != null)
+        //{
+        //    ReloadRigthData(PetViewConst.UIPetEquipInfoAssetName);
+        //}
+        //else
+        //{
+        //    ReloadRigthData(currentRightType);
+        //}
+        ReloadRigthData(PetViewConst.UIPetSkillAssetName);
     }
 
     public void ReloadLeftData()
     {
         leftView.ReloadData(CurrentUnit);
     }
-    public void ReloadRigthData(string rightAsset)
+    public void ReloadRigthData(string rightAsset, PetRightParamBase param = null)
     {
         if (currentRightType != rightAsset)
         {
             currentRightType = rightAsset;
             AddRightView(currentRightType);
         }
-        PetRightParamBase param=null;
         #region InitaLize Param
-        switch (currentRightType)
+        if (param == null)
         {
-            case PetViewConst.UIPetSkillAssetName:
-            case PetViewConst.UIPetAttrAssetName:
-            case PetViewConst.UIPetStageAssetName:
-            case PetViewConst.UIPetAdvanceAssetName:
-                param = new PetRightParamBase()
-                {
-                    unit = CurrentUnit
-                };
-                break;
-            case PetViewConst.UIPetEquipInfoAssetName:
-            case PetViewConst.UIPetEquipListAssetName:
-                param = new UIPetEquipParam()
-                {
-                    unit = CurrentUnit,
-                    part = (PartType)m_currentPart
-                };
-                break;
-            default:
-                break;
+            switch (currentRightType)
+            {
+                case PetViewConst.UIPetSkillAssetName:
+                case PetViewConst.UIPetAttrAssetName:
+                case PetViewConst.UIPetStageAssetName:
+                case PetViewConst.UIPetAdvanceAssetName:
+                    param = new PetRightParamBase()
+                    {
+                        unit = CurrentUnit
+                    };
+                    break;
+                case PetViewConst.UIPetEquipInfoAssetName:
+                case PetViewConst.UIPetEquipListAssetName:
+                    param = new UIPetEquipParam()
+                    {
+                        unit = CurrentUnit,
+                        part = (PartType)m_currentPart
+                    };
+                    break;
+                case PetViewConst.UIPetEquipInlayAssetName:
+                    param = new UIPetInlayParam()
+                    {
+                        unit = CurrentUnit,
+                        equip=CurrentUnit.equipList[m_currentPart],
+                        tabIndex = 0,
+                        selIndex = -1
+                    };
+                    break;
+                default:
+                    break;
+            }
         }
         #endregion
 
@@ -192,5 +217,15 @@ public class UIPetDetail : UIBase
         //默认选中属性界面
         SkillButtonDown();
         leftView.ReloadData(unit);
+    }
+
+    public void OnQiangHuaCallBack(EquipData equip)
+    {
+        ReloadRigthData(PetViewConst.UIPetEquipInlayAssetName, new UIPetInlayParam() { unit = CurrentUnit, equip = equip, tabIndex = 0, selIndex = -1 });
+    }
+
+    public void OnXiangqianCallBack(EquipData equip)
+    {
+        ReloadRigthData(PetViewConst.UIPetEquipInlayAssetName, new UIPetInlayParam() { unit = CurrentUnit, equip = equip, tabIndex = 1, selIndex = -1 });
     }
 }

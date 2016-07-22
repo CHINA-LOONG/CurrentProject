@@ -9047,17 +9047,17 @@ public final class Equip {
      */
     int getType();
 
-    // required string newGem = 3;
+    // optional string newGem = 3;
     /**
-     * <code>required string newGem = 3;</code>
+     * <code>optional string newGem = 3;</code>
      */
     boolean hasNewGem();
     /**
-     * <code>required string newGem = 3;</code>
+     * <code>optional string newGem = 3;</code>
      */
     java.lang.String getNewGem();
     /**
-     * <code>required string newGem = 3;</code>
+     * <code>optional string newGem = 3;</code>
      */
     com.google.protobuf.ByteString
         getNewGemBytes();
@@ -9224,17 +9224,17 @@ public final class Equip {
       return type_;
     }
 
-    // required string newGem = 3;
+    // optional string newGem = 3;
     public static final int NEWGEM_FIELD_NUMBER = 3;
     private java.lang.Object newGem_;
     /**
-     * <code>required string newGem = 3;</code>
+     * <code>optional string newGem = 3;</code>
      */
     public boolean hasNewGem() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required string newGem = 3;</code>
+     * <code>optional string newGem = 3;</code>
      */
     public java.lang.String getNewGem() {
       java.lang.Object ref = newGem_;
@@ -9251,7 +9251,7 @@ public final class Equip {
       }
     }
     /**
-     * <code>required string newGem = 3;</code>
+     * <code>optional string newGem = 3;</code>
      */
     public com.google.protobuf.ByteString
         getNewGemBytes() {
@@ -9326,10 +9326,6 @@ public final class Equip {
         return false;
       }
       if (!hasType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasNewGem()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -9594,10 +9590,6 @@ public final class Equip {
           
           return false;
         }
-        if (!hasNewGem()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -9686,16 +9678,16 @@ public final class Equip {
         return this;
       }
 
-      // required string newGem = 3;
+      // optional string newGem = 3;
       private java.lang.Object newGem_ = "";
       /**
-       * <code>required string newGem = 3;</code>
+       * <code>optional string newGem = 3;</code>
        */
       public boolean hasNewGem() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required string newGem = 3;</code>
+       * <code>optional string newGem = 3;</code>
        */
       public java.lang.String getNewGem() {
         java.lang.Object ref = newGem_;
@@ -9709,7 +9701,7 @@ public final class Equip {
         }
       }
       /**
-       * <code>required string newGem = 3;</code>
+       * <code>optional string newGem = 3;</code>
        */
       public com.google.protobuf.ByteString
           getNewGemBytes() {
@@ -9725,7 +9717,7 @@ public final class Equip {
         }
       }
       /**
-       * <code>required string newGem = 3;</code>
+       * <code>optional string newGem = 3;</code>
        */
       public Builder setNewGem(
           java.lang.String value) {
@@ -9738,7 +9730,7 @@ public final class Equip {
         return this;
       }
       /**
-       * <code>required string newGem = 3;</code>
+       * <code>optional string newGem = 3;</code>
        */
       public Builder clearNewGem() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -9747,7 +9739,7 @@ public final class Equip {
         return this;
       }
       /**
-       * <code>required string newGem = 3;</code>
+       * <code>optional string newGem = 3;</code>
        */
       public Builder setNewGemBytes(
           com.google.protobuf.ByteString value) {
@@ -12942,7 +12934,7 @@ public final class Equip {
    * Protobuf type {@code HSEquipMonsterReplaceRet}
    *
    * <pre>
-   * 装备卸载返回
+   * 装备替换返回
    * </pre>
    */
   public static final class HSEquipMonsterReplaceRet extends
@@ -13196,7 +13188,7 @@ public final class Equip {
      * Protobuf type {@code HSEquipMonsterReplaceRet}
      *
      * <pre>
-     * 装备卸载返回
+     * 装备替换返回
      * </pre>
      */
     public static final class Builder extends
@@ -13537,7 +13529,7 @@ public final class Equip {
       "\n\014HSEquipPunch\022\n\n\002id\030\001 \002(\003\".\n\017HSEquipPun" +
       "chRet\022\033\n\010gemItems\030\001 \003(\0132\t.GemPunch\"F\n\nHS" +
       "EquipGem\022\n\n\002id\030\001 \002(\003\022\014\n\004type\030\002 \002(\005\022\016\n\006ne" +
-      "wGem\030\003 \002(\t\022\016\n\006oldGem\030\004 \001(\t\",\n\rHSEquipGem" +
+      "wGem\030\003 \001(\t\022\016\n\006oldGem\030\004 \001(\t\",\n\rHSEquipGem" +
       "Ret\022\033\n\010gemItems\030\001 \003(\0132\t.GemPunch\"4\n\023HSEq" +
       "uipMonsterDress\022\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId" +
       "\030\002 \002(\005\"7\n\026HSEquipMonsterDressRet\022\n\n\002id\030\001" +

@@ -35,20 +35,24 @@ import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
+import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.log.BehaviorLogger.Params;
 import com.hawk.game.log.BehaviorLogger.Source;
+import com.hawk.game.module.PlayerAllianceModule;
 import com.hawk.game.module.PlayerEquipModule;
 import com.hawk.game.module.PlayerIdleModule;
+import com.hawk.game.module.PlayerImModule;
 import com.hawk.game.module.PlayerInstanceModule;
 import com.hawk.game.module.PlayerItemModule;
 import com.hawk.game.module.PlayerLoginModule;
 import com.hawk.game.module.PlayerMailModule;
 import com.hawk.game.module.PlayerMonsterModule;
 import com.hawk.game.module.PlayerQuestModule;
+import com.hawk.game.module.PlayerShopModule;
 import com.hawk.game.module.PlayerStatisticsModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
@@ -125,6 +129,9 @@ public class Player extends HawkAppObj {
 		registerModule(GsConst.ModuleType.EQUIP_MODULE, new PlayerEquipModule(this));
 		registerModule(GsConst.ModuleType.QUEST_MODULE, new PlayerQuestModule(this));
 		registerModule(GsConst.ModuleType.MAIL_MODULE, new PlayerMailModule(this));
+		registerModule(GsConst.ModuleType.SHOP_MODULE, new PlayerShopModule(this));	
+		registerModule(GsConst.ModuleType.ALLIANCE_MODULE, new PlayerAllianceModule(this));
+		registerModule(GsConst.ModuleType.MAIL_MODULE, new PlayerImModule(this));
 
 		// 最后注册空闲模块, 用来消息收尾处理
 		registerModule(GsConst.ModuleType.IDLE_MODULE, new PlayerIdleModule(this));
@@ -293,6 +300,7 @@ public class Player extends HawkAppObj {
 		}
 		// 刷新玩家数据
 		if (++tickIndex % GsConst.REFRESH_PERIOD == 0) {
+			tickIndex = 0;
 			onRefresh();
 		}
 
@@ -369,6 +377,13 @@ public class Player extends HawkAppObj {
 	 */
 	public String getPhoneInfo() {
 		return playerData.getPlayerEntity().getPhoneInfo();
+	}
+
+	/**
+	 * 获取语言
+	 */
+	public String getLanguage() {
+		return playerData.getPlayerEntity().getLanguage();
 	}
 
 	/**
@@ -931,8 +946,6 @@ public class Player extends HawkAppObj {
 		// TEST ----------------------------------------------------------------------------------------
 		// default monster
 		if (statisticsEntity.getMonsterMaxCount() == 0) {
-			MonsterEntity monsterEntity = null;
-
 			increaseMonster("xgXiyiren", 1, Action.SYSTEM);
 			increaseMonster("xgHuapo", 1, Action.SYSTEM);
 			increaseMonster("xgPanshen", 1, Action.SYSTEM);

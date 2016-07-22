@@ -300,7 +300,10 @@ public class StaticDataMgr : MonoBehaviour
         {
             var data = InitTable<ItemStaticData>("item");
             foreach (var item in data)
+            {
+                Debug.Log(item.id);
                 itemData.Add(item.id, item);
+            }
         }
 
         {
@@ -457,7 +460,6 @@ public class StaticDataMgr : MonoBehaviour
         }
         {
             #region language
-            var data = InitTable<LangStaticData>("languageUI");
 
             System.Action<LangStaticData> addElement = item =>
             {
@@ -474,6 +476,7 @@ public class StaticDataMgr : MonoBehaviour
                 }
             };
 
+            var data = InitTable<LangStaticData>("languageUI");
             foreach (var item in data)
             {
                 addElement(item);
@@ -519,7 +522,7 @@ public class StaticDataMgr : MonoBehaviour
         }
         {
             #region assetLang
-            var data = InitTable<AssetLangData>("assetLang");
+            var data = InitTable<AssetLangData>("languageAsset");
             foreach (var item in data)
             {
                 if (assetLang.ContainsKey(item.source))
@@ -700,12 +703,12 @@ public class StaticDataMgr : MonoBehaviour
 		return chapter;
 	}
 
-	public InstanceEntry GetInstanceEntry(string instanceId)
-	{
-		InstanceEntry entry = null;
-		instanceEntryData.TryGetValue (instanceId, out entry);
-		return	entry;
-	}
+    public InstanceEntry GetInstanceEntry(string instanceId)
+    {
+        InstanceEntry entry = null;
+        instanceEntryData.TryGetValue(instanceId, out entry);
+        return entry;
+    }
 
 	public List<InstanceEntry> GetInstanceEntryList(int diffculty,int chapter)
 	{
@@ -814,7 +817,7 @@ public class StaticDataMgr : MonoBehaviour
         langData.TryGetValue(id, out item);
 
         if (item == null) return id + "Not configured";
-        else if (LanguageMgr.Instance.Lang == Language.English) return string.IsNullOrEmpty(item.english) ? id+"Not configured" : item.english;
+        else if (LanguageMgr.Instance.Lang == Language.English) return string.IsNullOrEmpty(item.english) ? item.chinese + "Not configured" : item.english;
         else if (LanguageMgr.Instance.Lang == Language.Chinese) return string.IsNullOrEmpty(item.chinese) ? item.english : item.chinese;
         else return item.english;
     }

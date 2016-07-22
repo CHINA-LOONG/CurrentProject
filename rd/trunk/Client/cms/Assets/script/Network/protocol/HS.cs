@@ -280,7 +280,37 @@ namespace PB
       MAIL_RECEIVE_ALL_S = 6005,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MAIL_NEW_S", Value=6006)]
-      MAIL_NEW_S = 6006
+      MAIL_NEW_S = 6006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_SEND_C", Value=7001)]
+      IM_CHAT_SEND_C = 7001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_PUSH_S", Value=7002)]
+      IM_CHAT_PUSH_S = 7002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopRefreshC", Value=8001)]
+      ShopRefreshC = 8001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopRefreshS", Value=8002)]
+      ShopRefreshS = 8002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopItemBuyC", Value=8003)]
+      ShopItemBuyC = 8003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopItemBuyS", Value=8004)]
+      ShopItemBuyS = 8004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataSynC", Value=8005)]
+      ShopDataSynC = 8005,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataSynS", Value=8006)]
+      ShopDataSynS = 8006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"AllianceCreateC", Value=9001)]
+      AllianceCreateC = 9001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"AllianceCreateS", Value=9002)]
+      AllianceCreateS = 9002
     }
   
 }

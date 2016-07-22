@@ -61,6 +61,28 @@ namespace PB
       get { return _monsterCollect; }
     }
   
+    private int _skillPoint;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"skillPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int skillPoint
+    {
+      get { return _skillPoint; }
+      set { _skillPoint = value; }
+    }
+    private int _skillPointTimeStamp;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"skillPointTimeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int skillPointTimeStamp
+    {
+      get { return _skillPointTimeStamp; }
+      set { _skillPointTimeStamp = value; }
+    }
+    private int _timeStamp = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int timeStamp
+    {
+      get { return _timeStamp; }
+      set { _timeStamp = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

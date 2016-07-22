@@ -58,7 +58,7 @@ public class BuildModule : ModuleBase
 	public override void OnExit()
 	{
         UnBindListener();
-        UIMgr.Instance.DestroyUI(UIBuild.ViewName);
+        UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UIBuild.ViewName));
 	}
 
 
