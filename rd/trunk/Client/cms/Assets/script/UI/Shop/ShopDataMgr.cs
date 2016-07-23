@@ -175,7 +175,7 @@ public class ShopDataMgr : MonoBehaviour
 			Logger.LogError("BuyShopItem Error errorCode: " + error.errCode);
 
 			//test
-			MsgBox.PromptMsg.Open("提示","商店内容已过期","确定",OnPrompButtonClick);
+			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,"商店内容已过期",OnPrompButtonClick);
 			return;
 			//
 

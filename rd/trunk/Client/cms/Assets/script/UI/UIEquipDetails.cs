@@ -31,9 +31,12 @@ public class UIEquipDetails : MonoBehaviour
     public GameObject[] basicsAttribute;//基础属性列表
     public Text[] basicsAttributeNum;
     public Text[] basicsAttributePlusNum;
+    public GameObject gemPrompt;//宝石提示
     public GameObject[] gemAttribute;//宝石
-    public string[] part = new string[6] { "Weapon", "Waist", "Armor", "Bracelet", "Ring", "Charm" };
-    public string[] equipTypeId = new string[4] { "Defend", "Physics", "Magic", "Support" };
+    GameObject gemName;//宝石名
+    GameObject[] gemAttrList = new GameObject[2];
+    string[] part = new string[6] { "equip_Weapon", "equip_Waist", "equip_Armor", "equip_Bracelet", "equip_Ring", "equip_Amulet" };
+    string[] equipTypeId = new string[4] { "equip_Defend", "equip_Physics", "equip_Magic", "equip_Support" };
     public GameObject reinforcedButton;//强化
     public GameObject inlayButton;//镶嵌
     public GameObject unloadButton;//卸下
@@ -70,73 +73,103 @@ public class UIEquipDetails : MonoBehaviour
         itemData = StaticDataMgr.Instance.GetItemData(equipDate.equipId);
         equipNmae.text = itemData.name;
         lvLimit.text = itemData.minLevel.ToString();
-        if (itemData.part > -1&&itemData.part < 6)//装备超出
-            equipPart.text = StaticDataMgr.Instance.GetTextByID(part[itemData.part]);
+        if (itemData.part > -1 && itemData.part < 6)//装备超出
+            equipPart.text = "<" + StaticDataMgr.Instance.GetTextByID(part[itemData.part]) + ">";
 
-        if (itemData.subType > -1 && itemData.part < 4)//装备类型超出
-            equipType.text = StaticDataMgr.Instance.GetTextByID(equipTypeId[itemData.subType]); 
-        
-        if (equipDate.level > 0) { strengthenNum.enabled = true; strengthenNum.text = equipDate.level.ToString(); }
+        if (itemData.subType > -1 && itemData.subType < 4)//装备类型超出
+            equipType.text = StaticDataMgr.Instance.GetTextByID(equipTypeId[itemData.subType]);
+
+        if (equipDate.level > 0) { strengthenNum.enabled = true; strengthenNum.text = "+ " + equipDate.level.ToString(); }
         if (equipDate.health > 0)
         {
             basicsAttribute[w].SetActive(true);
-            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("health");
+            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_health");
             basicsAttributeNum[w].text = equipDate.health.ToString();
             if (equipDate.level > 0)
             {
                 basicsAttributePlusNum[w].enabled = true;
-                basicsAttributePlusNum[w].text = equipDate.healthStrengthen.ToString();
+                basicsAttributePlusNum[w].text = "+" + equipDate.healthStrengthen.ToString();
             }
             w++;
         }
         if (equipDate.strength > 0)
         {
             basicsAttribute[w].SetActive(true);
-            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("strength");
+            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_strength");
             basicsAttributeNum[w].text = equipDate.strength.ToString();
             if (equipDate.level > 0)
             {
                 basicsAttributePlusNum[w].enabled = true;
-                basicsAttributePlusNum[w].text = equipDate.strengthStrengthen.ToString();
+                basicsAttributePlusNum[w].text = "+" + equipDate.strengthStrengthen.ToString();
             }
             ++w;
         }
         if (equipDate.intelligence > 0)
         {
             basicsAttribute[w].SetActive(true);
-            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("intelligence");
+            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_intelligence");
             basicsAttributeNum[w].text = equipDate.intelligence.ToString();
             if (equipDate.level > 0)
             {
                 basicsAttributePlusNum[w].enabled = true;
-                basicsAttributePlusNum[w].text = equipDate.intelligenceStrengthen.ToString();
+                basicsAttributePlusNum[w].text = "+" + equipDate.intelligenceStrengthen.ToString();
             }
             w++;
         }
         if (equipDate.defense > 0)
         {
             basicsAttribute[w].SetActive(true);
-            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("defense");
+            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_defense");
             basicsAttributeNum[w].text = equipDate.defense.ToString();
             if (equipDate.level > 0)
             {
                 basicsAttributePlusNum[w].enabled = true;
-                basicsAttributePlusNum[w].text = equipDate.defenseStrengthen.ToString();
+                basicsAttributePlusNum[w].text = "+" + equipDate.defenseStrengthen.ToString();
             }
             w++;
         }
         if (equipDate.speed > 0)
         {
             basicsAttribute[w].SetActive(true);
-            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("speed");
+            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_speed");
             basicsAttributeNum[w].text = equipDate.speed.ToString();
             if (equipDate.level > 0)
             {
                 basicsAttributePlusNum[w].enabled = true;
-                basicsAttributePlusNum[w].text = equipDate.speedStrengthen.ToString();
+                basicsAttributePlusNum[w].text = "+" + equipDate.speedStrengthen.ToString();
             }
             w++;
         }
+        if (equip.stage < 3) //装备品级三阶以下不可镶嵌
+            gemPrompt.SetActive(true);
+        else
+        {
+            if (equip.gemList != null && equip.gemList.Count > 0)
+            {
+                gemPrompt.SetActive(false);
+                showGem(equip.stage, null, null, false);
+                EquipLevelData gemAttr;
+                for (int i = 0; i < equip.gemList.Count; i++)
+                {                   
+                    if (equip.gemList[i].gemId == "0")
+                    {
+                        gemAttribute[i].transform.GetComponent<Image>().enabled = true;
+                        gemAttribute[i].transform.FindChild("noKong").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotSet");
+                    }
+                    else
+                    {                        
+                        itemData = StaticDataMgr.Instance.GetItemData(equip.gemList[i].gemId);
+                        gemAttr = StaticDataMgr.Instance.GetEquipLevelData(itemData.gemId);
+                        showGem(0, gemAttr, gemAttribute[i], true);                        
+                    }    
+                }
+            }
+            else
+            {
+                gemPrompt.SetActive(false);
+                showGem(equip.stage, null, null, false);
+            }
+        }        
     }
     void Hide()
     {
@@ -147,9 +180,84 @@ public class UIEquipDetails : MonoBehaviour
         }
         for (int i = 0; i < gemAttribute.Length; i++)
         {
-            gemAttribute[i].SetActive(false);
+            gemAttribute[i].transform.FindChild("gemName").gameObject.SetActive(false);
+            gemAttribute[i].transform.FindChild("gemAttr1").gameObject.SetActive(false);
+            gemAttribute[i].transform.FindChild("gemAttr2").gameObject.SetActive(false);
+            gemAttribute[i].transform.FindChild("gem").gameObject.SetActive(false);
+            gemAttribute[i].transform.FindChild("noKong").gameObject.SetActive(false);
+            gemAttribute[i].transform.GetComponent<Image>().enabled = false;
+            gemAttribute[i].SetActive(false);     
         }        
         strengthenNum.enabled = false;
+    }
+
+    void showGem(int equipStage, EquipLevelData gemAttr, GameObject gem, bool isLoad)
+    {
+    	GameObject noKong;
+        if (!isLoad)
+        {
+            int j = 0;
+            //判断装备品级3阶有一个孔,4阶有两个孔,5阶有三个孔,6阶有四个孔
+            if (equipStage == 3) j = 1;
+            else if (equipStage == 4) j = 2;
+            else if (equipStage == 5) j = 3;
+            else if (equipStage == 6) j = 4;
+            for (int i = 0; i < j; i++)
+            {
+                gemAttribute[i].SetActive(true);
+                noKong = gemAttribute[i].transform.FindChild("noKong").gameObject;
+                noKong.gameObject.SetActive(true);
+                noKong.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotKong");
+            }
+        }
+        else
+        {
+            noKong = gem.transform.FindChild("noKong").gameObject;
+            noKong.gameObject.SetActive(false);
+            gemName = gem.transform.FindChild("gemName").gameObject;
+            gemName.gameObject.SetActive(true);
+            gem.transform.GetComponent<Image>().enabled = true;
+            gem.transform.FindChild("gem").gameObject.SetActive(true);
+            gemName.GetComponent<Text>().text = itemData.name;
+            gemAttrList[0] = gem.transform.FindChild("gemAttr1").gameObject;
+            gemAttrList[1] = gem.transform.FindChild("gemAttr2").gameObject;
+            int gemNum = 0;
+            if (gemAttr.health != 0)
+            {
+                if (gemNum > 1) return;
+                gemAttrList[gemNum].SetActive(true);//属性   +99999
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_health") + "   +" + gemAttr.health;
+                gemNum++;
+            }
+            if (gemAttr.strength != 0)
+            {
+                if (gemNum > 1) return;
+                gemAttrList[gemNum].SetActive(true);
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_strength") + "   +" + gemAttr.strength;
+                gemNum++;
+            }
+            if (gemAttr.intelligence != 0)
+            {
+                if (gemNum > 1) return;
+                gemAttrList[gemNum].SetActive(true);
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_intelligence") + "   +" + gemAttr.intelligence;
+                gemNum++;
+            }
+            if (gemAttr.defense != 0)
+            {
+                if (gemNum > 1) return;
+                gemAttrList[gemNum].SetActive(true);
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_defense") + "   +" + gemAttr.defense;
+                gemNum++;
+            }
+            if (gemAttr.speed != 0)
+            {
+                if (gemNum > 1) return;
+                gemAttrList[gemNum].SetActive(true);
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_speed") + "   +" + gemAttr.speed;
+                gemNum++;
+            }
+        }
     }
 
     void OnClick(GameObject go)

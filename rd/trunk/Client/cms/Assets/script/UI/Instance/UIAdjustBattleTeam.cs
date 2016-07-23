@@ -447,9 +447,7 @@ public class UIAdjustBattleTeam : UIBase
 		List<int> battleTeam = SaveBattleTeam ();
 		if (null == battleTeam || battleTeam.Count < 1) 
 		{
-			MsgBox.PromptMsg.Open(StaticDataMgr.Instance.GetTextByID("ui_tishi"),
-			                      StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"),
-			                      StaticDataMgr.Instance.GetTextByID("ui_queding"));
+			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"));
 		} 
 		else
 		{

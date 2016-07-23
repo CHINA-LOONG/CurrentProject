@@ -9,7 +9,6 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     public Text textLevel;
     public Image imgProIcon;
 
-    public Text text_Exp;
     public Text textExp;
     public Slider progressExp;
 
@@ -45,8 +44,6 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     void Start()
     {
         GameEventMgr.Instance.AddListener(PetViewConst.ReloadPetStageNotify, ReloadPetStage);
-
-        text_Exp.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftexperience);
 
         EventTriggerListener.Get(btnDetailAttr.gameObject).onClick = DetailAttrButtonDown;
         EventTriggerListener.Get(btnSkill.gameObject).onClick = SkillButtonDown;
@@ -95,9 +92,10 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
             monster = ResourceMgr.Instance.LoadAsset(unit.assetID);
             monster.transform.SetParent(petCamera.transform);
             monster.name = "monsterModel";
-            monster.transform.localPosition = new Vector3(0, -0.5f, 1.5f);
+            monster.transform.localPosition = new Vector3(0, -0.65f, 2.2f);
+            monster.transform.localEulerAngles = new Vector3(5.0f, 180, 0);
             monster.transform.localScale = Vector3.one;
-            monster.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, -180, transform.localEulerAngles.z);
+            //monster.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, -180, transform.localEulerAngles.z);
 
             modelImage.texture = petCamera.GetComponent<Camera>().targetTexture;
         }

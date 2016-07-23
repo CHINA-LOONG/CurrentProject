@@ -14,7 +14,7 @@ public class MonsterIcon : MonoBehaviour
 	public	Image	friendImage;
 	public	Image	selectImage;
 	public  Image  	maskImage;
-    public Image levelImage;
+  //  public Image levelImage;
 	public	Text	levelText;
 	public	Text	qualityText;
 	public Text 	nickNameText;
@@ -103,9 +103,18 @@ public class MonsterIcon : MonoBehaviour
 		if (plusQuality > 0)
 		{
 			temp = "+" + plusQuality.ToString();
+			Outline outLine = qualityText.gameObject.GetComponent<Outline>();
+			if(null != outLine)
+			{
+				outLine.effectColor = ColorConst.GetStageOutLineColor(quallity);
+			}
+			qualityText.color = ColorConst.GetStageTextColor(quallity);
 		}
 		qualityText.text = temp;
 	}
+
+
+
 	//--------------------------------------------------------------------------------------------------------------------
 	private	void	HideItems()
 	{
@@ -142,7 +151,7 @@ public class MonsterIcon : MonoBehaviour
 
 	public	void	SetLevel(int level,bool bshow=true)
 	{
-        levelImage.gameObject.SetActive(true);
+      //  levelImage.gameObject.SetActive(true);
 		levelText.gameObject.SetActive (true);
 		levelText.text = level.ToString ();
 	}

@@ -761,11 +761,9 @@ ultMantuoluo2Curlvl,{0}%法攻生命,{0}% of magic ATK HP
 ultHetong3Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultLonggongtongzi3Curlvl,{0}%法攻生命,{0}% of magic ATK HP
 ultLangren5Curlvl,{0}%物攻伤害,{0}% of physical ATK damage
-ultKairuisi5Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultNvyao5Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultHapi1Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultPiying5Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
-ultShuigui3Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
 attackMetalCutSlightNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
 attackMetalCutMediumNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
 attackMetalCutStrongNextlvl,{0}%物攻伤害,{0}% of physical ATK damage
@@ -897,11 +895,9 @@ ultMantuoluo2Nextlvl,{0}%法攻生命,{0}% of magic ATK HP
 ultHetong3Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultLonggongtongzi3Nextlvl,{0}%法攻生命,{0}% of magic ATK HP
 ultLangren5Nextlvl,{0}%物攻伤害,{0}% of physical ATK damage
-ultKairuisi5Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultNvyao5Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultHapi1Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultPiying5Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
-ultShuigui3Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 bossxiaoxiang28Muling21Name,抓挠,Swipe
 bossxiaoxiang28Muling22Name,震地,Earthquake
 bossxiaoxiang28Muling23Name,裂片,Splinter
@@ -1286,6 +1282,10 @@ ultWeitianshi5Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultMengyan5Nextlvl,{0}%物攻伤害,{0}% of physical ATK damage
 ultChange5Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultHuoniao3Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultDujiaoshou1Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultDujiaoshou1Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultDujiaoshou5Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
+ultDujiaoshou5Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultIfrit5Name,净化之焰,Cleansing Flame
 psvIfrit5Name,余震,Aftershock
 bosschaoxue51Langren51Name,重击,Smash

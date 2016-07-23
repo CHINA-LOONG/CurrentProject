@@ -9,6 +9,7 @@ import org.hawk.os.HawkException;
 import org.hawk.os.HawkOSOperator;
 
 import com.google.protobuf.ByteString;
+import com.hawk.game.protocol.SysProtocol.HSDataWarpper;
 
 public class GcMain {
 	public static void main(String[] args) {
@@ -56,7 +57,10 @@ public class GcMain {
 
 			while (true) {
 				for (GcSession session : sessions) {
-
+					HSDataWarpper.Builder builder = HSDataWarpper.newBuilder();
+					String value = HawkOSOperator.randomString(64);
+					builder.setData(ByteString.copyFrom(value, "utf-8"));
+					session.sendProtocol(HawkProtocol.valueOf(1, builder));
 				}
 				HawkOSOperator.osSleep(sleep);
 			}

@@ -141,7 +141,7 @@ public class IsApp extends HawkApp {
 								if (entity == null) {
 									entity = new IpAddrEntity();
 								}
-								serviceZmq.send(HawkOSOperator.objectToBytes(entity), 0);
+								serviceZmq.send(entity.toJson().getBytes(), 0);
 							}
 						}
 					}

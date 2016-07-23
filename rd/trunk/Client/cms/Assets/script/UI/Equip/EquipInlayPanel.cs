@@ -20,7 +20,6 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
     public Text textZhanli;
     public Text text_Desc;
 
-    public Text text_Material;
     public Image imgCoin;
     public Text textCoin;
     public Image imgMaterial;
@@ -29,6 +28,8 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
     public Text text_Tips;
     public Text text_Open;
     public Button btnOpen;
+    public GameObject objOpen;
+    public GameObject dontOpen;
 
     public IMosaicEquipCallBack ICallBackDelegate { get { return ICallBack; } }
 
@@ -42,13 +43,13 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
     private bool isMosaic=false;
     private bool isOpenmax=false;
 
-    public InlayGemItem[] mosaicItems = new InlayGemItem[4];
+    public InlayGemItem[] mosaicItems = new InlayGemItem[BattleConst.maxGemCount];
 
     void Start()
     {
         text_Zhanli.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_zhanli");
         text_Desc.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_openmax");
-        text_Material.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiaohao");
+        text_Desc.color = ColorConst.text_color_Req;
         text_Open.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_btnopen");
 
         EventTriggerListener.Get(btnOpen.gameObject).onClick = OnClickOpen;
@@ -76,11 +77,27 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
             itemIcon.RefreshWithEquipInfo(curData);
         }
 
+        if (curData.stage < BattleConst.minGemStage)
+        {
+            objOpen.SetActive(false);
+            dontOpen.SetActive(true);
+            return;
+        }
+        else
+        {
+            objOpen.SetActive(true);
+            dontOpen.SetActive(false);
+        }
+
         isMosaic = false;
         isOpenmax = true;
+
+        text_Desc.gameObject.SetActive(isOpenmax);
+        text_Tips.text = string.Format(StaticDataMgr.Instance.GetTextByID("equip_inlay_tips"), curData.stage - (BattleConst.minGemStage - 1));
+
         for (int i = 0; i < mosaicItems.Length; i++)
         {
-            mosaicItems[i].gameObject.SetActive((curData.stage - 3) >= i);
+            mosaicItems[i].gameObject.SetActive((curData.stage - BattleConst.minGemStage) >= i);
             if (curData.gemList.Count>i)
             {
                 mosaicItems[i].Reload(curData.gemList[i]);
@@ -99,15 +116,6 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
                 mosaicItems[i].SetSelectState(i == selIndex);
             }
         }
-
-        if (curData.stage<3)
-        {
-            Logger.Log("不能打孔");
-        }
-        else
-        {
-            text_Tips.text = string.Format(StaticDataMgr.Instance.GetTextByID("equip_inlay_tips"), curData.stage - 2);
-        }
         #region 消耗材料解析计算
         curProto = StaticDataMgr.Instance.GetEquipProtoData(curData.equipId, curData.stage);
         curProto.GetPunchDemand(ref curDemand);
@@ -122,11 +130,11 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
                 }
                 if (mineItem.count < curDemand[i].count)
                 {
-                    textMaterial.color = Color.red;
+                    textMaterial.color = ColorConst.text_color_nReq;
                 }
                 else
                 {
-                    textMaterial.color = Color.white;
+                    textMaterial.color = ColorConst.text_color_Req;
                 }
                 //TODO:set icon
                 imgMaterial.sprite = null;
@@ -138,14 +146,13 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
                 {
                     if (GameDataMgr.Instance.PlayerDataAttr.coin < curDemand[i].count)
                     {
-                        textCoin.color = Color.red;
+                        textCoin.color = ColorConst.text_color_nReq;
                     }
                     else
                     {
-                        textCoin.color = Color.white;
+                        textCoin.color = ColorConst.text_color_Req;
                     }
-                    //TODO:set icon
-                    imgCoin.sprite = null;
+                    imgCoin.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("icon_jinbi");
                     textCoin.text = curDemand[i].count.ToString();
                 }
                 else

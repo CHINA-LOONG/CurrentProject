@@ -42,12 +42,16 @@ public class PetDetailRightStage : PetDetailRightBase{
     {
         EventTriggerListener.Get(monster1Add.gameObject).onClick = OpenMonsterSelectUI;
         EventTriggerListener.Get(monster2Add.gameObject).onClick = OpenMonsterSelectUI;
+        EventTriggerListener.Get(monster1Icon.gameObject).onClick = OpenMonsterSelectUI;
         EventTriggerListener.Get(monster2Icon.gameObject).onClick = OpenMonsterSelectUI;
-        EventTriggerListener.Get(monster2Icon.gameObject).onClick = OpenMonsterSelectUI;
+    }
+
+    void OnEnable()
+    {
         BindListerner();
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
         UnBindListerner();
     }
@@ -62,11 +66,6 @@ public class PetDetailRightStage : PetDetailRightBase{
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_STAGE_UP_C.GetHashCode().ToString(), OnStageUpResponse);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_STAGE_UP_S.GetHashCode().ToString(), OnStageUpResponse);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public override void ReloadData(PetRightParamBase param)
@@ -105,11 +104,14 @@ public class PetDetailRightStage : PetDetailRightBase{
         levelValue.text = unitStageData.demandLevel.ToString();
         if (UIUtil.CheckIsEnoughLevel(m_unit) == false)
         {
-            levelValue.color = Color.red;
+            levelValue.color = ColorConst.text_color_nReq;
+            levelValue.GetComponent<Outline>().effectColor = ColorConst.outline_color_nReq;
         }
         else
         {
-            levelValue.color = Color.black;
+
+            levelValue.color = ColorConst.text_color_Req;
+            levelValue.GetComponent<Outline>().effectColor = ColorConst.outline_color_Req;
         }
 
         if ((UIUtil.NeedChangeGrade(m_unit.pbUnit.stage) == true && unitStageData.demandMonsterList.Count != 2) || unitStageData.demandItemList.Count != 2)

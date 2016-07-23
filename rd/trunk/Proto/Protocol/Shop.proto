@@ -18,6 +18,7 @@ message ShopData
 	required int32 type = 1;
 	required int32 shopId = 2;
 	repeated ShopItem itemInfos = 3;
+	required int32 refreshTimesLeft = 4;
 }
 
 // ------------------------------------------------------- protocol-----------------------------------------------------

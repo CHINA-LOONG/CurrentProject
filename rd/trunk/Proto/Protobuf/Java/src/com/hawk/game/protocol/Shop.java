@@ -1260,6 +1260,16 @@ public final class Shop {
      */
     com.hawk.game.protocol.Shop.ShopItemOrBuilder getItemInfosOrBuilder(
         int index);
+
+    // required int32 refreshTimesLeft = 4;
+    /**
+     * <code>required int32 refreshTimesLeft = 4;</code>
+     */
+    boolean hasRefreshTimesLeft();
+    /**
+     * <code>required int32 refreshTimesLeft = 4;</code>
+     */
+    int getRefreshTimesLeft();
   }
   /**
    * Protobuf type {@code ShopData}
@@ -1328,6 +1338,11 @@ public final class Shop {
                 mutable_bitField0_ |= 0x00000004;
               }
               itemInfos_.add(input.readMessage(com.hawk.game.protocol.Shop.ShopItem.PARSER, extensionRegistry));
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000004;
+              refreshTimesLeft_ = input.readInt32();
               break;
             }
           }
@@ -1441,10 +1456,27 @@ public final class Shop {
       return itemInfos_.get(index);
     }
 
+    // required int32 refreshTimesLeft = 4;
+    public static final int REFRESHTIMESLEFT_FIELD_NUMBER = 4;
+    private int refreshTimesLeft_;
+    /**
+     * <code>required int32 refreshTimesLeft = 4;</code>
+     */
+    public boolean hasRefreshTimesLeft() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 refreshTimesLeft = 4;</code>
+     */
+    public int getRefreshTimesLeft() {
+      return refreshTimesLeft_;
+    }
+
     private void initFields() {
       type_ = 0;
       shopId_ = 0;
       itemInfos_ = java.util.Collections.emptyList();
+      refreshTimesLeft_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1456,6 +1488,10 @@ public final class Shop {
         return false;
       }
       if (!hasShopId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRefreshTimesLeft()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1481,6 +1517,9 @@ public final class Shop {
       for (int i = 0; i < itemInfos_.size(); i++) {
         output.writeMessage(3, itemInfos_.get(i));
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(4, refreshTimesLeft_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1501,6 +1540,10 @@ public final class Shop {
       for (int i = 0; i < itemInfos_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, itemInfos_.get(i));
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, refreshTimesLeft_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1629,6 +1672,8 @@ public final class Shop {
         } else {
           itemInfosBuilder_.clear();
         }
+        refreshTimesLeft_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -1674,6 +1719,10 @@ public final class Shop {
         } else {
           result.itemInfos_ = itemInfosBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.refreshTimesLeft_ = refreshTimesLeft_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1722,6 +1771,9 @@ public final class Shop {
             }
           }
         }
+        if (other.hasRefreshTimesLeft()) {
+          setRefreshTimesLeft(other.getRefreshTimesLeft());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1732,6 +1784,10 @@ public final class Shop {
           return false;
         }
         if (!hasShopId()) {
+          
+          return false;
+        }
+        if (!hasRefreshTimesLeft()) {
           
           return false;
         }
@@ -2067,6 +2123,39 @@ public final class Shop {
           itemInfos_ = null;
         }
         return itemInfosBuilder_;
+      }
+
+      // required int32 refreshTimesLeft = 4;
+      private int refreshTimesLeft_ ;
+      /**
+       * <code>required int32 refreshTimesLeft = 4;</code>
+       */
+      public boolean hasRefreshTimesLeft() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int32 refreshTimesLeft = 4;</code>
+       */
+      public int getRefreshTimesLeft() {
+        return refreshTimesLeft_;
+      }
+      /**
+       * <code>required int32 refreshTimesLeft = 4;</code>
+       */
+      public Builder setRefreshTimesLeft(int value) {
+        bitField0_ |= 0x00000008;
+        refreshTimesLeft_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 refreshTimesLeft = 4;</code>
+       */
+      public Builder clearRefreshTimesLeft() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        refreshTimesLeft_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:ShopData)
@@ -6605,19 +6694,19 @@ public final class Shop {
       "\n\023Protocol/Shop.proto\"s\n\010ShopItem\022\014\n\004typ" +
       "e\030\001 \002(\005\022\016\n\006itemId\030\002 \002(\t\022\r\n\005count\030\003 \002(\005\022\r" +
       "\n\005stage\030\004 \001(\005\022\r\n\005level\030\005 \001(\005\022\014\n\004slot\030\006 \002" +
-      "(\005\022\016\n\006hasBuy\030\007 \002(\010\"F\n\010ShopData\022\014\n\004type\030\001" +
+      "(\005\022\016\n\006hasBuy\030\007 \002(\010\"`\n\010ShopData\022\014\n\004type\030\001" +
       " \002(\005\022\016\n\006shopId\030\002 \002(\005\022\034\n\titemInfos\030\003 \003(\0132" +
-      "\t.ShopItem\"\020\n\016HSShopDataInit\"1\n\021HSShopDa" +
-      "taInitRet\022\034\n\tshopDatas\030\001 \003(\0132\t.ShopData\"" +
-      "\035\n\rHSShopDataSyn\022\014\n\004type\030\001 \002(\005\"/\n\020HSShop" +
-      "DataSynRet\022\033\n\010shopData\030\001 \002(\0132\t.ShopData\"" +
-      "\035\n\rHSShopRefresh\022\014\n\004type\030\001 \002(\005\"/\n\020HSShop",
-      "RefreshRet\022\033\n\010shopData\030\001 \002(\0132\t.ShopData\"" +
-      ";\n\rHSShopItemBuy\022\014\n\004type\030\001 \002(\005\022\014\n\004slot\030\002" +
-      " \002(\005\022\016\n\006shopId\030\003 \002(\005\"\022\n\020HSShopItemBuyRet" +
-      "\"\021\n\017HSShopGold2Coin\")\n\022HSShopGold2CoinRe" +
-      "t\022\023\n\013changeCount\030\001 \002(\005B\030\n\026com.hawk.game." +
-      "protocol"
+      "\t.ShopItem\022\030\n\020refreshTimesLeft\030\004 \002(\005\"\020\n\016" +
+      "HSShopDataInit\"1\n\021HSShopDataInitRet\022\034\n\ts" +
+      "hopDatas\030\001 \003(\0132\t.ShopData\"\035\n\rHSShopDataS" +
+      "yn\022\014\n\004type\030\001 \002(\005\"/\n\020HSShopDataSynRet\022\033\n\010" +
+      "shopData\030\001 \002(\0132\t.ShopData\"\035\n\rHSShopRefre",
+      "sh\022\014\n\004type\030\001 \002(\005\"/\n\020HSShopRefreshRet\022\033\n\010" +
+      "shopData\030\001 \002(\0132\t.ShopData\";\n\rHSShopItemB" +
+      "uy\022\014\n\004type\030\001 \002(\005\022\014\n\004slot\030\002 \002(\005\022\016\n\006shopId" +
+      "\030\003 \002(\005\"\022\n\020HSShopItemBuyRet\"\021\n\017HSShopGold" +
+      "2Coin\")\n\022HSShopGold2CoinRet\022\023\n\013changeCou" +
+      "nt\030\001 \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -6635,7 +6724,7 @@ public final class Shop {
           internal_static_ShopData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_ShopData_descriptor,
-              new java.lang.String[] { "Type", "ShopId", "ItemInfos", });
+              new java.lang.String[] { "Type", "ShopId", "ItemInfos", "RefreshTimesLeft", });
           internal_static_HSShopDataInit_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSShopDataInit_fieldAccessorTable = new

@@ -48,6 +48,17 @@ public class HawkTime {
 	}
 
 	/**
+	 * 获取系统时间
+	 * 
+	 * @return
+	 */
+	public static Calendar getCalendar(long timeMs) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(timeMs);
+		return calendar;
+	}
+	
+	/**
 	 * 获取系统距1970年1月1日总毫秒
 	 * 
 	 * @return
@@ -62,8 +73,7 @@ public class HawkTime {
 	 * @return
 	 */
 	public static int getSeconds() {
-		//return (int) ((getCalendar().getTimeInMillis() + getMsOffset()) / 1000);
-		return (int) ((getCalendar().getTimeInMillis()) / 1000);
+		return (int) ((getCalendar().getTimeInMillis() + getMsOffset()) / 1000);
 	}
 
 	/**
@@ -74,7 +84,7 @@ public class HawkTime {
 	public static int getYearDay() {
 		return getCalendar().get(Calendar.DAY_OF_YEAR);
 	}
-
+	
 	/**
 	 * 获取一年中的周
 	 * 
@@ -83,7 +93,7 @@ public class HawkTime {
 	public static int getYearWeek() {
 		return getCalendar().get(Calendar.WEEK_OF_YEAR);
 	}
-
+	
 	/**
 	 * 获取系统当前时间
 	 * 
@@ -151,6 +161,9 @@ public class HawkTime {
 	 * @return
 	 */
 	public static boolean isToday(Date date) {
+		if(date == null) {
+			return false;
+		}
 		Calendar dt1 = getCalendar();
 		Calendar dt2 = getCalendar();
 		dt2.setTime(date);
@@ -181,6 +194,15 @@ public class HawkTime {
 	}
 
 	/**
+	 * 获取日期
+	 * 
+	 * @return
+	 */
+	public static Date getDate() {
+		return getCalendar().getTime();
+	}
+	
+	/**
 	 * 格式化日期
 	 * 
 	 * @return
@@ -199,7 +221,7 @@ public class HawkTime {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(calendar.getTime());
 	}
-
+	
 	/**
 	 * 字符串转换为日历格式
 	 * 
@@ -213,7 +235,7 @@ public class HawkTime {
 		} else { 
 			sdf = new SimpleDateFormat("yyyy-MM-dd");
 		}
-
+		
 		try {
 			sdf.parse(info);
 		} catch (ParseException e) {
@@ -221,7 +243,7 @@ public class HawkTime {
 		}
 		return sdf.getCalendar();
 	}
-
+	
 	/**
 	 * 获取两个日期之间的天数差
 	 * 
@@ -232,7 +254,7 @@ public class HawkTime {
 	public static int calendarDiff(Calendar cal1, Calendar cal2) {
 		return (cal1.get(Calendar.YEAR) - cal2.get(Calendar.YEAR)) * 365 - cal2.get(Calendar.DAY_OF_YEAR) + cal1.get(Calendar.DAY_OF_YEAR);
 	}
-
+	
 	/**
 	 * @return 获取第二天零点
 	 */
@@ -282,7 +304,7 @@ public class HawkTime {
 		Calendar calendar = getCalendar();
 		return getFirstDayOfWeek(calendar);
 	}
-
+	
 	/**
 	 * 获得当前这一周的第一天，中国是周一
 	 * 
@@ -302,8 +324,8 @@ public class HawkTime {
 		}
 		return calendar;
 	}
-
-
+	
+	
 	/**
 	 * 获得指定某个日期那一周的第一天，中国是周一
 	 * 
@@ -314,7 +336,7 @@ public class HawkTime {
 		calendar.setTime(date);
 		return getFirstDayOfWeek(calendar);
 	}
-
+	
 	/**
 	 * 获得指定某个日期那一周的第一天，中国是周一
 	 * 

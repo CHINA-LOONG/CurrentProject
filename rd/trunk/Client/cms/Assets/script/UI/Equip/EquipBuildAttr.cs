@@ -20,6 +20,7 @@ public class EquipBuildAttr : MonoBehaviour
         imgAdd.gameObject.SetActive(nextAttr - attr > 0);
         textAddAttr.gameObject.SetActive(nextAttr - attr > 0);
         textAddAttr.text = (nextAttr - attr).ToString();
+        textAddAttr.color = ColorConst.text_color_Req;
 
         switch (type)
         {

@@ -52,9 +52,8 @@ public class UIPetList :  UIBase, TabButtonDelegate
     {
         if (GameDataMgr.Instance.PlayerDataAttr.GetAllPet().Count >= GameConfig.MaxMonsterCount)
         {
-            MsgBox.PromptMsg.Open(StaticDataMgr.Instance.GetTextByID("ui_tishi"),
-                                  StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListFull),
-                                  StaticDataMgr.Instance.GetTextByID("ui_queding"));
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,
+			                      StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListFull));
         }
 
         title.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListTitle);

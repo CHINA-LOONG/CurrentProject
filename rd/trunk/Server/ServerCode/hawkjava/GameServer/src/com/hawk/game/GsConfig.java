@@ -71,6 +71,14 @@ public class GsConfig extends HawkAppCfg {
 	protected final boolean translate;
 
 	/**
+	 * 邮箱用户名
+	 */
+	protected final String emailUser;
+	/**
+	 * 邮箱密码
+	 */
+	protected final String emailPwd;
+	/**
 	 * 全局静态对象
 	 */
 	private static GsConfig instance = null;
@@ -101,6 +109,8 @@ public class GsConfig extends HawkAppCfg {
 		ipProxyAddr = "";
 		ipProxyTimeout = 1000;
 		translate = false;
+		emailUser = "";
+		emailPwd = "";
 	}
 
 	public String getGameId() {
@@ -161,6 +171,14 @@ public class GsConfig extends HawkAppCfg {
 
 	public boolean isTranslate() {
 		return translate;
+	}
+
+	public String getEmailUser() {
+		return emailUser;
+	}
+
+	public String getEmailPwd() {
+		return emailPwd;
 	}
 
 	@Override

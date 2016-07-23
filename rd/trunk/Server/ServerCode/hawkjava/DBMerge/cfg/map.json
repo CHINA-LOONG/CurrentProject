@@ -1,0 +1,134 @@
+{
+	"player.id":[
+		"alliance.playerId",
+		"arena.playerId",
+		"element.playerId",
+		"email.playerId",
+		"equip.playerId",
+		"friend.playerId",
+		"friend.playerIds:array_,",
+		"gm_recharge.playerId",
+		"recharge.playerId",
+		"honor_shop.playerId",
+		"item.playerId",
+		"login.playerId",
+		"map.playerId",
+		"map_statistics.playerId",
+		"gifts.playerId",
+		"player_activity.playerId",
+		"player_alliance.playerId",
+		"player_snapshot.playerId",
+		"player_talent.playerId",
+		"quest.playerId",
+		"recharge.playerId",
+		"role.playerId",
+		"role_ring.playerId",
+		"shop.playerId",
+		"skill.playerId",
+		"status.playerId",
+		"title.playerId",
+		"worship.playerId",
+		"player_alliance.palyerId",
+		"quest.playerId"
+	],
+	
+	"arena.playerId:pk_assign":[
+
+	],
+	
+	"map.playerId:pk_assign":[
+		
+	],
+	
+	"map_statistics.playerId:pk_assign":[
+		
+	],
+	
+	"player_talent.playerId:pk_assign":[
+		
+	],
+	
+	"email.id":[
+		
+	],
+	
+	"status.playerId:pk_assign":[
+		
+	],
+	
+	"title.id":[
+
+	],
+	
+	"worship.id":[
+
+	],
+	
+	"skill.id":[
+		"role.skill1",
+		"role.skill2",
+		"role.skill3",
+		"role.skill4",
+		"role.skill5",
+		"role.skill2idListStr:array_,",
+		"role.skill3idListStr:array_,",
+	],
+	
+	"item.id":[
+		"equip.gem1",
+		"equip.gem2",
+		"equip.gem3",
+		"equip.gem4"
+	],
+	
+	"equip.id":[
+		"role.equip1",
+		"role.equip2",
+		"role.equip3",
+		"role.equip4",
+		"role.equip5",
+		"role.equip6",
+		"role.equip7",
+		"role.equip8",
+		"role.equip9",
+		"role.equip10",
+	],
+	
+	"element.id":[
+		//表示elements是一个以，分割的array
+		"role.elements:array_,"
+	],
+	
+	"role.id":[
+		"role_ring.roleId",
+		"skill.roleId",
+	],
+	
+	"role_ring.id":[
+
+	],
+	
+	"gm_recharge.id":[
+
+	],
+	
+	"gifts.id":[
+
+	],
+	
+	"player_activity.id":[
+
+	],
+	
+	"alliance.id":[
+		"player_alliance.allianceId"
+	],
+	
+	"quest.id":[
+		
+	],
+	
+	"shop.playerId:pk_assign":[
+		
+	],
+}

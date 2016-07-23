@@ -75,9 +75,8 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
 
             if (error.errCode == (int)PB.monsterError.SKILL_POINT_NOT_ENOUGH)
             {
-                MsgBox.PromptMsg.Open(StaticDataMgr.Instance.GetTextByID("ui_tishi"),
-                                      StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillPointNotEnough),
-                                      StaticDataMgr.Instance.GetTextByID("ui_queding"));
+				MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,
+				                      StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillPointNotEnough));
             }
 
             return;

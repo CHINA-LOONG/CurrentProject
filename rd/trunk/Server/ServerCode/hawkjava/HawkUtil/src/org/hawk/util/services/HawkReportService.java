@@ -1,11 +1,14 @@
 package org.hawk.util.services;
 
 import java.io.UnsupportedEncodingException;
+import java.net.SocketTimeoutException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -21,7 +24,7 @@ import org.hawk.os.HawkException;
 import org.hawk.os.HawkOSOperator;
 import org.hawk.os.HawkTime;
 import org.hawk.script.HawkScriptManager;
-import org.hawk.util.HawkTickable;
+import org.hawk.thread.HawkThread;
 import org.hawk.zmq.HawkZmq;
 import org.hawk.zmq.HawkZmqManager;
 import org.omg.CORBA.IntHolder;
@@ -33,7 +36,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author hawk
  */
-public class HawkReportService extends HawkTickable {
+public class HawkReportService extends HawkThread {
 	/**
 	 * 调试日志对象
 	 */
@@ -82,16 +85,18 @@ public class HawkReportService extends HawkTickable {
 		public String puid;
 		public String device;
 		public int playerId;
+		public int playerLevel;		
 		public int period;
 		public String time;
 
 		public LoginData() {
 		}
 
-		public LoginData(String puid, String device, int playerId, int period, String time) {
+		public LoginData(String puid, String device, int playerId, int playerLevel, int period, String time) {
 			this.puid = puid;
 			this.device = device;
 			this.playerId = playerId;
+			this.playerLevel = playerLevel;
 			this.period = period;
 			this.time = time;
 		}
@@ -108,27 +113,35 @@ public class HawkReportService extends HawkTickable {
 		public int playerId;
 		public String playerName;
 		public int playerLevel;
-		public String orderId;
+		public String myOrder;
+		public String pfOrder;
 		public String productId;
+		public int orderMoney;
 		public int payMoney;
+		public int addGold;
+		public int giftGold;
 		public String currency;
 		public String time;
 
 		public RechargeData() {
-			this.currency = "RMB";
+			this.currency = "rmb";
 			this.productId = "0";
 			this.time = HawkTime.getTimeString();
 		}
 
-		public RechargeData(String puid, String device, int playerId, String playerName, int playerLevel, String orderId, String productId, int payMoney, String currency, String time) {
+		public RechargeData(String puid, String device, int playerId, String playerName, int playerLevel, String myOrder, String pfOrder, String productId, int orderMoney, int payMoney, int addGold, int giftGold, String currency, String time) {
 			this.puid = puid;
 			this.device = device;
 			this.playerId = playerId;
 			this.playerName = playerName;
 			this.playerLevel = playerLevel;
-			this.orderId = orderId;
+			this.myOrder = myOrder;
+			this.pfOrder = pfOrder;
 			this.productId = productId;
+			this.orderMoney = orderMoney;
 			this.payMoney = payMoney;
+			this.addGold = addGold;
+			this.giftGold = giftGold;
 			this.currency = currency;
 			this.time = time;
 		}
@@ -153,16 +166,32 @@ public class HawkReportService extends HawkTickable {
 			this.playerLevel = playerLevel;
 		}
 
-		public void setOrderId(String orderId) {
-			this.orderId = orderId;
+		public void setMyOrder(String myOrder) {
+			this.myOrder = myOrder;
 		}
 
+		public void setPfOrder(String pfOrder) {
+			this.pfOrder = pfOrder;
+		}
+		
 		public void setProductId(String productId) {
 			this.productId = productId;
 		}
 		
+		public void setOrderMoney(int orderMoney) {
+			this.orderMoney = orderMoney;
+		}
+		
 		public void setPayMoney(int payMoney) {
 			this.payMoney = payMoney;
+		}
+
+		public void setAddGold(int addGold) {
+			this.addGold = addGold;
+		}
+		
+		public void setGiftGold(int giftGold) {
+			this.giftGold = giftGold;
 		}
 
 		public void setCurrency(String currency) {
@@ -301,7 +330,70 @@ public class HawkReportService extends HawkTickable {
 	}
 	
 	/**
-	 * 上报服务器数据
+	 * 上报活动数据
+	 * 
+	 * @author hawk
+	 */
+	public static class ActivityData {
+		public String puid;
+		public String device;
+		public int playerId;
+		public int playerLevel;
+		public int activityId;
+		public int activityNo;
+		public int consumeGold;
+		public String time;
+
+		public ActivityData() {
+			this.time = HawkTime.getTimeString();
+		}
+
+		public ActivityData(String puid, String device, int playerId, int playerLevel, int activityId, int activityNo, int consumeGold, String time) {
+			this.puid = puid;
+			this.device = device;
+			this.playerId = playerId;
+			this.playerLevel = playerLevel;
+			this.activityId = activityId;
+			this.activityNo = activityNo;
+			this.consumeGold = consumeGold;
+			this.time = time;
+		}
+
+		public void setPuid(String puid) {
+			this.puid = puid;
+		}
+
+		public void setDevice(String device) {
+			this.device = device;
+		}
+
+		public void setPlayerId(int playerId) {
+			this.playerId = playerId;
+		}
+
+		public void setPlayerLevel(int playerLevel) {
+			this.playerLevel = playerLevel;
+		}
+
+		public void setActivityId(int activityId) {
+			this.activityId = activityId;
+		}
+
+		public void setActivityNo(int activityNo) {
+			this.activityNo = activityNo;
+		}
+
+		public void setConsumeGold(int consumeGold) {
+			this.consumeGold = consumeGold;
+		}
+
+		public void setTime(String time) {
+			this.time = time;
+		}
+	}
+	
+	/**
+	 * 上报充值数据
 	 * 
 	 * @author hawk
 	 */
@@ -418,6 +510,7 @@ public class HawkReportService extends HawkTickable {
 	private static final String loginPath = "/report_login";
 	private static final String rechargePath = "/report_recharge";
 	private static final String goldPath = "/report_gold";
+	private static final String activityPath = "/report_activity";
 	private static final String tutorialPath = "/report_tutorial";
 	private static final String serverPath = "/report_server";
 	private static final String commonPath = "/report_data";
@@ -425,13 +518,14 @@ public class HawkReportService extends HawkTickable {
 	private static final String fetchAccountServerPath = "/fetch_accountServer";
 	
 	// 所有的query都能添加token作为服务器校验令牌
-	private static final String rechargeQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playername=%s&playerlevel=%d&orderid=%s&productid=%s&pay=%d&currency=%s&time=%s";
+	private static final String rechargeQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playername=%s&playerlevel=%d&myorder=%s&pforder=%s&productid=%s&ordermoney=%d&paymoney=%d&addgold=%d&giftgold=%d&currency=%s&time=%s";
 	private static final String goldQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playerlevel=%d&changetype=%d&changeaction=%s&goldtype=%d&gold=%d&time=%s";
 	private static final String tutorialQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playerlevel=%d&step=%d&args=%s&time=%s";
 	private static final String registerQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&time=%s";
-	private static final String loginQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&period=%d&time=%s";
-	private static final String serverQuery = "game=%s&platform=%s&server=%s&ip=%s&folder=%s&listen_port=%d&script_port=%d&dburl=%s&dbuser=%s&dbpwd=%s";
+	private static final String loginQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playerlevel=%d&period=%d&time=%s";
+	private static final String serverQuery = "game=%s&platform=%s&server=%s&ip=%s&localip=%s&folder=%s&listen_port=%d&script_port=%d&dburl=%s&dbuser=%s&dbpwd=%s";
 	private static final String commonQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&time=%s";
+	private static final String activityQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playerlevel=%d&activityid=%d&activityno=%d&consumegold=%d&time=%s";
 	private static final String fetchAccountServerQuery = "game=%s&platform=%s&server=%s&channel=%s";
 	/**
 	 * 服务器信息
@@ -451,6 +545,11 @@ public class HawkReportService extends HawkTickable {
 	private GetMethod getMethod = null;
 
 	/**
+	 * 本服务器对象
+	 */
+	ServerData serverData = null;
+	
+	/**
 	 * zmq对象
 	 */
 	private HawkZmq reportZmq = null;
@@ -461,6 +560,16 @@ public class HawkReportService extends HawkTickable {
 	private Lock reportLock = null;
 	List<Object> reportDatas = null;
 
+	/**
+	 * 接口使用标记
+	 */
+	private Map<String, Boolean> reportClass;
+	
+	/**
+	 * 服务是否可用
+	 */
+	private boolean serviceEnable = true;
+	
 	/**
 	 * 实例对象
 	 */
@@ -482,23 +591,36 @@ public class HawkReportService extends HawkTickable {
 	 * 构造函数
 	 */
 	private HawkReportService() {
-		httpClient = null;
-		getMethod = null;
-		reportLock = new ReentrantLock();
-		reportDatas = new LinkedList<Object>();
-
-		if (HawkApp.getInstance() != null) {
-			HawkApp.getInstance().addTickable(this);
-		}
+		this.httpClient = null;
+		this.getMethod = null;
+		this.reportLock = new ReentrantLock();
+		this.reportDatas = new LinkedList<Object>();
+		this.reportClass = new HashMap<String, Boolean>();
+		this.setName(this.getClass().getSimpleName());
 	}
 
 	/**
-	 * 获取host地址
-	 * 
-	 * @return
+	 * 线程执行
 	 */
-	public String getHostIp() {
-		return myHostIp;
+	@Override
+	public void run() {
+		state = ThreadState.STATE_RUNNING;
+		while (running) {
+			try {
+				if (reportDatas.size() > 0) {
+					onTick();
+				} else {
+					HawkOSOperator.sleep();
+				}
+				
+				// 等待退出
+				if (waitBreak) {
+					break;
+				}
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
+		}
 	}
 	
 	/**
@@ -560,6 +682,10 @@ public class HawkReportService extends HawkTickable {
 			return false;
 		}
 
+		// 开启线程
+		if (!isRunning()) {
+			start();
+		}
 		return true;
 	}
 
@@ -568,7 +694,7 @@ public class HawkReportService extends HawkTickable {
 	 */
 	protected boolean initInnerService(HawkAppCfg appCfg) {
 		int reportZmqPort = 0;
-		myHostIp = appCfg.getHostIp();
+		myHostIp = HawkApp.getInstance().getMyHostIp();
 		String reportInfo = fetchReportInfo();
 		try {
 			if (reportInfo != null && reportInfo.length() > 0) {
@@ -577,6 +703,7 @@ public class HawkReportService extends HawkTickable {
 				JSONObject jsonObject = JSONObject.fromObject(reportInfo);
 				if (jsonObject.containsKey("myIp")) {
 					myHostIp = (String) jsonObject.get("myIp");
+					HawkApp.getInstance().setMyHostIp(myHostIp);
 				}
 
 				if (jsonObject.containsKey("zmqPort")) {
@@ -619,11 +746,13 @@ public class HawkReportService extends HawkTickable {
 		}
 		
 		String userDir = System.getProperty("user.dir");
-		userDir = userDir.replace('/', '+').replace('\\', '+');
-		String queryParam = String.format(serverQuery, gameName, platform, serverId, myHostIp, userDir,
-				appCfg.getAcceptorPort(), scriptHttpPort, 
+		userDir = userDir.replace('/', '#').replace('\\', '#');
+		String queryParam = String.format(serverQuery, gameName, platform, serverId, 
+				myHostIp, HawkOSOperator.getLocalIp(), userDir, appCfg.getAcceptorPort(), scriptHttpPort, 
 				appCfg.getDbConnUrl(), appCfg.getDbUserName(), appCfg.getDbPassWord());
 
+		serverData = new ServerData(myHostIp, appCfg.getAcceptorPort(), scriptHttpPort, appCfg.getDbConnUrl(), appCfg.getDbUserName(), appCfg.getDbPassWord());
+		
 		try {
 			queryParam = URLEncoder.encode(queryParam, "UTF-8");
 			getMethod.setPath(serverPath);
@@ -673,6 +802,14 @@ public class HawkReportService extends HawkTickable {
 	}
 
 	/**
+	 * 获取本服务器的自身上报信息
+	 * 
+	 * @return
+	 */
+	public ServerData getServerData() {
+		return serverData;
+	}
+	/**
 	 * 获取账号服务器的地址和端口
 	 * 
 	 * @return
@@ -709,6 +846,14 @@ public class HawkReportService extends HawkTickable {
 		}
 		
 		return true;
+	}
+	/**
+	 * 开启或关闭服务
+	 * 
+	 * @param enable
+	 */
+	public void enableService(boolean enable) {
+		this.serviceEnable = enable;
 	}
 	
 	/**
@@ -751,6 +896,29 @@ public class HawkReportService extends HawkTickable {
 	}
 
 	/**
+	 * 设置接口可用
+	 * 
+	 * @param report
+	 * @param enable
+	 */
+	public void enableReport(String report, boolean enable) {
+		reportClass.put(report, enable);
+	}
+	
+	/**
+	 * 上报接口是否可用
+	 * 
+	 * @param report
+	 * @return
+	 */
+	public boolean isReportEnable(String report) {
+		if (reportClass.containsKey(report)) {
+			return reportClass.get(report);
+		}
+		return true;
+	}
+	
+	/**
 	 * 执行http请求
 	 * 
 	 * @param path
@@ -790,6 +958,8 @@ public class HawkReportService extends HawkTickable {
 			for (int i = 0; i < retryTimes; i++) {
 				try {
 					return httpClient.executeMethod(getMethod);
+				} catch (SocketTimeoutException ste) {
+					HawkOSOperator.sleep();
 				} catch (Exception e) {
 					HawkException.catchException(e);
 					HawkOSOperator.sleep();
@@ -856,6 +1026,20 @@ public class HawkReportService extends HawkTickable {
 	}
 
 	/**
+	 * 活动统计
+	 * 
+	 * @param activityData
+	 */
+	public void report(ActivityData activityData) {
+		reportLock.lock();
+		try {
+			reportDatas.add(activityData);
+		} finally {
+			reportLock.unlock();
+		}
+	}
+	
+	/**
 	 * 新手指引统计
 	 * 
 	 * @param goldData
@@ -908,6 +1092,11 @@ public class HawkReportService extends HawkTickable {
 	 * @return
 	 */
 	private boolean doReport(RegisterData registerData) {
+		// 接口类是否可用
+		if (!isReportEnable(RegisterData.class.getSimpleName())) {
+			return true;
+		}
+		
 		if (isValid()) {
 			try {
 				String queryParam = String.format(registerQuery, gameName, platform, serverId, registerData.puid, 
@@ -936,10 +1125,15 @@ public class HawkReportService extends HawkTickable {
 	 * @return
 	 */
 	private boolean doReport(LoginData loginData) {
+		// 接口类是否可用
+		if (!isReportEnable(LoginData.class.getSimpleName())) {
+			return true;
+		}
+		
 		if (isValid()) {
 			try {
 				String queryParam = String.format(loginQuery, gameName, platform, serverId, loginData.puid, loginData.device, 
-						loginData.playerId, loginData.period, 
+						loginData.playerId, loginData.playerLevel, loginData.period, 
 						(loginData.time == null || loginData.time.length() <= 0) ? HawkTime.getTimeString() : loginData.time);
 
 				queryParam = URLEncoder.encode(queryParam, "UTF-8");
@@ -964,11 +1158,17 @@ public class HawkReportService extends HawkTickable {
 	 * @return
 	 */
 	private boolean doReport(RechargeData rechargeData) {
+		// 接口类是否可用
+		if (!isReportEnable(RechargeData.class.getSimpleName())) {
+			return true;
+		}
+		
 		if (isValid()) {
 			try {
 				String queryParam = String.format(rechargeQuery, gameName, platform, serverId, rechargeData.puid, 
 						rechargeData.device, rechargeData.playerId, rechargeData.playerName, rechargeData.playerLevel, 
-						rechargeData.orderId, rechargeData.productId, rechargeData.payMoney, rechargeData.currency, 
+						rechargeData.myOrder, rechargeData.pfOrder, rechargeData.productId, 
+						rechargeData.orderMoney, rechargeData.payMoney, rechargeData.addGold, rechargeData.giftGold, rechargeData.currency, 
 						(rechargeData.time == null || rechargeData.time.length() <= 0) ? HawkTime.getTimeString() : rechargeData.time);
 
 				queryParam = URLEncoder.encode(queryParam, "UTF-8");
@@ -993,6 +1193,11 @@ public class HawkReportService extends HawkTickable {
 	 * @return
 	 */
 	private boolean doReport(GoldData goldData) {
+		// 接口类是否可用
+		if (!isReportEnable(GoldData.class.getSimpleName())) {
+			return true;
+		}
+		
 		if (isValid()) {
 			try {
 				String queryParam = String.format(goldQuery, gameName, platform, serverId, goldData.puid, goldData.device, 
@@ -1018,10 +1223,49 @@ public class HawkReportService extends HawkTickable {
 	/**
 	 * 上报数据
 	 * 
+	 * @param activityData
+	 * @return
+	 */
+	private boolean doReport(ActivityData activityData) {
+		// 接口类是否可用
+		if (!isReportEnable(ActivityData.class.getSimpleName())) {
+			return true;
+		}
+		
+		if (isValid()) {
+			try {
+				String queryParam = String.format(activityQuery, gameName, platform, serverId, activityData.puid, activityData.device, 
+						activityData.playerId, activityData.playerLevel, 
+						activityData.activityId, activityData.activityNo, activityData.consumeGold, 
+						(activityData.time == null || activityData.time.length() <= 0) ? HawkTime.getTimeString() : activityData.time);
+
+				queryParam = URLEncoder.encode(queryParam, "UTF-8");
+
+				reportLogger.info("report: " + activityPath + "?" + queryParam);
+
+				int status = executeMethod(activityPath, queryParam);
+				if (status == HttpStatus.SC_OK) {
+					return true;
+				}
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * 上报数据
+	 * 
 	 * @param goldData
 	 * @return
 	 */
 	private boolean doReport(TutorialData tutorialData) {
+		// 接口类是否可用
+		if (!isReportEnable(TutorialData.class.getSimpleName())) {
+			return true;
+		}
+		
 		if (isValid()) {
 			try {
 				String queryParam = String.format(tutorialQuery, gameName, platform, serverId, tutorialData.puid, tutorialData.device, 
@@ -1050,10 +1294,18 @@ public class HawkReportService extends HawkTickable {
 	 * @return
 	 */
 	private boolean doReport(ServerData serverData) {
+		// 接口类是否可用
+		if (!isReportEnable(ServerData.class.getSimpleName())) {
+			return true;
+		}
+		
 		if (isValid()) {
 			try {
-				String queryParam = String.format(serverQuery, gameName, platform, serverId, serverData.ip, serverData.listenPort, 
-						serverData.scriptPort, serverData.dbUrl, serverData.dbUser, serverData.dbPwd);
+				String userDir = System.getProperty("user.dir");
+				userDir = userDir.replace('/', '#').replace('\\', '#');
+				String queryParam = String.format(serverQuery, gameName, platform, serverId, 
+						serverData.ip, HawkOSOperator.getLocalIp(), userDir, serverData.listenPort, serverData.scriptPort, 
+						serverData.dbUrl, serverData.dbUser, serverData.dbPwd);
 
 				queryParam = URLEncoder.encode(queryParam, "UTF-8");
 
@@ -1077,6 +1329,11 @@ public class HawkReportService extends HawkTickable {
 	 * @return
 	 */
 	private boolean doReport(CommonData commonData) {
+		// 接口类是否可用
+		if (!isReportEnable(CommonData.class.getSimpleName())) {
+			return true;
+		}
+		
 		if (isValid()) {
 			try {
 				String queryParam = String.format(commonQuery, gameName, platform, serverId, 
@@ -1107,7 +1364,6 @@ public class HawkReportService extends HawkTickable {
 	/**
 	 * 帧更新上报数据
 	 */
-	@Override
 	public void onTick() {
 		if (reportDatas.size() > 0) {
 			// 取出队列首个上报数据对象
@@ -1119,6 +1375,11 @@ public class HawkReportService extends HawkTickable {
 				reportLock.unlock();
 			}
 
+			// 先判断服务是否可用
+			if (!serviceEnable) {
+				return;
+			}
+			
 			// 数据上报操作
 			try {
 				if (gameName.length() > 0 && platform.length() > 0) {
@@ -1130,6 +1391,8 @@ public class HawkReportService extends HawkTickable {
 						doReport((RechargeData) reportData);
 					} else if (reportData instanceof GoldData) {
 						doReport((GoldData) reportData);
+					} else if (reportData instanceof ActivityData) {
+						doReport((ActivityData) reportData);
 					} else if (reportData instanceof TutorialData) {
 						doReport((TutorialData) reportData);
 					} else if (reportData instanceof CommonData) {
@@ -1152,10 +1415,5 @@ public class HawkReportService extends HawkTickable {
 				}
 			}
 		}
-	}
-
-	@Override
-	public String getName() {
-		return this.getClass().getSimpleName();
 	}
 }

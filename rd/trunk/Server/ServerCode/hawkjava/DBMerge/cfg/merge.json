@@ -1,0 +1,73 @@
+{
+	"servers":[
+		{
+			"serverId":"1",
+			"dbUrl":"jdbc:mysql://127.0.0.1:3306/wow?useUnicode=true&characterEncoding=UTF-8",
+			"dbUserName":"root",
+			"dbPassword":"123456"
+		}
+	],
+	
+	"target":{
+		"serverId":"100",
+		"dbUrl":"jdbc:mysql://127.0.0.1:3306/legend_target?useUnicode=true&characterEncoding=UTF-8",
+		"dbUserName":"root",
+		"dbPassword":"123456"
+	},
+	
+	"sqlPacketSize":"524288",
+	"srcPrepareSql":[
+	],
+	
+	"dstPrepareSql":
+	[
+		"truncate table alliance                ;",
+		"truncate table alliance_battle_info    ;",
+		"truncate table alliance_battle_item    ;",
+		"truncate table alliance_fight_unit     ;",
+		"truncate table alliance_fight_versus   ;",
+		"truncate table arena                   ;",
+		"truncate table camp                    ;",
+		"truncate table campwar                 ;",
+		"truncate table campwar_auto            ;",
+		"truncate table daily_statistics        ;",
+		"truncate table element                 ;",
+		"truncate table email                   ;",
+		"truncate table equip                   ;",
+		"truncate table expedition_armory       ;",
+		"truncate table friend                  ;",
+		"truncate table gifts                   ;",
+		"truncate table gm_recharge             ;",
+		"truncate table honor_shop              ;",
+		"truncate table item                    ;",
+		"truncate table login                   ;",
+		"truncate table map                     ;",
+		"truncate table map_statistics          ;",
+		"truncate table msg                     ;",
+		"truncate table multi_elite_report      ;",
+		"truncate table multi_elite_room        ;",
+		"truncate table player                  ;",
+		"truncate table player_activity         ;",
+		"truncate table player_alliance         ;",
+		"truncate table player_snapshot         ;",
+		"truncate table player_talent           ;",
+		"truncate table player_world_boss       ;",
+		"truncate table quest                   ;",
+		"truncate table recharge                ;",
+		"truncate table role                    ;",
+		"truncate table role_ring               ;",
+		"truncate table server_timelimit        ;",
+		"truncate table serverdata              ;",
+		"truncate table shop                    ;",
+		"truncate table skill                   ;",
+		"truncate table status                  ;",
+		"truncate table team                    ;",
+		"truncate table team_battle_cache       ;",
+		"truncate table team_battle_report      ;",
+		"truncate table title                   ;",
+		"truncate table world_boss              ;",
+		"truncate table worship                 ;"
+	],
+	
+	"dstAfterSql":""
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/HawkUtil"/>
 	<classpathentry kind="lib" path="/HawkUtil/lib/commons-configuration-1.9.jar"/>
 	<classpathentry kind="lib" path="/HawkUtil/lib/commons-lang-2.6.jar"/>

@@ -125,4 +125,9 @@ public class IpAddrEntity implements Serializable {
 	public String toPrintString() {
 		return String.format("%s-%s[%s]", beginIp, endIp, position);
 	}
+	
+	public String toJson() {
+		return String.format("{'id':'%d','province':'%d','position':'%s','city':'%d'}", 
+				this.id, this.province, this.position, this.city);
+	}
 }

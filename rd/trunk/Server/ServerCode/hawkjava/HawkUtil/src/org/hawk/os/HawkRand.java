@@ -22,21 +22,14 @@ public class HawkRand {
 	private static int State = -1;
 
 	/**
-	 * 
-	 */
-	public static void setSeed(long seed) {
-		Random random = new Random(seed);
-		State = random.nextInt();
-	}
-	
-	/**
 	 * 随机整数
 	 * 
 	 * @return
 	 */
 	public static int randInt() {
 		if (State < 0) {
-			setSeed(System.currentTimeMillis());
+			Random random = new Random(HawkTime.getMillisecond());
+			State = random.nextInt();
 		}
 
 		int tmpState = A * (State % Q) - R * (State / Q);

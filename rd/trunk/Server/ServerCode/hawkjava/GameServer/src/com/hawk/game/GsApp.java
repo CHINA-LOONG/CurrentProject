@@ -171,7 +171,7 @@ public class GsApp extends HawkApp {
 						HawkLog.logPrintln("register game server");
 						try {
 							// TODO
-							String ip = HawkReportService.getInstance().getHostIp();
+							String ip = getMyHostIp();
 							if (ip.equals("127.0.0.1") || ip.equals("123.126.3.94")) {
 								ip = InetAddress.getLocalHost().getHostAddress();
 							}

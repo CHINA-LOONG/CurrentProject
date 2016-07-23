@@ -6,11 +6,9 @@ import java.util.Map;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 
-import com.google.gson.JsonObject;
 import com.hawk.collector.Collector;
 import com.hawk.collector.db.DBManager;
 import com.hawk.collector.http.CollectorHttpServer;
-import com.hawk.collector.zmq.CollectorZmqServer;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -21,7 +19,7 @@ import com.sun.net.httpserver.HttpHandler;
  */
 public class ReportServerInfoHandler implements HttpHandler {
 	/**
-	 * 格式: game=%s&platform=%s&server=%s&ip=%s&listen_port=%d&script_port=%d&dburl=%s&dbuser=%s&dbpwd=%s
+	 * 格式: game=%s&platform=%s&server=%s&ip=%s&localip=%s&folder=%s&listen_port=%d&script_port=%d&dburl=%s&dbuser=%s&dbpwd=%s
 	 */
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
@@ -33,7 +31,6 @@ public class ReportServerInfoHandler implements HttpHandler {
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		} finally {
-			
 			CollectorHttpServer.response(httpExchange, null);
 		}
 	}
@@ -46,22 +43,27 @@ public class ReportServerInfoHandler implements HttpHandler {
 			
 			String folder = "";
 			if (params.containsKey("folder")) {
-				folder = (String)params.get("folder");
-				folder = folder.replace('+', '/');
+				folder = (String) params.get("folder");
+				folder = folder.replace('#', '/');
 			}
 			
-			String value = String.format("'%s', '%s', '%s', '%s', '%s', %s, %s, '%s', '%s', '%s'", 
+			String localIp = "127.0.0.1";
+			if (params.containsKey("localip")) {
+				localIp = (String) params.get("localip");
+			}
+			
+			String value = String.format("'%s', '%s', '%s', '%s', '%s', '%s', %s, %s, '%s', '%s', '%s'", 
 					params.get("game"), params.get("platform"), params.get("server"), 
-					remoteIp, folder, params.get("listen_port"), params.get("script_port"), 
+					remoteIp, localIp, folder, params.get("listen_port"), params.get("script_port"), 
 					params.get("dburl"), params.get("dbuser"), params.get("dbpwd"));
 			
 			HawkLog.logPrintln("report_server: " + value);
 			
 			// 优先更新
 			String sql = String.format("UPDATE server SET "
-					+ "ip = '%s', folder = '%s', listen_port = %s, script_port = %s, dburl = '%s', dbuser = '%s', dbpwd = '%s' "
+					+ "ip = '%s', localip = '%s', folder = '%s', listen_port = %s, script_port = %s, dburl = '%s', dbuser = '%s', dbpwd = '%s' "
 					+ "WHERE game = '%s' AND platform = '%s' AND server = '%s'", 
-					remoteIp, folder, params.get("listen_port"), params.get("script_port"), 
+					remoteIp, localIp, folder, params.get("listen_port"), params.get("script_port"), 
 					params.get("dburl"), params.get("dbuser"), params.get("dbpwd"),
 					params.get("game"), params.get("platform"), params.get("server"));
 			
@@ -70,7 +72,7 @@ public class ReportServerInfoHandler implements HttpHandler {
 			}
 			
 			// 更新失败即插入记录
-			sql = String.format("INSERT INTO server(game, platform, server, ip, folder, listen_port, script_port, dburl, dbuser, dbpwd) VALUES(%s);", value);
+			sql = String.format("INSERT INTO server(game, platform, server, ip, localip, folder, listen_port, script_port, dburl, dbuser, dbpwd) VALUES(%s);", value);
 			DBManager.getInstance().executeSql(params.get("game"), sql);
 		}
 	}

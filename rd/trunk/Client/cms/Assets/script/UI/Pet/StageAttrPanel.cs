@@ -5,36 +5,37 @@ using System.Collections;
 public class StageAttrPanel : MonoBehaviour {
 
     public MonsterIcon icon;
-    public Text  phyValue;
-    public Text  strengthValue;
-    public Text  inteligenceValue;
-    public Text  defenceValue;
-    public Text  speedValue;
+    public Text text_PH;
+    public Text text_STR;
+    public Text text_INT;
+    public Text text_DEF;
+    public Text text_SPD;
+    public Text textPHValue;
+    public Text textSTRValue;
+    public Text textINTValue;
+    public Text textDEFValue;
+    public Text textSPDValue;
 
-	// Use this for initialization
-	void Start () {
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    void OnDestroy()
-    { 
+    void Start()
+    {
+        text_PH.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
+        text_STR.text = StaticDataMgr.Instance.GetTextByID("common_attr_strenth");
+        text_INT.text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
+        text_DEF.text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
+        text_SPD.text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
     }
+
 
     public void ReloadData(GameUnit unit, int stage)
     {
         int health, strength, inteligence, defence, speed;
         UIUtil.GetAttrValue(unit, stage, out health, out strength, out inteligence, out defence, out speed);
 
-        phyValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrHealth), health);
-        strengthValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrDefence), strength);
-        defenceValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrSpeed), defence);
-        inteligenceValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrStrenth), inteligence);
-        speedValue.text = string.Format(StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftAttrIntelligence), speed);
+        textPHValue.text = health.ToString();
+        textSTRValue.text =  strength.ToString();
+        textDEFValue.text =  defence.ToString();
+        textINTValue.text =  inteligence.ToString();
+        textSPDValue.text = speed.ToString();
 
         icon.Init();
         icon.SetId(unit.pbUnit.guid.ToString());

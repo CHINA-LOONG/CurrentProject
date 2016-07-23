@@ -11,7 +11,8 @@ public interface IClickUsedEquip
 
 public class EquipListItem : MonoBehaviour
 {
-
+    public Transform transIcon;
+    private ItemIcon equipIcon;
     public Text textName;
     public Text textType;
     public Text textZhanli;
@@ -54,7 +55,15 @@ public class EquipListItem : MonoBehaviour
         info.equipInfo = StaticDataMgr.Instance.GetEquipProtoData(data.equipId, data.stage);
         info.itemInfo=StaticDataMgr.Instance.GetItemData(data.equipId);
 
-        //TODO:set equip icon
+        if (equipIcon == null)
+        {
+            equipIcon = ItemIcon.CreateItemIcon(info.equipData);
+            UIUtil.SetParentReset(equipIcon.transform, transIcon);
+        }
+        else
+        {
+            equipIcon.RefreshWithEquipInfo(info.equipData);
+        }
 
         textName.text = StaticDataMgr.Instance.GetTextByID(info.itemInfo.name);
         textType.text = StaticDataMgr.Instance.GetTextByID(info.itemInfo.type.ToString());//TODO:subType;

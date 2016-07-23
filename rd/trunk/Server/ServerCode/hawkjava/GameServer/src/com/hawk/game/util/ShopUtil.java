@@ -36,8 +36,10 @@ public class ShopUtil {
 	public static ShopData.Builder generateShopData(Player player, int shopType) {
 		ShopData.Builder response = ShopData.newBuilder();
 		ShopEntity shopEntity = player.getPlayerData().getShopEntity();
+		ShopCfg shopCfg = ShopCfg.getShopCfg(shopType, player.getLevel());
 		response.setType(shopType);
 		response.setShopId(shopEntity.getShopId(shopType));
+		response.setRefreshTimesLeft(shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(shopType));
 		for (ShopItemInfo element : shopEntity.getShopItemsList(shopType)) {
 			ShopItem.Builder shopItem = ShopItem.newBuilder();
 			shopItem.setType(element.getType());

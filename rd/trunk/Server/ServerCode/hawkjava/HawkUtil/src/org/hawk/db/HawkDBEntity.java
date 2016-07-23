@@ -1,6 +1,6 @@
 package org.hawk.db;
 
-import java.io.Serializable;
+import java.util.Date;
 import java.util.Calendar;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -11,8 +11,7 @@ import org.hawk.os.HawkTime;
  * 
  * @author hawk
  */
-@SuppressWarnings("serial")
-public abstract class HawkDBEntity implements Serializable {
+public abstract class HawkDBEntity {
 	/**
 	 * 实体状态
 	 */

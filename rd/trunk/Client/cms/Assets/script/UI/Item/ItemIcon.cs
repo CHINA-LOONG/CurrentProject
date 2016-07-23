@@ -122,9 +122,11 @@ public class ItemIcon : MonoBehaviour
 			equipLevel = equipInfo.level;
 
 			SetEquipLevelText(equipLevel,stage);
+			SetItemCountText(-1);
 		}
 		else 
 		{
+			SetEquipLevelText(-1,0);
 			stage = itemStaticData.grade;
 			itemCount = itemInfo.count;
 
@@ -162,7 +164,14 @@ public class ItemIcon : MonoBehaviour
 			equipLevelText.text = "";
 			return;
 		}
-		equipLevelText.text = string.Format ("<color={0}>+{1}</color>", GetColorWithStage(stage), equipLevel);
+		equipLevelText.text = string.Format ("+{0}",equipLevel);
+		equipLevelText.color = ColorConst.GetStageTextColor (stage);
+
+		Outline ol = equipLevelText.gameObject.GetComponent<Outline> ();
+		if (null != ol)
+		{
+			ol.effectColor = ColorConst.GetStageOutLineColor(stage);
+		}
 	}
 
 	private void SetItemCountText(int itemCount)
@@ -179,24 +188,5 @@ public class ItemIcon : MonoBehaviour
 	{
 		pieceImage.gameObject.SetActive (bShow);
 	}
-
-	private	string GetColorWithStage(int stage)
-	{
-		switch(stage)
-		{
-		case 1:
-			return "#dededeff";
-		case 2:
-			return "#5cc639ff";
-		case 3:
-			return "#1b85ffff";
-		case 4:
-			return "#d130a5ff";
-		case 5:
-			return "#ef7131ff";
-		case 6:
-			return "#d31c1dff";
-		}
-		return "#dededeff";
-	}
+	
 }

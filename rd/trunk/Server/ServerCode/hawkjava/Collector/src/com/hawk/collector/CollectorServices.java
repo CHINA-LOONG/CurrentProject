@@ -222,6 +222,15 @@ public class CollectorServices {
 				threadPool = conf.getInt("database.threads");
 			}
 			
+			// 设置校验码
+			if (conf.containsKey("httpserver.token")) {
+				Collector.setToken(conf.getString("httpserver.token"));
+			}
+			
+			if (conf.containsKey("httpserver.userlog")) {
+				Collector.setUserLogEnable(conf.getBoolean("httpserver.userlog"));
+			}
+			
 			// 初始化数据库
 			initOK &= DBManager.getInstance().init(conf.getString("database.dbHost"), conf.getString("database.userName"), conf.getString("database.passWord"), threadPool);
 			if (initOK) {
@@ -246,11 +255,6 @@ public class CollectorServices {
 				HawkLog.logPrintln("Setup HttpServer Failed, " + conf.getString("httpserver.addr") + ":" + conf.getInt("httpserver.port"));
 			}
 
-			// 设置校验码
-			if (conf.containsKey("httpserver.token")) {
-				Collector.setToken(conf.getString("httpserver.token"));
-			}
-			
 			// 初始化zmq服务器
 			if (conf.containsKey("zmqserver.addr")) {
 				initOK &= CollectorZmqServer.getInstance().setup(conf.getString("zmqserver.addr"), conf.getInt("zmqserver.pool"));
@@ -327,9 +331,9 @@ public class CollectorServices {
 	 * @return
 	 */
 	public boolean createGamePlatform(GamePlatform gamePlatform) {
-		String sql = String.format("INSERT INTO game(game, platform, channel, logUserName, logUserPwd, logPath, sshPort, time) VALUES('%s', '%s', '%s', '%s', '%s', '%s', %d, '%s');", 
+		String sql = String.format("INSERT INTO game(game, platform, channel, logUserName, logUserPwd, logPath, sshPort, time) VALUES('%s', '%s', '%s', '%s', '%s', '%s', %s, '%s');", 
 				gamePlatform.getGame(), gamePlatform.getPlatform(), gamePlatform.getChannel(), 
-				gamePlatform.getLogUserName(), gamePlatform.getLogUserPwd(), gamePlatform.getLogPath(), Integer.valueOf(gamePlatform.getSshPort()), HawkTime.getTimeString());
+				gamePlatform.getLogUserName(), gamePlatform.getLogUserPwd(), gamePlatform.getLogPath(), gamePlatform.getSshPort(), HawkTime.getTimeString());
 
 		HawkLog.logPrintln(String.format("create_game, game: %s, platform: %s, channel: %s, logUserName: %s, logUserPwd: %s, logPath: %s, sshPort: %s", 
 				gamePlatform.getGame(), gamePlatform.getPlatform(), gamePlatform.getChannel(), 
@@ -411,7 +415,7 @@ public class CollectorServices {
 	}
 	
 	public static String getChannelFromPuid(String puid) {
-		int pos = puid.lastIndexOf("_");
+		int pos = puid.indexOf("_");
 		if (pos > 0) {
 			return puid.substring(0, pos).toLowerCase();
 		}

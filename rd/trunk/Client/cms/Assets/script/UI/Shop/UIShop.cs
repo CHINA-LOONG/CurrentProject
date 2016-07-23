@@ -110,13 +110,15 @@ public class UIShop : UIBase
 		ShopDataMgr.ShopDescWithLevel desc = shopDataMgr.GetShopDesc (GameDataMgr.Instance.PlayerDataAttr.level, curShopType);
 		if (hasRefreshCount == desc.maxRefreshTimes) 
 		{
-			MsgBox.PromptMsg.Open("提示","今天刷新次数已经用完","确定");
+			//MsgBox.PromptMsg.Open("提示","今天刷新次数已经用完","确定");
+			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,"今天刷新次数已经用完");
 			return;
 		}
 
 		if (GameDataMgr.Instance.PlayerDataAttr.gold < 5)
 		{
-			MsgBox.PromptMsg.Open("提示","钻石不足","确定");
+			//MsgBox.PromptMsg.Open("提示","钻石不足","确定");
+			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,"钻石不足");
 			return;
 		}
 

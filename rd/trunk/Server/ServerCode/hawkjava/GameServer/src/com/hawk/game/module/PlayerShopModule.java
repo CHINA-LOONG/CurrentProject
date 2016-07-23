@@ -18,7 +18,6 @@ import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
-import com.hawk.game.protocol.Const.shopType;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Shop.HSShopDataInit;
 import com.hawk.game.protocol.Shop.HSShopDataInitRet;

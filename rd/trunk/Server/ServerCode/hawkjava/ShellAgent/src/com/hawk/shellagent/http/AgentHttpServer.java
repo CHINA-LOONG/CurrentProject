@@ -51,7 +51,7 @@ public class AgentHttpServer {
 	public boolean setup(String addr, int port, int pool) {
 		try {
 			if (addr != null && addr.length() > 0) {
-				httpServer = HttpServer.create(new InetSocketAddress(addr, port), 0);
+				httpServer = HttpServer.create(new InetSocketAddress(addr, port), 100);
 				httpServer.setExecutor(Executors.newFixedThreadPool(pool));
 
 				installContext();
