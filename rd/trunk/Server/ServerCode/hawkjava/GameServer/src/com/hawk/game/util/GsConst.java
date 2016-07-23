@@ -30,16 +30,16 @@ public class GsConst {
 	public static final String EQUIP_GEM_NONE = "0";
 	// 聊天最大长度
 	public static final int MAX_IM_CHAT_LENGTH = 500;
-	// 翻译系统appId
-	//public static final String TRANSLATE_APP_ID = "hawk";
-	// 翻译系统模式
-	//public static final String TRANSLATE_MODE = "s2s";
-	// 翻译系统cache更新时间间隔秒数
-	//public static final int TRANSLATE_CACHE_TIME = 10 * 60;
 	// 没有语言
 	public static final String TRANSLATE_LANGUAGE_NULL = "";
 	// 默认语言
 	public static final String DEFAULT_LANGUAGE = "en";
+	// 宠物消耗自身
+	public static final String MONSTER_CONSUME_SELF = "self";
+	// 用卡检测字段
+	public static final String MONTH_CARD = "month";
+	// 月卡时长
+	public static final int MONTH_CARD_TIME = 30;
 	
 	/**
 	 * 对象类型
@@ -63,6 +63,8 @@ public class GsConst {
 		public static final int APP = 1;
 		// 即时通讯
 		public static final int IM = 2;
+		// 商店
+		public static final int SHOP = 3;
 	}
 
 	/**
@@ -261,5 +263,18 @@ public class GsConst {
 		public static final int ALLIANCE_POS_COMMON = 0;
 		public static final int ALLIANCE_POS_COPYMAIN = 1;
 		public static final int ALLIANCE_POS_MAIN = 2;
+	}
+	
+	// 翻译系统，敏感词选项
+	public static class Profanity {
+		public static final String OFF = "off";
+		public static final String STOP = "stop";
+		public static final String CENSOR = "censor";
+	}
+
+	// 翻译系统，文本类型
+	public static class TextType {
+		public static final String CHAT = "chat";
+		public static final String MAIL= "mail";
 	}
 }

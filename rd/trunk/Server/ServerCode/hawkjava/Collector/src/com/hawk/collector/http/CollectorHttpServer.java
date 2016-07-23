@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.BindException;
 import java.net.InetSocketAddress;
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -248,12 +247,12 @@ public class CollectorHttpServer {
 			}
 			
 			if (uriQuery != null && uriQuery.length() > 0) {
-				uriQuery = URLDecoder.decode(uriQuery, "UTF-8");
 				HawkLog.logPrintln("UriQuery: " + uriPath + "?" + uriQuery);
 				if (uriQuery != null) {
 					String[] querys = uriQuery.split("&");
 					for (String query : querys) {
-						String[] pair = query.split("=");
+						// param maybe empty string, use -1
+						String[] pair = query.split("=", -1);
 						if (pair.length == 2) {
 							paramMap.put(pair[0], pair[1]);
 						}

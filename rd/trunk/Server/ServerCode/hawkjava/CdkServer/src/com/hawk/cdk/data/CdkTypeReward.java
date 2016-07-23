@@ -125,6 +125,7 @@ public class CdkTypeReward {
 		String[] params = info.split("&");
 		if (params != null && params.length >= 4) {
 			for (String param : params) {
+				// ignore empty param
 				String[] kv = param.split("=");
 				if (kv != null && kv.length == 2 && kv[0].length() > 0 && kv[1].length() > 0) {
 					if ("game".equals(kv[0])) {

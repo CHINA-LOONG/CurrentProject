@@ -18,6 +18,8 @@ import org.hawk.os.HawkTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import sun.awt.image.OffScreenImage;
+
 import com.hawk.game.config.MonsterStageCfg;
 import com.hawk.game.config.SkillUpPriceCfg;
 import com.hawk.game.entity.MonsterEntity;
@@ -274,7 +276,12 @@ public class PlayerMonsterModule extends PlayerModule {
 		
 		// 验证怪物消耗
 		List<ItemInfo> demandMonsterList = new LinkedList<>(stageCfg.getDemandMonsterList());
-
+		for (ItemInfo element : demandMonsterList) {
+			if (element.getItemId().equals(GsConst.MONSTER_CONSUME_SELF)) {
+				element.setItemId(monsterEntity.getCfgId());
+			}
+		}
+		
 		List<MonsterEntity> consumeMonsterList = new ArrayList<>();
 		for (int id : consumeMonsterIdList) {
 			MonsterEntity consumeMonsterEntity = player.getPlayerData().getMonsterEntity(id);

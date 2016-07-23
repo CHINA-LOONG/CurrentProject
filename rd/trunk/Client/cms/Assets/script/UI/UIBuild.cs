@@ -14,6 +14,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public Button m_QuestButton;
     public Button m_SpeechButton;
 	public Button shopButton;
+	public Button	exchangeButton;
     public InputField m_SpeechInput;
 
     public PopupList m_LangPopup;
@@ -42,6 +43,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         EventTriggerListener.Get(m_SpeechButton.gameObject).onClick = OnSpeechButtonClick;
         EventTriggerListener.Get(btnMail.gameObject).onClick = OnMailButtonClick;
 		EventTriggerListener.Get (shopButton.gameObject).onClick = OnShopButtonClick;
+		EventTriggerListener.Get (exchangeButton.gameObject).onClick = OnExchangeButtonclick;
 
         m_LangPopup.Initialize<PopupListIndextDelegate>(this);
         m_LangPopup.AddItem((int)Language.Chinese, StaticDataMgr.Instance.GetTextByID("ui_chinese"));
@@ -126,6 +128,11 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 	void OnShopButtonClick( GameObject go)
 	{
 		OpenShop ((int)PB.shopType.NORMALSHOP);
+	}
+
+	void OnExchangeButtonclick(GameObject go)
+	{
+		UICoinExchange.Open ();
 	}
 
     void OnSpeechButtonClick(GameObject go)

@@ -16,6 +16,13 @@ public class UIPetList :  UIBase, TabButtonDelegate
     public ScrollRect scrollView;
     public GameObject content;
 
+    public Text textOption_0;
+    public Text textOption_1;
+    public Text textOption_2;
+    public Text textOption_3;
+    public Text textOption_4;
+    public Text textOption_5;
+
     int m_currentIndex = 0;
     GridLayoutGroup m_patContainer = null;
     private List<GameUnit> m_typeList = new List<GameUnit>();
@@ -32,7 +39,12 @@ public class UIPetList :  UIBase, TabButtonDelegate
     {
         EventTriggerListener.Get(closeButton.gameObject).onClick = CloseButtonDown;
 
-        GameEventMgr.Instance.AddListener(PetViewConst.ReloadPetStageNotify, ReloadPetList);
+        textOption_0.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_all");
+        textOption_1.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_property1");
+        textOption_2.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_property2");
+        textOption_3.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_property3");
+        textOption_4.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_property4");
+        textOption_5.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_property5");
 
         // 默认选中第一栏
         tabGroup.InitWithDelegate(this);
@@ -43,10 +55,16 @@ public class UIPetList :  UIBase, TabButtonDelegate
     {
         ShowScrollIcon();
     }
+    void OnEnable()
+    {
+        GameEventMgr.Instance.AddListener(PetViewConst.ReloadPetStageNotify, ReloadPetList);
+        GameEventMgr.Instance.AddListener(PetViewConst.ReloadPetEquipNotify, ReloadPetList);
+    }
 
-    void OnDestroy()
+    void OnDisable()
     {
         GameEventMgr.Instance.RemoveListener(PetViewConst.ReloadPetStageNotify, ReloadPetList);
+        GameEventMgr.Instance.RemoveListener(PetViewConst.ReloadPetEquipNotify, ReloadPetList);
     }
     public override void Init()
     {

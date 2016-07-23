@@ -190,7 +190,15 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 今日领取体力次数
 	@Column(name = "fatigueClaimCountDaily", nullable = false)
 	private int fatigueClaimCountDaily = 0;
-
+	
+	// 商品充值次数记录
+	@Column(name = "rechargeRecord", nullable = false)
+	private String rechargeRecordJson = "";
+	
+	// 刷新时间
+	@Column(name = "monthCardEndTime")
+	private Calendar monthCardEndTime = null;
+	
 	// 刷新时间
 	@Column(name = "refreshTime")
 	private String refreshTime = null;
@@ -233,6 +241,8 @@ public class StatisticsEntity  extends HawkDBEntity {
 	protected Map<Integer, Integer> monsterStageMap = new HashMap<Integer, Integer>();
 	@Transient
 	protected Map<Integer, Integer> monsterLevelMap = new HashMap<Integer, Integer>();
+	@Transient
+	protected Map<String, Integer> rechargeRecordMap = new HashMap<String, Integer> ();
 	// 最后普通副本所属章节
 	@Transient
 	protected int normalChapter = 0;
@@ -412,6 +422,34 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public void setMonsterCountOverLevel(int level, int count) {
 		monsterLevelMap.put(level, count);
+	}
+
+	public int getRechargeTime(String productId){
+		if (rechargeRecordMap.containsKey(productId)) {
+			return rechargeRecordMap.get(productId);
+		}
+		
+		return 0;
+	}
+	
+	public void AddRechargeRecord(String productId) {
+		if (rechargeRecordMap.containsKey(productId)) {
+			rechargeRecordMap.put(productId, rechargeRecordMap.get(productId) + 1);
+		}
+		else{
+			rechargeRecordMap.put(productId, 1);
+		}	
+	}
+	
+	public Calendar getMonthCardEndTime() {
+		return monthCardEndTime;
+	}
+
+	public void addMonthCard() {
+		if (this.monthCardEndTime == null || HawkTime.getCalendar().compareTo(this.monthCardEndTime) > 0) {
+			this.monthCardEndTime = HawkTime.getCalendar();
+		}
+		this.monthCardEndTime.add(Calendar.DATE, GsConst.MONTH_CARD_TIME);
 	}
 
 	public int getMonsterMaxCount() {
@@ -717,7 +755,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 	public int getHardInstanceIndex() {
 		return hardIndex;
 	}
-
+	
 	@Override
 	public boolean decode() {
 		if (refreshTime != null && false == "".equals(refreshTime) && false == "null".equals(refreshTime)) {
@@ -754,6 +792,9 @@ public class StatisticsEntity  extends HawkDBEntity {
 		}
 		if (monsterLevelJson != null && false == "".equals(monsterLevelJson) && false == "null".equals(monsterLevelJson)) {
 			monsterLevelMap = HawkJsonUtil.getJsonInstance().fromJson(monsterLevelJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
+		}
+		if (rechargeRecordJson != null && false == "".equals(rechargeRecordJson) && false == "null".equals(rechargeRecordJson)) {
+			rechargeRecordMap = HawkJsonUtil.getJsonInstance().fromJson(rechargeRecordJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
 		
 		// 0表示未开始任何章节
@@ -801,6 +842,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 		instanceCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(instanceCountDailyMap);
 		monsterStageJson = HawkJsonUtil.getJsonInstance().toJson(monsterStageMap);
 		monsterLevelJson = HawkJsonUtil.getJsonInstance().toJson(monsterLevelMap);
+		rechargeRecordJson = HawkJsonUtil.getJsonInstance().toJson(rechargeRecordMap);
 		
 		refreshStringMap.clear();
 		for (Map.Entry<Integer, Calendar> entry : refreshTimeMap.entrySet()) {

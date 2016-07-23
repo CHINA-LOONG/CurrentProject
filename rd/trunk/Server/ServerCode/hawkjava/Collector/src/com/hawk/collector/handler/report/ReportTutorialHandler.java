@@ -39,7 +39,7 @@ public class ReportTutorialHandler implements HttpHandler {
 	public static void doReport(Map<String, String> params) throws Exception {
 		if (params != null) {
 			String time = params.containsKey("time")? params.get("time") : HawkTime.getTimeString();
-			String value = String.format("'%s', '%s', '%s', '%s', '%s', '%s', %s, %s, %s, '%s', '%s', '%s'", 
+			String value = String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s, %s, %s, \"%s\", \"%s\", \"%s\"", 
 					params.get("game"), params.get("platform"), params.get("server"), 
 					CollectorServices.getChannelFromPuid(params.get("puid")), params.get("puid"), 
 					params.get("device"), params.get("playerid"), params.get("playerlevel"), 
@@ -49,7 +49,7 @@ public class ReportTutorialHandler implements HttpHandler {
 			HawkLog.logPrintln("report_tutorial: " + value);
 			
 			// 优先更新
-			String sql = String.format("UPDATE tutorial SET step = %d, args = '%s', playerlevel = %d, time = '%s', date = '%s' WHERE game = '%s' AND platform = '%s' AND server = '%s' AND puid = '%s'",
+			String sql = String.format("UPDATE tutorial SET step = %d, args = \"%s\", playerlevel = %d, time = \"%s\", date = \"%s\" WHERE game = \"%s\" AND platform = \"%s\" AND server = \"%s\" AND puid = \"%s\"",
 					Integer.valueOf(params.get("step")), params.get("args"), Integer.valueOf(params.get("playerlevel")), time, time.substring(0, 10),
 					params.get("game"), params.get("platform"), params.get("server"), params.get("puid"));
 			

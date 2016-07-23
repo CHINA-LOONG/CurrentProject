@@ -199,6 +199,7 @@ public class EquipEntity extends HawkDBEntity {
 		for (GemInfo element : gemDressList) {
 			if (element.getType() == type && element.getGemId().equals(GsConst.EQUIP_GEM_NONE)) {
 				element.setGemId(gemId);
+				break;
 			}
 		}
 	}
@@ -208,6 +209,7 @@ public class EquipEntity extends HawkDBEntity {
 		for (GemInfo element : gemDressList) {
 			if (element.getGemId().equals(gemId) == true) {
 				element.setGemId(GsConst.EQUIP_GEM_NONE);
+				break;
 			}
 		}
 	}
@@ -217,6 +219,7 @@ public class EquipEntity extends HawkDBEntity {
 		for (GemInfo element : gemDressList) {
 			if (element.getGemId().equals(oldGemId) == true) {
 				element.setGemId(newgemId);
+				break;
 			}
 		}
 	}

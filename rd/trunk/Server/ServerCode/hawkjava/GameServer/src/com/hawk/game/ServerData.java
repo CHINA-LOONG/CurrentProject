@@ -1,7 +1,10 @@
 package com.hawk.game;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -43,6 +46,10 @@ public class ServerData {
 	 */
 	protected Map<Integer, Integer> playerMap;
 	/**
+	 * 所有玩家列表
+	 */
+	protected Set<String> rechargeList;
+	/**
 	 * 在线玩家列表
 	 */
 	protected Map<Integer, Integer> onlineMap;
@@ -83,6 +90,7 @@ public class ServerData {
 		playerMap = new ConcurrentHashMap<Integer, Integer>();
 		onlineMap = new ConcurrentHashMap<Integer, Integer>();
 		disablePhoneMap = new ConcurrentHashMap<String, String>();
+		rechargeList = Collections.synchronizedSet(new HashSet<String>());
 		lastShowTime = HawkTime.getSeconds();
 	}
 
@@ -116,6 +124,19 @@ public class ServerData {
 			return false;
 		}
 
+		// 从db拉取玩家puid和id的映射表
+		try {
+			HawkLog.logPrintln("load orderSerial from db......");
+			List<Object> rowInfos = HawkDBManager.getInstance().executeQuery("select orderSerial from recharge");
+			for (Object rowInfo : rowInfos) {
+				addOrderSerial((String)rowInfo);
+			}
+		} catch (Exception e) {
+			HawkException.catchException(e);
+			return false;
+		}
+
+		
 		// 从db拉取玩家name和id的映射表
 		try {
 			HawkLog.logPrintln("load nickname and playerId from db......");
@@ -215,7 +236,23 @@ public class ServerData {
 	public boolean isExistPlayer(int playerId) {
 		return playerMap.containsKey(playerId);
 	}
+	
+	/**
+	 * 增加order
+	 * @param 
+	 */
+	public void addOrderSerial(String orderSerial) {
+		rechargeList.add(orderSerial);
+	}
 
+	/**
+	 * 是否order
+	 */
+	public boolean isExistOrder(String orderSerial) {
+		return rechargeList.contains(orderSerial);
+	}
+	
+	
 	/**
 	 * 是否存在名字
 	 * @param name

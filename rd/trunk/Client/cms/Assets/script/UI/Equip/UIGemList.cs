@@ -45,6 +45,11 @@ public class UIGemList : MonoBehaviour,IXiangQianCallBack
         foreach (var item in itemList)
         {
             itemStatic = StaticDataMgr.Instance.GetItemData(item.Value.itemId);
+            if (itemStatic==null)
+            {
+                Logger.LogError("缺少物品配置:"+item.Value.itemId);
+                return;
+            }
             if (itemStatic.type==3&&itemStatic.gemType==gemType)
             {
                 infos.Add(new GemInfo() { itemData = item.Value, itemInfo = itemStatic });

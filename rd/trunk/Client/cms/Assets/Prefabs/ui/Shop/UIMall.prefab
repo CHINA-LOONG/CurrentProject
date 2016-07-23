@@ -407,7 +407,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 180}
+  m_CellSize: {x: 280, y: 280}
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 2
   m_ConstraintCount: 2
@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef8a256af1f83d48b49f95f3034c90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mViewType: 0
+  mViewType: 1
   mallNameText: {fileID: 11449430}
   closeButton: {fileID: 11405644}
   itemScrollView: {fileID: 11406050}
@@ -996,8 +996,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22430040}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
+  m_AnchorMin: {x: 0, y: .5}
+  m_AnchorMax: {x: 0, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: .5}

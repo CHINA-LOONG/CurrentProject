@@ -69,10 +69,10 @@ public class UIMail : UIBase,TabButtonDelegate
         SetMailCount();
 
         if (mailCount >= 300)
-           // MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_youxiangyiman"), StaticDataMgr.Instance.GetTextByID("mail_queding"));
+           // MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_youxiangyiman"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
 			MsgBox.PromptMsg.Open (MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID ("mail_youxiangyiman"));
         else if (mailCount >= 280)
-            //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_youxiangjiangman"), StaticDataMgr.Instance.GetTextByID("mail_queding"));
+            //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_youxiangjiangman"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
 			MsgBox.PromptMsg.Open (MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID ("mail_youxiangjiangman"));
     }
 
@@ -131,16 +131,16 @@ public class UIMail : UIBase,TabButtonDelegate
         if (result.status==0)
         {
             GameDataMgr.Instance.PlayerDataAttr.gameMailData.ClearMail();
-           // MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_002"), StaticDataMgr.Instance.GetTextByID("mail_queding"));
+            // MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_002"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
 			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,StaticDataMgr.Instance.GetTextByID("mail_record_002"));
         }
         else
         {
             if (result.status == (int)PB.mailError.MAIL_COIN_FULL)
-                //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_003"), StaticDataMgr.Instance.GetTextByID("mail_queding"));
+                //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_003"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
 				MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,StaticDataMgr.Instance.GetTextByID("mail_record_003"));
             else if (result.status == (int)PB.mailError.MAIL_GOLD_FULL)
-                //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_004"), StaticDataMgr.Instance.GetTextByID("mail_queding"));
+                //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_004"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
 				MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,StaticDataMgr.Instance.GetTextByID("mail_record_004"));
             foreach (var mailId in result.receiveMailId)
             {
@@ -162,7 +162,7 @@ public class UIMail : UIBase,TabButtonDelegate
                 OnMailChanged();
                 readMail = null;
             }
-//MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_001"), StaticDataMgr.Instance.GetTextByID("mail_queding"));
+            //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_001"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
 			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,StaticDataMgr.Instance.GetTextByID("mail_record_001"));
             return;
         }

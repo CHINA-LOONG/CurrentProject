@@ -11,6 +11,7 @@ public class PlayerData : MonoBehaviour
 	public	int	exp;
 	public	int	gold;//钻石
 	public	long coin;//金币
+	public	int	gonghuiCoin;//公会币
 	public	int	gender;
 	public	int	eye;
 	public	int	hair;

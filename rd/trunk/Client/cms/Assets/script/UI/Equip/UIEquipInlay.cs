@@ -11,6 +11,11 @@ public interface IEquipInlayCallBack
 
 public class UIEquipInlay : UIBase, TabButtonDelegate, IEquipPanelBaseCallBack
 {
+    //public enum State
+    //{
+    //    PetUI,
+    //    Setting
+    //}
 
     public const string AssetName = "UIEquipInlay";
 
@@ -29,19 +34,19 @@ public class UIEquipInlay : UIBase, TabButtonDelegate, IEquipPanelBaseCallBack
     public Text tabBuild;
     public Text tabMosaic;
 
-    public enum UIType
+    public enum State
     {
-        Right,
-        Left
+        PetUI,
+        Setting
     }
-    private UIType type;
-    public UIType uiType
+    private State type;
+    public State uiType
     {
         get { return type; }
         set 
         { 
             type = value;
-            if (type==UIType.Right)
+            if (type==State.PetUI)
             {
                 TabGroup.gameObject.SetActive(true); 
                 uiInlayPanel.SetActive(true);
@@ -79,7 +84,7 @@ public class UIEquipInlay : UIBase, TabButtonDelegate, IEquipPanelBaseCallBack
         uiPanel.ForEach(delegate(EquipPanelBase item) { item.ICallBack = this; });
     }
 
-    public void Refresh(EquipData data, int index, int select,UIType type)
+    public void Refresh(EquipData data, int index, int select,State type)
     {
         equipData = data;
         selIndex = (select == -1 ? selIndex : select);
@@ -90,7 +95,7 @@ public class UIEquipInlay : UIBase, TabButtonDelegate, IEquipPanelBaseCallBack
         }
         else
         {
-            uiPanel[index].ReloadData(equipData, selIndex);
+            uiPanel[index].ReloadData(equipData,uiType, selIndex);
         }
     }
 
@@ -101,7 +106,7 @@ public class UIEquipInlay : UIBase, TabButtonDelegate, IEquipPanelBaseCallBack
         tabIndex = index;
         uiPanel.ForEach(delegate(EquipPanelBase item) { item.gameObject.SetActive(false); });
         uiPanel[index].gameObject.SetActive(true);
-        uiPanel[index].ReloadData(equipData, selIndex);
+        uiPanel[index].ReloadData(equipData,uiType, selIndex);
     }
 
     public void OnBuildEquipReture()

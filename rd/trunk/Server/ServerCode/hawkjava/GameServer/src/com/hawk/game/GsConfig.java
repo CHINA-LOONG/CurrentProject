@@ -152,7 +152,7 @@ public class GsConfig extends HawkAppCfg {
 	public String getReportHost() {
 		return reportHost;
 	}
-
+	
 	public int getReportTimeout() {
 		return reportTimeout;
 	}

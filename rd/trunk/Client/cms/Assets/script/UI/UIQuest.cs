@@ -229,7 +229,7 @@ public class UIQuest : UIBase, TabButtonDelegate
         //TODO: change language
         text_Title.text = StaticDataMgr.Instance.GetTextByID("quest_title");
 
-        text_tips.text = StaticDataMgr.Instance.GetTextByID("tip_NotFoundQuest");
+        text_tips.text = StaticDataMgr.Instance.GetTextByID("tip_not_found_quest");
         text_story.text = StaticDataMgr.Instance.GetTextByID("quest_juqingrenwu");
         text_daily.text = StaticDataMgr.Instance.GetTextByID("quest_richangrenwu");
         text_other.text = StaticDataMgr.Instance.GetTextByID("quest_liezhuanrenwu");

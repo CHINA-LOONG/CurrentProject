@@ -102,12 +102,9 @@ public class HawkMain {
 		}
 		
 		// 初始化
-		HawkOrderService.getInstance().init(suuid, "123.59.62.233:9005", game, platform, serverId);
+		//HawkOrderService.getInstance().init(suuid, "123.59.62.233:9005", game, platform, serverId);
 		
 		HawkOSOperator.osSleep(2000);
-		
-		// 生成订单
-		HawkOrderService.getInstance().generateOrder(channel, playerId, puid, device, productId, costMoney, "rmb");
 		
 		// 执行callback
 		// INSERT INTO callback(myOrder,payMoney,pfOrder,date,createTime) values('*', 0, UUID(), CURDATE(), NOW());

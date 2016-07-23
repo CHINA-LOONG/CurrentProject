@@ -66,7 +66,7 @@ public class BattleGroup
         int slot = 0;
         while (itor.MoveNext())
         {
-            itor.Current.unit.ResetAllState();
+            itor.Current.unit.ResetAllState(false);
             if (slot >= BattleConst.slotIndexMin && slot <= BattleConst.slotIndexMax)
             {
                 itor.Current.unit.pbUnit.slot = slot;
@@ -84,6 +84,38 @@ public class BattleGroup
             }
 
             ++slot;
+        }
+    }
+
+    //summon from hell
+    public void RevivePlayerList()
+    {
+        List<BattleObject> playerUnitList = GameDataMgr.Instance.PlayerDataAttr.GetMainUnits();
+        var itor = playerUnitList.GetEnumerator();
+        int slot = 0;
+        while (itor.MoveNext())
+        {
+            slot = itor.Current.unit.pbUnit.slot;
+            itor.Current.unit.ResetAllState(true);
+            if (slot >= BattleConst.slotIndexMin && slot <= BattleConst.slotIndexMax)
+            {
+                itor.Current.unit.backUp = false;
+                playerField[slot] = itor.Current;
+                itor.Current.OnEnterField(false);
+
+                SpellReviveArgs reviveArgs = new SpellReviveArgs();
+                reviveArgs.triggerTime = Time.time;//TODO: use battle level time;
+                reviveArgs.targetID = itor.Current.guid;
+                GameEventMgr.Instance.FireEvent<System.EventArgs>(GameEventList.spellUnitRevive, reviveArgs);
+                //OnUnitEnterField(itor.Current, slot);
+            }
+            else
+            {
+                itor.Current.unit.pbUnit.slot = BattleConst.offsiteSlot;
+                itor.Current.unit.backUp = true;
+                itor.Current.OnExitField();
+                //OnUnitExitField(itor.Current, slot);
+            }
         }
     }
 

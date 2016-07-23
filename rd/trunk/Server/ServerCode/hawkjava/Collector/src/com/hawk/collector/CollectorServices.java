@@ -331,7 +331,7 @@ public class CollectorServices {
 	 * @return
 	 */
 	public boolean createGamePlatform(GamePlatform gamePlatform) {
-		String sql = String.format("INSERT INTO game(game, platform, channel, logUserName, logUserPwd, logPath, sshPort, time) VALUES('%s', '%s', '%s', '%s', '%s', '%s', %s, '%s');", 
+		String sql = String.format("INSERT INTO game(game, platform, channel, logUserName, logUserPwd, logPath, sshPort, time) VALUES(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s, \"%s\");", 
 				gamePlatform.getGame(), gamePlatform.getPlatform(), gamePlatform.getChannel(), 
 				gamePlatform.getLogUserName(), gamePlatform.getLogUserPwd(), gamePlatform.getLogPath(), gamePlatform.getSshPort(), HawkTime.getTimeString());
 
@@ -357,7 +357,7 @@ public class CollectorServices {
 	 * @return
 	 */
 	public boolean updateGamePlatform(GamePlatform gamePlatform) {
-		String sql = String.format("UPDATE game SET platform = '%s', channel = '%s', logUserName = '%s', logUserPwd = '%s', logPath = '%s', sshPort = %s, time = '%s' WHERE game = '%s'", 
+		String sql = String.format("UPDATE game SET platform = \"%s\", channel = \"%s\", logUserName = \"%s\", logUserPwd = \"%s\", logPath = \"%s\", sshPort = %s, time = \"%s\" WHERE game = \"%s\"", 
 				gamePlatform.getPlatform(), gamePlatform.getChannel(), 
 				gamePlatform.getLogUserName(), gamePlatform.getLogUserPwd(), gamePlatform.getLogPath(),gamePlatform.getSshPort(),
 				HawkTime.getTimeString(), gamePlatform.getGame());

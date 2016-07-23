@@ -1751,6 +1751,12 @@ MonoBehaviour:
   srcollIcon: {fileID: 11496020}
   scrollView: {fileID: 11430838}
   content: {fileID: 138476}
+  textOption_0: {fileID: 11419382}
+  textOption_1: {fileID: 11466124}
+  textOption_2: {fileID: 11424500}
+  textOption_3: {fileID: 11465504}
+  textOption_4: {fileID: 11403784}
+  textOption_5: {fileID: 11458588}
 --- !u!114 &11452522
 MonoBehaviour:
   m_ObjectHideFlags: 1

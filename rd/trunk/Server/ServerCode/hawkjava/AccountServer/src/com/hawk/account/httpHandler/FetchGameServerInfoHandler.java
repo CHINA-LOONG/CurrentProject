@@ -73,7 +73,7 @@ public class FetchGameServerInfoHandler implements HttpHandler{
 	public static Map<String, RoleServerInfo> fetchGameServer(String puid) {
 		Statement statement = null;
 		try {
-			String sql = String.format("select server, level, nickname from role where puid='%s'", puid);
+			String sql = String.format("select server, level, nickname from role where puid=\"%s\"", puid);
 			HawkLog.logPrintln(sql);
 			statement = DBManager.getInstance().createStatement("account");
 			ResultSet resultSet = statement.executeQuery(sql);

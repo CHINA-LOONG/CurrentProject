@@ -1,7 +1,8 @@
 package com.hawk.orderserver.http;
 
 import java.io.IOException;
-import java.net.URLDecoder;
+
+import net.sf.json.JSONObject;
 
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkOSOperator;
@@ -28,21 +29,31 @@ public class CallbackHttpHandler implements HttpHandler {
 		JsonObject retStatus = new JsonObject();
 		retStatus.addProperty("status", -1);
 		try {
-			String contentBody = HawkOSOperator.readRequestBody(httpExchange);
-			logger.info("Callback: " + contentBody);
+			String uriQuery = httpExchange.getRequestURI().getQuery();
+			logger.info("Callback: " + uriQuery);
 			
 			JsonObject jsonObject = new JsonObject();
-			contentBody = URLDecoder.decode(contentBody, "UTF-8");
-			String[] params = contentBody.split("&");
+			String[] params = uriQuery.split("&");
 			for (String item : params) {
-				String[] pair = item.split("=");
+				// param maybe empty string, use -1
+				String[] pair = item.split("=", -1);
 				if (pair.length == 2) {
-					jsonObject.addProperty(pair[0], pair[1]);
+					if (pair[0].equals("app_data")) {
+						JSONObject appData = JSONObject.fromObject(pair[1]); 
+						for (Object element : appData.keySet()) {
+							String key = (String) element;
+							jsonObject.addProperty(key, appData.getString(key));
+						}
+					}
+					else
+					{
+						jsonObject.addProperty(pair[0], pair[1]);
+					}
 				}
 			}
 
 			CallbackInfo callbackInfo = new CallbackInfo();
-			if (callbackInfo.fromJson(jsonObject)) {				
+			if (callbackInfo.fromJson(jsonObject)) {
 				OrderManager.getInstance().addCallbackInfo(callbackInfo);
 				retStatus.addProperty("status", 0);
 			}

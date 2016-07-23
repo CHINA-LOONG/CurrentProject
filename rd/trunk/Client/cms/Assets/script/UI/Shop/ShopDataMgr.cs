@@ -172,28 +172,69 @@ public class ShopDataMgr : MonoBehaviour
 		if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
 		{
 			PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
-			Logger.LogError("BuyShopItem Error errorCode: " + error.errCode);
+			Logger.LogError( string.Format("BuyShopItem Error errorCode: {0:x}" ,error.errCode));
 
-			//test
-			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,"商店内容已过期",OnPrompButtonClick);
-			return;
-			//
-
+			if(error.errCode == (int)PB.shopError.SHOP_REFRESH_TIMEOUT ||
+			   error.errCode == (int)PB.shopError.SHOP_ITEM_ALREADY_BUY)
+			{
+				MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,
+				                      StaticDataMgr.Instance.GetTextByID("shop_timeout"),
+				                      OnPrompButtonClick);
+			}
+			else if(error.errCode == (int)PB.itemError.GOLD_NOT_ENOUGH)
+			{
+				//MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,"钻石不足");
+				ZuanshiNoEnough();
+			}
+			else if (error.errCode == (int)PB.itemError.COINS_NOT_ENOUGH)
+			{
+				JinbiNoEnough();
+			}
 			return;
 		}
 		curBuyItem.hasBuy = true;
 		GameEventMgr.Instance.FireEvent (GameEventList.RefreshShopUi);
 	}
 
-	void	OnPrompButtonClick(int state)
+    void OnPrompButtonClick(MsgBox.PrompButtonClick state)
 	{
-		if (state == (int)MsgBox.PrompButtonClick.OK)
+		if (state == MsgBox.PrompButtonClick.OK)
 		{
 			RequestShopData();
 		}
 	}
 	#endregion
 
+	#region -----钻石不足引导充值  --金币不足要兑换(兑换不足强提示)
+	public	void	ZuanshiNoEnough()
+	{
+		MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel,
+		                      StaticDataMgr.Instance.GetTextByID("shop_zuanshinoenough"),
+		                      OnChongzhiButtonSel);
+	}
+    void OnChongzhiButtonSel(MsgBox.PrompButtonClick state)
+	{
+		if (state == (int)MsgBox.PrompButtonClick.OK)
+		{
+			UIMgr.Instance.OpenUI_(UIMall.ViewName,false);
+		}
+	}
+
+	public	void JinbiNoEnough()
+	{
+		bool isCanExchange = (UnityEngine.Random.Range (0, 2) == 1);
+
+		if (isCanExchange) 
+		{
+			UICoinExchange.Open ();
+		}
+		else
+		{
+			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,
+			                      StaticDataMgr.Instance.GetTextByID("shop_nojinbi_noduihuan"));
+		}
+	}
+	#endregion
 
 	public ShopDescWithLevel GetShopDesc(int playerLevel, int shopType)
 	{

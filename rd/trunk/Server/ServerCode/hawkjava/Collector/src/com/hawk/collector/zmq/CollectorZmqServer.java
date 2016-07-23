@@ -1,6 +1,5 @@
 package com.hawk.collector.zmq;
 
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,12 +78,12 @@ public class CollectorZmqServer extends HawkTickable {
 		Map<String, String> paramMap = new HashMap<String, String>();
 		try {
 			if (params != null && params.length() > 0) {
-				params = URLDecoder.decode(params, "UTF-8");
 				HawkLog.logPrintln("ZmqReport: " + params);
 				if (params != null) {
 					String[] querys = params.split("&");
 					for (String query : querys) {
-						String[] pair = query.split("=");
+						// param maybe empty string, use -1
+						String[] pair = query.split("=", -1);
 						if (pair.length == 2) {
 							paramMap.put(pair[0], pair[1]);
 						}

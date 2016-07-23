@@ -8,7 +8,6 @@ public class ShopItem : MonoBehaviour
 	public	ItemIcon	itemIcon;
 	public	Image	coinImage;
 	public	Text	priceText;
-	public	Text	buyText;
 
 	public	Button	buyButton;
 	public	Transform	hasBuyPanel;
@@ -42,6 +41,12 @@ public class ShopItem : MonoBehaviour
 
 		itemName.text = itemStaticData.NameAttr;
 		priceText.text = itemStaticData.buyPrice.ToString();
+		//coinImage.sprite = 
+		Sprite coinSp = ResourceMgr.Instance.LoadAssetType<Sprite>(GetCoinImageName(shopType,itemStaticData.sellType)) as Sprite;
+		if(null != coinSp)
+		{
+			coinImage.sprite = coinSp;
+		}
 
 		if (shopItemData.hasBuy) 
 		{
@@ -52,6 +57,26 @@ public class ShopItem : MonoBehaviour
 		{
 			hasBuyPanel.gameObject.SetActive(false);
 			EventTriggerListener.Get(buyButton.gameObject).onClick = OnBuyItemClick;
+		}
+	}
+
+	string GetCoinImageName(int stype, int sellType)
+	{
+		switch (stype) 
+		{
+		case (int)PB.shopType.NORMALSHOP:
+			if(sellType == 2)
+			{
+				return "icon_jinbi";//2
+			}
+			else
+			{
+				return "icon_zuanshi";//1
+			}
+		case (int)PB.shopType.ALLIANCESHOP:
+			return "icon_gonghuibi";
+		default:
+			return "";
 		}
 	}
 

@@ -10,6 +10,7 @@ import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 
 import com.hawk.game.item.ItemInfo;
+import com.hawk.game.util.GsConst;
 import com.hawk.game.util.GsConst.ItemParseType;
 
 @HawkConfigManager.CsvResource(file = "staticData/unitStage.csv", struct = "map")
@@ -81,7 +82,10 @@ public class MonsterStageCfg extends HawkConfigBase {
 			}
 		}
 
-		for (ItemInfo monster : demandMonsterList) {
+		for (ItemInfo monster : demandMonsterList) {			
+			if (monster.getItemId().equals(GsConst.MONSTER_CONSUME_SELF)) {
+				continue;
+			}
 			MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getItemId());
 			if (null == monsterCfg) {
 				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", monster.getItemId()));

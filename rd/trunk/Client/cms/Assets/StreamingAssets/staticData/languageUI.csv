@@ -1,180 +1,194 @@
-#TEXT,TEXT,TEXT
+ï»¿#TEXT,TEXT,TEXT
 id,chinese,english
-#ÎÄ×ÖId,ÎÄ×ÖÄÚÈİ,ÎÄ×ÖÄÚÈİ
+#æ–‡å­—Id,æ–‡å­—å†…å®¹,æ–‡å­—å†…å®¹
 ui_english,English,English
-ui_chinese,¼òÌåÖĞÎÄ,Chinese
-tips_XXXXX,,
-common,,
-ui_fanhui,·µ»Ø,Back
-ui_queding,È·¶¨,OK
-ui_quxiao,È¡Ïû,Cancel
-spell_wuli_name,ÎïÀí¼¼ÄÜ,Physical
-spell_magic_name,·¨Êõ¼¼ÄÜ,Magical
-spell_beidong_name,±»¶¯¼¼ÄÜ,Passive
-spell_buff_name,buff¼¼ÄÜ,Buff
-spell_dazhao_name,´óÕĞ¼¼ÄÜ,Ultimate
-ui_tishi,ÌáÊ¾,Tip
-liws,ÀîÎÄÉú,Eric
-instance_wofangzhenrong,ÎÒ·½ÕóÈİ,My Monsters
-instance_difangzhenrong,µĞ·½ÕóÈİ,Enemies
-instance_jiangliList,¿É»ñµÃ½±Àø,Drop Info
-instance_tilixiaohao,ÌåÁ¦ÏûºÄ:{0},Use Power:{0}
-instance_tiaozhancishu,¿ÉÌôÕ½´ÎÊı:{0}/{1},Times:{0}/{1}
-instance_saodang,É¨µ´,Raid
-instance_saodangquanNumber,É¨µ´È¯ÊıÁ¿:{0},Tickets:{0}
-instance_saodang10,É¨µ´10´Î,Raid 10
-instance_back,·µ»Ø,back
-instance_yingzhan,Ó¦Õ½,Fight
-instance_shangzhen,ÉÏÕó,First Team
-instance_houbei,ºó±¸,Backups
-instance_yongyou,ÓµÓĞ,Monsters Available
-instance_haoyou,ºÃÓÑ,Friend
-instance_kaishizhandou,¿ªÊ¼Õ½¶·,Start Battle
-instance_quxiaozhandou,È¡ÏûÕ½¶·,Cancel
-instance_zhenrongtiaozheng,ÕóÈİµ÷Õû,Line-up
-tip_zhenrongError,Çë°´ÕıÈ·Ë³ĞòÅÅÁĞ³öÕ½³èÎï,Please arrange the monsters in right order
-spell_yongyoujineng_normal,Ò»°ã¼¼ÄÜ,Normal Skills
-spell_yongyoujineng_special,ÌØÊâ¼¼ÄÜ,Special Skills
-dazhao_jieduan,Çë,Please
-dazhao_click,µã»÷,tap on
-dazhao_shifang,¹ÖÎï,a monster
-dazhao_huazhenshibai,»­ÕóÊ§°Ü£¬ÇëÖØÊÔ,"Failed,please try again"
+ui_chinese,ç®€ä½“ä¸­æ–‡,Chinese
+ui_fanhui,è¿”å›,Back
+ui_queding,ç¡®å®š,OK
+ui_quxiao,å–æ¶ˆ,Cancel
+spell_wuli_name,ç‰©ç†æŠ€èƒ½,PHYS ATK
+spell_magic_name,æ³•æœ¯æŠ€èƒ½,MAGIC ATK
+spell_beidong_name,è¢«åŠ¨æŠ€èƒ½,Passive Ability
+spell_buff_name,buffæŠ€èƒ½,Buff Ability
+spell_dazhao_name,å¤§æ‹›æŠ€èƒ½,Ultimate
+ui_tishi,æç¤º,Tip
+instance_wofangzhenrong,æˆ‘æ–¹é˜µå®¹,My Monsters
+instance_difangzhenrong,æ•Œæ–¹é˜µå®¹,Enemies
+instance_jiangliList,å¯è·å¾—å¥–åŠ±,Drop Info
+instance_tilixiaohao,ä½“åŠ›æ¶ˆè€—:{0},Use Power:{0}
+instance_tiaozhancishu,å¯æŒ‘æˆ˜æ¬¡æ•°:{0}/{1},Times:{0}/{1}
+instance_saodang,æ‰«è¡,Raid
+instance_saodangquanNumber,æ‰«è¡åˆ¸æ•°é‡:{0},Tickets:{0}
+instance_saodang10,æ‰«è¡10æ¬¡,Raid 10
+instance_yingzhan,åº”æˆ˜,Fight
+instance_shangzhen,ä¸Šé˜µ,First Team
+instance_houbei,åå¤‡,Backups
+instance_yongyou,æ‹¥æœ‰,Monsters Available
+instance_haoyou,å¥½å‹,Friend
+instance_kaishizhandou,å¼€å§‹æˆ˜æ–—,Start Battle
+instance_quxiaozhandou,å–æ¶ˆæˆ˜æ–—,Cancel
+instance_zhenrongtiaozheng,é˜µå®¹è°ƒæ•´,Line-up
+tip_zhenrongError,è¯·æŒ‰æ­£ç¡®é¡ºåºæ’åˆ—å‡ºæˆ˜å® ç‰©,Please arrange the monsters in right order
+spell_yongyoujineng_normal,ä¸€èˆ¬æŠ€èƒ½,Normal Skills
+spell_yongyoujineng_special,ç‰¹æ®ŠæŠ€èƒ½,Special Skills
+dazhao_jieduan,è¯·,Please
+dazhao_click,ç‚¹å‡»,tap on
+dazhao_shifang,æ€ªç‰©,a monster
+dazhao_huazhenshibai,ç”»é˜µå¤±è´¥ï¼Œè¯·é‡è¯•,"Failed,please try again"
+shop_putong,æ™®é€šå•†åº—,Normal Store
+shop_gonghui,å…¬ä¼šå•†åº—,Guild Store
+shop_nextrefresh,ä¸‹æ¬¡è‡ªåŠ¨åˆ·æ–°æ—¶é—´ï¼š,Next Refresh: 
+shop_today,ä»Šæ—¥,Today
+shop_tommorow,æ˜æ—¥,Tomorrow
+shop_refresh,åˆ·æ–°,Refresh
+shop_sale,æ‰“æŠ˜,Sale
+shop_soldOut,å·²å”®,Sold Out!
+shop_oldPrice,åŸä»·,Original Price
+shop_refreshtips,ä»Šæ—¥è¿˜å¯åˆ·æ–°ï½›0ï½æ¬¡ï¼Œæ˜¯å¦ç¡®è®¤åˆ·æ–°ï¼Ÿ,You can refresh ï½›0ï½ more times today. Continue?
+shop_buy,è´­ä¹°,Purchase
+shop_zuanshinoenough,é’»çŸ³ä¸è¶³ï¼Œæ˜¯å¦å‰å¾€å……å€¼ï¼Ÿ,Not enough Diamonds. Would you like to get more?
+shop_timeout,å•†åº—å†…å®¹å·²è¿‡æœŸ,Store items have already expired.
+shop_store,å•†åŸ,Store
+shop_yueka,æœˆå¡,Monthly Card
+shop_shouchongsong,é¦–å……èµ é€{0}é’»çŸ³,Receive an extra{0}Diamonds with purchase.
+shop_tequanleft,ç‰¹æƒå‰©ä½™æ—¶é—´ï¼š{0}å¤©,Benefits Time Remaining: {0} Day(s)
+shop_buyyueka,æœˆå¡è´­ä¹°,Get Monthly Card
+shop_buyfinish,å·²è´­ä¹°,Purchased
+shop_30yueka,ç¡®å®šè´­ä¹°30å¤©æœˆå¡ï¼Ÿ,Confirm purchase of 30 day Monthly Card?
+shop_chongzhi,å……å€¼,Top-Up
+shop_duihuan,ç”¨å°‘é‡é’»çŸ³å…‘æ¢å¤§é‡é‡‘å¸,Use a small amount of Diamonds to exchange for a large amount of Coins.
+shop_duihuanTimes,ä»Šæ—¥å¯ä¹°ï¼š{0}/{1},Can purchase today: {0}/{1}
+shop_isbuy,æ˜¯å¦èŠ±è´¹,Spend
+shop_noduihuantimes,ä»Šæ—¥å¯ä¹°æ¬¡æ•°å·²ç»ç”¨å®Œã€‚,You have purchased the maximum amount for today.
+shop_buysucctip,æˆåŠŸè´­ä¹°{0}{1},Successfully purchased {0}{1}
+shop_succbuy,è´­ä¹°æˆåŠŸ,Purchase success!
+shop_noenoughcoin,è´§å¸ä¸è¶³ï¼Œæ— æ³•è´­ä¹°,"Insufficient currency, unable to purchase."
+shop_cannotbuy,æ— æ³•ç»§ç»­è´­ä¹°,Unable to continue purchase.
+shop_nojinbi_noduihuan,é‡‘å¸ä¸è¶³ï¼Œå…‘æ¢æ¬¡æ•°ä¸è¶³,é‡‘å¸ä¸è¶³ï¼Œå…‘æ¢æ¬¡æ•°ä¸è¶³-æœªç¿»è¯‘
 xf,,
-equip_Waist,»¤Ñü,Waist
-equip_Weapon,ÎäÆ÷,Weapon
-equip_Armor,îø¼×,Armor
-equip_Bracelet,ÊÖ²¿,Bracelet
-equip_Ring,½äÖ¸,Ring
-equip_Amulet,»¤Éí·û,Amulet
-equip_Defend,·ÀÓùĞÍ,Defend
-equip_Physics,ÎïÀíĞÍ,Physics
-equip_Magic,·¨ÊõĞÍ,Magic
-equip_Support,Ö§Ô®ĞÍ,Support
-equip_health,ÌåÁ¦,health
-equip_strength,Á¦Á¿,strength
-equip_intelligence,ÖÇÁ¦,intelligence
-equip_defense,·ÀÓù,defense
-equip_speed,ËÙ¶È,speed
-equip_gem_NotSet,Î´ÏâÇ¶,Not set
-equip_gem_NotKong,Î´¿ª¿× : ¿ª¿×ºó½«»ñµÃ±¦Ê¯²Û,Undrilling: Gem will open hole
+equip_Waist,æŠ¤è…°,Belt
+equip_Weapon,æ­¦å™¨,Weapon
+equip_Armor,æŠ¤ç”²,Armor
+equip_Bracelet,æ‰‹é•¯,Bracelet
+equip_Ring,æˆ’æŒ‡,Ring
+equip_Amulet,æŠ¤èº«ç¬¦,Amulet
+equip_gem_NotSet,æœªé•¶åµŒ,Not engraved
+equip_gem_NotKong,æœªå¼€å­” : å¼€å­”åå°†è·å¾—å®çŸ³æ§½,Undrilling: Gem will open hole
+equip_Change,æ¢è£…,Change
 ss,,
 zz,,
-spell_hit_miss,Î´ÃüÖĞ,Miss
-spell_hit_immune,ÃâÒß,Immune
-spell_hit_interrupt,±»´ò¶Ï,Interrupt
-spell_shield,ÎüÊÕ,absorbed
-spell_first_spell,ÏÈÖÃ¹¥»÷,First Strike
-spell_stun,Ñ£ÔÎ,stun
-xl_quest,Ñ¦Áú_ÈÎÎñ½çÃæ,Loong
-quest_title,ÈÎÎñ,QUEST
-quest_juqingrenwu,¾çÇéÈÎÎñ,Story task
-quest_richangrenwu,ÈÕ³£ÈÎÎñ,Daily task
-quest_liezhuanrenwu,ÁĞ´«ÈÎÎñ,Strategy task
-quest_wanchengrenwu,Íê³ÉÈÎÎñ,complete 
-quest_shijianweidao,Ê±¼äÎ´µ½,wait time
-quest_lijiqianwang,Á¢¼´Ç°Íù,go to
-quest_lingqujiangli,ÁìÈ¡½±Àø,Get the rewards
-quest_reward_title,ÈÎÎñ½±Àø,Quest rewards
-quest_reward_wancheng,ºÃµÄ,confirm
-tip_NotFoundQuest,µ±Ç°ÀàĞÍÃ»ÓĞ¿ÉÒÔ½øĞĞµÄÈÎÎñÅ¶£¡,No can undertake the task of the current type!
+spell_hit_miss,æœªå‘½ä¸­,Miss
+spell_hit_immune,å…ç–«,Immune
+spell_hit_interrupt,è¢«æ‰“æ–­,Interrupt
+spell_shield,å¸æ”¶,Absorbed
+spell_first_spell,å…ˆç½®æ”»å‡»,First Strike
+spell_stun,çœ©æ™•,Stun
 ,,
-xl_mail,Ñ¦Áú_ÓÊÏä½çÃæ,
-mail_title,ÓÊÏä,Mail
-mail_tab1,ÏµÍ³ÓÊ¼ş,Mail system
-mail_yijianlingqu,Ò»¼üÁìÈ¡,A key to get
-mail_fujian,¸½¼ş,attachment
-mail_laizi,À´×Ô:,From:
-mail_shouqu,ÊÕÈ¡,receive
-mail_meiyouyoujian,Ã»ÓĞÓÊ¼şÅ¶...,No mail oh...
-mail_meiyoufujian,Ã»ÓĞ¸½¼şÅ¶...,There is no attachment...
-mail_record_001,Ã»ÓĞ¿É²Ù×÷µÄÓÊ¼şÅ¶£¡,No operational email!
-mail_record_002,ÊÕÈ¡³É¹¦£¡,For success!
-mail_record_003,½ğ±ÒÒª×°²»ÏÂÀ²£¬ÊÕÈ¡Ê§°Ü£¡,"Gold will not fit, charge failed!"
-mail_record_004,×êÊ¯Òª×°²»ÏÂÀ²£¬ÊÕÈ¡Ê§°Ü£¡,"Diamond is not fit, charge failed!"
-mail_youxiangjiangman,ÓÊÏä¼´½«±¬²Ö£¬Çë¼°Ê±ÊÕÈ¡ÓÊ¼ş,"Email soon broke, please receive mail in time"
-mail_youxiangyiman,ÓÊÏäÒÑ¾­±¬²Ö£¬¿ì¿ìÊÕÈ¡ÓÊ¼ş,"Email already broke, receiving email quickly"
-mail_queding,È·¶¨,confirm
+xl_quest,è–›é¾™_ä»»åŠ¡ç•Œé¢,Loong
+quest_title,ä»»åŠ¡,Mission
+quest_juqingrenwu,å‰§æƒ…ä»»åŠ¡,Storyline
+quest_richangrenwu,æ—¥å¸¸ä»»åŠ¡,Daily
+quest_liezhuanrenwu,åˆ—ä¼ ä»»åŠ¡,Chronicle
+quest_wanchengrenwu,å®Œæˆä»»åŠ¡,Mission Completed
+quest_shijianweidao,æ—¶é—´æœªåˆ°,Available Later
+quest_lijiqianwang,ç«‹å³å‰å¾€,Go Now
+quest_lingqujiangli,é¢†å–å¥–åŠ±,Collect Reward
+quest_reward_title,ä»»åŠ¡å¥–åŠ±,Mission Reward
+tip_not_found_quest,å½“å‰ç±»å‹æ²¡æœ‰å¯ä»¥è¿›è¡Œçš„ä»»åŠ¡å“¦ï¼,No can undertake the task of the current type!
 ,,
-xl_equip_forge,Ñ¦Áú_×°±¸Ç¿»¯½ø½×,
-equip_forge_title,´òÔì,Forge
-equip_forge_zhanli,Õ½Á¦:,BP:
-equip_forge_xiaohao,ÏûºÄ²ÄÁÏ£º,Materials Consumed
-equip_forge_dazao,Ç¿»¯,Upgrade
-equip_forge_XXdazao,½ø½×,Evolve
-equip_forge_levelTips,´òÔìÊÇÓĞÒ»¶¨³É¹¦ÂÊµÄ£¬´òÔìÊ§°Ü½«ËğÊ§´òÔì²ÄÁÏ,"Forging has a set success rate. If it fails, the materials will be lost."
-equip_forge_stateTips,Ç¿»¯´òÔìÊÇ²»»áÊ§°ÜµÄ£¬·ÅĞÄ´òÔì°É,"Advancing equipment cannot fail, don't worry!"
-equip_level_limits,´òÔìÒÑ´ïµ±Ç°ÈËÎïµÈ¼¶×îÇ¿Ğ§¹û£¬¿ìÈ¥Éı¼¶°É£¡,Forge has already reached the maximum effects for the level of the current character. Go level up!!!
+xl_mail,è–›é¾™_é‚®ç®±ç•Œé¢,
+mail_title,é‚®ç®±,Inbox
+mail_tab1,ç³»ç»Ÿé‚®ä»¶,System
+mail_yijianlingqu,ä¸€é”®é¢†å–,Collect All
+mail_fujian,é™„ä»¶,Attachments
+mail_laizi,æ¥è‡ª:,From:
+mail_shouqu,æ”¶å–,Collect
+mail_record_001,æ²¡æœ‰å¯æ“ä½œçš„é‚®ä»¶å“¦ï¼,Currently no mail to be collected.
+mail_record_002,æ”¶å–æˆåŠŸï¼,Collected.
+mail_record_003,é‡‘å¸è¦è£…ä¸ä¸‹å•¦ï¼Œæ”¶å–å¤±è´¥ï¼,Coin limit reached. Failed to collect.
+mail_record_004,é’»çŸ³è¦è£…ä¸ä¸‹å•¦ï¼Œæ”¶å–å¤±è´¥ï¼,Diamond limit reached. Failed to collect.
+mail_youxiangjiangman,é‚®ç®±å³å°†çˆ†ä»“ï¼Œè¯·åŠæ—¶æ”¶å–é‚®ä»¶,Your inbox is almost fullï¼Œ be sure to promptly collect mails!
+mail_youxiangyiman,é‚®ç®±å·²ç»çˆ†ä»“ï¼Œå¿«å¿«æ”¶å–é‚®ä»¶,Your inbox is fullï¼Œ go collect some mails!
+mail_CollectedAll,å…¨éƒ¨æ”¶å–æˆåŠŸï¼,Collected all!
 ,,
-xl_equip_inlay,Ñ¦Áú_ÏâÇ¶½çÃæ,
-equip_inlay_title,ÏâÇ¶,Embed
-equip_inlay_zhanli,Õ½Á¦:,BP:
-equip_inlay_openmax,±¦Ê¯²ÛÒÑÈ«¿ª,Gem slots are full.
-equip_inlay_btnopen,¿ª¿×,Open Sockets
-equip_inlay_tips,¿ª¿×½«Ëæ»ú»ñµÃ*1-{0}*¸ö±¦Ê¯²Û,Opening Sockets will randomly reveal between "1 and {0}" of slots.
-equip_inlay_xiaohao,ÏûºÄ²ÄÁÏ,Materials Consumed
-equip_inlay_lockTips,µã»÷¿ª¿×ÓĞ»ú»á¿ªÆô±¦Ê¯²Û,Tap 'Open Sockets' for a chance of revealing Gem slots.
-equip_inlay_unlockTips,µã»÷±¦Ê¯²Û¿ÉÏâÇ¶±¦Ê¯,Tap a Gem slot to insert a Gem.
-equip_inlay_xiexia,Ğ¶ÏÂ,Remove
+xl_equip_forge,è–›é¾™_è£…å¤‡å¼ºåŒ–è¿›é˜¶,
+equip_forge_title,æ‰“é€ ,Forge
+equip_forge_xiaohao,æ¶ˆè€—ææ–™,Materials Consumed
+equip_forge_dazao,æ‰“é€ ,Forge
+equip_forge_XXdazao,å¼ºåŒ–æ‰“é€ ,Advance
+equip_forge_levelTips,æ‰“é€ æ˜¯æœ‰ä¸€å®šæˆåŠŸç‡çš„ï¼Œæ‰“é€ å¤±è´¥å°†æŸå¤±æ‰“é€ ææ–™,"Forging has a set success rate. If it fails, the materials will be lost."
+equip_forge_stateTips,å¼ºåŒ–æ‰“é€ æ˜¯ä¸ä¼šå¤±è´¥çš„ï¼Œæ”¾å¿ƒæ‰“é€ å§,"Advancing equipment cannot fail, don't worry!"
+equip_level_limits,æ‰“é€ å·²è¾¾å½“å‰äººç‰©ç­‰çº§æœ€å¼ºæ•ˆæœï¼Œå¿«å»å‡çº§å§ï¼,Forge has already reached the maximum effects for the level of the current character. Go level up!!!
+equip_fully_forged,æ­å–œï¼Œè£…å¤‡æ‰“é€ å·²æ»¡,Congratulations! Equipment has been fully forged.
+im_forge_success,æ‰“é€ æˆåŠŸ,Forge success!
+im_forge_failed,æ‰“é€ å¤±è´¥,Forge failed.
+im_xuqu_daojubuzu,éœ€æ±‚é“å…·ä¸è¶³,Insufficient amount of required items.
 ,,
-xl_equip_list,Ñ¦Áú_×°±¸ÁĞ±í½çÃæ,
-equip_List_zhuangbeileixing,×°±¸ÀàĞÍ,Type
-equip_List_zhanli,Õ½Á¦£º,BP:
-equip_List_xianzhidengji,ÏŞÖÆµÈ¼¶£º,Level:
-equip_List_zhuangbei,×°±¸,Equip
+equip_inlay_title,é•¶åµŒ,Embed
+equip_inlay_openmax,å®çŸ³æ§½å·²å…¨å¼€,Gem slots are full.
+equip_inlay_btnopen,å¼€å­”,Open Sockets
+equip_inlay_tips,å¼€å­”å°†éšæœºè·å¾—"1-{0}"ä¸ªå®çŸ³æ§½,Opening Sockets will randomly reveal between "1 and {0}" of slots.
+equip_inlay_lockTips,ç‚¹å‡»å¼€å­”æœ‰æœºä¼šå¼€å¯å®çŸ³æ§½,Tap 'Open Sockets' for a chance of revealing Gem slots.
+equip_inlay_unlockTips,ç‚¹å‡»å®çŸ³æ§½å¯é•¶åµŒå®çŸ³,Tap a Gem slot to insert a Gem.
+equip_inlay_xiexia,å¸ä¸‹,Remove
+equip_select_gem,è¯·ä»å³ä¾§å®çŸ³åˆ—è¡¨é€‰æ‹©é•¶åµŒçš„å®çŸ³,Please select a Gem from the list on the right.
+equip_confirm_open,ç¡®å®šå¼€å­”ä¹ˆï¼Ÿ,Confirm Open Sockets?
+equip_random_open,å¼€å­”å°†éšæœºå¼€å¯ä¸åŒæ•°é‡çš„å®çŸ³æ§½,Opening Sockets will randomly reveal different amounts of Gem slots.
+equip_return_gem,è‹¥å·²é•¶åµŒå®çŸ³ï¼Œå®çŸ³å°†å…¨éƒ¨è¿”è¿˜åˆ°èƒŒåŒ…,Any inserted Gems will all be returned to your Bag.
 ,,
-xl_gem_list,Ñ¦Áú_±¦Ê¯ÁĞ±í½çÃæ,
-xl_gem_btnxiangqian,ÏâÇ¶,Embed
+xl_equip_list,è–›é¾™_è£…å¤‡åˆ—è¡¨ç•Œé¢,
+equip_List_zhuangbeileixing,è£…å¤‡ç±»å‹,Type
+equip_List_xianzhidengji,ç­‰çº§é™åˆ¶,Level
+equip_List_zhuangbei,è£…å¤‡,Equip
 ,,
-xl_common,¹«ÓÃ²¿·Ö,
-common_attr_strenth,Á¦Á¿£º,STR
-common_attr_defence,·ÀÓù£º,DEF
-common_attr_intelligence,ÖÇÁ¦£º,INT
-common_attr_speed,ËÙ¶È£º,SPD
-common_attr_health,ÌåÁ¦£º,HP
-common_type_defence,·ÀÓùĞÍ,Defense Type
-common_type_physical,ÎïÀíĞÍ,PHYS Type
-common_type_magic,·¨ÊõĞÍ,Magic Type
-common_type_support,Ö§Ô®ĞÍ,Support Type
+xl_gem_list,è–›é¾™_å®çŸ³åˆ—è¡¨ç•Œé¢,
+gem_btnxiangqian,é•¶åµŒ,Embed
+equip_gem_NotMent,è¯¥å“è´¨è£…å¤‡ä¸å¯é•¶åµŒå®çŸ³,This equipment quality is unable to insert Gems.
+equip_gem_casting,å®çŸ³åŠ æˆ,Gem Casting
 ,,
-zs,,
-pet_list_type,(Ê¥ÊŞ),(shengshou)
-pet_detail_left_property,ÊôĞÔ£º,property:
-pet_detail_left_battle,Õ½Á¦{0},battle{0}
-pet_detail_left_experience,¾­ÑéÖµ,experience
-pet_detail_left_character,ĞÔ¸ñ,character
-pet_detail_left_attr,ÊôĞÔ,attribute
-pet_detail_left_attr_health,ÌåÁ¦  {0},health  {0}
-pet_detail_left_attr_defence,·ÀÓù  {0},defence  {0}
-pet_detail_left_attr_speed,ËÙ¶È  {0},speed  {0}
-pet_detail_left_attr_strenth,Á¦Á¿  {0},strenth {0}
-pet_detail_left_attr_intelligence,ÖÇÁ¦  {0},intelligence {0}
-pet_detail_left_change_character,±ä¸ü,change
-pet_detail_left_detail_attr,ÏêÏ¸ÊôĞÔ,DetailAttr
-pet_detail_left_skill,¼¼ÄÜ,skill
-pet_detail_left_stage,½ø½×,stage
-pet_detail_left_advance,½ø»¯,advance
-pet_detail_left_main_pet,Ö÷³è,main
+xl_common,å…¬ç”¨éƒ¨åˆ†,
+pet_detail_skill_level,ç­‰çº§:,LVL:
+equip_forge_zhanli,æˆ˜åŠ›:,BP:
+common_attr_strenth,åŠ›é‡,STR
+common_attr_defence,é˜²å¾¡,DEF
+common_attr_intelligence,æ™ºåŠ›,INT
+common_attr_speed,é€Ÿåº¦,SPD
+common_attr_health,ä½“åŠ›,STA
+common_type_defence,é˜²å¾¡å‹,Defense Type
+common_type_physical,ç‰©ç†å‹,PHYS Type
+common_type_magic,æ³•æœ¯å‹,Magic Type
+common_type_support,æ”¯æ´å‹,Support Type
 ,,
-pet_detail_skill_level,µÈ¼¶,level
-pet_detail_skill_current_level,µ±Ç°¼¶,current
-pet_detail_skill_next_level,ÏÂÒ»¼¶,next
-pet_detail_skill_max_level,µ±Ç°ÒÑ¾­×î´ó¼¶±ğ,already max level
-pet_detail_skill_current_point,µ±Ç°¼¼ÄÜµãÊı,current skill point
-pet_detail_skill_max_point,¼¼ÄÜµãÒÑÂú,already max skill point
-pet_detail_stage_attr,»ù´¡ÊôĞÔ,base attribute
-pet_detail_stage_demand_level,ĞèÇóµÈ¼¶,demand level
-pet_detail_stage_demand_item,ĞèÇó²ÄÁÏ,demand item
-pet_detail_stage,½ø½×,stageUp
-pet_detail_stage_full,½ø½×Íê³É,stageFull
-pet_detail_stage_monster,ĞèÒªµÄ¹ÖÎï,demand monster
-pet_detail_stage_battle,Õ½Á¦,battle
-pet_detail_stage_none_monster,Ä¾ÓĞ¸Ã³èÎï,no monster
-pet_detail_skill_no_upgrade,¸Ã¼¼ÄÜ²»ÄÜÉı¼¶,this skill cannot upgrade
-pet_list_title,³èÎï,Pets
-monster_property1,»ğÊôĞÔ,Fire
-monster_property2,Ä¾ÊôĞÔ,Wind
-monster_property3,Ë®ÊôĞÔ,Water
-monster_property4,¹âÊôĞÔ,Light
-monster_property5,°µÊôĞÔ,Darkness
-pet_tip_full,"ÓµÓĞ¹ı¶à³èÎï,¿ìÈ¥ÏûºÄÒ»Ğ©°É\n ÓĞ¿ÉÄÜ²»»á¼ÌĞø»ñµÃ³èÎï","More monsters , go to consumable some \n (if it is full,you can`t get more monster)"
-pet_skill_point_not_enough,¼¼ÄÜµã²»×ã,skill point not enough
+zs_modify:xl,,
+pet_list_type,(åœ£å…½),(shengshou)
+pet_list_option_all,å…¨éƒ¨,ALL
+pet_list_option_property1,ç«å±æ€§,Fire
+pet_list_option_property2,æœ¨å±æ€§,Grass
+pet_list_option_property3,æ°´å±æ€§,Water
+pet_list_option_property4,å…‰å±æ€§,Light
+pet_list_option_property5,æš—å±æ€§,Dark
+,,
+pet_detail,,
+pet_detail_left_detail_attr,è¯¦ç»†å±æ€§,Details
+pet_detail_left_skill,æŠ€èƒ½,Abilities
+pet_detail_left_advance,è¿›åŒ–,Evolve
+im_monster_lock,å® ç‰©é”å®šæˆåŠŸ,Monster is now locked.
+im_monster_unlock,å® ç‰©è§£é”æˆåŠŸ,Monster is now unlocked.
+,,
+,,
+pet_detail_skill_current_level,å½“å‰çº§:,Current:
+pet_detail_skill_next_level,ä¸‹ä¸€çº§:,Next LVL:
+pet_detail_skill_max_level,å½“å‰æŠ€èƒ½å·²è¾¾åˆ°æœ€é«˜ç­‰çº§,Ability currently at its max LVL
+pet_detail_skill_current_point,ç›®å‰çš„æŠ€èƒ½ç‚¹æ•°:,Current Ability Points:
+pet_detail_skill_max_point,ç‚¹æ•°å·²æ»¡,Full
+pet_detail_stage_attr,åŸºç¡€å±æ€§,Base attribute
+pet_detail_stage_demand_level,éœ€æ±‚ç­‰çº§,Req. LVL: 
+pet_detail_stage_demand_item,éœ€æ±‚ææ–™,Req. Materials:
+pet_detail_stage,è¿›é˜¶,Advance
+pet_detail_stage_full,è¿›é˜¶å®Œæˆ,Advancement Complete
+pet_detail_stage_monster,éœ€è¦çš„æ€ªç‰©,Req. Monsters:
+pet_detail_stage_none_monster,æœ¨æœ‰è¯¥å® ç‰©,no monster
+pet_detail_skill_no_upgrade,è¯¥æŠ€èƒ½ä¸èƒ½å‡çº§,this skill cannot upgrade
+pet_list_title,å® ç‰©,Monsters
+pet_tip_full,"æ‹¥æœ‰è¿‡å¤šå® ç‰©,å¿«å»æ¶ˆè€—ä¸€äº›å§\n æœ‰å¯èƒ½ä¸ä¼šç»§ç»­è·å¾—å® ç‰©","You have too many monsters, go and consume some! \n (You may possibly not receive any more monsters)"
+pet_skill_point_not_enough,æŠ€èƒ½ç‚¹ä¸è¶³,skill point not enough

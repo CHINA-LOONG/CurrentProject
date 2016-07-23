@@ -2,13 +2,17 @@ package com.hawk.game;
 
 import java.net.InetAddress;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import net.sf.json.JSONObject;
 
 import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigStorage;
+import org.hawk.db.HawkDBManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.HawkSession;
@@ -21,6 +25,7 @@ import org.hawk.os.HawkTime;
 import org.hawk.util.services.HawkAccountService;
 import org.hawk.util.services.HawkCdkService;
 import org.hawk.util.services.HawkEmailService;
+import org.hawk.util.services.HawkOrderService;
 import org.hawk.util.services.HawkReportService;
 import org.hawk.xid.HawkXID;
 import org.omg.CORBA.IntHolder;
@@ -31,8 +36,9 @@ import com.hawk.game.callback.ShutdownCallback;
 import com.hawk.game.config.GrayPuidCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.entity.RechargeEntity;
 import com.hawk.game.manager.ImManager;
-import com.hawk.game.manager.AllianceManager;
+import com.hawk.game.manager.ShopManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
@@ -184,6 +190,20 @@ public class GsApp extends HawkApp {
 				}		
 			}
 		}
+
+		//初始化订单服务器
+		if (HawkOrderService.getInstance().init(
+							null,
+							GsConfig.getInstance().getOrderAddr(),
+							GsConfig.getInstance().getGameId(),
+							GsConfig.getInstance().getPlatform(),
+							GsConfig.getInstance().getServerId())) 
+		{
+			HawkLog.logPrintln("install order service success");
+		}
+		else {
+			HawkLog.logPrintln("install order service fail");
+		}
 		
 		// 初始化邮件服务
 		if (GsConfig.getInstance().getEmailUser() != null && GsConfig.getInstance().getEmailUser().length() > 0) {
@@ -219,7 +239,8 @@ public class GsApp extends HawkApp {
 		objMan.allocObject(getXid(), this);
 		// IM管理器
 		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.IM));
-
+		// 商店管理器
+		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.SHOP));
 		return true;
 	}
 
@@ -252,8 +273,7 @@ public class GsApp extends HawkApp {
 				player.getSession().close(false);
 			}
 
-			if (player.getPlayerData() != null
-					&& player.getPlayerData().getPlayerEntity() != null) {
+			if (player.getPlayerData() != null && player.getPlayerData().getPlayerEntity() != null) {
 				// logger.info("remove player: {}, puid: {}, gold: {}, coin: {}, level: {}, vip: {}",
 				// player.getId(), player.getPuid(), player.getGold(),
 				// player.getCoin(), player.getLevel(), player.getVipLevel());
@@ -272,10 +292,13 @@ public class GsApp extends HawkApp {
 			if (xid.getId() == GsConst.ObjId.IM) {
 				appObj = new ImManager(xid);
 			}
+			else if (xid.getId() == GsConst.ObjId.SHOP) {
+				appObj = new ShopManager(xid);
+			}
+				
 		} else if (xid.getType() == GsConst.ObjType.PLAYER) {
 			appObj = new Player(xid);
-		}
-
+		} 
 		if (appObj == null) {
 			HawkLog.errPrintln("create obj failed: " + xid);
 		}
@@ -356,13 +379,11 @@ public class GsApp extends HawkApp {
 						}
 
 						// 登录成功协议
-						int playerId = ServerData.getInstance()
-								.getPlayerIdByPuid(puid);
+						int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
 						HSLoginRet.Builder response = HSLoginRet.newBuilder();
 						response.setStatus(Status.error.NONE_ERROR_VALUE);
 						response.setPlayerId(playerId);
-						session.sendProtocol(HawkProtocol.valueOf(
-								HS.code.LOGIN_S, response));
+						session.sendProtocol(HawkProtocol.valueOf(HS.code.LOGIN_S, response));
 
 						return true;
 					} else if (protocol.checkType(HS.code.PLAYER_CREATE_C_VALUE)) {
@@ -539,8 +560,7 @@ public class GsApp extends HawkApp {
 			if (objBase != null) {
 				// 已存在会话的情况下, 踢出玩家
 				Player player = (Player) objBase.getImpl();
-				if (player != null && player.getSession() != null
-						&& player.getSession() != session) {
+				if (player != null && player.getSession() != null && player.getSession() != session) {
 					player.kickout(Const.kickReason.DUPLICATE_LOGIN_VALUE);
 				}
 
@@ -562,5 +582,64 @@ public class GsApp extends HawkApp {
 	 */
 	private void onRefresh() {
 		// TODO
+	}
+	
+	// 主线程运行
+	@Override
+	public void onOrderNotify(JSONObject jsonInfo) {
+		if (jsonInfo.getInt("action") == (HawkOrderService.ACTION_ORDER_DELIVER_REQUEST)) {
+			
+			String puid = jsonInfo.getString("uid");
+			String orderSerial = jsonInfo.getString("tid");
+			String platform = jsonInfo.getString("type");
+			String productId = jsonInfo.getString("product_id");
+			
+			int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
+			if (playerId == 0) {
+				HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_PLAYER_NOT_EXIST, 0, 0);
+				return;
+			}
+			
+			if (ServerData.getInstance().isExistOrder(orderSerial)) {			
+				List<RechargeEntity> resultList = HawkDBManager.getInstance().query("from RechargeEntity where orderSerial = ?", orderSerial);
+				if (resultList != null && resultList.size() > 0) {
+					RechargeEntity rechargeEntity = resultList.get(0);
+					HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_STATUS_OK, rechargeEntity.getAddGold(), rechargeEntity.getGiftGold());
+					return;
+				}
+			}
+			
+			HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId);
+			boolean playerOffline = false;
+			HawkObjBase<HawkXID, HawkAppObj> objBase = lockObject(xid);
+			try {
+				// 离线对象创建临时数据
+				if (objBase == null || !objBase.isObjValid()) {
+					objBase = createObj(xid);
+					if (objBase != null) {
+						objBase.lockObj();
+					}
+					
+					playerOffline = true;
+				}
+ 		
+				if (objBase != null) {
+					Player player = (Player) objBase.getImpl();	
+					if (playerOffline == true) {
+						player.getPlayerData().setPuid(jsonInfo.getString("uid"));
+						player.getPlayerData().loadPlayer();
+						player.getPlayerData().loadStatistics();
+					}
+					
+					// 处理订单
+					ShopManager.getInstance().OnOrderNotify(player, puid, orderSerial, platform, productId);				
+				}
+			} finally {
+				if (objBase != null) {
+					objBase.unlockObj();
+				}
+			}
+		}
+		
 	}
 }

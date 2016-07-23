@@ -53,6 +53,8 @@ public class UIBattle : UIBase
     GameObject endBattleUI = null;
 	Animator animator;
 
+    private MsgBox.PromptMsg reviveWnd;
+
 	static UIBattle instance = null;
 	public static UIBattle Instance
 	{
@@ -128,6 +130,39 @@ public class UIBattle : UIBase
     public void DestroyStartBattleUI()
     {
         ResourceMgr.Instance.DestroyAsset(startBattleUI);
+    }
+
+    public void ShowReviveUI()
+    {
+        reviveWnd = MsgBox.PromptMsg.Open(
+            MsgBox.MsgBoxType.Conform_Cancel,
+            StaticDataMgr.Instance.GetTextByID("battle_revive"),
+            OnReviveCallback,
+            false
+            );
+    }
+
+    public void CloseReviveUI()
+    {
+        if (reviveWnd != null)
+        {
+            reviveWnd.Close();
+        }
+    }
+
+    private void OnReviveCallback(MsgBox.PrompButtonClick state)
+    {
+        if (state == MsgBox.PrompButtonClick.OK)
+        {
+            //TODO: send msg
+            //test only continuebattleresult is callback
+            BattleController.Instance.OnRevive(true);
+        }
+        else if (state == MsgBox.PrompButtonClick.Cancle)
+        {
+            BattleController.Instance.OnBattleOver(false);
+            CloseReviveUI();
+        }
     }
 
     public void ShowEndBattleUI(bool success)

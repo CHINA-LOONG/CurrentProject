@@ -18,8 +18,20 @@ public interface IEquipCallBack
 
 public class UIEquipDetails : MonoBehaviour
 {
-    public IEquipCallBack equipCallBack;
+    //界面
+    public Text equipTypeTip;
+    public Text equipPowerTip;
+    public Text equipLimitTip;
+    public Text attributeTextTip;
+    public Text gemTextTip;
+    public Text gemPromptTip;
+    public Text equipUninstallTip;
+    public Text equipInstallTip;
+    public Text StrengthenTip;
+    public Text gemSetTip;
 
+
+    public IEquipCallBack equipCallBack;
     public Text equipNmae;//装备名称 
     public Text strengthenNum;//装备强化
     public Text equipType;//装备类型
@@ -36,7 +48,7 @@ public class UIEquipDetails : MonoBehaviour
     GameObject gemName;//宝石名
     GameObject[] gemAttrList = new GameObject[2];
     string[] part = new string[6] { "equip_Weapon", "equip_Waist", "equip_Armor", "equip_Bracelet", "equip_Ring", "equip_Amulet" };
-    string[] equipTypeId = new string[4] { "equip_Defend", "equip_Physics", "equip_Magic", "equip_Support" };
+    string[] equipTypeId = new string[4] { "common_type_defence", "common_type_physical", "common_type_magic", "common_type_support" };
     public GameObject reinforcedButton;//强化
     public GameObject inlayButton;//镶嵌
     public GameObject unloadButton;//卸下
@@ -83,7 +95,7 @@ public class UIEquipDetails : MonoBehaviour
         if (equipDate.health > 0)
         {
             basicsAttribute[w].SetActive(true);
-            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_health");
+            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
             basicsAttributeNum[w].text = equipDate.health.ToString();
             if (equipDate.level > 0)
             {
@@ -95,7 +107,7 @@ public class UIEquipDetails : MonoBehaviour
         if (equipDate.strength > 0)
         {
             basicsAttribute[w].SetActive(true);
-            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_strength");
+            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_strenth");
             basicsAttributeNum[w].text = equipDate.strength.ToString();
             if (equipDate.level > 0)
             {
@@ -107,7 +119,7 @@ public class UIEquipDetails : MonoBehaviour
         if (equipDate.intelligence > 0)
         {
             basicsAttribute[w].SetActive(true);
-            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_intelligence");
+            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
             basicsAttributeNum[w].text = equipDate.intelligence.ToString();
             if (equipDate.level > 0)
             {
@@ -119,7 +131,7 @@ public class UIEquipDetails : MonoBehaviour
         if (equipDate.defense > 0)
         {
             basicsAttribute[w].SetActive(true);
-            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_defense");
+            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
             basicsAttributeNum[w].text = equipDate.defense.ToString();
             if (equipDate.level > 0)
             {
@@ -131,7 +143,7 @@ public class UIEquipDetails : MonoBehaviour
         if (equipDate.speed > 0)
         {
             basicsAttribute[w].SetActive(true);
-            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_speed");
+            basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
             basicsAttributeNum[w].text = equipDate.speed.ToString();
             if (equipDate.level > 0)
             {
@@ -154,7 +166,9 @@ public class UIEquipDetails : MonoBehaviour
                     if (equip.gemList[i].gemId == "0")
                     {
                         gemAttribute[i].transform.GetComponent<Image>().enabled = true;
-                        gemAttribute[i].transform.FindChild("noKong").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotSet");
+                        gemAttribute[i].transform.FindChild("noKong").gameObject.SetActive(false);
+                        gemAttribute[i].transform.FindChild("noGem").gameObject.SetActive(true);
+                        gemAttribute[i].transform.FindChild("noGem").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotSet");
                     }
                     else
                     {                        
@@ -180,17 +194,17 @@ public class UIEquipDetails : MonoBehaviour
         }
         for (int i = 0; i < gemAttribute.Length; i++)
         {
+            gemAttribute[i].transform.GetComponent<Image>().enabled = false;
+            gemAttribute[i].transform.FindChild("gem").gameObject.SetActive(false);
+            gemAttribute[i].transform.FindChild("noGem").gameObject.SetActive(false);
+            gemAttribute[i].transform.FindChild("noKong").gameObject.SetActive(false);
             gemAttribute[i].transform.FindChild("gemName").gameObject.SetActive(false);
             gemAttribute[i].transform.FindChild("gemAttr1").gameObject.SetActive(false);
-            gemAttribute[i].transform.FindChild("gemAttr2").gameObject.SetActive(false);
-            gemAttribute[i].transform.FindChild("gem").gameObject.SetActive(false);
-            gemAttribute[i].transform.FindChild("noKong").gameObject.SetActive(false);
-            gemAttribute[i].transform.GetComponent<Image>().enabled = false;
+            gemAttribute[i].transform.FindChild("gemAttr2").gameObject.SetActive(false);            
             gemAttribute[i].SetActive(false);     
         }        
         strengthenNum.enabled = false;
     }
-
     void showGem(int equipStage, EquipLevelData gemAttr, GameObject gem, bool isLoad)
     {
     	GameObject noKong;
@@ -212,13 +226,15 @@ public class UIEquipDetails : MonoBehaviour
         }
         else
         {
-            noKong = gem.transform.FindChild("noKong").gameObject;
+            noKong = gem.transform.FindChild("noKong").gameObject;            
             noKong.gameObject.SetActive(false);
             gemName = gem.transform.FindChild("gemName").gameObject;
             gemName.gameObject.SetActive(true);
+            gem.transform.FindChild("noGem").gameObject.SetActive(false);
             gem.transform.GetComponent<Image>().enabled = true;
             gem.transform.FindChild("gem").gameObject.SetActive(true);
-            gemName.GetComponent<Text>().text = itemData.name;
+            gemName.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID(itemData.name);
+            gemName.GetComponent<Text>().color = ColorConst.GetStageTextColor(itemData.grade);
             gemAttrList[0] = gem.transform.FindChild("gemAttr1").gameObject;
             gemAttrList[1] = gem.transform.FindChild("gemAttr2").gameObject;
             int gemNum = 0;
@@ -226,35 +242,35 @@ public class UIEquipDetails : MonoBehaviour
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);//属性   +99999
-                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_health") + "   +" + gemAttr.health;
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_health") + "   +" + gemAttr.health;
                 gemNum++;
             }
             if (gemAttr.strength != 0)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
-                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_strength") + "   +" + gemAttr.strength;
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_strenth") + "   +" + gemAttr.strength;
                 gemNum++;
             }
             if (gemAttr.intelligence != 0)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
-                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_intelligence") + "   +" + gemAttr.intelligence;
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence") + "   +" + gemAttr.intelligence;
                 gemNum++;
             }
             if (gemAttr.defense != 0)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
-                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_defense") + "   +" + gemAttr.defense;
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_type_defence") + "   +" + gemAttr.defense;
                 gemNum++;
             }
             if (gemAttr.speed != 0)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
-                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_speed") + "   +" + gemAttr.speed;
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_speed") + "   +" + gemAttr.speed;
                 gemNum++;
             }
         }
@@ -303,6 +319,8 @@ public class UIEquipDetails : MonoBehaviour
         ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
         monster.equipList[itemInfo.part] = null;
         equip.monsterId = BattleConst.invalidMonsterID;
+
+        GameEventMgr.Instance.FireEvent(PetViewConst.ReloadPetEquipNotify);
         equipCallBack.Unload();
     }
 
@@ -334,5 +352,15 @@ public class UIEquipDetails : MonoBehaviour
         EventTriggerListener.Get(inlayButton).onClick = OnClick;
         EventTriggerListener.Get(unloadButton).onClick = OnClick;
         EventTriggerListener.Get(reloadButton).onClick = OnClick;
+        equipTypeTip.text = StaticDataMgr.Instance.GetTextByID("equip_List_zhuangbeileixing");
+        equipPowerTip.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
+        equipLimitTip.text = StaticDataMgr.Instance.GetTextByID("equip_List_xianzhidengji");
+        attributeTextTip.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_attr");
+        gemTextTip.text = StaticDataMgr.Instance.GetTextByID("equip_gem_casting");
+        gemPromptTip.text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotMent");
+        equipUninstallTip.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiexia");
+        StrengthenTip.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_btnopen");
+        gemSetTip.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_title");
+        equipInstallTip.text = StaticDataMgr.Instance.GetTextByID("equip_Change");
     }
 }

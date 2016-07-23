@@ -26,7 +26,7 @@ public class GemListItem : MonoBehaviour
 
     void Start()
     {
-        btnXiangqian.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("xl_gem_btnxiangqian");
+        btnXiangqian.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("gem_btnxiangqian");
         ScrollViewEventListener.Get(btnXiangqian.gameObject).onClick = OnClickXiangqian;
     }
 
@@ -42,8 +42,7 @@ public class GemListItem : MonoBehaviour
         {
             itemIcon.RefreshWithItemInfo(curData.itemData);
         }
-        //TODO:
-        textName.text = curData.itemInfo.name;
+        textName.text = StaticDataMgr.Instance.GetTextByID(curData.itemInfo.name);
         EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(curData.itemInfo.gemId);
         UIUtil.SetDisPlayAttr(attr, text_Attr1, textAttr1, text_Attr2, textAttr2);
     }

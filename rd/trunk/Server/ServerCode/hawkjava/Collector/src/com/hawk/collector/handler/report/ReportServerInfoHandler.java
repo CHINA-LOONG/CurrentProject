@@ -52,7 +52,7 @@ public class ReportServerInfoHandler implements HttpHandler {
 				localIp = (String) params.get("localip");
 			}
 			
-			String value = String.format("'%s', '%s', '%s', '%s', '%s', '%s', %s, %s, '%s', '%s', '%s'", 
+			String value = String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s, %s, \"%s\", \"%s\", \"%s\"", 
 					params.get("game"), params.get("platform"), params.get("server"), 
 					remoteIp, localIp, folder, params.get("listen_port"), params.get("script_port"), 
 					params.get("dburl"), params.get("dbuser"), params.get("dbpwd"));
@@ -61,8 +61,8 @@ public class ReportServerInfoHandler implements HttpHandler {
 			
 			// 优先更新
 			String sql = String.format("UPDATE server SET "
-					+ "ip = '%s', localip = '%s', folder = '%s', listen_port = %s, script_port = %s, dburl = '%s', dbuser = '%s', dbpwd = '%s' "
-					+ "WHERE game = '%s' AND platform = '%s' AND server = '%s'", 
+					+ "ip = \"%s\", localip = \"%s\", folder = \"%s\", listen_port = %s, script_port = %s, dburl = \"%s\", dbuser = \"%s\", dbpwd = \"%s\" "
+					+ "WHERE game = \"%s\" AND platform = \"%s\" AND server = \"%s\"", 
 					remoteIp, localIp, folder, params.get("listen_port"), params.get("script_port"), 
 					params.get("dburl"), params.get("dbuser"), params.get("dbpwd"),
 					params.get("game"), params.get("platform"), params.get("server"));

@@ -72,3 +72,10 @@ public class SpellStateArgs : EventArgs
     public string effectID;
 }
 //---------------------------------------------------------------------------------------------
+public class SpellReviveArgs : EventArgs
+{
+    public float triggerTime;
+    public int targetID;
+    //public int casterID;
+}
+//---------------------------------------------------------------------------------------------

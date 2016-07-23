@@ -203,7 +203,8 @@ public abstract class HawkApp extends HawkAppObj {
 		// 脚本初始化
 		if (appCfg.scriptXml != null && appCfg.scriptXml.length() > 0) {
 			if (!HawkScriptManager.getInstance().init(appCfg.scriptXml)) {
-				return false;
+				HawkLog.logPrintln("script init fail");
+				//return false;
 			}
 		}
 

@@ -9,7 +9,8 @@ public interface SkillElementDelegate
 
 public class SkillElement : MonoBehaviour {
 
-    public Image icon;
+    public Transform iconPos;
+    private SpellIcon spellIcon;
     public Text type;
     public Text level;
     public Text cost;
@@ -25,10 +26,6 @@ public class SkillElement : MonoBehaviour {
     string m_spellId = null ;
     Spell m_spell = null;
 
-	// Use this for initialization
-	void Start () {        
-	}
-	
 	// Update is called once per frame
 	void Update () {
       
@@ -58,6 +55,11 @@ public class SkillElement : MonoBehaviour {
         m_spellId = spellId;
         m_spell = spell;
 
+        if (spellIcon==null)
+        {
+            spellIcon = SpellIcon.CreateWith(iconPos);
+        }
+        spellIcon.SetData(m_spell.level, m_spellId);
         levelLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillLevel);
         currentLevelLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillCurrentLeve);
         nextlevelLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillNextLeve);

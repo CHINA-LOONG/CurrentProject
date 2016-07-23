@@ -12,6 +12,7 @@
 		<!-- 基础属性设置-->
 		<property name="show_sql">false</property>
 		<property name="connection.useUnicode">true</property>
+		<property name="connection.zeroDateTimeBehavior">convertToNull </property>
 		<property name="connection.characterEncoding">UTF-8</property>
 		<property name="current_session_context_class">thread</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>

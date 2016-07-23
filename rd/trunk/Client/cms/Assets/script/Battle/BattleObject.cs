@@ -117,7 +117,7 @@ public class BattleObject : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void OnEnterField()
+    public void OnEnterField(bool recalcSpeed = true)
     {
         unit.State = UnitState.None;
         unit.backUp = false;
@@ -137,7 +137,10 @@ public class BattleObject : MonoBehaviour
            // }
         }
 
-        unit.RecalcCurActionOrder();
+        if (recalcSpeed == true)
+        {
+            unit.RecalcCurActionOrder();
+        }
 
         Logger.LogFormat("Unit {0} guid:{1} has entered field", name, guid);
     }

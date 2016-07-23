@@ -214,6 +214,10 @@ public class BehaviorLogger {
 		 */
 		SHOP_GOLD2COIN,	
 		/**
+		 * 充值
+		 */
+		SHOP_RECHARGE,	
+		/**
 		 * 公会创建
 		 */
 		ALLIANCE_CREATE_CONSUME,

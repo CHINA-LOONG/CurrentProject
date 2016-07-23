@@ -97,6 +97,13 @@ namespace PB
       get { return _itemInfos; }
     }
   
+    private int _refreshTimesLeft;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"refreshTimesLeft", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int refreshTimesLeft
+    {
+      get { return _refreshTimesLeft; }
+      set { _refreshTimesLeft = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

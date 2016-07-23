@@ -11,17 +11,10 @@ public class PetDetailRightStage : PetDetailRightBase{
     public GameObject stageUpView;
     public GameObject stageFullView;
 
-    public Image item1;
-    public Image item2;
-    public Image monster1Add;
-    public Image monster2Add;
-    public MonsterIcon monster1Icon;
-    public MonsterIcon monster2Icon;
+    public ItemIcon itemIcon;
+    public Text itemCount;
 
-    public PetMaterialLabel item1Label;
-    public PetMaterialLabel item2Label;
-    public PetMaterialLabel monster1Label;
-    public PetMaterialLabel monster2Label;
+    public List<NeedMonsterElement> monsterFields;
 
     public Text demandLabel;
     public Text levelLabel;
@@ -32,7 +25,8 @@ public class PetDetailRightStage : PetDetailRightBase{
 
     public Button stageButton;
 
-    GameObject m_selectMonsterView;
+    private SelectMonsterPanel selectMonsterPanel;
+    List<List<int>> monsterSelect = new List<List<int>>();
     List<int> m_monsterList1 = new List<int>();
     List<int> m_monsterList2 = new List<int>();
     GameUnit m_unit;
@@ -40,10 +34,10 @@ public class PetDetailRightStage : PetDetailRightBase{
     // Use this for initialization
     void Start()
     {
-        EventTriggerListener.Get(monster1Add.gameObject).onClick = OpenMonsterSelectUI;
-        EventTriggerListener.Get(monster2Add.gameObject).onClick = OpenMonsterSelectUI;
-        EventTriggerListener.Get(monster1Icon.gameObject).onClick = OpenMonsterSelectUI;
-        EventTriggerListener.Get(monster2Icon.gameObject).onClick = OpenMonsterSelectUI;
+        for (int i = 0; i < monsterFields.Count; i++)
+        {
+            EventTriggerListener.Get(monsterFields[i].button.gameObject).onClick = OpenMonsterSelectUI;
+        }
     }
 
     void OnEnable()
@@ -70,11 +64,10 @@ public class PetDetailRightStage : PetDetailRightBase{
 
     public override void ReloadData(PetRightParamBase param)
     {
-        m_monsterList1.Clear();
-        m_monsterList2.Clear();
-
+        monsterSelect.Clear();
+        //获取宠物信息
         m_unit = param.unit;
-
+        //显示满级和升级界面   …………应该没啥用了
         stageFullView.SetActive(true);
         stageUpView.SetActive(true);
 
@@ -84,25 +77,24 @@ public class PetDetailRightStage : PetDetailRightBase{
         stageFull.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageFull);
         stageButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStage);
 
-        curAttrPanel.ReloadData(m_unit, m_unit.pbUnit.stage);
+        curAttrPanel.ReloadData(m_unit, m_unit.pbUnit.stage);//更新当前宠物的属性和图标
 
-        if (m_unit.pbUnit.stage == GameConfig.MaxMonsterStage)
+        if (m_unit.pbUnit.stage == GameConfig.MaxMonsterStage)//检测是否达到最大等级
         {
-            stageFullView.SetActive(true);
-            stageUpView.SetActive(false);
-            nextAttrPanel.ReloadData(m_unit, GameConfig.MaxMonsterStage);
+            stageFullView.SetActive(true);          //显示满级的文字提示
+            stageUpView.SetActive(false);           //隐藏升级界面
+            nextAttrPanel.ReloadData(m_unit, GameConfig.MaxMonsterStage);//更新下一级的宠物提示（满级是当前级）
             return;
         }
         else
         {
             stageFullView.SetActive(false);
             stageUpView.SetActive(true);
-            nextAttrPanel.ReloadData(m_unit, m_unit.pbUnit.stage + 1);
+            nextAttrPanel.ReloadData(m_unit, m_unit.pbUnit.stage + 1);//显示下一级的宠物提示
         }
-
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(m_unit.pbUnit.stage + 1);
-        levelValue.text = unitStageData.demandLevel.ToString();
-        if (UIUtil.CheckIsEnoughLevel(m_unit) == false)
+        levelValue.text = unitStageData.demandLevel.ToString();//显示升级的等级需求
+        if (UIUtil.CheckIsEnoughLevel(m_unit) == false)//检测宠物是否达到升级下一级的需求
         {
             levelValue.color = ColorConst.text_color_nReq;
             levelValue.GetComponent<Outline>().effectColor = ColorConst.outline_color_nReq;
@@ -113,36 +105,47 @@ public class PetDetailRightStage : PetDetailRightBase{
             levelValue.color = ColorConst.text_color_Req;
             levelValue.GetComponent<Outline>().effectColor = ColorConst.outline_color_Req;
         }
-
-        if ((UIUtil.NeedChangeGrade(m_unit.pbUnit.stage) == true && unitStageData.demandMonsterList.Count != 2) || unitStageData.demandItemList.Count != 2)
+        //modify： xuelong 2015-9-24 10:56:12  
+        //TODO：
+        if ((UIUtil.NeedChangeGrade(m_unit.pbUnit.stage) == true && unitStageData.demandMonsterList.Count < 1) || unitStageData.demandItemList.Count != 1)
         {
+            Logger.LogError("宠物升级进阶材料配置错误");
             return;
         }
+        #region 设置需要的物品材料
 
-        if (UIUtil.NeedChangeGrade(m_unit.pbUnit.stage) == true)
+        ItemData itemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandItemList[0].itemId);
+        itemIcon.RefreshWithItemInfo(new ItemData() { itemId = unitStageData.demandItemList[0].itemId, count = 0 });
+        int current = Mathf.Clamp((itemData == null ? 0 : itemData.count), 0, 9999);
+        int need = unitStageData.demandItemList[0].count;
+        itemCount.text = current + "/" + need;
+        if (need > current)
         {
-            monster1Add.gameObject.SetActive(true);
-            monster2Add.gameObject.SetActive(true);
-            monster1Icon.gameObject.SetActive(true);
-            monster2Icon.gameObject.SetActive(true);
-            monster1Label.gameObject.SetActive(true);
-            monster2Label.gameObject.SetActive(true);
-
-            monster1Icon.Init();
-            monster2Icon.Init();
-            monster1Icon.SetMonsterStaticId(unitStageData.demandMonsterList[0].itemId);
-            monster1Icon.SetStage(unitStageData.demandMonsterList[0].stage);
-            monster2Icon.SetMonsterStaticId(unitStageData.demandMonsterList[1].itemId);
-            monster2Icon.SetStage(unitStageData.demandMonsterList[1].stage);
+            itemCount.color = ColorConst.text_color_nReq;
         }
         else
         {
-            monster1Add.gameObject.SetActive(false);
-            monster2Add.gameObject.SetActive(false);
-            monster1Icon.gameObject.SetActive(false);
-            monster2Icon.gameObject.SetActive(false);
-            monster1Label.gameObject.SetActive(false);
-            monster2Label.gameObject.SetActive(false);
+            itemCount.color = ColorConst.text_color_Req;
+        }
+
+        #endregion
+
+        #region 设置需求的金币
+        coinLabel.text = unitStageData.demandCoin.ToString();
+        ResetMaterialColor(coinLabel, unitStageData.demandCoin, (int)GameDataMgr.Instance.PlayerDataAttr.coin); 
+        #endregion
+        
+        monsterFields.ForEach(delegate(NeedMonsterElement item) { item.gameObject.SetActive(false); });
+        ItemInfo itemInfo;
+        for (int i = 0; i < unitStageData.demandMonsterList.Count; i++)
+        {
+            itemInfo = unitStageData.demandMonsterList[i];
+            monsterSelect.Add(new List<int>());
+            monsterFields[i].gameObject.SetActive(true);
+            monsterFields[i].Refresh((itemInfo.itemId.Equals(BattleConst.stageSelfId) ? m_unit.pbUnit.id : itemInfo.itemId),
+                                   itemInfo.stage,
+                                   itemInfo.count,
+                                   monsterSelect[i].Count);
         }
 
         UpdateMaterails();
@@ -152,38 +155,27 @@ public class PetDetailRightStage : PetDetailRightBase{
     {
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(m_unit.pbUnit.stage + 1);
         ItemInfo itemInfo  = null;
-        if (go == monster1Icon.gameObject || go == monster1Add.gameObject)
-        {
-            itemInfo = unitStageData.demandMonsterList[0];
-        }
-        else if (go == monster2Icon.gameObject || go == monster2Add.gameObject)
-        {
-            itemInfo = unitStageData.demandMonsterList[1];
-        }      
 
-        m_selectMonsterView = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetStageMonsterSelectAssetName);
-        m_selectMonsterView.transform.localScale = Vector3.one;
-        m_selectMonsterView.transform.localPosition = Vector3.zero;
-        m_selectMonsterView.transform.localEulerAngles = Vector3.zero;
-        m_selectMonsterView.transform.SetParent(gameObject.transform.parent.parent, false);
-        EventTriggerListener.Get(m_selectMonsterView.GetComponent<SelectMonsterPanel>().closeButton.gameObject).onClick = CloseButtonDown;
-
-        if (go == monster1Icon.gameObject || go == monster1Add.gameObject)
+        selectMonsterPanel = UIMgr.Instance.OpenUI_(SelectMonsterPanel.ViewName, false) as SelectMonsterPanel;
+        EventTriggerListener.Get(selectMonsterPanel.closeButton.gameObject).onClick = CloseButtonDown;
+        
+        for (int i = 0; i < unitStageData.demandMonsterList.Count; i++)
         {
-            m_selectMonsterView.GetComponent<SelectMonsterPanel>().init(unitStageData.demandMonsterList[0], m_monsterList1, m_unit.pbUnit.guid);
-        }
-        else if (go == monster2Icon.gameObject || go == monster2Add.gameObject)
-        {
-            m_selectMonsterView.GetComponent<SelectMonsterPanel>().init(unitStageData.demandMonsterList[1], m_monsterList2, m_unit.pbUnit.guid);
+            if (go==monsterFields[i].button.gameObject)
+            {
+                itemInfo = unitStageData.demandMonsterList[i];
+                selectMonsterPanel.init(unitStageData.demandMonsterList[i], monsterSelect[i], m_unit/*.pbUnit.guid*/);
+                break;
+            }
         }
     }
 
     void CloseButtonDown(GameObject go)
     {
-        if (m_selectMonsterView != null)
+        if (selectMonsterPanel != null)
         {
-            ResourceMgr.Instance.DestroyAsset(m_selectMonsterView);
-            m_selectMonsterView = null;
+            UIMgr.Instance.DestroyUI(selectMonsterPanel);
+            selectMonsterPanel = null;
         }
 
         UpdateMaterails();
@@ -192,48 +184,11 @@ public class PetDetailRightStage : PetDetailRightBase{
     void UpdateMaterails()
     {
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(m_unit.pbUnit.stage + 1);
-        ItemData itemData = null;
-        itemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandItemList[0].itemId);
-        item1Label.ReloadData(itemData == null ? 0 : itemData.count, unitStageData.demandItemList[0].count, 9999);
-
-        itemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandItemList[1].itemId);
-        item2Label.ReloadData(itemData == null ? 0 : itemData.count, unitStageData.demandItemList[1].count, 9999);
-
-        if (UIUtil.NeedChangeGrade(m_unit.pbUnit.stage) == true)
+        for (int i = 0; i < unitStageData.demandMonsterList.Count; i++)
         {
-            monster1Label.ReloadData(m_monsterList1.Count, unitStageData.demandMonsterList[0].count, 9999);
-            monster2Label.ReloadData(m_monsterList2.Count, unitStageData.demandMonsterList[1].count, 9999);
+            monsterFields[i].UpdateCount(unitStageData.demandMonsterList[i].count, monsterSelect[i].Count);
         }
-
-        if (UIUtil.NeedChangeGrade(m_unit.pbUnit.stage) == true)
-        {
-            if (m_monsterList1.Count > 0)
-            {
-                monster1Add.gameObject.SetActive(false);
-                monster1Icon.gameObject.SetActive(true);
-            }
-            else
-            {
-                monster1Add.gameObject.SetActive(true);
-                monster1Icon.gameObject.SetActive(false);
-            }
-
-            if (m_monsterList2.Count > 0)
-            {
-                monster2Add.gameObject.SetActive(false);
-                monster2Icon.gameObject.SetActive(true);
-            }
-            else
-            {
-                monster2Add.gameObject.SetActive(true);
-                monster2Icon.gameObject.SetActive(false);
-            }
-        }
-
-        coinLabel.text = unitStageData.demandCoin.ToString();
-        ResetMaterialColor(coinLabel, unitStageData.demandCoin, (int)GameDataMgr.Instance.PlayerDataAttr.coin);      
-
-        if (UIUtil.CheckIsEnoughMaterial(m_unit) == true)
+        if (UIUtil.CheckIsEnoughMaterial(m_unit))
         {
             stageButton.interactable = true;
             EventTriggerListener.Get(stageButton.gameObject).onClick = StageUpButtonDown;
@@ -249,15 +204,13 @@ public class PetDetailRightStage : PetDetailRightBase{
     {
         PB.HSMonsterStageUp resquest = new PB.HSMonsterStageUp();
         resquest.monsterId = m_unit.pbUnit.guid;
-        foreach (int monsterId in m_monsterList1)
+        for (int i = 0; i < monsterSelect.Count; i++)
         {
-            resquest.consumeMonsterId.Add(monsterId);
+            for (int j = 0; j < monsterSelect[i].Count; j++)
+            {
+                resquest.consumeMonsterId.Add(monsterSelect[i][j]);
+            }
         }
-        foreach (int monsterId in m_monsterList2)
-        {
-            resquest.consumeMonsterId.Add(monsterId);
-        }
-
         GameApp.Instance.netManager.SendMessage(ProtocolMessage.Create(PB.code.MONSTER_STAGE_UP_C.GetHashCode(), resquest));
     }
 

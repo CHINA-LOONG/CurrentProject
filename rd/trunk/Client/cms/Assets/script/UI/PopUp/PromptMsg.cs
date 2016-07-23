@@ -16,15 +16,23 @@ namespace MsgBox
 	}
 	public class PromptMsg : UIBase
 	{
-		public delegate void PrompDelegate (int state);
+        public delegate void PrompDelegate(PrompButtonClick state);
+        private bool autoClose = true;
 
 		public static string ViewName = "PromptMsg";
 
-		public static	void Open(MsgBoxType msgType, string msg, PrompDelegate buttonClilck = null)
+		public static PromptMsg Open(MsgBoxType msgType, string msg, PrompDelegate callback = null, bool autoClose = true)
 		{
             PromptMsg mInfo = UIMgr.Instance.OpenUI_(PromptMsg.ViewName,false) as PromptMsg;
-			mInfo.SetData (msgType, msg, buttonClilck);
+            mInfo.SetData(msgType, msg, callback, autoClose);
+            return mInfo;
 		}
+
+        public void Close()
+        {
+            UIMgr.Instance.DestroyUI(this);
+        }
+
 
 		public  Text 	titleText;
 		public	Text	msgText;
@@ -59,7 +67,7 @@ namespace MsgBox
 			EventTriggerListener.Get (conformButton1.gameObject).onClick = OnConformButtonClick;
 			EventTriggerListener.Get (conformButton2.gameObject).onClick = OnConformButtonClick;
 
-			SetButtonName (cancelButton, "取消");
+			SetButtonName (cancelButton, StaticDataMgr.Instance.GetTextByID("ui_quxiao"));
 			SetButtonName (conformButton1, StaticDataMgr.Instance.GetTextByID("ui_queding"));
 			SetButtonName (conformButton2, StaticDataMgr.Instance.GetTextByID("ui_queding"));
 
@@ -74,30 +82,37 @@ namespace MsgBox
 			}
 		}
 
-		public	void SetData(MsgBoxType msgType, string msg, PrompDelegate buttonClilck)
+		public	void SetData(MsgBoxType msgType, string msg, PrompDelegate callback, bool autoClose)
 		{
 			conformPanel.gameObject.SetActive (msgType == MsgBoxType.Conform);
 			conformCancelPanel.gameObject.SetActive (msgType == MsgBoxType.Conform_Cancel);
 
-			this.buttonClick = buttonClick;
+            this.buttonClick = callback;
 			msgText.text = msg;
+            this.autoClose = autoClose;
 		}
 
 		void OnCancelButtonClilck(GameObject go)
 		{
-			UIMgr.Instance.DestroyUI (this);
+            if (autoClose)
+            {
+                UIMgr.Instance.DestroyUI(this);
+            }
 			if (buttonClick != null)
 			{
-				buttonClick((int) PrompButtonClick.Cancle);
+				buttonClick(PrompButtonClick.Cancle);
 			}
 		}
 
-		void	OnConformButtonClick(GameObject go)
+		void OnConformButtonClick(GameObject go)
 		{
-			UIMgr.Instance.DestroyUI (this);
+            if (autoClose)
+            {
+                UIMgr.Instance.DestroyUI(this);
+            }
 			if (buttonClick != null)
 			{
-				buttonClick((int) PrompButtonClick.OK);
+				buttonClick(PrompButtonClick.OK);
 			}
 		}
 

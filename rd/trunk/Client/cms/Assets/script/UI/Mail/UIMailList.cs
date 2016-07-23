@@ -19,7 +19,7 @@ public class UIMailList : MonoBehaviour
 
     void Start()
     {
-        OnLanguageChanged();
+        //OnLanguageChanged();
     }
 
     public void Clean()
@@ -129,7 +129,7 @@ public class UIMailList : MonoBehaviour
     void OnLanguageChanged()
     {
         //TODO:change language
-        textMailnone.text = StaticDataMgr.Instance.GetTextByID("mail_meiyouyoujian");
+        //textMailnone.text = StaticDataMgr.Instance.GetTextByID("mail_meiyouyoujian");
     }
 
     public static int SortMail(PB.HSMail a, PB.HSMail b)

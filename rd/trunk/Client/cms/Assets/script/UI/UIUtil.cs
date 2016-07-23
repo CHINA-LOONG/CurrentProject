@@ -138,18 +138,16 @@ public class UIUtil
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(unit.pbUnit.stage + 1);
 
         ItemData itemData = null;
-        itemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandItemList[0].itemId);
-        if (itemData == null || itemData.count < unitStageData.demandItemList[0].count)
+
+        for (int i = 0; i < unitStageData.demandItemList.Count; i++)
         {
-            return false;
+            itemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandItemList[i].itemId);
+            if (itemData == null || itemData.count < unitStageData.demandItemList[i].count)
+            {
+                return false;
+            }
         }
 
-        itemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(unitStageData.demandItemList[1].itemId);
-        if (itemData == null || itemData.count < unitStageData.demandItemList[1].count)
-        {
-            return false;
-        }
-    
         //金钱判断
         if (GameDataMgr.Instance.PlayerDataAttr.coin <= unitStageData.demandCoin)
         {
@@ -164,22 +162,17 @@ public class UIUtil
 
         ItemInfo itemInfo = null;
         List<GameUnit> petList = null;
-        itemInfo = unitStageData.demandMonsterList[0];
-        petList = GameDataMgr.Instance.PlayerDataAttr.GetAllPet(itemInfo.itemId, itemInfo.stage);
-        petList.Remove(unit);
-        if (petList.Count < unitStageData.demandMonsterList[0].count)
-        {
-            return false;
-        }
 
-        itemInfo = unitStageData.demandMonsterList[1];
-        petList = GameDataMgr.Instance.PlayerDataAttr.GetAllPet(itemInfo.itemId, itemInfo.stage);
-        petList.Remove(unit);
-        if (petList.Count < unitStageData.demandMonsterList[1].count)
+        for (int i = 0; i < unitStageData.demandMonsterList.Count; i++)
         {
-            return false;
+            itemInfo = unitStageData.demandMonsterList[i];
+            petList = GameDataMgr.Instance.PlayerDataAttr.GetAllPet((itemInfo.itemId.Equals(BattleConst.stageSelfId)?unit.pbUnit.id:itemInfo.itemId), itemInfo.stage);
+            petList.Remove(unit);
+            if (petList.Count < unitStageData.demandMonsterList[i].count)
+            {
+                return false;
+            }
         }
-
         return true;
     }
 
@@ -198,36 +191,15 @@ public class UIUtil
     {
         int quallity = 0;
         int plusQuality = 0;
-        UIUtil.CalculationQuality(unit.pbUnit.stage, out quallity, out plusQuality);  
-      
-        if (quallity == 1)
+        UIUtil.CalculationQuality(unit.pbUnit.stage, out quallity, out plusQuality);
+
+        label.color = ColorConst.GetStageTextColor(quallity);
+        Outline outline = label.GetComponent<Outline>();
+        if (outline == null)
         {
-            label.color = Color.white;
+            outline = label.gameObject.AddComponent<Outline>();
         }
-        else if (quallity == 2)
-        {
-            label.color = Color.green;
-        }
-        else if (quallity == 3)
-        {
-            label.color = Color.blue;
-        }
-        else if (quallity == 4)
-        {
-            label.color  = new UnityEngine.Color(1.0f, 0.0f, 1.0f);
-        }
-        else if (quallity == 5)
-        {
-            label.color = new UnityEngine.Color(1.0f, 165 / 255.0f, 0.0f); ;
-        }
-        else if (quallity == 6)
-        {
-            label.color = Color.red;
-        }
-        else
-        {
-             label.color = Color.black;
-        }
+        outline.effectColor = ColorConst.GetStageOutLineColor(quallity);
 
         if (plusQuality == 0)
         {
@@ -236,6 +208,28 @@ public class UIUtil
         else
         {
             label.text = string.Format("{0} +{1}", StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id).NickNameAttr, plusQuality);
+        }
+
+    }
+
+    public static void SetStageColor(Text label, string textId, int stage, int level = 0)
+    {
+        label.color = ColorConst.GetStageTextColor(stage);
+
+        Outline outline = label.GetComponent<Outline>();
+        if (outline==null)
+        {
+            outline = label.gameObject.AddComponent<Outline>();
+        }
+        outline.effectColor = ColorConst.GetStageOutLineColor(stage);
+
+        if (level == 0)
+        {
+            label.text = StaticDataMgr.Instance.GetTextByID(textId);
+        }
+        else
+        {
+            label.text = string.Format("{0} +{1}", StaticDataMgr.Instance.GetTextByID(textId), level);
         }
 
     }
@@ -254,7 +248,7 @@ public class UIUtil
 
     public static void SetParentReset(Transform child, Transform parent)
     {
-        child.SetParent(parent,false);
+        child.SetParent(parent, false);
         child.localPosition = Vector3.zero;
         child.localScale = Vector3.one;
     }

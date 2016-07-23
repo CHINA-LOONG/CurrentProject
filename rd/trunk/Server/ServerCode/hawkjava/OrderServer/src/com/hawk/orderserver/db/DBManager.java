@@ -1,4 +1,4 @@
-﻿package com.hawk.orderserver.db;
+package com.hawk.orderserver.db;
 
 import java.sql.SQLException;
 import java.sql.Statement;

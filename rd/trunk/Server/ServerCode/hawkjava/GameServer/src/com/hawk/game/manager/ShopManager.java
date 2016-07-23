@@ -1,0 +1,104 @@
+package com.hawk.game.manager;
+
+import org.hawk.app.HawkAppObj;
+import org.hawk.config.HawkConfigManager;
+import org.hawk.util.services.HawkOrderService;
+import org.hawk.xid.HawkXID;
+
+import sun.print.resources.serviceui;
+
+import com.hawk.game.ServerData;
+import com.hawk.game.config.RechargeCfg;
+import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.entity.RechargeEntity;
+import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.item.AwardItems;
+import com.hawk.game.log.BehaviorLogger.Action;
+import com.hawk.game.player.Player;
+import com.hawk.game.util.GsConst;
+
+public class ShopManager extends HawkAppObj {
+	/**
+	 * 全局对象, 便于访问
+	 */
+	private static ShopManager instance = null;
+	
+	/**
+	 * 获取全局实例对象
+	 */
+	public static ShopManager getInstance() {
+		return instance;
+	}
+	
+	/**
+	 * 构造函数
+	 */
+	public ShopManager(HawkXID xid) {
+		super(xid);
+		if (instance == null) {
+			instance = this;
+		}
+	}
+	
+	// 主线程调用
+	public boolean OnOrderNotify(Player player, String puid, String orderSerial, String platform, String productId){			
+		RechargeCfg rechargeCfg = HawkConfigManager.getInstance().getConfigByKey(RechargeCfg.class, productId);
+		if (rechargeCfg == null) {
+			HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_PRODUCT_NOT_EXIST, 0, 0);
+			return false;
+		}
+		
+		int goldCount = 0;
+		int giftGoldCount  = 0;
+		boolean isMonthCard = productId.indexOf(GsConst.MONTH_CARD) >=0;
+		// 不是月卡 检测是不是首充
+		if(!isMonthCard){
+			boolean isfirstRecharge = player.getPlayerData().getStatisticsEntity().getRechargeTime(productId) == 0 ? true : false;
+			giftGoldCount = isfirstRecharge ? (int)(rechargeCfg.getGold() * rechargeCfg.getGift()) : 0;
+			goldCount = rechargeCfg.getGold();
+		}
+
+		RechargeEntity rechargeEntity = new RechargeEntity(orderSerial, 
+														   puid,
+														   player.getPlayerData().getId(),
+														   productId,
+														   goldCount,
+														   giftGoldCount,
+														   player.getLevel(),
+														   platform);
+		
+		if (rechargeEntity.notifyCreate() == false) {		
+			HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_STATUS_ERROR, 0, 0);
+			return false;
+		}
+		
+		ServerData.getInstance().addOrderSerial(orderSerial);
+		StatisticsEntity staticsticsEntity = player.getPlayerData().getStatisticsEntity();		
+		if (isMonthCard) {
+			staticsticsEntity.addMonthCard();
+			if (player.getSession() != null) {
+				player.getPlayerData().syncStatisticsInfo();
+			}
+		}
+		else
+		{
+			// 离线玩家
+			if (player.getSession() == null) {
+				PlayerEntity playerEntity = player.getPlayerData().getPlayerEntity();
+				playerEntity.setGold(playerEntity.getGold() + rechargeEntity.getAddGold() + rechargeEntity.getGiftGold());
+				playerEntity.notifyUpdate(false);
+			}
+			else {
+				AwardItems reward = new AwardItems();
+				reward.addGold(rechargeEntity.getAddGold() + rechargeEntity.getGiftGold());
+				reward.rewardTakeAffectAndPush(player, Action.SHOP_RECHARGE);
+			}
+		}
+
+		staticsticsEntity.AddRechargeRecord(productId);
+		staticsticsEntity.notifyUpdate(false);
+		HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_STATUS_OK, rechargeCfg.getGold(), giftGoldCount);
+		return true;
+	}
+	
+}

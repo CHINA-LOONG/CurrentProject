@@ -47,7 +47,7 @@ public class FetchGoldInfoHandler implements HttpHandler {
 		Statement statement = null;
 		try {
 			String sql = "select changeaction, count(gold), sum(gold) FROM gold WHERE game = '" + game + "'";
-			sql += String.format(" and date >= '%s' and date <= '%s'", beginDate, endDate);
+			sql += String.format(" and date >= \"%s\" and date <= \"%s\"", beginDate, endDate);
 			sql += String.format(" and changetype = %d", changeType);
 			if (channel != null && channel.length() > 0) {
 				sql += " and channel = '" + channel +"'";

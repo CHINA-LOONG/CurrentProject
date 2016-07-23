@@ -1,9 +1,6 @@
 package org.hawk.util.services;
 
-import java.io.UnsupportedEncodingException;
 import java.net.SocketTimeoutException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -14,9 +11,14 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import net.sf.json.JSONObject;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppCfg;
 import org.hawk.log.HawkLog;
@@ -542,7 +544,8 @@ public class HawkReportService extends HawkThread {
 	 */
 	private String serviceHost = "";
 	private HttpClient httpClient = null;
-	private GetMethod getMethod = null;
+	private HttpGet httpGet = null;
+	private URIBuilder uriBuilder = null;
 
 	/**
 	 * 本服务器对象
@@ -592,7 +595,8 @@ public class HawkReportService extends HawkThread {
 	 */
 	private HawkReportService() {
 		this.httpClient = null;
-		this.getMethod = null;
+		this.httpGet = null;
+		this.uriBuilder = null;
 		this.reportLock = new ReentrantLock();
 		this.reportDatas = new LinkedList<Object>();
 		this.reportClass = new HashMap<String, Boolean>();
@@ -624,7 +628,7 @@ public class HawkReportService extends HawkThread {
 	}
 	
 	/**
-	 * 初始化cdk服务
+	 * 初始化上报服务
 	 * 
 	 * @return
 	 */
@@ -633,7 +637,7 @@ public class HawkReportService extends HawkThread {
 	}
 	
 	/**
-	 * 初始化cdk服务
+	 * 初始化上报服务
 	 * 
 	 * @return
 	 */
@@ -653,13 +657,21 @@ public class HawkReportService extends HawkThread {
 				}
 			} else {
 				if (httpClient == null) {
-					httpClient = new HttpClient();
-					httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(timeout);
-					httpClient.getHttpConnectionManager().getParams().setSoTimeout(timeout);
+					RequestConfig requestConfig = RequestConfig.custom()
+							.setConnectTimeout(timeout)
+							.setSocketTimeout(timeout)
+							.build();
+					httpClient = HttpClients.custom()
+							.setDefaultRequestConfig(requestConfig)
+							.build();
 				}
 
-				if (getMethod == null) {
-					getMethod = new GetMethod(host);
+				if (httpGet == null) {
+					httpGet = new HttpGet();
+				}
+
+				if (uriBuilder == null) {
+					uriBuilder = new URIBuilder(host);
 				}
 
 				if (appCfg == null) {
@@ -754,10 +766,10 @@ public class HawkReportService extends HawkThread {
 		serverData = new ServerData(myHostIp, appCfg.getAcceptorPort(), scriptHttpPort, appCfg.getDbConnUrl(), appCfg.getDbUserName(), appCfg.getDbPassWord());
 		
 		try {
-			queryParam = URLEncoder.encode(queryParam, "UTF-8");
-			getMethod.setPath(serverPath);
-			getMethod.setQueryString(queryParam);
-			httpClient.executeMethod(getMethod);
+			uriBuilder.setPath(serverPath);
+			uriBuilder.setCustomQuery(queryParam);
+			httpGet.setURI(uriBuilder.build());
+			httpClient.execute(httpGet);
 			reportLogger.info("report server info success: " + serverPath + "?" + queryParam);
 		} catch (Exception e) {
 			reportLogger.info("report server info failed: " + serverPath + "?" + queryParam);
@@ -791,10 +803,13 @@ public class HawkReportService extends HawkThread {
 	 */
 	protected String fetchReportInfo() {
 		try {
-			getMethod.setPath(fetchIpPath);
-			int status = httpClient.executeMethod(getMethod);
+			uriBuilder.setPath(fetchIpPath);
+			uriBuilder.setCustomQuery("");
+			httpGet.setURI(uriBuilder.build());
+			HttpResponse httpResponse = httpClient.execute(httpGet);
+			int status =  httpResponse.getStatusLine().getStatusCode();
 			if (status == HttpStatus.SC_OK) {
-				return new String(getMethod.getResponseBody());
+				return EntityUtils.toString(httpResponse.getEntity());
 			}
 		} catch (Exception e) {
 		}
@@ -817,12 +832,13 @@ public class HawkReportService extends HawkThread {
 	public boolean fetchAccountServerInfo(HawkAppCfg appCfg, StringBuilder accountAddr, IntHolder zmqPort) {
 		try {
 			String queryParam = String.format(fetchAccountServerQuery, gameName, platform, serverId, "test");
-			queryParam = URLEncoder.encode(queryParam, "UTF-8");
-			getMethod.setQueryString(queryParam);
-			getMethod.setPath(fetchAccountServerPath);
-			int status = httpClient.executeMethod(getMethod);
+			uriBuilder.setPath(fetchAccountServerPath);
+			uriBuilder.setCustomQuery(queryParam);
+			httpGet.setURI(uriBuilder.build());
+			HttpResponse httpResponse = httpClient.execute(httpGet);
+			int status =  httpResponse.getStatusLine().getStatusCode();
 			if (status == HttpStatus.SC_OK) {
-				String accountInfo = new String(getMethod.getResponseBody());
+				String accountInfo = EntityUtils.toString(httpResponse.getEntity());
 				if (accountInfo != null && accountInfo.length() > 0) {
 					reportLogger.info("account server info: " + accountInfo);
 
@@ -871,7 +887,7 @@ public class HawkReportService extends HawkThread {
 	 * @return
 	 */
 	public boolean isValid() {
-		if (reportZmq == null && (httpClient == null || getMethod == null)) {
+		if (reportZmq == null && (httpClient == null || httpGet == null || uriBuilder == null)) {
 			return false;
 		}
 		return true;
@@ -927,16 +943,11 @@ public class HawkReportService extends HawkThread {
 	 */
 	public synchronized int executeMethod(String path, String params) {
 		if (token != null && token.length() > 0) {
-			try {
-				params += URLEncoder.encode("&token=" + token, "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				HawkException.catchException(e);
-			}
+			params += "&token=" + token;
 		}
-		
+
 		if (reportZmq != null) {
 			try {
-				params = URLDecoder.decode(params, "UTF-8");
 				if (!reportZmq.send(path.getBytes(), HawkZmq.HZMQ_SNDMORE)) {
 					return -1;
 				}
@@ -949,15 +960,17 @@ public class HawkReportService extends HawkThread {
 			} catch (Exception e) {
 				HawkException.catchException(e);
 			}
-		} else if (getMethod != null) {
-			getMethod.setPath(path);
+		} else if (httpClient != null && httpGet != null && uriBuilder != null) {
+			uriBuilder.setPath(path);
 			if (params != null && params.length() > 0) {
-				getMethod.setQueryString(params);
+				uriBuilder.setCustomQuery(params);
 			}
 
 			for (int i = 0; i < retryTimes; i++) {
 				try {
-					return httpClient.executeMethod(getMethod);
+					httpGet.setURI(uriBuilder.build());
+					HttpResponse httpResponse = httpClient.execute(httpGet);
+					return httpResponse.getStatusLine().getStatusCode();
 				} catch (SocketTimeoutException ste) {
 					HawkOSOperator.sleep();
 				} catch (Exception e) {
@@ -1103,8 +1116,6 @@ public class HawkReportService extends HawkThread {
 						registerData.device, registerData.playerId, 
 						(registerData.time == null || registerData.time.length() <= 0) ? HawkTime.getTimeString() : registerData.time);
 
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
-
 				reportLogger.info("report: " + registerPath + "?" + queryParam);
 
 				int status = executeMethod(registerPath, queryParam);
@@ -1135,8 +1146,6 @@ public class HawkReportService extends HawkThread {
 				String queryParam = String.format(loginQuery, gameName, platform, serverId, loginData.puid, loginData.device, 
 						loginData.playerId, loginData.playerLevel, loginData.period, 
 						(loginData.time == null || loginData.time.length() <= 0) ? HawkTime.getTimeString() : loginData.time);
-
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
 
 				reportLogger.info("report: " + loginPath + "?" + queryParam);
 
@@ -1171,8 +1180,6 @@ public class HawkReportService extends HawkThread {
 						rechargeData.orderMoney, rechargeData.payMoney, rechargeData.addGold, rechargeData.giftGold, rechargeData.currency, 
 						(rechargeData.time == null || rechargeData.time.length() <= 0) ? HawkTime.getTimeString() : rechargeData.time);
 
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
-
 				reportLogger.info("report: " + rechargePath + "?" + queryParam);
 
 				int status = executeMethod(rechargePath, queryParam);
@@ -1204,8 +1211,6 @@ public class HawkReportService extends HawkThread {
 						goldData.playerId, goldData.playerLevel, goldData.changeType, goldData.changeAction, 
 						goldData.goldType, goldData.gold, 
 						(goldData.time == null || goldData.time.length() <= 0) ? HawkTime.getTimeString() : goldData.time);
-
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
 
 				reportLogger.info("report: " + goldPath + "?" + queryParam);
 
@@ -1239,8 +1244,6 @@ public class HawkReportService extends HawkThread {
 						activityData.activityId, activityData.activityNo, activityData.consumeGold, 
 						(activityData.time == null || activityData.time.length() <= 0) ? HawkTime.getTimeString() : activityData.time);
 
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
-
 				reportLogger.info("report: " + activityPath + "?" + queryParam);
 
 				int status = executeMethod(activityPath, queryParam);
@@ -1271,8 +1274,6 @@ public class HawkReportService extends HawkThread {
 				String queryParam = String.format(tutorialQuery, gameName, platform, serverId, tutorialData.puid, tutorialData.device, 
 						tutorialData.playerId, tutorialData.playerLevel, tutorialData.step, tutorialData.args, 
 						(tutorialData.time == null || tutorialData.time.length() <= 0) ? HawkTime.getTimeString() : tutorialData.time);
-
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
 
 				reportLogger.info("report: " + tutorialPath + "?" + queryParam);
 
@@ -1306,8 +1307,6 @@ public class HawkReportService extends HawkThread {
 				String queryParam = String.format(serverQuery, gameName, platform, serverId, 
 						serverData.ip, HawkOSOperator.getLocalIp(), userDir, serverData.listenPort, serverData.scriptPort, 
 						serverData.dbUrl, serverData.dbUser, serverData.dbPwd);
-
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
 
 				reportLogger.info("report: " + serverPath + "?" + queryParam);
 
@@ -1345,8 +1344,6 @@ public class HawkReportService extends HawkThread {
 						queryParam += "&arg" + (i + 1) + "=" + commonData.args.get(i);
 					}
 				}
-
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
 
 				reportLogger.info("report: " + commonPath + "?" + queryParam);
 

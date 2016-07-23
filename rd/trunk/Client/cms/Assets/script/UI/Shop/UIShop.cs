@@ -9,11 +9,11 @@ public class UIShop : UIBase
 
 	public	CoinButton	jinbiCoinBtn;
 	public	CoinButton	zuanshiCoinBtn;
-	public	CoinButton	shopCoinBtn;
 
 	public	ScrollView	shopItemsScrollView;
 	public	Text		shopName;
 	public	Text		nextRefreshText;
+	public 	Text 		refreshText;
 
 	public	Button	refreshButton;
 	public	Button	closeButton;
@@ -67,12 +67,16 @@ public class UIShop : UIBase
 				subItem.gameObject.SetActive(false);
 			}
 		}
+
+		refreshText.text = StaticDataMgr.Instance.GetTextByID ("shop_refresh");
 		shopDataMgr = GameDataMgr.Instance.ShopDataMgrAttr;
 		
 		EventTriggerListener.Get (refreshButton.gameObject).onClick = OnRefreshButtonClilck;
 		EventTriggerListener.Get (closeButton.gameObject).onClick = OnCloseButtonClick ;
 		EventTriggerListener.Get (leftButton.gameObject).onClick = OnLeftButtonClick ;
 		EventTriggerListener.Get (rightButton.gameObject).onClick = OnRightButtonClick ;
+		EventTriggerListener.Get (jinbiCoinBtn.addCoinButton.gameObject).onClick = OnJinbiCoinButtonClick;
+		EventTriggerListener.Get (zuanshiCoinBtn.addCoinButton.gameObject).onClick = OnZuanshiCoinbuttonClick;
 
 		BindListener ();
 		
@@ -111,14 +115,14 @@ public class UIShop : UIBase
 		if (hasRefreshCount == desc.maxRefreshTimes) 
 		{
 			//MsgBox.PromptMsg.Open("提示","今天刷新次数已经用完","确定");
-			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,"今天刷新次数已经用完");
+			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,"今天刷新次数已经用完");//todo:liws 禁用按钮 
 			return;
 		}
 
 		if (GameDataMgr.Instance.PlayerDataAttr.gold < 5)
 		{
 			//MsgBox.PromptMsg.Open("提示","钻石不足","确定");
-			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,"钻石不足");
+			shopDataMgr.ZuanshiNoEnough();
 			return;
 		}
 
@@ -143,6 +147,15 @@ public class UIShop : UIBase
 		int nextShopType = GetNextShopType ();
 		curShopType = nextShopType;
 		RefreshShopData (curShopType);
+	}
+
+	void	OnJinbiCoinButtonClick(GameObject go)
+	{
+		shopDataMgr.JinbiNoEnough ();
+	}
+	void 	OnZuanshiCoinbuttonClick(GameObject go)
+	{
+		UIMgr.Instance.OpenUI_ (UIMall.ViewName, false);
 	}
 
 	public	void	RefreshShopData(int shopType,bool forceRefresh = false)
@@ -175,28 +188,25 @@ public class UIShop : UIBase
 		shopName.text = GetShopName (curShopType);
 
 		TimeStaticData nextRefTime = shopDataMgr.GetNextFreeRefreshTime (curShopType);
-		string day = "今天";
+		string day =  StaticDataMgr.Instance.GetTextByID("shop_today");;
 		if (nextRefTime.dayOfMonth > 1)
 		{
-			day = "明天";
+			day = StaticDataMgr.Instance.GetTextByID("shop_tommorow");
 		}
-		string nextRefDes = string.Format ("下次更新时间:{0}:{1:00}:{2:00}",day,nextRefTime.hour,nextRefTime.minute);
+		string nextRefDes = string.Format ("{0}{1}:{2:00}:{3:00}",StaticDataMgr.Instance.GetTextByID("shop_nextrefresh"),
+		                                   day,nextRefTime.hour,nextRefTime.minute);
 
 		nextRefreshText.text = nextRefDes;
 
-		if ((int)PB.shopType.NORMALSHOP == shopData.type) 
+		Sprite coinSp = ResourceMgr.Instance.LoadAssetType<Sprite>(GetCoinImageName(shopData.type)) as Sprite;
+		if(null != coinSp)
 		{
-			shopCoinBtn.gameObject.SetActive(false);
-		}
-		else 
-		{
-			shopCoinBtn.gameObject.SetActive(true);
+			jinbiCoinBtn.coinImage.sprite = coinSp;
 		}
 
 
 		//shop items
 		List<PB.ShopItem> itemsInfo = shopData.itemInfos;
-
 
 		ShopItem shopItemUi = null;
 		PB.ShopItem shopItemData = null;
@@ -242,14 +252,27 @@ public class UIShop : UIBase
 		}
 	}
 
+	string GetCoinImageName(int stype)
+	{
+		switch (stype) 
+		{
+		case (int)PB.shopType.NORMALSHOP:
+			return "icon_jinbi";
+		case (int)PB.shopType.ALLIANCESHOP:
+			return "icon_gonghuibi";
+		default:
+			return "";
+		}
+	}
+
 	string GetShopName(int stype)
 	{
 		switch (stype) 
 		{
 		case (int)PB.shopType.NORMALSHOP:
-			return "普通商店";
+			return StaticDataMgr.Instance.GetTextByID("shop_putong");
 		case (int)PB.shopType.ALLIANCESHOP:
-			return "工会商店";
+			 return StaticDataMgr.Instance.GetTextByID("shop_gonghui");
 		default:
 			return "";
 		}

@@ -39,7 +39,7 @@ public class UIEquipSetting : UIBase, IGemListCallBack, IEquipInlayCallBack
         {
             uiEquipInlay.gameObject.SetActive(true);
         }
-        uiEquipInlay.Refresh(curEquip, curTabIndex, curSelIndex,UIEquipInlay.UIType.Left);
+        uiEquipInlay.Refresh(curEquip, curTabIndex, curSelIndex,UIEquipInlay.State.Setting);
 
         GemInfo gemInfo = curEquip.gemList[selIndex];
 
@@ -80,7 +80,7 @@ public class UIEquipSetting : UIBase, IGemListCallBack, IEquipInlayCallBack
         }
         #endregion
 
-        uiEquipInlay.Refresh(curEquip, curTabIndex, curSelIndex,UIEquipInlay.UIType.Left);
+        uiEquipInlay.Refresh(curEquip, curTabIndex, curSelIndex,UIEquipInlay.State.Setting);
         uiGemList.Refresh(curEquip.gemList[curSelIndex].type);
     }
 

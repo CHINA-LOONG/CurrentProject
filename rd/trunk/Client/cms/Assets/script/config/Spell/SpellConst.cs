@@ -33,6 +33,7 @@
     //public const int maxEnergy = 100;//重复定义，在BattleConst中已存在
 
     public const float aniDelayTime = 1.0f;
+    public const float unitDeadTime = 2.0f;//double as aniDelayTime
     public const float buffShowInterval = 2.0f;
 }
 

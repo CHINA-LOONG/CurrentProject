@@ -19,15 +19,21 @@ public class HawkOrderService extends HawkTickable {
 	 * 请求类型(请求生成订单: 1, 订单生成反馈: 2, 请求充值发货: 3, 充值发货响应: 4)
 	 */
 	public static int ACTION_ORDER_HEART_BEAT = 0;
-	public static int ACTION_ORDER_GENERATE_REQUEST = 1;
-	public static int ACTION_ORDER_GENERATE_RESPONSE = 2;
-	public static int ACTION_ORDER_DELIVER_REQUEST = 3;
-	public static int ACTION_ORDER_DELIVER_RESPONSE = 4;
+	public static int ACTION_ORDER_DELIVER_REQUEST = 1;
+	public static int ACTION_ORDER_DELIVER_RESPONSE = 2;
 	/**
 	 * 默认心跳时间周期
 	 */
 	public final static int HEART_PERIOD = 15000;
 	
+	/*
+	 * 错误类型
+	 */
+	public static int ORDER_STATUS_OK = 0;
+	public static int ORDER_PLAYER_NOT_EXIST = -1;
+	public static int ORDER_PRODUCT_NOT_EXIST = -2;
+	
+	public static int ORDER_STATUS_ERROR = -10;
 	/**
 	 * 实例id
 	 */
@@ -43,7 +49,7 @@ public class HawkOrderService extends HawkTickable {
 	/**
 	 * 服务器id
 	 */
-	private int serverId = 0;
+	private String serverId = "";
 	/**
 	 * 上次tick周期时间
 	 */
@@ -86,21 +92,27 @@ public class HawkOrderService extends HawkTickable {
 		recvQueue = new LinkedBlockingQueue<String>();
 	}
 
+	public String getSuuid() {
+		return suuid;
+	}
+
 	/**
 	 * 初始化订单服务
 	 * 
 	 * @param addr
 	 * @return
 	 */
-	public boolean init(String suuid, String addr, String game, String platform, int serverId) {
+	public boolean init(String suuid, String addr, String game, String platform, String serverId) {
 		this.game = game;
 		this.platform = platform;
 		this.serverId = serverId;
-		this.suuid = suuid.toLowerCase();
+		this.suuid = suuid;
 		if (this.suuid == null || this.suuid.length() <= 0) {
 			this.suuid = String.format("%s.%s.%s", game, platform, serverId);
 		}
 
+		this.suuid.toLowerCase();
+		
 		// 初始化网络服务对象
 		orderClient = new HawkOrderClient();
 		if (!orderClient.init(this.suuid, addr)) {
@@ -121,43 +133,6 @@ public class HawkOrderService extends HawkTickable {
 	public boolean isConnectOK() {
 		return orderClient.isConnectOK();
 	}
-
-	/**
-	 * 生成订单
-	 * 
-	 * @return
-	 */
-	public boolean generateOrder(String channel, int playerId, String puid, String device, String goodsId, int orderMoney, String currency) {
-		if (orderClient.isConnectOK()) {
-			try {
-				JsonObject jsonObject = new JsonObject();
-				// 发送生成订单请求
-				jsonObject.addProperty("action", ACTION_ORDER_GENERATE_REQUEST);
-				jsonObject.addProperty("suuid", this.suuid);
-				jsonObject.addProperty("game", this.game);
-				jsonObject.addProperty("platform", this.platform);
-				jsonObject.addProperty("serverId", this.serverId);
-				jsonObject.addProperty("playerId", playerId);
-				jsonObject.addProperty("puid", puid);
-				jsonObject.addProperty("channel", channel);
-				jsonObject.addProperty("device", device);
-				jsonObject.addProperty("goodsId", goodsId);
-				jsonObject.addProperty("goodsCount", 1);
-				jsonObject.addProperty("orderMoney", orderMoney);
-				jsonObject.addProperty("currency", currency);
-
-				// 添加到发送队列
-				String requestData = jsonObject.toString();
-				sendQueue.add(requestData);
-				HawkLog.logPrintln("generateOrder: " + requestData);
-				return true;
-			} catch (Exception e) {
-				HawkException.catchException(e);
-			}
-		}
-		return false;
-	}
-
 
 	/**
 	 * 心跳检测

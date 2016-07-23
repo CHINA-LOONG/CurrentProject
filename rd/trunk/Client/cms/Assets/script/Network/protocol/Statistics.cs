@@ -83,6 +83,20 @@ namespace PB
       get { return _timeStamp; }
       set { _timeStamp = value; }
     }
+    private string _orderServerKey;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"orderServerKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string orderServerKey
+    {
+      get { return _orderServerKey; }
+      set { _orderServerKey = value; }
+    }
+    private int _monthCardLeft;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"monthCardLeft", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int monthCardLeft
+    {
+      get { return _monthCardLeft; }
+      set { _monthCardLeft = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

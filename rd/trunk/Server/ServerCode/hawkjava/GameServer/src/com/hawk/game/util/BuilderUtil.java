@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.hawk.os.HawkTime;
+import org.hawk.util.services.HawkOrderService;
 
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
@@ -69,7 +70,14 @@ public class BuilderUtil {
 		builder.setSkillPoint(statisticsEntity.getSkillPoint());
 		builder.setSkillPointTimeStamp((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
 		builder.setTimeStamp(HawkTime.getSeconds());
-
+		// 设置订单服务器key
+		builder.setOrderServerKey(HawkOrderService.getInstance().getSuuid());
+		if (statisticsEntity.getMonthCardEndTime() == null || HawkTime.getCalendar().compareTo(statisticsEntity.getMonthCardEndTime()) > 0) {
+			builder.setMonthCardLeft(0);
+		}
+		else {		
+			builder.setMonthCardLeft(HawkTime.calendarDiff(statisticsEntity.getMonthCardEndTime(), HawkTime.getCalendar()));
+		}
 		return builder;
 	}
 

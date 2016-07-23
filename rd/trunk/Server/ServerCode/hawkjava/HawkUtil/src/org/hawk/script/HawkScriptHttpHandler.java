@@ -61,7 +61,8 @@ public class HawkScriptHttpHandler implements HttpHandler {
 			if (uriInfo != null) {
 				String[] querys = uriInfo.split("&");
 				for (String query : querys) {
-					String[] pair = query.split("=");
+					// param maybe empty string, use -1
+					String[] pair = query.split("=", -1);
 					if (pair.length == 2) {
 						if (pair[0].equals("params")) {
 							params = URLDecoder.decode(pair[1], "UTF-8");

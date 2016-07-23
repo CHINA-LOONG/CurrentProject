@@ -1,11 +1,15 @@
 package org.hawk.util.services;
 
-import java.net.URLEncoder;
 import java.util.Map;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkOSOperator;
@@ -51,7 +55,8 @@ public class HawkCdkService {
 	 * http对象
 	 */
 	private HttpClient httpClient = null;
-	private GetMethod getMethod = null;
+	private HttpGet httpGet = null;
+	private URIBuilder uriBuilder = null;
 
 	/**
 	 * cdk服务参数串格式
@@ -86,7 +91,8 @@ public class HawkCdkService {
 	 */
 	private HawkCdkService() {
 		httpClient = null;
-		getMethod = null;
+		httpGet = null;
+		uriBuilder = null;
 	}
 
 	/**
@@ -101,19 +107,27 @@ public class HawkCdkService {
 			this.serverId = serverId;
 
 			if (httpClient == null) {
-				httpClient = new HttpClient();
-				httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(timeout);
-				httpClient.getHttpConnectionManager().getParams().setSoTimeout(timeout);
+				RequestConfig requestConfig = RequestConfig.custom()
+						.setConnectTimeout(timeout)
+						.setSocketTimeout(timeout)
+						.build();
+				httpClient = HttpClients.custom()
+						.setDefaultRequestConfig(requestConfig)
+						.build();
 			}
 
-			if (getMethod == null) {
-				getMethod = new GetMethod(host);
+			if (httpGet == null) {
+				httpGet = new HttpGet();
+			}
+
+			if (uriBuilder == null) {
+				uriBuilder = new URIBuilder(host);
 			}
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		}
 
-		if (httpClient == null || getMethod == null) {
+		if (httpClient == null || httpGet == null || uriBuilder == null) {
 			HawkLog.errPrintln("install cdk service failed.");
 			return false;
 		}
@@ -192,26 +206,23 @@ public class HawkCdkService {
 			return CDK_STATUS_NONEXIST;
 		}
 
-		if (httpClient != null && getMethod != null && cdk != null && cdk.length() == CDK_TOTAL_LENGTH) {
+		if (httpClient != null && httpGet != null && uriBuilder != null && cdk != null && cdk.length() == CDK_TOTAL_LENGTH) {
 			String queryParam = String.format(useQuery, gameName, platform, serverId, playerid, puid, playername, cdk);
-			try {
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
 
-				// 添加令牌校验
-				if (token != null && token.length() > 0) {
-					queryParam += URLEncoder.encode("&token=" + token, "UTF-8");
-				}
-
-			} catch (Exception e) {
-				HawkException.catchException(e);
+			// 添加令牌校验
+			if (token != null && token.length() > 0) {
+				queryParam += "&token" + token;
 			}
 
-			getMethod.setPath(usePath);
-			getMethod.setQueryString(queryParam);
 			try {
-				int statusCode = httpClient.executeMethod(getMethod);
+				uriBuilder.setPath(usePath);
+				uriBuilder.setCustomQuery(queryParam);
+				httpGet.setURI(uriBuilder.build());
+				HttpResponse httpResponse = httpClient.execute(httpGet);
+				int statusCode =  httpResponse.getStatusLine().getStatusCode();
 				if (statusCode == HttpStatus.SC_OK) {
-					String response = getMethod.getResponseBodyAsString();
+					String response = EntityUtils.toString(httpResponse.getEntity());
+					
 					Map<String, String> respMap = HawkOSOperator.jsonToMap(response);
 					int status = CDK_STATUS_NONEXIST;
 					if (respMap.containsKey("status")) {

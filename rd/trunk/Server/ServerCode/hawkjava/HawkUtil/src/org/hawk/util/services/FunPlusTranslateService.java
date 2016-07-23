@@ -1,15 +1,21 @@
 package org.hawk.util.services;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Iterator;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.Map.Entry;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
+import javax.crypto.Mac;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
@@ -21,48 +27,55 @@ import org.hawk.app.HawkApp;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
+import org.hawk.util.HawkJsonUtil;
 import org.hawk.util.HawkTickable;
+import org.hawk.util.HawkURL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.reflect.TypeToken;
+
+/**
+ * 趣加翻译客户端
+ * 
+ * @author walker
+ */
 public class FunPlusTranslateService extends HawkTickable {
 
-	public static class TranslateRequest {
+	public static final String FUNPLUS_APP_ID = "1013";
+	public static final String FUNPLUS_KEY = "aacbb2be28236338a3cb61d610a76f9e";
+
+	public static class Translation {
 		// in
 		public String sourceText;
 		public String sourceLang;
 		public String[] targetLangArray;
+		public String textType;
+		public String profanity;
 		// out
 		public String[] transTextArray;
+	}
+
+	@SuppressWarnings("unused")
+	private static class TranslateResponse {
+		private static class Data {
+			public String source;
+			public String target;
+			public String sourceText;
+			public String targetText;
+		}
+
+		public int errorCode;
+		public String errorMessage; 
+		public Data translation;
 	}
 
 	private static final Logger logger = LoggerFactory.getLogger("FunPlus");
 
 	/**
-	 * 是否通过cache调用翻译
-	 */
-	public static boolean fromCache;
-
-	/**
-	 * cache列表
-	 */
-	public static List<String> cacheList;
-	private Lock cacheListLock;
-
-	/**
 	 * 异步httpClient
 	 */
 	CloseableHttpAsyncClient httpClient;
-
-	/**
-	 * cache刷新周期（毫秒）
-	 */
-	public static final int REFRESH_PERIOD = 600000;
-
-	/**
-	 * 上次更新时间
-	 */
-	private Long lastUpdateTimestamp;
 
 	private static FunPlusTranslateService instance = null;
 	public static FunPlusTranslateService getInstance() {
@@ -76,20 +89,13 @@ public class FunPlusTranslateService extends HawkTickable {
 		// 初始化httpAsyncClient
 		try {
 			ConnectingIOReactor ioReactor = new DefaultConnectingIOReactor();
-	        PoolingNHttpClientConnectionManager cm = new PoolingNHttpClientConnectionManager(ioReactor);
-	        cm.setMaxTotal(100);
+			PoolingNHttpClientConnectionManager cm = new PoolingNHttpClientConnectionManager(ioReactor);
+			cm.setMaxTotal(100);
 			httpClient = HttpAsyncClients.custom().setConnectionManager(cm).build();
 			httpClient.start();
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		}
-
-		fromCache = false;
-		cacheList = new ArrayList<String>();
-		cacheListLock = new ReentrantLock();
-
-		refreshCache();
-		lastUpdateTimestamp = HawkTime.getCalendar().getTimeInMillis();
 
 		if (HawkApp.getInstance() != null) {
 			HawkApp.getInstance().addTickable(this);
@@ -97,39 +103,111 @@ public class FunPlusTranslateService extends HawkTickable {
 	}
 
 	/**
-	 * 翻译对外接口
+	 * 生成翻译http请求
 	 */
-	public String translate(TranslateRequest request) {
+	public HttpUriRequest genHttpRequest(String q, String source, String target, String profanity, String textType) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		String timeStamp = sdf.format(HawkTime.getCalendar().getTime());
+		// ----------------------------------------------------------------------------------------------
+		String queryString = "";
+		SortedMap<String, String> paramMap = new TreeMap<String, String>();
+		paramMap.put(HawkURL.urlEncodeRFC3986("appId", false), HawkURL.urlEncodeRFC3986(FUNPLUS_APP_ID, false));
+		paramMap.put(HawkURL.urlEncodeRFC3986("q", false), HawkURL.urlEncodeRFC3986(q, false));
+		paramMap.put(HawkURL.urlEncodeRFC3986("source", false), HawkURL.urlEncodeRFC3986(source, false));
+		paramMap.put(HawkURL.urlEncodeRFC3986("target", false), HawkURL.urlEncodeRFC3986(target, false));
+		paramMap.put(HawkURL.urlEncodeRFC3986("timeStamp", false), HawkURL.urlEncodeRFC3986(timeStamp, false));
+		paramMap.put(HawkURL.urlEncodeRFC3986("profanity", false), HawkURL.urlEncodeRFC3986(profanity, false));
+		paramMap.put(HawkURL.urlEncodeRFC3986("textType", false), HawkURL.urlEncodeRFC3986(textType, false));
+
+		Iterator<Entry<String, String>> iterator = paramMap.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Entry<String, String> pair = iterator.next();
+			queryString += pair.getKey();
+			queryString += "=";
+			queryString += pair.getValue();
+			if (iterator.hasNext()) {
+				queryString += "&";
+			}
+		}
+
+		// -----------------------------------------------------------------------------------------------
+		String signString =
+			"GET\n" +
+			"translate.funplusgame.com\n" +
+			"/api/v2/translate\n" +
+			queryString;
+
+		// -----------------------------------------------------------------------------------------------
+		String authentication = "";
+		try {
+			byte[] keyByte = FUNPLUS_KEY.getBytes("UTF-8");
+			byte[] dataByte = signString.getBytes("UTF-8");
+			SecretKey secret = new SecretKeySpec(keyByte, "HMACSHA256");
+			Mac mac = Mac.getInstance(secret.getAlgorithm());
+			mac.init(secret);
+			byte[] digest = mac.doFinal(dataByte);
+
+			Base64 base64 = new Base64();
+			authentication = base64.encodeAsString(digest);
+		} catch (Exception e) {
+				HawkException.catchException(e);
+		}
+
+		// --------------------------------------------------------------------------------------------------
+		String uri = "http://translate.funplusgame.com/api/v2/translate?" + queryString;
+		final HttpGet httpGet = new HttpGet(uri);
+		httpGet.addHeader("Accept", "application/json;charset=UTF-8");
+		httpGet.addHeader("Authorization", authentication);
+
+		return httpGet;
+	}
+
+	/**
+	 * 翻译对外接口
+	 * 
+	 *	@return 如果翻译失败，译文设为null
+	 */
+	public String translate(Translation trans) {
 		final CountDownLatch latch = new CountDownLatch(1);
 		final String[] transText = {null};
-		final HttpPost httpPost = new HttpPost("TODO");
-		//httpPost.addHeader(header);
 
-		httpClient.execute(httpPost, new FutureCallback<HttpResponse>() {
+		final HttpUriRequest httpRequest = genHttpRequest(trans.sourceText, trans.sourceLang, trans.targetLangArray[0], trans.profanity, trans.textType);
+		// for log
+		final String sourceText = trans.sourceText;
+		HawkLog.logPrintln(String.format("FunPlus translate send : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
+		// 异步请求
+		httpClient.execute(httpRequest, new FutureCallback<HttpResponse>() {
 
 			@Override
 			public void completed(HttpResponse response) {
-				latch.countDown();
+				HawkLog.logPrintln(String.format("FunPlus translate complete : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
 				try {
 					String responseString = EntityUtils.toString(response.getEntity());
-					// TODO
-					transText[0] = responseString;
+
+					TranslateResponse transResponse = HawkJsonUtil.getJsonInstance().fromJson(responseString, new TypeToken<TranslateResponse>() {}.getType());
+					if (transResponse.errorCode == 0) {
+						transText[0] = transResponse.translation.targetText;
+					} else {
+						HawkLog.errPrintln(String.format("FunPlus translate error : %d %s \"%s\" %s", transResponse.errorCode, transResponse.errorMessage, sourceText, httpRequest.getRequestLine()));
+					}
 				} catch(Exception e) {
 					HawkException.catchException(e);
+				} finally {
+					latch.countDown();
 				}
 			}
 
 			@Override
 			public void failed(Exception e) {
-				latch.countDown();
-				HawkLog.logPrintln(String.format("FunPlus translate failed : %s", httpPost.getRequestLine()));
+				HawkLog.logPrintln(String.format("FunPlus translate failed : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
 				HawkException.catchException(e);
+				latch.countDown();
 			}
 
 			@Override
 			public void cancelled() {
+				HawkLog.logPrintln(String.format("FunPlus translate cancelled : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
 				latch.countDown();
-				HawkLog.logPrintln(String.format("FunPlus translate cancelled : %s", httpPost.getRequestLine()));
 			}
 
 		});
@@ -140,55 +218,70 @@ public class FunPlusTranslateService extends HawkTickable {
 			HawkException.catchException(e);
 		}
 
-		request.transTextArray = transText;
+		trans.transTextArray = transText;
 		return transText[0];
 	}
 
 	/**
 	 * 批量翻译对外接口
+	 * 
+	 *	@return 如果翻译失败，译文设为null
 	 */
-	public void translateBatch(TranslateRequest[] requestArray) {
+	public void translateBatch(Translation[] transArray) {
 		int total = 0;
-		for (TranslateRequest request : requestArray) {
-			total += request.targetLangArray.length;
+		for (Translation trans : transArray) {
+			total += trans.targetLangArray.length;
 		}
 		final CountDownLatch latch = new CountDownLatch(total);
-		final String[][] transText = new String[requestArray.length][];
+		HawkLog.logPrintln(String.format("FunPlus translate batch count : %d", total));
 
-		for (int i = 0; i < requestArray.length; ++i) {
+		// TODO 多线程可见性是否有问题
+		final String[][] transText = new String[transArray.length][];
+
+		for (int i = 0; i < transArray.length; ++i) {
 			final int reqIndex = i;
-			TranslateRequest request = requestArray[reqIndex];
-			transText[reqIndex] = new String[request.targetLangArray.length];
+			Translation trans = transArray[reqIndex];
+			transText[reqIndex] = new String[trans.targetLangArray.length];
 
-			for (int j = 0; j < request.targetLangArray.length; ++j) {
+			for (int j = 0; j < trans.targetLangArray.length; ++j) {
 				final int langIndex = j;
-				final HttpPost httpPost = new HttpPost("TODO");
-
-				httpClient.execute(httpPost, new FutureCallback<HttpResponse>() {
+				final HttpUriRequest httpRequest = genHttpRequest(trans.sourceText, trans.sourceLang, trans.targetLangArray[langIndex], trans.profanity, trans.textType);
+				// for log
+				final String sourceText = trans.sourceText;
+				HawkLog.logPrintln(String.format("FunPlus translate send : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
+				// 异步请求
+				httpClient.execute(httpRequest, new FutureCallback<HttpResponse>() {
 
 					@Override
 					public void completed(HttpResponse response) {
-						latch.countDown();
+						HawkLog.logPrintln(String.format("FunPlus translate complete : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
 						try {
 							String responseString = EntityUtils.toString(response.getEntity());
-							// TODO
-							transText[reqIndex][langIndex] = responseString;
+
+							TranslateResponse transResponse = HawkJsonUtil.getJsonInstance().fromJson(responseString, new TypeToken<TranslateResponse>() {}.getType());
+							if (transResponse.errorCode == 0) {
+								transText[reqIndex][langIndex] = transResponse.translation.targetText;
+							} else {
+								HawkLog.errPrintln(String.format("FunPlus translate error : %d %s \"%s\" %s", transResponse.errorCode, transResponse.errorMessage, sourceText, httpRequest.getRequestLine()));
+							}
 						} catch(Exception e) {
 							HawkException.catchException(e);
+						} finally {
+							latch.countDown();
 						}
 					}
 
 					@Override
 					public void failed(Exception e) {
-						latch.countDown();
-						HawkLog.logPrintln(String.format("FunPlus translate failed : %s", httpPost.getRequestLine()));
+						HawkLog.logPrintln(String.format("FunPlus translate failed : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
 						HawkException.catchException(e);
+						latch.countDown();
 					}
 
 					@Override
 					public void cancelled() {
+						HawkLog.logPrintln(String.format("FunPlus translate cancelled : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
 						latch.countDown();
-						HawkLog.logPrintln(String.format("FunPlus translate cancelled : %s", httpPost.getRequestLine()));
 					}
 
 				});
@@ -202,69 +295,12 @@ public class FunPlusTranslateService extends HawkTickable {
 		}
 
 		for (int i = 0; i < transText.length; ++i) {
-			requestArray[i].transTextArray = transText[i];
-		}
-	}
-
-	/**
-	 * 更新缓存列表
-	 */
-	private void refreshCache() {
-		List<String> newCacheList = null;
-
-		final CountDownLatch latch = new CountDownLatch(1);
-		final HttpGet httpGet = new HttpGet("TODO");
-
-		httpClient.execute(httpGet, new FutureCallback<HttpResponse>() {
-
-			@Override
-			public void completed(HttpResponse response) {
-				latch.countDown();
-				try {
-					String responseString = EntityUtils.toString(response.getEntity());
-					// TODO
-					//newCacheList;
-				} catch(Exception e) {
-					HawkException.catchException(e);
-				}
-			}
-
-			@Override
-			public void failed(Exception e) {
-				latch.countDown();
-				HawkLog.logPrintln(String.format("FunPlus update cache failed : %s", httpGet.getRequestLine()));
-				HawkException.catchException(e);
-			}
-
-			@Override
-			public void cancelled() {
-				latch.countDown();
-				HawkLog.logPrintln(String.format("FunPlus update cache cancelled : %s", httpGet.getRequestLine()));
-			}
-
-		});
-
-		try {
-			latch.await();
-		} catch(Exception e) {
-			HawkException.catchException(e);
-		}
-
-		cacheListLock.lock();
-		try {
-			cacheList = newCacheList;
-		} finally {
-			cacheListLock.unlock();
+			transArray[i].transTextArray = transText[i];
 		}
 	}
 
 	@Override
 	public void onTick() {
-		long curTimestamp = HawkTime.getCalendar().getTimeInMillis();
-		if (curTimestamp - lastUpdateTimestamp >= REFRESH_PERIOD) {
-			lastUpdateTimestamp = curTimestamp;
-			refreshCache();
-		}
 	}
 
 	@Override

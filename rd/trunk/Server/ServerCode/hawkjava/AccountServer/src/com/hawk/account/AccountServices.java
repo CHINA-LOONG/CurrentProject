@@ -3,8 +3,6 @@ package com.hawk.account;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.net.InetAddress;
-import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -12,9 +10,6 @@ import java.util.Set;
 
 import net.sf.json.JSONObject;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.hawk.config.HawkXmlCfg;
 import org.hawk.log.HawkLog;
 import org.hawk.nativeapi.HawkNativeApi;
@@ -23,6 +18,14 @@ import org.hawk.os.HawkOSOperator;
 import org.hawk.util.HawkTickable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
 import com.hawk.account.db.DBManager;
 import com.hawk.account.http.AccountHttpServer;
@@ -70,7 +73,8 @@ public class AccountServices {
 	 */
 	private static AccountServices instance = null;
 	private HttpClient httpClient = null;
-	private GetMethod getMethod = null;
+	private HttpGet httpGet = null;
+	private URIBuilder uriBuilder = null;
 
 	private static final String serverPath = "/report_accountServer";
 	private static final String fetchIpPath = "/fetch_myip";
@@ -247,7 +251,7 @@ public class AccountServices {
 	private boolean createDbSessions() {
 		// 创建默认会话
 		if (DBManager.getInstance().createDbSession("account") == null) {
-			HawkLog.logPrintln("Create DbSession Failed, Database: oods");
+			HawkLog.logPrintln("Create DbSession Failed, Database: account");
 			return false;
 		}
 		return true;
@@ -269,17 +273,21 @@ public class AccountServices {
 	 */
 	protected boolean registAccountServer(HawkXmlCfg conf) {
 		String queryParam = "";
-		try {			
-			initHttpClient(conf);
-			
+		try {
+			if (false == initHttpClient(conf)) {
+				return false;
+			}
+
 			queryParam = String.format(serverQuery, conf.getString("app.game"), conf.getString("app.platform"), conf.getString("app.channel"),
 					   conf.getString("app.serverId"), hostIpAddr, AccountZmqServer.getInstance().getPort(),
 					   conf.getInt("httpServer.port"), conf.getString("db.dbConnUrl"), 
 					   conf.getString("db.dbUserName"), conf.getString("db.dbPassWord"));
-			queryParam = URLEncoder.encode(queryParam, "UTF-8");
-			getMethod.setPath(serverPath);
-			getMethod.setQueryString(queryParam);
-			int status = httpClient.executeMethod(getMethod);
+
+			uriBuilder.setPath(serverPath);
+			uriBuilder.setCustomQuery(queryParam);
+			httpGet.setURI(uriBuilder.build());
+			HttpResponse httpResponse = httpClient.execute(httpGet);
+			int status =  httpResponse.getStatusLine().getStatusCode();
 			if (status != HttpStatus.SC_OK) {
 				accountLogger.info("register account server info failed status : " + status );
 				return false;
@@ -304,14 +312,20 @@ public class AccountServices {
 		hostIpAddr = conf.getString("app.addr");
 		
 		try {
-			initHttpClient(conf);
-			
-			getMethod.setPath(fetchIpPath);
-			int status = httpClient.executeMethod(getMethod);
+			if (false == initHttpClient(conf)) {
+				return false;
+			}
+
+			uriBuilder.setPath(fetchIpPath);
+			uriBuilder.setCustomQuery("");
+			httpGet.setURI(uriBuilder.build());
+			HttpResponse httpResponse = httpClient.execute(httpGet);
+			int status =  httpResponse.getStatusLine().getStatusCode();
 			if (status == HttpStatus.SC_OK) {
-				reportInfo = new String(getMethod.getResponseBody());
+				reportInfo = EntityUtils.toString(httpResponse.getEntity());
 			}
 		} catch (Exception e) {
+			HawkException.catchException(e);
 			return false;
 		}
 		
@@ -343,16 +357,31 @@ public class AccountServices {
 	/**
 	 * 初始化httpclient
 	 */
-	protected void  initHttpClient(HawkXmlCfg conf) {
+	protected boolean initHttpClient(HawkXmlCfg conf) {
 		if (httpClient == null) {
-			httpClient = new HttpClient();
-			httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(conf.getInt("collectorServer.httpTimeout"));
-			httpClient.getHttpConnectionManager().getParams().setSoTimeout(conf.getInt("collectorServer.httpTimeout"));
+			RequestConfig requestConfig = RequestConfig.custom()
+					.setConnectTimeout(conf.getInt("collectorServer.httpTimeout"))
+					.setSocketTimeout(conf.getInt("collectorServer.httpTimeout"))
+					.build();
+			httpClient = HttpClients.custom()
+					.setDefaultRequestConfig(requestConfig)
+					.build();
 		}
 
-		if (getMethod == null) {
-			getMethod = new GetMethod(conf.getString("collectorServer.httpServer"));
+		if (httpGet == null) {
+			httpGet = new HttpGet();
 		}
+
+		try {
+			if (uriBuilder == null) {
+				uriBuilder = new URIBuilder(conf.getString("collectorServer.httpServer"));
+			}
+		} catch (Exception e) {
+			HawkException.catchException(e);
+			return false;
+		}
+
+		return true;
 	}
 	
 	/**

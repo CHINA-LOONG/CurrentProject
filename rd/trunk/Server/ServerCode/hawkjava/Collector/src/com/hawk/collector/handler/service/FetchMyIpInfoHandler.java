@@ -3,7 +3,6 @@ package com.hawk.collector.handler.service;
 import java.io.IOException;
 import java.util.Map;
 
-import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 
 import com.google.gson.JsonObject;

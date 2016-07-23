@@ -44,7 +44,7 @@ public class FetchOrderInfoHandler implements HttpHandler {
 	public static String doFetch(String game, String orderid) {
 		Statement statement = null;
 		try {
-			String sql = String.format("SELECT platform, server, puid, orderMoney, payMoney, addGold, giftGold, currency, time FROM recharge WHERE game = '%s' AND pforder = '%s'", game, orderid);
+			String sql = String.format("SELECT platform, server, puid, orderMoney, payMoney, addGold, giftGold, currency, time FROM recharge WHERE game = \"%s\" AND pforder = \"%s\"", game, orderid);
 
 			statement = DBManager.getInstance().createStatement(game);
 			ResultSet resultSet = statement.executeQuery(sql);

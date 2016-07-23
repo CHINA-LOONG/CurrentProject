@@ -8,6 +8,7 @@ public class UserData : MonoBehaviour
 	//public	string platform;
 	//public 	string	version;
 	public	string	token;
+	public	string orderServerKey;
 
 	public void Init()
 	{

@@ -13,7 +13,6 @@ import org.hawk.os.HawkException;
 import org.hawk.os.HawkOSOperator;
 
 import com.hawk.orderserver.db.DBManager;
-import com.hawk.orderserver.entify.OrderInfo;
 import com.hawk.orderserver.service.OrderManager;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -30,7 +29,7 @@ public class RechargeHttpHandler implements HttpHandler {
 			
 			if (!params.containsKey("suuid")) {
 				try {
-					String sql = String.format("SELECT suuid FROM orders WHERE game = '%s' AND platform = '%s' AND serverid = %s ORDER BY id DESC LIMIT 1",
+					String sql = String.format("SELECT suuid FROM orders WHERE game = \"%s\" AND platform = \"%s\" AND serverid = %s ORDER BY id DESC LIMIT 1",
 							params.get("game"), params.get("platform"), params.get("serverId"));
 					
 					Statement statement = DBManager.getInstance().createStatement(OrderManager.getInstance().getOrderDatabase());
@@ -45,7 +44,7 @@ public class RechargeHttpHandler implements HttpHandler {
 			
 			if (!params.containsKey("puid")) {
 				try {
-					String sql = String.format("SELECT puid FROM orders WHERE game = '%s' AND platform = '%s' AND serverid = %s AND playerid = %s ORDER BY id DESC LIMIT 1",
+					String sql = String.format("SELECT puid FROM orders WHERE game = \"%s\" AND platform = \"%s\" AND serverid = %s AND playerid = %s ORDER BY id DESC LIMIT 1",
 							params.get("game"), params.get("platform"), params.get("serverId"), params.get("playerId"));
 					
 					Statement statement = DBManager.getInstance().createStatement(OrderManager.getInstance().getOrderDatabase());
@@ -62,7 +61,7 @@ public class RechargeHttpHandler implements HttpHandler {
 			
 			if (!params.containsKey("device")) {
 				try {
-					String sql = String.format("SELECT device FROM orders WHERE game = '%s' AND platform = '%s' AND serverid = %s AND playerid = %s ORDER BY id DESC LIMIT 1",
+					String sql = String.format("SELECT device FROM orders WHERE game = \"%s\" AND platform = \"%s\" AND serverid = %s AND playerid = %s ORDER BY id DESC LIMIT 1",
 							params.get("game"), params.get("platform"), params.get("serverId"), params.get("playerId"));
 					
 					Statement statement = DBManager.getInstance().createStatement(OrderManager.getInstance().getOrderDatabase());
@@ -97,10 +96,10 @@ public class RechargeHttpHandler implements HttpHandler {
 				jsonObject.put(entry.getKey(), entry.getValue());
 			}
 
-			OrderInfo orderInfo = OrderManager.getInstance().generateOrder(jsonObject);
-			if (orderInfo != null) {
-				result = orderInfo.toJson().toString();
-			}
+			//OrderInfo orderInfo = OrderManager.getInstance().generateOrder(jsonObject);
+			//if (orderInfo != null) {
+		//		result = orderInfo.toJson().toString();
+		//	}
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		} finally {

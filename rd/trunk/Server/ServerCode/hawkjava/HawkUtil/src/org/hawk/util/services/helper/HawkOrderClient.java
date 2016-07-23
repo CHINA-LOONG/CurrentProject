@@ -202,7 +202,7 @@ public class HawkOrderClient extends HawkMQClient {
 				HawkLog.logPrintln("order client reconnect, addr: " + getAddress().toString());
 			}
 		}
-		return connectOK;
+		return orderZmq != null || connectOK;
 	}
 	
 	/**

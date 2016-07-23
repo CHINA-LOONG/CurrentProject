@@ -794,6 +794,43 @@ public final class Statistics {
      * </pre>
      */
     int getTimeStamp();
+
+    // required string orderServerKey = 6;
+    /**
+     * <code>required string orderServerKey = 6;</code>
+     *
+     * <pre>
+     * 订单服务器key
+     * </pre>
+     */
+    boolean hasOrderServerKey();
+    /**
+     * <code>required string orderServerKey = 6;</code>
+     *
+     * <pre>
+     * 订单服务器key
+     * </pre>
+     */
+    java.lang.String getOrderServerKey();
+    /**
+     * <code>required string orderServerKey = 6;</code>
+     *
+     * <pre>
+     * 订单服务器key
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getOrderServerKeyBytes();
+
+    // required int32 monthCardLeft = 7;
+    /**
+     * <code>required int32 monthCardLeft = 7;</code>
+     */
+    boolean hasMonthCardLeft();
+    /**
+     * <code>required int32 monthCardLeft = 7;</code>
+     */
+    int getMonthCardLeft();
   }
   /**
    * Protobuf type {@code HSStatisticsInfoSync}
@@ -875,6 +912,16 @@ public final class Statistics {
             case 40: {
               bitField0_ |= 0x00000004;
               timeStamp_ = input.readInt32();
+              break;
+            }
+            case 50: {
+              bitField0_ |= 0x00000008;
+              orderServerKey_ = input.readBytes();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000010;
+              monthCardLeft_ = input.readInt32();
               break;
             }
           }
@@ -1097,12 +1144,85 @@ public final class Statistics {
       return timeStamp_;
     }
 
+    // required string orderServerKey = 6;
+    public static final int ORDERSERVERKEY_FIELD_NUMBER = 6;
+    private java.lang.Object orderServerKey_;
+    /**
+     * <code>required string orderServerKey = 6;</code>
+     *
+     * <pre>
+     * 订单服务器key
+     * </pre>
+     */
+    public boolean hasOrderServerKey() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required string orderServerKey = 6;</code>
+     *
+     * <pre>
+     * 订单服务器key
+     * </pre>
+     */
+    public java.lang.String getOrderServerKey() {
+      java.lang.Object ref = orderServerKey_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          orderServerKey_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string orderServerKey = 6;</code>
+     *
+     * <pre>
+     * 订单服务器key
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getOrderServerKeyBytes() {
+      java.lang.Object ref = orderServerKey_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        orderServerKey_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 monthCardLeft = 7;
+    public static final int MONTHCARDLEFT_FIELD_NUMBER = 7;
+    private int monthCardLeft_;
+    /**
+     * <code>required int32 monthCardLeft = 7;</code>
+     */
+    public boolean hasMonthCardLeft() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 monthCardLeft = 7;</code>
+     */
+    public int getMonthCardLeft() {
+      return monthCardLeft_;
+    }
+
     private void initFields() {
       instanceState_ = java.util.Collections.emptyList();
       monsterCollect_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       skillPoint_ = 0;
       skillPointTimeStamp_ = 0;
       timeStamp_ = 0;
+      orderServerKey_ = "";
+      monthCardLeft_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1114,6 +1234,14 @@ public final class Statistics {
         return false;
       }
       if (!hasSkillPointTimeStamp()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOrderServerKey()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMonthCardLeft()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1144,6 +1272,12 @@ public final class Statistics {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(5, timeStamp_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(6, getOrderServerKeyBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(7, monthCardLeft_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1178,6 +1312,14 @@ public final class Statistics {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, timeStamp_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getOrderServerKeyBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, monthCardLeft_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1310,6 +1452,10 @@ public final class Statistics {
         bitField0_ = (bitField0_ & ~0x00000008);
         timeStamp_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        orderServerKey_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
+        monthCardLeft_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -1365,6 +1511,14 @@ public final class Statistics {
           to_bitField0_ |= 0x00000004;
         }
         result.timeStamp_ = timeStamp_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.orderServerKey_ = orderServerKey_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.monthCardLeft_ = monthCardLeft_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1426,6 +1580,14 @@ public final class Statistics {
         if (other.hasTimeStamp()) {
           setTimeStamp(other.getTimeStamp());
         }
+        if (other.hasOrderServerKey()) {
+          bitField0_ |= 0x00000020;
+          orderServerKey_ = other.orderServerKey_;
+          onChanged();
+        }
+        if (other.hasMonthCardLeft()) {
+          setMonthCardLeft(other.getMonthCardLeft());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1436,6 +1598,14 @@ public final class Statistics {
           return false;
         }
         if (!hasSkillPointTimeStamp()) {
+          
+          return false;
+        }
+        if (!hasOrderServerKey()) {
+          
+          return false;
+        }
+        if (!hasMonthCardLeft()) {
           
           return false;
         }
@@ -2055,6 +2225,137 @@ public final class Statistics {
         return this;
       }
 
+      // required string orderServerKey = 6;
+      private java.lang.Object orderServerKey_ = "";
+      /**
+       * <code>required string orderServerKey = 6;</code>
+       *
+       * <pre>
+       * 订单服务器key
+       * </pre>
+       */
+      public boolean hasOrderServerKey() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required string orderServerKey = 6;</code>
+       *
+       * <pre>
+       * 订单服务器key
+       * </pre>
+       */
+      public java.lang.String getOrderServerKey() {
+        java.lang.Object ref = orderServerKey_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          orderServerKey_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string orderServerKey = 6;</code>
+       *
+       * <pre>
+       * 订单服务器key
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getOrderServerKeyBytes() {
+        java.lang.Object ref = orderServerKey_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          orderServerKey_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string orderServerKey = 6;</code>
+       *
+       * <pre>
+       * 订单服务器key
+       * </pre>
+       */
+      public Builder setOrderServerKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        orderServerKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string orderServerKey = 6;</code>
+       *
+       * <pre>
+       * 订单服务器key
+       * </pre>
+       */
+      public Builder clearOrderServerKey() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        orderServerKey_ = getDefaultInstance().getOrderServerKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string orderServerKey = 6;</code>
+       *
+       * <pre>
+       * 订单服务器key
+       * </pre>
+       */
+      public Builder setOrderServerKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        orderServerKey_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 monthCardLeft = 7;
+      private int monthCardLeft_ ;
+      /**
+       * <code>required int32 monthCardLeft = 7;</code>
+       */
+      public boolean hasMonthCardLeft() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required int32 monthCardLeft = 7;</code>
+       */
+      public int getMonthCardLeft() {
+        return monthCardLeft_;
+      }
+      /**
+       * <code>required int32 monthCardLeft = 7;</code>
+       */
+      public Builder setMonthCardLeft(int value) {
+        bitField0_ |= 0x00000040;
+        monthCardLeft_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monthCardLeft = 7;</code>
+       */
+      public Builder clearMonthCardLeft() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        monthCardLeft_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:HSStatisticsInfoSync)
     }
 
@@ -2087,11 +2388,13 @@ public final class Statistics {
     java.lang.String[] descriptorData = {
       "\n\031Protocol/Statistics.proto\"E\n\rInstanceS" +
       "tate\022\022\n\ninstanceId\030\001 \002(\t\022\014\n\004star\030\002 \002(\005\022\022" +
-      "\n\ncountDaily\030\003 \001(\005\"\231\001\n\024HSStatisticsInfoS" +
+      "\n\ncountDaily\030\003 \001(\005\"\310\001\n\024HSStatisticsInfoS" +
       "ync\022%\n\rinstanceState\030\001 \003(\0132\016.InstanceSta" +
       "te\022\026\n\016monsterCollect\030\002 \003(\t\022\022\n\nskillPoint" +
       "\030\003 \002(\005\022\033\n\023skillPointTimeStamp\030\004 \002(\005\022\021\n\tt" +
-      "imeStamp\030\005 \001(\005B\030\n\026com.hawk.game.protocol"
+      "imeStamp\030\005 \001(\005\022\026\n\016orderServerKey\030\006 \002(\t\022\025" +
+      "\n\rmonthCardLeft\030\007 \002(\005B\030\n\026com.hawk.game.p" +
+      "rotocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2109,7 +2412,7 @@ public final class Statistics {
           internal_static_HSStatisticsInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsInfoSync_descriptor,
-              new java.lang.String[] { "InstanceState", "MonsterCollect", "SkillPoint", "SkillPointTimeStamp", "TimeStamp", });
+              new java.lang.String[] { "InstanceState", "MonsterCollect", "SkillPoint", "SkillPointTimeStamp", "TimeStamp", "OrderServerKey", "MonthCardLeft", });
           return null;
         }
       };

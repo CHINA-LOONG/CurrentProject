@@ -144,7 +144,7 @@ public class UIMailContent : MonoBehaviour
         textSend.text = StaticDataMgr.Instance.GetTextByID("mail_laizi");
         textAnnex.text = StaticDataMgr.Instance.GetTextByID("mail_fujian");
         textReceive.text = StaticDataMgr.Instance.GetTextByID("mail_shouqu");
-        textAnnexnone.text = StaticDataMgr.Instance.GetTextByID("mail_meiyoufujian");
+        //textAnnexnone.text = StaticDataMgr.Instance.GetTextByID("mail_meiyoufujian");
     }
 
 

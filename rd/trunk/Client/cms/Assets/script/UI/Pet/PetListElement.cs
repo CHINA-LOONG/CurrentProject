@@ -10,12 +10,10 @@ public class PetListElement : MonoBehaviour {
     public MonsterIcon avatar;
     public Image badge;
 
-    public GameUnit unit;
+    public Transform[] equipPos = new Transform[6];
+    private ItemIcon[] equipIcon = new ItemIcon[6];
 
-    public void Init()
-    {
- 
-    }
+    public GameUnit unit;
 
     public void ReloadPatData(GameUnit unit)
     {
@@ -35,7 +33,36 @@ public class PetListElement : MonoBehaviour {
         avatar.SetStage(unit.pbUnit.stage);
         avatar.SetLevel(unit.pbUnit.level);
         avatar.iconButton.gameObject.SetActive(false);
-        CheckStageStatus();
+
+        for (int i = 0; i < unit.equipList.Length; i++)
+        {
+            if (unit.equipList[i]==null)
+            {
+                if (equipIcon[i]!=null)
+                {
+                    equipIcon[i].gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                EquipData equipData=new EquipData() { equipId = unit.equipList[i].equipId,stage=unit.equipList[i].stage };
+                if (equipIcon[i]==null)
+                {
+                    equipIcon[i] = ItemIcon.CreateItemIcon(equipData);
+                    UIUtil.SetParentReset(equipIcon[i].transform, equipPos[i]);
+                    equipIcon[i].HideExceptIcon();
+                }
+                else
+                {
+                    equipIcon[i].gameObject.SetActive(true);
+                    equipIcon[i].RefreshWithEquipInfo(equipData);
+                    equipIcon[i].HideExceptIcon();
+                }
+            }
+        }
+
+
+        //CheckStageStatus();
     }
 
     public void CheckStageStatus()

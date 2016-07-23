@@ -20,6 +20,7 @@ public class BattleProcess : MonoBehaviour
         SwitchPet,
         UnitReplaceDead,//替换死亡怪物出场
         FirstSpell,//先置技能
+        ReviveUnit,
         Dazhao
     }
 
@@ -87,6 +88,7 @@ public class BattleProcess : MonoBehaviour
     List<SpellBuffArgs> buffEventList = new List<SpellBuffArgs>();
     List<WeakPointDeadArgs> wpDeadEventList = new List<WeakPointDeadArgs>();
     List<SpellUnitDeadArgs> deathList = new List<SpellUnitDeadArgs>();
+    List<SpellReviveArgs> reviveList = new List<SpellReviveArgs>();
 
     //如果没有集火目标，根据怪物各自AI进行战斗
     public	GameUnit fireFocusTarget = null;
@@ -129,6 +131,7 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellLifeChange, OnLifeChange);
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellEnergyChange, OnEnergyChange);
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellUnitDead, OnUnitDead);
+        GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.spellUnitRevive, OnUnitRevive);
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpellBuff, OnBuffChange);
         GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.WeakpoingDead, OnWeakPointDead);
 
@@ -146,6 +149,7 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellLifeChange, OnLifeChange);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellEnergyChange, OnEnergyChange);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellUnitDead, OnUnitDead);
+        GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.spellUnitRevive, OnUnitRevive);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellBuff, OnBuffChange);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.WeakpoingDead, OnWeakPointDead);
 
@@ -323,10 +327,28 @@ public class BattleProcess : MonoBehaviour
                     }
                 }
             }
-
         }
 
-        eventCount = spellEventList.Count;
+        eventCount = reviveList.Count;
+        for (int i = 0; i < eventCount; ++i)
+        {
+            SpellReviveArgs args = reviveList[i];
+            if (args.triggerTime < lastUpdateTime || args.triggerTime >= curTime)
+            {
+                continue;
+            }
+
+            BattleObject reviveUnit = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
+            if (null == reviveUnit)
+            {
+                Logger.LogError("Error:deadUnit is null,deadId = " + args.targetID);
+            }
+            reviveUnit.TriggerEvent("revive", args.triggerTime, null);
+            reviveUnit.unit.CastPassiveSpell(args.triggerTime);
+            BattleController.Instance.GetUIBattle().ShowUnitUI(reviveUnit, reviveUnit.unit.pbUnit.slot);
+        }
+
+            eventCount = spellEventList.Count;
         for (int i = 0; i < eventCount; ++i)
 		{
 			SpellFireArgs args = spellEventList[i];
@@ -436,7 +458,7 @@ public class BattleProcess : MonoBehaviour
         for (int i = deathList.Count - 1; i >= 0; --i)
         {
             SpellUnitDeadArgs args = deathList[i];
-            if (lastUpdateTime - args.triggerTime > SpellConst.aniDelayTime * 2)
+            if (lastUpdateTime - args.triggerTime > SpellConst.unitDeadTime)
             {
                 BattleObject deadUnit = ObjectDataMgr.Instance.GetBattleObject(args.deathID);
                 if (deadUnit != null)
@@ -527,6 +549,7 @@ public class BattleProcess : MonoBehaviour
         deadEventList.Clear();
         buffEventList.Clear();
         wpDeadEventList.Clear();
+        reviveList.Clear();
         ClearRewardItem();
         //enemy has removed in UnLoadScene()
         //for (int i = deathList.Count - 1; i >= 0; --i)
@@ -598,12 +621,16 @@ public class BattleProcess : MonoBehaviour
         GameUnit actionCaster = null;
 		if (action != null)
         {
-            if (curAction.caster == null)
+            if (curAction.caster != null)
+            {
+                actionCaster = curAction.caster.unit;
+            }
+            else if (curAction.type != ActionType.ReviveUnit)
             {
                 OnActionOver();
                 return;
             }
-            actionCaster = curAction.caster.unit;
+
 			switch (action.type)
 			{
 			case ActionType.None:
@@ -637,6 +664,9 @@ public class BattleProcess : MonoBehaviour
                 break;
             case ActionType.FirstSpell:
                 RunFirstSpell(curAction);
+                break;
+            case ActionType.ReviveUnit:
+                StartCoroutine(RunReviveAction(curAction));
                 break;
 			default:
 				break;
@@ -704,14 +734,16 @@ public class BattleProcess : MonoBehaviour
         if (battleResult == BattleRetCode.Failed)
         {
             insertAction.Clear();
-            System.Action<float> failProcess = (delayTime) =>
-            {
-                BattleController.Instance.OnBattleOver(false);
-            };
+            StartCoroutine(ShowReviveUI());
+            //System.Action<float> failProcess = (delayTime) =>
+            //{
+            //    BattleController.Instance.OnBattleOver(false);
+            //};
+
             //if (!string.IsNullOrEmpty(processData.battleProtoData.endEvent) && BattleController.Instance.InstanceStar == 0)
             //    UISpeech.Open(processData.battleProtoData.endEvent, failProcess);
             //else
-            failProcess(0.0f);
+            //failProcess(0.0f);
             return;
         }
         else if (battleResult == BattleRetCode.Success)
@@ -744,6 +776,21 @@ public class BattleProcess : MonoBehaviour
 
         //重新开始action
         StartAction();
+    }
+
+
+    public void ReviveSuccess()
+    {
+        Action reviveAction = new Action();
+        reviveAction.type = ActionType.ReviveUnit;
+        InsertAction(reviveAction);
+        StartAction();
+    }
+
+    IEnumerator ShowReviveUI()
+    {
+        yield return new WaitForSeconds(SpellConst.unitDeadTime);
+        UIBattle.Instance.ShowReviveUI();
     }
 
     #region Run Action
@@ -977,6 +1024,12 @@ public class BattleProcess : MonoBehaviour
             //if replaceDeadUnitCount is more than 1, means current action is replaceDeadUnitAction,so just trigget it
             StartCoroutine(RunReplaceDeadAction(action));
         }
+    }
+
+    IEnumerator RunReviveAction(Action action)
+    {
+        yield return new WaitForSeconds(BattleConst.reviveTime);
+        OnActionOver();
     }
 
     IEnumerator RunReplaceDeadAction(ReplaceDeadUnitAction action)
@@ -1233,6 +1286,12 @@ public class BattleProcess : MonoBehaviour
     {
         SpellUnitDeadArgs args = sArgs as SpellUnitDeadArgs;
         deadEventList.Add(args);
+    }
+
+    void OnUnitRevive(EventArgs sArgs)
+    {
+        SpellReviveArgs args = sArgs as SpellReviveArgs;
+        reviveList.Add(args);
     }
 
 	void OnRemoveDazhaoActtion()

@@ -39,7 +39,7 @@ public class ReportRechargeHandler implements HttpHandler {
 	public static void doReport(Map<String, String> params) throws Exception {
 		if (params != null) {
 			String time = params.containsKey("time")? params.get("time") : HawkTime.getTimeString();
-			String value = String.format("'%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s, '%s', %s, '%s', %s, %s, %s, %s, '%s', '%s', '%s'", 
+			String value = String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s, \"%s\", %s, \"%s\", %s, %s, %s, %s, \"%s\", \"%s\", \"%s\"", 
 										params.get("myorder"), params.get("pforder"), params.get("game"), params.get("platform"), params.get("server"), 
 										CollectorServices.getChannelFromPuid(params.get("puid")), params.get("puid"), 
 										params.get("device"), params.get("playerid"), params.get("playername"), params.get("playerlevel"),

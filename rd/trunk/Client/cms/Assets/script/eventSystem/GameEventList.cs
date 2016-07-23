@@ -61,6 +61,7 @@ public class GameEventList
     public static string SpellLifeChange = "SpellLifeChange";
     public static string SpellEnergyChange = "SpellEnergyChange";
     public static string SpellUnitDead = "SpellUnitDead";
+    public static string spellUnitRevive = "SpellUnitRevive";
     public static string SpellBuff = "SpellBuff";
     public static string SpellEffect = "SpellEffect";
     //public static string SpellMiss = "SpellMiss";

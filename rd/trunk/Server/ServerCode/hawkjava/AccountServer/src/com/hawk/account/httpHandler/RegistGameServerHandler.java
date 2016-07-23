@@ -3,7 +3,6 @@ package com.hawk.account.httpHandler;
 import java.io.IOException;
 import java.util.Map;
 
-import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 
 import com.hawk.account.AccountServices;

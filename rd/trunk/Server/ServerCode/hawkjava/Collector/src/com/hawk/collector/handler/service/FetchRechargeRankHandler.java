@@ -56,7 +56,7 @@ public class FetchRechargeRankHandler implements HttpHandler {
 				endDate = params.get("endDate");
 			}
 			
-			String sql = String.format("select platform, channel, server, puid, count(puid) as payTimes, sum(payMoney) as totalPay from recharge where game = '%s' and date >= '%s' and date <= '%s'", game, beginDate, endDate);
+			String sql = String.format("select platform, channel, server, puid, count(puid) as payTimes, sum(payMoney) as totalPay from recharge where game = \"%s\" and date >= \"%s\" and date <= \"%s\"", game, beginDate, endDate);
 			if (params.containsKey("platform") && params.get("platform").length() > 0) {
 				sql += " and platform = '" + params.get("platform") +"'";
 			}

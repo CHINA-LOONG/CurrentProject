@@ -65,15 +65,16 @@ public class PlayerShopModule extends PlayerModule{
 		}
 		
 		AwardItems award = new AwardItems();
-		award.addCoin(10000/player.getPlayerData().getStatisticsEntity().getCoinOrderCount());
+		award.addCoin(10000);
 		consume.consumeTakeAffectAndPush(player, Action.SHOP_GOLD2COIN);
 		award.rewardTakeAffectAndPush(player, Action.SHOP_GOLD2COIN);
 		
 		player.getPlayerData().getStatisticsEntity().addCoinOrderCount();
+		player.getPlayerData().getStatisticsEntity().addCoinOrderCountDaily();
 		player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
 		
 		HSShopGold2CoinRet.Builder response = HSShopGold2CoinRet.newBuilder();
-		response.setChangeCount(player.getPlayerData().getStatisticsEntity().getCoinOrderCount());
+		response.setChangeCount(player.getPlayerData().getStatisticsEntity().getCoinOrderCountDaily());
 		sendProtocol(HawkProtocol.valueOf(HS.code.ShopGold2CoinS, response));
 		return true;
 	}

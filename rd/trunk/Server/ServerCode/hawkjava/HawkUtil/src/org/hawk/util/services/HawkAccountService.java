@@ -1,13 +1,11 @@
 package org.hawk.util.services;
 
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.commons.httpclient.HttpStatus;
+import org.apache.http.HttpStatus;
 import org.hawk.app.HawkApp;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
@@ -156,7 +154,6 @@ public class HawkAccountService extends HawkTickable {
 	public synchronized int executeMethod(String path, String params) {	
 		if (accountZmq != null) {
 			try {
-				params = URLDecoder.decode(params, "UTF-8");
 				if (!accountZmq.send(path.getBytes(), HawkZmq.HZMQ_SNDMORE)) {
 					return -1;
 				}
@@ -257,7 +254,6 @@ public class HawkAccountService extends HawkTickable {
 		if (accountZmq != null) {
 			try {
 				String queryParam = String.format(serverRegistParam, gameName, platform, channel, serverId, gameServerData.gameServerHost, gameServerData.port);
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
 				accountLogger.info("report: " + serverRegistPath + "?" + queryParam);
 
 				int status = executeMethod(serverRegistPath, queryParam);
@@ -281,7 +277,6 @@ public class HawkAccountService extends HawkTickable {
 		if (accountZmq != null) {
 			try {
 				String queryParam = String.format(serverUnRegistParam, gameName, platform, channel, serverId);
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
 				accountLogger.info("report: " + serverUnRegistPath + "?" + queryParam);
 
 				int status = executeMethod(serverUnRegistPath, queryParam);
@@ -307,7 +302,6 @@ public class HawkAccountService extends HawkTickable {
 				String queryParam = String.format(roleCreateParam, gameName, platform, channel, serverId, createRoleData.puid, 
 						createRoleData.playerId, createRoleData.nickname);
 
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
 				accountLogger.info("report: " + roleCreatePath + "?" + queryParam);
 
 				int status = executeMethod(roleCreatePath, queryParam);
@@ -331,7 +325,6 @@ public class HawkAccountService extends HawkTickable {
 		if (accountZmq != null) {
 			try {
 				String queryParam = String.format(levelUpParam, gameName, platform, channel, serverId, levelUpData.puid, levelUpData.level);
-				queryParam = URLEncoder.encode(queryParam, "UTF-8");
 				accountLogger.info("report: " + levelUpPath + "?" + queryParam);
 
 				int status = executeMethod(levelUpPath, queryParam);

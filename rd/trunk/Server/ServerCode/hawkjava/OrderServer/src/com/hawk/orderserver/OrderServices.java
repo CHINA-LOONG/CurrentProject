@@ -1,4 +1,4 @@
-﻿package com.hawk.orderserver;
+package com.hawk.orderserver;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,9 +15,7 @@ import org.hawk.os.HawkOSOperator;
 import org.hawk.util.HawkTickable;
 import org.hawk.util.services.HawkOrderService;
 
-import com.google.gson.JsonObject;
 import com.hawk.orderserver.db.DBManager;
-import com.hawk.orderserver.entify.OrderInfo;
 import com.hawk.orderserver.entify.QueueInfo;
 import com.hawk.orderserver.http.CallbackHttpServer;
 import com.hawk.orderserver.net.NetService;
@@ -316,18 +314,6 @@ public class OrderServices {
 	private void onRequest(String identify, JSONObject requestInfo) {
 		try {
 			int action = requestInfo.getInt("action");
-			// 请求生成订单信息
-			if (action == HawkOrderService.ACTION_ORDER_GENERATE_REQUEST) {
-				OrderInfo orderInfo = OrderManager.getInstance().generateOrder(requestInfo);
-				JsonObject jsonObject = new JsonObject();
-				if (orderInfo != null) {
-					jsonObject = orderInfo.toProtocolJson();
-				}
-				jsonObject.addProperty("action", HawkOrderService.ACTION_ORDER_GENERATE_RESPONSE);
-				// 添加响应数据到发送队列等待发送
-				sendNotify(identify, jsonObject.toString());
-			}
-
 			// 响应支付发货
 			if (action == HawkOrderService.ACTION_ORDER_DELIVER_RESPONSE) {
 				// 通知订单发货响应

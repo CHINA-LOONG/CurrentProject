@@ -65,18 +65,18 @@ public class OrderFetcher extends Thread {
 		int fetchCount = 0;
 		Statement statement = null;
 		try {
-			String sql = String.format("SELECT id, myOrder, pfOrder, payMoney, payPf, userData, status FROM callback WHERE status <= 0 AND id > %d", maxOrderId);
+			String sql = String.format("SELECT id, tid, uid, product_id, through_cargo, type, status FROM callback WHERE (status = 1 OR status = 2) AND id > %d", maxOrderId);
 			statement = DBManager.getInstance().createStatement(orderDatabase);
 			ResultSet resultSet = statement.executeQuery(sql);
 			while (resultSet.next()) {
 				int column = 0;
 				CallbackInfo callbackInfo = new CallbackInfo();
 				callbackInfo.setId(resultSet.getInt(++column));
-				callbackInfo.setMyOrder(resultSet.getString(++column));
-				callbackInfo.setPfOrder(resultSet.getString(++column));
-				callbackInfo.setPayMoney(resultSet.getInt(++column));
-				callbackInfo.setPayPf(resultSet.getString(++column));
-				callbackInfo.setUserData(resultSet.getString(++column));
+				callbackInfo.setTid(resultSet.getString(++column));
+				callbackInfo.setUid(resultSet.getString(++column));
+				callbackInfo.setProduct_id(resultSet.getString(++column));
+				callbackInfo.setThrough_cargo(resultSet.getString(++column));
+				callbackInfo.setType(resultSet.getString(++column));
 				callbackInfo.setStatus(resultSet.getInt(++column));
 
 				// 通知从数据库读到新回调订单

@@ -1,4 +1,4 @@
-﻿package com.hawk.orderserver;
+package com.hawk.orderserver;
 
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;

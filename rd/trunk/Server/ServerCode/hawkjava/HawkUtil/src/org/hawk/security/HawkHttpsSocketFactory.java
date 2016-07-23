@@ -15,13 +15,15 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-import org.apache.commons.httpclient.ConnectTimeoutException;
-import org.apache.commons.httpclient.params.HttpConnectionParams;
-import org.apache.commons.httpclient.protocol.Protocol;
-import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
+import org.apache.http.HttpHost;
+import org.apache.http.config.Registry;
+import org.apache.http.config.RegistryBuilder;
+import org.apache.http.conn.socket.ConnectionSocketFactory;
+import org.apache.http.protocol.HttpContext;
 import org.hawk.os.HawkException;
 
-public class HawkHttpsSocketFactory implements ProtocolSocketFactory {
+// TODO httpClient 从3升级到4, 此类待修改
+public class HawkHttpsSocketFactory implements ConnectionSocketFactory {
 	/**
 	 * ssl上下文
 	 */
@@ -69,55 +71,76 @@ public class HawkHttpsSocketFactory implements ProtocolSocketFactory {
 	}
 
 	/**
-	 * 创建ssl上下文socket
-	 */
-	@Override
-	public Socket createSocket(String host, int port) throws UnknownHostException, IOException {
-		return getSSLContext().getSocketFactory().createSocket(host, port);
-	}
-
-	/**
-	 * 创建ssl上下文socket
-	 */
-	@Override
-	public Socket createSocket(String host, int port, InetAddress clientHost, int clientPort) throws IOException, UnknownHostException {
-		return getSSLContext().getSocketFactory().createSocket(host, port, clientHost, clientPort);
-	}
-
-	/**
-	 * 创建ssl上下文socket
-	 */
-	@Override
-	public Socket createSocket(String host, int port, InetAddress localAddress, int localPort, HttpConnectionParams params) throws IOException, UnknownHostException, ConnectTimeoutException {
-		if (params == null) {
-			throw new IllegalArgumentException("https parameters cannot be null");
-		}
-
-		int timeout = params.getConnectionTimeout();
-		SocketFactory socketfactory = getSSLContext().getSocketFactory();
-		if (timeout == 0) {
-			return socketfactory.createSocket(host, port, localAddress, localPort);
-		} else {
-			Socket socket = socketfactory.createSocket();
-			SocketAddress localaddr = new InetSocketAddress(localAddress, localPort);
-			SocketAddress remoteaddr = new InetSocketAddress(host, port);
-			socket.bind(localaddr);
-			socket.connect(remoteaddr, timeout);
-			return socket;
-		}
-	}
-
-	/**
 	 * 装载https的支持
 	 */
 	public static boolean install() {
-		try {
-			Protocol https = new Protocol("https", new HawkHttpsSocketFactory(), 443);
-			Protocol.registerProtocol("https", https);
-			return true;
-		} catch (Exception e) {
-			HawkException.catchException(e);
-		}
-		return false;
+		Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
+				.register("https", new HawkHttpsSocketFactory())
+				.build();
+
+		return true;
 	}
+
+	@Override
+	public Socket connectSocket(int connectTimeout, Socket socket, HttpHost host, InetSocketAddress remoteAddress, InetSocketAddress localAddress, HttpContext context) throws IOException {
+		return null;
+	}
+
+	@Override
+	public Socket createSocket(HttpContext context) throws IOException {
+		return null;
+	}
+
+//	/**
+//	 * 创建ssl上下文socket
+//	 */
+//	@Override
+//	public Socket createSocket(String host, int port) throws UnknownHostException, IOException {
+//		return getSSLContext().getSocketFactory().createSocket(host, port);
+//	}
+//
+//	/**
+//	 * 创建ssl上下文socket
+//	 */
+//	@Override
+//	public Socket createSocket(String host, int port, InetAddress clientHost, int clientPort) throws IOException, UnknownHostException {
+//		return getSSLContext().getSocketFactory().createSocket(host, port, clientHost, clientPort);
+//	}
+//
+//	/**
+//	 * 创建ssl上下文socket
+//	 */
+//	@Override
+//	public Socket createSocket(String host, int port, InetAddress localAddress, int localPort, HttpConnectionParams params) throws IOException, UnknownHostException, ConnectTimeoutException {
+//		if (params == null) {
+//			throw new IllegalArgumentException("https parameters cannot be null");
+//		}
+//
+//		int timeout = params.getConnectionTimeout();
+//		SocketFactory socketfactory = getSSLContext().getSocketFactory();
+//		if (timeout == 0) {
+//			return socketfactory.createSocket(host, port, localAddress, localPort);
+//		} else {
+//			Socket socket = socketfactory.createSocket();
+//			SocketAddress localaddr = new InetSocketAddress(localAddress, localPort);
+//			SocketAddress remoteaddr = new InetSocketAddress(host, port);
+//			socket.bind(localaddr);
+//			socket.connect(remoteaddr, timeout);
+//			return socket;
+//		}
+//	}
+//
+//	/**
+//	 * 装载https的支持
+//	 */
+//	public static boolean install() {
+//		try {
+//			Protocol https = new Protocol("https", new HawkHttpsSocketFactory(), 443);
+//			Protocol.registerProtocol("https", https);
+//			return true;
+//		} catch (Exception e) {
+//			HawkException.catchException(e);
+//		}
+//		return false;
+//	}
 }

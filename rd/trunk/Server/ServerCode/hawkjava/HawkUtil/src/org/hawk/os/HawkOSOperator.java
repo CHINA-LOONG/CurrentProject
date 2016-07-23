@@ -18,7 +18,6 @@ import java.io.RandomAccessFile;
 import java.lang.management.ManagementFactory;
 import java.lang.reflect.Field;
 import java.net.InetAddress;
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -27,9 +26,13 @@ import java.util.Properties;
 
 import net.sf.json.JSONObject;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.hawk.log.HawkLog;
 import org.hawk.nativeapi.HawkNativeApi;
 
@@ -675,10 +678,10 @@ public class HawkOSOperator {
 		Map<String, String> paramMap = new HashMap<String, String>();
 		try {
 			if (queryParam != null && queryParam.length() > 0) {
-				queryParam = URLDecoder.decode(queryParam, "UTF-8");
 				String[] querys = queryParam.split("&");
 				for (String query : querys) {
-					String[] pair = query.split("=");
+					// param maybe empty string, use -1
+					String[] pair = query.split("=", -1);
 					if (pair.length == 2) {
 						paramMap.put(pair[0], pair[1]);
 					}
@@ -738,12 +741,12 @@ public class HawkOSOperator {
 			String uriPath = httpExchange.getRequestURI().getPath();
 			String uriQuery = httpExchange.getRequestURI().getQuery();
 			if (uriPath != null && uriQuery != null && uriQuery.length() > 0) {
-				uriQuery = URLDecoder.decode(uriQuery, "UTF-8");
 				HawkLog.debugPrintln("UriQuery: " + uriPath + "?" + uriQuery);
 				if (uriQuery != null) {
 					String[] querys = uriQuery.split("&");
 					for (String query : querys) {
-						String[] pair = query.split("=");
+						// param maybe empty string, use -1
+						String[] pair = query.split("=", -1);
 						if (pair.length == 2) {
 							paramMap.put(pair[0], pair[1]);
 						}
@@ -846,17 +849,21 @@ public class HawkOSOperator {
 	 * @return
 	 */
 	public static String getMyIp(int timeout) {
-		HttpClient httpClient = new HttpClient();
-		httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(timeout);
-		httpClient.getHttpConnectionManager().getParams().setSoTimeout(timeout);
-		GetMethod getMethod  = new GetMethod("http://www.feefoxes.com");
-		getMethod.setPath("/myip.php");
+		RequestConfig requestConfig = RequestConfig.custom()
+				.setConnectTimeout(timeout)
+				.setSocketTimeout(timeout)
+				.build();
+		HttpClient httpClient = HttpClients.custom()
+				.setDefaultRequestConfig(requestConfig)
+				.build();
+		HttpGet httpGet  = new HttpGet("http://www.feefoxes.com/myip.php");
 		try {
-			int statusCode = httpClient.executeMethod(getMethod);
+			HttpResponse httpResponse = httpClient.execute(httpGet);
+			int statusCode = httpResponse.getStatusLine().getStatusCode();
 			if (statusCode == HttpStatus.SC_OK) {
-				String response = getMethod.getResponseBodyAsString();
-				HawkLog.logPrintln("myip: " + response);
-				return response;
+				String responseString = EntityUtils.toString(httpResponse.getEntity());
+				HawkLog.logPrintln("myip: " + responseString);
+				return responseString;
 			}
 		} catch (Exception e) {
 			HawkException.catchException(e);

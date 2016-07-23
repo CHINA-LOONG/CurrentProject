@@ -35,7 +35,7 @@ public class ItemIcon : MonoBehaviour
 	}
 	#endregion
 
-
+    public Image backGround;
 	public	Image 	frameImage;
 	public	Image	itemImage;
 	public	Image	pieceImage;
@@ -81,6 +81,15 @@ public class ItemIcon : MonoBehaviour
 	{
 		itemCountText.text = "";
 	}
+
+    public void HideExceptIcon()
+    {
+        backGround.gameObject.SetActive(false);
+        frameImage.gameObject.SetActive(false);
+        pieceImage.gameObject.SetActive(false);
+        equipLevelText.gameObject.SetActive(false);
+        itemCountText.gameObject.SetActive(false);
+    }
 	#endregion
 
 	private	IconType GetIconType(int itemType)
@@ -144,6 +153,9 @@ public class ItemIcon : MonoBehaviour
 
 	private void SetIconImage(string iconName)
 	{
+		if (string.IsNullOrEmpty (iconName))
+			return;
+
 		Sprite iconImg = ResourceMgr.Instance.LoadAssetType<Sprite>(iconName) as Sprite;
 		if (null != iconImg)
 			itemImage.sprite = iconImg;

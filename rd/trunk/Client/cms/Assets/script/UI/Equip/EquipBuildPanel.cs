@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public interface IEquipPanelBaseCallBack:IBuildEquipCallBack, IMosaicEquipCallBack{ }
 public abstract class EquipPanelBase : MonoBehaviour
 {
-
     private UIEquipInlay parentNode;
     public UIEquipInlay ParentNode
     {
@@ -20,7 +19,7 @@ public abstract class EquipPanelBase : MonoBehaviour
         }
     }
     public IEquipPanelBaseCallBack ICallBack;
-    public abstract void ReloadData(EquipData data,int select=-1);
+    public abstract void ReloadData(EquipData data,UIEquipInlay.State type,int select=-1);
 }
 
 public interface IBuildEquipCallBack
@@ -78,7 +77,7 @@ public class EquipBuildPanel : EquipPanelBase
         EventTriggerListener.Get(btnBuild.gameObject).onClick = OnClickBuild;
     }
 
-    public override void ReloadData(EquipData data,int select=-1)
+    public override void ReloadData(EquipData data, UIEquipInlay.State type, int select = -1)
     {
         curData = data;
         EquipData nextData = null;
@@ -157,9 +156,9 @@ public class EquipBuildPanel : EquipPanelBase
         RemoveAllElement();
         foreach (var attr in curAttr)
         {
-            AttrType type = attr.Key;
+            AttrType attrType = attr.Key;
             EquipBuildAttr itemAttr = GetElement();
-            itemAttr.Refresh(type, attr.Value, nextAttr[type]);
+            itemAttr.Refresh(attrType, attr.Value, nextAttr[attrType]);
         }
         #endregion
 

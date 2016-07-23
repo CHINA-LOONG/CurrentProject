@@ -7,17 +7,7 @@ public class PetMaterialLabel : MonoBehaviour {
     public Text currentCountLabel;
     public Text needCountLabel;
     public Text sliceLabel;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
+    
     public void ReloadData(int currentCount, int needCount , int maxCount)
     {
         currentCount = currentCount > maxCount ? maxCount : currentCount;

@@ -44,7 +44,7 @@ public class ReportRegisterHandler implements HttpHandler {
 		try {
 			// 写注册信息
 			if (params != null) {
-				String value = String.format("'%s', '%s', '%s', '%s', '%s', '%s', %s, '%s', '%s'", 
+				String value = String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s, \"%s\", \"%s\"", 
 											params.get("game"), params.get("platform"), params.get("server"), 
 											CollectorServices.getChannelFromPuid(params.get("puid")), params.get("puid"), 
 											params.get("device"), params.get("playerid"), 
@@ -67,14 +67,14 @@ public class ReportRegisterHandler implements HttpHandler {
 				// 先判断用户puid是否存在
 				Statement statement = DBManager.getInstance().createStatement(params.get("game"));
 				if (statement != null) {
-					ResultSet resultSet = statement.executeQuery(String.format("select * from puid where game = '%s' and puid = '%s'", params.get("game"), params.get("puid")));
+					ResultSet resultSet = statement.executeQuery(String.format("select * from puid where game = \"%s\" and puid = \"%s\"", params.get("game"), params.get("puid")));
 					// 已存在此puid
 					if (resultSet != null && resultSet.next()) {
 						return;
 					}
 				}
 				
-				String value = String.format("'%s', '%s', '%s', '%s', '%s', '%s', %s, '%s', '%s'", 
+				String value = String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s, \"%s\", \"%s\"", 
 											params.get("game"), params.get("puid"), params.get("platform"), params.get("server"), 
 											CollectorServices.getChannelFromPuid(params.get("puid")), params.get("device"), params.get("playerid"), 
 											time, time.substring(0, 10));
@@ -93,14 +93,14 @@ public class ReportRegisterHandler implements HttpHandler {
 				// 先判断设备是否存在
 				Statement statement = DBManager.getInstance().createStatement(params.get("game"));
 				if (statement != null) {
-					ResultSet resultSet = statement.executeQuery(String.format("select * from device where game = '%s' and device = '%s'", params.get("game"), params.get("device")));
+					ResultSet resultSet = statement.executeQuery(String.format("select * from device where game = \"%s\" and device = \"%s\"", params.get("game"), params.get("device")));
 					// 已存在此设备
 					if (resultSet != null && resultSet.next()) {
 						return;
 					}
 				}
 				
-				String value = String.format("'%s', '%s', '%s', '%s', '%s', '%s', %s, '%s', '%s'", 
+				String value = String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s, \"%s\", \"%s\"", 
 											params.get("game"), params.get("device"), params.get("platform"), params.get("server"), 
 											CollectorServices.getChannelFromPuid(params.get("puid")), params.get("puid"), params.get("playerid"), 
 											time, time.substring(0, 10));

@@ -60,8 +60,11 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
             item.iClickBack = this;
         }
     }
-
-    void OnDestroy()
+    void OnEnable()
+    {
+        GameEventMgr.Instance.AddListener(PetViewConst.ReloadPetStageNotify, ReloadPetStage);
+    }
+    void OnDisable()
     {
         GameEventMgr.Instance.RemoveListener(PetViewConst.ReloadPetStageNotify, ReloadPetStage);
     }

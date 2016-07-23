@@ -25,10 +25,12 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
     public Image imgMaterial;
     public Text textMaterial;
 
+    public Text text_dont;
     public Text text_Tips;
     public Text text_Open;
     public Button btnOpen;
     public GameObject objOpen;
+    public GameObject hidOpen;
     public GameObject dontOpen;
 
     public IMosaicEquipCallBack ICallBackDelegate { get { return ICallBack; } }
@@ -47,10 +49,11 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
 
     void Start()
     {
-        text_Zhanli.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_zhanli");
+        text_Zhanli.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
         text_Desc.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_openmax");
         text_Desc.color = ColorConst.text_color_Req;
         text_Open.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_btnopen");
+        text_dont.text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotMent");
 
         EventTriggerListener.Get(btnOpen.gameObject).onClick = OnClickOpen;
 
@@ -61,11 +64,14 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
         }
         
     }
-
-    public override void ReloadData(EquipData data, int index = -1)
+    public override void ReloadData(EquipData data, UIEquipInlay.State type, int select = -1)
     {
         curData = data;
-        this.selIndex = (index==-1?selIndex:index);
+        this.selIndex = (select == -1 ? selIndex : select);
+        hidOpen.SetActive(type == UIEquipInlay.State.PetUI);
+
+        ItemStaticData itemData=StaticDataMgr.Instance.GetItemData(curData.equipId);
+        UIUtil.SetStageColor(textName, itemData.name, curData.stage, curData.level);
 
         if (itemIcon==null)
         {
@@ -111,7 +117,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
                 isOpenmax = false;
                 mosaicItems[i].Reload(null);
             }
-            if (ParentNode.uiType == UIEquipInlay.UIType.Left)
+            if (ParentNode.uiType == UIEquipInlay.State.Setting)
             {
                 mosaicItems[i].SetSelectState(i == selIndex);
             }
@@ -263,7 +269,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
     //选中位置
     public void OnSelectItem(int selIndex)
     {
-        if (ParentNode.uiType == UIEquipInlay.UIType.Left)
+        if (ParentNode.uiType == UIEquipInlay.State.Setting)
         {
             if (this.selIndex == selIndex)
             {

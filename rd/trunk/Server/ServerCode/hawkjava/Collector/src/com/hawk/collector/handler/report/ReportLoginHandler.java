@@ -44,7 +44,7 @@ public class ReportLoginHandler implements HttpHandler {
 	public static void doReport(Map<String, String> params) throws Exception {
 		if (params != null) {
 			String time = params.containsKey("time")? params.get("time") : HawkTime.getTimeString();
-			String value = String.format("'%s', '%s', '%s', '%s', '%s', '%s', %s, %s, %s, '%s', '%s'", 
+			String value = String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s, %s, %s, \"%s\", \"%s\"", 
 					params.get("game"), params.get("platform"), params.get("server"), 
 					CollectorServices.getChannelFromPuid(params.get("puid")), params.get("puid"), 
 					params.get("device"), params.get("playerid"), params.get("playerlevel"), params.get("period"), 
@@ -53,7 +53,7 @@ public class ReportLoginHandler implements HttpHandler {
 			HawkLog.logPrintln("report_login: " + value);
 			
 			// 优先更新
-			String sql = String.format("UPDATE login SET period = period + %d, playerlevel = %d WHERE game = '%s' AND platform = '%s' AND server = '%s' AND puid = '%s' AND date = '%s'",
+			String sql = String.format("UPDATE login SET period = period + %d, playerlevel = %d WHERE game = \"%s\" AND platform = \"%s\" AND server = \"%s\" AND puid = \"%s\" AND date = \"%s\"",
 					Integer.valueOf(params.get("period")), Integer.valueOf(params.get("playerlevel")), 
 					params.get("game"), params.get("platform"), params.get("server"), params.get("puid"), time.substring(0, 10));
 			

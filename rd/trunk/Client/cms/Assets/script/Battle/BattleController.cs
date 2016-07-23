@@ -619,6 +619,22 @@ public class BattleController : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
+    public void OnRevive(bool success)
+    {
+        if (success)
+        {
+            uiBattle.CloseReviveUI();
+            battleGroup.RevivePlayerList();
+            process.ReviveSuccess();
+        }
+        else 
+        {
+            //goto store
+            GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+            //UIMgr.Instance.OpenUI_(UIMall.ViewName, false);
+        }
+    }
+    //---------------------------------------------------------------------------------------------
     public IEnumerator StartNextProcess(float delayTime)
     {
         if (delayTime > 0.0f)

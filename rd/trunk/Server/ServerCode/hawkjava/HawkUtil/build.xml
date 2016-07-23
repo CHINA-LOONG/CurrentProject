@@ -7,13 +7,19 @@
     <property environment="env"/>
     <property name="AccountServer.location" value="../AccountServer"/>
     <property name="CdkServer.location" value="../CdkServer"/>
+    <property name="ChatMonitor.location" value="../ChatMonitor"/>
     <property name="Collector.location" value="../Collector"/>
+    <property name="DBMerge.location" value="../DBMerge"/>
     <property name="GameClient.location" value="../GameClient"/>
     <property name="GameServer.location" value="../GameServer"/>
     <property name="GameService.location" value="../GameService"/>
     <property name="Http2Tcp.location" value="../Http2Tcp"/>
     <property name="IpServer.location" value="../IpServer"/>
+    <property name="OpsAgent.location" value="../OpsAgent"/>
+    <property name="OpsManager.location" value="../OpsManager"/>
+    <property name="OrderServer.location" value="../OrderServer"/>
     <property name="ShellAgent.location" value="../ShellAgent"/>
+    <property name="ShellCommand.location" value="../ShellCommand"/>
     <property name="VersionServer.location" value="../VersionServer"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.7"/>
@@ -42,7 +48,6 @@
         <pathelement location="lib/javassist-3.12.0.GA.jar"/>
         <pathelement location="lib/commons-beanutils-1.9.1.jar"/>
         <pathelement location="lib/ezmorph-1.0.6.jar"/>
-        <pathelement location="lib/commons-httpclient-3.1.jar"/>
         <pathelement location="lib/commons-email-1.3.3.jar"/>
         <pathelement location="lib/activation.jar"/>
         <pathelement location="lib/mail.jar"/>
@@ -64,6 +69,7 @@
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
+                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -86,8 +92,12 @@
         <ant antfile="build.xml" dir="${AccountServer.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${CdkServer.location}" inheritAll="false" target="clean"/>
         <ant antfile="build.xml" dir="${CdkServer.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${ChatMonitor.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${ChatMonitor.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${Collector.location}" inheritAll="false" target="clean"/>
         <ant antfile="build.xml" dir="${Collector.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${DBMerge.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${DBMerge.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${GameClient.location}" inheritAll="false" target="clean"/>
         <ant antfile="build.xml" dir="${GameClient.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${GameServer.location}" inheritAll="false" target="clean"/>
@@ -98,8 +108,16 @@
         <ant antfile="build.xml" dir="${Http2Tcp.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${IpServer.location}" inheritAll="false" target="clean"/>
         <ant antfile="build.xml" dir="${IpServer.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${OpsAgent.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${OpsAgent.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${OpsManager.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${OpsManager.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${OrderServer.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${OrderServer.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${ShellAgent.location}" inheritAll="false" target="clean"/>
         <ant antfile="build.xml" dir="${ShellAgent.location}" inheritAll="false" target="build"/>
+        <ant antfile="build.xml" dir="${ShellCommand.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${ShellCommand.location}" inheritAll="false" target="build"/>
         <ant antfile="build.xml" dir="${VersionServer.location}" inheritAll="false" target="clean"/>
         <ant antfile="build.xml" dir="${VersionServer.location}" inheritAll="false" target="build"/>
     </target>

@@ -11,6 +11,11 @@ state = 1 Remove
 				<Particle time="0" asset="effect_hot" bundle="effect/particle" parent=""/>
 			</ParticleList>
 		</Ani>
+		<Ani id="revive" state="0" action_delay="0">
+			<ParticleList>
+				<Particle asset="sankai" bundle="effect/battle" parent=""/>
+			</ParticleList>
+		</Ani>
 		<Ani id="test_sequence" state="0" action_delay="0">
 			<ControllerList>
 				<Controller time="0" name="monsters/hundun/boss_hundun_state2"/>

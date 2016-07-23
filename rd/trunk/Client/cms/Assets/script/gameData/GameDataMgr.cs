@@ -329,7 +329,7 @@ public class GameDataMgr : MonoBehaviour
             }
             else if (item.type == (int)PB.itemType.EQUIP)
             {
-                GameDataMgr.Instance.mainPlayer.gameEquipData.AddEquip(EquipData.valueof(item.id, item.itemId, item.stage, item.level, -1, null));
+                GameDataMgr.Instance.mainPlayer.gameEquipData.AddEquip(EquipData.valueof(item.id, item.itemId, item.stage, item.level, -1, new List<PB.GemPunch>()));
             }
             else if (item.type == (int)PB.itemType.MONSTER)
             {

@@ -38,7 +38,7 @@ public class OperationAnalyser {
 			Statement statement = null;
 			try {
 				String statisticsSql = "select statistics from statistics where game = '" + game + "'";
-				statisticsSql += String.format(" and date >= '%s' and date <= '%s'", beginDate, endDate);
+				statisticsSql += String.format(" and date >= \"%s\" and date <= \"%s\"", beginDate, endDate);
 				if (channel != null && channel.length() > 0) {
 					statisticsSql += " and channel = '" + channel +"'";
 				} else if (platform != null && platform.length() > 0) {
@@ -250,7 +250,7 @@ public class OperationAnalyser {
 				if (channel != null && channel.length() > 0) {
 					userLoginSql += " and channel = '" + channel +"'";
 				}
-				userLoginSql += String.format(" and date = '%s'", date);
+				userLoginSql += String.format(" and date = \"%s\"", date);
 				HawkLog.logPrintln(userLoginSql);
 				resultSet = statement.executeQuery(userLoginSql);
 				if (resultSet.next()) {
@@ -270,7 +270,7 @@ public class OperationAnalyser {
 				if (channel != null && channel.length() > 0) {
 					deviceLoginSql += " and channel = '" + channel +"'";
 				}
-				deviceLoginSql += String.format(" and date = '%s'", date);
+				deviceLoginSql += String.format(" and date = \"%s\"", date);
 				HawkLog.logPrintln(deviceLoginSql);
 				resultSet = statement.executeQuery(deviceLoginSql);
 				if (resultSet.next()) {
@@ -483,7 +483,7 @@ public class OperationAnalyser {
 			ltvCalendar.add(Calendar.DAY_OF_YEAR, day);
 			String ltvDay = sdf.format(ltvCalendar.getTime());
 			
-			String ltvSql = String.format("select sum(payMoney) from recharge where date >= '%s' and date < '%s'", date, ltvDay);
+			String ltvSql = String.format("select sum(payMoney) from recharge where date >= \"%s\" and date < \"%s\"", date, ltvDay);
 			if (platform != null && platform.length() > 0) {
 				ltvSql += " and platform = '" + platform +"'";
 			}
@@ -533,7 +533,7 @@ public class OperationAnalyser {
 				retentionSql += " and channel = '" + channel +"'";
 			}
 			
-			retentionSql += String.format(" and (select count(puid) from puid where puid.date = '%s' and puid.puid = login.puid", date);
+			retentionSql += String.format(" and (select count(puid) from puid where puid.date = \"%s\" and puid.puid = login.puid", date);
 			if (platform != null && platform.length() > 0) {
 				retentionSql += " and puid.platform = '" + platform +"'";
 			}
@@ -576,7 +576,7 @@ public class OperationAnalyser {
 				retentionSql += " and channel = '" + channel +"'";
 			}
 			
-			retentionSql += String.format(" and (select count(device) from device where device.date = '%s' and device.device = login.device", date);
+			retentionSql += String.format(" and (select count(device) from device where device.date = \"%s\" and device.device = login.device", date);
 			if (platform != null && platform.length() > 0) {
 				retentionSql += " and device.platform = '" + platform +"'";
 			}

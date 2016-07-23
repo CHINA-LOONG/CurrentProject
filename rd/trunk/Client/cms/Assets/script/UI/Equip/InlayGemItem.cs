@@ -17,7 +17,7 @@ public class InlayGemItem : MonoBehaviour
         Unlock,
         Mosaic
     }
-    private MosaicType type;
+    private MosaicType type=MosaicType.Lock;
     public MosaicType Type
     {
         get { return type; }
@@ -33,7 +33,10 @@ public class InlayGemItem : MonoBehaviour
     public GameObject[] typeItem = new GameObject[3]; 
     //common
     public Image imgItem;
+    public Transform gemPos;
+    private ItemIcon gemIcon;
     public Button btnSelect;
+    public Image imgSelect;
     //lock
     public Text text_LockDesc;
     //unlock
@@ -70,48 +73,61 @@ public class InlayGemItem : MonoBehaviour
 
     public void Reload(GemInfo gem)
     {
-        if (gem == null)
+        if (gemIcon != null)
         {
-            imgItem.sprite = null;
-            imgItem.color = Color.red;
+            gemIcon.gameObject.SetActive(false);
+        }
+
+        if (gem == null)//未开孔
+        {
+            imgItem.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("baoshi_lock");
             Type = MosaicType.Lock;
             return;
         }
-        if (gem.gemId.Equals(BattleConst.invalidGemID))
+        else //开孔
         {
-            imgItem.sprite = null;
-            imgItem.color = Color.blue;
-            Type = MosaicType.Unlock;
-            return;
+            imgItem.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("baoshiditu_" + gem.type);
+
+            if (gem.gemId.Equals(BattleConst.invalidGemID))//未镶嵌
+            {
+                Type = MosaicType.Unlock;
+            }
+            else //镶嵌
+            {
+                ItemStaticData gemItem = StaticDataMgr.Instance.GetItemData(gem.gemId);
+                if (gemItem != null)
+                {
+                    Type = MosaicType.Mosaic;
+
+                    EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(gemItem.gemId);
+                    textGemName.text = StaticDataMgr.Instance.GetTextByID(gemItem.name);
+                    UIUtil.SetDisPlayAttr(attr, text_Attr1, textAttr1, text_Attr2, textAttr2);
+
+                    if (gemIcon == null)
+                    {
+                        gemIcon = ItemIcon.CreateItemIcon(new ItemData() { itemId = gem.gemId, count = 0 });
+                        UIUtil.SetParentReset(gemIcon.transform, gemPos.transform);
+                        gemIcon.HideExceptIcon();
+                    }
+                    else
+                    {
+                        gemIcon.gameObject.SetActive(true);
+                        gemIcon.RefreshWithItemInfo(new ItemData() { itemId = gem.gemId, count = 0 });
+                        gemIcon.HideExceptIcon();
+                    }
+                }
+                else
+                {
+                    Logger.LogError("宝石镶嵌出现错误");
+                }
+            }
         }
 
-        ItemStaticData gemItem = StaticDataMgr.Instance.GetItemData(gem.gemId);
-        if (gemItem!=null)
-        {
-            //TODO:
-            imgItem.sprite = null;
-            imgItem.color = Color.green;
-            textGemName.text = gemItem.name;
-            EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(gemItem.gemId);
-            UIUtil.SetDisPlayAttr(attr, text_Attr1, textAttr1, text_Attr2, textAttr2);
-            Type = MosaicType.Mosaic;
-        }
-        else
-        {
-            Logger.LogError("mosaic gem error");
-        }
     }
 
     public void SetSelectState(bool select)
     {
-        if (select)
-        {
-            GetComponent<Image>().color = Color.blue;
-        }
-        else
-        {
-            GetComponent<Image>().color = Color.white;
-        }
+        imgSelect.enabled = select;
     }
 
 

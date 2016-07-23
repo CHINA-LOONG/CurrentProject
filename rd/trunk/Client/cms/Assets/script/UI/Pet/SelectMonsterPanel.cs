@@ -4,7 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class SelectMonsterPanel : MonoBehaviour {
+public class SelectMonsterPanel : UIBase
+{
+    public static string ViewName = "SelectMonsterPanel";
+
 
     public ScrollViewContainer scrollView;
     public ScrollRect scrollRect;
@@ -15,16 +18,12 @@ public class SelectMonsterPanel : MonoBehaviour {
     public Text demandLabel;
     public Image scrollIcon;
     public GameObject elementContainer;
-    public MonsterIcon avatar;
+    public Transform monIconPos;
+    private MonsterIcon avatar;
 
     List<int> m_currentSelectMonster = null;
     ItemInfo m_itemInfo = null;
 
-	// Use this for initialization
-	void Start () {
-        
-	}
-	
 	// Update is called once per frame
 	void Update () {
 	
@@ -36,14 +35,15 @@ public class SelectMonsterPanel : MonoBehaviour {
         ShowScrollIcon();
 	}
 
-    public void init(ItemInfo itemInfo, List<int> selectMonster, int selfId){
-
+    public void init(ItemInfo itemInfo, List<int> selectMonster,GameUnit curUnit/* int selfId*/)
+    {
+        int selfId=curUnit.pbUnit.guid;
         nonoMonsterLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageNoneMonster);
         demandLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageMonster);
         m_currentSelectMonster = selectMonster;
         m_itemInfo = itemInfo;
 
-        List<GameUnit> petList = GameDataMgr.Instance.PlayerDataAttr.GetAllPet(itemInfo.itemId, itemInfo.stage);
+        List<GameUnit> petList = GameDataMgr.Instance.PlayerDataAttr.GetAllPet((itemInfo.itemId.Equals(BattleConst.stageSelfId) ? curUnit.pbUnit.id : itemInfo.itemId), itemInfo.stage);
         foreach (GameUnit unit in petList)
         {
             if (unit.pbUnit.guid != selfId)
@@ -55,17 +55,25 @@ public class SelectMonsterPanel : MonoBehaviour {
             }
         }
 
-        if (elementContainer != null && elementContainer.transform.childCount > 0)
+        //if (elementContainer != null && elementContainer.transform.childCount > 0)
+        //{
+        //    nonoMonsterLabel.gameObject.SetActive(false);
+        //}
+        //else
+        //{
+        //    nonoMonsterLabel.gameObject.SetActive(true);
+        //}
+
+        if (avatar == null)
         {
-            nonoMonsterLabel.gameObject.SetActive(false);
+            avatar = MonsterIcon.CreateIcon();
+            UIUtil.SetParentReset(avatar.transform, monIconPos);
         }
         else
         {
-            nonoMonsterLabel.gameObject.SetActive(true);
+            avatar.Init();
         }
-
-        avatar.Init();
-        avatar.SetMonsterStaticId(itemInfo.itemId);
+        avatar.SetMonsterStaticId(itemInfo.itemId.Equals(BattleConst.stageSelfId)?curUnit.pbUnit.id:itemInfo.itemId);
         avatar.SetStage(itemInfo.stage);
 
         UpdateSelectState();

@@ -6,43 +6,49 @@ import com.google.gson.JsonObject;
 
 public class CallbackInfo {
 	protected int id = 0;
-	protected String myOrder = "";
-	protected String payPf = "";
-	protected String pfOrder = "";
-	protected int payMoney = 0;
-	protected String userData = "";
+	protected String tid = "";
+	protected String uid = "";
+	protected String product_id = "";
+	protected String through_cargo = "";
+	protected String type = "";
+	protected int callbackStatus = 1;
 	protected int status = 0;
+	protected int ts = 0;
+	/**
+	 * 通知时间
+	 */
+	protected long notifyTime = 0;
 	
 	public JsonObject toJson() {
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("id", id);
-		jsonObject.addProperty("myOrder", myOrder);
-		jsonObject.addProperty("payPf", payPf);
-		jsonObject.addProperty("pfOrder", pfOrder);
-		jsonObject.addProperty("payMoney", payMoney);
-		jsonObject.addProperty("userData", userData);
+		jsonObject.addProperty("tid", tid);
+		jsonObject.addProperty("uid", uid);
+		jsonObject.addProperty("product_id", product_id);
+		jsonObject.addProperty("through_cargo", through_cargo);
+		jsonObject.addProperty("type", type);
 		jsonObject.addProperty("status", status);
+		jsonObject.addProperty("ts", ts);
 		return jsonObject;
 	}
-	
+
 	public boolean fromJson(JsonObject jsonObject) {
 		try {
-			myOrder = jsonObject.get("myOrder").getAsString();
-			pfOrder = jsonObject.get("pfOrder").getAsString();
-			payMoney = jsonObject.get("payMoney").getAsInt();
-			if (jsonObject.get("payPf") != null) {
-				payPf = jsonObject.get("payPf").getAsString();
-			}
-			if (jsonObject.get("userData") != null) {
-				userData = jsonObject.get("userData").getAsString();
-			}
+			tid = jsonObject.get("tid").getAsString();
+			uid = jsonObject.get("uid").getAsString();
+			type = jsonObject.get("type").getAsString();
+			callbackStatus = jsonObject.get("status").getAsInt();
+			ts = jsonObject.get("ts").getAsInt();
+			through_cargo = jsonObject.get("through_cargo").getAsString();
+			product_id = jsonObject.get("product_id").getAsString();
+			
 			return true;
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		}
 		return false;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -50,47 +56,55 @@ public class CallbackInfo {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public String getMyOrder() {
-		return myOrder;
+
+	public String getTid() {
+		return tid;
 	}
 
-	public void setMyOrder(String myOrder) {
-		this.myOrder = myOrder;
+	public void setTid(String tid) {
+		this.tid = tid;
 	}
 
-	public String getPayPf() {
-		return payPf;
+	public String getUid() {
+		return uid;
 	}
 
-	public void setPayPf(String payPf) {
-		this.payPf = payPf;
-	}
-	
-	public String getPfOrder() {
-		return pfOrder;
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 
-	public void setPfOrder(String pfOrder) {
-		this.pfOrder = pfOrder;
+	public String getProduct_id() {
+		return product_id;
 	}
 
-	public int getPayMoney() {
-		return payMoney;
+	public void setProduct_id(String product_id) {
+		this.product_id = product_id;
 	}
 
-	public void setPayMoney(int payMoney) {
-		this.payMoney = payMoney;
+	public String getThrough_cargo() {
+		return through_cargo;
 	}
 
-	public String getUserData() {
-		return userData;
+	public void setThrough_cargo(String through_cargo) {
+		this.through_cargo = through_cargo;
 	}
 
-	public void setUserData(String userData) {
-		this.userData = userData;
+	public String getType() {
+		return type;
 	}
-	
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getCallbackStatus() {
+		return callbackStatus;
+	}
+
+	public void setCallbackStatus(int callbackStatus) {
+		this.callbackStatus = callbackStatus;
+	}
+
 	public int getStatus() {
 		return status;
 	}
@@ -98,4 +112,21 @@ public class CallbackInfo {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+
+	public int getTs() {
+		return ts;
+	}
+
+	public void setTs(int ts) {
+		this.ts = ts;
+	}
+
+	public long getNotifyTime() {
+		return notifyTime;
+	}
+
+	public void setNotifyTime(long notifyTime) {
+		this.notifyTime = notifyTime;
+	}
+	
 }

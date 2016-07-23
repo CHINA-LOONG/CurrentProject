@@ -46,7 +46,7 @@ public class FetchPuidRechargeHandler implements HttpHandler {
 		JsonArray jsonArray = new JsonArray();
 		Statement statement = null;
 		try {
-			String sql = String.format("SELECT pforder, platform, server, orderMoney, payMoney, addGold, giftGold, currency, time FROM recharge WHERE game = '%s' AND puid = '%s'", game, puid);
+			String sql = String.format("SELECT pforder, platform, server, orderMoney, payMoney, addGold, giftGold, currency, time FROM recharge WHERE game = \"%s\" AND puid = \"%s\"", game, puid);
 
 			statement = DBManager.getInstance().createStatement(game);
 			ResultSet resultSet = statement.executeQuery(sql);

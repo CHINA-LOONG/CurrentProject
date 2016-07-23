@@ -34,7 +34,7 @@ public class ReportAccountServerHandler implements HttpHandler{
 				remoteIp = (String)params.get("ip");
 			}
 			
-			String value = String.format("'%s', '%s', '%s', '%s', '%s', %s, %s, '%s', '%s'", 
+			String value = String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s, %s, \"%s\", \"%s\"", 
 					params.get("game"), params.get("platform"), params.get("channel"), params.get("server"), 
 					remoteIp, params.get("zmq_port"), params.get("http_port"), 
 					params.get("dburl"), params.get("dbuser"), params.get("dbpwd"));

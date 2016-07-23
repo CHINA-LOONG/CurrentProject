@@ -487,7 +487,7 @@ public class GameUnit : IComparable
         //battleUnit.TriggerEvent(BattleConst.levelChangeEvent, Time.time, null);
     }
 
-    public void ResetAllState()
+    public void ResetAllState(bool isRevive)
     {
         backUp = false;
         invincible = 0;
@@ -510,8 +510,11 @@ public class GameUnit : IComparable
         //二级属性
         curLife = maxLife;
 
-        lastActionOrder = 0;
-        actionOrder = 0;
+        if (isRevive == false)
+        {
+            lastActionOrder = 0;
+            actionOrder = 0;
+        }
         attackWpName = null;
 
         state = UnitState.None;

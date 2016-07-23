@@ -10,7 +10,22 @@ public class SelectMonsterElement : MonoBehaviour {
     public Text battle;
     public GameObject maskView;
     public GameObject eventObject;
-    public MonsterIcon avatar;
+    public Transform monIconPos;
+    private MonsterIcon avatar;
+
+    public MonsterIcon Avatar
+    {
+        get
+        {
+            if (avatar == null)
+            {
+                avatar = MonsterIcon.CreateIcon();
+                UIUtil.SetParentReset(avatar.transform, monIconPos);
+            }
+            return avatar; 
+        }
+        set { avatar = value; }
+    }
 
     [HideInInspector]
     public int guid;
@@ -39,30 +54,20 @@ public class SelectMonsterElement : MonoBehaviour {
         }
     }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     public void ReloadData(GameUnit unit, bool isSelect)
     {
-        this.select = isSelect;
+        this.isSelect = isSelect;
         guid = unit.pbUnit.guid;
         nameLabel.text = unit.name;
         characterLabel.text = unit.character.ToString();
         battleLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageBattle);
         battle.text = unit.attackCount.ToString();
 
-        avatar.Init();
-        avatar.SetMonsterStaticId(unit.pbUnit.id);
-        avatar.SetStage(unit.pbUnit.stage);
-        avatar.SetLevel(unit.pbUnit.level);
-        avatar.iconButton.gameObject.SetActive(false);
-        avatar.ShowSelectImage(isSelect);
+        Avatar.Init();
+        Avatar.SetMonsterStaticId(unit.pbUnit.id);
+        Avatar.SetStage(unit.pbUnit.stage);
+        Avatar.SetLevel(unit.pbUnit.level);
+        Avatar.iconButton.gameObject.SetActive(false);
+        Avatar.ShowSelectImage(isSelect);
     }
 }

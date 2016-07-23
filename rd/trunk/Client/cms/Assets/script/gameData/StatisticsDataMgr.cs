@@ -41,6 +41,7 @@ public class StatisticsDataMgr : MonoBehaviour {
         PB.HSStatisticsInfoSync staticsticsData = message.GetProtocolBody<PB.HSStatisticsInfoSync>();
         SkillPoints = staticsticsData.skillPoint;
         skillTimeBegin = staticsticsData.skillPointTimeStamp;
+		GameDataMgr.Instance.UserDataAttr.orderServerKey =  staticsticsData.orderServerKey;
         UpdateServerTime(staticsticsData.timeStamp);
     }
 

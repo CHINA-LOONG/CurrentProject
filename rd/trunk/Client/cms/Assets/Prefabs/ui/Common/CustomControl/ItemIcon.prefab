@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f27513db5a5ff489b3a819dff325b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backGround: {fileID: 11481608}
   frameImage: {fileID: 11482052}
   itemImage: {fileID: 11445888}
   pieceImage: {fileID: 11483468}

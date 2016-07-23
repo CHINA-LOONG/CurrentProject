@@ -47,7 +47,7 @@ public class FetchTutorialStepHandler implements HttpHandler {
 		Statement statement = null;
 		try {
 			String sql = "select step, count(id) FROM tutorial WHERE game = '" + game + "'";
-			sql += String.format(" and date >= '%s' and date <= '%s'", beginDate, endDate);
+			sql += String.format(" and date >= \"%s\" and date <= \"%s\"", beginDate, endDate);
 			if (channel != null && channel.length() > 0) {
 				sql += " and channel = '" + channel +"'";
 			} else if (platform != null && platform.length() > 0) {

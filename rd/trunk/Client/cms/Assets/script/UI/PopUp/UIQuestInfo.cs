@@ -107,6 +107,6 @@ public class UIQuestInfo : UIBase
     {
         //TODO: change language
         text_Title.text = StaticDataMgr.Instance.GetTextByID("quest_reward_title");
-        text_Finish.text = StaticDataMgr.Instance.GetTextByID("quest_reward_wancheng");
+        text_Finish.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
     }
 }

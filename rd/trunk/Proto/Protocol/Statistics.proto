@@ -23,4 +23,7 @@ message HSStatisticsInfoSync
 	required int32 skillPointTimeStamp = 4;
 	// 服务器时间戳
 	optional int32 timeStamp = 5;
+	// 订单服务器key
+	required string orderServerKey =6;
+	required int32  monthCardLeft = 7;
 }

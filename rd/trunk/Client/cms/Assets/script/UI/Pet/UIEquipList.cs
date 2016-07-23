@@ -149,6 +149,7 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
         equip.monsterId = result.monsterId;
         monster.equipList[itemInfo.part] = equip;
 
+        GameEventMgr.Instance.FireEvent(PetViewConst.ReloadPetEquipNotify);
         listDelegate.OnEquipDressOrReplace();
     }
 
@@ -170,6 +171,7 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
         equip.monsterId = result.monsterId;
         monster.equipList[itemInfo.part] = equip;
 
+        GameEventMgr.Instance.FireEvent(PetViewConst.ReloadPetEquipNotify);
         listDelegate.OnEquipDressOrReplace();
     }
 

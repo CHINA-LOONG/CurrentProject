@@ -28,7 +28,7 @@ public class UIPetEquipInlay : PetDetailRightBase, IEquipInlayCallBack
         {
             uiEquipInlay.gameObject.SetActive(true);
         }
-        uiEquipInlay.Refresh(info.equip, info.tabIndex, info.selIndex, UIEquipInlay.UIType.Right);
+        uiEquipInlay.Refresh(info.equip, info.tabIndex, info.selIndex, UIEquipInlay.State.PetUI);
     }
 
     public void OnSelectReturn(int tabIndex, int selIndex)

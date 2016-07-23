@@ -1,6 +1,5 @@
 package com.hawk.account.zmq;
 
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +17,6 @@ import com.hawk.account.httpHandler.RegistGameServerHandler;
 import com.hawk.account.httpHandler.UnRegistGameServerHandler;
 import com.hawk.account.httpHandler.UserCreateRoleHandler;
 import com.hawk.account.httpHandler.UserLevelUpHandler;
-import com.sun.corba.se.spi.activation.Server;
 
 public class AccountZmqServer extends HawkTickable{
 	/**
@@ -83,12 +81,12 @@ public class AccountZmqServer extends HawkTickable{
 		Map<String, String> paramMap = new HashMap<String, String>();
 		try {
 			if (params != null && params.length() > 0) {
-				params = URLDecoder.decode(params, "UTF-8");
 				HawkLog.logPrintln("ZmqReport: " + params);
 				if (params != null) {
 					String[] querys = params.split("&");
 					for (String query : querys) {
-						String[] pair = query.split("=");
+						// param maybe empty string, use -1
+						String[] pair = query.split("=", -1);
 						if (pair.length == 2) {
 							paramMap.put(pair[0], pair[1]);
 						}

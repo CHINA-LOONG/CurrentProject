@@ -42,7 +42,7 @@ public class EquipListItem : MonoBehaviour
     void Start()
     {
         textDengji_lang.text = StaticDataMgr.Instance.GetTextByID("equip_List_xianzhidengji");
-        textZhanli_lang.text = StaticDataMgr.Instance.GetTextByID("equip_List_zhanli");
+        textZhanli_lang.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
         btnUsed.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_List_zhuangbei");
 
         ScrollViewEventListener.Get(btnSelect.gameObject).onClick = OnClickSelectEquip;
@@ -64,9 +64,8 @@ public class EquipListItem : MonoBehaviour
         {
             equipIcon.RefreshWithEquipInfo(info.equipData);
         }
-
-        textName.text = StaticDataMgr.Instance.GetTextByID(info.itemInfo.name);
-        textType.text = StaticDataMgr.Instance.GetTextByID(info.itemInfo.type.ToString());//TODO:subType;
+        UIUtil.SetStageColor(textName, info.itemInfo.name, info.equipData.stage);
+        textType.text = StaticDataMgr.Instance.GetTextByID(info.itemInfo.type.ToString());
         //textZhanli.text=StaticDataMgr.Instance.GetTextByID(itemInfo.z)
         textDengji.text = info.itemInfo.minLevel.ToString();
 

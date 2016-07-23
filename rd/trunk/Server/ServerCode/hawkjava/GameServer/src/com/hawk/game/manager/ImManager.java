@@ -13,11 +13,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppObj;
 import org.hawk.cache.HawkCacheObj;
+import org.hawk.log.HawkLog;
 import org.hawk.net.HawkSession;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.thread.HawkTask;
 import org.hawk.util.services.FunPlusTranslateService;
-import org.hawk.util.services.FunPlusTranslateService.TranslateRequest;
+import org.hawk.util.services.FunPlusTranslateService.Translation;
 import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,7 +77,7 @@ public class ImManager extends HawkAppObj {
 
 	// 属性----------------------------------------------------------------------------------------------------------
 	// 翻译批次大小
-	public static final int TRANSLATE_BATCH_SIZE = 5;
+	public static final int TRANSLATE_BATCH_SIZE = 2;
 	// 推送批次大小
 	public static final int PUSH_BATCH_SIZE = 20;
 
@@ -387,7 +388,7 @@ public class ImManager extends HawkAppObj {
 			}
 
 			// 生成批量请求
-			TranslateRequest[] requestArray = new TranslateRequest[transList.size()];
+			Translation[] transArray = new Translation[transList.size()];
 			for (int i = 0; i < transList.size(); ++i) {
 				ImMsg msgObj = transList.get(i);
 				msgObj.transText = new HashMap<String, String>();
@@ -416,24 +417,32 @@ public class ImManager extends HawkAppObj {
 					}
 				}
 
-				requestArray[i] = new TranslateRequest();
-				requestArray[i].sourceText = msgObj.origText;
-				requestArray[i].sourceLang = msgObj.origLang;
-				requestArray[i].targetLangArray = new String[langList.size()];
+				transArray[i] = new Translation();
+				transArray[i].sourceText = msgObj.origText;
+				transArray[i].sourceLang = msgObj.origLang;
+				transArray[i].targetLangArray = new String[langList.size()];
 				for (int j = 0; j < langList.size(); ++j) {
-					requestArray[i].targetLangArray[j] = langList.get(j);
+					transArray[i].targetLangArray[j] = langList.get(j);
 				}
+				transArray[i].profanity = GsConst.Profanity.CENSOR;
+				transArray[i].textType = GsConst.TextType.CHAT;
 			}
 
 			// 异步翻译
-			FunPlusTranslateService.getInstance().translateBatch(requestArray);
+			FunPlusTranslateService.getInstance().translateBatch(transArray);
 
 			// 结果加入待推送队列
-			for (int i = 0; i < requestArray.length; ++i) {
+			for (int i = 0; i < transArray.length; ++i) {
 				ImMsg msgObj = transList.get(i);
-				if (requestArray[i].transTextArray != null) {
-					for (int j = 0; j < requestArray[i].targetLangArray.length; ++j) {
-						msgObj.transText.put(requestArray[i].targetLangArray[j], requestArray[i].transTextArray[j]);
+				Translation trans = transArray[i];
+				if (trans.transTextArray != null) {
+					for (int j = 0; j < trans.targetLangArray.length; ++j) {
+						// 如果翻译失败，译文为null，设为原文
+						if (trans.transTextArray[j] == null) {
+							msgObj.transText.put(trans.targetLangArray[j], trans.sourceText);
+						} else {
+							msgObj.transText.put(trans.targetLangArray[j], trans.transTextArray[j]);
+						}
 					}
 				}
 				enqueueMsg(msgObj);

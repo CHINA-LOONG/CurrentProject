@@ -78,7 +78,7 @@ public class AnalyserManager extends HawkTickable {
 	public boolean getStatisticsData(OperationData operationData) {
 		Statement statement = null;
 		try {
-			String sql = String.format("SELECT statistics FROM statistics WHERE date = '%s' AND game = '%s' AND platform = '%s' AND channel = '%s'",
+			String sql = String.format("SELECT statistics FROM statistics WHERE date = \"%s\" AND game = \"%s\" AND platform = \"%s\" AND channel = \"%s\"",
 					operationData.date, operationData.game, operationData.platform, operationData.channel);
 			
 			statement = DBManager.getInstance().createStatement(operationData.game);
@@ -108,7 +108,7 @@ public class AnalyserManager extends HawkTickable {
 		try {
 			HawkLog.logPrintln(operationData.toJsonString(false));
 
-			String sql = String.format("INSERT INTO statistics(date, game, platform, channel, statistics) VALUES('%s', '%s', '%s', '%s', '%s') ON DUPLICATE KEY UPDATE statistics = '%s'",
+			String sql = String.format("INSERT INTO statistics(date, game, platform, channel, statistics) VALUES(\"%s\", \"%s\", \"%s\", \"%s\", \"%s\") ON DUPLICATE KEY UPDATE statistics = \"%s\"",
 					operationData.date, operationData.game, operationData.platform, operationData.channel, operationData.toJsonString(false), operationData.toJsonString(false));
 			
 			statement = DBManager.getInstance().createStatement(operationData.game);

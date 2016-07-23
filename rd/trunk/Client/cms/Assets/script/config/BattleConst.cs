@@ -77,6 +77,7 @@ public class BattleConst
     public const float magicDazhaoDelay = 3.0f;
     public const float battleEndDelay = 2.0f;
     public const float entranceTime = 1.5f;
+    public const float reviveTime = 0.5f;
 
     //无效的宠物id -1；
     public const int invalidMonsterID = -1;
@@ -94,6 +95,8 @@ public class BattleConst
     public const int maxGemCount = 4;
     //最小宝石出现等级
     public const int minGemStage = 3;
+    //宠物升级自身作为材料ID
+    public const string stageSelfId = "self";
 
 
 }

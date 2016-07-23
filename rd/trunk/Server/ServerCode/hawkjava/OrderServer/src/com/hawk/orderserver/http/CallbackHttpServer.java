@@ -1,4 +1,4 @@
-﻿package com.hawk.orderserver.http;
+package com.hawk.orderserver.http;
 
 import java.io.OutputStream;
 import java.net.BindException;
@@ -77,6 +77,7 @@ public class CallbackHttpServer {
 		try {			
 			httpServer.createContext("/callback", new CallbackHttpHandler());
 			httpServer.createContext("/recharge", new RechargeHttpHandler());
+			httpServer.createContext("/test", new TestBuyHttpHandler());
 			return true;
 		} catch (Exception e) {
 			HawkException.catchException(e);

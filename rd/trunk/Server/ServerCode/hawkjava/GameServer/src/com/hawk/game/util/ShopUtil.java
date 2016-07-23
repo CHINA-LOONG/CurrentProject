@@ -37,6 +37,9 @@ public class ShopUtil {
 		ShopData.Builder response = ShopData.newBuilder();
 		ShopEntity shopEntity = player.getPlayerData().getShopEntity();
 		ShopCfg shopCfg = ShopCfg.getShopCfg(shopType, player.getLevel());
+		if (shopCfg == null ) {
+			return response;
+		}
 		response.setType(shopType);
 		response.setShopId(shopEntity.getShopId(shopType));
 		response.setRefreshTimesLeft(shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(shopType));

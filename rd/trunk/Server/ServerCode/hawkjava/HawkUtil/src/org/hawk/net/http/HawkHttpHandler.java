@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URLDecoder;
 
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
@@ -34,7 +33,6 @@ public class HawkHttpHandler implements HttpHandler {
 	private void doGet(HttpExchange httpExchange) throws Exception {
 		String uriQuery = httpExchange.getRequestURI().getQuery();
 		if (uriQuery != null && uriQuery.length() > 0) {
-			uriQuery = URLDecoder.decode(uriQuery, "UTF-8");
 			onRecvProtocol(httpExchange, uriQuery);
 		}
 	}
@@ -61,7 +59,8 @@ public class HawkHttpHandler implements HttpHandler {
 		String token = "", data = "";
 		String[] kvPairs = params.split("&");
 		for (String kv : kvPairs) {
-			String[] pair = kv.split("=");
+			// param maybe empty string, use -1
+			String[] pair = kv.split("=", -1);
 			if (pair.length != 2) {
 				continue;
 			}
