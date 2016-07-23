@@ -16,15 +16,22 @@ namespace PB
   {
     public GemPunch() {}
     
+    private int _slot;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"slot", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int slot
+    {
+      get { return _slot; }
+      set { _slot = value; }
+    }
     private int _type;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int type
     {
       get { return _type; }
       set { _type = value; }
     }
     private string _gemItemId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"gemItemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"gemItemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string gemItemId
     {
       get { return _gemItemId; }
@@ -391,15 +398,22 @@ namespace PB
       get { return _id; }
       set { _id = value; }
     }
+    private int _slot;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"slot", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int slot
+    {
+      get { return _slot; }
+      set { _slot = value; }
+    }
     private int _type;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int type
     {
       get { return _type; }
       set { _type = value; }
     }
     private string _newGem = "";
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"newGem", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"newGem", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string newGem
     {
@@ -407,7 +421,7 @@ namespace PB
       set { _newGem = value; }
     }
     private string _oldGem = "";
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"oldGem", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"oldGem", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string oldGem
     {

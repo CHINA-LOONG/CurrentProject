@@ -1,0 +1,11 @@
+{
+    "group": "Funplus_Sdk",
+    "libs": [],
+    "frameworks": ["FacebookSDK.framework", "Social.framework"],
+    "headerpaths": [],
+    "files":   [],
+    "folders": [],    
+    "excludes": [],
+    "compiler_flags": [],
+    "linker_flags": []
+}

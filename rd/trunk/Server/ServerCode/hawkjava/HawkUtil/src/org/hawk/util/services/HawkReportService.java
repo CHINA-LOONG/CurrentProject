@@ -115,10 +115,8 @@ public class HawkReportService extends HawkThread {
 		public int playerId;
 		public String playerName;
 		public int playerLevel;
-		public String myOrder;
-		public String pfOrder;
+		public String orderSerial;
 		public String productId;
-		public int orderMoney;
 		public int payMoney;
 		public int addGold;
 		public int giftGold;
@@ -126,21 +124,19 @@ public class HawkReportService extends HawkThread {
 		public String time;
 
 		public RechargeData() {
-			this.currency = "rmb";
+			this.currency = "";
 			this.productId = "0";
 			this.time = HawkTime.getTimeString();
 		}
 
-		public RechargeData(String puid, String device, int playerId, String playerName, int playerLevel, String myOrder, String pfOrder, String productId, int orderMoney, int payMoney, int addGold, int giftGold, String currency, String time) {
+		public RechargeData(String puid, String device, int playerId, String playerName, int playerLevel, String orderSerial, String productId, int payMoney, int addGold, int giftGold, String currency, String time) {
 			this.puid = puid;
 			this.device = device;
 			this.playerId = playerId;
 			this.playerName = playerName;
 			this.playerLevel = playerLevel;
-			this.myOrder = myOrder;
-			this.pfOrder = pfOrder;
+			this.orderSerial = orderSerial;
 			this.productId = productId;
-			this.orderMoney = orderMoney;
 			this.payMoney = payMoney;
 			this.addGold = addGold;
 			this.giftGold = giftGold;
@@ -168,20 +164,12 @@ public class HawkReportService extends HawkThread {
 			this.playerLevel = playerLevel;
 		}
 
-		public void setMyOrder(String myOrder) {
-			this.myOrder = myOrder;
-		}
-
-		public void setPfOrder(String pfOrder) {
-			this.pfOrder = pfOrder;
+		public void setOrderSerail(String orderSerial) {
+			this.orderSerial = orderSerial;
 		}
 		
 		public void setProductId(String productId) {
 			this.productId = productId;
-		}
-		
-		public void setOrderMoney(int orderMoney) {
-			this.orderMoney = orderMoney;
 		}
 		
 		public void setPayMoney(int payMoney) {
@@ -520,7 +508,7 @@ public class HawkReportService extends HawkThread {
 	private static final String fetchAccountServerPath = "/fetch_accountServer";
 	
 	// 所有的query都能添加token作为服务器校验令牌
-	private static final String rechargeQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playername=%s&playerlevel=%d&myorder=%s&pforder=%s&productid=%s&ordermoney=%d&paymoney=%d&addgold=%d&giftgold=%d&currency=%s&time=%s";
+	private static final String rechargeQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playername=%s&playerlevel=%d&orderserial=%s&productid=%s&paymoney=%d&addgold=%d&giftgold=%d&currency=%s&time=%s";
 	private static final String goldQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playerlevel=%d&changetype=%d&changeaction=%s&goldtype=%d&gold=%d&time=%s";
 	private static final String tutorialQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playerlevel=%d&step=%d&args=%s&time=%s";
 	private static final String registerQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&time=%s";
@@ -1176,8 +1164,8 @@ public class HawkReportService extends HawkThread {
 			try {
 				String queryParam = String.format(rechargeQuery, gameName, platform, serverId, rechargeData.puid, 
 						rechargeData.device, rechargeData.playerId, rechargeData.playerName, rechargeData.playerLevel, 
-						rechargeData.myOrder, rechargeData.pfOrder, rechargeData.productId, 
-						rechargeData.orderMoney, rechargeData.payMoney, rechargeData.addGold, rechargeData.giftGold, rechargeData.currency, 
+						rechargeData.orderSerial, rechargeData.productId, rechargeData.payMoney, rechargeData.addGold, 
+						rechargeData.giftGold, rechargeData.currency, 
 						(rechargeData.time == null || rechargeData.time.length() <= 0) ? HawkTime.getTimeString() : rechargeData.time);
 
 				reportLogger.info("report: " + rechargePath + "?" + queryParam);

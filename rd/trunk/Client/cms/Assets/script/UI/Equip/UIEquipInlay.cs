@@ -34,6 +34,9 @@ public class UIEquipInlay : UIBase, TabButtonDelegate, IEquipPanelBaseCallBack
     public Text tabBuild;
     public Text tabMosaic;
 
+    public Transform coinPos;
+    private CoinButton coinButton;
+
     public enum State
     {
         PetUI,
@@ -79,13 +82,19 @@ public class UIEquipInlay : UIBase, TabButtonDelegate, IEquipPanelBaseCallBack
 
     void Start()
     {
-        tabBuild.text = StaticDataMgr.Instance.GetTextByID("equip_forge_title");
-        tabMosaic.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_title");
+        tabBuild.text = StaticDataMgr.Instance.GetTextByID("equip_forge_dazao");
+        tabMosaic.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiangqian");
         uiPanel.ForEach(delegate(EquipPanelBase item) { item.ICallBack = this; });
     }
 
     public void Refresh(EquipData data, int index, int select,State type)
     {
+        if (coinButton==null)
+        {
+            coinButton = CoinButton.CreateWithType(CoinButton.CoinType.Jinbi);
+            UIUtil.SetParentReset(coinButton.transform, coinPos);
+        }
+
         equipData = data;
         selIndex = (select == -1 ? selIndex : select);
         uiType = type;

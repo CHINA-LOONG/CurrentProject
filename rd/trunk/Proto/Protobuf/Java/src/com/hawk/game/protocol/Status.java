@@ -835,6 +835,22 @@ public final class Status {
      * </pre>
      */
     EQUIP_CAN_NOT_OPEN_SLOT(17, 262167),
+    /**
+     * <code>EQUIP_GEM_MISMATCH = 262168;</code>
+     *
+     * <pre>
+     * 镶嵌宝石不符
+     * </pre>
+     */
+    EQUIP_GEM_MISMATCH(18, 262168),
+    /**
+     * <code>EQUIP_SLOT_NOT_PUNCH = 262169;</code>
+     *
+     * <pre>
+     * 槽位没有开孔
+     * </pre>
+     */
+    EQUIP_SLOT_NOT_PUNCH(19, 262169),
     ;
 
     /**
@@ -981,6 +997,22 @@ public final class Status {
      * </pre>
      */
     public static final int EQUIP_CAN_NOT_OPEN_SLOT_VALUE = 262167;
+    /**
+     * <code>EQUIP_GEM_MISMATCH = 262168;</code>
+     *
+     * <pre>
+     * 镶嵌宝石不符
+     * </pre>
+     */
+    public static final int EQUIP_GEM_MISMATCH_VALUE = 262168;
+    /**
+     * <code>EQUIP_SLOT_NOT_PUNCH = 262169;</code>
+     *
+     * <pre>
+     * 槽位没有开孔
+     * </pre>
+     */
+    public static final int EQUIP_SLOT_NOT_PUNCH_VALUE = 262169;
 
 
     public final int getNumber() { return value; }
@@ -1005,6 +1037,8 @@ public final class Status {
         case 262165: return EQUIP_SLOT_EMPTY;
         case 262166: return EQUIP_GEM_NOT_FOUND;
         case 262167: return EQUIP_CAN_NOT_OPEN_SLOT;
+        case 262168: return EQUIP_GEM_MISMATCH;
+        case 262169: return EQUIP_SLOT_NOT_PUNCH;
         default: return null;
       }
     }
@@ -1784,7 +1818,7 @@ public final class Status {
       "KILL_POINT_NOT_ENOUGH\020\203\200\014\022\027\n\021SKILL_LEVEL" +
       "_LIMIT\020\204\200\014\022\021\n\013STAGE_LIMIT\020\205\200\014\022\034\n\026STAGE_L" +
       "EVEL_NOT_ENOUGH\020\206\200\014\022\023\n\rSTAGE_CONSUME\020\207\200\014" +
-      "*\357\003\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026\n\020" +
+      "*\245\004\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026\n\020" +
       "COINS_NOT_ENOUGH\020\202\200\020\022\025\n\017GOLD_NOT_ENOUGH\020",
       "\203\200\020\022\025\n\017EQUIP_NOT_FOUND\020\204\200\020\022\025\n\017ITEM_NOT_E" +
       "NOUGH\020\205\200\020\022\030\n\022ITEM_BUY_NOT_ALLOW\020\206\200\020\022\031\n\023I" +
@@ -1796,22 +1830,24 @@ public final class Status {
       "\222\200\020\022\027\n\021EQUIP_NOT_DRESSED\020\223\200\020\022\032\n\024EQUIP_SL" +
       "OT_NOT_EMPTY\020\224\200\020\022\026\n\020EQUIP_SLOT_EMPTY\020\225\200\020" +
       "\022\031\n\023EQUIP_GEM_NOT_FOUND\020\226\200\020\022\035\n\027EQUIP_CAN",
-      "_NOT_OPEN_SLOT\020\227\200\020*T\n\nquestError\022\026\n\020QUES" +
-      "T_NOT_ACCEPT\020\201\200\024\022\030\n\022QUEST_NOT_COMPLETE\020\202" +
-      "\200\024\022\024\n\016QUEST_NOT_OPEN\020\203\200\024*l\n\rinstanceErro" +
-      "r\022\027\n\021INSTANCE_NOT_OPEN\020\201\200\030\022\024\n\016INSTANCE_L" +
-      "EVEL\020\202\200\030\022\024\n\016INSTANCE_COUNT\020\203\200\030\022\026\n\020INSTAN" +
-      "CE_FATIGUE\020\204\200\030*^\n\tmailError\022\024\n\016MAIL_NOT_" +
-      "EXIST\020\201\200\034\022\017\n\tMAIL_NONE\020\202\200\034\022\024\n\016MAIL_COIN_" +
-      "FULL\020\203\200\034\022\024\n\016MAIL_GOLD_FULL\020\204\200\034*\201\001\n\rallia" +
-      "nceError\022\037\n\031ALLIANCE_LEVEL_NOT_ENOUGH\020\201\200" +
-      " \022\031\n\023ALLIANCE_ALREADY_IN\020\202\200 \022\031\n\023ALLIANCE",
-      "_NAME_ERROR\020\203\200 \022\031\n\023ALLIANCE_NAME_EXIST\020\204" +
-      "\200 *\202\001\n\tshopError\022\032\n\024SHOP_REFRESH_TIMEOUT" +
-      "\020\201\200$\022\033\n\025SHOP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026SHO" +
-      "P_REFRESH_MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COI" +
-      "N_MAX_COUNT\020\203\200$*\037\n\007imError\022\024\n\016IM_CHAT_LE" +
-      "NGTH\020\201\200@B\030\n\026com.hawk.game.protocol"
+      "_NOT_OPEN_SLOT\020\227\200\020\022\030\n\022EQUIP_GEM_MISMATCH" +
+      "\020\230\200\020\022\032\n\024EQUIP_SLOT_NOT_PUNCH\020\231\200\020*T\n\nques" +
+      "tError\022\026\n\020QUEST_NOT_ACCEPT\020\201\200\024\022\030\n\022QUEST_" +
+      "NOT_COMPLETE\020\202\200\024\022\024\n\016QUEST_NOT_OPEN\020\203\200\024*l" +
+      "\n\rinstanceError\022\027\n\021INSTANCE_NOT_OPEN\020\201\200\030" +
+      "\022\024\n\016INSTANCE_LEVEL\020\202\200\030\022\024\n\016INSTANCE_COUNT" +
+      "\020\203\200\030\022\026\n\020INSTANCE_FATIGUE\020\204\200\030*^\n\tmailErro" +
+      "r\022\024\n\016MAIL_NOT_EXIST\020\201\200\034\022\017\n\tMAIL_NONE\020\202\200\034" +
+      "\022\024\n\016MAIL_COIN_FULL\020\203\200\034\022\024\n\016MAIL_GOLD_FULL" +
+      "\020\204\200\034*\201\001\n\rallianceError\022\037\n\031ALLIANCE_LEVEL",
+      "_NOT_ENOUGH\020\201\200 \022\031\n\023ALLIANCE_ALREADY_IN\020\202" +
+      "\200 \022\031\n\023ALLIANCE_NAME_ERROR\020\203\200 \022\031\n\023ALLIANC" +
+      "E_NAME_EXIST\020\204\200 *\202\001\n\tshopError\022\032\n\024SHOP_R" +
+      "EFRESH_TIMEOUT\020\201\200$\022\033\n\025SHOP_ITEM_ALREADY_" +
+      "BUY\020\202\200$\022\034\n\026SHOP_REFRESH_MAX_COUNT\020\203\200$\022\036\n" +
+      "\030SHOP_GOLD2COIN_MAX_COUNT\020\203\200$*\037\n\007imError" +
+      "\022\024\n\016IM_CHAT_LENGTH\020\201\200@B\030\n\026com.hawk.game." +
+      "protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

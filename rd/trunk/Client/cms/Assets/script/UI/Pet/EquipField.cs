@@ -11,18 +11,21 @@ public class EquipField : MonoBehaviour
     private ItemIcon equipIcon;
     private NullEquip equipNull;
 
-    private EquipData data;
 
-    private PartType part;
+    //private 
 
     public IEquipField iClickBack;
 
-    public PartType Part
-    {
-        get { return part; }
-        set { part = value; }
-    }
+    private GameUnit unit;
 
+    private PartType part;
+    //public PartType Part
+    //{
+    //    get { return part; }
+    //    set { part = value; }
+    //}
+
+    private EquipData data;
     public EquipData Data
     {
         get
@@ -31,12 +34,16 @@ public class EquipField : MonoBehaviour
         }
         set
         {
-            if (value != data||data==null)
-            {
-                data = value;
-                SetEquip(data);
-            }
+            data = value;
+            SetEquip(data);
         }
+    }
+
+    public void SetField(GameUnit unit, int part)
+    {
+        this.unit=unit;
+        this.part = (PartType)part;
+        this.Data = unit.equipList[part];
     }
 
     void SetEquip(EquipData data)
@@ -54,6 +61,8 @@ public class EquipField : MonoBehaviour
             {
                 equipNull.gameObject.SetActive(true);
             }
+            equipNull.ShowAdd(UIUtil.CheckIsEnoughEquip(unit,(int)part));
+
             if (equipIcon != null)
             {
                 equipIcon.gameObject.SetActive(false);
@@ -81,12 +90,12 @@ public class EquipField : MonoBehaviour
 
     void OnClickNullSlot(GameObject go)
     {
-        iClickBack.OnSelectEquipField(Part, null);
+        iClickBack.OnSelectEquipField(part, null);
     }
 
     void OnClickEquipSlot(GameObject go)
     {
-        iClickBack.OnSelectEquipField(Part, data);
+        iClickBack.OnSelectEquipField(part, data);
     }
 
 

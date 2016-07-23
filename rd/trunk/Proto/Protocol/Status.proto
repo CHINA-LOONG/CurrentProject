@@ -104,6 +104,10 @@ enum itemError
 	EQUIP_GEM_NOT_FOUND        = 0x00040016;
 	// 装备不能开孔
 	EQUIP_CAN_NOT_OPEN_SLOT	   = 0x00040017;
+	// 镶嵌宝石不符
+	EQUIP_GEM_MISMATCH	       = 0x00040018;
+	// 槽位没有开孔
+	EQUIP_SLOT_NOT_PUNCH	   = 0x00040019;
 }
 
 enum questError

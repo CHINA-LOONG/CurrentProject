@@ -8,6 +8,7 @@ import org.hawk.net.protocol.HawkProtocol;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.entity.ItemEntity;
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ItemInfo;
@@ -26,6 +27,7 @@ import com.hawk.game.protocol.Item.HSItemUseRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.ItemUtil;
 
 public class PlayerItemModule extends PlayerModule{
 	/**
@@ -146,7 +148,7 @@ public class PlayerItemModule extends PlayerModule{
 	 */
 	private void onItemUse(int hsCode, HSItemUse protocol) {
 		String itemId = protocol.getItemId();
-		 
+		int count = protocol.getItemCount();
 		ItemEntity itemEntity = player.getPlayerData().getItemByItemId(itemId);
 		if(itemEntity == null) {
 			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND);
@@ -191,10 +193,30 @@ public class PlayerItemModule extends PlayerModule{
 			awardItems.addItemInfos(reward.getRewardList());
 			awardItems.rewardTakeAffect(player, Action.ITEM_USE);
 		}
-		
+		else if (useType == Const.toolType.USETOOL_VALUE) {
+			if(count <= 0 || itemCfg.getAddAttrType() != Const.changeType.CHANGE_MONSTER_EXP_VALUE || protocol.getTargetID() == 0)
+			{
+				sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+				return ;
+			}
+			
+			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(protocol.getTargetID());
+			if (monsterEntity == null) {
+				sendError(hsCode, Status.error.PARAMS_INVALID);
+				return ;
+			}
+			
+			count = ItemUtil.checkExpItemCount(monsterEntity, count, itemCfg.getAddAttrValue());
+			consumeItems.addItem(itemId, count);
+			if (consumeItems.checkConsume(player, hsCode) == false) {
+				return;
+			}
+			
+			awardItems.addMonsterAttr(Const.changeType.CHANGE_MONSTER_EXP_VALUE, count * itemCfg.getAddAttrValue(), protocol.getTargetID());
+			awardItems.rewardTakeAffectAndPush(player,  Action.ITEM_USE);
+		}		
 		
 		HSItemUseRet.Builder response = HSItemUseRet.newBuilder();
-		response.setItemId(itemId);
 		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_BUY_S_VALUE, response));
 	}
 	

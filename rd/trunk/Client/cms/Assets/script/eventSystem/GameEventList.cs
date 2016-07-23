@@ -74,7 +74,8 @@ public class GameEventList
 
 	//GameDataChange for ui
 	public static	string LevelChanged = "LeveleChanged";//param int
-	public static   string CoinChanged  = "CoinChanged";//param int
+	public static   string CoinChanged  = "CoinChanged";//param int jinbi
+	public static   string ZuanshiChanged = "ZuanshiChanged"; 
 
     public static string QuestChanged = "QuestChanged";
 
@@ -83,4 +84,12 @@ public class GameEventList
 
 	//Shop
 	public	static	string	RefreshShopUi = "RefreshShopUi";//parama no
+
+    //UI--Pet/Equip
+    public static string ReloadPetListNotify = "reloadPetListNotify";
+    public static string ReloadPetStageNotify = "reloadPetStageNotify";
+    public static string ReloadPetEquipNotify = "reloadPetEquipNotify";
+    public static string ReloadEquipGemNotify = "reloadEquipGemNotify";
+
+
 }

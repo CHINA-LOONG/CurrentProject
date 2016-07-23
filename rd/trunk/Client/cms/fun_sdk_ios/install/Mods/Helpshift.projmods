@@ -1,0 +1,11 @@
+{
+    "group": "Funplus_Sdk",
+    "libs": ["libsqlite3.dylib", "libz.dylib", "libHelpshift.a"],
+    "frameworks": ["CoreGraphics.framework", "QuartzCore.framework", "CoreText.framework", "SystemConfiguration.framework", "CoreTelephony.framework", "Security.framework", "QuickLook.framework"],
+    "headerpaths": [],
+    "files":   ["HelpshiftResources/HSLocalization/cs", "HelpshiftResources/HSLocalization/de", "HelpshiftResources/HSLocalization/en", "HelpshiftResources/HSLocalization/es", "HelpshiftResources/HSLocalization/fr", "HelpshiftResources/HSLocalization/hu", "HelpshiftResources/HSLocalization/id", "HelpshiftResources/HSLocalization/it", "HelpshiftResources/HSLocalization/ja", "HelpshiftResources/HSLocalization/ko", "HelpshiftResources/HSLocalization/nl", "HelpshiftResources/HSLocalization/pt", "HelpshiftResources/HSLocalization/ru", "HelpshiftResources/HSLocalization/sl", "HelpshiftResources/HSLocalization/th", "HelpshiftResources/HSLocalization/tr", "HelpshiftResources/HSLocalization/vi", "HelpshiftResources/HSLocalization/zh-Hans", "HelpshiftResources/HSLocalization/zh-Hant"],
+    "folders": ["HelpshiftResources/HSResources", "HelpshiftResources/HSThemes"],
+    "excludes": [],
+    "compiler_flags": [],
+    "linker_flags": []
+}

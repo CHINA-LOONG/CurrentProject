@@ -3272,7 +3272,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Audio time="0" name="cut"/>
 			</AudioList>
 		</Ani>
-		<Ani id="ultKairuisi4e6" state="0" AniType="Damage">
+		<Ani id="ultKairuisi4e5" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="attackFireCut" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>
@@ -3280,7 +3280,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Audio time="0" name="cut"/>
 			</AudioList>
 		</Ani>
-		<Ani id="ultKairuisi4e9" state="0" AniType="Damage">
+		<Ani id="ultKairuisi4e7" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="attackFireCut" bundle="effect/particle" parent="" attach=""/>
 			</ParticleList>

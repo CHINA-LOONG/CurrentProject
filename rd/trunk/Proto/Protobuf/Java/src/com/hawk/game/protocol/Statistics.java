@@ -657,6 +657,574 @@ public final class Statistics {
     // @@protoc_insertion_point(class_scope:InstanceState)
   }
 
+  public interface RechargeStateOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string productId = 1;
+    /**
+     * <code>required string productId = 1;</code>
+     */
+    boolean hasProductId();
+    /**
+     * <code>required string productId = 1;</code>
+     */
+    java.lang.String getProductId();
+    /**
+     * <code>required string productId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getProductIdBytes();
+
+    // required int32 buyTimes = 2;
+    /**
+     * <code>required int32 buyTimes = 2;</code>
+     */
+    boolean hasBuyTimes();
+    /**
+     * <code>required int32 buyTimes = 2;</code>
+     */
+    int getBuyTimes();
+  }
+  /**
+   * Protobuf type {@code RechargeState}
+   */
+  public static final class RechargeState extends
+      com.google.protobuf.GeneratedMessage
+      implements RechargeStateOrBuilder {
+    // Use RechargeState.newBuilder() to construct.
+    private RechargeState(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RechargeState(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RechargeState defaultInstance;
+    public static RechargeState getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RechargeState getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RechargeState(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              productId_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              buyTimes_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Statistics.internal_static_RechargeState_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Statistics.internal_static_RechargeState_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Statistics.RechargeState.class, com.hawk.game.protocol.Statistics.RechargeState.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RechargeState> PARSER =
+        new com.google.protobuf.AbstractParser<RechargeState>() {
+      public RechargeState parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RechargeState(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RechargeState> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string productId = 1;
+    public static final int PRODUCTID_FIELD_NUMBER = 1;
+    private java.lang.Object productId_;
+    /**
+     * <code>required string productId = 1;</code>
+     */
+    public boolean hasProductId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string productId = 1;</code>
+     */
+    public java.lang.String getProductId() {
+      java.lang.Object ref = productId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          productId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string productId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getProductIdBytes() {
+      java.lang.Object ref = productId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        productId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 buyTimes = 2;
+    public static final int BUYTIMES_FIELD_NUMBER = 2;
+    private int buyTimes_;
+    /**
+     * <code>required int32 buyTimes = 2;</code>
+     */
+    public boolean hasBuyTimes() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 buyTimes = 2;</code>
+     */
+    public int getBuyTimes() {
+      return buyTimes_;
+    }
+
+    private void initFields() {
+      productId_ = "";
+      buyTimes_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasProductId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasBuyTimes()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getProductIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, buyTimes_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getProductIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, buyTimes_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Statistics.RechargeState parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.RechargeState parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.RechargeState parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.RechargeState parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.RechargeState parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.RechargeState parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.RechargeState parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.RechargeState parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.RechargeState parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.RechargeState parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Statistics.RechargeState prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code RechargeState}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Statistics.RechargeStateOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Statistics.internal_static_RechargeState_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Statistics.internal_static_RechargeState_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Statistics.RechargeState.class, com.hawk.game.protocol.Statistics.RechargeState.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Statistics.RechargeState.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        productId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        buyTimes_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Statistics.internal_static_RechargeState_descriptor;
+      }
+
+      public com.hawk.game.protocol.Statistics.RechargeState getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Statistics.RechargeState.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Statistics.RechargeState build() {
+        com.hawk.game.protocol.Statistics.RechargeState result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Statistics.RechargeState buildPartial() {
+        com.hawk.game.protocol.Statistics.RechargeState result = new com.hawk.game.protocol.Statistics.RechargeState(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.productId_ = productId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.buyTimes_ = buyTimes_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Statistics.RechargeState) {
+          return mergeFrom((com.hawk.game.protocol.Statistics.RechargeState)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Statistics.RechargeState other) {
+        if (other == com.hawk.game.protocol.Statistics.RechargeState.getDefaultInstance()) return this;
+        if (other.hasProductId()) {
+          bitField0_ |= 0x00000001;
+          productId_ = other.productId_;
+          onChanged();
+        }
+        if (other.hasBuyTimes()) {
+          setBuyTimes(other.getBuyTimes());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasProductId()) {
+          
+          return false;
+        }
+        if (!hasBuyTimes()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Statistics.RechargeState parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Statistics.RechargeState) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string productId = 1;
+      private java.lang.Object productId_ = "";
+      /**
+       * <code>required string productId = 1;</code>
+       */
+      public boolean hasProductId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string productId = 1;</code>
+       */
+      public java.lang.String getProductId() {
+        java.lang.Object ref = productId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          productId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string productId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getProductIdBytes() {
+        java.lang.Object ref = productId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          productId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string productId = 1;</code>
+       */
+      public Builder setProductId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        productId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string productId = 1;</code>
+       */
+      public Builder clearProductId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        productId_ = getDefaultInstance().getProductId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string productId = 1;</code>
+       */
+      public Builder setProductIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        productId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 buyTimes = 2;
+      private int buyTimes_ ;
+      /**
+       * <code>required int32 buyTimes = 2;</code>
+       */
+      public boolean hasBuyTimes() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 buyTimes = 2;</code>
+       */
+      public int getBuyTimes() {
+        return buyTimes_;
+      }
+      /**
+       * <code>required int32 buyTimes = 2;</code>
+       */
+      public Builder setBuyTimes(int value) {
+        bitField0_ |= 0x00000002;
+        buyTimes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 buyTimes = 2;</code>
+       */
+      public Builder clearBuyTimes() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        buyTimes_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:RechargeState)
+    }
+
+    static {
+      defaultInstance = new RechargeState(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:RechargeState)
+  }
+
   public interface HSStatisticsInfoSyncOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -822,13 +1390,66 @@ public final class Statistics {
     com.google.protobuf.ByteString
         getOrderServerKeyBytes();
 
-    // required int32 monthCardLeft = 7;
+    // repeated .RechargeState rechargeState = 7;
     /**
-     * <code>required int32 monthCardLeft = 7;</code>
+     * <code>repeated .RechargeState rechargeState = 7;</code>
+     *
+     * <pre>
+     * 商城购买状态
+     * </pre>
+     */
+    java.util.List<com.hawk.game.protocol.Statistics.RechargeState> 
+        getRechargeStateList();
+    /**
+     * <code>repeated .RechargeState rechargeState = 7;</code>
+     *
+     * <pre>
+     * 商城购买状态
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.RechargeState getRechargeState(int index);
+    /**
+     * <code>repeated .RechargeState rechargeState = 7;</code>
+     *
+     * <pre>
+     * 商城购买状态
+     * </pre>
+     */
+    int getRechargeStateCount();
+    /**
+     * <code>repeated .RechargeState rechargeState = 7;</code>
+     *
+     * <pre>
+     * 商城购买状态
+     * </pre>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Statistics.RechargeStateOrBuilder> 
+        getRechargeStateOrBuilderList();
+    /**
+     * <code>repeated .RechargeState rechargeState = 7;</code>
+     *
+     * <pre>
+     * 商城购买状态
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.RechargeStateOrBuilder getRechargeStateOrBuilder(
+        int index);
+
+    // required int32 monthCardLeft = 8;
+    /**
+     * <code>required int32 monthCardLeft = 8;</code>
+     *
+     * <pre>
+     * 月卡剩余时间
+     * </pre>
      */
     boolean hasMonthCardLeft();
     /**
-     * <code>required int32 monthCardLeft = 7;</code>
+     * <code>required int32 monthCardLeft = 8;</code>
+     *
+     * <pre>
+     * 月卡剩余时间
+     * </pre>
      */
     int getMonthCardLeft();
   }
@@ -919,7 +1540,15 @@ public final class Statistics {
               orderServerKey_ = input.readBytes();
               break;
             }
-            case 56: {
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                rechargeState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.RechargeState>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              rechargeState_.add(input.readMessage(com.hawk.game.protocol.Statistics.RechargeState.PARSER, extensionRegistry));
+              break;
+            }
+            case 64: {
               bitField0_ |= 0x00000010;
               monthCardLeft_ = input.readInt32();
               break;
@@ -937,6 +1566,9 @@ public final class Statistics {
         }
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           monsterCollect_ = new com.google.protobuf.UnmodifiableLazyStringList(monsterCollect_);
+        }
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          rechargeState_ = java.util.Collections.unmodifiableList(rechargeState_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1199,17 +1831,81 @@ public final class Statistics {
       }
     }
 
-    // required int32 monthCardLeft = 7;
-    public static final int MONTHCARDLEFT_FIELD_NUMBER = 7;
+    // repeated .RechargeState rechargeState = 7;
+    public static final int RECHARGESTATE_FIELD_NUMBER = 7;
+    private java.util.List<com.hawk.game.protocol.Statistics.RechargeState> rechargeState_;
+    /**
+     * <code>repeated .RechargeState rechargeState = 7;</code>
+     *
+     * <pre>
+     * 商城购买状态
+     * </pre>
+     */
+    public java.util.List<com.hawk.game.protocol.Statistics.RechargeState> getRechargeStateList() {
+      return rechargeState_;
+    }
+    /**
+     * <code>repeated .RechargeState rechargeState = 7;</code>
+     *
+     * <pre>
+     * 商城购买状态
+     * </pre>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Statistics.RechargeStateOrBuilder> 
+        getRechargeStateOrBuilderList() {
+      return rechargeState_;
+    }
+    /**
+     * <code>repeated .RechargeState rechargeState = 7;</code>
+     *
+     * <pre>
+     * 商城购买状态
+     * </pre>
+     */
+    public int getRechargeStateCount() {
+      return rechargeState_.size();
+    }
+    /**
+     * <code>repeated .RechargeState rechargeState = 7;</code>
+     *
+     * <pre>
+     * 商城购买状态
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.RechargeState getRechargeState(int index) {
+      return rechargeState_.get(index);
+    }
+    /**
+     * <code>repeated .RechargeState rechargeState = 7;</code>
+     *
+     * <pre>
+     * 商城购买状态
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.RechargeStateOrBuilder getRechargeStateOrBuilder(
+        int index) {
+      return rechargeState_.get(index);
+    }
+
+    // required int32 monthCardLeft = 8;
+    public static final int MONTHCARDLEFT_FIELD_NUMBER = 8;
     private int monthCardLeft_;
     /**
-     * <code>required int32 monthCardLeft = 7;</code>
+     * <code>required int32 monthCardLeft = 8;</code>
+     *
+     * <pre>
+     * 月卡剩余时间
+     * </pre>
      */
     public boolean hasMonthCardLeft() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 monthCardLeft = 7;</code>
+     * <code>required int32 monthCardLeft = 8;</code>
+     *
+     * <pre>
+     * 月卡剩余时间
+     * </pre>
      */
     public int getMonthCardLeft() {
       return monthCardLeft_;
@@ -1222,6 +1918,7 @@ public final class Statistics {
       skillPointTimeStamp_ = 0;
       timeStamp_ = 0;
       orderServerKey_ = "";
+      rechargeState_ = java.util.Collections.emptyList();
       monthCardLeft_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -1251,6 +1948,12 @@ public final class Statistics {
           return false;
         }
       }
+      for (int i = 0; i < getRechargeStateCount(); i++) {
+        if (!getRechargeState(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -1276,8 +1979,11 @@ public final class Statistics {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBytes(6, getOrderServerKeyBytes());
       }
+      for (int i = 0; i < rechargeState_.size(); i++) {
+        output.writeMessage(7, rechargeState_.get(i));
+      }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(7, monthCardLeft_);
+        output.writeInt32(8, monthCardLeft_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1317,9 +2023,13 @@ public final class Statistics {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(6, getOrderServerKeyBytes());
       }
+      for (int i = 0; i < rechargeState_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, rechargeState_.get(i));
+      }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, monthCardLeft_);
+          .computeInt32Size(8, monthCardLeft_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1430,6 +2140,7 @@ public final class Statistics {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getInstanceStateFieldBuilder();
+          getRechargeStateFieldBuilder();
         }
       }
       private static Builder create() {
@@ -1454,8 +2165,14 @@ public final class Statistics {
         bitField0_ = (bitField0_ & ~0x00000010);
         orderServerKey_ = "";
         bitField0_ = (bitField0_ & ~0x00000020);
+        if (rechargeStateBuilder_ == null) {
+          rechargeState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+        } else {
+          rechargeStateBuilder_.clear();
+        }
         monthCardLeft_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -1515,7 +2232,16 @@ public final class Statistics {
           to_bitField0_ |= 0x00000008;
         }
         result.orderServerKey_ = orderServerKey_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+        if (rechargeStateBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+            rechargeState_ = java.util.Collections.unmodifiableList(rechargeState_);
+            bitField0_ = (bitField0_ & ~0x00000040);
+          }
+          result.rechargeState_ = rechargeState_;
+        } else {
+          result.rechargeState_ = rechargeStateBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000010;
         }
         result.monthCardLeft_ = monthCardLeft_;
@@ -1585,6 +2311,32 @@ public final class Statistics {
           orderServerKey_ = other.orderServerKey_;
           onChanged();
         }
+        if (rechargeStateBuilder_ == null) {
+          if (!other.rechargeState_.isEmpty()) {
+            if (rechargeState_.isEmpty()) {
+              rechargeState_ = other.rechargeState_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+            } else {
+              ensureRechargeStateIsMutable();
+              rechargeState_.addAll(other.rechargeState_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.rechargeState_.isEmpty()) {
+            if (rechargeStateBuilder_.isEmpty()) {
+              rechargeStateBuilder_.dispose();
+              rechargeStateBuilder_ = null;
+              rechargeState_ = other.rechargeState_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+              rechargeStateBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRechargeStateFieldBuilder() : null;
+            } else {
+              rechargeStateBuilder_.addAllMessages(other.rechargeState_);
+            }
+          }
+        }
         if (other.hasMonthCardLeft()) {
           setMonthCardLeft(other.getMonthCardLeft());
         }
@@ -1611,6 +2363,12 @@ public final class Statistics {
         }
         for (int i = 0; i < getInstanceStateCount(); i++) {
           if (!getInstanceState(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getRechargeStateCount(); i++) {
+          if (!getRechargeState(i).isInitialized()) {
             
             return false;
           }
@@ -2323,34 +3081,362 @@ public final class Statistics {
         return this;
       }
 
-      // required int32 monthCardLeft = 7;
-      private int monthCardLeft_ ;
+      // repeated .RechargeState rechargeState = 7;
+      private java.util.List<com.hawk.game.protocol.Statistics.RechargeState> rechargeState_ =
+        java.util.Collections.emptyList();
+      private void ensureRechargeStateIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          rechargeState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.RechargeState>(rechargeState_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.RechargeState, com.hawk.game.protocol.Statistics.RechargeState.Builder, com.hawk.game.protocol.Statistics.RechargeStateOrBuilder> rechargeStateBuilder_;
+
       /**
-       * <code>required int32 monthCardLeft = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
        */
-      public boolean hasMonthCardLeft() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+      public java.util.List<com.hawk.game.protocol.Statistics.RechargeState> getRechargeStateList() {
+        if (rechargeStateBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(rechargeState_);
+        } else {
+          return rechargeStateBuilder_.getMessageList();
+        }
       }
       /**
-       * <code>required int32 monthCardLeft = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public int getRechargeStateCount() {
+        if (rechargeStateBuilder_ == null) {
+          return rechargeState_.size();
+        } else {
+          return rechargeStateBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.RechargeState getRechargeState(int index) {
+        if (rechargeStateBuilder_ == null) {
+          return rechargeState_.get(index);
+        } else {
+          return rechargeStateBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public Builder setRechargeState(
+          int index, com.hawk.game.protocol.Statistics.RechargeState value) {
+        if (rechargeStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRechargeStateIsMutable();
+          rechargeState_.set(index, value);
+          onChanged();
+        } else {
+          rechargeStateBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public Builder setRechargeState(
+          int index, com.hawk.game.protocol.Statistics.RechargeState.Builder builderForValue) {
+        if (rechargeStateBuilder_ == null) {
+          ensureRechargeStateIsMutable();
+          rechargeState_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rechargeStateBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public Builder addRechargeState(com.hawk.game.protocol.Statistics.RechargeState value) {
+        if (rechargeStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRechargeStateIsMutable();
+          rechargeState_.add(value);
+          onChanged();
+        } else {
+          rechargeStateBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public Builder addRechargeState(
+          int index, com.hawk.game.protocol.Statistics.RechargeState value) {
+        if (rechargeStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRechargeStateIsMutable();
+          rechargeState_.add(index, value);
+          onChanged();
+        } else {
+          rechargeStateBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public Builder addRechargeState(
+          com.hawk.game.protocol.Statistics.RechargeState.Builder builderForValue) {
+        if (rechargeStateBuilder_ == null) {
+          ensureRechargeStateIsMutable();
+          rechargeState_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rechargeStateBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public Builder addRechargeState(
+          int index, com.hawk.game.protocol.Statistics.RechargeState.Builder builderForValue) {
+        if (rechargeStateBuilder_ == null) {
+          ensureRechargeStateIsMutable();
+          rechargeState_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rechargeStateBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public Builder addAllRechargeState(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Statistics.RechargeState> values) {
+        if (rechargeStateBuilder_ == null) {
+          ensureRechargeStateIsMutable();
+          super.addAll(values, rechargeState_);
+          onChanged();
+        } else {
+          rechargeStateBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public Builder clearRechargeState() {
+        if (rechargeStateBuilder_ == null) {
+          rechargeState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+          onChanged();
+        } else {
+          rechargeStateBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public Builder removeRechargeState(int index) {
+        if (rechargeStateBuilder_ == null) {
+          ensureRechargeStateIsMutable();
+          rechargeState_.remove(index);
+          onChanged();
+        } else {
+          rechargeStateBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.RechargeState.Builder getRechargeStateBuilder(
+          int index) {
+        return getRechargeStateFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.RechargeStateOrBuilder getRechargeStateOrBuilder(
+          int index) {
+        if (rechargeStateBuilder_ == null) {
+          return rechargeState_.get(index);  } else {
+          return rechargeStateBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Statistics.RechargeStateOrBuilder> 
+           getRechargeStateOrBuilderList() {
+        if (rechargeStateBuilder_ != null) {
+          return rechargeStateBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(rechargeState_);
+        }
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.RechargeState.Builder addRechargeStateBuilder() {
+        return getRechargeStateFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Statistics.RechargeState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.RechargeState.Builder addRechargeStateBuilder(
+          int index) {
+        return getRechargeStateFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Statistics.RechargeState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .RechargeState rechargeState = 7;</code>
+       *
+       * <pre>
+       * 商城购买状态
+       * </pre>
+       */
+      public java.util.List<com.hawk.game.protocol.Statistics.RechargeState.Builder> 
+           getRechargeStateBuilderList() {
+        return getRechargeStateFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.RechargeState, com.hawk.game.protocol.Statistics.RechargeState.Builder, com.hawk.game.protocol.Statistics.RechargeStateOrBuilder> 
+          getRechargeStateFieldBuilder() {
+        if (rechargeStateBuilder_ == null) {
+          rechargeStateBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Statistics.RechargeState, com.hawk.game.protocol.Statistics.RechargeState.Builder, com.hawk.game.protocol.Statistics.RechargeStateOrBuilder>(
+                  rechargeState_,
+                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  getParentForChildren(),
+                  isClean());
+          rechargeState_ = null;
+        }
+        return rechargeStateBuilder_;
+      }
+
+      // required int32 monthCardLeft = 8;
+      private int monthCardLeft_ ;
+      /**
+       * <code>required int32 monthCardLeft = 8;</code>
+       *
+       * <pre>
+       * 月卡剩余时间
+       * </pre>
+       */
+      public boolean hasMonthCardLeft() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required int32 monthCardLeft = 8;</code>
+       *
+       * <pre>
+       * 月卡剩余时间
+       * </pre>
        */
       public int getMonthCardLeft() {
         return monthCardLeft_;
       }
       /**
-       * <code>required int32 monthCardLeft = 7;</code>
+       * <code>required int32 monthCardLeft = 8;</code>
+       *
+       * <pre>
+       * 月卡剩余时间
+       * </pre>
        */
       public Builder setMonthCardLeft(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         monthCardLeft_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 monthCardLeft = 7;</code>
+       * <code>required int32 monthCardLeft = 8;</code>
+       *
+       * <pre>
+       * 月卡剩余时间
+       * </pre>
        */
       public Builder clearMonthCardLeft() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         monthCardLeft_ = 0;
         onChanged();
         return this;
@@ -2373,6 +3459,11 @@ public final class Statistics {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_InstanceState_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_RechargeState_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_RechargeState_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSStatisticsInfoSync_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -2388,13 +3479,15 @@ public final class Statistics {
     java.lang.String[] descriptorData = {
       "\n\031Protocol/Statistics.proto\"E\n\rInstanceS" +
       "tate\022\022\n\ninstanceId\030\001 \002(\t\022\014\n\004star\030\002 \002(\005\022\022" +
-      "\n\ncountDaily\030\003 \001(\005\"\310\001\n\024HSStatisticsInfoS" +
-      "ync\022%\n\rinstanceState\030\001 \003(\0132\016.InstanceSta" +
-      "te\022\026\n\016monsterCollect\030\002 \003(\t\022\022\n\nskillPoint" +
-      "\030\003 \002(\005\022\033\n\023skillPointTimeStamp\030\004 \002(\005\022\021\n\tt" +
-      "imeStamp\030\005 \001(\005\022\026\n\016orderServerKey\030\006 \002(\t\022\025" +
-      "\n\rmonthCardLeft\030\007 \002(\005B\030\n\026com.hawk.game.p" +
-      "rotocol"
+      "\n\ncountDaily\030\003 \001(\005\"4\n\rRechargeState\022\021\n\tp" +
+      "roductId\030\001 \002(\t\022\020\n\010buyTimes\030\002 \002(\005\"\357\001\n\024HSS" +
+      "tatisticsInfoSync\022%\n\rinstanceState\030\001 \003(\013" +
+      "2\016.InstanceState\022\026\n\016monsterCollect\030\002 \003(\t" +
+      "\022\022\n\nskillPoint\030\003 \002(\005\022\033\n\023skillPointTimeSt" +
+      "amp\030\004 \002(\005\022\021\n\ttimeStamp\030\005 \001(\005\022\026\n\016orderSer" +
+      "verKey\030\006 \002(\t\022%\n\rrechargeState\030\007 \003(\0132\016.Re" +
+      "chargeState\022\025\n\rmonthCardLeft\030\010 \002(\005B\030\n\026co",
+      "m.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2407,12 +3500,18 @@ public final class Statistics {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_InstanceState_descriptor,
               new java.lang.String[] { "InstanceId", "Star", "CountDaily", });
-          internal_static_HSStatisticsInfoSync_descriptor =
+          internal_static_RechargeState_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_RechargeState_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_RechargeState_descriptor,
+              new java.lang.String[] { "ProductId", "BuyTimes", });
+          internal_static_HSStatisticsInfoSync_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_HSStatisticsInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsInfoSync_descriptor,
-              new java.lang.String[] { "InstanceState", "MonsterCollect", "SkillPoint", "SkillPointTimeStamp", "TimeStamp", "OrderServerKey", "MonthCardLeft", });
+              new java.lang.String[] { "InstanceState", "MonsterCollect", "SkillPoint", "SkillPointTimeStamp", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", });
           return null;
         }
       };

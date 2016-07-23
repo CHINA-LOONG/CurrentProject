@@ -12,7 +12,11 @@ public class ShopDataMgr : MonoBehaviour
 		public	int	maxLevel;
 	}
 
-	//public	List<PB.ShopData> listShopData = new List<PB.ShopData>();
+	//商城中数据
+	public	int	monthCardLeft = 0;
+	public	List<PB.RechargeState> listRechageState;
+
+
 	public	Dictionary<int,PB.ShopData> shopDataDic = new Dictionary<int, PB.ShopData> ();
 	TimeStaticData	lastRefreshTime;
 

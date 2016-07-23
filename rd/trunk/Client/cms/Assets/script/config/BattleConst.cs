@@ -98,5 +98,8 @@ public class BattleConst
     //宠物升级自身作为材料ID
     public const string stageSelfId = "self";
 
+    //金币图标资源名
+    public const string icon_jinbi = "icon_jinbi";
+
 
 }

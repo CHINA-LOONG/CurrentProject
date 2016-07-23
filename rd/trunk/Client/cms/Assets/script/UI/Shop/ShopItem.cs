@@ -102,7 +102,7 @@ public class ShopItem : MonoBehaviour
 
 	private	void	OnBuyItemClick(GameObject go)
 	{
-		Logger.LogError ("buy item");
+		//Logger.LogError ("buy item");
 
 		GameDataMgr.Instance.ShopDataMgrAttr.BuyShopItem (shopItemData, shopId,shopType);
 	}

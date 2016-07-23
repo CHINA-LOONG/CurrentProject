@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="@dimen/com_funplus_sdk_account_popup_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/com_funplus_sdk_account_popup_padding"
+        android:background="@drawable/com_funplus_sdk_account_popup_bg">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/com_funplus_sdk_account_popup_header_height">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/com_funplus_sdk_logo_padding"
+                android:background="@color/com_funplus_sdk_account_white"
+                android:textSize="20sp"
+                android:text="@string/com_funplus_sdk_account_login"/>
+
+            <include layout="@layout/com_funplus_sdk_account_close_button"/>
+            <include layout="@layout/com_funplus_sdk_account_back_button"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/com_funplus_sdk_account_popup_body_margin_top"
+            android:layout_marginRight="@dimen/com_funplus_sdk_account_popup_body_margin_right"
+            android:layout_marginBottom="@dimen/com_funplus_sdk_account_popup_body_margin_bottom"
+            android:layout_marginLeft="@dimen/com_funplus_sdk_account_popup_body_margin_left"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/com_funplus_sdk_account_email_field"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/com_funplus_sdk_account_popup_text_field_height"
+                android:paddingLeft="@dimen/com_funplus_sdk_account_popup_text_field_padding_left"
+                android:drawableLeft="@drawable/com_funplus_sdk_account_user_icon"
+                android:drawablePadding="@dimen/com_funplus_sdk_account_popup_text_field_drawable_padding"
+                android:background="@drawable/com_funplus_sdk_account_input_field"
+                android:layout_marginTop="@dimen/com_funplus_sdk_account_popup_text_field_margin_top"
+                android:textColorHint="@color/com_funplus_sdk_account_input_hint_color"
+                android:hint="@string/com_funplus_sdk_account_email"/>
+
+            <EditText
+                android:id="@+id/com_funplus_sdk_account_password_field"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/com_funplus_sdk_account_popup_text_field_height"
+                android:paddingLeft="@dimen/com_funplus_sdk_account_popup_text_field_padding_left"
+                android:drawableLeft="@drawable/com_funplus_sdk_account_lock_icon"
+                android:drawablePadding="@dimen/com_funplus_sdk_account_popup_text_field_drawable_padding"
+                android:background="@drawable/com_funplus_sdk_account_input_field"
+                android:layout_marginTop="@dimen/com_funplus_sdk_account_popup_text_field_margin_top"
+                android:textColorHint="@color/com_funplus_sdk_account_input_hint_color"
+                android:hint="@string/com_funplus_sdk_account_password"
+                android:inputType="textPassword"
+                android:selectAllOnFocus="true"/>
+
+            <Button
+                android:id="@+id/com_funplus_sdk_account_email_login_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/com_funplus_sdk_account_popup_submit_button_margin_top"
+                android:background="@drawable/com_funplus_sdk_account_submit_button"
+                android:text="@string/com_funplus_sdk_account_login"
+                android:textSize="@dimen/com_funplus_sdk_account_popup_submit_button_text_size"
+                android:textColor="@color/com_funplus_sdk_account_white"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/com_funplus_sdk_account_reset_password_clickable"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:textColor="#aaaaaa"
+            android:text="@string/com_funplus_sdk_account_forgot_your_password"/>
+
+    </LinearLayout>
+
+</LinearLayout>

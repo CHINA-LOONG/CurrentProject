@@ -566,16 +566,21 @@ public class Player extends HawkAppObj {
 	 * 增加等级
 	 * 
 	 * @param level
+	 * @return 实际添加的等级
 	 */
-	public void increaseMonsterExp(int monsterId, int exp, Action action) {
+	public int increaseMonsterExp(int monsterId, int exp, Action action) {
 		if (exp <= 0) {
 			throw new RuntimeException("increaseExp");
 		}
 		
 		MonsterEntity monster = playerData.getMonsterEntity(monsterId);
 		if (monster != null) {		
-			float levelUpExpRate = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getCfgId()).getNextExpRate();
 			Map<Object, MonsterBaseCfg> monsterBaseCfg = HawkConfigManager.getInstance().getConfigMap(MonsterBaseCfg.class);	
+			if (monsterBaseCfg.size() == monster.getLevel()) {
+				return 0;
+			}
+			
+			float levelUpExpRate = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getCfgId()).getNextExpRate();
 			int expRemain = monster.getExp() + exp;
 			int targetLevel = monster.getLevel();
 			boolean levelup = false;
@@ -584,8 +589,8 @@ public class Player extends HawkAppObj {
 				targetLevel += 1;
 				levelup = true;
 			}
-
-			monster.setExp(expRemain);
+			
+			monster.setExp(targetLevel == monsterBaseCfg.size() ? 0 : expRemain);
 			monster.setLevel(targetLevel);
 			monster.notifyUpdate(true);
 			
@@ -620,7 +625,11 @@ public class Player extends HawkAppObj {
 					Params.valueOf("monsterAttr", Const.changeType.CHANGE_MONSTER_EXP), 
 					Params.valueOf("add", exp), 
 					Params.valueOf("after", getMonsterExp(monsterId)));
+			
+			return monsterBaseCfg.size() == monster.getLevel() ? exp - expRemain : exp ;
 		}
+		
+		return 0;
 	}
 
 	/**
@@ -628,12 +637,17 @@ public class Player extends HawkAppObj {
 	 * 
 	 * @param exp
 	 */
-	public void increaseExp(int exp, Action action) {
+	public int increaseExp(int exp, Action action) {
 		if (exp <= 0) {
 			throw new RuntimeException("increaseExp");
 		}
 
 		Map<Object, PlayerAttrCfg> playAttrCfg = HawkConfigManager.getInstance().getConfigMap(PlayerAttrCfg.class);
+		
+		if (getLevel() == playAttrCfg.size()) {
+			return 0;
+		}
+		
 		int expRemain = getExp() + exp;
 		int targetLevel = getLevel();
 		boolean levelup = false;
@@ -643,7 +657,7 @@ public class Player extends HawkAppObj {
 			levelup = true;
 		}
 
-		playerData.getPlayerEntity().setExp(expRemain);
+		playerData.getPlayerEntity().setExp(targetLevel != playAttrCfg.size() ? expRemain : 0);
 		playerData.getPlayerEntity().setLevel(targetLevel);
 		playerData.getPlayerEntity().notifyUpdate(true);
 
@@ -659,6 +673,8 @@ public class Player extends HawkAppObj {
 				Params.valueOf("monsterAttr", Const.changeType.CHANGE_PLAYER_EXP), 
 				Params.valueOf("add", exp), 
 				Params.valueOf("after", getExp()));
+		
+		return targetLevel != playAttrCfg.size() ? exp : exp - expRemain;
 	}
 
 	/**

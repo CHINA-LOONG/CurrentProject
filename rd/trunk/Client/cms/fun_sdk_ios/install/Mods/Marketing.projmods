@@ -1,0 +1,11 @@
+{
+    "group": "Funplus_Sdk",
+    "libs": ["libz.dylib", "libsqlite3.0.dylib", "libChartboost.a", "libGoogleConversionTracking.a", "libAdjust.a", "libLocalyticsAMP_x64.a"],
+    "frameworks": ["CoreTelephony.framework", "CoreGraphics.framework", "StoreKit.framework", "SystemConfiguration.framework", "AdSupport.framework", "CoreMedia.framework", "AVFoundation.framework", "CoreData.framework", "Security.framework", "MobileCoreServices.framework", "iAd.framework", "CoreLocation.framework"],
+    "headerpaths": [],
+    "files":   [],
+    "folders": [],    
+    "excludes": [],
+    "compiler_flags": [],
+    "linker_flags": []
+}

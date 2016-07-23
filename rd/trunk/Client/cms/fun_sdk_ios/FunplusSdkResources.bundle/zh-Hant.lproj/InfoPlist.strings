@@ -1,0 +1,184 @@
+/* Localized versions of Info.plist keys */
+
+"ErrorUnspecific_9999"="未定義錯誤";
+
+"FPErrorNotInstall_0100"="SDK安裝失敗";
+
+"FPErrorFailedToConnectToConfigServer_0101"="無法連接到配置伺服器";
+
+"FPErrorInvalidConfigRequestData_0102"="向配置伺服器提交的資料有誤";
+
+"FPErrorFailedToParseConfig_0103"="無法解析配置伺服器返回的資料";
+
+"FPErrorInvliadConfigData_0104"="無效的遊戲配置";
+
+"FPErrorWrongSignature_1101"="參數簽名錯誤";
+
+"FPErrorFailedCreateID_1102"="伺服器生成Funplus ID出錯，請稍後再試";
+
+"FPErrorWrongGameID_1103"="錯誤的遊戲ID";
+
+"FPErrorWrongEmail_1104"="無效的郵箱地址";
+
+"FPErrorWrongPassword_1105"="密碼有誤";
+
+"FPErrorWrongGUID_1106"="無效的GUID";
+
+"FPErrorEmailExisted_1107"="該郵箱已經註冊";
+
+"FPErrorFailedCreateAccount_1108"="創建帳號失敗";
+
+"FPErrorAccountBound_1109"="當前帳號已綁定過";
+
+"FPErrorEmailNotFound_1110"="郵箱未找到";
+
+"FPErrorLoginFailed_1111"="登錄失敗";
+
+"FPErrorPasswordLength_1112"="密碼長度有誤";
+
+"FPErrorFailedResetPassword_1113"="重置密碼失敗";
+
+"FPErrorWrongResetPasswordToken_1114"="";
+
+"FPErrorEmptyResetPasswordToken_1115"="";
+
+"FPErrorPasswordNotChanged_1116"="新密碼和舊密碼相同";
+
+"FPErrorFailedChangePassword_1117"="修改密碼失敗";
+
+"FPErrorFailedAccountNotFound_1118"="帳號未找到";
+
+"FPErrorFailedResetPasswordEmail_1119"="";
+
+"FPErrorFailedWrongGameSetting_1120"="無效的遊戲配置";
+
+"FPErrorFailedResetPasswordTemp_1121"="";
+
+"FPErrorEmptyFPID_1122"="FPID不能為空";
+
+"FPErrorWrongPlatformId_1123"="錯誤的社交平臺ID";
+
+"FPErrorFailedToBindWithSocialID_1124"="綁定社交平臺未成功";
+
+"FPErrorReachLoginLimit_1125"="登錄次數達到上線";
+
+"FPErrorEmailTooLong_1126"="郵箱地址過長";
+
+"FPErrorEmptySession_1127"="Session不能為空";
+
+"FPErrorSessionNotFound_1128"="未找到session";
+
+"FPErrorSessionExpired_1129"="Session已經過期";
+
+"FPErrorSessionAppMismatch_1130"="Session與當前的遊戲ID不匹配";
+
+"FPErrorWrongPlatformToken_1131"="社交平臺token錯誤";
+
+"FPErrorWrongPlatformType_1132"="社交平臺類型錯誤";
+
+"FPErrorInvalidPlatformToken_1133"="社交平臺token無效";
+
+"FPErrorUnknownAccountType_1200"="未知的帳號類型";
+
+"FPErrorNotLoggedIn_1201"="用戶未登錄";
+
+"FPErrorAlreadyLoggedIn_1202"="用戶已經登錄";
+
+"FPErrorIoginInProgress_1203"="另一個登錄過程還沒有完成";
+
+"FPErrorWrongLoginParams_1204"="登錄參數無效";
+
+"FPErrorFailedLoginAccount_1205"="登錄失敗";
+
+"FPErrorAccountBoundToOther_1206"="綁定帳號失敗";
+
+"FPErrorFailedToConnectAccountServer_1207"="無法連接到帳號伺服器";
+
+"FPErrorFailedToParseAccountResponse_1208"="無法解析帳號伺服器返回的資料";
+
+"FPErrorWechatClientIssue_2000"="微信：用戶端錯誤";
+
+"FPErrorWechatUserCancel_2001"="微信：用戶取消操作";
+
+"FPErrorWechatLoginFailed_2002"="微信：用戶登錄失敗";
+
+"FPErrorWechatDiffId_2003"="微信：不相符的微信帳號";
+
+"FPErrorWechatNotInWhiteList_2004"="微信：設備不在白名單中";
+
+"FPErrorWechatAccountBoundToOther_2005"="微信：Funplus ID已經綁定到另一個微信帳號";
+
+"FPErrorFacebookNotLoggedIn_2100"="Facebook：用戶未登錄";
+
+"FPErrorFacebookLoginFailed_2101"="Facebook：用戶登錄失敗";
+
+"FPErrorFacebookGetUserDataFailed_2102"="Facebook：獲取使用者資料失敗";
+
+"FPErrorFacebookSendRequestError_2103"="Facebook：發送遊戲請求失敗";
+
+"FPErrorFacebookUserCanceledAction_2104"="Facebook：用戶取消操作";
+
+"FPErrorFacebookException_2105"="Facebook：未定義異常";
+
+"FPErrorFacebookAccountBoundToOther_2106"="Facebook：Funplus ID已經綁定到另一個Facebook帳號";
+
+"FPErrorFacebookGetFriendsDataFailed_2107"="Facebook：獲取好友資料失敗";
+
+"FPErrorFacebookNeedUserFriendsPermission_2108"="Facebook：需要使用者好友許可權";
+
+"FPErrorVkNotLoggedIn_2200"="VK：用戶未登錄";
+
+"FPErrorVkLoginFailed_2201"="VK：用戶登錄失敗";
+
+"FPErrorVkCaptchaError_2202"="VK：Captcha錯誤";
+
+"FPErrorVkAccessDenied_2203"="VK：訪問被拒絕";
+
+"FPErrorVkAcceptUserTokenFailed_2204"="VK：接受用戶token失敗";
+
+"FPErrorVkReceiveNewTokenFailed_2205"="VK：獲取用戶token失敗";
+
+"FPErrorVkRenewTokenFailed_2206"="VK：無法回復用戶token";
+
+"FPErrorVkException_2207"="VK：未定義異常";
+
+"FPErrorVkUserCanceledAction_2208"="VK：用戶取消操作";
+
+"FPErrorVkGetUserDataFailed_2209"="VK：獲取使用者資料失敗";
+
+"FPErrorVkAccountBoundToOther_2210"="VK：Funplus ID已經綁定到另一個VK帳號";
+
+"FPErrorVkGetFriendsDataFailed_2211"="VK：獲取好友資料失敗";
+
+"FPErrorGooglePlusCurrentPersonIsNull_2300"="Google Plus：無法獲取當前用戶";
+
+"FPErrorGoolePlusGetAccessTokenFailed_2301"="Google Plus：獲取用戶token失敗";
+
+"FPErrorGoolePlusConnectionFailed_2302"="Google Plus：無法建立連接";
+
+"FPErrorGooglePlusAccountBoundToOther_2303"="Google Plus：Funplus ID已經綁定到另一個Google Plus帳號";
+
+"FPErrorFailedToConnectToPaymentServer_3000"="無法連接到支付伺服器";
+
+"FPErrorInvalidPaymentRequestData_3001"="向支付伺服器提交的資料有誤";
+
+"FPErrorFailedToParsePaymentResponse_3002"="無法解析支付伺服器返回的資料";
+
+"FPErrorPaymentResponseError_3003"="支付伺服器的返回資料無效";
+
+"FPErrorInitGoogleIab_3100"="Google Iab：初始化失敗";
+
+"FPErrorGoogleIabFailedToBuy_3101"="Google Iab：購買失敗";
+
+"FPErrorGoogleAccountNotConfigured_3102"="Google Iab：未配置Google帳號";
+
+"FPErrorGoogleIabFailedToConsume_3103"="Google Iab：無法完成購買";
+
+"FPErrorPurchaseFailed_3200"="Apple Iap：購買失敗";
+
+"FPErrorProductsInfoInvalid_3201"="Apple Iap：商品資訊有誤";
+
+"FPErrorBuyProductIdInvalid_3202"="Apple Iap：無效的商品ID";
+
+"FPErrorNoLocalReceipt_3203"="Apple Iap：未找到本地存根";
+

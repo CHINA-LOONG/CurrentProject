@@ -187,6 +187,62 @@ public class UIUtil
         return unit.pbUnit.level >= unitStageData.demandLevel;
     }
 
+    public static bool CheckIsEnoughMaterial(List<ItemInfo> itemInfos)
+    {
+        ItemData mineItem = null;
+        for (int i = 0; i < itemInfos.Count; i++)
+        {
+            if (itemInfos[i].type == (int)PB.itemType.ITEM)
+            {
+                mineItem = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(itemInfos[i].itemId);
+                if (mineItem==null||itemInfos[i].count>mineItem.count)
+                {
+                    return false;
+                }
+            }
+            else if (itemInfos[i].type == (int)PB.itemType.PLAYER_ATTR)
+            {
+                if (itemInfos[i].itemId.Equals(((int)PB.playerAttr.COIN).ToString()))
+                {
+                    if (itemInfos[i].count>GameDataMgr.Instance.PlayerDataAttr.coin)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    Logger.LogError("xiao hao jin bi pei zhi cuo wu !!!!!!!!!!!!!!!!!!");
+                    return false;
+                }
+            }
+            else
+            {
+                Logger.LogError("xiao hao wu pin pei zhi cuo wu!!!!!!!!!!");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static bool CheckIsEnoughEquip(GameUnit unit,int part)
+    {
+        UnitData petData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
+        Dictionary<long, EquipData> equipList = GameDataMgr.Instance.PlayerDataAttr.gameEquipData.equipList;
+        foreach (var item in equipList)
+        {
+            if (item.Value.monsterId != BattleConst.invalidMonsterID)
+            {
+                continue;
+            }
+            ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(item.Value.equipId);
+            if (itemInfo.minLevel <= unit.pbUnit.level && itemInfo.part == part && itemInfo.subType == petData.equip)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void SetStageColor(Text label, GameUnit unit)
     {
         int quallity = 0;
@@ -234,6 +290,28 @@ public class UIUtil
 
     }
 
+    public static void SetEquipType(Text label, int type)
+    {
+        switch (type)
+        {
+            case 0:
+                label.text = StaticDataMgr.Instance.GetTextByID("common_type_defence");
+                break;
+            case 1:
+                label.text = StaticDataMgr.Instance.GetTextByID("common_type_physical");
+                break;
+            case 2:
+                label.text = StaticDataMgr.Instance.GetTextByID("common_type_magic");
+                break;
+            case 3:
+                label.text = StaticDataMgr.Instance.GetTextByID("common_type_support");
+                break;
+            default:
+                label.text = "";
+                break;
+        }
+    }
+
     public static void GetAttrValue(GameUnit unit, int stage, out int health, out int strength, out int inteligence, out int defence, out int speed)
     {
         int grade = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id).grade;
@@ -265,7 +343,7 @@ public class UIUtil
         if (data.strength!=0)
         {
             attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_strenth");
-            value1.text = data.strength.ToString();
+            value1.text = "+" + data.strength.ToString();
             index++;
         }
         if (data.intelligence != 0)
@@ -273,13 +351,13 @@ public class UIUtil
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
-                value1.text = data.strength.ToString();
+                value1.text = "+" + data.strength.ToString();
                 index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
-                value2.text = data.strength.ToString();
+                value2.text = "+" + data.strength.ToString();
                 return;
             }
         }
@@ -288,13 +366,13 @@ public class UIUtil
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
-                value1.text = data.strength.ToString();
+                value1.text = "+" + data.strength.ToString();
                 index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
-                value2.text = data.strength.ToString();
+                value2.text = "+" + data.strength.ToString();
                 return;
             }
         }
@@ -303,13 +381,13 @@ public class UIUtil
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
-                value1.text = data.strength.ToString();
+                value1.text = "+" + data.strength.ToString();
                 index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
-                value2.text = data.strength.ToString();
+                value2.text = "+" + data.strength.ToString();
                 return;
             }
         }
@@ -318,13 +396,13 @@ public class UIUtil
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
-                value1.text = data.strength.ToString();
+                value1.text = "+" + data.strength.ToString();
                 index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
-                value2.text = data.strength.ToString();
+                value2.text = "+" + data.strength.ToString();
                 return;
             }
         }

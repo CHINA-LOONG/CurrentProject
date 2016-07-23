@@ -6,7 +6,7 @@ public class PetListElement : MonoBehaviour {
 
     public Text nameLable;
     public Image proIcon;
-    public Text typeLable;
+    //public Text typeLable;
     public MonsterIcon avatar;
     public Image badge;
 
@@ -26,7 +26,7 @@ public class PetListElement : MonoBehaviour {
             proIcon.sprite = image;
         }
 
-        typeLable.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListType);
+        //typeLable.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListType);
         avatar.Init();
         avatar.SetId(unit.pbUnit.guid.ToString());
         avatar.SetMonsterStaticId(unit.pbUnit.id);

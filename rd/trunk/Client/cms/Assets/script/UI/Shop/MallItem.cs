@@ -6,7 +6,6 @@ using BestHTTP;
 public class MallItem : MonoBehaviour 
 {
 	public	Image	zuanshiTypeImage;
-	public	Image	moneyIcon;
 
 	public	Text	zuanshiText;
 	public	Text	moneyText;

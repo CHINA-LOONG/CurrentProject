@@ -53,11 +53,6 @@ public class PetViewConst{
     public const string UIPetEquipListAssetName = "UIPetEquipList";
     public const string UIPetEquipInlayAssetName = "UIPetEquipInlay";
 
-
-    public static string ReloadPetListNotify = "reloadPetListNotify";
-    public static string ReloadPetStageNotify = "reloadPetStageNotify";
-    public static string ReloadPetEquipNotify = "reloadPetEquipNotify";
-
     public static string PetListFull = "pet_tip_full";
     public static string PetListProperty = "pet_list_proprety";
     public static string PetListType = "pet_list_type";
@@ -79,9 +74,8 @@ public class PetViewConst{
     public static string PetDetailStageDemandLevel = "pet_detail_stage_demand_level";//需求等级
     public static string PetDetailStage = "pet_detail_stage";           //进阶
     public static string PetDetailStageFull = "pet_detail_stage_full";  //进阶完成
-    public static string PetDetailStageMonster = "pet_detail_stage_monster";
+    public static string PetDetailStageMonster = "pet_detail_stage_monster";//需要的宠物
     public static string PetDetailStageBattle = "equip_forge_zhanli";
-    public static string PetDetailStageNoneMonster = "pet_detail_stage_none_monster";
     public static string PetDetailSkillNoUpgrade = "pet_detail_skill_no_upgrade";
 
     public static string PetListTitle = "pet_list_title";

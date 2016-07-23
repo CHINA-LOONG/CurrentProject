@@ -9,6 +9,12 @@ message InstanceState
 	optional int32 countDaily = 3;
 }
 
+message RechargeState
+{
+	required string productId = 1;
+	required int32  buyTimes = 2;
+}
+
 // protocol-----------------------------------------------------
 
 message HSStatisticsInfoSync
@@ -25,5 +31,8 @@ message HSStatisticsInfoSync
 	optional int32 timeStamp = 5;
 	// 订单服务器key
 	required string orderServerKey =6;
-	required int32  monthCardLeft = 7;
+	// 商城购买状态
+	repeated RechargeState rechargeState = 7;
+	// 月卡剩余时间
+	required int32  monthCardLeft = 8;
 }

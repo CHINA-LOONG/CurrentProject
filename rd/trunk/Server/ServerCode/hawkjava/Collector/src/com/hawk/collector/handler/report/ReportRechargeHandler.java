@@ -21,7 +21,7 @@ import com.sun.net.httpserver.HttpHandler;
  */
 public class ReportRechargeHandler implements HttpHandler {
 	/**
-	 * 格式: game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playername=%s&playerlevel=%d&myorder=%s&pforder=%s&productid=%s&ordermoney=%d&paymoney=%d&addgold=%d&giftgold=%d&currency=%s&time=%s
+	 * 格式: game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playername=%s&playerlevel=%d&orderserial=%s&productid=%s&paymoney=%d&addgold=%d&giftgold=%d&currency=%s&time=%s
 	 */
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
@@ -39,14 +39,14 @@ public class ReportRechargeHandler implements HttpHandler {
 	public static void doReport(Map<String, String> params) throws Exception {
 		if (params != null) {
 			String time = params.containsKey("time")? params.get("time") : HawkTime.getTimeString();
-			String value = String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s, \"%s\", %s, \"%s\", %s, %s, %s, %s, \"%s\", \"%s\", \"%s\"", 
-										params.get("myorder"), params.get("pforder"), params.get("game"), params.get("platform"), params.get("server"), 
-										CollectorServices.getChannelFromPuid(params.get("puid")), params.get("puid"), 
+			String value = String.format("\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s, \"%s\", %s, \"%s\", %s, %s, %s, \"%s\", \"%s\", \"%s\"", 
+										params.get("orderserial"), params.get("game"), params.get("platform"), params.get("server"), 
+										params.get("channel"), params.get("puid"), 
 										params.get("device"), params.get("playerid"), params.get("playername"), params.get("playerlevel"),
-										params.get("productid"), params.get("ordermoney"), params.get("paymoney"), params.get("addgold"), params.get("giftgold"), 
-										params.containsKey("currency")? params.get("currency") : "rmb", time, time.substring(0, 10));
+										params.get("productid"), params.get("paymoney"), params.get("addgold"), params.get("giftgold"), 
+										params.containsKey("currency")? params.get("currency") : "", time, time.substring(0, 10));
 			
-			String sql = String.format("INSERT INTO recharge(myorder, pforder, game, platform, server, channel, puid, device, playerid, playername, playerlevel, productid, orderMoney, payMoney, addGold, giftGold, currency, time, date) VALUES(%s);", value);
+			String sql = String.format("INSERT INTO recharge(orderserial, game, platform, server, channel, puid, device, playerid, playername, playerlevel, productid, payMoney, addGold, giftGold, currency, time, date) VALUES(%s);", value);
 
 			DBManager.getInstance().executeSql(params.get("game"), sql);
 

@@ -32,6 +32,7 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
     
     void Start()
     {
+        
         EventTriggerListener.Get(closeButton.gameObject).onClick = CloseButtonDown;
         EventTriggerListener.Get(preButton.gameObject).onClick = PreButtonDown;
         EventTriggerListener.Get(nextButton.gameObject).onClick = NextButtonDown;
@@ -157,6 +158,15 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
             currentRightType = rightAsset;
             AddRightView(currentRightType);
         }
+
+        switch (currentRightType)
+        {
+            case PetViewConst.UIPetSkillAssetName: leftView.State = PetDetailLeft.BtnState.Skill; break;
+            case PetViewConst.UIPetStageAssetName: leftView.State = PetDetailLeft.BtnState.Stage; break;
+            case PetViewConst.UIPetAdvanceAssetName: leftView.State = PetDetailLeft.BtnState.Advance; break;
+            default: leftView.State = PetDetailLeft.BtnState.None; break;
+        }
+
         #region InitaLize Param
         if (param == null)
         {

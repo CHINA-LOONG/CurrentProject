@@ -35,6 +35,11 @@ public class EquipBuildPanel : EquipPanelBase
     private ItemIcon curItemIcon;
     private ItemIcon nextItemIcon;
 
+    public Text text_Zhanli1;
+    public Text text_Zhanli2;
+    public Text textZhanli1;
+    public Text textZhanli2;
+
     public Transform contentAttr;
     public Text text_Material;
     public Transform contentMaterial;
@@ -45,7 +50,9 @@ public class EquipBuildPanel : EquipPanelBase
     public Text text_Tips;
     public Button btnBuild;
     public Text text_Dazao;
+    public Text text_FullTips;
     public GameObject maxHide;
+    public GameObject maxShow;
 
     private EquipData curData;
 
@@ -73,8 +80,9 @@ public class EquipBuildPanel : EquipPanelBase
     void Start()
     {
         text_Material.text = StaticDataMgr.Instance.GetTextByID("equip_forge_xiaohao");
-
-        EventTriggerListener.Get(btnBuild.gameObject).onClick = OnClickBuild;
+        text_Zhanli1.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
+        text_Zhanli2.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
+        text_FullTips.text = StaticDataMgr.Instance.GetTextByID("equip_fully_forged");
     }
 
     public override void ReloadData(EquipData data, UIEquipInlay.State type, int select = -1)
@@ -117,6 +125,10 @@ public class EquipBuildPanel : EquipPanelBase
 
 
         #endregion
+
+        //TODO: 设置战力
+        textZhanli1.text = "0";
+        textZhanli2.text = "0";
 
         #region SetIcon by (curData and nextData)
         if (curItemIcon==null)
@@ -164,11 +176,16 @@ public class EquipBuildPanel : EquipPanelBase
 
         #region Get materials
 
-        maxHide.SetActive(uiType != UIType.MaxLevel);
         if (uiType == UIType.MaxLevel)
         {
-            //TODO：显示满级提示；
+            maxShow.SetActive(true);
+            maxHide.SetActive(false);
             return;
+        }
+        else
+        {
+            maxShow.SetActive(false);
+            maxHide.SetActive(true);
         }
 
         curDemand.Clear();
@@ -200,8 +217,7 @@ public class EquipBuildPanel : EquipPanelBase
             {
                 if (curDemand[i].itemId.Equals(((int)PB.playerAttr.COIN).ToString()))
                 {
-                    //TODO:set icon
-                    imgCoin.sprite = null;
+                    imgCoin.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(BattleConst.icon_jinbi);
                     if (GameDataMgr.Instance.PlayerDataAttr.coin<curDemand[i].count)
                     {
                         textCoin.color = Color.red;
@@ -224,6 +240,16 @@ public class EquipBuildPanel : EquipPanelBase
         }
         #endregion
 
+        if (UIUtil.CheckIsEnoughMaterial(curDemand))
+        {
+            btnBuild.interactable = true;
+            EventTriggerListener.Get(btnBuild.gameObject).onClick = OnClickBuild;
+        }
+        else
+        {
+            btnBuild.interactable = false;
+            EventTriggerListener.Get(btnBuild.gameObject).onClick = null;
+        }
     }
 
     public EquipBuildAttr GetElement()

@@ -11,7 +11,22 @@ public class UIPropTips : UIBase {
     public Text propType;
     public Text propRequire;
     public Text propDescription;
-    public static string ViewName = "UIPropTips";    
+    public GameObject mask;
+    public static string ViewName = "UIPropTips";
+    public static UIPropTips openPropTips(string propId)
+    {
+        UIPropTips propTips= UIMgr.Instance.OpenUI_(UIPropTips.ViewName,false)as UIPropTips;
+        propTips.PropTips(propId);
+        return propTips;
+    }
+    void Start() 
+    {
+        EventTriggerListener.Get(mask).onClick = CloseOnClick;
+    }
+    void CloseOnClick(GameObject but)
+    {
+        UIMgr.Instance.DestroyUI(this);
+    }
     public void PropTips(string propId)
     {
         Sprite propAsset;

@@ -14,7 +14,6 @@ public class SelectMonsterPanel : UIBase
 
     public Button closeButton;
     public Text countLabel;
-    public Text nonoMonsterLabel;
     public Text demandLabel;
     public Image scrollIcon;
     public GameObject elementContainer;
@@ -38,7 +37,6 @@ public class SelectMonsterPanel : UIBase
     public void init(ItemInfo itemInfo, List<int> selectMonster,GameUnit curUnit/* int selfId*/)
     {
         int selfId=curUnit.pbUnit.guid;
-        nonoMonsterLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageNoneMonster);
         demandLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageMonster);
         m_currentSelectMonster = selectMonster;
         m_itemInfo = itemInfo;

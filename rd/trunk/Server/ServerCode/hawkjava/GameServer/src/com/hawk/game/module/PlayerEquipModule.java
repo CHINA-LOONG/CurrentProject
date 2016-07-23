@@ -1,5 +1,6 @@
 package com.hawk.game.module;
 
+import java.util.Map;
 import java.util.Random;
 
 import org.hawk.config.HawkConfigManager;
@@ -11,6 +12,7 @@ import com.hawk.game.config.EquipAttr;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.GemInfo;
@@ -44,6 +46,7 @@ import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.GsConst;
+import com.sun.corba.se.impl.interceptors.SlotTable;
 
 public class PlayerEquipModule extends PlayerModule{
 	/**
@@ -284,9 +287,13 @@ public class PlayerEquipModule extends PlayerModule{
 			return ;
 		}
 		
+		if (equipEntity.GetGemDressList().get(protocol.getSlot()) == null) {
+			sendError(hsCode, Status.itemError.EQUIP_SLOT_NOT_PUNCH_VALUE);
+			return ;
+		}
+		
 		AwardItems award = new AwardItems();
 		ConsumeItems consume = new ConsumeItems();
-		
 		if (protocol.getNewGem().equals("") == false) {
 			ItemEntity itemEntity = player.getPlayerData().getItemByItemId(protocol.getNewGem());
 			if (itemEntity == null) {
@@ -305,48 +312,44 @@ public class PlayerEquipModule extends PlayerModule{
 				return ;
 			}
 			
+			if (equipEntity.GetGemDressList().get(protocol.getSlot()).getType() != gemCfg.getGemType()) {
+				sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+				return ;
+			}
+			
 			consume.addItem(protocol.getNewGem(), 1);
 		}
 		
-		if (protocol.getOldGem().equals("") == false) {
-			boolean found = false;
-			for (GemInfo element : equipEntity.GetGemDressList()) {
-				if (element.getGemId().equals(protocol.getOldGem()) && element.getType() == protocol.getType()) {
-					found = true;
-					break;
-				}
+		if (protocol.getOldGem().equals("") == false) {		
+			if (equipEntity.GetGemDressList().get(protocol.getSlot()) == null) {
+				sendError(hsCode, Status.itemError.EQUIP_SLOT_EMPTY);
+				return ;
 			}
-			if (found == false) {
-				sendError(hsCode, Status.itemError.EQUIP_GEM_NOT_FOUND_VALUE);
+			
+			if (!equipEntity.GetGemDressList().get(protocol.getSlot()).equals(protocol.getOldGem())) {
+				sendError(hsCode, Status.itemError.EQUIP_GEM_MISMATCH);
 				return ;
 			}
 			
 			award.addItem(protocol.getOldGem(), 1);
 		}
 		else {
-			boolean found = false;
-			for (GemInfo element : equipEntity.GetGemDressList()) {
-				if (element.getType() == protocol.getType()) {
-					found = true;
-					break;
-				}
-			}
-			if (found == false) {
-				sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+			if (equipEntity.GetGemDressList().get(protocol.getSlot()) != null) {
+				sendError(hsCode, Status.itemError.EQUIP_SLOT_NOT_EMPTY);
 				return ;
 			}
 		}
 		
 		if (!protocol.getNewGem().equals("") && !protocol.getOldGem().equals("")) {
-			equipEntity.replaceGem(protocol.getOldGem(), protocol.getNewGem());
+			equipEntity.replaceGem(protocol.getSlot(), protocol.getOldGem(), protocol.getNewGem());
 		}
 		else if(!protocol.getNewGem().equals(""))
 		{
-			equipEntity.addGem(protocol.getType(), protocol.getNewGem());
+			equipEntity.addGem(protocol.getSlot(), protocol.getType(), protocol.getNewGem());
 		}
 		else
 		{
-			equipEntity.removeGem(protocol.getOldGem());
+			equipEntity.removeGem(protocol.getSlot(), protocol.getOldGem());
 		}	
 		
 		equipEntity.notifyUpdate(true);
@@ -354,10 +357,11 @@ public class PlayerEquipModule extends PlayerModule{
 		consume.consumeTakeAffectAndPush(player, Action.EQUIP_GEM);
 		
 		HSEquipGemRet.Builder response = HSEquipGemRet.newBuilder();
-		for (GemInfo element : equipEntity.GetGemDressList()) {
+		for (Map.Entry<Integer, GemInfo> entry : equipEntity.GetGemDressList().entrySet()) {
 			GemPunch.Builder gemPunch = GemPunch.newBuilder();
-			gemPunch.setType(element.getType());
-			gemPunch.setGemItemId(element.getGemId());
+			gemPunch.setSlot(entry.getKey());
+			gemPunch.setType(entry.getValue().getType());
+			gemPunch.setGemItemId(entry.getValue().getGemId());
 			response.addGemItems(gemPunch);
 		}
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_GEM_S_VALUE, response));
@@ -390,8 +394,8 @@ public class PlayerEquipModule extends PlayerModule{
 		AwardItems rewardItems = null;
 		if (equipEntity.GetGemDressList().isEmpty() == false) {
 			rewardItems = new AwardItems();
-			for (GemInfo gemInfo : equipEntity.GetGemDressList()) {
-				rewardItems.addItem(gemInfo.getGemId(), 1);
+			for (Map.Entry<Integer, GemInfo> entry : equipEntity.GetGemDressList().entrySet()) {
+				rewardItems.addItem(entry.getValue().getGemId(), 1);
 			}
 		}
 		
@@ -407,8 +411,9 @@ public class PlayerEquipModule extends PlayerModule{
 			int newPunchCount = HawkRand.randInt(1, EquipUtil.getPunchCount(equipEntity));
 			for (int i = 0; i < newPunchCount; i++) {
 				int type = HawkRand.randInt(1, GsConst.GEM_MAX_TYPE);
-				equipEntity.addGem(type);
+				equipEntity.addGem(i, type);
 				GemPunch.Builder gemInfo = GemPunch.newBuilder();
+				gemInfo.setSlot(i);
 				gemInfo.setType(type);
 				gemInfo.setGemItemId(GsConst.EQUIP_GEM_NONE);
 				response.addGemItems(gemInfo);

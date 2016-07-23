@@ -7,4 +7,10 @@ public class NullEquip : MonoBehaviour
     public static string AssetName = "NullEquip";
 
     public Button button;
+    public Image addEquip;
+
+    public void ShowAdd(bool showadd)
+    {
+        addEquip.gameObject.SetActive(showadd);
+    }
 }

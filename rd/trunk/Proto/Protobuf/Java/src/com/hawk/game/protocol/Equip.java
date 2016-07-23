@@ -11,9 +11,27 @@ public final class Equip {
   public interface GemPunchOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 type = 1;
+    // required int32 slot = 1;
     /**
-     * <code>required int32 type = 1;</code>
+     * <code>required int32 slot = 1;</code>
+     *
+     * <pre>
+     * 宝石槽位
+     * </pre>
+     */
+    boolean hasSlot();
+    /**
+     * <code>required int32 slot = 1;</code>
+     *
+     * <pre>
+     * 宝石槽位
+     * </pre>
+     */
+    int getSlot();
+
+    // required int32 type = 2;
+    /**
+     * <code>required int32 type = 2;</code>
      *
      * <pre>
      * 宝石形状
@@ -21,7 +39,7 @@ public final class Equip {
      */
     boolean hasType();
     /**
-     * <code>required int32 type = 1;</code>
+     * <code>required int32 type = 2;</code>
      *
      * <pre>
      * 宝石形状
@@ -29,9 +47,9 @@ public final class Equip {
      */
     int getType();
 
-    // required string gemItemId = 2;
+    // required string gemItemId = 3;
     /**
-     * <code>required string gemItemId = 2;</code>
+     * <code>required string gemItemId = 3;</code>
      *
      * <pre>
      * 宝石id
@@ -39,7 +57,7 @@ public final class Equip {
      */
     boolean hasGemItemId();
     /**
-     * <code>required string gemItemId = 2;</code>
+     * <code>required string gemItemId = 3;</code>
      *
      * <pre>
      * 宝石id
@@ -47,7 +65,7 @@ public final class Equip {
      */
     java.lang.String getGemItemId();
     /**
-     * <code>required string gemItemId = 2;</code>
+     * <code>required string gemItemId = 3;</code>
      *
      * <pre>
      * 宝石id
@@ -109,11 +127,16 @@ public final class Equip {
             }
             case 8: {
               bitField0_ |= 0x00000001;
+              slot_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
               type_ = input.readInt32();
               break;
             }
-            case 18: {
-              bitField0_ |= 0x00000002;
+            case 26: {
+              bitField0_ |= 0x00000004;
               gemItemId_ = input.readBytes();
               break;
             }
@@ -157,21 +180,45 @@ public final class Equip {
     }
 
     private int bitField0_;
-    // required int32 type = 1;
-    public static final int TYPE_FIELD_NUMBER = 1;
+    // required int32 slot = 1;
+    public static final int SLOT_FIELD_NUMBER = 1;
+    private int slot_;
+    /**
+     * <code>required int32 slot = 1;</code>
+     *
+     * <pre>
+     * 宝石槽位
+     * </pre>
+     */
+    public boolean hasSlot() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 slot = 1;</code>
+     *
+     * <pre>
+     * 宝石槽位
+     * </pre>
+     */
+    public int getSlot() {
+      return slot_;
+    }
+
+    // required int32 type = 2;
+    public static final int TYPE_FIELD_NUMBER = 2;
     private int type_;
     /**
-     * <code>required int32 type = 1;</code>
+     * <code>required int32 type = 2;</code>
      *
      * <pre>
      * 宝石形状
      * </pre>
      */
     public boolean hasType() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 type = 1;</code>
+     * <code>required int32 type = 2;</code>
      *
      * <pre>
      * 宝石形状
@@ -181,21 +228,21 @@ public final class Equip {
       return type_;
     }
 
-    // required string gemItemId = 2;
-    public static final int GEMITEMID_FIELD_NUMBER = 2;
+    // required string gemItemId = 3;
+    public static final int GEMITEMID_FIELD_NUMBER = 3;
     private java.lang.Object gemItemId_;
     /**
-     * <code>required string gemItemId = 2;</code>
+     * <code>required string gemItemId = 3;</code>
      *
      * <pre>
      * 宝石id
      * </pre>
      */
     public boolean hasGemItemId() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required string gemItemId = 2;</code>
+     * <code>required string gemItemId = 3;</code>
      *
      * <pre>
      * 宝石id
@@ -216,7 +263,7 @@ public final class Equip {
       }
     }
     /**
-     * <code>required string gemItemId = 2;</code>
+     * <code>required string gemItemId = 3;</code>
      *
      * <pre>
      * 宝石id
@@ -237,6 +284,7 @@ public final class Equip {
     }
 
     private void initFields() {
+      slot_ = 0;
       type_ = 0;
       gemItemId_ = "";
     }
@@ -245,6 +293,10 @@ public final class Equip {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasSlot()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasType()) {
         memoizedIsInitialized = 0;
         return false;
@@ -261,10 +313,13 @@ public final class Equip {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, type_);
+        output.writeInt32(1, slot_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getGemItemIdBytes());
+        output.writeInt32(2, type_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getGemItemIdBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -277,11 +332,15 @@ public final class Equip {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, type_);
+          .computeInt32Size(1, slot_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getGemItemIdBytes());
+          .computeInt32Size(2, type_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getGemItemIdBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -399,10 +458,12 @@ public final class Equip {
 
       public Builder clear() {
         super.clear();
-        type_ = 0;
+        slot_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        gemItemId_ = "";
+        type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        gemItemId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -434,9 +495,13 @@ public final class Equip {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.type_ = type_;
+        result.slot_ = slot_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
         result.gemItemId_ = gemItemId_;
         result.bitField0_ = to_bitField0_;
@@ -455,11 +520,14 @@ public final class Equip {
 
       public Builder mergeFrom(com.hawk.game.protocol.Equip.GemPunch other) {
         if (other == com.hawk.game.protocol.Equip.GemPunch.getDefaultInstance()) return this;
+        if (other.hasSlot()) {
+          setSlot(other.getSlot());
+        }
         if (other.hasType()) {
           setType(other.getType());
         }
         if (other.hasGemItemId()) {
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
           gemItemId_ = other.gemItemId_;
           onChanged();
         }
@@ -468,6 +536,10 @@ public final class Equip {
       }
 
       public final boolean isInitialized() {
+        if (!hasSlot()) {
+          
+          return false;
+        }
         if (!hasType()) {
           
           return false;
@@ -498,20 +570,69 @@ public final class Equip {
       }
       private int bitField0_;
 
-      // required int32 type = 1;
+      // required int32 slot = 1;
+      private int slot_ ;
+      /**
+       * <code>required int32 slot = 1;</code>
+       *
+       * <pre>
+       * 宝石槽位
+       * </pre>
+       */
+      public boolean hasSlot() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 slot = 1;</code>
+       *
+       * <pre>
+       * 宝石槽位
+       * </pre>
+       */
+      public int getSlot() {
+        return slot_;
+      }
+      /**
+       * <code>required int32 slot = 1;</code>
+       *
+       * <pre>
+       * 宝石槽位
+       * </pre>
+       */
+      public Builder setSlot(int value) {
+        bitField0_ |= 0x00000001;
+        slot_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 slot = 1;</code>
+       *
+       * <pre>
+       * 宝石槽位
+       * </pre>
+       */
+      public Builder clearSlot() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        slot_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 type = 2;
       private int type_ ;
       /**
-       * <code>required int32 type = 1;</code>
+       * <code>required int32 type = 2;</code>
        *
        * <pre>
        * 宝石形状
        * </pre>
        */
       public boolean hasType() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 type = 1;</code>
+       * <code>required int32 type = 2;</code>
        *
        * <pre>
        * 宝石形状
@@ -521,46 +642,46 @@ public final class Equip {
         return type_;
       }
       /**
-       * <code>required int32 type = 1;</code>
+       * <code>required int32 type = 2;</code>
        *
        * <pre>
        * 宝石形状
        * </pre>
        */
       public Builder setType(int value) {
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         type_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 type = 1;</code>
+       * <code>required int32 type = 2;</code>
        *
        * <pre>
        * 宝石形状
        * </pre>
        */
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         type_ = 0;
         onChanged();
         return this;
       }
 
-      // required string gemItemId = 2;
+      // required string gemItemId = 3;
       private java.lang.Object gemItemId_ = "";
       /**
-       * <code>required string gemItemId = 2;</code>
+       * <code>required string gemItemId = 3;</code>
        *
        * <pre>
        * 宝石id
        * </pre>
        */
       public boolean hasGemItemId() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required string gemItemId = 2;</code>
+       * <code>required string gemItemId = 3;</code>
        *
        * <pre>
        * 宝石id
@@ -578,7 +699,7 @@ public final class Equip {
         }
       }
       /**
-       * <code>required string gemItemId = 2;</code>
+       * <code>required string gemItemId = 3;</code>
        *
        * <pre>
        * 宝石id
@@ -598,7 +719,7 @@ public final class Equip {
         }
       }
       /**
-       * <code>required string gemItemId = 2;</code>
+       * <code>required string gemItemId = 3;</code>
        *
        * <pre>
        * 宝石id
@@ -609,26 +730,26 @@ public final class Equip {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         gemItemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string gemItemId = 2;</code>
+       * <code>required string gemItemId = 3;</code>
        *
        * <pre>
        * 宝石id
        * </pre>
        */
       public Builder clearGemItemId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         gemItemId_ = getDefaultInstance().getGemItemId();
         onChanged();
         return this;
       }
       /**
-       * <code>required string gemItemId = 2;</code>
+       * <code>required string gemItemId = 3;</code>
        *
        * <pre>
        * 宝石id
@@ -639,7 +760,7 @@ public final class Equip {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         gemItemId_ = value;
         onChanged();
         return this;
@@ -9037,42 +9158,52 @@ public final class Equip {
      */
     long getId();
 
-    // required int32 type = 2;
+    // required int32 slot = 2;
     /**
-     * <code>required int32 type = 2;</code>
+     * <code>required int32 slot = 2;</code>
+     */
+    boolean hasSlot();
+    /**
+     * <code>required int32 slot = 2;</code>
+     */
+    int getSlot();
+
+    // required int32 type = 3;
+    /**
+     * <code>required int32 type = 3;</code>
      */
     boolean hasType();
     /**
-     * <code>required int32 type = 2;</code>
+     * <code>required int32 type = 3;</code>
      */
     int getType();
 
-    // optional string newGem = 3;
+    // optional string newGem = 4;
     /**
-     * <code>optional string newGem = 3;</code>
+     * <code>optional string newGem = 4;</code>
      */
     boolean hasNewGem();
     /**
-     * <code>optional string newGem = 3;</code>
+     * <code>optional string newGem = 4;</code>
      */
     java.lang.String getNewGem();
     /**
-     * <code>optional string newGem = 3;</code>
+     * <code>optional string newGem = 4;</code>
      */
     com.google.protobuf.ByteString
         getNewGemBytes();
 
-    // optional string oldGem = 4;
+    // optional string oldGem = 5;
     /**
-     * <code>optional string oldGem = 4;</code>
+     * <code>optional string oldGem = 5;</code>
      */
     boolean hasOldGem();
     /**
-     * <code>optional string oldGem = 4;</code>
+     * <code>optional string oldGem = 5;</code>
      */
     java.lang.String getOldGem();
     /**
-     * <code>optional string oldGem = 4;</code>
+     * <code>optional string oldGem = 5;</code>
      */
     com.google.protobuf.ByteString
         getOldGemBytes();
@@ -9139,16 +9270,21 @@ public final class Equip {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              type_ = input.readInt32();
+              slot_ = input.readInt32();
               break;
             }
-            case 26: {
+            case 24: {
               bitField0_ |= 0x00000004;
-              newGem_ = input.readBytes();
+              type_ = input.readInt32();
               break;
             }
             case 34: {
               bitField0_ |= 0x00000008;
+              newGem_ = input.readBytes();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
               oldGem_ = input.readBytes();
               break;
             }
@@ -9208,33 +9344,49 @@ public final class Equip {
       return id_;
     }
 
-    // required int32 type = 2;
-    public static final int TYPE_FIELD_NUMBER = 2;
-    private int type_;
+    // required int32 slot = 2;
+    public static final int SLOT_FIELD_NUMBER = 2;
+    private int slot_;
     /**
-     * <code>required int32 type = 2;</code>
+     * <code>required int32 slot = 2;</code>
      */
-    public boolean hasType() {
+    public boolean hasSlot() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 type = 2;</code>
+     * <code>required int32 slot = 2;</code>
+     */
+    public int getSlot() {
+      return slot_;
+    }
+
+    // required int32 type = 3;
+    public static final int TYPE_FIELD_NUMBER = 3;
+    private int type_;
+    /**
+     * <code>required int32 type = 3;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 type = 3;</code>
      */
     public int getType() {
       return type_;
     }
 
-    // optional string newGem = 3;
-    public static final int NEWGEM_FIELD_NUMBER = 3;
+    // optional string newGem = 4;
+    public static final int NEWGEM_FIELD_NUMBER = 4;
     private java.lang.Object newGem_;
     /**
-     * <code>optional string newGem = 3;</code>
+     * <code>optional string newGem = 4;</code>
      */
     public boolean hasNewGem() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional string newGem = 3;</code>
+     * <code>optional string newGem = 4;</code>
      */
     public java.lang.String getNewGem() {
       java.lang.Object ref = newGem_;
@@ -9251,7 +9403,7 @@ public final class Equip {
       }
     }
     /**
-     * <code>optional string newGem = 3;</code>
+     * <code>optional string newGem = 4;</code>
      */
     public com.google.protobuf.ByteString
         getNewGemBytes() {
@@ -9267,17 +9419,17 @@ public final class Equip {
       }
     }
 
-    // optional string oldGem = 4;
-    public static final int OLDGEM_FIELD_NUMBER = 4;
+    // optional string oldGem = 5;
+    public static final int OLDGEM_FIELD_NUMBER = 5;
     private java.lang.Object oldGem_;
     /**
-     * <code>optional string oldGem = 4;</code>
+     * <code>optional string oldGem = 5;</code>
      */
     public boolean hasOldGem() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional string oldGem = 4;</code>
+     * <code>optional string oldGem = 5;</code>
      */
     public java.lang.String getOldGem() {
       java.lang.Object ref = oldGem_;
@@ -9294,7 +9446,7 @@ public final class Equip {
       }
     }
     /**
-     * <code>optional string oldGem = 4;</code>
+     * <code>optional string oldGem = 5;</code>
      */
     public com.google.protobuf.ByteString
         getOldGemBytes() {
@@ -9312,6 +9464,7 @@ public final class Equip {
 
     private void initFields() {
       id_ = 0L;
+      slot_ = 0;
       type_ = 0;
       newGem_ = "";
       oldGem_ = "";
@@ -9322,6 +9475,10 @@ public final class Equip {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSlot()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -9340,13 +9497,16 @@ public final class Equip {
         output.writeInt64(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, type_);
+        output.writeInt32(2, slot_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getNewGemBytes());
+        output.writeInt32(3, type_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getOldGemBytes());
+        output.writeBytes(4, getNewGemBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getOldGemBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -9363,15 +9523,19 @@ public final class Equip {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, type_);
+          .computeInt32Size(2, slot_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getNewGemBytes());
+          .computeInt32Size(3, type_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getOldGemBytes());
+          .computeBytesSize(4, getNewGemBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getOldGemBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9495,12 +9659,14 @@ public final class Equip {
         super.clear();
         id_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = 0;
+        slot_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        newGem_ = "";
+        type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        oldGem_ = "";
+        newGem_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
+        oldGem_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -9536,13 +9702,17 @@ public final class Equip {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.type_ = type_;
+        result.slot_ = slot_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.newGem_ = newGem_;
+        result.type_ = type_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
+        }
+        result.newGem_ = newGem_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
         }
         result.oldGem_ = oldGem_;
         result.bitField0_ = to_bitField0_;
@@ -9564,16 +9734,19 @@ public final class Equip {
         if (other.hasId()) {
           setId(other.getId());
         }
+        if (other.hasSlot()) {
+          setSlot(other.getSlot());
+        }
         if (other.hasType()) {
           setType(other.getType());
         }
         if (other.hasNewGem()) {
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000008;
           newGem_ = other.newGem_;
           onChanged();
         }
         if (other.hasOldGem()) {
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000010;
           oldGem_ = other.oldGem_;
           onChanged();
         }
@@ -9583,6 +9756,10 @@ public final class Equip {
 
       public final boolean isInitialized() {
         if (!hasId()) {
+          
+          return false;
+        }
+        if (!hasSlot()) {
           
           return false;
         }
@@ -9645,49 +9822,82 @@ public final class Equip {
         return this;
       }
 
-      // required int32 type = 2;
-      private int type_ ;
+      // required int32 slot = 2;
+      private int slot_ ;
       /**
-       * <code>required int32 type = 2;</code>
+       * <code>required int32 slot = 2;</code>
        */
-      public boolean hasType() {
+      public boolean hasSlot() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 type = 2;</code>
+       * <code>required int32 slot = 2;</code>
+       */
+      public int getSlot() {
+        return slot_;
+      }
+      /**
+       * <code>required int32 slot = 2;</code>
+       */
+      public Builder setSlot(int value) {
+        bitField0_ |= 0x00000002;
+        slot_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 slot = 2;</code>
+       */
+      public Builder clearSlot() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        slot_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 type = 3;
+      private int type_ ;
+      /**
+       * <code>required int32 type = 3;</code>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 type = 3;</code>
        */
       public int getType() {
         return type_;
       }
       /**
-       * <code>required int32 type = 2;</code>
+       * <code>required int32 type = 3;</code>
        */
       public Builder setType(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         type_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 type = 2;</code>
+       * <code>required int32 type = 3;</code>
        */
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         type_ = 0;
         onChanged();
         return this;
       }
 
-      // optional string newGem = 3;
+      // optional string newGem = 4;
       private java.lang.Object newGem_ = "";
       /**
-       * <code>optional string newGem = 3;</code>
+       * <code>optional string newGem = 4;</code>
        */
       public boolean hasNewGem() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional string newGem = 3;</code>
+       * <code>optional string newGem = 4;</code>
        */
       public java.lang.String getNewGem() {
         java.lang.Object ref = newGem_;
@@ -9701,7 +9911,7 @@ public final class Equip {
         }
       }
       /**
-       * <code>optional string newGem = 3;</code>
+       * <code>optional string newGem = 4;</code>
        */
       public com.google.protobuf.ByteString
           getNewGemBytes() {
@@ -9717,51 +9927,51 @@ public final class Equip {
         }
       }
       /**
-       * <code>optional string newGem = 3;</code>
+       * <code>optional string newGem = 4;</code>
        */
       public Builder setNewGem(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000008;
         newGem_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string newGem = 3;</code>
+       * <code>optional string newGem = 4;</code>
        */
       public Builder clearNewGem() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         newGem_ = getDefaultInstance().getNewGem();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string newGem = 3;</code>
+       * <code>optional string newGem = 4;</code>
        */
       public Builder setNewGemBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000008;
         newGem_ = value;
         onChanged();
         return this;
       }
 
-      // optional string oldGem = 4;
+      // optional string oldGem = 5;
       private java.lang.Object oldGem_ = "";
       /**
-       * <code>optional string oldGem = 4;</code>
+       * <code>optional string oldGem = 5;</code>
        */
       public boolean hasOldGem() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional string oldGem = 4;</code>
+       * <code>optional string oldGem = 5;</code>
        */
       public java.lang.String getOldGem() {
         java.lang.Object ref = oldGem_;
@@ -9775,7 +9985,7 @@ public final class Equip {
         }
       }
       /**
-       * <code>optional string oldGem = 4;</code>
+       * <code>optional string oldGem = 5;</code>
        */
       public com.google.protobuf.ByteString
           getOldGemBytes() {
@@ -9791,36 +10001,36 @@ public final class Equip {
         }
       }
       /**
-       * <code>optional string oldGem = 4;</code>
+       * <code>optional string oldGem = 5;</code>
        */
       public Builder setOldGem(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000010;
         oldGem_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string oldGem = 4;</code>
+       * <code>optional string oldGem = 5;</code>
        */
       public Builder clearOldGem() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         oldGem_ = getDefaultInstance().getOldGem();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string oldGem = 4;</code>
+       * <code>optional string oldGem = 5;</code>
        */
       public Builder setOldGemBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000010;
         oldGem_ = value;
         onChanged();
         return this;
@@ -13507,39 +13717,40 @@ public final class Equip {
   static {
     java.lang.String[] descriptorData = {
       "\n\024Protocol/Equip.proto\032\030Protocol/Attribu" +
-      "te.proto\"+\n\010GemPunch\022\014\n\004type\030\001 \002(\005\022\021\n\tge" +
-      "mItemId\030\002 \002(\t\"\264\001\n\tEquipInfo\022\n\n\002id\030\001 \002(\003\022" +
-      "\017\n\007equipId\030\002 \002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005level" +
-      "\030\004 \002(\005\022\033\n\010gemItems\030\005 \003(\0132\t.GemPunch\022\030\n\ta" +
-      "ttrDatas\030\006 \003(\0132\005.Attr\022\021\n\tmonsterId\030\007 \002(\005" +
-      "\022\016\n\006status\030\010 \002(\005\022\022\n\nexpireTime\030\t \001(\005\"1\n\017" +
-      "HSEquipInfoSync\022\036\n\nequipInfos\030\001 \003(\0132\n.Eq" +
-      "uipInfo\"O\n\nHSEquipBuy\022\017\n\007equipId\030\001 \002(\t\022\022" +
-      "\n\nequipCount\030\002 \002(\005\022\r\n\005stage\030\003 \002(\005\022\r\n\005lev",
-      "el\030\004 \002(\005\"4\n\rHSEquipBuyRet\022\017\n\007equipId\030\001 \002" +
-      "(\t\022\022\n\nequipCount\030\002 \002(\005\"8\n\016HSEquipCompose" +
-      "\022\017\n\007equipId\030\001 \002(\t\022\025\n\rrelatedItemId\030\002 \002(\005" +
-      "\"B\n\021HSEquipComposeRet\022\017\n\007equipId\030\001 \002(\t\022\r" +
-      "\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\"\n\024HSEquipI" +
-      "ncreaseLevel\022\n\n\002id\030\001 \002(\003\"C\n\027HSEquipIncre" +
-      "aseLevelRet\022\n\n\002id\030\001 \002(\003\022\r\n\005stage\030\002 \001(\005\022\r" +
-      "\n\005level\030\003 \001(\005\"\"\n\024HSEquipIncreaseStage\022\n\n" +
-      "\002id\030\001 \002(\003\"C\n\027HSEquipIncreaseStageRet\022\n\n\002" +
-      "id\030\001 \002(\003\022\r\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\032",
-      "\n\014HSEquipPunch\022\n\n\002id\030\001 \002(\003\".\n\017HSEquipPun" +
-      "chRet\022\033\n\010gemItems\030\001 \003(\0132\t.GemPunch\"F\n\nHS" +
-      "EquipGem\022\n\n\002id\030\001 \002(\003\022\014\n\004type\030\002 \002(\005\022\016\n\006ne" +
-      "wGem\030\003 \001(\t\022\016\n\006oldGem\030\004 \001(\t\",\n\rHSEquipGem" +
-      "Ret\022\033\n\010gemItems\030\001 \003(\0132\t.GemPunch\"4\n\023HSEq" +
-      "uipMonsterDress\022\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId" +
-      "\030\002 \002(\005\"7\n\026HSEquipMonsterDressRet\022\n\n\002id\030\001" +
-      " \001(\003\022\021\n\tmonsterId\030\002 \001(\005\"#\n\025HSEquipMonste" +
-      "rUndress\022\n\n\002id\030\001 \002(\003\"9\n\030HSEquipMonsterUn" +
-      "dressRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterId\030\002 \001(\005\"",
-      "6\n\025HSEquipMonsterReplace\022\n\n\002id\030\001 \002(\003\022\021\n\t" +
-      "monsterId\030\002 \001(\005\"9\n\030HSEquipMonsterReplace" +
-      "Ret\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterId\030\002 \001(\005B\030\n\026co" +
-      "m.hawk.game.protocol"
+      "te.proto\"9\n\010GemPunch\022\014\n\004slot\030\001 \002(\005\022\014\n\004ty" +
+      "pe\030\002 \002(\005\022\021\n\tgemItemId\030\003 \002(\t\"\264\001\n\tEquipInf" +
+      "o\022\n\n\002id\030\001 \002(\003\022\017\n\007equipId\030\002 \002(\t\022\r\n\005stage\030" +
+      "\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\033\n\010gemItems\030\005 \003(\0132\t" +
+      ".GemPunch\022\030\n\tattrDatas\030\006 \003(\0132\005.Attr\022\021\n\tm" +
+      "onsterId\030\007 \002(\005\022\016\n\006status\030\010 \002(\005\022\022\n\nexpire" +
+      "Time\030\t \001(\005\"1\n\017HSEquipInfoSync\022\036\n\nequipIn" +
+      "fos\030\001 \003(\0132\n.EquipInfo\"O\n\nHSEquipBuy\022\017\n\007e" +
+      "quipId\030\001 \002(\t\022\022\n\nequipCount\030\002 \002(\005\022\r\n\005stag",
+      "e\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\"4\n\rHSEquipBuyRet\022" +
+      "\017\n\007equipId\030\001 \002(\t\022\022\n\nequipCount\030\002 \002(\005\"8\n\016" +
+      "HSEquipCompose\022\017\n\007equipId\030\001 \002(\t\022\025\n\rrelat" +
+      "edItemId\030\002 \002(\005\"B\n\021HSEquipComposeRet\022\017\n\007e" +
+      "quipId\030\001 \002(\t\022\r\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001" +
+      "(\005\"\"\n\024HSEquipIncreaseLevel\022\n\n\002id\030\001 \002(\003\"C" +
+      "\n\027HSEquipIncreaseLevelRet\022\n\n\002id\030\001 \002(\003\022\r\n" +
+      "\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\"\n\024HSEquipIn" +
+      "creaseStage\022\n\n\002id\030\001 \002(\003\"C\n\027HSEquipIncrea" +
+      "seStageRet\022\n\n\002id\030\001 \002(\003\022\r\n\005stage\030\002 \001(\005\022\r\n",
+      "\005level\030\003 \001(\005\"\032\n\014HSEquipPunch\022\n\n\002id\030\001 \002(\003" +
+      "\".\n\017HSEquipPunchRet\022\033\n\010gemItems\030\001 \003(\0132\t." +
+      "GemPunch\"T\n\nHSEquipGem\022\n\n\002id\030\001 \002(\003\022\014\n\004sl" +
+      "ot\030\002 \002(\005\022\014\n\004type\030\003 \002(\005\022\016\n\006newGem\030\004 \001(\t\022\016" +
+      "\n\006oldGem\030\005 \001(\t\",\n\rHSEquipGemRet\022\033\n\010gemIt" +
+      "ems\030\001 \003(\0132\t.GemPunch\"4\n\023HSEquipMonsterDr" +
+      "ess\022\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId\030\002 \002(\005\"7\n\026HS" +
+      "EquipMonsterDressRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmons" +
+      "terId\030\002 \001(\005\"#\n\025HSEquipMonsterUndress\022\n\n\002" +
+      "id\030\001 \002(\003\"9\n\030HSEquipMonsterUndressRet\022\n\n\002",
+      "id\030\001 \001(\003\022\021\n\tmonsterId\030\002 \001(\005\"6\n\025HSEquipMo" +
+      "nsterReplace\022\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId\030\002 " +
+      "\001(\005\"9\n\030HSEquipMonsterReplaceRet\022\n\n\002id\030\001 " +
+      "\001(\003\022\021\n\tmonsterId\030\002 \001(\005B\030\n\026com.hawk.game." +
+      "protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13551,7 +13762,7 @@ public final class Equip {
           internal_static_GemPunch_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_GemPunch_descriptor,
-              new java.lang.String[] { "Type", "GemItemId", });
+              new java.lang.String[] { "Slot", "Type", "GemItemId", });
           internal_static_EquipInfo_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_EquipInfo_fieldAccessorTable = new
@@ -13629,7 +13840,7 @@ public final class Equip {
           internal_static_HSEquipGem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipGem_descriptor,
-              new java.lang.String[] { "Id", "Type", "NewGem", "OldGem", });
+              new java.lang.String[] { "Id", "Slot", "Type", "NewGem", "OldGem", });
           internal_static_HSEquipGemRet_descriptor =
             getDescriptor().getMessageTypes().get(14);
           internal_static_HSEquipGemRet_fieldAccessorTable = new

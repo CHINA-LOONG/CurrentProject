@@ -23,12 +23,13 @@ message HSItemInfoSync
 message HSItemUse
 {
 	required string itemId = 1;
+	optional int32  itemCount = 2;
+	optional int32  targetID = 3;
 }
 
 // 使用道具
 message HSItemUseRet
 {
-	required string itemId = 1;
 }
 
 // 购买道具

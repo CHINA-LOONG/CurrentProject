@@ -150,6 +150,20 @@ public class PlayerData {
 	}
 
 	/**
+	 * 获取玩家昵称
+	 */
+	public String getNickname() {
+		return playerEntity.getNickname();
+	}
+
+	/**
+	 * 获取玩家等级
+	 */
+	public int getLevel() {
+		return playerEntity.getLevel();
+	}
+	
+	/**
 	 * 获取玩家基础数据
 	 */
 	public PlayerEntity getPlayerEntity() {

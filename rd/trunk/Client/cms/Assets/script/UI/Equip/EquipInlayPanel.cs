@@ -22,7 +22,8 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
 
     public Image imgCoin;
     public Text textCoin;
-    public Image imgMaterial;
+    public Transform materialPos;
+    private ItemIcon materialIcon;
     public Text textMaterial;
 
     public Text text_dont;
@@ -41,6 +42,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
 
     private EquipData curData;
     private int selIndex = -1;
+    private UIEquipInlay.State type;
 
     private bool isMosaic=false;
     private bool isOpenmax=false;
@@ -54,9 +56,6 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
         text_Desc.color = ColorConst.text_color_Req;
         text_Open.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_btnopen");
         text_dont.text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotMent");
-
-        EventTriggerListener.Get(btnOpen.gameObject).onClick = OnClickOpen;
-
         for (int i = 0; i < mosaicItems.Length; i++)
         {
             mosaicItems[i].Index = i;
@@ -64,9 +63,16 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
         }
         
     }
+
+    //void ReloadData()
+    //{
+    //    ReloadData(curData, type, selIndex);
+    //}
+
     public override void ReloadData(EquipData data, UIEquipInlay.State type, int select = -1)
     {
-        curData = data;
+        curData = data; 
+        this.type = type;
         this.selIndex = (select == -1 ? selIndex : select);
         hidOpen.SetActive(type == UIEquipInlay.State.PetUI);
 
@@ -95,17 +101,22 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
             dontOpen.SetActive(false);
         }
 
+        int canOpenCount=curData.stage - (BattleConst.minGemStage - 1);
         isMosaic = false;
-        isOpenmax = true;
-
+        isOpenmax = (curData.gemList.Count >= canOpenCount);
         text_Desc.gameObject.SetActive(isOpenmax);
-        text_Tips.text = string.Format(StaticDataMgr.Instance.GetTextByID("equip_inlay_tips"), curData.stage - (BattleConst.minGemStage - 1));
-
+        text_Tips.text = string.Format(StaticDataMgr.Instance.GetTextByID("equip_inlay_tips"), canOpenCount);
+        #region 设置宝石插槽的状态
         for (int i = 0; i < mosaicItems.Length; i++)
         {
-            mosaicItems[i].gameObject.SetActive((curData.stage - BattleConst.minGemStage) >= i);
+            if (canOpenCount <= i)
+            {
+                mosaicItems[i].gameObject.SetActive(false);
+                continue;
+            }
             if (curData.gemList.Count>i)
             {
+                mosaicItems[i].gameObject.SetActive(true);
                 mosaicItems[i].Reload(curData.gemList[i]);
                 if (!curData.gemList[i].gemId.Equals(BattleConst.invalidGemID))
                 {
@@ -114,23 +125,45 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
             }
             else
             {
-                isOpenmax = false;
-                mosaicItems[i].Reload(null);
+                if (type == UIEquipInlay.State.Setting)
+                {
+                    mosaicItems[i].gameObject.SetActive(false);
+                    continue;
+                }
+                else
+                {
+                    mosaicItems[i].Reload(null);
+                }
             }
             if (ParentNode.uiType == UIEquipInlay.State.Setting)
             {
                 mosaicItems[i].SetSelectState(i == selIndex);
             }
         }
+        
+        #endregion
         #region 消耗材料解析计算
         curProto = StaticDataMgr.Instance.GetEquipProtoData(curData.equipId, curData.stage);
+        curDemand.Clear();
         curProto.GetPunchDemand(ref curDemand);
+        if (UIUtil.CheckIsEnoughMaterial(curDemand))
+        {
+            btnOpen.interactable = true;
+            EventTriggerListener.Get(btnOpen.gameObject).onClick = OnClickOpen;
+        }
+        else
+        {
+            btnOpen.interactable = false;
+            EventTriggerListener.Get(btnOpen.gameObject).onClick = null;
+        }
+
+
         for (int i = 0; i < curDemand.Count; i++)
         {
             if (curDemand[i].type == (int)PB.itemType.ITEM)
             {
                 ItemData mineItem = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(curDemand[i].itemId);
-                if (mineItem==null)
+                if (mineItem == null)
                 {
                     mineItem = new ItemData() { itemId = curDemand[i].itemId, count = 0 };
                 }
@@ -142,8 +175,17 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
                 {
                     textMaterial.color = ColorConst.text_color_Req;
                 }
-                //TODO:set icon
-                imgMaterial.sprite = null;
+                ItemData material = new ItemData() { itemId = curDemand[i].itemId, count = 0 };
+                if (materialIcon == null)
+                {
+                    materialIcon = ItemIcon.CreateItemIcon(material);
+                    UIUtil.SetParentReset(materialIcon.transform, materialPos);
+
+                }
+                else
+                {
+                    materialIcon.RefreshWithItemInfo(material);
+                }
                 textMaterial.text = mineItem.count + "/" + curDemand[i].count;
             }
             else if (curDemand[i].type == (int)PB.itemType.PLAYER_ATTR)
@@ -158,7 +200,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
                     {
                         textCoin.color = ColorConst.text_color_Req;
                     }
-                    imgCoin.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("icon_jinbi");
+                    imgCoin.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(BattleConst.icon_jinbi);
                     textCoin.text = curDemand[i].count.ToString();
                 }
                 else
@@ -176,12 +218,21 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
 
     }
 
+    void OnPrompButtonClick(MsgBox.PrompButtonClick state)
+    {
+        if (state == MsgBox.PrompButtonClick.OK)
+        {
+            OnSendToOpen(curData);
+        }
+    }
+
+
     void OnClickOpen(GameObject go)
     {
         if (isMosaic||isOpenmax)
         {
             Logger.Log("已经最大数量了");
-            OnSendToOpen(curData);
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel, StaticDataMgr.Instance.GetTextByID("equip_random_open") + "\n" + StaticDataMgr.Instance.GetTextByID("equip_return_gem"), OnPrompButtonClick);
             return;
         }
         else
@@ -213,6 +264,8 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_PUNCH_S.GetHashCode().ToString(), OnEquipPunchRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_GEM_C.GetHashCode().ToString(), OnEquipMosaicRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_GEM_S.GetHashCode().ToString(), OnEquipMosaicRet);
+
+        //GameEventMgr.Instance.AddListener(GameEventList.ReloadEquipGemNotify, ReloadData);
     }
 
     void UnBindListener()

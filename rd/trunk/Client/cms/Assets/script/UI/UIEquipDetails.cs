@@ -320,7 +320,7 @@ public class UIEquipDetails : MonoBehaviour
         monster.equipList[itemInfo.part] = null;
         equip.monsterId = BattleConst.invalidMonsterID;
 
-        GameEventMgr.Instance.FireEvent(PetViewConst.ReloadPetEquipNotify);
+        GameEventMgr.Instance.FireEvent(GameEventList.ReloadPetEquipNotify);
         equipCallBack.Unload();
     }
 
@@ -359,7 +359,7 @@ public class UIEquipDetails : MonoBehaviour
         gemTextTip.text = StaticDataMgr.Instance.GetTextByID("equip_gem_casting");
         gemPromptTip.text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotMent");
         equipUninstallTip.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiexia");
-        StrengthenTip.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_btnopen");
+        StrengthenTip.text = StaticDataMgr.Instance.GetTextByID("equip_forge_title");
         gemSetTip.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_title");
         equipInstallTip.text = StaticDataMgr.Instance.GetTextByID("equip_Change");
     }

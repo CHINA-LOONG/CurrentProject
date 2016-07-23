@@ -57,14 +57,14 @@ public class UIPetList :  UIBase, TabButtonDelegate
     }
     void OnEnable()
     {
-        GameEventMgr.Instance.AddListener(PetViewConst.ReloadPetStageNotify, ReloadPetList);
-        GameEventMgr.Instance.AddListener(PetViewConst.ReloadPetEquipNotify, ReloadPetList);
+        GameEventMgr.Instance.AddListener(GameEventList.ReloadPetStageNotify, ReloadPetList);
+        GameEventMgr.Instance.AddListener(GameEventList.ReloadPetEquipNotify, ReloadPetList);
     }
 
     void OnDisable()
     {
-        GameEventMgr.Instance.RemoveListener(PetViewConst.ReloadPetStageNotify, ReloadPetList);
-        GameEventMgr.Instance.RemoveListener(PetViewConst.ReloadPetEquipNotify, ReloadPetList);
+        GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetStageNotify, ReloadPetList);
+        GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetEquipNotify, ReloadPetList);
     }
     public override void Init()
     {

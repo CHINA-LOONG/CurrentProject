@@ -166,6 +166,7 @@ public class GameDataMgr : MonoBehaviour
         }
         {
             mainPlayer.gold = playerInfo.gold;
+			GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged,mainPlayer.gold);
         }
         {
             mainPlayer.coin = playerInfo.coin;
@@ -320,6 +321,7 @@ public class GameDataMgr : MonoBehaviour
                 else if ((int)PB.changeType.CHANGE_GOLD == int.Parse(item.itemId))
                 {
                     GameDataMgr.Instance.mainPlayer.gold += item.count;
+					GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged,mainPlayer.gold);
                 }
 
             }
@@ -353,6 +355,7 @@ public class GameDataMgr : MonoBehaviour
                 else if ((int)PB.changeType.CHANGE_GOLD == int.Parse(item.itemId))
                 {
                     GameDataMgr.Instance.mainPlayer.gold -= item.count;
+					GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged,mainPlayer.gold);
                 }
 
             }

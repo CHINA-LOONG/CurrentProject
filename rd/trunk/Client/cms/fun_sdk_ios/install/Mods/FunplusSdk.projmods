@@ -1,0 +1,11 @@
+{
+    "group": "Funplus_Sdk",
+    "libs": [],
+    "frameworks": ["FunplusSdk.framework", "UIKit.framework", "AssetsLibrary.framework", "AdSupport.framework", "MobileCoreServices.framework"],
+    "headerpaths": [],
+    "files":   ["FunplusSdkResources.bundle"],
+    "folders": [],    
+    "excludes": [],
+    "compiler_flags": [],
+    "linker_flags": []
+}

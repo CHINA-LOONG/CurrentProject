@@ -26,7 +26,7 @@ public class EquipMaterialItem : MonoBehaviour
         {
             mineItem = new ItemData() { itemId = itemId, count = 0 };
         }
-        textCount.text = mineItem.count + "/" + count;
+        textCount.text = (mineItem.count > 9999 ? 9999 : mineItem.count) + "/" + count;
 
         if (mineItem.count<count)
         {

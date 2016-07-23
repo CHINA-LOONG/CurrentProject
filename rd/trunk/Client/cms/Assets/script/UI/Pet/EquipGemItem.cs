@@ -21,18 +21,18 @@ public class EquipGemItem : MonoBehaviour
         }
         else
         {
-            //TODO: set gem Icon
+            ItemData itemData = new ItemData() { itemId = info.gemId, count = 0 };
             if (gemIcon == null)
             {
                 Debug.Log("存在宝石");
-                gemIcon = ItemIcon.CreateItemIcon(new ItemData() { itemId = info.gemId, count = 0 });
+                gemIcon = ItemIcon.CreateItemIcon(itemData,false);
                 UIUtil.SetParentReset(gemIcon.transform, (transIcon == null ? transform : transIcon.transform));
                 gemIcon.HideExceptIcon();
             }
             else
             {
                 gemIcon.gameObject.SetActive(true);
-                gemIcon.RefreshWithItemInfo(new ItemData() { itemId = info.gemId, count = 0 });
+                gemIcon.RefreshWithItemInfo(itemData,false);
                 gemIcon.HideExceptIcon();
             }
         }

@@ -226,7 +226,7 @@ public class PetDetailRightStage : PetDetailRightBase{
         m_unit.pbUnit.stage += 1;
         ReloadData(new PetRightParamBase() { unit = m_unit });
 
-        GameEventMgr.Instance.FireEvent(PetViewConst.ReloadPetStageNotify);
+        GameEventMgr.Instance.FireEvent(GameEventList.ReloadPetStageNotify);
     }
 
     string ShowFormatMaterailCount(int currentCount, int needCount, int currentMaxCount)
@@ -239,11 +239,11 @@ public class PetDetailRightStage : PetDetailRightBase{
     {
         if (currentCount < targetCount)
         {
-            label.color = Color.red;
+            label.color = ColorConst.text_color_nReq;
         }
         else
         {
-            label.color = Color.black;
+            label.color = ColorConst.text_color_Req;
         }
     }
 }

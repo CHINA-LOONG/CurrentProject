@@ -4,10 +4,12 @@ import "Protocol/Attribute.proto";
 
 message GemPunch
 {
+	// 宝石槽位
+	required int32 slot = 1;	
 	// 宝石形状
-	required int32 type = 1;
+	required int32 type = 2;
 	// 宝石id
-	required string gemItemId = 2;
+	required string gemItemId = 3;
 }
 
 message EquipInfo
@@ -108,9 +110,10 @@ message HSEquipPunchRet
 message HSEquipGem
 {
 	required int64 id = 1;
-	required int32 type = 2;
-	optional string newGem = 3;
-	optional string oldGem = 4;
+	required int32 slot = 2;
+	required int32 type = 3;
+	optional string newGem = 4;
+	optional string oldGem = 5;
 }
 
 // 镶嵌宝石返回

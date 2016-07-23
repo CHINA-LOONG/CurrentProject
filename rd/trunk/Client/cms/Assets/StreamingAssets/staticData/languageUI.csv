@@ -11,7 +11,7 @@ spell_magic_name,法术技能,MAGIC ATK
 spell_beidong_name,被动技能,Passive Ability
 spell_buff_name,buff技能,Buff Ability
 spell_dazhao_name,大招技能,Ultimate
-ui_tishi,提示,Tip
+ui_tishi,提示,Notice
 instance_wofangzhenrong,我方阵容,My Monsters
 instance_difangzhenrong,敌方阵容,Enemies
 instance_jiangliList,可获得奖励,Drop Info
@@ -73,7 +73,7 @@ equip_Bracelet,手镯,Bracelet
 equip_Ring,戒指,Ring
 equip_Amulet,护身符,Amulet
 equip_gem_NotSet,未镶嵌,Not engraved
-equip_gem_NotKong,未开孔 : 开孔后将获得宝石槽,Undrilling: Gem will open hole
+equip_gem_NotKong,未开孔 : 开孔后将获得宝石槽,Open Sockets: Reveals a Gem slot after opening.
 equip_Change,换装,Change
 ss,,
 zz,,
@@ -94,7 +94,6 @@ quest_shijianweidao,时间未到,Available Later
 quest_lijiqianwang,立即前往,Go Now
 quest_lingqujiangli,领取奖励,Collect Reward
 quest_reward_title,任务奖励,Mission Reward
-tip_not_found_quest,当前类型没有可以进行的任务哦！,No can undertake the task of the current type!
 ,,
 xl_mail,薛龙_邮箱界面,
 mail_title,邮箱,Inbox
@@ -112,7 +111,6 @@ mail_youxiangyiman,邮箱已经爆仓，快快收取邮件,Your inbox is full，
 mail_CollectedAll,全部收取成功！,Collected all!
 ,,
 xl_equip_forge,薛龙_装备强化进阶,
-equip_forge_title,打造,Forge
 equip_forge_xiaohao,消耗材料,Materials Consumed
 equip_forge_dazao,打造,Forge
 equip_forge_XXdazao,强化打造,Advance
@@ -124,7 +122,7 @@ im_forge_success,打造成功,Forge success!
 im_forge_failed,打造失败,Forge failed.
 im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 ,,
-equip_inlay_title,镶嵌,Embed
+equip_inlay_xiangqian,镶嵌,Embed
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
 equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
@@ -142,7 +140,6 @@ equip_List_xianzhidengji,等级限制,Level
 equip_List_zhuangbei,装备,Equip
 ,,
 xl_gem_list,薛龙_宝石列表界面,
-gem_btnxiangqian,镶嵌,Embed
 equip_gem_NotMent,该品质装备不可镶嵌宝石,This equipment quality is unable to insert Gems.
 equip_gem_casting,宝石加成,Gem Casting
 ,,
@@ -176,7 +173,7 @@ im_monster_lock,宠物锁定成功,Monster is now locked.
 im_monster_unlock,宠物解锁成功,Monster is now unlocked.
 ,,
 ,,
-pet_detail_skill_current_level,当前级:,Current:
+pet_detail_skill_current_level,本级:,Current:
 pet_detail_skill_next_level,下一级:,Next LVL:
 pet_detail_skill_max_level,当前技能已达到最高等级,Ability currently at its max LVL
 pet_detail_skill_current_point,目前的技能点数:,Current Ability Points:
@@ -187,7 +184,6 @@ pet_detail_stage_demand_item,需求材料,Req. Materials:
 pet_detail_stage,进阶,Advance
 pet_detail_stage_full,进阶完成,Advancement Complete
 pet_detail_stage_monster,需要的怪物,Req. Monsters:
-pet_detail_stage_none_monster,木有该宠物,no monster
 pet_detail_skill_no_upgrade,该技能不能升级,this skill cannot upgrade
 pet_list_title,宠物,Monsters
 pet_tip_full,"拥有过多宠物,快去消耗一些吧\n 有可能不会继续获得宠物","You have too many monsters, go and consume some! \n (You may possibly not receive any more monsters)"

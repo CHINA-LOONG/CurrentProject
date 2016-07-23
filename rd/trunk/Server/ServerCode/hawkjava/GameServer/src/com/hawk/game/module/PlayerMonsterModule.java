@@ -438,7 +438,8 @@ public class PlayerMonsterModule extends PlayerModule {
 	protected boolean onPlayerLogout() {
 		// 重要数据下线就存储
 		for (Map.Entry<Integer, MonsterEntity> entry : player.getPlayerData().getMonsterEntityMap().entrySet()) {
-			entry.getValue().notifyUpdate(false);
+			MonsterEntity monsterEntity = entry.getValue();
+			monsterEntity.notifyUpdate(false);
 		}
 		return true;
 	}

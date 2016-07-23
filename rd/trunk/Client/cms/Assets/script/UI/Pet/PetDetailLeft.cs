@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PetDetailLeft : MonoBehaviour,IEquipField
 {
     public Text textName;
+    public Text textType;
     public Text textZhanli;
     public Text textLevel;
     public Image imgProIcon;
@@ -40,15 +41,59 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
 
     GameUnit m_unit;
 
+    public enum BtnState
+    {
+        None,
+        Skill,
+        Stage,
+        Advance
+    }
+    private BtnState state;
+
+    public BtnState State
+    {
+        get { return state; }
+        set
+        {
+            if (state != value)
+            {
+                state = value;
+                //TODO: 设置按钮的正常状态：
+                btnSkill.GetComponent<Animator>().SetBool("Selected", false);
+                btnStage.GetComponent<Animator>().SetBool("Selected", false);
+                btnAdvance.GetComponent<Animator>().SetBool("Selected", false);
+                switch (state)
+                {
+                    case BtnState.None:
+                        break;
+                    case BtnState.Skill:
+                        btnSkill.GetComponent<Animator>().SetTrigger("Normal");
+                        btnSkill.GetComponent<Animator>().SetBool("Selected", true);
+                        break;
+                    case BtnState.Stage:
+                        btnStage.GetComponent<Animator>().SetTrigger("Normal");
+                        btnStage.GetComponent<Animator>().SetBool("Selected", true);
+                        break;
+                    case BtnState.Advance:
+                        btnAdvance.GetComponent<Animator>().SetTrigger("Normal");
+                        btnAdvance.GetComponent<Animator>().SetBool("Selected", true);
+                        break;
+                }
+            }
+        }
+    }
+
+
     // Use this for initialization
     void Start()
     {
-        GameEventMgr.Instance.AddListener(PetViewConst.ReloadPetStageNotify, ReloadPetStage);
-
         EventTriggerListener.Get(btnDetailAttr.gameObject).onClick = DetailAttrButtonDown;
-        EventTriggerListener.Get(btnSkill.gameObject).onClick = SkillButtonDown;
-        EventTriggerListener.Get(btnStage.gameObject).onClick = StageButtonDown;
-        EventTriggerListener.Get(btnAdvance.gameObject).onClick = AdvanceButtonDown;
+
+        btnSkill.onClick.AddListener(SkillButtonDown);
+        btnStage.onClick.AddListener(StageButtonDown);
+        btnAdvance.onClick.AddListener(AdvanceButtonDown);
+        btnAdvance.interactable = false;
+
 
         btnDetailAttr.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftDetailAttr);
         btnSkill.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailLeftSkill);
@@ -60,13 +105,14 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
             item.iClickBack = this;
         }
     }
+
     void OnEnable()
     {
-        GameEventMgr.Instance.AddListener(PetViewConst.ReloadPetStageNotify, ReloadPetStage);
+        GameEventMgr.Instance.AddListener(GameEventList.ReloadPetStageNotify, ReloadPetStage);
     }
     void OnDisable()
     {
-        GameEventMgr.Instance.RemoveListener(PetViewConst.ReloadPetStageNotify, ReloadPetStage);
+        GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetStageNotify, ReloadPetStage);
     }
 
     void ReloadPetStage()
@@ -106,6 +152,7 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         #endregion
 
         UIUtil.SetStageColor(textName, unit);
+        textType.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListType);
         //刷新装备
         RefreshEquip(unit.equipList);
 
@@ -156,14 +203,8 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         }
         for (int i = 0; i < equips.Length; i++)
         {
-            fields[i].Part = (PartType)i;
-            fields[i].Data=equips[i];
+            fields[i].SetField(m_unit, i);
         }
-    }
-
-    void SkillButtonDown(GameObject go)
-    {
-        ParentNode.SkillButtonDown();
     }
 
     void DetailAttrButtonDown(GameObject go)
@@ -171,12 +212,17 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         ParentNode.DetailAttrButtonDown();
     }
 
-    void StageButtonDown(GameObject go)
+    void SkillButtonDown()
+    {
+        ParentNode.SkillButtonDown();
+    }
+
+    void StageButtonDown()
     {
         ParentNode.StageButtonDown();
     }
 
-    void AdvanceButtonDown(GameObject go)
+    void AdvanceButtonDown()
     {
         ParentNode.AdvanceButtonDown();
     }

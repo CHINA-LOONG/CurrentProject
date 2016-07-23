@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 11418160}
+  addEquip: {fileID: 11475736}
 --- !u!114 &11475736
 MonoBehaviour:
   m_ObjectHideFlags: 1

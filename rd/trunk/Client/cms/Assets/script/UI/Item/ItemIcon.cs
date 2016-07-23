@@ -18,13 +18,13 @@ public class ItemIcon : MonoBehaviour
 
 	#region ----------------Create Method
 
-	public	static	ItemIcon	CreateItemIcon (ItemData	itemInfo)
-	{ 
-		GameObject go = ResourceMgr.Instance.LoadAsset("ItemIcon");
-		ItemIcon itemIcon = go.GetComponent<ItemIcon>();
-		itemIcon.RefreshWithItemInfo (itemInfo);
-		return itemIcon;
-	}
+    public static ItemIcon CreateItemIcon(ItemData itemInfo, bool showTips = true)
+    {
+        GameObject go = ResourceMgr.Instance.LoadAsset("ItemIcon");
+        ItemIcon itemIcon = go.GetComponent<ItemIcon>();
+        itemIcon.RefreshWithItemInfo(itemInfo,showTips);
+        return itemIcon;
+    }
 	
 	public	static	ItemIcon	CreateItemIcon (EquipData	equipInfo)
 	{
@@ -47,22 +47,45 @@ public class ItemIcon : MonoBehaviour
 	ItemData			itemInfo;
     EquipData equipInfo;
 
+    private bool showTips = false;
+
+    public bool ShowTips
+    {
+        get { return showTips; }
+        set 
+        {
+            if (showTips != value)
+            {
+                showTips = value;
+                if (showTips)
+                {
+                    ScrollViewEventListener.Get(iconButton.gameObject).onClick = OnClickIconBtn;
+                }
+                else
+                {
+                    ScrollViewEventListener.Get(iconButton.gameObject).onClick = null;
+                }
+            }
+        }
+    }
+
 	#region --------------public接口----------------------
 
-	public	bool	RefreshWithItemInfo(ItemData	itemInfo)
-	{
-		string itemStaticId = itemInfo.itemId;
+    public bool RefreshWithItemInfo(ItemData itemInfo, bool showTips = true)
+    {
+        ShowTips = showTips;
+        string itemStaticId = itemInfo.itemId;
 
-		ItemStaticData itemStaticData = StaticDataMgr.Instance.GetItemData (itemStaticId);
-		if (null == itemStaticData)
-			return false;
+        ItemStaticData itemStaticData = StaticDataMgr.Instance.GetItemData(itemStaticId);
+        if (null == itemStaticData)
+            return false;
 
-		iconType = GetIconType (itemStaticData.type);
-		this.itemInfo = itemInfo;
+        iconType = GetIconType(itemStaticData.type);
+        this.itemInfo = itemInfo;
 
-		SetItemIconUi (itemStaticData);
-		return true;
-	}
+        SetItemIconUi(itemStaticData);
+        return true;
+    }
 
 	public	bool	RefreshWithEquipInfo(EquipData	equipInfo)
 	{
@@ -200,5 +223,20 @@ public class ItemIcon : MonoBehaviour
 	{
 		pieceImage.gameObject.SetActive (bShow);
 	}
-	
+
+    void OnClickIconBtn(GameObject go)
+    {
+        string itemStaticId;
+        if(iconType == IconType.Equip)
+        {
+            //itemStaticId = equipInfo.equipId;
+            return;
+        }
+        else
+        {
+            itemStaticId = itemInfo.itemId;
+        }
+        UIPropTips tips = UIPropTips.openPropTips(itemStaticId);
+    }
+
 }

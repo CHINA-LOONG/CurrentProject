@@ -41,7 +41,8 @@ public class UIPetEquipList : PetDetailRightBase,IUIEquipListCallBack
 
     public void OnEquipDressOrReplace()
     {
-        ParentNode.ReloadData();
+        ParentNode.ReloadLeftData();
+        ParentNode.ReloadRigthData(PetViewConst.UIPetEquipListAssetName);
     }
 
 }

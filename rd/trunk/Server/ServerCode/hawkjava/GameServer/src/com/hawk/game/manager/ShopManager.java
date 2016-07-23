@@ -3,6 +3,7 @@ package com.hawk.game.manager;
 import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.util.services.HawkOrderService;
+import org.hawk.util.services.HawkReportService;
 import org.hawk.xid.HawkXID;
 
 import sun.print.resources.serviceui;
@@ -84,9 +85,7 @@ public class ShopManager extends HawkAppObj {
 		{
 			// 离线玩家
 			if (player.getSession() == null) {
-				PlayerEntity playerEntity = player.getPlayerData().getPlayerEntity();
-				playerEntity.setGold(playerEntity.getGold() + rechargeEntity.getAddGold() + rechargeEntity.getGiftGold());
-				playerEntity.notifyUpdate(false);
+				player.increaseGold(rechargeEntity.getAddGold() + rechargeEntity.getGiftGold(), Action.SHOP_RECHARGE);
 			}
 			else {
 				AwardItems reward = new AwardItems();
@@ -98,6 +97,24 @@ public class ShopManager extends HawkAppObj {
 		staticsticsEntity.AddRechargeRecord(productId);
 		staticsticsEntity.notifyUpdate(false);
 		HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_STATUS_OK, rechargeCfg.getGold(), giftGoldCount);
+		
+		// 上报充值数据
+		HawkReportService.RechargeData rechargeData = new HawkReportService.RechargeData(
+														  puid, 
+														  "", 
+														  player.getPlayerData().getId(),  
+														  player.getPlayerData().getNickname(), 
+														  player.getPlayerData().getLevel(),
+														  orderSerial,
+														  productId, 
+														  0,
+														  goldCount,
+														  giftGoldCount,
+														  "",
+														  "");
+		
+		HawkReportService.getInstance().report(rechargeData);
+		
 		return true;
 	}
 	

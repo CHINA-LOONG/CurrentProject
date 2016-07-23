@@ -5,7 +5,7 @@ using System;
 
 public class UnitData
 {
-	/*
+
 	private static System.ComponentModel.Int64Converter _unused = new System.ComponentModel.Int64Converter();
 	private static System.ComponentModel.DecimalConverter _unused2 = new System.ComponentModel.DecimalConverter();
 	private static System.ComponentModel.ByteConverter _unused3 = new System.ComponentModel.ByteConverter();
@@ -25,7 +25,7 @@ public class UnitData
 	private static System.ComponentModel.DateTimeConverter _unused17 = new System.ComponentModel.DateTimeConverter();
 	//private static System.ComponentModel.EnumConverter _unused18 = new System.ComponentModel.EnumConverter(typeof(<any your enum>));
 	private static System.ComponentModel.TimeSpanConverter _unused19 = new System.ComponentModel.TimeSpanConverter();
-	*/
+
     public string index;
     public string assetID;
     public string uiAsset;

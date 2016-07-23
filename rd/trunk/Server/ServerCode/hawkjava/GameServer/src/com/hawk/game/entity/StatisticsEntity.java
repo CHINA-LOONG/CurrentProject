@@ -427,9 +427,12 @@ public class StatisticsEntity  extends HawkDBEntity {
 	public int getRechargeTime(String productId){
 		if (rechargeRecordMap.containsKey(productId)) {
 			return rechargeRecordMap.get(productId);
-		}
-		
+		}	
 		return 0;
+	}
+	
+	public Map<String, Integer> getRechargeRecordMap() {
+		return rechargeRecordMap;
 	}
 	
 	public void AddRechargeRecord(String productId) {

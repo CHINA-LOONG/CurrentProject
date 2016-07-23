@@ -2,8 +2,11 @@ package com.hawk.game.entity;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +14,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+
+
 
 
 
@@ -79,7 +85,7 @@ public class EquipEntity extends HawkDBEntity {
 	protected boolean invalid;
 
 	@Transient
-	protected List<GemInfo> gemDressList = new LinkedList<GemInfo>();
+	protected Map<Integer, GemInfo> gemDressList = new LinkedHashMap<Integer, GemInfo>();
 
 	@Transient
 	Attribute attr = null;
@@ -161,15 +167,15 @@ public class EquipEntity extends HawkDBEntity {
 		return punchCount;
 	}
 	
-	public List<GemInfo> GetGemDressList() {
+	public Map<Integer, GemInfo> GetGemDressList() {
 		return gemDressList;
 	}
 	
 	public String gemListToString() {
 		gemDress = "";
 		if (gemDressList.isEmpty() == false) {
-			for (GemInfo element : gemDressList) {
-				gemDress = gemDress + element.getType() + "," + element.getGemId() + "_";
+			for (Map.Entry<Integer, GemInfo> entry : gemDressList.entrySet()) {
+				gemDress = gemDress + entry.getKey() + "," + entry.getValue().getType() + "," + entry.getValue().getGemId() + "_";
 			}
 		}
 		
@@ -182,45 +188,36 @@ public class EquipEntity extends HawkDBEntity {
 			for (String element : Arrays.asList(gemDress.split("_"))) {
 				if (element != null && !"".equals(element)) {
 					String[] result = element.split(",");
-					if (result.length == 2) {
-						gemDressList.add(new GemInfo(Integer.valueOf(result[0]), result[1]));
+					if (result.length == 3) {
+						gemDressList.put(Integer.valueOf(result[0]), new GemInfo(Integer.valueOf(result[1]), result[2]));
 					}
 				}
 			}
 		}
 	}
 	
-	public void addGem(int type) {
-		gemDressList.add(new GemInfo(type, GsConst.EQUIP_GEM_NONE));
+	public void addGem(int slot, int type) {
+		gemDressList.put(slot, new GemInfo(type, GsConst.EQUIP_GEM_NONE));
 	}
 	
-	public void addGem(int type, String gemId)
+	public void addGem(int slot, int type, String gemId)
 	{
-		for (GemInfo element : gemDressList) {
-			if (element.getType() == type && element.getGemId().equals(GsConst.EQUIP_GEM_NONE)) {
-				element.setGemId(gemId);
-				break;
-			}
+		if (gemDressList.get(slot) != null && gemDressList.get(slot).equals(GsConst.EQUIP_GEM_NONE)) {
+			gemDressList.get(slot).setGemId(gemId);
 		}
 	}
 	
-	public void removeGem(String gemId)
+	public void removeGem(int slot, String gemId)
 	{
-		for (GemInfo element : gemDressList) {
-			if (element.getGemId().equals(gemId) == true) {
-				element.setGemId(GsConst.EQUIP_GEM_NONE);
-				break;
-			}
+		if (gemDressList.get(slot) != null && gemDressList.get(slot).equals(gemId)) {
+			gemDressList.get(slot).setGemId(GsConst.EQUIP_GEM_NONE);
 		}
 	}
 	
-	public void replaceGem(String oldGemId, String newgemId)
+	public void replaceGem(int slot, String oldGemId, String newgemId)
 	{
-		for (GemInfo element : gemDressList) {
-			if (element.getGemId().equals(oldGemId) == true) {
-				element.setGemId(newgemId);
-				break;
-			}
+		if (gemDressList.get(slot) != null && gemDressList.get(slot).equals(oldGemId)) {
+			gemDressList.get(slot).setGemId(newgemId);
 		}
 	}
 	

@@ -176,7 +176,13 @@ namespace PB
       EQUIP_GEM_NOT_FOUND = 262166,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_CAN_NOT_OPEN_SLOT", Value=262167)]
-      EQUIP_CAN_NOT_OPEN_SLOT = 262167
+      EQUIP_CAN_NOT_OPEN_SLOT = 262167,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_MISMATCH", Value=262168)]
+      EQUIP_GEM_MISMATCH = 262168,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_NOT_PUNCH", Value=262169)]
+      EQUIP_SLOT_NOT_PUNCH = 262169
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"questError")]

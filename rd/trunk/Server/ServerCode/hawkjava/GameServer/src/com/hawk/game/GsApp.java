@@ -589,6 +589,8 @@ public class GsApp extends HawkApp {
 	public void onOrderNotify(JSONObject jsonInfo) {
 		if (jsonInfo.getInt("action") == (HawkOrderService.ACTION_ORDER_DELIVER_REQUEST)) {
 			
+			logger.info("order notity:" + jsonInfo.toString());
+			
 			String puid = jsonInfo.getString("uid");
 			String orderSerial = jsonInfo.getString("tid");
 			String platform = jsonInfo.getString("type");

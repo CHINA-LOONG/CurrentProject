@@ -57,7 +57,6 @@ public class InlayGemItem : MonoBehaviour
     void Start()
     {
         text_LockDesc.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_lockTips");
-        text_UnlockDesc.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_unlockTips");
         text_Xiezai.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiexia");
 
         ScrollViewEventListener.Get(btnSelect.gameObject).onClick = OnSelectItem;
@@ -87,6 +86,7 @@ public class InlayGemItem : MonoBehaviour
         else //开孔
         {
             imgItem.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("baoshiditu_" + gem.type);
+            text_UnlockDesc.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_unlockTips");
 
             if (gem.gemId.Equals(BattleConst.invalidGemID))//未镶嵌
             {
@@ -102,17 +102,17 @@ public class InlayGemItem : MonoBehaviour
                     EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(gemItem.gemId);
                     textGemName.text = StaticDataMgr.Instance.GetTextByID(gemItem.name);
                     UIUtil.SetDisPlayAttr(attr, text_Attr1, textAttr1, text_Attr2, textAttr2);
-
+                    ItemData itemData = new ItemData() { itemId = gem.gemId, count = 0 };
                     if (gemIcon == null)
                     {
-                        gemIcon = ItemIcon.CreateItemIcon(new ItemData() { itemId = gem.gemId, count = 0 });
+                        gemIcon = ItemIcon.CreateItemIcon(itemData, false);
                         UIUtil.SetParentReset(gemIcon.transform, gemPos.transform);
                         gemIcon.HideExceptIcon();
                     }
                     else
                     {
                         gemIcon.gameObject.SetActive(true);
-                        gemIcon.RefreshWithItemInfo(new ItemData() { itemId = gem.gemId, count = 0 });
+                        gemIcon.RefreshWithItemInfo(itemData,false);
                         gemIcon.HideExceptIcon();
                     }
                 }
@@ -128,6 +128,14 @@ public class InlayGemItem : MonoBehaviour
     public void SetSelectState(bool select)
     {
         imgSelect.enabled = select;
+        if (select)
+        {
+            text_UnlockDesc.text = StaticDataMgr.Instance.GetTextByID("equip_select_gem");
+        }
+        else
+        {
+            text_UnlockDesc.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_unlockTips");
+        }
     }
 
 

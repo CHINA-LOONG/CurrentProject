@@ -51,12 +51,12 @@ public class ReportLoginHandler implements HttpHandler {
 					time, time.substring(0, 10));
 
 			HawkLog.logPrintln("report_login: " + value);
-			
+
 			// 优先更新
 			String sql = String.format("UPDATE login SET period = period + %d, playerlevel = %d WHERE game = \"%s\" AND platform = \"%s\" AND server = \"%s\" AND puid = \"%s\" AND date = \"%s\"",
 					Integer.valueOf(params.get("period")), Integer.valueOf(params.get("playerlevel")), 
 					params.get("game"), params.get("platform"), params.get("server"), params.get("puid"), time.substring(0, 10));
-			
+
 			if (DBManager.getInstance().executeSql(params.get("game"), sql) > 0) {
 				return;
 			}

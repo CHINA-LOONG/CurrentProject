@@ -26,7 +26,7 @@ public class GemListItem : MonoBehaviour
 
     void Start()
     {
-        btnXiangqian.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("gem_btnxiangqian");
+        btnXiangqian.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiangqian");
         ScrollViewEventListener.Get(btnXiangqian.gameObject).onClick = OnClickXiangqian;
     }
 

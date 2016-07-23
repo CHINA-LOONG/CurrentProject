@@ -42,6 +42,9 @@ public class StatisticsDataMgr : MonoBehaviour {
         SkillPoints = staticsticsData.skillPoint;
         skillTimeBegin = staticsticsData.skillPointTimeStamp;
 		GameDataMgr.Instance.UserDataAttr.orderServerKey =  staticsticsData.orderServerKey;
+		GameDataMgr.Instance.ShopDataMgrAttr.monthCardLeft = staticsticsData.monthCardLeft;
+		GameDataMgr.Instance.ShopDataMgrAttr.listRechageState = staticsticsData.rechargeState;
+
         UpdateServerTime(staticsticsData.timeStamp);
     }
 

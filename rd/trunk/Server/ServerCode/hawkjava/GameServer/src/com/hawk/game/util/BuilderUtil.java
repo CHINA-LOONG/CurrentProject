@@ -11,6 +11,7 @@ import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
+import com.hawk.game.entity.RechargeEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.GemInfo;
@@ -28,6 +29,7 @@ import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
 import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Statistics.InstanceState;
+import com.hawk.game.protocol.Statistics.RechargeState;
 
 public class BuilderUtil {
 
@@ -67,6 +69,13 @@ public class BuilderUtil {
 			builder.addInstanceState(instanceState);
 		}
 
+		for (Entry<String, Integer> entry : statisticsEntity.getRechargeRecordMap().entrySet()) {
+			RechargeState.Builder rechargeState = RechargeState.newBuilder();
+			rechargeState.setProductId(entry.getKey());
+			rechargeState.setBuyTimes(entry.getValue());
+			builder.addRechargeState(rechargeState);
+		}
+		
 		builder.setSkillPoint(statisticsEntity.getSkillPoint());
 		builder.setSkillPointTimeStamp((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
 		builder.setTimeStamp(HawkTime.getSeconds());
@@ -134,10 +143,11 @@ public class BuilderUtil {
 		}
 
 		//组装镶嵌宝石数据
-		for (GemInfo element : equipEntity.GetGemDressList()) {
+		for (Map.Entry<Integer, GemInfo> entry : equipEntity.GetGemDressList().entrySet()) {
 			GemPunch.Builder punchInfo = GemPunch.newBuilder();
-			punchInfo.setType(element.getType());
-			punchInfo.setGemItemId(element.getGemId());
+			punchInfo.setSlot(entry.getKey());
+			punchInfo.setType(entry.getValue().getType());
+			punchInfo.setGemItemId(entry.getValue().getGemId());
 			builder.addGemItems(punchInfo.build());
 		}
 
