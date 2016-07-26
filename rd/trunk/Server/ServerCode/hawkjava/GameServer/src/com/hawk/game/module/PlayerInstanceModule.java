@@ -38,6 +38,7 @@ import com.hawk.game.protocol.Instance.HSInstanceEnter;
 import com.hawk.game.protocol.Instance.HSInstanceEnterRet;
 import com.hawk.game.protocol.Instance.HSInstanceResetCount;
 import com.hawk.game.protocol.Instance.HSInstanceResetCountRet;
+import com.hawk.game.protocol.Instance.HSInstanceReviveRet;
 import com.hawk.game.protocol.Instance.HSInstanceSettle;
 import com.hawk.game.protocol.Instance.HSInstanceSettleRet;
 import com.hawk.game.protocol.Instance.HSInstanceSweep;
@@ -57,6 +58,8 @@ public class PlayerInstanceModule extends PlayerModule {
 	private List<HSBattle> curBattleList;
 	// 本次副本掉落列表
 	private List<ItemInfo> curDropList;
+	// 本次副本复活次数
+	private int curReviveCount;
 
 	public PlayerInstanceModule(Player player) {
 		super(player);
@@ -64,6 +67,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		curInstanceId = "";
 		curBattleList = new ArrayList<HSBattle>();
 		curDropList = new ArrayList<ItemInfo>();
+		curReviveCount = 0;
 	}
 
 	/**
@@ -160,13 +164,14 @@ public class PlayerInstanceModule extends PlayerModule {
 			return false;
 		}
 
-		this.curInstanceId = instanceId;
-		if (false == this.curBattleList.isEmpty()
-				|| false == this.curDropList.isEmpty()) {
+		if (this.curInstanceId != ""
+				|| this.curBattleList.isEmpty() == false
+				|| this.curDropList.isEmpty() == false
+				|| this.curReviveCount != 0) {
 			logger.error("instance data is not empty when enter instance");
-			this.curBattleList.clear();
-			this.curDropList.clear();
+			clearCurData();
 		}
+		this.curInstanceId = instanceId;
 
 		// 生成对局
 		// normal
@@ -333,9 +338,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
 
 		// 清空副本数据
-		this.curInstanceId = "";
-		this.curBattleList.clear();
-		this.curDropList.clear();
+		clearCurData();
 
 		return true;
 	}
@@ -464,12 +467,50 @@ public class PlayerInstanceModule extends PlayerModule {
 		return true;
 	}
 
-	@Override
-	protected boolean onPlayerLogin() {
-		// 清空上次副本数据
+	/**
+	 * 复活
+	 */
+	@ProtocolHandler(code = HS.code.INSTANCE_REVIVE_C_VALUE)
+	private boolean onInstanceRevive(HawkProtocol cmd) {
+		int hsCode = cmd.getType();
+
+		int reviveCount = this.curReviveCount + 1;
+		if (reviveCount > GsConst.INSTANCE_REVIVE_COUNT) {
+			sendError(hsCode, Status.instanceError.INSTANCE_REVIVE_COUNT);
+			return false;
+		}
+
+		if(player.getGold() < GsConst.INSTANCE_REVIVE_CONSUME[reviveCount - 1]){
+			sendError(hsCode, Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
+			return false;
+		}
+		ConsumeItems consume = ConsumeItems.valueOf();
+		consume.addGold(GsConst.INSTANCE_REVIVE_CONSUME[reviveCount - 1]);
+		consume.consumeTakeAffectAndPush(player, Action.INSTANCE_REVIVE);
+
+		this.curReviveCount = reviveCount;
+
+		HSInstanceReviveRet.Builder response = HSInstanceReviveRet.newBuilder();
+		response.setReviveCount(this.curReviveCount);
+		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_REVIVE_S, response));
+
+		return true;
+	}
+
+	/**
+	 * 清空副本数据
+	 */
+	private void clearCurData() {
 		this.curInstanceId = "";
 		this.curBattleList.clear();
 		this.curDropList.clear();
+		this.curReviveCount = 0;
+	}
+
+	@Override
+	protected boolean onPlayerLogin() {
+		// 清空上次副本数据
+		clearCurData();
 
 		return true;
 	}

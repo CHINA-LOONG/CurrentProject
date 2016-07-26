@@ -20,7 +20,7 @@ public class CoinButton : MonoBehaviour
 	}
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		BindListener ();
 		RefreshIcon ();
@@ -93,10 +93,10 @@ public class CoinButton : MonoBehaviour
 		}
 	}
 
-	void	HideAddCoinButton( bool isHiede)
+	public	void	HideAddCoinButton( bool isHide)
 	{
-		plusImage.gameObject.SetActive (!isHiede);
-		addCoinButton.gameObject.SetActive (!isHiede);
+		plusImage.gameObject.SetActive (!isHide);
+		addCoinButton.gameObject.SetActive (!isHide);
 	}
 
 	void OnZuanshiChanged(int zuanshi)

@@ -72,6 +72,14 @@ namespace PB
       get { return _attrDatas; }
     }
   
+    private HSMonster _monster = null;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"monster", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public HSMonster monster
+    {
+      get { return _monster; }
+      set { _monster = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

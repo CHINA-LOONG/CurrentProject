@@ -108,4 +108,6 @@ public class BattleConst
     //结算动画相关
     public const float scoreTitleStayTime = 1.5f;
     public const float scoreTitleUpTime = 1.0f;
+    //最大消息数
+    public const int maxMsg = 50;
 }

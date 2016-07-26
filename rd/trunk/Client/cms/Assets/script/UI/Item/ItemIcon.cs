@@ -171,7 +171,7 @@ public class ItemIcon : MonoBehaviour
 		}
 		SetFrameImage(stage);
 
-		SetFragmentImage (showFragmentImg);
+		SetFragmentImage (showFragmentImg, stage);
 	}
 
 	private void SetIconImage(string iconName)
@@ -219,9 +219,13 @@ public class ItemIcon : MonoBehaviour
 		itemCountText.text = strCount;
 	}
 
-	private	void SetFragmentImage(bool bShow)
+	private	void SetFragmentImage(bool bShow, int stage)
 	{
 		pieceImage.gameObject.SetActive (bShow);
+		string assetname = "suipian_" + stage.ToString ();
+		Sprite headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetname) as Sprite;
+		if (null != headImg)
+			pieceImage.sprite = headImg;
 	}
 
     void OnClickIconBtn(GameObject go)

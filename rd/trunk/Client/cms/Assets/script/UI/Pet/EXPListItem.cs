@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public interface IUsedExpCallBack
 {
- 
+    void OnUseExp(ItemStaticData itemData, System.Action callback);
+    void OnSendMsg(ItemStaticData itemData,int count);
 }
 
 
@@ -18,19 +19,18 @@ public class EXPListItem : MonoBehaviour
     public Text textExp;
 
     public Button btnUsed;
+    public IUsedExpCallBack usedExpDelegate;
+
+    private int useCount;
 
     private ItemStaticData itemData;
     private ItemData itemInfo;
-
-    void Start()
-    {
-        //ScrollViewEventListener.Get(btnUsed.gameObject).onClick
-    }
 
     public void OnReload(ItemStaticData staticData)
     {
         itemData = staticData;
         itemInfo = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(itemData.id);
+        useCount = 0;
 
         ItemData tempInfo = new ItemData() { itemId = itemData.id, count = 0 };
         if (itemIcon==null)
@@ -44,9 +44,84 @@ public class EXPListItem : MonoBehaviour
         }
 
         UIUtil.SetStageColor(textName, itemData);
-        textCount.text = "*" + (itemInfo == null ? 0 : itemInfo.count);
+        UpdateCount(useCount);
         textExp.text = string.Format("{0}+{1}",StaticDataMgr.Instance.GetTextByID("Exp"),itemData.addAttrValue);
     }
 
+    void UpdateCount(int useCount)
+    {
+        textCount.text = "×" + ((itemInfo == null ? 0 : itemInfo.count) - useCount);
+    }
+
+    void UsedExp()
+    {
+        if (itemInfo==null)
+        {
+			//TODO:提示处理
+            return;
+        }
+        else if (useCount >= itemInfo.count)
+        {
+            OnButtonUp(null);
+            return;
+        }
+        else
+        {
+            useCount++;
+            UpdateCount(useCount);
+            if (usedExpDelegate != null)
+            {
+                usedExpDelegate.OnUseExp(itemData, OnMaxLevelBack);
+            }
+        }
+    }
+
+    void OnSendMsg()
+    {
+        if (useCount > 0 && usedExpDelegate != null)
+        {
+            usedExpDelegate.OnSendMsg(itemData, useCount);
+            useCount = 0;
+        }
+    }
+
+    void OnMaxLevelBack()
+    {
+        CancelInvoke("UsedExp");
+        OnSendMsg();
+    }
+
+    void OnButtonDown(GameObject go)
+    {
+        InvokeRepeating("UsedExp", 1.0f, 0.1f);
+        UsedExp();
+    }
+    void OnButtonUp(GameObject go)
+    {
+        CancelInvoke("UsedExp");
+        OnSendMsg();
+    }
+    void OnButtonExit(GameObject go)
+    {
+        CancelInvoke("UsedExp");
+        OnSendMsg();
+    }
+
+    public void SetButton(bool isActive)
+    {
+        btnUsed.interactable = isActive;
+        if (isActive)
+        {
+            ScrollViewEventListener.Get(btnUsed.gameObject).onDown = OnButtonDown;
+            ScrollViewEventListener.Get(btnUsed.gameObject).onUp = OnButtonUp;
+            ScrollViewEventListener.Get(btnUsed.gameObject).onExit = OnButtonExit;
+        }
+        else
+        {
+            ScrollViewEventListener.Get(btnUsed.gameObject).onDown = null;
+            ScrollViewEventListener.Get(btnUsed.gameObject).onUp = null;
+            ScrollViewEventListener.Get(btnUsed.gameObject).onExit = null;
+        }
+    }
 
 }

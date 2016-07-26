@@ -127,6 +127,49 @@ public class HawkThreadPool {
 	}
 
 	/**
+	 * 添加执行任务(threadIdMin~threadIdMax指定线程区间执行)
+	 * 
+	 * @param task
+	 * @param threadIdMin, threadIdMax
+	 * @param first
+	 * @return
+	 */
+	public boolean addTask(HawkTask task, int threadIdMin, int threadIdMax, boolean first) {
+		if (running && !waitBreak) {			
+			if (threadIdMin < 0) {
+				threadIdMin = 0;
+			} else if (threadIdMin >= threadNum) {
+				threadIdMin = threadIdMin % threadNum;
+			}
+
+			if (threadIdMax < 0) {
+				threadIdMax = threadNum - 1;
+			} else if (threadIdMax >= threadNum) {
+				threadIdMax = threadIdMax % threadNum;
+			}
+
+			if (threadIdMin > threadIdMax) {
+				// 交换
+				threadIdMin = threadIdMin ^ threadIdMax;
+				threadIdMax = threadIdMin ^ threadIdMax;
+				threadIdMin = threadIdMin ^ threadIdMax;
+			}
+
+			int intervalThreadNum = threadIdMax - threadIdMin + 1;
+			int threadIdx = (int) (turnIndex.incrementAndGet() % intervalThreadNum) + threadIdMin;
+
+			if (threadIdx >= 0 && threadIdx < threadNum) {
+				if (first) {
+					return threadList.get(threadIdx).insertTask(task);
+				} else {
+					return threadList.get(threadIdx).addTask(task);
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * 开始执行
 	 * 
 	 * @return

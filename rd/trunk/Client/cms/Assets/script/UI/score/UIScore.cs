@@ -166,74 +166,141 @@ public class UIScore : UIBase
     {
         mBackground.SetActive(true);
         mLineMonsterItem.SetActive(true);
-        //PB.HSRewardInfo rewardInfo = mInstanceSettleResult.reward;
+        PB.HSRewardInfo rewardInfo = mInstanceSettleResult.reward;
+        PlayerData mainPlayer = GameDataMgr.Instance.PlayerDataAttr;
+        PlayerLevelAttr originalAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(mainPlayer.level);
 
-        //show player info;
-        mPlayerInfoRoot.SetActive(true);
-        //PB.SynPlayerAttr playerAttr = rewardInfo.playerAttr;
-        //PlayerData mainPlayer = GameDataMgr.Instance.PlayerDataAttr;
-        //int expGain = playerAttr.exp - mainPlayer.exp
-        //mPlayerLvl.text = playerAttr.level.ToString();
-        //mPlayerProgress.SetLoopCount(playerAttr.level - mainPlayer.level);
-        //mPlayerProgress.SetCurrrentRatio(mainPlayer.exp / (mainPlayer.level * 10 + 100));
-        //mPlayerProgress.SetTargetRatio(playerAttr.exp / (playerAttr.level * 10 + 100));
-        //mPlayerGainGold.text = (playerAttr.gold - mainPlayer.gold).ToString();
-        //mPlayerGainExp.text = expGain.ToString();
+        //success
+        if (rewardInfo != null)
+        {
+            //show player info;
+            SetInitPlayerInfo(originalAttr, mainPlayer);
+            PB.SynPlayerAttr playerAttr = rewardInfo.playerAttr;
+            List<PB.RewardItem> rewardItemList = rewardInfo.RewardItems;
+            int count = rewardItemList.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                PB.RewardItem item = rewardItemList[i];
+                if (item.type == (int)PB.itemType.PLAYER_ATTR)
+                {
+                    if ((int)PB.changeType.CHANGE_COIN == int.Parse(item.itemId))
+                    {
+                        mPlayerGainGold.text = "+" + item.count.ToString();
+                        //GameDataMgr.Instance.mainPlayer.coin += item.count;
+                        GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, playerAttr.coin);
+                    }
+                    else if ((int)PB.changeType.CHANGE_PLAYER_EXP == int.Parse(item.itemId))
+                    {
+                        mPlayerGainExp.text = "+" + item.count.ToString();
+                    }
+                }
+            }
+            if (playerAttr.level > 0)
+            {
+                PlayerLevelAttr curAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(playerAttr.level);
+                mPlayerLvl.text = "LVL" + playerAttr.level.ToString();
+                mPlayerProgress.SetLoopCount(playerAttr.level - mainPlayer.level);
+                mPlayerProgress.SetCurrrentRatio(mainPlayer.exp / (float)originalAttr.exp);
+                mPlayerProgress.SetTargetRatio(playerAttr.exp / (float)curAttr.exp);
+                //TODO:Sysnc player info here?
+                if (mainPlayer.level != playerAttr.level)
+                {
+                    mainPlayer.level = playerAttr.level;
+                    GameEventMgr.Instance.FireEvent<int>(GameEventList.LevelChanged, mainPlayer.level);
+                }
+                mainPlayer.exp = playerAttr.exp;
+            }
 
-        //show monster info
-        mMonsterExpList.gameObject.SetActive(true);
-        //List<PB.SynMonsterAttr> monsterInfoList = rewardInfo.monstersAttr;
-        //int count = monsterInfoList.Count;
-        //GameUnit originalMonster;
-        //for (int i = 0; i < monsterInfoList.Count; ++i)
-        //{
-        //    originalMonster = mainPlayer.GetPetWithKey(monsterInfoList[i].monsterId);
-        //    if (originalMonster == null)
-        //    {
-        //        Logger.LogError("Score error, no this monster");
-        //        continue;
-        //    }
 
-        //    UIMonsterIconExp monsterInfo = UIMonsterIconExp.Create();
-        //    monsterInfo.transform.SetParent(mMonsterExpList.transform, false);
-        //    monsterInfo.SetMonsterIconExpInfo(
-        //        monsterInfoList[i].monsterId,
-        //        expGain,
-        //        originalMonster.pbUnit.level,
-        //        monsterInfoList[i].level
-        //        );
-        //}
+            //show monster info
+            mMonsterExpList.gameObject.SetActive(true);
+            count = mainPlayer.mainUnitList.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                UIMonsterIconExp monsterInfo = UIMonsterIconExp.Create();
+                monsterInfo.transform.SetParent(mMonsterExpList.transform, false);
+                monsterInfo.SetMonsterIconExpInfo(
+                    mainPlayer.mainUnitList[i].unit,
+                    100,
+                    100,
+                    10,
+                    11
+                    );
+                //bo.unit.currentExp = expRemain;
+                //bo.unit.LevelUp(lvlTarget);
+                mainPlayer.mainUnitList[i].unit.RefreshUnitLvl(10, 100);
+            }
+            //List<PB.SynMonsterAttr> monsterInfoList = rewardInfo.monstersAttr;
+            //count = monsterInfoList.Count;
+            //GameUnit originalMonster;
+            //for (int i = 0; i < count; ++i)
+            //{
+            //    originalMonster = mainPlayer.GetPetWithKey(monsterInfoList[i].monsterId);
+            //    if (originalMonster == null)
+            //    {
+            //        Logger.LogError("Score error, no this monster");
+            //        continue;
+            //    }
 
-        //show item drop info
-        mItemGainList.gameObject.SetActive(true);
-        //List<PB.RewardItem>rewardItemList = rewardInfo.RewardItems;
-        //count = rewardItemList.Count;
-        //for (int i = 0; i < count; ++i)
-        //{
-        //    PB.RewardItem item = rewardItemList[i];
-        //    if (item.type == (int)PB.itemType.ITEM)
-        //    {
-        //        ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(item.itemId, item.count));
-        //        icon.transform.SetParent(mItemGainList.transform);
-        //    }
-        //    else if (item.type == (int)PB.itemType.EQUIP)
-        //    {
-        //        EquipData equipData = new EquipData()
-        //        {
-        //            id = item.id,
-        //            equipId = item.itemId,
-        //            stage = item.stage,
-        //            level = item.level
-        //        };
-        //        ItemIcon icon = ItemIcon.CreateItemIcon(equipData);
-        //        icon.transform.SetParent(mItemGainList.transform);
-        //    }
-        //}
+            //    UIMonsterIconExp monsterInfo = UIMonsterIconExp.Create();
+            //    monsterInfo.transform.SetParent(mMonsterExpList.transform, false);
+            //    monsterInfo.SetMonsterIconExpInfo(
+            //        monsterInfoList[i].monsterId,
+            //        0,
+            //        originalMonster.pbUnit.level,
+            //        monsterInfoList[i].level
+            //        );
+            //}
+
+            //show item drop info
+            count = rewardItemList.Count;
+            mItemGainList.gameObject.SetActive(true);
+            for (int i = 0; i < count; ++i)
+            {
+                PB.RewardItem item = rewardItemList[i];
+                if (item.type == (int)PB.itemType.ITEM)
+                {
+                    ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(item.itemId, item.count));
+                    icon.transform.SetParent(mItemGainList.transform);
+                    icon.transform.localScale = Vector3.one;
+                }
+                else if (item.type == (int)PB.itemType.EQUIP)
+                {
+                    EquipData equipData = new EquipData()
+                    {
+                        id = item.id,
+                        equipId = item.itemId,
+                        stage = item.stage,
+                        level = item.level
+                    };
+                    ItemIcon icon = ItemIcon.CreateItemIcon(equipData);
+                    icon.transform.SetParent(mItemGainList.transform);
+                    icon.transform.localScale = Vector3.one;
+                }
+            }
+        }
+        //failed
+        else
+        {
+            SetInitPlayerInfo(originalAttr, mainPlayer);
+        }
 
         //show button
         mRetryBtn.gameObject.SetActive(true);
         mNextLevelBtn.gameObject.SetActive(mIsSuccess);
         mConfirmBtn.gameObject.SetActive(true);
+    }
+    //---------------------------------------------------------------------------------------------
+    private void SetInitPlayerInfo(PlayerLevelAttr playerAttr, PlayerData playerData)
+    {
+        //TODO: duplicate code
+        mPlayerInfoRoot.SetActive(true);
+        mPlayerGainGold.text = "+0";
+        mPlayerGainExp.text = "+0";
+        mPlayerLvl.text = "LVL" + playerAttr.level.ToString();
+        float curExpRatio = playerData.exp / (float)playerAttr.exp;
+        mPlayerProgress.SetCurrrentRatio(curExpRatio);
+        mPlayerProgress.SetTargetRatio(curExpRatio);
     }
     //---------------------------------------------------------------------------------------------
 }

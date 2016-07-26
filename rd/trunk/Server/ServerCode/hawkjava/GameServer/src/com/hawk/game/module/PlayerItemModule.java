@@ -212,12 +212,13 @@ public class PlayerItemModule extends PlayerModule{
 				return;
 			}
 			
+			consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE);
 			awardItems.addMonsterAttr(Const.changeType.CHANGE_MONSTER_EXP_VALUE, count * itemCfg.getAddAttrValue(), protocol.getTargetID());
 			awardItems.rewardTakeAffectAndPush(player,  Action.ITEM_USE);
 		}		
 		
 		HSItemUseRet.Builder response = HSItemUseRet.newBuilder();
-		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_BUY_S_VALUE, response));
+		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_USE_S_VALUE, response));
 	}
 	
 	/**

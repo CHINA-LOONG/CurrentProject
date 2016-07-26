@@ -19,14 +19,21 @@ namespace MsgBox
         public delegate void PrompDelegate(PrompButtonClick state);
         private bool autoClose = true;
 
-		public static string ViewName = "PromptMsg";
+		public static string ViewName = "PromptMsg";//单行
+        public static string ViewName2 = "PromptMsg2";//双行
 
 		public static PromptMsg Open(MsgBoxType msgType, string msg, PrompDelegate callback = null, bool autoClose = true, bool useTextmesh = false)
 		{
             PromptMsg mInfo = UIMgr.Instance.OpenUI_(PromptMsg.ViewName,false) as PromptMsg;
-            mInfo.SetData(msgType, msg, callback, autoClose, useTextmesh);
+            mInfo.SetData(msgType,null, msg, callback, autoClose, useTextmesh);
             return mInfo;
 		}
+        public static PromptMsg Open(MsgBoxType msgType, string title, string msg, PrompDelegate callback = null, bool autoClose = true, bool useTextmesh = false)
+        {
+            PromptMsg mInfo = UIMgr.Instance.OpenUI_(PromptMsg.ViewName2, false) as PromptMsg;
+            mInfo.SetData(msgType,title, msg, callback, autoClose, useTextmesh);
+            return mInfo;
+        }
 
         public void Close()
         {
@@ -84,12 +91,19 @@ namespace MsgBox
 			}
 		}
 
-		public	void SetData(MsgBoxType msgType, string msg, PrompDelegate callback, bool autoClose, bool useTextmesh)
+		public	void SetData(MsgBoxType msgType,string title, string msg, PrompDelegate callback, bool autoClose, bool useTextmesh)
 		{
 			conformPanel.gameObject.SetActive (msgType == MsgBoxType.Conform);
 			conformCancelPanel.gameObject.SetActive (msgType == MsgBoxType.Conform_Cancel);
 
             this.buttonClick = callback;
+
+            titleText.gameObject.SetActive(!string.IsNullOrEmpty(title));
+            if (!string.IsNullOrEmpty(title))
+            {
+                titleText.text = title;
+                titleText.alignment = (titleText.preferredWidth > ((titleText.transform as RectTransform).rect.width) ? TextAnchor.MiddleLeft : TextAnchor.MiddleCenter);
+            }
             if (useTextmesh)
             {
                 msgText.text = string.Empty;
@@ -99,13 +113,14 @@ namespace MsgBox
             {
                 TextAnchor curAlignment = TextAnchor.MiddleCenter;
                 RectTransform textRt = msgText.transform as RectTransform;
-                if (msgText.preferredWidth / textRt.sizeDelta.x > 1.0f)
-                {
-                    curAlignment = TextAnchor.MiddleLeft;
-                }
+               
                 msgText.text = msg;
-                msgText.alignment = curAlignment;
-                textWithImg.text = string.Empty;
+				if (msgText.preferredWidth > textRt.rect.width)
+				{
+					curAlignment = TextAnchor.MiddleLeft;
+				}
+				msgText.alignment = curAlignment;
+				textWithImg.text = string.Empty;
             }
 			
             this.autoClose = autoClose;

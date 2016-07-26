@@ -102,9 +102,9 @@ public class UIShop : UIBase
 
 		count = 0;
 		TimeStaticData tNow = GameTimeMgr.Instance.GetServerTime ();
-		if (tNow > timeNextRefresh)
+		if (timeNextRefresh.dayOfMonth < 1 && tNow > timeNextRefresh)
 		{
-			RefreshShopData(curShopType);
+			RefreshShopData(curShopType,true);
 		}
 	}
 
@@ -173,7 +173,7 @@ public class UIShop : UIBase
 	public	void	RefreshShopData(int shopType,bool forceRefresh = false)
 	{
 		curShopType = shopType;
-		if (shopDataMgr.IsNeedUpdateShopData ())
+		if (forceRefresh || shopDataMgr.IsNeedUpdateShopData ())
 		{
 			shopDataMgr.RequestShopData();
 		}
@@ -233,6 +233,7 @@ public class UIShop : UIBase
 
 		ShopItem shopItemUi = null;
 		PB.ShopItem shopItemData = null;
+
 		for (int i =0; i<listShopItem.Count; ++ i)
 		{
 			shopItemData = null;
@@ -243,10 +244,17 @@ public class UIShop : UIBase
 				shopItemUi.gameObject.SetActive(true);
 				shopItemUi.RefreshShopItem(shopItemData,shopData.shopId,shopData.type);
 			}
+
 			else
 			{
 				shopItemUi.gameObject.SetActive(false);
 			}
+		}
+
+		ScrollRect sr = shopItemsScrollView.GetComponent<ScrollRect> ();
+		if (sr != null) 
+		{
+			sr.horizontalNormalizedPosition = 0.0f;
 		}
 	}
 

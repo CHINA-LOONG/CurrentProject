@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public interface IMosaicEquipCallBack
 {
@@ -167,14 +168,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
                 {
                     mineItem = new ItemData() { itemId = curDemand[i].itemId, count = 0 };
                 }
-                if (mineItem.count < curDemand[i].count)
-                {
-                    textMaterial.color = ColorConst.text_color_nReq;
-                }
-                else
-                {
-                    textMaterial.color = ColorConst.text_color_Req;
-                }
+ 
                 ItemData material = new ItemData() { itemId = curDemand[i].itemId, count = 0 };
                 if (materialIcon == null)
                 {
@@ -186,7 +180,16 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
                 {
                     materialIcon.RefreshWithItemInfo(material);
                 }
-                textMaterial.text = mineItem.count + "/" + curDemand[i].count;
+                Color color;
+                if (mineItem.count < curDemand[i].count)
+                {
+                    color = ColorConst.text_color_nReq;
+                }
+                else
+                {
+                    color = ColorConst.text_color_Req;
+                }
+                textMaterial.text = "<color="+ColorConst.colorTo_Hstr(color)+">"+mineItem.count + "</color>/" + curDemand[i].count;
             }
             else if (curDemand[i].type == (int)PB.itemType.PLAYER_ATTR)
             {
@@ -232,7 +235,10 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
         if (isMosaic||isOpenmax)
         {
             Logger.Log("已经最大数量了");
-            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel, StaticDataMgr.Instance.GetTextByID("equip_random_open") + "\n" + StaticDataMgr.Instance.GetTextByID("equip_return_gem"), OnPrompButtonClick);
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel, 
+                                StaticDataMgr.Instance.GetTextByID("equip_random_open") ,
+                                StaticDataMgr.Instance.GetTextByID("equip_return_gem"), 
+                                OnPrompButtonClick);
             return;
         }
         else

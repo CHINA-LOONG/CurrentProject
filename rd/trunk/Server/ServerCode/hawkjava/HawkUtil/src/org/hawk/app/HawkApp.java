@@ -921,11 +921,27 @@ public abstract class HawkApp extends HawkAppObj {
 	 * 投递通用型任务到线程池处理
 	 * 
 	 * @param task
+	 * @param threadIdx 线程id
 	 * @return
 	 */
 	public boolean postCommonTask(HawkTask task, int threadIdx) {
 		if (running && task != null && taskExecutor != null) {
 			return taskExecutor.addTask(task, Math.abs(threadIdx), false);
+		}
+		return false;
+	}
+
+	/**
+	 * 投递通用型任务到线程池处理
+	 * 
+	 * @param task
+	 * @param threadIdMin 线程区间下界
+	 * @param threadIdMax 线程区间上界
+	 * @return
+	 */
+	public boolean postCommonTask(HawkTask task, int threadIdMin, int threadIdMax) {
+		if (running && task != null && taskExecutor != null) {
+			return taskExecutor.addTask(task, threadIdMin, threadIdMax, false);
 		}
 		return false;
 	}

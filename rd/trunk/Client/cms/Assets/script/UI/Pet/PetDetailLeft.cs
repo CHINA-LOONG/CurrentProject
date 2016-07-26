@@ -40,6 +40,7 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     }
 
     GameUnit m_unit;
+    UnitData s_unit;
 
     public enum BtnState
     {
@@ -107,7 +108,6 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
             item.iClickBack = this;
         }
     }
-
     void OnEnable()
     {
         GameEventMgr.Instance.AddListener(GameEventList.ReloadPetStageNotify, ReloadPetStage);
@@ -116,7 +116,6 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     {
         GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetStageNotify, ReloadPetStage);
     }
-
     void ReloadPetStage()
     {
         if (m_unit != null)
@@ -128,6 +127,8 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     public void ReloadData(GameUnit unit, bool reloadUnit = true)
     {
         m_unit = unit;
+        s_unit = StaticDataMgr.Instance.GetUnitRowData(m_unit.pbUnit.id);
+
         #region set monster role
         
         if (reloadUnit == true)
@@ -153,37 +154,23 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
 
         #endregion
 
-        UIUtil.SetStageColor(textName, unit);
+        UIUtil.SetStageColor(textName, m_unit);
         textType.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListType);
         //刷新装备
-        RefreshEquip(unit.equipList);
+        RefreshEquip(m_unit.equipList);
 
-        textZhanli.text = unit.attackCount.ToString();
-        textLevel.text = unit.pbUnit.level.ToString();
 
-        var image = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + unit.property) as Sprite;
+        Sprite image = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + unit.property) as Sprite;
         if (image != null)
         {
             imgProIcon.sprite = image;
         }
 
-        if (unit.pbUnit.level >= GameConfig.MaxMonsterLevel)
-        {
-            textExp.text = "max";
-            progressExp.value = 1.0f;
-            btnAddExp.interactable = false;
-        }
-        else
-        {
-            int maxExp = StaticDataMgr.Instance.GetUnitBaseRowData(unit.pbUnit.level).experience;
-            textExp.text = unit.pbUnit.curExp + "/" + maxExp;
-            progressExp.value = unit.pbUnit.curExp * 1.0f / maxExp;
-            btnAddExp.interactable = true;
-        }
+        textZhanli.text = m_unit.attackCount.ToString();
 
-
-        int healthValue, strengthValue, defenceValue, inteligenceValue, speedValue;
-        UIUtil.GetAttrValue(unit, unit.pbUnit.stage, out healthValue, out strengthValue, out inteligenceValue, out defenceValue, out speedValue);
+        RefreshTempUnit(m_unit.pbUnit.level,m_unit.pbUnit.curExp);
+        //int healthValue, strengthValue, defenceValue, inteligenceValue, speedValue;
+        //UIUtil.GetAttrValue(unit, unit.pbUnit.stage, out healthValue, out strengthValue, out inteligenceValue, out defenceValue, out speedValue);
 
 
         if (UIUtil.CheckIsEnoughMaterial(unit) == true)
@@ -193,6 +180,26 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         else
         {
             stageBadge.gameObject.SetActive(false);
+        }
+    }
+
+    public void RefreshTempUnit(int level,int exp)
+    {
+        textLevel.text = level.ToString();
+
+        if (level >= GameConfig.MaxMonsterLevel)
+        {
+            textExp.text = "max";
+            progressExp.value = 1.0f;
+            btnAddExp.interactable = false;
+        }
+        else
+        {
+            int maxExp = (int)(StaticDataMgr.Instance.GetUnitBaseRowData(level).experience * s_unit.levelUpExpRate);
+            textExp.text = exp + "/" + maxExp;
+            progressExp.value = (float)exp / (float)maxExp;
+            Debug.Log("exe:" + exp + "\n" + "max:" + maxExp + "value:" + ((float)exp / (float)maxExp));
+            btnAddExp.interactable = true;
         }
     }
 
@@ -233,7 +240,6 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     {
         ParentNode.AdvanceButtonDown();
     }
-
     //接口函数
     public void OnSelectEquipField(PartType part, EquipData data)
     {

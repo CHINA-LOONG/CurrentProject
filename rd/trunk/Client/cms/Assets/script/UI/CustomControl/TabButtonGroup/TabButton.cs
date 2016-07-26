@@ -10,6 +10,9 @@ public class TabButton : MonoBehaviour
 	public	int	index = 0;
 	HomeButton homeButton;
 	// Use this for initialization
+
+    private Animator anim;
+
 	void Awake()
 	{
 		homeButton = GetComponent<HomeButton> ();
@@ -20,6 +23,15 @@ public class TabButton : MonoBehaviour
 	{
 		if(homeButton != null)
 			homeButton.IsOn = isOn;
+        if (anim==null)
+        {
+            anim = GetComponent<Animator>();
+        }
+        if (anim != null)
+        {
+            anim.SetTrigger(isOn?"select":"normal");
+        }
+
 	}
 	
 	public	void	OnTabButtonClicked(GameObject go)

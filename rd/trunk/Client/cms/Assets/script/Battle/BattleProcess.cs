@@ -273,7 +273,7 @@ public class BattleProcess : MonoBehaviour
                             {
                                 rewardID = item.type;
                             }
-                            ItemDropManager.Instance.Fall(rewardID, deadUnit.transform);
+                            //ItemDropManager.Instance.Fall(rewardID, deadUnit.transform);
 
                         }
                         //ItemDropManager.Instance.Fall(1, deadUnit.transform);

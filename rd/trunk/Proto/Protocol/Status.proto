@@ -33,6 +33,8 @@ enum error
 	PARAMS_INVALID             = 0x00000006;
 	// 配置错误
 	CONFIG_NOT_FOUND           = 0x00000007;
+	// 配置错误
+	UNSUPPORT_ACTION           = 0x00000008;
 	// 服务器错误
 	SERVER_ERROR               = 0x00001000;
 }
@@ -45,6 +47,12 @@ enum PlayerError
 	PLAYER_NICKNAME_EXIST      = 0x00020002;
 	// 账号名成重复
 	PUID_EXIST                 = 0x00020003;
+	// 金币不足
+	COINS_NOT_ENOUGH           = 0x00020004;
+	// 钻石不足
+	GOLD_NOT_ENOUGH            = 0x00020005;
+	// 疲劳值不足
+	FATIGUE_NOT_ENOUGH         = 0x00020006;	
 }
 
 enum monsterError
@@ -69,24 +77,20 @@ enum itemError
 {
 	// 道具不存在
 	ITEM_NOT_FOUND             = 0x00040001;
-	// 金币不足
-	COINS_NOT_ENOUGH           = 0x00040002;
-	// 钻石不足
-	GOLD_NOT_ENOUGH            = 0x00040003;
 	// 装备不足
-	EQUIP_NOT_FOUND            = 0x00040004;
+	EQUIP_NOT_FOUND            = 0x00040002;
 	// 道具数量不足
-	ITEM_NOT_ENOUGH            = 0x00040005;
+	ITEM_NOT_ENOUGH            = 0x00040003;
 	// 道具不能买
-	ITEM_BUY_NOT_ALLOW         = 0x00040006;
+	ITEM_BUY_NOT_ALLOW         = 0x00040004;
 	// 道具不能卖
-	ITEM_SELL_NOT_ALLOW        = 0x00040007;
+	ITEM_SELL_NOT_ALLOW        = 0x00040005;
 	// 装备最大等级
-	EQUIP_MAX_LEVEL_ALREADY    = 0x00040008;
+	EQUIP_MAX_LEVEL_ALREADY    = 0x00040006;
 	// 装备等级不够进阶
-	EQUIP_LEVEL_NOT_ENOUGH     = 0x00040009;
+	EQUIP_LEVEL_NOT_ENOUGH     = 0x00040007;
 	// 装备最大品级
-	EQUIP_MAX_STAGE_ALREADY    = 0x0004000A;
+	EQUIP_MAX_STAGE_ALREADY    = 0x00040008;
 		
 	// 装备不在背包
 	EQUIP_DRESS_ALREADY        = 0x00040010;
@@ -127,6 +131,7 @@ enum instanceError
 	INSTANCE_LEVEL             = 0x0060002;
 	INSTANCE_COUNT             = 0x0060003;
 	INSTANCE_FATIGUE           = 0x0060004;
+	INSTANCE_REVIVE_COUNT      = 0x0060005;
 }
 
 enum mailError

@@ -16,15 +16,12 @@ message RewardItem
 	required string itemId = 3;
 	// 数量
 	optional int32 count = 4;
-	
-	// 是装备时的附加属性
 	// 装备品级
 	optional int32  stage = 5;
 	// 装备等级
 	optional int32  level = 6;
 	// 装备附加属性信息
 	repeated Attr  attrDatas = 7;
-
 	// 是怪物时的附加属性
 	optional HSMonster monster = 8;
 }

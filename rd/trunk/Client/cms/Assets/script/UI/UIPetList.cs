@@ -38,6 +38,7 @@ public class UIPetList :  UIBase, TabButtonDelegate
     void Start()
     {
         EventTriggerListener.Get(closeButton.gameObject).onClick = CloseButtonDown;
+        scrollView.onValueChanged.AddListener(ShowScrollIcon);
 
         textOption_0.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_all");
         textOption_1.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_property1");
@@ -51,10 +52,18 @@ public class UIPetList :  UIBase, TabButtonDelegate
         ReloadPetList();
     }
 
-    void Update()
+    void ShowScrollIcon(Vector2 vec2)
     {
-        ShowScrollIcon();
+        if (vec2.y > 0 && scrollView.content.rect.height > (scrollView.transform as RectTransform).rect.height)
+        {
+            srcollIcon.gameObject.SetActive(true);
+        }
+        else
+        {
+            srcollIcon.gameObject.SetActive(false);
+        }
     }
+
     void OnEnable()
     {
         GameEventMgr.Instance.AddListener(GameEventList.ReloadPetStageNotify, ReloadPetList);
@@ -74,6 +83,8 @@ public class UIPetList :  UIBase, TabButtonDelegate
 			                      StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListFull));
         }
 
+        tabGroup.OnChangeItem(0);
+
         title.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListTitle);
     }
 
@@ -87,17 +98,7 @@ public class UIPetList :  UIBase, TabButtonDelegate
         OnTabButtonChanged(m_currentIndex);
     }
 
-    void ShowScrollIcon()
-    {
-        if (scrollView.normalizedPosition.y > 0.01)
-        {
-            srcollIcon.gameObject.SetActive(true);
-        }
-        else
-        {
-            srcollIcon.gameObject.SetActive(false);
-        }
-    }
+
 
     public void OnTabButtonChanged(int index)
     {
@@ -168,6 +169,7 @@ public class UIPetList :  UIBase, TabButtonDelegate
         {
             GetPatItme().ReloadPatData(m_typeList[i]);
         }
+        scrollView.verticalNormalizedPosition = 1.0f;
     }
 
     PetListElement GetPatItme()

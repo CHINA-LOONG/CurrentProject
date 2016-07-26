@@ -287,7 +287,6 @@ public class ItemCfg extends HawkConfigBase {
 		return name;
 	}
 
-
 	public String getAsset() {
 		return asset;
 	}

@@ -83,23 +83,23 @@ public final class Player {
      */
     int getExp();
 
-    // optional int32 vipLevel = 5;
+    // optional int32 fatigue = 5;
     /**
-     * <code>optional int32 vipLevel = 5;</code>
+     * <code>optional int32 fatigue = 5;</code>
      *
      * <pre>
-     * vip等级
+     * 疲劳值
      * </pre>
      */
-    boolean hasVipLevel();
+    boolean hasFatigue();
     /**
-     * <code>optional int32 vipLevel = 5;</code>
+     * <code>optional int32 fatigue = 5;</code>
      *
      * <pre>
-     * vip等级
+     * 疲劳值
      * </pre>
      */
-    int getVipLevel();
+    int getFatigue();
   }
   /**
    * Protobuf type {@code SynPlayerAttr}
@@ -174,7 +174,7 @@ public final class Player {
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              vipLevel_ = input.readInt32();
+              fatigue_ = input.readInt32();
               break;
             }
           }
@@ -313,28 +313,28 @@ public final class Player {
       return exp_;
     }
 
-    // optional int32 vipLevel = 5;
-    public static final int VIPLEVEL_FIELD_NUMBER = 5;
-    private int vipLevel_;
+    // optional int32 fatigue = 5;
+    public static final int FATIGUE_FIELD_NUMBER = 5;
+    private int fatigue_;
     /**
-     * <code>optional int32 vipLevel = 5;</code>
+     * <code>optional int32 fatigue = 5;</code>
      *
      * <pre>
-     * vip等级
+     * 疲劳值
      * </pre>
      */
-    public boolean hasVipLevel() {
+    public boolean hasFatigue() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional int32 vipLevel = 5;</code>
+     * <code>optional int32 fatigue = 5;</code>
      *
      * <pre>
-     * vip等级
+     * 疲劳值
      * </pre>
      */
-    public int getVipLevel() {
-      return vipLevel_;
+    public int getFatigue() {
+      return fatigue_;
     }
 
     private void initFields() {
@@ -342,7 +342,7 @@ public final class Player {
       coin_ = 0L;
       level_ = 0;
       exp_ = 0;
-      vipLevel_ = 0;
+      fatigue_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -369,7 +369,7 @@ public final class Player {
         output.writeInt32(4, exp_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, vipLevel_);
+        output.writeInt32(5, fatigue_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -398,7 +398,7 @@ public final class Player {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, vipLevel_);
+          .computeInt32Size(5, fatigue_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -524,7 +524,7 @@ public final class Player {
         bitField0_ = (bitField0_ & ~0x00000004);
         exp_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        vipLevel_ = 0;
+        fatigue_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
@@ -573,7 +573,7 @@ public final class Player {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.vipLevel_ = vipLevel_;
+        result.fatigue_ = fatigue_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -602,8 +602,8 @@ public final class Player {
         if (other.hasExp()) {
           setExp(other.getExp());
         }
-        if (other.hasVipLevel()) {
-          setVipLevel(other.getVipLevel());
+        if (other.hasFatigue()) {
+          setFatigue(other.getFatigue());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -828,51 +828,51 @@ public final class Player {
         return this;
       }
 
-      // optional int32 vipLevel = 5;
-      private int vipLevel_ ;
+      // optional int32 fatigue = 5;
+      private int fatigue_ ;
       /**
-       * <code>optional int32 vipLevel = 5;</code>
+       * <code>optional int32 fatigue = 5;</code>
        *
        * <pre>
-       * vip等级
+       * 疲劳值
        * </pre>
        */
-      public boolean hasVipLevel() {
+      public boolean hasFatigue() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional int32 vipLevel = 5;</code>
+       * <code>optional int32 fatigue = 5;</code>
        *
        * <pre>
-       * vip等级
+       * 疲劳值
        * </pre>
        */
-      public int getVipLevel() {
-        return vipLevel_;
+      public int getFatigue() {
+        return fatigue_;
       }
       /**
-       * <code>optional int32 vipLevel = 5;</code>
+       * <code>optional int32 fatigue = 5;</code>
        *
        * <pre>
-       * vip等级
+       * 疲劳值
        * </pre>
        */
-      public Builder setVipLevel(int value) {
+      public Builder setFatigue(int value) {
         bitField0_ |= 0x00000010;
-        vipLevel_ = value;
+        fatigue_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 vipLevel = 5;</code>
+       * <code>optional int32 fatigue = 5;</code>
        *
        * <pre>
-       * vip等级
+       * 疲劳值
        * </pre>
        */
-      public Builder clearVipLevel() {
+      public Builder clearFatigue() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        vipLevel_ = 0;
+        fatigue_ = 0;
         onChanged();
         return this;
       }
@@ -5548,24 +5548,24 @@ public final class Player {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025Protocol/Player.proto\"Y\n\rSynPlayerAttr" +
+      "\n\025Protocol/Player.proto\"X\n\rSynPlayerAttr" +
       "\022\014\n\004gold\030\001 \001(\005\022\014\n\004coin\030\002 \001(\003\022\r\n\005level\030\003 " +
-      "\001(\005\022\013\n\003exp\030\004 \001(\005\022\020\n\010vipLevel\030\005 \001(\005\"\361\001\n\nP" +
-      "layerInfo\022\020\n\010playerId\030\001 \002(\005\022\020\n\010nickname\030" +
-      "\002 \002(\t\022\016\n\006career\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003" +
-      "exp\030\005 \002(\005\022\014\n\004gold\030\006 \002(\005\022\014\n\004coin\030\007 \002(\003\022\016\n" +
-      "\006gender\030\010 \001(\005\022\013\n\003eye\030\t \001(\005\022\014\n\004hair\030\n \001(\005" +
-      "\022\021\n\thairColor\030\013 \001(\005\022\025\n\rbattleMonster\030\014 \003" +
-      "(\005\022\020\n\010recharge\030\r \002(\005\022\020\n\010vipLevel\030\016 \002(\005\"!" +
-      "\n\017HSPlayerKickout\022\016\n\006reason\030\001 \002(\005\"~\n\016HSP",
-      "layerCreate\022\014\n\004puid\030\001 \002(\t\022\020\n\010nickname\030\002 " +
-      "\002(\t\022\016\n\006career\030\003 \002(\005\022\016\n\006gender\030\004 \002(\005\022\013\n\003e" +
-      "ye\030\005 \002(\005\022\014\n\004hair\030\006 \002(\005\022\021\n\thairColor\030\007 \002(" +
-      "\005\"5\n\021HSPlayerCreateRet\022\016\n\006status\030\001 \002(\005\022\020" +
-      "\n\010palyerID\030\002 \001(\005\"-\n\020HSPlayerInfoSync\022\031\n\004" +
-      "info\030\001 \002(\0132\013.PlayerInfo\"$\n\020HSAssembleFin" +
-      "ish\022\020\n\010playerID\030\001 \002(\005B\030\n\026com.hawk.game.p" +
-      "rotocol"
+      "\001(\005\022\013\n\003exp\030\004 \001(\005\022\017\n\007fatigue\030\005 \001(\005\"\361\001\n\nPl" +
+      "ayerInfo\022\020\n\010playerId\030\001 \002(\005\022\020\n\010nickname\030\002" +
+      " \002(\t\022\016\n\006career\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003e" +
+      "xp\030\005 \002(\005\022\014\n\004gold\030\006 \002(\005\022\014\n\004coin\030\007 \002(\003\022\016\n\006" +
+      "gender\030\010 \001(\005\022\013\n\003eye\030\t \001(\005\022\014\n\004hair\030\n \001(\005\022" +
+      "\021\n\thairColor\030\013 \001(\005\022\025\n\rbattleMonster\030\014 \003(" +
+      "\005\022\020\n\010recharge\030\r \002(\005\022\020\n\010vipLevel\030\016 \002(\005\"!\n" +
+      "\017HSPlayerKickout\022\016\n\006reason\030\001 \002(\005\"~\n\016HSPl",
+      "ayerCreate\022\014\n\004puid\030\001 \002(\t\022\020\n\010nickname\030\002 \002" +
+      "(\t\022\016\n\006career\030\003 \002(\005\022\016\n\006gender\030\004 \002(\005\022\013\n\003ey" +
+      "e\030\005 \002(\005\022\014\n\004hair\030\006 \002(\005\022\021\n\thairColor\030\007 \002(\005" +
+      "\"5\n\021HSPlayerCreateRet\022\016\n\006status\030\001 \002(\005\022\020\n" +
+      "\010palyerID\030\002 \001(\005\"-\n\020HSPlayerInfoSync\022\031\n\004i" +
+      "nfo\030\001 \002(\0132\013.PlayerInfo\"$\n\020HSAssembleFini" +
+      "sh\022\020\n\010playerID\030\001 \002(\005B\030\n\026com.hawk.game.pr" +
+      "otocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5577,7 +5577,7 @@ public final class Player {
           internal_static_SynPlayerAttr_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SynPlayerAttr_descriptor,
-              new java.lang.String[] { "Gold", "Coin", "Level", "Exp", "VipLevel", });
+              new java.lang.String[] { "Gold", "Coin", "Level", "Exp", "Fatigue", });
           internal_static_PlayerInfo_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_PlayerInfo_fieldAccessorTable = new

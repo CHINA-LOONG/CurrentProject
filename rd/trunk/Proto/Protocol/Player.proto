@@ -12,8 +12,8 @@ message SynPlayerAttr
 	optional int32 level = 3;
 	// 主卡经验
 	optional int32 exp = 4;
-	// vip等级
-	optional int32 vipLevel = 5;
+	// 疲劳值
+	optional int32 fatigue = 5;
 }
 
 message PlayerInfo

@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
                                                   IPointerDownHandler,
                                                   IPointerUpHandler,
-                                                  IPointerExitHandler
+                                                  IPointerExitHandler,
+                                                  IPointerEnterHandler
                                                   
 {
     public delegate void VoidDelegate(GameObject go);
@@ -13,6 +14,8 @@ public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
     public VoidDelegate onClick;
     public VoidDelegate onDown;
     public VoidDelegate onUp;
+    public VoidDelegate onEnter;
+    public VoidDelegate onExit;
     public VoidDelegate onPressEnter;
     public VoidDelegate onPressExit;
 
@@ -39,7 +42,6 @@ public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
                 if (Time.time - pressTime > 1.0f)
                 {
                     onPressEnter(gameObject);
-                    //Debug.Log("button: onPressEnter");
                     press = true;
                     enterPress = true;
                     needPressExit = true;
@@ -94,7 +96,18 @@ public class ScrollViewEventListener : MonoBehaviour, IPointerClickHandler,
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //Debug.Log("button: OnPointerExit");
+        if (onExit!=null)
+        {
+            onExit(gameObject);
+        }
     }
 
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (onEnter != null)
+        {
+            onEnter(gameObject);
+        }
+    }
 }

@@ -241,13 +241,21 @@ public final class Status {
      */
     CONFIG_NOT_FOUND(7, 7),
     /**
+     * <code>UNSUPPORT_ACTION = 8;</code>
+     *
+     * <pre>
+     * 配置错误
+     * </pre>
+     */
+    UNSUPPORT_ACTION(8, 8),
+    /**
      * <code>SERVER_ERROR = 4096;</code>
      *
      * <pre>
      * 服务器错误
      * </pre>
      */
-    SERVER_ERROR(8, 4096),
+    SERVER_ERROR(9, 4096),
     ;
 
     /**
@@ -315,6 +323,14 @@ public final class Status {
      */
     public static final int CONFIG_NOT_FOUND_VALUE = 7;
     /**
+     * <code>UNSUPPORT_ACTION = 8;</code>
+     *
+     * <pre>
+     * 配置错误
+     * </pre>
+     */
+    public static final int UNSUPPORT_ACTION_VALUE = 8;
+    /**
      * <code>SERVER_ERROR = 4096;</code>
      *
      * <pre>
@@ -336,6 +352,7 @@ public final class Status {
         case 5: return DATA_BASE_ERROR;
         case 6: return PARAMS_INVALID;
         case 7: return CONFIG_NOT_FOUND;
+        case 8: return UNSUPPORT_ACTION;
         case 4096: return SERVER_ERROR;
         default: return null;
       }
@@ -417,6 +434,30 @@ public final class Status {
      * </pre>
      */
     PUID_EXIST(2, 131075),
+    /**
+     * <code>COINS_NOT_ENOUGH = 131076;</code>
+     *
+     * <pre>
+     * 金币不足
+     * </pre>
+     */
+    COINS_NOT_ENOUGH(3, 131076),
+    /**
+     * <code>GOLD_NOT_ENOUGH = 131077;</code>
+     *
+     * <pre>
+     * 钻石不足
+     * </pre>
+     */
+    GOLD_NOT_ENOUGH(4, 131077),
+    /**
+     * <code>FATIGUE_NOT_ENOUGH = 131078;</code>
+     *
+     * <pre>
+     * 疲劳值不足
+     * </pre>
+     */
+    FATIGUE_NOT_ENOUGH(5, 131078),
     ;
 
     /**
@@ -443,6 +484,30 @@ public final class Status {
      * </pre>
      */
     public static final int PUID_EXIST_VALUE = 131075;
+    /**
+     * <code>COINS_NOT_ENOUGH = 131076;</code>
+     *
+     * <pre>
+     * 金币不足
+     * </pre>
+     */
+    public static final int COINS_NOT_ENOUGH_VALUE = 131076;
+    /**
+     * <code>GOLD_NOT_ENOUGH = 131077;</code>
+     *
+     * <pre>
+     * 钻石不足
+     * </pre>
+     */
+    public static final int GOLD_NOT_ENOUGH_VALUE = 131077;
+    /**
+     * <code>FATIGUE_NOT_ENOUGH = 131078;</code>
+     *
+     * <pre>
+     * 疲劳值不足
+     * </pre>
+     */
+    public static final int FATIGUE_NOT_ENOUGH_VALUE = 131078;
 
 
     public final int getNumber() { return value; }
@@ -452,6 +517,9 @@ public final class Status {
         case 131073: return PLAYER_NOT_EXIST;
         case 131074: return PLAYER_NICKNAME_EXIST;
         case 131075: return PUID_EXIST;
+        case 131076: return COINS_NOT_ENOUGH;
+        case 131077: return GOLD_NOT_ENOUGH;
+        case 131078: return FATIGUE_NOT_ENOUGH;
         default: return null;
       }
     }
@@ -700,77 +768,61 @@ public final class Status {
      */
     ITEM_NOT_FOUND(0, 262145),
     /**
-     * <code>COINS_NOT_ENOUGH = 262146;</code>
-     *
-     * <pre>
-     * 金币不足
-     * </pre>
-     */
-    COINS_NOT_ENOUGH(1, 262146),
-    /**
-     * <code>GOLD_NOT_ENOUGH = 262147;</code>
-     *
-     * <pre>
-     * 钻石不足
-     * </pre>
-     */
-    GOLD_NOT_ENOUGH(2, 262147),
-    /**
-     * <code>EQUIP_NOT_FOUND = 262148;</code>
+     * <code>EQUIP_NOT_FOUND = 262146;</code>
      *
      * <pre>
      * 装备不足
      * </pre>
      */
-    EQUIP_NOT_FOUND(3, 262148),
+    EQUIP_NOT_FOUND(1, 262146),
     /**
-     * <code>ITEM_NOT_ENOUGH = 262149;</code>
+     * <code>ITEM_NOT_ENOUGH = 262147;</code>
      *
      * <pre>
      * 道具数量不足
      * </pre>
      */
-    ITEM_NOT_ENOUGH(4, 262149),
+    ITEM_NOT_ENOUGH(2, 262147),
     /**
-     * <code>ITEM_BUY_NOT_ALLOW = 262150;</code>
+     * <code>ITEM_BUY_NOT_ALLOW = 262148;</code>
      *
      * <pre>
      * 道具不能买
      * </pre>
      */
-    ITEM_BUY_NOT_ALLOW(5, 262150),
+    ITEM_BUY_NOT_ALLOW(3, 262148),
     /**
-     * <code>ITEM_SELL_NOT_ALLOW = 262151;</code>
+     * <code>ITEM_SELL_NOT_ALLOW = 262149;</code>
      *
      * <pre>
      * 道具不能卖
      * </pre>
      */
-    ITEM_SELL_NOT_ALLOW(6, 262151),
+    ITEM_SELL_NOT_ALLOW(4, 262149),
     /**
-     * <code>EQUIP_MAX_LEVEL_ALREADY = 262152;</code>
+     * <code>EQUIP_MAX_LEVEL_ALREADY = 262150;</code>
      *
      * <pre>
      * 装备最大等级
      * </pre>
      */
-    EQUIP_MAX_LEVEL_ALREADY(7, 262152),
+    EQUIP_MAX_LEVEL_ALREADY(5, 262150),
     /**
-     * <code>EQUIP_LEVEL_NOT_ENOUGH = 262153;</code>
+     * <code>EQUIP_LEVEL_NOT_ENOUGH = 262151;</code>
      *
      * <pre>
      * 装备等级不够进阶
      * </pre>
      */
-    EQUIP_LEVEL_NOT_ENOUGH(8, 262153),
+    EQUIP_LEVEL_NOT_ENOUGH(6, 262151),
     /**
-     * <code>EQUIP_MAX_STAGE_ALREADY = 262154;</code>
+     * <code>EQUIP_MAX_STAGE_ALREADY = 262152;</code>
      *
      * <pre>
      * 装备最大品级
      * </pre>
      */
-    EQUIP_MAX_STAGE_ALREADY(9, 262154),
+    EQUIP_MAX_STAGE_ALREADY(7, 262152),
     /**
      * <code>EQUIP_DRESS_ALREADY = 262160;</code>
      *
@@ -778,7 +830,7 @@ public final class Status {
      * 装备不在背包
      * </pre>
      */
-    EQUIP_DRESS_ALREADY(10, 262160),
+    EQUIP_DRESS_ALREADY(8, 262160),
     /**
      * <code>EQUIP_NOT_DRESS_OTHER = 262161;</code>
      *
@@ -786,7 +838,7 @@ public final class Status {
      * 该位置没有其他装备
      * </pre>
      */
-    EQUIP_NOT_DRESS_OTHER(11, 262161),
+    EQUIP_NOT_DRESS_OTHER(9, 262161),
     /**
      * <code>EQUIP_DRESS_OTHER_ALREADY = 262162;</code>
      *
@@ -794,7 +846,7 @@ public final class Status {
      * 该位置已经有其他装备
      * </pre>
      */
-    EQUIP_DRESS_OTHER_ALREADY(12, 262162),
+    EQUIP_DRESS_OTHER_ALREADY(10, 262162),
     /**
      * <code>EQUIP_NOT_DRESSED = 262163;</code>
      *
@@ -802,7 +854,7 @@ public final class Status {
      * 装备不在身上
      * </pre>
      */
-    EQUIP_NOT_DRESSED(13, 262163),
+    EQUIP_NOT_DRESSED(11, 262163),
     /**
      * <code>EQUIP_SLOT_NOT_EMPTY = 262164;</code>
      *
@@ -810,7 +862,7 @@ public final class Status {
      * 槽位已经镶嵌宝石
      * </pre>
      */
-    EQUIP_SLOT_NOT_EMPTY(14, 262164),
+    EQUIP_SLOT_NOT_EMPTY(12, 262164),
     /**
      * <code>EQUIP_SLOT_EMPTY = 262165;</code>
      *
@@ -818,7 +870,7 @@ public final class Status {
      * 槽位没有镶嵌宝石
      * </pre>
      */
-    EQUIP_SLOT_EMPTY(15, 262165),
+    EQUIP_SLOT_EMPTY(13, 262165),
     /**
      * <code>EQUIP_GEM_NOT_FOUND = 262166;</code>
      *
@@ -826,7 +878,7 @@ public final class Status {
      * 宝石不存在
      * </pre>
      */
-    EQUIP_GEM_NOT_FOUND(16, 262166),
+    EQUIP_GEM_NOT_FOUND(14, 262166),
     /**
      * <code>EQUIP_CAN_NOT_OPEN_SLOT = 262167;</code>
      *
@@ -834,7 +886,7 @@ public final class Status {
      * 装备不能开孔
      * </pre>
      */
-    EQUIP_CAN_NOT_OPEN_SLOT(17, 262167),
+    EQUIP_CAN_NOT_OPEN_SLOT(15, 262167),
     /**
      * <code>EQUIP_GEM_MISMATCH = 262168;</code>
      *
@@ -842,7 +894,7 @@ public final class Status {
      * 镶嵌宝石不符
      * </pre>
      */
-    EQUIP_GEM_MISMATCH(18, 262168),
+    EQUIP_GEM_MISMATCH(16, 262168),
     /**
      * <code>EQUIP_SLOT_NOT_PUNCH = 262169;</code>
      *
@@ -850,7 +902,7 @@ public final class Status {
      * 槽位没有开孔
      * </pre>
      */
-    EQUIP_SLOT_NOT_PUNCH(19, 262169),
+    EQUIP_SLOT_NOT_PUNCH(17, 262169),
     ;
 
     /**
@@ -862,77 +914,61 @@ public final class Status {
      */
     public static final int ITEM_NOT_FOUND_VALUE = 262145;
     /**
-     * <code>COINS_NOT_ENOUGH = 262146;</code>
-     *
-     * <pre>
-     * 金币不足
-     * </pre>
-     */
-    public static final int COINS_NOT_ENOUGH_VALUE = 262146;
-    /**
-     * <code>GOLD_NOT_ENOUGH = 262147;</code>
-     *
-     * <pre>
-     * 钻石不足
-     * </pre>
-     */
-    public static final int GOLD_NOT_ENOUGH_VALUE = 262147;
-    /**
-     * <code>EQUIP_NOT_FOUND = 262148;</code>
+     * <code>EQUIP_NOT_FOUND = 262146;</code>
      *
      * <pre>
      * 装备不足
      * </pre>
      */
-    public static final int EQUIP_NOT_FOUND_VALUE = 262148;
+    public static final int EQUIP_NOT_FOUND_VALUE = 262146;
     /**
-     * <code>ITEM_NOT_ENOUGH = 262149;</code>
+     * <code>ITEM_NOT_ENOUGH = 262147;</code>
      *
      * <pre>
      * 道具数量不足
      * </pre>
      */
-    public static final int ITEM_NOT_ENOUGH_VALUE = 262149;
+    public static final int ITEM_NOT_ENOUGH_VALUE = 262147;
     /**
-     * <code>ITEM_BUY_NOT_ALLOW = 262150;</code>
+     * <code>ITEM_BUY_NOT_ALLOW = 262148;</code>
      *
      * <pre>
      * 道具不能买
      * </pre>
      */
-    public static final int ITEM_BUY_NOT_ALLOW_VALUE = 262150;
+    public static final int ITEM_BUY_NOT_ALLOW_VALUE = 262148;
     /**
-     * <code>ITEM_SELL_NOT_ALLOW = 262151;</code>
+     * <code>ITEM_SELL_NOT_ALLOW = 262149;</code>
      *
      * <pre>
      * 道具不能卖
      * </pre>
      */
-    public static final int ITEM_SELL_NOT_ALLOW_VALUE = 262151;
+    public static final int ITEM_SELL_NOT_ALLOW_VALUE = 262149;
     /**
-     * <code>EQUIP_MAX_LEVEL_ALREADY = 262152;</code>
+     * <code>EQUIP_MAX_LEVEL_ALREADY = 262150;</code>
      *
      * <pre>
      * 装备最大等级
      * </pre>
      */
-    public static final int EQUIP_MAX_LEVEL_ALREADY_VALUE = 262152;
+    public static final int EQUIP_MAX_LEVEL_ALREADY_VALUE = 262150;
     /**
-     * <code>EQUIP_LEVEL_NOT_ENOUGH = 262153;</code>
+     * <code>EQUIP_LEVEL_NOT_ENOUGH = 262151;</code>
      *
      * <pre>
      * 装备等级不够进阶
      * </pre>
      */
-    public static final int EQUIP_LEVEL_NOT_ENOUGH_VALUE = 262153;
+    public static final int EQUIP_LEVEL_NOT_ENOUGH_VALUE = 262151;
     /**
-     * <code>EQUIP_MAX_STAGE_ALREADY = 262154;</code>
+     * <code>EQUIP_MAX_STAGE_ALREADY = 262152;</code>
      *
      * <pre>
      * 装备最大品级
      * </pre>
      */
-    public static final int EQUIP_MAX_STAGE_ALREADY_VALUE = 262154;
+    public static final int EQUIP_MAX_STAGE_ALREADY_VALUE = 262152;
     /**
      * <code>EQUIP_DRESS_ALREADY = 262160;</code>
      *
@@ -1020,15 +1056,13 @@ public final class Status {
     public static itemError valueOf(int value) {
       switch (value) {
         case 262145: return ITEM_NOT_FOUND;
-        case 262146: return COINS_NOT_ENOUGH;
-        case 262147: return GOLD_NOT_ENOUGH;
-        case 262148: return EQUIP_NOT_FOUND;
-        case 262149: return ITEM_NOT_ENOUGH;
-        case 262150: return ITEM_BUY_NOT_ALLOW;
-        case 262151: return ITEM_SELL_NOT_ALLOW;
-        case 262152: return EQUIP_MAX_LEVEL_ALREADY;
-        case 262153: return EQUIP_LEVEL_NOT_ENOUGH;
-        case 262154: return EQUIP_MAX_STAGE_ALREADY;
+        case 262146: return EQUIP_NOT_FOUND;
+        case 262147: return ITEM_NOT_ENOUGH;
+        case 262148: return ITEM_BUY_NOT_ALLOW;
+        case 262149: return ITEM_SELL_NOT_ALLOW;
+        case 262150: return EQUIP_MAX_LEVEL_ALREADY;
+        case 262151: return EQUIP_LEVEL_NOT_ENOUGH;
+        case 262152: return EQUIP_MAX_STAGE_ALREADY;
         case 262160: return EQUIP_DRESS_ALREADY;
         case 262161: return EQUIP_NOT_DRESS_OTHER;
         case 262162: return EQUIP_DRESS_OTHER_ALREADY;
@@ -1230,6 +1264,10 @@ public final class Status {
      * <code>INSTANCE_FATIGUE = 393220;</code>
      */
     INSTANCE_FATIGUE(3, 393220),
+    /**
+     * <code>INSTANCE_REVIVE_COUNT = 393221;</code>
+     */
+    INSTANCE_REVIVE_COUNT(4, 393221),
     ;
 
     /**
@@ -1252,6 +1290,10 @@ public final class Status {
      * <code>INSTANCE_FATIGUE = 393220;</code>
      */
     public static final int INSTANCE_FATIGUE_VALUE = 393220;
+    /**
+     * <code>INSTANCE_REVIVE_COUNT = 393221;</code>
+     */
+    public static final int INSTANCE_REVIVE_COUNT_VALUE = 393221;
 
 
     public final int getNumber() { return value; }
@@ -1262,6 +1304,7 @@ public final class Status {
         case 393218: return INSTANCE_LEVEL;
         case 393219: return INSTANCE_COUNT;
         case 393220: return INSTANCE_FATIGUE;
+        case 393221: return INSTANCE_REVIVE_COUNT;
         default: return null;
       }
     }
@@ -1806,48 +1849,50 @@ public final class Status {
       "TEM_ERROR\020\200\200\020\022\021\n\013QUEST_ERROR\020\200\200\024\022\024\n\016INST" +
       "ANCE_ERROR\020\200\200\030\022\020\n\nMAIL_ERROR\020\200\200\034\022\024\n\016ALLI" +
       "ANCE_ERROR\020\200\200 \022\020\n\nSHOP_ERROR\020\200\200$\022\016\n\010IM_E" +
-      "RROR\020\200\200@*\300\001\n\005error\022\016\n\nNONE_ERROR\020\000\022\020\n\014CO" +
+      "RROR\020\200\200@*\326\001\n\005error\022\016\n\nNONE_ERROR\020\000\022\020\n\014CO" +
       "NFIG_ERROR\020\001\022\024\n\020ONLINE_MAX_LIMIT\020\002\022\026\n\022RE" +
       "GISTER_MAX_LIMIT\020\003\022\025\n\021SERVER_GRAY_STATE\020" +
       "\004\022\023\n\017DATA_BASE_ERROR\020\005\022\022\n\016PARAMS_INVALID",
-      "\020\006\022\024\n\020CONFIG_NOT_FOUND\020\007\022\021\n\014SERVER_ERROR" +
-      "\020\200 *T\n\013PlayerError\022\026\n\020PLAYER_NOT_EXIST\020\201" +
-      "\200\010\022\033\n\025PLAYER_NICKNAME_EXIST\020\202\200\010\022\020\n\nPUID_" +
-      "EXIST\020\203\200\010*\274\001\n\014monsterError\022\026\n\020MONSTER_MA" +
-      "X_SIZE\020\201\200\014\022\027\n\021MONSTER_NOT_EXIST\020\202\200\014\022\034\n\026S" +
-      "KILL_POINT_NOT_ENOUGH\020\203\200\014\022\027\n\021SKILL_LEVEL" +
-      "_LIMIT\020\204\200\014\022\021\n\013STAGE_LIMIT\020\205\200\014\022\034\n\026STAGE_L" +
-      "EVEL_NOT_ENOUGH\020\206\200\014\022\023\n\rSTAGE_CONSUME\020\207\200\014" +
-      "*\245\004\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\026\n\020" +
-      "COINS_NOT_ENOUGH\020\202\200\020\022\025\n\017GOLD_NOT_ENOUGH\020",
-      "\203\200\020\022\025\n\017EQUIP_NOT_FOUND\020\204\200\020\022\025\n\017ITEM_NOT_E" +
-      "NOUGH\020\205\200\020\022\030\n\022ITEM_BUY_NOT_ALLOW\020\206\200\020\022\031\n\023I" +
-      "TEM_SELL_NOT_ALLOW\020\207\200\020\022\035\n\027EQUIP_MAX_LEVE" +
-      "L_ALREADY\020\210\200\020\022\034\n\026EQUIP_LEVEL_NOT_ENOUGH\020" +
-      "\211\200\020\022\035\n\027EQUIP_MAX_STAGE_ALREADY\020\212\200\020\022\031\n\023EQ" +
-      "UIP_DRESS_ALREADY\020\220\200\020\022\033\n\025EQUIP_NOT_DRESS" +
-      "_OTHER\020\221\200\020\022\037\n\031EQUIP_DRESS_OTHER_ALREADY\020" +
-      "\222\200\020\022\027\n\021EQUIP_NOT_DRESSED\020\223\200\020\022\032\n\024EQUIP_SL" +
-      "OT_NOT_EMPTY\020\224\200\020\022\026\n\020EQUIP_SLOT_EMPTY\020\225\200\020" +
-      "\022\031\n\023EQUIP_GEM_NOT_FOUND\020\226\200\020\022\035\n\027EQUIP_CAN",
-      "_NOT_OPEN_SLOT\020\227\200\020\022\030\n\022EQUIP_GEM_MISMATCH" +
-      "\020\230\200\020\022\032\n\024EQUIP_SLOT_NOT_PUNCH\020\231\200\020*T\n\nques" +
-      "tError\022\026\n\020QUEST_NOT_ACCEPT\020\201\200\024\022\030\n\022QUEST_" +
-      "NOT_COMPLETE\020\202\200\024\022\024\n\016QUEST_NOT_OPEN\020\203\200\024*l" +
-      "\n\rinstanceError\022\027\n\021INSTANCE_NOT_OPEN\020\201\200\030" +
-      "\022\024\n\016INSTANCE_LEVEL\020\202\200\030\022\024\n\016INSTANCE_COUNT" +
-      "\020\203\200\030\022\026\n\020INSTANCE_FATIGUE\020\204\200\030*^\n\tmailErro" +
-      "r\022\024\n\016MAIL_NOT_EXIST\020\201\200\034\022\017\n\tMAIL_NONE\020\202\200\034" +
-      "\022\024\n\016MAIL_COIN_FULL\020\203\200\034\022\024\n\016MAIL_GOLD_FULL" +
-      "\020\204\200\034*\201\001\n\rallianceError\022\037\n\031ALLIANCE_LEVEL",
-      "_NOT_ENOUGH\020\201\200 \022\031\n\023ALLIANCE_ALREADY_IN\020\202" +
-      "\200 \022\031\n\023ALLIANCE_NAME_ERROR\020\203\200 \022\031\n\023ALLIANC" +
-      "E_NAME_EXIST\020\204\200 *\202\001\n\tshopError\022\032\n\024SHOP_R" +
-      "EFRESH_TIMEOUT\020\201\200$\022\033\n\025SHOP_ITEM_ALREADY_" +
-      "BUY\020\202\200$\022\034\n\026SHOP_REFRESH_MAX_COUNT\020\203\200$\022\036\n" +
-      "\030SHOP_GOLD2COIN_MAX_COUNT\020\203\200$*\037\n\007imError" +
-      "\022\024\n\016IM_CHAT_LENGTH\020\201\200@B\030\n\026com.hawk.game." +
-      "protocol"
+      "\020\006\022\024\n\020CONFIG_NOT_FOUND\020\007\022\024\n\020UNSUPPORT_AC" +
+      "TION\020\010\022\021\n\014SERVER_ERROR\020\200 *\235\001\n\013PlayerErro" +
+      "r\022\026\n\020PLAYER_NOT_EXIST\020\201\200\010\022\033\n\025PLAYER_NICK" +
+      "NAME_EXIST\020\202\200\010\022\020\n\nPUID_EXIST\020\203\200\010\022\026\n\020COIN" +
+      "S_NOT_ENOUGH\020\204\200\010\022\025\n\017GOLD_NOT_ENOUGH\020\205\200\010\022" +
+      "\030\n\022FATIGUE_NOT_ENOUGH\020\206\200\010*\274\001\n\014monsterErr" +
+      "or\022\026\n\020MONSTER_MAX_SIZE\020\201\200\014\022\027\n\021MONSTER_NO" +
+      "T_EXIST\020\202\200\014\022\034\n\026SKILL_POINT_NOT_ENOUGH\020\203\200" +
+      "\014\022\027\n\021SKILL_LEVEL_LIMIT\020\204\200\014\022\021\n\013STAGE_LIMI" +
+      "T\020\205\200\014\022\034\n\026STAGE_LEVEL_NOT_ENOUGH\020\206\200\014\022\023\n\rS",
+      "TAGE_CONSUME\020\207\200\014*\366\003\n\titemError\022\024\n\016ITEM_N" +
+      "OT_FOUND\020\201\200\020\022\025\n\017EQUIP_NOT_FOUND\020\202\200\020\022\025\n\017I" +
+      "TEM_NOT_ENOUGH\020\203\200\020\022\030\n\022ITEM_BUY_NOT_ALLOW" +
+      "\020\204\200\020\022\031\n\023ITEM_SELL_NOT_ALLOW\020\205\200\020\022\035\n\027EQUIP" +
+      "_MAX_LEVEL_ALREADY\020\206\200\020\022\034\n\026EQUIP_LEVEL_NO" +
+      "T_ENOUGH\020\207\200\020\022\035\n\027EQUIP_MAX_STAGE_ALREADY\020" +
+      "\210\200\020\022\031\n\023EQUIP_DRESS_ALREADY\020\220\200\020\022\033\n\025EQUIP_" +
+      "NOT_DRESS_OTHER\020\221\200\020\022\037\n\031EQUIP_DRESS_OTHER" +
+      "_ALREADY\020\222\200\020\022\027\n\021EQUIP_NOT_DRESSED\020\223\200\020\022\032\n" +
+      "\024EQUIP_SLOT_NOT_EMPTY\020\224\200\020\022\026\n\020EQUIP_SLOT_",
+      "EMPTY\020\225\200\020\022\031\n\023EQUIP_GEM_NOT_FOUND\020\226\200\020\022\035\n\027" +
+      "EQUIP_CAN_NOT_OPEN_SLOT\020\227\200\020\022\030\n\022EQUIP_GEM" +
+      "_MISMATCH\020\230\200\020\022\032\n\024EQUIP_SLOT_NOT_PUNCH\020\231\200" +
+      "\020*T\n\nquestError\022\026\n\020QUEST_NOT_ACCEPT\020\201\200\024\022" +
+      "\030\n\022QUEST_NOT_COMPLETE\020\202\200\024\022\024\n\016QUEST_NOT_O" +
+      "PEN\020\203\200\024*\211\001\n\rinstanceError\022\027\n\021INSTANCE_NO" +
+      "T_OPEN\020\201\200\030\022\024\n\016INSTANCE_LEVEL\020\202\200\030\022\024\n\016INST" +
+      "ANCE_COUNT\020\203\200\030\022\026\n\020INSTANCE_FATIGUE\020\204\200\030\022\033" +
+      "\n\025INSTANCE_REVIVE_COUNT\020\205\200\030*^\n\tmailError" +
+      "\022\024\n\016MAIL_NOT_EXIST\020\201\200\034\022\017\n\tMAIL_NONE\020\202\200\034\022",
+      "\024\n\016MAIL_COIN_FULL\020\203\200\034\022\024\n\016MAIL_GOLD_FULL\020" +
+      "\204\200\034*\201\001\n\rallianceError\022\037\n\031ALLIANCE_LEVEL_" +
+      "NOT_ENOUGH\020\201\200 \022\031\n\023ALLIANCE_ALREADY_IN\020\202\200" +
+      " \022\031\n\023ALLIANCE_NAME_ERROR\020\203\200 \022\031\n\023ALLIANCE" +
+      "_NAME_EXIST\020\204\200 *\202\001\n\tshopError\022\032\n\024SHOP_RE" +
+      "FRESH_TIMEOUT\020\201\200$\022\033\n\025SHOP_ITEM_ALREADY_B" +
+      "UY\020\202\200$\022\034\n\026SHOP_REFRESH_MAX_COUNT\020\203\200$\022\036\n\030" +
+      "SHOP_GOLD2COIN_MAX_COUNT\020\203\200$*\037\n\007imError\022" +
+      "\024\n\016IM_CHAT_LENGTH\020\201\200@B\030\n\026com.hawk.game.p" +
+      "rotocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

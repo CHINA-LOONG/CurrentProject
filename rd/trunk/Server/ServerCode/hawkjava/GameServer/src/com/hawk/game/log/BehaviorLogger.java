@@ -186,6 +186,10 @@ public class BehaviorLogger {
 		 */
 		INSTACE_SETTLE,
 		/**
+		 * 副本复活
+		 */
+		INSTANCE_REVIVE,
+		/**
 		 * 副本扫荡
 		 */
 		INSTANCE_SWEEP,
@@ -221,6 +225,10 @@ public class BehaviorLogger {
 		 * 公会创建
 		 */
 		ALLIANCE_CREATE_CONSUME,
+		/**
+		 * gm
+		 */
+		GM_ACTION,
 		/**
 		 * 未知行为
 		 */

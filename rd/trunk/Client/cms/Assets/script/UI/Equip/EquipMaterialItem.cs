@@ -30,11 +30,11 @@ public class EquipMaterialItem : MonoBehaviour
 
         if (mineItem.count<count)
         {
-            textCount.color = Color.red;
+            textCount.color = ColorConst.text_color_nReq;
         }
         else
         {
-            textCount.color = Color.white;
+            textCount.color = ColorConst.text_color_Req;
         }
     }
 

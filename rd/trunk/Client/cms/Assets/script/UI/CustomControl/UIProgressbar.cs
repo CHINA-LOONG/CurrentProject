@@ -87,14 +87,15 @@ public class UIProgressbar : MonoBehaviour {
         mProgressText.text = mTargetValue.ToString() + "/" + mTotalValue.ToString();
     }
     //---------------------------------------------------------------------------------------------
-    public void SetTargetRatio(int targetRatio)
+    public void SetTargetRatio(float targetRatio)
     {
         mTargetRatio = targetRatio;
     }
     //---------------------------------------------------------------------------------------------
-    public void SetCurrrentRatio(int currentRatio)
+    public void SetCurrrentRatio(float currentRatio)
     {
         mCurrentRatio = currentRatio;
+        mProgressImage.fillAmount = mCurrentRatio;
     }
     //---------------------------------------------------------------------------------------------
 }

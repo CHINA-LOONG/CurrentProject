@@ -309,6 +309,19 @@ public class GameDataMgr : MonoBehaviour
     void OnReward(ProtocolMessage msg)
     {
         PB.HSRewardInfo reward = msg.GetProtocolBody<PB.HSRewardInfo>();
+
+        GameUnit unit = null;
+        foreach (PB.SynMonsterAttr item in reward.monstersAttr)
+        {
+            unit = mainPlayer.GetPetWithKey(item.monsterId);
+            if (unit==null)
+            {
+                Logger.Log("不存在的宠物");
+                continue;
+            }
+            unit.RefreshUnitLvl(item.level, item.exp);
+        }
+
         foreach (PB.RewardItem item in reward.RewardItems)
         {
             if (item.type == (int)PB.itemType.PLAYER_ATTR)
@@ -323,7 +336,10 @@ public class GameDataMgr : MonoBehaviour
                     GameDataMgr.Instance.mainPlayer.gold += item.count;
 					GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged,mainPlayer.gold);
                 }
-
+            }
+            else if (item.type == (int)PB.itemType.MONSTER_ATTR)
+            { 
+                //此处不做处理，通过外部的SynMonsterAttr来同步怪物属性
             }
             else if (item.type == (int)PB.itemType.ITEM)
             {

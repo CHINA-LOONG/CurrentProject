@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class ColorConst 
 {
@@ -43,6 +44,11 @@ public class ColorConst
 		}
 		return outline_color_grade_1;
 	}
+    //系统字色黑
+    public static Color system_color_black = new Color(251.0f / 255.0f, 241.0f / 255.0f, 216.0f / 255.0f, 1.0f);
+    //系统字色白
+    public static Color system_color_white = new Color(96.0f / 255.0f, 76.0f / 255.0f, 51.0f / 255.0f, 1.0f);
+
 	//白色品质
 	public	static 	Color	text_color_grade_1 = new Color(1,1,1,1);
 	public	static	Color	outline_color_grade_1 = new Color(0.45f,0.41f,0.63f,1);	
@@ -62,14 +68,27 @@ public class ColorConst
 	public	static 	Color	text_color_grade_6 = new Color(1,65.0f/255.0f,98.0f/255.0f,1);
     public static Color outline_color_grade_6 = new Color(148.0f / 255.0f, 0, 0, 1);
     //需求足够
-    public static Color text_color_Req = new Color(122.0f / 255.0f, 1, 0, 1);
+    public static Color text_color_Req = new Color(251.0f / 255.0f, 241.0f/255.0f, 216.0f/255.0f, 1);
     public static Color outline_color_Req = new Color(0, 95.0f / 255.0f, 50.0f / 255.0f, 1);	
     //需求不够
-    public static Color text_color_nReq = new Color(1, 0, 0, 1);
+    public static Color text_color_nReq = new Color(1, 65.0f/255.0f, 98.0f/255.0f, 1);
     public static Color outline_color_nReq = new Color(148.0f / 255.0f, 0, 0, 1);
-
-
 	//shopitem buyprice color
 	public	static	Color	text_color_Enough = new Color (96.0f / 255.0f, 76.0f / 255.0f, 51.0f / 255.0f, 1);
+    //频道字体颜色
+    public static Color globalColor = Color.green;//世界字体颜色
+    public static Color guildColor = Color.black;//工會字体颜色
+    public static Color systemColor = Color.red;//系统字体颜色
+
+    public static string colorTo_Hstr(Color color)
+    {
+        string strColor = "#";
+        strColor += string.Format("{0:X2}", (int)(color.r * 255));
+        strColor += string.Format("{0:X2}", (int)(color.g * 255));
+        strColor += string.Format("{0:X2}", (int)(color.b * 255));
+        strColor += string.Format("{0:X2}", (int)(color.a * 255));
+        return strColor;
+    }
+
 
 }

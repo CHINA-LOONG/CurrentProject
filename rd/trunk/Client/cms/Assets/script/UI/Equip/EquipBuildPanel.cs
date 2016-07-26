@@ -220,11 +220,11 @@ public class EquipBuildPanel : EquipPanelBase
                     imgCoin.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(BattleConst.icon_jinbi);
                     if (GameDataMgr.Instance.PlayerDataAttr.coin<curDemand[i].count)
                     {
-                        textCoin.color = Color.red;
+                        textCoin.color = ColorConst.text_color_nReq;
                     }
                     else
                     {
-                        textCoin.color = Color.white;
+                        textCoin.color = ColorConst.text_color_Req;
                     }
                     textCoin.text = curDemand[i].count.ToString();
                 }

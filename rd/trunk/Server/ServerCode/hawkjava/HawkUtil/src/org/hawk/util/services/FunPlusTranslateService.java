@@ -174,13 +174,13 @@ public class FunPlusTranslateService extends HawkTickable {
 		final HttpUriRequest httpRequest = genHttpRequest(trans.sourceText, trans.sourceLang, trans.targetLangArray[0], trans.profanity, trans.textType);
 		// for log
 		final String sourceText = trans.sourceText;
-		HawkLog.logPrintln(String.format("FunPlus translate send : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
+//		HawkLog.logPrintln(String.format("FunPlus translate send : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
 		// 异步请求
 		httpClient.execute(httpRequest, new FutureCallback<HttpResponse>() {
 
 			@Override
 			public void completed(HttpResponse response) {
-				HawkLog.logPrintln(String.format("FunPlus translate complete : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
+//				HawkLog.logPrintln(String.format("FunPlus translate complete : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
 				try {
 					String responseString = EntityUtils.toString(response.getEntity());
 
@@ -248,7 +248,7 @@ public class FunPlusTranslateService extends HawkTickable {
 				final HttpUriRequest httpRequest = genHttpRequest(trans.sourceText, trans.sourceLang, trans.targetLangArray[langIndex], trans.profanity, trans.textType);
 				// for log
 				final String sourceText = trans.sourceText;
-				HawkLog.logPrintln(String.format("FunPlus translate send : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
+//				HawkLog.logPrintln(String.format("FunPlus translate send : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
 				// 异步请求
 				httpClient.execute(httpRequest, new FutureCallback<HttpResponse>() {
 

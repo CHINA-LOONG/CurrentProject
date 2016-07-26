@@ -210,6 +210,7 @@ public class AwardItems {
 			rewardItem = RewardItem.newBuilder();
 			rewardItem.setType(itemType.MONSTER_ATTR_VALUE);
 			rewardItem.setItemId(String.valueOf(attrType));
+			rewardItem.setCount(count);
 			rewardItem.setId(id);
 			rewardInfo.addRewardItems(rewardItem);
 		}
@@ -269,6 +270,7 @@ public class AwardItems {
 				addMonster(itemInfo.getItemId(), itemInfo.getStage());
 			}
 		}
+
 		return this;
 	}
 
@@ -327,7 +329,7 @@ public class AwardItems {
 	 * @param async
 	 * @return
 	 */
-	public boolean  rewardTakeAffect(Player player, Action action) {
+	public boolean rewardTakeAffect(Player player, Action action) {
 		try {			
 			for (int i = 0; i < rewardInfo.getRewardItemsBuilderList().size(); ) {
 				RewardItem.Builder item = rewardInfo.getRewardItemsBuilder(i);
@@ -348,16 +350,21 @@ public class AwardItems {
 						break;
 
 					case changeType.CHANGE_PLAYER_EXP_VALUE:
-						//重置玩家经验值
-						item.setCount(player.increaseExp(item.getCount(), action));
+						player.increaseExp(item.getCount(), action);
 						playerBuilder.setExp(player.getExp());
-						playerBuilder.setLevel(player.getLevel());
-						
+						playerBuilder.setLevel(player.getLevel());	
 						break;
 
-					case changeType.CHANGE_VIPLEVEL_VALUE:
-						player.setVipLevel(item.getCount(), action);
-						playerBuilder.setVipLevel(player.getVipLevel());
+					case changeType.CHANGE_FATIGUE_VALUE:
+						player.increaseFatigue(item.getCount(), action);
+						playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
+						break;
+						
+					// GM命令 ,不会和CHANGE_PLAYER_EXP_VALUE同时出现
+					case changeType.CHANGE_PLAYER_LEVEL_VALUE:
+						player.setLevel(item.getCount(), action);
+						playerBuilder.setExp(player.getExp());
+						playerBuilder.setLevel(player.getLevel());
 						break;
 					
 					default:
@@ -391,7 +398,7 @@ public class AwardItems {
 							if (player.getPlayerData().getMonsterEntity((int)item.getId()) != null) {
 								SynMonsterAttr.Builder monsterBuilder = null;
 								//重置怪物经验值
-								item.setCount(player.increaseMonsterExp((int)item.getId(), item.getCount(), action));									
+								player.increaseMonsterExp((int)item.getId(), item.getCount(), action);									
 								for (SynMonsterAttr.Builder builder : rewardInfo.getMonstersAttrBuilderList()) {
 									if (builder.getMonsterId() == (int)item.getId()) {
 										monsterBuilder = builder;
@@ -412,8 +419,31 @@ public class AwardItems {
 							}
 						}
 					}
-				}
-				
+					else if (Integer.parseInt(item.getItemId()) == changeType.CHANGE_MONSTER_LEVEL_VALUE) {
+						if (player.getPlayerData().getMonsterEntity((int)item.getId()) != null) {
+							SynMonsterAttr.Builder monsterBuilder = null;
+							//重置怪物经验值
+							player.setMonsterLevel((int)item.getId(), item.getCount(), action);									
+							for (SynMonsterAttr.Builder builder : rewardInfo.getMonstersAttrBuilderList()) {
+								if (builder.getMonsterId() == (int)item.getId()) {
+									monsterBuilder = builder;
+									break;
+								}
+							}
+							if (monsterBuilder == null) {
+								monsterBuilder = SynMonsterAttr.newBuilder();
+								monsterBuilder.setMonsterId((int)item.getId());
+								monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
+								monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
+								rewardInfo.addMonstersAttr(monsterBuilder);
+							}
+							else {
+								monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
+								monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
+							}						
+						}
+					}
+				}		
 				else if(item.getType() == Const.itemType.ITEM_VALUE){
 					ItemEntity itemEntity = player.increaseItem(item.getItemId(), item.getCount(), action);
 					if (itemEntity == null) {					

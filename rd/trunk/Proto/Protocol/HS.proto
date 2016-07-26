@@ -18,6 +18,9 @@ enum gm
 {
 	// 生成测试账号
 	GEN_TEST_ACCOUNT            = 100;
+	// gm命令
+	GMOPERATION_C               = 101;
+	GMOPERATION_S               = 102;
 }
 
 // 游戏协议ID列表(>=1000)

@@ -70,6 +70,7 @@ public class BattleController : MonoBehaviour
 
 	private	Dictionary<string,Transform> cameraNodeDic = new Dictionary<string, Transform>();
     private EnterInstanceParam curInstanceParam;
+    private bool battleSuccess;
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
     public void Init()
@@ -155,15 +156,15 @@ public class BattleController : MonoBehaviour
 				}
 				return;
 			}
-            if (hit.collider.gameObject.tag == "DropItem")
-            {
-                Transform parent = hit.collider.gameObject.transform.parent;
-                DropItems dropItems = parent.GetComponent<DropItems>();
-                if (dropItems != null)
-                {                    
-                    dropItems.OnHit();
-                }
-            }
+            //if (hit.collider.gameObject.tag == "DropItem")
+            //{
+            //    Transform parent = hit.collider.gameObject.transform.parent;
+            //    DropItems dropItems = parent.GetComponent<DropItems>();
+            //    if (dropItems != null)
+            //    {                    
+            //        dropItems.OnHit();
+            //    }
+            //}
 
 			var wpTarget = hit.collider.gameObject.GetComponent<WeakpointTarget>();
 			if(wpTarget)
@@ -663,7 +664,7 @@ public class BattleController : MonoBehaviour
         Appearance(false, waitTime);
         IsOcclusion(true);
         //Fade.FadeOut(waitTime);
-        ItemDropManager.Instance.ClearDropItem();
+        //ItemDropManager.Instance.ClearDropItem();
         GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
         yield return new WaitForSeconds(waitTime);
 
@@ -755,7 +756,8 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnBattleOver(bool isSuccess)
     {
-        ItemDropManager.Instance.ClearDropItem();
+        battleSuccess = isSuccess;
+        //ItemDropManager.Instance.ClearDropItem();
         processStart = false;
         //Logger.LogWarning("Battle " + (isSuccess ? "Success" : "Failed"));
         AudioSystemMgr.Instance.StopMusic();
@@ -781,14 +783,13 @@ public class BattleController : MonoBehaviour
 		MagicDazhaoController.Instance.ClearAll ();
 		PhyDazhaoController.Instance.ClearAll ();
 		process.HideFireFocus();
-        //curInstanceParam = null;
 
-        //PB.HSInstanceSettle instanceParam = new PB.HSInstanceSettle();
-        //instanceParam.victory = isSuccess;
-        //GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam);
+        PB.HSInstanceSettle instanceParam = new PB.HSInstanceSettle();
+        instanceParam.victory = isSuccess;
+        GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam);
         
         //test only
-        StartCoroutine(ProcessBattleOver(isSuccess));
+        //StartCoroutine(ProcessBattleOver(isSuccess));
     } 
     //---------------------------------------------------------------------------------------------
     IEnumerator ProcessBattleOver(bool isSuccess)
@@ -809,7 +810,9 @@ public class BattleController : MonoBehaviour
         else
         {
             PB.HSInstanceSettleRet scoreInfo = msg.GetProtocolBody<PB.HSInstanceSettleRet>();
+            mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
             mUIScore.SetScoreInfo(scoreInfo);
+            mUIScore.ShowScoreUI(battleSuccess);
         }
     }
     //---------------------------------------------------------------------------------------------

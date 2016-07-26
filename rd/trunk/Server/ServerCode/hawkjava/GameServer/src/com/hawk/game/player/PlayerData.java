@@ -443,6 +443,15 @@ public class PlayerData {
 	public void setQuest(HSQuest quest) {
 		questMap.put(quest.getQuestId(), quest);
 	}
+	
+	/**
+	 * 获取道具列表
+	 * 
+	 * @return
+	 */
+	public Map<String, ItemEntity> getItemEntityMap() {
+		return itemEntityMap;
+	}
 
 	/**
 	 * 获取物品
@@ -481,7 +490,7 @@ public class PlayerData {
 	 * 
 	 * @return
 	 */
-	public Map<Long, EquipEntity> getequipEntityMap() {
+	public Map<Long, EquipEntity> getEquipEntityMap() {
 		return equipEntityMap;
 	}
 

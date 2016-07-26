@@ -76,10 +76,18 @@ public class ImManager extends HawkAppObj {
 	}
 
 	// 属性----------------------------------------------------------------------------------------------------------
-	// 翻译批次大小
-	public static final int TRANSLATE_BATCH_SIZE = 2;
-	// 推送批次大小
-	public static final int PUSH_BATCH_SIZE = 20;
+
+	// 推送线程id区间
+	private static final int PUSH_THREAD_MIN = 0;
+	private static final int PUSH_THREAD_MAX = 1;
+	// 翻译线程id区间
+	private static final int TRANS_THREAD_MIN = 2;
+	private static final int TRANS_THREAD_MAX = 3;
+
+	// 翻译任务批次最大数量
+	private static final int TRANS_BATCH_SIZE = 2;
+	// 推送任务批次最大数量
+	private static final int PUSH_BATCH_SIZE = 20;
 
 	private static final Logger logger = LoggerFactory.getLogger("Server");
 
@@ -319,13 +327,72 @@ public class ImManager extends HawkAppObj {
 	 */
 	@Override
 	public boolean onTick() {
-		// 推送
-		if (false == worldMsgQueue.isEmpty() || false == guildMsgQueueMap.isEmpty()) {
-			HawkApp.getInstance().postCommonTask(new ImPushTask());
+		ImMsg msgObj = null;
+
+		// 推送---------------------------------------------------------------------------------------
+		Map<ImPlayer, List<ImMsg>> pushPersonMap = null;
+		List<ImMsg> pushWorldList = null;
+		Map<Integer, List<ImMsg>> pushGuildMap = null;
+
+		if (false == personMsgQueue.isEmpty()) {
+			pushPersonMap = new HashMap<>();
+			while ((msgObj = personMsgQueue.poll()) != null) {
+				List<ImMsg> pushList = pushPersonMap.get(msgObj.receiver);
+				if (pushList == null) {
+					pushList = new ArrayList<ImMsg>();
+					pushPersonMap.put(msgObj.receiver, pushList);
+				}
+				pushList.add(msgObj);
+			}
 		}
-		// 翻译
+
+		if (false == worldMsgQueue.isEmpty()) {
+			pushWorldList = new ArrayList<ImMsg>();
+			while ((msgObj = worldMsgQueue.poll()) != null) {
+				pushWorldList.add(msgObj);
+			}
+		}
+
+		if (false == guildMsgQueueMap.isEmpty()) {
+			pushGuildMap = new HashMap<>();
+			for (Entry<Integer, ConcurrentLinkedQueue<ImMsg>> entry : guildMsgQueueMap.entrySet()) {
+				// TODO 根据运行情况考虑是否移除空queue
+				Queue<ImMsg> queue = entry.getValue();
+				if (true == queue.isEmpty()) {
+					continue;
+				}
+
+				List<ImMsg> pushGuildList = new ArrayList<ImMsg>();
+				pushGuildMap.put(entry.getKey(), pushGuildList);
+
+				while ((msgObj = queue.poll()) != null) {
+					pushGuildList.add(msgObj);
+				}
+			}
+		}
+
+		if ((null != pushPersonMap && false == pushPersonMap.isEmpty())
+				|| (null != pushWorldList && false == pushWorldList.isEmpty())
+				|| (null != pushGuildMap && false == pushGuildMap.isEmpty())) {
+			HawkApp.getInstance().postCommonTask(new ImPushTask(pushPersonMap, pushWorldList, pushGuildMap), PUSH_THREAD_MIN, PUSH_THREAD_MAX);
+		}
+
+		// 翻译------------------------------------------------------------------------------------------
 		if (false == transMsgQueue.isEmpty()) {
-			HawkApp.getInstance().postCommonTask(new ImTransBatchTask());
+			List<ImMsg> transList = new ArrayList<ImMsg>();
+
+			for (int i = 0; i < TRANS_BATCH_SIZE; ++i) {
+				msgObj = transMsgQueue.poll();
+				if (msgObj != null) {
+					transList.add(msgObj);
+				} else {
+					break;
+				}
+			}
+
+			if (false == transList.isEmpty()) {
+				HawkApp.getInstance().postCommonTask(new ImTransBatchTask(transList), TRANS_THREAD_MIN, TRANS_THREAD_MAX);
+			}
 		}
 
 		return true;
@@ -360,30 +427,26 @@ public class ImManager extends HawkAppObj {
 			}
 		}
 	}
-	
+
 	/**
 	 * IM批量翻译任务
 	 */
 	private class ImTransBatchTask extends HawkTask {
+
+		private List<ImMsg> transList;
+
+		protected ImTransBatchTask(List<ImMsg> transList) {
+			this.transList = transList;
+		}
+
 		@Override
 		protected HawkCacheObj clone() {
-			return new ImTransBatchTask();
+			return new ImTransBatchTask(this.transList);
 		}
 
 		@Override
 		protected int run() {
-			List<ImMsg> transList = new ArrayList<ImMsg>();
-
-			for (int i = 0; i < TRANSLATE_BATCH_SIZE; ++i) {
-				ImMsg msgObj = transMsgQueue.poll();
-				if (msgObj != null) {
-					transList.add(msgObj);
-				} else {
-					break;
-				}
-			}
-
-			if (true == transList.isEmpty()) {
+			if (null == transList || true == transList.isEmpty()) {
 				return 0;
 			}
 
@@ -392,7 +455,7 @@ public class ImManager extends HawkAppObj {
 			for (int i = 0; i < transList.size(); ++i) {
 				ImMsg msgObj = transList.get(i);
 				msgObj.transText = new HashMap<String, String>();
-				
+
 				List<String> langList = new ArrayList<String>();
 				switch (msgObj.channel) {
 					case Const.ImChannel.PERSON_VALUE: {
@@ -456,57 +519,37 @@ public class ImManager extends HawkAppObj {
 	 * IM推送任务
 	 */
 	private class ImPushTask extends HawkTask {
+		private Map<ImPlayer, List<ImMsg>> pushPersonMap;
+		private List<ImMsg> pushWorldList;
+		private Map<Integer, List<ImMsg>> pushGuildMap;
+
+		protected ImPushTask(Map<ImPlayer, List<ImMsg>> pushPersonMap, List<ImMsg> pushWorldList, Map<Integer, List<ImMsg>> pushGuildMap) {
+			this.pushPersonMap = pushPersonMap;
+			this.pushWorldList = pushWorldList;
+			this.pushGuildMap = pushGuildMap;
+		}
+
 		@Override
 		protected HawkCacheObj clone() {
-			return new ImPushTask();
+			return new ImPushTask(this.pushPersonMap, this.pushWorldList, this.pushGuildMap);
 		}
 
 		@Override
 		protected int run() {
-			ImMsg msgObj = null;
-
 			// 推送私人频道
-			Map<ImPlayer, List<ImMsg>> pushPersonMap = new HashMap<>();
-			while ((msgObj = personMsgQueue.poll()) != null) {
-				List<ImMsg> pushList = pushPersonMap.get(msgObj.receiver);
-				if (pushList == null) {
-					pushList = new ArrayList<ImMsg>();
-					pushPersonMap.put(msgObj.receiver, pushList);
-				}
-				pushList.add(msgObj);
-			}
-			if (false == pushPersonMap.isEmpty()) {
+			if (null != pushPersonMap && false == pushPersonMap.isEmpty()) {
 				for (Entry<ImPlayer, List<ImMsg>> entry : pushPersonMap.entrySet()) {
 					push(entry.getValue(), entry.getKey());
 				}
 			}
 
 			// 推送世界频道
-			List<ImMsg> pushWorldList = new ArrayList<ImMsg>();
-			while ((msgObj = worldMsgQueue.poll()) != null) {
-				pushWorldList.add(msgObj);
-			}
-			if (false == pushWorldList.isEmpty()) {
+			if (null != pushWorldList && false == pushWorldList.isEmpty()) {
 				push(pushWorldList, worldPlayerMap);
 			}
 
 			// 推送公会频道
-			Map<Integer, List<ImMsg>> pushGuildMap = new HashMap<>();
-			for (Entry<Integer, ConcurrentLinkedQueue<ImMsg>> entry : guildMsgQueueMap.entrySet()) {
-				// TODO 根据运行情况考虑是否移除空queue
-				Queue<ImMsg> queue = entry.getValue();
-				if (true == queue.isEmpty()) {
-					continue;
-				}
-
-				List<ImMsg> pushGuildList = new ArrayList<ImMsg>();
-				pushGuildMap.put(entry.getKey(), pushGuildList);
-
-				while ((msgObj = queue.poll()) != null) {
-					pushGuildList.add(msgObj);
-				}
-			}
-			if (false == pushGuildMap.isEmpty()) {
+			if (null != pushGuildMap && false == pushGuildMap.isEmpty()) {
 				for(Entry<Integer, List<ImMsg>> pushGuildEntry : pushGuildMap.entrySet()) {
 					List<ImMsg> pushGuildList = pushGuildEntry.getValue();
 					ConcurrentHashMap<Integer, ImPlayer> playerMap = guildPlayerMap.get(pushGuildEntry.getKey());

@@ -7,7 +7,8 @@ public interface SkillElementDelegate
     void OnLevelButtonDown(string spellId);
 }
 
-public class SkillElement : MonoBehaviour {
+public class SkillElement : MonoBehaviour
+{
 
     public Transform iconPos;
     private SpellIcon spellIcon;
@@ -23,28 +24,29 @@ public class SkillElement : MonoBehaviour {
     public Text currentLevelLabel;
     public Text nextlevelLabel;
 
-    string m_spellId = null ;
+    string m_spellId = null;
     Spell m_spell = null;
 
-	// Update is called once per frame
-	void Update () {
-      
+    // Update is called once per frame
+    void Update()
+    {
+
         if (cost != null && m_spell != null)
         {
             if (GameDataMgr.Instance.PlayerDataAttr.coin < StaticDataMgr.Instance.GetSPellLevelPrice(m_spell.level + 1))
             {
-                cost.color = Color.red;
+                cost.color = ColorConst.text_color_nReq;
             }
             else
             {
-                cost.color = Color.black;
+                cost.color = ColorConst.system_color_white;
             }
-        }   
-	}
+        }
+    }
 
     public void LevelButtonDown(GameObject go)
     {
-        if(eventDelegate != null)
+        if (eventDelegate != null)
         {
             eventDelegate.OnLevelButtonDown(m_spellId);
         }
@@ -55,7 +57,7 @@ public class SkillElement : MonoBehaviour {
         m_spellId = spellId;
         m_spell = spell;
 
-        if (spellIcon==null)
+        if (spellIcon == null)
         {
             spellIcon = SpellIcon.CreateWith(iconPos);
         }
@@ -66,19 +68,20 @@ public class SkillElement : MonoBehaviour {
 
         type.text = spell.spellData.GetTypeName();
         level.text = string.Format("({0} / {1})", spell.level, GameConfig.MaxMonsterLevel);
-        
+
         currentTips.text = spell.spellData.GetTips(spell.level);
+        int needCost = 0;
         if (canUpgrade == true)
         {
             if (spell.level == GameConfig.MaxMonsterLevel)
             {
                 nextTips.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillMaxLeve);
-                cost.text = "0";
+                needCost = 0;
             }
             else
             {
                 nextTips.text = spell.spellData.GetTips(spell.level + 1);
-                cost.text = StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1).ToString();
+                needCost = StaticDataMgr.Instance.GetSPellLevelPrice(spell.level + 1);
             }
 
             levelBtn.gameObject.SetActive(true);
@@ -98,7 +101,16 @@ public class SkillElement : MonoBehaviour {
         {
             nextTips.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillNoUpgrade);
             levelBtn.gameObject.SetActive(false);
-            cost.text = "0";
-        }   
+            needCost = 0;
+        }
+        if (GameDataMgr.Instance.PlayerDataAttr.coin < needCost)
+        {
+            cost.color = ColorConst.text_color_nReq;
+        }
+        else
+        {
+            cost.color = ColorConst.system_color_white;
+        }
+        cost.text = needCost.ToString();
     }
 }

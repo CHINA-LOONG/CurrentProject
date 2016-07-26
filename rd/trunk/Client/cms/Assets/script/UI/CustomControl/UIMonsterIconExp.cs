@@ -7,8 +7,7 @@ public class UIMonsterIconExp : MonoBehaviour {
     public UIProgressbar mExpBar;
     public Image mLvlUpUI;
     public Text mExpGainUI;
-
-    private RectTransform mMonsterIconRoot;
+    public RectTransform mMonsterIconRoot;
 
     //---------------------------------------------------------------------------------------------
     public static UIMonsterIconExp Create()
@@ -21,40 +20,31 @@ public class UIMonsterIconExp : MonoBehaviour {
 	void Awake () 
     {
         mLvlUpUI.gameObject.SetActive(false);
-        mMonsterIconRoot = transform as RectTransform;
     }
     //---------------------------------------------------------------------------------------------
     public void SetMonsterIconExpInfo(
-        int guid,
+        GameUnit unit,
+        int expTarget,
         int expGain,
         int lvlOriginal,
         int lvlTarget
         )
     {
-        BattleObject bo = ObjectDataMgr.Instance.GetBattleObject(guid);
-        if (bo == null)
-        {
-            Logger.LogErrorFormat("unit not find id = {0}", guid);
-            return;
-        }
-
         MonsterIcon icon = MonsterIcon.CreateIcon();
         icon.transform.SetParent(mMonsterIconRoot.transform, false);
-        icon.SetMonsterStaticId(bo.unit.pbUnit.id);
+        icon.SetMonsterStaticId(unit.pbUnit.id);
         icon.SetLevel(lvlTarget);
         //icon.SetStage(1);
 
         mExpBar.SetLoopCount(lvlTarget - lvlOriginal);
-        //test only exp = lvl * 100
-        mExpBar.SetCurrrentRatio(bo.unit.currentExp / lvlOriginal * 100);
-        int expRemain = expGain + bo.unit.currentExp;
-        for (int i = lvlOriginal; i <= lvlTarget; ++i)
-        {
-            expRemain -= i * 100;
-        }
-        mExpBar.SetTargetRatio(expRemain / lvlTarget * 100);
-        bo.unit.currentExp = expRemain;
-        bo.unit.LevelUp(lvlTarget);
+        UnitData curUnitData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
+        int originalMaxExp = (int)(StaticDataMgr.Instance.GetUnitBaseRowData(lvlOriginal).experience * curUnitData.levelUpExpRate);
+        int targetMaxExp = (int)(StaticDataMgr.Instance.GetUnitBaseRowData(lvlTarget).experience * curUnitData.levelUpExpRate);
+        mExpBar.SetCurrrentRatio(unit.currentExp / (float)originalMaxExp);
+        mExpBar.SetTargetRatio(expTarget / (float)targetMaxExp);
+
+        mLvlUpUI.gameObject.SetActive(lvlTarget > lvlOriginal);
+        mExpGainUI.text = "+ " + expGain.ToString();
     }
     //---------------------------------------------------------------------------------------------
 }

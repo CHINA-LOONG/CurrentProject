@@ -121,10 +121,16 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
         m_currentPart = itemInfo.part;
         ReloadRigthData(PetViewConst.UIPetEquipInfoAssetName);
     }
+
     public void OpenEquipList(PartType part)
     {
         m_currentPart = (int)part;
         ReloadRigthData(PetViewConst.UIPetEquipListAssetName);
+    }
+
+    public void SetUnitLevelExp(int level,int exp)
+    {
+        leftView.RefreshTempUnit(level,exp);
     }
 
     void PreButtonDown(GameObject go)
@@ -171,6 +177,7 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
     {
         leftView.ReloadData(CurrentUnit);
     }
+
     public void ReloadRigthData(string rightAsset, PetRightParamBase param = null)
     {
         if (currentRightType != rightAsset)

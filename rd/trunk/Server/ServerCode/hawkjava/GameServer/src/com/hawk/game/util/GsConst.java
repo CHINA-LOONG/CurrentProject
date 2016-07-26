@@ -8,8 +8,8 @@ package com.hawk.game.util;
 public class GsConst {
 	// 刷新间隔帧
 	public static final int REFRESH_PERIOD = 100;
-	// 副本翻牌数量
-	public static final int INSTANCE_CARD_COUNT = 4;
+//	// 副本翻牌数量
+//	public static final int INSTANCE_CARD_COUNT = 4;
 	// 装备在背包时monsterId
 	public static final int EQUIPNOTDRESS = -1;
 	// 扫荡券Id
@@ -36,11 +36,21 @@ public class GsConst {
 	public static final String DEFAULT_LANGUAGE = "en";
 	// 宠物消耗自身
 	public static final String MONSTER_CONSUME_SELF = "self";
-	// 用卡检测字段
+	// 月卡检测字段
 	public static final String MONTH_CARD = "month";
 	// 月卡时长
 	public static final int MONTH_CARD_TIME = 30;
-	
+	// 钻石最大值
+	public static final int MAX_GOLD_COUNT = 999999999;
+	// 金币最大值
+	public static final int MAX_COIN_COUNT = 999999999;
+	// 疲劳值最大值
+	public static final int MAX_FATIGUE_COUNT = 9999;	
+	// 副本复活次数
+	public static final int INSTANCE_REVIVE_COUNT = 3;
+	// 副本复活消耗
+	public static final int[] INSTANCE_REVIVE_CONSUME = new int[] {15, 30, 50};
+
 	/**
 	 * 对象类型
 	 * 
@@ -200,7 +210,7 @@ public class GsConst {
 		public static final int GOLD_NOT_ENOUGH = 2;
 		public static final int LEVEL_NOT_ENOUGH = 4;
 		public static final int EXP_NOT_ENOUGH = 5;
-		public static final int VIPLEVEL_NOT_ENOUGH = 6;
+		public static final int FATIGUE_NOT_ENOUGH = 6;
 		// 道具不足
 		public static final int TOOLS_NOT_ENOUGH = 7;
 		// 装备不足

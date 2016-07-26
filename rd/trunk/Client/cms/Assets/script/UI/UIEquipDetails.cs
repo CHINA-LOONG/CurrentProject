@@ -83,7 +83,8 @@ public class UIEquipDetails : MonoBehaviour
         equipDate = equip;
         unitDate = unit;
         itemData = StaticDataMgr.Instance.GetItemData(equipDate.equipId);
-        equipNmae.text = itemData.name;
+        equipNmae.text = StaticDataMgr.Instance.GetTextByID(itemData.name);
+        equipNmae.color = ColorConst.GetStageTextColor(equip.stage);
         lvLimit.text = itemData.minLevel.ToString();
         if (itemData.part > -1 && itemData.part < 6)//装备超出
             equipPart.text = "<" + StaticDataMgr.Instance.GetTextByID(part[itemData.part]) + ">";
@@ -91,7 +92,12 @@ public class UIEquipDetails : MonoBehaviour
         if (itemData.subType > -1 && itemData.subType < 4)//装备类型超出
             equipType.text = StaticDataMgr.Instance.GetTextByID(equipTypeId[itemData.subType]);
 
-        if (equipDate.level > 0) { strengthenNum.enabled = true; strengthenNum.text = "+ " + equipDate.level.ToString(); }
+        if (equipDate.level > 0) 
+        {
+            strengthenNum.enabled = true; 
+            strengthenNum.text = "+ " + equipDate.level.ToString();
+            strengthenNum.color = ColorConst.GetStageTextColor(equip.stage);
+        }
         if (equipDate.health > 0)
         {
             basicsAttribute[w].SetActive(true);
@@ -153,7 +159,10 @@ public class UIEquipDetails : MonoBehaviour
             w++;
         }
         if (equip.stage < 3) //装备品级三阶以下不可镶嵌
+        {
             gemPrompt.SetActive(true);
+            inlayButton.SetActive(false);
+        }
         else
         {
             if (equip.gemList != null && equip.gemList.Count > 0)
@@ -162,7 +171,7 @@ public class UIEquipDetails : MonoBehaviour
                 showGem(equip.stage, null, null, false);
                 EquipLevelData gemAttr;
                 for (int i = 0; i < equip.gemList.Count; i++)
-                {                   
+                {
                     if (equip.gemList[i].gemId == "0")
                     {
                         gemAttribute[i].transform.GetComponent<Image>().enabled = true;
@@ -171,11 +180,11 @@ public class UIEquipDetails : MonoBehaviour
                         gemAttribute[i].transform.FindChild("noGem").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotSet");
                     }
                     else
-                    {                        
+                    {
                         itemData = StaticDataMgr.Instance.GetItemData(equip.gemList[i].gemId);
                         gemAttr = StaticDataMgr.Instance.GetEquipLevelData(itemData.gemId);
-                        showGem(0, gemAttr, gemAttribute[i], true);                        
-                    }    
+                        showGem(0, gemAttr, gemAttribute[i], true);
+                    }
                 }
             }
             else
@@ -352,15 +361,15 @@ public class UIEquipDetails : MonoBehaviour
         EventTriggerListener.Get(inlayButton).onClick = OnClick;
         EventTriggerListener.Get(unloadButton).onClick = OnClick;
         EventTriggerListener.Get(reloadButton).onClick = OnClick;
-        equipTypeTip.text = StaticDataMgr.Instance.GetTextByID("equip_List_zhuangbeileixing");
+        equipTypeTip.text = StaticDataMgr.Instance.GetTextByID("equip_List_zhuangbeileixing")+":";
         equipPowerTip.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
-        equipLimitTip.text = StaticDataMgr.Instance.GetTextByID("equip_List_xianzhidengji");
+        equipLimitTip.text = StaticDataMgr.Instance.GetTextByID("equip_List_xianzhidengji") + ":";
         attributeTextTip.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_attr");
         gemTextTip.text = StaticDataMgr.Instance.GetTextByID("equip_gem_casting");
         gemPromptTip.text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotMent");
         equipUninstallTip.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiexia");
-        StrengthenTip.text = StaticDataMgr.Instance.GetTextByID("equip_forge_title");
-        gemSetTip.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_title");
+        StrengthenTip.text = StaticDataMgr.Instance.GetTextByID("equip_forge_dazao");
+        gemSetTip.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiangqian");
         equipInstallTip.text = StaticDataMgr.Instance.GetTextByID("equip_Change");
     }
 }

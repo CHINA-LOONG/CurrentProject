@@ -70,7 +70,7 @@ public class ShopUtil {
 	
 	public static void refreshShopData(int type, Player player){
 		ShopEntity shopEntity = player.getPlayerData().getShopEntity();
-		List<ShopItemInfo> shopList = ShopUtil.getPlayerShopItems(player, Const.shopType.NORMALSHOP_VALUE);
+		List<ShopItemInfo> shopList = ShopUtil.getPlayerShopItems(player, type);
 		for (int i = 0; i < shopList.size(); i++) {
 			shopList.get(i).setSlot(i);
 			shopList.get(i).setHasBuy(false);

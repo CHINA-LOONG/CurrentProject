@@ -36,7 +36,7 @@ public class AllianceCreateHandler implements HawkProtocolHandler {
 			return true;
 		}
 		if(player.getGold() < SysBasicCfg.getInstance().getAllianceCreateCoin()){
-			player.sendError(protocol.getType(), Status.itemError.GOLD_NOT_ENOUGH_VALUE);
+			player.sendError(protocol.getType(), Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
 			return true;
 		}
 		if(player.getPlayerData().getPlayerAllianceEntity().getAllianceId()!=0){

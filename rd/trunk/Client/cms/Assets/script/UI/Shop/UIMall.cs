@@ -20,6 +20,12 @@ public class UIMall : UIBase
 	public override void Init()
 	{
 		RefreshMallItems ();
+
+		CoinButton coinButton = GetComponentInChildren<CoinButton> ();
+		if (null != coinButton)
+		{
+			coinButton.HideAddCoinButton(true);
+		}
 	}
 	
 	public override void Clean()

@@ -37,6 +37,7 @@ public class BuildModule : ModuleBase
 	public override void OnInit(object param)
 	{
 		UIBuild uiBuild = UIMgr.Instance.OpenUI_(UIBuild.ViewName) as UIBuild;
+        UIMgr.Instance.OpenUI_(UIIm.ViewName);
         if (param != null)
         {
             int initState = System.Convert.ToInt32(param);

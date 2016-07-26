@@ -97,7 +97,6 @@ public final class Reward {
      * <code>optional int32 stage = 5;</code>
      *
      * <pre>
-     * 是装备时的附加属性
      * 装备品级
      * </pre>
      */
@@ -106,7 +105,6 @@ public final class Reward {
      * <code>optional int32 stage = 5;</code>
      *
      * <pre>
-     * 是装备时的附加属性
      * 装备品级
      * </pre>
      */
@@ -484,7 +482,6 @@ public final class Reward {
      * <code>optional int32 stage = 5;</code>
      *
      * <pre>
-     * 是装备时的附加属性
      * 装备品级
      * </pre>
      */
@@ -495,7 +492,6 @@ public final class Reward {
      * <code>optional int32 stage = 5;</code>
      *
      * <pre>
-     * 是装备时的附加属性
      * 装备品级
      * </pre>
      */
@@ -1302,7 +1298,6 @@ public final class Reward {
        * <code>optional int32 stage = 5;</code>
        *
        * <pre>
-       * 是装备时的附加属性
        * 装备品级
        * </pre>
        */
@@ -1313,7 +1308,6 @@ public final class Reward {
        * <code>optional int32 stage = 5;</code>
        *
        * <pre>
-       * 是装备时的附加属性
        * 装备品级
        * </pre>
        */
@@ -1324,7 +1318,6 @@ public final class Reward {
        * <code>optional int32 stage = 5;</code>
        *
        * <pre>
-       * 是装备时的附加属性
        * 装备品级
        * </pre>
        */
@@ -1338,7 +1331,6 @@ public final class Reward {
        * <code>optional int32 stage = 5;</code>
        *
        * <pre>
-       * 是装备时的附加属性
        * 装备品级
        * </pre>
        */

@@ -147,7 +147,7 @@ public class ConsumeItems {
 		else
 		{
 			consumeItem.setCount(consumeItem.getCount() + count);
-		}			
+		}
 		return this;
 	}
 	
@@ -229,10 +229,13 @@ public class ConsumeItems {
 			if(hpCode > 0) {
 				switch (result) {
 					case PlayerItemCheckResult.COINS_NOT_ENOUGH:
-						player.sendError(hpCode, Status.itemError.COINS_NOT_ENOUGH_VALUE);
+						player.sendError(hpCode, Status.PlayerError.COINS_NOT_ENOUGH_VALUE);
 						break;
 					case PlayerItemCheckResult.GOLD_NOT_ENOUGH:
-						player.sendError(hpCode, Status.itemError.GOLD_NOT_ENOUGH_VALUE);
+						player.sendError(hpCode, Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
+						break;
+					case PlayerItemCheckResult.FATIGUE_NOT_ENOUGH:
+						player.sendError(hpCode, Status.PlayerError.FATIGUE_NOT_ENOUGH_VALUE);
 						break;
 					case PlayerItemCheckResult.EQUIP_NOT_ENOUGH:
 						player.sendError(hpCode, Status.itemError.EQUIP_NOT_FOUND_VALUE);
@@ -266,6 +269,11 @@ public class ConsumeItems {
 				else if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_GOLD_VALUE) {
 					if (player.getGold() < consumeItem.getCount()) {
 						return PlayerItemCheckResult.GOLD_NOT_ENOUGH;
+					}
+				}
+				else if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_FATIGUE_VALUE) {
+					if (player.getPlayerData().getStatisticsEntity().getFatigue() < consumeItem.getCount()) {
+						return PlayerItemCheckResult.FATIGUE_NOT_ENOUGH;
 					}
 				}
 			}
@@ -316,7 +324,12 @@ public class ConsumeItems {
 						player.consumeGold(item.getCount(), action);
 						playerBuilder.setGold(player.getGold());
 						break;
-					
+						
+					case changeType.CHANGE_FATIGUE_VALUE:
+						player.consumeFatigue(item.getCount(), action);
+						playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
+						break;
+						
 					default:
 						break;
 					}
@@ -340,10 +353,6 @@ public class ConsumeItems {
 					if (result == false) {				
 						consumeInfo.removeConsumeItems(i);
 						continue;
-					}
-					else {
-						// 脱装备
-						
 					}
 				}
 				else {

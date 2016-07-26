@@ -229,10 +229,13 @@ public class ShopEntity extends HawkDBEntity{
 		switch (type) {
 		case Const.shopType.NORMALSHOP_VALUE:
 			normalShopItemsList = shopItemsList;
+			break;
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			allianceShopItemsList = shopItemsList;
+			break;
 		case Const.shopType.OTHERSHOP_VALUE:
 			otherShopItemsList = shopItemsList;
+			break;
 		default:
 			
 		}
@@ -255,10 +258,13 @@ public class ShopEntity extends HawkDBEntity{
 		switch (type) {
 		case Const.shopType.NORMALSHOP_VALUE:
 			normalShopId += 1;
+			break;
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			allianceShopId += 1;
+			break;
 		case Const.shopType.OTHERSHOP_VALUE:
 			otherShopId += 1;
+			break;
 		default:
 		}
 	}
@@ -280,10 +286,13 @@ public class ShopEntity extends HawkDBEntity{
 		switch (type) {
 		case Const.shopType.NORMALSHOP_VALUE:
 			normalRefreshNums += 1;
+			break;
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			allianceRefreshNums += 1;
+			break;
 		case Const.shopType.OTHERSHOP_VALUE:
 			otherRefreshNums += 1;
+			break;
 		default:
 		}
 	}
@@ -305,10 +314,13 @@ public class ShopEntity extends HawkDBEntity{
 		switch (type) {
 		case Const.shopType.NORMALSHOP_VALUE:
 			normalRefreshDate = refreshData;
+			break;
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			allianceRefreshDate = refreshData;
+			break;
 		case Const.shopType.OTHERSHOP_VALUE:
 			otherRefreshDate = refreshData;
+			break;
 		default:
 		}
 	}

@@ -175,14 +175,7 @@ public class GameUnit : IComparable
 
         GameDataMgr gdMgr = GameDataMgr.Instance;
         UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
-        UnitBaseData unitBaseRowData = StaticDataMgr.Instance.GetUnitBaseRowData(pbUnit.level);
-        health = (int)(unitRowData.healthModifyRate * unitBaseRowData.health + gdMgr.PlayerDataAttr.equipHealth);
-        strength = (int)(unitRowData.strengthModifyRate * unitBaseRowData.strength + gdMgr.PlayerDataAttr.equipStrength);
-        intelligence = (int)(unitRowData.intelligenceModifyRate * unitBaseRowData.intelligence + gdMgr.PlayerDataAttr.equipIntelligence);
-        speed = (int)(unitRowData.speedModifyRate * unitBaseRowData.speed + gdMgr.PlayerDataAttr.equipSpeed);
-        defense = (int)(unitRowData.defenseModifyRate * unitBaseRowData.defense + gdMgr.PlayerDataAttr.equipDefense);
-        endurance = (int)(unitRowData.enduranceModifyRate * unitBaseRowData.endurance + gdMgr.PlayerDataAttr.equipEndurance);
-        recovery = (int)(unitRowData.recoveryRate * unitBaseRowData.recovery);
+        UpdateAttributeInternal(unitRowData);
         property = unitRowData.property;
         assetID = unitRowData.assetID;
         //test only
@@ -197,9 +190,8 @@ public class GameUnit : IComparable
 		//Ai = unitRowData.AI;
 
         //TODO: 装备系统附加值
-        criticalRatio = gdMgr.PlayerDataAttr.criticalRatio;
+        OnPlayerAttrChanged();
         antiCriticalRatio = 0.0f;
-        hitRatio = gdMgr.PlayerDataAttr.hitRatio;
         additionDamageRatio = 0.0f;
         minusDamageRatio = 0.0f;
         additionHealRatio = 0.0f;
@@ -236,17 +228,17 @@ public class GameUnit : IComparable
             strength = (int)(strength * instData.instanceProtoData.attackCoef);
             intelligence = (int)(intelligence * instData.instanceProtoData.attackCoef);
             health = (int)(health * instData.instanceProtoData.lifeCoef);
+            //计算二级属性(玩家宠物的二级属性计算统一在UpdateAttributeInternal)
+            curLife = (int)SpellConst.healthToLife * health;
+            maxLife = curLife;
+            magicAttack = (int)(SpellConst.strengthToAttack * intelligence);
+            phyAttack = (int)(SpellConst.intelligenceToAttack * strength);
         }
         else
         {
             headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(unitRowData.uiAsset) as Sprite;
         }
 
-        //计算二级属性
-        curLife = (int)SpellConst.healthToLife * health;
-        maxLife = curLife;
-        magicAttack = (int)(SpellConst.strengthToAttack * intelligence);
-        phyAttack = (int)(SpellConst.intelligenceToAttack * strength);
 
         //初始化技能列表
         spellList = new Dictionary<string, Spell>();
@@ -312,10 +304,39 @@ public class GameUnit : IComparable
 		}
 	}
 
-    public void LevelUp(int targetLvl)
+    private void UpdateAttributeInternal(UnitData unitRowData)
     {
-        pbUnit.level = targetLvl;
-        //TODO: recalculate attribute
+        GameDataMgr gdMgr = GameDataMgr.Instance;
+        UnitBaseData unitBaseRowData = StaticDataMgr.Instance.GetUnitBaseRowData(pbUnit.level);
+        health = (int)(unitRowData.healthModifyRate * unitBaseRowData.health + gdMgr.PlayerDataAttr.equipHealth);
+        strength = (int)(unitRowData.strengthModifyRate * unitBaseRowData.strength + gdMgr.PlayerDataAttr.equipStrength);
+        intelligence = (int)(unitRowData.intelligenceModifyRate * unitBaseRowData.intelligence + gdMgr.PlayerDataAttr.equipIntelligence);
+        speed = (int)(unitRowData.speedModifyRate * unitBaseRowData.speed + gdMgr.PlayerDataAttr.equipSpeed);
+        defense = (int)(unitRowData.defenseModifyRate * unitBaseRowData.defense + gdMgr.PlayerDataAttr.equipDefense);
+        endurance = (int)(unitRowData.enduranceModifyRate * unitBaseRowData.endurance + gdMgr.PlayerDataAttr.equipEndurance);
+        recovery = (int)(unitRowData.recoveryRate * unitBaseRowData.recovery);
+        //二级属性
+        curLife = (int)SpellConst.healthToLife * health;
+        maxLife = curLife;
+        magicAttack = (int)(SpellConst.strengthToAttack * intelligence);
+        phyAttack = (int)(SpellConst.intelligenceToAttack * strength);
+    }
+
+    public void RefreshUnitLvl(int targetLvl, int exp)
+    {
+        pbUnit.curExp = exp;
+        if (pbUnit.level != targetLvl)
+        {
+            pbUnit.level = targetLvl;
+            UpdateAttributeInternal(StaticDataMgr.Instance.GetUnitRowData(pbUnit.id));
+        }
+    }
+
+    public void OnPlayerAttrChanged()
+    {
+        GameDataMgr gdMgr = GameDataMgr.Instance;
+        criticalRatio = gdMgr.PlayerDataAttr.criticalRatio;
+        hitRatio = gdMgr.PlayerDataAttr.hitRatio;
     }
 	
 	void InitWeakPoint(string strWeak)

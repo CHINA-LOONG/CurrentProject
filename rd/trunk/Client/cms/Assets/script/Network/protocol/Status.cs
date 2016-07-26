@@ -213,7 +213,10 @@ namespace PB
       INSTANCE_COUNT = 393219,
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_FATIGUE", Value=393220)]
-      INSTANCE_FATIGUE = 393220
+      INSTANCE_FATIGUE = 393220,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_REVIVE_COUNT", Value=393221)]
+      INSTANCE_REVIVE_COUNT = 393221
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailError")]
