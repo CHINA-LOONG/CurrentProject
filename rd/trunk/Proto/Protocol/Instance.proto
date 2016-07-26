@@ -30,7 +30,8 @@ message HSBattle
 message HSInstanceEnter
 {
 	required string instanceId = 1;
-	optional int32 friendId = 2;
+	repeated int32 battleMonsterId = 2;
+	optional int32 friendId = 3;
 }
 
 // INSTANCE_ENTER_S

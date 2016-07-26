@@ -46,7 +46,7 @@ public class ServerData {
 	 */
 	protected Map<Integer, Integer> playerMap;
 	/**
-	 * 所有玩家列表
+	 * 
 	 */
 	protected Set<String> rechargeList;
 	/**
@@ -124,7 +124,7 @@ public class ServerData {
 			return false;
 		}
 
-		// 从db拉取玩家puid和id的映射表
+		//
 		try {
 			HawkLog.logPrintln("load orderSerial from db......");
 			List<Object> rowInfos = HawkDBManager.getInstance().executeQuery("select orderSerial from recharge");
@@ -236,7 +236,14 @@ public class ServerData {
 	public boolean isExistPlayer(int playerId) {
 		return playerMap.containsKey(playerId);
 	}
-	
+
+	/**
+	 * 获取所有玩家Id
+	 */
+	public Set<Integer> getAllPlayerIdSet() {
+		return playerMap.keySet();
+	}
+
 	/**
 	 * 增加order
 	 * @param 

@@ -787,17 +787,7 @@ public class BattleController : MonoBehaviour
         PB.HSInstanceSettle instanceParam = new PB.HSInstanceSettle();
         instanceParam.victory = isSuccess;
         GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam);
-        
-        //test only
-        //StartCoroutine(ProcessBattleOver(isSuccess));
     } 
-    //---------------------------------------------------------------------------------------------
-    IEnumerator ProcessBattleOver(bool isSuccess)
-    {
-        yield return new WaitForSeconds(BattleConst.battleEndDelay);
-        mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
-        mUIScore.ShowScoreUI(isSuccess);
-    }
     //---------------------------------------------------------------------------------------------
     void OnInstanceSettleResult(ProtocolMessage msg)
     {

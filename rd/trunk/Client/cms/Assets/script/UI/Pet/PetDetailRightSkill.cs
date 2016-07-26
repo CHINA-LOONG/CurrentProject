@@ -135,7 +135,7 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
             point.text = StatisticsDataMgr.Instance.GetSkillPoint().ToString();
             if (StatisticsDataMgr.Instance.isMaxPoint() == false)
             {
-                status.text = string.Format("{0:D2} : {1:D2}", StatisticsDataMgr.Instance.GetSkillPointLeftTime() / 60, StatisticsDataMgr.Instance.GetSkillPointLeftTime() % 60);
+                status.text = string.Format("({0:D2} : {1:D2})", StatisticsDataMgr.Instance.GetSkillPointLeftTime() / 60, StatisticsDataMgr.Instance.GetSkillPointLeftTime() % 60);
             }
             else
             {

@@ -15,6 +15,31 @@ public class HomeButton : MonoBehaviour
 
 	public HomeButtonDelegate onClick;
 
+    private Text text;
+    public Text Text
+    {
+        get 
+        {
+            if (text==null)
+            {
+                text = GetComponentInChildren<Text>();
+            }
+            return text; 
+        }
+    }
+    private Outline outline;
+    public Outline Outline
+    {
+        get 
+        {
+            if (outline==null&&Text!=null)
+            {
+                outline = Text.GetComponent<Outline>();
+            }
+            return outline; 
+        }
+    }
+
 	[SerializeField]
 	bool	isOn = false;
 	public bool IsOn
@@ -24,6 +49,7 @@ public class HomeButton : MonoBehaviour
 			isOn = value;
 			UpdateButtonGraphic ();
 			UpdateEffect ();
+
 		}
 		get
 		{
@@ -78,6 +104,14 @@ public class HomeButton : MonoBehaviour
 		{
 			checkedEffectPanel.gameObject.SetActive(isOn);
 		}
+        if (Text!=null)
+        {
+            Text.color = (isOn ? ColorConst.text_tabColor_select : ColorConst.text_tabColor_normal);
+        }
+        if (Outline!=null)
+        {
+            Outline.effectColor = (isOn ? ColorConst.outline_tabColor_select : ColorConst.outline_tabColor_normal);
+        }
 	}
 
 }

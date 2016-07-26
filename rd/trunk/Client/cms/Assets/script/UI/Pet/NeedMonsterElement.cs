@@ -23,15 +23,17 @@ public class NeedMonsterElement : MonoBehaviour
     public void UpdateCount(int needCount, int curCount)
     {
         curCount = Mathf.Clamp(curCount, 0, 9999);
-        monsterCount.text = curCount + "/" + needCount;
+        Color color;
         if (needCount > curCount)
         {
-            monsterCount.color = ColorConst.text_color_nReq;
+            color = ColorConst.text_color_nReq;
         }
         else
         {
-            monsterCount.color = ColorConst.text_color_Req;
+            color = ColorConst.text_color_Req;
         }
+        monsterCount.text = "<color=" + ColorConst.colorTo_Hstr(color) + ">" + curCount + "</color>/" + needCount;
+
         if (curCount > 0)
         {
             if (monsterIcon == null)

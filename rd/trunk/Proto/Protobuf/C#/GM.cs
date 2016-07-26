@@ -20,4 +20,63 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GMOperation")]
+  public partial class GMOperation : global::ProtoBuf.IExtensible
+  {
+    public GMOperation() {}
+    
+    private string _action;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"action", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string action
+    {
+      get { return _action; }
+      set { _action = value; }
+    }
+    private string _operation = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"operation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string operation
+    {
+      get { return _operation; }
+      set { _operation = value; }
+    }
+    private long _targetId = default(long);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"targetId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(long))]
+    public long targetId
+    {
+      get { return _targetId; }
+      set { _targetId = value; }
+    }
+    private long _value = default(long);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(long))]
+    public long value
+    {
+      get { return _value; }
+      set { _value = value; }
+    }
+    private string _itemID = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"itemID", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string itemID
+    {
+      get { return _itemID; }
+      set { _itemID = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GMOperationRet")]
+  public partial class GMOperationRet : global::ProtoBuf.IExtensible
+  {
+    public GMOperationRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

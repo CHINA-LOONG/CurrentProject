@@ -164,10 +164,7 @@ namespace PB
       CHANGE_FATIGUE = 7,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_FAV", Value=8)]
-      CHANGE_FAV = 8,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_VIPLEVEL", Value=9)]
-      CHANGE_VIPLEVEL = 9
+      CHANGE_FAV = 8
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"attr")]

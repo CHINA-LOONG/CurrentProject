@@ -569,7 +569,7 @@ public class Player extends HawkAppObj {
 
 		int fatigueRemain = playerData.getStatisticsEntity().getFatigue() + fatigue - GsConst.MAX_FATIGUE_COUNT;
 		playerData.getStatisticsEntity().setFatigue(playerData.getStatisticsEntity().getFatigue() + fatigue - (fatigueRemain > 0 ? fatigueRemain : 0));
-		playerData.getPlayerEntity().notifyUpdate(true);
+		playerData.getStatisticsEntity().notifyUpdate(true);
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
 				Params.valueOf("playerAttr", Const.changeType.CHANGE_FATIGUE_VALUE), 
@@ -591,7 +591,7 @@ public class Player extends HawkAppObj {
 		}
 
 		playerData.getStatisticsEntity().setFatigue(playerData.getStatisticsEntity().getFatigue() - fatigue);
-		playerData.getPlayerEntity().notifyUpdate(true);
+		playerData.getStatisticsEntity().notifyUpdate(true);
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
 				Params.valueOf("playerAttr", Const.changeType.CHANGE_FATIGUE_VALUE), 
@@ -719,7 +719,7 @@ public class Player extends HawkAppObj {
 	 */
 	public void increaseMonsterExp(int monsterId, int exp, Action action) {
 		if (exp <= 0) {
-			throw new RuntimeException("increaseExp");
+			throw new RuntimeException(String.format("increaseExp: %d", exp));
 		}
 		
 		MonsterEntity monster = playerData.getMonsterEntity(monsterId);

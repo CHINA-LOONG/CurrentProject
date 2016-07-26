@@ -187,9 +187,9 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     {
         textLevel.text = level.ToString();
 
-        if (level >= GameConfig.MaxMonsterLevel)
+        if (UIUtil.CheckPetIsMaxLevel(level))
         {
-            textExp.text = "max";
+            textExp.text = "MAX LEVEL";
             progressExp.value = 1.0f;
             btnAddExp.interactable = false;
         }
@@ -198,7 +198,7 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
             int maxExp = (int)(StaticDataMgr.Instance.GetUnitBaseRowData(level).experience * s_unit.levelUpExpRate);
             textExp.text = exp + "/" + maxExp;
             progressExp.value = (float)exp / (float)maxExp;
-            Debug.Log("exe:" + exp + "\n" + "max:" + maxExp + "value:" + ((float)exp / (float)maxExp));
+            //Debug.Log("exe:" + exp + "\n" + "max:" + maxExp + "value:" + ((float)exp / (float)maxExp));
             btnAddExp.interactable = true;
         }
     }

@@ -243,6 +243,15 @@ public class UIUtil
         return false;
     }
 
+    public static bool CheckPetIsMaxLevel(int level)
+    {
+        if (level>=GameConfig.MaxMonsterLevel||level>=GameDataMgr.Instance.PlayerDataAttr.level)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public static void SetStageColor(Text label, GameUnit unit)
     {
         int quallity = 0;

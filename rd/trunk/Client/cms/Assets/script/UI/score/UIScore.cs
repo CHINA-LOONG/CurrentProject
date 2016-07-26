@@ -107,14 +107,22 @@ public class UIScore : UIBase
     {
         mIsSuccess = success;
         gameObject.SetActive(true);
-        if (false)
+        PB.HSRewardInfo rewardInfo = mInstanceSettleResult.reward;
+        if (rewardInfo != null)
         {
-            AddGainMonster("xgXiyiren");
+            int count = rewardInfo.RewardItems.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                PB.RewardItem item = rewardInfo.RewardItems[i];
+                if (item.type == (int)PB.itemType.MONSTER)
+                {
+                    AddGainMonster(item.itemId);
+                    return;
+                }
+            }
         }
-        else
-        {
-            ShowEndBattleUI();
-        }
+
+        ShowEndBattleUI();
     }
     //---------------------------------------------------------------------------------------------
     private void AddGainMonster(string monsterID)
@@ -214,43 +222,69 @@ public class UIScore : UIBase
 
             //show monster info
             mMonsterExpList.gameObject.SetActive(true);
-            count = mainPlayer.mainUnitList.Count;
-            for (int i = 0; i < count; ++i)
+            List<PB.SynMonsterAttr> monsterInfoList = rewardInfo.monstersAttr;
+            count = monsterInfoList.Count;
+            if (count > 0)
             {
-                UIMonsterIconExp monsterInfo = UIMonsterIconExp.Create();
-                monsterInfo.transform.SetParent(mMonsterExpList.transform, false);
-                monsterInfo.SetMonsterIconExpInfo(
-                    mainPlayer.mainUnitList[i].unit,
-                    100,
-                    100,
-                    10,
-                    11
-                    );
-                //bo.unit.currentExp = expRemain;
-                //bo.unit.LevelUp(lvlTarget);
-                mainPlayer.mainUnitList[i].unit.RefreshUnitLvl(10, 100);
-            }
-            //List<PB.SynMonsterAttr> monsterInfoList = rewardInfo.monstersAttr;
-            //count = monsterInfoList.Count;
-            //GameUnit originalMonster;
-            //for (int i = 0; i < count; ++i)
-            //{
-            //    originalMonster = mainPlayer.GetPetWithKey(monsterInfoList[i].monsterId);
-            //    if (originalMonster == null)
-            //    {
-            //        Logger.LogError("Score error, no this monster");
-            //        continue;
-            //    }
+                Dictionary<long, UIMonsterIconExp> uiMonsterExpList = new Dictionary<long,UIMonsterIconExp>();
+                //set monster info
+                for (int i = 0; i < count; ++i)
+                {
+                    GameUnit originalMonster = mainPlayer.GetPetWithKey(monsterInfoList[i].monsterId);
+                    if (originalMonster == null)
+                    {
+                        Logger.LogError("Score error, no this monster");
+                        continue;
+                    }
 
-            //    UIMonsterIconExp monsterInfo = UIMonsterIconExp.Create();
-            //    monsterInfo.transform.SetParent(mMonsterExpList.transform, false);
-            //    monsterInfo.SetMonsterIconExpInfo(
-            //        monsterInfoList[i].monsterId,
-            //        0,
-            //        originalMonster.pbUnit.level,
-            //        monsterInfoList[i].level
-            //        );
-            //}
+                    UIMonsterIconExp monsterIconExp = UIMonsterIconExp.Create();
+                    monsterIconExp.transform.SetParent(mMonsterExpList.transform, false);
+                    monsterIconExp.SetMonsterIconExpInfo(
+                        originalMonster.pbUnit.id,
+                        originalMonster.currentExp,
+                        monsterInfoList[i].exp,
+                        originalMonster.pbUnit.level,
+                        monsterInfoList[i].level
+                        );
+                    mainPlayer.mainUnitList[i].unit.RefreshUnitLvl(monsterInfoList[i].level, monsterInfoList[i].exp);
+                    uiMonsterExpList.Add(originalMonster.pbUnit.guid, monsterIconExp);
+                }
+                //set exp gain
+                count = rewardItemList.Count;
+                for (int i = 0; i < count; ++i)
+                {
+                    PB.RewardItem item = rewardItemList[i];
+                    if (item.type == (int)PB.itemType.MONSTER_ATTR)
+                    {
+                        if ((int)PB.changeType.CHANGE_MONSTER_EXP == int.Parse(item.itemId))
+                        {
+                            UIMonsterIconExp curMonsterExp = null;
+                            if (uiMonsterExpList.TryGetValue(item.id, out curMonsterExp) == true)
+                            {
+                                curMonsterExp.SetExpGain(item.count);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                count = mainPlayer.mainUnitList.Count;
+                for (int i = 0; i < count; ++i)
+                {
+                    UIMonsterIconExp monsterIconExp = UIMonsterIconExp.Create();
+                    monsterIconExp.transform.SetParent(mMonsterExpList.transform, false);
+                    GameUnit curUnit = mainPlayer.mainUnitList[i].unit;
+                    monsterIconExp.SetMonsterIconExpInfo(
+                        curUnit.pbUnit.id,
+                        curUnit.currentExp,
+                        curUnit.currentExp,
+                        curUnit.pbUnit.level,
+                        curUnit.pbUnit.level,
+                        0
+                        );
+                }
+            }
 
             //show item drop info
             count = rewardItemList.Count;

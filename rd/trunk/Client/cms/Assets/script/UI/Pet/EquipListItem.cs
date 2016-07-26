@@ -37,6 +37,7 @@ public class EquipListItem : MonoBehaviour
     public Transform content;
     [HideInInspector]
     public List<EquipGemItem> items = new List<EquipGemItem>();
+    [HideInInspector]
     public List<EquipGemItem> itemPool = new List<EquipGemItem>();
 
     void Start()
@@ -79,6 +80,7 @@ public class EquipListItem : MonoBehaviour
         {
             EquipGemItem item = GetElement();
             item.Refresh(info);
+            item.transform.SetAsLastSibling();
         }
     }
 
@@ -87,7 +89,7 @@ public class EquipListItem : MonoBehaviour
         EquipGemItem item = null;
         if (itemPool.Count <= 0)
         {
-            GameObject go = Instantiate(items[0].gameObject);
+            GameObject go = ResourceMgr.Instance.LoadAsset("EquipGemItem");
             if (go != null)
             {
                 go.transform.localScale = Vector3.one;

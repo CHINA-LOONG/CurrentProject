@@ -69,6 +69,11 @@ public class StatisticsDataMgr : MonoBehaviour {
         return currentPoint > GameConfig.MaxSkillPoint ? GameConfig.MaxSkillPoint : currentPoint;  
     }
 
+    public void SetSkillPoint(int point)
+    {
+        SkillPoints = point;
+    }
+
     public int GetSkillPointLeftTime()
     {
         return GameConfig.SkillPointTime - (GameTimeMgr.Instance.TimeStamp() - timeDiffer - skillTimeBegin) % GameConfig.SkillPointTime;

@@ -45,11 +45,13 @@ public class GsConst {
 	// 金币最大值
 	public static final int MAX_COIN_COUNT = 999999999;
 	// 疲劳值最大值
-	public static final int MAX_FATIGUE_COUNT = 9999;	
+	public static final int MAX_FATIGUE_COUNT = 9999;
 	// 副本复活次数
 	public static final int INSTANCE_REVIVE_COUNT = 3;
 	// 副本复活消耗
 	public static final int[] INSTANCE_REVIVE_CONSUME = new int[] {15, 30, 50};
+	// 上阵己方怪物最大数量
+	public static final int MAX_BATTLE_MONSTER_COUNT = 5;
 
 	/**
 	 * 对象类型
@@ -94,6 +96,8 @@ public class GsConst {
 		public static final int STATISTICS_UPDATE = 1002;
 		// 玩家收到新邮件
 		public static final int MAIL_NEW = 1003;
+		// 刷新商店
+		public static final int REFRESH_SHOP = 1004;
 	}
 
 	/**

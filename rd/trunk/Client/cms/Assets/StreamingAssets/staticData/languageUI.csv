@@ -87,6 +87,7 @@ item_type_chip,碎片,chip
 item_name_10001,钥匙,key
 item_name_10002,无名,no name
 item_name_10003,兑换券,ticket
+item_name_10004,初级强化材料,strengthening materials
 item_name_11001,初级强化材料,strengthening materials
 item_name_11002,中级强化材料,strengthening materials
 item_name_11003,高级强化材料,strengthening materials
@@ -124,6 +125,9 @@ item_name_50001,经验药水,expMedicine
 item_name_50002,初级宠物经验药水,primaryexpMedicine
 item_name_50003,中级宠物经验药水,mediumexpMedicine
 item_name_50004,高级宠物经验药水,seniorexpMedicine
+item_name_50005,初级疲劳药水,primaryPLMedicine
+item_name_50006,中级疲劳药水,mediumPLMedicine
+item_name_50007,高级疲劳药水,seniorPLMedicine
 item_name_70001,防御型武器,weapon1
 item_name_70002,防御型护腰,belt1
 item_name_70003,防御型护甲,armor1
@@ -151,6 +155,7 @@ item_name_70024,支援型护身符,amulet4
 item_tips_10001,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 item_tips_10002,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 item_tips_10003,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+item_tips_10004,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 item_tips_11001,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 item_tips_11002,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 item_tips_11003,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
@@ -188,6 +193,9 @@ item_tips_50001,测试用tips,test Open Sockets: Reveals a Gem slot after openin
 item_tips_50002,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 item_tips_50003,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 item_tips_50004,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+item_tips_50005,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+item_tips_50006,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+item_tips_50007,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 item_tips_70001,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 item_tips_70002,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 item_tips_70003,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
@@ -337,5 +345,6 @@ pet_detail_stage_full,进阶完成,Advancement Complete
 pet_detail_stage_monster,需要的怪物,Req. Monsters:
 pet_detail_skill_no_upgrade,该技能不能升级,this skill cannot upgrade
 pet_list_title,宠物,Monsters
-pet_tip_full,"拥有过多宠物,快去消耗一些吧\n 有可能不会继续获得宠物","You have too many monsters, go and consume some! \n (You may possibly not receive any more monsters)"
+pet_tip_full1,"拥有过多宠物,快去消耗一些吧","You have too many monsters, go and consume some!"
+pet_tip_full2,有可能无法继续获得宠物,You may possibly not receive any more monsters
 pet_skill_point_not_enough,技能点不足,skill point not enough

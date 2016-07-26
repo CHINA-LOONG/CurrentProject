@@ -129,11 +129,23 @@ public class UIBattle : UIBase
         ResourceMgr.Instance.DestroyAsset(startBattleUI);
     }
 
-    public void ShowReviveUI()
+    public void ShowReviveUI(int reviveCount)
     {
+        switch (reviveCount)
+        {
+            case 0:
+                reviveCount = 15;
+                break;
+            case 1:
+                reviveCount = 30;
+                break;
+            case 2:
+                reviveCount = 50;
+                break;
+        }
         reviveWnd = MsgBox.PromptMsg.Open(
             MsgBox.MsgBoxType.Conform_Cancel,
-            string.Format(StaticDataMgr.Instance.GetTextByID("battle_revive"), 5),
+            string.Format(StaticDataMgr.Instance.GetTextByID("battle_revive"), reviveCount),
             ChooseReviveOrNot,
             false,
             true
@@ -152,13 +164,13 @@ public class UIBattle : UIBase
     {
         if (state == MsgBox.PrompButtonClick.OK)
         {
-            //PB.HSInstanceRevive reviveParam = new PB.HSInstanceRevive();
-            //GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_REVIVE_C.GetHashCode(), reviveParam);
-            //test only
-            CloseReviveUI();
-            BattleController battleInstance = BattleController.Instance;
-            battleInstance.BattleGroup.RevivePlayerList();
-            battleInstance.Process.ReviveSuccess();
+            PB.HSInstanceRevive reviveParam = new PB.HSInstanceRevive();
+            GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_REVIVE_C.GetHashCode(), reviveParam);
+            ////test only
+            //CloseReviveUI();
+            //BattleController battleInstance = BattleController.Instance;
+            //battleInstance.BattleGroup.RevivePlayerList();
+            //battleInstance.Process.ReviveSuccess();
         }
         else if (state == MsgBox.PrompButtonClick.Cancle)
         {
@@ -170,40 +182,30 @@ public class UIBattle : UIBase
     void OnReviveResult(ProtocolMessage msg)
     {
         UINetRequest.Close();
-        //TODO: passed by server
-        int reviveStatus = 0;
-        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
-        {
-            reviveStatus = 2;
-        }
-        else
-        {
-            PB.HSInstanceReviveRet reviveResult = msg.GetProtocolBody<PB.HSInstanceReviveRet>();
-            if (reviveResult.reviveCount > BattleConst.maxReviveCount)
-            {
-                reviveStatus = 1;
-            }
-        }
+        PB.HSInstanceReviveRet reviveResult = msg.GetProtocolBody<PB.HSInstanceReviveRet>();
 
         BattleController battleInstance = BattleController.Instance;
-        switch (reviveStatus)
-        {
-            //0:success 1:count error 2:diamond not enough
-            case 0:
-                CloseReviveUI();
-                battleInstance.BattleGroup.RevivePlayerList();
-                battleInstance.Process.ReviveSuccess();
-                break;
-            case 1:
-                CloseReviveUI();
-                battleInstance.OnBattleOver(false);
-                break;
-            case 2:
-                GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
-                break;
-            default:
-                break;
-        }
+        CloseReviveUI();
+        battleInstance.BattleGroup.RevivePlayerList();
+        battleInstance.Process.ReviveSuccess(reviveResult.reviveCount);
+        //switch (reviveStatus)
+        //{
+        //    //0:success 1:count error 2:diamond not enough
+        //    case 0:
+        //        CloseReviveUI();
+        //        battleInstance.BattleGroup.RevivePlayerList(reviveResult);
+        //        battleInstance.Process.ReviveSuccess(reviveresu);
+        //        break;
+        //    case 1:
+        //        CloseReviveUI();
+        //        battleInstance.OnBattleOver(false);
+        //        break;
+        //    case 2:
+        //        GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+        //        break;
+        //    default:
+        //        break;
+        //}
     }
 
     public void ChangeBuffState(SpellBuffArgs args)
@@ -283,7 +285,6 @@ public class UIBattle : UIBase
 		GameEventMgr.Instance.AddListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
         GameEventMgr.Instance.AddListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
         GameEventMgr.Instance.AddListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_C.GetHashCode().ToString(), OnReviveResult);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_S.GetHashCode().ToString(), OnReviveResult);
     }
 
@@ -295,7 +296,6 @@ public class UIBattle : UIBase
         GameEventMgr.Instance.RemoveListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
         GameEventMgr.Instance.RemoveListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_C.GetHashCode().ToString(), OnReviveResult);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_S.GetHashCode().ToString(), OnReviveResult);
     }
 

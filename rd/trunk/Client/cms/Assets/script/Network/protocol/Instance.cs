@@ -109,8 +109,15 @@ namespace PB
       get { return _instanceId; }
       set { _instanceId = value; }
     }
+    private readonly global::System.Collections.Generic.List<int> _battleMonsterId = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"battleMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> battleMonsterId
+    {
+      get { return _battleMonsterId; }
+    }
+  
     private int _friendId = default(int);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"friendId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"friendId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int friendId
     {

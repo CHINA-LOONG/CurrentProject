@@ -185,12 +185,12 @@ public class ShopDataMgr : MonoBehaviour
 				                      StaticDataMgr.Instance.GetTextByID("shop_timeout"),
 				                      OnPrompButtonClick);
 			}
-			else if(error.errCode == (int)PB.itemError.GOLD_NOT_ENOUGH)
+			else if(error.errCode == (int)PB.PlayerError.GOLD_NOT_ENOUGH)
 			{
 				//MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,"钻石不足");
 				ZuanshiNoEnough();
 			}
-			else if (error.errCode == (int)PB.itemError.COINS_NOT_ENOUGH)
+            else if (error.errCode == (int)PB.PlayerError.COINS_NOT_ENOUGH)
 			{
 				JinbiNoEnough();
 			}

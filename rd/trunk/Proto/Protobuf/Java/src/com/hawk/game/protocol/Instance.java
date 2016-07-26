@@ -2107,13 +2107,27 @@ public final class Instance {
     com.google.protobuf.ByteString
         getInstanceIdBytes();
 
-    // optional int32 friendId = 2;
+    // repeated int32 battleMonsterId = 2;
     /**
-     * <code>optional int32 friendId = 2;</code>
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    java.util.List<java.lang.Integer> getBattleMonsterIdList();
+    /**
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    int getBattleMonsterIdCount();
+    /**
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    int getBattleMonsterId(int index);
+
+    // optional int32 friendId = 3;
+    /**
+     * <code>optional int32 friendId = 3;</code>
      */
     boolean hasFriendId();
     /**
-     * <code>optional int32 friendId = 2;</code>
+     * <code>optional int32 friendId = 3;</code>
      */
     int getFriendId();
   }
@@ -2178,6 +2192,27 @@ public final class Instance {
               break;
             }
             case 16: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                battleMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              battleMonsterId_.add(input.readInt32());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
+                battleMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                battleMonsterId_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 24: {
               bitField0_ |= 0x00000002;
               friendId_ = input.readInt32();
               break;
@@ -2190,6 +2225,9 @@ public final class Instance {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          battleMonsterId_ = java.util.Collections.unmodifiableList(battleMonsterId_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -2265,17 +2303,40 @@ public final class Instance {
       }
     }
 
-    // optional int32 friendId = 2;
-    public static final int FRIENDID_FIELD_NUMBER = 2;
+    // repeated int32 battleMonsterId = 2;
+    public static final int BATTLEMONSTERID_FIELD_NUMBER = 2;
+    private java.util.List<java.lang.Integer> battleMonsterId_;
+    /**
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getBattleMonsterIdList() {
+      return battleMonsterId_;
+    }
+    /**
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    public int getBattleMonsterIdCount() {
+      return battleMonsterId_.size();
+    }
+    /**
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    public int getBattleMonsterId(int index) {
+      return battleMonsterId_.get(index);
+    }
+
+    // optional int32 friendId = 3;
+    public static final int FRIENDID_FIELD_NUMBER = 3;
     private int friendId_;
     /**
-     * <code>optional int32 friendId = 2;</code>
+     * <code>optional int32 friendId = 3;</code>
      */
     public boolean hasFriendId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 friendId = 2;</code>
+     * <code>optional int32 friendId = 3;</code>
      */
     public int getFriendId() {
       return friendId_;
@@ -2283,6 +2344,7 @@ public final class Instance {
 
     private void initFields() {
       instanceId_ = "";
+      battleMonsterId_ = java.util.Collections.emptyList();
       friendId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -2304,8 +2366,11 @@ public final class Instance {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeBytes(1, getInstanceIdBytes());
       }
+      for (int i = 0; i < battleMonsterId_.size(); i++) {
+        output.writeInt32(2, battleMonsterId_.get(i));
+      }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, friendId_);
+        output.writeInt32(3, friendId_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2320,9 +2385,18 @@ public final class Instance {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(1, getInstanceIdBytes());
       }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < battleMonsterId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(battleMonsterId_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getBattleMonsterIdList().size();
+      }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, friendId_);
+          .computeInt32Size(3, friendId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2446,8 +2520,10 @@ public final class Instance {
         super.clear();
         instanceId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        friendId_ = 0;
+        battleMonsterId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000002);
+        friendId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -2480,7 +2556,12 @@ public final class Instance {
           to_bitField0_ |= 0x00000001;
         }
         result.instanceId_ = instanceId_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          battleMonsterId_ = java.util.Collections.unmodifiableList(battleMonsterId_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.battleMonsterId_ = battleMonsterId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000002;
         }
         result.friendId_ = friendId_;
@@ -2503,6 +2584,16 @@ public final class Instance {
         if (other.hasInstanceId()) {
           bitField0_ |= 0x00000001;
           instanceId_ = other.instanceId_;
+          onChanged();
+        }
+        if (!other.battleMonsterId_.isEmpty()) {
+          if (battleMonsterId_.isEmpty()) {
+            battleMonsterId_ = other.battleMonsterId_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureBattleMonsterIdIsMutable();
+            battleMonsterId_.addAll(other.battleMonsterId_);
+          }
           onChanged();
         }
         if (other.hasFriendId()) {
@@ -2613,34 +2704,100 @@ public final class Instance {
         return this;
       }
 
-      // optional int32 friendId = 2;
-      private int friendId_ ;
-      /**
-       * <code>optional int32 friendId = 2;</code>
-       */
-      public boolean hasFriendId() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+      // repeated int32 battleMonsterId = 2;
+      private java.util.List<java.lang.Integer> battleMonsterId_ = java.util.Collections.emptyList();
+      private void ensureBattleMonsterIdIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          battleMonsterId_ = new java.util.ArrayList<java.lang.Integer>(battleMonsterId_);
+          bitField0_ |= 0x00000002;
+         }
       }
       /**
-       * <code>optional int32 friendId = 2;</code>
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getBattleMonsterIdList() {
+        return java.util.Collections.unmodifiableList(battleMonsterId_);
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public int getBattleMonsterIdCount() {
+        return battleMonsterId_.size();
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public int getBattleMonsterId(int index) {
+        return battleMonsterId_.get(index);
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public Builder setBattleMonsterId(
+          int index, int value) {
+        ensureBattleMonsterIdIsMutable();
+        battleMonsterId_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public Builder addBattleMonsterId(int value) {
+        ensureBattleMonsterIdIsMutable();
+        battleMonsterId_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public Builder addAllBattleMonsterId(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureBattleMonsterIdIsMutable();
+        super.addAll(values, battleMonsterId_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public Builder clearBattleMonsterId() {
+        battleMonsterId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
+      // optional int32 friendId = 3;
+      private int friendId_ ;
+      /**
+       * <code>optional int32 friendId = 3;</code>
+       */
+      public boolean hasFriendId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 friendId = 3;</code>
        */
       public int getFriendId() {
         return friendId_;
       }
       /**
-       * <code>optional int32 friendId = 2;</code>
+       * <code>optional int32 friendId = 3;</code>
        */
       public Builder setFriendId(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         friendId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 friendId = 2;</code>
+       * <code>optional int32 friendId = 3;</code>
        */
       public Builder clearFriendId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         friendId_ = 0;
         onChanged();
         return this;
@@ -9385,24 +9542,25 @@ public final class Instance {
       "rName\030\004 \002(\t\022\020\n\010isFriend\030\005 \002(\010\022\033\n\007monster" +
       "\030\006 \002(\0132\n.HSMonster\"Y\n\010HSBattle\022\023\n\013battle" +
       "CfgId\030\001 \002(\t\022\024\n\014monsterCfgId\030\002 \003(\t\022\"\n\013mon" +
-      "sterDrop\030\003 \003(\0132\r.HSRewardInfo\"7\n\017HSInsta" +
-      "nceEnter\022\022\n\ninstanceId\030\001 \002(\t\022\020\n\010friendId",
-      "\030\002 \001(\005\"C\n\022HSInstanceEnterRet\022\022\n\ninstance" +
-      "Id\030\001 \002(\t\022\031\n\006battle\030\002 \003(\0132\t.HSBattle\"#\n\020H" +
-      "SInstanceSettle\022\017\n\007victory\030\001 \002(\010\"J\n\023HSIn" +
-      "stanceSettleRet\022\024\n\tstarCount\030\001 \001(\005:\0010\022\035\n" +
-      "\006reward\030\002 \001(\0132\r.HSRewardInfo\"4\n\017HSInstan" +
-      "ceSweep\022\022\n\ninstanceId\030\001 \002(\t\022\r\n\005count\030\002 \002" +
-      "(\005\"_\n\022HSInstanceSweepRet\022%\n\016completeRewa" +
-      "rd\030\001 \003(\0132\r.HSRewardInfo\022\"\n\013sweepReward\030\003" +
-      " \001(\0132\r.HSRewardInfo\"*\n\024HSInstanceResetCo" +
-      "unt\022\022\n\ninstanceId\030\001 \002(\t\"\031\n\027HSInstanceRes",
-      "etCountRet\"\022\n\020HSInstanceRevive\"*\n\023HSInst" +
-      "anceReviveRet\022\023\n\013reviveCount\030\001 \002(\005\"\022\n\020HS" +
-      "InstanceAssist\"0\n\023HSInstanceAssistRet\022\031\n" +
-      "\006assist\030\001 \003(\0132\t.HSAssist\"\'\n\022HSInstanceOp" +
-      "enCard\022\021\n\topenCount\030\001 \002(\005\"\027\n\025HSInstanceO" +
-      "penCardRetB\030\n\026com.hawk.game.protocol"
+      "sterDrop\030\003 \003(\0132\r.HSRewardInfo\"P\n\017HSInsta" +
+      "nceEnter\022\022\n\ninstanceId\030\001 \002(\t\022\027\n\017battleMo",
+      "nsterId\030\002 \003(\005\022\020\n\010friendId\030\003 \001(\005\"C\n\022HSIns" +
+      "tanceEnterRet\022\022\n\ninstanceId\030\001 \002(\t\022\031\n\006bat" +
+      "tle\030\002 \003(\0132\t.HSBattle\"#\n\020HSInstanceSettle" +
+      "\022\017\n\007victory\030\001 \002(\010\"J\n\023HSInstanceSettleRet" +
+      "\022\024\n\tstarCount\030\001 \001(\005:\0010\022\035\n\006reward\030\002 \001(\0132\r" +
+      ".HSRewardInfo\"4\n\017HSInstanceSweep\022\022\n\ninst" +
+      "anceId\030\001 \002(\t\022\r\n\005count\030\002 \002(\005\"_\n\022HSInstanc" +
+      "eSweepRet\022%\n\016completeReward\030\001 \003(\0132\r.HSRe" +
+      "wardInfo\022\"\n\013sweepReward\030\003 \001(\0132\r.HSReward" +
+      "Info\"*\n\024HSInstanceResetCount\022\022\n\ninstance",
+      "Id\030\001 \002(\t\"\031\n\027HSInstanceResetCountRet\"\022\n\020H" +
+      "SInstanceRevive\"*\n\023HSInstanceReviveRet\022\023" +
+      "\n\013reviveCount\030\001 \002(\005\"\022\n\020HSInstanceAssist\"" +
+      "0\n\023HSInstanceAssistRet\022\031\n\006assist\030\001 \003(\0132\t" +
+      ".HSAssist\"\'\n\022HSInstanceOpenCard\022\021\n\topenC" +
+      "ount\030\001 \002(\005\"\027\n\025HSInstanceOpenCardRetB\030\n\026c" +
+      "om.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9426,7 +9584,7 @@ public final class Instance {
           internal_static_HSInstanceEnter_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceEnter_descriptor,
-              new java.lang.String[] { "InstanceId", "FriendId", });
+              new java.lang.String[] { "InstanceId", "BattleMonsterId", "FriendId", });
           internal_static_HSInstanceEnterRet_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_HSInstanceEnterRet_fieldAccessorTable = new

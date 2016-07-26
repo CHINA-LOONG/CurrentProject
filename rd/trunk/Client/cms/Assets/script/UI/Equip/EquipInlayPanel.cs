@@ -108,6 +108,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
         text_Desc.gameObject.SetActive(isOpenmax);
         text_Tips.text = string.Format(StaticDataMgr.Instance.GetTextByID("equip_inlay_tips"), canOpenCount);
         #region 设置宝石插槽的状态
+
         for (int i = 0; i < mosaicItems.Length; i++)
         {
             if (canOpenCount <= i)
@@ -126,6 +127,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
             }
             else
             {
+                mosaicItems[i].gameObject.SetActive(true);
                 if (type == UIEquipInlay.State.Setting)
                 {
                     mosaicItems[i].gameObject.SetActive(false);

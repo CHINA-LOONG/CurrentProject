@@ -17,7 +17,7 @@ message GMOperation
 	optional string operation = 2;
 	optional int64  targetId = 3;
 	optional int64  value = 4;
-	optional string itemID = 5;
+	optional string itemId = 5;
 }
 
 // GMOPERATION_S

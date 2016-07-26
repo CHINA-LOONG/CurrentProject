@@ -135,7 +135,7 @@ public class HawkThreadPool {
 	 * @return
 	 */
 	public boolean addTask(HawkTask task, int threadIdMin, int threadIdMax, boolean first) {
-		if (running && !waitBreak) {			
+		if (running && !waitBreak) {
 			if (threadIdMin < 0) {
 				threadIdMin = 0;
 			} else if (threadIdMin >= threadNum) {

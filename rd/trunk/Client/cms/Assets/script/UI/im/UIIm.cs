@@ -221,6 +221,7 @@ public class UIIm : UIBase
     //------------------------------------------------------------------------------------------------------
     public void ShowSystemHints(string hintsValue,int hintsType)//
     {
+        return;
         //走马灯
         if (hintsType == (int)PB.ImType.LANTERN)
         {

@@ -22,6 +22,8 @@ import org.hawk.obj.HawkObjManager;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkShutdownHook;
 import org.hawk.os.HawkTime;
+import org.hawk.service.HawkService;
+import org.hawk.service.HawkServiceManager;
 import org.hawk.util.services.HawkAccountService;
 import org.hawk.util.services.HawkCdkService;
 import org.hawk.util.services.HawkEmailService;
@@ -49,6 +51,7 @@ import com.hawk.game.protocol.Player.HSPlayerCreateRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.protocol.SysProtocol.HSHeartBeat;
+import com.hawk.game.service.GmService;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
 
@@ -133,7 +136,9 @@ public class GsApp extends HawkApp {
 		// 初始化全局实例对象
 		HawkLog.logPrintln("init server data......");
 		ServerData.getInstance().init();
-
+		
+		HawkServiceManager.getInstance().registerService("GMTest", new GmService());
+		
 		// cdk服务初始化
 		if (GsConfig.getInstance().getCdkHost().length() > 0) {
 			HawkLog.logPrintln("install cdk service......");

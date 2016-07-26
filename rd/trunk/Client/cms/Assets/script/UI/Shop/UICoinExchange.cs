@@ -76,7 +76,7 @@ public class UICoinExchange : UIBase
 		{
 			PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
 
-			if(error.errCode == (int)PB.itemError.GOLD_NOT_ENOUGH)
+			if(error.errCode == (int)PB.PlayerError.GOLD_NOT_ENOUGH)
 			{
 				//MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,"钻石不足");
 				GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
@@ -84,6 +84,7 @@ public class UICoinExchange : UIBase
 
 			return;
 		}
+
 		PB.HSShopGold2CoinRet msgret = msg.GetProtocolBody<PB.HSShopGold2CoinRet> ();
 		//msgret.changeCount 已经兑换次数
 

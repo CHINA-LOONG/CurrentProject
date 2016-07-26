@@ -99,9 +99,6 @@ public class BattleConst
     public const string stageSelfId = "self";
 
     public const byte maxReviveCount = 3;
-    public const byte reviveCost1 = 10;
-    public const byte reviveCost2 = 20;
-    public const byte reviveCost3 = 30;
 
     //金币图标资源名
     public const string icon_jinbi = "icon_jinbi";

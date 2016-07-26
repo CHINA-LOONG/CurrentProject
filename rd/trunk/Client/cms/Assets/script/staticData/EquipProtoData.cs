@@ -30,18 +30,19 @@ public class EquipProtoData
     //强化数据
     public Dictionary<AttrType,int> leveAttribute(int level)
     {
+        EquipLevelData baseLevelAttr = StaticDataMgr.Instance.GetEquipLevelData(this.levelAttrId);
         EquipLevelData baseAttr = StaticDataMgr.Instance.GetEquipLevelData(this.stageAttrId);
         Dictionary<AttrType, int> attr = new Dictionary<AttrType, int>();
-        if (baseAttr.health!=0)        
-            attr.Add(AttrType.Health, baseAttr.health * level);
+        if (baseAttr.health!=0)
+            attr.Add(AttrType.Health, (baseLevelAttr.health * level) + baseAttr.health);
         if (baseAttr.strength != 0)
-            attr.Add(AttrType.Strength, baseAttr.strength * level);
+            attr.Add(AttrType.Strength, (baseLevelAttr.strength * level) + baseAttr.strength);
         if (baseAttr.intelligence != 0)
-            attr.Add(AttrType.Intelligence, baseAttr.intelligence * level);
+            attr.Add(AttrType.Intelligence, (baseLevelAttr.intelligence * level) + baseAttr.intelligence);
         if (baseAttr.defense != 0)
-            attr.Add(AttrType.Defense, baseAttr.defense * level);
+            attr.Add(AttrType.Defense, (baseLevelAttr.defense * level) + baseAttr.defense);
         if (baseAttr.speed != 0)
-            attr.Add(AttrType.Speed, baseAttr.speed * level);
+            attr.Add(AttrType.Speed, (baseLevelAttr.speed * level) + baseAttr.speed);
         return attr;        
     }
 }

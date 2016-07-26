@@ -507,6 +507,11 @@ public class UIAdjustBattleTeam : UIBase
 	{
 		PB.HSInstanceEnter param = new PB.HSInstanceEnter ();
 		param.instanceId = instanceId;
+        int count = enterInstanceParam.playerTeam.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            param.battleMonsterId.Add(enterInstanceParam.playerTeam[i]);
+        }
 
 		GameApp.Instance.netManager.SendMessage (PB.code.INSTANCE_ENTER_C.GetHashCode (), param);
 	}

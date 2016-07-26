@@ -97,13 +97,11 @@ public class PetDetailRightStage : PetDetailRightBase{
         if (UIUtil.CheckIsEnoughLevel(m_unit) == false)//检测宠物是否达到升级下一级的需求
         {
             levelValue.color = ColorConst.text_color_nReq;
-            levelValue.GetComponent<Outline>().effectColor = ColorConst.outline_color_nReq;
         }
         else
         {
 
             levelValue.color = ColorConst.text_color_Req;
-            levelValue.GetComponent<Outline>().effectColor = ColorConst.outline_color_Req;
         }
         //modify： xuelong 2015-9-24 10:56:12  
         //TODO：
@@ -118,15 +116,17 @@ public class PetDetailRightStage : PetDetailRightBase{
         itemIcon.RefreshWithItemInfo(new ItemData() { itemId = unitStageData.demandItemList[0].itemId, count = 0 });
         int current = Mathf.Clamp((itemData == null ? 0 : itemData.count), 0, 9999);
         int need = unitStageData.demandItemList[0].count;
-        itemCount.text = current + "/" + need;
+        Color color;
         if (need > current)
         {
-            itemCount.color = ColorConst.text_color_nReq;
+            color = ColorConst.text_color_nReq;
         }
         else
         {
-            itemCount.color = ColorConst.text_color_Req;
+            color = ColorConst.text_color_Req;
         }
+
+        itemCount.text = "<color=" + ColorConst.colorTo_Hstr(color) + ">" + current + "</color>/" + need;
 
         #endregion
 

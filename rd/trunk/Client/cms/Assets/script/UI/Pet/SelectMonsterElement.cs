@@ -59,7 +59,7 @@ public class SelectMonsterElement : MonoBehaviour {
         this.isSelect = isSelect;
         guid = unit.pbUnit.guid;
         nameLabel.text = unit.name;
-        characterLabel.text = unit.character.ToString();
+        characterLabel.text = StaticDataMgr.Instance.GetTextByID("pet_character_" + unit.character);
         battleLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageBattle);
         battle.text = unit.attackCount.ToString();
 

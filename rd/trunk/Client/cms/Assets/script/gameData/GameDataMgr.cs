@@ -118,6 +118,10 @@ public class GameDataMgr : MonoBehaviour
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_CONSUME_S.GetHashCode().ToString(), OnConsume);
         //GameEventMgr.Instance.AddListener<Coin>(GameEventList.EatCoin, OnEatCoin);
+        //general error
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.instanceError.INSTANCE_REVIVE_COUNT.GetHashCode().ToString(), OnCommonError);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.PlayerError.GOLD_NOT_ENOUGH.GetHashCode().ToString(), OnCommonError);
+
     }
     //---------------------------------------------------------------------------------------------
     void UnBindListener()
@@ -139,6 +143,10 @@ public class GameDataMgr : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_CONSUME_S.GetHashCode().ToString(), OnConsume);
         //GameEventMgr.Instance.RemoveListener<Coin>(GameEventList.EatCoin, OnEatCoin);
+        //general error
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.instanceError.INSTANCE_REVIVE_COUNT.GetHashCode().ToString(), OnCommonError);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.PlayerError.GOLD_NOT_ENOUGH.GetHashCode().ToString(), OnCommonError);
+
     }
     //---------------------------------------------------------------------------------------------
     void OnPlayerInfoSync(ProtocolMessage msg)
@@ -319,7 +327,11 @@ public class GameDataMgr : MonoBehaviour
                 Logger.Log("不存在的宠物");
                 continue;
             }
-            unit.RefreshUnitLvl(item.level, item.exp);
+            //battle module,use score to sync level
+            if (GameMain.Instance.IsCurModule<BattleModule>() == false)
+            {
+                unit.RefreshUnitLvl(item.level, item.exp);
+            }
         }
 
         foreach (PB.RewardItem item in reward.RewardItems)
@@ -351,7 +363,21 @@ public class GameDataMgr : MonoBehaviour
             }
             else if (item.type == (int)PB.itemType.MONSTER)
             {
-
+                //TODO: duplicate code
+                PbUnit pbUnit = new PbUnit();
+                PB.HSMonster monster = item.monster;
+                pbUnit.slot = -1;
+                pbUnit.guid = (int)item.id;
+                pbUnit.camp = UnitCamp.Player;
+                pbUnit.id = item.itemId;
+                pbUnit.character = monster.disposition;
+                pbUnit.lazy = monster.lazy;
+                pbUnit.level = monster.level;
+                pbUnit.curExp = monster.exp;
+                pbUnit.stage = item.stage;
+                pbUnit.spellPbList = monster.skill;
+                mainPlayer.unitPbList.Add(pbUnit.guid, pbUnit);
+                mainPlayer.allUnitDic.Add(pbUnit.guid, GameUnit.FromPb(pbUnit, true));
             }
         }
     }
@@ -389,7 +415,44 @@ public class GameDataMgr : MonoBehaviour
             }
         }
     }
-
+    
+    //---------------------------------------------------------------------------------------------
+    void OnCommonError(ProtocolMessage msg)
+    {
+        //switch (reviveStatus)
+        //{
+        //    //0:success 1:count error 2:diamond not enough
+        //    case 0:
+        //        CloseReviveUI();
+        //        battleInstance.BattleGroup.RevivePlayerList(reviveResult);
+        //        battleInstance.Process.ReviveSuccess(reviveresu);
+        //        break;
+        //    case 1:
+        //        CloseReviveUI();
+        //        battleInstance.OnBattleOver(false);
+        //        break;
+        //    case 2:
+        //        GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+        //        break;
+        //    default:
+        //        break;
+        //}
+        UINetRequest.Close();
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
+            switch (error.errCode)
+            {
+                case (int)PB.instanceError.INSTANCE_REVIVE_COUNT:
+                    UIBattle.Instance.CloseReviveUI();
+                    BattleController.Instance.OnBattleOver(false);
+                    break;
+                case (int)PB.PlayerError.GOLD_NOT_ENOUGH:
+                    GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+                    break;
+            }
+        }
+    }
     //---------------------------------------------------------------------------------------------
     //public void AddPlayerData(PlayerData data)
     //{

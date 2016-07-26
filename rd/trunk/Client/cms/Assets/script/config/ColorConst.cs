@@ -79,6 +79,12 @@ public class ColorConst
     public static Color globalColor = Color.green;//世界字体颜色
     public static Color guildColor = Color.black;//工會字体颜色
     public static Color systemColor = Color.red;//系统字体颜色
+    //选项卡颜色
+    public static Color text_tabColor_normal = new Color(251.0f/255.0f,241.0f/255.0f,216.0f/255.0f,1.0f);
+    public static Color outline_tabColor_normal = new Color(20.0f/255.0f,15.0f/255.0f,16.0f/255.0f,1.0f);
+    public static Color text_tabColor_select = new Color(250.0f/255.0f,247.0f/255.0f,241.0f/255.0f,1.0f);
+    public static Color outline_tabColor_select = new Color(202.0f/255.0f,151.0f/255.0f,13.0f/255.0f,1.0f);
+
 
     public static string colorTo_Hstr(Color color)
     {

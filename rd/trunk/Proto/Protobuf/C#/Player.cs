@@ -47,13 +47,13 @@ namespace PB
       get { return _exp; }
       set { _exp = value; }
     }
-    private int _vipLevel = default(int);
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"vipLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    private int _fatigue = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"fatigue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
-    public int vipLevel
+    public int fatigue
     {
-      get { return _vipLevel; }
-      set { _vipLevel = value; }
+      get { return _fatigue; }
+      set { _fatigue = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

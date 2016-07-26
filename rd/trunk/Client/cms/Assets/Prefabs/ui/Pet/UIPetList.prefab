@@ -201,7 +201,6 @@ GameObject:
   - 222: {fileID: 22274806}
   - 114: {fileID: 11453602}
   - 114: {fileID: 11433554}
-  - 95: {fileID: 9593004}
   m_Layer: 5
   m_Name: "UIPetTypeBtn \u571F"
   m_TagString: Untagged
@@ -220,7 +219,6 @@ GameObject:
   - 222: {fileID: 22214056}
   - 114: {fileID: 11403878}
   - 114: {fileID: 11400536}
-  - 95: {fileID: 9501998}
   m_Layer: 5
   m_Name: "UIPetTypeBtn \u91D1\u6728\u6C34\u706B\u571F"
   m_TagString: Untagged
@@ -273,7 +271,6 @@ GameObject:
   - 222: {fileID: 22266864}
   - 114: {fileID: 11404078}
   - 114: {fileID: 11422738}
-  - 95: {fileID: 9552046}
   m_Layer: 5
   m_Name: "UIPetTypeBtn \u6C34"
   m_TagString: Untagged
@@ -647,7 +644,6 @@ GameObject:
   - 222: {fileID: 22288566}
   - 114: {fileID: 11431472}
   - 114: {fileID: 11409154}
-  - 95: {fileID: 9587868}
   m_Layer: 5
   m_Name: "UIPetTypeBtn \u706B"
   m_TagString: Untagged
@@ -783,7 +779,6 @@ GameObject:
   - 222: {fileID: 22286142}
   - 114: {fileID: 11473556}
   - 114: {fileID: 11417424}
-  - 95: {fileID: 9527132}
   m_Layer: 5
   m_Name: "UIPetTypeBtn \u91D1"
   m_TagString: Untagged
@@ -938,7 +933,6 @@ GameObject:
   - 222: {fileID: 22260732}
   - 114: {fileID: 11490522}
   - 114: {fileID: 11432462}
-  - 95: {fileID: 9517476}
   m_Layer: 5
   m_Name: "UIPetTypeBtn \u6728"
   m_TagString: Untagged
@@ -1029,108 +1023,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &9501998
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117604}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f81be588ed2f9ea4382385b0694b0287, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9517476
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180640}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f81be588ed2f9ea4382385b0694b0287, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9527132
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164624}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f81be588ed2f9ea4382385b0694b0287, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9552046
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119842}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f81be588ed2f9ea4382385b0694b0287, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9587868
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152286}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f81be588ed2f9ea4382385b0694b0287, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9593004
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116442}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f81be588ed2f9ea4382385b0694b0287, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400536
 MonoBehaviour:
   m_ObjectHideFlags: 1

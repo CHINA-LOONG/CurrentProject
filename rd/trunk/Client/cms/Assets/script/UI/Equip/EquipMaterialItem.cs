@@ -26,16 +26,16 @@ public class EquipMaterialItem : MonoBehaviour
         {
             mineItem = new ItemData() { itemId = itemId, count = 0 };
         }
-        textCount.text = (mineItem.count > 9999 ? 9999 : mineItem.count) + "/" + count;
-
+        Color color;
         if (mineItem.count<count)
         {
-            textCount.color = ColorConst.text_color_nReq;
+            color = ColorConst.text_color_nReq;
         }
         else
         {
-            textCount.color = ColorConst.text_color_Req;
+            color = ColorConst.text_color_Req;
         }
+        textCount.text = "<color=" + ColorConst.colorTo_Hstr(color) + ">" + (mineItem.count > 9999 ? 9999 : mineItem.count) + "</color>/" + count;
     }
 
 }

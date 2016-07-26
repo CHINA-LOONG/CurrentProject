@@ -24,16 +24,12 @@ public class UIEquipDetails : MonoBehaviour
     public Text equipLimitTip;
     public Text attributeTextTip;
     public Text gemTextTip;
-    public Text gemPromptTip;
     public Text equipUninstallTip;
     public Text equipInstallTip;
     public Text StrengthenTip;
     public Text gemSetTip;
-
-
     public IEquipCallBack equipCallBack;
     public Text equipNmae;//装备名称 
-    public Text strengthenNum;//装备强化
     public Text equipType;//装备类型
     public Text equipPart;//装备部位
     public Text equipPower;//战斗力
@@ -84,20 +80,21 @@ public class UIEquipDetails : MonoBehaviour
         unitDate = unit;
         itemData = StaticDataMgr.Instance.GetItemData(equipDate.equipId);
         equipNmae.text = StaticDataMgr.Instance.GetTextByID(itemData.name);
+        if (equipDate.level > 0)
+        {
+            equipNmae.text = StaticDataMgr.Instance.GetTextByID(itemData.name) + "+ " + equipDate.level.ToString();
+        }        
+        Outline outline = equipNmae.GetComponent<Outline>();
+        outline.effectColor = ColorConst.GetStageOutLineColor(equip.stage);
         equipNmae.color = ColorConst.GetStageTextColor(equip.stage);
+
         lvLimit.text = itemData.minLevel.ToString();
         if (itemData.part > -1 && itemData.part < 6)//装备超出
             equipPart.text = "<" + StaticDataMgr.Instance.GetTextByID(part[itemData.part]) + ">";
 
         if (itemData.subType > -1 && itemData.subType < 4)//装备类型超出
             equipType.text = StaticDataMgr.Instance.GetTextByID(equipTypeId[itemData.subType]);
-
-        if (equipDate.level > 0) 
-        {
-            strengthenNum.enabled = true; 
-            strengthenNum.text = "+ " + equipDate.level.ToString();
-            strengthenNum.color = ColorConst.GetStageTextColor(equip.stage);
-        }
+      
         if (equipDate.health > 0)
         {
             basicsAttribute[w].SetActive(true);
@@ -159,37 +156,41 @@ public class UIEquipDetails : MonoBehaviour
             w++;
         }
         if (equip.stage < 3) //装备品级三阶以下不可镶嵌
-        {
+        {            
             gemPrompt.SetActive(true);
+            gemPrompt.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotMent");
             inlayButton.SetActive(false);
         }
         else
         {
+            gemPrompt.SetActive(false);
+			//TODO: use managed memory
+            Sprite gemBox;
             if (equip.gemList != null && equip.gemList.Count > 0)
             {
-                gemPrompt.SetActive(false);
                 showGem(equip.stage, null, null, false);
                 EquipLevelData gemAttr;
                 for (int i = 0; i < equip.gemList.Count; i++)
                 {
+                    gemBox = ResourceMgr.Instance.LoadAssetType<Sprite>("baoshiditu_" + equip.gemList[i].type);
+                    gemAttribute[i].GetComponent<Image>().sprite = gemBox;
                     if (equip.gemList[i].gemId == "0")
                     {
-                        gemAttribute[i].transform.GetComponent<Image>().enabled = true;
-                        gemAttribute[i].transform.FindChild("noKong").gameObject.SetActive(false);
+                        gemAttribute[i].GetComponent<Image>().enabled = true;
                         gemAttribute[i].transform.FindChild("noGem").gameObject.SetActive(true);
+                        gemPrompt.SetActive(false);
                         gemAttribute[i].transform.FindChild("noGem").GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotSet");
                     }
                     else
                     {
                         itemData = StaticDataMgr.Instance.GetItemData(equip.gemList[i].gemId);
                         gemAttr = StaticDataMgr.Instance.GetEquipLevelData(itemData.gemId);
-                        showGem(0, gemAttr, gemAttribute[i], true);
+                        showGem(0, gemAttr, gemAttribute[i], true, equip.gemList[i].gemId);
                     }
                 }
             }
             else
             {
-                gemPrompt.SetActive(false);
                 showGem(equip.stage, null, null, false);
             }
         }        
@@ -204,19 +205,17 @@ public class UIEquipDetails : MonoBehaviour
         for (int i = 0; i < gemAttribute.Length; i++)
         {
             gemAttribute[i].transform.GetComponent<Image>().enabled = false;
-            gemAttribute[i].transform.FindChild("gem").gameObject.SetActive(false);
             gemAttribute[i].transform.FindChild("noGem").gameObject.SetActive(false);
-            gemAttribute[i].transform.FindChild("noKong").gameObject.SetActive(false);
             gemAttribute[i].transform.FindChild("gemName").gameObject.SetActive(false);
             gemAttribute[i].transform.FindChild("gemAttr1").gameObject.SetActive(false);
-            gemAttribute[i].transform.FindChild("gemAttr2").gameObject.SetActive(false);            
+            gemAttribute[i].transform.FindChild("gemAttr2").gameObject.SetActive(false);
+            gemAttribute[i].transform.FindChild("gemParent").gameObject.SetActive(false);  
             gemAttribute[i].SetActive(false);     
-        }        
-        strengthenNum.enabled = false;
+        }
+        inlayButton.SetActive(true);
     }
-    void showGem(int equipStage, EquipLevelData gemAttr, GameObject gem, bool isLoad)
+    void showGem(int equipStage, EquipLevelData gemAttr, GameObject gem, bool isLoad,string gemId = "0")
     {
-    	GameObject noKong;
         if (!isLoad)
         {
             int j = 0;
@@ -228,20 +227,24 @@ public class UIEquipDetails : MonoBehaviour
             for (int i = 0; i < j; i++)
             {
                 gemAttribute[i].SetActive(true);
-                noKong = gemAttribute[i].transform.FindChild("noKong").gameObject;
-                noKong.gameObject.SetActive(true);
-                noKong.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotKong");
+                gemPrompt.SetActive(true);
+                gemPrompt.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotKong");
             }
         }
         else
         {
-            noKong = gem.transform.FindChild("noKong").gameObject;            
-            noKong.gameObject.SetActive(false);
+            gemPrompt.SetActive(false);
             gemName = gem.transform.FindChild("gemName").gameObject;
             gemName.gameObject.SetActive(true);
             gem.transform.FindChild("noGem").gameObject.SetActive(false);
             gem.transform.GetComponent<Image>().enabled = true;
-            gem.transform.FindChild("gem").gameObject.SetActive(true);
+
+            GameObject gemParent = Util.FindChildByName(gem, "gemParent");
+            gemParent.SetActive(true);
+            ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(gemId, 1));
+            icon.transform.SetParent(gemParent.transform, false);
+            icon.HideExceptIcon();
+
             gemName.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID(itemData.name);
             gemName.GetComponent<Text>().color = ColorConst.GetStageTextColor(itemData.grade);
             gemAttrList[0] = gem.transform.FindChild("gemAttr1").gameObject;
@@ -272,7 +275,7 @@ public class UIEquipDetails : MonoBehaviour
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
-                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_type_defence") + "   +" + gemAttr.defense;
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_defence") + "   +" + gemAttr.defense;
                 gemNum++;
             }
             if (gemAttr.speed != 0)
@@ -366,7 +369,6 @@ public class UIEquipDetails : MonoBehaviour
         equipLimitTip.text = StaticDataMgr.Instance.GetTextByID("equip_List_xianzhidengji") + ":";
         attributeTextTip.text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_attr");
         gemTextTip.text = StaticDataMgr.Instance.GetTextByID("equip_gem_casting");
-        gemPromptTip.text = StaticDataMgr.Instance.GetTextByID("equip_gem_NotMent");
         equipUninstallTip.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiexia");
         StrengthenTip.text = StaticDataMgr.Instance.GetTextByID("equip_forge_dazao");
         gemSetTip.text = StaticDataMgr.Instance.GetTextByID("equip_inlay_xiangqian");

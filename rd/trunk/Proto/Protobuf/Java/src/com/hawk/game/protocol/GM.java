@@ -378,20 +378,20 @@ public final class GM {
      */
     long getValue();
 
-    // optional string itemID = 5;
+    // optional string itemId = 5;
     /**
-     * <code>optional string itemID = 5;</code>
+     * <code>optional string itemId = 5;</code>
      */
-    boolean hasItemID();
+    boolean hasItemId();
     /**
-     * <code>optional string itemID = 5;</code>
+     * <code>optional string itemId = 5;</code>
      */
-    java.lang.String getItemID();
+    java.lang.String getItemId();
     /**
-     * <code>optional string itemID = 5;</code>
+     * <code>optional string itemId = 5;</code>
      */
     com.google.protobuf.ByteString
-        getItemIDBytes();
+        getItemIdBytes();
   }
   /**
    * Protobuf type {@code GMOperation}
@@ -470,7 +470,7 @@ public final class GM {
             }
             case 42: {
               bitField0_ |= 0x00000010;
-              itemID_ = input.readBytes();
+              itemId_ = input.readBytes();
               break;
             }
           }
@@ -631,20 +631,20 @@ public final class GM {
       return value_;
     }
 
-    // optional string itemID = 5;
+    // optional string itemId = 5;
     public static final int ITEMID_FIELD_NUMBER = 5;
-    private java.lang.Object itemID_;
+    private java.lang.Object itemId_;
     /**
-     * <code>optional string itemID = 5;</code>
+     * <code>optional string itemId = 5;</code>
      */
-    public boolean hasItemID() {
+    public boolean hasItemId() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional string itemID = 5;</code>
+     * <code>optional string itemId = 5;</code>
      */
-    public java.lang.String getItemID() {
-      java.lang.Object ref = itemID_;
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -652,22 +652,22 @@ public final class GM {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          itemID_ = s;
+          itemId_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>optional string itemID = 5;</code>
+     * <code>optional string itemId = 5;</code>
      */
     public com.google.protobuf.ByteString
-        getItemIDBytes() {
-      java.lang.Object ref = itemID_;
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        itemID_ = b;
+        itemId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -679,7 +679,7 @@ public final class GM {
       operation_ = "";
       targetId_ = 0L;
       value_ = 0L;
-      itemID_ = "";
+      itemId_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -710,7 +710,7 @@ public final class GM {
         output.writeInt64(4, value_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getItemIDBytes());
+        output.writeBytes(5, getItemIdBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -739,7 +739,7 @@ public final class GM {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getItemIDBytes());
+          .computeBytesSize(5, getItemIdBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -869,7 +869,7 @@ public final class GM {
         bitField0_ = (bitField0_ & ~0x00000004);
         value_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
-        itemID_ = "";
+        itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
@@ -918,7 +918,7 @@ public final class GM {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.itemID_ = itemID_;
+        result.itemId_ = itemId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -951,9 +951,9 @@ public final class GM {
         if (other.hasValue()) {
           setValue(other.getValue());
         }
-        if (other.hasItemID()) {
+        if (other.hasItemId()) {
           bitField0_ |= 0x00000010;
-          itemID_ = other.itemID_;
+          itemId_ = other.itemId_;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -1201,76 +1201,76 @@ public final class GM {
         return this;
       }
 
-      // optional string itemID = 5;
-      private java.lang.Object itemID_ = "";
+      // optional string itemId = 5;
+      private java.lang.Object itemId_ = "";
       /**
-       * <code>optional string itemID = 5;</code>
+       * <code>optional string itemId = 5;</code>
        */
-      public boolean hasItemID() {
+      public boolean hasItemId() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional string itemID = 5;</code>
+       * <code>optional string itemId = 5;</code>
        */
-      public java.lang.String getItemID() {
-        java.lang.Object ref = itemID_;
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
         if (!(ref instanceof java.lang.String)) {
           java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
-          itemID_ = s;
+          itemId_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string itemID = 5;</code>
+       * <code>optional string itemId = 5;</code>
        */
       public com.google.protobuf.ByteString
-          getItemIDBytes() {
-        java.lang.Object ref = itemID_;
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          itemID_ = b;
+          itemId_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string itemID = 5;</code>
+       * <code>optional string itemId = 5;</code>
        */
-      public Builder setItemID(
+      public Builder setItemId(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000010;
-        itemID_ = value;
+        itemId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string itemID = 5;</code>
+       * <code>optional string itemId = 5;</code>
        */
-      public Builder clearItemID() {
+      public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        itemID_ = getDefaultInstance().getItemID();
+        itemId_ = getDefaultInstance().getItemId();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string itemID = 5;</code>
+       * <code>optional string itemId = 5;</code>
        */
-      public Builder setItemIDBytes(
+      public Builder setItemIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000010;
-        itemID_ = value;
+        itemId_ = value;
         onChanged();
         return this;
       }
@@ -1630,7 +1630,7 @@ public final class GM {
       "\n\021Protocol/GM.proto\"\022\n\020GMGenTestAccount\"" +
       "a\n\013GMOperation\022\016\n\006action\030\001 \002(\t\022\021\n\toperat" +
       "ion\030\002 \001(\t\022\020\n\010targetId\030\003 \001(\003\022\r\n\005value\030\004 \001" +
-      "(\003\022\016\n\006itemID\030\005 \001(\t\"\020\n\016GMOperationRetB\030\n\026" +
+      "(\003\022\016\n\006itemId\030\005 \001(\t\"\020\n\016GMOperationRetB\030\n\026" +
       "com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
@@ -1649,7 +1649,7 @@ public final class GM {
           internal_static_GMOperation_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_GMOperation_descriptor,
-              new java.lang.String[] { "Action", "Operation", "TargetId", "Value", "ItemID", });
+              new java.lang.String[] { "Action", "Operation", "TargetId", "Value", "ItemId", });
           internal_static_GMOperationRet_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_GMOperationRet_fieldAccessorTable = new

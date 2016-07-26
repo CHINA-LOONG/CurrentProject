@@ -98,7 +98,16 @@ public class HawkServiceManager {
 		}
 		return true;
 	}
-
+	
+	/**
+	 * 注册service服务
+	 * 
+	 * @return
+	 */
+	public void registerService(String name, HawkService service) {
+		serveiceInstances.put(name, service);
+	}
+	
 	/**
 	 * 获取class存储路径
 	 * 

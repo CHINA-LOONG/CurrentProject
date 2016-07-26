@@ -19,6 +19,7 @@ import com.hawk.game.config.InstanceDropCfg;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.InstanceRewardCfg;
 import com.hawk.game.config.ItemCfg;
+import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
@@ -94,6 +95,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		HSInstanceEnter protocol = cmd.parseProtocol(HSInstanceEnter.getDefaultInstance());
 		int hsCode = cmd.getType();
 		String instanceId = protocol.getInstanceId();
+		List<Integer> battleMonsterList = protocol.getBattleMonsterIdList();
 		if (true == protocol.hasFriendId()) {
 			int friendId = protocol.getFriendId();
 		}
@@ -164,6 +166,22 @@ public class PlayerInstanceModule extends PlayerModule {
 			return false;
 		}
 
+		// 阵型
+		if (battleMonsterList.size() == 0 || battleMonsterList.size() > GsConst.MAX_BATTLE_MONSTER_COUNT) {
+			sendError(hsCode, Status.monsterError.BATTLE_MONSTER_COUNT);
+			return false;
+		}
+		for(Integer monsterId : battleMonsterList) {
+			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
+			if (monsterEntity == null) {
+				sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST);
+				return false;
+			}
+		}
+		player.getEntity().setBattleMonsterList(battleMonsterList);
+		player.getEntity().notifyUpdate(true);
+
+		// 满足条件，进入副本，生成副本数据
 		if (this.curInstanceId != ""
 				|| this.curBattleList.isEmpty() == false
 				|| this.curDropList.isEmpty() == false
@@ -286,13 +304,12 @@ public class PlayerInstanceModule extends PlayerModule {
 				ItemInfo itemInfo = iter.next();
 				if (itemInfo.getType() == Const.itemType.MONSTER_VALUE) {
 					monsterRewardList.add(itemInfo);
-					iter.remove();
-					continue;
 				} else if (itemInfo.getType() == itemType.MONSTER_ATTR_VALUE
 						&& Integer.parseInt(itemInfo.getItemId()) == changeType.CHANGE_MONSTER_EXP_VALUE) {
-					itemInfo.setCount(itemInfo.getCount() * multiple);
+					completeReward.addMonsterAttr(changeType.CHANGE_MONSTER_EXP_VALUE, itemInfo.getCount() * multiple);
+				} else {
+					completeReward.addItemInfo(itemInfo);
 				}
-				completeReward.addItemInfo(itemInfo);
 			}
 
 			// 怪物奖励最多取一个
@@ -403,11 +420,11 @@ public class PlayerInstanceModule extends PlayerModule {
 					ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemInfo.getItemId());
 					if (itemCfg != null
 							&& itemCfg.getType() == toolType.USETOOL_VALUE
-							&& itemCfg.getAddAttrType() == changeType.CHANGE_MONSTER_EXP_VALUE
-							){
-						itemInfo.setCount(itemInfo.getCount() * multiple);
+							&& itemCfg.getAddAttrType() == changeType.CHANGE_MONSTER_EXP_VALUE) {
+						completeReward.addItem(itemInfo.getItemId(), itemInfo.getCount() * multiple);
+					} else {
+						completeReward.addItemInfo(itemInfo);
 					}
-					completeReward.addItemInfo(itemInfo);
 				}
 
 				completeRewardList.add(completeReward);
@@ -417,11 +434,11 @@ public class PlayerInstanceModule extends PlayerModule {
 				ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemInfo.getItemId());
 				if (itemCfg != null
 						&& itemCfg.getType() == toolType.USETOOL_VALUE
-						&& itemCfg.getAddAttrType() == changeType.CHANGE_MONSTER_EXP_VALUE
-						){
-					itemInfo.setCount(itemInfo.getCount() * multiple);
+						&& itemCfg.getAddAttrType() == changeType.CHANGE_MONSTER_EXP_VALUE) {
+					sweepReward.addItem(itemInfo.getItemId(), itemInfo.getCount() * multiple);
+				} else {
+					sweepReward.addItemInfo(itemInfo);
 				}
-				sweepReward.addItemInfo(itemInfo);
 			}
 		}
 
@@ -484,6 +501,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			sendError(hsCode, Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
 			return false;
 		}
+		
 		ConsumeItems consume = ConsumeItems.valueOf();
 		consume.addGold(GsConst.INSTANCE_REVIVE_CONSUME[reviveCount - 1]);
 		consume.consumeTakeAffectAndPush(player, Action.INSTANCE_REVIVE);

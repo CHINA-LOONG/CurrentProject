@@ -105,8 +105,6 @@ enum changeType
 	CHANGE_FATIGUE = 7;
 	// 好感度
 	CHANGE_FAV	= 8;
-	// vip等级
-	CHANGE_VIPLEVEL = 9;
 }
 
 // 附加属性类型定义

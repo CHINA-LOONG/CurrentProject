@@ -32,7 +32,13 @@ namespace PB
     {
             
       [global::ProtoBuf.ProtoEnum(Name=@"GEN_TEST_ACCOUNT", Value=100)]
-      GEN_TEST_ACCOUNT = 100
+      GEN_TEST_ACCOUNT = 100,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GMOPERATION_C", Value=101)]
+      GMOPERATION_C = 101,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GMOPERATION_S", Value=102)]
+      GMOPERATION_S = 102
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"code")]

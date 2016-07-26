@@ -788,9 +788,9 @@ public class BattleProcess : MonoBehaviour
     }
 
 
-    public void ReviveSuccess()
+    public void ReviveSuccess(int reviveCount)
     {
-        ++mCurrentReviveCount;
+        mCurrentReviveCount = reviveCount;
         Action reviveAction = new Action();
         reviveAction.type = ActionType.ReviveUnit;
         InsertAction(reviveAction);
@@ -800,7 +800,7 @@ public class BattleProcess : MonoBehaviour
     IEnumerator ShowReviveUI()
     {
         yield return new WaitForSeconds(SpellConst.unitDeadTime);
-        UIBattle.Instance.ShowReviveUI();
+        UIBattle.Instance.ShowReviveUI(mCurrentReviveCount);
     }
 
     #region Run Action

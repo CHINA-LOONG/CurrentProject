@@ -16,21 +16,21 @@ public class TabButton : MonoBehaviour
 	void Awake()
 	{
 		homeButton = GetComponent<HomeButton> ();
-		homeButton.onClick = OnTabButtonClicked;
+        homeButton.onClick = OnTabButtonClicked;
 	}
 
 	public void SetIsOn(bool isOn)
 	{
 		if(homeButton != null)
 			homeButton.IsOn = isOn;
-        if (anim==null)
-        {
-            anim = GetComponent<Animator>();
-        }
-        if (anim != null)
-        {
-            anim.SetTrigger(isOn?"select":"normal");
-        }
+        //if (anim==null)
+        //{
+        //    anim = GetComponent<Animator>();
+        //}
+        //if (anim != null)
+        //{
+        //    anim.SetTrigger(isOn?"select":"normal");
+        //}
 
 	}
 	

@@ -334,6 +334,24 @@ public class StatisticsEntity  extends HawkDBEntity {
 		questCompleteDailySet.clear();
 	}
 
+	// GM begin--------------------------------------------------------------------
+	public void removeQuestComplete(int questId) {
+		QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questId);
+		if (questCfg == null) {
+			return;
+		}
+
+		if (questCfg.getCycle() == Cycle.DAILY_CYCLE) {
+			questCompleteDailySet.remove(questId);
+		} else {
+			questCompleteSet.remove(questId);
+		}
+	}
+	public void clearQuestComplete() {
+		questCompleteSet.clear();
+	}
+	// Gm end------------------------------------------------------------------------
+
 	public Set<String> getMonsterCollectSet() {
 		return monsterCollectSet;
 	}

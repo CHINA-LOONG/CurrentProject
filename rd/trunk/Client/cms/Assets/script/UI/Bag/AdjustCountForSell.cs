@@ -21,6 +21,8 @@ public class AdjustCountForSell : UIBase
 	public	Text	countText;
 	public	RectTransform	rootPanel;
 
+	private	ChangeValueByHand	chgValue = null;
+
 	private AdjustCountForSellDelegate callBack;
 	private	int	maxCount = 0;
 	private	int curCount = 0;
@@ -39,38 +41,10 @@ public class AdjustCountForSell : UIBase
 			{
 				curCount = maxCount;
 			}
-			RefreshCountText();
+			countText.text = curCount.ToString ();
 		}
 	}
-
-	// Use this for initialization
-	void Start () 
-	{
 	
-	}
-
-	int  changeStep = 0;
-	int  updateFrame = 10;
-	void Update()
-	{
-		if (changeStep == 0)
-			return;
-
-		if(updateFrame <= 0)
-		{
-			updateFrame = 10;
-			CurCountAttr += changeStep;
-			if(curCount <= 1 || curCount >= maxCount)
-			{
-				changeStep = 0;
-			}
-		}
-		else
-		{
-			updateFrame --;
-		}
-	}
-
 	bool isFirst = true;
 	public override void Init()
 	{
@@ -88,11 +62,8 @@ public class AdjustCountForSell : UIBase
 		EventTriggerListener.Get (okButton.gameObject).onClick = OnOKButtonClicked;
 		EventTriggerListener.Get (cancelButton.gameObject).onClick = OnCancelButtonClicked;
 
-		EventTriggerListener.Get (leftImage.gameObject).onDown = OnLeftImageDown;
-		EventTriggerListener.Get (leftImage.gameObject).onUp = OnLeftImageUp;
-
-		EventTriggerListener.Get (rightImage.gameObject).onDown = OnRightImageDown;
-		EventTriggerListener.Get (rightImage.gameObject).onUp = OnRightImageUp;
+		chgValue = GetComponent<ChangeValueByHand> ();
+		chgValue.callback = OnChangedValueByHand;
 	}
 
 	public override void Clean()
@@ -106,24 +77,29 @@ public class AdjustCountForSell : UIBase
 		this.defaultValue = defaultValue;
 		CurCountAttr = defaultValue;
 
+		chgValue.maxValue = maxCount;
+		chgValue.curValue = defaultValue;
+
 		float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
 		Vector3 spacePos = UIUtil.GetSpacePos (sellItemRt, UIMgr.Instance.CanvasAttr, UICamera.Instance.CameraAttr);
 		rootPanel.anchoredPosition = new Vector2(spacePos.x/fscale,spacePos.y/fscale);
 	}
 
-	void	RefreshCountText()
+	void OnChangedValueByHand(int value)
 	{
-		countText.text = curCount.ToString ();
+		CurCountAttr = value;
 	}
-
+	
 	void	OnMinButtonClicked(GameObject go)
 	{
 		CurCountAttr = 1;
+		chgValue.curValue = 1;
 	}
 
 	void	OnMaxButtonClicked(GameObject go)
 	{
 		CurCountAttr = maxCount;
+		chgValue.curValue = maxCount;
 	}
 
 	void 	OnOKButtonClicked(GameObject go)
@@ -138,26 +114,8 @@ public class AdjustCountForSell : UIBase
 	void 	OnCancelButtonClicked(GameObject go)
 	{
 		curCount = 0;
+		chgValue.curValue = 0;
 		OnOKButtonClicked (null);
 	}
-
-	void OnLeftImageDown(GameObject go)
-	{
-		changeStep = -1;
-	}
-
-	void OnLeftImageUp(GameObject go)
-	{
-		changeStep = 0;
-	}
-
-	void OnRightImageDown(GameObject go)
-	{
-		changeStep = 1;
-	}
-
-	void OnRightImageUp(GameObject go)
-	{
-		changeStep = 0;
-	}
+	
 }

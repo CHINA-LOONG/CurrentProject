@@ -2,8 +2,10 @@ package com.hawk.game.module;
 
 import java.util.List;
 
+import org.hawk.annotation.MessageHandler;
 import org.hawk.annotation.ProtocolHandler;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
 
@@ -126,7 +128,14 @@ public class PlayerShopModule extends PlayerModule{
 
 		return true;
 	}
-
+	
+	@MessageHandler(code = GsConst.MsgType.REFRESH_SHOP)
+	private boolean onShopRefresh(HawkMsg msg){
+		int shopType = msg.getParam(0);
+		ShopUtil.refreshShopData(shopType, player);
+		return true;
+	}
+	
 	@ProtocolHandler(code = HS.code.ShopItemBuyC_VALUE)
 	private boolean onShopItemBuy(HawkProtocol cmd){
 		HSShopItemBuy protocol = cmd.parseProtocol(HSShopItemBuy.getDefaultInstance());
@@ -181,6 +190,13 @@ public class PlayerShopModule extends PlayerModule{
 	
 	@Override
 	protected boolean onRefresh(List<Integer> refreshTypeList) {	
+		if (refreshTypeList.contains(GsConst.RefreshType.DAILY_PERS_REFRESH)) {
+			ShopEntity shopEntity = player.getPlayerData().getShopEntity();
+			shopEntity.setAllianceRefreshNums(0);
+			shopEntity.setNormalRefreshNums(0);
+			shopEntity.setOtherRefreshNums(0);
+		}
+		
 		if (refreshTypeList.contains(GsConst.RefreshType.SHOP_REFRESH_TIME_FIRST) || 
 			refreshTypeList.contains(GsConst.RefreshType.SHOP_REFRESH_TIME_SECOND)||
 			refreshTypeList.contains(GsConst.RefreshType.SHOP_REFRESH_TIME_THIRD ))

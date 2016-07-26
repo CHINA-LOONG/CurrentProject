@@ -43,9 +43,8 @@ public class PetDetailRightFeed : PetDetailRightBase,IUsedExpCallBack
         for (int i = 0; i < infos.Count; i++)
         {
             EXPListItem item = GetElement();
-            item.OnReload(infos[i]);
+            item.OnReload(infos[i],UIUtil.CheckPetIsMaxLevel(t_unit.level));
             item.transform.SetAsLastSibling();
-            item.SetButton(t_unit.level < GameConfig.MaxMonsterLevel);
         }
 
     }
@@ -113,14 +112,14 @@ public class PetDetailRightFeed : PetDetailRightBase,IUsedExpCallBack
 
     void AddTempExp(int exp, System.Action callback)
     {
-        if (t_unit.level >= GameConfig.MaxMonsterLevel)
+        if (UIUtil.CheckPetIsMaxLevel(t_unit.level))
         {
             t_unit.level = GameConfig.MaxMonsterLevel;
             t_unit.exp = 0;
             Logger.LogError("达到最大等级");
             //TODO：
             callback();
-            items.ForEach(delegate(EXPListItem item) { item.SetButton(false); });
+            items.ForEach(delegate(EXPListItem item) { item.IsMaxlevel = true; });
             return;
         }
         int maxExp = (int)(StaticDataMgr.Instance.GetUnitBaseRowData(t_unit.level).experience * s_unit.levelUpExpRate);
@@ -176,13 +175,16 @@ public class PetDetailRightFeed : PetDetailRightBase,IUsedExpCallBack
     public static int SortEXP(ItemStaticData a, ItemStaticData b)
     {
         int result = 0;
-        if (a.addAttrValue<=b.addAttrValue)
+        if (a.addAttrValue != b.addAttrValue)
         {
-            result = -1;
-        }
-        else
-        {
-            result = 1;
+            if (a.addAttrValue < b.addAttrValue)
+            {
+                result = -1;
+            }
+            else
+            {
+                result = 1;
+            }
         }
         return result;
     }

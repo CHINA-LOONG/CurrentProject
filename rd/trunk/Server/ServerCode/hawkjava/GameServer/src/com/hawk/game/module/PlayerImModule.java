@@ -9,6 +9,7 @@ import com.hawk.game.ServerData;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Im.HSImChatSend;
@@ -38,8 +39,15 @@ public class PlayerImModule extends PlayerModule {
 		// 屏蔽
 		// 长度限制
 		if (chatText.length() > GsConst.MAX_IM_CHAT_LENGTH) {
-			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.imError.IM_CHAT_LENGTH_VALUE, 1));
+			sendError(hsCode, Status.imError.IM_CHAT_LENGTH_VALUE);
 			return false;
+		}
+
+		if (channel == Const.ImChannel.GUILD_VALUE) {
+			if (0 == player.getPlayerData().getPlayerAllianceEntity().getAllianceId()) {
+				sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN);
+				return false;
+			}
 		}
 
 		ImManager.getInstance().postChat(player, chatText, channel);

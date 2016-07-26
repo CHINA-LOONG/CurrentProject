@@ -9,7 +9,6 @@ import java.util.Map.Entry;
 import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigStorage;
-import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.obj.HawkObjBase;
@@ -23,7 +22,6 @@ import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.TestAccountCfg;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
-import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.service.GameService;
@@ -54,16 +52,19 @@ public class GmService extends GameService {
 			genTestAccount();
 			return true;
 		}
+		if (protocol.checkType(HS.gm.GMOPERATION_C_VALUE)) {
+			// TODO 合并测试GmService到此文件
+		}
 
 		return false;
 	}
-
+	
 	/**
 	 * 生成测试账号
 	 */
 	@SuppressWarnings("unchecked")
 	private void genTestAccount() {
-		// 解析配置-------------------------------------------------------------------------------------
+		// 解析配置---------R----------------------------------------------------------------------------
 		Map<String, List<TestAccountCfg>> accountMap = new HashMap<>();
 
 		try {

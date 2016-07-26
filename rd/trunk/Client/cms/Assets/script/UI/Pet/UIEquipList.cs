@@ -58,6 +58,7 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
         {
             EquipListItem item = GetElement();
             item.Refresh(list1[i]);
+            item.transform.SetAsLastSibling();
         }
     }
 

@@ -326,7 +326,10 @@ public class EquipBuildPanel : EquipPanelBase
         {
             ICallBackDeletage.OnBuildEquipReture();
         }
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_forge_success"), (int)PB.ImType.PROMPT);
+        //UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_forge_failed"), (int)PB.ImType.PROMPT);
     }
+
     void OnEquipIncreaseStageRet(ProtocolMessage msg)
     {
         UINetRequest.Close();
@@ -335,7 +338,6 @@ public class EquipBuildPanel : EquipPanelBase
             return;
         }
         PB.HSEquipIncreaseStageRet result = msg.GetProtocolBody<PB.HSEquipIncreaseStageRet>();
-
         // update local data
         {
             curData.id = result.id;
@@ -346,6 +348,7 @@ public class EquipBuildPanel : EquipPanelBase
         {
             ICallBackDeletage.OnBuildEquipReture();
         }
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_forge_success"), (int)PB.ImType.PROMPT);
     }
 
     #region Bind And UnBund

@@ -52,7 +52,7 @@ enum PlayerError
 	// 钻石不足
 	GOLD_NOT_ENOUGH            = 0x00020005;
 	// 疲劳值不足
-	FATIGUE_NOT_ENOUGH         = 0x00020006;	
+	FATIGUE_NOT_ENOUGH         = 0x00020006;
 }
 
 enum monsterError
@@ -70,7 +70,9 @@ enum monsterError
 	// 进阶等级不足
 	STAGE_LEVEL_NOT_ENOUGH     = 0x00030006;
 	// 进阶材料不足
-	STAGE_CONSUME              = 0X00030007;
+	STAGE_CONSUME              = 0x00030007;
+	// 上阵怪物数量错误
+	BATTLE_MONSTER_COUNT       = 0x00030008;
 }
 
 enum itemError
@@ -156,6 +158,8 @@ enum allianceError
 	ALLIANCE_NAME_ERROR        = 0x0080003;
 	// 已经名称重复
 	ALLIANCE_NAME_EXIST        = 0x0080004;
+	// 未加入公会
+	ALLIANCE_NOT_JOIN          = 0x0080005;
 }
 
 enum shopError

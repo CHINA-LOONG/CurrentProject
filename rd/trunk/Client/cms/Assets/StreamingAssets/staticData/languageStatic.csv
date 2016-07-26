@@ -263,6 +263,12 @@ ultHapiName,烟消云散,Dissipation
 psvHapiName,洞察,Clairvoyance
 ultZouyincaoName,提神号角,Bright Horn
 psvZouyincaoName,顺风,Tailwind
+pet_character_1,勇敢,Valor
+pet_character_2,聪慧,Spiritual
+pet_character_3,狡猾,Mischievous
+pet_character_4,互助,Collaborate
+pet_character_5,善良,Compassion
+pet_character_6,谨慎,Humility
 Valor,勇敢,Attack - Physical 
 Spiritual,聪慧,Attack - Magical
 Mischievous,狡猾,Support - Harmful Effects

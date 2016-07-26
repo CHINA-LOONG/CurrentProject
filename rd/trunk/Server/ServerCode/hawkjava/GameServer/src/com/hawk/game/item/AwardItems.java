@@ -22,6 +22,7 @@ import com.hawk.game.protocol.Player.SynPlayerAttr;
 import com.hawk.game.protocol.Reward.HSRewardInfo;
 import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.protocol.Skill.HSSkill;
+import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.EquipUtil;
 
 /**
@@ -141,9 +142,9 @@ public class AwardItems {
 		return this;
 	}
 
-	public AwardItems  addMonster(String monsterId, int count, int stage) {
+	public AwardItems  addMonster(String monsterId, int count, int stage, int level, int lazy, int disposition) {
 		for (int i = 0; i < count; i++) {
-			addMonster(monsterId, stage);
+			addMonster(monsterId, stage, level, lazy, disposition);
 		}
 		return this;
 	}
@@ -162,10 +163,19 @@ public class AwardItems {
 		rewardItem.setType(Const.itemType.MONSTER_VALUE);
 		rewardItem.setItemId(monsterId);
 		rewardItem.setStage(stage);
+		
 		HSMonster.Builder monster = HSMonster.newBuilder();
+		monster.setCfgId(monsterId);
+		monster.setStage(stage);
 		monster.setLevel(level);
+		monster.setExp(0);
 		monster.setLazy(lazy);
+		monster.setLazyExp(0);
 		monster.setDisposition(disposition);
+		monster.setMonsterId(0);
+		rewardItem.setMonster(monster);
+		
+		rewardItem.setMonster(monster);
 		rewardInfo.addRewardItems(rewardItem);
 		return this;
 	}
@@ -264,7 +274,7 @@ public class AwardItems {
 		}		
 		else if (itemInfo.getType() == itemType.MONSTER_VALUE) {
 			if (itemInfo.getCount() > 0) {
-				addMonster(itemInfo.getItemId(), itemInfo.getCount(), itemInfo.getStage());
+				addMonster(itemInfo.getItemId(), itemInfo.getCount(), itemInfo.getStage(), 1, 1, 1);
 			}
 			else {
 				addMonster(itemInfo.getItemId(), itemInfo.getStage());
@@ -474,14 +484,11 @@ public class AwardItems {
 							monsterEntity.setLazy((byte)monster.getLazy());
 							monsterEntity.setLazyExp(monster.getLazyExp());
 							monsterEntity.setDisposition((byte)monster.getDisposition());
-							for (HSSkill skill : monster.getSkillList()) {
-								monsterEntity.setSkillLevel(skill.getSkillId(), skill.getLevel());
-							}
-
 							monsterEntity.notifyUpdate(false);
 						}
 
 						item.setId(monsterEntity.getId());
+						item.setMonster(BuilderUtil.genMonsterBuilder(monsterEntity));
 					}
 				}
 				else {

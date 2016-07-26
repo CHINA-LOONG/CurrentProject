@@ -80,7 +80,8 @@ public class UIPetList :  UIBase, TabButtonDelegate
         if (GameDataMgr.Instance.PlayerDataAttr.GetAllPet().Count >= GameConfig.MaxMonsterCount)
         {
             MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,
-			                      StaticDataMgr.Instance.GetTextByID(PetViewConst.PetListFull));
+                       StaticDataMgr.Instance.GetTextByID("pet_tip_full1"),
+                       StaticDataMgr.Instance.GetTextByID("pet_tip_full2"));
         }
 
         tabGroup.OnChangeItem(0);

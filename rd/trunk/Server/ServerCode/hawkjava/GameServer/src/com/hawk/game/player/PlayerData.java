@@ -518,7 +518,7 @@ public class PlayerData {
 	 * @param equipEntity
 	 */
 	public void removeEquipEntity(EquipEntity equipEntity) {
-		equipEntityMap.remove(equipEntity);
+		equipEntityMap.remove(equipEntity.getId());
 	}
 
 	/**

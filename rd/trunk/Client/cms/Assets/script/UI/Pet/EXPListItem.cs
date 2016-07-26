@@ -26,7 +26,46 @@ public class EXPListItem : MonoBehaviour
     private ItemStaticData itemData;
     private ItemData itemInfo;
 
-    public void OnReload(ItemStaticData staticData)
+    private bool isMaxlevel = false;
+    public bool IsMaxlevel
+    {
+        get { return isMaxlevel; }
+        set 
+        { 
+            isMaxlevel = value;
+            SetButton();
+        }
+    }
+    private bool isNone = false;
+    public bool IsNone
+    {
+        get{return isNone;}
+        set 
+        {
+            isNone = value;
+            //SetButton();
+        }
+    }
+    void SetButton()
+    {
+        bool isActive = !(IsMaxlevel/* || IsNone*/);
+        btnUsed.interactable = isActive;
+        if (isActive)
+        {
+            ScrollViewEventListener.Get(btnUsed.gameObject).onDown = OnButtonDown;
+            ScrollViewEventListener.Get(btnUsed.gameObject).onUp = OnButtonUp;
+            ScrollViewEventListener.Get(btnUsed.gameObject).onExit = OnButtonExit;
+        }
+        else
+        {
+            ScrollViewEventListener.Get(btnUsed.gameObject).onDown = null;
+            ScrollViewEventListener.Get(btnUsed.gameObject).onUp = null;
+            ScrollViewEventListener.Get(btnUsed.gameObject).onExit = null;
+        }
+    }
+
+
+    public void OnReload(ItemStaticData staticData,bool isMaxleve)
     {
         itemData = staticData;
         itemInfo = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(itemData.id);
@@ -50,7 +89,9 @@ public class EXPListItem : MonoBehaviour
 
     void UpdateCount(int useCount)
     {
-        textCount.text = "×" + ((itemInfo == null ? 0 : itemInfo.count) - useCount);
+        int curCount = (itemInfo == null ? 0 : itemInfo.count)- useCount;
+        textCount.text = "×" + curCount;
+        IsNone = (curCount <= 0);
     }
 
     void UsedExp()
@@ -107,21 +148,5 @@ public class EXPListItem : MonoBehaviour
         OnSendMsg();
     }
 
-    public void SetButton(bool isActive)
-    {
-        btnUsed.interactable = isActive;
-        if (isActive)
-        {
-            ScrollViewEventListener.Get(btnUsed.gameObject).onDown = OnButtonDown;
-            ScrollViewEventListener.Get(btnUsed.gameObject).onUp = OnButtonUp;
-            ScrollViewEventListener.Get(btnUsed.gameObject).onExit = OnButtonExit;
-        }
-        else
-        {
-            ScrollViewEventListener.Get(btnUsed.gameObject).onDown = null;
-            ScrollViewEventListener.Get(btnUsed.gameObject).onUp = null;
-            ScrollViewEventListener.Get(btnUsed.gameObject).onExit = null;
-        }
-    }
 
 }
