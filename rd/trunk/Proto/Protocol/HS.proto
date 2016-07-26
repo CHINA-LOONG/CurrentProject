@@ -76,6 +76,8 @@ enum code
 	INSTANCE_SWEEP_S            = 3010;
 	INSTANCE_RESET_COUNT_C      = 3011;
 	INSTANCE_RESET_COUNT_S      = 3012;
+	INSTANCE_REVIVE_C           = 3013;
+	INSTANCE_REVIVE_S           = 3014;
 
 	// 道具
 	ITEM_USE_C                  = 4001;

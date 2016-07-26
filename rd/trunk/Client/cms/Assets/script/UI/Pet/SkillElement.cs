@@ -65,7 +65,7 @@ public class SkillElement : MonoBehaviour {
         nextlevelLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailSkillNextLeve);
 
         type.text = spell.spellData.GetTypeName();
-        level.text = string.Format("( {0} / {1})", spell.level, GameConfig.MaxMonsterLevel);
+        level.text = string.Format("({0} / {1})", spell.level, GameConfig.MaxMonsterLevel);
         
         currentTips.text = spell.spellData.GetTips(spell.level);
         if (canUpgrade == true)

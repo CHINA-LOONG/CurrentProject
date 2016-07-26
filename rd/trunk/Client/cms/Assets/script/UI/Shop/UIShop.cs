@@ -101,7 +101,7 @@ public class UIShop : UIBase
 			return;
 
 		count = 0;
-		TimeStaticData tNow = GameTimeMgr.Instance.GetTime ();
+		TimeStaticData tNow = GameTimeMgr.Instance.GetServerTime ();
 		if (tNow > timeNextRefresh)
 		{
 			RefreshShopData(curShopType);
@@ -122,13 +122,23 @@ public class UIShop : UIBase
 			return;
 		}
 		//ShopDataMgr.ShopDescWithLevel desc = shopDataMgr.GetShopDesc (GameDataMgr.Instance.PlayerDataAttr.level, curShopType);
-		if (GameDataMgr.Instance.PlayerDataAttr.gold < 5)
-		{
-			shopDataMgr.ZuanshiNoEnough();
-			return;
-		}
 
-		shopDataMgr.RefreshShopWithDiamond(curShopType);
+		string msg = string.Format (StaticDataMgr.Instance.GetTextByID ("shop_refreshtips"), shopData.refreshTimesLeft);
+		MsgBox.PromptMsg.Open (MsgBox.MsgBoxType.Conform_Cancel, msg, OnRefreshConformDlgClick);
+	
+	}
+	void OnRefreshConformDlgClick(MsgBox.PrompButtonClick param)
+	{
+		if (param == MsgBox.PrompButtonClick.OK) 
+		{
+			if (GameDataMgr.Instance.PlayerDataAttr.gold < 5)
+			{
+				shopDataMgr.ZuanshiNoEnough();
+				return;
+			}
+			
+			shopDataMgr.RefreshShopWithDiamond(curShopType);
+		}
 	}
 
 	void OnCloseButtonClick(GameObject go)
@@ -197,7 +207,7 @@ public class UIShop : UIBase
 		{
 			day = StaticDataMgr.Instance.GetTextByID("shop_tommorow");
 		}
-		string nextRefDes = string.Format ("{0}{1}:{2:00}:{3:00}",StaticDataMgr.Instance.GetTextByID("shop_nextrefresh"),
+		string nextRefDes = string.Format ("{0}{1} {2:00}:{3:00}",StaticDataMgr.Instance.GetTextByID("shop_nextrefresh"),
 		                                   day,nextRefTime.hour,nextRefTime.minute);
 
 		nextRefreshText.text = nextRefDes;
@@ -205,6 +215,7 @@ public class UIShop : UIBase
 		jinbiCoinBtn.CoinTypeAttr = GetCoinType (shopData.type);
 
 		//refresh button
+		/*
 		if (shopData.refreshTimesLeft > 0)
 		{
 			refreshButton.enabled = true;
@@ -215,7 +226,7 @@ public class UIShop : UIBase
 			refreshButton.enabled = false;
 			EventTriggerListener.Get (refreshButton.gameObject).onClick = null;
 		}
-
+		*/
 
 		//shop items
 		List<PB.ShopItem> itemsInfo = shopData.itemInfos;

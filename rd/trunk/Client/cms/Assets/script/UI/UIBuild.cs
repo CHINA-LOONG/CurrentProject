@@ -105,7 +105,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
 	//	GameApp.Instance.netManager.SendMessage (ProtocolMessage.Create (PB.code.MONSTER_CATCH_C.GetHashCode(), mcache));
 
-        uiInstance = UIMgr.Instance.OpenUI_(UIInstance.ViewName) as UIInstance;
+        OpenInstanceUI();
 	}
 
     void OnQuestButtonClick(GameObject go)
@@ -197,5 +197,11 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         UIMgr.Instance.DestroyUI(uiPetList);
         UIMgr.Instance.DestroyUI(uiAdjustBattleTeam);
 		UIMgr.Instance.DestroyUI (uiShop);
+    }
+
+    public UIInstance OpenInstanceUI()
+    {
+        uiInstance = UIMgr.Instance.OpenUI_(UIInstance.ViewName) as UIInstance;
+        return uiInstance;
     }
 }

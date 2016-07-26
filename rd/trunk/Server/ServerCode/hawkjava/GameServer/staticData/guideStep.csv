@@ -121,3 +121,6 @@ Id,trigerView,purpose,rotationZ,talkId,posObject,redPosObject,tipsX,tipsY,tipsCo
 128,UIPetDetails,第二个技能,,,gd_petDetail_ability2,,-20,-40,guide_ability5,,,
 129,UIPetDetails,升级按钮,0,,gd_petDetail_skillUp,,-100,,guide_ability6,1,,
 130,UIBuild,主界面的信仰之路按钮,0,,gd_build_road,,50,,guide_road1,,1,
+131,MythoPathMain,信仰之路主界面,,speech_xinyangzhilu1,,,,,,,,
+132,MythoPathMain,信仰之路主界面第一个入口,0,,gd_MythoPathMain_first,,50,,guide_road2,,,
+133,MythoPathAdjustBattleTeam,,,speech_xinyangzhilu2,,,,,,,,

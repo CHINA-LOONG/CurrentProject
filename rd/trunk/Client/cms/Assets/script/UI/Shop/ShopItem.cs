@@ -40,9 +40,19 @@ public class ShopItem : MonoBehaviour
 		RefreshItemIcon (itemStaticData);
 
 		itemName.text = itemStaticData.NameAttr;
-		priceText.text = itemStaticData.buyPrice.ToString();
+		priceText.text = (itemStaticData.buyPrice * itemData.count).ToString();
+
+		if (IsCoinEnough (itemStaticData)) 
+		{
+			priceText.color = ColorConst.text_color_Enough;
+		}
+		else
+		{
+			priceText.color = ColorConst.text_color_nReq;
+		}
+
 		//coinImage.sprite = 
-		Sprite coinSp = ResourceMgr.Instance.LoadAssetType<Sprite>(GetCoinImageName(shopType,itemStaticData.sellType)) as Sprite;
+		Sprite coinSp = ResourceMgr.Instance.LoadAssetType<Sprite>(GetCoinImageName(shopType,itemStaticData.buyType)) as Sprite;
 		if(null != coinSp)
 		{
 			coinImage.sprite = coinSp;
@@ -60,12 +70,12 @@ public class ShopItem : MonoBehaviour
 		}
 	}
 
-	string GetCoinImageName(int stype, int sellType)
+	string GetCoinImageName(int stype, int buyType)
 	{
 		switch (stype) 
 		{
 		case (int)PB.shopType.NORMALSHOP:
-			if(sellType == 2)
+			if(buyType == 2)
 			{
 				return "icon_jinbi";//2
 			}
@@ -77,6 +87,26 @@ public class ShopItem : MonoBehaviour
 			return "icon_gonghuibi";
 		default:
 			return "";
+		}
+	}
+
+	bool IsCoinEnough(ItemStaticData itemData)
+	{
+		switch (shopType) 
+		{
+		case (int)PB.shopType.NORMALSHOP:
+			if(itemData.buyType == 2)
+			{
+				return itemData.buyPrice * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.coin;//2
+			}
+			else
+			{
+				return itemData.buyPrice * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.gold;//1
+			}
+		case (int)PB.shopType.ALLIANCESHOP:
+			return itemData.buyPrice * shopItemData.count <= GameDataMgr.Instance.PlayerDataAttr.gonghuiCoin;
+		default:
+			return false;
 		}
 	}
 

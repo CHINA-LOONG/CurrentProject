@@ -50,13 +50,13 @@ public class PetListElement : MonoBehaviour {
                 {
                     equipIcon[i] = ItemIcon.CreateItemIcon(equipData);
                     UIUtil.SetParentReset(equipIcon[i].transform, equipPos[i]);
-                    equipIcon[i].HideExceptIcon();
+                    //equipIcon[i].HideExceptIcon();
                 }
                 else
                 {
                     equipIcon[i].gameObject.SetActive(true);
                     equipIcon[i].RefreshWithEquipInfo(equipData);
-                    equipIcon[i].HideExceptIcon();
+                    //equipIcon[i].HideExceptIcon();
                 }
             }
         }

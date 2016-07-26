@@ -68,6 +68,8 @@ public class GameUnit : IComparable
   //  public int expMin;
   //  public int expMax;
     //public int outputExp;//被吃掉产出
+    public int currentExp;//当前经验值
+
     public float criticalRatio;//暴击率
     public float antiCriticalRatio;//抗暴击
     public float criticalDamageRatio;//暴击伤害系数
@@ -140,6 +142,26 @@ public class GameUnit : IComparable
 
         //初始化属性
         gameUnit.Init(isPlayer);
+
+        return gameUnit;
+    }
+
+    //create a fake monster for view only
+    public static GameUnit CreateFakeUnit(string unitID)
+    {
+        PbUnit pbUnit = new PbUnit();
+        pbUnit.guid = BattleConst.enemyStartID;
+        pbUnit.id = unitID;
+        pbUnit.level = 1;
+        pbUnit.camp = UnitCamp.Player;
+        pbUnit.slot = 0;
+        pbUnit.lazy = BattleConst.defaultLazy;
+
+        var gameUnit = new GameUnit();
+        gameUnit.pbUnit = pbUnit;
+        UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(unitID);
+        gameUnit.assetID = unitRowData.assetID;
+        gameUnit.name = unitRowData.NickNameAttr;
 
         return gameUnit;
     }
@@ -289,6 +311,12 @@ public class GameUnit : IComparable
 			character = unitRowData.character;
 		}
 	}
+
+    public void LevelUp(int targetLvl)
+    {
+        pbUnit.level = targetLvl;
+        //TODO: recalculate attribute
+    }
 	
 	void InitWeakPoint(string strWeak)
 	{

@@ -111,6 +111,7 @@ public class UIEquipSetting : UIBase, IGemListCallBack, IEquipInlayCallBack
     {
         PB.HSEquipGem param = new PB.HSEquipGem();
         param.id = curEquip.id;
+        param.slot = curSelIndex;
         param.type = curEquip.gemList[curSelIndex].type;
         param.newGem = data.itemId;
         if (!curEquip.gemList[curSelIndex].gemId.Equals(BattleConst.invalidGemID))

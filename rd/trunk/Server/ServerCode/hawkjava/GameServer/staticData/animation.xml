@@ -3561,7 +3561,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</AudioList>
 		</Ani>
 		
-		<Ani id="ultKahuna2e3" state="0" AniType="Buff">
+		<Ani id="ultKahuna2e4" state="0" AniType="Buff">
 			<ParticleList>
 				<Particle asset="commonDebuff" bundle="effect/particle" parent="" locky="true" ignore_rot=""/>
 			</ParticleList>
@@ -3570,7 +3570,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</AudioList>
 		</Ani>
 		
-		<Ani id="ultKahuna2e5" state="0" AniType="Damage">
+		<Ani id="ultKahuna2e6" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicCureSlight" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
@@ -3578,7 +3578,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Audio time="0" name="curep1"/>
 			</AudioList>
 		</Ani>
-		<Ani id="ultKahuna2e6" state="0" AniType="Damage">
+		<Ani id="ultKahuna2e7" state="0" AniType="Damage">
 			<ParticleList>
 				<Particle asset="magicCureSlight" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
@@ -4984,6 +4984,27 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Audio time="0" name="metale1"/>
 			</AudioList>
 		</Ani>
+		<Ani id="ultTianshizhang1b6" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle time="0" asset="bd_wulijianmian" bundle="effect/particle" parent="" attach="true" locky="true" ignore_rot=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="ultTianshizhang1b6Finish" state="1" finish_event="ultTianshizhang1b6">
+		</Ani>
+		<Ani id="ultTianshizhang1b7" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle time="0" asset="bd_mofajianmian" bundle="effect/particle" parent="" attach="true" locky="true" ignore_rot=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="ultTianshizhang1b7Finish" state="1" finish_event="ultTianshizhang1b7">
+		</Ani>
+		
 					
 		<Ani id="txTianshizhang1" state="0" AniType="Skill">
 			<ParticleList>
@@ -13828,7 +13849,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2" name="bossYueguangsenlin18Meidushawp03" state="4"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="meidusha_state2to1" state="0" action_delay="2">
+		<Ani id="meidusha_state2to1" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0" name="bossYueguangsenlin18Meidushawp01" state="1"/>
 				<Wp time="0" name="bossYueguangsenlin18Meidushawp02" state="1"/>
@@ -13940,7 +13961,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0" name="bossxiaoxiang27Hetong2wp03" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="Xiyiren2_state1to2" state="0" action_delay="0">
+		<Ani id="Xiyiren2_state1to2" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.1" name="bossxiaoxiang22Xiyiren2wp03" state="3"/>
 				<Wp time="0.1" name="bossxiaoxiang22Xiyiren2wp02" state="0"/>
@@ -14390,7 +14411,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bosshuoshan48Hehuaisituosi4wp01" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="Ladong5_state1to2" state="0" action_delay="2">
+		<Ani id="Ladong5_state1to2" state="0" action_delay="1">
 			<ControllerList>
 				<Controller time="2" name="Ladong5boss_shoukong"/>
 			</ControllerList>
@@ -14399,7 +14420,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bossdajie18Ladong5wp02" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="Ladong5_state2to1" state="0" action_delay="2">
+		<Ani id="Ladong5_state2to1" state="0" action_delay="1">
 			<ControllerList>
 				<Controller time="2" name="Ladong5boss"/>
 			</ControllerList>
@@ -14408,7 +14429,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bossdajie18Ladong5wp03" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="bingyan3_state1" state="0" action_delay="2">
+		<Ani id="bingyan3_state1" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bosschaoxue54Bingyan3wp02" state="3"/>
 				<Wp time="0.5" name="bosschaoxue54Bingyan3wp03" state="0"/>
@@ -14418,7 +14439,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bosschaoxue54Bingyan3wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="bingyan3_state2" state="0" action_delay="2">
+		<Ani id="bingyan3_state2" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bosschaoxue54Bingyan3wp02" state="0"/>
 				<Wp time="0.5" name="bosschaoxue54Bingyan3wp03" state="3"/>
@@ -14428,7 +14449,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bosschaoxue54Bingyan3wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="bingyan3_state3" state="0" action_delay="2">
+		<Ani id="bingyan3_state3" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bosschaoxue54Bingyan3wp02" state="0"/>
 				<Wp time="0.5" name="bosschaoxue54Bingyan3wp03" state="0"/>
@@ -14438,12 +14459,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bosschaoxue54Bingyan3wp07" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="wendige3_state2to1" state="0" action_delay="2">
+		<Ani id="wendige3_state2to1" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bosschaoxue57Wendige3wp04" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="wendige3_state1to2" state="0" action_delay="2">
+		<Ani id="wendige3_state1to2" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bosschaoxue57Wendige3wp04" state="3"/>
 			</WpStateList>
@@ -14454,32 +14475,24 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bossminghe64Nvyao5wp02" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="Yimier3_state1" state="0" action_delay="2">
+		<Ani id="Yimier3_state1" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bosschaoxue58Yimier3wp02" state="0"/>
 				<Wp time="0.5" name="bosschaoxue58Yimier3wp03" state="0"/>
-				<!--Wp time="0.5" name="bosschaoxue58Yimier3wp04" state="4"/>
-				<Wp time="0.5" name="bosschaoxue58Yimier3wp05" state="4"/-->
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp04" state="3"/>
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp05" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="Yimier3_state2" state="0" action_delay="2">
+		<Ani id="Yimier3_state2" state="0" action_delay="1">
 			<WpStateList>
-				<!--Wp time="0.5" name="bosschaoxue58Yimier3wp02" state="4"/>
-				<Wp time="0.5" name="bosschaoxue58Yimier3wp03" state="4"/-->
 				<Wp time="0.5" name="bosschaoxue58Yimier3wp04" state="0"/>
-				<!--Wp time="0.5" name="bosschaoxue58Yimier3wp05" state="4"/-->
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp02" state="3"/>
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp03" state="3"/>
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp05" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="Yimier3_state3" state="0" action_delay="2">
+		<Ani id="Yimier3_state3" state="0" action_delay="1">
 			<WpStateList>
-				<!--Wp time="0.5" name="bosschaoxue58Yimier3wp02" state="4"/>
-				<Wp time="0.5" name="bosschaoxue58Yimier3wp03" state="4"/>
-				<Wp time="0.5" name="bosschaoxue58Yimier3wp04" state="4"/-->
 				<Wp time="0.5" name="bosschaoxue58Yimier3wp05" state="0"/>
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp04" state="3"/>
 				<Wp time="1.5" name="bosschaoxue58Yimier3wp03" state="3"/>
@@ -14499,7 +14512,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</WpStateList>
 		</Ani>
 		
-		<Ani id="weitianshi1_wp02" state="0" action_delay="2">
+		<Ani id="weitianshi1_wp02" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bosskongdao71Weitianshi1wp03" state="3"/>
 				<Wp time="0.5" name="bosskongdao71Weitianshi1wp04" state="3"/>
@@ -14507,7 +14520,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</WpStateList>
 		</Ani>
 		
-		<Ani id="nvyao1_wp03" state="0" action_delay="2">
+		<Ani id="nvyao1_wp03" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bosskongdao72Nvyao1wp02" state="3"/>
 				<Wp time="0.5" name="bosskongdao72Nvyao1wp03" state="0"/>
@@ -14528,11 +14541,11 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time = "0" ani="" key="bossfuhuo" value="true"/>
 			</MotionList>
 			<WpStateList>
-				<Wp time="2.5" name="bosskongdao72Nvyao1wp04" state="0"/>
+				<Wp time="2.5" name="bosskongdao72Nvyao1wp05" state="0"/>
 			</WpStateList>
 		</Ani>
 		
-		<Ani id="luoxinfu1_wp2" state="0" action_delay="3">
+		<Ani id="luoxinfu1_wp2" state="0" action_delay="2">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
@@ -14545,7 +14558,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="luoxinfu1_wp3" state="0" action_delay="3">
+		<Ani id="luoxinfu1_wp3" state="0" action_delay="2">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
@@ -14558,7 +14571,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="luoxinfu1_wp4" state="0" action_delay="3">
+		<Ani id="luoxinfu1_wp4" state="0" action_delay="2">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
@@ -14571,7 +14584,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="luoxinfu1_wp5" state="0" action_delay="3">
+		<Ani id="luoxinfu1_wp5" state="0" action_delay="2">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
@@ -14584,7 +14597,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="luoxinfu1_wp6" state="0" action_delay="3">
+		<Ani id="luoxinfu1_wp6" state="0" action_delay="2">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
@@ -14597,7 +14610,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="luoxinfu1_wp7" state="0" action_delay="3">
+		<Ani id="luoxinfu1_wp7" state="0" action_delay="2">
 			<MotionList>
 				<Motion time = "0" ani="" key="bosschaoxiao" value="true"/>
 			</MotionList>
@@ -14610,19 +14623,19 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="2.5" name="bosskongdao73Luoxinfu1wp07" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="piying1_wprefresh" state="0" action_delay="0">
+		<Ani id="piying1_wprefresh" state="0" action_delay="2">
 			<MotionList>
-				<Motion time = "2" ani="" key="bossjianxiao" value="true"/>
+				<Motion time = "0" ani="" key="bossjianxiao" value="true"/>
 			</MotionList>
 			<ParticleList>
-				<Particle time="2" asset="piying1pre_qiehuan" bundle="effect/particle" parent="" locky="true"/>
+				<Particle time="3" asset="piying1pre_qiehuan" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
 				<Audio time="2.5" name="piyingqiehuan"/>
 			</AudioList>
 			<WpStateList>
-				<Wp time="2.0" name="bosskongdao74Piying1wp02" state="0"/>
-				<Wp time="2.0" name="bosskongdao74Piying1wp03" state="0"/>
+				<Wp time="3.0" name="bosskongdao74Piying1wp02" state="0"/>
+				<Wp time="3.0" name="bosskongdao74Piying1wp03" state="0"/>
 			</WpStateList>
 		</Ani>
 		<Ani id="longnv1_chongzhi" state="0" action_delay="2">
@@ -14641,33 +14654,33 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bosskongdao77Longnv1wp04" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="jinglingwang_wp46state2" state="0" action_delay="2">
+		<Ani id="jinglingwang_wp46state2" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bosskongdao78Jinglingwang1wp04" state="0"/>
 				<Wp time="0.5" name="bosskongdao78Jinglingwang1wp06" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="huapo2awaken_wp02" state="0" action_delay="2">
+		<Ani id="huapo2awaken_wp02" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie81Huapo2awakenwp02" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="huapo2awaken_wp03" state="0" action_delay="2">
+		<Ani id="huapo2awaken_wp03" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie81Huapo2awakenwp03" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="huapo2awaken_wp04" state="0" action_delay="2">
+		<Ani id="huapo2awaken_wp04" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie81Huapo2awakenwp04" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="huapo2awaken_wp05" state="0" action_delay="2">
+		<Ani id="huapo2awaken_wp05" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie81Huapo2awakenwp05" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="huapo2awaken_wp06" state="0" action_delay="2">
+		<Ani id="huapo2awaken_wp06" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie81Huapo2awakenwp06" state="0"/>
 			</WpStateList>
@@ -14678,12 +14691,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bossrenjie83Amute3awakenwp03" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="anpusha5awaken_state3" state="0" action_delay="2">
+		<Ani id="anpusha5awaken_state3" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie84Anpusha5awakenwp02" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="dujiaoshou1awaken_wp34" state="0" action_delay="2">
+		<Ani id="dujiaoshou1awaken_wp34" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie85Dujiaoshou1awakenwp03" state="0"/>
 				<Wp time="0.5" name="bossrenjie85Dujiaoshou1awakenwp04" state="0"/>
@@ -14691,7 +14704,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bossrenjie85Dujiaoshou1awakenwp05" state="1"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="dujiaoshou1awaken_wp34dead" state="0" action_delay="2">
+		<Ani id="dujiaoshou1awaken_wp34dead" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie85Dujiaoshou1awakenwp01" state="1"/>
 				<Wp time="0.5" name="bossrenjie85Dujiaoshou1awakenwp05" state="3"/>
@@ -14699,7 +14712,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bossrenjie85Dujiaoshou1awakenwp04" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="huoniao4awaken_wp05" state="0" action_delay="2">
+		<Ani id="huoniao4awaken_wp05" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="2.5" name="bossrenjie82Huoniao4awakenwp06" state="3"/>
 				<Wp time="2.5" name="bossrenjie82Huoniao4awakenwp01" state="1"/>
@@ -14708,12 +14721,12 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Motion time="0" ani="" key="bossrehuo" value="true"/>
 			</MotionList>
 		</Ani>
-		<Ani id="landuo2wp05_state0" state="0" action_delay="2">
+		<Ani id="landuo2wp05_state0" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie86Landuo2wp05" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="landuo2wp05_state3" state="0" action_delay="3">
+		<Ani id="landuo2wp05_state3" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="1.2" name="bossrenjie86Landuo2wp05" state="3"/>
 			</WpStateList>
@@ -14737,7 +14750,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bossrenjie87Baonu4wp10" state="3"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="baonu4wp3456_state0" state="0" action_delay="2">
+		<Ani id="baonu4wp3456_state0" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie87Baonu4wp02" state="3"/>
 				<Wp time="0.5" name="bossrenjie87Baonu4wp03" state="0"/>
@@ -14746,7 +14759,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bossrenjie87Baonu4wp06" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="baonu4wp78910_state0" state="0" action_delay="2">
+		<Ani id="baonu4wp78910_state0" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie87Baonu4wp02" state="3"/>
 				<Wp time="0.5" name="bossrenjie87Baonu4wp07" state="0"/>
@@ -14755,7 +14768,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Wp time="0.5" name="bossrenjie87Baonu4wp10" state="0"/>
 			</WpStateList>
 		</Ani>
-		<Ani id="yafogemeng5_state2" state="0" action_delay="2">
+		<Ani id="yafogemeng5_state2" state="0" action_delay="1">
 			<WpStateList>
 				<Wp time="0.5" name="bossrenjie88Yafogemeng5wp02" state="0"/>
 				<Wp time="0.5" name="bossrenjie88Yafogemeng5wp03" state="0"/>

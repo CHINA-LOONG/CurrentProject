@@ -96,6 +96,7 @@ public class BattleProcess : MonoBehaviour
     int replaceDeadUnitCount = 0;//total replace deadreplace
     bool hasInsertReplaceDeadUnitAction = false;//not insertaction deadreplace
     bool inDazhaoAction = false;
+    public int mCurrentReviveCount = 0;
 
     bool switchingPet = false;
     public bool SwitchingPet
@@ -254,7 +255,7 @@ public class BattleProcess : MonoBehaviour
                 PB.HSRewardInfo rewardInfo;
                 if (rewardInfoList.TryGetValue(deadId, out rewardInfo) == true)
                 {
-                    PB.RewardItem reward = null;
+                    //PB.RewardItem reward = null;
                     if (rewardInfoList.TryGetValue(deadId, out rewardInfo) == true)
                     {
                         int rewardID = 0;
@@ -587,6 +588,7 @@ public class BattleProcess : MonoBehaviour
 
         if (battleLevelIndex == 0)
         {
+            mCurrentReviveCount = 0;
             yield return StartCoroutine(PlayCountDownAnim());
         }
         else
@@ -734,7 +736,14 @@ public class BattleProcess : MonoBehaviour
         if (battleResult == BattleRetCode.Failed)
         {
             insertAction.Clear();
-            StartCoroutine(ShowReviveUI());
+            if (mCurrentReviveCount < BattleConst.maxReviveCount)
+            {
+                StartCoroutine(ShowReviveUI());
+            }
+            else
+            {
+                BattleController.Instance.OnBattleOver(false);
+            }
             //System.Action<float> failProcess = (delayTime) =>
             //{
             //    BattleController.Instance.OnBattleOver(false);
@@ -781,6 +790,7 @@ public class BattleProcess : MonoBehaviour
 
     public void ReviveSuccess()
     {
+        ++mCurrentReviveCount;
         Action reviveAction = new Action();
         reviveAction.type = ActionType.ReviveUnit;
         InsertAction(reviveAction);
@@ -1112,22 +1122,30 @@ public class BattleProcess : MonoBehaviour
         switchingPet = true;
     }
 
+	bool	isCastDazhao	= false;//debug661 同时释放物理大招和法术大招
     public void OnUnitCastDazhao(BattleObject bo)
     {
+		if (isCastDazhao)
+			return;
+		isCastDazhao = true;
+
 		if (IsHaveDazhaoAction())
 		{
+			isCastDazhao = false;
 			Logger.Log("had a dazhaoAction,can't insert Another!");
 			return;
 		}
 		//检测是否有换怪
 		if (IsChangePeting (bo)) 
 		{
+			isCastDazhao = false;
 			Logger.LogError("change Pet.....");
 			return ;
 		}
         //是否眩晕
         if (bo.unit.stun > 0)
         {
+			isCastDazhao = false;
             Logger.Log("unit is stun");
             return;
         }
@@ -1136,6 +1154,7 @@ public class BattleProcess : MonoBehaviour
 		Spell dazhaoSpell = bo.unit.GetDazhao ();
 		if (null == dazhaoSpell)
 		{
+			isCastDazhao = false;
 			Logger.LogError("Dazhao configError: no dazhao");
 			return;
 		}
@@ -1168,6 +1187,7 @@ public class BattleProcess : MonoBehaviour
 			action.dazhaoType = DazhaoType.Magic;
             MagicDazhaoController.Instance.PrepareShifa(action);
 		}
+		isCastDazhao = false;
     }
 
     public void OnHitBattleObject(BattleObject battleGo, string weakpointName)

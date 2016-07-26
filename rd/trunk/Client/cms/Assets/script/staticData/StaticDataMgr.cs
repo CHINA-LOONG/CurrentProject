@@ -760,6 +760,18 @@ public class StaticDataMgr : MonoBehaviour
 		return item;
 	}
 
+    public void GetItemData(PB.changeType type, ref List<ItemStaticData> items)
+    {
+        items.Clear();
+        foreach (var item in itemData)
+        {
+            if (item.Value.type==(int)PB.toolType.USETOOL&&item.Value.addAttrType==(int)type)
+            {
+                items.Add(item.Value);
+            }
+        }
+    }
+
     public EquipProtoData GetEquipProtoData(string id, int state)
     {
         EquipProtoData item = null;

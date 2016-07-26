@@ -75,24 +75,44 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
         m_rightDetail.gameObject.name = "contentView";
     }
 
-    public void SkillButtonDown()
-    {
-        ReloadRigthData(PetViewConst.UIPetSkillAssetName);
-    }
-
     public void DetailAttrButtonDown()
     {
-        ReloadRigthData(PetViewConst.UIPetAttrAssetName);
+        if (currentRightType != PetViewConst.UIPetAttrAssetName)
+        {
+            ReloadRigthData(PetViewConst.UIPetAttrAssetName);
+        }
+    }
+
+    public void AddEXPButtonDown()
+    {
+        if (currentRightType != PetViewConst.UIPetFeedAssetName)
+        {
+            ReloadRigthData(PetViewConst.UIPetFeedAssetName);
+        }
+    }
+
+    public void SkillButtonDown()
+    {
+        if (currentRightType != PetViewConst.UIPetSkillAssetName)
+        {
+            ReloadRigthData(PetViewConst.UIPetSkillAssetName);
+        }
     }
 
     public void StageButtonDown()
     {
-        ReloadRigthData(PetViewConst.UIPetStageAssetName);
+        if (currentRightType != PetViewConst.UIPetStageAssetName)
+        {
+            ReloadRigthData(PetViewConst.UIPetStageAssetName);
+        }
     }
 
     public void AdvanceButtonDown()
     {
-        ReloadRigthData(PetViewConst.UIPetAdvanceAssetName);
+        if (currentRightType != PetViewConst.UIPetAdvanceAssetName)
+        {
+            ReloadRigthData(PetViewConst.UIPetAdvanceAssetName);
+        }
     }
 
     public void OpenEquipInfo(PartType part,EquipData data)
@@ -172,8 +192,9 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
         {
             switch (currentRightType)
             {
-                case PetViewConst.UIPetSkillAssetName:
                 case PetViewConst.UIPetAttrAssetName:
+                case PetViewConst.UIPetFeedAssetName:
+                case PetViewConst.UIPetSkillAssetName:
                 case PetViewConst.UIPetStageAssetName:
                 case PetViewConst.UIPetAdvanceAssetName:
                     param = new PetRightParamBase()

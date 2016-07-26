@@ -39,8 +39,6 @@ public class UIBattle : UIBase
     public DazhaoTip dazhaoTip;
     public Text levelIndex;
 
-    public Sprite victorySprite;
-    public Sprite failedSprite;
     [HideInInspector]
     public UIFazhen uiFazhen;
 
@@ -50,7 +48,6 @@ public class UIBattle : UIBase
 	private	int	m_MaxSpeed = 3;
 
     GameObject startBattleUI = null;
-    GameObject endBattleUI = null;
 	Animator animator;
 
     private MsgBox.PromptMsg reviveWnd;
@@ -136,9 +133,10 @@ public class UIBattle : UIBase
     {
         reviveWnd = MsgBox.PromptMsg.Open(
             MsgBox.MsgBoxType.Conform_Cancel,
-            StaticDataMgr.Instance.GetTextByID("battle_revive"),
-            OnReviveCallback,
-            false
+            string.Format(StaticDataMgr.Instance.GetTextByID("battle_revive"), 5),
+            ChooseReviveOrNot,
+            false,
+            true
             );
     }
 
@@ -150,13 +148,17 @@ public class UIBattle : UIBase
         }
     }
 
-    private void OnReviveCallback(MsgBox.PrompButtonClick state)
+    private void ChooseReviveOrNot(MsgBox.PrompButtonClick state)
     {
         if (state == MsgBox.PrompButtonClick.OK)
         {
-            //TODO: send msg
-            //test only continuebattleresult is callback
-            BattleController.Instance.OnRevive(true);
+            //PB.HSInstanceRevive reviveParam = new PB.HSInstanceRevive();
+            //GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_REVIVE_C.GetHashCode(), reviveParam);
+            //test only
+            CloseReviveUI();
+            BattleController battleInstance = BattleController.Instance;
+            battleInstance.BattleGroup.RevivePlayerList();
+            battleInstance.Process.ReviveSuccess();
         }
         else if (state == MsgBox.PrompButtonClick.Cancle)
         {
@@ -165,26 +167,43 @@ public class UIBattle : UIBase
         }
     }
 
-    public void ShowEndBattleUI(bool success)
+    void OnReviveResult(ProtocolMessage msg)
     {
-        //GameObject endBattlePrefab = ResourceMgr.Instance.LoadAsset("endBattle") as GameObject;
-        endBattleUI = ResourceMgr.Instance.LoadAsset("endBattle");
-        endBattleUI.transform.SetParent(publicTopGroup, false);
-        Image endImage = endBattleUI.GetComponent<Image>();
-        if (success)
+        UINetRequest.Close();
+        //TODO: passed by server
+        int reviveStatus = 0;
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
-            endImage.sprite = victorySprite;
+            reviveStatus = 2;
         }
-        else 
+        else
         {
-            endImage.sprite = failedSprite;
+            PB.HSInstanceReviveRet reviveResult = msg.GetProtocolBody<PB.HSInstanceReviveRet>();
+            if (reviveResult.reviveCount > BattleConst.maxReviveCount)
+            {
+                reviveStatus = 1;
+            }
         }
-        endImage.SetNativeSize();
-    }
 
-    public void DestroyEndBattleUI()
-    {
-        ResourceMgr.Instance.DestroyAsset(endBattleUI);
+        BattleController battleInstance = BattleController.Instance;
+        switch (reviveStatus)
+        {
+            //0:success 1:count error 2:diamond not enough
+            case 0:
+                CloseReviveUI();
+                battleInstance.BattleGroup.RevivePlayerList();
+                battleInstance.Process.ReviveSuccess();
+                break;
+            case 1:
+                CloseReviveUI();
+                battleInstance.OnBattleOver(false);
+                break;
+            case 2:
+                GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+                break;
+            default:
+                break;
+        }
     }
 
     public void ChangeBuffState(SpellBuffArgs args)
@@ -264,6 +283,8 @@ public class UIBattle : UIBase
 		GameEventMgr.Instance.AddListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
         GameEventMgr.Instance.AddListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
         GameEventMgr.Instance.AddListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_C.GetHashCode().ToString(), OnReviveResult);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_S.GetHashCode().ToString(), OnReviveResult);
     }
 
     void UnBindListener()
@@ -274,6 +295,8 @@ public class UIBattle : UIBase
         GameEventMgr.Instance.RemoveListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
         GameEventMgr.Instance.RemoveListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_C.GetHashCode().ToString(), OnReviveResult);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_S.GetHashCode().ToString(), OnReviveResult);
     }
 
     void AddUIObjectEvent()

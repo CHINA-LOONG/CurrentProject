@@ -168,6 +168,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_RESET_COUNT_S", Value=3012)]
       INSTANCE_RESET_COUNT_S = 3012,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_REVIVE_C", Value=3013)]
+      INSTANCE_REVIVE_C = 3013,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_REVIVE_S", Value=3014)]
+      INSTANCE_REVIVE_S = 3014,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
             

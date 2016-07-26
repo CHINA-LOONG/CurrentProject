@@ -379,7 +379,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 376,bossdajie16Xiaochou34,bossdajie16Xiaochou34e1,0,0,0,50,1,0,icon_ultXiaochou3,bossdajie16Xiaochou34Name,bossdajie16Xiaochou34Tips,0,1,,,,
 377,bossdajie16Xiaochou35,bossdajie16Xiaochou35e1,0,0,0,50,1,0,,bossdajie16Xiaochou34Name,,0,0,,,,
 378,ultChange1,ultChange1e1,0,0,100,0,9,0.01,icon_ultChange1,ultChange1Name,ultChange1Tips,2.4,1,,ultChange1Description,ultChange1Curlvl,ultChange1Nextlvl
-379,ultDujiaoshou1,ultDujiaoshou1e1,0,0,100,0,9,0.01,icon_ultDujiaoshou1,ultDujiaoshou1Name,ultDujiaoshou1Tips,2.2,1,,ultDujiaoshou1Description,ultDujiaoshou1Curlvl,ultDujiaoshou1Nextlvl
+379,ultDujiaoshou1,ultDujiaoshou1e1,0,0,100,0,9,0.005,icon_ultDujiaoshou1,ultDujiaoshou1Name,ultDujiaoshou1Tips,1,1,,ultDujiaoshou1Description,ultDujiaoshou1Curlvl,ultDujiaoshou1Nextlvl
 380,ultSheshou1,ultSheshou1e1,0,0,100,0,9,0.01,icon_ultSheshou1,ultSheshou1Name,ultSheshou1Tips,2.3,1,,ultSheshou1Description,ultSheshou1Curlvl,ultSheshou1Nextlvl
 381,ultWeitianshi5,ultWeitianshi5e1,0,0,100,0,9,0.01,icon_ultWeitianshi5,ultWeitianshi5Name,ultWeitianshi5Tips,2,1,,ultWeitianshi5Description,ultWeitianshi5Curlvl,ultWeitianshi5Nextlvl
 382,ultSheshou3,ultSheshou3e1,0,0,100,0,9,0,icon_ultSheshou3,ultSheshou3Name,ultSheshou3Tips,0,1,,ultSheshou3Description,,

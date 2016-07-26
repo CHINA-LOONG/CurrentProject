@@ -98,8 +98,14 @@ public class BattleConst
     //宠物升级自身作为材料ID
     public const string stageSelfId = "self";
 
+    public const byte maxReviveCount = 3;
+    public const byte reviveCost1 = 10;
+    public const byte reviveCost2 = 20;
+    public const byte reviveCost3 = 30;
+
     //金币图标资源名
     public const string icon_jinbi = "icon_jinbi";
-
-
+    //结算动画相关
+    public const float scoreTitleStayTime = 1.5f;
+    public const float scoreTitleUpTime = 1.0f;
 }

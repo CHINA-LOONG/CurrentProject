@@ -417,11 +417,11 @@ bossdajie15Langren34Tips,给单体目标连续造成6次75%物攻的水属性物
 bossdajie14Piying51Tips,给单体目标造成50%法攻的暗属性法术伤害,Deals (50% of magic ATK) dark type magic damage to a single target
 bossdajie14Piying52Tips,使群体目标力量和智力降低80%，持续3回合,Reduces STR and  INT of all enemy targets by 80% for 3 turns
 bossdajie14Piying53Tips,使群体目标力量降低80%，持续3回合,Reduces STR of all enemy targets by 80% for 3 turns
-bossdajie14Piying54Tips,给群体目标造成200%法攻的暗属性法术伤害,Deals (200% of magic ATK) dark type magic damage to all enemy targets
+bossdajie14Piying54Tips,给群体目标造成150%法攻的暗属性法术伤害,Deals (150% of magic ATK) dark type magic damage to all enemy targets
 bossdajie14Piying55Tips,使单体目标智力降低80%，持续3回合,Reduces INT of all enemy targets by 80% for 3 turns
-bossdajie17Huapo21Tips,给单体目标造成200%物攻的木属性物理伤害,Deals (200% of physical ATK) grass type physical damage to a single target
-bossdajie17Huapo22Tips,给单体目标造成100%法攻的木属性法术伤害,Deals (100% of magic ATK) grass type magic damage to a single target
-bossdajie17Huapo23Tips,给单体目标连续造成多次100%物攻的水属性物理伤害,Repeatedly deals numbers of(100% of physical ATK) water type physical damage to a single target
+bossdajie17Huapo21Tips,给单体目标造成75%物攻的木属性物理伤害,Deals (75% of physical ATK) grass type physical damage to a single target
+bossdajie17Huapo22Tips,给单体目标造成37.5%法攻的木属性法术伤害,Deals (37.5% of magic ATK) grass type magic damage to a single target
+bossdajie17Huapo23Tips,给单体目标连续造成多次160%物攻的水属性物理伤害,Repeatedly deals numbers of(160% of physical ATK) water type physical damage to a single target
 bossdajie16Xiaochou31Tips,给单体目标造成水属性法术伤害,Deals water type magic damage to a single target 
 bossdajie16Xiaochou33Tips,给群体目标造成120%法攻的水属性法术伤害,Deals (120% of magic ATK) water type magic damage to all enemy targets
 bossdajie16Xiaochou34Tips,给敌方目标造成水属性法术伤害,Deals water type magic damage an enemy target 
@@ -1167,9 +1167,9 @@ bossdajie18Ladong54Tips,给群体目标造成120%法攻暗属性法术伤害并�
 bossdajie11Moguguai41Name,火焰重击,Flame Strike
 bossdajie11Moguguai42Name,火焰旋风,Fire Cyclone
 bossdajie11Moguguai43Name,火磷粉,Explosive Dust
-bossdajie11Moguguai41Tips,给单体目标造成100%法攻火属性法术伤害,Deals (100% of magic ATK) fire type magic damage to a single target
-bossdajie11Moguguai42Tips,给群体目标造成60%法攻火属性法术伤害,Deals (60% of magic ATK) fire type magic damage to all enemy targets
-bossdajie11Moguguai43Tips,给群体目标造成120%法攻火属性法术伤害,Deals (120% of magic ATK) fire type magic damage to all enemy targets
+bossdajie11Moguguai41Tips,给单体目标造成66%法攻火属性法术伤害,Deals (66% of magic ATK) fire type magic damage to a single target
+bossdajie11Moguguai42Tips,给群体目标造成40%法攻火属性法术伤害,Deals (40% of magic ATK) fire type magic damage to all enemy targets
+bossdajie11Moguguai43Tips,给群体目标造成80%法攻火属性法术伤害,Deals (80% of magic ATK) fire type magic damage to all enemy targets
 ultMoguguai3Name,冰霜粉,Frost Powder
 ultMoguguai3Tips,给群体目标造成{0}%法攻的水属性法术伤害,Deals ({0}% of magic ATK) water type magic damage to all enemies
 psvMoguguai3Name,成长,Unnatural Growth

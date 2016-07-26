@@ -115,8 +115,8 @@ public class PlayerShopModule extends PlayerModule{
 			return true;
 		}
 		
-		refreshShopData(protocol.getType());
-		consume.consumeTakeAffect(player, Action.SHOP_REFRESH);
+		ShopUtil.refreshShopData(protocol.getType(), player);
+		consume.consumeTakeAffectAndPush(player, Action.SHOP_REFRESH);
 		shopEntity.increaseShopRefreshNum(protocol.getType());
 		shopEntity.notifyUpdate(true);
 		
@@ -156,10 +156,10 @@ public class PlayerShopModule extends PlayerModule{
 		
 		ConsumeItems consume = new ConsumeItems();
 		if (itemCfg.getBuyType() == Const.moneyType.MONEY_COIN_VALUE) {
-			consume.addCoin((int)(itemCfg.getBuyPrice() * itemInfo.getDiscount()));
+			consume.addCoin((int)(itemInfo.getCount() * itemCfg.getBuyPrice() * itemInfo.getDiscount()));
 		}
 		else{
-			consume.addGold((int)(itemCfg.getBuyPrice() * itemInfo.getDiscount()));
+			consume.addGold((int)(itemInfo.getCount() * itemCfg.getBuyPrice() * itemInfo.getDiscount()));
 		}
 		
 		if (consume.checkConsume(player, HS.code.ShopItemBuyC_VALUE) == false) {
@@ -185,27 +185,15 @@ public class PlayerShopModule extends PlayerModule{
 			refreshTypeList.contains(GsConst.RefreshType.SHOP_REFRESH_TIME_SECOND)||
 			refreshTypeList.contains(GsConst.RefreshType.SHOP_REFRESH_TIME_THIRD ))
 		{
-			refreshShopData(Const.shopType.NORMALSHOP_VALUE);
+			ShopUtil.refreshShopData(Const.shopType.NORMALSHOP_VALUE, player);
 		}
 		else if (refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_FIRST) || 
 			     refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_SECOND)||
 			     refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_THIRD ))
 		{
-			refreshShopData(Const.shopType.ALLIANCESHOP_VALUE);
+			ShopUtil.refreshShopData(Const.shopType.ALLIANCESHOP_VALUE, player);
 		}
 		
 		return true;
-	}
-
-	private void refreshShopData(int type){
-		ShopEntity shopEntity = player.getPlayerData().getShopEntity();
-		List<ShopItemInfo> shopList = ShopUtil.getPlayerShopItems(player, Const.shopType.NORMALSHOP_VALUE);
-		for (int i = 0; i < shopList.size(); i++) {
-			shopList.get(i).setSlot(i);
-		}
-		shopEntity.increaseShopId(type);
-		shopEntity.setRefreshData(type, HawkTime.getCalendar());
-		shopEntity.setShopItemsList(type, shopList);
-		shopEntity.notifyUpdate(true);
 	}
 }

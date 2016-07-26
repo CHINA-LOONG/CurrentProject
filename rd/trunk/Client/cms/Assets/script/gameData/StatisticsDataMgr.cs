@@ -11,6 +11,14 @@ public class StatisticsDataMgr : MonoBehaviour {
     private  int systemTime = 0;
     private int timeDiffer = 0;
 
+	public	int	TimeDiffer
+	{
+		get
+		{
+			return timeDiffer;
+		}
+	}
+
     static StatisticsDataMgr mInst = null;
     public static StatisticsDataMgr Instance
     {

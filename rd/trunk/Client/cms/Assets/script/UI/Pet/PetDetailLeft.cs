@@ -87,11 +87,13 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     // Use this for initialization
     void Start()
     {
-        EventTriggerListener.Get(btnDetailAttr.gameObject).onClick = DetailAttrButtonDown;
-
+        //EventTriggerListener.Get(btnDetailAttr.gameObject).onClick = DetailAttrButtonDown;
+        btnDetailAttr.onClick.AddListener(DetailAttrButtonDown);
+        btnAddExp.onClick.AddListener(AddEXPButtonDown);
         btnSkill.onClick.AddListener(SkillButtonDown);
         btnStage.onClick.AddListener(StageButtonDown);
         btnAdvance.onClick.AddListener(AdvanceButtonDown);
+
         btnAdvance.interactable = false;
 
 
@@ -207,9 +209,14 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         }
     }
 
-    void DetailAttrButtonDown(GameObject go)
+    void DetailAttrButtonDown()
     {
         ParentNode.DetailAttrButtonDown();
+    }
+
+    void AddEXPButtonDown()
+    {
+        ParentNode.AddEXPButtonDown();
     }
 
     void SkillButtonDown()

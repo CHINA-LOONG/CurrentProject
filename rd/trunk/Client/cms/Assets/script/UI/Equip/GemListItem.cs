@@ -42,7 +42,7 @@ public class GemListItem : MonoBehaviour
         {
             itemIcon.RefreshWithItemInfo(curData.itemData);
         }
-        textName.text = StaticDataMgr.Instance.GetTextByID(curData.itemInfo.name);
+        UIUtil.SetStageColor(textName, curData.itemInfo);
         EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(curData.itemInfo.gemId);
         UIUtil.SetDisPlayAttr(attr, text_Attr1, textAttr1, text_Attr2, textAttr2);
     }

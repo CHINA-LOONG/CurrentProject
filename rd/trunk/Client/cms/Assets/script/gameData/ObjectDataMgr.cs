@@ -64,14 +64,21 @@ public class ObjectDataMgr : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public BattleObject CreateBattleObject(GameUnit unit, GameObject parent, Vector3 pos, Quaternion rot)
     {
+        BattleObject bo = null;
+        if (battleObjectList.TryGetValue(unit.pbUnit.guid, out bo) == true)
+        {
+            return bo;
+        }
+
         GameObject unitObject = ResourceMgr.Instance.LoadAsset(unit.assetID);
         if (parent != null)
         {
-            unitObject.transform.parent = parent.transform;
+            //unitObject.transform.parent = parent.transform;
+            unitObject.transform.SetParent(parent.transform, false);
         }
         unitObject.transform.localPosition = pos;
         unitObject.transform.localRotation = rot;
-        BattleObject bo = unitObject.AddComponent<BattleObject>();
+        bo = unitObject.AddComponent<BattleObject>();
         bo.camp = unit.pbUnit.camp;
         bo.guid = unit.pbUnit.guid;
         unit.battleUnit = bo;

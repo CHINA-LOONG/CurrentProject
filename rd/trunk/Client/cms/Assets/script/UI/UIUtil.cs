@@ -268,6 +268,18 @@ public class UIUtil
 
     }
 
+    public static void SetStageColor(Text label, ItemStaticData itemData)
+    {
+        label.color = ColorConst.GetStageTextColor(itemData.grade);
+        Outline outline = label.GetComponent<Outline>();
+        if (outline == null)
+        {
+            outline = label.gameObject.AddComponent<Outline>();
+        }
+        outline.effectColor = ColorConst.GetStageOutLineColor(itemData.grade);
+        label.text = StaticDataMgr.Instance.GetTextByID(itemData.name);
+    }
+
     public static void SetStageColor(Text label, string textId, int stage, int level = 0)
     {
         label.color = ColorConst.GetStageTextColor(stage);

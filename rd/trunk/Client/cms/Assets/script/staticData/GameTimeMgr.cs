@@ -18,6 +18,7 @@ public class GameTimeMgr
     }
 
 	private TimeStaticData timeNow = new TimeStaticData();
+	private	TimeStaticData serverTime = new TimeStaticData();
 
     public DateTime Now
     {
@@ -37,6 +38,16 @@ public class GameTimeMgr
 		timeNow.minute = GetMinute();
 		return timeNow;
     }
+
+	public	TimeStaticData GetServerTime()
+	{
+		int serverTimeStamp = TimeStamp() - StatisticsDataMgr.Instance.TimeDiffer;
+		DateTime serverDateTime = GetTime (serverTimeStamp);
+		serverTime.hour = serverDateTime.Hour;
+		serverTime.minute = serverDateTime.Minute;
+
+		return serverTime;
+	}
 
     public int GetYear()
     {

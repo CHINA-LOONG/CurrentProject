@@ -1267,8 +1267,8 @@ nvyao5hide_lsoul,根据图形提示找到弱点,Find this shape on Banshee.
 nvyao5hide_rsoul,根据图形提示找到弱点,Find this shape on Banshee.
 nvyao5normal_mask,女妖面罩下是怎样的面庞？,This Mask seems to protect a weakpoint.
 nvyao5normal_head,女妖真正的弱点,This is the Real weakpoint.
-nvyao5normal_lsoul,双魂器的存在，保证了女妖的永生,Secret of Banshee Revive is right here.
-nvyao5normal_rsoul,双魂器的存在，保证了女妖的永生,Secret of Banshee Revive is right here.
+nvyao5normal_lsoul,双魂器的存在，保证了女妖的永生,"When both soul container exist, Banshee shall never die."
+nvyao5normal_rsoul,双魂器的存在，保证了女妖的永生,"When both soul container exist, Banshee shall never die."
 weitianshi5hide_aura,天使也会有弱点？,Where could be the secret of Archangel?
 weitianshi5normal1_aura,被光环光芒照射到的宠物将无法回血,The Aura stops her enemies from Healing!
 saibulesi5hide_lhead,根据图形提示找到弱点,Hellhound's special feature?
@@ -1339,8 +1339,8 @@ bosssiwangtaDatiangou4wp04,面具,Mask
 bosssiwangtaDatiangou4wp05,脸,Face
 datiangou4hide_mask,身上隐藏的邪恶力量？,An evil power embodied in him!
 datiangou4hide_head,根据图形提示找到弱点,Find this shape on Tengu.
-datiangou4normal_mask,保护弱点,Protect Weakpoint
-datiangou4normal_head,弱点,Weakpoint
+datiangou4normal_mask,面具下隐藏着如何一张面庞？,What lies behind this mask?
+datiangou4normal_head,大天狗真正的要害,Vital Point of Tengu.
 speech_blt_51_1,这里就是你的雪之国吗？,So this is your Snow Kingdom?
 speech_blt_51_2,是呀，可是，感觉好像有些不对……,"Yes, this is it. But something doesn't seem right..."
 speech_blt_51_3,哪里不对？,Huh? What do you mean?
@@ -1917,8 +1917,8 @@ bosskongdao73Luoxinfu1wp04,左蜘蛛爪,Left Claw
 bosskongdao73Luoxinfu1wp05,右蜘蛛爪,Right Claw
 bosskongdao73Luoxinfu1wp06,右上蜘蛛爪,Upper-right Claw
 bosskongdao73Luoxinfu1wp07,左上蜘蛛爪,Upper-left Claw
-bosskongdao74Piying1wp02,右半身,Right Shadow
-bosskongdao74Piying1wp03,左半身,Left Shadow
+bosskongdao74Piying1wp02,左半身,Left Shadow
+bosskongdao74Piying1wp03,右半身,Right Shadow
 bosskongdao74Piying1wp04,头,Head
 bosskongdao75Sheshou1wp02,弓箭,Bow
 bosskongdao75Sheshou1wp03,头,Head
@@ -2035,16 +2035,16 @@ weitianshi1normal1_lwing,舞动的左翅！犀利的法攻！,Left wing increase
 weitianshi1normal1_rwing,舞动的右翅！犀利的法攻！,Right wing increases her Magical Power!
 nvyao1normal1_mask,女妖面罩下是怎样的面庞？,What could be hiding under this Mask?
 nvyao1normal1_head,女妖真正的弱点,Attack this real weakpoint!
-nvyao1normal1_lsoul,双魂器的存在，保证了女妖的永生,"When both soul container exist, Banshee shall never die."
-nvyao1normal1_rsoul,双魂器的存在，保证了女妖的永生,"When both soul container exist, Banshee shall never die."
+nvyao1normal1_lsoul,双魂器的存在，提升了女妖的法攻！,"When both soul container exist, increases her Magical Power!"
+nvyao1normal1_rsoul,双魂器的存在，提升了女妖的法攻！,"When both soul container exist, increases her Magical Power!"
 luoxinfu1normal1_leg1,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
 luoxinfu1normal1_leg2,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
 luoxinfu1normal1_leg3,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
 luoxinfu1normal1_leg4,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
 luoxinfu1normal1_leg5,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
 luoxinfu1normal1_leg6,络新妇的蜘蛛爪是她要害所在,Her claw is a real weakpoint!
-piying1normal1_lbody,右半身保护皮影免受法术攻击的侵袭,Right Shadow can immune Shadow Puppet from all magical attack.
-piying1normal1_rbody,左半身保护皮影免受物理攻击的侵袭,Left Shadow can immune Shadow Puppet from all physical attack.
+piying1normal1_lbody,左半身保护皮影免受物理攻击的侵袭,Left Shadow can immune Shadow Puppet from all physical attack.
+piying1normal1_rbody,右半身保护皮影免受法术攻击的侵袭,Right Shadow can immune Shadow Puppet from all magical attack.
 piying1normal1_head,皮影真正的弱点,This is a real weakpoint!
 sheshou1normal1_weapon,弓箭是射手高物理攻击的保证,The bow guarantees her high physical attack!
 sheshou1normal1_head,射手的软肋在头部,This is a real weakpoint!
@@ -2215,4 +2215,13 @@ story_duoduoluo,生活在世界树上的妖精，森林的播种者。每到夜�
 story_yifanmumian,日本传说中的妖怪，长相是一根白色布带。会袭击夜间独自出行的行人，把人的身体和头包裹起来带到半空中。,"A monster of Japanese origin that appears to be a white belt. He will attack people walking alone at night by surprise, and wrap the body and head to be taken up to the heavens."
 speech_ruodian,还记得怎么使用照妖镜吗？再教你一次哦！,Do you still remember how to use Mytho Lens? Here is the instructions again!
 ruodian_hide_name,线索,Clue
-guide_road1,<color=#ffcc00>神话守护者</color>开启啦！,<color=#ffcc00>Faith Keeper</color> unlocked!
+guide_road1,<color=#ffcc00>神话守护者</color>开启啦！,<color=#ffcc00>Myth Guardian Mode</color> unlocked!
+guide_road2,进入第一个关卡,Enter the first stage
+speech_xinyangzhilu1,神话守护者玩法共有<color=#ffcc00>9个关卡</color>，每关都有<color=#ffcc00>5只怪物</color>镇守，打败这些怪物才能够拿到奖励哦！,"Myth Guardian Mode has a total of <color=#ffcc00>9 stages</color>, with each stage guarded by <color=#ffcc00>5 monsters</color>. Defeat the monsters to get rewards!"
+speech_xinyangzhilu2,闯关过程中，我方怪物的<color=#ffcc00>血量和能量</color>在战斗结束后是会<color=#ffcc00>保留到下一场战斗</color>的，所以要合适的排布怪物们出场的先后顺序哦。,"While battling stages in this mode, the <color=#ffcc00>HP and Power</color> of players' monsters at the end of battle will be <color=#ffcc00>saved and used in the next battle</color>. So players should carefully consider their lineups and the order their monsters enter the battlefield."
+speech_xinyangzhilu3,当然，通关奖励是不会少的！除了<color=#ffcc00>基础奖励</color>外，还有<color=#ffcc00>概率获得神秘的宝箱奖励</color>哦！,"Of course, there will be great rewards upon clearing a stage! In addition to the <color=#ffcc00>basic rewards</color>, there will also be <color=#ffcc00>a chance of receiving mysterious treasure rewards</color>!"
+speech_xinyangzhilu4,还等什么！开启征战之旅吧！,What are you waiting for? Start your adventure now!
+guide_ruodian1,每个怪物都有<color=#ffcc00>弱点</color>,Every Monster's got a secret <color=#ffcc00>weakpoint</color>.
+guide_ruodian2,这是<color=#ffcc00>弱点</color>位置的<color=#ffcc00>线索</color>,Here's the <color=#ffcc00>Clue</color> of the <color=#ffcc00>weakpoint</color>.
+guide_ruodian3,看起来她的<color=#ffcc00>头</color>是弱点,Seems that it's her <color=#ffcc00>head</color>.
+guide_ruodian4,看起来<color=#ffcc00>花瓣</color>是弱点,Seems that it's the <color=#ffcc00>petal</color>.

@@ -149,7 +149,7 @@ public class MonsterEntity extends HawkDBEntity {
 		return lazyExp;
 	}
 
-	public void setLazyExp(byte lazyExp) {
+	public void setLazyExp(int lazyExp) {
 		this.lazyExp = lazyExp;
 	}
 	

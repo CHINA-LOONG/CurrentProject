@@ -26,17 +26,6 @@ message HSBattle
 
 // protocol-----------------------------------------------------
 
-// INSTANCE_ASSIST_C
-message HSInstanceAssist
-{
-}
-
-// INSTANCE_ASSIST_S
-message HSInstanceAssistRet
-{
-	repeated HSAssist assist = 1;
-}
-
 // INSTANCE_ENTER_C
 message HSInstanceEnter
 {
@@ -54,27 +43,14 @@ message HSInstanceEnterRet
 // INSTANCE_SETTLE_C
 message HSInstanceSettle
 {
-	repeated int32 passBattleIndex = 1;
-	repeated int32 passBoxIndex = 2;
+	required bool victory = 1;
 }
 
 // INSTANCE_SETTLE_S
 message HSInstanceSettleRet
 {
 	optional int32 starCount = 1 [default = 0];
-	optional HSRewardInfo completeReward = 2;
-	repeated RewardItem cardReward = 3;
-}
-
-// INSTANCE_OPEN_CARD_C
-message HSInstanceOpenCard
-{
-	required int32 openCount = 1;
-}
-
-// INSTANCE_OPEN_CARD_S
-message HSInstanceOpenCardRet
-{
+	optional HSRewardInfo reward = 2;
 }
 
 // INSTANCE_SWEEP_C
@@ -99,5 +75,42 @@ message HSInstanceResetCount
 
 // INSTANCE_RESET_COUNT_S
 message HSInstanceResetCountRet
+{
+}
+
+// INSTANCE_REVIVE_C
+message HSInstanceRevive
+{
+	
+}
+
+// INSTANCE_REVIVE_S
+message HSInstanceReviveRet
+{
+	required int32 reviveCount = 1;
+}
+
+// --未使用--------------------------------------------------------
+
+// INSTANCE_ASSIST_C
+message HSInstanceAssist
+{
+
+}
+
+// INSTANCE_ASSIST_S
+message HSInstanceAssistRet
+{
+	repeated HSAssist assist = 1;
+}
+
+// INSTANCE_OPEN_CARD_C
+message HSInstanceOpenCard
+{
+	required int32 openCount = 1;
+}
+
+// INSTANCE_OPEN_CARD_S
+message HSInstanceOpenCardRet
 {
 }

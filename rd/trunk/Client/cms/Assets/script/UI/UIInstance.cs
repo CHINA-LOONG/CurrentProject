@@ -125,4 +125,31 @@ public class UIInstance : UIBase,TabButtonDelegate
 
 	}
 	
+    public void ReOpenCurrentInstance(string curInstanceID)
+    {
+        InstanceEntryRuntimeData data = InstanceMapService.Instance.GetRuntimeInstance(curInstanceID);
+        OpenInstanceInternal(data);
+    }
+
+    public void OpenNextInstance(string curInstanceID)
+    {
+        //TODO:duplicate code
+        InstanceEntryRuntimeData data = InstanceMapService.Instance.GetNextRuntimeInstance(curInstanceID);
+        OpenInstanceInternal(data);
+    }
+
+    private void OpenInstanceInternal(InstanceEntryRuntimeData data)
+    {
+        //TODO:duplicate code
+        if (data != null)
+        {
+            UIAdjustBattleTeam adjustUi = UIMgr.Instance.OpenUI_(UIAdjustBattleTeam.ViewName) as UIAdjustBattleTeam;
+            UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+            if (uiBuild != null)
+            {
+                uiBuild.uiAdjustBattleTeam = adjustUi;
+            }
+            adjustUi.SetData(data.instanceId, data.staticData.enemyList, data.staticData.level);
+        }
+    }
 }

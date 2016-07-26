@@ -321,12 +321,12 @@ public class PlayerEquipModule extends PlayerModule{
 		}
 		
 		if (protocol.getOldGem().equals("") == false) {		
-			if (equipEntity.GetGemDressList().get(protocol.getSlot()) == null) {
+			if (equipEntity.GetGemDressList().get(protocol.getSlot()) == null || equipEntity.GetGemDressList().get(protocol.getSlot()).getGemId().equals(GsConst.EQUIP_GEM_NONE)) {
 				sendError(hsCode, Status.itemError.EQUIP_SLOT_EMPTY);
 				return ;
 			}
 			
-			if (!equipEntity.GetGemDressList().get(protocol.getSlot()).equals(protocol.getOldGem())) {
+			if (!equipEntity.GetGemDressList().get(protocol.getSlot()).getGemId().equals(protocol.getOldGem())) {
 				sendError(hsCode, Status.itemError.EQUIP_GEM_MISMATCH);
 				return ;
 			}
@@ -334,7 +334,7 @@ public class PlayerEquipModule extends PlayerModule{
 			award.addItem(protocol.getOldGem(), 1);
 		}
 		else {
-			if (equipEntity.GetGemDressList().get(protocol.getSlot()) != null) {
+			if (equipEntity.GetGemDressList().get(protocol.getSlot()) != null && !equipEntity.GetGemDressList().get(protocol.getSlot()).getGemId().equals(GsConst.EQUIP_GEM_NONE)) {
 				sendError(hsCode, Status.itemError.EQUIP_SLOT_NOT_EMPTY);
 				return ;
 			}

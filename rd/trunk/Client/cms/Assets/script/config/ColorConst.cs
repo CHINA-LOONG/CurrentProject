@@ -68,4 +68,8 @@ public class ColorConst
     public static Color text_color_nReq = new Color(1, 0, 0, 1);
     public static Color outline_color_nReq = new Color(148.0f / 255.0f, 0, 0, 1);
 
+
+	//shopitem buyprice color
+	public	static	Color	text_color_Enough = new Color (96.0f / 255.0f, 76.0f / 255.0f, 51.0f / 255.0f, 1);
+
 }

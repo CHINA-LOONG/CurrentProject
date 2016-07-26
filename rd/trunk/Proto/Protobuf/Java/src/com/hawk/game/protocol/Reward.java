@@ -97,8 +97,8 @@ public final class Reward {
      * <code>optional int32 stage = 5;</code>
      *
      * <pre>
-     * 是装备的附加属性
-     *装备品级
+     * 是装备时的附加属性
+     * 装备品级
      * </pre>
      */
     boolean hasStage();
@@ -106,8 +106,8 @@ public final class Reward {
      * <code>optional int32 stage = 5;</code>
      *
      * <pre>
-     * 是装备的附加属性
-     *装备品级
+     * 是装备时的附加属性
+     * 装备品级
      * </pre>
      */
     int getStage();
@@ -117,7 +117,7 @@ public final class Reward {
      * <code>optional int32 level = 6;</code>
      *
      * <pre>
-     *装备强化等级
+     * 装备等级
      * </pre>
      */
     boolean hasLevel();
@@ -125,7 +125,7 @@ public final class Reward {
      * <code>optional int32 level = 6;</code>
      *
      * <pre>
-     *装备强化等级
+     * 装备等级
      * </pre>
      */
     int getLevel();
@@ -135,7 +135,7 @@ public final class Reward {
      * <code>repeated .Attr attrDatas = 7;</code>
      *
      * <pre>
-     *附加属性信息
+     * 装备附加属性信息
      * </pre>
      */
     java.util.List<com.hawk.game.protocol.Attribute.Attr> 
@@ -144,7 +144,7 @@ public final class Reward {
      * <code>repeated .Attr attrDatas = 7;</code>
      *
      * <pre>
-     *附加属性信息
+     * 装备附加属性信息
      * </pre>
      */
     com.hawk.game.protocol.Attribute.Attr getAttrDatas(int index);
@@ -152,7 +152,7 @@ public final class Reward {
      * <code>repeated .Attr attrDatas = 7;</code>
      *
      * <pre>
-     *附加属性信息
+     * 装备附加属性信息
      * </pre>
      */
     int getAttrDatasCount();
@@ -160,7 +160,7 @@ public final class Reward {
      * <code>repeated .Attr attrDatas = 7;</code>
      *
      * <pre>
-     *附加属性信息
+     * 装备附加属性信息
      * </pre>
      */
     java.util.List<? extends com.hawk.game.protocol.Attribute.AttrOrBuilder> 
@@ -169,11 +169,37 @@ public final class Reward {
      * <code>repeated .Attr attrDatas = 7;</code>
      *
      * <pre>
-     *附加属性信息
+     * 装备附加属性信息
      * </pre>
      */
     com.hawk.game.protocol.Attribute.AttrOrBuilder getAttrDatasOrBuilder(
         int index);
+
+    // optional .HSMonster monster = 8;
+    /**
+     * <code>optional .HSMonster monster = 8;</code>
+     *
+     * <pre>
+     * 是怪物时的附加属性
+     * </pre>
+     */
+    boolean hasMonster();
+    /**
+     * <code>optional .HSMonster monster = 8;</code>
+     *
+     * <pre>
+     * 是怪物时的附加属性
+     * </pre>
+     */
+    com.hawk.game.protocol.Monster.HSMonster getMonster();
+    /**
+     * <code>optional .HSMonster monster = 8;</code>
+     *
+     * <pre>
+     * 是怪物时的附加属性
+     * </pre>
+     */
+    com.hawk.game.protocol.Monster.HSMonsterOrBuilder getMonsterOrBuilder();
   }
   /**
    * Protobuf type {@code RewardItem}
@@ -266,6 +292,19 @@ public final class Reward {
                 mutable_bitField0_ |= 0x00000040;
               }
               attrDatas_.add(input.readMessage(com.hawk.game.protocol.Attribute.Attr.PARSER, extensionRegistry));
+              break;
+            }
+            case 66: {
+              com.hawk.game.protocol.Monster.HSMonster.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                subBuilder = monster_.toBuilder();
+              }
+              monster_ = input.readMessage(com.hawk.game.protocol.Monster.HSMonster.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(monster_);
+                monster_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000040;
               break;
             }
           }
@@ -445,8 +484,8 @@ public final class Reward {
      * <code>optional int32 stage = 5;</code>
      *
      * <pre>
-     * 是装备的附加属性
-     *装备品级
+     * 是装备时的附加属性
+     * 装备品级
      * </pre>
      */
     public boolean hasStage() {
@@ -456,8 +495,8 @@ public final class Reward {
      * <code>optional int32 stage = 5;</code>
      *
      * <pre>
-     * 是装备的附加属性
-     *装备品级
+     * 是装备时的附加属性
+     * 装备品级
      * </pre>
      */
     public int getStage() {
@@ -471,7 +510,7 @@ public final class Reward {
      * <code>optional int32 level = 6;</code>
      *
      * <pre>
-     *装备强化等级
+     * 装备等级
      * </pre>
      */
     public boolean hasLevel() {
@@ -481,7 +520,7 @@ public final class Reward {
      * <code>optional int32 level = 6;</code>
      *
      * <pre>
-     *装备强化等级
+     * 装备等级
      * </pre>
      */
     public int getLevel() {
@@ -495,7 +534,7 @@ public final class Reward {
      * <code>repeated .Attr attrDatas = 7;</code>
      *
      * <pre>
-     *附加属性信息
+     * 装备附加属性信息
      * </pre>
      */
     public java.util.List<com.hawk.game.protocol.Attribute.Attr> getAttrDatasList() {
@@ -505,7 +544,7 @@ public final class Reward {
      * <code>repeated .Attr attrDatas = 7;</code>
      *
      * <pre>
-     *附加属性信息
+     * 装备附加属性信息
      * </pre>
      */
     public java.util.List<? extends com.hawk.game.protocol.Attribute.AttrOrBuilder> 
@@ -516,7 +555,7 @@ public final class Reward {
      * <code>repeated .Attr attrDatas = 7;</code>
      *
      * <pre>
-     *附加属性信息
+     * 装备附加属性信息
      * </pre>
      */
     public int getAttrDatasCount() {
@@ -526,7 +565,7 @@ public final class Reward {
      * <code>repeated .Attr attrDatas = 7;</code>
      *
      * <pre>
-     *附加属性信息
+     * 装备附加属性信息
      * </pre>
      */
     public com.hawk.game.protocol.Attribute.Attr getAttrDatas(int index) {
@@ -536,12 +575,46 @@ public final class Reward {
      * <code>repeated .Attr attrDatas = 7;</code>
      *
      * <pre>
-     *附加属性信息
+     * 装备附加属性信息
      * </pre>
      */
     public com.hawk.game.protocol.Attribute.AttrOrBuilder getAttrDatasOrBuilder(
         int index) {
       return attrDatas_.get(index);
+    }
+
+    // optional .HSMonster monster = 8;
+    public static final int MONSTER_FIELD_NUMBER = 8;
+    private com.hawk.game.protocol.Monster.HSMonster monster_;
+    /**
+     * <code>optional .HSMonster monster = 8;</code>
+     *
+     * <pre>
+     * 是怪物时的附加属性
+     * </pre>
+     */
+    public boolean hasMonster() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional .HSMonster monster = 8;</code>
+     *
+     * <pre>
+     * 是怪物时的附加属性
+     * </pre>
+     */
+    public com.hawk.game.protocol.Monster.HSMonster getMonster() {
+      return monster_;
+    }
+    /**
+     * <code>optional .HSMonster monster = 8;</code>
+     *
+     * <pre>
+     * 是怪物时的附加属性
+     * </pre>
+     */
+    public com.hawk.game.protocol.Monster.HSMonsterOrBuilder getMonsterOrBuilder() {
+      return monster_;
     }
 
     private void initFields() {
@@ -552,6 +625,7 @@ public final class Reward {
       stage_ = 0;
       level_ = 0;
       attrDatas_ = java.util.Collections.emptyList();
+      monster_ = com.hawk.game.protocol.Monster.HSMonster.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -568,6 +642,12 @@ public final class Reward {
       }
       for (int i = 0; i < getAttrDatasCount(); i++) {
         if (!getAttrDatas(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasMonster()) {
+        if (!getMonster().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -599,6 +679,9 @@ public final class Reward {
       }
       for (int i = 0; i < attrDatas_.size(); i++) {
         output.writeMessage(7, attrDatas_.get(i));
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeMessage(8, monster_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -636,6 +719,10 @@ public final class Reward {
       for (int i = 0; i < attrDatas_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, attrDatas_.get(i));
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, monster_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -750,6 +837,7 @@ public final class Reward {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getAttrDatasFieldBuilder();
+          getMonsterFieldBuilder();
         }
       }
       private static Builder create() {
@@ -776,6 +864,12 @@ public final class Reward {
         } else {
           attrDatasBuilder_.clear();
         }
+        if (monsterBuilder_ == null) {
+          monster_ = com.hawk.game.protocol.Monster.HSMonster.getDefaultInstance();
+        } else {
+          monsterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -836,6 +930,14 @@ public final class Reward {
           result.attrDatas_ = attrDatas_;
         } else {
           result.attrDatas_ = attrDatasBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        if (monsterBuilder_ == null) {
+          result.monster_ = monster_;
+        } else {
+          result.monster_ = monsterBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -899,6 +1001,9 @@ public final class Reward {
             }
           }
         }
+        if (other.hasMonster()) {
+          mergeMonster(other.getMonster());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -914,6 +1019,12 @@ public final class Reward {
         }
         for (int i = 0; i < getAttrDatasCount(); i++) {
           if (!getAttrDatas(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasMonster()) {
+          if (!getMonster().isInitialized()) {
             
             return false;
           }
@@ -1191,8 +1302,8 @@ public final class Reward {
        * <code>optional int32 stage = 5;</code>
        *
        * <pre>
-       * 是装备的附加属性
-       *装备品级
+       * 是装备时的附加属性
+       * 装备品级
        * </pre>
        */
       public boolean hasStage() {
@@ -1202,8 +1313,8 @@ public final class Reward {
        * <code>optional int32 stage = 5;</code>
        *
        * <pre>
-       * 是装备的附加属性
-       *装备品级
+       * 是装备时的附加属性
+       * 装备品级
        * </pre>
        */
       public int getStage() {
@@ -1213,8 +1324,8 @@ public final class Reward {
        * <code>optional int32 stage = 5;</code>
        *
        * <pre>
-       * 是装备的附加属性
-       *装备品级
+       * 是装备时的附加属性
+       * 装备品级
        * </pre>
        */
       public Builder setStage(int value) {
@@ -1227,8 +1338,8 @@ public final class Reward {
        * <code>optional int32 stage = 5;</code>
        *
        * <pre>
-       * 是装备的附加属性
-       *装备品级
+       * 是装备时的附加属性
+       * 装备品级
        * </pre>
        */
       public Builder clearStage() {
@@ -1244,7 +1355,7 @@ public final class Reward {
        * <code>optional int32 level = 6;</code>
        *
        * <pre>
-       *装备强化等级
+       * 装备等级
        * </pre>
        */
       public boolean hasLevel() {
@@ -1254,7 +1365,7 @@ public final class Reward {
        * <code>optional int32 level = 6;</code>
        *
        * <pre>
-       *装备强化等级
+       * 装备等级
        * </pre>
        */
       public int getLevel() {
@@ -1264,7 +1375,7 @@ public final class Reward {
        * <code>optional int32 level = 6;</code>
        *
        * <pre>
-       *装备强化等级
+       * 装备等级
        * </pre>
        */
       public Builder setLevel(int value) {
@@ -1277,7 +1388,7 @@ public final class Reward {
        * <code>optional int32 level = 6;</code>
        *
        * <pre>
-       *装备强化等级
+       * 装备等级
        * </pre>
        */
       public Builder clearLevel() {
@@ -1304,7 +1415,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public java.util.List<com.hawk.game.protocol.Attribute.Attr> getAttrDatasList() {
@@ -1318,7 +1429,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public int getAttrDatasCount() {
@@ -1332,7 +1443,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public com.hawk.game.protocol.Attribute.Attr getAttrDatas(int index) {
@@ -1346,7 +1457,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public Builder setAttrDatas(
@@ -1367,7 +1478,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public Builder setAttrDatas(
@@ -1385,7 +1496,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public Builder addAttrDatas(com.hawk.game.protocol.Attribute.Attr value) {
@@ -1405,7 +1516,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public Builder addAttrDatas(
@@ -1426,7 +1537,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public Builder addAttrDatas(
@@ -1444,7 +1555,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public Builder addAttrDatas(
@@ -1462,7 +1573,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public Builder addAllAttrDatas(
@@ -1480,7 +1591,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public Builder clearAttrDatas() {
@@ -1497,7 +1608,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public Builder removeAttrDatas(int index) {
@@ -1514,7 +1625,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public com.hawk.game.protocol.Attribute.Attr.Builder getAttrDatasBuilder(
@@ -1525,7 +1636,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public com.hawk.game.protocol.Attribute.AttrOrBuilder getAttrDatasOrBuilder(
@@ -1539,7 +1650,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public java.util.List<? extends com.hawk.game.protocol.Attribute.AttrOrBuilder> 
@@ -1554,7 +1665,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public com.hawk.game.protocol.Attribute.Attr.Builder addAttrDatasBuilder() {
@@ -1565,7 +1676,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public com.hawk.game.protocol.Attribute.Attr.Builder addAttrDatasBuilder(
@@ -1577,7 +1688,7 @@ public final class Reward {
        * <code>repeated .Attr attrDatas = 7;</code>
        *
        * <pre>
-       *附加属性信息
+       * 装备附加属性信息
        * </pre>
        */
       public java.util.List<com.hawk.game.protocol.Attribute.Attr.Builder> 
@@ -1597,6 +1708,159 @@ public final class Reward {
           attrDatas_ = null;
         }
         return attrDatasBuilder_;
+      }
+
+      // optional .HSMonster monster = 8;
+      private com.hawk.game.protocol.Monster.HSMonster monster_ = com.hawk.game.protocol.Monster.HSMonster.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Monster.HSMonster, com.hawk.game.protocol.Monster.HSMonster.Builder, com.hawk.game.protocol.Monster.HSMonsterOrBuilder> monsterBuilder_;
+      /**
+       * <code>optional .HSMonster monster = 8;</code>
+       *
+       * <pre>
+       * 是怪物时的附加属性
+       * </pre>
+       */
+      public boolean hasMonster() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional .HSMonster monster = 8;</code>
+       *
+       * <pre>
+       * 是怪物时的附加属性
+       * </pre>
+       */
+      public com.hawk.game.protocol.Monster.HSMonster getMonster() {
+        if (monsterBuilder_ == null) {
+          return monster_;
+        } else {
+          return monsterBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .HSMonster monster = 8;</code>
+       *
+       * <pre>
+       * 是怪物时的附加属性
+       * </pre>
+       */
+      public Builder setMonster(com.hawk.game.protocol.Monster.HSMonster value) {
+        if (monsterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          monster_ = value;
+          onChanged();
+        } else {
+          monsterBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .HSMonster monster = 8;</code>
+       *
+       * <pre>
+       * 是怪物时的附加属性
+       * </pre>
+       */
+      public Builder setMonster(
+          com.hawk.game.protocol.Monster.HSMonster.Builder builderForValue) {
+        if (monsterBuilder_ == null) {
+          monster_ = builderForValue.build();
+          onChanged();
+        } else {
+          monsterBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .HSMonster monster = 8;</code>
+       *
+       * <pre>
+       * 是怪物时的附加属性
+       * </pre>
+       */
+      public Builder mergeMonster(com.hawk.game.protocol.Monster.HSMonster value) {
+        if (monsterBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080) &&
+              monster_ != com.hawk.game.protocol.Monster.HSMonster.getDefaultInstance()) {
+            monster_ =
+              com.hawk.game.protocol.Monster.HSMonster.newBuilder(monster_).mergeFrom(value).buildPartial();
+          } else {
+            monster_ = value;
+          }
+          onChanged();
+        } else {
+          monsterBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .HSMonster monster = 8;</code>
+       *
+       * <pre>
+       * 是怪物时的附加属性
+       * </pre>
+       */
+      public Builder clearMonster() {
+        if (monsterBuilder_ == null) {
+          monster_ = com.hawk.game.protocol.Monster.HSMonster.getDefaultInstance();
+          onChanged();
+        } else {
+          monsterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+      /**
+       * <code>optional .HSMonster monster = 8;</code>
+       *
+       * <pre>
+       * 是怪物时的附加属性
+       * </pre>
+       */
+      public com.hawk.game.protocol.Monster.HSMonster.Builder getMonsterBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getMonsterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .HSMonster monster = 8;</code>
+       *
+       * <pre>
+       * 是怪物时的附加属性
+       * </pre>
+       */
+      public com.hawk.game.protocol.Monster.HSMonsterOrBuilder getMonsterOrBuilder() {
+        if (monsterBuilder_ != null) {
+          return monsterBuilder_.getMessageOrBuilder();
+        } else {
+          return monster_;
+        }
+      }
+      /**
+       * <code>optional .HSMonster monster = 8;</code>
+       *
+       * <pre>
+       * 是怪物时的附加属性
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Monster.HSMonster, com.hawk.game.protocol.Monster.HSMonster.Builder, com.hawk.game.protocol.Monster.HSMonsterOrBuilder> 
+          getMonsterFieldBuilder() {
+        if (monsterBuilder_ == null) {
+          monsterBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.hawk.game.protocol.Monster.HSMonster, com.hawk.game.protocol.Monster.HSMonster.Builder, com.hawk.game.protocol.Monster.HSMonsterOrBuilder>(
+                  monster_,
+                  getParentForChildren(),
+                  isClean());
+          monster_ = null;
+        }
+        return monsterBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:RewardItem)
@@ -3067,13 +3331,14 @@ public final class Reward {
       "\n\025Protocol/Reward.proto\032\026Protocol/Consum" +
       "e.proto\032\030Protocol/Attribute.proto\032\025Proto" +
       "col/Player.proto\032\026Protocol/Monster.proto" +
-      "\"}\n\nRewardItem\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \001(\003" +
-      "\022\016\n\006itemId\030\003 \002(\t\022\r\n\005count\030\004 \001(\005\022\r\n\005stage" +
-      "\030\005 \001(\005\022\r\n\005level\030\006 \001(\005\022\030\n\tattrDatas\030\007 \003(\013" +
-      "2\005.Attr\"{\n\014HSRewardInfo\022\"\n\nplayerAttr\030\001 " +
-      "\001(\0132\016.SynPlayerAttr\022%\n\014monstersAttr\030\002 \003(" +
-      "\0132\017.SynMonsterAttr\022 \n\013RewardItems\030\003 \003(\0132" +
-      "\013.RewardItemB\030\n\026com.hawk.game.protocol"
+      "\"\232\001\n\nRewardItem\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \001(" +
+      "\003\022\016\n\006itemId\030\003 \002(\t\022\r\n\005count\030\004 \001(\005\022\r\n\005stag" +
+      "e\030\005 \001(\005\022\r\n\005level\030\006 \001(\005\022\030\n\tattrDatas\030\007 \003(" +
+      "\0132\005.Attr\022\033\n\007monster\030\010 \001(\0132\n.HSMonster\"{\n" +
+      "\014HSRewardInfo\022\"\n\nplayerAttr\030\001 \001(\0132\016.SynP" +
+      "layerAttr\022%\n\014monstersAttr\030\002 \003(\0132\017.SynMon" +
+      "sterAttr\022 \n\013RewardItems\030\003 \003(\0132\013.RewardIt",
+      "emB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3085,7 +3350,7 @@ public final class Reward {
           internal_static_RewardItem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_RewardItem_descriptor,
-              new java.lang.String[] { "Type", "Id", "ItemId", "Count", "Stage", "Level", "AttrDatas", });
+              new java.lang.String[] { "Type", "Id", "ItemId", "Count", "Stage", "Level", "AttrDatas", "Monster", });
           internal_static_HSRewardInfo_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_HSRewardInfo_fieldAccessorTable = new

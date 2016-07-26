@@ -4,7 +4,7 @@ id,name,chapter,index,type,difficulty,fatigue,count,desc,enemy1,enemy2,enemy3,en
 pvp_scene,pvp_title,-1,-1,5,0,6,200,,"xgMoguguai3,0","xgKairuisi4,0","bossdajie17Huapo2,1",,,,133,33101,fubenxuanze_dajie_1,pvp
 dajie11,Street - 1,1,0,1,0,6,200,,"xgMoguguai3,0","xgKairuisi4,0","bossdajie17Huapo2,1",,,,133,33101,fubenxuanze_dajie_1,
 dajie12,Street - 2,1,1,1,0,6,200,,"xgKairuisi4,0","xgHetong2,0","bossdajie12Mantuoluo2,1",,,,265,33101,fubenxuanze_dajie_1,
-dajie13,Street - 3,1,2,1,0,6,200,,"xgWagui3,0","xgXiyiren2,0","bossdajie11Moguguai4,1",,,,405,33101,fubenxuanze_dajie_1,
+dajie13,Street - 3,1,2,1,0,6,200,,"xgWagui3,0","xgXiyiren2,0","bossdajie11Moguguai4,1",,,,400,33101,fubenxuanze_dajie_1,
 dajie14,Street - 4,1,3,1,0,6,200,,"xgMoguguai4,0","xgHetong2,0","bossdajie14Piying5,3",,,,410,33102,fubenxuanze_dajie_2,
 dajie15,Street - 5,1,4,1,0,6,200,,"xgWagui3,0","xgCike4,0","bossdajie15Langren3,1",,,,430,33101,fubenxuanze_dajie_1,
 dajie16,Street - 6,1,5,1,0,6,200,,"xgPanshen2,0","xgHuapo2,0","bossdajie16Zouyincao2,1",,,,585,33101,fubenxuanze_dajie_1,

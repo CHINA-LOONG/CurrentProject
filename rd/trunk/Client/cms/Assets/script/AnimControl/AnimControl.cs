@@ -58,7 +58,8 @@ public class AnimControl : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void SetController(string controllerName)
     {
-        RuntimeAnimatorController curController = (RuntimeAnimatorController)Resources.Load(controllerName);
+        RuntimeAnimatorController curController = ResourceMgr.Instance.LoadAssetType<RuntimeAnimatorController>(controllerName);
+        //RuntimeAnimatorController curController = (RuntimeAnimatorController)Resources.Load(controllerName);
         if (curController != null)
         {
             actualControler.runtimeAnimatorController = curController;

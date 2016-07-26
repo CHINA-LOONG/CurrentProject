@@ -16,6 +16,12 @@ state = 1 Remove
 				<Particle asset="sankai" bundle="effect/battle" parent=""/>
 			</ParticleList>
 		</Ani>
+		<Ani id="gainUnitMove" state="0">
+			<MotionList>
+				<Motion time="0" ani="" key="paobu" value="true"/>
+				<Motion time="2" ani="" key="paobu" value="false"/>
+			</MotionList>
+		</Ani>
 		<Ani id="test_sequence" state="0" action_delay="0">
 			<ControllerList>
 				<Controller time="0" name="monsters/hundun/boss_hundun_state2"/>
@@ -2635,7 +2641,7 @@ state = 1 Remove
 	<AniList group="State_chage">
 		<Ani id="karong_stage1to2_shuihuo" state="0" action_delay="0">
 			<ControllerList>
-				<Controller time="2.6" name="monsters/karong/Karong_boss2"/>
+				<Controller time="2.6" name="Karong_boss2"/>
 			</ControllerList>
 			<WpStateList>
 				<Wp time="2.6" name="bossMinghe18Karongwp01" state="3"/>

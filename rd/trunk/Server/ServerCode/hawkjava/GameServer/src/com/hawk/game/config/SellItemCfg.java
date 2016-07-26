@@ -40,15 +40,18 @@ public class SellItemCfg extends HawkConfigBase{
 	}
 	
 	public List<ShopItemInfo> getItemList(){
-		List<ShopItemInfo> shopItems = new ArrayList<>();
+		List<ShopItemInfo> shopItems = new LinkedList<>();
 		for (ShopItemInfo element : fixItems) {
 			shopItems.add(element);
 		}
+		
+		List<ShopItemInfo> randomShopItems = new LinkedList<>();
 		for (String element : randomItemList) {
-			shopItems.add(HawkConfigManager.getInstance().getConfigByKey(ItemRandomCfg.class, element).getRandomItem());
+			randomShopItems.add(HawkConfigManager.getInstance().getConfigByKey(ItemRandomCfg.class, element).getRandomItem());
 		}
-	
-		HawkRand.randomOrder(shopItems);
+
+		HawkRand.randomOrder(randomShopItems);
+		shopItems.addAll(randomShopItems);
 		return shopItems;
 	}
 	

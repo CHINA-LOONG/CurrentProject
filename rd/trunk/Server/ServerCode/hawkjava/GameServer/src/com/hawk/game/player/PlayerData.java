@@ -25,6 +25,7 @@ import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.protocol.Const.equipPart;
 import com.hawk.game.protocol.Equip.HSEquipInfoSync;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
 import com.hawk.game.protocol.Mail.HSMailInfoSync;
@@ -37,6 +38,7 @@ import com.hawk.game.protocol.Setting.HSSettingInfoSync;
 import com.hawk.game.protocol.Status.itemError;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.ShopUtil;
 
 /**
  * 管理所有玩家数据集合
@@ -257,6 +259,13 @@ public class PlayerData {
 	}
 
 	/**
+	 * 获取某件怪物身上所有装备
+	 */
+	public Map<Integer, Long> getMonsterEquips(int monsterId) {
+		return dressedEquipMap.get(monsterId);
+	}
+	
+	/**
 	 * 添加装备  不修改entity
 	 * 
 	 * @param monsterID 怪物ID
@@ -296,7 +305,7 @@ public class PlayerData {
 
 		monsterDressedMap.remove(part);
 
-		if (monsterDressedMap.size() == 0) {
+		if (monsterDressedMap.isEmpty() == true) {
 			dressedEquipMap.remove(equipEntity.getMonsterId());
 		}
 
@@ -672,6 +681,8 @@ public class PlayerData {
 				shopEntity= new ShopEntity();
 				shopEntity.setPlayerId(player.getId());
 				shopEntity.notifyCreate();
+				shopEntity.decode();
+				ShopUtil.refreshShopData(player);
 			}
 		}
 		return shopEntity;

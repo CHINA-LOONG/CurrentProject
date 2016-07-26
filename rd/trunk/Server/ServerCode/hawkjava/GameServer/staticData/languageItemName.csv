@@ -81,12 +81,12 @@ name_20053_suipian_datiangou4,大天狗碎片（火）,Tengu Fragment(Fire)
 name_20054_suipian_tianshizhang1,天使长碎片（光）,Archangel Fragment(Light)
 name_20055_suipian_longnv1,龙女碎片（光）,Dragon Girl Fragment(Light)
 name_20056_suipian_weitianshi1,伪天使碎片（光）,Fallen Angel Fragment(Light)
-name_20057_suipian_nvyao1,报丧女妖（光）,Banshee Fragment(Light)
-name_20058_suipian_piying1,皮影（光）,Shadow Puppet Fragment(Light)
-name_20059_suipian_kahuna2,卡胡纳（木）,Kahuna Fragment(Grass)
-name_20060_suipian_yifanmumian1,一反木棉（光）,Ittan Momen Fragment(Light)
-name_20061_suipian_jinglingwang2,精灵王子（木）,Prince Elve Fragment(Grass)
-name_20062_suipian_luoxinfu1,络新妇（光）,Nephila Fragment(Light)
+name_20057_suipian_nvyao1,报丧女妖碎片（光）,Banshee Fragment(Light)
+name_20058_suipian_piying1,皮影碎片（光）,Shadow Puppet Fragment(Light)
+name_20059_suipian_kahuna2,卡胡纳碎片（木）,Kahuna Fragment(Grass)
+name_20060_suipian_yifanmumian1,一反木棉碎片（光）,Ittan Momen Fragment(Light)
+name_20061_suipian_jinglingwang2,精灵王子碎片（木）,Prince Elve Fragment(Grass)
+name_20062_suipian_luoxinfu1,络新妇碎片（光）,Nephila Fragment(Light)
 name_30011_BloodStone_1,生命纹章lv1,Blood Insignia(lv1)
 name_30012_BloodStone_2,生命纹章lv2,Blood Insignia(lv2)
 name_30013_BloodStone_3,生命纹章lv3,Blood Insignia(lv3)
@@ -203,8 +203,8 @@ name_40062_pvprankxianshisuipian,史诗宠物碎片箱子,Epic Monster Fragment 
 name_40063_advanturegoldbox,钻石箱子,Diamond Chest
 name_40064_pvpbox,竞技场碎片箱子,Arena Chest
 name_40065_towerbox,通天塔碎片箱子,Tower Chest
-name_40066_bfregmentda,B级宠物碎片箱子（大）,Class B Monster Fragments(Giant)
-name_40067_afregmentda,A级宠物碎片箱子（大）,Class A Monster Fragments(Giant)
+name_40066_bfregmentda,B级宠物碎片箱子 (大),Class B Monster Fragments(Giant)
+name_40067_afregmentda,A级宠物碎片箱子 (大),Class A Monster Fragments(Giant)
 name_40068_bigTaskleader601,领袖宝箱（金币）lv5,Leader Chest(coins) (lv5)
 name_40069_bigTaskleader602,领袖宝箱（补给品）lv5,Leader Chest(supplies) (lv5)
 name_40070_commonfregmentda,中级宠物碎片箱子,Average Monster Fragment Chest
@@ -534,3 +534,19 @@ name_10020_jinjiejuanzhou,妖力晶核lv3,Crystal Ball Core lv 3
 tips_10018_jinjiejuanzhou,装备强化打造的材料,Equipment forging material
 tips_10019_jinjiejuanzhou,装备强化打造的材料,Equipment forging material
 tips_10020_jinjiejuanzhou,装备强化打造的材料,Equipment forging material
+name_10024_caihongguai1,初级怪物之魂,Basic Monster Spirit
+name_10025_caihongguai2,中级怪物之魂,Average Monster Spirit
+name_10026_caihongguai3,高级怪物之魂,Advanced Monster Spirit
+name_10027_caihongguai4,史诗怪物之魂,Epic Monster Spirit
+tips_10024_caihongguai1,"宠物之魂， 可以替代C, B级宠物进行宠物进阶","Monster Spirit, can be used instead of Class B or C whole monster for Monster Advance."
+tips_10025_caihongguai2,宠物之魂， 可以替代A级宠物进行宠物进阶,"Monster Spirit, can be used instead of Class A whole monster for Monster Advance."
+tips_10026_caihongguai3,宠物之魂， 可以替代S级宠物进行宠物进阶,"Monster Spirit, can be used instead of Class S whole monster for Monster Advance."
+tips_10027_caihongguai4,宠物之魂， 可以替代SS级宠物进行宠物进阶,"Monster Spirit, can be used instead of Class SS whole monster for Monster Advance."
+name_40075_wenzhanglibao1,蓝色纹章箱子,蓝色纹章箱子
+name_40076_wenzhanglibao2,紫色纹章箱子,紫色纹章箱子
+tips_40075_wenzhanglibao1,随机开出1个3级或4级纹章,随机开出1个3级或4级纹章
+tips_40076_wenzhanglibao2,随机开出1个5级或6级纹章,随机开出1个5级或6级纹章
+name_40073_suipianlibao1,碎片箱子,碎片箱子
+name_40074_suipianlibao2,碎片箱子（稀有）,碎片箱子（稀有）
+tips_40073_suipianlibao1,随机开出20个C级宠物碎片、10个B级宠物碎片以及10个惊喜碎片（10个B级或者A级宠物碎片）,随机开出20个C级宠物碎片、10个B级宠物碎片以及10个惊喜碎片（10个B级或者A级宠物碎片）
+tips_40074_suipianlibao2,随机开出25个C级宠物碎片、15个B级宠物碎片以及10个惊喜碎片（10个A级、S级或者SS级宠物碎片）,随机开出25个C级宠物碎片、15个B级宠物碎片以及10个惊喜碎片（10个A级、S级或者SS级宠物碎片）

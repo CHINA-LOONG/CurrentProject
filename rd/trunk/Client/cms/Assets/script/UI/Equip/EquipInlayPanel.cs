@@ -344,6 +344,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
     {
         PB.HSEquipGem param = new PB.HSEquipGem();
         param.id = curData.id;
+        param.slot = selIndex;
         param.type = curData.gemList[selIndex].type;
         param.oldGem = curData.gemList[selIndex].gemId;
         GameApp.Instance.netManager.SendMessage(PB.code.EQUIP_GEM_C.GetHashCode(), param);

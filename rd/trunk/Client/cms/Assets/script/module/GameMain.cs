@@ -18,18 +18,18 @@ public class GameMain : MonoBehaviour
 	/*[SerializeField]
 	ModuleBase mNextModule = null;*/
 	
-	object mParam0 = null;
-	public object Param0Attr
-	{
-		get
-		{
-			return mParam0;
-		}
-		set
-		{
-			mParam0 = value;
-		}
-	}
+    //object mParam0 = null;
+    //public object Param0Attr
+    //{
+    //    get
+    //    {
+    //        return mParam0;
+    //    }
+    //    set
+    //    {
+    //        mParam0 = value;
+    //    }
+    //}
 
 	static GameMain mInst = null;
 	public static GameMain Instance
@@ -70,7 +70,7 @@ public class GameMain : MonoBehaviour
         string moduleName = typeof(T).ToString();
         T t = this.gameObject.AddComponent<T>();
         t.ModuleNameAttr = moduleName;
-        t.OnInit(mParam0);
+        t.OnInit(param0);
 		//mPrevModule = mCurModule;
 		mCurModule = t;
 		mCurModule.OnEnter(param0);
@@ -165,7 +165,7 @@ public class GameMain : MonoBehaviour
         string moduleName = typeof(T).ToString();
         T t = this.gameObject.AddComponent<T>();
         t.ModuleNameAttr = moduleName;
-        t.OnInit(mParam0);
+        t.OnInit(param0);
         //mPrevModule = mCurModule;
         mCurModule = t;
         mCurModule.OnEnter(param0);

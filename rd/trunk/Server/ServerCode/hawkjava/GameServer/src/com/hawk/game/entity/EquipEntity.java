@@ -202,21 +202,21 @@ public class EquipEntity extends HawkDBEntity {
 	
 	public void addGem(int slot, int type, String gemId)
 	{
-		if (gemDressList.get(slot) != null && gemDressList.get(slot).equals(GsConst.EQUIP_GEM_NONE)) {
+		if (gemDressList.get(slot) != null && gemDressList.get(slot).getGemId().equals(GsConst.EQUIP_GEM_NONE)) {
 			gemDressList.get(slot).setGemId(gemId);
 		}
 	}
 	
 	public void removeGem(int slot, String gemId)
 	{
-		if (gemDressList.get(slot) != null && gemDressList.get(slot).equals(gemId)) {
+		if (gemDressList.get(slot) != null && gemDressList.get(slot).getGemId().equals(gemId)) {
 			gemDressList.get(slot).setGemId(GsConst.EQUIP_GEM_NONE);
 		}
 	}
 	
 	public void replaceGem(int slot, String oldGemId, String newgemId)
 	{
-		if (gemDressList.get(slot) != null && gemDressList.get(slot).equals(oldGemId)) {
+		if (gemDressList.get(slot) != null && gemDressList.get(slot).getGemId().equals(oldGemId)) {
 			gemDressList.get(slot).setGemId(newgemId);
 		}
 	}

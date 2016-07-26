@@ -43,6 +43,19 @@ public class ShopItemInfo extends ItemInfo{
 		this.hasBuy = false;
 	}
 	
+	public ShopItemInfo clone() {
+		ShopItemInfo ret = new ShopItemInfo();
+		ret.type = this.type;
+		ret.itemId = this.itemId;
+		ret.count = this.count;
+		ret.stage = this.stage;
+		ret.level = this.level;
+		ret.slot = this.slot;
+		ret.discount = this.discount;		
+		ret.hasBuy = this.hasBuy;
+		return ret;
+	}
+	
 	public int getSlot() {
 		return slot;
 	}

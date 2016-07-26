@@ -99,8 +99,8 @@ public class InlayGemItem : MonoBehaviour
                 {
                     Type = MosaicType.Mosaic;
 
+                    UIUtil.SetStageColor(textGemName, gemItem);
                     EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(gemItem.gemId);
-                    textGemName.text = StaticDataMgr.Instance.GetTextByID(gemItem.name);
                     UIUtil.SetDisPlayAttr(attr, text_Attr1, textAttr1, text_Attr2, textAttr2);
                     ItemData itemData = new ItemData() { itemId = gem.gemId, count = 0 };
                     if (gemIcon == null)

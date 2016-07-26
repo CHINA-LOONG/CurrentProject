@@ -89,7 +89,7 @@ public class UIPetList :  UIBase, TabButtonDelegate
 
     void ShowScrollIcon()
     {
-        if (m_patContainer != null && m_patContainer.transform.childCount > 6 && scrollView.normalizedPosition.y > 0.01)
+        if (scrollView.normalizedPosition.y > 0.01)
         {
             srcollIcon.gameObject.SetActive(true);
         }

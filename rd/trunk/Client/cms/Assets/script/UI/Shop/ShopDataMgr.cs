@@ -61,7 +61,7 @@ public class ShopDataMgr : MonoBehaviour
 	{
 		if (lastRefreshTime == null)
 			return true;
-		TimeStaticData tNow = GameTimeMgr.Instance.GetTime ();
+		TimeStaticData tNow = GameTimeMgr.Instance.GetServerTime ();
 		int delT = 60 * (tNow.hour - lastRefreshTime.hour) + (tNow.minute - lastRefreshTime.minute);
 		if (delT > ShopConst.shopDataSynNeedMinute)
 			return true;
@@ -100,7 +100,7 @@ public class ShopDataMgr : MonoBehaviour
 			subShopData = msgRet.shopDatas[i];
 			shopDataDic.Add(subShopData.type,subShopData);
 		}
-		lastRefreshTime = GameTimeMgr.Instance.GetTime ();
+		lastRefreshTime = GameTimeMgr.Instance.GetServerTime ();
 
 		GameEventMgr.Instance.FireEvent (GameEventList.RefreshShopUi);
 	}
@@ -127,7 +127,7 @@ public class ShopDataMgr : MonoBehaviour
 		PB.HSShopDataSynRet msgRet = msg.GetProtocolBody<PB.HSShopDataSynRet> ();
 
 		shopDataDic [msgRet.shopData.type] = msgRet.shopData;
-		lastRefreshTime = GameTimeMgr.Instance.GetTime ();
+		lastRefreshTime = GameTimeMgr.Instance.GetServerTime ();
 	}
 	#endregion
 
@@ -137,7 +137,7 @@ public class ShopDataMgr : MonoBehaviour
 	{
 		PB.HSShopRefresh param = new PB.HSShopRefresh ();
 		param.type = shopType;
-		GameApp.Instance.netManager.SendMessage (PB.code.ShopDataSynC.GetHashCode (), param);
+		GameApp.Instance.netManager.SendMessage (PB.code.ShopRefreshC.GetHashCode (), param);
 	}
 
 	void OnRefreshShopWithDiamondFinished(ProtocolMessage msg)
@@ -154,7 +154,7 @@ public class ShopDataMgr : MonoBehaviour
 		shopDataDic [msgRet.shopData.type] = msgRet.shopData;
 
 		GameEventMgr.Instance.FireEvent (GameEventList.RefreshShopUi);
-		lastRefreshTime = GameTimeMgr.Instance.GetTime ();
+		lastRefreshTime = GameTimeMgr.Instance.GetServerTime ();
 	}
 	#endregion
 
@@ -290,7 +290,7 @@ public class ShopDataMgr : MonoBehaviour
 
 		ArrayList timesArray = MiniJsonExtensions.arrayListFromJson (refreshItem.times);
 		string subitem = null;
-		TimeStaticData tNow = GameTimeMgr.Instance.GetTime();
+		TimeStaticData tNow = GameTimeMgr.Instance.GetServerTime();
 		TimeStaticData earlyRefresh = null;
 		for (int i =0; i < timesArray.Count; ++ i)
 		{

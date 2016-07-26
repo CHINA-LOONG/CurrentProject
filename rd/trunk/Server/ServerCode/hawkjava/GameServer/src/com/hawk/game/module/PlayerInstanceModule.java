@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import org.hawk.annotation.ProtocolHandler;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,7 @@ import com.hawk.game.config.InstanceCfg;
 import com.hawk.game.config.InstanceDropCfg;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.InstanceRewardCfg;
-import com.hawk.game.config.RewardGroupCfg;
+import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
@@ -25,22 +26,22 @@ import com.hawk.game.item.ItemInfo;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
+import com.hawk.game.protocol.Const.changeType;
 import com.hawk.game.protocol.Const.itemType;
+import com.hawk.game.protocol.Const.toolType;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Instance.HSBattle;
 import com.hawk.game.protocol.Instance.HSInstanceAssist;
 import com.hawk.game.protocol.Instance.HSInstanceAssistRet;
 import com.hawk.game.protocol.Instance.HSInstanceEnter;
 import com.hawk.game.protocol.Instance.HSInstanceEnterRet;
-import com.hawk.game.protocol.Instance.HSInstanceOpenCard;
-import com.hawk.game.protocol.Instance.HSInstanceOpenCardRet;
 import com.hawk.game.protocol.Instance.HSInstanceResetCount;
 import com.hawk.game.protocol.Instance.HSInstanceResetCountRet;
 import com.hawk.game.protocol.Instance.HSInstanceSettle;
 import com.hawk.game.protocol.Instance.HSInstanceSettleRet;
 import com.hawk.game.protocol.Instance.HSInstanceSweep;
 import com.hawk.game.protocol.Instance.HSInstanceSweepRet;
-import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.InstanceUtil;
@@ -54,18 +55,15 @@ public class PlayerInstanceModule extends PlayerModule {
 	private String curInstanceId;
 	// 本次对局列表
 	private List<HSBattle> curBattleList;
-	// 本次对局掉落列表
-	private List<List<ItemInfo>> curBattleDropList;
-	// 本次结算星级奖牌列表
-	private List<ItemInfo> curCardRewardList;
+	// 本次副本掉落列表
+	private List<ItemInfo> curDropList;
 
 	public PlayerInstanceModule(Player player) {
 		super(player);
 
 		curInstanceId = "";
 		curBattleList = new ArrayList<HSBattle>();
-		curBattleDropList = new ArrayList<List<ItemInfo>>();
-		curCardRewardList = new ArrayList<ItemInfo>();
+		curDropList = new ArrayList<ItemInfo>();
 	}
 
 	/**
@@ -163,11 +161,11 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		this.curInstanceId = instanceId;
-		if (false == this.curBattleList.isEmpty() || false == this.curBattleDropList.isEmpty() || false == this.curCardRewardList.isEmpty()) {
+		if (false == this.curBattleList.isEmpty()
+				|| false == this.curDropList.isEmpty()) {
 			logger.error("instance data is not empty when enter instance");
 			this.curBattleList.clear();
-			this.curBattleDropList.clear();
-			this.curCardRewardList.clear();
+			this.curDropList.clear();
 		}
 
 		// 生成对局
@@ -187,7 +185,6 @@ public class PlayerInstanceModule extends PlayerModule {
 		for (int i = 0; i < instanceCfg.getNormalBattleCount(); ++i) {
 			HSBattle.Builder battle = HSBattle.newBuilder();
 			battle.setBattleCfgId(instanceCfg.getNormalBattleIdList().get(i));
-			List<ItemInfo> battleDropList = new ArrayList<ItemInfo>();
 
 			for (int j = 0; j < battleMonsterCount; ++j) {
 				String monsterCfgId = iter.next();
@@ -197,7 +194,7 @@ public class PlayerInstanceModule extends PlayerModule {
 				InstanceDropCfg dropCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceDropCfg.class, instanceMonsterId);
 				if (dropCfg != null) {
 					monsterDropList = dropCfg.getReward().getRewardList();
-					battleDropList.addAll(monsterDropList);
+					this.curDropList.addAll(monsterDropList);
 				} else {
 					monsterDropList = new ArrayList<ItemInfo>();
 				}
@@ -207,7 +204,6 @@ public class PlayerInstanceModule extends PlayerModule {
 			}
 
 			this.curBattleList.add(battle.build());
-			this.curBattleDropList.add(battleDropList);
 		}
 
 		// boss
@@ -221,10 +217,8 @@ public class PlayerInstanceModule extends PlayerModule {
 				orderedMonsterList.add(entry.getKey());
 			}
 		}
-		//HawkRand.randomOrder(orderedMonsterList);
 
 		iter = orderedMonsterList.iterator();
-		List<ItemInfo> battleDropList = new ArrayList<ItemInfo>();
 		for (int i = 0; i < orderedMonsterList.size(); ++i) {
 			String monsterCfgId = orderedMonsterList.get(i);
 			String instanceMonsterId = instanceId + "_" + monsterCfgId;
@@ -233,7 +227,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			InstanceDropCfg dropCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceDropCfg.class, instanceMonsterId);
 			if (dropCfg != null) {
 				monsterDropList = dropCfg.getReward().getRewardList();
-				battleDropList.addAll(monsterDropList);
+				this.curDropList.addAll(monsterDropList);
 			} else {
 				monsterDropList = new ArrayList<ItemInfo>();
 			}
@@ -241,9 +235,8 @@ public class PlayerInstanceModule extends PlayerModule {
 			bossBattle.addMonsterCfgId(monsterCfgId);
 			bossBattle.addMonsterDrop(AwardItems.valueOf(monsterDropList).getBuilder());
 		}
-		
+
 		this.curBattleList.add(bossBattle.build());
-		this.curBattleDropList.add(battleDropList);
 
 		// 体力和次数修改
 		int fatigueChange = entryCfg.getFatigue();
@@ -265,54 +258,52 @@ public class PlayerInstanceModule extends PlayerModule {
 	private boolean onInstanceSettle(HawkProtocol cmd) {
 		HSInstanceSettle protocol = cmd.parseProtocol(HSInstanceSettle.getDefaultInstance());
 		int hsCode = cmd.getType();
-		List<Integer> passBattleList = protocol.getPassBattleIndexList();
-		List<Integer> passBoxList = protocol.getPassBoxIndexList();
+		boolean victory = protocol.getVictory();
 
-		AwardItems dropCompleteReward = AwardItems.valueOf();
 		AwardItems completeReward = AwardItems.valueOf();
-		List<RewardItem> cardList = new ArrayList<RewardItem>();
 
-		boolean complete = false;
-		int starCount = 0;
+		int starCount = 3;
 
-		// 验证
-		for (Integer i : passBattleList) {
-			if (i < 0 || i > this.curBattleList.size()) {
-				sendError(hsCode, Status.error.PARAMS_INVALID);
-				return false;
-			}
-			HSBattle battle = this.curBattleList.get(i);
-			//if (BattleType.BOSS == battle.getType()) {
-				complete = true;
-				// TODO: 评价
-				starCount = 3;
-			//}
+		if (true == victory) {
+			// 多倍怪物经验
+			int multiple = 2;
 
-			// 掉落奖励
-			dropCompleteReward.addItemInfos(this.curBattleDropList.get(i));
-		}
-
-		if (true == complete) {
 			// 通关奖励
 			InstanceRewardCfg instanceRewardCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceRewardCfg.class, this.curInstanceId);
 			if (instanceRewardCfg != null) {
-				List<ItemInfo> list = instanceRewardCfg.getReward().getRewardList();
-				dropCompleteReward.addItemInfos(list);
-				completeReward.addItemInfos(list);
-
-				// 生成翻牌奖励
-				RewardGroupCfg starRewardCfg = instanceRewardCfg.getStarRewardGroup(starCount);
-				for (int i = 0; i  < GsConst.INSTANCE_CARD_COUNT; ++i) {
-					ItemInfo cardReward = starRewardCfg.getRewardItem();
-					if (cardReward.getType() != itemType.NONE_ITEM_VALUE) {
-						this.curCardRewardList.add(cardReward);
-
-						AwardItems convertor = AwardItems.valueOf();
-						convertor.addItemInfo(cardReward);
-						cardList.add(convertor.getBuilder().getRewardItemsList().get(0));
-					}
-				}
+				this.curDropList.addAll(instanceRewardCfg.getReward().getRewardList());
 			}
+			
+			List<ItemInfo> monsterRewardList = new ArrayList<ItemInfo>();
+
+			Iterator<ItemInfo> iter = this.curDropList.iterator();
+			while (iter.hasNext()) {
+				ItemInfo itemInfo = iter.next();
+				if (itemInfo.getType() == Const.itemType.MONSTER_VALUE) {
+					monsterRewardList.add(itemInfo);
+					iter.remove();
+					continue;
+				} else if (itemInfo.getType() == itemType.MONSTER_ATTR_VALUE
+						&& Integer.parseInt(itemInfo.getItemId()) == changeType.CHANGE_MONSTER_EXP_VALUE) {
+					itemInfo.setCount(itemInfo.getCount() * multiple);
+				}
+				completeReward.addItemInfo(itemInfo);
+			}
+
+			// 怪物奖励最多取一个
+			if (false == monsterRewardList.isEmpty()) {
+				try {
+					int index = HawkRand.randInt(0, monsterRewardList.size());
+					int stage = HawkRand.randInt(0, 5);
+					int disposition = HawkRand.randInt(0, 5);
+					completeReward.addMonster(monsterRewardList.get(index).getItemId(), stage, 1, 5, disposition);
+				} catch (HawkException e) {
+					HawkException.catchException(e);
+				}		
+			}
+
+			// 发放掉落奖励和完成奖励
+			completeReward.rewardTakeAffectAndPush(player,  Action.INSTACE_SETTLE);
 
 			// 记录副本进度
 			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
@@ -320,7 +311,6 @@ public class PlayerInstanceModule extends PlayerModule {
 			if (starCount > oldStar) {
 				statisticsEntity.setInstanceStar(this.curInstanceId, starCount);
 			}
-
 			statisticsEntity.addInstanceAllCount();
 			statisticsEntity.addInstanceAllCountDaily();
 
@@ -335,54 +325,17 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// TODO: 体力扣除
 
-		// 发放掉落奖励和完成奖励
-		dropCompleteReward.rewardTakeAffectAndPush(player,  Action.INSTACE_SETTLE);
-
 		HSInstanceSettleRet.Builder response = HSInstanceSettleRet.newBuilder();
-		if (true == complete) {
+		if (true == victory) {
 			response.setStarCount(starCount);
-			response.setCompleteReward(completeReward.getBuilder());
-			response.addAllCardReward(cardList);
+			response.setReward(completeReward.getBuilder());
 		}
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
 
 		// 清空副本数据
-		this.curBattleList.clear();
-		this.curBattleDropList.clear();
-
-		return true;
-	}
-
-	/**
-	 * 翻牌
-	 */
-	@ProtocolHandler(code = HS.code.INSTANCE_OPEN_CARD_C_VALUE)
-	private boolean onInstanceOpenCard(HawkProtocol cmd) {
-		HSInstanceOpenCard protocol = cmd.parseProtocol(HSInstanceOpenCard.getDefaultInstance());
-		int hsCode = cmd.getType();
-		int openCount = protocol.getOpenCount();
-
-		if (openCount > this.curCardRewardList.size()) {
-			sendError(hsCode, Status.error.PARAMS_INVALID);
-			return false;
-		}
-
-		ConsumeItems cardConsume = ConsumeItems.valueOf();
-		AwardItems cardReward = AwardItems.valueOf();
-
-		for (int i = 0; i < openCount; ++i) {
-			cardReward.addItemInfo(this.curCardRewardList.get(i));
-		}
-		// TODO: 消耗
-
-		cardReward.rewardTakeAffectAndPush(player,  Action.INSTACE_SETTLE);
-
-		HSInstanceOpenCardRet.Builder response = HSInstanceOpenCardRet.newBuilder();
-		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_OPEN_CARD_S, response));
-
-		// 清空翻牌数据
 		this.curInstanceId = "";
-		this.curCardRewardList.clear();
+		this.curBattleList.clear();
+		this.curDropList.clear();
 
 		return true;
 	}
@@ -437,15 +390,36 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		InstanceRewardCfg instanceRewardCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceRewardCfg.class, instanceId);
 		if (instanceRewardCfg != null) {
+			// 多倍怪物经验，给多倍经验药水
+			int multiple = 2;
+			
 			for (int i = 0; i < count; ++i) {
-				List<ItemInfo> list = instanceRewardCfg.getReward().getRewardList();
 				AwardItems completeReward = AwardItems.valueOf();
-				completeReward.addItemInfos(list);
+
+				for (ItemInfo itemInfo : instanceRewardCfg.getReward().getRewardList()) {
+					ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemInfo.getItemId());
+					if (itemCfg != null
+							&& itemCfg.getType() == toolType.USETOOL_VALUE
+							&& itemCfg.getAddAttrType() == changeType.CHANGE_MONSTER_EXP_VALUE
+							){
+						itemInfo.setCount(itemInfo.getCount() * multiple);
+					}
+					completeReward.addItemInfo(itemInfo);
+				}
+
 				completeRewardList.add(completeReward);
 			}
 
-			List<ItemInfo> list = instanceRewardCfg.getSweepReward().getRewardList();
-			sweepReward.addItemInfos(list);
+			for (ItemInfo itemInfo : instanceRewardCfg.getSweepReward().getRewardList()) {
+				ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemInfo.getItemId());
+				if (itemCfg != null
+						&& itemCfg.getType() == toolType.USETOOL_VALUE
+						&& itemCfg.getAddAttrType() == changeType.CHANGE_MONSTER_EXP_VALUE
+						){
+					itemInfo.setCount(itemInfo.getCount() * multiple);
+				}
+				sweepReward.addItemInfo(itemInfo);
+			}
 		}
 
 		// 体力和次数修改
@@ -495,8 +469,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 清空上次副本数据
 		this.curInstanceId = "";
 		this.curBattleList.clear();
-		this.curBattleDropList.clear();
-		this.curCardRewardList.clear();
+		this.curDropList.clear();
 
 		return true;
 	}

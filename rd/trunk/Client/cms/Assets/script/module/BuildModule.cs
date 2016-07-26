@@ -36,8 +36,33 @@ public class BuildModule : ModuleBase
 
 	public override void OnInit(object param)
 	{
-		UIMgr.Instance.OpenUI_(UIBuild.ViewName);
-
+		UIBuild uiBuild = UIMgr.Instance.OpenUI_(UIBuild.ViewName) as UIBuild;
+        if (param != null)
+        {
+            int initState = System.Convert.ToInt32(param);
+            UIInstance uiInstance = uiBuild.OpenInstanceUI();
+            switch (initState)
+            {
+                case 1:
+                    {
+                        EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
+                        if (curInstance != null)
+                        {
+                            uiInstance.OpenNextInstance(curInstance.instanceData.instanceId);
+                        }
+                    }
+                    break;
+                case 2:
+                    {
+                        EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
+                        if (curInstance != null)
+                        {
+                            uiInstance.ReOpenCurrentInstance(curInstance.instanceData.instanceId);
+                        }
+                    }
+                    break;
+            }
+        }
 	}
 	
 	public override void OnEnter(object param)

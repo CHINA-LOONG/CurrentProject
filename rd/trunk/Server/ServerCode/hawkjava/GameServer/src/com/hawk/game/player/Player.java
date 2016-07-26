@@ -842,6 +842,17 @@ public class Player extends HawkAppObj {
 			List<Integer> battleMonsterList = playerData.getPlayerEntity().getBattleMonsterList();
 			battleMonsterList.remove(Integer.valueOf(monsterEntity.getId()));
 
+			// 脱装备
+			Map<Integer, Long> equips = playerData.getMonsterEquips(id);
+			if (equips != null) {
+				for (Map.Entry<Integer, Long> entry : equips.entrySet()) {
+					EquipEntity equipEntity = playerData.getEquipById(entry.getValue());
+					equipEntity.setMonsterId(GsConst.EQUIPNOTDRESS);
+					equipEntity.notifyUpdate(true);
+					playerData.removeMonsterEquip(equipEntity, entry.getKey());
+				}
+			}
+			
 			BehaviorLogger.log4Service(this, Source.MONSTER_REMOVE, action, 
 					Params.valueOf("monsterId", id));
 

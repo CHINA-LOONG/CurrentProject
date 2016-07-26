@@ -155,7 +155,7 @@ public class ConsumeItems {
 		return addAttr(String.valueOf(attrType), count);
 	}
 	
-	//目前怪物的消耗都是通过制定Id的
+	//目前怪物的消耗都是通过指定Id的
 	public ConsumeItems addMonster(int id, String monsterId) {
 		ConsumeItem.Builder consumeItem = ConsumeItem.newBuilder();
 		consumeItem.setType(Const.itemType.MONSTER_VALUE);
@@ -340,6 +340,10 @@ public class ConsumeItems {
 					if (result == false) {				
 						consumeInfo.removeConsumeItems(i);
 						continue;
+					}
+					else {
+						// 脱装备
+						
 					}
 				}
 				else {

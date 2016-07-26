@@ -357,8 +357,8 @@ pet_detail_stage1,宠物进阶,Monster Advance
 pet_detail_stage_full,恭喜！进阶已完成!,Congratulations! Advancement complete!
 pet_detail_stage_monster,需要的怪物,Req. Monsters:
 pet_detail_skill_dazhaobiaoshi,大招,Ult
-pet_detail_stage_choise,选择进阶材料,Select monsters
-pet_detail_stage_xuanchongtips,宠物或道具的品质至少满足以下条件,Target monster required as advancement material
+pet_detail_stage_choise,选择进阶材料,Select Advancement Materials
+pet_detail_stage_xuanchongtips,宠物或道具的品质至少满足以下条件,Monsters or items must at least meet the following requirements
 list_wenzhangzhiyin,参加公会玩法能够获得纹章,You can get insignias via guild game modes
 monster_record_002,宠物等级不得高于角色等级！,Monster level cannot exceed character level.
 monster_record_004,需求道具不足,Insufficient amount of required items.
@@ -370,7 +370,7 @@ monster_record_009,宠物解锁成功,Monster is now unlocked.
 monster_record_010,角色升级后才能继续打造！,Increase your character level to continue forging!
 monster_record_011,宠物等级不足,Monster level too low.
 monster_record_012,程序大大正在紧张制作中…,The monster engineers are making it now…
-monster_record_013,技能等级不能高于宠物等级,Please level up your monster.
+monster_record_013,技能等级不能高于宠物等级,Ability level cannot exceed monster level.
 monster_record_014,技能点不足,Insufficient Ability Points.
 monster_record_015,战力下降{0},BP decrease {0}
 pet_detail_skill_no_upgrade,该技能不能升级,this skill cannot upgrade
@@ -1074,7 +1074,7 @@ pvp_resultdraw,平局,Draw
 pvp_rulesneirong,"1.竞技场中战斗需要消耗<color=#ffcd00>竞技次数</color>，每次消耗1点，竞技次数每小时恢复1点
 2.玩家必须设置自己的<color=#ffcd00>防御阵容</color>，抵御其他玩家的挑战，防守失败也会扣分的哦
 3.若对匹配的对手不满意，可以通过<color=#ffcd00>花费金币刷新对手</color>
-4.竞技场中战斗采取<color=#ffcd00>5V5</color>的方式，战斗过程中可以手动<color=#ffcd00>施放大招技能、集火敌人，但不能使用照妖镜</color>
+4.竞技场中战斗采取<color=#ffcd00>5V5</color>的方式，战斗过程是<color=#ffcd00>全自动</color>的，不能手动操作。
 5.竞技成功时，会获得<color=#ffcd00>荣誉点</color>奖励，荣誉点可以用来在<color=#ffcd00>竞技商店</color>中换取物品
 6.若与敌人僵持不下，出现平局按钮后，可以选择以<color=#ffcd00>平局</color>结束本场竞技，平局仍会得到1点荣誉点
 7.根据每场战斗的结果（包括平局）以及竞技双方的积分，玩家增减的<color=#ffcd00>竞技积分</color>也会不同
@@ -1099,7 +1099,7 @@ pvp_rulesneirong,"1.竞技场中战斗需要消耗<color=#ffcd00>竞技次数</c
 青铜三阶                1099及以下","1. Each battle in the Arena requires <color=#ffcd00>1 Arena</color> entry. Your Arena entries recover at a rate of 1 per hour.
 2. Players must set their own <color=#ffcd00>defense</color> to defend against other players' challenges. Points are deducted when a player's defense is defeated.
 3. The opponent you are matched against can be <color=#ffcd00>changed by spending Coins</color>.
-4. The Arena uses a <color=#ffcd00>5v5</color> battle setting. In battle, the attacking player can manually <color=#ffcd00>cast ultimate abilities and select enemy targets, but cannot use the Magic Lens</color>.
+4. The Arena uses a <color=#ffcd00>5v5</color> battle setting. The battles will be fought using <color=#ffcd00>auto-battle</color>, and abilities cannot be manually cast.
 5. When players are victorious in the Arena, they will receive <color=#ffcd00>Honor Points</color>. These points can be used to purchase items in the <color=#ffcd00>Arena Store</color>.
 6. If the battle turns into a stalemate between you and the opponent, a Draw button will appear, and the battle can be ended as a <color=#ffcd00>draw</color>. A draw will still award 1 Honor Point.
 7. The amount of <color=#ffcd00>Arena Points</color> added or deducted will be calculated according to the battle results(including draws) and the Arena Point amounts of both players.
@@ -1196,7 +1196,7 @@ loading_tips18,还在独自战斗？快加入公会，寻找一起并肩作战�
 loading_tips19,参与公会活动，获得的贡献值能够在公会商店中兑换各种道具。,Participate in Guild events to receive Contribution Points that can be used in the Guild Store to purchase equipment.
 loading_tips20,将一些空闲的宠物派去大冒险，会有意想不到的收获哦~,Send some of your free monsters to go on adventures. They might discover something you didn't expect!
 loading_tips21,要尝试满足大冒险的额外奖励获得条件，才能获得丰厚的奖励。,Try to complete the bonus reward requirements in Adventures to receive some awesome bonus rewards!
-loading_tips22,三星通关每个章节的全部副本都可以领取宝箱奖励哦！,Clear all stages with a 3-Star rating to receive a reward chest!
+loading_tips22,每个章节获得6个星星、12个星星、24个星星时，都可以领取对应的宝箱奖励哦！,"Rewards may be collected upon receiving 6 stars, 12 stars, and 24 stars for each chapter."
 loading_tips23,“扫荡”操作是节省时间的最佳方式！,"Using ""Raid Passes"" is the best way to save time!"
 loading_tips24,三星通关副本后可以获得该副本的“扫荡”使用权。,Clearing a stage with a 3-Star rating will grant you the ability to use Raid Passes.
 loading_tips25,合理搭配阵容，配合使用照妖镜可以确保你安全通关。,A smart line-up in combination with using the Mytho Lens can do a lot to ensure your victory.
@@ -1221,7 +1221,7 @@ loading_tips44,竞技场中战斗需要消耗竞技点数，每次消耗1点。�
 loading_tips45,玩家必须设置自己的防御阵容，抵御其他玩家的挑战，防守失败也会扣分的哦~,Players must set their own defense to defend against other players' challenges. Points are deducted when a player's defense is defeated.
 loading_tips46,若对匹配的对手不满意，可以通过花费金币刷新对手。,The opponent you are matched against can be changed by spending Coins.
 loading_tips47,竞技场中战斗采取5V5的方式。,The Arena uses a 5v5 battle setting. 
-loading_tips51,战斗过程中可以手动施放大招技能、集火敌人，但不能使用照妖镜。,"In battle, the attacking player can manually cast ultimate abilities and select enemy targets, but cannot use the Mytho Lens."
+loading_tips51,竞技场的战斗过程是全自动的，不能手动操作。,"Arena battles are fought using auto-battle, and abilities cannot be manually cast."
 loading_tips48,竞技成功时，会获得荣誉点奖励，荣誉点可以用来在竞技商店中换取物品。,"When players are victorious in the Arena, they will receive Honor Points. These points can be used to purchase items in the Arena Store."
 loading_tips49,根据每场战斗的结果以及竞技双方的积分，玩家增减的竞技积分也会不同。,The amount of Arena Points added or deducted will be calculated according to the battle results and the Arena Point amounts of both players.
 start_record_001,该功能{0}级开启,This feature unlocks at level {0}
@@ -1600,7 +1600,7 @@ language_day,天,Day
 language_hour,小时,Hour
 language_minute,分钟,Minute
 language_second,秒,Second
-language_suipianTips,随机获得20枚宠物碎片，稀有碎片在等着你哦！,Open to get 20 random monster fragments. Rare monster fragments are waiting for you!
+language_suipianTips,随机获得一定数量宠物碎片，稀有碎片在等着你哦！,Open to get any random monster fragments. Rare monster fragments are waiting for you!
 specialsell_event_title,活动礼包,Event Package
 specialsell_new_title,新手礼包,New Player Package
 specialsell_new_desc,只能购买其中<color=#ffcc00>一个</color>礼包哦！,Can only be purchased <color=#ffcc00>once</color>!
@@ -1613,13 +1613,6 @@ spell_hit_stunImmune,免疫眩晕,Stun Immune
 main_icon_huodong,活动礼包,Event Package
 main_icon_xuanze,新人礼,New Player Gift
 loading_special,各个国家都存在传说和神话。我们的存在绝非偶然。,Legends and Gods exist in every country and culture. Our existence is no coincidence.
-giftspecial_jinjie1_name,宠物进阶,Monster Advancement
-giftspecial_suipian1_name,惊喜碎片,Surprise Fragment
-giftspecial_huodong1_name,活动礼包,Event Package
-giftspecial_xuanze1_name,新人礼,New Player Gift
-giftspecial_jinjie1_desc,快速提升宠物战力的绝佳方式！,The best way to quickly increase monster BP!
-giftspecial_suipian1_desc,可以获得珍惜宠物碎片哦！,Get rare monster fragments!
-giftspecial_huodong1_desc,首次付费测试礼包，绝对超值体验！,首次付费测试礼包，绝对超值体验！
 specialgift_title,活动礼包,Event Package
 giftspecial_jinjie_name,宠物进阶,Monster Advancement
 giftspecial_suipian_name,惊喜碎片,Surprise Fragment
@@ -1629,30 +1622,72 @@ monster_record_017,购买10点技能点数成功,Purchased 10 ability points!
 summon_tipsgoldmust,再抽<color=#ffcc00>{0}</color>次必得<color=#ffcc00>A级及以上</color>宠物,<color=#ffcc00>{0}</color> times more guarantees <color=#ffcc00>Class A (or above)</color> Monster.
 giftspecial_event_title,特殊礼包购买,特殊礼包购买
 giftspecial_event_desc,可以在此购买已经触发的特殊礼包！,可以在此购买已经触发的特殊礼包！
-giftspecial_xuanze1_desc,只能购买其中<color=#ffcc00>一个</color>礼包哦！,Can only be purchased <color=#ffcc00>once</color>!
 giftspecial_xuanze11_desc,剩余时间 ,Time left 
 giftspecial_xuanze12_desc,剩余时间 ,Time left 
-common_attr_health_tips,增加体力可增加生命值,增加体力可增加生命值
-common_attr_strenth_tips,增加力量可提升物理攻击力,增加力量可提升物理攻击力
-common_attr_intelligence_tips,增加智力可提升法术攻击力,增加智力可提升法术攻击力
-common_attr_defence_tips,增加防御可降低所受伤害,增加防御可降低所受伤害
-common_attr_speed_tips,速度快的单位更早出手,速度快的单位更早出手
-detail_life_tips,受到伤害时损失生命值,受到伤害时损失生命值
-detail_physatk_tips,增加物理伤害效果,增加物理伤害效果
-detail_magicatk_tips,增加法术伤害效果,增加法术伤害效果
-common_attr_critical_ratio_tips,提高暴击的几率,提高暴击的几率
-common_attr_critical_dmg_tips,提高暴击时伤害效果,提高暴击时伤害效果
-common_attr_heal_ratio_tips,提高被治疗的效果,提高被治疗的效果
-common_attr_energy_tips,增加前置能量可更早使用大招,增加前置能量可更早使用大招
+common_attr_health_tips,增加体力可增加生命值,Increasing STA can increase HP
+common_attr_strenth_tips,增加力量可提升物理攻击力,Increasing STR can increase ATK
+common_attr_intelligence_tips,增加智力可提升法术攻击力,Increasing INT can increase magic ATK
+common_attr_defence_tips,增加防御可降低所受伤害,Increasing DEF can reduce damage received
+common_attr_speed_tips,速度快的单位更早出手,Units with higher SPD take action earlier
+detail_life_tips,受到伤害时损失生命值,Lose HP upon taking damage
+detail_physatk_tips,增加物理伤害效果,Increases phys damage effects
+detail_magicatk_tips,增加法术伤害效果,Increases magic damage effects
+common_attr_critical_ratio_tips,提高暴击的几率,Increases crit rate
+common_attr_critical_dmg_tips,提高暴击时伤害效果,Increases crit damage effect
+common_attr_heal_ratio_tips,提高被治疗的效果,Increases healing effects
+common_attr_energy_tips,增加前置能量可更早使用大招,Increases initial power and allows ult to be cast more quickly
 facebook_record_009,不可以填写自己的ID哦,Your own ID is not allowed.
-pet_detail_stage_suretips,包含高于进阶要求的最低品质的宠物或道具，是否确认选择？,包含高于进阶要求的最低品质的宠物或道具，是否确认选择？
-pet_detail_stage_neednum,需求数量：{0}/{1},需求数量：{0}/{1}
-pet_detail_stage_minneed,请选择：,请选择：
-pet_detail_stage_or,或,或
-pet_detail_stage_monsternum,已选：{0},已选：{0}
-monster_record_018,该宠物正在PVP防守，无法选择,该宠物正在PVP防守，无法选择
-monster_record_019,该宠物正在大冒险，无法选择,该宠物正在大冒险，无法选择
-monster_record_020,该宠物正驻守在公会基地，无法选择,该宠物正驻守在公会基地，无法选择
-monster_record_021,该宠物已被锁定，无法选择,该宠物已被锁定，无法选择
-monster_record_022,该宠物正在出战，无法选择,该宠物正在出战，无法选择
+pet_detail_stage_suretips,包含高于进阶要求的最低品质的宠物或道具，是否确认选择？,Contains monsters or items that exceed the lowest grade required for advancement. Continue?
+pet_detail_stage_neednum,需求数量：{0}/{1},Total Require:{0}/{1}
+pet_detail_stage_minneed,请选择：,Please Choose:
+pet_detail_stage_or,或,OR
+pet_detail_stage_monsternum,已选：{0},chosen:{0}
+monster_record_018,该宠物正在PVP防守，无法选择,"This monster is currently in Arena defense, unable to select."
+monster_record_019,该宠物正在大冒险，无法选择,"This monster is currently on an Adventure, unable to select."
+monster_record_020,该宠物正驻守在公会基地，无法选择,"This monster is currently garrisoned in the guild base, unable to select."
+monster_record_021,该宠物已被锁定，无法选择,"This monster has been locked, unable to select."
+monster_record_022,该宠物正在出战，无法选择,"This monster is currently in battle, unable to select."
 shenhuashouhuzhe_name,神话守护者,神话守护者
+mythoPath_UI_title,神话守护者,神话守护者
+mythoPath_battle_close,通关前一个关卡即可开启本关卡挑战！,通关前一个关卡即可开启本关卡挑战！
+mythoPath_UI_jifen,书魂,书魂
+mythoPath_UI_duihuan,兑换,兑换
+mythoPath_rule_title,规则说明,规则说明
+mythoPath_rule_desc,"1.玩家每天可以参与一次mythoPath玩法
+2.mythoPath玩法进行中，敌我双方的生命值和能量值不会重置
+3.已经阵亡的宠物不会复活
+4.出现超时战斗时，则算作双方所有宠物同归于尽
+5.玩家每挑战成功一个关卡都会获得大量奖励，同时有几率获得额外奖励
+6.挑战成功可以积攒书魂，可以用于兑换丰富奖励","1.玩家每天可以参与一次mythoPath玩法
+2.mythoPath玩法进行中，敌我双方的生命值和能量值不会重置
+3.已经阵亡的宠物不会复活
+4.出现超时战斗时，则算作双方所有宠物同归于尽
+5.玩家每挑战成功一个关卡都会获得大量奖励，同时有几率获得额外奖励
+6.挑战成功可以积攒书魂，可以用于兑换丰富奖励"
+mythoPath_surprise_title,惊喜之书,惊喜之书
+mythoPath_surprise_desc,概率获得下列物品之一,概率获得下列物品之一
+mythoPath_battle_start,挑战,挑战
+mythoPath_surprise_gailv,概率获得,概率获得
+mythoPath_battle_dead,该宠物已经阵亡，无法参加今日挑战,该宠物已经阵亡，无法参加今日挑战
+mythoPath_loading_tips1,合理搭配阵容才是通关的关键！,合理搭配阵容才是通关的关键！
+mythoPath_loading_tips2,培养更多的宠物会大幅度提升通关的几率哦！,培养更多的宠物会大幅度提升通关的几率哦！
+mythoPath_loading_tips3,惊喜之书的奖励可是十分诱人的哦！,惊喜之书的奖励可是十分诱人的哦！
+mythoPath_loading_tips4,通关最后一个关卡一定会获得惊喜之书奖励哦！,通关最后一个关卡一定会获得惊喜之书奖励哦！
+mythoPath_battle_draw,久战后仍未分出胜负，双方宠物同归于尽！,久战后仍未分出胜负，双方宠物同归于尽！
+giftspecial_jinjie1_name,进阶礼包,进阶礼包
+giftspecial_jinjie1_desc,快速提升宠物战力的方式！,快速提升宠物战力的方式！
+giftspecial_jinjie2_name,进阶礼包（稀有）,进阶礼包（稀有）
+giftspecial_jinjie2_desc,极速提升宠物战力的绝佳途径！,极速提升宠物战力的绝佳途径！
+giftspecial_suipian1_name,碎片礼包,碎片礼包
+giftspecial_suipian1_desc,共可获得<color=#ffcc00>40片宠物碎片</color>，较大几率获得<color=#ffcc00>10片A级及以上宠物碎片</color>！,共可获得<color=#ffcc00>40片宠物碎片</color>，较大几率获得<color=#ffcc00>10片A级及以上宠物碎片</color>！
+giftspecial_suipian2_name,碎片礼包（稀有）,碎片礼包（稀有）
+giftspecial_suipian2_desc,共可获得<color=#ffcc00>60片宠物碎片</color>，必定获得<color=#ffcc00>10片A级及以上宠物碎片</color>！,共可获得<color=#ffcc00>60片宠物碎片</color>，必定获得<color=#ffcc00>10片A级及以上宠物碎片</color>
+giftspecial_huodong1_name,惊喜礼包,惊喜礼包
+giftspecial_huodong1_desc,你想要的<color=#ffcc00>SS级宠物</color>就在眼前！,你想要的<color=#ffcc00>SS级宠物</color>就在眼前！
+giftspecial_huodong2_name,珍惜纹章礼包,珍惜纹章礼包
+giftspecial_huodong2_desc,得到<color=#ffcc00>顶级纹章</color>的绝佳机会！,得到<color=#ffcc00>顶级纹章</color>的绝佳机会！
+giftspecial_xuanze1_name,新人礼,新人礼
+giftspecial_xuanze1_desc,新人礼遇，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！,新人礼遇，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！
+giftspecial_xuanze2_name,中级礼包,中级礼包
+giftspecial_xuanze2_desc,超值钜惠，错过难寻！只能选择<color=#ffcc00>一个</color>进行购买哦！,超值钜惠，错过难寻！只能选择<color=#ffcc00>一个</color>进行购买哦！
+xinyangzhilu_name,神话守护者,神话守护者

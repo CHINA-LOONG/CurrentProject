@@ -44,6 +44,7 @@ public class PetViewConst{
     public const string UIPetAttrElementAssetName = "UIPetAttrElement";
     public const string UIPetEquipAssetName = "UIPetEquip";
     public const string UIPetSkillAssetName = "UIPetSkill";
+    public const string UIPetFeedAssetName = "UIPetFeed";
     public const string UIPetSkillElementAssetName = "UIPetSkillElement";
     public const string UIPetStageAssetName = "UIPetStage";
     public const string UIPetStageMonsterElementAssetName = "UIPetStageMonsterElement";

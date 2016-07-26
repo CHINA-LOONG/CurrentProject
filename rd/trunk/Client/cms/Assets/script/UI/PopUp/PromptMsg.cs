@@ -21,10 +21,10 @@ namespace MsgBox
 
 		public static string ViewName = "PromptMsg";
 
-		public static PromptMsg Open(MsgBoxType msgType, string msg, PrompDelegate callback = null, bool autoClose = true)
+		public static PromptMsg Open(MsgBoxType msgType, string msg, PrompDelegate callback = null, bool autoClose = true, bool useTextmesh = false)
 		{
             PromptMsg mInfo = UIMgr.Instance.OpenUI_(PromptMsg.ViewName,false) as PromptMsg;
-            mInfo.SetData(msgType, msg, callback, autoClose);
+            mInfo.SetData(msgType, msg, callback, autoClose, useTextmesh);
             return mInfo;
 		}
 
@@ -43,6 +43,8 @@ namespace MsgBox
 
 		public	Button	conformButton2;
 		public	Button	cancelButton;
+
+        public TextMesh textWithImg;
 
 		private	PrompDelegate  buttonClick = null;
 	
@@ -82,13 +84,30 @@ namespace MsgBox
 			}
 		}
 
-		public	void SetData(MsgBoxType msgType, string msg, PrompDelegate callback, bool autoClose)
+		public	void SetData(MsgBoxType msgType, string msg, PrompDelegate callback, bool autoClose, bool useTextmesh)
 		{
 			conformPanel.gameObject.SetActive (msgType == MsgBoxType.Conform);
 			conformCancelPanel.gameObject.SetActive (msgType == MsgBoxType.Conform_Cancel);
 
             this.buttonClick = callback;
-			msgText.text = msg;
+            if (useTextmesh)
+            {
+                msgText.text = string.Empty;
+                textWithImg.text = msg;
+            }
+            else
+            {
+                TextAnchor curAlignment = TextAnchor.MiddleCenter;
+                RectTransform textRt = msgText.transform as RectTransform;
+                if (msgText.preferredWidth / textRt.sizeDelta.x > 1.0f)
+                {
+                    curAlignment = TextAnchor.MiddleLeft;
+                }
+                msgText.text = msg;
+                msgText.alignment = curAlignment;
+                textWithImg.text = string.Empty;
+            }
+			
             this.autoClose = autoClose;
 		}
 

@@ -1,36 +1,28 @@
 package com.hawk.game.item;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
-import org.hibernate.type.IntegerType;
 
-import com.hawk.game.attr.Attribute;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
-import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
-import com.hawk.game.log.BehaviorLogger.Params;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Const.changeType;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Const.itemType;
-import com.hawk.game.protocol.Const.playerAttr;
-import com.hawk.game.protocol.Consume.HSConsumeInfo;
+import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.SynMonsterAttr;
 import com.hawk.game.protocol.Player.SynPlayerAttr;
-import com.hawk.game.protocol.Reward;
 import com.hawk.game.protocol.Reward.HSRewardInfo;
 import com.hawk.game.protocol.Reward.RewardItem;
+import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.util.EquipUtil;
-import com.hawk.game.util.GsConst;
-import com.hawk.game.util.ItemUtil;
-import com.sun.org.apache.regexp.internal.recompile;
 
 /**
  * 奖励信息内存数据 禁忌: 此对象不可重复复用, 避免奖励累加, 切记
@@ -73,7 +65,7 @@ public class AwardItems {
 	public HSRewardInfo.Builder getBuilder() {
 		return rewardInfo;
 	}
-	
+
 	/**
 	 * 克隆奖励对象
 	 */
@@ -88,7 +80,7 @@ public class AwardItems {
 	 * 判断是否有奖励
 	 */
 	public boolean hasAwardItem() {
-		return rewardInfo.getRewardItemsList().size() > 0;
+		return !rewardInfo.getRewardItemsList().isEmpty();
 	}
 
 	/**
@@ -161,6 +153,19 @@ public class AwardItems {
 		rewardItem.setType(Const.itemType.MONSTER_VALUE);
 		rewardItem.setItemId(monsterId);
 		rewardItem.setStage(stage);
+		rewardInfo.addRewardItems(rewardItem);
+		return this;
+	}
+	
+	public AwardItems addMonster(String monsterId, int stage, int level, int lazy, int disposition) {
+		RewardItem.Builder rewardItem = RewardItem.newBuilder();
+		rewardItem.setType(Const.itemType.MONSTER_VALUE);
+		rewardItem.setItemId(monsterId);
+		rewardItem.setStage(stage);
+		HSMonster.Builder monster = HSMonster.newBuilder();
+		monster.setLevel(level);
+		monster.setLazy(lazy);
+		monster.setDisposition(disposition);
 		rewardInfo.addRewardItems(rewardItem);
 		return this;
 	}
@@ -361,21 +366,25 @@ public class AwardItems {
 					}
 				}
 				else if (item.getType() == Const.itemType.MONSTER_ATTR_VALUE) {					
-					if (Integer.parseInt(item.getItemId())== changeType.CHANGE_MONSTER_EXP_VALUE) {
-						List<Integer> battleMonsters = player.getPlayerData().getPlayerEntity().getBattleMonsterList();
+					if (Integer.parseInt(item.getItemId()) == changeType.CHANGE_MONSTER_EXP_VALUE) {
 						if (item.getId() == 0) {
-							for (Integer monsterId : battleMonsters) {
-								if (player.getPlayerData().getMonsterEntity(monsterId) != null) {
-									RewardItem.Builder builder = RewardItem.newBuilder();
-									builder.setType(itemType.MONSTER_ATTR_VALUE);
-									builder.setItemId(String.valueOf(changeType.CHANGE_MONSTER_EXP_VALUE));
-									builder.setCount(item.getCount());
-									builder.setId(monsterId);
-									rewardInfo.addRewardItems(builder);
+							// 未指定怪物时奖励所有上阵怪物，平分经验
+							List<Integer> battleMonsters = player.getPlayerData().getPlayerEntity().getBattleMonsterList();
+							if (false == battleMonsters.isEmpty()) {
+								int exp = item.getCount() / battleMonsters.size();
+								for (Integer monsterId : battleMonsters) {
+									if (player.getPlayerData().getMonsterEntity(monsterId) != null) {
+										RewardItem.Builder builder = RewardItem.newBuilder();
+										builder.setType(itemType.MONSTER_ATTR_VALUE);
+										builder.setItemId(String.valueOf(changeType.CHANGE_MONSTER_EXP_VALUE));
+										builder.setCount(exp);
+										builder.setId(monsterId);
+										rewardInfo.addRewardItems(builder);
+									}
 								}
 							}
-							
-							// 强制清除没有id的怪物奖励,替换成
+
+							// 强制清除没有id的怪物奖励
 							invalidType = true;
 						}
 						else {
@@ -420,7 +429,6 @@ public class AwardItems {
 						EquipUtil.generateAttr(equipEntity, item);
 						item.setId(equipEntity.getId());
 					}
-					
 				}
 				else if(item.getType() == Const.itemType.MONSTER_VALUE){
 					MonsterEntity monsterEntity = player.increaseMonster(item.getItemId(), item.getStage(), action);			
@@ -429,6 +437,20 @@ public class AwardItems {
 					}
 					else
 					{
+						HSMonster monster = item.getMonster();
+						if (monster != null) {
+							monsterEntity.setLevel(monster.getLevel());
+							monsterEntity.setExp(monster.getExp());
+							monsterEntity.setLazy((byte)monster.getLazy());
+							monsterEntity.setLazyExp(monster.getLazyExp());
+							monsterEntity.setDisposition((byte)monster.getDisposition());
+							for (HSSkill skill : monster.getSkillList()) {
+								monsterEntity.setSkillLevel(skill.getSkillId(), skill.getLevel());
+							}
+
+							monsterEntity.notifyUpdate(false);
+						}
+
 						item.setId(monsterEntity.getId());
 					}
 				}

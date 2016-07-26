@@ -66,6 +66,7 @@ public class BattleController : MonoBehaviour
     }
     private UIBattle uiBattle;
     public bool processStart;
+    private UIScore mUIScore;
 
 	private	Dictionary<string,Transform> cameraNodeDic = new Dictionary<string, Transform>();
     private EnterInstanceParam curInstanceParam;
@@ -88,12 +89,16 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
 	void BindListener()
 	{
-		GameEventMgr.Instance.AddListener<Vector3>(GameEventList.MirrorClicked ,OnMirrorClilced );
+        GameEventMgr.Instance.AddListener<Vector3>(GameEventList.MirrorClicked, OnMirrorClilced);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_C.GetHashCode().ToString(), OnInstanceSettleResult);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_S.GetHashCode().ToString(), OnInstanceSettleResult);
 	}
     //---------------------------------------------------------------------------------------------
 	void UnBindListener()
 	{
-		GameEventMgr.Instance.RemoveListener<Vector3> (GameEventList.MirrorClicked, OnMirrorClilced);
+        GameEventMgr.Instance.RemoveListener<Vector3>(GameEventList.MirrorClicked, OnMirrorClilced);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_C.GetHashCode().ToString(), OnInstanceSettleResult);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_S.GetHashCode().ToString(), OnInstanceSettleResult);
 	}
     //---------------------------------------------------------------------------------------------
 	void  OnMirrorClilced(Vector3 inputPos)
@@ -225,6 +230,11 @@ public class BattleController : MonoBehaviour
                 AddUnitDataRequestInternal(curBattle.monsterCfgId[i]);
             }
         }
+    }
+    //---------------------------------------------------------------------------------------------
+    public EnterInstanceParam GetCurrentInstance()
+    {
+        return curInstanceParam;
     }
     //---------------------------------------------------------------------------------------------
     private void AddUnitDataRequestInternal(string assetID)
@@ -366,8 +376,11 @@ public class BattleController : MonoBehaviour
 		return cameraNode.transform;
 	}
     //---------------------------------------------------------------------------------------------
-    void UnLoadBattleScene()
+    public void UnLoadBattleScene(int state = 0)
     {
+        //state 0 confirm back to instance choose
+        //state 1 next back to instance info
+        //state 2 retry back to team choose
         battleGroup.DestroyEnemys();
         curBattleScene.ClearEvent();
         ObjectDataMgr.Instance.RemoveBattleObject(BattleConst.battleSceneGuid);
@@ -383,9 +396,11 @@ public class BattleController : MonoBehaviour
         curBattleScene = null;
 
         process.Clear();
-        GameMain.Instance.ChangeModule<BuildModule>();
-        UIMgr.Instance.DestroyUI(UIMgr.Instance.GetUI(UIBattle.ViewName));
+        GameMain.Instance.ChangeModule<BuildModule>(state);
+        UIMgr.Instance.DestroyUI(mUIScore);
+        UIMgr.Instance.DestroyUI(uiBattle);
         ResourceMgr.Instance.LoadLevelAsyn("firstScene", false, null);
+        curInstanceParam = null;
     }
     //---------------------------------------------------------------------------------------------
     public GameObject GetSlotNode(UnitCamp camp, int slotID, bool isBoss)
@@ -619,22 +634,6 @@ public class BattleController : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void OnRevive(bool success)
-    {
-        if (success)
-        {
-            uiBattle.CloseReviveUI();
-            battleGroup.RevivePlayerList();
-            process.ReviveSuccess();
-        }
-        else 
-        {
-            //goto store
-            GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
-            //UIMgr.Instance.OpenUI_(UIMall.ViewName, false);
-        }
-    }
-    //---------------------------------------------------------------------------------------------
     public IEnumerator StartNextProcess(float delayTime)
     {
         if (delayTime > 0.0f)
@@ -740,40 +739,26 @@ public class BattleController : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
+    public void PlayEntranceAnim()
+    {
+        float curTime = Time.time;
+        for (int i = 0; i < battleGroup.EnemyFieldList.Count; ++i)
+        {
+            BattleObject bo = battleGroup.EnemyFieldList[i];
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.State != UnitState.Dead)
+            {
+                //TODO: use level time
+                battleGroup.EnemyFieldList[i].TriggerEvent("chuchang", curTime, null);
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
     public void OnBattleOver(bool isSuccess)
     {
         ItemDropManager.Instance.ClearDropItem();
         processStart = false;
-		Logger.LogWarning("Battle " + (isSuccess ? "Success" : "Failed"));
-        StartCoroutine(ProcessBattleOver(isSuccess));
-		MagicDazhaoController.Instance.ClearAll ();
-		PhyDazhaoController.Instance.ClearAll ();
-		process.HideFireFocus();
-        curInstanceParam = null;
-    }
-    //---------------------------------------------------------------------------------------------
-    IEnumerator ProcessBattleOver(bool isSuccess)
-    {
-        yield return new WaitForSeconds(BattleConst.battleEndDelay);
-        //胜利失败动画
-        yield return StartCoroutine(PlayBalanceAnim(isSuccess));
-        //后置剧情动画
-        yield return StartCoroutine(PlayPostStoryAnim());
-        //结束副本音乐
+        //Logger.LogWarning("Battle " + (isSuccess ? "Success" : "Failed"));
         AudioSystemMgr.Instance.StopMusic();
-        //结算面板UI
-        ShowBalanceUI();
-
-        //怪物全部退场
-        //battleGroup.AllUnitsExitField();//do this in UnLoadBattleScen
-
-        //回到副本层
-        UnLoadBattleScene();
-    }
-    //---------------------------------------------------------------------------------------------
-    IEnumerator PlayBalanceAnim(bool isSuccess)
-    {
-        uiBattle.ShowEndBattleUI(isSuccess);
         string selfEvent = isSuccess ? "win" : "failed";
         string enemyEvent = isSuccess ? "failed" : "win";
         float curTime = Time.time;
@@ -793,35 +778,39 @@ public class BattleController : MonoBehaviour
                 battleGroup.EnemyFieldList[i].TriggerEvent(enemyEvent, curTime, null);
             }
         }
-        yield return new WaitForSeconds(3.0f);
-        uiBattle.DestroyEndBattleUI();
-        yield return null;
+		MagicDazhaoController.Instance.ClearAll ();
+		PhyDazhaoController.Instance.ClearAll ();
+		process.HideFireFocus();
+        //curInstanceParam = null;
+
+        //PB.HSInstanceSettle instanceParam = new PB.HSInstanceSettle();
+        //instanceParam.victory = isSuccess;
+        //GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam);
+        
+        //test only
+        StartCoroutine(ProcessBattleOver(isSuccess));
+    } 
+    //---------------------------------------------------------------------------------------------
+    IEnumerator ProcessBattleOver(bool isSuccess)
+    {
+        yield return new WaitForSeconds(BattleConst.battleEndDelay);
+        mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
+        mUIScore.ShowScoreUI(isSuccess);
     }
     //---------------------------------------------------------------------------------------------
-    public void PlayEntranceAnim()
+    void OnInstanceSettleResult(ProtocolMessage msg)
     {
-        float curTime = Time.time;
-        for (int i = 0; i < battleGroup.EnemyFieldList.Count; ++i)
+        UINetRequest.Close();
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
-            BattleObject bo = battleGroup.EnemyFieldList[i];
-            if (bo != null && bo.unit.curLife > 0 && bo.unit.State != UnitState.Dead)
-            {
-                //TODO: use level time
-                battleGroup.EnemyFieldList[i].TriggerEvent("chuchang", curTime, null);
-            }
+            Logger.LogError("instance settle result error");
+            UnLoadBattleScene(0);
         }
-    }
-    //---------------------------------------------------------------------------------------------
-    IEnumerator PlayPostStoryAnim()
-    {
-        Logger.Log("[Battle]Playing Post Story Anim...");
-        yield return null;
-    }
-    //---------------------------------------------------------------------------------------------
-    IEnumerator ShowBalanceUI()
-    {
-        Logger.Log("[Battle]Showing Balance UI...");
-        yield return null;
+        else
+        {
+            PB.HSInstanceSettleRet scoreInfo = msg.GetProtocolBody<PB.HSInstanceSettleRet>();
+            mUIScore.SetScoreInfo(scoreInfo);
+        }
     }
     //---------------------------------------------------------------------------------------------
 }

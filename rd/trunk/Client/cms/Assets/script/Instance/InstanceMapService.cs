@@ -196,7 +196,6 @@ public class InstanceMapService : MonoBehaviour
 	}
 
 	//------------------------------------------------------------------------------------------------
-
 	public InstanceEntryRuntimeData	GetRuntimeInstance(string instanceId)
 	{
 		InstanceEntryRuntimeData subEntry = null;
@@ -208,6 +207,24 @@ public class InstanceMapService : MonoBehaviour
 		}
 		return null;
 	}
+    //------------------------------------------------------------------------------------------------
+    public InstanceEntryRuntimeData GetNextRuntimeInstance(string instanceId)
+    {
+        InstanceEntryRuntimeData subEntry = null;
+        for (int i = 0; i < openChapterInstanceList.Count; ++i)
+        {
+            subEntry = openChapterInstanceList[i];
+            if (subEntry.instanceId.EndsWith(instanceId))
+            {
+                if (i < openChapterInstanceList.Count - 1)
+                {
+                    return openChapterInstanceList[i + 1];
+                }
+            }
+        }
+        return null;
+    }
+    //------------------------------------------------------------------------------------------------
 
 	public	List<InstanceEntryRuntimeData> GetRuntimeInstance(InstanceDifficulty diffType,int chapter)
 	{
