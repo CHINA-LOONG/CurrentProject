@@ -47,14 +47,14 @@ public class UICoinExchange : UIBase
 	}
 	void BindListener()
 	{
-		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.ShopGold2CoinC.GetHashCode ().ToString(), OnExchangeFinished);
-		GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ShopGold2CoinS.GetHashCode().ToString(), OnExchangeFinished);
+		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.SHOP_GOLD2COIN_C.GetHashCode ().ToString(), OnExchangeFinished);
+		GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SHOP_GOLD2COIN_S.GetHashCode().ToString(), OnExchangeFinished);
 	}
 	
 	void UnBindListener()
 	{
-		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.ShopGold2CoinC.GetHashCode ().ToString (), OnExchangeFinished);
-		GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ShopGold2CoinS.GetHashCode().ToString(), OnExchangeFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SHOP_GOLD2COIN_C.GetHashCode().ToString(), OnExchangeFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SHOP_GOLD2COIN_S.GetHashCode().ToString(), OnExchangeFinished);
 
 	}
 	
@@ -66,7 +66,7 @@ public class UICoinExchange : UIBase
 	void OnBuyButtonClick(GameObject go)
 	{
 		PB.HSShopGold2Coin param = new PB.HSShopGold2Coin ();
-		GameApp.Instance.netManager.SendMessage (PB.code.ShopGold2CoinC.GetHashCode (), param);
+        GameApp.Instance.netManager.SendMessage(PB.code.SHOP_GOLD2COIN_C.GetHashCode(), param);
 	}
 
 	void OnExchangeFinished(ProtocolMessage msg)

@@ -9,6 +9,7 @@ import org.apache.http.HttpStatus;
 import org.hawk.app.HawkApp;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
+import org.hawk.os.HawkTime;
 import org.hawk.util.HawkTickable;
 import org.hawk.zmq.HawkZmq;
 import org.hawk.zmq.HawkZmqManager;
@@ -16,6 +17,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class HawkAccountService extends HawkTickable {
+	
+	/**
+	 * 默认心跳时间周期
+	 */
+	public final static int HEART_PERIOD = 5000;
 	
 	public static class RegitsterGameServer {
 		String gameServerHost;
@@ -30,6 +36,10 @@ public class HawkAccountService extends HawkTickable {
 		
 	}
 	
+	public static class HeartBeatData {
+		
+	}
+
 	public static class CreateRoleData {
 		public String puid;
 		public int playerId;
@@ -66,17 +76,24 @@ public class HawkAccountService extends HawkTickable {
 	 */
 	private Lock reportLock = null;
 	List<Object> reportDatas = null;
+
+	/**
+	 * 上次beat周期时间
+	 */
+	private long lastBeatTime = 0;
 	
 	// 账号上报路径
 	private static final String roleCreatePath      = "/report_roleCreate";
 	private static final String levelUpPath         = "/report_levelUp";
 	private static final String serverRegistPath    = "/regist_gameserver";
-	private static final String serverUnRegistPath    = "/unregist_gameserver";
+	private static final String serverUnRegistPath  = "/unregist_gameserver";
+	private static final String heartBeatPath    	= "/heartBeat";
 	
 	private static final String roleCreateParam     = "game=%s&platform=%s&channel=%s&server=%s&puid=%s&playerid=%d&nickname=%s";
 	private static final String levelUpParam        = "game=%s&platform=%s&channel=%s&server=%s&puid=%sd&level=%d";
 	private static final String serverRegistParam   = "game=%s&platform=%s&channel=%s&server=%s&ip=%s&port=%d";
 	private static final String serverUnRegistParam = "game=%s&platform=%s&channel=%s&server=%s";
+	private static final String heartBeatParam      = "game=%s&platform=%s&channel=%s&server=%s";
 	
 	/**
 	 * 服务器信息
@@ -124,6 +141,8 @@ public class HawkAccountService extends HawkTickable {
 			this.platform = platform;
 			this.serverId = serverId;
 			this.accountZmqHost = "tcp://" + accountServerIp + ":" + accountServerPort;
+			lastBeatTime = HawkTime.getMillisecond();
+			
 			// 可重复调用
 			HawkZmqManager.getInstance().init(HawkZmq.HZMQ_CONTEXT_THREAD);
 			if (createAccountZmq(accountZmqHost) == false) {
@@ -217,6 +236,20 @@ public class HawkAccountService extends HawkTickable {
 	}
 	
 	/**
+	 * 心跳检测
+	 * 
+	 * @return
+	 */
+	public void report(HeartBeatData heartBeatData) {
+		reportLock.lock();
+		try {
+			reportDatas.add(heartBeatData);
+		} finally {
+			reportLock.unlock();
+		}
+	}
+	
+	/**
 	 * 上报创建角色
 	 * 
 	 * @return
@@ -289,7 +322,31 @@ public class HawkAccountService extends HawkTickable {
 		}
 		return false;
 	}
-	 
+
+	/**
+	 * 上报数据
+	 * 
+	 * @param heartBeatData
+	 * @return
+	 */
+	private boolean doReport(HeartBeatData heartBeatData) {
+		if (accountZmq != null) {
+			try {
+				String queryParam = String.format(heartBeatParam, gameName, platform, channel, serverId);
+				
+				accountLogger.info("report: " + heartBeatParam + "?" + queryParam);
+
+				int status = executeMethod(heartBeatPath, queryParam);
+				if (status == HttpStatus.SC_OK) {
+					return true;
+				}
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * 上报数据
 	 * 
@@ -357,6 +414,8 @@ public class HawkAccountService extends HawkTickable {
 							doReport((RegitsterGameServer) reportData);
 						} else if (reportData instanceof UnRegitsterGameServer) {
 							doReport((UnRegitsterGameServer) reportData);
+						} else if (reportData instanceof HeartBeatData) {
+							doReport((HeartBeatData) reportData);
 						}
 					}
 				}
@@ -375,6 +434,13 @@ public class HawkAccountService extends HawkTickable {
 	 */
 	@Override
 	public void onTick() {
+		// 心跳检测
+		long curTime = HawkTime.getMillisecond();
+		if (curTime - lastBeatTime >= HEART_PERIOD) {
+			lastBeatTime = curTime;
+			report(new HeartBeatData());
+		}
+		
 		if (reportDatas.size() > 0) {
 			// 取出队列首个上报数据对象
 			Object reportData = null;
@@ -396,6 +462,8 @@ public class HawkAccountService extends HawkTickable {
 						doReport((RegitsterGameServer) reportData);
 					} else if (reportData instanceof UnRegitsterGameServer) {
 						doReport((UnRegitsterGameServer) reportData);
+					} else if (reportData instanceof HeartBeatData) {
+						doReport((HeartBeatData) reportData);
 					}
 				}
 			} catch (Exception e) {

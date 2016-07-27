@@ -224,6 +224,18 @@ public class UIUtil
         return true;
     }
 
+    public static bool CheckIsEnoughPlayerLevel(int level)
+    {
+        if (level<=GameDataMgr.Instance.PlayerDataAttr.level)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public static bool CheckIsEnoughEquip(GameUnit unit,int part)
     {
         UnitData petData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
@@ -340,11 +352,11 @@ public class UIUtil
         UnitData unitData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
         UnitBaseData unitBase = StaticDataMgr.Instance.GetUnitBaseRowData(unit.pbUnit.level);
 
-        health = (int)((1 + unitStageData.modifyRate) * unitData.healthModifyRate * (unitBase.health + unitStageData.health));
-        strength = (int)((1 + unitStageData.modifyRate) * unitData.strengthModifyRate * (unitBase.strength + unitStageData.strength));
-        inteligence = (int)((1 + unitStageData.modifyRate) * unitData.intelligenceModifyRate * (unitBase.intelligence + unitStageData.intelligence));
-        defence = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * (unitBase.defense + unitStageData.defense));
-        speed = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * (unitBase.speed + unitStageData.speed));
+        health = (int)((1 + unitStageData.modifyRate) * unitData.healthModifyRate * unitBase.health + unitStageData.health * unitData.healthModifyRate);
+        strength = (int)((1 + unitStageData.modifyRate) * unitData.strengthModifyRate * unitBase.strength + unitStageData.strength * unitData.healthModifyRate);
+        inteligence = (int)((1 + unitStageData.modifyRate) * unitData.intelligenceModifyRate * unitBase.intelligence + unitStageData.intelligence * unitData.healthModifyRate);
+        defence = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * unitBase.defense + unitStageData.defense * unitData.healthModifyRate);
+        speed = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * unitBase.speed + unitStageData.speed * unitData.healthModifyRate);
     }
 
     public static void SetParentReset(Transform child, Transform parent)

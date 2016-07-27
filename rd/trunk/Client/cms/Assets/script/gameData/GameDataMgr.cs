@@ -344,7 +344,7 @@ public class GameDataMgr : MonoBehaviour
                     GameDataMgr.Instance.mainPlayer.coin += item.count;
                     GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, mainPlayer.coin);
                 }
-                else if ((int)PB.changeType.CHANGE_GOLD == int.Parse(item.itemId))
+                else if ((int)PB.changeType.CHANGE_GOLD == int.Parse(item.itemId) || (int)PB.changeType.CHANGE_GOLD_BUY == int.Parse(item.itemId))
                 {
                     GameDataMgr.Instance.mainPlayer.gold += item.count;
 					GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged,mainPlayer.gold);

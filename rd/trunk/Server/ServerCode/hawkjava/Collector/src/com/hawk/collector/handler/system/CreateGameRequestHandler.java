@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.hawk.os.HawkException;
+import org.hawk.util.HawkHttpParams;
 
 import com.google.gson.JsonObject;
 import com.hawk.collector.Collector;
@@ -22,7 +23,7 @@ public class CreateGameRequestHandler implements HttpHandler {
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
 		try {
-			Map<String, String> params = CollectorHttpServer.parseHttpParam(httpExchange);
+			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
 			Collector.checkToken(params.get("token"));
 			
 			String response = createGame(params);

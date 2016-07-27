@@ -23,9 +23,11 @@ public class mailItem : MonoBehaviour
     public void SetMailItem(PB.HSMail info)
     {
         this.info = info;
+        string iconName = info.reward.Count > 0 ? "youxiang_baoguo" : "youxiang_youjian";
+        imgIcon.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(iconName);
         textTitle.text = info.subject;
         textPlayer.text = info.senderName;
-        textSendTime.text = GameTimeMgr.GetTime(info.sendTimeStamp).ToString("yyyy-MM-dd");
+        textSendTime.text = GameTimeMgr.GetTime(info.sendTimeStamp).ToString("MM-dd-yyyy");
 
         UpdateMailState();
     }

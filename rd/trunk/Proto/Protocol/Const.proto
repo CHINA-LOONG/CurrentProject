@@ -105,6 +105,8 @@ enum changeType
 	CHANGE_FATIGUE = 7;
 	// 好感度
 	CHANGE_FAV	= 8;
+	// 充值钻石
+	CHANGE_GOLD_BUY	= 8;
 }
 
 // 附加属性类型定义

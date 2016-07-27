@@ -6,16 +6,19 @@ import java.util.Map.Entry;
 import org.hawk.os.HawkTime;
 import org.hawk.util.services.HawkOrderService;
 
+import com.hawk.game.config.ShopCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.RechargeEntity;
+import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.GemInfo;
 import com.hawk.game.manager.ImManager.ImMsg;
+import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Attribute.Attr;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Equip.EquipInfo;
@@ -25,6 +28,8 @@ import com.hawk.game.protocol.Im.HSImPush;
 import com.hawk.game.protocol.Item.ItemInfo;
 import com.hawk.game.protocol.Mail.HSMail;
 import com.hawk.game.protocol.Monster.HSMonster;
+import com.hawk.game.protocol.Shop.HSShopRefresh;
+import com.hawk.game.protocol.Shop.HSShopRefreshTimeSync;
 import com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync;
 import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
 import com.hawk.game.protocol.Player.PlayerInfo;
@@ -43,7 +48,7 @@ public class BuilderUtil {
 		PlayerInfo.Builder builder = PlayerInfo.newBuilder();
 		builder.setPlayerId(playerEntity.getId());
 		builder.setNickname(playerEntity.getNickname());
-		builder.setGold(playerEntity.getGold());
+		builder.setGold(playerEntity.getBuyGold() + playerEntity.getFreeGold());
 		builder.setCoin(playerEntity.getCoin());
 		builder.setExp(playerEntity.getExp());
 		builder.setCareer(playerEntity.getCareer());
@@ -98,6 +103,23 @@ public class BuilderUtil {
 		HSStatisticsExpLeftTimeSync.Builder builder = HSStatisticsExpLeftTimeSync.newBuilder();
 		builder.setDoubleExpLeft(statisticsEntity.getDoubleExpLeftTimes());
 		builder.setTripleExpLeft(statisticsEntity.getTripleExpLeftTimes());
+		return builder;
+	}
+	
+	public static HSShopRefreshTimeSync.Builder genShopRefreshTimeLeftBuilder(Player player, ShopEntity shopEntity) {
+		HSShopRefreshTimeSync.Builder builder = HSShopRefreshTimeSync.newBuilder();
+		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.OTHERSHOP_VALUE; ++i) {
+			ShopCfg shopCfg = ShopCfg.getShopCfg(i, player.getLevel());
+			if (i == Const.shopType.NORMALSHOP_VALUE) {
+				builder.setNormalShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));
+			}
+			else if (i == Const.shopType.ALLIANCESHOP_VALUE) {
+				builder.setAllianceShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));
+			}
+			else if (i == Const.shopType.OTHERSHOP_VALUE) {
+				builder.setOtherShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));
+			}
+		}
 		return builder;
 	}
 	

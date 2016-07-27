@@ -48,6 +48,7 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, AssetLangData> assetLang = new Dictionary<string, AssetLangData>();
     Dictionary<string, string> audioMapping = new Dictionary<string, string>();
     Dictionary<string, Dictionary<int, EquipProtoData>> equipData = new Dictionary<string, Dictionary<int, EquipProtoData>>();
+    Dictionary<string, EquipForgeData> equipForge = new Dictionary<string, EquipForgeData>();
     Dictionary<int, EquipLevelData> baseAttrData = new Dictionary<int, EquipLevelData>();
 	Dictionary<int,ShopAutoRefreshData> shopAutoRefreshData = new Dictionary<int, ShopAutoRefreshData>();
 	List<ShopStaticData>	shopStaticDataList = new List<ShopStaticData>();
@@ -561,7 +562,7 @@ public class StaticDataMgr : MonoBehaviour
             var data = InitTable<EquipProtoData>("equipAttr");
             Dictionary<int, EquipProtoData> equipData1 = null;
             foreach (var item in data)
-            {          
+            {
                 if (!equipData.TryGetValue(item.id, out equipData1))
                 {
                     equipData1 = new Dictionary<int, EquipProtoData>();
@@ -579,7 +580,16 @@ public class StaticDataMgr : MonoBehaviour
             #endregion
         }
         {
-			#region baseAttr
+            #region equipForge
+            var data = InitTable<EquipForgeData>("equipForge");
+            foreach (var item in data)
+            {
+                equipForge.Add(item.stageLevel, item);
+            }
+            #endregion
+        }
+        {
+            #region baseAttr
             var data = InitTable<EquipLevelData>("baseAttr");
             foreach (var item in data)
             {
@@ -588,29 +598,29 @@ public class StaticDataMgr : MonoBehaviour
             #endregion
         }
 
-		{
-			var data = InitTable<ShopAutoRefreshData>("shopAutoRefresh");
-			foreach(var item in data)
-			{
-				shopAutoRefreshData.Add(item.type,item);
-			}
-		}
+        {
+            var data = InitTable<ShopAutoRefreshData>("shopAutoRefresh");
+            foreach (var item in data)
+            {
+                shopAutoRefreshData.Add(item.type, item);
+            }
+        }
 
-		{
-			var data = InitTable<ShopStaticData>("shop");
-			foreach(var item in data)
-			{
-				shopStaticDataList.Add(item);
-			}
-		}
+        {
+            var data = InitTable<ShopStaticData>("shop");
+            foreach (var item in data)
+            {
+                shopStaticDataList.Add(item);
+            }
+        }
 
-		{
-			var data = InitTable<RechargeStaticData>("recharge");
-			foreach (var item in data)
-			{
-				rechargeStaticDataDic.Add(item.id, item);
-			}
-		}
+        {
+            var data = InitTable<RechargeStaticData>("recharge");
+            foreach (var item in data)
+            {
+                rechargeStaticDataDic.Add(item.id, item);
+            }
+        }
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -785,6 +795,13 @@ public class StaticDataMgr : MonoBehaviour
             item2.TryGetValue(state, out item);            
         }
         return item;
+    }
+    public EquipForgeData GetEquipForgeData(int stage, int level)
+    {
+        string forgeId = string.Format("{0}_{1}", stage, level);
+        EquipForgeData forge = null;
+        equipForge.TryGetValue(forgeId, out forge);
+        return forge;
     }
 
 	public	PlayerLevelAttr GetPlayerLevelAttr(int level)

@@ -61,7 +61,7 @@ namespace UnityClientConsole
             if (protocol.checkType(sys.ERROR_CODE.GetHashCode()))
             {
                 HSErrorCode hsError = protocol.GetProtocolBody<HSErrorCode>();
-                Console.WriteLine("" + hsError.hpCode.GetHashCode() + " " + hsError.errCode.GetHashCode().ToString("X2"));
+                Console.WriteLine("" + hsError.hsCode.GetHashCode() + " " + hsError.errCode.GetHashCode().ToString("X2"));
                 Console.WriteLine(""); 
             }
 
@@ -79,7 +79,7 @@ namespace UnityClientConsole
 
                     HSPlayerCreate createRole = new HSPlayerCreate();
                     createRole.puid = puid;
-                    createRole.nickname = "settle_1";
+                    createRole.nickname = "exp_1";
                     createRole.career = 1;
                     createRole.gender = 0;
                     createRole.eye = 1;
@@ -240,17 +240,17 @@ namespace UnityClientConsole
 //                 skillUp.skillId = "buffMagic";
 //                 NetManager.GetInstance().SendProtocol(code.MONSTER_SKILL_UP_C.GetHashCode(), skillUp);
 
-                HSMonsterLock monsterLock = new HSMonsterLock();
-                monsterLock.monsterId = 4622;
-                monsterLock.locked = false;
-                NetManager.GetInstance().SendProtocol(code.MONSTER_LOCK_C.GetHashCode(), monsterLock);
+//                 HSMonsterLock monsterLock = new HSMonsterLock();
+//                 monsterLock.monsterId = 4622;
+//                 monsterLock.locked = false;
+//                 NetManager.GetInstance().SendProtocol(code.MONSTER_LOCK_C.GetHashCode(), monsterLock);
 
-//                 HSInstanceEnter instanceEnter = new HSInstanceEnter();
-//                 instanceEnter.instanceId = "minghe13";
-//                 instanceEnter.battleMonsterId.Add(4622);
-//                 instanceEnter.battleMonsterId.Add(4623);
-//                 instanceEnter.battleMonsterId.Add(4624);
-//                 NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
+                HSInstanceEnter instanceEnter = new HSInstanceEnter();
+                instanceEnter.instanceId = "minghe12";
+                instanceEnter.battleMonsterId.Add(4622);
+                instanceEnter.battleMonsterId.Add(4623);
+                instanceEnter.battleMonsterId.Add(4624);
+                NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
 
 //                 HSItemBuy itemBuy = new HSItemBuy();
 //                 itemBuy.itemId = 40001;

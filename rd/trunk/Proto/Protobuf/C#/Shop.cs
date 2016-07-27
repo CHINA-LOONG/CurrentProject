@@ -59,8 +59,15 @@ namespace PB
       get { return _slot; }
       set { _slot = value; }
     }
+    private float _discount;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"discount", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float discount
+    {
+      get { return _discount; }
+      set { _discount = value; }
+    }
     private bool _hasBuy;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"hasBuy", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"hasBuy", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public bool hasBuy
     {
       get { return _hasBuy; }
@@ -266,6 +273,37 @@ namespace PB
     {
       get { return _changeCount; }
       set { _changeCount = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSShopRefreshTimeSync")]
+  public partial class HSShopRefreshTimeSync : global::ProtoBuf.IExtensible
+  {
+    public HSShopRefreshTimeSync() {}
+    
+    private int _normalShopRefreshTime;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"normalShopRefreshTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int normalShopRefreshTime
+    {
+      get { return _normalShopRefreshTime; }
+      set { _normalShopRefreshTime = value; }
+    }
+    private int _allianceShopRefreshTime;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"allianceShopRefreshTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int allianceShopRefreshTime
+    {
+      get { return _allianceShopRefreshTime; }
+      set { _allianceShopRefreshTime = value; }
+    }
+    private int _otherShopRefreshTime;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"otherShopRefreshTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int otherShopRefreshTime
+    {
+      get { return _otherShopRefreshTime; }
+      set { _otherShopRefreshTime = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

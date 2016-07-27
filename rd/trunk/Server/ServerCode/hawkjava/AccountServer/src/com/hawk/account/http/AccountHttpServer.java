@@ -1,18 +1,15 @@
 package com.hawk.account.http;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.BindException;
 import java.net.InetSocketAddress;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.Executors;
 
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 
 import com.hawk.account.httpHandler.FetchGameServerInfoHandler;
+import com.hawk.account.httpHandler.HeartBeatHandler;
 import com.hawk.account.httpHandler.RegistGameServerHandler;
 import com.hawk.account.httpHandler.UnRegistGameServerHandler;
 import com.hawk.account.httpHandler.UserCreateRoleHandler;
@@ -65,6 +62,7 @@ public class AccountHttpServer {
 				httpServer.createContext("/regist_gameserver", new RegistGameServerHandler());
 				httpServer.createContext("/unregist_gameserver", new UnRegistGameServerHandler());
 				httpServer.createContext("/fetch_gameServer", new FetchGameServerInfoHandler());
+				httpServer.createContext("/heartBeat", new HeartBeatHandler());
 				httpServer.start();
 				HawkLog.logPrintln("Account Http Server [" + addr + ":" + port + "] Start OK.");
 			}
@@ -80,57 +78,6 @@ public class AccountHttpServer {
 		return true;
 	}
 
-	/**
-	 * 解析http请求的参数
-	 * 
-	 * @param uriQuery
-	 * @return
-	 */
-	public static Map<String, String> parseHttpParam(HttpExchange httpExchange) {
-		Map<String, String> paramMap = new HashMap<String, String>();
-		try {
-			String uriPath = httpExchange.getRequestURI().getPath();			
-			String uriQuery = null;
-
-			if (httpExchange.getRequestMethod().toLowerCase().equals("post")) {
-				InputStream in = httpExchange.getRequestBody();
-				try {
-				    ByteArrayOutputStream out = new ByteArrayOutputStream();
-				    byte buf[] = new byte[4096];
-				    for (int n = in.read(buf); n > 0; n = in.read(buf)) {
-				        out.write(buf, 0, n);
-				    }
-				    uriQuery = new String(out.toByteArray(), "UTF-8");
-				} finally {
-				    in.close();
-				}
-				
-			}
-			else
-			{
-				uriQuery = httpExchange.getRequestURI().getQuery();
-			}
-			if (uriQuery != null && uriQuery.length() > 0) {
-				HawkLog.logPrintln("UriQuery: " + uriPath + "?" + uriQuery);
-
-				if (uriQuery != null) {
-					String[] querys = uriQuery.split("&");
-					for (String query : querys) {
-						// param maybe empty string, use -1
-						String[] pair = query.split("=", -1);
-						if (pair.length == 2) {
-							paramMap.put(pair[0], pair[1]);
-						}
-					}
-				}
-			}
-		} catch (Exception e) {
-			HawkException.catchException(e);
-		}
-		return paramMap;
-
-	}
-	
 	/**
 	 * 停止服务器
 	 */

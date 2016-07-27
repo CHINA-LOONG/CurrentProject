@@ -1620,8 +1620,8 @@ pet_detail_skill_buy10,购买<color=#ffcc00>10</color>点技能点数,Purchase <
 pet_detail_skill_buytimes,今日可买：{0}/{1},Can purchase today : {0}/{1}
 monster_record_017,购买10点技能点数成功,Purchased 10 ability points!
 summon_tipsgoldmust,再抽<color=#ffcc00>{0}</color>次必得<color=#ffcc00>A级及以上</color>宠物,<color=#ffcc00>{0}</color> times more guarantees <color=#ffcc00>Class A (or above)</color> Monster.
-giftspecial_event_title,特殊礼包购买,特殊礼包购买
-giftspecial_event_desc,可以在此购买已经触发的特殊礼包！,可以在此购买已经触发的特殊礼包！
+giftspecial_event_title,特殊礼包购买,Purchase special package
+giftspecial_event_desc,可以在此购买已经触发的特殊礼包！,Here you may purchase special packages that have been triggered
 giftspecial_xuanze11_desc,剩余时间 ,Time left 
 giftspecial_xuanze12_desc,剩余时间 ,Time left 
 common_attr_health_tips,增加体力可增加生命值,Increasing STA can increase HP

@@ -113,10 +113,6 @@ public class ItemCfg extends HawkConfigBase {
 	 * 耐久度
 	 */
 	protected final int durability;
-	/**
-	 * 装备属性ID
-	 */
-	protected final int equipAttId;
 	
 	protected final String name ;
 	
@@ -163,7 +159,6 @@ public class ItemCfg extends HawkConfigBase {
 		gemType = 0;
 		part = 0;
 		durability = 0;
-		equipAttId = 0;
 		
 		name = null;
 		asset = null;
@@ -276,11 +271,6 @@ public class ItemCfg extends HawkConfigBase {
 
 	public int getDurability() {
 		return durability;
-	}
-
-
-	public int getEquipAttId() {
-		return equipAttId;
 	}
 
 	public String getName() {

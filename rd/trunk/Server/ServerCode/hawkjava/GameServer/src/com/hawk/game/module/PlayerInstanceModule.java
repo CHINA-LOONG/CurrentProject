@@ -297,13 +297,13 @@ public class PlayerInstanceModule extends PlayerModule {
 			else if (statisticsEntity.getTripleExpLeftTimes() > 0){
 				multiple = 3;
 			}
-			
+
 			// 通关奖励
 			InstanceRewardCfg instanceRewardCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceRewardCfg.class, this.curInstanceId);
 			if (instanceRewardCfg != null) {
 				this.curDropList.addAll(instanceRewardCfg.getReward().getRewardList());
 			}
-			
+
 			List<ItemInfo> monsterRewardList = new ArrayList<ItemInfo>();
 
 			Iterator<ItemInfo> iter = this.curDropList.iterator();
@@ -323,9 +323,9 @@ public class PlayerInstanceModule extends PlayerModule {
 			if (false == monsterRewardList.isEmpty()) {
 				try {
 					int index = HawkRand.randInt(0, monsterRewardList.size() - 1);
-					//int stage = HawkRand.randInt(0, 5);
+					ItemInfo monster = monsterRewardList.get(index);
 					int disposition = HawkRand.randInt(0, 5);
-					completeReward.addMonster(monsterRewardList.get(index).getItemId(), monsterRewardList.get(index).getStage(), 1, 5, disposition);
+					completeReward.addMonster(monster.getItemId(), monster.getStage(), 1, 5, disposition);
 				} catch (HawkException e) {
 					HawkException.catchException(e);
 				}		
@@ -433,7 +433,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			else if (statisticsEntity.getTripleExpLeftTimes() > 0){
 				multiple = 3;
 			}
-			
+
 			for (int i = 0; i < count; ++i) {
 				AwardItems completeReward = AwardItems.valueOf();
 
@@ -474,7 +474,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			statisticsEntity.decreaseTripleExpLeft(1);
 			player.getPlayerData().syncStatisticsExpLeftInfo();
 		}
-		
+
 		statisticsEntity.notifyUpdate(true);
 
 		HSInstanceSweepRet.Builder response = HSInstanceSweepRet.newBuilder();

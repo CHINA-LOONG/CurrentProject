@@ -128,6 +128,37 @@ namespace PB
       get { return _monthCardLeft; }
       set { _monthCardLeft = value; }
     }
+    private HSStatisticsExpLeftTimeSync _expLeftTimes;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"expLeftTimes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public HSStatisticsExpLeftTimeSync expLeftTimes
+    {
+      get { return _expLeftTimes; }
+      set { _expLeftTimes = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsExpLeftTimeSync")]
+  public partial class HSStatisticsExpLeftTimeSync : global::ProtoBuf.IExtensible
+  {
+    public HSStatisticsExpLeftTimeSync() {}
+    
+    private int _doubleExpLeft;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"doubleExpLeft", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int doubleExpLeft
+    {
+      get { return _doubleExpLeft; }
+      set { _doubleExpLeft = value; }
+    }
+    private int _tripleExpLeft;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"tripleExpLeft", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int tripleExpLeft
+    {
+      get { return _tripleExpLeft; }
+      set { _tripleExpLeft = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -70,7 +70,7 @@ public class RewardCfg extends HawkConfigBase  {
 		}
 		return result;
 	}  
-	
+
 	@Override
 	protected boolean assemble() {
 		ratioList.clear();

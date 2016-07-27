@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
+import org.hawk.util.HawkHttpParams;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -28,7 +29,7 @@ public class FetchTutorialLevelHandler implements HttpHandler {
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
 		try {
-			Map<String, String> params = CollectorHttpServer.parseHttpParam(httpExchange);
+			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
 			if (params != null) {
 				Collector.checkToken(params.get("token"));
 				String tutorialInfo = formatTutorialInfo(params.get("game"), params.get("platform"), params.get("channel"), 

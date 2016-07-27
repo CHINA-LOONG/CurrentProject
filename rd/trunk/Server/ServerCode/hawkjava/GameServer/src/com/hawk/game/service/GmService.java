@@ -162,7 +162,7 @@ public class GmService extends GameService {
 			if (gmOperation.equals("=")) {
 				goldChange = gmValue - player.getGold();
 				if (goldChange > 0) {
-					award.addGold((int)goldChange);
+					award.addFreeGold((int)goldChange);
 				}
 				else {
 					consume.addGold((int)(-goldChange));

@@ -140,20 +140,21 @@ enum code
 	IM_PUSH_S                   = 7002;
 
 	// 商店
-	ShopDataInitC               = 8001;
-	ShopDataInitS               = 8002;
-	ShopRefreshC                = 8003;
-	ShopRefreshS                = 8004;
-	ShopItemBuyC                = 8005;
-	ShopItemBuyS                = 8006;
-	ShopDataSynC                = 8007;
-	ShopDataSynS                = 8008;
-	ShopGold2CoinC              = 8009;
-	ShopGold2CoinS              = 8010;
-
+	SHOP_DATA_INIT_C            = 8001;
+	SHOP_DATA_INIT_S            = 8002;
+	SHOP_REFRESH_C              = 8003;
+	SHOP_REFRESH_S              = 8004;
+	SHOP_ITEM_BUY_C             = 8005;
+	SHOP_ITEM_BUY_S             = 8006;
+	SHOP_DATA_SYN_C             = 8007;
+	SHOP_DATA_SYN_S             = 8008;
+	SHOP_GOLD2COIN_C            = 8009;
+	SHOP_GOLD2COIN_S            = 8010;
+	SHOP_REFRESH_TIMES			= 8011;
+	
 	// 公会
-	AllianceCreateC             = 9001;
-	AllianceCreateS             = 9002;
+	ALLIANCE_CREATE_C           = 9001;
+	ALLIANCE_CREATE_S           = 9002;
 
 	// 系统设置
 	SETTING_LANGUAGE_C          = 10001;
@@ -163,5 +164,5 @@ enum code
 	
 	// 统计信息
 	STATISTICS_EXP_LEFT_TIMES   = 11001;
-	STATISTICS_SHOP_REFRESH_TIMES = 11002;
+	
 }

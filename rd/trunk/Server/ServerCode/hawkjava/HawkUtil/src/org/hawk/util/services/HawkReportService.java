@@ -45,6 +45,11 @@ public class HawkReportService extends HawkThread {
 	static Logger reportLogger = LoggerFactory.getLogger("Report");
 
 	/**
+	 * 默认心跳时间周期
+	 */
+	public final static int HEART_PERIOD = 5000;
+	
+	/**
 	 * 钻石类型定义
 	 */
 	public static int REPORT_GOLD_TYPE_PAY = 1;
@@ -496,6 +501,15 @@ public class HawkReportService extends HawkThread {
 		}
 	}
 
+	/**
+	 * 心跳检测数据
+	 * 
+	 * @author hawk
+	 */
+	public static class HeartBeatData {
+		
+	}
+	
 	private static final String registerPath = "/report_register";
 	private static final String loginPath = "/report_login";
 	private static final String rechargePath = "/report_recharge";
@@ -506,6 +520,7 @@ public class HawkReportService extends HawkThread {
 	private static final String commonPath = "/report_data";
 	private static final String fetchIpPath = "/fetch_myip";
 	private static final String fetchAccountServerPath = "/fetch_accountServer";
+	private static final String heartBeatPath = "/heartBeat";
 	
 	// 所有的query都能添加token作为服务器校验令牌
 	private static final String rechargeQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playername=%s&playerlevel=%d&orderserial=%s&productid=%s&paymoney=%d&addgold=%d&giftgold=%d&currency=%s&time=%s";
@@ -517,6 +532,8 @@ public class HawkReportService extends HawkThread {
 	private static final String commonQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&time=%s";
 	private static final String activityQuery = "game=%s&platform=%s&server=%s&puid=%s&device=%s&playerid=%d&playerlevel=%d&activityid=%d&activityno=%d&consumegold=%d&time=%s";
 	private static final String fetchAccountServerQuery = "game=%s&platform=%s&server=%s&channel=%s";
+	private static final String heartBeatPQuery = "game=%s&platform=%s&server=%s&channel=%s";
+	
 	/**
 	 * 服务器信息
 	 */
@@ -560,6 +577,11 @@ public class HawkReportService extends HawkThread {
 	 * 服务是否可用
 	 */
 	private boolean serviceEnable = true;
+
+	/**
+	 * 上次beat周期时间
+	 */
+	private long lastBeatTime = 0;
 	
 	/**
 	 * 实例对象
@@ -598,7 +620,13 @@ public class HawkReportService extends HawkThread {
 	public void run() {
 		state = ThreadState.STATE_RUNNING;
 		while (running) {
-			try {
+			try {	
+				//long curTime = HawkTime.getMillisecond();
+				//if (curTime - lastBeatTime >= HEART_PERIOD) {
+				//	lastBeatTime = curTime;
+				//	report(new HeartBeatData());
+				//}
+				
 				if (reportDatas.size() > 0) {
 					onTick();
 				} else {
@@ -609,6 +637,8 @@ public class HawkReportService extends HawkThread {
 				if (waitBreak) {
 					break;
 				}
+				
+				
 			} catch (Exception e) {
 				HawkException.catchException(e);
 			}
@@ -636,6 +666,8 @@ public class HawkReportService extends HawkThread {
 			this.serverId = serverId;
 			this.serviceHost = host;
 
+			lastBeatTime = HawkTime.getMillisecond();
+			
 			// 可重复调用
 			HawkZmqManager.getInstance().init(HawkZmq.HZMQ_CONTEXT_THREAD);
 			
@@ -1073,6 +1105,20 @@ public class HawkReportService extends HawkThread {
 	}
 
 	/**
+	 * 心跳信息
+	 * 
+	 * @param serverData
+	 */
+	public void report(HeartBeatData heartBeatData) {
+		reportLock.lock();
+		try {
+			reportDatas.add(heartBeatData);
+		} finally {
+			reportLock.unlock();
+		}
+	}
+	
+	/**
 	 * 通用统计
 	 * 
 	 * @param commonData
@@ -1312,6 +1358,35 @@ public class HawkReportService extends HawkThread {
 	/**
 	 * 上报数据
 	 * 
+	 * @param serverData
+	 * @return
+	 */
+	private boolean doReport(HeartBeatData heartBeatData) {
+		// 接口类是否可用
+		if (!isReportEnable(ServerData.class.getSimpleName())) {
+			return true;
+		}
+		
+		if (isValid()) {
+			try {
+				String queryParam = String.format(heartBeatPQuery, gameName, platform, serverId);
+				reportLogger.info("report: " + heartBeatPath + "?" + queryParam);
+
+				int status = executeMethod(serverPath, queryParam);
+				if (status == HttpStatus.SC_OK) {
+					return true;
+				}
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * 上报数据
+	 * 
 	 * @param commonData
 	 * @return
 	 */
@@ -1384,6 +1459,8 @@ public class HawkReportService extends HawkThread {
 						doReport((CommonData) reportData);
 					} else if (reportData instanceof ServerData) {
 						doReport((ServerData) reportData);
+					} else if (reportData instanceof HeartBeatData) {
+						doReport((HeartBeatData) reportData);
 					}
 				}
 			} catch (Exception e) {

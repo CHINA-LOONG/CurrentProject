@@ -137,13 +137,20 @@ namespace PB
   {
     public HSItemBoxUseBatch() {}
     
-    private readonly global::System.Collections.Generic.List<string> _itemId = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> itemId
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
     {
       get { return _itemId; }
+      set { _itemId = value; }
     }
-  
+    private int _itemCount;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"itemCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int itemCount
+    {
+      get { return _itemCount; }
+      set { _itemCount = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

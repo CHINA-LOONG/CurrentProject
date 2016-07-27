@@ -113,6 +113,7 @@ public class BattleGroup
             {
                 itor.Current.unit.pbUnit.slot = BattleConst.offsiteSlot;
                 itor.Current.unit.backUp = true;
+                itor.Current.unit.State = UnitState.None;
                 itor.Current.OnExitField();
                 //OnUnitExitField(itor.Current, slot);
             }

@@ -37,5 +37,5 @@ g15_s1,0,1,speech_ruodian,,,0,GBSpeechOver,0,0,-1,0,0,0,,,,0,
 g16_s1_1,2,1,,,,0,GBReachRound,0,2.5,-1,0,0,0,,bossdajie17Huapo2wp02,,1,GuideUI_toueffect
 g16_s1_2,2,1,,guide_ruodian2,weakpoint,0,,0,2,-1,0,10,-40,,bossdajie17Huapo2wp02,GuideUI_fixsize,0,
 g16_s1_3,2,1,,,nofocus,0,GBReachRound,0,2,-3,0,0,0,,bossdajie17Huapo2wp02,,4,
-g16_s1_4,2,1,,,nofocus,0,GBReachRound,0,2.5,-3,0,0,0,,bossdajie17Huapo2wp02,,2,GuideUI_toueffect
+g16_s1_4,2,1,,,nofocus,0,GBReachRound,0,2.5,-3,0,0,0,,bossdajie17Huapo2wp02,,2,
 g16_s1_5,2,1,,guide_ruodian4,bossdajie17Huapo2wp02,0,,0,2,-3,0,-1,-80,,bossdajie17Huapo2wp02,GuideUI_fixsize,0,

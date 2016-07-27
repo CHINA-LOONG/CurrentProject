@@ -85,11 +85,13 @@ public class ShopManager extends HawkAppObj {
 		{
 			// 离线玩家
 			if (player.getSession() == null) {
-				player.increaseGold(rechargeEntity.getAddGold() + rechargeEntity.getGiftGold(), Action.SHOP_RECHARGE);
+				player.increaseBuyGold(rechargeEntity.getAddGold(), Action.SHOP_RECHARGE);
+				player.increaseFreeGold(rechargeEntity.getGiftGold(), Action.SHOP_RECHARGE);
 			}
 			else {
 				AwardItems reward = new AwardItems();
-				reward.addGold(rechargeEntity.getAddGold() + rechargeEntity.getGiftGold());
+				reward.addFreeGold(rechargeEntity.getGiftGold());
+				reward.addBuyGold(rechargeEntity.getAddGold());
 				reward.rewardTakeAffectAndPush(player, Action.SHOP_RECHARGE, 0);
 			}
 		}
@@ -114,8 +116,6 @@ public class ShopManager extends HawkAppObj {
 														  "");
 		
 		HawkReportService.getInstance().report(rechargeData);
-		
 		return true;
 	}
-	
 }

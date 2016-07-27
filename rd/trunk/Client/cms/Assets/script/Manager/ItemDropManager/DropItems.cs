@@ -32,7 +32,7 @@ public class DropItems : MonoBehaviour {
     public void OnHit()//被点击
     {
         item = transform.FindChild("Cube").gameObject;
-        effectDrop= ResourceMgr.Instance.LoadAsset("jiuweihu_wugong");
+        effectDrop = ResourceMgr.Instance.LoadAsset("attackSmashStrong");
         effectDrop.transform.parent = item.transform;
         effectDrop.transform.position = item.transform.position;
 

@@ -321,41 +321,44 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"IM_PUSH_S", Value=7002)]
       IM_PUSH_S = 7002,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataInitC", Value=8001)]
-      ShopDataInitC = 8001,
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_DATA_INIT_C", Value=8001)]
+      SHOP_DATA_INIT_C = 8001,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataInitS", Value=8002)]
-      ShopDataInitS = 8002,
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_DATA_INIT_S", Value=8002)]
+      SHOP_DATA_INIT_S = 8002,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopRefreshC", Value=8003)]
-      ShopRefreshC = 8003,
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_REFRESH_C", Value=8003)]
+      SHOP_REFRESH_C = 8003,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopRefreshS", Value=8004)]
-      ShopRefreshS = 8004,
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_REFRESH_S", Value=8004)]
+      SHOP_REFRESH_S = 8004,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopItemBuyC", Value=8005)]
-      ShopItemBuyC = 8005,
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_ITEM_BUY_C", Value=8005)]
+      SHOP_ITEM_BUY_C = 8005,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopItemBuyS", Value=8006)]
-      ShopItemBuyS = 8006,
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_ITEM_BUY_S", Value=8006)]
+      SHOP_ITEM_BUY_S = 8006,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataSynC", Value=8007)]
-      ShopDataSynC = 8007,
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_DATA_SYN_C", Value=8007)]
+      SHOP_DATA_SYN_C = 8007,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopDataSynS", Value=8008)]
-      ShopDataSynS = 8008,
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_DATA_SYN_S", Value=8008)]
+      SHOP_DATA_SYN_S = 8008,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopGold2CoinC", Value=8009)]
-      ShopGold2CoinC = 8009,
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_GOLD2COIN_C", Value=8009)]
+      SHOP_GOLD2COIN_C = 8009,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ShopGold2CoinS", Value=8010)]
-      ShopGold2CoinS = 8010,
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_GOLD2COIN_S", Value=8010)]
+      SHOP_GOLD2COIN_S = 8010,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"AllianceCreateC", Value=9001)]
-      AllianceCreateC = 9001,
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_REFRESH_TIMES", Value=8011)]
+      SHOP_REFRESH_TIMES = 8011,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"AllianceCreateS", Value=9002)]
-      AllianceCreateS = 9002,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CREATE_C", Value=9001)]
+      ALLIANCE_CREATE_C = 9001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CREATE_S", Value=9002)]
+      ALLIANCE_CREATE_S = 9002,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SETTING_LANGUAGE_C", Value=10001)]
       SETTING_LANGUAGE_C = 10001,
@@ -367,7 +370,10 @@ namespace PB
       SETTING_BLOCK_C = 10003,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SETTING_BLOCK_S", Value=10004)]
-      SETTING_BLOCK_S = 10004
+      SETTING_BLOCK_S = 10004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_EXP_LEFT_TIMES", Value=11001)]
+      STATISTICS_EXP_LEFT_TIMES = 11001
     }
   
 }

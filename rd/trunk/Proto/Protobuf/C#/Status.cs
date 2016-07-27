@@ -134,11 +134,14 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"BATTLE_MONSTER_COUNT", Value=196616)]
       BATTLE_MONSTER_COUNT = 196616,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"LOCK_ALREADY", Value=196617)]
-      LOCK_ALREADY = 196617,
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_LOCKED", Value=196617)]
+      MONSTER_LOCKED = 196617,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"UNLOCK_ALREADY", Value=196624)]
-      UNLOCK_ALREADY = 196624
+      [global::ProtoBuf.ProtoEnum(Name=@"LOCK_ALREADY", Value=196618)]
+      LOCK_ALREADY = 196618,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UNLOCK_ALREADY", Value=196619)]
+      UNLOCK_ALREADY = 196619
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"itemError")]
@@ -147,9 +150,6 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_FOUND", Value=262145)]
       ITEM_NOT_FOUND = 262145,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=262146)]
-      EQUIP_NOT_FOUND = 262146,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_ENOUGH", Value=262147)]
       ITEM_NOT_ENOUGH = 262147,
@@ -160,44 +160,53 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_NOT_ALLOW", Value=262149)]
       ITEM_SELL_NOT_ALLOW = 262149,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MAX_LEVEL_ALREADY", Value=262150)]
-      EQUIP_MAX_LEVEL_ALREADY = 262150,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_EXP_LEFT_TIMES", Value=262150)]
+      ITEM_EXP_LEFT_TIMES = 262150,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_LEVEL_NOT_ENOUGH", Value=262151)]
-      EQUIP_LEVEL_NOT_ENOUGH = 262151,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=266241)]
+      EQUIP_NOT_FOUND = 266241,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MAX_STAGE_ALREADY", Value=262152)]
-      EQUIP_MAX_STAGE_ALREADY = 262152,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MAX_LEVEL_ALREADY", Value=266242)]
+      EQUIP_MAX_LEVEL_ALREADY = 266242,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_DRESS_ALREADY", Value=262160)]
-      EQUIP_DRESS_ALREADY = 262160,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_LEVEL_NOT_ENOUGH", Value=266243)]
+      EQUIP_LEVEL_NOT_ENOUGH = 266243,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_DRESS_OTHER", Value=262161)]
-      EQUIP_NOT_DRESS_OTHER = 262161,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MAX_STAGE_ALREADY", Value=266244)]
+      EQUIP_MAX_STAGE_ALREADY = 266244,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_DRESS_OTHER_ALREADY", Value=262162)]
-      EQUIP_DRESS_OTHER_ALREADY = 262162,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_DRESS_ALREADY", Value=266245)]
+      EQUIP_DRESS_ALREADY = 266245,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_DRESSED", Value=262163)]
-      EQUIP_NOT_DRESSED = 262163,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_DRESS_OTHER", Value=266246)]
+      EQUIP_NOT_DRESS_OTHER = 266246,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_NOT_EMPTY", Value=262164)]
-      EQUIP_SLOT_NOT_EMPTY = 262164,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_DRESS_OTHER_ALREADY", Value=266247)]
+      EQUIP_DRESS_OTHER_ALREADY = 266247,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_EMPTY", Value=262165)]
-      EQUIP_SLOT_EMPTY = 262165,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_DRESSED", Value=266248)]
+      EQUIP_NOT_DRESSED = 266248,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_NOT_FOUND", Value=262166)]
-      EQUIP_GEM_NOT_FOUND = 262166,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_NOT_EMPTY", Value=266249)]
+      EQUIP_SLOT_NOT_EMPTY = 266249,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_CAN_NOT_OPEN_SLOT", Value=262167)]
-      EQUIP_CAN_NOT_OPEN_SLOT = 262167,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_EMPTY", Value=266250)]
+      EQUIP_SLOT_EMPTY = 266250,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_MISMATCH", Value=262168)]
-      EQUIP_GEM_MISMATCH = 262168,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_NOT_FOUND", Value=266251)]
+      EQUIP_GEM_NOT_FOUND = 266251,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_NOT_PUNCH", Value=262169)]
-      EQUIP_SLOT_NOT_PUNCH = 262169
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_CAN_NOT_OPEN_SLOT", Value=266252)]
+      EQUIP_CAN_NOT_OPEN_SLOT = 266252,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_MISMATCH", Value=266253)]
+      EQUIP_GEM_MISMATCH = 266253,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_NOT_PUNCH", Value=266254)]
+      EQUIP_SLOT_NOT_PUNCH = 266254,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_PLAYER_LEVEL_DEMAND", Value=266256)]
+      EQUIP_PLAYER_LEVEL_DEMAND = 266256
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"questError")]

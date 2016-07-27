@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.net.InetAddress;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -15,6 +16,7 @@ import org.hawk.log.HawkLog;
 import org.hawk.nativeapi.HawkNativeApi;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkOSOperator;
+import org.hawk.os.HawkTime;
 import org.hawk.util.HawkTickable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,13 +39,20 @@ public class AccountServices {
 		public String server;
 		public String hostIp;
 		public int port;
+		public long heartBeatTime;
 		
 		public GameServer(String server, String hostIp, int port) {
 			this.server = server;
 			this.hostIp = hostIp;
 			this.port = port;
+			heartBeatTime = HawkTime.getMillisecond();
 		}
 	}
+	
+	/**
+	 * 默认心跳时间周期
+	 */
+	public final static int HEART_PERIOD = 15000;
 	
 	/**
 	 * 调试日志对象
@@ -130,6 +139,20 @@ public class AccountServices {
 		for (Map.Entry<String, GameServer> entry : serverList.entrySet()) {
 			if (entry.getValue().server.equals(server)) {
 				serverList.remove(server);
+				break;
+			}
+		}
+	}
+	
+	/**
+	 * 移除游戏服务器对象
+	 * 
+	 * @param gameServer
+	 */
+	public void updateGameServer(String game, String platform, String server) {
+		for (Map.Entry<String, GameServer> entry : serverList.entrySet()) {
+			if (entry.getValue().server.equals(server)) {
+				entry.getValue().heartBeatTime = HawkTime.getMillisecond();
 				break;
 			}
 		}
@@ -392,7 +415,17 @@ public class AccountServices {
 		while (running) {
 			try {
 				onTick();
-
+				
+				// 更新服务器
+				long curTime = HawkTime.getMillisecond();
+				Iterator<Map.Entry<String, GameServer>> it = serverList.entrySet().iterator();  
+				while(it.hasNext()){  
+					Map.Entry<String, GameServer> entry = it.next(); 
+		            if (entry.getValue().heartBeatTime + HEART_PERIOD < curTime) {
+		            	 it.remove(); 
+					}
+				}
+				
 				HawkOSOperator.sleep();
 			} catch (Exception e) {
 				HawkException.catchException(e);

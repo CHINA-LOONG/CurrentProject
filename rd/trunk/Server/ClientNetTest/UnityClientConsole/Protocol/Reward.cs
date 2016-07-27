@@ -112,6 +112,14 @@ namespace PB
       get { return _RewardItems; }
     }
   
+    private int _hsCode = default(int);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"hsCode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int hsCode
+    {
+      get { return _hsCode; }
+      set { _hsCode = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

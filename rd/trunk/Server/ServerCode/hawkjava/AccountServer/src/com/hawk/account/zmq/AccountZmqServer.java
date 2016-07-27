@@ -8,11 +8,13 @@ import org.hawk.os.HawkException;
 import org.hawk.thread.HawkTask;
 import org.hawk.thread.HawkThreadPool;
 import org.hawk.util.HawkTickable;
+import org.hawk.util.services.HawkAccountService.HeartBeatData;
 import org.hawk.zmq.HawkZmq;
 import org.hawk.zmq.HawkZmqManager;
 import org.hawk.zmq.HawkZmq.SocketEvent;
 
 import com.hawk.account.AccountServices;
+import com.hawk.account.httpHandler.HeartBeatHandler;
 import com.hawk.account.httpHandler.RegistGameServerHandler;
 import com.hawk.account.httpHandler.UnRegistGameServerHandler;
 import com.hawk.account.httpHandler.UserCreateRoleHandler;
@@ -219,6 +221,8 @@ public class AccountZmqServer extends HawkTickable{
 				UserCreateRoleHandler.doReport(params);
 			} else if (reportPath.equals("/report_levelUp")) {
 				UserLevelUpHandler.doReport(params);
+			}  else if (reportPath.equals("/heartBeat")) {
+				HeartBeatHandler.doReport(params);
 			} 
 		} catch (Exception e) {
 			HawkException.catchException(e);

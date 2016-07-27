@@ -9,6 +9,7 @@ import java.util.Map;
 import org.hawk.cryption.HawkBase64;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
+import org.hawk.util.HawkHttpParams;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -30,7 +31,7 @@ public class FetchDataInfoHandler implements HttpHandler {
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
 		try {
-			Map<String, String> params = CollectorHttpServer.parseHttpParam(httpExchange);
+			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
 			if (params != null) {
 				Collector.checkToken(params.get("token"));
 				String sql = params.containsKey("sql")? params.get("sql") : "";

@@ -96,7 +96,7 @@ public class AllianceCreateHandler implements HawkProtocolHandler {
 
 		HSAllianceCreateS.Builder response = HSAllianceCreateS.newBuilder();
 		response.setAllianceInfo(AllianceManager.getInstance().getAllianceInfo(allianceEntity, player.getId(), player.getGold()));
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.AllianceCreateS_VALUE, response));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_CREATE_S_VALUE, response));
 		return true;
 	}
 }

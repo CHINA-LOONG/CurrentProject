@@ -8,6 +8,7 @@ import net.sf.json.JSONArray;
 
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
+import org.hawk.util.HawkHttpParams;
 
 import com.hawk.collector.Collector;
 import com.hawk.collector.analyser.OperationAnalyser;
@@ -27,7 +28,7 @@ public class FetchStatisticsInfoHandler implements HttpHandler {
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
 		try {
-			Map<String, String> params = CollectorHttpServer.parseHttpParam(httpExchange);
+			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
 			if (params != null) {
 				Collector.checkToken(params.get("token"));
 				List<String> statisticsInfo = OperationAnalyser.fetchStatisticsInfo(

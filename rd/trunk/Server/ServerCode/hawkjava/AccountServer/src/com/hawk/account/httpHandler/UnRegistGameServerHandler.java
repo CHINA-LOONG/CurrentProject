@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
+import org.hawk.util.HawkHttpParams;
 
 import com.hawk.account.AccountServices;
 import com.hawk.account.http.AccountHttpServer;
@@ -15,7 +16,7 @@ public class UnRegistGameServerHandler implements HttpHandler{
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
 		try {
-			Map<String, String> params = AccountHttpServer.parseHttpParam(httpExchange);
+			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
 			doReport(params);
 		} catch (Exception e) {
 			HawkException.catchException(e);

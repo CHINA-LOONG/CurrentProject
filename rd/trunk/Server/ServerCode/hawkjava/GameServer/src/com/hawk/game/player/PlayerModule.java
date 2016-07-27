@@ -82,8 +82,8 @@ public class PlayerModule extends HawkObjModule {
 	 * 
 	 * @param errCode
 	 */
-	public void sendError(int hpCode, int errCode) {
-		player.sendError(hpCode, errCode);
+	public void sendError(int hsCode, int errCode) {
+		player.sendError(hsCode, errCode);
 	}
 
 	/**
@@ -91,8 +91,8 @@ public class PlayerModule extends HawkObjModule {
 	 * 
 	 * @param errCode
 	 */
-	public void sendError(int hpCode, int errCode, int errFlag) {
-		player.sendError(hpCode, errCode, errFlag);
+	public void sendError(int hsCode, int errCode, int errFlag) {
+		player.sendError(hsCode, errCode, errFlag);
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class PlayerModule extends HawkObjModule {
 	 * 
 	 * @param errCode
 	 */
-	public void sendError(int hpCode, ProtocolMessageEnum errCode) {
-		player.sendError(hpCode, errCode.getNumber());
+	public void sendError(int hsCode, ProtocolMessageEnum errCode) {
+		player.sendError(hsCode, errCode.getNumber());
 	}
 }

@@ -1313,15 +1313,15 @@ public final class SysProtocol {
   public interface HSErrorCodeOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 hpCode = 1;
+    // required int32 hsCode = 1;
     /**
-     * <code>required int32 hpCode = 1;</code>
+     * <code>required int32 hsCode = 1;</code>
      */
-    boolean hasHpCode();
+    boolean hasHsCode();
     /**
-     * <code>required int32 hpCode = 1;</code>
+     * <code>required int32 hsCode = 1;</code>
      */
-    int getHpCode();
+    int getHsCode();
 
     // required int32 errCode = 2;
     /**
@@ -1415,7 +1415,7 @@ public final class SysProtocol {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              hpCode_ = input.readInt32();
+              hsCode_ = input.readInt32();
               break;
             }
             case 16: {
@@ -1473,20 +1473,20 @@ public final class SysProtocol {
     }
 
     private int bitField0_;
-    // required int32 hpCode = 1;
-    public static final int HPCODE_FIELD_NUMBER = 1;
-    private int hpCode_;
+    // required int32 hsCode = 1;
+    public static final int HSCODE_FIELD_NUMBER = 1;
+    private int hsCode_;
     /**
-     * <code>required int32 hpCode = 1;</code>
+     * <code>required int32 hsCode = 1;</code>
      */
-    public boolean hasHpCode() {
+    public boolean hasHsCode() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 hpCode = 1;</code>
+     * <code>required int32 hsCode = 1;</code>
      */
-    public int getHpCode() {
-      return hpCode_;
+    public int getHsCode() {
+      return hsCode_;
     }
 
     // required int32 errCode = 2;
@@ -1565,7 +1565,7 @@ public final class SysProtocol {
     }
 
     private void initFields() {
-      hpCode_ = 0;
+      hsCode_ = 0;
       errCode_ = 0;
       errMsg_ = "";
       errFlag_ = 0;
@@ -1575,7 +1575,7 @@ public final class SysProtocol {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasHpCode()) {
+      if (!hasHsCode()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1591,7 +1591,7 @@ public final class SysProtocol {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, hpCode_);
+        output.writeInt32(1, hsCode_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, errCode_);
@@ -1613,7 +1613,7 @@ public final class SysProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, hpCode_);
+          .computeInt32Size(1, hsCode_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1747,7 +1747,7 @@ public final class SysProtocol {
 
       public Builder clear() {
         super.clear();
-        hpCode_ = 0;
+        hsCode_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         errCode_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -1786,7 +1786,7 @@ public final class SysProtocol {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.hpCode_ = hpCode_;
+        result.hsCode_ = hsCode_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -1815,8 +1815,8 @@ public final class SysProtocol {
 
       public Builder mergeFrom(com.hawk.game.protocol.SysProtocol.HSErrorCode other) {
         if (other == com.hawk.game.protocol.SysProtocol.HSErrorCode.getDefaultInstance()) return this;
-        if (other.hasHpCode()) {
-          setHpCode(other.getHpCode());
+        if (other.hasHsCode()) {
+          setHsCode(other.getHsCode());
         }
         if (other.hasErrCode()) {
           setErrCode(other.getErrCode());
@@ -1834,7 +1834,7 @@ public final class SysProtocol {
       }
 
       public final boolean isInitialized() {
-        if (!hasHpCode()) {
+        if (!hasHsCode()) {
           
           return false;
         }
@@ -1864,35 +1864,35 @@ public final class SysProtocol {
       }
       private int bitField0_;
 
-      // required int32 hpCode = 1;
-      private int hpCode_ ;
+      // required int32 hsCode = 1;
+      private int hsCode_ ;
       /**
-       * <code>required int32 hpCode = 1;</code>
+       * <code>required int32 hsCode = 1;</code>
        */
-      public boolean hasHpCode() {
+      public boolean hasHsCode() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 hpCode = 1;</code>
+       * <code>required int32 hsCode = 1;</code>
        */
-      public int getHpCode() {
-        return hpCode_;
+      public int getHsCode() {
+        return hsCode_;
       }
       /**
-       * <code>required int32 hpCode = 1;</code>
+       * <code>required int32 hsCode = 1;</code>
        */
-      public Builder setHpCode(int value) {
+      public Builder setHsCode(int value) {
         bitField0_ |= 0x00000001;
-        hpCode_ = value;
+        hsCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 hpCode = 1;</code>
+       * <code>required int32 hsCode = 1;</code>
        */
-      public Builder clearHpCode() {
+      public Builder clearHsCode() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        hpCode_ = 0;
+        hsCode_ = 0;
         onChanged();
         return this;
       }
@@ -2080,7 +2080,7 @@ public final class SysProtocol {
       "\n\032Protocol/SysProtocol.proto\"\035\n\rHSDataWa" +
       "rpper\022\014\n\004data\030\001 \001(\014\"\035\n\rHSKeyExchange\022\014\n\004" +
       "keys\030\001 \001(\014\".\n\013HSHeartBeat\022\021\n\ttimeStamp\030\001" +
-      " \001(\005\022\014\n\004data\030\002 \001(\014\"R\n\013HSErrorCode\022\016\n\006hpC" +
+      " \001(\005\022\014\n\004data\030\002 \001(\014\"R\n\013HSErrorCode\022\016\n\006hsC" +
       "ode\030\001 \002(\005\022\017\n\007errCode\030\002 \002(\005\022\016\n\006errMsg\030\003 \001" +
       "(\t\022\022\n\007errFlag\030\004 \001(\005:\0010B\030\n\026com.hawk.game." +
       "protocol"
@@ -2113,7 +2113,7 @@ public final class SysProtocol {
           internal_static_HSErrorCode_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSErrorCode_descriptor,
-              new java.lang.String[] { "HpCode", "ErrCode", "ErrMsg", "ErrFlag", });
+              new java.lang.String[] { "HsCode", "ErrCode", "ErrMsg", "ErrFlag", });
           return null;
         }
       };

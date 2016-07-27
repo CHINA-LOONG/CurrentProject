@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
+import org.hawk.util.HawkHttpParams;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -43,7 +44,7 @@ public class FetchGameServerInfoHandler implements HttpHandler{
 		try {
 			
 			HawkLog.logPrintln("fetch Account gameserver");
-			Map<String, String> params = AccountHttpServer.parseHttpParam(httpExchange);
+			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
 			Map<String, RoleServerInfo> roleServerInfos = fetchGameServer(params.get("puid"));			
 			
 			JsonArray jsonArray = new JsonArray();

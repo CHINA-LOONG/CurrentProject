@@ -46,7 +46,7 @@ shop_refresh,刷新,Refresh
 shop_sale,打折,Sale
 shop_soldOut,已售,Sold Out!
 shop_oldPrice,原价,Original Price
-shop_refreshtips,今日还可刷新 {0} 次，是否确认刷新？,You can refresh {0} more times today. Continue?
+shop_refreshtips,今日还可刷新 {0} 次，是否确认刷新？,You can refresh <color=#ffCC00ff>{0}</color> more times today. Continue?
 shop_buy,购买,Purchase
 shop_zuanshinoenough,钻石不足，是否前往充值？,Not enough Diamonds. Would you like to get more?
 shop_timeout,商店内容已过期,Store items have already expired.
@@ -60,7 +60,8 @@ shop_30yueka,确定购买30天月卡？,Confirm purchase of 30 day Monthly Card?
 shop_chongzhi,充值,Top-Up
 shop_duihuan,用少量钻石兑换大量金币,Exchange large amount of Coins with only a small amount of diamonds.
 shop_duihuanTimes,今日可买：{0}/{1},Can purchase today: {0}/{1}
-shop_isbuy,是否花费,Spend
+shop_isbuy,立即购买,Purchase
+shop_now, ,now
 shop_noduihuantimes,今日可买次数已经用完。,You have purchased the maximum amount for today.
 shop_buysucctip,成功购买{0}{1},Successfully purchased {0}{1}
 shop_succbuy,购买成功,Purchase success!

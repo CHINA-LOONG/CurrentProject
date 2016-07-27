@@ -275,11 +275,11 @@ public class BattleProcess : MonoBehaviour
                             {
                                 rewardID = item.type;
                             }
-                            //ItemDropManager.Instance.Fall(rewardID, deadUnit.transform);
+                            ItemDropManager.Instance.Fall(rewardID, deadUnit.transform);
 
                         }
-                        //ItemDropManager.Instance.Fall(1, deadUnit.transform);
-                        //ItemDropManager.Instance.Fall(3, deadUnit.transform);
+                        ItemDropManager.Instance.Fall(1, deadUnit.transform);
+                        ItemDropManager.Instance.Fall(3, deadUnit.transform);
                     }
                 }
                 if (fireFocusTarget != null && fireFocusTarget.pbUnit.guid == deadUnit.guid)
@@ -349,6 +349,14 @@ public class BattleProcess : MonoBehaviour
             reviveUnit.TriggerEvent("revive", args.triggerTime, null);
             reviveUnit.unit.CastPassiveSpell(args.triggerTime);
             BattleController.Instance.GetUIBattle().ShowUnitUI(reviveUnit, reviveUnit.unit.pbUnit.slot);
+            SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+            energyArgs.vitalType = (int)VitalType.Vital_Type_Default;
+            energyArgs.triggerTime = 0.0f;
+            energyArgs.casterID = args.targetID;
+            energyArgs.vitalChange = BattleConst.enegyMax;
+            energyArgs.vitalCurrent = 0;
+            energyArgs.vitalMax = 0;
+            BattleController.Instance.GetUIBattle().ChangeEnergy(energyArgs);
         }
 
             eventCount = spellEventList.Count;
@@ -802,6 +810,7 @@ public class BattleProcess : MonoBehaviour
 
     public void ReviveSuccess(int reviveCount)
     {
+        lastSwitchTime = -BattleConst.switchPetCD;
         mCurrentReviveCount = reviveCount;
         Action reviveAction = new Action();
         reviveAction.type = ActionType.ReviveUnit;

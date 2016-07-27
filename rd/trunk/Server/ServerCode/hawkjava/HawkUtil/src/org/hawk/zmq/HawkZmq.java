@@ -191,6 +191,7 @@ public class HawkZmq {
 				HawkException.catchException(e);
 			}
 		}
+		
 		return false;
 	}
 

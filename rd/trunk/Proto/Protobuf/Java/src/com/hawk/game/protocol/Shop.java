@@ -6743,6 +6743,684 @@ public final class Shop {
     // @@protoc_insertion_point(class_scope:HSShopGold2CoinRet)
   }
 
+  public interface HSShopRefreshTimeSyncOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 normalShopRefreshTime = 1;
+    /**
+     * <code>required int32 normalShopRefreshTime = 1;</code>
+     *
+     * <pre>
+     * 普通商店刷新次数
+     * </pre>
+     */
+    boolean hasNormalShopRefreshTime();
+    /**
+     * <code>required int32 normalShopRefreshTime = 1;</code>
+     *
+     * <pre>
+     * 普通商店刷新次数
+     * </pre>
+     */
+    int getNormalShopRefreshTime();
+
+    // required int32 allianceShopRefreshTime = 2;
+    /**
+     * <code>required int32 allianceShopRefreshTime = 2;</code>
+     *
+     * <pre>
+     * 公会商店刷新次数
+     * </pre>
+     */
+    boolean hasAllianceShopRefreshTime();
+    /**
+     * <code>required int32 allianceShopRefreshTime = 2;</code>
+     *
+     * <pre>
+     * 公会商店刷新次数
+     * </pre>
+     */
+    int getAllianceShopRefreshTime();
+
+    // required int32 otherShopRefreshTime = 3;
+    /**
+     * <code>required int32 otherShopRefreshTime = 3;</code>
+     *
+     * <pre>
+     * 其他玩法商店刷新次数
+     * </pre>
+     */
+    boolean hasOtherShopRefreshTime();
+    /**
+     * <code>required int32 otherShopRefreshTime = 3;</code>
+     *
+     * <pre>
+     * 其他玩法商店刷新次数
+     * </pre>
+     */
+    int getOtherShopRefreshTime();
+  }
+  /**
+   * Protobuf type {@code HSShopRefreshTimeSync}
+   */
+  public static final class HSShopRefreshTimeSync extends
+      com.google.protobuf.GeneratedMessage
+      implements HSShopRefreshTimeSyncOrBuilder {
+    // Use HSShopRefreshTimeSync.newBuilder() to construct.
+    private HSShopRefreshTimeSync(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSShopRefreshTimeSync(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSShopRefreshTimeSync defaultInstance;
+    public static HSShopRefreshTimeSync getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSShopRefreshTimeSync getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSShopRefreshTimeSync(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              normalShopRefreshTime_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              allianceShopRefreshTime_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              otherShopRefreshTime_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Shop.internal_static_HSShopRefreshTimeSync_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Shop.internal_static_HSShopRefreshTimeSync_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Shop.HSShopRefreshTimeSync.class, com.hawk.game.protocol.Shop.HSShopRefreshTimeSync.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSShopRefreshTimeSync> PARSER =
+        new com.google.protobuf.AbstractParser<HSShopRefreshTimeSync>() {
+      public HSShopRefreshTimeSync parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSShopRefreshTimeSync(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSShopRefreshTimeSync> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 normalShopRefreshTime = 1;
+    public static final int NORMALSHOPREFRESHTIME_FIELD_NUMBER = 1;
+    private int normalShopRefreshTime_;
+    /**
+     * <code>required int32 normalShopRefreshTime = 1;</code>
+     *
+     * <pre>
+     * 普通商店刷新次数
+     * </pre>
+     */
+    public boolean hasNormalShopRefreshTime() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 normalShopRefreshTime = 1;</code>
+     *
+     * <pre>
+     * 普通商店刷新次数
+     * </pre>
+     */
+    public int getNormalShopRefreshTime() {
+      return normalShopRefreshTime_;
+    }
+
+    // required int32 allianceShopRefreshTime = 2;
+    public static final int ALLIANCESHOPREFRESHTIME_FIELD_NUMBER = 2;
+    private int allianceShopRefreshTime_;
+    /**
+     * <code>required int32 allianceShopRefreshTime = 2;</code>
+     *
+     * <pre>
+     * 公会商店刷新次数
+     * </pre>
+     */
+    public boolean hasAllianceShopRefreshTime() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 allianceShopRefreshTime = 2;</code>
+     *
+     * <pre>
+     * 公会商店刷新次数
+     * </pre>
+     */
+    public int getAllianceShopRefreshTime() {
+      return allianceShopRefreshTime_;
+    }
+
+    // required int32 otherShopRefreshTime = 3;
+    public static final int OTHERSHOPREFRESHTIME_FIELD_NUMBER = 3;
+    private int otherShopRefreshTime_;
+    /**
+     * <code>required int32 otherShopRefreshTime = 3;</code>
+     *
+     * <pre>
+     * 其他玩法商店刷新次数
+     * </pre>
+     */
+    public boolean hasOtherShopRefreshTime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 otherShopRefreshTime = 3;</code>
+     *
+     * <pre>
+     * 其他玩法商店刷新次数
+     * </pre>
+     */
+    public int getOtherShopRefreshTime() {
+      return otherShopRefreshTime_;
+    }
+
+    private void initFields() {
+      normalShopRefreshTime_ = 0;
+      allianceShopRefreshTime_ = 0;
+      otherShopRefreshTime_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasNormalShopRefreshTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAllianceShopRefreshTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOtherShopRefreshTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, normalShopRefreshTime_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, allianceShopRefreshTime_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, otherShopRefreshTime_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, normalShopRefreshTime_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, allianceShopRefreshTime_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, otherShopRefreshTime_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Shop.HSShopRefreshTimeSync parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopRefreshTimeSync parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopRefreshTimeSync parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopRefreshTimeSync parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopRefreshTimeSync parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopRefreshTimeSync parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopRefreshTimeSync parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopRefreshTimeSync parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopRefreshTimeSync parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Shop.HSShopRefreshTimeSync parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Shop.HSShopRefreshTimeSync prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSShopRefreshTimeSync}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Shop.HSShopRefreshTimeSyncOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopRefreshTimeSync_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopRefreshTimeSync_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Shop.HSShopRefreshTimeSync.class, com.hawk.game.protocol.Shop.HSShopRefreshTimeSync.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Shop.HSShopRefreshTimeSync.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        normalShopRefreshTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        allianceShopRefreshTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        otherShopRefreshTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Shop.internal_static_HSShopRefreshTimeSync_descriptor;
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopRefreshTimeSync getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Shop.HSShopRefreshTimeSync.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopRefreshTimeSync build() {
+        com.hawk.game.protocol.Shop.HSShopRefreshTimeSync result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Shop.HSShopRefreshTimeSync buildPartial() {
+        com.hawk.game.protocol.Shop.HSShopRefreshTimeSync result = new com.hawk.game.protocol.Shop.HSShopRefreshTimeSync(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.normalShopRefreshTime_ = normalShopRefreshTime_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.allianceShopRefreshTime_ = allianceShopRefreshTime_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.otherShopRefreshTime_ = otherShopRefreshTime_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Shop.HSShopRefreshTimeSync) {
+          return mergeFrom((com.hawk.game.protocol.Shop.HSShopRefreshTimeSync)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Shop.HSShopRefreshTimeSync other) {
+        if (other == com.hawk.game.protocol.Shop.HSShopRefreshTimeSync.getDefaultInstance()) return this;
+        if (other.hasNormalShopRefreshTime()) {
+          setNormalShopRefreshTime(other.getNormalShopRefreshTime());
+        }
+        if (other.hasAllianceShopRefreshTime()) {
+          setAllianceShopRefreshTime(other.getAllianceShopRefreshTime());
+        }
+        if (other.hasOtherShopRefreshTime()) {
+          setOtherShopRefreshTime(other.getOtherShopRefreshTime());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasNormalShopRefreshTime()) {
+          
+          return false;
+        }
+        if (!hasAllianceShopRefreshTime()) {
+          
+          return false;
+        }
+        if (!hasOtherShopRefreshTime()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Shop.HSShopRefreshTimeSync parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Shop.HSShopRefreshTimeSync) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 normalShopRefreshTime = 1;
+      private int normalShopRefreshTime_ ;
+      /**
+       * <code>required int32 normalShopRefreshTime = 1;</code>
+       *
+       * <pre>
+       * 普通商店刷新次数
+       * </pre>
+       */
+      public boolean hasNormalShopRefreshTime() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 normalShopRefreshTime = 1;</code>
+       *
+       * <pre>
+       * 普通商店刷新次数
+       * </pre>
+       */
+      public int getNormalShopRefreshTime() {
+        return normalShopRefreshTime_;
+      }
+      /**
+       * <code>required int32 normalShopRefreshTime = 1;</code>
+       *
+       * <pre>
+       * 普通商店刷新次数
+       * </pre>
+       */
+      public Builder setNormalShopRefreshTime(int value) {
+        bitField0_ |= 0x00000001;
+        normalShopRefreshTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 normalShopRefreshTime = 1;</code>
+       *
+       * <pre>
+       * 普通商店刷新次数
+       * </pre>
+       */
+      public Builder clearNormalShopRefreshTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        normalShopRefreshTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 allianceShopRefreshTime = 2;
+      private int allianceShopRefreshTime_ ;
+      /**
+       * <code>required int32 allianceShopRefreshTime = 2;</code>
+       *
+       * <pre>
+       * 公会商店刷新次数
+       * </pre>
+       */
+      public boolean hasAllianceShopRefreshTime() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 allianceShopRefreshTime = 2;</code>
+       *
+       * <pre>
+       * 公会商店刷新次数
+       * </pre>
+       */
+      public int getAllianceShopRefreshTime() {
+        return allianceShopRefreshTime_;
+      }
+      /**
+       * <code>required int32 allianceShopRefreshTime = 2;</code>
+       *
+       * <pre>
+       * 公会商店刷新次数
+       * </pre>
+       */
+      public Builder setAllianceShopRefreshTime(int value) {
+        bitField0_ |= 0x00000002;
+        allianceShopRefreshTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 allianceShopRefreshTime = 2;</code>
+       *
+       * <pre>
+       * 公会商店刷新次数
+       * </pre>
+       */
+      public Builder clearAllianceShopRefreshTime() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        allianceShopRefreshTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 otherShopRefreshTime = 3;
+      private int otherShopRefreshTime_ ;
+      /**
+       * <code>required int32 otherShopRefreshTime = 3;</code>
+       *
+       * <pre>
+       * 其他玩法商店刷新次数
+       * </pre>
+       */
+      public boolean hasOtherShopRefreshTime() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 otherShopRefreshTime = 3;</code>
+       *
+       * <pre>
+       * 其他玩法商店刷新次数
+       * </pre>
+       */
+      public int getOtherShopRefreshTime() {
+        return otherShopRefreshTime_;
+      }
+      /**
+       * <code>required int32 otherShopRefreshTime = 3;</code>
+       *
+       * <pre>
+       * 其他玩法商店刷新次数
+       * </pre>
+       */
+      public Builder setOtherShopRefreshTime(int value) {
+        bitField0_ |= 0x00000004;
+        otherShopRefreshTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 otherShopRefreshTime = 3;</code>
+       *
+       * <pre>
+       * 其他玩法商店刷新次数
+       * </pre>
+       */
+      public Builder clearOtherShopRefreshTime() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        otherShopRefreshTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSShopRefreshTimeSync)
+    }
+
+    static {
+      defaultInstance = new HSShopRefreshTimeSync(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSShopRefreshTimeSync)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_ShopItem_descriptor;
   private static
@@ -6803,6 +7481,11 @@ public final class Shop {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSShopGold2CoinRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSShopRefreshTimeSync_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSShopRefreshTimeSync_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6827,8 +7510,11 @@ public final class Shop {
       "Data\";\n\rHSShopItemBuy\022\014\n\004type\030\001 \002(\005\022\014\n\004s" +
       "lot\030\002 \002(\005\022\016\n\006shopId\030\003 \002(\005\"\022\n\020HSShopItemB" +
       "uyRet\"\021\n\017HSShopGold2Coin\")\n\022HSShopGold2C" +
-      "oinRet\022\023\n\013changeCount\030\001 \002(\005B\030\n\026com.hawk." +
-      "game.protocol"
+      "oinRet\022\023\n\013changeCount\030\001 \002(\005\"u\n\025HSShopRef" +
+      "reshTimeSync\022\035\n\025normalShopRefreshTime\030\001 " +
+      "\002(\005\022\037\n\027allianceShopRefreshTime\030\002 \002(\005\022\034\n\024" +
+      "otherShopRefreshTime\030\003 \002(\005B\030\n\026com.hawk.g" +
+      "ame.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -6907,6 +7593,12 @@ public final class Shop {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSShopGold2CoinRet_descriptor,
               new java.lang.String[] { "ChangeCount", });
+          internal_static_HSShopRefreshTimeSync_descriptor =
+            getDescriptor().getMessageTypes().get(12);
+          internal_static_HSShopRefreshTimeSync_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSShopRefreshTimeSync_descriptor,
+              new java.lang.String[] { "NormalShopRefreshTime", "AllianceShopRefreshTime", "OtherShopRefreshTime", });
           return null;
         }
       };

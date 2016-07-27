@@ -9,6 +9,7 @@ import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
 
 import com.hawk.game.config.EquipAttr;
+import com.hawk.game.config.EquipForgeCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
@@ -75,50 +76,55 @@ public class PlayerEquipModule extends PlayerModule{
 	 */
 	@Override
 	public boolean onProtocol(HawkProtocol protocol) {
-		if (protocol.checkType(HS.code.EQUIP_SELL_C)) {
-			// 卖装备
-			//onItemUse(protocol.getType(),protocol.parseProtocol(HSItemUse.getDefaultInstance()));
-			return true;
+		try {
+			if (protocol.checkType(HS.code.EQUIP_SELL_C)) {
+				// 卖装备
+				//onItemUse(protocol.getType(),protocol.parseProtocol(HSItemUse.getDefaultInstance()));
+				return true;
+			} 
+			else if(protocol.checkType(HS.code.EQUIP_BUY_C)) {
+				//买装备
+				onEquipBuy(HS.code.EQUIP_BUY_C_VALUE, protocol.parseProtocol(HSEquipBuy.getDefaultInstance()));
+				return true;
+			}
+			else if(protocol.checkType(HS.code.EQUIP_INCREASE_LEVEL_C)) {
+				//升级
+				onEquipIncreaseLevel(HS.code.EQUIP_INCREASE_LEVEL_C_VALUE, protocol.parseProtocol(HSEquipIncreaseLevel.getDefaultInstance()));
+				return true;
+			}
+			else if(protocol.checkType(HS.code.EQUIP_INCREASE_STAGE_C)) {
+				//进阶
+				onEquipIncreaseStage(HS.code.EQUIP_INCREASE_STAGE_C_VALUE, protocol.parseProtocol(HSEquipIncreaseStage.getDefaultInstance()));
+				return true;
+			}
+			else if(protocol.checkType(HS.code.EQUIP_PUNCH_C)) {
+				// 打孔
+				onEquipPunch(HS.code.EQUIP_PUNCH_C_VALUE, protocol.parseProtocol(HSEquipPunch.getDefaultInstance()));
+				return true;
+			}
+			else if(protocol.checkType(HS.code.EQUIP_GEM_C)) {
+				// 镶嵌宝石
+				onEquipGem(HS.code.EQUIP_GEM_C_VALUE, protocol.parseProtocol(HSEquipGem.getDefaultInstance()));
+				return true;
+			}
+			else if(protocol.checkType(HS.code.EQUIP_MONSTER_DRESS_C)) {
+				//穿装备
+				onEquipDressOnMonster(HS.code.EQUIP_MONSTER_DRESS_C_VALUE, protocol.parseProtocol(HSEquipMonsterDress.getDefaultInstance()));
+				return true;
+			}
+			else if(protocol.checkType(HS.code.EQUIP_MONSTER_UNDRESS_C)) {
+				//脱装备
+				onEquipUnDressOnMonster(HS.code.EQUIP_MONSTER_UNDRESS_C_VALUE, protocol.parseProtocol(HSEquipMonsterUndress.getDefaultInstance()));
+				return true;
+			}
+			else if(protocol.checkType(HS.code.EQUIP_MONSTER_REPLACE_C)) {
+				//替换装备
+				onEquipReplaceOnMonster(HS.code.EQUIP_MONSTER_REPLACE_C_VALUE, protocol.parseProtocol(HSEquipMonsterReplace.getDefaultInstance()));
+				return true;
+			}	
 		} 
-		else if(protocol.checkType(HS.code.EQUIP_BUY_C)) {
-			//买装备
-			onEquipBuy(HS.code.EQUIP_BUY_C_VALUE, protocol.parseProtocol(HSEquipBuy.getDefaultInstance()));
-			return true;
-		}
-		else if(protocol.checkType(HS.code.EQUIP_INCREASE_LEVEL_C)) {
-			//升级
-			onEquipIncreaseLevel(HS.code.EQUIP_INCREASE_LEVEL_C_VALUE, protocol.parseProtocol(HSEquipIncreaseLevel.getDefaultInstance()));
-			return true;
-		}
-		else if(protocol.checkType(HS.code.EQUIP_INCREASE_STAGE_C)) {
-			//进阶
-			onEquipIncreaseStage(HS.code.EQUIP_INCREASE_STAGE_C_VALUE, protocol.parseProtocol(HSEquipIncreaseStage.getDefaultInstance()));
-			return true;
-		}
-		else if(protocol.checkType(HS.code.EQUIP_PUNCH_C)) {
-			// 打孔
-			onEquipPunch(HS.code.EQUIP_PUNCH_C_VALUE, protocol.parseProtocol(HSEquipPunch.getDefaultInstance()));
-			return true;
-		}
-		else if(protocol.checkType(HS.code.EQUIP_GEM_C)) {
-			// 镶嵌宝石
-			onEquipGem(HS.code.EQUIP_GEM_C_VALUE, protocol.parseProtocol(HSEquipGem.getDefaultInstance()));
-			return true;
-		}
-		else if(protocol.checkType(HS.code.EQUIP_MONSTER_DRESS_C)) {
-			//穿装备
-			onEquipDressOnMonster(HS.code.EQUIP_MONSTER_DRESS_C_VALUE, protocol.parseProtocol(HSEquipMonsterDress.getDefaultInstance()));
-			return true;
-		}
-		else if(protocol.checkType(HS.code.EQUIP_MONSTER_UNDRESS_C)) {
-			//脱装备
-			onEquipUnDressOnMonster(HS.code.EQUIP_MONSTER_UNDRESS_C_VALUE, protocol.parseProtocol(HSEquipMonsterUndress.getDefaultInstance()));
-			return true;
-		}
-		else if(protocol.checkType(HS.code.EQUIP_MONSTER_REPLACE_C)) {
-			//替换装备
-			onEquipReplaceOnMonster(HS.code.EQUIP_MONSTER_REPLACE_C_VALUE, protocol.parseProtocol(HSEquipMonsterReplace.getDefaultInstance()));
-			return true;
+		catch (Exception e) {
+			HawkException.catchException(e);	
 		}
 		
 		return false;
@@ -179,7 +185,7 @@ public class PlayerEquipModule extends PlayerModule{
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_BUY_S_VALUE, response));
 	}
 
-	public void onEquipIncreaseLevel(int hsCode, HSEquipIncreaseLevel protocol)
+	public void onEquipIncreaseLevel(int hsCode, HSEquipIncreaseLevel protocol) throws HawkException
 	{
 		EquipEntity equipEntity = player.getPlayerData().getEquipById(protocol.getId());
 		if (equipEntity == null) {
@@ -199,15 +205,22 @@ public class PlayerEquipModule extends PlayerModule{
 			return ;
 		}
 	
+		if (player.getLevel() < EquipForgeCfg.getPlayerLevelDemand(equipEntity.getStage(), equipEntity.getLevel() + 1)) {
+			sendError(hsCode, Status.itemError.EQUIP_PLAYER_LEVEL_DEMAND_VALUE);
+			return ;
+		}
+		
 		ConsumeItems consume = new ConsumeItems();
-		consume.addItemInfos(EquipAttr.getLevelDemandList(equipEntity.getItemId(), equipEntity.getStage()));
+		consume.addItemInfos(EquipForgeCfg.getLevelDemandList(equipEntity.getStage(), equipEntity.getLevel() + 1));
 		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}
 	
 		consume.consumeTakeAffectAndPush(player, Action.EQUIP_EHANCE, hsCode);
-		equipEntity.setLevel(equipEntity.getLevel() + 1);
-		equipEntity.notifyUpdate(true);
+		if (EquipForgeCfg.getSuccessRate(equipEntity.getStage(), equipEntity.getLevel() + 1) >= HawkRand.randFloat(0, 1)) {
+			equipEntity.setLevel(equipEntity.getLevel() + 1);
+			equipEntity.notifyUpdate(true);
+		}
 		
 		HSEquipIncreaseLevelRet.Builder response = HSEquipIncreaseLevelRet.newBuilder();
 		response.setId(equipEntity.getId());
@@ -221,7 +234,7 @@ public class PlayerEquipModule extends PlayerModule{
 				Params.valueOf("after", equipEntity.getLevel()));	
 	}
 	
-	public void onEquipIncreaseStage(int hsCode, HSEquipIncreaseStage protocol)
+	public void onEquipIncreaseStage(int hsCode, HSEquipIncreaseStage protocol) throws HawkException
 	{
 		EquipEntity equipEntity = player.getPlayerData().getEquipById(protocol.getId());
 		if (equipEntity == null) {
@@ -245,17 +258,24 @@ public class PlayerEquipModule extends PlayerModule{
 			return ;
 		}
 		
+		if (player.getLevel() < EquipForgeCfg.getPlayerLevelDemand(equipEntity.getStage() + 1, 0)) {
+			sendError(hsCode, Status.itemError.EQUIP_PLAYER_LEVEL_DEMAND_VALUE);
+			return ;
+		}
+		
 		ConsumeItems consume = new ConsumeItems();
-		consume.addItemInfos(EquipAttr.getStageDemandList(equipEntity.getItemId(), equipEntity.getStage()));
+		consume.addItemInfos(EquipForgeCfg.getLevelDemandList(equipEntity.getStage() + 1, 0));
 		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}
 	
 		consume.consumeTakeAffectAndPush(player, Action.EQUIP_ADVANCE, hsCode);
-		equipEntity.setLevel(0);
-		equipEntity.setStage(equipEntity.getStage() + 1);
-		equipEntity.notifyUpdate(true);
-		
+		if (EquipForgeCfg.getSuccessRate(equipEntity.getStage() + 1, 0) >= HawkRand.randFloat(0, 1)) {
+			equipEntity.setLevel(0);
+			equipEntity.setStage(equipEntity.getStage() + 1);
+			equipEntity.notifyUpdate(true);
+		}
+
 		HSEquipIncreaseStageRet.Builder response = HSEquipIncreaseStageRet.newBuilder();
 		response.setId(equipEntity.getId());
 		response.setStage(equipEntity.getStage());
@@ -400,7 +420,7 @@ public class PlayerEquipModule extends PlayerModule{
 		}
 		
 		ConsumeItems consume = new ConsumeItems();
-		consume.addItemInfos(EquipAttr.getPunchDemandList(equipEntity.getItemId(), equipEntity.getStage()));
+		consume.addItemInfos(EquipForgeCfg.getPunchDemandList(equipEntity.getStage(), equipEntity.getLevel()));
 		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}

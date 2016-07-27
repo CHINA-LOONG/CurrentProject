@@ -11133,7 +11133,9 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultAmute3Pre_dazhaoxuanyao" bundle="effect/particle" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="amutedazhaoxuanyao"/>
+				<Audio time="0" name="amutedazhaoxuanyao_1"/>
+				<Audio time="2.9" name="amutedazhaoxuanyao_2"/>
+				<Audio time="0" name="buff"/>
 			</AudioList>
 		</Ani>
 		
@@ -11166,7 +11168,8 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultAmute3Pre_dazhaoxuanyao" bundle="effect/particle" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="amutedazhaoxuanyao"/>
+				<Audio time="0" name="amutedazhaoxuanyao_1"/>
+				<Audio time="2.9" name="amutedazhaoxuanyao_2"/>
 				<Audio time="0" name="buff"/>
 			</AudioList>
 		</Ani>

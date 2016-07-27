@@ -37,8 +37,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
 
     public IMosaicEquipCallBack ICallBackDelegate { get { return ICallBack; } }
 
-
-    private EquipProtoData curProto;
+    private EquipForgeData curForge;
     private List<ItemInfo> curDemand = new List<ItemInfo>();
 
     private EquipData curData;
@@ -146,9 +145,9 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
         
         #endregion
         #region 消耗材料解析计算
-        curProto = StaticDataMgr.Instance.GetEquipProtoData(curData.equipId, curData.stage);
+        curForge = StaticDataMgr.Instance.GetEquipForgeData(curData.stage, curData.level);
         curDemand.Clear();
-        curProto.GetPunchDemand(ref curDemand);
+        curForge.GetPunchDemand(ref curDemand);
         if (UIUtil.CheckIsEnoughMaterial(curDemand))
         {
             btnOpen.interactable = true;

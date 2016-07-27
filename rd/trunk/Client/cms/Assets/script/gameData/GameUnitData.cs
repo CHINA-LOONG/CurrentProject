@@ -312,11 +312,26 @@ public class GameUnit : IComparable
         
         //一级属性
         float stageRatio = 1.0f + unitStageData.modifyRate;
-        health = (int)(stageRatio * unitRowData.healthModifyRate * (unitBaseRowData.health + unitStageData.health) + gdMgr.PlayerDataAttr.equipHealth);
-        strength = (int)(stageRatio * unitRowData.strengthModifyRate * (unitBaseRowData.strength + unitStageData.strength) + gdMgr.PlayerDataAttr.equipStrength);
-        intelligence = (int)(stageRatio * unitRowData.intelligenceModifyRate * (unitBaseRowData.intelligence + unitStageData.intelligence) + gdMgr.PlayerDataAttr.equipIntelligence);
-        speed = (int)(stageRatio * unitRowData.speedModifyRate * (unitBaseRowData.speed + unitStageData.speed) + gdMgr.PlayerDataAttr.equipSpeed);
-        defense = (int)(stageRatio * unitRowData.defenseModifyRate * (unitBaseRowData.defense + unitStageData.defense) + gdMgr.PlayerDataAttr.equipDefense);
+        health = (int)(
+            stageRatio * unitRowData.healthModifyRate * unitBaseRowData.health + 
+            unitStageData.health * unitRowData.healthModifyRate + 
+            gdMgr.PlayerDataAttr.equipHealth);
+        strength = (int)(
+            stageRatio * unitRowData.strengthModifyRate * unitBaseRowData.strength +
+            unitStageData.strength * unitRowData.strengthModifyRate +
+            gdMgr.PlayerDataAttr.equipStrength);
+        intelligence = (int)(
+            stageRatio * unitRowData.intelligenceModifyRate * unitBaseRowData.intelligence + 
+            unitStageData.intelligence * unitRowData.intelligenceModifyRate + 
+            gdMgr.PlayerDataAttr.equipIntelligence);
+        speed = (int)(
+            stageRatio * unitRowData.speedModifyRate * unitBaseRowData.speed + 
+            unitStageData.speed * unitRowData.speedModifyRate + 
+            gdMgr.PlayerDataAttr.equipSpeed);
+        defense = (int)(
+            stageRatio * unitRowData.defenseModifyRate * unitBaseRowData.defense + 
+            unitStageData.defense * unitRowData.defenseModifyRate + 
+            gdMgr.PlayerDataAttr.equipDefense);
         endurance = (int)(unitRowData.enduranceModifyRate * unitBaseRowData.endurance + gdMgr.PlayerDataAttr.equipEndurance);
         recovery = (int)(unitRowData.recoveryRate * unitBaseRowData.recovery);
         //装备附加一级属性

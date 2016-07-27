@@ -7,6 +7,7 @@ import java.util.Map;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkOSOperator;
 import org.hawk.os.HawkTime;
+import org.hawk.util.HawkHttpParams;
 
 import com.hawk.collector.AnalyserManager;
 import com.hawk.collector.Collector;
@@ -28,7 +29,7 @@ public class DailyAnalyzeHandler implements HttpHandler {
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
 		try {
-			Map<String, String> params = CollectorHttpServer.parseHttpParam(httpExchange);
+			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
 			if (params != null && params.containsKey("game")) {
 				Collector.checkToken(params.get("token"));
 				String date = HawkTime.getDateString();

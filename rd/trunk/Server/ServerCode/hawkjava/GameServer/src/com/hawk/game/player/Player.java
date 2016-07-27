@@ -180,9 +180,9 @@ public class Player extends HawkAppObj {
 	 * 
 	 * @param errCode
 	 */
-	public void sendError(int hpCode, int errCode) {
+	public void sendError(int hsCode, int errCode) {
 		HSErrorCode.Builder builder = HSErrorCode.newBuilder();
-		builder.setHpCode(hpCode);
+		builder.setHsCode(hsCode);
 		builder.setErrCode(errCode);
 		sendProtocol(HawkProtocol.valueOf(HS.sys.ERROR_CODE, builder));
 	}
@@ -192,9 +192,9 @@ public class Player extends HawkAppObj {
 	 * 
 	 * @param errCode
 	 */
-	public void sendError(int hpCode, int errCode, int errFlag) {
+	public void sendError(int hsCode, int errCode, int errFlag) {
 		HSErrorCode.Builder builder = HSErrorCode.newBuilder();
-		builder.setHpCode(hpCode);
+		builder.setHsCode(hsCode);
 		builder.setErrCode(errCode);
 		builder.setErrFlag(errFlag);
 		sendProtocol(HawkProtocol.valueOf(HS.sys.ERROR_CODE, builder));
@@ -394,7 +394,7 @@ public class Player extends HawkAppObj {
 	 * @return
 	 */
 	public int getGold() {
-		return playerData.getPlayerEntity().getGold();
+		return playerData.getPlayerEntity().getBuyGold() + playerData.getPlayerEntity().getFreeGold();
 	}
 
 	/**
@@ -471,28 +471,51 @@ public class Player extends HawkAppObj {
 	}	
 	
 	/**
-	 * 增加钻石
+	 * 增加奖励钻石
 	 * 
 	 * @param gold
 	 * @param action
 	 */
-	public int increaseGold(int gold, Action action) {
-		if (gold <= 0) {
-			throw new RuntimeException("increaseGold");
+	public int increaseFreeGold(int gold, Action action) {
+		if (gold < 0) {
+			throw new RuntimeException("increaseFreeGold");
 		}
 
-		int goldRemain = playerData.getPlayerEntity().getGold() + gold - GsConst.MAX_GOLD_COUNT;
-		playerData.getPlayerEntity().setGold(playerData.getPlayerEntity().getGold() + gold - (goldRemain > 0 ? goldRemain : 0));
+		int goldRemain = getGold() + gold - GsConst.MAX_GOLD_COUNT;
+		playerData.getPlayerEntity().setFreeGold(playerData.getPlayerEntity().getFreeGold() + gold - (goldRemain > 0 ? goldRemain : 0));
 		playerData.getPlayerEntity().notifyUpdate(true);
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
 				Params.valueOf("playerAttr", Const.changeType.CHANGE_GOLD_VALUE), 
 				Params.valueOf("add", gold), 
-				Params.valueOf("after", getGold()));
+				Params.valueOf("after", playerData.getPlayerEntity().getFreeGold()));
 		
 		return goldRemain > 0 ? gold - goldRemain : gold;
 	}
 
+	/**
+	 * 增加奖励钻石
+	 * 
+	 * @param gold
+	 * @param action
+	 */
+	public int increaseBuyGold(int gold, Action action) {
+		if (gold < 0) {
+			throw new RuntimeException("increaseBuyGold");
+		}
+
+		int goldRemain = getGold() + gold - GsConst.MAX_GOLD_COUNT;
+		playerData.getPlayerEntity().setBuyGold(playerData.getPlayerEntity().getBuyGold() + gold - (goldRemain > 0 ? goldRemain : 0));
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("playerAttr", Const.changeType.CHANGE_GOLD_BUY_VALUE), 
+				Params.valueOf("add", gold), 
+				Params.valueOf("after", playerData.getPlayerEntity().getBuyGold()));
+		
+		return goldRemain > 0 ? gold - goldRemain : gold;
+	}
+	
 	/**
 	 * 消耗钻石
 	 * 
@@ -500,11 +523,18 @@ public class Player extends HawkAppObj {
 	 * @param action
 	 */
 	public void consumeGold(int gold, Action action) {
-		if (gold <= 0 || gold > getGold()) {
+		if (gold < 0 || gold > getGold()) {
 			throw new RuntimeException("consumeGold");
 		}
 
-		playerData.getPlayerEntity().setGold(playerData.getPlayerEntity().getGold() - gold);
+		if (playerData.getPlayerEntity().getBuyGold() >= gold) {
+			playerData.getPlayerEntity().setBuyGold(playerData.getPlayerEntity().getBuyGold() - gold);
+		}
+		else {
+			playerData.getPlayerEntity().setFreeGold(playerData.getPlayerEntity().getFreeGold() + playerData.getPlayerEntity().getBuyGold() - gold);
+			playerData.getPlayerEntity().setBuyGold(0);
+		}
+		
 		playerData.getPlayerEntity().notifyUpdate(true);
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 

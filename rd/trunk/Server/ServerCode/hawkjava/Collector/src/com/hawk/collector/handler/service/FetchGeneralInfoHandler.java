@@ -8,6 +8,7 @@ import java.util.Map;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
+import org.hawk.util.HawkHttpParams;
 
 import com.google.gson.JsonArray;
 import com.hawk.collector.Collector;
@@ -27,7 +28,7 @@ public class FetchGeneralInfoHandler implements HttpHandler {
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
 		try {
-			Map<String, String> params = CollectorHttpServer.parseHttpParam(httpExchange);
+			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
 			if (params != null && params.containsKey("game") && params.containsKey("type") && params.containsKey("date")) {
 				Collector.checkToken(params.get("token"));
 				GamePlatform gamePlatform = CollectorServices.getInstance().getGamePlatform(params.get("game"));

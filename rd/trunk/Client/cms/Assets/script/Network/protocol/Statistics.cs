@@ -164,35 +164,4 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsShopRefreshTimeSync")]
-  public partial class HSStatisticsShopRefreshTimeSync : global::ProtoBuf.IExtensible
-  {
-    public HSStatisticsShopRefreshTimeSync() {}
-    
-    private int _normalShopRefreshTime;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"normalShopRefreshTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int normalShopRefreshTime
-    {
-      get { return _normalShopRefreshTime; }
-      set { _normalShopRefreshTime = value; }
-    }
-    private int _guildShopRefreshTime;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"guildShopRefreshTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int guildShopRefreshTime
-    {
-      get { return _guildShopRefreshTime; }
-      set { _guildShopRefreshTime = value; }
-    }
-    private int _otherShopRefreshTime;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"otherShopRefreshTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int otherShopRefreshTime
-    {
-      get { return _otherShopRefreshTime; }
-      set { _otherShopRefreshTime = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
 }

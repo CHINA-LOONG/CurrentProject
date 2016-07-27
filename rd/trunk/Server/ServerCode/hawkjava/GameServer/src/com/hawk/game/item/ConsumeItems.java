@@ -132,7 +132,7 @@ public class ConsumeItems {
 	public ConsumeItems addAttr(String attrType, int count) {
 		ConsumeItem.Builder consumeItem = null;
 		for (ConsumeItem.Builder consume :  consumeInfo.getConsumeItemsBuilderList()) {
-			if (consume.getType() == itemType.PLAYER_ATTR_VALUE && consume.getItemId().equals(attrType)) {
+			if (consume.getType() == itemType.PLAYER_ATTR_VALUE && consume.getItemId().equals(String.valueOf(attrType))) {
 				consumeItem = consume;
 				break;
 			}
@@ -220,7 +220,7 @@ public class ConsumeItems {
 	/**
 	 * 检测是否可消耗
 	 * @param player
-	 * @param hpCode
+	 * @param hsCode
 	 * @return
 	 */
 	public boolean checkConsume(Player player, int hsCode) {

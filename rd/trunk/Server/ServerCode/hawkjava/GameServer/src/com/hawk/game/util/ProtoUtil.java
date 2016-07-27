@@ -76,14 +76,14 @@ public class ProtoUtil {
 
 	/**
 	 * 生成错误码协议
-	 * @param hpCode
+	 * @param hsCode
 	 * @param errCode
 	 * @param errFlag
 	 * @return
 	 */
-	public static HawkProtocol genErrorProtocol(int hpCode, int errCode, int errFlag) {
+	public static HawkProtocol genErrorProtocol(int hsCode, int errCode, int errFlag) {
 		HSErrorCode.Builder builder = HSErrorCode.newBuilder();
-		builder.setHpCode(hpCode);
+		builder.setHsCode(hsCode);
 		builder.setErrCode(errCode);
 		builder.setErrFlag(errFlag);
 		return HawkProtocol.valueOf(HS.sys.ERROR_CODE, builder);

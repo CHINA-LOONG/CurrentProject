@@ -28,6 +28,7 @@ public class UIMonsterIconExp : MonoBehaviour {
         int expTarget,
         int lvlOriginal,
         int lvlTarget,
+        int stage,
         int expGain = 0
         )
     {
@@ -35,7 +36,7 @@ public class UIMonsterIconExp : MonoBehaviour {
         icon.transform.SetParent(mMonsterIconRoot.transform, false);
         icon.SetMonsterStaticId(unitStaticID);
         icon.SetLevel(lvlTarget);
-        //icon.SetStage(1);
+        icon.SetStage(stage);
 
         mExpBar.SetLoopCount(lvlTarget - lvlOriginal);
         UnitData curUnitData = StaticDataMgr.Instance.GetUnitRowData(unitStaticID);
@@ -45,12 +46,12 @@ public class UIMonsterIconExp : MonoBehaviour {
         mExpBar.SetTargetRatio(expTarget / (float)targetMaxExp);
 
         mLvlUpUI.gameObject.SetActive(lvlTarget > lvlOriginal);
-        mExpGainUI.text = "+ " + expGain.ToString();
+        mExpGainUI.text = "+" + expGain.ToString();
     }
     //---------------------------------------------------------------------------------------------
     public void SetExpGain(int expGain)
     {
-        mExpGainUI.text = "+ " + expGain.ToString();
+        mExpGainUI.text = "+" + expGain.ToString();
     }
     //---------------------------------------------------------------------------------------------
 }

@@ -133,16 +133,20 @@ public class UIMail : UIBase,TabButtonDelegate
         {
             GameDataMgr.Instance.PlayerDataAttr.gameMailData.ClearMail();
             // MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_002"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
-			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,StaticDataMgr.Instance.GetTextByID("mail_record_002"));
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("mail_CollectedAll"));
         }
         else
         {
             if (result.status == (int)PB.mailError.MAIL_COIN_FULL)
+            {
                 //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_003"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
-				MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,StaticDataMgr.Instance.GetTextByID("mail_record_003"));
+                //MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("mail_record_003"));
+            }
             else if (result.status == (int)PB.mailError.MAIL_GOLD_FULL)
+            {
                 //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_004"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
-				MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,StaticDataMgr.Instance.GetTextByID("mail_record_004"));
+                //MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("mail_record_004"));
+            }
             foreach (var mailId in result.receiveMailId)
             {
                 GameDataMgr.Instance.PlayerDataAttr.gameMailData.RemoveMail(mailId);

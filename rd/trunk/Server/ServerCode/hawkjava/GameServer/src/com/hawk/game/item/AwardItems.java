@@ -183,7 +183,7 @@ public class AwardItems {
 	public AwardItems addAttr(String attrType, int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
-			if (reward.getType() == itemType.PLAYER_ATTR_VALUE && reward.getItemId().equals(attrType)) {
+			if (reward.getType() == itemType.PLAYER_ATTR_VALUE && reward.getItemId().equals(String.valueOf(attrType))) {
 				rewardItem = reward;
 				break;
 			}
@@ -210,7 +210,7 @@ public class AwardItems {
 	public AwardItems addMonsterAttr(int attrType, int count, int id) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
-			if (reward.getType() == itemType.MONSTER_ATTR_VALUE && reward.getItemId().equals(attrType)  && reward.getId() == id) {
+			if (reward.getType() == itemType.MONSTER_ATTR_VALUE && reward.getItemId().equals(String.valueOf(attrType))  && reward.getId() == id) {
 				rewardItem = reward;
 				break;
 			}
@@ -234,7 +234,7 @@ public class AwardItems {
 	public AwardItems addMonsterAttr(int attrType, int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
-			if (reward.getType() == itemType.MONSTER_ATTR_VALUE && reward.getItemId().equals(attrType)  && reward.getId() == 0) {
+			if (reward.getType() == itemType.MONSTER_ATTR_VALUE && reward.getItemId().equals(String.valueOf(attrType))  && reward.getId() == 0) {
 				rewardItem = reward;
 				break;
 			}
@@ -291,11 +291,16 @@ public class AwardItems {
 		return this;
 	}
 
-	public AwardItems addGold(int gold) {
+	public AwardItems addFreeGold(int gold) {
 		addAttr(changeType.CHANGE_GOLD_VALUE, gold);
 		return this;
 	}
 
+	public AwardItems addBuyGold(int gold) {
+		addAttr(changeType.CHANGE_GOLD_BUY_VALUE, gold);
+		return this;
+	}
+	
 	public AwardItems addCoin(int coin) {
 		addAttr(changeType.CHANGE_COIN_VALUE, coin);
 		return this;
@@ -355,10 +360,15 @@ public class AwardItems {
 						break;
 
 					case changeType.CHANGE_GOLD_VALUE:
-						player.increaseGold(item.getCount(), action);
+						player.increaseFreeGold(item.getCount(), action);
 						playerBuilder.setGold(player.getGold());
 						break;
 
+					case changeType.CHANGE_GOLD_BUY_VALUE:
+						player.increaseBuyGold(item.getCount(), action);
+						playerBuilder.setGold(player.getGold());
+						break;
+						
 					case changeType.CHANGE_PLAYER_EXP_VALUE:
 						player.increaseExp(item.getCount(), action);
 						playerBuilder.setExp(player.getExp());

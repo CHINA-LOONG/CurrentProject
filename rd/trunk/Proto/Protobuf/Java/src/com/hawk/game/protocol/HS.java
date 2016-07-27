@@ -665,61 +665,65 @@ public final class HS {
      */
     IM_PUSH_S(91, 7002),
     /**
-     * <code>ShopDataInitC = 8001;</code>
+     * <code>SHOP_DATA_INIT_C = 8001;</code>
      *
      * <pre>
      * 商店
      * </pre>
      */
-    ShopDataInitC(92, 8001),
+    SHOP_DATA_INIT_C(92, 8001),
     /**
-     * <code>ShopDataInitS = 8002;</code>
+     * <code>SHOP_DATA_INIT_S = 8002;</code>
      */
-    ShopDataInitS(93, 8002),
+    SHOP_DATA_INIT_S(93, 8002),
     /**
-     * <code>ShopRefreshC = 8003;</code>
+     * <code>SHOP_REFRESH_C = 8003;</code>
      */
-    ShopRefreshC(94, 8003),
+    SHOP_REFRESH_C(94, 8003),
     /**
-     * <code>ShopRefreshS = 8004;</code>
+     * <code>SHOP_REFRESH_S = 8004;</code>
      */
-    ShopRefreshS(95, 8004),
+    SHOP_REFRESH_S(95, 8004),
     /**
-     * <code>ShopItemBuyC = 8005;</code>
+     * <code>SHOP_ITEM_BUY_C = 8005;</code>
      */
-    ShopItemBuyC(96, 8005),
+    SHOP_ITEM_BUY_C(96, 8005),
     /**
-     * <code>ShopItemBuyS = 8006;</code>
+     * <code>SHOP_ITEM_BUY_S = 8006;</code>
      */
-    ShopItemBuyS(97, 8006),
+    SHOP_ITEM_BUY_S(97, 8006),
     /**
-     * <code>ShopDataSynC = 8007;</code>
+     * <code>SHOP_DATA_SYN_C = 8007;</code>
      */
-    ShopDataSynC(98, 8007),
+    SHOP_DATA_SYN_C(98, 8007),
     /**
-     * <code>ShopDataSynS = 8008;</code>
+     * <code>SHOP_DATA_SYN_S = 8008;</code>
      */
-    ShopDataSynS(99, 8008),
+    SHOP_DATA_SYN_S(99, 8008),
     /**
-     * <code>ShopGold2CoinC = 8009;</code>
+     * <code>SHOP_GOLD2COIN_C = 8009;</code>
      */
-    ShopGold2CoinC(100, 8009),
+    SHOP_GOLD2COIN_C(100, 8009),
     /**
-     * <code>ShopGold2CoinS = 8010;</code>
+     * <code>SHOP_GOLD2COIN_S = 8010;</code>
      */
-    ShopGold2CoinS(101, 8010),
+    SHOP_GOLD2COIN_S(101, 8010),
     /**
-     * <code>AllianceCreateC = 9001;</code>
+     * <code>SHOP_REFRESH_TIMES = 8011;</code>
+     */
+    SHOP_REFRESH_TIMES(102, 8011),
+    /**
+     * <code>ALLIANCE_CREATE_C = 9001;</code>
      *
      * <pre>
      * 公会
      * </pre>
      */
-    AllianceCreateC(102, 9001),
+    ALLIANCE_CREATE_C(103, 9001),
     /**
-     * <code>AllianceCreateS = 9002;</code>
+     * <code>ALLIANCE_CREATE_S = 9002;</code>
      */
-    AllianceCreateS(103, 9002),
+    ALLIANCE_CREATE_S(104, 9002),
     /**
      * <code>SETTING_LANGUAGE_C = 10001;</code>
      *
@@ -727,19 +731,19 @@ public final class HS {
      * 系统设置
      * </pre>
      */
-    SETTING_LANGUAGE_C(104, 10001),
+    SETTING_LANGUAGE_C(105, 10001),
     /**
      * <code>SETTING_LANGUAGE_S = 10002;</code>
      */
-    SETTING_LANGUAGE_S(105, 10002),
+    SETTING_LANGUAGE_S(106, 10002),
     /**
      * <code>SETTING_BLOCK_C = 10003;</code>
      */
-    SETTING_BLOCK_C(106, 10003),
+    SETTING_BLOCK_C(107, 10003),
     /**
      * <code>SETTING_BLOCK_S = 10004;</code>
      */
-    SETTING_BLOCK_S(107, 10004),
+    SETTING_BLOCK_S(108, 10004),
     /**
      * <code>STATISTICS_EXP_LEFT_TIMES = 11001;</code>
      *
@@ -747,11 +751,7 @@ public final class HS {
      * 统计信息
      * </pre>
      */
-    STATISTICS_EXP_LEFT_TIMES(108, 11001),
-    /**
-     * <code>STATISTICS_SHOP_REFRESH_TIMES = 11002;</code>
-     */
-    STATISTICS_SHOP_REFRESH_TIMES(109, 11002),
+    STATISTICS_EXP_LEFT_TIMES(109, 11001),
     ;
 
     /**
@@ -1155,61 +1155,65 @@ public final class HS {
      */
     public static final int IM_PUSH_S_VALUE = 7002;
     /**
-     * <code>ShopDataInitC = 8001;</code>
+     * <code>SHOP_DATA_INIT_C = 8001;</code>
      *
      * <pre>
      * 商店
      * </pre>
      */
-    public static final int ShopDataInitC_VALUE = 8001;
+    public static final int SHOP_DATA_INIT_C_VALUE = 8001;
     /**
-     * <code>ShopDataInitS = 8002;</code>
+     * <code>SHOP_DATA_INIT_S = 8002;</code>
      */
-    public static final int ShopDataInitS_VALUE = 8002;
+    public static final int SHOP_DATA_INIT_S_VALUE = 8002;
     /**
-     * <code>ShopRefreshC = 8003;</code>
+     * <code>SHOP_REFRESH_C = 8003;</code>
      */
-    public static final int ShopRefreshC_VALUE = 8003;
+    public static final int SHOP_REFRESH_C_VALUE = 8003;
     /**
-     * <code>ShopRefreshS = 8004;</code>
+     * <code>SHOP_REFRESH_S = 8004;</code>
      */
-    public static final int ShopRefreshS_VALUE = 8004;
+    public static final int SHOP_REFRESH_S_VALUE = 8004;
     /**
-     * <code>ShopItemBuyC = 8005;</code>
+     * <code>SHOP_ITEM_BUY_C = 8005;</code>
      */
-    public static final int ShopItemBuyC_VALUE = 8005;
+    public static final int SHOP_ITEM_BUY_C_VALUE = 8005;
     /**
-     * <code>ShopItemBuyS = 8006;</code>
+     * <code>SHOP_ITEM_BUY_S = 8006;</code>
      */
-    public static final int ShopItemBuyS_VALUE = 8006;
+    public static final int SHOP_ITEM_BUY_S_VALUE = 8006;
     /**
-     * <code>ShopDataSynC = 8007;</code>
+     * <code>SHOP_DATA_SYN_C = 8007;</code>
      */
-    public static final int ShopDataSynC_VALUE = 8007;
+    public static final int SHOP_DATA_SYN_C_VALUE = 8007;
     /**
-     * <code>ShopDataSynS = 8008;</code>
+     * <code>SHOP_DATA_SYN_S = 8008;</code>
      */
-    public static final int ShopDataSynS_VALUE = 8008;
+    public static final int SHOP_DATA_SYN_S_VALUE = 8008;
     /**
-     * <code>ShopGold2CoinC = 8009;</code>
+     * <code>SHOP_GOLD2COIN_C = 8009;</code>
      */
-    public static final int ShopGold2CoinC_VALUE = 8009;
+    public static final int SHOP_GOLD2COIN_C_VALUE = 8009;
     /**
-     * <code>ShopGold2CoinS = 8010;</code>
+     * <code>SHOP_GOLD2COIN_S = 8010;</code>
      */
-    public static final int ShopGold2CoinS_VALUE = 8010;
+    public static final int SHOP_GOLD2COIN_S_VALUE = 8010;
     /**
-     * <code>AllianceCreateC = 9001;</code>
+     * <code>SHOP_REFRESH_TIMES = 8011;</code>
+     */
+    public static final int SHOP_REFRESH_TIMES_VALUE = 8011;
+    /**
+     * <code>ALLIANCE_CREATE_C = 9001;</code>
      *
      * <pre>
      * 公会
      * </pre>
      */
-    public static final int AllianceCreateC_VALUE = 9001;
+    public static final int ALLIANCE_CREATE_C_VALUE = 9001;
     /**
-     * <code>AllianceCreateS = 9002;</code>
+     * <code>ALLIANCE_CREATE_S = 9002;</code>
      */
-    public static final int AllianceCreateS_VALUE = 9002;
+    public static final int ALLIANCE_CREATE_S_VALUE = 9002;
     /**
      * <code>SETTING_LANGUAGE_C = 10001;</code>
      *
@@ -1238,10 +1242,6 @@ public final class HS {
      * </pre>
      */
     public static final int STATISTICS_EXP_LEFT_TIMES_VALUE = 11001;
-    /**
-     * <code>STATISTICS_SHOP_REFRESH_TIMES = 11002;</code>
-     */
-    public static final int STATISTICS_SHOP_REFRESH_TIMES_VALUE = 11002;
 
 
     public final int getNumber() { return value; }
@@ -1340,24 +1340,24 @@ public final class HS {
         case 6006: return MAIL_NEW_S;
         case 7001: return IM_CHAT_SEND_C;
         case 7002: return IM_PUSH_S;
-        case 8001: return ShopDataInitC;
-        case 8002: return ShopDataInitS;
-        case 8003: return ShopRefreshC;
-        case 8004: return ShopRefreshS;
-        case 8005: return ShopItemBuyC;
-        case 8006: return ShopItemBuyS;
-        case 8007: return ShopDataSynC;
-        case 8008: return ShopDataSynS;
-        case 8009: return ShopGold2CoinC;
-        case 8010: return ShopGold2CoinS;
-        case 9001: return AllianceCreateC;
-        case 9002: return AllianceCreateS;
+        case 8001: return SHOP_DATA_INIT_C;
+        case 8002: return SHOP_DATA_INIT_S;
+        case 8003: return SHOP_REFRESH_C;
+        case 8004: return SHOP_REFRESH_S;
+        case 8005: return SHOP_ITEM_BUY_C;
+        case 8006: return SHOP_ITEM_BUY_S;
+        case 8007: return SHOP_DATA_SYN_C;
+        case 8008: return SHOP_DATA_SYN_S;
+        case 8009: return SHOP_GOLD2COIN_C;
+        case 8010: return SHOP_GOLD2COIN_S;
+        case 8011: return SHOP_REFRESH_TIMES;
+        case 9001: return ALLIANCE_CREATE_C;
+        case 9002: return ALLIANCE_CREATE_S;
         case 10001: return SETTING_LANGUAGE_C;
         case 10002: return SETTING_LANGUAGE_S;
         case 10003: return SETTING_BLOCK_C;
         case 10004: return SETTING_BLOCK_S;
         case 11001: return STATISTICS_EXP_LEFT_TIMES;
-        case 11002: return STATISTICS_SHOP_REFRESH_TIMES;
         default: return null;
       }
     }
@@ -1422,7 +1422,7 @@ public final class HS {
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
       "\n\nERROR_CODE\020\004*@\n\002gm\022\024\n\020GEN_TEST_ACCOUNT" +
       "\020d\022\021\n\rGMOPERATION_C\020e\022\021\n\rGMOPERATION_S\020f" +
-      "*\250\023\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n" +
+      "*\273\023\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n" +
       "\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICKOUT_S" +
       "\020\354\007\022\017\n\nSYNCINFO_C\020\355\007\022\017\n\nSYNCINFO_S\020\356\007\022\027\n" +
       "\022PLAYER_INFO_SYNC_S\020\362\007\022\033\n\026STATISTICS_INF" +
@@ -1473,18 +1473,18 @@ public final class HS {
       "AD_C\020\361.\022\023\n\016MAIL_RECEIVE_C\020\362.\022\023\n\016MAIL_REC" +
       "EIVE_S\020\363.\022\027\n\022MAIL_RECEIVE_ALL_C\020\364.\022\027\n\022MA" +
       "IL_RECEIVE_ALL_S\020\365.\022\017\n\nMAIL_NEW_S\020\366.\022\023\n\016" +
-      "IM_CHAT_SEND_C\020\3316\022\016\n\tIM_PUSH_S\020\3326\022\022\n\rSho" +
-      "pDataInitC\020\301>\022\022\n\rShopDataInitS\020\302>\022\021\n\014Sho" +
-      "pRefreshC\020\303>\022\021\n\014ShopRefreshS\020\304>\022\021\n\014ShopI" +
-      "temBuyC\020\305>\022\021\n\014ShopItemBuyS\020\306>\022\021\n\014ShopDat" +
-      "aSynC\020\307>\022\021\n\014ShopDataSynS\020\310>\022\023\n\016ShopGold2",
-      "CoinC\020\311>\022\023\n\016ShopGold2CoinS\020\312>\022\024\n\017Allianc" +
-      "eCreateC\020\251F\022\024\n\017AllianceCreateS\020\252F\022\027\n\022SET" +
-      "TING_LANGUAGE_C\020\221N\022\027\n\022SETTING_LANGUAGE_S" +
-      "\020\222N\022\024\n\017SETTING_BLOCK_C\020\223N\022\024\n\017SETTING_BLO" +
-      "CK_S\020\224N\022\036\n\031STATISTICS_EXP_LEFT_TIMES\020\371U\022" +
-      "\"\n\035STATISTICS_SHOP_REFRESH_TIMES\020\372UB\030\n\026c" +
-      "om.hawk.game.protocol"
+      "IM_CHAT_SEND_C\020\3316\022\016\n\tIM_PUSH_S\020\3326\022\025\n\020SHO" +
+      "P_DATA_INIT_C\020\301>\022\025\n\020SHOP_DATA_INIT_S\020\302>\022" +
+      "\023\n\016SHOP_REFRESH_C\020\303>\022\023\n\016SHOP_REFRESH_S\020\304" +
+      ">\022\024\n\017SHOP_ITEM_BUY_C\020\305>\022\024\n\017SHOP_ITEM_BUY" +
+      "_S\020\306>\022\024\n\017SHOP_DATA_SYN_C\020\307>\022\024\n\017SHOP_DATA",
+      "_SYN_S\020\310>\022\025\n\020SHOP_GOLD2COIN_C\020\311>\022\025\n\020SHOP" +
+      "_GOLD2COIN_S\020\312>\022\027\n\022SHOP_REFRESH_TIMES\020\313>" +
+      "\022\026\n\021ALLIANCE_CREATE_C\020\251F\022\026\n\021ALLIANCE_CRE" +
+      "ATE_S\020\252F\022\027\n\022SETTING_LANGUAGE_C\020\221N\022\027\n\022SET" +
+      "TING_LANGUAGE_S\020\222N\022\024\n\017SETTING_BLOCK_C\020\223N" +
+      "\022\024\n\017SETTING_BLOCK_S\020\224N\022\036\n\031STATISTICS_EXP" +
+      "_LEFT_TIMES\020\371UB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

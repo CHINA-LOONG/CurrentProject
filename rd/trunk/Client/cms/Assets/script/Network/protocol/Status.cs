@@ -203,7 +203,10 @@ namespace PB
       EQUIP_GEM_MISMATCH = 266253,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_NOT_PUNCH", Value=266254)]
-      EQUIP_SLOT_NOT_PUNCH = 266254
+      EQUIP_SLOT_NOT_PUNCH = 266254,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_PLAYER_LEVEL_DEMAND", Value=266256)]
+      EQUIP_PLAYER_LEVEL_DEMAND = 266256
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"questError")]

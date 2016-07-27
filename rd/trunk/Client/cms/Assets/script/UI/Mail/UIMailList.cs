@@ -141,7 +141,7 @@ public class UIMailList : MonoBehaviour
             {
                 result = -1;
             }
-            else
+            else if (a.sendTimeStamp < b.sendTimeStamp)
             {
                 result = 1;
             }
@@ -160,7 +160,7 @@ public class UIMailList : MonoBehaviour
             {
                 result = -1;
             }
-            else
+            else if (a.sendTimeStamp < b.sendTimeStamp)
             {
                 result = 1;
             }

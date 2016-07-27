@@ -22,7 +22,7 @@ message HSHeartBeat
 // ERROR_CODE
 message HSErrorCode
 {
-	required int32  hpCode = 1;	
+	required int32  hsCode = 1;	
 	required int32  errCode = 2;
 	optional string errMsg = 3;
 	optional int32  errFlag = 4 [default = 0];

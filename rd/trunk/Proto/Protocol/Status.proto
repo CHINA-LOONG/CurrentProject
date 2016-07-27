@@ -123,6 +123,8 @@ enum itemError
 	EQUIP_GEM_MISMATCH	       = 0x0004100D;
 	// 槽位没有开孔
 	EQUIP_SLOT_NOT_PUNCH	   = 0x0004100E;
+	// 玩家等级限制
+	EQUIP_PLAYER_LEVEL_DEMAND  = 0x00041010;
 }
 
 enum questError

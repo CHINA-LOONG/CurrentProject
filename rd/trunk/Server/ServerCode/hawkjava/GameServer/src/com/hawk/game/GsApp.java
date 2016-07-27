@@ -506,7 +506,7 @@ public class GsApp extends HawkApp {
 			if (ServerData.getInstance().isExistName(protocol.getNickname())) {
 				HSErrorCode.Builder error = HSErrorCode.newBuilder();
 				error.setErrCode(Status.PlayerError.PLAYER_NICKNAME_EXIST_VALUE);
-				error.setHpCode(HS.code.PLAYER_CREATE_C_VALUE);
+				error.setHsCode(HS.code.PLAYER_CREATE_C_VALUE);
 				session.sendProtocol(HawkProtocol.valueOf(HS.sys.ERROR_CODE, error));
 				return false;
 			}

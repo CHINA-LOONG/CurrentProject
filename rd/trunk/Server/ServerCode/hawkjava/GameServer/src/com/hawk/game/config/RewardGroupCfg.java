@@ -66,7 +66,7 @@ public class RewardGroupCfg extends HawkConfigBase  {
 					}	
 				}
 				if (items.length == 5) {
-					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2], Integer.valueOf(items[3])));
+					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]));
 					if (item.getType() == Const.itemType.MONSTER_VALUE)
 					{
 						weightList.add(WeightItem.valueOf(item, Integer.valueOf(items[4])));

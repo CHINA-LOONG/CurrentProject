@@ -91,12 +91,18 @@ public class UIBattle : UIBase
     public override void Init()
     {
         //TODO：战斗界面不会隐藏了，只会删除
+        gameObject.SetActive(true);
         m_PetPanel.Hide(BattleConst.closeSwitchPetUI);
     }
 
     public override void Clean()
     {
         UIMgr.Instance.DestroyUI(uiFazhen);
+    }
+
+    public void HideBattleUI()
+    {
+        gameObject.SetActive(false);
     }
 
     void Start()
@@ -150,6 +156,11 @@ public class UIBattle : UIBase
             false,
             true
             );
+
+        if (m_MirrorDray != null)
+        {
+            m_MirrorDray.OnPointerUp(null);
+        }
     }
 
     public void CloseReviveUI()
@@ -165,7 +176,7 @@ public class UIBattle : UIBase
         if (state == MsgBox.PrompButtonClick.OK)
         {
             PB.HSInstanceRevive reviveParam = new PB.HSInstanceRevive();
-            GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_REVIVE_C.GetHashCode(), reviveParam);
+            GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_REVIVE_C.GetHashCode(), reviveParam, false);
             ////test only
             //CloseReviveUI();
             //BattleController battleInstance = BattleController.Instance;

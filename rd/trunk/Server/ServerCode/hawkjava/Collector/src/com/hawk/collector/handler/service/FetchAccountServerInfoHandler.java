@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
+import org.hawk.util.HawkHttpParams;
 
 import com.google.gson.JsonObject;
 import com.hawk.collector.Collector;
@@ -23,7 +24,7 @@ public class FetchAccountServerInfoHandler implements HttpHandler {
 		try {
 			HawkLog.logPrintln("fetch Collector accountserver");
 			
-			Map<String, String> params = CollectorHttpServer.parseHttpParam(httpExchange);
+			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
 			Collector.checkToken(params.get("token"));
 			AccountServer accountServer = CollectorServices.getInstance().GetAccountServer(params.get("game"), params.get("platform"), params.get("channel"), params.get("server"));
 			if (accountServer != null) {

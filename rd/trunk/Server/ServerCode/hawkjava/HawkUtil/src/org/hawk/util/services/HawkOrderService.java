@@ -119,6 +119,7 @@ public class HawkOrderService extends HawkTickable {
 			HawkLog.logPrintln("order client init failed, addr: " + addr);
 			return false;
 		}
+		
 		lastTickTime = HawkTime.getMillisecond();
 		HawkLog.logPrintln("order client init success, addr: " + addr);
 		HawkApp.getInstance().addTickable(this);

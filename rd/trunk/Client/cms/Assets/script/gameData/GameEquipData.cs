@@ -60,8 +60,8 @@ public class EquipData
         equipData.gemList = new List<GemInfo>();
         EquipProtoData item = StaticDataMgr.Instance.GetEquipProtoData(equipId, stage);
         //基础属性id
-        equipData.SetStageLvl(item.stageAttrId, true);
-        equipData.SetStrengthLvl(item.levelAttrId, true);
+        equipData.SetStageLvl(stage, true);
+        equipData.SetStrengthLvl(level, true);
         foreach (PB.GemPunch element in gemList)
         {
             GemInfo gemInfo = new GemInfo(element);

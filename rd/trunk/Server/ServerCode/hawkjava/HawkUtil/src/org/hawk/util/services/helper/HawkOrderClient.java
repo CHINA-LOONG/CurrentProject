@@ -66,7 +66,12 @@ public class HawkOrderClient extends HawkMQClient {
 		if (addr.indexOf("tcp://") >= 0) {
 			orderZmq = HawkZmqManager.getInstance().createZmq(HawkZmq.ZmqType.DEALER);
 			orderZmq.setIdentity(identify.getBytes());
-			orderZmq.startMonitor(HawkZmq.SocketEvent.CONNECTED | HawkZmq.SocketEvent.DISCONNECTED);
+			orderZmq.startMonitor(HawkZmq.SocketEvent.CONNECTED 
+								| HawkZmq.SocketEvent.DISCONNECTED 
+								| HawkZmq.SocketEvent.CONNECT_RETRIED 
+								| HawkZmq.SocketEvent.CONNECT_DELAYED
+								);
+			
 			if (!orderZmq.connect(addr)) {
 				return false;
 			}
@@ -169,6 +174,13 @@ public class HawkOrderClient extends HawkMQClient {
 				connectOK = false;
 				HawkLog.logPrintln("order zmq client disconnected: " + this.addr);
 			}
+			else if ((events & HawkZmq.SocketEvent.CONNECT_RETRIED) > 0) {
+				HawkLog.logPrintln("order zmq client connect retried: " + this.addr);
+			}
+			else if ((events & HawkZmq.SocketEvent.CONNECT_DELAYED) > 0) {
+				HawkLog.logPrintln("order zmq client connect delayed: " + this.addr);
+			}
+			
 		} catch (Exception e) {
 			HawkException.catchException(e);
 		}
@@ -202,6 +214,7 @@ public class HawkOrderClient extends HawkMQClient {
 				HawkLog.logPrintln("order client reconnect, addr: " + getAddress().toString());
 			}
 		}
+		
 		return orderZmq != null || connectOK;
 	}
 	

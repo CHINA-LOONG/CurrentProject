@@ -46,13 +46,3 @@ message HSStatisticsExpLeftTimeSync
 	// 三倍经验剩余次数
 	required int32  tripleExpLeft = 2;
 }
-
-message HSStatisticsShopRefreshTimeSync
-{
-	// 普通商店刷新次数
-	required int32  normalShopRefreshTime = 1;
-	// 公会商店刷新次数
-	required int32  guildShopRefreshTime = 2;
-	// 其他玩法商店刷新次数
-	required int32  otherShopRefreshTime = 3;
-}

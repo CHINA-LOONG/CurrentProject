@@ -156,15 +156,15 @@ public class BattleController : MonoBehaviour
 				}
 				return;
 			}
-            //if (hit.collider.gameObject.tag == "DropItem")
-            //{
-            //    Transform parent = hit.collider.gameObject.transform.parent;
-            //    DropItems dropItems = parent.GetComponent<DropItems>();
-            //    if (dropItems != null)
-            //    {                    
-            //        dropItems.OnHit();
-            //    }
-            //}
+            if (hit.collider.gameObject.tag == "DropItem")
+            {
+                Transform parent = hit.collider.gameObject.transform.parent;
+                DropItems dropItems = parent.GetComponent<DropItems>();
+                if (dropItems != null)
+                {
+                    dropItems.OnHit();
+                }
+            }
 
 			var wpTarget = hit.collider.gameObject.GetComponent<WeakpointTarget>();
 			if(wpTarget)
@@ -664,7 +664,7 @@ public class BattleController : MonoBehaviour
         Appearance(false, waitTime);
         IsOcclusion(true);
         //Fade.FadeOut(waitTime);
-        //ItemDropManager.Instance.ClearDropItem();
+        ItemDropManager.Instance.ClearDropItem();
         GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
         yield return new WaitForSeconds(waitTime);
 
@@ -757,7 +757,7 @@ public class BattleController : MonoBehaviour
     public void OnBattleOver(bool isSuccess)
     {
         battleSuccess = isSuccess;
-        //ItemDropManager.Instance.ClearDropItem();
+        ItemDropManager.Instance.ClearDropItem();
         processStart = false;
         //Logger.LogWarning("Battle " + (isSuccess ? "Success" : "Failed"));
         AudioSystemMgr.Instance.StopMusic();
@@ -786,7 +786,7 @@ public class BattleController : MonoBehaviour
 
         PB.HSInstanceSettle instanceParam = new PB.HSInstanceSettle();
         instanceParam.victory = isSuccess;
-        GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam);
+        GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam, false);
     } 
     //---------------------------------------------------------------------------------------------
     void OnInstanceSettleResult(ProtocolMessage msg)
@@ -803,6 +803,7 @@ public class BattleController : MonoBehaviour
             mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
             mUIScore.SetScoreInfo(scoreInfo);
             mUIScore.ShowScoreUI(battleSuccess);
+            uiBattle.HideBattleUI();
         }
     }
     //---------------------------------------------------------------------------------------------

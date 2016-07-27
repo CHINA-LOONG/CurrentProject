@@ -107,4 +107,5 @@ public class BattleConst
     public const float scoreTitleUpTime = 1.0f;
     //最大消息数
     public const int maxMsg = 100;
+    public const float hintImageLength = 50f;
 }

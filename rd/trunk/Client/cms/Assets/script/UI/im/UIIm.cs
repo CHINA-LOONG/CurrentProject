@@ -24,6 +24,8 @@ public class UIIm : UIBase
     public RectTransform msgBox;
     public GameObject sendButton;
     public Text basicsValue;
+    public Text globalText;
+    public Text guildText;
     public GameObject msgPos;//位置
     List<GameObject> msgObj = new List<GameObject>();//消息gameobj
     bool showNewMsg;//新消息
@@ -49,7 +51,7 @@ public class UIIm : UIBase
     //------------------------------------------------------------------------------------------------------
 	// Use this for initialization
     void Start()
-    {
+    {        
         mInst = this;
         EventTriggerListener.Get(showLeftChatBox).onClick = MsgOnClick;
         EventTriggerListener.Get(showBasicsChat).onClick = MsgOnClick;
@@ -96,6 +98,10 @@ public class UIIm : UIBase
             Channel = (int)PB.ImChannel.WORLD;
             globalBackground.enabled = true;
             guildBackground.enabled = false;
+            guildText.GetComponent<Outline>().effectColor = ColorConst.outline_tabColor_normal;
+            guildText.color = ColorConst.text_tabColor_normal;
+            globalText.GetComponent<Outline>().effectColor = ColorConst.outline_tabColor_select;
+            globalText.color = ColorConst.text_tabColor_select;
             ShowMessage();
         }
         else if (but.name == guildButton.name)//工会频道
@@ -103,6 +109,10 @@ public class UIIm : UIBase
             Channel = (int)PB.ImChannel.GUILD;
             guildBackground.enabled = true;
             globalBackground.enabled = false;
+            globalText.GetComponent<Outline>().effectColor = ColorConst.outline_tabColor_normal;
+            globalText.color = ColorConst.text_tabColor_normal;
+            guildText.GetComponent<Outline>().effectColor = ColorConst.outline_tabColor_select;
+            guildText.color = ColorConst.text_tabColor_select;
             ShowMessage();
         }
         else if (but ==playerBoxClone)
@@ -216,15 +226,18 @@ public class UIIm : UIBase
             {
                 textColor = ColorConst.systemColor;
                 imMsgData.mChannel.text = "[" + "System" + "]";
+                imMsgData.mSpeaker.text = msgList[i].origText;
+                imMsgData.mSpeaker.color = textColor;
             }
             else
             {
                 imMsgData.mSpeaker.text = msgList[i].senderName + ":";
                 imMsgData.mChannel.text = "[" + channelName + "]";
+                imMsgData.mContent.text = msgList[i].origText;
                 textColor = msgColor;
+                imMsgData.mSpeaker.color = ColorConst.nameColor;
             }
-            imMsgData.playerName = msgList[i].senderName;
-            imMsgData.mContent.text = msgList[i].origText;
+            imMsgData.playerName = msgList[i].senderName;            
             imMsgData.mContent.color = textColor;
             imMsgData.speakerID = msgList[i].senderId;             
             imMsgData.mChannel.color = textColor;
@@ -259,14 +272,26 @@ public class UIIm : UIBase
     //------------------------------------------------------------------------------------------------------
     public void HintShow(string hintText)//系统提示
     {
-        GameObject hintBox = ResourceMgr.Instance.LoadAsset("hintMessage");
+        GameObject hintBox = ResourceMgr.Instance.LoadAsset("hintMessage");        
         hintBox.transform.parent = gameObject.transform;
         hintBox.transform.localScale = gameObject.transform.localScale;
         Hint hintComponent = hintBox.GetComponent<Hint>();
         hintComponent.ownedList = hintMsg;
         GameObject hint = hintBox.transform.FindChild("Image").gameObject;
+        Text hintBoxText = hint.transform.FindChild("Text").GetComponent<Text>();
+        
         hint.SetActive(false);
-        hint.transform.FindChild("Text").GetComponent<Text>().text = hintText;
+        hintBoxText.text = hintText;
+        float hintWidth = hintBoxText.preferredWidth + BattleConst.hintImageLength;
+        if (hintWidth >= hintBoxText.rectTransform.sizeDelta.x)
+        {
+            hint.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(hintBoxText.rectTransform.sizeDelta.x + BattleConst.hintImageLength, hintBoxText.preferredHeight);
+        }
+        else
+        {
+            hint.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(hintWidth, hintBoxText.preferredHeight);
+        }
+       
         hintComponent.showTime = Time.time;
         hintComponent.SetFadeTime(hintComponent.stopTime + Time.time);
         if (hintMsg.Count == 1)

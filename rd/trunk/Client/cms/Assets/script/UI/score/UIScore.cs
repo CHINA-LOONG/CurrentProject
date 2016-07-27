@@ -13,6 +13,7 @@ public class UIScore : UIBase
     public UIProgressbar mPlayerProgress;
     public Text mPlayerGainExp;
     public Text mPlayerGainGold;
+    public GameObject mPlayerLvlUp;
     public Sprite mVictorySprite;
     public Sprite mFailedSprite;
     
@@ -116,7 +117,7 @@ public class UIScore : UIBase
                 PB.RewardItem item = rewardInfo.RewardItems[i];
                 if (item.type == (int)PB.itemType.MONSTER)
                 {
-                    AddGainMonster(item.itemId);
+                    AddGainMonster(item.itemId, item.level, item.stage);
                     return;
                 }
             }
@@ -125,12 +126,18 @@ public class UIScore : UIBase
         ShowEndBattleUI();
     }
     //---------------------------------------------------------------------------------------------
-    private void AddGainMonster(string monsterID)
+    private void AddGainMonster(string monsterID, int level, int stage)
     {
         mGainPetUI = UIMgr.Instance.OpenUI_(UIGainPet.ViewName) as UIGainPet;
         mGainPetUI.transform.SetParent(transform, false);
         mGainPetUI.ShowGainPet(monsterID);
         mGainPetUI.SetConfirmCallback(ConfirmGainPet);
+        //add monster icon
+        MonsterIcon icon = MonsterIcon.CreateIcon();
+        icon.transform.SetParent(mItemGainList.transform, false);
+        icon.SetMonsterStaticId(monsterID);
+        icon.SetLevel(level);
+        icon.SetStage(stage);
     }
     //---------------------------------------------------------------------------------------------
     private void ConfirmGainPet(GameObject go)
@@ -206,10 +213,11 @@ public class UIScore : UIBase
             if (playerAttr.level > 0)
             {
                 PlayerLevelAttr curAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(playerAttr.level);
-                mPlayerLvl.text = "LVL" + playerAttr.level.ToString();
+                mPlayerLvl.text = "LVL " + playerAttr.level.ToString();
                 mPlayerProgress.SetLoopCount(playerAttr.level - mainPlayer.level);
                 mPlayerProgress.SetCurrrentRatio(mainPlayer.exp / (float)originalAttr.exp);
                 mPlayerProgress.SetTargetRatio(playerAttr.exp / (float)curAttr.exp);
+                mPlayerLvlUp.SetActive(mainPlayer.level != playerAttr.level);
                 //TODO:Sysnc player info here?
                 if (mainPlayer.level != playerAttr.level)
                 {
@@ -218,7 +226,6 @@ public class UIScore : UIBase
                 }
                 mainPlayer.exp = playerAttr.exp;
             }
-
 
             //show monster info
             mMonsterExpList.gameObject.SetActive(true);
@@ -244,7 +251,8 @@ public class UIScore : UIBase
                         originalMonster.currentExp,
                         monsterInfoList[i].exp,
                         originalMonster.pbUnit.level,
-                        monsterInfoList[i].level
+                        monsterInfoList[i].level,
+                        originalMonster.pbUnit.stage
                         );
                     mainPlayer.mainUnitList[i].unit.RefreshUnitLvl(monsterInfoList[i].level, monsterInfoList[i].exp);
                     uiMonsterExpList.Add(originalMonster.pbUnit.guid, monsterIconExp);
@@ -281,6 +289,7 @@ public class UIScore : UIBase
                         curUnit.currentExp,
                         curUnit.pbUnit.level,
                         curUnit.pbUnit.level,
+                        curUnit.pbUnit.stage,
                         0
                         );
                 }
@@ -297,6 +306,7 @@ public class UIScore : UIBase
                     ItemIcon icon = ItemIcon.CreateItemIcon(ItemData.valueof(item.itemId, item.count));
                     icon.transform.SetParent(mItemGainList.transform);
                     icon.transform.localScale = Vector3.one;
+                    icon.ShowTips = true;
                 }
                 else if (item.type == (int)PB.itemType.EQUIP)
                 {
@@ -310,6 +320,7 @@ public class UIScore : UIBase
                     ItemIcon icon = ItemIcon.CreateItemIcon(equipData);
                     icon.transform.SetParent(mItemGainList.transform);
                     icon.transform.localScale = Vector3.one;
+                    icon.ShowTips = true;
                 }
             }
         }
@@ -320,8 +331,20 @@ public class UIScore : UIBase
         }
 
         //show button
+        if (mIsSuccess == true)
+        {
+            EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
+            if (curInstance != null)
+            {
+                InstanceEntryRuntimeData curData = InstanceMapService.Instance.GetNextRuntimeInstance(curInstance.instanceData.instanceId);
+                mNextLevelBtn.gameObject.SetActive(curData != null);
+            }
+        }
+        else
+        {
+            mNextLevelBtn.gameObject.SetActive(false);
+        }
         mRetryBtn.gameObject.SetActive(true);
-        mNextLevelBtn.gameObject.SetActive(mIsSuccess);
         mConfirmBtn.gameObject.SetActive(true);
     }
     //---------------------------------------------------------------------------------------------
@@ -331,7 +354,7 @@ public class UIScore : UIBase
         mPlayerInfoRoot.SetActive(true);
         mPlayerGainGold.text = "+0";
         mPlayerGainExp.text = "+0";
-        mPlayerLvl.text = "LVL" + playerAttr.level.ToString();
+        mPlayerLvl.text = "LVL " + playerAttr.level.ToString();
         float curExpRatio = playerData.exp / (float)playerAttr.exp;
         mPlayerProgress.SetCurrrentRatio(curExpRatio);
         mPlayerProgress.SetTargetRatio(curExpRatio);

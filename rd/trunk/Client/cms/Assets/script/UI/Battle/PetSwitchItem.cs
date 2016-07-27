@@ -119,6 +119,7 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         {
             lifeBar.fillAmount = Mathf.Clamp01(unit.curLife / (float)unit.maxLife);
             energyBar.fillAmount = Mathf.Clamp01(unit.energy / (float)BattleConst.enegyMax);
+            tips.gameObject.SetActive(false);
 
             if (unit.State == UnitState.ToBeEnter)
             {

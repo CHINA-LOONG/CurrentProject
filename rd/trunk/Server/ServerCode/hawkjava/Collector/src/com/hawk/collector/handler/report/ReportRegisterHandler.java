@@ -8,6 +8,7 @@ import java.util.Map;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
+import org.hawk.util.HawkHttpParams;
 
 import com.hawk.collector.Collector;
 import com.hawk.collector.CollectorServices;
@@ -29,7 +30,7 @@ public class ReportRegisterHandler implements HttpHandler {
 	public void handle(HttpExchange httpExchange) throws IOException {
 		// 写注册信息
 		try {
-			Map<String, String> params = CollectorHttpServer.parseHttpParam(httpExchange);
+			Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
 			Collector.checkToken(params.get("token"));
 			doReport(params);
 		} catch (Exception e) {

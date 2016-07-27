@@ -73,3 +73,13 @@ message HSShopGold2CoinRet
 {
 	required int32 changeCount = 1;
 }
+
+message HSShopRefreshTimeSync
+{
+	// 普通商店刷新次数
+	required int32  normalShopRefreshTime = 1;
+	// 公会商店刷新次数
+	required int32  allianceShopRefreshTime = 2;
+	// 其他玩法商店刷新次数
+	required int32  otherShopRefreshTime = 3;
+}

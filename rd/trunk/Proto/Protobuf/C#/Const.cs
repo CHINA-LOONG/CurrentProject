@@ -164,7 +164,10 @@ namespace PB
       CHANGE_FATIGUE = 7,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_FAV", Value=8)]
-      CHANGE_FAV = 8
+      CHANGE_FAV = 8,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_GOLD_BUY", Value=8)]
+      CHANGE_GOLD_BUY = 8
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"attr")]
@@ -263,6 +266,20 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIPTOOL", Value=7)]
       EQUIPTOOL = 7
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"UseToolSubType")]
+    public enum UseToolSubType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"USETOOLEXP", Value=1)]
+      USETOOLEXP = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"USETOOLDOUBLEEXP", Value=2)]
+      USETOOLDOUBLEEXP = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"USETOOLTRIPLEEXP", Value=3)]
+      USETOOLTRIPLEEXP = 3
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"equipPart")]

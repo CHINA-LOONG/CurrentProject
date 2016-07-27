@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import org.hawk.util.HawkHttpParams;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -19,7 +21,7 @@ public class ResourceControlHandler implements HttpHandler{
 	public void handle(HttpExchange httpExchange) throws IOException {
 		int status = VersionHttpServer.VERSION_STATUS_ERROR;
 		JSONObject jsonObject = new JSONObject();
-		Map<String, String> params = VersionHttpServer.parseHttpParam(httpExchange);		
+		Map<String, String> params = HawkHttpParams.parseHttpParam(httpExchange);
 		
 		List<VersionEntity> currentVersions = VersionServices.getInstance().getEntityList(Integer.valueOf(params.get("versionCode")));
 		if (currentVersions != null) {

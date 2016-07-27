@@ -71,9 +71,12 @@ public class PlayerEntity extends HawkDBEntity {
 	@Column(name = "exp")
 	protected int exp = 0;
 
-	@Column(name = "gold")
-	protected int gold = 0;
+	@Column(name = "goldBuy")
+	protected int goldBuy = 0;
 
+	@Column(name = "goldFree")
+	protected int goldFree = 0;
+	
 	@Column(name = "battleMonster", nullable = false)
 	protected String battleMonsterJson = "";
 
@@ -191,14 +194,22 @@ public class PlayerEntity extends HawkDBEntity {
 		this.exp = exp;
 	}
 
-	public int getGold() {
-		return gold;
+	public int getBuyGold() {
+		return goldBuy;
 	}
 
-	public void setGold(int gold) {
-		this.gold = gold;
+	public int getFreeGold() {
+		return goldFree;
+	}
+	
+	public void setBuyGold(int gold) {
+		this.goldBuy = gold;
 	}
 
+	public void setFreeGold(int gold) {
+		this.goldFree = gold;
+	}
+	
 	public List<Integer> getBattleMonsterList() {
 		return battleMonsterList;
 	}

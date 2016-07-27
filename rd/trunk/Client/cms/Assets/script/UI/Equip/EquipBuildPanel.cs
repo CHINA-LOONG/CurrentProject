@@ -54,8 +54,6 @@ public class EquipBuildPanel : EquipPanelBase
     public GameObject maxHide;
     public GameObject maxShow;
 
-    private EquipData curData;
-
     private List<EquipBuildAttr> itemAttrs = new List<EquipBuildAttr>();
     private List<EquipBuildAttr> itemAttrPool = new List<EquipBuildAttr>();
 
@@ -68,8 +66,13 @@ public class EquipBuildPanel : EquipPanelBase
     public UIType uiType;
     public IBuildEquipCallBack ICallBackDeletage { get { return ICallBack; } }
 
-    private EquipProtoData curProto;
+    EquipData curData;                  //基础数据
+    EquipData nextData;
+
+    private EquipProtoData curProto;    //用于获取属性
     private EquipProtoData nextProto;
+
+    private EquipForgeData nextForge;   //用于获取材料和等级限制及成功率
 
     private Dictionary<AttrType, int> curAttr=new Dictionary<AttrType,int>();
     private Dictionary<AttrType, int> nextAttr=new Dictionary<AttrType,int>();
@@ -83,12 +86,14 @@ public class EquipBuildPanel : EquipPanelBase
         text_Zhanli1.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
         text_Zhanli2.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
         text_FullTips.text = StaticDataMgr.Instance.GetTextByID("equip_fully_forged");
+
+        btnBuild.onClick.AddListener(OnClickBuild);
     }
 
     public override void ReloadData(EquipData data, UIEquipInlay.State type, int select = -1)
     {
         curData = data;
-        EquipData nextData = null;
+        nextData = null;
 
         #region SetNext Equip and (Jinjie or Qianghua)
 
@@ -175,6 +180,7 @@ public class EquipBuildPanel : EquipPanelBase
         #endregion
 
         #region Get materials
+        nextForge = StaticDataMgr.Instance.GetEquipForgeData(nextData.stage, nextData.level);
 
         if (uiType == UIType.MaxLevel)
         {
@@ -189,20 +195,7 @@ public class EquipBuildPanel : EquipPanelBase
         }
 
         curDemand.Clear();
-        if (uiType == UIType.Jinjie)
-        {
-            nextProto.GetStageDemand(ref curDemand);
-
-            text_Dazao.text = StaticDataMgr.Instance.GetTextByID("equip_forge_XXdazao");
-            text_Tips.text = StaticDataMgr.Instance.GetTextByID("equip_forge_stateTips");
-        }
-        else
-        {
-            curProto.GetLevelDemand(ref curDemand);
-
-            text_Dazao.text = StaticDataMgr.Instance.GetTextByID("equip_forge_dazao");
-            text_Tips.text = StaticDataMgr.Instance.GetTextByID("equip_forge_levelTips");
-        }
+        nextForge.GetLevelDemand(ref curDemand);
         materialItems.ForEach(delegate(EquipMaterialItem item) { item.gameObject.SetActive(false); });
         int materialIndex = 0;
         for (int i = 0; i < curDemand.Count; i++)
@@ -240,15 +233,28 @@ public class EquipBuildPanel : EquipPanelBase
         }
         #endregion
 
-        if (UIUtil.CheckIsEnoughMaterial(curDemand))
+        if (uiType == UIType.Jinjie)
+        {
+            text_Dazao.text = StaticDataMgr.Instance.GetTextByID("equip_forge_XXdazao");
+            text_Tips.text = StaticDataMgr.Instance.GetTextByID("equip_forge_stateTips");
+        }
+        else
+        {
+            text_Dazao.text = StaticDataMgr.Instance.GetTextByID("equip_forge_dazao");
+            text_Tips.text = StaticDataMgr.Instance.GetTextByID("equip_forge_levelTips");
+        }
+
+        if (!UIUtil.CheckIsEnoughPlayerLevel(nextForge.playerlevelDemand))
+        {
+            text_Tips.text = "<color="+ColorConst.colorTo_Hstr(ColorConst.text_color_nReq)+">"+StaticDataMgr.Instance.GetTextByID("equip_forge_levelTips")+"</color>";
+        }
+        if (UIUtil.CheckIsEnoughMaterial(curDemand) && UIUtil.CheckIsEnoughPlayerLevel(nextForge.playerlevelDemand))
         {
             btnBuild.interactable = true;
-            EventTriggerListener.Get(btnBuild.gameObject).onClick = OnClickBuild;
         }
         else
         {
             btnBuild.interactable = false;
-            EventTriggerListener.Get(btnBuild.gameObject).onClick = null;
         }
     }
 
@@ -291,7 +297,7 @@ public class EquipBuildPanel : EquipPanelBase
     }
 
 
-    void OnClickBuild(GameObject go)
+    void OnClickBuild()
     {
         if (uiType==UIType.Qianghua)
         {
@@ -316,18 +322,12 @@ public class EquipBuildPanel : EquipPanelBase
         }
         PB.HSEquipIncreaseLevelRet result = msg.GetProtocolBody<PB.HSEquipIncreaseLevelRet>();
 
-        // update local data
-        {
-            curData.id = result.id;
-            curData.SetStageLvl(result.stage);
-            curData.SetStrengthLvl(result.level);
-        }
+        EquipIncreaseReslut(result.id, result.stage, result.level);
+
         if (ICallBackDeletage!=null)
         {
             ICallBackDeletage.OnBuildEquipReture();
         }
-        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_forge_success"), (int)PB.ImType.PROMPT);
-        //UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_forge_failed"), (int)PB.ImType.PROMPT);
     }
 
     void OnEquipIncreaseStageRet(ProtocolMessage msg)
@@ -338,18 +338,40 @@ public class EquipBuildPanel : EquipPanelBase
             return;
         }
         PB.HSEquipIncreaseStageRet result = msg.GetProtocolBody<PB.HSEquipIncreaseStageRet>();
-        // update local data
-        {
-            curData.id = result.id;
-            curData.SetStageLvl(result.stage);
-            curData.SetStrengthLvl(result.level);
-        }
+
+        EquipIncreaseReslut(result.id, result.stage, result.level);
+
         if (ICallBackDeletage != null)
         {
             ICallBackDeletage.OnBuildEquipReture();
         }
-        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_forge_success"), (int)PB.ImType.PROMPT);
     }
+    //此处只给强化升级返回成功后使用
+    void EquipIncreaseReslut(long id, int stage, int level)
+    {
+        if (curData.id == id)
+        {
+            if ((curData.stage == stage) && (curData.level == level))
+            {//失败
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_forge_failed"), (int)PB.ImType.PROMPT);
+            }
+            else
+            {//成功
+                // update local data
+                {
+                    curData.id = id;
+                    curData.SetStageLvl(stage);
+                    curData.SetStrengthLvl(level);
+                }
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_forge_success"), (int)PB.ImType.PROMPT);
+            }
+        }
+        else
+        {
+            Logger.LogError("强化物品出现id不匹配异常！");
+        }
+    }
+
 
     #region Bind And UnBund
 

@@ -32,19 +32,7 @@ public class EquipAttr extends HawkConfigBase{
 		/**
 		 * 级别属性索引
 		 */
-		private String levelAttrId;		
-		/**
-		 * 升级消耗
-		 */
-		private List<ItemInfo> stageDemandList;		
-		/**
-		 * 升级消耗
-		 */
-		private List<ItemInfo> levelDemandList;
-		/**
-		 * 升级消耗
-		 */
-		private List<ItemInfo> punchDemandList;
+		private String levelAttrId;
 		/**
 		 * 随机属性强化列表
 		 */
@@ -57,34 +45,13 @@ public class EquipAttr extends HawkConfigBase{
 		public  EquipStageItem() {
 			stageAttrId = null;
 			levelAttrId = null;
-			
-			stageDemandList = new LinkedList<ItemInfo>();
-			levelDemandList = new LinkedList<ItemInfo>();
-			punchDemandList = new LinkedList<ItemInfo>();
 			weightList = new LinkedList<WeightItem<AdditionAttrItem>>();
 			rollCount = 0;
 		}
 		 
-		public boolean init(String stageAttrId, String levelAttrId, String StageDemand, String levelDemand, String punchDemand, String additionAttr, int rollCount){
-			
+		public boolean init(String stageAttrId, String levelAttrId, String additionAttr, int rollCount){
 			this.levelAttrId = levelAttrId;
-			this.stageAttrId = stageAttrId;
-			
-			stageDemandList.clear();
-			levelDemandList.clear();
-			punchDemandList.clear();
-			
-			if (StageDemand != null && StageDemand.length() > 0 && !"0".equals(StageDemand)) {
-				stageDemandList = ItemInfo.GetItemInfo(stageDemand, ItemParseType.PARSE_EQUIP_ATTR);
-			}
-						
-			if (levelDemand != null && levelDemand.length() > 0 && !"0".equals(levelDemand)) {
-				levelDemandList = ItemInfo.GetItemInfo(levelDemand, ItemParseType.PARSE_EQUIP_ATTR);
-			}
-					
-			if (punchDemand != null && punchDemand.length() > 0 && !"0".equals(punchDemand)) {
-				punchDemandList = ItemInfo.GetItemInfo(punchDemand, ItemParseType.PARSE_EQUIP_ATTR);
-			}			
+			this.stageAttrId = stageAttrId;		
 			
 			if (additionAttr != null && additionAttr.length() > 0 && !"0".equals(additionAttr)) {
 				String[] itemArrays = additionAttr.split(",");
@@ -136,18 +103,6 @@ public class EquipAttr extends HawkConfigBase{
 		public String getLevelAttrId() {
 			return levelAttrId;
 		}
-
-		public List<ItemInfo> getStageDemandList() {
-			return stageDemandList;
-		}
-
-		public List<ItemInfo> getLevelDemandList() {
-			return levelDemandList;
-		}
-
-		public List<ItemInfo> getPunchDemandList() {
-			return punchDemandList;
-		}		
 	}
 	
 	private  class AdditionAttrItem{
@@ -203,18 +158,6 @@ public class EquipAttr extends HawkConfigBase{
 	 * 附加属性
 	 */
 	protected final String additionAttr;
-	/**
-	 * 进阶消耗列表
-	 */
-	protected final String stageDemand;	
-	/**
-	 * 升级消耗列表
-	 */
-	protected final String levelDemand;	
-	/**
-	 * 打孔消耗列表
-	 */
-	protected final String punchDemand;	
 			
 	public  EquipAttr() {
 		id = null;
@@ -223,9 +166,6 @@ public class EquipAttr extends HawkConfigBase{
 		stageAttrId = null;
 		rollCount = 0;
 		additionAttr = null;
-		stageDemand = null;
-		levelDemand = null;
-		punchDemand = null;
 	}
 	
 	/**
@@ -252,40 +192,6 @@ public class EquipAttr extends HawkConfigBase{
 		
 		return stageItem.rondomAddiAttr();
 	}
-	
-	/**
-	 * 获取进阶消耗列表
-	 */
-	public static List<ItemInfo> getStageDemandList(String equip, int stage){
-		if (stage > GsConst.EQUIP_MAX_STAGE) {
-			return null;
-		}
-		
-		EquipStageItem stageItem = equipList.get(equip).get(stage);
-		return stageItem.stageDemandList;
-	}
-	
-	/**
-	 * 获取升级消耗列表
-	 */
-	public static List<ItemInfo> getLevelDemandList(String equip, int stage){
-		if (stage > GsConst.EQUIP_MAX_STAGE) {
-			return null;
-		}
-		EquipStageItem stageItem = equipList.get(equip).get(stage);
-		return stageItem.levelDemandList;
-	}
-	
-	/**
-	 * 获取打孔消耗列表
-	 */
-	public static List<ItemInfo> getPunchDemandList(String equip, int stage){
-		if (stage > GsConst.EQUIP_MAX_STAGE) {
-			return null;
-		}
-		EquipStageItem stageItem = equipList.get(equip).get(stage);
-		return stageItem.punchDemandList;
-	}	
 
 	/**
 	 * 获取装备列表
@@ -320,7 +226,7 @@ public class EquipAttr extends HawkConfigBase{
 		{			
 			// 新建一个品级map
 			currentStage = new EquipStageItem();
-			if (currentStage.init(this.stageAttrId, this.levelAttrId, this.stageDemand, this.levelDemand, this.punchDemand, this.additionAttr, this.rollCount) == false) 
+			if (currentStage.init(this.stageAttrId, this.levelAttrId, this.additionAttr, this.rollCount) == false) 
 			{
 				return false;		
 			}
