@@ -1010,6 +1010,16 @@ public final class Consume {
      */
     com.hawk.game.protocol.Consume.ConsumeItemOrBuilder getConsumeItemsOrBuilder(
         int index);
+
+    // optional int32 hsCode = 4;
+    /**
+     * <code>optional int32 hsCode = 4;</code>
+     */
+    boolean hasHsCode();
+    /**
+     * <code>optional int32 hsCode = 4;</code>
+     */
+    int getHsCode();
   }
   /**
    * Protobuf type {@code HSConsumeInfo}
@@ -1093,6 +1103,11 @@ public final class Consume {
                 mutable_bitField0_ |= 0x00000004;
               }
               consumeItems_.add(input.readMessage(com.hawk.game.protocol.Consume.ConsumeItem.PARSER, extensionRegistry));
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000002;
+              hsCode_ = input.readInt32();
               break;
             }
           }
@@ -1287,10 +1302,27 @@ public final class Consume {
       return consumeItems_.get(index);
     }
 
+    // optional int32 hsCode = 4;
+    public static final int HSCODE_FIELD_NUMBER = 4;
+    private int hsCode_;
+    /**
+     * <code>optional int32 hsCode = 4;</code>
+     */
+    public boolean hasHsCode() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 hsCode = 4;</code>
+     */
+    public int getHsCode() {
+      return hsCode_;
+    }
+
     private void initFields() {
       playerAttr_ = com.hawk.game.protocol.Player.SynPlayerAttr.getDefaultInstance();
       monstersAttr_ = java.util.Collections.emptyList();
       consumeItems_ = java.util.Collections.emptyList();
+      hsCode_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1325,6 +1357,9 @@ public final class Consume {
       for (int i = 0; i < consumeItems_.size(); i++) {
         output.writeMessage(3, consumeItems_.get(i));
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(4, hsCode_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1345,6 +1380,10 @@ public final class Consume {
       for (int i = 0; i < consumeItems_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, consumeItems_.get(i));
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, hsCode_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1487,6 +1526,8 @@ public final class Consume {
         } else {
           consumeItemsBuilder_.clear();
         }
+        hsCode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -1541,6 +1582,10 @@ public final class Consume {
         } else {
           result.consumeItems_ = consumeItemsBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.hsCode_ = hsCode_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1611,6 +1656,9 @@ public final class Consume {
               consumeItemsBuilder_.addAllMessages(other.consumeItems_);
             }
           }
+        }
+        if (other.hasHsCode()) {
+          setHsCode(other.getHsCode());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2428,6 +2476,39 @@ public final class Consume {
         return consumeItemsBuilder_;
       }
 
+      // optional int32 hsCode = 4;
+      private int hsCode_ ;
+      /**
+       * <code>optional int32 hsCode = 4;</code>
+       */
+      public boolean hasHsCode() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 hsCode = 4;</code>
+       */
+      public int getHsCode() {
+        return hsCode_;
+      }
+      /**
+       * <code>optional int32 hsCode = 4;</code>
+       */
+      public Builder setHsCode(int value) {
+        bitField0_ |= 0x00000008;
+        hsCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 hsCode = 4;</code>
+       */
+      public Builder clearHsCode() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        hsCode_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:HSConsumeInfo)
     }
 
@@ -2461,11 +2542,11 @@ public final class Consume {
       "\n\026Protocol/Consume.proto\032\025Protocol/Playe" +
       "r.proto\032\026Protocol/Monster.proto\"F\n\013Consu" +
       "meItem\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \001(\003\022\016\n\006item" +
-      "Id\030\003 \002(\t\022\r\n\005count\030\004 \001(\005\"~\n\rHSConsumeInfo" +
-      "\022\"\n\nplayerAttr\030\001 \001(\0132\016.SynPlayerAttr\022%\n\014" +
-      "monstersAttr\030\002 \003(\0132\017.SynMonsterAttr\022\"\n\014c" +
-      "onsumeItems\030\003 \003(\0132\014.ConsumeItemB\030\n\026com.h" +
-      "awk.game.protocol"
+      "Id\030\003 \002(\t\022\r\n\005count\030\004 \001(\005\"\216\001\n\rHSConsumeInf" +
+      "o\022\"\n\nplayerAttr\030\001 \001(\0132\016.SynPlayerAttr\022%\n" +
+      "\014monstersAttr\030\002 \003(\0132\017.SynMonsterAttr\022\"\n\014" +
+      "consumeItems\030\003 \003(\0132\014.ConsumeItem\022\016\n\006hsCo" +
+      "de\030\004 \001(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2483,7 +2564,7 @@ public final class Consume {
           internal_static_HSConsumeInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSConsumeInfo_descriptor,
-              new java.lang.String[] { "PlayerAttr", "MonstersAttr", "ConsumeItems", });
+              new java.lang.String[] { "PlayerAttr", "MonstersAttr", "ConsumeItems", "HsCode", });
           return null;
         }
       };

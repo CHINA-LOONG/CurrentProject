@@ -711,6 +711,16 @@ public final class Monster {
      */
     com.hawk.game.protocol.Equip.EquipInfoOrBuilder getEquipInfosOrBuilder(
         int index);
+
+    // optional bool locked = 11 [default = false];
+    /**
+     * <code>optional bool locked = 11 [default = false];</code>
+     */
+    boolean hasLocked();
+    /**
+     * <code>optional bool locked = 11 [default = false];</code>
+     */
+    boolean getLocked();
   }
   /**
    * Protobuf type {@code HSMonster}
@@ -817,6 +827,11 @@ public final class Monster {
                 mutable_bitField0_ |= 0x00000200;
               }
               equipInfos_.add(input.readMessage(com.hawk.game.protocol.Equip.EquipInfo.PARSER, extensionRegistry));
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000100;
+              locked_ = input.readBool();
               break;
             }
           }
@@ -1092,6 +1107,22 @@ public final class Monster {
       return equipInfos_.get(index);
     }
 
+    // optional bool locked = 11 [default = false];
+    public static final int LOCKED_FIELD_NUMBER = 11;
+    private boolean locked_;
+    /**
+     * <code>optional bool locked = 11 [default = false];</code>
+     */
+    public boolean hasLocked() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional bool locked = 11 [default = false];</code>
+     */
+    public boolean getLocked() {
+      return locked_;
+    }
+
     private void initFields() {
       monsterId_ = 0;
       cfgId_ = "";
@@ -1103,6 +1134,7 @@ public final class Monster {
       disposition_ = 0;
       skill_ = java.util.Collections.emptyList();
       equipInfos_ = java.util.Collections.emptyList();
+      locked_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1190,6 +1222,9 @@ public final class Monster {
       for (int i = 0; i < equipInfos_.size(); i++) {
         output.writeMessage(10, equipInfos_.get(i));
       }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeBool(11, locked_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1238,6 +1273,10 @@ public final class Monster {
       for (int i = 0; i < equipInfos_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, equipInfos_.get(i));
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(11, locked_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1385,6 +1424,8 @@ public final class Monster {
         } else {
           equipInfosBuilder_.clear();
         }
+        locked_ = false;
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -1463,6 +1504,10 @@ public final class Monster {
         } else {
           result.equipInfos_ = equipInfosBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.locked_ = locked_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1556,6 +1601,9 @@ public final class Monster {
               equipInfosBuilder_.addAllMessages(other.equipInfos_);
             }
           }
+        }
+        if (other.hasLocked()) {
+          setLocked(other.getLocked());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2411,6 +2459,39 @@ public final class Monster {
           equipInfos_ = null;
         }
         return equipInfosBuilder_;
+      }
+
+      // optional bool locked = 11 [default = false];
+      private boolean locked_ ;
+      /**
+       * <code>optional bool locked = 11 [default = false];</code>
+       */
+      public boolean hasLocked() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional bool locked = 11 [default = false];</code>
+       */
+      public boolean getLocked() {
+        return locked_;
+      }
+      /**
+       * <code>optional bool locked = 11 [default = false];</code>
+       */
+      public Builder setLocked(boolean value) {
+        bitField0_ |= 0x00000400;
+        locked_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool locked = 11 [default = false];</code>
+       */
+      public Builder clearLocked() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        locked_ = false;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:HSMonster)
@@ -9457,6 +9538,1008 @@ public final class Monster {
     // @@protoc_insertion_point(class_scope:HSMonsterStageUpRet)
   }
 
+  public interface HSMonsterLockOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 monsterId = 1;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    int getMonsterId();
+
+    // required bool locked = 2;
+    /**
+     * <code>required bool locked = 2;</code>
+     */
+    boolean hasLocked();
+    /**
+     * <code>required bool locked = 2;</code>
+     */
+    boolean getLocked();
+  }
+  /**
+   * Protobuf type {@code HSMonsterLock}
+   *
+   * <pre>
+   * MONSTER_LOCK_C
+   * </pre>
+   */
+  public static final class HSMonsterLock extends
+      com.google.protobuf.GeneratedMessage
+      implements HSMonsterLockOrBuilder {
+    // Use HSMonsterLock.newBuilder() to construct.
+    private HSMonsterLock(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSMonsterLock(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSMonsterLock defaultInstance;
+    public static HSMonsterLock getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSMonsterLock getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSMonsterLock(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              monsterId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              locked_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterLock_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterLock_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Monster.HSMonsterLock.class, com.hawk.game.protocol.Monster.HSMonsterLock.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSMonsterLock> PARSER =
+        new com.google.protobuf.AbstractParser<HSMonsterLock>() {
+      public HSMonsterLock parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSMonsterLock(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSMonsterLock> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 monsterId = 1;
+    public static final int MONSTERID_FIELD_NUMBER = 1;
+    private int monsterId_;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    // required bool locked = 2;
+    public static final int LOCKED_FIELD_NUMBER = 2;
+    private boolean locked_;
+    /**
+     * <code>required bool locked = 2;</code>
+     */
+    public boolean hasLocked() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required bool locked = 2;</code>
+     */
+    public boolean getLocked() {
+      return locked_;
+    }
+
+    private void initFields() {
+      monsterId_ = 0;
+      locked_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLocked()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(2, locked_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, locked_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Monster.HSMonsterLock parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLock parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLock parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLock parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLock parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLock parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLock parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLock parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLock parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLock parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Monster.HSMonsterLock prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSMonsterLock}
+     *
+     * <pre>
+     * MONSTER_LOCK_C
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Monster.HSMonsterLockOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterLock_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterLock_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Monster.HSMonsterLock.class, com.hawk.game.protocol.Monster.HSMonsterLock.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Monster.HSMonsterLock.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        monsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        locked_ = false;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterLock_descriptor;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterLock getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Monster.HSMonsterLock.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterLock build() {
+        com.hawk.game.protocol.Monster.HSMonsterLock result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterLock buildPartial() {
+        com.hawk.game.protocol.Monster.HSMonsterLock result = new com.hawk.game.protocol.Monster.HSMonsterLock(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.monsterId_ = monsterId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.locked_ = locked_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Monster.HSMonsterLock) {
+          return mergeFrom((com.hawk.game.protocol.Monster.HSMonsterLock)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Monster.HSMonsterLock other) {
+        if (other == com.hawk.game.protocol.Monster.HSMonsterLock.getDefaultInstance()) return this;
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
+        if (other.hasLocked()) {
+          setLocked(other.getLocked());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMonsterId()) {
+          
+          return false;
+        }
+        if (!hasLocked()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Monster.HSMonsterLock parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Monster.HSMonsterLock) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 monsterId = 1;
+      private int monsterId_ ;
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000001;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required bool locked = 2;
+      private boolean locked_ ;
+      /**
+       * <code>required bool locked = 2;</code>
+       */
+      public boolean hasLocked() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required bool locked = 2;</code>
+       */
+      public boolean getLocked() {
+        return locked_;
+      }
+      /**
+       * <code>required bool locked = 2;</code>
+       */
+      public Builder setLocked(boolean value) {
+        bitField0_ |= 0x00000002;
+        locked_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool locked = 2;</code>
+       */
+      public Builder clearLocked() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        locked_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSMonsterLock)
+    }
+
+    static {
+      defaultInstance = new HSMonsterLock(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSMonsterLock)
+  }
+
+  public interface HSMonsterLockRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 monsterId = 1;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    int getMonsterId();
+
+    // required bool locked = 2;
+    /**
+     * <code>required bool locked = 2;</code>
+     */
+    boolean hasLocked();
+    /**
+     * <code>required bool locked = 2;</code>
+     */
+    boolean getLocked();
+  }
+  /**
+   * Protobuf type {@code HSMonsterLockRet}
+   *
+   * <pre>
+   * MONSTER_LOCK_S
+   * </pre>
+   */
+  public static final class HSMonsterLockRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSMonsterLockRetOrBuilder {
+    // Use HSMonsterLockRet.newBuilder() to construct.
+    private HSMonsterLockRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSMonsterLockRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSMonsterLockRet defaultInstance;
+    public static HSMonsterLockRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSMonsterLockRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSMonsterLockRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              monsterId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              locked_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterLockRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Monster.internal_static_HSMonsterLockRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Monster.HSMonsterLockRet.class, com.hawk.game.protocol.Monster.HSMonsterLockRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSMonsterLockRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSMonsterLockRet>() {
+      public HSMonsterLockRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSMonsterLockRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSMonsterLockRet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 monsterId = 1;
+    public static final int MONSTERID_FIELD_NUMBER = 1;
+    private int monsterId_;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    // required bool locked = 2;
+    public static final int LOCKED_FIELD_NUMBER = 2;
+    private boolean locked_;
+    /**
+     * <code>required bool locked = 2;</code>
+     */
+    public boolean hasLocked() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required bool locked = 2;</code>
+     */
+    public boolean getLocked() {
+      return locked_;
+    }
+
+    private void initFields() {
+      monsterId_ = 0;
+      locked_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLocked()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(2, locked_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, locked_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Monster.HSMonsterLockRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLockRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLockRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLockRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLockRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLockRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLockRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLockRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLockRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Monster.HSMonsterLockRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Monster.HSMonsterLockRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSMonsterLockRet}
+     *
+     * <pre>
+     * MONSTER_LOCK_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Monster.HSMonsterLockRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterLockRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterLockRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Monster.HSMonsterLockRet.class, com.hawk.game.protocol.Monster.HSMonsterLockRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Monster.HSMonsterLockRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        monsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        locked_ = false;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Monster.internal_static_HSMonsterLockRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterLockRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Monster.HSMonsterLockRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterLockRet build() {
+        com.hawk.game.protocol.Monster.HSMonsterLockRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Monster.HSMonsterLockRet buildPartial() {
+        com.hawk.game.protocol.Monster.HSMonsterLockRet result = new com.hawk.game.protocol.Monster.HSMonsterLockRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.monsterId_ = monsterId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.locked_ = locked_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Monster.HSMonsterLockRet) {
+          return mergeFrom((com.hawk.game.protocol.Monster.HSMonsterLockRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Monster.HSMonsterLockRet other) {
+        if (other == com.hawk.game.protocol.Monster.HSMonsterLockRet.getDefaultInstance()) return this;
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
+        if (other.hasLocked()) {
+          setLocked(other.getLocked());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMonsterId()) {
+          
+          return false;
+        }
+        if (!hasLocked()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Monster.HSMonsterLockRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Monster.HSMonsterLockRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 monsterId = 1;
+      private int monsterId_ ;
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000001;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required bool locked = 2;
+      private boolean locked_ ;
+      /**
+       * <code>required bool locked = 2;</code>
+       */
+      public boolean hasLocked() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required bool locked = 2;</code>
+       */
+      public boolean getLocked() {
+        return locked_;
+      }
+      /**
+       * <code>required bool locked = 2;</code>
+       */
+      public Builder setLocked(boolean value) {
+        bitField0_ |= 0x00000002;
+        locked_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool locked = 2;</code>
+       */
+      public Builder clearLocked() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        locked_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSMonsterLockRet)
+    }
+
+    static {
+      defaultInstance = new HSMonsterLockRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSMonsterLockRet)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_SynMonsterAttr_descriptor;
   private static
@@ -9527,6 +10610,16 @@ public final class Monster {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSMonsterStageUpRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSMonsterLock_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSMonsterLock_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSMonsterLockRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSMonsterLockRet_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -9539,33 +10632,36 @@ public final class Monster {
       "\n\026Protocol/Monster.proto\032\024Protocol/Const" +
       ".proto\032\024Protocol/Skill.proto\032\024Protocol/E" +
       "quip.proto\"?\n\016SynMonsterAttr\022\021\n\tmonsterI" +
-      "d\030\001 \002(\005\022\r\n\005level\030\002 \001(\005\022\013\n\003exp\030\003 \001(\005\"\305\001\n\t" +
+      "d\030\001 \002(\005\022\r\n\005level\030\002 \001(\005\022\013\n\003exp\030\003 \001(\005\"\334\001\n\t" +
       "HSMonster\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005cfgId\030\002 " +
       "\002(\t\022\r\n\005stage\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003exp" +
       "\030\005 \002(\005\022\014\n\004lazy\030\006 \002(\005\022\017\n\007lazyExp\030\007 \002(\005\022\023\n" +
       "\013disposition\030\010 \002(\005\022\027\n\005skill\030\t \003(\0132\010.HSSk" +
-      "ill\022\036\n\nequipInfos\030\n \003(\0132\n.EquipInfo\"4\n\021H" +
-      "SMonsterInfoSync\022\037\n\013monsterInfo\030\001 \003(\0132\n.",
-      "HSMonster\"W\n\014HSMonsterAdd\022\033\n\007monster\030\001 \002" +
-      "(\0132\n.HSMonster\022*\n\006reason\030\002 \001(\0162\r.RewardR" +
-      "eason:\013SYS_PRESENT\"\205\001\n\016HSMonsterCatch\022\r\n" +
-      "\005cfgId\030\001 \002(\t\022\020\n\005stage\030\002 \001(\005:\0010\022\020\n\005level\030" +
-      "\003 \001(\005:\0011\022\017\n\004lazy\030\004 \001(\005:\0011\022\026\n\013disposition" +
-      "\030\005 \001(\005:\0011\022\027\n\005skill\030\006 \003(\0132\010.HSSkill\"#\n\021HS" +
-      "MonsterCatchRet\022\016\n\006status\030\001 \002(\005\"#\n\016HSMon" +
-      "sterBreak\022\021\n\tmonsterId\030\001 \002(\005\"6\n\021HSMonste" +
-      "rBreakRet\022\016\n\006status\030\001 \002(\005\022\021\n\tmonsterId\030\002" +
-      " \002(\005\"9\n\rHSMonsterFeed\022\021\n\tmonsterId\030\001 \002(\005",
-      "\022\025\n\rfoodMonsterId\030\002 \002(\005\"h\n\020HSMonsterFeed" +
-      "Ret\022\016\n\006status\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\022\025" +
-      "\n\rfoodMonsterId\030\003 \002(\005\022\013\n\003exp\030\004 \001(\005\022\r\n\005le" +
-      "vel\030\005 \001(\005\"6\n\020HSMonsterSkillUp\022\021\n\tmonster" +
-      "Id\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\t\"F\n\023HSMonsterSk" +
-      "illUpRet\022\022\n\nskillPoint\030\001 \002(\005\022\033\n\023skillPoi" +
-      "ntTimeStamp\030\002 \002(\005\"?\n\020HSMonsterStageUp\022\021\n" +
-      "\tmonsterId\030\001 \002(\005\022\030\n\020consumeMonsterId\030\002 \003" +
-      "(\005\"\025\n\023HSMonsterStageUpRetB\030\n\026com.hawk.ga" +
-      "me.protocol"
+      "ill\022\036\n\nequipInfos\030\n \003(\0132\n.EquipInfo\022\025\n\006l" +
+      "ocked\030\013 \001(\010:\005false\"4\n\021HSMonsterInfoSync\022",
+      "\037\n\013monsterInfo\030\001 \003(\0132\n.HSMonster\"W\n\014HSMo" +
+      "nsterAdd\022\033\n\007monster\030\001 \002(\0132\n.HSMonster\022*\n" +
+      "\006reason\030\002 \001(\0162\r.RewardReason:\013SYS_PRESEN" +
+      "T\"\205\001\n\016HSMonsterCatch\022\r\n\005cfgId\030\001 \002(\t\022\020\n\005s" +
+      "tage\030\002 \001(\005:\0010\022\020\n\005level\030\003 \001(\005:\0011\022\017\n\004lazy\030" +
+      "\004 \001(\005:\0011\022\026\n\013disposition\030\005 \001(\005:\0011\022\027\n\005skil" +
+      "l\030\006 \003(\0132\010.HSSkill\"#\n\021HSMonsterCatchRet\022\016" +
+      "\n\006status\030\001 \002(\005\"#\n\016HSMonsterBreak\022\021\n\tmons" +
+      "terId\030\001 \002(\005\"6\n\021HSMonsterBreakRet\022\016\n\006stat" +
+      "us\030\001 \002(\005\022\021\n\tmonsterId\030\002 \002(\005\"9\n\rHSMonster",
+      "Feed\022\021\n\tmonsterId\030\001 \002(\005\022\025\n\rfoodMonsterId" +
+      "\030\002 \002(\005\"h\n\020HSMonsterFeedRet\022\016\n\006status\030\001 \002" +
+      "(\005\022\021\n\tmonsterId\030\002 \002(\005\022\025\n\rfoodMonsterId\030\003" +
+      " \002(\005\022\013\n\003exp\030\004 \001(\005\022\r\n\005level\030\005 \001(\005\"6\n\020HSMo" +
+      "nsterSkillUp\022\021\n\tmonsterId\030\001 \002(\005\022\017\n\007skill" +
+      "Id\030\002 \002(\t\"F\n\023HSMonsterSkillUpRet\022\022\n\nskill" +
+      "Point\030\001 \002(\005\022\033\n\023skillPointTimeStamp\030\002 \002(\005" +
+      "\"?\n\020HSMonsterStageUp\022\021\n\tmonsterId\030\001 \002(\005\022" +
+      "\030\n\020consumeMonsterId\030\002 \003(\005\"\025\n\023HSMonsterSt" +
+      "ageUpRet\"2\n\rHSMonsterLock\022\021\n\tmonsterId\030\001",
+      " \002(\005\022\016\n\006locked\030\002 \002(\010\"5\n\020HSMonsterLockRet" +
+      "\022\021\n\tmonsterId\030\001 \002(\005\022\016\n\006locked\030\002 \002(\010B\030\n\026c" +
+      "om.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9583,7 +10679,7 @@ public final class Monster {
           internal_static_HSMonster_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonster_descriptor,
-              new java.lang.String[] { "MonsterId", "CfgId", "Stage", "Level", "Exp", "Lazy", "LazyExp", "Disposition", "Skill", "EquipInfos", });
+              new java.lang.String[] { "MonsterId", "CfgId", "Stage", "Level", "Exp", "Lazy", "LazyExp", "Disposition", "Skill", "EquipInfos", "Locked", });
           internal_static_HSMonsterInfoSync_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSMonsterInfoSync_fieldAccessorTable = new
@@ -9656,6 +10752,18 @@ public final class Monster {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMonsterStageUpRet_descriptor,
               new java.lang.String[] { });
+          internal_static_HSMonsterLock_descriptor =
+            getDescriptor().getMessageTypes().get(14);
+          internal_static_HSMonsterLock_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSMonsterLock_descriptor,
+              new java.lang.String[] { "MonsterId", "Locked", });
+          internal_static_HSMonsterLockRet_descriptor =
+            getDescriptor().getMessageTypes().get(15);
+          internal_static_HSMonsterLockRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSMonsterLockRet_descriptor,
+              new java.lang.String[] { "MonsterId", "Locked", });
           return null;
         }
       };

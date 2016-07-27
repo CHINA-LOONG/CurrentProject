@@ -90,7 +90,7 @@ public class ShopManager extends HawkAppObj {
 			else {
 				AwardItems reward = new AwardItems();
 				reward.addGold(rechargeEntity.getAddGold() + rechargeEntity.getGiftGold());
-				reward.rewardTakeAffectAndPush(player, Action.SHOP_RECHARGE);
+				reward.rewardTakeAffectAndPush(player, Action.SHOP_RECHARGE, 0);
 			}
 		}
 

@@ -1592,7 +1592,7 @@ facebook_share_content1,大批神话中的妖怪突然降临人界！点击前�
 facebook_share_title2,我在《Legends Awake》中发起了一次挑战,I have sent a challenge in <Legends Awake>.
 facebook_share_linktitle2,★一封神秘的挑战书,A mysterious challenge letter.
 facebook_share_content2,收到了一封神秘的挑战书，以代行者的身份召唤妖怪应战吧！,You have received a mysterious challenge letter! Summon some monsters and battle as a monster keeper!
-specialgift_activityTips,<color=#ffcc00>{0}.{1}~{2}.{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会,<color=#ffcc00>{0}.{1}~{2}.{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会
+specialgift_activityTips,<color=#ffcc00>{0}.{1}~{2}.{3}</color>期间，只有<color=#ffcc00>{4}</color>次机会,"From {0}.{1} to {2}.{3}, can only be purchased <color=#ffcc00>{4}</color> times!"
 specialgift_advanceTime,剩余时间 ,Time left 
 specialgift_advanceCount,剩余次数 ,Remaining 
 specialgift_choiceTime,剩余时间 ,Time left 
@@ -1647,47 +1647,57 @@ monster_record_019,该宠物正在大冒险，无法选择,"This monster is curr
 monster_record_020,该宠物正驻守在公会基地，无法选择,"This monster is currently garrisoned in the guild base, unable to select."
 monster_record_021,该宠物已被锁定，无法选择,"This monster has been locked, unable to select."
 monster_record_022,该宠物正在出战，无法选择,"This monster is currently in battle, unable to select."
-shenhuashouhuzhe_name,神话守护者,神话守护者
-mythoPath_UI_title,神话守护者,神话守护者
-mythoPath_battle_close,通关前一个关卡即可开启本关卡挑战！,通关前一个关卡即可开启本关卡挑战！
-mythoPath_UI_jifen,书魂,书魂
-mythoPath_UI_duihuan,兑换,兑换
-mythoPath_rule_title,规则说明,规则说明
-mythoPath_rule_desc,"1.玩家每天可以参与一次mythoPath玩法
-2.mythoPath玩法进行中，敌我双方的生命值和能量值不会重置
+shenhuashouhuzhe_name,神话守护者,Myth Guardian
+mythoPath_UI_title,神话守护者,Myth Guardian
+mythoPath_battle_close,通关前一个关卡即可开启本关卡挑战！,Clear the previous stage to unlock this stage!
+mythoPath_UI_jifen,书魂,Soul Tome
+mythoPath_UI_duihuan,兑换,Exchange
+mythoPath_rule_title,规则说明,Rules
+mythoPath_rule_desc,"1.玩家每天可以参与一次神话守护者玩法
+2.神话守护者玩法进行中，敌我双方的生命值和能量值不会重置
 3.已经阵亡的宠物不会复活
 4.出现超时战斗时，则算作双方所有宠物同归于尽
 5.玩家每挑战成功一个关卡都会获得大量奖励，同时有几率获得额外奖励
-6.挑战成功可以积攒书魂，可以用于兑换丰富奖励","1.玩家每天可以参与一次mythoPath玩法
-2.mythoPath玩法进行中，敌我双方的生命值和能量值不会重置
-3.已经阵亡的宠物不会复活
-4.出现超时战斗时，则算作双方所有宠物同归于尽
-5.玩家每挑战成功一个关卡都会获得大量奖励，同时有几率获得额外奖励
-6.挑战成功可以积攒书魂，可以用于兑换丰富奖励"
-mythoPath_surprise_title,惊喜之书,惊喜之书
-mythoPath_surprise_desc,概率获得下列物品之一,概率获得下列物品之一
-mythoPath_battle_start,挑战,挑战
-mythoPath_surprise_gailv,概率获得,概率获得
+6.挑战成功可以积攒书魂，可以用于兑换丰富奖励","1. Players may enter Myth Guardian once per day.
+2. While in Myth Guardian mode, HP and Power will not be reset for either players or their opponents.
+3. Monsters that are killed will not revive.
+4. When a battle times out, monsters from both sides will all die.
+5. Players will receive large rewards for each stage cleared, and there is also a chance of receiving bonus rewards.
+6. Players can accumulate Soul Tomes by clearing stages, which can then be used to exchange for rewards."
+mythoPath_surprise_title,惊喜之书,Tome of Surprises
+mythoPath_surprise_desc,概率获得下列物品之一,Set chance of receiving 1 of the following items
+mythoPath_battle_start,挑战,Battle
+mythoPath_surprise_gailv,概率获得,Chance of dropping
 mythoPath_battle_dead,该宠物已经阵亡，无法参加今日挑战,该宠物已经阵亡，无法参加今日挑战
-mythoPath_loading_tips1,合理搭配阵容才是通关的关键！,合理搭配阵容才是通关的关键！
-mythoPath_loading_tips2,培养更多的宠物会大幅度提升通关的几率哦！,培养更多的宠物会大幅度提升通关的几率哦！
-mythoPath_loading_tips3,惊喜之书的奖励可是十分诱人的哦！,惊喜之书的奖励可是十分诱人的哦！
-mythoPath_loading_tips4,通关最后一个关卡一定会获得惊喜之书奖励哦！,通关最后一个关卡一定会获得惊喜之书奖励哦！
-mythoPath_battle_draw,久战后仍未分出胜负，双方宠物同归于尽！,久战后仍未分出胜负，双方宠物同归于尽！
-giftspecial_jinjie1_name,进阶礼包,进阶礼包
-giftspecial_jinjie1_desc,快速提升宠物战力的方式！,快速提升宠物战力的方式！
-giftspecial_jinjie2_name,进阶礼包（稀有）,进阶礼包（稀有）
-giftspecial_jinjie2_desc,极速提升宠物战力的绝佳途径！,极速提升宠物战力的绝佳途径！
-giftspecial_suipian1_name,碎片礼包,碎片礼包
-giftspecial_suipian1_desc,共可获得<color=#ffcc00>40片宠物碎片</color>，较大几率获得<color=#ffcc00>10片A级及以上宠物碎片</color>！,共可获得<color=#ffcc00>40片宠物碎片</color>，较大几率获得<color=#ffcc00>10片A级及以上宠物碎片</color>！
-giftspecial_suipian2_name,碎片礼包（稀有）,碎片礼包（稀有）
-giftspecial_suipian2_desc,共可获得<color=#ffcc00>60片宠物碎片</color>，必定获得<color=#ffcc00>10片A级及以上宠物碎片</color>！,共可获得<color=#ffcc00>60片宠物碎片</color>，必定获得<color=#ffcc00>10片A级及以上宠物碎片</color>
-giftspecial_huodong1_name,惊喜礼包,惊喜礼包
-giftspecial_huodong1_desc,你想要的<color=#ffcc00>SS级宠物</color>就在眼前！,你想要的<color=#ffcc00>SS级宠物</color>就在眼前！
-giftspecial_huodong2_name,珍惜纹章礼包,珍惜纹章礼包
-giftspecial_huodong2_desc,得到<color=#ffcc00>顶级纹章</color>的绝佳机会！,得到<color=#ffcc00>顶级纹章</color>的绝佳机会！
-giftspecial_xuanze1_name,新人礼,新人礼
-giftspecial_xuanze1_desc,新人礼遇，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！,新人礼遇，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！
-giftspecial_xuanze2_name,中级礼包,中级礼包
-giftspecial_xuanze2_desc,超值钜惠，错过难寻！只能选择<color=#ffcc00>一个</color>进行购买哦！,超值钜惠，错过难寻！只能选择<color=#ffcc00>一个</color>进行购买哦！
-xinyangzhilu_name,神话守护者,神话守护者
+mythoPath_loading_tips1,合理搭配阵容才是通关的关键！,A well-planned lineup is the true key to clearing stages!
+mythoPath_loading_tips2,培养更多的宠物会大幅度提升通关的几率哦！,Training more monsters will greatly increase your chances of clearing stages!
+mythoPath_loading_tips3,惊喜之书的奖励可是十分诱人的哦！,Rewards from the Tome of Surprises can be pretty amazing!
+mythoPath_loading_tips4,通关最后一个关卡一定会获得惊喜之书奖励哦！,Clearing the final stage will drop some awesome rewards for sure!
+mythoPath_battle_draw,久战后仍未分出胜负，双方宠物同归于尽！,"If the battle ends up timing out, monsters from both sides will die!"
+giftspecial_jinjie1_name,进阶礼包,Advancement Package
+giftspecial_jinjie1_desc,快速提升宠物战力的方式！,Great for quickly increasing your monsters' BP!
+giftspecial_jinjie2_name,进阶礼包（稀有）,Advancement Package (Rare)
+giftspecial_jinjie2_desc,极速提升宠物战力的绝佳途径！,A great way to increase your monster's BP fast!
+giftspecial_suipian1_name,碎片礼包,Fragment Package
+giftspecial_suipian1_desc,共可获得<color=#ffcc00>40片宠物碎片</color>，较大几率获得<color=#ffcc00>10片A级及以上宠物碎片</color>！,"Contains a total <color=#ffcc00>40 fragments</color>, with an average of <color=#ffcc00>10 fragments being A grade or higher</color>!"
+giftspecial_suipian2_name,碎片礼包（稀有）,Fragment Package (Rare)
+giftspecial_suipian2_desc,共可获得<color=#ffcc00>60片宠物碎片</color>，必定获得<color=#ffcc00>10片A级及以上宠物碎片</color>！,"Contains a total <color=#ffcc00>60 fragments</color>, with an average of <color=#ffcc00>10 fragments being A grade or higher</color>!"
+giftspecial_huodong1_name,惊喜礼包,Surprise Package
+giftspecial_huodong1_desc,你想要的<color=#ffcc00>SS级宠物</color>就在眼前！,The <color=#ffcc00>SS grade monster</color> you've been after is right in front of you!
+giftspecial_huodong2_name,珍惜纹章礼包,Prized Insignia Package
+giftspecial_huodong2_desc,得到<color=#ffcc00>顶级纹章</color>的绝佳机会！,A great chance to receive <color=#ffcc00>powerful insignias</color>!
+giftspecial_xuanze1_name,新人礼,New Player Package
+giftspecial_xuanze1_desc,新人礼遇，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！,A package any new player won't want to miss! Players may only choose <color=#ffcc00>one</color>!
+giftspecial_xuanze2_name,中级礼包,Intermediate Package
+giftspecial_xuanze2_desc,超值钜惠，错过难寻！只能选择<color=#ffcc00>一个</color>进行购买哦！,Great value that is hard to pass up! Players may only choose <color=#ffcc00>一个</color>one!
+xinyangzhilu_name,神话守护者,Myth Guardian
+main_icon_mythopath,神话守护者,Myth Guardian
+mythopathlevel1,传说之书,Folktales
+mythopathlevel2,预言之书,Parables
+mythopathlevel3,史诗之书,Epic
+mythopathlevel4,遗忘之书,Lost
+mythopathlevel5,萨迦之书,Sagas
+mythopathlevel6,寓言之书,Fables
+mythopathlevel7,神话之书,Fairy tales
+mythopathlevel8,原始之书,Primitive
+mythopathlevel9,传奇之书,Legends

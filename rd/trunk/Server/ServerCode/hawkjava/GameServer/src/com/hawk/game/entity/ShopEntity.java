@@ -217,9 +217,9 @@ public class ShopEntity extends HawkDBEntity{
 		case Const.shopType.NORMALSHOP_VALUE:
 			return normalShopItemsList;
 		case Const.shopType.ALLIANCESHOP_VALUE:
-			return normalShopItemsList;
+			return allianceShopItemsList;
 		case Const.shopType.OTHERSHOP_VALUE:
-			return normalShopItemsList;
+			return otherShopItemsList;
 		default:
 			return null;
 		}

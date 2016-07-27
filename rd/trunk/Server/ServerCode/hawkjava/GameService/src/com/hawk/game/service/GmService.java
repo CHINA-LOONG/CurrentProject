@@ -64,7 +64,7 @@ public class GmService extends GameService {
 	 */
 	@SuppressWarnings("unchecked")
 	private void genTestAccount() {
-		// 解析配置---------R----------------------------------------------------------------------------
+		// 解析配置-------------------------------------------------------------------------------------
 		Map<String, List<TestAccountCfg>> accountMap = new HashMap<>();
 
 		try {

@@ -39,6 +39,9 @@ public class UIPropTips : UIBase {
             icon.transform.SetParent(propImage.transform, false);
         }
         propName.text = StaticDataMgr.Instance.GetTextByID(itemData.name);
+        Outline outline = propName.GetComponent<Outline>();
+        outline.effectColor = ColorConst.GetStageOutLineColor(itemData.grade);
+        propName.color = ColorConst.GetStageTextColor(itemData.grade);
         if (itemData.minLevel > 0)
             propRequire.text = itemData.minLevel.ToString();
         else

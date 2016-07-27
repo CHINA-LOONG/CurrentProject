@@ -120,9 +120,27 @@ public final class Shop {
      */
     int getSlot();
 
-    // required bool hasBuy = 7;
+    // required float discount = 7;
     /**
-     * <code>required bool hasBuy = 7;</code>
+     * <code>required float discount = 7;</code>
+     *
+     * <pre>
+     *折扣
+     * </pre>
+     */
+    boolean hasDiscount();
+    /**
+     * <code>required float discount = 7;</code>
+     *
+     * <pre>
+     *折扣
+     * </pre>
+     */
+    float getDiscount();
+
+    // required bool hasBuy = 8;
+    /**
+     * <code>required bool hasBuy = 8;</code>
      *
      * <pre>
      *是否已经购买
@@ -130,7 +148,7 @@ public final class Shop {
      */
     boolean hasHasBuy();
     /**
-     * <code>required bool hasBuy = 7;</code>
+     * <code>required bool hasBuy = 8;</code>
      *
      * <pre>
      *是否已经购买
@@ -219,8 +237,13 @@ public final class Shop {
               slot_ = input.readInt32();
               break;
             }
-            case 56: {
+            case 61: {
               bitField0_ |= 0x00000040;
+              discount_ = input.readFloat();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000080;
               hasBuy_ = input.readBool();
               break;
             }
@@ -431,21 +454,45 @@ public final class Shop {
       return slot_;
     }
 
-    // required bool hasBuy = 7;
-    public static final int HASBUY_FIELD_NUMBER = 7;
+    // required float discount = 7;
+    public static final int DISCOUNT_FIELD_NUMBER = 7;
+    private float discount_;
+    /**
+     * <code>required float discount = 7;</code>
+     *
+     * <pre>
+     *折扣
+     * </pre>
+     */
+    public boolean hasDiscount() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required float discount = 7;</code>
+     *
+     * <pre>
+     *折扣
+     * </pre>
+     */
+    public float getDiscount() {
+      return discount_;
+    }
+
+    // required bool hasBuy = 8;
+    public static final int HASBUY_FIELD_NUMBER = 8;
     private boolean hasBuy_;
     /**
-     * <code>required bool hasBuy = 7;</code>
+     * <code>required bool hasBuy = 8;</code>
      *
      * <pre>
      *是否已经购买
      * </pre>
      */
     public boolean hasHasBuy() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>required bool hasBuy = 7;</code>
+     * <code>required bool hasBuy = 8;</code>
      *
      * <pre>
      *是否已经购买
@@ -462,6 +509,7 @@ public final class Shop {
       stage_ = 0;
       level_ = 0;
       slot_ = 0;
+      discount_ = 0F;
       hasBuy_ = false;
     }
     private byte memoizedIsInitialized = -1;
@@ -482,6 +530,10 @@ public final class Shop {
         return false;
       }
       if (!hasSlot()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDiscount()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -515,7 +567,10 @@ public final class Shop {
         output.writeInt32(6, slot_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeBool(7, hasBuy_);
+        output.writeFloat(7, discount_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeBool(8, hasBuy_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -552,7 +607,11 @@ public final class Shop {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(7, hasBuy_);
+          .computeFloatSize(7, discount_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, hasBuy_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -682,8 +741,10 @@ public final class Shop {
         bitField0_ = (bitField0_ & ~0x00000010);
         slot_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        hasBuy_ = false;
+        discount_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000040);
+        hasBuy_ = false;
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -739,6 +800,10 @@ public final class Shop {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
+        result.discount_ = discount_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
         result.hasBuy_ = hasBuy_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -776,6 +841,9 @@ public final class Shop {
         if (other.hasSlot()) {
           setSlot(other.getSlot());
         }
+        if (other.hasDiscount()) {
+          setDiscount(other.getDiscount());
+        }
         if (other.hasHasBuy()) {
           setHasBuy(other.getHasBuy());
         }
@@ -797,6 +865,10 @@ public final class Shop {
           return false;
         }
         if (!hasSlot()) {
+          
+          return false;
+        }
+        if (!hasDiscount()) {
           
           return false;
         }
@@ -1153,20 +1225,69 @@ public final class Shop {
         return this;
       }
 
-      // required bool hasBuy = 7;
+      // required float discount = 7;
+      private float discount_ ;
+      /**
+       * <code>required float discount = 7;</code>
+       *
+       * <pre>
+       *折扣
+       * </pre>
+       */
+      public boolean hasDiscount() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required float discount = 7;</code>
+       *
+       * <pre>
+       *折扣
+       * </pre>
+       */
+      public float getDiscount() {
+        return discount_;
+      }
+      /**
+       * <code>required float discount = 7;</code>
+       *
+       * <pre>
+       *折扣
+       * </pre>
+       */
+      public Builder setDiscount(float value) {
+        bitField0_ |= 0x00000040;
+        discount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float discount = 7;</code>
+       *
+       * <pre>
+       *折扣
+       * </pre>
+       */
+      public Builder clearDiscount() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        discount_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // required bool hasBuy = 8;
       private boolean hasBuy_ ;
       /**
-       * <code>required bool hasBuy = 7;</code>
+       * <code>required bool hasBuy = 8;</code>
        *
        * <pre>
        *是否已经购买
        * </pre>
        */
       public boolean hasHasBuy() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>required bool hasBuy = 7;</code>
+       * <code>required bool hasBuy = 8;</code>
        *
        * <pre>
        *是否已经购买
@@ -1176,27 +1297,27 @@ public final class Shop {
         return hasBuy_;
       }
       /**
-       * <code>required bool hasBuy = 7;</code>
+       * <code>required bool hasBuy = 8;</code>
        *
        * <pre>
        *是否已经购买
        * </pre>
        */
       public Builder setHasBuy(boolean value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         hasBuy_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required bool hasBuy = 7;</code>
+       * <code>required bool hasBuy = 8;</code>
        *
        * <pre>
        *是否已经购买
        * </pre>
        */
       public Builder clearHasBuy() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         hasBuy_ = false;
         onChanged();
         return this;
@@ -6691,22 +6812,23 @@ public final class Shop {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023Protocol/Shop.proto\"s\n\010ShopItem\022\014\n\004typ" +
-      "e\030\001 \002(\005\022\016\n\006itemId\030\002 \002(\t\022\r\n\005count\030\003 \002(\005\022\r" +
-      "\n\005stage\030\004 \001(\005\022\r\n\005level\030\005 \001(\005\022\014\n\004slot\030\006 \002" +
-      "(\005\022\016\n\006hasBuy\030\007 \002(\010\"`\n\010ShopData\022\014\n\004type\030\001" +
-      " \002(\005\022\016\n\006shopId\030\002 \002(\005\022\034\n\titemInfos\030\003 \003(\0132" +
-      "\t.ShopItem\022\030\n\020refreshTimesLeft\030\004 \002(\005\"\020\n\016" +
-      "HSShopDataInit\"1\n\021HSShopDataInitRet\022\034\n\ts" +
-      "hopDatas\030\001 \003(\0132\t.ShopData\"\035\n\rHSShopDataS" +
-      "yn\022\014\n\004type\030\001 \002(\005\"/\n\020HSShopDataSynRet\022\033\n\010" +
-      "shopData\030\001 \002(\0132\t.ShopData\"\035\n\rHSShopRefre",
-      "sh\022\014\n\004type\030\001 \002(\005\"/\n\020HSShopRefreshRet\022\033\n\010" +
-      "shopData\030\001 \002(\0132\t.ShopData\";\n\rHSShopItemB" +
-      "uy\022\014\n\004type\030\001 \002(\005\022\014\n\004slot\030\002 \002(\005\022\016\n\006shopId" +
-      "\030\003 \002(\005\"\022\n\020HSShopItemBuyRet\"\021\n\017HSShopGold" +
-      "2Coin\")\n\022HSShopGold2CoinRet\022\023\n\013changeCou" +
-      "nt\030\001 \002(\005B\030\n\026com.hawk.game.protocol"
+      "\n\023Protocol/Shop.proto\"\205\001\n\010ShopItem\022\014\n\004ty" +
+      "pe\030\001 \002(\005\022\016\n\006itemId\030\002 \002(\t\022\r\n\005count\030\003 \002(\005\022" +
+      "\r\n\005stage\030\004 \001(\005\022\r\n\005level\030\005 \001(\005\022\014\n\004slot\030\006 " +
+      "\002(\005\022\020\n\010discount\030\007 \002(\002\022\016\n\006hasBuy\030\010 \002(\010\"`\n" +
+      "\010ShopData\022\014\n\004type\030\001 \002(\005\022\016\n\006shopId\030\002 \002(\005\022" +
+      "\034\n\titemInfos\030\003 \003(\0132\t.ShopItem\022\030\n\020refresh" +
+      "TimesLeft\030\004 \002(\005\"\020\n\016HSShopDataInit\"1\n\021HSS" +
+      "hopDataInitRet\022\034\n\tshopDatas\030\001 \003(\0132\t.Shop" +
+      "Data\"\035\n\rHSShopDataSyn\022\014\n\004type\030\001 \002(\005\"/\n\020H" +
+      "SShopDataSynRet\022\033\n\010shopData\030\001 \002(\0132\t.Shop",
+      "Data\"\035\n\rHSShopRefresh\022\014\n\004type\030\001 \002(\005\"/\n\020H" +
+      "SShopRefreshRet\022\033\n\010shopData\030\001 \002(\0132\t.Shop" +
+      "Data\";\n\rHSShopItemBuy\022\014\n\004type\030\001 \002(\005\022\014\n\004s" +
+      "lot\030\002 \002(\005\022\016\n\006shopId\030\003 \002(\005\"\022\n\020HSShopItemB" +
+      "uyRet\"\021\n\017HSShopGold2Coin\")\n\022HSShopGold2C" +
+      "oinRet\022\023\n\013changeCount\030\001 \002(\005B\030\n\026com.hawk." +
+      "game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -6718,7 +6840,7 @@ public final class Shop {
           internal_static_ShopItem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_ShopItem_descriptor,
-              new java.lang.String[] { "Type", "ItemId", "Count", "Stage", "Level", "Slot", "HasBuy", });
+              new java.lang.String[] { "Type", "ItemId", "Count", "Stage", "Level", "Slot", "Discount", "HasBuy", });
           internal_static_ShopData_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_ShopData_fieldAccessorTable = new

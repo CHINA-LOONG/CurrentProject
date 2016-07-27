@@ -35,4 +35,24 @@ message HSStatisticsInfoSync
 	repeated RechargeState rechargeState = 7;
 	// 月卡剩余时间
 	required int32  monthCardLeft = 8;
+	// 多倍经验剩余次数
+	required HSStatisticsExpLeftTimeSync expLeftTimes = 9;
+}
+
+message HSStatisticsExpLeftTimeSync
+{
+	// 双倍经验剩余次数
+	required int32  doubleExpLeft = 1;
+	// 三倍经验剩余次数
+	required int32  tripleExpLeft = 2;
+}
+
+message HSStatisticsShopRefreshTimeSync
+{
+	// 普通商店刷新次数
+	required int32  normalShopRefreshTime = 1;
+	// 公会商店刷新次数
+	required int32  guildShopRefreshTime = 2;
+	// 其他玩法商店刷新次数
+	required int32  otherShopRefreshTime = 3;
 }

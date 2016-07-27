@@ -220,7 +220,9 @@ public class GsConst {
 		// 装备不足
 		public static final int EQUIP_NOT_ENOUGH = 8;
 		// 宠物不足
-		public static final int MONSTER_NOT_ENOUGH = 8;
+		public static final int MONSTER_NOT_ENOUGH = 9;
+		// 宠物锁定
+		public static final int MONSTER_LOCKED = 10;
 	}
 
 	// 循环性

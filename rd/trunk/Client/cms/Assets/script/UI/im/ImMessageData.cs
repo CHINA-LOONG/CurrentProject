@@ -9,4 +9,5 @@ public class ImMessageData : MonoBehaviour {
     public Text mSpeaker;
     [HideInInspector]
     public int speakerID;
+    public string playerName;
 }

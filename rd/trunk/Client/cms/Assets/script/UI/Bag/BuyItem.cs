@@ -64,7 +64,7 @@ public class BuyItem : UIBase
 	{
 		if (isFirst)
 		{
-			isFirst = true;
+			isFirst = false;
 			FirsInit();
 		}
 
@@ -86,12 +86,6 @@ public class BuyItem : UIBase
 
 	public	void	RefreshWith(BuyItemParam	param)
 	{
-		maxBuyCount = param.maxCount;
-		CurCountAttr = param.defaultbuyCount;
-
-		chgValue.maxValue = maxBuyCount;
-		chgValue.curValue = curCount;
-
 		itemId = param.itemId;
 
 		ItemStaticData stData = StaticDataMgr.Instance.GetItemData (itemId);
@@ -111,6 +105,12 @@ public class BuyItem : UIBase
 		coinButton.gameObject.SetActive (param.isShowCoinButton);
 
 		itemNameText.text = stData.NameAttr;
+
+		maxBuyCount = param.maxCount;
+		CurCountAttr = param.defaultbuyCount;
+		
+		chgValue.maxValue = maxBuyCount;
+		chgValue.curValue = curCount;
 	}
 
 	void OnBuyCountValueChanged(int value)
@@ -133,6 +133,35 @@ public class BuyItem : UIBase
 			                              (int)PB.ImType.PROMPT);
 			return;
 		}
+		RequestByItem ();
+	}
 
+	void RequestByItem()
+	{
+		PB.HSItemBuy param = new PB.HSItemBuy ();
+		param.itemId = itemId;
+		param.itemCount = curCount;
+
+		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.ITEM_BUY_C.GetHashCode ().ToString(), OnBuyItemFinished);
+		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.ITEM_BUY_S.GetHashCode ().ToString (), OnBuyItemFinished);
+
+		GameApp.Instance.netManager.SendMessage (PB.code.ITEM_BUY_C.GetHashCode (), param);
+	}
+
+	void OnBuyItemFinished(ProtocolMessage msg)
+	{
+		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.ITEM_BUY_C.GetHashCode ().ToString(), OnBuyItemFinished);
+		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.ITEM_BUY_S.GetHashCode ().ToString (), OnBuyItemFinished);
+		UINetRequest.Close ();
+
+		if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+		{
+			Logger.LogError("buy Error.....");
+			return;
+		}
+
+		GameEventMgr.Instance.FireEvent (GameEventList.BuyItemFinished);
+		UIMgr.Instance.CloseUI_ (this);
+		//PB.HSItemBuyRet msgRet = msg.GetProtocolBody<PB.HSItemBuyRet> ();
 	}
 }

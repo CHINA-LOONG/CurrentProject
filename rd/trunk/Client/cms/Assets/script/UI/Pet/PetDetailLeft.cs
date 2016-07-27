@@ -190,7 +190,7 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         if (UIUtil.CheckPetIsMaxLevel(level))
         {
             textExp.text = "MAX LEVEL";
-            progressExp.value = 1.0f;
+            progressExp.value = 0.0f;
             btnAddExp.interactable = false;
         }
         else

@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -110,9 +110,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bak: {fileID: 11437336}
   text: {fileID: 11409068}
-  stopTime: 1
-  moveTime: 1
+  showTime: 0
+  fadeTime: 0
+  endTime: 0
   gradualTime: .5
+  stopTime: 1
+  ownedList: []
 --- !u!222 &22266244
 CanvasRenderer:
   m_ObjectHideFlags: 1

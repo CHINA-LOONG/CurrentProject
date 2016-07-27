@@ -1,5 +1,6 @@
 package com.hawk.game.module;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.hawk.config.HawkConfigManager;
@@ -14,19 +15,21 @@ import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
-import com.hawk.game.player.PlayerData;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Item.HSItemBoxUseBatch;
+import com.hawk.game.protocol.Item.HSItemBoxUseBatchRet;
 import com.hawk.game.protocol.Item.HSItemBuy;
 import com.hawk.game.protocol.Item.HSItemBuyRet;
 import com.hawk.game.protocol.Item.HSItemCompose;
 import com.hawk.game.protocol.Item.HSItemComposeRet;
+import com.hawk.game.protocol.Item.HSItemSellBatch;
+import com.hawk.game.protocol.Item.HSItemSellBatchRet;
 import com.hawk.game.protocol.Item.HSItemUse;
 import com.hawk.game.protocol.Item.HSItemUseRet;
+import com.hawk.game.protocol.Item.ItemSell;
 import com.hawk.game.protocol.Status;
-import com.hawk.game.util.ConfigUtil;
-import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ItemUtil;
 
 public class PlayerItemModule extends PlayerModule{
@@ -38,9 +41,10 @@ public class PlayerItemModule extends PlayerModule{
 	public PlayerItemModule(Player player) {
 		super(player);
 		listenProto(HS.code.ITEM_USE_C);
-		listenProto(HS.code.ITEM_SELL_C);
 		listenProto(HS.code.ITEM_BUY_C);
 		listenProto(HS.code.ITEM_COMPOSE_C);
+		listenProto(HS.code.ITEM_BOX_USE_BATCH_C);
+		listenProto(HS.code.ITEM_SELL_BATCH_C_VALUE);
 	}
 	
 	/**
@@ -53,12 +57,12 @@ public class PlayerItemModule extends PlayerModule{
 	public boolean onProtocol(HawkProtocol protocol) {
 		if (protocol.checkType(HS.code.ITEM_USE_C)) {
 			// 使用道具
-			onItemUse(protocol.getType(),protocol.parseProtocol(HSItemUse.getDefaultInstance()));
+			onItemUse(protocol.getType(), protocol.parseProtocol(HSItemUse.getDefaultInstance()));
 			return true;
 		}
-		else if(protocol.checkType(HS.code.ITEM_SELL_C)) {
-			//道具出售
-			//onItemSell(protocol.parseProtocol(hsItemSell.getDefaultInstance()));
+		else if(protocol.checkType(HS.code.ITEM_SELL_BATCH_C_VALUE)) {
+			//批量出售道具出售
+			onItemSell(protocol.getType(), protocol.parseProtocol(HSItemSellBatch.getDefaultInstance()));
 			return true;
 		}
 		else if(protocol.checkType(HS.code.ITEM_BUY_C)) {
@@ -69,6 +73,11 @@ public class PlayerItemModule extends PlayerModule{
 		else if(protocol.checkType(HS.code.ITEM_COMPOSE_C)) {
 			//道具合成
 			onItemCompose(protocol.getType(),protocol.parseProtocol(HSItemCompose.getDefaultInstance()));
+			return true;
+		}
+		else if(protocol.checkType(HS.code.ITEM_BOX_USE_BATCH_C)) {
+			//批量开宝箱
+			onItemBoxUseBatch(protocol.getType(),protocol.parseProtocol(HSItemBoxUseBatch.getDefaultInstance()));
 			return true;
 		}
 		return false;
@@ -91,7 +100,6 @@ public class PlayerItemModule extends PlayerModule{
 	 */
 	@Override
 	protected boolean onPlayerAssemble() {
-
 		return true;
 	}
 
@@ -130,15 +138,115 @@ public class PlayerItemModule extends PlayerModule{
 			return ;
 		}
 	
-		consumeItem.consumeTakeAffectAndPush(player, Action.ITEM_BUY);
+		consumeItem.consumeTakeAffectAndPush(player, Action.ITEM_BUY, hsCode);
 		AwardItems awardItems = new AwardItems();
 		awardItems.addItem(itemId, itemCount);
-		awardItems.rewardTakeAffectAndPush(player, Action.ITEM_BUY);
+		awardItems.rewardTakeAffectAndPush(player, Action.ITEM_BUY, hsCode);
 		
 		HSItemBuyRet.Builder response = HSItemBuyRet.newBuilder();
 		response.setItemId(itemId);
 		response.setItemCount(itemCount);
 		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_BUY_S_VALUE, response));
+	}
+	
+	/**
+	 * 出售
+	 * @param hsCode
+	 * @param protocol
+	 */
+	private void onItemSell(int hsCode, HSItemSellBatch protocol) {
+		if (protocol.getItemsList().isEmpty() == true) {
+			sendError(hsCode, Status.error.PARAMS_INVALID);
+			return ;
+		}
+		
+		AwardItems award = new AwardItems();
+		ConsumeItems consume = new ConsumeItems();
+		for (ItemSell element : protocol.getItemsList()) {
+			String itemId = element.getItemId();
+			int itemCount = element.getCount();
+	
+			if (itemCount <= 0) {
+				sendError(hsCode, Status.error.PARAMS_INVALID);
+				return ;
+			}
+
+			ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId);
+			if(itemCfg == null) {
+				sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
+				return ;
+			}
+			
+			if (itemCfg.getType() == Const.toolType.EQUIPTOOL_VALUE) {
+				sendError(hsCode, Status.error.PARAMS_INVALID);
+				return ;
+			}
+			
+			if(itemCfg.getSellPrice() <= 0) {
+				sendError(hsCode, Status.itemError.ITEM_SELL_NOT_ALLOW);
+				return ;
+			}
+			
+			Const.changeType changeType = itemCfg.getSellType() == Const.moneyType.MONEY_COIN_VALUE ? Const.changeType.CHANGE_COIN : Const.changeType.CHANGE_GOLD;
+			award.addAttr(changeType.getNumber(), itemCfg.getSellPrice() * itemCount);
+		
+		    consume.addItem(itemId, itemCount);
+		}
+		
+		if (consume.checkConsume(player, hsCode) == false) {
+			return ;
+		}
+	
+		award.rewardTakeAffectAndPush(player, Action.ITEM_SELL, hsCode);
+		consume.consumeTakeAffectAndPush(player, Action.ITEM_SELL, hsCode);
+		
+		HSItemSellBatchRet.Builder response = HSItemSellBatchRet.newBuilder();
+		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_SELL_BATCH_S_VALUE, response));
+	}
+	
+	/**
+	 * 批量开宝箱
+	 * @param hsCode
+	 * @param protocol
+	 */
+	private void onItemBoxUseBatch(int hsCode, HSItemBoxUseBatch protocol) {		
+		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, protocol.getItemId());
+		if(itemCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
+			return ;
+		}
+		
+		if (protocol.getItemCount() == 0 || itemCfg.getType() != Const.toolType.BOXTOOL_VALUE) {
+			sendError(hsCode, Status.error.PARAMS_INVALID);
+			return ;
+		}
+		
+		List<AwardItems> awardItemsList = new LinkedList<>(); 
+		ConsumeItems consumeItems = new ConsumeItems();
+		consumeItems.addItem(protocol.getItemId(), protocol.getItemCount());
+		
+		for (int i = 0 ; i < protocol.getItemCount(); ++i) {		
+			consumeItems.addItemInfos(itemCfg.getNeedItemList());
+			RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, itemCfg.getRewardId());
+			if (reward == null) {
+				return;
+			}
+			AwardItems awardItems = new AwardItems();
+			awardItems.addItemInfos(reward.getRewardList());
+			awardItemsList.add(awardItems);
+		}
+		
+		if (consumeItems.checkConsume(player, hsCode) == false) {
+			return;
+		}
+		
+		consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE, hsCode);
+		for (AwardItems awardItems : awardItemsList) {
+			awardItems.rewardTakeAffectAndPush(player, Action.ITEM_USE, hsCode);
+		}
+		
+		HSItemBoxUseBatchRet.Builder response = HSItemBoxUseBatchRet.newBuilder();
+		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_BOX_USE_BATCH_S_VALUE, response));
 	}
 	
 	/**
@@ -161,61 +269,73 @@ public class PlayerItemModule extends PlayerModule{
 			return ;
 		}
 		
-		ConsumeItems consumeItems = ConsumeItems.valueOf();
+		ConsumeItems consumeItems = new ConsumeItems();
 		AwardItems awardItems = new AwardItems();
-		
 		int useType = itemCfg.getType();
-		
 		if (useType == Const.toolType.FRAGMENTTOOL_VALUE) {
 			consumeItems.addItem(itemId, itemCfg.getNeedCount());
-			if (consumeItems.checkConsume(player, hsCode) == false) {
-				return;
-			}
-			consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE);
-			
 			List<ItemInfo> targetList = itemCfg.getTargetItemList();
 			awardItems.addItemInfos(targetList);
-			awardItems.rewardTakeAffectAndPush(player,  Action.ITEM_USE);
 		}
+		// 开宝箱走批量开接口
 		else if (useType == Const.toolType.BOXTOOL_VALUE) {
-			consumeItems.addItem(itemId, 1);
-			consumeItems.addItemInfos(itemCfg.getNeedItemList());
-			if (consumeItems.checkConsume(player, hsCode) == false) {
-				return;
-			}
-			
-			consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE);
-			
-			RewardCfg reward = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, itemCfg.getRewardId());
-			if (reward == null) {
-				return;
-			}
-			awardItems.addItemInfos(reward.getRewardList());
-			awardItems.rewardTakeAffect(player, Action.ITEM_USE);
+			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+			return ;
 		}
 		else if (useType == Const.toolType.USETOOL_VALUE) {
-			if(count <= 0 || itemCfg.getAddAttrType() != Const.changeType.CHANGE_MONSTER_EXP_VALUE || protocol.getTargetID() == 0)
-			{
+			if(count <= 0){
 				sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
 				return ;
 			}
-			
-			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(protocol.getTargetID());
-			if (monsterEntity == null) {
-				sendError(hsCode, Status.error.PARAMS_INVALID);
-				return ;
+			// 经验药水
+			if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLEXP_VALUE) {
+				if (itemCfg.getAddAttrType() != Const.changeType.CHANGE_MONSTER_EXP_VALUE || protocol.getTargetID() == 0) {
+					sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+					return ;
+				}
+				
+				MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(protocol.getTargetID());
+				if (monsterEntity == null) {
+					sendError(hsCode, Status.error.PARAMS_INVALID);
+					return ;
+				}
+				
+				count = ItemUtil.checkExpItemCount(monsterEntity, count, itemCfg.getAddAttrValue());
+				consumeItems.addItem(itemId, count);
+				awardItems.addMonsterAttr(Const.changeType.CHANGE_MONSTER_EXP_VALUE, count * itemCfg.getAddAttrValue(), protocol.getTargetID());
 			}
+			// 双倍经验 三倍经验
+			else if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLDOUBLEEXP_VALUE || itemCfg.getSubType() == Const.UseToolSubType.USETOOLTRIPLEEXP_VALUE) {
+				if (player.getPlayerData().getStatisticsEntity().isExpTimeLeft() == true) {
+					sendError(hsCode, Status.itemError.ITEM_EXP_LEFT_TIMES_VALUE);
+					return ;
+				}
+				
+				consumeItems.addItem(itemId, 1);
+			}
+		}		
 			
-			count = ItemUtil.checkExpItemCount(monsterEntity, count, itemCfg.getAddAttrValue());
-			consumeItems.addItem(itemId, count);
+		if (consumeItems.hasConsumeItem() == true) {
 			if (consumeItems.checkConsume(player, hsCode) == false) {
 				return;
 			}
-			
-			consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE);
-			awardItems.addMonsterAttr(Const.changeType.CHANGE_MONSTER_EXP_VALUE, count * itemCfg.getAddAttrValue(), protocol.getTargetID());
-			awardItems.rewardTakeAffectAndPush(player,  Action.ITEM_USE);
-		}		
+			consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE, hsCode);
+		}
+		
+		if (awardItems.hasAwardItem() == true) {
+			awardItems.rewardTakeAffectAndPush(player,  Action.ITEM_USE, hsCode);
+		}
+		
+		if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLDOUBLEEXP_VALUE ) {
+			player.getPlayerData().getStatisticsEntity().increaseDoubleExpLeft(itemCfg.getAddAttrValue());
+			player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
+			player.getPlayerData().syncStatisticsExpLeftInfo();
+		}
+		else if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLTRIPLEEXP_VALUE ) {
+			player.getPlayerData().getStatisticsEntity().increaseTripleExpLeft(itemCfg.getAddAttrValue());
+			player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
+			player.getPlayerData().syncStatisticsExpLeftInfo();
+		}
 		
 		HSItemUseRet.Builder response = HSItemUseRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_USE_S_VALUE, response));
@@ -246,7 +366,7 @@ public class PlayerItemModule extends PlayerModule{
 			return;
 		}
 		
-		consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE);
+		consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE, hsCode);
 		
 		AwardItems awardItems = new AwardItems();
 		awardItems.addItem(itemId, 1);

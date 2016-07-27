@@ -35,4 +35,9 @@ public class GameConfig : MonoBehaviour {
     public static int MaxMonsterCount = 180;
 
     public static int MaxMonsterLevel = 99;
+
+	//背包中购买钥匙最大数
+	public	int	maxBuyCountInBag	= 10;
+	//背包 最大开宝箱数量 
+	public	int	maxOpenBoxCount = 10;
 }

@@ -223,7 +223,8 @@ public class PetDetailRightStage : PetDetailRightBase{
             return;
         }
 
-        m_unit.pbUnit.stage += 1;
+        //m_unit.pbUnit.stage += 1;
+        m_unit.SetStage(m_unit.pbUnit.stage + 1);
         ReloadData(new PetRightParamBase() { unit = m_unit });
 
         GameEventMgr.Instance.FireEvent(GameEventList.ReloadPetStageNotify);

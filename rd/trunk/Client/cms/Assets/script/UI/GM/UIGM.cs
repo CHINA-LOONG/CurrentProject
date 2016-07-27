@@ -21,7 +21,7 @@ public class UIGM : UIBase {
 	// Update is called once per frame
 	void Update () {
         
-	}
+	} 
 
     void OnDestroy()
     {
@@ -175,7 +175,7 @@ public class UIGM : UIBase {
 
             gmOperation.operation = command[1] as string;
             gmOperation.value = int.Parse(command[2] as string);
-            gmOperation.itemID = command[3] as string;
+            gmOperation.itemId = command[3] as string;
         }
         else if (command[0].Equals("item"))
         {
@@ -193,7 +193,7 @@ public class UIGM : UIBase {
             else
             {
                 gmOperation.value = int.Parse(command[2] as string);
-                gmOperation.itemID = command[3] as string;
+                gmOperation.itemId = command[3] as string;
             }
         }
         else if (command[0].Equals("clearbag"))
@@ -234,7 +234,7 @@ public class UIGM : UIBase {
             }
 
             gmOperation.targetId = int.Parse(command[1] as string);
-            gmOperation.itemID = command[2] as string;
+            gmOperation.itemId = command[2] as string;
             gmOperation.value = int.Parse(command[3] as string);
         }
         else if (command[0].Equals("mailall"))
@@ -245,7 +245,7 @@ public class UIGM : UIBase {
                 return;
             }
 
-            gmOperation.itemID = command[1] as string;
+            gmOperation.itemId = command[1] as string;
         }
         else if (command[0].Equals("questset"))
         {
@@ -265,6 +265,21 @@ public class UIGM : UIBase {
                 text.text = "格式错误";
                 return;
             }
+        }
+        else if (command[0].Equals("end"))
+        {
+            if (command.Count != 2)
+            {
+                text.text = "格式错误";
+                return;
+            }
+            if (GameMain.Instance.IsCurModule<BattleModule>() == true)
+            {
+                BattleController.Instance.Process.forceResult = int.Parse(command[1] as string);
+            }
+
+            UIMgr.Instance.CloseUI_(this);
+            return;
         }
 
         GameApp.Instance.netManager.SendMessage(PB.gm.GMOPERATION_C.GetHashCode(), gmOperation);

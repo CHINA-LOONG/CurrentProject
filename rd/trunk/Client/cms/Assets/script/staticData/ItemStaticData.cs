@@ -8,7 +8,9 @@ public enum PartType
     Waist,
     Neck,
     Wrist,
-    Finger
+    Finger,
+    
+    NUM_EQUIP_PART
 }
 
 

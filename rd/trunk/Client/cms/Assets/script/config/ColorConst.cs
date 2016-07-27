@@ -76,9 +76,9 @@ public class ColorConst
 	//shopitem buyprice color
 	public	static	Color	text_color_Enough = new Color (96.0f / 255.0f, 76.0f / 255.0f, 51.0f / 255.0f, 1);
     //频道字体颜色
-    public static Color globalColor = Color.green;//世界字体颜色
-    public static Color guildColor = Color.black;//工會字体颜色
-    public static Color systemColor = Color.red;//系统字体颜色
+    public static Color globalColor = new Color(122.0f / 255.0f, 255.0f / 255.0f, 0, 1);//世界字体颜色
+    public static Color guildColor = new Color(1, 135.0f / 255.0f, 0, 1);//工會字体颜色
+    public static Color systemColor = new Color(1, 65.0f / 255.0f, 0, 1);//系统字体颜色
     //选项卡颜色
     public static Color text_tabColor_normal = new Color(251.0f/255.0f,241.0f/255.0f,216.0f/255.0f,1.0f);
     public static Color outline_tabColor_normal = new Color(20.0f/255.0f,15.0f/255.0f,16.0f/255.0f,1.0f);

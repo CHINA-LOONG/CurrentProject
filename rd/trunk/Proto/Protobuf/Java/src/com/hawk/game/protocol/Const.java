@@ -1000,14 +1000,6 @@ public final class Const {
      * </pre>
      */
     CHANGE_FAV(7, 8),
-    /**
-     * <code>CHANGE_VIPLEVEL = 9;</code>
-     *
-     * <pre>
-     * vip等级
-     * </pre>
-     */
-    CHANGE_VIPLEVEL(8, 9),
     ;
 
     /**
@@ -1074,14 +1066,6 @@ public final class Const {
      * </pre>
      */
     public static final int CHANGE_FAV_VALUE = 8;
-    /**
-     * <code>CHANGE_VIPLEVEL = 9;</code>
-     *
-     * <pre>
-     * vip等级
-     * </pre>
-     */
-    public static final int CHANGE_VIPLEVEL_VALUE = 9;
 
 
     public final int getNumber() { return value; }
@@ -1096,7 +1080,6 @@ public final class Const {
         case 6: return CHANGE_MONSTER_LEVEL;
         case 7: return CHANGE_FATIGUE;
         case 8: return CHANGE_FAV;
-        case 9: return CHANGE_VIPLEVEL;
         default: return null;
       }
     }
@@ -1863,6 +1846,125 @@ public final class Const {
   }
 
   /**
+   * Protobuf enum {@code UseToolSubType}
+   *
+   * <pre>
+   * 消耗品子类型
+   * </pre>
+   */
+  public enum UseToolSubType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>USETOOLEXP = 1;</code>
+     *
+     * <pre>
+     * 经验药水
+     * </pre>
+     */
+    USETOOLEXP(0, 1),
+    /**
+     * <code>USETOOLDOUBLEEXP = 2;</code>
+     *
+     * <pre>
+     * 双倍药水
+     * </pre>
+     */
+    USETOOLDOUBLEEXP(1, 2),
+    /**
+     * <code>USETOOLTRIPLEEXP = 3;</code>
+     *
+     * <pre>
+     * 三倍药水
+     * </pre>
+     */
+    USETOOLTRIPLEEXP(2, 3),
+    ;
+
+    /**
+     * <code>USETOOLEXP = 1;</code>
+     *
+     * <pre>
+     * 经验药水
+     * </pre>
+     */
+    public static final int USETOOLEXP_VALUE = 1;
+    /**
+     * <code>USETOOLDOUBLEEXP = 2;</code>
+     *
+     * <pre>
+     * 双倍药水
+     * </pre>
+     */
+    public static final int USETOOLDOUBLEEXP_VALUE = 2;
+    /**
+     * <code>USETOOLTRIPLEEXP = 3;</code>
+     *
+     * <pre>
+     * 三倍药水
+     * </pre>
+     */
+    public static final int USETOOLTRIPLEEXP_VALUE = 3;
+
+
+    public final int getNumber() { return value; }
+
+    public static UseToolSubType valueOf(int value) {
+      switch (value) {
+        case 1: return USETOOLEXP;
+        case 2: return USETOOLDOUBLEEXP;
+        case 3: return USETOOLTRIPLEEXP;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<UseToolSubType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<UseToolSubType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<UseToolSubType>() {
+            public UseToolSubType findValueByNumber(int number) {
+              return UseToolSubType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(12);
+    }
+
+    private static final UseToolSubType[] VALUES = values();
+
+    public static UseToolSubType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private UseToolSubType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:UseToolSubType)
+  }
+
+  /**
    * Protobuf enum {@code equipPart}
    *
    * <pre>
@@ -2075,7 +2177,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(12);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(13);
     }
 
     private static final equipPart[] VALUES = values();
@@ -2245,7 +2347,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(13);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(14);
     }
 
     private static final equipQuality[] VALUES = values();
@@ -2340,7 +2442,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(14);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(15);
     }
 
     private static final shopType[] VALUES = values();
@@ -2476,7 +2578,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(15);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(16);
     }
 
     private static final mailState[] VALUES = values();
@@ -2612,7 +2714,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(16);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(17);
     }
 
     private static final ImType[] VALUES = values();
@@ -2731,7 +2833,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(17);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(18);
     }
 
     private static final ImChannel[] VALUES = values();
@@ -2779,35 +2881,36 @@ public final class Const {
       "NSTER\020\007*+\n\tmoneyType\022\016\n\nMONEY_GOLD\020\001\022\016\n\n" +
       "MONEY_COIN\020\002*O\n\nplayerAttr\022\010\n\004GOLD\020\001\022\010\n\004" +
       "COIN\020\002\022\t\n\005LEVEL\020\003\022\007\n\003EXP\020\004\022\013\n\007FATIGUE\020\005\022" +
-      "\014\n\010VIPLEVEL\020\006*\311\001\n\nchangeType\022\017\n\013CHANGE_G" +
+      "\014\n\010VIPLEVEL\020\006*\264\001\n\nchangeType\022\017\n\013CHANGE_G" +
       "OLD\020\001\022\017\n\013CHANGE_COIN\020\002\022\025\n\021CHANGE_PLAYER_" +
       "EXP\020\003\022\027\n\023CHANGE_PLAYER_LEVEL\020\004\022\026\n\022CHANGE" +
       "_MONSTER_EXP\020\005\022\030\n\024CHANGE_MONSTER_LEVEL\020\006" +
-      "\022\022\n\016CHANGE_FATIGUE\020\007\022\016\n\nCHANGE_FAV\020\010\022\023\n\017" +
-      "CHANGE_VIPLEVEL\020\t*\365\001\n\004attr\022\r\n\tEMPTYATTR\020",
-      "\000\022\014\n\010STRENGHT\020\001\022\020\n\014INTELLIGENCE\020\002\022\t\n\005SPE" +
-      "ED\020\003\022\013\n\007DEFENSE\020\004\022\n\n\006HEALTH\020\005\022\021\n\rDEFENSE" +
-      "WEAKEN\020e\022\014\n\010CRITICAL\020f\022\022\n\016CRITICALWEAKEN" +
-      "\020g\022\014\n\010RECOVERY\020h\022\022\n\016CRITICALDAMAGE\020i\022\013\n\007" +
-      "HITRATE\020j\022\020\n\014CUREINCREASE\020k\022\020\n\014DAMAGERED" +
-      "UCE\020l\022\022\n\016DAMAGEINCREASE\020m*+\n\ruserConditi" +
-      "on\022\n\n\006BATTLE\020\001\022\016\n\nNON_BATTLE\020\002*5\n\010bindTy" +
-      "pe\022\014\n\010NON_BIND\020\000\022\014\n\010USE_BIND\020\001\022\r\n\tTAKE_B" +
-      "IND\020\002*b\n\010toolType\022\016\n\nCOMMONTOOL\020\001\022\020\n\014FRA" +
-      "GMENTTOOL\020\002\022\013\n\007GEMTOOL\020\003\022\013\n\007BOXTOOL\020\004\022\013\n",
-      "\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007*\204\001\n\tequipPart\022" +
-      "\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022\010\n\004BELT\020\003\022\013\n\007CUIRA" +
-      "SS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WEAPON2\020\006\022\014\n\010LEGGUA" +
-      "RD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020\n" +
-      "*O\n\014equipQuality\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022\010" +
-      "\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED\020" +
-      "\006*;\n\010shopType\022\016\n\nNORMALSHOP\020\001\022\020\n\014ALLIANC" +
-      "ESHOP\020\002\022\r\n\tOTHERSHOP\020\003*<\n\tmailState\022\n\n\006U" +
-      "NREAD\020\001\022\010\n\004READ\020\002\022\013\n\007RECEIVE\020\003\022\014\n\010OVERFL" +
-      "OW\020\004*7\n\006ImType\022\010\n\004CHAT\020\001\022\013\n\007LANTERN\020\002\022\n\n",
-      "\006PROMPT\020\003\022\n\n\006NOTICE\020\004*-\n\tImChannel\022\n\n\006PE" +
-      "RSON\020\001\022\t\n\005WORLD\020\002\022\t\n\005GUILD\020\003B\030\n\026com.hawk" +
-      ".game.protocol"
+      "\022\022\n\016CHANGE_FATIGUE\020\007\022\016\n\nCHANGE_FAV\020\010*\365\001\n" +
+      "\004attr\022\r\n\tEMPTYATTR\020\000\022\014\n\010STRENGHT\020\001\022\020\n\014IN",
+      "TELLIGENCE\020\002\022\t\n\005SPEED\020\003\022\013\n\007DEFENSE\020\004\022\n\n\006" +
+      "HEALTH\020\005\022\021\n\rDEFENSEWEAKEN\020e\022\014\n\010CRITICAL\020" +
+      "f\022\022\n\016CRITICALWEAKEN\020g\022\014\n\010RECOVERY\020h\022\022\n\016C" +
+      "RITICALDAMAGE\020i\022\013\n\007HITRATE\020j\022\020\n\014CUREINCR" +
+      "EASE\020k\022\020\n\014DAMAGEREDUCE\020l\022\022\n\016DAMAGEINCREA" +
+      "SE\020m*+\n\ruserCondition\022\n\n\006BATTLE\020\001\022\016\n\nNON" +
+      "_BATTLE\020\002*5\n\010bindType\022\014\n\010NON_BIND\020\000\022\014\n\010U" +
+      "SE_BIND\020\001\022\r\n\tTAKE_BIND\020\002*b\n\010toolType\022\016\n\n" +
+      "COMMONTOOL\020\001\022\020\n\014FRAGMENTTOOL\020\002\022\013\n\007GEMTOO" +
+      "L\020\003\022\013\n\007BOXTOOL\020\004\022\013\n\007USETOOL\020\005\022\r\n\tEQUIPTO",
+      "OL\020\007*L\n\016UseToolSubType\022\016\n\nUSETOOLEXP\020\001\022\024" +
+      "\n\020USETOOLDOUBLEEXP\020\002\022\024\n\020USETOOLTRIPLEEXP" +
+      "\020\003*\204\001\n\tequipPart\022\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022\010" +
+      "\n\004BELT\020\003\022\013\n\007CUIRASS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WE" +
+      "APON2\020\006\022\014\n\010LEGGUARD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOV" +
+      "E\020\t\022\014\n\010NECKLACE\020\n*O\n\014equipQuality\022\t\n\005WHI" +
+      "TE\020\001\022\t\n\005GREEN\020\002\022\010\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n" +
+      "\006ORANGE\020\005\022\007\n\003RED\020\006*;\n\010shopType\022\016\n\nNORMAL" +
+      "SHOP\020\001\022\020\n\014ALLIANCESHOP\020\002\022\r\n\tOTHERSHOP\020\003*" +
+      "<\n\tmailState\022\n\n\006UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007RE",
+      "CEIVE\020\003\022\014\n\010OVERFLOW\020\004*7\n\006ImType\022\010\n\004CHAT\020" +
+      "\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006NOTICE\020\004*-" +
+      "\n\tImChannel\022\n\n\006PERSON\020\001\022\t\n\005WORLD\020\002\022\t\n\005GU" +
+      "ILD\020\003B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

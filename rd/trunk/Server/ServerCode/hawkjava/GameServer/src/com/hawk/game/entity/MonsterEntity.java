@@ -60,6 +60,9 @@ public class MonsterEntity extends HawkDBEntity {
 
 	@Column(name = "skillList", nullable = false)
 	private String skillJson = "";
+	
+	@Column(name = "locked", nullable = false)
+	protected boolean locked = false;
 
 	@Column(name = "createTime", nullable = false)
 	protected Calendar createTime = null;
@@ -171,6 +174,14 @@ public class MonsterEntity extends HawkDBEntity {
 
 	public void setSkillLevel(String skillId, int level) {
 		skillMap.put(skillId, level);
+	}
+
+	public boolean isLocked() {
+		return locked;
+	}
+
+	public void setLocked(boolean locked) {
+		this.locked = locked;
 	}
 
 	@Override

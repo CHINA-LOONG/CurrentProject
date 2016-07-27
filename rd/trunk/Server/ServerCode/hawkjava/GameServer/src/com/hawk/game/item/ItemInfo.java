@@ -43,6 +43,14 @@ public class ItemInfo {
 		this.count = count;
 	}
 	
+	public ItemInfo(int type, String itemId, int count, int stage) {
+		super();
+		this.type = type;
+		this.itemId = itemId;
+		this.count = count;
+		this.stage = stage;
+	}
+	
 	public ItemInfo(int type, String itemId, int count, int stage, int level) {
 		super();
 		this.type = type;
@@ -111,6 +119,10 @@ public class ItemInfo {
 		return new ItemInfo(type, itemId, count);
 	}
 
+	public static ItemInfo valueOf(int type, String itemId, int count, int stage) {
+		return new ItemInfo(type, itemId, count, stage);
+	}
+	
 	public static ItemInfo valueOf(int type, String itemId, int count, int stage, int level) {
 		return new ItemInfo(type, itemId, count, stage, level);
 	}

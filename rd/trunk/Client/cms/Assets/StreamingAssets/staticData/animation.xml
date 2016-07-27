@@ -2653,7 +2653,7 @@ state = 1 Remove
 		</Ani>
 		<Ani id="karong_stage1to2_shuisi" state="0" action_delay="0">
 			<ControllerList>
-				<Controller time="2.6" name="monsters/karong/Karong_boss2"/>
+				<Controller time="2.6" name="Karong_boss2"/>
 			</ControllerList>
 			<WpStateList>
 				<Wp time="2.6" name="bossMinghe18Karongwp01" state="3"/>

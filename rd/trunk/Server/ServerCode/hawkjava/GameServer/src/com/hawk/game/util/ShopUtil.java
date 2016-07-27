@@ -50,10 +50,11 @@ public class ShopUtil {
 			shopItem.setType(element.getType());
 			shopItem.setItemId(element.getItemId());
 			shopItem.setCount(element.getCount());
-			if (ConfigUtil.checkIsEquip(element.getType())) {
+			if (element.getType() == Const.itemType.EQUIP_VALUE) {
 				shopItem.setStage(element.getStage());
 				shopItem.setLevel(element.getLevel());
 			}
+			shopItem.setDiscount(element.getDiscount());
 			shopItem.setSlot(element.getSlot());
 			shopItem.setHasBuy(element.isHasBuy());
 			response.addItemInfos(shopItem);

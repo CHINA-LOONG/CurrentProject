@@ -47,6 +47,7 @@ public class UIBag : UIBase,TabButtonDelegate
 		}
 	}
 
+	private	List<PB.HSRewardInfo> listRewardForBox = new List<PB.HSRewardInfo>();
 	private	Dictionary<string,int>  sellItemsDic = new Dictionary<string, int>();
 
     void Start()
@@ -59,7 +60,7 @@ public class UIBag : UIBase,TabButtonDelegate
     {
 		if (isFirst)
 		{
-			isFirst = true;
+			isFirst = false;
 			FirsInit();
 		}
 		curBagState = BagState.Norml;
@@ -73,10 +74,27 @@ public class UIBag : UIBase,TabButtonDelegate
 		EventTriggerListener.Get (conformSellButton.gameObject).onClick = OnSellConformClick;
 		EventTriggerListener.Get (sellButton.gameObject).onClick = OnSellClick;
 		tabBtnGroup.InitWithDelegate (this);
+
+		BindListener ();
 	}
     public override void Clean()
     {
+		UnBindListener ();
     }
+
+	void	BindListener()
+	{
+		GameEventMgr.Instance.AddListener (GameEventList.BuyItemFinished, RefreshBag);
+		GameEventMgr.Instance.AddListener (GameEventList.OpenBoxFinished, OnOpenBoxFinished);
+		GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
+	}
+
+	void UnBindListener()
+	{
+		GameEventMgr.Instance.RemoveListener (GameEventList.BuyItemFinished, RefreshBag);
+		GameEventMgr.Instance.RemoveListener (GameEventList.OpenBoxFinished, OnOpenBoxFinished);
+		GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
+	}
 
     void CloseBagButtonDown(GameObject go)
     {
@@ -126,6 +144,7 @@ public class UIBag : UIBase,TabButtonDelegate
 			UIIm.Instance.ShowSystemHints("未选择出售物品....",(int)PB.ImType.PROMPT);
 			return;
 		}
+
 	}
 
 	void OnSellClick(GameObject go)
@@ -153,5 +172,21 @@ public class UIBag : UIBase,TabButtonDelegate
 			sellItemsDic.Add(itemId,itemCount);
 		}
 	}
+
+	void OnReward(ProtocolMessage msg)
+	{
+		PB.HSRewardInfo reward = msg.GetProtocolBody<PB.HSRewardInfo>();
+		if (reward == null ||reward.hsCode != PB.code.ITEM_BOX_USE_BATCH_C.GetHashCode())
+			return;
+		listRewardForBox.Add (reward);
+	}
+
+	void	OnOpenBoxFinished()
+	{
+		RefreshBag ();
+		//显示结果
+		OpenBaoxiangResult.OpenWith (listRewardForBox);
+	}
+
 }
 

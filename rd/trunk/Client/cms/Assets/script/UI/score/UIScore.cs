@@ -195,7 +195,7 @@ public class UIScore : UIBase
                     {
                         mPlayerGainGold.text = "+" + item.count.ToString();
                         //GameDataMgr.Instance.mainPlayer.coin += item.count;
-                        GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, playerAttr.coin);
+                        //GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, playerAttr.coin);
                     }
                     else if ((int)PB.changeType.CHANGE_PLAYER_EXP == int.Parse(item.itemId))
                     {

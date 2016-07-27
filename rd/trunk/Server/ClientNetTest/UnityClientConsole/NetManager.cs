@@ -60,7 +60,7 @@ namespace UnityClientConsole
             protocol.encode(sendStream);
             try
             {
-                Console.WriteLine("{0} bytes have send",sendStream.Length);
+                //Console.WriteLine("{0} bytes have send",sendStream.Length);
                 socketClient.BeginSend(sendStream.ToArray(), 0, (int)sendStream.Length, 0, new AsyncCallback(SendCallback), socketClient);
                 sendStream.SetLength(0);
             }
@@ -94,7 +94,7 @@ namespace UnityClientConsole
             {    
                 Socket handler = (Socket)ar.AsyncState;    
                 int bytesReceive = handler.EndReceive(ar);
-                Console.WriteLine("{0} bytes already received", bytesReceive);
+                //Console.WriteLine("{0} bytes already received", bytesReceive);
 
                 receiveStream.Write(buffer.GetBuffer(), 0, bytesReceive);
 

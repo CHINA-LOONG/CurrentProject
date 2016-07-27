@@ -78,6 +78,7 @@ public class UIEquipSetting : UIBase, IGemListCallBack, IEquipInlayCallBack
             GemInfo gemInfo = new GemInfo(element);
             curEquip.gemList.Add(gemInfo);
         }
+        curEquip.RefreshGemAttr();
         #endregion
 
         uiEquipInlay.Refresh(curEquip, curTabIndex, curSelIndex,UIEquipInlay.State.Setting);

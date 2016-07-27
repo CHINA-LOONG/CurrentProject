@@ -265,6 +265,20 @@ namespace PB
       EQUIPTOOL = 7
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"UseToolSubType")]
+    public enum UseToolSubType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"USETOOLEXP", Value=1)]
+      USETOOLEXP = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"USETOOLDOUBLEEXP", Value=2)]
+      USETOOLDOUBLEEXP = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"USETOOLTRIPLEEXP", Value=3)]
+      USETOOLTRIPLEEXP = 3
+    }
+  
     [global::ProtoBuf.ProtoContract(Name=@"equipPart")]
     public enum equipPart
     {

@@ -7,14 +7,17 @@ public class UIIm : UIBase
 {
     public static string ViewName = "uishowMsg";
     List<PB.HSImMsg> worldChannel = new List<PB.HSImMsg>();//世界頻道列表
-    List<PB.HSImMsg> gangChannel = new List<PB.HSImMsg>();//工會頻道列表    
+    List<PB.HSImMsg> gangChannel = new List<PB.HSImMsg>();//工會頻道列表 
+    PB.HSImMsg allMsg;//基础聊天框
     List<GameObject> hintMsg = new List<GameObject>();//系统提示
     int Channel = (int)PB.ImChannel.WORLD;//頻道
     public InputField msgText; 
     public GameObject showLeftChatBox;
     public GameObject showBasicsChat;
     public GameObject globalButton;
+    public Image globalBackground;
     public GameObject guildButton;
+    public Image guildBackground;
     public GameObject leftChatBox;
     public GameObject basicsChat;
     public GameObject imMsgFather;
@@ -34,30 +37,20 @@ public class UIIm : UIBase
     Lantern noticeMove;
     public GameObject lanternUI;//走马灯
     Lantern lanternMove;//走马灯文本
-    int lanternNum = 0;
-    bool isNoticeMove = true;//是否正在播放
-    bool lanternType;
-    bool noticeType;
-    bool moveType;
-    Vector3 moveVec;//公告内容位置
     ImMessageData imMsgData;
-
     static UIIm mInst = null;
     public static UIIm Instance
     {
         get
         {
-            if (mInst == null)
-            {
-                GameObject go = new GameObject("UIIm");
-                mInst = go.AddComponent<UIIm>();
-            }
             return mInst;
         }
     }
     //------------------------------------------------------------------------------------------------------
 	// Use this for initialization
-	void Start () {
+    void Start()
+    {
+        mInst = this;
         EventTriggerListener.Get(showLeftChatBox).onClick = MsgOnClick;
         EventTriggerListener.Get(showBasicsChat).onClick = MsgOnClick;
         EventTriggerListener.Get(globalButton).onClick = MsgOnClick;
@@ -83,7 +76,7 @@ public class UIIm : UIBase
         playerBox.SetActive(false);
         noticeUI.SetActive(false);
         lanternUI.SetActive(false);
-	}
+    }
     //------------------------------------------------------------------------------------------------------
     void MsgOnClick(GameObject but)//通用button点击事件
     {
@@ -101,11 +94,15 @@ public class UIIm : UIBase
         else if (but.name == globalButton.name)//世界频道
         {
             Channel = (int)PB.ImChannel.WORLD;
+            globalBackground.enabled = true;
+            guildBackground.enabled = false;
             ShowMessage();
         }
         else if (but.name == guildButton.name)//工会频道
         {
             Channel = (int)PB.ImChannel.GUILD;
+            guildBackground.enabled = true;
+            globalBackground.enabled = false;
             ShowMessage();
         }
         else if (but ==playerBoxClone)
@@ -118,27 +115,28 @@ public class UIIm : UIBase
     {
         player = player.transform.parent.gameObject.transform.parent.gameObject;
         imMsgData = player.GetComponent<ImMessageData>();
-        //if (GameDataMgr.Instance.PlayerDataAttr.playerId != imMsgData.speakerID)
+        if (GameDataMgr.Instance.PlayerDataAttr.playerId != imMsgData.speakerID && imMsgData.speakerID != 0)
         {
             playerBox.SetActive(true);
-            playerName.text = imMsgData.mSpeaker.text;
+            playerName.text = imMsgData.playerName;
             blockID = imMsgData.speakerID;
         }
     }
     //------------------------------------------------------------------------------------------------------
     void OnMsgReturn(ProtocolMessage msg)//返回服务器消息数据
     {
-		UINetRequest.Close ();
         PB.HSImPush result = msg.GetProtocolBody<PB.HSImPush>();
         List<PB.HSImMsg> messageData = result.imMsg;
         foreach (var item in messageData)
-        {
+        {            
             //系统公告
             if (item.type == (int)PB.ImType.NOTICE)
             {
                 noticeMove.AddMsg(item.origText);
-                noticeMove.moveTypeEnd = false;
                 worldChannel.Add(item);
+                noticeMove.moveTypeEnd = false;
+                //所有消息
+                allMsg = item;
                 continue;
             }
             ShowSystemHints(item.origText,item.type);
@@ -146,11 +144,12 @@ public class UIIm : UIBase
             if (item.channel == (int)PB.ImChannel.WORLD && item.type != (int)PB.ImType.LANTERN && item.type != (int)PB.ImType.PROMPT)
             {
                 worldChannel.Add(item);
+                allMsg = item;
             }
-
             if (item.channel == (int)PB.ImChannel.GUILD)
             {
                 gangChannel.Add(item);
+                allMsg = item;
             }
         }
         ShowMessage();
@@ -162,20 +161,33 @@ public class UIIm : UIBase
         {
             if (Channel == (int)PB.ImChannel.WORLD)
             {
-                ReadMsg(ref worldChannel, "Globale", ColorConst.globalColor);
+                ReadMsg(ref worldChannel, "Global", ColorConst.globalColor);
             }
             else if (Channel == (int)PB.ImChannel.GUILD)
             {
-                ReadMsg(ref gangChannel, "Guild", ColorConst.globalColor);
+                ReadMsg(ref gangChannel, "Guild", ColorConst.guildColor);
             }
         }
         else if(worldChannel.Count > 0)
         {
-            PB.HSImMsg curMsg = worldChannel[worldChannel.Count - 1];
-            basicsValue.text = curMsg.senderName + ": " + curMsg.origText;
+            string msg = null;
+            if (allMsg.channel == (int)PB.ImChannel.WORLD)
+            {
+                if (allMsg.type == (int)PB.ImType.NOTICE)
+                    msg = "<color=" + ColorConst.colorTo_Hstr(ColorConst.systemColor) + ">[System] " + allMsg.origText + "</color>";
+                else
+                    msg = "<color=" + ColorConst.colorTo_Hstr(ColorConst.globalColor) + ">[Global] </color>" +
+                        allMsg.senderName + ": <color=" + ColorConst.colorTo_Hstr(ColorConst.globalColor) + ">" + allMsg.origText + "</color>";
+            }
+            else
+            {
+                msg = "<color=" + ColorConst.colorTo_Hstr(ColorConst.guildColor) + ">[Guild] </color>" +
+                       allMsg.senderName + ": <color=" + ColorConst.colorTo_Hstr(ColorConst.guildColor) + ">" + allMsg.origText + "</color>";
+            }
+            basicsValue.text = msg;
         }
     }
-    //------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------#7986FE0100FF
     void ReadMsg(ref List<PB.HSImMsg> msgList, string channelName, Color msgColor)//读取赋值消息
     {
         float msgHeight;//一条消息的高
@@ -192,7 +204,8 @@ public class UIIm : UIBase
             imMsgData = msgObj[i].gameObject.GetComponent<ImMessageData>();     
             if (i != 0)
             {
-                msgHeight = msgObj[i - 1].transform.FindChild("msgText").GetComponent<Text>().rectTransform.sizeDelta.y;
+                msgHeight = msgObj[i - 1].transform.FindChild("channelText").transform.FindChild("nameText").
+                    transform.FindChild("msgText").GetComponent<Text>().rectTransform.sizeDelta.y;
                 msgHeight = imMsgData.mChannel.rectTransform.sizeDelta.y + msgHeight;
                 newMsgPos = msgObj[i - 1].transform.localPosition.y - msgHeight;
                 msgObj[i].transform.localPosition = new Vector3(msgPos.transform.localPosition.x, newMsgPos, 0);                   
@@ -201,16 +214,20 @@ public class UIIm : UIBase
             msgObj[i].SetActive(true);
             if (msgList[i].type == (int)PB.ImType.NOTICE)
             {
-                channelName = "System";
                 textColor = ColorConst.systemColor;
+                imMsgData.mChannel.text = "[" + "System" + "]";
             }
-            imMsgData.mChannel.text = "[" + channelName + "]";
-            imMsgData.mSpeaker.text = msgList[i].senderName;
+            else
+            {
+                imMsgData.mSpeaker.text = msgList[i].senderName + ":";
+                imMsgData.mChannel.text = "[" + channelName + "]";
+                textColor = msgColor;
+            }
+            imMsgData.playerName = msgList[i].senderName;
             imMsgData.mContent.text = msgList[i].origText;
-            imMsgData.speakerID = msgList[i].senderId; 
-            textColor = msgColor;
-            imMsgData.mChannel.color = textColor;
             imMsgData.mContent.color = textColor;
+            imMsgData.speakerID = msgList[i].senderId;             
+            imMsgData.mChannel.color = textColor;
             showNewMsg = true;
         }
         for (; i < msgObj.Count; ++i)
@@ -221,7 +238,6 @@ public class UIIm : UIBase
     //------------------------------------------------------------------------------------------------------
     public void ShowSystemHints(string hintsValue,int hintsType)//
     {
-        return;
         //走马灯
         if (hintsType == (int)PB.ImType.LANTERN)
         {
@@ -279,7 +295,7 @@ public class UIIm : UIBase
             for (int i = 0; i < worldChannel.Count; i++)
             {
                 channelText = msgObj[i].transform.FindChild("channelText").GetComponent<Text>();
-                msgText = msgObj[i].transform.FindChild("msgText").GetComponent<Text>();
+                msgText = channelText.transform.FindChild("nameText").transform.FindChild("msgText").GetComponent<Text>();
                 if (msgText.rectTransform.sizeDelta.y != 0)
                 {
                     sizeMsg += (channelText.rectTransform.sizeDelta.y + msgText.rectTransform.sizeDelta.y);
@@ -311,7 +327,10 @@ public class UIIm : UIBase
             if (msgText.text == string.Empty || msgText.text == null)
                 return;
             else
+            {
                 OnSendMsg(msgText.text);
+                Invoke("SendInterval", 2.0f);
+            }
         }
         else if (but.name == shield.name)
         {
@@ -326,10 +345,9 @@ public class UIIm : UIBase
             channel = Channel,
             text = message
         };
-        GameApp.Instance.netManager.SendMessage(PB.code.IM_CHAT_SEND_C.GetHashCode(), param);
+        GameApp.Instance.netManager.SendMessage(PB.code.IM_CHAT_SEND_C.GetHashCode(), param, false);
         msgText.text = "";
         sendButton.GetComponent<Button>().enabled = false;
-        Invoke("SendInterval", 2.0f);
     }
     //------------------------------------------------------------------------------------------------------
     public void OnShield()//屏蔽禁言

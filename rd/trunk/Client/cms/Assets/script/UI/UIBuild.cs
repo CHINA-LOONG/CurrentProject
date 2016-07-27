@@ -14,7 +14,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public Button m_QuestButton;
     public Button m_SpeechButton;
 	public Button shopButton;
-    public Button gmButton;
 	public Button	exchangeButton;
     public InputField m_SpeechInput;
 
@@ -33,7 +32,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public UIPetList uiPetList;
     public UIAdjustBattleTeam uiAdjustBattleTeam;
 	public UIShop uiShop;
-    public UIGM uiGM;
 
     void Start()
     {
@@ -44,7 +42,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         EventTriggerListener.Get(m_SpeechButton.gameObject).onClick = OnSpeechButtonClick;
         EventTriggerListener.Get(btnMail.gameObject).onClick = OnMailButtonClick;
 		EventTriggerListener.Get (shopButton.gameObject).onClick = OnShopButtonClick;
-        EventTriggerListener.Get(gmButton.gameObject).onClick = OnGMButtonClick;
 		EventTriggerListener.Get (exchangeButton.gameObject).onClick = OnExchangeButtonclick;
 
         m_LangPopup.Initialize<PopupListIndextDelegate>(this);
@@ -131,11 +128,6 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 	{
 		OpenShop ((int)PB.shopType.NORMALSHOP);
 	}
-
-    void OnGMButtonClick(GameObject go)
-    {
-        uiGM = UIMgr.Instance.OpenUI_(UIGM.ViewName) as UIGM;
-    }
 
 	void OnExchangeButtonclick(GameObject go)
 	{

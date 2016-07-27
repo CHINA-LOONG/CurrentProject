@@ -65,6 +65,8 @@ enum code
 	MONSTER_SKILL_UP_S          = 2009;
 	MONSTER_STAGE_UP_C          = 2010;
 	MONSTER_STAGE_UP_S          = 2011;
+	MONSTER_LOCK_C              = 2012;
+	MONSTER_LOCK_S              = 2013;
 
 	// 副本
 	INSTANCE_ASSIST_C           = 3001;
@@ -85,12 +87,16 @@ enum code
 	// 道具
 	ITEM_USE_C                  = 4001;
 	ITEM_USE_S                  = 4002;
-	ITEM_SELL_C                 = 4003;
-	ITEM_SELL_S                 = 4004;
-	ITEM_BUY_C                  = 4005;
-	ITEM_BUY_S                  = 4006;
-	ITEM_COMPOSE_C              = 4007;
-	ITEM_COMPOSE_S              = 4008;
+	ITEM_BOX_USE_BATCH_C        = 4003;
+	ITEM_BOX_USE_BATCH_S        = 4004;
+	ITEM_SELL_C                 = 4005;
+	ITEM_SELL_S                 = 4006;
+	ITEM_SELL_BATCH_C           = 4007;
+	ITEM_SELL_BATCH_S           = 4008;
+	ITEM_BUY_C                  = 4009;
+	ITEM_BUY_S                  = 4010;
+	ITEM_COMPOSE_C              = 4011;
+	ITEM_COMPOSE_S              = 4012;
 
 	EQUIP_SELL_C                = 4101;
 	EQUIP_SELL_S                = 4102;
@@ -154,4 +160,8 @@ enum code
 	SETTING_LANGUAGE_S          = 10002;
 	SETTING_BLOCK_C             = 10003;
 	SETTING_BLOCK_S             = 10004;
+	
+	// 统计信息
+	STATISTICS_EXP_LEFT_TIMES   = 11001;
+	STATISTICS_SHOP_REFRESH_TIMES = 11002;
 }

@@ -36,8 +36,14 @@ public class ChangeValueByHand : MonoBehaviour
 		{
 			updateFrame = 10;
 			curValue += changeStep;
-			if(curValue <= minValue || curValue >= maxValue)
+			if(curValue <= minValue )
 			{
+				curValue = minValue;
+				changeStep = 0;
+			}
+			if( curValue >= maxValue)
+			{
+				curValue = maxValue;
 				changeStep = 0;
 			}
 			if(null != callback)

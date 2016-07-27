@@ -44,6 +44,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 		if (curSkillPoint > GsConst.MAX_SKILL_POINT) {
 			curSkillPoint = GsConst.MAX_SKILL_POINT;
 		}
+		
 		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.SKILL_POINT_TIME  * 1000);
 		statisticsEntity.setSkillPoint(curSkillPoint);
 		statisticsEntity.setSkillPointBeginTime(beginTime);

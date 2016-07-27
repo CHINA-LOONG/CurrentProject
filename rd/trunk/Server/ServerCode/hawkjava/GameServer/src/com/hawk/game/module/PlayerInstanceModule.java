@@ -288,9 +288,16 @@ public class PlayerInstanceModule extends PlayerModule {
 		int starCount = 3;
 
 		if (true == victory) {
+			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 			// 多倍怪物经验
-			int multiple = 2;
-
+			int multiple = 1;
+			if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
+				multiple = 2;
+			}
+			else if (statisticsEntity.getTripleExpLeftTimes() > 0){
+				multiple = 3;
+			}
+			
 			// 通关奖励
 			InstanceRewardCfg instanceRewardCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceRewardCfg.class, this.curInstanceId);
 			if (instanceRewardCfg != null) {
@@ -315,26 +322,33 @@ public class PlayerInstanceModule extends PlayerModule {
 			// 怪物奖励最多取一个
 			if (false == monsterRewardList.isEmpty()) {
 				try {
-					int index = HawkRand.randInt(0, monsterRewardList.size());
-					int stage = HawkRand.randInt(0, 5);
+					int index = HawkRand.randInt(0, monsterRewardList.size() - 1);
+					//int stage = HawkRand.randInt(0, 5);
 					int disposition = HawkRand.randInt(0, 5);
-					completeReward.addMonster(monsterRewardList.get(index).getItemId(), stage, 1, 5, disposition);
+					completeReward.addMonster(monsterRewardList.get(index).getItemId(), monsterRewardList.get(index).getStage(), 1, 5, disposition);
 				} catch (HawkException e) {
 					HawkException.catchException(e);
 				}		
 			}
 
 			// 发放掉落奖励和完成奖励
-			completeReward.rewardTakeAffectAndPush(player,  Action.INSTACE_SETTLE);
+			completeReward.rewardTakeAffectAndPush(player,  Action.INSTACE_SETTLE, HS.code.INSTANCE_SETTLE_C_VALUE);
 
 			// 记录副本进度
-			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 			int oldStar = statisticsEntity.getInstanceStar(this.curInstanceId);
 			if (starCount > oldStar) {
 				statisticsEntity.setInstanceStar(this.curInstanceId, starCount);
 			}
 			statisticsEntity.addInstanceAllCount();
 			statisticsEntity.addInstanceAllCountDaily();
+			if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
+				statisticsEntity.decreaseDoubleExpLeft(1);
+				player.getPlayerData().syncStatisticsExpLeftInfo();
+			}
+			else if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
+				statisticsEntity.decreaseTripleExpLeft(1);
+				player.getPlayerData().syncStatisticsExpLeftInfo();
+			}
 
 			InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, this.curInstanceId);
 			if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
@@ -391,18 +405,19 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 体力
 		int fatigueChange = count * entryCfg.getFatigue();
-		if (statisticsEntity.getFatigue() < fatigueChange) {
-			sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
+		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
+		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, fatigueChange);
+		if (consumeFatigue.checkConsume(player, hsCode)) {
 			return false;
 		}
 
 		// 扫荡券
-		ConsumeItems consume = ConsumeItems.valueOf();
-		consume.addItem(GsConst.SWEEP_TICKET, count);
-		if (false == consume.checkConsume(player, hsCode)) {
+		ConsumeItems consumeItem = ConsumeItems.valueOf();
+		consumeItem.addItem(GsConst.SWEEP_TICKET, count);
+		if (false == consumeItem.checkConsume(player, hsCode)) {
 			return false;
 		}
-		consume.consumeTakeAffectAndPush(player, Action.INSTANCE_SWEEP);
+		consumeItem.consumeTakeAffectAndPush(player, Action.INSTANCE_SWEEP, HS.code.INSTANCE_SWEEP_C_VALUE);
 
 		// 奖励
 		List<AwardItems> completeRewardList = new ArrayList<AwardItems>();
@@ -411,7 +426,13 @@ public class PlayerInstanceModule extends PlayerModule {
 		InstanceRewardCfg instanceRewardCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceRewardCfg.class, instanceId);
 		if (instanceRewardCfg != null) {
 			// 多倍怪物经验，给多倍经验药水
-			int multiple = 2;
+			int multiple = 1;
+			if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
+				multiple = 2;
+			}
+			else if (statisticsEntity.getTripleExpLeftTimes() > 0){
+				multiple = 3;
+			}
 			
 			for (int i = 0; i < count; ++i) {
 				AwardItems completeReward = AwardItems.valueOf();
@@ -443,8 +464,17 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 体力和次数修改
-		statisticsEntity.setFatigue(statisticsEntity.getFatigue() - fatigueChange);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_SWEEP, HS.code.INSTANCE_SWEEP_C_VALUE);
 		statisticsEntity.addInstanceCountDaily(instanceId, count);
+		if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
+			statisticsEntity.decreaseDoubleExpLeft(1);
+			player.getPlayerData().syncStatisticsExpLeftInfo();
+		}
+		else if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
+			statisticsEntity.decreaseTripleExpLeft(1);
+			player.getPlayerData().syncStatisticsExpLeftInfo();
+		}
+		
 		statisticsEntity.notifyUpdate(true);
 
 		HSInstanceSweepRet.Builder response = HSInstanceSweepRet.newBuilder();
@@ -453,7 +483,6 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 		response.setSweepReward(sweepReward.getBuilder());
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SWEEP_S, response));
-
 		return true;
 	}
 
@@ -504,7 +533,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		
 		ConsumeItems consume = ConsumeItems.valueOf();
 		consume.addGold(GsConst.INSTANCE_REVIVE_CONSUME[reviveCount - 1]);
-		consume.consumeTakeAffectAndPush(player, Action.INSTANCE_REVIVE);
+		consume.consumeTakeAffectAndPush(player, Action.INSTANCE_REVIVE, HS.code.INSTANCE_REVIVE_C_VALUE);
 
 		this.curReviveCount = reviveCount;
 

@@ -292,7 +292,7 @@ public class GmService extends GameService {
 		//刷新商店
 		case "reshop": {
 			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.REFRESH_SHOP);
-			msg.pushParam(gmValue);
+			msg.pushParam((int)gmValue);
 			if (false == HawkApp.getInstance().postMsg(player.getXid(), msg)) {
 				HawkLog.errPrintln("post refresh message failed");
 				player.sendError(gm.GMOPERATION_C_VALUE, error.SERVER_ERROR_VALUE);
@@ -408,12 +408,12 @@ public class GmService extends GameService {
 				return;
 			}
 			else {
-				consume.consumeTakeAffectAndPush(player, Action.GM_ACTION);
+				consume.consumeTakeAffectAndPush(player, Action.GM_ACTION, HS.gm.GMOPERATION_C_VALUE);
 			}
 		}
 
 		if (award.hasAwardItem() == true) {
-			award.rewardTakeAffectAndPush(player, Action.GM_ACTION);
+			award.rewardTakeAffectAndPush(player, Action.GM_ACTION, HS.gm.GMOPERATION_C_VALUE);
 		}
 
 		GMOperationRet.Builder response = GMOperationRet.newBuilder();

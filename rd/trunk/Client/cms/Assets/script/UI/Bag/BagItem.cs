@@ -42,6 +42,10 @@ public class BagItem : MonoBehaviour
 
 	//bag item data--------
 	ItemData itemData =  null;
+	BagType bagType ;
+
+	int	leftKeyCount = 0;//剩余钥匙数量 
+	string needKeyId = null;
 
 
 	// Use this for initialization
@@ -59,6 +63,7 @@ public class BagItem : MonoBehaviour
 			Logger.LogError(string.Format("can't find itemid = {0} for refresh bagItem",itemData.itemId));
 			return;
 		}
+		this.bagType = bagType;
 		this.itemData = itemData;
 		baoXiangNeedPanel.gameObject.SetActive (bagType == BagType.BaoXiang);
 		baoshiNeedPanel.gameObject.SetActive (bagType == BagType.Baoshi);
@@ -70,7 +75,7 @@ public class BagItem : MonoBehaviour
 
 		if (bagType == BagType.BaoXiang)
 		{
-			SetBaoshiProperty(itemStaticData);
+			SetBaoxiangProperty(itemStaticData);
 		}
 		else if (bagType == BagType.Baoshi)
 		{
@@ -85,7 +90,17 @@ public class BagItem : MonoBehaviour
 
 	private	void	SetBaoxiangProperty(ItemStaticData stdata)
 	{
-		ItemStaticData needItemStData = StaticDataMgr.Instance.GetItemData (stdata.needItem);
+		if (string.IsNullOrEmpty (stdata.needItem)) 
+		{
+			leftKeyCount = -1;//no need key
+			needItemName.text = "";
+			needItemCount.text = "";
+			return;
+		}
+		string [] szstr = stdata.needItem.Split ('_');
+		needKeyId = szstr [1];
+
+		ItemStaticData needItemStData = StaticDataMgr.Instance.GetItemData (needKeyId);
 		if(null == needItemStData)
 		{
 			Logger.LogError(string.Format("can't find itemid = {0} for baoxiang need item", stdata.needItem));
@@ -95,12 +110,12 @@ public class BagItem : MonoBehaviour
 
 		int itemCount = 0;
 
-		ItemData gItemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem (stdata.needItem);
+		ItemData gItemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem (needKeyId);
 		if (null != gItemData) 
 		{
 			itemCount = gItemData.count;
 		}
-
+		leftKeyCount = itemCount;
 		needItemCount.text = string.Format (StaticDataMgr.Instance.GetTextByID ("剩余:{0}"), itemCount);
 	}
 
@@ -142,6 +157,36 @@ public class BagItem : MonoBehaviour
 
 	void	OnUseButtonClicked(GameObject go)
 	{
+		if (BagType.BaoXiang == bagType)
+		{
+			OpenBox();
+		}
+	}
+
+	void OpenBox()
+	{
+		//leftKeyCount < 0  no need key
+		if (leftKeyCount == 0) 
+		{
+			BuyItem.BuyItemParam param = new BuyItem.BuyItemParam();
+			
+			param.itemId = needKeyId;
+			param.defaultbuyCount = 1;
+			param.maxCount = GameConfig.Instance.maxBuyCountInBag;
+			param.isShowCoinButton = true;
+			
+			BuyItem.OpenWith(param);
+		}
+		else
+		{
+			int maxOpenCount = itemData.count;
+			if(leftKeyCount > 0 && leftKeyCount < maxOpenCount)
+			{
+				maxOpenCount = leftKeyCount;
+			}
+			maxOpenCount = maxOpenCount < GameConfig.Instance.maxOpenBoxCount?maxOpenCount:GameConfig.Instance.maxOpenBoxCount;
+			OpenBaoxiangDlg.OpenWith(itemData,maxOpenCount);
+		}
 	}
 
 	void	OnSellSelectButtonClicked(GameObject go)

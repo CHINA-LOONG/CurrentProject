@@ -6,10 +6,10 @@ using System.Collections.Generic;
 public class UIMailList : MonoBehaviour
 {
 
-    public Text textMailnone;   //没有附件哦
+    //public Text textMailnone;   //没有附件哦
 
     public GameObject content;
-    public GameObject mainNone;
+    //public GameObject mainNone;
 
     public System.Action<PB.HSMail> actionReadMail;
 
@@ -41,7 +41,7 @@ public class UIMailList : MonoBehaviour
         DeleteAllElement();
         //this.infos = list;
 
-        mainNone.SetActive(list.Count<=0);
+        //mainNone.SetActive(list.Count<=0);
         if (list.Count<=0)
 			return;
         list.Sort(SortMail);

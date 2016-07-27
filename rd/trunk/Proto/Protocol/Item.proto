@@ -2,6 +2,12 @@ option java_package = "com.hawk.game.protocol";
 
 // ------------------------------------------------------- struct -------------------------------------------------------
 
+message ItemSell
+{
+	required string itemId = 1;
+	required int32  count = 2;
+}
+
 // 用于同步物品信息
 message ItemInfo
 {
@@ -27,9 +33,34 @@ message HSItemUse
 	optional int32  targetID = 3;
 }
 
-// 使用道具
+// 使用道具返回
 message HSItemUseRet
 {
+}
+
+// 批量使用宝箱
+message HSItemBoxUseBatch
+{
+	required string itemId = 1;
+	required int32  itemCount = 2;
+}
+
+// 批量使用宝箱返回
+message HSItemBoxUseBatchRet
+{
+
+}
+
+// 批量卖物品
+message HSItemSellBatch
+{
+	repeated ItemSell items = 1;
+}
+
+// 批量卖物品返回
+message HSItemSellBatchRet
+{
+
 }
 
 // 购买道具

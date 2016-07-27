@@ -68,8 +68,8 @@ public class PlayerShopModule extends PlayerModule{
 		
 		AwardItems award = new AwardItems();
 		award.addCoin(10000);
-		consume.consumeTakeAffectAndPush(player, Action.SHOP_GOLD2COIN);
-		award.rewardTakeAffectAndPush(player, Action.SHOP_GOLD2COIN);
+		consume.consumeTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.ShopGold2CoinC_VALUE);
+		award.rewardTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.ShopGold2CoinC_VALUE);
 		
 		player.getPlayerData().getStatisticsEntity().addCoinOrderCount();
 		player.getPlayerData().getStatisticsEntity().addCoinOrderCountDaily();
@@ -118,7 +118,7 @@ public class PlayerShopModule extends PlayerModule{
 		}
 		
 		ShopUtil.refreshShopData(protocol.getType(), player);
-		consume.consumeTakeAffectAndPush(player, Action.SHOP_REFRESH);
+		consume.consumeTakeAffectAndPush(player, Action.SHOP_REFRESH, HS.code.ShopRefreshC_VALUE);
 		shopEntity.increaseShopRefreshNum(protocol.getType());
 		shopEntity.notifyUpdate(true);
 		
@@ -176,9 +176,16 @@ public class PlayerShopModule extends PlayerModule{
 		}
 		
 		AwardItems award = new AwardItems();
-		award.addItem(itemInfo.getItemId(), itemInfo.getCount());
-		consume.consumeTakeAffectAndPush(player, Action.SHOP_ITEM_BUY);
-		award.rewardTakeAffectAndPush(player, Action.SHOP_ITEM_BUY);
+		if (itemCfg.getType() == Const.toolType.EQUIPTOOL_VALUE) {
+			award.addEquip(itemInfo.getItemId(), itemInfo.getCount(), itemInfo.getStage(), itemInfo.getLevel());
+		}
+		else
+		{
+			award.addItem(itemInfo.getItemId(), itemInfo.getCount());
+		}
+		
+		consume.consumeTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, HS.code.ShopItemBuyC_VALUE);
+		award.rewardTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, HS.code.ShopItemBuyC_VALUE);
 		shopEntity.getShopItemsList(protocol.getType()).get(protocol.getSlot()).setHasBuy(true);
 		shopEntity.notifyUpdate(true);
 

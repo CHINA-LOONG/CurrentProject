@@ -32,7 +32,13 @@ namespace PB
     {
             
       [global::ProtoBuf.ProtoEnum(Name=@"GEN_TEST_ACCOUNT", Value=100)]
-      GEN_TEST_ACCOUNT = 100
+      GEN_TEST_ACCOUNT = 100,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GMOPERATION_C", Value=101)]
+      GMOPERATION_C = 101,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GMOPERATION_S", Value=102)]
+      GMOPERATION_S = 102
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"code")]
@@ -132,6 +138,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_STAGE_UP_S", Value=2011)]
       MONSTER_STAGE_UP_S = 2011,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_LOCK_C", Value=2012)]
+      MONSTER_LOCK_C = 2012,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_LOCK_S", Value=2013)]
+      MONSTER_LOCK_S = 2013,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ASSIST_C", Value=3001)]
       INSTANCE_ASSIST_C = 3001,
             
@@ -167,6 +179,12 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_RESET_COUNT_S", Value=3012)]
       INSTANCE_RESET_COUNT_S = 3012,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_REVIVE_C", Value=3013)]
+      INSTANCE_REVIVE_C = 3013,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_REVIVE_S", Value=3014)]
+      INSTANCE_REVIVE_S = 3014,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
@@ -314,6 +332,12 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"ShopDataSynS", Value=8008)]
       ShopDataSynS = 8008,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopGold2CoinC", Value=8009)]
+      ShopGold2CoinC = 8009,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ShopGold2CoinS", Value=8010)]
+      ShopGold2CoinS = 8010,
             
       [global::ProtoBuf.ProtoEnum(Name=@"AllianceCreateC", Value=9001)]
       AllianceCreateC = 9001,

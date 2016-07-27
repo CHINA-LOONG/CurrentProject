@@ -517,8 +517,9 @@ public class AwardItems {
 	 * @param player
 	 * @param action
 	 */
-	public void rewardTakeAffectAndPush(Player player, Action action) {
+	public void rewardTakeAffectAndPush(Player player, Action action, int hsCode) {
 		if (rewardTakeAffect(player, action) == true) {
+			rewardInfo.setHsCode(hsCode);
 			player.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_REWARD_S_VALUE, rewardInfo));
 		}
 	}

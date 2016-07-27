@@ -300,6 +300,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
             GemInfo gemInfo = new GemInfo(element);
             curData.gemList.Add(gemInfo);
         }
+        curData.RefreshGemAttr();
         #endregion
 
         ICallBackDelegate.OnMosaicReturn(selIndex);
@@ -322,6 +323,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
             GemInfo gemInfo = new GemInfo(element);
             curData.gemList.Add(gemInfo);
         }
+        curData.RefreshGemAttr();
         #endregion
 
         ICallBackDelegate.OnMosaicReturn(selIndex);

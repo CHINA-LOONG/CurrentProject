@@ -114,7 +114,7 @@ public class GameUnit : IComparable
     //public List<Equipment> equipmentList;
     public List<string> weakPointList;
     //add: xiaolong 2015-9-9 15:41:15
-    public EquipData[] equipList = new EquipData[6];
+    public EquipData[] equipList = new EquipData[(int)PartType.NUM_EQUIP_PART];
 
     //只在客户端计算使用的属性
     float lastActionOrder = 0.0f;
@@ -174,22 +174,16 @@ public class GameUnit : IComparable
 		//wpHpList = new Dictionary<string, WeakPointRuntimeData>();
 
         GameDataMgr gdMgr = GameDataMgr.Instance;
+        UpdateAttributeInternal();
+
         UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
-        UpdateAttributeInternal(unitRowData);
         property = unitRowData.property;
         assetID = unitRowData.assetID;
-        //test only
-        if (assetID.Contains("boss"))
-        {
-            isBoss = true;
-        }
-
         isEvolutionable = unitRowData.isEvolutionable!=0;
         evolutionID = unitRowData.evolutionID;
         name = unitRowData.NickNameAttr;
-		//Ai = unitRowData.AI;
+        //Ai = unitRowData.AI;
 
-        //TODO: 装备系统附加值
         OnPlayerAttrChanged();
         antiCriticalRatio = 0.0f;
         additionDamageRatio = 0.0f;
@@ -216,6 +210,11 @@ public class GameUnit : IComparable
         //不是玩家宠物有副本加成 
         if (isPlayer == false)
         {
+            //test only
+            if (assetID.Contains("boss"))
+            {
+                isBoss = true;
+            }
             InstanceData instData = BattleController.Instance.InstanceData;
             //掉落
             //goldNoteMax = (int)(unitRowData.goldNoteMaxValueModifyRate * unitBaseRowData.goldNoteMax * instData.goldCoef);
@@ -304,17 +303,38 @@ public class GameUnit : IComparable
 		}
 	}
 
-    private void UpdateAttributeInternal(UnitData unitRowData)
+    private void UpdateAttributeInternal()
     {
         GameDataMgr gdMgr = GameDataMgr.Instance;
         UnitBaseData unitBaseRowData = StaticDataMgr.Instance.GetUnitBaseRowData(pbUnit.level);
-        health = (int)(unitRowData.healthModifyRate * unitBaseRowData.health + gdMgr.PlayerDataAttr.equipHealth);
-        strength = (int)(unitRowData.strengthModifyRate * unitBaseRowData.strength + gdMgr.PlayerDataAttr.equipStrength);
-        intelligence = (int)(unitRowData.intelligenceModifyRate * unitBaseRowData.intelligence + gdMgr.PlayerDataAttr.equipIntelligence);
-        speed = (int)(unitRowData.speedModifyRate * unitBaseRowData.speed + gdMgr.PlayerDataAttr.equipSpeed);
-        defense = (int)(unitRowData.defenseModifyRate * unitBaseRowData.defense + gdMgr.PlayerDataAttr.equipDefense);
+        UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
+        UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(pbUnit.stage);
+        
+        //一级属性
+        float stageRatio = 1.0f + unitStageData.modifyRate;
+        health = (int)(stageRatio * unitRowData.healthModifyRate * (unitBaseRowData.health + unitStageData.health) + gdMgr.PlayerDataAttr.equipHealth);
+        strength = (int)(stageRatio * unitRowData.strengthModifyRate * (unitBaseRowData.strength + unitStageData.strength) + gdMgr.PlayerDataAttr.equipStrength);
+        intelligence = (int)(stageRatio * unitRowData.intelligenceModifyRate * (unitBaseRowData.intelligence + unitStageData.intelligence) + gdMgr.PlayerDataAttr.equipIntelligence);
+        speed = (int)(stageRatio * unitRowData.speedModifyRate * (unitBaseRowData.speed + unitStageData.speed) + gdMgr.PlayerDataAttr.equipSpeed);
+        defense = (int)(stageRatio * unitRowData.defenseModifyRate * (unitBaseRowData.defense + unitStageData.defense) + gdMgr.PlayerDataAttr.equipDefense);
         endurance = (int)(unitRowData.enduranceModifyRate * unitBaseRowData.endurance + gdMgr.PlayerDataAttr.equipEndurance);
         recovery = (int)(unitRowData.recoveryRate * unitBaseRowData.recovery);
+        //装备附加一级属性
+        EquipData curEquipData = null;
+        for (int i = 0; i < (int)PartType.NUM_EQUIP_PART; ++i)
+        {
+            curEquipData = equipList[i];
+            if (equipList[i] != null)
+            {
+                health += curEquipData.health + curEquipData.healthStrengthen + curEquipData.healthGem;
+                strength += curEquipData.strength + curEquipData.strengthStrengthen + curEquipData.strengthGem;
+                intelligence += curEquipData.intelligence + curEquipData.intelligenceStrengthen + curEquipData.intelligenceGem;
+                speed += curEquipData.speed + curEquipData.speedStrengthen + curEquipData.speedGem;
+                defense += curEquipData.defense + curEquipData.defenseStrengthen + curEquipData.defenseGem;
+                //endurance += curEquipData.endurance + curEquipData.enduranceStrengthen + curEquipData.enduranceGem;
+                //recovery += curEquipData.recovery + curEquipData.recoveryStrengthen + curEquipData.recoveryGem;
+            }
+        }
         //二级属性
         curLife = (int)SpellConst.healthToLife * health;
         maxLife = curLife;
@@ -328,7 +348,7 @@ public class GameUnit : IComparable
         if (pbUnit.level != targetLvl)
         {
             pbUnit.level = targetLvl;
-            UpdateAttributeInternal(StaticDataMgr.Instance.GetUnitRowData(pbUnit.id));
+            UpdateAttributeInternal();
         }
     }
 
@@ -337,6 +357,42 @@ public class GameUnit : IComparable
         GameDataMgr gdMgr = GameDataMgr.Instance;
         criticalRatio = gdMgr.PlayerDataAttr.criticalRatio;
         hitRatio = gdMgr.PlayerDataAttr.hitRatio;
+        //TODO: player equips
+    }
+
+    public void SetEquipData(int part, EquipData equipdata, bool refreshAttr = true)
+    {
+        if (part < (int)PartType.NUM_EQUIP_PART)
+        {
+            EquipData preEquip = equipList[part];
+            if (preEquip != null)
+            {
+                preEquip.monsterId = BattleConst.invalidMonsterID;
+            }
+            equipList[part] = equipdata;
+            if (equipdata != null)
+            {
+                equipdata.monsterId = pbUnit.guid;
+            }
+            if (refreshAttr == true)
+            {
+                UpdateAttributeInternal();
+            }
+        }
+    }
+
+    public void SetStage(int stage)
+    {
+        if (pbUnit.stage != stage)
+        {
+            pbUnit.stage = stage;
+            UpdateAttributeInternal();
+        }
+    }
+
+    public void ForceRefreshAttr()
+    {
+        UpdateAttributeInternal();
     }
 	
 	void InitWeakPoint(string strWeak)

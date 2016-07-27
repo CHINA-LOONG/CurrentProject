@@ -34,40 +34,4 @@ public class ConfigUtil {
 		}
 		return false;
 	}
-
-	/**
-	 * 检测itemType的itemId 
-	 * 
-	 * @param itemType
-	 * @param itemId
-	 * @return
-	 */
-	public static boolean checkIsNotEquip(int itemType) {
-		if (itemType == Const.itemType.PLAYER_ATTR_VALUE  ||
-			itemType == Const.itemType.MONSTER_ATTR_VALUE ||	
-			itemType == Const.itemType.ITEM_VALUE		  ||	
-			itemType == Const.itemType.EQUIP_VALUE		  ||	
-			itemType == Const.itemType.GROUP_VALUE		  
-			) 
-		{
-			return true;
-		}
-		
-		return false;
-	}
-	
-	/**
-	 * 检测itemType的itemId 
-	 * 
-	 * @param itemType
-	 * @param itemId
-	 * @return
-	 */
-	public static boolean checkIsEquip(int itemType) {
-		if (itemType == Const.itemType.EQUIP_VALUE) {
-			return true;
-		} 
-		
-		return false;
-	}
 }

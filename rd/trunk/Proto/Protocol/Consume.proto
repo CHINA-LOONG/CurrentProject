@@ -29,4 +29,5 @@ message HSConsumeInfo
 	
 	// 移除的物品 
 	repeated ConsumeItem  consumeItems = 3;
+	optional int32  hsCode = 4;
 }

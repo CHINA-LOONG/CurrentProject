@@ -118,7 +118,9 @@ public class UIShop : UIBase
 		if (shopData.refreshTimesLeft < 1)
 		{
 			//todo: modify IM Message
-			Logger.LogError("-------今天刷新次数已经用完。。。。");
+			//Logger.LogError("-------今天刷新次数已经用完。。。。");
+			UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("shop_refresh"),
+			                              (int)PB.ImType.PROMPT);
 			return;
 		}
 		//ShopDataMgr.ShopDescWithLevel desc = shopDataMgr.GetShopDesc (GameDataMgr.Instance.PlayerDataAttr.level, curShopType);

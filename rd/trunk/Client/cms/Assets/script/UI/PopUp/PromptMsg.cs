@@ -71,7 +71,7 @@ namespace MsgBox
 
 		private	void	FirstInit()
 		{
-			isFirst = true;
+			isFirst = false;
 			EventTriggerListener.Get (cancelButton.gameObject).onClick = OnCancelButtonClilck;
 			EventTriggerListener.Get (conformButton1.gameObject).onClick = OnConformButtonClick;
 			EventTriggerListener.Get (conformButton2.gameObject).onClick = OnConformButtonClick;

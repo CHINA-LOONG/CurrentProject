@@ -18,6 +18,7 @@ public class EXPListItem : MonoBehaviour
     public Text textCount;
     public Text textExp;
 
+    public Text text_Use;
     public Button btnUsed;
     public IUsedExpCallBack usedExpDelegate;
 
@@ -64,11 +65,16 @@ public class EXPListItem : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        text_Use.text = StaticDataMgr.Instance.GetTextByID("exp_use");
+    }
 
     public void OnReload(ItemStaticData staticData,bool isMaxleve)
     {
         itemData = staticData;
         itemInfo = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(itemData.id);
+        IsMaxlevel = isMaxleve;
         useCount = 0;
 
         ItemData tempInfo = new ItemData() { itemId = itemData.id, count = 0 };
@@ -84,7 +90,7 @@ public class EXPListItem : MonoBehaviour
 
         UIUtil.SetStageColor(textName, itemData);
         UpdateCount(useCount);
-        textExp.text = string.Format("{0}+{1}",StaticDataMgr.Instance.GetTextByID("Exp"),itemData.addAttrValue);
+        textExp.text = string.Format("{0}+{1}","Exp",itemData.addAttrValue);
     }
 
     void UpdateCount(int useCount)

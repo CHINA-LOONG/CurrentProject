@@ -1964,6 +1964,16 @@ public final class Reward {
      */
     com.hawk.game.protocol.Reward.RewardItemOrBuilder getRewardItemsOrBuilder(
         int index);
+
+    // optional int32 hsCode = 4;
+    /**
+     * <code>optional int32 hsCode = 4;</code>
+     */
+    boolean hasHsCode();
+    /**
+     * <code>optional int32 hsCode = 4;</code>
+     */
+    int getHsCode();
   }
   /**
    * Protobuf type {@code HSRewardInfo}
@@ -2047,6 +2057,11 @@ public final class Reward {
                 mutable_bitField0_ |= 0x00000004;
               }
               rewardItems_.add(input.readMessage(com.hawk.game.protocol.Reward.RewardItem.PARSER, extensionRegistry));
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000002;
+              hsCode_ = input.readInt32();
               break;
             }
           }
@@ -2221,10 +2236,27 @@ public final class Reward {
       return rewardItems_.get(index);
     }
 
+    // optional int32 hsCode = 4;
+    public static final int HSCODE_FIELD_NUMBER = 4;
+    private int hsCode_;
+    /**
+     * <code>optional int32 hsCode = 4;</code>
+     */
+    public boolean hasHsCode() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 hsCode = 4;</code>
+     */
+    public int getHsCode() {
+      return hsCode_;
+    }
+
     private void initFields() {
       playerAttr_ = com.hawk.game.protocol.Player.SynPlayerAttr.getDefaultInstance();
       monstersAttr_ = java.util.Collections.emptyList();
       rewardItems_ = java.util.Collections.emptyList();
+      hsCode_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2259,6 +2291,9 @@ public final class Reward {
       for (int i = 0; i < rewardItems_.size(); i++) {
         output.writeMessage(3, rewardItems_.get(i));
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(4, hsCode_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2279,6 +2314,10 @@ public final class Reward {
       for (int i = 0; i < rewardItems_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, rewardItems_.get(i));
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, hsCode_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2421,6 +2460,8 @@ public final class Reward {
         } else {
           rewardItemsBuilder_.clear();
         }
+        hsCode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -2475,6 +2516,10 @@ public final class Reward {
         } else {
           result.rewardItems_ = rewardItemsBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.hsCode_ = hsCode_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2545,6 +2590,9 @@ public final class Reward {
               rewardItemsBuilder_.addAllMessages(other.rewardItems_);
             }
           }
+        }
+        if (other.hasHsCode()) {
+          setHsCode(other.getHsCode());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -3290,6 +3338,39 @@ public final class Reward {
         return rewardItemsBuilder_;
       }
 
+      // optional int32 hsCode = 4;
+      private int hsCode_ ;
+      /**
+       * <code>optional int32 hsCode = 4;</code>
+       */
+      public boolean hasHsCode() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 hsCode = 4;</code>
+       */
+      public int getHsCode() {
+        return hsCode_;
+      }
+      /**
+       * <code>optional int32 hsCode = 4;</code>
+       */
+      public Builder setHsCode(int value) {
+        bitField0_ |= 0x00000008;
+        hsCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 hsCode = 4;</code>
+       */
+      public Builder clearHsCode() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        hsCode_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:HSRewardInfo)
     }
 
@@ -3326,11 +3407,12 @@ public final class Reward {
       "\"\232\001\n\nRewardItem\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \001(" +
       "\003\022\016\n\006itemId\030\003 \002(\t\022\r\n\005count\030\004 \001(\005\022\r\n\005stag" +
       "e\030\005 \001(\005\022\r\n\005level\030\006 \001(\005\022\030\n\tattrDatas\030\007 \003(" +
-      "\0132\005.Attr\022\033\n\007monster\030\010 \001(\0132\n.HSMonster\"{\n" +
-      "\014HSRewardInfo\022\"\n\nplayerAttr\030\001 \001(\0132\016.SynP" +
-      "layerAttr\022%\n\014monstersAttr\030\002 \003(\0132\017.SynMon" +
-      "sterAttr\022 \n\013RewardItems\030\003 \003(\0132\013.RewardIt",
-      "emB\030\n\026com.hawk.game.protocol"
+      "\0132\005.Attr\022\033\n\007monster\030\010 \001(\0132\n.HSMonster\"\213\001" +
+      "\n\014HSRewardInfo\022\"\n\nplayerAttr\030\001 \001(\0132\016.Syn" +
+      "PlayerAttr\022%\n\014monstersAttr\030\002 \003(\0132\017.SynMo" +
+      "nsterAttr\022 \n\013RewardItems\030\003 \003(\0132\013.RewardI",
+      "tem\022\016\n\006hsCode\030\004 \001(\005B\030\n\026com.hawk.game.pro" +
+      "tocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3348,7 +3430,7 @@ public final class Reward {
           internal_static_HSRewardInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSRewardInfo_descriptor,
-              new java.lang.String[] { "PlayerAttr", "MonstersAttr", "RewardItems", });
+              new java.lang.String[] { "PlayerAttr", "MonstersAttr", "RewardItems", "HsCode", });
           return null;
         }
       };

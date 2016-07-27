@@ -76,6 +76,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"CONFIG_NOT_FOUND", Value=7)]
       CONFIG_NOT_FOUND = 7,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"UNSUPPORT_ACTION", Value=8)]
+      UNSUPPORT_ACTION = 8,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SERVER_ERROR", Value=4096)]
       SERVER_ERROR = 4096
     }
@@ -91,7 +94,16 @@ namespace PB
       PLAYER_NICKNAME_EXIST = 131074,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PUID_EXIST", Value=131075)]
-      PUID_EXIST = 131075
+      PUID_EXIST = 131075,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"COINS_NOT_ENOUGH", Value=131076)]
+      COINS_NOT_ENOUGH = 131076,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=131077)]
+      GOLD_NOT_ENOUGH = 131077,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"FATIGUE_NOT_ENOUGH", Value=131078)]
+      FATIGUE_NOT_ENOUGH = 131078
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"monsterError")]
@@ -117,7 +129,16 @@ namespace PB
       STAGE_LEVEL_NOT_ENOUGH = 196614,
             
       [global::ProtoBuf.ProtoEnum(Name=@"STAGE_CONSUME", Value=196615)]
-      STAGE_CONSUME = 196615
+      STAGE_CONSUME = 196615,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"BATTLE_MONSTER_COUNT", Value=196616)]
+      BATTLE_MONSTER_COUNT = 196616,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LOCK_ALREADY", Value=196617)]
+      LOCK_ALREADY = 196617,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UNLOCK_ALREADY", Value=196624)]
+      UNLOCK_ALREADY = 196624
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"itemError")]
@@ -127,32 +148,26 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_FOUND", Value=262145)]
       ITEM_NOT_FOUND = 262145,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"COINS_NOT_ENOUGH", Value=262146)]
-      COINS_NOT_ENOUGH = 262146,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=262146)]
+      EQUIP_NOT_FOUND = 262146,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=262147)]
-      GOLD_NOT_ENOUGH = 262147,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_ENOUGH", Value=262147)]
+      ITEM_NOT_ENOUGH = 262147,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=262148)]
-      EQUIP_NOT_FOUND = 262148,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_NOT_ALLOW", Value=262148)]
+      ITEM_BUY_NOT_ALLOW = 262148,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_ENOUGH", Value=262149)]
-      ITEM_NOT_ENOUGH = 262149,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_NOT_ALLOW", Value=262149)]
+      ITEM_SELL_NOT_ALLOW = 262149,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_NOT_ALLOW", Value=262150)]
-      ITEM_BUY_NOT_ALLOW = 262150,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MAX_LEVEL_ALREADY", Value=262150)]
+      EQUIP_MAX_LEVEL_ALREADY = 262150,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_NOT_ALLOW", Value=262151)]
-      ITEM_SELL_NOT_ALLOW = 262151,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_LEVEL_NOT_ENOUGH", Value=262151)]
+      EQUIP_LEVEL_NOT_ENOUGH = 262151,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MAX_LEVEL_ALREADY", Value=262152)]
-      EQUIP_MAX_LEVEL_ALREADY = 262152,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_LEVEL_NOT_ENOUGH", Value=262153)]
-      EQUIP_LEVEL_NOT_ENOUGH = 262153,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MAX_STAGE_ALREADY", Value=262154)]
-      EQUIP_MAX_STAGE_ALREADY = 262154,
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MAX_STAGE_ALREADY", Value=262152)]
+      EQUIP_MAX_STAGE_ALREADY = 262152,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_DRESS_ALREADY", Value=262160)]
       EQUIP_DRESS_ALREADY = 262160,
@@ -176,7 +191,13 @@ namespace PB
       EQUIP_GEM_NOT_FOUND = 262166,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_CAN_NOT_OPEN_SLOT", Value=262167)]
-      EQUIP_CAN_NOT_OPEN_SLOT = 262167
+      EQUIP_CAN_NOT_OPEN_SLOT = 262167,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_MISMATCH", Value=262168)]
+      EQUIP_GEM_MISMATCH = 262168,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SLOT_NOT_PUNCH", Value=262169)]
+      EQUIP_SLOT_NOT_PUNCH = 262169
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"questError")]
@@ -207,7 +228,10 @@ namespace PB
       INSTANCE_COUNT = 393219,
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_FATIGUE", Value=393220)]
-      INSTANCE_FATIGUE = 393220
+      INSTANCE_FATIGUE = 393220,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_REVIVE_COUNT", Value=393221)]
+      INSTANCE_REVIVE_COUNT = 393221
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailError")]
@@ -241,7 +265,10 @@ namespace PB
       ALLIANCE_NAME_ERROR = 524291,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NAME_EXIST", Value=524292)]
-      ALLIANCE_NAME_EXIST = 524292
+      ALLIANCE_NAME_EXIST = 524292,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOT_JOIN", Value=524293)]
+      ALLIANCE_NOT_JOIN = 524293
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"shopError")]
@@ -255,7 +282,10 @@ namespace PB
       SHOP_ITEM_ALREADY_BUY = 589826,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SHOP_REFRESH_MAX_COUNT", Value=589827)]
-      SHOP_REFRESH_MAX_COUNT = 589827
+      SHOP_REFRESH_MAX_COUNT = 589827,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_GOLD2COIN_MAX_COUNT", Value=589827)]
+      SHOP_GOLD2COIN_MAX_COUNT = 589827
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"imError")]

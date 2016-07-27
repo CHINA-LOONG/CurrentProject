@@ -138,6 +138,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_STAGE_UP_S", Value=2011)]
       MONSTER_STAGE_UP_S = 2011,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_LOCK_C", Value=2012)]
+      MONSTER_LOCK_C = 2012,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_LOCK_S", Value=2013)]
+      MONSTER_LOCK_S = 2013,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ASSIST_C", Value=3001)]
       INSTANCE_ASSIST_C = 3001,
             
@@ -186,23 +192,35 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_S", Value=4002)]
       ITEM_USE_S = 4002,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_C", Value=4003)]
-      ITEM_SELL_C = 4003,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BOX_USE_BATCH_C", Value=4003)]
+      ITEM_BOX_USE_BATCH_C = 4003,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_S", Value=4004)]
-      ITEM_SELL_S = 4004,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BOX_USE_BATCH_S", Value=4004)]
+      ITEM_BOX_USE_BATCH_S = 4004,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_C", Value=4005)]
-      ITEM_BUY_C = 4005,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_C", Value=4005)]
+      ITEM_SELL_C = 4005,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_S", Value=4006)]
-      ITEM_BUY_S = 4006,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_S", Value=4006)]
+      ITEM_SELL_S = 4006,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_COMPOSE_C", Value=4007)]
-      ITEM_COMPOSE_C = 4007,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_BATCH_C", Value=4007)]
+      ITEM_SELL_BATCH_C = 4007,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_COMPOSE_S", Value=4008)]
-      ITEM_COMPOSE_S = 4008,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_BATCH_S", Value=4008)]
+      ITEM_SELL_BATCH_S = 4008,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_C", Value=4009)]
+      ITEM_BUY_C = 4009,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_S", Value=4010)]
+      ITEM_BUY_S = 4010,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_COMPOSE_C", Value=4011)]
+      ITEM_COMPOSE_C = 4011,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_COMPOSE_S", Value=4012)]
+      ITEM_COMPOSE_S = 4012,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SELL_C", Value=4101)]
       EQUIP_SELL_C = 4101,
@@ -349,7 +367,13 @@ namespace PB
       SETTING_BLOCK_C = 10003,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SETTING_BLOCK_S", Value=10004)]
-      SETTING_BLOCK_S = 10004
+      SETTING_BLOCK_S = 10004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_EXP_LEFT_TIMES", Value=11001)]
+      STATISTICS_EXP_LEFT_TIMES = 11001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SHOP_REFRESH_TIMES", Value=11002)]
+      STATISTICS_SHOP_REFRESH_TIMES = 11002
     }
   
 }

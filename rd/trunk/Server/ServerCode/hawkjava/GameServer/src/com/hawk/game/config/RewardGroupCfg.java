@@ -8,6 +8,7 @@ import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase.Id;
 
 import com.hawk.game.item.ItemInfo;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.WeightUtil;
 import com.hawk.game.util.WeightUtil.WeightItem;
@@ -56,7 +57,7 @@ public class RewardGroupCfg extends HawkConfigBase  {
 				String[] items = itemArray.split("_");
 				if (items.length == 4) {
 					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]));
-					if (ConfigUtil.checkIsNotEquip(item.getType()))
+					if (item.getType() != Const.itemType.MONSTER_VALUE && item.getType() != Const.itemType.EQUIP_VALUE)
 					{
 						weightList.add(WeightItem.valueOf(item, Integer.valueOf(items[3])));
 					}
@@ -64,9 +65,19 @@ public class RewardGroupCfg extends HawkConfigBase  {
 						return false;
 					}	
 				}
+				if (items.length == 5) {
+					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2], Integer.valueOf(items[3])));
+					if (item.getType() == Const.itemType.MONSTER_VALUE)
+					{
+						weightList.add(WeightItem.valueOf(item, Integer.valueOf(items[4])));
+					}
+					else {
+						return false;
+					}	
+				}
 				else if (items.length == 6) {
 					ItemInfo item = ItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]));
-					if (ConfigUtil.checkIsNotEquip(item.getType()))
+					if (item.getType() == Const.itemType.EQUIP_VALUE)
 					{
 						weightList.add(WeightItem.valueOf(item, Integer.valueOf(items[5])));
 					}

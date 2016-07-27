@@ -37,6 +37,8 @@ import com.hawk.game.protocol.Monster.HSMonsterBreakRet;
 import com.hawk.game.protocol.Monster.HSMonsterCatch;
 import com.hawk.game.protocol.Monster.HSMonsterFeed;
 import com.hawk.game.protocol.Monster.HSMonsterFeedRet;
+import com.hawk.game.protocol.Monster.HSMonsterLock;
+import com.hawk.game.protocol.Monster.HSMonsterLockRet;
 import com.hawk.game.protocol.Monster.HSMonsterSkillUp;
 import com.hawk.game.protocol.Monster.HSMonsterSkillUpRet;
 import com.hawk.game.protocol.Monster.HSMonsterStageUp;
@@ -209,7 +211,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		if (false == consume.checkConsume(player, hsCode)) {
 			return false;
 		}
-		consume.consumeTakeAffectAndPush(player, Action.SKILL_UP);
+		consume.consumeTakeAffectAndPush(player, Action.SKILL_UP, HS.code.MONSTER_SKILL_UP_C_VALUE);
 
 		// 更新技能点
 		if (curSkillPoint == GsConst.MAX_SKILL_POINT) {
@@ -273,7 +275,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		if (false == consume.checkConsume(player, hsCode)) {
 			return false;
 		}
-		
+
 		// 验证怪物消耗
 		List<ItemInfo> demandMonsterList = new LinkedList<>(stageCfg.getDemandMonsterList());
 		for (ItemInfo element : demandMonsterList) {
@@ -281,12 +283,18 @@ public class PlayerMonsterModule extends PlayerModule {
 				element.setItemId(monsterEntity.getCfgId());
 			}
 		}
-		
+
 		List<MonsterEntity> consumeMonsterList = new ArrayList<>();
 		for (int id : consumeMonsterIdList) {
 			MonsterEntity consumeMonsterEntity = player.getPlayerData().getMonsterEntity(id);
 			if (consumeMonsterEntity == null) {
 				sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
+				return false;
+			}
+
+			// 验证怪物锁定
+			if (true == consumeMonsterEntity.isLocked()) {
+				sendError(hsCode, Status.monsterError.LOCK_ALREADY_VALUE);
 				return false;
 			}
 
@@ -310,33 +318,71 @@ public class PlayerMonsterModule extends PlayerModule {
 				sendError(hsCode, Status.monsterError.STAGE_CONSUME);
 				return false;
 			}
-			
+
 			consumeMonsterList.add(consumeMonsterEntity);
 			consume.addMonster(id, consumeMonsterEntity.getCfgId());
 		}
-		
+
 		if (false == demandMonsterList.isEmpty()) {
 			sendError(hsCode, Status.monsterError.STAGE_CONSUME);
 			return false;
 		}
-		
+
 		List<Integer> battleMonsterList = player.getPlayerData().getPlayerEntity().getBattleMonsterList();
 		for (int i = 0; i < consumeMonsterList.size(); ++i) {
 			MonsterEntity consumeMonster = consumeMonsterList.get(i);
 			battleMonsterList.remove(Integer.valueOf(consumeMonster.getId()));
 		}
-		
+
 		// 更新
-		consume.consumeTakeAffectAndPush(player, Action.STAGE_UP);
-		
+		consume.consumeTakeAffectAndPush(player, Action.STAGE_UP, HS.code.MONSTER_STAGE_UP_C_VALUE);
+
 //     player.getPlayerData().getPlayerEntity().setBattleMonsterList(battleMonsterList);
-		
+
 		monsterEntity.setStage((byte)newStage);
 		monsterEntity.notifyUpdate(true);
 
 		HSMonsterStageUpRet.Builder response = HSMonsterStageUpRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_STAGE_UP_S, response));
 
+		return true;
+	}
+
+	/**
+	 * 锁与解锁
+	 */
+	@ProtocolHandler(code = HS.code.MONSTER_LOCK_C_VALUE)
+	private boolean onMonsterLock(HawkProtocol cmd) {
+		HSMonsterLock protocol = cmd.parseProtocol(HSMonsterLock.getDefaultInstance());
+		int hsCode = cmd.getType();
+		int monsterId = protocol.getMonsterId();
+		boolean locked = protocol.getLocked();
+
+		MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
+		if (monsterEntity == null) {
+			sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST);
+			return false;
+		}
+
+		if (monsterEntity.isLocked() == locked) {
+			if (locked == true) {
+				sendError(hsCode, Status.monsterError.LOCK_ALREADY);
+				return false;
+			} else {
+				sendError(hsCode, Status.monsterError.UNLOCK_ALREADY);
+				return false;
+			}
+		}
+
+		monsterEntity.setLocked(locked);
+		monsterEntity.notifyUpdate(true);
+
+		/// TODO
+		HSMonsterLockRet.Builder response = HSMonsterLockRet.newBuilder();
+		response.setMonsterId(monsterId);
+		response.setLocked(locked);
+		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_LOCK_S, response));
+		
 		return true;
 	}
 

@@ -128,6 +128,68 @@ namespace PB
       get { return _monthCardLeft; }
       set { _monthCardLeft = value; }
     }
+    private HSStatisticsExpLeftTimeSync _expLeftTimes;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"expLeftTimes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public HSStatisticsExpLeftTimeSync expLeftTimes
+    {
+      get { return _expLeftTimes; }
+      set { _expLeftTimes = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsExpLeftTimeSync")]
+  public partial class HSStatisticsExpLeftTimeSync : global::ProtoBuf.IExtensible
+  {
+    public HSStatisticsExpLeftTimeSync() {}
+    
+    private int _doubleExpLeft;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"doubleExpLeft", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int doubleExpLeft
+    {
+      get { return _doubleExpLeft; }
+      set { _doubleExpLeft = value; }
+    }
+    private int _tripleExpLeft;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"tripleExpLeft", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int tripleExpLeft
+    {
+      get { return _tripleExpLeft; }
+      set { _tripleExpLeft = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsShopRefreshTimeSync")]
+  public partial class HSStatisticsShopRefreshTimeSync : global::ProtoBuf.IExtensible
+  {
+    public HSStatisticsShopRefreshTimeSync() {}
+    
+    private int _normalShopRefreshTime;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"normalShopRefreshTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int normalShopRefreshTime
+    {
+      get { return _normalShopRefreshTime; }
+      set { _normalShopRefreshTime = value; }
+    }
+    private int _guildShopRefreshTime;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"guildShopRefreshTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int guildShopRefreshTime
+    {
+      get { return _guildShopRefreshTime; }
+      set { _guildShopRefreshTime = value; }
+    }
+    private int _otherShopRefreshTime;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"otherShopRefreshTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int otherShopRefreshTime
+    {
+      get { return _otherShopRefreshTime; }
+      set { _otherShopRefreshTime = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

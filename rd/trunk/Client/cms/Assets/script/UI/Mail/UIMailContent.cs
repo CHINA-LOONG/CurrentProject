@@ -13,22 +13,20 @@ public class UIMailContent : MonoBehaviour
     public Text textSend;       //来自：
     public Text textAnnex;      //附件
     public Text textReceive;    //收取
-    public Text textAnnexnone;  //没有邮件哦
+    //public Text textAnnexnone;  //没有邮件哦
 
     public Button btnReceive;
 
     public GameObject annexList;
-    public GameObject annexNone;
+    //public GameObject annexNone;
 
     public GameObject content;
 
     public System.Action<PB.HSMail> actionReceiveMail;
 
-    private UIMail uiMail;
     private PB.HSMail info;
 
-    private List<GameObject> tips = new List<GameObject>();
-    private List<ObjectItem> items = new List<ObjectItem>();
+    private List<AnnexItem> items = new List<AnnexItem>();
 
     void Start()
     {
@@ -63,34 +61,28 @@ public class UIMailContent : MonoBehaviour
     {
         CleanRewards();
 
-        annexNone.SetActive(infos.Count <= 0);
+        //annexNone.SetActive(infos.Count <= 0);
         btnReceive.gameObject.SetActive(infos.Count>0);
-        if (infos.Count <= 0) return; 
+        if (infos.Count <= 0) 
+            return;
 
         for (int i = items.Count; i < infos.Count; i++)
         {
-            GameObject go = ResourceMgr.Instance.LoadAsset("ObjectItem");
+            GameObject go = ResourceMgr.Instance.LoadAsset("AnnexItem");
             if (null != go)
             {
                 go.transform.localScale = Vector3.one;
                 go.transform.SetParent(annexList.transform, false);
-                ObjectItem item = go.GetComponent<ObjectItem>();
+                AnnexItem item = go.GetComponent<AnnexItem>();
+                item.Refresh(infos[i]);
+                item.SetReceive(false);
                 items.Add(item);
             }
-        }
-        for (int i = 0; i < infos.Count; i++)
-        {
-            //TODO： 
         }
     }
 
     void CleanRewards()
     {
-        for (int i = tips.Count - 1; i >= 0; i--)
-        {
-            ResourceMgr.Instance.DestroyAsset(tips[i]);
-        }
-        tips.Clear();
         for (int i = items.Count - 1; i >= 0; i--)
         {
             ResourceMgr.Instance.DestroyAsset(items[i].gameObject);
@@ -119,6 +111,8 @@ public class UIMailContent : MonoBehaviour
             Logger.LogError("收取错误");
             return;
         }
+        //TODO： 系统提示
+
         info.state = (int)PB.mailState.RECEIVE;
         SetReceiveState();
         actionReceiveMail(info);
@@ -128,13 +122,7 @@ public class UIMailContent : MonoBehaviour
     {
         foreach (var item in items)
         {
-            GameObject go = ResourceMgr.Instance.LoadAsset("AnnexTips");
-            if (null != go)
-            {
-                go.transform.localScale = Vector3.one;
-                go.transform.SetParent(item.transform, false);
-                tips.Add(go);
-            }
+            item.SetReceive(true);
         }
         btnReceive.gameObject.SetActive(false);
     }

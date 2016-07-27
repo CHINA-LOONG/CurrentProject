@@ -10,7 +10,8 @@ message ShopItem
 	optional int32  stage = 4;// 品级
 	optional int32  level = 5;// 级别
 	required int32  slot = 6;//位置
-	required bool   hasBuy = 7;//是否已经购买
+	required float  discount = 7;//折扣
+	required bool   hasBuy = 8;//是否已经购买
 }
 
 message ShopData

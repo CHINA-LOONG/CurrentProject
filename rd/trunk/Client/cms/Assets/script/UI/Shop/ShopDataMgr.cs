@@ -196,6 +196,22 @@ public class ShopDataMgr : MonoBehaviour
 			}
 			return;
 		}
+
+		string buyMsg = "";
+		string buyItemName = "";
+		ItemStaticData itemSt = StaticDataMgr.Instance.GetItemData (curBuyItem.itemId);
+		if (null != itemSt) {
+			buyMsg = string.Format (StaticDataMgr.Instance.GetTextByID ("shop_buysucctip"),
+			                       itemSt.NameAttr,
+			                       curBuyItem.count);
+		}
+		else
+		{
+			buyMsg = StaticDataMgr.Instance.GetTextByID ("shop_succbuy");
+		}
+
+
+		UIIm.Instance.ShowSystemHints (buyMsg, (int)PB.ImType.PROMPT);
 		curBuyItem.hasBuy = true;
 		GameEventMgr.Instance.FireEvent (GameEventList.RefreshShopUi);
 	}

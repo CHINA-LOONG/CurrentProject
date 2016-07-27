@@ -147,8 +147,9 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
         EquipData equip = GameDataMgr.Instance.PlayerDataAttr.gameEquipData.GetEquip(result.id);
 
         ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
-        equip.monsterId = result.monsterId;
-        monster.equipList[itemInfo.part] = equip;
+        monster.SetEquipData(itemInfo.part, equip, true);
+        //equip.monsterId = result.monsterId;
+        //monster.equipList[itemInfo.part] = equip;
 
         GameEventMgr.Instance.FireEvent(GameEventList.ReloadPetEquipNotify);
         listDelegate.OnEquipDressOrReplace();
@@ -167,10 +168,11 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
         EquipData equip = GameDataMgr.Instance.PlayerDataAttr.gameEquipData.GetEquip(result.id);
 
         ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
-        EquipData equip2 = monster.equipList[itemInfo.part];
-        equip2.monsterId = BattleConst.invalidMonsterID;
-        equip.monsterId = result.monsterId;
-        monster.equipList[itemInfo.part] = equip;
+        //EquipData equip2 = monster.equipList[itemInfo.part];
+        //equip2.monsterId = BattleConst.invalidMonsterID;
+        monster.SetEquipData(itemInfo.part, equip, true);
+        //equip.monsterId = result.monsterId;
+        //monster.equipList[itemInfo.part] = equip;
 
         GameEventMgr.Instance.FireEvent(GameEventList.ReloadPetEquipNotify);
         listDelegate.OnEquipDressOrReplace();

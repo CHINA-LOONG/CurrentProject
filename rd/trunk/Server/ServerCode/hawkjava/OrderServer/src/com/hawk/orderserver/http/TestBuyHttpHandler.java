@@ -45,9 +45,9 @@ public class TestBuyHttpHandler  implements HttpHandler {
 		{
 			uriQuery = httpExchange.getRequestURI().getQuery();
 		}
-		
 		if (uriQuery != null && uriQuery.length() > 0) {
 		
+			uriQuery = URLDecoder.decode(uriQuery, "UTF-8");
 			Map<String, String> param = new HashMap<String, String>();
 			String[] kvPairs = uriQuery.split("&");
 			for (String kv : kvPairs) {

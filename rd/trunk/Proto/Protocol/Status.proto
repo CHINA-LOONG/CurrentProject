@@ -73,47 +73,56 @@ enum monsterError
 	STAGE_CONSUME              = 0x00030007;
 	// 上阵怪物数量错误
 	BATTLE_MONSTER_COUNT       = 0x00030008;
+	// 锁定
+	MONSTER_LOCKED             = 0x00030009;
+	// 已经锁定
+	LOCK_ALREADY               = 0x0003000A;
+	// 已经解锁
+	UNLOCK_ALREADY             = 0x0003000B;
 }
 
 enum itemError
 {
 	// 道具不存在
 	ITEM_NOT_FOUND             = 0x00040001;
-	// 装备不足
-	EQUIP_NOT_FOUND            = 0x00040002;
 	// 道具数量不足
 	ITEM_NOT_ENOUGH            = 0x00040003;
 	// 道具不能买
 	ITEM_BUY_NOT_ALLOW         = 0x00040004;
 	// 道具不能卖
 	ITEM_SELL_NOT_ALLOW        = 0x00040005;
+	// 多倍经验还有剩余
+	ITEM_EXP_LEFT_TIMES        = 0x00040006;
+	
+	// 装备不足
+	EQUIP_NOT_FOUND            = 0x00041001;
 	// 装备最大等级
-	EQUIP_MAX_LEVEL_ALREADY    = 0x00040006;
+	EQUIP_MAX_LEVEL_ALREADY    = 0x00041002;
 	// 装备等级不够进阶
-	EQUIP_LEVEL_NOT_ENOUGH     = 0x00040007;
+	EQUIP_LEVEL_NOT_ENOUGH     = 0x00041003;
 	// 装备最大品级
-	EQUIP_MAX_STAGE_ALREADY    = 0x00040008;
+	EQUIP_MAX_STAGE_ALREADY    = 0x00041004;
 		
 	// 装备不在背包
-	EQUIP_DRESS_ALREADY        = 0x00040010;
+	EQUIP_DRESS_ALREADY        = 0x00041005;
 	// 该位置没有其他装备
-	EQUIP_NOT_DRESS_OTHER      = 0x00040011;
+	EQUIP_NOT_DRESS_OTHER      = 0x00041006;
 	// 该位置已经有其他装备
-	EQUIP_DRESS_OTHER_ALREADY  = 0x00040012;
+	EQUIP_DRESS_OTHER_ALREADY  = 0x00041007;
 	// 装备不在身上
-	EQUIP_NOT_DRESSED          = 0x00040013;
+	EQUIP_NOT_DRESSED          = 0x00041008;
 	// 槽位已经镶嵌宝石
-	EQUIP_SLOT_NOT_EMPTY       = 0x00040014;
+	EQUIP_SLOT_NOT_EMPTY       = 0x00041009;
 	// 槽位没有镶嵌宝石
-	EQUIP_SLOT_EMPTY           = 0x00040015;
+	EQUIP_SLOT_EMPTY           = 0x0004100A;
 	// 宝石不存在
-	EQUIP_GEM_NOT_FOUND        = 0x00040016;
+	EQUIP_GEM_NOT_FOUND        = 0x0004100B;
 	// 装备不能开孔
-	EQUIP_CAN_NOT_OPEN_SLOT	   = 0x00040017;
+	EQUIP_CAN_NOT_OPEN_SLOT	   = 0x0004100C;
 	// 镶嵌宝石不符
-	EQUIP_GEM_MISMATCH	       = 0x00040018;
+	EQUIP_GEM_MISMATCH	       = 0x0004100D;
 	// 槽位没有开孔
-	EQUIP_SLOT_NOT_PUNCH	   = 0x00040019;
+	EQUIP_SLOT_NOT_PUNCH	   = 0x0004100E;
 }
 
 enum questError

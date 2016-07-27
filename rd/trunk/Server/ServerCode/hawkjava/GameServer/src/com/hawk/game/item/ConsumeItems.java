@@ -223,27 +223,32 @@ public class ConsumeItems {
 	 * @param hpCode
 	 * @return
 	 */
-	public boolean checkConsume(Player player, int hpCode) {
+	public boolean checkConsume(Player player, int hsCode) {
 		int result = checkConsumeInternal(player);
 		if(result > 0) {
-			if(hpCode > 0) {
+			if(hsCode > 0) {
 				switch (result) {
 					case PlayerItemCheckResult.COINS_NOT_ENOUGH:
-						player.sendError(hpCode, Status.PlayerError.COINS_NOT_ENOUGH_VALUE);
+						player.sendError(hsCode, Status.PlayerError.COINS_NOT_ENOUGH_VALUE);
 						break;
 					case PlayerItemCheckResult.GOLD_NOT_ENOUGH:
-						player.sendError(hpCode, Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
+						player.sendError(hsCode, Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
 						break;
 					case PlayerItemCheckResult.FATIGUE_NOT_ENOUGH:
-						player.sendError(hpCode, Status.PlayerError.FATIGUE_NOT_ENOUGH_VALUE);
+						player.sendError(hsCode, Status.PlayerError.FATIGUE_NOT_ENOUGH_VALUE);
 						break;
 					case PlayerItemCheckResult.EQUIP_NOT_ENOUGH:
-						player.sendError(hpCode, Status.itemError.EQUIP_NOT_FOUND_VALUE);
+						player.sendError(hsCode, Status.itemError.EQUIP_NOT_FOUND_VALUE);
 						break;
 					case PlayerItemCheckResult.TOOLS_NOT_ENOUGH:
-						player.sendError(hpCode, Status.itemError.ITEM_NOT_ENOUGH_VALUE);
+						player.sendError(hsCode, Status.itemError.ITEM_NOT_ENOUGH_VALUE);
 						break;
-					
+					case PlayerItemCheckResult.MONSTER_NOT_ENOUGH:
+						player.sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
+						break;
+					case PlayerItemCheckResult.MONSTER_LOCKED:
+						player.sendError(hsCode, Status.monsterError.MONSTER_LOCKED_VALUE);
+						break;
 					default:
 						break;
 					}
@@ -289,6 +294,9 @@ public class ConsumeItems {
 				MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity((int)consumeItem.getId());
 				if(monsterEntity == null) {
 					return PlayerItemCheckResult.MONSTER_NOT_ENOUGH;
+				}
+				else if (monsterEntity.isLocked()) {
+					return PlayerItemCheckResult.MONSTER_LOCKED;
 				}
 			}
 			else if(consumeItem.getType() == Const.itemType.ITEM_VALUE) {
@@ -372,9 +380,10 @@ public class ConsumeItems {
 	/**
 	 * 数据消耗
 	 */
-	public void consumeTakeAffectAndPush(Player player, Action action) {
+	public void consumeTakeAffectAndPush(Player player, Action action, int hsCode) {
 		if (consumeTakeAffect(player, action) == true) {
 			// 推送消耗信息
+			consumeInfo.setHsCode(hsCode);
 			player.sendProtocol(HawkProtocol.valueOf(HS.code.PLAYER_CONSUME_S, consumeInfo));
 		}
 	}

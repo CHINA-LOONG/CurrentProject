@@ -106,5 +106,5 @@ public class BattleConst
     public const float scoreTitleStayTime = 1.5f;
     public const float scoreTitleUpTime = 1.0f;
     //最大消息数
-    public const int maxMsg = 50;
+    public const int maxMsg = 100;
 }

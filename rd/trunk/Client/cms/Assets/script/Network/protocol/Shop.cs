@@ -59,8 +59,15 @@ namespace PB
       get { return _slot; }
       set { _slot = value; }
     }
+    private float _discount;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"discount", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float discount
+    {
+      get { return _discount; }
+      set { _discount = value; }
+    }
     private bool _hasBuy;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"hasBuy", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"hasBuy", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public bool hasBuy
     {
       get { return _hasBuy; }

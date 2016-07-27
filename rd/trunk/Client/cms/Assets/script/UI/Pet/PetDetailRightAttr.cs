@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class PetDetailRightAttr : PetDetailRightBase {
+public class PetDetailRightAttr : PetDetailRightBase
+{
 
     public Text text_Title;
 
@@ -56,9 +57,9 @@ public class PetDetailRightAttr : PetDetailRightBase {
         textSPD.text = unit.speed.ToString();
         textEDR.text = unit.endurance.ToString();
         textREC.text = unit.recovery.ToString();
-        textHP.text = ((int)(unit.health * SpellConst.healthToLife)).ToString();
-        textPhysATK.text = ((int)(unit.strength * SpellConst.strengthToAttack)).ToString();
-        textMagicATK.text = ((int)(unit.intelligence * SpellConst.intelligenceToAttack)).ToString();
+        textHP.text = unit.maxLife.ToString();//((int)(unit.health * SpellConst.healthToLife)).ToString();
+        textPhysATK.text = unit.phyAttack.ToString(); //((int)(unit.strength * SpellConst.strengthToAttack)).ToString();
+        textMagicATK.text = unit.magicAttack.ToString(); //((int)(unit.intelligence * SpellConst.intelligenceToAttack)).ToString();
         //受伤比计算 max(1/(1+(守方总防御力-攻方防御穿透)/I(min(lv1,lv2))),25%)
         float injuryRatio = 1.0f / (1.0f + (unit.defense * 1.0f) / SpellFunctions.GetInjuryAdjustNum(unit.pbUnit.level, unit.pbUnit.level));
         injuryRatio = injuryRatio < 0.25f ? 0.25f : injuryRatio;

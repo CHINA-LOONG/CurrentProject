@@ -68,6 +68,10 @@ public class InstanceMapService : MonoBehaviour
 
 	private	void	AddOpenChapeterInstance(List<PB.InstanceState> finishedInstance)
 	{
+        //test only
+        finishedInstance.Clear();
+        //end test
+
 		openedMaxNormlChapter = 1;
 		openedMaxDifficultyChapter = 1;
 

@@ -780,9 +780,9 @@ public class BattleController : MonoBehaviour
                 battleGroup.EnemyFieldList[i].TriggerEvent(enemyEvent, curTime, null);
             }
         }
-		MagicDazhaoController.Instance.ClearAll ();
-		PhyDazhaoController.Instance.ClearAll ();
-		process.HideFireFocus();
+        MagicDazhaoController.Instance.ClearAll();
+        PhyDazhaoController.Instance.ClearAll();
+        process.HideFireFocus();
 
         PB.HSInstanceSettle instanceParam = new PB.HSInstanceSettle();
         instanceParam.victory = isSuccess;

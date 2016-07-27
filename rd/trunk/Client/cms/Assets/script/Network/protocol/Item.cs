@@ -10,6 +10,30 @@
 // Generated from: Protocol/Item.proto
 namespace PB
 {
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ItemSell")]
+  public partial class ItemSell : global::ProtoBuf.IExtensible
+  {
+    public ItemSell() {}
+    
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
+    {
+      get { return _itemId; }
+      set { _itemId = value; }
+    }
+    private int _count;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int count
+    {
+      get { return _count; }
+      set { _count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ItemInfo")]
   public partial class ItemInfo : global::ProtoBuf.IExtensible
   {
@@ -102,6 +126,67 @@ namespace PB
   public partial class HSItemUseRet : global::ProtoBuf.IExtensible
   {
     public HSItemUseRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSItemBoxUseBatch")]
+  public partial class HSItemBoxUseBatch : global::ProtoBuf.IExtensible
+  {
+    public HSItemBoxUseBatch() {}
+    
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
+    {
+      get { return _itemId; }
+      set { _itemId = value; }
+    }
+    private int _itemCount;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"itemCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int itemCount
+    {
+      get { return _itemCount; }
+      set { _itemCount = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSItemBoxUseBatchRet")]
+  public partial class HSItemBoxUseBatchRet : global::ProtoBuf.IExtensible
+  {
+    public HSItemBoxUseBatchRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSItemSellBatch")]
+  public partial class HSItemSellBatch : global::ProtoBuf.IExtensible
+  {
+    public HSItemSellBatch() {}
+    
+    private readonly global::System.Collections.Generic.List<ItemSell> _items = new global::System.Collections.Generic.List<ItemSell>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"items", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<ItemSell> items
+    {
+      get { return _items; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSItemSellBatchRet")]
+  public partial class HSItemSellBatchRet : global::ProtoBuf.IExtensible
+  {
+    public HSItemSellBatchRet() {}
     
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

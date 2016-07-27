@@ -119,7 +119,7 @@ public class PlayerMailModule extends PlayerModule {
 			sendError(hsCode, status);
 			return false;
 		}
-		sumAwardItems.rewardTakeAffectAndPush(player,  Action.MAIL_REWARD);
+		sumAwardItems.rewardTakeAffectAndPush(player,  Action.MAIL_REWARD, HS.code.MAIL_RECEIVE_C_VALUE);
 
 		HSMailReceiveRet.Builder response = HSMailReceiveRet.newBuilder();
 		response.setMailId(mailId);
@@ -171,7 +171,7 @@ public class PlayerMailModule extends PlayerModule {
 				break;
 			}
 		}
-		sumAwardItems.rewardTakeAffectAndPush(player,  Action.MAIL_REWARD);
+		sumAwardItems.rewardTakeAffectAndPush(player, Action.MAIL_REWARD, HS.code.MAIL_RECEIVE_ALL_C_VALUE);
 
 		HSMailReceiveAllRet.Builder response = HSMailReceiveAllRet.newBuilder();
 		response.setStatus(status);

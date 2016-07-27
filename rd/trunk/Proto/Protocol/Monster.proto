@@ -25,6 +25,7 @@ message HSMonster
 	required int32 disposition = 8;
 	repeated HSSkill skill = 9;
 	repeated EquipInfo equipInfos = 10;
+	optional bool locked = 11 [default = false];
 }
 
 // protocol-----------------------------------------------------
@@ -112,4 +113,18 @@ message HSMonsterStageUp
 // MONSTER_STAGE_UP_S
 message HSMonsterStageUpRet
 {
+}
+
+// MONSTER_LOCK_C
+message HSMonsterLock
+{
+	required int32 monsterId = 1;
+	required bool locked = 2;
+}
+
+// MONSTER_LOCK_S
+message HSMonsterLockRet
+{
+	required int32 monsterId = 1;
+	required bool locked = 2;
 }

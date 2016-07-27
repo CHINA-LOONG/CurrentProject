@@ -736,6 +736,13 @@ public class PlayerData {
 	}
 
 	/**
+	 * 同步经验次数信息
+	 */
+	public void syncStatisticsExpLeftInfo() {
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_EXP_LEFT_TIMES_VALUE, BuilderUtil.genStatisticsExpLeftTimeBuilder(statisticsEntity)));
+	}
+	
+	/**
 	 * 同步系统设置信息
 	 */
 	public void syncSettingInfo() {

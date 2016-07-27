@@ -319,8 +319,8 @@ public class EquipBuildPanel : EquipPanelBase
         // update local data
         {
             curData.id = result.id;
-            curData.stage = result.stage;
-            curData.level = result.level;
+            curData.SetStageLvl(result.stage);
+            curData.SetStrengthLvl(result.level);
         }
         if (ICallBackDeletage!=null)
         {
@@ -341,8 +341,8 @@ public class EquipBuildPanel : EquipPanelBase
         // update local data
         {
             curData.id = result.id;
-            curData.stage = result.stage;
-            curData.level = result.level;
+            curData.SetStageLvl(result.stage);
+            curData.SetStrengthLvl(result.level);
         }
         if (ICallBackDeletage != null)
         {

@@ -132,7 +132,13 @@ namespace PB
       STAGE_CONSUME = 196615,
             
       [global::ProtoBuf.ProtoEnum(Name=@"BATTLE_MONSTER_COUNT", Value=196616)]
-      BATTLE_MONSTER_COUNT = 196616
+      BATTLE_MONSTER_COUNT = 196616,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LOCK_ALREADY", Value=196617)]
+      LOCK_ALREADY = 196617,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UNLOCK_ALREADY", Value=196624)]
+      UNLOCK_ALREADY = 196624
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"itemError")]

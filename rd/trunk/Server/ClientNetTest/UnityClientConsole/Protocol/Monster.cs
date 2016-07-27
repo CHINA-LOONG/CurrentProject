@@ -121,6 +121,14 @@ namespace PB
       get { return _equipInfos; }
     }
   
+    private bool _locked = (bool)false;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"locked", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool locked
+    {
+      get { return _locked; }
+      set { _locked = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -430,6 +438,54 @@ namespace PB
   {
     public HSMonsterStageUpRet() {}
     
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterLock")]
+  public partial class HSMonsterLock : global::ProtoBuf.IExtensible
+  {
+    public HSMonsterLock() {}
+    
+    private int _monsterId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"monsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int monsterId
+    {
+      get { return _monsterId; }
+      set { _monsterId = value; }
+    }
+    private bool _locked;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"locked", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool locked
+    {
+      get { return _locked; }
+      set { _locked = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterLockRet")]
+  public partial class HSMonsterLockRet : global::ProtoBuf.IExtensible
+  {
+    public HSMonsterLockRet() {}
+    
+    private int _monsterId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"monsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int monsterId
+    {
+      get { return _monsterId; }
+      set { _monsterId = value; }
+    }
+    private bool _locked;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"locked", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool locked
+    {
+      get { return _locked; }
+      set { _locked = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

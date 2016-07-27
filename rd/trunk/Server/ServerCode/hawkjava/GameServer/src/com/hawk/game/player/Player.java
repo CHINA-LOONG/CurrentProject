@@ -960,6 +960,7 @@ public class Player extends HawkAppObj {
 		for (String skillId : skillList) {
 			monsterEntity.setSkillLevel(skillId, 1);
 		}
+		monsterEntity.setLocked(false);
 
 		if (true == monsterEntity.notifyCreate()) {
 			playerData.setMonsterEntity(monsterEntity);

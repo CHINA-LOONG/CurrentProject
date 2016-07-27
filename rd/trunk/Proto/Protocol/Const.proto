@@ -180,6 +180,17 @@ enum toolType
 	EQUIPTOOL = 7;
 }
 
+// 消耗品子类型
+enum UseToolSubType
+{
+	// 经验药水
+	USETOOLEXP = 1;
+	// 双倍药水
+	USETOOLDOUBLEEXP = 2;
+	// 三倍药水
+	USETOOLTRIPLEEXP = 3;
+}
+
 // 装备部位定义
 enum equipPart
 {

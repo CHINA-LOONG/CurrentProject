@@ -50,7 +50,7 @@ public class AdjustCountForSell : UIBase
 	{
 		if (isFirst)
 		{
-			isFirst = true;
+			isFirst = false;
 			FirsInit();
 		}
 	}

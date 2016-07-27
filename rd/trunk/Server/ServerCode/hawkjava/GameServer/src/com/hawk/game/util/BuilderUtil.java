@@ -25,6 +25,7 @@ import com.hawk.game.protocol.Im.HSImPush;
 import com.hawk.game.protocol.Item.ItemInfo;
 import com.hawk.game.protocol.Mail.HSMail;
 import com.hawk.game.protocol.Monster.HSMonster;
+import com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync;
 import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
 import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Skill.HSSkill;
@@ -87,9 +88,19 @@ public class BuilderUtil {
 		else {		
 			builder.setMonthCardLeft(HawkTime.calendarDiff(statisticsEntity.getMonthCardEndTime(), HawkTime.getCalendar()));
 		}
+		
+		builder.setExpLeftTimes(genStatisticsExpLeftTimeBuilder(statisticsEntity));
+
 		return builder;
 	}
 
+	public static HSStatisticsExpLeftTimeSync.Builder genStatisticsExpLeftTimeBuilder(StatisticsEntity statisticsEntity) {
+		HSStatisticsExpLeftTimeSync.Builder builder = HSStatisticsExpLeftTimeSync.newBuilder();
+		builder.setDoubleExpLeft(statisticsEntity.getDoubleExpLeftTimes());
+		builder.setTripleExpLeft(statisticsEntity.getTripleExpLeftTimes());
+		return builder;
+	}
+	
 	public static HSMonster.Builder genMonsterBuilder(MonsterEntity monsterEntity) {
 		HSMonster.Builder builder = HSMonster.newBuilder();
 		builder.setMonsterId(monsterEntity.getId());
@@ -100,6 +111,7 @@ public class BuilderUtil {
 		builder.setLazy(monsterEntity.getLazy());
 		builder.setLazyExp(monsterEntity.getLazyExp());
 		builder.setDisposition(monsterEntity.getDisposition());
+		builder.setLocked(monsterEntity.isLocked());
 
 		HSSkill.Builder skill = HSSkill.newBuilder();
 		for (Entry<String, Integer> entry : monsterEntity.getSkillMap().entrySet()) {

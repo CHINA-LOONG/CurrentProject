@@ -243,7 +243,9 @@ public class GameDataMgr : MonoBehaviour
             if (mainPlayer.allUnitDic.ContainsKey(equipInfo.monsterId))
             {
                 ItemStaticData item = StaticDataMgr.Instance.GetItemData(equipInfo.equipId);
-                mainPlayer.allUnitDic[equipInfo.monsterId].equipList[item.part] = equip;
+                //mainPlayer.allUnitDic[equipInfo.monsterId].equipList[item.part] = equip;
+                //TODO: refresh once instead of refresh every time
+                mainPlayer.allUnitDic[equipInfo.monsterId].SetEquipData(item.part, equip, true);
             }
         }
     }
@@ -317,7 +319,6 @@ public class GameDataMgr : MonoBehaviour
     void OnReward(ProtocolMessage msg)
     {
         PB.HSRewardInfo reward = msg.GetProtocolBody<PB.HSRewardInfo>();
-
         GameUnit unit = null;
         foreach (PB.SynMonsterAttr item in reward.monstersAttr)
         {

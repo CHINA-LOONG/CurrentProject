@@ -206,7 +206,15 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 签到次数
 	@Column(name = "signInCount", nullable = false)
 	private byte signInCount = 0;
+	
+	// 双倍剩余经验次数
+	@Column(name = "doubleExpLeft", nullable = false)
+	private byte doubleExpLeft = 0;
 
+	// 三倍剩余经验次数
+	@Column(name = "tripleExpLeft", nullable = false)
+	private byte tripleExpLeft = 0;
+	
 	@Column(name = "loginCount", nullable = false)
 	private int loginCount = 0;
 
@@ -775,6 +783,38 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public int getHardInstanceIndex() {
 		return hardIndex;
+	}
+	
+	/*
+	 * 经验加倍是否还有剩余次数
+	 */
+	public boolean isExpTimeLeft()
+	{
+		return doubleExpLeft > 0 || tripleExpLeft > 0;
+	}
+	
+	public void increaseDoubleExpLeft(int times) {
+		doubleExpLeft += times;
+	}
+	
+	public void increaseTripleExpLeft(int times) {
+		tripleExpLeft += times;
+	}
+	
+	public void decreaseDoubleExpLeft(int times) {
+		doubleExpLeft -= times;
+	}
+	
+	public void decreaseTripleExpLeft(int times) {
+		tripleExpLeft -= times;
+	}
+	
+	public int getDoubleExpLeftTimes() {
+		return doubleExpLeft;
+	}
+	
+	public int getTripleExpLeftTimes() {
+		return tripleExpLeft;
 	}
 	
 	@Override

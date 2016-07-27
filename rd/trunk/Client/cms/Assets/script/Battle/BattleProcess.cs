@@ -97,6 +97,8 @@ public class BattleProcess : MonoBehaviour
     bool hasInsertReplaceDeadUnitAction = false;//not insertaction deadreplace
     bool inDazhaoAction = false;
     public int mCurrentReviveCount = 0;
+    //强制结果（GM）
+    public int forceResult = -1;
 
     bool switchingPet = false;
     public bool SwitchingPet
@@ -501,6 +503,7 @@ public class BattleProcess : MonoBehaviour
 
     public void StartProcess(int index, BattleLevelData battleLevelData)
     {
+        forceResult = -1;
         replaceDeadUnitCount = 0;
         hasInsertReplaceDeadUnitAction = false;
         lastUpdateTime = Time.time;
@@ -716,6 +719,15 @@ public class BattleProcess : MonoBehaviour
             battleResult = NormalScript.normalValiVic();
         }
 
+        if (forceResult == 0)
+        {
+            battleResult = BattleRetCode.Failed;
+        }
+        else if (forceResult == 1)
+        {
+            battleResult = BattleRetCode.Success;
+        }
+
         if (battleResult != BattleRetCode.Normal && insertAction.Count > 0)
         {
             for (int i = insertAction.Count - 1; i >= 0; --i)
@@ -758,7 +770,7 @@ public class BattleProcess : MonoBehaviour
         else if (battleResult == BattleRetCode.Success)
         {
             insertAction.Clear();
-            if (BattleController.Instance.HasNextProcess())
+            if (BattleController.Instance.HasNextProcess() && forceResult == -1)
             {
                 System.Action<float> nextProcess = (delayTime) =>
                 {

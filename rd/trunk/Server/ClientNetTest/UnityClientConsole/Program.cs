@@ -22,8 +22,8 @@ namespace UnityClientConsole
         static void Main(string[] args)
         {
             //设定服务器IP地址  
-            if (App.GetInstance().Init("127.0.0.1", 9595, "mail_test") == false)
-            //if (App.GetInstance().Init("192.168.199.122", 9595, "mail_1") == false)
+            if (App.GetInstance().Init("127.0.0.1", 9595, "xiaozhen2") == false)
+            //if (App.GetInstance().Init("192.168.199.122", 9595, "xiaozhen2") == false)
             //if (App.GetInstance().Init("123.59.45.55", 9595, "im_1") == false)
                 return;
 

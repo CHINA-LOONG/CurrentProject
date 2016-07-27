@@ -25,7 +25,7 @@ public class UIMail : UIBase,TabButtonDelegate
     private List<PB.HSMail> plyMailList = new List<PB.HSMail>();
 
     private int tabIndex = 0;
-    private PB.HSMail readMail = null;
+    private PB.HSMail readMail;
 
     private int mailCount
     {
@@ -49,6 +49,7 @@ public class UIMail : UIBase,TabButtonDelegate
         mailContent.SetMailContentActive(false);
         OnMailChanged();
         tabGroup.OnChangeItem(0);
+        readMail = null;
     }
     public override void Clean()
     {

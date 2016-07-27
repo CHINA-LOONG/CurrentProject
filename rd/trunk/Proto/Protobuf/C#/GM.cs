@@ -56,13 +56,13 @@ namespace PB
       get { return _value; }
       set { _value = value; }
     }
-    private string _itemID = "";
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"itemID", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private string _itemId = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
-    public string itemID
+    public string itemId
     {
-      get { return _itemID; }
-      set { _itemID = value; }
+      get { return _itemId; }
+      set { _itemId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

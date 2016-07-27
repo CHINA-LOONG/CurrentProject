@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &102946
 GameObject:
   m_ObjectHideFlags: 1
@@ -2501,8 +2501,6 @@ MonoBehaviour:
   m_PetPanel: {fileID: 11449640}
   dazhaoTip: {fileID: 0}
   levelIndex: {fileID: 11472008}
-  victorySprite: {fileID: 21300000, guid: adf759861c89e3842a0ed55680fee45f, type: 3}
-  failedSprite: {fileID: 21300000, guid: 1ee3f92fa55771846ae2e0b7a615f49f, type: 3}
   uiFazhen: {fileID: 0}
 --- !u!114 &11463510
 MonoBehaviour:

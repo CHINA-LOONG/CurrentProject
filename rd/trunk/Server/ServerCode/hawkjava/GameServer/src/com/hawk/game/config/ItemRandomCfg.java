@@ -7,6 +7,7 @@ import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 
 import com.hawk.game.item.ShopItemInfo;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.WeightUtil;
 import com.hawk.game.util.WeightUtil.WeightItem;
@@ -61,7 +62,7 @@ public class ItemRandomCfg extends HawkConfigBase{
 				String[] items = itemArray.split("_");
 				if (items.length == 4) {
 					ShopItemInfo item = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]));
-					if (ConfigUtil.checkIsNotEquip(item.getType()))
+					if (item.getType() != Const.itemType.MONSTER_VALUE && item.getType() != Const.itemType.EQUIP_VALUE)
 					{
 						weightList.add(WeightItem.valueOf(item, Integer.valueOf(items[3])));
 					}
@@ -71,7 +72,7 @@ public class ItemRandomCfg extends HawkConfigBase{
 				}
 				else if (items.length == 6) {
 					ShopItemInfo item = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]));
-					if (ConfigUtil.checkIsEquip(item.getType()))
+					if (item.getType()== Const.itemType.EQUIP_VALUE)
 					{
 						weightList.add(WeightItem.valueOf(item, Integer.valueOf(items[5])));
 					}

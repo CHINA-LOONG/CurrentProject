@@ -335,14 +335,16 @@ public class UIUtil
 
     public static void GetAttrValue(GameUnit unit, int stage, out int health, out int strength, out int inteligence, out int defence, out int speed)
     {
-        int grade = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id).grade;
+        //int grade = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id).grade;
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(stage);
         UnitData unitData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
-        health = (int)((1 + unitStageData.modifyRate) * unitData.healthModifyRate * (unit.health + unitStageData.health));
-        strength = (int)((1 + unitStageData.modifyRate) * unitData.strengthModifyRate * (unit.strength + unitStageData.strength));
-        inteligence = (int)((1 + unitStageData.modifyRate) * unitData.intelligenceModifyRate * (unit.intelligence + unitStageData.intelligence));
-        defence = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * (unit.defense + unitStageData.defense));
-        speed = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * (unit.speed + unitStageData.speed));
+        UnitBaseData unitBase = StaticDataMgr.Instance.GetUnitBaseRowData(unit.pbUnit.level);
+
+        health = (int)((1 + unitStageData.modifyRate) * unitData.healthModifyRate * (unitBase.health + unitStageData.health));
+        strength = (int)((1 + unitStageData.modifyRate) * unitData.strengthModifyRate * (unitBase.strength + unitStageData.strength));
+        inteligence = (int)((1 + unitStageData.modifyRate) * unitData.intelligenceModifyRate * (unitBase.intelligence + unitStageData.intelligence));
+        defence = (int)((1 + unitStageData.modifyRate) * unitData.defenseModifyRate * (unitBase.defense + unitStageData.defense));
+        speed = (int)((1 + unitStageData.modifyRate) * unitData.speedModifyRate * (unitBase.speed + unitStageData.speed));
     }
 
     public static void SetParentReset(Transform child, Transform parent)
@@ -372,13 +374,13 @@ public class UIUtil
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
-                value1.text = "+" + data.strength.ToString();
+                value1.text = "+" + data.intelligence.ToString();
                 index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
-                value2.text = "+" + data.strength.ToString();
+                value2.text = "+" + data.intelligence.ToString();
                 return;
             }
         }
@@ -387,13 +389,13 @@ public class UIUtil
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
-                value1.text = "+" + data.strength.ToString();
+                value1.text = "+" + data.speed.ToString();
                 index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
-                value2.text = "+" + data.strength.ToString();
+                value2.text = "+" + data.speed.ToString();
                 return;
             }
         }
@@ -402,13 +404,13 @@ public class UIUtil
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
-                value1.text = "+" + data.strength.ToString();
+                value1.text = "+" + data.defense.ToString();
                 index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
-                value2.text = "+" + data.strength.ToString();
+                value2.text = "+" + data.defense.ToString();
                 return;
             }
         }
@@ -417,13 +419,13 @@ public class UIUtil
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
-                value1.text = "+" + data.strength.ToString();
+                value1.text = "+" + data.health.ToString();
                 index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
-                value2.text = "+" + data.strength.ToString();
+                value2.text = "+" + data.health.ToString();
                 return;
             }
         }

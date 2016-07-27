@@ -262,14 +262,21 @@ public class Util
     //通过物体包含组件来设置事件
     static public void SetChild_UsedT<T>(Transform t, System.Action<Transform> action) where T : Component
     {
-        for (int i = 0; i < t.childCount; ++i)
+        if (action != null)
         {
-            Transform child = t.GetChild(i);
-            if (child.GetComponent<T>() != null && action != null)
+            if (t.GetComponent<T>() != null)
             {
-                action(child);
+                action(t);
             }
-            SetChild_UsedT<T>(child, action);
+            for (int i = 0; i < t.childCount; ++i)
+            {
+                Transform child = t.GetChild(i);
+                //if (child.GetComponent<T>() != null)
+                //{
+                //    action(child);
+                //}
+                SetChild_UsedT<T>(child, action);
+            }
         }
     }
 }

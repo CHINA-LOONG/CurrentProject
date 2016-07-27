@@ -542,11 +542,11 @@ tips_10024_caihongguai1,"宠物之魂， 可以替代C, B级宠物进行宠物�
 tips_10025_caihongguai2,宠物之魂， 可以替代A级宠物进行宠物进阶,"Monster Spirit, can be used instead of Class A whole monster for Monster Advance."
 tips_10026_caihongguai3,宠物之魂， 可以替代S级宠物进行宠物进阶,"Monster Spirit, can be used instead of Class S whole monster for Monster Advance."
 tips_10027_caihongguai4,宠物之魂， 可以替代SS级宠物进行宠物进阶,"Monster Spirit, can be used instead of Class SS whole monster for Monster Advance."
-name_40075_wenzhanglibao1,蓝色纹章箱子,蓝色纹章箱子
-name_40076_wenzhanglibao2,紫色纹章箱子,紫色纹章箱子
-tips_40075_wenzhanglibao1,随机开出1个3级或4级纹章,随机开出1个3级或4级纹章
-tips_40076_wenzhanglibao2,随机开出1个5级或6级纹章,随机开出1个5级或6级纹章
-name_40073_suipianlibao1,碎片箱子,碎片箱子
-name_40074_suipianlibao2,碎片箱子（稀有）,碎片箱子（稀有）
-tips_40073_suipianlibao1,随机开出20个C级宠物碎片、10个B级宠物碎片以及10个惊喜碎片（10个B级或者A级宠物碎片）,随机开出20个C级宠物碎片、10个B级宠物碎片以及10个惊喜碎片（10个B级或者A级宠物碎片）
-tips_40074_suipianlibao2,随机开出25个C级宠物碎片、15个B级宠物碎片以及10个惊喜碎片（10个A级、S级或者SS级宠物碎片）,随机开出25个C级宠物碎片、15个B级宠物碎片以及10个惊喜碎片（10个A级、S级或者SS级宠物碎片）
+name_40075_wenzhanglibao1,蓝色纹章箱子,Blue Insignia Chest
+name_40076_wenzhanglibao2,紫色纹章箱子,Purple Insignia Chest
+tips_40075_wenzhanglibao1,随机开出1个3级或4级纹章,Open to receive 1 random level 3 or 4 insignia
+tips_40076_wenzhanglibao2,随机开出1个5级或6级纹章,Open to receive 1 random level 5 or 6 insignia
+name_40073_suipianlibao1,碎片箱子,Fragment Chest
+name_40074_suipianlibao2,碎片箱子（稀有）,Fragment Chest (Rare)
+tips_40073_suipianlibao1,随机开出20个B级宠物碎片、10个A级宠物碎片以及10个惊喜碎片（10个B级或者A级宠物碎片）,"Open to randomly receive 20 B grade monster fragments, 10 A grade monster fragments, as well as 10 surprise fragments (10 B or A grade monster fragments)"
+tips_40074_suipianlibao2,随机开出25个B级宠物碎片、15个A级宠物碎片以及20个惊喜碎片（10个A级、S级或者SS级宠物碎片）,"Open to randomly receive 25 B grade monster fragments, 15 A grade monster fragments, as well as 20 surprise fragments (20 A, S, or SS grade monster fragments)"

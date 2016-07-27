@@ -329,8 +329,9 @@ public class UIEquipDetails : MonoBehaviour
         GameUnit monster = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(result.monsterId);
         EquipData equip = GameDataMgr.Instance.PlayerDataAttr.gameEquipData.GetEquip(result.id);
         ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
-        monster.equipList[itemInfo.part] = null;
-        equip.monsterId = BattleConst.invalidMonsterID;
+        monster.SetEquipData(itemInfo.part, null, true);
+        //monster.equipList[itemInfo.part] = null;
+        //equip.monsterId = BattleConst.invalidMonsterID;
 
         GameEventMgr.Instance.FireEvent(GameEventList.ReloadPetEquipNotify);
         equipCallBack.Unload();

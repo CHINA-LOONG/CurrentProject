@@ -167,11 +167,11 @@ public class PlayerEquipModule extends PlayerModule{
 		if (consume.checkConsume(player, hsCode) == false) {
 			return ;
 		}
-		consume.consumeTakeAffectAndPush(player, Action.EQUIP_BUY);
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_BUY, hsCode);
 		
 		AwardItems awardItems = new AwardItems();
 		awardItems.addEquip(equid, equipCount, protocol.getStage(), protocol.getLevel());
-		awardItems.rewardTakeAffectAndPush(player, Action.EQUIP_BUY);
+		awardItems.rewardTakeAffectAndPush(player, Action.EQUIP_BUY, hsCode);
 
 		HSEquipBuyRet.Builder response = HSEquipBuyRet.newBuilder();
 		response.setEquipCount(equipCount);
@@ -205,7 +205,7 @@ public class PlayerEquipModule extends PlayerModule{
 			return;
 		}
 	
-		consume.consumeTakeAffectAndPush(player, Action.EQUIP_EHANCE);
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_EHANCE, hsCode);
 		equipEntity.setLevel(equipEntity.getLevel() + 1);
 		equipEntity.notifyUpdate(true);
 		
@@ -251,7 +251,7 @@ public class PlayerEquipModule extends PlayerModule{
 			return;
 		}
 	
-		consume.consumeTakeAffectAndPush(player, Action.EQUIP_ADVANCE);
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_ADVANCE, hsCode);
 		equipEntity.setLevel(0);
 		equipEntity.setStage(equipEntity.getStage() + 1);
 		equipEntity.notifyUpdate(true);
@@ -353,8 +353,8 @@ public class PlayerEquipModule extends PlayerModule{
 		}	
 		
 		equipEntity.notifyUpdate(true);
-		award.rewardTakeAffectAndPush(player, Action.EQUIP_GEM);
-		consume.consumeTakeAffectAndPush(player, Action.EQUIP_GEM);
+		award.rewardTakeAffectAndPush(player, Action.EQUIP_GEM, hsCode);
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_GEM, hsCode);
 		
 		HSEquipGemRet.Builder response = HSEquipGemRet.newBuilder();
 		for (Map.Entry<Integer, GemInfo> entry : equipEntity.GetGemDressList().entrySet()) {
@@ -400,7 +400,7 @@ public class PlayerEquipModule extends PlayerModule{
 		}
 		
 		ConsumeItems consume = new ConsumeItems();
-		consume.addItemInfos(EquipAttr.getPunchDemandList(equipEntity.getItemId(), equipEntity.getStage() + 1));
+		consume.addItemInfos(EquipAttr.getPunchDemandList(equipEntity.getItemId(), equipEntity.getStage()));
 		if (consume.checkConsume(player, hsCode) == false) {
 			return;
 		}
@@ -426,11 +426,11 @@ public class PlayerEquipModule extends PlayerModule{
 		
 		equipEntity.notifyUpdate(true);		
 		if (rewardItems != null) {
-			rewardItems.rewardTakeAffectAndPush(player, Action.EQUIP_PUNCH);
+			rewardItems.rewardTakeAffectAndPush(player, Action.EQUIP_PUNCH, hsCode);
 		}
-		consume.consumeTakeAffectAndPush(player, Action.EQUIP_PUNCH);
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_PUNCH, hsCode);
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_PUNCH_S_VALUE, response));
-		
+
 		BehaviorLogger.log4Service(player, Source.USER_OPERATION, Action.EQUIP_PUNCH,
 				Params.valueOf("equipId", equipEntity.getItemId()),
 				Params.valueOf("id", equipEntity.getId()),

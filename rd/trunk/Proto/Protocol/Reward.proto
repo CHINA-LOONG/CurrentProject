@@ -35,4 +35,5 @@ message HSRewardInfo
 	repeated SynMonsterAttr monstersAttr = 2;
 	
 	repeated RewardItem RewardItems = 3;	
+	optional int32  hsCode = 4;
 }

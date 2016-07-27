@@ -114,10 +114,11 @@ public class PetDetailRightFeed : PetDetailRightBase,IUsedExpCallBack
     {
         if (UIUtil.CheckPetIsMaxLevel(t_unit.level))
         {
-            t_unit.level = GameConfig.MaxMonsterLevel;
+            t_unit.level = (GameConfig.MaxMonsterLevel < GameDataMgr.Instance.PlayerDataAttr.level ?
+                           GameConfig.MaxMonsterLevel :
+                           GameDataMgr.Instance.PlayerDataAttr.level);
             t_unit.exp = 0;
             Logger.LogError("达到最大等级");
-            //TODO：
             callback();
             items.ForEach(delegate(EXPListItem item) { item.IsMaxlevel = true; });
             return;
@@ -164,7 +165,6 @@ public class PetDetailRightFeed : PetDetailRightBase,IUsedExpCallBack
         }
         else
         {
-
             Logger.Log("使用成功");
         }
         ParentNode.ReloadLeftData();

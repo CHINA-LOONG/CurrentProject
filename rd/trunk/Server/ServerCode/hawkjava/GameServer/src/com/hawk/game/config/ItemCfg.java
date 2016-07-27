@@ -210,7 +210,7 @@ public class ItemCfg extends HawkConfigBase {
 
 	public int getBindType() {
 		return bindType;
-	}
+	} 
 
 
 	public int getSellPrice() {

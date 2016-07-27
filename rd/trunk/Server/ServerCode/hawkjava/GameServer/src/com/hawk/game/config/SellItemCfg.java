@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.hawk.game.item.ShopItemInfo;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.util.ConfigUtil;
 
 import org.hawk.config.HawkConfigBase;
@@ -66,7 +67,7 @@ public class SellItemCfg extends HawkConfigBase{
 				String[] items = itemArray.split("_");
 				if (items.length == 3) {
 					ShopItemInfo item = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]));
-					if (ConfigUtil.checkIsNotEquip(item.getType()))
+					if (item.getType() != Const.itemType.EQUIP_VALUE)
 					{
 						fixItems.add(item);
 					}
@@ -76,7 +77,7 @@ public class SellItemCfg extends HawkConfigBase{
 				}
 				else if (items.length == 5) {
 					ShopItemInfo item = ShopItemInfo.valueOf(Integer.valueOf(items[0]), items[1], Integer.valueOf(items[2]), Integer.valueOf(items[3]), Integer.valueOf(items[4]));
-					if (ConfigUtil.checkIsEquip(item.getType()))
+					if (item.getType() == Const.itemType.EQUIP_VALUE)
 					{
 						fixItems.add(item);
 					}
