@@ -96,8 +96,6 @@ public class OpenBaoxiangDlg : UIBase {
 		param.itemCount = useKeyValue;
 
 		GameApp.Instance.netManager.SendMessage (PB.code.ITEM_BOX_USE_BATCH_C.GetHashCode (), param);
-
-
 	}
 
 	void OnOpenBoxFinished(ProtocolMessage msg)

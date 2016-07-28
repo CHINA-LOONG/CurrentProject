@@ -96,7 +96,7 @@ public class EXPListItem : MonoBehaviour
     void UpdateCount(int useCount)
     {
         int curCount = (itemInfo == null ? 0 : itemInfo.count)- useCount;
-        textCount.text = "×" + curCount;
+        textCount.text = "x" + curCount;
         IsNone = (curCount <= 0);
     }
 

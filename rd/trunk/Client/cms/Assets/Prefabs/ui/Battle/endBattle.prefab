@@ -11,6 +11,7 @@ GameObject:
   - 222: {fileID: 22235400}
   - 114: {fileID: 11476640}
   - 95: {fileID: 9505514}
+  - 225: {fileID: 22542952}
   m_Layer: 5
   m_Name: endBattle
   m_TagString: Untagged
@@ -141,6 +142,17 @@ RectTransform:
   m_AnchoredPosition: {x: 4.19618373e-05, y: 9.53674316e-06}
   m_SizeDelta: {x: 597, y: 618}
   m_Pivot: {x: .5, y: .5}
+--- !u!225 &22542952
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105470}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

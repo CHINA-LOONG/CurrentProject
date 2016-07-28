@@ -53,7 +53,6 @@ public class GameSpeedService : MonoBehaviour {
             return;
 
         battleSpeedScale = ratio;
-        PlayerPrefs.SetFloat("battleSpeed", battleSpeedScale);
 
         RefreshSpeed();
     }

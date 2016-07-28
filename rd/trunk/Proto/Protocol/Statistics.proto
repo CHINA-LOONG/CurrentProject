@@ -35,8 +35,10 @@ message HSStatisticsInfoSync
 	repeated RechargeState rechargeState = 7;
 	// 月卡剩余时间
 	required int32  monthCardLeft = 8;
+	// 钻石购买金币次数
+	required int32  gold2CoinTimes = 9;
 	// 多倍经验剩余次数
-	required HSStatisticsExpLeftTimeSync expLeftTimes = 9;
+	required HSStatisticsExpLeftTimeSync expLeftTimes = 10;
 }
 
 message HSStatisticsExpLeftTimeSync
@@ -46,3 +48,10 @@ message HSStatisticsExpLeftTimeSync
 	// 三倍经验剩余次数
 	required int32  tripleExpLeft = 2;
 }
+
+message HSStatisticsResetSync
+{
+	// 钻石兑换次数
+	required int32 goldChangeTimes = 1;
+}
+

@@ -321,6 +321,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"IM_PUSH_S", Value=7002)]
       IM_PUSH_S = 7002,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_PLAYER_GET_C", Value=7003)]
+      IM_PLAYER_GET_C = 7003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IM_PLAYER_GET_S", Value=7004)]
+      IM_PLAYER_GET_S = 7004,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SHOP_DATA_INIT_C", Value=8001)]
       SHOP_DATA_INIT_C = 8001,
             
@@ -373,7 +379,10 @@ namespace PB
       SETTING_BLOCK_S = 10004,
             
       [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_EXP_LEFT_TIMES", Value=11001)]
-      STATISTICS_EXP_LEFT_TIMES = 11001
+      STATISTICS_EXP_LEFT_TIMES = 11001,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_RESET_SYN", Value=11002)]
+      STATISTICS_RESET_SYN = 11002
     }
   
 }

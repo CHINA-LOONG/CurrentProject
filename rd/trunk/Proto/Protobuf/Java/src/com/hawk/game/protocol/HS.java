@@ -665,53 +665,61 @@ public final class HS {
      */
     IM_PUSH_S(91, 7002),
     /**
+     * <code>IM_PLAYER_GET_C = 7003;</code>
+     */
+    IM_PLAYER_GET_C(92, 7003),
+    /**
+     * <code>IM_PLAYER_GET_S = 7004;</code>
+     */
+    IM_PLAYER_GET_S(93, 7004),
+    /**
      * <code>SHOP_DATA_INIT_C = 8001;</code>
      *
      * <pre>
      * 商店
      * </pre>
      */
-    SHOP_DATA_INIT_C(92, 8001),
+    SHOP_DATA_INIT_C(94, 8001),
     /**
      * <code>SHOP_DATA_INIT_S = 8002;</code>
      */
-    SHOP_DATA_INIT_S(93, 8002),
+    SHOP_DATA_INIT_S(95, 8002),
     /**
      * <code>SHOP_REFRESH_C = 8003;</code>
      */
-    SHOP_REFRESH_C(94, 8003),
+    SHOP_REFRESH_C(96, 8003),
     /**
      * <code>SHOP_REFRESH_S = 8004;</code>
      */
-    SHOP_REFRESH_S(95, 8004),
+    SHOP_REFRESH_S(97, 8004),
     /**
      * <code>SHOP_ITEM_BUY_C = 8005;</code>
      */
-    SHOP_ITEM_BUY_C(96, 8005),
+    SHOP_ITEM_BUY_C(98, 8005),
     /**
      * <code>SHOP_ITEM_BUY_S = 8006;</code>
      */
-    SHOP_ITEM_BUY_S(97, 8006),
+    SHOP_ITEM_BUY_S(99, 8006),
     /**
      * <code>SHOP_DATA_SYN_C = 8007;</code>
      */
-    SHOP_DATA_SYN_C(98, 8007),
+    SHOP_DATA_SYN_C(100, 8007),
     /**
      * <code>SHOP_DATA_SYN_S = 8008;</code>
      */
-    SHOP_DATA_SYN_S(99, 8008),
+    SHOP_DATA_SYN_S(101, 8008),
     /**
      * <code>SHOP_GOLD2COIN_C = 8009;</code>
      */
-    SHOP_GOLD2COIN_C(100, 8009),
+    SHOP_GOLD2COIN_C(102, 8009),
     /**
      * <code>SHOP_GOLD2COIN_S = 8010;</code>
      */
-    SHOP_GOLD2COIN_S(101, 8010),
+    SHOP_GOLD2COIN_S(103, 8010),
     /**
      * <code>SHOP_REFRESH_TIMES = 8011;</code>
      */
-    SHOP_REFRESH_TIMES(102, 8011),
+    SHOP_REFRESH_TIMES(104, 8011),
     /**
      * <code>ALLIANCE_CREATE_C = 9001;</code>
      *
@@ -719,11 +727,11 @@ public final class HS {
      * 公会
      * </pre>
      */
-    ALLIANCE_CREATE_C(103, 9001),
+    ALLIANCE_CREATE_C(105, 9001),
     /**
      * <code>ALLIANCE_CREATE_S = 9002;</code>
      */
-    ALLIANCE_CREATE_S(104, 9002),
+    ALLIANCE_CREATE_S(106, 9002),
     /**
      * <code>SETTING_LANGUAGE_C = 10001;</code>
      *
@@ -731,27 +739,35 @@ public final class HS {
      * 系统设置
      * </pre>
      */
-    SETTING_LANGUAGE_C(105, 10001),
+    SETTING_LANGUAGE_C(107, 10001),
     /**
      * <code>SETTING_LANGUAGE_S = 10002;</code>
      */
-    SETTING_LANGUAGE_S(106, 10002),
+    SETTING_LANGUAGE_S(108, 10002),
     /**
      * <code>SETTING_BLOCK_C = 10003;</code>
      */
-    SETTING_BLOCK_C(107, 10003),
+    SETTING_BLOCK_C(109, 10003),
     /**
      * <code>SETTING_BLOCK_S = 10004;</code>
      */
-    SETTING_BLOCK_S(108, 10004),
+    SETTING_BLOCK_S(110, 10004),
     /**
      * <code>STATISTICS_EXP_LEFT_TIMES = 11001;</code>
      *
      * <pre>
-     * 统计信息
+     * 经验药水剩余次数
      * </pre>
      */
-    STATISTICS_EXP_LEFT_TIMES(109, 11001),
+    STATISTICS_EXP_LEFT_TIMES(111, 11001),
+    /**
+     * <code>STATISTICS_RESET_SYN = 11002;</code>
+     *
+     * <pre>
+     * 零点重置
+     * </pre>
+     */
+    STATISTICS_RESET_SYN(112, 11002),
     ;
 
     /**
@@ -1155,6 +1171,14 @@ public final class HS {
      */
     public static final int IM_PUSH_S_VALUE = 7002;
     /**
+     * <code>IM_PLAYER_GET_C = 7003;</code>
+     */
+    public static final int IM_PLAYER_GET_C_VALUE = 7003;
+    /**
+     * <code>IM_PLAYER_GET_S = 7004;</code>
+     */
+    public static final int IM_PLAYER_GET_S_VALUE = 7004;
+    /**
      * <code>SHOP_DATA_INIT_C = 8001;</code>
      *
      * <pre>
@@ -1238,10 +1262,18 @@ public final class HS {
      * <code>STATISTICS_EXP_LEFT_TIMES = 11001;</code>
      *
      * <pre>
-     * 统计信息
+     * 经验药水剩余次数
      * </pre>
      */
     public static final int STATISTICS_EXP_LEFT_TIMES_VALUE = 11001;
+    /**
+     * <code>STATISTICS_RESET_SYN = 11002;</code>
+     *
+     * <pre>
+     * 零点重置
+     * </pre>
+     */
+    public static final int STATISTICS_RESET_SYN_VALUE = 11002;
 
 
     public final int getNumber() { return value; }
@@ -1340,6 +1372,8 @@ public final class HS {
         case 6006: return MAIL_NEW_S;
         case 7001: return IM_CHAT_SEND_C;
         case 7002: return IM_PUSH_S;
+        case 7003: return IM_PLAYER_GET_C;
+        case 7004: return IM_PLAYER_GET_S;
         case 8001: return SHOP_DATA_INIT_C;
         case 8002: return SHOP_DATA_INIT_S;
         case 8003: return SHOP_REFRESH_C;
@@ -1358,6 +1392,7 @@ public final class HS {
         case 10003: return SETTING_BLOCK_C;
         case 10004: return SETTING_BLOCK_S;
         case 11001: return STATISTICS_EXP_LEFT_TIMES;
+        case 11002: return STATISTICS_RESET_SYN;
         default: return null;
       }
     }
@@ -1422,7 +1457,7 @@ public final class HS {
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
       "\n\nERROR_CODE\020\004*@\n\002gm\022\024\n\020GEN_TEST_ACCOUNT" +
       "\020d\022\021\n\rGMOPERATION_C\020e\022\021\n\rGMOPERATION_S\020f" +
-      "*\273\023\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n" +
+      "*\202\024\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n" +
       "\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICKOUT_S" +
       "\020\354\007\022\017\n\nSYNCINFO_C\020\355\007\022\017\n\nSYNCINFO_S\020\356\007\022\027\n" +
       "\022PLAYER_INFO_SYNC_S\020\362\007\022\033\n\026STATISTICS_INF" +
@@ -1473,18 +1508,20 @@ public final class HS {
       "AD_C\020\361.\022\023\n\016MAIL_RECEIVE_C\020\362.\022\023\n\016MAIL_REC" +
       "EIVE_S\020\363.\022\027\n\022MAIL_RECEIVE_ALL_C\020\364.\022\027\n\022MA" +
       "IL_RECEIVE_ALL_S\020\365.\022\017\n\nMAIL_NEW_S\020\366.\022\023\n\016" +
-      "IM_CHAT_SEND_C\020\3316\022\016\n\tIM_PUSH_S\020\3326\022\025\n\020SHO" +
-      "P_DATA_INIT_C\020\301>\022\025\n\020SHOP_DATA_INIT_S\020\302>\022" +
-      "\023\n\016SHOP_REFRESH_C\020\303>\022\023\n\016SHOP_REFRESH_S\020\304" +
-      ">\022\024\n\017SHOP_ITEM_BUY_C\020\305>\022\024\n\017SHOP_ITEM_BUY" +
-      "_S\020\306>\022\024\n\017SHOP_DATA_SYN_C\020\307>\022\024\n\017SHOP_DATA",
-      "_SYN_S\020\310>\022\025\n\020SHOP_GOLD2COIN_C\020\311>\022\025\n\020SHOP" +
-      "_GOLD2COIN_S\020\312>\022\027\n\022SHOP_REFRESH_TIMES\020\313>" +
-      "\022\026\n\021ALLIANCE_CREATE_C\020\251F\022\026\n\021ALLIANCE_CRE" +
-      "ATE_S\020\252F\022\027\n\022SETTING_LANGUAGE_C\020\221N\022\027\n\022SET" +
-      "TING_LANGUAGE_S\020\222N\022\024\n\017SETTING_BLOCK_C\020\223N" +
-      "\022\024\n\017SETTING_BLOCK_S\020\224N\022\036\n\031STATISTICS_EXP" +
-      "_LEFT_TIMES\020\371UB\030\n\026com.hawk.game.protocol"
+      "IM_CHAT_SEND_C\020\3316\022\016\n\tIM_PUSH_S\020\3326\022\024\n\017IM_" +
+      "PLAYER_GET_C\020\3336\022\024\n\017IM_PLAYER_GET_S\020\3346\022\025\n" +
+      "\020SHOP_DATA_INIT_C\020\301>\022\025\n\020SHOP_DATA_INIT_S" +
+      "\020\302>\022\023\n\016SHOP_REFRESH_C\020\303>\022\023\n\016SHOP_REFRESH" +
+      "_S\020\304>\022\024\n\017SHOP_ITEM_BUY_C\020\305>\022\024\n\017SHOP_ITEM",
+      "_BUY_S\020\306>\022\024\n\017SHOP_DATA_SYN_C\020\307>\022\024\n\017SHOP_" +
+      "DATA_SYN_S\020\310>\022\025\n\020SHOP_GOLD2COIN_C\020\311>\022\025\n\020" +
+      "SHOP_GOLD2COIN_S\020\312>\022\027\n\022SHOP_REFRESH_TIME" +
+      "S\020\313>\022\026\n\021ALLIANCE_CREATE_C\020\251F\022\026\n\021ALLIANCE" +
+      "_CREATE_S\020\252F\022\027\n\022SETTING_LANGUAGE_C\020\221N\022\027\n" +
+      "\022SETTING_LANGUAGE_S\020\222N\022\024\n\017SETTING_BLOCK_" +
+      "C\020\223N\022\024\n\017SETTING_BLOCK_S\020\224N\022\036\n\031STATISTICS" +
+      "_EXP_LEFT_TIMES\020\371U\022\031\n\024STATISTICS_RESET_S" +
+      "YN\020\372UB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

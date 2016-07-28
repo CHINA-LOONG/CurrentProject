@@ -1768,16 +1768,16 @@ public final class Status {
      * </pre>
      */
     SHOP_REFRESH_MAX_COUNT(2, 589827),
-    ;
-
     /**
-     * <code>SHOP_GOLD2COIN_MAX_COUNT = 589827;</code>
+     * <code>SHOP_GOLD2COIN_MAX_COUNT = 589828;</code>
      *
      * <pre>
-     * 商品刷新最大次数
+     * 钻石购买最大次数
      * </pre>
      */
-    public static final shopError SHOP_GOLD2COIN_MAX_COUNT = SHOP_REFRESH_MAX_COUNT;
+    SHOP_GOLD2COIN_MAX_COUNT(3, 589828),
+    ;
+
     /**
      * <code>SHOP_REFRESH_TIMEOUT = 589825;</code>
      *
@@ -1803,13 +1803,13 @@ public final class Status {
      */
     public static final int SHOP_REFRESH_MAX_COUNT_VALUE = 589827;
     /**
-     * <code>SHOP_GOLD2COIN_MAX_COUNT = 589827;</code>
+     * <code>SHOP_GOLD2COIN_MAX_COUNT = 589828;</code>
      *
      * <pre>
-     * 商品刷新最大次数
+     * 钻石购买最大次数
      * </pre>
      */
-    public static final int SHOP_GOLD2COIN_MAX_COUNT_VALUE = 589827;
+    public static final int SHOP_GOLD2COIN_MAX_COUNT_VALUE = 589828;
 
 
     public final int getNumber() { return value; }
@@ -1819,6 +1819,7 @@ public final class Status {
         case 589825: return SHOP_REFRESH_TIMEOUT;
         case 589826: return SHOP_ITEM_ALREADY_BUY;
         case 589827: return SHOP_REFRESH_MAX_COUNT;
+        case 589828: return SHOP_GOLD2COIN_MAX_COUNT;
         default: return null;
       }
     }
@@ -1848,9 +1849,7 @@ public final class Status {
       return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(9);
     }
 
-    private static final shopError[] VALUES = {
-      SHOP_REFRESH_TIMEOUT, SHOP_ITEM_ALREADY_BUY, SHOP_REFRESH_MAX_COUNT, SHOP_GOLD2COIN_MAX_COUNT, 
-    };
+    private static final shopError[] VALUES = values();
 
     public static shopError valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -2014,7 +2013,7 @@ public final class Status {
       "pError\022\032\n\024SHOP_REFRESH_TIMEOUT\020\201\200$\022\033\n\025SH",
       "OP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026SHOP_REFRESH_" +
       "MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COIN_MAX_COUN" +
-      "T\020\203\200$*\037\n\007imError\022\024\n\016IM_CHAT_LENGTH\020\201\200@B\030" +
+      "T\020\204\200$*\037\n\007imError\022\024\n\016IM_CHAT_LENGTH\020\201\200@B\030" +
       "\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =

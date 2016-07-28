@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class UIMail : UIBase,TabButtonDelegate
 {
+    public const int maxCount = 300;
+
     public static string ViewName = "UIMail";
 
     public Text textCount;      //邮件数量
@@ -40,8 +42,6 @@ public class UIMail : UIBase,TabButtonDelegate
         mailContent.actionReceiveMail = ActionReceiveMail;
         EventTriggerListener.Get(btnClose.gameObject).onClick = ClickCloseButton;
         EventTriggerListener.Get(btnOnekey.gameObject).onClick = ClickReceiveAll;
-
-
 	}
     public override void Init()
     {
@@ -50,6 +50,11 @@ public class UIMail : UIBase,TabButtonDelegate
         OnMailChanged();
         tabGroup.OnChangeItem(0);
         readMail = null;
+
+        if (mailCount >= UIMail.maxCount)
+			MsgBox.PromptMsg.Open (MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID ("mail_youxiangyiman"));
+        else if (mailCount >= (UIMail.maxCount-20))
+			MsgBox.PromptMsg.Open (MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID ("mail_youxiangjiangman"));
     }
     public override void Clean()
     {
@@ -59,22 +64,20 @@ public class UIMail : UIBase,TabButtonDelegate
 
     void OnMailChanged()
     {
-        allMailList = GameDataMgr.Instance.PlayerDataAttr.gameMailData.mailList;
-        sysMailList.Clear();
-        foreach (var item in allMailList.Keys)
-        {
-            sysMailList.Add(allMailList[item]);
-        }
+        UpdateMailList();
         OnTabButtonChanged(tabIndex);
-
         SetMailCount();
 
-        if (mailCount >= 300)
-           // MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_youxiangyiman"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
-			MsgBox.PromptMsg.Open (MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID ("mail_youxiangyiman"));
-        else if (mailCount >= 280)
-            //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_youxiangjiangman"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
-			MsgBox.PromptMsg.Open (MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID ("mail_youxiangjiangman"));
+    }
+
+    void UpdateMailList()
+    {
+        allMailList = GameDataMgr.Instance.PlayerDataAttr.gameMailData.mailList;
+        sysMailList.Clear();
+        foreach (var item in allMailList)
+        {
+            sysMailList.Add(item.Value);
+        }
     }
 
     public void OnTabButtonChanged(int index)
@@ -86,7 +89,7 @@ public class UIMail : UIBase,TabButtonDelegate
 
     void SetMailCount()
     {
-        textCount.text = string.Format("{0}/300", mailCount);
+        textCount.text = string.Format("{0}/{1}", mailCount, UIMail.maxCount);
     }
 
     //读取邮件
@@ -132,20 +135,17 @@ public class UIMail : UIBase,TabButtonDelegate
         if (result.status==0)
         {
             GameDataMgr.Instance.PlayerDataAttr.gameMailData.ClearMail();
-            // MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_002"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
             MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("mail_CollectedAll"));
         }
         else
         {
             if (result.status == (int)PB.mailError.MAIL_COIN_FULL)
             {
-                //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_003"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
-                //MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("mail_record_003"));
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_003"), (int)PB.ImType.PROMPT);
             }
             else if (result.status == (int)PB.mailError.MAIL_GOLD_FULL)
             {
-                //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_004"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
-                //MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("mail_record_004"));
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_004"), (int)PB.ImType.PROMPT);
             }
             foreach (var mailId in result.receiveMailId)
             {
@@ -167,8 +167,7 @@ public class UIMail : UIBase,TabButtonDelegate
                 OnMailChanged();
                 readMail = null;
             }
-            //MsgBox.PromptMsg.Open("", StaticDataMgr.Instance.GetTextByID("mail_record_001"), StaticDataMgr.Instance.GetTextByID("ui_queding"));
-			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,StaticDataMgr.Instance.GetTextByID("mail_record_001"));
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,StaticDataMgr.Instance.GetTextByID("mail_record_001"));
             return;
         }
 
@@ -186,6 +185,13 @@ public class UIMail : UIBase,TabButtonDelegate
         UIMgr.Instance.CloseUI_(this);
     }
 
+    //同步邮件列表，收取新邮件
+    void OnMailListChanged(int mailId)
+    {
+        OnMailChanged();
+        tabGroup.OnChangeItem(0);
+    }
+
 
     void OnEnable()
     {
@@ -201,12 +207,16 @@ public class UIMail : UIBase,TabButtonDelegate
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_C.GetHashCode().ToString(), OnMailReceiveAllRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_S.GetHashCode().ToString(), OnMailReceiveAllRet);
+
+        GameEventMgr.Instance.AddListener<int>(GameEventList.MailChanged, OnMailListChanged);
     }
 
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_C.GetHashCode().ToString(), OnMailReceiveAllRet);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_S.GetHashCode().ToString(), OnMailReceiveAllRet);
+
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailChanged, OnMailListChanged);
     }
 
 

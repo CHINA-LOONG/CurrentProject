@@ -33,6 +33,7 @@ public class PbUnit
     public int curExp;
     public int stage;//升星
     public List<PB.HSSkill> spellPbList;
+    public bool locked;
 }
 
 //[Serializable]

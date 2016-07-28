@@ -17,6 +17,9 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
 
     public Button btnDetailAttr;
 
+    public Button btnLock;
+    public Button btnChange;
+
     public Button btnSkill;
     public Button btnStage;
     public Image stageBadge;
@@ -50,7 +53,6 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         Advance
     }
     private BtnState state;
-
     public BtnState State
     {
         get { return state; }
@@ -84,6 +86,34 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         }
     }
 
+    public bool IsLocked
+    {
+        get { return m_unit.pbUnit.locked; }
+        set 
+        { 
+            m_unit.pbUnit.locked = value;
+            SetLockButton(value);
+        }
+    }
+    void SetLockButton(bool isLocked)
+    {
+        string normal;
+        string pressed;
+        if (isLocked)
+        {
+            normal = "anniu_suoding";
+            pressed = "anniu_suoding_anxia";
+        }
+        else
+        {
+            normal = "anniu_jiesuo";
+            pressed = "anniu_jiesuo_anxia";
+        }
+        btnLock.image.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(normal);
+        SpriteState state = btnLock.spriteState;
+        state.pressedSprite = ResourceMgr.Instance.LoadAssetType<Sprite>(pressed);
+        btnLock.spriteState = state;
+    }
 
     // Use this for initialization
     void Start()
@@ -94,6 +124,8 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         btnSkill.onClick.AddListener(SkillButtonDown);
         btnStage.onClick.AddListener(StageButtonDown);
         btnAdvance.onClick.AddListener(AdvanceButtonDown);
+
+        btnLock.onClick.AddListener(LockPetButtonDown);
 
         btnAdvance.interactable = false;
 
@@ -110,12 +142,29 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     }
     void OnEnable()
     {
-        GameEventMgr.Instance.AddListener(GameEventList.ReloadPetStageNotify, ReloadPetStage);
+        BindListener();
+        
     }
     void OnDisable()
     {
-        GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetStageNotify, ReloadPetStage);
+        UnBindListener();
     }
+
+    void BindListener()
+    {
+        GameEventMgr.Instance.AddListener(GameEventList.ReloadPetStageNotify, ReloadPetStage);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_LOCK_C.GetHashCode().ToString(), OnPetLockReturn);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_LOCK_S.GetHashCode().ToString(), OnPetLockReturn);
+    }
+
+    void UnBindListener()
+    {
+        GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetStageNotify, ReloadPetStage);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_LOCK_C.GetHashCode().ToString(), OnPetLockReturn);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_LOCK_S.GetHashCode().ToString(), OnPetLockReturn);
+    }
+
+
     void ReloadPetStage()
     {
         if (m_unit != null)
@@ -128,7 +177,7 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     {
         m_unit = unit;
         s_unit = StaticDataMgr.Instance.GetUnitRowData(m_unit.pbUnit.id);
-
+        IsLocked = m_unit.pbUnit.locked;
         #region set monster role
         
         if (reloadUnit == true)
@@ -240,6 +289,37 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     {
         ParentNode.AdvanceButtonDown();
     }
+
+    void LockPetButtonDown()
+    {
+        PB.HSMonsterLock param = new PB.HSMonsterLock();
+        param.monsterId = m_unit.pbUnit.guid;
+        param.locked = !m_unit.pbUnit.locked;
+        GameApp.Instance.netManager.SendMessage(PB.code.MONSTER_LOCK_C.GetHashCode(), param);
+    }
+    void OnPetLockReturn(ProtocolMessage msg)
+    {
+        UINetRequest.Close();
+        if (msg == null || msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            Logger.LogError("设置失败");
+            //TODO： 处理设置加解锁失败的情况
+            return;
+        }
+        PB.HSMonsterLockRet result = msg.GetProtocolBody<PB.HSMonsterLockRet>();
+        if (result.monsterId == m_unit.pbUnit.guid)
+        {
+            IsLocked = result.locked;
+        }
+        else
+        {
+            //设置的宠物不正确
+            return;
+        }
+        
+    }
+
+
     //接口函数
     public void OnSelectEquipField(PartType part, EquipData data)
     {

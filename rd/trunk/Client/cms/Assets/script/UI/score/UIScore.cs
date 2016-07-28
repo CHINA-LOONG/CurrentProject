@@ -16,6 +16,7 @@ public class UIScore : UIBase
     public GameObject mPlayerLvlUp;
     public Sprite mVictorySprite;
     public Sprite mFailedSprite;
+    public GameObject mScoreBack;
     
     //internal use only
     public RectTransform mCenterPos;
@@ -38,7 +39,10 @@ public class UIScore : UIBase
     private GameObject mEndBattleUI;
 
     private bool mIsSuccess;
-    private PB.HSInstanceSettleRet mInstanceSettleResult;
+    private PB.HSRewardInfo mInstanceSettleResult;
+    private Dictionary<long, UIMonsterIconExp> mUIMonsterExpList = new Dictionary<long, UIMonsterIconExp>();
+    private bool mSkipEnable = false;
+    private Tweener mBattleTitleTw;
 
     //---------------------------------------------------------------------------------------------
     void Start()
@@ -46,6 +50,7 @@ public class UIScore : UIBase
         EventTriggerListener.Get(mRetryBtn.gameObject).onClick = OnRetry;
         EventTriggerListener.Get(mNextLevelBtn.gameObject).onClick = OnNextLevel;
         EventTriggerListener.Get(mConfirmBtn.gameObject).onClick = OnConfirm;
+        EventTriggerListener.Get(mScoreBack.gameObject).onClick = SkipScoreAni;
     }
     //---------------------------------------------------------------------------------------------
     void OnEnable()
@@ -71,9 +76,23 @@ public class UIScore : UIBase
         BattleController.Instance.UnLoadBattleScene(0);
     }
     //---------------------------------------------------------------------------------------------
-    void OnSkipAni(GameObject go)
+    void SkipScoreAni(GameObject go)
     {
+        if (mSkipEnable == true)
+        {
+            mSkipEnable = false;
+            if (mBattleTitleTw != null)
+            {
+                mBattleTitleTw.Complete();
+            }
+            mPlayerProgress.SkipAnimation();
 
+            var itor = mUIMonsterExpList.GetEnumerator();
+            while (itor.MoveNext())
+            {
+                itor.Current.Value.SkipAnimation();
+            }
+        }
     }
     //---------------------------------------------------------------------------------------------
     void Awake()
@@ -85,6 +104,8 @@ public class UIScore : UIBase
     {
         base.Init();
 
+        mSkipEnable = false;
+        mUIMonsterExpList.Clear();
         mPlayerInfoRoot.SetActive(false);
         mMonsterExpList.gameObject.SetActive(false);
         mItemGainList.gameObject.SetActive(false);
@@ -101,6 +122,8 @@ public class UIScore : UIBase
     public override void Clean()
     {
         base.Clean();
+        mUIMonsterExpList.Clear();
+        mBattleTitleTw = null;
         ResourceMgr.Instance.DestroyAsset(mEndBattleUI);
     }
     //---------------------------------------------------------------------------------------------
@@ -108,17 +131,22 @@ public class UIScore : UIBase
     {
         mIsSuccess = success;
         gameObject.SetActive(true);
-        PB.HSRewardInfo rewardInfo = mInstanceSettleResult.reward;
-        if (rewardInfo != null)
+        if (mInstanceSettleResult != null)
         {
-            int count = rewardInfo.RewardItems.Count;
+            int count = mInstanceSettleResult.RewardItems.Count;
             for (int i = 0; i < count; ++i)
             {
-                PB.RewardItem item = rewardInfo.RewardItems[i];
+                PB.RewardItem item = mInstanceSettleResult.RewardItems[i];
                 if (item.type == (int)PB.itemType.MONSTER)
                 {
-                    AddGainMonster(item.itemId, item.level, item.stage);
-                    return;
+                    UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(item.itemId);
+                    if (unitRowData != null && unitRowData.grade >= 3)
+                    {
+                        AddGainMonster(item.itemId, item.level, item.stage);
+                        return;
+                    }
+
+                    break;
                 }
             }
         }
@@ -148,6 +176,7 @@ public class UIScore : UIBase
     //---------------------------------------------------------------------------------------------
     private void ShowEndBattleUI()
     {
+        SetScoreInternal();
         mEndBattleUI = ResourceMgr.Instance.LoadAsset("endBattle");
         mEndBattleUI.transform.SetParent(transform, false);
         mEndBattleUI.transform.localPosition = mCenterPos.localPosition;
@@ -161,12 +190,14 @@ public class UIScore : UIBase
             endImage.sprite = mFailedSprite;
         }
         endImage.SetNativeSize();
-        Tweener battleTitleTw = mEndBattleUI.transform.DOLocalMove(mTopPos.localPosition, BattleConst.scoreTitleUpTime);
-        battleTitleTw.OnComplete(ShowStar);
-        battleTitleTw.SetDelay(BattleConst.scoreTitleStayTime);
+        mBattleTitleTw = mEndBattleUI.transform.DOLocalMove(mTopPos.localPosition, BattleConst.scoreTitleUpTime);
+        mBattleTitleTw.OnComplete(ShowStar);
+        mBattleTitleTw.SetDelay(BattleConst.scoreTitleStayTime);
+
+        mSkipEnable = true;
     }
     //---------------------------------------------------------------------------------------------
-    public void SetScoreInfo(PB.HSInstanceSettleRet scoreInfo)
+    public void SetScoreInfo(PB.HSRewardInfo scoreInfo)
     {
         mInstanceSettleResult = scoreInfo;
     }
@@ -177,21 +208,18 @@ public class UIScore : UIBase
         ShowScoreInfo();
     }
     //---------------------------------------------------------------------------------------------
-    private void ShowScoreInfo()
+    private void SetScoreInternal()
     {
-        mBackground.SetActive(true);
-        mLineMonsterItem.SetActive(true);
-        PB.HSRewardInfo rewardInfo = mInstanceSettleResult.reward;
         PlayerData mainPlayer = GameDataMgr.Instance.PlayerDataAttr;
         PlayerLevelAttr originalAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(mainPlayer.level);
 
         //success
-        if (rewardInfo != null)
+        if (mInstanceSettleResult != null)
         {
             //show player info;
             SetInitPlayerInfo(originalAttr, mainPlayer);
-            PB.SynPlayerAttr playerAttr = rewardInfo.playerAttr;
-            List<PB.RewardItem> rewardItemList = rewardInfo.RewardItems;
+            PB.SynPlayerAttr playerAttr = mInstanceSettleResult.playerAttr;
+            List<PB.RewardItem> rewardItemList = mInstanceSettleResult.RewardItems;
             int count = rewardItemList.Count;
             for (int i = 0; i < count; ++i)
             {
@@ -213,10 +241,18 @@ public class UIScore : UIBase
             if (playerAttr.level > 0)
             {
                 PlayerLevelAttr curAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(playerAttr.level);
-                mPlayerLvl.text = "LVL " + playerAttr.level.ToString();
                 mPlayerProgress.SetLoopCount(playerAttr.level - mainPlayer.level);
                 mPlayerProgress.SetCurrrentRatio(mainPlayer.exp / (float)originalAttr.exp);
-                mPlayerProgress.SetTargetRatio(playerAttr.exp / (float)curAttr.exp);
+                if (playerAttr.level >= GameConfig.MaxPlayerLevel)
+                {
+                    mPlayerLvl.text = "MAX LVL";
+                    mPlayerProgress.SetTargetRatio(0.0f);
+                }
+                else
+                {
+                    mPlayerLvl.text = "LVL " + playerAttr.level.ToString();
+                    mPlayerProgress.SetTargetRatio(playerAttr.exp / (float)curAttr.exp);
+                }
                 mPlayerLvlUp.SetActive(mainPlayer.level != playerAttr.level);
                 //TODO:Sysnc player info here?
                 if (mainPlayer.level != playerAttr.level)
@@ -226,14 +262,16 @@ public class UIScore : UIBase
                 }
                 mainPlayer.exp = playerAttr.exp;
             }
+            else
+            {
+
+            }
 
             //show monster info
-            mMonsterExpList.gameObject.SetActive(true);
-            List<PB.SynMonsterAttr> monsterInfoList = rewardInfo.monstersAttr;
+            List<PB.SynMonsterAttr> monsterInfoList = mInstanceSettleResult.monstersAttr;
             count = monsterInfoList.Count;
             if (count > 0)
             {
-                Dictionary<long, UIMonsterIconExp> uiMonsterExpList = new Dictionary<long,UIMonsterIconExp>();
                 //set monster info
                 for (int i = 0; i < count; ++i)
                 {
@@ -255,7 +293,10 @@ public class UIScore : UIBase
                         originalMonster.pbUnit.stage
                         );
                     mainPlayer.mainUnitList[i].unit.RefreshUnitLvl(monsterInfoList[i].level, monsterInfoList[i].exp);
-                    uiMonsterExpList.Add(originalMonster.pbUnit.guid, monsterIconExp);
+                    if (UIUtil.CheckPetIsMaxLevel(monsterInfoList[i].level) == false)
+                    {
+                        mUIMonsterExpList.Add(originalMonster.pbUnit.guid, monsterIconExp);
+                    }
                 }
                 //set exp gain
                 count = rewardItemList.Count;
@@ -267,9 +308,9 @@ public class UIScore : UIBase
                         if ((int)PB.changeType.CHANGE_MONSTER_EXP == int.Parse(item.itemId))
                         {
                             UIMonsterIconExp curMonsterExp = null;
-                            if (uiMonsterExpList.TryGetValue(item.id, out curMonsterExp) == true)
+                            if (mUIMonsterExpList.TryGetValue(item.id, out curMonsterExp) == true)
                             {
-                                curMonsterExp.SetExpGain(item.count);
+                                curMonsterExp.SetExpGain("+" + item.count.ToString());
                             }
                         }
                     }
@@ -297,7 +338,6 @@ public class UIScore : UIBase
 
             //show item drop info
             count = rewardItemList.Count;
-            mItemGainList.gameObject.SetActive(true);
             for (int i = 0; i < count; ++i)
             {
                 PB.RewardItem item = rewardItemList[i];
@@ -329,7 +369,18 @@ public class UIScore : UIBase
         {
             SetInitPlayerInfo(originalAttr, mainPlayer);
         }
-
+    }
+    //---------------------------------------------------------------------------------------------
+    private void ShowScoreInfo()
+    {
+        mBackground.SetActive(true);
+        mLineMonsterItem.SetActive(true);
+        //show player info
+        mPlayerInfoRoot.SetActive(true);
+        //show monster info
+        mMonsterExpList.gameObject.SetActive(true);
+        //show item drop info
+        mItemGainList.gameObject.SetActive(true);
         //show button
         if (mIsSuccess == true)
         {
@@ -351,13 +402,23 @@ public class UIScore : UIBase
     private void SetInitPlayerInfo(PlayerLevelAttr playerAttr, PlayerData playerData)
     {
         //TODO: duplicate code
-        mPlayerInfoRoot.SetActive(true);
+        //mPlayerInfoRoot.SetActive(true);
         mPlayerGainGold.text = "+0";
         mPlayerGainExp.text = "+0";
-        mPlayerLvl.text = "LVL " + playerAttr.level.ToString();
+        mPlayerProgress.SetLoopCount(0);
         float curExpRatio = playerData.exp / (float)playerAttr.exp;
         mPlayerProgress.SetCurrrentRatio(curExpRatio);
-        mPlayerProgress.SetTargetRatio(curExpRatio);
+        if (playerAttr.level >= GameConfig.MaxPlayerLevel)
+        {
+            mPlayerLvl.text = "MAX LVL";
+            mPlayerProgress.SetTargetRatio(0.0f);
+        }
+        else
+        {
+            mPlayerLvl.text = "LVL " + playerAttr.level.ToString();
+            mPlayerProgress.SetTargetRatio(curExpRatio);
+        }
+        mPlayerLvlUp.SetActive(false);
     }
     //---------------------------------------------------------------------------------------------
 }

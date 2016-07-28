@@ -13,6 +13,7 @@ public class SelectMonsterPanel : UIBase
     public ScrollRect scrollRect;
 
     public Button closeButton;
+    public Text textClose;
     public Text countLabel;
     public Text demandLabel;
     public Image scrollIcon;
@@ -38,13 +39,14 @@ public class SelectMonsterPanel : UIBase
     {
         int selfId=curUnit.pbUnit.guid;
         demandLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageMonster);
+        textClose.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
         m_currentSelectMonster = selectMonster;
         m_itemInfo = itemInfo;
 
         List<GameUnit> petList = GameDataMgr.Instance.PlayerDataAttr.GetAllPet((itemInfo.itemId.Equals(BattleConst.stageSelfId) ? curUnit.pbUnit.id : itemInfo.itemId), itemInfo.stage);
         foreach (GameUnit unit in petList)
         {
-            if (unit.pbUnit.guid != selfId)
+            if (unit.pbUnit.guid != selfId && !unit.pbUnit.locked)
             {
                 GameObject go = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetStageMonsterElementAssetName, false);
                 scrollView.AddElement(go);

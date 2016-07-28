@@ -275,16 +275,14 @@ public class ShopDataMgr : MonoBehaviour
 
 	public	void JinbiNoEnough()
 	{
-		bool isCanExchange = (UnityEngine.Random.Range (0, 2) == 1);
-
-		if (isCanExchange) 
+		if (StatisticsDataMgr.Instance.gold2coinExchargeTimes >= UICoinExchange.MaxExchangeCount) 
 		{
-			UICoinExchange.Open ();
-		}
+			MsgBox.PromptMsg.Open (MsgBox.MsgBoxType.Conform,
+			                       StaticDataMgr.Instance.GetTextByID ("shop_nojinbi_noduihuan"));
+		} 
 		else
 		{
-			MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,
-			                      StaticDataMgr.Instance.GetTextByID("shop_nojinbi_noduihuan"));
+			UICoinExchange.Open ();
 		}
 	}
 	#endregion

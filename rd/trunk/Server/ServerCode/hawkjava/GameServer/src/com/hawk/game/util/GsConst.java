@@ -52,7 +52,10 @@ public class GsConst {
 	public static final int[] INSTANCE_REVIVE_CONSUME = new int[] {15, 30, 50};
 	// 上阵己方怪物最大数量
 	public static final int MAX_BATTLE_MONSTER_COUNT = 5;
-
+	// 钻石兑换金币索引
+	public static final int GOLD_TO_COIN_INDEX = 1;
+	
+	
 	/**
 	 * 对象类型
 	 * 
@@ -77,6 +80,8 @@ public class GsConst {
 		public static final int IM = 2;
 		// 商店
 		public static final int SHOP = 3;
+		// 公会
+		public static final int ALLIANCE= 4;
 	}
 
 	/**

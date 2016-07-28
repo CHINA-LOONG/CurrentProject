@@ -58,7 +58,6 @@ public class EquipData
         equipData.equipId = equipId;
         equipData.monsterId = monsterId;
         equipData.gemList = new List<GemInfo>();
-        EquipProtoData item = StaticDataMgr.Instance.GetEquipProtoData(equipId, stage);
         //基础属性id
         equipData.SetStageLvl(stage, true);
         equipData.SetStrengthLvl(level, true);
@@ -78,7 +77,8 @@ public class EquipData
             level = lvl;
             if (lvl != 0)
             {
-                EquipLevelData lvlAttr = StaticDataMgr.Instance.GetEquipLevelData(lvl);
+                EquipProtoData item = StaticDataMgr.Instance.GetEquipProtoData(equipId, stage);
+                EquipLevelData lvlAttr = StaticDataMgr.Instance.GetEquipLevelData(item.levelAttrId);
                 healthStrengthen = lvlAttr.health * level;
                 strengthStrengthen = lvlAttr.strength * level;
                 intelligenceStrengthen = lvlAttr.intelligence * level;
@@ -110,7 +110,8 @@ public class EquipData
         if (forceRefresh || stage != lvl)
         {
             stage = lvl;
-            EquipLevelData lvlAttr = StaticDataMgr.Instance.GetEquipLevelData(lvl);
+            EquipProtoData item = StaticDataMgr.Instance.GetEquipProtoData(equipId, stage);
+            EquipLevelData lvlAttr = StaticDataMgr.Instance.GetEquipLevelData(item.stageAttrId);
             health = lvlAttr.health;
             strength = lvlAttr.strength;
             intelligence = lvlAttr.intelligence;

@@ -78,7 +78,7 @@ public class BattleProcess : MonoBehaviour
     {
         get { return round; }
     }
-    float lastActionOrder = 0.0f;
+    public float lastActionOrder = 0.0f;
     Dictionary<int, PB.HSRewardInfo> rewardInfoList = new Dictionary<int,PB.HSRewardInfo>();
     //TODO: add battleobject event to here for record
     List<SpellFireArgs> spellEventList = new List<SpellFireArgs>();

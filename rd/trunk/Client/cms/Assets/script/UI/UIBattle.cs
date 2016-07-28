@@ -82,6 +82,7 @@ public class UIBattle : UIBase
             );
 
         m_BattleSpeed = (int)(PlayerPrefs.GetFloat("battleSpeed"));
+        GameSpeedService.Instance.SetBattleSpeed(m_BattleSpeed);
 		UpdateButton ();
 
 		animator = GetComponent<Animator> ();
@@ -193,12 +194,29 @@ public class UIBattle : UIBase
     void OnReviveResult(ProtocolMessage msg)
     {
         UINetRequest.Close();
-        PB.HSInstanceReviveRet reviveResult = msg.GetProtocolBody<PB.HSInstanceReviveRet>();
-
-        BattleController battleInstance = BattleController.Instance;
-        CloseReviveUI();
-        battleInstance.BattleGroup.RevivePlayerList();
-        battleInstance.Process.ReviveSuccess(reviveResult.reviveCount);
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
+            switch (error.errCode)
+            {
+                case (int)PB.instanceError.INSTANCE_REVIVE_COUNT:
+                    UIBattle.Instance.CloseReviveUI();
+                    BattleController.Instance.OnBattleOver(false);
+                    break;
+                case (int)PB.PlayerError.GOLD_NOT_ENOUGH:
+                    GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+                    break;
+            }
+        }
+        else
+        {
+            PB.HSInstanceReviveRet reviveResult = msg.GetProtocolBody<PB.HSInstanceReviveRet>();
+            BattleController battleInstance = BattleController.Instance;
+            CloseReviveUI();
+            battleInstance.BattleGroup.RevivePlayerList(battleInstance.Process.lastActionOrder);
+            battleInstance.Process.ReviveSuccess(reviveResult.reviveCount);
+            m_PetPanel.ForceRefresh();
+        }
         //switch (reviveStatus)
         //{
         //    //0:success 1:count error 2:diamond not enough
@@ -269,7 +287,8 @@ public class UIBattle : UIBase
 		gameObject.SetActive (ishow);
 		if (ishow) 
 		{
-			InitMirrorDray();
+            InitMirrorDray();
+            GameSpeedService.Instance.SetBattleSpeed(m_BattleSpeed);
 		}
 		else 
 		{
@@ -296,6 +315,7 @@ public class UIBattle : UIBase
 		GameEventMgr.Instance.AddListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
         GameEventMgr.Instance.AddListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
         GameEventMgr.Instance.AddListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_C.GetHashCode().ToString(), OnReviveResult);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_S.GetHashCode().ToString(), OnReviveResult);
     }
 
@@ -307,6 +327,7 @@ public class UIBattle : UIBase
         GameEventMgr.Instance.RemoveListener<bool>(GameEventList.SetMirrorModeState, OnSetMirrorModeState);
         GameEventMgr.Instance.RemoveListener<UiState>(GameEventList.ChangeUIBattleState, OnChangeUIState);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HideSwitchPetUI, OnHideSwitchPetUI);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_C.GetHashCode().ToString(), OnReviveResult);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_REVIVE_S.GetHashCode().ToString(), OnReviveResult);
     }
 
@@ -418,6 +439,7 @@ public class UIBattle : UIBase
             m_BattleSpeed = 1;
         }
 
+        PlayerPrefs.SetFloat("battleSpeed", m_BattleSpeed);
         GameSpeedService.Instance.SetBattleSpeed(m_BattleSpeed);
 		UpdateButton ();
     }

@@ -21,7 +21,7 @@ public class HawkAccountService extends HawkTickable {
 	/**
 	 * 默认心跳时间周期
 	 */
-	public final static int HEART_PERIOD = 5000;
+	public final static int HEART_PERIOD = 60000;
 	
 	public static class RegitsterGameServer {
 		String gameServerHost;

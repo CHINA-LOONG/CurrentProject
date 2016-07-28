@@ -64,6 +64,53 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSImPlayer")]
+  public partial class HSImPlayer : global::ProtoBuf.IExtensible
+  {
+    public HSImPlayer() {}
+    
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private string _nickname;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string nickname
+    {
+      get { return _nickname; }
+      set { _nickname = value; }
+    }
+    private int _level;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
+    }
+    private int _guildId = default(int);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"guildId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int guildId
+    {
+      get { return _guildId; }
+      set { _guildId = value; }
+    }
+    private string _guildName = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"guildName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string guildName
+    {
+      get { return _guildName; }
+      set { _guildName = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSImChatSend")]
   public partial class HSImChatSend : global::ProtoBuf.IExtensible
   {
@@ -100,6 +147,40 @@ namespace PB
       get { return _imMsg; }
     }
   
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSImPlayerGet")]
+  public partial class HSImPlayerGet : global::ProtoBuf.IExtensible
+  {
+    public HSImPlayerGet() {}
+    
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSImPlayerGetRet")]
+  public partial class HSImPlayerGetRet : global::ProtoBuf.IExtensible
+  {
+    public HSImPlayerGetRet() {}
+    
+    private HSImPlayer _imPlayer;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"imPlayer", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public HSImPlayer imPlayer
+    {
+      get { return _imPlayer; }
+      set { _imPlayer = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

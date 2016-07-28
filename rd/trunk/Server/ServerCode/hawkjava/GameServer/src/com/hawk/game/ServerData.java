@@ -42,9 +42,9 @@ public class ServerData {
 	 */
 	protected Map<String, Integer> nameMap;
 	/**
-	 * 所有玩家列表
+	 * 玩家id和puid的映射表
 	 */
-	protected Map<Integer, Integer> playerMap;
+	protected Map<Integer, String> idMap;
 	/**
 	 * 
 	 */
@@ -87,7 +87,7 @@ public class ServerData {
 		onlinePlayer = new AtomicInteger();
 		puidMap = new ConcurrentHashMap<String, Integer>();
 		nameMap = new ConcurrentHashMap<String, Integer>();
-		playerMap = new ConcurrentHashMap<Integer, Integer>();
+		idMap = new ConcurrentHashMap<Integer, String>();
 		onlineMap = new ConcurrentHashMap<Integer, Integer>();
 		disablePhoneMap = new ConcurrentHashMap<String, String>();
 		rechargeList = Collections.synchronizedSet(new HashSet<String>());
@@ -117,7 +117,6 @@ public class ServerData {
 			for (Object rowInfo : rowInfos) {
 				Object[] colInfos = (Object[]) rowInfo;
 				addPuidAndPlayerId((String) colInfos[0], (Integer) colInfos[1]);
-				addPlayerId((Integer) colInfos[1]);
 			}
 		} catch (Exception e) {
 			HawkException.catchException(e);
@@ -201,6 +200,19 @@ public class ServerData {
 		}
 		return 0;
 	}
+	
+	/**
+	 * 通过玩家id获取puid
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public String getPuidByPlayerId(int playerId) {
+		if (idMap.containsKey(playerId)) {
+			return idMap.get(playerId);
+		}
+		return null;
+	}
 
 	/**
 	 * 增加puid和玩家id的映射
@@ -210,6 +222,7 @@ public class ServerData {
 	 */
 	public void addPuidAndPlayerId(String puid, int playerId) {
 		puidMap.put(puid, playerId);
+		idMap.put(playerId, puid);
 	}
 
 	/**
@@ -223,25 +236,17 @@ public class ServerData {
 	}
 
 	/**
-	 * 增加玩家Id
-	 * @param playerId
-	 */
-	public void addPlayerId(int playerId) {
-		playerMap.put(playerId, playerId);
-	}
-
-	/**
 	 * 是否存在玩家
 	 */
 	public boolean isExistPlayer(int playerId) {
-		return playerMap.containsKey(playerId);
+		return idMap.containsKey(playerId);
 	}
 
 	/**
 	 * 获取所有玩家Id
 	 */
 	public Set<Integer> getAllPlayerIdSet() {
-		return playerMap.keySet();
+		return idMap.keySet();
 	}
 
 	/**

@@ -118,10 +118,6 @@ public class GameDataMgr : MonoBehaviour
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_CONSUME_S.GetHashCode().ToString(), OnConsume);
         //GameEventMgr.Instance.AddListener<Coin>(GameEventList.EatCoin, OnEatCoin);
-        //general error
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.instanceError.INSTANCE_REVIVE_COUNT.GetHashCode().ToString(), OnCommonError);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.PlayerError.GOLD_NOT_ENOUGH.GetHashCode().ToString(), OnCommonError);
-
     }
     //---------------------------------------------------------------------------------------------
     void UnBindListener()
@@ -143,10 +139,6 @@ public class GameDataMgr : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_CONSUME_S.GetHashCode().ToString(), OnConsume);
         //GameEventMgr.Instance.RemoveListener<Coin>(GameEventList.EatCoin, OnEatCoin);
-        //general error
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.instanceError.INSTANCE_REVIVE_COUNT.GetHashCode().ToString(), OnCommonError);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.PlayerError.GOLD_NOT_ENOUGH.GetHashCode().ToString(), OnCommonError);
-
     }
     //---------------------------------------------------------------------------------------------
     void OnPlayerInfoSync(ProtocolMessage msg)
@@ -214,6 +206,7 @@ public class GameDataMgr : MonoBehaviour
             unit.curExp = monster.exp;
             unit.stage = monster.stage;
             unit.spellPbList = monster.skill;
+            unit.locked = monster.locked;
             mainPlayer.unitPbList.Add(unit.guid, unit);
             mainPlayer.allUnitDic.Add(unit.guid, GameUnit.FromPb(unit, true));
         }
@@ -300,6 +293,7 @@ public class GameDataMgr : MonoBehaviour
             mainPlayer.gameMailData.AddMail(mailInfo);
             //Debug.Log("mail" + mailInfo.mailId + "\t" + mailInfo.reward.Count + "\t" + mailInfo.senderId + "\t" + mailInfo.senderName +"\t"+ mailInfo.sendTimeStamp);
         }
+        GameEventMgr.Instance.FireEvent<int>(GameEventList.MailChanged, 0);
     }
     void OnMailNew(ProtocolMessage msg)
     {
@@ -313,12 +307,25 @@ public class GameDataMgr : MonoBehaviour
         {
             mainPlayer.gameMailData.AddMail(mailNew.mail);
         }
+        GameEventMgr.Instance.FireEvent<int>(GameEventList.MailChanged, mailNew.mail.mailId);
     }
 
     //---------------------------------------------------------------------------------------------
     void OnReward(ProtocolMessage msg)
     {
         PB.HSRewardInfo reward = msg.GetProtocolBody<PB.HSRewardInfo>();
+
+        if (reward.playerAttr != null)
+        {
+            PlayerDataAttr.level = reward.playerAttr.level;
+            PlayerDataAttr.exp = reward.playerAttr.exp;
+            PlayerDataAttr.fatigue = reward.playerAttr.fatigue;
+            PlayerDataAttr.coin = reward.playerAttr.coin;
+            GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, PlayerDataAttr.coin);
+            PlayerDataAttr.gold = reward.playerAttr.gold;
+            GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged, mainPlayer.gold);
+        }
+
         GameUnit unit = null;
         foreach (PB.SynMonsterAttr item in reward.monstersAttr)
         {
@@ -337,24 +344,24 @@ public class GameDataMgr : MonoBehaviour
 
         foreach (PB.RewardItem item in reward.RewardItems)
         {
-            if (item.type == (int)PB.itemType.PLAYER_ATTR)
-            {
-                if ((int)PB.changeType.CHANGE_COIN == int.Parse(item.itemId))
-                {
-                    GameDataMgr.Instance.mainPlayer.coin += item.count;
-                    GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, mainPlayer.coin);
-                }
-                else if ((int)PB.changeType.CHANGE_GOLD == int.Parse(item.itemId) || (int)PB.changeType.CHANGE_GOLD_BUY == int.Parse(item.itemId))
-                {
-                    GameDataMgr.Instance.mainPlayer.gold += item.count;
-					GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged,mainPlayer.gold);
-                }
-            }
-            else if (item.type == (int)PB.itemType.MONSTER_ATTR)
-            { 
-                //此处不做处理，通过外部的SynMonsterAttr来同步怪物属性
-            }
-            else if (item.type == (int)PB.itemType.ITEM)
+            //if (item.type == (int)PB.itemType.PLAYER_ATTR)
+            //{
+            //    if ((int)PB.changeType.CHANGE_COIN == int.Parse(item.itemId))
+            //    {
+            //        GameDataMgr.Instance.mainPlayer.coin += item.count;
+            //        GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, mainPlayer.coin);
+            //    }
+            //    else if ((int)PB.changeType.CHANGE_GOLD == int.Parse(item.itemId) || (int)PB.changeType.CHANGE_GOLD_BUY == int.Parse(item.itemId))
+            //    {
+            //        GameDataMgr.Instance.mainPlayer.gold += item.count;
+            //        GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged,mainPlayer.gold);
+            //    }
+            //}
+            //if (item.type == (int)PB.itemType.MONSTER_ATTR)
+            //{ 
+            //    //此处不做处理，通过外部的SynMonsterAttr来同步怪物属性
+            //}
+            if (item.type == (int)PB.itemType.ITEM)
             {
                 GameDataMgr.Instance.mainPlayer.gameItemData.AddItem(item.itemId, item.count);
             }
@@ -386,22 +393,48 @@ public class GameDataMgr : MonoBehaviour
     void OnConsume(ProtocolMessage msg)
     {
         PB.HSConsumeInfo reward = msg.GetProtocolBody<PB.HSConsumeInfo>();
+        if (reward.playerAttr!=null)
+        {
+            PlayerDataAttr.level = reward.playerAttr.level;
+            PlayerDataAttr.exp = reward.playerAttr.exp;
+            PlayerDataAttr.fatigue = reward.playerAttr.fatigue;
+            PlayerDataAttr.coin = reward.playerAttr.coin;
+            GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, PlayerDataAttr.coin);
+            PlayerDataAttr.gold = reward.playerAttr.gold;
+            GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged, mainPlayer.gold);
+        }
+        GameUnit unit = null;
+        foreach (PB.SynMonsterAttr item in reward.monstersAttr)
+        {
+            unit = mainPlayer.GetPetWithKey(item.monsterId);
+            if (unit == null)
+            {
+                Logger.Log("不存在的宠物");
+                continue;
+            }
+            //battle module,use score to sync level
+            if (GameMain.Instance.IsCurModule<BattleModule>() == false)
+            {
+                unit.RefreshUnitLvl(item.level, item.exp);
+            }
+        }
+
         foreach (PB.ConsumeItem item in reward.consumeItems)
         {
-            if (item.type == (int)PB.itemType.PLAYER_ATTR)
-            {
-                if ((int)PB.changeType.CHANGE_COIN == int.Parse(item.itemId))
-                {
-                    GameDataMgr.Instance.mainPlayer.coin -= item.count;
-                    GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, mainPlayer.coin);
-                }
-                else if ((int)PB.changeType.CHANGE_GOLD == int.Parse(item.itemId))
-                {
-                    GameDataMgr.Instance.mainPlayer.gold -= item.count;
-					GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged,mainPlayer.gold);
-                }
+            //if (item.type == (int)PB.itemType.PLAYER_ATTR)
+            //{
+            //    if ((int)PB.changeType.CHANGE_COIN == int.Parse(item.itemId))
+            //    {
+            //        GameDataMgr.Instance.mainPlayer.coin -= item.count;
+            //        GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, mainPlayer.coin);
+            //    }
+            //    else if ((int)PB.changeType.CHANGE_GOLD == int.Parse(item.itemId))
+            //    {
+            //        GameDataMgr.Instance.mainPlayer.gold -= item.count;
+            //        GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged,mainPlayer.gold);
+            //    }
 
-            }
+            //}
             if (item.type == (int)PB.itemType.ITEM)
             {
                 GameDataMgr.Instance.mainPlayer.gameItemData.RemoveItem(item.itemId, item.count);
@@ -417,43 +450,6 @@ public class GameDataMgr : MonoBehaviour
         }
     }
     
-    //---------------------------------------------------------------------------------------------
-    void OnCommonError(ProtocolMessage msg)
-    {
-        //switch (reviveStatus)
-        //{
-        //    //0:success 1:count error 2:diamond not enough
-        //    case 0:
-        //        CloseReviveUI();
-        //        battleInstance.BattleGroup.RevivePlayerList(reviveResult);
-        //        battleInstance.Process.ReviveSuccess(reviveresu);
-        //        break;
-        //    case 1:
-        //        CloseReviveUI();
-        //        battleInstance.OnBattleOver(false);
-        //        break;
-        //    case 2:
-        //        GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
-        //        break;
-        //    default:
-        //        break;
-        //}
-        UINetRequest.Close();
-        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
-        {
-            PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
-            switch (error.errCode)
-            {
-                case (int)PB.instanceError.INSTANCE_REVIVE_COUNT:
-                    UIBattle.Instance.CloseReviveUI();
-                    BattleController.Instance.OnBattleOver(false);
-                    break;
-                case (int)PB.PlayerError.GOLD_NOT_ENOUGH:
-                    GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
-                    break;
-            }
-        }
-    }
     //---------------------------------------------------------------------------------------------
     //public void AddPlayerData(PlayerData data)
     //{

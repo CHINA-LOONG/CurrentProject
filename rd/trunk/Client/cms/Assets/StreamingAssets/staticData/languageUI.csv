@@ -79,7 +79,8 @@ equip_gem_NotSet,未镶嵌,Not engraved
 equip_gem_NotKong,未开孔 : 开孔后将获得宝石槽,Open Sockets: Reveals a Gem slot after opening.
 equip_Change,换装,Change
 ,,
-item_type,类型,Type:
+item_type,类型:,Type:
+item_demandLevel,需求等级:,Req. LVL:
 bag_tag_box,宝箱,Treasure
 bag_tag_use,消耗品,Consumable
 bag_tag_gem,宝石,Gem
@@ -203,8 +204,8 @@ pet_detail_skill_max_level,当前技能已达到最高等级,Ability currently a
 pet_detail_skill_current_point,目前的技能点数:,Current Ability Points:
 pet_detail_skill_max_point,(点数已满),(Full)
 pet_detail_stage_attr,基础属性,Base attribute
-pet_detail_stage_demand_level,需求等级,Req. LVL: 
-pet_detail_stage_demand_item,需求材料,Req. Materials:
+pet_detail_stage_demand_level,需求等级,Req. LVL
+pet_detail_stage_demand_item,需求材料,Req. Materials
 pet_detail_stage,进阶,Advance
 pet_detail_stage_full,进阶完成,Advancement Complete
 pet_detail_stage_monster,需要的怪物,Req. Monsters:

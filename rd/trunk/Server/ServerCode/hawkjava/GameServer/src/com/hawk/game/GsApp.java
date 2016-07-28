@@ -39,6 +39,7 @@ import com.hawk.game.config.GrayPuidCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.RechargeEntity;
+import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.manager.ShopManager;
 import com.hawk.game.player.Player;
@@ -246,7 +247,26 @@ public class GsApp extends HawkApp {
 		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.IM));
 		// 商店管理器
 		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.SHOP));
+		// 公会管理器
+		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
 		return true;
+	}
+	
+	/**
+	 * 获取hash线程索引
+	 */
+	@Override
+	public int getHashThread(HawkXID xid, int threadNum) {
+		return super.getHashThread(xid, threadNum);
+		//if (threadNum <= 1) {
+		//	return 0;
+		//}
+		//else if (xid.getType() == GsConst.ObjType.MANAGER) {
+		//	return threadNum - 1;
+		//}
+		//else {
+		//	return  xid.getId() % (threadNum - 1);
+		//}
 	}
 
 	/**
@@ -300,10 +320,14 @@ public class GsApp extends HawkApp {
 			else if (xid.getId() == GsConst.ObjId.SHOP) {
 				appObj = new ShopManager(xid);
 			}
-				
-		} else if (xid.getType() == GsConst.ObjType.PLAYER) {
+			else if (xid.getId() == GsConst.ObjId.ALLIANCE) {
+				appObj = new AllianceManager(xid);
+			}
+		}
+		else if (xid.getType() == GsConst.ObjType.PLAYER) {
 			appObj = new Player(xid);
-		} 
+		}
+
 		if (appObj == null) {
 			HawkLog.errPrintln("create obj failed: " + xid);
 		}
@@ -519,7 +543,6 @@ public class GsApp extends HawkApp {
 			playerId = playerEntity.getId();
 			ServerData.getInstance().addNameAndPlayerId(protocol.getNickname(), playerId);
 			ServerData.getInstance().addPuidAndPlayerId(puid, playerId);
-			ServerData.getInstance().addPlayerId(playerId);
 			logger.info("create player entity: {}, puid: {}", playerId, puid);
 
 			HSPlayerCreateRet.Builder response = HSPlayerCreateRet.newBuilder();

@@ -41,8 +41,6 @@ public class ConsumeItems {
 
 	public ConsumeItems() {
 		consumeInfo = HSConsumeInfo.newBuilder();
-		SynPlayerAttr.Builder playerBuilder = SynPlayerAttr.newBuilder();
-		consumeInfo.setPlayerAttr(playerBuilder);
 	}
 
 	public static ConsumeItems valueOf() {
@@ -319,28 +317,31 @@ public class ConsumeItems {
 		try {	
 			for (int i = 0; i < consumeInfo.getConsumeItemsBuilderList().size(); ) {
 				ConsumeItem.Builder item = consumeInfo.getConsumeItemsBuilder(i);
-				SynPlayerAttr.Builder playerBuilder = consumeInfo.getPlayerAttrBuilder();
 				if (item.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
 					// 玩家属性
 					switch (Integer.valueOf(item.getItemId()).intValue()) {
 					case changeType.CHANGE_COIN_VALUE:
 						player.consumeCoin(item.getCount(), action);
-						playerBuilder.setCoin(player.getCoin());
 						break;
 
 					case changeType.CHANGE_GOLD_VALUE:
 						player.consumeGold(item.getCount(), action);
-						playerBuilder.setGold(player.getGold());
 						break;
 						
 					case changeType.CHANGE_FATIGUE_VALUE:
 						player.consumeFatigue(item.getCount(), action);
-						playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
 						break;
 						
 					default:
 						break;
 					}
+					
+					SynPlayerAttr.Builder playerBuilder = consumeInfo.getPlayerAttrBuilder();		
+					playerBuilder.setCoin(player.getCoin());
+					playerBuilder.setGold(player.getGold());
+					playerBuilder.setExp(player.getExp());
+					playerBuilder.setLevel(player.getLevel());	
+					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
 				}
 				else if(item.getType() == Const.itemType.ITEM_VALUE){
 					ItemEntity itemEntity = player.consumeItem(item.getItemId(), item.getCount(), action);

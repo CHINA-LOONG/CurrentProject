@@ -293,8 +293,8 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"SHOP_REFRESH_MAX_COUNT", Value=589827)]
       SHOP_REFRESH_MAX_COUNT = 589827,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_GOLD2COIN_MAX_COUNT", Value=589827)]
-      SHOP_GOLD2COIN_MAX_COUNT = 589827
+      [global::ProtoBuf.ProtoEnum(Name=@"SHOP_GOLD2COIN_MAX_COUNT", Value=589828)]
+      SHOP_GOLD2COIN_MAX_COUNT = 589828
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"imError")]

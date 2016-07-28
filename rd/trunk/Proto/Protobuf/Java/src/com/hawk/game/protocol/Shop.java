@@ -6351,6 +6351,16 @@ public final class Shop {
      * <code>required int32 changeCount = 1;</code>
      */
     int getChangeCount();
+
+    // required int32 multiple = 2;
+    /**
+     * <code>required int32 multiple = 2;</code>
+     */
+    boolean hasMultiple();
+    /**
+     * <code>required int32 multiple = 2;</code>
+     */
+    int getMultiple();
   }
   /**
    * Protobuf type {@code HSShopGold2CoinRet}
@@ -6406,6 +6416,11 @@ public final class Shop {
             case 8: {
               bitField0_ |= 0x00000001;
               changeCount_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              multiple_ = input.readInt32();
               break;
             }
           }
@@ -6464,8 +6479,25 @@ public final class Shop {
       return changeCount_;
     }
 
+    // required int32 multiple = 2;
+    public static final int MULTIPLE_FIELD_NUMBER = 2;
+    private int multiple_;
+    /**
+     * <code>required int32 multiple = 2;</code>
+     */
+    public boolean hasMultiple() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 multiple = 2;</code>
+     */
+    public int getMultiple() {
+      return multiple_;
+    }
+
     private void initFields() {
       changeCount_ = 0;
+      multiple_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -6473,6 +6505,10 @@ public final class Shop {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasChangeCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMultiple()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -6486,6 +6522,9 @@ public final class Shop {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, changeCount_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, multiple_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -6498,6 +6537,10 @@ public final class Shop {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, changeCount_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, multiple_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6617,6 +6660,8 @@ public final class Shop {
         super.clear();
         changeCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        multiple_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -6649,6 +6694,10 @@ public final class Shop {
           to_bitField0_ |= 0x00000001;
         }
         result.changeCount_ = changeCount_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.multiple_ = multiple_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6668,12 +6717,19 @@ public final class Shop {
         if (other.hasChangeCount()) {
           setChangeCount(other.getChangeCount());
         }
+        if (other.hasMultiple()) {
+          setMultiple(other.getMultiple());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasChangeCount()) {
+          
+          return false;
+        }
+        if (!hasMultiple()) {
           
           return false;
         }
@@ -6728,6 +6784,39 @@ public final class Shop {
       public Builder clearChangeCount() {
         bitField0_ = (bitField0_ & ~0x00000001);
         changeCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 multiple = 2;
+      private int multiple_ ;
+      /**
+       * <code>required int32 multiple = 2;</code>
+       */
+      public boolean hasMultiple() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 multiple = 2;</code>
+       */
+      public int getMultiple() {
+        return multiple_;
+      }
+      /**
+       * <code>required int32 multiple = 2;</code>
+       */
+      public Builder setMultiple(int value) {
+        bitField0_ |= 0x00000002;
+        multiple_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 multiple = 2;</code>
+       */
+      public Builder clearMultiple() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        multiple_ = 0;
         onChanged();
         return this;
       }
@@ -7509,12 +7598,12 @@ public final class Shop {
       "SShopRefreshRet\022\033\n\010shopData\030\001 \002(\0132\t.Shop" +
       "Data\";\n\rHSShopItemBuy\022\014\n\004type\030\001 \002(\005\022\014\n\004s" +
       "lot\030\002 \002(\005\022\016\n\006shopId\030\003 \002(\005\"\022\n\020HSShopItemB" +
-      "uyRet\"\021\n\017HSShopGold2Coin\")\n\022HSShopGold2C" +
-      "oinRet\022\023\n\013changeCount\030\001 \002(\005\"u\n\025HSShopRef" +
-      "reshTimeSync\022\035\n\025normalShopRefreshTime\030\001 " +
-      "\002(\005\022\037\n\027allianceShopRefreshTime\030\002 \002(\005\022\034\n\024" +
-      "otherShopRefreshTime\030\003 \002(\005B\030\n\026com.hawk.g" +
-      "ame.protocol"
+      "uyRet\"\021\n\017HSShopGold2Coin\";\n\022HSShopGold2C" +
+      "oinRet\022\023\n\013changeCount\030\001 \002(\005\022\020\n\010multiple\030" +
+      "\002 \002(\005\"u\n\025HSShopRefreshTimeSync\022\035\n\025normal" +
+      "ShopRefreshTime\030\001 \002(\005\022\037\n\027allianceShopRef" +
+      "reshTime\030\002 \002(\005\022\034\n\024otherShopRefreshTime\030\003" +
+      " \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7592,7 +7681,7 @@ public final class Shop {
           internal_static_HSShopGold2CoinRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSShopGold2CoinRet_descriptor,
-              new java.lang.String[] { "ChangeCount", });
+              new java.lang.String[] { "ChangeCount", "Multiple", });
           internal_static_HSShopRefreshTimeSync_descriptor =
             getDescriptor().getMessageTypes().get(12);
           internal_static_HSShopRefreshTimeSync_fieldAccessorTable = new

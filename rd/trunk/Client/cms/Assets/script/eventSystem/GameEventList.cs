@@ -79,6 +79,9 @@ public class GameEventList
 
     public static string QuestChanged = "QuestChanged";
 
+    //Mail
+    public static string MailChanged = "MailChanged";
+
     public static string PreUnit = "PreUnit";//param gameUnit
     public static string NextUnit = "NextUnit";//param gameUnit
 

@@ -72,16 +72,21 @@ public class PetSwitchPage : MonoBehaviour
         return false;
     }
 
+    public void ForceRefresh()
+    {
+        RefreshPetItems(true);
+    }
+
     void Update()
     {
         //TODO: no need to update, only refresh when show
         if (gameObject.activeSelf)
         {
-            RefreshPetItems();
+            RefreshPetItems(false);
         }
     }
 
-    void RefreshPetItems()
+    void RefreshPetItems(bool forceRefresh = false)
     {
         var idleUnits = BattleController.Instance.BattleGroup.PlayerIdleList;
         int j = 0;
@@ -94,14 +99,14 @@ public class PetSwitchPage : MonoBehaviour
                 )
             {
                 items[j].targetId = petToBeReplace;
-                items[j].UpdateData(gameUnit);
+                items[j].UpdateData(gameUnit, forceRefresh);
                 ++j;
             }
         }
 
         for (; j < BattleConst.maxFieldUnit; ++j)
         {
-            items[j].UpdateData(null);
+            items[j].UpdateData(null, forceRefresh);
         }
     }
 }

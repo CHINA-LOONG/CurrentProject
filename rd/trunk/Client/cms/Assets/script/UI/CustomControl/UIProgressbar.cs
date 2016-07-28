@@ -15,9 +15,9 @@ public class UIProgressbar : MonoBehaviour {
     private float mCurrentRatio = 0.0f;
     private float mTargetRatio = 0.0f;
 
-    private int mTotalValue;
-    private int mTargetValue;
-    private int mCurrentValue = 0;
+    //private int mTotalValue;
+    //private int mTargetValue;
+    //private int mCurrentValue = 0;
 
     void Awake()
     {
@@ -30,18 +30,7 @@ public class UIProgressbar : MonoBehaviour {
         {
             if (mNeedAni == false)
             {
-                mCurrentValue = mTargetValue;
-                mLoopCount = 0;
-                mCurrentRatio = mTargetRatio = 1.0f;
-                if (mTotalValue > 0)
-                {
-                    mCurrentRatio = mTargetRatio = (float)mCurrentValue / mTotalValue;
-                }
-
-                if (mShowText)
-                {
-                    mProgressText.gameObject.SetActive(true);
-                }
+                SkipAnimation();
             }
             else
             {
@@ -78,14 +67,14 @@ public class UIProgressbar : MonoBehaviour {
     {
         mLoopCount = loopCount;
     }
-    //---------------------------------------------------------------------------------------------
-    public void SetValueText(int totalValue, int currentValue, int targetValue)
-    {
-        mTotalValue = totalValue;
-        mCurrentValue = currentValue;
-        mTargetValue = targetValue;
-        mProgressText.text = mTargetValue.ToString() + "/" + mTotalValue.ToString();
-    }
+//     //---------------------------------------------------------------------------------------------
+//     public void SetValueText(int totalValue, int currentValue, int targetValue)
+//     {
+//         mTotalValue = totalValue;
+//         mCurrentValue = currentValue;
+//         mTargetValue = targetValue;
+//         mProgressText.text = mTargetValue.ToString() + "/" + mTotalValue.ToString();
+//     }
     //---------------------------------------------------------------------------------------------
     public void SetTargetRatio(float targetRatio)
     {
@@ -95,6 +84,25 @@ public class UIProgressbar : MonoBehaviour {
     public void SetCurrrentRatio(float currentRatio)
     {
         mCurrentRatio = currentRatio;
+        mProgressImage.fillAmount = mCurrentRatio;
+    }
+    //---------------------------------------------------------------------------------------------
+    public void SkipAnimation()
+    {
+        //mCurrentValue = mTargetValue;
+        mLoopCount = 0;
+        mCurrentRatio = mTargetRatio;
+        //mCurrentRatio = mTargetRatio = 1.0f;
+        //if (mTotalValue > 0)
+        //{
+        //    mCurrentRatio = mTargetRatio = (float)mCurrentValue / mTotalValue;
+        //}
+
+        if (mShowText)
+        {
+            mProgressText.gameObject.SetActive(true);
+        }
+
         mProgressImage.fillAmount = mCurrentRatio;
     }
     //---------------------------------------------------------------------------------------------

@@ -93,6 +93,7 @@ public class BattleController : MonoBehaviour
         GameEventMgr.Instance.AddListener<Vector3>(GameEventList.MirrorClicked, OnMirrorClilced);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_C.GetHashCode().ToString(), OnInstanceSettleResult);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_S.GetHashCode().ToString(), OnInstanceSettleResult);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnScoreReward);
 	}
     //---------------------------------------------------------------------------------------------
 	void UnBindListener()
@@ -100,6 +101,7 @@ public class BattleController : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<Vector3>(GameEventList.MirrorClicked, OnMirrorClilced);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_C.GetHashCode().ToString(), OnInstanceSettleResult);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SETTLE_S.GetHashCode().ToString(), OnInstanceSettleResult);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnScoreReward);
 	}
     //---------------------------------------------------------------------------------------------
 	void  OnMirrorClilced(Vector3 inputPos)
@@ -799,11 +801,20 @@ public class BattleController : MonoBehaviour
         }
         else
         {
-            PB.HSInstanceSettleRet scoreInfo = msg.GetProtocolBody<PB.HSInstanceSettleRet>();
-            mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
-            mUIScore.SetScoreInfo(scoreInfo);
+            GameSpeedService.Instance.SetBattleSpeed(1.0f);
+            //PB.HSInstanceSettleRet scoreInfo = msg.GetProtocolBody<PB.HSInstanceSettleRet>();
             mUIScore.ShowScoreUI(battleSuccess);
             uiBattle.HideBattleUI();
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnScoreReward(ProtocolMessage msg)
+    {
+        PB.HSRewardInfo reward = msg.GetProtocolBody<PB.HSRewardInfo>();
+        if (reward != null && reward.hsCode == PB.code.INSTANCE_SETTLE_C.GetHashCode())
+        {
+            mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
+            mUIScore.SetScoreInfo(reward);
         }
     }
     //---------------------------------------------------------------------------------------------

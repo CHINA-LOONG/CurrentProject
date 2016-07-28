@@ -260,6 +260,7 @@ MonoBehaviour:
   textName: {fileID: 11424020}
   textCount: {fileID: 11418526}
   textExp: {fileID: 11408312}
+  text_Use: {fileID: 11482746}
   btnUsed: {fileID: 11494536}
 --- !u!114 &11424020
 MonoBehaviour:

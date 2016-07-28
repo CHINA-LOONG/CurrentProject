@@ -26,6 +26,8 @@ public class UIMall : UIBase
 		{
 			coinButton.HideAddCoinButton(true);
 		}
+
+		mallNameText.text = StaticDataMgr.Instance.GetTextByID ("shop_store");
 	}
 	
 	public override void Clean()

@@ -52,7 +52,7 @@ public class AccountServices {
 	/**
 	 * 默认心跳时间周期
 	 */
-	public final static int HEART_PERIOD = 15000;
+	public final static int HEART_PERIOD = 300000;
 	
 	/**
 	 * 调试日志对象

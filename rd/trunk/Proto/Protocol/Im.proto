@@ -11,6 +11,15 @@ message HSImMsg
 	optional string transText = 6;
 }
 
+message HSImPlayer
+{
+	required int32 playerId = 1;
+	required string nickname = 2;
+	required int32 level = 3;
+	optional int32 guildId = 4;
+	optional string guildName = 5;
+}
+
 // protocol-----------------------------------------------------
 
 // IM_CHAT_SEND_C
@@ -24,4 +33,16 @@ message HSImChatSend
 message HSImPush
 {
 	repeated HSImMsg imMsg = 1;
+}
+
+// IM_PLAYER_GET_C
+message HSImPlayerGet
+{
+	required int32 playerId = 1;
+}
+
+// IM_PLAYER_GET_S
+message HSImPlayerGetRet
+{
+	required HSImPlayer imPlayer = 1;
 }

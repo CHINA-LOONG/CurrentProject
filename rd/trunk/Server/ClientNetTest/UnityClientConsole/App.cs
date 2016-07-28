@@ -215,6 +215,11 @@ namespace UnityClientConsole
 
                 //Console.WriteLine("聊天");
 
+                HSImPlayerGet imPlayer = new HSImPlayerGet();
+                imPlayer.playerId = 725;
+                NetManager.GetInstance().SendProtocol(code.IM_PLAYER_GET_C.GetHashCode(), imPlayer);
+                Console.WriteLine("获取im玩家信息");
+
 //                 GMGenTestAccount genAccount = new GMGenTestAccount();
 //                 NetManager.GetInstance().SendProtocol(gm.GEN_TEST_ACCOUNT.GetHashCode(), genAccount);
 //                 Console.WriteLine("生成测试账号");
@@ -245,12 +250,12 @@ namespace UnityClientConsole
 //                 monsterLock.locked = false;
 //                 NetManager.GetInstance().SendProtocol(code.MONSTER_LOCK_C.GetHashCode(), monsterLock);
 
-                HSInstanceEnter instanceEnter = new HSInstanceEnter();
-                instanceEnter.instanceId = "minghe12";
-                instanceEnter.battleMonsterId.Add(4622);
-                instanceEnter.battleMonsterId.Add(4623);
-                instanceEnter.battleMonsterId.Add(4624);
-                NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
+//                 HSInstanceEnter instanceEnter = new HSInstanceEnter();
+//                 instanceEnter.instanceId = "minghe12";
+//                 instanceEnter.battleMonsterId.Add(4622);
+//                 instanceEnter.battleMonsterId.Add(4623);
+//                 instanceEnter.battleMonsterId.Add(4624);
+//                 NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
 
 //                 HSItemBuy itemBuy = new HSItemBuy();
 //                 itemBuy.itemId = 40001;
@@ -381,6 +386,11 @@ namespace UnityClientConsole
                     Console.WriteLine(chatPush.imMsg[i].transText);
                 }
                 //Console.WriteLine("IM------------------");
+            }
+            else if (protocol.checkType(code.IM_PLAYER_GET_S.GetHashCode()))
+            {
+                HSImPlayerGetRet imPlayer = protocol.GetProtocolBody<HSImPlayerGetRet>();
+                Console.WriteLine("im玩家信息");
             }
         }
 

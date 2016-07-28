@@ -136,11 +136,11 @@ public class BagItem : MonoBehaviour
 		if (sellCount > 0)
 		{
 			sellMsg = string.Format (StaticDataMgr.Instance.GetTextByID ("出售{0}"), sellCount);
-			selectImgName = "icon_zuanshi";
+			selectImgName = "beibao_duigou_1";
 		}
 		else
 		{
-			selectImgName = "icon_jinbi";
+			selectImgName = "beibao_duigou";
 		}
 		this.sellCount.text = sellMsg;
 
@@ -157,9 +157,13 @@ public class BagItem : MonoBehaviour
 
 	void	OnUseButtonClicked(GameObject go)
 	{
-		if (BagType.BaoXiang == bagType)
+		if (BagType.BaoXiang == bagType) 
 		{
-			OpenBox();
+			OpenBox ();
+		}
+		else if (BagType.Xiaohao == bagType) 
+		{
+			UIBag.Instance.UseItem(itemData);
 		}
 	}
 

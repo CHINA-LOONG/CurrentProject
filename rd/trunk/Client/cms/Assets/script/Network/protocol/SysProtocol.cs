@@ -77,12 +77,12 @@ namespace PB
   {
     public HSErrorCode() {}
     
-    private int _hpCode;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"hpCode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int hpCode
+    private int _hsCode;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"hsCode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int hsCode
     {
-      get { return _hpCode; }
-      set { _hpCode = value; }
+      get { return _hsCode; }
+      set { _hsCode = value; }
     }
     private int _errCode;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"errCode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]

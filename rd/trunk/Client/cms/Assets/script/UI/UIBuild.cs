@@ -20,18 +20,26 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public PopupList m_LangPopup;
 
     public Button btnMail;
+    public GameObject mailTips;
 
 	public Text levelText;
 	public Text coinText;
 	public Text nameText;
 
+    [HideInInspector]
     public UIMail uiMail;
+    [HideInInspector]
     public UIQuest uiQuest;
+    [HideInInspector]
     public UIBag uiBag;
+    [HideInInspector]
     public UIInstance uiInstance;
+    [HideInInspector]
     public UIPetList uiPetList;
+    [HideInInspector]
     public UIAdjustBattleTeam uiAdjustBattleTeam;
-	public UIShop uiShop;
+    [HideInInspector]
+    public UIShop uiShop;
 
     void Start()
     {
@@ -64,6 +72,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 	{
 		GameEventMgr.Instance.AddListener<int> (GameEventList.LevelChanged, OnLevelChanged);
 		GameEventMgr.Instance.AddListener<long> (GameEventList.CoinChanged, OnCoinChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.MailChanged, OnMailChanged);
 
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.MONSTER_CATCH_S.GetHashCode().ToString(),OnCachMonsterFinished);
 	}
@@ -71,7 +80,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener<int> (GameEventList.LevelChanged, OnLevelChanged);
-		GameEventMgr.Instance.RemoveListener<long> (GameEventList.CoinChanged, OnCoinChanged);
+        GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailChanged, OnMailChanged);
 
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.MONSTER_CATCH_S.GetHashCode().ToString(),OnCachMonsterFinished);
 	}
@@ -86,6 +96,11 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 	{
 		coinText.text = coin.ToString ();
 	}
+    //邮件同步，新邮件事件
+    void OnMailChanged(int mail)
+    {
+        mailTips.SetActive(UIUtil.CheckHaveNewMail());
+    }
 
     void ItemButtonClick(GameObject go)
     {
@@ -185,7 +200,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
     public override void Init()
     {
-
+        OnMailChanged(0);
     }
     public override void Clean()
     {

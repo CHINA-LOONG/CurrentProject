@@ -606,6 +606,7 @@ MonoBehaviour:
   scrollView: {fileID: 11470268}
   scrollRect: {fileID: 11414374}
   closeButton: {fileID: 11491618}
+  textClose: {fileID: 11444278}
   countLabel: {fileID: 11440904}
   demandLabel: {fileID: 11492696}
   scrollIcon: {fileID: 11459676}

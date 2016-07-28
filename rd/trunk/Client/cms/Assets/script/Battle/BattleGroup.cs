@@ -88,7 +88,7 @@ public class BattleGroup
     }
 
     //summon from hell
-    public void RevivePlayerList()
+    public void RevivePlayerList(float actionOrderTime)
     {
         List<BattleObject> playerUnitList = GameDataMgr.Instance.PlayerDataAttr.GetMainUnits();
         var itor = playerUnitList.GetEnumerator();
@@ -101,6 +101,7 @@ public class BattleGroup
             {
                 itor.Current.unit.backUp = false;
                 playerField[slot] = itor.Current;
+                itor.Current.unit.CalcNextActionOrder(actionOrderTime);
                 itor.Current.OnEnterField(false);
 
                 SpellReviveArgs reviveArgs = new SpellReviveArgs();

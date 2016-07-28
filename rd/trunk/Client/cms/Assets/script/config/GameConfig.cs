@@ -10,6 +10,8 @@ public class GameConfig : MonoBehaviour {
 		Instance = this;
 	}
 
+	public	string	GoldExchangeId = "1";
+
 	public float FindWeakPointFinishedNeedTime = 0.6f;
 	public float MirrorRadius = 100f;
 	//public Vector2 MirrorCenterOffset = new Vector2(-100, 120);
@@ -35,6 +37,8 @@ public class GameConfig : MonoBehaviour {
     public static int MaxMonsterCount = 180;
 
     public static int MaxMonsterLevel = 99;
+
+    public static int MaxPlayerLevel = 50;
 
 	//背包中购买钥匙最大数
 	public	int	maxBuyCountInBag	= 10;

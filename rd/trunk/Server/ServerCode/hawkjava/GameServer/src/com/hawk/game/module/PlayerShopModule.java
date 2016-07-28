@@ -7,8 +7,11 @@ import org.hawk.annotation.ProtocolHandler;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkException;
+import org.hawk.os.HawkRand;
 import org.hawk.os.HawkTime;
 
+import com.hawk.game.config.GoldChangeCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.ShopCfg;
 import com.hawk.game.config.SysBasicCfg;
@@ -57,17 +60,45 @@ public class PlayerShopModule extends PlayerModule{
 	}
 
 	@ProtocolHandler(code = HS.code.SHOP_GOLD2COIN_C_VALUE)
-	private boolean onShopGold2Coin(HawkProtocol cmd){
+	private boolean onShopGold2Coin(HawkProtocol cmd) throws HawkException{
 		HSShopGold2Coin protocol = cmd.parseProtocol(HSShopGold2Coin.getDefaultInstance());
+		GoldChangeCfg goldChangeCfg = HawkConfigManager.getInstance().getConfigByKey(GoldChangeCfg.class, GsConst.GOLD_TO_COIN_INDEX);
+		if (goldChangeCfg == null) {
+			sendError(HS.code.SHOP_GOLD2COIN_C_VALUE, Status.error.CONFIG_ERROR_VALUE);
+			return true;
+		}
+
+		int changeTimes = player.getPlayerData().getStatisticsEntity().getCoinOrderCountDaily();
+		if (changeTimes >= goldChangeCfg.getMaxTimes()) {
+			sendError(HS.code.SHOP_GOLD2COIN_C_VALUE, Status.shopError.SHOP_GOLD2COIN_MAX_COUNT_VALUE);
+			return true;
+		}
+		
 		ConsumeItems consume = new ConsumeItems();
-		consume.addGold(100);
+		int consumeMutiple = (int)Math.pow(changeTimes / goldChangeCfg.getConsumeTimeDoubel(), 2);
+		int goldCost = (goldChangeCfg.getConsume() + changeTimes * goldChangeCfg.getConsumeTimeAdd()) * consumeMutiple;
+		consume.addGold(goldCost);
 		
 		if (consume.checkConsume(player, HS.code.SHOP_GOLD2COIN_C_VALUE) == false) {
 			return true;
 		}
 		
 		AwardItems award = new AwardItems();
-		award.addCoin(10000);
+		int multipleValue = 1;
+		float randomValue = HawkRand.randFloat(0, 1);
+		if (randomValue < goldChangeCfg.getTenMultiple()) {
+			multipleValue = 10;
+		}
+		else if (randomValue < goldChangeCfg.getTenMultiple() + goldChangeCfg.getFiveMultiple()) {
+			multipleValue = 5;	
+		}
+		else if (randomValue < goldChangeCfg.getTenMultiple() + goldChangeCfg.getFiveMultiple() + goldChangeCfg.getTwoMultiple()) {
+			multipleValue = 2;	
+		}
+		
+		float coinAward = (goldChangeCfg.getAward() + changeTimes * goldChangeCfg.getAwardTimeAdd()) * (1 + player.getLevel() * goldChangeCfg.getLevelAdd()) * multipleValue;
+		award.addCoin((int)coinAward);
+		
 		consume.consumeTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.SHOP_GOLD2COIN_C_VALUE);
 		award.rewardTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.SHOP_GOLD2COIN_C_VALUE);
 		
@@ -77,6 +108,7 @@ public class PlayerShopModule extends PlayerModule{
 		
 		HSShopGold2CoinRet.Builder response = HSShopGold2CoinRet.newBuilder();
 		response.setChangeCount(player.getPlayerData().getStatisticsEntity().getCoinOrderCountDaily());
+		response.setMultiple(multipleValue);
 		sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_GOLD2COIN_S_VALUE, response));
 		return true;
 	}

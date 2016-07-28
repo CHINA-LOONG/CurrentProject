@@ -74,6 +74,7 @@ public class UIMailList : MonoBehaviour
             itemsPool.Remove(item);
         }
         items.Add(item);
+        item.transform.SetAsLastSibling();
         return item;
     }
 

@@ -1074,6 +1074,900 @@ public final class Im {
     // @@protoc_insertion_point(class_scope:HSImMsg)
   }
 
+  public interface HSImPlayerOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 playerId = 1;
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    boolean hasPlayerId();
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    int getPlayerId();
+
+    // required string nickname = 2;
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    boolean hasNickname();
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    java.lang.String getNickname();
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNicknameBytes();
+
+    // required int32 level = 3;
+    /**
+     * <code>required int32 level = 3;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>required int32 level = 3;</code>
+     */
+    int getLevel();
+
+    // optional int32 guildId = 4;
+    /**
+     * <code>optional int32 guildId = 4;</code>
+     */
+    boolean hasGuildId();
+    /**
+     * <code>optional int32 guildId = 4;</code>
+     */
+    int getGuildId();
+
+    // optional string guildName = 5;
+    /**
+     * <code>optional string guildName = 5;</code>
+     */
+    boolean hasGuildName();
+    /**
+     * <code>optional string guildName = 5;</code>
+     */
+    java.lang.String getGuildName();
+    /**
+     * <code>optional string guildName = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getGuildNameBytes();
+  }
+  /**
+   * Protobuf type {@code HSImPlayer}
+   */
+  public static final class HSImPlayer extends
+      com.google.protobuf.GeneratedMessage
+      implements HSImPlayerOrBuilder {
+    // Use HSImPlayer.newBuilder() to construct.
+    private HSImPlayer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSImPlayer(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSImPlayer defaultInstance;
+    public static HSImPlayer getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSImPlayer getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSImPlayer(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              playerId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              nickname_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              level_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              guildId_ = input.readInt32();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              guildName_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Im.internal_static_HSImPlayer_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Im.internal_static_HSImPlayer_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Im.HSImPlayer.class, com.hawk.game.protocol.Im.HSImPlayer.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSImPlayer> PARSER =
+        new com.google.protobuf.AbstractParser<HSImPlayer>() {
+      public HSImPlayer parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSImPlayer(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSImPlayer> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 playerId = 1;
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private int playerId_;
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    public boolean hasPlayerId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    public int getPlayerId() {
+      return playerId_;
+    }
+
+    // required string nickname = 2;
+    public static final int NICKNAME_FIELD_NUMBER = 2;
+    private java.lang.Object nickname_;
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    public boolean hasNickname() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    public java.lang.String getNickname() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nickname_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string nickname = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNicknameBytes() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nickname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 level = 3;
+    public static final int LEVEL_FIELD_NUMBER = 3;
+    private int level_;
+    /**
+     * <code>required int32 level = 3;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 level = 3;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    // optional int32 guildId = 4;
+    public static final int GUILDID_FIELD_NUMBER = 4;
+    private int guildId_;
+    /**
+     * <code>optional int32 guildId = 4;</code>
+     */
+    public boolean hasGuildId() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 guildId = 4;</code>
+     */
+    public int getGuildId() {
+      return guildId_;
+    }
+
+    // optional string guildName = 5;
+    public static final int GUILDNAME_FIELD_NUMBER = 5;
+    private java.lang.Object guildName_;
+    /**
+     * <code>optional string guildName = 5;</code>
+     */
+    public boolean hasGuildName() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string guildName = 5;</code>
+     */
+    public java.lang.String getGuildName() {
+      java.lang.Object ref = guildName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          guildName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string guildName = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getGuildNameBytes() {
+      java.lang.Object ref = guildName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        guildName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      playerId_ = 0;
+      nickname_ = "";
+      level_ = 0;
+      guildId_ = 0;
+      guildName_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasPlayerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNickname()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLevel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, playerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getNicknameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, level_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, guildId_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getGuildNameBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, playerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getNicknameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, level_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, guildId_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getGuildNameBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Im.HSImPlayer parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayer parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayer parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayer parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayer parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayer parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayer parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayer parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayer parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayer parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Im.HSImPlayer prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSImPlayer}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Im.HSImPlayerOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Im.internal_static_HSImPlayer_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Im.internal_static_HSImPlayer_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Im.HSImPlayer.class, com.hawk.game.protocol.Im.HSImPlayer.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Im.HSImPlayer.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        playerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        nickname_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        guildId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        guildName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Im.internal_static_HSImPlayer_descriptor;
+      }
+
+      public com.hawk.game.protocol.Im.HSImPlayer getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Im.HSImPlayer.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Im.HSImPlayer build() {
+        com.hawk.game.protocol.Im.HSImPlayer result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Im.HSImPlayer buildPartial() {
+        com.hawk.game.protocol.Im.HSImPlayer result = new com.hawk.game.protocol.Im.HSImPlayer(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.playerId_ = playerId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.nickname_ = nickname_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.guildId_ = guildId_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.guildName_ = guildName_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Im.HSImPlayer) {
+          return mergeFrom((com.hawk.game.protocol.Im.HSImPlayer)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Im.HSImPlayer other) {
+        if (other == com.hawk.game.protocol.Im.HSImPlayer.getDefaultInstance()) return this;
+        if (other.hasPlayerId()) {
+          setPlayerId(other.getPlayerId());
+        }
+        if (other.hasNickname()) {
+          bitField0_ |= 0x00000002;
+          nickname_ = other.nickname_;
+          onChanged();
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
+        if (other.hasGuildId()) {
+          setGuildId(other.getGuildId());
+        }
+        if (other.hasGuildName()) {
+          bitField0_ |= 0x00000010;
+          guildName_ = other.guildName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasPlayerId()) {
+          
+          return false;
+        }
+        if (!hasNickname()) {
+          
+          return false;
+        }
+        if (!hasLevel()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Im.HSImPlayer parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Im.HSImPlayer) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 playerId = 1;
+      private int playerId_ ;
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public boolean hasPlayerId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public int getPlayerId() {
+        return playerId_;
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public Builder setPlayerId(int value) {
+        bitField0_ |= 0x00000001;
+        playerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public Builder clearPlayerId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        playerId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string nickname = 2;
+      private java.lang.Object nickname_ = "";
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public boolean hasNickname() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public java.lang.String getNickname() {
+        java.lang.Object ref = nickname_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          nickname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNicknameBytes() {
+        java.lang.Object ref = nickname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nickname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public Builder setNickname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public Builder clearNickname() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nickname_ = getDefaultInstance().getNickname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nickname = 2;</code>
+       */
+      public Builder setNicknameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 level = 3;
+      private int level_ ;
+      /**
+       * <code>required int32 level = 3;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 level = 3;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>required int32 level = 3;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000004;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 level = 3;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 guildId = 4;
+      private int guildId_ ;
+      /**
+       * <code>optional int32 guildId = 4;</code>
+       */
+      public boolean hasGuildId() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 guildId = 4;</code>
+       */
+      public int getGuildId() {
+        return guildId_;
+      }
+      /**
+       * <code>optional int32 guildId = 4;</code>
+       */
+      public Builder setGuildId(int value) {
+        bitField0_ |= 0x00000008;
+        guildId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 guildId = 4;</code>
+       */
+      public Builder clearGuildId() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        guildId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string guildName = 5;
+      private java.lang.Object guildName_ = "";
+      /**
+       * <code>optional string guildName = 5;</code>
+       */
+      public boolean hasGuildName() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string guildName = 5;</code>
+       */
+      public java.lang.String getGuildName() {
+        java.lang.Object ref = guildName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          guildName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string guildName = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getGuildNameBytes() {
+        java.lang.Object ref = guildName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          guildName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string guildName = 5;</code>
+       */
+      public Builder setGuildName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        guildName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string guildName = 5;</code>
+       */
+      public Builder clearGuildName() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        guildName_ = getDefaultInstance().getGuildName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string guildName = 5;</code>
+       */
+      public Builder setGuildNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        guildName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSImPlayer)
+    }
+
+    static {
+      defaultInstance = new HSImPlayer(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSImPlayer)
+  }
+
   public interface HSImChatSendOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -2344,11 +3238,959 @@ public final class Im {
     // @@protoc_insertion_point(class_scope:HSImPush)
   }
 
+  public interface HSImPlayerGetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 playerId = 1;
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    boolean hasPlayerId();
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    int getPlayerId();
+  }
+  /**
+   * Protobuf type {@code HSImPlayerGet}
+   *
+   * <pre>
+   * IM_PLAYER_GET_C
+   * </pre>
+   */
+  public static final class HSImPlayerGet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSImPlayerGetOrBuilder {
+    // Use HSImPlayerGet.newBuilder() to construct.
+    private HSImPlayerGet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSImPlayerGet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSImPlayerGet defaultInstance;
+    public static HSImPlayerGet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSImPlayerGet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSImPlayerGet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              playerId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Im.internal_static_HSImPlayerGet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Im.internal_static_HSImPlayerGet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Im.HSImPlayerGet.class, com.hawk.game.protocol.Im.HSImPlayerGet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSImPlayerGet> PARSER =
+        new com.google.protobuf.AbstractParser<HSImPlayerGet>() {
+      public HSImPlayerGet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSImPlayerGet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSImPlayerGet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 playerId = 1;
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private int playerId_;
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    public boolean hasPlayerId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    public int getPlayerId() {
+      return playerId_;
+    }
+
+    private void initFields() {
+      playerId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasPlayerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, playerId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, playerId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Im.HSImPlayerGet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Im.HSImPlayerGet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSImPlayerGet}
+     *
+     * <pre>
+     * IM_PLAYER_GET_C
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Im.HSImPlayerGetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Im.internal_static_HSImPlayerGet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Im.internal_static_HSImPlayerGet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Im.HSImPlayerGet.class, com.hawk.game.protocol.Im.HSImPlayerGet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Im.HSImPlayerGet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        playerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Im.internal_static_HSImPlayerGet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Im.HSImPlayerGet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Im.HSImPlayerGet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Im.HSImPlayerGet build() {
+        com.hawk.game.protocol.Im.HSImPlayerGet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Im.HSImPlayerGet buildPartial() {
+        com.hawk.game.protocol.Im.HSImPlayerGet result = new com.hawk.game.protocol.Im.HSImPlayerGet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.playerId_ = playerId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Im.HSImPlayerGet) {
+          return mergeFrom((com.hawk.game.protocol.Im.HSImPlayerGet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Im.HSImPlayerGet other) {
+        if (other == com.hawk.game.protocol.Im.HSImPlayerGet.getDefaultInstance()) return this;
+        if (other.hasPlayerId()) {
+          setPlayerId(other.getPlayerId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasPlayerId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Im.HSImPlayerGet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Im.HSImPlayerGet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 playerId = 1;
+      private int playerId_ ;
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public boolean hasPlayerId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public int getPlayerId() {
+        return playerId_;
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public Builder setPlayerId(int value) {
+        bitField0_ |= 0x00000001;
+        playerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public Builder clearPlayerId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        playerId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSImPlayerGet)
+    }
+
+    static {
+      defaultInstance = new HSImPlayerGet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSImPlayerGet)
+  }
+
+  public interface HSImPlayerGetRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .HSImPlayer imPlayer = 1;
+    /**
+     * <code>required .HSImPlayer imPlayer = 1;</code>
+     */
+    boolean hasImPlayer();
+    /**
+     * <code>required .HSImPlayer imPlayer = 1;</code>
+     */
+    com.hawk.game.protocol.Im.HSImPlayer getImPlayer();
+    /**
+     * <code>required .HSImPlayer imPlayer = 1;</code>
+     */
+    com.hawk.game.protocol.Im.HSImPlayerOrBuilder getImPlayerOrBuilder();
+  }
+  /**
+   * Protobuf type {@code HSImPlayerGetRet}
+   *
+   * <pre>
+   * IM_PLAYER_GET_S
+   * </pre>
+   */
+  public static final class HSImPlayerGetRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSImPlayerGetRetOrBuilder {
+    // Use HSImPlayerGetRet.newBuilder() to construct.
+    private HSImPlayerGetRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSImPlayerGetRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSImPlayerGetRet defaultInstance;
+    public static HSImPlayerGetRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSImPlayerGetRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSImPlayerGetRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.hawk.game.protocol.Im.HSImPlayer.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = imPlayer_.toBuilder();
+              }
+              imPlayer_ = input.readMessage(com.hawk.game.protocol.Im.HSImPlayer.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(imPlayer_);
+                imPlayer_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Im.internal_static_HSImPlayerGetRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Im.internal_static_HSImPlayerGetRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Im.HSImPlayerGetRet.class, com.hawk.game.protocol.Im.HSImPlayerGetRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSImPlayerGetRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSImPlayerGetRet>() {
+      public HSImPlayerGetRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSImPlayerGetRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSImPlayerGetRet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .HSImPlayer imPlayer = 1;
+    public static final int IMPLAYER_FIELD_NUMBER = 1;
+    private com.hawk.game.protocol.Im.HSImPlayer imPlayer_;
+    /**
+     * <code>required .HSImPlayer imPlayer = 1;</code>
+     */
+    public boolean hasImPlayer() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .HSImPlayer imPlayer = 1;</code>
+     */
+    public com.hawk.game.protocol.Im.HSImPlayer getImPlayer() {
+      return imPlayer_;
+    }
+    /**
+     * <code>required .HSImPlayer imPlayer = 1;</code>
+     */
+    public com.hawk.game.protocol.Im.HSImPlayerOrBuilder getImPlayerOrBuilder() {
+      return imPlayer_;
+    }
+
+    private void initFields() {
+      imPlayer_ = com.hawk.game.protocol.Im.HSImPlayer.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasImPlayer()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getImPlayer().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, imPlayer_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, imPlayer_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Im.HSImPlayerGetRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGetRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGetRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGetRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGetRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGetRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGetRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGetRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGetRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Im.HSImPlayerGetRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Im.HSImPlayerGetRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSImPlayerGetRet}
+     *
+     * <pre>
+     * IM_PLAYER_GET_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Im.HSImPlayerGetRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Im.internal_static_HSImPlayerGetRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Im.internal_static_HSImPlayerGetRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Im.HSImPlayerGetRet.class, com.hawk.game.protocol.Im.HSImPlayerGetRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Im.HSImPlayerGetRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getImPlayerFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (imPlayerBuilder_ == null) {
+          imPlayer_ = com.hawk.game.protocol.Im.HSImPlayer.getDefaultInstance();
+        } else {
+          imPlayerBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Im.internal_static_HSImPlayerGetRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Im.HSImPlayerGetRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Im.HSImPlayerGetRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Im.HSImPlayerGetRet build() {
+        com.hawk.game.protocol.Im.HSImPlayerGetRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Im.HSImPlayerGetRet buildPartial() {
+        com.hawk.game.protocol.Im.HSImPlayerGetRet result = new com.hawk.game.protocol.Im.HSImPlayerGetRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (imPlayerBuilder_ == null) {
+          result.imPlayer_ = imPlayer_;
+        } else {
+          result.imPlayer_ = imPlayerBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Im.HSImPlayerGetRet) {
+          return mergeFrom((com.hawk.game.protocol.Im.HSImPlayerGetRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Im.HSImPlayerGetRet other) {
+        if (other == com.hawk.game.protocol.Im.HSImPlayerGetRet.getDefaultInstance()) return this;
+        if (other.hasImPlayer()) {
+          mergeImPlayer(other.getImPlayer());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasImPlayer()) {
+          
+          return false;
+        }
+        if (!getImPlayer().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Im.HSImPlayerGetRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Im.HSImPlayerGetRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .HSImPlayer imPlayer = 1;
+      private com.hawk.game.protocol.Im.HSImPlayer imPlayer_ = com.hawk.game.protocol.Im.HSImPlayer.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Im.HSImPlayer, com.hawk.game.protocol.Im.HSImPlayer.Builder, com.hawk.game.protocol.Im.HSImPlayerOrBuilder> imPlayerBuilder_;
+      /**
+       * <code>required .HSImPlayer imPlayer = 1;</code>
+       */
+      public boolean hasImPlayer() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .HSImPlayer imPlayer = 1;</code>
+       */
+      public com.hawk.game.protocol.Im.HSImPlayer getImPlayer() {
+        if (imPlayerBuilder_ == null) {
+          return imPlayer_;
+        } else {
+          return imPlayerBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .HSImPlayer imPlayer = 1;</code>
+       */
+      public Builder setImPlayer(com.hawk.game.protocol.Im.HSImPlayer value) {
+        if (imPlayerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          imPlayer_ = value;
+          onChanged();
+        } else {
+          imPlayerBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .HSImPlayer imPlayer = 1;</code>
+       */
+      public Builder setImPlayer(
+          com.hawk.game.protocol.Im.HSImPlayer.Builder builderForValue) {
+        if (imPlayerBuilder_ == null) {
+          imPlayer_ = builderForValue.build();
+          onChanged();
+        } else {
+          imPlayerBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .HSImPlayer imPlayer = 1;</code>
+       */
+      public Builder mergeImPlayer(com.hawk.game.protocol.Im.HSImPlayer value) {
+        if (imPlayerBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              imPlayer_ != com.hawk.game.protocol.Im.HSImPlayer.getDefaultInstance()) {
+            imPlayer_ =
+              com.hawk.game.protocol.Im.HSImPlayer.newBuilder(imPlayer_).mergeFrom(value).buildPartial();
+          } else {
+            imPlayer_ = value;
+          }
+          onChanged();
+        } else {
+          imPlayerBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .HSImPlayer imPlayer = 1;</code>
+       */
+      public Builder clearImPlayer() {
+        if (imPlayerBuilder_ == null) {
+          imPlayer_ = com.hawk.game.protocol.Im.HSImPlayer.getDefaultInstance();
+          onChanged();
+        } else {
+          imPlayerBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .HSImPlayer imPlayer = 1;</code>
+       */
+      public com.hawk.game.protocol.Im.HSImPlayer.Builder getImPlayerBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getImPlayerFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .HSImPlayer imPlayer = 1;</code>
+       */
+      public com.hawk.game.protocol.Im.HSImPlayerOrBuilder getImPlayerOrBuilder() {
+        if (imPlayerBuilder_ != null) {
+          return imPlayerBuilder_.getMessageOrBuilder();
+        } else {
+          return imPlayer_;
+        }
+      }
+      /**
+       * <code>required .HSImPlayer imPlayer = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Im.HSImPlayer, com.hawk.game.protocol.Im.HSImPlayer.Builder, com.hawk.game.protocol.Im.HSImPlayerOrBuilder> 
+          getImPlayerFieldBuilder() {
+        if (imPlayerBuilder_ == null) {
+          imPlayerBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.hawk.game.protocol.Im.HSImPlayer, com.hawk.game.protocol.Im.HSImPlayer.Builder, com.hawk.game.protocol.Im.HSImPlayerOrBuilder>(
+                  imPlayer_,
+                  getParentForChildren(),
+                  isClean());
+          imPlayer_ = null;
+        }
+        return imPlayerBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSImPlayerGetRet)
+    }
+
+    static {
+      defaultInstance = new HSImPlayerGetRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSImPlayerGetRet)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSImMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSImMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSImPlayer_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSImPlayer_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSImChatSend_descriptor;
   private static
@@ -2359,6 +4201,16 @@ public final class Im {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSImPush_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSImPlayerGet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSImPlayerGet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSImPlayerGetRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSImPlayerGetRet_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2371,10 +4223,14 @@ public final class Im {
       "\n\021Protocol/Im.proto\"s\n\007HSImMsg\022\014\n\004type\030\001" +
       " \002(\005\022\017\n\007channel\030\002 \002(\005\022\020\n\010senderId\030\003 \002(\005\022" +
       "\022\n\nsenderName\030\004 \001(\t\022\020\n\010origText\030\005 \002(\t\022\021\n" +
-      "\ttransText\030\006 \001(\t\"-\n\014HSImChatSend\022\017\n\007chan" +
-      "nel\030\001 \002(\005\022\014\n\004text\030\002 \002(\t\"#\n\010HSImPush\022\027\n\005i" +
-      "mMsg\030\001 \003(\0132\010.HSImMsgB\030\n\026com.hawk.game.pr" +
-      "otocol"
+      "\ttransText\030\006 \001(\t\"c\n\nHSImPlayer\022\020\n\010player" +
+      "Id\030\001 \002(\005\022\020\n\010nickname\030\002 \002(\t\022\r\n\005level\030\003 \002(" +
+      "\005\022\017\n\007guildId\030\004 \001(\005\022\021\n\tguildName\030\005 \001(\t\"-\n" +
+      "\014HSImChatSend\022\017\n\007channel\030\001 \002(\005\022\014\n\004text\030\002" +
+      " \002(\t\"#\n\010HSImPush\022\027\n\005imMsg\030\001 \003(\0132\010.HSImMs" +
+      "g\"!\n\rHSImPlayerGet\022\020\n\010playerId\030\001 \002(\005\"1\n\020" +
+      "HSImPlayerGetRet\022\035\n\010imPlayer\030\001 \002(\0132\013.HSI",
+      "mPlayerB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2387,18 +4243,36 @@ public final class Im {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSImMsg_descriptor,
               new java.lang.String[] { "Type", "Channel", "SenderId", "SenderName", "OrigText", "TransText", });
-          internal_static_HSImChatSend_descriptor =
+          internal_static_HSImPlayer_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_HSImPlayer_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSImPlayer_descriptor,
+              new java.lang.String[] { "PlayerId", "Nickname", "Level", "GuildId", "GuildName", });
+          internal_static_HSImChatSend_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_HSImChatSend_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSImChatSend_descriptor,
               new java.lang.String[] { "Channel", "Text", });
           internal_static_HSImPush_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_HSImPush_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSImPush_descriptor,
               new java.lang.String[] { "ImMsg", });
+          internal_static_HSImPlayerGet_descriptor =
+            getDescriptor().getMessageTypes().get(4);
+          internal_static_HSImPlayerGet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSImPlayerGet_descriptor,
+              new java.lang.String[] { "PlayerId", });
+          internal_static_HSImPlayerGetRet_descriptor =
+            getDescriptor().getMessageTypes().get(5);
+          internal_static_HSImPlayerGetRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSImPlayerGetRet_descriptor,
+              new java.lang.String[] { "ImPlayer", });
           return null;
         }
       };

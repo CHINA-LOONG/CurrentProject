@@ -264,6 +264,19 @@ public class UIUtil
         return false;
     }
 
+    public static bool CheckHaveNewMail()
+    {
+        Dictionary<int, PB.HSMail> mailDict = GameDataMgr.Instance.PlayerDataAttr.gameMailData.mailList;
+        foreach (var item in mailDict)
+        {
+            if (item.Value.state==(int)PB.mailState.UNREAD)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void SetStageColor(Text label, GameUnit unit)
     {
         int quallity = 0;

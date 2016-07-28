@@ -149,13 +149,6 @@ public class HawkXID implements Comparable<HawkXID>, Cloneable {
 	}
 
 	/**
-	 * 获取hash线程索引
-	 */
-	public int getHashThread(int threadNum) {
-		return id % threadNum;
-	}
-
-	/**
 	 * 清理数据
 	 */
 	public boolean clear() {

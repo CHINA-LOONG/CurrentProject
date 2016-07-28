@@ -9,24 +9,9 @@ public class EquipProtoData
     public int stage;
     public int levelAttrId;
     public int stageAttrId;
-    public string stageDemand;
-    public string levelDemand;
-    public string punchDemand;
     public int rollCount;
     public string additionAttr;
 
-    public void  GetStageDemand(ref List<ItemInfo> stageinfo)//传来一个作为存储用的
-    {
-        ItemInfo.getItemInfoList1(stageinfo, this.stageDemand, ItemParseType.DemandItemType);
-    }
-    public void GetLevelDemand(ref List<ItemInfo> leveinfo)
-    {
-        ItemInfo.getItemInfoList1(leveinfo, this.levelDemand, ItemParseType.DemandItemType);
-    }
-    public void GetPunchDemand(ref List<ItemInfo> punchinfo)
-    {
-        ItemInfo.getItemInfoList1(punchinfo, this.punchDemand, ItemParseType.DemandItemType);
-    }
     //强化数据
     public Dictionary<AttrType,int> leveAttribute(int level)
     {

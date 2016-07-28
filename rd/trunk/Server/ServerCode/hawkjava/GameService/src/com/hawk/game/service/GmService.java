@@ -99,7 +99,6 @@ public class GmService extends GameService {
 				playerId = playerEntity.getId();
 				ServerData.getInstance().addNameAndPlayerId(nickname, playerId);
 				ServerData.getInstance().addPuidAndPlayerId(puid, playerId);
-				ServerData.getInstance().addPlayerId(playerId);
 
 				HawkAccountService.getInstance().report(new HawkAccountService.CreateRoleData(puid, playerId, nickname));
 			} else {

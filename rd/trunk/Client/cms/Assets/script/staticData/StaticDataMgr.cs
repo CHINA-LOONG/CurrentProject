@@ -54,6 +54,7 @@ public class StaticDataMgr : MonoBehaviour
 	List<ShopStaticData>	shopStaticDataList = new List<ShopStaticData>();
 
 	Dictionary<string,RechargeStaticData> rechargeStaticDataDic = new Dictionary<string, RechargeStaticData>();
+	Dictionary<string,GoldChargeData> goldChargeDic = new Dictionary<string, GoldChargeData>();
 
     public void Init()
     {
@@ -621,6 +622,14 @@ public class StaticDataMgr : MonoBehaviour
                 rechargeStaticDataDic.Add(item.id, item);
             }
         }
+
+		{
+			var	data = InitTable<GoldChargeData>("goldChange");
+			foreach( var item in data)
+			{
+				goldChargeDic.Add(item.id,item);
+			}
+		}
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -864,6 +873,13 @@ public class StaticDataMgr : MonoBehaviour
 		RechargeStaticData item = null;
 		rechargeStaticDataDic.TryGetValue (itemId, out item);
 		return item;
+	}
+
+	public	GoldChargeData	GetGoldChageStaticData(string id)
+	{
+		GoldChargeData item = null;
+		goldChargeDic.TryGetValue (id, out item);
+		return	item;
 	}
 
 	public Dictionary<string,RechargeStaticData> GetAllRechageStaticData()

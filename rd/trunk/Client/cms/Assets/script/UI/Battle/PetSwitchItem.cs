@@ -107,10 +107,10 @@ public class PetSwitchItem : MonoBehaviour, IPointerClickHandler
         tips.SetNativeSize();
     }
 
-    public void UpdateData(GameUnit unit)
+    public void UpdateData(GameUnit unit, bool forceRefresh = false)
     {
         //unit发生了变化
-        if (this.unit!=unit)
+        if (this.unit!=unit || forceRefresh)
         {
             this.unit = unit;
             InitItem();

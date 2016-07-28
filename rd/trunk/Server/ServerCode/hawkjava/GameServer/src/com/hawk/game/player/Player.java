@@ -434,6 +434,14 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
+	 * 获取公会Id
+	 * @return
+	 */
+	public int getAllianceId() {
+		return playerData.getPlayerAllianceEntity().getAllianceId();
+	}
+
+	/**
 	 * 获取经验
 	 * @return
 	 */
@@ -692,7 +700,12 @@ public class Player extends HawkAppObj {
 			if (level > monsterBaseCfg.size()) {
 				level = monsterBaseCfg.size();
 			}
-			
+
+			// gm指令不受玩家等级限制
+			if (action != Action.GM_ACTION && level > this.getLevel()) {
+				level = this.getLevel();
+			}
+
 			boolean levelUp = level > monster.getLevel();
 			// 最大等级需要把经验置0
 			if (level == monsterBaseCfg.size()) {
@@ -742,10 +755,7 @@ public class Player extends HawkAppObj {
 	}	
 	
 	/**
-	 * 增加等级
-	 * 
-	 * @param level
-	 * @return 实际添加的等级
+	 * 增加怪物经验
 	 */
 	public void increaseMonsterExp(int monsterId, int exp, Action action) {
 		if (exp <= 0) {
@@ -762,17 +772,28 @@ public class Player extends HawkAppObj {
 			float levelUpExpRate = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, monster.getCfgId()).getNextExpRate();
 			int expRemain = monster.getExp() + exp;
 			int targetLevel = monster.getLevel();
+			float targetLevelMaxExp = monsterBaseCfg.get(targetLevel).getNextExp() * levelUpExpRate;
 			boolean levelup = false;
-			while (targetLevel != monsterBaseCfg.size() && expRemain >= monsterBaseCfg.get(targetLevel).getNextExp() * levelUpExpRate) {
-				expRemain -= monsterBaseCfg.get(targetLevel).getNextExp() * levelUpExpRate;
+
+			// 宠物等级不超过玩家等级，相等时经验保持0
+			while (targetLevel != monsterBaseCfg.size()
+					&& targetLevel < this.getLevel()
+					&& expRemain >= targetLevelMaxExp) {
+				expRemain -= targetLevelMaxExp;
 				targetLevel += 1;
 				levelup = true;
 			}
-			
-			monster.setExp(targetLevel == monsterBaseCfg.size() ? 0 : expRemain);
-			monster.setLevel(targetLevel);
-			monster.notifyUpdate(true);
-			
+
+			if (targetLevel == monsterBaseCfg.size() || targetLevel >= this.getLevel()) {
+				expRemain = 0;
+			}
+
+			if (expRemain != monster.getExp() || true == levelup) {
+				monster.setExp(expRemain);
+				monster.setLevel(targetLevel);
+				monster.notifyUpdate(true);
+			}
+
 			if (true == levelup) {
 				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity(); 
 				boolean update = false;

@@ -222,7 +222,11 @@ public class InstanceMapService : MonoBehaviour
             {
                 if (i < openChapterInstanceList.Count - 1)
                 {
-                    return openChapterInstanceList[i + 1];
+                    InstanceEntry instanceData = StaticDataMgr.Instance.GetInstanceEntry(openChapterInstanceList[i + 1].instanceId);
+                    if (instanceData != null && instanceData.level <= GameDataMgr.Instance.PlayerDataAttr.level)
+                    {
+                        return openChapterInstanceList[i + 1];
+                    }
                 }
             }
         }

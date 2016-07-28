@@ -274,6 +274,13 @@ namespace PB
       get { return _changeCount; }
       set { _changeCount = value; }
     }
+    private int _multiple;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"multiple", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int multiple
+    {
+      get { return _multiple; }
+      set { _multiple = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

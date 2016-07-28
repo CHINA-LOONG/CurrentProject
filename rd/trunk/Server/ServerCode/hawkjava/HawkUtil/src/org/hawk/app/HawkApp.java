@@ -364,6 +364,13 @@ public abstract class HawkApp extends HawkAppObj {
 	}
 	
 	/**
+	 * 获取hash线程索引
+	 */
+	public int getHashThread(HawkXID xid, int threadNum) {
+		return xid.getId() % threadNum;
+	}
+	
+	/**
 	 * 获取工作目录
 	 * 
 	 * @return
@@ -955,7 +962,7 @@ public abstract class HawkApp extends HawkAppObj {
 	 */
 	public boolean postMsgTask(HawkMsgTask task) {
 		if (running && task != null) {
-			int threadIdx = task.getXid().getHashThread(getThreadNum());
+			int threadIdx = getHashThread(task.getXid(), getThreadNum());
 			return postMsgTask(task, threadIdx);
 		}
 		return false;
@@ -984,7 +991,7 @@ public abstract class HawkApp extends HawkAppObj {
 	 */
 	public boolean postProtocol(HawkXID xid, HawkProtocol protocol) {
 		if (running && xid != null && protocol != null) {
-			int threadIdx = xid.getHashThread(getThreadNum());
+			int threadIdx = getHashThread(xid, getThreadNum());
 			return postMsgTask(HawkProtoTask.valueOf(xid, protocol), threadIdx);
 		}
 		return false;
@@ -1013,7 +1020,7 @@ public abstract class HawkApp extends HawkAppObj {
 	 */
 	public boolean postMsg(HawkMsg msg) {
 		if (running && msg != null) {
-			int threadIdx = msg.getTarget().getHashThread(getThreadNum());
+			int threadIdx = getHashThread(msg.getTarget(), getThreadNum());
 			if (HawkApp.getInstance().getAppCfg().isDebug()) {
 				HawkLog.logPrintln(String.format("post message: %d, target: %s, thread: %d", msg.getMsg(), msg.getTarget().toString(), threadIdx));
 			}
@@ -1036,7 +1043,7 @@ public abstract class HawkApp extends HawkAppObj {
 			Map<Integer, List<HawkXID>> threadXidMap = new HashMap<Integer, List<HawkXID>>();
 			// 计算xid列表所属线程
 			for (HawkXID xid : xidList) {
-				int threadIdx = xid.getHashThread(getThreadNum());
+				int threadIdx = getHashThread(xid, getThreadNum());
 				List<HawkXID> threadXidList = threadXidMap.get(threadIdx);
 				if (threadXidList == null) {
 					threadXidList = new LinkedList<HawkXID>();
@@ -1077,7 +1084,7 @@ public abstract class HawkApp extends HawkAppObj {
 			if (xidList != null && xidList.size() > 0) {
 				// 计算xid列表所属线程
 				for (HawkXID xid : xidList) {
-					int threadIdx = xid.getHashThread(getThreadNum());
+					int threadIdx = getHashThread(xid, getThreadNum());
 					// app对象本身不参与线程tick更新计算, 本身的tick在主线程执行
 					if (!xid.equals(this.objXid)) {
 						threadTickXids.get(threadIdx).add(xid);

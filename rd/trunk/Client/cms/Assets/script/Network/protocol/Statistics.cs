@@ -128,8 +128,15 @@ namespace PB
       get { return _monthCardLeft; }
       set { _monthCardLeft = value; }
     }
+    private int _gold2CoinTimes;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"gold2CoinTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int gold2CoinTimes
+    {
+      get { return _gold2CoinTimes; }
+      set { _gold2CoinTimes = value; }
+    }
     private HSStatisticsExpLeftTimeSync _expLeftTimes;
-    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"expLeftTimes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"expLeftTimes", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public HSStatisticsExpLeftTimeSync expLeftTimes
     {
       get { return _expLeftTimes; }
@@ -158,6 +165,23 @@ namespace PB
     {
       get { return _tripleExpLeft; }
       set { _tripleExpLeft = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsResetSync")]
+  public partial class HSStatisticsResetSync : global::ProtoBuf.IExtensible
+  {
+    public HSStatisticsResetSync() {}
+    
+    private int _goldChangeTimes;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"goldChangeTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int goldChangeTimes
+    {
+      get { return _goldChangeTimes; }
+      set { _goldChangeTimes = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

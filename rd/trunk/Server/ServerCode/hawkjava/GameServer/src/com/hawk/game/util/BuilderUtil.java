@@ -94,6 +94,7 @@ public class BuilderUtil {
 			builder.setMonthCardLeft(HawkTime.calendarDiff(statisticsEntity.getMonthCardEndTime(), HawkTime.getCalendar()));
 		}
 		
+		builder.setGold2CoinTimes(statisticsEntity.getCoinOrderCountDaily());
 		builder.setExpLeftTimes(genStatisticsExpLeftTimeBuilder(statisticsEntity));
 
 		return builder;

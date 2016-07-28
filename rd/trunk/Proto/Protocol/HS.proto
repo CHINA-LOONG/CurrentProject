@@ -138,6 +138,8 @@ enum code
 	// 即时通讯
 	IM_CHAT_SEND_C              = 7001;
 	IM_PUSH_S                   = 7002;
+	IM_PLAYER_GET_C             = 7003;
+	IM_PLAYER_GET_S             = 7004;
 
 	// 商店
 	SHOP_DATA_INIT_C            = 8001;
@@ -162,7 +164,8 @@ enum code
 	SETTING_BLOCK_C             = 10003;
 	SETTING_BLOCK_S             = 10004;
 	
-	// 统计信息
+	// 经验药水剩余次数
 	STATISTICS_EXP_LEFT_TIMES   = 11001;
-	
+	// 零点重置
+	STATISTICS_RESET_SYN	    = 11002;
 }

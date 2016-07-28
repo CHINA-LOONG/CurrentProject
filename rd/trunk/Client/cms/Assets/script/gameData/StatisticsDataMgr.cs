@@ -19,6 +19,16 @@ public class StatisticsDataMgr : MonoBehaviour {
 		}
 	}
 
+	private	PB.HSStatisticsExpLeftTimeSync	expLeftTime;
+	public	PB.HSStatisticsExpLeftTimeSync	ExpLeftTimeAttr
+	{
+		get
+		{
+			return	expLeftTime;
+		}
+	}
+	public	int	gold2coinExchargeTimes = 0;
+
     static StatisticsDataMgr mInst = null;
     public static StatisticsDataMgr Instance
     {
@@ -36,12 +46,14 @@ public class StatisticsDataMgr : MonoBehaviour {
     public void Init()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
+		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.STATISTICS_EXP_LEFT_TIMES.GetHashCode ().ToString (), OnExpLeftTimesSync);
         DontDestroyOnLoad(gameObject);
     }
 
     void Destroy()
     {
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);       
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);  
+		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.STATISTICS_EXP_LEFT_TIMES.GetHashCode ().ToString (), OnExpLeftTimesSync);
     }
 
     void OnStatisticsInfoSync(ProtocolMessage message)
@@ -52,9 +64,17 @@ public class StatisticsDataMgr : MonoBehaviour {
 		GameDataMgr.Instance.UserDataAttr.orderServerKey =  staticsticsData.orderServerKey;
 		GameDataMgr.Instance.ShopDataMgrAttr.monthCardLeft = staticsticsData.monthCardLeft;
 		GameDataMgr.Instance.ShopDataMgrAttr.listRechageState = staticsticsData.rechargeState;
+		expLeftTime = staticsticsData.expLeftTimes;
+		gold2coinExchargeTimes = staticsticsData.gold2CoinTimes;
 
         UpdateServerTime(staticsticsData.timeStamp);
     }
+
+	void	OnExpLeftTimesSync(ProtocolMessage message)
+	{
+		PB.HSStatisticsExpLeftTimeSync msgBody = message.GetProtocolBody<PB.HSStatisticsExpLeftTimeSync> ();
+		expLeftTime = msgBody;
+	}
 
     public void ResetSkillPointState(int currentPoint, int beginTime)
     {

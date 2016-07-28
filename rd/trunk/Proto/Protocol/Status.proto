@@ -181,8 +181,8 @@ enum shopError
 	SHOP_ITEM_ALREADY_BUY      = 0x0090002;
 	// 商品刷新最大次数
 	SHOP_REFRESH_MAX_COUNT     = 0x0090003;
-	// 商品刷新最大次数
-	SHOP_GOLD2COIN_MAX_COUNT   = 0x0090003;
+	// 钻石购买最大次数
+	SHOP_GOLD2COIN_MAX_COUNT   = 0x0090004;
 }
 
 enum imError

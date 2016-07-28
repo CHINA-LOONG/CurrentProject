@@ -42,8 +42,6 @@ public class AwardItems {
 	 */
 	public AwardItems() {
 		rewardInfo = HSRewardInfo.newBuilder();
-		SynPlayerAttr.Builder playerBuilder = SynPlayerAttr.newBuilder();
-		rewardInfo.setPlayerAttr(playerBuilder);
 	}
 
 	public static AwardItems valueOf() {
@@ -345,54 +343,65 @@ public class AwardItems {
 	 * @return
 	 */
 	public boolean rewardTakeAffect(Player player, Action action) {
-		try {			
+		try {
+			// 先计算玩家属性奖励
 			for (int i = 0; i < rewardInfo.getRewardItemsBuilderList().size(); ) {
 				RewardItem.Builder item = rewardInfo.getRewardItemsBuilder(i);
-				SynPlayerAttr.Builder playerBuilder = rewardInfo.getPlayerAttrBuilder();
 				boolean invalidType = false;
-				boolean rewardFail = false;
 				if (item.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
-					// 玩家属性
 					switch (Integer.parseInt(item.getItemId())) {
 					case changeType.CHANGE_COIN_VALUE:
 						player.increaseCoin(item.getCount(), action);
-						playerBuilder.setCoin(player.getCoin());
 						break;
 
 					case changeType.CHANGE_GOLD_VALUE:
 						player.increaseFreeGold(item.getCount(), action);
-						playerBuilder.setGold(player.getGold());
 						break;
 
 					case changeType.CHANGE_GOLD_BUY_VALUE:
 						player.increaseBuyGold(item.getCount(), action);
-						playerBuilder.setGold(player.getGold());
 						break;
 						
 					case changeType.CHANGE_PLAYER_EXP_VALUE:
 						player.increaseExp(item.getCount(), action);
-						playerBuilder.setExp(player.getExp());
-						playerBuilder.setLevel(player.getLevel());	
 						break;
 
 					case changeType.CHANGE_FATIGUE_VALUE:
 						player.increaseFatigue(item.getCount(), action);
-						playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
 						break;
-						
+
 					// GM命令 ,不会和CHANGE_PLAYER_EXP_VALUE同时出现
 					case changeType.CHANGE_PLAYER_LEVEL_VALUE:
 						player.setLevel(item.getCount(), action);
-						playerBuilder.setExp(player.getExp());
-						playerBuilder.setLevel(player.getLevel());
 						break;
-					
+
 					default:
 						invalidType = true;
 						break;
 					}
+
+					SynPlayerAttr.Builder playerBuilder = rewardInfo.getPlayerAttrBuilder();	
+					playerBuilder.setCoin(player.getCoin());
+					playerBuilder.setGold(player.getGold());
+					playerBuilder.setExp(player.getExp());
+					playerBuilder.setLevel(player.getLevel());	
+					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
 				}
-				else if (item.getType() == Const.itemType.MONSTER_ATTR_VALUE) {					
+
+				if (invalidType== true) {
+					rewardInfo.removeRewardItems(i);
+				}
+				else {
+					++i;
+				}
+			}
+
+			// 计算其它奖励
+			for (int i = 0; i < rewardInfo.getRewardItemsBuilderList().size(); ) {
+				RewardItem.Builder item = rewardInfo.getRewardItemsBuilder(i);
+				boolean invalidType = false;
+				boolean rewardFail = false;
+				if (item.getType() == Const.itemType.MONSTER_ATTR_VALUE) {
 					if (Integer.parseInt(item.getItemId()) == changeType.CHANGE_MONSTER_EXP_VALUE) {
 						if (item.getId() == 0) {
 							// 未指定怪物时奖励所有上阵怪物，平分经验
@@ -435,7 +444,7 @@ public class AwardItems {
 								else {
 									monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
 									monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
-								}						
+								}
 							}
 						}
 					}

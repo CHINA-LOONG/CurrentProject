@@ -102,7 +102,13 @@ public class UIMailContent : MonoBehaviour
         UINetRequest.Close();
         if (msg.GetMessageType()==(int)PB.sys.ERROR_CODE)
         {
-            Logger.LogError("收取错误");
+            PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
+            if (error.errCode==(int)PB.mailError.MAIL_NOT_EXIST||
+                error.errCode==(int)PB.mailError.MAIL_NONE)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_005"), (int)PB.ImType.PROMPT);
+            }
+            Logger.LogError("收取错误,不存在");
             return;
         }
         PB.HSMailReceiveRet result = msg.GetProtocolBody<PB.HSMailReceiveRet>();
@@ -132,7 +138,6 @@ public class UIMailContent : MonoBehaviour
         textSend.text = StaticDataMgr.Instance.GetTextByID("mail_laizi");
         textAnnex.text = StaticDataMgr.Instance.GetTextByID("mail_fujian");
         textReceive.text = StaticDataMgr.Instance.GetTextByID("mail_shouqu");
-        //textAnnexnone.text = StaticDataMgr.Instance.GetTextByID("mail_meiyoufujian");
     }
 
 
