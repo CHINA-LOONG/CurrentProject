@@ -103,6 +103,7 @@ public class GameDataMgr : MonoBehaviour
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_INFO_SYNC_S.GetHashCode().ToString(), OnPlayerInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SETTING_INFO_SYNC_S.GetHashCode().ToString(), OnSettingInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_INFO_SYNC_S.GetHashCode().ToString(), OnMonsterInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_INFO_SYNC_S.GetHashCode().ToString(), OnItemInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_INFO_SYNC_S.GetHashCode().ToString(), OnEquipInfoSync);
@@ -124,6 +125,7 @@ public class GameDataMgr : MonoBehaviour
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_INFO_SYNC_S.GetHashCode().ToString(), OnPlayerInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SETTING_INFO_SYNC_S.GetHashCode().ToString(), OnSettingInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_INFO_SYNC_S.GetHashCode().ToString(), OnMonsterInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_INFO_SYNC_S.GetHashCode().ToString(), OnItemInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_INFO_SYNC_S.GetHashCode().ToString(), OnEquipInfoSync);
@@ -183,6 +185,21 @@ public class GameDataMgr : MonoBehaviour
     void OnStatisticsInfoSync(ProtocolMessage msg)
     {
         PB.HSStatisticsInfoSync playerSync = msg.GetProtocolBody<PB.HSStatisticsInfoSync>();
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnSettingInfoSync(ProtocolMessage msg)
+    {
+        if (mainPlayer == null)
+        {
+            mainPlayer = new PlayerData();
+        }
+
+        PB.HSSettingInfoSync settingInfo = msg.GetProtocolBody<PB.HSSettingInfoSync>();
+        int count = settingInfo.setting.blockPlayerId.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            mainPlayer.mBlockPlayerList.Add(settingInfo.setting.blockPlayerId[i]);
+        }
     }
     //---------------------------------------------------------------------------------------------
     void OnMonsterInfoSync(ProtocolMessage msg)
@@ -324,6 +341,38 @@ public class GameDataMgr : MonoBehaviour
             GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, PlayerDataAttr.coin);
             PlayerDataAttr.gold = reward.playerAttr.gold;
             GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged, mainPlayer.gold);
+
+            if (PlayerDataAttr.coin >= 999999999)
+            {
+                int coinMaxHint = PlayerPrefs.GetInt("coinHintMax");
+                if (coinMaxHint == 0)
+                {
+                    PlayerPrefs.SetInt("coinHintMax", 1);
+                    MsgBox.PromptMsg.Open(
+                        MsgBox.MsgBoxType.Conform,
+                        string.Format(StaticDataMgr.Instance.GetTextByID("coin_max")),
+                        null,
+                        true,
+                        false
+                        );
+                }
+            }
+
+            if (PlayerDataAttr.gold >= 999999999)
+            {
+                int goldMaxHint = PlayerPrefs.GetInt("goldHintMax");
+                if (goldMaxHint == 0)
+                {
+                    PlayerPrefs.SetInt("goldHintMax", 1);
+                    MsgBox.PromptMsg.Open(
+                        MsgBox.MsgBoxType.Conform,
+                        string.Format(StaticDataMgr.Instance.GetTextByID("gold_max")),
+                        null,
+                        true,
+                        false
+                        );
+                }
+            }
         }
 
         GameUnit unit = null;
@@ -375,14 +424,17 @@ public class GameDataMgr : MonoBehaviour
                 PbUnit pbUnit = new PbUnit();
                 PB.HSMonster monster = item.monster;
                 pbUnit.slot = -1;
-                pbUnit.guid = (int)item.id;
+                //pbUnit.guid = (int)item.id;
+                //pbUnit.id = item.itemId;
+                //pbUnit.stage = item.stage;
                 pbUnit.camp = UnitCamp.Player;
-                pbUnit.id = item.itemId;
+                pbUnit.guid = monster.monsterId;
+                pbUnit.id = monster.cfgId;
+                pbUnit.stage = monster.stage;
                 pbUnit.character = monster.disposition;
                 pbUnit.lazy = monster.lazy;
                 pbUnit.level = monster.level;
                 pbUnit.curExp = monster.exp;
-                pbUnit.stage = item.stage;
                 pbUnit.spellPbList = monster.skill;
                 mainPlayer.unitPbList.Add(pbUnit.guid, pbUnit);
                 mainPlayer.allUnitDic.Add(pbUnit.guid, GameUnit.FromPb(pbUnit, true));

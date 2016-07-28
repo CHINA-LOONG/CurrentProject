@@ -100,5 +100,7 @@ public class GameEventList
 	//open box
 	public	static	string	OpenBoxFinished = "OpenBoxFinished";
 
+    //speed service
+    public const string SpeedChangeEvent = "EventSpeedChange";
 
 }

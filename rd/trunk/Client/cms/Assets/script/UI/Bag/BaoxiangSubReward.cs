@@ -61,7 +61,7 @@ public class BaoxiangSubReward : MonoBehaviour
 			icon.transform.localScale = Vector3.one;
 			name = GetItemName(reward.itemId);
 		}
-		itemNameText.text = StaticDataMgr.Instance.GetTextByID (name);
+		//itemNameText.text =   StaticDataMgr.Instance.GetTextByID (name);
 		return true;
 	}
 

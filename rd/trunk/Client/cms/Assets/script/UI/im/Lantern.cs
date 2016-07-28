@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections.Generic;
+using System;
 public class Lantern : MonoBehaviour
 {
     public class LanternData
@@ -13,6 +14,7 @@ public class Lantern : MonoBehaviour
         public Text lant;
         public bool isRoll;
         public Vector3 moveVec;
+        public Tweener battleTitleTw = null;
     }
     public int speed = 50;
     [HideInInspector]
@@ -20,7 +22,17 @@ public class Lantern : MonoBehaviour
     public bool moveTypeEnd;
     [HideInInspector]
     public bool roll;
-    Tweener battleTitleTw = null;
+    
+    void Awake()
+    {
+        GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpeedChangeEvent, OnSpeedChange);
+    }
+
+    void Destroy()
+    {
+        GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpeedChangeEvent, OnSpeedChange);
+    }
+
     public void AddMsg(string msg)
     {
         LanternData lanData = new LanternData();
@@ -32,9 +44,9 @@ public class Lantern : MonoBehaviour
         lanData.lant.rectTransform.localPosition = new Vector3(transform.GetComponent<Image>().rectTransform.sizeDelta.x, 0, 0);//起始位置;
         lanData.moveVec = new Vector3(0 - lanData.lant.preferredWidth, 0, 0);//移动目标位置
         float duration = (lanData.lant.rectTransform.localPosition.x - lanData.moveVec.x) / speed;
-        lanData.beginTime = Time.time;
-        lanData.nextTime = Time.time + duration;
-        if (lanternMsg.Count > 1)
+        lanData.beginTime = Time.unscaledTime;
+        lanData.nextTime = Time.unscaledTime + duration;
+        if (lanternMsg.Count >= 1)
         {
             float interval = duration;
             LanternData lastLanter = lanternMsg[lanternMsg.Count - 1];
@@ -57,15 +69,20 @@ public class Lantern : MonoBehaviour
         }
         for (int i = 0; i < lanternMsg.Count; i++)
         {
-            if (lanternMsg[i].beginTime <= Time.time && lanternMsg[i].isRoll == false)
+            if (lanternMsg[i].beginTime <= Time.unscaledTime && lanternMsg[i].isRoll == false)
             {
                 lanternMsg[i].isRoll = true;
-                battleTitleTw = lanternMsg[i].lant.transform.DOLocalMove(lanternMsg[i].moveVec, lanternMsg[i].nextTime - lanternMsg[i].beginTime, true);
-                battleTitleTw.SetEase(Ease.Linear);
-                battleTitleTw.OnComplete(LanternMoveEnd);
+                lanternMsg[i].battleTitleTw = lanternMsg[i].lant.transform.DOLocalMove(lanternMsg[i].moveVec, lanternMsg[i].nextTime - lanternMsg[i].beginTime, true);
+                lanternMsg[i].battleTitleTw.SetEase(Ease.Linear);
+                lanternMsg[i].battleTitleTw.OnComplete(LanternMoveEnd);
+                if (Time.timeScale != 0.0f)
+                {
+                    lanternMsg[i].battleTitleTw.timeScale = 1.0f / Time.timeScale;
+                }
             }
         }
     }
+
     void LanternMoveEnd()//走马灯结束
     {
         ResourceMgr.Instance.DestroyAsset(lanternMsg[0].lant.gameObject);
@@ -74,5 +91,23 @@ public class Lantern : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
+
+    public void OnSpeedChange(System.EventArgs args)
+    {
+        float curTimeScale = 1.0f;
+        if (Time.timeScale != 0.0f)
+        {
+            curTimeScale = 1.0f / Time.timeScale;
+        }
+
+        for (int i = 0; i < lanternMsg.Count; i++)
+        {
+            if (lanternMsg[i].battleTitleTw != null)
+            {
+                lanternMsg[i].battleTitleTw.timeScale = curTimeScale;
+            }
+        }
+
     }
 }

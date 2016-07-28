@@ -743,10 +743,17 @@ public class PlayerData {
 	}
 	
 	/**
-	 * 同步经验次数信息
+	 * 同步商店刷新次数信息
 	 */
 	public void syncShopRefreshTimeInfo() {
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_REFRESH_TIMES_VALUE, BuilderUtil.genShopRefreshTimeLeftBuilder(player, shopEntity)));
+	}
+	
+	/**
+	 * 同步经验次数信息
+	 */
+	public void syncStaticticsShopRefreshInfo(int shopType) {
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SHOP_REFRESH_VALUE, BuilderUtil.genStaticsticsShopRefreshBuilder(shopType)));
 	}
 	
 	/**

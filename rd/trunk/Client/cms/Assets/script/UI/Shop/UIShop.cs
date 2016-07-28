@@ -75,8 +75,6 @@ public class UIShop : UIBase
 		EventTriggerListener.Get (closeButton.gameObject).onClick = OnCloseButtonClick ;
 		EventTriggerListener.Get (leftButton.gameObject).onClick = OnLeftButtonClick ;
 		EventTriggerListener.Get (rightButton.gameObject).onClick = OnRightButtonClick ;
-		EventTriggerListener.Get (jinbiCoinBtn.addCoinButton.gameObject).onClick = OnJinbiCoinButtonClick;
-		EventTriggerListener.Get (zuanshiCoinBtn.addCoinButton.gameObject).onClick = OnZuanshiCoinbuttonClick;
 
 		BindListener ();
 		
@@ -93,6 +91,7 @@ public class UIShop : UIBase
 		GameEventMgr.Instance.RemoveListener (GameEventList.RefreshShopUi, OnRefreshShopUi);
 	}
 
+	/*
 	int count = 0;
 	void Update()
 	{
@@ -107,6 +106,7 @@ public class UIShop : UIBase
 			RefreshShopData(curShopType,true);
 		}
 	}
+	*/
 
 	void OnRefreshButtonClilck(GameObject go)
 	{
@@ -119,7 +119,7 @@ public class UIShop : UIBase
 		{
 			//todo: modify IM Message
 			//Logger.LogError("-------今天刷新次数已经用完。。。。");
-			UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("shop_refresh"),
+			UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("shop_refresh_error"),
 			                              (int)PB.ImType.PROMPT);
 			return;
 		}
@@ -161,15 +161,6 @@ public class UIShop : UIBase
 		int nextShopType = GetNextShopType ();
 		curShopType = nextShopType;
 		RefreshShopData (curShopType);
-	}
-
-	void	OnJinbiCoinButtonClick(GameObject go)
-	{
-		shopDataMgr.JinbiNoEnough ();
-	}
-	void 	OnZuanshiCoinbuttonClick(GameObject go)
-	{
-		UIMgr.Instance.OpenUI_ (UIMall.ViewName, false);
 	}
 
 	public	void	RefreshShopData(int shopType,bool forceRefresh = false)

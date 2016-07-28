@@ -1175,7 +1175,7 @@ loading_yifulitehei,<color=#b888ff>伊芙利特</color>,<color=#b888ff>Ifrit</co
 loading_dujiaoshouhei,<color=#b888ff>独角兽</color>,<color=#b888ff>Pegasus</color>
 loading_hongniuhong,<color=#fff8c8>米诺到诺斯</color>,<color=#fff8c8>Minotaur</color>
 loading_tips1,任务是获得角色经验最快的途径哦！,Completing quests is the best way to get EXP for your character!
-loading_tips2,日常任务中每日共有三次免费领取活力的机会：12点，18点，21点，可不要错过哦！,"There are 3 chances to receive free Energy each day in the Daily Quests: 12:00, 18:00, and 21:00. Don't miss them!"
+loading_tips2,日常任务中每日共有两次免费领取活力的机会：12点，18点，可不要错过哦！,"There are 2 chances to receive free Energy each day in the Daily Quests: 12:00, and 18:00. Don't miss them!"
 loading_tips3,“补签”功能可以保证你连续签到哦！,"Purchasing ”Missed Login"" can ensure you get every day's login reward！"
 loading_tips4,一些没有用的材料可以在背包里卖掉换钱。,Some unneeded items in your Bag can be sold for Coins.
 loading_tips5,宠物不给力？尝试一下召唤吧~,Not satisfied with your current monsters? Try summoning some more!
@@ -1691,7 +1691,8 @@ giftspecial_xuanze1_desc,新人礼遇，机会难得！只能选择<color=#ffcc0
 giftspecial_xuanze2_name,中级礼包,Intermediate Package
 giftspecial_xuanze2_desc,超值钜惠，错过难寻！只能选择<color=#ffcc00>一个</color>进行购买哦！,Great value that is hard to pass up! Players may only choose <color=#ffcc00>一个</color>one!
 xinyangzhilu_name,神话守护者,Myth Guardian
-main_icon_mythopath,神话守护者,Myth Guardian
+main_icon_mythopath,神话守护者,"Myth
+Guardian"
 mythopathlevel1,传说之书,Folktales
 mythopathlevel2,预言之书,Parables
 mythopathlevel3,史诗之书,Epic
@@ -1815,3 +1816,4 @@ gift_desc_120,活动期间，累计完成指定次数钻石十连抽，即可领
 120_name6,累计进行钻石十连抽30次,累计进行钻石十连抽30次
 120_name7,累计进行钻石十连抽50次,累计进行钻石十连抽50次
 xinyang_instance_title,神话守护者,Myth Guardian
+setting_pvpweikai,尚未开启竞技场玩法,Arena has not been opened yet

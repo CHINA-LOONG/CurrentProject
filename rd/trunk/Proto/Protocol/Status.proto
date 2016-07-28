@@ -190,3 +190,9 @@ enum imError
 	// 聊天内容太长
 	IM_CHAT_LENGTH             = 0x0100001;
 }
+
+enum settingError
+{
+	// 屏蔽列表已满
+	SETTING_BLOCK_FULL         = 0x0110001;
+}

@@ -28,7 +28,6 @@ import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.log.BehaviorLogger.Action;
-import com.hawk.game.log.BehaviorLogger.Source;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.manager.ImManager.ImMsg;
 import com.hawk.game.player.Player;
@@ -220,7 +219,7 @@ public class GmService extends GameService {
 					return;
 				}
 
-				award.addMonster(gmItemId, (int)gmValue, 1, 1, 1, 1);
+				award.addMonster(gmItemId, (int)gmValue, 0, 1, 1, 1);
 				actionHandled = true;
 			}
 			break;
@@ -345,7 +344,7 @@ public class GmService extends GameService {
 			}
 
 			for (int i = 0; i < gmValue; ++i) {
-				player.SendMail(mailInfo, (int)gmTargetId, Source.GM_OPERATION, Action.GM_ACTION);
+				MailUtil.SendMail(mailInfo, (int)gmTargetId, 0, mailCfg.getSender());
 			}
 
 			actionHandled = true;
@@ -364,7 +363,7 @@ public class GmService extends GameService {
 				receiverList.add(playerId);
 			}
 
-			MailUtil.SendSysMail(mailCfg, receiverList, Source.GM_OPERATION, Action.GM_ACTION);
+			MailUtil.SendSysMail(mailCfg, receiverList);
 			actionHandled = true;
 			break;
 		}

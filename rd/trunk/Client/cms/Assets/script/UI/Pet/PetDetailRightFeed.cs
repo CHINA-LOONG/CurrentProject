@@ -151,12 +151,12 @@ public class PetDetailRightFeed : PetDetailRightBase,IUsedExpCallBack
             itemId=itemData.id,
             itemCount=count
         };
-        GameApp.Instance.netManager.SendMessage(PB.code.ITEM_USE_C.GetHashCode(), param);
+        GameApp.Instance.netManager.SendMessage(PB.code.ITEM_USE_C.GetHashCode(), param, false);
     }
 
     void OnUseExpReturn(ProtocolMessage msg)
     {
-        UINetRequest.Close();
+        //UINetRequest.Close();
         if (msg == null || msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             Logger.LogError("使用失败");
@@ -167,7 +167,7 @@ public class PetDetailRightFeed : PetDetailRightBase,IUsedExpCallBack
         {
             Logger.Log("使用成功");
         }
-        ParentNode.ReloadLeftData();
+        ParentNode.ReloadLeftData(false);
         ParentNode.ReloadRigthData(PetViewConst.UIPetFeedAssetName);
     }
 

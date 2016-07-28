@@ -768,6 +768,14 @@ public final class HS {
      * </pre>
      */
     STATISTICS_RESET_SYN(112, 11002),
+    /**
+     * <code>STATISTICS_SHOP_REFRESH = 11003;</code>
+     *
+     * <pre>
+     * 商店刷新
+     * </pre>
+     */
+    STATISTICS_SHOP_REFRESH(113, 11003),
     ;
 
     /**
@@ -1274,6 +1282,14 @@ public final class HS {
      * </pre>
      */
     public static final int STATISTICS_RESET_SYN_VALUE = 11002;
+    /**
+     * <code>STATISTICS_SHOP_REFRESH = 11003;</code>
+     *
+     * <pre>
+     * 商店刷新
+     * </pre>
+     */
+    public static final int STATISTICS_SHOP_REFRESH_VALUE = 11003;
 
 
     public final int getNumber() { return value; }
@@ -1393,6 +1409,7 @@ public final class HS {
         case 10004: return SETTING_BLOCK_S;
         case 11001: return STATISTICS_EXP_LEFT_TIMES;
         case 11002: return STATISTICS_RESET_SYN;
+        case 11003: return STATISTICS_SHOP_REFRESH;
         default: return null;
       }
     }
@@ -1457,7 +1474,7 @@ public final class HS {
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
       "\n\nERROR_CODE\020\004*@\n\002gm\022\024\n\020GEN_TEST_ACCOUNT" +
       "\020d\022\021\n\rGMOPERATION_C\020e\022\021\n\rGMOPERATION_S\020f" +
-      "*\202\024\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n" +
+      "*\240\024\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n" +
       "\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICKOUT_S" +
       "\020\354\007\022\017\n\nSYNCINFO_C\020\355\007\022\017\n\nSYNCINFO_S\020\356\007\022\027\n" +
       "\022PLAYER_INFO_SYNC_S\020\362\007\022\033\n\026STATISTICS_INF" +
@@ -1521,7 +1538,8 @@ public final class HS {
       "\022SETTING_LANGUAGE_S\020\222N\022\024\n\017SETTING_BLOCK_" +
       "C\020\223N\022\024\n\017SETTING_BLOCK_S\020\224N\022\036\n\031STATISTICS" +
       "_EXP_LEFT_TIMES\020\371U\022\031\n\024STATISTICS_RESET_S" +
-      "YN\020\372UB\030\n\026com.hawk.game.protocol"
+      "YN\020\372U\022\034\n\027STATISTICS_SHOP_REFRESH\020\373UB\030\n\026c" +
+      "om.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

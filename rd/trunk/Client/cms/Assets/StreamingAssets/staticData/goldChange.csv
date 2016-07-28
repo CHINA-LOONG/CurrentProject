@@ -1,5 +1,5 @@
-#TEXT,NUM,NUM,NUM,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT
+ï»¿#TEXT,NUM,NUM,NUM,NUM,NUM,NUM,FLOAT,FLOAT,FLOAT,FLOAT
 id,maxTimes,consume,consumeTimeAdd,consumeTimeDoubel,award,awardTimeAdd,levelAdd,twoMultiple,fiveMultiple,tenMultiple
-#id,×î´ó´ÎÊý,»ù´¡×êÊ¯ÏûºÄ,´ÎÊýÏûºÄ¼Ó³É,´ÎÊý·­±¶,»ñµÃ²úÎï»ùÊý,´ÎÊýÊÕÒæ¼Ó³É,µÈ¼¶ÏµÊý,¶ÔÓ¦±©»÷¸ÅÂÊ¼°±©»÷±¶Êý1,¶ÔÓ¦±©»÷¸ÅÂÊ¼°±©»÷±¶Êý2,¶ÔÓ¦±©»÷¸ÅÂÊ¼°±©»÷±¶Êý3
+#id,æœ€å¤§æ¬¡æ•°,åŸºç¡€é’»çŸ³æ¶ˆè€—,æ¬¡æ•°æ¶ˆè€—åŠ æˆ,æ¬¡æ•°ç¿»å€,èŽ·å¾—äº§ç‰©åŸºæ•°,æ¬¡æ•°æ”¶ç›ŠåŠ æˆ,ç­‰çº§ç³»æ•°,å¯¹åº”æš´å‡»æ¦‚çŽ‡åŠæš´å‡»å€æ•°1,å¯¹åº”æš´å‡»æ¦‚çŽ‡åŠæš´å‡»å€æ•°2,å¯¹åº”æš´å‡»æ¦‚çŽ‡åŠæš´å‡»å€æ•°3
 1,20,20,5,3,12000,120,0.005,0.25,0.1,0.05
 2,15,20,5,3,12000,120,0.005,0.25,0.1,0.05

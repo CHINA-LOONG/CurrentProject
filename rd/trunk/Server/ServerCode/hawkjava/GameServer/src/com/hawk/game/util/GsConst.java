@@ -54,6 +54,8 @@ public class GsConst {
 	public static final int MAX_BATTLE_MONSTER_COUNT = 5;
 	// 钻石兑换金币索引
 	public static final int GOLD_TO_COIN_INDEX = 1;
+	// 最大屏蔽玩家数
+	public static final int MAX_BLOCK_COUNT = 5;
 	
 	
 	/**

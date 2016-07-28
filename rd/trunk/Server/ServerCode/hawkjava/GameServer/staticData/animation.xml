@@ -3938,7 +3938,9 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultHetongPre" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Hetong31"/>
+				<Audio time="0.6" name="Hetong31"/>
+				<Audio time="1.5" name="Hetong31"/>
+				<Audio time="2.3" name="Hetong32"/>
 			</AudioList>
 		</Ani>
 		
@@ -3956,7 +3958,9 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultHetongPre" bundle="effect/particle" parent="" attach="true" ignore_rot="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Hetong31"/>
+				<Audio time="0.6" name="Hetong31"/>
+				<Audio time="1.5" name="Hetong31"/>
+				<Audio time="2.3" name="Hetong32"/>
 			</AudioList>
 		</Ani>
 		
@@ -5654,7 +5658,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Anpusha1"/>
-				<Audio time="2" name="Anpusha2"/>
 			</AudioList>
 		</Ani>
 		
@@ -5662,9 +5665,9 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			<ParticleList>
 				<Particle asset="ultAnpushaHit" bundle="effect/particle" ani="" attach="true"/>
 			</ParticleList>
-			<!--AudioList>
-				<Audio time="0" name="earthp1"/>
-			</AudioList-->
+			<AudioList>
+				<Audio time="0" name="Anpusha2"/>
+			</AudioList>
 		</Ani>
 	
 		<Ani id="txAnpusha5" state="0" AniType="Skill">
@@ -5673,7 +5676,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Anpusha1"/>
-				<Audio time="2" name="Anpusha2"/>
 			</AudioList>
 		</Ani>
 		
@@ -5689,7 +5691,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultSheshouzuo1pre" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Sheshouzuo11"/>
+				<Audio time="0.6" name="Sheshouzuo31"/>
 			</AudioList>
 		</Ani>
 		
@@ -5724,7 +5726,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultSheshouzuo1pre" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Sheshouzuo11"/>
+				<Audio time="0.6" name="Sheshouzuo31"/>
 			</AudioList>
 		</Ani>
 	</AniList>
@@ -5741,7 +5743,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="utlSheshouzuo3pre1" bundle="effect/particle" parent="" locky="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Sheshouzuo31"/>
+				<Audio time="0" name="Sheshouzuo11"/>
 			</AudioList>
 		</Ani>
 		
@@ -5762,7 +5764,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="utlSheshouzuo3pre1" bundle="effect/particle" parent="" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="Sheshouzuo31"/>
+				<Audio time="0" name="Sheshouzuo11"/>
 			</AudioList>
 		</Ani>
 	</AniList>
@@ -5956,16 +5958,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Audio time="0" name="watere1"/>
 			</AudioList>
 		</Ani>
-		
-		<Ani id="ultHuoniao3e5" state="0" AniType="Buff">
-			<ParticleList>
-				<Particle asset="commonBuffSpeed" bundle="effect/particle" parent="" locky="true"/>
-			</ParticleList>
-			<AudioList>
-				<Audio time="0" name="buff"/>
-			</AudioList>
-		</Ani>
-	
+			
 		<Ani id="txHuoniao3" state="0" AniType="Skill">
 			<ParticleList>
 				<Particle asset="ultHuoniao3pre" bundle="effect/particle" parent="" attach="true"/>
@@ -8729,7 +8722,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Anpusha1"/>
-				<Audio time="2" name="Anpusha2"/>
 			</AudioList>
 		</Ani>
 		
@@ -8738,7 +8730,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultAnpushaHit" bundle="effect/particle" ani="" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="earthp1"/>
+				<Audio time="0" name="Anpusha2"/>
 			</AudioList>
 		</Ani>
 		<Ani id="bossminghe62Anpusha54" state="0" AniType="Skill">
@@ -8750,7 +8742,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Anpusha1"/>
-				<Audio time="2" name="Anpusha2"/>
 			</AudioList>
 		</Ani>
 		
@@ -8759,7 +8750,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultAnpushaHit" bundle="effect/particle" ani="" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="earthp1"/>
+				<Audio time="0" name="Anpusha2"/>
 			</AudioList>
 		</Ani>
 	</AniList>
@@ -8828,7 +8819,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Anpusha1"/>
-				<Audio time="2" name="Anpusha2"/>
 			</AudioList>
 		</Ani>
 		
@@ -8837,7 +8827,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultAnpushaHit" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="earthp1"/>
+				<Audio time="0" name="Anpusha2"/>
 			</AudioList>
 		</Ani>
 		
@@ -8868,7 +8858,6 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 			</ParticleList>
 			<AudioList>
 				<Audio time="0" name="Anpusha1"/>
-				<Audio time="2" name="Anpusha2"/>
 			</AudioList>
 		</Ani>
 		
@@ -8877,7 +8866,7 @@ parent = "1"仅在attach=“scene”时有意义，代表和触发者反阵营�
 				<Particle asset="ultAnpushaHit" bundle="effect/particle" ani="" parent="e_shouji" attach="true"/>
 			</ParticleList>
 			<AudioList>
-				<Audio time="0" name="earthp1"/>
+				<Audio time="0" name="Anpusha2"/>
 			</AudioList>
 		</Ani>
 		

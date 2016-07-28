@@ -345,7 +345,7 @@ public class HawkListener {
 			if (handler != null) {
 				handler.onProtocol(appObj, protocol);
 				return true;
-			} 
+			}
 			
 			// 协议采用注解模式调用
 			AnnoMethods annoMethods = classListenAnnoMethods.get(this.getClass());

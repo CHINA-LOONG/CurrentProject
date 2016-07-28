@@ -48,6 +48,8 @@ public class PlayerData : MonoBehaviour
     public List<BattleObject> mainUnitList = new List<BattleObject>();
     public Dictionary<int, PbUnit> unitPbList = new Dictionary<int, PbUnit>();
 	public Dictionary<int,GameUnit> allUnitDic = new Dictionary<int, GameUnit> ();
+    //屏蔽列表
+    public List<int> mBlockPlayerList = new List<int>();
 
     //道具
     public GameItemData gameItemData = new GameItemData();
@@ -108,8 +110,25 @@ public class PlayerData : MonoBehaviour
 
         return false;
     }
-
-	//---------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------
+    public void AddBlockPlayer(int blockID)
+    {
+        mBlockPlayerList.Add(blockID);
+    }
+    //---------------------------------------------------------------------------------------------
+    public void RemoveBlockPlayer(int blockID)
+    {
+        int count = mBlockPlayerList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            if (mBlockPlayerList[i] == blockID)
+            {
+                mBlockPlayerList.RemoveAt(i);
+                break;
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
 	public List<GameUnit> GetAllPet()
 	{
 		List<GameUnit> allPet = new List<GameUnit> ();
@@ -136,7 +155,6 @@ public class PlayerData : MonoBehaviour
 		allUnitDic.TryGetValue (guid, out unit);
 		return unit;
 	}
-
     //---------------------------------------------------------------------------------------------
     public void SyncPlayerInof(ProtocolMessage msg)
     {

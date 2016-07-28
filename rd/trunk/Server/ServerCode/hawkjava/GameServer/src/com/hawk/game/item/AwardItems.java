@@ -161,6 +161,7 @@ public class AwardItems {
 		rewardItem.setType(Const.itemType.MONSTER_VALUE);
 		rewardItem.setItemId(monsterId);
 		rewardItem.setStage(stage);
+		rewardItem.setLevel(level);
 		
 		HSMonster.Builder monster = HSMonster.newBuilder();
 		monster.setCfgId(monsterId);
@@ -290,16 +291,25 @@ public class AwardItems {
 	}
 
 	public AwardItems addFreeGold(int gold) {
+		if (gold <= 0 ) {
+			return this;
+		}
 		addAttr(changeType.CHANGE_GOLD_VALUE, gold);
 		return this;
 	}
 
 	public AwardItems addBuyGold(int gold) {
+		if (gold <= 0 ) {
+			return this;
+		}
 		addAttr(changeType.CHANGE_GOLD_BUY_VALUE, gold);
 		return this;
 	}
 	
 	public AwardItems addCoin(int coin) {
+		if (coin <= 0 ) {
+			return this;
+		}
 		addAttr(changeType.CHANGE_COIN_VALUE, coin);
 		return this;
 	}
@@ -510,10 +520,10 @@ public class AwardItems {
 						item.setMonster(BuilderUtil.genMonsterBuilder(monsterEntity));
 					}
 				}
-				else {
+				else if (item.getType() != Const.itemType.PLAYER_ATTR_VALUE){
 					invalidType = true;
 				}
-				
+
 				if (invalidType== true || rewardFail == true) {
 					rewardInfo.removeRewardItems(i);
 				}

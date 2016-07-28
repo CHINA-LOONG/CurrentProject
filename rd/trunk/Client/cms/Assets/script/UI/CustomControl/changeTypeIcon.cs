@@ -40,10 +40,10 @@ public class changeTypeIcon : MonoBehaviour
         switch (type)
         {
             case PB.changeType.CHANGE_GOLD:
-                iconName = "icon_jinbi2";
+                iconName = "icon_zuanshi2";
                 break;
             case PB.changeType.CHANGE_COIN:
-                iconName = "icon_zuanshi2";
+                iconName = "icon_jinbi2";
                 break;
             case PB.changeType.CHANGE_PLAYER_EXP:
                 iconName = "icon_exp2";

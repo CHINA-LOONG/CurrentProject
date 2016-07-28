@@ -197,11 +197,17 @@ public class ConsumeItems {
 	}
 	
 	public ConsumeItems addGold(int gold) {
+		if (gold <= 0 ) {
+			return this;
+		}
 		addAttr(changeType.CHANGE_GOLD_VALUE, gold);
 		return this;
 	}
 
 	public ConsumeItems addCoin(int coin) {
+		if (coin <= 0 ) {
+			return this;
+		}
 		addAttr(changeType.CHANGE_COIN_VALUE, coin);
 		return this;
 	}

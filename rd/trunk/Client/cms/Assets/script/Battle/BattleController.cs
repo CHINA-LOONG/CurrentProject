@@ -308,6 +308,7 @@ public class BattleController : MonoBehaviour
 
         uiBattle = UIMgr.Instance.OpenUI_(UIBattle.ViewName) as UIBattle;
         uiBattle.Initialize();
+        UIIm.Instance.transform.SetAsLastSibling();
         StartProcess(curProcessIndex);
     }
     //---------------------------------------------------------------------------------------------

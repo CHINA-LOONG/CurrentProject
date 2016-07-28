@@ -35,7 +35,7 @@ public class SelectMonsterPanel : UIBase
         ShowScrollIcon();
 	}
 
-    public void init(ItemInfo itemInfo, List<int> selectMonster,GameUnit curUnit/* int selfId*/)
+    public void init(ItemInfo itemInfo, List<List<int>> demandList, List<int> selectMonster, GameUnit curUnit/* int selfId*/)
     {
         int selfId=curUnit.pbUnit.guid;
         demandLabel.text = StaticDataMgr.Instance.GetTextByID(PetViewConst.PetDetailStageMonster);
@@ -46,7 +46,7 @@ public class SelectMonsterPanel : UIBase
         List<GameUnit> petList = GameDataMgr.Instance.PlayerDataAttr.GetAllPet((itemInfo.itemId.Equals(BattleConst.stageSelfId) ? curUnit.pbUnit.id : itemInfo.itemId), itemInfo.stage);
         foreach (GameUnit unit in petList)
         {
-            if (unit.pbUnit.guid != selfId && !unit.pbUnit.locked)
+            if (unit.pbUnit.guid != selfId && !unit.pbUnit.locked && !CheckMonsterIsSelect(unit, demandList, selectMonster))
             {
                 GameObject go = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetStageMonsterElementAssetName, false);
                 scrollView.AddElement(go);
@@ -77,6 +77,27 @@ public class SelectMonsterPanel : UIBase
         avatar.SetStage(itemInfo.stage);
 
         UpdateSelectState();
+    }
+    bool CheckMonsterIsSelect(GameUnit unit, List<List<int>> demand, List<int> current)
+    {
+        for (int i = 0; i < demand.Count; i++)
+        {
+            if (demand[i]==current)
+            {
+                continue;
+            }
+            else
+            {
+                for (int j = 0; j < demand[i].Count; j++)
+                {
+                    if (demand[i][j]==unit.pbUnit.guid)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     void UpdateSelectState()

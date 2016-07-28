@@ -9,8 +9,6 @@ import org.hawk.config.HawkConfigBase;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 
-import com.hawk.game.util.GsConst;
-
 @HawkConfigManager.CsvResource(file = "staticData/time.csv", struct = "map")
 public class TimeCfg extends HawkConfigBase {
 
@@ -24,6 +22,10 @@ public class TimeCfg extends HawkConfigBase {
 	protected final int dayOfMonth;
 	protected final int month;
 	protected final int year;
+	
+	// comments
+	@SuppressWarnings("unused")
+	private final String comments = "";
 
 	// assemble
 	// 尺度

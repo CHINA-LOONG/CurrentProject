@@ -173,9 +173,9 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
         ReloadRigthData(PetViewConst.UIPetSkillAssetName);
     }
 
-    public void ReloadLeftData()
+    public void ReloadLeftData(bool reloadUnit = true)
     {
-        leftView.ReloadData(CurrentUnit);
+        leftView.ReloadData(CurrentUnit, reloadUnit);
     }
 
     public void ReloadRigthData(string rightAsset, PetRightParamBase param = null)

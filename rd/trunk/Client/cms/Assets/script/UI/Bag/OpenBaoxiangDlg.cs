@@ -15,6 +15,7 @@ public class OpenBaoxiangDlg : UIBase {
 	public	ItemIcon	itemIcon;
 	public	Text	useCountDescText;
 	public	Text	usecountValueText;
+	public	Text	boxNameText;
 
 	public	Button	cancelButton;
 	public	Button	OKButton;
@@ -69,6 +70,11 @@ public class OpenBaoxiangDlg : UIBase {
 
 		chgValue.maxValue = maxKeyValue;
 		chgValue.curValue = maxKeyValue;
+		ItemStaticData itemStaticData = StaticDataMgr.Instance.GetItemData(baoxiangData.itemId);
+		if (null != itemStaticData)
+		{
+			UIUtil.SetStageColor(boxNameText,itemStaticData);
+		}
 
 		itemIcon.RefreshWithItemInfo (itemData);
 	}

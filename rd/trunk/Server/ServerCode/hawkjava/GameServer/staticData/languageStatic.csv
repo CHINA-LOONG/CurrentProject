@@ -619,10 +619,8 @@ chengmubiao30305,个人贡献收集25000,Accumulate 25000 Contribution Pts
 chengmubiao30306,个人贡献收集65000,Accumulate 65000 Contribution Pts
 tili1,吃午饭了,Lunch Time
 tili2,吃晚饭了,Dinner Time
-tili3,吃宵夜了,Midnight Snack
-tilitips1,点击即送30点活力12:00~14:00 {0} 限时领取,"Tap to collect 30 Energy, available 12:00 - 14:00 {0} "
-tilitips2,点击即送30点活力18:00~20:00 {0} 限时领取,"Tap to collect 30 Energy, available 18:00 - 20:00 {0} "
-tilitips3,点击即送30点活力21:00~23:00 {0} 限时领取,"Tap to collect 30 Energy, available 21:00 - 23:00 {0} "
+tilitips1,点击即送45点活力12:00~14:00 {0} 限时领取,"Tap to collect 45 Energy, available 12:00 - 14:00 {0} "
+tilitips2,点击即送45点活力18:00~20:00 {0} 限时领取,"Tap to collect 45 Energy, available 18:00 - 20:00 {0} "
 bosssenlin31Wendige2wp02,左角,Left Horn
 bosssenlin31Wendige2wp03,右角,Right Horn
 bosssenlin32Longnv3wp02,头,Head
@@ -796,7 +794,7 @@ speech_summon3,我在你房间中创造了一个<color=#ffcc00>魔法召唤之�
 speech_zhenrongxuanze1,你们竟然救了我……,"Ohh, so you saved me after all…"
 speech_zhenrongxuanze2,别担心，你没事了。能通过在<color=#ffcc00>召唤之书</color>把你救回来真是太好了！,"No worries, you have been used! Its nice to see you back thru the <color=#ffcc00>Summon Book</color>."
 speech_zhenrongxuanze3,现在你们应该给我解释下状况了吧……,So now you can finally explain what all of this is about…
-speech_zhenrongxuanze4,让我们先去在<color=#ffcc00>战斗</color>吧！战斗能获得许多奖励，比如说宠物，这样你就会越来越强大！,Let's <color=#ffcc00>go battle</color> first! Get rewards such as monsters from battle to strengthen your team first!
+speech_zhenrongxuanze4,让我们先去<color=#ffcc00>战斗</color>吧！战斗能获得许多奖励，比如说宠物，这样你就会越来越强大！,Let's <color=#ffcc00>go battle</color> first! Get rewards such as monsters from battle to strengthen your team first!
 speech_shanghuapotips,<color=#ffcc00>新伙伴花魄</color>也是可以<color=#ffcc00>上阵</color>的哦~还记得如何操作吧！,Our <color=#ffcc00>new Flower Pixie</color> can also <color=#ffcc00>join the team</color>. Remember how to add monsters to the team?
 speech_shangmantuoluotips,<color=#ffcc00>新伙伴曼陀罗</color>是个超级<color=#ffcc00>奶妈</color>，<color=#ffcc00>回血</color>全靠他啦！,"Our <color=#ffcc00>new Mandrake</color> is a <color=#ffcc00>healer</color>, so you can rely on it to <color=#ffcc00>recover your monsters' HP</color>!"
 speech_exp1,只要吃下<color=#ffcc00>信仰之力</color>，妖怪就会成长，试试吧？,"If you feed a monster this <color=#ffcc00>Mytho Essence</color>, it will grow. Let's give it a try!"

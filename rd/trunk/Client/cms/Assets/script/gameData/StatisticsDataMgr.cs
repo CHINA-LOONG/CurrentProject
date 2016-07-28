@@ -47,6 +47,7 @@ public class StatisticsDataMgr : MonoBehaviour {
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.STATISTICS_EXP_LEFT_TIMES.GetHashCode ().ToString (), OnExpLeftTimesSync);
+		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.STATISTICS_SHOP_REFRESH.GetHashCode ().ToString (), OnShopNeedRefreshSync);
         DontDestroyOnLoad(gameObject);
     }
 
@@ -74,6 +75,12 @@ public class StatisticsDataMgr : MonoBehaviour {
 	{
 		PB.HSStatisticsExpLeftTimeSync msgBody = message.GetProtocolBody<PB.HSStatisticsExpLeftTimeSync> ();
 		expLeftTime = msgBody;
+	}
+
+	void	 OnShopNeedRefreshSync(ProtocolMessage message)
+	{
+		PB.HSStatisticsShopRefresh msgBody = message.GetProtocolBody<PB.HSStatisticsShopRefresh> ();
+		GameDataMgr.Instance.ShopDataMgrAttr.RefreshShopWithFree (msgBody.shopType, false);
 	}
 
     public void ResetSkillPointState(int currentPoint, int beginTime)

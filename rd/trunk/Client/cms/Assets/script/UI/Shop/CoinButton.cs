@@ -22,6 +22,7 @@ public class CoinButton : MonoBehaviour
 	// Use this for initialization
 	void Awake () 
 	{
+		EventTriggerListener.Get (addCoinButton.gameObject).onClick = OnAddCoinButtonClicked;
 		BindListener ();
 		RefreshIcon ();
 	}
@@ -97,6 +98,18 @@ public class CoinButton : MonoBehaviour
 	{
 		plusImage.gameObject.SetActive (!isHide);
 		addCoinButton.gameObject.SetActive (!isHide);
+	}
+
+	void  OnAddCoinButtonClicked(GameObject go)
+	{
+		if (coinType == CoinType.Zuanshi)
+		{
+			UIMgr.Instance.OpenUI_ (UIMall.ViewName, false);
+		}
+		else if (coinType == CoinType.Jinbi) 
+		{
+			UICoinExchange.Open();
+		}
 	}
 
 	void OnZuanshiChanged(int zuanshi)

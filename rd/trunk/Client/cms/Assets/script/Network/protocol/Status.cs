@@ -305,4 +305,12 @@ namespace PB
       IM_CHAT_LENGTH = 1048577
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"settingError")]
+    public enum settingError
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SETTING_BLOCK_FULL", Value=1114113)]
+      SETTING_BLOCK_FULL = 1114113
+    }
+  
 }

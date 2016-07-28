@@ -63,6 +63,7 @@ GameObject:
   - 222: {fileID: 22278914}
   - 114: {fileID: 11424820}
   - 114: {fileID: 11493354}
+  - 225: {fileID: 22519230}
   m_Layer: 5
   m_Name: msgText
   m_TagString: Untagged
@@ -292,6 +293,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -22.7000008}
   m_SizeDelta: {x: 320, y: 0}
   m_Pivot: {x: 0, y: 1}
+--- !u!225 &22519230
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188470}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

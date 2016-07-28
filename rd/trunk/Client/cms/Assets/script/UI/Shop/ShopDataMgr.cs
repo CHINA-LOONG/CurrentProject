@@ -112,11 +112,11 @@ public class ShopDataMgr : MonoBehaviour
 
 
 	#region ----------------------RefreshShopWithFree--------------------------------
-	public	void 	RefreshShopWithFree(int shopType)
+	public	void 	RefreshShopWithFree(int shopType,bool showMask = true)
 	{
 		PB.HSShopDataSyn param = new PB.HSShopDataSyn ();
 		param.type = shopType;
-		GameApp.Instance.netManager.SendMessage (PB.code.SHOP_DATA_SYN_C.GetHashCode (), param);
+		GameApp.Instance.netManager.SendMessage (PB.code.SHOP_DATA_SYN_C.GetHashCode (), param, showMask);
 	}
 
 	void	OnRefreshShopWithFreeFinished(ProtocolMessage msg)
@@ -132,6 +132,8 @@ public class ShopDataMgr : MonoBehaviour
 
 		shopDataDic [msgRet.shopData.type] = msgRet.shopData;
 		lastRefreshTime = GameTimeMgr.Instance.GetServerTime ();
+
+		GameEventMgr.Instance.FireEvent (GameEventList.RefreshShopUi);
 	}
 	#endregion
 
@@ -204,10 +206,16 @@ public class ShopDataMgr : MonoBehaviour
 		string buyMsg = "";
 		string buyItemName = "";
 		ItemStaticData itemSt = StaticDataMgr.Instance.GetItemData (curBuyItem.itemId);
-		if (null != itemSt) {
+		if (null != itemSt) 
+		{
+			string buyNumMsg = "";
+			if(curBuyItem.count > 1)
+			{
+				buyNumMsg = string.Format("*{0}",curBuyItem.count);
+			}
 			buyMsg = string.Format (StaticDataMgr.Instance.GetTextByID ("shop_buysucctip"),
 			                       itemSt.NameAttr,
-			                       curBuyItem.count);
+			                       buyNumMsg);
 		}
 		else
 		{

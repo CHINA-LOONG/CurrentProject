@@ -29,7 +29,7 @@ public class MailUtil {
 	/**
 	 * 群发系统邮件
 	 */
-	public static void SendSysMail(MailSysCfg mailCfg, List<Integer> receiverIdList, Source source, Action action) {
+	public static void SendSysMail(MailSysCfg mailCfg, List<Integer> receiverIdList) {
 		MailInfo mailInfo = new MailInfo();
 		mailInfo.subject = mailCfg.getSubject();
 		mailInfo.content = mailCfg.getContent();
@@ -38,15 +38,15 @@ public class MailUtil {
 			mailInfo.rewardList = reward.getRewardList();
 		}
 
-		SendMail(mailInfo, receiverIdList, 0, mailCfg.getSender(), source, action);
+		SendMail(mailInfo, receiverIdList, 0, mailCfg.getSender());
 	}
 	
 	/**
 	 * 群发邮件
 	 */
-	public static void SendMail(MailInfo mailInfo, List<Integer> receiverIdList, int senderId, String senderName, Source source, Action action) {
+	public static void SendMail(MailInfo mailInfo, List<Integer> receiverIdList, int senderId, String senderName) {
 		for (Integer receiverId : receiverIdList) {
-			SendMail(mailInfo, receiverId, senderId, senderName, source, action);
+			SendMail(mailInfo, receiverId, senderId, senderName);
 		}
 	}
 
@@ -54,7 +54,7 @@ public class MailUtil {
 	 * 发送邮件
 	 * @return entityId, <0 表示失败
 	 */
-	public static int SendMail(MailInfo mailInfo, int receiverId, int senderId, String senderName, Source source, Action action) {
+	public static int SendMail(MailInfo mailInfo, int receiverId, int senderId, String senderName) {
 		MailEntity mailEntity = new MailEntity();
 		mailEntity.setReceiverId(receiverId);
 		mailEntity.setSenderId(senderId);

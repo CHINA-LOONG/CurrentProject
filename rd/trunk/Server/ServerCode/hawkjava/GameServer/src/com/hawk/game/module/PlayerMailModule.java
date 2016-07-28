@@ -211,7 +211,7 @@ public class PlayerMailModule extends PlayerModule {
 
 		// 同步邮件信息
 		player.getPlayerData().syncMailInfo();
-				
+
 		return true;
 	}
 

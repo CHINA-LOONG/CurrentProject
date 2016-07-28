@@ -32,6 +32,7 @@ import com.hawk.game.protocol.Shop.HSShopRefresh;
 import com.hawk.game.protocol.Shop.HSShopRefreshTimeSync;
 import com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync;
 import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
+import com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh;
 import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Statistics.InstanceState;
@@ -121,6 +122,12 @@ public class BuilderUtil {
 				builder.setOtherShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));
 			}
 		}
+		return builder;
+	}
+	
+	public static HSStatisticsShopRefresh.Builder genStaticsticsShopRefreshBuilder(int shopType) {
+		HSStatisticsShopRefresh.Builder builder = HSStatisticsShopRefresh.newBuilder();
+		builder.setShopType(shopType);
 		return builder;
 	}
 	

@@ -32,7 +32,7 @@ public class ItemEntity extends HawkDBEntity {
 	private String itemId = null;
 
 	@Column(name = "count", nullable = false)
-	protected short count = 0;
+	protected int count = 0;
 	
 	@Column(name = "playerId")
 	protected int playerId = 0;
@@ -79,7 +79,7 @@ public class ItemEntity extends HawkDBEntity {
 		this.itemId = itemId;
 	}
 
-	public short getCount() {
+	public int getCount() {
 		return count;
 	}
 

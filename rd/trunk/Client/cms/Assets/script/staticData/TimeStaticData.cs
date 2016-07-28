@@ -10,6 +10,7 @@ public class TimeStaticData
     public int dayOfMonth;
     public int month;
     public int year;
+    public string comments;
 
 
 

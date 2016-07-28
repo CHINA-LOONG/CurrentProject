@@ -382,7 +382,10 @@ namespace PB
       STATISTICS_EXP_LEFT_TIMES = 11001,
             
       [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_RESET_SYN", Value=11002)]
-      STATISTICS_RESET_SYN = 11002
+      STATISTICS_RESET_SYN = 11002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SHOP_REFRESH", Value=11003)]
+      STATISTICS_SHOP_REFRESH = 11003
     }
   
 }

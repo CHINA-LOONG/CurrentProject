@@ -1,5 +1,7 @@
 package com.hawk.game.module;
 
+import java.util.List;
+
 import org.hawk.annotation.ProtocolHandler;
 import org.hawk.net.protocol.HawkProtocol;
 import org.slf4j.Logger;
@@ -14,6 +16,7 @@ import com.hawk.game.protocol.Setting.HSSettingBlockRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Setting.HSSettingBlock;
 import com.hawk.game.protocol.Setting.HSSettingLanguage;
+import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
 
 public class PlayerSettingModule extends PlayerModule {
@@ -54,15 +57,28 @@ public class PlayerSettingModule extends PlayerModule {
 		int targetId = protocol.getPlayerId();
 		boolean isBlock = protocol.getIsBlock();
 
-		if (false == ServerData.getInstance().isExistPlayer(targetId)) {
-			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.PlayerError.PLAYER_NOT_EXIST_VALUE, 1));
+		if (targetId == player.getId()) {
+			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
 			return false;
 		}
 
-		if (isBlock == true) {
+		if (false == ServerData.getInstance().isExistPlayer(targetId)) {
+			sendError(hsCode, Status.PlayerError.PLAYER_NOT_EXIST_VALUE);
+			return false;
+		}
+
+		List<Integer> blockList = player.getEntity().getBlockPlayerList();
+		boolean alreadyBlock = blockList.contains(Integer.valueOf(targetId));
+		if (true == isBlock && false == alreadyBlock) {
+			if (blockList.size() >= GsConst.MAX_BLOCK_COUNT) {
+				sendError(hsCode, Status.settingError.SETTING_BLOCK_FULL_VALUE);
+				return false;
+			}
 			player.getEntity().addBlockPlayer(targetId);
-		} else {
+			player.getEntity().notifyUpdate(true);
+		} else if (false == isBlock && true == alreadyBlock){
 			player.getEntity().removeBlockPlayer(targetId);
+			player.getEntity().notifyUpdate(true);
 		}
 
 		HSSettingBlockRet.Builder response = HSSettingBlockRet.newBuilder();

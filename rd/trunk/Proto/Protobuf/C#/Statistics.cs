@@ -188,4 +188,21 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsShopRefresh")]
+  public partial class HSStatisticsShopRefresh : global::ProtoBuf.IExtensible
+  {
+    public HSStatisticsShopRefresh() {}
+    
+    private int _shopType;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"shopType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int shopType
+    {
+      get { return _shopType; }
+      set { _shopType = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

@@ -277,67 +277,74 @@ public class PlayerMonsterModule extends PlayerModule {
 		}
 
 		// 验证怪物消耗
-		List<ItemInfo> demandMonsterList = new LinkedList<>(stageCfg.getDemandMonsterList());
-		for (ItemInfo element : demandMonsterList) {
-			if (element.getItemId().equals(GsConst.MONSTER_CONSUME_SELF)) {
-				element.setItemId(monsterEntity.getCfgId());
+		List<ItemInfo> demandMonsterList = new LinkedList<>();
+		for (ItemInfo cfg : stageCfg.getDemandMonsterList()) {
+			ItemInfo copy = cfg.clone();
+			if (copy.getItemId().equals(GsConst.MONSTER_CONSUME_SELF)) {
+				copy.setItemId(monsterEntity.getCfgId());
 			}
+			demandMonsterList.add(copy);
 		}
 
-		List<MonsterEntity> consumeMonsterList = new ArrayList<>();
-		for (int id : consumeMonsterIdList) {
-			MonsterEntity consumeMonsterEntity = player.getPlayerData().getMonsterEntity(id);
-			if (consumeMonsterEntity == null) {
-				sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
-				return false;
-			}
-
-			// 验证怪物锁定
-			if (true == consumeMonsterEntity.isLocked()) {
-				sendError(hsCode, Status.monsterError.LOCK_ALREADY_VALUE);
-				return false;
-			}
-
-			// 找到最大能满足的需求
-			boolean valid = false;
-			Iterator<ItemInfo> iter = demandMonsterList.iterator();
-			while (iter.hasNext()) {
-				ItemInfo demandMonster = (ItemInfo) iter.next();
-				if (demandMonster.getItemId().equals(consumeMonsterEntity.getCfgId()) &&
-						demandMonster.getStage() <=	consumeMonsterEntity.getStage()) {
-					valid = true;
-					int count = demandMonster.getCount() - 1;
-					demandMonster.setCount(count);
-					if (count <= 0) {
-						iter.remove();
-						break;
-					}
-				}
-			}
-			if (false == valid) {
+		if (true == demandMonsterList.isEmpty()) {
+			if (false == consumeMonsterIdList.isEmpty()) {
 				sendError(hsCode, Status.monsterError.STAGE_CONSUME);
 				return false;
 			}
+		} else {
+			List<MonsterEntity> consumeMonsterList = new ArrayList<>();
+			for (int id : consumeMonsterIdList) {
+				MonsterEntity consumeMonsterEntity = player.getPlayerData().getMonsterEntity(id);
+				if (consumeMonsterEntity == null) {
+					sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
+					return false;
+				}
 
-			consumeMonsterList.add(consumeMonsterEntity);
-			consume.addMonster(id, consumeMonsterEntity.getCfgId());
+				// 验证怪物锁定
+				if (true == consumeMonsterEntity.isLocked()) {
+					sendError(hsCode, Status.monsterError.LOCK_ALREADY_VALUE);
+					return false;
+				}
+
+				// 找到最大能满足的需求
+				boolean valid = false;
+				Iterator<ItemInfo> iter = demandMonsterList.iterator();
+				while (iter.hasNext()) {
+					ItemInfo demandMonster = (ItemInfo) iter.next();
+					if (demandMonster.getItemId().equals(consumeMonsterEntity.getCfgId()) &&
+							demandMonster.getStage() <=	consumeMonsterEntity.getStage()) {
+						valid = true;
+						int count = demandMonster.getCount() - 1;
+						demandMonster.setCount(count);
+						if (count <= 0) {
+							iter.remove();
+							break;
+						}
+					}
+				}
+				if (false == valid) {
+					sendError(hsCode, Status.monsterError.STAGE_CONSUME);
+					return false;
+				}
+
+				consumeMonsterList.add(consumeMonsterEntity);
+				consume.addMonster(id, consumeMonsterEntity.getCfgId());
+			}
+
+			if (false == demandMonsterList.isEmpty()) {
+				sendError(hsCode, Status.monsterError.STAGE_CONSUME);
+				return false;
+			}
+			
+			List<Integer> battleMonsterList = player.getEntity().getBattleMonsterList();
+			for (int i = 0; i < consumeMonsterList.size(); ++i) {
+				MonsterEntity consumeMonster = consumeMonsterList.get(i);
+				battleMonsterList.remove(Integer.valueOf(consumeMonster.getId()));
+			}
+			player.getEntity().notifyUpdate(true);
 		}
 
-		if (false == demandMonsterList.isEmpty()) {
-			sendError(hsCode, Status.monsterError.STAGE_CONSUME);
-			return false;
-		}
-
-		List<Integer> battleMonsterList = player.getPlayerData().getPlayerEntity().getBattleMonsterList();
-		for (int i = 0; i < consumeMonsterList.size(); ++i) {
-			MonsterEntity consumeMonster = consumeMonsterList.get(i);
-			battleMonsterList.remove(Integer.valueOf(consumeMonster.getId()));
-		}
-
-		// 更新
 		consume.consumeTakeAffectAndPush(player, Action.STAGE_UP, HS.code.MONSTER_STAGE_UP_C_VALUE);
-
-//     player.getPlayerData().getPlayerEntity().setBattleMonsterList(battleMonsterList);
 
 		monsterEntity.setStage((byte)newStage);
 		monsterEntity.notifyUpdate(true);

@@ -164,7 +164,7 @@ public class PetDetailRightStage : PetDetailRightBase{
             if (go==monsterFields[i].button.gameObject)
             {
                 itemInfo = unitStageData.demandMonsterList[i];
-                selectMonsterPanel.init(unitStageData.demandMonsterList[i], monsterSelect[i], m_unit/*.pbUnit.guid*/);
+                selectMonsterPanel.init(unitStageData.demandMonsterList[i], monsterSelect, monsterSelect[i], m_unit/*.pbUnit.guid*/);
                 break;
             }
         }

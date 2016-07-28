@@ -246,7 +246,7 @@ public class EquipBuildPanel : EquipPanelBase
 
         if (!UIUtil.CheckIsEnoughPlayerLevel(nextForge.playerlevelDemand))
         {
-            text_Tips.text = "<color="+ColorConst.colorTo_Hstr(ColorConst.text_color_nReq)+">"+StaticDataMgr.Instance.GetTextByID("equip_forge_levelTips")+"</color>";
+            text_Tips.text = "<color=" + ColorConst.colorTo_Hstr(ColorConst.text_color_nReq) + ">" + StaticDataMgr.Instance.GetTextByID("equip_level_limits") + "</color>";
         }
         if (UIUtil.CheckIsEnoughMaterial(curDemand) && UIUtil.CheckIsEnoughPlayerLevel(nextForge.playerlevelDemand))
         {
@@ -278,6 +278,7 @@ public class EquipBuildPanel : EquipPanelBase
             itemAttrPool.Remove(item);
         }
         itemAttrs.Add(item);
+        item.transform.SetAsLastSibling();
         return item;
     }
     public void RemoveElement(EquipBuildAttr item)

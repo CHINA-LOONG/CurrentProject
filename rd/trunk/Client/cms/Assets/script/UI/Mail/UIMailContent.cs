@@ -45,7 +45,7 @@ public class UIMailContent : MonoBehaviour
         this.info = info;
         textTitle.text = info.subject;
         textPlayer.text = info.senderName;
-        textSendTime.text = GameTimeMgr.GetTime(info.sendTimeStamp).ToString("yyyy-MM-dd");
+        textSendTime.text = GameTimeMgr.GetTime(info.sendTimeStamp).ToString("MM-dd-yyyy");
         textContent.text = info.content;
 
         SetReward(info.reward);
@@ -122,6 +122,7 @@ public class UIMailContent : MonoBehaviour
         info.state = (int)PB.mailState.RECEIVE;
         SetReceiveState();
         actionReceiveMail(info);
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_002"), (int)PB.ImType.PROMPT);
     }
 
     void SetReceiveState()

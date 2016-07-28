@@ -485,7 +485,7 @@ public class Player extends HawkAppObj {
 	 * @param action
 	 */
 	public int increaseFreeGold(int gold, Action action) {
-		if (gold < 0) {
+		if (gold <= 0) {
 			throw new RuntimeException("increaseFreeGold");
 		}
 
@@ -508,7 +508,7 @@ public class Player extends HawkAppObj {
 	 * @param action
 	 */
 	public int increaseBuyGold(int gold, Action action) {
-		if (gold < 0) {
+		if (gold <= 0) {
 			throw new RuntimeException("increaseBuyGold");
 		}
 
@@ -531,7 +531,7 @@ public class Player extends HawkAppObj {
 	 * @param action
 	 */
 	public void consumeGold(int gold, Action action) {
-		if (gold < 0 || gold > getGold()) {
+		if (gold <= 0 || gold > getGold()) {
 			throw new RuntimeException("consumeGold");
 		}
 
@@ -1126,7 +1126,7 @@ public class Player extends HawkAppObj {
 	 * 发送邮件
 	 */
 	public boolean SendMail(MailInfo mailInfo, int receiverId, Source source, Action action) {
-		int mailId = MailUtil.SendMail(mailInfo, receiverId, getId(), getName(), source, action);
+		int mailId = MailUtil.SendMail(mailInfo, receiverId, getId(), getName());
 		if (mailId > 0) {
 			BehaviorLogger.log4Service(this, source, action, 
 					Params.valueOf("id", mailId));
@@ -1221,7 +1221,6 @@ public class Player extends HawkAppObj {
 		}
 
 		List<Integer> refreshList = new ArrayList<Integer>();
-
 		for (int i = GsConst.RefreshType.PERS_REFRESH_BEGIN + 1; i < GsConst.RefreshType.PERS_REFRESH_END; ++i) {
 			TimeCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, i);
 			if (null != timeCfg) {

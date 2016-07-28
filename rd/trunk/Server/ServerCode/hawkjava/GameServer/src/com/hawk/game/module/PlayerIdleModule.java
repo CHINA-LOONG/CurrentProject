@@ -58,29 +58,12 @@ public class PlayerIdleModule extends PlayerModule {
 	 */
 	@Override
 	protected boolean onPlayerAssemble() {
-		
 		// 组装穿戴信息
 		player.getPlayerData().initMonsterDressedEquip();
-		
 		// 设置组装状态
 		player.setAssembleFinish(true);
 		// 添加在线信息
 		ServerData.getInstance().addOnlinePlayerId(player.getId());
-		
-		// TEST------------------------------------------------------------------------------------------
-		Map<Object, MailSysCfg> mailSysCfgMap = HawkConfigManager.getInstance().getConfigMap(MailSysCfg.class);
-		if (mailSysCfgMap != null) {
-			for (Entry<Object, MailSysCfg> entry : mailSysCfgMap.entrySet()) {
-				MailSysCfg mailSysCfg = entry.getValue();
-				List<Integer> receiverList = new ArrayList<>();
-				int testerId = ServerData.getInstance().getPlayerIdByPuid("mail_test");
-				if (testerId != 0 && true == ServerData.getInstance().isPlayerOnline(testerId)) {
-					receiverList.add(testerId);
-				}
-				MailUtil.SendSysMail(mailSysCfg, receiverList, Source.SYS_OPERATION, Action.MAIL_REWARD);
-			}
-		}
-		// TEST END-------------------------------------------------------------------------------------
 		return true;
 	}
 

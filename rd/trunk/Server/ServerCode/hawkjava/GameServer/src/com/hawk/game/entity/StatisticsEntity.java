@@ -195,13 +195,13 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "rechargeRecord", nullable = false)
 	private String rechargeRecordJson = "";
 	
-	// 刷新时间
+	// 月卡结束时间
 	@Column(name = "monthCardEndTime")
 	private Calendar monthCardEndTime = null;
 	
 	// 刷新时间
 	@Column(name = "refreshTime")
-	private String refreshTime = null;
+	private String refreshTimeJson = null;
 
 	// 签到次数
 	@Column(name = "signInCount", nullable = false)
@@ -819,8 +819,8 @@ public class StatisticsEntity  extends HawkDBEntity {
 	
 	@Override
 	public boolean decode() {
-		if (refreshTime != null && false == "".equals(refreshTime) && false == "null".equals(refreshTime)) {
-			refreshStringMap = HawkJsonUtil.getJsonInstance().fromJson(refreshTime, new TypeToken<HashMap<Integer, String>>() {}.getType());
+		if (refreshTimeJson != null && false == "".equals(refreshTimeJson) && false == "null".equals(refreshTimeJson)) {
+			refreshStringMap = HawkJsonUtil.getJsonInstance().fromJson(refreshTimeJson, new TypeToken<HashMap<Integer, String>>() {}.getType());
 			for (Map.Entry<Integer, String> entry : refreshStringMap.entrySet()) {				
 				try {
 					Date date = dateFormat.parse(entry.getValue());
@@ -909,7 +909,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 		for (Map.Entry<Integer, Calendar> entry : refreshTimeMap.entrySet()) {
 			refreshStringMap.put(entry.getKey(), dateFormat.format(entry.getValue().getTime()));
 		}
-		refreshTime = HawkJsonUtil.getJsonInstance().toJson(refreshStringMap);	
+		refreshTimeJson = HawkJsonUtil.getJsonInstance().toJson(refreshStringMap);	
 		
 		return true;
 	}

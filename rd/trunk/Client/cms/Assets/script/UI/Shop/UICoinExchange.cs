@@ -122,7 +122,7 @@ public class UICoinExchange : UIBase
 		}
 
 		PB.HSShopGold2CoinRet msgret = msg.GetProtocolBody<PB.HSShopGold2CoinRet> ();
-		int getJinbi = msgret.changeCount * msgret.multiple;
+		int getJinbi = msgret.totalReward;
 		StatisticsDataMgr.Instance.gold2coinExchargeTimes = msgret.changeCount;
 		string immsg = null;
 		if(msgret.multiple > 1)
@@ -131,7 +131,7 @@ public class UICoinExchange : UIBase
 		}
 		else
 		{
-			immsg = string.Format(StaticDataMgr.Instance.GetTextByID("succbuy"),getJinbi);
+			immsg = string.Format(StaticDataMgr.Instance.GetTextByID("shop_succbuy"),getJinbi);
 		}
 	
 		UIIm.Instance.ShowSystemHints (immsg, (int) PB.ImType.PROMPT);

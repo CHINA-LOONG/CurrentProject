@@ -88,7 +88,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hello,Wo
+  m_Text: 
 --- !u!222 &22279086
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -124,7 +124,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 100}
+  m_SizeDelta: {x: 72, y: 72}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22431868
 RectTransform:
@@ -140,7 +140,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 12}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 72, y: 72}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22446804
@@ -157,7 +157,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -4.16040421e-05, y: -24}
+  m_AnchoredPosition: {x: 0, y: -39.5}
   m_SizeDelta: {x: 78.5999985, y: 22.7000008}
   m_Pivot: {x: .5, y: 1}
 --- !u!1001 &100100000

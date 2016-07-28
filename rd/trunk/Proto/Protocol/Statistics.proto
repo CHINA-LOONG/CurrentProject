@@ -55,3 +55,8 @@ message HSStatisticsResetSync
 	required int32 goldChangeTimes = 1;
 }
 
+message HSStatisticsShopRefresh
+{
+	// 商店类型
+	required int32 shopType = 1;
+}

@@ -633,7 +633,6 @@ GameObject:
   - 224: {fileID: 22465732}
   - 222: {fileID: 22293198}
   - 114: {fileID: 11404408}
-  - 114: {fileID: 11468236}
   m_Layer: 5
   m_Name: MailTitle
   m_TagString: Untagged
@@ -1140,15 +1139,15 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
+    m_BestFit: 1
+    m_MinSize: 16
+    m_MaxSize: 30
+    m_Alignment: 1
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Diamond limit \u5C45\u4E2D30px"
+  m_Text: "Diamond limit \u5C45\u4E2D30pxdfsddfgdfgdfgg"
 --- !u!114 &11404628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2086,19 +2085,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Collect All
---- !u!114 &11468236
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1741964061, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 0
 --- !u!114 &11469508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3837,7 +3823,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 11}
-  m_SizeDelta: {x: 0, y: 40}
+  m_SizeDelta: {x: 376.190002, y: 40}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22465920
 RectTransform:

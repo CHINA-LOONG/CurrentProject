@@ -51,6 +51,7 @@ public class UIBattle : UIBase
 	Animator animator;
 
     private MsgBox.PromptMsg reviveWnd;
+    private int reviveIndex;
 
 	static UIBattle instance = null;
 	public static UIBattle Instance
@@ -82,6 +83,10 @@ public class UIBattle : UIBase
             );
 
         m_BattleSpeed = (int)(PlayerPrefs.GetFloat("battleSpeed"));
+        if (m_BattleSpeed == 0)
+        {
+            m_BattleSpeed = 1;
+        }
         GameSpeedService.Instance.SetBattleSpeed(m_BattleSpeed);
 		UpdateButton ();
 
@@ -157,6 +162,7 @@ public class UIBattle : UIBase
             false,
             true
             );
+        reviveIndex = reviveWnd.transform.GetSiblingIndex();
         //this has text mesh render
         //Vector3 localPos = reviveWnd.transform.localPosition;
         //reviveWnd.transform.localPosition = new Vector3(localPos.x, localPos.y, 10.0f);
@@ -312,7 +318,7 @@ public class UIBattle : UIBase
         {
             reviveWnd.transform.SetAsLastSibling();
             int index = reviveWnd.transform.GetSiblingIndex();
-            reviveWnd.gameObject.SetActive(index == 0);
+            reviveWnd.gameObject.SetActive(index == reviveIndex);
         }
     }
 

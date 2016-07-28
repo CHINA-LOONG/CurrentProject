@@ -152,7 +152,7 @@ enum code
 	SHOP_DATA_SYN_S             = 8008;
 	SHOP_GOLD2COIN_C            = 8009;
 	SHOP_GOLD2COIN_S            = 8010;
-	SHOP_REFRESH_TIMES			= 8011;
+	SHOP_REFRESH_TIMES          = 8011;
 	
 	// 公会
 	ALLIANCE_CREATE_C           = 9001;
@@ -167,5 +167,7 @@ enum code
 	// 经验药水剩余次数
 	STATISTICS_EXP_LEFT_TIMES   = 11001;
 	// 零点重置
-	STATISTICS_RESET_SYN	    = 11002;
+	STATISTICS_RESET_SYN        = 11002;
+	// 商店刷新
+	STATISTICS_SHOP_REFRESH     = 11003;
 }

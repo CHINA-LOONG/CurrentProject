@@ -75,7 +75,7 @@ public class PlayerShopModule extends PlayerModule{
 		}
 		
 		ConsumeItems consume = new ConsumeItems();
-		int consumeMutiple = (int)Math.pow(changeTimes / goldChangeCfg.getConsumeTimeDoubel(), 2);
+		int consumeMutiple = (int)Math.pow(2, changeTimes / goldChangeCfg.getConsumeTimeDoubel());
 		int goldCost = (goldChangeCfg.getConsume() + changeTimes * goldChangeCfg.getConsumeTimeAdd()) * consumeMutiple;
 		consume.addGold(goldCost);
 		
@@ -96,8 +96,10 @@ public class PlayerShopModule extends PlayerModule{
 			multipleValue = 2;	
 		}
 		
-		float coinAward = (goldChangeCfg.getAward() + changeTimes * goldChangeCfg.getAwardTimeAdd()) * (1 + player.getLevel() * goldChangeCfg.getLevelAdd()) * multipleValue;
-		award.addCoin((int)coinAward);
+		int coinAward = (int) ((goldChangeCfg.getAward() + changeTimes * goldChangeCfg.getAwardTimeAdd()) * (1 + player.getLevel() * goldChangeCfg.getLevelAdd()));
+		coinAward *= multipleValue;
+		
+		award.addCoin(coinAward);
 		
 		consume.consumeTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.SHOP_GOLD2COIN_C_VALUE);
 		award.rewardTakeAffectAndPush(player, Action.SHOP_GOLD2COIN, HS.code.SHOP_GOLD2COIN_C_VALUE);
@@ -109,6 +111,7 @@ public class PlayerShopModule extends PlayerModule{
 		HSShopGold2CoinRet.Builder response = HSShopGold2CoinRet.newBuilder();
 		response.setChangeCount(player.getPlayerData().getStatisticsEntity().getCoinOrderCountDaily());
 		response.setMultiple(multipleValue);
+		response.setTotalReward(coinAward);
 		sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_GOLD2COIN_S_VALUE, response));
 		return true;
 	}
@@ -242,12 +245,14 @@ public class PlayerShopModule extends PlayerModule{
 			refreshTypeList.contains(GsConst.RefreshType.SHOP_REFRESH_TIME_THIRD ))
 		{
 			ShopUtil.refreshShopData(Const.shopType.NORMALSHOP_VALUE, player);
+			player.getPlayerData().syncStaticticsShopRefreshInfo(Const.shopType.NORMALSHOP_VALUE);
 		}
 		else if (refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_FIRST) || 
 			     refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_SECOND)||
 			     refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_THIRD ))
 		{
 			ShopUtil.refreshShopData(Const.shopType.ALLIANCESHOP_VALUE, player);
+			player.getPlayerData().syncStaticticsShopRefreshInfo(Const.shopType.ALLIANCESHOP_VALUE);
 		}
 		
 		return true;

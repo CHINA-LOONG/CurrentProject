@@ -144,11 +144,11 @@ namespace UnityClientConsole
             {
                 Console.WriteLine("同步完成");
 
-//                 HSSettingBlock settingBlock = new HSSettingBlock();
-//                 settingBlock.playerId = 795; //im_1
-//                 settingBlock.isBlock = false;
-//                 NetManager.GetInstance().SendProtocol(code.SETTING_BLOCK_C.GetHashCode(), settingBlock);
-//                 Console.WriteLine("屏蔽");
+                HSSettingBlock settingBlock = new HSSettingBlock();
+                settingBlock.playerId = 731; //xiaozhen1
+                settingBlock.isBlock = true;
+                NetManager.GetInstance().SendProtocol(code.SETTING_BLOCK_C.GetHashCode(), settingBlock);
+                Console.WriteLine("屏蔽");
 
                 //HSSettingLanguage settingLang = new HSSettingLanguage();
                 //settingLang.language = "zh-CN";
@@ -215,10 +215,10 @@ namespace UnityClientConsole
 
                 //Console.WriteLine("聊天");
 
-                HSImPlayerGet imPlayer = new HSImPlayerGet();
-                imPlayer.playerId = 725;
-                NetManager.GetInstance().SendProtocol(code.IM_PLAYER_GET_C.GetHashCode(), imPlayer);
-                Console.WriteLine("获取im玩家信息");
+//                 HSImPlayerGet imPlayer = new HSImPlayerGet();
+//                 imPlayer.playerId = 725;
+//                 NetManager.GetInstance().SendProtocol(code.IM_PLAYER_GET_C.GetHashCode(), imPlayer);
+//                 Console.WriteLine("获取im玩家信息");
 
 //                 GMGenTestAccount genAccount = new GMGenTestAccount();
 //                 NetManager.GetInstance().SendProtocol(gm.GEN_TEST_ACCOUNT.GetHashCode(), genAccount);
@@ -391,6 +391,12 @@ namespace UnityClientConsole
             {
                 HSImPlayerGetRet imPlayer = protocol.GetProtocolBody<HSImPlayerGetRet>();
                 Console.WriteLine("im玩家信息");
+            }
+            // SETTING--------------------------------------------------------------------------------------------------------
+            else if (protocol.checkType(code.SETTING_BLOCK_S.GetHashCode()))
+            {
+                HSSettingBlockRet block = protocol.GetProtocolBody<HSSettingBlockRet>();
+                Console.WriteLine("屏蔽玩家");
             }
         }
 

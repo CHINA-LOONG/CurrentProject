@@ -170,7 +170,7 @@ public class UIMail : UIBase,TabButtonDelegate
                 OnMailChanged();
                 readMail = null;
             }
-            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform,StaticDataMgr.Instance.GetTextByID("mail_record_001"));
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_001"), (int)PB.ImType.PROMPT);
             return;
         }
 

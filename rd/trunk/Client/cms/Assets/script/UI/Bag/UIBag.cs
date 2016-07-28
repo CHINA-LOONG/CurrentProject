@@ -297,7 +297,7 @@ public class UIBag : UIBase,TabButtonDelegate
 		{
 			succMsg = "bag_record_001";
 		}
-		UIIm.Instance.ShowSystemHints (succMsg, (int)PB.ImType.PROMPT);
+		UIIm.Instance.ShowSystemHints (StaticDataMgr.Instance.GetTextByID(succMsg), (int)PB.ImType.PROMPT);
 		RefreshBag ();
 	}
 }

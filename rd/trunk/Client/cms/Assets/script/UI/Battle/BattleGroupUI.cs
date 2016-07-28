@@ -73,7 +73,7 @@ public class BattleGroupUI : MonoBehaviour
             return;
         }
 
-        Logger.LogWarningFormat("can not find unit {0} in BattleGroupUI:ChangeBuffState", args.targetID);
+        //Logger.LogWarningFormat("can not find unit {0} in BattleGroupUI:ChangeBuffState", args.targetID);
     }
     //---------------------------------------------------------------------------------------------
     public void ShowUnit(BattleObject unit, int slot)

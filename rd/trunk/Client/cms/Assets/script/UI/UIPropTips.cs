@@ -22,7 +22,7 @@ public class UIPropTips : UIBase {
     void Start() 
     {
         EventTriggerListener.Get(mask).onClick = CloseOnClick;
-        Requirement.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("pet_detail_stage_demand_level") + ":";
+        Requirement.GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("item_demandLevel");
         typeTips.text = StaticDataMgr.Instance.GetTextByID("item_type");
 
     }

@@ -188,7 +188,6 @@ id,group,type,comments,name,desc,icon,level,cycle,timeBeginId,timeEndId,goalType
 8015,24,2,完成15个每日,biaoti8015,mubiao8015,task_rmb_icon,22,2,-1,-1,questtype-x,2,15,80015,0,0,,
 9001,1000,2,午饭,tili1,tilitips1,task_rmb_icon,1,2,301,302,free,,1,tili1,0,0,,
 9002,1000,2,晚饭,tili2,tilitips2,task_rmb_icon,1,2,303,304,free,,1,tili2,0,0,,
-9003,1000,2,宵夜,tili3,tilitips3,task_rmb_icon,1,2,305,306,free,,1,tili3,0,0,,
 101,51,3,等级提升至5,10001_name,10001_miaoshu,task_rmb_icon,1,1,-1,-1,level,,5,10001_reward,0,0,,
 102,51,3,等级提升至10,10002_name,10002_miaoshu,task_rmb_icon,5,1,-1,-1,level,,10,10002_reward,0,0,,
 103,51,3,等级提升至15,10003_name,10003_miaoshu,task_rmb_icon,10,1,-1,-1,level,,15,10003_reward,0,0,,

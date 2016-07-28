@@ -140,17 +140,18 @@ public class UIScore : UIBase
                 if (item.type == (int)PB.itemType.MONSTER)
                 {
                     UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(item.itemId);
+                    PB.HSMonster monster = item.monster;
                     if (unitRowData != null)
                     {
                         //add monster icon
                         MonsterIcon icon = MonsterIcon.CreateIcon();
                         icon.transform.SetParent(mItemGainList.transform, false);
-                        icon.SetMonsterStaticId(item.itemId);
-                        icon.SetLevel(item.level);
-                        icon.SetStage(item.stage);
-                        if (unitRowData.grade >= 0)
+                        icon.SetMonsterStaticId(monster.cfgId);
+                        icon.SetLevel(monster.level);
+                        icon.SetStage(monster.stage);
+                        if (unitRowData.grade >= 3)
                         {
-                            AddGainMonster(item.itemId, item.level, item.stage);
+                            AddGainMonster(monster.cfgId, monster.level, monster.stage);
                             return;
                         }
                     }

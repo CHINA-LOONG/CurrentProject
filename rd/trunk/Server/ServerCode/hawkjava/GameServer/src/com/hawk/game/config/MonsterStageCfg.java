@@ -148,10 +148,10 @@ public class MonsterStageCfg extends HawkConfigBase {
 	}
 
 	public List<ItemInfo> getDemandItemList() {
-		return demandItemList;
+		return Collections.unmodifiableList(demandItemList);
 	}
 
 	public List<ItemInfo> getDemandMonsterList() {
-		return demandMonsterList;
+		return Collections.unmodifiableList(demandMonsterList);
 	}
 }

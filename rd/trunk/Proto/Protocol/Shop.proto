@@ -73,6 +73,7 @@ message HSShopGold2CoinRet
 {
 	required int32 changeCount = 1;
 	required int32 multiple = 2;
+	required int32 totalReward = 3;
 }
 
 message HSShopRefreshTimeSync

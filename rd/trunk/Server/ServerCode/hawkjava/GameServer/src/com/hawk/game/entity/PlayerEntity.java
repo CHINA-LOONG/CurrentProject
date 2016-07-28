@@ -201,7 +201,7 @@ public class PlayerEntity extends HawkDBEntity {
 	public int getFreeGold() {
 		return goldFree;
 	}
-	
+
 	public void setBuyGold(int gold) {
 		this.goldBuy = gold;
 	}
@@ -209,7 +209,7 @@ public class PlayerEntity extends HawkDBEntity {
 	public void setFreeGold(int gold) {
 		this.goldFree = gold;
 	}
-	
+
 	public List<Integer> getBattleMonsterList() {
 		return battleMonsterList;
 	}

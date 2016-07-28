@@ -1952,6 +1952,87 @@ public final class Status {
     // @@protoc_insertion_point(enum_scope:imError)
   }
 
+  /**
+   * Protobuf enum {@code settingError}
+   */
+  public enum settingError
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>SETTING_BLOCK_FULL = 1114113;</code>
+     *
+     * <pre>
+     * 屏蔽列表已满
+     * </pre>
+     */
+    SETTING_BLOCK_FULL(0, 1114113),
+    ;
+
+    /**
+     * <code>SETTING_BLOCK_FULL = 1114113;</code>
+     *
+     * <pre>
+     * 屏蔽列表已满
+     * </pre>
+     */
+    public static final int SETTING_BLOCK_FULL_VALUE = 1114113;
+
+
+    public final int getNumber() { return value; }
+
+    public static settingError valueOf(int value) {
+      switch (value) {
+        case 1114113: return SETTING_BLOCK_FULL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<settingError>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<settingError>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<settingError>() {
+            public settingError findValueByNumber(int number) {
+              return settingError.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Status.getDescriptor().getEnumTypes().get(11);
+    }
+
+    private static final settingError[] VALUES = values();
+
+    public static settingError valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private settingError(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:settingError)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2013,8 +2094,9 @@ public final class Status {
       "pError\022\032\n\024SHOP_REFRESH_TIMEOUT\020\201\200$\022\033\n\025SH",
       "OP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026SHOP_REFRESH_" +
       "MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COIN_MAX_COUN" +
-      "T\020\204\200$*\037\n\007imError\022\024\n\016IM_CHAT_LENGTH\020\201\200@B\030" +
-      "\n\026com.hawk.game.protocol"
+      "T\020\204\200$*\037\n\007imError\022\024\n\016IM_CHAT_LENGTH\020\201\200@*(" +
+      "\n\014settingError\022\030\n\022SETTING_BLOCK_FULL\020\201\200D" +
+      "B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
