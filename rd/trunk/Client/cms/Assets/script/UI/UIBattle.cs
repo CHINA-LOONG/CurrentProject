@@ -157,7 +157,9 @@ public class UIBattle : UIBase
             false,
             true
             );
-
+        //this has text mesh render
+        //Vector3 localPos = reviveWnd.transform.localPosition;
+        //reviveWnd.transform.localPosition = new Vector3(localPos.x, localPos.y, 10.0f);
         if (m_MirrorDray != null)
         {
             m_MirrorDray.OnPointerUp(null);
@@ -304,6 +306,13 @@ public class UIBattle : UIBase
 			dazhaoTip.SetTipInfo((int)PhyDazhaoController.Instance.DazhaoLeftTime,
 			                     PhyDazhaoController.Instance.DazhaoUseCount,
 			                     PhyDazhaoController.Instance.DazhaoAllCount);
+        }
+
+        if (reviveWnd != null)
+        {
+            reviveWnd.transform.SetAsLastSibling();
+            int index = reviveWnd.transform.GetSiblingIndex();
+            reviveWnd.gameObject.SetActive(index == 0);
         }
     }
 

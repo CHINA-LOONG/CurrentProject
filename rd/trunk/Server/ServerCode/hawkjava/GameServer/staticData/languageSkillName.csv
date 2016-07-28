@@ -134,7 +134,7 @@ magicdebuffMetalDotStrongName,耀斑（强）,Flare (Strong)
 magicdebuffEarthDotSlightName,痛楚（弱）,Anguish (Weak)
 magicdebuffEarthDotMediumName,痛楚（中）,Anguish (Normal)
 magicdebuffEarthDotStrongName,痛楚（强）,Anguish (Strong)
-ultXiaochou3Name,惊喜箱子,Jack-In-The-Box
+ultXiaochou3Name,有勇无谋 ,Foolhardy
 ultXiaochou4Name,有勇无谋,Foolhardy
 ultKairuisi4Name,火焰风暴,Flamestorm
 ultHetong2Name,飞叶快刀,Razorleaves
@@ -372,14 +372,14 @@ ultWushi4Tips,给己方全体目标提升80%力量与智力，持续3回合,Incr
 ultWushi3Tips,在3秒内进行操作，每次操作给单体目标造成{1}%法攻的水属性法术伤害,"Carry out actions for 3 seconds, each action dealing ({1}% of magic ATK) water type magic damage to a single target"
 ultXiyiren4Tips,在3秒内进行操作，每次操作给单体目标造成{1}%物攻的火属性物理伤害,"Carry out actions for 3 seconds, each action dealing ({1}% of physical ATK) fire type physical damage to a single target"
 ultXiyiren2Tips,嘲讽敌方全体，持续2回合,Provoke all enemy targets for 2 turns
-ultMantuoluo2Tips,给群体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for all allies
+ultMantuoluo2Tips,给群体目标恢复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for all allies
 ultHetong3Tips,给己方全体目标提升80%防御力，持续3回合,Increases all allies' DEF by 80% for 3 turns
 ultLonggongtongzi3Tips,给群体目标恢复{0}%法攻的生命值，对水属性怪物恢复效果更明显,"Recovers ({0}% of magic ATK) HP for all allies, with increased effects on water type monsters"
 ultLangren5Tips,给单体目标造成1~3次{0}%物攻的暗属性伤害；若目标拥有dot效果则必攻击3次,"Deals ({0}% of physical ATK) dark type magic damage 1 to 3 times to a single target; if the target is affected by a DOT effect, then damage will be dealt 3 times"
 ultLangren3Tips,嘲讽敌方全体，持续2回合,Provoke all enemy targets for 2 turns
 ultKairuisi5Tips,使敌方群体目标力量降低80%，持续3回合,Reduces STR of all enemies by 80% for 3 turns
 ultNvyao5Tips,给单体目标造成{0}%法攻的暗属性法术伤害，给所有属性均会造成克制效果,Deals ({0}% of magic ATK) dark type magic damage to a single target; deals affinity damage no matter what element the target is
-ultHapi1Tips,给群体目标回复{0}%法攻的生命值并附加恢复术效果,"Recovers ({0}% of magic ATK) HP for all allies, and buffs all healing effects "
+ultHapi1Tips,给群体目标恢复{0}%法攻的生命值并附加恢复术效果,"Recovers ({0}% of magic ATK) HP for all allies, and buffs all healing effects "
 ultPiying5Tips,给群体目标造成1~3次{0}%法攻的暗属性法术伤害,Deals ({0}% of magic ATK) dark type magic damage 1 to 3 times to all enemies
 ultShuigui3Tips,给己方全体目标提升80%智力同时给敌方全体目标降低80%智力，持续3回合,"Increases all allies' INT by 80%, and reduces all enemies' INT by 80% for 3 turns"
 psvXiaochou3Tips,死亡时，80%给群体目标造成150%法攻水属性法术伤害或20%给群体目标恢复50%法攻生命值[被动],"Upon dying, there is an 80% chance of dealing (150% of magic ATK) water type magic damage or a 20% chance of recovering (50% of magic ATK) HP to all enemies[Passive]"
@@ -401,7 +401,7 @@ psvLangren5Tips,使用物理技能时，50%恢复自身50%法攻的生命值[被
 psvLangren3Tips,受到伤害时，80%嘲讽攻击者，持续2回合[被动],Gives an 80% chance of casting Provoke on your attacker for 2 turns whenever you take damage [Passive]
 psvKairuisi5Tips,死亡时，降低敌方群体80%防御力，持续3回合[被动],"Upon dying, reduce all enemies' DEF by 80% for 3 turns [Passive]"
 psvNvyao5Tips,使用法术技能时，10%降低被攻击者80%防御力，持续3回合[被动],"Whenever you cast a magic ability, there is a 10% chance of reducing your target's DEF by 80% for 3 turns [Passive]"
-psvHapi1Tips,死亡时，己方全体回复60%法攻的生命值[被动],"Upon dying, recover (60% of magic ATK) HP for all allies [Passive]"
+psvHapi1Tips,死亡时，己方全体恢复60%法攻的生命值[被动],"Upon dying, recover (60% of magic ATK) HP for all allies [Passive]"
 psvPiying5Tips,使用法术技能时，20%给被攻击者附加痛楚效果[被动],"Whenever you cast a magic ability, there is a 20% chance of dealing your target an additional Anguish effect [Passive]"
 psvShuigui3Tips,使用buff技能时，12.5%给被攻击者附加眩晕效果[被动],"Whenever you cast a buff ability, there is a 12.5% chance of stunning your target [Passive]"
 bossdajie11Xiaochou41Tips,给单体目标造成100%法攻的火属性法术伤害,Deals (100% of magic ATK) fire type magic damage to a single target
@@ -598,14 +598,14 @@ ultWushi4Description,给己方全体目标提升80%力量与智力，持续3回�
 ultWushi3Description,在3秒内进行操作，每次操作给单体目标造成水属性法术伤害,"Carry out actions for 3 seconds, each action dealing water type magic damage to a single target"
 ultXiyiren4Description,在3秒内进行操作，每次操作给单体目标造成火属性物理伤害,"Carry out actions for 3 seconds, each action dealing fire type physical damage to a single target"
 ultXiyiren2Description,嘲讽敌方全体，持续2回合,Provoke all enemy targets for 2 turns
-ultMantuoluo2Description,给群体目标回复生命值,Recovers HP for all allies
+ultMantuoluo2Description,给群体目标恢复生命值,Recovers HP for all allies
 ultHetong3Description,给己方全体目标提升80%防御力，持续3回合,Increases all allies' DEF by 80% for 3 turns
 ultLonggongtongzi3Description,给群体目标恢复生命值，对水属性怪物恢复效果更明显,"Recovers HP for all allies, with increased effects on water type monsters"
 ultLangren5Description,给单体目标造成1~3次暗属性伤害；若目标拥有dot效果则必攻击3次,"Deals dark type magic damage 1 to 3 times to a single target; if the target is affected by a DOT effect, then damage will be dealt 3 times"
 ultLangren3Description,嘲讽敌方全体，持续2回合,Provoke all enemy targets for 2 turns
 ultKairuisi5Description,使敌方群体目标力量降低80%，持续3回合,Reduces STR of all enemies by 80% for 3 turns
 ultNvyao5Description,给单体目标造成暗属性法术伤害，给所有属性均会造成克制效果,Deals dark type magic damage to a single target; deals affinity damage no matter what element the target is
-ultHapi1Description,给群体目标回复生命值并附加恢复术效果,"Recovers HP for all allies, and buffs all healing effects "
+ultHapi1Description,给群体目标恢复生命值并附加恢复术效果,"Recovers HP for all allies, and buffs all healing effects "
 ultPiying5Description,给群体目标造成1~3次暗属性法术伤害,Deals dark type magic damage 1 to 3 times to all enemies
 ultShuigui3Description,给己方全体目标提升80%智力同时给敌方全体目标降低80%智力，持续3回合,"Increases all allies' INT by 80%, and reduces all enemies' INT by 80% for 3 turns"
 psvXiaochou3Description,死亡时，80%给群体目标造成150%法攻水属性法术伤害或20%给群体目标恢复50%法攻生命值[被动],"Upon dying, there is an 80% chance of dealing (150% of magic ATK) water type magic damage or a 20% chance of recovering (50% of magic ATK) HP to all enemies[Passive]"
@@ -627,7 +627,7 @@ psvLonggongtongzi3Description,使用物理技能时，50%恢复自身50%法攻�
 psvLangren5Description,受到伤害时，80%嘲讽攻击者，持续2回合[被动],Gives an 80% chance of casting Provoke on your attacker for 2 turns whenever you take damage [Passive]
 psvKairuisi5Description,死亡时，降低敌方群体80%防御力，持续3回合[被动],"Upon dying, reduce all enemies' DEF by 80% for 3 turns [Passive]"
 psvNvyao5Description,使用法术技能时，10%降低被攻击者80%防御力，持续3回合[被动],"Whenever you cast a magic ability, there is a 10% chance of reducing your target's DEF by 80% for 3 turns [Passive]"
-psvHapi1Description,死亡时，己方全体回复60%法攻的生命值[被动],"Upon dying, recover (60% of magic ATK) HP for all allies [Passive]"
+psvHapi1Description,死亡时，己方全体恢复60%法攻的生命值[被动],"Upon dying, recover (60% of magic ATK) HP for all allies [Passive]"
 psvPiying5Description,使用法术技能时，20%给被攻击者附加痛楚效果[被动],"Whenever you cast a magic ability, there is a 20% chance of dealing your target an additional Anguish effect [Passive]"
 psvShuigui3Description,使用buff技能时，12.5%给被攻击者附加眩晕效果[被动],"Whenever you cast a buff ability, there is a 12.5% chance of stunning your target [Passive]"
 attackMetalCutSlightCurlvl,{0}%物攻伤害,{0}% of physical ATK damage
@@ -1000,28 +1000,28 @@ bosszhifuletuJiuweihu42Name,炎爆,Flame Burst
 bosszhifuletuJiuweihu43Name,回光返照,Cleric Healing
 bossmidasigongHuangjinzhiling11Name,危险赌注,Dangerous Wager
 bossmidasigongHuangjinzhiling13Name,乾坤一掷,All Or Nothing
-ultWendige3Tips,在3秒内进行操作，每次操作给单体目标造成{1}%物攻的水属性物理伤害概率附加溺水效果,"Carry out actions for 3 seconds, each action dealing ({1}% of physical ATK) water type physical damage to a single target, with a chance of Drowning effect"
+ultWendige3Tips,在3秒内进行操作，每次操作给单体目标造成{1}%物攻的水属性物理伤害10%附加溺水效果,"Carry out actions for 3 seconds, each action dealing ({1}% of physical ATK) water type physical damage to a single target, with a 10% chance of Drowning effect"
 psvWendige3Tips,死亡时，给敌方全体附加溺水效果[被动],"Upon dying, cast Drowning effect on all enemies [Passive]"
-ultWendige2Tips,在3秒内进行操作，每次操作给单体目标造成{1}%物攻的木属性物理伤害概率附加施毒效果,"Carry out actions for 3 seconds, each action dealing ({1}% of physical ATK) grass type physical damage to a single target, with a chance of Poison effect"
+ultWendige2Tips,在3秒内进行操作，每次操作给单体目标造成{1}%物攻的木属性物理伤害10%附加施毒效果,"Carry out actions for 3 seconds, each action dealing ({1}% of physical ATK) grass type physical damage to a single target, with a 10% chance of Poison effect"
 psvWendige2Tips,死亡时，给敌方全体附加施毒效果[被动],"Upon dying, cast Poison effect on all enemies [Passive]"
 ultLongnv3Tips,给群体目标造成{0}%法攻的水属性法术伤害50%附加溺水效果，若目标拥有禁止治疗效果则必会附加溺水效果,"Deals ({0}% of magic ATK) water type magic damage to all enemy targets, with a 50% chance of drowing effect; if the target has a debuff healing effect then drowning effect will be dealt for sure"
 psvLongnv3Tips,战斗开始时，降低敌方群体80%防御力，持续1回合[被动],"At the start of battle, reduces all enemies' defense by 80% for 1 turns [Passive]"
 ultMomo1Tips,给群体目标恢复{0}%法攻的生命值45%附加物理、法术减免护盾，若目标拥有恢复效果则必会附加护盾,"Recovers ({0}% of magic ATK) HP for all allies, with a 45% chance of casting a physical and magic resist shield; if the target is affected by healing effects, then the shield will be cast for sure"
 psvMomo1Tips,使用治疗技能时，33%给被治疗者添加恢复效果[被动],"Whenever you cast a healing ability, there is a 33% chance of giving the target an additional HP regen effect [Passive]"
 ultAmute3Tips,给群体目标添加({0}%法攻+100)的法术、物理吸收护盾,Casts a shield for allies that can absorb ({0}% of magic ATK + 100) physical and magic damage
-psvAmute3Tips,使用物理和法术技能时，90%嘲讽被攻击者，持续2回合；首次死亡时回复自身20%生命值[被动],"Whenever you cast a physical or magic ability, there is a 90% chance of provoking the target for 2 turns; upon dying the first time, recover 20% of your HP [Passive]"
+psvAmute3Tips,使用物理和法术技能时，90%嘲讽被攻击者，持续2回合；首次死亡时恢复自身20%生命值[被动],"Whenever you cast a physical or magic ability, there is a 90% chance of provoking the target for 2 turns; upon dying the first time, recover 20% of your HP [Passive]"
 ultLuoxinfu5Tips,给群体目标添加痛楚效果,Casts Anguish effect on all enemy targets
 psvLuoxinfu5Tips,使用法术技能时，50%给被攻击者造成50%法攻的暗属性伤害[被动],"Whenever you cast a magic ability, there is a 50% chance of dealing(50% of magic ATK) dark type magic damage to the target [Passive]"
 ultSaibulesi5Tips,在3秒内进行操作，每次操作给单体目标造成{1}%法攻的暗属性法术伤害,"Carry out actions for 3 seconds, each action dealing ({1}% of magic ATK) dark type magic damage to a single target"
 psvSaibulesi5Tips,血量小于等于总血量25%时，提升自身80%智力[被动],"When remaining HP drops below 25%, your INT increases by 80% [Passive]"
-ultHongniu4Tips,在3秒内进行操作，每次操作给单体目标造成{1}%物攻的火属性物理伤害20%附加嘲讽效果，若目标已拥有嘲讽效果则伤害翻倍,"Carry out actions for 3 seconds, each action dealing ({1}% of physical ATK) fire type physical damage to a single target, with a 20% chance of provoke effect; if the target is affected by a provoke effect, then damage is multiplied"
+ultHongniu4Tips,在3秒内进行操作，每次操作给单体目标造成{1}%物攻的火属性物理伤害20%附加嘲讽效果，若目标已拥有嘲讽效果则伤害翻倍,"Carry out actions for 3 seconds, each action dealing ({0}% of physical ATK) fire type physical damage to a single target, with a 20% chance of provoke effect; damage multiplied on provoked target"
 psvHongniu4Tips,使用物理和法术技能时，90%嘲讽被攻击者，持续2回合；受到伤害时，50%给自己添加物理和法术吸收护盾[被动],"Whenever you cast a physical or magic ability, there is a 90% chance of provoking the target for 2 turns; whenever you take damage, there is a 50% chance of casting a shield absorbing physical and magic damage [Passive]"
 ultAnpusha5Tips,使单体目标力量，智力，防御下降80%，持续3回合,"Reduces the STR, INT, and DEF of a single target by 80% for 3 turns"
 psvAnpusha5Tips,使用buff技能时，25%驱散被攻击者增益效果[被动],"Whenever you cast a Buff ability, there is a 25% chance of removing the attacked unit's Buff effects [Passive]"
-ultDaochengsizhong4Tips,给群体目标造成{0}%法攻的火属性法术伤害概率附加眩晕效果,"Deals ({0}% of magic ATK) fire type magic damage to all enemy targets, with a chance of stun effect"
+ultDaochengsizhong4Tips,给群体目标造成{0}%法攻的火属性法术伤害50%附加眩晕效果,"Deals ({0}% of magic ATK) fire type magic damage to all enemy targets, with a 50% chance of stun effect"
 psvDaochengsizhong4Tips,受到伤害时，25%给攻击者添加眩晕效果[被动],"Whenever you take damage, there is a 25% chance of stunning the attacker [Passive]"
-ultHuoniao4Tips,给群体目标造成{0}%法攻的火属性法术伤害附加缓速效果,"Deals ({0}% of magic ATK) fire type magic damage to all enemy targets, with a chance of slow effect"
-psvHuoniao4Tips,首次死亡时回复自身20%生命值[被动],"Upon dying the first time, recover 20% of your HP [Passive]"
+ultHuoniao4Tips,给群体目标造成{0}%法攻的火属性法术伤害附加缓速效果,Deals ({0}% of magic ATK) fire type magic damage to all enemy targets with slow effect
+psvHuoniao4Tips,首次死亡时恢复自身20%生命值[被动],"Upon dying the first time, recover 20% of your HP [Passive]"
 ultIfrit4Tips,给群体目标造成{0}%物攻的火属性物理伤害驱散自身减益效果，根据驱散的自身减益效果数量增加群体伤害量,Deals ({0}% of physical ATK) fire type physical damage to all enemies and dispells any debuffs you are affected by; damage is increased based on the amount of debuffs dispelled
 psvIfrit4Tips,使用物理技能时，15%给被攻击者添加点燃效果[被动],"Whenever you use a physical ability, there is a 15% chance of causing ignition effect to the target [Passive]"
 ultMoguguai4Tips,给群体目标造成{0}%法攻的火属性法术伤害,Deals ({0}% of magic ATK) fire type magic damage to all enemies
@@ -1085,17 +1085,17 @@ bosshuoshan48Hehuaisituosi42Tips,给群体目标造成75%物攻的火属性物�
 bosshuoshan48Hehuaisituosi43Tips,给群体目标造成175%物攻的火属性物理伤害附加点燃效果,"Deals (175% of physical ATK) fire type physical damage to all enemy targets, with a chance of causing ignition effect"
 bosshuoshan48Hehuaisituosi44Tips,给群体目标添加眩晕效果，持续1回合,Casts a stun effect on enemy targets for 1 turn
 bosshuoshan48Hehuaisituosi45Tips,给群体目标造成175%物攻的火属性物理伤害附加点燃和眩晕效果,"Deals (175% of physical ATK) fire type physical damage to all enemy targets, with a chance of causing ignition and stun effect"
-ultWendige3Description,在3秒内进行操作，每次操作给单体目标造成水属性物理伤害概率附加溺水效果,"Carry out actions for 3 seconds, each action dealing water type physical damage to a single target, with a chance of Drowning effect"
-ultWendige2Description,在3秒内进行操作，每次操作给单体目标造成木属性物理伤害概率附加施毒效果,"Carry out actions for 3 seconds, each action dealing grass type physical damage to a single target, with a chance of Poison effect"
+ultWendige3Description,在3秒内进行操作，每次操作给单体目标造成水属性物理伤害10%附加溺水效果,"Carry out actions for 3 seconds, each action dealing water type physical damage to a single target, with a 10% chance of Drowning effect"
+ultWendige2Description,在3秒内进行操作，每次操作给单体目标造成木属性物理伤害10%附加施毒效果,"Carry out actions for 3 seconds, each action dealing grass type physical damage to a single target, with a 10% chance of Poison effect"
 ultLongnv3Description,给群体目标造成水属性法术伤害50%附加溺水效果，若目标拥有禁止治疗效果则必会附加溺水效果,"Deals water type magic damage to all enemy targets, with a 50% chance of drowing effect; if the target has a debuff healing effect then drowning effect will be dealt for sure"
 ultMomo1Description,给群体目标恢复生命值45%附加物理、法术减免护盾，若目标拥有恢复效果则必会附加护盾,"Recovers HP for all allies, with a 45% chance of casting a physical and magic resist shield; if the target is affected by healing effects, then the shield will be cast for sure"
 ultAmute3Description,给群体目标添加法术、物理吸收护盾,Casts a shield for allies that can absorb physical and magic damage
 ultLuoxinfu5Description,给群体目标添加痛楚效果,Casts Anguish effect on all enemy targets
 ultSaibulesi5Description,在3秒内进行操作，每次操作给单体目标造成暗属性法术伤害,"Carry out actions for 3 seconds, each action dealing dark type magic damage to a single target"
-ultHongniu4Description,在3秒内进行操作，每次操作给单体目标造成火属性物理伤害20%附加嘲讽效果，若目标已拥有嘲讽效果则伤害翻倍,"Carry out actions for 3 seconds, each action dealing fire type physical damage to a single target, with a 20% chance of provoke effect; if the target is affected by a provoke effect, then damage is multiplied"
+ultHongniu4Description,在3秒内进行操作，每次操作给单体目标造成火属性物理伤害20%附加嘲讽效果，若目标已拥有嘲讽效果则伤害翻倍,"Carry out actions for 3 seconds, each action dealing fire type physical damage to a single target, with a 20% chance of provoke effect; damage multiplied on provoked target"
 ultAnpusha5Description,使单体目标速度，力量，智力，防御下降80%，持续3回合,"Reduces the SPD, STR, INT, and DEF of a single target by 80% for 3 turns"
-ultDaochengsizhong4Description,给群体目标造成火属性法术伤害概率附加眩晕效果,"Deals fire type magic damage to all enemy targets, with a chance of stun effect"
-ultHuoniao4Description,给群体目标造成火属性法术伤害附加缓速效果,"Deals fire type magic damage to all enemy targets, with a chance of slow effect"
+ultDaochengsizhong4Description,给群体目标造成火属性法术伤害50%附加眩晕效果,"Deals fire type magic damage to all enemy targets, with a 50% chance of stun effect"
+ultHuoniao4Description,给群体目标造成火属性法术伤害附加缓速效果,Deals fire type magic damage to all enemy targets with slow effect
 ultIfrit4Description,给群体目标造成火属性物理伤害驱散自身减益效果，根据驱散的自身减益效果数量增加群体伤害量,Deals fire type physical damage to all enemies and dispells any debuffs you are affected by; damage is increased based on the amount of debuffs dispelled
 ultMoguguai4Description,给群体目标造成火属性法术伤害,Deals fire type magic damage to all enemies
 ultSaibulesi4Description,在3秒内进行操作，每次操作给单体目标造成火属性法术伤害,"Carry out actions for 3 seconds, each action dealing fire type magic damage to a single target"
@@ -1106,13 +1106,13 @@ psvWendige3Description,死亡时，给敌方全体附加溺水效果[被动],"Up
 psvWendige2Description,死亡时，给敌方全体附加施毒效果[被动],"Upon dying, cast Poison effect on all enemies [Passive]"
 psvLongnv3Description,战斗开始时，降低敌方群体80%防御力，持续1回合[被动],"At the start of battle, reduces all enemies' defense by 80% for 1 turns [Passive]"
 psvMomo1Description,使用治疗技能时，33%给被治疗者添加恢复效果[被动],"Whenever you cast a healing ability, there is a 33% chance of giving the target an additional HP regen effect [Passive]"
-psvAmute3Description,使用物理和法术技能时，90%嘲讽被攻击者，持续2回合；首次死亡时回复自身20%生命值[被动],"Whenever you cast a physical or magic ability, there is a 90% chance of provoking the target for 2 turns; upon dying the first time, recover 20% of your HP [Passive]"
+psvAmute3Description,使用物理和法术技能时，90%嘲讽被攻击者，持续2回合；首次死亡时恢复自身20%生命值[被动],"Whenever you cast a physical or magic ability, there is a 90% chance of provoking the target for 2 turns; upon dying the first time, recover 20% of your HP [Passive]"
 psvLuoxinfu5Description,使用法术技能时，50%给被攻击者造成50%法攻的暗属性伤害[被动],"Whenever you cast a magic ability, there is a 50% chance of dealing(50% of magic ATK) dark type magic damage to the target [Passive]"
 psvSaibulesi5Description,血量小于等于总血量25%时，提升自身80%智力[被动],"When remaining HP drops below 25%, your INT increases by 80% [Passive]"
 psvHongniu4Description,使用物理和法术技能时，90%嘲讽被攻击者，持续2回合；受到伤害时，50%给自己添加物理和法术吸收护盾[被动],"Whenever you cast a physical or magic ability, there is a 90% chance of provoking the target for 2 turns; whenever you take damage, there is a 50% chance of casting a shield absorbing physical and magic damage [Passive]"
 psvAnpusha5Description,使用buff技能时，25%驱散被攻击者增益效果[被动],"Whenever you cast a Buff ability, there is a 25% chance of removing the attacked unit's Buff effects [Passive]"
 psvDaochengsizhong4Description,受到伤害时，25%给攻击者添加眩晕效果[被动],"Whenever you take damage, there is a 25% chance of stunning the attacker [Passive]"
-psvHuoniao4Description,首次死亡时回复自身20%生命值[被动],"Upon dying the first time, recover 20% of your HP [Passive]"
+psvHuoniao4Description,首次死亡时恢复自身20%生命值[被动],"Upon dying the first time, recover 20% of your HP [Passive]"
 psvIfrit4Description,使用物理技能时，15%给被攻击者添加点燃效果[被动],"Whenever you use a physical ability, there is a 15% chance of causing ignition effect to the target [Passive]"
 psvMoguguai4Description,永久提升20%体力[被动],Increases Power permanently by 20% [Passive]
 psvSaibulesi4Description,血量小于等于总血量25%时，提升自身80%智力[被动],"When remaining HP drops below 25%, your INT increases by 80% [Passive]"
@@ -1184,9 +1184,9 @@ bossxinshouBingxuenvwang31Name,冰晶,Ice Crystal
 bossxinshouBingxuenvwang32Name,暴风雪,Blizzard
 ultBingxuenvwang3Name,暴风雪,Blizzard
 psvBingxuenvwang3Name,冰霜,Frost
-ultBingxuenvwang3Tips,给群体目标造成{0}%法攻的水属性法术伤害并附加缓速效果，若目标已存在缓速效果则眩晕1回合,"Deals ({0}% of magic ATK) water type magic damage to all enemies with a slow effect; if the target is affected by a slow effect, deal a stun effect for 1 turn"
+ultBingxuenvwang3Tips,给群体目标造成{0}%法攻的水属性法术伤害50%附加眩晕效果，若目标已存在缓速效果则眩晕1回合,"Deals ({0}% of magic ATK) water type magic damage to all enemies with a 50% chance of stun effect; if the target is affected by a slow effect, deal a stun effect for 1 turn"
 psvBingxuenvwang3Tips,使用法术技能时，10%降低目标40%速度，持续3回合[被动],Gives an 10% chance of reducing the SPD of your target by 40% for 3 turns whenever you cast a magic ability [Passive]
-ultBingxuenvwang3Description,给群体目标造成水属性法术伤害并附加缓速效果，若目标已存在缓速效果则眩晕1回合,"Deals water type magic damage to all enemies with a slow effect; if the target is affected by a slow effect, deal a stun effect for 1 turn"
+ultBingxuenvwang3Description,给群体目标造成水属性法术伤害50%附加眩晕效果，若目标已存在缓速效果则眩晕1回合,"Deals water type magic damage to all enemies with a 50% chance of stun effect; if the target is affected by a slow effect, deal a stun effect for 1 turn"
 ultBingxuenvwang3Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultBingxuenvwang3Nextlvl,{0}%法攻伤害,{0}% of magic ATK damage
 psvBingxuenvwang3Description,使用法术技能时，10%降低目标40%速度，持续3回合[被动],Gives an 10% chance of reducing the SPD of your target by 40% for 3 turns whenever you cast a magic ability [Passive]
@@ -1219,7 +1219,7 @@ ultshiliantaDujiaoshou1Name,圣能,Purification
 psvshiliantaDujiaoshou1Name,天界保护,Celestial Protection
 ultSheshou1Tips,给群体目标造成{0}%物攻的光属性物理伤害50%附加破防效果，若目标为暗属性则必附加破防效果,Deals ({0}% of physical ATK) light type physical damage to all enemies with a 50% chance of sunder effect; if the target is dark type then deal sunder effect for sure
 psvSheshou1Tips,使用物理技能时，25%给被攻击者附加眩晕效果[被动],"Whenever you use a physical ability, there is a 25% chance of stunning the target [Passive]"
-ultWeitianshi5Tips,给群体目标造成{0}%法攻的暗属性法术伤害附加禁止回血效果，该伤害对暗属性会造成克制效果同时对光属性克制效果更明显,"Deals ({0}% of magic ATK) dark type magic damage to all enemies with a prevented healing effect, this damage will deal affinity damage to dark type monsters and  greater damage to light type monsters"
+ultWeitianshi5Tips,给群体目标造成{0}%法攻的暗属性法术伤害附加禁止回血效果，该伤害对暗属性会造成克制效果同时对光属性克制效果更明显,"Deals ({0}% of magic ATK) dark type magic damage to all enemies with a prevented healing effect, affinity damage to dark type monsters and greater damage to light type monsters"
 psvWeitianshi5Tips,使用buff技能时，25%恢复群体30%生命值[被动],"Whenever you cast a buff ability, there is a 25% chance of recovering 30% HP for all allies [Passive]"
 ultSheshou3Tips,给己方全体目标提升40%速度和80%防御力，持续3回合,Increases all allies' SPD by 40% and INT by 80% for 3 turns
 psvSheshou3Tips,血量大于等于总血量80%时，提升自身40%速度[被动],"When HP is greater than or equal to 80%, increases your SPD by 40% [Passive]"
@@ -1228,7 +1228,7 @@ psvMengyan5Tips,使用物理技能时，10%降低目标80%力量，持续3回合
 ultBingyan3Tips,嘲讽敌方全体并给自己添加物理、法术减免护盾，持续3回合,Provoke all enemies and cast a physical and magic resist shield for yourself for 3 turns
 psvBingyan3Tips,使用物理和法术技能时，90%嘲讽被攻击者，持续2回合；受到伤害时，50%反弹攻击者50%法攻的水属性法术伤害[被动],"Whenever you cast a physical and magic ability, 90% chance of provoking the target for 2 turns; whenever you take damage,there is a 50% chance of reflecting (50% of magic ATK) water type magic damage to the attacker [Passive]"
 ultHuoniao3Tips,给群体目标造成{0}%法攻的水属性法术伤害并给己方群体附加加速效果,Deals ({0}% of magic ATK) water type magic damage to all enemy targets and increases SPD of all allies
-psvHuoniao3Tips,首次死亡时回复自身20%生命值[被动],"Upon dying the first time, recover 20% of your HP [Passive]"
+psvHuoniao3Tips,首次死亡时恢复自身20%生命值[被动],"Upon dying the first time, recover 20% of your HP [Passive]"
 ultDujiaoshou5Tips,驱散敌方群体目标增益效果并造成{0}%法攻的暗属性法术伤害，若目标血量小于50%则伤害翻倍,"Dispell all enemy buff effects, and deal ({0}% of magic ATK) dark type magic damage; if the target's HP is less than 50%, damage is multiplied"
 psvDujiaoshou5Tips,血量首次小于等于总血量50%时，给自身添加物理和法术吸收护盾[被动],"When HP drops below 50% of max HP for the first time, add a shield for yourself the absorbs physical and magic damage [Passive]"
 ultChange5Tips,在3秒内进行操作，每次操作给单体目标造成{1}%法攻的暗属性法术伤害，对物理、法术吸收护盾的伤害翻倍,"Carry out attacks for 3 seconds, each attack dealing ({1}% of magic ATK) dark type magic damage to a single target; damage dealt to a physical or magic absorption shield is multiplied"
@@ -1246,14 +1246,14 @@ ultChange1Name,月圆,Lunar Essence
 psvChange1Name,溃伤存形,Festering Presence
 ultDujiaoshou1Name,圣能,Purification
 psvDujiaoshou1Name,天界保护,Celestial Protection
-ultChange1Tips,给群体目标造成{0}%法攻的光属性法术伤害并给自身添加物理、法术吸收护盾，若自身存在吸收护盾效果，则伤害翻倍,"Deals ({0}% of magic ATK) light type magic damage to all enemies and casts a physical and magic damage absorption shield for allies; if you are affected by an absorption shield, then damage will be multipied"
+ultChange1Tips,给群体目标造成{0}%法攻的光属性法术伤害并给自身添加物理、法术吸收护盾，若自身存在吸收护盾效果，则伤害翻倍,Deals ({0}% of magic ATK) light type magic damage to all enemies and casts a physical and magic damage absorption shield for allies; damage multipied if you are on absorption shield
 psvChange1Tips,使用法术技能时，若目标拥有减益效果则伤害量提升25%[被动],"Whenever you cast a magic ability, if the target is affected by a debuff effect, the damage is increased by 25% [Passive]"
 ultDujiaoshou1Tips,驱散己方群体目标减益效果并恢复自身{0}%法攻的生命值，若自身血量小于50%则恢复群体{0}%法攻的生命值,"Dispell all debuff effects from your allies and recover ({0}% of magic ATK) HP; if your HP is less than 50%, then recover ({0}% of magic ATK) HP for all allies"
 psvDujiaoshou1Tips,血量首次小于等于总血量50%时，给自身添加物理和法术吸收护盾[被动],"When HP drops below 50% of max HP for the first time, add a shield for yourself the absorbs physical and magic damage [Passive]"
-ultChange1Description,给群体目标造成光属性法术伤害并给自身添加物理、法术吸收护盾，若自身存在吸收护盾效果，则伤害翻倍,"Deals light type magic damage to all enemies and casts a physical and magic damage absorption shield for allies; if you are affected by an absorption shield, then damage will be multipied"
+ultChange1Description,给群体目标造成光属性法术伤害并给自身添加物理、法术吸收护盾，若自身存在吸收护盾效果，则伤害翻倍,Deals light type magic damage to all enemies and casts a physical and magic damage absorption shield for allies; damage multipied if you are on absorption shield
 ultDujiaoshou1Description,驱散己方群体目标减益效果并恢复自身生命值，若自身血量小于50%则恢复群体生命值,"Dispell all debuff effects from your allies and recover HP; if your HP is less than 50%, then recover HP for all allies"
 ultSheshou1Description,给群体目标造成光属性物理伤害50%附加破防效果，若目标为暗属性则必附加破防效果,Deals light type physical damage to all enemies with a 50% chance of sunder effect; if the target is dark type then deal sunder effect for sure
-ultWeitianshi5Description,给群体目标造成暗属性法术伤害附加禁止回血效果，该伤害对暗属性会造成克制效果同时对光属性克制效果更明显,"Deals dark type magic damage to all enemies with a prevented healing effect, this damage will deal affinity damage to dark type monsters and  greater damage to light type monsters"
+ultWeitianshi5Description,给群体目标造成暗属性法术伤害附加禁止回血效果，该伤害对暗属性会造成克制效果同时对光属性克制效果更明显,"Deals dark type magic damage to all enemies with a prevented healing effect, affinity damage to dark type monsters and greater damage to light type monsters"
 ultSheshou3Description,给己方全体目标提升40%速度和80%防御力，持续3回合,Increases all allies' SPD by 40% and INT by 80% for 3 turns
 ultBingyan3Description,嘲讽敌方全体并给自己添加物理、法术减免护盾，持续3回合,Provoke all enemies and cast a physical and magic resist shield for yourself for 3 turns
 ultMengyan5Description,在3秒内进行操作，每次操作给单体目标造成暗属性物理伤害;该伤害会对除暗属性产生克制效果,"Carry out actions for 3 seconds, each action dealing dark type physical damage to a single target; this ability will deal affinity damage to non-dark type targets"
@@ -1269,7 +1269,7 @@ psvBingyan3Description,使用物理和法术技能时，90%嘲讽被攻击者，
 psvMengyan5Description,使用物理技能时，10%降低目标80%力量，持续3回合[被动],"Whenever you cast a physical ability, there is a 10% chance of reducing the target's STR by 80% for 3 turns [Passive]"
 psvDujiaoshou5Description,血量首次小于等于总血量50%时，给自身添加物理和法术吸收护盾[被动],"When HP drops below 50% of max HP for the first time, add a shield for yourself the absorbs physical and magic damage [Passive]"
 psvChange5Description,使用法术技能时，若目标拥有增益效果则伤害量提升25%[被动],"Whenever you cast a magic ability, if the target is affected by a buff effect, then damage is increased by 25% [Passive]"
-psvHuoniao3Description,首次死亡时回复自身20%生命值[被动],"Upon dying the first time, recover 20% of your HP [Passive]"
+psvHuoniao3Description,首次死亡时恢复自身20%生命值[被动],"Upon dying the first time, recover 20% of your HP [Passive]"
 ultChange1Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
 ultSheshou1Curlvl,{0}%物攻伤害,{0}% of physical ATK damage
 ultWeitianshi5Curlvl,{0}%法攻伤害,{0}% of magic ATK damage
@@ -1428,7 +1428,7 @@ bosssiwangta14Piying56Tips,战斗开始时，降低敌方群体40%速度，持�
 psvsiwangtaChange1Tips,使用法术技能时，若目标拥有减益效果则伤害量提升100%[被动],"Whenever you cast a magic ability, if the target is affected by a debuff effect, the damage is increased by 100% [Passive]"
 ultLongnv1Tips,给群体目标造成{0}%法攻的光属性法术伤害50%附加禁止回血效果，若目标拥有dot效果则必会添加禁止治疗效果,Deals ({0}% of magic ATK) light type magic damage to all enemy targets with a 50% chance of prevented healing effect; if the target is affected by a DOT effect then deal prevented healing effect
 psvLongnv1Tips,战斗开始时，降低敌方群体80%力量，持续1回合[被动],Reduces the STR of all enemy targets by 80% at the start of battle for 1 turn [Passive]
-ultWeitianshi1Tips,给群体目标造成{0}%法攻的光属性法术伤害并给己方群体附加hot效果，该伤害对暗属性会造成克制效果同时对光属性克制效果更明显,Deals ({0}% of magic ATK) light type magic damage to all enemy targets and casts a HOT effect on all allies; this damage will deal affinity damage to dark type monsters and even greater damage to light type monsters
+ultWeitianshi1Tips,给群体目标造成{0}%法攻的光属性法术伤害并给己方群体附加hot效果，该伤害对暗属性会造成克制效果同时对光属性克制效果更明显,Deals ({0}% of magic ATK) light type magic damage to all enemy targets and casts a HOT effect on all allies; affinity damage to light type monsters and greater damage to dark type monsters
 psvWeitianshi1Tips,使用buff技能时，25%恢复群体30%生命值[被动],"Whenever you cast a buff ability, there is a 25% chance of recovering 30% of all allies' HP [Passive]"
 ultDatiangou4Tips,在3秒内进行操作，每次操作给目标造成{1}%法攻的火属性法术伤害，若自身存在增益buff则伤害翻倍,"Carry out attacks for 3 seconds, each attack dealing ({1}% of magic ATK) fire type magic damage to a single target"
 psvDatiangou4Tips,战斗开始时，提升己方群体40%速度，持续1回合[被动],Increases the SPD of all allies by 40% at the start of battle for 1 turn [Passive]
@@ -1436,7 +1436,7 @@ ultTianshizhang1Tips,"消耗自身200%法攻的生命值，给己方群体添加
 psvTianshizhang1Tips,死亡时，75%恢复自身20%生命值[被动],"Upon dying, there is an 75% chance of recovering 20% of your HP [Passive]"
 ultLongnv1Description,给群体目标造成法攻的光属性法术伤害50%附加禁止回血效果，若目标拥有dot效果则必会添加禁止治疗效果,Deals light type magic damage to all enemy targets with a 50% chance of prevented healing effect; if the target is affected by a DOT effect then deal prevented healing effect
 psvLongnv1Description,战斗开始时，降低敌方群体80%力量，持续1回合[被动],Reduces the STR of all enemy targets by 80% at the start of battle for 1 turn [Passive]
-ultWeitianshi1Description,给群体目标造成光属性法术伤害并给己方群体附加hot效果，该伤害对暗属性会造成克制效果同时对光属性克制效果更明显,Deals light type magic damage to all enemy targets and casts a HOT effect on all allies; this damage will deal affinity damage to dark type monsters and even greater damage to light type monsters
+ultWeitianshi1Description,给群体目标造成光属性法术伤害并给己方群体附加hot效果，该伤害对暗属性会造成克制效果同时对光属性克制效果更明显,Deals light type magic damage to all enemy targets and casts a HOT effect on all allies; affinity damage to light type monsters and greater damage to dark type monsters
 psvWeitianshi1Description,使用buff技能时，25%恢复群体30%生命值[被动],"Whenever you cast a buff ability, there is a 25% chance of recovering 30% of all allies' HP [Passive]"
 ultDatiangou4Description,在3秒内进行操作，每次操作给目标造成火属性法术伤害，若自身存在增益buff则伤害翻倍,"Carry out attacks for 3 seconds, each attack dealing fire type magic damage to a single target"
 psvDatiangou4Description,战斗开始时，提升己方群体40%速度，持续1回合[被动],Increases the SPD of all allies by 40% at the start of battle for 1 turn [Passive]

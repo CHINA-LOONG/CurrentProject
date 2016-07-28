@@ -30,6 +30,7 @@ public class UIBag : UIBase,TabButtonDelegate
 	public	Button	cancelSellButton;
 	public	Button	conformSellButton;
 	public	Button	sellButton;
+	public	Text	bagTitleText;
 
 	private BagType curBagType = BagType.BaoXiang;
 
@@ -49,6 +50,7 @@ public class UIBag : UIBase,TabButtonDelegate
 
 	private	List<PB.HSRewardInfo> listRewardForBox = new List<PB.HSRewardInfo>();
 	private	Dictionary<string,int>  sellItemsDic = new Dictionary<string, int>();
+	private	ItemData	curUseItemData;
 
     void Start()
     {
@@ -74,6 +76,17 @@ public class UIBag : UIBase,TabButtonDelegate
 		EventTriggerListener.Get (conformSellButton.gameObject).onClick = OnSellConformClick;
 		EventTriggerListener.Get (sellButton.gameObject).onClick = OnSellClick;
 		tabBtnGroup.InitWithDelegate (this);
+
+		bagTitleText.text = StaticDataMgr.Instance.GetTextByID ("bag_title");
+
+		tabBtnGroup.tabButtonList [0].SetButtonTitleName (StaticDataMgr.Instance.GetTextByID ("bag_tag_box"));
+		tabBtnGroup.tabButtonList [1].SetButtonTitleName (StaticDataMgr.Instance.GetTextByID ("bag_tag_use"));
+		tabBtnGroup.tabButtonList [2].SetButtonTitleName (StaticDataMgr.Instance.GetTextByID ("bag_tag_gem"));
+		tabBtnGroup.tabButtonList [3].SetButtonTitleName (StaticDataMgr.Instance.GetTextByID ("bag_tag_item"));
+
+		sellButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_chushou");
+		cancelSellButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_quxiao");
+		conformSellButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_queding");
 
 		BindListener ();
 	}
@@ -130,7 +143,7 @@ public class UIBag : UIBase,TabButtonDelegate
 
 		scrollView.ClearAllElement ();
 
-		List<ItemData> items = BagDataMgr.Instance.GetBagItemsWithType (curBagType);
+		List<ItemData> items = BagDataMgr.Instance.GetBagItemsWithType (curBagType,curBagState);
 		ItemData subItemData;
 		for (int i =0; i< items.Count; ++i)
 		{
@@ -153,10 +166,21 @@ public class UIBag : UIBase,TabButtonDelegate
 		{
 			//todo:msg
 			Logger.LogError("未选择出售物品....");
-			UIIm.Instance.ShowSystemHints("未选择出售物品....",(int)PB.ImType.PROMPT);
+			UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("bag_record_006"),
+			                              (int)PB.ImType.PROMPT);
 			return;
 		}
-		SellConformDlg.OpenWith (1399, OnSellConformed);
+		int sellTotal = 0;
+		foreach (var subSellItem in sellItemsDic) 
+		{
+			string itemId = subSellItem.Key;
+			int count = subSellItem.Value;
+			ItemStaticData stData = StaticDataMgr.Instance.GetItemData(itemId);
+
+			sellTotal += stData.sellPrice * count;
+		}
+
+		SellConformDlg.OpenWith (sellTotal, OnSellConformed);
 	}
 
 	void OnSellConformed(MsgBox.PrompButtonClick click)
@@ -238,6 +262,7 @@ public class UIBag : UIBase,TabButtonDelegate
 
 	public	void	UseItem(ItemData itemData)
 	{
+		curUseItemData = itemData;
 		PB.HSItemUse param = new PB.HSItemUse ();
 		param.itemId = itemData.itemId;
 		param.itemCount = 1;
@@ -247,19 +272,32 @@ public class UIBag : UIBase,TabButtonDelegate
 	void	OnUseItemFinished(ProtocolMessage msg)
 	{
 		UINetRequest.Close ();
+
+		ItemStaticData stData = StaticDataMgr.Instance.GetItemData (curUseItemData.itemId);
+		bool isPilaoyao = (stData.addAttrType == 7);
 		
 		if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
 		{
 			PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode> ();
 			if(error.errCode == (int)PB.itemError.ITEM_EXP_LEFT_TIMES)
 			{
-				UIIm.Instance.ShowSystemHints (StaticDataMgr.Instance.GetTextByID("多倍经验有剩余，不需使用！"),
+				string errMsg = "bag_record_003";
+				if(isPilaoyao)
+				{
+					errMsg = "bag_record_002";
+				}
+				UIIm.Instance.ShowSystemHints (StaticDataMgr.Instance.GetTextByID(errMsg),
 				                               (int)PB.ImType.PROMPT);
 			}
 			Logger.LogError("use items Error.....");
 			return;
 		}
-		UIIm.Instance.ShowSystemHints ("use item succ", (int)PB.ImType.PROMPT);
+		string succMsg = "bag_record_004";
+		if(isPilaoyao)
+		{
+			succMsg = "bag_record_001";
+		}
+		UIIm.Instance.ShowSystemHints (succMsg, (int)PB.ImType.PROMPT);
 		RefreshBag ();
 	}
 }

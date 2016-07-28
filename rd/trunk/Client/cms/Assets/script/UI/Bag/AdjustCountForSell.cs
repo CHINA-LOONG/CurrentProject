@@ -64,6 +64,9 @@ public class AdjustCountForSell : UIBase
 
 		chgValue = GetComponent<ChangeValueByHand> ();
 		chgValue.callback = OnChangedValueByHand;
+
+		cancelButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_chexiao");
+		okButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_queding");
 	}
 
 	public override void Clean()

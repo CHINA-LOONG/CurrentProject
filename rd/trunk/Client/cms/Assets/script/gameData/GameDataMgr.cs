@@ -293,7 +293,7 @@ public class GameDataMgr : MonoBehaviour
             mainPlayer.gameMailData.AddMail(mailInfo);
             //Debug.Log("mail" + mailInfo.mailId + "\t" + mailInfo.reward.Count + "\t" + mailInfo.senderId + "\t" + mailInfo.senderName +"\t"+ mailInfo.sendTimeStamp);
         }
-        GameEventMgr.Instance.FireEvent<int>(GameEventList.MailChanged, 0);
+        GameEventMgr.Instance.FireEvent<int>(GameEventList.MailAdd, 0);
     }
     void OnMailNew(ProtocolMessage msg)
     {
@@ -307,7 +307,7 @@ public class GameDataMgr : MonoBehaviour
         {
             mainPlayer.gameMailData.AddMail(mailNew.mail);
         }
-        GameEventMgr.Instance.FireEvent<int>(GameEventList.MailChanged, mailNew.mail.mailId);
+        GameEventMgr.Instance.FireEvent<int>(GameEventList.MailAdd, mailNew.mail.mailId);
     }
 
     //---------------------------------------------------------------------------------------------

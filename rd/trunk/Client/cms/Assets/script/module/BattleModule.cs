@@ -83,6 +83,7 @@ public class BattleModule : ModuleBase
         //var ui = UIMgr.Instance.OpenUI(UIBattle.AssertName, UIBattle.ViewName);
         //ui.GetComponent<UIBattle>().Init();
         startBattle = true;
+        UIIm.Instance.UpdateIMPos(true);
     }
 
     public override void OnExecute()
@@ -111,6 +112,7 @@ public class BattleModule : ModuleBase
         //destroy battle camera manual,since camera may attach to gamemain throw ani
         Destroy(BattleCamera.Instance.gameObject);
         startBattle = false;
+        UIIm.Instance.UpdateIMPos(false);
     }
 
 #region  Event

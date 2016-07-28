@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 public class UIIm : UIBase
 {
+    #region 
     public static string ViewName = "uishowMsg";
     List<PB.HSImMsg> worldChannel = new List<PB.HSImMsg>();//世界頻道列表
     List<PB.HSImMsg> gangChannel = new List<PB.HSImMsg>();//工會頻道列表 
@@ -32,6 +33,7 @@ public class UIIm : UIBase
     //玩家信息
     public GameObject playerBox;
     public GameObject playerBoxClone;
+    public Text playerLevel;
     public Text playerName;
     public GameObject shield;//屏蔽
     int blockID;//屏蔽ID
@@ -41,6 +43,11 @@ public class UIIm : UIBase
     Lantern lanternMove;//走马灯文本
     ImMessageData imMsgData;
     static UIIm mInst = null;
+    bool isSend = true;
+    private MsgBox.PromptMsg shieldWnd;
+    public Transform moduleVec;//对局位置
+    Vector3 basiceChatVec;//基础聊天框初始位置
+    #endregion
     public static UIIm Instance
     {
         get
@@ -74,6 +81,7 @@ public class UIIm : UIBase
         }
         noticeMove = noticeUI.GetComponent<Lantern>();
         lanternMove = lanternUI.GetComponent<Lantern>();
+        basiceChatVec = basicsChat.gameObject.transform.localPosition;
         leftChatBox.SetActive(false);
         playerBox.SetActive(false);
         noticeUI.SetActive(false);
@@ -86,6 +94,7 @@ public class UIIm : UIBase
         {
             basicsChat.SetActive(false);
             leftChatBox.SetActive(true);
+            ShowMessage();
         }
         else if (but.name == showBasicsChat.name)//show基础聊天框
         {
@@ -115,7 +124,7 @@ public class UIIm : UIBase
             guildText.color = ColorConst.text_tabColor_select;
             ShowMessage();
         }
-        else if (but ==playerBoxClone)
+        else if (but == playerBoxClone)
         {
             playerBox.SetActive(false);
         }
@@ -127,9 +136,8 @@ public class UIIm : UIBase
         imMsgData = player.GetComponent<ImMessageData>();
         if (GameDataMgr.Instance.PlayerDataAttr.playerId != imMsgData.speakerID && imMsgData.speakerID != 0)
         {
-            playerBox.SetActive(true);
-            playerName.text = imMsgData.playerName;
-            blockID = imMsgData.speakerID;
+            PB.HSImPlayerGet param = new PB.HSImPlayerGet() { playerId = imMsgData.speakerID };
+            GameApp.Instance.netManager.SendMessage(PB.code.IM_PLAYER_GET_C.GetHashCode(), param, false);
         }
     }
     //------------------------------------------------------------------------------------------------------
@@ -197,7 +205,7 @@ public class UIIm : UIBase
             basicsValue.text = msg;
         }
     }
-    //------------------------------------------------------------------------------------------------------#7986FE0100FF
+    //------------------------------------------------------------------------------------------------------
     void ReadMsg(ref List<PB.HSImMsg> msgList, string channelName, Color msgColor)//读取赋值消息
     {
         float msgHeight;//一条消息的高
@@ -278,8 +286,7 @@ public class UIIm : UIBase
         Hint hintComponent = hintBox.GetComponent<Hint>();
         hintComponent.ownedList = hintMsg;
         GameObject hint = hintBox.transform.FindChild("Image").gameObject;
-        Text hintBoxText = hint.transform.FindChild("Text").GetComponent<Text>();
-        
+        Text hintBoxText = hint.transform.FindChild("Text").GetComponent<Text>();        
         hint.SetActive(false);
         hintBoxText.text = hintText;
         float hintWidth = hintBoxText.preferredWidth + BattleConst.hintImageLength;
@@ -335,14 +342,22 @@ public class UIIm : UIBase
                     }
                 }
             }
-        }
+        }        
         lanternMove.UpdateLantern();
         noticeMove.UpdateLantern();
     }
-    //------------------------------------------------------------------------------------------------------   
+    //------------------------------------------------------------------------------------------------------  
+    public void UpdateIMPos(bool isInBattle)//对局
+    {
+        if (isInBattle)
+            basicsChat.transform.localPosition = moduleVec.localPosition;
+        else
+            basicsChat.transform.localPosition = basiceChatVec;
+    }
+    //------------------------------------------------------------------------------------------------------
     void SendInterval() //发言间隔
     {
-        sendButton.GetComponent<Button>().enabled = true;
+        isSend = true;
     }
     //------------------------------------------------------------------------------------------------------
     void SendClick(GameObject but)//发送协议
@@ -353,14 +368,37 @@ public class UIIm : UIBase
                 return;
             else
             {
-                OnSendMsg(msgText.text);
-                Invoke("SendInterval", 2.0f);
+                if (isSend)
+                {
+                    isSend = !isSend;
+                    OnSendMsg(msgText.text);
+                    Invoke("SendInterval", 2.0f);
+                }
+                else
+                {
+                    HintShow(StaticDataMgr.Instance.GetTextByID("im_speek_to_muck"));
+                }
             }
         }
         else if (but.name == shield.name)
         {
-            OnShield();
+           shieldWnd = MsgBox.PromptMsg.Open(
+           MsgBox.MsgBoxType.Conform_Cancel,
+           string.Format(StaticDataMgr.Instance.GetTextByID("im_block_chat")),
+           SendShield,
+           false,
+           true
+           );
         }
+    }
+    //------------------------------------------------------------------------------------------------------
+    void OnPlayerGetRet(ProtocolMessage msg)//返回玩家信息
+    {
+        PB.HSImPlayer result = msg.GetProtocolBody<PB.HSImPlayerGetRet>().imPlayer;
+        playerBox.SetActive(true);
+        playerName.text = result.nickname;
+        playerLevel.text = result.level.ToString();
+        blockID = (int)result.playerId;
     }
     //------------------------------------------------------------------------------------------------------
     public void OnSendMsg(string message)//发送消息
@@ -375,14 +413,37 @@ public class UIIm : UIBase
         sendButton.GetComponent<Button>().enabled = false;
     }
     //------------------------------------------------------------------------------------------------------
-    public void OnShield()//屏蔽禁言
+    public void SendShield(MsgBox.PrompButtonClick state)//屏蔽禁言
     {
-        PB.HSSettingBlock param = new PB.HSSettingBlock()
+        if (state == MsgBox.PrompButtonClick.OK)
         {
-            playerId = blockID,
-            isBlock = true
-        };
-        GameApp.Instance.netManager.SendMessage(PB.code.SETTING_BLOCK_C.GetHashCode(), param);
+            PB.HSSettingBlock param = new PB.HSSettingBlock()
+            {
+                playerId = blockID,
+                isBlock = true
+            };
+            GameApp.Instance.netManager.SendMessage(PB.code.SETTING_BLOCK_C.GetHashCode(), param,false); 
+        }
+        else if (state == MsgBox.PrompButtonClick.Cancle)
+        {            
+            shieldWnd.Close();
+        }
+    }
+    //------------------------------------------------------------------------------------------------------
+    public void OnBlockRet(ProtocolMessage msg)//返回屏蔽
+    {
+        PB.HSSettingBlockRet result = new PB.HSSettingBlockRet();
+        if (result.isBlock)
+        {
+            shieldWnd.Close();
+            playerBox.SetActive(false);
+            HintShow(StaticDataMgr.Instance.GetTextByID("im_block_success"));
+        }
+        else
+        {
+            shieldWnd.Close();
+            HintShow(StaticDataMgr.Instance.GetTextByID("im_block_failed"));
+        }
     }
     //------------------------------------------------------------------------------------------------------
     void OnEnable()
@@ -398,11 +459,15 @@ public class UIIm : UIBase
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.IM_PUSH_S.GetHashCode().ToString(), OnMsgReturn);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.IM_PLAYER_GET_S.GetHashCode().ToString(), OnPlayerGetRet);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SETTING_BLOCK_S.GetHashCode().ToString(), OnBlockRet);
     }
     //------------------------------------------------------------------------------------------------------
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.IM_PUSH_S.GetHashCode().ToString(), OnMsgReturn);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.IM_PLAYER_GET_S.GetHashCode().ToString(), OnPlayerGetRet);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SETTING_BLOCK_S.GetHashCode().ToString(), OnBlockRet);
     }
     //------------------------------------------------------------------------------------------------------
 }

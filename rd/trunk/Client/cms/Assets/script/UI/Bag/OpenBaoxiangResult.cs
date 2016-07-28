@@ -48,6 +48,7 @@ public class OpenBaoxiangResult : UIBase
 
 	public	void	InitWith(List<PB.HSRewardInfo> listReward)
 	{
+		OKButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_queding");
 		scrollRect = scrollView.GetComponent<ScrollRect> ();
 		this.listReward = listReward;
 		PB.HSRewardInfo subRewardInfo = null;

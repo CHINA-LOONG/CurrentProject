@@ -17,15 +17,21 @@ public class BagDataMgr
 		}
 	}
 
-	public	List<ItemData>	GetBagItemsWithType(BagType bagType)
+	public	List<ItemData>	GetBagItemsWithType(BagType bagType,BagState bagState)
 	{
 		GameItemData gameItemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData;
 
 		List<ItemData> allItems = new List<ItemData> ();
 		foreach (ItemData subItem in gameItemData.itemList.Values)
 		{
-			if(bagType == GetItemBagType(subItem))
+			ItemStaticData stData = StaticDataMgr.Instance.GetItemData (subItem.itemId);
+			if(bagType == GetItemBagType(stData))
 			{
+				if(bagState == BagState.Sell)
+				{
+					if(stData.sellPrice < 1)
+						continue;
+				}
 				allItems.Add(subItem);
 			}
 		}
@@ -35,9 +41,8 @@ public class BagDataMgr
 		return allItems;
 	}
 
-	public	static	BagType	GetItemBagType(ItemData itemData)
+	public	static	BagType	GetItemBagType(ItemStaticData stData)
 	{
-		ItemStaticData stData = StaticDataMgr.Instance.GetItemData (itemData.itemId);
 		if(null == stData)
 			return BagType.Unknow;
 

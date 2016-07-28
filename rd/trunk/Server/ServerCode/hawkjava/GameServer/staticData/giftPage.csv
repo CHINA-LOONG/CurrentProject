@@ -6,3 +6,14 @@ id,comments,name,title,desc,image,pointIcon,level,recharge,offlineDay,timeBegin,
 104,冲级,gift_name_104,gift_name_104,gift_desc_104,,,1,0_9999999,0,401,402,1
 105,开服有礼,gift_name_105,gift_name_105,gift_desc_105,,,1,0_9999999,0,401,402,0
 106,先行者礼包,gift_name_106,gift_name_106,gift_desc_106,libao_tianshizhang,icon_tianxingzhesuipian,20,0_9999999,0,403,404,0
+110,累计登录,gift_name_110,gift_name_110,gift_desc_110,libao_tianshizhang,,1,0_9999999,0,407,410,0
+111,连续登录,gift_name_111,gift_name_111,gift_desc_111,,,1,0_9999999,0,407,410,0
+112,冲级,gift_name_112,gift_name_112,gift_desc_112,,,1,0_9999999,0,407,410,0
+113,开服奖励,gift_name_113,gift_name_113,gift_desc_113,,,1,0_9999999,0,407,410,0
+114,每日充值,gift_name_114,gift_name_114,gift_desc_114,,,1,0_9999999,0,407,410,0
+115,累计充值,gift_name_115,gift_name_115,gift_desc_115,,,1,0_9999999,0,407,410,0
+116,竞技场活动,gift_name_116,gift_name_116,gift_desc_116,,icon_rongyudian2,12,0_9999999,0,407,410,0
+117,通天塔活动,gift_name_117,gift_name_117,gift_desc_117,,icon_towercoin2,18,0_9999999,0,407,410,0
+118,公会活动,gift_name_118,gift_name_118,gift_desc_118,,icon_gongxianzhi,20,0_9999999,0,407,410,0
+119,大冒险活动,gift_name_119,gift_name_119,gift_desc_119,,,22,0_9999999,0,407,410,0
+120,钻石抽奖活动,gift_name_120,gift_name_120,gift_desc_120,,,1,0_9999999,0,407,410,0

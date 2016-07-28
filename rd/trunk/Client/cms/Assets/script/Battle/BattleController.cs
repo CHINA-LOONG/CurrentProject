@@ -803,6 +803,10 @@ public class BattleController : MonoBehaviour
         {
             GameSpeedService.Instance.SetBattleSpeed(1.0f);
             //PB.HSInstanceSettleRet scoreInfo = msg.GetProtocolBody<PB.HSInstanceSettleRet>();
+            if (mUIScore == null)
+            {
+                mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
+            }
             mUIScore.ShowScoreUI(battleSuccess);
             uiBattle.HideBattleUI();
         }
@@ -813,7 +817,10 @@ public class BattleController : MonoBehaviour
         PB.HSRewardInfo reward = msg.GetProtocolBody<PB.HSRewardInfo>();
         if (reward != null && reward.hsCode == PB.code.INSTANCE_SETTLE_C.GetHashCode())
         {
-            mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
+            if (mUIScore == null)
+            {
+                mUIScore = UIMgr.Instance.OpenUI_(UIScore.ViewName) as UIScore;
+            }
             mUIScore.SetScoreInfo(reward);
         }
     }

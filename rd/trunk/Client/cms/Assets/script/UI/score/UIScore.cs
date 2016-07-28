@@ -140,10 +140,19 @@ public class UIScore : UIBase
                 if (item.type == (int)PB.itemType.MONSTER)
                 {
                     UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(item.itemId);
-                    if (unitRowData != null && unitRowData.grade >= 3)
+                    if (unitRowData != null)
                     {
-                        AddGainMonster(item.itemId, item.level, item.stage);
-                        return;
+                        //add monster icon
+                        MonsterIcon icon = MonsterIcon.CreateIcon();
+                        icon.transform.SetParent(mItemGainList.transform, false);
+                        icon.SetMonsterStaticId(item.itemId);
+                        icon.SetLevel(item.level);
+                        icon.SetStage(item.stage);
+                        if (unitRowData.grade >= 0)
+                        {
+                            AddGainMonster(item.itemId, item.level, item.stage);
+                            return;
+                        }
                     }
 
                     break;
@@ -160,12 +169,6 @@ public class UIScore : UIBase
         mGainPetUI.transform.SetParent(transform, false);
         mGainPetUI.ShowGainPet(monsterID);
         mGainPetUI.SetConfirmCallback(ConfirmGainPet);
-        //add monster icon
-        MonsterIcon icon = MonsterIcon.CreateIcon();
-        icon.transform.SetParent(mItemGainList.transform, false);
-        icon.SetMonsterStaticId(monsterID);
-        icon.SetLevel(level);
-        icon.SetStage(stage);
     }
     //---------------------------------------------------------------------------------------------
     private void ConfirmGainPet(GameObject go)
@@ -238,7 +241,7 @@ public class UIScore : UIBase
                     }
                 }
             }
-            if (playerAttr.level > 0)
+            if (playerAttr != null && playerAttr.level > 0)
             {
                 PlayerLevelAttr curAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(playerAttr.level);
                 mPlayerProgress.SetLoopCount(playerAttr.level - mainPlayer.level);
@@ -261,10 +264,6 @@ public class UIScore : UIBase
                     GameEventMgr.Instance.FireEvent<int>(GameEventList.LevelChanged, mainPlayer.level);
                 }
                 mainPlayer.exp = playerAttr.exp;
-            }
-            else
-            {
-
             }
 
             //show monster info

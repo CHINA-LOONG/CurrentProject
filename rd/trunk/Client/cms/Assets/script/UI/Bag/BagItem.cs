@@ -63,6 +63,7 @@ public class BagItem : MonoBehaviour
 			Logger.LogError(string.Format("can't find itemid = {0} for refresh bagItem",itemData.itemId));
 			return;
 		}
+		useButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("exp_use");
 		this.bagType = bagType;
 		this.itemData = itemData;
 		baoXiangNeedPanel.gameObject.SetActive (bagType == BagType.BaoXiang);
@@ -116,7 +117,7 @@ public class BagItem : MonoBehaviour
 			itemCount = gItemData.count;
 		}
 		leftKeyCount = itemCount;
-		needItemCount.text = string.Format (StaticDataMgr.Instance.GetTextByID ("剩余:{0}"), itemCount);
+		needItemCount.text = string.Format (StaticDataMgr.Instance.GetTextByID ("bag_shengyu"), itemCount);
 	}
 
 	private	void	SetBaoshiProperty(ItemStaticData stdata)
@@ -197,7 +198,10 @@ public class BagItem : MonoBehaviour
 	{
 		if (itemData.count == 1)
 		{
-			OnSetSellCount (1);
+			if(inSellCount ==0)
+				OnSetSellCount (1);
+			else
+				OnSetSellCount(0);
 		}
 		else 
 		{

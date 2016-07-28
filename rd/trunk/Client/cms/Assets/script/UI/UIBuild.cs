@@ -72,7 +72,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 	{
 		GameEventMgr.Instance.AddListener<int> (GameEventList.LevelChanged, OnLevelChanged);
 		GameEventMgr.Instance.AddListener<long> (GameEventList.CoinChanged, OnCoinChanged);
-        GameEventMgr.Instance.AddListener<int>(GameEventList.MailChanged, OnMailChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.MailAdd, OnMailChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.MailRead, OnMailChanged);
 
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.MONSTER_CATCH_S.GetHashCode().ToString(),OnCachMonsterFinished);
 	}
@@ -81,7 +82,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 	{
 		GameEventMgr.Instance.RemoveListener<int> (GameEventList.LevelChanged, OnLevelChanged);
         GameEventMgr.Instance.RemoveListener<long>(GameEventList.CoinChanged, OnCoinChanged);
-        GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailChanged, OnMailChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailAdd, OnMailChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailRead, OnMailChanged);
 
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.MONSTER_CATCH_S.GetHashCode().ToString(),OnCachMonsterFinished);
 	}

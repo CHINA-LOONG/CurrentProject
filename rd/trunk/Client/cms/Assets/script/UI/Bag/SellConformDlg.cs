@@ -37,6 +37,12 @@ public class SellConformDlg : UIBase
 	{
 		EventTriggerListener.Get (okButton.gameObject).onClick = OnOKButtonClicked;
 		EventTriggerListener.Get (cancelButton.gameObject).onClick = OnCancelButtonClicked;
+		titleText.text = StaticDataMgr.Instance.GetTextByID ("ui_sellforsure");
+		careDescText.text = StaticDataMgr.Instance.GetTextByID ("ui_sellforsuretips");
+		totalDescText.text = StaticDataMgr.Instance.GetTextByID ("ui_sellsum");
+
+		cancelButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_quxiao");
+		okButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_queding");
 	}
 
 	public override void Clean()

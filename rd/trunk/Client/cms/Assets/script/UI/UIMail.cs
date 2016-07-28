@@ -19,6 +19,7 @@ public class UIMail : UIBase,TabButtonDelegate
     public Button btnOnekey;
 
     public TabButtonGroup tabGroup;
+    public ScrollRect scrollRect;
     public UIMailList mailList;
     public UIMailContent mailContent;
 
@@ -48,7 +49,7 @@ public class UIMail : UIBase,TabButtonDelegate
         tabGroup.InitWithDelegate(this);
         mailContent.SetMailContentActive(false);
         OnMailChanged();
-        tabGroup.OnChangeItem(0);
+        scrollRect.verticalNormalizedPosition = 1.0f;
         readMail = null;
 
         if (mailCount >= UIMail.maxCount)
@@ -116,6 +117,7 @@ public class UIMail : UIBase,TabButtonDelegate
             readMail = info;
         }
         mailContent.SetMailContent(info);
+        GameEventMgr.Instance.FireEvent<int>(GameEventList.MailRead,info.mailId);
     }
     //收取附件
     void ActionReceiveMail(PB.HSMail info)
@@ -152,6 +154,7 @@ public class UIMail : UIBase,TabButtonDelegate
                 GameDataMgr.Instance.PlayerDataAttr.gameMailData.RemoveMail(mailId);
             }
         }
+        GameEventMgr.Instance.FireEvent<int>(GameEventList.MailRead,0);
         mailContent.SetMailContentActive(false);
         OnMailChanged();
         readMail = null;
@@ -189,7 +192,7 @@ public class UIMail : UIBase,TabButtonDelegate
     void OnMailListChanged(int mailId)
     {
         OnMailChanged();
-        tabGroup.OnChangeItem(0);
+        scrollRect.verticalNormalizedPosition = 1.0f;
     }
 
 
@@ -208,7 +211,7 @@ public class UIMail : UIBase,TabButtonDelegate
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_C.GetHashCode().ToString(), OnMailReceiveAllRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_S.GetHashCode().ToString(), OnMailReceiveAllRet);
 
-        GameEventMgr.Instance.AddListener<int>(GameEventList.MailChanged, OnMailListChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.MailAdd, OnMailListChanged);
     }
 
     void UnBindListener()
@@ -216,7 +219,7 @@ public class UIMail : UIBase,TabButtonDelegate
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_C.GetHashCode().ToString(), OnMailReceiveAllRet);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_S.GetHashCode().ToString(), OnMailReceiveAllRet);
 
-        GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailChanged, OnMailListChanged);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailAdd, OnMailListChanged);
     }
 
 

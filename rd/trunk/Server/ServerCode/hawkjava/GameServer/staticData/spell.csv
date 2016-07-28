@@ -368,7 +368,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 365,bossdajie18Ladong53,bossdajie18Ladong53e1,0,0,0,50,4,0,,,,0,1,,,,
 366,bossdajie18Ladong54,bossdajie18Ladong54e1,0,0,0,50,8,0,icon_bossdajie18Ladong54,bossdajie18Ladong54Name,bossdajie18Ladong54Tips,0,1,,,,
 367,bossdajie18Ladong55,bossdajie18Ladong55e1,0,0,0,0,4,0,,,,0,0,,,,
-368,ultBingxuenvwang3,ultBingxuenvwang3e1,0,0,100,0,9,0.01,icon_ultBingxuenvwang3,ultBingxuenvwang3Name,ultBingxuenvwang3Tips,2.3,1,,ultBingxuenvwang3Description,ultBingxuenvwang3Curlvl,ultBingxuenvwang3Nextlvl
+368,ultBingxuenvwang3,ultBingxuenvwang3e1,0,0,100,0,9,0.01,icon_ultBingxuenvwang3,ultBingxuenvwang3Name,ultBingxuenvwang3Tips,2.5,1,,ultBingxuenvwang3Description,ultBingxuenvwang3Curlvl,ultBingxuenvwang3Nextlvl
 369,psvBingxuenvwang3,psvBingxuenvwang3e1,0,0,0,0,4,0,icon_psvBingxuenvwang3,psvBingxuenvwang3Name,psvBingxuenvwang3Tips,0,0,,psvBingxuenvwang3Description,,
 370,bossdajie11Xiaochou41,bossdajie11Xiaochou41e1,0,0,0,50,1,0,icon_attackSmashStrong,bossdajie11Xiaochou41Name,bossdajie11Xiaochou41Tips,0,0,,,,
 371,bossdajie11Xiaochou42,bossdajie11Xiaochou42e1,0,0,0,50,1,0,icon_attackSmashStrong,bossdajie11Xiaochou42Name,bossdajie11Xiaochou42Tips,0,1,,,,

@@ -952,6 +952,7 @@ MonoBehaviour:
   cancelSellButton: {fileID: 11455882}
   conformSellButton: {fileID: 11494380}
   sellButton: {fileID: 11494532}
+  bagTitleText: {fileID: 11491190}
 --- !u!114 &11408864
 MonoBehaviour:
   m_ObjectHideFlags: 1

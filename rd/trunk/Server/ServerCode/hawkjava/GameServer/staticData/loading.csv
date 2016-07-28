@@ -1,6 +1,6 @@
-#NUM,NUM,TEXT,TEXT
+ï»¿#NUM,NUM,TEXT,TEXT
 id,scene,tips,picture
-id,³¡¾°,ÌáÊ¾ĞÅÏ¢×é,Õ¹Ê¾ÄÚÈİ×é
+id,åœºæ™¯,æç¤ºä¿¡æ¯ç»„,å±•ç¤ºå†…å®¹ç»„
 1,1,"loading_tips1,loading_tips2,loading_tips3,loading_tips4,loading_tips5,loading_tips6,loading_tips7,loading_tips8,loading_tips9,loading_tips10,loading_tips11,loading_tips12,loading_tips50,loading_tips13,loading_tips14,loading_tips15,loading_tips16,loading_tips17,loading_tips18,loading_tips19,loading_tips20,loading_tips21","bingxuenvwanglan,changehei,changebai,datiangouhong,mijialebai,mijialehong,weitianshibai,weitianshihei,yifulitehei,dujiaoshouhei,hongniuhong"
 2,2,"loading_tips22,loading_tips23,loading_tips24,loading_tips25,loading_tips26,loading_tips27,loading_tips28,loading_tips29,loading_tips30","bingxuenvwanglan,changehei,changebai,datiangouhong,mijialebai,mijialehong,weitianshibai,weitianshihei,yifulitehei,dujiaoshouhei,hongniuhong"
 3,3,"loading_tips31,loading_tips32,loading_tips33,loading_tips34,loading_tips35",shilian
@@ -8,3 +8,4 @@ id,³¡¾°,ÌáÊ¾ĞÅÏ¢×é,Õ¹Ê¾ÄÚÈİ×é
 5,5,"loading_tips22,loading_tips23,loading_tips24,loading_tips25,loading_tips26,loading_tips27,loading_tips28,loading_tips29,loading_tips30","bingxuenvwanglan,changehei,changebai,datiangouhong,mijialebai,mijialehong,weitianshibai,weitianshihei,yifulitehei,dujiaoshouhei,hongniuhong"
 6,6,"loading_tips44,loading_tips45,loading_tips46,loading_tips47,loading_tips48,loading_tips49,loading_tips51",null
 ,7,loading_tips1,bingxuenvwanglan
+,8,"mythoPath_loading_tips1,mythoPath_loading_tips2,mythoPath_loading_tips3,mythoPath_loading_tips4",xinyang

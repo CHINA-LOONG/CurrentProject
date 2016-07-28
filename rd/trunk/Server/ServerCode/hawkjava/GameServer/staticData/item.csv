@@ -271,3 +271,4 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 90006,name_90006_huolizhi,-1,icon_huolizhi,-1,1,1,0,1,-1,tips_90006_huolizhi,1,-1,-1,-1,-1,999999999,1,,,,,-1,-1,-1,,-1,-1,-1,,1
 90007,name_90007_jingyanzhi,-1,icon_exp2,-1,1,1,0,1,-1,tips_90007_jingyanzhi,1,-1,-1,-1,-1,999999999,1,,,,,-1,-1,-1,,-1,-1,-1,,1
 90008,name_90008_huodongdian,-1,icon_exp2,-1,1,1,0,1,-1,tips_90008_huodongdian,1,-1,-1,-1,-1,999999999,1,,,,,-1,-1,-1,,-1,-1,-1,,1
+90009,name_90009_xinyangzhili,-1,icon_xinyangbi1,-1,1,1,0,1,-1,tips_90009_xinyangzhili,1,-1,-1,-1,-1,999999999,1,,,,,-1,-1,-1,,-1,-1,-1,,1

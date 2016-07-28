@@ -51,6 +51,10 @@ public class OpenBaoxiangDlg : UIBase {
 		
 		chgValue = GetComponent<ChangeValueByHand> ();
 		chgValue.callback = OnUseKeysValueChanged;
+		useCountDescText.text = StaticDataMgr.Instance.GetTextByID ("bag_usenum");
+		cancelButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_quxiao");
+		OKButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_queding");
+
 	}
 	
 	public override void Clean()

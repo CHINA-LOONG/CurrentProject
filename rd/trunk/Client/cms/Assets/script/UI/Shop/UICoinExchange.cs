@@ -22,11 +22,13 @@ public class UICoinExchange : UIBase
 
 	public	static	void	Open()
 	{
-		UIMgr.Instance.OpenUI_ (UICoinExchange.ViewName, false);
-		if (StatisticsDataMgr.Instance.gold2coinExchargeTimes >= MaxExchangeCount)
-		{
+		if (StatisticsDataMgr.Instance.gold2coinExchargeTimes >= MaxExchangeCount) {
 			MsgBox.PromptMsg.Open (MsgBox.MsgBoxType.Conform,
 			                       StaticDataMgr.Instance.GetTextByID ("shop_noduihuantimes"));//shop_noduihuantimes shop_nojinbi_noduihuan
+		}
+		else
+		{
+			UIMgr.Instance.OpenUI_ (UICoinExchange.ViewName, false);
 		}
 	}
 
@@ -121,7 +123,7 @@ public class UICoinExchange : UIBase
 
 		PB.HSShopGold2CoinRet msgret = msg.GetProtocolBody<PB.HSShopGold2CoinRet> ();
 		int getJinbi = msgret.changeCount * msgret.multiple;
-		StatisticsDataMgr.Instance.gold2coinExchargeTimes = getJinbi;
+		StatisticsDataMgr.Instance.gold2coinExchargeTimes = msgret.changeCount;
 		string immsg = null;
 		if(msgret.multiple > 1)
 		{

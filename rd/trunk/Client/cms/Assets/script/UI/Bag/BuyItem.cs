@@ -77,6 +77,12 @@ public class BuyItem : UIBase
 
 		chgValue = GetComponent<ChangeValueByHand> ();
 		chgValue.callback = OnBuyCountValueChanged;
+
+		cancelButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_quxiao");
+		OKButton.GetComponentInChildren<Text> ().text = StaticDataMgr.Instance.GetTextByID ("ui_queding");
+
+		buyCountDescText.text = StaticDataMgr.Instance.GetTextByID ("bag_buynum");
+		totalDescText.text = StaticDataMgr.Instance.GetTextByID ("bag_sum");
 	}
 
 	public override void Clean()

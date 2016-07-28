@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 [RequireComponent(typeof(HomeButton))]
 public class TabButton : MonoBehaviour 
@@ -45,5 +46,10 @@ public class TabButton : MonoBehaviour
 		{
 			group.OnChangeItem(index);
 		}
+	}
+
+	public	void	SetButtonTitleName(string title)
+	{
+		homeButton.button.GetComponentInChildren<Text> ().text = title;
 	}
 }

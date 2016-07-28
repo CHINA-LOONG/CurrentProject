@@ -1640,7 +1640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .39199999}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 21300000, guid: 4ff2a92833bdfbf4899757f903d9d1b4, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1961,6 +1961,7 @@ MonoBehaviour:
   btnClose: {fileID: 11414762}
   btnOnekey: {fileID: 11410438}
   tabGroup: {fileID: 11442968}
+  scrollRect: {fileID: 11451128}
   mailList: {fileID: 11454002}
   mailContent: {fileID: 11485936}
 --- !u!114 &11462224
@@ -3075,9 +3076,9 @@ RectTransform:
   - {fileID: 22449074}
   m_Father: {fileID: 22495488}
   m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: 1}
-  m_AnchorMax: {x: .5, y: 1}
-  m_AnchoredPosition: {x: 13.8999996, y: -43.25}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 13.8999996, y: 276.75}
   m_SizeDelta: {x: 200, y: 70}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22408734
