@@ -1176,7 +1176,7 @@ loading_dujiaoshouhei,<color=#b888ff>独角兽</color>,<color=#b888ff>Pegasus</c
 loading_hongniuhong,<color=#fff8c8>米诺到诺斯</color>,<color=#fff8c8>Minotaur</color>
 loading_tips1,任务是获得角色经验最快的途径哦！,Completing quests is the best way to get EXP for your character!
 loading_tips2,日常任务中每日共有两次免费领取活力的机会：12点，18点，可不要错过哦！,"There are 2 chances to receive free Energy each day in the Daily Quests: 12:00, and 18:00. Don't miss them!"
-loading_tips3,“补签”功能可以保证你连续签到哦！,"Purchasing ”Missed Login"" can ensure you get every day's login reward！"
+loading_tips3,“补签”功能可以保证你连续签到哦！,"Purchasing ""Missed Login"" can ensure you get every day's login reward！"
 loading_tips4,一些没有用的材料可以在背包里卖掉换钱。,Some unneeded items in your Bag can be sold for Coins.
 loading_tips5,宠物不给力？尝试一下召唤吧~,Not satisfied with your current monsters? Try summoning some more!
 loading_tips6,集齐宠物碎片能够合成宠物。,Collect monster fragments to craft more monsters!
@@ -1322,144 +1322,122 @@ Attacking targets of the element you are weak against reduces damage effects.
 "
 instanceselect_open_006,需要通关前一章挑战副本才能开启该章节哦！,You must clear the previous chapter on heroic difficulty to unlock this chapter!
 shield_tips,当前内容含有违禁词语,Current content contains prohibited words.
-lv501_title,1.请问你的年龄段是？,1.What’s your age-group?
-lv502_title,2.每天大概花费多长时间在移动设备上玩游戏呢？,2.How much time do you spend daily playing games on your phone/tablet?
-lv503_title,3.你喜欢玩SRPG类型游戏吗?（比如魔灵召唤，魔法英雄）,"3.Do you enjoy playing SRPG games (like Magic Rush, Summoners War, etc.)?"
-lv504_title,4.你喜欢我们游戏的美术风格吗？（分越高越喜欢） ,"4.Do you like the art style of our game? (1 = not satisifed, 5 = very satisfied)"
-lv505_title,5.你喜欢我们游戏的界面UI吗？（分越高越喜欢） ,"5.Do you like the user interface of our game? (1 = not satisifed, 5 = very satisfied)"
-lv506_title,6.你认为照妖镜的玩法怎么样？,6.What do you think about the Mytho Lens feature?
-lv507_title,7.你觉得我们游戏的战斗系统如何?,7.What do you think about the game's battle system?
-lv508_title,8.你认为新手引导对你有帮助吗？,8.What do you think about the game’s current tutorial?
-lv509_title,9.你经常访问动漫/游戏论坛或者网站吗?如果有请列举一些,9.Do you often visit anime/game forums or websites? If so which ones?
-lv2501_title,1.当你进行到哪一章时，感到战斗开始困难 ?,1.At which chapter did you feel the game started to become difficult?
-lv2502_title,2.你觉得现在的活力够用吗？,2.Do you think you have enough Energy to use in-game?
-lv2503_title,3.请为现在的装备获得难度打分（分越高越难） ,"3.Please rate the difficulty in acquiring equipment now (1 = very easy, 5 = very difficult)"
-lv2504_title,4.请为现在的装备成长的乐趣打分（分越高越有乐趣） ,"4.Please rate the difficulty of equipment progression now (1 = not fun, 5 = very fun)"
-lv2505_title,5.请为现在装备UI表现打分（分越高越满意） ,"5.Please rate the equipment UI menus (1 = very bad, 5 = very good)"
-lv2506_title,6.你觉得属性相克在战斗中表现如何？,6.How do you feel about the performance of element affinity effects in-game?
-lv2507_title,7.你愿意分解宠物获得灵魂本源去合成稀有宠物吗？ ,7.Are you willing to grind Lore Cores to collect rare monsters?
-lv2508_title,8.你觉得战斗中输出职业的宠物是否起到了应该有的作用并为他们起到的作用打分（分越高越有用）,"8.Do you think that monsters of Dps serve their purpose well in battle?(1 = useless, 5 = very useful)"
-lv2509_title,9.你觉得战斗中治疗职业的宠物是否起到了应该有的作用并为他们起到的作用打分（分越高越有用）,"9.Do you think that monsters of Heal serve their purpose well in battle?(1 = useless, 5 = very useful)"
-lv2510_title,10.你觉得战斗中辅助职业的宠物是否起到了应该有的作用并为他们起到的作用打分（分越高越有用）,"10.Do you think that monsters of Support serve their purpose well in battle?(1 = useless, 5 = very useful)"
-lv2511_title,11.你觉得战斗中坦克职业的宠物是否起到了应该有的作用并为他们起到的作用打分（分越高越有用）,"11.Do you think that monsters of Tank serve their purpose well in battle?(1 = useless, 5 = very useful)"
-lv2512_title,12.你对怪物的技能丰富程度是否满意（分越高越满意） ,"12.Are you statisfied with the variety of monster abilities? (1 = not satisifed, 5 = very satisfied)"
-lv2513_title,13.你对怪物的技能的视觉特效是否满意（分越高越满意） ,"13.Are you statisfied with the visual effects of monster abilities? (1 = not satisifed, 5 = very satisfied)"
-lv2514_title,14.你对怪物的技能的平衡性是否满意（分越高越满意） ,"14.Are you statisfied with the balance of monster abilities? (1 = not satisifed, 5 = very satisfied)"
-lv2515_title,15.你现在已经25级以上，照妖镜玩法是否还让你感到有乐趣（分越高越有乐趣） ,"15.You have already reached level 25, do you still think the Mytho Lens is fun? (1 = not fun, 5 = very fun)"
-lv2516_title,16.如果下一个新的版本我们会对宠物的培养加强，你希望是【开放】 ,16.What would you like to see if we were to make adjustments to the monster growth system next version? (Answer freely)
-lv2517_title,17.如果下一个新的版本我们会对战斗过程加强，你希望是【开放】 ,17.What would you like to see if we were to make adjustments to the battle system next version? (Answer freely)
+lv501_title,1.你每天花在这款游戏上多少时间?,1.How much time do you spend daily playing games on your phone/tablet?
+lv502_title,2.你平均每天登陆几次?,2.How many times do you log in each day?
+lv503_title,3.你喜欢游戏的交互界面吗?,3.Do you like the user interface of our game?
+lv504_title,4.你对照妖镜有什么看法吗?,4.What do you think about the Mytho Lens feature?
+lv505_title,5.你对游戏的战斗有何看法?,5.What do you think about the game's battle system?
+lv506_title,6.你喜欢现在的新手教程吗?,6.What do you think about the game’s current tutorial?
+lv507_title,7.你是否能认出游戏中的神怪来自哪些神话,7.How well do you recognize the monsters in the game from the mythologie?
+lv508_title,8.一般你最常从哪个地方获取游戏信息,8.Where do you usually go for gaming news?
+lv2001_title,1.当你进行到哪一章时，感到战斗开始困难呢？,1.At which chapter did you feel the game started to become difficult?
+lv2002_title,2.你觉得战斗中，输出职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"2.Do you think that monsters of Dps serve their purpose well in battle?(1 = useless, 5 = very useful)"
+lv2003_title,3.你觉得战斗中，治疗职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"3.Do you think that monsters of Heal serve their purpose well in battle?(1 = useless, 5 = very useful)"
+lv2004_title,4.你觉得战斗中，支援职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"4.Do you think that monsters of Support serve their purpose well in battle?(1 = useless, 5 = very useful)"
+lv2005_title,5.你觉得战斗中，肉盾职业的神怪是否起到了应该有的作用，并为他们起到的作用打分（分越高越有用）,"5.Do you think that monsters of Tank serve their purpose well in battle?(1 = useless, 5 = very useful)"
+lv2006_title,6.你对怪物的技能丰富程度是否满意（分越高越满意）,"6.Are you statisfied with the variety of monster abilities? (1 = not satisifed, 5 = very satisfied)"
+lv2007_title,7.你对怪物的技能的视觉特效是否满意（分越高越满意）,"7.Are you statisfied with the visual effects of monster abilities? (1 = not satisifed, 5 = very satisfied)"
+lv2008_title,8.你对怪物的技能的平衡性是否满意（分越高越满意）,"8.Are you statisfied with the balance of monster abilities? (1 = not satisifed, 5 = very satisfied)"
+lv2009_title,9.你觉得ss和s品质的怪物够酷吗？,9.Do?you?think?S?&?SS?grade?monsters?are?cool?enough?
+lv2010_title,10.你现在已经25级以上，照妖镜玩法是否还让你感到有乐趣（分越高越有乐趣）,"10.You have already reached level 20, do you still think the Mytho Lens is fun? "
+lv2011_title,11.你平均每天登陆几次？,11.How many times do you log in each day?
+lv2012_title,12.你觉得神话守护者的奖励如何？,12.What do you think of the rewards from Mytho Guardian?
+lv2013_title,13.你觉得神话守护者的难度如何？,13.How would you rate the difficulty of Myth Guardian mode?
 lv5questionfor1000,新手玩家问卷,The novice players questionnaire
-lv25questionfor1000,资深玩家问卷,Senior players questionnaire
+lv20questionfor1000,资深玩家问卷,Senior players questionnaire
 lv5question_desc,完成问卷可以获得钻石奖励！,Complete the survey can get diamond awards!
-lv25question_desc,完成问卷可以获得丰厚奖励！,Complete the survey can have huge rewards!
-lv501_op1,18岁以下,18 and below
-lv501_op2,18 - 25,18 - 25
-lv501_op3,25 - 30,25 - 30
-lv501_op4,30 - 35,30 - 35
-lv501_op5,35+,35+
-lv502_op1,不到1小时,1 hour or less
-lv502_op2,1-3小时,1 - 3 hours
-lv502_op3,3-5小时,3 - 5 hours
-lv502_op4,5小时以上,5 hours +
-lv503_op1,喜欢,Yes
-lv503_op2,不喜欢,No
-lv504_op1,1,1
-lv504_op2,2,2
-lv504_op3,3,3
-lv504_op4,4,4
-lv504_op5,5,5
-lv505_op1,1,1
-lv505_op2,2,2
-lv505_op3,3,3
-lv505_op4,4,4
-lv505_op5,5,5
-lv506_op1,我喜欢这个，它让游戏非常有特色,"I love this feature, it makes the game unique."
-lv506_op2,还可以，但是我认为可以更好玩一些,"Not bad, but I think it could be made more fun."
-lv506_op3,对于新手来说比较难以理解,It's hard to understand for beginners.
-lv506_op4,用了几次之后就会感觉有些无聊,It gets boring after using it several times.
-lv506_op5,对我来说这个并不是特别重要,This feature is not so important for me.
-lv506_op6,照妖镜是啥？我不知道,What is the Mytho Lens? I don’t know!
-lv507_op1,太简单了，缺乏策略性,It's too easy and lacks strategy.
-lv507_op2,有点简单但是我很喜欢,"A little simple but I like it, I like an easy game."
-lv507_op3,对我来说还可以，我更注重培养宠物,"It's ok for me, I focus more on training my monsters."
-lv507_op4,对我来说有些困难，但是我喜欢挑战,It's a little hard for me but I like the challenge.
-lv507_op5,战斗实在是太难了，我很受打击,The battles are too hard and make me frustrated.
-lv508_op1,它让我更好的理解这个游戏的玩法,It helped me understand the game well.
-lv508_op2,有点帮助，但是帮助不明显,"It was helpful, but it's still not enough."
-lv508_op3,引导时间太长,The tutorial is too long.
-lv508_op4,对我来说没什么帮助,It was not helpful at all.
-lv2501_op1,第一章 ,Chapter 1
-lv2501_op2,第二章 ,Chapter 2
-lv2501_op3,第三章 ,Chapter 3
-lv2501_op4,第四章 ,Chapter 4
-lv2502_op1,我每天都会很乐意的消耗所有活力，并且活力限制不会带给我困扰 ,"I willingly spend all my Energy every day, and the Energy limit doesn't affect me."
-lv2502_op2,前几天够用，玩到后面感觉开始不够用 ,"I had enough early on, but later in the game I always needed more."
-lv2502_op3,前几天不够，玩到后面基本用不完 ,"It was not enough initially, but later on it seemed to be enough."
-lv2502_op4,活力一直不够用 ,I have never had enough Energy.
-lv2502_op5,活力一直很富余 ,I have always had Energy to spare.
-lv2503_op1,1,1
-lv2503_op2,2,2
-lv2503_op3,3,3
-lv2503_op4,4,4
-lv2503_op5,5,5
-lv2504_op1,1,1
-lv2504_op2,2,2
-lv2504_op3,3,3
-lv2504_op4,4,4
-lv2504_op5,5,5
-lv2505_op1,1,1
-lv2505_op2,2,2
-lv2505_op3,3,3
-lv2505_op4,4,4
-lv2505_op5,5,5
-lv2506_op1,没感觉，我觉得越稀有宠物越强 ,"No feeling, I think the more rare a monster is, the stronger it is."
-lv2506_op2,有一定作用 ,It is useful to a certain amount.
-lv2506_op3,搭配好克制敌人属性的宠物非常重要 ,It is very important to plan a lineup that counters the enemy's elements.
-lv2506_op4,克制效果过强，我不喜欢 ,The effects of countered elements are too strong. I don't like it.
-lv2507_op1,很多常见的宠物够用了，我宁愿去培养他们 ,"There are plenty of common monsters, I would rather work on training them."
-lv2507_op2,我会尝试去收集一些稀有宠物 ,I would try to collect some more rare monsters.
-lv2507_op3,稀有宠物简直破坏平衡，而且我几乎得不到他们 ,"Rare monsters simply wreck the balance of the game. Also, they are too hard to get."
-lv2507_op4,我不知道灵魂本源是什么 ,I don't know what Lore Cores are.
-lv2508_op1,1,1
-lv2508_op2,2,2
-lv2508_op3,3,3
-lv2508_op4,4,4
-lv2508_op5,5,5
-lv2509_op1,1,1
-lv2509_op2,2,2
-lv2509_op3,3,3
-lv2509_op4,4,4
-lv2509_op5,5,5
-lv2510_op1,1,1
-lv2510_op2,2,2
-lv2510_op3,3,3
-lv2510_op4,4,4
-lv2510_op5,5,5
-lv2511_op1,1,1
-lv2511_op2,2,2
-lv2511_op3,3,3
-lv2511_op4,4,4
-lv2511_op5,5,5
-lv2512_op1,1,1
-lv2512_op2,2,2
-lv2512_op3,3,3
-lv2512_op4,4,4
-lv2512_op5,5,5
-lv2513_op1,1,1
-lv2513_op2,2,2
-lv2513_op3,3,3
-lv2513_op4,4,4
-lv2513_op5,5,5
-lv2514_op1,1,1
-lv2514_op2,2,2
-lv2514_op3,3,3
-lv2514_op4,4,4
-lv2514_op5,5,5
-lv2515_op1,1,1
-lv2515_op2,2,2
-lv2515_op3,3,3
-lv2515_op4,4,4
-lv2515_op5,5,5
+lv20question_desc,完成问卷可以获得丰厚奖励！,Complete the survey can have huge rewards!
+lv501_op1,少于1小时,1 hour or less
+lv501_op2,1至3小时,1 - 3 hours
+lv501_op3,3至5小时,3 - 5 hours
+lv501_op4,5小时以上,5 hours +
+lv502_op1,不是每天都登陆,not every day
+lv502_op2,一天1次,Once per day
+lv502_op3,2~3次每天,2~3 times per day
+lv502_op4,每天超过3次,3+ times per day
+lv503_op1,是的,Yes
+lv503_op2,也许吧，但是我觉得还能更好,"Maybe, but still needs to be improved"
+lv503_op3,不喜欢,No
+lv504_op1,我喜欢这个功能，它让游戏很特别,"I love this feature, it makes the game unique."
+lv504_op2,不错，但我希望它更好玩,"Not bad, but I think it could be made more fun."
+lv504_op3,对于新手来说，有点难以理解怎么玩,It's hard to understand for beginners.
+lv504_op4,用过几次后就觉得无聊了,It gets boring after using it several times.
+lv505_op1,战斗太简单，没有什么策略性,It's too easy and lacks strategy.
+lv505_op2,有点简单但我觉得还好,A little simple but its ok for me
+lv505_op3,有点难但是我喜欢有策略的战斗,It's a little hard for me but I like the challenge.
+lv505_op4,战斗太难了,The battles are too hard and make me frustrated.
+lv506_op1,对我很有用,It helped me understand the game well.
+lv506_op2,仍需要改进,"It was helpful, but it's still not enough."
+lv506_op3,时间太长了,The tutorial is too long.
+lv506_op4,基本上没啥用,It was not helpful at all.
+lv507_op1,我认识大部分,I know most of them
+lv507_op2,我能认出一些,I can recognize some of them
+lv507_op3,我基本不认识,I don't really recognize most of them
+lv508_op1,YouTube,YouTube
+lv508_op2,Reddit,Reddit
+lv508_op3,Facebook,Facebook
+lv508_op4,Gaming forums/websites,Gaming forums/websites
+lv508_op5,twitter,twitter
+lv508_op6,instergram,instergram
+lv2001_op1,第一章,Chapter 1
+lv2001_op2,第二章,Chapter 2
+lv2001_op3,第三章,Chapter 3
+lv2001_op4,第四章,Chapter 4
+lv2001_op5,第五章,Chapter 5
+lv2002_op1,5,5
+lv2002_op2,4,4
+lv2002_op3,3,3
+lv2002_op4,2,2
+lv2002_op5,1,1
+lv2003_op1,5,5
+lv2003_op2,4,4
+lv2003_op3,3,3
+lv2003_op4,2,2
+lv2003_op5,1,1
+lv2004_op1,5,5
+lv2004_op2,4,4
+lv2004_op3,3,3
+lv2004_op4,2,2
+lv2004_op5,1,1
+lv2005_op1,5,5
+lv2005_op2,4,4
+lv2005_op3,3,3
+lv2005_op4,2,2
+lv2005_op5,1,1
+lv2006_op1,5,5
+lv2006_op2,4,4
+lv2006_op3,3,3
+lv2006_op4,2,2
+lv2006_op5,1,1
+lv2007_op1,5,5
+lv2007_op2,4,4
+lv2007_op3,3,3
+lv2007_op4,2,2
+lv2007_op5,1,1
+lv2008_op1,5,5
+lv2008_op2,4,4
+lv2008_op3,3,3
+lv2008_op4,2,2
+lv2008_op5,1,1
+lv2009_op1,非常酷,Really cool
+lv2009_op2,还行,They're ok
+lv2009_op3,和A级B级差不多,About same as A and B grade
+lv2009_op4,需要加强,Needs improvement 
+lv2010_op1,让我很无聊,make me so bored
+lv2010_op2,有点不好玩,a little boring
+lv2010_op3,还行,just ok
+lv2010_op4,仍然有趣,still fun
+lv2011_op1,每天1次,more than 3 days 1 time
+lv2011_op2,每天2~3次,2 days One time
+lv2011_op3,每天3次以上,Once per day
+lv2011_op4,2天才登陆一次,2~3 times per day
+lv2011_op5,我超过3天可能才上线一次,3+ times per day
+lv2012_op1,很好,Very good
+lv2012_op2,一般,Average
+lv2012_op3,不好,Poor
+lv2013_op1,简单,easy
+lv2013_op2,普通,Normal
+lv2013_op3,困难,Difficult
 gift_name_102,累计登录奖励,Accumulated Login Rewards
 gift_name_103,连续登录奖励,Daily Login Streak Reward
 gift_name_104,冲级礼包,Level Up Madness Reward
@@ -1476,9 +1454,9 @@ gift_event_expire,已超过活动期限,Event has expired
 gift_reward_001,获得奖励,Rewards Received
 gift_reward_002,兑换成功,Exchange Complete
 gift_event_exchange,达到兑换上限,Exchange limit reached
-exchange_need,需要,Req.
+exchange_need,需要积分 ,Req.Points 
 exchange_button,兑换,Exchange
-exchange_surplus,剩余,Stock
+exchange_surplus,剩余次数 ,Remaining 
 gift_exchange_title,兑换奖励,Exchange
 102_name1,累计登录1天,Accumulate 1 login day
 102_name2,累计登录2天,Accumulate 2 login days
@@ -1564,7 +1542,7 @@ gift_event_notreach,未达成,In progress
 invite_alreadyinvite,领取,Collect
 invite_paihangbang,排行榜,Rankings
 invite_fuzhi,快速邀请,Quick Invite
-invite_imtext,我的id是{0}，快来接收我的邀请吧！,"My id is {0}, please accept my invitation!"
+invite_imtext,我的id是{0}，快来接收我的邀请吧，可在“活动中心——好友助力”处进行操作。,"My id is {0}, please accept my invitation under Friends Collaboration in the Events."
 facebookshare_fuhuo,"立即获得免费复活机会
 （每天1次）！","Immediately revive for free 
 (once per day)!"
@@ -1601,19 +1579,23 @@ language_hour,小时,Hour
 language_minute,分钟,Minute
 language_second,秒,Second
 language_suipianTips,随机获得一定数量宠物碎片，稀有碎片在等着你哦！,Open to get any random monster fragments. Rare monster fragments are waiting for you!
-specialsell_event_title,活动礼包,Event Package
-specialsell_new_title,新手礼包,New Player Package
+specialsell_event_title,活动礼包,Special Package
+specialsell_new_title,新人礼,New Player Surprise
 specialsell_new_desc,只能购买其中<color=#ffcc00>一个</color>礼包哦！,Can only be purchased <color=#ffcc00>once</color>!
 specialsell_jinjie_title,宠物进阶礼包,Monster Advancement Package
 specialsell_jinjie_desc,快速提升<color=#ffcc00>宠物战力</color>的绝佳方式！,The best way to quickly increase <color=#ffcc00>monster BP</color>!
 specialsell_suipian_title,惊喜碎片礼包,Surprise Fragment Package
-specialsell_suipian_desc,可以获得珍惜宠物碎片哦！,Get rare monster fragments!
+specialsell_suipian_desc,可以获得珍稀宠物碎片哦！,Get rare monster fragments!
 specialgift_buySuccess,成功购买<color=#ffcc00>{0}</color>礼包！,You have purchased the <color=#ffcc00>{0}</color> package!
 spell_hit_stunImmune,免疫眩晕,Stun Immune
-main_icon_huodong,活动礼包,Event Package
-main_icon_xuanze,新人礼,New Player Gift
+spell_hit_noHealImmune,免疫禁止回血,Heal Prevent Immune
+spell_hit_tauntImmune,免疫嘲讽,Provoke Immune
+spell_hit_debuffImmune,免疫减益,Debuff Immune
+spell_hit_DotImmune,免疫Dot,Dot Immune
+main_icon_huodong,活动礼包,Special Package
+main_icon_xuanze,新人礼,New Player Surprise
 loading_special,各个国家都存在传说和神话。我们的存在绝非偶然。,Legends and Gods exist in every country and culture. Our existence is no coincidence.
-specialgift_title,活动礼包,Event Package
+specialgift_title,活动礼包,Special Package
 giftspecial_jinjie_name,宠物进阶,Monster Advancement
 giftspecial_suipian_name,惊喜碎片,Surprise Fragment
 pet_detail_skill_buy10,购买<color=#ffcc00>10</color>点技能点数,Purchase <color=#ffcc00>10</color> ability points
@@ -1624,18 +1606,18 @@ giftspecial_event_title,特殊礼包购买,Purchase special package
 giftspecial_event_desc,可以在此购买已经触发的特殊礼包！,Here you may purchase special packages that have been triggered
 giftspecial_xuanze11_desc,剩余时间 ,Time left 
 giftspecial_xuanze12_desc,剩余时间 ,Time left 
-common_attr_health_tips,增加体力可增加生命值,Increasing STA can increase HP
-common_attr_strenth_tips,增加力量可提升物理攻击力,Increasing STR can increase ATK
-common_attr_intelligence_tips,增加智力可提升法术攻击力,Increasing INT can increase magic ATK
-common_attr_defence_tips,增加防御可降低所受伤害,Increasing DEF can reduce damage received
-common_attr_speed_tips,速度快的单位更早出手,Units with higher SPD take action earlier
-detail_life_tips,受到伤害时损失生命值,Lose HP upon taking damage
-detail_physatk_tips,增加物理伤害效果,Increases phys damage effects
-detail_magicatk_tips,增加法术伤害效果,Increases magic damage effects
-common_attr_critical_ratio_tips,提高暴击的几率,Increases crit rate
-common_attr_critical_dmg_tips,提高暴击时伤害效果,Increases crit damage effect
+common_attr_health_tips,增加体力可增加生命值,Increasing Stamina (STA) can increase Health Points (HP)
+common_attr_strenth_tips,增加力量可提升物理攻击力,Increasing Strength (STR) can increase Physical Attack (PHYS ATK)
+common_attr_intelligence_tips,增加智力可提升法术攻击力,Increasing Intelligence (INT) can increase Magic Attack (MAGIC ATK)
+common_attr_defence_tips,增加防御可降低所受伤害,Increasing Defense (DEF) can reduce damage received
+common_attr_speed_tips,速度快的单位更早出手,Units with higher Speed (SPD) take action earlier
+detail_life_tips,受到伤害时损失生命值,Lose Health Point (HP) upon taking damage
+detail_physatk_tips,增加物理伤害效果,Increases physical damage effects
+detail_magicatk_tips,增加法术伤害效果,Increases magical damage effects
+common_attr_critical_ratio_tips,提高暴击的几率,Increases critical rate
+common_attr_critical_dmg_tips,提高暴击时伤害效果,Increases critical damage effect
 common_attr_heal_ratio_tips,提高被治疗的效果,Increases healing effects
-common_attr_energy_tips,增加前置能量可更早使用大招,Increases initial power and allows ult to be cast more quickly
+common_attr_energy_tips,增加前置能量可更早使用大招,Increases initial power and allows ultimate to be cast more quickly
 facebook_record_009,不可以填写自己的ID哦,Your own ID is not allowed.
 pet_detail_stage_suretips,包含高于进阶要求的最低品质的宠物或道具，是否确认选择？,Contains monsters or items that exceed the lowest grade required for advancement. Continue?
 pet_detail_stage_neednum,需求数量：{0}/{1},Total Require:{0}/{1}
@@ -1668,7 +1650,7 @@ mythoPath_surprise_title,惊喜之书,Tome of Surprises
 mythoPath_surprise_desc,概率获得下列物品之一,Set chance of receiving 1 of the following items
 mythoPath_battle_start,挑战,Battle
 mythoPath_surprise_gailv,概率获得,Chance of dropping
-mythoPath_battle_dead,该宠物已经阵亡，无法参加今日挑战,该宠物已经阵亡，无法参加今日挑战
+mythoPath_battle_dead,该宠物已经阵亡，无法参加今日挑战,This monster has already died and is unable to participate in today's challenge
 mythoPath_loading_tips1,合理搭配阵容才是通关的关键！,A well-planned lineup is the true key to clearing stages!
 mythoPath_loading_tips2,培养更多的宠物会大幅度提升通关的几率哦！,Training more monsters will greatly increase your chances of clearing stages!
 mythoPath_loading_tips3,惊喜之书的奖励可是十分诱人的哦！,Rewards from the Tome of Surprises can be pretty amazing!
@@ -1684,9 +1666,9 @@ giftspecial_suipian2_name,碎片礼包（稀有）,Fragment Package (Rare)
 giftspecial_suipian2_desc,共可获得<color=#ffcc00>60片宠物碎片</color>，必定获得<color=#ffcc00>10片A级及以上宠物碎片</color>！,"Contains a total <color=#ffcc00>60 fragments</color>, with an average of <color=#ffcc00>10 fragments being A grade or higher</color>!"
 giftspecial_huodong1_name,惊喜礼包,Surprise Package
 giftspecial_huodong1_desc,你想要的<color=#ffcc00>SS级宠物</color>就在眼前！,The <color=#ffcc00>SS grade monster</color> you've been after is right in front of you!
-giftspecial_huodong2_name,珍惜纹章礼包,Prized Insignia Package
+giftspecial_huodong2_name,珍稀纹章礼包,Prized Insignia Package
 giftspecial_huodong2_desc,得到<color=#ffcc00>顶级纹章</color>的绝佳机会！,A great chance to receive <color=#ffcc00>powerful insignias</color>!
-giftspecial_xuanze1_name,新人礼,New Player Package
+giftspecial_xuanze1_name,新人礼,New Player Surprise
 giftspecial_xuanze1_desc,新人礼遇，机会难得！只能选择<color=#ffcc00>一个</color>进行购买哦！,A package any new player won't want to miss! Players may only choose <color=#ffcc00>one</color>!
 giftspecial_xuanze2_name,中级礼包,Intermediate Package
 giftspecial_xuanze2_desc,超值钜惠，错过难寻！只能选择<color=#ffcc00>一个</color>进行购买哦！,Great value that is hard to pass up! Players may only choose <color=#ffcc00>一个</color>one!
@@ -1702,118 +1684,118 @@ mythopathlevel6,寓言之书,Fables
 mythopathlevel7,神话之书,Fairy tales
 mythopathlevel8,原始之书,Primitive
 mythopathlevel9,传奇之书,Legends
-gift_name_110,九尾狐的礼物,九尾狐的礼物
-gift_name_111,登录有礼,登录有礼
-gift_name_112,冲级礼包,冲级礼包
-gift_name_113,起航礼包,起航礼包
-gift_name_114,豪华签到,豪华签到
-gift_name_115,充值有礼,充值有礼
-gift_name_116,畅爽竞技场,畅爽竞技场
-gift_name_117,玩转通天塔,玩转通天塔
-gift_name_118,公会欢乐多,公会欢乐多
-gift_name_119,激情大冒险,激情大冒险
-gift_name_120,惊喜十连抽,惊喜十连抽
-gift_desc_110,活动期间，累计登录指定天数，即可活动丰厚钻石、资源奖励，更有稀有宠物碎片礼包在等你！,活动期间，累计登录指定天数，即可活动丰厚钻石、资源奖励，更有稀有宠物碎片礼包在等你！
-gift_desc_111,活动期间，每日登录都有海量钻石、资源奖励哦！,活动期间，每日登录都有海量钻石、资源奖励哦！
-gift_desc_112,活动期间，达到指定等级，可以领取丰厚钻石、资源奖励哦！,活动期间，达到指定等级，可以领取丰厚钻石、资源奖励哦！
-gift_desc_113,活动期间，玩家首次登陆游戏即可获得我们准备的起航礼包！,活动期间，玩家首次登陆游戏即可获得我们准备的起航礼包！
-gift_desc_114,活动期间，每日充值指定数量钻石，即可获得对应豪华奖励！,活动期间，每日充值指定数量钻石，即可获得对应豪华奖励！
-gift_desc_115,活动期间，累计充值达到指定数量钻石即可获得对应钻石和金钱返现哦！,活动期间，累计充值达到指定数量钻石即可获得对应钻石和金钱返现哦！
-gift_desc_116,活动期间，每日完成竞技场任务，即可获得钻石、金币奖励，更可以兑换惊喜奖励！,活动期间，每日完成竞技场任务，即可获得钻石、金币奖励，更可以兑换惊喜奖励！
-gift_desc_117,活动期间，完成指定次数通天塔即可赢取钻石、金币奖励，更可以兑换惊喜通天塔奖励哦！,活动期间，完成指定次数通天塔即可赢取钻石、金币奖励，更可以兑换惊喜通天塔奖励哦！
-gift_desc_118,活动期间，完成指定公会活动即可领取惊喜奖励，更可以兑换稀有宝箱钥匙！,活动期间，完成指定公会活动即可领取惊喜奖励，更可以兑换稀有宝箱钥匙！
-gift_desc_119,活动期间，每日领取指定次数大冒险奖励，即可获得钻石和金币奖励,活动期间，每日领取指定次数大冒险奖励，即可获得钻石和金币奖励
-gift_desc_120,活动期间，累计完成指定次数钻石十连抽，即可领取超值奖励以及稀有宠物碎片,活动期间，累计完成指定次数钻石十连抽，即可领取超值奖励以及稀有宠物碎片
-110_name1,累计登录1天,累计登录1天
-110_name2,累计登录2天,累计登录2天
-110_name3,累计登录3天,累计登录3天
-110_name4,累计登录4天,累计登录4天
-110_name5,累计登录5天,累计登录5天
-110_name6,累计登录6天,累计登录6天
-110_name7,累计登录7天,累计登录7天
-110_name8,累计登录8天,累计登录8天
-110_name9,累计登录9天,累计登录9天
-110_name10,累计登录10天,累计登录10天
-110_name11,累计登录11天,累计登录11天
-110_name12,累计登录12天,累计登录12天
-110_name13,累计登录13天,累计登录13天
-110_name14,累计登录14天,累计登录14天
-110_name15,累计登录15天,累计登录15天
-110_name16,累计登录16天,累计登录16天
-110_name17,累计登录17天,累计登录17天
-110_name18,累计登录18天,累计登录18天
-110_name19,累计登录19天,累计登录19天
-110_name20,累计登录20天,累计登录20天
-111_name1,连续登录2天,连续登录2天
-111_name2,连续登录3天,连续登录3天
-111_name3,连续登录5天,连续登录5天
-111_name4,连续登录7天,连续登录7天
-111_name5,连续登录10天,连续登录10天
-111_name6,连续登录15天,连续登录15天
-112_name1,玩家等级达到5级,玩家等级达到5级
-112_name2,玩家等级达到10级,玩家等级达到10级
-112_name3,玩家等级达到15级,玩家等级达到15级
-112_name4,玩家等级达到20级,玩家等级达到20级
-112_name5,玩家等级达到25级,玩家等级达到25级
-112_name6,玩家等级达到30级,玩家等级达到30级
-112_name7,玩家等级达到35级,玩家等级达到35级
-112_name8,玩家等级达到40级,玩家等级达到40级
-112_name9,玩家等级达到45级,玩家等级达到45级
-112_name10,玩家等级达到50级,玩家等级达到50级
-112_name11,玩家等级达到55级,玩家等级达到55级
-112_name12,玩家等级达到60级,玩家等级达到60级
-113_name1,起航奖励,起航奖励
-114_name1,今日充值任意数量钻石,今日充值任意数量钻石
-114_name2,今日充值1600个钻石,今日充值1600个钻石
-115_name1,累计充值200个钻石,累计充值200个钻石
-115_name2,累计充值800个钻石,累计充值800个钻石
-115_name3,累计充值1600个钻石,累计充值1600个钻石
-115_name4,累计充值3200个钻石,累计充值3200个钻石
-115_name5,累计充值4800个钻石,累计充值4800个钻石
-115_name6,累计充值8000个钻石,累计充值8000个钻石
-115_name7,累计充值12800个钻石,累计充值12800个钻石
-115_name8,累计充值16000个钻石,累计充值16000个钻石
-115_name9,累计充值24000个钻石,累计充值24000个钻石
-115_name10,累计充值32000个钻石,累计充值32000个钻石
-116_name1,今日参与竞技场3次,今日参与竞技场3次
-116_name2,今日参与竞技场5次,今日参与竞技场5次
-116_name3,今日参与竞技场10次,今日参与竞技场10次
-116_name4,竞技场累计胜利10次,竞技场累计胜利10次
-116_name5,竞技场累计胜利20次,竞技场累计胜利20次
-116_name6,竞技场累计胜利50次,竞技场累计胜利50次
-117_name1,通天塔累计胜利5次,通天塔累计胜利5次
-117_name2,通天塔累计胜利10次,通天塔累计胜利10次
-117_name3,通天塔累计胜利15次,通天塔累计胜利15次
-117_name4,通天塔累计胜利20次,通天塔累计胜利20次
-117_name5,通天塔累计胜利25次,通天塔累计胜利25次
-117_name6,通天塔累计胜利30次,通天塔累计胜利30次
-117_name7,通天塔累计胜利35次,通天塔累计胜利35次
-117_name8,通天塔累计胜利40次,通天塔累计胜利40次
-117_name9,通天塔累计胜利45次,通天塔累计胜利45次
-117_name10,通天塔累计胜利50次,通天塔累计胜利50次
-118_name1,今日完成1次许愿,今日完成1次许愿
-118_name2,今日向公会成员赠送10次体力,今日向公会成员赠送10次体力
-118_name3,累计完成钻石许愿1次,累计完成钻石许愿1次
-118_name4,累计完成钻石许愿5次,累计完成钻石许愿5次
-118_name5,累计完成钻石许愿10次,累计完成钻石许愿10次
-118_name6,累计开启公会任务1次,累计开启公会任务1次
-118_name7,累计开启公会任务5次,累计开启公会任务5次
-118_name8,累计开启公会任务10次,累计开启公会任务10次
-118_name9,累计完成公会任务1次,累计完成公会任务1次
-118_name10,累计完成公会任务5次,累计完成公会任务5次
-118_name11,累计完成公会任务10次,累计完成公会任务10次
-119_name1,今日领取大冒险奖励1次,今日领取大冒险奖励1次
-119_name2,今日领取大冒险奖励3次,今日领取大冒险奖励3次
-119_name3,今日领取大冒险奖励5次,今日领取大冒险奖励5次
-119_name4,今日大冒险使用雇佣兵1次,今日大冒险使用雇佣兵1次
-119_name5,今日大冒险使用雇佣兵3次,今日大冒险使用雇佣兵3次
-119_name6,今日大冒险使用雇佣兵5次,今日大冒险使用雇佣兵5次
-120_name1,累计进行钻石十连抽1次,累计进行钻石十连抽1次
-120_name2,累计进行钻石十连抽5次,累计进行钻石十连抽5次
-120_name3,累计进行钻石十连抽10次,累计进行钻石十连抽10次
-120_name4,累计进行钻石十连抽15次,累计进行钻石十连抽15次
-120_name5,累计进行钻石十连抽20次,累计进行钻石十连抽20次
-120_name6,累计进行钻石十连抽30次,累计进行钻石十连抽30次
-120_name7,累计进行钻石十连抽50次,累计进行钻石十连抽50次
+gift_name_110,冰雪女王的礼物,Chione' Present
+gift_name_111,登录有礼,Login for Rewards
+gift_name_112,冲级礼包,Level Up Package
+gift_name_113,起航礼包,Journey Package
+gift_name_114,豪华签到,Super Login
+gift_name_115,充值有礼,Top-up for Rewards
+gift_name_116,畅爽竞技场,Double Arena
+gift_name_117,玩转通天塔,Tower of Fun
+gift_name_118,公会欢乐多,Guild Joy
+gift_name_119,激情大冒险,Passion for Adventure
+gift_name_120,惊喜十连抽,Surprise 10-Summons
+gift_desc_110,活动期间，累计登录指定天数，即可活动丰厚钻石、资源奖励，更有稀有宠物碎片礼包在等你！,"During the event period, accumulate login days up to the specified amount to get big Diamond and resource rewards, and even a rare monster fragment package!"
+gift_desc_111,活动期间，每日登录都有海量钻石、资源奖励哦！,"During the event period, log in each day to receive tons of Diamonds and resources!"
+gift_desc_112,活动期间，达到指定等级，可以领取丰厚钻石、资源奖励哦！,"During the event period, reach the specified level to receive tons of Diamonds and resources!"
+gift_desc_113,活动期间，玩家首次登录游戏即可获得我们准备的起航礼包！,"During the event period, players can receive a Journey Package upon their first login!"
+gift_desc_114,活动期间，每日充值指定数量钻石，即可获得对应豪华奖励！,"During the event period, top-up the specified amount of Diamonds to receive the corresponding rewards!"
+gift_desc_115,活动期间，累计充值达到指定数量钻石即可获得对应钻石和金钱返现哦！,"During the event period, accumulate top-up to the specified amount of diamonds to receive the corresponding amount Diamonds and coins back!"
+gift_desc_116,活动期间，每日完成竞技场任务，即可获得钻石、金币奖励，更可以兑换惊喜奖励！,"During the event period, complete Arena quests to receive Diamond and coin rewards, and even exchange for a surprise reward!"
+gift_desc_117,活动期间，完成指定次数通天塔即可赢取钻石、金币奖励，更可以兑换惊喜通天塔奖励哦！,"During the event period, complete the specified amount of Tower of Darkness to win the Diamond and coin rewards, and even exchange for a surprise reward!"
+gift_desc_118,活动期间，完成指定公会活动即可领取惊喜奖励，更可以兑换稀有宝箱钥匙！,"During the event period, complete the specified guild events to receive surprise rewards and even exchange for rare treasure keys. "
+gift_desc_119,活动期间，每日领取指定次数大冒险奖励，即可获得钻石和金币奖励,"During the event period, collect the specified amount of adventure rewards each day to receive Diamond and coin rewards!"
+gift_desc_120,活动期间，累计完成指定次数钻石十连抽，即可领取超值奖励以及稀有宠物碎片,"During the event period, accumulate the specified amount of 10 Diamond Summons to receive valuable rewards, and even rare monster fragments."
+110_name1,累计登录1天,Accumulate 1 login day
+110_name2,累计登录2天,Accumulate 2 login days
+110_name3,累计登录3天,Accumulate 3 login days
+110_name4,累计登录4天,Accumulate 4 login days
+110_name5,累计登录5天,Accumulate 5 login days
+110_name6,累计登录6天,Accumulate 6 login days
+110_name7,累计登录7天,Accumulate 7 login days
+110_name8,累计登录8天,Accumulate 8 login days
+110_name9,累计登录9天,Accumulate 9 login days
+110_name10,累计登录10天,Accumulate 10 login days
+110_name11,累计登录11天,Accumulate 11 login days
+110_name12,累计登录12天,Accumulate 12 login days
+110_name13,累计登录13天,Accumulate 13 login days
+110_name14,累计登录14天,Accumulate 14 login days
+110_name15,累计登录15天,Accumulate 15 login days
+110_name16,累计登录16天,Accumulate 16 login days
+110_name17,累计登录17天,Accumulate 17 login days
+110_name18,累计登录18天,Accumulate 18 login days
+110_name19,累计登录19天,Accumulate 19 login days
+110_name20,累计登录20天,Accumulate 20 login days
+111_name1,连续登录2天,Accumulate 2 days of continuous logins 
+111_name2,连续登录3天,Accumulate 3 days of continuous logins
+111_name3,连续登录5天,Accumulate 5 days of continuous logins
+111_name4,连续登录7天,Accumulate 7 days of continuous logins
+111_name5,连续登录10天,Accumulate 10 days of continuous logins
+111_name6,连续登录15天,Accumulate 15 days of continuous logins
+112_name1,玩家等级达到5级,Reach player level 5
+112_name2,玩家等级达到10级,Reach player level 10
+112_name3,玩家等级达到15级,Reach player level 15
+112_name4,玩家等级达到20级,Reach player level 20
+112_name5,玩家等级达到25级,Reach player level 25
+112_name6,玩家等级达到30级,Reach player level 30
+112_name7,玩家等级达到35级,Reach player level 35
+112_name8,玩家等级达到40级,Reach player level 40
+112_name9,玩家等级达到45级,Reach player level 45
+112_name10,玩家等级达到50级,Reach player level 50
+112_name11,玩家等级达到55级,Reach player level 55
+112_name12,玩家等级达到60级,Reach player level 60
+113_name1,起航奖励,Journey Reward
+114_name1,今日充值任意数量钻石,Top-up any amount of Diamonds today
+114_name2,今日充值1600个钻石,Top-up 1600 Diamonds today
+115_name1,累计充值200个钻石,Top-up up to 200 Diamonds
+115_name2,累计充值800个钻石,Top-up up to 800 Diamonds
+115_name3,累计充值1600个钻石,Top-up up to 1600 Diamonds
+115_name4,累计充值3200个钻石,Top-up up to 3200 Diamonds
+115_name5,累计充值4800个钻石,Top-up up to 4800 Diamonds
+115_name6,累计充值8000个钻石,Top-up up to 8000 Diamonds
+115_name7,累计充值12800个钻石,Top-up up to 12800 Diamonds
+115_name8,累计充值16000个钻石,Top-up up to 16000 Diamonds
+115_name9,累计充值24000个钻石,Top-up up to 24000 Diamonds
+115_name10,累计充值32000个钻石,Top-up up to 32000 Diamonds
+116_name1,今日参与竞技场3次,Battle the Arena 3 times today
+116_name2,今日参与竞技场5次,Battle the Arena 5 times today
+116_name3,今日参与竞技场10次,Battle the Arena 10 times today
+116_name4,竞技场累计胜利10次,Accumulate 10 Arena victories
+116_name5,竞技场累计胜利20次,Accumulate 20 Arena victories
+116_name6,竞技场累计胜利50次,Accumulate 50 Arena victories
+117_name1,通天塔累计胜利5次,Accumulate 5 Tower of Darkness victories
+117_name2,通天塔累计胜利10次,Accumulate 10 Tower of Darkness victories
+117_name3,通天塔累计胜利15次,Accumulate 15 Tower of Darkness victories
+117_name4,通天塔累计胜利20次,Accumulate 20 Tower of Darkness victories
+117_name5,通天塔累计胜利25次,Accumulate 25 Tower of Darkness victories
+117_name6,通天塔累计胜利30次,Accumulate 30 Tower of Darkness victories
+117_name7,通天塔累计胜利35次,Accumulate 35 Tower of Darkness victories
+117_name8,通天塔累计胜利40次,Accumulate 40 Tower of Darkness victories
+117_name9,通天塔累计胜利45次,Accumulate 45 Tower of Darkness victories
+117_name10,通天塔累计胜利50次,Accumulate 50 Tower of Darkness victories
+118_name1,今日完成1次许愿,Complete 1 Guild Wish today
+118_name2,今日向公会成员赠送10次体力,Send Energy to guild members 10 times today
+118_name3,累计完成梦之许愿1次,Complete 1 Dream Wishes 
+118_name4,累计完成梦之许愿5次,Complete 5 Dream Wishes 
+118_name5,累计完成梦之许愿10次,Complete 10 Dream Wishes 
+118_name6,累计开启公会任务1次,Open 1 Guild Quest
+118_name7,累计开启公会任务5次,Open 5 Guild Quest
+118_name8,累计开启公会任务10次,Open 10 Guild Quest
+118_name9,累计完成公会任务1次,Complete 1 Guild Quests
+118_name10,累计完成公会任务5次,Complete 5 Guild Quests
+118_name11,累计完成公会任务10次,Complete 10 Guild Quests
+119_name1,今日领取大冒险奖励1次,Collect 1 Adventure reward today
+119_name2,今日领取大冒险奖励3次,Collect 3 Adventure reward today
+119_name3,今日领取大冒险奖励5次,Collect 5 Adventure reward today
+119_name4,今日大冒险使用雇佣兵1次,Use mercenary monsters in Adventure 1 times today
+119_name5,今日大冒险使用雇佣兵3次,Use mercenary monsters in Adventure 3 times today
+119_name6,今日大冒险使用雇佣兵5次,Use mercenary monsters in Adventure 5 times today
+120_name1,累计进行钻石十连抽1次,Complete '10 Diamond Summons' 1 times
+120_name2,累计进行钻石十连抽5次,Complete '10 Diamond Summons' 5 times
+120_name3,累计进行钻石十连抽10次,Complete '10 Diamond Summons' 10 times
+120_name4,累计进行钻石十连抽15次,Complete '10 Diamond Summons' 15 times
+120_name5,累计进行钻石十连抽20次,Complete '10 Diamond Summons' 20 times
+120_name6,累计进行钻石十连抽30次,Complete '10 Diamond Summons' 30 times
+120_name7,累计进行钻石十连抽50次,Complete '10 Diamond Summons' 50 times
 xinyang_instance_title,神话守护者,Myth Guardian
 setting_pvpweikai,尚未开启竞技场玩法,Arena has not been opened yet

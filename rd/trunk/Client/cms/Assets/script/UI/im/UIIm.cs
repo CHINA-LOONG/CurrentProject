@@ -74,16 +74,15 @@ public class UIIm : UIBase
         EventTriggerListener.Get(sendButton).onClick = SendClick;
         EventTriggerListener.Get(playerBoxClone).onClick = MsgOnClick;
         EventTriggerListener.Get(shield).onClick = SendClick;
-        GameObject player;
+        ImMessageData imData;
         for (int i = 0; i < BattleConst.maxMsg; i++)
         {
             GameObject imMessage = ResourceMgr.Instance.LoadAsset("imMessage");
             imMessage.transform.SetParent(imMsgFather.transform, false);
             imMessage.transform.localScale = imMsgFather.transform.localScale;
             msgObj.Add(imMessage);
-            player = imMessage.transform.FindChild("channelText").gameObject;
-            player = player.transform.FindChild("nameText").gameObject;
-            EventTriggerListener.Get(player).onClick = PlayerClick;
+            imData = imMessage.GetComponent<ImMessageData>();
+            EventTriggerListener.Get(imData.mPlayer.gameObject).onClick = PlayerClick;   
             imMessage.SetActive(false);
         }
         basiceChatVec = basicsChat.transform.localPosition;
@@ -106,8 +105,7 @@ public class UIIm : UIBase
         }
         else if (but.name == showBasicsChat.name)//show基础聊天框
         {
-            leftChatBox.transform.DOLocalMoveY(leftCahtVec.y, 0.5f);
-            basicsChat.SetActive(true);
+            HideChat();
             ShowMessage();
         }
         else if (but.name == globalButton.name)//世界频道
@@ -126,17 +124,17 @@ public class UIIm : UIBase
         }
         else if (but.name == guildButton.name)//工会频道
         {
-            if (channel != (int)PB.ImChannel.GUILD)
-            {                
-                guildBackground.enabled = true;
-                globalBackground.enabled = false;
-                globalText.GetComponent<Outline>().effectColor = ColorConst.outline_tabColor_normal;
-                globalText.color = ColorConst.text_tabColor_normal;
-                guildText.GetComponent<Outline>().effectColor = ColorConst.outline_tabColor_select;
-                guildText.color = ColorConst.text_tabColor_select;
-                //channel = (int)PB.ImChannel.GUILD;
-                //ShowMessage();
-            }
+            //if (channel != (int)PB.ImChannel.GUILD)
+            //{
+            //    channel = (int)PB.ImChannel.GUILD;
+            //    guildBackground.enabled = true;
+            //    globalBackground.enabled = false;
+            //    globalText.GetComponent<Outline>().effectColor = ColorConst.outline_tabColor_normal;
+            //    globalText.color = ColorConst.text_tabColor_normal;
+            //    guildText.GetComponent<Outline>().effectColor = ColorConst.outline_tabColor_select;
+            //    guildText.color = ColorConst.text_tabColor_select;                
+            //    ShowMessage();
+            //}
         }
         else if (but == playerBoxClone)
         {
@@ -238,7 +236,8 @@ public class UIIm : UIBase
                 {
                     if (msgList[i - 1].type == (int)PB.ImType.NOTICE)
                     {
-                        msgHeight = msgObj[i - 1].gameObject.GetComponent<ImMessageData>().mSpeaker.rectTransform.sizeDelta.y;
+                        RectTransform msgTrans = msgText.transform as RectTransform;
+                        msgHeight = 0 - msgTrans.localPosition.y;
                         newMsgPos = msgObj[i - 1].transform.localPosition.y - msgHeight;
                         msgObj[i].transform.localPosition = new Vector3(msgPos.transform.localPosition.x, newMsgPos, 0);
                     }
@@ -259,14 +258,18 @@ public class UIIm : UIBase
                 imMsgData.mChannel.text = "[" + StaticDataMgr.Instance.GetTextByID("im_chat_system") + "]";
                 imMsgData.mSpeaker.text = msgList[i].origText;
                 imMsgData.mSpeaker.color = textColor;
+                imMsgData.mPlayer.gameObject.SetActive(false);
             }
             else
             {
+                imMsgData.mPlayer.gameObject.SetActive(true);
                 imMsgData.mSpeaker.text = msgList[i].senderName + ":";
                 imMsgData.mChannel.text = "[" + channelName + "]";
                 imMsgData.mContent.text = msgList[i].origText;
                 textColor = msgColor;
                 imMsgData.mSpeaker.color = ColorConst.nameColor;
+                imMsgData.mPlayer.rectTransform.sizeDelta = new Vector2(imMsgData.mSpeaker.preferredWidth,
+                        imMsgData.mPlayer.rectTransform.sizeDelta.y);
             }
             imMsgData.playerName = msgList[i].senderName;            
             imMsgData.mContent.color = textColor;
@@ -283,7 +286,7 @@ public class UIIm : UIBase
         }
     }
     //------------------------------------------------------------------------------------------------------
-    public void ShowSystemHints(string hintsValue,int hintsType)//
+    public void ShowSystemHints(string hintsValue,int hintsType)//系统提示/系统公告/走马灯
     {
         //走马灯
         if (hintsType == (int)PB.ImType.LANTERN)
@@ -321,8 +324,15 @@ public class UIIm : UIBase
                     if (i == count - 1)
                     {
                         showNewMsg = false;
+                    } 
+                    if (worldChannel[i].type == (int)PB.ImType.NOTICE)
+                    {
+                        sizeMsg += (0 - msgTrans.localPosition.y);
                     }
-                    sizeMsg += (msgTrans.sizeDelta.y - msgTrans.localPosition.y);
+                    else
+                    {
+                        sizeMsg += (msgTrans.sizeDelta.y - msgTrans.localPosition.y);
+                    }
                     if (sizeMsg > msgBox.sizeDelta.y)
                     {
                         msgBox.sizeDelta = new Vector2(msgBox.sizeDelta.x, sizeMsg);
@@ -336,15 +346,20 @@ public class UIIm : UIBase
     {
         if (isInBattle)
         {
-            if (!basicsChat.activeSelf)
-            {
-                basicsChat.SetActive(true);
-                basicsChat.transform.localPosition = moduleVec.localPosition;
-            }
-            leftChatBox.transform.DOLocalMoveY(leftCahtVec.y, 0.5f);            
+            HideChat();
+            basicsChat.transform.localPosition = moduleVec.localPosition;
         }
         else
             basicsChat.transform.localPosition = basiceChatVec;
+    }
+    //------------------------------------------------------------------------------------------------------
+    public void HideChat()//隐藏大聊天框
+    {
+        if (!basicsChat.activeSelf)
+        {
+            basicsChat.SetActive(true);
+            leftChatBox.transform.DOLocalMoveY(leftCahtVec.y, 0.5f);
+        }
     }
     //------------------------------------------------------------------------------------------------------
     void SendInterval() //发言间隔
@@ -375,11 +390,10 @@ public class UIIm : UIBase
         else if (but.name == shield.name)
         {
             shieldWnd = MsgBox.PromptMsg.Open(
-            MsgBox.MsgBoxType.Conform_Cancel,
-            string.Format(StaticDataMgr.Instance.GetTextByID("im_block_chat") + "\n" + StaticDataMgr.Instance.GetTextByID("im_block_cancel")),
+            MsgBox.MsgBoxType.Conform_Cancel,StaticDataMgr.Instance.GetTextByID("im_block_chat"),
+            StaticDataMgr.Instance.GetTextByID("im_block_cancel"),
             SendShield,
-            false,
-            true
+            false
             );
         }
     }
@@ -433,6 +447,7 @@ public class UIIm : UIBase
                 {
                     case (int)PB.settingError.SETTING_BLOCK_FULL:
                         uiHintMsg.Instance.HintShow(StaticDataMgr.Instance.GetTextByID("im_record_004"));
+                        shieldWnd.Close();
                         break;
                 }
             }

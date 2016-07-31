@@ -334,8 +334,12 @@ public class GameDataMgr : MonoBehaviour
 
         if (reward.playerAttr != null)
         {
-            PlayerDataAttr.level = reward.playerAttr.level;
-            PlayerDataAttr.exp = reward.playerAttr.exp;
+            //change later in uiscore
+            if (reward.hsCode != PB.code.INSTANCE_SETTLE_C.GetHashCode())
+            {
+                PlayerDataAttr.level = reward.playerAttr.level;
+                PlayerDataAttr.exp = reward.playerAttr.exp;
+            }
             PlayerDataAttr.fatigue = reward.playerAttr.fatigue;
             PlayerDataAttr.coin = reward.playerAttr.coin;
             GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, PlayerDataAttr.coin);

@@ -49,13 +49,13 @@ public class PlayerImModule extends PlayerModule {
 		// 长度限制
 		if (chatText.length() > GsConst.MAX_IM_CHAT_LENGTH) {
 			sendError(hsCode, Status.imError.IM_CHAT_LENGTH_VALUE);
-			return false;
+			return true;
 		}
 
 		if (channel == Const.ImChannel.GUILD_VALUE) {
 			if (0 == player.getPlayerData().getPlayerAllianceEntity().getAllianceId()) {
 				sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN);
-				return false;
+				return true;
 			}
 		}
 
@@ -73,7 +73,6 @@ public class PlayerImModule extends PlayerModule {
 		int hsCode = cmd.getType();
 		int playerId = protocol.getPlayerId();
 
-		
 		String puid = ServerData.getInstance().getPuidByPlayerId(playerId);
 		if (null == puid) {
 			sendError(hsCode, Status.PlayerError.PLAYER_NOT_EXIST);

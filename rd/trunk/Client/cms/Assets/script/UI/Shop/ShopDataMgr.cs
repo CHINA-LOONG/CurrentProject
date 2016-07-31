@@ -225,7 +225,7 @@ public class ShopDataMgr : MonoBehaviour
 
 		UIIm.Instance.ShowSystemHints (buyMsg, (int)PB.ImType.PROMPT);
 		curBuyItem.hasBuy = true;
-		GameEventMgr.Instance.FireEvent (GameEventList.RefreshShopUi);
+		GameEventMgr.Instance.FireEvent (GameEventList.RefreshShopUiAfterBuy);
 	}
 
     void OnPrompButtonClick(MsgBox.PrompButtonClick state)

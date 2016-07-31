@@ -187,7 +187,7 @@ public class Effect
         }
     }
     //---------------------------------------------------------------------------------------------
-    public virtual int CalculateHit()
+    public virtual int CalculateHit(string wpName)
     {
         if (absoluteHit == true)
             return SpellConst.hitSuccess;

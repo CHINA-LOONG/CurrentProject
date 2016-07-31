@@ -25,12 +25,12 @@ public class ItemIcon : MonoBehaviour
         itemIcon.RefreshWithItemInfo(itemInfo,showTips);
         return itemIcon;
     }
-	
-	public	static	ItemIcon	CreateItemIcon (EquipData	equipInfo)
+
+    public static ItemIcon CreateItemIcon(EquipData equipInfo, bool showTips = true)
 	{
 		GameObject go = ResourceMgr.Instance.LoadAsset("ItemIcon");
 		ItemIcon itemIcon = go.GetComponent<ItemIcon>();
-		itemIcon.RefreshWithEquipInfo (equipInfo);
+		itemIcon.RefreshWithEquipInfo (equipInfo,showTips);
 		return itemIcon;
 	}
 	#endregion
@@ -54,8 +54,8 @@ public class ItemIcon : MonoBehaviour
         get { return showTips; }
         set 
         {
-            if (showTips != value)
-            {
+            //if (showTips != value)
+           // {
                 showTips = value;
                 if (showTips)
                 {
@@ -65,7 +65,7 @@ public class ItemIcon : MonoBehaviour
                 {
                     ScrollViewEventListener.Get(iconButton.gameObject).onClick = null;
                 }
-            }
+           // }
         }
     }
 
@@ -87,8 +87,9 @@ public class ItemIcon : MonoBehaviour
         return true;
     }
 
-	public	bool	RefreshWithEquipInfo(EquipData	equipInfo)
+	public	bool	RefreshWithEquipInfo(EquipData	equipInfo, bool showTips = true)
 	{
+		ShowTips = showTips;
 		ItemStaticData itemStaticData =  StaticDataMgr.Instance.GetItemData (equipInfo.equipId);
 		if (null == itemStaticData)
 			return false;
@@ -100,10 +101,10 @@ public class ItemIcon : MonoBehaviour
 		return true;
 	}
 
-	public	void	HideItemCountText()
-	{
-		itemCountText.text = "";
-	}
+    public void HideItemCountText()
+    {
+        itemCountText.text = "";
+    }
 
     public void HideExceptIcon()
     {
@@ -233,7 +234,7 @@ public class ItemIcon : MonoBehaviour
         string itemStaticId;
         if(iconType == IconType.Equip)
         {
-            //itemStaticId = equipInfo.equipId;
+            UIEquipDetails.openEquipTips(equipInfo);
             return;
         }
         else

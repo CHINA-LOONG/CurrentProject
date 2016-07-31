@@ -15,6 +15,7 @@ import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
+import org.hibernate.annotations.Check;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +25,7 @@ import com.hawk.game.config.MonsterStageCfg;
 import com.hawk.game.config.SkillUpPriceCfg;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.log.BehaviorLogger.Action;
@@ -35,6 +37,8 @@ import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.HSMonsterAdd;
 import com.hawk.game.protocol.Monster.HSMonsterBreakRet;
 import com.hawk.game.protocol.Monster.HSMonsterCatch;
+import com.hawk.game.protocol.Monster.HSMonsterDecompose;
+import com.hawk.game.protocol.Monster.HSMonsterDecomposeRet;
 import com.hawk.game.protocol.Monster.HSMonsterFeed;
 import com.hawk.game.protocol.Monster.HSMonsterFeedRet;
 import com.hawk.game.protocol.Monster.HSMonsterLock;
@@ -75,7 +79,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
 		if (monsterEntity == null) {
 			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE, 1));
-			return false;
+			return true;
 		}
 
 		// TODO: break logic
@@ -84,7 +88,7 @@ public class PlayerMonsterModule extends PlayerModule {
 //		boolean succ = monsterEntity.updateSync();
 //		if (succ == false) {
 //			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.error.DATA_BASE_ERROR_VALUE, 1));
-//			return false;
+//			return true;
 //		}
 		monsterEntity.notifyUpdate(true);
 
@@ -109,7 +113,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		MonsterEntity foodMonsterEntity = player.getPlayerData().getMonsterEntity(foodMonsterId);
 		if (monsterEntity == null || foodMonsterEntity == null) {
 			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE, 1));
-			return false;
+			return true;
 		}
 
 		// TODO: feed logic
@@ -120,7 +124,7 @@ public class PlayerMonsterModule extends PlayerModule {
 //		boolean succ = monsterEntity.updateSync();
 //		if (succ == false) {
 //			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.error.DATA_BASE_ERROR_VALUE, 1));
-//			return false;
+//			return true;
 //		}
 		foodMonsterEntity.notifyUpdate(true);
 		monsterEntity.notifyUpdate(true);
@@ -173,14 +177,14 @@ public class PlayerMonsterModule extends PlayerModule {
 		MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
 		if (monsterEntity == null) {
 			sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
-			return false;
+			return true;
 		}
 		
 		int newSkillLevel = 1 + monsterEntity.getSkillLevel(skillId);
 		// 验证技能等级
 		if (newSkillLevel > monsterEntity.getLevel()) {
 			sendError(hsCode, Status.monsterError.SKILL_LEVEL_LIMIT_VALUE);
-			return false;
+			return true;
 		}
 		
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
@@ -197,19 +201,19 @@ public class PlayerMonsterModule extends PlayerModule {
 		// 验证点数
 		if (curSkillPoint < 1) {
 			sendError(hsCode, Status.monsterError.SKILL_POINT_NOT_ENOUGH);
-			return false;
+			return true;
 		}
 
 		// 验证金币
 		SkillUpPriceCfg priceCfg = HawkConfigManager.getInstance().getConfigByKey(SkillUpPriceCfg.class, newSkillLevel);
 		if (priceCfg == null) {
 			sendError(hsCode, Status.error.PARAMS_INVALID);
-			return false;
+			return true;
 		}
 		ConsumeItems consume = ConsumeItems.valueOf();
 		consume.addCoin(priceCfg.getCoin());
 		if (false == consume.checkConsume(player, hsCode)) {
-			return false;
+			return true;
 		}
 		consume.consumeTakeAffectAndPush(player, Action.SKILL_UP, HS.code.MONSTER_SKILL_UP_C_VALUE);
 
@@ -249,7 +253,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
 		if (monsterEntity == null) {
 			sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST);
-			return false;
+			return true;
 		}
 
 		int newStage = 1 + monsterEntity.getStage();
@@ -258,13 +262,13 @@ public class PlayerMonsterModule extends PlayerModule {
 		MonsterStageCfg stageCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterStageCfg.class, newStage);
 		if (stageCfg == null) {
 			sendError(hsCode, Status.monsterError.STAGE_LIMIT);
-			return false;
+			return true;
 		}
 
 		// 验证等级
 		if (monsterEntity.getLevel() < stageCfg.getDemandLevel()) {
 			sendError(hsCode, Status.monsterError.STAGE_LEVEL_NOT_ENOUGH);
-			return false;
+			return true;
 		}
 
 		// 验证金币和物品消耗
@@ -273,7 +277,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		consume.addItemInfos(stageCfg.getDemandItemList());
 
 		if (false == consume.checkConsume(player, hsCode)) {
-			return false;
+			return true;
 		}
 
 		// 验证怪物消耗
@@ -289,7 +293,7 @@ public class PlayerMonsterModule extends PlayerModule {
 		if (true == demandMonsterList.isEmpty()) {
 			if (false == consumeMonsterIdList.isEmpty()) {
 				sendError(hsCode, Status.monsterError.STAGE_CONSUME);
-				return false;
+				return true;
 			}
 		} else {
 			List<MonsterEntity> consumeMonsterList = new ArrayList<>();
@@ -297,13 +301,13 @@ public class PlayerMonsterModule extends PlayerModule {
 				MonsterEntity consumeMonsterEntity = player.getPlayerData().getMonsterEntity(id);
 				if (consumeMonsterEntity == null) {
 					sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
-					return false;
+					return true;
 				}
 
 				// 验证怪物锁定
 				if (true == consumeMonsterEntity.isLocked()) {
 					sendError(hsCode, Status.monsterError.LOCK_ALREADY_VALUE);
-					return false;
+					return true;
 				}
 
 				// 找到最大能满足的需求
@@ -324,7 +328,7 @@ public class PlayerMonsterModule extends PlayerModule {
 				}
 				if (false == valid) {
 					sendError(hsCode, Status.monsterError.STAGE_CONSUME);
-					return false;
+					return true;
 				}
 
 				consumeMonsterList.add(consumeMonsterEntity);
@@ -333,7 +337,7 @@ public class PlayerMonsterModule extends PlayerModule {
 
 			if (false == demandMonsterList.isEmpty()) {
 				sendError(hsCode, Status.monsterError.STAGE_CONSUME);
-				return false;
+				return true;
 			}
 			
 			List<Integer> battleMonsterList = player.getEntity().getBattleMonsterList();
@@ -368,16 +372,16 @@ public class PlayerMonsterModule extends PlayerModule {
 		MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
 		if (monsterEntity == null) {
 			sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST);
-			return false;
+			return true;
 		}
 
 		if (monsterEntity.isLocked() == locked) {
 			if (locked == true) {
 				sendError(hsCode, Status.monsterError.LOCK_ALREADY);
-				return false;
+				return true;
 			} else {
 				sendError(hsCode, Status.monsterError.UNLOCK_ALREADY);
-				return false;
+				return true;
 			}
 		}
 
@@ -389,10 +393,46 @@ public class PlayerMonsterModule extends PlayerModule {
 		response.setMonsterId(monsterId);
 		response.setLocked(locked);
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_LOCK_S, response));
-		
 		return true;
 	}
 
+	/**
+	 * 分解怪物
+	 */
+	@ProtocolHandler(code = HS.code.MONSTER_DECOMPOSE_C_VALUE)
+	private boolean onMonsterDecompose(HawkProtocol cmd) {
+		HSMonsterDecompose protocol = cmd.parseProtocol(HSMonsterDecompose.getDefaultInstance());
+		ConsumeItems consume = new ConsumeItems();
+		AwardItems award = new AwardItems();
+		for(int monsterId : protocol.getMonsterIdList()){
+			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
+			if (monsterEntity == null) {
+				sendError(HS.code.MONSTER_DECOMPOSE_C_VALUE, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
+				return true;
+			}
+			
+			MonsterStageCfg monsterStageCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterStageCfg.class, monsterEntity.getStage());
+			if (monsterStageCfg == null) {
+				sendError(HS.code.MONSTER_DECOMPOSE_C_VALUE, Status.error.CONFIG_NOT_FOUND_VALUE);
+				return true;
+			}
+			
+			consume.addMonster(monsterId, monsterEntity.getCfgId());
+			award.addItemInfos(monsterStageCfg.getDecomposeList());
+		}
+		
+		if (consume.checkConsume(player, HS.code.MONSTER_DECOMPOSE_C_VALUE) == false) {
+			return false;
+		}
+		
+		consume.consumeTakeAffect(player, Action.MONSTER_DECOMPOSE);
+		award.rewardTakeAffect(player, Action.MONSTER_DECOMPOSE);
+		
+		HSMonsterDecomposeRet.Builder response = HSMonsterDecomposeRet.newBuilder();
+		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_DECOMPOSE_S_VALUE, response));
+		return true;
+	}
+	
 	/**
 	 * 奖励怪物
 	 */
@@ -401,13 +441,13 @@ public class PlayerMonsterModule extends PlayerModule {
 		addMonster(RewardReason.SYS_PRESENT, (MonsterEntity)msg.getParam(0));
 		return true;
 	}
-
+	
 	// 内部函数--------------------------------------------------------------------------------------
-
+	
 	private boolean addMonster(RewardReason reason, MonsterEntity monsterEntity) {
 		if (false == monsterEntity.notifyCreate()) {
 			logger.error("database error, create monster entity fail");
-			return false;
+			return true;
 		}
 		player.getPlayerData().setMonsterEntity(monsterEntity);
 

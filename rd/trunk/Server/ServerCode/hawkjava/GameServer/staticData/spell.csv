@@ -186,7 +186,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 183,bossdajie12Mantuoluo24,bossdajie12Mantuoluo24e1,0,0,0,50,2,0,icon_ultMantuoluo2,bossdajie12Mantuoluo24Name,bossdajie12Mantuoluo24Tips,0,0,,,,
 184,bossdajie15Langren31,bossdajie15Langren31e1,0,0,0,50,0,0,icon_attackWaterMedium,bossdajie15Langren31Name,bossdajie15Langren31Tips,0,0,,,,
 185,bossdajie15Langren32,bossdajie15Langren32e1,0,0,0,50,5,0,icon_buffDefense,bossdajie15Langren32Name,bossdajie15Langren32Tips,0,0,,,,
-186,bossdajie15Langren33,bossdajie15Langren33e1,0,0,0,50,5,0,,bossdajie15Langren32Name,,0,0,,,,
+186,bossdajie15Langren33,bossdajie15Langren33e1,0,0,0,50,4,0,,bossdajie15Langren32Name,,0,0,,,,
 187,bossdajie15Langren34,bossdajie15Langren34e1,0,0,0,50,0,0,icon_bossdajie13Langren34,bossdajie15Langren34Name,bossdajie15Langren34Tips,0,0,,,,
 188,bossdajie15Langren35,,0,0,0,50,4,0,,,,0,0,bossdajie15Langren32,,,
 189,bossdajie14Piying51,bossdajie14Piying51e1,0,0,0,50,1,0,icon_magicEarthStrong,bossdajie14Piying51Name,bossdajie14Piying51Tips,0,0,,,,
@@ -509,7 +509,7 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 506,ultLuoxinfu1,ultLuoxinfu1e1,0,0,100,0,9,0,icon_ultLuoxinfu1,ultLuoxinfu1Name,ultLuoxinfu1Tips,0,1,,ultLuoxinfu1Description,ultLuoxinfu1Curlvl,ultLuoxinfu1Nextlvl
 507,ultPiying1,ultPiying1e1,0,0,100,0,9,0.015,icon_ultPiying1,ultPiying1Name,ultPiying1Tips,2,1,,ultPiying1Description,ultPiying1Curlvl,ultPiying1Nextlvl
 508,ultJinglingwang2,ultJinglingwang2e1,0,0,100,0,9,0.03,icon_attackPlantStrong,ultJinglingwang2Name,ultJinglingwang2Tips,4.5,0,,ultJinglingwang2Description,ultJinglingwang2Curlvl,ultJinglingwang2Nextlvl
-509,ultKahuna2,ultKahuna2e1,0,0,100,0,9,0,icon_attackPlantStrong,ultKahuna2Name,ultKahuna2Tips,0,1,,ultKahuna2Description,,
+509,ultKahuna2,ultKahuna2e1,0,0,100,0,9,0.01,icon_attackPlantStrong,ultKahuna2Name,ultKahuna2Tips,0.3,1,,ultKahuna2Description,ultKahuna2Curlvl,ultKahuna2Nextlvl
 510,ultYifanmumian1,ultYifanmumian1e1,0,0,100,0,9,0.01,icon_bossrenjie85Dujiaoshou1awaken9,ultYifanmumian1Name,ultYifanmumian1Tips,2.5,1,,ultYifanmumian1Description,ultYifanmumian1Curlvl,ultYifanmumian1Nextlvl
 511,psvNvyao1,psvNvyao1e1,0,0,0,0,4,0,icon_psvNvyao1,psvNvyao1Name,psvNvyao1Tips,0,0,,psvNvyao1Description,,
 512,psvLuoxinfu1,psvLuoxinfu1e1,0,0,0,0,4,0,icon_psvLuoxinfu1,psvLuoxinfu1Name,psvLuoxinfu1Tips,0,0,,psvLuoxinfu1Description,,
@@ -630,3 +630,5 @@ id,textId,rootEffectID,actionCount,channelTime,energyCost,energyGenerate,categor
 636,bossrenjie88Yafogemeng57,bossrenjie88Yafogemeng57e1,0,0,0,50,4,0,,,,0,0,,,,
 637,bossrenjie88Yafogemeng58,bossrenjie88Yafogemeng58e1,0,0,0,50,0,0,icon_psvAnpusha5,bossrenjie88Yafogemeng58Name,bossrenjie88Yafogemeng58Tips,0,0,,,,
 638,bossrenjie88Yafogemeng59,bossrenjie88Yafogemeng59e1,0,0,0,50,0,0,,bossrenjie88Yafogemeng59Name,,0,0,,,,
+639,bossdajie15Langren36,bossdajie15Langren36e1,0,0,0,50,4,0,,,,0,0,,,,
+640,bossdajie15Langren37,bossdajie15Langren37e1,0,0,0,50,4,0,,,,0,0,,,,

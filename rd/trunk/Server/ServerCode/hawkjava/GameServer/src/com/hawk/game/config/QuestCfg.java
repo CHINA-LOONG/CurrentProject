@@ -7,6 +7,7 @@ import org.hawk.log.HawkLog;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.QuestUtil;
 
+@SuppressWarnings("unused")
 @HawkConfigManager.CsvResource(file = "staticData/quest.csv", struct = "map")
 public class QuestCfg extends HawkConfigBase {
 	

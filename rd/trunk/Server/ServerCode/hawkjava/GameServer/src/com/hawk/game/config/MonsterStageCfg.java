@@ -2,6 +2,7 @@ package com.hawk.game.config;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.hawk.config.HawkConfigBase;
@@ -36,11 +37,19 @@ public class MonsterStageCfg extends HawkConfigBase {
 	 * 格式: reward标准配置，只支持MONSTER类型
 	 */
 	protected final String demandMonster;
-
+	/**
+	 * 分解列表字符串
+	 */
+	protected final String decompose;
+	
 	// assemble
 	List<ItemInfo> demandItemList;
 	List<ItemInfo> demandMonsterList;
-
+	/**
+	 * 分解列表
+	 */
+	private List<ItemInfo> decomposeList;
+	
 	public MonsterStageCfg() {
 		stage = 0;
 		health = 0;
@@ -55,20 +64,25 @@ public class MonsterStageCfg extends HawkConfigBase {
 		demandCoin = 0;
 		demandItem = "";
 		demandMonster = "";
+		decompose = "";
+		decomposeList = new LinkedList<ItemInfo>();
 	}
 
 	@Override
 	protected boolean assemble() {
 		// TODO: 合并重复的
-
 		try {
 			demandItemList = ItemInfo.GetItemInfo(demandItem, ItemParseType.PARSE_MONSTER_STAGE);
 			demandMonsterList = ItemInfo.GetItemInfo(demandMonster, ItemParseType.PARSE_MONSTER_STAGE);
-		} catch (Exception e) {
+			decomposeList.clear();
+			if (decompose != null && decompose.length() > 0 && ! "0".equals(decompose)) {
+				decomposeList = ItemInfo.GetItemInfo(decompose, ItemParseType.PARSE_EQUIP_ATTR);
+			}
+		}
+		catch (Exception e) {
 			HawkException.catchException(e);
 			return false;
 		}
-
 		return true;
 	}
 
@@ -153,5 +167,8 @@ public class MonsterStageCfg extends HawkConfigBase {
 
 	public List<ItemInfo> getDemandMonsterList() {
 		return Collections.unmodifiableList(demandMonsterList);
+	}
+	public List<ItemInfo> getDecomposeList() {
+		return Collections.unmodifiableList(decomposeList);
 	}
 }

@@ -45,10 +45,11 @@ public class PetListElement : MonoBehaviour {
             }
             else
             {
-                EquipData equipData=new EquipData() { equipId = unit.equipList[i].equipId,stage=unit.equipList[i].stage };
+                EquipData curEquip = unit.equipList[i];
+                EquipData equipData = EquipData.valueof(curEquip.id, curEquip.equipId, curEquip.stage, curEquip.level, BattleConst.invalidMonsterID, null);
                 if (equipIcon[i]==null)
                 {
-                    equipIcon[i] = ItemIcon.CreateItemIcon(equipData);
+                    equipIcon[i] = ItemIcon.CreateItemIcon(equipData,false);
                     UIUtil.SetParentReset(equipIcon[i].transform, equipPos[i]);
                     //equipIcon[i].HideExceptIcon();
                 }

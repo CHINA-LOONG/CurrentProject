@@ -88,6 +88,7 @@ public class GameEventList
 
 	//Shop
 	public	static	string	RefreshShopUi = "RefreshShopUi";//parama no
+	public	static	string	RefreshShopUiAfterBuy = "RefreshShopUiAfterBuy";
 
     //UI--Pet/Equip
     public static string ReloadPetListNotify = "reloadPetListNotify";

@@ -128,3 +128,15 @@ message HSMonsterLockRet
 	required int32 monsterId = 1;
 	required bool locked = 2;
 }
+
+// MONSTER_DECOMPOSE_C
+message HSMonsterDecompose
+{
+	repeated int32 monsterId = 1;
+}
+
+// MONSTER_DECOMPOSE_S
+message HSMonsterDecomposeRet
+{
+
+}

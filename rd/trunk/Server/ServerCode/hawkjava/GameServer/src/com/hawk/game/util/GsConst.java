@@ -25,7 +25,7 @@ public class GsConst {
 	// 最大级别数
 	public static final int EQUIP_MAX_LEVEL = 9;
 	// 宝石最大类别数
-	public static final int GEM_MAX_TYPE = 3;
+	public static final int GEM_MAX_TYPE = 9;
 	// 宝石镶嵌占位
 	public static final String EQUIP_GEM_NONE = "0";
 	// 聊天最大长度
@@ -56,7 +56,12 @@ public class GsConst {
 	public static final int GOLD_TO_COIN_INDEX = 1;
 	// 最大屏蔽玩家数
 	public static final int MAX_BLOCK_COUNT = 5;
-	
+	// 合成上一级宝石数量
+	public static final int NEXT_LEVEL_GEM_COUNT = 1;	
+	// 合成上一级需要宝石数量
+	public static final int GEM_COMPOSE_COUNT = 5;	
+	// 最大合成次数
+	public static final int GEM_COMPOSE_MAX_COUNT = 10;	
 	
 	/**
 	 * 对象类型
@@ -211,6 +216,33 @@ public class GsConst {
 		}
 	}
 
+	/**
+	 * 宝石类型权重
+	 */
+	public enum GemTypeWeight
+	{
+		NONE_GEM_TYPE(0),
+		FIRST_GEM_TYPE(100),
+		SECOND_GEM_TYPE(200),
+		THIRD_GEM_TYPE(300),
+		FORTH_GEM_TYPE(400),
+		FIFTH_GEM_TYPE(500),
+		SIXTH_GEM_TYPE(600),
+		SEVENTH_GEM_TYPE(700),
+		EIGHTI_GEM_TYPE(800),
+		NINTH_GEM_TYPE(900);
+		
+		private int weight;
+		
+		private GemTypeWeight(int weight) {
+			this.weight = weight;
+		}
+		
+		public float GetWeight(){
+			return weight;
+		}
+	}
+	
 	/**
 	 * item 消耗检查内容
 	 */

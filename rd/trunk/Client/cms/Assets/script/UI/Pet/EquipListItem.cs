@@ -54,16 +54,16 @@ public class EquipListItem : MonoBehaviour
     {
         info.equipData = data;
         info.equipInfo = StaticDataMgr.Instance.GetEquipProtoData(data.equipId, data.stage);
-        info.itemInfo=StaticDataMgr.Instance.GetItemData(data.equipId);
+        info.itemInfo = StaticDataMgr.Instance.GetItemData(data.equipId);
 
         if (equipIcon == null)
         {
-            equipIcon = ItemIcon.CreateItemIcon(info.equipData);
-            UIUtil.SetParentReset(equipIcon.transform, transIcon);
+            equipIcon = ItemIcon.CreateItemIcon(info.equipData,false);
+			UIUtil.SetParentReset(equipIcon.transform,transIcon);
         }
         else
         {
-            equipIcon.RefreshWithEquipInfo(info.equipData);
+            equipIcon.RefreshWithEquipInfo(info.equipData,false);
         }
         UIUtil.SetStageColor(textName, info.itemInfo.name, info.equipData.stage);
         //textZhanli.text=StaticDataMgr.Instance.GetTextByID(itemInfo.z)

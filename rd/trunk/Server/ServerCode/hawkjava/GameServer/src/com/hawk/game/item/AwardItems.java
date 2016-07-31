@@ -254,29 +254,31 @@ public class AwardItems {
 	}
 	
 	public AwardItems addItemInfo(ItemInfo itemInfo) {
-		if (itemInfo.getType() == itemType.PLAYER_ATTR_VALUE) {
-			addAttr(itemInfo.getItemId(), itemInfo.getCount());
-		}
-		else if (itemInfo.getType() == itemType.MONSTER_ATTR_VALUE) {
-			addMonsterAttr(Integer.valueOf(itemInfo.getItemId()), itemInfo.getCount());
-		}
-		else if (itemInfo.getType() == itemType.ITEM_VALUE) {
-			addItem(itemInfo.getItemId(), itemInfo.getCount());
-		}
-		else if (itemInfo.getType() == itemType.EQUIP_VALUE) {
-			if (itemInfo.getCount() > 0) {
-				addEquip(itemInfo.getItemId(), itemInfo.getCount(), itemInfo.getStage(), itemInfo.getLevel());
+		if (itemInfo != null) {
+			if (itemInfo.getType() == itemType.PLAYER_ATTR_VALUE) {
+				addAttr(itemInfo.getItemId(), itemInfo.getCount());
 			}
-			else {
-				addEquip(itemInfo.getItemId(), itemInfo.getStage(), itemInfo.getLevel());
+			else if (itemInfo.getType() == itemType.MONSTER_ATTR_VALUE) {
+				addMonsterAttr(Integer.valueOf(itemInfo.getItemId()), itemInfo.getCount());
 			}
-		}		
-		else if (itemInfo.getType() == itemType.MONSTER_VALUE) {
-			if (itemInfo.getCount() > 0) {
-				addMonster(itemInfo.getItemId(), itemInfo.getCount(), itemInfo.getStage(), 1, 1, 1);
+			else if (itemInfo.getType() == itemType.ITEM_VALUE) {
+				addItem(itemInfo.getItemId(), itemInfo.getCount());
 			}
-			else {
-				addMonster(itemInfo.getItemId(), itemInfo.getStage());
+			else if (itemInfo.getType() == itemType.EQUIP_VALUE) {
+				if (itemInfo.getCount() > 0) {
+					addEquip(itemInfo.getItemId(), itemInfo.getCount(), itemInfo.getStage(), itemInfo.getLevel());
+				}
+				else {
+					addEquip(itemInfo.getItemId(), itemInfo.getStage(), itemInfo.getLevel());
+				}
+			}		
+			else if (itemInfo.getType() == itemType.MONSTER_VALUE) {
+				if (itemInfo.getCount() > 0) {
+					addMonster(itemInfo.getItemId(), itemInfo.getCount(), itemInfo.getStage(), 1, 1, 1);
+				}
+				else {
+					addMonster(itemInfo.getItemId(), itemInfo.getStage());
+				}
 			}
 		}
 
@@ -284,8 +286,10 @@ public class AwardItems {
 	}
 
 	public AwardItems addItemInfos(List<ItemInfo> itemInfos) {
-		for (ItemInfo itemInfo : itemInfos) {
-			addItemInfo(itemInfo);
+		if (itemInfos != null) {
+			for (ItemInfo itemInfo : itemInfos) {
+				addItemInfo(itemInfo);
+			}
 		}
 		return this;
 	}

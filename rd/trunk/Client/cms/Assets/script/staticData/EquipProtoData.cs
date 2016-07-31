@@ -19,15 +19,15 @@ public class EquipProtoData
         EquipLevelData baseAttr = StaticDataMgr.Instance.GetEquipLevelData(this.stageAttrId);
         Dictionary<AttrType, int> attr = new Dictionary<AttrType, int>();
         if (baseAttr.health!=0)
-            attr.Add(AttrType.Health, (baseLevelAttr.health * level) + baseAttr.health);
+            attr.Add(AttrType.Health, (int)((baseLevelAttr.health * level) + baseAttr.health));
         if (baseAttr.strength != 0)
-            attr.Add(AttrType.Strength, (baseLevelAttr.strength * level) + baseAttr.strength);
+            attr.Add(AttrType.Strength, (int)((baseLevelAttr.strength * level) + baseAttr.strength));
         if (baseAttr.intelligence != 0)
-            attr.Add(AttrType.Intelligence, (baseLevelAttr.intelligence * level) + baseAttr.intelligence);
+            attr.Add(AttrType.Intelligence, (int)((baseLevelAttr.intelligence * level) + baseAttr.intelligence));
         if (baseAttr.defense != 0)
-            attr.Add(AttrType.Defense, (baseLevelAttr.defense * level) + baseAttr.defense);
+            attr.Add(AttrType.Defense, (int)((baseLevelAttr.defense * level) + baseAttr.defense));
         if (baseAttr.speed != 0)
-            attr.Add(AttrType.Speed, (baseLevelAttr.speed * level) + baseAttr.speed);
+            attr.Add(AttrType.Speed, (int)((baseLevelAttr.speed * level) + baseAttr.speed));
         return attr;        
     }
 }

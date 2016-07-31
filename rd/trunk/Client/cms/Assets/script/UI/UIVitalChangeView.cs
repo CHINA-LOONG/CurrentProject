@@ -73,7 +73,8 @@ public class UIVitalChangeView : MonoBehaviour
         else if (
             args.vitalType == (int)VitalType.Vital_Type_FirstSpell ||
             args.vitalType == (int)VitalType.Vital_Type_Absorbed ||
-            args.vitalType == (int)VitalType.Vital_Type_Stun
+            args.vitalType == (int)VitalType.Vital_Type_Stun ||
+            args.vitalType == (int)VitalType.Vital_Type_Immune
             )
         {
             string textID;
@@ -84,6 +85,10 @@ public class UIVitalChangeView : MonoBehaviour
             else if (args.vitalType == (int)VitalType.Vital_Type_Absorbed)
             {
                 textID = "spell_shield";
+            }
+            else if (args.vitalType == (int)VitalType.Vital_Type_Immune)
+            {
+                textID = "spell_hit_immune";
             }
             else 
             {

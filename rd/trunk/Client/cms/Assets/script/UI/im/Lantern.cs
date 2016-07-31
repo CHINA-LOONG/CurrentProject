@@ -81,6 +81,10 @@ public class Lantern : MonoBehaviour
                 }
             }
         }
+        if (lanternMsg.Count > 0 && GameMain.Instance.IsCurModule<BattleModule>() && moveTypeEnd)
+        {
+            RemoveAll();
+        }
     }
 
     void LanternMoveEnd()//走马灯结束
@@ -92,7 +96,16 @@ public class Lantern : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
+    void RemoveAll()//删除全部
+    {
+        for (int i = 0; i < lanternMsg.Count; i++)
+        {
+            //TODO: need to delete battleTitleTw?
+            ResourceMgr.Instance.DestroyAsset(lanternMsg[i].lant.gameObject);
+        }
+        lanternMsg.Clear();
+        gameObject.SetActive(false);
+    }
     public void OnSpeedChange(System.EventArgs args)
     {
         float curTimeScale = 1.0f;

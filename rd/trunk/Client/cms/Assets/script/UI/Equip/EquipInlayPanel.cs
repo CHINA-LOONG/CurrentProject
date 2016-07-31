@@ -81,7 +81,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
 
         if (itemIcon==null)
         {
-            itemIcon = ItemIcon.CreateItemIcon(curData);
+            itemIcon = ItemIcon.CreateItemIcon(curData,false);
             UIUtil.SetParentReset(itemIcon.transform, transEquipPos);
         }
         else

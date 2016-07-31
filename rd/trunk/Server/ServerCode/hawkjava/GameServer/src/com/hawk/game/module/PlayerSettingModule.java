@@ -59,12 +59,12 @@ public class PlayerSettingModule extends PlayerModule {
 
 		if (targetId == player.getId()) {
 			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
-			return false;
+			return true;
 		}
 
 		if (false == ServerData.getInstance().isExistPlayer(targetId)) {
 			sendError(hsCode, Status.PlayerError.PLAYER_NOT_EXIST_VALUE);
-			return false;
+			return true;
 		}
 
 		List<Integer> blockList = player.getEntity().getBlockPlayerList();
@@ -72,7 +72,7 @@ public class PlayerSettingModule extends PlayerModule {
 		if (true == isBlock && false == alreadyBlock) {
 			if (blockList.size() >= GsConst.MAX_BLOCK_COUNT) {
 				sendError(hsCode, Status.settingError.SETTING_BLOCK_FULL_VALUE);
-				return false;
+				return true;
 			}
 			player.getEntity().addBlockPlayer(targetId);
 			player.getEntity().notifyUpdate(true);

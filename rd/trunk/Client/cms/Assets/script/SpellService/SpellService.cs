@@ -125,7 +125,7 @@ public class SpellService : MonoBehaviour
                 }
             }
         }
-
+        /*
         //buff list可能会在update里被修改，只会被增加，删除buff下面单独处理，避免遍历出错
         for (int i = 0; i < caster.buffList.Count; ++i)
         {
@@ -139,6 +139,7 @@ public class SpellService : MonoBehaviour
                 caster.buffList.RemoveAt(i);
             }
         }
+         * */
     }
     //---------------------------------------------------------------------------------------------
     //remove all buffs of the unit

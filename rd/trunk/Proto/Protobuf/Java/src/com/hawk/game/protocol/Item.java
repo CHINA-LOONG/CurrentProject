@@ -576,6 +576,574 @@ public final class Item {
     // @@protoc_insertion_point(class_scope:ItemSell)
   }
 
+  public interface GemSelectOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string gemId = 1;
+    /**
+     * <code>required string gemId = 1;</code>
+     */
+    boolean hasGemId();
+    /**
+     * <code>required string gemId = 1;</code>
+     */
+    java.lang.String getGemId();
+    /**
+     * <code>required string gemId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getGemIdBytes();
+
+    // required int32 count = 2;
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    boolean hasCount();
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    int getCount();
+  }
+  /**
+   * Protobuf type {@code GemSelect}
+   */
+  public static final class GemSelect extends
+      com.google.protobuf.GeneratedMessage
+      implements GemSelectOrBuilder {
+    // Use GemSelect.newBuilder() to construct.
+    private GemSelect(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private GemSelect(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final GemSelect defaultInstance;
+    public static GemSelect getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public GemSelect getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GemSelect(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              gemId_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              count_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Item.internal_static_GemSelect_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Item.internal_static_GemSelect_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Item.GemSelect.class, com.hawk.game.protocol.Item.GemSelect.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<GemSelect> PARSER =
+        new com.google.protobuf.AbstractParser<GemSelect>() {
+      public GemSelect parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GemSelect(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GemSelect> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string gemId = 1;
+    public static final int GEMID_FIELD_NUMBER = 1;
+    private java.lang.Object gemId_;
+    /**
+     * <code>required string gemId = 1;</code>
+     */
+    public boolean hasGemId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string gemId = 1;</code>
+     */
+    public java.lang.String getGemId() {
+      java.lang.Object ref = gemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          gemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string gemId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getGemIdBytes() {
+      java.lang.Object ref = gemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        gemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 count = 2;
+    public static final int COUNT_FIELD_NUMBER = 2;
+    private int count_;
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    public int getCount() {
+      return count_;
+    }
+
+    private void initFields() {
+      gemId_ = "";
+      count_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasGemId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getGemIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, count_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getGemIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, count_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Item.GemSelect parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Item.GemSelect parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.GemSelect parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Item.GemSelect parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.GemSelect parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Item.GemSelect parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.GemSelect parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Item.GemSelect parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.GemSelect parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Item.GemSelect parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Item.GemSelect prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GemSelect}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Item.GemSelectOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Item.internal_static_GemSelect_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Item.internal_static_GemSelect_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Item.GemSelect.class, com.hawk.game.protocol.Item.GemSelect.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Item.GemSelect.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        gemId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Item.internal_static_GemSelect_descriptor;
+      }
+
+      public com.hawk.game.protocol.Item.GemSelect getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Item.GemSelect.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Item.GemSelect build() {
+        com.hawk.game.protocol.Item.GemSelect result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Item.GemSelect buildPartial() {
+        com.hawk.game.protocol.Item.GemSelect result = new com.hawk.game.protocol.Item.GemSelect(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.gemId_ = gemId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.count_ = count_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Item.GemSelect) {
+          return mergeFrom((com.hawk.game.protocol.Item.GemSelect)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Item.GemSelect other) {
+        if (other == com.hawk.game.protocol.Item.GemSelect.getDefaultInstance()) return this;
+        if (other.hasGemId()) {
+          bitField0_ |= 0x00000001;
+          gemId_ = other.gemId_;
+          onChanged();
+        }
+        if (other.hasCount()) {
+          setCount(other.getCount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasGemId()) {
+          
+          return false;
+        }
+        if (!hasCount()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Item.GemSelect parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Item.GemSelect) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string gemId = 1;
+      private java.lang.Object gemId_ = "";
+      /**
+       * <code>required string gemId = 1;</code>
+       */
+      public boolean hasGemId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string gemId = 1;</code>
+       */
+      public java.lang.String getGemId() {
+        java.lang.Object ref = gemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          gemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string gemId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getGemIdBytes() {
+        java.lang.Object ref = gemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          gemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string gemId = 1;</code>
+       */
+      public Builder setGemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        gemId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string gemId = 1;</code>
+       */
+      public Builder clearGemId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        gemId_ = getDefaultInstance().getGemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string gemId = 1;</code>
+       */
+      public Builder setGemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        gemId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 count = 2;
+      private int count_ ;
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000002;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        count_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:GemSelect)
+    }
+
+    static {
+      defaultInstance = new GemSelect(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:GemSelect)
+  }
+
   public interface ItemInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -6063,6 +6631,16 @@ public final class Item {
      */
     com.google.protobuf.ByteString
         getItemIdBytes();
+
+    // required int32 count = 2;
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    boolean hasCount();
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    int getCount();
   }
   /**
    * Protobuf type {@code HSItemCompose}
@@ -6122,6 +6700,11 @@ public final class Item {
             case 10: {
               bitField0_ |= 0x00000001;
               itemId_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              count_ = input.readInt32();
               break;
             }
           }
@@ -6207,8 +6790,25 @@ public final class Item {
       }
     }
 
+    // required int32 count = 2;
+    public static final int COUNT_FIELD_NUMBER = 2;
+    private int count_;
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 count = 2;</code>
+     */
+    public int getCount() {
+      return count_;
+    }
+
     private void initFields() {
       itemId_ = "";
+      count_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -6216,6 +6816,10 @@ public final class Item {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasItemId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCount()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -6229,6 +6833,9 @@ public final class Item {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeBytes(1, getItemIdBytes());
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, count_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -6241,6 +6848,10 @@ public final class Item {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(1, getItemIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, count_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6364,6 +6975,8 @@ public final class Item {
         super.clear();
         itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -6396,6 +7009,10 @@ public final class Item {
           to_bitField0_ |= 0x00000001;
         }
         result.itemId_ = itemId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.count_ = count_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6417,12 +7034,19 @@ public final class Item {
           itemId_ = other.itemId_;
           onChanged();
         }
+        if (other.hasCount()) {
+          setCount(other.getCount());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasItemId()) {
+          
+          return false;
+        }
+        if (!hasCount()) {
           
           return false;
         }
@@ -6522,6 +7146,39 @@ public final class Item {
         return this;
       }
 
+      // required int32 count = 2;
+      private int count_ ;
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000002;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 count = 2;</code>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        count_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:HSItemCompose)
     }
 
@@ -6535,21 +7192,6 @@ public final class Item {
 
   public interface HSItemComposeRetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
-    // required string itemId = 1;
-    /**
-     * <code>required string itemId = 1;</code>
-     */
-    boolean hasItemId();
-    /**
-     * <code>required string itemId = 1;</code>
-     */
-    java.lang.String getItemId();
-    /**
-     * <code>required string itemId = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getItemIdBytes();
   }
   /**
    * Protobuf type {@code HSItemComposeRet}
@@ -6588,7 +7230,6 @@ public final class Item {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -6604,11 +7245,6 @@ public final class Item {
                                      extensionRegistry, tag)) {
                 done = true;
               }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              itemId_ = input.readBytes();
               break;
             }
           }
@@ -6650,62 +7286,13 @@ public final class Item {
       return PARSER;
     }
 
-    private int bitField0_;
-    // required string itemId = 1;
-    public static final int ITEMID_FIELD_NUMBER = 1;
-    private java.lang.Object itemId_;
-    /**
-     * <code>required string itemId = 1;</code>
-     */
-    public boolean hasItemId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required string itemId = 1;</code>
-     */
-    public java.lang.String getItemId() {
-      java.lang.Object ref = itemId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          itemId_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string itemId = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getItemIdBytes() {
-      java.lang.Object ref = itemId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        itemId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     private void initFields() {
-      itemId_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasItemId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -6713,9 +7300,6 @@ public final class Item {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getItemIdBytes());
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -6725,10 +7309,6 @@ public final class Item {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getItemIdBytes());
-      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -6849,8 +7429,6 @@ public final class Item {
 
       public Builder clear() {
         super.clear();
-        itemId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -6877,13 +7455,6 @@ public final class Item {
 
       public com.hawk.game.protocol.Item.HSItemComposeRet buildPartial() {
         com.hawk.game.protocol.Item.HSItemComposeRet result = new com.hawk.game.protocol.Item.HSItemComposeRet(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.itemId_ = itemId_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -6899,20 +7470,11 @@ public final class Item {
 
       public Builder mergeFrom(com.hawk.game.protocol.Item.HSItemComposeRet other) {
         if (other == com.hawk.game.protocol.Item.HSItemComposeRet.getDefaultInstance()) return this;
-        if (other.hasItemId()) {
-          bitField0_ |= 0x00000001;
-          itemId_ = other.itemId_;
-          onChanged();
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasItemId()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -6933,81 +7495,6 @@ public final class Item {
         }
         return this;
       }
-      private int bitField0_;
-
-      // required string itemId = 1;
-      private java.lang.Object itemId_ = "";
-      /**
-       * <code>required string itemId = 1;</code>
-       */
-      public boolean hasItemId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required string itemId = 1;</code>
-       */
-      public java.lang.String getItemId() {
-        java.lang.Object ref = itemId_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          itemId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string itemId = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getItemIdBytes() {
-        java.lang.Object ref = itemId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          itemId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string itemId = 1;</code>
-       */
-      public Builder setItemId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        itemId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string itemId = 1;</code>
-       */
-      public Builder clearItemId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        itemId_ = getDefaultInstance().getItemId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string itemId = 1;</code>
-       */
-      public Builder setItemIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        itemId_ = value;
-        onChanged();
-        return this;
-      }
 
       // @@protoc_insertion_point(builder_scope:HSItemComposeRet)
     }
@@ -7020,11 +7507,1119 @@ public final class Item {
     // @@protoc_insertion_point(class_scope:HSItemComposeRet)
   }
 
+  public interface HSGemComposeOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .GemSelect gems = 1;
+    /**
+     * <code>repeated .GemSelect gems = 1;</code>
+     */
+    java.util.List<com.hawk.game.protocol.Item.GemSelect> 
+        getGemsList();
+    /**
+     * <code>repeated .GemSelect gems = 1;</code>
+     */
+    com.hawk.game.protocol.Item.GemSelect getGems(int index);
+    /**
+     * <code>repeated .GemSelect gems = 1;</code>
+     */
+    int getGemsCount();
+    /**
+     * <code>repeated .GemSelect gems = 1;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Item.GemSelectOrBuilder> 
+        getGemsOrBuilderList();
+    /**
+     * <code>repeated .GemSelect gems = 1;</code>
+     */
+    com.hawk.game.protocol.Item.GemSelectOrBuilder getGemsOrBuilder(
+        int index);
+
+    // required bool composeAll = 2;
+    /**
+     * <code>required bool composeAll = 2;</code>
+     */
+    boolean hasComposeAll();
+    /**
+     * <code>required bool composeAll = 2;</code>
+     */
+    boolean getComposeAll();
+  }
+  /**
+   * Protobuf type {@code HSGemCompose}
+   *
+   * <pre>
+   * 合成道具
+   * </pre>
+   */
+  public static final class HSGemCompose extends
+      com.google.protobuf.GeneratedMessage
+      implements HSGemComposeOrBuilder {
+    // Use HSGemCompose.newBuilder() to construct.
+    private HSGemCompose(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSGemCompose(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSGemCompose defaultInstance;
+    public static HSGemCompose getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSGemCompose getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSGemCompose(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                gems_ = new java.util.ArrayList<com.hawk.game.protocol.Item.GemSelect>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              gems_.add(input.readMessage(com.hawk.game.protocol.Item.GemSelect.PARSER, extensionRegistry));
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000001;
+              composeAll_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          gems_ = java.util.Collections.unmodifiableList(gems_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Item.internal_static_HSGemCompose_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Item.internal_static_HSGemCompose_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Item.HSGemCompose.class, com.hawk.game.protocol.Item.HSGemCompose.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSGemCompose> PARSER =
+        new com.google.protobuf.AbstractParser<HSGemCompose>() {
+      public HSGemCompose parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSGemCompose(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSGemCompose> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // repeated .GemSelect gems = 1;
+    public static final int GEMS_FIELD_NUMBER = 1;
+    private java.util.List<com.hawk.game.protocol.Item.GemSelect> gems_;
+    /**
+     * <code>repeated .GemSelect gems = 1;</code>
+     */
+    public java.util.List<com.hawk.game.protocol.Item.GemSelect> getGemsList() {
+      return gems_;
+    }
+    /**
+     * <code>repeated .GemSelect gems = 1;</code>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Item.GemSelectOrBuilder> 
+        getGemsOrBuilderList() {
+      return gems_;
+    }
+    /**
+     * <code>repeated .GemSelect gems = 1;</code>
+     */
+    public int getGemsCount() {
+      return gems_.size();
+    }
+    /**
+     * <code>repeated .GemSelect gems = 1;</code>
+     */
+    public com.hawk.game.protocol.Item.GemSelect getGems(int index) {
+      return gems_.get(index);
+    }
+    /**
+     * <code>repeated .GemSelect gems = 1;</code>
+     */
+    public com.hawk.game.protocol.Item.GemSelectOrBuilder getGemsOrBuilder(
+        int index) {
+      return gems_.get(index);
+    }
+
+    // required bool composeAll = 2;
+    public static final int COMPOSEALL_FIELD_NUMBER = 2;
+    private boolean composeAll_;
+    /**
+     * <code>required bool composeAll = 2;</code>
+     */
+    public boolean hasComposeAll() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required bool composeAll = 2;</code>
+     */
+    public boolean getComposeAll() {
+      return composeAll_;
+    }
+
+    private void initFields() {
+      gems_ = java.util.Collections.emptyList();
+      composeAll_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasComposeAll()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getGemsCount(); i++) {
+        if (!getGems(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < gems_.size(); i++) {
+        output.writeMessage(1, gems_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBool(2, composeAll_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < gems_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, gems_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, composeAll_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Item.HSGemCompose parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Item.HSGemCompose parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.HSGemCompose parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Item.HSGemCompose parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.HSGemCompose parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Item.HSGemCompose parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.HSGemCompose parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Item.HSGemCompose parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.HSGemCompose parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Item.HSGemCompose parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Item.HSGemCompose prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSGemCompose}
+     *
+     * <pre>
+     * 合成道具
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Item.HSGemComposeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Item.internal_static_HSGemCompose_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Item.internal_static_HSGemCompose_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Item.HSGemCompose.class, com.hawk.game.protocol.Item.HSGemCompose.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Item.HSGemCompose.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getGemsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (gemsBuilder_ == null) {
+          gems_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          gemsBuilder_.clear();
+        }
+        composeAll_ = false;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Item.internal_static_HSGemCompose_descriptor;
+      }
+
+      public com.hawk.game.protocol.Item.HSGemCompose getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Item.HSGemCompose.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Item.HSGemCompose build() {
+        com.hawk.game.protocol.Item.HSGemCompose result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Item.HSGemCompose buildPartial() {
+        com.hawk.game.protocol.Item.HSGemCompose result = new com.hawk.game.protocol.Item.HSGemCompose(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (gemsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            gems_ = java.util.Collections.unmodifiableList(gems_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.gems_ = gems_;
+        } else {
+          result.gems_ = gemsBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.composeAll_ = composeAll_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Item.HSGemCompose) {
+          return mergeFrom((com.hawk.game.protocol.Item.HSGemCompose)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Item.HSGemCompose other) {
+        if (other == com.hawk.game.protocol.Item.HSGemCompose.getDefaultInstance()) return this;
+        if (gemsBuilder_ == null) {
+          if (!other.gems_.isEmpty()) {
+            if (gems_.isEmpty()) {
+              gems_ = other.gems_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureGemsIsMutable();
+              gems_.addAll(other.gems_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.gems_.isEmpty()) {
+            if (gemsBuilder_.isEmpty()) {
+              gemsBuilder_.dispose();
+              gemsBuilder_ = null;
+              gems_ = other.gems_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              gemsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getGemsFieldBuilder() : null;
+            } else {
+              gemsBuilder_.addAllMessages(other.gems_);
+            }
+          }
+        }
+        if (other.hasComposeAll()) {
+          setComposeAll(other.getComposeAll());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasComposeAll()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getGemsCount(); i++) {
+          if (!getGems(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Item.HSGemCompose parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Item.HSGemCompose) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .GemSelect gems = 1;
+      private java.util.List<com.hawk.game.protocol.Item.GemSelect> gems_ =
+        java.util.Collections.emptyList();
+      private void ensureGemsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          gems_ = new java.util.ArrayList<com.hawk.game.protocol.Item.GemSelect>(gems_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Item.GemSelect, com.hawk.game.protocol.Item.GemSelect.Builder, com.hawk.game.protocol.Item.GemSelectOrBuilder> gemsBuilder_;
+
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Item.GemSelect> getGemsList() {
+        if (gemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(gems_);
+        } else {
+          return gemsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public int getGemsCount() {
+        if (gemsBuilder_ == null) {
+          return gems_.size();
+        } else {
+          return gemsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public com.hawk.game.protocol.Item.GemSelect getGems(int index) {
+        if (gemsBuilder_ == null) {
+          return gems_.get(index);
+        } else {
+          return gemsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public Builder setGems(
+          int index, com.hawk.game.protocol.Item.GemSelect value) {
+        if (gemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGemsIsMutable();
+          gems_.set(index, value);
+          onChanged();
+        } else {
+          gemsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public Builder setGems(
+          int index, com.hawk.game.protocol.Item.GemSelect.Builder builderForValue) {
+        if (gemsBuilder_ == null) {
+          ensureGemsIsMutable();
+          gems_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          gemsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public Builder addGems(com.hawk.game.protocol.Item.GemSelect value) {
+        if (gemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGemsIsMutable();
+          gems_.add(value);
+          onChanged();
+        } else {
+          gemsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public Builder addGems(
+          int index, com.hawk.game.protocol.Item.GemSelect value) {
+        if (gemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureGemsIsMutable();
+          gems_.add(index, value);
+          onChanged();
+        } else {
+          gemsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public Builder addGems(
+          com.hawk.game.protocol.Item.GemSelect.Builder builderForValue) {
+        if (gemsBuilder_ == null) {
+          ensureGemsIsMutable();
+          gems_.add(builderForValue.build());
+          onChanged();
+        } else {
+          gemsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public Builder addGems(
+          int index, com.hawk.game.protocol.Item.GemSelect.Builder builderForValue) {
+        if (gemsBuilder_ == null) {
+          ensureGemsIsMutable();
+          gems_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          gemsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public Builder addAllGems(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Item.GemSelect> values) {
+        if (gemsBuilder_ == null) {
+          ensureGemsIsMutable();
+          super.addAll(values, gems_);
+          onChanged();
+        } else {
+          gemsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public Builder clearGems() {
+        if (gemsBuilder_ == null) {
+          gems_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          gemsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public Builder removeGems(int index) {
+        if (gemsBuilder_ == null) {
+          ensureGemsIsMutable();
+          gems_.remove(index);
+          onChanged();
+        } else {
+          gemsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public com.hawk.game.protocol.Item.GemSelect.Builder getGemsBuilder(
+          int index) {
+        return getGemsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public com.hawk.game.protocol.Item.GemSelectOrBuilder getGemsOrBuilder(
+          int index) {
+        if (gemsBuilder_ == null) {
+          return gems_.get(index);  } else {
+          return gemsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Item.GemSelectOrBuilder> 
+           getGemsOrBuilderList() {
+        if (gemsBuilder_ != null) {
+          return gemsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(gems_);
+        }
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public com.hawk.game.protocol.Item.GemSelect.Builder addGemsBuilder() {
+        return getGemsFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Item.GemSelect.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public com.hawk.game.protocol.Item.GemSelect.Builder addGemsBuilder(
+          int index) {
+        return getGemsFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Item.GemSelect.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .GemSelect gems = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Item.GemSelect.Builder> 
+           getGemsBuilderList() {
+        return getGemsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Item.GemSelect, com.hawk.game.protocol.Item.GemSelect.Builder, com.hawk.game.protocol.Item.GemSelectOrBuilder> 
+          getGemsFieldBuilder() {
+        if (gemsBuilder_ == null) {
+          gemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Item.GemSelect, com.hawk.game.protocol.Item.GemSelect.Builder, com.hawk.game.protocol.Item.GemSelectOrBuilder>(
+                  gems_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          gems_ = null;
+        }
+        return gemsBuilder_;
+      }
+
+      // required bool composeAll = 2;
+      private boolean composeAll_ ;
+      /**
+       * <code>required bool composeAll = 2;</code>
+       */
+      public boolean hasComposeAll() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required bool composeAll = 2;</code>
+       */
+      public boolean getComposeAll() {
+        return composeAll_;
+      }
+      /**
+       * <code>required bool composeAll = 2;</code>
+       */
+      public Builder setComposeAll(boolean value) {
+        bitField0_ |= 0x00000002;
+        composeAll_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool composeAll = 2;</code>
+       */
+      public Builder clearComposeAll() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        composeAll_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSGemCompose)
+    }
+
+    static {
+      defaultInstance = new HSGemCompose(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSGemCompose)
+  }
+
+  public interface HSGemComposeRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSGemComposeRet}
+   *
+   * <pre>
+   * 合成道具返回
+   * </pre>
+   */
+  public static final class HSGemComposeRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSGemComposeRetOrBuilder {
+    // Use HSGemComposeRet.newBuilder() to construct.
+    private HSGemComposeRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSGemComposeRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSGemComposeRet defaultInstance;
+    public static HSGemComposeRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSGemComposeRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSGemComposeRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Item.internal_static_HSGemComposeRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Item.internal_static_HSGemComposeRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Item.HSGemComposeRet.class, com.hawk.game.protocol.Item.HSGemComposeRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSGemComposeRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSGemComposeRet>() {
+      public HSGemComposeRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSGemComposeRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSGemComposeRet> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Item.HSGemComposeRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Item.HSGemComposeRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.HSGemComposeRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Item.HSGemComposeRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.HSGemComposeRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Item.HSGemComposeRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.HSGemComposeRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Item.HSGemComposeRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Item.HSGemComposeRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Item.HSGemComposeRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Item.HSGemComposeRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSGemComposeRet}
+     *
+     * <pre>
+     * 合成道具返回
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Item.HSGemComposeRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Item.internal_static_HSGemComposeRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Item.internal_static_HSGemComposeRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Item.HSGemComposeRet.class, com.hawk.game.protocol.Item.HSGemComposeRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Item.HSGemComposeRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Item.internal_static_HSGemComposeRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Item.HSGemComposeRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Item.HSGemComposeRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Item.HSGemComposeRet build() {
+        com.hawk.game.protocol.Item.HSGemComposeRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Item.HSGemComposeRet buildPartial() {
+        com.hawk.game.protocol.Item.HSGemComposeRet result = new com.hawk.game.protocol.Item.HSGemComposeRet(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Item.HSGemComposeRet) {
+          return mergeFrom((com.hawk.game.protocol.Item.HSGemComposeRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Item.HSGemComposeRet other) {
+        if (other == com.hawk.game.protocol.Item.HSGemComposeRet.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Item.HSGemComposeRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Item.HSGemComposeRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSGemComposeRet)
+    }
+
+    static {
+      defaultInstance = new HSGemComposeRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSGemComposeRet)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_ItemSell_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ItemSell_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_GemSelect_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_GemSelect_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_ItemInfo_descriptor;
   private static
@@ -7085,6 +8680,16 @@ public final class Item {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSItemComposeRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSGemCompose_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSGemCompose_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSGemComposeRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSGemComposeRet_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7095,21 +8700,24 @@ public final class Item {
   static {
     java.lang.String[] descriptorData = {
       "\n\023Protocol/Item.proto\")\n\010ItemSell\022\016\n\006ite" +
-      "mId\030\001 \002(\t\022\r\n\005count\030\002 \002(\005\"E\n\010ItemInfo\022\n\n\002" +
-      "id\030\001 \002(\003\022\016\n\006itemId\030\002 \002(\t\022\r\n\005count\030\003 \002(\005\022" +
-      "\016\n\006status\030\004 \002(\005\".\n\016HSItemInfoSync\022\034\n\tite" +
-      "mInfos\030\001 \003(\0132\t.ItemInfo\"@\n\tHSItemUse\022\016\n\006" +
-      "itemId\030\001 \002(\t\022\021\n\titemCount\030\002 \001(\005\022\020\n\010targe" +
-      "tID\030\003 \001(\005\"\016\n\014HSItemUseRet\"6\n\021HSItemBoxUs" +
-      "eBatch\022\016\n\006itemId\030\001 \002(\t\022\021\n\titemCount\030\002 \002(" +
-      "\005\"\026\n\024HSItemBoxUseBatchRet\"+\n\017HSItemSellB" +
-      "atch\022\030\n\005items\030\001 \003(\0132\t.ItemSell\"\024\n\022HSItem",
-      "SellBatchRet\".\n\tHSItemBuy\022\016\n\006itemId\030\001 \002(" +
-      "\t\022\021\n\titemCount\030\002 \002(\005\"1\n\014HSItemBuyRet\022\016\n\006" +
-      "itemId\030\001 \002(\t\022\021\n\titemCount\030\002 \002(\005\"\037\n\rHSIte" +
-      "mCompose\022\016\n\006itemId\030\001 \002(\t\"\"\n\020HSItemCompos" +
-      "eRet\022\016\n\006itemId\030\001 \002(\tB\030\n\026com.hawk.game.pr" +
-      "otocol"
+      "mId\030\001 \002(\t\022\r\n\005count\030\002 \002(\005\")\n\tGemSelect\022\r\n" +
+      "\005gemId\030\001 \002(\t\022\r\n\005count\030\002 \002(\005\"E\n\010ItemInfo\022" +
+      "\n\n\002id\030\001 \002(\003\022\016\n\006itemId\030\002 \002(\t\022\r\n\005count\030\003 \002" +
+      "(\005\022\016\n\006status\030\004 \002(\005\".\n\016HSItemInfoSync\022\034\n\t" +
+      "itemInfos\030\001 \003(\0132\t.ItemInfo\"@\n\tHSItemUse\022" +
+      "\016\n\006itemId\030\001 \002(\t\022\021\n\titemCount\030\002 \001(\005\022\020\n\010ta" +
+      "rgetID\030\003 \001(\005\"\016\n\014HSItemUseRet\"6\n\021HSItemBo" +
+      "xUseBatch\022\016\n\006itemId\030\001 \002(\t\022\021\n\titemCount\030\002" +
+      " \002(\005\"\026\n\024HSItemBoxUseBatchRet\"+\n\017HSItemSe",
+      "llBatch\022\030\n\005items\030\001 \003(\0132\t.ItemSell\"\024\n\022HSI" +
+      "temSellBatchRet\".\n\tHSItemBuy\022\016\n\006itemId\030\001" +
+      " \002(\t\022\021\n\titemCount\030\002 \002(\005\"1\n\014HSItemBuyRet\022" +
+      "\016\n\006itemId\030\001 \002(\t\022\021\n\titemCount\030\002 \002(\005\".\n\rHS" +
+      "ItemCompose\022\016\n\006itemId\030\001 \002(\t\022\r\n\005count\030\002 \002" +
+      "(\005\"\022\n\020HSItemComposeRet\"<\n\014HSGemCompose\022\030" +
+      "\n\004gems\030\001 \003(\0132\n.GemSelect\022\022\n\ncomposeAll\030\002" +
+      " \002(\010\"\021\n\017HSGemComposeRetB\030\n\026com.hawk.game" +
+      ".protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7122,78 +8730,96 @@ public final class Item {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_ItemSell_descriptor,
               new java.lang.String[] { "ItemId", "Count", });
-          internal_static_ItemInfo_descriptor =
+          internal_static_GemSelect_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_GemSelect_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_GemSelect_descriptor,
+              new java.lang.String[] { "GemId", "Count", });
+          internal_static_ItemInfo_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_ItemInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_ItemInfo_descriptor,
               new java.lang.String[] { "Id", "ItemId", "Count", "Status", });
           internal_static_HSItemInfoSync_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_HSItemInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemInfoSync_descriptor,
               new java.lang.String[] { "ItemInfos", });
           internal_static_HSItemUse_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_HSItemUse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemUse_descriptor,
               new java.lang.String[] { "ItemId", "ItemCount", "TargetID", });
           internal_static_HSItemUseRet_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_HSItemUseRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemUseRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSItemBoxUseBatch_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_HSItemBoxUseBatch_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemBoxUseBatch_descriptor,
               new java.lang.String[] { "ItemId", "ItemCount", });
           internal_static_HSItemBoxUseBatchRet_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_HSItemBoxUseBatchRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemBoxUseBatchRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSItemSellBatch_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_HSItemSellBatch_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemSellBatch_descriptor,
               new java.lang.String[] { "Items", });
           internal_static_HSItemSellBatchRet_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_HSItemSellBatchRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemSellBatchRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSItemBuy_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_HSItemBuy_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemBuy_descriptor,
               new java.lang.String[] { "ItemId", "ItemCount", });
           internal_static_HSItemBuyRet_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_HSItemBuyRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemBuyRet_descriptor,
               new java.lang.String[] { "ItemId", "ItemCount", });
           internal_static_HSItemCompose_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_HSItemCompose_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemCompose_descriptor,
-              new java.lang.String[] { "ItemId", });
+              new java.lang.String[] { "ItemId", "Count", });
           internal_static_HSItemComposeRet_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_HSItemComposeRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemComposeRet_descriptor,
-              new java.lang.String[] { "ItemId", });
+              new java.lang.String[] { });
+          internal_static_HSGemCompose_descriptor =
+            getDescriptor().getMessageTypes().get(14);
+          internal_static_HSGemCompose_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSGemCompose_descriptor,
+              new java.lang.String[] { "Gems", "ComposeAll", });
+          internal_static_HSGemComposeRet_descriptor =
+            getDescriptor().getMessageTypes().get(15);
+          internal_static_HSGemComposeRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSGemComposeRet_descriptor,
+              new java.lang.String[] { });
           return null;
         }
       };

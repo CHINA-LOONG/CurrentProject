@@ -100,32 +100,17 @@ public class EquipBuildPanel : EquipPanelBase
         if (curData.level >= BattleConst.maxEquipLevel && curData.stage >= BattleConst.maxEquipStage)
         {
             uiType = UIType.MaxLevel;
-            nextData = new EquipData()
-            {
-                equipId = curData.equipId,
-                stage = curData.stage,
-                level = curData.level
-            };
+            nextData = EquipData.valueof(curData.id, curData.equipId, curData.stage, curData.level, BattleConst.invalidMonsterID, null);
         }
         else if (curData.level < BattleConst.maxEquipLevel)
         {
             uiType = UIType.Qianghua;
-            nextData = new EquipData()
-            {
-                equipId=curData.equipId,
-                stage = curData.stage,
-                level = curData.level + 1
-            };
+            nextData = EquipData.valueof(curData.id, curData.equipId, curData.stage, curData.level+1, BattleConst.invalidMonsterID, null);
         }
         else
         {
             uiType = UIType.Jinjie;
-            nextData = new EquipData
-            {
-                equipId = curData.equipId,
-                stage = curData.stage + 1,
-                level = BattleConst.minEquipLevel
-            };
+            nextData = EquipData.valueof(curData.id, curData.equipId, curData.stage+1, curData.level, BattleConst.invalidMonsterID, null);
         }
 
 

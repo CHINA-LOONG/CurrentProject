@@ -66,6 +66,18 @@ message HSEquipComposeRet
 	optional int32 level = 3;
 }
 
+// 装备分解
+message HSEquipDecompose
+{
+	repeated int64 equipId = 1;
+}
+
+// 装备分解返回
+message HSEquipDeComposeRet
+{
+
+}
+
 // 装备升级
 message HSEquipIncreaseLevel
 {

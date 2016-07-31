@@ -1,6 +1,7 @@
 package com.hawk.game.config;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,7 +89,7 @@ public class InstanceCfg extends HawkConfigBase {
 	}
 	
 	public List<String> getNormalBattleIdList() {
-		return normalBattleIdList;
+		return Collections.unmodifiableList(normalBattleIdList);
 	}
 	
 	public String getBossBattleId() {
@@ -100,10 +101,10 @@ public class InstanceCfg extends HawkConfigBase {
 	}
 	
 	public Map<String, Integer> getNormalBattleMonsterMap() {
-		return normalBattleMonsterMap;
+		return Collections.unmodifiableMap(normalBattleMonsterMap);
 	}
 	
 	public Map<String, Integer> getBossBattleMonsterMap() {
-		return bossBattleMonsterMap;
+		return Collections.unmodifiableMap(bossBattleMonsterMap);
 	}
 }

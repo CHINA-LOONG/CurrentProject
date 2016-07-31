@@ -77,7 +77,7 @@ public class PlayerMailModule extends PlayerModule {
 		MailEntity mailEntity = player.getPlayerData().getMailEntity(mailId);
 		if (mailEntity == null) {
 			sendError(hsCode, Status.mailError.MAIL_NOT_EXIST);
-			return false;
+			return true;
 		}
 
 		boolean update = false;
@@ -110,14 +110,14 @@ public class PlayerMailModule extends PlayerModule {
 		MailEntity mailEntity = player.getPlayerData().getMailEntity(mailId);
 		if (mailEntity == null) {
 			sendError(hsCode, Status.mailError.MAIL_NOT_EXIST);
-			return false;
+			return true;
 		}
 
 		AwardItems sumAwardItems = AwardItems.valueOf();
 		int status = receiveMail(mailEntity, sumAwardItems);
 		if (status != Status.error.NONE_ERROR_VALUE) {
 			sendError(hsCode, status);
-			return false;
+			return true;
 		}
 		sumAwardItems.rewardTakeAffectAndPush(player,  Action.MAIL_REWARD, HS.code.MAIL_RECEIVE_C_VALUE);
 
@@ -138,7 +138,7 @@ public class PlayerMailModule extends PlayerModule {
 		List<MailEntity> mailList = player.getPlayerData().getMailEntityList();
 		if (true == mailList.isEmpty()) {
 			sendError(hsCode, Status.mailError.MAIL_NONE);
-			return false;
+			return true;
 		}
 
 		// 排序

@@ -112,18 +112,18 @@ public class PlayerQuestModule extends PlayerModule {
 		 HSQuest quest = questMap.get(questId);
 		if (null == quest) {
 			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.questError.QUEST_NOT_ACCEPT_VALUE, 1));
-			return false;
+			return true;
 		}
 
 		if (quest.getProgress() < questCfg.getGoalCount()) {
 			sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.questError.QUEST_NOT_COMPLETE_VALUE, 1));
-			return false;
+			return true;
 		}
 
 		if (null != questCfg.getTimeBegin() && null != questCfg.getTimeEnd()) {
 			if (false == TimeUtil.isTimeInPeriod(curTime, questCfg.getTimeBegin(), questCfg.getTimeEnd())) {
 				sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.questError.QUEST_NOT_OPEN_VALUE, 1));
-				return false;
+				return true;
 			}
 		}
 

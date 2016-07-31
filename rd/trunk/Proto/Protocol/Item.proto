@@ -8,6 +8,12 @@ message ItemSell
 	required int32  count = 2;
 }
 
+message GemSelect
+{
+	required string gemId = 1;
+	required int32  count = 2;
+}
+
 // 用于同步物品信息
 message ItemInfo
 {
@@ -81,10 +87,23 @@ message HSItemBuyRet
 message HSItemCompose
 {
 	required string itemId = 1;
+	required int32 count = 2;
 }
 
 // 合成道具返回
 message HSItemComposeRet
 {
-	required string itemId = 1;
+}
+
+// 合成道具
+message HSGemCompose
+{
+	repeated GemSelect gems = 1;
+	required bool  composeAll = 2;
+}
+
+// 合成道具返回
+message HSGemComposeRet
+{
+
 }

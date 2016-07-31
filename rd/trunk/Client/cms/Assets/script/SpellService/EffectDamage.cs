@@ -44,7 +44,7 @@ public class EffectDamage : Effect
         return true;
     }
     //---------------------------------------------------------------------------------------------
-    public override int CalculateHit()
+    public override int CalculateHit(string wpName)
     {
         if (absoluteHit == true)
             return SpellConst.hitSuccess;
@@ -69,7 +69,7 @@ public class EffectDamage : Effect
             }
         }
 
-        return base.CalculateHit();
+        return base.CalculateHit(wpName);
     }
     //---------------------------------------------------------------------------------------------
     public void CalculateDamage(string wpID)
@@ -112,7 +112,7 @@ public class EffectDamage : Effect
         }
         else
         {
-            if (CalculateHit() == SpellConst.hitSuccess)
+            if (CalculateHit(wpID) == SpellConst.hitSuccess)
             {
                 GameDataMgr gdMgr = GameDataMgr.Instance;
 
@@ -232,7 +232,7 @@ public class EffectDamage : Effect
                     //if (caster.pbUnit.camp == UnitCamp.Enemy)
                     //    damageAmount = -1;
                     //else
-                    //    damageAmount = -1;                    
+                    //    damageAmount = -2;
                 }
                 if (damageProto.isHeal == false)
 				{

@@ -16,9 +16,10 @@ public interface IEquipCallBack
     void Replacement(GameUnit unit,int equipPart);//换装
 }
 
-public class UIEquipDetails : MonoBehaviour
+public class UIEquipDetails : UIBase
 {
     //界面
+    public static string ViewName = "equipDetails";
     public Text equipTypeTip;
     public Text equipPowerTip;
     public Text equipLimitTip;
@@ -43,12 +44,13 @@ public class UIEquipDetails : MonoBehaviour
     public GameObject[] gemAttribute;//宝石
     GameObject gemName;//宝石名
     GameObject[] gemAttrList = new GameObject[2];
-    string[] part = new string[6] { "equip_Weapon", "equip_Waist", "equip_Armor", "equip_Bracelet", "equip_Ring", "equip_Amulet" };
+    string[] part = new string[6] { "equip_Weapon", "equip_Helmet", "equip_Armor", "equip_Bracer", "equip_Ring", "equip_Accessory" };
     string[] equipTypeId = new string[4] { "common_type_defence", "common_type_physical", "common_type_magic", "common_type_support" };
     public GameObject reinforcedButton;//强化
     public GameObject inlayButton;//镶嵌
     public GameObject unloadButton;//卸下
     public GameObject reloadButton;//更换
+    public GameObject mask;//遮罩
     EquipData equipDate;
     GameUnit unitDate;
     ItemStaticData itemData;
@@ -57,9 +59,18 @@ public class UIEquipDetails : MonoBehaviour
         GameObject equip = ResourceMgr.Instance.LoadAsset("equipDetails");
         return equip.GetComponent<UIEquipDetails>();
     }
-    public void Show(EquipData equip, GameUnit unit, EquipState Type)
+    public static UIEquipDetails openEquipTips(EquipData equipData)
+    {
+        UIEquipDetails equipTips = UIMgr.Instance.OpenUI_(UIEquipDetails.ViewName, false) as UIEquipDetails;
+        equipTips.Show(equipData,null, EquipState.hide,true);
+        return equipTips;
+    }
+
+    public void Show(EquipData equip, GameUnit unit, EquipState Type, bool isTips = false)
     {
         Hide();
+        if (!isTips)
+            mask.SetActive(false);
         int w = 0;
         if (Type == EquipState.show)
         {
@@ -72,12 +83,13 @@ public class UIEquipDetails : MonoBehaviour
             equipOperation1.SetActive(true);
         }
         else if (Type == EquipState.hide)
-        {
+        {            
             equipOperation.SetActive(false);
             equipOperation1.SetActive(false);
         }
         equipDate = equip;
-        unitDate = unit;
+        if (unit != null)
+            unitDate = unit;        
         itemData = StaticDataMgr.Instance.GetItemData(equipDate.equipId);
         equipNmae.text = StaticDataMgr.Instance.GetTextByID(itemData.name);
         if (equipDate.level > 0)
@@ -306,6 +318,10 @@ public class UIEquipDetails : MonoBehaviour
         {            
            equipCallBack.Replacement(unitDate,itemData.part);
         }
+        else if (go.name == mask.name)
+        {
+            UIMgr.Instance.DestroyUI(this);
+        }
     }
 
     public void OnUnloadEquip(EquipData equip)
@@ -322,17 +338,12 @@ public class UIEquipDetails : MonoBehaviour
     {
         UINetRequest.Close();
         if (msg == null || msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
-        {
             return;
-        }
         PB.HSEquipMonsterUndressRet result = msg.GetProtocolBody<PB.HSEquipMonsterUndressRet>();
         GameUnit monster = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(result.monsterId);
         EquipData equip = GameDataMgr.Instance.PlayerDataAttr.gameEquipData.GetEquip(result.id);
         ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
         monster.SetEquipData(itemInfo.part, null, true);
-        //monster.equipList[itemInfo.part] = null;
-        //equip.monsterId = BattleConst.invalidMonsterID;
-
         GameEventMgr.Instance.FireEvent(GameEventList.ReloadPetEquipNotify);
         equipCallBack.Unload();
     }
@@ -365,6 +376,7 @@ public class UIEquipDetails : MonoBehaviour
         EventTriggerListener.Get(inlayButton).onClick = OnClick;
         EventTriggerListener.Get(unloadButton).onClick = OnClick;
         EventTriggerListener.Get(reloadButton).onClick = OnClick;
+        EventTriggerListener.Get(mask).onClick = OnClick;
         equipTypeTip.text = StaticDataMgr.Instance.GetTextByID("equip_List_zhuangbeileixing")+":";
         equipPowerTip.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
         equipLimitTip.text = StaticDataMgr.Instance.GetTextByID("equip_List_xianzhidengji") + ":";

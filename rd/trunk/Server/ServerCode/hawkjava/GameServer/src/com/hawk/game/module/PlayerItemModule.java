@@ -12,12 +12,15 @@ import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
+import com.hawk.game.item.GemInfo;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Item.GemSelect;
+import com.hawk.game.protocol.Item.HSGemCompose;
 import com.hawk.game.protocol.Item.HSItemBoxUseBatch;
 import com.hawk.game.protocol.Item.HSItemBoxUseBatchRet;
 import com.hawk.game.protocol.Item.HSItemBuy;
@@ -30,6 +33,7 @@ import com.hawk.game.protocol.Item.HSItemUse;
 import com.hawk.game.protocol.Item.HSItemUseRet;
 import com.hawk.game.protocol.Item.ItemSell;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ItemUtil;
 
 public class PlayerItemModule extends PlayerModule{
@@ -80,6 +84,12 @@ public class PlayerItemModule extends PlayerModule{
 			onItemBoxUseBatch(protocol.getType(),protocol.parseProtocol(HSItemBoxUseBatch.getDefaultInstance()));
 			return true;
 		}
+		else if(protocol.checkType(HS.code.GEM_COMPOSE_C)) {
+			//合成宝石
+			onGemCompose(protocol.getType(),protocol.parseProtocol(HSGemCompose.getDefaultInstance()));
+			return true;
+		}
+		
 		return false;
 	}
 	
@@ -274,8 +284,7 @@ public class PlayerItemModule extends PlayerModule{
 		int useType = itemCfg.getType();
 		if (useType == Const.toolType.FRAGMENTTOOL_VALUE) {
 			consumeItems.addItem(itemId, itemCfg.getNeedCount());
-			List<ItemInfo> targetList = itemCfg.getTargetItemList();
-			awardItems.addItemInfos(targetList);
+			awardItems.addItemInfos(itemCfg.getTargetItemList());
 		}
 		// 开宝箱走批量开接口
 		else if (useType == Const.toolType.BOXTOOL_VALUE) {
@@ -348,6 +357,11 @@ public class PlayerItemModule extends PlayerModule{
 	 */
 	private void onItemCompose(int hsCode, HSItemCompose protocol) {
 		String itemId = protocol.getItemId();
+		int count = protocol.getCount();
+		if (count <= 0) {
+			sendError(hsCode, Status.error.CONFIG_ERROR);
+			return ;	
+		}
 		
 		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId);
 		if(itemCfg == null) {
@@ -355,25 +369,91 @@ public class PlayerItemModule extends PlayerModule{
 			return ;
 		}
 		
-		if (itemCfg.getComponentItemList() == null || itemCfg.getComponentItemList().size() == 0) {
-			sendError(hsCode, Status.itemError.ITEM_NOT_ENOUGH);
+		if (itemCfg.getTargetItemList() == null || itemCfg.getTargetItemList().size() == 0) {
+			sendError(hsCode, Status.error.CONFIG_ERROR);
 			return ;
 		}		
 		
 		ConsumeItems consumeItems = ConsumeItems.valueOf();
-		consumeItems.addItemInfos(itemCfg.getNeedItemList());
+		consumeItems.addItem(itemId, itemCfg.getNeedCount() * count);
 		if (consumeItems.checkConsume(player, hsCode) == false) {
 			return;
 		}
 		
-		consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_USE, hsCode);
+		consumeItems.consumeTakeAffectAndPush(player, Action.ITEM_COMPOSE, hsCode);
 		
 		AwardItems awardItems = new AwardItems();
-		awardItems.addItem(itemId, 1);
-		awardItems.rewardTakeAffect(player, Action.ITEM_USE);
+		for (int i = 0; i < count; i++) {
+			awardItems.addItemInfos(itemCfg.getTargetItemList());
+		}
+		awardItems.rewardTakeAffect(player, Action.ITEM_COMPOSE);
 		
 		HSItemComposeRet.Builder response = HSItemComposeRet.newBuilder();
-		response.setItemId(itemId);
 		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_COMPOSE_S_VALUE, response));
+	}
+	
+	/**
+	 * 宝石合成
+	 * @param hsCode
+	 * @param protocol
+	 */
+	private void onGemCompose(int hsCode, HSGemCompose protocol){
+		int count = 0;
+		int level = 0;
+		int composeTimes = protocol.getComposeAll() ? GsConst.GEM_COMPOSE_MAX_COUNT : 1;
+		for (GemSelect gem : protocol.getGemsList()) {
+			ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, gem.getGemId());
+			if(gem.getCount() == 0 || itemCfg == null || itemCfg.getType() != Const.toolType.GEMTOOL_VALUE) {
+				sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+				return ;
+			}
+			
+			if (level != 0) {
+				level = itemCfg.getLevel();
+			}
+			
+			if (level != itemCfg.getLevel()) {
+				sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+				return ;
+			}
+			
+			ItemEntity itemEntity = player.getPlayerData().getItemByItemId(gem.getGemId());
+			int maxCount = itemEntity.getCount() / gem.getCount();
+			if (maxCount < composeTimes) {
+				composeTimes = maxCount;
+			}
+			
+			count += gem.getCount();
+		}
+		
+		if (composeTimes <= 0) {
+			sendError(hsCode, Status.itemError.ITEM_NOT_ENOUGH_VALUE);
+			return ;
+		}
+		if (count != GsConst.GEM_COMPOSE_COUNT || level == 0) {
+			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+			return ;
+		}
+
+		ConsumeItems consumeItems = ConsumeItems.valueOf();
+		AwardItems awardItems = AwardItems.valueOf();
+	
+		for (int i = 0; i < composeTimes; i++) {
+			for (GemSelect gem : protocol.getGemsList()) {
+				consumeItems.addItem(gem.getGemId(), gem.getCount());
+			}
+			
+			awardItems.addItem(ItemUtil.generateGem(level).getId(), GsConst.NEXT_LEVEL_GEM_COUNT);
+		}
+		
+		if (consumeItems.checkConsume(player, hsCode) == false) {
+			return;
+		}
+		
+		consumeItems.consumeTakeAffectAndPush(player, Action.GEM_COMPOSE, hsCode);
+		awardItems.rewardTakeAffect(player, Action.GEM_COMPOSE);
+		
+		HSGemCompose.Builder response = HSGemCompose.newBuilder();
+		sendProtocol(HawkProtocol.valueOf(HS.code.GEM_COMPOSE_S_VALUE, response));
 	}
 }

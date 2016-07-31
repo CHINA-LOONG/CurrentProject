@@ -3,7 +3,10 @@ package com.hawk.game.util;
 import java.util.Map;
 
 import org.hawk.config.HawkConfigManager;
+import org.hawk.os.HawkException;
+import org.hawk.os.HawkRand;
 
+import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.MonsterBaseCfg;
 import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.entity.MonsterEntity;
@@ -19,6 +22,52 @@ public class ItemUtil {
 	 */
 	public static boolean itemCanOverlap(int itemType) {
 		return itemType == Const.itemType.PLAYER_ATTR_VALUE || itemType == Const.itemType.ITEM_VALUE;
+	}
+	
+	/**
+	 * 随机一个形状的宝石
+	 * 
+	 * @param itemType
+	 * @return
+	 */
+	public static ItemCfg generateGem (int level) {
+		int random = 0;
+		try {
+			random = HawkRand.randInt(1, 900);
+		} catch (Exception e) {
+			random = 100;
+		}
+		
+		int type = GsConst.GemTypeWeight.NONE_GEM_TYPE.ordinal();
+		if (random <= GsConst.GemTypeWeight.FIRST_GEM_TYPE.GetWeight()) {
+			type = GsConst.GemTypeWeight.FIRST_GEM_TYPE.ordinal();
+		}
+		else if (random <= GsConst.GemTypeWeight.SECOND_GEM_TYPE.GetWeight()) {
+			type = GsConst.GemTypeWeight.SECOND_GEM_TYPE.ordinal();
+		}
+		else if (random <= GsConst.GemTypeWeight.THIRD_GEM_TYPE.GetWeight()) {
+			type = GsConst.GemTypeWeight.SECOND_GEM_TYPE.ordinal();
+		}
+		else if (random <= GsConst.GemTypeWeight.FORTH_GEM_TYPE.GetWeight()) {
+			type = GsConst.GemTypeWeight.FORTH_GEM_TYPE.ordinal();
+		}
+		else if (random <= GsConst.GemTypeWeight.FIFTH_GEM_TYPE.GetWeight()) {
+			type = GsConst.GemTypeWeight.FIFTH_GEM_TYPE.ordinal();
+		}
+		else if (random <= GsConst.GemTypeWeight.SIXTH_GEM_TYPE.GetWeight()) {
+			type = GsConst.GemTypeWeight.SIXTH_GEM_TYPE.ordinal();
+		}
+		else if (random <= GsConst.GemTypeWeight.SEVENTH_GEM_TYPE.GetWeight()) {
+			type = GsConst.GemTypeWeight.SEVENTH_GEM_TYPE.ordinal();
+		}
+		else if (random <= GsConst.GemTypeWeight.EIGHTI_GEM_TYPE.GetWeight()) {
+			type = GsConst.GemTypeWeight.EIGHTI_GEM_TYPE.ordinal();
+		}
+		else if (random <= GsConst.GemTypeWeight.NINTH_GEM_TYPE.GetWeight()) {
+			type = GsConst.GemTypeWeight.NINTH_GEM_TYPE.ordinal();
+		}
+		
+		return ItemCfg.getGemCfg(level, type);
 	}
 	
 	/**

@@ -30,23 +30,23 @@ public class EquipData
     public List<GemInfo> gemList;
 
     //基础属性
-    public int health;
-    public int strength;
-    public int intelligence;
-    public int defense;
-    public int speed;
+    public float health;
+    public float strength;
+    public float intelligence;
+    public float defense;
+    public float speed;
     //强化属性
-    public int healthStrengthen;
-    public int strengthStrengthen;
-    public int intelligenceStrengthen;
-    public int defenseStrengthen;
-    public int speedStrengthen;
+    public float healthStrengthen;
+    public float strengthStrengthen;
+    public float intelligenceStrengthen;
+    public float defenseStrengthen;
+    public float speedStrengthen;
     //宝石属性
-    public int healthGem;
-    public int strengthGem;
-    public int intelligenceGem;
-    public int defenseGem;
-    public int speedGem;
+    public float healthGem;
+    public float strengthGem;
+    public float intelligenceGem;
+    public float defenseGem;
+    public float speedGem;
 
     //---------------------------------------------------------------------------------------------
     public static EquipData valueof(long id, string equipId, int stage, int level,int monsterId, List<PB.GemPunch> gemList)
@@ -61,13 +61,20 @@ public class EquipData
         //基础属性id
         equipData.SetStageLvl(stage, true);
         equipData.SetStrengthLvl(level, true);
-        foreach (PB.GemPunch element in gemList)
-        {
-            GemInfo gemInfo = new GemInfo(element);
-            equipData.gemList.Add(gemInfo);
+        if (gemList != null)
+        { 
+            foreach (PB.GemPunch element in gemList)
+            {
+                GemInfo gemInfo = new GemInfo(element);
+                equipData.gemList.Add(gemInfo);
+            }
+            equipData.RefreshGemAttr();
         }
-        //
         return equipData;
+    }
+    //---------------------------------------------------------------------------------------------
+    private EquipData()
+    { 
     }
     //---------------------------------------------------------------------------------------------
     public void SetStrengthLvl(int lvl, bool forceRefresh = false)

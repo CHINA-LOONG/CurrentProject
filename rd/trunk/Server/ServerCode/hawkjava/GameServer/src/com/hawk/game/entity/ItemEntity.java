@@ -84,7 +84,7 @@ public class ItemEntity extends HawkDBEntity {
 	}
 
 	public void setCount(int count) {
-		this.count = (short)count;
+		this.count = count;
 	}
 	
 	public int getPlayerId() {

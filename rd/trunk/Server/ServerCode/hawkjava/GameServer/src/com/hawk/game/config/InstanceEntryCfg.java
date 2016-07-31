@@ -1,6 +1,7 @@
 package com.hawk.game.config;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.hawk.config.HawkConfigBase;
@@ -204,11 +205,11 @@ public class InstanceEntryCfg extends HawkConfigBase {
 	}
 	
 	public List<MonsterCfg> getEnemyList() {
-		return enemyList;
+		return Collections.unmodifiableList(enemyList);
 	}
 	
 	public List<ItemCfg> getRewardList() {
-		return rewardItemList;
+		return Collections.unmodifiableList(rewardItemList);
 	}
 	
 }

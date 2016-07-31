@@ -1,6 +1,7 @@
 package com.hawk.game.util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +46,7 @@ public class InstanceUtil {
 	// 使用阶段----------------------------------------------------------------------
 	
 	public static Map<Integer, InstanceChapter> getInstanceChapterMap() {
-		return chapterMap;
+		return Collections.unmodifiableMap(chapterMap);
 	}
 
 	public static int getInstanceChapterIndex(String instanceId) {

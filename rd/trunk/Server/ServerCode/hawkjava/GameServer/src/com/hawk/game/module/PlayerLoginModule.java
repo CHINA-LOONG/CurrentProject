@@ -69,7 +69,7 @@ public class PlayerLoginModule extends PlayerModule {
 		int sessionMaxSize = HawkApp.getInstance().getAppCfg().getSessionMaxSize();
 		if (sessionMaxSize > 0 && ServerData.getInstance().getOnlinePlayer() >= sessionMaxSize) {
 			session.sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.error.ONLINE_MAX_LIMIT_VALUE, 1));
-			return false;
+			return true;
 		}
 
 		// 参数解析
@@ -137,7 +137,7 @@ public class PlayerLoginModule extends PlayerModule {
 		if (playerEntity == null || playerEntity.getId() <= 0)
 		{
 			session.sendProtocol(ProtoUtil.genErrorProtocol(hsCode, Status.PlayerError.PLAYER_NOT_EXIST_VALUE, 1));
-			return false;
+			return true;
 		}
 
 		// 记录上线时间

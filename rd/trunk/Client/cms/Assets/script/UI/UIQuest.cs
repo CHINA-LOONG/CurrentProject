@@ -74,7 +74,7 @@ public class UIQuest : UIBase, TabButtonDelegate
     //清理资源缓存
     public override void Clean()
     {
-        for (int i = items.Count - 1; i >= 0; i++)
+        for (int i = items.Count - 1; i >= 0; i--)
         {
             items[i].Clean();
             ResourceMgr.Instance.DestroyAsset(items[i].gameObject);

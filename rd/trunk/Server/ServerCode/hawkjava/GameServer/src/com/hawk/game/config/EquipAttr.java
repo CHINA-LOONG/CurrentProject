@@ -196,15 +196,8 @@ public class EquipAttr extends HawkConfigBase{
 	/**
 	 * 获取装备列表
 	 */
-	public static Map<String, Map<Integer, EquipStageItem>> getEquipList() {
+	private static Map<String, Map<Integer, EquipStageItem>> getEquipList() {
 		return equipList;
-	}
-
-	/**
-	 * 设置装备列表
-	 */
-	public static void setEquipList(Map<String, Map<Integer, EquipStageItem>> equipList) {
-		EquipAttr.equipList = equipList;
 	}
 	
 	@Override

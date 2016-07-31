@@ -521,7 +521,7 @@ tips_90004_tongtiantabi,通天塔玩法获得的货币，可通过通天塔商�
 tips_90005_gonghuibi,公会玩法获得的货币，可通过公会商店购买物品,"Currency obtained thru Guild Activities,use to purchase items in the Guild Store"
 tips_90006_huolizhi,玩家活力,Player Energy
 tips_90007_jingyanzhi,可以增加角色经验值,To increase character's experience
-tips_90008_huodongdian,活动期间，完成相应任务，收集活动积分可以兑换各类珍惜碎片以及道具哦！,活动期间，完成相应任务，收集活动积分可以兑换各类珍惜碎片以及道具哦！
+tips_90008_huodongdian,活动期间，完成相应任务，收集活动积分可以兑换各类珍稀碎片以及道具哦！,"During the event period, complete the corresponding quests to accumulate event points that can be exchanged for rare fragments and items!"
 name_40011_pvprankxianshijinbi,大金币箱子,Giant Box of Gold
 name_40012_pvprankxianshijinbi,中金币箱子,Medium Box of Gold
 name_40013_pvprankxianshijinbi,小金币箱子,Small Box of Gold
@@ -538,10 +538,10 @@ name_10024_caihongguai1,初级怪物之魂,Basic Monster Spirit
 name_10025_caihongguai2,中级怪物之魂,Average Monster Spirit
 name_10026_caihongguai3,高级怪物之魂,Advanced Monster Spirit
 name_10027_caihongguai4,史诗怪物之魂,Epic Monster Spirit
-tips_10024_caihongguai1,"宠物之魂， 可以替代C, B级宠物进行宠物进阶","Monster Spirit, can be used instead of Class B or C whole monster for Monster Advance."
-tips_10025_caihongguai2,宠物之魂， 可以替代A级宠物进行宠物进阶,"Monster Spirit, can be used instead of Class A whole monster for Monster Advance."
-tips_10026_caihongguai3,宠物之魂， 可以替代S级宠物进行宠物进阶,"Monster Spirit, can be used instead of Class S whole monster for Monster Advance."
-tips_10027_caihongguai4,宠物之魂， 可以替代SS级宠物进行宠物进阶,"Monster Spirit, can be used instead of Class SS whole monster for Monster Advance."
+tips_10024_caihongguai1,"初级宠物之魂,可以替代C,B级宠物进行宠物进阶","Monster Spirit, can be used instead of Class B or C whole monster for Monster Advance."
+tips_10025_caihongguai2,"中级宠物之魂,可以替代A级宠物进行宠物进阶,可以通过3个初级怪物之魂合成","Average Monster Spirit, can be used instead of Class A whole monster for Monster Advance. Average Monster Spirit can be received by combining 3 Basic Monster Spirit."
+tips_10026_caihongguai3,"高级宠物之魂,可以替代S级宠物进行宠物进阶,可以通过3个中级怪物之魂合成","Advanced Monster Spirit, can be used instead of Class S whole monster for Monster Advance.Advanced Monster Spirit can be received by combining 3 Average Monster Spirit."
+tips_10027_caihongguai4,"史诗宠物之魂,可以替代SS级宠物进行宠物进阶,可以通过3个高级怪物之魂合成","Epic Monster Spirit, can be used instead of Class SS whole monster for Monster Advance.Epic Monster Spirit can be received by combining 3 Advanced Monster Spirit."
 name_40075_wenzhanglibao1,蓝色纹章箱子,Blue Insignia Chest
 name_40076_wenzhanglibao2,紫色纹章箱子,Purple Insignia Chest
 tips_40075_wenzhanglibao1,随机开出1个3级或4级纹章,Open to receive 1 random level 3 or 4 insignia
@@ -551,4 +551,4 @@ name_40074_suipianlibao2,碎片箱子（稀有）,Fragment Chest (Rare)
 tips_40073_suipianlibao1,随机开出20个B级宠物碎片、10个A级宠物碎片以及10个惊喜碎片（10个B级或者A级宠物碎片）,"Open to randomly receive 20 B grade monster fragments, 10 A grade monster fragments, as well as 10 surprise fragments (10 B or A grade monster fragments)"
 tips_40074_suipianlibao2,随机开出25个B级宠物碎片、15个A级宠物碎片以及20个惊喜碎片（10个A级、S级或者SS级宠物碎片）,"Open to randomly receive 25 B grade monster fragments, 15 A grade monster fragments, as well as 20 surprise fragments (20 A, S, or SS grade monster fragments)"
 name_90009_xinyangzhili,书魂,Soul Tome
-tips_90009_xinyangzhili,可以在神话守护者玩法中兑换稀有道具资源！,可以在神话守护者玩法中兑换稀有道具资源！
+tips_90009_xinyangzhili,可以在神话守护者玩法中兑换珍稀奖励！,"Accumulate Soul Tomes by clearing stages, which can then be used to exchange for rewards！"

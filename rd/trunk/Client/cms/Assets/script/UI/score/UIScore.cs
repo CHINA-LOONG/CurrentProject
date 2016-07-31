@@ -129,6 +129,10 @@ public class UIScore : UIBase
     //---------------------------------------------------------------------------------------------
     public void ShowScoreUI(bool success)
     {
+        if (UIIm.Instance != null)
+        {
+            UIIm.Instance.HideChat();
+        }
         mIsSuccess = success;
         gameObject.SetActive(true);
         if (mInstanceSettleResult != null)
@@ -350,17 +354,11 @@ public class UIScore : UIBase
                 }
                 else if (item.type == (int)PB.itemType.EQUIP)
                 {
-                    EquipData equipData = new EquipData()
-                    {
-                        id = item.id,
-                        equipId = item.itemId,
-                        stage = item.stage,
-                        level = item.level
-                    };
-                    ItemIcon icon = ItemIcon.CreateItemIcon(equipData);
+                    EquipData equipData = EquipData.valueof(item.id, item.itemId, item.stage, item.level, BattleConst.invalidMonsterID, null);
+                    ItemIcon icon = ItemIcon.CreateItemIcon(equipData,true);
                     icon.transform.SetParent(mItemGainList.transform);
                     icon.transform.localScale = Vector3.one;
-                    icon.ShowTips = true;
+                    //icon.ShowTips = true;
                 }
             }
         }

@@ -26,7 +26,7 @@ public class EffectApplyBuff : Effect
         if (base.Apply(applyTime, wpName) == false)
             return false;
 
-        int hitResult = CalculateHit();
+        int hitResult = CalculateHit(wpName);
 
         Logger.Log("[SpellService]trigger apply buff effect");
         if (hitResult == SpellConst.hitSuccess)
@@ -48,7 +48,7 @@ public class EffectApplyBuff : Effect
                 curBuff.casterID = casterID;
                 curBuff.targetID = targetID;
                 curBuff.SetOwnedSpell(ownedSpell);
-                curBuff.Apply(applyTime);
+                curBuff.Apply(applyTime, casterID == targetID);
             }
 
             //link effect
@@ -66,7 +66,7 @@ public class EffectApplyBuff : Effect
         return true;
     }
     //---------------------------------------------------------------------------------------------
-    public override int CalculateHit()
+    public override int CalculateHit(string wpName)
     {
         if (absoluteHit == true)
             return SpellConst.hitSuccess;
@@ -81,7 +81,33 @@ public class EffectApplyBuff : Effect
             return SpellConst.hitSuccess;
         }
 
-       return base.CalculateHit();
+        //check is weak point damagepoint
+        WeakPointRuntimeData wpRuntime = null;
+        if (string.IsNullOrEmpty(wpName) == false)
+        {
+            target.battleUnit.wpGroup.allWpDic.TryGetValue(wpName, out wpRuntime);
+            if (wpRuntime != null && wpRuntime.staticData.isDamagePoint != 1)
+            {
+                EffectApplyBuffPrototype applyBuffProt = protoEffect as EffectApplyBuffPrototype;
+                if (applyBuffProt != null)
+                {
+                    Buff curBuff = spellService.GetBuff(applyBuffProt.buffID);
+                    if (curBuff != null && curBuff.buffProto.category == (int)BuffType.Buff_Type_Dot)
+                    {
+                        //miss event
+                        SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+                        args.vitalType = (int)VitalType.Vital_Type_Immune;
+                        args.triggerTime = applyTime;
+                        args.casterID = casterID;
+                        args.targetID = targetID;
+                        spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
+                        return SpellConst.hitImmune;
+                    }
+                }
+            }
+        }
+
+       return base.CalculateHit(wpName);
     }
     //--------------------------------------------------------------------------------------------- 
 }

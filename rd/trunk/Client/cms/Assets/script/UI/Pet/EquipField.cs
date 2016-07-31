@@ -72,7 +72,7 @@ public class EquipField : MonoBehaviour
         {
             if (equipIcon==null)
             {
-                equipIcon = ItemIcon.CreateItemIcon(data);
+                equipIcon = ItemIcon.CreateItemIcon(data,false);
                 UIUtil.SetParentReset(equipIcon.transform, transform);
                 EventTriggerListener.Get(equipIcon.iconButton.gameObject).onClick = OnClickEquipSlot;
             }

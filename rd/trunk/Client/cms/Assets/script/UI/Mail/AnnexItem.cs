@@ -26,7 +26,8 @@ public class AnnexItem : MonoBehaviour
         }
         else if (info.type == (int)PB.itemType.EQUIP)
         {
-            icon = ItemIcon.CreateItemIcon(new EquipData() { equipId=info.itemId, stage=info.stage,level=info.level });
+            EquipData equipData = EquipData.valueof(0, info.itemId, info.stage, info.level, BattleConst.invalidMonsterID, null);
+            icon = ItemIcon.CreateItemIcon(equipData);
             UIUtil.SetParentReset(icon.transform, transIcon);
         }
         else if(info.type==(int)PB.itemType.PLAYER_ATTR)

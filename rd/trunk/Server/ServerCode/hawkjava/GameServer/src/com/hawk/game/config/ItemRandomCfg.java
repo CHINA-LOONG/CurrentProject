@@ -1,5 +1,6 @@
 package com.hawk.game.config;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class ItemRandomCfg extends HawkConfigBase{
 	}
 
 	public List<WeightItem<ShopItemInfo>> getWeightList() {
-		return weightList;
+		return Collections.unmodifiableList(weightList);
 	}
 
 	public ShopItemInfo getRandomItem() {

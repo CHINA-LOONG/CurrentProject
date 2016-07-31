@@ -169,20 +169,22 @@ public class ConsumeItems {
 	 * @return
 	 */
 	public ConsumeItems addItemInfo (ItemInfo itemInfo) {
-			
-		if (itemInfo.getType() == itemType.PLAYER_ATTR_VALUE) {
-			addAttr(itemInfo.getItemId(), itemInfo.getCount());
+		if (itemInfo != null) {
+			if (itemInfo.getType() == itemType.PLAYER_ATTR_VALUE) {
+				addAttr(itemInfo.getItemId(), itemInfo.getCount());
+			}
+			else if (itemInfo.getType() == itemType.ITEM_VALUE) {
+				addItem(itemInfo.getItemId(), itemInfo.getCount());
+			}
+			else if (itemInfo.getType() == itemType.MONSTER_VALUE) {
+				throw new RuntimeException("unsupport config consume type");
+			}
+			//配置的消耗类型不包括装备
+			else if (itemInfo.getType() == itemType.EQUIP_VALUE) {
+				throw new RuntimeException("unsupport config consume type");
+			}
 		}
-		else if (itemInfo.getType() == itemType.ITEM_VALUE) {
-			addItem(itemInfo.getItemId(), itemInfo.getCount());
-		}
-		else if (itemInfo.getType() == itemType.MONSTER_VALUE) {
-			throw new RuntimeException("unsupport config consume type");
-		}
-		//配置的消耗类型不包括装备
-		else if (itemInfo.getType() == itemType.EQUIP_VALUE) {
-			throw new RuntimeException("unsupport config consume type");
-		}
+		
 		return this;
 	}
 	

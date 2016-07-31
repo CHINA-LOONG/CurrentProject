@@ -162,6 +162,22 @@ public class BehaviorLogger {
 		 */
 		EQUIP_REPLACE,
 		/**
+		 * 宠物分解
+		 */
+		MONSTER_DECOMPOSE,
+		/**
+		 * 装备分解
+		 */
+		EQUIP_DECOMPOSE,
+		/**
+		 * 装备合成
+		 */
+		ITEM_COMPOSE,
+		/**
+		 * 宝石合成
+		 */
+		GEM_COMPOSE,
+		/**
 		 * 游戏奖励
 		 */
 		GAME_SYS_REWARD,

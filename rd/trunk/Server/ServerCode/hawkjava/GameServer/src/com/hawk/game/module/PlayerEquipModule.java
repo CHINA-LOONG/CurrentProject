@@ -11,6 +11,7 @@ import org.hawk.os.HawkRand;
 import com.hawk.game.config.EquipAttr;
 import com.hawk.game.config.EquipForgeCfg;
 import com.hawk.game.config.ItemCfg;
+import com.hawk.game.config.MonsterStageCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
@@ -28,6 +29,7 @@ import com.hawk.game.protocol.Equip.GemPunch;
 import com.hawk.game.protocol.Equip.HSEquipBuy;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Equip.HSEquipBuyRet;
+import com.hawk.game.protocol.Equip.HSEquipDecompose;
 import com.hawk.game.protocol.Equip.HSEquipGem;
 import com.hawk.game.protocol.Equip.HSEquipGemRet;
 import com.hawk.game.protocol.Equip.HSEquipIncreaseLevel;
@@ -43,6 +45,8 @@ import com.hawk.game.protocol.Equip.HSEquipMonsterUndress;
 import com.hawk.game.protocol.Equip.HSEquipMonsterUndressRet;
 import com.hawk.game.protocol.Equip.HSEquipPunch;
 import com.hawk.game.protocol.Equip.HSEquipPunchRet;
+import com.hawk.game.protocol.Monster.HSMonsterDecompose;
+import com.hawk.game.protocol.Monster.HSMonsterDecomposeRet;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.EquipUtil;
@@ -121,7 +125,12 @@ public class PlayerEquipModule extends PlayerModule{
 				//替换装备
 				onEquipReplaceOnMonster(HS.code.EQUIP_MONSTER_REPLACE_C_VALUE, protocol.parseProtocol(HSEquipMonsterReplace.getDefaultInstance()));
 				return true;
-			}	
+			}
+			else if(protocol.checkType(HS.code.EQUIP_DECOMPOSE_C)) {
+				//替换装备
+				onEquipDecompose(HS.code.EQUIP_DECOMPOSE_C_VALUE, protocol.parseProtocol(HSEquipDecompose.getDefaultInstance()));
+				return true;
+			}
 		} 
 		catch (Exception e) {
 			HawkException.catchException(e);	
@@ -142,6 +151,9 @@ public class PlayerEquipModule extends PlayerModule{
 		return true;
 	}
 
+	/*
+	 * 装备购买
+	 */
 	public void onEquipBuy(int hsCode, HSEquipBuy protocol)
 	{
 		String equid = protocol.getEquipId();
@@ -184,7 +196,10 @@ public class PlayerEquipModule extends PlayerModule{
 		response.setEquipId(equid);
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_BUY_S_VALUE, response));
 	}
-
+	
+	/*
+	 * 装备升级
+	 */
 	public void onEquipIncreaseLevel(int hsCode, HSEquipIncreaseLevel protocol) throws HawkException
 	{
 		EquipEntity equipEntity = player.getPlayerData().getEquipById(protocol.getId());
@@ -234,6 +249,9 @@ public class PlayerEquipModule extends PlayerModule{
 				Params.valueOf("after", equipEntity.getLevel()));	
 	}
 	
+	/*
+	 * 装备进阶
+	 */
 	public void onEquipIncreaseStage(int hsCode, HSEquipIncreaseStage protocol) throws HawkException
 	{
 		EquipEntity equipEntity = player.getPlayerData().getEquipById(protocol.getId());
@@ -288,6 +306,9 @@ public class PlayerEquipModule extends PlayerModule{
 				Params.valueOf("after", equipEntity.getStage()));		
 	}
 	
+	/*
+	 * 镶嵌宝石
+	 */
 	public void onEquipGem(int hsCode, HSEquipGem protocol)
 	{
 		EquipEntity equipEntity = player.getPlayerData().getEquipById(protocol.getId());
@@ -392,6 +413,9 @@ public class PlayerEquipModule extends PlayerModule{
 				Params.valueOf("gemInfo", equipEntity.gemListToString()));
 	}
 	
+	/*
+	 * 装备打孔
+	 */
 	public void onEquipPunch(int hsCode, HSEquipPunch protocol)
 	{
 		EquipEntity equipEntity = player.getPlayerData().getEquipById(protocol.getId());
@@ -457,6 +481,9 @@ public class PlayerEquipModule extends PlayerModule{
 				Params.valueOf("gemInfo", equipEntity.gemListToString()));
 	}
 	
+	/*
+	 * 穿装备
+	 */
 	public void onEquipDressOnMonster(int hsCode, HSEquipMonsterDress protocol) {
 		long id = protocol.getId();
 		int monsterId = protocol.getMonsterId();
@@ -502,6 +529,9 @@ public class PlayerEquipModule extends PlayerModule{
 				Params.valueOf("after", player.getPlayerData().monsterEquipsToString(monsterId)));
 	}
 	
+	/*
+	 * 脱装备
+	 */
 	public void onEquipUnDressOnMonster(int hsCode, HSEquipMonsterUndress protocol) {
 		long id = protocol.getId();
 		EquipEntity equipEntity = player.getPlayerData().getEquipById(id);
@@ -541,6 +571,9 @@ public class PlayerEquipModule extends PlayerModule{
 				Params.valueOf("after", player.getPlayerData().monsterEquipsToString(monsterId)));
 	}
 	
+	/*
+	 * 替换装备
+	 */
 	public void onEquipReplaceOnMonster(int hsCode, HSEquipMonsterReplace protocol) {
 		long id = protocol.getId();
 		int monsterId = protocol.getMonsterId();
@@ -597,5 +630,33 @@ public class PlayerEquipModule extends PlayerModule{
 				Params.valueOf("oldItemId", oldEntity.getItemId()),
 				Params.valueOf("oldEquipId", oldEntity.getId()),
 				Params.valueOf("after", player.getPlayerData().monsterEquipsToString(monsterId)));
+	}
+	
+	/*
+	 * 装备分解
+	 */
+	public void onEquipDecompose(int hsCode, HSEquipDecompose protocol) {
+		ConsumeItems consume = new ConsumeItems();
+		AwardItems award = new AwardItems();
+		for(long equipId : protocol.getEquipIdList()){
+			EquipEntity equipEntity = player.getPlayerData().getEquipById(equipId);
+			if (equipEntity == null) {
+				sendError(HS.code.EQUIP_DECOMPOSE_C_VALUE, Status.itemError.EQUIP_NOT_FOUND_VALUE);
+				return ;
+			}
+			consume.addEquip(equipId, equipEntity.getItemId());
+			award.addItemInfos(EquipForgeCfg.getDecomposeDemandList(equipEntity.getStage(), equipEntity.getLevel()));
+		}
+		
+		if (consume.checkConsume(player, HS.code.MONSTER_DECOMPOSE_C_VALUE) == false) {
+			return ;
+		}
+		
+		consume.consumeTakeAffect(player, Action.EQUIP_DECOMPOSE);
+		award.rewardTakeAffect(player, Action.EQUIP_DECOMPOSE);
+		
+		HSEquipDecompose.Builder response = HSEquipDecompose.newBuilder();
+		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_DECOMPOSE_S_VALUE, response));
+		return ;
 	}
 }

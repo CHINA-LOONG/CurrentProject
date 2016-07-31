@@ -6067,6 +6067,800 @@ public final class Equip {
     // @@protoc_insertion_point(class_scope:HSEquipComposeRet)
   }
 
+  public interface HSEquipDecomposeOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated int64 equipId = 1;
+    /**
+     * <code>repeated int64 equipId = 1;</code>
+     */
+    java.util.List<java.lang.Long> getEquipIdList();
+    /**
+     * <code>repeated int64 equipId = 1;</code>
+     */
+    int getEquipIdCount();
+    /**
+     * <code>repeated int64 equipId = 1;</code>
+     */
+    long getEquipId(int index);
+  }
+  /**
+   * Protobuf type {@code HSEquipDecompose}
+   *
+   * <pre>
+   * 装备分解
+   * </pre>
+   */
+  public static final class HSEquipDecompose extends
+      com.google.protobuf.GeneratedMessage
+      implements HSEquipDecomposeOrBuilder {
+    // Use HSEquipDecompose.newBuilder() to construct.
+    private HSEquipDecompose(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSEquipDecompose(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSEquipDecompose defaultInstance;
+    public static HSEquipDecompose getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSEquipDecompose getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSEquipDecompose(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                equipId_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              equipId_.add(input.readInt64());
+              break;
+            }
+            case 10: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001) && input.getBytesUntilLimit() > 0) {
+                equipId_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                equipId_.add(input.readInt64());
+              }
+              input.popLimit(limit);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          equipId_ = java.util.Collections.unmodifiableList(equipId_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipDecompose_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipDecompose_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Equip.HSEquipDecompose.class, com.hawk.game.protocol.Equip.HSEquipDecompose.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSEquipDecompose> PARSER =
+        new com.google.protobuf.AbstractParser<HSEquipDecompose>() {
+      public HSEquipDecompose parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSEquipDecompose(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSEquipDecompose> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated int64 equipId = 1;
+    public static final int EQUIPID_FIELD_NUMBER = 1;
+    private java.util.List<java.lang.Long> equipId_;
+    /**
+     * <code>repeated int64 equipId = 1;</code>
+     */
+    public java.util.List<java.lang.Long>
+        getEquipIdList() {
+      return equipId_;
+    }
+    /**
+     * <code>repeated int64 equipId = 1;</code>
+     */
+    public int getEquipIdCount() {
+      return equipId_.size();
+    }
+    /**
+     * <code>repeated int64 equipId = 1;</code>
+     */
+    public long getEquipId(int index) {
+      return equipId_.get(index);
+    }
+
+    private void initFields() {
+      equipId_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < equipId_.size(); i++) {
+        output.writeInt64(1, equipId_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < equipId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt64SizeNoTag(equipId_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getEquipIdList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Equip.HSEquipDecompose parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDecompose parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDecompose parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDecompose parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDecompose parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDecompose parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDecompose parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDecompose parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDecompose parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDecompose parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Equip.HSEquipDecompose prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSEquipDecompose}
+     *
+     * <pre>
+     * 装备分解
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Equip.HSEquipDecomposeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipDecompose_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipDecompose_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Equip.HSEquipDecompose.class, com.hawk.game.protocol.Equip.HSEquipDecompose.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Equip.HSEquipDecompose.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        equipId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipDecompose_descriptor;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipDecompose getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Equip.HSEquipDecompose.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipDecompose build() {
+        com.hawk.game.protocol.Equip.HSEquipDecompose result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipDecompose buildPartial() {
+        com.hawk.game.protocol.Equip.HSEquipDecompose result = new com.hawk.game.protocol.Equip.HSEquipDecompose(this);
+        int from_bitField0_ = bitField0_;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          equipId_ = java.util.Collections.unmodifiableList(equipId_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.equipId_ = equipId_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Equip.HSEquipDecompose) {
+          return mergeFrom((com.hawk.game.protocol.Equip.HSEquipDecompose)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Equip.HSEquipDecompose other) {
+        if (other == com.hawk.game.protocol.Equip.HSEquipDecompose.getDefaultInstance()) return this;
+        if (!other.equipId_.isEmpty()) {
+          if (equipId_.isEmpty()) {
+            equipId_ = other.equipId_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureEquipIdIsMutable();
+            equipId_.addAll(other.equipId_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Equip.HSEquipDecompose parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Equip.HSEquipDecompose) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated int64 equipId = 1;
+      private java.util.List<java.lang.Long> equipId_ = java.util.Collections.emptyList();
+      private void ensureEquipIdIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          equipId_ = new java.util.ArrayList<java.lang.Long>(equipId_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated int64 equipId = 1;</code>
+       */
+      public java.util.List<java.lang.Long>
+          getEquipIdList() {
+        return java.util.Collections.unmodifiableList(equipId_);
+      }
+      /**
+       * <code>repeated int64 equipId = 1;</code>
+       */
+      public int getEquipIdCount() {
+        return equipId_.size();
+      }
+      /**
+       * <code>repeated int64 equipId = 1;</code>
+       */
+      public long getEquipId(int index) {
+        return equipId_.get(index);
+      }
+      /**
+       * <code>repeated int64 equipId = 1;</code>
+       */
+      public Builder setEquipId(
+          int index, long value) {
+        ensureEquipIdIsMutable();
+        equipId_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 equipId = 1;</code>
+       */
+      public Builder addEquipId(long value) {
+        ensureEquipIdIsMutable();
+        equipId_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 equipId = 1;</code>
+       */
+      public Builder addAllEquipId(
+          java.lang.Iterable<? extends java.lang.Long> values) {
+        ensureEquipIdIsMutable();
+        super.addAll(values, equipId_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 equipId = 1;</code>
+       */
+      public Builder clearEquipId() {
+        equipId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSEquipDecompose)
+    }
+
+    static {
+      defaultInstance = new HSEquipDecompose(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSEquipDecompose)
+  }
+
+  public interface HSEquipDeComposeRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSEquipDeComposeRet}
+   *
+   * <pre>
+   * 装备分解返回
+   * </pre>
+   */
+  public static final class HSEquipDeComposeRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSEquipDeComposeRetOrBuilder {
+    // Use HSEquipDeComposeRet.newBuilder() to construct.
+    private HSEquipDeComposeRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSEquipDeComposeRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSEquipDeComposeRet defaultInstance;
+    public static HSEquipDeComposeRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSEquipDeComposeRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSEquipDeComposeRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipDeComposeRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Equip.internal_static_HSEquipDeComposeRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Equip.HSEquipDeComposeRet.class, com.hawk.game.protocol.Equip.HSEquipDeComposeRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSEquipDeComposeRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSEquipDeComposeRet>() {
+      public HSEquipDeComposeRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSEquipDeComposeRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSEquipDeComposeRet> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Equip.HSEquipDeComposeRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDeComposeRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDeComposeRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDeComposeRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDeComposeRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDeComposeRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDeComposeRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDeComposeRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDeComposeRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Equip.HSEquipDeComposeRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Equip.HSEquipDeComposeRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSEquipDeComposeRet}
+     *
+     * <pre>
+     * 装备分解返回
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Equip.HSEquipDeComposeRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipDeComposeRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipDeComposeRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Equip.HSEquipDeComposeRet.class, com.hawk.game.protocol.Equip.HSEquipDeComposeRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Equip.HSEquipDeComposeRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Equip.internal_static_HSEquipDeComposeRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipDeComposeRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Equip.HSEquipDeComposeRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipDeComposeRet build() {
+        com.hawk.game.protocol.Equip.HSEquipDeComposeRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Equip.HSEquipDeComposeRet buildPartial() {
+        com.hawk.game.protocol.Equip.HSEquipDeComposeRet result = new com.hawk.game.protocol.Equip.HSEquipDeComposeRet(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Equip.HSEquipDeComposeRet) {
+          return mergeFrom((com.hawk.game.protocol.Equip.HSEquipDeComposeRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Equip.HSEquipDeComposeRet other) {
+        if (other == com.hawk.game.protocol.Equip.HSEquipDeComposeRet.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Equip.HSEquipDeComposeRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Equip.HSEquipDeComposeRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSEquipDeComposeRet)
+    }
+
+    static {
+      defaultInstance = new HSEquipDeComposeRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSEquipDeComposeRet)
+  }
+
   public interface HSEquipIncreaseLevelOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -13638,6 +14432,16 @@ public final class Equip {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSEquipComposeRet_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSEquipDecompose_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSEquipDecompose_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSEquipDeComposeRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSEquipDeComposeRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSEquipIncreaseLevel_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -13731,26 +14535,27 @@ public final class Equip {
       "HSEquipCompose\022\017\n\007equipId\030\001 \002(\t\022\025\n\rrelat" +
       "edItemId\030\002 \002(\005\"B\n\021HSEquipComposeRet\022\017\n\007e" +
       "quipId\030\001 \002(\t\022\r\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001" +
-      "(\005\"\"\n\024HSEquipIncreaseLevel\022\n\n\002id\030\001 \002(\003\"C" +
-      "\n\027HSEquipIncreaseLevelRet\022\n\n\002id\030\001 \002(\003\022\r\n" +
-      "\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\"\n\024HSEquipIn" +
-      "creaseStage\022\n\n\002id\030\001 \002(\003\"C\n\027HSEquipIncrea" +
-      "seStageRet\022\n\n\002id\030\001 \002(\003\022\r\n\005stage\030\002 \001(\005\022\r\n",
-      "\005level\030\003 \001(\005\"\032\n\014HSEquipPunch\022\n\n\002id\030\001 \002(\003" +
-      "\".\n\017HSEquipPunchRet\022\033\n\010gemItems\030\001 \003(\0132\t." +
-      "GemPunch\"T\n\nHSEquipGem\022\n\n\002id\030\001 \002(\003\022\014\n\004sl" +
-      "ot\030\002 \002(\005\022\014\n\004type\030\003 \002(\005\022\016\n\006newGem\030\004 \001(\t\022\016" +
-      "\n\006oldGem\030\005 \001(\t\",\n\rHSEquipGemRet\022\033\n\010gemIt" +
-      "ems\030\001 \003(\0132\t.GemPunch\"4\n\023HSEquipMonsterDr" +
-      "ess\022\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId\030\002 \002(\005\"7\n\026HS" +
-      "EquipMonsterDressRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmons" +
-      "terId\030\002 \001(\005\"#\n\025HSEquipMonsterUndress\022\n\n\002" +
-      "id\030\001 \002(\003\"9\n\030HSEquipMonsterUndressRet\022\n\n\002",
-      "id\030\001 \001(\003\022\021\n\tmonsterId\030\002 \001(\005\"6\n\025HSEquipMo" +
-      "nsterReplace\022\n\n\002id\030\001 \002(\003\022\021\n\tmonsterId\030\002 " +
-      "\001(\005\"9\n\030HSEquipMonsterReplaceRet\022\n\n\002id\030\001 " +
-      "\001(\003\022\021\n\tmonsterId\030\002 \001(\005B\030\n\026com.hawk.game." +
-      "protocol"
+      "(\005\"#\n\020HSEquipDecompose\022\017\n\007equipId\030\001 \003(\003\"" +
+      "\025\n\023HSEquipDeComposeRet\"\"\n\024HSEquipIncreas" +
+      "eLevel\022\n\n\002id\030\001 \002(\003\"C\n\027HSEquipIncreaseLev" +
+      "elRet\022\n\n\002id\030\001 \002(\003\022\r\n\005stage\030\002 \001(\005\022\r\n\005leve" +
+      "l\030\003 \001(\005\"\"\n\024HSEquipIncreaseStage\022\n\n\002id\030\001 ",
+      "\002(\003\"C\n\027HSEquipIncreaseStageRet\022\n\n\002id\030\001 \002" +
+      "(\003\022\r\n\005stage\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\032\n\014HSEq" +
+      "uipPunch\022\n\n\002id\030\001 \002(\003\".\n\017HSEquipPunchRet\022" +
+      "\033\n\010gemItems\030\001 \003(\0132\t.GemPunch\"T\n\nHSEquipG" +
+      "em\022\n\n\002id\030\001 \002(\003\022\014\n\004slot\030\002 \002(\005\022\014\n\004type\030\003 \002" +
+      "(\005\022\016\n\006newGem\030\004 \001(\t\022\016\n\006oldGem\030\005 \001(\t\",\n\rHS" +
+      "EquipGemRet\022\033\n\010gemItems\030\001 \003(\0132\t.GemPunch" +
+      "\"4\n\023HSEquipMonsterDress\022\n\n\002id\030\001 \002(\003\022\021\n\tm" +
+      "onsterId\030\002 \002(\005\"7\n\026HSEquipMonsterDressRet" +
+      "\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterId\030\002 \001(\005\"#\n\025HSEqu",
+      "ipMonsterUndress\022\n\n\002id\030\001 \002(\003\"9\n\030HSEquipM" +
+      "onsterUndressRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterI" +
+      "d\030\002 \001(\005\"6\n\025HSEquipMonsterReplace\022\n\n\002id\030\001" +
+      " \002(\003\022\021\n\tmonsterId\030\002 \001(\005\"9\n\030HSEquipMonste" +
+      "rReplaceRet\022\n\n\002id\030\001 \001(\003\022\021\n\tmonsterId\030\002 \001" +
+      "(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13799,86 +14604,98 @@ public final class Equip {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipComposeRet_descriptor,
               new java.lang.String[] { "EquipId", "Stage", "Level", });
-          internal_static_HSEquipIncreaseLevel_descriptor =
+          internal_static_HSEquipDecompose_descriptor =
             getDescriptor().getMessageTypes().get(7);
+          internal_static_HSEquipDecompose_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSEquipDecompose_descriptor,
+              new java.lang.String[] { "EquipId", });
+          internal_static_HSEquipDeComposeRet_descriptor =
+            getDescriptor().getMessageTypes().get(8);
+          internal_static_HSEquipDeComposeRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSEquipDeComposeRet_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSEquipIncreaseLevel_descriptor =
+            getDescriptor().getMessageTypes().get(9);
           internal_static_HSEquipIncreaseLevel_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipIncreaseLevel_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_HSEquipIncreaseLevelRet_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_HSEquipIncreaseLevelRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipIncreaseLevelRet_descriptor,
               new java.lang.String[] { "Id", "Stage", "Level", });
           internal_static_HSEquipIncreaseStage_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_HSEquipIncreaseStage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipIncreaseStage_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_HSEquipIncreaseStageRet_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_HSEquipIncreaseStageRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipIncreaseStageRet_descriptor,
               new java.lang.String[] { "Id", "Stage", "Level", });
           internal_static_HSEquipPunch_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_HSEquipPunch_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipPunch_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_HSEquipPunchRet_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_HSEquipPunchRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipPunchRet_descriptor,
               new java.lang.String[] { "GemItems", });
           internal_static_HSEquipGem_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_HSEquipGem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipGem_descriptor,
               new java.lang.String[] { "Id", "Slot", "Type", "NewGem", "OldGem", });
           internal_static_HSEquipGemRet_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_HSEquipGemRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipGemRet_descriptor,
               new java.lang.String[] { "GemItems", });
           internal_static_HSEquipMonsterDress_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_HSEquipMonsterDress_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterDress_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterDressRet_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_HSEquipMonsterDressRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterDressRet_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterUndress_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_HSEquipMonsterUndress_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterUndress_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_HSEquipMonsterUndressRet_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_HSEquipMonsterUndressRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterUndressRet_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterReplace_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_HSEquipMonsterReplace_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterReplace_descriptor,
               new java.lang.String[] { "Id", "MonsterId", });
           internal_static_HSEquipMonsterReplaceRet_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_HSEquipMonsterReplaceRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSEquipMonsterReplaceRet_descriptor,

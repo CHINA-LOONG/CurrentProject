@@ -230,7 +230,7 @@ public class OrderManager extends HawkTickable {
 
 			// 已发货的订单从队列清理(不再添加进来即可)
 			// 按情况应该不会出现这个
-			if (callbackInfo.getStatus() == ORDER_STATE_DELIVER) {
+			if (callbackInfo.getStatus() == ORDER_STATE_DELIVER || callbackInfo.getStatus() <= 0) {
 				orderQueue.remove(callbackInfo);
 				orderInfoMap.remove(callbackInfo.getTid());
 				continue;

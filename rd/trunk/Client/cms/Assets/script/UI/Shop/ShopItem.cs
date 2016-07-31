@@ -112,13 +112,9 @@ public class ShopItem : MonoBehaviour
 
 	private	void	RefreshItemIcon(ItemStaticData itemStaticData)
 	{
-		if (shopItemData.type == (int)PB.itemType.EQUIP) 
-		{
-			EquipData equipData = new EquipData ();
-			equipData.equipId = shopItemData.itemId;
-			equipData.level = shopItemData.level;
-			equipData.stage = shopItemData.stage;
-
+		if (shopItemData.type == (int)PB.itemType.EQUIP)
+        {
+            EquipData equipData = EquipData.valueof(0, shopItemData.itemId, shopItemData.stage, shopItemData.level, BattleConst.invalidMonsterID, null);
 			itemIcon.RefreshWithEquipInfo (equipData);
 		}
 		else 

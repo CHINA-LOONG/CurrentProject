@@ -68,6 +68,12 @@ public class ShopManager extends HawkAppObj {
 														   player.getLevel(),
 														   platform);
 		
+		// 已经处理过的订单
+		if (ServerData.getInstance().isExistOrder(orderSerial) == true) {
+			HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_STATUS_OK, rechargeCfg.getGold(), giftGoldCount);
+			return true;
+		}
+		
 		if (rechargeEntity.notifyCreate() == false) {		
 			HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_STATUS_ERROR, 0, 0);
 			return false;
@@ -86,7 +92,9 @@ public class ShopManager extends HawkAppObj {
 			// 离线玩家
 			if (player.getSession() == null) {
 				player.increaseBuyGold(rechargeEntity.getAddGold(), Action.SHOP_RECHARGE);
-				player.increaseFreeGold(rechargeEntity.getGiftGold(), Action.SHOP_RECHARGE);
+				if (rechargeEntity.getGiftGold() > 0) {
+					player.increaseFreeGold(rechargeEntity.getGiftGold(), Action.SHOP_RECHARGE);
+				}
 			}
 			else {
 				AwardItems reward = new AwardItems();

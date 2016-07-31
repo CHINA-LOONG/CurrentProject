@@ -1,5 +1,6 @@
 package com.hawk.game.config;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,11 +37,7 @@ public class RewardGroupCfg extends HawkConfigBase  {
 	}
 
 	public List<WeightItem<ItemInfo>> getWeightList() {
-		return weightList;
-	}
-
-	public void setWeightList(List<WeightItem<ItemInfo>> weightList) {
-		this.weightList = weightList;
+		return Collections.unmodifiableList(weightList);
 	}
 
 	public ItemInfo getRewardItem() {

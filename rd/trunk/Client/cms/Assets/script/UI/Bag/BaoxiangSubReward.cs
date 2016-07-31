@@ -49,13 +49,7 @@ public class BaoxiangSubReward : MonoBehaviour
 		}
 		else if (reward.type == (int)PB.itemType.EQUIP)
 		{
-			EquipData equipData = new EquipData()
-			{
-				id = reward.id,
-				equipId = reward.itemId,
-				stage = reward.stage,
-				level = reward.level
-			};
+            EquipData equipData = EquipData.valueof(reward.id, reward.itemId, reward.stage, reward.level, BattleConst.invalidMonsterID, null);
 			ItemIcon icon = ItemIcon.CreateItemIcon(equipData);
 			icon.transform.SetParent(rewardIconParent);
 			icon.transform.localScale = Vector3.one;

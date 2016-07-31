@@ -912,10 +912,12 @@ public class BattleProcess : MonoBehaviour
         if (aiResult.useSpell != null)
         {
             SpellService.Instance.SpellRequest(aiResult.useSpell.spellData.id, bo.unit, aiResult.attackTarget, Time.time);
+            bo.unit.OnRoundEnd(Time.time);
         }
         else
         {
             SpellService.Instance.SpellRequest("s1", bo.unit, aiResult.attackTarget, Time.time);
+            bo.unit.OnRoundEnd(Time.time);
         }
     }
 
@@ -937,6 +939,7 @@ public class BattleProcess : MonoBehaviour
             GameUnit target = BattleUnitAi.Instance.GetTargetThroughSpell(firstSpell, curAction.caster.unit);
             BattleUnitAi.Instance.CheckBossWeakPoint(target);
             SpellService.Instance.SpellRequest(curAction.firstSpellID, curAction.caster.unit, target, Time.time, true);
+            curAction.caster.unit.OnRoundEnd(Time.time);
 
             SpellVitalChangeArgs args = new SpellVitalChangeArgs();
             args.vitalType = (int)VitalType.Vital_Type_FirstSpell;
@@ -979,7 +982,8 @@ public class BattleProcess : MonoBehaviour
                 Vector3 relativePos = attackTarget.battleUnit.transform.position - action.caster.transform.position;
                 action.caster.SetTargetRotate(Quaternion.LookRotation(relativePos), false);
             }
-			SpellService.Instance.SpellRequest (dazhaoSpell.spellData.id, action.caster.unit, attackTarget, Time.time);
+            SpellService.Instance.SpellRequest(dazhaoSpell.spellData.id, action.caster.unit, attackTarget, Time.time);
+            action.caster.unit.OnRoundEnd(Time.time);
 		}
 		else
 		{

@@ -1,5 +1,6 @@
 package com.hawk.game.config;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -58,6 +59,6 @@ public class BattleLevelCfg extends HawkConfigBase {
 	}
 	
 	public Map<String, Integer> getMonsterMap() {
-		return monsterMap;
+		return Collections.unmodifiableMap(monsterMap);
 	}
 }

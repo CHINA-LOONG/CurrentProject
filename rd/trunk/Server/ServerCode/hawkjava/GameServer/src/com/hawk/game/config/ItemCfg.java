@@ -7,8 +7,11 @@ import org.hawk.config.HawkConfigBase.Id;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.protocol.Const;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 @HawkConfigManager.CsvResource(file = "staticData/item.csv", struct = "map")
 public class ItemCfg extends HawkConfigBase {
@@ -29,6 +32,10 @@ public class ItemCfg extends HawkConfigBase {
 	 * 子类型
 	 */
 	protected final int subType;
+	/**
+	 * 等级
+	 */
+	protected final int level;
 	/**
 	 * 品级
 	 */
@@ -133,12 +140,18 @@ public class ItemCfg extends HawkConfigBase {
 	 */
 	private List<ItemInfo> targetItemList;
 	
+	/**
+	 * 宝石配置
+	 */
+	private static Map<Integer, Map<Integer, ItemCfg>> gemList = new HashMap<Integer, Map<Integer, ItemCfg>>();
+	
 	public ItemCfg(){				
 		id  = null;
 		classType = 0;
 		type = 0;
 		subType = 0;
 		grade = 0;
+		level = 0;
 		minLevel = 0;
 		condition = 0;
 		times = 0;
@@ -189,6 +202,10 @@ public class ItemCfg extends HawkConfigBase {
 		return grade;
 	}
 
+	public int getLevel() {
+		return level;
+	}
+	
 	public int getMinLevel() {
 		return minLevel;
 	}
@@ -286,33 +303,27 @@ public class ItemCfg extends HawkConfigBase {
 	}
 
 	public List<ItemInfo> getComponentItemList() {
-		return componentItemList;
-	}
-
-	public void setComponentItemList(List<ItemInfo> componentItemList) {
-		this.componentItemList = componentItemList;
+		return Collections.unmodifiableList(componentItemList);
 	}
 
 	public List<ItemInfo> getNeedItemList() {
-		return needItemList;
-	}
-
-	public void setNeedItemList(List<ItemInfo> needItemList) {
-		this.needItemList = needItemList;
+		return Collections.unmodifiableList(needItemList);
 	}
 
 	public List<ItemInfo> getTargetItemList() {
-		return targetItemList;
+		return Collections.unmodifiableList(targetItemList);
 	}
 
-	public void setTargetItemList(List<ItemInfo> targetItemList) {
-		this.targetItemList = targetItemList;
+	public static ItemCfg getGemCfg(int level, int type)
+	{
+		return gemList.get(level).get(type);
 	}
-
+	
 	@Override
 	protected boolean assemble() {
 		needItemList.clear();
 		targetItemList.clear();
+		gemList.clear();
 		
 		// 合成该物品需要的道具列表
 		if (this.componentItem != null && this.componentItem.length() > 0 && !"0".equals(this.componentItem)) {
@@ -345,40 +356,39 @@ public class ItemCfg extends HawkConfigBase {
 			}
 		}
 		
-		// 碎片
-		if (this.type == Const.toolType.FRAGMENTTOOL_VALUE) {
-			if (this.targetItem != null && this.targetItem.length() > 0 && !"0".equals(this.targetItem)) {
-				String[] itemArrays = targetItem.split(",");
-				for (String itemArray : itemArrays) {
-					// TODO: 调用ItemInfo函数替换
-					String[] items = itemArray.split("_");
-					if (items.length == 3) {
-						ItemInfo itemInfo = new ItemInfo();
-						itemInfo.setType(Integer.valueOf(items[0]));
-						itemInfo.setItemId(items[1]);
-						itemInfo.setCount(Integer.valueOf(items[2]));
-						targetItemList.add(itemInfo);
-					}
-					else if (items.length == 5){
-						if (Integer.valueOf(items[0]) != Const.itemType.EQUIP_VALUE) {
-							return false;
-						}
-						ItemInfo itemInfo = new ItemInfo();
-						itemInfo.setType(Integer.valueOf(items[0]));
-						itemInfo.setItemId(items[1]);
-						itemInfo.setCount(Integer.valueOf(items[2]));
-						itemInfo.setStage(Integer.valueOf(items[3]));
-						itemInfo.setLevel(Integer.valueOf(items[4]));
-						targetItemList.add(itemInfo);
-					}
-					else {
+		// 合成列表
+		if (this.targetItem != null && this.targetItem.length() > 0 && !"0".equals(this.targetItem)) {
+			String[] itemArrays = targetItem.split(",");
+			for (String itemArray : itemArrays) {
+				// TODO: 调用ItemInfo函数替换
+				String[] items = itemArray.split("_");
+				if (items.length == 3) {
+					ItemInfo itemInfo = new ItemInfo();
+					itemInfo.setType(Integer.valueOf(items[0]));
+					itemInfo.setItemId(items[1]);
+					itemInfo.setCount(Integer.valueOf(items[2]));
+					targetItemList.add(itemInfo);
+				}
+				else if (items.length == 5){
+					if (Integer.valueOf(items[0]) != Const.itemType.EQUIP_VALUE) {
 						return false;
 					}
+					ItemInfo itemInfo = new ItemInfo();
+					itemInfo.setType(Integer.valueOf(items[0]));
+					itemInfo.setItemId(items[1]);
+					itemInfo.setCount(Integer.valueOf(items[2]));
+					itemInfo.setStage(Integer.valueOf(items[3]));
+					itemInfo.setLevel(Integer.valueOf(items[4]));
+					targetItemList.add(itemInfo);
+				}
+				else {
+					return false;
 				}
 			}
 		}
+		
 		// 宝箱需要配对的钥匙
-		else if (this.type == Const.toolType.BOXTOOL_VALUE) {
+		if (this.type == Const.toolType.BOXTOOL_VALUE) {
 			if (this.needItem != null && this.needItem.length() > 0 && !"0".equals(this.needItem)) {
 				String[] itemArrays = needItem.split(",");
 				for (String itemArray : itemArrays) {
@@ -408,7 +418,15 @@ public class ItemCfg extends HawkConfigBase {
 					}
 				}
 			}
-		}	
+		}
+		else if (this.type == Const.toolType.GEMTOOL_VALUE) {
+			if (gemList.get(level) == null) {
+				Map<Integer, ItemCfg> levelList = new HashMap<Integer, ItemCfg>();
+				levelList.put(gemType, this);
+				gemList.put(level, levelList);
+			}
+		}
+		
 		return true;
 	}
 

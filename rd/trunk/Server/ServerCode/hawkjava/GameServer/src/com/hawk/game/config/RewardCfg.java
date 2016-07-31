@@ -1,5 +1,6 @@
 package com.hawk.game.config;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,11 +37,7 @@ public class RewardCfg extends HawkConfigBase  {
 	}
 
 	public List<RatioItem<ItemInfo>> getRatioList() {
-		return ratioList;
-	}
-
-	public void setRatiotList(List<RatioItem<ItemInfo>> ratioList) {
-		this.ratioList = ratioList;
+		return Collections.unmodifiableList(ratioList);
 	}
 	
 	public  List<ItemInfo> getRewardList() {

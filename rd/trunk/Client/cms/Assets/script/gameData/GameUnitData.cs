@@ -46,11 +46,11 @@ public class GameUnit : IComparable
     public string assetID;//prefab name
     //所有的百分比加成的基础值都是：属性基础值+装备值+升星
     //一阶属性
-    public int health;//体力
-    public int strength;
-    public int intelligence;
-    public int speed;
-    public int defense;
+    public float health;//体力
+    public float strength;
+    public float intelligence;
+    public float speed;
+    public float defense;
     public int endurance;
     public int property;//五行属性
     public int recovery;//战后回血
@@ -229,7 +229,7 @@ public class GameUnit : IComparable
             intelligence = (int)(intelligence * instData.instanceProtoData.attackCoef);
             health = (int)(health * instData.instanceProtoData.lifeCoef);
             //计算二级属性(玩家宠物的二级属性计算统一在UpdateAttributeInternal)
-            curLife = (int)SpellConst.healthToLife * health;
+            curLife = (int)(SpellConst.healthToLife * health);
             maxLife = curLife;
             magicAttack = (int)(SpellConst.strengthToAttack * intelligence);
             phyAttack = (int)(SpellConst.intelligenceToAttack * strength);
@@ -352,7 +352,7 @@ public class GameUnit : IComparable
             }
         }
         //二级属性
-        curLife = (int)SpellConst.healthToLife * health;
+        curLife = (int)(SpellConst.healthToLife * health);
         maxLife = curLife;
         magicAttack = (int)(SpellConst.strengthToAttack * intelligence);
         phyAttack = (int)(SpellConst.intelligenceToAttack * strength);
@@ -409,6 +409,28 @@ public class GameUnit : IComparable
     public void ForceRefreshAttr()
     {
         UpdateAttributeInternal();
+    }
+
+    //怪物行动结束
+    public void OnRoundEnd(float curTime, bool dazhao =  false)
+    {
+        if (dazhao)
+        {
+            int a = 0;
+        }
+        //buff list可能会在update里被修改，只会被增加，删除buff下面单独处理，避免遍历出错
+        for (int i = 0; i < buffList.Count; ++i)
+        {
+            buffList[i].Update(curTime);
+        }
+
+        for (int i = buffList.Count - 1; i >= 0; --i)
+        {
+            if (buffList[i].IsFinish)
+            {
+                buffList.RemoveAt(i);
+            }
+        }
     }
 	
 	void InitWeakPoint(string strWeak)

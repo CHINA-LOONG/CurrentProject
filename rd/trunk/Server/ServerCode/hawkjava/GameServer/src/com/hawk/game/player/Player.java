@@ -865,8 +865,8 @@ public class Player extends HawkAppObj {
 			}
 		}
 
-		BehaviorLogger.log4Service(this, Source.MONSTER_ATTR_CHANGE, action, 
-				Params.valueOf("monsterAttr", Const.changeType.CHANGE_PLAYER_EXP), 
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("attr", Const.changeType.CHANGE_PLAYER_EXP), 
 				Params.valueOf("add", exp), 
 				Params.valueOf("after", getExp()));
 	}

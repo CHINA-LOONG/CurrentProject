@@ -71,6 +71,7 @@ public class Buff
     private int responseCount;
     private int phyShield;
     private int magicShield;
+    private bool skipUpdate;//whether skip update once 
 
     public KeyValuePair<string, string> damageResponse;
     public KeyValuePair<string, string> deadResponse;
@@ -105,7 +106,7 @@ public class Buff
         buffProto.hitRatio = buffPt.hitRatio;
         buffProto.healthRatio = buffPt.healthRatio;
         isFinish = false;
-
+        skipUpdate = false;
         phyShield = magicShield = 0;
         responseCount = buffPt.responseCount;
 
@@ -133,8 +134,9 @@ public class Buff
         ownedSpell = spell;
     }
     //---------------------------------------------------------------------------------------------
-    public void Apply(float curTime)
+    public void Apply(float curTime, bool skipUpdate)
     {
+        this.skipUpdate = skipUpdate;
         periodCount = 0;
         isFinish = false;
         applyTime = curTime;
@@ -146,6 +148,11 @@ public class Buff
     {
         if (isFinish)
         {
+            return;
+        }
+        if (skipUpdate == true)
+        {
+            skipUpdate = false;
             return;
         }
 
@@ -248,12 +255,12 @@ public class Buff
             ReplaceSameCategoryBuff(buffProto.category, ref buffList);
             if (buffProto.category == (int)BuffType.Buff_Type_PhyShield)
             {
-                int attr = (buffProto.shieldBaseAttr == 0) ? target.strength : target.intelligence;
+                float attr = (buffProto.shieldBaseAttr == 0) ? target.strength : target.intelligence;
                 phyShield = (int)(buffProto.shieldNum + buffProto.shieldRatio * attr);
             }
             else if (buffProto.category == (int)BuffType.Buff_Type_MgShield)
             {
-                int attr = (buffProto.shieldBaseAttr == 0) ? target.strength : target.intelligence;
+                float attr = (buffProto.shieldBaseAttr == 0) ? target.strength : target.intelligence;
                 magicShield = (int)(buffProto.shieldNum + buffProto.shieldRatio * attr);
             }
         }

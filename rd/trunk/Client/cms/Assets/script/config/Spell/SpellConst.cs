@@ -122,6 +122,7 @@ public enum VitalType
     Vital_Type_Absorbed,//吸收
     Vital_Type_Shield,//物理护盾/法术护盾
     Vital_Type_Stun,
+    Vital_Type_Immune,
 
     Num_Vital_Type
 }

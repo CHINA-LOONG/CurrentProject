@@ -46,6 +46,9 @@ public class RechargeEntity extends HawkDBEntity{
 	@Column(name = "invalid", nullable = false)
 	protected boolean invalid = false;
 	
+	public RechargeEntity() {
+		this.createTime = HawkTime.getCalendar();
+	}
 	public RechargeEntity(String orderSerial, String puid, int playerId, String goodsId, int addGold, int giftGold, int level, String platform) {
 		this.orderSerial = orderSerial;
 		this.puid = puid;
@@ -55,6 +58,7 @@ public class RechargeEntity extends HawkDBEntity{
 		this.giftGold = giftGold;
 		this.level = level;
 		this.platform = platform;
+		this.createTime = HawkTime.getCalendar();
 	}
 	
 	public String getOrderSerial() {

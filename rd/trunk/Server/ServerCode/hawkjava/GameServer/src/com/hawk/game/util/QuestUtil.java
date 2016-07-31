@@ -1,6 +1,7 @@
 package com.hawk.game.util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,10 +71,10 @@ public class QuestUtil {
 	 * 获得所有任务组
 	 */
 	public static Map<Integer, QuestGroup> getQuestGroupMap() {
-		return questGroupMap;
+		return Collections.unmodifiableMap(questGroupMap);
 	}
 
 	public static Map<Integer, QuestGroup> getCycleQuestGroupMap(int cycle) {
-		return cycleQuestGroupMap.get(cycle);
+		return Collections.unmodifiableMap(cycleQuestGroupMap.get(cycle));
 	}
 }

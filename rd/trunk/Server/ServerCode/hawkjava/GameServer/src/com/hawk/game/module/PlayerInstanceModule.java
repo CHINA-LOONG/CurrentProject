@@ -2,6 +2,7 @@ package com.hawk.game.module;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -103,7 +104,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
 		if (entryCfg == null) {
 			sendError(hsCode, Status.error.CONFIG_ERROR);
-			return false;
+			return true;
 		}
 
 		int chapterId = entryCfg.getChapter();
@@ -122,7 +123,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			if ((chapterId > curChapterId && (index != size - 1 || chapterId > curChapterId + 1)) ||
 					(chapterId == curChapterId && index > curIndex + 1)) {
 				sendError(hsCode, Status.instanceError.INSTANCE_NOT_OPEN);
-				return false;
+				return true;
 			}
 		} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
 			int normalSize = chapter.normalList.size();
@@ -138,47 +139,51 @@ public class PlayerInstanceModule extends PlayerModule {
 					(chapterId > hardCurChapterId && (hardIndex != hardSize - 1 || chapterId > hardCurChapterId + 1)) ||
 					(chapterId == hardCurChapterId && hardIndex > hardCurIndex + 1)) {
 				sendError(hsCode, Status.instanceError.INSTANCE_NOT_OPEN);
-				return false;
+				return true;
 			}
 		}
 
 		// 副本等级
 		if (player.getLevel() < entryCfg.getLevel()) {
 			sendError(hsCode, Status.instanceError.INSTANCE_LEVEL);
-			return false;
+			return true;
 		}
 
 		// 次数
 		if (statisticsEntity.getInstanceCountDaily(instanceId) >= entryCfg.getCount()) {
 			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
-			return false;
+			return true;
 		}
 
 		// 体力
 		if (statisticsEntity.getFatigue() < entryCfg.getFatigue()) {
 			sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
-			return false;
+			return true;
 		}
 
 		InstanceCfg instanceCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, instanceId);
 		if (instanceCfg == null) {
 			sendError(hsCode, Status.error.CONFIG_ERROR);
-			return false;
+			return true;
 		}
 
 		// 阵型
 		if (battleMonsterList.size() == 0 || battleMonsterList.size() > GsConst.MAX_BATTLE_MONSTER_COUNT) {
 			sendError(hsCode, Status.monsterError.BATTLE_MONSTER_COUNT);
-			return false;
+			return true;
 		}
+
+		List<Integer> newMonsterList = new LinkedList<Integer>();
 		for(Integer monsterId : battleMonsterList) {
 			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
 			if (monsterEntity == null) {
 				sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST);
-				return false;
+				return true;
 			}
+			newMonsterList.add(monsterId);
 		}
-		player.getEntity().setBattleMonsterList(battleMonsterList);
+
+		player.getEntity().setBattleMonsterList(newMonsterList);
 		player.getEntity().notifyUpdate(true);
 
 		// 满足条件，进入副本，生成副本数据
@@ -386,13 +391,13 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		if (count < 1) {
 			sendError(hsCode, Status.error.PARAMS_INVALID);
-			return false;
+			return true;
 		}
 
 		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
 		if (entryCfg == null) {
 			sendError(hsCode, Status.error.CONFIG_ERROR);
-			return false;
+			return true;
 		}
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
@@ -400,7 +405,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 次数
 		if (statisticsEntity.getInstanceCountDaily(instanceId) + count > entryCfg.getCount()) {
 			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
-			return false;
+			return true;
 		}
 
 		// 体力
@@ -408,14 +413,14 @@ public class PlayerInstanceModule extends PlayerModule {
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, fatigueChange);
 		if (consumeFatigue.checkConsume(player, hsCode)) {
-			return false;
+			return true;
 		}
 
 		// 扫荡券
 		ConsumeItems consumeItem = ConsumeItems.valueOf();
 		consumeItem.addItem(GsConst.SWEEP_TICKET, count);
 		if (false == consumeItem.checkConsume(player, hsCode)) {
-			return false;
+			return true;
 		}
 		consumeItem.consumeTakeAffectAndPush(player, Action.INSTANCE_SWEEP, HS.code.INSTANCE_SWEEP_C_VALUE);
 
@@ -498,7 +503,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
 		if (entryCfg == null) {
 			sendError(hsCode, Status.error.CONFIG_ERROR);
-			return false;
+			return true;
 		}
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
@@ -523,12 +528,12 @@ public class PlayerInstanceModule extends PlayerModule {
 		int reviveCount = this.curReviveCount + 1;
 		if (reviveCount > GsConst.INSTANCE_REVIVE_COUNT) {
 			sendError(hsCode, Status.instanceError.INSTANCE_REVIVE_COUNT);
-			return false;
+			return true;
 		}
 
 		if(player.getGold() < GsConst.INSTANCE_REVIVE_CONSUME[reviveCount - 1]){
 			sendError(hsCode, Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
-			return false;
+			return true;
 		}
 		
 		ConsumeItems consume = ConsumeItems.valueOf();

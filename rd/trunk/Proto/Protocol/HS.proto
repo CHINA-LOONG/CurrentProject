@@ -67,6 +67,8 @@ enum code
 	MONSTER_STAGE_UP_S          = 2011;
 	MONSTER_LOCK_C              = 2012;
 	MONSTER_LOCK_S              = 2013;
+	MONSTER_DECOMPOSE_C         = 2014;
+	MONSTER_DECOMPOSE_S         = 2015;
 
 	// 副本
 	INSTANCE_ASSIST_C           = 3001;
@@ -97,6 +99,8 @@ enum code
 	ITEM_BUY_S                  = 4010;
 	ITEM_COMPOSE_C              = 4011;
 	ITEM_COMPOSE_S              = 4012;
+	GEM_COMPOSE_C               = 4013;
+	GEM_COMPOSE_S               = 4014;
 
 	EQUIP_SELL_C                = 4101;
 	EQUIP_SELL_S                = 4102;
@@ -112,6 +116,8 @@ enum code
 	EQUIP_PUNCH_S               = 4112;
 	EQUIP_GEM_C                 = 4113;
 	EQUIP_GEM_S                 = 4114;
+	EQUIP_DECOMPOSE_C           = 4115;
+	EQUIP_DECOMPOSE_S           = 4116;
 
 	EQUIP_MONSTER_DRESS_C       = 4120;
 	EQUIP_MONSTER_DRESS_S       = 4121;

@@ -84,11 +84,13 @@ public class UIShop : UIBase
 	void BindListener()
 	{
 		GameEventMgr.Instance.AddListener (GameEventList.RefreshShopUi, OnRefreshShopUi);
+		GameEventMgr.Instance.AddListener (GameEventList.RefreshShopUiAfterBuy, OnRefreshUIAfterBuy);
 	}
 	
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener (GameEventList.RefreshShopUi, OnRefreshShopUi);
+		GameEventMgr.Instance.RemoveListener (GameEventList.RefreshShopUiAfterBuy, OnRefreshUIAfterBuy);
 	}
 
 	/*
@@ -179,21 +181,25 @@ public class UIShop : UIBase
 
 	void	OnRefreshShopUi()
 	{
+		RefreshUIWithNormalizedScrollPosition ();
+	}
+
+	void	OnRefreshUIAfterBuy()
+	{
+		RefreshUIWithNormalizedScrollPosition (false);
+	}
+
+	void	RefreshUIWithNormalizedScrollPosition(bool normallized = true)
+	{
 		PB.ShopData shopData = shopDataMgr.GetShopData (curShopType);
 		if (null == shopData)
 		{
 			Logger.LogError("Error for Get shopData....");
 			return;
 		}
-		//shop info
-		/*
-		int gold = GameDataMgr.Instance.PlayerDataAttr.gold;//钻石
-		long coin = GameDataMgr.Instance.PlayerDataAttr.coin;//金币
-		jinbiCoinBtn.coinCount.text = coin.ToString ();
-		zuanshiCoinBtn.coinCount.text = gold.ToString ();
-		*/
+		
 		shopName.text = GetShopName (curShopType);
-
+		
 		TimeStaticData nextRefTime = shopDataMgr.GetNextFreeRefreshTime (curShopType);
 		string day =  StaticDataMgr.Instance.GetTextByID("shop_today");;
 		if (nextRefTime.dayOfMonth > 0)
@@ -202,31 +208,17 @@ public class UIShop : UIBase
 		}
 		string nextRefDes = string.Format ("{0}{1} {2:00}:{3:00}",StaticDataMgr.Instance.GetTextByID("shop_nextrefresh"),
 		                                   day,nextRefTime.hour,nextRefTime.minute);
-
+		
 		nextRefreshText.text = nextRefDes;
-
+		
 		jinbiCoinBtn.CoinTypeAttr = GetCoinType (shopData.type);
-
-		//refresh button
-		/*
-		if (shopData.refreshTimesLeft > 0)
-		{
-			refreshButton.enabled = true;
-			EventTriggerListener.Get (refreshButton.gameObject).onClick = OnRefreshButtonClilck;
-		}
-		else
-		{
-			refreshButton.enabled = false;
-			EventTriggerListener.Get (refreshButton.gameObject).onClick = null;
-		}
-		*/
-
+		
 		//shop items
 		List<PB.ShopItem> itemsInfo = shopData.itemInfos;
-
+		
 		ShopItem shopItemUi = null;
 		PB.ShopItem shopItemData = null;
-
+		
 		for (int i =0; i<listShopItem.Count; ++ i)
 		{
 			shopItemData = null;
@@ -237,17 +229,19 @@ public class UIShop : UIBase
 				shopItemUi.gameObject.SetActive(true);
 				shopItemUi.RefreshShopItem(shopItemData,shopData.shopId,shopData.type);
 			}
-
+			
 			else
 			{
 				shopItemUi.gameObject.SetActive(false);
 			}
 		}
-
-		ScrollRect sr = shopItemsScrollView.GetComponent<ScrollRect> ();
-		if (sr != null) 
+		if (normallized)
 		{
-			sr.horizontalNormalizedPosition = 0.0f;
+			ScrollRect sr = shopItemsScrollView.GetComponent<ScrollRect> ();
+			if (sr != null) 
+			{
+				sr.horizontalNormalizedPosition = 0.0f;
+			}
 		}
 	}
 
