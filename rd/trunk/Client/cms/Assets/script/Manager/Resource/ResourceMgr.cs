@@ -45,11 +45,13 @@ public class LoadedAssetBundle
 {
     public AssetBundle assetBundle;
     public int referencedCount;
+    public bool ignoreReferenceCount;
 
     public LoadedAssetBundle(AssetBundle assetBundle)
     {
         this.assetBundle = assetBundle;
         referencedCount = 1;
+        ignoreReferenceCount = false;
     }
 }
 //---------------------------------------------------------------------------------------------
@@ -401,14 +403,14 @@ public class ResourceMgr : MonoBehaviour
     public T LoadAssetType<T>(string assetname) where T:Object
     {
         //assetname = StaticDataMgr.Instance.GetRealName(assetname);
-		string abname = StaticDataMgr.Instance.GetBundleName (assetname);
+        string abname = StaticDataMgr.Instance.GetBundleName (assetname);
 		if (string.IsNullOrEmpty (abname))
 		{
 			Logger.LogError("Load assetType error: no asset : " + assetname);
 			return null;
 		}
         abname = abname.ToLower();
-        AssetBundle bundle = LoadAssetBundle(abname);
+        AssetBundle bundle = LoadAssetBundle(abname, true);
 
         //T obj = bundle.LoadAsset<T>(assetname);
 
@@ -522,7 +524,7 @@ public class ResourceMgr : MonoBehaviour
     /// </summary>
     /// <param name="abname"></param>
     /// <returns></returns>
-    AssetBundle LoadAssetBundle(string abname)
+    AssetBundle LoadAssetBundle(string abname, bool ignoreReference = false)
     {
         if (!abname.EndsWith(Const.ExtName))
         {
@@ -539,12 +541,16 @@ public class ResourceMgr : MonoBehaviour
             stream = File.ReadAllBytes(uri);
             AssetBundle bundle = AssetBundle.CreateFromMemoryImmediate(stream); //关联数据的素材绑定
             loadedBundle = new LoadedAssetBundle(bundle);
+            loadedBundle.ignoreReferenceCount = ignoreReference;
             loadedAssetBundleList.Add(abname, loadedBundle);
         }
         else
         {
             loadedAssetBundleList.TryGetValue(abname, out loadedBundle);
-            ++loadedBundle.referencedCount;
+            if (loadedBundle.ignoreReferenceCount == false)
+            {
+                ++loadedBundle.referencedCount;
+            }
         }
 
         return loadedBundle.assetBundle;

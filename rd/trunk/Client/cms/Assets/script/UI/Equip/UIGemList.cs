@@ -20,19 +20,11 @@ public class UIGemList : MonoBehaviour,IXiangQianCallBack
         return uiGemList;
     }
 
-
-    public class GemInfo
-    {
-        public ItemData itemData;
-        public ItemStaticData itemInfo;
-    }
-
-
     public Transform content;
     public IGemListCallBack ICallBackDeletage;
 
 
-    private List<GemInfo> infos = new List<GemInfo>();
+    private List<ItemDataInfo> infos = new List<ItemDataInfo>();
 
     private List<GemListItem> items = new List<GemListItem>();
     private List<GemListItem> itemPool = new List<GemListItem>();
@@ -48,11 +40,11 @@ public class UIGemList : MonoBehaviour,IXiangQianCallBack
             if (itemStatic==null)
             {
                 Logger.LogError("缺少物品配置:"+item.Value.itemId);
-                return;
+                continue;
             }
             if (itemStatic.type==3&&itemStatic.gemType==gemType)
             {
-                infos.Add(new GemInfo() { itemData = item.Value, itemInfo = itemStatic });
+                infos.Add(new ItemDataInfo() { itemData = item.Value, staticData = itemStatic });
             }
         }
         RemoveAllElement();

@@ -69,7 +69,7 @@ public class BagItem : MonoBehaviour
 		baoXiangNeedPanel.gameObject.SetActive (bagType == BagType.BaoXiang);
 		baoshiNeedPanel.gameObject.SetActive (bagType == BagType.Baoshi);
 		useButton.gameObject.SetActive (bstate == BagState.Norml && (bagType == BagType.BaoXiang || bagType == BagType.Xiaohao));
-		sellPanel.gameObject.SetActive (bstate == BagState.Sell);
+		sellPanel.gameObject.SetActive (bstate == BagState.Sell && itemStaticData.sellPrice > 0);
 
 		itemIcon.RefreshWithItemInfo (itemData);
 		UIUtil.SetStageColor (itemName, itemStaticData.name, itemStaticData.grade);
@@ -85,7 +85,10 @@ public class BagItem : MonoBehaviour
 
 		if (bstate == BagState.Sell) 
 		{
-			SetSellCount(0);
+			if(itemStaticData.sellPrice > 0)
+			{
+				SetSellCount(0);
+			}
 		}
 	}
 
@@ -136,7 +139,7 @@ public class BagItem : MonoBehaviour
 		string sellMsg = "";
 		if (sellCount > 0)
 		{
-			sellMsg = string.Format (StaticDataMgr.Instance.GetTextByID ("出售{0}"), sellCount);
+			//sellMsg = string.Format (StaticDataMgr.Instance.GetTextByID ("出售{0}"), sellCount);
 			selectImgName = "beibao_duigou_1";
 		}
 		else

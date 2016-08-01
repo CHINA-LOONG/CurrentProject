@@ -40,6 +40,7 @@ public class UIBag : UIBase,TabButtonDelegate
 		get{ return curBagState;}
 		set
 		{
+			sellItemsDic.Clear ();
 			if(value != curBagState)
 			{
 				curBagState = value;
@@ -51,6 +52,7 @@ public class UIBag : UIBase,TabButtonDelegate
 	private	List<PB.HSRewardInfo> listRewardForBox = new List<PB.HSRewardInfo>();
 	private	Dictionary<string,int>  sellItemsDic = new Dictionary<string, int>();
 	private	ItemData	curUseItemData;
+	private	bool	isCanSell = false;
 
     void Start()
     {
@@ -65,6 +67,7 @@ public class UIBag : UIBase,TabButtonDelegate
 			isFirst = false;
 			FirsInit();
 		}
+		tabBtnGroup.OnChangeItem (0);
 		curBagState = BagState.Norml;
 		RefreshBag ();
     }
@@ -132,11 +135,13 @@ public class UIBag : UIBase,TabButtonDelegate
 			return;
 
 		curBagType = (BagType)index;
+		BagStateAttr = BagState.Norml;
 		RefreshBag ();
 	}
 
 	private void RefreshBag()
 	{
+		isCanSell = false;
 		cancelSellButton.gameObject.SetActive (curBagState == BagState.Sell);
 		conformSellButton.gameObject.SetActive (curBagState == BagState.Sell);
 		sellButton.gameObject.SetActive (curBagState == BagState.Norml);
@@ -151,13 +156,26 @@ public class UIBag : UIBase,TabButtonDelegate
  			BagItem subBagItme = BagItem.Create(subItemData,curBagType,curBagState);
 		
 			scrollView.AddElement(subBagItme.gameObject);
+			if(!isCanSell)
+			{
+				ItemStaticData stData = StaticDataMgr.Instance.GetItemData(subItemData.itemId);
+				if(stData != null && stData.sellPrice > 0)
+				{
+					isCanSell = true;
+				}
+			}
+		}
+
+		ScrollRect sr = scrollView.GetComponent<ScrollRect> ();
+		if (sr != null) 
+		{
+			sr.horizontalNormalizedPosition = 0.0f;
 		}
 	}
 
 	void OnSellCancleClick(GameObject go)
 	{
 		BagStateAttr = BagState.Norml;
-		sellItemsDic.Clear ();
 	}
 
 	void OnSellConformClick(GameObject go)
@@ -214,6 +232,7 @@ public class UIBag : UIBase,TabButtonDelegate
 			Logger.LogError("sell items Error.....");
 			return;
 		}
+		BagStateAttr = BagState.Norml;
 		PB.HSItemSellBatchRet sellReturn = msg.GetProtocolBody<PB.HSItemSellBatchRet> ();
 		RefreshBag ();
 	}
@@ -221,8 +240,15 @@ public class UIBag : UIBase,TabButtonDelegate
 
 	void OnSellClick(GameObject go)
 	{
-		BagStateAttr = BagState.Sell;
-		sellItemsDic.Clear ();
+		if (isCanSell)
+		{
+			BagStateAttr = BagState.Sell;
+		}
+		else 
+		{
+			UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("bag_record_006"),
+			                              (int)PB.ImType.PROMPT);
+		}
 	}
 
 	public	void UpdateSellItems(string itemId, int itemCount)

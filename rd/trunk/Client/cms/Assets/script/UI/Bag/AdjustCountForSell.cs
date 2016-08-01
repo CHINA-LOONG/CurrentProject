@@ -80,8 +80,7 @@ public class AdjustCountForSell : UIBase
 		this.defaultValue = defaultValue;
 		CurCountAttr = defaultValue;
 
-		chgValue.maxValue = maxCount;
-		chgValue.curValue = defaultValue;
+		chgValue.ResetValue (defaultValue, maxValue);
 
 		float fscale = UIMgr.Instance.CanvasAttr.scaleFactor;
 		Vector3 spacePos = UIUtil.GetSpacePos (sellItemRt, UIMgr.Instance.CanvasAttr, UICamera.Instance.CameraAttr);
@@ -96,13 +95,13 @@ public class AdjustCountForSell : UIBase
 	void	OnMinButtonClicked(GameObject go)
 	{
 		CurCountAttr = 1;
-		chgValue.curValue = 1;
+		chgValue.CurValueAttr = 1;
 	}
 
 	void	OnMaxButtonClicked(GameObject go)
 	{
 		CurCountAttr = maxCount;
-		chgValue.curValue = maxCount;
+		chgValue.CurValueAttr = maxCount;
 	}
 
 	void 	OnOKButtonClicked(GameObject go)
@@ -117,7 +116,7 @@ public class AdjustCountForSell : UIBase
 	void 	OnCancelButtonClicked(GameObject go)
 	{
 		curCount = 0;
-		chgValue.curValue = 0;
+		chgValue.CurValueAttr = 0;
 		OnOKButtonClicked (null);
 	}
 	

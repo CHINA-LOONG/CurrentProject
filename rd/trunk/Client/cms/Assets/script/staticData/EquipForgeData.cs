@@ -9,6 +9,7 @@ public class EquipForgeData
     public float successRate;
     public string levelDemand;
     public string punchDemand;
+    public string decompose;
 
     public void GetLevelDemand(ref List<ItemInfo> leveinfo)
     {

@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
+
 
 public class CloseMipmap : MonoBehaviour
 {
@@ -12,6 +15,8 @@ public class CloseMipmap : MonoBehaviour
     {
         List<Texture2D> objects = new List<Texture2D>();
         string path = EditorUtility.OpenFolderPanel("选择要检测的贴图路径", @"Assets/SourceAsset/texture/UI", "");
+        if (string.IsNullOrEmpty(path))
+            return;
 
         List<string> targetFiles = Recursion(path, ".png|.tga");
         Debug.Log(targetFiles.Count);
@@ -122,7 +127,185 @@ public class CloseMipmap : MonoBehaviour
         }
     }
     //---------------------------------------------------------------------------------------------
-    static List<string> Recursion(string root, string extension)
+    public class FileUsedInfo
+    {
+        public FileUsedInfo(string filename)
+        {
+            this.filename = filename;
+        }
+
+        public string filename;
+        public bool used = false;
+    }
+
+    [MenuItem("Builder/List Texture_Mat info")]
+    static void OutPutTextureMatInfo()
+    {
+        Dictionary<string, GameObject> objects = new Dictionary<string, GameObject>();
+        profabPath.Clear();
+        string path = EditorUtility.OpenFolderPanel("选择要检查的资源路径", @"Assets/Prefabs/effects", "");
+
+        if (string.IsNullOrEmpty(path))
+            return;
+
+        string fileName = EditorUtility.SaveFilePanel("选择log保存路径", @"Assets", "ListTexMat", "txt");
+        if (string.IsNullOrEmpty(fileName))
+            return;
+
+        if (File.Exists(fileName))
+        {
+            File.Delete(fileName);
+        }
+        FileStream texMatFile = File.Open(fileName, FileMode.OpenOrCreate);
+        texMatFile.Close();
+
+        bool ignoreEnable = (path.Contains("Prefabs") == false);
+        Dictionary<string, FileUsedInfo> allMatList = new Dictionary<string, FileUsedInfo>();
+        Dictionary<string, FileUsedInfo> allTexList = new Dictionary<string, FileUsedInfo>();
+        List<string> duplicateFilename = new List<string>();
+        RecursionDictionary(path, ".mat", ref allMatList, ref duplicateFilename, ignoreEnable);
+        RecursionDictionary(path, ".png|.tga", ref allTexList, ref duplicateFilename, ignoreEnable);
+
+        for (int i = 0; i < duplicateFilename.Count; ++i)
+        {
+            using (StreamWriter writer = new StreamWriter(fileName, true, Encoding.UTF8))
+            {
+                string s = string.Format("detect file with same name: {0}", duplicateFilename[i]);
+                writer.WriteLine(s);
+            }
+        }
+
+        List<string> prefabs_path = Recursion(path, ".prefab", ignoreEnable);
+        for (int i = 0; i < prefabs_path.Count; i++)
+        {
+            prefabs_path[i] = prefabs_path[i].Replace(@"\", @"/");
+            prefabs_path[i] = prefabs_path[i].Substring(prefabs_path[i].LastIndexOf("Assets/"));
+            GameObject curObj = AssetDatabase.LoadAssetAtPath(prefabs_path[i], typeof(GameObject)) as GameObject;
+            if (curObj != null)
+            {
+                int subIndex = prefabs_path[i].LastIndexOf("/");
+                string filename = prefabs_path[i].Substring(subIndex + 1);
+                objects.Add(filename, curObj);
+            }
+            else
+            {
+                using (StreamWriter writer = new StreamWriter(fileName, true, Encoding.UTF8))
+                {
+                    string s = string.Format("load prefab {0} failed", prefabs_path[i]);
+                    writer.WriteLine(s);
+                }
+            }
+        }
+
+        Dictionary<string, string> materialList = new Dictionary<string,string>();
+        Dictionary<string, string> textureList = new Dictionary<string, string>();
+        var itor = objects.GetEnumerator();
+        while (itor.MoveNext())
+        {
+            //Renderer[] renderers = Resources.FindObjectsOfTypeAll<Renderer>();
+            GameObject curObj = itor.Current.Value;
+            Renderer[] renderList = curObj.GetComponentsInChildren<Renderer>(true);
+            foreach (Renderer curRenderer in renderList)
+            {
+                foreach(Material curMat in curRenderer.sharedMaterials)
+                {
+                    //materialList.Add(itor.Current.Key, curMat.name);
+                    if (curMat == null)
+                    {
+                        using (StreamWriter writer = new StreamWriter(fileName, true, Encoding.UTF8))
+                        {
+                            string s = string.Format("{0}'s material is missing!", curObj.name);
+                            writer.WriteLine(s);
+                        }
+                        continue;
+                    }
+                    FileUsedInfo fuInfo;
+                    if (allMatList.TryGetValue(curMat.name, out fuInfo) == true)
+                    {
+                        fuInfo.used = true;
+                    }
+
+                    Texture curMainTex = curMat.GetTexture("_MainTex");
+                    //Texture curBumpTex = curMat.GetTexture("_BumpMap");
+                    //Texture curCubeTex = curMat.GetTexture("_Cube");
+                    if (curMainTex != null)
+                    {
+                        if (allTexList.TryGetValue(curMainTex.name, out fuInfo) == true)
+                        {
+                            fuInfo.used = true;
+                        }
+                        //textureList.Add(curMat.name, curMainTex.name);
+                    }
+//                     if (curBumpTex != null)
+//                     {
+//                         textureList.Add(curMat.name, curMainTex.name);
+//                     }
+//                     if (curCubeTex != null)
+//                     {
+//                         textureList.Add(curMat.name, curMainTex.name);
+//                     }
+                }
+            }
+        }
+
+        List<string> unUsedMatList = new List<string>();
+        var itorMat = allMatList.GetEnumerator();
+        while (itorMat.MoveNext())
+        {
+            if (itorMat.Current.Value.used == false)
+            {
+                unUsedMatList.Add(itorMat.Current.Value.filename);
+            }
+        }
+
+        List<string> unUsedTexList = new List<string>();
+        var itorTex = allTexList.GetEnumerator();
+        while (itorTex.MoveNext())
+        {
+            if (itorTex.Current.Value.used == false)
+            {
+                unUsedTexList.Add(itorTex.Current.Value.filename);
+            }
+        }
+
+        //string fileName = String.Format("list_tex_mat{0}-{1}-{2}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+        //string outpath = "D:" + "/" + fileName + ".txt";
+        using (StreamWriter writer = new StreamWriter(fileName, true, Encoding.UTF8))
+        {
+            writer.WriteLine("---------------------------------------- Begin List Unused Material ----------------------------------------");
+        }
+        int count = unUsedMatList.Count;
+        for (int index = 0; index < count; ++index)
+        {
+            using (StreamWriter writer = new StreamWriter(fileName, true, Encoding.UTF8))
+            {
+                writer.WriteLine(unUsedMatList[index]+".mat");
+            }
+        }
+
+        using (StreamWriter writer = new StreamWriter(fileName, true, Encoding.UTF8))
+        {
+            writer.WriteLine("");
+            writer.WriteLine("---------------------------------------- Begin List Unused Texture ----------------------------------------");
+        }
+        count = unUsedTexList.Count;
+        for (int index = 0; index < count; ++index)
+        {
+            using (StreamWriter writer = new StreamWriter(fileName, true, Encoding.UTF8))
+            {
+                writer.WriteLine(unUsedTexList[index]);
+            }
+        }
+
+        using (StreamWriter writer = new StreamWriter(fileName, true, Encoding.UTF8))
+        {
+            writer.WriteLine("");
+            writer.WriteLine("---------------------------------------- End ----------------------------------------");
+        }
+        Logger.Log("<color=#ffff00ff>List texture/material finish!</color>");
+    }
+    //---------------------------------------------------------------------------------------------
+    static List<string> Recursion(string root, string extension, bool ignoreEnable =  false)
     {
         List<string> targetFiles = new List<string>();
         DirectoryInfo rootDir = new DirectoryInfo(root);
@@ -138,9 +321,65 @@ public class CloseMipmap : MonoBehaviour
         }
         foreach (var dir in dirs)
         {
-            targetFiles.AddRange(Recursion(dir.FullName, extension));
+            if (ignoreEnable == false ||
+                dir.Name.Contains("Prefabs") ||
+                dir.Name.Contains("SourceAsset")
+                )
+            {
+                targetFiles.AddRange(Recursion(dir.FullName, extension,false));
+            }
         }
         return targetFiles;
+    }
+    //---------------------------------------------------------------------------------------------
+    static void RecursionDictionary(
+        string root,
+        string extension,
+        ref Dictionary<string, FileUsedInfo> fileUsedinfo,
+        ref List<string> duplicateFilename,
+        bool ignoreEnable = false
+        )
+    {
+        DirectoryInfo rootDir = new DirectoryInfo(root);
+        FileInfo[] files = rootDir.GetFiles();
+        DirectoryInfo[] dirs = rootDir.GetDirectories();
+        foreach (var file in files)
+        {
+            string ext = file.Extension;
+            if (extension.Contains(ext))
+            {
+                //string curName = file.Name.Replace(@"\", @"/");
+                //curName = curName.Substring(curName.LastIndexOf("Assets/"));
+                int index = file.Name.LastIndexOf(".");
+                if (index != -1)
+                {
+                    string filename = file.Name.Substring(0, file.Name.LastIndexOf("."));
+                    if (fileUsedinfo.ContainsKey(filename) == false)
+                    {
+                        fileUsedinfo.Add(filename, new FileUsedInfo(filename));
+                    }
+                    else
+                    {
+                        duplicateFilename.Add(file.Name);
+                        //Logger.LogFormat("<color=#ffff00ff>detect file with same name: {0}</color>", file.Name);
+                    }
+                }
+                else
+                {
+                    Logger.LogFormat("<color=#ffff00ff>file {0} without extension</color>", file.Name);
+                }
+            }
+        }
+        foreach (var dir in dirs)
+        {
+            if (ignoreEnable == false ||
+                dir.Name.Contains("Prefabs") ||
+                dir.Name.Contains("SourceAsset")
+                )
+            {
+                RecursionDictionary(dir.FullName, extension, ref fileUsedinfo, ref duplicateFilename, false);
+            }
+        }
     }
     //---------------------------------------------------------------------------------------------
 }

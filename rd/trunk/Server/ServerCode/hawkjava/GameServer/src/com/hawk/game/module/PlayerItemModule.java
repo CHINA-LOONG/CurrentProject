@@ -322,6 +322,12 @@ public class PlayerItemModule extends PlayerModule{
 				
 				consumeItems.addItem(itemId, 1);
 			}
+			// 疲劳值
+			else if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLFATIGUE_VALUE) {
+				
+				awardItems.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, itemCfg.getAddAttrValue());
+				consumeItems.addItem(itemId, 1);
+			}			
 		}		
 			
 		if (consumeItems.hasConsumeItem() == true) {
@@ -441,8 +447,7 @@ public class PlayerItemModule extends PlayerModule{
 		for (int i = 0; i < composeTimes; i++) {
 			for (GemSelect gem : protocol.getGemsList()) {
 				consumeItems.addItem(gem.getGemId(), gem.getCount());
-			}
-			
+			}		
 			awardItems.addItem(ItemUtil.generateGem(level).getId(), GsConst.NEXT_LEVEL_GEM_COUNT);
 		}
 		

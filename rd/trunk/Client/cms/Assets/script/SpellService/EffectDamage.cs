@@ -268,7 +268,7 @@ public class EffectDamage : Effect
                             List<Buff> buffList = target.buffList;
                             for (int i = 0; i < buffList.Count; ++i)
                             {
-                                buffList[i].DeadResponse(applyTime, this);
+                                buffList[i].DeadResponse(applyTime, this, wpID);
                             }
                         }
                         else if (target.curLife > target.maxLife)
@@ -343,13 +343,13 @@ public class EffectDamage : Effect
                         int buffCount = caster.buffList.Count;
                         for (int i = 0; i < buffCount; ++i)
                         {
-                            caster.buffList[i].DamageResponse(applyTime, this);
+                            caster.buffList[i].DamageResponse(applyTime, this, wpID);
                         }
                         //target
                         buffCount = target.buffList.Count;
                         for (int i = 0; i < buffCount; ++i)
                         {
-                            target.buffList[i].DamageResponse(applyTime, this);
+                            target.buffList[i].DamageResponse(applyTime, this, wpID);
                         }
                     }
                 }

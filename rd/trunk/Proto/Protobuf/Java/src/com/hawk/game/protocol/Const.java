@@ -1896,6 +1896,14 @@ public final class Const {
      * </pre>
      */
     USETOOLTRIPLEEXP(2, 3),
+    /**
+     * <code>USETOOLFATIGUE = 4;</code>
+     *
+     * <pre>
+     * 疲劳值
+     * </pre>
+     */
+    USETOOLFATIGUE(3, 4),
     ;
 
     /**
@@ -1922,6 +1930,14 @@ public final class Const {
      * </pre>
      */
     public static final int USETOOLTRIPLEEXP_VALUE = 3;
+    /**
+     * <code>USETOOLFATIGUE = 4;</code>
+     *
+     * <pre>
+     * 疲劳值
+     * </pre>
+     */
+    public static final int USETOOLFATIGUE_VALUE = 4;
 
 
     public final int getNumber() { return value; }
@@ -1931,6 +1947,7 @@ public final class Const {
         case 1: return USETOOLEXP;
         case 2: return USETOOLDOUBLEEXP;
         case 3: return USETOOLTRIPLEEXP;
+        case 4: return USETOOLFATIGUE;
         default: return null;
       }
     }
@@ -2915,21 +2932,21 @@ public final class Const {
       "pe\022\014\n\010NON_BIND\020\000\022\014\n\010USE_BIND\020\001\022\r\n\tTAKE_B" +
       "IND\020\002*b\n\010toolType\022\016\n\nCOMMONTOOL\020\001\022\020\n\014FRA" +
       "GMENTTOOL\020\002\022\013\n\007GEMTOOL\020\003\022\013\n\007BOXTOOL\020\004\022\013\n",
-      "\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007*L\n\016UseToolSubT" +
+      "\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007*`\n\016UseToolSubT" +
       "ype\022\016\n\nUSETOOLEXP\020\001\022\024\n\020USETOOLDOUBLEEXP\020" +
-      "\002\022\024\n\020USETOOLTRIPLEEXP\020\003*\204\001\n\tequipPart\022\n\n" +
-      "\006HELMET\020\001\022\010\n\004RING\020\002\022\010\n\004BELT\020\003\022\013\n\007CUIRASS" +
-      "\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WEAPON2\020\006\022\014\n\010LEGGUARD" +
-      "\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020\n*O" +
-      "\n\014equipQuality\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022\010\n\004" +
-      "BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED\020\006*" +
-      ";\n\010shopType\022\016\n\nNORMALSHOP\020\001\022\020\n\014ALLIANCES" +
-      "HOP\020\002\022\r\n\tOTHERSHOP\020\003*<\n\tmailState\022\n\n\006UNR",
-      "EAD\020\001\022\010\n\004READ\020\002\022\013\n\007RECEIVE\020\003\022\014\n\010OVERFLOW" +
-      "\020\004*7\n\006ImType\022\010\n\004CHAT\020\001\022\013\n\007LANTERN\020\002\022\n\n\006P" +
-      "ROMPT\020\003\022\n\n\006NOTICE\020\004*-\n\tImChannel\022\n\n\006PERS" +
-      "ON\020\001\022\t\n\005WORLD\020\002\022\t\n\005GUILD\020\003B\030\n\026com.hawk.g" +
-      "ame.protocol"
+      "\002\022\024\n\020USETOOLTRIPLEEXP\020\003\022\022\n\016USETOOLFATIGU" +
+      "E\020\004*\204\001\n\tequipPart\022\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022" +
+      "\010\n\004BELT\020\003\022\013\n\007CUIRASS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007W" +
+      "EAPON2\020\006\022\014\n\010LEGGUARD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLO" +
+      "VE\020\t\022\014\n\010NECKLACE\020\n*O\n\014equipQuality\022\t\n\005WH" +
+      "ITE\020\001\022\t\n\005GREEN\020\002\022\010\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n" +
+      "\n\006ORANGE\020\005\022\007\n\003RED\020\006*;\n\010shopType\022\016\n\nNORMA" +
+      "LSHOP\020\001\022\020\n\014ALLIANCESHOP\020\002\022\r\n\tOTHERSHOP\020\003",
+      "*<\n\tmailState\022\n\n\006UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007R" +
+      "ECEIVE\020\003\022\014\n\010OVERFLOW\020\004*7\n\006ImType\022\010\n\004CHAT" +
+      "\020\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006NOTICE\020\004*" +
+      "-\n\tImChannel\022\n\n\006PERSON\020\001\022\t\n\005WORLD\020\002\022\t\n\005G" +
+      "UILD\020\003B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

@@ -8,12 +8,23 @@ public class ChangeValueByHand : MonoBehaviour
 	public	delegate	void	ChangeValueDelegate(int value);
 	public	ChangeValueDelegate	callback = null;
 
-	public	Image	changeSmaller;
-	public	Image	changeBigger;
+	public	ArrowButton	changeSmaller;
+	public	ArrowButton	changeBigger;
 
-	public	int	minValue = 1;
-	public	int maxValue = 1;
-	public	int curValue = 1;
+	private	int	minValue = 1;
+	private	int maxValue = 1;
+	private	int curValue = 1;
+	public	int	CurValueAttr
+	{
+		get
+		{
+			return curValue;
+		}
+		set
+		{
+			ResetValue(value,maxValue,minValue);
+		}
+	}
 
 	// Use this for initialization
 	void Start ()
@@ -26,15 +37,27 @@ public class ChangeValueByHand : MonoBehaviour
 	}
 	
 	int  changeStep = 0;
-	int  updateFrame = 10;
+	int	 updateNeedFrames = 10;
+	int  curFrame = 0;
+
+	public	void ResetValue(int	curVal,int maxVal,int minMal = 1)
+	{
+		curValue = curVal;
+		maxValue = maxVal;
+		minValue = minMal;
+
+		changeSmaller.IsEnable = (curValue > minValue);
+		changeBigger.IsEnable = (curValue < maxValue);
+	}
+
 	void Update()
 	{
 		if (changeStep == 0)
 			return;
 		
-		if(updateFrame <= 0)
+		if(curFrame == 0)
 		{
-			updateFrame = 10;
+			curFrame ++;
 			curValue += changeStep;
 			if(curValue <= minValue )
 			{
@@ -50,30 +73,53 @@ public class ChangeValueByHand : MonoBehaviour
 			{
 				callback(curValue);
 			}
+			changeSmaller.IsEnable = (curValue > minValue);
+			changeBigger.IsEnable = (curValue < maxValue);
 		}
 		else
 		{
-			updateFrame --;
+			curFrame ++;
+			if(curFrame >= updateNeedFrames)
+			{
+				updateNeedFrames = 10;
+				curFrame = 0;
+			}
 		}
 	}
 
 	void OnLeftImageDown(GameObject go)
 	{
-		changeStep = -1;
+		if (changeSmaller.IsEnable) 
+		{
+			curFrame = 0;
+			updateNeedFrames = 60;
+			changeStep = -1;
+		}
 	}
 	
 	void OnLeftImageUp(GameObject go)
 	{
-		changeStep = 0;
+		if (changeSmaller.IsEnable) 
+		{
+			changeStep = 0;
+		}
 	}
 	
 	void OnRightImageDown(GameObject go)
 	{
-		changeStep = 1;
+		if (changeBigger.IsEnable)
+		{
+			curFrame = 0;
+			updateNeedFrames = 60;
+			changeStep = 1;
+		}
 	}
 	
 	void OnRightImageUp(GameObject go)
 	{
-		changeStep = 0;
+		if (changeBigger.IsEnable)
+		{
+			changeStep = 0;
+		}
 	}
 }

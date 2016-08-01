@@ -18,6 +18,7 @@ public class UnitStageData
     public int demandCoin;
     public string demandItem;
     public string demandMonster;
+    public string decompose;
 
     public List<ItemInfo> demandItemList = new List<ItemInfo>();
     public List<ItemInfo> demandMonsterList = new List<ItemInfo>();

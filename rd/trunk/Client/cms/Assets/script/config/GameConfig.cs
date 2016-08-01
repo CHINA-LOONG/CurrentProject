@@ -41,7 +41,7 @@ public class GameConfig : MonoBehaviour {
     public static int MaxPlayerLevel = 50;
 
 	//背包中购买钥匙最大数
-	public	int	maxBuyCountInBag	= 10;
+	public	int	maxBuyCountInBag	= 50;
 	//背包 最大开宝箱数量 
 	public	int	maxOpenBoxCount = 10;
 }

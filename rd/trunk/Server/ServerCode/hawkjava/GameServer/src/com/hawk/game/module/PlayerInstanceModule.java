@@ -329,8 +329,8 @@ public class PlayerInstanceModule extends PlayerModule {
 				try {
 					int index = HawkRand.randInt(0, monsterRewardList.size() - 1);
 					ItemInfo monster = monsterRewardList.get(index);
-					int disposition = HawkRand.randInt(0, 5);
-					completeReward.addMonster(monster.getItemId(), monster.getStage(), 1, 5, disposition);
+					int disposition = HawkRand.randInt(1, 6);
+					completeReward.addMonster(monster.getItemId(), monster.getStage(), 1, 1, disposition);
 				} catch (HawkException e) {
 					HawkException.catchException(e);
 				}		

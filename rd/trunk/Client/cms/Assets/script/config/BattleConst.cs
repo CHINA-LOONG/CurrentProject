@@ -85,6 +85,9 @@ public class BattleConst
     public const long invalidEquipID = -1;
     //无效的宝石id
     public const string invalidGemID = "0";
+    //最大最小宝石等级
+    public const int maxGemLevel = 6;       //当前版本等级
+    public const int minGemLevel = 1;
     //最大最小装备等级 9 0
     public const int maxEquipLevel = 9;
     public const int minEquipLevel = 0;

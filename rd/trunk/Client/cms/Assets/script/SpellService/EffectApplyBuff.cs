@@ -43,7 +43,7 @@ public class EffectApplyBuff : Effect
                 int buffCount = caster.buffList.Count;
                 for (int i = 0; i < buffCount; ++i)
                 {
-                    caster.buffList[i].DamageResponse(applyTime, this);
+                    caster.buffList[i].DamageResponse(applyTime, this, wpName);
                 }
                 curBuff.casterID = casterID;
                 curBuff.targetID = targetID;

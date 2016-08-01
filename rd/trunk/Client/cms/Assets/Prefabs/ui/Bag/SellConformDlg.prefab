@@ -220,20 +220,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .977941155, g: .934796691, b: .934796691, a: 1}
+  m_Color: {r: .984313726, g: .945098042, b: .847058833, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u662F\u5426\u51FA\u552E\u8FD9\u4E9B\u7269\u54C1"
+  m_Text: Confirm sell these items?
 --- !u!114 &11401622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,10 +246,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: .984313726, g: .945098042, b: .847058833, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
-    m_FontSize: 22
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -313,10 +313,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: .984313726, g: .945098042, b: .847058833, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
-    m_FontSize: 22
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -395,10 +395,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .977941155, g: .934796691, b: .934796691, a: 1}
+  m_Color: {r: .984313726, g: .945098042, b: .847058833, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -406,9 +406,9 @@ MonoBehaviour:
     m_Alignment: 5
     m_RichText: 1
     m_HorizontalOverflow: 1
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u603B\u8BA1\u51FA\u552E\uFF1A"
+  m_Text: 'Sell total:'
 --- !u!114 &11439440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -518,20 +518,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .977941155, g: .934796691, b: .934796691, a: 1}
+  m_Color: {r: .984313726, g: .945098042, b: .847058833, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
-    m_FontSize: 14
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "*\u82E5\u91D1\u5E01\u8FBE\u5230\u4E0A\u9650\uFF0C\u51FA\u552E\u5C06\u65E0\u6CD5\u83B7\u5F97\u91D1\u5E01"
+    m_LineSpacing: 1.5
+  m_Text: '*If coin limit is reached when selling items,then no more coins'
 --- !u!114 &11485954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -544,10 +544,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .977941155, g: .934796691, b: .934796691, a: 1}
+  m_Color: {r: 1, g: .800000012, b: 0, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -555,9 +555,9 @@ MonoBehaviour:
     m_Alignment: 3
     m_RichText: 1
     m_HorizontalOverflow: 1
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 999999
+  m_Text: 10000000
 --- !u!114 &11491788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -701,8 +701,8 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 88.5999985, y: -107.699997}
-  m_SizeDelta: {x: 130, y: 46}
+  m_AnchoredPosition: {x: 118.599998, y: -118.700005}
+  m_SizeDelta: {x: 130.699997, y: 49.7000008}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22416108
 RectTransform:
@@ -736,7 +736,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 93.0999985}
+  m_AnchoredPosition: {x: -137, y: 121.300003}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22438440
@@ -753,7 +753,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 131.100006, y: 8.5}
+  m_AnchoredPosition: {x: 58.2999992, y: -43.2000008}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22441460
@@ -787,8 +787,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -23.8999996, y: 63.0999985}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 5.1500001, y: 15.6000004}
+  m_SizeDelta: {x: 444.299988, y: 95.5999985}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22444380
 RectTransform:
@@ -821,7 +821,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -83.6000214, y: 8.5}
+  m_AnchoredPosition: {x: -153.5, y: -41.4000015}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22462448
@@ -839,8 +839,8 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -98.5999985, y: -107.699997}
-  m_SizeDelta: {x: 130, y: 46}
+  m_AnchoredPosition: {x: -116.199997, y: -118.699997}
+  m_SizeDelta: {x: 141.5, y: 49.7000008}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22475238
 RectTransform:
@@ -856,8 +856,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 26.1000004, y: 7.69999981}
-  m_SizeDelta: {x: 28.3999996, y: 28.3999996}
+  m_AnchoredPosition: {x: -48.5, y: -41.4000015}
+  m_SizeDelta: {x: 38.7999992, y: 38.7999992}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22487002
 RectTransform:
@@ -882,7 +882,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 300}
+  m_SizeDelta: {x: 583, y: 380}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:

@@ -313,23 +313,23 @@ public class GameUnit : IComparable
         
         //一级属性
         float stageRatio = 1.0f + unitStageData.modifyRate;
-        health = (int)(
+        health = (
             stageRatio * unitRowData.healthModifyRate * unitBaseRowData.health + 
             unitStageData.health * unitRowData.healthModifyRate + 
             gdMgr.PlayerDataAttr.equipHealth);
-        strength = (int)(
+        strength = (
             stageRatio * unitRowData.strengthModifyRate * unitBaseRowData.strength +
             unitStageData.strength * unitRowData.strengthModifyRate +
             gdMgr.PlayerDataAttr.equipStrength);
-        intelligence = (int)(
+        intelligence = (
             stageRatio * unitRowData.intelligenceModifyRate * unitBaseRowData.intelligence + 
             unitStageData.intelligence * unitRowData.intelligenceModifyRate + 
             gdMgr.PlayerDataAttr.equipIntelligence);
-        speed = (int)(
+        speed = (
             stageRatio * unitRowData.speedModifyRate * unitBaseRowData.speed + 
             unitStageData.speed * unitRowData.speedModifyRate + 
             gdMgr.PlayerDataAttr.equipSpeed);
-        defense = (int)(
+        defense = (
             stageRatio * unitRowData.defenseModifyRate * unitBaseRowData.defense + 
             unitStageData.defense * unitRowData.defenseModifyRate + 
             gdMgr.PlayerDataAttr.equipDefense);
@@ -611,23 +611,26 @@ public class GameUnit : IComparable
             return;
         }
 
-        //战后回血
-        SpellVitalChangeArgs args = new SpellVitalChangeArgs();
-        args.vitalType = (int)VitalType.Vital_Type_Default;
-        //TODO: use battle time
-        args.triggerTime = Time.time;
-        args.casterID = BattleConst.battleSceneGuid;
-        args.targetID = pbUnit.guid;
-        args.isCritical = false;
-        args.vitalChange = recovery;
-        args.vitalCurrent = curLife + recovery;
-        if (args.vitalCurrent >= maxLife)
+        if (pbUnit.slot != BattleConst.offsiteSlot)
         {
-            args.vitalCurrent = maxLife;
+            //战后回血
+            SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+            args.vitalType = (int)VitalType.Vital_Type_Default;
+            //TODO: use battle time
+            args.triggerTime = Time.time;
+            args.casterID = BattleConst.battleSceneGuid;
+            args.targetID = pbUnit.guid;
+            args.isCritical = false;
+            args.vitalChange = recovery;
+            args.vitalCurrent = curLife + recovery;
+            if (args.vitalCurrent >= maxLife)
+            {
+                args.vitalCurrent = maxLife;
+            }
+            args.vitalMax = maxLife;
+            GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.SpellLifeChange, args);
+            //battleUnit.TriggerEvent(BattleConst.levelChangeEvent, Time.time, null);
         }
-        args.vitalMax = maxLife;
-        GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.SpellLifeChange, args);
-        //battleUnit.TriggerEvent(BattleConst.levelChangeEvent, Time.time, null);
     }
 
     public void ResetAllState(bool isRevive)

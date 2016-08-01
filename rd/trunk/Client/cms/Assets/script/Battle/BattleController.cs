@@ -647,17 +647,23 @@ public class BattleController : MonoBehaviour
 
         //对局切换过度
         battleGroup.DestroyEnemys();
-        int playerCount = battleGroup.PlayerFieldList.Count;
-        for (int index = 0; index < playerCount; ++index)
+        //int playerCount = battleGroup.PlayerFieldList.Count;
+        //for (int index = 0; index < playerCount; ++index)
+        //{
+        //    BattleObject bo = battleGroup.PlayerFieldList[index];
+        //    if (bo != null)
+        //    {
+        //        bo.unit.OnStartNextProcess();
+        //    }
+        //}
+        List<BattleObject> playerUnitList = GameDataMgr.Instance.PlayerDataAttr.GetMainUnits();
+        var itor = playerUnitList.GetEnumerator();
+        while (itor.MoveNext())
         {
-            BattleObject bo = battleGroup.PlayerFieldList[index];
-            if (bo != null)
-            {
-                bo.unit.OnStartNextProcess();
-            }
+            itor.Current.unit.OnStartNextProcess();
         }
 
-		MagicDazhaoController.Instance.ClearAll ();
+        MagicDazhaoController.Instance.ClearAll ();
 		PhyDazhaoController.Instance.ClearAll ();
 		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
 		process.HideFireFocus ();

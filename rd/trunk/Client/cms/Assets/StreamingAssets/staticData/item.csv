@@ -1,14 +1,14 @@
-#TEXT,TEXT,NUM ,TEXT,NUM ,NUM ,NUM,NUM,NUM ,NUM ,NUM,TEXT,NUM ,NUM ,NUM ,NUM ,NUM ,NUM ,TEXT,TEXT,TEXT,TEXT,NUM ,NUM ,NUM ,NUM,NUM,NUM,NUM
+ï»¿#TEXT,TEXT,NUM ,TEXT,NUM ,NUM ,NUM,NUM,NUM ,NUM ,NUM,TEXT,NUM ,NUM ,NUM ,NUM ,NUM ,NUM ,TEXT,TEXT,TEXT,TEXT,NUM ,NUM ,NUM ,NUM,NUM,NUM,NUM
 id,name,classType,asset,type,subType,level,grade,minLevel,condition,times,tips,bindType,sellPrice,sellType,buyPrice,buyType,stack,rewardId,componentItem,needItem,targetItem,needCount,addAttrType,addAttrValue,gemId,gemType,part,durability
-#id,Ãû³Æ,1½ÇÉ«2¹ÖÎï,×ÊÔ´,ÀàĞÍ£¨1=²ÄÁÏ£¬2=ËéÆ¬£¬3=±¦Ê¯£¬4=±¦Ïä£¬5=ÏûºÄÆ·£¬7=×°±¸£©,ÀàĞÍ×Ó¼¯,µÈ¼¶,Æ·¼¶,×îµÍ¼¶±ğ,Ê¹ÓÃÌõ¼ş,Ã¿Ìì¿ÉÊ¹ÓÃ´ÎÊı,ÌáÊ¾ÎÄ°¸,°ó¶¨ÀàĞÍ,ÊıÁ¿,1±¦Ê¯2½ğ±Ò,ÊıÁ¿,1±¦Ê¯2½ğ±Ò,¶ÑµşÉÏÏŞ,±¦ÏäµÄ½±ÀøÁĞ±í,ºÏ³É¸Ã×°±¸ĞèÒªµÄµÀ¾ß,Ç°ÖÃ×°±¸ÁĞ±í,ºÏ³É/¶Ò»»ÁĞ±í,ºÏ³É/¶Ò»»ĞèÒªÊıÁ¿,ÏûºÄÆ·ÔöÒæÀàĞÍ,ÏûºÄÆ·ÔöÒæÊıÁ¿,±¦Ê¯ÔöÒæID,±¦Ê¯ÀàĞÍ,²¿Î»,ÄÍ¾Ã¶È
+#id,åç§°,1è§’è‰²2æ€ªç‰©,èµ„æº,ç±»å‹ï¼ˆ1=ææ–™ï¼Œ2=ç¢ç‰‡ï¼Œ3=å®çŸ³ï¼Œ4=å®ç®±ï¼Œ5=æ¶ˆè€—å“ï¼Œ7=è£…å¤‡ï¼‰,ç±»å‹å­é›†,ç­‰çº§,å“çº§,æœ€ä½çº§åˆ«,ä½¿ç”¨æ¡ä»¶,æ¯å¤©å¯ä½¿ç”¨æ¬¡æ•°,æç¤ºæ–‡æ¡ˆ,ç»‘å®šç±»å‹,æ•°é‡,1å®çŸ³2é‡‘å¸,æ•°é‡,1å®çŸ³2é‡‘å¸,å †å ä¸Šé™,å®ç®±çš„å¥–åŠ±åˆ—è¡¨,åˆæˆè¯¥è£…å¤‡éœ€è¦çš„é“å…·,å‰ç½®è£…å¤‡åˆ—è¡¨,åˆæˆ/å…‘æ¢åˆ—è¡¨,åˆæˆ/å…‘æ¢éœ€è¦æ•°é‡,æ¶ˆè€—å“å¢ç›Šç±»å‹,æ¶ˆè€—å“å¢ç›Šæ•°é‡,å®çŸ³å¢ç›ŠID,å®çŸ³ç±»å‹,éƒ¨ä½,è€ä¹…åº¦
 10001,name_10001_yaoshi,0,,1,0,0,1,0,0,0,tips_10001_yaoshi,2,0,0,200,1,1,0,,,,0,0,0,0,0,0,0
 10002,name_10002_wuming,0,,1,0,0,1,10,0,0,tips_10002_wuming,2,0,0,200,1,100,0,,,,0,0,0,0,0,0,0
-10003,name_10003_duihuanquan,0,,1,0,0,1,0,0,0,tips_10003_duihuanquan,2,0,0,200,1,100,0,,,"3_20001_1,4_70001_1_3_2",1,0,0,0,0,0,0
+10003,name_10003_duihuanquan,0,,1,0,0,1,0,0,0,tips_10003_duihuanquan,2,0,0,200,1,100,0,,,,1,0,0,0,0,0,0
 10004,name_10004_chujiqianghuacailiao,0,icon_bossYueguangsenlin18Meidusha8,1,0,0,1,0,0,0,tips_10004_chujiqianghuacailiao,2,500,2,200,1,100,0,,,,0,0,0,0,0,0,0
-11001,name_11001_chujiqianghuacailiao,0,icon_bossYueguangsenlin18Meidusha9,1,0,0,1,0,0,0,tips_11001_chujiqianghuacailiao,2,500,2,200,1,100,0,,,,0,0,0,0,0,0,0
-11002,name_11002_zhongjiqianghuacailiao,0,icon_bossYueguangsenlin18Meidusha10,1,0,0,2,0,0,0,tips_11002_zhongjiqianghuacailiao,2,500,2,200,1,100,0,,,,0,0,0,0,0,0,0
-11003,name_11003_gaojiqianghuacailiao,0,icon_bossYueguangsenlin18Meidusha11,1,0,0,3,0,0,0,tips_11003_gaojiqianghuacailiao,2,500,2,200,1,100,0,,,,0,0,0,0,0,0,0
-10005,name_10005_zhuangbeijinjiecailiao1,0,icon_debuffFireDotMedium,1,0,0,1,0,0,0,tips_10005_zhuangbeijinjiecailiao1,2,0,0,200,1,100,0,,,,0,0,0,0,0,0,0
+11001,name_11001_chujiqianghuacailiao,0,icon_bossYueguangsenlin18Meidusha9,1,0,0,1,0,0,0,tips_11001_chujiqianghuacailiao,2,500,2,200,1,100,0,,,3_11002_1,2,0,0,0,0,0,0
+11002,name_11002_zhongjiqianghuacailiao,0,icon_bossYueguangsenlin18Meidusha10,1,0,0,2,0,0,0,tips_11002_zhongjiqianghuacailiao,2,500,2,200,1,100,0,,,3_11003_1,3,0,0,0,0,0,0
+11003,name_11003_gaojiqianghuacailiao,0,icon_bossYueguangsenlin18Meidusha11,1,0,0,3,0,0,0,tips_11003_gaojiqianghuacailiao,2,500,2,200,1,100,0,,,3_10004_1,4,0,0,0,0,0,0
+10005,name_10005_zhuangbeijinjiecailiao1,0,icon_debuffFireDotMedium,1,0,0,1,0,0,0,tips_10005_zhuangbeijinjiecailiao1,2,0,0,200,1,100,0,,,3_10006_1,5,0,0,0,0,0,0
 10006,name_10006_zhuangbeijinjiecailiao2,0,icon_buffDefense,1,0,0,1,0,0,0,tips_10006_zhuangbeijinjiecailiao2,2,0,0,200,1,100,0,,,,0,0,0,0,0,0,0
 10007,name_10007_baoshikaikongcailiao,0,icon_psvMantuoluo,1,0,0,1,0,0,0,tips_10007_baoshikaikongcailiao,2,0,0,200,1,100,0,,,,0,0,0,0,0,0,0
 20001,name_20001_suipian1,0,,2,0,0,1,0,0,0,tips_20001_suipian1,0,100,2,200,1,100,0,,,4_70001_1_5_2,50,0,0,0,0,0,0

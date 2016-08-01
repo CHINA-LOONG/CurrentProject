@@ -28,8 +28,6 @@ GameObject:
   - 222: {fileID: 22229652}
   - 114: {fileID: 11404248}
   - 33: {fileID: 3390118}
-  - 23: {fileID: 2368442}
-  - 64: {fileID: 6499902}
   - 95: {fileID: 9517484}
   - 225: {fileID: 22533376}
   m_Layer: 5
@@ -186,30 +184,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!23 &2368442
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117944}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!23 &2392060
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -292,18 +266,6 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117944}
-  m_Mesh: {fileID: 4300000, guid: 1c3c6ea444f95ae44bb645c794812add, type: 3}
---- !u!64 &6499902
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117944}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 1c3c6ea444f95ae44bb645c794812add, type: 3}
 --- !u!95 &9517484
 Animator:

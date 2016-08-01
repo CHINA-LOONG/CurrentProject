@@ -68,8 +68,7 @@ public class OpenBaoxiangDlg : UIBase {
 		itemData = baoxiangData;
 		UseKeyValueAttr = maxKeyValue;
 
-		chgValue.maxValue = maxKeyValue;
-		chgValue.curValue = maxKeyValue;
+		chgValue.ResetValue (maxKeyValue, maxKeyValue);
 		ItemStaticData itemStaticData = StaticDataMgr.Instance.GetItemData(baoxiangData.itemId);
 		if (null != itemStaticData)
 		{

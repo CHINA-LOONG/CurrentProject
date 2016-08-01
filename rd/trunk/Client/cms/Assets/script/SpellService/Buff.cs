@@ -570,19 +570,19 @@ public class Buff
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void DamageResponse(float curTime, Effect triggerEffect)
+    public void DamageResponse(float curTime, Effect triggerEffect, string wpName)
     {
         if (damageResponse.Equals(default(KeyValuePair<string, string>)) == false)
         {
-            RunBuffResponseInternal(ref damageResponse, curTime, triggerEffect);
+            RunBuffResponseInternal(ref damageResponse, curTime, triggerEffect, wpName);
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void DeadResponse(float curTime, Effect triggerEffect)
+    public void DeadResponse(float curTime, Effect triggerEffect, string wpName)
     {
         if (deadResponse.Equals(default(KeyValuePair<string, string>)) == false)
         {
-            RunBuffResponseInternal(ref deadResponse, curTime, triggerEffect);
+            RunBuffResponseInternal(ref deadResponse, curTime, triggerEffect, wpName);
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -676,7 +676,7 @@ public class Buff
         }
     }
     //---------------------------------------------------------------------------------------------
-    void RunBuffResponseInternal(ref KeyValuePair<string, string> response, float curTime, Effect triggerEffect)
+    void RunBuffResponseInternal(ref KeyValuePair<string, string> response, float curTime, Effect triggerEffect, string wpName)
     {
         if (string.IsNullOrEmpty(response.Value)|| isFinish == true || responseCount <= 0)
             return;
@@ -709,7 +709,7 @@ public class Buff
                         curEffect.targetID = triggerEffect.targetID;
                     }
                     curEffect.noDamageResponse = true;
-                    curEffect.Apply(curTime, null);
+                    curEffect.Apply(curTime, wpName);
                 }
             }
         }

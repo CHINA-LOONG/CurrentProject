@@ -107,63 +107,63 @@ public class UIEquipDetails : UIBase
         if (itemData.subType > -1 && itemData.subType < 4)//装备类型超出
             equipType.text = StaticDataMgr.Instance.GetTextByID(equipTypeId[itemData.subType]);
       
-        if (equipDate.health > 0)
+        if (equipDate.health > 0.0f)
         {
             basicsAttribute[w].SetActive(true);
             basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
-            basicsAttributeNum[w].text = equipDate.health.ToString();
+            basicsAttributeNum[w].text = ((int)equipDate.health).ToString();
             if (equipDate.level > 0)
             {
                 basicsAttributePlusNum[w].enabled = true;
-                basicsAttributePlusNum[w].text = "+" + equipDate.healthStrengthen.ToString();
+                basicsAttributePlusNum[w].text = "+" + ((int)equipDate.healthStrengthen).ToString();
             }
             w++;
         }
-        if (equipDate.strength > 0)
+        if (equipDate.strength > 0.0f)
         {
             basicsAttribute[w].SetActive(true);
             basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_strenth");
-            basicsAttributeNum[w].text = equipDate.strength.ToString();
+            basicsAttributeNum[w].text = ((int)equipDate.strength).ToString();
             if (equipDate.level > 0)
             {
                 basicsAttributePlusNum[w].enabled = true;
-                basicsAttributePlusNum[w].text = "+" + equipDate.strengthStrengthen.ToString();
+                basicsAttributePlusNum[w].text = "+" + ((int)equipDate.strengthStrengthen).ToString();
             }
             ++w;
         }
-        if (equipDate.intelligence > 0)
+        if (equipDate.intelligence > 0.0f)
         {
             basicsAttribute[w].SetActive(true);
             basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
-            basicsAttributeNum[w].text = equipDate.intelligence.ToString();
+            basicsAttributeNum[w].text = ((int)equipDate.intelligence).ToString();
             if (equipDate.level > 0)
             {
                 basicsAttributePlusNum[w].enabled = true;
-                basicsAttributePlusNum[w].text = "+" + equipDate.intelligenceStrengthen.ToString();
+                basicsAttributePlusNum[w].text = "+" + ((int)equipDate.intelligenceStrengthen).ToString();
             }
             w++;
         }
-        if (equipDate.defense > 0)
+        if (equipDate.defense > 0.0f)
         {
             basicsAttribute[w].SetActive(true);
             basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
-            basicsAttributeNum[w].text = equipDate.defense.ToString();
+            basicsAttributeNum[w].text = ((int)equipDate.defense).ToString();
             if (equipDate.level > 0)
             {
                 basicsAttributePlusNum[w].enabled = true;
-                basicsAttributePlusNum[w].text = "+" + equipDate.defenseStrengthen.ToString();
+                basicsAttributePlusNum[w].text = "+" + ((int)equipDate.defenseStrengthen).ToString();
             }
             w++;
         }
-        if (equipDate.speed > 0)
+        if (equipDate.speed > 0.0f)
         {
             basicsAttribute[w].SetActive(true);
             basicsAttribute[w].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
-            basicsAttributeNum[w].text = equipDate.speed.ToString();
+            basicsAttributeNum[w].text = ((int)equipDate.speed).ToString();
             if (equipDate.level > 0)
             {
                 basicsAttributePlusNum[w].enabled = true;
-                basicsAttributePlusNum[w].text = "+" + equipDate.speedStrengthen.ToString();
+                basicsAttributePlusNum[w].text = "+" + ((int)equipDate.speedStrengthen).ToString();
             }
             w++;
         }
@@ -266,35 +266,35 @@ public class UIEquipDetails : UIBase
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);//属性   +99999
-                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_health") + "   +" + gemAttr.health;
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_health") + "   +" + (int)gemAttr.health;
                 gemNum++;
             }
             if (gemAttr.strength != 0)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
-                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_strenth") + "   +" + gemAttr.strength;
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_strenth") + "   +" + (int)gemAttr.strength;
                 gemNum++;
             }
             if (gemAttr.intelligence != 0)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
-                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence") + "   +" + gemAttr.intelligence;
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence") + "   +" + (int)gemAttr.intelligence;
                 gemNum++;
             }
             if (gemAttr.defense != 0)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
-                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_defence") + "   +" + gemAttr.defense;
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_defence") + "   +" + (int)gemAttr.defense;
                 gemNum++;
             }
             if (gemAttr.speed != 0)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
-                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_speed") + "   +" + gemAttr.speed;
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_speed") + "   +" + (int)gemAttr.speed;
                 gemNum++;
             }
         }

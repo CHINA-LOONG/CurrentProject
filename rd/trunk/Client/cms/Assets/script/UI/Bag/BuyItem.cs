@@ -104,19 +104,19 @@ public class BuyItem : UIBase
 		itemData.itemId = itemId;
 		itemData.count = 1;
 
-		itemIcon.RefreshWithItemInfo (itemData, false);
+		itemIcon.RefreshWithItemInfo (itemData);
 
 		price = stData.buyPrice;
 
 		coinButton.gameObject.SetActive (param.isShowCoinButton);
 
-		itemNameText.text = stData.NameAttr;
+		//itemNameText.text = stData.NameAttr;
+		UIUtil.SetStageColor (itemNameText, stData);
 
 		maxBuyCount = param.maxCount;
 		CurCountAttr = param.defaultbuyCount;
-		
-		chgValue.maxValue = maxBuyCount;
-		chgValue.curValue = curCount;
+
+		chgValue.ResetValue (curCount, maxBuyCount);
 	}
 
 	void OnBuyCountValueChanged(int value)

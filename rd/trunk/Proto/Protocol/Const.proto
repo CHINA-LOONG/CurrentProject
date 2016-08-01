@@ -191,6 +191,8 @@ enum UseToolSubType
 	USETOOLDOUBLEEXP = 2;
 	// 三倍药水
 	USETOOLTRIPLEEXP = 3;
+	// 疲劳值
+	USETOOLFATIGUE = 4;
 }
 
 // 装备部位定义

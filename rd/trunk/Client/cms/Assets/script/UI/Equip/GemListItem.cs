@@ -22,7 +22,7 @@ public class GemListItem : MonoBehaviour
 
     public IXiangQianCallBack XiangqianDelegate;
 
-    public UIGemList.GemInfo curData;
+    public ItemDataInfo curData;
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class GemListItem : MonoBehaviour
         ScrollViewEventListener.Get(btnXiangqian.gameObject).onClick = OnClickXiangqian;
     }
 
-    public void OnReload(UIGemList.GemInfo data)
+    public void OnReload(ItemDataInfo data)
     {
         this.curData = data;
         if (itemIcon==null)
@@ -42,8 +42,8 @@ public class GemListItem : MonoBehaviour
         {
             itemIcon.RefreshWithItemInfo(curData.itemData);
         }
-        UIUtil.SetStageColor(textName, curData.itemInfo);
-        EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(curData.itemInfo.gemId);
+        UIUtil.SetStageColor(textName, curData.staticData);
+        EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(curData.staticData.gemId);
         UIUtil.SetDisPlayAttr(attr, text_Attr1, textAttr1, text_Attr2, textAttr2);
     }
 

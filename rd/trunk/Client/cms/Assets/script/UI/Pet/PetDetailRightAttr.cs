@@ -50,11 +50,11 @@ public class PetDetailRightAttr : PetDetailRightBase
     {
         GameUnit unit = obj.unit;
 
-        textSTA.text = unit.health.ToString();
-        textSTR.text = unit.strength.ToString();
-        textINT.text = unit.intelligence.ToString();
-        textDEF.text = unit.defense.ToString();
-        textSPD.text = unit.speed.ToString();
+        textSTA.text = ((int)unit.health).ToString();
+        textSTR.text = ((int)unit.strength).ToString();
+        textINT.text = ((int)unit.intelligence).ToString();
+        textDEF.text = ((int)unit.defense).ToString();
+        textSPD.text = ((int)unit.speed).ToString();
         textEDR.text = unit.endurance.ToString();
         textREC.text = unit.recovery.ToString();
         textHP.text = unit.maxLife.ToString();//((int)(unit.health * SpellConst.healthToLife)).ToString();

@@ -63,3 +63,8 @@ public class GameItemData
     }
 }
 
+public class ItemDataInfo
+{
+    public ItemData itemData;
+    public ItemStaticData staticData;
+}

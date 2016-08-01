@@ -27,11 +27,13 @@ public class BagDataMgr
 			ItemStaticData stData = StaticDataMgr.Instance.GetItemData (subItem.itemId);
 			if(bagType == GetItemBagType(stData))
 			{
+				/*
 				if(bagState == BagState.Sell)
 				{
 					if(stData.sellPrice < 1)
 						continue;
 				}
+				*/
 				allItems.Add(subItem);
 			}
 		}
@@ -75,11 +77,11 @@ public class BagDataMgr
 			return 0;
 
 		// order 1..2
-		if (stDataA.classType > stDataB.classType)
+		if (stDataA.subType > stDataB.subType)
 		{
 			return 1;
 		}
-		else if (stDataA.classType < stDataB.classType)
+		else if (stDataA.subType < stDataB.subType)
 		{
 			return -1;
 		}
