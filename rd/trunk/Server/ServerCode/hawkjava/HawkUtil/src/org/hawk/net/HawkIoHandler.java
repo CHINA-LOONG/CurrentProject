@@ -163,6 +163,7 @@ public class HawkIoHandler extends IoHandlerAdapter {
 				HawkNetStatistics.getInstance().onRecvProto();
 			}
 		} catch (Exception e) {
+			HawkException.catchException(e);
 		}
 	}
 
@@ -197,6 +198,7 @@ public class HawkIoHandler extends IoHandlerAdapter {
 		try {
 			session.close(false);
 		} catch (Exception e) {
+			HawkException.catchException(e);
 		}
 	}
 

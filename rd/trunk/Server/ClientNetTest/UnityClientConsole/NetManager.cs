@@ -19,19 +19,21 @@ namespace UnityClientConsole
         private MemoryStream sendStream;
         private MemoryStream receiveStream;
         private MemoryStream buffer;
+        private App app;
 
-        private NetManager()
+        public NetManager(App app)
         {
             sendStream = new MemoryStream(BUFFERSIZE);
             receiveStream = new MemoryStream(BUFFERSIZE);
             buffer = new MemoryStream(BUFFERSIZE);
+            this.app = app;
         }
 
         public static NetManager GetInstance()
         {
             if(instance==null)
             {
-                instance=new NetManager();
+                instance=new NetManager(null);
             }
             return instance;
         }
@@ -101,7 +103,7 @@ namespace UnityClientConsole
                 Protocol protocol = Protocol.valueOf();
                 while (protocol.decode(receiveStream))
                 {
-                    App.GetInstance().OnProtocol(protocol);
+                    app.OnProtocol(protocol);
                 }
                 //继续接收数据
                 ReceiveData();       

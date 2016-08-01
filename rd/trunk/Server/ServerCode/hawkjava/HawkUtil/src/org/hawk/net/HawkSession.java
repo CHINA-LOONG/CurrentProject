@@ -4,6 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.mina.core.buffer.IoBuffer;
+import org.apache.mina.core.future.WriteFuture;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.hawk.app.HawkApp;
@@ -15,6 +16,9 @@ import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.security.HawkSecurity;
 
+import sun.util.logging.resources.logging;
+
+import com.danga.MemCached.Logger;
 import com.google.gson.JsonObject;
 import com.googlecode.protobuf.format.JsonFormat;
 
@@ -367,7 +371,15 @@ public class HawkSession {
 				}
 				
 				// 二进制模式协议发送
-				session.write(protocol);
+				WriteFuture future = session.write(protocol);
+				future.awaitUninterruptibly();
+				if (future.isWritten()) {
+					
+				}
+				else
+				{
+					HawkLog.logPrintln("写失败");
+				}
 				return true;
 			} catch (Exception e) {
 				HawkException.catchException(e);

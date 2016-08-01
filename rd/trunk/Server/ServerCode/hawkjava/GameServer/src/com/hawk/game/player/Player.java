@@ -1,6 +1,5 @@
 package com.hawk.game.player;
 
-import java.awt.TexturePaint;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -253,6 +252,12 @@ public class Player extends HawkAppObj {
 					PlayerModule playerModule = (PlayerModule) entry.getValue();
 					playerModule.onPlayerLogout();
 				}
+			}
+			return true;
+		} else if (msg.getMsg() == GsConst.MsgType.PLAYER_RECONNECT) {
+			for (Entry<Integer, HawkObjModule> entry : objModules.entrySet()) {
+				PlayerModule playerModule = (PlayerModule) entry.getValue();
+				playerModule.onPlayerReconnect(msg);
 			}
 			return true;
 		}

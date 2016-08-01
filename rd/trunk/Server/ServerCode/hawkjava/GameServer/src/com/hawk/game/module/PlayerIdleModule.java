@@ -53,6 +53,12 @@ public class PlayerIdleModule extends PlayerModule {
 		return true;
 	}
 
+	@Override
+	protected boolean onPlayerReconnect(HawkMsg msg) {
+		// 最后通知组装完成
+		sendProtocol(HawkProtocol.valueOf(HS.code.ASSEMBLE_FINISH_S, HSAssembleFinish.newBuilder().setPlayerID(player.getPlayerData().getId())));
+		return true;
+	}
 	/**
 	 * 组装完成
 	 */

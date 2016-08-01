@@ -79,7 +79,7 @@ public class EquipField : MonoBehaviour
             else
             {
                 equipIcon.gameObject.SetActive(true);
-                equipIcon.RefreshWithEquipInfo(data);
+                equipIcon.RefreshWithEquipInfo(data,false);
             }
             if (equipNull!=null)
             {

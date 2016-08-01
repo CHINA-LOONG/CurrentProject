@@ -87,7 +87,7 @@ message HSItemBuyRet
 message HSItemCompose
 {
 	required string itemId = 1;
-	required int32 count = 2;
+	required bool  composeAll = 2;
 }
 
 // 合成道具返回

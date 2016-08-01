@@ -128,7 +128,7 @@ public class InstanceInfo : MonoBehaviour
 		}
 
 		unitIcon.SetMonsterStaticId (monsterId);
-		unitIcon.SetLevel (instanceData.staticData.level);
+		unitIcon.SetLevel (10);
 		unitIcon.SetStage (1);
 		if (unitData.assetID.Contains("boss_"))
 		{
@@ -203,7 +203,7 @@ public class InstanceInfo : MonoBehaviour
         {
             uiBuild.uiAdjustBattleTeam = adjustUi;
         }
-		adjustUi.SetData (instanceData.instanceId, instanceData.staticData.enemyList,instanceData.staticData.level);
+		adjustUi.SetData (instanceData.instanceId, instanceData.staticData.enemyList,10);
 	}
 
 }

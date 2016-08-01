@@ -1,0 +1,14 @@
+﻿#TEXT,TEXT,NUM,NUM,NUM,NUM,NUM,NUM,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT
+id,name,chapter,type,difficulty,fatigue,count,level,desc,enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,reward1,reward2,reward3,reward4,reward5,reward6
+#副本Id,副本名称,章节,类型,难度,疲劳值,每日可完成次数,进入等级,副本描述,敌人1,敌人2,敌人3,敌人4,敌人5,敌人6,奖励1,奖励2,奖励3,奖励4,奖励5,奖励6
+demo,杀死雷神,1,1,0,6,3,1,xxxx,UnitDemoErshu,UnitDemoQingniao,UnitDemoQingniao,UnitDemoQingniao,UnitDemoQingniao,UnitDemoQingniao,10001,10002,20001,,,
+yueguangsenlin11,Moon Forest - 1,1,1,0,0,999,15,,xgHuapo,xgAmute,bossMinghe13Zouyincao,,,,,,,,,
+yueguangsenlin12,Moon Forest - 2,1,1,0,0,999,15,,xgHuapo,xgLangren,bossYueguangsenlin12Mantuoluo,,,,,,,,,
+yueguangsenlin14,Moon Forest - 4,1,1,0,0,999,15,,xgXiyiren,xgPanshen,bossYueguangsenlin14Luoxinfu,,,,,,,,,
+yueguangsenlin17,Moon Forest - 7,1,1,0,0,999,15,,xgMomo,xgKairuisi,bossYueguangsenlin17Xiyiren,,,,,,,,,
+yueguangsenlin18,Moon Forest - 8,1,1,0,0,999,15,,xgLonggongtongzi,xgLuoxinfu,bossYueguangsenlin18Meidusha,,,,,,,,,
+minghe12,Nether River - 2,1,1,0,0,999,40,,xgLangren,xgHetong,bossMinghe12Longgongtongzi,,,,,,,,,
+minghe13,Nether River - 3,1,1,0,0,999,40,,xgHapi,xgKairuisi,bossMinghe13Zouyincao,,,,,,,,,
+minghe14,Nether River - 4,1,1,0,0,999,40,,xgLangren,xgAnpusha,bossMinghe14Amute,,,,,,,,,
+minghe17,Nether River - 7,1,1,0,0,999,40,,xgWagui,xgMantuoluo,bossMinghe17Anpusha,,,,,,,,,
+minghe18,Nether River - 8,1,1,0,0,999,40,,xgAmute,xgPanshen,bossMinghe18Karong,,,,,,,,,

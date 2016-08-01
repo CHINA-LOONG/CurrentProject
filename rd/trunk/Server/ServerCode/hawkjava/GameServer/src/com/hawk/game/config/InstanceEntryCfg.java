@@ -23,7 +23,6 @@ public class InstanceEntryCfg extends HawkConfigBase {
 	protected final int difficulty;
 	protected final int fatigue;
 	protected final int count;
-	protected final int level;
 	protected final String enemy1;
 	protected final String enemy2;
 	protected final String enemy3;
@@ -36,11 +35,14 @@ public class InstanceEntryCfg extends HawkConfigBase {
 	protected final String reward4;
 	protected final String reward5;
 	protected final String reward6;
-	
+
 	// client only
 	protected final String desc= null;
+	// 章节内顺序目前按照配置顺序读取，此index备用
+	protected final int index = 0;
 
 	// assemble
+	protected InstanceChapterCfg chapterCfg;
 	protected List<MonsterCfg> enemyList;
 	protected List<ItemCfg> rewardItemList;
 
@@ -52,23 +54,28 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		difficulty = 0;
 		fatigue = 0;
 		count = 0;
-		level = 0;
 		enemy1= enemy2 = enemy3= enemy4 = enemy5= enemy6 = "";
 		reward1 = reward2 = reward3 = reward4 = reward5 = reward6 = "";
 	}
-	
+
 	@Override
 	protected boolean assemble() {
 		// 计算InstanceChapter
 		InstanceUtil.addInstance(this);
-		
+
 		enemyList = new ArrayList<MonsterCfg>();
 		rewardItemList = new ArrayList<ItemCfg>();
 		return true;
 	}
-	
+
 	@Override
 	protected boolean checkValid() {
+		chapterCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceChapterCfg.class, chapter);
+		if (null == chapterCfg) {
+			HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", chapter));
+			return false;
+		}
+
 		// 检测敌人是否存在，并建立引用
 		if (enemy1 != "") {
 			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy1);
@@ -118,7 +125,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 			}
 			enemyList.add(enemy);
 		}
-		
+
 		// 检测奖励是否存在，并建立引用
 		if (reward1 != null && reward1.equals("") == false) {
 			ItemCfg reward = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, reward1);
@@ -171,45 +178,45 @@ public class InstanceEntryCfg extends HawkConfigBase {
 
 		return true;
 	}
-	
+
 	public String getInstanceId() {
 		return id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public int getChapter() {
 		return chapter;
 	}
 	
+	public InstanceChapterCfg getChapterCfg() {
+		return chapterCfg;
+	}
+
 	public int getType() {
 		return type;
 	}
-	
+
 	public int getDifficult() {
 		return difficulty;
 	}
-	
+
 	public int getFatigue() {
 		return fatigue;
 	}
-	
+
 	public int getCount() {
 		return count;
 	}
-	
-	public int getLevel() {
-		return level;
-	}
-	
+
 	public List<MonsterCfg> getEnemyList() {
 		return Collections.unmodifiableList(enemyList);
 	}
-	
+
 	public List<ItemCfg> getRewardList() {
 		return Collections.unmodifiableList(rewardItemList);
 	}
-	
+
 }

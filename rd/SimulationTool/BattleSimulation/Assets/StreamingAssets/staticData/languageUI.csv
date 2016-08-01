@@ -1,0 +1,296 @@
+﻿#TEXT,TEXT,TEXT
+id,chinese,english
+#文字Id,文字内容,文字内容
+ui_english,English,English
+ui_chinese,简体中文,Chinese
+ui_fanhui,返回,Back
+ui_queding,确定,OK
+ui_quxiao,取消,Cancel
+ui_battle_again,再次挑战,Retry
+ui_battle_next,下一关,Next Stage
+spell_wuli_name,物理技能,PHYS ATK
+spell_magic_name,法术技能,MAGIC ATK
+spell_beidong_name,被动技能,Passive Ability
+spell_buff_name,buff技能,Buff Ability
+spell_dazhao_name,大招技能,Ultimate
+ui_tishi,提示,Notice
+instance_wofangzhenrong,我方阵容,My Monsters
+instance_difangzhenrong,敌方阵容,Enemies
+instance_jiangliList,可获得奖励,Drop Info
+instance_tilixiaohao,体力消耗:{0},Use Power:{0}
+instance_tiaozhancishu,可挑战次数:{0}/{1},Times:{0}/{1}
+instance_saodang,扫荡,Raid
+instance_saodangquanNumber,扫荡券数量:{0},Tickets:{0}
+instance_saodang10,扫荡10次,Raid 10
+instance_yingzhan,应战,Fight
+instance_shangzhen,上阵,First Team
+instance_houbei,后备,Backups
+instance_yongyou,拥有,Monsters Available
+instance_haoyou,好友,Friend
+instance_kaishizhandou,开始战斗,Start Battle
+instance_quxiaozhandou,取消战斗,Cancel
+instance_zhenrongtiaozheng,阵容调整,Line-up
+tip_zhenrongError,请按正确顺序排列出战宠物,Please arrange the monsters in right order
+spell_yongyoujineng_normal,一般技能,Normal Skills
+spell_yongyoujineng_special,特殊技能,Special Skills
+dazhao_jieduan,请,Please
+dazhao_click,点击,tap on
+dazhao_shifang,怪物,a monster
+dazhao_huazhenshibai,画阵失败，请重试,"Failed,please try again"
+shop_putong,普通商店,Normal Store
+shop_gonghui,公会商店,Guild Store
+shop_nextrefresh,下次自动刷新时间：,Next Refresh: 
+shop_today,今日,Today
+shop_tommorow,明日,Tomorrow
+shop_refresh,刷新,Refresh
+shop_sale,打折,Sale
+shop_soldOut,已售,Sold Out!
+shop_oldPrice,原价,Original Price
+shop_refreshtips,今日还可刷新 {0} 次，是否确认刷新？,You can refresh <color=#ffCC00ff>{0}</color> more times today. Continue?
+shop_buy,购买,Purchase
+shop_zuanshinoenough,钻石不足，是否前往充值？,Not enough Diamonds. Would you like to get more?
+shop_timeout,商店内容已过期,Store items have already expired.
+shop_store,商城,Store
+shop_yueka,月卡,Monthly Card
+shop_shouchongsong,首充赠送{0}钻石,Receive an extra{0}Diamonds with purchase.
+shop_tequanleft,特权剩余时间：{0}天,Benefits Time Remaining: {0} Day(s)
+shop_buyyueka,月卡购买,Get Monthly Card
+shop_buyfinish,已购买,Purchased
+shop_30yueka,确定购买30天月卡？,Confirm purchase of 30 day Monthly Card?
+shop_chongzhi,充值,Top-Up
+shop_duihuan,用少量钻石兑换大量金币,Exchange a small amount of Diamonds for large amount of Coins.
+shop_duihuanTimes,今日可买：{0}/{1},Can purchase today: {0}/{1}
+shop_isbuy,立即购买,Purchase
+shop_now, ,now
+shop_noduihuantimes,今日可买次数已经用完。,You have purchased the maximum amount for today.
+shop_buysucctip,成功购买{0}{1},Successfully purchased {0}{1}
+shop_succbuy,获得金币*{0} ,You have received {0} Coins!
+succbuy_baoji,暴击！获得金币*{0},Congratulations! You have received {0} Coins!
+shop_noenoughcoin,货币不足，无法购买,"Insufficient currency, unable to purchase."
+shop_cannotbuy,无法继续购买,Unable to continue purchase.
+shop_nojinbi_noduihuan,金币不足，且今日钻石兑换金币次数已经用完。,"Insufficient Coins, and today's Diamond to Coin exchanges have all been used."
+shop_refresh_error,<color=#ff0000ff>已达当前等级今日可刷新最大次数，刷新失败</color>,"<color=#ff0000ff>You have reached your current level's refresh limit for today, failed to refresh.</color>"
+xf,,
+equip_Helmet,护腰,Helmet
+equip_Weapon,武器,Weapon
+equip_Armor,护甲,Armor
+equip_Bracer,护腕,Bracer
+equip_Ring,戒指,Ring
+equip_Accessory,饰品,Accessory
+equip_gem_NotSet,未镶嵌,Not engraved
+equip_gem_NotKong,未开孔 : 开孔后将获得宝石槽,Open Sockets: Reveals a Gem slot after opening.
+equip_Change,换装,Change
+,,
+item_type,类型:,Type:
+item_demandLevel,需求等级:,Req. LVL:
+bag_tag_box,宝箱,Treasure
+bag_tag_use,消耗品,Consumable
+bag_tag_gem,宝石,Gem
+bag_tag_item,材料,Material
+item_type_chip,碎片,Fragment
+,,
+,,
+,,
+im_chat_global,世界,Global
+im_chat_guild,公会,Guild
+im_chat_send,发送,Send
+im_chat_system,系统,System
+im_chat_enter,请输入信息,Please enter message
+im_chatSettings,频道设置,Chat Settings
+im_blockGlobal,屏蔽世界频道所有发言,Block all Global Chat messages
+im_blockGuild,屏蔽公会频道所有发言,Block all Guild Chat messages
+im_noGuild,未加入公会,No guild
+im_invite,邀请入会,Invite to guild
+im_block,屏蔽,Block
+im_block_chat,确定屏蔽聊天么？,Confirm block chat?
+im_block_cancel,（可以在系统设置取消屏蔽）,(Blocked chats can be managed in system settings)
+im_record_001,您发送过于频繁，请稍后再试,You have sent messages too frequently. Please try again later.
+im_record_002,您还没有公会,You have not joined a Guild.
+im_record_003,屏蔽聊天成功,Chat is now blocked.
+im_record_004,屏蔽名单已满，请先去系统设置中清理再操作,"Block list is full. Please clear some blocked chats in System Settings, and try again."
+,,
+ss,,
+bag_title,背包,Bag
+bag_shengyu,剩余,Remaining
+ui_chushou,出售,Sell
+bag_usenum,使用个数,Use amount
+bag_buynum,购买个数,Purchase amount
+bag_sum,总计,Total
+ui_sellforsure,是否出售这些物品,Confirm sell these items?
+ui_sellforsuretips,*若金币达到上限，出售将无法继续获得金币,"*If coin limit is reached when selling items, then no more coins will be received."
+ui_sellsum,总计出售,Sell total
+ui_chexiao,撤销,Undo
+bag_record_001,您已成功使用疲劳药,You have successfully used a Stamina Potion.
+bag_record_002,疲劳值已满无法使用,"Stamina gauge is already full, unable to use."
+bag_record_003,您已有多倍经验状态,You already have EXP Boost status.
+bag_record_004,您已成功使用多倍经验药,You have successfully used an EXP Boost Potion.
+bag_record_005,钻石不足，请充值,"Insufficient Diamonds, please purchase more."
+bag_record_006,无可出售道具,No sellable items at this time.
+bag_record_007,请选择出售道具,Please select items to sell.
+,,
+zz,,
+spell_hit_miss,未命中,Miss
+spell_hit_immune,免疫,Immune
+spell_hit_interrupt,被打断,Interrupt
+spell_shield,吸收,Absorbed
+spell_first_spell,先置攻击,First Strike
+spell_stun,眩晕,Stun
+gain_pet,恭喜！你获得了,Congratulations! You received 
+battle_revive,花费 <quad material=1 size=20 x=0 y=0 width=1 height=1 />*{0}继续战斗吗？,Spend <quad material=1 size=20 x=0 y=0 width=1 height=1 />*{0} to continue battle?
+xl_quest,薛龙_任务界面,Loong
+quest_title,任务,Mission
+quest_juqingrenwu,剧情任务,Storyline
+quest_richangrenwu,日常任务,Daily
+quest_liezhuanrenwu,列传任务,Chronicle
+quest_wanchengrenwu,完成任务,Mission Completed
+quest_shijianweidao,时间未到,Available Later
+quest_lijiqianwang,立即前往,Go Now
+quest_lingqujiangli,领取奖励,Collect Reward
+quest_reward_title,任务奖励,Mission Reward
+,,
+xl_mail,薛龙_邮箱界面,
+mail_title,邮箱,Inbox
+mail_tab1,系统邮件,System
+mail_yijianlingqu,一键领取,Collect All
+mail_fujian,附件,Attachments
+mail_laizi,来自:,From:
+mail_shouqu,收取,Collect
+mail_record_001,没有可操作的邮件哦！,Currently no mail to be collected.
+mail_record_002,收取成功！,Collected.
+mail_record_003,金币要装不下啦，收取失败！,Coin limit reached. Failed to collect.
+mail_record_004,钻石要装不下啦，收取失败！,Diamond limit reached. Failed to collect.
+mail_youxiangjiangman,<color=#ff0000ff>邮箱即将爆仓，请及时收取邮件</color>,"<color=#ff0000ff>Your inbox is almost full,be sure to promptly collect mails!</color>"
+mail_youxiangyiman,<color=#ff0000ff>邮箱已经爆仓，快快收取邮件</color>,"<color=#ff0000ff>Your inbox is full,go collect some mails!</color>"
+mail_CollectedAll,全部收取成功！,Collected all!
+,,
+xl_equip_forge,薛龙_装备强化进阶,
+equip_forge_xiaohao,消耗材料,Materials Consumed
+equip_forge_dazao,打造,Forge
+equip_forge_XXdazao,强化打造,Advance
+equip_forge_levelTips,打造是有一定成功率的，打造失败将损失打造材料,"Forging has a set success rate. If it fails, the materials will be lost."
+equip_forge_stateTips,强化打造是不会失败的，放心打造吧,"Advancing equipment cannot fail, don't worry!"
+equip_level_limits,打造已达当前人物等级最强效果，快去升级吧！,Forge has already reached the maximum effects for the level of the current character. Go level up!!!
+equip_fully_forged,恭喜，装备打造已满,Congratulations! Equipment has been fully forged.
+im_forge_success,打造成功,Forge success!
+im_forge_failed,打造失败,Forge failed.
+im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
+,,
+equip_inlay_xiangqian,镶嵌,Embed
+equip_inlay_openmax,宝石槽已全开,Gem slots are full.
+equip_inlay_btnopen,开孔,Open Sockets
+equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
+equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
+equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
+equip_inlay_xiexia,卸下,Remove
+equip_select_gem,请从右侧宝石列表选择镶嵌的宝石,Please select a Gem from the list on the right.
+equip_confirm_open,确定开孔么？,Confirm Open Sockets?
+equip_random_open,开孔将随机开启不同数量的宝石槽,Opening Sockets will randomly reveal different amounts of Gem slots.
+equip_return_gem,若已镶嵌宝石，宝石将全部返还到背包,Any inserted Gems will all be returned to your Bag.
+,,
+xl_equip_list,薛龙_装备列表界面,
+equip_List_zhuangbeileixing,装备类型,Type
+equip_List_xianzhidengji,等级限制,Level
+equip_List_zhuangbei,装备,Equip
+,,
+xl_gem_list,薛龙_宝石列表界面,
+equip_gem_NotMent,该品质装备不可镶嵌宝石,This equipment quality is unable to insert Gems.
+equip_gem_casting,宝石加成,Gem Casting
+,,
+xl_pet_exp,,
+exp_use,使用,Use
+,,
+xl_pet_attr,,
+detail_title,宠物属性,Monster Attributes
+detail_endurance,耐力,EDR
+detail_blood,战后回血,REC
+detail_life,生命值,HP
+detail_physatk,物理攻击力,PHYS ATK
+detail_magicatk,法术攻击力,MAGIC ATK
+detail_injuryratio,受伤比,INJ %
+,,
+xl_compose,,
+compose_title,合成,Combine
+compose_chmaterial,选择合成原料,Select combine materials
+compose_preview,合成预览,Combine preview
+compose_gemrandom,随机X级宝石,Random level X Gem
+compose_unload,全卸,Remove All
+compose_tips1,*合成5个同级宝石可获得高一级的宝石,"*Combine 5 same level Gems, and receive 1 higher level Gem"
+compose_tips2,*若干个同种类材料可合成更高等级该种类材料,*Several same type materials can be combined for a higher level material
+compose_tips3,*X个同种类材料可合成更高等级该种类材料,*Combine X of the same material for a higher level material
+compose_btnone,合成一个,Combine One
+compose_btnten,合成十个,Combine Ten
+compose_success,合成成功,Combination successful!
+compose_tishi,没有可操作的目标,No items to act on
+,,
+xl_decompose,,
+decompose_title,分解,Disenchant
+decompose_equip,装备,Equipment
+decompose_monster,宠物,Monsters
+decompose_material,选择分解原料,Select disenchant materials
+decompose_preview,分解预览,Disenchant preview
+decompose_choise,请选择要分解的装备,Select equipment to disenchant
+decompose_tips1,*分解装备将获得装备打造材料,*Disenchanting equipment yields the materials used to create it
+decompose_tips2,*装备镶嵌的宝石将自动返还到背包,*Any embedded Gems will automatically be returned to your Bag
+decompose_tips3,*分解宠物将获得宠物进阶材料,*Disenchanting monsters yields evolution materials
+decompose_tips4,*宠物佩戴的装备将自动返还到背包,*Any equipment on the monster will be automatically returned to your Bag
+decompose_choice,筛选,Filter
+decompose_white,白色品质,White Grade
+decompose_green,绿色品质,Green Grade
+decompose_blue,蓝色品质,Blue Grade
+decompose_coin1,金币,coin
+decompose_sure,确定分解操作么？,Confirm disenchantment?
+decompose_coin2,*若金币达到上限，将无法继续获得金币,"*If the Coin limit is reached, exceeding Coins will not be collected."
+compose_record_001,分解成功,Disenchantment success!
+compose_record_002,获得道具A名称*道具A数量，道具B名称*道具B数量，…..,"Received (item A数量) x item A, (item B数量) x item B, …"
+compose_record_003,已选择所有XX品质目标（XX代表白色、绿色、蓝色）,Selected all XX grade items.
+compose_record_004,没有筛选到目标,No filter results.
+,,
+xl_common,公用部分,
+pet_detail_skill_level,等级:,LVL:
+equip_forge_zhanli,战力:,BP:
+common_attr_strenth,力量,STR
+common_attr_defence,防御,DEF
+common_attr_intelligence,智力,INT
+common_attr_speed,速度,SPD
+common_attr_health,体力,STA
+common_type_defence,防御型,Defense Type
+common_type_physical,物理型,PHYS Type
+common_type_magic,法术型,Magic Type
+common_type_support,支援型,Support Type
+,,
+zs_modify:xl,,
+pet_list_type,(圣兽),(shengshou)
+pet_list_option_all,全部,ALL
+pet_list_option_property1,火属性,Fire
+pet_list_option_property2,木属性,Grass
+pet_list_option_property3,水属性,Water
+pet_list_option_property4,光属性,Light
+pet_list_option_property5,暗属性,Dark
+,,
+pet_detail,,
+pet_detail_left_detail_attr,详细属性,Details
+pet_detail_left_skill,技能,Abilities
+pet_detail_left_advance,进化,Evolve
+im_monster_lock,宠物锁定成功,Monster is now locked.
+im_monster_unlock,宠物解锁成功,Monster is now unlocked.
+,,
+,,
+pet_detail_skill_current_level,本级:,Current:
+pet_detail_skill_next_level,下一级:,Next LVL:
+pet_detail_skill_max_level,当前技能已达到最高等级,Ability currently at its max LVL
+pet_detail_skill_current_point,目前的技能点数:,Current Ability Points:
+pet_detail_skill_max_point,(点数已满),(Full)
+pet_detail_stage_attr,基础属性,Base attribute
+pet_detail_stage_demand_level,需求等级,Req. LVL
+pet_detail_stage_demand_item,需求材料,Req. Materials
+pet_detail_stage,进阶,Advance
+pet_detail_stage_full,进阶完成,Advancement Complete
+pet_detail_stage_monster,需要的怪物,Req. Monsters:
+pet_detail_skill_no_upgrade,该技能不能升级,this skill cannot upgrade
+pet_list_title,宠物,Monsters
+pet_tip_full1,"拥有过多宠物,快去消耗一些吧","You have too many monsters, go and consume some!"
+pet_tip_full2,有可能无法继续获得宠物,You may possibly not receive any more monsters
+pet_skill_point_not_enough,技能点不足,skill point not enough
+,,
+coin_max,金币将达到上限，无法获得超出部分,"Coin limit reached, unable to collect exceeding Coins."
+gold_max,钻石将达到上限，无法获得超出部分,"Diamond limit reached, unable to collect exceeding Diamonds."

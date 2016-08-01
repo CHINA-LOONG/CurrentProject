@@ -22,6 +22,8 @@ public class GsConst {
 	public static final int MAX_MAIL_COUNT = 300;
 	// 最大品级数
 	public static final int EQUIP_MAX_STAGE = 6;
+	// 最大等级数
+	public static final int GEM_MAX_STAGE = 6;
 	// 最大级别数
 	public static final int EQUIP_MAX_LEVEL = 9;
 	// 宝石最大类别数
@@ -61,7 +63,7 @@ public class GsConst {
 	// 合成上一级需要宝石数量
 	public static final int GEM_COMPOSE_COUNT = 5;	
 	// 最大合成次数
-	public static final int GEM_COMPOSE_MAX_COUNT = 10;	
+	public static final int COMPOSE_MAX_COUNT = 10;	
 	
 	/**
 	 * 对象类型
@@ -101,6 +103,8 @@ public class GsConst {
 		public static final int PLAYER_LOGIN = 3;
 		// 玩家初始化完成
 		public static final int PLAYER_ASSEMBLE = 4;
+		// 玩家重新连接
+		public static final int PLAYER_RECONNECT = 5;
 
 		// 奖励宠物
 		public static final int PRESENT_MONSTER = 1001;

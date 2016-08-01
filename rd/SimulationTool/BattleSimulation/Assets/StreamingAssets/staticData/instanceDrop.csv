@@ -1,0 +1,12 @@
+﻿#TEXT,TEXT
+id,rewardId
+#副本Id_怪物Id,奖励列表Id
+minghe12_xgLangren,10001
+minghe12_xgHetong,10001
+minghe12_bossMinghe12Longgongtongzi,10001
+minghe13_xgHapi,10001
+minghe13_xgKairuisi,10001
+yueguangsenlin11_bossMinghe13Zouyincao,testminghezouyincao
+minghe17_bossMinghe17Anpusha,testMinghe17Anpusha
+yueguangsenlin12_bossYueguangsenlin12Mantuoluo,testmantuoluo
+minghe13_bossMinghe13Zouyincao,testzouyincao

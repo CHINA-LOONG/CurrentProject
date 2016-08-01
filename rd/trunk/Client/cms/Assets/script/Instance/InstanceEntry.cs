@@ -7,12 +7,13 @@ public class InstanceEntry
 	public	string	id;
 	public	string	name;
 	public	int	chapter;
+    public int index;
 	public	int	type;
-	public	string	icon;
+	//public	string	icon;
 	public	int	difficulty;
 	public	int	fatigue;
 	public	int	count;
-	public	int 	level;
+	//public	int 	level;
 	public	string	desc;
 	public	string	enemy1;
 	public	string	enemy2;

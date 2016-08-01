@@ -160,13 +160,14 @@ public class InstanceMapService : MonoBehaviour
 			return false;
 
 		int openLevel = 1;
-		foreach (InstanceEntry subEntry in listStaticInstance) 
+		/*foreach (InstanceEntry subEntry in listStaticInstance) 
 		{
 			if(openLevel < subEntry.level)
 			{
 				openLevel = subEntry.level;
 			}
 		}
+        */
 		if (GameDataMgr.Instance.PlayerDataAttr.level < openLevel)
 		{
 			return false;
@@ -223,10 +224,11 @@ public class InstanceMapService : MonoBehaviour
                 if (i < openChapterInstanceList.Count - 1)
                 {
                     InstanceEntry instanceData = StaticDataMgr.Instance.GetInstanceEntry(openChapterInstanceList[i + 1].instanceId);
-                    if (instanceData != null && instanceData.level <= GameDataMgr.Instance.PlayerDataAttr.level)
-                    {
-                        return openChapterInstanceList[i + 1];
-                    }
+
+                 //   if (instanceData != null && instanceData.level <= GameDataMgr.Instance.PlayerDataAttr.level)
+                 //   {
+                     //   return openChapterInstanceList[i + 1];
+                  //  }
                 }
             }
         }

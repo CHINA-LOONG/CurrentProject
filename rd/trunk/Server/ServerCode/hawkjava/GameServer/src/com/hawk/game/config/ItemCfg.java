@@ -323,7 +323,6 @@ public class ItemCfg extends HawkConfigBase {
 	protected boolean assemble() {
 		needItemList.clear();
 		targetItemList.clear();
-		gemList.clear();
 		
 		// 合成该物品需要的道具列表
 		if (this.componentItem != null && this.componentItem.length() > 0 && !"0".equals(this.componentItem)) {
@@ -420,10 +419,13 @@ public class ItemCfg extends HawkConfigBase {
 			}
 		}
 		else if (this.type == Const.toolType.GEMTOOL_VALUE) {
-			if (gemList.get(level) == null) {
-				Map<Integer, ItemCfg> levelList = new HashMap<Integer, ItemCfg>();
-				levelList.put(gemType, this);
-				gemList.put(level, levelList);
+			if (gemList.get(grade) == null) {
+				Map<Integer, ItemCfg> gradeList = new HashMap<Integer, ItemCfg>();
+				gradeList.put(gemType, this);
+				gemList.put(grade, gradeList);
+			}
+			else {
+				gemList.get(grade).put(gemType, this);
 			}
 		}
 		

@@ -32,6 +32,7 @@ import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const.RewardReason;
+import com.hawk.game.protocol.Consume.HSConsumeInfo;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.HSMonsterAdd;
@@ -425,8 +426,8 @@ public class PlayerMonsterModule extends PlayerModule {
 			return false;
 		}
 		
-		consume.consumeTakeAffect(player, Action.MONSTER_DECOMPOSE);
-		award.rewardTakeAffect(player, Action.MONSTER_DECOMPOSE);
+		consume.consumeTakeAffectAndPush(player, Action.MONSTER_DECOMPOSE, HS.code.MONSTER_DECOMPOSE_C_VALUE);
+		award.rewardTakeAffectAndPush(player, Action.MONSTER_DECOMPOSE, HS.code.MONSTER_DECOMPOSE_C_VALUE);
 		
 		HSMonsterDecomposeRet.Builder response = HSMonsterDecomposeRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_DECOMPOSE_S_VALUE, response));

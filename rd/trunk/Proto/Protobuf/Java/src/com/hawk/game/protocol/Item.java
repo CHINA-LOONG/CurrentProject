@@ -6632,15 +6632,15 @@ public final class Item {
     com.google.protobuf.ByteString
         getItemIdBytes();
 
-    // required int32 count = 2;
+    // required bool composeAll = 2;
     /**
-     * <code>required int32 count = 2;</code>
+     * <code>required bool composeAll = 2;</code>
      */
-    boolean hasCount();
+    boolean hasComposeAll();
     /**
-     * <code>required int32 count = 2;</code>
+     * <code>required bool composeAll = 2;</code>
      */
-    int getCount();
+    boolean getComposeAll();
   }
   /**
    * Protobuf type {@code HSItemCompose}
@@ -6704,7 +6704,7 @@ public final class Item {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              count_ = input.readInt32();
+              composeAll_ = input.readBool();
               break;
             }
           }
@@ -6790,25 +6790,25 @@ public final class Item {
       }
     }
 
-    // required int32 count = 2;
-    public static final int COUNT_FIELD_NUMBER = 2;
-    private int count_;
+    // required bool composeAll = 2;
+    public static final int COMPOSEALL_FIELD_NUMBER = 2;
+    private boolean composeAll_;
     /**
-     * <code>required int32 count = 2;</code>
+     * <code>required bool composeAll = 2;</code>
      */
-    public boolean hasCount() {
+    public boolean hasComposeAll() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 count = 2;</code>
+     * <code>required bool composeAll = 2;</code>
      */
-    public int getCount() {
-      return count_;
+    public boolean getComposeAll() {
+      return composeAll_;
     }
 
     private void initFields() {
       itemId_ = "";
-      count_ = 0;
+      composeAll_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -6819,7 +6819,7 @@ public final class Item {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasCount()) {
+      if (!hasComposeAll()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -6834,7 +6834,7 @@ public final class Item {
         output.writeBytes(1, getItemIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, count_);
+        output.writeBool(2, composeAll_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -6851,7 +6851,7 @@ public final class Item {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, count_);
+          .computeBoolSize(2, composeAll_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6975,7 +6975,7 @@ public final class Item {
         super.clear();
         itemId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        count_ = 0;
+        composeAll_ = false;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -7012,7 +7012,7 @@ public final class Item {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.count_ = count_;
+        result.composeAll_ = composeAll_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -7034,8 +7034,8 @@ public final class Item {
           itemId_ = other.itemId_;
           onChanged();
         }
-        if (other.hasCount()) {
-          setCount(other.getCount());
+        if (other.hasComposeAll()) {
+          setComposeAll(other.getComposeAll());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -7046,7 +7046,7 @@ public final class Item {
           
           return false;
         }
-        if (!hasCount()) {
+        if (!hasComposeAll()) {
           
           return false;
         }
@@ -7146,35 +7146,35 @@ public final class Item {
         return this;
       }
 
-      // required int32 count = 2;
-      private int count_ ;
+      // required bool composeAll = 2;
+      private boolean composeAll_ ;
       /**
-       * <code>required int32 count = 2;</code>
+       * <code>required bool composeAll = 2;</code>
        */
-      public boolean hasCount() {
+      public boolean hasComposeAll() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 count = 2;</code>
+       * <code>required bool composeAll = 2;</code>
        */
-      public int getCount() {
-        return count_;
+      public boolean getComposeAll() {
+        return composeAll_;
       }
       /**
-       * <code>required int32 count = 2;</code>
+       * <code>required bool composeAll = 2;</code>
        */
-      public Builder setCount(int value) {
+      public Builder setComposeAll(boolean value) {
         bitField0_ |= 0x00000002;
-        count_ = value;
+        composeAll_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 count = 2;</code>
+       * <code>required bool composeAll = 2;</code>
        */
-      public Builder clearCount() {
+      public Builder clearComposeAll() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        count_ = 0;
+        composeAll_ = false;
         onChanged();
         return this;
       }
@@ -8712,12 +8712,12 @@ public final class Item {
       "llBatch\022\030\n\005items\030\001 \003(\0132\t.ItemSell\"\024\n\022HSI" +
       "temSellBatchRet\".\n\tHSItemBuy\022\016\n\006itemId\030\001" +
       " \002(\t\022\021\n\titemCount\030\002 \002(\005\"1\n\014HSItemBuyRet\022" +
-      "\016\n\006itemId\030\001 \002(\t\022\021\n\titemCount\030\002 \002(\005\".\n\rHS" +
-      "ItemCompose\022\016\n\006itemId\030\001 \002(\t\022\r\n\005count\030\002 \002" +
-      "(\005\"\022\n\020HSItemComposeRet\"<\n\014HSGemCompose\022\030" +
-      "\n\004gems\030\001 \003(\0132\n.GemSelect\022\022\n\ncomposeAll\030\002" +
-      " \002(\010\"\021\n\017HSGemComposeRetB\030\n\026com.hawk.game" +
-      ".protocol"
+      "\016\n\006itemId\030\001 \002(\t\022\021\n\titemCount\030\002 \002(\005\"3\n\rHS" +
+      "ItemCompose\022\016\n\006itemId\030\001 \002(\t\022\022\n\ncomposeAl" +
+      "l\030\002 \002(\010\"\022\n\020HSItemComposeRet\"<\n\014HSGemComp" +
+      "ose\022\030\n\004gems\030\001 \003(\0132\n.GemSelect\022\022\n\ncompose" +
+      "All\030\002 \002(\010\"\021\n\017HSGemComposeRetB\030\n\026com.hawk" +
+      ".game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -8801,7 +8801,7 @@ public final class Item {
           internal_static_HSItemCompose_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemCompose_descriptor,
-              new java.lang.String[] { "ItemId", "Count", });
+              new java.lang.String[] { "ItemId", "ComposeAll", });
           internal_static_HSItemComposeRet_descriptor =
             getDescriptor().getMessageTypes().get(13);
           internal_static_HSItemComposeRet_fieldAccessorTable = new

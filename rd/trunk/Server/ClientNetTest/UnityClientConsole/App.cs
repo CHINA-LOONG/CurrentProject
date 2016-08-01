@@ -13,11 +13,14 @@ namespace UnityClientConsole
     class App
     {
         private static App instance;
-
+        private NetManager netmanaget;
         private int    playerID;
         private string puid;
+        static int count = 0;
+        static Object lockref = new Object();
 
-        private App()
+
+        public App()
         {
            
         }
@@ -32,7 +35,8 @@ namespace UnityClientConsole
 
         public bool Init(string address, int port, string puid)
         {
-            if (NetManager.GetInstance().Init(address, port) == false)
+            netmanaget = new NetManager(this);
+            if (netmanaget.Init(address, port) == false)
             {
                 return false;
             }
@@ -44,6 +48,7 @@ namespace UnityClientConsole
 
         public void Run()
         {
+
         }
 
         public void SendLoginProtocol()
@@ -51,9 +56,8 @@ namespace UnityClientConsole
             HSLogin login = new HSLogin();
             login.puid = puid;
 
-            NetManager.GetInstance().SendProtocol(code.LOGIN_C.GetHashCode(), login);
+            netmanaget.SendProtocol(code.LOGIN_C.GetHashCode(), login);
         }
-
 
         public void OnProtocol(Protocol protocol)
         {
@@ -79,19 +83,19 @@ namespace UnityClientConsole
 
                     HSPlayerCreate createRole = new HSPlayerCreate();
                     createRole.puid = puid;
-                    createRole.nickname = "exp_1";
+                    createRole.nickname = puid;
                     createRole.career = 1;
                     createRole.gender = 0;
                     createRole.eye = 1;
                     createRole.hair = 1;
                     createRole.hairColor = 1;
-                    NetManager.GetInstance().SendProtocol(code.PLAYER_CREATE_C.GetHashCode(), createRole);
+                    netmanaget.SendProtocol(code.PLAYER_CREATE_C.GetHashCode(), createRole);
                 }
                 else
                 {
                     Console.WriteLine("登录成功");
                     HSSyncInfo syncInfo = new HSSyncInfo();
-                    NetManager.GetInstance().SendProtocol(code.SYNCINFO_C.GetHashCode(), syncInfo);
+                    netmanaget.SendProtocol(code.SYNCINFO_C.GetHashCode(), syncInfo);
                 }
             }
             else if (protocol.checkType(code.PLAYER_CREATE_S.GetHashCode()))
@@ -100,7 +104,7 @@ namespace UnityClientConsole
 
                 playerID = protocol.GetProtocolBody<HSPlayerCreateRet>().palyerID;
                 HSSyncInfo syncInfo = new HSSyncInfo();
-                NetManager.GetInstance().SendProtocol(code.SYNCINFO_C.GetHashCode(), syncInfo);
+                netmanaget.SendProtocol(code.SYNCINFO_C.GetHashCode(), syncInfo);
             }
             else if (protocol.checkType(code.SYNCINFO_S.GetHashCode()))
             {
@@ -142,13 +146,16 @@ namespace UnityClientConsole
             }
             else if (protocol.checkType(code.ASSEMBLE_FINISH_S.GetHashCode()))
             {
-                Console.WriteLine("同步完成");
+                lock (lockref)
+                {
+                    Console.WriteLine("同步完成 : {0}", ++count);
+                }
 
-                HSSettingBlock settingBlock = new HSSettingBlock();
-                settingBlock.playerId = 731; //xiaozhen1
-                settingBlock.isBlock = true;
-                NetManager.GetInstance().SendProtocol(code.SETTING_BLOCK_C.GetHashCode(), settingBlock);
-                Console.WriteLine("屏蔽");
+               // HSSettingBlock settingBlock = new HSSettingBlock();
+               //settingBlock.playerId = 731; //xiaozhen1
+               // settingBlock.isBlock = true;
+               // netmanaget.SendProtocol(code.SETTING_BLOCK_C.GetHashCode(), settingBlock);
+               // Console.WriteLine("屏蔽");
 
                 //HSSettingLanguage settingLang = new HSSettingLanguage();
                 //settingLang.language = "zh-CN";
@@ -278,7 +285,7 @@ namespace UnityClientConsole
 
                 HSInstanceSettle instanceSettle = new HSInstanceSettle();
                 instanceSettle.victory = true;
-                NetManager.GetInstance().SendProtocol(code.INSTANCE_SETTLE_C.GetHashCode(), instanceSettle);
+                netmanaget.SendProtocol(code.INSTANCE_SETTLE_C.GetHashCode(), instanceSettle);
 
                 //HSInstanceRevive instanceRevive = new HSInstanceRevive();
                 //NetManager.GetInstance().SendProtocol(code.INSTANCE_REVIVE_C.GetHashCode(), instanceRevive);
@@ -294,7 +301,7 @@ namespace UnityClientConsole
 
                 HSInstanceResetCount resetCount = new HSInstanceResetCount();
                 resetCount.instanceId = "minghe13";
-                NetManager.GetInstance().SendProtocol(code.INSTANCE_RESET_COUNT_C.GetHashCode(), resetCount);
+                netmanaget.SendProtocol(code.INSTANCE_RESET_COUNT_C.GetHashCode(), resetCount);
             }
             else if (protocol.checkType(code.INSTANCE_OPEN_CARD_S.GetHashCode()))
             {
@@ -392,7 +399,7 @@ namespace UnityClientConsole
                 HSImPlayerGetRet imPlayer = protocol.GetProtocolBody<HSImPlayerGetRet>();
                 Console.WriteLine("im玩家信息");
             }
-            // SETTING--------------------------------------------------------------------------------------------------------
+            // SETTING-------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.SETTING_BLOCK_S.GetHashCode()))
             {
                 HSSettingBlockRet block = protocol.GetProtocolBody<HSSettingBlockRet>();

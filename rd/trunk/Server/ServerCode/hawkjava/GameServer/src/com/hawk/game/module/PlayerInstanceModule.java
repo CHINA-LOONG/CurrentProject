@@ -12,10 +12,12 @@ import org.hawk.config.HawkConfigManager;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
+import org.omg.CORBA.INTERNAL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.hawk.game.config.InstanceCfg;
+import com.hawk.game.config.InstanceChapterCfg;
 import com.hawk.game.config.InstanceDropCfg;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.InstanceRewardCfg;
@@ -108,6 +110,8 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		int chapterId = entryCfg.getChapter();
+		int difficulty = entryCfg.getDifficult();
+		InstanceChapterCfg chapterCfg = entryCfg.getChapterCfg();
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 		Map<Integer, InstanceChapter> chapterMap = InstanceUtil.getInstanceChapterMap();
 		InstanceChapter chapter = chapterMap.get(chapterId);
@@ -120,8 +124,8 @@ public class PlayerInstanceModule extends PlayerModule {
 			int curChapterId = statisticsEntity.getNormalInstanceChapter();
 			int curIndex = statisticsEntity.getNormalInstanceIndex();
 
-			if ((chapterId > curChapterId && (index != size - 1 || chapterId > curChapterId + 1)) ||
-					(chapterId == curChapterId && index > curIndex + 1)) {
+			if ((chapterId > curChapterId && (index != size - 1 || chapterId > curChapterId + 1))
+					|| (chapterId == curChapterId && index > curIndex + 1)) {
 				sendError(hsCode, Status.instanceError.INSTANCE_NOT_OPEN);
 				return true;
 			}
@@ -134,17 +138,17 @@ public class PlayerInstanceModule extends PlayerModule {
 			int hardCurChapterId = statisticsEntity.getHardInstanceChapter();
 			int hardCurIndex = statisticsEntity.getHardInstanceIndex();
 
-			if ((chapterId > normalCurChapterId) ||
-					(chapterId == normalCurChapterId && normalCurIndex != normalSize - 1) ||
-					(chapterId > hardCurChapterId && (hardIndex != hardSize - 1 || chapterId > hardCurChapterId + 1)) ||
-					(chapterId == hardCurChapterId && hardIndex > hardCurIndex + 1)) {
+			if ((chapterId > normalCurChapterId)
+					|| (chapterId == normalCurChapterId && normalCurIndex != normalSize - 1)
+					|| (chapterId > hardCurChapterId && (hardIndex != hardSize - 1 || chapterId > hardCurChapterId + 1))
+					|| (chapterId == hardCurChapterId && hardIndex > hardCurIndex + 1)) {
 				sendError(hsCode, Status.instanceError.INSTANCE_NOT_OPEN);
 				return true;
 			}
 		}
 
 		// 副本等级
-		if (player.getLevel() < entryCfg.getLevel()) {
+		if (player.getLevel() < chapterCfg.getLevelByDifficulty(difficulty)) {
 			sendError(hsCode, Status.instanceError.INSTANCE_LEVEL);
 			return true;
 		}

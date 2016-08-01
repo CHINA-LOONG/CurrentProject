@@ -34,6 +34,8 @@ enum code
 	KICKOUT_S                   = 1004;
 	SYNCINFO_C                  = 1005;
 	SYNCINFO_S                  = 1006;
+	RECCONECT_C					= 1007;
+	RECCONECT_S				    = 1008;
 
 	PLAYER_INFO_SYNC_S          = 1010;
 	STATISTICS_INFO_SYNC_S      = 1011;

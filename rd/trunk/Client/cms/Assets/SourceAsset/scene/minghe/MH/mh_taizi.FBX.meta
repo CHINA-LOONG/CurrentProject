@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 40fdb702a8f6e0142aae694795d91e09
-timeCreated: 1440993408
+guid: d72fec046b16f13498de8ec1164dc931
+timeCreated: 1445854183
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
@@ -9,10 +9,12 @@ ModelImporter:
     100002: objdefault01
     100004: Object03
     100006: Object05
+    100008: Particle View 01
     400000: //RootNode
     400002: objdefault01
     400004: Object03
     400006: Object05
+    400008: Particle View 01
     2300000: objdefault01
     2300002: Object03
     2300004: Object05

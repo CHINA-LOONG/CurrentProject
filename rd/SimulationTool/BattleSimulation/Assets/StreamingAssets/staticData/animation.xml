@@ -1,0 +1,2695 @@
+<?xml version="1.0"?>
+<!--
+state = 0 Add
+state = 1 Remove
+<Camera ani="" />
+-->
+<AniGroupList>
+	<AniList group="common">
+		<Ani id="level_change" state="0" action_delay="0">
+			<ParticleList>
+				<Particle time="0" asset="effect_hot" bundle="effect/particle" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="revive" state="0" action_delay="0">
+			<ParticleList>
+				<Particle asset="sankai" bundle="effect/battle" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="gainUnitMove" state="0">
+			<MotionList>
+				<Motion time="0" ani="" key="paobu" value="true"/>
+				<Motion time="2" ani="" key="paobu" value="false"/>
+			</MotionList>
+		</Ani>
+		<Ani id="test_sequence" state="0" action_delay="0">
+			<ControllerList>
+				<Controller time="0" name="monsters/hundun/boss_hundun_state2"/>
+			</ControllerList>
+			<MotionList>
+				<Motion time="0" ani="" key="shouji" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle time="0" asset="juqihuanguai" bundle="effect/battle" parent=""/>
+				<Particle time="1" asset="juqihuanguai" bundle="effect/battle" parent=""/>
+			</ParticleList>
+			<CameraMotionList>
+				<Camera time="0" ani="" parent="" is_mover="" duration="" mover_type=""/>
+				<Camera time="1" ani="" parent="" is_mover="" duration="" mover_type=""/>
+			</CameraMotionList>
+			<AudioList>
+				<Audio time="0" name="sound/dogmw.mp3"/>
+			</AudioList>
+			<MeshStateList>
+				<Mesh time="0" name="" state="show"/>
+			</MeshStateList>
+			<WpStateList>
+				<Wp time="0" name="" state=""/>
+			</WpStateList>
+			<SpeedList>
+				<Speed time="0" speed_ratio="" duration=""/>
+			</SpeedList>
+		</Ani>
+		<Ani id="unitBeReplaced" state="0">
+			<ParticleList>
+				<Particle asset="juqihuanguai" bundle="effect/battle" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="unitExit" state="0">
+			<ParticleList>
+				<Particle asset="feizou" bundle="effect/battle" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="unitEnter" state="0">
+			<ParticleList>
+				<Particle asset="sankai" bundle="effect/battle" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="unitExitandenter" state="0">
+			<MotionList>
+				<Motion time="0" ani="" key="paobu" value="true"/>
+				<Motion time="1.3" ani="" key="paobu" value="false"/>
+			</MotionList>
+		</Ani>
+		<Ani id="stun" state="0">
+			<MotionList>
+				<Motion time="0" ani="" key="shoukong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="stunFinish" state="0">
+			<MotionList>
+				<Motion time="0" ani="" key="shoukong" value="false"/>
+			</MotionList>
+		</Ani>
+		<Ani id="dead" state="0">
+			<MotionList>
+				<Motion ani="" key="siwang" value="true"/>
+			</MotionList>
+			<SpeedList>
+				<Speed time="0.2" speed_ratio="0.3" duration="1.5"/>
+			</SpeedList>
+		</Ani>
+		<Ani id="absorbed" state="0">
+			<ParticleList>
+				<Particle asset="bd_hudunshouji" bundle="effect/battle" parent="e_shouji1" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="dazhaoxuanyao_wuli" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="dazhaoxuanyao_fashu" state="0">
+			<MotionList>
+				<Motion ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="lazy" state="0">
+			<MotionList>
+				<Motion ani="" key="toulan" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="defend" state="0">
+			<MotionList>
+				<Motion ani="" key="fangyu" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="win" state="0">
+			<MotionList>
+				<Motion ani="" key="shengli" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="chuchang" state="0">
+			<MotionList>
+				<Motion ani="" key="chuchang" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="phydazhaoPrepareb1" state="0" AniType="BuffEffect">
+			<ParticleList>
+				<Particle asset="dazhao_wulijuqi" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="phydazhaoPrepareb1Finish" state="1" finish_event="phydazhaoPrepareb1">
+		</Ani>
+		<Ani id="magicdazhaoPrepareb1" state="0" AniType="BuffEffect">
+			<ParticleList>
+				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent="e_shouji"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicdazhaoPrepareb1Finish" state="1" finish_event="magicdazhaoPrepareb1">
+		</Ani>
+		<Ani id="phyDazhaoPrepare" state="0">
+			<ParticleList>
+				<Particle asset="dazhao_wulijuqi" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="phyDazhaoPrepare_Finish" state="1" finish_event="phyDazhaoPrepare">
+		</Ani>
+		<Ani id="phyDazhaoReady" state="0">
+			<ParticleList>
+				<Particle asset="dazhao_wulibaoqi" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="phyDazhaoReady_Finish" state="1" finish_event="phyDazhaoReady">
+		</Ani>
+		<Ani id="magicDazhaoPrepare" state="0">
+			<ParticleList>
+				<Particle asset="dazhao_prepare" bundle="effect/particle" ani="" parent="e_shouji"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicDazhaoPrepare_Finish" state="1" finish_event="magicDazhaoPrepare">
+		</Ani>
+		<Ani id="magicDazhaoReady" state="0">
+			<ParticleList>
+				<Particle asset="dazhao_ready" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicDazhaoReady_Finish" state="1" finish_event="magicDazhaoReady">
+		</Ani>
+		<Ani id="yincangxiaoguai" state="0">
+			<ParticleList>
+				<Particle asset="baozha_fire" bundle="effect/particle" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="phyDazhaoSlowMotion" state="0">
+			<SpeedList>
+				<Speed time="0" speed_ratio="0.2" duration="2"/>
+			</SpeedList>
+		</Ani>
+		<Ani id="normalHit" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="bashHit" state="0">
+			<MotionList>
+				<Motion ani="" key="shouji" value="true"/>
+			</MotionList>
+			<CameraMotionList>
+				<Camera time="0" ani="zhendong" parent="" is_mover="" duration="" mover_type=""/>
+				<Camera time="0.5" ani="guiwei" parent="" is_mover="" duration="" mover_type=""/>
+			</CameraMotionList>
+		</Ani>
+	</AniList>
+	<AniList group="commonAttack">
+		<Ani id="attackCutSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackCutSlighte2" state="0">
+			<ParticleList>
+				<Particle asset="attackCutSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackCutMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackCutMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackCutMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackCutStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackCutStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackCutStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackCutTriSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackCutTriSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackCutSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackCutTriMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackCutTriMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackCutMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackCutTriStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackCutTriStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackCutStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackStabSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackStabSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackStabMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackStabMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackStabStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackStabStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackStabTriSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackStabTriSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackStabTriMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackStabTriMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackStabTriStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackStabTriStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackSmashSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackSmashSlighte1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1" asset="attackSmashSlightp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1" name="smash"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackSmashSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackSmashSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="attackSmashMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackSmashMediume1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1" asset="attackSmashMediump" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1" name="smash"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackSmashMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackSmashMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="attackSmashStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="attackSmashStronge1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1" asset="attackSmashStrongp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1" name="smash"/>
+			</AudioList>
+		</Ani>
+		<Ani id="attackSmashStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackSmashStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicMetalSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicMetalSlighte1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicMetalSlightp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="metale1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicMetalSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicMetalSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicMetalMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicMetalMediume1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicMetalMediump" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="metale1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicMetalMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicMetalMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicMetalStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicMetalStronge1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicMetalStrongp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="metale2"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicMetalStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicMetalStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicPlantSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cplant"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicPlantSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicPlantSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicPlantMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cplant"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicPlantMediume1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicPlantMediump" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="plantp1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicPlantMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicPlantStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicPlantStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castPlant" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cplant"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicPlantStronge1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicPlantStrongp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="plantp2"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicPlantStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicPlantStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicWaterSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cwater"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicWaterSlighte1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicWaterSlightp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="waterp1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicWaterSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicWaterSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicWaterMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cwater"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicWaterMediume1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicWaterMediump" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="waterp2"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicWaterMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicWaterStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicWaterStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castWater" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cwater"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicWaterStronge1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="0.5" asset="magicWaterStrongp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0.5" name="waterp3"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicWaterStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicWaterStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicFireSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cfire"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicFireSlighte1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicFireSlightp" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="firep1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicFireSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicFireSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="firee1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicFireMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cfire"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicFireMediume1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicFireMediump" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="firep1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicFireMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicFireMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="firee1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicFireStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castFire" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cfire"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicFireStronge1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicFireStrongp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="firep2"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicFireStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicFireMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicEarthSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicEarthSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicEarthMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="earthp1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicEarthMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicEarthMediume1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicEarthMediump" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicEarthMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicEarthMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="earthp1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicEarthStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicEarthStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicEarthStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="earthp2"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicCureSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicCureSlighte2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicCureSlight" bundle="effect/particle" ani="" parent="" locky="true" />
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="curep1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicCureMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicCureMediume2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="" parent="" locky="true" />
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="curep1"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicCureStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="magicCureStronge2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicCureStrong" bundle="effect/particle" ani="" parent="" locky="true" />
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="curep1"/>
+			</AudioList>
+		</Ani>
+	</AniList>
+	<AniList group="commonBuff">
+		<Ani id="buffSpeed" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffSpeede2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuff" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffSpeedSelf" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffSpeedSelfe2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuff" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffMagic" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffMagice2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuff" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffMagicSelf" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffMagicSelfe2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuff" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffAttack" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffAttacke2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuff" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffAttackSelf" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffAttackSelfe2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuff" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffDefense" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffDefensee2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuff" bundle="effect/particle" ani="" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffDefenseSelf" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffDefenseSelfe2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuff" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffHot" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cmetal"/>
+			</AudioList>
+		</Ani>
+		<Ani id="buffHote3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="hotCure" bundle="effect/particle" ani="" parent="" locky="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="buffHote2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuff" bundle="effect/particle" locky="true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+	</AniList>
+	<AniList group="commonDeBuff">
+		<Ani id="debuffAttack" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffAttacke2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffMagic" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffMagice2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffDefense" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffDefensee2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky = "true" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffSpeed" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffSpeede2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffDotSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffDotSlighte2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffDotSlighte3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotPhy" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffDotMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffDotMediume2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffDotMediume3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotPhy" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffDotStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffDotStronge2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffDotStronge3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotPhy" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffFireDotSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffFireDotSlighte2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffFireDotSlighte3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotFire" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffFireDotMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffFireDotMediume2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffFireDotMediume3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotFire" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffFireDotStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffFireDotStronge2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffFireDotStronge3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotFire" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffWaterDotSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffWaterDotSlighte2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffWaterDotSlighte3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotWater" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffWateDotMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffWateDotMediume2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffWateDotMediume3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotWater" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffWateDotStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffWateDotStronge2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffWateDotStronge3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotWater" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffPlantDotSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffPlantDotSlighte2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffPlantDotSlighte3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotPlant" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffPlantDotMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffPlantDotMediume2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffPlantDotMediume3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotPlant" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffPlantDotStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffPlantDotStronge2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffPlantDotStronge3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotPlant" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffMetalDotSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffMetalDotSlighte2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffMetalDotSlighte3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotMetal" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffMetalDotMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffMetalDotMediume2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffMetalDotMediume3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotMetal" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffMetalDotStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffMetalDotStronge2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffMetalDotStronge3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotMetal" bundle="effect/particle" ani="" parent="" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffEarthDotSlight" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffEarthDotSlighte2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffEarthDotSlighte3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotEarth" bundle="effect/particle" ani="" parent="" attach=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffEarthDotMedium" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffEarthDotMediume2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffEarthDotMediume3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotEarth" bundle="effect/particle" ani="" parent="" attach=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffEarthDotStrong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffEarthDotStronge2" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		<Ani id="debuffEarthDotStronge3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="dotEarth" bundle="effect/particle" ani="" parent="" attach=""/>
+			</ParticleList>
+		</Ani>
+	</AniList>
+	<AniList group="commonPassive">
+		<Ani id="fixLifee1" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="bd_niepan" bundle="effect/particle" ani="" locky="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="dispelBeneficiale1" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="bd_qusan" bundle="effect/particle" ani="" attach="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="dispelNegativee1" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="bd_qusan" bundle="effect/particle" ani="" attach="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="psvCuree1" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" ani="" locky="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="phyReduceb1" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="bd_wulijianmian" bundle="effect/particle" ani="" attach="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="phyReduceb1Finish" state="1" finish_event="phyReduceb1" AniType="Passive">
+		</Ani>
+		<Ani id="magicShiledb1" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="bd_mofaxishou" bundle="effect/particle" ani="" attach="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		<Ani id="magicShiledb1Finish" state="1" finish_event="magicShiledb1" AniType="Passive">
+		</Ani>
+		<Ani id="debuffstunb1" state="0" AniType="Passive-todo:">
+			<ParticleList>
+				<Particle asset="bd_xuanyun" bundle="effect/particle" ani="" attach="true" parent="lifebarnode"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="debuffstunb1Finish" state="1" finish_event="debuffstunb1" AniType="Passive">
+		</Ani>
+		<Ani id="buffTauntb1" state="0" AniType="Passive">
+			<ParticleList>
+				<Particle asset="bd_chaofeng" bundle="effect/particle" ani="" attach="true" locky="" parent="lifebarnode"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="buffTauntb1Finish" state="1" finish_event="buffTauntb1" AniType="Passive">
+		</Ani>
+	</AniList>
+	<AniList group="bossMinghe18Karong">
+		<Ani id="bossMinghe18Karong1" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="anyingzhua" value="true"/>
+			</MotionList>
+			<MeshStateList>
+				<Mesh time="1.5" name="mesh_leftarmeffect" state="show"/>
+				<Mesh time="3.2" name="mesh_leftarmeffect" state="hide"/>
+			</MeshStateList>
+		</Ani>
+		<Ani id="bossMinghe18Karong1e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicEarthMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name=""/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossMinghe18Karong2" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="anyingbo" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="karongAnyingbo" bundle="effect/particle" parent="wp_body" locky="true"/>
+			</ParticleList>
+			<MeshStateList>
+				<Mesh time="1" name="mesh_bodyeffect" state="show"/>
+				<Mesh time="1" name="mesh_leftarmeffect" state="show"/>
+				<Mesh time="1" name="mesh_rightarmeffect" state="show"/>
+				<Mesh time="1.7" name="mesh_bodyeffect" state="hide"/>
+				<Mesh time="1.7" name="mesh_leftarmeffect" state="hide"/>
+				<Mesh time="1.7" name="mesh_rightarmeffect" state="hide"/>
+			</MeshStateList>
+			<AudioList>
+				<Audio time="0" name="cearth"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossMinghe18Karong2e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicEarthMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Karonganyingbo"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossMinghe18Karong3" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="anyingqiangxi" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="bossMinghe18Karong3e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackCutStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossMinghe18Karong4" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="jingshenkongzhi" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" parent="e_shifa2" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="bossMinghe18Karong4e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicEarthStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name=""/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossMinghe18Karong5" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="anyingqiangxi" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="bossMinghe18Karong5e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackCutSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossMinghe18Karong6" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="jingshenkongzhi" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castEarth" bundle="effect/particle" parent="e_shifa2" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="bossMinghe18Karong6e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicEarthMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name=""/>
+			</AudioList>
+		</Ani>
+		<Ani id="karong_shuijingqiusiwang" state="0">
+			<MotionList>
+				<Motion ani="" key="shuijingqiusi" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="karongShuijingqiusi" bundle="effect/particle" parent="wp_orb"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Karongshuijingqiusi"/>
+			</AudioList>
+		</Ani>
+		<Ani id="karong_leftarmsiwang" state="0">
+			<ParticleList>
+				<Particle asset="karongPosui" bundle="effect/particle" parent="wp_leftarm1"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Karongposui"/>
+			</AudioList>
+			<MotionList>
+				<Motion ani="" key="zuozhuasi" value="true"/>
+			</MotionList>
+		</Ani>
+		<Ani id="karong_rightarmsiwang" state="0">
+			<ParticleList>
+				<Particle asset="karongPosui" bundle="effect/particle" parent="wp_rightarm1"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Karongposui"/>
+			</AudioList>
+			<MotionList>
+				<Motion ani="" key="youzhuasi" value="true"/>
+			</MotionList>
+		</Ani>
+	</AniList>
+	<AniList group="bossYueguangsenlin14Luoxinfu">
+		<Ani id="bossYueguangsenlin14Luoxinfu1" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		<Ani id="bossYueguangsenlin14Luoxinfu1e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabSlight" bundle="effect/particle"  parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab" />
+			</AudioList>			
+		</Ani>
+		<Ani id="bossYueguangsenlin14Luoxinfu2" state="0" AniType="Skill">			
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+		<Ani id="bossYueguangsenlin14Luoxinfu2e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabSlight" bundle="effect/particle"  parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab" />
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin14Luoxinfu3" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="wugong" value="true" />
+			</MotionList>
+		</Ani>
+	</AniList>
+	<AniList group="bossYueguangsenlin18Meidusha">
+		<Ani id="bossYueguangsenlin18Meidusha1" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="qunsheluanwu" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meidushaQunsheluanwu" bundle="effect/particle"  parent="wp_head" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Meidushaqunsheluanwu" />
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha1e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha2" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="qunsheluanwu" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meidushaQunsheluanwu" bundle="effect/particle"  parent="wp_head" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Meidushaqunsheluanwu" />
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha2e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha3" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="qunsheluanwu" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meidushaQunsheluanwu" bundle="effect/particle"  parent="wp_head" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Meidushaqunsheluanwu" />
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha3e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha4" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="qunsheluanwu" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meidushaQunsheluanwu" bundle="effect/particle"  parent="wp_head" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Meidushaqunsheluanwu" />
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha4e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossYueguangsenlin18Meidusha5" state="0" AniType="Skill">
+			<MotionList>
+				<Motion key="yazhi" value="true" />
+			</MotionList>			
+			<ParticleList>
+				<Particle asset="meidushaYazhi" bundle="effect/particle" ani="" parent="e_shifa1" attach="true"/>
+				<Particle asset="meidushaYazhi" bundle="effect/particle" ani="" parent="e_shifa2" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Meidushayazhi" />
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha5e4" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossYueguangsenlin18Meidusha6" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="yazhi" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meidushaYazhi" bundle="effect/particle" ani="" parent="e_shifa1" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Meidushayazhi" />
+			</AudioList>
+		</Ani>
+		<Ani id="bossYueguangsenlin18Meidusha6e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossYueguangsenlin18Meidusha7" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="yazhi" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meidushaYazhi" bundle="effect/particle" ani="" parent="e_shifa2" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Meidushayazhi" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossYueguangsenlin18Meidusha7e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="commonDebuff" bundle="effect/particle" locky="true" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="debuff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossYueguangsenlin18Meidusha8" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="shihuaguangxian" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meidushaShihuaguangxian" bundle="effect/particle" ani="" parent="wp_head" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Meidushashihuaguangxian" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossYueguangsenlin18Meidusha8e3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicPlantStrong" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="bossYueguangsenlin18Meidusha9" state="0" AniType="Skill">			
+			<MotionList>
+				<Motion ani="" key="paidagongji" value="true" />
+			</MotionList>
+		</Ani>
+		
+		<Ani id="bossYueguangsenlin18Meidusha9e2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackCutMedium" bundle="effect/particle"  parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut" />
+			</AudioList>
+		</Ani>
+		
+		<Ani id="shefasi1" state="0">
+			<MotionList>
+				<Motion ani="" key="shefasi1" value="true" />
+			</MotionList>
+			<MeshStateList>
+				<Mesh time="2" name="mesh_she1" state="hide"/>
+			</MeshStateList>
+		</Ani>
+		<Ani id="shefasi2" state="0">
+			<MotionList>
+				<Motion ani="" key="shefasi2" value="true" />
+			</MotionList>
+			<MeshStateList>
+				<Mesh time="2" name="mesh_she2" state="hide"/>
+			</MeshStateList>
+		</Ani>
+		<Ani id="shefasi3" state="0">
+			<MotionList>
+				<Motion ani="" key="shefasi3" value="true" />
+			</MotionList>
+			<MeshStateList>
+				<Mesh time="2" name="mesh_she3" state="hide"/>
+			</MeshStateList>
+		</Ani>
+		<Ani id="shefasi4" state="0">
+			<MotionList>
+				<Motion ani="" key="shefasi4" value="true" />
+			</MotionList>
+			<MeshStateList>
+				<Mesh time="2" name="mesh_she4" state="hide"/>
+			</MeshStateList>
+		</Ani>
+		
+		<Ani id="shefayanjing1" state="0">
+			<ParticleList>
+				<Particle asset="meidushashefa1" bundle="effect/particle"  parent="wp_she1" attach="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="shefayanjing2" state="0">
+			<ParticleList>
+				<Particle asset="meidushashefa2" bundle="effect/particle"  parent="wp_she2" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="shefayanjingsi1" state="1" finish_event="shefayanjing1">
+		</Ani>
+		<Ani id="shefayanjingsi2" state="1" finish_event="shefayanjing2">
+		</Ani>
+		
+		
+		<Ani id="meidushasi" state="0">
+			<MotionList>
+				<Motion ani="" key="siwang" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle time="2" asset="meidushaDead" bundle="effect/particle"  parent="" locky="true"/>
+			</ParticleList>
+		</Ani>
+	</AniList>
+	<AniList group="xgHapi">
+	
+		<Ani id="ultHapi" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultHapiPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHapiPre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Hapi1"/>
+				<Audio time="3.75" name="Hapi2"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="txHapi" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultHapiPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+				<Particle asset="ultHapiPre01" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Hapi1"/>
+				<Audio time="3.75" name="Hapi2"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="xgMomo">
+	
+		<Ani id="ultMomo" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultMomoPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0.3" name="Momo1"/>
+				<Audio time="1" name="Momo1"/>
+				<Audio time="1.5" name="Momo1"/>
+				<Audio time="2" name="Momo1"/>
+				<Audio time="2.36" name="Momo1"/>
+				<Audio time="3" name="Momo1"/>
+				<Audio time="4.16" name="Momo2"/>
+			</AudioList>
+		</Ani>
+
+		<Ani id="ultMomoe2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="curep1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="txMomo" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultMomoPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0.3" name="Momo1"/>
+				<Audio time="1" name="Momo1"/>
+				<Audio time="1.5" name="Momo1"/>
+				<Audio time="2" name="Momo1"/>
+				<Audio time="2.36" name="Momo1"/>
+				<Audio time="3" name="Momo1"/>
+				<Audio time="4.16" name="Momo2"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="xgLuoxinfu">
+	
+		<Ani id="ultLuoxinfuCast" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultLuoxinfuPre02" bundle="effect/particle" parent="e_shouji" attach=""/>
+			</ParticleList>
+			<MotionList>
+				<Motion ani="" key="wugong" value="true"/>
+			</MotionList>
+			<AudioList>
+				<Audio time="0" name="Luoxinfu1"/>
+				<Audio time="1.5" name="Luoxinfu2"/>
+				<Audio time="1.59" name="Luoxinfu2"/>
+				<Audio time="1.68" name="Luoxinfu2"/>
+				<Audio time="1.77" name="Luoxinfu2"/>
+				<Audio time="1.86" name="Luoxinfu2"/>
+				<Audio time="1.95" name="Luoxinfu2"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="ultLuoxinfu" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true"/>
+			</MotionList>
+			<AudioList>
+				<Audio time="0" name="Luoxinfu2"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="ultLuoxinfue2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackCutSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+
+		<Ani id="txLuoxinfu" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultLuoxinfuPre" bundle="effect/particle" parent="wp_leg1" attach="true"/>
+				<Particle asset="ultLuoxinfuPre" bundle="effect/particle" parent="wp_leg2" attach="true"/>
+				<Particle asset="ultLuoxinfuPre" bundle="effect/particle" parent="wp_leg3" attach="true"/>
+				<Particle asset="ultLuoxinfuPre" bundle="effect/particle" parent="wp_leg4" attach="true"/>
+				<Particle asset="ultLuoxinfuPre" bundle="effect/particle" parent="wp_leg5" attach="true"/>
+				<Particle asset="ultLuoxinfuPre" bundle="effect/particle" parent="wp_leg6" attach="true"/>
+				<Particle time="0.5" asset="ultLuoxinfuPre01" bundle="effect/particle" parent="e_shouji" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Luoxinfu1"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="xgKairuisi">
+	
+		<Ani id="ultKairuisi" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Kairuisi1"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="ultKairuisie3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="ultKairuisiHit" bundle="effect/particle"  parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Karongposui"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="txKairuisi" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultKairuisiPre" bundle="effect/particle" parent="e_shifa" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Kairuisi1"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="xgAnpusha">
+	
+		<Ani id="ultAnpusha" state="0" AniType="Persistent">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultAnpushaPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Anpusha1"/>
+				<Audio time="2" name="Anpusha2"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="ultAnpushae3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="ultAnpushaHit" bundle="effect/particle" ani="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Karonganyingbo"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="txAnpusha" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultAnpushaPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Anpusha1"/>
+				<Audio time="2" name="Anpusha2"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="xgLangren">	
+	
+		<Ani id="ultLangrenCast" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" key="dazhao" value="true"/>
+				<Motion time="0.5" key="dazhao" value="true"/>
+				<Motion time="1" key="dazhao" value="true"/>
+				<Motion time="1.5" key="dazhao" value="true"/>
+				<Motion time="2" key="dazhao" value="true"/>
+				<Motion time="2.5" key="dazhao" value="true"/>
+				<Motion time="3" key="dazhao" value="true"/>
+			</MotionList>
+		</Ani>
+	
+		<Ani id="ultLangren" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true"/>
+			</MotionList>
+			<AudioList>
+				<Audio time="0" name="Langren2"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="ultLangrene2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackCutStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="txLangren" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultLangrenPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Langren1"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="xgLonggongtongzi">
+
+		<Ani id="ultLonggongtongzi" state="0" AniType="Persistent">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultLonggongtongziPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Longgongtongzi1"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="ultLonggongtongzie3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="ultLonggongtongziHit" bundle="effect/particle" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Longgongtongzi2"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="txLonggongtongzi" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultLonggongtongziPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Longgongtongzi1"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="xgHetong">
+
+		<Ani id="ultHetong" state="0" AniType="Persistent">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultHetongPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0.53" name="Hetong1"/>
+				<Audio time="1.5" name="Hetong1"/>
+				<Audio time="2.6" name="Hetong2"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="ultHetonge2" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="1.5" asset="magicWaterMediump" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="1.5" name="waterp2"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="ultHetonge3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicWaterStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="psvHetong" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="fagong" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="castMetal" bundle="effect/particle" ani="" parent="e_shifa" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="txHetong" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultHetongPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0.53" name="Hetong1"/>
+				<Audio time="1.5" name="Hetong1"/>
+				<Audio time="2.6" name="Hetong2"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="xgWagui">
+	
+		<Ani id="ultWagui" state="0" AniType="Persistent">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultWaguiPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Wagui1"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="ultWaguie1" state="0" AniType="Persistent">
+			<ParticleList>
+				<Particle time="0" asset="magicWaterSlightp" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="waterp1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="ultWaguie2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicWaterSlight" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="watere1"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="txWagui" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultWaguiPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Wagui1"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="xgAmute">
+	
+		<Ani id="ultAmute" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultAmutePre" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Amute1"/>
+			</AudioList>
+		</Ani>
+		
+		<!--Ani id="ultAmutee5" state="0" AniType="">
+			<ParticleList>
+				<Particle asset="ultAmuteBuff" bundle="effect/particle" locky="true" parent="e_shouji"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Amute2"/>
+			</AudioList>
+		</Ani-->
+		
+		<Ani id="ultAmuteb1" state="0" AniType="">
+			<ParticleList>
+				<Particle asset="bd_wulixishou" bundle="effect/particle" attach="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="ultAmuteb1Finish" state="1" finish_event="ultAmuteb1">
+		</Ani>	
+		
+		<Ani id="ultAmuteb2" state="0" AniType="">
+			<ParticleList>
+				<Particle asset="bd_mofajianmian" bundle="effect/particle" attach="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="ultAmuteb2Finish" state="1" finish_event="ultAmuteb2">
+		</Ani>
+		
+		<Ani id="txAmute" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultAmutePre" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Amute1"/>
+			</AudioList>
+		</Ani>
+	</AniList>
+	<AniList group="xgMantuoluo">
+	
+		<Ani id="ultMantuoluo" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultMantuoluoPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Huapo1"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="ultMantuoluoe3" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="magicCureMedium" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="curep1"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="txMantuoluo" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultMantuoluoPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Huapo1"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	
+	<AniList group="xgPanshen">
+	
+		<Ani id="ultPanshenCast" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" key="dazhao" value="true"/>
+				<Motion time="0.2" key="dazhao" value="true"/>
+				<Motion time="0.4" key="dazhao" value="true"/>
+				<Motion time="0.6" key="dazhao" value="true"/>
+				<Motion time="0.8" key="dazhao" value="true"/>
+				<Motion time="1" key="dazhao" value="true"/>
+				<Motion time="1.2" key="dazhao" value="true"/>
+				<Motion time="1.4" key="dazhao" value="true"/>
+				<Motion time="1.6" key="dazhao" value="true"/>
+				<Motion time="1.8" key="dazhao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle time="0" asset="ultPanshenPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="0.2" asset="ultPanshenPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="0.4" asset="ultPanshenPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="0.6" asset="ultPanshenPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="0.8" asset="ultPanshenPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="1" asset="ultPanshenPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="1.2" asset="ultPanshenPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="1.4" asset="ultPanshenPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="1.6" asset="ultPanshenPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="1.8" asset="ultPanshenPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+			</ParticleList>
+		</Ani>
+	
+		<Ani id="ultPanshen" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true"/>
+			</MotionList>
+		</Ani>
+		
+		<Ani id="ultPanshene2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabStrong" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+	
+		<Ani id="txPanshen" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultPanshenPre" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0.43" name="Momo1"/>
+				<Audio time="0.7" name="Momo1"/>
+				<Audio time="1.3" name="Hapi1"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="xgHuapo">
+	
+		<Ani id="ultHuapoCast" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" key="dazhao" value="true"/>
+				<Motion time="0.2" key="dazhao" value="true"/>
+				<Motion time="0.4" key="dazhao" value="true"/>
+				<Motion time="0.6" key="dazhao" value="true"/>
+				<Motion time="0.8" key="dazhao" value="true"/>
+				<Motion time="1" key="dazhao" value="true"/>
+				<Motion time="1.2" key="dazhao" value="true"/>
+				<Motion time="1.4" key="dazhao" value="true"/>
+				<Motion time="1.6" key="dazhao" value="true"/>
+				<Motion time="1.8" key="dazhao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle time="0" asset="ultHuapoPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="0.2" asset="ultHuapoPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="0.4" asset="ultHuapoPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="0.6" asset="ultHuapoPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="0.8" asset="ultHuapoPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="1" asset="ultHuapoPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="1.2" asset="ultHuapoPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="1.4" asset="ultHuapoPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="1.6" asset="ultHuapoPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+				<Particle time="1.8" asset="ultHuapoPre01" bundle="effect/particle" parent="dazhao" attach="true"/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="ultHuapo" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true"/>
+			</MotionList>
+		</Ani>
+		
+		<Ani id="ultHuapoe2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackStabMedium" bundle="effect/particle" parent="" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="stab"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="txHuapo" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultHuapoPre" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Huapo1"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="xgXiyiren">
+		<Ani id="ultXiyiren" state="0" AniType="Skill">
+			<MotionList>
+				<Motion ani="" key="dazhao" value="true"/>
+			</MotionList>
+		</Ani>
+		
+		<Ani id="ultXiyirenCast" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" key="dazhao" value="true"/>
+				<Motion time="0.5" key="dazhao" value="true"/>
+				<Motion time="1" key="dazhao" value="true"/>
+				<Motion time="1.5" key="dazhao" value="true"/>
+				<Motion time="2" key="dazhao" value="true"/>
+			</MotionList>
+		</Ani>
+		
+		<Ani id="ultXiyirene2" state="0" AniType="Damage">
+			<ParticleList>
+				<Particle asset="attackCutMedium" bundle="effect/particle" parent="" locky="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="cut"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="txXiyiren" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultXiyirenPre" bundle="effect/particle" parent="dazhaotexie" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Xiyiren1"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	
+	<AniList group="bossMinghe13Zouyincao">
+	
+		<Ani id="ultZouyincao" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultZouyincaoPre" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Zouyincao1"/>
+				<Audio time="1.8" name="Zouyincao2"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="ultZouyincaoe4" state="0" AniType="Buff">
+			<ParticleList>
+				<Particle asset="commonBuff" bundle="effect/particle" ani="" parent=""/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="buff"/>
+			</AudioList>
+		</Ani>
+		
+		<Ani id="txZouyincao" state="0" AniType="Skill">
+			<ParticleList>
+				<Particle asset="ultZouyincaoPre" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Zouyincao1"/>
+				<Audio time="1.8" name="Zouyincao2"/>
+			</AudioList>
+		</Ani>
+		
+	</AniList>
+	<AniList group="bossAmute">
+	
+		<Ani id="ultbossMinghe14Amute" state="0" AniType="Skill">
+			<MotionList>
+				<Motion time="0" ani="" key="dazhaoxuanyao" value="true"/>
+			</MotionList>
+			<ParticleList>
+				<Particle asset="ultAmutePre" bundle="effect/particle" attach="true"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Amute1"/>
+			</AudioList>
+		</Ani>
+		
+		<!--Ani id="ultbossMinghe14Amutee5" state="0" AniType="">
+			<ParticleList>
+				<Particle asset="ultAmuteBuff" bundle="effect/particle" locky="true" parent="e_shouji"/>
+			</ParticleList>
+			<AudioList>
+				<Audio time="0" name="Amute2"/>
+			</AudioList>
+		</Ani-->
+		
+		<Ani id="ultbossMinghe14Amuteb1" state="0" AniType="">
+			<ParticleList>
+				<Particle asset="bd_wulixishou" bundle="effect/particle" attach="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="ultbossMinghe14Amuteb1Finish" state="1" finish_event="ultbossMinghe14Amuteb1">
+		</Ani>	
+		
+		<Ani id="ultbossMinghe14Amuteb2" state="0" AniType="">
+			<ParticleList>
+				<Particle asset="bd_mofaxishou" bundle="effect/particle" attach="true" parent=""/>
+			</ParticleList>
+		</Ani>
+		
+		<Ani id="ultbossMinghe14Amuteb2Finish" state="1" finish_event="ultbossMinghe14Amuteb2">
+		</Ani>
+		
+	</AniList>
+	<AniList group="State_chage">
+		<Ani id="karong_stage1to2_shuihuo" state="0" action_delay="0">
+			<ControllerList>
+				<Controller time="2.6" name="Karong_boss2"/>
+			</ControllerList>
+			<WpStateList>
+				<Wp time="2.6" name="bossMinghe18Karongwp01" state="3"/>
+				<Wp time="2.6" name="bossMinghe18Karongwp02" state="3"/>
+				<Wp time="2.6" name="bossMinghe18Karongwp03" state="1"/>
+				<Wp time="2.6" name="bossMinghe18Karongwp04" state="1"/>
+				<Wp time="2.6" name="bossMinghe18Karongwp05" state="1"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="karong_stage1to2_shuisi" state="0" action_delay="0">
+			<ControllerList>
+				<Controller time="2.6" name="Karong_boss2"/>
+			</ControllerList>
+			<WpStateList>
+				<Wp time="2.6" name="bossMinghe18Karongwp01" state="3"/>
+				<Wp time="2.6" name="bossMinghe18Karongwp02" state="3"/>
+				<Wp time="2.6" name="bossMinghe18Karongwp03" state="1"/>
+				<Wp time="2.6" name="bossMinghe18Karongwp04" state="1"/>
+				<Wp time="2.6" name="bossMinghe18Karongwp05" state="1"/>
+			</WpStateList>
+		</Ani>
+		<Ani id="meidusha_state1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossYueguangsenlin18Meidushawp01" state="2"/>
+			</WpStateList>
+			<MotionList>
+				<Motion ani="" key="kuangbao" value="true" />
+			</MotionList>
+			<ParticleList>
+				<Particle asset="meidushaKuangbao" bundle="effect/particle"  parent="wp_body" locky="true"/>
+			</ParticleList>
+		</Ani>
+		<Ani id="meidusha_state2to1" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossYueguangsenlin18Meidushawp01" state="1"/>
+				<Wp time="0" name="bossYueguangsenlin18Meidushawp02" state="1"/>
+				<Wp time="0" name="bossYueguangsenlin18Meidushawp03" state="1"/>
+				<Wp time="0" name="bossYueguangsenlin18Meidushawp04" state="1"/>
+				<Wp time="0" name="bossYueguangsenlin18Meidushawp05" state="1"/>
+			</WpStateList>
+			<MotionList>
+				<Motion ani="" key="kuangbao" value="false" />
+			</MotionList>
+		</Ani>
+		<Ani id="amute_stage1to2" state="0" action_delay="2">
+			<WpStateList>
+				<Wp time="0" name="bossMinghe14Amutewp01" state="1"/>
+			</WpStateList>
+		</Ani>
+	</AniList>
+</AniGroupList>

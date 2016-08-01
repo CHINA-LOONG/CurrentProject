@@ -16,13 +16,13 @@ import com.hawk.game.log.BehaviorLogger.Source;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Login.HSReconnect;
 import com.hawk.game.protocol.Login.HSSyncInfo;
 import com.hawk.game.protocol.Login.HSSyncInfoRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Status.error;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
-
 /**
  * 玩家登陆模块
  * 
@@ -146,9 +146,7 @@ public class PlayerLoginModule extends PlayerModule {
 		// 登陆回复协议
 		HSSyncInfoRet.Builder response = HSSyncInfoRet.newBuilder();
 		response.setStatus(error.NONE_ERROR_VALUE);
-		// 设置时间戳
-		response.setTimeStamp(HawkTime.getSeconds());
-		
+		 
 		// 绑定会话
 		player.setSession(session);
 		playerEntity.setLoginTime(HawkTime.getCalendar());
@@ -178,6 +176,13 @@ public class PlayerLoginModule extends PlayerModule {
 				Params.valueOf("platInfo", platInfo), Params.valueOf("ipaddr", session.getIpAddr()));
 		return true;
 	}
+	
+	@Override
+	protected boolean onPlayerReconnect(HawkMsg msg){
+
+		// TODO 检测设备信息
+		return true;
+	}
 
 	@Override
 	protected boolean onPlayerLogout() {
@@ -192,4 +197,6 @@ public class PlayerLoginModule extends PlayerModule {
 				Params.valueOf("vipLevel", player.getVipLevel()));
 		return true;
 	}
+	
+	
 }

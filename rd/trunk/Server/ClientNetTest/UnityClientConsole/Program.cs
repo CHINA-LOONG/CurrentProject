@@ -21,15 +21,18 @@ namespace UnityClientConsole
 
         static void Main(string[] args)
         {
-            //设定服务器IP地址  
-            if (App.GetInstance().Init("127.0.0.1", 9595, "xiaozhen2") == false)
-            //if (App.GetInstance().Init("192.168.199.122", 9595, "xiaozhen2") == false)
-            //if (App.GetInstance().Init("123.59.45.55", 9595, "im_1") == false)
-                return;
+            for (int i = 1; i <= 2000; ++i )
+            {
+                string name = "root" + i;
+                App test = new App();
+                if (test.Init("192.168.199.122", 9597, name) == false)
+                {
+                    continue; 
+                }
 
-            App.GetInstance().Run();
+                test.SendLoginProtocol();
+            }
 
-            App.GetInstance().SendLoginProtocol();
 
             Console.ReadLine();
 

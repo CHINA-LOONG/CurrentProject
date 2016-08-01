@@ -105,10 +105,10 @@ public class HawkAppObj extends HawkListener {
 		if (protocol != null && session != null && session.isActive()) {
 			// 将协议内容格式化成json
 			if (HawkApp.getInstance().getAppCfg().isDebug()) {
-				Message protoBuilder = protocol.getBuilder().build();
-				String protoJson = JsonFormat.printToString(protoBuilder);
-				HawkLog.logPrintln(String.format("send protocol: %d, size: %d, target: %s, protocol: %s",
-						protocol.getType(), protocol.getSize(), getXid().toString(), protoJson));
+			//	Message protoBuilder = protocol.getBuilder().build();
+			//	String protoJson = JsonFormat.printToString(protoBuilder);
+				HawkLog.logPrintln(String.format("send protocol: %d, size: %d, target: %s",
+						protocol.getType(), protocol.getSize(), getXid().toString()));
 			}
 			return session.sendProtocol(protocol);
 		}

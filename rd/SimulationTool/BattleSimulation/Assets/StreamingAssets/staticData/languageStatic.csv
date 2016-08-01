@@ -1,0 +1,431 @@
+﻿#TEXT,TEXT,TEXT
+id,chinese,english
+#文字Id,文字内容,文字内容
+speak_001,兔桑，兔桑，你干啥呐？,兔桑，兔桑，what are you doing now？
+speak_002,没干啥，你又要干啥？,Nothing？
+speak_003,没事哈，我这有好吃的，我问问你吃不吃/(ㄒoㄒ)/~~,Has the operation finished?/(ㄒoㄒ)/~~
+speak_004,吃啊，当然吃，哪有我不吃的！,What's the operation's progress！
+speak_005,吃了我的东西就要给我干活！！！啊哈哈,Has the operation finished?
+miaoshu_jiuwei1,九尾狐萌萌哒的尾巴1,The fox with nine tails 1
+miaoshu_jiuwei2,九尾狐萌萌哒的尾巴2,The fox with nine tails 2
+miaoshu_jiuwei3,九尾狐萌萌哒的尾巴3,The fox with nine tails 3
+miaoshu_jiuwei4,九尾狐萌萌哒的尾巴4,The fox with nine tails 4
+miaoshu_jiuwei5,九尾狐萌萌哒的尾巴5,The fox with nine tails 5
+miaoshu_jiuwei6,九尾狐萌萌哒的尾巴6,The fox with nine tails 6
+miaoshu_jiuwei7,九尾狐萌萌哒的尾巴7,The fox with nine tails 7
+miaoshu_jiuwei8,九尾狐萌萌哒的尾巴8,The fox with nine tails 8
+miaoshu_jiuwei9,九尾狐萌萌哒的尾巴9,The fox with nine tails 9
+miaoshu_jiuwei10,九尾狐萌萌哒的尾巴10,The fox with nine tails 10
+miaoshu_ershu,我是耳鼠思密达,wo is Ear Mouse
+miaoshu_zhuyan,我是朱燕思密达,wo is Zhu Yan
+miaoshu_qingniao,我是青鸟思密达,wo is Qing Bird
+miaoshu_karong1,似乎被什么东西控制了,Find out what is controlling her!
+miaoshu_karong2,脉动的韵文，释放出强大的魔力,Flowing verses release powerful magic.
+miaoshu_karong4,外装甲看起来不那么结实,This doesn't seem to be that tough.
+miaoshu_karong5,外装甲看起来不那么结实,This doesn't seem to be that tough.
+miaoshu_meidushawp01,自认为美艳的美杜莎会对没有头发感到愤怒！,Medusa will be upset without hair.
+miaoshu_meidushawp02,会对物理攻击进行压制,Suppresses Phy ATK.
+miaoshu_meidushawp03,会对法术攻击进行压制,Suppresses Magic ATK.
+Lizardman,蜥蜴人,Lizardman
+Flower Spirit,花魄,Flower Spirit
+Pans,潘神,Pans
+Mandrake,曼陀罗,Mandrake
+Ammut,阿穆特,Ammut
+Phantom Frog,蛙鬼,Phantom Frog
+Kappa,河童,Kappa
+Water Tyke,龙宫童子,Water Tyke
+Werewolf,狼人,Werewolf
+Empusae,安普莎,Empusae
+Keres,凯瑞斯,Keres
+Nephila,络新妇,Nephila
+Momo,Momo,Momo
+Harpy,哈皮,Harpy
+Melody Bulb,Melody Bulb,Melody Bulb
+Medusa,美杜莎,Medusa
+Charon,卡戎,Charon
+Moon Forest - 1,月光森林 - 1,Moon Forest - 1
+Moon Forest - 2,月光森林 - 2,Moon Forest - 2
+Moon Forest - 4,月光森林 - 4,Moon Forest - 4
+Moon Forest - 7,月光森林 - 7,Moon Forest - 7
+Moon Forest - 8,月光森林 - 8,Moon Forest - 8
+Nether River - 2,冥河 - 2,Nether River - 2
+Nether River - 3,冥河 - 3,Nether River - 3
+Nether River - 4,冥河 - 4,Nether River - 4
+Nether River - 7,冥河 - 7,Nether River - 7
+Nether River - 8,冥河 - 8,Nether River - 8
+attackCutSlightTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackCutMediumTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackCutStrongTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackCutTriSlightTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackCutTriMediumTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackCutTriStrongTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackStabSlightTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackStabMediumTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackStabStrongTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackStabTriSlightTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackStabTriMediumTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackStabTriStrongTips,给单体目标造成3次{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage 3 times to a single target
+attackSmashSlightTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackSmashMediumTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+attackSmashStrongTips,给单体目标造成{0}%物攻的物理伤害,Deals ({0}% of physical ATK) physical damage to a single target
+magicMetalSlightTips,给单体目标造成{0}%法攻的光属性伤害,Deals ({0}% of magic ATK) light type magic damage to a single target
+magicMetalMediumTips,给单体目标造成{0}%法攻的光属性伤害,Deals ({0}% of magic ATK) light type magic damage to a single target
+magicMetalStrongTips,给单体目标造成{0}%法攻的光属性伤害,Deals ({0}% of magic ATK) light type magic damage to a single target
+magicPlantSlightTips,给单体目标造成{0}%法攻的木属性伤害,Deals ({0}% of magic ATK) grass type magic damage to a single target
+magicPlantMediumTips,给单体目标造成{0}%法攻的木属性伤害,Deals ({0}% of magic ATK) grass type magic damage to a single target
+magicPlantStrongTips,给单体目标造成{0}%法攻的木属性伤害,Deals ({0}% of magic ATK) grass type magic damage to a single target
+magicWaterSlightTips,给单体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
+magicWaterMediumTips,给单体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
+magicWaterStrongTips,给单体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type magic damage to a single target
+magicFireSlightTips,给单体目标造成{0}%法攻的火属性伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+magicFireMediumTips,给单体目标造成{0}%法攻的火属性伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+magicFireStrongTips,给单体目标造成{0}%法攻的火属性伤害,Deals ({0}% of magic ATK) fire type magic damage to a single target
+magicEarthSlightTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
+magicEarthMediumTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
+magicEarthStrongTips,给单体目标造成{0}%法攻的暗属性伤害,Deals ({0}% of magic ATK) dark type magic damage to a single target
+magicCureSlightTips,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
+magicCureMediumTips,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
+magicCureStrongTips,给单体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for a single target
+buffSpeedTips,使单体目标速度提升10%，持续3回合,Increases speed of a single target by 10% for 3 turns
+buffSpeedSelfTips,使自身速度提升10%，持续3回合,Increases your speed by 10% for 3 turns
+buffMagicTips,使单体目标智力提升10%，持续3回合,Increases intelligence of a single target by 10% for 3 turns
+buffMagicSelfTips,使自身智力提升10%，持续3回合,Increases your intelligence by 10% for 3 turns
+buffAttackTips,使单体目标力量提升10%，持续3回合,Increases strength of a single target by 10% for 3 turns
+buffAttackSelfTips,使自身力量提升10%，持续3回合,Increases your strength by 10% for 3 turns
+buffDefenseTips,使单体目标防御力提升10%，持续3回合,Increases defense of a single target by 10% for 3 turns
+buffDefenseSelfTips,使自身防御力提升10%，持续3回合,Increases your defense by 10% for 3 turns
+buffHotTips,使单体目标每回合回复40%法攻的生命值，持续3回合,Recovers (40% of magic ATK) HP for a single target each turn for 3 turns
+debuffDefenseTips,使单体目标防御力降低10%，持续3回合,Reduces defense of a single target by 10% for 3 turns
+debuffAttackTips,使单体目标力量降低10%，持续3回合,Reduces strength of a single target by 10% for 3 turns
+debuffMagicTips,使单体目标智力降低10%，持续3回合,Reduces intelligence of a single target by 10% for 3 turns
+debuffSpeedTips,使单体目标速度降低10%，持续3回合,Reduces speed of a single target by 10% for 3 turns
+debuffDotSlightTips,"给单体目标每回合造成{0}%物攻的物理伤害,持续3回合",Deals ({0}% of physical ATK) physical damage to a single target each turn for 3 turns
+debuffDotMediumTips,"给单体目标每回合造成{0}%物攻的物理伤害,持续3回合",Deals ({0}% of physical ATK) physical damage to a single target each turn for 3 turns
+debuffDotStrongTips,"给单体目标每回合造成{0}%物攻的物理伤害,持续3回合",Deals ({0}% of physical ATK) physical damage to a single target each turn for 3 turns
+debuffFireDotSlightTips,"给单体目标每回合造成{0}%法攻的火属性伤害,持续3回合",Deals ({0}% of magic ATK) fire type damage to a single target each turn for 3 turns
+debuffFireDotMediumTips,"给单体目标每回合造成{0}%法攻的火属性伤害,持续3回合",Deals ({0}% of magic ATK) fire type damage to a single target each turn for 3 turns
+debuffFireDotStrongTips,"给单体目标每回合造成{0}%法攻的火属性伤害,持续3回合",Deals ({0}% of magic ATK) fire type damage to a single target each turn for 3 turns
+debuffWaterDotSlightTips,"给单体目标每回合造成{0}%法攻的水属性伤害,持续3回合",Deals ({0}% of magic ATK) water type damage to a single target each turn for 3 turns
+debuffWateDotMediumTips,"给单体目标每回合造成{0}%法攻的水属性伤害,持续3回合",Deals ({0}% of magic ATK) water type damage to a single target each turn for 3 turns
+debuffWateDotStrongTips,"给单体目标每回合造成{0}%法攻的水属性伤害,持续3回合",Deals ({0}% of magic ATK) water type damage to a single target each turn for 3 turns
+debuffPlantDotSlightTips,"给单体目标每回合造成{0}%法攻的木属性伤害,持续3回合",Deals ({0}% of magic ATK) grass type damage to a single target each turn for 3 turns
+debuffPlantDotMediumTips,"给单体目标每回合造成{0}%法攻的木属性伤害,持续3回合",Deals ({0}% of magic ATK) grass type damage to a single target each turn for 3 turns
+debuffPlantDotStrongTips,"给单体目标每回合造成{0}%法攻的木属性伤害,持续3回合",Deals ({0}% of magic ATK) grass type damage to a single target each turn for 3 turns
+debuffMetalDotSlightTips,"给单体目标每回合造成{0}%法攻的光属性伤害,持续3回合",Deals ({0}% of magic ATK) light type damage to a single target each turn for 3 turns
+debuffMetalDotMediumTips,"给单体目标每回合造成{0}%法攻的光属性伤害,持续3回合",Deals ({0}% of magic ATK) light type damage to a single target each turn for 3 turns
+debuffMetalDotStrongTips,"给单体目标每回合造成{0}%法攻的光属性伤害,持续3回合",Deals ({0}% of magic ATK) light type damage to a single target each turn for 3 turns
+debuffEarthDotSlightTips,"给单体目标每回合造成{0}%法攻的暗属性伤害,持续3回合",Deals ({0}% of magic ATK) dark type damage to a single target each turn for 3 turns
+debuffEarthDotMediumTips,"给单体目标每回合造成{0}%法攻的暗属性伤害,持续3回合",Deals ({0}% of magic ATK) dark type damage to a single target each turn for 3 turns
+debuffEarthDotStrongTips,"给单体目标每回合造成{0}%法攻的暗属性伤害,持续3回合",Deals ({0}% of magic ATK) dark type damage to a single target each turn for 3 turns
+bossMinghe18Karong1Tips,给单体目标造成3次66.7%物攻的物理伤害,Deals (66.7% of physical ATK) physical damage 3 times to a single target
+bossMinghe18Karong2Tips,给全体目标造成100%法攻的暗属性伤害,Deals (100% of magic ATK) dark type damage to all targets
+bossMinghe18Karong3Tips,给全体目标造成100%物攻的物理伤害,Deals (100% of physical ATK) physical damage to all targets
+bossMinghe18Karong4Tips,给单体目标造成150%法攻的暗属性伤害并眩晕目标1回合,Deals (150% of your magic ATK) dark type damage to a single target with stun for 1 turn
+bossMinghe18Karong5Tips,给全体目标造成40%物攻的物理伤害,Deals (40% of physical ATK) physical damage to all targets
+bossMinghe18Karong6Tips,给单体目标造成70%法攻的暗属性伤害,Deals (70% of your magic ATK) dark type damage to a single target
+bossYueguangsenlin14Luoxinfu1Tips,给单体目标造成物理伤害，伤害会根据弱点个数调整,Deals physical damage to a single target; damage is adjusted according to number of weakpoints
+bossYueguangsenlin18Meidusha1Tips,给全体目标造成物理伤害，伤害会根据弱点个数调整,Deals physical damage to all targets; damage is adjusted according to number of weakpoints
+bossYueguangsenlin18Meidusha5Tips,对全体目标释放减益buff，buff会根据弱点个数调整,Casts a debuff on all targets; the debuff is adjusted according to number of weakpoints
+bossYueguangsenlin18Meidusha8Tips,给全体目标造成200%法攻的暗属性伤害并10%概率眩晕目标1回合,Deals (200% of magic ATK) dark type damage to all targets with a 10% chance of stun for 1 turn
+bossYueguangsenlin18Meidusha9Tips,给单体目标造成800%物攻的物理伤害,Deals (800% of physical ATK) physical damage to a single target
+ultXiyirenTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害并大概率附加嘲讽效果,"Can carry out {0} actions, each time dealing {1}% physical damage with a high chance of taunt"
+psvXiyirenTips,受到物理伤害时，80%几率提升自身50%防御力，持续3回合,Gives an 80% chance of increasing your defense for 3 turns by 50% whenever you take damage 
+ultHuapoTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害,"Can carry out {0} actions, each dealing {1}% physical damage to a single target"
+psvHuapoTips,使用物理技能时，40%几率提升自身10%力量，持续3回合,Gives a 40% chance of increasing your strength by 10% whenever casting a physical ability  for 3 turns
+ultPanshenTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害,"Can carry out {0} actions, each time dealing {1}% physical damage"
+psvPanshenTips,战斗开始时，优先进行一次物理攻击,"At the start of battle, have precedence in carrying out one physical attack"
+ultMantuoluoTips,给全体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for all targets
+psvMantuoluoTips,使用法术技能时，20%几率恢复自身血量,Gives a 20% chance of restoring your HP whenever casting a magic ability
+ultAmuteTips,给全体目标添加24%物攻的物理与魔法吸收护盾,Summons a shield that absorbs (24% of physical ATK) physical and magic damage for all targets
+psvAmuteTips,首次死亡时，血量回复为10%血量上限,Recovers 10% of max HP upon dying the first time
+ultWaguiTips,给单体目标造成{0}%法攻的水属性伤害并大概率附加眩晕效果,Deals ({0}% of magic ATK) water type damage to a single target with a high chance of stun
+psvWaguiTips,受到伤害时，80%几率降低攻击者10%速度，持续3回合,Gives an 80% chance of decreasing attacker's speed by 10%  for 3 turns whenever you take damage
+ultHetongTips,给全体目标造成{0}%法攻的水属性伤害,Deals ({0}% of magic ATK) water type damage to all targets
+psvHetongTips,战斗开始时，提升己方全体50%防御力，持续3回合,Increase all allies' defense by 50% at the start of battle for 3 turns
+ultLonggongtongziTips,给全体目标回复{0}%法攻的生命值并附带法术吸收护盾,Recovers ({0}% of magic ATK) HP for all targets and summons a shield that abosrbs magic damage
+psvLonggongtongziTips,使用治疗技能时，10%几率附加法术吸收护盾,Gives a 10% chance of summoning a shield that absorbs magic damage whenever casting a healing ability
+ultLangrenTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害并小概率附加撕裂,"Can carry out {0} actions, each dealing {1}% physical damage to all targets with a low chance of tearing"
+psvLangrenTips,血量小于等于总血量25%时，提升自身10%力量,Increases your strength by 10% whenever HP drops to 25% or below
+ultAnpushaTips,给全体目标造成{0}%法攻的暗属性伤害并附加虚弱和破甲效果,Deals ({0}% of magic ATK) dark type damage to all targets as well as weakening and armor reduction
+psvAnpushaTips,使用法术技能时，50%几率恢复自身血量,Gives an 50% chance of restoring your HP whenever casting a magic ability
+ultKairuisiTips,给全体目标造成{0}%法攻的暗属性伤害并附加失心术效果,Deals ({0}% of magic ATK) dark type damage to all targets with a dishearten effect
+psvKairuisiTips,使用物理技能时，50%几率驱散敌方增益效果,Gives a 50% chance of dispelling enemy buffs whenever casting a physical ability 
+ultLuoxinfuTips,可以进行{0}次操作，每次给单体目标造成{1}%物理伤害并小概率附加眩晕效果和痛楚,"Can carry out {0} actions, each dealing {1}% physical damage to a single target with a small chance of stun and anguish"
+psvLuoxinfuTips,使用物理技能时，35%几率附带痛楚,Gives a 35% chance of anguish whenever casting a physical ability 
+ultMomoTips,给全体目标回复{0}%法攻的生命值,Recovers ({0}% of magic ATK) HP for all targets' 
+psvMomoTips,受到物理伤害时，80%几率给自身添加物理伤害减免护盾,Gives an 80% chance of providing a shield that reduces physical damage whenever you take physical damage
+ultHapiTips,驱散己方全体妨害效果,Dispells all debuff effects that affect allies' damage
+psvHapiTips,永久提升自身10%智力,Increases intelligence permanently by 10%
+ultZouyincaoTips,给全体目标提升10%力量并驱散妨害效果,Increases strength by 10% for all targets with dispells all debuff effects
+psvZouyincaoTips,永久提升自身10%速度,Increases speed permanently by 10%
+attackCutSlightName,弱攻击,Weak Attack
+attackCutMediumName,攻击,Attack
+attackCutStrongName,强力攻击,Strong Attack
+attackCutTriSlightName,三连弱击,Weak Triple Strike
+attackCutTriMediumName,三连击,Triple Strike
+attackCutTriStrongName,三连强击,Strong Triple Strike
+attackStabSlightName,弱攻击,Weak Attack
+attackStabMediumName,攻击,Attack
+attackStabStrongName,强力攻击,Strong Attack
+attackStabTriSlightName,三连弱击,Weak Triple Strike
+attackStabTriMediumName,三连击,Triple Strike
+attackStabTriStrongName,三连强击,Strong Triple Strike
+attackSmashSlightName,弱攻击,Weak Attack
+attackSmashMediumName,攻击,Attack
+attackSmashStrongName,强力攻击,Strong Attack
+magicMetalSlightName,圣光弹,Holy Bolt
+magicMetalMediumName,圣光一击,Holy Strike
+magicMetalStrongName,圣光重击,Divine Blast
+magicPlantSlightName,飞叶斩,Leaf Darts
+magicPlantMediumName,荆棘穿刺,Piercing Spikes
+magicPlantStrongName,疯狂生长,Wild Growth
+magicWaterSlightName,水流术,Water Splash
+magicWaterMediumName,瀑布冲击,Waterfall
+magicWaterStrongName,水龙卷,Waterspout
+magicFireSlightName,火苗术,Flame Blast
+magicFireMediumName,炽焰击,Blaze
+magicFireStrongName,地狱烈焰,Hell Blaze
+magicEarthSlightName,暗影突袭,Shadow Swipe
+magicEarthMediumName,暗影爪,Shadow Claw
+magicEarthStrongName,暗影强袭,Shadow Strike
+magicCureSlightName,回复术,Lesser Healing
+magicCureMediumName,治疗术,Healing
+magicCureStrongName,强效治疗,Potent Healing
+buffSpeedName,加速术,Haste
+buffSpeedSelfName,速度爆发,Dash
+buffMagicName,智慧术,Insight
+buffMagicSelfName,智力爆发,High Intellect
+buffAttackName,激励术,Inspire
+buffAttackSelfName,力量爆发,Overwhelming Strength
+buffDefenseName,加护术,Ward
+buffDefenseSelfName,防御姿态,Defensive Stance
+buffHotName,恢复术,Recover
+debuffDefenseName,破甲术,Sunder
+debuffAttackName,虚弱术,Disable
+debuffMagicName,失心术,Stupefy
+debuffSpeedName,缓速术,Inhibit
+debuffDotSlightName,撕裂（弱）,Tear (Weak)
+debuffDotMediumName,撕裂（中）,Tear (Normal)
+debuffDotStrongName,撕裂（强）,Tear (Strong)
+debuffFireDotSlightName,点燃（弱）,Ignite (Weak)
+debuffFireDotMediumName,点燃（中）,Ignite (Normal)
+debuffFireDotStrongName,点燃（强）,Ignite (Strong)
+debuffWaterDotSlightName,溺水（弱）,Gush (Weak)
+debuffWateDotMediumName,溺水（中）,Gush (Normal)
+debuffWateDotStrongName,溺水（强）,Gush (Strong)
+debuffPlantDotSlightName,施毒（弱）,Poison (Weak)
+debuffPlantDotMediumName,施毒（中）,Poison (Normal)
+debuffPlantDotStrongName,施毒（强）,Poison (Strong)
+debuffMetalDotSlightName,耀斑（弱）,Flare (Weak)
+debuffMetalDotMediumName,耀斑（中）,Flare (Normal)
+debuffMetalDotStrongName,耀斑（强）,Flare (Strong)
+debuffEarthDotSlightName,痛楚（弱）,Anguish (Weak)
+debuffEarthDotMediumName,痛楚（中）,Anguish (Normal)
+debuffEarthDotStrongName,痛楚（强）,Anguish (Strong)
+bossMinghe18Karong1Name,暗影爪,Shadow Claw
+bossMinghe18Karong2Name,暗影波,Shadow Wave
+bossMinghe18Karong3Name,暗影强袭,Shadow Strike
+bossMinghe18Karong4Name,精神控制,Mind Control
+bossMinghe18Karong5Name,横扫,Sweep
+bossMinghe18Karong6Name,暗影攻击,Shadow Blast
+bossYueguangsenlin14Luoxinfu1Name,三连弱击,Weak Triple Strike
+bossYueguangsenlin18Meidusha1Name,群蛇乱舞,Serpent Fury
+bossYueguangsenlin18Meidusha5Name,压制,Suppress
+bossYueguangsenlin18Meidusha8Name,石化攻击,Petrify
+bossYueguangsenlin18Meidusha9Name,拍打攻击,Batter
+ultXiyirenName,嘲讽射击,Sneering Shots
+psvXiyirenName,保护色,Protective color
+ultHuapoName,花刺扫射,Spike Spray
+psvHuapoName,自然生长,Natural Growth
+ultPanshenName,狂冲乱撞,Pummel
+psvPanshenName,冲锋,Step Ahead
+ultMantuoluoName,缓释,Restoration
+psvMantuoluoName,灵光一现,Healing Intellect
+ultAmuteName,护佑,Broad Barrier
+psvAmuteName,坚韧之血,Tenacity
+ultWaguiName,粘性喷吐,Viscuos Spew
+psvWaguiName,粘性皮肤,Adhesive Skin
+ultHetongName,水龙弹,Torrent Bombs
+psvHetongName,强固阵型,Strong Formation
+ultLonggongtongziName,生命之盾,Healing Nova
+psvLonggongtongziName,庇护治愈,Sheltering Cure
+ultLangrenName,疯狂撕裂,Rapid Jabs
+psvLangrenName,不屈之力,Indomitable Force
+ultAnpushaName,暗黑干预,Coherent Darkness
+psvAnpushaName,意外之喜,Serendipity
+ultKairuisiName,黑幕,Unnerving Darkness
+psvKairuisiName,散佚,Disseminate
+ultLuoxinfuName,猛击,Vexbane Strikes
+psvLuoxinfuName,余韵犹存,Lingering Blow
+ultMomoName,博爱,Erudite Mending
+psvMomoName,灵机应变,Lesser Ward
+ultHapiName,烟消云散,Dissipation
+psvHapiName,洞察,Clairvoyance
+ultZouyincaoName,提神号角,Bright Horn
+psvZouyincaoName,顺风,Tailwind
+pet_character_1,勇敢,Valor
+pet_character_2,聪慧,Spiritual
+pet_character_3,狡猾,Mischievous
+pet_character_4,互助,Collaborate
+pet_character_5,善良,Compassion
+pet_character_6,谨慎,Humility
+Valor,勇敢,Attack - Physical 
+Spiritual,聪慧,Attack - Magical
+Mischievous,狡猾,Support - Harmful Effects
+Collaborate,互助,Support - Beneficial Effects
+Compassion,善良,Healer
+Humility,谨慎,Defense
+miaoshu_bossamute01,面具下隐藏着弱点,Find what underlies the mask.
+miaoshu_bossluoxinfu01,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_bossluoxinfu02,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_bossluoxinfu03,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_bossluoxinfu04,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_bossluoxinfu05,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_bossluoxinfu06,爪子十分锋利，但是看起来很易碎。,"Claws are sharp, but fragile."
+miaoshu_wp,弱点,Weakpoint
+miaoshu_np,普通,Normalpoint
+speak_006,Tips：要找到弱点，记得使用魔法水晶哦。,Tips : Remember to use Magic Crystal to find out enemy's weakpoint.
+name_10001_yaoshi,钥匙,key
+name_10002_wuming,无名,no name
+name_10003_duihuanquan,兑换券,ticket
+name_10004_chujiqianghuacailiao,初级强化材料,strengthening materials
+name_11001_chujiqianghuacailiao,初级强化材料,strengthening materials
+name_11002_zhongjiqianghuacailiao,中级强化材料,strengthening materials
+name_11003_gaojiqianghuacailiao,高级强化材料,strengthening materials
+name_10005_zhuangbeijinjiecailiao1,装备进阶材料1,advanced materials1
+name_10006_zhuangbeijinjiecailiao2,装备进阶材料2,advanced materials2
+name_10007_baoshikaikongcailiao,宝石开孔材料,open channel materials
+name_20001_suipian1,碎片1,chip1
+name_30001_baoshi1_1,宝石1_1,gem1_1
+name_30002_baoshi1_2,宝石1_2,gem1_2
+name_30003_baoshi1_3,宝石1_3,gem1_3
+name_30004_baoshi1_4,宝石1_4,gem1_4
+name_30005_baoshi1_5,宝石1_5,gem1_5
+name_30006_baoshi1_6,宝石1_6,gem1_6
+name_30007_baoshi1_7,宝石1_7,gem1_7
+name_30008_baoshi1_8,宝石1_8,gem1_8
+name_30009_baoshi2_1,宝石2_1,gem2_1
+name_30010_baoshi2_2,宝石2_2,gem2_2
+name_30011_baoshi2_3,宝石2_3,gem2_3
+name_30012_baoshi2_4,宝石2_4,gem2_4
+name_30021_baoshi2_5,宝石2_5,gem2_5
+name_30022_baoshi2_6,宝石2_6,gem2_6
+name_30023_baoshi2_7,宝石2_7,gem2_7
+name_30024_baoshi2_8,宝石2_8,gem2_8
+name_30025_baoshi3_1,宝石3_1,gem3_1
+name_30026_baoshi3_2,宝石3_2,gem3_2
+name_30027_baoshi3_3,宝石3_3,gem3_3
+name_30028_baoshi3_4,宝石3_4,gem3_4
+name_30029_baoshi3_5,宝石3_5,gem3_5
+name_30030_baoshi3_6,宝石3_6,gem3_6
+name_30031_baoshi3_7,宝石3_7,gem3_7
+name_30032_baoshi3_8,宝石3_8,gem3_8
+name_40001_baoxiang1,宝箱1,box1
+name_40002_baoxiang2,宝箱2,box2
+name_40003_baoxiang3,宝箱3,box3
+name_40004_baoxiang4,宝箱4,box4
+name_50001_jingyanyaoshui,经验药水,expMedicine
+name_50002_chujichongwujingyanyaoshui,初级宠物经验药水,primaryexpMedicine
+name_50003_zhongjichongwujingyanyaoshui,中级宠物经验药水,mediumexpMedicine
+name_50004_gaojichongwujingyanyaoshui,高级宠物经验药水,seniorexpMedicine
+name_50005_chujipilaoyaoshui,初级疲劳药水,primaryPLMedicine
+name_50006_zhongjipilaoyaoshui,中级疲劳药水,mediumPLMedicine
+name_50007_gaojipilaoyaoshui,高级疲劳药水,seniorPLMedicine
+name_50008_shuangbeijingyanyao,双倍经验药,doubleExpMedicine
+name_50009_sanbeijingyanyao,三倍经验药,tribleExpMedicine
+name_70001_fangyuxingwuqi,防御型武器,weapon1
+name_70002_fangyuxinghuyao,防御型护腰,belt1
+name_70003_fangyuxinghujia,防御型护甲,armor1
+name_70004_fangyuxingshouzhuo,防御型手镯,bracelet1
+name_70005_fangyuxingjiezhi,防御型戒指,ring1
+name_70006_fangyuxinghushenfu,防御型护身符,amulet1
+name_70007_wulixingwuqi,物理型武器,weapon2
+name_70008_wulixinghuyao,物理型护腰,belt2
+name_70009_wulixinghujia,物理型护甲,armor2
+name_70010_wulixingshouzhuo,物理型手镯,bracelet2
+name_70011_wulixingjiezhi,物理型戒指,ring2
+name_70012_wulixinghushenfu,物理型护身符,amulet2
+name_70013_fashuxingwuqi,法术型武器,weapon3
+name_70014_fashuxinghuyao,法术型护腰,belt3
+name_70015_fashuxinghujia,法术型护甲,armor3
+name_70016_fashuxingshouzhuo,法术型手镯,bracelet3
+name_70017_fashuxingjiezhi,法术型戒指,ring3
+name_70018_fashuxinghushenfu,法术型护身符,amulet3
+name_70019_zhiyuanxingwuqi,支援型武器,weapon4
+name_70020_zhiyuanxinghuyao,支援型护腰,belt4
+name_70021_zhiyuanxinghujia,支援型护甲,armor4
+name_70022_zhiyuanxingshouzhuo,支援型手镯,bracelet4
+name_70023_zhiyuanxingjiezhi,支援型戒指,ring4
+name_70024_zhiyuanxinghushenfu,支援型护身符,amulet4
+tips_10001_yaoshi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_10002_wuming,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_10003_duihuanquan,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_10004_chujiqianghuacailiao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_11001_chujiqianghuacailiao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_11002_zhongjiqianghuacailiao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_11003_gaojiqianghuacailiao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_10005_zhuangbeijinjiecailiao1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_10006_zhuangbeijinjiecailiao2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_10007_baoshikaikongcailiao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20001_suipian1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30001_baoshi1_1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30002_baoshi1_2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30003_baoshi1_3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30004_baoshi1_4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30005_baoshi1_5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30006_baoshi1_6,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30007_baoshi1_7,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30008_baoshi1_8,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30009_baoshi2_1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30010_baoshi2_2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30011_baoshi2_3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30012_baoshi2_4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30021_baoshi2_5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30022_baoshi2_6,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30023_baoshi2_7,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30024_baoshi2_8,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30025_baoshi3_1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30026_baoshi3_2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30027_baoshi3_3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30028_baoshi3_4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30029_baoshi3_5,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30030_baoshi3_6,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30031_baoshi3_7,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_30032_baoshi3_8,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_40001_baoxiang1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_40002_baoxiang2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_40003_baoxiang3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_40004_baoxiang4,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50001_jingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50002_chujichongwujingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50003_zhongjichongwujingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50004_gaojichongwujingyanyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50005_chujipilaoyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50006_zhongjipilaoyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50007_gaojipilaoyaoshui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50008_shuangbeijingyanyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_50009_sanbeijingyanyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70001_fangyuxingwuqi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70002_fangyuxinghuyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70003_fangyuxinghujia,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70004_fangyuxingshouzhuo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70005_fangyuxingjiezhi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70006_fangyuxinghushenfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70007_wulixingwuqi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70008_wulixinghuyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70009_wulixinghujia,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70010_wulixingshouzhuo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70011_wulixingjiezhi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70012_wulixinghushenfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70013_fashuxingwuqi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70014_fashuxinghuyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70015_fashuxinghujia,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70016_fashuxingshouzhuo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70017_fashuxingjiezhi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70018_fashuxinghushenfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70019_zhiyuanxingwuqi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70020_zhiyuanxinghuyao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70021_zhiyuanxinghujia,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70022_zhiyuanxingshouzhuo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70023_zhiyuanxingjiezhi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_70024_zhiyuanxinghushenfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.

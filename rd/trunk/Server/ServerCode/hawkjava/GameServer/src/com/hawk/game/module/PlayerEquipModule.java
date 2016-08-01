@@ -127,7 +127,7 @@ public class PlayerEquipModule extends PlayerModule{
 				return true;
 			}
 			else if(protocol.checkType(HS.code.EQUIP_DECOMPOSE_C)) {
-				//替换装备
+				//替换分解
 				onEquipDecompose(HS.code.EQUIP_DECOMPOSE_C_VALUE, protocol.parseProtocol(HSEquipDecompose.getDefaultInstance()));
 				return true;
 			}
@@ -652,8 +652,8 @@ public class PlayerEquipModule extends PlayerModule{
 			return ;
 		}
 		
-		consume.consumeTakeAffect(player, Action.EQUIP_DECOMPOSE);
-		award.rewardTakeAffect(player, Action.EQUIP_DECOMPOSE);
+		consume.consumeTakeAffectAndPush(player, Action.EQUIP_DECOMPOSE, hsCode);
+		award.rewardTakeAffectAndPush(player, Action.EQUIP_DECOMPOSE, hsCode);
 		
 		HSEquipDecompose.Builder response = HSEquipDecompose.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_DECOMPOSE_S_VALUE, response));

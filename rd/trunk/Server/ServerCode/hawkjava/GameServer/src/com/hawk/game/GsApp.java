@@ -47,9 +47,12 @@ import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Login.HSLogin;
 import com.hawk.game.protocol.Login.HSLoginRet;
+import com.hawk.game.protocol.Login.HSReconnect;
+import com.hawk.game.protocol.Login.HSReconnectRet;
 import com.hawk.game.protocol.Player.HSPlayerCreate;
 import com.hawk.game.protocol.Player.HSPlayerCreateRet;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.protocol.Status.error;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.protocol.SysProtocol.HSHeartBeat;
 import com.hawk.game.service.GmService;
@@ -366,6 +369,7 @@ public class GsApp extends HawkApp {
 	@Override
 	public boolean onSessionProtocol(HawkSession session, HawkProtocol protocol) {
 		// 协议解密
+		
 		protocol = ProtoUtil.decryptionProtocol(session, protocol);
 		if (protocol == null) {
 			return false;
@@ -383,9 +387,11 @@ public class GsApp extends HawkApp {
 			}
 
 			try {
+
 				if (session.getAppObject() == null) {
 					// 登陆协议
 					if (protocol.checkType(HS.code.LOGIN_C)) {
+	
 						String puid = protocol.parseProtocol(HSLogin.getDefaultInstance()).getPuid().trim().toLowerCase();
 						if (!checkPuidValid(puid, session)) {
 							return true;
@@ -394,7 +400,7 @@ public class GsApp extends HawkApp {
 						// 登陆协议时间间隔控制
 						synchronized (puidLoginTime) {
 							if (puidLoginTime.containsKey(puid) && HawkTime.getMillisecond() <= puidLoginTime.get(puid) + 5000) {
-								return true;
+								//return true;
 							}
 							puidLoginTime.put(puid, HawkTime.getMillisecond());
 						}
@@ -403,7 +409,7 @@ public class GsApp extends HawkApp {
 							return true;
 						}
 
-						if (!preparePuidSession(puid, session)) {
+						if (!preparePuidSession(HS.code.RECCONECT_C_VALUE, puid, session)) {
 							return true;
 						}
 
@@ -421,14 +427,34 @@ public class GsApp extends HawkApp {
 							return true;
 						}
 
-						if (!preparePuidSession(puid, session)) {
+						if (!preparePuidSession(HS.code.RECCONECT_C_VALUE, puid, session)) {
 							return true;
 						}
 
 						return true;
+					} else if (protocol.checkType(HS.code.RECCONECT_C_VALUE)) {
+						HSReconnect cmd = protocol.parseProtocol(HSReconnect.getDefaultInstance());
+						String puid = cmd.getPuid().trim().toLowerCase();
+						if (!reconnectPuidSession(cmd, puid, session)) {
+							return true;
+						}
+						
+						HSReconnectRet.Builder response = HSReconnectRet.newBuilder();
+						response.setStatus(Status.error.NONE_ERROR_VALUE);
+						session.sendProtocol(HawkProtocol.valueOf(HS.code.RECCONECT_S_VALUE, response));
+						
+						// 通知玩家其他模块玩家登陆成功
+						HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, ServerData.getInstance().getPlayerIdByPuid(puid));
+						HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_RECONNECT, xid);
+						msg.pushParam(cmd);
+						if (!HawkApp.getInstance().postMsg(msg))
+						{
+							HawkLog.errPrintln("post player reconnect message failed: " + puid);
+						}
+						
+						return true;
 					} else {
-						HawkLog.errPrintln("session appobj null cannot process unlogin protocol: "
-								+ protocol.getType());
+						HawkLog.errPrintln("session appobj null cannot process unlogin protocol: " + protocol.getType());
 						return false;
 					}
 				}
@@ -565,14 +591,16 @@ public class GsApp extends HawkApp {
 	 * @param puid
 	 * @return
 	 */
-	private boolean preparePuidSession(String puid, HawkSession session) {
+	private boolean preparePuidSession(int hsCode, String puid, HawkSession session) {
 		int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
 		if (playerId == 0) {
 			return false;
 		}
 
 		HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId);
+		logger.info("锁定玩家 {}", playerId);
 		HawkObjBase<HawkXID, HawkAppObj> objBase = lockObject(xid);
+		logger.info("锁定玩家成功 {}", playerId);
 		try {
 			// 对象不存在即创建
 			if (objBase == null || !objBase.isObjValid()) {
@@ -604,7 +632,43 @@ public class GsApp extends HawkApp {
 		}
 		return true;
 	}
+	
+	/**
+	 * 重新组装session
+	 * 
+	 * @param puid
+	 * @return
+	 */
+	private boolean reconnectPuidSession(HSReconnect cmd, String puid, HawkSession session) {
+		int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
+		if (playerId == 0) {
+			return false;
+		}
 
+		HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId);
+		HawkObjBase<HawkXID, HawkAppObj> objBase = lockObject(xid);
+		try {
+			// 对象不存在即创建
+			if (objBase == null || !objBase.isObjValid()) {
+				return false;
+			}
+
+			// 会话绑定应用对象
+			Player player = (Player) objBase.getImpl();
+			// 设置玩家puid
+			player.getPlayerData().setPuid(puid);
+			// 绑定会话对象
+			session.setAppObject(objBase.getImpl());
+			player.setSession(session);
+		} finally {
+			if (objBase != null) {
+				objBase.unlockObj();
+			}
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * 刷新全局数据
 	 */

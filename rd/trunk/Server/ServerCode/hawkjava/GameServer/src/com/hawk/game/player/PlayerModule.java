@@ -3,6 +3,7 @@ package com.hawk.game.player;
 import java.util.List;
 
 import org.hawk.app.HawkObjModule;
+import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 
 import com.google.protobuf.ProtocolMessageEnum;
@@ -33,7 +34,7 @@ public class PlayerModule extends HawkObjModule {
 	 * 
 	 * @return
 	 */
-	protected boolean onPlayerLogin() {
+	protected boolean onPlayerReconnect(HawkMsg msg) {
 		return true;
 	}
 
@@ -45,7 +46,16 @@ public class PlayerModule extends HawkObjModule {
 	protected boolean onPlayerAssemble() {
 		return true;
 	}
-
+	
+	/**
+	 * 玩家重新连接
+	 * 
+	 * @return
+	 */
+	protected boolean onPlayerLogin() {
+		return true;
+	}
+	
 	/**
 	 * 玩家下线处理
 	 * 

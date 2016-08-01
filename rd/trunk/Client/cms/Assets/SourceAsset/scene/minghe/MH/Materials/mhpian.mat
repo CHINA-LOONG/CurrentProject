@@ -144,15 +144,15 @@ Material:
       data:
         first:
           name: _HeatTime
-        second: .00999999978
+        second: -.0199999996
       data:
         first:
           name: _ForceX
-        second: .666000009
+        second: .0900000036
       data:
         first:
           name: _ForceY
-        second: .469999999
+        second: .140000001
     m_Colors:
       data:
         first:
@@ -165,4 +165,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .333801895, g: .688578308, b: .720588207, a: .5}
+        second: {r: .158999979, g: .716000021, b: .531613946, a: .559000015}

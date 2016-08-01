@@ -288,7 +288,7 @@ public class StaticDataMgr : MonoBehaviour
         }
 
         {
-            var data = InitTable<Chapter>("chapter");
+            var data = InitTable<Chapter>("instanceChapter");
             foreach (var item in data)
                 chapterData.Add(item.chapter, item);
         }
