@@ -72,7 +72,7 @@ public class UIMonsterInfo : UIBase
 		icon.SetLevel (level);
 		SetSpellIcon (unitData);
 
-		int monsterCharacter = unitData.character;
+		int monsterCharacter = unitData.disposition;
 		if (guid != -1)
 		{
 			GameUnit pet = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(guid);

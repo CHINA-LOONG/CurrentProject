@@ -311,8 +311,8 @@ public class GsConst {
 
 	// 副本难度
 	public static class InstanceDifficulty {
-		public static final int NORMAL_INSTANCE = 1;
-		public static final int HARD_INSTANCE = 2;
+		public static final int NORMAL_INSTANCE = 0;
+		public static final int HARD_INSTANCE = 1;
 	}
 
 	public static class Alliance {

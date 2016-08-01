@@ -147,7 +147,7 @@ public class BuilderUtil {
 		for (Entry<String, Integer> entry : monsterEntity.getSkillMap().entrySet()) {
 			skill.setSkillId(entry.getKey());
 			skill.setLevel(entry.getValue());
-			builder.addSkill(skill);
+			//builder.addSkill(skill);
 		}
 		return builder;
 	}

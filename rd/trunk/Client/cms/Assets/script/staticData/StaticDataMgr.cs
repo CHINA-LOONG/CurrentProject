@@ -69,7 +69,7 @@ public class StaticDataMgr : MonoBehaviour
         {
             var data = InitTable<UnitData>("unitData");
             foreach (var item in data)
-                unitData.Add(item.index, item);
+                unitData.Add(item.id, item);
         }
         {
             var data = InitTable<UnitBaseData>("unitBaseData");
@@ -309,7 +309,6 @@ public class StaticDataMgr : MonoBehaviour
             var data = InitTable<ItemStaticData>("item");
             foreach (var item in data)
             {
-                Debug.Log(item.id);
                 itemData.Add(item.id, item);
             }
         }
@@ -503,6 +502,7 @@ public class StaticDataMgr : MonoBehaviour
             {
                 item.demandItemList = ItemInfo.getItemInfoList(item.demandItem, ItemParseType.DemandItemType);
                 item.demandMonsterList = ItemInfo.getItemInfoList(item.demandMonster, ItemParseType.DemandMonsterType);
+                item.decomposeList = ItemInfo.getItemInfoList(item.decompose, ItemParseType.DemandItemType);
                 unitStageData.Add(item.stage, item);
                 //Logger.Log(item.id + "\t" + item.english);
             }
@@ -746,7 +746,6 @@ public class StaticDataMgr : MonoBehaviour
         {
             return blData;
         }
-
         return null;
     }
 
@@ -770,6 +769,11 @@ public class StaticDataMgr : MonoBehaviour
 		chapterData.TryGetValue (chapterIndex, out chapter);
 		return chapter;
 	}
+
+    public  Dictionary<int,Chapter> GetAllStaticChapter()
+    {
+        return chapterData;
+    }
 
     public InstanceEntry GetInstanceEntry(string instanceId)
     {

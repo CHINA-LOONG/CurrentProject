@@ -1879,7 +1879,7 @@ bossrenjie84Anpusha5awaken9e1,2,1,1,0,,,,,bossrenjie84Anpusha5awaken9e2,1.5,""""
 bossrenjie84Anpusha5awaken9e2,4,1,1,0,,,,,,,,,,,,StunImmuneb1,12345,,,,1
 bossrenjie85Dujiaoshou1awaken1e3,5,1,0,0,,,,,,,Containsdujiaoshou1buff|bossrenjie85Dujiaoshou1awaken1e1;Default|bossrenjie85Dujiaoshou1awaken1e4;,,,,,,12345,,,,1
 bossrenjie85Dujiaoshou1awaken1e1,2,1,0,0,,,,,bossrenjie85Dujiaoshou1awaken1e2,1.5,,,,,,,12345,,,,1
-bossrenjie85Dujiaoshou1awaken1e2,3,1,0,0,,,,,,,,1,1,0,1,,12345,,,magicdebuffMetalDotSlighte2,1
+bossrenjie85Dujiaoshou1awaken1e2,3,1,0,0,,,,,,,,1,1.2,0,1,,12345,,,magicdebuffMetalDotSlighte2,1
 bossrenjie85Dujiaoshou1awaken1e4,2,1,0,0,,,,,bossrenjie85Dujiaoshou1awaken1e5,1.5,,,,,,,12345,,,,1
 bossrenjie85Dujiaoshou1awaken1e5,3,1,0,0,,,,,,,,1,1,0,1,,12345,,,magicdebuffMetalDotSlighte2,1
 bossrenjie85Dujiaoshou1awaken2e1,2,1,1,0,,,,,bossrenjie85Dujiaoshou1awaken2e2,1,"""""",,,,,,12345,,,,1

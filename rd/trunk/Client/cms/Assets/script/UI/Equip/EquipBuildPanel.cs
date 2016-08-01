@@ -193,7 +193,7 @@ public class EquipBuildPanel : EquipPanelBase
             }
             else if(curDemand[i].type==(int)PB.itemType.PLAYER_ATTR)
             {
-                if (curDemand[i].itemId.Equals(((int)PB.playerAttr.COIN).ToString()))
+                if (curDemand[i].itemId.Equals(((int)PB.changeType.CHANGE_COIN).ToString()))
                 {
                     imgCoin.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(BattleConst.icon_jinbi);
                     if (GameDataMgr.Instance.PlayerDataAttr.coin<curDemand[i].count)

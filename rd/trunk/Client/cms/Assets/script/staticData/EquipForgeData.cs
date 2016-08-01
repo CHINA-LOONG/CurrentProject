@@ -20,4 +20,9 @@ public class EquipForgeData
     {
         ItemInfo.getItemInfoList1(punchinfo, this.punchDemand, ItemParseType.DemandItemType);
     }
+
+    public void GetDecompose(ref List<ItemInfo> decomposeinfo)
+    {
+        ItemInfo.getItemInfoList1(decomposeinfo, decompose, ItemParseType.DemandItemType);
+    }
 }

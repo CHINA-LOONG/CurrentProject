@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public enum InstanceDifficulty :int
 {
 	Normal = 0,
-	Difficult
+	Hard
 }
 
 public	class InstanceEntryRuntimeData
@@ -13,13 +13,13 @@ public	class InstanceEntryRuntimeData
 	public	string	instanceId;
 	public	int		star;
 	public	int	countDaily;
-
+    public bool isOpen = true;
 	public	InstanceEntry	staticData;
 }
 public class InstanceMapService : MonoBehaviour 
 {
 	public	int	openedMaxNormlChapter = 1;
-	public	int	openedMaxDifficultyChapter = 1;
+	public	int	openedMaxHardChapter = 0;
 	public	List<InstanceEntryRuntimeData>	openChapterInstanceList = new List<InstanceEntryRuntimeData> ();
 
 	static InstanceMapService mInst = null;
@@ -68,12 +68,8 @@ public class InstanceMapService : MonoBehaviour
 
 	private	void	AddOpenChapeterInstance(List<PB.InstanceState> finishedInstance)
 	{
-        //test only
-        finishedInstance.Clear();
-        //end test
-
 		openedMaxNormlChapter = 1;
-		openedMaxDifficultyChapter = 1;
+		openedMaxHardChapter = 0;
 
 		PB.InstanceState subState = null;
 		for (int i = 0; i< finishedInstance.Count; ++i) 
@@ -90,6 +86,7 @@ public class InstanceMapService : MonoBehaviour
 			subRuntimeData.instanceId = subState.instanceId;
 			subRuntimeData.star = subState.star;
 			subRuntimeData.countDaily = subState.countDaily;
+            subRuntimeData.isOpen = true;
 
 			openChapterInstanceList.Add(subRuntimeData);
 
@@ -101,11 +98,11 @@ public class InstanceMapService : MonoBehaviour
 					openedMaxNormlChapter = subRuntimeData.staticData.chapter;
 				}
 			}
-			else if(subRuntimeData.staticData.difficulty == (int) InstanceDifficulty.Difficult)
+			else if(subRuntimeData.staticData.difficulty == (int) InstanceDifficulty.Hard)
 			{
-				if(openedMaxDifficultyChapter < subRuntimeData.staticData.chapter)
+				if(openedMaxHardChapter < subRuntimeData.staticData.chapter)
 				{
-					openedMaxDifficultyChapter = subRuntimeData.staticData.chapter;
+					openedMaxHardChapter = subRuntimeData.staticData.chapter;
 				}
 			}
 		}
@@ -116,7 +113,7 @@ public class InstanceMapService : MonoBehaviour
 	private	void	AddLeftInstanceInChapter()
 	{
 		AddLeftInstance (InstanceDifficulty.Normal, openedMaxNormlChapter);
-		AddLeftInstance (InstanceDifficulty.Difficult, openedMaxDifficultyChapter);
+		AddLeftInstance (InstanceDifficulty.Hard, openedMaxHardChapter);
 	}
 
 	private	void	AddLeftInstance(InstanceDifficulty diffType,int maxChapter)
@@ -131,6 +128,7 @@ public class InstanceMapService : MonoBehaviour
 		}
 		else
 		{
+            bool isOpen = true;
 			InstanceEntry subStaticData = null;
 			for(int i =0 ; i < listStaticInstance.Count ; ++ i)
 			{
@@ -147,7 +145,8 @@ public class InstanceMapService : MonoBehaviour
 				}
 				if(!isExist)
 				{
-					AddNoFinishedInstance(subStaticData);
+					AddNoFinishedInstance(subStaticData,isOpen);
+                    isOpen = false;
 				}
 			}
 		}
@@ -159,42 +158,57 @@ public class InstanceMapService : MonoBehaviour
 		if (listStaticInstance.Count == 0)
 			return false;
 
-		int openLevel = 1;
-		/*foreach (InstanceEntry subEntry in listStaticInstance) 
-		{
-			if(openLevel < subEntry.level)
-			{
-				openLevel = subEntry.level;
-			}
-		}
-        */
-		if (GameDataMgr.Instance.PlayerDataAttr.level < openLevel)
-		{
-			return false;
-		}
+        Chapter chapter = StaticDataMgr.Instance.GetChapterData(nextChapter);
+        if(null == chapter)
+        {
+            return false;
+        }
+        int openNeedLevel = 1;
+        int openedMaxChapter = 0;
+        if(difftype == InstanceDifficulty.Normal)
+        {
+            openedMaxChapter = openedMaxNormlChapter;
+            openNeedLevel = chapter.normalLevel;
+        }
+        else
+        {
+            openedMaxChapter = openedMaxHardChapter;
+            openNeedLevel = chapter.hardLevel;
+        }
+        if(openedMaxChapter >= nextChapter)
+        {
+            return false;//已经开启
+        }
 
+		if (GameDataMgr.Instance.PlayerDataAttr.level < openNeedLevel)
+		{
+			return false;//等级不够
+		}
+        bool isOpen = true;
 		foreach (InstanceEntry subEntry in listStaticInstance) 
 		{
-			AddNoFinishedInstance(subEntry);
+			AddNoFinishedInstance(subEntry,isOpen);
+            isOpen = false;
 		}
 
 		if (difftype == InstanceDifficulty.Normal) 
 		{
 			openedMaxNormlChapter = nextChapter;
 		}
-		else if (difftype == InstanceDifficulty.Difficult)
+		else if (difftype == InstanceDifficulty.Hard)
 		{
-			openedMaxDifficultyChapter = nextChapter;
+			openedMaxHardChapter = nextChapter;
 		}
 		return true;
 	}
 
-	private	void AddNoFinishedInstance(InstanceEntry staticData)
+	private	void AddNoFinishedInstance(InstanceEntry staticData,bool isOpen = false)
 	{
 		InstanceEntryRuntimeData runtimeData = new InstanceEntryRuntimeData();
 		runtimeData.instanceId = staticData.id;
 		runtimeData.countDaily = 0;
 		runtimeData.star =0;
+        runtimeData.isOpen = isOpen;
 		runtimeData.staticData = staticData;
 		
 		openChapterInstanceList.Add(runtimeData);
@@ -215,21 +229,18 @@ public class InstanceMapService : MonoBehaviour
     //------------------------------------------------------------------------------------------------
     public InstanceEntryRuntimeData GetNextRuntimeInstance(string instanceId)
     {
+        InstanceEntryRuntimeData curInstance = GetRuntimeInstance(instanceId);
+        int nextIndex  = curInstance.staticData.index + 1;
+
         InstanceEntryRuntimeData subEntry = null;
         for (int i = 0; i < openChapterInstanceList.Count; ++i)
         {
             subEntry = openChapterInstanceList[i];
-            if (subEntry.instanceId.EndsWith(instanceId))
+            if(nextIndex == subEntry.staticData.index &&
+                subEntry.staticData.chapter == curInstance.staticData.chapter&&
+                subEntry.staticData.difficulty == curInstance.staticData.difficulty)
             {
-                if (i < openChapterInstanceList.Count - 1)
-                {
-                    InstanceEntry instanceData = StaticDataMgr.Instance.GetInstanceEntry(openChapterInstanceList[i + 1].instanceId);
-
-                 //   if (instanceData != null && instanceData.level <= GameDataMgr.Instance.PlayerDataAttr.level)
-                 //   {
-                     //   return openChapterInstanceList[i + 1];
-                  //  }
-                }
+                return subEntry;
             }
         }
         return null;
@@ -259,6 +270,17 @@ public class InstanceMapService : MonoBehaviour
 		return StaticDataMgr.Instance.GetInstanceEntryList((int) diffType,chapter);
 	}
 
+    public bool IsChapterOpened(int chapter)
+    {
+        return chapter <= openedMaxNormlChapter;
+    }
+
+    public  bool    IsHardChapterOpend(int chapter)
+    {
+        return chapter <= openedMaxHardChapter;
+    }
+
+
 	#region  Events
 
 	void	OnFinishedInstnace(int star, string instanceID)
@@ -277,7 +299,22 @@ public class InstanceMapService : MonoBehaviour
 		}
 		runtimeInstance.countDaily ++;
 
-		//todo:other
+        //next instanceid
+        InstanceEntryRuntimeData nextInstance = GetNextRuntimeInstance(instanceID);
+        if(nextInstance != null)
+        {
+            nextInstance.isOpen = true;
+        }
+        else
+        {
+            //开启下一章节
+            int nextChapter = runtimeInstance.staticData.chapter + 1;
+            bool openNextChapter = CheckAndOpenNextChapter((InstanceDifficulty)runtimeInstance.staticData.difficulty, nextChapter);
+            if(openNextChapter)
+            {
+                GameEventMgr.Instance.FireEvent<int>(GameEventList.OpenNewChapter, nextChapter);
+            }
+        }
 	}
 
 	#endregion

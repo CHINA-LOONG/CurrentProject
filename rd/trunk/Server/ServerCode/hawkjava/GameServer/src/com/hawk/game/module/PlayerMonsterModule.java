@@ -327,6 +327,7 @@ public class PlayerMonsterModule extends PlayerModule {
 						}
 					}
 				}
+				
 				if (false == valid) {
 					sendError(hsCode, Status.monsterError.STAGE_CONSUME);
 					return true;
@@ -412,7 +413,7 @@ public class PlayerMonsterModule extends PlayerModule {
 				return true;
 			}
 			
-			MonsterStageCfg monsterStageCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterStageCfg.class, monsterEntity.getStage());
+			MonsterStageCfg monsterStageCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterStageCfg.class, (int)monsterEntity.getStage());
 			if (monsterStageCfg == null) {
 				sendError(HS.code.MONSTER_DECOMPOSE_C_VALUE, Status.error.CONFIG_NOT_FOUND_VALUE);
 				return true;

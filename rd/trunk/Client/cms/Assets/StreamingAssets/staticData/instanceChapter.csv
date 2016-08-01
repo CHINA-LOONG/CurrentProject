@@ -1,5 +1,6 @@
-﻿#NUM,TEXT,NUM,NUM,TEXT,TEXT,TEXT,TEXT
-chapter,name,level1,level2,reward1,reward2,drop1,drop2
-#章节Id,章节名称,难度1等级,难度2等级,难度1满星rewardId,难度2满星rewardId,难度1掉落rewardId,难度2掉落rewardId
-1,第一章,1,10,10001,10001,10001,10001
-2,第二章,5,15,10001,10001,10001,10001
+﻿#NUM,TEXT,NUM,TEXT,TEXT,NUM,TEXT,TEXT
+chapter,name,normalLevel,normalReward,normalDrop,hardLevel,hardReward,hardDrop
+#章节Id,章节名称,难度1等级,难度1满星rewardId,难度1掉落rewardId,难度2等级,难度2满星rewardId,难度2掉落rewardId
+1,第一章,1,10001,10001,10,10001,10001
+2,第二章,5,10001,10001,15,10001,10001
+3,第三章,5,10001,10001,15,10001,10001

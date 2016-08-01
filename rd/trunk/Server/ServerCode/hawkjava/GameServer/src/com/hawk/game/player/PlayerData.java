@@ -10,6 +10,7 @@ import javax.persistence.Embeddable;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBManager;
+import org.hawk.log.HawkLog;
 import org.hawk.net.protocol.HawkProtocol;
 
 import sun.rmi.runtime.Log;
@@ -101,6 +102,8 @@ public class PlayerData {
 	 */
 	private ShopEntity shopEntity = null;
 
+	private HawkProtocol tempProtocol = null;
+	
 	/**
 	 * 公会基本信息
 	 */
@@ -781,12 +784,26 @@ public class PlayerData {
 			for (Entry<Integer, MonsterEntity> entry : monsterEntityMap.entrySet()) {
 				builder.addMonsterInfo(BuilderUtil.genMonsterBuilder(entry.getValue()));
 			}
-		} else {
+		}
+		else {
 			builder.addMonsterInfo(BuilderUtil.genMonsterBuilder(monsterEntityMap.get(id)));
 		}
 
 		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.MONSTER_INFO_SYNC_S, builder);
 		player.sendProtocol(protocol);
+		
+		if (tempProtocol == null) {
+			tempProtocol = protocol;
+		}
+		else
+		{
+			//HawkLog.debugPrintln(protocol.toString());
+			
+			if (!protocol.toString().equals(tempProtocol.toString())) {
+				HawkLog.debugPrintln(protocol.toString());
+				HawkLog.debugPrintln(tempProtocol.toString());
+			}
+		}
 	}
 
 	/**

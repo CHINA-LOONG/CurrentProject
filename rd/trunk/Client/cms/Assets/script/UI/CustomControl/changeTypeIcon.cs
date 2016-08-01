@@ -11,6 +11,9 @@ public class changeTypeIcon : MonoBehaviour
     public Text itemCountText;
     public Button iconButton;
 
+    public PB.changeType type;
+    public int count;
+
     public static changeTypeIcon CreateIcon(PB.changeType type, int count)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("changeTypeIcon");
@@ -29,6 +32,9 @@ public class changeTypeIcon : MonoBehaviour
 
     public void RefreshWithInfo(PB.changeType type, int count)
     {
+        this.type = type;
+        this.count = count;
+
         SetIconImage(type);
         SetFrameImage(1);
         SetCountText(count);

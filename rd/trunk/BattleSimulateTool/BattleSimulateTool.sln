@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleSimulateTool.CSharp.Plugins", "BattleSimulateTool.CSharp.Plugins.csproj", "{E9D38118-B847-9357-B4E7-431B9A36D378}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleSimulateTool.CSharp", "BattleSimulateTool.CSharp.csproj", "{025919EF-371F-429C-DF34-03E9DAB71099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleSimulateTool.CSharp.Editor", "BattleSimulateTool.CSharp.Editor.csproj", "{A7DC0DBD-D2F2-217C-B207-3599F4F7DACC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9D38118-B847-9357-B4E7-431B9A36D378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9D38118-B847-9357-B4E7-431B9A36D378}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9D38118-B847-9357-B4E7-431B9A36D378}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9D38118-B847-9357-B4E7-431B9A36D378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{025919EF-371F-429C-DF34-03E9DAB71099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{025919EF-371F-429C-DF34-03E9DAB71099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{025919EF-371F-429C-DF34-03E9DAB71099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{025919EF-371F-429C-DF34-03E9DAB71099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7DC0DBD-D2F2-217C-B207-3599F4F7DACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7DC0DBD-D2F2-217C-B207-3599F4F7DACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7DC0DBD-D2F2-217C-B207-3599F4F7DACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7DC0DBD-D2F2-217C-B207-3599F4F7DACC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

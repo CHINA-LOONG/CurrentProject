@@ -15,6 +15,9 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public Button m_SpeechButton;
 	public BuildButton shopButton;
 
+    public BuildButton m_ComposeButton;
+    public BuildButton m_DecomposeButton;
+
 
     public PopupList m_LangPopup;
 
@@ -31,13 +34,17 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     [HideInInspector]
     public UIBag uiBag;
     [HideInInspector]
-    public UIInstance uiInstance;
+    public InstanceMap uiInstance;
     [HideInInspector]
     public UIPetList uiPetList;
     [HideInInspector]
     public UIAdjustBattleTeam uiAdjustBattleTeam;
     [HideInInspector]
     public UIShop uiShop;
+    [HideInInspector]
+    public UICompose uiCompose;
+    [HideInInspector]
+    public UIDecompose uiDecompose;
 
     void Start()
     {
@@ -48,6 +55,9 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         EventTriggerListener.Get(m_SpeechButton.gameObject).onClick = OnSpeechButtonClick;
         EventTriggerListener.Get(btnMail.gameObject).onClick = OnMailButtonClick;
 		EventTriggerListener.Get (shopButton.gameObject).onClick = OnShopButtonClick;
+
+        EventTriggerListener.Get(m_ComposeButton.gameObject).onClick = OnComposeButtonClick;
+        EventTriggerListener.Get(m_DecomposeButton.gameObject).onClick = OnDecomposeButtonClick;
 
 
         m_LangPopup.Initialize<PopupListIndextDelegate>(this);
@@ -105,13 +115,11 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         btnMail.SetRemind(UIUtil.CheckHaveNewMail());
     }
 
-  //  static int oldLevel = 1;
- //   static int newLevel = 2;
+
     void BagButtonClick(GameObject go)
     {
         uiBag = UIMgr.Instance.OpenUI_(UIBag.ViewName)as UIBag;
 
-      //  LevelUp.OpenWith(oldLevel ++, oldLevel++, 200, 399);
     }
 
     void PetButtonClick(GameObject go)
@@ -132,6 +140,15 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     void OnMailButtonClick(GameObject go)
     {
         uiMail = UIMgr.Instance.OpenUI_(UIMail.ViewName) as UIMail;
+    }
+
+    void OnComposeButtonClick(GameObject go)
+    {
+        uiCompose = UIMgr.Instance.OpenUI_(UICompose.ViewName) as UICompose;
+    }
+    void OnDecomposeButtonClick(GameObject go)
+    {
+        uiDecompose = UIMgr.Instance.OpenUI_(UIDecompose.ViewName) as UIDecompose;
     }
 
 	public	UIShop OpenShop(int shopType)
@@ -198,11 +215,14 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         UIMgr.Instance.DestroyUI(uiPetList);
         UIMgr.Instance.DestroyUI(uiAdjustBattleTeam);
 		UIMgr.Instance.DestroyUI (uiShop);
+        UIMgr.Instance.DestroyUI(uiCompose);
+        UIMgr.Instance.DestroyUI(uiDecompose);
     }
 
-    public UIInstance OpenInstanceUI()
+    public InstanceMap OpenInstanceUI()
     {
-        uiInstance = UIMgr.Instance.OpenUI_(UIInstance.ViewName) as UIInstance;
+
+        uiInstance = UIMgr.Instance.OpenUI_(InstanceMap.ViewName) as InstanceMap;
         return uiInstance;
     }
 }

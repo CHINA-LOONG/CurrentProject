@@ -42,7 +42,7 @@ public class BuildModule : ModuleBase
         if (param != null)
         {
             int initState = System.Convert.ToInt32(param);
-            UIInstance uiInstance = uiBuild.OpenInstanceUI();
+            InstanceMap uiInstance = uiBuild.OpenInstanceUI();
             switch (initState)
             {
                 case 1:

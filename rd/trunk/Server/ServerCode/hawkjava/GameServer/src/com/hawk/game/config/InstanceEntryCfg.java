@@ -19,6 +19,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 	protected final String id;
 	protected final String name;
 	protected final int chapter;
+	protected final int index;
 	protected final int type;
 	protected final int difficulty;
 	protected final int fatigue;
@@ -38,8 +39,6 @@ public class InstanceEntryCfg extends HawkConfigBase {
 
 	// client only
 	protected final String desc= null;
-	// 章节内顺序目前按照配置顺序读取，此index备用
-	protected final int index = 0;
 
 	// assemble
 	protected InstanceChapterCfg chapterCfg;
@@ -50,6 +49,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		id = "";
 		name = "";
 		chapter = 0;
+		index = 0;
 		type = 0;
 		difficulty = 0;
 		fatigue = 0;
@@ -72,7 +72,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 	protected boolean checkValid() {
 		chapterCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceChapterCfg.class, chapter);
 		if (null == chapterCfg) {
-			HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", chapter));
+			HawkLog.errPrintln(String.format("config invalid InstanceChapterCfg : %s", chapter));
 			return false;
 		}
 
@@ -190,7 +190,11 @@ public class InstanceEntryCfg extends HawkConfigBase {
 	public int getChapter() {
 		return chapter;
 	}
-	
+
+	public int getIndex() {
+		return index;
+	}
+
 	public InstanceChapterCfg getChapterCfg() {
 		return chapterCfg;
 	}

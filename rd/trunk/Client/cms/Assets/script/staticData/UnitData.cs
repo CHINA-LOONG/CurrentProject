@@ -5,7 +5,7 @@ using System;
 
 public class UnitData
 {
-
+    //TODO：标记查看是否修改
 	private static System.ComponentModel.Int64Converter _unused = new System.ComponentModel.Int64Converter();
 	private static System.ComponentModel.DecimalConverter _unused2 = new System.ComponentModel.DecimalConverter();
 	private static System.ComponentModel.ByteConverter _unused3 = new System.ComponentModel.ByteConverter();
@@ -26,11 +26,12 @@ public class UnitData
 	//private static System.ComponentModel.EnumConverter _unused18 = new System.ComponentModel.EnumConverter(typeof(<any your enum>));
 	private static System.ComponentModel.TimeSpanConverter _unused19 = new System.ComponentModel.TimeSpanConverter();
 
-    public string index;
+    public string id;
     public string assetID;
     public string uiAsset;
     public string nickName;
-    public int grade;
+    public int type;
+    public int rarity;
     public byte isEvolutionable;
     public string evolutionID;
     public int property;
@@ -54,7 +55,7 @@ public class UnitData
     public string spellIDList;
     public string weakpointList;
 	public int	friendship;
-	public int character;
+	public int disposition;
     public string closeUp;
 
 	public string NickNameAttr

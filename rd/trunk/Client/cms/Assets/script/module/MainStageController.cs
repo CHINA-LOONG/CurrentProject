@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class MainStageController : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class MainStageController : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        bool isMouseOnUI = false;
 #if UNITY_ANDROID
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
@@ -156,25 +158,41 @@ public class MainStageController : MonoBehaviour
 #if UNITY_STANDALONE_WIN
         if (Input.GetMouseButton(0))
         {
-            float moveLen = Input.GetAxis("Mouse X");
-            if (moveLen != 0.0f)
+            isMouseOnUI = EventSystem.current.IsPointerOverGameObject();
+            if (isMouseOnUI == false)
             {
-                //Vector3 movePos = new Vector3(moveLen * Time.deltaTime * mMoveSpeed, 0.0f, 0.0f);
-                //Camera.main.transform.localPosition += movePos;
+                float moveLen = Input.GetAxis("Mouse X");
+                if (moveLen != 0.0f)
+                {
+                    //Vector3 movePos = new Vector3(moveLen * Time.deltaTime * mMoveSpeed, 0.0f, 0.0f);
+                    //Camera.main.transform.localPosition += movePos;
 
-                float curRotAngle = moveLen * mMoveSpeed * Time.deltaTime;
-                mCurYawAngle += curRotAngle;
-                if (mCurYawAngle > mMaxYawAngle)
-                {
-                    curRotAngle = mMaxYawAngle - (mCurYawAngle - curRotAngle);
-                    mCurYawAngle = mMaxYawAngle;
+                    float curRotAngle = moveLen * mMoveSpeed * Time.deltaTime;
+                    mCurYawAngle += curRotAngle;
+                    if (mCurYawAngle > mMaxYawAngle)
+                    {
+                        curRotAngle = mMaxYawAngle - (mCurYawAngle - curRotAngle);
+                        mCurYawAngle = mMaxYawAngle;
+                    }
+                    else if (mCurYawAngle < mMinYawAngle)
+                    {
+                        curRotAngle = mMinYawAngle - (mCurYawAngle - curRotAngle);
+                        mCurYawAngle = mMinYawAngle;
+                    }
+                    ResetCameraPos(curRotAngle);
                 }
-                else if (mCurYawAngle < mMinYawAngle)
+
+                //raycast 3d objects
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit, 1000))
                 {
-                    curRotAngle = mMinYawAngle - (mCurYawAngle - curRotAngle);
-                    mCurYawAngle = mMinYawAngle;
+                    mCurrentSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
+                    if (mCurrentSelectedObj != null)
+                    {
+                        mCurrentSelectedObj.SetSelected(true);
+                    }
                 }
-                ResetCameraPos(curRotAngle);
             }
         }
         else
@@ -204,41 +222,28 @@ public class MainStageController : MonoBehaviour
                 }
                 ResetCameraPos(adjustRotAngle);
             }
-        }
-#endif
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 1000))
-            {
-                mCurrentSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
-                if (mCurrentSelectedObj != null)
-                {
-                    mCurrentSelectedObj.SetSelected(true);
-                }
-            }
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
             if (mCurrentSelectedObj != null)
             {
                 mCurrentSelectedObj.SetSelected(false);
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, 1000))
+                isMouseOnUI = EventSystem.current.IsPointerOverGameObject();
+                if (isMouseOnUI == false)
                 {
-                    SelectableObj curUpSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
-                    if (curUpSelectedObj == mCurrentSelectedObj)
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out hit, 1000))
                     {
-                        OnSelectableObjClicked(mCurrentSelectedObj);
+                        SelectableObj curUpSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
+                        if (curUpSelectedObj == mCurrentSelectedObj)
+                        {
+                            OnSelectableObjClicked(mCurrentSelectedObj);
+                        }
                     }
                 }
                 mCurrentSelectedObj = null;
             }
         }
-
+#endif
     }
     //---------------------------------------------------------------------------------------------
     public void OnSelectableObjClicked(SelectableObj selectedObj)
@@ -250,7 +255,7 @@ public class MainStageController : MonoBehaviour
                 UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
                 if (uiBuild !=  null)
                 {
-                    uiBuild.OpenInstanceUI();
+                    //uiBuild.OpenInstanceUI();
                 }
             }
         }

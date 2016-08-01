@@ -46,15 +46,15 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 疲劳值
 	@Column(name = "fatigue", nullable = false)
 	private int fatigue = 0;
-	
+
 	// 技能点
 	@Column(name = "skillPoint", nullable = false)
 	private int skillPoint = 0;
-	
+
 	// 技能点开始计时时间
 	@Column(name = "skillPointBeginTime")
 	private Calendar skillPointBeginTime = null;
-	
+
 	// 任务状态，记录已完成任务Id
 	@Column(name = "questComplete", nullable = false)
 	private String questCompleteJson = "";
@@ -70,7 +70,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 各副本完成星级：1-3
 	@Column(name = "instanceStar", nullable = false)
 	private String instanceStarJson = "";
-	
+
 	// 今日各副本完成次数
 	@Column(name = "instanceCountDaily", nullable = false)
 	private String instanceCountDailyJson = "";
@@ -190,15 +190,15 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 今日领取体力次数
 	@Column(name = "fatigueClaimCountDaily", nullable = false)
 	private int fatigueClaimCountDaily = 0;
-	
+
 	// 商品充值次数记录
 	@Column(name = "rechargeRecord", nullable = false)
 	private String rechargeRecordJson = "";
-	
+
 	// 月卡结束时间
 	@Column(name = "monthCardEndTime")
 	private Calendar monthCardEndTime = null;
-	
+
 	// 刷新时间
 	@Column(name = "refreshTime")
 	private String refreshTimeJson = null;
@@ -206,7 +206,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 签到次数
 	@Column(name = "signInCount", nullable = false)
 	private byte signInCount = 0;
-	
+
 	// 双倍剩余经验次数
 	@Column(name = "doubleExpLeft", nullable = false)
 	private byte doubleExpLeft = 0;
@@ -214,7 +214,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 三倍剩余经验次数
 	@Column(name = "tripleExpLeft", nullable = false)
 	private byte tripleExpLeft = 0;
-	
+
 	@Column(name = "loginCount", nullable = false)
 	private int loginCount = 0;
 
@@ -265,7 +265,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 	protected int hardIndex = 0;
 	@Transient
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
+
 	public StatisticsEntity() {
 		this.createTime = HawkTime.getCalendar();
 		this.skillPointBeginTime = HawkTime.getCalendar();
@@ -296,7 +296,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 	public int getFatigue() {
 		return fatigue;
 	}
-	
+
 	public void setFatigue(int fatigue) {
 		this.fatigue = fatigue;
 	}
@@ -453,23 +453,23 @@ public class StatisticsEntity  extends HawkDBEntity {
 	public int getRechargeTime(String productId){
 		if (rechargeRecordMap.containsKey(productId)) {
 			return rechargeRecordMap.get(productId);
-		}	
+		}
 		return 0;
 	}
-	
+
 	public Map<String, Integer> getRechargeRecordMap() {
 		return rechargeRecordMap;
 	}
-	
+
 	public void AddRechargeRecord(String productId) {
 		if (rechargeRecordMap.containsKey(productId)) {
 			rechargeRecordMap.put(productId, rechargeRecordMap.get(productId) + 1);
 		}
 		else{
 			rechargeRecordMap.put(productId, 1);
-		}	
+		}
 	}
-	
+
 	public Calendar getMonthCardEndTime() {
 		return monthCardEndTime;
 	}
@@ -773,18 +773,34 @@ public class StatisticsEntity  extends HawkDBEntity {
 		return normalChapter;
 	}
 
+	public void setNormalInstanceChapter(int chapter) {
+		this.normalChapter = chapter;
+	}
+
 	public int getNormalInstanceIndex() {
 		return normalIndex;
+	}
+
+	public void setNormalInstanceIndex(int index) {
+		this.normalIndex = index;
 	}
 
 	public int getHardInstanceChapter() {
 		return hardChapter;
 	}
 
+	public void setHardInstanceChapter(int chapter) {
+		this.hardChapter = chapter;
+	}
+
 	public int getHardInstanceIndex() {
 		return hardIndex;
 	}
-	
+
+	public void setHardInstanceIndex(int index) {
+		this.hardIndex = index;
+	}
+
 	/*
 	 * 经验加倍是否还有剩余次数
 	 */
@@ -792,36 +808,36 @@ public class StatisticsEntity  extends HawkDBEntity {
 	{
 		return doubleExpLeft > 0 || tripleExpLeft > 0;
 	}
-	
+
 	public void increaseDoubleExpLeft(int times) {
 		doubleExpLeft += times;
 	}
-	
+
 	public void increaseTripleExpLeft(int times) {
 		tripleExpLeft += times;
 	}
-	
+
 	public void decreaseDoubleExpLeft(int times) {
 		doubleExpLeft -= times;
 	}
-	
+
 	public void decreaseTripleExpLeft(int times) {
 		tripleExpLeft -= times;
 	}
-	
+
 	public int getDoubleExpLeftTimes() {
 		return doubleExpLeft;
 	}
-	
+
 	public int getTripleExpLeftTimes() {
 		return tripleExpLeft;
 	}
-	
+
 	@Override
 	public boolean decode() {
 		if (refreshTimeJson != null && false == "".equals(refreshTimeJson) && false == "null".equals(refreshTimeJson)) {
 			refreshStringMap = HawkJsonUtil.getJsonInstance().fromJson(refreshTimeJson, new TypeToken<HashMap<Integer, String>>() {}.getType());
-			for (Map.Entry<Integer, String> entry : refreshStringMap.entrySet()) {				
+			for (Map.Entry<Integer, String> entry : refreshStringMap.entrySet()) {
 				try {
 					Date date = dateFormat.parse(entry.getValue());
 					Calendar calendar = Calendar.getInstance();
@@ -831,7 +847,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 					HawkException.catchException(e);
 					return false;
 				}
-			}					
+			}
 		}
 		if (questCompleteJson != null && false == "".equals(questCompleteJson) && false == "null".equals(questCompleteJson)) {
 			questCompleteSet = HawkJsonUtil.getJsonInstance().fromJson(questCompleteJson, new TypeToken<HashSet<Integer>>() {}.getType());
@@ -857,34 +873,31 @@ public class StatisticsEntity  extends HawkDBEntity {
 		if (rechargeRecordJson != null && false == "".equals(rechargeRecordJson) && false == "null".equals(rechargeRecordJson)) {
 			rechargeRecordMap = HawkJsonUtil.getJsonInstance().fromJson(rechargeRecordJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
-		
+
 		// 0表示未开始任何章节
 		normalChapter = 0;
 		hardChapter = 0;
 		// 0表示第一个副本
 		normalIndex = 0;
 		hardIndex = 0;
+
 		for (Entry<String, Integer> entry : instanceStarMap.entrySet()) {
 			InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, entry.getKey());
 			if (entryCfg != null) {
+				int chapter = entryCfg.getChapter();
+				int index = entryCfg.getIndex();
 				if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
-					int chapter = entryCfg.getChapter();
 					if (chapter > normalChapter) {
 						normalChapter = chapter;
-						normalIndex = 0;
-					}
-					int index = InstanceUtil.getInstanceChapterIndex(entryCfg.getInstanceId());
-					if (index > normalIndex) {
+						normalIndex = index;
+					} else if (chapter == normalChapter && index > normalIndex) {
 						normalIndex = index;
 					}
-				} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
-					int chapter = entryCfg.getChapter();
+				} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
 					if (chapter > hardChapter) {
 						hardChapter = chapter;
-						hardIndex = 0;
-					}
-					int index = InstanceUtil.getInstanceChapterIndex(entryCfg.getInstanceId());
-					if (index > hardIndex) {
+						hardIndex = index;
+					} else if (chapter == hardChapter && index > hardIndex) {
 						hardIndex = index;
 					}
 				}
@@ -904,13 +917,13 @@ public class StatisticsEntity  extends HawkDBEntity {
 		monsterStageJson = HawkJsonUtil.getJsonInstance().toJson(monsterStageMap);
 		monsterLevelJson = HawkJsonUtil.getJsonInstance().toJson(monsterLevelMap);
 		rechargeRecordJson = HawkJsonUtil.getJsonInstance().toJson(rechargeRecordMap);
-		
+
 		refreshStringMap.clear();
 		for (Map.Entry<Integer, Calendar> entry : refreshTimeMap.entrySet()) {
 			refreshStringMap.put(entry.getKey(), dateFormat.format(entry.getValue().getTime()));
 		}
-		refreshTimeJson = HawkJsonUtil.getJsonInstance().toJson(refreshStringMap);	
-		
+		refreshTimeJson = HawkJsonUtil.getJsonInstance().toJson(refreshStringMap);
+
 		return true;
 	}
 

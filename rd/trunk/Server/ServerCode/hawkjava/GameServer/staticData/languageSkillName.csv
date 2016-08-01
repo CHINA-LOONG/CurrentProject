@@ -1553,16 +1553,16 @@ bosskongdao74Piying14Tips,攻击敌方群体，造成125%法攻光属性伤害,D
 bosskongdao75Sheshou11Tips,攻击敌方单体，造成光属性物理伤害,Deals light type physical damage to a single target
 bosskongdao75Sheshou13Tips,攻击敌方群体，造成光属性物理伤害,Deals light type physical damage to all enemy targets
 bosskongdao75Sheshou15Tips,攻击敌方单体，提升自己速度,"Attack a single target, increasing your SPD"
-bosskongdao76Yifanmumian11Tips,攻击敌方群体，造成光属性物理伤害，几率附加耀斑效果（持续伤害），附带物理和法术吸收盾,Deals light type physical damage to all enemy targets with a chance dealing light type DOT. Also casts a physical and magic absorption shield
-bosskongdao76Yifanmumian14Tips,攻击敌方单体，造成光属性物理伤害，并回复伤害量2倍的血量，附带物理和法术吸收盾,Deals light type physical damage to a single target with a 50% chance dealing light type DOT. Also casts a physical and magic absorption shield
+bosskongdao76Yifanmumian11Tips,攻击敌方群体，造成光属性物理伤害，几率附加耀斑效果（持续伤害）,Deals light type physical damage to all enemy targets with a chance dealing light type DOT
+bosskongdao76Yifanmumian14Tips,攻击敌方单体，造成光属性物理伤害，并回复伤害量2倍的血量,Deals light type physical damage to a single target with a 50% chance dealing light type DOT
 bosskongdao76Yifanmumian15Tips,清除自身减益效果，并提升暴击率,Clears any debuffs you are affected by and increases your crit rate
-bosskongdao76Yifanmumian16Tips,攻击敌方群体，造成光属性物理伤害，若自身有增益效果则伤害效果翻倍，附带物理、魔法吸收盾,"Deals light type physical damage to all enemy targets, If you are currently buffed, then the effects will be doubled. Also casts a physical and magic absorption shield"
+bosskongdao76Yifanmumian16Tips,攻击敌方群体，造成光属性物理伤害，若自身有增益效果则伤害效果翻倍,"Deals light type physical damage to all enemy targets, If you are currently buffed, then the effects will be doubled"
 bosskongdao77Longnv11Tips,攻击敌方单体，造成100%法攻光属性伤害,Deals (100% of magic ATK) light type damage to a single target
 bosskongdao77Longnv12Tips,攻击敌方群体，造成60%法攻光属性伤害,Deals (60% of magic ATK) light type damage to all enemy targets
 bosskongdao77Longnv13Tips,攻击敌方群体，造成光属性法术伤害，几率附带眩晕效果,Deals light type magic damage to all enemy targets with a chance of stun
 bosskongdao78Jinglingwang11Tips,攻击敌方单体，造成光属性法术伤害，几率恢复一定血量,"Deals light type magic damage to a single target, and with a chance recovers HP"
 bosskongdao78Jinglingwang13Tips,给自己回复55%法攻的生命，50%几率附加速度提升持续3回合,"Recovers (55% of magic ATK) of your HP, and increases your SPD by 50% for 3 turns"
-bosskongdao78Jinglingwang16Tips,若自身有减益效果则添加3回合护盾，同时清除自身减益效果，若自身没有减益效果则攻击敌方群体，造成70%法攻光属性伤害,"Clears any debuffs you are affected by and if you have debuffs, then casts a physical and magic shield, reducing damage received by 100% 3 turns.If not,then deals (70% of magic ATK) light type damage to all enemy targets"
+bosskongdao78Jinglingwang16Tips,若自身有减益效果则添加护盾效果，同时清除自身减益效果，若自身没有减益效果则攻击敌方群体，造成70%法攻光属性伤害,"Clears any debuffs you are affected by and if you have debuffs, then casts a physical and magic shield, reducing damage received by 100%.If not,then deals (70% of magic ATK) light type damage to all enemy targets"
 bosskongdao78Jinglingwang17Tips,攻击敌方群体，造成70%法攻光属性伤害，50%几率附加眩晕效果2回合,Deals (70% of magic ATK) light type damage to all enemy targets with a 50% chance of stun for 2 turns
 bossrenjie81Huapo2awaken1Tips,攻击敌方单体，造成草属性物理伤害,Deals grass type physical physical damage to a single target
 bossrenjie81Huapo2awaken2Tips,攻击敌方单体，造成草属性物理伤害，附加施毒效果（持续伤害）,Deals grass type physical damage to a single target with additional grass type DOT
@@ -1576,7 +1576,7 @@ bossrenjie82Huoniao4awaken9Tips,对非火属性的怪伤害效果提升50%,Incre
 bossrenjie83Amute3awaken1Tips,攻击敌方单体，造成水属性法术伤害,Deals water type magic damage to a single target
 bossrenjie83Amute3awaken2Tips,提升自身智力,Increases your INT
 bossrenjie83Amute3awaken3Tips,攻击敌方群体，造成水属性法术伤害,Deals water type magic damage to all enemy targets
-bossrenjie83Amute3awaken4Tips,给己方单体目标添加物理、法术吸收护盾同时恢复24%法攻的血量,"Add a physical and magic absorption shield to a single ally target, and recovers (24% of magic ATK) of target's HP"
+bossrenjie83Amute3awaken4Tips,给己方单体目标添加物理、法术吸收护盾,Add a physical and magic absorption shield to a single ally target
 bossrenjie83Amute3awaken7Tips,对非水属性的怪伤害效果提升50%，受到来自非水属性伤害时50%几率触发物理法术护盾,"Increases damage to non-water type monsters by 50%；whenever you take damage from non-water type monsters, there is a 50% chance of casting a shield absorbing physical and magic damage"
 bossrenjie84Anpusha5awaken1Tips,攻击敌方单体，造成暗属性法术伤害,Deals dark type magic damage to a single target
 bossrenjie84Anpusha5awaken2Tips,攻击敌方群体，造成暗属性法术伤害,Deals dark type magic damage to all enemy targets

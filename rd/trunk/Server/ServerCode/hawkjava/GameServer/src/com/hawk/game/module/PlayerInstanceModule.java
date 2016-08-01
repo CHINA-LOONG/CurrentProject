@@ -64,14 +64,20 @@ public class PlayerInstanceModule extends PlayerModule {
 	private List<ItemInfo> curDropList;
 	// 本次副本复活次数
 	private int curReviveCount;
+	// 本次副本难度
+	private int curDifficulty;
+	// 本次副本章节Id
+	private int curChapterId;
+	// 本次副本章节索引
+	private int curIndex;
 
 	public PlayerInstanceModule(Player player) {
 		super(player);
 
-		curInstanceId = "";
 		curBattleList = new ArrayList<HSBattle>();
 		curDropList = new ArrayList<ItemInfo>();
-		curReviveCount = 0;
+
+		clearCurData();
 	}
 
 	/**
@@ -108,47 +114,17 @@ public class PlayerInstanceModule extends PlayerModule {
 			sendError(hsCode, Status.error.CONFIG_ERROR);
 			return true;
 		}
-
-		int chapterId = entryCfg.getChapter();
-		int difficulty = entryCfg.getDifficult();
 		InstanceChapterCfg chapterCfg = entryCfg.getChapterCfg();
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-		Map<Integer, InstanceChapter> chapterMap = InstanceUtil.getInstanceChapterMap();
-		InstanceChapter chapter = chapterMap.get(chapterId);
 
-		// 章节已开启，前置副本完成
-		// 精英副本，必须通关普通章节
-		if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
-			int index = chapter.normalList.indexOf(entryCfg);
-			int size = chapter.normalList.size();
-			int curChapterId = statisticsEntity.getNormalInstanceChapter();
-			int curIndex = statisticsEntity.getNormalInstanceIndex();
-
-			if ((chapterId > curChapterId && (index != size - 1 || chapterId > curChapterId + 1))
-					|| (chapterId == curChapterId && index > curIndex + 1)) {
-				sendError(hsCode, Status.instanceError.INSTANCE_NOT_OPEN);
-				return true;
-			}
-		} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
-			int normalSize = chapter.normalList.size();
-			int normalCurChapterId = statisticsEntity.getNormalInstanceChapter();
-			int normalCurIndex = statisticsEntity.getNormalInstanceIndex();
-			int hardIndex = chapter.hardList.indexOf(entryCfg);
-			int hardSize = chapter.hardList.size();
-			int hardCurChapterId = statisticsEntity.getHardInstanceChapter();
-			int hardCurIndex = statisticsEntity.getHardInstanceIndex();
-
-			if ((chapterId > normalCurChapterId)
-					|| (chapterId == normalCurChapterId && normalCurIndex != normalSize - 1)
-					|| (chapterId > hardCurChapterId && (hardIndex != hardSize - 1 || chapterId > hardCurChapterId + 1))
-					|| (chapterId == hardCurChapterId && hardIndex > hardCurIndex + 1)) {
-				sendError(hsCode, Status.instanceError.INSTANCE_NOT_OPEN);
-				return true;
-			}
+		// 副本开启
+		if (false == isInstanceOpen(entryCfg)) {
+			sendError(hsCode, Status.instanceError.INSTANCE_NOT_OPEN);
+			return true;
 		}
 
 		// 副本等级
-		if (player.getLevel() < chapterCfg.getLevelByDifficulty(difficulty)) {
+		if (player.getLevel() < chapterCfg.getLevelByDifficulty(entryCfg.getDifficult())) {
 			sendError(hsCode, Status.instanceError.INSTANCE_LEVEL);
 			return true;
 		}
@@ -194,11 +170,15 @@ public class PlayerInstanceModule extends PlayerModule {
 		if (this.curInstanceId != ""
 				|| this.curBattleList.isEmpty() == false
 				|| this.curDropList.isEmpty() == false
-				|| this.curReviveCount != 0) {
+				|| this.curReviveCount != 0
+				|| this.curDifficulty != 0 || this.curChapterId != 0 || this.curIndex != 0) {
 			logger.error("instance data is not empty when enter instance");
 			clearCurData();
 		}
 		this.curInstanceId = instanceId;
+		this.curDifficulty = entryCfg.getDifficult();
+		this.curChapterId = entryCfg.getChapter();
+		this.curIndex = entryCfg.getIndex();
 
 		// 生成对局
 		// normal
@@ -255,7 +235,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			String monsterCfgId = orderedMonsterList.get(i);
 			String instanceMonsterId = instanceId + "_" + monsterCfgId;
 			List<ItemInfo> monsterDropList = null;
-			
+
 			InstanceDropCfg dropCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceDropCfg.class, instanceMonsterId);
 			if (dropCfg != null) {
 				monsterDropList = dropCfg.getReward().getRewardList();
@@ -337,7 +317,7 @@ public class PlayerInstanceModule extends PlayerModule {
 					completeReward.addMonster(monster.getItemId(), monster.getStage(), 1, 1, disposition);
 				} catch (HawkException e) {
 					HawkException.catchException(e);
-				}		
+				}
 			}
 
 			// 发放掉落奖励和完成奖励
@@ -345,11 +325,37 @@ public class PlayerInstanceModule extends PlayerModule {
 
 			// 记录副本进度
 			int oldStar = statisticsEntity.getInstanceStar(this.curInstanceId);
-			if (starCount > oldStar) {
+			if (oldStar < starCount) {
 				statisticsEntity.setInstanceStar(this.curInstanceId, starCount);
 			}
+
+			if (this.curDifficulty == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+				int oldChapter = statisticsEntity.getNormalInstanceChapter();
+				int oldIndex = statisticsEntity.getNormalInstanceIndex();
+				if (oldChapter < this.curChapterId) {
+					statisticsEntity.setNormalInstanceChapter(this.curChapterId);
+					statisticsEntity.setNormalInstanceIndex(this.curIndex);
+				} else if (oldChapter == this.curChapterId && oldIndex < this.curIndex) {
+					statisticsEntity.setNormalInstanceIndex(this.curIndex);
+				}
+			} else if (this.curDifficulty == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+				int oldChapter = statisticsEntity.getHardInstanceChapter();
+				int oldIndex = statisticsEntity.getHardInstanceIndex();
+				if (oldChapter < this.curChapterId) {
+					statisticsEntity.setHardInstanceChapter(this.curChapterId);
+					statisticsEntity.setHardInstanceIndex(this.curIndex);
+				} else if (oldChapter == this.curChapterId && oldIndex < this.curIndex) {
+					statisticsEntity.setHardInstanceIndex(this.curIndex);
+				}
+
+				statisticsEntity.addHardCount();
+				statisticsEntity.addHardCountDaily();
+			}
+
 			statisticsEntity.addInstanceAllCount();
 			statisticsEntity.addInstanceAllCountDaily();
+
+			// 多倍经验次数
 			if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
 				statisticsEntity.decreaseDoubleExpLeft(1);
 				player.getPlayerData().syncStatisticsExpLeftInfo();
@@ -357,12 +363,6 @@ public class PlayerInstanceModule extends PlayerModule {
 			else if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
 				statisticsEntity.decreaseTripleExpLeft(1);
 				player.getPlayerData().syncStatisticsExpLeftInfo();
-			}
-
-			InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, this.curInstanceId);
-			if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
-				statisticsEntity.addHardCount();
-				statisticsEntity.addHardCountDaily();
 			}
 
 			statisticsEntity.notifyUpdate(true);
@@ -539,7 +539,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			sendError(hsCode, Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
 			return true;
 		}
-		
+
 		ConsumeItems consume = ConsumeItems.valueOf();
 		consume.addGold(GsConst.INSTANCE_REVIVE_CONSUME[reviveCount - 1]);
 		consume.consumeTakeAffectAndPush(player, Action.INSTANCE_REVIVE, HS.code.INSTANCE_REVIVE_C_VALUE);
@@ -553,6 +553,94 @@ public class PlayerInstanceModule extends PlayerModule {
 		return true;
 	}
 
+	// 内部函数--------------------------------------------------------------------------------------
+
+	/**
+	 * 章节是否完成
+	 */
+	private boolean isChapterComplete(int chapterId, int difficulty) {
+		// 第0章特殊，表示还未完成任何副本
+		if (chapterId == 0) {
+			return true;
+		}
+
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		int topChapterId = 0;
+		int topIndex = 0;
+		int topMaxIndex = 0;
+
+		switch (difficulty) {
+		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+			topChapterId = statisticsEntity.getNormalInstanceChapter();
+			if (topChapterId == 0) {
+				return false;
+			} else if (chapterId < topChapterId) {
+				return true;
+			}
+
+			topIndex = statisticsEntity.getNormalInstanceIndex();
+			topMaxIndex = InstanceUtil.getInstanceChapterMap().get(topChapterId).normalList.size() - 1;
+			break;
+		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+			topChapterId = statisticsEntity.getHardInstanceChapter();
+			if (topChapterId == 0) {
+				return false;
+			} else if (chapterId < topChapterId) {
+				return true;
+			}
+
+			topIndex = statisticsEntity.getHardInstanceIndex();
+			topMaxIndex = InstanceUtil.getInstanceChapterMap().get(topChapterId).hardList.size() - 1;
+			break;
+		default:
+			return false;
+		}
+
+		if (chapterId == topChapterId && topIndex == topMaxIndex) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 副本是否开启
+	 */
+	private boolean isInstanceOpen(InstanceEntryCfg entryCfg) {
+		int chapterId = entryCfg.getChapter();
+		int difficulty = entryCfg.getDifficult();
+		int index = entryCfg.getIndex();
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+
+		// 必须通关前置副本、前置章节
+		// 精英副本必须通关普通章节
+		if (difficulty == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+			int topIndex = statisticsEntity.getNormalInstanceIndex();
+			int topChapterId = statisticsEntity.getNormalInstanceChapter();
+
+			if (chapterId > topChapterId + 1
+					|| (chapterId == topChapterId + 1
+						&& (index > 0 || false == isChapterComplete(topChapterId, difficulty))
+					|| (chapterId == topChapterId && index > topIndex + 1))) {
+				return false;
+			}
+		} else if (difficulty == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+			int topIndex = statisticsEntity.getHardInstanceIndex();
+			int topChapterId = statisticsEntity.getHardInstanceChapter();
+			int topNormalChapterId = statisticsEntity.getNormalInstanceChapter();
+
+			if (chapterId > topNormalChapterId
+					|| (chapterId == topNormalChapterId && false == isChapterComplete(topNormalChapterId, GsConst.InstanceDifficulty.NORMAL_INSTANCE))
+					|| chapterId > topChapterId + 1
+					|| (chapterId == topChapterId + 1
+						&& (index > 0 || false == isChapterComplete(topChapterId, difficulty))
+					|| (chapterId == topChapterId && index > topIndex + 1))) {
+						return false;
+			}
+		}
+
+		return true;
+	}
+
 	/**
 	 * 清空副本数据
 	 */
@@ -561,6 +649,9 @@ public class PlayerInstanceModule extends PlayerModule {
 		this.curBattleList.clear();
 		this.curDropList.clear();
 		this.curReviveCount = 0;
+		this.curDifficulty = 0;
+		this.curChapterId = 0;
+		this.curIndex = 0;
 	}
 
 	@Override

@@ -70,6 +70,7 @@ public class PlayerEquipModule extends PlayerModule{
 		listenProto(HS.code.EQUIP_MONSTER_REPLACE_C);
 		listenProto(HS.code.EQUIP_PUNCH_C);
 		listenProto(HS.code.EQUIP_GEM_C);
+		listenProto(HS.code.EQUIP_DECOMPOSE_C_VALUE);
 	}
 	
 	/**
@@ -127,11 +128,11 @@ public class PlayerEquipModule extends PlayerModule{
 				return true;
 			}
 			else if(protocol.checkType(HS.code.EQUIP_DECOMPOSE_C)) {
-				//替换分解
+				//分解
 				onEquipDecompose(HS.code.EQUIP_DECOMPOSE_C_VALUE, protocol.parseProtocol(HSEquipDecompose.getDefaultInstance()));
 				return true;
 			}
-		} 
+		}
 		catch (Exception e) {
 			HawkException.catchException(e);	
 		}
@@ -639,14 +640,23 @@ public class PlayerEquipModule extends PlayerModule{
 		ConsumeItems consume = new ConsumeItems();
 		AwardItems award = new AwardItems();
 		for(long equipId : protocol.getEquipIdList()){
-			EquipEntity equipEntity = player.getPlayerData().getEquipById(equipId);
+			EquipEntity equipEntity = player.getPlayerData().getEquipById(equipId); 
 			if (equipEntity == null) {
 				sendError(HS.code.EQUIP_DECOMPOSE_C_VALUE, Status.itemError.EQUIP_NOT_FOUND_VALUE);
 				return ;
 			}
+			
+			// 宝石
+			if (equipEntity.GetGemDressList().isEmpty() == false) {
+				for (Map.Entry<Integer, GemInfo> entry : equipEntity.GetGemDressList().entrySet()) {
+					award.addItem(entry.getValue().getGemId(), 1);
+				}
+			}
+			
 			consume.addEquip(equipId, equipEntity.getItemId());
 			award.addItemInfos(EquipForgeCfg.getDecomposeDemandList(equipEntity.getStage(), equipEntity.getLevel()));
 		}
+		
 		
 		if (consume.checkConsume(player, HS.code.MONSTER_DECOMPOSE_C_VALUE) == false) {
 			return ;

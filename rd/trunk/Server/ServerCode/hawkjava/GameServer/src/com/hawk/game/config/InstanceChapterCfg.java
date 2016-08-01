@@ -10,14 +10,14 @@ public class InstanceChapterCfg extends HawkConfigBase {
 	@Id
 	protected final int chapter;
 	protected final String name;
-	protected final int level1;
-	protected final int level2;
-	protected final String reward1;
-	protected final String reward2;
+	protected final int normalLevel;
+	protected final int hardLevel;
+	protected final String normalReward;
+	protected final String hardReward;
 
 	// client only
-	protected final String drop1 = null;
-	protected final String drop2 = null;
+	protected final String normalDrop = null;
+	protected final String hardDrop = null;
 
 	// assemble
 	protected int[] difficultyLevelList;
@@ -26,14 +26,14 @@ public class InstanceChapterCfg extends HawkConfigBase {
 	public InstanceChapterCfg() {
 		chapter = 0;
 		name = "";
-		level1 = level2 = 0;
-		reward1 = reward2 = "";
+		normalLevel = hardLevel = 0;
+		normalReward = hardReward = "";
 	}
 
 	@Override
 	protected boolean assemble() {
 		// 2种难度
-		difficultyLevelList = new int[] {level1, level2};
+		difficultyLevelList = new int[] {normalLevel, hardLevel};
 		difficultyRewardList = new RewardCfg[] {null, null};
 
 		return true;
@@ -43,19 +43,19 @@ public class InstanceChapterCfg extends HawkConfigBase {
 	protected boolean checkValid() {
 		// 检测奖励是否存在，并建立引用
 		int index = 0;
-		if (reward1 != "") {
-			RewardCfg rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, reward1);
+		if (normalReward != "") {
+			RewardCfg rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, normalReward);
 			if (rewardCfg == null) {
-				HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", reward1));
+				HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", normalReward));
 				return false;
 			}
 			difficultyRewardList[index++] = rewardCfg;
 		}
 
-		if (reward2 != "") {
-			RewardCfg rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, reward2);
+		if (hardReward != "") {
+			RewardCfg rewardCfg = HawkConfigManager.getInstance().getConfigByKey(RewardCfg.class, hardReward);
 			if (rewardCfg == null) {
-				HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", reward2));
+				HawkLog.errPrintln(String.format("config invalid RewardCfg : %s", hardReward));
 				return false;
 			}
 			difficultyRewardList[index++] = rewardCfg;

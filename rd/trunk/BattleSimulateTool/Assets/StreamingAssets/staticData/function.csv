@@ -1,0 +1,6 @@
+﻿#TEXT,NUM,NUM
+name,desc,needlevel
+#功能名称,功能描述,开启等级
+背包,测试背包,1
+商店,测试商店,5
+测试,ttest,10

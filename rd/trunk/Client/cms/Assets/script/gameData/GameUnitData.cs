@@ -300,7 +300,7 @@ public class GameUnit : IComparable
 		else 
 		{
 			friendship = unitRowData.friendship;
-			character = unitRowData.character;
+			character = unitRowData.disposition;
 		}
 	}
 
@@ -702,8 +702,8 @@ public class GameUnit : IComparable
 
             if (this.pbUnit.level == target.pbUnit.level)
             {
-                int selfGrade = StaticDataMgr.Instance.GetUnitRowData(this.pbUnit.id).grade;
-                int targetGrade = StaticDataMgr.Instance.GetUnitRowData(target.pbUnit.id).grade;
+                int selfGrade = StaticDataMgr.Instance.GetUnitRowData(this.pbUnit.id).rarity;
+                int targetGrade = StaticDataMgr.Instance.GetUnitRowData(target.pbUnit.id).rarity;
                 if (selfGrade == targetGrade)
                 {
                     if (this.pbUnit.stage == target.pbUnit.stage)

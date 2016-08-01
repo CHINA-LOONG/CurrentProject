@@ -119,6 +119,72 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSReconnect")]
+  public partial class HSReconnect : global::ProtoBuf.IExtensible
+  {
+    public HSReconnect() {}
+    
+    private string _puid;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"puid", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string puid
+    {
+      get { return _puid; }
+      set { _puid = value; }
+    }
+    private string _token = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"token", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string token
+    {
+      get { return _token; }
+      set { _token = value; }
+    }
+    private string _deviceId = @"0";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"deviceId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(@"0")]
+    public string deviceId
+    {
+      get { return _deviceId; }
+      set { _deviceId = value; }
+    }
+    private string _platform = @"0";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"platform", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(@"0")]
+    public string platform
+    {
+      get { return _platform; }
+      set { _platform = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSReconnectRet")]
+  public partial class HSReconnectRet : global::ProtoBuf.IExtensible
+  {
+    public HSReconnectRet() {}
+    
+    private int _status;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int status
+    {
+      get { return _status; }
+      set { _status = value; }
+    }
+    private int _timeStamp = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int timeStamp
+    {
+      get { return _timeStamp; }
+      set { _timeStamp = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSUserKickout")]
   public partial class HSUserKickout : global::ProtoBuf.IExtensible
   {

@@ -202,7 +202,7 @@ public class UIUtil
             }
             else if (itemInfos[i].type == (int)PB.itemType.PLAYER_ATTR)
             {
-                if (itemInfos[i].itemId.Equals(((int)PB.playerAttr.COIN).ToString()))
+                if (itemInfos[i].itemId.Equals(((int)PB.changeType.CHANGE_COIN).ToString()))
                 {
                     if (itemInfos[i].count>GameDataMgr.Instance.PlayerDataAttr.coin)
                     {

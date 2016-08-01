@@ -155,7 +155,7 @@ public class UIScore : UIBase
                         icon.SetMonsterStaticId(monster.cfgId);
                         icon.SetLevel(monster.level);
                         icon.SetStage(monster.stage);
-                        if (unitRowData.grade >= 3)
+                        if (unitRowData.rarity >= 3)
                         {
                             AddGainMonster(monster.cfgId, monster.level, monster.stage);
                             return;

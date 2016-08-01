@@ -135,7 +135,7 @@ public class BuyItem : UIBase
 		int needZuanshi = price * curCount;
 		if (needZuanshi > GameDataMgr.Instance.PlayerDataAttr.gold) 
 		{
-			UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("没钻石买个毛线！"),
+			UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("bag_record_005"),
 			                              (int)PB.ImType.PROMPT);
 			return;
 		}

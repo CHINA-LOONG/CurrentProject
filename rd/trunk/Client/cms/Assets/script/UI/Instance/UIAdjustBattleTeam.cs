@@ -45,6 +45,19 @@ public class UIAdjustBattleTeam : UIBase
 	private Dictionary<string,MonsterIcon> playerAllIconDic = new Dictionary<string, MonsterIcon>();
 
 	EnterInstanceParam enterInstanceParam  = new EnterInstanceParam();
+    
+    public  static void OpenWith(string instanceId, List<string> enmeyList, int enemyLevel)
+    {
+        UIAdjustBattleTeam uiadust = (UIAdjustBattleTeam)UIMgr.Instance.OpenUI_(ViewName);
+        uiadust.SetData(instanceId, enmeyList, enemyLevel);
+
+        UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
+        if (uiBuild != null)
+        {
+            uiBuild.uiAdjustBattleTeam = uiadust;
+        }
+    }
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -434,13 +447,15 @@ public class UIAdjustBattleTeam : UIBase
 	//---------------------------------------------------------------------------------------------------------------------
 	void	OnBackButtonClick(GameObject go)
 	{
-		UIMgr.Instance.CloseUI_(this);
-	}
+        GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList, instanceId);
+        UIMgr.Instance.CloseUI_(this);
+    }
 
 	void	OnCancleButtonClick(GameObject go)
 	{
-		UIMgr.Instance.CloseUI_(this);
-	}
+        GameEventMgr.Instance.FireEvent<string>(GameEventList.ShowInstanceList,instanceId);
+        UIMgr.Instance.CloseUI_(this);
+    }
 
 	void	OnBattleButtonClick(GameObject go)
 	{

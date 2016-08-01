@@ -178,7 +178,7 @@ im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 equip_inlay_xiangqian,镶嵌,Embed
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
-equip_inlay_tips,"开孔将随机获得""1-{0}""个宝石槽","Opening Sockets will randomly reveal between ""1 and {0}"" of slots."
+equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
 equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
 equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
 equip_inlay_xiexia,卸下,Remove
@@ -212,11 +212,11 @@ xl_compose,,
 compose_title,合成,Combine
 compose_chmaterial,选择合成原料,Select combine materials
 compose_preview,合成预览,Combine preview
-compose_gemrandom,随机X级宝石,Random level X Gem
+compose_gemrandom,随机{0}级宝石,Random level {0} Gem
 compose_unload,全卸,Remove All
 compose_tips1,*合成5个同级宝石可获得高一级的宝石,"*Combine 5 same level Gems, and receive 1 higher level Gem"
 compose_tips2,*若干个同种类材料可合成更高等级该种类材料,*Several same type materials can be combined for a higher level material
-compose_tips3,*X个同种类材料可合成更高等级该种类材料,*Combine X of the same material for a higher level material
+compose_tips3,*{0}个同种类材料可合成更高等级该种类材料,*Combine {0} of the same material for a higher level material
 compose_btnone,合成一个,Combine One
 compose_btnten,合成十个,Combine Ten
 compose_success,合成成功,Combination successful!
@@ -241,8 +241,8 @@ decompose_coin1,金币,coin
 decompose_sure,确定分解操作么？,Confirm disenchantment?
 decompose_coin2,*若金币达到上限，将无法继续获得金币,"*If the Coin limit is reached, exceeding Coins will not be collected."
 compose_record_001,分解成功,Disenchantment success!
-compose_record_002,获得道具A名称*道具A数量，道具B名称*道具B数量，…..,"Received (item A数量) x item A, (item B数量) x item B, …"
-compose_record_003,已选择所有XX品质目标（XX代表白色、绿色、蓝色）,Selected all XX grade items.
+compose_record_002,获得{0}*{1}  ,Received {0} x {1}  
+compose_record_003,已选择所有{0}目标,Selected all {0} grade items.
 compose_record_004,没有筛选到目标,No filter results.
 ,,
 xl_common,公用部分,

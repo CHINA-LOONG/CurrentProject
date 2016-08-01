@@ -9,11 +9,12 @@ import org.hawk.config.HawkConfigBase;
 public class MonsterCfg extends HawkConfigBase {
 
 	@Id
-	protected final String index ;
+	protected final String id;
 	protected final String assetID;
 	protected final String uiAsset;
 	protected final String nickName;
-	protected final int grade;
+	protected final int type;
+	protected final int rarity;
 	protected final int isEvolutionable;
 	protected final String evolutionID;
 	protected final int property;
@@ -29,9 +30,9 @@ public class MonsterCfg extends HawkConfigBase {
 	protected final String spellIDList;
 	protected final String weakpointList;
 	protected final int friendship;
-	
+
 	//client only
-	protected final int character = 0;
+	protected final int disposition = 0;
 	protected final String closeUp = null;
 	// assemble
 	boolean canEvolve;
@@ -39,11 +40,12 @@ public class MonsterCfg extends HawkConfigBase {
 	private String[] weakpointListAssemble;
 
 	public MonsterCfg() {
-		index = "";
+		id = "";
 		assetID = "";
 		uiAsset = "";
 		nickName = "";
-		grade = 0;
+		type = 0;
+		rarity = 0;
 		isEvolutionable = 0;
 		evolutionID = "";
 		property = 0;
@@ -87,15 +89,15 @@ public class MonsterCfg extends HawkConfigBase {
 	}
 
 	public String getId() {
-		return index;
+		return id;
 	}
 
 	public String getNickname() {
 		return nickName;
 	}
 
-	public int getGrade() {
-		return grade;
+	public int getRarity() {
+		return rarity;
 	}
 
 	public boolean getCanEvolve() {

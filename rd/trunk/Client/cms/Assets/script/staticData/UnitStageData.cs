@@ -22,4 +22,5 @@ public class UnitStageData
 
     public List<ItemInfo> demandItemList = new List<ItemInfo>();
     public List<ItemInfo> demandMonsterList = new List<ItemInfo>();
+    public List<ItemInfo> decomposeList = new List<ItemInfo>();
 }

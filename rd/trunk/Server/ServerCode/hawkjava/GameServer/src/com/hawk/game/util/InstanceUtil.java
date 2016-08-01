@@ -2,6 +2,7 @@ package com.hawk.game.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,26 +42,18 @@ public class InstanceUtil {
 		} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
 			chapter.hardList.add(entryCfg);
 		}
+
+		Collections.sort(chapter.normalList, new Comparator<InstanceEntryCfg>() {
+			@Override
+			public int compare(InstanceEntryCfg o1, InstanceEntryCfg o2) {
+				return Integer.valueOf(o1.getIndex()).compareTo(Integer.valueOf(o2.getIndex()));
+			}
+		});
 	}
 
 	// 使用阶段----------------------------------------------------------------------
-	
+
 	public static Map<Integer, InstanceChapter> getInstanceChapterMap() {
 		return Collections.unmodifiableMap(chapterMap);
 	}
-
-	public static int getInstanceChapterIndex(String instanceId) {
-		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
-		if (entryCfg != null) {
-			InstanceChapter chapter = chapterMap.get(entryCfg.getChapter());
-			if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
-				return chapter.normalList.indexOf(entryCfg);
-			} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
-				return chapter.hardList.indexOf(entryCfg);
-			}
-		}
-
-		return -1;
-	}
-
 }

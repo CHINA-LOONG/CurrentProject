@@ -66,6 +66,7 @@ public class EquipListItem : MonoBehaviour
             equipIcon.RefreshWithEquipInfo(info.equipData,false);
         }
         UIUtil.SetStageColor(textName, info.itemInfo.name, info.equipData.stage);
+        //TODO:设置战力
         //textZhanli.text=StaticDataMgr.Instance.GetTextByID(itemInfo.z)
         textDengji.text = info.itemInfo.minLevel.ToString();
         UIUtil.SetEquipType(textType, info.itemInfo.subType);

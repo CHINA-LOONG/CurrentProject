@@ -252,6 +252,33 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipDecompose")]
+  public partial class HSEquipDecompose : global::ProtoBuf.IExtensible
+  {
+    public HSEquipDecompose() {}
+    
+    private readonly global::System.Collections.Generic.List<long> _equipId = new global::System.Collections.Generic.List<long>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"equipId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<long> equipId
+    {
+      get { return _equipId; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipDeComposeRet")]
+  public partial class HSEquipDeComposeRet : global::ProtoBuf.IExtensible
+  {
+    public HSEquipDeComposeRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSEquipIncreaseLevel")]
   public partial class HSEquipIncreaseLevel : global::ProtoBuf.IExtensible
   {

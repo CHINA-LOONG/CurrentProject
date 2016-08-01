@@ -194,7 +194,7 @@ public class EquipInlayPanel : EquipPanelBase, IMosaicCallBack
             }
             else if (curDemand[i].type == (int)PB.itemType.PLAYER_ATTR)
             {
-                if (curDemand[i].itemId.Equals(((int)PB.playerAttr.COIN).ToString()))
+                if (curDemand[i].itemId.Equals(((int)PB.changeType.CHANGE_COIN).ToString()))
                 {
                     if (GameDataMgr.Instance.PlayerDataAttr.coin < curDemand[i].count)
                     {

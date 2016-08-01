@@ -43,8 +43,15 @@ public class ItemIcon : MonoBehaviour
 	public	Text	itemCountText;
 	public	Button	iconButton;
 
+    //小龙添加 2015-10-29 20:20:16
+    public ItemData ItemInfo
+    {
+        get { return itemInfo; }
+    }
+
 	private	IconType	iconType;
-	ItemData			itemInfo;
+    ItemData itemInfo;
+
     EquipData equipInfo;
 
     private bool showTips = false;

@@ -67,5 +67,12 @@ public class ItemStaticData
 			return StaticDataMgr.Instance.GetTextByID(tips);
 		}
 	}
-	
+
+    public ItemInfo TargetItem
+    {
+        get
+        {
+            return ItemInfo.valueof(targetItem, ItemParseType.DemandItemType);
+        }
+    }
 }
