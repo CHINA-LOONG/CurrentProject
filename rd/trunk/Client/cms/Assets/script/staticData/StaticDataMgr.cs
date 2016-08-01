@@ -55,6 +55,8 @@ public class StaticDataMgr : MonoBehaviour
 
 	Dictionary<string,RechargeStaticData> rechargeStaticDataDic = new Dictionary<string, RechargeStaticData>();
 	Dictionary<string,GoldChargeData> goldChargeDic = new Dictionary<string, GoldChargeData>();
+    Dictionary<string, FunctionData> functionDic = new Dictionary<string, FunctionData>();
+    Dictionary<int, List<FunctionData>> functionLevelDic = new Dictionary<int, List<FunctionData>>();
 
     public void Init()
     {
@@ -630,6 +632,25 @@ public class StaticDataMgr : MonoBehaviour
 				goldChargeDic.Add(item.id,item);
 			}
 		}
+
+        {
+            var data = InitTable<FunctionData>("function");
+            foreach(var item in data)
+            {
+                functionDic.Add(item.name, item);
+
+                if(functionLevelDic.ContainsKey(item.needlevel))
+                {
+                    functionLevelDic[item.needlevel].Add(item);
+                }
+                else
+                {
+                    List<FunctionData> listItem = new List<FunctionData>();
+                    listItem.Add(item);
+                    functionLevelDic.Add(item.needlevel, listItem);
+                }
+            }
+        }
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -886,6 +907,35 @@ public class StaticDataMgr : MonoBehaviour
 	{
 		return rechargeStaticDataDic;
 	}
+
+    public  FunctionData    GetFunctionStaticData(string name)
+    {
+        FunctionData item = null;
+        functionDic.TryGetValue(name, out item);
+        return item;
+    }
+
+    public  List<FunctionData> GetFunctionListEqualLevel(int level)
+    {
+        List<FunctionData> itemlist = null;
+        functionLevelDic.TryGetValue(level, out itemlist);
+        return itemlist;
+    }
+
+    public  List<FunctionData> GetFunctionNoSmallerLevel(int level)
+    {
+        List<FunctionData> listitem = new List<FunctionData>();
+
+        foreach(var subItem in functionLevelDic)
+        {
+            if(subItem.Key  >= level)
+            {
+                listitem.AddRange(subItem.Value);
+            }
+        }
+
+        return listitem;
+    }
 
 
     public string GetRealName(string asset)

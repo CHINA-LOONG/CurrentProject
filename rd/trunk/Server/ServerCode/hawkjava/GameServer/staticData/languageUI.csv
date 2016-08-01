@@ -1338,8 +1338,8 @@ lv2005_title,5.你觉得战斗中，肉盾职业的神怪是否起到了应该�
 lv2006_title,6.你对怪物的技能丰富程度是否满意（分越高越满意）,"6.Are you statisfied with the variety of monster abilities? (1 = not satisifed, 5 = very satisfied)"
 lv2007_title,7.你对怪物的技能的视觉特效是否满意（分越高越满意）,"7.Are you statisfied with the visual effects of monster abilities? (1 = not satisifed, 5 = very satisfied)"
 lv2008_title,8.你对怪物的技能的平衡性是否满意（分越高越满意）,"8.Are you statisfied with the balance of monster abilities? (1 = not satisifed, 5 = very satisfied)"
-lv2009_title,9.你觉得ss和s品质的怪物够酷吗？,9.Do?you?think?S?&?SS?grade?monsters?are?cool?enough?
-lv2010_title,10.你现在已经25级以上，照妖镜玩法是否还让你感到有乐趣（分越高越有乐趣）,"10.You have already reached level 20, do you still think the Mytho Lens is fun? "
+lv2009_title,9.你觉得ss和s品质的怪物够酷吗？,9.Do you think S & SS grade monsters are cool enough?
+lv2010_title,10.你现在已经20级以上，照妖镜玩法是否还让你感到有乐趣（分越高越有乐趣）,"10.You have already reached level 20, do you still think the Mytho Lens is fun? "
 lv2011_title,11.你平均每天登陆几次？,11.How many times do you log in each day?
 lv2012_title,12.你觉得神话守护者的奖励如何？,12.What do you think of the rewards from Mytho Guardian?
 lv2013_title,13.你觉得神话守护者的难度如何？,13.How would you rate the difficulty of Myth Guardian mode?
@@ -1423,19 +1423,19 @@ lv2009_op1,非常酷,Really cool
 lv2009_op2,还行,They're ok
 lv2009_op3,和A级B级差不多,About same as A and B grade
 lv2009_op4,需要加强,Needs improvement 
-lv2010_op1,让我很无聊,make me so bored
-lv2010_op2,有点不好玩,a little boring
-lv2010_op3,还行,just ok
-lv2010_op4,仍然有趣,still fun
-lv2011_op1,每天1次,more than 3 days 1 time
-lv2011_op2,每天2~3次,2 days One time
-lv2011_op3,每天3次以上,Once per day
-lv2011_op4,2天才登陆一次,2~3 times per day
-lv2011_op5,我超过3天可能才上线一次,3+ times per day
+lv2010_op1,让我很无聊,Make me so bored
+lv2010_op2,有点不好玩,A little boring
+lv2010_op3,还行,Just ok
+lv2010_op4,仍然有趣,Still fun
+lv2011_op1,每天1次,Once per day
+lv2011_op2,每天2~3次,2~3 times per day
+lv2011_op3,每天3次以上,3+ times per day
+lv2011_op4,2天才登陆一次,2 days One time
+lv2011_op5,我超过3天可能才上线一次,More than 3 days 1 time
 lv2012_op1,很好,Very good
 lv2012_op2,一般,Average
 lv2012_op3,不好,Poor
-lv2013_op1,简单,easy
+lv2013_op1,简单,Easy
 lv2013_op2,普通,Normal
 lv2013_op3,困难,Difficult
 gift_name_102,累计登录奖励,Accumulated Login Rewards
@@ -1483,7 +1483,7 @@ gift_exchange_title,兑换奖励,Exchange
 gift_event_notok,尚未达成,Not yet reached
 main_icon_libao,活动中心,Events
 gift_event_done,已领取,Received
-gift_exchange_notenough,积分不足，快去收集吧！,积分不足，快去收集吧！
+gift_exchange_notenough,积分不足，快去收集吧！,"Insufficient points, go and collect some more!"
 ranking_player,个人排行,Personal Ranking
 ranking_playerbp,综合战力,Total BP
 ranking_playerlvl,玩家等级,Player Level

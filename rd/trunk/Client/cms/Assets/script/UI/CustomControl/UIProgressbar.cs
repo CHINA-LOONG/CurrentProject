@@ -98,10 +98,10 @@ public class UIProgressbar : MonoBehaviour {
         //    mCurrentRatio = mTargetRatio = (float)mCurrentValue / mTotalValue;
         //}
 
-        if (mShowText)
-        {
-            mProgressText.gameObject.SetActive(true);
-        }
+       // if (mShowText)
+        //{
+            mProgressText.gameObject.SetActive(mShowText);
+        //}
 
         mProgressImage.fillAmount = mCurrentRatio;
     }

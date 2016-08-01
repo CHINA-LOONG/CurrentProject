@@ -81,7 +81,7 @@ public class ChangeValueByHand : MonoBehaviour
 			curFrame ++;
 			if(curFrame >= updateNeedFrames)
 			{
-				updateNeedFrames = 10;
+				updateNeedFrames = 5;
 				curFrame = 0;
 			}
 		}
@@ -92,7 +92,7 @@ public class ChangeValueByHand : MonoBehaviour
 		if (changeSmaller.IsEnable) 
 		{
 			curFrame = 0;
-			updateNeedFrames = 60;
+			updateNeedFrames = 20;
 			changeStep = -1;
 		}
 	}

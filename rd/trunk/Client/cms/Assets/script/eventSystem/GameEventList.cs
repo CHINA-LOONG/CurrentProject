@@ -75,7 +75,8 @@ public class GameEventList
 	//GameDataChange for ui
 	public static	string LevelChanged = "LeveleChanged";//param int
 	public static   string CoinChanged  = "CoinChanged";//param int jinbi
-	public static   string ZuanshiChanged = "ZuanshiChanged"; 
+	public static   string ZuanshiChanged = "ZuanshiChanged";
+    public static string PlayerExpChanged = "PlayerExpChanged";//param int int (oldexp，newexp)
 
     public static string QuestChanged = "QuestChanged";
 

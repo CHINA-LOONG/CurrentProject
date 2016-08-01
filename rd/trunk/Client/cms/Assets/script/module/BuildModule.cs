@@ -75,7 +75,8 @@ public class BuildModule : ModuleBase
             needSyncInfo = false;
             RequestPlayerData();
         }
-	}
+        ResourceMgr.Instance.LoadLevelAsyn("mainstage", false, null);
+    }
 	
 	public override void OnExecute()
 	{

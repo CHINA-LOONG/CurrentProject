@@ -403,7 +403,7 @@ public class BattleController : MonoBehaviour
         GameMain.Instance.ChangeModule<BuildModule>(state);
         UIMgr.Instance.DestroyUI(mUIScore);
         UIMgr.Instance.DestroyUI(uiBattle);
-        ResourceMgr.Instance.LoadLevelAsyn("firstScene", false, null);
+        ResourceMgr.Instance.LoadLevelAsyn("mainstage", false, null);
         curInstanceParam = null;
     }
     //---------------------------------------------------------------------------------------------

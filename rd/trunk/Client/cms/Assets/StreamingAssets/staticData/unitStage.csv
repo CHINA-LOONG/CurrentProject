@@ -1,6 +1,6 @@
-#NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,TEXT,TEXT,TEXT
+ï»¿#NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,TEXT,TEXT,TEXT
 stage,health,strength,intelligence,speed,defense,endurance,recovery,modifyRate,demandLevel,demandCoin,demandItem,demandMonster,decompose
-#Æ·ÖÊ,ÌåÁ¦,Á¦Á¿,ÖÇÁ¦,ËÙ¶È,·ÀÓùÁ¦,ÄÍÁ¦,Õ½ºó»ØÑª,Æ·ÖÊÏµÊıK,ĞèÇó¸Ã³èÎïµÈ¼¶,ĞèÇó½ğ±Ò,ĞèÇó²ÄÁÏ,ĞèÇó¹ÖÎï,·Ö½âÁĞ±í
+#å“è´¨,ä½“åŠ›,åŠ›é‡,æ™ºåŠ›,é€Ÿåº¦,é˜²å¾¡åŠ›,è€åŠ›,æˆ˜åå›è¡€,å“è´¨ç³»æ•°K,éœ€æ±‚è¯¥å® ç‰©ç­‰çº§,éœ€æ±‚é‡‘å¸,éœ€æ±‚ææ–™,éœ€æ±‚æ€ªç‰©,åˆ†è§£åˆ—è¡¨
 0,0,0,0,0,0,0,0,0,0,0,,,3_10002_1
 1,1000,100,100,100,100,0,0,1,0,1,3_10002_1,7_xgXiyiren_1_0,3_10002_1
 2,1000,100,100,100,100,0,0,1,0,1,3_10002_2,,3_10002_2

@@ -43,7 +43,8 @@ public class UIScore : UIBase
     private Dictionary<long, UIMonsterIconExp> mUIMonsterExpList = new Dictionary<long, UIMonsterIconExp>();
     private bool mSkipEnable = false;
     private Tweener mBattleTitleTw;
-
+    private int mOriginalPlayerLvl;
+    private int mCurrentPlayerLvl;
     //---------------------------------------------------------------------------------------------
     void Start()
     {
@@ -98,6 +99,7 @@ public class UIScore : UIBase
     void Awake()
     {
         gameObject.SetActive(false);
+        mOriginalPlayerLvl = mCurrentPlayerLvl = 0;
     }
     //---------------------------------------------------------------------------------------------
     public override void Init()
@@ -250,7 +252,7 @@ public class UIScore : UIBase
             {
                 PlayerLevelAttr curAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(playerAttr.level);
                 mPlayerProgress.SetLoopCount(playerAttr.level - mainPlayer.level);
-                mPlayerProgress.SetCurrrentRatio(mainPlayer.exp / (float)originalAttr.exp);
+                mPlayerProgress.SetCurrrentRatio(mainPlayer.ExpAttr / (float)originalAttr.exp);
                 if (playerAttr.level >= GameConfig.MaxPlayerLevel)
                 {
                     mPlayerLvl.text = "MAX LVL";
@@ -262,13 +264,15 @@ public class UIScore : UIBase
                     mPlayerProgress.SetTargetRatio(playerAttr.exp / (float)curAttr.exp);
                 }
                 mPlayerLvlUp.SetActive(mainPlayer.level != playerAttr.level);
+                mOriginalPlayerLvl = mainPlayer.level;
+                mCurrentPlayerLvl = playerAttr.level;
                 //TODO:Sysnc player info here?
                 if (mainPlayer.level != playerAttr.level)
                 {
                     mainPlayer.level = playerAttr.level;
                     GameEventMgr.Instance.FireEvent<int>(GameEventList.LevelChanged, mainPlayer.level);
                 }
-                mainPlayer.exp = playerAttr.exp;
+                mainPlayer.ExpAttr = playerAttr.exp;
             }
 
             //show monster info
@@ -395,6 +399,11 @@ public class UIScore : UIBase
         }
         mRetryBtn.gameObject.SetActive(true);
         mConfirmBtn.gameObject.SetActive(true);
+
+        if (mOriginalPlayerLvl != mCurrentPlayerLvl)
+        {
+            LevelUp.OpenWith(mOriginalPlayerLvl, mCurrentPlayerLvl, 100, 100);
+        }
     }
     //---------------------------------------------------------------------------------------------
     private void SetInitPlayerInfo(PlayerLevelAttr playerAttr, PlayerData playerData)
@@ -404,7 +413,7 @@ public class UIScore : UIBase
         mPlayerGainGold.text = "+0";
         mPlayerGainExp.text = "+0";
         mPlayerProgress.SetLoopCount(0);
-        float curExpRatio = playerData.exp / (float)playerAttr.exp;
+        float curExpRatio = playerData.ExpAttr / (float)playerAttr.exp;
         mPlayerProgress.SetCurrrentRatio(curExpRatio);
         if (playerAttr.level >= GameConfig.MaxPlayerLevel)
         {

@@ -8,7 +8,20 @@ public class PlayerData : MonoBehaviour
 	public	string nickName;
 	public	int career;
 	public	int level;
-	public	int	exp;
+	private	int	exp = 0;
+    public  int ExpAttr
+    {
+        get
+        {
+            return exp;
+        }
+        set
+        {
+            int oldExp = value - exp;
+            exp = value;
+            GameEventMgr.Instance.FireEvent<int, int>(GameEventList.PlayerExpChanged, oldExp, exp);
+        }
+    }
 	public	int	gold;//钻石
 	public	long coin;//金币
 	public	int	gonghuiCoin;//公会币

@@ -164,7 +164,7 @@ public class GameDataMgr : MonoBehaviour
             GameEventMgr.Instance.FireEvent<int>(GameEventList.LevelChanged, mainPlayer.level);
         }
         {
-            mainPlayer.exp = playerInfo.exp;
+            mainPlayer.ExpAttr = playerInfo.exp;
         }
         {
             mainPlayer.gold = playerInfo.gold;
@@ -338,7 +338,7 @@ public class GameDataMgr : MonoBehaviour
             if (reward.hsCode != PB.code.INSTANCE_SETTLE_C.GetHashCode())
             {
                 PlayerDataAttr.level = reward.playerAttr.level;
-                PlayerDataAttr.exp = reward.playerAttr.exp;
+                PlayerDataAttr.ExpAttr = reward.playerAttr.exp;
             }
             PlayerDataAttr.fatigue = reward.playerAttr.fatigue;
             PlayerDataAttr.coin = reward.playerAttr.coin;
@@ -452,7 +452,7 @@ public class GameDataMgr : MonoBehaviour
         if (reward.playerAttr!=null)
         {
             PlayerDataAttr.level = reward.playerAttr.level;
-            PlayerDataAttr.exp = reward.playerAttr.exp;
+            PlayerDataAttr.ExpAttr = reward.playerAttr.exp;
             PlayerDataAttr.fatigue = reward.playerAttr.fatigue;
             PlayerDataAttr.coin = reward.playerAttr.coin;
             GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, PlayerDataAttr.coin);
