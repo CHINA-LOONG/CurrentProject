@@ -262,35 +262,64 @@ public class UIEquipDetails : UIBase
             gemAttrList[0] = gem.transform.FindChild("gemAttr1").gameObject;
             gemAttrList[1] = gem.transform.FindChild("gemAttr2").gameObject;
             int gemNum = 0;
-            if (gemAttr.health != 0)
+            //TODO: use UIUtil-》SetDisPlayAttr（）
+            if (gemAttr.energy != 0)
+            {
+                if (gemNum > 1) return;
+                gemAttrList[gemNum].SetActive(true);//属性   +99999
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_energy") + "   +" + (int)gemAttr.energy;
+                gemNum++;
+            }
+            if (gemAttr.criticalRatio != 0)
+            {
+                if (gemNum > 1) return;
+                gemAttrList[gemNum].SetActive(true);//属性   +99999
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_ratio") + "   +" + (int)gemAttr.criticalRatio;
+                gemNum++;
+            }
+            if (gemAttr.criticalDmg != 0)
+            {
+                if (gemNum > 1) return;
+                gemAttrList[gemNum].SetActive(true);//属性   +99999
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_dmg") + "   +" + (int)gemAttr.criticalRatio;
+                gemNum++;
+            }
+            if (gemAttr.healRatio != 0)
+            {
+                if (gemNum > 1) return;
+                gemAttrList[gemNum].SetActive(true);//属性   +99999
+                gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_heal_ratio") + "   +" + (int)gemAttr.healRatio;
+                gemNum++;
+            }
+            if (gemAttr.health != 0.0f)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);//属性   +99999
                 gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_health") + "   +" + (int)gemAttr.health;
                 gemNum++;
             }
-            if (gemAttr.strength != 0)
+            if (gemAttr.strength != 0.0f)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
                 gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_strenth") + "   +" + (int)gemAttr.strength;
                 gemNum++;
             }
-            if (gemAttr.intelligence != 0)
+            if (gemAttr.intelligence != 0.0f)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
                 gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence") + "   +" + (int)gemAttr.intelligence;
                 gemNum++;
             }
-            if (gemAttr.defense != 0)
+            if (gemAttr.defense != 0.0f)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);
                 gemAttrList[gemNum].GetComponent<Text>().text = StaticDataMgr.Instance.GetTextByID("common_attr_defence") + "   +" + (int)gemAttr.defense;
                 gemNum++;
             }
-            if (gemAttr.speed != 0)
+            if (gemAttr.speed != 0.0f)
             {
                 if (gemNum > 1) return;
                 gemAttrList[gemNum].SetActive(true);

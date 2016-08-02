@@ -281,12 +281,12 @@ public class BattleUnitAi{
 			bool isCanCureMagic = false;
 			foreach(GameUnit subUnit in listUnit)
 			{
-				if(subUnit.curLife/(float)subUnit.maxLife <=GameConfig.Instance.MaxCureMagicLifeRate )
-				{
-					isCanCureMagic = true;
-					magicWeight = characterData.cureMagicWeight;
-					break;
-				}
+                if (subUnit.curLife / (float)subUnit.maxLife <= 0.75f)
+                {
+                    isCanCureMagic = true;
+                    magicWeight = characterData.cureMagicWeight;
+                    break;
+                }
 				
 			}
 			if(!isCanCureMagic)
@@ -504,7 +504,7 @@ public class BattleUnitAi{
 		List<GameUnit> listTarget = new List<GameUnit> ();
 		foreach(GameUnit subUnit in allTarget)
 		{
-			if(subUnit.curLife/(float)subUnit.maxLife <= GameConfig.Instance.MaxCureMagicLifeRate )
+			if(subUnit.curLife/(float)subUnit.maxLife <= 0.75f)//GameConfig.Instance.MaxCureMagicLifeRate )
 			{
 				listTarget.Add(subUnit);
 			}

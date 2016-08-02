@@ -38,16 +38,16 @@ public class RechargeEntity extends HawkDBEntity{
 	private String platform = "";
 	
 	@Column(name = "createTime", nullable = false)
-	protected Calendar createTime = null;
+	protected int createTime = 0;
 
 	@Column(name = "updateTime")
-	protected Calendar updateTime = null;
+	protected int updateTime = 0;
 
 	@Column(name = "invalid", nullable = false)
 	protected boolean invalid = false;
 	
 	public RechargeEntity() {
-		this.createTime = HawkTime.getCalendar();
+		
 	}
 	public RechargeEntity(String orderSerial, String puid, int playerId, String goodsId, int addGold, int giftGold, int level, String platform) {
 		this.orderSerial = orderSerial;
@@ -58,7 +58,6 @@ public class RechargeEntity extends HawkDBEntity{
 		this.giftGold = giftGold;
 		this.level = level;
 		this.platform = platform;
-		this.createTime = HawkTime.getCalendar();
 	}
 	
 	public String getOrderSerial() {
@@ -136,22 +135,22 @@ public class RechargeEntity extends HawkDBEntity{
 	}
 
 	@Override
-	public Calendar getCreateTime() {
+	public int getCreateTime() {
 		return createTime;
 	}
 
 	@Override
-	public void setCreateTime(Calendar createTime) {
+	public void setCreateTime(int createTime) {
 		this.createTime = createTime;
 	}
 
 	@Override
-	public Calendar getUpdateTime() {
+	public int getUpdateTime() {
 		return updateTime;
 	}
 
 	@Override
-	public void setUpdateTime(Calendar updateTime) {
+	public void setUpdateTime(int updateTime) {
 		this.updateTime = updateTime;
 	}
 

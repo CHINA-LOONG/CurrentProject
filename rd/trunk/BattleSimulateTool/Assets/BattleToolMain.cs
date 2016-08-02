@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.IO;
+using System.Text;
 public class InputUnitData
 {
     public string unitID;
@@ -61,8 +62,15 @@ public class BattleToolMain : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void StartSimulate(GameObject but)
     {
+        LogResult.Instance.xhNumber = 0;
+        int count = int.Parse(mSimulateCount.text);
+        LogResult.Instance.logData = new LogData[count];
+        for (int i = 0; i < count; ++i)
+        {
+            LogResult.Instance.logData[i] = new LogData();
+        }
         InitMainUnitList();
-        BattleController.Instance.StartSimulate();
+        BattleController.Instance.StartSimulate();       
     }
     //---------------------------------------------------------------------------------------------
     public void OnSimulateEnd()
@@ -86,7 +94,7 @@ public class BattleToolMain : MonoBehaviour
             curUnitData.unitCharacter = int.Parse(attData.gwCharacter.text);
             mMainUnitDataList.Add(curUnitData);
         }
-        operationData = StaticDataMgr.Instance.GetPlayerBehaviorData("yueguangsenlin11_1");//operationID.text);
+        operationData = StaticDataMgr.Instance.GetPlayerBehaviorData(operationID.text);
         //end test
         int playerUnitStartID = 100;
         mMainUnitList.Clear();
@@ -106,5 +114,5 @@ public class BattleToolMain : MonoBehaviour
             BattleObject bo = ObjectDataMgr.Instance.CreateBattleObject(curUnit, null, Vector3.zero, Quaternion.identity);
             mMainUnitList.Add(bo);
         }
-    }
+    }    
 }

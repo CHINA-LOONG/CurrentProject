@@ -76,7 +76,22 @@ public class ObjectDataMgr : MonoBehaviour
             bo.wpGroup = WeakPointGroup.CreateWeakpointGroup(bo);
         }
         AddBattleObject(bo);
-
+        if (bo.unit.pbUnit.id == "bossMinghe18Karong") 
+		{
+			bo.SetBossAI(new bossMinghe18Karong());		
+		}
+        else if (bo.unit.pbUnit.id == "bossMinghe14Amute")
+        {
+            bo.SetBossAI(new bossMinghe14Amute());		
+        }
+        else if (bo.unit.pbUnit.id == "bossYueguangsenlin14Luoxinfu")
+        {
+            bo.SetBossAI(new bossYueguangsenlin14Luoxinfu());		
+        }
+        else if (bo.unit.pbUnit.id == "bossYueguangsenlin18Meidusha")
+        {
+            bo.SetBossAI(new bossYueguangsenlin18Meidusha());		
+        }
         return bo;
     }
     //---------------------------------------------------------------------------------------------

@@ -396,65 +396,138 @@ public class UIUtil
         }
         if (data.intelligence != 0)
         {
+            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
                 value1.text = "+" + data.intelligence.ToString();
-                index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
                 value2.text = "+" + data.intelligence.ToString();
-                return;
             }
         }
         if (data.speed != 0)
         {
+            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
                 value1.text = "+" + data.speed.ToString();
-                index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
                 value2.text = "+" + data.speed.ToString();
-                return;
             }
         }
         if (data.defense != 0)
         {
+            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
                 value1.text = "+" + data.defense.ToString();
-                index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
                 value2.text = "+" + data.defense.ToString();
-                return;
             }
         }
         if (data.health != 0)
         {
+            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
                 value1.text = "+" + data.health.ToString();
-                index++;
             }
             else
             {
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
                 value2.text = "+" + data.health.ToString();
-                return;
+            }
+        }
+        if (data.energy != 0)
+        {
+            index++;
+            if (index == 0)
+            {
+                attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_energy");
+                value1.text = "+" + data.energy.ToString();
+            }
+            else
+            {
+                attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_energy");
+                value2.text = "+" + data.energy.ToString();
+            }
+        }
+        if (data.criticalRatio != 0)
+        {
+            index++;
+            if (index == 0)
+            {
+                attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_ratio");
+                value1.text = "+" + data.criticalRatio.ToString();
+            }
+            else
+            {
+                attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_ratio");
+                value2.text = "+" + data.criticalRatio.ToString();
+            }
+        }
+        if (data.criticalDmg != 0)
+        {
+            index++;
+            if (index == 0)
+            {
+                attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_dmg");
+                value1.text = "+" + data.criticalDmg.ToString();
+            }
+            else
+            {
+                attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_dmg");
+                value2.text = "+" + data.criticalDmg.ToString();
+            }
+        }
+        if (data.healRatio != 0)
+        {
+            index++;
+            if (index == 0)
+            {
+                attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_heal_ratio");
+                value1.text = "+" + data.healRatio.ToString();
+            }
+            else
+            {
+                attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_heal_ratio");
+                value2.text = "+" + data.healRatio.ToString();
             }
         }
 
+        switch (index)
+        {
+            case 0:
+                attr1.gameObject.SetActive(false);
+                value1.gameObject.SetActive(false);
+                attr2.gameObject.SetActive(false);
+                value2.gameObject.SetActive(false);
+                break;
+            case 1:
+                attr1.gameObject.SetActive(true);
+                value1.gameObject.SetActive(true);
+                attr2.gameObject.SetActive(false);
+                value2.gameObject.SetActive(false);
+                break;
+            case 2:
+                attr1.gameObject.SetActive(true);
+                value1.gameObject.SetActive(true);
+                attr2.gameObject.SetActive(true);
+                value2.gameObject.SetActive(true);
+                break;
+        }
 
     }
 

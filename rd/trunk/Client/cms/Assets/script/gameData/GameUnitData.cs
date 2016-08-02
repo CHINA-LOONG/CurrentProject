@@ -78,6 +78,7 @@ public class GameUnit : IComparable
     public float additionDamageRatio;//伤害加成
     public float minusDamageRatio;//伤害减免
     public float additionHealRatio;//治疗加成
+    public int additionEnergy;//初始能量加成
     public float defensePierce;//穿透
     //进化
     public bool isEvolutionable;
@@ -183,7 +184,13 @@ public class GameUnit : IComparable
 		buffList = new List<Buff>();
 
 		weakPointList = new List<string>();
-		//wpHpList = new Dictionary<string, WeakPointRuntimeData>();
+        //wpHpList = new Dictionary<string, WeakPointRuntimeData>();
+
+        antiCriticalRatio = 0.0f;
+        additionDamageRatio = 0.0f;
+        minusDamageRatio = 0.0f;
+        additionHealRatio = 0.0f;
+        defensePierce = 0.0f;
 
         GameDataMgr gdMgr = GameDataMgr.Instance;
         UpdateAttributeInternal();
@@ -196,12 +203,7 @@ public class GameUnit : IComparable
         name = unitRowData.NickNameAttr;
         //Ai = unitRowData.AI;
 
-        OnPlayerAttrChanged();
-        antiCriticalRatio = 0.0f;
-        additionDamageRatio = 0.0f;
-        minusDamageRatio = 0.0f;
-        additionHealRatio = 0.0f;
-        defensePierce = 0.0f;
+        //OnPlayerAttrChanged();
         spellphyReduceInjury = 0.0f;
         spellmgReduceInjury = 0.0f;
         spellPhyShield = 0;
@@ -211,7 +213,7 @@ public class GameUnit : IComparable
         invincible = 0;
         stun = 0;
         energy = 0;
-        
+
         spellHealthRatio = 0.0f;
         spellStrengthRatio = 0.0f;
         spellIntelligenceRatio = 0.0f;
@@ -320,7 +322,12 @@ public class GameUnit : IComparable
         UnitBaseData unitBaseRowData = StaticDataMgr.Instance.GetUnitBaseRowData(pbUnit.level);
         UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
         UnitStageData unitStageData = StaticDataMgr.Instance.getUnitStageData(pbUnit.stage);
-        
+
+        criticalRatio = 0.0f;
+        hitRatio = 0.0f;
+        additionEnergy = 0;
+        additionHealRatio = 0.0f;
+        criticalDamageRatio = 0.0f;
         //一级属性
         float stageRatio = 1.0f + unitStageData.modifyRate;
         health = (
@@ -350,7 +357,7 @@ public class GameUnit : IComparable
         for (int i = 0; i < (int)PartType.NUM_EQUIP_PART; ++i)
         {
             curEquipData = equipList[i];
-            if (equipList[i] != null)
+            if (curEquipData != null)
             {
                 health += curEquipData.health + curEquipData.healthStrengthen + curEquipData.healthGem;
                 strength += curEquipData.strength + curEquipData.strengthStrengthen + curEquipData.strengthGem;
@@ -359,6 +366,14 @@ public class GameUnit : IComparable
                 defense += curEquipData.defense + curEquipData.defenseStrengthen + curEquipData.defenseGem;
                 //endurance += curEquipData.endurance + curEquipData.enduranceStrengthen + curEquipData.enduranceGem;
                 //recovery += curEquipData.recovery + curEquipData.recoveryStrengthen + curEquipData.recoveryGem;
+                //宝石附加二级属性
+                if (curEquipData.criticalDmgGem > 0.0f)
+                {
+                    criticalRatio += curEquipData.criticalRatioGem;
+                    additionEnergy += curEquipData.energyGem;
+                    additionHealRatio += curEquipData.healRatioGem;
+                    criticalDamageRatio += curEquipData.criticalDmgGem;
+                }
             }
         }
         //二级属性
@@ -378,13 +393,13 @@ public class GameUnit : IComparable
         }
     }
 
-    public void OnPlayerAttrChanged()
-    {
-        GameDataMgr gdMgr = GameDataMgr.Instance;
-        criticalRatio = gdMgr.PlayerDataAttr.criticalRatio;
-        hitRatio = gdMgr.PlayerDataAttr.hitRatio;
-        //TODO: player equips
-    }
+    //public void OnPlayerAttrChanged()
+    //{
+    //    GameDataMgr gdMgr = GameDataMgr.Instance;
+    //    criticalRatio = gdMgr.PlayerDataAttr.criticalRatio;
+    //    hitRatio = gdMgr.PlayerDataAttr.hitRatio;
+    //    //TODO: player equips
+    //}
 
     public void SetEquipData(int part, EquipData equipdata, bool refreshAttr = true)
     {
@@ -675,6 +690,19 @@ public class GameUnit : IComparable
         {
             lastActionOrder = 0;
             actionOrder = 0;
+            energy = additionEnergy;
+            if (energy > 0)
+            {
+                //能量初始值ui显示
+                SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+                energyArgs.vitalType = (int)VitalType.Vital_Type_Default;
+                energyArgs.triggerTime = Time.time;
+                energyArgs.casterID = pbUnit.guid;
+                energyArgs.vitalChange = energy;
+                energyArgs.vitalCurrent = energy;
+                energyArgs.vitalMax = energy;
+                SpellService.Instance.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
+            }
         }
         attackWpName = null;
 
@@ -686,6 +714,7 @@ public class GameUnit : IComparable
         //    buffList[index].Finish(Time.time);
         //}
         buffList.Clear();
+        //OnPlayerAttrChanged();
         UpdateAttributeInternal();
     }
 

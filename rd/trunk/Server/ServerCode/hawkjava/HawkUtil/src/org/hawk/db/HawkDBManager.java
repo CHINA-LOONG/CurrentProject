@@ -328,8 +328,8 @@ public class HawkDBManager implements Runnable {
 	 */
 	public boolean create(HawkDBEntity entity) {
 		if (entity != null) {
-			entity.setCreateTime(HawkTime.getCalendar());
-			entity.setUpdateTime(HawkTime.getCalendar());
+			entity.setCreateTime(HawkTime.getSeconds());
+			entity.setUpdateTime(HawkTime.getSeconds());
 			long beginTimeMs = HawkTime.getMillisecond();
 			try {
 				Session session = getSession();
@@ -394,6 +394,7 @@ public class HawkDBManager implements Runnable {
 	public boolean update(HawkDBEntity entity) {
 		if (entity != null) {
 			long beginTimeMs = HawkTime.getMillisecond();
+			entity.setUpdateTime(HawkTime.getSeconds());
 			try {
 				Session session = getSession();
 				Transaction trans = session.beginTransaction();

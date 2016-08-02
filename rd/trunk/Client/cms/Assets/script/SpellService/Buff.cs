@@ -142,9 +142,8 @@ public class Buff
         ownedSpell = spell;
     }
     //---------------------------------------------------------------------------------------------
-    public void Apply(float curTime, bool skipUpdate)
+    public void Apply(float curTime)
     {
-        this.skipUpdate = skipUpdate;
         periodCount = 0;
         isFinish = false;
         applyTime = curTime;
@@ -188,8 +187,9 @@ public class Buff
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void Reset(float curTime)
+    public void Reset(float curTime, bool isSkipUpdate)
     {
+        skipUpdate = isSkipUpdate;
         periodCount = 0;
         isFinish = false;
         if (buffProto.category == (int)BuffType.Buff_Type_Stun)
@@ -222,6 +222,13 @@ public class Buff
         if (target == null)
             return;
 
+        int curActionID = -1;
+        if (SpellService.Instance.mCurActionSpell!= null)
+        {
+            curActionID = SpellService.Instance.mCurActionSpell.casterID;
+        }
+        skipUpdate = (curActionID == targetID);
+
         List<Buff> buffList = target.buffList;
         if (buffProto.category == (int)(BuffType.Buff_Type_Dot) || buffProto.category == (int)(BuffType.Buff_Type_Debuff))
         {
@@ -247,7 +254,7 @@ public class Buff
                     //同源同id，刷新
                     if (buff.casterID == casterID && buff.buffProto.id == buffProto.id)
                     {
-                        buff.Reset(applyTime);
+                        buff.Reset(applyTime, skipUpdate);
                         return;
                     }
 
@@ -288,7 +295,7 @@ public class Buff
                 //同名刷新，不区分来源
                 if (buff.buffProto.id == buffProto.id)
                 {
-                    buff.Reset(applyTime);
+                    buff.Reset(applyTime, skipUpdate);
                     return;
                 }
             }

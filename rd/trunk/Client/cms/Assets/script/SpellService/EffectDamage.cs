@@ -145,12 +145,15 @@ public class EffectDamage : Effect
                 bool immune = false;
                 List<Buff> buffList = target.buffList;
                 int count = buffList.Count;
-                for (int i = 0; i < count; ++i)
+                if (damageProto.isHeal == true)
                 {
-                    if (buffList[i].buffProto.category == (int)(BuffType.Buff_Type_NoHeal))
+                    for (int i = 0; i < count; ++i)
                     {
-                        noHeal = true;
-                        buffList[i].Finish(applyTime);
+                        if (buffList[i].buffProto.category == (int)(BuffType.Buff_Type_NoHeal) && buffList[i].IsFinish == false)
+                        {
+                            noHeal = true;
+                            buffList[i].Finish(applyTime);
+                        }
                     }
                 }
                 //免疫检测
@@ -158,6 +161,9 @@ public class EffectDamage : Effect
                 {
                     for (int i = 0; i < count; ++i)
                     {
+                        if (buffList[i].IsFinish)
+                            continue;
+
                         if (
                             (damageProto.damageType == SpellConst.damagePhy && buffList[i].buffProto.category == (int)BuffType.Buff_Type_PhyImmune)
                             || (damageProto.damageType == SpellConst.damageMagic && buffList[i].buffProto.category == (int)BuffType.Buff_Type_MagicImmune)
@@ -178,7 +184,7 @@ public class EffectDamage : Effect
                         //治疗
                         damageAmount = (int)(
                                         damageRatio * SpellConst.intelligenceToAttack * caster.intelligence *  //暴击伤害系数 * 攻击
-                                        (1.0f + caster.additionHealRatio) * //主角和怪物装备加成
+                                        (1.0f + target.additionHealRatio) * //主角和怪物装备加成
                                         (damageProto.attackFactor + spellLevelRatio) * //技能加成
                                         (1.0f + caster.spellIntelligenceRatio)
                                         );//buff加成(队长技 etc)

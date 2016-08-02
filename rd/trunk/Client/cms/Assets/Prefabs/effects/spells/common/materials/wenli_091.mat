@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: wenli_091
-  m_Shader: {fileID: 4800000, guid: 02cbb3ba29d5c8141979e9908ccf8ad6, type: 3}
+  m_Shader: {fileID: 4800000, guid: 94ba1f6f75a28a146a5a9c5cadbba894, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -32,16 +32,16 @@ Material:
     m_Floats:
       data:
         first:
-          name: _HeatTime
-        second: -.360000014
-      data:
-        first:
           name: _ForceX
         second: .129999995
       data:
         first:
           name: _ForceY
         second: .0799999982
+      data:
+        first:
+          name: _HeatTime
+        second: -.360000014
     m_Colors:
       data:
         first:

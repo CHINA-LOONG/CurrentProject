@@ -114,6 +114,11 @@ public class EffectDamage : Effect
         {
             if (CalculateHit(wpID) == SpellConst.hitSuccess)
             {
+                if (caster.pbUnit.camp == UnitCamp.Player)
+                    LogResult.Instance.isHitSuccessP = true;
+                else
+                    LogResult.Instance.isHitSuccessE = true;
+                
                 //GameDataMgr gdMgr = GameDataMgr.Instance;
 
                 //暴击计算 min(max(N+L(lv1-lv2))+总附加命中率,60%,100%)
@@ -125,6 +130,18 @@ public class EffectDamage : Effect
                 {
                     //暴击加成 =   暴击加成常数 + 附加暴击加成
                     damageRatio = SpellConst.criticalDamgeRatio + caster.criticalDamageRatio;
+
+                    if (caster.pbUnit.camp == UnitCamp.Player)
+                        LogResult.Instance.isCriticalP = true;
+                    else
+                        LogResult.Instance.isCriticalE = true;
+                }
+                else
+                {
+                    if (caster.pbUnit.camp == UnitCamp.Player)
+                        LogResult.Instance.isCriticalP = false;
+                    else
+                        LogResult.Instance.isCriticalE = false;
                 }
 
                 //受伤比计算 max(1/(1+(守方总防御力-攻方防御穿透)/I(min(lv1,lv2))),25%)
@@ -364,6 +381,13 @@ public class EffectDamage : Effect
                     curEffect.absoluteHit = true;
                     curEffect.Apply(applyTime, wpID);
                 }
+            }
+            else
+            {
+                if (caster.pbUnit.camp == UnitCamp.Player)
+                    LogResult.Instance.isHitSuccessP = false;
+                else
+                    LogResult.Instance.isHitSuccessE = false;
             }
         }       
 

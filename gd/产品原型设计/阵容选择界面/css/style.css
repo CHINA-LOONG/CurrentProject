@@ -164,6 +164,9 @@ body {
   font-size: 14px;
   color: #b0b0b0;
 }
+#menu .tree-view em {
+  cursor: pointer;
+}
 #menu .tree-view .title {
   word-break: break-all;
   font-size: 24px;
@@ -193,18 +196,16 @@ body {
 #menu .tree-view ul ul {
   margin-left: 5px;
 }
-#menu .tree-view b {
-  cursor: default;
-}
 #menu .tree-view b em {
-  cursor: default;
   content: '';
   display: inline-block;
   width: 6px;
   height: 6px;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAFnRFWHRDcmVhdGlvbiBUaW1lADA3LzA3LzE1L9wkmQAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAAACZJREFUeNpj+P//PwM6XrNmTQJWQSDGLogigSwIl0AXBEtgEwRhAJoFaFl/conzAAAAAElFTkSuQmCC);
-  margin-right: 6px;
-  margin-bottom: 2px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAFnRFWHRDcmVhdGlvbiBUaW1lADA3LzA3LzE1L9wkmQAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAAACZJREFUeNpj+P//PwM6XrNmTQJWQSDGLogigSwIl0AXBEtgEwRhAJoFaFl/conzAAAAAElFTkSuQmCC) no-repeat;
+  padding: 0 6px 2px 0;
+}
+#menu .tree-view .page {
+  color: #b0b0b0;
 }
 #menu .tree-view .page:before {
   content: '';
@@ -222,7 +223,10 @@ body {
   cursor: pointer;
   word-break: break-all;
 }
-#menu .tree-view .current {
+#menu .tree-view li b {
+  color: #b0b0b0;
+}
+#menu .tree-view .current > b {
   color: #d73300;
 }
 #menu .share {

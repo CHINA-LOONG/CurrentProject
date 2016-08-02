@@ -316,6 +316,7 @@ public class BattleProcess : MonoBehaviour
     public void StartProcess(int index, BattleLevelData battleLevelData)
     {
         BattleToolMain.Instance.bureauNum = index;//对局
+        LogResult.Instance.logData[LogResult.Instance.xhNumber].logIsWin[index] = 1;
         forceResult = -1;
         replaceDeadUnitCount = 0;
         hasInsertReplaceDeadUnitAction = false;
@@ -507,6 +508,7 @@ public class BattleProcess : MonoBehaviour
         //执行战斗
         var aiResult = BattleUnitAi.Instance.GetAiAttackResult(bo.unit);
         // Logger.LogFormat("Ai Attack style = {0} target = {1} ", aiResult.attackStyle, aiResult.attackTarget == null ? "no target--" : aiResult.attackTarget.name);
+        LogResult.Instance.logData[LogResult.Instance.xhNumber].logRoundNumber[BattleToolMain.Instance.bureauNum]++;
         #region 暂时先不用小星的这个逻辑2015年11月6日15:21:43
         //for (int i = 0; i < BattleToolMain.Instance.operationData.gwID.Length; i++)
         //{
@@ -534,6 +536,32 @@ public class BattleProcess : MonoBehaviour
         //    }
         //}
         #endregion
+        if (bo.camp == UnitCamp.Player)
+        {
+            LogResult.Instance.logData[LogResult.Instance.xhNumber].playerData[BattleToolMain.Instance.bureauNum].monsterAttNumber++;
+            if ( LogResult.Instance.isHitSuccessP)
+            {
+                LogResult.Instance.logData[LogResult.Instance.xhNumber].playerData[BattleToolMain.Instance.bureauNum].monsterHitNumber++;
+                if (LogResult.Instance.isCriticalP)
+                {
+                    LogResult.Instance.logData[LogResult.Instance.xhNumber].playerData[BattleToolMain.Instance.bureauNum].monsterCritNumber++;
+                }
+            }
+        }
+        else
+        {
+            LogResult.Instance.logData[LogResult.Instance.xhNumber].enemyData[BattleToolMain.Instance.bureauNum].monsterAttNumber++;
+            if (LogResult.Instance.isHitSuccessE)
+            {
+                LogResult.Instance.logData[LogResult.Instance.xhNumber].enemyData[BattleToolMain.Instance.bureauNum].monsterHitNumber++;
+                if (LogResult.Instance.isCriticalE)
+                {
+                    LogResult.Instance.logData[LogResult.Instance.xhNumber].enemyData[BattleToolMain.Instance.bureauNum].monsterCritNumber++;
+                }
+            }
+        }
+
+
         if (bo.camp == UnitCamp.Player && bo.unit.energy == BattleConst.enegyMax)
         {
             Dictionary<string, Spell> spellDic = bo.unit.spellList;
@@ -559,9 +587,9 @@ public class BattleProcess : MonoBehaviour
                         if (BattleToolMain.Instance.roundNum == round)
                         {
                             aiResult.attackTarget = battleGroup.EnemyFieldList[0].unit;
-                            Debug.LogError("目标" + aiResult.attackTarget.name);
+                            //Debug.LogError("目标" + aiResult.attackTarget.name);
                             aiResult.attackTarget.attackWpName = BattleToolMain.Instance.operationData.weaknessName[i];
-                            Debug.LogError("弱点" + aiResult.attackTarget.attackWpName);
+                            //Debug.LogError("弱点" + aiResult.attackTarget.attackWpName);
                         }
                     }
                     else
@@ -634,6 +662,10 @@ public class BattleProcess : MonoBehaviour
         bo.unit.attackCount++;
         if (aiResult.useSpell != null)
         {
+            if (bo.camp==UnitCamp.Player)
+                LogResult.Instance.logData[LogResult.Instance.xhNumber].playerData[BattleToolMain.Instance.bureauNum].monsterDazhaoNumber++;
+            else
+                LogResult.Instance.logData[LogResult.Instance.xhNumber].enemyData[BattleToolMain.Instance.bureauNum].monsterDazhaoNumber++;
             SpellService.Instance.SpellRequest(aiResult.useSpell.spellData.id, bo.unit, aiResult.attackTarget, Time.time);
             bo.unit.OnRoundEnd(Time.time);
         }

@@ -421,7 +421,7 @@ public class StaticDataMgr : MonoBehaviour
                 operationData.duijuNum[i] = int.Parse(content[1]);
                 operationData.roundNum[i] = int.Parse(content[2]);
             }
-            string[] jihuoOperation = behaviorData.jihuo.Split(':');
+            string[] jihuoOperation = behaviorData.jihuo.Split(';');
             operationData.weaknessName = new string[jihuoOperation.Length];
             operationData.IntervalRoundNum = new int[jihuoOperation.Length];
             for (int i = 0; i < jihuoOperation.Length; i++)

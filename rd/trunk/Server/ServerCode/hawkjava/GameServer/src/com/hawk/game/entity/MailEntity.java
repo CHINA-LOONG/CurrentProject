@@ -58,10 +58,10 @@ public class MailEntity extends HawkDBEntity {
 	protected String rewardJson = "";
 
 	@Column(name = "createTime", nullable = false)
-	protected Calendar createTime = null;
+	protected int createTime = 0;
 
 	@Column(name = "updateTime")
-	protected Calendar updateTime = null;
+	protected int updateTime = 0;
 
 	@Column(name = "invalid", nullable = false)
 	protected boolean invalid = false;
@@ -70,7 +70,7 @@ public class MailEntity extends HawkDBEntity {
 	protected List<ItemInfo> rewardList = new ArrayList<ItemInfo>();
 
 	public MailEntity() {
-		this.createTime = HawkTime.getCalendar();
+		
 	}
 
 	public MailEntity(int receiverId, int senderId, String senderName, byte state, String subject, String content) {
@@ -80,7 +80,6 @@ public class MailEntity extends HawkDBEntity {
 		this.state = state;
 		this.subject = subject;
 		this.content = content;
-		this.createTime = HawkTime.getCalendar();
 	}
 
 	public int getId() {
@@ -162,22 +161,22 @@ public class MailEntity extends HawkDBEntity {
 	}
 
 	@Override
-	public Calendar getCreateTime() {
+	public int getCreateTime() {
 		return createTime;
 	}
 
 	@Override
-	public void setCreateTime(Calendar createTime) {
+	public void setCreateTime(int createTime) {
 		this.createTime = createTime;
 	}
 
 	@Override
-	public Calendar getUpdateTime() {
+	public int getUpdateTime() {
 		return updateTime;
 	}
 
 	@Override
-	public void setUpdateTime(Calendar updateTime) {
+	public void setUpdateTime(int updateTime) {
 		this.updateTime = updateTime;
 	}
 

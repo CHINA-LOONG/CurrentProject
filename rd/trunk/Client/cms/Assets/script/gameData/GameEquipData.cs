@@ -47,6 +47,10 @@ public class EquipData
     public float intelligenceGem;
     public float defenseGem;
     public float speedGem;
+    public int energyGem;
+    public float healRatioGem;
+    public float criticalRatioGem;
+    public float criticalDmgGem;
 
     //---------------------------------------------------------------------------------------------
     public static EquipData valueof(long id, string equipId, int stage, int level,int monsterId, List<PB.GemPunch> gemList)
@@ -141,11 +145,15 @@ public class EquipData
         int count = gemList.Count;
         ItemStaticData curItemData = null;
         EquipLevelData curLevlData = null;
-        healthGem = 0;
-        strengthGem = 0;
-        intelligenceGem = 0;
-        defenseGem = 0;
-        speedGem = 0;
+        healthGem = 0.0f;
+        strengthGem = 0.0f;
+        intelligenceGem = 0.0f;
+        defenseGem = 0.0f;
+        speedGem = 0.0f;
+        energyGem = 0;
+        healRatioGem = 0.0f;
+        criticalRatioGem = 0.0f;
+        criticalDmgGem = 0.0f;
         for (int i = 0; i < count; ++i)
         {
             if (gemList[i].gemId != "0")
@@ -157,6 +165,10 @@ public class EquipData
                 intelligenceGem += curLevlData.intelligence;
                 defenseGem += curLevlData.defense;
                 speedGem += curLevlData.speed;
+                energyGem += curLevlData.energy;
+                healRatioGem += curLevlData.healRatio;
+                criticalRatioGem += curLevlData.criticalRatio;
+                criticalDmgGem += curLevlData.criticalDmg;
             }
         }
 

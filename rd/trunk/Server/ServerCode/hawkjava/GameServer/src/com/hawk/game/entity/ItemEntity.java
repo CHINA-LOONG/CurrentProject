@@ -41,26 +41,24 @@ public class ItemEntity extends HawkDBEntity {
 	protected byte status = 0;
 
 	@Column(name = "expireTime")
-	protected Calendar expireTime = null;
+	protected int expireTime = 0;
 
 	@Column(name = "createTime", nullable = false)
-	protected Calendar createTime = null;
+	protected int createTime = 0;
 
 	@Column(name = "updateTime")
-	protected Calendar updateTime;
+	protected int updateTime;
 
 	@Column(name = "invalid", nullable = false)
 	protected boolean invalid;
 
 	public ItemEntity() {
-		this.createTime = HawkTime.getCalendar();
 	}
 
-	public ItemEntity(int itemId, byte status, short slot, short count, Calendar expireTime) {
+	public ItemEntity(int itemId, byte status, short slot, short count, int expireTime) {
 		this.status = status;
 		this.count = count;
 		this.expireTime = expireTime;
-		this.createTime = HawkTime.getCalendar();
 	}
 
 	public long getId() {
@@ -103,31 +101,31 @@ public class ItemEntity extends HawkDBEntity {
 		this.status = status;
 	}
 
-	public Calendar getExpireTime() {
+	public int getExpireTime() {
 		return expireTime;
 	}
 
-	public void setExpireTime(Calendar expireTime) {
+	public void setExpireTime(int expireTime) {
 		this.expireTime = expireTime;
 	}
 
 	@Override
-	public Calendar getCreateTime() {
+	public int getCreateTime() {
 		return createTime;
 	}
 
 	@Override
-	public void setCreateTime(Calendar createTime) {
+	public void setCreateTime(int createTime) {
 		this.createTime = createTime;
 	}
 
 	@Override
-	public Calendar getUpdateTime() {
+	public int getUpdateTime() {
 		return updateTime;
 	}
 
 	@Override
-	public void setUpdateTime(Calendar updateTime) {
+	public void setUpdateTime(int updateTime) {
 		this.updateTime = updateTime;
 	}
 

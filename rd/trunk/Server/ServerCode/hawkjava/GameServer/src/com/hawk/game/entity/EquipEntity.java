@@ -73,13 +73,13 @@ public class EquipEntity extends HawkDBEntity {
 	protected String additionAttr = "";
 	
 	@Column(name = "expireTime")
-	protected Calendar expireTime = null;
+	protected int expireTime = 0;
 
 	@Column(name = "createTime", nullable = false)
-	protected Calendar createTime = null;
+	protected int createTime = 0;
 
 	@Column(name = "updateTime")
-	protected Calendar updateTime;
+	protected int updateTime = 0;
 
 	@Column(name = "invalid")
 	protected boolean invalid;
@@ -91,16 +91,15 @@ public class EquipEntity extends HawkDBEntity {
 	Attribute attr = null;
 	
 	public EquipEntity() {
-		this.createTime = HawkTime.getCalendar();
+		
 	}
 
-	public EquipEntity(String itemId, byte status, short slot, short count, byte stage, byte level, Calendar expireTime) {
+	public EquipEntity(String itemId, byte status, short slot, short count, byte stage, byte level, int expireTime) {
 		this.itemId = itemId;
 		this.status = status;
 		this.stage = stage;
 		this.level = level;
 		this.expireTime = expireTime;
-		this.createTime = HawkTime.getCalendar();
 	}
 
 	public long getId() {
@@ -229,11 +228,11 @@ public class EquipEntity extends HawkDBEntity {
 		this.attr = attr;
 	}
 	
-	public Calendar getExpireTime() {
+	public int getExpireTime() {
 		return expireTime;
 	}
 
-	public void setExpireTime(Calendar expireTime) {
+	public void setExpireTime(int expireTime) {
 		this.expireTime = expireTime;
 	}
 
@@ -259,22 +258,22 @@ public class EquipEntity extends HawkDBEntity {
 	}
 	
 	@Override
-	public Calendar getCreateTime() {
+	public int getCreateTime() {
 		return createTime;
 	}
 
 	@Override
-	public void setCreateTime(Calendar createTime) {
+	public void setCreateTime(int createTime) {
 		this.createTime = createTime;
 	}
 
 	@Override
-	public Calendar getUpdateTime() {
+	public int getUpdateTime() {
 		return updateTime;
 	}
 
 	@Override
-	public void setUpdateTime(Calendar updateTime) {
+	public void setUpdateTime(int updateTime) {
 		this.updateTime = updateTime;
 	}
 

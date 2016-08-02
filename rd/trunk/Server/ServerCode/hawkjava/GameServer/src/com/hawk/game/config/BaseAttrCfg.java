@@ -29,6 +29,22 @@ public class BaseAttrCfg extends HawkConfigBase{
 	 * 体力
 	 */
 	protected final int health;
+	/**
+	 * 初始能量
+	 */
+	protected final int energy;
+	/**
+	 * 被治疗加成
+	 */
+	protected final float healRatio;
+	/**
+	 * 暴击率
+	 */
+	protected final float criticalRatio;
+	/**
+	 * 暴击加成
+	 */
+	protected final float criticalDmg;
 	
 	public BaseAttrCfg(){
 		this.id = null;
@@ -37,6 +53,26 @@ public class BaseAttrCfg extends HawkConfigBase{
 		this.health = 0;
 		this.defense = 0;
 		this.speed = 0;
+		this.energy = 0;
+		this.healRatio = .0f;
+		this.criticalDmg = .0f;
+		this.criticalRatio = .0f;
+	}
+
+	public int getEnergy() {
+		return energy;
+	}
+
+	public float getHealRatio() {
+		return healRatio;
+	}
+
+	public float getCriticalRatio() {
+		return criticalRatio;
+	}
+
+	public float getCriticalDmg() {
+		return criticalDmg;
 	}
 
 	public String getId() {

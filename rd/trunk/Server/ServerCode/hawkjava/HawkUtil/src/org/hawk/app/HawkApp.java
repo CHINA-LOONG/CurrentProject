@@ -97,7 +97,7 @@ public abstract class HawkApp extends HawkAppObj {
 	 */
 	protected long lastRemoveObjTime;
 	/**
-	 * 
+	 * 打印当前服务器状态
 	 */
 	protected long lastShowStateTime;
 	/**
@@ -692,9 +692,15 @@ public abstract class HawkApp extends HawkAppObj {
 		}
 
 		//打印任务队列状态
-		if (currentTime - lastShowStateTime >= 1000) {
+		if (currentTime - lastShowStateTime >= 60000) {
 			lastShowStateTime = currentTime;
-			printTaskState();
+			printState();
+			
+			// 检测内存不足
+			Runtime run = Runtime.getRuntime();
+			if ((run.maxMemory() - run.totalMemory() + run.freeMemory()) * 1.0 / run.maxMemory() < 0.2) {
+				onMemoryOutWarning();
+			}
 		}
 		
 		// 对象更新
@@ -719,6 +725,15 @@ public abstract class HawkApp extends HawkAppObj {
 	protected void onRemoveTimeoutObj(HawkAppObj appObj) {
 	}
 
+	/**
+	 * 内存不足警告
+	 * 
+	 * @param appObj
+	 */
+	protected void onMemoryOutWarning() {
+		HawkLog.errPrintln("内存不足警告");
+	}
+	
 	/**
 	 * 处理shell命令, 不可手动调用, 由脚本管理器调用
 	 * 
@@ -1376,7 +1391,7 @@ public abstract class HawkApp extends HawkAppObj {
 	 * 
 	 * @return
 	 */
-	public void printTaskState() {
+	public void printState() {
 		int pushCount = 0;
 		int popCount = 0;
 		
@@ -1404,6 +1419,5 @@ public abstract class HawkApp extends HawkAppObj {
 		long usable = max - total + free; 
 		
 		HawkLog.errPrintln(String.format("最大内存 = %d, 已分配内存 = %d , 已分配内存中的剩余空间 = %d, 最大可用内存= %d", max, total, free, usable));	
-
 	}
 }

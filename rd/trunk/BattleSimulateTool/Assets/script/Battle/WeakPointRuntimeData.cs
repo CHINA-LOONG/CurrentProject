@@ -30,7 +30,7 @@ public class WeakPointRuntimeData
 	public string id;
 	public int maxHp;
 	public int hp;
-	public	WeakpointState	wpState;
+	public	WeakpointState wpState;
 	public	bool	IsFind;//是否被鉴定
 
 	public float damageRate

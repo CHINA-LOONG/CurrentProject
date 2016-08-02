@@ -78,13 +78,20 @@ public class PlayerData : MonoBehaviour
         mainUnitList.Clear();
         foreach (int unitID in mainUnitID)
         {
-            PbUnit pb = null;
-            if (unitPbList.TryGetValue(unitID, out pb))
+            //PbUnit pb = null;
+            //if (unitPbList.TryGetValue(unitID, out pb))
+            //{
+            //    GameUnit curUnit = GameUnit.FromPb(pb, true);
+            //    //TODO: use event to create battleobject
+            //    //Vector3 testPos = new Vector3(-0.5f + (i % 3) * 0.5f, 0.5f - (int)(i / 3) * 0.5f);
+            //    BattleObject bo = ObjectDataMgr.Instance.CreateBattleObject(curUnit, null, Vector3.zero, Quaternion.identity);
+            //    bo.gameObject.SetActive(false);
+            //    mainUnitList.Add(bo);
+            //}
+            GameUnit curGameUnit = null;
+            if (allUnitDic.TryGetValue(unitID, out curGameUnit))
             {
-                GameUnit curUnit = GameUnit.FromPb(pb, true);
-                //TODO: use event to create battleobject
-                //Vector3 testPos = new Vector3(-0.5f + (i % 3) * 0.5f, 0.5f - (int)(i / 3) * 0.5f);
-                BattleObject bo = ObjectDataMgr.Instance.CreateBattleObject(curUnit, null, Vector3.zero, Quaternion.identity);
+                BattleObject bo = ObjectDataMgr.Instance.CreateBattleObject(curGameUnit, null, Vector3.zero, Quaternion.identity);
                 bo.gameObject.SetActive(false);
                 mainUnitList.Add(bo);
             }

@@ -139,7 +139,7 @@ public class UIBuffView : MonoBehaviour
         for (int i = 0; i < buffCount; ++i)
         {
             curBuff = targetUnit.unit.buffList[i];
-            if (curBuff.IsFinish == false && curBuff.buffProto.category == (int)(BuffType.Buff_Type_Dot))
+            if (curBuff.IsFinish == false && curBuff.casterID != BattleConst.battleSceneGuid && curBuff.buffProto.category == (int)(BuffType.Buff_Type_Dot))
             {
                 dotBuffList[dotIndex].ShowBuff(curBuff.buffProto.icon, curBuff.BuffRemainRound);
                 ++dotIndex;
@@ -159,7 +159,8 @@ public class UIBuffView : MonoBehaviour
         {
             curBuff = targetUnit.unit.buffList[i];
 
-            if (targetUnit.unit.buffList[i].IsFinish == false &&
+            if (targetUnit.unit.buffList[i].IsFinish == false && 
+                curBuff.casterID != BattleConst.battleSceneGuid &&
                     (
                     curBuff.buffProto.category == (int)(BuffType.Buff_Type_Normal) ||
                     curBuff.buffProto.category == (int)(BuffType.Buff_Type_Hot) ||

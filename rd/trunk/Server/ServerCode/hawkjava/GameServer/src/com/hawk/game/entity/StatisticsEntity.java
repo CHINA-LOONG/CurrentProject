@@ -236,10 +236,10 @@ public class StatisticsEntity  extends HawkDBEntity {
 	private long totalOnlineTime = 0;
 
 	@Column(name = "createTime", nullable = false)
-	protected Calendar createTime = null;
+	protected int createTime = 0;
 
 	@Column(name = "updateTime")
-	protected Calendar updateTime = null;
+	protected int updateTime = 0;
 
 	@Column(name = "invalid", nullable = false)
 	protected boolean invalid = false;
@@ -286,7 +286,6 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public StatisticsEntity() {
 		Calendar time = HawkTime.getCalendar();
-		this.createTime = time;
 		this.fatigueBeginTime = time;
 		this.skillPointBeginTime = time;
 	}
@@ -294,7 +293,6 @@ public class StatisticsEntity  extends HawkDBEntity {
 	public StatisticsEntity(int playerId) {
 		Calendar time = HawkTime.getCalendar();
 		this.playerId = playerId;
-		this.createTime = time;
 		this.fatigueBeginTime = time;
 		this.skillPointBeginTime = time;
 	}
@@ -1002,22 +1000,22 @@ public class StatisticsEntity  extends HawkDBEntity {
 	}
 
 	@Override
-	public Calendar getCreateTime() {
+	public int getCreateTime() {
 		return createTime;
 	}
 
 	@Override
-	public void setCreateTime(Calendar createTime) {
+	public void setCreateTime(int createTime) {
 		this.createTime = createTime;
 	}
 
 	@Override
-	public Calendar getUpdateTime() {
+	public int getUpdateTime() {
 		return updateTime;
 	}
 
 	@Override
-	public void setUpdateTime(Calendar updateTime) {
+	public void setUpdateTime(int updateTime) {
 		this.updateTime = updateTime;
 	}
 

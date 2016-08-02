@@ -190,8 +190,8 @@ public class BuilderUtil {
 		builder.setLevel(equipEntity.getLevel());
 		builder.setMonsterId(equipEntity.getMonsterId());
 		builder.setStatus(0);
-		if (equipEntity.getExpireTime() != null) {
-			builder.setExpireTime((int)equipEntity.getExpireTime().getTimeInMillis() / 1000);
+		if (equipEntity.getExpireTime() != 0) {
+			builder.setExpireTime(equipEntity.getExpireTime());
 		}
 
 		//组装镶嵌宝石数据
@@ -219,7 +219,7 @@ public class BuilderUtil {
 		HSMail.Builder builder = HSMail.newBuilder();
 		builder.setMailId(mailEntity.getId());
 		builder.setState(mailEntity.getState());
-		builder.setSendTimeStamp((int)(mailEntity.getCreateTime().getTimeInMillis() / 1000));
+		builder.setSendTimeStamp(mailEntity.getCreateTime());
 		builder.setSenderId(mailEntity.getSenderId());
 		builder.setSenderName(mailEntity.getSenderName());
 		builder.setSubject(mailEntity.getSubject());

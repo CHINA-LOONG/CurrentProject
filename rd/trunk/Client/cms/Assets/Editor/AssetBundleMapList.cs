@@ -331,17 +331,21 @@ public class AssetBundleMapList
     [MenuItem(("Builder/setFont"))]
     static public void setProfabFont()
     {
-        Font font = Resources.Load("Font/FZLTCXHJW") as Font;
+        //Font font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        Font font = AssetDatabase.LoadAssetAtPath("Assets/Font/Helvetica LT 67 Medium Condensed.ttf", typeof(Font)) as Font;
         System.Action<Transform> setFont = (label) =>
         {
             label.GetComponent<UnityEngine.UI.Text>().font = font;
         };
 
-
         List<GameObject> objects=new List<GameObject>();
 
         profabPath.Clear();
         string path = EditorUtility.OpenFolderPanel("选择要修改字体的预制路径", @"Assets/Prefabs/ui/", "");
+        if (string.IsNullOrEmpty(path))
+        {
+            return;
+        }
 
         List<string> prefabs_path = Recursion(path, ".prefab");
         Debug.Log(prefabs_path.Count);
@@ -350,7 +354,11 @@ public class AssetBundleMapList
             prefabs_path[i] = prefabs_path[i].Replace(@"\", @"/");
             Debug.Log(prefabs_path[i] + "\n" + prefabs_path[i].Length + "\t" + prefabs_path[i].LastIndexOf("Assets/"));
             prefabs_path[i] = prefabs_path[i].Substring(prefabs_path[i].LastIndexOf("Assets/"));
-            if (prefabs_path[i].Contains("VitalChange")) { Debug.Log("包含"); continue; }
+            if (prefabs_path[i].Contains("VitalChange") ||
+                prefabs_path[i].Contains("hitCombo"))
+            {
+                continue;
+            }
             objects.Add(AssetDatabase.LoadAssetAtPath(prefabs_path[i], typeof(GameObject)) as GameObject);
         }
 

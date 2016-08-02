@@ -781,30 +781,20 @@ public class PlayerData {
 		if (id == 0) {
 			for (Entry<Integer, MonsterEntity> entry : monsterEntityMap.entrySet()) {
 				builder.addMonsterInfo(BuilderUtil.genMonsterBuilder(entry.getValue()));
+				// 分批发送
+				if (builder.getMonsterInfoCount() >= 10) {
+					player.sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_INFO_SYNC_S, builder));
+					builder = HSMonsterInfoSync.newBuilder();
+				}
 			}
 		}
 		else {
 			builder.addMonsterInfo(BuilderUtil.genMonsterBuilder(monsterEntityMap.get(id)));
 		}
 
-		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.MONSTER_INFO_SYNC_S, builder);
-		player.sendProtocol(protocol);
-	}
-
-	/**
-	 * 同步物品信息
-	 */
-	public void syncItemInfo(int... ids) {
-		HSItemInfoSync.Builder builder = HSItemInfoSync.newBuilder();
-		for (Integer id : ids) {
-			for (Map.Entry<String, ItemEntity> entry : itemEntityMap.entrySet()) {
-				if ((id == 0 || id == entry.getValue().getId()) && entry.getValue().getCount() > 0 && !entry.getValue().isInvalid()) {
-					builder.addItemInfos(BuilderUtil.genItemBuilder(entry.getValue()));
-				}
-			}
+		if (builder.getMonsterInfoCount() > 0) {
+			player.sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_INFO_SYNC_S, builder));
 		}
-		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.ITEM_INFO_SYNC_S, builder);
-		player.sendProtocol(protocol);
 	}
 
 	/**
@@ -819,10 +809,17 @@ public class PlayerData {
 					continue;
 				}
 				builder.addItemInfos(BuilderUtil.genItemBuilder(entry.getValue()));
+				// 分批发送
+				if (builder.getItemInfosCount() > 10) {
+					player.sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_INFO_SYNC_S, builder));
+					builder = HSItemInfoSync.newBuilder();
+				}
 			}
 		}
-		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.ITEM_INFO_SYNC_S, builder);
-		player.sendProtocol(protocol);
+		
+		if (builder.getItemInfosCount() > 0) {
+			player.sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_INFO_SYNC_S, builder));
+		}
 	}
 
 	/**
@@ -833,6 +830,11 @@ public class PlayerData {
 		for (Map.Entry<Long, EquipEntity> entry : equipEntityMap.entrySet()) {
 			if (!entry.getValue().isInvalid()) {
 				builder.addEquipInfos(BuilderUtil.genEquipBuilder(entry.getValue()));
+				// 分批发送
+				if (builder.getEquipInfosCount() >= 10) {
+					player.sendProtocol(HawkProtocol.valueOf(HS.code.EQUIP_INFO_SYNC_S, builder));
+					builder = HSEquipInfoSync.newBuilder(); 
+				}
 			}
 		}
 

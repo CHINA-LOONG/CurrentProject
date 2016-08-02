@@ -88,7 +88,7 @@ public class SpellFunctions
         return 1;
     }
 
-    public static int Default(int args)
+    public static int Default(GameUnit caster, GameUnit target)
     {
         return 1;
     }

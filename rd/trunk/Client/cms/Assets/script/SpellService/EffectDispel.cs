@@ -40,7 +40,7 @@ public class EffectDispel : Effect
         for (int i = 0; i < buffCount; ++i)
         {
             curBuff = targetBuffList[i];
-            if (curBuff != null && curBuff.buffProto.category == dispelPt.dispelCategory)
+            if (curBuff != null && curBuff.casterID != BattleConst.battleSceneGuid && curBuff.buffProto.category == dispelPt.dispelCategory)
                 curBuff.Finish(applyTime, BuffFinisType.Buff_Finish_Dispel);
         }
 

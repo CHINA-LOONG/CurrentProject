@@ -50,7 +50,7 @@ public class EffectApplyBuff : Effect
                 curBuff.casterID = casterID;
                 curBuff.targetID = targetID;
                 curBuff.SetOwnedSpell(ownedSpell);
-                curBuff.Apply(applyTime, casterID == targetID);
+                curBuff.Apply(applyTime);
             }
 
             //link effect

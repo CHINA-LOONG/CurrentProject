@@ -54,17 +54,15 @@ public class RoleEntity extends HawkDBEntity{
 	protected int recharge = 0;
 
 	@Column(name = "createTime")
-	protected Calendar createTime = null;
+	protected int createTime = 0;
 
 	@Column(name = "updateTime")
-	protected Calendar updateTime = null;
+	protected int updateTime = 0;
 	
 	@Column(name = "invalid")
 	protected boolean invalid;	
 	
 	public RoleEntity() {
-		this.createTime = HawkTime.getCalendar();
-		this.updateTime = HawkTime.getCalendar();
 	}
 	
 	public RoleEntity(String nickname, int career, int gender, int eye, int hair, int hairColor, int index) {
@@ -77,8 +75,6 @@ public class RoleEntity extends HawkDBEntity{
 		assetJson.put("hair", hair);
 		assetJson.put("hairColor", hairColor);
 		this.asset = assetJson.toString();
-		this.createTime = HawkTime.getCalendar();
-		this.updateTime = HawkTime.getCalendar();
 	}
 	
 	public int getRoleID() {
@@ -86,22 +82,22 @@ public class RoleEntity extends HawkDBEntity{
 	}
 	
 	@Override
-	public Calendar getCreateTime() {
+	public int getCreateTime() {
 		return createTime;
 	}
 
 	@Override
-	public void setCreateTime(Calendar createTime) {
+	public void setCreateTime(int createTime) {
 		this.createTime = createTime;
 	}
 
 	@Override
-	public Calendar getUpdateTime() {
+	public int getUpdateTime() {
 		return updateTime;
 	}
 
 	@Override
-	public void setUpdateTime(Calendar updateTime) {
+	public void setUpdateTime(int updateTime) {
 		this.updateTime = updateTime;
 	}
 

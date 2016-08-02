@@ -27,7 +27,7 @@ public class SpellService : MonoBehaviour
         }
     }
 
-    Spell mCurActionSpell = null;
+    public Spell mCurActionSpell = null;
     //---------------------------------------------------------------------------------------------
     public void Start()
     {
@@ -231,7 +231,7 @@ public class SpellService : MonoBehaviour
     public List<BattleObject> GetUnitList(int camp, bool includeBack)
     {
         var group = BattleController.Instance.BattleGroup;
-        if (includeBack == true)
+        if (includeBack == false)
         {
             return camp == (int)UnitCamp.Player ? group.PlayerFieldList : group.EnemyFieldList;
         }

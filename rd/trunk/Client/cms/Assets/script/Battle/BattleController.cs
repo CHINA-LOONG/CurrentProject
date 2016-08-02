@@ -600,7 +600,7 @@ public class BattleController : MonoBehaviour
             process.ClearRewardItem();
             PB.HSBattle curBattle = curInstance.battle[index];
             curBattleLevel = StaticDataMgr.Instance.GetBattleLevelData(curBattle.battleCfgId);
-            if (curBattleLevel.battleProtoData.id.Contains("boss"))
+            if (curBattleLevel.battleProtoData.id.Contains("Boss"))
             {
                 battleType = BattleType.Boss;
             }

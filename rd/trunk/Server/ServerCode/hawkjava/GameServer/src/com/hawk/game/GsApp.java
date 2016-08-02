@@ -2,8 +2,10 @@ package com.hawk.game;
 
 import java.net.InetAddress;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 import net.sf.json.JSONObject;
@@ -15,6 +17,7 @@ import org.hawk.config.HawkConfigStorage;
 import org.hawk.db.HawkDBManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
+import org.hawk.net.HawkNetManager;
 import org.hawk.net.HawkSession;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.obj.HawkObjBase;
@@ -53,6 +56,7 @@ import com.hawk.game.protocol.Player.HSPlayerCreate;
 import com.hawk.game.protocol.Player.HSPlayerCreateRet;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Status.error;
+import com.hawk.game.protocol.Status.itemError;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.protocol.SysProtocol.HSHeartBeat;
 import com.hawk.game.service.GmService;
@@ -302,13 +306,39 @@ public class GsApp extends HawkApp {
 			}
 
 			if (player.getPlayerData() != null && player.getPlayerData().getPlayerEntity() != null) {
-				// logger.info("remove player: {}, puid: {}, gold: {}, coin: {}, level: {}, vip: {}",
-				// player.getId(), player.getPuid(), player.getGold(),
-				// player.getCoin(), player.getLevel(), player.getVipLevel());
+				 logger.info("remove player: {}, puid: {}, gold: {}, coin: {}, level: {}, vip: {}",
+				 player.getId(), player.getPuid(), player.getGold(),
+				 player.getCoin(), player.getLevel(), player.getVipLevel());
 			}
 		}
 	}
-
+	
+	/**
+	 * 打印状态
+	 */
+	@Override
+	public void printState() {
+		super.printState();
+		HawkLog.errPrintln(String.format("player 数量: %d ", objMans.get(GsConst.ObjType.PLAYER).getObjBaseMap().size()));
+	}
+	
+	/**
+	 * 内存不足警告
+	 */
+	@Override
+	protected void onMemoryOutWarning() {
+		super.onMemoryOutWarning();
+		HawkObjManager<HawkXID, HawkAppObj> objMan = objMans.get(GsConst.ObjType.PLAYER);
+		Iterator<Map.Entry<HawkXID, HawkObjBase<HawkXID, HawkAppObj>>> iterator = objMan.getObjBaseMap().entrySet().iterator();
+		while (iterator.hasNext()) {
+			 HawkObjBase<HawkXID, HawkAppObj> objBase = iterator.next().getValue();
+			 Player player = (Player)objBase.getImpl();
+			 if (player.isOnline() == false ) {
+				iterator.remove();
+			}
+		}
+	}
+	
 	/**
 	 * 创建应用对象
 	 */

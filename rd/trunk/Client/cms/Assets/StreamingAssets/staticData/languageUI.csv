@@ -80,17 +80,12 @@ equip_Accessory,饰品,Accessory
 equip_gem_NotSet,未镶嵌,Not engraved
 equip_gem_NotKong,未开孔 : 开孔后将获得宝石槽,Open Sockets: Reveals a Gem slot after opening.
 equip_Change,换装,Change
-,,
 item_type,类型:,Type:
 item_demandLevel,需求等级:,Req. LVL:
 bag_tag_box,宝箱,Treasure
 bag_tag_use,消耗品,Consumable
 bag_tag_gem,宝石,Gem
 bag_tag_item,材料,Material
-item_type_chip,碎片,Fragment
-,,
-,,
-,,
 im_chat_global,世界,Global
 im_chat_guild,公会,Guild
 im_chat_send,发送,Send
@@ -108,7 +103,6 @@ im_record_001,您发送过于频繁，请稍后再试,You have sent messages too
 im_record_002,您还没有公会,You have not joined a Guild.
 im_record_003,屏蔽聊天成功,Chat is now blocked.
 im_record_004,屏蔽名单已满，请先去系统设置中清理再操作,"Block list is full. Please clear some blocked chats in System Settings, and try again."
-,,
 ss,,
 bag_title,背包,Bag
 bag_shengyu,剩余:{0},Remaining:{0}
@@ -127,7 +121,6 @@ bag_record_004,您已成功使用多倍经验药,You have successfully used an E
 bag_record_005,钻石不足，请充值,"Insufficient Diamonds, please purchase more."
 bag_record_006,无可出售道具,No sellable items at this time.
 bag_record_007,请选择出售道具,Please select items to sell.
-,,
 zz,,
 spell_hit_miss,未命中,Miss
 spell_hit_immune,免疫,Immune
@@ -147,7 +140,6 @@ quest_shijianweidao,时间未到,Available Later
 quest_lijiqianwang,立即前往,Go Now
 quest_lingqujiangli,领取奖励,Collect Reward
 quest_reward_title,任务奖励,Mission Reward
-,,
 xl_mail,薛龙_邮箱界面,
 mail_title,邮箱,Inbox
 mail_tab1,系统邮件,System
@@ -159,10 +151,10 @@ mail_record_001,没有可操作的邮件哦！,Currently no mail to be collected
 mail_record_002,收取成功！,Collected.
 mail_record_003,金币要装不下啦，收取失败！,Coin limit reached. Failed to collect.
 mail_record_004,钻石要装不下啦，收取失败！,Diamond limit reached. Failed to collect.
+mail_record_005,邮件已过期,Mail has already expired.
 mail_youxiangjiangman,<color=#ff0000ff>邮箱即将爆仓，请及时收取邮件</color>,"<color=#ff0000ff>Your inbox is almost full,be sure to promptly collect mails!</color>"
 mail_youxiangyiman,<color=#ff0000ff>邮箱已经爆仓，快快收取邮件</color>,"<color=#ff0000ff>Your inbox is full,go collect some mails!</color>"
 mail_CollectedAll,全部收取成功！,Collected all!
-,,
 xl_equip_forge,薛龙_装备强化进阶,
 equip_forge_xiaohao,消耗材料,Materials Consumed
 equip_forge_dazao,打造,Forge
@@ -174,11 +166,10 @@ equip_fully_forged,恭喜，装备打造已满,Congratulations! Equipment has be
 im_forge_success,打造成功,Forge success!
 im_forge_failed,打造失败,Forge failed.
 im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
-,,
 equip_inlay_xiangqian,镶嵌,Embed
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
-equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
+equip_inlay_tips,"开孔将随机获得""1-{0}""个宝石槽","Opening Sockets will randomly reveal between ""1 and {0}"" of slots."
 equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
 equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
 equip_inlay_xiexia,卸下,Remove
@@ -186,19 +177,15 @@ equip_select_gem,请从右侧宝石列表选择镶嵌的宝石,Please select a G
 equip_confirm_open,确定开孔么？,Confirm Open Sockets?
 equip_random_open,开孔将随机开启不同数量的宝石槽,Opening Sockets will randomly reveal different amounts of Gem slots.
 equip_return_gem,若已镶嵌宝石，宝石将全部返还到背包,Any inserted Gems will all be returned to your Bag.
-,,
 xl_equip_list,薛龙_装备列表界面,
 equip_List_zhuangbeileixing,装备类型,Type
 equip_List_xianzhidengji,等级限制,Level
 equip_List_zhuangbei,装备,Equip
-,,
 xl_gem_list,薛龙_宝石列表界面,
 equip_gem_NotMent,该品质装备不可镶嵌宝石,This equipment quality is unable to insert Gems.
 equip_gem_casting,宝石加成,Gem Casting
-,,
 xl_pet_exp,,
 exp_use,使用,Use
-,,
 xl_pet_attr,,
 detail_title,宠物属性,Monster Attributes
 detail_endurance,耐力,EDR
@@ -207,7 +194,6 @@ detail_life,生命值,HP
 detail_physatk,物理攻击力,PHYS ATK
 detail_magicatk,法术攻击力,MAGIC ATK
 detail_injuryratio,受伤比,INJ %
-,,
 xl_compose,,
 compose_title,合成,Combine
 compose_chmaterial,选择合成原料,Select combine materials
@@ -221,7 +207,6 @@ compose_btnone,合成一个,Combine One
 compose_btnten,合成十个,Combine Ten
 compose_success,合成成功,Combination successful!
 compose_tishi,没有可操作的目标,No items to act on
-,,
 xl_decompose,,
 decompose_title,分解,Disenchant
 decompose_equip,装备,Equipment
@@ -244,7 +229,16 @@ compose_record_001,分解成功,Disenchantment success!
 compose_record_002,获得,Received 
 compose_record_003,已选择所有{0}目标,Selected all {0} grade items.
 compose_record_004,没有筛选到目标,No filter results.
-,,
+xl_monsterbook,,
+handbook_btn,图鉴,Monsterbook
+handbook_shouji,收集宠物,Collected
+item_type_chip,碎片,Fragment
+handbook_tips,*万能碎片最大只能替换X%的宠物碎片哟！,Core Fragments can be used for up to X% of a Monster's Fragments.
+handbook_zhaohuan,召唤,Summon
+handbook_huodeway,获得途径,Get By
+handbook_petsuipian,宠物碎片,Monster Fragments
+handbook_tips1,确定进行1次召唤吗？,Confirm summon once?
+handbook_record_001,碎片不足,Insufficent fragments.
 xl_common,公用部分,
 pet_detail_skill_level,等级:,LVL:
 equip_forge_zhanli,战力:,BP:
@@ -257,7 +251,6 @@ common_type_defence,防御型,Defense Type
 common_type_physical,物理型,PHYS Type
 common_type_magic,法术型,Magic Type
 common_type_support,支援型,Support Type
-,,
 zs_modify:xl,,
 pet_list_type,(圣兽),(shengshou)
 pet_list_option_all,全部,ALL
@@ -266,15 +259,12 @@ pet_list_option_property2,木属性,Grass
 pet_list_option_property3,水属性,Water
 pet_list_option_property4,光属性,Light
 pet_list_option_property5,暗属性,Dark
-,,
 pet_detail,,
 pet_detail_left_detail_attr,详细属性,Details
 pet_detail_left_skill,技能,Abilities
 pet_detail_left_advance,进化,Evolve
 im_monster_lock,宠物锁定成功,Monster is now locked.
 im_monster_unlock,宠物解锁成功,Monster is now unlocked.
-,,
-,,
 pet_detail_skill_current_level,本级:,Current:
 pet_detail_skill_next_level,下一级:,Next LVL:
 pet_detail_skill_max_level,当前技能已达到最高等级,Ability currently at its max LVL
@@ -291,6 +281,5 @@ pet_list_title,宠物,Monsters
 pet_tip_full1,"拥有过多宠物,快去消耗一些吧","You have too many monsters, go and consume some!"
 pet_tip_full2,有可能无法继续获得宠物,You may possibly not receive any more monsters
 pet_skill_point_not_enough,技能点不足,skill point not enough
-,,
 coin_max,金币将达到上限，无法获得超出部分,"Coin limit reached, unable to collect exceeding Coins."
 gold_max,钻石将达到上限，无法获得超出部分,"Diamond limit reached, unable to collect exceeding Diamonds."

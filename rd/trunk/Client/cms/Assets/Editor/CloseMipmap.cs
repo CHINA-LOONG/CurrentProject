@@ -49,6 +49,7 @@ public class CloseMipmap : MonoBehaviour
     static void FindFont()
     {
         string defaultFontname = EditorUtility.OpenFilePanel("选择默认的字体", @"Assets/Font", "ttf");
+        //string defaultFontname = "Arial";
         defaultFontname = defaultFontname.Substring(defaultFontname.LastIndexOf("Assets/"));
         Font defaultFont = AssetDatabase.LoadAssetAtPath(defaultFontname, typeof(Font)) as Font;
         defaultFontname = defaultFont.name;

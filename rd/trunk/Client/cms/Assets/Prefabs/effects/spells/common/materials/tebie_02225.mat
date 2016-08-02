@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: tebie_02225
-  m_Shader: {fileID: 4800000, guid: 36642ef25f691bf409f8f7a42ea087c1, type: 3}
+  m_Shader: {fileID: 4800000, guid: 527a14635f3c55149b8657c2d867f73c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -78,6 +78,13 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NoiseTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -129,20 +136,32 @@ Material:
         second: 0
       data:
         first:
-          name: _InnerColorPower
+          name: _ForceX
+        second: .100000001
+      data:
+        first:
+          name: _ForceY
+        second: .100000001
+      data:
+        first:
+          name: _HeatTime
         second: 0
       data:
         first:
-          name: _RimPower
-        second: 2.74000001
+          name: _AllPower
+        second: 1.69000006
       data:
         first:
           name: _AlphaPower
         second: 8
       data:
         first:
-          name: _AllPower
-        second: 1.69000006
+          name: _InnerColorPower
+        second: 0
+      data:
+        first:
+          name: _RimPower
+        second: 2.74000001
     m_Colors:
       data:
         first:
@@ -154,9 +173,13 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _RimColor
-        second: {r: 1, g: .421501011, b: .323529422, a: .446999997}
+          name: _TintColor
+        second: {r: .5, g: .5, b: .5, a: .5}
       data:
         first:
           name: _InnerColor
         second: {r: 0, g: 0, b: 0, a: .333999991}
+      data:
+        first:
+          name: _RimColor
+        second: {r: 1, g: .421501011, b: .323529422, a: .446999997}
