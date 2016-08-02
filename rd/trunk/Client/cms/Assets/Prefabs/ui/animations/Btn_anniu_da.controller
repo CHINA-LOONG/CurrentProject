@@ -352,7 +352,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .368627459
+        value: .376470596
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -366,7 +366,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .286274523
+        value: .298039228
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -380,7 +380,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .188235313
+        value: .200000003
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -553,7 +553,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .368627459
+        value: .376470596
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -567,7 +567,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .286274523
+        value: .298039228
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -581,7 +581,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .188235313
+        value: .200000003
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -783,7 +783,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .800000012
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -984,7 +984,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .800000012
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -1537,7 +1537,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7416398}
+  m_Motion: {fileID: 7452662}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

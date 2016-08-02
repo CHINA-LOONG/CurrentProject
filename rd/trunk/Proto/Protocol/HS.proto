@@ -87,6 +87,8 @@ enum code
 	INSTANCE_RESET_COUNT_S      = 3012;
 	INSTANCE_REVIVE_C           = 3013;
 	INSTANCE_REVIVE_S           = 3014;
+	CHAPTER_BOX_C               = 3015;
+	CHAPTER_BOX_S               = 3016;
 
 	// 道具
 	ITEM_USE_C                  = 4001;

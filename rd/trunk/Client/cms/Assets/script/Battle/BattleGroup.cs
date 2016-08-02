@@ -27,6 +27,15 @@ public class BattleGroup
         get { return GetPlayerOffsiteUnits(); }
     }
 
+    public List<BattleObject> GetAllUnitList(int camp)
+    {
+        if (camp == (int)UnitCamp.Player)
+        {
+            return GameDataMgr.Instance.PlayerDataAttr.GetMainUnits();
+        }
+        return enemyList;
+    }
+
     public BattleGroup()
     {
         for (int i = 0; i < BattleConst.maxFieldUnit; ++i)

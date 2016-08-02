@@ -21,6 +21,7 @@ public class MainStageController : MonoBehaviour
     private float mMaxNormalAngle;
     private float mMinNormalAngle;
     private SelectableObj mCurrentSelectedObj;
+    private bool mBeginDrag;
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
     void Start ()
@@ -41,125 +42,67 @@ public class MainStageController : MonoBehaviour
         mMinNormalAngle = mMinYawAngle + mBoundAngle;
         Camera.main.transform.SetParent(mRecPos, false);
         ResetCameraPos(0.0f);
+        mBeginDrag = false;
     }
     //---------------------------------------------------------------------------------------------
     // Update is called once per frame
     void Update ()
     {
         bool isMouseOnUI = false;
-#if UNITY_ANDROID
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
-            float moveLen = Input.GetTouch(0).deltaPosition.x;
-            if (moveLen != 0.0f)
-            {
-                //Vector3 movePos = new Vector3(moveLen * Time.deltaTime * mMoveSpeed, 0.0f, 0.0f);
-                //Camera.main.transform.localPosition += movePos;
+//#if UNITY_ANDROID
+//        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+//        {
+//            float moveLen = Input.GetTouch(0).deltaPosition.x;
+//            if (moveLen != 0.0f)
+//            {
+//                //Vector3 movePos = new Vector3(moveLen * Time.deltaTime * mMoveSpeed, 0.0f, 0.0f);
+//                //Camera.main.transform.localPosition += movePos;
 
-                float curRotAngle = moveLen * mMoveSpeed * Time.deltaTime;
-                mCurYawAngle += curRotAngle;
-                if (mCurYawAngle > mMaxYawAngle)
-                {
-                    curRotAngle = mMaxYawAngle - (mCurYawAngle - curRotAngle);
-                    mCurYawAngle = mMaxYawAngle;
-                }
-                else if (mCurYawAngle < mMinYawAngle)
-                {
-                    curRotAngle = mMinYawAngle - (mCurYawAngle - curRotAngle);
-                    mCurYawAngle = mMinYawAngle;
-                }
-                ResetCameraPos(curRotAngle);
-            }
-        }
-        else
-        {
-            //bounds back if necessary
-            if (mCurYawAngle < mMinNormalAngle)
-            {
-                //0.3 simulate 1/3 fingle move
-                float adjustRotAngle = 0.3f * mBoundsSpeed * Time.deltaTime;
-                mCurYawAngle += adjustRotAngle;
-                if (mCurYawAngle > mMinNormalAngle)
-                {
-                    adjustRotAngle = mMinNormalAngle - (mCurYawAngle - adjustRotAngle);
-                    mCurYawAngle = mMinNormalAngle;
-                }
-                ResetCameraPos(adjustRotAngle);
-            }
-            else if (mCurYawAngle > mMaxNormalAngle)
-            { 
-                //0.3 simulate 1/3 fingle move
-                float adjustRotAngle = -0.3f * mBoundsSpeed * Time.deltaTime;
-                mCurYawAngle += adjustRotAngle;
-                if (mCurYawAngle < mMaxNormalAngle)
-                {
-                    adjustRotAngle = mMaxNormalAngle - (mCurYawAngle - adjustRotAngle);
-                    mCurYawAngle = mMaxNormalAngle;
-                }
-                ResetCameraPos(adjustRotAngle);
-            }
-        }
-#endif
+//                float curRotAngle = moveLen * mMoveSpeed * Time.deltaTime;
+//                mCurYawAngle += curRotAngle;
+//                if (mCurYawAngle > mMaxYawAngle)
+//                {
+//                    curRotAngle = mMaxYawAngle - (mCurYawAngle - curRotAngle);
+//                    mCurYawAngle = mMaxYawAngle;
+//                }
+//                else if (mCurYawAngle < mMinYawAngle)
+//                {
+//                    curRotAngle = mMinYawAngle - (mCurYawAngle - curRotAngle);
+//                    mCurYawAngle = mMinYawAngle;
+//                }
+//                ResetCameraPos(curRotAngle);
+//            }
+//        }
+//#endif
 
-#if UNITY_IPHONE
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
-            float moveLen = Input.GetTouch(0).deltaPosition.x;
-            if (moveLen != 0.0f)
-            {
-                //Vector3 movePos = new Vector3(moveLen * Time.deltaTime * mMoveSpeed, 0.0f, 0.0f);
-                //Camera.main.transform.localPosition += movePos;
+//#if UNITY_IPHONE
+//#endif
 
-                float curRotAngle = moveLen * mMoveSpeed * Time.deltaTime;
-                mCurYawAngle += curRotAngle;
-                if (mCurYawAngle > mMaxYawAngle)
-                {
-                    curRotAngle = mMaxYawAngle - (mCurYawAngle - curRotAngle);
-                    mCurYawAngle = mMaxYawAngle;
-                }
-                else if (mCurYawAngle < mMinYawAngle)
-                {
-                    curRotAngle = mMinYawAngle - (mCurYawAngle - curRotAngle);
-                    mCurYawAngle = mMinYawAngle;
-                }
-                ResetCameraPos(curRotAngle);
-            }
-        }
-        else
-        {
-            //bounds back if necessary
-            if (mCurYawAngle < mMinNormalAngle)
-            {
-                //0.3 simulate 1/3 fingle move
-                float adjustRotAngle = 0.3f * mBoundsSpeed * Time.deltaTime;
-                mCurYawAngle += adjustRotAngle;
-                if (mCurYawAngle > mMinNormalAngle)
-                {
-                    adjustRotAngle = mMinNormalAngle - (mCurYawAngle - adjustRotAngle);
-                    mCurYawAngle = mMinNormalAngle;
-                }
-                ResetCameraPos(adjustRotAngle);
-            }
-            else if (mCurYawAngle > mMaxNormalAngle)
-            { 
-                //0.3 simulate 1/3 fingle move
-                float adjustRotAngle = -0.3f * mBoundsSpeed * Time.deltaTime;
-                mCurYawAngle += adjustRotAngle;
-                if (mCurYawAngle < mMaxNormalAngle)
-                {
-                    adjustRotAngle = mMaxNormalAngle - (mCurYawAngle - adjustRotAngle);
-                    mCurYawAngle = mMaxNormalAngle;
-                }
-                ResetCameraPos(adjustRotAngle);
-            }
-        }
-#endif
-
-#if UNITY_STANDALONE_WIN
-        if (Input.GetMouseButton(0))
+//#if UNITY_STANDALONE_WIN
+        if (Input.GetMouseButtonDown(0))
         {
             isMouseOnUI = EventSystem.current.IsPointerOverGameObject();
             if (isMouseOnUI == false)
+            {
+                mBeginDrag = true;
+                //raycast 3d objects
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit, 1000))
+                {
+                    mCurrentSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
+                    if (mCurrentSelectedObj != null)
+                    {
+                        mCurrentSelectedObj.SetSelected(true);
+                        mBeginDrag = false;
+                    }
+                }
+            }
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            if (mBeginDrag == true)
             {
                 float moveLen = Input.GetAxis("Mouse X");
                 if (moveLen != 0.0f)
@@ -181,21 +124,30 @@ public class MainStageController : MonoBehaviour
                     }
                     ResetCameraPos(curRotAngle);
                 }
+            }
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            mBeginDrag = false;
 
-                //raycast 3d objects
+            if (mCurrentSelectedObj != null)
+            {
+                mCurrentSelectedObj.SetSelected(false);
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, 1000))
                 {
-                    mCurrentSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
-                    if (mCurrentSelectedObj != null)
+                    SelectableObj curUpSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
+                    if (curUpSelectedObj == mCurrentSelectedObj)
                     {
-                        mCurrentSelectedObj.SetSelected(true);
+                        OnSelectableObjClicked(mCurrentSelectedObj);
                     }
                 }
+                mCurrentSelectedObj = null;
             }
         }
-        else
+
+        if (mBeginDrag == false)
         {
             //bounds back if necessary
             if (mCurYawAngle < mMinNormalAngle)
@@ -211,7 +163,7 @@ public class MainStageController : MonoBehaviour
                 ResetCameraPos(adjustRotAngle);
             }
             else if (mCurYawAngle > mMaxNormalAngle)
-            { 
+            {
                 //0.3 simulate 1/3 fingle move
                 float adjustRotAngle = -0.3f * mBoundsSpeed * Time.deltaTime;
                 mCurYawAngle += adjustRotAngle;
@@ -222,28 +174,8 @@ public class MainStageController : MonoBehaviour
                 }
                 ResetCameraPos(adjustRotAngle);
             }
-
-            if (mCurrentSelectedObj != null)
-            {
-                mCurrentSelectedObj.SetSelected(false);
-                isMouseOnUI = EventSystem.current.IsPointerOverGameObject();
-                if (isMouseOnUI == false)
-                {
-                    RaycastHit hit;
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    if (Physics.Raycast(ray, out hit, 1000))
-                    {
-                        SelectableObj curUpSelectedObj = hit.collider.gameObject.GetComponent<SelectableObj>();
-                        if (curUpSelectedObj == mCurrentSelectedObj)
-                        {
-                            OnSelectableObjClicked(mCurrentSelectedObj);
-                        }
-                    }
-                }
-                mCurrentSelectedObj = null;
-            }
         }
-#endif
+//#endif
     }
     //---------------------------------------------------------------------------------------------
     public void OnSelectableObjClicked(SelectableObj selectedObj)
@@ -255,7 +187,7 @@ public class MainStageController : MonoBehaviour
                 UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
                 if (uiBuild !=  null)
                 {
-                    //uiBuild.OpenInstanceUI();
+                    uiBuild.OpenInstanceUI();
                 }
             }
         }

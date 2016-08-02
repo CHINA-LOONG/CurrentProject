@@ -258,11 +258,16 @@ namespace UnityClientConsole
 //                 NetManager.GetInstance().SendProtocol(code.MONSTER_LOCK_C.GetHashCode(), monsterLock);
 
 //                 HSInstanceEnter instanceEnter = new HSInstanceEnter();
-//                 instanceEnter.instanceId = "minghe12";
-//                 instanceEnter.battleMonsterId.Add(4622);
-//                 instanceEnter.battleMonsterId.Add(4623);
-//                 instanceEnter.battleMonsterId.Add(4624);
-//                 NetManager.GetInstance().SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
+//                 instanceEnter.instanceId = "yueguangsenlin11";
+//                 instanceEnter.battleMonsterId.Add(21478);
+//                 instanceEnter.battleMonsterId.Add(21479);
+//                 instanceEnter.battleMonsterId.Add(21480);
+//                 netmanaget.SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
+
+                HSChapterBox chapterBox = new HSChapterBox();
+                chapterBox.chapterId = 1;
+                chapterBox.difficulty = 0;
+                netmanaget.SendProtocol(code.CHAPTER_BOX_C.GetHashCode(), chapterBox);
 
 //                 HSItemBuy itemBuy = new HSItemBuy();
 //                 itemBuy.itemId = 40001;
@@ -317,6 +322,11 @@ namespace UnityClientConsole
             {
                 HSInstanceReviveRet reviveReturn = protocol.GetProtocolBody<HSInstanceReviveRet>();
                 Console.WriteLine("复活");
+            }
+            else if (protocol.checkType(code.CHAPTER_BOX_S.GetHashCode()))
+            {
+                HSChapterBoxRet chapterReturn = protocol.GetProtocolBody<HSChapterBoxRet>();
+                Console.WriteLine("满星宝箱");
             }
             // 物品----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.PLAYER_REWARD_S.GetHashCode()))

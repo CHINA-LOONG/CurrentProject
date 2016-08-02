@@ -129,7 +129,7 @@ public class BattleUnitAi{
 		{
 			InitLazyList(battleUnit);
 		}
-		if (UnitCamp.Enemy == battleUnit.pbUnit.camp && battleUnit.dazhaoList.Count < 1)
+        if (battleUnit.dazhaoList.Count < 1 && UnitCamp.Enemy == battleUnit.pbUnit.camp)
 		{
 			InitDazhaoList(battleUnit);
 		}
@@ -281,7 +281,7 @@ public class BattleUnitAi{
 			bool isCanCureMagic = false;
 			foreach(GameUnit subUnit in listUnit)
 			{
-				if(subUnit.curLife/(float)subUnit.maxLife <= GameConfig.Instance.MaxCureMagicLifeRate )
+				if(subUnit.curLife/(float)subUnit.maxLife <=GameConfig.Instance.MaxCureMagicLifeRate )
 				{
 					isCanCureMagic = true;
 					magicWeight = characterData.cureMagicWeight;
@@ -348,7 +348,7 @@ public class BattleUnitAi{
 	#endregion
 
 	#region  -----------------------  AttackTarget--------------
-	AiAttackStyle GetAttackStyleWithSpellType(int spelltype )
+	public AiAttackStyle GetAttackStyleWithSpellType(int spelltype )
 	{
 		switch (spelltype)
 		{

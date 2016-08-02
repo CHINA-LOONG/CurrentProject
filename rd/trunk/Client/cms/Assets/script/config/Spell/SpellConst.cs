@@ -9,6 +9,7 @@
     public const int hitSuccess = 0;
     public const int hitMiss = 1;
     public const int hitImmune = 2;
+    public const int hitIgnore = 3;
 
     public const float criticalDamgeRatio = 1.5f;
     public const float criticalRatio = 0.1f;
@@ -66,6 +67,9 @@ public enum BuffType
     Buff_Type_Passive,
     Buff_Type_Taunt,//嘲讽
     Buff_Type_Stun,
+    Buff_Type_NoHeal,
+    Buff_Type_PhyImmune,
+    Buff_Type_MagicImmune,
 
     Num_Buff_Type
 }
@@ -123,6 +127,9 @@ public enum VitalType
     Vital_Type_Shield,//物理护盾/法术护盾
     Vital_Type_Stun,
     Vital_Type_Immune,
+    Vital_Type_NoHeal,
+    Vital_Type_PhyImmune,
+    Vital_Type_MagicImmune,
 
     Num_Vital_Type
 }

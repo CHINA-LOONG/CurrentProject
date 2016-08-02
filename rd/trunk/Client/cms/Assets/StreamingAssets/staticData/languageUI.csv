@@ -241,7 +241,7 @@ decompose_coin1,金币,coin
 decompose_sure,确定分解操作么？,Confirm disenchantment?
 decompose_coin2,*若金币达到上限，将无法继续获得金币,"*If the Coin limit is reached, exceeding Coins will not be collected."
 compose_record_001,分解成功,Disenchantment success!
-compose_record_002,获得{0}*{1}  ,Received {0} x {1}  
+compose_record_002,获得,Received 
 compose_record_003,已选择所有{0}目标,Selected all {0} grade items.
 compose_record_004,没有筛选到目标,No filter results.
 ,,

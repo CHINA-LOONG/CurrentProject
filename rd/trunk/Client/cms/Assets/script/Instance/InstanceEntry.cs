@@ -21,15 +21,13 @@ public class InstanceEntry
 	public	string	enemy4;
 	public	string	enemy5;
 	public	string	enemy6;
-    public  string reward1;
-    public  string reward2;
-    public  string reward3;
-    public  string reward4;
-    public  string reward5;
-	public	string	reward6;
+    public  string reward;
+    public string bgzhuangshi;
+    public string instanceSpell;
 
-	public List<string> enemyList;
-	public List<string> rewardList;
+    public List<string> enemyList;
+	//public List<string> rewardList;
+
 
 	public string NameAttr
 	{
@@ -50,7 +48,7 @@ public class InstanceEntry
 	public void AdaptData()
 	{
 		enemyList = new List<string>();
-        rewardList = new List<string>();
+       // rewardList = new List<string>();
 		
 		if(!string.IsNullOrEmpty(enemy1))
 			enemyList.Add(enemy1);
@@ -69,25 +67,5 @@ public class InstanceEntry
 		
 		if(!string.IsNullOrEmpty(enemy6))
 			enemyList.Add(enemy6);
-
-
-		if (!string.IsNullOrEmpty (reward1))
-			rewardList.Add(reward1);
-
-		if (!string.IsNullOrEmpty (reward2))
-			rewardList.Add(reward2);
-
-		if (!string.IsNullOrEmpty (reward3))
-			rewardList.Add(reward3);
-
-		if (!string.IsNullOrEmpty (reward4))
-			rewardList.Add(reward4);
-
-		if (!string.IsNullOrEmpty (reward5))
-			rewardList.Add(reward5);
-
-		if (!string.IsNullOrEmpty (reward6))
-			rewardList.Add(reward6);
-
 	}
 }

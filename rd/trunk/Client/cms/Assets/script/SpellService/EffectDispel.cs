@@ -41,7 +41,7 @@ public class EffectDispel : Effect
         {
             curBuff = targetBuffList[i];
             if (curBuff != null && curBuff.buffProto.category == dispelPt.dispelCategory)
-                curBuff.Finish(applyTime);
+                curBuff.Finish(applyTime, BuffFinisType.Buff_Finish_Dispel);
         }
 
         return true;

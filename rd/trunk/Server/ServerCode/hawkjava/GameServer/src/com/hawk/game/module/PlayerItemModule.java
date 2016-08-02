@@ -326,7 +326,6 @@ public class PlayerItemModule extends PlayerModule{
 			}
 			// 疲劳值
 			else if (itemCfg.getSubType() == Const.UseToolSubType.USETOOLFATIGUE_VALUE) {
-				
 				awardItems.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, itemCfg.getAddAttrValue());
 				consumeItems.addItem(itemId, 1);
 			}			
@@ -340,6 +339,9 @@ public class PlayerItemModule extends PlayerModule{
 		}
 		
 		if (awardItems.hasAwardItem() == true) {
+			if (awardItems.checkLimit(player, hsCode) == false) {
+				return;
+			}
 			awardItems.rewardTakeAffectAndPush(player,  Action.ITEM_USE, hsCode);
 		}
 		

@@ -44,7 +44,7 @@ message HSInstanceEnterRet
 // INSTANCE_SETTLE_C
 message HSInstanceSettle
 {
-	required bool victory = 1;
+	required int32 passBattleCount = 1;
 }
 
 // INSTANCE_SETTLE_S
@@ -89,6 +89,21 @@ message HSInstanceRevive
 message HSInstanceReviveRet
 {
 	required int32 reviveCount = 1;
+}
+
+// CHAPTER_BOX_C
+message HSChapterBox
+{
+	required int32 chapterId = 1;
+	required int32 difficulty = 2;
+}
+
+// CHAPTER_BOX_S
+message HSChapterBoxRet
+{
+	required int32 chapterId = 1;
+	required int32 difficulty = 2;
+	required int32 boxState = 3;
 }
 
 // --未使用--------------------------------------------------------

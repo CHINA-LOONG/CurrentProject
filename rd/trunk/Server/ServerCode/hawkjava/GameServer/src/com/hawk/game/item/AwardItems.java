@@ -1,12 +1,12 @@
 package com.hawk.game.item;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
+import org.hawk.config.HawkConfigManager;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 
+import com.hawk.game.config.PlayerAttrCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
@@ -14,6 +14,7 @@ import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Const.changeType;
+import com.hawk.game.protocol.Const.playerAttr;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Const.itemType;
 import com.hawk.game.protocol.Monster.HSMonster;
@@ -21,9 +22,10 @@ import com.hawk.game.protocol.Monster.SynMonsterAttr;
 import com.hawk.game.protocol.Player.SynPlayerAttr;
 import com.hawk.game.protocol.Reward.HSRewardInfo;
 import com.hawk.game.protocol.Reward.RewardItem;
-import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.EquipUtil;
+import com.hawk.game.util.GsConst;
+import com.hawk.game.util.GsConst.AwardCheckResult;
 
 /**
  * 奖励信息内存数据 禁忌: 此对象不可重复复用, 避免奖励累加, 切记
@@ -202,7 +204,7 @@ public class AwardItems {
 		return this;
 	}
 	
-	public AwardItems addAttr(int attrType, int count) {		
+	public AwardItems addAttr(int attrType, int count) {
 		return addAttr(String.valueOf(attrType), count);
 	}
 	
@@ -309,7 +311,7 @@ public class AwardItems {
 		addAttr(changeType.CHANGE_GOLD_BUY_VALUE, gold);
 		return this;
 	}
-	
+
 	public AwardItems addCoin(int coin) {
 		if (coin <= 0 ) {
 			return this;
@@ -332,7 +334,7 @@ public class AwardItems {
 		addAttr(changeType.CHANGE_PLAYER_EXP_VALUE, level);
 		return this;
 	}
-	
+
 	public boolean initByString(String info) {
 		if (info != null && info.length() > 0 && !info.equals("0") && !info.equals("none")) {
 
@@ -347,14 +349,55 @@ public class AwardItems {
 		}
 		return null;
 	}
-	
+
+	public boolean checkLimit(Player player, int hsCode) {
+		int result = checkLimitInternal(player);
+		if (result > 0) {
+			if (hsCode > 0) {
+				switch (result) {
+				case AwardCheckResult.COIN_LIMIT:
+					break;
+				case AwardCheckResult.GOLD_LIMIT:
+					break;
+				case AwardCheckResult.FATIGUE_LIMIT:
+					break;
+				}
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * 检查是否会超过上限
+	 * 假设奖励列表内每种item唯一
+	 */
+	private int checkLimitInternal(Player player) {
+		for (RewardItem rewardItem : rewardInfo.getRewardItemsList()) {
+			if(rewardItem.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
+				if (Integer.valueOf(rewardItem.getItemId()).intValue() == Const.changeType.CHANGE_COIN_VALUE) {
+					if(player.getCoin() + rewardItem.getCount() > GsConst.MAX_COIN_COUNT) {
+						return AwardCheckResult.COIN_LIMIT;
+					}
+				}
+				else if (Integer.valueOf(rewardItem.getItemId()).intValue() == Const.changeType.CHANGE_GOLD_VALUE) {
+					if (player.getGold() + rewardItem.getCount() > GsConst.MAX_GOLD_COUNT) {
+						return AwardCheckResult.GOLD_LIMIT;
+					}
+				}
+				else if (Integer.valueOf(rewardItem.getItemId()).intValue() == Const.changeType.CHANGE_FATIGUE_VALUE) {
+					if (player.getPlayerData().getStatisticsEntity().getFatigue() +  rewardItem.getCount() > GsConst.MAX_FATIGUE_COUNT) {
+						return AwardCheckResult.FATIGUE_LIMIT;
+					}
+				}
+			}
+		}
+
+		return 0;
+	}
+
 	/**
 	 * 功能发放奖励
-	 * 
-	 * @param player
-	 * @param action
-	 * @param async
-	 * @return
 	 */
 	public boolean rewardTakeAffect(Player player, Action action) {
 		try {
@@ -377,7 +420,22 @@ public class AwardItems {
 						break;
 						
 					case changeType.CHANGE_PLAYER_EXP_VALUE:
+						int oldLevel = player.getLevel();
 						player.increaseExp(item.getCount(), action);
+						int newLevel = player.getLevel();
+
+						if (newLevel > oldLevel) {
+							for (int lv = oldLevel + 1; lv <= newLevel; ++lv) {
+								PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, lv);
+								if (null != attrCfg) {
+									RewardItem.Builder rewardItem = RewardItem.newBuilder();
+									rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
+									rewardItem.setItemId(String.valueOf(Const.changeType.CHANGE_FATIGUE_VALUE));
+									rewardItem.setCount(attrCfg.getFatigueReward());
+									rewardInfo.addRewardItems(rewardItem);
+								}
+							}
+						}
 						break;
 
 					case changeType.CHANGE_FATIGUE_VALUE:
@@ -386,7 +444,22 @@ public class AwardItems {
 
 					// GM命令 ,不会和CHANGE_PLAYER_EXP_VALUE同时出现
 					case changeType.CHANGE_PLAYER_LEVEL_VALUE:
+						oldLevel = player.getLevel();
 						player.setLevel(item.getCount(), action);
+						newLevel = player.getLevel();
+
+						if (newLevel > oldLevel) {
+							for (int lv = oldLevel + 1; lv <= newLevel; ++lv) {
+								PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, lv);
+								if (null != attrCfg) {
+									RewardItem.Builder rewardItem = RewardItem.newBuilder();
+									rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
+									rewardItem.setItemId(String.valueOf(Const.changeType.CHANGE_FATIGUE_VALUE));
+									rewardItem.setCount(attrCfg.getFatigueReward());
+									rewardInfo.addRewardItems(rewardItem);
+								}
+							}
+						}
 						break;
 
 					default:
@@ -546,9 +619,6 @@ public class AwardItems {
 
 	/**
 	 * 发放奖励并且推送
-	 * 
-	 * @param player
-	 * @param action
 	 */
 	public void rewardTakeAffectAndPush(Player player, Action action, int hsCode) {
 		if (rewardTakeAffect(player, action) == true) {

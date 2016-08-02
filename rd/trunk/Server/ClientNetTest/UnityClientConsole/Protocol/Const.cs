@@ -279,7 +279,10 @@ namespace PB
       USETOOLDOUBLEEXP = 2,
             
       [global::ProtoBuf.ProtoEnum(Name=@"USETOOLTRIPLEEXP", Value=3)]
-      USETOOLTRIPLEEXP = 3
+      USETOOLTRIPLEEXP = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"USETOOLFATIGUE", Value=4)]
+      USETOOLFATIGUE = 4
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"equipPart")]

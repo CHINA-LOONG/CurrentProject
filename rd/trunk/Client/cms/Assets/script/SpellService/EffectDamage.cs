@@ -140,9 +140,40 @@ public class EffectDamage : Effect
                     target.battleUnit.wpGroup.allWpDic.TryGetValue(wpID, out wpRuntime);
                 }
 
+                //无法治疗检测
+                bool noHeal = false;
+                bool immune = false;
+                List<Buff> buffList = target.buffList;
+                int count = buffList.Count;
+                for (int i = 0; i < count; ++i)
+                {
+                    if (buffList[i].buffProto.category == (int)(BuffType.Buff_Type_NoHeal))
+                    {
+                        noHeal = true;
+                        buffList[i].Finish(applyTime);
+                    }
+                }
+                //免疫检测
+                if (damageProto.isHeal == false)
+                {
+                    for (int i = 0; i < count; ++i)
+                    {
+                        if (
+                            (damageProto.damageType == SpellConst.damagePhy && buffList[i].buffProto.category == (int)BuffType.Buff_Type_PhyImmune)
+                            || (damageProto.damageType == SpellConst.damageMagic && buffList[i].buffProto.category == (int)BuffType.Buff_Type_MagicImmune)
+                            )
+                        {
+                            immune = true;
+                            break;
+                        }
+                    }
+                }
+
                 if (damageProto.isHeal == true)
                 {
-                    if (spellService.IsInDeathList(targetID) == false || (ownedBuff != null && ownedBuff.buffProto.noDead > 0))
+                    if (noHeal == false && 
+                        (spellService.IsInDeathList(targetID) == false || (ownedBuff != null && ownedBuff.buffProto.noDead > 0))
+                        )
                     {
                         //治疗
                         damageAmount = (int)(
@@ -155,9 +186,18 @@ public class EffectDamage : Effect
                     else
                     {
                         damageAmount = 0;
+                        if (noHeal == true)
+                        {
+                            SpellVitalChangeArgs interruptArgs = new SpellVitalChangeArgs();
+                            interruptArgs.vitalType = (int)VitalType.Vital_Type_NoHeal;
+                            interruptArgs.triggerTime = applyTime;
+                            interruptArgs.casterID = 0;
+                            interruptArgs.targetID = targetID;
+                            spellService.TriggerEvent(GameEventList.SpellLifeChange, interruptArgs);
+                        }
                     }
                 }
-                else
+                else if (immune == false)
                 {
                     float wpRatio = wpRuntime != null ? wpRuntime.damageRate : 1.0f;
                     //物理伤害
@@ -176,13 +216,12 @@ public class EffectDamage : Effect
                                         ); //buff加成(队长技 etc)
 
                         //物理伤害打断检测
-                        List<Buff> buffList = target.buffList;
-                        int count = buffList.Count;
-                        for (int i = 0; i < count; ++i)
+                        int targetBuffcount = target.buffList.Count;
+                        for (int i = 0; i < targetBuffcount; ++i)
                         {
-                            if (buffList[i].buffProto.category == (int)(BuffType.Buff_Type_Dazhao))
+                            if (target.buffList[i].buffProto.category == (int)(BuffType.Buff_Type_Dazhao))
                             {
-                                buffList[i].CheckDazhaoInterrupt(applyTime);
+                                target.buffList[i].CheckDazhaoInterrupt(applyTime);
                                 break;
                             }
                         }
@@ -230,128 +269,152 @@ public class EffectDamage : Effect
                     //伤害*-1 修正为负数
                     damageAmount *= -1;
                     //if (caster.pbUnit.camp == UnitCamp.Enemy)
-                    //    damageAmount = -1;
+                    //    damageAmount = -3000;
                     //else
-                    //    damageAmount = -2;
+                    //    damageAmount = -5;
                 }
-                if (damageProto.isHeal == false)
-				{
-					//检测护盾
-					int buffCount1 = target.buffList.Count;
-					for (int i = 0; i < buffCount1; ++i)
-					{
-						target.buffList[i].OnShield(applyTime, this, ref damageAmount);						
-					}
-					//弱点伤害计算
-					if (wpRuntime != null)
-					{
-						target.OnDamageWeakPoint(wpRuntime.id, damageAmount, applyTime);
-					}  
-				}
-				
-				//没有弱点或者弱点属性关联伤害，则扣除/增加怪物血量
-                if (wpRuntime == null || wpRuntime.staticData.isDamagePoint == 1)
-                {
-                    if (damageAmount < 0 || damageProto.isHeal == true)
-                    {				
-                        target.curLife += damageAmount;
-                        if (target.curLife <= 0)
-                        {
-                            target.curLife = 0;
-                            SpellUnitDeadArgs args = new SpellUnitDeadArgs();
-                            args.triggerTime = applyTime;
-                            args.casterID = casterID;
-                            args.deathID = targetID;
-                            spellService.AddDeadData(args, target, this);
 
-                            //death response
-                            List<Buff> buffList = target.buffList;
-                            for (int i = 0; i < buffList.Count; ++i)
+                if (immune == false)
+                {
+                    if (damageProto.isHeal == false)
+                    {
+                        //伤害为0 扣1血 在护盾检测前检查
+                        if (damageAmount == 0)
+                        {
+                            damageAmount = -1;
+                        }
+                        //检测护盾
+                        int buffCount1 = target.buffList.Count;
+                        for (int i = 0; i < buffCount1; ++i)
+                        {
+                            target.buffList[i].OnShield(applyTime, this, ref damageAmount);
+                        }
+                        //弱点伤害计算
+                        if (wpRuntime != null)
+                        {
+                            target.OnDamageWeakPoint(wpRuntime.id, damageAmount, applyTime);
+                        }
+                    }
+
+                    //没有弱点或者弱点属性关联伤害，则扣除/增加怪物血量
+                    if (wpRuntime == null || wpRuntime.staticData.isDamagePoint == 1)
+                    {
+                        if (damageAmount < 0 || damageProto.isHeal == true)
+                        {
+                            target.curLife += damageAmount;
+                            if (target.curLife <= 0)
                             {
-                                buffList[i].DeadResponse(applyTime, this, wpID);
+                                target.curLife = 0;
+                                SpellUnitDeadArgs args = new SpellUnitDeadArgs();
+                                args.triggerTime = applyTime;
+                                args.casterID = casterID;
+                                args.deathID = targetID;
+                                spellService.AddDeadData(args, target, this);
+
+                                //death response
+                                for (int i = 0; i < target.buffList.Count; ++i)
+                                {
+                                    target.buffList[i].DeadResponse(applyTime, this, wpID);
+                                }
+                            }
+                            else if (target.curLife > target.maxLife)
+                            {
+                                target.curLife = target.maxLife;
                             }
                         }
-                        else if (target.curLife > target.maxLife)
+                    }
+
+                    //大招受击事件
+                    if (damageAmount < 0 && damageProto.isHeal == false)
+                    {
+                        SpellEffectArgs effectArgs = new SpellEffectArgs();
+                        if (ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao ||
+                            ownedSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao || isCritical)
                         {
-                            target.curLife = target.maxLife;
+                            effectArgs.targetID = targetID;
+                            effectArgs.triggerTime = applyTime;
+                            spellService.TriggerEvent(GameEventList.BashHit, effectArgs);
+                        }
+                        else
+                        {
+                            effectArgs.targetID = targetID;
+                            effectArgs.triggerTime = applyTime;
+                            spellService.TriggerEvent(GameEventList.NormalHit, effectArgs);
+                        }
+                    }
+
+                    //trigger damage event
+                    if (damageAmount < 0 || (noHeal == false && damageProto.isHeal == true))
+                    {
+                        SpellEffectArgs effectArgs = new SpellEffectArgs();
+                        if (target != null)
+                        {
+                            WeakPointData wp = null;
+                            if (target.attackWpName != null)
+                            {
+                                wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
+                            }
+                            effectArgs.wpNode = wp != null ? wp.node : "e_shouji";
+                        }
+                        effectArgs.triggerTime = applyTime;
+                        effectArgs.casterID = casterID;
+                        effectArgs.targetID = targetID;
+                        effectArgs.effectID = protoEffect.id;
+                        spellService.TriggerEvent(GameEventList.SpellEffect, effectArgs);
+
+                        SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+                        args.vitalType = (int)VitalType.Vital_Type_Default;
+                        args.triggerTime = applyTime;
+                        args.casterID = casterID;
+                        args.targetID = targetID;
+                        args.isCritical = isCritical;
+                        args.vitalChange = damageAmount;
+                        args.vitalCurrent = target.curLife;//TODO: need weak point life?
+                        args.vitalMax = target.maxLife;
+                        if (wpRuntime != null)
+                        {
+                            args.wpID = wpRuntime.id;
+                            args.wpNode = wpRuntime.staticData.node;
+                        }
+                        else
+                        {
+                            args.wpID = "e_shouji";
+                            args.wpNode = "e_shouji";
+                        }
+                        spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
+                        //伤害反应
+                        if (noDamageResponse == false)
+                        {
+                            //caster
+                            int buffCount = caster.buffList.Count;
+                            for (int i = 0; i < buffCount; ++i)
+                            {
+                                caster.buffList[i].DamageResponse(applyTime, this, wpID);
+                            }
+                            //target
+                            buffCount = target.buffList.Count;
+                            for (int i = 0; i < buffCount; ++i)
+                            {
+                                target.buffList[i].DamageResponse(applyTime, this, wpID);
+                            }
                         }
                     }
                 }
-				
-				//大招受击事件
-				if (damageAmount < 0 && damageProto.isHeal == false)
-				{
-					SpellEffectArgs effectArgs = new SpellEffectArgs();
-					if (ownedSpell.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao ||
-						ownedSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao || isCritical)
-					{
-						effectArgs.targetID = targetID;
-						effectArgs.triggerTime = applyTime;
-						spellService.TriggerEvent(GameEventList.BashHit, effectArgs);
-					}
-					else
-					{
-						effectArgs.targetID = targetID;
-						effectArgs.triggerTime = applyTime;
-						spellService.TriggerEvent(GameEventList.NormalHit, effectArgs);
-					}
-				}                		
-
-                //trigger damage event
-                if (damageAmount < 0 || damageProto.isHeal == true)
+                else
                 {
-                    SpellEffectArgs effectArgs = new SpellEffectArgs();
-                    if (target != null)
+                    SpellVitalChangeArgs interruptArgs = new SpellVitalChangeArgs();
+                    if (damageProto.damageType == SpellConst.damagePhy)
                     {
-                        WeakPointData wp = null;
-                        if (target.attackWpName != null)
-                        {
-                            wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
-                        }
-                        effectArgs.wpNode = wp != null ? wp.node : "e_shouji";
-                    }
-                    effectArgs.triggerTime = applyTime;
-                    effectArgs.casterID = casterID;
-                    effectArgs.targetID = targetID;
-                    effectArgs.effectID = protoEffect.id;
-                    spellService.TriggerEvent(GameEventList.SpellEffect, effectArgs);
-
-                    SpellVitalChangeArgs args = new SpellVitalChangeArgs();
-                    args.vitalType = (int)VitalType.Vital_Type_Default;
-                    args.triggerTime = applyTime;
-                    args.casterID = casterID;
-                    args.targetID = targetID;
-                    args.isCritical = isCritical;
-                    args.vitalChange = damageAmount;
-                    args.vitalCurrent = target.curLife;//TODO: need weak point life?
-                    args.vitalMax = target.maxLife;
-                    if (wpRuntime != null)
-                    {
-                        args.wpID = wpRuntime.id;
-                        args.wpNode = wpRuntime.staticData.node;
+                        interruptArgs.vitalType = (int)VitalType.Vital_Type_PhyImmune;
                     }
                     else
                     {
-                        args.wpID = "e_shouji";
-                        args.wpNode = "e_shouji";
+                        interruptArgs.vitalType = (int)VitalType.Vital_Type_MagicImmune;
                     }
-                    spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
-                    //伤害反应
-                    if (noDamageResponse == false)
-                    {
-                        //caster
-                        int buffCount = caster.buffList.Count;
-                        for (int i = 0; i < buffCount; ++i)
-                        {
-                            caster.buffList[i].DamageResponse(applyTime, this, wpID);
-                        }
-                        //target
-                        buffCount = target.buffList.Count;
-                        for (int i = 0; i < buffCount; ++i)
-                        {
-                            target.buffList[i].DamageResponse(applyTime, this, wpID);
-                        }
-                    }
+                    interruptArgs.triggerTime = applyTime;
+                    interruptArgs.casterID = 0;
+                    interruptArgs.targetID = targetID;
+                    spellService.TriggerEvent(GameEventList.SpellLifeChange, interruptArgs);
                 }
 
                 //link effect

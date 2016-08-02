@@ -30,6 +30,7 @@ import com.hawk.game.protocol.Mail.HSMail;
 import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Shop.HSShopRefresh;
 import com.hawk.game.protocol.Shop.HSShopRefreshTimeSync;
+import com.hawk.game.protocol.Statistics.ChapterState;
 import com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync;
 import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
 import com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh;
@@ -75,6 +76,15 @@ public class BuilderUtil {
 
 			builder.addInstanceState(instanceState);
 		}
+
+		ChapterState.Builder chapterState = ChapterState.newBuilder();
+		chapterState.setNormalTopChapter(statisticsEntity.getNormalTopChapter());
+		chapterState.setNormalTopIndex(statisticsEntity.getNormalTopIndex());
+		chapterState.setHardTopChapter(statisticsEntity.getHardTopChapter());
+		chapterState.setHardTopIndex(statisticsEntity.getHardTopIndex());
+		chapterState.addAllNormalBoxState(statisticsEntity.getNormalChapterBoxStateList());
+		chapterState.addAllHardBoxState(statisticsEntity.getHardChapterBoxStateList());
+		builder.setChapterState(chapterState);
 
 		for (Entry<String, Integer> entry : statisticsEntity.getRechargeRecordMap().entrySet()) {
 			RechargeState.Builder rechargeState = RechargeState.newBuilder();
@@ -147,7 +157,7 @@ public class BuilderUtil {
 		for (Entry<String, Integer> entry : monsterEntity.getSkillMap().entrySet()) {
 			skill.setSkillId(entry.getKey());
 			skill.setLevel(entry.getValue());
-			//builder.addSkill(skill);
+			builder.addSkill(skill);
 		}
 		return builder;
 	}

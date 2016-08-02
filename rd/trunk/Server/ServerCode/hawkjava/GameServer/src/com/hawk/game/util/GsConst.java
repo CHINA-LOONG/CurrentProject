@@ -47,7 +47,9 @@ public class GsConst {
 	// 金币最大值
 	public static final int MAX_COIN_COUNT = 999999999;
 	// 疲劳值最大值
-	public static final int MAX_FATIGUE_COUNT = 9999;
+	public static final int MAX_FATIGUE_COUNT = 5000;
+	// 副本最大星数
+	public static final int MAX_INSTANCE_STAR = 3;
 	// 副本复活次数
 	public static final int INSTANCE_REVIVE_COUNT = 3;
 	// 副本复活消耗
@@ -250,7 +252,7 @@ public class GsConst {
 	/**
 	 * item 消耗检查内容
 	 */
-	public static class PlayerItemCheckResult {
+	public static class ConsumeCheckResult {
 		// 金币不足
 		public static final int COINS_NOT_ENOUGH = 1;
 		// 钻石不足
@@ -266,6 +268,15 @@ public class GsConst {
 		public static final int MONSTER_NOT_ENOUGH = 9;
 		// 宠物锁定
 		public static final int MONSTER_LOCKED = 10;
+	}
+
+	/**
+	 * item 奖励检查内容
+	 */
+	public static class AwardCheckResult {
+		public static final int COIN_LIMIT = 1;
+		public static final int GOLD_LIMIT = 2;
+		public static final int FATIGUE_LIMIT = 3;
 	}
 
 	// 循环性

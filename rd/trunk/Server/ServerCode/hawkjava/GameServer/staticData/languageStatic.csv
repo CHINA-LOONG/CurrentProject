@@ -2211,7 +2211,6 @@ story_longnv,中国传说中的妖怪，居住在深海龙宫的真龙后裔。�
 story_jinglingwang,诞生于朝露之中的妖精之王，优雅的剑术大师。妖精一族是上古邪神创造而生，被邪神当做奴隶肆无忌惮的奴役和虐待。直到妖精王出现，妖精一族在妖精王的领导下逐渐壮大，终于诛杀邪神，获得自由。,"The Goblin King was born with the morning dew and is quite the swordsman. The goblin race was brought to life by Cthulhu to serve as slaves, and were subject to servitude and abuse. When the Goblin King appeared, the goblin race steadily grew in strength, and were eventually were able to slay Cthulhu, gaining their freedom."
 story_duoduoluo,生活在世界树上的妖精，森林的播种者。每到夜晚会行走在森林里，脚印踏过的土地会长出新的幼苗。,"A sprite that lives on the Tree of Life and sower of the great forest. Every night, he will go down to the forest, and saplings will begin to grow wherever his feet touched the soil."
 story_yifanmumian,日本传说中的妖怪，长相是一根白色布带。会袭击夜间独自出行的行人，把人的身体和头包裹起来带到半空中。,"A monster of Japanese origin that appears to be a white belt. He will attack people walking alone at night by surprise, and wrap the body and head to be taken up to the heavens."
-speech_ruodian,还记得怎么使用照妖镜吗？再教你一次哦！,Do you still remember how to use Mytho Lens? Here is the instructions again!
 ruodian_hide_name,线索,Clue
 guide_road1,<color=#ffcc00>神话守护者</color>开启啦！,<color=#ffcc00>Myth Guardian Mode</color> unlocked!
 guide_road2,进入第一个关卡,Enter the first stage
@@ -2225,3 +2224,4 @@ guide_ruodian3,看起来她的<color=#ffcc00>头</color>是弱点,Seems that it'
 guide_ruodian4,看起来<color=#ffcc00>花瓣</color>是弱点,Seems that it's the <color=#ffcc00>petal</color>.
 mythoPath_refresh_tips,神话守护者已刷新！重新挑战，领取丰厚奖励吧。,Myth Guardian has refreshed. Go and battle for some more rewards.
 hehuaisituosi4hide_eye,根据图形提示找到弱点,Find this shape on Ifrit.
+guide_ruodian5,记得如何找到<color=#ffcc00>弱点</color>吗？,Remember how to find <color=#ffcc00>weakpoint</color>?

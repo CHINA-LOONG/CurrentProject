@@ -1370,6 +1370,18 @@ public final class Status {
      * <code>INSTANCE_REVIVE_COUNT = 393221;</code>
      */
     INSTANCE_REVIVE_COUNT(4, 393221),
+    /**
+     * <code>CHAPTER_BOX_STAR_COUNT = 393222;</code>
+     */
+    CHAPTER_BOX_STAR_COUNT(5, 393222),
+    /**
+     * <code>CHAPTER_BOX_ALREADY_OPEN = 393223;</code>
+     */
+    CHAPTER_BOX_ALREADY_OPEN(6, 393223),
+    /**
+     * <code>INSTANCE_NOT_ENTER = 393224;</code>
+     */
+    INSTANCE_NOT_ENTER(7, 393224),
     ;
 
     /**
@@ -1396,6 +1408,18 @@ public final class Status {
      * <code>INSTANCE_REVIVE_COUNT = 393221;</code>
      */
     public static final int INSTANCE_REVIVE_COUNT_VALUE = 393221;
+    /**
+     * <code>CHAPTER_BOX_STAR_COUNT = 393222;</code>
+     */
+    public static final int CHAPTER_BOX_STAR_COUNT_VALUE = 393222;
+    /**
+     * <code>CHAPTER_BOX_ALREADY_OPEN = 393223;</code>
+     */
+    public static final int CHAPTER_BOX_ALREADY_OPEN_VALUE = 393223;
+    /**
+     * <code>INSTANCE_NOT_ENTER = 393224;</code>
+     */
+    public static final int INSTANCE_NOT_ENTER_VALUE = 393224;
 
 
     public final int getNumber() { return value; }
@@ -1407,6 +1431,9 @@ public final class Status {
         case 393219: return INSTANCE_COUNT;
         case 393220: return INSTANCE_FATIGUE;
         case 393221: return INSTANCE_REVIVE_COUNT;
+        case 393222: return CHAPTER_BOX_STAR_COUNT;
+        case 393223: return CHAPTER_BOX_ALREADY_OPEN;
+        case 393224: return INSTANCE_NOT_ENTER;
         default: return null;
       }
     }
@@ -2081,22 +2108,24 @@ public final class Status {
       "\022\037\n\031EQUIP_PLAYER_LEVEL_DEMAND\020\220\240\020*T\n\nque" +
       "stError\022\026\n\020QUEST_NOT_ACCEPT\020\201\200\024\022\030\n\022QUEST" +
       "_NOT_COMPLETE\020\202\200\024\022\024\n\016QUEST_NOT_OPEN\020\203\200\024*" +
-      "\211\001\n\rinstanceError\022\027\n\021INSTANCE_NOT_OPEN\020\201",
+      "\341\001\n\rinstanceError\022\027\n\021INSTANCE_NOT_OPEN\020\201",
       "\200\030\022\024\n\016INSTANCE_LEVEL\020\202\200\030\022\024\n\016INSTANCE_COU" +
       "NT\020\203\200\030\022\026\n\020INSTANCE_FATIGUE\020\204\200\030\022\033\n\025INSTAN" +
-      "CE_REVIVE_COUNT\020\205\200\030*^\n\tmailError\022\024\n\016MAIL" +
-      "_NOT_EXIST\020\201\200\034\022\017\n\tMAIL_NONE\020\202\200\034\022\024\n\016MAIL_" +
-      "COIN_FULL\020\203\200\034\022\024\n\016MAIL_GOLD_FULL\020\204\200\034*\232\001\n\r" +
-      "allianceError\022\037\n\031ALLIANCE_LEVEL_NOT_ENOU" +
-      "GH\020\201\200 \022\031\n\023ALLIANCE_ALREADY_IN\020\202\200 \022\031\n\023ALL" +
-      "IANCE_NAME_ERROR\020\203\200 \022\031\n\023ALLIANCE_NAME_EX" +
-      "IST\020\204\200 \022\027\n\021ALLIANCE_NOT_JOIN\020\205\200 *\202\001\n\tsho" +
-      "pError\022\032\n\024SHOP_REFRESH_TIMEOUT\020\201\200$\022\033\n\025SH",
-      "OP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026SHOP_REFRESH_" +
-      "MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COIN_MAX_COUN" +
-      "T\020\204\200$*\037\n\007imError\022\024\n\016IM_CHAT_LENGTH\020\201\200@*(" +
-      "\n\014settingError\022\030\n\022SETTING_BLOCK_FULL\020\201\200D" +
-      "B\030\n\026com.hawk.game.protocol"
+      "CE_REVIVE_COUNT\020\205\200\030\022\034\n\026CHAPTER_BOX_STAR_" +
+      "COUNT\020\206\200\030\022\036\n\030CHAPTER_BOX_ALREADY_OPEN\020\207\200" +
+      "\030\022\030\n\022INSTANCE_NOT_ENTER\020\210\200\030*^\n\tmailError" +
+      "\022\024\n\016MAIL_NOT_EXIST\020\201\200\034\022\017\n\tMAIL_NONE\020\202\200\034\022" +
+      "\024\n\016MAIL_COIN_FULL\020\203\200\034\022\024\n\016MAIL_GOLD_FULL\020" +
+      "\204\200\034*\232\001\n\rallianceError\022\037\n\031ALLIANCE_LEVEL_" +
+      "NOT_ENOUGH\020\201\200 \022\031\n\023ALLIANCE_ALREADY_IN\020\202\200" +
+      " \022\031\n\023ALLIANCE_NAME_ERROR\020\203\200 \022\031\n\023ALLIANCE",
+      "_NAME_EXIST\020\204\200 \022\027\n\021ALLIANCE_NOT_JOIN\020\205\200 " +
+      "*\202\001\n\tshopError\022\032\n\024SHOP_REFRESH_TIMEOUT\020\201" +
+      "\200$\022\033\n\025SHOP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026SHOP_" +
+      "REFRESH_MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COIN_" +
+      "MAX_COUNT\020\204\200$*\037\n\007imError\022\024\n\016IM_CHAT_LENG" +
+      "TH\020\201\200@*(\n\014settingError\022\030\n\022SETTING_BLOCK_" +
+      "FULL\020\201\200DB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

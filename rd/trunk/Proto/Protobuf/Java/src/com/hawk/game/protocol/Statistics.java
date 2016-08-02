@@ -657,6 +657,1223 @@ public final class Statistics {
     // @@protoc_insertion_point(class_scope:InstanceState)
   }
 
+  public interface ChapterStateOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 normalTopChapter = 1;
+    /**
+     * <code>required int32 normalTopChapter = 1;</code>
+     *
+     * <pre>
+     * 完成的最高普通副本的章节
+     * </pre>
+     */
+    boolean hasNormalTopChapter();
+    /**
+     * <code>required int32 normalTopChapter = 1;</code>
+     *
+     * <pre>
+     * 完成的最高普通副本的章节
+     * </pre>
+     */
+    int getNormalTopChapter();
+
+    // required int32 normalTopIndex = 2;
+    /**
+     * <code>required int32 normalTopIndex = 2;</code>
+     *
+     * <pre>
+     * 完成的最高普通副本的索引
+     * </pre>
+     */
+    boolean hasNormalTopIndex();
+    /**
+     * <code>required int32 normalTopIndex = 2;</code>
+     *
+     * <pre>
+     * 完成的最高普通副本的索引
+     * </pre>
+     */
+    int getNormalTopIndex();
+
+    // required int32 hardTopChapter = 3;
+    /**
+     * <code>required int32 hardTopChapter = 3;</code>
+     *
+     * <pre>
+     * 完成的最高困难副本的章节
+     * </pre>
+     */
+    boolean hasHardTopChapter();
+    /**
+     * <code>required int32 hardTopChapter = 3;</code>
+     *
+     * <pre>
+     * 完成的最高困难副本的章节
+     * </pre>
+     */
+    int getHardTopChapter();
+
+    // required int32 hardTopIndex = 4;
+    /**
+     * <code>required int32 hardTopIndex = 4;</code>
+     *
+     * <pre>
+     * 完成的最高困难副本的索引
+     * </pre>
+     */
+    boolean hasHardTopIndex();
+    /**
+     * <code>required int32 hardTopIndex = 4;</code>
+     *
+     * <pre>
+     * 完成的最高困难副本的索引
+     * </pre>
+     */
+    int getHardTopIndex();
+
+    // repeated int32 normalBoxState = 5;
+    /**
+     * <code>repeated int32 normalBoxState = 5;</code>
+     *
+     * <pre>
+     * 普通章节宝箱状态列表
+     * </pre>
+     */
+    java.util.List<java.lang.Integer> getNormalBoxStateList();
+    /**
+     * <code>repeated int32 normalBoxState = 5;</code>
+     *
+     * <pre>
+     * 普通章节宝箱状态列表
+     * </pre>
+     */
+    int getNormalBoxStateCount();
+    /**
+     * <code>repeated int32 normalBoxState = 5;</code>
+     *
+     * <pre>
+     * 普通章节宝箱状态列表
+     * </pre>
+     */
+    int getNormalBoxState(int index);
+
+    // repeated int32 hardBoxState = 6;
+    /**
+     * <code>repeated int32 hardBoxState = 6;</code>
+     *
+     * <pre>
+     * 困难章节宝箱状态列表
+     * </pre>
+     */
+    java.util.List<java.lang.Integer> getHardBoxStateList();
+    /**
+     * <code>repeated int32 hardBoxState = 6;</code>
+     *
+     * <pre>
+     * 困难章节宝箱状态列表
+     * </pre>
+     */
+    int getHardBoxStateCount();
+    /**
+     * <code>repeated int32 hardBoxState = 6;</code>
+     *
+     * <pre>
+     * 困难章节宝箱状态列表
+     * </pre>
+     */
+    int getHardBoxState(int index);
+  }
+  /**
+   * Protobuf type {@code ChapterState}
+   */
+  public static final class ChapterState extends
+      com.google.protobuf.GeneratedMessage
+      implements ChapterStateOrBuilder {
+    // Use ChapterState.newBuilder() to construct.
+    private ChapterState(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ChapterState(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ChapterState defaultInstance;
+    public static ChapterState getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ChapterState getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ChapterState(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              normalTopChapter_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              normalTopIndex_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              hardTopChapter_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              hardTopIndex_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                normalBoxState_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              normalBoxState_.add(input.readInt32());
+              break;
+            }
+            case 42: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010) && input.getBytesUntilLimit() > 0) {
+                normalBoxState_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                normalBoxState_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 48: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                hardBoxState_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              hardBoxState_.add(input.readInt32());
+              break;
+            }
+            case 50: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020) && input.getBytesUntilLimit() > 0) {
+                hardBoxState_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                hardBoxState_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          normalBoxState_ = java.util.Collections.unmodifiableList(normalBoxState_);
+        }
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          hardBoxState_ = java.util.Collections.unmodifiableList(hardBoxState_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Statistics.internal_static_ChapterState_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Statistics.internal_static_ChapterState_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Statistics.ChapterState.class, com.hawk.game.protocol.Statistics.ChapterState.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ChapterState> PARSER =
+        new com.google.protobuf.AbstractParser<ChapterState>() {
+      public ChapterState parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ChapterState(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChapterState> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 normalTopChapter = 1;
+    public static final int NORMALTOPCHAPTER_FIELD_NUMBER = 1;
+    private int normalTopChapter_;
+    /**
+     * <code>required int32 normalTopChapter = 1;</code>
+     *
+     * <pre>
+     * 完成的最高普通副本的章节
+     * </pre>
+     */
+    public boolean hasNormalTopChapter() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 normalTopChapter = 1;</code>
+     *
+     * <pre>
+     * 完成的最高普通副本的章节
+     * </pre>
+     */
+    public int getNormalTopChapter() {
+      return normalTopChapter_;
+    }
+
+    // required int32 normalTopIndex = 2;
+    public static final int NORMALTOPINDEX_FIELD_NUMBER = 2;
+    private int normalTopIndex_;
+    /**
+     * <code>required int32 normalTopIndex = 2;</code>
+     *
+     * <pre>
+     * 完成的最高普通副本的索引
+     * </pre>
+     */
+    public boolean hasNormalTopIndex() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 normalTopIndex = 2;</code>
+     *
+     * <pre>
+     * 完成的最高普通副本的索引
+     * </pre>
+     */
+    public int getNormalTopIndex() {
+      return normalTopIndex_;
+    }
+
+    // required int32 hardTopChapter = 3;
+    public static final int HARDTOPCHAPTER_FIELD_NUMBER = 3;
+    private int hardTopChapter_;
+    /**
+     * <code>required int32 hardTopChapter = 3;</code>
+     *
+     * <pre>
+     * 完成的最高困难副本的章节
+     * </pre>
+     */
+    public boolean hasHardTopChapter() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 hardTopChapter = 3;</code>
+     *
+     * <pre>
+     * 完成的最高困难副本的章节
+     * </pre>
+     */
+    public int getHardTopChapter() {
+      return hardTopChapter_;
+    }
+
+    // required int32 hardTopIndex = 4;
+    public static final int HARDTOPINDEX_FIELD_NUMBER = 4;
+    private int hardTopIndex_;
+    /**
+     * <code>required int32 hardTopIndex = 4;</code>
+     *
+     * <pre>
+     * 完成的最高困难副本的索引
+     * </pre>
+     */
+    public boolean hasHardTopIndex() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required int32 hardTopIndex = 4;</code>
+     *
+     * <pre>
+     * 完成的最高困难副本的索引
+     * </pre>
+     */
+    public int getHardTopIndex() {
+      return hardTopIndex_;
+    }
+
+    // repeated int32 normalBoxState = 5;
+    public static final int NORMALBOXSTATE_FIELD_NUMBER = 5;
+    private java.util.List<java.lang.Integer> normalBoxState_;
+    /**
+     * <code>repeated int32 normalBoxState = 5;</code>
+     *
+     * <pre>
+     * 普通章节宝箱状态列表
+     * </pre>
+     */
+    public java.util.List<java.lang.Integer>
+        getNormalBoxStateList() {
+      return normalBoxState_;
+    }
+    /**
+     * <code>repeated int32 normalBoxState = 5;</code>
+     *
+     * <pre>
+     * 普通章节宝箱状态列表
+     * </pre>
+     */
+    public int getNormalBoxStateCount() {
+      return normalBoxState_.size();
+    }
+    /**
+     * <code>repeated int32 normalBoxState = 5;</code>
+     *
+     * <pre>
+     * 普通章节宝箱状态列表
+     * </pre>
+     */
+    public int getNormalBoxState(int index) {
+      return normalBoxState_.get(index);
+    }
+
+    // repeated int32 hardBoxState = 6;
+    public static final int HARDBOXSTATE_FIELD_NUMBER = 6;
+    private java.util.List<java.lang.Integer> hardBoxState_;
+    /**
+     * <code>repeated int32 hardBoxState = 6;</code>
+     *
+     * <pre>
+     * 困难章节宝箱状态列表
+     * </pre>
+     */
+    public java.util.List<java.lang.Integer>
+        getHardBoxStateList() {
+      return hardBoxState_;
+    }
+    /**
+     * <code>repeated int32 hardBoxState = 6;</code>
+     *
+     * <pre>
+     * 困难章节宝箱状态列表
+     * </pre>
+     */
+    public int getHardBoxStateCount() {
+      return hardBoxState_.size();
+    }
+    /**
+     * <code>repeated int32 hardBoxState = 6;</code>
+     *
+     * <pre>
+     * 困难章节宝箱状态列表
+     * </pre>
+     */
+    public int getHardBoxState(int index) {
+      return hardBoxState_.get(index);
+    }
+
+    private void initFields() {
+      normalTopChapter_ = 0;
+      normalTopIndex_ = 0;
+      hardTopChapter_ = 0;
+      hardTopIndex_ = 0;
+      normalBoxState_ = java.util.Collections.emptyList();
+      hardBoxState_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasNormalTopChapter()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNormalTopIndex()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHardTopChapter()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHardTopIndex()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, normalTopChapter_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, normalTopIndex_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, hardTopChapter_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, hardTopIndex_);
+      }
+      for (int i = 0; i < normalBoxState_.size(); i++) {
+        output.writeInt32(5, normalBoxState_.get(i));
+      }
+      for (int i = 0; i < hardBoxState_.size(); i++) {
+        output.writeInt32(6, hardBoxState_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, normalTopChapter_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, normalTopIndex_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, hardTopChapter_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, hardTopIndex_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < normalBoxState_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(normalBoxState_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getNormalBoxStateList().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < hardBoxState_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(hardBoxState_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getHardBoxStateList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Statistics.ChapterState parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.ChapterState parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.ChapterState parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.ChapterState parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.ChapterState parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.ChapterState parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.ChapterState parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.ChapterState parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.ChapterState parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.ChapterState parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Statistics.ChapterState prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ChapterState}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Statistics.ChapterStateOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Statistics.internal_static_ChapterState_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Statistics.internal_static_ChapterState_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Statistics.ChapterState.class, com.hawk.game.protocol.Statistics.ChapterState.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Statistics.ChapterState.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        normalTopChapter_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        normalTopIndex_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        hardTopChapter_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        hardTopIndex_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        normalBoxState_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        hardBoxState_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Statistics.internal_static_ChapterState_descriptor;
+      }
+
+      public com.hawk.game.protocol.Statistics.ChapterState getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Statistics.ChapterState build() {
+        com.hawk.game.protocol.Statistics.ChapterState result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Statistics.ChapterState buildPartial() {
+        com.hawk.game.protocol.Statistics.ChapterState result = new com.hawk.game.protocol.Statistics.ChapterState(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.normalTopChapter_ = normalTopChapter_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.normalTopIndex_ = normalTopIndex_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.hardTopChapter_ = hardTopChapter_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.hardTopIndex_ = hardTopIndex_;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          normalBoxState_ = java.util.Collections.unmodifiableList(normalBoxState_);
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.normalBoxState_ = normalBoxState_;
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          hardBoxState_ = java.util.Collections.unmodifiableList(hardBoxState_);
+          bitField0_ = (bitField0_ & ~0x00000020);
+        }
+        result.hardBoxState_ = hardBoxState_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Statistics.ChapterState) {
+          return mergeFrom((com.hawk.game.protocol.Statistics.ChapterState)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Statistics.ChapterState other) {
+        if (other == com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance()) return this;
+        if (other.hasNormalTopChapter()) {
+          setNormalTopChapter(other.getNormalTopChapter());
+        }
+        if (other.hasNormalTopIndex()) {
+          setNormalTopIndex(other.getNormalTopIndex());
+        }
+        if (other.hasHardTopChapter()) {
+          setHardTopChapter(other.getHardTopChapter());
+        }
+        if (other.hasHardTopIndex()) {
+          setHardTopIndex(other.getHardTopIndex());
+        }
+        if (!other.normalBoxState_.isEmpty()) {
+          if (normalBoxState_.isEmpty()) {
+            normalBoxState_ = other.normalBoxState_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureNormalBoxStateIsMutable();
+            normalBoxState_.addAll(other.normalBoxState_);
+          }
+          onChanged();
+        }
+        if (!other.hardBoxState_.isEmpty()) {
+          if (hardBoxState_.isEmpty()) {
+            hardBoxState_ = other.hardBoxState_;
+            bitField0_ = (bitField0_ & ~0x00000020);
+          } else {
+            ensureHardBoxStateIsMutable();
+            hardBoxState_.addAll(other.hardBoxState_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasNormalTopChapter()) {
+          
+          return false;
+        }
+        if (!hasNormalTopIndex()) {
+          
+          return false;
+        }
+        if (!hasHardTopChapter()) {
+          
+          return false;
+        }
+        if (!hasHardTopIndex()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Statistics.ChapterState parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Statistics.ChapterState) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 normalTopChapter = 1;
+      private int normalTopChapter_ ;
+      /**
+       * <code>required int32 normalTopChapter = 1;</code>
+       *
+       * <pre>
+       * 完成的最高普通副本的章节
+       * </pre>
+       */
+      public boolean hasNormalTopChapter() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 normalTopChapter = 1;</code>
+       *
+       * <pre>
+       * 完成的最高普通副本的章节
+       * </pre>
+       */
+      public int getNormalTopChapter() {
+        return normalTopChapter_;
+      }
+      /**
+       * <code>required int32 normalTopChapter = 1;</code>
+       *
+       * <pre>
+       * 完成的最高普通副本的章节
+       * </pre>
+       */
+      public Builder setNormalTopChapter(int value) {
+        bitField0_ |= 0x00000001;
+        normalTopChapter_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 normalTopChapter = 1;</code>
+       *
+       * <pre>
+       * 完成的最高普通副本的章节
+       * </pre>
+       */
+      public Builder clearNormalTopChapter() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        normalTopChapter_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 normalTopIndex = 2;
+      private int normalTopIndex_ ;
+      /**
+       * <code>required int32 normalTopIndex = 2;</code>
+       *
+       * <pre>
+       * 完成的最高普通副本的索引
+       * </pre>
+       */
+      public boolean hasNormalTopIndex() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 normalTopIndex = 2;</code>
+       *
+       * <pre>
+       * 完成的最高普通副本的索引
+       * </pre>
+       */
+      public int getNormalTopIndex() {
+        return normalTopIndex_;
+      }
+      /**
+       * <code>required int32 normalTopIndex = 2;</code>
+       *
+       * <pre>
+       * 完成的最高普通副本的索引
+       * </pre>
+       */
+      public Builder setNormalTopIndex(int value) {
+        bitField0_ |= 0x00000002;
+        normalTopIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 normalTopIndex = 2;</code>
+       *
+       * <pre>
+       * 完成的最高普通副本的索引
+       * </pre>
+       */
+      public Builder clearNormalTopIndex() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        normalTopIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 hardTopChapter = 3;
+      private int hardTopChapter_ ;
+      /**
+       * <code>required int32 hardTopChapter = 3;</code>
+       *
+       * <pre>
+       * 完成的最高困难副本的章节
+       * </pre>
+       */
+      public boolean hasHardTopChapter() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 hardTopChapter = 3;</code>
+       *
+       * <pre>
+       * 完成的最高困难副本的章节
+       * </pre>
+       */
+      public int getHardTopChapter() {
+        return hardTopChapter_;
+      }
+      /**
+       * <code>required int32 hardTopChapter = 3;</code>
+       *
+       * <pre>
+       * 完成的最高困难副本的章节
+       * </pre>
+       */
+      public Builder setHardTopChapter(int value) {
+        bitField0_ |= 0x00000004;
+        hardTopChapter_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 hardTopChapter = 3;</code>
+       *
+       * <pre>
+       * 完成的最高困难副本的章节
+       * </pre>
+       */
+      public Builder clearHardTopChapter() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        hardTopChapter_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 hardTopIndex = 4;
+      private int hardTopIndex_ ;
+      /**
+       * <code>required int32 hardTopIndex = 4;</code>
+       *
+       * <pre>
+       * 完成的最高困难副本的索引
+       * </pre>
+       */
+      public boolean hasHardTopIndex() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int32 hardTopIndex = 4;</code>
+       *
+       * <pre>
+       * 完成的最高困难副本的索引
+       * </pre>
+       */
+      public int getHardTopIndex() {
+        return hardTopIndex_;
+      }
+      /**
+       * <code>required int32 hardTopIndex = 4;</code>
+       *
+       * <pre>
+       * 完成的最高困难副本的索引
+       * </pre>
+       */
+      public Builder setHardTopIndex(int value) {
+        bitField0_ |= 0x00000008;
+        hardTopIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 hardTopIndex = 4;</code>
+       *
+       * <pre>
+       * 完成的最高困难副本的索引
+       * </pre>
+       */
+      public Builder clearHardTopIndex() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        hardTopIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated int32 normalBoxState = 5;
+      private java.util.List<java.lang.Integer> normalBoxState_ = java.util.Collections.emptyList();
+      private void ensureNormalBoxStateIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          normalBoxState_ = new java.util.ArrayList<java.lang.Integer>(normalBoxState_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+      /**
+       * <code>repeated int32 normalBoxState = 5;</code>
+       *
+       * <pre>
+       * 普通章节宝箱状态列表
+       * </pre>
+       */
+      public java.util.List<java.lang.Integer>
+          getNormalBoxStateList() {
+        return java.util.Collections.unmodifiableList(normalBoxState_);
+      }
+      /**
+       * <code>repeated int32 normalBoxState = 5;</code>
+       *
+       * <pre>
+       * 普通章节宝箱状态列表
+       * </pre>
+       */
+      public int getNormalBoxStateCount() {
+        return normalBoxState_.size();
+      }
+      /**
+       * <code>repeated int32 normalBoxState = 5;</code>
+       *
+       * <pre>
+       * 普通章节宝箱状态列表
+       * </pre>
+       */
+      public int getNormalBoxState(int index) {
+        return normalBoxState_.get(index);
+      }
+      /**
+       * <code>repeated int32 normalBoxState = 5;</code>
+       *
+       * <pre>
+       * 普通章节宝箱状态列表
+       * </pre>
+       */
+      public Builder setNormalBoxState(
+          int index, int value) {
+        ensureNormalBoxStateIsMutable();
+        normalBoxState_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 normalBoxState = 5;</code>
+       *
+       * <pre>
+       * 普通章节宝箱状态列表
+       * </pre>
+       */
+      public Builder addNormalBoxState(int value) {
+        ensureNormalBoxStateIsMutable();
+        normalBoxState_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 normalBoxState = 5;</code>
+       *
+       * <pre>
+       * 普通章节宝箱状态列表
+       * </pre>
+       */
+      public Builder addAllNormalBoxState(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureNormalBoxStateIsMutable();
+        super.addAll(values, normalBoxState_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 normalBoxState = 5;</code>
+       *
+       * <pre>
+       * 普通章节宝箱状态列表
+       * </pre>
+       */
+      public Builder clearNormalBoxState() {
+        normalBoxState_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+
+      // repeated int32 hardBoxState = 6;
+      private java.util.List<java.lang.Integer> hardBoxState_ = java.util.Collections.emptyList();
+      private void ensureHardBoxStateIsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          hardBoxState_ = new java.util.ArrayList<java.lang.Integer>(hardBoxState_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+      /**
+       * <code>repeated int32 hardBoxState = 6;</code>
+       *
+       * <pre>
+       * 困难章节宝箱状态列表
+       * </pre>
+       */
+      public java.util.List<java.lang.Integer>
+          getHardBoxStateList() {
+        return java.util.Collections.unmodifiableList(hardBoxState_);
+      }
+      /**
+       * <code>repeated int32 hardBoxState = 6;</code>
+       *
+       * <pre>
+       * 困难章节宝箱状态列表
+       * </pre>
+       */
+      public int getHardBoxStateCount() {
+        return hardBoxState_.size();
+      }
+      /**
+       * <code>repeated int32 hardBoxState = 6;</code>
+       *
+       * <pre>
+       * 困难章节宝箱状态列表
+       * </pre>
+       */
+      public int getHardBoxState(int index) {
+        return hardBoxState_.get(index);
+      }
+      /**
+       * <code>repeated int32 hardBoxState = 6;</code>
+       *
+       * <pre>
+       * 困难章节宝箱状态列表
+       * </pre>
+       */
+      public Builder setHardBoxState(
+          int index, int value) {
+        ensureHardBoxStateIsMutable();
+        hardBoxState_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 hardBoxState = 6;</code>
+       *
+       * <pre>
+       * 困难章节宝箱状态列表
+       * </pre>
+       */
+      public Builder addHardBoxState(int value) {
+        ensureHardBoxStateIsMutable();
+        hardBoxState_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 hardBoxState = 6;</code>
+       *
+       * <pre>
+       * 困难章节宝箱状态列表
+       * </pre>
+       */
+      public Builder addAllHardBoxState(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureHardBoxStateIsMutable();
+        super.addAll(values, hardBoxState_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 hardBoxState = 6;</code>
+       *
+       * <pre>
+       * 困难章节宝箱状态列表
+       * </pre>
+       */
+      public Builder clearHardBoxState() {
+        hardBoxState_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ChapterState)
+    }
+
+    static {
+      defaultInstance = new ChapterState(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ChapterState)
+  }
+
   public interface RechargeStateOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -1273,9 +2490,35 @@ public final class Statistics {
     com.hawk.game.protocol.Statistics.InstanceStateOrBuilder getInstanceStateOrBuilder(
         int index);
 
-    // repeated string monsterCollect = 2;
+    // required .ChapterState chapterState = 2;
     /**
-     * <code>repeated string monsterCollect = 2;</code>
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    boolean hasChapterState();
+    /**
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.ChapterState getChapterState();
+    /**
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.ChapterStateOrBuilder getChapterStateOrBuilder();
+
+    // repeated string monsterCollect = 3;
+    /**
+     * <code>repeated string monsterCollect = 3;</code>
      *
      * <pre>
      * 宠物图鉴
@@ -1284,7 +2527,7 @@ public final class Statistics {
     java.util.List<java.lang.String>
     getMonsterCollectList();
     /**
-     * <code>repeated string monsterCollect = 2;</code>
+     * <code>repeated string monsterCollect = 3;</code>
      *
      * <pre>
      * 宠物图鉴
@@ -1292,7 +2535,7 @@ public final class Statistics {
      */
     int getMonsterCollectCount();
     /**
-     * <code>repeated string monsterCollect = 2;</code>
+     * <code>repeated string monsterCollect = 3;</code>
      *
      * <pre>
      * 宠物图鉴
@@ -1300,7 +2543,7 @@ public final class Statistics {
      */
     java.lang.String getMonsterCollect(int index);
     /**
-     * <code>repeated string monsterCollect = 2;</code>
+     * <code>repeated string monsterCollect = 3;</code>
      *
      * <pre>
      * 宠物图鉴
@@ -1309,9 +2552,9 @@ public final class Statistics {
     com.google.protobuf.ByteString
         getMonsterCollectBytes(int index);
 
-    // required int32 skillPoint = 3;
+    // required int32 skillPoint = 4;
     /**
-     * <code>required int32 skillPoint = 3;</code>
+     * <code>required int32 skillPoint = 4;</code>
      *
      * <pre>
      * 当前技能点
@@ -1319,7 +2562,7 @@ public final class Statistics {
      */
     boolean hasSkillPoint();
     /**
-     * <code>required int32 skillPoint = 3;</code>
+     * <code>required int32 skillPoint = 4;</code>
      *
      * <pre>
      * 当前技能点
@@ -1327,9 +2570,9 @@ public final class Statistics {
      */
     int getSkillPoint();
 
-    // required int32 skillPointTimeStamp = 4;
+    // required int32 skillPointTimeStamp = 5;
     /**
-     * <code>required int32 skillPointTimeStamp = 4;</code>
+     * <code>required int32 skillPointTimeStamp = 5;</code>
      *
      * <pre>
      * 下个技能点开始计时时间戳
@@ -1337,7 +2580,7 @@ public final class Statistics {
      */
     boolean hasSkillPointTimeStamp();
     /**
-     * <code>required int32 skillPointTimeStamp = 4;</code>
+     * <code>required int32 skillPointTimeStamp = 5;</code>
      *
      * <pre>
      * 下个技能点开始计时时间戳
@@ -1345,9 +2588,9 @@ public final class Statistics {
      */
     int getSkillPointTimeStamp();
 
-    // optional int32 timeStamp = 5;
+    // optional int32 timeStamp = 6;
     /**
-     * <code>optional int32 timeStamp = 5;</code>
+     * <code>optional int32 timeStamp = 6;</code>
      *
      * <pre>
      * 服务器时间戳
@@ -1355,7 +2598,7 @@ public final class Statistics {
      */
     boolean hasTimeStamp();
     /**
-     * <code>optional int32 timeStamp = 5;</code>
+     * <code>optional int32 timeStamp = 6;</code>
      *
      * <pre>
      * 服务器时间戳
@@ -1363,9 +2606,9 @@ public final class Statistics {
      */
     int getTimeStamp();
 
-    // required string orderServerKey = 6;
+    // required string orderServerKey = 7;
     /**
-     * <code>required string orderServerKey = 6;</code>
+     * <code>required string orderServerKey = 7;</code>
      *
      * <pre>
      * 订单服务器key
@@ -1373,7 +2616,7 @@ public final class Statistics {
      */
     boolean hasOrderServerKey();
     /**
-     * <code>required string orderServerKey = 6;</code>
+     * <code>required string orderServerKey = 7;</code>
      *
      * <pre>
      * 订单服务器key
@@ -1381,7 +2624,7 @@ public final class Statistics {
      */
     java.lang.String getOrderServerKey();
     /**
-     * <code>required string orderServerKey = 6;</code>
+     * <code>required string orderServerKey = 7;</code>
      *
      * <pre>
      * 订单服务器key
@@ -1390,9 +2633,9 @@ public final class Statistics {
     com.google.protobuf.ByteString
         getOrderServerKeyBytes();
 
-    // repeated .RechargeState rechargeState = 7;
+    // repeated .RechargeState rechargeState = 8;
     /**
-     * <code>repeated .RechargeState rechargeState = 7;</code>
+     * <code>repeated .RechargeState rechargeState = 8;</code>
      *
      * <pre>
      * 商城购买状态
@@ -1401,7 +2644,7 @@ public final class Statistics {
     java.util.List<com.hawk.game.protocol.Statistics.RechargeState> 
         getRechargeStateList();
     /**
-     * <code>repeated .RechargeState rechargeState = 7;</code>
+     * <code>repeated .RechargeState rechargeState = 8;</code>
      *
      * <pre>
      * 商城购买状态
@@ -1409,7 +2652,7 @@ public final class Statistics {
      */
     com.hawk.game.protocol.Statistics.RechargeState getRechargeState(int index);
     /**
-     * <code>repeated .RechargeState rechargeState = 7;</code>
+     * <code>repeated .RechargeState rechargeState = 8;</code>
      *
      * <pre>
      * 商城购买状态
@@ -1417,7 +2660,7 @@ public final class Statistics {
      */
     int getRechargeStateCount();
     /**
-     * <code>repeated .RechargeState rechargeState = 7;</code>
+     * <code>repeated .RechargeState rechargeState = 8;</code>
      *
      * <pre>
      * 商城购买状态
@@ -1426,7 +2669,7 @@ public final class Statistics {
     java.util.List<? extends com.hawk.game.protocol.Statistics.RechargeStateOrBuilder> 
         getRechargeStateOrBuilderList();
     /**
-     * <code>repeated .RechargeState rechargeState = 7;</code>
+     * <code>repeated .RechargeState rechargeState = 8;</code>
      *
      * <pre>
      * 商城购买状态
@@ -1435,9 +2678,9 @@ public final class Statistics {
     com.hawk.game.protocol.Statistics.RechargeStateOrBuilder getRechargeStateOrBuilder(
         int index);
 
-    // required int32 monthCardLeft = 8;
+    // required int32 monthCardLeft = 9;
     /**
-     * <code>required int32 monthCardLeft = 8;</code>
+     * <code>required int32 monthCardLeft = 9;</code>
      *
      * <pre>
      * 月卡剩余时间
@@ -1445,7 +2688,7 @@ public final class Statistics {
      */
     boolean hasMonthCardLeft();
     /**
-     * <code>required int32 monthCardLeft = 8;</code>
+     * <code>required int32 monthCardLeft = 9;</code>
      *
      * <pre>
      * 月卡剩余时间
@@ -1453,9 +2696,9 @@ public final class Statistics {
      */
     int getMonthCardLeft();
 
-    // required int32 gold2CoinTimes = 9;
+    // required int32 gold2CoinTimes = 10;
     /**
-     * <code>required int32 gold2CoinTimes = 9;</code>
+     * <code>required int32 gold2CoinTimes = 10;</code>
      *
      * <pre>
      * 钻石购买金币次数
@@ -1463,7 +2706,7 @@ public final class Statistics {
      */
     boolean hasGold2CoinTimes();
     /**
-     * <code>required int32 gold2CoinTimes = 9;</code>
+     * <code>required int32 gold2CoinTimes = 10;</code>
      *
      * <pre>
      * 钻石购买金币次数
@@ -1471,9 +2714,9 @@ public final class Statistics {
      */
     int getGold2CoinTimes();
 
-    // required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;
+    // required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -1481,7 +2724,7 @@ public final class Statistics {
      */
     boolean hasExpLeftTimes();
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -1489,7 +2732,7 @@ public final class Statistics {
      */
     com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync getExpLeftTimes();
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -1557,54 +2800,67 @@ public final class Statistics {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              com.hawk.game.protocol.Statistics.ChapterState.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = chapterState_.toBuilder();
+              }
+              chapterState_ = input.readMessage(com.hawk.game.protocol.Statistics.ChapterState.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(chapterState_);
+                chapterState_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
                 monsterCollect_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000004;
               }
               monsterCollect_.add(input.readBytes());
               break;
             }
-            case 24: {
-              bitField0_ |= 0x00000001;
-              skillPoint_ = input.readInt32();
-              break;
-            }
             case 32: {
               bitField0_ |= 0x00000002;
-              skillPointTimeStamp_ = input.readInt32();
+              skillPoint_ = input.readInt32();
               break;
             }
             case 40: {
               bitField0_ |= 0x00000004;
+              skillPointTimeStamp_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000008;
               timeStamp_ = input.readInt32();
               break;
             }
-            case 50: {
-              bitField0_ |= 0x00000008;
+            case 58: {
+              bitField0_ |= 0x00000010;
               orderServerKey_ = input.readBytes();
               break;
             }
-            case 58: {
-              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+            case 66: {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
                 rechargeState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.RechargeState>();
-                mutable_bitField0_ |= 0x00000040;
+                mutable_bitField0_ |= 0x00000080;
               }
               rechargeState_.add(input.readMessage(com.hawk.game.protocol.Statistics.RechargeState.PARSER, extensionRegistry));
               break;
             }
-            case 64: {
-              bitField0_ |= 0x00000010;
+            case 72: {
+              bitField0_ |= 0x00000020;
               monthCardLeft_ = input.readInt32();
               break;
             }
-            case 72: {
-              bitField0_ |= 0x00000020;
+            case 80: {
+              bitField0_ |= 0x00000040;
               gold2CoinTimes_ = input.readInt32();
               break;
             }
-            case 82: {
+            case 90: {
               com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
                 subBuilder = expLeftTimes_.toBuilder();
               }
               expLeftTimes_ = input.readMessage(com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.PARSER, extensionRegistry);
@@ -1612,7 +2868,7 @@ public final class Statistics {
                 subBuilder.mergeFrom(expLeftTimes_);
                 expLeftTimes_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               break;
             }
           }
@@ -1626,10 +2882,10 @@ public final class Statistics {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           instanceState_ = java.util.Collections.unmodifiableList(instanceState_);
         }
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           monsterCollect_ = new com.google.protobuf.UnmodifiableLazyStringList(monsterCollect_);
         }
-        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
           rechargeState_ = java.util.Collections.unmodifiableList(rechargeState_);
         }
         this.unknownFields = unknownFields.build();
@@ -1720,11 +2976,45 @@ public final class Statistics {
       return instanceState_.get(index);
     }
 
-    // repeated string monsterCollect = 2;
-    public static final int MONSTERCOLLECT_FIELD_NUMBER = 2;
+    // required .ChapterState chapterState = 2;
+    public static final int CHAPTERSTATE_FIELD_NUMBER = 2;
+    private com.hawk.game.protocol.Statistics.ChapterState chapterState_;
+    /**
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    public boolean hasChapterState() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.ChapterState getChapterState() {
+      return chapterState_;
+    }
+    /**
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.ChapterStateOrBuilder getChapterStateOrBuilder() {
+      return chapterState_;
+    }
+
+    // repeated string monsterCollect = 3;
+    public static final int MONSTERCOLLECT_FIELD_NUMBER = 3;
     private com.google.protobuf.LazyStringList monsterCollect_;
     /**
-     * <code>repeated string monsterCollect = 2;</code>
+     * <code>repeated string monsterCollect = 3;</code>
      *
      * <pre>
      * 宠物图鉴
@@ -1735,7 +3025,7 @@ public final class Statistics {
       return monsterCollect_;
     }
     /**
-     * <code>repeated string monsterCollect = 2;</code>
+     * <code>repeated string monsterCollect = 3;</code>
      *
      * <pre>
      * 宠物图鉴
@@ -1745,7 +3035,7 @@ public final class Statistics {
       return monsterCollect_.size();
     }
     /**
-     * <code>repeated string monsterCollect = 2;</code>
+     * <code>repeated string monsterCollect = 3;</code>
      *
      * <pre>
      * 宠物图鉴
@@ -1755,7 +3045,7 @@ public final class Statistics {
       return monsterCollect_.get(index);
     }
     /**
-     * <code>repeated string monsterCollect = 2;</code>
+     * <code>repeated string monsterCollect = 3;</code>
      *
      * <pre>
      * 宠物图鉴
@@ -1766,21 +3056,21 @@ public final class Statistics {
       return monsterCollect_.getByteString(index);
     }
 
-    // required int32 skillPoint = 3;
-    public static final int SKILLPOINT_FIELD_NUMBER = 3;
+    // required int32 skillPoint = 4;
+    public static final int SKILLPOINT_FIELD_NUMBER = 4;
     private int skillPoint_;
     /**
-     * <code>required int32 skillPoint = 3;</code>
+     * <code>required int32 skillPoint = 4;</code>
      *
      * <pre>
      * 当前技能点
      * </pre>
      */
     public boolean hasSkillPoint() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 skillPoint = 3;</code>
+     * <code>required int32 skillPoint = 4;</code>
      *
      * <pre>
      * 当前技能点
@@ -1790,21 +3080,21 @@ public final class Statistics {
       return skillPoint_;
     }
 
-    // required int32 skillPointTimeStamp = 4;
-    public static final int SKILLPOINTTIMESTAMP_FIELD_NUMBER = 4;
+    // required int32 skillPointTimeStamp = 5;
+    public static final int SKILLPOINTTIMESTAMP_FIELD_NUMBER = 5;
     private int skillPointTimeStamp_;
     /**
-     * <code>required int32 skillPointTimeStamp = 4;</code>
+     * <code>required int32 skillPointTimeStamp = 5;</code>
      *
      * <pre>
      * 下个技能点开始计时时间戳
      * </pre>
      */
     public boolean hasSkillPointTimeStamp() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required int32 skillPointTimeStamp = 4;</code>
+     * <code>required int32 skillPointTimeStamp = 5;</code>
      *
      * <pre>
      * 下个技能点开始计时时间戳
@@ -1814,21 +3104,21 @@ public final class Statistics {
       return skillPointTimeStamp_;
     }
 
-    // optional int32 timeStamp = 5;
-    public static final int TIMESTAMP_FIELD_NUMBER = 5;
+    // optional int32 timeStamp = 6;
+    public static final int TIMESTAMP_FIELD_NUMBER = 6;
     private int timeStamp_;
     /**
-     * <code>optional int32 timeStamp = 5;</code>
+     * <code>optional int32 timeStamp = 6;</code>
      *
      * <pre>
      * 服务器时间戳
      * </pre>
      */
     public boolean hasTimeStamp() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional int32 timeStamp = 5;</code>
+     * <code>optional int32 timeStamp = 6;</code>
      *
      * <pre>
      * 服务器时间戳
@@ -1838,21 +3128,21 @@ public final class Statistics {
       return timeStamp_;
     }
 
-    // required string orderServerKey = 6;
-    public static final int ORDERSERVERKEY_FIELD_NUMBER = 6;
+    // required string orderServerKey = 7;
+    public static final int ORDERSERVERKEY_FIELD_NUMBER = 7;
     private java.lang.Object orderServerKey_;
     /**
-     * <code>required string orderServerKey = 6;</code>
+     * <code>required string orderServerKey = 7;</code>
      *
      * <pre>
      * 订单服务器key
      * </pre>
      */
     public boolean hasOrderServerKey() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required string orderServerKey = 6;</code>
+     * <code>required string orderServerKey = 7;</code>
      *
      * <pre>
      * 订单服务器key
@@ -1873,7 +3163,7 @@ public final class Statistics {
       }
     }
     /**
-     * <code>required string orderServerKey = 6;</code>
+     * <code>required string orderServerKey = 7;</code>
      *
      * <pre>
      * 订单服务器key
@@ -1893,11 +3183,11 @@ public final class Statistics {
       }
     }
 
-    // repeated .RechargeState rechargeState = 7;
-    public static final int RECHARGESTATE_FIELD_NUMBER = 7;
+    // repeated .RechargeState rechargeState = 8;
+    public static final int RECHARGESTATE_FIELD_NUMBER = 8;
     private java.util.List<com.hawk.game.protocol.Statistics.RechargeState> rechargeState_;
     /**
-     * <code>repeated .RechargeState rechargeState = 7;</code>
+     * <code>repeated .RechargeState rechargeState = 8;</code>
      *
      * <pre>
      * 商城购买状态
@@ -1907,7 +3197,7 @@ public final class Statistics {
       return rechargeState_;
     }
     /**
-     * <code>repeated .RechargeState rechargeState = 7;</code>
+     * <code>repeated .RechargeState rechargeState = 8;</code>
      *
      * <pre>
      * 商城购买状态
@@ -1918,7 +3208,7 @@ public final class Statistics {
       return rechargeState_;
     }
     /**
-     * <code>repeated .RechargeState rechargeState = 7;</code>
+     * <code>repeated .RechargeState rechargeState = 8;</code>
      *
      * <pre>
      * 商城购买状态
@@ -1928,7 +3218,7 @@ public final class Statistics {
       return rechargeState_.size();
     }
     /**
-     * <code>repeated .RechargeState rechargeState = 7;</code>
+     * <code>repeated .RechargeState rechargeState = 8;</code>
      *
      * <pre>
      * 商城购买状态
@@ -1938,7 +3228,7 @@ public final class Statistics {
       return rechargeState_.get(index);
     }
     /**
-     * <code>repeated .RechargeState rechargeState = 7;</code>
+     * <code>repeated .RechargeState rechargeState = 8;</code>
      *
      * <pre>
      * 商城购买状态
@@ -1949,21 +3239,21 @@ public final class Statistics {
       return rechargeState_.get(index);
     }
 
-    // required int32 monthCardLeft = 8;
-    public static final int MONTHCARDLEFT_FIELD_NUMBER = 8;
+    // required int32 monthCardLeft = 9;
+    public static final int MONTHCARDLEFT_FIELD_NUMBER = 9;
     private int monthCardLeft_;
     /**
-     * <code>required int32 monthCardLeft = 8;</code>
+     * <code>required int32 monthCardLeft = 9;</code>
      *
      * <pre>
      * 月卡剩余时间
      * </pre>
      */
     public boolean hasMonthCardLeft() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>required int32 monthCardLeft = 8;</code>
+     * <code>required int32 monthCardLeft = 9;</code>
      *
      * <pre>
      * 月卡剩余时间
@@ -1973,21 +3263,21 @@ public final class Statistics {
       return monthCardLeft_;
     }
 
-    // required int32 gold2CoinTimes = 9;
-    public static final int GOLD2COINTIMES_FIELD_NUMBER = 9;
+    // required int32 gold2CoinTimes = 10;
+    public static final int GOLD2COINTIMES_FIELD_NUMBER = 10;
     private int gold2CoinTimes_;
     /**
-     * <code>required int32 gold2CoinTimes = 9;</code>
+     * <code>required int32 gold2CoinTimes = 10;</code>
      *
      * <pre>
      * 钻石购买金币次数
      * </pre>
      */
     public boolean hasGold2CoinTimes() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>required int32 gold2CoinTimes = 9;</code>
+     * <code>required int32 gold2CoinTimes = 10;</code>
      *
      * <pre>
      * 钻石购买金币次数
@@ -1997,21 +3287,21 @@ public final class Statistics {
       return gold2CoinTimes_;
     }
 
-    // required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;
-    public static final int EXPLEFTTIMES_FIELD_NUMBER = 10;
+    // required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;
+    public static final int EXPLEFTTIMES_FIELD_NUMBER = 11;
     private com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync expLeftTimes_;
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
      *
      * <pre>
      * 多倍经验剩余次数
      * </pre>
      */
     public boolean hasExpLeftTimes() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -2021,7 +3311,7 @@ public final class Statistics {
       return expLeftTimes_;
     }
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -2033,6 +3323,7 @@ public final class Statistics {
 
     private void initFields() {
       instanceState_ = java.util.Collections.emptyList();
+      chapterState_ = com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
       monsterCollect_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       skillPoint_ = 0;
       skillPointTimeStamp_ = 0;
@@ -2048,6 +3339,10 @@ public final class Statistics {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasChapterState()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasSkillPoint()) {
         memoizedIsInitialized = 0;
         return false;
@@ -2078,6 +3373,10 @@ public final class Statistics {
           return false;
         }
       }
+      if (!getChapterState().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       for (int i = 0; i < getRechargeStateCount(); i++) {
         if (!getRechargeState(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -2098,32 +3397,35 @@ public final class Statistics {
       for (int i = 0; i < instanceState_.size(); i++) {
         output.writeMessage(1, instanceState_.get(i));
       }
-      for (int i = 0; i < monsterCollect_.size(); i++) {
-        output.writeBytes(2, monsterCollect_.getByteString(i));
-      }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(3, skillPoint_);
+        output.writeMessage(2, chapterState_);
+      }
+      for (int i = 0; i < monsterCollect_.size(); i++) {
+        output.writeBytes(3, monsterCollect_.getByteString(i));
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(4, skillPointTimeStamp_);
+        output.writeInt32(4, skillPoint_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(5, timeStamp_);
+        output.writeInt32(5, skillPointTimeStamp_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(6, getOrderServerKeyBytes());
-      }
-      for (int i = 0; i < rechargeState_.size(); i++) {
-        output.writeMessage(7, rechargeState_.get(i));
+        output.writeInt32(6, timeStamp_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(8, monthCardLeft_);
+        output.writeBytes(7, getOrderServerKeyBytes());
+      }
+      for (int i = 0; i < rechargeState_.size(); i++) {
+        output.writeMessage(8, rechargeState_.get(i));
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(9, gold2CoinTimes_);
+        output.writeInt32(9, monthCardLeft_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeMessage(10, expLeftTimes_);
+        output.writeInt32(10, gold2CoinTimes_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeMessage(11, expLeftTimes_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2138,6 +3440,10 @@ public final class Statistics {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, instanceState_.get(i));
       }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, chapterState_);
+      }
       {
         int dataSize = 0;
         for (int i = 0; i < monsterCollect_.size(); i++) {
@@ -2147,37 +3453,37 @@ public final class Statistics {
         size += dataSize;
         size += 1 * getMonsterCollectList().size();
       }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, skillPoint_);
-      }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, skillPointTimeStamp_);
+          .computeInt32Size(4, skillPoint_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, timeStamp_);
+          .computeInt32Size(5, skillPointTimeStamp_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getOrderServerKeyBytes());
-      }
-      for (int i = 0; i < rechargeState_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, rechargeState_.get(i));
+          .computeInt32Size(6, timeStamp_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, monthCardLeft_);
+          .computeBytesSize(7, getOrderServerKeyBytes());
+      }
+      for (int i = 0; i < rechargeState_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, rechargeState_.get(i));
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, gold2CoinTimes_);
+          .computeInt32Size(9, monthCardLeft_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, expLeftTimes_);
+          .computeInt32Size(10, gold2CoinTimes_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, expLeftTimes_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2288,6 +3594,7 @@ public final class Statistics {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getInstanceStateFieldBuilder();
+          getChapterStateFieldBuilder();
           getRechargeStateFieldBuilder();
           getExpLeftTimesFieldBuilder();
         }
@@ -2304,32 +3611,38 @@ public final class Statistics {
         } else {
           instanceStateBuilder_.clear();
         }
-        monsterCollect_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        if (chapterStateBuilder_ == null) {
+          chapterState_ = com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
+        } else {
+          chapterStateBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000002);
-        skillPoint_ = 0;
+        monsterCollect_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
-        skillPointTimeStamp_ = 0;
+        skillPoint_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        timeStamp_ = 0;
+        skillPointTimeStamp_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        orderServerKey_ = "";
+        timeStamp_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        orderServerKey_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
         if (rechargeStateBuilder_ == null) {
           rechargeState_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000080);
         } else {
           rechargeStateBuilder_.clear();
         }
         monthCardLeft_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        gold2CoinTimes_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
+        gold2CoinTimes_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
         if (expLeftTimesBuilder_ == null) {
           expLeftTimes_ = com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance();
         } else {
           expLeftTimesBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -2367,47 +3680,55 @@ public final class Statistics {
         } else {
           result.instanceState_ = instanceStateBuilder_.build();
         }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          monsterCollect_ = new com.google.protobuf.UnmodifiableLazyStringList(
-              monsterCollect_);
-          bitField0_ = (bitField0_ & ~0x00000002);
-        }
-        result.monsterCollect_ = monsterCollect_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.skillPoint_ = skillPoint_;
+        if (chapterStateBuilder_ == null) {
+          result.chapterState_ = chapterState_;
+        } else {
+          result.chapterState_ = chapterStateBuilder_.build();
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          monsterCollect_ = new com.google.protobuf.UnmodifiableLazyStringList(
+              monsterCollect_);
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.monsterCollect_ = monsterCollect_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.skillPointTimeStamp_ = skillPointTimeStamp_;
+        result.skillPoint_ = skillPoint_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.timeStamp_ = timeStamp_;
+        result.skillPointTimeStamp_ = skillPointTimeStamp_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000008;
         }
+        result.timeStamp_ = timeStamp_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.orderServerKey_ = orderServerKey_;
         if (rechargeStateBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
             rechargeState_ = java.util.Collections.unmodifiableList(rechargeState_);
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000080);
           }
           result.rechargeState_ = rechargeState_;
         } else {
           result.rechargeState_ = rechargeStateBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.monthCardLeft_ = monthCardLeft_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.gold2CoinTimes_ = gold2CoinTimes_;
+        result.monthCardLeft_ = monthCardLeft_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000040;
+        }
+        result.gold2CoinTimes_ = gold2CoinTimes_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000080;
         }
         if (expLeftTimesBuilder_ == null) {
           result.expLeftTimes_ = expLeftTimes_;
@@ -2456,10 +3777,13 @@ public final class Statistics {
             }
           }
         }
+        if (other.hasChapterState()) {
+          mergeChapterState(other.getChapterState());
+        }
         if (!other.monsterCollect_.isEmpty()) {
           if (monsterCollect_.isEmpty()) {
             monsterCollect_ = other.monsterCollect_;
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000004);
           } else {
             ensureMonsterCollectIsMutable();
             monsterCollect_.addAll(other.monsterCollect_);
@@ -2476,7 +3800,7 @@ public final class Statistics {
           setTimeStamp(other.getTimeStamp());
         }
         if (other.hasOrderServerKey()) {
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000040;
           orderServerKey_ = other.orderServerKey_;
           onChanged();
         }
@@ -2484,7 +3808,7 @@ public final class Statistics {
           if (!other.rechargeState_.isEmpty()) {
             if (rechargeState_.isEmpty()) {
               rechargeState_ = other.rechargeState_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000080);
             } else {
               ensureRechargeStateIsMutable();
               rechargeState_.addAll(other.rechargeState_);
@@ -2497,7 +3821,7 @@ public final class Statistics {
               rechargeStateBuilder_.dispose();
               rechargeStateBuilder_ = null;
               rechargeState_ = other.rechargeState_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000080);
               rechargeStateBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getRechargeStateFieldBuilder() : null;
@@ -2520,6 +3844,10 @@ public final class Statistics {
       }
 
       public final boolean isInitialized() {
+        if (!hasChapterState()) {
+          
+          return false;
+        }
         if (!hasSkillPoint()) {
           
           return false;
@@ -2549,6 +3877,10 @@ public final class Statistics {
             
             return false;
           }
+        }
+        if (!getChapterState().isInitialized()) {
+          
+          return false;
         }
         for (int i = 0; i < getRechargeStateCount(); i++) {
           if (!getRechargeState(i).isInitialized()) {
@@ -2894,16 +4226,169 @@ public final class Statistics {
         return instanceStateBuilder_;
       }
 
-      // repeated string monsterCollect = 2;
+      // required .ChapterState chapterState = 2;
+      private com.hawk.game.protocol.Statistics.ChapterState chapterState_ = com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Statistics.ChapterState, com.hawk.game.protocol.Statistics.ChapterState.Builder, com.hawk.game.protocol.Statistics.ChapterStateOrBuilder> chapterStateBuilder_;
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public boolean hasChapterState() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.ChapterState getChapterState() {
+        if (chapterStateBuilder_ == null) {
+          return chapterState_;
+        } else {
+          return chapterStateBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public Builder setChapterState(com.hawk.game.protocol.Statistics.ChapterState value) {
+        if (chapterStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          chapterState_ = value;
+          onChanged();
+        } else {
+          chapterStateBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public Builder setChapterState(
+          com.hawk.game.protocol.Statistics.ChapterState.Builder builderForValue) {
+        if (chapterStateBuilder_ == null) {
+          chapterState_ = builderForValue.build();
+          onChanged();
+        } else {
+          chapterStateBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public Builder mergeChapterState(com.hawk.game.protocol.Statistics.ChapterState value) {
+        if (chapterStateBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              chapterState_ != com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance()) {
+            chapterState_ =
+              com.hawk.game.protocol.Statistics.ChapterState.newBuilder(chapterState_).mergeFrom(value).buildPartial();
+          } else {
+            chapterState_ = value;
+          }
+          onChanged();
+        } else {
+          chapterStateBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public Builder clearChapterState() {
+        if (chapterStateBuilder_ == null) {
+          chapterState_ = com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
+          onChanged();
+        } else {
+          chapterStateBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.ChapterState.Builder getChapterStateBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getChapterStateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.ChapterStateOrBuilder getChapterStateOrBuilder() {
+        if (chapterStateBuilder_ != null) {
+          return chapterStateBuilder_.getMessageOrBuilder();
+        } else {
+          return chapterState_;
+        }
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Statistics.ChapterState, com.hawk.game.protocol.Statistics.ChapterState.Builder, com.hawk.game.protocol.Statistics.ChapterStateOrBuilder> 
+          getChapterStateFieldBuilder() {
+        if (chapterStateBuilder_ == null) {
+          chapterStateBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.hawk.game.protocol.Statistics.ChapterState, com.hawk.game.protocol.Statistics.ChapterState.Builder, com.hawk.game.protocol.Statistics.ChapterStateOrBuilder>(
+                  chapterState_,
+                  getParentForChildren(),
+                  isClean());
+          chapterState_ = null;
+        }
+        return chapterStateBuilder_;
+      }
+
+      // repeated string monsterCollect = 3;
       private com.google.protobuf.LazyStringList monsterCollect_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureMonsterCollectIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
           monsterCollect_ = new com.google.protobuf.LazyStringArrayList(monsterCollect_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
          }
       }
       /**
-       * <code>repeated string monsterCollect = 2;</code>
+       * <code>repeated string monsterCollect = 3;</code>
        *
        * <pre>
        * 宠物图鉴
@@ -2914,7 +4399,7 @@ public final class Statistics {
         return java.util.Collections.unmodifiableList(monsterCollect_);
       }
       /**
-       * <code>repeated string monsterCollect = 2;</code>
+       * <code>repeated string monsterCollect = 3;</code>
        *
        * <pre>
        * 宠物图鉴
@@ -2924,7 +4409,7 @@ public final class Statistics {
         return monsterCollect_.size();
       }
       /**
-       * <code>repeated string monsterCollect = 2;</code>
+       * <code>repeated string monsterCollect = 3;</code>
        *
        * <pre>
        * 宠物图鉴
@@ -2934,7 +4419,7 @@ public final class Statistics {
         return monsterCollect_.get(index);
       }
       /**
-       * <code>repeated string monsterCollect = 2;</code>
+       * <code>repeated string monsterCollect = 3;</code>
        *
        * <pre>
        * 宠物图鉴
@@ -2945,7 +4430,7 @@ public final class Statistics {
         return monsterCollect_.getByteString(index);
       }
       /**
-       * <code>repeated string monsterCollect = 2;</code>
+       * <code>repeated string monsterCollect = 3;</code>
        *
        * <pre>
        * 宠物图鉴
@@ -2962,7 +4447,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated string monsterCollect = 2;</code>
+       * <code>repeated string monsterCollect = 3;</code>
        *
        * <pre>
        * 宠物图鉴
@@ -2979,7 +4464,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated string monsterCollect = 2;</code>
+       * <code>repeated string monsterCollect = 3;</code>
        *
        * <pre>
        * 宠物图鉴
@@ -2993,7 +4478,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated string monsterCollect = 2;</code>
+       * <code>repeated string monsterCollect = 3;</code>
        *
        * <pre>
        * 宠物图鉴
@@ -3001,12 +4486,12 @@ public final class Statistics {
        */
       public Builder clearMonsterCollect() {
         monsterCollect_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string monsterCollect = 2;</code>
+       * <code>repeated string monsterCollect = 3;</code>
        *
        * <pre>
        * 宠物图鉴
@@ -3023,20 +4508,20 @@ public final class Statistics {
         return this;
       }
 
-      // required int32 skillPoint = 3;
+      // required int32 skillPoint = 4;
       private int skillPoint_ ;
       /**
-       * <code>required int32 skillPoint = 3;</code>
+       * <code>required int32 skillPoint = 4;</code>
        *
        * <pre>
        * 当前技能点
        * </pre>
        */
       public boolean hasSkillPoint() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 skillPoint = 3;</code>
+       * <code>required int32 skillPoint = 4;</code>
        *
        * <pre>
        * 当前技能点
@@ -3046,46 +4531,46 @@ public final class Statistics {
         return skillPoint_;
       }
       /**
-       * <code>required int32 skillPoint = 3;</code>
+       * <code>required int32 skillPoint = 4;</code>
        *
        * <pre>
        * 当前技能点
        * </pre>
        */
       public Builder setSkillPoint(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         skillPoint_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 skillPoint = 3;</code>
+       * <code>required int32 skillPoint = 4;</code>
        *
        * <pre>
        * 当前技能点
        * </pre>
        */
       public Builder clearSkillPoint() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         skillPoint_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 skillPointTimeStamp = 4;
+      // required int32 skillPointTimeStamp = 5;
       private int skillPointTimeStamp_ ;
       /**
-       * <code>required int32 skillPointTimeStamp = 4;</code>
+       * <code>required int32 skillPointTimeStamp = 5;</code>
        *
        * <pre>
        * 下个技能点开始计时时间戳
        * </pre>
        */
       public boolean hasSkillPointTimeStamp() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required int32 skillPointTimeStamp = 4;</code>
+       * <code>required int32 skillPointTimeStamp = 5;</code>
        *
        * <pre>
        * 下个技能点开始计时时间戳
@@ -3095,46 +4580,46 @@ public final class Statistics {
         return skillPointTimeStamp_;
       }
       /**
-       * <code>required int32 skillPointTimeStamp = 4;</code>
+       * <code>required int32 skillPointTimeStamp = 5;</code>
        *
        * <pre>
        * 下个技能点开始计时时间戳
        * </pre>
        */
       public Builder setSkillPointTimeStamp(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         skillPointTimeStamp_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 skillPointTimeStamp = 4;</code>
+       * <code>required int32 skillPointTimeStamp = 5;</code>
        *
        * <pre>
        * 下个技能点开始计时时间戳
        * </pre>
        */
       public Builder clearSkillPointTimeStamp() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         skillPointTimeStamp_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 timeStamp = 5;
+      // optional int32 timeStamp = 6;
       private int timeStamp_ ;
       /**
-       * <code>optional int32 timeStamp = 5;</code>
+       * <code>optional int32 timeStamp = 6;</code>
        *
        * <pre>
        * 服务器时间戳
        * </pre>
        */
       public boolean hasTimeStamp() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>optional int32 timeStamp = 5;</code>
+       * <code>optional int32 timeStamp = 6;</code>
        *
        * <pre>
        * 服务器时间戳
@@ -3144,46 +4629,46 @@ public final class Statistics {
         return timeStamp_;
       }
       /**
-       * <code>optional int32 timeStamp = 5;</code>
+       * <code>optional int32 timeStamp = 6;</code>
        *
        * <pre>
        * 服务器时间戳
        * </pre>
        */
       public Builder setTimeStamp(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         timeStamp_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 timeStamp = 5;</code>
+       * <code>optional int32 timeStamp = 6;</code>
        *
        * <pre>
        * 服务器时间戳
        * </pre>
        */
       public Builder clearTimeStamp() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         timeStamp_ = 0;
         onChanged();
         return this;
       }
 
-      // required string orderServerKey = 6;
+      // required string orderServerKey = 7;
       private java.lang.Object orderServerKey_ = "";
       /**
-       * <code>required string orderServerKey = 6;</code>
+       * <code>required string orderServerKey = 7;</code>
        *
        * <pre>
        * 订单服务器key
        * </pre>
        */
       public boolean hasOrderServerKey() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>required string orderServerKey = 6;</code>
+       * <code>required string orderServerKey = 7;</code>
        *
        * <pre>
        * 订单服务器key
@@ -3201,7 +4686,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>required string orderServerKey = 6;</code>
+       * <code>required string orderServerKey = 7;</code>
        *
        * <pre>
        * 订单服务器key
@@ -3221,7 +4706,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>required string orderServerKey = 6;</code>
+       * <code>required string orderServerKey = 7;</code>
        *
        * <pre>
        * 订单服务器key
@@ -3232,26 +4717,26 @@ public final class Statistics {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000040;
         orderServerKey_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string orderServerKey = 6;</code>
+       * <code>required string orderServerKey = 7;</code>
        *
        * <pre>
        * 订单服务器key
        * </pre>
        */
       public Builder clearOrderServerKey() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         orderServerKey_ = getDefaultInstance().getOrderServerKey();
         onChanged();
         return this;
       }
       /**
-       * <code>required string orderServerKey = 6;</code>
+       * <code>required string orderServerKey = 7;</code>
        *
        * <pre>
        * 订单服务器key
@@ -3262,19 +4747,19 @@ public final class Statistics {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000040;
         orderServerKey_ = value;
         onChanged();
         return this;
       }
 
-      // repeated .RechargeState rechargeState = 7;
+      // repeated .RechargeState rechargeState = 8;
       private java.util.List<com.hawk.game.protocol.Statistics.RechargeState> rechargeState_ =
         java.util.Collections.emptyList();
       private void ensureRechargeStateIsMutable() {
-        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
           rechargeState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.RechargeState>(rechargeState_);
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000080;
          }
       }
 
@@ -3282,7 +4767,7 @@ public final class Statistics {
           com.hawk.game.protocol.Statistics.RechargeState, com.hawk.game.protocol.Statistics.RechargeState.Builder, com.hawk.game.protocol.Statistics.RechargeStateOrBuilder> rechargeStateBuilder_;
 
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3296,7 +4781,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3310,7 +4795,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3324,7 +4809,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3345,7 +4830,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3363,7 +4848,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3383,7 +4868,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3404,7 +4889,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3422,7 +4907,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3440,7 +4925,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3458,7 +4943,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3467,7 +4952,7 @@ public final class Statistics {
       public Builder clearRechargeState() {
         if (rechargeStateBuilder_ == null) {
           rechargeState_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000080);
           onChanged();
         } else {
           rechargeStateBuilder_.clear();
@@ -3475,7 +4960,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3492,7 +4977,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3503,7 +4988,7 @@ public final class Statistics {
         return getRechargeStateFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3517,7 +5002,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3532,7 +5017,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3543,7 +5028,7 @@ public final class Statistics {
             com.hawk.game.protocol.Statistics.RechargeState.getDefaultInstance());
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3555,7 +5040,7 @@ public final class Statistics {
             index, com.hawk.game.protocol.Statistics.RechargeState.getDefaultInstance());
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 7;</code>
+       * <code>repeated .RechargeState rechargeState = 8;</code>
        *
        * <pre>
        * 商城购买状态
@@ -3572,7 +5057,7 @@ public final class Statistics {
           rechargeStateBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.hawk.game.protocol.Statistics.RechargeState, com.hawk.game.protocol.Statistics.RechargeState.Builder, com.hawk.game.protocol.Statistics.RechargeStateOrBuilder>(
                   rechargeState_,
-                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  ((bitField0_ & 0x00000080) == 0x00000080),
                   getParentForChildren(),
                   isClean());
           rechargeState_ = null;
@@ -3580,20 +5065,20 @@ public final class Statistics {
         return rechargeStateBuilder_;
       }
 
-      // required int32 monthCardLeft = 8;
+      // required int32 monthCardLeft = 9;
       private int monthCardLeft_ ;
       /**
-       * <code>required int32 monthCardLeft = 8;</code>
+       * <code>required int32 monthCardLeft = 9;</code>
        *
        * <pre>
        * 月卡剩余时间
        * </pre>
        */
       public boolean hasMonthCardLeft() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>required int32 monthCardLeft = 8;</code>
+       * <code>required int32 monthCardLeft = 9;</code>
        *
        * <pre>
        * 月卡剩余时间
@@ -3603,46 +5088,46 @@ public final class Statistics {
         return monthCardLeft_;
       }
       /**
-       * <code>required int32 monthCardLeft = 8;</code>
+       * <code>required int32 monthCardLeft = 9;</code>
        *
        * <pre>
        * 月卡剩余时间
        * </pre>
        */
       public Builder setMonthCardLeft(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         monthCardLeft_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 monthCardLeft = 8;</code>
+       * <code>required int32 monthCardLeft = 9;</code>
        *
        * <pre>
        * 月卡剩余时间
        * </pre>
        */
       public Builder clearMonthCardLeft() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         monthCardLeft_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 gold2CoinTimes = 9;
+      // required int32 gold2CoinTimes = 10;
       private int gold2CoinTimes_ ;
       /**
-       * <code>required int32 gold2CoinTimes = 9;</code>
+       * <code>required int32 gold2CoinTimes = 10;</code>
        *
        * <pre>
        * 钻石购买金币次数
        * </pre>
        */
       public boolean hasGold2CoinTimes() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
-       * <code>required int32 gold2CoinTimes = 9;</code>
+       * <code>required int32 gold2CoinTimes = 10;</code>
        *
        * <pre>
        * 钻石购买金币次数
@@ -3652,48 +5137,48 @@ public final class Statistics {
         return gold2CoinTimes_;
       }
       /**
-       * <code>required int32 gold2CoinTimes = 9;</code>
+       * <code>required int32 gold2CoinTimes = 10;</code>
        *
        * <pre>
        * 钻石购买金币次数
        * </pre>
        */
       public Builder setGold2CoinTimes(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         gold2CoinTimes_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 gold2CoinTimes = 9;</code>
+       * <code>required int32 gold2CoinTimes = 10;</code>
        *
        * <pre>
        * 钻石购买金币次数
        * </pre>
        */
       public Builder clearGold2CoinTimes() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         gold2CoinTimes_ = 0;
         onChanged();
         return this;
       }
 
-      // required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;
+      // required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;
       private com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync expLeftTimes_ = com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSyncOrBuilder> expLeftTimesBuilder_;
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
        *
        * <pre>
        * 多倍经验剩余次数
        * </pre>
        */
       public boolean hasExpLeftTimes() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -3707,7 +5192,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -3723,11 +5208,11 @@ public final class Statistics {
         } else {
           expLeftTimesBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -3741,11 +5226,11 @@ public final class Statistics {
         } else {
           expLeftTimesBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -3753,7 +5238,7 @@ public final class Statistics {
        */
       public Builder mergeExpLeftTimes(com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync value) {
         if (expLeftTimesBuilder_ == null) {
-          if (((bitField0_ & 0x00000200) == 0x00000200) &&
+          if (((bitField0_ & 0x00000400) == 0x00000400) &&
               expLeftTimes_ != com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance()) {
             expLeftTimes_ =
               com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.newBuilder(expLeftTimes_).mergeFrom(value).buildPartial();
@@ -3764,11 +5249,11 @@ public final class Statistics {
         } else {
           expLeftTimesBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -3781,23 +5266,23 @@ public final class Statistics {
         } else {
           expLeftTimesBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
        *
        * <pre>
        * 多倍经验剩余次数
        * </pre>
        */
       public com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder getExpLeftTimesBuilder() {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         onChanged();
         return getExpLeftTimesFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -3811,7 +5296,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 10;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -5277,6 +6762,11 @@ public final class Statistics {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_InstanceState_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_ChapterState_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ChapterState_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_RechargeState_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -5312,21 +6802,26 @@ public final class Statistics {
     java.lang.String[] descriptorData = {
       "\n\031Protocol/Statistics.proto\"E\n\rInstanceS" +
       "tate\022\022\n\ninstanceId\030\001 \002(\t\022\014\n\004star\030\002 \002(\005\022\022" +
-      "\n\ncountDaily\030\003 \001(\005\"4\n\rRechargeState\022\021\n\tp" +
-      "roductId\030\001 \002(\t\022\020\n\010buyTimes\030\002 \002(\005\"\273\002\n\024HSS" +
-      "tatisticsInfoSync\022%\n\rinstanceState\030\001 \003(\013" +
-      "2\016.InstanceState\022\026\n\016monsterCollect\030\002 \003(\t" +
-      "\022\022\n\nskillPoint\030\003 \002(\005\022\033\n\023skillPointTimeSt" +
-      "amp\030\004 \002(\005\022\021\n\ttimeStamp\030\005 \001(\005\022\026\n\016orderSer" +
-      "verKey\030\006 \002(\t\022%\n\rrechargeState\030\007 \003(\0132\016.Re" +
-      "chargeState\022\025\n\rmonthCardLeft\030\010 \002(\005\022\026\n\016go",
-      "ld2CoinTimes\030\t \002(\005\0222\n\014expLeftTimes\030\n \002(\013" +
-      "2\034.HSStatisticsExpLeftTimeSync\"K\n\033HSStat" +
-      "isticsExpLeftTimeSync\022\025\n\rdoubleExpLeft\030\001" +
-      " \002(\005\022\025\n\rtripleExpLeft\030\002 \002(\005\"0\n\025HSStatist" +
-      "icsResetSync\022\027\n\017goldChangeTimes\030\001 \002(\005\"+\n" +
-      "\027HSStatisticsShopRefresh\022\020\n\010shopType\030\001 \002" +
-      "(\005B\030\n\026com.hawk.game.protocol"
+      "\n\ncountDaily\030\003 \001(\005\"\234\001\n\014ChapterState\022\030\n\020n" +
+      "ormalTopChapter\030\001 \002(\005\022\026\n\016normalTopIndex\030" +
+      "\002 \002(\005\022\026\n\016hardTopChapter\030\003 \002(\005\022\024\n\014hardTop" +
+      "Index\030\004 \002(\005\022\026\n\016normalBoxState\030\005 \003(\005\022\024\n\014h" +
+      "ardBoxState\030\006 \003(\005\"4\n\rRechargeState\022\021\n\tpr" +
+      "oductId\030\001 \002(\t\022\020\n\010buyTimes\030\002 \002(\005\"\340\002\n\024HSSt" +
+      "atisticsInfoSync\022%\n\rinstanceState\030\001 \003(\0132" +
+      "\016.InstanceState\022#\n\014chapterState\030\002 \002(\0132\r.",
+      "ChapterState\022\026\n\016monsterCollect\030\003 \003(\t\022\022\n\n" +
+      "skillPoint\030\004 \002(\005\022\033\n\023skillPointTimeStamp\030" +
+      "\005 \002(\005\022\021\n\ttimeStamp\030\006 \001(\005\022\026\n\016orderServerK" +
+      "ey\030\007 \002(\t\022%\n\rrechargeState\030\010 \003(\0132\016.Rechar" +
+      "geState\022\025\n\rmonthCardLeft\030\t \002(\005\022\026\n\016gold2C" +
+      "oinTimes\030\n \002(\005\0222\n\014expLeftTimes\030\013 \002(\0132\034.H" +
+      "SStatisticsExpLeftTimeSync\"K\n\033HSStatisti" +
+      "csExpLeftTimeSync\022\025\n\rdoubleExpLeft\030\001 \002(\005" +
+      "\022\025\n\rtripleExpLeft\030\002 \002(\005\"0\n\025HSStatisticsR" +
+      "esetSync\022\027\n\017goldChangeTimes\030\001 \002(\005\"+\n\027HSS",
+      "tatisticsShopRefresh\022\020\n\010shopType\030\001 \002(\005B\030" +
+      "\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5339,32 +6834,38 @@ public final class Statistics {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_InstanceState_descriptor,
               new java.lang.String[] { "InstanceId", "Star", "CountDaily", });
-          internal_static_RechargeState_descriptor =
+          internal_static_ChapterState_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_ChapterState_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_ChapterState_descriptor,
+              new java.lang.String[] { "NormalTopChapter", "NormalTopIndex", "HardTopChapter", "HardTopIndex", "NormalBoxState", "HardBoxState", });
+          internal_static_RechargeState_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_RechargeState_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_RechargeState_descriptor,
               new java.lang.String[] { "ProductId", "BuyTimes", });
           internal_static_HSStatisticsInfoSync_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_HSStatisticsInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsInfoSync_descriptor,
-              new java.lang.String[] { "InstanceState", "MonsterCollect", "SkillPoint", "SkillPointTimeStamp", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", });
+              new java.lang.String[] { "InstanceState", "ChapterState", "MonsterCollect", "SkillPoint", "SkillPointTimeStamp", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", });
           internal_static_HSStatisticsExpLeftTimeSync_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_HSStatisticsExpLeftTimeSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsExpLeftTimeSync_descriptor,
               new java.lang.String[] { "DoubleExpLeft", "TripleExpLeft", });
           internal_static_HSStatisticsResetSync_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_HSStatisticsResetSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsResetSync_descriptor,
               new java.lang.String[] { "GoldChangeTimes", });
           internal_static_HSStatisticsShopRefresh_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_HSStatisticsShopRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsShopRefresh_descriptor,

@@ -218,6 +218,19 @@ public class HawkThreadPool {
 	}
 
 	/**
+	 * 获取线程
+	 * 
+	 * @param threadIdx
+	 * @return
+	 */
+	public HawkThread getThread(int threadIdx) {
+		if (threadIdx >= 0 && threadIdx < threadNum) {
+			return threadList.get(threadIdx);
+		}
+		return null;
+	}
+	
+	/**
 	 * 获取堆积的任务数量
 	 */
 	public long getUnprocessTaskCount() {
@@ -275,4 +288,5 @@ public class HawkThreadPool {
 	public boolean isWaitBreak() {
 		return waitBreak;
 	}
+
 }

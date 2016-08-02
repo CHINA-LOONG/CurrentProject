@@ -21,7 +21,6 @@ public class SocketClient : MonoBehaviour {
     private TcpClient client = null;
     private NetworkStream outStream = null;
     private MemoryStream memStream;
-    private BinaryReader reader;
     private const int MAX_READ = 8192;
     private byte[] byteBuffer = new byte[MAX_READ];
 
@@ -30,8 +29,7 @@ public class SocketClient : MonoBehaviour {
 
     // Use this for initialization
     void Awake() {
-        memStream = new MemoryStream();
-        reader = new BinaryReader(memStream);
+        memStream = new MemoryStream(MAX_READ);
     }
 
     /// <summary>
@@ -138,6 +136,7 @@ public class SocketClient : MonoBehaviour {
                 OnDisconnected(DisType.Disconnect, "bytesRead < 1");
                 return;
             }
+
             OnReceive(byteBuffer, bytesRead);   //分析数据包内容，抛给逻辑层
 
             lock (client.GetStream())
@@ -193,47 +192,57 @@ public class SocketClient : MonoBehaviour {
     /// </summary>
     void OnReceive(byte[] bytes, int length) 
 	{
-        memStream.Seek(0, SeekOrigin.End);
+        memStream.Seek(memStream.Length, SeekOrigin.Begin);
         memStream.Write(bytes, 0, length);
-        //Reset to beginning
-        memStream.Seek(0, SeekOrigin.Begin);
-        while (RemainingBytes() >= ProtocolMessage.HEAD_SIZE)
-		{
-            Byte[] tempBuffer = new Byte[sizeof(int)];
-            memStream.Read(tempBuffer, 0, sizeof(int));
-            //int type = IPAddress.NetworkToHostOrder(System.BitConverter.ToInt32(tempBuffer, 0));
-            memStream.Read(tempBuffer, 0, sizeof(int));
-            int size = IPAddress.NetworkToHostOrder(System.BitConverter.ToInt32(tempBuffer, 0));
-            memStream.Seek(0, SeekOrigin.Begin);
 
-			if (RemainingBytes() >= size + ProtocolMessage.HEAD_SIZE)
-            {
-                MemoryStream ms = new MemoryStream();
-                BinaryWriter writer = new BinaryWriter(ms);
-				writer.Write(reader.ReadBytes(size + ProtocolMessage.HEAD_SIZE));
-				ms.Seek(0, SeekOrigin.Begin);
-				OnReceivedMessage(ms);
-
-				byte[] leftover1 = reader.ReadBytes((int)RemainingBytes());
-				memStream.SetLength(0);     //Clear
-				memStream.Write(leftover1, 0, leftover1.Length);
-				memStream.Seek (0, SeekOrigin.Begin);
-				//memStream.Seek(size + ProtocolMessage.HEAD_SIZE, SeekOrigin.Begin);
-                
-            } 
-			else 
-			{
-                //Back up the position two bytes
-              //  memStream.Position = memStream.Position - 2;
-				memStream.Seek(0, SeekOrigin.Begin);
-                break;
-            }
+        ProtocolMessage receivMsg = ProtocolMessage.Create();
+        while (receivMsg.decode(memStream))
+        {
+            NetworkManager.AddEvent(ResponseState.Message, receivMsg);
+            receivMsg = ProtocolMessage.Create();
         }
 
-        //Create a new stream with any leftover bytes
-        byte[] leftover = reader.ReadBytes((int)RemainingBytes());
-        memStream.SetLength(0);     //Clear
-        memStream.Write(leftover, 0, leftover.Length);
+        //memStream.Seek(0, SeekOrigin.End);
+        //memStream.Write(bytes, 0, length);
+        ////Reset to beginning
+        //memStream.Seek(0, SeekOrigin.Begin);
+        //while (RemainingBytes() >= ProtocolMessage.HEAD_SIZE)
+        //{
+        //    Byte[] tempBuffer = new Byte[sizeof(int)];
+        //    memStream.Read(tempBuffer, 0, sizeof(int));
+        //    //int type = IPAddress.NetworkToHostOrder(System.BitConverter.ToInt32(tempBuffer, 0));
+        //    memStream.Read(tempBuffer, 0, sizeof(int));
+        //    int size = IPAddress.NetworkToHostOrder(System.BitConverter.ToInt32(tempBuffer, 0));
+        //    memStream.Seek(0, SeekOrigin.Begin);
+
+        //    if (RemainingBytes() >= size + ProtocolMessage.HEAD_SIZE)
+        //    {
+        //        MemoryStream ms = new MemoryStream();
+        //        BinaryWriter writer = new BinaryWriter(ms);
+        //        writer.Write(reader.ReadBytes(size + ProtocolMessage.HEAD_SIZE));
+        //        ms.Seek(0, SeekOrigin.Begin);
+        //        OnReceivedMessage(ms);
+
+        //        byte[] leftover1 = reader.ReadBytes((int)RemainingBytes());
+        //        memStream.SetLength(0);     //Clear
+        //        memStream.Write(leftover1, 0, leftover1.Length);
+        //        memStream.Seek (0, SeekOrigin.Begin);
+        //        //memStream.Seek(size + ProtocolMessage.HEAD_SIZE, SeekOrigin.Begin);
+                
+        //    } 
+        //    else 
+        //    {
+        //        //Back up the position two bytes
+        //      //  memStream.Position = memStream.Position - 2;
+        //        memStream.Seek(0, SeekOrigin.Begin);
+        //        break;
+        //    }
+        //}
+
+        ////Create a new stream with any leftover bytes
+        //byte[] leftover = reader.ReadBytes((int)RemainingBytes());
+        //memStream.SetLength(0);     //Clear
+        //memStream.Write(leftover, 0, leftover.Length);
 
     }
 

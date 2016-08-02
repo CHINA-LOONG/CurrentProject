@@ -125,6 +125,7 @@ MonoBehaviour:
   touchScale: 1.14999998
   chapterImage: {fileID: 11451136}
   chapterName: {fileID: 11430116}
+  lockedMaterial: {fileID: 0}
 --- !u!222 &22234458
 CanvasRenderer:
   m_ObjectHideFlags: 1

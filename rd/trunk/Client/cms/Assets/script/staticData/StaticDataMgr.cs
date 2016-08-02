@@ -174,6 +174,7 @@ public class StaticDataMgr : MonoBehaviour
                             EffectApplyBuffPrototype buffPt = effectPt as EffectApplyBuffPrototype;
 
                             buffPt.buffID = wholeData.buffID;
+                            buffPt.validatorNum = wholeData.buffValidatorNum;
                         }
                         break;
                     case EffectType.Effect_Type_Switch:

@@ -40,7 +40,7 @@ public class UIDecompose : UIBase, TabButtonDelegate
         public Text text_Preview;   //分解预览
         public Text text_PreviewTips;
         public Text text_Tips1;
-        public Text text_Tips2;
+        //public Text text_Tips2;
 
         public Transform iconPos;
         [HideInInspector]
@@ -299,8 +299,9 @@ public class UIDecompose : UIBase, TabButtonDelegate
 
     public override void Init()
     {
+        tabIndex = -1;
+        selIndex = 0;
         Refresh();
-        decomposeView.menuObj.SetActive(false);
     }
     public override void Clean()
     {
@@ -337,19 +338,8 @@ public class UIDecompose : UIBase, TabButtonDelegate
         decomposeView.selectItems.Clear();
         decomposeView.RemoveElement(decomposeView.coinIcon);
         decomposeView.RemoveAllElement();
-        SetSelectIcon();
-        if (Type==type.Equipment)
-        {
-            decomposeView.text_Tips1.text = StaticDataMgr.Instance.GetTextByID("decompose_tips1");
-            decomposeView.text_Tips2.text = StaticDataMgr.Instance.GetTextByID("decompose_tips2");
-        }
-        else
-        {
-            decomposeView.text_Tips1.text = StaticDataMgr.Instance.GetTextByID("decompose_tips3");
-            decomposeView.text_Tips2.text = StaticDataMgr.Instance.GetTextByID("decompose_tips4");
-        }
-
-
+        SetSelectIconTips();
+        
         #endregion
 
         #region ReloadList
@@ -398,7 +388,7 @@ public class UIDecompose : UIBase, TabButtonDelegate
             }
 
         }
-        
+        decomposeView.ShowMenu = false;
         #endregion
     }
 
@@ -440,7 +430,7 @@ public class UIDecompose : UIBase, TabButtonDelegate
         {
             decomposeView.selectItems.Add(item.curMonster.pbUnit.guid);
         }
-        SetSelectIcon();
+        SetSelectIconTips();
     }
     void OnSetSelectStage(int stage)//宠物需要转换品质
     {
@@ -471,7 +461,11 @@ public class UIDecompose : UIBase, TabButtonDelegate
         }
         if (isFind)
         {
-            UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("compose_record_003"),decomposeView.selectItems.Count), (int)PB.ImType.PROMPT);
+            UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("compose_record_003"),
+                                                        StaticDataMgr.Instance.GetTextByID(stage==1?"decompose_white":
+                                                                                                    (stage==2? "decompose_green": 
+                                                                                                               "decompose_blue"))), 
+                                         (int)PB.ImType.PROMPT);
         }
         else
         {
@@ -492,7 +486,7 @@ public class UIDecompose : UIBase, TabButtonDelegate
         {
             decomposeView.selectItems.Remove(item.curMonster.pbUnit.guid);
         }
-        SetSelectIcon();
+        SetSelectIconTips();
     }
     void OnSetDeselectAll()
     {
@@ -539,7 +533,7 @@ public class UIDecompose : UIBase, TabButtonDelegate
     }
 
     //设置选择的图标
-    void SetSelectIcon()
+    void SetSelectIconTips()
     {
         if (CheckIsEmpty())
         {
@@ -552,7 +546,17 @@ public class UIDecompose : UIBase, TabButtonDelegate
             {
                 decomposeView.monsterIcon.gameObject.SetActive(false);
             }
+
             decomposeView.text_PreviewTips.gameObject.SetActive(true);
+            decomposeView.text_Preview.gameObject.SetActive(false);
+            if (Type == type.Equipment)
+            {
+                decomposeView.text_Tips1.text = StaticDataMgr.Instance.GetTextByID("decompose_tips1");
+            }
+            else
+            {
+                decomposeView.text_Tips1.text = StaticDataMgr.Instance.GetTextByID("decompose_tips3");
+            }
         }
         else
         {
@@ -597,6 +601,15 @@ public class UIDecompose : UIBase, TabButtonDelegate
             }
             #endregion
             decomposeView.text_PreviewTips.gameObject.SetActive(false);
+            decomposeView.text_Preview.gameObject.SetActive(true);
+            if (Type == type.Equipment)
+            {
+                decomposeView.text_Tips1.text = StaticDataMgr.Instance.GetTextByID("decompose_tips2");
+            }
+            else
+            {
+                decomposeView.text_Tips1.text = StaticDataMgr.Instance.GetTextByID("decompose_tips4");
+            }
         }
     }
     //检测是否已经选择过物体
@@ -780,7 +793,8 @@ public class UIDecompose : UIBase, TabButtonDelegate
 
         if (reward.hsCode == PB.code.EQUIP_DECOMPOSE_C.GetHashCode() || reward.hsCode == PB.code.MONSTER_DECOMPOSE_C.GetHashCode())
         {
-            string tips = "";
+            string tips = StaticDataMgr.Instance.GetTextByID("compose_record_002");
+            string tips1 = "{0}*{1}";
 
             #region tips=金币*1000    物品A*20……
 
@@ -798,18 +812,18 @@ public class UIDecompose : UIBase, TabButtonDelegate
                     }
                     else
                     {
-                        tips += string.Format(StaticDataMgr.Instance.GetTextByID("compose_record_002"),
-                                            StaticDataMgr.Instance.GetTextByID(itemData.name),
-                                            info.count);
+                        tips += string.Format(tips1,
+                                              StaticDataMgr.Instance.GetTextByID(itemData.name),
+                                              info.count);
                     }
                 }
                 else if (info.type == (int)PB.itemType.PLAYER_ATTR)
                 {
                     if (int.Parse(info.itemId)==(int)PB.changeType.CHANGE_COIN)
                     {
-                        tips += string.Format(StaticDataMgr.Instance.GetTextByID("compose_record_002"),
-                                            StaticDataMgr.Instance.GetTextByID("decompose_coin1"),
-                                            info.count);
+                        tips += string.Format(tips1,
+                                              StaticDataMgr.Instance.GetTextByID("decompose_coin1"),
+                                              info.count);
                     }
                 }
             }

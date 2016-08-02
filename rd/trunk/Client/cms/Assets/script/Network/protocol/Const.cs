@@ -405,4 +405,18 @@ namespace PB
       GUILD = 3
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"ChapterBoxState")]
+    public enum ChapterBoxState
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INVALID", Value=-1)]
+      INVALID = -1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"VALID", Value=0)]
+      VALID = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"OPEN", Value=1)]
+      OPEN = 1
+    }
+  
 }

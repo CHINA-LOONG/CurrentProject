@@ -221,7 +221,7 @@ public class GsApp extends HawkApp {
 					GsConfig.getInstance().getEmailUser(),
 					GsConfig.getInstance().getEmailPwd());
 		}
-
+	
 		// 公会初始化
 		//HawkLog.logPrintln("init alliance manager......");
 		//AllianceManager.getInstance().init();
@@ -598,9 +598,7 @@ public class GsApp extends HawkApp {
 		}
 
 		HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId);
-		logger.info("锁定玩家 {}", playerId);
 		HawkObjBase<HawkXID, HawkAppObj> objBase = lockObject(xid);
-		logger.info("锁定玩家成功 {}", playerId);
 		try {
 			// 对象不存在即创建
 			if (objBase == null || !objBase.isObjValid()) {

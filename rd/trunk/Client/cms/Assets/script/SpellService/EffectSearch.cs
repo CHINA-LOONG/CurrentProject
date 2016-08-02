@@ -44,7 +44,7 @@ public class EffectSearch : Effect
             camp = (camp == (int)UnitCamp.Player) ? (int)(UnitCamp.Enemy) : (int)(UnitCamp.Player);
         }
 
-        List<BattleObject> boList = spellService.GetUnitList(camp);
+        List<BattleObject> boList = spellService.GetUnitList(camp, casterID == BattleConst.battleSceneGuid);
         foreach (BattleObject bo in boList)
         {
             if (bo == null || bo.unit.isVisible == false || bo.unit.State == UnitState.Dead)

@@ -7,6 +7,7 @@ using System.Collections;
 public class EffectApplyBuffPrototype : EffectPrototype
 {
     public string buffID;
+    public int validatorNum;
 }
 
 public class EffectApplyBuff : Effect
@@ -18,6 +19,7 @@ public class EffectApplyBuff : Effect
         protoEffect = new EffectApplyBuffPrototype();
         EffectApplyBuffPrototype  buffPt = protoEffect as EffectApplyBuffPrototype;
         buffPt.buffID = buffPtOut.buffID;
+        buffPt.validatorNum = buffPtOut.validatorNum;
         base.Init(pt, owner);
     }
     //---------------------------------------------------------------------------------------------
@@ -68,14 +70,25 @@ public class EffectApplyBuff : Effect
     //---------------------------------------------------------------------------------------------
     public override int CalculateHit(string wpName)
     {
-        if (absoluteHit == true)
+        GameUnit target = spellService.GetUnit(targetID);
+        //check prop first
+        EffectApplyBuffPrototype buffPt = protoEffect as EffectApplyBuffPrototype;
+        if (buffPt != null && buffPt.validatorNum != 0)
+        {
+            int targetProp = 1 << (target.property - 1);
+            if ((targetProp & buffPt.validatorNum) == 0)
+            {
+                return SpellConst.hitIgnore;
+            }
+        }
+
+        if (absoluteHit == true || casterID == BattleConst.battleSceneGuid)
             return SpellConst.hitSuccess;
         //TODO:
         //1 check buff replace
 
         //2 check ally team
         GameUnit caster = spellService.GetUnit(casterID);
-        GameUnit target = spellService.GetUnit(targetID);
         if (caster.pbUnit.camp == target.pbUnit.camp)
         {
             return SpellConst.hitSuccess;

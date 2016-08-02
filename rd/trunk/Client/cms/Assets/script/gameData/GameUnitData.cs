@@ -148,10 +148,10 @@ public class GameUnit : IComparable
     }
 
     //create a fake monster for view only
-    public static GameUnit CreateFakeUnit(string unitID)
+    public static GameUnit CreateFakeUnit(int guid, string unitID)
     {
         PbUnit pbUnit = new PbUnit();
-        pbUnit.guid = BattleConst.enemyStartID;
+        pbUnit.guid = guid;
         pbUnit.id = unitID;
         pbUnit.level = 1;
         pbUnit.camp = UnitCamp.Player;
@@ -159,11 +159,22 @@ public class GameUnit : IComparable
         pbUnit.lazy = BattleConst.defaultLazy;
 
         var gameUnit = new GameUnit();
+        gameUnit.curLife = 1;
+        gameUnit.maxLife = gameUnit.curLife;
+        gameUnit.magicAttack = 1;
+        gameUnit.phyAttack = 1;
         gameUnit.pbUnit = pbUnit;
-        UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(unitID);
-        gameUnit.assetID = unitRowData.assetID;
-        gameUnit.name = unitRowData.NickNameAttr;
+        if (guid != BattleConst.battleSceneGuid)
+        {
+            UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(unitID);
+            gameUnit.assetID = unitRowData.assetID;
+            gameUnit.name = unitRowData.NickNameAttr;
+        }
 
+        if (gameUnit.buffList == null)
+        {
+            gameUnit.buffList = new List<Buff>();
+        }
         return gameUnit;
     }
 
@@ -238,7 +249,6 @@ public class GameUnit : IComparable
         {
             headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(unitRowData.uiAsset) as Sprite;
         }
-
 
         //初始化技能列表
         spellList = new Dictionary<string, Spell>();
@@ -414,10 +424,6 @@ public class GameUnit : IComparable
     //怪物行动结束
     public void OnRoundEnd(float curTime, bool dazhao =  false)
     {
-        if (dazhao)
-        {
-            int a = 0;
-        }
         //buff list可能会在update里被修改，只会被增加，删除buff下面单独处理，避免遍历出错
         for (int i = 0; i < buffList.Count; ++i)
         {
@@ -431,6 +437,12 @@ public class GameUnit : IComparable
                 buffList.RemoveAt(i);
             }
         }
+
+        //change buff state on round end
+        SpellBuffArgs buffChangeEventArgs = new SpellBuffArgs();
+        buffChangeEventArgs.targetID = pbUnit.guid;
+        buffChangeEventArgs.buffID = "internal_all";//internal use only
+        BattleController.Instance.GetUIBattle().ChangeBuffState(buffChangeEventArgs);
     }
 	
 	void InitWeakPoint(string strWeak)
@@ -594,9 +606,12 @@ public class GameUnit : IComparable
         int buffCout = buffList.Count;
         for (int index = 0; index < buffCout; ++index)
         {
-            buffList[index].Finish(Time.time);
+            if (buffList[index].casterID != BattleConst.battleSceneGuid)
+            {
+                buffList[index].Finish(Time.time);
+            }
         }
-        buffList.Clear();
+        //buffList.Clear();
         invincible = 0;
         stun = 0;
         dazhao = 0;
@@ -665,18 +680,42 @@ public class GameUnit : IComparable
 
         state = UnitState.None;
 	    attackCount = 0;
+        //int buffCout = buffList.Count;
+        //for (int index = 0; index < buffCout; ++index)
+        //{
+        //    buffList[index].Finish(Time.time);
+        //}
         buffList.Clear();
+        UpdateAttributeInternal();
     }
 
     public void OnDead()
     {
-        battleUnit.ClearEvent();
-        buffList.Clear();
+        //NOTE: not use common buff.Finish(),since we will readd passive buff and instance spell when revive
+        //int buffCout = buffList.Count;
+        //for (int index = 0; index < buffCout; ++index)
+        //{
+        //    buffList[index].Finish(Time.time);
+        //}
         invincible = 0;
         stun = 0;
         energy = 0;
         dazhao = 0;
         dazhaoPrepareCount = 0;
+
+        spellHealthRatio = 0.0f;
+        spellStrengthRatio = 0.0f;
+        spellIntelligenceRatio = 0.0f;
+        spellSpeedRatio = 0.0f;
+        spellDefenseRatio = 0.0f;
+        spellEnduranceRatio = 0.0f;
+        spellDefenseDamageRatio = 0.0f;
+        spellphyReduceInjury = 0.0f;
+        spellmgReduceInjury = 0.0f;
+        spellPhyShield = 0;
+        spellMagicShield = 0;
+        buffList.Clear();
+        battleUnit.ClearEvent();
     }
 
     public bool IsPrepareDazhao()

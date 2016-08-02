@@ -9,6 +9,24 @@ message InstanceState
 	optional int32 countDaily = 3;
 }
 
+message ChapterState
+{
+	// 完成的最高普通副本的章节
+	required int32 normalTopChapter = 1;
+	// 完成的最高普通副本的索引
+	required int32 normalTopIndex = 2;
+
+	// 完成的最高困难副本的章节
+	required int32 hardTopChapter = 3;
+	// 完成的最高困难副本的索引
+	required int32 hardTopIndex = 4;
+
+	// 普通章节宝箱状态列表
+	repeated int32 normalBoxState = 5;
+	// 困难章节宝箱状态列表
+	repeated int32 hardBoxState = 6;
+}
+
 message RechargeState
 {
 	required string productId = 1;
@@ -21,24 +39,26 @@ message HSStatisticsInfoSync
 {
 	// 副本状态
 	repeated InstanceState instanceState = 1;
+	// 章节状态
+	required ChapterState chapterState = 2;
 	// 宠物图鉴
-	repeated string monsterCollect = 2;
+	repeated string monsterCollect = 3;
 	// 当前技能点
-	required int32 skillPoint = 3;
+	required int32 skillPoint = 4;
 	// 下个技能点开始计时时间戳
-	required int32 skillPointTimeStamp = 4;
+	required int32 skillPointTimeStamp = 5;
 	// 服务器时间戳
-	optional int32 timeStamp = 5;
+	optional int32 timeStamp = 6;
 	// 订单服务器key
-	required string orderServerKey =6;
+	required string orderServerKey = 7;
 	// 商城购买状态
-	repeated RechargeState rechargeState = 7;
+	repeated RechargeState rechargeState = 8;
 	// 月卡剩余时间
-	required int32  monthCardLeft = 8;
+	required int32  monthCardLeft = 9;
 	// 钻石购买金币次数
-	required int32  gold2CoinTimes = 9;
+	required int32  gold2CoinTimes = 10;
 	// 多倍经验剩余次数
-	required HSStatisticsExpLeftTimeSync expLeftTimes = 10;
+	required HSStatisticsExpLeftTimeSync expLeftTimes = 11;
 }
 
 message HSStatisticsExpLeftTimeSync

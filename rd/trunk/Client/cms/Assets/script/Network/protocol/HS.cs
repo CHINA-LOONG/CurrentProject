@@ -198,6 +198,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_REVIVE_S", Value=3014)]
       INSTANCE_REVIVE_S = 3014,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_C", Value=3015)]
+      CHAPTER_BOX_C = 3015,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_S", Value=3016)]
+      CHAPTER_BOX_S = 3016,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
             

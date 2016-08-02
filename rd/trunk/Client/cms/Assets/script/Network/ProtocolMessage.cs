@@ -197,7 +197,6 @@ public class ProtocolMessage
         buffer.Seek(0, SeekOrigin.Begin);
 		if (buffer.Length < HEAD_SIZE) 
 		{
-			Logger.LogError("decode Error ,buffer length = " + buffer.Length);
 			return false;
 		}
 		

@@ -2,10 +2,12 @@ package com.hawk.game.entity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -25,6 +27,7 @@ import org.hawk.util.HawkJsonUtil;
 import com.google.gson.reflect.TypeToken;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.QuestCfg;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.GsConst.Cycle;
@@ -46,6 +49,9 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 疲劳值
 	@Column(name = "fatigue", nullable = false)
 	private int fatigue = 0;
+
+	@Column(name = "fatigueBeginTime")
+	private Calendar fatigueBeginTime = null;
 
 	// 技能点
 	@Column(name = "skillPoint", nullable = false)
@@ -70,6 +76,14 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 各副本完成星级：1-3
 	@Column(name = "instanceStar", nullable = false)
 	private String instanceStarJson = "";
+
+	// 普通副本章节宝箱状态
+	@Column(name = "chapterBoxNormal", nullable = false)
+	private String chapterBoxNormalJson = "";
+
+	// 困难副本章节宝箱状态
+	@Column(name = "chapterBoxHard", nullable = false)
+	private String chapterBoxHardJson = "";
 
 	// 今日各副本完成次数
 	@Column(name = "instanceCountDaily", nullable = false)
@@ -242,6 +256,10 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Transient
 	protected Map<String, Integer> instanceStarMap = new HashMap<String, Integer> ();
 	@Transient
+	protected List<Integer> chapterBoxNormalList = new ArrayList<Integer> ();
+	@Transient
+	protected List<Integer> chapterBoxHardList = new ArrayList<Integer> ();
+	@Transient
 	protected Map<String, Integer> instanceCountDailyMap = new HashMap<String, Integer> ();
 	@Transient
 	protected Set<String> monsterCollectSet = new HashSet<String> ();
@@ -253,28 +271,32 @@ public class StatisticsEntity  extends HawkDBEntity {
 	protected Map<String, Integer> rechargeRecordMap = new HashMap<String, Integer> ();
 	// 最后普通副本所属章节
 	@Transient
-	protected int normalChapter = 0;
+	protected int normalTopChapter = 0;
 	// 最后困难副本所属章节
 	@Transient
-	protected int hardChapter = 0;
+	protected int hardTopChapter = 0;
 	// 最后普通副本章节索引
 	@Transient
-	protected int normalIndex = 0;
+	protected int normalTopIndex = 0;
 	// 最后困难副本章节索引
 	@Transient
-	protected int hardIndex = 0;
+	protected int hardTopIndex = 0;
 	@Transient
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public StatisticsEntity() {
-		this.createTime = HawkTime.getCalendar();
-		this.skillPointBeginTime = HawkTime.getCalendar();
+		Calendar time = HawkTime.getCalendar();
+		this.createTime = time;
+		this.fatigueBeginTime = time;
+		this.skillPointBeginTime = time;
 	}
 
 	public StatisticsEntity(int playerId) {
+		Calendar time = HawkTime.getCalendar();
 		this.playerId = playerId;
-		this.createTime = HawkTime.getCalendar();
-		this.skillPointBeginTime = HawkTime.getCalendar();
+		this.createTime = time;
+		this.fatigueBeginTime = time;
+		this.skillPointBeginTime = time;
 	}
 
 	public int getPlayerId() {
@@ -299,6 +321,14 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public void setFatigue(int fatigue) {
 		this.fatigue = fatigue;
+	}
+
+	public Calendar getFatigueBeginTime() {
+		return fatigueBeginTime;
+	}
+
+	public void setFatigueBeginTime(Calendar time) {
+		this.fatigueBeginTime = time;
 	}
 
 	public int getSkillPoint() {
@@ -384,6 +414,42 @@ public class StatisticsEntity  extends HawkDBEntity {
 			return star;
 		}
 		return 0;
+	}
+
+	public List<Integer> getNormalChapterBoxStateList() {
+		return chapterBoxNormalList;
+	}
+
+	public int getNormalChapterBoxState(int chapterId) {
+		if (chapterId > chapterBoxNormalList.size()) {
+			return Const.ChapterBoxState.INVALID_VALUE;
+		}
+		return chapterBoxNormalList.get(chapterId - 1);
+	}
+
+	public void setNormalChapterBoxState(int chapterId, int state) {
+		for (int i = chapterBoxNormalList.size(); i < chapterId; ++i) {
+			chapterBoxNormalList.add(Const.ChapterBoxState.INVALID_VALUE);
+		}
+		chapterBoxNormalList.set(chapterId - 1, state);
+	}
+
+	public List<Integer> getHardChapterBoxStateList() {
+		return chapterBoxHardList;
+	}
+
+	public int getHardChapterBoxState(int chapterId) {
+		if (chapterId > chapterBoxHardList.size()) {
+			return Const.ChapterBoxState.INVALID_VALUE;
+		}
+		return chapterBoxHardList.get(chapterId - 1);
+	}
+
+	public void setHardChapterBoxState(int chapterId, int state) {
+		for (int i = chapterBoxHardList.size(); i < chapterId; ++i) {
+			chapterBoxHardList.add(Const.ChapterBoxState.INVALID_VALUE);
+		}
+		chapterBoxHardList.set(chapterId - 1, state);
 	}
 
 	public Map<String, Integer> getInstanceCountDailyMap() {
@@ -769,36 +835,36 @@ public class StatisticsEntity  extends HawkDBEntity {
 		totalOnlineTime += onlineTime;
 	}
 
-	public int getNormalInstanceChapter() {
-		return normalChapter;
+	public int getNormalTopChapter() {
+		return normalTopChapter;
 	}
 
-	public void setNormalInstanceChapter(int chapter) {
-		this.normalChapter = chapter;
+	public void setNormalTopChapter(int chapter) {
+		this.normalTopChapter = chapter;
 	}
 
-	public int getNormalInstanceIndex() {
-		return normalIndex;
+	public int getNormalTopIndex() {
+		return normalTopIndex;
 	}
 
-	public void setNormalInstanceIndex(int index) {
-		this.normalIndex = index;
+	public void setNormalTopIndex(int index) {
+		this.normalTopIndex = index;
 	}
 
-	public int getHardInstanceChapter() {
-		return hardChapter;
+	public int getHardTopChapter() {
+		return hardTopChapter;
 	}
 
-	public void setHardInstanceChapter(int chapter) {
-		this.hardChapter = chapter;
+	public void setHardTopChapter(int chapter) {
+		this.hardTopChapter = chapter;
 	}
 
-	public int getHardInstanceIndex() {
-		return hardIndex;
+	public int getHardTopIndex() {
+		return hardTopIndex;
 	}
 
-	public void setHardInstanceIndex(int index) {
-		this.hardIndex = index;
+	public void setHardTopIndex(int index) {
+		this.hardTopIndex = index;
 	}
 
 	/*
@@ -861,6 +927,12 @@ public class StatisticsEntity  extends HawkDBEntity {
 		if (instanceStarJson != null && false == "".equals(instanceStarJson) && false == "null".equals(instanceStarJson)) {
 			instanceStarMap = HawkJsonUtil.getJsonInstance().fromJson(instanceStarJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
+		if (chapterBoxNormalJson != null && false == "".equals(chapterBoxNormalJson) && false == "null".equals(chapterBoxNormalJson)) {
+			chapterBoxNormalList = HawkJsonUtil.getJsonInstance().fromJson(chapterBoxNormalJson, new TypeToken<ArrayList<Integer>>() {}.getType());
+		}
+		if (chapterBoxHardJson != null && false == "".equals(chapterBoxHardJson) && false == "null".equals(chapterBoxHardJson)) {
+			chapterBoxHardList = HawkJsonUtil.getJsonInstance().fromJson(chapterBoxHardJson, new TypeToken<ArrayList<Integer>>() {}.getType());
+		}
 		if (instanceCountDailyJson != null && false == "".equals(instanceCountDailyJson) && false == "null".equals(instanceCountDailyJson)) {
 			instanceCountDailyMap = HawkJsonUtil.getJsonInstance().fromJson(instanceCountDailyJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
@@ -875,11 +947,11 @@ public class StatisticsEntity  extends HawkDBEntity {
 		}
 
 		// 0表示未开始任何章节
-		normalChapter = 0;
-		hardChapter = 0;
+		normalTopChapter = 0;
+		hardTopChapter = 0;
 		// 0表示第一个副本
-		normalIndex = 0;
-		hardIndex = 0;
+		normalTopIndex = 0;
+		hardTopIndex = 0;
 
 		for (Entry<String, Integer> entry : instanceStarMap.entrySet()) {
 			InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, entry.getKey());
@@ -887,18 +959,18 @@ public class StatisticsEntity  extends HawkDBEntity {
 				int chapter = entryCfg.getChapter();
 				int index = entryCfg.getIndex();
 				if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
-					if (chapter > normalChapter) {
-						normalChapter = chapter;
-						normalIndex = index;
-					} else if (chapter == normalChapter && index > normalIndex) {
-						normalIndex = index;
+					if (chapter > normalTopChapter) {
+						normalTopChapter = chapter;
+						normalTopIndex = index;
+					} else if (chapter == normalTopChapter && index > normalTopIndex) {
+						normalTopIndex = index;
 					}
 				} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
-					if (chapter > hardChapter) {
-						hardChapter = chapter;
-						hardIndex = index;
-					} else if (chapter == hardChapter && index > hardIndex) {
-						hardIndex = index;
+					if (chapter > hardTopChapter) {
+						hardTopChapter = chapter;
+						hardTopIndex = index;
+					} else if (chapter == hardTopChapter && index > hardTopIndex) {
+						hardTopIndex = index;
 					}
 				}
 			}
@@ -913,6 +985,8 @@ public class StatisticsEntity  extends HawkDBEntity {
 		questCompleteDailyJson = HawkJsonUtil.getJsonInstance().toJson(questCompleteDailySet);
 		monsterCollectJson = HawkJsonUtil.getJsonInstance().toJson(monsterCollectSet);
 		instanceStarJson = HawkJsonUtil.getJsonInstance().toJson(instanceStarMap);
+		chapterBoxNormalJson = HawkJsonUtil.getJsonInstance().toJson(chapterBoxNormalList);
+		chapterBoxHardJson = HawkJsonUtil.getJsonInstance().toJson(chapterBoxHardList);
 		instanceCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(instanceCountDailyMap);
 		monsterStageJson = HawkJsonUtil.getJsonInstance().toJson(monsterStageMap);
 		monsterLevelJson = HawkJsonUtil.getJsonInstance().toJson(monsterLevelMap);

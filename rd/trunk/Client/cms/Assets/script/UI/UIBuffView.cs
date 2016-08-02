@@ -12,14 +12,26 @@ public class UIBuffView : MonoBehaviour
     private BattleObject targetUnit;
     private int curOtherBuffIndex;
     private float otherBuffInterval;
-    private List<string> otherBuffList;
+    struct BuffStateData
+    {
+        public BuffStateData(string icon, int remainRound)
+        {
+            this.buffIcon = icon;
+            this.buffRemainRound = remainRound;
+        }
+        
+        public string buffIcon;
+        public int buffRemainRound;
+    }
+    private List<BuffStateData> otherBuffList;
+
 
 	public void Init ()
     {
         this.targetUnit = null;
         otherBuffInterval = 0.0f;
         curOtherBuffIndex = 0;
-        otherBuffList = new List<string>();
+        otherBuffList = new List<BuffStateData>();
 	}
 
     public void SetTargetUnit(BattleObject targetUnit)
@@ -47,17 +59,25 @@ public class UIBuffView : MonoBehaviour
         {
             return;
         }
-        BuffPrototype curBuff = StaticDataMgr.Instance.GetBuffProtoData(buffArgs.buffID);
-
-        //dot类buff
-        if (curBuff.category == (int)BuffType.Buff_Type_Dot)
+        if (buffArgs.buffID == "internal_all")
         {
             RefreshDotBuff();
-        }
-        //非dot类buff 刷新buff表
-        else 
-        {
             RefreshOtherBuff();
+        }
+        else
+        {
+            BuffPrototype curBuff = StaticDataMgr.Instance.GetBuffProtoData(buffArgs.buffID);
+
+            //dot类buff
+            if (curBuff.category == (int)BuffType.Buff_Type_Dot)
+            {
+                RefreshDotBuff();
+            }
+            //非dot类buff 刷新buff表
+            else
+            {
+                RefreshOtherBuff();
+            }
         }
     }
 
@@ -88,7 +108,7 @@ public class UIBuffView : MonoBehaviour
             otherBuffInterval = 0.0f;
             ++curOtherBuffIndex;
             curOtherBuffIndex %= buffCount;
-            otherBuff.ShowBuff(otherBuffList[curOtherBuffIndex]);
+            otherBuff.ShowBuff(otherBuffList[curOtherBuffIndex].buffIcon, otherBuffList[curOtherBuffIndex].buffRemainRound);
         }
     }
     private void ClearBuff()
@@ -121,7 +141,7 @@ public class UIBuffView : MonoBehaviour
             curBuff = targetUnit.unit.buffList[i];
             if (curBuff.IsFinish == false && curBuff.buffProto.category == (int)(BuffType.Buff_Type_Dot))
             {
-                dotBuffList[dotIndex].ShowBuff(curBuff.buffProto.icon);
+                dotBuffList[dotIndex].ShowBuff(curBuff.buffProto.icon, curBuff.BuffRemainRound);
                 ++dotIndex;
             }
         }
@@ -134,21 +154,21 @@ public class UIBuffView : MonoBehaviour
 
         int buffCount = targetUnit.unit.buffList.Count;
         otherBuffList.Clear();
-        BuffPrototype buffPb = null;
+        Buff curBuff = null;
         for (int i = 0; i < buffCount; ++i)
         {
-            buffPb = targetUnit.unit.buffList[i].buffProto;
+            curBuff = targetUnit.unit.buffList[i];
 
             if (targetUnit.unit.buffList[i].IsFinish == false &&
                     (
-                    buffPb.category == (int)(BuffType.Buff_Type_Normal) ||
-                    buffPb.category == (int)(BuffType.Buff_Type_Hot) ||
-                    buffPb.category == (int)(BuffType.Buff_Type_Debuff) ||
-                    buffPb.category == (int)(BuffType.Buff_Type_Benefit)
+                    curBuff.buffProto.category == (int)(BuffType.Buff_Type_Normal) ||
+                    curBuff.buffProto.category == (int)(BuffType.Buff_Type_Hot) ||
+                    curBuff.buffProto.category == (int)(BuffType.Buff_Type_Debuff) ||
+                    curBuff.buffProto.category == (int)(BuffType.Buff_Type_Benefit)
                     )
                 )
             {
-                otherBuffList.Add(buffPb.icon);
+                otherBuffList.Add(new BuffStateData(curBuff.buffProto.icon, curBuff.BuffRemainRound));
             }
         }
     }

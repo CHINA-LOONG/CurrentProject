@@ -140,7 +140,7 @@ public class InstanceInfo : MonoBehaviour
 	void SetReward(InstanceEntry entryData)
 	{
 		string  itemId = "";
-		
+		/*
 		itemId = entryData.reward1;
 		SetSubReward (0, itemId);
 		
@@ -158,6 +158,7 @@ public class InstanceInfo : MonoBehaviour
 		
 		itemId = entryData.reward6;
 		SetSubReward (5, itemId);
+        */
 	}
 	
 	void	SetSubReward(int index, string itemId)

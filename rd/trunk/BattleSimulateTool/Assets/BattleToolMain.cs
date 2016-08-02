@@ -11,12 +11,10 @@ public class InputUnitData
 }
 public class OperationData
 {
-    public string[] gwID;//怪物ID
-    public string[] spellID;//技能ID
-    public string[] weaknessId;//弱点ID
+    public string[] weaknessName;//弱点ID
+    public string[] xgName;
     public int[] duijuNum;//对局数
     public int[] roundNum;//回合数
-    public int[] attNum;//攻击次数
     public int[] IntervalRoundNum;//间隔回合数
 }
 public class BattleToolMain : MonoBehaviour
@@ -26,7 +24,6 @@ public class BattleToolMain : MonoBehaviour
     {
         get { return mInstance; }
     }
-
     public List<InputUnitData> mMainUnitDataList = new List<InputUnitData>();
     private int mCurSimulateCount;
     public InputField mInstanceID;//副本ID
@@ -35,6 +32,9 @@ public class BattleToolMain : MonoBehaviour
     public List<GameObject> gwList;//怪物列表
     public InputField mSimulateCount;//循环次数
     AttData attData;
+    public OperationData operationData;
+    public int bureauNum;//对局数
+    public int roundNum = 0;//回合数
     public List<BattleObject> mMainUnitList = new List<BattleObject>();
     //---------------------------------------------------------------------------------------------
     void Awake()
@@ -86,6 +86,7 @@ public class BattleToolMain : MonoBehaviour
             curUnitData.unitCharacter = int.Parse(attData.gwCharacter.text);
             mMainUnitDataList.Add(curUnitData);
         }
+        operationData = StaticDataMgr.Instance.GetPlayerBehaviorData("yueguangsenlin11_1");//operationID.text);
         //end test
         int playerUnitStartID = 100;
         mMainUnitList.Clear();

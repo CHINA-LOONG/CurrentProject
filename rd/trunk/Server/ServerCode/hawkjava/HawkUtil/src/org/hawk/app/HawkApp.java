@@ -97,6 +97,10 @@ public abstract class HawkApp extends HawkAppObj {
 	 */
 	protected long lastRemoveObjTime;
 	/**
+	 * 
+	 */
+	protected long lastShowStateTime;
+	/**
 	 * 是否允许执行shell
 	 */
 	protected boolean shellEnable;
@@ -175,6 +179,7 @@ public abstract class HawkApp extends HawkAppObj {
 		objXidList = new LinkedList<HawkXID>();
 		appObjList = new LinkedList<HawkAppObj>();
 		lastRemoveObjTime = HawkTime.getMillisecond();
+		lastShowStateTime = HawkTime.getMillisecond();
 	}
 
 	/**
@@ -686,6 +691,12 @@ public abstract class HawkApp extends HawkAppObj {
 			}
 		}
 
+		//打印任务队列状态
+		if (currentTime - lastShowStateTime >= 1000) {
+			lastShowStateTime = currentTime;
+			printTaskState();
+		}
+		
 		// 对象更新
 		for (Entry<Integer, HawkObjManager<HawkXID, HawkAppObj>> entry : objMans.entrySet()) {
 			HawkObjManager<HawkXID, HawkAppObj> objMan = entry.getValue();
@@ -1358,5 +1369,41 @@ public abstract class HawkApp extends HawkAppObj {
 	 */
 	public boolean onRefuseByIptables(IoSession session, String ip, int usage) {
 		return false;
+	}
+	
+	/**
+	 * 打印当前队列任务数量
+	 * 
+	 * @return
+	 */
+	public void printTaskState() {
+		int pushCount = 0;
+		int popCount = 0;
+		
+		for (int i = 0; i < msgExecutor.getThreadNum(); i++) {
+			pushCount += msgExecutor.getThread(i).getPushTaskCnt();
+			popCount += msgExecutor.getThread(i).getPopTaskCnt();
+		}
+		
+		HawkLog.errPrintln(String.format("msg总任务数量： %d, 处理数量： %d", pushCount, popCount));
+
+		pushCount = 0;
+		popCount = 0;
+		
+		for (int i = 0; i < taskExecutor.getThreadNum(); i++) {
+			pushCount += taskExecutor.getThread(i).getPushTaskCnt();
+			popCount += taskExecutor.getThread(i).getPopTaskCnt();
+		}
+		
+		HawkLog.errPrintln(String.format("tsk总任务数量： %d, 处理数量： %d", pushCount, popCount));	
+		
+		Runtime run = Runtime.getRuntime(); 
+		long max = run.maxMemory(); 
+		long total = run.totalMemory(); 
+		long free = run.freeMemory(); 
+		long usable = max - total + free; 
+		
+		HawkLog.errPrintln(String.format("最大内存 = %d, 已分配内存 = %d , 已分配内存中的剩余空间 = %d, 最大可用内存= %d", max, total, free, usable));	
+
 	}
 }

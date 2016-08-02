@@ -56,4 +56,8 @@ public class InstanceUtil {
 	public static Map<Integer, InstanceChapter> getInstanceChapterMap() {
 		return Collections.unmodifiableMap(chapterMap);
 	}
+
+	public static InstanceChapter getInstanceChapter(int chapterId) {
+		return chapterMap.get(chapterId);
+	}
 }

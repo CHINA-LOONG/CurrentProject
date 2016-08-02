@@ -46,6 +46,9 @@ public class BuffPrototype
     public int responseCount;
     public string damageResponse;
     public string deadResponse;
+
+    //buff结束事件
+    public string effectExpire;
 }
 
 public class BuffPrototypes : ScriptableObject
@@ -66,6 +69,10 @@ public class Buff
     public bool IsFinish
     {
         get { return isFinish; }
+    }
+    public int BuffRemainRound
+    {
+        get { return buffProto.duration - periodCount; }
     }
     private BuffFinisType finishType;
     private int responseCount;
@@ -105,6 +112,7 @@ public class Buff
         buffProto.criticalRatio = buffPt.criticalRatio;
         buffProto.hitRatio = buffPt.hitRatio;
         buffProto.healthRatio = buffPt.healthRatio;
+        buffProto.effectExpire = buffPt.effectExpire;
         isFinish = false;
         skipUpdate = false;
         phyShield = magicShield = 0;
@@ -198,6 +206,15 @@ public class Buff
             stunArgs.vitalMax = 0;
             spellService.TriggerEvent(GameEventList.SpellLifeChange, stunArgs);
         }
+
+        //refresh need fire event now, since need to update remain round
+        SpellBuffArgs args = new SpellBuffArgs();
+        args.triggerTime = curTime;
+        args.casterID = casterID;
+        args.targetID = targetID;
+        args.isAdd = true;
+        args.buffID = buffProto.id;
+        spellService.TriggerEvent(GameEventList.SpellBuff, args);
     }
     //---------------------------------------------------------------------------------------------
     void AddBuff(GameUnit target)
@@ -309,6 +326,18 @@ public class Buff
         isFinish = true;
         this.finishType = finishType;
         ModifyUnit(true, finishTime);
+        
+        //trigger effect expire
+        if (finishType == BuffFinisType.Buff_Finish_Expire)
+        {
+            Effect effectExpire = spellService.GetEffect(buffProto.effectExpire);
+            if (effectExpire != null)
+            {
+                effectExpire.SetOwnedSpell(ownedSpell);
+                effectExpire.SetOwnedBuff(this);
+                effectExpire.Apply(finishTime, null);
+            }
+        }
 
         SpellBuffArgs args = new SpellBuffArgs();
         args.triggerTime = finishTime;

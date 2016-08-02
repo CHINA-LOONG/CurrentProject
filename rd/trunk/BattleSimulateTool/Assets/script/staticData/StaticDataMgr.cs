@@ -410,30 +410,27 @@ public class StaticDataMgr : MonoBehaviour
             PlayerBehavior behaviorData = PlayerBehaviorData[behaviorId];
             OperationData operationData = new OperationData();
             string[] dazhaoTime = behaviorData.dazhao.Split(';');
-            operationData.gwID = new string[dazhaoTime.Length];
-            operationData.spellID = new string[dazhaoTime.Length];
+            operationData.xgName = new string[dazhaoTime.Length];
             operationData.duijuNum = new int[dazhaoTime.Length];
             operationData.roundNum = new int[dazhaoTime.Length];
-            operationData.attNum = new int[dazhaoTime.Length];
             string[] content;
             for (int i = 0; i < dazhaoTime.Length; i++)
             {
                 content = dazhaoTime[i].Split('_');
-                operationData.gwID[i] = content[0];
-                operationData.spellID[i] = content[1];
-                operationData.duijuNum[i] = int.Parse(content[2]);
-                operationData.roundNum[i] = int.Parse(content[3]);
-                operationData.attNum[i] = int.Parse(content[4]);
+                operationData.xgName[i] = content[0];
+                operationData.duijuNum[i] = int.Parse(content[1]);
+                operationData.roundNum[i] = int.Parse(content[2]);
             }
             string[] jihuoOperation = behaviorData.jihuo.Split(':');
-            operationData.weaknessId = new string[jihuoOperation.Length];
+            operationData.weaknessName = new string[jihuoOperation.Length];
             operationData.IntervalRoundNum = new int[jihuoOperation.Length];
             for (int i = 0; i < jihuoOperation.Length; i++)
             {
                 content = jihuoOperation[i].Split('_');
-                operationData.weaknessId[i] = content[0];
+                operationData.weaknessName[i] = content[0];
                 operationData.IntervalRoundNum[i] = int.Parse(content[1]);
             }
+            BattleToolMain.Instance.roundNum = operationData.IntervalRoundNum[0];
             return operationData;
         }           
         return null;

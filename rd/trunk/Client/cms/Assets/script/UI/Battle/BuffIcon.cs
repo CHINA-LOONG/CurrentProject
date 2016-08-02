@@ -6,6 +6,7 @@ public class BuffIcon : MonoBehaviour
 {
     private string curIcon;
     private Image buffIcon;
+    public Text buffRemainRound;
 
     public string IconName
     {
@@ -18,7 +19,7 @@ public class BuffIcon : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ShowBuff(string icon)
+    public void ShowBuff(string icon, int remainRound)
     {
         if (curIcon != icon)
         {
@@ -32,6 +33,7 @@ public class BuffIcon : MonoBehaviour
             buffIcon.sprite = image;
         }
         gameObject.SetActive(true);
+        buffRemainRound.text = remainRound.ToString();
     }
 
     public void RemoveBuff()

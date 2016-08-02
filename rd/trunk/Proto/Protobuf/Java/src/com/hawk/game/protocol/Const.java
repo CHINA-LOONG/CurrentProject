@@ -2893,6 +2893,125 @@ public final class Const {
     // @@protoc_insertion_point(enum_scope:ImChannel)
   }
 
+  /**
+   * Protobuf enum {@code ChapterBoxState}
+   *
+   * <pre>
+   * 章节宝箱状态
+   * </pre>
+   */
+  public enum ChapterBoxState
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>INVALID = -1;</code>
+     *
+     * <pre>
+     * 不能领取
+     * </pre>
+     */
+    INVALID(0, -1),
+    /**
+     * <code>VALID = 0;</code>
+     *
+     * <pre>
+     * 可领取
+     * </pre>
+     */
+    VALID(1, 0),
+    /**
+     * <code>OPEN = 1;</code>
+     *
+     * <pre>
+     * 已领取
+     * </pre>
+     */
+    OPEN(2, 1),
+    ;
+
+    /**
+     * <code>INVALID = -1;</code>
+     *
+     * <pre>
+     * 不能领取
+     * </pre>
+     */
+    public static final int INVALID_VALUE = -1;
+    /**
+     * <code>VALID = 0;</code>
+     *
+     * <pre>
+     * 可领取
+     * </pre>
+     */
+    public static final int VALID_VALUE = 0;
+    /**
+     * <code>OPEN = 1;</code>
+     *
+     * <pre>
+     * 已领取
+     * </pre>
+     */
+    public static final int OPEN_VALUE = 1;
+
+
+    public final int getNumber() { return value; }
+
+    public static ChapterBoxState valueOf(int value) {
+      switch (value) {
+        case -1: return INVALID;
+        case 0: return VALID;
+        case 1: return OPEN;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ChapterBoxState>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<ChapterBoxState>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ChapterBoxState>() {
+            public ChapterBoxState findValueByNumber(int number) {
+              return ChapterBoxState.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(19);
+    }
+
+    private static final ChapterBoxState[] VALUES = values();
+
+    public static ChapterBoxState valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private ChapterBoxState(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ChapterBoxState)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2946,7 +3065,9 @@ public final class Const {
       "ECEIVE\020\003\022\014\n\010OVERFLOW\020\004*7\n\006ImType\022\010\n\004CHAT" +
       "\020\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006NOTICE\020\004*" +
       "-\n\tImChannel\022\n\n\006PERSON\020\001\022\t\n\005WORLD\020\002\022\t\n\005G" +
-      "UILD\020\003B\030\n\026com.hawk.game.protocol"
+      "UILD\020\003*<\n\017ChapterBoxState\022\024\n\007INVALID\020\377\377\377" +
+      "\377\377\377\377\377\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001B\030\n\026com.hawk" +
+      ".game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

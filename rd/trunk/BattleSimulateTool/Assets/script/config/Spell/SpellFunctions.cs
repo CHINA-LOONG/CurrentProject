@@ -69,7 +69,8 @@ public class SpellFunctions
 
     public static int IsEnemy(int camp)
     {
-        return (camp == (int)UnitCamp.Enemy) ? 1 : 0;
+        return 1;
+        //return (camp == (int)UnitCamp.Enemy) ? 1 : 0;
     }
 
     public static int Default(int args)

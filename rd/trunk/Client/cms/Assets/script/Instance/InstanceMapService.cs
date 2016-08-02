@@ -16,11 +16,19 @@ public	class InstanceEntryRuntimeData
     public bool isOpen = true;
 	public	InstanceEntry	staticData;
 }
+public enum ChapterBoxState
+{
+   CanNotReceiv = -1,
+   CanReceiv,
+   HasReceiv
+}
 public class InstanceMapService : MonoBehaviour 
 {
 	public	int	openedMaxNormlChapter = 1;
 	public	int	openedMaxHardChapter = 0;
 	public	List<InstanceEntryRuntimeData>	openChapterInstanceList = new List<InstanceEntryRuntimeData> ();
+
+    public PB.ChapterState chapterState = null;
 
 	static InstanceMapService mInst = null;
 	public static InstanceMapService Instance
@@ -278,6 +286,52 @@ public class InstanceMapService : MonoBehaviour
     public  bool    IsHardChapterOpend(int chapter)
     {
         return chapter <= openedMaxHardChapter;
+    }
+
+    public  ChapterBoxState GetChapterBoxState(int chapter,InstanceDifficulty  diffType)
+    {
+        if(null == chapterState)
+            return ChapterBoxState.CanNotReceiv;
+        List<int> stateList = null;
+        if (InstanceDifficulty.Normal == diffType)
+        {
+            stateList = chapterState.normalBoxState;
+        }
+        else
+        {
+            stateList = chapterState.hardBoxState;
+        }
+        if(chapter > stateList.Count)
+        {
+            return ChapterBoxState.CanNotReceiv;
+        }
+        return (ChapterBoxState)stateList[chapter-1];
+    }
+
+    public  void    SetChapterBoxState(int chapter,InstanceDifficulty diffType,ChapterBoxState state)
+    {
+        List<int> stateList = null;
+        if (InstanceDifficulty.Normal == diffType)
+        {
+            stateList = chapterState.normalBoxState;
+        }
+        else
+        {
+            stateList = chapterState.hardBoxState;
+        }
+
+        if(chapter <= stateList.Count)
+        {
+            stateList[chapter-1] = (int)ChapterBoxState.CanReceiv;
+        }
+        else
+        {
+            for(int i =0;i<chapter - stateList.Count -1;++i)
+            {
+                stateList.Add((int)ChapterBoxState.CanNotReceiv);
+            }
+            stateList.Add((int)state);
+        }
     }
 
 

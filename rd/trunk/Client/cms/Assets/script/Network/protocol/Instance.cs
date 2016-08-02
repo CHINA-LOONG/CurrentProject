@@ -158,12 +158,12 @@ namespace PB
   {
     public HSInstanceSettle() {}
     
-    private bool _victory;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"victory", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public bool victory
+    private int _passBattleCount;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"passBattleCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int passBattleCount
     {
-      get { return _victory; }
-      set { _victory = value; }
+      get { return _passBattleCount; }
+      set { _passBattleCount = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -293,6 +293,61 @@ namespace PB
     {
       get { return _reviveCount; }
       set { _reviveCount = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSChapterBox")]
+  public partial class HSChapterBox : global::ProtoBuf.IExtensible
+  {
+    public HSChapterBox() {}
+    
+    private int _chapterId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"chapterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int chapterId
+    {
+      get { return _chapterId; }
+      set { _chapterId = value; }
+    }
+    private int _difficulty;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"difficulty", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int difficulty
+    {
+      get { return _difficulty; }
+      set { _difficulty = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSChapterBoxRet")]
+  public partial class HSChapterBoxRet : global::ProtoBuf.IExtensible
+  {
+    public HSChapterBoxRet() {}
+    
+    private int _chapterId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"chapterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int chapterId
+    {
+      get { return _chapterId; }
+      set { _chapterId = value; }
+    }
+    private int _difficulty;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"difficulty", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int difficulty
+    {
+      get { return _difficulty; }
+      set { _difficulty = value; }
+    }
+    private int _boxState;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"boxState", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int boxState
+    {
+      get { return _boxState; }
+      set { _boxState = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

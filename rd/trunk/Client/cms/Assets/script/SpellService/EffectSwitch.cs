@@ -36,13 +36,14 @@ public class EffectSwitch : Effect
             return false;
 
         GameUnit caster = spellService.GetUnit(casterID);
+        GameUnit target = spellService.GetUnit(targetID);
         var cls = typeof(SpellFunctions);
 
         foreach (KeyValuePair<string, string> effectkv in setProto.effectList)
         {
             string key = effectkv.Key;
             MethodInfo validator = cls.GetMethod(key);
-            int result = (int)validator.Invoke(null, new object[]{(int)(caster.pbUnit.camp)});
+            int result = (int)validator.Invoke(null, new object[]{(GameUnit)(caster), (GameUnit)(target)});
             if (result == 1)
             {
                 Effect curEffect = spellService.GetEffect(effectkv.Value);

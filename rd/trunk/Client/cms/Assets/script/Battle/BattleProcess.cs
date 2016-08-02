@@ -147,6 +147,7 @@ public class BattleProcess : MonoBehaviour
         GameEventMgr.Instance.RemoveListener<int, int>(GameEventList.SwitchPet, OnSwitchPet);
         GameEventMgr.Instance.RemoveListener<int, string>(GameEventList.ChangeTarget, OnChangeTarget);
 		GameEventMgr.Instance.RemoveListener<BattleObject>(GameEventList.DazhaoBtnClicked, OnUnitCastDazhao);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.ShowHideMonster, OnShowHideMonster);
 
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellFire, OnFireSpell);
         GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpellLifeChange, OnLifeChange);
@@ -585,6 +586,16 @@ public class BattleProcess : MonoBehaviour
         deathList.Clear();
     }
 
+    private void CastInstanceSpell()
+    {
+        string instanceSpell = BattleController.Instance.instanceSpell;
+        if (string.IsNullOrEmpty(instanceSpell) == false)
+        {
+            BattleObject sceneUnit = ObjectDataMgr.Instance.GetBattleObject(BattleConst.battleSceneGuid);
+            //TODO: use level time
+            SpellService.Instance.SpellRequest(instanceSpell, sceneUnit.unit, sceneUnit.unit, Time.time);
+        }
+    }
     IEnumerator Process(int battleLevelIndex)
     {
         BattleController.Instance.PlayEntranceAnim();
@@ -601,6 +612,7 @@ public class BattleProcess : MonoBehaviour
         {
             mCurrentReviveCount = 0;
             yield return StartCoroutine(PlayCountDownAnim());
+            CastInstanceSpell();
         }
         else
         {
@@ -608,7 +620,7 @@ public class BattleProcess : MonoBehaviour
         }
 
         BattleController.Instance.processStart = true;
-        RefreshEnemyState();
+        //RefreshEnemyState();
 
         StartAction();
     }
@@ -622,10 +634,10 @@ public class BattleProcess : MonoBehaviour
         yield return null;
     }
 
-    private void RefreshEnemyState()
-    {
+    //private void RefreshEnemyState()
+    //{
 
-    }
+    //}
 
     void StartAction()
     {
@@ -816,6 +828,8 @@ public class BattleProcess : MonoBehaviour
         reviveAction.type = ActionType.ReviveUnit;
         InsertAction(reviveAction);
         StartAction();
+
+        CastInstanceSpell();
     }
 
     IEnumerator ShowReviveUI()

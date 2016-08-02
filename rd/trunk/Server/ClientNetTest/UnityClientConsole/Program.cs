@@ -21,17 +21,22 @@ namespace UnityClientConsole
 
         static void Main(string[] args)
         {
-            for (int i = 1; i <= 2000; ++i )
-            {
-                string name = "root" + i;
-                App test = new App();
-                if (test.Init("192.168.199.122", 9597, name) == false)
-                {
-                    continue; 
-                }
 
-                test.SendLoginProtocol();
-            }
+            App test = new App();
+            test.Init("127.0.0.1", 9595, "star_1");
+            test.SendLoginProtocol();
+
+//             for (int i = 1; i <= 2000; ++i )
+//             {
+//                 string name = "root" + i;
+//                 App test = new App();
+//                 if (test.Init("192.168.199.122", 9597, name) == false)
+//                 {
+//                     continue; 
+//                 }
+// 
+//                 test.SendLoginProtocol();
+//             }
 
 
             Console.ReadLine();

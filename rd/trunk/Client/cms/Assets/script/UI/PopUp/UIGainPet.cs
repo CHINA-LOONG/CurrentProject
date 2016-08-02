@@ -59,7 +59,7 @@ public class UIGainPet : UIBase
     //---------------------------------------------------------------------------------------------
     public void ShowGainPet(string monsterID)
     {
-        GameUnit gainPet = GameUnit.CreateFakeUnit(monsterID);
+        GameUnit gainPet = GameUnit.CreateFakeUnit(BattleConst.enemyStartID, monsterID);
         ShowGainPetInternal(gainPet);
     }
     //---------------------------------------------------------------------------------------------

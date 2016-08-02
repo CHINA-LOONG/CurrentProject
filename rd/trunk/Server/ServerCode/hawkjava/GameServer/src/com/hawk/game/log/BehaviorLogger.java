@@ -198,9 +198,13 @@ public class BehaviorLogger {
 		 */
 		OPEN_TREASURE,
 		/**
+		 * 副本进入
+		 */
+		INSTANCE_ENTER,
+		/**
 		 * 副本结算
 		 */
-		INSTACE_SETTLE,
+		INSTANCE_SETTLE,
 		/**
 		 * 副本复活
 		 */
@@ -209,6 +213,10 @@ public class BehaviorLogger {
 		 * 副本扫荡
 		 */
 		INSTANCE_SWEEP,
+		/**
+		 * 章节宝箱
+		 */
+		CHAPTER_BOX,
 		/**
 		 * 任务交付
 		 */

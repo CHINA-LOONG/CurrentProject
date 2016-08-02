@@ -156,6 +156,8 @@ public class UICompose : UIBase, TabButtonDelegate
 
     public override void Init()
     {
+        tabIndex = -1;
+        selIndex = 0;
         Refresh();
     }
     public override void Clean()
@@ -492,6 +494,7 @@ public class UICompose : UIBase, TabButtonDelegate
                 composeView.itemIcon.gameObject.SetActive(false);
             }
             composeView.gemIcon.SetActive(false);
+            composeView.text_targetName.text = "";
         }
         else if (showTarget == 1)
         {

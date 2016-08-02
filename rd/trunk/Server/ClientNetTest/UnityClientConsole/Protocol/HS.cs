@@ -66,6 +66,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"SYNCINFO_S", Value=1006)]
       SYNCINFO_S = 1006,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"RECCONECT_C", Value=1007)]
+      RECCONECT_C = 1007,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RECCONECT_S", Value=1008)]
+      RECCONECT_S = 1008,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"PLAYER_INFO_SYNC_S", Value=1010)]
       PLAYER_INFO_SYNC_S = 1010,
             
@@ -144,6 +150,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_LOCK_S", Value=2013)]
       MONSTER_LOCK_S = 2013,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_DECOMPOSE_C", Value=2014)]
+      MONSTER_DECOMPOSE_C = 2014,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_DECOMPOSE_S", Value=2015)]
+      MONSTER_DECOMPOSE_S = 2015,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ASSIST_C", Value=3001)]
       INSTANCE_ASSIST_C = 3001,
             
@@ -186,6 +198,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_REVIVE_S", Value=3014)]
       INSTANCE_REVIVE_S = 3014,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_C", Value=3015)]
+      CHAPTER_BOX_C = 3015,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_S", Value=3016)]
+      CHAPTER_BOX_S = 3016,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
             
@@ -221,6 +239,12 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_COMPOSE_S", Value=4012)]
       ITEM_COMPOSE_S = 4012,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GEM_COMPOSE_C", Value=4013)]
+      GEM_COMPOSE_C = 4013,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GEM_COMPOSE_S", Value=4014)]
+      GEM_COMPOSE_S = 4014,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SELL_C", Value=4101)]
       EQUIP_SELL_C = 4101,
@@ -263,6 +287,12 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_GEM_S", Value=4114)]
       EQUIP_GEM_S = 4114,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_DECOMPOSE_C", Value=4115)]
+      EQUIP_DECOMPOSE_C = 4115,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_DECOMPOSE_S", Value=4116)]
+      EQUIP_DECOMPOSE_S = 4116,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_MONSTER_DRESS_C", Value=4120)]
       EQUIP_MONSTER_DRESS_C = 4120,
@@ -382,7 +412,10 @@ namespace PB
       STATISTICS_EXP_LEFT_TIMES = 11001,
             
       [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_RESET_SYN", Value=11002)]
-      STATISTICS_RESET_SYN = 11002
+      STATISTICS_RESET_SYN = 11002,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SHOP_REFRESH", Value=11003)]
+      STATISTICS_SHOP_REFRESH = 11003
     }
   
 }

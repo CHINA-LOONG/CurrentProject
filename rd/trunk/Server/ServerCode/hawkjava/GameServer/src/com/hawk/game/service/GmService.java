@@ -406,12 +406,13 @@ public class GmService extends GameService {
 			if (consume.checkConsume(player, gm.GMOPERATION_C_VALUE) == false) {
 				return;
 			}
-			else {
-				consume.consumeTakeAffectAndPush(player, Action.GM_ACTION, HS.gm.GMOPERATION_C_VALUE);
-			}
+			consume.consumeTakeAffectAndPush(player, Action.GM_ACTION, HS.gm.GMOPERATION_C_VALUE);
 		}
 
 		if (award.hasAwardItem() == true) {
+			if (award.checkLimit(player, gm.GMOPERATION_C_VALUE) == false) {
+				return;
+			}
 			award.rewardTakeAffectAndPush(player, Action.GM_ACTION, HS.gm.GMOPERATION_C_VALUE);
 		}
 

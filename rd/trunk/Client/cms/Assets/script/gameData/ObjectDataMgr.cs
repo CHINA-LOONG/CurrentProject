@@ -126,21 +126,16 @@ public class ObjectDataMgr : MonoBehaviour
     public BattleObject CreateSceneObject(int guid, string bundleName, string prefab)
     {
         GameObject sceneObj = ResourceMgr.Instance.LoadAsset(prefab, false);
-        BattleObject bo = sceneObj.AddComponent<BattleObject>();
-        bo.guid = guid;
-        bo.type = BattleObjectType.Scene;
-
-        AddBattleObject(bo);
-
-        return bo;
+        return AddSceneObject(guid, sceneObj);
     }
     //---------------------------------------------------------------------------------------------
     public BattleObject AddSceneObject(int guid, GameObject sceneRoot)
     {
-        //GameObject sceneObj = ResourceMgr.Instance.LoadAsset(prefab, false);
         BattleObject bo = sceneRoot.AddComponent<BattleObject>();
         bo.guid = guid;
         bo.type = BattleObjectType.Scene;
+        bo.unit = GameUnit.CreateFakeUnit(BattleConst.battleSceneGuid, "");
+        bo.unit.battleUnit = bo;
 
         AddBattleObject(bo);
 

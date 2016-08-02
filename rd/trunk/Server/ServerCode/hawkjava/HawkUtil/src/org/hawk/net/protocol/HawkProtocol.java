@@ -449,9 +449,6 @@ public class HawkProtocol extends HawkCacheObj {
 				buffer.put(octets.getBuffer().array(), octets.position(), octets.remaining());
 			}
 			
-			if (header.size > 100000) {
-				throw new HawkException();
-			}
 			return true;
 		} catch (Exception e) {
 			HawkException.catchException(e);

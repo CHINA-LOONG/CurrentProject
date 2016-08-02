@@ -15,6 +15,7 @@ public class EffectWholeData
     public int casterType;
     //apply buff
     public string buffID;
+    public int buffValidatorNum;
     //damamge effect
     public int damageType;
     public float attackFactor;
@@ -109,7 +110,7 @@ public class Effect
                 WeakPointData wp = null;
                 if (target.attackWpName != null)
                 {
-                    wp = StaticDataMgr.Instance.GetWeakPointData(target.attackWpName);
+                    wp = StaticDataMgr.Instance.GetWeakPointData(wpID);
                 }
                 args.wpNode = wp != null ? wp.node : "e_shouji";
             }

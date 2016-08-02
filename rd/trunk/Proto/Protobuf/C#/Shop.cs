@@ -281,6 +281,13 @@ namespace PB
       get { return _multiple; }
       set { _multiple = value; }
     }
+    private int _totalReward;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"totalReward", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int totalReward
+    {
+      get { return _totalReward; }
+      set { _totalReward = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

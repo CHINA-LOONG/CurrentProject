@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import org.hawk.annotation.ProtocolHandler;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.log.HawkLog;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
-import org.omg.CORBA.INTERNAL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.impl.StaticLoggerBinder;
 
 import com.hawk.game.config.InstanceCfg;
 import com.hawk.game.config.InstanceChapterCfg;
@@ -22,6 +22,7 @@ import com.hawk.game.config.InstanceDropCfg;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.InstanceRewardCfg;
 import com.hawk.game.config.ItemCfg;
+import com.hawk.game.config.RewardCfg;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
@@ -36,6 +37,8 @@ import com.hawk.game.protocol.Const.toolType;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Instance.HSBattle;
+import com.hawk.game.protocol.Instance.HSChapterBox;
+import com.hawk.game.protocol.Instance.HSChapterBoxRet;
 import com.hawk.game.protocol.Instance.HSInstanceAssist;
 import com.hawk.game.protocol.Instance.HSInstanceAssistRet;
 import com.hawk.game.protocol.Instance.HSInstanceEnter;
@@ -125,20 +128,20 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 副本等级
 		if (player.getLevel() < chapterCfg.getLevelByDifficulty(entryCfg.getDifficult())) {
-			sendError(hsCode, Status.instanceError.INSTANCE_LEVEL);
-			return true;
+			//sendError(hsCode, Status.instanceError.INSTANCE_LEVEL);
+			//return true;
 		}
 
 		// 次数
 		if (statisticsEntity.getInstanceCountDaily(instanceId) >= entryCfg.getCount()) {
-			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
-			return true;
+			//sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
+			//return true;
 		}
 
 		// 体力
 		if (statisticsEntity.getFatigue() < entryCfg.getFatigue()) {
-			sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
-			return true;
+			//sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
+			//return true;
 		}
 
 		InstanceCfg instanceCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, instanceId);
@@ -250,9 +253,12 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		this.curBattleList.add(bossBattle.build());
 
-		// 体力和次数修改
-		int fatigueChange = entryCfg.getFatigue();
-		statisticsEntity.setFatigue(statisticsEntity.getFatigue() - fatigueChange);
+		// 进副本消耗1点体力
+		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
+		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, 1);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_ENTER, hsCode);
+
+		// 次数修改
 		statisticsEntity.addInstanceCountDaily(instanceId, 1);
 		statisticsEntity.notifyUpdate(true);
 
@@ -270,13 +276,25 @@ public class PlayerInstanceModule extends PlayerModule {
 	private boolean onInstanceSettle(HawkProtocol cmd) {
 		HSInstanceSettle protocol = cmd.parseProtocol(HSInstanceSettle.getDefaultInstance());
 		int hsCode = cmd.getType();
-		boolean victory = protocol.getVictory();
+		int passBattleCount = protocol.getPassBattleCount();
 
-		AwardItems completeReward = AwardItems.valueOf();
+		if (this.curInstanceId == ""){
+			sendError(hsCode, Status.instanceError.INSTANCE_NOT_ENTER_VALUE);
+			return true;
+		}
+		
+		boolean victory = false;
+		if (passBattleCount == this.curBattleList.size()) {
+			victory = true;
+		}
 
+		AwardItems completeReward = null;
+
+		// TODO
 		int starCount = 3;
 
 		if (true == victory) {
+			completeReward = AwardItems.valueOf();
 			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 			// 多倍怪物经验
 			int multiple = 1;
@@ -321,31 +339,39 @@ public class PlayerInstanceModule extends PlayerModule {
 			}
 
 			// 发放掉落奖励和完成奖励
-			completeReward.rewardTakeAffectAndPush(player,  Action.INSTACE_SETTLE, HS.code.INSTANCE_SETTLE_C_VALUE);
+			completeReward.rewardTakeAffectAndPush(player,  Action.INSTANCE_SETTLE, HS.code.INSTANCE_SETTLE_C_VALUE);
 
 			// 记录副本进度
 			int oldStar = statisticsEntity.getInstanceStar(this.curInstanceId);
 			if (oldStar < starCount) {
 				statisticsEntity.setInstanceStar(this.curInstanceId, starCount);
+
+				if (true == isChapterFullStar(this.curChapterId, this.curDifficulty)) {
+					if (this.curDifficulty == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+						statisticsEntity.setNormalChapterBoxState(this.curChapterId, Const.ChapterBoxState.VALID_VALUE);
+					} else if (this.curDifficulty == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+						statisticsEntity.setHardChapterBoxState(this.curChapterId, Const.ChapterBoxState.VALID_VALUE);
+					}
+				}
 			}
 
 			if (this.curDifficulty == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
-				int oldChapter = statisticsEntity.getNormalInstanceChapter();
-				int oldIndex = statisticsEntity.getNormalInstanceIndex();
+				int oldChapter = statisticsEntity.getNormalTopChapter();
+				int oldIndex = statisticsEntity.getNormalTopIndex();
 				if (oldChapter < this.curChapterId) {
-					statisticsEntity.setNormalInstanceChapter(this.curChapterId);
-					statisticsEntity.setNormalInstanceIndex(this.curIndex);
+					statisticsEntity.setNormalTopChapter(this.curChapterId);
+					statisticsEntity.setNormalTopIndex(this.curIndex);
 				} else if (oldChapter == this.curChapterId && oldIndex < this.curIndex) {
-					statisticsEntity.setNormalInstanceIndex(this.curIndex);
+					statisticsEntity.setNormalTopIndex(this.curIndex);
 				}
 			} else if (this.curDifficulty == GsConst.InstanceDifficulty.HARD_INSTANCE) {
-				int oldChapter = statisticsEntity.getHardInstanceChapter();
-				int oldIndex = statisticsEntity.getHardInstanceIndex();
+				int oldChapter = statisticsEntity.getHardTopChapter();
+				int oldIndex = statisticsEntity.getHardTopIndex();
 				if (oldChapter < this.curChapterId) {
-					statisticsEntity.setHardInstanceChapter(this.curChapterId);
-					statisticsEntity.setHardInstanceIndex(this.curIndex);
+					statisticsEntity.setHardTopChapter(this.curChapterId);
+					statisticsEntity.setHardTopIndex(this.curIndex);
 				} else if (oldChapter == this.curChapterId && oldIndex < this.curIndex) {
-					statisticsEntity.setHardInstanceIndex(this.curIndex);
+					statisticsEntity.setHardTopIndex(this.curIndex);
 				}
 
 				statisticsEntity.addHardCount();
@@ -368,7 +394,16 @@ public class PlayerInstanceModule extends PlayerModule {
 			statisticsEntity.notifyUpdate(true);
 		}
 
-		// TODO: 体力扣除
+		// 消耗剩余体力，向上取整
+		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class,this.curInstanceId);
+
+		int fatigueChange = (int) Math.ceil((double)passBattleCount / this.curBattleList.size() * (entryCfg.getFatigue() - 1));
+
+		if (fatigueChange > 0) {
+			ConsumeItems consumeFatigue = ConsumeItems.valueOf();
+			consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, fatigueChange);
+			consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_SETTLE, hsCode);
+		}
 
 		HSInstanceSettleRet.Builder response = HSInstanceSettleRet.newBuilder();
 		if (true == victory) {
@@ -553,6 +588,78 @@ public class PlayerInstanceModule extends PlayerModule {
 		return true;
 	}
 
+	/**
+	 * 开满星宝箱
+	 */
+	@ProtocolHandler(code = HS.code.CHAPTER_BOX_C_VALUE)
+	private boolean onInstanceBox(HawkProtocol cmd) {
+		HSChapterBox protocol = cmd.parseProtocol(HSChapterBox.getDefaultInstance());
+		int hsCode = cmd.getType();
+		int chapterId = protocol.getChapterId();
+		int difficulty = protocol.getDifficulty();
+
+		if (difficulty != GsConst.InstanceDifficulty.NORMAL_INSTANCE && difficulty != GsConst.InstanceDifficulty.HARD_INSTANCE) {
+			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+			return true;
+		}
+
+		InstanceChapterCfg chapterCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceChapterCfg.class, chapterId);
+		if (chapterCfg == null) {
+			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
+			return true;
+		}
+
+		RewardCfg rewardCfg = chapterCfg.getRewardByDifficulty(difficulty);
+		if (rewardCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_ERROR_VALUE);
+			return true;
+		}
+
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		int boxState = Const.ChapterBoxState.INVALID_VALUE;
+
+		switch (difficulty) {
+		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+			boxState = statisticsEntity.getNormalChapterBoxState(chapterId);
+			break;
+		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+			boxState = statisticsEntity.getHardChapterBoxState(chapterId);
+			break;
+		}
+
+		if (boxState == Const.ChapterBoxState.INVALID_VALUE) {
+			sendError(hsCode, Status.instanceError.CHAPTER_BOX_STAR_COUNT_VALUE);
+			return true;
+		} else if (boxState == Const.ChapterBoxState.OPEN_VALUE) {
+			sendError(hsCode, Status.instanceError.CHAPTER_BOX_ALREADY_OPEN_VALUE);
+			return true;
+		} 
+
+		boxState = Const.ChapterBoxState.OPEN_VALUE;
+
+		AwardItems awardItems = new AwardItems();
+		awardItems.addItemInfos(rewardCfg.getRewardList());
+		awardItems.rewardTakeAffectAndPush(player,  Action.CHAPTER_BOX, hsCode);
+
+		switch (difficulty) {
+		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+			statisticsEntity.setNormalChapterBoxState(chapterId, boxState);
+			break;
+		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+			statisticsEntity.setHardChapterBoxState(chapterId, boxState);
+			break;
+		}
+		statisticsEntity.notifyUpdate(true);
+
+		HSChapterBoxRet.Builder response = HSChapterBoxRet.newBuilder();
+		response.setChapterId(chapterId);
+		response.setDifficulty(difficulty);
+		response.setBoxState(boxState);
+		sendProtocol(HawkProtocol.valueOf(HS.code.CHAPTER_BOX_S, response));
+
+		return true;
+	}
+
 	// 内部函数--------------------------------------------------------------------------------------
 
 	/**
@@ -571,25 +678,25 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		switch (difficulty) {
 		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
-			topChapterId = statisticsEntity.getNormalInstanceChapter();
+			topChapterId = statisticsEntity.getNormalTopChapter();
 			if (topChapterId == 0) {
 				return false;
 			} else if (chapterId < topChapterId) {
 				return true;
 			}
 
-			topIndex = statisticsEntity.getNormalInstanceIndex();
+			topIndex = statisticsEntity.getNormalTopIndex();
 			topMaxIndex = InstanceUtil.getInstanceChapterMap().get(topChapterId).normalList.size() - 1;
 			break;
 		case GsConst.InstanceDifficulty.HARD_INSTANCE:
-			topChapterId = statisticsEntity.getHardInstanceChapter();
+			topChapterId = statisticsEntity.getHardTopChapter();
 			if (topChapterId == 0) {
 				return false;
 			} else if (chapterId < topChapterId) {
 				return true;
 			}
 
-			topIndex = statisticsEntity.getHardInstanceIndex();
+			topIndex = statisticsEntity.getHardTopIndex();
 			topMaxIndex = InstanceUtil.getInstanceChapterMap().get(topChapterId).hardList.size() - 1;
 			break;
 		default:
@@ -600,6 +707,38 @@ public class PlayerInstanceModule extends PlayerModule {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * 章节是否满星
+	 */
+	private boolean isChapterFullStar(int chapterId, int difficulty) {
+		InstanceChapter chapter = InstanceUtil.getInstanceChapter(chapterId);
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		int boxState = Const.ChapterBoxState.INVALID_VALUE;
+		List<InstanceEntryCfg> instanceList = null;
+
+		switch(difficulty) {
+		case GsConst.InstanceDifficulty.NORMAL_INSTANCE:
+			boxState = statisticsEntity.getNormalChapterBoxState(chapterId);
+			instanceList = chapter.normalList;
+			break;
+		case GsConst.InstanceDifficulty.HARD_INSTANCE:
+			boxState = statisticsEntity.getHardChapterBoxState(chapterId);
+			instanceList = chapter.hardList;
+			break;
+		default:
+			return false;
+		}
+
+		if (boxState == Const.ChapterBoxState.INVALID_VALUE) {
+			for (InstanceEntryCfg entry : instanceList) {
+				if (statisticsEntity.getInstanceStar(entry.getInstanceId()) != GsConst.MAX_INSTANCE_STAR) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -614,8 +753,8 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 必须通关前置副本、前置章节
 		// 精英副本必须通关普通章节
 		if (difficulty == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
-			int topIndex = statisticsEntity.getNormalInstanceIndex();
-			int topChapterId = statisticsEntity.getNormalInstanceChapter();
+			int topIndex = statisticsEntity.getNormalTopIndex();
+			int topChapterId = statisticsEntity.getNormalTopChapter();
 
 			if (chapterId > topChapterId + 1
 					|| (chapterId == topChapterId + 1
@@ -624,9 +763,9 @@ public class PlayerInstanceModule extends PlayerModule {
 				return false;
 			}
 		} else if (difficulty == GsConst.InstanceDifficulty.HARD_INSTANCE) {
-			int topIndex = statisticsEntity.getHardInstanceIndex();
-			int topChapterId = statisticsEntity.getHardInstanceChapter();
-			int topNormalChapterId = statisticsEntity.getNormalInstanceChapter();
+			int topIndex = statisticsEntity.getHardTopIndex();
+			int topChapterId = statisticsEntity.getHardTopChapter();
+			int topNormalChapterId = statisticsEntity.getNormalTopChapter();
 
 			if (chapterId > topNormalChapterId
 					|| (chapterId == topNormalChapterId && false == isChapterComplete(topNormalChapterId, GsConst.InstanceDifficulty.NORMAL_INSTANCE))

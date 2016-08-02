@@ -3305,6 +3305,8 @@ MonoBehaviour:
   - {fileID: 619330612}
   - {fileID: 1412019318}
   mSimulateCount: {fileID: 1073118977}
+  bureauNum: 0
+  roundNum: 0
 --- !u!114 &878011337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3822,7 +3824,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 281, y: -38.9999542}
+  m_AnchoredPosition: {x: 445.5, y: -38.9999542}
   m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0, y: .5}
 --- !u!114 &1068455475
@@ -6555,8 +6557,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: 95, y: 0}
-  m_SizeDelta: {x: 93.1999969, y: 29.7000008}
+  m_AnchoredPosition: {x: 287, y: 0}
+  m_SizeDelta: {x: 285, y: 30}
   m_Pivot: {x: 1, y: .5}
 --- !u!114 &1672951812
 MonoBehaviour:

@@ -76,7 +76,7 @@ public class HawkLog {
 		// 打印错误
 		System.err.println(msg);
 				
-		logger.error(msg);
+		debugLogger.error(msg);
 	}
 
 	/**

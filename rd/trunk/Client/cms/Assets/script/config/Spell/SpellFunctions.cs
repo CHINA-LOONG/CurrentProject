@@ -67,9 +67,25 @@ public class SpellFunctions
         return damageRatio;
     }
 
-    public static int IsEnemy(int camp)
+    public static int IsEnemy(GameUnit caster, GameUnit target)
     {
-        return (camp == (int)UnitCamp.Enemy) ? 1 : 0;
+        if (caster != null)
+        {
+            return (caster.pbUnit.camp == UnitCamp.Enemy) ? 1 : 0;
+        }
+
+        return 1;
+    }
+
+    public static int ContainsXXXBuff(GameUnit caster, GameUnit target)
+    {
+        int count = target.buffList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+
+        }
+
+        return 1;
     }
 
     public static int Default(int args)

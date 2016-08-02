@@ -33,7 +33,7 @@ g11_s2,0,1,,guide_Jihuoxiaoguai,diandiandian,,GBFireFocus,2,0,-3,0,0,100,GBInter
 g12_s1,0,1,speech_element2,,,0,GBSpeechOver,0,0,-1,0,0,0,,,,0,
 g13_s1,0,1,speech_duoruodian,,,0,GBSpeechOver,0,0,-1,0,0,0,,bossdajie14Piying5wp04,,1,
 g14_s1,0,1,speech_yincangruodian,,,0,GBSpeechOver,0,0,-1,0,0,0,,bossdajie18Ladong5wp02,,1,
-g15_s1,0,1,speech_ruodian,,,0,GBSpeechOver,0,0,-1,0,0,0,,,,0,
+g15_s1,2,1,,guide_ruodian5,bossxinshouBingxuenvwang3wp02,0,,0,2,-3,0,0,-100,,,GuideUI_fixsize,0,
 g16_s1_1,2,1,,,,0,GBReachRound,0,2.5,-1,0,0,0,,bossdajie17Huapo2wp02,,1,GuideUI_toueffect
 g16_s1_2,2,1,,guide_ruodian2,weakpoint,0,,0,2,-1,0,10,-40,,bossdajie17Huapo2wp02,GuideUI_fixsize,0,
 g16_s1_3,2,1,,,nofocus,0,GBReachRound,0,2,-3,0,0,0,,bossdajie17Huapo2wp02,,4,

@@ -315,6 +315,7 @@ public class BattleProcess : MonoBehaviour
 
     public void StartProcess(int index, BattleLevelData battleLevelData)
     {
+        BattleToolMain.Instance.bureauNum = index;//对局
         forceResult = -1;
         replaceDeadUnitCount = 0;
         hasInsertReplaceDeadUnitAction = false;
@@ -390,15 +391,14 @@ public class BattleProcess : MonoBehaviour
 				break;
             case ActionType.Dazhao:
 				//if (action.dazhaoType == DazhaoType.Phyics)
-    //            {
-    //                inDazhaoAction = true;
+                //{
+                //    inDazhaoAction = true;
 				//	PhyDazhaoController.Instance.RunActionWithDazhao(action.caster);
 				//}
 				//else if (action.dazhaoType == DazhaoType.Magic)
 				//{
 				//	MagicDazhaoController.Instance.RunActionWithDazhao(action.caster);
-				//}
-				
+				//}				
 				break;
             case ActionType.UnitReplaceDead:
                 RunReplaceDeadAction(curAction as ReplaceDeadUnitAction);
@@ -503,11 +503,77 @@ public class BattleProcess : MonoBehaviour
     //run action
     void RunUnitFightAction(BattleObject bo)
     {
-        Logger.LogFormat("[Battle.Process]Unit {0} is moving...", bo.unit.name);
+        Logger.LogFormat("[Battle.Process]Unit {0} is moving...", bo.unit.name);    
         //执行战斗
         var aiResult = BattleUnitAi.Instance.GetAiAttackResult(bo.unit);
         // Logger.LogFormat("Ai Attack style = {0} target = {1} ", aiResult.attackStyle, aiResult.attackTarget == null ? "no target--" : aiResult.attackTarget.name);
-
+        #region 暂时先不用小星的这个逻辑2015年11月6日15:21:43
+        //for (int i = 0; i < BattleToolMain.Instance.operationData.gwID.Length; i++)
+        //{
+        //    if (BattleToolMain.Instance.operationData.duijuNum[i] == BattleToolMain.Instance.bureauNum
+        //        && BattleToolMain.Instance.operationData.roundNum[i] == (round + 1))
+        //    {
+        //        for (int j = 0; j < BattleToolMain.Instance.mMainUnitList.Count; j++)
+        //        {
+        //            if (BattleToolMain.Instance.operationData.gwID[i] == BattleToolMain.Instance.mMainUnitList[j].unit.pbUnit.id
+        //                && BattleToolMain.Instance.mMainUnitList[j].unit.energy == BattleConst.enegyMax)
+        //            {
+        //                Dictionary<string, Spell> spellDic = BattleToolMain.Instance.mMainUnitList[j].unit.spellList;
+        //                Spell subSpel = null;
+        //                foreach (KeyValuePair<string, Spell> subSpellDic in spellDic)
+        //                {
+        //                    subSpel = subSpellDic.Value;
+        //                    BattleUnitAi.AiAttackStyle spellStyle = BattleUnitAi.Instance.GetAttackStyleWithSpellType(subSpel.spellData.category);
+        //                    if (BattleUnitAi.AiAttackStyle.Dazhao == spellStyle)
+        //                    {
+        //                        aiResult.useSpell = subSpel;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+        #endregion
+        if (bo.camp == UnitCamp.Player && bo.unit.energy == BattleConst.enegyMax)
+        {
+            Dictionary<string, Spell> spellDic = bo.unit.spellList;
+            Spell subSpel = null;
+            foreach (KeyValuePair<string, Spell> subSpellDic in spellDic)
+            {
+                subSpel = subSpellDic.Value;
+                BattleUnitAi.AiAttackStyle spellStyle = BattleUnitAi.Instance.GetAttackStyleWithSpellType(subSpel.spellData.category);
+                if (BattleUnitAi.AiAttackStyle.Dazhao == spellStyle)
+                {
+                    aiResult.useSpell = subSpel;
+                }
+            }
+        }
+        if (BattleToolMain.Instance.bureauNum == 2)
+        {
+            if (battleGroup.EnemyFieldList[0] != null)
+            {
+                for (int i = 0; i < BattleToolMain.Instance.operationData.weaknessName.Length; i++)//minghe13/yueguangsenlin11_1
+                {
+                    if (battleGroup.EnemyFieldList[0].wpGroup.allWpDic[BattleToolMain.Instance.operationData.weaknessName[i]].wpState != WeakpointState.Dead)
+                    {
+                        if (BattleToolMain.Instance.roundNum == round)
+                        {
+                            aiResult.attackTarget = battleGroup.EnemyFieldList[0].unit;
+                            Debug.LogError("目标" + aiResult.attackTarget.name);
+                            aiResult.attackTarget.attackWpName = BattleToolMain.Instance.operationData.weaknessName[i];
+                            Debug.LogError("弱点" + aiResult.attackTarget.attackWpName);
+                        }
+                    }
+                    else
+                    {
+                        if ((i + 1) < BattleToolMain.Instance.operationData.weaknessName.Length)
+                        {
+                            BattleToolMain.Instance.roundNum = (round + BattleToolMain.Instance.operationData.IntervalRoundNum[i + 1]);
+                        }
+                    }
+                }
+            }
+        }
         if (fireFocusTarget != null &&
             bo.camp == UnitCamp.Player)
         {

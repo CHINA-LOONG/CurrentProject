@@ -279,7 +279,10 @@ namespace PB
       USETOOLDOUBLEEXP = 2,
             
       [global::ProtoBuf.ProtoEnum(Name=@"USETOOLTRIPLEEXP", Value=3)]
-      USETOOLTRIPLEEXP = 3
+      USETOOLTRIPLEEXP = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"USETOOLFATIGUE", Value=4)]
+      USETOOLFATIGUE = 4
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"equipPart")]
@@ -400,6 +403,20 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"GUILD", Value=3)]
       GUILD = 3
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ChapterBoxState")]
+    public enum ChapterBoxState
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INVALID", Value=-1)]
+      INVALID = -1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"VALID", Value=0)]
+      VALID = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"OPEN", Value=1)]
+      OPEN = 1
     }
   
 }

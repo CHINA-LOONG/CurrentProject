@@ -2,7 +2,6 @@ package com.hawk.game.item;
 
 import java.util.List;
 
-import org.hawk.log.HawkLog;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 
@@ -10,24 +9,17 @@ import com.google.protobuf.ProtocolMessageEnum;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
-import com.hawk.game.log.BehaviorLogger;
 import com.hawk.game.log.BehaviorLogger.Action;
-import com.hawk.game.log.BehaviorLogger.Params;
 import com.hawk.game.player.Player;
-import com.hawk.game.player.PlayerData;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Const.changeType;
 import com.hawk.game.protocol.Const.itemType;
-import com.hawk.game.protocol.Const.playerAttr;
 import com.hawk.game.protocol.Consume.ConsumeItem;
 import com.hawk.game.protocol.Consume.HSConsumeInfo;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Player.SynPlayerAttr;
-import com.hawk.game.protocol.Reward.HSRewardInfo;
-import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.protocol.Status;
-import com.hawk.game.util.EquipUtil;
-import com.hawk.game.util.GsConst.PlayerItemCheckResult;
+import com.hawk.game.util.GsConst.ConsumeCheckResult;
 
 /**
  * @author hawk
@@ -234,25 +226,25 @@ public class ConsumeItems {
 		if(result > 0) {
 			if(hsCode > 0) {
 				switch (result) {
-					case PlayerItemCheckResult.COINS_NOT_ENOUGH:
+					case ConsumeCheckResult.COINS_NOT_ENOUGH:
 						player.sendError(hsCode, Status.PlayerError.COINS_NOT_ENOUGH_VALUE);
 						break;
-					case PlayerItemCheckResult.GOLD_NOT_ENOUGH:
+					case ConsumeCheckResult.GOLD_NOT_ENOUGH:
 						player.sendError(hsCode, Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
 						break;
-					case PlayerItemCheckResult.FATIGUE_NOT_ENOUGH:
+					case ConsumeCheckResult.FATIGUE_NOT_ENOUGH:
 						player.sendError(hsCode, Status.PlayerError.FATIGUE_NOT_ENOUGH_VALUE);
 						break;
-					case PlayerItemCheckResult.EQUIP_NOT_ENOUGH:
+					case ConsumeCheckResult.EQUIP_NOT_ENOUGH:
 						player.sendError(hsCode, Status.itemError.EQUIP_NOT_FOUND_VALUE);
 						break;
-					case PlayerItemCheckResult.TOOLS_NOT_ENOUGH:
+					case ConsumeCheckResult.TOOLS_NOT_ENOUGH:
 						player.sendError(hsCode, Status.itemError.ITEM_NOT_ENOUGH_VALUE);
 						break;
-					case PlayerItemCheckResult.MONSTER_NOT_ENOUGH:
+					case ConsumeCheckResult.MONSTER_NOT_ENOUGH:
 						player.sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
 						break;
-					case PlayerItemCheckResult.MONSTER_LOCKED:
+					case ConsumeCheckResult.MONSTER_LOCKED:
 						player.sendError(hsCode, Status.monsterError.MONSTER_LOCKED_VALUE);
 						break;
 					default:
@@ -274,17 +266,17 @@ public class ConsumeItems {
 			if(consumeItem.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
 				if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_COIN_VALUE) {
 					if(player.getCoin() < consumeItem.getCount()) {
-						return PlayerItemCheckResult.COINS_NOT_ENOUGH;
-					} 
+						return ConsumeCheckResult.COINS_NOT_ENOUGH;
+					}
 				}
 				else if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_GOLD_VALUE) {
 					if (player.getGold() < consumeItem.getCount()) {
-						return PlayerItemCheckResult.GOLD_NOT_ENOUGH;
+						return ConsumeCheckResult.GOLD_NOT_ENOUGH;
 					}
 				}
 				else if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_FATIGUE_VALUE) {
 					if (player.getPlayerData().getStatisticsEntity().getFatigue() < consumeItem.getCount()) {
-						return PlayerItemCheckResult.FATIGUE_NOT_ENOUGH;
+						return ConsumeCheckResult.FATIGUE_NOT_ENOUGH;
 					}
 				}
 			}
@@ -292,17 +284,17 @@ public class ConsumeItems {
 				//检测装备 
 				EquipEntity equipEntity = player.getPlayerData().getEquipById(consumeItem.getId());
 				if(equipEntity == null) {
-					return PlayerItemCheckResult.EQUIP_NOT_ENOUGH;
+					return ConsumeCheckResult.EQUIP_NOT_ENOUGH;
 				}
 			} 
 			else if(consumeItem.getType() == Const.itemType.MONSTER_VALUE) {
 				//检测装备 
 				MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity((int)consumeItem.getId());
 				if(monsterEntity == null) {
-					return PlayerItemCheckResult.MONSTER_NOT_ENOUGH;
+					return ConsumeCheckResult.MONSTER_NOT_ENOUGH;
 				}
 				else if (monsterEntity.isLocked()) {
-					return PlayerItemCheckResult.MONSTER_LOCKED;
+					return ConsumeCheckResult.MONSTER_LOCKED;
 				}
 			}
 			else if(consumeItem.getType() == Const.itemType.ITEM_VALUE) {
@@ -310,7 +302,7 @@ public class ConsumeItems {
 				String itemId = consumeItem.getItemId();
 				ItemEntity itemEntity = player.getPlayerData().getItemByItemId(itemId);
 				if(itemEntity == null || itemEntity.getCount() <= 0 || itemEntity.getCount() < consumeItem.getCount()) {
-					return PlayerItemCheckResult.TOOLS_NOT_ENOUGH;
+					return ConsumeCheckResult.TOOLS_NOT_ENOUGH;
 				}
 			}
 		}

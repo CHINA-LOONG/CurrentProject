@@ -96,7 +96,8 @@ public class SpellService : MonoBehaviour
     public void SpellRequest(string spellID, GameUnit caster, GameUnit target, float curTime, bool isFirstSpell = false)
     {
 		mCurActionSpell = null;
-        Spell curSpell = caster.GetSpell(spellID);
+        Spell curSpell;
+        curSpell = caster.GetSpell(spellID);
         if (caster.stun <= 0)
         {
             if (curSpell != null)
@@ -227,10 +228,15 @@ public class SpellService : MonoBehaviour
         return actualBuff;
     }
     //---------------------------------------------------------------------------------------------
-    public List<BattleObject> GetUnitList(int camp)
+    public List<BattleObject> GetUnitList(int camp, bool includeBack)
     {
         var group = BattleController.Instance.BattleGroup;
-        return camp == 0 ? group.PlayerFieldList : group.EnemyFieldList;
+        if (includeBack == true)
+        {
+            return camp == (int)UnitCamp.Player ? group.PlayerFieldList : group.EnemyFieldList;
+        }
+
+        return group.GetAllUnitList(camp);
     }
     //---------------------------------------------------------------------------------------------
     public GameUnit GetUnit(int unitID)
@@ -250,6 +256,11 @@ public class SpellService : MonoBehaviour
         {
             SpellFireArgs curArgs = args as SpellFireArgs;
             Logger.LogFormat("[SpellService]{0} fire spell {1}", curArgs.casterID, curArgs.spellID);
+
+            if (curArgs.casterID == BattleConst.battleSceneGuid)
+            {
+                return;
+            }
 
             //trigger motion
             BattleObject caster = ObjectDataMgr.Instance.GetBattleObject(curArgs.casterID);
@@ -299,6 +310,11 @@ public class SpellService : MonoBehaviour
         else if (eventType == GameEventList.SpellBuff)
         {
             SpellBuffArgs curArgs = args as SpellBuffArgs;
+            if (curArgs.casterID == BattleConst.battleSceneGuid)
+            {
+                return;
+            }
+
             BattleObject target = ObjectDataMgr.Instance.GetBattleObject(curArgs.targetID);
             if (curArgs.isAdd)
             {

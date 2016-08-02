@@ -10,8 +10,9 @@ public class InstanceList : UIBase
     public Button dropButton;
     public Text chaptrName;
     public Text getStartText;
-    public Image boxImage;
+    public GameObject boxButton;
     public Image closeImage;
+    public GameObject closeButton;
 
     public RectTransform rootRt;
     private Vector2 oldPosition;
@@ -29,17 +30,43 @@ public class InstanceList : UIBase
 
     private List<InstanceItem> listInstanceItemCache = new List<InstanceItem>();
 
+    PB.HSRewardInfo boxReward = null;
+
     public static void OpenWith(int chapterId)
     {
         InstanceList instanceUi = (InstanceList)UIMgr.Instance.OpenUI_(ViewName);
         instanceUi.RefreshWithChapterId(chapterId);
     }
 
+    public override void Init()
+    {
+
+    }
+    //删除界面，对子对象的清理操作
+    public override void Clean()
+    {
+        UnBindListener();
+    }
+
+    void    BindListener()
+    {
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.CHAPTER_BOX_C.GetHashCode().ToString(), OnRequestReceivBoxFinished);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.CHAPTER_BOX_S.GetHashCode().ToString(), OnRequestReceivBoxFinished);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
+    }
+
+    void    UnBindListener()
+    {
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.CHAPTER_BOX_C.GetHashCode().ToString(), OnRequestReceivBoxFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.CHAPTER_BOX_S.GetHashCode().ToString(), OnRequestReceivBoxFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
+    }
 
     bool isFirst = true;
     void FirstInit ()
     {
         EventTriggerListener.Get(dropButton.gameObject).onClick = OnDropButtonClicked;
+        EventTriggerListener.Get(boxButton).onClick = OnboxButtonClicked;
         oldPosition = rootRt.anchoredPosition;
         difficultyDropDown.onValueChanged.AddListener(OnDifficultyValueChanged);
         difficultyDropDown.options.Clear();
@@ -54,6 +81,9 @@ public class InstanceList : UIBase
             szItem[i].gameObject.SetActive(false);
         }
         EventTriggerListener.Get(closeImage.gameObject).onClick = OnClose;
+        EventTriggerListener.Get(closeButton).onClick = OnClose;
+
+        BindListener();
     }
 
     public  static  void    Close()
@@ -134,11 +164,82 @@ public class InstanceList : UIBase
             rootRt.anchoredPosition = oldPosition;
         }
 
+
+        ChapterBoxState boxState = InstanceMapService.Instance.GetChapterBoxState(chapterIndex, insDifficulty);
+        if(boxState == ChapterBoxState.CanNotReceiv && getStar == allStar)
+        {
+            //修改为可领取
+            InstanceMapService.Instance.SetChapterBoxState(chapterIndex, insDifficulty,ChapterBoxState.CanReceiv);
+            boxState = ChapterBoxState.CanReceiv;
+        }
+        boxButton.gameObject.SetActive(boxState != ChapterBoxState.HasReceiv);
     }
 
     private void    OnDropButtonClicked(GameObject go)
     {
+        Chapter chapter = StaticDataMgr.Instance.GetChapterData(chapterIndex);
+        if (null != chapter)
+        {
+            string dropId = chapter.normalDrop;
+            if(insDifficulty == InstanceDifficulty.Hard)
+            {
+                dropId = chapter.hardDrop;
+            }
+            DropInfo.OpenWith(dropId);
+        }
+      
+    }
 
+    private void OnboxButtonClicked(GameObject go)
+    {
+        ChapterBoxState boxState = InstanceMapService.Instance.GetChapterBoxState(chapterIndex, insDifficulty);
+
+        if(boxState == ChapterBoxState.CanReceiv)
+        {
+            RequestReceivBox();
+            return;
+        }
+        else if (boxState == ChapterBoxState.CanNotReceiv)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_reward_001"), (int)PB.ImType.PROMPT);
+        }
+    }
+
+    void RequestReceivBox()
+    {
+        PB.HSChapterBox param = new PB.HSChapterBox();
+        param.chapterId = chapterIndex;
+        param.difficulty = (int)insDifficulty;
+
+        GameApp.Instance.netManager.SendMessage(PB.code.CHAPTER_BOX_C.GetHashCode(), param);
+    }
+
+    void    OnRequestReceivBoxFinished(ProtocolMessage message)
+    {
+        UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode error = message.GetProtocolBody<PB.HSErrorCode>();
+          //  Logger.LogError("RequestShopData Error errorCode: " + error.errCode);
+            return;
+        }
+        PB.HSChapterBoxRet msgRet = message.GetProtocolBody<PB.HSChapterBoxRet>();
+        InstanceMapService.Instance.SetChapterBoxState(chapterIndex, insDifficulty, ChapterBoxState.HasReceiv);
+        if (boxReward!=null)
+        {
+            List<PB.HSRewardInfo> listReward = new List<PB.HSRewardInfo>();
+            listReward.Add(boxReward);
+            OpenBaoxiangResult.OpenWith(listReward);
+        }
+    }
+
+    void OnReward(ProtocolMessage message )
+    {
+        boxReward = null;
+        PB.HSRewardInfo reward = message.GetProtocolBody<PB.HSRewardInfo>();
+        if (reward == null || reward.hsCode != PB.code.CHAPTER_BOX_C.GetHashCode())
+            return;
+        boxReward = reward;
     }
 
     private void OnDifficultyValueChanged(int index)

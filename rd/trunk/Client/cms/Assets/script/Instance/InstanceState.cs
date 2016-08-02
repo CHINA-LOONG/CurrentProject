@@ -47,5 +47,10 @@ public class InstanceState : MonoBehaviour
 
 			InstanceMapService.Instance.RefreshInstanceMap(this);
 		}
+
+        if(statisticsInfo.chapterState != null)
+        {
+            InstanceMapService.Instance.chapterState = statisticsInfo.chapterState;
+        }
 	}
 }

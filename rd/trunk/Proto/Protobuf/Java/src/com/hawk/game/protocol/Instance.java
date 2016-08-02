@@ -3678,15 +3678,15 @@ public final class Instance {
   public interface HSInstanceSettleOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required bool victory = 1;
+    // required int32 passBattleCount = 1;
     /**
-     * <code>required bool victory = 1;</code>
+     * <code>required int32 passBattleCount = 1;</code>
      */
-    boolean hasVictory();
+    boolean hasPassBattleCount();
     /**
-     * <code>required bool victory = 1;</code>
+     * <code>required int32 passBattleCount = 1;</code>
      */
-    boolean getVictory();
+    int getPassBattleCount();
   }
   /**
    * Protobuf type {@code HSInstanceSettle}
@@ -3745,7 +3745,7 @@ public final class Instance {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              victory_ = input.readBool();
+              passBattleCount_ = input.readInt32();
               break;
             }
           }
@@ -3788,31 +3788,31 @@ public final class Instance {
     }
 
     private int bitField0_;
-    // required bool victory = 1;
-    public static final int VICTORY_FIELD_NUMBER = 1;
-    private boolean victory_;
+    // required int32 passBattleCount = 1;
+    public static final int PASSBATTLECOUNT_FIELD_NUMBER = 1;
+    private int passBattleCount_;
     /**
-     * <code>required bool victory = 1;</code>
+     * <code>required int32 passBattleCount = 1;</code>
      */
-    public boolean hasVictory() {
+    public boolean hasPassBattleCount() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required bool victory = 1;</code>
+     * <code>required int32 passBattleCount = 1;</code>
      */
-    public boolean getVictory() {
-      return victory_;
+    public int getPassBattleCount() {
+      return passBattleCount_;
     }
 
     private void initFields() {
-      victory_ = false;
+      passBattleCount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasVictory()) {
+      if (!hasPassBattleCount()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3824,7 +3824,7 @@ public final class Instance {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBool(1, victory_);
+        output.writeInt32(1, passBattleCount_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3837,7 +3837,7 @@ public final class Instance {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, victory_);
+          .computeInt32Size(1, passBattleCount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3959,7 +3959,7 @@ public final class Instance {
 
       public Builder clear() {
         super.clear();
-        victory_ = false;
+        passBattleCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
@@ -3992,7 +3992,7 @@ public final class Instance {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.victory_ = victory_;
+        result.passBattleCount_ = passBattleCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4009,15 +4009,15 @@ public final class Instance {
 
       public Builder mergeFrom(com.hawk.game.protocol.Instance.HSInstanceSettle other) {
         if (other == com.hawk.game.protocol.Instance.HSInstanceSettle.getDefaultInstance()) return this;
-        if (other.hasVictory()) {
-          setVictory(other.getVictory());
+        if (other.hasPassBattleCount()) {
+          setPassBattleCount(other.getPassBattleCount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasVictory()) {
+        if (!hasPassBattleCount()) {
           
           return false;
         }
@@ -4043,35 +4043,35 @@ public final class Instance {
       }
       private int bitField0_;
 
-      // required bool victory = 1;
-      private boolean victory_ ;
+      // required int32 passBattleCount = 1;
+      private int passBattleCount_ ;
       /**
-       * <code>required bool victory = 1;</code>
+       * <code>required int32 passBattleCount = 1;</code>
        */
-      public boolean hasVictory() {
+      public boolean hasPassBattleCount() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required bool victory = 1;</code>
+       * <code>required int32 passBattleCount = 1;</code>
        */
-      public boolean getVictory() {
-        return victory_;
+      public int getPassBattleCount() {
+        return passBattleCount_;
       }
       /**
-       * <code>required bool victory = 1;</code>
+       * <code>required int32 passBattleCount = 1;</code>
        */
-      public Builder setVictory(boolean value) {
+      public Builder setPassBattleCount(int value) {
         bitField0_ |= 0x00000001;
-        victory_ = value;
+        passBattleCount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required bool victory = 1;</code>
+       * <code>required int32 passBattleCount = 1;</code>
        */
-      public Builder clearVictory() {
+      public Builder clearPassBattleCount() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        victory_ = false;
+        passBattleCount_ = 0;
         onChanged();
         return this;
       }
@@ -7705,6 +7705,1097 @@ public final class Instance {
     // @@protoc_insertion_point(class_scope:HSInstanceReviveRet)
   }
 
+  public interface HSChapterBoxOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 chapterId = 1;
+    /**
+     * <code>required int32 chapterId = 1;</code>
+     */
+    boolean hasChapterId();
+    /**
+     * <code>required int32 chapterId = 1;</code>
+     */
+    int getChapterId();
+
+    // required int32 difficulty = 2;
+    /**
+     * <code>required int32 difficulty = 2;</code>
+     */
+    boolean hasDifficulty();
+    /**
+     * <code>required int32 difficulty = 2;</code>
+     */
+    int getDifficulty();
+  }
+  /**
+   * Protobuf type {@code HSChapterBox}
+   *
+   * <pre>
+   * CHAPTER_BOX_C
+   * </pre>
+   */
+  public static final class HSChapterBox extends
+      com.google.protobuf.GeneratedMessage
+      implements HSChapterBoxOrBuilder {
+    // Use HSChapterBox.newBuilder() to construct.
+    private HSChapterBox(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSChapterBox(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSChapterBox defaultInstance;
+    public static HSChapterBox getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSChapterBox getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSChapterBox(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              chapterId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              difficulty_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Instance.internal_static_HSChapterBox_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Instance.internal_static_HSChapterBox_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Instance.HSChapterBox.class, com.hawk.game.protocol.Instance.HSChapterBox.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSChapterBox> PARSER =
+        new com.google.protobuf.AbstractParser<HSChapterBox>() {
+      public HSChapterBox parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSChapterBox(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSChapterBox> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 chapterId = 1;
+    public static final int CHAPTERID_FIELD_NUMBER = 1;
+    private int chapterId_;
+    /**
+     * <code>required int32 chapterId = 1;</code>
+     */
+    public boolean hasChapterId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 chapterId = 1;</code>
+     */
+    public int getChapterId() {
+      return chapterId_;
+    }
+
+    // required int32 difficulty = 2;
+    public static final int DIFFICULTY_FIELD_NUMBER = 2;
+    private int difficulty_;
+    /**
+     * <code>required int32 difficulty = 2;</code>
+     */
+    public boolean hasDifficulty() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 difficulty = 2;</code>
+     */
+    public int getDifficulty() {
+      return difficulty_;
+    }
+
+    private void initFields() {
+      chapterId_ = 0;
+      difficulty_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasChapterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDifficulty()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, chapterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, difficulty_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, chapterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, difficulty_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Instance.HSChapterBox parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBox parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBox parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBox parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBox parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBox parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBox parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBox parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBox parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBox parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Instance.HSChapterBox prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSChapterBox}
+     *
+     * <pre>
+     * CHAPTER_BOX_C
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Instance.HSChapterBoxOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Instance.internal_static_HSChapterBox_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Instance.internal_static_HSChapterBox_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Instance.HSChapterBox.class, com.hawk.game.protocol.Instance.HSChapterBox.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Instance.HSChapterBox.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        chapterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        difficulty_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Instance.internal_static_HSChapterBox_descriptor;
+      }
+
+      public com.hawk.game.protocol.Instance.HSChapterBox getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Instance.HSChapterBox.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Instance.HSChapterBox build() {
+        com.hawk.game.protocol.Instance.HSChapterBox result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Instance.HSChapterBox buildPartial() {
+        com.hawk.game.protocol.Instance.HSChapterBox result = new com.hawk.game.protocol.Instance.HSChapterBox(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.chapterId_ = chapterId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.difficulty_ = difficulty_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Instance.HSChapterBox) {
+          return mergeFrom((com.hawk.game.protocol.Instance.HSChapterBox)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Instance.HSChapterBox other) {
+        if (other == com.hawk.game.protocol.Instance.HSChapterBox.getDefaultInstance()) return this;
+        if (other.hasChapterId()) {
+          setChapterId(other.getChapterId());
+        }
+        if (other.hasDifficulty()) {
+          setDifficulty(other.getDifficulty());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasChapterId()) {
+          
+          return false;
+        }
+        if (!hasDifficulty()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Instance.HSChapterBox parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Instance.HSChapterBox) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 chapterId = 1;
+      private int chapterId_ ;
+      /**
+       * <code>required int32 chapterId = 1;</code>
+       */
+      public boolean hasChapterId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 chapterId = 1;</code>
+       */
+      public int getChapterId() {
+        return chapterId_;
+      }
+      /**
+       * <code>required int32 chapterId = 1;</code>
+       */
+      public Builder setChapterId(int value) {
+        bitField0_ |= 0x00000001;
+        chapterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 chapterId = 1;</code>
+       */
+      public Builder clearChapterId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        chapterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 difficulty = 2;
+      private int difficulty_ ;
+      /**
+       * <code>required int32 difficulty = 2;</code>
+       */
+      public boolean hasDifficulty() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 difficulty = 2;</code>
+       */
+      public int getDifficulty() {
+        return difficulty_;
+      }
+      /**
+       * <code>required int32 difficulty = 2;</code>
+       */
+      public Builder setDifficulty(int value) {
+        bitField0_ |= 0x00000002;
+        difficulty_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 difficulty = 2;</code>
+       */
+      public Builder clearDifficulty() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        difficulty_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSChapterBox)
+    }
+
+    static {
+      defaultInstance = new HSChapterBox(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSChapterBox)
+  }
+
+  public interface HSChapterBoxRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 chapterId = 1;
+    /**
+     * <code>required int32 chapterId = 1;</code>
+     */
+    boolean hasChapterId();
+    /**
+     * <code>required int32 chapterId = 1;</code>
+     */
+    int getChapterId();
+
+    // required int32 difficulty = 2;
+    /**
+     * <code>required int32 difficulty = 2;</code>
+     */
+    boolean hasDifficulty();
+    /**
+     * <code>required int32 difficulty = 2;</code>
+     */
+    int getDifficulty();
+
+    // required int32 boxState = 3;
+    /**
+     * <code>required int32 boxState = 3;</code>
+     */
+    boolean hasBoxState();
+    /**
+     * <code>required int32 boxState = 3;</code>
+     */
+    int getBoxState();
+  }
+  /**
+   * Protobuf type {@code HSChapterBoxRet}
+   *
+   * <pre>
+   * CHAPTER_BOX_S
+   * </pre>
+   */
+  public static final class HSChapterBoxRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSChapterBoxRetOrBuilder {
+    // Use HSChapterBoxRet.newBuilder() to construct.
+    private HSChapterBoxRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSChapterBoxRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSChapterBoxRet defaultInstance;
+    public static HSChapterBoxRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSChapterBoxRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSChapterBoxRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              chapterId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              difficulty_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              boxState_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Instance.internal_static_HSChapterBoxRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Instance.internal_static_HSChapterBoxRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Instance.HSChapterBoxRet.class, com.hawk.game.protocol.Instance.HSChapterBoxRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSChapterBoxRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSChapterBoxRet>() {
+      public HSChapterBoxRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSChapterBoxRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSChapterBoxRet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 chapterId = 1;
+    public static final int CHAPTERID_FIELD_NUMBER = 1;
+    private int chapterId_;
+    /**
+     * <code>required int32 chapterId = 1;</code>
+     */
+    public boolean hasChapterId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 chapterId = 1;</code>
+     */
+    public int getChapterId() {
+      return chapterId_;
+    }
+
+    // required int32 difficulty = 2;
+    public static final int DIFFICULTY_FIELD_NUMBER = 2;
+    private int difficulty_;
+    /**
+     * <code>required int32 difficulty = 2;</code>
+     */
+    public boolean hasDifficulty() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 difficulty = 2;</code>
+     */
+    public int getDifficulty() {
+      return difficulty_;
+    }
+
+    // required int32 boxState = 3;
+    public static final int BOXSTATE_FIELD_NUMBER = 3;
+    private int boxState_;
+    /**
+     * <code>required int32 boxState = 3;</code>
+     */
+    public boolean hasBoxState() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 boxState = 3;</code>
+     */
+    public int getBoxState() {
+      return boxState_;
+    }
+
+    private void initFields() {
+      chapterId_ = 0;
+      difficulty_ = 0;
+      boxState_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasChapterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDifficulty()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasBoxState()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, chapterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, difficulty_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, boxState_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, chapterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, difficulty_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, boxState_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Instance.HSChapterBoxRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBoxRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBoxRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBoxRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBoxRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBoxRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBoxRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBoxRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBoxRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Instance.HSChapterBoxRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Instance.HSChapterBoxRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSChapterBoxRet}
+     *
+     * <pre>
+     * CHAPTER_BOX_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Instance.HSChapterBoxRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Instance.internal_static_HSChapterBoxRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Instance.internal_static_HSChapterBoxRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Instance.HSChapterBoxRet.class, com.hawk.game.protocol.Instance.HSChapterBoxRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Instance.HSChapterBoxRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        chapterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        difficulty_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        boxState_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Instance.internal_static_HSChapterBoxRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Instance.HSChapterBoxRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Instance.HSChapterBoxRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Instance.HSChapterBoxRet build() {
+        com.hawk.game.protocol.Instance.HSChapterBoxRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Instance.HSChapterBoxRet buildPartial() {
+        com.hawk.game.protocol.Instance.HSChapterBoxRet result = new com.hawk.game.protocol.Instance.HSChapterBoxRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.chapterId_ = chapterId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.difficulty_ = difficulty_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.boxState_ = boxState_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Instance.HSChapterBoxRet) {
+          return mergeFrom((com.hawk.game.protocol.Instance.HSChapterBoxRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Instance.HSChapterBoxRet other) {
+        if (other == com.hawk.game.protocol.Instance.HSChapterBoxRet.getDefaultInstance()) return this;
+        if (other.hasChapterId()) {
+          setChapterId(other.getChapterId());
+        }
+        if (other.hasDifficulty()) {
+          setDifficulty(other.getDifficulty());
+        }
+        if (other.hasBoxState()) {
+          setBoxState(other.getBoxState());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasChapterId()) {
+          
+          return false;
+        }
+        if (!hasDifficulty()) {
+          
+          return false;
+        }
+        if (!hasBoxState()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Instance.HSChapterBoxRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Instance.HSChapterBoxRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 chapterId = 1;
+      private int chapterId_ ;
+      /**
+       * <code>required int32 chapterId = 1;</code>
+       */
+      public boolean hasChapterId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 chapterId = 1;</code>
+       */
+      public int getChapterId() {
+        return chapterId_;
+      }
+      /**
+       * <code>required int32 chapterId = 1;</code>
+       */
+      public Builder setChapterId(int value) {
+        bitField0_ |= 0x00000001;
+        chapterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 chapterId = 1;</code>
+       */
+      public Builder clearChapterId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        chapterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 difficulty = 2;
+      private int difficulty_ ;
+      /**
+       * <code>required int32 difficulty = 2;</code>
+       */
+      public boolean hasDifficulty() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 difficulty = 2;</code>
+       */
+      public int getDifficulty() {
+        return difficulty_;
+      }
+      /**
+       * <code>required int32 difficulty = 2;</code>
+       */
+      public Builder setDifficulty(int value) {
+        bitField0_ |= 0x00000002;
+        difficulty_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 difficulty = 2;</code>
+       */
+      public Builder clearDifficulty() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        difficulty_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 boxState = 3;
+      private int boxState_ ;
+      /**
+       * <code>required int32 boxState = 3;</code>
+       */
+      public boolean hasBoxState() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 boxState = 3;</code>
+       */
+      public int getBoxState() {
+        return boxState_;
+      }
+      /**
+       * <code>required int32 boxState = 3;</code>
+       */
+      public Builder setBoxState(int value) {
+        bitField0_ |= 0x00000004;
+        boxState_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 boxState = 3;</code>
+       */
+      public Builder clearBoxState() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        boxState_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSChapterBoxRet)
+    }
+
+    static {
+      defaultInstance = new HSChapterBoxRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSChapterBoxRet)
+  }
+
   public interface HSInstanceAssistOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
   }
@@ -9506,6 +10597,16 @@ public final class Instance {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSInstanceReviveRet_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSChapterBox_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSChapterBox_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSChapterBoxRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSChapterBoxRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSInstanceAssist_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -9546,21 +10647,24 @@ public final class Instance {
       "nceEnter\022\022\n\ninstanceId\030\001 \002(\t\022\027\n\017battleMo",
       "nsterId\030\002 \003(\005\022\020\n\010friendId\030\003 \001(\005\"C\n\022HSIns" +
       "tanceEnterRet\022\022\n\ninstanceId\030\001 \002(\t\022\031\n\006bat" +
-      "tle\030\002 \003(\0132\t.HSBattle\"#\n\020HSInstanceSettle" +
-      "\022\017\n\007victory\030\001 \002(\010\"J\n\023HSInstanceSettleRet" +
-      "\022\024\n\tstarCount\030\001 \001(\005:\0010\022\035\n\006reward\030\002 \001(\0132\r" +
-      ".HSRewardInfo\"4\n\017HSInstanceSweep\022\022\n\ninst" +
-      "anceId\030\001 \002(\t\022\r\n\005count\030\002 \002(\005\"_\n\022HSInstanc" +
-      "eSweepRet\022%\n\016completeReward\030\001 \003(\0132\r.HSRe" +
-      "wardInfo\022\"\n\013sweepReward\030\003 \001(\0132\r.HSReward" +
-      "Info\"*\n\024HSInstanceResetCount\022\022\n\ninstance",
-      "Id\030\001 \002(\t\"\031\n\027HSInstanceResetCountRet\"\022\n\020H" +
-      "SInstanceRevive\"*\n\023HSInstanceReviveRet\022\023" +
-      "\n\013reviveCount\030\001 \002(\005\"\022\n\020HSInstanceAssist\"" +
-      "0\n\023HSInstanceAssistRet\022\031\n\006assist\030\001 \003(\0132\t" +
-      ".HSAssist\"\'\n\022HSInstanceOpenCard\022\021\n\topenC" +
-      "ount\030\001 \002(\005\"\027\n\025HSInstanceOpenCardRetB\030\n\026c" +
-      "om.hawk.game.protocol"
+      "tle\030\002 \003(\0132\t.HSBattle\"+\n\020HSInstanceSettle" +
+      "\022\027\n\017passBattleCount\030\001 \002(\005\"J\n\023HSInstanceS" +
+      "ettleRet\022\024\n\tstarCount\030\001 \001(\005:\0010\022\035\n\006reward" +
+      "\030\002 \001(\0132\r.HSRewardInfo\"4\n\017HSInstanceSweep" +
+      "\022\022\n\ninstanceId\030\001 \002(\t\022\r\n\005count\030\002 \002(\005\"_\n\022H" +
+      "SInstanceSweepRet\022%\n\016completeReward\030\001 \003(" +
+      "\0132\r.HSRewardInfo\022\"\n\013sweepReward\030\003 \001(\0132\r." +
+      "HSRewardInfo\"*\n\024HSInstanceResetCount\022\022\n\n",
+      "instanceId\030\001 \002(\t\"\031\n\027HSInstanceResetCount" +
+      "Ret\"\022\n\020HSInstanceRevive\"*\n\023HSInstanceRev" +
+      "iveRet\022\023\n\013reviveCount\030\001 \002(\005\"5\n\014HSChapter" +
+      "Box\022\021\n\tchapterId\030\001 \002(\005\022\022\n\ndifficulty\030\002 \002" +
+      "(\005\"J\n\017HSChapterBoxRet\022\021\n\tchapterId\030\001 \002(\005" +
+      "\022\022\n\ndifficulty\030\002 \002(\005\022\020\n\010boxState\030\003 \002(\005\"\022" +
+      "\n\020HSInstanceAssist\"0\n\023HSInstanceAssistRe" +
+      "t\022\031\n\006assist\030\001 \003(\0132\t.HSAssist\"\'\n\022HSInstan" +
+      "ceOpenCard\022\021\n\topenCount\030\001 \002(\005\"\027\n\025HSInsta" +
+      "nceOpenCardRetB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9596,7 +10700,7 @@ public final class Instance {
           internal_static_HSInstanceSettle_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceSettle_descriptor,
-              new java.lang.String[] { "Victory", });
+              new java.lang.String[] { "PassBattleCount", });
           internal_static_HSInstanceSettleRet_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_HSInstanceSettleRet_fieldAccessorTable = new
@@ -9639,26 +10743,38 @@ public final class Instance {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceReviveRet_descriptor,
               new java.lang.String[] { "ReviveCount", });
-          internal_static_HSInstanceAssist_descriptor =
+          internal_static_HSChapterBox_descriptor =
             getDescriptor().getMessageTypes().get(12);
+          internal_static_HSChapterBox_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSChapterBox_descriptor,
+              new java.lang.String[] { "ChapterId", "Difficulty", });
+          internal_static_HSChapterBoxRet_descriptor =
+            getDescriptor().getMessageTypes().get(13);
+          internal_static_HSChapterBoxRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSChapterBoxRet_descriptor,
+              new java.lang.String[] { "ChapterId", "Difficulty", "BoxState", });
+          internal_static_HSInstanceAssist_descriptor =
+            getDescriptor().getMessageTypes().get(14);
           internal_static_HSInstanceAssist_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceAssist_descriptor,
               new java.lang.String[] { });
           internal_static_HSInstanceAssistRet_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_HSInstanceAssistRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceAssistRet_descriptor,
               new java.lang.String[] { "Assist", });
           internal_static_HSInstanceOpenCard_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_HSInstanceOpenCard_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceOpenCard_descriptor,
               new java.lang.String[] { "OpenCount", });
           internal_static_HSInstanceOpenCardRet_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_HSInstanceOpenCardRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceOpenCardRet_descriptor,

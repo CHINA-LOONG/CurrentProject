@@ -240,7 +240,13 @@ namespace PB
       INSTANCE_FATIGUE = 393220,
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_REVIVE_COUNT", Value=393221)]
-      INSTANCE_REVIVE_COUNT = 393221
+      INSTANCE_REVIVE_COUNT = 393221,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_STAR_COUNT", Value=393222)]
+      CHAPTER_BOX_STAR_COUNT = 393222,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_ALREADY_OPEN", Value=393223)]
+      CHAPTER_BOX_ALREADY_OPEN = 393223
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailError")]

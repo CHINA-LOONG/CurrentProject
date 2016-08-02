@@ -281,3 +281,14 @@ enum ImChannel
 	// 公会
 	GUILD = 3;
 }
+
+// 章节宝箱状态
+enum ChapterBoxState
+{
+	// 不能领取
+	INVALID = -1;
+	// 可领取
+	VALID = 0;
+	// 已领取
+	OPEN = 1;
+}

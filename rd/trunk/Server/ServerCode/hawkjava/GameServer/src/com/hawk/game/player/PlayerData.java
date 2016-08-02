@@ -101,8 +101,6 @@ public class PlayerData {
 	 * 角色商城数据
 	 */
 	private ShopEntity shopEntity = null;
-
-	private HawkProtocol tempProtocol = null;
 	
 	/**
 	 * 公会基本信息
@@ -753,7 +751,7 @@ public class PlayerData {
 	}
 	
 	/**
-	 * 同步经验次数信息
+	 * 刷新商店数据
 	 */
 	public void syncStaticticsShopRefreshInfo(int shopType) {
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SHOP_REFRESH_VALUE, BuilderUtil.genStaticsticsShopRefreshBuilder(shopType)));
@@ -791,19 +789,6 @@ public class PlayerData {
 
 		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.MONSTER_INFO_SYNC_S, builder);
 		player.sendProtocol(protocol);
-		
-		if (tempProtocol == null) {
-			tempProtocol = protocol;
-		}
-		else
-		{
-			//HawkLog.debugPrintln(protocol.toString());
-			
-			if (!protocol.toString().equals(tempProtocol.toString())) {
-				HawkLog.debugPrintln(protocol.toString());
-				HawkLog.debugPrintln(tempProtocol.toString());
-			}
-		}
 	}
 
 	/**

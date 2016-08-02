@@ -16,6 +16,7 @@ public enum BattleType
 public class BattleController : MonoBehaviour
 {
     public static float floorHeight = 0.0f;
+    public string instanceSpell;
     int curProcessIndex = 0;
     int maxProcessIndex = 0;
     int battleStartID = BattleConst.enemyStartID;
@@ -301,6 +302,34 @@ public class BattleController : MonoBehaviour
             sceneRoot = gameObject;
         }
         curBattleScene = ObjectDataMgr.Instance.AddSceneObject(BattleConst.battleSceneGuid, sceneRoot);
+        
+        //init scene spell if there has
+        InstanceEntry entryData = StaticDataMgr.Instance.GetInstanceEntry(instanceData.instanceProtoData.id);
+        if (entryData != null && string.IsNullOrEmpty(entryData.instanceSpell) == false)
+        {
+            curBattleScene.unit.spellList = new Dictionary<string, Spell>();
+            instanceSpell = entryData.instanceSpell;
+            SpellProtoType spellPt = StaticDataMgr.Instance.GetSpellProtoData(instanceSpell);
+            if (spellPt != null)
+            {
+                if (
+                    spellPt.category == (int)SpellType.Spell_Type_Defense ||
+                    spellPt.category == (int)SpellType.Spell_Type_Passive ||
+                    spellPt.category == (int)SpellType.Spell_Type_Beneficial ||
+                    spellPt.category == (int)SpellType.Spell_Type_Negative ||
+                    spellPt.category == (int)SpellType.Spell_Type_Lazy ||
+                    spellPt.category == (int)SpellType.Spell_Type_PrepareDazhao ||
+                    spellPt.category == (int)SpellType.Spell_Type_Hot
+                    )
+                {
+                    curBattleScene.unit.spellList.Add(instanceSpell, new Spell(spellPt, 1));
+                }
+                else
+                {
+                    curBattleScene.unit.spellList.Add(instanceSpell, new Spell(spellPt, instanceData.instanceProtoData.level));
+                }
+            }
+        }
 
         GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
         battleGroup.SetPlayerList();
@@ -794,7 +823,7 @@ public class BattleController : MonoBehaviour
         process.HideFireFocus();
 
         PB.HSInstanceSettle instanceParam = new PB.HSInstanceSettle();
-        instanceParam.victory = isSuccess;
+        instanceParam.passBattleCount = isSuccess ? 3 : curProcessIndex;
         GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SETTLE_C.GetHashCode(), instanceParam, false);
     } 
     //---------------------------------------------------------------------------------------------

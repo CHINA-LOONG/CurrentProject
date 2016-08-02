@@ -64,10 +64,10 @@ public class GameUnit : IComparable
     public string closeUp;
     //掉落金币
     //public int goldNoteMin;
-  //  public int goldNoteMax;
+    //public int goldNoteMax;
     //掉落经验
-  //  public int expMin;
-  //  public int expMax;
+    //public int expMin;
+    //public int expMax;
     //public int outputExp;//被吃掉产出
     public int currentExp;//当前经验值
 

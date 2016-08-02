@@ -74,7 +74,10 @@ public class UIVitalChangeView : MonoBehaviour
             args.vitalType == (int)VitalType.Vital_Type_FirstSpell ||
             args.vitalType == (int)VitalType.Vital_Type_Absorbed ||
             args.vitalType == (int)VitalType.Vital_Type_Stun ||
-            args.vitalType == (int)VitalType.Vital_Type_Immune
+            args.vitalType == (int)VitalType.Vital_Type_Immune ||
+            args.vitalType == (int)VitalType.Vital_Type_NoHeal ||
+            args.vitalType == (int)VitalType.Vital_Type_PhyImmune ||
+            args.vitalType == (int)VitalType.Vital_Type_MagicImmune
             )
         {
             string textID;
@@ -89,6 +92,18 @@ public class UIVitalChangeView : MonoBehaviour
             else if (args.vitalType == (int)VitalType.Vital_Type_Immune)
             {
                 textID = "spell_hit_immune";
+            }
+            else if(args.vitalType == (int)VitalType.Vital_Type_NoHeal)
+            {
+                textID = "spell_hit_noheal";
+            }
+            else if (args.vitalType == (int)VitalType.Vital_Type_PhyImmune)
+            {
+                textID = "spell_hit_physicalImmune";
+            }
+            else if (args.vitalType == (int)VitalType.Vital_Type_MagicImmune)
+            {
+                textID = "spell_hit_magicImmune";
             }
             else 
             {
