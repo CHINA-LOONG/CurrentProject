@@ -73,7 +73,7 @@ public class InstanceInfo : MonoBehaviour
 		PlayerData pData = GameDataMgr.Instance.PlayerDataAttr;
 
 		PlayerLevelAttr levelAttr = StaticDataMgr.Instance.GetPlayerLevelAttr (pData.LevelAttr);
-		fatigueUi.fatigueText.text = pData.fatigue.ToString () + "/" + levelAttr.fatigue.ToString ();
+		fatigueUi.fatigueText.text = pData.HuoliAttr.ToString () + "/" + levelAttr.fatigue.ToString ();
 	}
 
 	void	SetEnemy(InstanceEntry entryData)

@@ -322,7 +322,7 @@ public class InstanceMapService : MonoBehaviour
 
         if(chapter <= stateList.Count)
         {
-            stateList[chapter-1] = (int)ChapterBoxState.CanReceiv;
+            stateList[chapter - 1] = (int)state;
         }
         else
         {

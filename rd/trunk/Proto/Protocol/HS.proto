@@ -105,7 +105,9 @@ enum code
 	ITEM_COMPOSE_S              = 4012;
 	GEM_COMPOSE_C               = 4013;
 	GEM_COMPOSE_S               = 4014;
-
+	ITEM_BUY_AND_USE_C          = 4015;
+	ITEM_BUY_AND_USE_S          = 4016;
+	
 	EQUIP_SELL_C                = 4101;
 	EQUIP_SELL_S                = 4102;
 	EQUIP_BUY_C                 = 4103;

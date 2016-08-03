@@ -334,13 +334,15 @@ public class GsApp extends HawkApp {
 		while (iterator.hasNext()) {
 			 HawkObjBase<HawkXID, HawkAppObj> objBase = iterator.next().getValue();
 			 Player player = (Player)objBase.getImpl();
-			 if (player.isOnline() == false && objBase.getVisitTime() + 60000 < currentTime) {
+			 if (player.isOnline() == false && objBase.getVisitTime() + 600000 < currentTime) {
 				iterator.remove();
 				removeCount++;
 			}
 		}
 		
 		HawkLog.debugPrintln(String.format("移除对象个数 %d", removeCount));
+		
+		System.gc();
 	}
 	
 	/**
@@ -403,7 +405,6 @@ public class GsApp extends HawkApp {
 	@Override
 	public boolean onSessionProtocol(HawkSession session, HawkProtocol protocol) {
 		// 协议解密
-		
 		protocol = ProtoUtil.decryptionProtocol(session, protocol);
 		if (protocol == null) {
 			return false;

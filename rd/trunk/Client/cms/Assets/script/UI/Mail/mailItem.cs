@@ -17,10 +17,10 @@ public class mailItem : MonoBehaviour
 
     void Start()
     {
-        OnLanguageChanged();
+        textSend.text = StaticDataMgr.Instance.GetTextByID("mail_laizi");
     }
 
-    public void SetMailItem(PB.HSMail info)
+    public void ReloadData(PB.HSMail info)
     {
         this.info = info;
         string iconName = info.reward.Count > 0 ? "youxiang_baoguo" : "youxiang_youjian";
@@ -36,10 +36,6 @@ public class mailItem : MonoBehaviour
     {
         imgIsNew.gameObject.SetActive(info.state == (int)PB.mailState.UNREAD);
     }
-
-    void OnLanguageChanged()
-    {
-        textSend.text = StaticDataMgr.Instance.GetTextByID("mail_laizi");
-    }
+   
 
 }

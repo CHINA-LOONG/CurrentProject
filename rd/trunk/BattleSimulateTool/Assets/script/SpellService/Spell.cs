@@ -83,26 +83,26 @@ public class Spell
         }
 
         //take energy if needed
-        //if (caster.energy < spellData.energyCost)
-        //{
-        //    Logger.LogWarning("Energy not enough!");
-        //    return;
-        //}
-        //if (spellData.energyCost > 0)
-        //{
-        //    SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
-        //    energyArgs.triggerTime = triggerTime;
-        //    energyArgs.casterID = casterID;
-        //    energyArgs.vitalChange = spellData.energyCost * -1;//minus
-        //    caster.energy = caster.energy - spellData.energyCost;
-        //    if (caster.energy <= 0)
-        //    {
-        //        caster.energy = 0;
-        //    }
-        //    energyArgs.vitalCurrent = caster.energy;
-        //    energyArgs.vitalMax = 0;
-        //    spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
-        //}
+        if (caster.energy < spellData.energyCost)
+        {
+            Logger.LogWarning("Energy not enough!");
+            return;
+        }
+        if (spellData.energyCost > 0)
+        {
+            SpellVitalChangeArgs energyArgs = new SpellVitalChangeArgs();
+            energyArgs.triggerTime = triggerTime;
+            energyArgs.casterID = casterID;
+            energyArgs.vitalChange = spellData.energyCost * -1;//minus
+            caster.energy = 0;// caster.energy - spellData.energyCost;
+            if (caster.energy <= 0)
+            {
+                caster.energy = 0;
+            }
+            energyArgs.vitalCurrent = caster.energy;
+            energyArgs.vitalMax = 0;
+            spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
+        }
 
         Effect rootEffect = spellService.GetEffect(spellData.rootEffectID);
         if (rootEffect != null)

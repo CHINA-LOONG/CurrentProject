@@ -11,7 +11,6 @@ GameObject:
   - 20: {fileID: 2062714}
   - 124: {fileID: 12438190}
   - 92: {fileID: 9205742}
-  - 81: {fileID: 8134712}
   m_Layer: 5
   m_Name: GainPetCamera
   m_TagString: Untagged
@@ -121,13 +120,6 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
   m_StereoMirrorMode: 0
---- !u!81 &8134712
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106292}
-  m_Enabled: 1
 --- !u!92 &9205742
 Behaviour:
   m_ObjectHideFlags: 1

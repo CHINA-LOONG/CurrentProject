@@ -551,6 +551,16 @@ public class BattleProcess : MonoBehaviour
         }
         else
         {
+            if (aiResult.attackTarget.pbUnit.camp == UnitCamp.Enemy)
+            {
+                for (int i = 0; i < battleGroup.PlayerFieldList.Count; i++)
+                {
+                    if (battleGroup.PlayerFieldList[i] != null)
+                    {
+                        aiResult.attackTarget = battleGroup.PlayerFieldList[i].unit;
+                    }
+                }
+            }
             LogResult.Instance.logData[LogResult.Instance.xhNumber].enemyData[BattleToolMain.Instance.bureauNum].monsterAttNumber++;
             if (LogResult.Instance.isHitSuccessE)
             {
@@ -561,8 +571,6 @@ public class BattleProcess : MonoBehaviour
                 }
             }
         }
-
-
         if (bo.camp == UnitCamp.Player && bo.unit.energy == BattleConst.enegyMax)
         {
             Dictionary<string, Spell> spellDic = bo.unit.spellList;
@@ -574,10 +582,24 @@ public class BattleProcess : MonoBehaviour
                 if (BattleUnitAi.AiAttackStyle.Dazhao == spellStyle)
                 {
                     aiResult.useSpell = subSpel;
+                    if (aiResult.attackTarget.pbUnit.camp == UnitCamp.Player)
+                    {
+                        for (int i = 0; i < battleGroup.EnemyFieldList.Count; i++)
+                        {
+                            if (battleGroup.EnemyFieldList[i] != null)
+                            {
+                                aiResult.attackTarget = battleGroup.EnemyFieldList[i].unit;
+                            }
+                        }
+                    }
                 }
             }
         }
-        if (BattleToolMain.Instance.bureauNum == 2)
+        if (bo.camp == UnitCamp.Enemy && bo.unit.energy == BattleConst.enegyMax)
+        {
+            LogResult.Instance.logData[LogResult.Instance.xhNumber].enemyData[BattleToolMain.Instance.bureauNum].monsterDazhaoNumber++;
+        }
+        if (bo.camp == UnitCamp.Player && BattleToolMain.Instance.bureauNum == 2)
         {
             if (battleGroup.EnemyFieldList[0] != null)
             {
@@ -663,10 +685,14 @@ public class BattleProcess : MonoBehaviour
         bo.unit.attackCount++;
         if (aiResult.useSpell != null)
         {
-            if (bo.camp==UnitCamp.Player)
-                LogResult.Instance.logData[LogResult.Instance.xhNumber].playerData[BattleToolMain.Instance.bureauNum].monsterDazhaoNumber++;
-            else
-                LogResult.Instance.logData[LogResult.Instance.xhNumber].enemyData[BattleToolMain.Instance.bureauNum].monsterDazhaoNumber++;
+            if (aiResult.useSpell.spellData.category == (int)SpellType.Spell_Type_PhyDaZhao || 
+                aiResult.useSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao)
+            {
+                if (bo.camp == UnitCamp.Enemy)
+                    LogResult.Instance.logData[LogResult.Instance.xhNumber].enemyData[BattleToolMain.Instance.bureauNum].monsterDazhaoNumber++;
+                else
+                    LogResult.Instance.logData[LogResult.Instance.xhNumber].playerData[BattleToolMain.Instance.bureauNum].monsterDazhaoNumber++;
+            }            
             SpellService.Instance.SpellRequest(aiResult.useSpell.spellData.id, bo.unit, aiResult.attackTarget, Time.time);
             bo.unit.OnRoundEnd(Time.time);
         }

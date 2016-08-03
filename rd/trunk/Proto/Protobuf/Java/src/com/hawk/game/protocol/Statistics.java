@@ -2552,9 +2552,45 @@ public final class Statistics {
     com.google.protobuf.ByteString
         getMonsterCollectBytes(int index);
 
-    // required int32 skillPoint = 4;
+    // required int32 fatigue = 4;
     /**
-     * <code>required int32 skillPoint = 4;</code>
+     * <code>required int32 fatigue = 4;</code>
+     *
+     * <pre>
+     * 当前活力值
+     * </pre>
+     */
+    boolean hasFatigue();
+    /**
+     * <code>required int32 fatigue = 4;</code>
+     *
+     * <pre>
+     * 当前活力值
+     * </pre>
+     */
+    int getFatigue();
+
+    // required int32 fatigueBeginTime = 5;
+    /**
+     * <code>required int32 fatigueBeginTime = 5;</code>
+     *
+     * <pre>
+     * 当前正在累计活力值恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    boolean hasFatigueBeginTime();
+    /**
+     * <code>required int32 fatigueBeginTime = 5;</code>
+     *
+     * <pre>
+     * 当前正在累计活力值恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    int getFatigueBeginTime();
+
+    // required int32 skillPoint = 6;
+    /**
+     * <code>required int32 skillPoint = 6;</code>
      *
      * <pre>
      * 当前技能点
@@ -2562,7 +2598,7 @@ public final class Statistics {
      */
     boolean hasSkillPoint();
     /**
-     * <code>required int32 skillPoint = 4;</code>
+     * <code>required int32 skillPoint = 6;</code>
      *
      * <pre>
      * 当前技能点
@@ -2570,27 +2606,27 @@ public final class Statistics {
      */
     int getSkillPoint();
 
-    // required int32 skillPointTimeStamp = 5;
+    // required int32 skillPointBeginTime = 7;
     /**
-     * <code>required int32 skillPointTimeStamp = 5;</code>
+     * <code>required int32 skillPointBeginTime = 7;</code>
      *
      * <pre>
-     * 下个技能点开始计时时间戳
+     * 当前正在累计技能点恢复时间开始时间戳（秒）
      * </pre>
      */
-    boolean hasSkillPointTimeStamp();
+    boolean hasSkillPointBeginTime();
     /**
-     * <code>required int32 skillPointTimeStamp = 5;</code>
+     * <code>required int32 skillPointBeginTime = 7;</code>
      *
      * <pre>
-     * 下个技能点开始计时时间戳
+     * 当前正在累计技能点恢复时间开始时间戳（秒）
      * </pre>
      */
-    int getSkillPointTimeStamp();
+    int getSkillPointBeginTime();
 
-    // optional int32 timeStamp = 6;
+    // optional int32 timeStamp = 8;
     /**
-     * <code>optional int32 timeStamp = 6;</code>
+     * <code>optional int32 timeStamp = 8;</code>
      *
      * <pre>
      * 服务器时间戳
@@ -2598,7 +2634,7 @@ public final class Statistics {
      */
     boolean hasTimeStamp();
     /**
-     * <code>optional int32 timeStamp = 6;</code>
+     * <code>optional int32 timeStamp = 8;</code>
      *
      * <pre>
      * 服务器时间戳
@@ -2606,9 +2642,9 @@ public final class Statistics {
      */
     int getTimeStamp();
 
-    // required string orderServerKey = 7;
+    // required string orderServerKey = 9;
     /**
-     * <code>required string orderServerKey = 7;</code>
+     * <code>required string orderServerKey = 9;</code>
      *
      * <pre>
      * 订单服务器key
@@ -2616,7 +2652,7 @@ public final class Statistics {
      */
     boolean hasOrderServerKey();
     /**
-     * <code>required string orderServerKey = 7;</code>
+     * <code>required string orderServerKey = 9;</code>
      *
      * <pre>
      * 订单服务器key
@@ -2624,7 +2660,7 @@ public final class Statistics {
      */
     java.lang.String getOrderServerKey();
     /**
-     * <code>required string orderServerKey = 7;</code>
+     * <code>required string orderServerKey = 9;</code>
      *
      * <pre>
      * 订单服务器key
@@ -2633,9 +2669,9 @@ public final class Statistics {
     com.google.protobuf.ByteString
         getOrderServerKeyBytes();
 
-    // repeated .RechargeState rechargeState = 8;
+    // repeated .RechargeState rechargeState = 10;
     /**
-     * <code>repeated .RechargeState rechargeState = 8;</code>
+     * <code>repeated .RechargeState rechargeState = 10;</code>
      *
      * <pre>
      * 商城购买状态
@@ -2644,7 +2680,7 @@ public final class Statistics {
     java.util.List<com.hawk.game.protocol.Statistics.RechargeState> 
         getRechargeStateList();
     /**
-     * <code>repeated .RechargeState rechargeState = 8;</code>
+     * <code>repeated .RechargeState rechargeState = 10;</code>
      *
      * <pre>
      * 商城购买状态
@@ -2652,7 +2688,7 @@ public final class Statistics {
      */
     com.hawk.game.protocol.Statistics.RechargeState getRechargeState(int index);
     /**
-     * <code>repeated .RechargeState rechargeState = 8;</code>
+     * <code>repeated .RechargeState rechargeState = 10;</code>
      *
      * <pre>
      * 商城购买状态
@@ -2660,7 +2696,7 @@ public final class Statistics {
      */
     int getRechargeStateCount();
     /**
-     * <code>repeated .RechargeState rechargeState = 8;</code>
+     * <code>repeated .RechargeState rechargeState = 10;</code>
      *
      * <pre>
      * 商城购买状态
@@ -2669,7 +2705,7 @@ public final class Statistics {
     java.util.List<? extends com.hawk.game.protocol.Statistics.RechargeStateOrBuilder> 
         getRechargeStateOrBuilderList();
     /**
-     * <code>repeated .RechargeState rechargeState = 8;</code>
+     * <code>repeated .RechargeState rechargeState = 10;</code>
      *
      * <pre>
      * 商城购买状态
@@ -2678,9 +2714,9 @@ public final class Statistics {
     com.hawk.game.protocol.Statistics.RechargeStateOrBuilder getRechargeStateOrBuilder(
         int index);
 
-    // required int32 monthCardLeft = 9;
+    // required int32 monthCardLeft = 11;
     /**
-     * <code>required int32 monthCardLeft = 9;</code>
+     * <code>required int32 monthCardLeft = 11;</code>
      *
      * <pre>
      * 月卡剩余时间
@@ -2688,7 +2724,7 @@ public final class Statistics {
      */
     boolean hasMonthCardLeft();
     /**
-     * <code>required int32 monthCardLeft = 9;</code>
+     * <code>required int32 monthCardLeft = 11;</code>
      *
      * <pre>
      * 月卡剩余时间
@@ -2696,9 +2732,9 @@ public final class Statistics {
      */
     int getMonthCardLeft();
 
-    // required int32 gold2CoinTimes = 10;
+    // required int32 gold2CoinTimes = 12;
     /**
-     * <code>required int32 gold2CoinTimes = 10;</code>
+     * <code>required int32 gold2CoinTimes = 12;</code>
      *
      * <pre>
      * 钻石购买金币次数
@@ -2706,7 +2742,7 @@ public final class Statistics {
      */
     boolean hasGold2CoinTimes();
     /**
-     * <code>required int32 gold2CoinTimes = 10;</code>
+     * <code>required int32 gold2CoinTimes = 12;</code>
      *
      * <pre>
      * 钻石购买金币次数
@@ -2714,9 +2750,9 @@ public final class Statistics {
      */
     int getGold2CoinTimes();
 
-    // required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;
+    // required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -2724,7 +2760,7 @@ public final class Statistics {
      */
     boolean hasExpLeftTimes();
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -2732,7 +2768,7 @@ public final class Statistics {
      */
     com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync getExpLeftTimes();
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -2822,45 +2858,55 @@ public final class Statistics {
             }
             case 32: {
               bitField0_ |= 0x00000002;
-              skillPoint_ = input.readInt32();
+              fatigue_ = input.readInt32();
               break;
             }
             case 40: {
               bitField0_ |= 0x00000004;
-              skillPointTimeStamp_ = input.readInt32();
+              fatigueBeginTime_ = input.readInt32();
               break;
             }
             case 48: {
               bitField0_ |= 0x00000008;
+              skillPoint_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000010;
+              skillPointBeginTime_ = input.readInt32();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000020;
               timeStamp_ = input.readInt32();
               break;
             }
-            case 58: {
-              bitField0_ |= 0x00000010;
+            case 74: {
+              bitField0_ |= 0x00000040;
               orderServerKey_ = input.readBytes();
               break;
             }
-            case 66: {
-              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+            case 82: {
+              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
                 rechargeState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.RechargeState>();
-                mutable_bitField0_ |= 0x00000080;
+                mutable_bitField0_ |= 0x00000200;
               }
               rechargeState_.add(input.readMessage(com.hawk.game.protocol.Statistics.RechargeState.PARSER, extensionRegistry));
               break;
             }
-            case 72: {
-              bitField0_ |= 0x00000020;
+            case 88: {
+              bitField0_ |= 0x00000080;
               monthCardLeft_ = input.readInt32();
               break;
             }
-            case 80: {
-              bitField0_ |= 0x00000040;
+            case 96: {
+              bitField0_ |= 0x00000100;
               gold2CoinTimes_ = input.readInt32();
               break;
             }
-            case 90: {
+            case 106: {
               com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000080) == 0x00000080)) {
+              if (((bitField0_ & 0x00000200) == 0x00000200)) {
                 subBuilder = expLeftTimes_.toBuilder();
               }
               expLeftTimes_ = input.readMessage(com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.PARSER, extensionRegistry);
@@ -2868,7 +2914,7 @@ public final class Statistics {
                 subBuilder.mergeFrom(expLeftTimes_);
                 expLeftTimes_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000200;
               break;
             }
           }
@@ -2885,7 +2931,7 @@ public final class Statistics {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           monsterCollect_ = new com.google.protobuf.UnmodifiableLazyStringList(monsterCollect_);
         }
-        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
           rechargeState_ = java.util.Collections.unmodifiableList(rechargeState_);
         }
         this.unknownFields = unknownFields.build();
@@ -3056,21 +3102,69 @@ public final class Statistics {
       return monsterCollect_.getByteString(index);
     }
 
-    // required int32 skillPoint = 4;
-    public static final int SKILLPOINT_FIELD_NUMBER = 4;
+    // required int32 fatigue = 4;
+    public static final int FATIGUE_FIELD_NUMBER = 4;
+    private int fatigue_;
+    /**
+     * <code>required int32 fatigue = 4;</code>
+     *
+     * <pre>
+     * 当前活力值
+     * </pre>
+     */
+    public boolean hasFatigue() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 fatigue = 4;</code>
+     *
+     * <pre>
+     * 当前活力值
+     * </pre>
+     */
+    public int getFatigue() {
+      return fatigue_;
+    }
+
+    // required int32 fatigueBeginTime = 5;
+    public static final int FATIGUEBEGINTIME_FIELD_NUMBER = 5;
+    private int fatigueBeginTime_;
+    /**
+     * <code>required int32 fatigueBeginTime = 5;</code>
+     *
+     * <pre>
+     * 当前正在累计活力值恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    public boolean hasFatigueBeginTime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 fatigueBeginTime = 5;</code>
+     *
+     * <pre>
+     * 当前正在累计活力值恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    public int getFatigueBeginTime() {
+      return fatigueBeginTime_;
+    }
+
+    // required int32 skillPoint = 6;
+    public static final int SKILLPOINT_FIELD_NUMBER = 6;
     private int skillPoint_;
     /**
-     * <code>required int32 skillPoint = 4;</code>
+     * <code>required int32 skillPoint = 6;</code>
      *
      * <pre>
      * 当前技能点
      * </pre>
      */
     public boolean hasSkillPoint() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int32 skillPoint = 4;</code>
+     * <code>required int32 skillPoint = 6;</code>
      *
      * <pre>
      * 当前技能点
@@ -3080,45 +3174,45 @@ public final class Statistics {
       return skillPoint_;
     }
 
-    // required int32 skillPointTimeStamp = 5;
-    public static final int SKILLPOINTTIMESTAMP_FIELD_NUMBER = 5;
-    private int skillPointTimeStamp_;
+    // required int32 skillPointBeginTime = 7;
+    public static final int SKILLPOINTBEGINTIME_FIELD_NUMBER = 7;
+    private int skillPointBeginTime_;
     /**
-     * <code>required int32 skillPointTimeStamp = 5;</code>
+     * <code>required int32 skillPointBeginTime = 7;</code>
      *
      * <pre>
-     * 下个技能点开始计时时间戳
+     * 当前正在累计技能点恢复时间开始时间戳（秒）
      * </pre>
      */
-    public boolean hasSkillPointTimeStamp() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public boolean hasSkillPointBeginTime() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 skillPointTimeStamp = 5;</code>
+     * <code>required int32 skillPointBeginTime = 7;</code>
      *
      * <pre>
-     * 下个技能点开始计时时间戳
+     * 当前正在累计技能点恢复时间开始时间戳（秒）
      * </pre>
      */
-    public int getSkillPointTimeStamp() {
-      return skillPointTimeStamp_;
+    public int getSkillPointBeginTime() {
+      return skillPointBeginTime_;
     }
 
-    // optional int32 timeStamp = 6;
-    public static final int TIMESTAMP_FIELD_NUMBER = 6;
+    // optional int32 timeStamp = 8;
+    public static final int TIMESTAMP_FIELD_NUMBER = 8;
     private int timeStamp_;
     /**
-     * <code>optional int32 timeStamp = 6;</code>
+     * <code>optional int32 timeStamp = 8;</code>
      *
      * <pre>
      * 服务器时间戳
      * </pre>
      */
     public boolean hasTimeStamp() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>optional int32 timeStamp = 6;</code>
+     * <code>optional int32 timeStamp = 8;</code>
      *
      * <pre>
      * 服务器时间戳
@@ -3128,21 +3222,21 @@ public final class Statistics {
       return timeStamp_;
     }
 
-    // required string orderServerKey = 7;
-    public static final int ORDERSERVERKEY_FIELD_NUMBER = 7;
+    // required string orderServerKey = 9;
+    public static final int ORDERSERVERKEY_FIELD_NUMBER = 9;
     private java.lang.Object orderServerKey_;
     /**
-     * <code>required string orderServerKey = 7;</code>
+     * <code>required string orderServerKey = 9;</code>
      *
      * <pre>
      * 订单服务器key
      * </pre>
      */
     public boolean hasOrderServerKey() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>required string orderServerKey = 7;</code>
+     * <code>required string orderServerKey = 9;</code>
      *
      * <pre>
      * 订单服务器key
@@ -3163,7 +3257,7 @@ public final class Statistics {
       }
     }
     /**
-     * <code>required string orderServerKey = 7;</code>
+     * <code>required string orderServerKey = 9;</code>
      *
      * <pre>
      * 订单服务器key
@@ -3183,11 +3277,11 @@ public final class Statistics {
       }
     }
 
-    // repeated .RechargeState rechargeState = 8;
-    public static final int RECHARGESTATE_FIELD_NUMBER = 8;
+    // repeated .RechargeState rechargeState = 10;
+    public static final int RECHARGESTATE_FIELD_NUMBER = 10;
     private java.util.List<com.hawk.game.protocol.Statistics.RechargeState> rechargeState_;
     /**
-     * <code>repeated .RechargeState rechargeState = 8;</code>
+     * <code>repeated .RechargeState rechargeState = 10;</code>
      *
      * <pre>
      * 商城购买状态
@@ -3197,7 +3291,7 @@ public final class Statistics {
       return rechargeState_;
     }
     /**
-     * <code>repeated .RechargeState rechargeState = 8;</code>
+     * <code>repeated .RechargeState rechargeState = 10;</code>
      *
      * <pre>
      * 商城购买状态
@@ -3208,7 +3302,7 @@ public final class Statistics {
       return rechargeState_;
     }
     /**
-     * <code>repeated .RechargeState rechargeState = 8;</code>
+     * <code>repeated .RechargeState rechargeState = 10;</code>
      *
      * <pre>
      * 商城购买状态
@@ -3218,7 +3312,7 @@ public final class Statistics {
       return rechargeState_.size();
     }
     /**
-     * <code>repeated .RechargeState rechargeState = 8;</code>
+     * <code>repeated .RechargeState rechargeState = 10;</code>
      *
      * <pre>
      * 商城购买状态
@@ -3228,7 +3322,7 @@ public final class Statistics {
       return rechargeState_.get(index);
     }
     /**
-     * <code>repeated .RechargeState rechargeState = 8;</code>
+     * <code>repeated .RechargeState rechargeState = 10;</code>
      *
      * <pre>
      * 商城购买状态
@@ -3239,21 +3333,21 @@ public final class Statistics {
       return rechargeState_.get(index);
     }
 
-    // required int32 monthCardLeft = 9;
-    public static final int MONTHCARDLEFT_FIELD_NUMBER = 9;
+    // required int32 monthCardLeft = 11;
+    public static final int MONTHCARDLEFT_FIELD_NUMBER = 11;
     private int monthCardLeft_;
     /**
-     * <code>required int32 monthCardLeft = 9;</code>
+     * <code>required int32 monthCardLeft = 11;</code>
      *
      * <pre>
      * 月卡剩余时间
      * </pre>
      */
     public boolean hasMonthCardLeft() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>required int32 monthCardLeft = 9;</code>
+     * <code>required int32 monthCardLeft = 11;</code>
      *
      * <pre>
      * 月卡剩余时间
@@ -3263,21 +3357,21 @@ public final class Statistics {
       return monthCardLeft_;
     }
 
-    // required int32 gold2CoinTimes = 10;
-    public static final int GOLD2COINTIMES_FIELD_NUMBER = 10;
+    // required int32 gold2CoinTimes = 12;
+    public static final int GOLD2COINTIMES_FIELD_NUMBER = 12;
     private int gold2CoinTimes_;
     /**
-     * <code>required int32 gold2CoinTimes = 10;</code>
+     * <code>required int32 gold2CoinTimes = 12;</code>
      *
      * <pre>
      * 钻石购买金币次数
      * </pre>
      */
     public boolean hasGold2CoinTimes() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>required int32 gold2CoinTimes = 10;</code>
+     * <code>required int32 gold2CoinTimes = 12;</code>
      *
      * <pre>
      * 钻石购买金币次数
@@ -3287,21 +3381,21 @@ public final class Statistics {
       return gold2CoinTimes_;
     }
 
-    // required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;
-    public static final int EXPLEFTTIMES_FIELD_NUMBER = 11;
+    // required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;
+    public static final int EXPLEFTTIMES_FIELD_NUMBER = 13;
     private com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync expLeftTimes_;
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
      * </pre>
      */
     public boolean hasExpLeftTimes() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -3311,7 +3405,7 @@ public final class Statistics {
       return expLeftTimes_;
     }
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -3325,8 +3419,10 @@ public final class Statistics {
       instanceState_ = java.util.Collections.emptyList();
       chapterState_ = com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
       monsterCollect_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      fatigue_ = 0;
+      fatigueBeginTime_ = 0;
       skillPoint_ = 0;
-      skillPointTimeStamp_ = 0;
+      skillPointBeginTime_ = 0;
       timeStamp_ = 0;
       orderServerKey_ = "";
       rechargeState_ = java.util.Collections.emptyList();
@@ -3343,11 +3439,19 @@ public final class Statistics {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasFatigue()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFatigueBeginTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasSkillPoint()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasSkillPointTimeStamp()) {
+      if (!hasSkillPointBeginTime()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3404,28 +3508,34 @@ public final class Statistics {
         output.writeBytes(3, monsterCollect_.getByteString(i));
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(4, skillPoint_);
+        output.writeInt32(4, fatigue_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(5, skillPointTimeStamp_);
+        output.writeInt32(5, fatigueBeginTime_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(6, timeStamp_);
+        output.writeInt32(6, skillPoint_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(7, getOrderServerKeyBytes());
-      }
-      for (int i = 0; i < rechargeState_.size(); i++) {
-        output.writeMessage(8, rechargeState_.get(i));
+        output.writeInt32(7, skillPointBeginTime_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(9, monthCardLeft_);
+        output.writeInt32(8, timeStamp_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(10, gold2CoinTimes_);
+        output.writeBytes(9, getOrderServerKeyBytes());
+      }
+      for (int i = 0; i < rechargeState_.size(); i++) {
+        output.writeMessage(10, rechargeState_.get(i));
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeMessage(11, expLeftTimes_);
+        output.writeInt32(11, monthCardLeft_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeInt32(12, gold2CoinTimes_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeMessage(13, expLeftTimes_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3455,35 +3565,43 @@ public final class Statistics {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, skillPoint_);
+          .computeInt32Size(4, fatigue_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, skillPointTimeStamp_);
+          .computeInt32Size(5, fatigueBeginTime_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, timeStamp_);
+          .computeInt32Size(6, skillPoint_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, getOrderServerKeyBytes());
-      }
-      for (int i = 0; i < rechargeState_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, rechargeState_.get(i));
+          .computeInt32Size(7, skillPointBeginTime_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, monthCardLeft_);
+          .computeInt32Size(8, timeStamp_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, gold2CoinTimes_);
+          .computeBytesSize(9, getOrderServerKeyBytes());
+      }
+      for (int i = 0; i < rechargeState_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, rechargeState_.get(i));
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(11, expLeftTimes_);
+          .computeInt32Size(11, monthCardLeft_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(12, gold2CoinTimes_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, expLeftTimes_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3619,30 +3737,34 @@ public final class Statistics {
         bitField0_ = (bitField0_ & ~0x00000002);
         monsterCollect_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
-        skillPoint_ = 0;
+        fatigue_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        skillPointTimeStamp_ = 0;
+        fatigueBeginTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        timeStamp_ = 0;
+        skillPoint_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        orderServerKey_ = "";
+        skillPointBeginTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
+        timeStamp_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        orderServerKey_ = "";
+        bitField0_ = (bitField0_ & ~0x00000100);
         if (rechargeStateBuilder_ == null) {
           rechargeState_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000200);
         } else {
           rechargeStateBuilder_.clear();
         }
         monthCardLeft_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000400);
         gold2CoinTimes_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000800);
         if (expLeftTimesBuilder_ == null) {
           expLeftTimes_ = com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance();
         } else {
           expLeftTimesBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
 
@@ -3697,38 +3819,46 @@ public final class Statistics {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.skillPoint_ = skillPoint_;
+        result.fatigue_ = fatigue_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.skillPointTimeStamp_ = skillPointTimeStamp_;
+        result.fatigueBeginTime_ = fatigueBeginTime_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.timeStamp_ = timeStamp_;
+        result.skillPoint_ = skillPoint_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000010;
         }
+        result.skillPointBeginTime_ = skillPointBeginTime_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.timeStamp_ = timeStamp_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000040;
+        }
         result.orderServerKey_ = orderServerKey_;
         if (rechargeStateBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+          if (((bitField0_ & 0x00000200) == 0x00000200)) {
             rechargeState_ = java.util.Collections.unmodifiableList(rechargeState_);
-            bitField0_ = (bitField0_ & ~0x00000080);
+            bitField0_ = (bitField0_ & ~0x00000200);
           }
           result.rechargeState_ = rechargeState_;
         } else {
           result.rechargeState_ = rechargeStateBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.monthCardLeft_ = monthCardLeft_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.gold2CoinTimes_ = gold2CoinTimes_;
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000080;
+        }
+        result.monthCardLeft_ = monthCardLeft_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.gold2CoinTimes_ = gold2CoinTimes_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00000200;
         }
         if (expLeftTimesBuilder_ == null) {
           result.expLeftTimes_ = expLeftTimes_;
@@ -3790,17 +3920,23 @@ public final class Statistics {
           }
           onChanged();
         }
+        if (other.hasFatigue()) {
+          setFatigue(other.getFatigue());
+        }
+        if (other.hasFatigueBeginTime()) {
+          setFatigueBeginTime(other.getFatigueBeginTime());
+        }
         if (other.hasSkillPoint()) {
           setSkillPoint(other.getSkillPoint());
         }
-        if (other.hasSkillPointTimeStamp()) {
-          setSkillPointTimeStamp(other.getSkillPointTimeStamp());
+        if (other.hasSkillPointBeginTime()) {
+          setSkillPointBeginTime(other.getSkillPointBeginTime());
         }
         if (other.hasTimeStamp()) {
           setTimeStamp(other.getTimeStamp());
         }
         if (other.hasOrderServerKey()) {
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000100;
           orderServerKey_ = other.orderServerKey_;
           onChanged();
         }
@@ -3808,7 +3944,7 @@ public final class Statistics {
           if (!other.rechargeState_.isEmpty()) {
             if (rechargeState_.isEmpty()) {
               rechargeState_ = other.rechargeState_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000200);
             } else {
               ensureRechargeStateIsMutable();
               rechargeState_.addAll(other.rechargeState_);
@@ -3821,7 +3957,7 @@ public final class Statistics {
               rechargeStateBuilder_.dispose();
               rechargeStateBuilder_ = null;
               rechargeState_ = other.rechargeState_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000200);
               rechargeStateBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getRechargeStateFieldBuilder() : null;
@@ -3848,11 +3984,19 @@ public final class Statistics {
           
           return false;
         }
+        if (!hasFatigue()) {
+          
+          return false;
+        }
+        if (!hasFatigueBeginTime()) {
+          
+          return false;
+        }
         if (!hasSkillPoint()) {
           
           return false;
         }
-        if (!hasSkillPointTimeStamp()) {
+        if (!hasSkillPointBeginTime()) {
           
           return false;
         }
@@ -4508,20 +4652,118 @@ public final class Statistics {
         return this;
       }
 
-      // required int32 skillPoint = 4;
+      // required int32 fatigue = 4;
+      private int fatigue_ ;
+      /**
+       * <code>required int32 fatigue = 4;</code>
+       *
+       * <pre>
+       * 当前活力值
+       * </pre>
+       */
+      public boolean hasFatigue() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int32 fatigue = 4;</code>
+       *
+       * <pre>
+       * 当前活力值
+       * </pre>
+       */
+      public int getFatigue() {
+        return fatigue_;
+      }
+      /**
+       * <code>required int32 fatigue = 4;</code>
+       *
+       * <pre>
+       * 当前活力值
+       * </pre>
+       */
+      public Builder setFatigue(int value) {
+        bitField0_ |= 0x00000008;
+        fatigue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 fatigue = 4;</code>
+       *
+       * <pre>
+       * 当前活力值
+       * </pre>
+       */
+      public Builder clearFatigue() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        fatigue_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 fatigueBeginTime = 5;
+      private int fatigueBeginTime_ ;
+      /**
+       * <code>required int32 fatigueBeginTime = 5;</code>
+       *
+       * <pre>
+       * 当前正在累计活力值恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public boolean hasFatigueBeginTime() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 fatigueBeginTime = 5;</code>
+       *
+       * <pre>
+       * 当前正在累计活力值恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public int getFatigueBeginTime() {
+        return fatigueBeginTime_;
+      }
+      /**
+       * <code>required int32 fatigueBeginTime = 5;</code>
+       *
+       * <pre>
+       * 当前正在累计活力值恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public Builder setFatigueBeginTime(int value) {
+        bitField0_ |= 0x00000010;
+        fatigueBeginTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 fatigueBeginTime = 5;</code>
+       *
+       * <pre>
+       * 当前正在累计活力值恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public Builder clearFatigueBeginTime() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        fatigueBeginTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 skillPoint = 6;
       private int skillPoint_ ;
       /**
-       * <code>required int32 skillPoint = 4;</code>
+       * <code>required int32 skillPoint = 6;</code>
        *
        * <pre>
        * 当前技能点
        * </pre>
        */
       public boolean hasSkillPoint() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>required int32 skillPoint = 4;</code>
+       * <code>required int32 skillPoint = 6;</code>
        *
        * <pre>
        * 当前技能点
@@ -4531,95 +4773,95 @@ public final class Statistics {
         return skillPoint_;
       }
       /**
-       * <code>required int32 skillPoint = 4;</code>
+       * <code>required int32 skillPoint = 6;</code>
        *
        * <pre>
        * 当前技能点
        * </pre>
        */
       public Builder setSkillPoint(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000020;
         skillPoint_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 skillPoint = 4;</code>
+       * <code>required int32 skillPoint = 6;</code>
        *
        * <pre>
        * 当前技能点
        * </pre>
        */
       public Builder clearSkillPoint() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000020);
         skillPoint_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 skillPointTimeStamp = 5;
-      private int skillPointTimeStamp_ ;
+      // required int32 skillPointBeginTime = 7;
+      private int skillPointBeginTime_ ;
       /**
-       * <code>required int32 skillPointTimeStamp = 5;</code>
+       * <code>required int32 skillPointBeginTime = 7;</code>
        *
        * <pre>
-       * 下个技能点开始计时时间戳
+       * 当前正在累计技能点恢复时间开始时间戳（秒）
        * </pre>
        */
-      public boolean hasSkillPointTimeStamp() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+      public boolean hasSkillPointBeginTime() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>required int32 skillPointTimeStamp = 5;</code>
+       * <code>required int32 skillPointBeginTime = 7;</code>
        *
        * <pre>
-       * 下个技能点开始计时时间戳
+       * 当前正在累计技能点恢复时间开始时间戳（秒）
        * </pre>
        */
-      public int getSkillPointTimeStamp() {
-        return skillPointTimeStamp_;
+      public int getSkillPointBeginTime() {
+        return skillPointBeginTime_;
       }
       /**
-       * <code>required int32 skillPointTimeStamp = 5;</code>
+       * <code>required int32 skillPointBeginTime = 7;</code>
        *
        * <pre>
-       * 下个技能点开始计时时间戳
+       * 当前正在累计技能点恢复时间开始时间戳（秒）
        * </pre>
        */
-      public Builder setSkillPointTimeStamp(int value) {
-        bitField0_ |= 0x00000010;
-        skillPointTimeStamp_ = value;
+      public Builder setSkillPointBeginTime(int value) {
+        bitField0_ |= 0x00000040;
+        skillPointBeginTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 skillPointTimeStamp = 5;</code>
+       * <code>required int32 skillPointBeginTime = 7;</code>
        *
        * <pre>
-       * 下个技能点开始计时时间戳
+       * 当前正在累计技能点恢复时间开始时间戳（秒）
        * </pre>
        */
-      public Builder clearSkillPointTimeStamp() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        skillPointTimeStamp_ = 0;
+      public Builder clearSkillPointBeginTime() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        skillPointBeginTime_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 timeStamp = 6;
+      // optional int32 timeStamp = 8;
       private int timeStamp_ ;
       /**
-       * <code>optional int32 timeStamp = 6;</code>
+       * <code>optional int32 timeStamp = 8;</code>
        *
        * <pre>
        * 服务器时间戳
        * </pre>
        */
       public boolean hasTimeStamp() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>optional int32 timeStamp = 6;</code>
+       * <code>optional int32 timeStamp = 8;</code>
        *
        * <pre>
        * 服务器时间戳
@@ -4629,46 +4871,46 @@ public final class Statistics {
         return timeStamp_;
       }
       /**
-       * <code>optional int32 timeStamp = 6;</code>
+       * <code>optional int32 timeStamp = 8;</code>
        *
        * <pre>
        * 服务器时间戳
        * </pre>
        */
       public Builder setTimeStamp(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000080;
         timeStamp_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 timeStamp = 6;</code>
+       * <code>optional int32 timeStamp = 8;</code>
        *
        * <pre>
        * 服务器时间戳
        * </pre>
        */
       public Builder clearTimeStamp() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000080);
         timeStamp_ = 0;
         onChanged();
         return this;
       }
 
-      // required string orderServerKey = 7;
+      // required string orderServerKey = 9;
       private java.lang.Object orderServerKey_ = "";
       /**
-       * <code>required string orderServerKey = 7;</code>
+       * <code>required string orderServerKey = 9;</code>
        *
        * <pre>
        * 订单服务器key
        * </pre>
        */
       public boolean hasOrderServerKey() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>required string orderServerKey = 7;</code>
+       * <code>required string orderServerKey = 9;</code>
        *
        * <pre>
        * 订单服务器key
@@ -4686,7 +4928,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>required string orderServerKey = 7;</code>
+       * <code>required string orderServerKey = 9;</code>
        *
        * <pre>
        * 订单服务器key
@@ -4706,7 +4948,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>required string orderServerKey = 7;</code>
+       * <code>required string orderServerKey = 9;</code>
        *
        * <pre>
        * 订单服务器key
@@ -4717,26 +4959,26 @@ public final class Statistics {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000100;
         orderServerKey_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string orderServerKey = 7;</code>
+       * <code>required string orderServerKey = 9;</code>
        *
        * <pre>
        * 订单服务器key
        * </pre>
        */
       public Builder clearOrderServerKey() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000100);
         orderServerKey_ = getDefaultInstance().getOrderServerKey();
         onChanged();
         return this;
       }
       /**
-       * <code>required string orderServerKey = 7;</code>
+       * <code>required string orderServerKey = 9;</code>
        *
        * <pre>
        * 订单服务器key
@@ -4747,19 +4989,19 @@ public final class Statistics {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000100;
         orderServerKey_ = value;
         onChanged();
         return this;
       }
 
-      // repeated .RechargeState rechargeState = 8;
+      // repeated .RechargeState rechargeState = 10;
       private java.util.List<com.hawk.game.protocol.Statistics.RechargeState> rechargeState_ =
         java.util.Collections.emptyList();
       private void ensureRechargeStateIsMutable() {
-        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
           rechargeState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.RechargeState>(rechargeState_);
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000200;
          }
       }
 
@@ -4767,7 +5009,7 @@ public final class Statistics {
           com.hawk.game.protocol.Statistics.RechargeState, com.hawk.game.protocol.Statistics.RechargeState.Builder, com.hawk.game.protocol.Statistics.RechargeStateOrBuilder> rechargeStateBuilder_;
 
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4781,7 +5023,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4795,7 +5037,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4809,7 +5051,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4830,7 +5072,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4848,7 +5090,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4868,7 +5110,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4889,7 +5131,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4907,7 +5149,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4925,7 +5167,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4943,7 +5185,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4952,7 +5194,7 @@ public final class Statistics {
       public Builder clearRechargeState() {
         if (rechargeStateBuilder_ == null) {
           rechargeState_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000200);
           onChanged();
         } else {
           rechargeStateBuilder_.clear();
@@ -4960,7 +5202,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4977,7 +5219,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -4988,7 +5230,7 @@ public final class Statistics {
         return getRechargeStateFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -5002,7 +5244,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -5017,7 +5259,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -5028,7 +5270,7 @@ public final class Statistics {
             com.hawk.game.protocol.Statistics.RechargeState.getDefaultInstance());
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -5040,7 +5282,7 @@ public final class Statistics {
             index, com.hawk.game.protocol.Statistics.RechargeState.getDefaultInstance());
       }
       /**
-       * <code>repeated .RechargeState rechargeState = 8;</code>
+       * <code>repeated .RechargeState rechargeState = 10;</code>
        *
        * <pre>
        * 商城购买状态
@@ -5057,7 +5299,7 @@ public final class Statistics {
           rechargeStateBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.hawk.game.protocol.Statistics.RechargeState, com.hawk.game.protocol.Statistics.RechargeState.Builder, com.hawk.game.protocol.Statistics.RechargeStateOrBuilder>(
                   rechargeState_,
-                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  ((bitField0_ & 0x00000200) == 0x00000200),
                   getParentForChildren(),
                   isClean());
           rechargeState_ = null;
@@ -5065,20 +5307,20 @@ public final class Statistics {
         return rechargeStateBuilder_;
       }
 
-      // required int32 monthCardLeft = 9;
+      // required int32 monthCardLeft = 11;
       private int monthCardLeft_ ;
       /**
-       * <code>required int32 monthCardLeft = 9;</code>
+       * <code>required int32 monthCardLeft = 11;</code>
        *
        * <pre>
        * 月卡剩余时间
        * </pre>
        */
       public boolean hasMonthCardLeft() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
-       * <code>required int32 monthCardLeft = 9;</code>
+       * <code>required int32 monthCardLeft = 11;</code>
        *
        * <pre>
        * 月卡剩余时间
@@ -5088,46 +5330,46 @@ public final class Statistics {
         return monthCardLeft_;
       }
       /**
-       * <code>required int32 monthCardLeft = 9;</code>
+       * <code>required int32 monthCardLeft = 11;</code>
        *
        * <pre>
        * 月卡剩余时间
        * </pre>
        */
       public Builder setMonthCardLeft(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000400;
         monthCardLeft_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 monthCardLeft = 9;</code>
+       * <code>required int32 monthCardLeft = 11;</code>
        *
        * <pre>
        * 月卡剩余时间
        * </pre>
        */
       public Builder clearMonthCardLeft() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000400);
         monthCardLeft_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 gold2CoinTimes = 10;
+      // required int32 gold2CoinTimes = 12;
       private int gold2CoinTimes_ ;
       /**
-       * <code>required int32 gold2CoinTimes = 10;</code>
+       * <code>required int32 gold2CoinTimes = 12;</code>
        *
        * <pre>
        * 钻石购买金币次数
        * </pre>
        */
       public boolean hasGold2CoinTimes() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
-       * <code>required int32 gold2CoinTimes = 10;</code>
+       * <code>required int32 gold2CoinTimes = 12;</code>
        *
        * <pre>
        * 钻石购买金币次数
@@ -5137,48 +5379,48 @@ public final class Statistics {
         return gold2CoinTimes_;
       }
       /**
-       * <code>required int32 gold2CoinTimes = 10;</code>
+       * <code>required int32 gold2CoinTimes = 12;</code>
        *
        * <pre>
        * 钻石购买金币次数
        * </pre>
        */
       public Builder setGold2CoinTimes(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000800;
         gold2CoinTimes_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 gold2CoinTimes = 10;</code>
+       * <code>required int32 gold2CoinTimes = 12;</code>
        *
        * <pre>
        * 钻石购买金币次数
        * </pre>
        */
       public Builder clearGold2CoinTimes() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000800);
         gold2CoinTimes_ = 0;
         onChanged();
         return this;
       }
 
-      // required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;
+      // required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;
       private com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync expLeftTimes_ = com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSyncOrBuilder> expLeftTimesBuilder_;
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
        * </pre>
        */
       public boolean hasExpLeftTimes() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -5192,7 +5434,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -5208,11 +5450,11 @@ public final class Statistics {
         } else {
           expLeftTimesBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00001000;
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -5226,11 +5468,11 @@ public final class Statistics {
         } else {
           expLeftTimesBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00001000;
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -5238,7 +5480,7 @@ public final class Statistics {
        */
       public Builder mergeExpLeftTimes(com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync value) {
         if (expLeftTimesBuilder_ == null) {
-          if (((bitField0_ & 0x00000400) == 0x00000400) &&
+          if (((bitField0_ & 0x00001000) == 0x00001000) &&
               expLeftTimes_ != com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance()) {
             expLeftTimes_ =
               com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.newBuilder(expLeftTimes_).mergeFrom(value).buildPartial();
@@ -5249,11 +5491,11 @@ public final class Statistics {
         } else {
           expLeftTimesBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00001000;
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -5266,23 +5508,23 @@ public final class Statistics {
         } else {
           expLeftTimesBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
        * </pre>
        */
       public com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder getExpLeftTimesBuilder() {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00001000;
         onChanged();
         return getExpLeftTimesFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -5296,7 +5538,7 @@ public final class Statistics {
         }
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 11;</code>
+       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -6807,21 +7049,22 @@ public final class Statistics {
       "\002 \002(\005\022\026\n\016hardTopChapter\030\003 \002(\005\022\024\n\014hardTop" +
       "Index\030\004 \002(\005\022\026\n\016normalBoxState\030\005 \003(\005\022\024\n\014h" +
       "ardBoxState\030\006 \003(\005\"4\n\rRechargeState\022\021\n\tpr" +
-      "oductId\030\001 \002(\t\022\020\n\010buyTimes\030\002 \002(\005\"\340\002\n\024HSSt" +
+      "oductId\030\001 \002(\t\022\020\n\010buyTimes\030\002 \002(\005\"\213\003\n\024HSSt" +
       "atisticsInfoSync\022%\n\rinstanceState\030\001 \003(\0132" +
       "\016.InstanceState\022#\n\014chapterState\030\002 \002(\0132\r.",
-      "ChapterState\022\026\n\016monsterCollect\030\003 \003(\t\022\022\n\n" +
-      "skillPoint\030\004 \002(\005\022\033\n\023skillPointTimeStamp\030" +
-      "\005 \002(\005\022\021\n\ttimeStamp\030\006 \001(\005\022\026\n\016orderServerK" +
-      "ey\030\007 \002(\t\022%\n\rrechargeState\030\010 \003(\0132\016.Rechar" +
-      "geState\022\025\n\rmonthCardLeft\030\t \002(\005\022\026\n\016gold2C" +
-      "oinTimes\030\n \002(\005\0222\n\014expLeftTimes\030\013 \002(\0132\034.H" +
-      "SStatisticsExpLeftTimeSync\"K\n\033HSStatisti" +
-      "csExpLeftTimeSync\022\025\n\rdoubleExpLeft\030\001 \002(\005" +
-      "\022\025\n\rtripleExpLeft\030\002 \002(\005\"0\n\025HSStatisticsR" +
-      "esetSync\022\027\n\017goldChangeTimes\030\001 \002(\005\"+\n\027HSS",
-      "tatisticsShopRefresh\022\020\n\010shopType\030\001 \002(\005B\030" +
-      "\n\026com.hawk.game.protocol"
+      "ChapterState\022\026\n\016monsterCollect\030\003 \003(\t\022\017\n\007" +
+      "fatigue\030\004 \002(\005\022\030\n\020fatigueBeginTime\030\005 \002(\005\022" +
+      "\022\n\nskillPoint\030\006 \002(\005\022\033\n\023skillPointBeginTi" +
+      "me\030\007 \002(\005\022\021\n\ttimeStamp\030\010 \001(\005\022\026\n\016orderServ" +
+      "erKey\030\t \002(\t\022%\n\rrechargeState\030\n \003(\0132\016.Rec" +
+      "hargeState\022\025\n\rmonthCardLeft\030\013 \002(\005\022\026\n\016gol" +
+      "d2CoinTimes\030\014 \002(\005\0222\n\014expLeftTimes\030\r \002(\0132" +
+      "\034.HSStatisticsExpLeftTimeSync\"K\n\033HSStati" +
+      "sticsExpLeftTimeSync\022\025\n\rdoubleExpLeft\030\001 " +
+      "\002(\005\022\025\n\rtripleExpLeft\030\002 \002(\005\"0\n\025HSStatisti",
+      "csResetSync\022\027\n\017goldChangeTimes\030\001 \002(\005\"+\n\027" +
+      "HSStatisticsShopRefresh\022\020\n\010shopType\030\001 \002(" +
+      "\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -6851,7 +7094,7 @@ public final class Statistics {
           internal_static_HSStatisticsInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsInfoSync_descriptor,
-              new java.lang.String[] { "InstanceState", "ChapterState", "MonsterCollect", "SkillPoint", "SkillPointTimeStamp", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", });
+              new java.lang.String[] { "InstanceState", "ChapterState", "MonsterCollect", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", });
           internal_static_HSStatisticsExpLeftTimeSync_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_HSStatisticsExpLeftTimeSync_fieldAccessorTable = new

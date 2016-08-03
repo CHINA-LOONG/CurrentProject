@@ -42,6 +42,20 @@ public class ChapterButton : MonoBehaviour
         if(InstanceMapService.Instance.IsChapterOpened(chapterIndex))
         {
             InstanceList.OpenWith(chapterIndex);
+            return;
+        }
+
+        bool isLastOpen = InstanceMapService.Instance.IsChapterOpened(chapterIndex - 1);
+        if(isLastOpen)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_open_001"), (int)PB.ImType.PROMPT);
+            return;
+        }
+
+        Chapter chapter = StaticDataMgr.Instance.GetChapterData(chapterIndex);
+        if(null != chapter)
+        {
+            UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("instanceselect_open_002"),chapter.normalLevel), (int)PB.ImType.PROMPT);
         }
     }
 

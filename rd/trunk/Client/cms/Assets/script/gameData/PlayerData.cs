@@ -45,7 +45,51 @@ public class PlayerData : MonoBehaviour
 	public	int	hairColor;
 	public	int	recharget;
 	public	int	vipLevel;
-	public	int	fatigue = 199;//疲劳值
+    private int huoli = 0;//活力值
+    public  int HuoliAttr
+    {
+        get
+        {
+            return huoli;
+        }
+        set
+        {
+            huoli = value;
+            GameEventMgr.Instance.FireEvent<int>(GameEventList.HuoliChanged, huoli);
+        }
+    }
+
+    private int huoliBeginTime = 0;
+    public  int HuoliBegintimeAttr
+    {
+        get
+        {
+            return huoliBeginTime;
+        }
+    }
+
+    public  void    UpdateHuoli(int newhuoli,int huoliBeginTime)
+    {
+        huoli = newhuoli;
+        this.huoliBeginTime = huoliBeginTime;
+        GameEventMgr.Instance.FireEvent<int>(GameEventList.HuoliChanged, huoli);
+
+        bool isNeedRestore = this.huoli < MaxHuoliAttr;
+        
+        if(isNeedRestore != GameDataMgr.Instance.HuoliRestoreAtrr.IsRestoring)
+        {
+            GameDataMgr.Instance.HuoliRestoreAtrr.IsRestoring = isNeedRestore;
+        }        
+    }
+
+    public  int MaxHuoliAttr
+    {
+        get
+        {
+            PlayerLevelAttr levelAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(level);
+            return levelAttr.fatigue;
+        }
+    }
 
     //主角装备加成
     public int equipHealth;

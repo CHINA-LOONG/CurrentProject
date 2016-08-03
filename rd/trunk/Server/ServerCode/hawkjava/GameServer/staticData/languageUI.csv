@@ -1550,9 +1550,11 @@ facebook_share,分享,Share
 facebook_link,连接,Connect
 facebookshare_zhengwen,竞技次数不足,Insufficient Arena Entries
 facebookshare_pvp,"立即获得竞技次数*2
-（每天1次）！","Get 2 Arena Entries immediate
-ly (once per day)!"
-facebookshare_energy,立即获得20活力（每天1次）！,Get 20 Energy immediately (once per day)!
+（每天1次）！","Get 2 Arena Entries immediately 
+(once per day)!"
+facebookshare_energy,"立即获得20活力
+（每天1次）！","Get 20 Energy immediately 
+(once per day)!"
 facebookshare_condition1,1个好友等级达到15级,1 friend reaches level 15
 facebookshare_condition2,2个好友等级达到20级,2 friends reach level 20
 facebookshare_condition3,3个好友等级达到30级,3 friends reach level 30

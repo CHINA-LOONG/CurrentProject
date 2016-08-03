@@ -16,6 +16,8 @@ public class InstanceMap : UIBase
 
     public RectTransform chapterButtonCankao;
     public Button backButton;
+    public Button addHuoliButton;
+    public Text huoliText;
 
     public static InstanceMap Instance;
     private float scrollMaxValueEqualOne = 1.0f;
@@ -37,6 +39,7 @@ public class InstanceMap : UIBase
         }
         RefreshChapterButtons();
         BindListener();
+        OnHuoliChanged(GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
     }
     public override void Clean()
     {
@@ -47,18 +50,21 @@ public class InstanceMap : UIBase
     {
         GameEventMgr.Instance.AddListener<int>(GameEventList.OpenNewChapter, OnOpenNewChapter);
         GameEventMgr.Instance.AddListener<string>(GameEventList.ShowInstanceList, OnShowInstanceList);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
     }
 
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.OpenNewChapter, OnOpenNewChapter);
         GameEventMgr.Instance.RemoveListener<string>(GameEventList.ShowInstanceList, OnShowInstanceList);
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
     }
     private void FirstInit()
     {
         chapterButtonCankao.gameObject.SetActive(false);
         mapScrollRect.onValueChanged.AddListener(OnScrollRectValueChanged);
         EventTriggerListener.Get(backButton.gameObject).onClick = OnBackButtonClicked;
+        EventTriggerListener.Get(addHuoliButton.gameObject).onClick = OnHuoliButtonClicked;
         Instance = this;
 
         scrollMaxValueEqualOne = scrollContentRt.sizeDelta.x - scrollViewRt.rect.width;
@@ -108,6 +114,11 @@ public class InstanceMap : UIBase
         }
     }
 
+    void OnHuoliChanged(int newHuoli)
+    {
+        huoliText.text = string.Format("{0}/{1}", newHuoli, GameDataMgr.Instance.PlayerDataAttr.MaxHuoliAttr);
+    }
+
     void    OnScrollRectValueChanged(Vector2 value)
     {
        
@@ -124,7 +135,13 @@ public class InstanceMap : UIBase
 
     void    OnBackButtonClicked(GameObject go)
     {
+        InstanceList.Close();
         UIMgr.Instance.CloseUI_(this);
+    }
+
+    void OnHuoliButtonClicked(GameObject go)
+    {
+        UseHuoLi.Open();
     }
 
     public  void    OnChapterButtonOnClicked(ChapterButton chapterButton)

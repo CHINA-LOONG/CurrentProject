@@ -47,10 +47,10 @@ public class MainStageController : MonoBehaviour
         mBeginDrag = false;
     }
     //---------------------------------------------------------------------------------------------
-    void OnDestroy()
-    {
-        SaveCurrentRot();
-    }
+    //void OnDestroy()
+    //{
+    //    SaveCurrentRot();
+    //}
     //---------------------------------------------------------------------------------------------
     // Update is called once per frame
     void Update ()
@@ -241,7 +241,7 @@ public class MainStageController : MonoBehaviour
         {
             if (selectedObj.mSelectType == SelectableObjType.Select_Instance_Entry)
             {
-                SaveCurrentRot();
+                //SaveCurrentRot();
                 UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
                 if (uiBuild !=  null)
                 {
@@ -260,6 +260,7 @@ public class MainStageController : MonoBehaviour
         {
             mRotAngle += yawAngle;
             mRecPos.transform.RotateAround(mCentrePos.position, Vector3.up, -yawAngle);
+            SaveCurrentRot();
         }
     }
     //---------------------------------------------------------------------------------------------

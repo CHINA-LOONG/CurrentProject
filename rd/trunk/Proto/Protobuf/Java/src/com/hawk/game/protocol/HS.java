@@ -553,93 +553,101 @@ public final class HS {
      */
     GEM_COMPOSE_S(66, 4014),
     /**
+     * <code>ITEM_BUY_AND_USE_C = 4015;</code>
+     */
+    ITEM_BUY_AND_USE_C(67, 4015),
+    /**
+     * <code>ITEM_BUY_AND_USE_S = 4016;</code>
+     */
+    ITEM_BUY_AND_USE_S(68, 4016),
+    /**
      * <code>EQUIP_SELL_C = 4101;</code>
      */
-    EQUIP_SELL_C(67, 4101),
+    EQUIP_SELL_C(69, 4101),
     /**
      * <code>EQUIP_SELL_S = 4102;</code>
      */
-    EQUIP_SELL_S(68, 4102),
+    EQUIP_SELL_S(70, 4102),
     /**
      * <code>EQUIP_BUY_C = 4103;</code>
      */
-    EQUIP_BUY_C(69, 4103),
+    EQUIP_BUY_C(71, 4103),
     /**
      * <code>EQUIP_BUY_S = 4104;</code>
      */
-    EQUIP_BUY_S(70, 4104),
+    EQUIP_BUY_S(72, 4104),
     /**
      * <code>EQUIP_COMPOSE_C = 4105;</code>
      */
-    EQUIP_COMPOSE_C(71, 4105),
+    EQUIP_COMPOSE_C(73, 4105),
     /**
      * <code>EQUIP_COMPOSE_S = 4106;</code>
      */
-    EQUIP_COMPOSE_S(72, 4106),
+    EQUIP_COMPOSE_S(74, 4106),
     /**
      * <code>EQUIP_INCREASE_LEVEL_C = 4107;</code>
      */
-    EQUIP_INCREASE_LEVEL_C(73, 4107),
+    EQUIP_INCREASE_LEVEL_C(75, 4107),
     /**
      * <code>EQUIP_INCREASE_LEVEL_S = 4108;</code>
      */
-    EQUIP_INCREASE_LEVEL_S(74, 4108),
+    EQUIP_INCREASE_LEVEL_S(76, 4108),
     /**
      * <code>EQUIP_INCREASE_STAGE_C = 4109;</code>
      */
-    EQUIP_INCREASE_STAGE_C(75, 4109),
+    EQUIP_INCREASE_STAGE_C(77, 4109),
     /**
      * <code>EQUIP_INCREASE_STAGE_S = 4110;</code>
      */
-    EQUIP_INCREASE_STAGE_S(76, 4110),
+    EQUIP_INCREASE_STAGE_S(78, 4110),
     /**
      * <code>EQUIP_PUNCH_C = 4111;</code>
      */
-    EQUIP_PUNCH_C(77, 4111),
+    EQUIP_PUNCH_C(79, 4111),
     /**
      * <code>EQUIP_PUNCH_S = 4112;</code>
      */
-    EQUIP_PUNCH_S(78, 4112),
+    EQUIP_PUNCH_S(80, 4112),
     /**
      * <code>EQUIP_GEM_C = 4113;</code>
      */
-    EQUIP_GEM_C(79, 4113),
+    EQUIP_GEM_C(81, 4113),
     /**
      * <code>EQUIP_GEM_S = 4114;</code>
      */
-    EQUIP_GEM_S(80, 4114),
+    EQUIP_GEM_S(82, 4114),
     /**
      * <code>EQUIP_DECOMPOSE_C = 4115;</code>
      */
-    EQUIP_DECOMPOSE_C(81, 4115),
+    EQUIP_DECOMPOSE_C(83, 4115),
     /**
      * <code>EQUIP_DECOMPOSE_S = 4116;</code>
      */
-    EQUIP_DECOMPOSE_S(82, 4116),
+    EQUIP_DECOMPOSE_S(84, 4116),
     /**
      * <code>EQUIP_MONSTER_DRESS_C = 4120;</code>
      */
-    EQUIP_MONSTER_DRESS_C(83, 4120),
+    EQUIP_MONSTER_DRESS_C(85, 4120),
     /**
      * <code>EQUIP_MONSTER_DRESS_S = 4121;</code>
      */
-    EQUIP_MONSTER_DRESS_S(84, 4121),
+    EQUIP_MONSTER_DRESS_S(86, 4121),
     /**
      * <code>EQUIP_MONSTER_UNDRESS_C = 4122;</code>
      */
-    EQUIP_MONSTER_UNDRESS_C(85, 4122),
+    EQUIP_MONSTER_UNDRESS_C(87, 4122),
     /**
      * <code>EQUIP_MONSTER_UNDRESS_S = 4123;</code>
      */
-    EQUIP_MONSTER_UNDRESS_S(86, 4123),
+    EQUIP_MONSTER_UNDRESS_S(88, 4123),
     /**
      * <code>EQUIP_MONSTER_REPLACE_C = 4124;</code>
      */
-    EQUIP_MONSTER_REPLACE_C(87, 4124),
+    EQUIP_MONSTER_REPLACE_C(89, 4124),
     /**
      * <code>EQUIP_MONSTER_REPLACE_S = 4125;</code>
      */
-    EQUIP_MONSTER_REPLACE_S(88, 4125),
+    EQUIP_MONSTER_REPLACE_S(90, 4125),
     /**
      * <code>QUEST_SUBMIT_C = 5001;</code>
      *
@@ -647,23 +655,23 @@ public final class HS {
      * 任务
      * </pre>
      */
-    QUEST_SUBMIT_C(89, 5001),
+    QUEST_SUBMIT_C(91, 5001),
     /**
      * <code>QUEST_SUBMIT_S = 5002;</code>
      */
-    QUEST_SUBMIT_S(90, 5002),
+    QUEST_SUBMIT_S(92, 5002),
     /**
      * <code>QUEST_ACCEPT_S = 5003;</code>
      */
-    QUEST_ACCEPT_S(91, 5003),
+    QUEST_ACCEPT_S(93, 5003),
     /**
      * <code>QUEST_UPDATE_S = 5004;</code>
      */
-    QUEST_UPDATE_S(92, 5004),
+    QUEST_UPDATE_S(94, 5004),
     /**
      * <code>QUEST_REMOVE_S = 5005;</code>
      */
-    QUEST_REMOVE_S(93, 5005),
+    QUEST_REMOVE_S(95, 5005),
     /**
      * <code>MAIL_READ_C = 6001;</code>
      *
@@ -671,27 +679,27 @@ public final class HS {
      * 邮件
      * </pre>
      */
-    MAIL_READ_C(94, 6001),
+    MAIL_READ_C(96, 6001),
     /**
      * <code>MAIL_RECEIVE_C = 6002;</code>
      */
-    MAIL_RECEIVE_C(95, 6002),
+    MAIL_RECEIVE_C(97, 6002),
     /**
      * <code>MAIL_RECEIVE_S = 6003;</code>
      */
-    MAIL_RECEIVE_S(96, 6003),
+    MAIL_RECEIVE_S(98, 6003),
     /**
      * <code>MAIL_RECEIVE_ALL_C = 6004;</code>
      */
-    MAIL_RECEIVE_ALL_C(97, 6004),
+    MAIL_RECEIVE_ALL_C(99, 6004),
     /**
      * <code>MAIL_RECEIVE_ALL_S = 6005;</code>
      */
-    MAIL_RECEIVE_ALL_S(98, 6005),
+    MAIL_RECEIVE_ALL_S(100, 6005),
     /**
      * <code>MAIL_NEW_S = 6006;</code>
      */
-    MAIL_NEW_S(99, 6006),
+    MAIL_NEW_S(101, 6006),
     /**
      * <code>IM_CHAT_SEND_C = 7001;</code>
      *
@@ -699,19 +707,19 @@ public final class HS {
      * 即时通讯
      * </pre>
      */
-    IM_CHAT_SEND_C(100, 7001),
+    IM_CHAT_SEND_C(102, 7001),
     /**
      * <code>IM_PUSH_S = 7002;</code>
      */
-    IM_PUSH_S(101, 7002),
+    IM_PUSH_S(103, 7002),
     /**
      * <code>IM_PLAYER_GET_C = 7003;</code>
      */
-    IM_PLAYER_GET_C(102, 7003),
+    IM_PLAYER_GET_C(104, 7003),
     /**
      * <code>IM_PLAYER_GET_S = 7004;</code>
      */
-    IM_PLAYER_GET_S(103, 7004),
+    IM_PLAYER_GET_S(105, 7004),
     /**
      * <code>SHOP_DATA_INIT_C = 8001;</code>
      *
@@ -719,47 +727,47 @@ public final class HS {
      * 商店
      * </pre>
      */
-    SHOP_DATA_INIT_C(104, 8001),
+    SHOP_DATA_INIT_C(106, 8001),
     /**
      * <code>SHOP_DATA_INIT_S = 8002;</code>
      */
-    SHOP_DATA_INIT_S(105, 8002),
+    SHOP_DATA_INIT_S(107, 8002),
     /**
      * <code>SHOP_REFRESH_C = 8003;</code>
      */
-    SHOP_REFRESH_C(106, 8003),
+    SHOP_REFRESH_C(108, 8003),
     /**
      * <code>SHOP_REFRESH_S = 8004;</code>
      */
-    SHOP_REFRESH_S(107, 8004),
+    SHOP_REFRESH_S(109, 8004),
     /**
      * <code>SHOP_ITEM_BUY_C = 8005;</code>
      */
-    SHOP_ITEM_BUY_C(108, 8005),
+    SHOP_ITEM_BUY_C(110, 8005),
     /**
      * <code>SHOP_ITEM_BUY_S = 8006;</code>
      */
-    SHOP_ITEM_BUY_S(109, 8006),
+    SHOP_ITEM_BUY_S(111, 8006),
     /**
      * <code>SHOP_DATA_SYN_C = 8007;</code>
      */
-    SHOP_DATA_SYN_C(110, 8007),
+    SHOP_DATA_SYN_C(112, 8007),
     /**
      * <code>SHOP_DATA_SYN_S = 8008;</code>
      */
-    SHOP_DATA_SYN_S(111, 8008),
+    SHOP_DATA_SYN_S(113, 8008),
     /**
      * <code>SHOP_GOLD2COIN_C = 8009;</code>
      */
-    SHOP_GOLD2COIN_C(112, 8009),
+    SHOP_GOLD2COIN_C(114, 8009),
     /**
      * <code>SHOP_GOLD2COIN_S = 8010;</code>
      */
-    SHOP_GOLD2COIN_S(113, 8010),
+    SHOP_GOLD2COIN_S(115, 8010),
     /**
      * <code>SHOP_REFRESH_TIMES = 8011;</code>
      */
-    SHOP_REFRESH_TIMES(114, 8011),
+    SHOP_REFRESH_TIMES(116, 8011),
     /**
      * <code>ALLIANCE_CREATE_C = 9001;</code>
      *
@@ -767,11 +775,11 @@ public final class HS {
      * 公会
      * </pre>
      */
-    ALLIANCE_CREATE_C(115, 9001),
+    ALLIANCE_CREATE_C(117, 9001),
     /**
      * <code>ALLIANCE_CREATE_S = 9002;</code>
      */
-    ALLIANCE_CREATE_S(116, 9002),
+    ALLIANCE_CREATE_S(118, 9002),
     /**
      * <code>SETTING_LANGUAGE_C = 10001;</code>
      *
@@ -779,19 +787,19 @@ public final class HS {
      * 系统设置
      * </pre>
      */
-    SETTING_LANGUAGE_C(117, 10001),
+    SETTING_LANGUAGE_C(119, 10001),
     /**
      * <code>SETTING_LANGUAGE_S = 10002;</code>
      */
-    SETTING_LANGUAGE_S(118, 10002),
+    SETTING_LANGUAGE_S(120, 10002),
     /**
      * <code>SETTING_BLOCK_C = 10003;</code>
      */
-    SETTING_BLOCK_C(119, 10003),
+    SETTING_BLOCK_C(121, 10003),
     /**
      * <code>SETTING_BLOCK_S = 10004;</code>
      */
-    SETTING_BLOCK_S(120, 10004),
+    SETTING_BLOCK_S(122, 10004),
     /**
      * <code>STATISTICS_EXP_LEFT_TIMES = 11001;</code>
      *
@@ -799,7 +807,7 @@ public final class HS {
      * 经验药水剩余次数
      * </pre>
      */
-    STATISTICS_EXP_LEFT_TIMES(121, 11001),
+    STATISTICS_EXP_LEFT_TIMES(123, 11001),
     /**
      * <code>STATISTICS_RESET_SYN = 11002;</code>
      *
@@ -807,7 +815,7 @@ public final class HS {
      * 零点重置
      * </pre>
      */
-    STATISTICS_RESET_SYN(122, 11002),
+    STATISTICS_RESET_SYN(124, 11002),
     /**
      * <code>STATISTICS_SHOP_REFRESH = 11003;</code>
      *
@@ -815,7 +823,7 @@ public final class HS {
      * 商店刷新
      * </pre>
      */
-    STATISTICS_SHOP_REFRESH(123, 11003),
+    STATISTICS_SHOP_REFRESH(125, 11003),
     ;
 
     /**
@@ -1106,6 +1114,14 @@ public final class HS {
      * <code>GEM_COMPOSE_S = 4014;</code>
      */
     public static final int GEM_COMPOSE_S_VALUE = 4014;
+    /**
+     * <code>ITEM_BUY_AND_USE_C = 4015;</code>
+     */
+    public static final int ITEM_BUY_AND_USE_C_VALUE = 4015;
+    /**
+     * <code>ITEM_BUY_AND_USE_S = 4016;</code>
+     */
+    public static final int ITEM_BUY_AND_USE_S_VALUE = 4016;
     /**
      * <code>EQUIP_SELL_C = 4101;</code>
      */
@@ -1443,6 +1459,8 @@ public final class HS {
         case 4012: return ITEM_COMPOSE_S;
         case 4013: return GEM_COMPOSE_C;
         case 4014: return GEM_COMPOSE_S;
+        case 4015: return ITEM_BUY_AND_USE_C;
+        case 4016: return ITEM_BUY_AND_USE_S;
         case 4101: return EQUIP_SELL_C;
         case 4102: return EQUIP_SELL_S;
         case 4103: return EQUIP_BUY_C;
@@ -1564,7 +1582,7 @@ public final class HS {
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
       "\n\nERROR_CODE\020\004*@\n\002gm\022\024\n\020GEN_TEST_ACCOUNT" +
       "\020d\022\021\n\rGMOPERATION_C\020e\022\021\n\rGMOPERATION_S\020f" +
-      "*\370\025\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n" +
+      "*\252\026\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n" +
       "\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICKOUT_S" +
       "\020\354\007\022\017\n\nSYNCINFO_C\020\355\007\022\017\n\nSYNCINFO_S\020\356\007\022\020\n" +
       "\013RECCONECT_C\020\357\007\022\020\n\013RECCONECT_S\020\360\007\022\027\n\022PLA" +
@@ -1601,40 +1619,42 @@ public final class HS {
       "BATCH_S\020\250\037\022\017\n\nITEM_BUY_C\020\251\037\022\017\n\nITEM_BUY_" +
       "S\020\252\037\022\023\n\016ITEM_COMPOSE_C\020\253\037\022\023\n\016ITEM_COMPOS",
       "E_S\020\254\037\022\022\n\rGEM_COMPOSE_C\020\255\037\022\022\n\rGEM_COMPOS" +
-      "E_S\020\256\037\022\021\n\014EQUIP_SELL_C\020\205 \022\021\n\014EQUIP_SELL_" +
-      "S\020\206 \022\020\n\013EQUIP_BUY_C\020\207 \022\020\n\013EQUIP_BUY_S\020\210 " +
-      "\022\024\n\017EQUIP_COMPOSE_C\020\211 \022\024\n\017EQUIP_COMPOSE_" +
-      "S\020\212 \022\033\n\026EQUIP_INCREASE_LEVEL_C\020\213 \022\033\n\026EQU" +
-      "IP_INCREASE_LEVEL_S\020\214 \022\033\n\026EQUIP_INCREASE" +
-      "_STAGE_C\020\215 \022\033\n\026EQUIP_INCREASE_STAGE_S\020\216 " +
-      "\022\022\n\rEQUIP_PUNCH_C\020\217 \022\022\n\rEQUIP_PUNCH_S\020\220 " +
-      "\022\020\n\013EQUIP_GEM_C\020\221 \022\020\n\013EQUIP_GEM_S\020\222 \022\026\n\021" +
-      "EQUIP_DECOMPOSE_C\020\223 \022\026\n\021EQUIP_DECOMPOSE_",
-      "S\020\224 \022\032\n\025EQUIP_MONSTER_DRESS_C\020\230 \022\032\n\025EQUI" +
-      "P_MONSTER_DRESS_S\020\231 \022\034\n\027EQUIP_MONSTER_UN" +
-      "DRESS_C\020\232 \022\034\n\027EQUIP_MONSTER_UNDRESS_S\020\233 " +
-      "\022\034\n\027EQUIP_MONSTER_REPLACE_C\020\234 \022\034\n\027EQUIP_" +
-      "MONSTER_REPLACE_S\020\235 \022\023\n\016QUEST_SUBMIT_C\020\211" +
-      "\'\022\023\n\016QUEST_SUBMIT_S\020\212\'\022\023\n\016QUEST_ACCEPT_S" +
-      "\020\213\'\022\023\n\016QUEST_UPDATE_S\020\214\'\022\023\n\016QUEST_REMOVE" +
-      "_S\020\215\'\022\020\n\013MAIL_READ_C\020\361.\022\023\n\016MAIL_RECEIVE_" +
-      "C\020\362.\022\023\n\016MAIL_RECEIVE_S\020\363.\022\027\n\022MAIL_RECEIV" +
-      "E_ALL_C\020\364.\022\027\n\022MAIL_RECEIVE_ALL_S\020\365.\022\017\n\nM",
-      "AIL_NEW_S\020\366.\022\023\n\016IM_CHAT_SEND_C\020\3316\022\016\n\tIM_" +
-      "PUSH_S\020\3326\022\024\n\017IM_PLAYER_GET_C\020\3336\022\024\n\017IM_PL" +
-      "AYER_GET_S\020\3346\022\025\n\020SHOP_DATA_INIT_C\020\301>\022\025\n\020" +
-      "SHOP_DATA_INIT_S\020\302>\022\023\n\016SHOP_REFRESH_C\020\303>" +
-      "\022\023\n\016SHOP_REFRESH_S\020\304>\022\024\n\017SHOP_ITEM_BUY_C" +
-      "\020\305>\022\024\n\017SHOP_ITEM_BUY_S\020\306>\022\024\n\017SHOP_DATA_S" +
-      "YN_C\020\307>\022\024\n\017SHOP_DATA_SYN_S\020\310>\022\025\n\020SHOP_GO" +
-      "LD2COIN_C\020\311>\022\025\n\020SHOP_GOLD2COIN_S\020\312>\022\027\n\022S" +
-      "HOP_REFRESH_TIMES\020\313>\022\026\n\021ALLIANCE_CREATE_" +
-      "C\020\251F\022\026\n\021ALLIANCE_CREATE_S\020\252F\022\027\n\022SETTING_",
-      "LANGUAGE_C\020\221N\022\027\n\022SETTING_LANGUAGE_S\020\222N\022\024" +
-      "\n\017SETTING_BLOCK_C\020\223N\022\024\n\017SETTING_BLOCK_S\020" +
-      "\224N\022\036\n\031STATISTICS_EXP_LEFT_TIMES\020\371U\022\031\n\024ST" +
-      "ATISTICS_RESET_SYN\020\372U\022\034\n\027STATISTICS_SHOP" +
-      "_REFRESH\020\373UB\030\n\026com.hawk.game.protocol"
+      "E_S\020\256\037\022\027\n\022ITEM_BUY_AND_USE_C\020\257\037\022\027\n\022ITEM_" +
+      "BUY_AND_USE_S\020\260\037\022\021\n\014EQUIP_SELL_C\020\205 \022\021\n\014E" +
+      "QUIP_SELL_S\020\206 \022\020\n\013EQUIP_BUY_C\020\207 \022\020\n\013EQUI" +
+      "P_BUY_S\020\210 \022\024\n\017EQUIP_COMPOSE_C\020\211 \022\024\n\017EQUI" +
+      "P_COMPOSE_S\020\212 \022\033\n\026EQUIP_INCREASE_LEVEL_C" +
+      "\020\213 \022\033\n\026EQUIP_INCREASE_LEVEL_S\020\214 \022\033\n\026EQUI" +
+      "P_INCREASE_STAGE_C\020\215 \022\033\n\026EQUIP_INCREASE_" +
+      "STAGE_S\020\216 \022\022\n\rEQUIP_PUNCH_C\020\217 \022\022\n\rEQUIP_" +
+      "PUNCH_S\020\220 \022\020\n\013EQUIP_GEM_C\020\221 \022\020\n\013EQUIP_GE",
+      "M_S\020\222 \022\026\n\021EQUIP_DECOMPOSE_C\020\223 \022\026\n\021EQUIP_" +
+      "DECOMPOSE_S\020\224 \022\032\n\025EQUIP_MONSTER_DRESS_C\020" +
+      "\230 \022\032\n\025EQUIP_MONSTER_DRESS_S\020\231 \022\034\n\027EQUIP_" +
+      "MONSTER_UNDRESS_C\020\232 \022\034\n\027EQUIP_MONSTER_UN" +
+      "DRESS_S\020\233 \022\034\n\027EQUIP_MONSTER_REPLACE_C\020\234 " +
+      "\022\034\n\027EQUIP_MONSTER_REPLACE_S\020\235 \022\023\n\016QUEST_" +
+      "SUBMIT_C\020\211\'\022\023\n\016QUEST_SUBMIT_S\020\212\'\022\023\n\016QUES" +
+      "T_ACCEPT_S\020\213\'\022\023\n\016QUEST_UPDATE_S\020\214\'\022\023\n\016QU" +
+      "EST_REMOVE_S\020\215\'\022\020\n\013MAIL_READ_C\020\361.\022\023\n\016MAI" +
+      "L_RECEIVE_C\020\362.\022\023\n\016MAIL_RECEIVE_S\020\363.\022\027\n\022M",
+      "AIL_RECEIVE_ALL_C\020\364.\022\027\n\022MAIL_RECEIVE_ALL" +
+      "_S\020\365.\022\017\n\nMAIL_NEW_S\020\366.\022\023\n\016IM_CHAT_SEND_C" +
+      "\020\3316\022\016\n\tIM_PUSH_S\020\3326\022\024\n\017IM_PLAYER_GET_C\020\333" +
+      "6\022\024\n\017IM_PLAYER_GET_S\020\3346\022\025\n\020SHOP_DATA_INI" +
+      "T_C\020\301>\022\025\n\020SHOP_DATA_INIT_S\020\302>\022\023\n\016SHOP_RE" +
+      "FRESH_C\020\303>\022\023\n\016SHOP_REFRESH_S\020\304>\022\024\n\017SHOP_" +
+      "ITEM_BUY_C\020\305>\022\024\n\017SHOP_ITEM_BUY_S\020\306>\022\024\n\017S" +
+      "HOP_DATA_SYN_C\020\307>\022\024\n\017SHOP_DATA_SYN_S\020\310>\022" +
+      "\025\n\020SHOP_GOLD2COIN_C\020\311>\022\025\n\020SHOP_GOLD2COIN" +
+      "_S\020\312>\022\027\n\022SHOP_REFRESH_TIMES\020\313>\022\026\n\021ALLIAN",
+      "CE_CREATE_C\020\251F\022\026\n\021ALLIANCE_CREATE_S\020\252F\022\027" +
+      "\n\022SETTING_LANGUAGE_C\020\221N\022\027\n\022SETTING_LANGU" +
+      "AGE_S\020\222N\022\024\n\017SETTING_BLOCK_C\020\223N\022\024\n\017SETTIN" +
+      "G_BLOCK_S\020\224N\022\036\n\031STATISTICS_EXP_LEFT_TIME" +
+      "S\020\371U\022\031\n\024STATISTICS_RESET_SYN\020\372U\022\034\n\027STATI" +
+      "STICS_SHOP_REFRESH\020\373UB\030\n\026com.hawk.game.p" +
+      "rotocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

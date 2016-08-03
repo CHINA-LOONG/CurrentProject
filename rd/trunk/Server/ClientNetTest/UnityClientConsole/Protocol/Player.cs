@@ -55,6 +55,14 @@ namespace PB
       get { return _fatigue; }
       set { _fatigue = value; }
     }
+    private int _fatigueBeginTime = default(int);
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"fatigueBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int fatigueBeginTime
+    {
+      get { return _fatigueBeginTime; }
+      set { _fatigueBeginTime = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -184,7 +184,7 @@ public class FixCountScrollView : MonoBehaviour
         return realIndex;
     }
 
-    public void InitContentSize(int count,IScrollView iScrollView)
+    public void InitContentSize(int count,IScrollView iScrollView,bool reset=false)
     {
         maxCount=count;
         this.iScrollViewDelegate = iScrollView;
@@ -212,8 +212,6 @@ public class FixCountScrollView : MonoBehaviour
             conners[i].x = temp.x;
             conners[i].y = temp.y;
         }
-
-        startPos = m_Content.localPosition;
         
         int childCont = 0;                      //创建列表项的个数
         Vector2 contentSize;                    //活动面板的大小
@@ -242,23 +240,28 @@ public class FixCountScrollView : MonoBehaviour
                 m_Content.sizeDelta = contentSize;
                 break;
         }
+        if (reset || m_Child.Count <= 0)
+        {
+            CleanContent();
+            for (int i = 0; i < childCont; i++)
+            {
+                Transform item = iScrollViewDelegate.CreateData(m_Content);
+                item.GetComponent<RectTransform>().sizeDelta = m_Grid.cellSize;
+                m_Child.Add(item);
+            }
+        }
+        ResetChildPosition();
+        InitListData();
+    }
+
+    public void CleanContent()
+    {
         iScrollViewDelegate.CleanData(m_Child);
-        if (m_Child.Count!=0)
+        if (m_Child.Count != 0)
         {
             m_Child.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
             m_Child.Clear();
         }
-
-        for (int i = 0; i < childCont; i++)
-        {
-            Transform item=iScrollViewDelegate.CreateData(m_Content);
-            item.GetComponent<RectTransform>().sizeDelta = m_Grid.cellSize;
-            m_Child.Add(item);
-        }
-
-        ResetChildPosition();
-        InitListData();
-
     }
 
     void ResetChildPosition()

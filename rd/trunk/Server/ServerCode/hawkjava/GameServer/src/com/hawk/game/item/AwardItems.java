@@ -386,6 +386,8 @@ public class AwardItems {
 					}
 				}
 				else if (Integer.valueOf(rewardItem.getItemId()).intValue() == Const.changeType.CHANGE_FATIGUE_VALUE) {
+					// 更新活力值
+					player.updateFatigue();
 					if (player.getPlayerData().getStatisticsEntity().getFatigue() +  rewardItem.getCount() > GsConst.MAX_FATIGUE_COUNT) {
 						return AwardCheckResult.FATIGUE_LIMIT;
 					}
@@ -473,6 +475,7 @@ public class AwardItems {
 					playerBuilder.setExp(player.getExp());
 					playerBuilder.setLevel(player.getLevel());	
 					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
+					playerBuilder.setFatigueBeginTime((int)(player.getPlayerData().getStatisticsEntity().getFatigueBeginTime().getTimeInMillis() / 1000));
 				}
 
 				if (invalidType== true) {

@@ -7,7 +7,6 @@ public class LevelUp : UIBase
 {
     public static string ViewName = "LevelUp";
 
-    public Text title;
     public Text levelDesc;
     public Text curPilaoDesc;
     public Text curPilaoValue;
@@ -26,14 +25,23 @@ public class LevelUp : UIBase
     public  void    InitWith(int oldLevel, int targetLevel, int oldPilao, int newPilao)
     {
        // title.text = StaticDataMgr.Instance.GetTextByID("main_levelup_title");
-        curPilaoDesc.text = StaticDataMgr.Instance.GetTextByID("main_levelup_dengji");
+        curPilaoDesc.text = StaticDataMgr.Instance.GetTextByID("main_levelup_pilao");
         maxPilaoDesc.text = StaticDataMgr.Instance.GetTextByID("main_levelup_shangxian");
 
-        curPilaoValue.text = string.Format(StaticDataMgr.Instance.GetTextByID("main_levelup_pilao"), oldPilao, newPilao);
+        PlayerLevelAttr oldLevelAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(oldLevel);
+        PlayerLevelAttr newLevelAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(targetLevel);
+       
+        curPilaoValue.text = string.Format("{0}-{1}", oldPilao, newPilao);
+        maxPilaoValue.text = string.Format("{0}-{1}", oldLevelAttr.fatigue, newLevelAttr.fatigue);
 
         levelDesc.text = string.Format(StaticDataMgr.Instance.GetTextByID("main_levelup_dengji"), targetLevel);
 
-        InitFunctions(targetLevel);
+        int nextLevel = oldLevel + 1;
+        if(targetLevel < nextLevel)
+        {
+            nextLevel = targetLevel;
+        }
+        InitFunctions(nextLevel);
 
         EventTriggerListener.Get(conformButton.gameObject).onClick = OnConformButtonClicked;
     }
@@ -47,9 +55,20 @@ public class LevelUp : UIBase
             return;
         }
 
+        int noOpenCount = 0;
         for(int i =0;i<listfunction.Count;++i)
         {
-            FunctionItem subItem = FunctionItem.CreateWith(listfunction[i]);
+            var subFunction = listfunction[i];
+            int playerLevel = GameDataMgr.Instance.PlayerDataAttr.LevelAttr;
+            if (playerLevel < subFunction.needlevel)
+            {
+                noOpenCount++;
+                if (noOpenCount > 2)
+                {
+                    break;
+                }
+            }
+            FunctionItem subItem = FunctionItem.CreateWith(subFunction);
             functionScrollView.AddElement(subItem.gameObject);
         }
         

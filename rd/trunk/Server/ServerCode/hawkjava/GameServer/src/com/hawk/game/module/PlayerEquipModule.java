@@ -501,7 +501,7 @@ public class PlayerEquipModule extends PlayerModule{
 			return ;
 		}
 		
-		if (equipEntity.getMonsterId() != GsConst.EQUIPNOTDRESS) {
+		if (equipEntity.getMonsterId() != GsConst.EQUIP_NOT_DRESS) {
 			sendError(hsCode, Status.itemError.EQUIP_DRESS_ALREADY_VALUE);
 			return ;
 		}
@@ -558,7 +558,7 @@ public class PlayerEquipModule extends PlayerModule{
 		}
 
 		int monsterId = equipEntity.getMonsterId();
-		equipEntity.setMonsterId(GsConst.EQUIPNOTDRESS);
+		equipEntity.setMonsterId(GsConst.EQUIP_NOT_DRESS);
 		equipEntity.notifyUpdate(true);
 		
 		HSEquipMonsterUndressRet.Builder response = HSEquipMonsterUndressRet.newBuilder();
@@ -591,7 +591,7 @@ public class PlayerEquipModule extends PlayerModule{
 			return ;
 		}
 		
-		if (newEntity.getMonsterId() != GsConst.EQUIPNOTDRESS) {
+		if (newEntity.getMonsterId() != GsConst.EQUIP_NOT_DRESS) {
 			sendError(hsCode, Status.itemError.EQUIP_DRESS_ALREADY);
 			return ;
 		}
@@ -617,7 +617,7 @@ public class PlayerEquipModule extends PlayerModule{
 		newEntity.setMonsterId(monsterId);
 		newEntity.notifyUpdate(true);
 		
-		oldEntity.setMonsterId(GsConst.EQUIPNOTDRESS);
+		oldEntity.setMonsterId(GsConst.EQUIP_NOT_DRESS);
 		oldEntity.notifyUpdate(true);
 		
 		HSEquipMonsterReplaceRet.Builder response = HSEquipMonsterReplaceRet.newBuilder();

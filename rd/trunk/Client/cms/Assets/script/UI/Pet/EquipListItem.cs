@@ -50,7 +50,7 @@ public class EquipListItem : MonoBehaviour
         ScrollViewEventListener.Get(btnUsed.gameObject).onClick = OnClickUsedEquip;
     }
 
-    public void Refresh(EquipData data)
+    public void ReloadData(EquipData data)
     {
         info.equipData = data;
         info.equipInfo = StaticDataMgr.Instance.GetEquipProtoData(data.equipId, data.stage);

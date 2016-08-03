@@ -96,22 +96,22 @@ public class VersionEntity extends HawkDBEntity{
 	}
 
 	@Override
-	public Calendar getCreateTime() {
-		return null;
+	public int getCreateTime() {
+		return 0;
 	}
 
 	@Override
-	public void setCreateTime(Calendar createTime) {
+	public void setCreateTime(int createTime) {
 		
 	}
 	
 	@Override
-	public Calendar getUpdateTime() {
-		return null;
+	public int getUpdateTime() {
+		return 0;
 	}
 
 	@Override
-	public void setUpdateTime(Calendar updateTime) {
+	public void setUpdateTime(int updateTime) {
 		
 	}
 

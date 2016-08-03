@@ -49,6 +49,12 @@ public class GameTimeMgr
 		return serverTime;
 	}
 
+    public  int GetServerTimeStamp()
+    {
+        int serverTimeStamp = TimeStamp() - StatisticsDataMgr.Instance.TimeDiffer;
+        return serverTimeStamp;
+    }
+
     public int GetYear()
     {
         return Now.Year;

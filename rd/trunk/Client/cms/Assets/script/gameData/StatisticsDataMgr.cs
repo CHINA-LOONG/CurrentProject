@@ -55,13 +55,14 @@ public class StatisticsDataMgr : MonoBehaviour {
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);  
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.STATISTICS_EXP_LEFT_TIMES.GetHashCode ().ToString (), OnExpLeftTimesSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_SHOP_REFRESH.GetHashCode().ToString(), OnShopNeedRefreshSync);
     }
 
     void OnStatisticsInfoSync(ProtocolMessage message)
     {
         PB.HSStatisticsInfoSync staticsticsData = message.GetProtocolBody<PB.HSStatisticsInfoSync>();
         SkillPoints = staticsticsData.skillPoint;
-        skillTimeBegin = staticsticsData.skillPointTimeStamp;
+        skillTimeBegin = staticsticsData.skillPointBeginTime;
 		GameDataMgr.Instance.UserDataAttr.orderServerKey =  staticsticsData.orderServerKey;
 		GameDataMgr.Instance.ShopDataMgrAttr.monthCardLeft = staticsticsData.monthCardLeft;
 		GameDataMgr.Instance.ShopDataMgrAttr.listRechageState = staticsticsData.rechargeState;
@@ -69,6 +70,8 @@ public class StatisticsDataMgr : MonoBehaviour {
 		gold2coinExchargeTimes = staticsticsData.gold2CoinTimes;
 
         UpdateServerTime(staticsticsData.timeStamp);
+
+        GameDataMgr.Instance.PlayerDataAttr.UpdateHuoli(staticsticsData.fatigue, staticsticsData.fatigueBeginTime);
     }
 
 	void	OnExpLeftTimesSync(ProtocolMessage message)

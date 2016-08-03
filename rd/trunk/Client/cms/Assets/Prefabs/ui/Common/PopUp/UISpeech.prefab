@@ -1278,7 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613cf03fa1dbe0b4ea90fce8ec341e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mViewType: 1
+  mViewType: 2
   btnSkip: {fileID: 11411102}
   btnNext: {fileID: 11459404}
   imgNextTip: {fileID: 11401724}
@@ -1897,7 +1897,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: mViewType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131894}

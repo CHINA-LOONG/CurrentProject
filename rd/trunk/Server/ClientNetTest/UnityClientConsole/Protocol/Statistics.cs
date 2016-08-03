@@ -75,11 +75,18 @@ namespace PB
       get { return _hardTopIndex; }
       set { _hardTopIndex = value; }
     }
-    private readonly global::System.Collections.Generic.List<int> _boxState = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(5, Name=@"boxState", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> boxState
+    private readonly global::System.Collections.Generic.List<int> _normalBoxState = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(5, Name=@"normalBoxState", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> normalBoxState
     {
-      get { return _boxState; }
+      get { return _normalBoxState; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<int> _hardBoxState = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"hardBoxState", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> hardBoxState
+    {
+      get { return _hardBoxState; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;
@@ -137,22 +144,36 @@ namespace PB
       get { return _monsterCollect; }
     }
   
+    private int _fatigue;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"fatigue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int fatigue
+    {
+      get { return _fatigue; }
+      set { _fatigue = value; }
+    }
+    private int _fatigueBeginTime;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"fatigueBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int fatigueBeginTime
+    {
+      get { return _fatigueBeginTime; }
+      set { _fatigueBeginTime = value; }
+    }
     private int _skillPoint;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"skillPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"skillPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int skillPoint
     {
       get { return _skillPoint; }
       set { _skillPoint = value; }
     }
-    private int _skillPointTimeStamp;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"skillPointTimeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int skillPointTimeStamp
+    private int _skillPointBeginTime;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"skillPointBeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int skillPointBeginTime
     {
-      get { return _skillPointTimeStamp; }
-      set { _skillPointTimeStamp = value; }
+      get { return _skillPointBeginTime; }
+      set { _skillPointBeginTime = value; }
     }
     private int _timeStamp = default(int);
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"timeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int timeStamp
     {
@@ -160,35 +181,35 @@ namespace PB
       set { _timeStamp = value; }
     }
     private string _orderServerKey;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"orderServerKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"orderServerKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string orderServerKey
     {
       get { return _orderServerKey; }
       set { _orderServerKey = value; }
     }
     private readonly global::System.Collections.Generic.List<RechargeState> _rechargeState = new global::System.Collections.Generic.List<RechargeState>();
-    [global::ProtoBuf.ProtoMember(8, Name=@"rechargeState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(10, Name=@"rechargeState", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<RechargeState> rechargeState
     {
       get { return _rechargeState; }
     }
   
     private int _monthCardLeft;
-    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"monthCardLeft", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"monthCardLeft", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int monthCardLeft
     {
       get { return _monthCardLeft; }
       set { _monthCardLeft = value; }
     }
     private int _gold2CoinTimes;
-    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"gold2CoinTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"gold2CoinTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int gold2CoinTimes
     {
       get { return _gold2CoinTimes; }
       set { _gold2CoinTimes = value; }
     }
     private HSStatisticsExpLeftTimeSync _expLeftTimes;
-    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"expLeftTimes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"expLeftTimes", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public HSStatisticsExpLeftTimeSync expLeftTimes
     {
       get { return _expLeftTimes; }

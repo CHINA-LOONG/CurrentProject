@@ -8,14 +8,16 @@ package com.hawk.game.util;
 public class GsConst {
 	// 刷新间隔帧
 	public static final int REFRESH_PERIOD = 100;
-//	// 副本翻牌数量
-//	public static final int INSTANCE_CARD_COUNT = 4;
+	// 没有值，无效值，不可用
+	public static final int UNUSABLE = -1;
 	// 装备在背包时monsterId
-	public static final int EQUIPNOTDRESS = -1;
+	public static final int EQUIP_NOT_DRESS = -1;
 	// 扫荡券Id
 	public static final String SWEEP_TICKET = "10003";
 	// 最大技能点数
 	public static final int MAX_SKILL_POINT = 10;
+	// 活力值增长秒数
+	public static final int FATIGUE_TIME = 6 * 60;
 	// 技能点增长秒数
 	public static final int SKILL_POINT_TIME = 6 * 60;
 	// 最大邮件数

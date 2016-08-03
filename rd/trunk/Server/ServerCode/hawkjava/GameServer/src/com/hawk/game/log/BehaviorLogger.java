@@ -122,6 +122,10 @@ public class BehaviorLogger {
 		 */
 		ITEM_USE,
 		/**
+		 * 购买并使用道具
+		 */
+		ITEM_BUY_AND_USE,
+		/**
 		 * 出售道具
 		 */
 		ITEM_SELL,

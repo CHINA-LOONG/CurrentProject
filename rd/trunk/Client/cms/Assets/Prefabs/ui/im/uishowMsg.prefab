@@ -1394,7 +1394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b79debe25f4b5bc428a17d1ce26a0074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mViewType: 0
+  mViewType: 3
   msgText: {fileID: 11471312}
   showLeftChatBox: {fileID: 131738}
   showBasicsChat: {fileID: 192584}
@@ -2945,6 +2945,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mViewType
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -31,7 +31,7 @@ public class BattleToolMain : MonoBehaviour
     public GameObject startButton;//开始按钮
     public InputField operationID;//玩家操作id
     public List<GameObject> gwList;//怪物列表
-    public InputField mSimulateCount;//循环次数
+    public InputField mSimulateCount;//循环次数//hpx1531v
     AttData attData;
     public OperationData operationData;
     public int bureauNum;//对局数
@@ -61,6 +61,7 @@ public class BattleToolMain : MonoBehaviour
     }
     void StartClick(GameObject but)
     {
+        LogResult.Instance.xhNumber = 0;
         int count = int.Parse(mSimulateCount.text);
         LogResult.Instance.logData = new LogData[count];
         for (int i = 0; i < count; ++i)
@@ -72,7 +73,6 @@ public class BattleToolMain : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void StartSimulate()
     {
-        
         InitMainUnitList();
         BattleController.Instance.StartSimulate();       
     }
@@ -101,7 +101,7 @@ public class BattleToolMain : MonoBehaviour
             //curUnitData.unitCharacter = 1;
             mMainUnitDataList.Add(curUnitData);
         }
-		operationData = StaticDataMgr.Instance.GetPlayerBehaviorData (operationID.text);//"yueguangsenlin11_1");//minghe18_1");//
+        operationData = StaticDataMgr.Instance.GetPlayerBehaviorData(mInstanceID.text);//"minghe18_1");//minghe18_1");//
         //end test
         int playerUnitStartID = 100;
         mMainUnitList.Clear();
@@ -121,5 +121,6 @@ public class BattleToolMain : MonoBehaviour
             BattleObject bo = ObjectDataMgr.Instance.CreateBattleObject(curUnit, null, Vector3.zero, Quaternion.identity);
             mMainUnitList.Add(bo);
         }
+        mMainUnitDataList.Clear();
     }    
 }

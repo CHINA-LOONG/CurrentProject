@@ -234,6 +234,9 @@ public class BattleController : MonoBehaviour
                 AddUnitDataRequestInternal(curBattle.monsterCfgId[i]);
             }
         }
+
+        //add scoreui
+        UIScore.AddResourceRequest();
     }
     //---------------------------------------------------------------------------------------------
     public EnterInstanceParam GetCurrentInstance()

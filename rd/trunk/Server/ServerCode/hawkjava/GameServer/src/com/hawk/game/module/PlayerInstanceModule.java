@@ -1,6 +1,7 @@
 package com.hawk.game.module;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.hawk.log.HawkLog;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
+import org.hawk.os.HawkTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.impl.StaticLoggerBinder;
@@ -22,6 +24,7 @@ import com.hawk.game.config.InstanceDropCfg;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.InstanceRewardCfg;
 import com.hawk.game.config.ItemCfg;
+import com.hawk.game.config.PlayerAttrCfg;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.StatisticsEntity;
@@ -139,7 +142,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 体力
-		if (statisticsEntity.getFatigue() < entryCfg.getFatigue()) {
+		if (player.updateFatigue() < entryCfg.getFatigue()) {
 			//sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
 			//return true;
 		}

@@ -3,6 +3,7 @@ package com.hawk.game.manager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -120,7 +121,8 @@ public class ImManager extends HawkAppObj {
 	 * 待推送消息队列
 	 */
 	private ConcurrentLinkedQueue<ImMsg> personMsgQueue;
-	private ConcurrentLinkedQueue<ImMsg> worldMsgQueue;
+//	private ConcurrentLinkedQueue<ImMsg> worldMsgQueue;
+	private List<ImMsg> worldMsgQueue;
 	private ConcurrentHashMap<Integer, ConcurrentLinkedQueue<ImMsg>> guildMsgQueueMap;
 
 	/**
@@ -144,7 +146,8 @@ public class ImManager extends HawkAppObj {
 		guildPlayerMap = new ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, ImPlayer>>();
 		guildLangMap = new ConcurrentHashMap<Integer, ConcurrentHashMap<String, Integer>>();
 		personMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
-		worldMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
+		//worldMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
+		worldMsgQueue = new LinkedList<ImMsg>();
 		guildMsgQueueMap = new ConcurrentHashMap<Integer, ConcurrentLinkedQueue<ImMsg>>();
 		transMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
 	}
@@ -327,6 +330,7 @@ public class ImManager extends HawkAppObj {
 	 */
 	@Override
 	public boolean onTick() {
+		
 		ImMsg msgObj = null;
 
 		// 推送---------------------------------------------------------------------------------------
@@ -346,10 +350,11 @@ public class ImManager extends HawkAppObj {
 			}
 		}
 
-		if (false == worldMsgQueue.isEmpty()) {
+		if (false == worldMsgQueue.isEmpty()) {	
 			pushWorldList = new ArrayList<ImMsg>();
-			while ((msgObj = worldMsgQueue.poll()) != null) {
-				pushWorldList.add(msgObj);
+			synchronized(worldMsgQueue){
+				pushWorldList.addAll(worldMsgQueue);
+				worldMsgQueue.clear();
 			}
 		}
 
@@ -410,7 +415,10 @@ public class ImManager extends HawkAppObj {
 				break;
 			}
 			case Const.ImChannel.WORLD_VALUE: {
-				worldMsgQueue.offer(msgObj);
+				//worldMsgQueue.offer(msgObj);
+				synchronized (worldMsgQueue){
+					worldMsgQueue.add(msgObj);
+				}
 				break;
 			}
 			case Const.ImChannel.GUILD_VALUE: {
@@ -603,6 +611,7 @@ public class ImManager extends HawkAppObj {
 				builder.clear();
 			}
 		}
+		
 		if (size > 0) {
 			playerObj.getSession().sendProtocol(HawkProtocol.valueOf(HS.code.IM_PUSH_S, builder));
 		}

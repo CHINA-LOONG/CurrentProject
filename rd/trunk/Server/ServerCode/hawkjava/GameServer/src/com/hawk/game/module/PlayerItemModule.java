@@ -25,6 +25,8 @@ import com.hawk.game.protocol.Item.HSGemComposeRet;
 import com.hawk.game.protocol.Item.HSItemBoxUseBatch;
 import com.hawk.game.protocol.Item.HSItemBoxUseBatchRet;
 import com.hawk.game.protocol.Item.HSItemBuy;
+import com.hawk.game.protocol.Item.HSItemBuyAndUse;
+import com.hawk.game.protocol.Item.HSItemBuyAndUseRet;
 import com.hawk.game.protocol.Item.HSItemBuyRet;
 import com.hawk.game.protocol.Item.HSItemCompose;
 import com.hawk.game.protocol.Item.HSItemComposeRet;
@@ -51,6 +53,7 @@ public class PlayerItemModule extends PlayerModule{
 		listenProto(HS.code.ITEM_BOX_USE_BATCH_C);
 		listenProto(HS.code.ITEM_SELL_BATCH_C_VALUE);
 		listenProto(HS.code.GEM_COMPOSE_C_VALUE);
+		listenProto(HS.code.ITEM_BUY_AND_USE_C_VALUE);
 	}
 	
 	/**
@@ -74,6 +77,11 @@ public class PlayerItemModule extends PlayerModule{
 		else if(protocol.checkType(HS.code.ITEM_BUY_C)) {
 			//道具购买
 			onItemBuy(protocol.getType(),protocol.parseProtocol(HSItemBuy.getDefaultInstance()));
+			return true;
+		}
+		else if(protocol.checkType(HS.code.ITEM_BUY_AND_USE_C)) {
+			//道具购买并使用
+			onItemBuyAndUse(protocol.getType(),protocol.parseProtocol(HSItemBuyAndUse.getDefaultInstance()));
 			return true;
 		}
 		else if(protocol.checkType(HS.code.ITEM_COMPOSE_C)) {
@@ -159,6 +167,50 @@ public class PlayerItemModule extends PlayerModule{
 		response.setItemId(itemId);
 		response.setItemCount(itemCount);
 		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_BUY_S_VALUE, response));
+	}
+	
+	/**
+	 * 购买并使用
+	 * @param hsCode
+	 * @param protocol
+	 */
+	private void onItemBuyAndUse(int hsCode, HSItemBuyAndUse protocol) {
+		String itemId = protocol.getItemId();
+		int itemCount = protocol.getItemCount();
+		if (itemCount <= 0) {
+			sendError(hsCode, Status.error.PARAMS_INVALID);
+			return ;
+		}
+
+		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemId);
+		if(itemCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND);
+			return ;
+		}
+		
+		if (itemCfg.getSubType() != Const.UseToolSubType.USETOOLFATIGUE_VALUE) {
+			sendError(hsCode, Status.error.PARAMS_INVALID);
+			return ;
+		}
+		
+		if(itemCfg.getBuyPrice() <= 0) {
+			sendError(hsCode, Status.itemError.ITEM_BUY_NOT_ALLOW);
+			return ;
+		}
+		
+		Const.changeType changeType = itemCfg.getBuyType() == Const.moneyType.MONEY_COIN_VALUE ? Const.changeType.CHANGE_COIN : Const.changeType.CHANGE_GOLD;
+		ConsumeItems consumeItem = ConsumeItems.valueOf(changeType, itemCfg.getBuyPrice() * itemCount);
+		if (consumeItem.checkConsume(player, hsCode) == false) {
+			return ;
+		}
+	
+		AwardItems awardItems = new AwardItems();
+		awardItems.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, itemCfg.getAddAttrValue() * itemCount);
+		awardItems.rewardTakeAffectAndPush(player, Action.ITEM_BUY_AND_USE, hsCode);
+		consumeItem.consumeTakeAffectAndPush(player, Action.ITEM_BUY_AND_USE, hsCode);
+		
+		HSItemBuyAndUseRet.Builder response = HSItemBuyAndUseRet.newBuilder();
+		sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_BUY_AND_USE_S_VALUE, response));
 	}
 	
 	/**

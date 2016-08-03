@@ -246,6 +246,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"GEM_COMPOSE_S", Value=4014)]
       GEM_COMPOSE_S = 4014,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_AND_USE_C", Value=4015)]
+      ITEM_BUY_AND_USE_C = 4015,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_BUY_AND_USE_S", Value=4016)]
+      ITEM_BUY_AND_USE_S = 4016,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_SELL_C", Value=4101)]
       EQUIP_SELL_C = 4101,
             

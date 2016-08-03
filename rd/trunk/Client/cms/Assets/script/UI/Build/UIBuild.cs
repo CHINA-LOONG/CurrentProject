@@ -19,6 +19,9 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public BuildButton m_DecomposeButton;
 
     public Button huoliButton;
+    public Text huoliText;
+    public GameObject huoliTipButton;
+    public HuoliCountDown huoliCountdown;
 
 
     public PopupList m_LangPopup;
@@ -61,6 +64,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         EventTriggerListener.Get(m_ComposeButton.gameObject).onClick = OnComposeButtonClick;
         EventTriggerListener.Get(m_DecomposeButton.gameObject).onClick = OnDecomposeButtonClick;
         EventTriggerListener.Get(huoliButton.gameObject).onClick = OnHuoliButtonClick;
+        EventTriggerListener.Get(huoliTipButton).onClick = OnHuoliTipButtonClick;
 
 
         m_LangPopup.Initialize<PopupListIndextDelegate>(this);
@@ -82,6 +86,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailAdd, OnMailChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailRead, OnMailChanged);
         GameEventMgr.Instance.AddListener<int, int>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
+        GameEventMgr.Instance.AddListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
 	}
 
 	void UnBindListener()
@@ -90,7 +95,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailAdd, OnMailChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailRead, OnMailChanged);
         GameEventMgr.Instance.RemoveListener<int, int>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
-	}
+        GameEventMgr.Instance.RemoveListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
+    }
 
 	void OnLevelChanged(int level)
 	{
@@ -98,13 +104,13 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 		nameText.text = GameDataMgr.Instance.PlayerDataAttr.nickName;
 	}
 
-    void OnPlayerExpChanged(int oldExp,int newExp)
+    void OnPlayerExpChanged(int oldExp,int newExp,bool withAni=true)
     {
         PlayerLevelAttr originalAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(GameDataMgr.Instance.PlayerDataAttr.LevelAttr);
         if (null == originalAttr)
             return;
         float targetExp = newExp / (float)originalAttr.exp;
-        if(oldExp != newExp)
+        if(oldExp != newExp && withAni)
         {
             playerProgress.SetLoopCount(1);
             float curExp = oldExp / (float)originalAttr.exp;
@@ -124,6 +130,11 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         }
     }       
 
+    void OnHuoliChanged(int newHuoli)
+    {
+        huoliText.text = string.Format("{0}/{1}", newHuoli, GameDataMgr.Instance.PlayerDataAttr.MaxHuoliAttr);
+    }
+
     //邮件同步，新邮件事件
     void OnMailChanged(int mail)
     {
@@ -135,6 +146,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     void BagButtonClick(GameObject go)
     {
         uiBag = UIMgr.Instance.OpenUI_(UIBag.ViewName)as UIBag;
+      //  LevelUp.OpenWith(1, 6, 256, 512);
 
     }
 
@@ -171,7 +183,13 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     {
         UseHuoLi.Open();
     }
-	public	UIShop OpenShop(int shopType)
+
+    void OnHuoliTipButtonClick(GameObject go)
+    {
+        huoliCountdown.SetShow(true);
+    }
+
+    public	UIShop OpenShop(int shopType)
 	{
 		uiShop = UIMgr.Instance.OpenUI_ (UIShop.ViewName) as UIShop;
 		uiShop.RefreshShopData (shopType);
@@ -224,7 +242,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     {
         OnMailChanged(0);
         OnLevelChanged(GameDataMgr.Instance.PlayerDataAttr.LevelAttr);
-        OnPlayerExpChanged(0, GameDataMgr.Instance.PlayerDataAttr.ExpAttr);
+        OnPlayerExpChanged(0, GameDataMgr.Instance.PlayerDataAttr.ExpAttr,false);
+        OnHuoliChanged(GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
     }
     public override void Clean()
     {

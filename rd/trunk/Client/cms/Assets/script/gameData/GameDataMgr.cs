@@ -10,10 +10,12 @@ public class GameDataMgr : MonoBehaviour
     static GameDataMgr mInst = null;
     public float mainStageRotAngle = 0.0f;
     bool mGoldMaxHinted = false;
+    bool mCoinMaxHinted = false;
 
     void Awake()
     {
         mGoldMaxHinted = false;
+        mCoinMaxHinted = false;
     }
 
     public static GameDataMgr Instance
@@ -74,6 +76,17 @@ public class GameDataMgr : MonoBehaviour
 		}
 	}
 
+    [SerializeField]
+    HuoliRestore huoliRestore;
+    public HuoliRestore HuoliRestoreAtrr
+    {
+        get
+        {
+            return huoliRestore;
+        }
+    }
+    
+
     //---------------------------------------------------------------------------------------------
     public void Init()
     {
@@ -98,6 +111,9 @@ public class GameDataMgr : MonoBehaviour
 		shopDataMgr = shopDataGo.AddComponent<ShopDataMgr> ();
 		shopDataMgr.Init ();
 
+        GameObject huoliGo = new GameObject("HuoliRestore");
+        huoliGo.transform.SetParent(transform);
+        huoliRestore = huoliGo.AddComponent<HuoliRestore>();
 
         BindListener();
     }
@@ -333,6 +349,25 @@ public class GameDataMgr : MonoBehaviour
         GameEventMgr.Instance.FireEvent<int>(GameEventList.MailAdd, mailNew.mail.mailId);
     }
     //---------------------------------------------------------------------------------------------
+    public void CheckCoinFull()
+    {
+        if (PlayerDataAttr.coin >= 999999999)
+        {
+            if (mCoinMaxHinted == false)
+            {
+                mCoinMaxHinted = true;
+                PlayerPrefs.SetInt("coinHintMax", 1);
+                MsgBox.PromptMsg.Open(
+                    MsgBox.MsgBoxType.Conform,
+                    string.Format(StaticDataMgr.Instance.GetTextByID("coin_max")),
+                    null,
+                    true,
+                    false
+                    );
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
     public void CheckDiamondFull()
     {
         if (PlayerDataAttr.gold >= 999999999)
@@ -365,32 +400,12 @@ public class GameDataMgr : MonoBehaviour
                 PlayerDataAttr.LevelAttr = reward.playerAttr.level;
                 PlayerDataAttr.ExpAttr = reward.playerAttr.exp;
             }
-            PlayerDataAttr.fatigue = reward.playerAttr.fatigue;
+            //PlayerDataAttr.HuoliAttr = reward.playerAttr.fatigue;
+            PlayerDataAttr.UpdateHuoli(reward.playerAttr.fatigue, reward.playerAttr.fatigueBeginTime);
             PlayerDataAttr.coin = reward.playerAttr.coin;
             GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, PlayerDataAttr.coin);
             PlayerDataAttr.gold = reward.playerAttr.gold;
             GameEventMgr.Instance.FireEvent<int>(GameEventList.ZuanshiChanged, mainPlayer.gold);
-
-            if (PlayerDataAttr.coin >= 999999999)
-            {
-                int coinMaxHint = PlayerPrefs.GetInt("coinHintMax");
-                if (coinMaxHint == 0)
-                {
-                    PlayerPrefs.SetInt("coinHintMax", 1);
-                    MsgBox.PromptMsg.Open(
-                        MsgBox.MsgBoxType.Conform,
-                        string.Format(StaticDataMgr.Instance.GetTextByID("coin_max")),
-                        null,
-                        true,
-                        false
-                        );
-                }
-            }
-
-            if (reward.hsCode != PB.code.INSTANCE_SETTLE_C.GetHashCode())
-            {
-                CheckDiamondFull();
-            }
         }
 
         GameUnit unit = null;
@@ -457,6 +472,23 @@ public class GameDataMgr : MonoBehaviour
                 mainPlayer.unitPbList.Add(pbUnit.guid, pbUnit);
                 mainPlayer.allUnitDic.Add(pbUnit.guid, GameUnit.FromPb(pbUnit, true));
             }
+            else if (item.type == (int)PB.itemType.PLAYER_ATTR)
+            {
+                if ((int)PB.changeType.CHANGE_COIN == int.Parse(item.itemId))
+                {
+                    if (reward.hsCode != PB.code.INSTANCE_SETTLE_C.GetHashCode())
+                    {
+                        CheckCoinFull();
+                    }
+                }
+                else if ((int)PB.changeType.CHANGE_GOLD == int.Parse(item.itemId))
+                {
+                    if (reward.hsCode != PB.code.INSTANCE_SETTLE_C.GetHashCode())
+                    {
+                        CheckDiamondFull();
+                    }
+                }
+            }
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -467,7 +499,8 @@ public class GameDataMgr : MonoBehaviour
         {
             PlayerDataAttr.LevelAttr = reward.playerAttr.level;
             PlayerDataAttr.ExpAttr = reward.playerAttr.exp;
-            PlayerDataAttr.fatigue = reward.playerAttr.fatigue;
+            //PlayerDataAttr.HuoliAttr = reward.playerAttr.fatigue;
+            PlayerDataAttr.UpdateHuoli(reward.playerAttr.fatigue, reward.playerAttr.fatigueBeginTime);
             PlayerDataAttr.coin = reward.playerAttr.coin;
             GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, PlayerDataAttr.coin);
             PlayerDataAttr.gold = reward.playerAttr.gold;

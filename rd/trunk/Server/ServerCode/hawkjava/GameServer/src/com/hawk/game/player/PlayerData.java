@@ -249,7 +249,7 @@ public class PlayerData {
 	public void initMonsterDressedEquip() {
 		dressedEquipMap = new HashMap<>();
 		for (Map.Entry<Long, EquipEntity> entry : equipEntityMap.entrySet()) {
-			if (entry.getValue().getMonsterId() != GsConst.EQUIPNOTDRESS) {
+			if (entry.getValue().getMonsterId() != GsConst.EQUIP_NOT_DRESS) {
 				int monsterId = entry.getValue().getMonsterId();
 				ItemCfg itemcfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, entry.getValue().getItemId());
 				if (itemcfg != null) {
@@ -756,7 +756,12 @@ public class PlayerData {
 	public void syncStaticticsShopRefreshInfo(int shopType) {
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SHOP_REFRESH_VALUE, BuilderUtil.genStaticsticsShopRefreshBuilder(shopType)));
 	}
-	
+
+	/**
+	 * TODO
+	 * 同步刷新数据
+	 */
+
 	/**
 	 * 同步系统设置信息
 	 */
@@ -810,7 +815,7 @@ public class PlayerData {
 				}
 				builder.addItemInfos(BuilderUtil.genItemBuilder(entry.getValue()));
 				// 分批发送
-				if (builder.getItemInfosCount() > 10) {
+				if (builder.getItemInfosCount() >= 10) {
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ITEM_INFO_SYNC_S, builder));
 					builder = HSItemInfoSync.newBuilder();
 				}

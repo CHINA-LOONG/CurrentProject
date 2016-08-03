@@ -29,7 +29,7 @@ public class UIMail : UIBase,TabButtonDelegate
 
     private int tabIndex = 0;
     private PB.HSMail readMail;
-
+    
     private int mailCount
     {
         get { return allMailList.Count; }
@@ -38,18 +38,22 @@ public class UIMail : UIBase,TabButtonDelegate
 	// Use this for initialization
 	void Start () 
     {
-        OnLanguageChanged();
         mailList.actionReadMail = ActionReadMail;
         mailContent.actionReceiveMail = ActionReceiveMail;
         EventTriggerListener.Get(btnClose.gameObject).onClick = ClickCloseButton;
         EventTriggerListener.Get(btnOnekey.gameObject).onClick = ClickReceiveAll;
-	}
+
+
+        textTitle.text = StaticDataMgr.Instance.GetTextByID("mail_title");
+        textOnekey.text = StaticDataMgr.Instance.GetTextByID("mail_yijianlingqu");
+        textTab1.text = StaticDataMgr.Instance.GetTextByID("mail_tab1");
+    }
     public override void Init()
     {
         tabGroup.InitWithDelegate(this);
         mailContent.SetMailContentActive(false);
         OnMailChanged();
-        scrollRect.verticalNormalizedPosition = 1.0f;
+        //scrollRect.verticalNormalizedPosition = 1.0f;
         readMail = null;
 
         if (mailCount >= UIMail.maxCount)
@@ -68,7 +72,6 @@ public class UIMail : UIBase,TabButtonDelegate
         UpdateMailList();
         OnTabButtonChanged(tabIndex);
         SetMailCount();
-
     }
 
     void UpdateMailList()
@@ -104,7 +107,7 @@ public class UIMail : UIBase,TabButtonDelegate
                 (readMail.state == (int)PB.mailState.READ && readMail.reward.Count <= 0))
             {
                 sysMailList.Remove(readMail);
-                mailList.DeleteElement(readMail.mailId);
+                mailList.RemoveItem();
                 SetMailCount();
             }
         }
@@ -122,7 +125,58 @@ public class UIMail : UIBase,TabButtonDelegate
     //收取附件
     void ActionReceiveMail(PB.HSMail info)
     {
+        PB.HSMailReceive param = new PB.HSMailReceive();
+        param.mailId = info.mailId;
+        GameApp.Instance.netManager.SendMessage(PB.code.MAIL_RECEIVE_C.GetHashCode(), param);
+
+
         GameDataMgr.Instance.PlayerDataAttr.gameMailData.RemoveMail(info.mailId);
+        SavePlayerData();
+    }
+    void OnMailReceiveRet(ProtocolMessage msg)
+    {
+        UINetRequest.Close();
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
+            if (error.errCode == (int)PB.mailError.MAIL_NOT_EXIST ||
+                error.errCode == (int)PB.mailError.MAIL_NONE)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_005"), (int)PB.ImType.PROMPT);
+            }
+            Logger.LogError("收取错误,不存在");
+            return;
+        }
+        PB.HSMailReceiveRet result = msg.GetProtocolBody<PB.HSMailReceiveRet>();
+        if (result.mailId != readMail.mailId)
+        {
+            Logger.LogError("收取错误");
+            return;
+        }
+
+        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_002"), (int)PB.ImType.PROMPT);
+        readMail.state= (int)PB.mailState.RECEIVE;
+        mailContent.SetReceiveState();
+        CheckPlayerData();
+    }
+    //一键收取
+    void ClickReceiveAll(GameObject go)
+    {
+        if (mailCount <= 0)
+        {
+            if (readMail!=null)
+            {
+                mailContent.SetMailContentActive(false);
+                OnMailChanged();
+                readMail = null;
+            }
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_001"), (int)PB.ImType.PROMPT);
+            return;
+        }
+
+        PB.HSMailReceiveAll param = new PB.HSMailReceiveAll();
+        GameApp.Instance.netManager.SendMessage(PB.code.MAIL_RECEIVE_ALL_C.GetHashCode(), param);
+        SavePlayerData();
     }
     //收取返回
     void OnMailReceiveAllRet(ProtocolMessage msg)
@@ -158,24 +212,7 @@ public class UIMail : UIBase,TabButtonDelegate
         mailContent.SetMailContentActive(false);
         OnMailChanged();
         readMail = null;
-    }
-    //一键收取
-    void ClickReceiveAll(GameObject go)
-    {
-        if (mailCount <= 0)
-        {
-            if (readMail!=null)
-            {
-                mailContent.SetMailContentActive(false);
-                OnMailChanged();
-                readMail = null;
-            }
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_001"), (int)PB.ImType.PROMPT);
-            return;
-        }
-
-        PB.HSMailReceiveAll param = new PB.HSMailReceiveAll();
-        GameApp.Instance.netManager.SendMessage(PB.code.MAIL_RECEIVE_ALL_C.GetHashCode(), param);
+        CheckPlayerData();
     }
     //点击关闭
     void ClickCloseButton(GameObject go)
@@ -195,39 +232,59 @@ public class UIMail : UIBase,TabButtonDelegate
         scrollRect.verticalNormalizedPosition = 1.0f;
     }
 
+    #region 检测玩家等级疲劳值变化
+
+    private int playerLevel;
+    private int playerFatigue;
+
+    void SavePlayerData()
+    {
+        playerLevel = GameDataMgr.Instance.PlayerDataAttr.LevelAttr;
+        playerFatigue = GameDataMgr.Instance.PlayerDataAttr.HuoliAttr;
+    }
+
+    void CheckPlayerData()
+    {
+        if (playerLevel!=GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
+        {
+            LevelUp.OpenWith(playerLevel, 
+                             GameDataMgr.Instance.PlayerDataAttr.LevelAttr,
+                             playerFatigue,
+                             GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
+        }
+    }
+
+
+    #endregion
+
 
     void OnEnable()
     {
         BindListener();
     }
-
     void OnDisable()
     {
         UnBindListener();
     }
-
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_C.GetHashCode().ToString(), OnMailReceiveAllRet);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_S.GetHashCode().ToString(), OnMailReceiveAllRet);
 
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_S.GetHashCode().ToString(), OnMailReceiveRet);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_C.GetHashCode().ToString(), OnMailReceiveRet);
+
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailAdd, OnMailListChanged);
     }
-
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_C.GetHashCode().ToString(), OnMailReceiveAllRet);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_ALL_S.GetHashCode().ToString(), OnMailReceiveAllRet);
 
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_S.GetHashCode().ToString(), OnMailReceiveRet);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_C.GetHashCode().ToString(), OnMailReceiveRet);
+
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailAdd, OnMailListChanged);
     }
-
-
-    void OnLanguageChanged()
-    {
-        textTitle.text = StaticDataMgr.Instance.GetTextByID("mail_title");
-        textOnekey.text = StaticDataMgr.Instance.GetTextByID("mail_yijianlingqu");
-        textTab1.text = StaticDataMgr.Instance.GetTextByID("mail_tab1");
-    }
-
+    
 }

@@ -287,7 +287,7 @@ public class SpellService : MonoBehaviour
         else if (eventType == GameEventList.SpellUnitDead)
         {
             SpellUnitDeadArgs curArgs = args as SpellUnitDeadArgs;
-            Logger.LogFormat("[SpellService]{0} killed {1}", curArgs.casterID, curArgs.deathID);
+            Logger.LogFormat("[SpellService]{0}<color=#FB00FFFF> killed </color>{1}", curArgs.casterID, curArgs.deathID);
             
             ////trigger motion
             //BattleObject deather = ObjectDataMgr.Instance.GetBattleObject(curArgs.deathID);

@@ -40,6 +40,10 @@ public class EffectApplyBuff : Effect
             if (curBuff != null)
             {
                 GameUnit caster = spellService.GetUnit(casterID);
+                //if (caster.pbUnit.id == "xgLangren")
+                //{
+                //    int t = caster.curLife;
+                //}
                 int buffCount = caster.buffList.Count;
                 for (int i = 0; i < buffCount; ++i)
                 {
@@ -50,7 +54,6 @@ public class EffectApplyBuff : Effect
                 curBuff.SetOwnedSpell(ownedSpell);
                 curBuff.Apply(applyTime, casterID == targetID);
             }
-
             //link effect
             Effect curEffect = spellService.GetEffect(protoEffect.linkEffect);
             if (curEffect != null)

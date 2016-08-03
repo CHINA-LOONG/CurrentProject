@@ -275,6 +275,8 @@ public class ConsumeItems {
 					}
 				}
 				else if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_FATIGUE_VALUE) {
+					// 更新活力值
+					player.updateFatigue();
 					if (player.getPlayerData().getStatisticsEntity().getFatigue() < consumeItem.getCount()) {
 						return ConsumeCheckResult.FATIGUE_NOT_ENOUGH;
 					}
@@ -342,6 +344,7 @@ public class ConsumeItems {
 					playerBuilder.setExp(player.getExp());
 					playerBuilder.setLevel(player.getLevel());	
 					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
+					playerBuilder.setFatigueBeginTime((int)(player.getPlayerData().getStatisticsEntity().getFatigueBeginTime().getTimeInMillis() / 1000));
 				}
 				else if(item.getType() == Const.itemType.ITEM_VALUE){
 					ItemEntity itemEntity = player.consumeItem(item.getItemId(), item.getCount(), action);

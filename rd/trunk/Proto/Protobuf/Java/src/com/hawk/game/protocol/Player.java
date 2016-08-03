@@ -88,7 +88,7 @@ public final class Player {
      * <code>optional int32 fatigue = 5;</code>
      *
      * <pre>
-     * 疲劳值
+     * 活力值
      * </pre>
      */
     boolean hasFatigue();
@@ -96,10 +96,28 @@ public final class Player {
      * <code>optional int32 fatigue = 5;</code>
      *
      * <pre>
-     * 疲劳值
+     * 活力值
      * </pre>
      */
     int getFatigue();
+
+    // optional int32 fatigueBeginTime = 6;
+    /**
+     * <code>optional int32 fatigueBeginTime = 6;</code>
+     *
+     * <pre>
+     * 正在累计活力值恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    boolean hasFatigueBeginTime();
+    /**
+     * <code>optional int32 fatigueBeginTime = 6;</code>
+     *
+     * <pre>
+     * 正在累计活力值恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    int getFatigueBeginTime();
   }
   /**
    * Protobuf type {@code SynPlayerAttr}
@@ -175,6 +193,11 @@ public final class Player {
             case 40: {
               bitField0_ |= 0x00000010;
               fatigue_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              fatigueBeginTime_ = input.readInt32();
               break;
             }
           }
@@ -320,7 +343,7 @@ public final class Player {
      * <code>optional int32 fatigue = 5;</code>
      *
      * <pre>
-     * 疲劳值
+     * 活力值
      * </pre>
      */
     public boolean hasFatigue() {
@@ -330,11 +353,35 @@ public final class Player {
      * <code>optional int32 fatigue = 5;</code>
      *
      * <pre>
-     * 疲劳值
+     * 活力值
      * </pre>
      */
     public int getFatigue() {
       return fatigue_;
+    }
+
+    // optional int32 fatigueBeginTime = 6;
+    public static final int FATIGUEBEGINTIME_FIELD_NUMBER = 6;
+    private int fatigueBeginTime_;
+    /**
+     * <code>optional int32 fatigueBeginTime = 6;</code>
+     *
+     * <pre>
+     * 正在累计活力值恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    public boolean hasFatigueBeginTime() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 fatigueBeginTime = 6;</code>
+     *
+     * <pre>
+     * 正在累计活力值恢复时间开始时间戳（秒）
+     * </pre>
+     */
+    public int getFatigueBeginTime() {
+      return fatigueBeginTime_;
     }
 
     private void initFields() {
@@ -343,6 +390,7 @@ public final class Player {
       level_ = 0;
       exp_ = 0;
       fatigue_ = 0;
+      fatigueBeginTime_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -370,6 +418,9 @@ public final class Player {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(5, fatigue_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, fatigueBeginTime_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -399,6 +450,10 @@ public final class Player {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, fatigue_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, fatigueBeginTime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -526,6 +581,8 @@ public final class Player {
         bitField0_ = (bitField0_ & ~0x00000008);
         fatigue_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        fatigueBeginTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -574,6 +631,10 @@ public final class Player {
           to_bitField0_ |= 0x00000010;
         }
         result.fatigue_ = fatigue_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.fatigueBeginTime_ = fatigueBeginTime_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -604,6 +665,9 @@ public final class Player {
         }
         if (other.hasFatigue()) {
           setFatigue(other.getFatigue());
+        }
+        if (other.hasFatigueBeginTime()) {
+          setFatigueBeginTime(other.getFatigueBeginTime());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -834,7 +898,7 @@ public final class Player {
        * <code>optional int32 fatigue = 5;</code>
        *
        * <pre>
-       * 疲劳值
+       * 活力值
        * </pre>
        */
       public boolean hasFatigue() {
@@ -844,7 +908,7 @@ public final class Player {
        * <code>optional int32 fatigue = 5;</code>
        *
        * <pre>
-       * 疲劳值
+       * 活力值
        * </pre>
        */
       public int getFatigue() {
@@ -854,7 +918,7 @@ public final class Player {
        * <code>optional int32 fatigue = 5;</code>
        *
        * <pre>
-       * 疲劳值
+       * 活力值
        * </pre>
        */
       public Builder setFatigue(int value) {
@@ -867,12 +931,61 @@ public final class Player {
        * <code>optional int32 fatigue = 5;</code>
        *
        * <pre>
-       * 疲劳值
+       * 活力值
        * </pre>
        */
       public Builder clearFatigue() {
         bitField0_ = (bitField0_ & ~0x00000010);
         fatigue_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 fatigueBeginTime = 6;
+      private int fatigueBeginTime_ ;
+      /**
+       * <code>optional int32 fatigueBeginTime = 6;</code>
+       *
+       * <pre>
+       * 正在累计活力值恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public boolean hasFatigueBeginTime() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 fatigueBeginTime = 6;</code>
+       *
+       * <pre>
+       * 正在累计活力值恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public int getFatigueBeginTime() {
+        return fatigueBeginTime_;
+      }
+      /**
+       * <code>optional int32 fatigueBeginTime = 6;</code>
+       *
+       * <pre>
+       * 正在累计活力值恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public Builder setFatigueBeginTime(int value) {
+        bitField0_ |= 0x00000020;
+        fatigueBeginTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 fatigueBeginTime = 6;</code>
+       *
+       * <pre>
+       * 正在累计活力值恢复时间开始时间戳（秒）
+       * </pre>
+       */
+      public Builder clearFatigueBeginTime() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        fatigueBeginTime_ = 0;
         onChanged();
         return this;
       }
@@ -5548,24 +5661,24 @@ public final class Player {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025Protocol/Player.proto\"X\n\rSynPlayerAttr" +
+      "\n\025Protocol/Player.proto\"r\n\rSynPlayerAttr" +
       "\022\014\n\004gold\030\001 \001(\005\022\014\n\004coin\030\002 \001(\003\022\r\n\005level\030\003 " +
-      "\001(\005\022\013\n\003exp\030\004 \001(\005\022\017\n\007fatigue\030\005 \001(\005\"\361\001\n\nPl" +
-      "ayerInfo\022\020\n\010playerId\030\001 \002(\005\022\020\n\010nickname\030\002" +
-      " \002(\t\022\016\n\006career\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003e" +
-      "xp\030\005 \002(\005\022\014\n\004gold\030\006 \002(\005\022\014\n\004coin\030\007 \002(\003\022\016\n\006" +
-      "gender\030\010 \001(\005\022\013\n\003eye\030\t \001(\005\022\014\n\004hair\030\n \001(\005\022" +
-      "\021\n\thairColor\030\013 \001(\005\022\025\n\rbattleMonster\030\014 \003(" +
-      "\005\022\020\n\010recharge\030\r \002(\005\022\020\n\010vipLevel\030\016 \002(\005\"!\n" +
-      "\017HSPlayerKickout\022\016\n\006reason\030\001 \002(\005\"~\n\016HSPl",
-      "ayerCreate\022\014\n\004puid\030\001 \002(\t\022\020\n\010nickname\030\002 \002" +
-      "(\t\022\016\n\006career\030\003 \002(\005\022\016\n\006gender\030\004 \002(\005\022\013\n\003ey" +
-      "e\030\005 \002(\005\022\014\n\004hair\030\006 \002(\005\022\021\n\thairColor\030\007 \002(\005" +
-      "\"5\n\021HSPlayerCreateRet\022\016\n\006status\030\001 \002(\005\022\020\n" +
-      "\010palyerID\030\002 \001(\005\"-\n\020HSPlayerInfoSync\022\031\n\004i" +
-      "nfo\030\001 \002(\0132\013.PlayerInfo\"$\n\020HSAssembleFini" +
-      "sh\022\020\n\010playerID\030\001 \002(\005B\030\n\026com.hawk.game.pr" +
-      "otocol"
+      "\001(\005\022\013\n\003exp\030\004 \001(\005\022\017\n\007fatigue\030\005 \001(\005\022\030\n\020fat" +
+      "igueBeginTime\030\006 \001(\005\"\361\001\n\nPlayerInfo\022\020\n\010pl" +
+      "ayerId\030\001 \002(\005\022\020\n\010nickname\030\002 \002(\t\022\016\n\006career" +
+      "\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004go" +
+      "ld\030\006 \002(\005\022\014\n\004coin\030\007 \002(\003\022\016\n\006gender\030\010 \001(\005\022\013" +
+      "\n\003eye\030\t \001(\005\022\014\n\004hair\030\n \001(\005\022\021\n\thairColor\030\013" +
+      " \001(\005\022\025\n\rbattleMonster\030\014 \003(\005\022\020\n\010recharge\030" +
+      "\r \002(\005\022\020\n\010vipLevel\030\016 \002(\005\"!\n\017HSPlayerKicko",
+      "ut\022\016\n\006reason\030\001 \002(\005\"~\n\016HSPlayerCreate\022\014\n\004" +
+      "puid\030\001 \002(\t\022\020\n\010nickname\030\002 \002(\t\022\016\n\006career\030\003" +
+      " \002(\005\022\016\n\006gender\030\004 \002(\005\022\013\n\003eye\030\005 \002(\005\022\014\n\004hai" +
+      "r\030\006 \002(\005\022\021\n\thairColor\030\007 \002(\005\"5\n\021HSPlayerCr" +
+      "eateRet\022\016\n\006status\030\001 \002(\005\022\020\n\010palyerID\030\002 \001(" +
+      "\005\"-\n\020HSPlayerInfoSync\022\031\n\004info\030\001 \002(\0132\013.Pl" +
+      "ayerInfo\"$\n\020HSAssembleFinish\022\020\n\010playerID" +
+      "\030\001 \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5577,7 +5690,7 @@ public final class Player {
           internal_static_SynPlayerAttr_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SynPlayerAttr_descriptor,
-              new java.lang.String[] { "Gold", "Coin", "Level", "Exp", "Fatigue", });
+              new java.lang.String[] { "Gold", "Coin", "Level", "Exp", "Fatigue", "FatigueBeginTime", });
           internal_static_PlayerInfo_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_PlayerInfo_fieldAccessorTable = new

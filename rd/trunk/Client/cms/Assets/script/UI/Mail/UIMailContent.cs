@@ -92,40 +92,10 @@ public class UIMailContent : MonoBehaviour
 
     void OnClickReveive(GameObject go)
     {
-        PB.HSMailReceive param = new PB.HSMailReceive();
-        param.mailId = info.mailId;
-        GameApp.Instance.netManager.SendMessage(PB.code.MAIL_RECEIVE_C.GetHashCode(), param);
-    }
-
-    void OnMailReceiveRet(ProtocolMessage msg)
-    {
-        UINetRequest.Close();
-        if (msg.GetMessageType()==(int)PB.sys.ERROR_CODE)
-        {
-            PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
-            if (error.errCode==(int)PB.mailError.MAIL_NOT_EXIST||
-                error.errCode==(int)PB.mailError.MAIL_NONE)
-            {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_005"), (int)PB.ImType.PROMPT);
-            }
-            Logger.LogError("收取错误,不存在");
-            return;
-        }
-        PB.HSMailReceiveRet result = msg.GetProtocolBody<PB.HSMailReceiveRet>();
-        if (result.mailId!=info.mailId)
-        {
-            Logger.LogError("收取错误");
-            return;
-        }
-        //TODO： 系统提示
-
-        info.state = (int)PB.mailState.RECEIVE;
-        SetReceiveState();
         actionReceiveMail(info);
-        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("mail_record_002"), (int)PB.ImType.PROMPT);
     }
-
-    void SetReceiveState()
+    
+    public void SetReceiveState()
     {
         foreach (var item in items)
         {
@@ -140,27 +110,5 @@ public class UIMailContent : MonoBehaviour
         textAnnex.text = StaticDataMgr.Instance.GetTextByID("mail_fujian");
         textReceive.text = StaticDataMgr.Instance.GetTextByID("mail_shouqu");
     }
-
-
-    void OnEnable()
-    {
-        BindListener();
-    }
-
-    void OnDisable()
-    {
-        UnBindListener();
-    }
-
-    void BindListener()
-    {
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_S.GetHashCode().ToString(), OnMailReceiveRet);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_C.GetHashCode().ToString(), OnMailReceiveRet);
-    }
-
-    void UnBindListener()
-    {
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_S.GetHashCode().ToString(), OnMailReceiveRet);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MAIL_RECEIVE_C.GetHashCode().ToString(), OnMailReceiveRet);
-    }
+    
 }

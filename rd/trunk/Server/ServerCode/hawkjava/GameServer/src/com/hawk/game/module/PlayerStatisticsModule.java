@@ -10,6 +10,7 @@ import org.hawk.os.HawkTime;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.PlayerAttrCfg;
 import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.util.GsConst;
@@ -29,58 +30,35 @@ public class PlayerStatisticsModule  extends PlayerModule {
 	protected boolean onPlayerLogin() {
 		// 加载统计数据
 		StatisticsEntity statisticsEntity = player.getPlayerData().loadStatistics();
-		
+
 		// 首次登陆，初始化数据
 		if (statisticsEntity.getLoginCount() == 0) {
 			player.onFirstLogin();
 		}
 
-		statisticsEntity.addLoginCount();
+		// 登录时更新数据
+		player.updateSkillPoint();
+		player.updateFatigue();
 
-		// 更新技能点
-		Calendar beginTime = statisticsEntity.getSkillPointBeginTime();
-		Calendar curTime = HawkTime.getCalendar();
-		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
-		int curSkillPoint = statisticsEntity.getSkillPoint() + delta / GsConst.SKILL_POINT_TIME;
-		if (curSkillPoint > GsConst.MAX_SKILL_POINT) {
-			curSkillPoint = GsConst.MAX_SKILL_POINT;
-		}
-		
-		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.SKILL_POINT_TIME  * 1000);
-		statisticsEntity.setSkillPoint(curSkillPoint);
-		statisticsEntity.setSkillPointBeginTime(beginTime);
-		
+		statisticsEntity.addLoginCount();
 		statisticsEntity.notifyUpdate(true);
-		
+
 		// 同步统计信息
 		player.getPlayerData().syncStatisticsInfo();
 		return true;
 	}
-	
+
 	@Override
-	protected boolean onPlayerReconnect(HawkMsg msg){
-		// 加载统计数据
-		StatisticsEntity statisticsEntity = player.getPlayerData().loadStatistics();
-		// 更新技能点
-		Calendar beginTime = statisticsEntity.getSkillPointBeginTime();
-		Calendar curTime = HawkTime.getCalendar();
-		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
-		int curSkillPoint = statisticsEntity.getSkillPoint() + delta / GsConst.SKILL_POINT_TIME;
-		if (curSkillPoint > GsConst.MAX_SKILL_POINT) {
-			curSkillPoint = GsConst.MAX_SKILL_POINT;
-		}
-		
-		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.SKILL_POINT_TIME  * 1000);
-		statisticsEntity.setSkillPoint(curSkillPoint);
-		statisticsEntity.setSkillPointBeginTime(beginTime);
-		
-		statisticsEntity.notifyUpdate(true);
-		
+	protected boolean onPlayerReconnect(HawkMsg msg) {
+		// 登录时更新数据
+		player.updateSkillPoint();
+		player.updateFatigue();
+
 		// 同步统计信息
 		player.getPlayerData().syncStatisticsInfo();
 		return true;
 	}
-	
+
 	@Override
 	protected boolean onPlayerLogout() {
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
@@ -100,12 +78,6 @@ public class PlayerStatisticsModule  extends PlayerModule {
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
 		if (refreshTypeList.contains(GsConst.RefreshType.DAILY_PERS_REFRESH)) {
-			// 恢复体力
-			PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, player.getLevel());
-			if (null != attrCfg) {
-				statisticsEntity.setFatigue(attrCfg.getFatigue());
-			}
-
 			statisticsEntity.clearAdventureCountDaily();
 			statisticsEntity.clearArenaCountDaily();
 			statisticsEntity.clearBossrushCountDaily();
@@ -123,7 +95,8 @@ public class PlayerStatisticsModule  extends PlayerModule {
 
 			statisticsEntity.notifyUpdate(true);
 		}
-		
+
 		return true;
 	}
+
 }

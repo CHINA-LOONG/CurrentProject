@@ -2,6 +2,52 @@
 using System.Collections;
 using UnityEngine.UI;
 
+public class ComposeItemInfo
+{
+    public ItemDataInfo itemInfo;
+    private int selectCount = 0;
+    private bool isDisable=false;
+    public System.Action Refresh;
+
+    public int SelectCount
+    {
+        get{return selectCount;}
+        set
+        {
+            if (selectCount != value)
+            {
+                selectCount = value;
+                if (Refresh != null)
+                {
+                    Refresh();
+                }
+            }
+        }
+    }
+    public bool IsDisable
+    {
+        get{return isDisable; }
+        set
+        {
+            if (isDisable != value)
+            {
+                isDisable = value;
+                if (Refresh != null)
+                {
+                    Refresh();
+                }
+            }
+        }
+    }
+
+    public ComposeItemInfo(ItemDataInfo data)
+    {
+        itemInfo = data;
+        SelectCount = 0;
+        IsDisable = false;
+    }
+}
+
 public class ComposeItem : MonoBehaviour
 {
     public Transform transPos;
@@ -21,17 +67,20 @@ public class ComposeItem : MonoBehaviour
     //禁用蒙板
     public GameObject objMask;
 
-    public ItemDataInfo curData;
-
     private System.Action<ComposeItem> onClickBack;
-    private int selectCount = 0;
-    public int SelectCount
+
+    private ComposeItemInfo curData;
+    public ComposeItemInfo CurData
     {
-        get { return selectCount; }
-        set 
-        { 
-            selectCount = value;
-            Refresh();
+        get{return curData;}
+        set
+        {
+            if (curData!=null)
+            {
+                curData.Refresh = null;
+            }
+            curData = value;
+            curData.Refresh = RefreshInfo;
         }
     }
 
@@ -40,28 +89,38 @@ public class ComposeItem : MonoBehaviour
         ScrollViewEventListener.Get(btnSelect.gameObject).onClick = OnClickItem;
     }
 
-    public void ReloadData(ItemDataInfo data, System.Action<ComposeItem> clickBack=null)
+    public void Init(System.Action<ComposeItem> clickBack)
     {
-        this.curData = data;
         this.onClickBack = clickBack;
-        this.SelectCount = 0;
+    }
 
-        UIUtil.SetStageColor(textName, curData.staticData);
-        if (curData.staticData.type == (int)PB.toolType.GEMTOOL)
+    public void ReloadData(ComposeItemInfo info)
+    {
+        this.CurData = info;
+
+        UIUtil.SetStageColor(textName, CurData.itemInfo.staticData);
+        if (CurData.itemInfo.staticData.type==(int)PB.toolType.GEMTOOL)
         {
-            objAttr.SetActive(false);
-            EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(curData.staticData.gemId);
+            objAttr.SetActive(true);
+            EquipLevelData attr = StaticDataMgr.Instance.GetEquipLevelData(CurData.itemInfo.staticData.gemId);
             UIUtil.SetDisPlayAttr(attr, text_Attr1, textAttr1, text_Attr2, textAttr2);
         }
         else
         {
             objAttr.SetActive(false);
         }
+        RefreshInfo();
     }
 
-    void Refresh()
+    public void RefreshInfo()
     {
-        ItemData tempData = new ItemData() { itemId = curData.itemData.itemId, count = curData.itemData.count - SelectCount };
+        SetSelCount(CurData.SelectCount);
+        SetDisable(CurData.IsDisable);
+    }
+
+    void SetSelCount(int select)
+    {
+        ItemData tempData = new ItemData() { itemId = CurData.itemInfo.itemData.itemId, count = CurData.itemInfo.itemData.count - CurData.SelectCount };
         if (itemIcon == null)
         {
             itemIcon = ItemIcon.CreateItemIcon(tempData);
@@ -69,16 +128,14 @@ public class ComposeItem : MonoBehaviour
         }
         else
         {
-            itemIcon.gameObject.SetActive(true);
             itemIcon.RefreshWithItemInfo(tempData);
         }
         if (tempData.count<=0)
         {
-            SetDisable(true);
+            curData.IsDisable = true;
         }
     }
-
-    public void SetDisable(bool disable)
+    void SetDisable(bool disable)
     {
         objMask.SetActive(disable);
     }

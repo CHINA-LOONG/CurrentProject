@@ -180,27 +180,19 @@ public class PlayerMonsterModule extends PlayerModule {
 			sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
 			return true;
 		}
-		
+
 		int newSkillLevel = 1 + monsterEntity.getSkillLevel(skillId);
 		// 验证技能等级
 		if (newSkillLevel > monsterEntity.getLevel()) {
 			sendError(hsCode, Status.monsterError.SKILL_LEVEL_LIMIT_VALUE);
 			return true;
 		}
-		
-		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+
 		// 更新技能点
-		Calendar beginTime = statisticsEntity.getSkillPointBeginTime();
-		Calendar curTime = HawkTime.getCalendar();
-		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
-		int curSkillPoint = statisticsEntity.getSkillPoint() + delta / GsConst.SKILL_POINT_TIME;
-		if (curSkillPoint > GsConst.MAX_SKILL_POINT) {
-			curSkillPoint = GsConst.MAX_SKILL_POINT;
-		}
-		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.SKILL_POINT_TIME  * 1000);
+		int newSkillPoint = player.updateSkillPoint() - 1;
 
 		// 验证点数
-		if (curSkillPoint < 1) {
+		if (newSkillPoint < 0) {
 			sendError(hsCode, Status.monsterError.SKILL_POINT_NOT_ENOUGH);
 			return true;
 		}
@@ -218,24 +210,19 @@ public class PlayerMonsterModule extends PlayerModule {
 		}
 		consume.consumeTakeAffectAndPush(player, Action.SKILL_UP, HS.code.MONSTER_SKILL_UP_C_VALUE);
 
-		// 更新技能点
-		if (curSkillPoint == GsConst.MAX_SKILL_POINT) {
-			beginTime = curTime;
-		}
-		curSkillPoint -= 1;
+		player.consumeSkillPoint(1, Action.SKILL_UP);
 
-		statisticsEntity.setSkillPoint(curSkillPoint);
-		statisticsEntity.setSkillPointBeginTime(beginTime);
+		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 		statisticsEntity.addSkillUpCount();
 		statisticsEntity.addSkillUpCountDaily();
 		statisticsEntity.notifyUpdate(true);
-		
+
 		monsterEntity.setSkillLevel(skillId, newSkillLevel);
 		monsterEntity.notifyUpdate(true);
 
 		HSMonsterSkillUpRet.Builder response = HSMonsterSkillUpRet.newBuilder();
-		response.setSkillPoint(curSkillPoint);
-		response.setSkillPointTimeStamp((int)(beginTime.getTimeInMillis() / 1000));
+		response.setSkillPoint(newSkillPoint);
+		response.setSkillPointTimeStamp((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_SKILL_UP_S, response));
 
 		return true;

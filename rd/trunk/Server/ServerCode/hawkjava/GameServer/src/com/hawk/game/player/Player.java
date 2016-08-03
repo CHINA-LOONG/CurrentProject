@@ -598,50 +598,7 @@ public class Player extends HawkAppObj {
 				Params.valueOf("sub", coin), 
 				Params.valueOf("after", getCoin()));
 	}
-	
-	/**
-	 * 增加疲劳值
-	 * 
-	 * @param fatigue
-	 * @param action
-	 */
-	public int increaseFatigue(int fatigue, Action action) {
-		if (fatigue <= 0) {
-			throw new RuntimeException("increaseFatigue");
-		}
 
-		int fatigueRemain = playerData.getStatisticsEntity().getFatigue() + fatigue - GsConst.MAX_FATIGUE_COUNT;
-		playerData.getStatisticsEntity().setFatigue(playerData.getStatisticsEntity().getFatigue() + fatigue - (fatigueRemain > 0 ? fatigueRemain : 0));
-		playerData.getStatisticsEntity().notifyUpdate(true);
-
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_FATIGUE_VALUE), 
-				Params.valueOf("add", fatigue), 
-				Params.valueOf("after", getPlayerData().getStatisticsEntity().getFatigue()));
-		
-		return fatigueRemain > 0 ? fatigue - fatigueRemain : fatigue;
-	}
-
-	/**
-	 * 消费疲劳值
-	 * 
-	 * @param coin
-	 * @param action
-	 */
-	public void consumeFatigue(int fatigue, Action action) {
-		if (fatigue <= 0 || fatigue > getPlayerData().getStatisticsEntity().getFatigue()) {
-			throw new RuntimeException("consumeFatigue");
-		}
-
-		playerData.getStatisticsEntity().setFatigue(playerData.getStatisticsEntity().getFatigue() - fatigue);
-		playerData.getStatisticsEntity().notifyUpdate(true);
-
-		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
-				Params.valueOf("playerAttr", Const.changeType.CHANGE_FATIGUE_VALUE), 
-				Params.valueOf("sub", fatigue), 
-				Params.valueOf("after", getPlayerData().getStatisticsEntity().getFatigue()));
-	}
-	
 	/**
 	 * 设置玩家等级
 	 * 
@@ -1048,7 +1005,7 @@ public class Player extends HawkAppObj {
 			if (equips != null) {
 				for (Map.Entry<Integer, Long> entry : equips.entrySet()) {
 					EquipEntity equipEntity = playerData.getEquipById(entry.getValue());
-					equipEntity.setMonsterId(GsConst.EQUIPNOTDRESS);
+					equipEntity.setMonsterId(GsConst.EQUIP_NOT_DRESS);
 					equipEntity.notifyUpdate(true);
 					playerData.removeMonsterEquip(equipEntity, entry.getKey());
 				}
@@ -1162,6 +1119,135 @@ public class Player extends HawkAppObj {
 		}
 
 		return overflowList;
+	}
+
+	/**
+	 * 增加活力值
+	 */
+	public int increaseFatigue(int fatigue, Action action) {
+		if (fatigue <= 0) {
+			throw new RuntimeException("increaseFatigue");
+		}
+
+		// 增加前先更新
+		updateFatigue();
+
+		int fatigueRemain = playerData.getStatisticsEntity().getFatigue() + fatigue - GsConst.MAX_FATIGUE_COUNT;
+		playerData.getStatisticsEntity().setFatigue(playerData.getStatisticsEntity().getFatigue() + fatigue - (fatigueRemain > 0 ? fatigueRemain : 0));
+		playerData.getStatisticsEntity().notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("playerAttr", Const.changeType.CHANGE_FATIGUE_VALUE), 
+				Params.valueOf("add", fatigue), 
+				Params.valueOf("after", getPlayerData().getStatisticsEntity().getFatigue()));
+		
+		return fatigueRemain > 0 ? fatigue - fatigueRemain : fatigue;
+	}
+
+	/**
+	 * 消耗活力值
+	 */
+	public void consumeFatigue(int fatigue, Action action) {
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		if (fatigue <= 0 || fatigue > statisticsEntity.getFatigue()) {
+			throw new RuntimeException(String.format("consumeFatigue: %d, curFatigue: %d", fatigue, statisticsEntity.getFatigue()));
+		}
+
+		int oldFatigue = statisticsEntity.getFatigue();
+		int newFatigue = oldFatigue - fatigue;
+
+		// 从低于上限的时间开始增长
+		PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, getLevel());
+		if (attrCfg != null) {
+			int maxFatigue = attrCfg.getFatigue();
+			if (oldFatigue >= maxFatigue && newFatigue < maxFatigue) {
+				statisticsEntity.setFatigueBeginTime(HawkTime.getCalendar());
+			}
+		}
+
+		statisticsEntity.setFatigue(newFatigue);
+		statisticsEntity.notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("playerAttr", Const.changeType.CHANGE_FATIGUE_VALUE), 
+				Params.valueOf("sub", fatigue), 
+				Params.valueOf("after", newFatigue));
+	}
+
+	/**
+	 * 消耗技能点
+	 */
+	public void consumeSkillPoint(int skillPoint, Action action) {
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		if (skillPoint <= 0 || skillPoint > statisticsEntity.getSkillPoint()) {
+			throw new RuntimeException("consumeSkillPoint");
+		}
+
+		int oldSkillPoint = statisticsEntity.getSkillPoint();
+		int newSkillPoint = oldSkillPoint - skillPoint;
+
+		// 从低于上限的时间开始增长
+		if (oldSkillPoint >= GsConst.MAX_SKILL_POINT && newSkillPoint < GsConst.MAX_SKILL_POINT) {
+			statisticsEntity.setSkillPointBeginTime(HawkTime.getCalendar());
+		}
+
+		statisticsEntity.setSkillPoint(newSkillPoint);
+		statisticsEntity.notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("skillPoint", oldSkillPoint), 
+				Params.valueOf("sub", skillPoint), 
+				Params.valueOf("after", newSkillPoint));
+	}
+
+	/**
+	 * 更新技能点
+	 */
+	public int updateSkillPoint() {
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		Calendar curTime = HawkTime.getCalendar();
+		Calendar beginTime = statisticsEntity.getSkillPointBeginTime();
+
+		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
+		int curSkillPoint = statisticsEntity.getSkillPoint() + delta / GsConst.SKILL_POINT_TIME;
+		if (curSkillPoint > GsConst.MAX_SKILL_POINT) {
+			curSkillPoint = GsConst.MAX_SKILL_POINT;
+		}
+
+		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.SKILL_POINT_TIME  * 1000);
+		statisticsEntity.setSkillPoint(curSkillPoint);
+		statisticsEntity.setSkillPointBeginTime(beginTime);
+
+		statisticsEntity.notifyUpdate(true);
+		return curSkillPoint;
+	}
+
+	/**
+	 * 更新活力值
+	 */
+	public int updateFatigue() {
+		StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+		Calendar curTime = HawkTime.getCalendar();
+		Calendar beginTime = statisticsEntity.getFatigueBeginTime();
+
+		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
+		int oldFatigue = statisticsEntity.getFatigue();
+		int curFatigue = oldFatigue + delta / GsConst.FATIGUE_TIME;
+		PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, getLevel());
+		if (attrCfg != null) {
+			int maxFatigue = attrCfg.getFatigue();
+			// 只有自动恢复体力受等级体力上限影响
+			if (oldFatigue < maxFatigue && curFatigue > maxFatigue) {
+				curFatigue = maxFatigue;
+			}
+		}
+
+		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.FATIGUE_TIME  * 1000);
+		statisticsEntity.setFatigue(curFatigue);
+		statisticsEntity.setFatigueBeginTime(beginTime);
+
+		statisticsEntity.notifyUpdate(true);
+		return curFatigue;
 	}
 
 	/**

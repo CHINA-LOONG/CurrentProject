@@ -128,6 +128,9 @@ spell_hit_interrupt,被打断,Interrupt
 spell_shield,吸收,Absorbed
 spell_first_spell,先置攻击,First Strike
 spell_stun,眩晕,Stun
+spell_hit_noheal,禁止恢复,Noheal
+spell_hit_physicalImmune,物理免疫,PhysicalImmune
+spell_hit_magicImmune,法术免疫,MagicImmune
 gain_pet,恭喜！你获得了,Congratulations! You received 
 battle_revive,花费 <quad material=1 size=20 x=0 y=0 width=1 height=1 />*{0}继续战斗吗？,Spend <quad material=1 size=20 x=0 y=0 width=1 height=1 />*{0} to continue battle?
 xl_quest,薛龙_任务界面,Loong
@@ -285,3 +288,20 @@ pet_tip_full2,有可能无法继续获得宠物,You may possibly not receive any
 pet_skill_point_not_enough,技能点不足,skill point not enough
 coin_max,金币将达到上限，无法获得超出部分,"Coin limit reached, unable to collect exceeding Coins."
 gold_max,钻石将达到上限，无法获得超出部分,"Diamond limit reached, unable to collect exceeding Diamonds."
+drop_info,掉落信息,Drop Info
+instanceselect_open_001,需要通关前一章副本才能开启该章节哦！,xuyao tongguan zhiqian de 
+instanceselect_open_002,需要达到{0}级才能开启该章节哦！,xuyao  dadao {0}ji
+instanceselect_open_003,"需要通关之前的副本才可以进行该副本的挑战！
+",zhiqian de fuben mei da
+instanceselect_open_004,需要通关全部普通副本后才能开启挑战难度哦！,pu tong dou dawan caixing
+instanceselect_reward_001,该章节内所有副本均为3颗星就能领取奖励哦！,manxing jiunengling a 
+instanceselect_reward_002,你已经领取过满星奖励了哦！,bendan ni yijing lingguo le 
+arrayselect_chongzhi_anniu,重置,
+arrayselect_saodangquan,扫荡券,
+main_levelup_pilao,当前活力,Current Energy
+main_levelup_shangxian,活力上限,Energy Limit
+main_levelup_dengji,恭喜您提升到{0}级,"Congratulations, you are now level {0}!"
+main_levelup_kaiqi,已开启,Unlocked
+main_levelup_weikaiqi,{0}级开启,Unlocks at LVL {0}
+diffculty_normal,普通,Normal
+diffculty_hard,挑战,Hard

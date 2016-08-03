@@ -11,6 +11,7 @@ public class InstanceItem : MonoBehaviour
     public Image itemButton;
     public RectTransform lockPanel;
     public Image zhuangshiImage;
+    public Image huoliImage;
 
     private InstanceEntryRuntimeData instanceData;
 
@@ -28,10 +29,20 @@ public class InstanceItem : MonoBehaviour
 
         if(insData.isOpen)
         {
-            huoliText.text = string.Format(StaticDataMgr.Instance.GetTextByID("{0}疲劳值"), instanceData.staticData.fatigue);
+            huoliImage.gameObject.SetActive(true);
+            huoliText.text = string.Format("{0}", instanceData.staticData.fatigue);
+            if(instanceData.staticData.fatigue > GameDataMgr.Instance.PlayerDataAttr.HuoliAttr)
+            {
+                huoliText.color = new Color(1, 0, 0);
+            }
+            else
+            {
+                huoliText.color = new Color(96/255.0f, 76/255.0f, 51/255.0f);
+            }
         }
         else
         {
+            huoliImage.gameObject.SetActive(false);
             huoliText.text = "";
         }
         szStar[0].gameObject.SetActive(instanceData.star > 0);
@@ -52,8 +63,14 @@ public class InstanceItem : MonoBehaviour
 
     void OnItemClicked(GameObject go)
     {
-       // GameEventMgr.Instance.FireEvent<int, string>(GameEventList.FinishedInstance, 3, instanceData.instanceId);
-        UIAdjustBattleTeam.OpenWith(instanceData.instanceId, instanceData.staticData.enemyList, 1);
-        InstanceList.Close();
+        if(instanceData.isOpen)
+        {
+            UIAdjustBattleTeam.OpenWith(instanceData.instanceId, instanceData.staticData.enemyList, 1);
+            InstanceList.Close();
+        }
+        else
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_open_003"), (int)PB.ImType.PROMPT);
+        }
     }
 }

@@ -265,6 +265,40 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSItemBuyAndUse")]
+  public partial class HSItemBuyAndUse : global::ProtoBuf.IExtensible
+  {
+    public HSItemBuyAndUse() {}
+    
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
+    {
+      get { return _itemId; }
+      set { _itemId = value; }
+    }
+    private int _itemCount;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"itemCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int itemCount
+    {
+      get { return _itemCount; }
+      set { _itemCount = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSItemBuyAndUseRet")]
+  public partial class HSItemBuyAndUseRet : global::ProtoBuf.IExtensible
+  {
+    public HSItemBuyAndUseRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSItemCompose")]
   public partial class HSItemCompose : global::ProtoBuf.IExtensible
   {

@@ -12,8 +12,10 @@ message SynPlayerAttr
 	optional int32 level = 3;
 	// 主卡经验
 	optional int32 exp = 4;
-	// 疲劳值
+	// 活力值
 	optional int32 fatigue = 5;
+	// 正在累计活力值恢复时间开始时间戳（秒）
+	optional int32 fatigueBeginTime = 6;
 }
 
 message PlayerInfo

@@ -131,6 +131,7 @@ public class UIMonsterbook : UIBase,IScrollView,TabButtonDelegate
     }
     public override void Clean()
     {
+        scrollView.CleanContent();
     }
 
     /// <summary>

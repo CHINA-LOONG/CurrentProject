@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class UICompose : UIBase, TabButtonDelegate
+public class UICompose : UIBase, TabButtonDelegate,IScrollView
 {
     public static string ViewName = "UICompose";
 
@@ -41,62 +41,12 @@ public class UICompose : UIBase, TabButtonDelegate
         public List<string> selectItems = new List<string>();
 
     }
-
     [Serializable]
     public class ComposeList
     {
-
         public Text text_Material;
-        public Transform content;
-
-        [HideInInspector]
-        public Dictionary<string, ComposeItem> items = new Dictionary<string, ComposeItem>();
-        [HideInInspector]
-        public List<ComposeItem> itemPool = new List<ComposeItem>();
-
-
-        public ComposeItem GetElement(ItemDataInfo data, System.Action<ComposeItem> clickBack)
-        {
-            ComposeItem item = null;
-            if (itemPool.Count <= 0)
-            {
-                GameObject go = ResourceMgr.Instance.LoadAsset("ComposeItem");
-                if (go!=null)
-                {
-                    UIUtil.SetParentReset(go.transform, content);
-                    item = go.GetComponent<ComposeItem>();
-                }
-            }
-            else
-            {
-                item = itemPool[itemPool.Count - 1];
-                item.gameObject.SetActive(true);
-                itemPool.Remove(item);
-            }
-            item.ReloadData(data, clickBack);
-            item.SetDisable(false);
-            items.Add(data.itemData.itemId,item);
-            item.transform.SetAsLastSibling();
-            return item;
-        }
-        public void RemoveElement(ComposeItem item)
-        {
-            item.gameObject.SetActive(false);
-            itemPool.Add(item);
-            if (items.ContainsValue(item))
-            {
-                items.Remove(item.curData.itemData.itemId);
-            }
-        }
-        public void RemoveAllElement()
-        {
-            foreach (var item in items)
-            {
-                item.Value.gameObject.SetActive(false);
-                itemPool.Add(item.Value);
-            }
-            items.Clear();
-        }
+        public FixCountScrollView scrollView;
+        public Dictionary<string, ComposeItemInfo> ItemInfo = new Dictionary<string, ComposeItemInfo>();
     }
 
     public ComposeView composeView;
@@ -164,9 +114,9 @@ public class UICompose : UIBase, TabButtonDelegate
     public override void Clean()
     {
         UIMgr.Instance.DestroyUI(uiComposeResult);
+        composeList.scrollView.CleanContent();
     }
-
-
+    
     public void Refresh(int select = -1)
     {
         selIndex = (select == -1 ? selIndex : select);
@@ -264,22 +214,24 @@ public class UICompose : UIBase, TabButtonDelegate
         #endregion
 
         infos.Sort(SortItem);
-        composeList.RemoveAllElement();
+
+        composeList.ItemInfo.Clear();
         for (int i = 0; i < infos.Count; i++)
         {
-            ComposeItem item = composeList.GetElement(infos[i], OnClickItem);
+            composeList.ItemInfo.Add(infos[i].itemData.itemId,new ComposeItemInfo(infos[i]));
         }
+        composeList.scrollView.InitContentSize(composeList.ItemInfo.Count, this);
 
         #endregion
 
-        SetComposeState(); 
+        //SetComposeState(); 
         SetRemoveAllState();
     }
     //点击列表项
     void OnClickItem(ComposeItem item)
     {
         int index = GetFirstField();
-        ItemDataInfo dataInfo = item.curData;
+        ItemDataInfo dataInfo = item.CurData.itemInfo;
         #region 处理材料合成
 
         if (Type == type.Materials)
@@ -305,7 +257,7 @@ public class UICompose : UIBase, TabButtonDelegate
             }
             composeView.fields[index].SetItemIcon(dataInfo.itemData, OnClickField);
             composeView.selectItems[index] = dataInfo.itemData.itemId;
-            item.SelectCount += 1;
+            item.CurData.SelectCount += 1;
             if (CheckIsFull())
             {
                 SetDisableByItemId(true, dataInfo.itemData.itemId);
@@ -326,14 +278,14 @@ public class UICompose : UIBase, TabButtonDelegate
             }
             composeView.fields[index].SetItemIcon(dataInfo.itemData, OnClickField);
             composeView.selectItems[index] = dataInfo.itemData.itemId;
-            item.SelectCount += 1;
+            item.CurData.SelectCount += 1;
             if (CheckIsFull())
             {
                 SetDisableByGrade(true, dataInfo.staticData.grade);
             }
 
         }
-        SetComposeState();
+        //SetComposeState();
         SetRemoveAllState();
     }
     //点击合成项
@@ -352,15 +304,15 @@ public class UICompose : UIBase, TabButtonDelegate
             }
         }
         int index = composeView.fields.IndexOf(field);
-        composeList.items[field.curData.itemId].SelectCount -= 1;
+        composeList.ItemInfo[field.curData.itemId].SelectCount -= 1;
         composeView.selectItems[index] = null;
         composeView.fields[index].SetItemIcon(null);
         if (CheckIsEmpty())
         {
             SetTargetIcon(0);
-            foreach (var item in composeList.items)
+            foreach (var item in composeList.ItemInfo)
             {
-                item.Value.SetDisable(false);
+                item.Value.IsDisable=false;
             }
             foreach (var item in composeView.fields)
             {
@@ -372,7 +324,7 @@ public class UICompose : UIBase, TabButtonDelegate
                 composeView.text_Tips.text = StaticDataMgr.Instance.GetTextByID("compose_tips2");
             }
         }
-        SetComposeState();
+        //SetComposeState();
         SetRemoveAllState();
     }
     //设置合成一次/十次状态
@@ -448,21 +400,21 @@ public class UICompose : UIBase, TabButtonDelegate
     {
         if (!other)
         {
-            foreach (var listItem in composeList.items)
+            foreach (var listItem in composeList.ItemInfo)
             {
-                if (listItem.Value.curData.staticData.grade == grade)
+                if (listItem.Value.itemInfo.staticData.grade == grade)
                 {
-                    listItem.Value.SetDisable(disable);
+                    listItem.Value.IsDisable=disable;
                 }
             }
         }
         else
         {
-            foreach (var listItem in composeList.items)
+            foreach (var listItem in composeList.ItemInfo)
             {
-                if (listItem.Value.curData.staticData.grade != grade)
+                if (listItem.Value.itemInfo.staticData.grade != grade)
                 {
-                    listItem.Value.SetDisable(disable);
+                    listItem.Value.IsDisable=disable;
                 }
             }
         }
@@ -472,15 +424,15 @@ public class UICompose : UIBase, TabButtonDelegate
     {
         if (!other)
         {
-            composeList.items[itemId].SetDisable(disable);
+            composeList.ItemInfo[itemId].IsDisable = disable;
         }
         else
         {
-            foreach (var listItem in composeList.items)
+            foreach (var listItem in composeList.ItemInfo)
             {
-                if (listItem.Value.curData.itemData.itemId != itemId)
+                if (listItem.Value.itemInfo.itemData.itemId != itemId)
                 {
-                    listItem.Value.SetDisable(disable);
+                    listItem.Value.IsDisable = disable;
                 }
             }
         }
@@ -673,4 +625,27 @@ public class UICompose : UIBase, TabButtonDelegate
         Refresh();
     }
 
+    public void ReloadData(Transform item, int index)
+    {
+        ComposeItem material = item.GetComponent<ComposeItem>();
+        material.ReloadData(composeList.ItemInfo[infos[index].itemData.itemId]);
+    }
+
+    public Transform CreateData(Transform parent, int index = 0)
+    {
+        GameObject go = ResourceMgr.Instance.LoadAsset("ComposeItem");
+        if (go != null)
+        {
+            UIUtil.SetParentReset(go.transform, parent);
+            ComposeItem item = go.GetComponent<ComposeItem>();
+            item.Init(OnClickItem);
+            return go.transform;
+        }
+        return null;
+}
+
+    public void CleanData(List<Transform> itemList)
+    {
+        itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
+    }
 }

@@ -45,6 +45,17 @@ public class UIScore : UIBase
     private Tweener mBattleTitleTw;
     private int mOriginalPlayerLvl;
     private int mCurrentPlayerLvl;
+    private bool mCheckCoin;
+    //---------------------------------------------------------------------------------------------
+    public static void AddResourceRequest()
+    {
+        ResourceMgr resMgr = ResourceMgr.Instance;
+        resMgr.AddAssetRequest(new AssetRequest("monsterExpIcon"));
+        resMgr.AddAssetRequest(new AssetRequest("endBattle"));
+        resMgr.AddAssetRequest(new AssetRequest(ViewName));
+        //TODO: always keep this
+        ResourceMgr.Instance.AddAssetRequest(new AssetRequest("monsterIcon"));
+    }
     //---------------------------------------------------------------------------------------------
     void Start()
     {
@@ -220,6 +231,7 @@ public class UIScore : UIBase
     //---------------------------------------------------------------------------------------------
     private void SetScoreInternal()
     {
+        mCheckCoin = false;
         PlayerData mainPlayer = GameDataMgr.Instance.PlayerDataAttr;
         PlayerLevelAttr originalAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(mainPlayer.LevelAttr);
 
@@ -238,6 +250,7 @@ public class UIScore : UIBase
                 {
                     if ((int)PB.changeType.CHANGE_COIN == int.Parse(item.itemId))
                     {
+                        mCheckCoin = true;
                         mPlayerGainGold.text = "+" + item.count.ToString();
                         //GameDataMgr.Instance.mainPlayer.coin += item.count;
                         //GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, playerAttr.coin);
@@ -401,7 +414,10 @@ public class UIScore : UIBase
         mRetryBtn.gameObject.SetActive(true);
         mConfirmBtn.gameObject.SetActive(true);
 
-        GameDataMgr.Instance.CheckDiamondFull();
+        if (mCheckCoin)
+        {
+            GameDataMgr.Instance.CheckCoinFull();
+        }
 
         if (mOriginalPlayerLvl != mCurrentPlayerLvl)
         {

@@ -246,7 +246,10 @@ namespace PB
       CHAPTER_BOX_STAR_COUNT = 393222,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_ALREADY_OPEN", Value=393223)]
-      CHAPTER_BOX_ALREADY_OPEN = 393223
+      CHAPTER_BOX_ALREADY_OPEN = 393223,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_NOT_ENTER", Value=393224)]
+      INSTANCE_NOT_ENTER = 393224
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailError")]

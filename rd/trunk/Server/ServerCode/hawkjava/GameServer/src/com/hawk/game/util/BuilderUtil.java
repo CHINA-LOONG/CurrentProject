@@ -92,10 +92,13 @@ public class BuilderUtil {
 			rechargeState.setBuyTimes(entry.getValue());
 			builder.addRechargeState(rechargeState);
 		}
-		
+
+		builder.setFatigue(statisticsEntity.getFatigue());
+		builder.setFatigueBeginTime((int)(statisticsEntity.getFatigueBeginTime().getTimeInMillis() / 1000));
 		builder.setSkillPoint(statisticsEntity.getSkillPoint());
-		builder.setSkillPointTimeStamp((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
+		builder.setSkillPointBeginTime((int)(statisticsEntity.getSkillPointBeginTime().getTimeInMillis() / 1000));
 		builder.setTimeStamp(HawkTime.getSeconds());
+
 		// 设置订单服务器key
 		builder.setOrderServerKey(HawkOrderService.getInstance().getSuuid());
 		if (statisticsEntity.getMonthCardEndTime() == null || HawkTime.getCalendar().compareTo(statisticsEntity.getMonthCardEndTime()) > 0) {
@@ -104,7 +107,7 @@ public class BuilderUtil {
 		else {		
 			builder.setMonthCardLeft(HawkTime.calendarDiff(statisticsEntity.getMonthCardEndTime(), HawkTime.getCalendar()));
 		}
-		
+
 		builder.setGold2CoinTimes(statisticsEntity.getCoinOrderCountDaily());
 		builder.setExpLeftTimes(genStatisticsExpLeftTimeBuilder(statisticsEntity));
 

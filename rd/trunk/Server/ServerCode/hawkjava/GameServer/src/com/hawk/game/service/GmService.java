@@ -280,7 +280,7 @@ public class GmService extends GameService {
 			}
 
 			for (EquipEntity equipEntity : player.getPlayerData().getEquipEntityMap().values()) {
-				if (equipEntity.isInvalid() == false && equipEntity.getMonsterId() == GsConst.EQUIPNOTDRESS) {
+				if (equipEntity.isInvalid() == false && equipEntity.getMonsterId() == GsConst.EQUIP_NOT_DRESS) {
 					consume.addEquip(equipEntity.getId(), equipEntity.getItemId());
 				}
 			}

@@ -83,6 +83,18 @@ message HSItemBuyRet
 	required int32 itemCount = 2;
 }
 
+// 购买并且使用道具
+message HSItemBuyAndUse
+{
+	required string itemId = 1;	
+	required int32 itemCount = 2;
+}
+
+// 购买并且使用道具返回
+message HSItemBuyAndUseRet
+{
+}
+
 // 合成道具
 message HSItemCompose
 {

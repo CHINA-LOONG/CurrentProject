@@ -660,12 +660,12 @@ bosssenlin38Meidusha2wp02,右下蛇头,Lower-right Snake Head
 bosssenlin38Meidusha2wp03,左下蛇头,Lower-left Snake Head
 bosssenlin38Meidusha2wp04,右上蛇头,Upper-right Snake Head
 bosssenlin38Meidusha2wp05,左上蛇头,Upper-left Snake Head
-bosshuoshan48Hehuaisituosi4wp01,右上工具,Upper Right Tool
-bosshuoshan48Hehuaisituosi4wp02,右下工具,Lower Right Tool
-bosshuoshan48Hehuaisituosi4wp03,左上工具,Upper Left Tool
-bosshuoshan48Hehuaisituosi4wp04,左下工具,Lower Left Tool
-bosshuoshan48Hehuaisituosi4wp05,头,Head
-bosshuoshan48Hehuaisituosi4wp06,眼睛,Eyes
+bosshuoshan48Hehuaisituosi4wp01,眼睛,Eyes
+bosshuoshan48Hehuaisituosi4wp02,右上工具,Upper Right Tool
+bosshuoshan48Hehuaisituosi4wp03,右下工具,Lower Right Tool
+bosshuoshan48Hehuaisituosi4wp04,左上工具,Upper Left Tool
+bosshuoshan48Hehuaisituosi4wp05,左下工具,Lower Left Tool
+bosshuoshan48Hehuaisituosi4wp06,头,Head
 wendige2hide_lhorn,根据图形提示找到弱点,Find this shape on Wendigo's head
 wendige2hide_rhorn,根据图形提示找到弱点,Find this shape on Wendigo's head
 longnv3hide_head,根据图形提示找到弱点,Find this shape on Dragon Girl
@@ -2223,5 +2223,5 @@ guide_ruodian2,这是<color=#ffcc00>弱点</color>位置的<color=#ffcc00>线索
 guide_ruodian3,看起来她的<color=#ffcc00>头</color>是弱点,Seems that it's her <color=#ffcc00>head</color>.
 guide_ruodian4,看起来<color=#ffcc00>花瓣</color>是弱点,Seems that it's the <color=#ffcc00>petal</color>.
 mythoPath_refresh_tips,神话守护者已刷新！重新挑战，领取丰厚奖励吧。,Myth Guardian has refreshed. Go and battle for some more rewards.
-hehuaisituosi4hide_eye,根据图形提示找到弱点,Find this shape on Ifrit.
+hehuaisituosi4hide_eye,根据图形提示找到弱点,Find this shape on Craft.
 guide_ruodian5,记得如何找到<color=#ffcc00>弱点</color>吗？,Remember how to find <color=#ffcc00>weakpoint</color>?

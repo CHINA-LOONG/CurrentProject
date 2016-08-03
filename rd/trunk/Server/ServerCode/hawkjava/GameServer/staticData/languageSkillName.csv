@@ -1613,7 +1613,7 @@ psvYifanmumian1Name,光法涤净,Light Purge
 ultNvyao1Tips,给单体目标造成{0}%法攻的光属性法术伤害，给所有属性均会造成克制效果,Deals ({0}% of magic ATK) light type magic damage to a single target; deals affinity damage no matter what element the target is
 ultLuoxinfu1Tips,给群体目标添加耀斑效果（持续伤害）,Casts Flare effect(Dot) on all enemy targets
 ultPiying1Tips,给单体目标造成1~3次{0}%法攻的光属性法术伤害,Deals ({0}% of magic ATK) light type magic damage 1 to 3 times to a single target
-ultJinglingwang2Tips,给单体目标造成{0}%法攻的木属性法术伤害并50%附加眩晕效果，若目标存在眩晕效果则伤害量翻倍,"Deals ({0}% of magic ATK) grass type magic damage to a single target with a 50% chance of stun effect; if the target is stunned, damage will be multiplied"
+ultJinglingwang2Tips,给单体目标造成{0}%物攻的木属性物理伤害并50%附加眩晕效果，若目标存在眩晕效果则伤害量翻倍,"Deals ({0}% of physical ATK) grass type physical damage to a single target with a 50% chance of stun effect; if the target is stunned, damage will be multiplied"
 ultKahuna2Tips,嘲讽敌方全体附加恢复自身{0}%法攻的生命值，若自身生命值小于50%，大量恢复生命值,"Provoke all enemies and recover ({0}% of magic ATK) HP; if your HP is less than 50%, greatly increase amount of recovered HP"
 ultYifanmumian1Tips,给群体目标造成{0}%物攻的光属性物理伤害，若目标生命值大于50%，则附加嘲讽效果,"Deals ({0}% of physical ATK) light type physical damage to all enemies; if a target's HP is greater than 50%, then deal a provoke effect"
 psvNvyao1Tips,使用法术技能时，10%给被攻击者附加智力下降[被动],"Whenever you cast a magic ability, there is a 10% chance of dealing your target an additional Reduces intelligence effect [Passive]"

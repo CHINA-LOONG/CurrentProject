@@ -8,7 +8,9 @@ public abstract class UIBase : MonoBehaviour
 	{
 		VT_NORMAL,
 		VT_POPUP,
-	}
+        VT_POPUPTOP,
+        VT_NORMALTOP,
+    }
 	[SerializeField]
 	ViewType mViewType =  ViewType.VT_NORMAL;
 	public ViewType ViewTypeAttr

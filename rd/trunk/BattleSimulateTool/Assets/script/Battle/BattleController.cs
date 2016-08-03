@@ -188,7 +188,7 @@ public class BattleController : MonoBehaviour
         curProcessIndex = 0;
         processStart = false;
         battleStartID = BattleConst.enemyStartID;
-        instanceData = StaticDataMgr.Instance.GetInstanceData(BattleToolMain.Instance.mInstanceID.text);//minghe18");//BattleToolMain.Instance.mInstanceID.text);
+        instanceData = StaticDataMgr.Instance.GetInstanceData(BattleToolMain.Instance.mInstanceID.text);//"minghe18");//
         maxProcessIndex = instanceData.battleLevelList.Count + 1;
         
         battleGroup = new BattleGroup();
@@ -200,23 +200,39 @@ public class BattleController : MonoBehaviour
     {
         if (b)
         {
-            int i = 0;
-            for (; i < battleGroup.PlayerFieldList.Count; i++)
+            int j = 0;
+            for (; j < BattleToolMain.Instance.mMainUnitList.Count; j++)
             {
-                if (battleGroup.PlayerFieldList[i] != null && battleGroup.PlayerFieldList[i].unit.curLife != 0)
+                if (BattleToolMain.Instance.mMainUnitList[j] != null && BattleToolMain.Instance.mMainUnitList[j].unit.curLife != 0)
                 {
                     LogResult.Instance.logData[LogResult.Instance.xhNumber].
                         playerData[BattleToolMain.Instance.bureauNum].monsterNumber++;
                 }
-                if (battleGroup.PlayerFieldList[i] == null)
+                if (BattleToolMain.Instance.mMainUnitList[j] == null)
                 {
-                    continue;                     
+                    continue;
                 }
-                float blood = battleGroup.PlayerFieldList[i].unit.curLife;
-                float bloodMax = battleGroup.PlayerFieldList[i].unit.maxLife;
+                float blood = BattleToolMain.Instance.mMainUnitList[j].unit.curLife;
+                float bloodMax = BattleToolMain.Instance.mMainUnitList[j].unit.maxLife;
                 blood = (blood / bloodMax) * 100;
-                LogResult.Instance.logData[LogResult.Instance.xhNumber].playerData[BattleToolMain.Instance.bureauNum].attBloodNumber[i] = (int)blood;                    
-            }            
+                LogResult.Instance.logData[LogResult.Instance.xhNumber].playerData[BattleToolMain.Instance.bureauNum].attBloodNumber[j] = (int)blood;   
+            }
+            //for (; i < battleGroup.PlayerFieldList.Count; i++)
+            //{
+            //    if (battleGroup.PlayerFieldList[i] != null && battleGroup.PlayerFieldList[i].unit.curLife != 0)
+            //    {
+            //        LogResult.Instance.logData[LogResult.Instance.xhNumber].
+            //            playerData[BattleToolMain.Instance.bureauNum].monsterNumber++;
+            //    }
+            //    if (battleGroup.PlayerFieldList[i] == null)
+            //    {
+            //        continue;                     
+            //    }
+            //    float blood = battleGroup.PlayerFieldList[i].unit.curLife;
+            //    float bloodMax = battleGroup.PlayerFieldList[i].unit.maxLife;
+            //    blood = (blood / bloodMax) * 100;
+            //    LogResult.Instance.logData[LogResult.Instance.xhNumber].playerData[BattleToolMain.Instance.bureauNum].attBloodNumber[i] = (int)blood;                    
+            //}            
         }
         else
         {

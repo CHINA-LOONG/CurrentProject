@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 
 public interface IUIEquipListCallBack
 {
@@ -10,7 +11,7 @@ public interface IUIEquipListCallBack
     void OnEquipDressOrReplace();
 }
 
-public class UIEquipList : MonoBehaviour,IClickUsedEquip
+public class UIEquipList : MonoBehaviour,IClickUsedEquip,IScrollView
 {
     public const string AssetName = "UIEquipList";
     public static UIEquipList CreateEquipList()
@@ -21,14 +22,12 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
     }
 
     public IUIEquipListCallBack listDelegate;
-
-    public ScrollRect scrollView;
-
-    public Transform content;
-
-
+    
+    public FixCountScrollView scrollView;
+    
     private GameUnit m_unit;
-    private List<EquipData> list1=new List<EquipData>();
+    private List<EquipData> Infos=new List<EquipData>();
+
     private List<EquipListItem> items = new List<EquipListItem>();
     private List<EquipListItem> itemPool = new List<EquipListItem>();
 
@@ -37,7 +36,7 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
         m_unit = unit;
         UnitData petData = StaticDataMgr.Instance.GetUnitRowData(m_unit.pbUnit.id);
 
-        list1.Clear();
+        Infos.Clear();
         Dictionary<long, EquipData> equipList = GameDataMgr.Instance.PlayerDataAttr.gameEquipData.equipList;
         foreach (var item in equipList)
         {
@@ -48,58 +47,16 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
             ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(item.Value.equipId);
             if (itemInfo.minLevel <= m_unit.pbUnit.level && itemInfo.part == part && itemInfo.subType == petData.equip)
             {
-                list1.Add(item.Value);
+                Infos.Add(item.Value);
             }
         }
-        list1.Sort(SortEquip);
-        RemoveAllElement();
+        Infos.Sort(SortEquip);
+        
+        scrollView.InitContentSize(Infos.Count, this);
+    }
+    
 
-        for (int i = 0; i < list1.Count; i++)
-        {
-            EquipListItem item = GetElement();
-            item.Refresh(list1[i]);
-            item.transform.SetAsLastSibling();
-        }
-    }
 
-    public EquipListItem GetElement()
-    {
-        EquipListItem item = null;
-        if (itemPool.Count<=0)
-        {
-            GameObject go = ResourceMgr.Instance.LoadAsset("EquipListItem");
-            if (go != null)
-            {
-                go.transform.localScale = Vector3.one;
-                go.transform.SetParent(content, false);
-                item = go.GetComponent<EquipListItem>();
-                item.ClickDelegate=this;
-            }
-        }
-        else
-        {
-            item = itemPool[itemPool.Count - 1];
-            item.gameObject.SetActive(true);
-            itemPool.Remove(item);
-        }
-        items.Add(item);
-        return item;
-    }
-    public void RemoveElement(EquipListItem item)
-    {
-        if (items.Contains(item))
-        {
-            item.gameObject.SetActive(false);
-            items.Remove(item);
-            itemPool.Add(item);
-        }
-    }
-    public void RemoveAllElement()
-    {
-        items.ForEach(delegate(EquipListItem item) { item.gameObject.SetActive(false); });
-        itemPool.AddRange(items);
-        items.Clear();
-    }
     //TODO: sort by zhandouli(战斗力)
     public static int SortEquip(EquipData a, EquipData b)
     {
@@ -182,12 +139,10 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
     {
         BindListener();
     }
-
     void OnDisable()
     {
         UnBindListener();
     }
-
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_MONSTER_DRESS_C.GetHashCode().ToString(), OnEquipDressReturn);
@@ -195,7 +150,6 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_MONSTER_REPLACE_C.GetHashCode().ToString(), OnEquipReplaceReturn);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.EQUIP_MONSTER_REPLACE_S.GetHashCode().ToString(), OnEquipReplaceReturn);
     }
-
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_MONSTER_DRESS_C.GetHashCode().ToString(), OnEquipDressReturn);
@@ -204,5 +158,28 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.EQUIP_MONSTER_REPLACE_S.GetHashCode().ToString(), OnEquipReplaceReturn);
     }
 
+    public void ReloadData(Transform item, int index)
+    {
+        EquipListItem equip = item.GetComponent<EquipListItem>();
+        equip.ReloadData(Infos[index]);
+    }
 
+    public Transform CreateData(Transform parent, int index = 0)
+    {
+        GameObject go = ResourceMgr.Instance.LoadAsset("EquipListItem");
+        if (go != null)
+        {
+            UIUtil.SetParentReset(go.transform, parent);
+            EquipListItem item = go.GetComponent<EquipListItem>();
+            item.ClickDelegate = this;
+            return go.transform;
+        }
+        return null;
+    }
+
+    public void CleanData(List<Transform> itemList)
+    {
+        itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
+        itemList.Clear();
+    }
 }

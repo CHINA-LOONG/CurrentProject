@@ -25,10 +25,17 @@ public class UIMgr : MonoBehaviour
 		}
 	}
 
-    private Transform modelTransform;
-    private Transform uiPanelTransform;
-	private Transform topPanelTransform;
-    
+    private struct uiRootData
+    {
+        public Transform modelTransform;
+        public Transform uiPanelTransform;
+        public Transform topPanelTransform;
+    }
+    private uiRootData uiNormalData = new uiRootData();
+    private uiRootData uiTopData = new uiRootData();
+
+    private static GameObject uiRootNormal;
+    private static GameObject uiRootTop;
 
 	static UIMgr mInst = null;
 	public static UIMgr Instance
@@ -37,10 +44,13 @@ public class UIMgr : MonoBehaviour
 		{
 			if (mInst == null)
 			{
-				GameObject ui = GameObject.Find("/UIRoot");
-				//ui.name = "UIMgr";
-                mInst = ui.AddComponent<UIMgr>();
-                DontDestroyOnLoad(ui);
+                //GameObject ui = GameObject.Find("/UIRoot");
+                uiRootNormal = GameObject.Find("/UIRoot");
+                uiRootTop = GameObject.Find("/UIRootTop");
+
+                mInst = uiRootNormal.AddComponent<UIMgr>();
+                DontDestroyOnLoad(uiRootNormal);
+                DontDestroyOnLoad(uiRootTop);
 			}
 			return mInst;
 		}
@@ -60,18 +70,13 @@ public class UIMgr : MonoBehaviour
 
 		UICamera.Instance.Init ();
 		canVas.worldCamera = UICamera.Instance.CameraAttr;
-        GameObject viewGo = Util.FindChildByName(gameObject, "modelParent");
-        modelTransform = viewGo.transform;
-        GameObject uiGo = Util.FindChildByName(gameObject, "uiPanel");
-        uiPanelTransform = uiGo.transform;
-		GameObject topGo = Util.FindChildByName(gameObject,"topPanel");
-		topPanelTransform = topGo.transform;
-
-	}
+        InitUIRootData(uiRootNormal, ref uiNormalData);
+        InitUIRootData(uiRootTop, ref uiTopData);
+    }
 
     public void SetModelView(Transform model,int index)
     {
-        UIUtil.SetParentReset(model, modelTransform, new Vector3(1000f * index, 0f, 1000f));
+        UIUtil.SetParentReset(model, uiNormalData.modelTransform, new Vector3(1000f * index, 0f, 1000f));
     }
 
     public UIBase GetUI(string uiName)
@@ -83,6 +88,16 @@ public class UIMgr : MonoBehaviour
         UIBase uiItem = null;
         uiList.TryGetValue(uiName, out uiItem);
         return uiItem;
+    }
+
+    private void InitUIRootData(GameObject rootObj, ref uiRootData rootData)
+    {
+        GameObject viewGo = Util.FindChildByName(rootObj, "modelParent");
+        rootData.modelTransform = viewGo.transform;
+        GameObject uiGo = Util.FindChildByName(rootObj, "uiPanel");
+        rootData.uiPanelTransform = uiGo.transform;
+        GameObject topGo = Util.FindChildByName(rootObj, "topPanel");
+        rootData.topPanelTransform = topGo.transform;
     }
 
     UIBase CreateUI(string uiName,bool cache=true)
@@ -97,12 +112,25 @@ public class UIMgr : MonoBehaviour
         ui.name = uiName;
         if (uiItem.ViewTypeAttr == UIBase.ViewType.VT_POPUP)
         {
-            UIUtil.SetParentReset(ui.transform, topPanelTransform);
+            UIUtil.SetParentReset(ui.transform, uiNormalData.topPanelTransform);
+            popupList.Add(uiItem);
+        }
+        else if (uiItem.ViewTypeAttr == UIBase.ViewType.VT_NORMALTOP)
+        {
+            UIUtil.SetParentReset(ui.transform, uiTopData.uiPanelTransform);
+            if (cache)
+            {
+                uiList.Add(uiName, uiItem);
+            }
+        }
+        else if (uiItem.ViewTypeAttr == UIBase.ViewType.VT_POPUPTOP)
+        {
+            UIUtil.SetParentReset(ui.transform, uiTopData.topPanelTransform);
             popupList.Add(uiItem);
         }
         else
         {
-            UIUtil.SetParentReset(ui.transform, uiPanelTransform);
+            UIUtil.SetParentReset(ui.transform, uiNormalData.uiPanelTransform);
             if (cache)
             {
                 uiList.Add(uiName, uiItem);

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
@@ -11,6 +12,7 @@ public class InstanceList : UIBase
     public Text chaptrName;
     public Text getStartText;
     public GameObject boxButton;
+    public GameObject openedBoxButton;
     public Image closeImage;
     public GameObject closeButton;
 
@@ -67,6 +69,7 @@ public class InstanceList : UIBase
     {
         EventTriggerListener.Get(dropButton.gameObject).onClick = OnDropButtonClicked;
         EventTriggerListener.Get(boxButton).onClick = OnboxButtonClicked;
+        EventTriggerListener.Get(openedBoxButton).onClick = OnboxButtonClicked;
         oldPosition = rootRt.anchoredPosition;
         difficultyDropDown.onValueChanged.AddListener(OnDifficultyValueChanged);
         difficultyDropDown.options.Clear();
@@ -80,7 +83,6 @@ public class InstanceList : UIBase
             listInstanceItemCache.Add(szItem[i]);
             szItem[i].gameObject.SetActive(false);
         }
-        EventTriggerListener.Get(closeImage.gameObject).onClick = OnClose;
         EventTriggerListener.Get(closeButton).onClick = OnClose;
 
         BindListener();
@@ -110,13 +112,13 @@ public class InstanceList : UIBase
         int selValue = difficultyDropDown.value;
         if(selValue == (int)difficulty)
         {
-            UpdateUI();
+            UpdateUI(true);
             return;
         }
         difficultyDropDown.value = (int)difficulty;
     }
 
-    void    UpdateUI(bool animation = true)
+    void    UpdateUI(bool animation,bool isAdustInstanceList = true)
     {
         List<InstanceEntryRuntimeData> listData = InstanceMapService.Instance.GetRuntimeInstance(insDifficulty, chapterIndex);
         listInstanceRuntime.Clear();
@@ -134,6 +136,7 @@ public class InstanceList : UIBase
         allStar = listInstanceRuntime.Count * 3;
         getStar = 0;
 
+        int focusIndex = -1;
         for (int i = 0; i < listInstanceItemCache.Count; ++i)
         {
             var subItem = listInstanceItemCache[i];
@@ -144,6 +147,13 @@ public class InstanceList : UIBase
                 getStar += subData.star;
                 subItem.gameObject.SetActive(true);
                 subItem.RefreshWith(subData);
+                if(focusIndex == -1)
+                {
+                    if(subData.isOpen && subData.star == 0)
+                    {
+                        focusIndex = i;
+                    }
+                }
             }
             else
             {
@@ -151,8 +161,19 @@ public class InstanceList : UIBase
             }
         }
         getStartText.text = string.Format("{0}/{1}", getStar, allStar);
-        
-        if(animation)
+
+        if (isAdustInstanceList)
+        {
+            if (-1 == focusIndex)
+            {
+                instanceScrollRect.verticalNormalizedPosition = 1.0f; ;
+            }
+            else
+            {
+                StartCoroutine(AdjustListPosition(focusIndex, listInstanceRuntime.Count));
+            }
+        }
+        if (animation)
         {
             Vector2 startPos = oldPosition;
             startPos.x = 0;
@@ -172,7 +193,38 @@ public class InstanceList : UIBase
             InstanceMapService.Instance.SetChapterBoxState(chapterIndex, insDifficulty,ChapterBoxState.CanReceiv);
             boxState = ChapterBoxState.CanReceiv;
         }
-        boxButton.gameObject.SetActive(boxState != ChapterBoxState.HasReceiv);
+        SetBoxButtonState(boxState == ChapterBoxState.HasReceiv);
+    }
+
+    void SetBoxButtonState(bool hasReciev)
+    {
+        boxButton.SetActive(!hasReciev);
+        openedBoxButton.SetActive(hasReciev);
+    }
+
+    IEnumerator AdjustListPosition(int focusIndex,int allItemsCount)
+    {
+        yield return new WaitForEndOfFrame();
+        RectTransform contentRt = instanceScrollRect.content;
+        RectTransform viewRt = instanceScrollRect.transform as RectTransform;
+        float maxY = contentRt.rect.height - viewRt.rect.height;
+        if(maxY < 2.0f)
+        {
+            yield break ;
+        }
+        var gridParam = contentRt.GetComponent<GridLayoutGroup>();
+        float subItemY = gridParam.cellSize.y + gridParam.spacing.y;
+        float offsetY = (allItemsCount - focusIndex - 1) * subItemY;
+        float normalizeY = (offsetY / maxY);
+        if(normalizeY > 1.0f)
+        {
+            normalizeY = 1.0f;
+        }
+        if(normalizeY < 0.0f)
+        {
+            normalizeY = 0.0f;
+        }
+        instanceScrollRect.verticalNormalizedPosition = normalizeY;
     }
 
     private void    OnDropButtonClicked(GameObject go)
@@ -203,6 +255,10 @@ public class InstanceList : UIBase
         {
             UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_reward_001"), (int)PB.ImType.PROMPT);
         }
+        else if (boxState == ChapterBoxState.HasReceiv)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_reward_002"), (int)PB.ImType.PROMPT);
+        }
     }
 
     void RequestReceivBox()
@@ -231,6 +287,7 @@ public class InstanceList : UIBase
             listReward.Add(boxReward);
             OpenBaoxiangResult.OpenWith(listReward);
         }
+        UpdateUI(false,false);
     }
 
     void OnReward(ProtocolMessage message )
@@ -249,7 +306,7 @@ public class InstanceList : UIBase
         {
             if(!InstanceMapService.Instance.IsHardChapterOpend(chapterIndex))
             {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("未开启。。。"), (int)PB.ImType.PROMPT);
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_reward_001"), (int)PB.ImType.PROMPT);
                 difficultyDropDown.value = 0;
                 return;
             }
