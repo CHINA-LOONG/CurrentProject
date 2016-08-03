@@ -7,7 +7,21 @@ public class PlayerData : MonoBehaviour
 	public	int	playerId = 0;
 	public	string nickName;
 	public	int career;
-	public	int level;
+	private	int level = 1;
+    public  int LevelAttr
+    {
+        get
+        {
+            return level;
+        }
+        set
+        {
+            level = value;
+            GameEventMgr.Instance.FireEvent<int>(GameEventList.LevelChanged, level);
+        }
+    }
+
+
 	private	int	exp = 0;
     public  int ExpAttr
     {

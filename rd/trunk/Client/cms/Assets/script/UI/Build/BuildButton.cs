@@ -26,7 +26,7 @@ public class BuildButton : MonoBehaviour
 
     void OnTouchEnter(GameObject go)
     {
-        iconImage.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+        iconImage.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
 
     }
 

@@ -689,11 +689,17 @@ public class UIDecompose : UIBase, TabButtonDelegate
     }
     void OnClickDecomposBtn()
     {
-        MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel, 
-                              StaticDataMgr.Instance.GetTextByID("decompose_sure"),
-                              StaticDataMgr.Instance.GetTextByID("decompose_coin2"),
-                              OnRefreshConformDlgClick);
-
+        if (CheckIsEmpty())
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("compose_record_005"), (int)PB.ImType.PROMPT);
+        }
+        else
+        {
+            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel,
+                                  StaticDataMgr.Instance.GetTextByID("decompose_sure"),
+                                  StaticDataMgr.Instance.GetTextByID("decompose_coin2"),
+                                  OnRefreshConformDlgClick);
+        }
     }
     void OnRefreshConformDlgClick(MsgBox.PrompButtonClick btnParam)
     {
@@ -826,6 +832,7 @@ public class UIDecompose : UIBase, TabButtonDelegate
                                               info.count);
                     }
                 }
+                tips += (i == (reward.RewardItems.Count - 1)) ? "" : ",";
             }
             #endregion
 

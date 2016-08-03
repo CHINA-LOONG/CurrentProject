@@ -21,14 +21,16 @@ public class FunctionItem : MonoBehaviour
     {
         functionName.text = functionData.NameAttr;
         functionDesc.text = functionData.DescAttr;
-        int playerLevel = GameDataMgr.Instance.PlayerDataAttr.level;
+        int playerLevel = GameDataMgr.Instance.PlayerDataAttr.LevelAttr;
         if(playerLevel >= functionData.needlevel)
         {
-            functionState.text = StaticDataMgr.Instance.GetTextByID("已开启");
+            functionState.text = StaticDataMgr.Instance.GetTextByID("main_levelup_kaiqi");
+            functionState.color = new Color(0, 1, 0);
         }
         else
         {
-            functionState.text = string.Format(StaticDataMgr.Instance.GetTextByID("{0}级开启"),functionData.needlevel);
+            functionState.text = string.Format(StaticDataMgr.Instance.GetTextByID("main_levelup_weikaiqi"),functionData.needlevel);
+            functionState.color = new Color(1, 0, 0);
         }
     }
 }

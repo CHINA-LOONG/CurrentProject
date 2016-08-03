@@ -18,6 +18,8 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public BuildButton m_ComposeButton;
     public BuildButton m_DecomposeButton;
 
+    public Button huoliButton;
+
 
     public PopupList m_LangPopup;
 
@@ -58,6 +60,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
         EventTriggerListener.Get(m_ComposeButton.gameObject).onClick = OnComposeButtonClick;
         EventTriggerListener.Get(m_DecomposeButton.gameObject).onClick = OnDecomposeButtonClick;
+        EventTriggerListener.Get(huoliButton.gameObject).onClick = OnHuoliButtonClick;
 
 
         m_LangPopup.Initialize<PopupListIndextDelegate>(this);
@@ -91,22 +94,35 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 
 	void OnLevelChanged(int level)
 	{
-        levelText.text = string.Format("LVL {0}", level);
+        levelText.text = string.Format("{0}", level);
 		nameText.text = GameDataMgr.Instance.PlayerDataAttr.nickName;
 	}
 
     void OnPlayerExpChanged(int oldExp,int newExp)
     {
-        PlayerLevelAttr originalAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(GameDataMgr.Instance.PlayerDataAttr.level);
+        PlayerLevelAttr originalAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(GameDataMgr.Instance.PlayerDataAttr.LevelAttr);
         if (null == originalAttr)
             return;
         float targetExp = newExp / (float)originalAttr.exp;
-       // playerProgress.SetCurrrentRatio(targetExp);
+        if(oldExp != newExp)
+        {
+            playerProgress.SetLoopCount(1);
+            float curExp = oldExp / (float)originalAttr.exp;
+            playerProgress.SetCurrrentRatio(targetExp);
+        }
+
         playerProgress.SetTargetRatio(targetExp);
-        playerProgress.SkipAnimation();
-        int ratio = (int)(targetExp * 100);
-        playerProgress.mProgressText.text = string.Format("{0}%", ratio);
-    }
+       // playerProgress.SkipAnimation();
+        int ratio = (int)Mathf.Ceil(targetExp * 100);
+        if(GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.MaxPlayerLevel)
+        {
+            playerProgress.mProgressText.text = "MAXLEVEL";
+        }
+        else
+        {
+            playerProgress.mProgressText.text = string.Format("{0}%", ratio);
+        }
+    }       
 
     //邮件同步，新邮件事件
     void OnMailChanged(int mail)
@@ -151,6 +167,10 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         uiDecompose = UIMgr.Instance.OpenUI_(UIDecompose.ViewName) as UIDecompose;
     }
 
+    void    OnHuoliButtonClick (GameObject go)
+    {
+        UseHuoLi.Open();
+    }
 	public	UIShop OpenShop(int shopType)
 	{
 		uiShop = UIMgr.Instance.OpenUI_ (UIShop.ViewName) as UIShop;
@@ -203,7 +223,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
     public override void Init()
     {
         OnMailChanged(0);
-        OnLevelChanged(GameDataMgr.Instance.PlayerDataAttr.level);
+        OnLevelChanged(GameDataMgr.Instance.PlayerDataAttr.LevelAttr);
         OnPlayerExpChanged(0, GameDataMgr.Instance.PlayerDataAttr.ExpAttr);
     }
     public override void Clean()

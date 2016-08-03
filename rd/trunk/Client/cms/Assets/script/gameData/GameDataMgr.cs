@@ -8,6 +8,14 @@ public class GameDataMgr : MonoBehaviour
     //private Dictionary<int, BattleObject> unitList = new Dictionary<int, BattleObject>();
 
     static GameDataMgr mInst = null;
+    public float mainStageRotAngle = 0.0f;
+    bool mGoldMaxHinted = false;
+
+    void Awake()
+    {
+        mGoldMaxHinted = false;
+    }
+
     public static GameDataMgr Instance
     {
         get
@@ -160,8 +168,8 @@ public class GameDataMgr : MonoBehaviour
         mainPlayer.nickName = playerInfo.nickname;
         mainPlayer.career = playerInfo.career;
         {
-            mainPlayer.level = playerInfo.level;
-            GameEventMgr.Instance.FireEvent<int>(GameEventList.LevelChanged, mainPlayer.level);
+            mainPlayer.LevelAttr = playerInfo.level;
+           // GameEventMgr.Instance.FireEvent<int>(GameEventList.LevelChanged, mainPlayer.level);
         }
         {
             mainPlayer.ExpAttr = playerInfo.exp;
@@ -204,9 +212,7 @@ public class GameDataMgr : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     void OnMonsterInfoSync(ProtocolMessage msg)
     {
-        mainPlayer.unitPbList.Clear();
-        mainPlayer.allUnitDic.Clear();
-
+        
         PB.HSMonsterInfoSync monsterSync = msg.GetProtocolBody<PB.HSMonsterInfoSync>();
         int monsterCount = monsterSync.monsterInfo.Count;
         for (int i = 0; i < monsterCount; ++i)
@@ -326,7 +332,26 @@ public class GameDataMgr : MonoBehaviour
         }
         GameEventMgr.Instance.FireEvent<int>(GameEventList.MailAdd, mailNew.mail.mailId);
     }
-
+    //---------------------------------------------------------------------------------------------
+    public void CheckDiamondFull()
+    {
+        if (PlayerDataAttr.gold >= 999999999)
+        {
+            //int goldMaxHint = PlayerPrefs.GetInt("goldHintMax");
+            if (mGoldMaxHinted == false)
+            {
+                //PlayerPrefs.SetInt("goldHintMax", 1);
+                mGoldMaxHinted = true;
+                MsgBox.PromptMsg.Open(
+                    MsgBox.MsgBoxType.Conform,
+                    string.Format(StaticDataMgr.Instance.GetTextByID("gold_max")),
+                    null,
+                    true,
+                    false
+                    );
+            }
+        }
+    }
     //---------------------------------------------------------------------------------------------
     void OnReward(ProtocolMessage msg)
     {
@@ -337,7 +362,7 @@ public class GameDataMgr : MonoBehaviour
             //change later in uiscore
             if (reward.hsCode != PB.code.INSTANCE_SETTLE_C.GetHashCode())
             {
-                PlayerDataAttr.level = reward.playerAttr.level;
+                PlayerDataAttr.LevelAttr = reward.playerAttr.level;
                 PlayerDataAttr.ExpAttr = reward.playerAttr.exp;
             }
             PlayerDataAttr.fatigue = reward.playerAttr.fatigue;
@@ -362,20 +387,9 @@ public class GameDataMgr : MonoBehaviour
                 }
             }
 
-            if (PlayerDataAttr.gold >= 999999999)
+            if (reward.hsCode != PB.code.INSTANCE_SETTLE_C.GetHashCode())
             {
-                int goldMaxHint = PlayerPrefs.GetInt("goldHintMax");
-                if (goldMaxHint == 0)
-                {
-                    PlayerPrefs.SetInt("goldHintMax", 1);
-                    MsgBox.PromptMsg.Open(
-                        MsgBox.MsgBoxType.Conform,
-                        string.Format(StaticDataMgr.Instance.GetTextByID("gold_max")),
-                        null,
-                        true,
-                        false
-                        );
-                }
+                CheckDiamondFull();
             }
         }
 
@@ -451,7 +465,7 @@ public class GameDataMgr : MonoBehaviour
         PB.HSConsumeInfo reward = msg.GetProtocolBody<PB.HSConsumeInfo>();
         if (reward.playerAttr!=null)
         {
-            PlayerDataAttr.level = reward.playerAttr.level;
+            PlayerDataAttr.LevelAttr = reward.playerAttr.level;
             PlayerDataAttr.ExpAttr = reward.playerAttr.exp;
             PlayerDataAttr.fatigue = reward.playerAttr.fatigue;
             PlayerDataAttr.coin = reward.playerAttr.coin;

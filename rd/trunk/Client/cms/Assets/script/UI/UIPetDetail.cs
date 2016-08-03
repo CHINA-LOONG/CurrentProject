@@ -15,7 +15,7 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
     public GameObject rightView;
 
     PetDetailRightBase m_rightDetail = null;
-    GameObject m_cameraObject = null;
+    //GameObject m_cameraObject = null;
 
     List<GameUnit> m_curTypeList = null;
     int m_currentIndex = 0;
@@ -45,18 +45,20 @@ public class UIPetDetail : UIBase, IEquipPopupCallBack
 
     public override void Init()
     {
-        if (m_cameraObject == null)
-        {
-            m_cameraObject = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetModelCameraAssetName);
-            m_cameraObject.name = PetViewConst.UIPetModelCameraAssetName;
-        }
+        //if (m_cameraObject == null)
+        //{
+        //    m_cameraObject = ResourceMgr.Instance.LoadAsset(PetViewConst.UIPetModelCameraAssetName);
+        //    m_cameraObject.name = PetViewConst.UIPetModelCameraAssetName;
+        //}
     }
     public override void Clean()
     {
-        if (m_cameraObject != null)
-        {
-            ResourceMgr.Instance.DestroyAsset(m_cameraObject);
-        }
+        //if (m_cameraObject != null)
+        //{
+        //    ResourceMgr.Instance.DestroyAsset(m_cameraObject);
+        //}
+
+        leftView.imageView.CleanImageView();//关闭时释放模型资源
         UIMgr.Instance.DestroyUI(uiEquipSetting);
     }
 

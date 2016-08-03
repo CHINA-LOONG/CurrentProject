@@ -210,8 +210,11 @@ public class HawkIoHandler extends IoHandlerAdapter {
 		HawkNetStatistics.getInstance().onSessionClosed();
 		
 		if (HawkApp.getInstance().getAppCfg().isDebug()) {
-			String ipaddr = session.getRemoteAddress().toString().split(":")[0].substring(1);
-			HawkLog.logPrintln(String.format("session closed, ipaddr: %s, total: %d", ipaddr, HawkNetStatistics.getInstance().getCurSession()));
+			try {
+				String ipaddr = session.getRemoteAddress().toString().split(":")[0].substring(1);
+				HawkLog.logPrintln(String.format("session closed, ipaddr: %s, total: %d", ipaddr, HawkNetStatistics.getInstance().getCurSession()));
+			} catch (Exception e) {
+			}
 		}
 		
 		try {

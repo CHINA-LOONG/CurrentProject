@@ -25,7 +25,7 @@ public class LevelUp : UIBase
 
     public  void    InitWith(int oldLevel, int targetLevel, int oldPilao, int newPilao)
     {
-        title.text = StaticDataMgr.Instance.GetTextByID("main_levelup_title");
+       // title.text = StaticDataMgr.Instance.GetTextByID("main_levelup_title");
         curPilaoDesc.text = StaticDataMgr.Instance.GetTextByID("main_levelup_dengji");
         maxPilaoDesc.text = StaticDataMgr.Instance.GetTextByID("main_levelup_shangxian");
 

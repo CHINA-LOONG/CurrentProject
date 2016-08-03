@@ -33,6 +33,7 @@ public class UICompose : UIBase, TabButtonDelegate
         [HideInInspector]
         public ItemIcon itemIcon;
         public GameObject gemIcon;
+        public Image imgGemStage;
 
         public List<ComposeField> fields = new List<ComposeField>(); //材料位置
 
@@ -377,16 +378,16 @@ public class UICompose : UIBase, TabButtonDelegate
     //设置合成一次/十次状态
     void SetComposeState()
     {
-        if (composeView.selectItems.Count>0&&CheckIsFull())
-        {
-            composeView.btnComposeOne.interactable = true;
-            composeView.btnComposeTen.interactable = true;
-        }
-        else
-        {
-            composeView.btnComposeOne.interactable = false;
-            composeView.btnComposeTen.interactable = false;
-        }
+        //if (composeView.selectItems.Count>0&&CheckIsFull())
+        //{
+        //    composeView.btnComposeOne.interactable = true;
+        //    composeView.btnComposeTen.interactable = true;
+        //}
+        //else
+        //{
+        //    composeView.btnComposeOne.interactable = false;
+        //    composeView.btnComposeTen.interactable = false;
+        //}
     }
     //设置移除全部状态
     void SetRemoveAllState()
@@ -503,6 +504,10 @@ public class UICompose : UIBase, TabButtonDelegate
             {
                 composeView.itemIcon.gameObject.SetActive(false);
             }
+            string assetname = "grade_" + gemStage.ToString();
+            Sprite headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(assetname) as Sprite;
+            if (null != headImg)
+                composeView.imgGemStage.sprite = headImg;
             composeView.text_targetName.text = string.Format(StaticDataMgr.Instance.GetTextByID("compose_gemrandom"), gemStage);
         }
         else
@@ -539,18 +544,21 @@ public class UICompose : UIBase, TabButtonDelegate
 
     void OnClickComposeOne()
     {
-        Logger.Log("合成了一次");
         SendComposeMessage(false);
     }
 
     void OnClickComposeTen()
     {
-        Logger.Log("合成十次");
         SendComposeMessage(true);
     }
 
     void SendComposeMessage(bool composeAll)
     {
+        if (composeView.selectItems.Count <= 0 || !CheckIsFull())
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("compose_record_006"), (int)PB.ImType.PROMPT);
+            return;
+        }
         if (Type==type.Gem)
         {
             PB.HSGemCompose param = new PB.HSGemCompose();

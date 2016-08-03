@@ -25,7 +25,8 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
     public Image stageBadge;
     public Button btnAdvance;
 
-    public RawImage modelImage;
+    public ImageView imageView;
+    //public RawImage modelImage;
 
     public EquipField[] fields;
 
@@ -156,7 +157,6 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_LOCK_C.GetHashCode().ToString(), OnPetLockReturn);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_LOCK_S.GetHashCode().ToString(), OnPetLockReturn);
     }
-
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetStageNotify, ReloadPetStage);
@@ -172,34 +172,39 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
             ReloadData(m_unit, false);
         }
     }
-
+    
     public void ReloadData(GameUnit unit, bool reloadUnit = true)
     {
         m_unit = unit;
         s_unit = StaticDataMgr.Instance.GetUnitRowData(m_unit.pbUnit.id);
         IsLocked = m_unit.pbUnit.locked;
         #region set monster role
-        
-        if (reloadUnit == true)
+
+        if (reloadUnit)
         {
-            GameObject petCamera = GameObject.Find(PetViewConst.UIPetModelCameraAssetName);
-            GameObject monster = Util.FindChildByName(petCamera, "monsterModel");
-            if (monster != null)
-            {
-                ResourceMgr.Instance.DestroyAsset(monster);
-                monster = null;
-            }
-
-            monster = ResourceMgr.Instance.LoadAsset(unit.assetID);
-            monster.transform.SetParent(petCamera.transform);
-            monster.name = "monsterModel";
-            monster.transform.localPosition = new Vector3(0, -0.65f, 2.2f);
-            monster.transform.localEulerAngles = new Vector3(5.0f, 180, 0);
-            monster.transform.localScale = Vector3.one;
-            //monster.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, -180, transform.localEulerAngles.z);
-
-            modelImage.texture = petCamera.GetComponent<Camera>().targetTexture;
+            imageView.ReloadData(unit.pbUnit.id);
         }
+
+        //if (reloadUnit == true)
+        //{
+        //    GameObject petCamera = GameObject.Find(PetViewConst.UIPetModelCameraAssetName);
+        //    GameObject monster = Util.FindChildByName(petCamera, "monsterModel");
+        //    if (monster != null)
+        //    {
+        //        ResourceMgr.Instance.DestroyAsset(monster);
+        //        monster = null;
+        //    }
+
+        //    monster = ResourceMgr.Instance.LoadAsset(unit.assetID);
+        //    monster.transform.SetParent(petCamera.transform);
+        //    monster.name = "monsterModel";
+        //    monster.transform.localPosition = new Vector3(0, -0.65f, 2.2f);
+        //    monster.transform.localEulerAngles = new Vector3(5.0f, 180, 0);
+        //    monster.transform.localScale = Vector3.one;
+        //    //monster.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, -180, transform.localEulerAngles.z);
+
+        //    modelImage.texture = petCamera.GetComponent<Camera>().targetTexture;
+        //}
 
         #endregion
 
@@ -231,7 +236,6 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
             stageBadge.gameObject.SetActive(false);
         }
     }
-
     public void RefreshTempUnit(int level,int exp)
     {
         textLevel.text = level.ToString();
@@ -318,8 +322,6 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         }
         
     }
-
-
     //接口函数
     public void OnSelectEquipField(PartType part, EquipData data)
     {

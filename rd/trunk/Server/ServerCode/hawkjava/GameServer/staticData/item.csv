@@ -211,8 +211,8 @@ id,name,classType,asset,type,subType,grade,minLevel,condition,times,tips,bindTyp
 40061,name_40061_pvprankxianshisuipian,-1,icon_chongwusuipian3,4,-1,3,0,1,-1,tips_40061_pvprankxianshisuipian,3,-1,-1,10,2,1,1,300001,,,,-1,-1,-1,,-1,-1,-1,,1
 40062,name_40062_pvprankxianshisuipian,-1,icon_chongwusuipian4,4,-1,4,0,1,-1,tips_40062_pvprankxianshisuipian,3,-1,-1,10,2,1,1,300001,,,,-1,-1,-1,,-1,-1,-1,,1
 40063,name_40063_advanturegoldbox,-1,icon_zuanshixiangzi1,4,2,1,0,1,-1,tips_40063_advanturegoldbox,3,-1,-1,10,2,1,1,advanturegoldbox40063,,,,-1,-1,-1,,-1,-1,-1,13_1,1
-40064,name_40064_pvpbox,-1,icon_pvpchongwusuipian3,4,6,3,0,1,-1,tips_40064_pvpbox,3,-1,-1,10,2,1,1,advanturegoldbox40063,,,,-1,-1,-1,,-1,-1,-1,5_3,1
-40065,name_40065_towerbox,-1,icon_tongtiantasuipian3,4,6,3,0,1,-1,tips_40065_towerbox,3,-1,-1,10,2,1,1,advanturegoldbox40063,,,,-1,-1,-1,,-1,-1,-1,5_3,1
+40064,name_40064_pvpbox,-1,icon_pvpchongwusuipian3,4,6,3,0,1,-1,tips_40064_pvpbox,3,-1,-1,10,2,1,1,pvpboxreward40064,,,,-1,-1,-1,,-1,-1,-1,5_3,1
+40065,name_40065_towerbox,-1,icon_tongtiantasuipian3,4,6,3,0,1,-1,tips_40065_towerbox,3,-1,-1,10,2,1,1,towerboxreward40065,,,,-1,-1,-1,,-1,-1,-1,5_3,1
 40066,name_40066_bfregmentda,-1,icon_chongwusuipian2,4,4,2,0,1,-1,tips_40066_bfregmentda,3,-1,-1,10,2,1,1,bfregmentda_40066,,,,-1,-1,-1,,-1,-1,-1,,1
 40067,name_40067_afregmentda,-1,icon_chongwusuipian3,4,4,3,0,1,-1,tips_40067_afregmentda,3,-1,-1,10,2,1,1,afregmentda_40067,,,,-1,-1,-1,,-1,-1,-1,,1
 40068,name_40068_bigTaskleader601,-1,icon_lingxiubaoxiang5,4,5,4,0,1,-1,tips_40068_bigTaskleader601,3,-1,-1,10,2,1,1,200009,,,,-1,-1,-1,,-1,-1,-1,7_2,1

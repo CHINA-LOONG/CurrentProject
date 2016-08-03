@@ -19,6 +19,7 @@ public class LogResult : MonoBehaviour {
     public bool isHitSuccessE = false;
     public bool isCriticalE = false;         
     public LogData[] logData;//攻击方输出数据 yueguangsenlin11 xgLangren
+    int logIndex = 1;
     void Awake()
     {
         mInstance = this;
@@ -35,13 +36,13 @@ public class LogResult : MonoBehaviour {
         string savepath = @"Assets/StreamingAssets/staticData/FightResul.csv";
         FileStream fs = new FileStream(savepath, FileMode.Create);
         StreamWriter sw = new StreamWriter(fs);
-        sw.WriteLine("循环次数,对局数,回合数,战斗结果（1=胜利，0=失败）,怪物1剩余血量,怪物2剩余血量,怪物3剩余血量,怪物4剩余血量,怪物5剩余血量,剩余怪物数,总出手回合数,命中回合数,暴击回合数,大招使用次数,怪物1剩余血量, 怪物2剩余血量,怪物3剩余血量,怪物4剩余血量,怪物5剩余血量,剩余怪物数,总出手回合数,命中回合数,暴击回合数,大招使用次数");        
+        sw.WriteLine("循环次数,对局数,回合数,战斗结果（1=胜利，0=失败）,怪物1剩余血量,怪物2剩余血量,怪物3剩余血量,怪物4剩余血量,怪物5剩余血量,剩余怪物数,总出手回合数,命中回合数,暴击回合数,大招使用次数,怪物1剩余血量, 怪物2剩余血量,怪物3剩余血量,剩余怪物数,总出手回合数,命中回合数,暴击回合数,大招使用次数");
         for (int i = 0; i < logData.Length; i++)
         {
             for (int j = 0; j < 3; j++)
             {
                 sw.WriteLine((logData[i].logXhNumber + 1) + "," + (j + 1) + "," +
-                    logData[i].logRoundNumber[j] + "," + logData[i].logIsWin[i] + "," +
+                    logData[i].logRoundNumber[j] + "," + logData[i].logIsWin[j] + "," +
                     logData[i].playerData[j].attBloodNumber[0] + "%," +
                     logData[i].playerData[j].attBloodNumber[1] + "%," +
                     logData[i].playerData[j].attBloodNumber[2] + "%," +
@@ -55,8 +56,6 @@ public class LogResult : MonoBehaviour {
                     logData[i].enemyData[j].attBloodNumber[0] + "%," +
                     logData[i].enemyData[j].attBloodNumber[1] + "%," +
                     logData[i].enemyData[j].attBloodNumber[2] + "%," +
-                    logData[i].enemyData[j].attBloodNumber[3] + "%," +
-                    logData[i].enemyData[j].attBloodNumber[4] + "%," +
                     logData[i].enemyData[j].monsterNumber + "," +
                     logData[i].enemyData[j].monsterAttNumber + "," +
                     logData[i].enemyData[j].monsterHitNumber + "," +
@@ -66,7 +65,8 @@ public class LogResult : MonoBehaviour {
         }
         sw.Close();
         fs.Close();
-        logContent.text = "Assets/StreamingAssets/staticData/FightResul.csv";
+        logContent.text = "输出第" + "<color=#7fff00ff>" + logIndex + "</color>次\nAssets/StreamingAssets/staticData/FightResul.csv";
+        logIndex++;
     }
     public void logClick(GameObject obj)
     {

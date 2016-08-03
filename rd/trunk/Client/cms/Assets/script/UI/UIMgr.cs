@@ -25,9 +25,10 @@ public class UIMgr : MonoBehaviour
 		}
 	}
 
+    private Transform modelTransform;
     private Transform uiPanelTransform;
 	private Transform topPanelTransform;
-
+    
 
 	static UIMgr mInst = null;
 	public static UIMgr Instance
@@ -59,13 +60,19 @@ public class UIMgr : MonoBehaviour
 
 		UICamera.Instance.Init ();
 		canVas.worldCamera = UICamera.Instance.CameraAttr;
-
+        GameObject viewGo = Util.FindChildByName(gameObject, "modelParent");
+        modelTransform = viewGo.transform;
         GameObject uiGo = Util.FindChildByName(gameObject, "uiPanel");
         uiPanelTransform = uiGo.transform;
 		GameObject topGo = Util.FindChildByName(gameObject,"topPanel");
 		topPanelTransform = topGo.transform;
 
 	}
+
+    public void SetModelView(Transform model,int index)
+    {
+        UIUtil.SetParentReset(model, modelTransform, new Vector3(1000f * index, 0f, 1000f));
+    }
 
     public UIBase GetUI(string uiName)
     {
@@ -182,15 +189,4 @@ public class UIMgr : MonoBehaviour
         }
         popupList.Clear();
     }
-
-    //private UIBuyEquip buyEquip;
-
-    //public void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.B))
-    //    {
-    //        buyEquip = OpenUI_(UIBuyEquip.ViewName) as UIBuyEquip;
-    //    }
-    //}
-
 }

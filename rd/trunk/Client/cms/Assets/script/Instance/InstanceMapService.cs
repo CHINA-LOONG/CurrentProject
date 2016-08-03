@@ -188,7 +188,7 @@ public class InstanceMapService : MonoBehaviour
             return false;//已经开启
         }
 
-		if (GameDataMgr.Instance.PlayerDataAttr.level < openNeedLevel)
+		if (GameDataMgr.Instance.PlayerDataAttr.LevelAttr < openNeedLevel)
 		{
 			return false;//等级不够
 		}

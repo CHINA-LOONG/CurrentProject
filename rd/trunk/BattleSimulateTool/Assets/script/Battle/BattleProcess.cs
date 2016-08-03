@@ -468,6 +468,7 @@ public class BattleProcess : MonoBehaviour
         if (battleResult == BattleRetCode.Failed)
         {
             insertAction.Clear();
+            LogResult.Instance.logData[LogResult.Instance.xhNumber].logIsWin[BattleToolMain.Instance.bureauNum] = 0;
             BattleController.Instance.OnBattleOver(false);
             return;
         }

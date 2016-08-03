@@ -226,7 +226,7 @@ public class UIUtil
 
     public static bool CheckIsEnoughPlayerLevel(int level)
     {
-        if (level<=GameDataMgr.Instance.PlayerDataAttr.level)
+        if (level<=GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
         {
             return true;
         }
@@ -257,7 +257,7 @@ public class UIUtil
 
     public static bool CheckPetIsMaxLevel(int level)
     {
-        if (level>=GameConfig.MaxMonsterLevel||level>=GameDataMgr.Instance.PlayerDataAttr.level)
+        if (level>=GameConfig.MaxMonsterLevel||level>=GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
         {
             return true;
         }
@@ -378,6 +378,21 @@ public class UIUtil
         child.localPosition = Vector3.zero;
         child.localScale = Vector3.one;
     }
+    public static void SetParentReset(Transform child, Transform parent,Vector3 localPos)
+    {
+        child.SetParent(parent, false);
+        child.localPosition = localPos;
+        child.localScale = Vector3.one;
+    }
+
+    public  static  void    SetButtonTitle(Transform btn,string text)
+    {
+        Text tx = btn.GetComponentInChildren<Text>();
+        if(tx != null)
+        {
+            tx.text = text;
+        }
+    }
 
     public static void SetDisPlayAttr(EquipLevelData data, Text attr1, Text value1, Text attr2, Text value2)
     {
@@ -396,7 +411,6 @@ public class UIUtil
         }
         if (data.intelligence != 0)
         {
-            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
@@ -407,10 +421,10 @@ public class UIUtil
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_intelligence");
                 value2.text = "+" + data.intelligence.ToString();
             }
+            index++;
         }
         if (data.speed != 0)
         {
-            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
@@ -421,10 +435,10 @@ public class UIUtil
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_speed");
                 value2.text = "+" + data.speed.ToString();
             }
+            index++;
         }
         if (data.defense != 0)
         {
-            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
@@ -435,10 +449,10 @@ public class UIUtil
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_defence");
                 value2.text = "+" + data.defense.ToString();
             }
+            index++;
         }
         if (data.health != 0)
         {
-            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
@@ -449,10 +463,10 @@ public class UIUtil
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_health");
                 value2.text = "+" + data.health.ToString();
             }
+            index++;
         }
         if (data.energy != 0)
         {
-            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_energy");
@@ -463,10 +477,10 @@ public class UIUtil
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_energy");
                 value2.text = "+" + data.energy.ToString();
             }
+            index++;
         }
         if (data.criticalRatio != 0)
         {
-            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_ratio");
@@ -477,10 +491,10 @@ public class UIUtil
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_ratio");
                 value2.text = "+" + data.criticalRatio.ToString();
             }
+            index++;
         }
         if (data.criticalDmg != 0)
         {
-            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_dmg");
@@ -491,10 +505,10 @@ public class UIUtil
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_critical_dmg");
                 value2.text = "+" + data.criticalDmg.ToString();
             }
+            index++;
         }
         if (data.healRatio != 0)
         {
-            index++;
             if (index == 0)
             {
                 attr1.text = StaticDataMgr.Instance.GetTextByID("common_attr_heal_ratio");
@@ -505,6 +519,7 @@ public class UIUtil
                 attr2.text = StaticDataMgr.Instance.GetTextByID("common_attr_heal_ratio");
                 value2.text = "+" + data.healRatio.ToString();
             }
+            index++;
         }
 
         switch (index)

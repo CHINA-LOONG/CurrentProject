@@ -367,13 +367,10 @@ public class GameUnit : IComparable
                 //endurance += curEquipData.endurance + curEquipData.enduranceStrengthen + curEquipData.enduranceGem;
                 //recovery += curEquipData.recovery + curEquipData.recoveryStrengthen + curEquipData.recoveryGem;
                 //宝石附加二级属性
-                if (curEquipData.criticalDmgGem > 0.0f)
-                {
-                    criticalRatio += curEquipData.criticalRatioGem;
-                    additionEnergy += curEquipData.energyGem;
-                    additionHealRatio += curEquipData.healRatioGem;
-                    criticalDamageRatio += curEquipData.criticalDmgGem;
-                }
+                criticalRatio += curEquipData.criticalRatioGem;
+                additionEnergy += curEquipData.energyGem;
+                additionHealRatio += curEquipData.healRatioGem;
+                criticalDamageRatio += curEquipData.criticalDmgGem;
             }
         }
         //二级属性

@@ -13,6 +13,7 @@ public interface IScrollView
     //List<Transform> CreateItem(int count);
     void ReloadData(Transform item, int index);
     Transform CreateData(Transform parent, int index = 0);
+    void CleanData(List<Transform> itemList);
 }
 
 [DisallowMultipleComponent]
@@ -31,7 +32,6 @@ public class FixCountScrollView : MonoBehaviour
     /// </summary>
     public GridLayoutGroup m_Grid;
     RectTransform m_Content;
-
 
     /// <summary>
     /// 排列方式枚举
@@ -75,7 +75,9 @@ public class FixCountScrollView : MonoBehaviour
             m_ScrollRect = GetComponent<ScrollRect>();
         }
         m_ScrollRect.onValueChanged.AddListener(OnDrag);
-        m_ScrollView = m_ScrollRect.transform as RectTransform;
+
+        m_ScrollView = m_ScrollRect.viewport == null ? m_ScrollRect.transform as RectTransform :
+                                                   m_ScrollRect.viewport;
 
         if (m_Grid == null)
         {
@@ -189,7 +191,8 @@ public class FixCountScrollView : MonoBehaviour
 
         m_ScrollView.pivot = new Vector2(0.5f, 0.5f);
         m_Content.pivot = new Vector2(0, 1);
-        m_Content.localPosition = new Vector2(-m_ScrollView.rect.size.x/2f,m_ScrollView.rect.size.y/2f);
+        Debug.Log(m_ScrollView.rect);
+        m_Content.localPosition = new Vector2(-m_ScrollView.rect.size.x / 2f, m_ScrollView.rect.size.y / 2f);
         //四角坐标  横着数  矩形区域
         //一号位中心点
         //①       ②
@@ -239,8 +242,13 @@ public class FixCountScrollView : MonoBehaviour
                 m_Content.sizeDelta = contentSize;
                 break;
         }
-        m_Child.Clear();
-        
+        iScrollViewDelegate.CleanData(m_Child);
+        if (m_Child.Count!=0)
+        {
+            m_Child.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
+            m_Child.Clear();
+        }
+
         for (int i = 0; i < childCont; i++)
         {
             Transform item=iScrollViewDelegate.CreateData(m_Content);

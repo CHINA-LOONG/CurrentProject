@@ -57,18 +57,22 @@ public class BattleToolMain : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     void Start()
     {
-        EventTriggerListener.Get(startButton).onClick = StartSimulate;       
+        EventTriggerListener.Get(startButton).onClick = StartClick;       
     }
-    //---------------------------------------------------------------------------------------------
-    public void StartSimulate(GameObject but)
+    void StartClick(GameObject but)
     {
-        LogResult.Instance.xhNumber = 0;
         int count = int.Parse(mSimulateCount.text);
         LogResult.Instance.logData = new LogData[count];
         for (int i = 0; i < count; ++i)
         {
             LogResult.Instance.logData[i] = new LogData();
         }
+        StartSimulate();
+    }
+    //---------------------------------------------------------------------------------------------
+    public void StartSimulate()
+    {
+        
         InitMainUnitList();
         BattleController.Instance.StartSimulate();       
     }
@@ -78,7 +82,7 @@ public class BattleToolMain : MonoBehaviour
         ++mCurSimulateCount;
         if (mCurSimulateCount < int.Parse(mSimulateCount.text))
         {
-            StartSimulate(null);
+            StartSimulate();
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -92,9 +96,12 @@ public class BattleToolMain : MonoBehaviour
             curUnitData.unitID = attData.gwID.text;
             curUnitData.unitLvl = int.Parse(attData.gwLv.text);
             curUnitData.unitCharacter = int.Parse(attData.gwCharacter.text);
+            //curUnitData.unitID = "xgLangren";
+            //curUnitData.unitLvl = 40;
+            //curUnitData.unitCharacter = 1;
             mMainUnitDataList.Add(curUnitData);
         }
-        operationData = StaticDataMgr.Instance.GetPlayerBehaviorData(operationID.text);
+		operationData = StaticDataMgr.Instance.GetPlayerBehaviorData (operationID.text);//"yueguangsenlin11_1");//minghe18_1");//
         //end test
         int playerUnitStartID = 100;
         mMainUnitList.Clear();

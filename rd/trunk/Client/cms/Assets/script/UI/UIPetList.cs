@@ -3,13 +3,15 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UIPetList :  UIBase, TabButtonDelegate 
+public class UIPetList : UIBase, TabButtonDelegate
 {
 
     public static string ViewName = PetViewConst.UIPetListAssetName;
 
     public Text title;
     public Button closeButton;
+    public Button btnMonsterbook;
+
     public TabButtonGroup tabGroup;
     public Image srcollIcon;
 
@@ -29,15 +31,23 @@ public class UIPetList :  UIBase, TabButtonDelegate
     private List<PetListElement> items = new List<PetListElement>();
     private List<PetListElement> itemsPool = new List<PetListElement>();
 
+    private UIMonsterbook uiMonsterbook;
+    public UIMonsterbook UIMonsterbook
+    {
+        get{return uiMonsterbook;}
+    }
     private UIPetDetail uiPetDetail;
     public UIPetDetail UIPetDetail
     {
         get { return uiPetDetail; }
     }
 
+
     void Start()
     {
         EventTriggerListener.Get(closeButton.gameObject).onClick = CloseButtonDown;
+        EventTriggerListener.Get(btnMonsterbook.gameObject).onClick = ClickMonsterbookBtn;
+
         scrollView.onValueChanged.AddListener(ShowScrollIcon);
 
         textOption_0.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_all");
@@ -46,7 +56,7 @@ public class UIPetList :  UIBase, TabButtonDelegate
         textOption_3.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_property3");
         textOption_4.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_property4");
         textOption_5.text = StaticDataMgr.Instance.GetTextByID("pet_list_option_property5");
-
+        
         // 默认选中第一栏
         tabGroup.InitWithDelegate(this);
         ReloadPetList();
@@ -92,15 +102,14 @@ public class UIPetList :  UIBase, TabButtonDelegate
     public override void Clean()
     {
         UIMgr.Instance.DestroyUI(UIPetDetail);
+        UIMgr.Instance.DestroyUI(UIMonsterbook);
     }
 
     void ReloadPetList()
     {
         OnTabButtonChanged(m_currentIndex);
     }
-
-
-
+    
     public void OnTabButtonChanged(int index)
     {
         m_currentIndex = index;
@@ -219,5 +228,9 @@ public class UIPetList :  UIBase, TabButtonDelegate
     void CloseButtonDown(GameObject go)
     {
         UIMgr.Instance.CloseUI_(UIPetList.ViewName);
+    }
+    void ClickMonsterbookBtn(GameObject go)
+    {
+        UIMgr.Instance.OpenUI_(UIMonsterbook.ViewName);
     }
 }

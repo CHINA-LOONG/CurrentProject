@@ -27,7 +27,7 @@ public class GoldChargeData
 	public	int	GetBaseJinBiWithTime(int iTime)
 	{
 		int baseAward = award + awardTimeAdd * (iTime - 1);
-        float levelAffect = GameDataMgr.Instance.PlayerDataAttr.level * levelAdd + 1.0f;
+        float levelAffect = GameDataMgr.Instance.PlayerDataAttr.LevelAttr * levelAdd + 1.0f;
         float result = (baseAward * levelAffect);
 
         return (int)result;

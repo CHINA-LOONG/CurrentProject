@@ -69,7 +69,6 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     void StartProcess(int index)
     {
-
         Logger.Log("startProcess");
         if (index < maxProcessIndex)
         {
@@ -130,6 +129,7 @@ public class BattleController : MonoBehaviour
     public void StartNextProcess(float delayTime)
     {
         CurBlood(true);
+        LogResult.Instance.logData[LogResult.Instance.xhNumber].logIsWin[BattleToolMain.Instance.bureauNum] = 1;
         Logger.Log("startNextProcess");
         battleGroup.DestroyEnemys();
         List<BattleObject> playerUnitList = BattleToolMain.Instance.mMainUnitList;
@@ -149,24 +149,21 @@ public class BattleController : MonoBehaviour
         return curProcessIndex + 1 < maxProcessIndex;
     }
     //---------------------------------------------------------------------------------------------
+    int dp = 0;
     public void OnBattleOver(bool isSuccess)
-    {
-        CurBlood(isSuccess);
+    {        
+        CurBlood(isSuccess);        
         battleSuccess = isSuccess;
         processStart = false;
         process.HideFireFocus();
         string iswin = "胜利";
         if (!isSuccess)
         {
-            iswin = "失败";
+            iswin = "失败";           
         }
         Logger.Log("<color=#7fff00ff>end simulate once </color>" + "<color=#FF0000FF>" + iswin + "</color>");
-        if (LogResult.Instance.xhNumber + 1 == LogResult.Instance.logData.Length
-            || LogResult.Instance.xhNumber == LogResult.Instance.logData.Length)//输出战斗结果
-        {
-            LogResult.Instance.ShowLogPanel();
-        }
-
+        LogResult.Instance.ShowLogPanel();
+        ++LogResult.Instance.xhNumber;
         //unload battle scene
         battleGroup.DestroyEnemys();
         List<BattleObject> playerUnitList = BattleToolMain.Instance.mMainUnitList;
@@ -185,18 +182,13 @@ public class BattleController : MonoBehaviour
     //for tool entry
     //---------------------------------------------------------------------------------------------
     public void StartSimulate()
-    {
-        //Debug.Log(LogResult.Instance.logData[0].logXhNumber);
-        LogResult.Instance.logData[LogResult.Instance.xhNumber].logXhNumber = LogResult.Instance.xhNumber;
-        if (LogResult.Instance.logData.Length > 1)
-        {
-            LogResult.Instance.xhNumber++;
-        }        
+    {         
+        LogResult.Instance.logData[LogResult.Instance.xhNumber].logXhNumber = LogResult.Instance.xhNumber;               
         Logger.Log("<color=#7fff00ff>start simulate</color>");
         curProcessIndex = 0;
         processStart = false;
         battleStartID = BattleConst.enemyStartID;
-        instanceData = StaticDataMgr.Instance.GetInstanceData(BattleToolMain.Instance.mInstanceID.text);
+        instanceData = StaticDataMgr.Instance.GetInstanceData(BattleToolMain.Instance.mInstanceID.text);//minghe18");//BattleToolMain.Instance.mInstanceID.text);
         maxProcessIndex = instanceData.battleLevelList.Count + 1;
         
         battleGroup = new BattleGroup();
@@ -211,32 +203,40 @@ public class BattleController : MonoBehaviour
             int i = 0;
             for (; i < battleGroup.PlayerFieldList.Count; i++)
             {
+                if (battleGroup.PlayerFieldList[i] != null && battleGroup.PlayerFieldList[i].unit.curLife != 0)
+                {
+                    LogResult.Instance.logData[LogResult.Instance.xhNumber].
+                        playerData[BattleToolMain.Instance.bureauNum].monsterNumber++;
+                }
                 if (battleGroup.PlayerFieldList[i] == null)
                 {
                     continue;                     
                 }
-                LogResult.Instance.logData[LogResult.Instance.xhNumber].
-                    playerData[BattleToolMain.Instance.bureauNum].attBloodNumber[i] =
-                    (battleGroup.PlayerFieldList[i].unit.curLife / battleGroup.PlayerFieldList[i].unit.maxLife) * 100;
-            }
-            LogResult.Instance.logData[LogResult.Instance.xhNumber].
-                    playerData[BattleToolMain.Instance.bureauNum].monsterNumber = i + 1;
+                float blood = battleGroup.PlayerFieldList[i].unit.curLife;
+                float bloodMax = battleGroup.PlayerFieldList[i].unit.maxLife;
+                blood = (blood / bloodMax) * 100;
+                LogResult.Instance.logData[LogResult.Instance.xhNumber].playerData[BattleToolMain.Instance.bureauNum].attBloodNumber[i] = (int)blood;                    
+            }            
         }
         else
         {
             int i = 0;
             for (; i < battleGroup.EnemyFieldList.Count; i++)
             {
+                if (battleGroup.EnemyFieldList[i] != null && battleGroup.EnemyFieldList[i].unit.curLife != 0)
+                {
+                    LogResult.Instance.logData[LogResult.Instance.xhNumber].
+                      enemyData[BattleToolMain.Instance.bureauNum].monsterNumber++;
+                }
                 if (battleGroup.EnemyFieldList[i] == null)
                 {
                     continue;                   
                 }
-                LogResult.Instance.logData[LogResult.Instance.xhNumber].
-                   enemyData[BattleToolMain.Instance.bureauNum].attBloodNumber[i] =
-                   (battleGroup.EnemyFieldList[i].unit.curLife / battleGroup.EnemyFieldList[i].unit.maxLife) * 100;
+                float blood = battleGroup.EnemyFieldList[i].unit.curLife;
+                float bloodMax = battleGroup.EnemyFieldList[i].unit.maxLife;
+                blood = (blood / bloodMax) * 100;
+                LogResult.Instance.logData[LogResult.Instance.xhNumber].enemyData[BattleToolMain.Instance.bureauNum].attBloodNumber[i] = (int)blood;             
             }
-            LogResult.Instance.logData[LogResult.Instance.xhNumber].
-                   enemyData[BattleToolMain.Instance.bureauNum].monsterNumber = i + 1;
         }
     }
     //---------------------------------------------------------------------------------------------

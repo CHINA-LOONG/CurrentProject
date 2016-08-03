@@ -1567,26 +1567,26 @@ bosskongdao78Jinglingwang17Tips,攻击敌方群体，造成70%法攻光属性伤
 bossrenjie81Huapo2awaken1Tips,攻击敌方单体，造成草属性物理伤害,Deals grass type physical physical damage to a single target
 bossrenjie81Huapo2awaken2Tips,攻击敌方单体，造成草属性物理伤害，附加施毒效果（持续伤害）,Deals grass type physical damage to a single target with additional grass type DOT
 bossrenjie81Huapo2awaken3Tips,攻击敌方单体，造成9次草属性物理伤害,Deals grass type physical damage to a single target 9 times
-bossrenjie81Huapo2awaken8Tips,对非木属性怪物的伤害效果提升50%,Increases damage to non-grass type monsters by 50%
+bossrenjie81Huapo2awaken8Tips,对非木属性怪物的伤害效果提升20%,Increases damage to non-grass type monsters by 20%
 bossrenjie82Huoniao4awaken1Tips,攻击敌方单体，造成火属性法术伤害,Deals fire type magic damage to a single target
 bossrenjie82Huoniao4awaken2Tips,给敌方群体添加2次点燃效果（持续伤害），持续3回合,Deals fire type DOT 2 times to all enemy targets for 3 turns
 bossrenjie82Huoniao4awaken3Tips,攻击敌方群体，造成火属性法术伤害附加清除敌方增益效果,"Deals fire type magic damage to all enemy targets, and clears enemy buff effects"
 bossrenjie82Huoniao4awaken7Tips,提升自己智力，同时对自身释放物理和法术护盾,Increases INT and casts a physical and magic shield
-bossrenjie82Huoniao4awaken9Tips,对非火属性的怪伤害效果提升50%,Increases damage to non-fire type monsters by 50%
+bossrenjie82Huoniao4awaken9Tips,对非火属性的怪伤害效果提升20%,Increases damage to non-fire type monsters by 20%
 bossrenjie83Amute3awaken1Tips,攻击敌方单体，造成水属性法术伤害,Deals water type magic damage to a single target
 bossrenjie83Amute3awaken2Tips,提升自身智力,Increases your INT
 bossrenjie83Amute3awaken3Tips,攻击敌方群体，造成水属性法术伤害,Deals water type magic damage to all enemy targets
 bossrenjie83Amute3awaken4Tips,给己方单体目标添加物理、法术吸收护盾,Add a physical and magic absorption shield to a single ally target
-bossrenjie83Amute3awaken7Tips,对非水属性的怪伤害效果提升50%，受到来自非水属性伤害时50%几率触发物理法术护盾,"Increases damage to non-water type monsters by 50%；whenever you take damage from non-water type monsters, there is a 50% chance of casting a shield absorbing physical and magic damage"
+bossrenjie83Amute3awaken7Tips,对非水属性的怪伤害效果提升20%，受到来自非水属性伤害时50%几率触发物理法术护盾,"Increases damage to non-water type monsters by 20%；whenever you take damage from non-water type monsters, there is a 50% chance of casting a shield absorbing physical and magic damage"
 bossrenjie84Anpusha5awaken1Tips,攻击敌方单体，造成暗属性法术伤害,Deals dark type magic damage to a single target
 bossrenjie84Anpusha5awaken2Tips,攻击敌方群体，造成暗属性法术伤害,Deals dark type magic damage to all enemy targets
 bossrenjie84Anpusha5awaken3Tips,攻击敌方单体，造成暗属性法术伤害附带降低力量、智力效果,Deals dark type magic damage to a single target and reduces the target's STR and INT
-bossrenjie84Anpusha5awaken5Tips,对非暗属性的怪伤害效果提升50%,Increases damage to non-dark type monsters by 50%
+bossrenjie84Anpusha5awaken5Tips,对非暗属性的怪伤害效果提升20%,Increases damage to non-dark type monsters by 20%
 bossrenjie85Dujiaoshou1awaken1Tips,攻击敌方单体，造成光属性法术伤害，附加耀斑效果（持续伤害）,Deals light type magic damage to a single target with additional weak light type DOT
 bossrenjie85Dujiaoshou1awaken2Tips,提高自己40%速度，持续3回合,Increases your SPD by 40% for 3 turns
 bossrenjie85Dujiaoshou1awaken3Tips,若自身有增益效果则恢复大量血量，若有减益效果则恢复大量血量，否则恢复少量血量,"If you has buffs, then recover amount of HP. If you has debuffs, then recover amount of HP."
 bossrenjie85Dujiaoshou1awaken5Tips,回复自身全部血量,Recovers all of your HP
-bossrenjie85Dujiaoshou1awaken9Tips,对非光属性的怪伤害效果提升50%,Increases damage to non-light type monsters by 50%
+bossrenjie85Dujiaoshou1awaken9Tips,对非光属性的怪伤害效果提升20%,Increases damage to non-light type monsters by 20%
 bossrenjie86Landuo21Tips,攻击敌方单体，造成100%法攻草属性伤害,Deals (100% of magic ATK) grass type damage to a single target
 bossrenjie86Landuo22Tips,降低敌方群体40%速度，持续3回合,Reduces SPD of all enemies by 40% for 3 turns
 bossrenjie86Landuo23Tips,攻击敌方群体，造成30%法攻草属性伤害，附加施毒效果（持续伤害）,"Deals (30% of magic ATK) grass type damage to all enemy targets, with  additional strong grass type DOT"
@@ -1595,7 +1595,7 @@ bossrenjie87Baonu41Tips,挥舞巨锤对敌方单体造成火属性物理伤害�
 bossrenjie87Baonu43Tips,怒吼着对敌方群体造成火属性物理伤害，几率附带100%眩晕效果,"Roar to deal fire type physical damage to all enemy targets, with a chance of stun"
 bossrenjie87Baonu45Tips,狂暴效果，提升自身力量，同时降低自身防御力50%,"Enrage effect, increases your STR while reducing your DEF by 50%"
 bossrenjie88Yafogemeng51Tips,攻击敌方单体，造成100%物攻暗属性伤害,Deals (100% of physical ATK) dark type damage to a single target
-bossrenjie88Yafogemeng52Tips,若生命值低于90%则大幅度增加生命值，若生命值高于90%则附带力量提升{0}%，持续3回合,"If HP is less than 90%, then greatly increase HP amount. If HP is over 90%, increases strength of yourself by 80% for 3 turns"
+bossrenjie88Yafogemeng52Tips,若生命值低于90%则大幅度增加生命值，若生命值高于90%则附带力量提升80%，持续3回合,"If HP is less than 90%, then greatly increase HP amount. If HP is over 90%, increases strength of yourself by 80% for 3 turns"
 bossrenjie88Yafogemeng54Tips,攻击敌方群体附加100%眩晕,"Deals all enemy targets, with a 100% chance of stun"
 bossrenjie88Yafogemeng58Tips,若未在一定时间内死亡，则扭转时空回到过去,"If Jester doesn't die in a set amount of time, then she will travel back in time"
 ultNvyao1Name,光明审判,Light Judgement

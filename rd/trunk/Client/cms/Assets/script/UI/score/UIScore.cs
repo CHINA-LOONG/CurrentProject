@@ -221,7 +221,7 @@ public class UIScore : UIBase
     private void SetScoreInternal()
     {
         PlayerData mainPlayer = GameDataMgr.Instance.PlayerDataAttr;
-        PlayerLevelAttr originalAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(mainPlayer.level);
+        PlayerLevelAttr originalAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(mainPlayer.LevelAttr);
 
         //success
         if (mInstanceSettleResult != null)
@@ -251,26 +251,27 @@ public class UIScore : UIBase
             if (playerAttr != null && playerAttr.level > 0)
             {
                 PlayerLevelAttr curAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(playerAttr.level);
-                mPlayerProgress.SetLoopCount(playerAttr.level - mainPlayer.level);
+                mPlayerProgress.SetLoopCount(playerAttr.level - mainPlayer.LevelAttr);
                 mPlayerProgress.SetCurrrentRatio(mainPlayer.ExpAttr / (float)originalAttr.exp);
                 if (playerAttr.level >= GameConfig.MaxPlayerLevel)
                 {
                     mPlayerLvl.text = "MAX LVL";
                     mPlayerProgress.SetTargetRatio(0.0f);
+                    mPlayerGainExp.text = "+0";
                 }
                 else
                 {
                     mPlayerLvl.text = "LVL " + playerAttr.level.ToString();
                     mPlayerProgress.SetTargetRatio(playerAttr.exp / (float)curAttr.exp);
                 }
-                mPlayerLvlUp.SetActive(mainPlayer.level != playerAttr.level);
-                mOriginalPlayerLvl = mainPlayer.level;
+                mPlayerLvlUp.SetActive(mainPlayer.LevelAttr != playerAttr.level);
+                mOriginalPlayerLvl = mainPlayer.LevelAttr;
                 mCurrentPlayerLvl = playerAttr.level;
                 //TODO:Sysnc player info here?
-                if (mainPlayer.level != playerAttr.level)
+                if (mainPlayer.LevelAttr != playerAttr.level)
                 {
-                    mainPlayer.level = playerAttr.level;
-                    GameEventMgr.Instance.FireEvent<int>(GameEventList.LevelChanged, mainPlayer.level);
+                    mainPlayer.LevelAttr = playerAttr.level;
+                    //GameEventMgr.Instance.FireEvent<int>(GameEventList.LevelChanged, mainPlayer.LevelAttr);
                 }
                 mainPlayer.ExpAttr = playerAttr.exp;
             }
@@ -399,6 +400,8 @@ public class UIScore : UIBase
         }
         mRetryBtn.gameObject.SetActive(true);
         mConfirmBtn.gameObject.SetActive(true);
+
+        GameDataMgr.Instance.CheckDiamondFull();
 
         if (mOriginalPlayerLvl != mCurrentPlayerLvl)
         {

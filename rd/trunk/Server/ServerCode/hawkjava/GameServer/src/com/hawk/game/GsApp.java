@@ -330,13 +330,17 @@ public class GsApp extends HawkApp {
 		super.onMemoryOutWarning();
 		HawkObjManager<HawkXID, HawkAppObj> objMan = objMans.get(GsConst.ObjType.PLAYER);
 		Iterator<Map.Entry<HawkXID, HawkObjBase<HawkXID, HawkAppObj>>> iterator = objMan.getObjBaseMap().entrySet().iterator();
+		int removeCount = 0;
 		while (iterator.hasNext()) {
 			 HawkObjBase<HawkXID, HawkAppObj> objBase = iterator.next().getValue();
 			 Player player = (Player)objBase.getImpl();
-			 if (player.isOnline() == false ) {
+			 if (player.isOnline() == false && objBase.getVisitTime() + 60000 < currentTime) {
 				iterator.remove();
+				removeCount++;
 			}
 		}
+		
+		HawkLog.debugPrintln(String.format("移除对象个数 %d", removeCount));
 	}
 	
 	/**

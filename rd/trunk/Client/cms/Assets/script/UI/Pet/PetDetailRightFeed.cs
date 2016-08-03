@@ -114,9 +114,9 @@ public class PetDetailRightFeed : PetDetailRightBase,IUsedExpCallBack
     {
         if (UIUtil.CheckPetIsMaxLevel(t_unit.level))
         {
-            t_unit.level = (GameConfig.MaxMonsterLevel < GameDataMgr.Instance.PlayerDataAttr.level ?
+            t_unit.level = (GameConfig.MaxMonsterLevel < GameDataMgr.Instance.PlayerDataAttr.LevelAttr ?
                            GameConfig.MaxMonsterLevel :
-                           GameDataMgr.Instance.PlayerDataAttr.level);
+                           GameDataMgr.Instance.PlayerDataAttr.LevelAttr);
             t_unit.exp = 0;
             Logger.LogError("达到最大等级");
             callback();
