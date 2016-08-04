@@ -180,7 +180,7 @@ public class BagItem : MonoBehaviour
 			
 			param.itemId = needKeyId;
 			param.defaultbuyCount = 1;
-			param.maxCount = GameConfig.Instance.maxBuyCountInBag;
+			param.maxCount = GameConfig.Instance.maxBuyItemCount;
 			param.isShowCoinButton = true;
 			
 			BuyItem.OpenWith(param);

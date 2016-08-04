@@ -65,7 +65,7 @@ message HSInstanceSweep
 message HSInstanceSweepRet
 {
 	repeated HSRewardInfo completeReward = 1;
-	optional HSRewardInfo sweepReward = 3;
+	optional HSRewardInfo sweepReward = 2;
 }
 
 // INSTANCE_RESET_COUNT_C

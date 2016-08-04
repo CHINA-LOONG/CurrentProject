@@ -88,11 +88,12 @@ public class PlayerStatisticsModule  extends PlayerModule {
 			statisticsEntity.clearHardCountDaily();
 			statisticsEntity.clearInstanceAllCountDaily();
 			statisticsEntity.clearInstanceCountDaily();
+			statisticsEntity.clearInstanceResetCountDaily();
+			statisticsEntity.clearItemUseCountDaily();
 			statisticsEntity.clearMonsterMixCountDaily();
 			statisticsEntity.clearQuestCompleteDaily();
 			statisticsEntity.clearSkillUpCountDaily();
 			statisticsEntity.clearTimeholeCountDaily();
-			statisticsEntity.clearItemUseCountDaily();
 
 			statisticsEntity.notifyUpdate(true);
 			player.getPlayerData().syncDailyRefreshInfo();

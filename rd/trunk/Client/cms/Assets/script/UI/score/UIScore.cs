@@ -45,7 +45,10 @@ public class UIScore : UIBase
     private Tweener mBattleTitleTw;
     private int mOriginalPlayerLvl;
     private int mCurrentPlayerLvl;
+    private int mCurrentHuoli;
+    private int mHuoliBeginTime;
     private bool mCheckCoin;
+    private int mInstanceType;
     //---------------------------------------------------------------------------------------------
     public static void AddResourceRequest()
     {
@@ -75,12 +78,33 @@ public class UIScore : UIBase
     //---------------------------------------------------------------------------------------------
     void OnRetry(GameObject go)
     {
-        BattleController.Instance.UnLoadBattleScene(2);
+        if (mInstanceType == 0)
+        {
+            BattleController.Instance.UnLoadBattleScene(2);
+        }
+        else if (mInstanceType == 2)
+        {
+            if (mIsSuccess == true)
+            {
+                BattleController.Instance.UnLoadBattleScene(1);
+            }
+            else
+            {
+                BattleController.Instance.UnLoadBattleScene(2);
+            }
+        }
     }
     //---------------------------------------------------------------------------------------------
     void OnNextLevel(GameObject go)
     {
-        BattleController.Instance.UnLoadBattleScene(1);
+        if (mInstanceType == 0)
+        {
+            BattleController.Instance.UnLoadBattleScene(1);
+        }
+        else if (mInstanceType == 1)
+        {
+            BattleController.Instance.UnLoadBattleScene(0);
+        }
     }
     //---------------------------------------------------------------------------------------------
     void OnConfirm(GameObject go)
@@ -127,9 +151,6 @@ public class UIScore : UIBase
         mConfirmBtn.gameObject.SetActive(false);
         mBackground.SetActive(false);
         mLineMonsterItem.SetActive(false);
-        mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_again");
-        mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");
-        mConfirmText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
     }
     //---------------------------------------------------------------------------------------------
     public override void Clean()
@@ -221,6 +242,23 @@ public class UIScore : UIBase
     public void SetScoreInfo(PB.HSRewardInfo scoreInfo)
     {
         mInstanceSettleResult = scoreInfo;
+
+        //TODO: use enum
+        //0:normal 1:hole 2:tower
+        mInstanceType = 0;
+        switch (mInstanceType)
+        {
+            case 0:
+                mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_again");
+                mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");
+                mConfirmText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
+                break;
+            case 1:
+                mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
+                break;
+            case 2:
+                break;
+        }
     }
     //---------------------------------------------------------------------------------------------
     private void ShowStar()
@@ -280,6 +318,8 @@ public class UIScore : UIBase
                 mPlayerLvlUp.SetActive(mainPlayer.LevelAttr != playerAttr.level);
                 mOriginalPlayerLvl = mainPlayer.LevelAttr;
                 mCurrentPlayerLvl = playerAttr.level;
+                mCurrentHuoli = playerAttr.fatigue;
+                mHuoliBeginTime = playerAttr.fatigueBeginTime;
                 //TODO:Sysnc player info here?
                 if (mainPlayer.LevelAttr != playerAttr.level)
                 {
@@ -398,21 +438,49 @@ public class UIScore : UIBase
         //show item drop info
         mItemGainList.gameObject.SetActive(true);
         //show button
-        if (mIsSuccess == true)
+        //normal instance
+        if (mInstanceType == 0)
         {
-            EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
-            if (curInstance != null)
+            if (mIsSuccess == true)
             {
-                InstanceEntryRuntimeData curData = InstanceMapService.Instance.GetNextRuntimeInstance(curInstance.instanceData.instanceId);
-                mNextLevelBtn.gameObject.SetActive(curData != null);
+                EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
+                if (curInstance != null)
+                {
+                    InstanceEntryRuntimeData curData = InstanceMapService.Instance.GetNextRuntimeInstance(curInstance.instanceData.instanceId);
+                    mNextLevelBtn.gameObject.SetActive(curData != null);
+                }
             }
+            else
+            {
+                mNextLevelBtn.gameObject.SetActive(false);
+            }
+            mRetryBtn.gameObject.SetActive(true);
+            mConfirmBtn.gameObject.SetActive(true);
         }
+        //hole instance
+        else if (mInstanceType == 1)
+        {
+            mNextLevelBtn.gameObject.SetActive(true);
+        }
+        //tower instance
         else
         {
-            mNextLevelBtn.gameObject.SetActive(false);
+            if (mIsSuccess == true)
+            {
+                EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
+                if (curInstance != null)
+                {
+                    mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");
+                    mRetryBtn.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_again");
+            }
+
+            mConfirmBtn.gameObject.SetActive(true);
         }
-        mRetryBtn.gameObject.SetActive(true);
-        mConfirmBtn.gameObject.SetActive(true);
 
         if (mCheckCoin)
         {
@@ -421,7 +489,9 @@ public class UIScore : UIBase
 
         if (mOriginalPlayerLvl != mCurrentPlayerLvl)
         {
-            LevelUp.OpenWith(mOriginalPlayerLvl, mCurrentPlayerLvl, 100, 100);
+            PlayerData mainPlayer = GameDataMgr.Instance.PlayerDataAttr;
+            LevelUp.OpenWith(mOriginalPlayerLvl, mCurrentPlayerLvl, mainPlayer.HuoliAttr, mCurrentHuoli);
+            mainPlayer.UpdateHuoli(mCurrentHuoli, mHuoliBeginTime);
         }
     }
     //---------------------------------------------------------------------------------------------

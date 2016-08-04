@@ -52,11 +52,6 @@ public class PlayerData : MonoBehaviour
         {
             return huoli;
         }
-        set
-        {
-            huoli = value;
-            GameEventMgr.Instance.FireEvent<int>(GameEventList.HuoliChanged, huoli);
-        }
     }
 
     private int huoliBeginTime = 0;
@@ -79,7 +74,8 @@ public class PlayerData : MonoBehaviour
         if(isNeedRestore != GameDataMgr.Instance.HuoliRestoreAtrr.IsRestoring)
         {
             GameDataMgr.Instance.HuoliRestoreAtrr.IsRestoring = isNeedRestore;
-        }        
+        }
+        GameEventMgr.Instance.FireEvent(GameEventList.RefreshSaodangTimes);
     }
 
     public  int MaxHuoliAttr

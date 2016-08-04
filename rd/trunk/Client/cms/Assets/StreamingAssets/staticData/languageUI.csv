@@ -21,7 +21,7 @@ instance_tilixiaohao,体力消耗:{0},Use Power:{0}
 instance_tiaozhancishu,可挑战次数:{0}/{1},Times:{0}/{1}
 instance_saodang,扫荡,Raid
 instance_saodangquanNumber,扫荡券数量:{0},Tickets:{0}
-instance_saodang10,扫荡10次,Raid 10
+instance_saodang10,扫荡{0}次,Raid {0}
 instance_yingzhan,应战,Fight
 instance_shangzhen,上阵,First Team
 instance_houbei,后备,Backups
@@ -114,8 +114,8 @@ ui_sellforsure,是否出售这些物品,Confirm sell these items?
 ui_sellforsuretips,*若金币达到上限，出售将无法继续获得金币,"*If coin limit is reached when selling items, then no more coins will be received."
 ui_sellsum,总计出售,Sell total
 ui_chexiao,撤销,Undo
-bag_record_001,您已成功使用疲劳药,You have successfully used a Stamina Potion.
-bag_record_002,疲劳值已满无法使用,"Stamina gauge is already full, unable to use."
+bag_record_001,您已成功使用活力药,You have successfully used a Energy Potion.
+bag_record_002,今日该活力药使用次数已达上限，无法继续使用,"You have reached the Energy Potion limit for today, unable to use."
 bag_record_003,您已有多倍经验状态,You already have EXP Boost status.
 bag_record_004,您已成功使用多倍经验药,You have successfully used an EXP Boost Potion.
 bag_record_005,钻石不足，请充值,"Insufficient Diamonds, please purchase more."
@@ -172,7 +172,7 @@ im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 equip_inlay_xiangqian,镶嵌,Embed
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
-equip_inlay_tips,"开孔将随机获得""1-{0}""个宝石槽","Opening Sockets will randomly reveal between ""1 and {0}"" of slots."
+equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
 equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
 equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
 equip_inlay_xiexia,卸下,Remove
@@ -252,6 +252,10 @@ common_attr_defence,防御,DEF
 common_attr_intelligence,智力,INT
 common_attr_speed,速度,SPD
 common_attr_health,体力,STA
+common_attr_critical_ratio,暴击率,criticalRatio
+common_attr_critical_dmg,暴击伤害加成,criticalDMG
+common_attr_heal_ratio,被治疗效果加成,healRatio
+common_attr_energy,前置能量,energy
 common_type_defence,防御型,Defense Type
 common_type_physical,物理型,PHYS Type
 common_type_magic,法术型,Magic Type
@@ -289,13 +293,13 @@ pet_skill_point_not_enough,技能点不足,skill point not enough
 coin_max,金币将达到上限，无法获得超出部分,"Coin limit reached, unable to collect exceeding Coins."
 gold_max,钻石将达到上限，无法获得超出部分,"Diamond limit reached, unable to collect exceeding Diamonds."
 drop_info,掉落信息,Drop Info
-instanceselect_open_001,需要通关前一章副本才能开启该章节哦！,xuyao tongguan zhiqian de 
-instanceselect_open_002,需要达到{0}级才能开启该章节哦！,xuyao  dadao {0}ji
+instanceselect_open_001,需要通关前一章副本才能开启该章节哦！,The stages in the previous chapter must be cleared to unlock this chapter!
+instanceselect_open_002,需要达到{0}级才能开启该章节哦！,Reach Player Level {0} to unlock this chapter!
 instanceselect_open_003,"需要通关之前的副本才可以进行该副本的挑战！
-",zhiqian de fuben mei da
-instanceselect_open_004,需要通关全部普通副本后才能开启挑战难度哦！,pu tong dou dawan caixing
-instanceselect_reward_001,该章节内所有副本均为3颗星就能领取奖励哦！,manxing jiunengling a 
-instanceselect_reward_002,你已经领取过满星奖励了哦！,bendan ni yijing lingguo le 
+",First clear the previous stages to unlock this stage!
+instanceselect_open_004,需要通关全部普通副本后才能开启挑战难度哦！,You must clear all stages on Normal to unlock Heroic Difficulty!
+instanceselect_reward_001,该章节内所有副本均为3颗星就能领取奖励哦！,Achieve a 3 star rating on all stages in this chapter for a reward!
+instanceselect_reward_002,你已经领取过满星奖励了哦！,You have already collected the star completion reward.
 arrayselect_chongzhi_anniu,重置,
 arrayselect_saodangquan,扫荡券,
 main_levelup_pilao,当前活力,Current Energy
@@ -305,3 +309,13 @@ main_levelup_kaiqi,已开启,Unlocked
 main_levelup_weikaiqi,{0}级开启,Unlocks at LVL {0}
 diffculty_normal,普通,Normal
 diffculty_hard,挑战,Hard
+energy_ hint,活力值增加 :,Time to next energy :
+energy_button_use,使用,Use
+energy_button_buy&use,购买使用,Buy & Use
+energy_times_enough,已达到上限,Limit reached
+energy_times,本日剩余次数 {0},Remaining today {0}
+energy_supple,补充活力,Add Energy
+energy_hint_unhint,本次登录不再提示该界面,Don't show again for current session.
+energy_hint_buy,购买并使用一个 {0}?,Buy and use one {0}?
+energy_hint_max,活力值已达到最大数量,Energy to the greatest numbe
+im_recordhuoli_002,活力值已达到最大数量,Energy to the greatest numbe

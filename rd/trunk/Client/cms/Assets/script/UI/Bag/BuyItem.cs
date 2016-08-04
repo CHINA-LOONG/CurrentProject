@@ -167,6 +167,7 @@ public class BuyItem : UIBase
 		}
 
 		GameEventMgr.Instance.FireEvent (GameEventList.BuyItemFinished);
+        GameEventMgr.Instance.FireEvent(GameEventList.RefreshSaodangTimes);
 		UIMgr.Instance.CloseUI_ (this);
 		//PB.HSItemBuyRet msgRet = msg.GetProtocolBody<PB.HSItemBuyRet> ();
 	}

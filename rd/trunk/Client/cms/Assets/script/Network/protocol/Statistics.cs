@@ -246,6 +246,13 @@ namespace PB
       get { return _itemState; }
     }
   
+    private int _instanceResetCount;
+    [global::ProtoBuf.ProtoMember(15, IsRequired = true, Name=@"instanceResetCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int instanceResetCount
+    {
+      get { return _instanceResetCount; }
+      set { _instanceResetCount = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -39,6 +39,7 @@ public class MonsterCfg extends HawkConfigBase {
 	//client only
 	protected final int disposition = 0;
 	protected final String closeUp = null;
+	protected final String say = null;
 
 	// assemble
 	protected boolean canEvolve;

@@ -85,13 +85,7 @@ public class BuilderUtil {
 		chapterState.addAllHardBoxState(statisticsEntity.getHardChapterBoxStateList());
 		builder.setChapterState(chapterState);
 
-		for (Entry<String, Integer> entry : statisticsEntity.getRechargeRecordMap().entrySet()) {
-			RechargeState.Builder rechargeState = RechargeState.newBuilder();
-			rechargeState.setProductId(entry.getKey());
-			rechargeState.setBuyTimes(entry.getValue());
-			builder.addRechargeState(rechargeState);
-		}
-
+		builder.addAllMonsterCollect(statisticsEntity.getMonsterCollectSet());
 		builder.setFatigue(statisticsEntity.getFatigue());
 		builder.setFatigueBeginTime((int)(statisticsEntity.getFatigueBeginTime().getTimeInMillis() / 1000));
 		builder.setSkillPoint(statisticsEntity.getSkillPoint());
@@ -107,8 +101,16 @@ public class BuilderUtil {
 			builder.setMonthCardLeft(HawkTime.calendarDiff(statisticsEntity.getMonthCardEndTime(), HawkTime.getCalendar()));
 		}
 
+		for (Entry<String, Integer> entry : statisticsEntity.getRechargeRecordMap().entrySet()) {
+			RechargeState.Builder rechargeState = RechargeState.newBuilder();
+			rechargeState.setProductId(entry.getKey());
+			rechargeState.setBuyTimes(entry.getValue());
+			builder.addRechargeState(rechargeState);
+		}
+
 		builder.setGold2CoinTimes(statisticsEntity.getCoinOrderCountDaily());
 		builder.setExpLeftTimes(genSyncExpLeftTimesBuilder(statisticsEntity));
+		builder.setInstanceResetCount(statisticsEntity.getInstanceResetCountDaily());
 
 		for (Entry<String, Integer> entry : statisticsEntity.getItemUseCountDailyMap().entrySet()) {
 			ItemState.Builder itemState = ItemState.newBuilder();

@@ -3305,7 +3305,7 @@ public final class Statistics {
      * <code>required int32 gold2CoinTimes = 12;</code>
      *
      * <pre>
-     * 钻石购买金币次数
+     * 今日钻石购买金币次数
      * </pre>
      */
     boolean hasGold2CoinTimes();
@@ -3313,7 +3313,7 @@ public final class Statistics {
      * <code>required int32 gold2CoinTimes = 12;</code>
      *
      * <pre>
-     * 钻石购买金币次数
+     * 今日钻石购买金币次数
      * </pre>
      */
     int getGold2CoinTimes();
@@ -3349,7 +3349,7 @@ public final class Statistics {
      * <code>repeated .ItemState itemState = 14;</code>
      *
      * <pre>
-     * 物品使用次数
+     * 今日物品使用次数
      * </pre>
      */
     java.util.List<com.hawk.game.protocol.Statistics.ItemState> 
@@ -3358,7 +3358,7 @@ public final class Statistics {
      * <code>repeated .ItemState itemState = 14;</code>
      *
      * <pre>
-     * 物品使用次数
+     * 今日物品使用次数
      * </pre>
      */
     com.hawk.game.protocol.Statistics.ItemState getItemState(int index);
@@ -3366,7 +3366,7 @@ public final class Statistics {
      * <code>repeated .ItemState itemState = 14;</code>
      *
      * <pre>
-     * 物品使用次数
+     * 今日物品使用次数
      * </pre>
      */
     int getItemStateCount();
@@ -3374,7 +3374,7 @@ public final class Statistics {
      * <code>repeated .ItemState itemState = 14;</code>
      *
      * <pre>
-     * 物品使用次数
+     * 今日物品使用次数
      * </pre>
      */
     java.util.List<? extends com.hawk.game.protocol.Statistics.ItemStateOrBuilder> 
@@ -3383,11 +3383,29 @@ public final class Statistics {
      * <code>repeated .ItemState itemState = 14;</code>
      *
      * <pre>
-     * 物品使用次数
+     * 今日物品使用次数
      * </pre>
      */
     com.hawk.game.protocol.Statistics.ItemStateOrBuilder getItemStateOrBuilder(
         int index);
+
+    // required int32 instanceResetCount = 15;
+    /**
+     * <code>required int32 instanceResetCount = 15;</code>
+     *
+     * <pre>
+     * 今日副本挑战重置次数
+     * </pre>
+     */
+    boolean hasInstanceResetCount();
+    /**
+     * <code>required int32 instanceResetCount = 15;</code>
+     *
+     * <pre>
+     * 今日副本挑战重置次数
+     * </pre>
+     */
+    int getInstanceResetCount();
   }
   /**
    * Protobuf type {@code HSStatisticsInfoSync}
@@ -3536,6 +3554,11 @@ public final class Statistics {
                 mutable_bitField0_ |= 0x00002000;
               }
               itemState_.add(input.readMessage(com.hawk.game.protocol.Statistics.ItemState.PARSER, extensionRegistry));
+              break;
+            }
+            case 120: {
+              bitField0_ |= 0x00000400;
+              instanceResetCount_ = input.readInt32();
               break;
             }
           }
@@ -3988,7 +4011,7 @@ public final class Statistics {
      * <code>required int32 gold2CoinTimes = 12;</code>
      *
      * <pre>
-     * 钻石购买金币次数
+     * 今日钻石购买金币次数
      * </pre>
      */
     public boolean hasGold2CoinTimes() {
@@ -3998,7 +4021,7 @@ public final class Statistics {
      * <code>required int32 gold2CoinTimes = 12;</code>
      *
      * <pre>
-     * 钻石购买金币次数
+     * 今日钻石购买金币次数
      * </pre>
      */
     public int getGold2CoinTimes() {
@@ -4046,7 +4069,7 @@ public final class Statistics {
      * <code>repeated .ItemState itemState = 14;</code>
      *
      * <pre>
-     * 物品使用次数
+     * 今日物品使用次数
      * </pre>
      */
     public java.util.List<com.hawk.game.protocol.Statistics.ItemState> getItemStateList() {
@@ -4056,7 +4079,7 @@ public final class Statistics {
      * <code>repeated .ItemState itemState = 14;</code>
      *
      * <pre>
-     * 物品使用次数
+     * 今日物品使用次数
      * </pre>
      */
     public java.util.List<? extends com.hawk.game.protocol.Statistics.ItemStateOrBuilder> 
@@ -4067,7 +4090,7 @@ public final class Statistics {
      * <code>repeated .ItemState itemState = 14;</code>
      *
      * <pre>
-     * 物品使用次数
+     * 今日物品使用次数
      * </pre>
      */
     public int getItemStateCount() {
@@ -4077,7 +4100,7 @@ public final class Statistics {
      * <code>repeated .ItemState itemState = 14;</code>
      *
      * <pre>
-     * 物品使用次数
+     * 今日物品使用次数
      * </pre>
      */
     public com.hawk.game.protocol.Statistics.ItemState getItemState(int index) {
@@ -4087,12 +4110,36 @@ public final class Statistics {
      * <code>repeated .ItemState itemState = 14;</code>
      *
      * <pre>
-     * 物品使用次数
+     * 今日物品使用次数
      * </pre>
      */
     public com.hawk.game.protocol.Statistics.ItemStateOrBuilder getItemStateOrBuilder(
         int index) {
       return itemState_.get(index);
+    }
+
+    // required int32 instanceResetCount = 15;
+    public static final int INSTANCERESETCOUNT_FIELD_NUMBER = 15;
+    private int instanceResetCount_;
+    /**
+     * <code>required int32 instanceResetCount = 15;</code>
+     *
+     * <pre>
+     * 今日副本挑战重置次数
+     * </pre>
+     */
+    public boolean hasInstanceResetCount() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>required int32 instanceResetCount = 15;</code>
+     *
+     * <pre>
+     * 今日副本挑战重置次数
+     * </pre>
+     */
+    public int getInstanceResetCount() {
+      return instanceResetCount_;
     }
 
     private void initFields() {
@@ -4110,6 +4157,7 @@ public final class Statistics {
       gold2CoinTimes_ = 0;
       expLeftTimes_ = com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.getDefaultInstance();
       itemState_ = java.util.Collections.emptyList();
+      instanceResetCount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4149,6 +4197,10 @@ public final class Statistics {
         return false;
       }
       if (!hasExpLeftTimes()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasInstanceResetCount()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -4227,6 +4279,9 @@ public final class Statistics {
       for (int i = 0; i < itemState_.size(); i++) {
         output.writeMessage(14, itemState_.get(i));
       }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeInt32(15, instanceResetCount_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -4296,6 +4351,10 @@ public final class Statistics {
       for (int i = 0; i < itemState_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(14, itemState_.get(i));
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(15, instanceResetCount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4466,6 +4525,8 @@ public final class Statistics {
         } else {
           itemStateBuilder_.clear();
         }
+        instanceResetCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00004000);
         return this;
       }
 
@@ -4575,6 +4636,10 @@ public final class Statistics {
         } else {
           result.itemState_ = itemStateBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.instanceResetCount_ = instanceResetCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4711,6 +4776,9 @@ public final class Statistics {
             }
           }
         }
+        if (other.hasInstanceResetCount()) {
+          setInstanceResetCount(other.getInstanceResetCount());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -4749,6 +4817,10 @@ public final class Statistics {
           return false;
         }
         if (!hasExpLeftTimes()) {
+          
+          return false;
+        }
+        if (!hasInstanceResetCount()) {
           
           return false;
         }
@@ -6104,7 +6176,7 @@ public final class Statistics {
        * <code>required int32 gold2CoinTimes = 12;</code>
        *
        * <pre>
-       * 钻石购买金币次数
+       * 今日钻石购买金币次数
        * </pre>
        */
       public boolean hasGold2CoinTimes() {
@@ -6114,7 +6186,7 @@ public final class Statistics {
        * <code>required int32 gold2CoinTimes = 12;</code>
        *
        * <pre>
-       * 钻石购买金币次数
+       * 今日钻石购买金币次数
        * </pre>
        */
       public int getGold2CoinTimes() {
@@ -6124,7 +6196,7 @@ public final class Statistics {
        * <code>required int32 gold2CoinTimes = 12;</code>
        *
        * <pre>
-       * 钻石购买金币次数
+       * 今日钻石购买金币次数
        * </pre>
        */
       public Builder setGold2CoinTimes(int value) {
@@ -6137,7 +6209,7 @@ public final class Statistics {
        * <code>required int32 gold2CoinTimes = 12;</code>
        *
        * <pre>
-       * 钻石购买金币次数
+       * 今日钻石购买金币次数
        * </pre>
        */
       public Builder clearGold2CoinTimes() {
@@ -6317,7 +6389,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public java.util.List<com.hawk.game.protocol.Statistics.ItemState> getItemStateList() {
@@ -6331,7 +6403,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public int getItemStateCount() {
@@ -6345,7 +6417,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public com.hawk.game.protocol.Statistics.ItemState getItemState(int index) {
@@ -6359,7 +6431,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public Builder setItemState(
@@ -6380,7 +6452,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public Builder setItemState(
@@ -6398,7 +6470,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public Builder addItemState(com.hawk.game.protocol.Statistics.ItemState value) {
@@ -6418,7 +6490,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public Builder addItemState(
@@ -6439,7 +6511,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public Builder addItemState(
@@ -6457,7 +6529,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public Builder addItemState(
@@ -6475,7 +6547,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public Builder addAllItemState(
@@ -6493,7 +6565,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public Builder clearItemState() {
@@ -6510,7 +6582,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public Builder removeItemState(int index) {
@@ -6527,7 +6599,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public com.hawk.game.protocol.Statistics.ItemState.Builder getItemStateBuilder(
@@ -6538,7 +6610,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public com.hawk.game.protocol.Statistics.ItemStateOrBuilder getItemStateOrBuilder(
@@ -6552,7 +6624,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public java.util.List<? extends com.hawk.game.protocol.Statistics.ItemStateOrBuilder> 
@@ -6567,7 +6639,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public com.hawk.game.protocol.Statistics.ItemState.Builder addItemStateBuilder() {
@@ -6578,7 +6650,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public com.hawk.game.protocol.Statistics.ItemState.Builder addItemStateBuilder(
@@ -6590,7 +6662,7 @@ public final class Statistics {
        * <code>repeated .ItemState itemState = 14;</code>
        *
        * <pre>
-       * 物品使用次数
+       * 今日物品使用次数
        * </pre>
        */
       public java.util.List<com.hawk.game.protocol.Statistics.ItemState.Builder> 
@@ -6610,6 +6682,55 @@ public final class Statistics {
           itemState_ = null;
         }
         return itemStateBuilder_;
+      }
+
+      // required int32 instanceResetCount = 15;
+      private int instanceResetCount_ ;
+      /**
+       * <code>required int32 instanceResetCount = 15;</code>
+       *
+       * <pre>
+       * 今日副本挑战重置次数
+       * </pre>
+       */
+      public boolean hasInstanceResetCount() {
+        return ((bitField0_ & 0x00004000) == 0x00004000);
+      }
+      /**
+       * <code>required int32 instanceResetCount = 15;</code>
+       *
+       * <pre>
+       * 今日副本挑战重置次数
+       * </pre>
+       */
+      public int getInstanceResetCount() {
+        return instanceResetCount_;
+      }
+      /**
+       * <code>required int32 instanceResetCount = 15;</code>
+       *
+       * <pre>
+       * 今日副本挑战重置次数
+       * </pre>
+       */
+      public Builder setInstanceResetCount(int value) {
+        bitField0_ |= 0x00004000;
+        instanceResetCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 instanceResetCount = 15;</code>
+       *
+       * <pre>
+       * 今日副本挑战重置次数
+       * </pre>
+       */
+      public Builder clearInstanceResetCount() {
+        bitField0_ = (bitField0_ & ~0x00004000);
+        instanceResetCount_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:HSStatisticsInfoSync)
@@ -8007,7 +8128,7 @@ public final class Statistics {
       "ardBoxState\030\006 \003(\005\"4\n\rRechargeState\022\021\n\tpr" +
       "oductId\030\001 \002(\t\022\020\n\010buyTimes\030\002 \002(\005\"2\n\tItemS" +
       "tate\022\016\n\006itemId\030\001 \002(\t\022\025\n\ruseCountDaily\030\002 " +
-      "\002(\005\"\241\003\n\024HSStatisticsInfoSync\022%\n\rinstance",
+      "\002(\005\"\275\003\n\024HSStatisticsInfoSync\022%\n\rinstance",
       "State\030\001 \003(\0132\016.InstanceState\022#\n\014chapterSt" +
       "ate\030\002 \002(\0132\r.ChapterState\022\026\n\016monsterColle" +
       "ct\030\003 \003(\t\022\017\n\007fatigue\030\004 \002(\005\022\030\n\020fatigueBegi" +
@@ -8017,11 +8138,12 @@ public final class Statistics {
       "\030\n \003(\0132\016.RechargeState\022\025\n\rmonthCardLeft\030" +
       "\013 \002(\005\022\026\n\016gold2CoinTimes\030\014 \002(\005\022)\n\014expLeft" +
       "Times\030\r \002(\0132\023.HSSyncExpLeftTimes\022\035\n\titem" +
-      "State\030\016 \003(\0132\n.ItemState\"\024\n\022HSSyncDailyRe",
-      "fresh\"%\n\021HSSyncShopRefresh\022\020\n\010shopType\030\001" +
-      " \002(\005\"B\n\022HSSyncExpLeftTimes\022\025\n\rdoubleExpL" +
-      "eft\030\001 \002(\005\022\025\n\rtripleExpLeft\030\002 \002(\005B\030\n\026com." +
-      "hawk.game.protocol"
+      "State\030\016 \003(\0132\n.ItemState\022\032\n\022instanceReset",
+      "Count\030\017 \002(\005\"\024\n\022HSSyncDailyRefresh\"%\n\021HSS" +
+      "yncShopRefresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSy" +
+      "ncExpLeftTimes\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n" +
+      "\rtripleExpLeft\030\002 \002(\005B\030\n\026com.hawk.game.pr" +
+      "otocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -8057,7 +8179,7 @@ public final class Statistics {
           internal_static_HSStatisticsInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsInfoSync_descriptor,
-              new java.lang.String[] { "InstanceState", "ChapterState", "MonsterCollect", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "ItemState", });
+              new java.lang.String[] { "InstanceState", "ChapterState", "MonsterCollect", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "ItemState", "InstanceResetCount", });
           internal_static_HSSyncDailyRefresh_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_HSSyncDailyRefresh_fieldAccessorTable = new

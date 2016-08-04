@@ -15,7 +15,7 @@ public class EffectWholeData
     public int casterType;
     //apply buff
     public string buffID;
-    public int buffValidatorNum;
+    public string buffValidatorNum;
     //damamge effect
     public int damageType;
     public float attackFactor;

@@ -19,6 +19,7 @@ public class StatisticsDataMgr : MonoBehaviour {
 		}
 	}
 
+    //多倍经验剩余次数
     private PB.HSSyncExpLeftTimes expLeftTime;
     public PB.HSSyncExpLeftTimes ExpLeftTimeAttr
 	{
@@ -48,6 +49,7 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_EXP_LEFT_TIMES_S.GetHashCode().ToString(), OnExpLeftTimesSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_SHOP_REFRESH_S.GetHashCode().ToString(), OnShopNeedRefreshSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_DAILY_REFRESH_S.GetHashCode().ToString(), OnDailyRefreshSync);
         DontDestroyOnLoad(gameObject);
     }
 
@@ -56,6 +58,7 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_EXP_LEFT_TIMES_S.GetHashCode().ToString(), OnExpLeftTimesSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_SHOP_REFRESH_S.GetHashCode().ToString(), OnShopNeedRefreshSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_DAILY_REFRESH_S.GetHashCode().ToString(), OnDailyRefreshSync);
     }
 
     void OnStatisticsInfoSync(ProtocolMessage message)
@@ -74,6 +77,19 @@ public class StatisticsDataMgr : MonoBehaviour {
         UpdateServerTime(staticsticsData.timeStamp);
 
         GameDataMgr.Instance.PlayerDataAttr.UpdateHuoli(staticsticsData.fatigue, staticsticsData.fatigueBeginTime);
+
+        if (staticsticsData.instanceState != null)
+        {
+            InstanceMapService.Instance.RefreshInstanceMap(staticsticsData.instanceState);
+        }
+
+        InstanceMapService.Instance.instanceResetTimes = staticsticsData.instanceResetCount;
+
+        if (staticsticsData.chapterState != null)
+        {
+            InstanceMapService.Instance.chapterState = staticsticsData.chapterState;
+        }
+
     }
 
 	void OnExpLeftTimesSync(ProtocolMessage message)
@@ -87,6 +103,21 @@ public class StatisticsDataMgr : MonoBehaviour {
         PB.HSSyncShopRefresh msgBody = message.GetProtocolBody<PB.HSSyncShopRefresh>();
 		GameDataMgr.Instance.ShopDataMgrAttr.RefreshShopWithFree (msgBody.shopType, false);
 	}
+    
+    void OnDailyRefreshSync(ProtocolMessage message)
+    {
+       // PB.HSSyncDailyRefresh msgBody = message.GetProtocolBody<PB.HSSyncDailyRefresh>();
+
+        //清理物品使用次数
+        GameDataMgr.Instance.PlayerDataAttr.gameItemData.SynItemState(null);
+        GameEventMgr.Instance.FireEvent(GameEventList.RefreshUseHuoliWithZeroClock);
+
+        //清理副本挑战次数
+        InstanceMapService.Instance.ResetCountDaily();
+        //清理副本 重置次数
+        InstanceMapService.Instance.instanceResetTimes = 0;
+
+    }
 
     public void ResetSkillPointState(int currentPoint, int beginTime)
     {

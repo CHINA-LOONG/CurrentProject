@@ -222,6 +222,10 @@ public class BehaviorLogger {
 		 */
 		INSTANCE_SWEEP,
 		/**
+		 * 副本重置
+		 */
+		INSTANCE_RESET,
+		/**
 		 * 章节宝箱
 		 */
 		CHAPTER_BOX,

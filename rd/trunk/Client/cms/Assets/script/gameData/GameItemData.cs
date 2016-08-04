@@ -20,7 +20,7 @@ public class ItemData
 public class GameItemData
 {
     public Dictionary<string, ItemData> itemList = new Dictionary<string, ItemData>();
-    public Dictionary<string, PB.ItemState> itemStateDic = new Dictionary<string, PB.ItemState>();
+    private Dictionary<string, PB.ItemState> itemStateDic = new Dictionary<string, PB.ItemState>();
 
     public void AddItem(string itemId, int count)
     {
@@ -66,10 +66,12 @@ public class GameItemData
     public  void    SynItemState(List<PB.ItemState> listItemState)
     {
         itemStateDic.Clear();
-
-        foreach(var subItemState in listItemState)
+        if(listItemState != null)
         {
-            itemStateDic.Add(subItemState.itemId, subItemState);
+            foreach (var subItemState in listItemState)
+            {
+                itemStateDic.Add(subItemState.itemId, subItemState);
+            }
         }
     }
 

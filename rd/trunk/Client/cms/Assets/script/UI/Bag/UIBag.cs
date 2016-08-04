@@ -320,7 +320,11 @@ public class UIBag : UIBase,TabButtonDelegate
                 UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("bag_record_002"),
                                                (int)PB.ImType.PROMPT);
             }
-			Logger.LogError("use items Error.....");
+            else if (error.errCode == (int)PB.PlayerError.FATIGUE_LIMIT)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_recordhuoli_002"), (int)PB.ImType.PROMPT);
+            }
+            Logger.LogError("use items Error.....");
 			return;
 		}
 		string succMsg = "bag_record_004";

@@ -27,6 +27,8 @@ public class UseHuoLi : UIBase
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_C.GetHashCode().ToString(), OnItemBuyAndUseFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_S.GetHashCode().ToString(), OnItemBuyAndUseFinished);
+
+        GameEventMgr.Instance.AddListener(GameEventList.RefreshUseHuoliWithZeroClock, RefreshUi);
     }
 
     void OnDisable()
@@ -36,6 +38,8 @@ public class UseHuoLi : UIBase
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_C.GetHashCode().ToString(), OnItemBuyAndUseFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_S.GetHashCode().ToString(), OnItemBuyAndUseFinished);
+
+        GameEventMgr.Instance.RemoveListener(GameEventList.RefreshUseHuoliWithZeroClock, RefreshUi);
     }
     // Use this for initialization
     void Start()
@@ -76,14 +80,6 @@ public class UseHuoLi : UIBase
 
         int leftTime = HuoLiDataMgr.Instance.GetHuoliYaoLeftTime(itemId);
 
-        if (leftTime == 0)
-        {
-            szDescText[index].text = StaticDataMgr.Instance.GetTextByID("energy_times_enough");
-            UIUtil.SetButtonTitle(szUseButton[index].transform, StaticDataMgr.Instance.GetTextByID("exp_use"));
-            return;
-        }
-
-        szDescText[index].text = string.Format(StaticDataMgr.Instance.GetTextByID("energy_times"), leftTime);
         if (itemData.count > 0)
         {
             UIUtil.SetButtonTitle(szUseButton[index].transform, StaticDataMgr.Instance.GetTextByID("exp_use"));
@@ -92,6 +88,15 @@ public class UseHuoLi : UIBase
         {
             UIUtil.SetButtonTitle(szUseButton[index].transform, StaticDataMgr.Instance.GetTextByID("energy_button_buy&use"));
         }
+
+        if (leftTime == 0)
+        {
+            szDescText[index].text = StaticDataMgr.Instance.GetTextByID("energy_times_enough");
+            return;
+        }
+
+        szDescText[index].text = string.Format(StaticDataMgr.Instance.GetTextByID("energy_times"), leftTime);
+        
     }
 
 
@@ -167,6 +172,10 @@ public class UseHuoLi : UIBase
             {
                 GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
             }
+            else if (error.errCode == (int)PB.PlayerError.FATIGUE_LIMIT)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_recordhuoli_002"),(int)PB.ImType.PROMPT);
+            }
             Logger.LogError("use items Error.....");
             return;
         }
@@ -181,9 +190,9 @@ public class UseHuoLi : UIBase
         buyAndUseItem = itemId;
         if (HuoLiDataMgr.Instance.showHuoliBuyDlg)
         {
-            BuyHuoliDlg.OpenWith(StaticDataMgr.Instance.GetTextByID("要买吗?"),
-                StaticDataMgr.Instance.GetTextByID("购买物品"),
-                OnBuyAndUseItem);
+            ItemStaticData stData = StaticDataMgr.Instance.GetItemData(itemId);
+            string msg = string.Format(StaticDataMgr.Instance.GetTextByID("energy_hint_buy"), stData.NameAttr);
+            BuyHuoliDlg.OpenWith(msg, stData.buyPrice, OnBuyAndUseItem);
         }
         else
         {
@@ -220,6 +229,10 @@ public class UseHuoLi : UIBase
             else if (error.errCode == (int)PB.PlayerError.GOLD_NOT_ENOUGH)
             {
                 GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+            }
+            else if (error.errCode == (int)PB.PlayerError.FATIGUE_LIMIT)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_recordhuoli_002"), (int)PB.ImType.PROMPT);
             }
             Logger.LogError("use items Error.....");
             return;

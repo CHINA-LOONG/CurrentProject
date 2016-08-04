@@ -5299,17 +5299,17 @@ public final class Instance {
     com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getCompleteRewardOrBuilder(
         int index);
 
-    // optional .HSRewardInfo sweepReward = 3;
+    // optional .HSRewardInfo sweepReward = 2;
     /**
-     * <code>optional .HSRewardInfo sweepReward = 3;</code>
+     * <code>optional .HSRewardInfo sweepReward = 2;</code>
      */
     boolean hasSweepReward();
     /**
-     * <code>optional .HSRewardInfo sweepReward = 3;</code>
+     * <code>optional .HSRewardInfo sweepReward = 2;</code>
      */
     com.hawk.game.protocol.Reward.HSRewardInfo getSweepReward();
     /**
-     * <code>optional .HSRewardInfo sweepReward = 3;</code>
+     * <code>optional .HSRewardInfo sweepReward = 2;</code>
      */
     com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getSweepRewardOrBuilder();
   }
@@ -5376,7 +5376,7 @@ public final class Instance {
               completeReward_.add(input.readMessage(com.hawk.game.protocol.Reward.HSRewardInfo.PARSER, extensionRegistry));
               break;
             }
-            case 26: {
+            case 18: {
               com.hawk.game.protocol.Reward.HSRewardInfo.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = sweepReward_.toBuilder();
@@ -5468,23 +5468,23 @@ public final class Instance {
       return completeReward_.get(index);
     }
 
-    // optional .HSRewardInfo sweepReward = 3;
-    public static final int SWEEPREWARD_FIELD_NUMBER = 3;
+    // optional .HSRewardInfo sweepReward = 2;
+    public static final int SWEEPREWARD_FIELD_NUMBER = 2;
     private com.hawk.game.protocol.Reward.HSRewardInfo sweepReward_;
     /**
-     * <code>optional .HSRewardInfo sweepReward = 3;</code>
+     * <code>optional .HSRewardInfo sweepReward = 2;</code>
      */
     public boolean hasSweepReward() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional .HSRewardInfo sweepReward = 3;</code>
+     * <code>optional .HSRewardInfo sweepReward = 2;</code>
      */
     public com.hawk.game.protocol.Reward.HSRewardInfo getSweepReward() {
       return sweepReward_;
     }
     /**
-     * <code>optional .HSRewardInfo sweepReward = 3;</code>
+     * <code>optional .HSRewardInfo sweepReward = 2;</code>
      */
     public com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getSweepRewardOrBuilder() {
       return sweepReward_;
@@ -5522,7 +5522,7 @@ public final class Instance {
         output.writeMessage(1, completeReward_.get(i));
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(3, sweepReward_);
+        output.writeMessage(2, sweepReward_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -5539,7 +5539,7 @@ public final class Instance {
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, sweepReward_);
+          .computeMessageSize(2, sweepReward_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6044,18 +6044,18 @@ public final class Instance {
         return completeRewardBuilder_;
       }
 
-      // optional .HSRewardInfo sweepReward = 3;
+      // optional .HSRewardInfo sweepReward = 2;
       private com.hawk.game.protocol.Reward.HSRewardInfo sweepReward_ = com.hawk.game.protocol.Reward.HSRewardInfo.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.hawk.game.protocol.Reward.HSRewardInfo, com.hawk.game.protocol.Reward.HSRewardInfo.Builder, com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder> sweepRewardBuilder_;
       /**
-       * <code>optional .HSRewardInfo sweepReward = 3;</code>
+       * <code>optional .HSRewardInfo sweepReward = 2;</code>
        */
       public boolean hasSweepReward() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .HSRewardInfo sweepReward = 3;</code>
+       * <code>optional .HSRewardInfo sweepReward = 2;</code>
        */
       public com.hawk.game.protocol.Reward.HSRewardInfo getSweepReward() {
         if (sweepRewardBuilder_ == null) {
@@ -6065,7 +6065,7 @@ public final class Instance {
         }
       }
       /**
-       * <code>optional .HSRewardInfo sweepReward = 3;</code>
+       * <code>optional .HSRewardInfo sweepReward = 2;</code>
        */
       public Builder setSweepReward(com.hawk.game.protocol.Reward.HSRewardInfo value) {
         if (sweepRewardBuilder_ == null) {
@@ -6081,7 +6081,7 @@ public final class Instance {
         return this;
       }
       /**
-       * <code>optional .HSRewardInfo sweepReward = 3;</code>
+       * <code>optional .HSRewardInfo sweepReward = 2;</code>
        */
       public Builder setSweepReward(
           com.hawk.game.protocol.Reward.HSRewardInfo.Builder builderForValue) {
@@ -6095,7 +6095,7 @@ public final class Instance {
         return this;
       }
       /**
-       * <code>optional .HSRewardInfo sweepReward = 3;</code>
+       * <code>optional .HSRewardInfo sweepReward = 2;</code>
        */
       public Builder mergeSweepReward(com.hawk.game.protocol.Reward.HSRewardInfo value) {
         if (sweepRewardBuilder_ == null) {
@@ -6114,7 +6114,7 @@ public final class Instance {
         return this;
       }
       /**
-       * <code>optional .HSRewardInfo sweepReward = 3;</code>
+       * <code>optional .HSRewardInfo sweepReward = 2;</code>
        */
       public Builder clearSweepReward() {
         if (sweepRewardBuilder_ == null) {
@@ -6127,7 +6127,7 @@ public final class Instance {
         return this;
       }
       /**
-       * <code>optional .HSRewardInfo sweepReward = 3;</code>
+       * <code>optional .HSRewardInfo sweepReward = 2;</code>
        */
       public com.hawk.game.protocol.Reward.HSRewardInfo.Builder getSweepRewardBuilder() {
         bitField0_ |= 0x00000002;
@@ -6135,7 +6135,7 @@ public final class Instance {
         return getSweepRewardFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .HSRewardInfo sweepReward = 3;</code>
+       * <code>optional .HSRewardInfo sweepReward = 2;</code>
        */
       public com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder getSweepRewardOrBuilder() {
         if (sweepRewardBuilder_ != null) {
@@ -6145,7 +6145,7 @@ public final class Instance {
         }
       }
       /**
-       * <code>optional .HSRewardInfo sweepReward = 3;</code>
+       * <code>optional .HSRewardInfo sweepReward = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.hawk.game.protocol.Reward.HSRewardInfo, com.hawk.game.protocol.Reward.HSRewardInfo.Builder, com.hawk.game.protocol.Reward.HSRewardInfoOrBuilder> 
@@ -10653,7 +10653,7 @@ public final class Instance {
       "\030\002 \001(\0132\r.HSRewardInfo\"4\n\017HSInstanceSweep" +
       "\022\022\n\ninstanceId\030\001 \002(\t\022\r\n\005count\030\002 \002(\005\"_\n\022H" +
       "SInstanceSweepRet\022%\n\016completeReward\030\001 \003(" +
-      "\0132\r.HSRewardInfo\022\"\n\013sweepReward\030\003 \001(\0132\r." +
+      "\0132\r.HSRewardInfo\022\"\n\013sweepReward\030\002 \001(\0132\r." +
       "HSRewardInfo\"*\n\024HSInstanceResetCount\022\022\n\n",
       "instanceId\030\001 \002(\t\"\031\n\027HSInstanceResetCount" +
       "Ret\"\022\n\020HSInstanceRevive\"*\n\023HSInstanceRev" +

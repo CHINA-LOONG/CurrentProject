@@ -150,7 +150,10 @@ namespace PB
       LOCK_ALREADY = 196618,
             
       [global::ProtoBuf.ProtoEnum(Name=@"UNLOCK_ALREADY", Value=196619)]
-      UNLOCK_ALREADY = 196619
+      UNLOCK_ALREADY = 196619,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_BUSY", Value=196620)]
+      MONSTER_BUSY = 196620
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"itemError")]

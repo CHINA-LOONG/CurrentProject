@@ -18,10 +18,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.impl.StaticLoggerBinder;
 
+import com.hawk.game.config.GoldChangeCfg;
 import com.hawk.game.config.InstanceCfg;
 import com.hawk.game.config.InstanceChapterCfg;
 import com.hawk.game.config.InstanceDropCfg;
 import com.hawk.game.config.InstanceEntryCfg;
+import com.hawk.game.config.InstanceResetCfg;
 import com.hawk.game.config.InstanceRewardCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.PlayerAttrCfg;
@@ -166,6 +168,11 @@ public class PlayerInstanceModule extends PlayerModule {
 				sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST);
 				return true;
 			}
+			if (true == player.isMonsterBusy(monsterId)) {
+				sendError(hsCode, Status.monsterError.MONSTER_BUSY);
+				return true;
+			}
+
 			newMonsterList.add(monsterId);
 		}
 
@@ -304,8 +311,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			int multiple = 1;
 			if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
 				multiple = 2;
-			}
-			else if (statisticsEntity.getTripleExpLeftTimes() > 0){
+			} else if (statisticsEntity.getTripleExpLeftTimes() > 0){
 				multiple = 3;
 			}
 
@@ -389,8 +395,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
 				statisticsEntity.decreaseDoubleExpLeft(1);
 				player.getPlayerData().syncStatisticsExpLeftInfo();
-			}
-			else if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
+			} else if (statisticsEntity.getTripleExpLeftTimes() > 0) {
 				statisticsEntity.decreaseTripleExpLeft(1);
 				player.getPlayerData().syncStatisticsExpLeftInfo();
 			}
@@ -400,9 +405,7 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 消耗剩余体力，向上取整
 		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class,this.curInstanceId);
-
 		int fatigueChange = (int) Math.ceil((double)passBattleCount / this.curBattleList.size() * (entryCfg.getFatigue() - 1));
-
 		if (fatigueChange > 0) {
 			ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 			consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, fatigueChange);
@@ -445,17 +448,17 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
-		// 次数
-		if (statisticsEntity.getInstanceCountDaily(instanceId) + count > entryCfg.getCount()) {
-			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
-			return true;
-		}
-
 		// 体力
 		int fatigueChange = count * entryCfg.getFatigue();
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, fatigueChange);
-		if (consumeFatigue.checkConsume(player, hsCode)) {
+		if (false == consumeFatigue.checkConsume(player, hsCode)) {
+			return true;
+		}
+
+		// 次数
+		if (statisticsEntity.getInstanceCountDaily(instanceId) + count > entryCfg.getCount()) {
+			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
 			return true;
 		}
 
@@ -473,56 +476,20 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		InstanceRewardCfg instanceRewardCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceRewardCfg.class, instanceId);
 		if (instanceRewardCfg != null) {
-			// 多倍怪物经验，给多倍经验药水
-			int multiple = 1;
-			if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
-				multiple = 2;
-			}
-			else if (statisticsEntity.getTripleExpLeftTimes() > 0){
-				multiple = 3;
-			}
-
+			// 扫荡不给宠物经验，配置保证
 			for (int i = 0; i < count; ++i) {
 				AwardItems completeReward = AwardItems.valueOf();
-
-				for (ItemInfo itemInfo : instanceRewardCfg.getReward().getRewardList()) {
-					ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemInfo.getItemId());
-					if (itemCfg != null
-							&& itemCfg.getType() == toolType.USETOOL_VALUE
-							&& itemCfg.getAddAttrType() == changeType.CHANGE_MONSTER_EXP_VALUE) {
-						completeReward.addItem(itemInfo.getItemId(), itemInfo.getCount() * multiple);
-					} else {
-						completeReward.addItemInfo(itemInfo);
-					}
-				}
-
+				completeReward.addItemInfos(instanceRewardCfg.getReward().getRewardList());
 				completeRewardList.add(completeReward);
-			}
 
-			for (ItemInfo itemInfo : instanceRewardCfg.getSweepReward().getRewardList()) {
-				ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, itemInfo.getItemId());
-				if (itemCfg != null
-						&& itemCfg.getType() == toolType.USETOOL_VALUE
-						&& itemCfg.getAddAttrType() == changeType.CHANGE_MONSTER_EXP_VALUE) {
-					sweepReward.addItem(itemInfo.getItemId(), itemInfo.getCount() * multiple);
-				} else {
-					sweepReward.addItemInfo(itemInfo);
-				}
+				sweepReward.addItemInfos(instanceRewardCfg.getSweepReward().getRewardList());
 			}
 		}
 
 		// 体力和次数修改
 		consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_SWEEP, HS.code.INSTANCE_SWEEP_C_VALUE);
-		statisticsEntity.addInstanceCountDaily(instanceId, count);
-		if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
-			statisticsEntity.decreaseDoubleExpLeft(1);
-			player.getPlayerData().syncStatisticsExpLeftInfo();
-		}
-		else if (statisticsEntity.getDoubleExpLeftTimes() > 0) {
-			statisticsEntity.decreaseTripleExpLeft(1);
-			player.getPlayerData().syncStatisticsExpLeftInfo();
-		}
 
+		statisticsEntity.addInstanceCountDaily(instanceId, count);
 		statisticsEntity.notifyUpdate(true);
 
 		HSInstanceSweepRet.Builder response = HSInstanceSweepRet.newBuilder();
@@ -550,9 +517,38 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		
+		if (0 == statisticsEntity.getInstanceCountDaily(instanceId)) {
+			sendError(hsCode, Status.error.PARAMS_INVALID);
+			return true;
+		}
 
-		// TODO
+		InstanceResetCfg resetCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceResetCfg.class, GsConst.INSTANCE_RESET_ID);
+		if (resetCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_ERROR_VALUE);
+			return true;
+		}
+
+		int resetTimes = player.getPlayerData().getStatisticsEntity().getInstanceResetCountDaily();
+//		// 如有重置次数上限
+//		if (resetCfg.getMaxTimes() != GsConst.UNUSABLE && resetTimes >= resetCfg.getMaxTimes()) {
+//			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
+//			return true;
+//		}
+
+		ConsumeItems consume = ConsumeItems.valueOf();
+		int mutiple = (int)Math.pow(2, resetTimes / resetCfg.getDoubleTimes());
+		int goldCost = mutiple * (resetCfg.getConsume() + resetTimes * resetCfg.getConsumeAdd());
+		consume.addGold(goldCost);
+
+		if (false == consume.checkConsume(player, hsCode)) {
+			return true;
+		}
+
+		consume.consumeTakeAffectAndPush(player, Action.INSTANCE_RESET, hsCode);
+
 		statisticsEntity.setInstanceCountDaily(instanceId, 0);
+		statisticsEntity.addInstanceResetCountDaily();
 		statisticsEntity.notifyUpdate(true);
 
 		HSInstanceResetCountRet.Builder response = HSInstanceResetCountRet.newBuilder();

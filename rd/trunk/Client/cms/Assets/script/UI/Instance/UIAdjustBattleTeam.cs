@@ -14,11 +14,20 @@ public class EnterInstanceParam
 public enum InstanceType
 {
     Normal = 0,
-    Tower
+    Tower,
+    Hole
 }
 
 public class UIAdjustBattleTeam : UIBase
 {
+    public enum SaodangState
+    {
+        OK =0,
+        HuoliNotEnough,
+        BattleTimesNotEnough,
+        SaodangquanNotEnough,
+        UnKonw
+    }
 	public static string ViewName = "UIAdjustBattleTeam";
 
 	public	Button	backButton;
@@ -34,10 +43,11 @@ public class UIAdjustBattleTeam : UIBase
 	public	Text	lbMyShangzhen;
 	public	Text	lbMyHoubei;
 
-    public Image buffImage;
+    public SpellIcon buffIcon;
     public Text nameText;
     public Transform[] szStar;
     public Transform[] szGrewStar;
+    public Transform skillTips;
 
     public float monsterIconScale = 1.0f;
     public float bossMonsterIconScale = 1.16f;
@@ -60,6 +70,7 @@ public class UIAdjustBattleTeam : UIBase
     private int star = 0;
     private InstanceType instanceType;
     private int teamMax = 1;
+    private int resetInstanceCost = 0;
 
 	private	List<string> teamList;
 	private int prepareIndex = -1;//准备上阵的空位索引
@@ -85,15 +96,21 @@ public class UIAdjustBattleTeam : UIBase
 	{
 		EventTriggerListener.Get (backButton.gameObject).onClick = OnBackButtonClick;
 		EventTriggerListener.Get (battleButton.gameObject).onClick = OnBattleButtonClick;
-        EventTriggerListener.Get(resetTimesButton.gameObject).onClick = OnResetTimesClick;
+        EventTriggerListener.Get(resetTimesButton.gameObject).onClick = OnResetInstanceTimesClick;
+        EventTriggerListener.Get(rapid1Button.gameObject).onClick = OnRapid1ButtonClick;
+        EventTriggerListener.Get(rapid10Button.gameObject).onClick = OnRapid10ButtonClick;
+        EventTriggerListener.Get(buffIcon.iconButton.gameObject).onEnter = OnPointerEnterBuffIcon;
+        EventTriggerListener.Get(buffIcon.iconButton.gameObject).onExit = OnPointerExitBuffIcon;
 
-		lbEnemyZhenrong.text = StaticDataMgr.Instance.GetTextByID ("instance_difangzhenrong");
+        lbEnemyZhenrong.text = StaticDataMgr.Instance.GetTextByID ("instance_difangzhenrong");
 		lbMyHoubei.text = StaticDataMgr.Instance.GetTextByID ("instance_houbei");
 		lbMyShangzhen.text = StaticDataMgr.Instance.GetTextByID ("instance_shangzhen");
 		lbMyZhenrong.text = StaticDataMgr.Instance.GetTextByID ("instance_wofangzhenrong");
 
 		battleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID ("instance_kaishizhandou");
         resetTimesButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhi_anniu");
+        UIUtil.SetButtonTitle(rapid1Button.transform, StaticDataMgr.Instance.GetTextByID("instance_saodang"));
+        skillTips.gameObject.SetActive(false);
     }
 
     public override void Init()
@@ -120,12 +137,22 @@ public class UIAdjustBattleTeam : UIBase
 	{
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.INSTANCE_ENTER_S.GetHashCode ().ToString(), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_C.GetHashCode().ToString(), OnSaodangFinished);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_S.GetHashCode().ToString(), OnSaodangFinished);
+
+        GameEventMgr.Instance.AddListener(GameEventList.RefreshSaodangTimes, RefreshSaodangTimes);
     }
 	
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.INSTANCE_ENTER_S.GetHashCode ().ToString (), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_C.GetHashCode().ToString(), OnSaodangFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_S.GetHashCode().ToString(), OnSaodangFinished);
+
+        GameEventMgr.Instance.RemoveListener(GameEventList.RefreshSaodangTimes, RefreshSaodangTimes);
     }
 
 	public void SetData(string instanceId,int star, InstanceType insType = InstanceType.Normal)
@@ -179,7 +206,6 @@ public class UIAdjustBattleTeam : UIBase
         yield return StartCoroutine(RefreshTitleAndOthers());
 	}
 
-
 	IEnumerator RefreshEnmeyIcons()
 	{
         CleanAllEnemyIcons();//清空敌方怪物列表
@@ -206,7 +232,7 @@ public class UIAdjustBattleTeam : UIBase
 				rectTrans.localScale  = new Vector3(monsterIconScale, monsterIconScale, monsterIconScale);
 
 				subIcon.SetMonsterStaticId(monsterId);
-				subIcon.SetStage(1);
+                subIcon.SetStage(instanceEntryData.GetEnemyState(monsterId));
 				subIcon.SetLevel(enemyLevel);
 
 				UnitData unitRow = StaticDataMgr.Instance.GetUnitRowData(monsterId);
@@ -229,7 +255,6 @@ public class UIAdjustBattleTeam : UIBase
 					}
 				}
 
-				ScrollViewEventListener.Get(subIcon.iconButton.gameObject).onClick = OnEnmeyIconClick;
 				ScrollViewEventListener.Get(subIcon.iconButton.gameObject).onPressEnter = OnEnmeyIconClick;
 				subBg.gameObject.SetActive(true);
 			}
@@ -371,7 +396,7 @@ public class UIAdjustBattleTeam : UIBase
                 break;
 
             var subRewardData = rewardData.itemList[i];
-            GameObject go = RewardItemCreator.CreateRewardItem(subRewardData, dropList[i]);
+            GameObject go = RewardItemCreator.CreateRewardItem(subRewardData.protocolData, dropList[i]);
             if(null != go)
             {
                 dropObjectList.Add(go);
@@ -394,15 +419,7 @@ public class UIAdjustBattleTeam : UIBase
 
         //buffImage
         string spellId = instanceEntryData.instanceSpell;
-        SpellProtoType spell = StaticDataMgr.Instance.GetSpellProtoData(spellId);
-        if(null != spell)
-        {
-            Sprite spellSp = ResourceMgr.Instance.LoadAssetType<Sprite>(spell.icon);
-            if(null != spellSp)
-            {
-                buffImage.sprite = spellSp;
-            }
-        }
+        buffIcon.SetData(1, spellId);
 
         //instance name
         nameText.text = instanceEntryData.NameAttr;
@@ -431,6 +448,7 @@ public class UIAdjustBattleTeam : UIBase
                 battleTimesText.text = "";
                 resetTimesButton.gameObject.SetActive(true);
             }
+            RefreshSaodangTimes();
         }
         InstanceEntry stData = StaticDataMgr.Instance.GetInstanceEntry(instanceId);
         customHuoliText.text = stData.fatigue.ToString();
@@ -479,18 +497,13 @@ public class UIAdjustBattleTeam : UIBase
         UIMonsterInfo.Open(guid, micon.monsterId, unit.pbUnit.level, unit.pbUnit.stage);
 	}
 
-	void	OnFriendWarehouseIconClick(GameObject go)
-	{
-
-	}
-
 	void OnEnmeyIconClick(GameObject go)
 	{
 		MonsterIcon mIcon = go.GetComponentInParent<MonsterIcon> ();
 
 		string monsterId = mIcon.monsterId;
 
-		UIMonsterInfo.Open (-1, monsterId,enemyLevel,1);
+        UIMonsterInfo.Open(-1, monsterId, enemyLevel, instanceEntryData.GetEnemyState(monsterId));
 	}
 
 	#region 上阵 --下阵
@@ -608,10 +621,207 @@ public class UIAdjustBattleTeam : UIBase
 		}
 	}
 
-    void OnResetTimesClick(GameObject go)
+    void OnPointerEnterBuffIcon(GameObject go)
     {
-
+        buffIcon.SetMask(true);
+        skillTips.gameObject.SetActive(true);
     }
+
+    void OnPointerExitBuffIcon(GameObject go)
+    {
+        buffIcon.SetMask(false);
+        skillTips.gameObject.SetActive(false);
+    }
+
+    void OnResetInstanceTimesClick(GameObject go)
+    {
+        ResetInstance();
+    }
+
+    void ResetInstance()
+    {
+        string msg = StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhi");
+        int times = InstanceMapService.Instance.instanceResetTimes;
+        InstanceReset insReset = StaticDataMgr.Instance.GetInstanceReset("1");
+        resetInstanceCost = insReset.GetBaseZuanshiWithTime(times);
+
+        string optionMsg = string.Format(StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhiTimes"), times);
+
+        MsgBox.PrompCostMsg.Open(resetInstanceCost, msg, optionMsg, OnInstanceRestPrompClick);
+    }
+
+    void OnInstanceRestPrompClick(MsgBox.PrompButtonClick sel)
+    {
+        if(sel == MsgBox.PrompButtonClick.OK)
+        {
+            if(resetInstanceCost > GameDataMgr.Instance.PlayerDataAttr.gold)
+            {
+                GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+            }
+            else
+            {
+                RequestResetInstance();
+            }
+        }
+    }
+
+    void RequestResetInstance()
+    {
+        PB.HSInstanceResetCount param = new PB.HSInstanceResetCount();
+        param.instanceId = instanceId;
+        GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_RESET_COUNT_C.GetHashCode(), param);
+    }
+
+    void RequestResetInstanceFinished(ProtocolMessage message)
+    {
+        UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode error = message.GetProtocolBody<PB.HSErrorCode>();
+            
+            return;
+        }
+        PB.HSInstanceResetCountRet retData = message.GetProtocolBody<PB.HSInstanceResetCountRet>();
+        StartCoroutine(RefreshTitleAndOthers());
+        InstanceMapService.Instance.instanceResetTimes++;
+    }
+
+    void OnRapid1ButtonClick(GameObject go)
+    {
+        int saodTime = 1;
+        SaodangState sstate = GetSaodangState(out saodTime);
+        if(sstate == SaodangState.OK)
+        {
+            RequestSaodang(1);
+        }
+        else
+        {
+            CanotSaodang(sstate);
+        }
+    }
+
+    void OnRapid10ButtonClick(GameObject go)
+    {
+        int saodTime = 1;
+        SaodangState sstate = GetSaodangState(out saodTime);
+        if (sstate == SaodangState.OK)
+        {
+            RequestSaodang(saodTime);
+        }
+        else
+        {
+            CanotSaodang(sstate);
+        }
+    }
+
+    void CanotSaodang(SaodangState state)
+    {
+        if(state == SaodangState.HuoliNotEnough)
+        {
+            UseHuoLi.Open();
+        }
+        else if(state == SaodangState.BattleTimesNotEnough)
+        {
+            ResetInstance();
+        }
+        else if (state == SaodangState.SaodangquanNotEnough)
+        {
+            BuyItem.BuyItemParam param = new BuyItem.BuyItemParam();
+            param.itemId = GameConfig.Instance.saodangQuanId;
+            param.defaultbuyCount = 1;
+            param.maxCount = GameConfig.Instance.maxBuyItemCount;
+            param.isShowCoinButton = true;
+            BuyItem.OpenWith(param);
+        }
+    }
+
+    void RefreshSaodangTimes()
+    {
+        int saodTimes = 1;
+        GetSaodangState(out saodTimes);
+        UIUtil.SetButtonTitle(rapid10Button.transform, string.Format(StaticDataMgr.Instance.GetTextByID("instance_saodang10"),saodTimes));
+    }
+
+    SaodangState GetSaodangState(out int iTimes)
+    {
+        InstanceEntryRuntimeData realInstanceData = InstanceMapService.Instance.GetRuntimeInstance(instanceId);
+        if(null == realInstanceData)
+        {
+            iTimes = 1;
+            return SaodangState.HuoliNotEnough;
+        }
+        int saodangMax = realInstanceData.staticData.count;
+        if (saodangMax > 10)
+        {
+            saodangMax = 10;
+        }
+        int leftTimes = realInstanceData.staticData.count - realInstanceData.countDaily;
+        int huoliTimes = GameDataMgr.Instance.PlayerDataAttr.HuoliAttr / realInstanceData.staticData.fatigue;
+        int saodangquanCount = 0;
+        ItemData itemSaodang = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(GameConfig.Instance.saodangQuanId);
+        if(null != itemSaodang)
+        {
+            saodangquanCount = itemSaodang.count;
+        }
+        iTimes = saodangMax;
+        SaodangState retState;
+        if(huoliTimes ==0)
+        {
+            retState = SaodangState.HuoliNotEnough;
+        }
+        else if (leftTimes == 0)
+        {
+            retState = SaodangState.BattleTimesNotEnough;
+        }
+        else if (saodangquanCount ==0)
+        {
+            retState = SaodangState.SaodangquanNotEnough;
+        }
+        else
+        {
+            retState = SaodangState.OK;
+            iTimes = huoliTimes > leftTimes ? leftTimes : huoliTimes;
+            if(iTimes > saodangquanCount)
+            {
+                iTimes = saodangquanCount;
+            }
+            if(iTimes > saodangMax)
+            {
+                iTimes = saodangMax;
+            }
+        }
+
+        return retState ;
+    }
+
+    void RequestSaodang(int times)
+    {
+        PB.HSInstanceSweep param = new PB.HSInstanceSweep();
+        param.instanceId = instanceId;
+        param.count = times;
+        GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_SWEEP_C.GetHashCode(), param);
+    }
+
+    void OnSaodangFinished(ProtocolMessage message)
+    {
+        UINetRequest.Close();
+        if (message.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode error = message.GetProtocolBody<PB.HSErrorCode>();
+            return;
+        }
+
+        PB.HSInstanceSweepRet sweetRet = message.GetProtocolBody<PB.HSInstanceSweepRet>();
+
+        InstanceMapService.Instance.AddCountDaily(instanceId, sweetRet.completeReward.Count);
+        StartCoroutine(RefreshTitleAndOthers());
+        List<PB.HSRewardInfo> listReward = new List<PB.HSRewardInfo>();
+        listReward.AddRange(sweetRet.completeReward);
+        listReward.Add(sweetRet.sweepReward);
+        //扫荡结果
+        SaodangResult.OpenWith(listReward);
+    }
+
 
     List<int> SaveBattleTeam()
 	{

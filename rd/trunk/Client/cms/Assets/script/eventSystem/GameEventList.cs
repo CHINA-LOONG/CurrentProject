@@ -57,6 +57,7 @@ public class GameEventList
     public static string OpenNewChapter = "OpenNewChapter";//param(int) newChapter
     public static string ShowInstanceList = "ShowInstanceList";//prama(string) instanceId
     public static string RefreshInstanceList = "RefreshInstanceList";
+    public static string RefreshSaodangTimes = "RefreshSaodangTimes";
 
 
     //Spell
@@ -81,6 +82,8 @@ public class GameEventList
 	public static   string ZuanshiChanged = "ZuanshiChanged";
     public static string PlayerExpChanged = "PlayerExpChanged";//param int int (oldexp，newexp)
     public static string HuoliChanged = "HuoliChanged";//param int (huoli)
+
+    public static string RefreshUseHuoliWithZeroClock = "RefreshUseHuoliWithZeroClock";//0点刷新
 
     public static string QuestChanged = "QuestChanged";
 

@@ -59,6 +59,7 @@ public class UnitData
     public string closeUp;
     public string fragmentId;
     public int fragmentCount;
+    public string say;
 
     public string NickNameAttr
 	{

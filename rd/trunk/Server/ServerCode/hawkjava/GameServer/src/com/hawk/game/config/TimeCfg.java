@@ -9,10 +9,10 @@ import org.hawk.config.HawkConfigBase;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 
+import com.hawk.game.util.GsConst;
+
 @HawkConfigManager.CsvResource(file = "staticData/time.csv", struct = "map")
 public class TimeCfg extends HawkConfigBase {
-
-	public static final int NO_VALUE = -1;
 
 	@Id
 	protected final int type;
@@ -53,13 +53,13 @@ public class TimeCfg extends HawkConfigBase {
 //		}
 
 		// “每周几”和“每月几号”最多配一个
-		if (dayOfWeek != NO_VALUE  && dayOfMonth != NO_VALUE) {
+		if (dayOfWeek != GsConst.UNUSABLE  && dayOfMonth != GsConst.UNUSABLE) {
 			return false;
 		}
 
 		// 从中国习惯值转为系统值，Calendar.SUNDAY == 1，Calendar.JANUARY ==0
 		try {
-			if (dayOfWeek != NO_VALUE) {
+			if (dayOfWeek != GsConst.UNUSABLE) {
 				Field field = this.getClass().getDeclaredField("dayOfWeek");
 				field.setAccessible(true);
 				final Field modifiersField = Field.class.getDeclaredField("modifiers");
@@ -73,7 +73,7 @@ public class TimeCfg extends HawkConfigBase {
 				field.setAccessible(false);
 			}
 
-			if (month != NO_VALUE) {
+			if (month != GsConst.UNUSABLE) {
 				Field field = this.getClass().getDeclaredField("month");
 				field.setAccessible(true);
 				final Field modifiersField = Field.class.getDeclaredField("modifiers");
@@ -91,40 +91,40 @@ public class TimeCfg extends HawkConfigBase {
 		}
 
 		// 计算时间尺度
-		if (minute == NO_VALUE) {
+		if (minute == GsConst.UNUSABLE) {
 			// 分是最小尺度，不可不配
 			return false;
 
-		} else if (hour == NO_VALUE) {
+		} else if (hour == GsConst.UNUSABLE) {
 			scaleField = Calendar.MINUTE;
 			cycleField = Calendar.HOUR_OF_DAY;
 			scaleValue = minute;
 
-		} else if (dayOfWeek == NO_VALUE && dayOfMonth == NO_VALUE) {
+		} else if (dayOfWeek == GsConst.UNUSABLE && dayOfMonth == GsConst.UNUSABLE) {
 			scaleField = Calendar.HOUR_OF_DAY;
 			cycleField = Calendar.DAY_OF_YEAR;
 			scaleValue = hour;
 
-		} else if (month == NO_VALUE) {
-			if (dayOfWeek != NO_VALUE) {
+		} else if (month == GsConst.UNUSABLE) {
+			if (dayOfWeek != GsConst.UNUSABLE) {
 				scaleField = Calendar.DAY_OF_WEEK;
 				cycleField = Calendar.DAY_OF_WEEK_IN_MONTH;
 				scaleValue = dayOfWeek;
 
-			} else if (dayOfMonth != NO_VALUE) {
+			} else if (dayOfMonth != GsConst.UNUSABLE) {
 				scaleField = Calendar.DAY_OF_MONTH;
 				cycleField = Calendar.MONTH;
 				scaleValue = dayOfMonth;
 			}
 
-		} else if (year == NO_VALUE) {
+		} else if (year == GsConst.UNUSABLE) {
 			scaleField = Calendar.MONTH;
 			cycleField = Calendar.YEAR;
 			scaleValue = month;
 
 		} else {
 			scaleField = Calendar.YEAR;
-			cycleField = NO_VALUE; // 年没有周期，仅发生一次
+			cycleField = GsConst.UNUSABLE; // 年没有周期，仅发生一次
 			scaleValue = year;
 		}
 

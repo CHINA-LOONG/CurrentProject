@@ -29,6 +29,7 @@ public class InstanceMapService : MonoBehaviour
 	public	List<InstanceEntryRuntimeData>	openChapterInstanceList = new List<InstanceEntryRuntimeData> ();
 
     public PB.ChapterState chapterState = null;
+    public int instanceResetTimes = 0;
 
 	static InstanceMapService mInst = null;
 	public static InstanceMapService Instance
@@ -67,14 +68,39 @@ public class InstanceMapService : MonoBehaviour
 		GameEventMgr.Instance.RemoveListener<int,string> (GameEventList.FinishedInstance, OnFinishedInstnace);
 	}
 
-	public void RefreshInstanceMap(InstanceState instanceState)
+	public void RefreshInstanceMap(List<PB.InstanceState> listState)
 	{
 		openChapterInstanceList.Clear ();
-
-		AddOpenChapeterInstance (instanceState.listInstanceState);
+       
+        AddOpenChapeterInstance (listState);
 	}
 
-	private	void	AddOpenChapeterInstance(List<PB.InstanceState> finishedInstance)
+    public  void ResetCountDaily()
+    {
+        foreach(var subData in openChapterInstanceList)
+        {
+            subData.countDaily = 0;
+        }
+    }
+
+    public void ResetCountDaily(string instanceid)
+    {
+        var realInstance = GetRuntimeInstance(instanceid);
+        if (null != realInstance)
+        {
+            realInstance.countDaily = 0;
+        }
+    }
+    public void AddCountDaily(string instanceid, int addCount)
+    {
+        var realInstance = GetRuntimeInstance(instanceid);
+        if (null != realInstance)
+        {
+            realInstance.countDaily += addCount;
+        }
+    }
+
+    private	void	AddOpenChapeterInstance(List<PB.InstanceState> finishedInstance)
 	{
 		openedMaxNormlChapter = 1;
 		openedMaxHardChapter = 0;

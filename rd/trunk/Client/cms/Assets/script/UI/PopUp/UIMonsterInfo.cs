@@ -16,13 +16,13 @@ public class UIMonsterInfo : UIBase
 	public Button closeButton;
 	public	Text	name;
 	public  Text	character;
-	public	Image	propertyImage;
+    public Text monsterDescText;
+    public Text zhanliText;
+    public	Image	propertyImage;
 	public	Transform iconTrans;
-	public	Transform	normalSkillTrans;
-	public  Transform	specialSkillTrans;
+	public	Transform	skillPanelTrans;
 	public	SkilTips	skilTips;
-	public Text	haveNomralSpell;
-	public Text haveSpecialSpell;
+    
 	private int guid = -1;
 
 	private int level = 1;
@@ -59,8 +59,13 @@ public class UIMonsterInfo : UIBase
 		this.level = level;
 		this.guid = guid;
 		name.text = unitData.NickNameAttr;
-		haveNomralSpell.text = StaticDataMgr.Instance.GetTextByID ("spell_yongyoujineng_normal");
-		haveSpecialSpell.text = StaticDataMgr.Instance.GetTextByID ("spell_yongyoujineng_special");
+
+        int quallity = 0;
+        int plusQuality = 0;
+        UIUtil.CalculationQuality(stage, out quallity, out plusQuality);
+
+        UIUtil.SetStageColor(name, unitData.nickName, quallity);
+		monsterDescText.text = StaticDataMgr.Instance.GetTextByID (unitData.say);
 
 		SetProperty (unitData.property);
 
@@ -80,7 +85,12 @@ public class UIMonsterInfo : UIBase
 			{
 				monsterCharacter = pet.character;
 			}
+            zhanliText.text = string.Format(StaticDataMgr.Instance.GetTextByID("zhanli:{0}"), 1989);
 		}
+        else
+        {
+            zhanliText.text = "";
+        }
 		CharacterData cData = StaticDataMgr.Instance.GetCharacterData (monsterCharacter);
 		if (null != cData)
 		{
@@ -100,6 +110,7 @@ public class UIMonsterInfo : UIBase
 	private void SetSpellIcon(UnitData unitData)
 	{
 		ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson(unitData.spellIDList);
+        int spellCount = 0;
 		for (int i = 0; i < spellArrayList.Count; ++i) 
 		{
 			string spellID = spellArrayList [i] as string;
@@ -113,23 +124,17 @@ public class UIMonsterInfo : UIBase
 				continue;
 			}
 			AddIcon (spellPt);
+            spellCount++;
+            if(spellCount >= 5)
+            {
+                break;
+            }
 		}
 	}
 
 	private void AddIcon(SpellProtoType spellType)
 	{
-		Transform parentTrans = null;
-		if (spellType.category == (int)SpellType.Spell_Type_MagicDazhao ||
-			spellType.category == (int)SpellType.Spell_Type_PhyDaZhao||
-		    spellType.category == (int)SpellType.Spell_Type_Passive) 
-		{
-			parentTrans = specialSkillTrans;
-		}
-		else 
-		{
-			parentTrans = normalSkillTrans;
-		}
-		var icon = SpellIcon.CreateWith (parentTrans );
+		var icon = SpellIcon.CreateWith (skillPanelTrans);
 		int spellLevel = this.level;
 		if (guid != -1)
 		{
@@ -163,10 +168,10 @@ public class UIMonsterInfo : UIBase
 
 		Vector2 iconPos = iconTrans.anchoredPosition;
 		Vector2 tipsPos = tipsTrans.anchoredPosition;
-		tipsPos.x = iconPos.x + 120;
+		tipsPos.x = iconPos.x + 80;
 
 		RectTransform iconParent = icon.transform.parent as RectTransform;
-		tipsPos.y = iconParent.anchoredPosition.y + 120;
+		//tipsPos.y = iconParent.anchoredPosition.y + 120;
 
 		tipsTrans.anchoredPosition = tipsPos;
 	}

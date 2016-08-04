@@ -39,7 +39,7 @@ public class HuoLiDataMgr
         {
             return huoliyao_2;
         }
-        else if (3 == index)
+        else if (2 == index)
         {
             return huoliyao_3;
         }

@@ -56,15 +56,6 @@ public class GameDataMgr : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    InstanceState instanceState;
-    public InstanceState InstanceStateAttr
-    {
-        get
-        {
-            return instanceState;
-        }
-    }
 
 	[SerializeField]
 	ShopDataMgr shopDataMgr;
@@ -100,11 +91,6 @@ public class GameDataMgr : MonoBehaviour
         userDataGo.transform.SetParent(transform);
         userData = userDataGo.AddComponent<UserData>();
         userData.Init();
-
-        GameObject instanceGo = new GameObject("InstanceState");
-        instanceGo.transform.SetParent(transform);
-        instanceState = userDataGo.AddComponent<InstanceState>();
-        instanceState.Init();
 
 		GameObject shopDataGo = new GameObject ("ShopDataMgr");
 		shopDataGo.transform.SetParent (transform);
@@ -403,9 +389,9 @@ public class GameDataMgr : MonoBehaviour
             {
                 PlayerDataAttr.LevelAttr = reward.playerAttr.level;
                 PlayerDataAttr.ExpAttr = reward.playerAttr.exp;
+                PlayerDataAttr.UpdateHuoli(reward.playerAttr.fatigue, reward.playerAttr.fatigueBeginTime);
+                //PlayerDataAttr.HuoliAttr = reward.playerAttr.fatigue;
             }
-            //PlayerDataAttr.HuoliAttr = reward.playerAttr.fatigue;
-            PlayerDataAttr.UpdateHuoli(reward.playerAttr.fatigue, reward.playerAttr.fatigueBeginTime);
             PlayerDataAttr.coin = reward.playerAttr.coin;
             GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, PlayerDataAttr.coin);
             PlayerDataAttr.gold = reward.playerAttr.gold;
@@ -501,10 +487,13 @@ public class GameDataMgr : MonoBehaviour
         PB.HSConsumeInfo reward = msg.GetProtocolBody<PB.HSConsumeInfo>();
         if (reward.playerAttr!=null)
         {
-            PlayerDataAttr.LevelAttr = reward.playerAttr.level;
-            PlayerDataAttr.ExpAttr = reward.playerAttr.exp;
-            //PlayerDataAttr.HuoliAttr = reward.playerAttr.fatigue;
-            PlayerDataAttr.UpdateHuoli(reward.playerAttr.fatigue, reward.playerAttr.fatigueBeginTime);
+            if (reward.hsCode != PB.code.INSTANCE_SETTLE_C.GetHashCode())
+            {
+                //PlayerDataAttr.LevelAttr = reward.playerAttr.level;
+                //PlayerDataAttr.ExpAttr = reward.playerAttr.exp;
+                //PlayerDataAttr.HuoliAttr = reward.playerAttr.fatigue;
+                PlayerDataAttr.UpdateHuoli(reward.playerAttr.fatigue, reward.playerAttr.fatigueBeginTime);
+            }
             PlayerDataAttr.coin = reward.playerAttr.coin;
             GameEventMgr.Instance.FireEvent<long>(GameEventList.CoinChanged, PlayerDataAttr.coin);
             PlayerDataAttr.gold = reward.playerAttr.gold;

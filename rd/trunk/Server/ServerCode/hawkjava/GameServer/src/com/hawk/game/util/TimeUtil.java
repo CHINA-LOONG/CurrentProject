@@ -53,7 +53,7 @@ public class TimeUtil {
 		// 确定在区间内的边界不再比较更小尺度
 		for (int i = 0; i < valueList.length; ++i) {
 			if (resultLeft == FURTHER && resultRight == FURTHER &&
-					leftList[i] != TimeCfg.NO_VALUE && rightList[i] != TimeCfg.NO_VALUE &&
+					leftList[i] != GsConst.UNUSABLE && rightList[i] != GsConst.UNUSABLE &&
 					leftList[i] > rightList[i]) {
 				HawkLog.errPrintln(String.format("time field: %d period left: %d is after right: %d", fieldList[i], leftList[i], rightList[i]));
 				return false;
@@ -80,7 +80,7 @@ public class TimeUtil {
 	 * @param left 左边界
 	 */
 	public static int isFieldInPeriodLeft(int value, int left) {
-		if (left != TimeCfg.NO_VALUE) {
+		if (left != GsConst.UNUSABLE) {
 			if (value < left) {
 				return OUT_PERIOD;
 			} else if (value > left) {
@@ -95,7 +95,7 @@ public class TimeUtil {
 	 * @param right 右边界
 	 */
 	public static int isFieldInPeriodRight(int value, int right) {
-		if (right != TimeCfg.NO_VALUE) {
+		if (right != GsConst.UNUSABLE) {
 			if (value > right) {
 				return OUT_PERIOD;
 			} else if (value < right) {
@@ -184,9 +184,9 @@ public class TimeUtil {
 		case Calendar.MONTH:
 			nextRefreshTime.set(Calendar.MINUTE, minute);
 			nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
-			if (dayOfWeek != TimeCfg.NO_VALUE) {
+			if (dayOfWeek != GsConst.UNUSABLE) {
 				nextRefreshTime.set(Calendar.DAY_OF_WEEK, dayOfWeek);
-			} else if (dayOfMonth != TimeCfg.NO_VALUE) {
+			} else if (dayOfMonth != GsConst.UNUSABLE) {
 				nextRefreshTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 			}
 			nextRefreshTime.set(Calendar.MONTH, month);
@@ -195,9 +195,9 @@ public class TimeUtil {
 		case Calendar.YEAR:
 			nextRefreshTime.set(Calendar.MINUTE, minute);
 			nextRefreshTime.set(Calendar.HOUR_OF_DAY, hour);
-			if (dayOfWeek != TimeCfg.NO_VALUE) {
+			if (dayOfWeek != GsConst.UNUSABLE) {
 				nextRefreshTime.set(Calendar.DAY_OF_WEEK, dayOfWeek);
-			} else if (dayOfMonth != TimeCfg.NO_VALUE) {
+			} else if (dayOfMonth != GsConst.UNUSABLE) {
 				nextRefreshTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 			}
 			nextRefreshTime.set(Calendar.MONTH, month);
@@ -211,11 +211,11 @@ public class TimeUtil {
 		// 最小尺度为分，秒和毫秒设为0
 		nextRefreshTime.set(Calendar.SECOND, 0);
 		nextRefreshTime.set(Calendar.MILLISECOND, 0);
-		
+
 		// 如果下次刷新时间>当前时间，减1个周期
 		if (nextRefreshTime.compareTo(curTime) >= 0) {
 			// 固定时间没有周期
-			if (cycleField == TimeCfg.NO_VALUE) {
+			if (cycleField == GsConst.UNUSABLE) {
 				return false;
 			}
 			nextRefreshTime.add(cycleField, -1);
@@ -233,7 +233,7 @@ public class TimeUtil {
 	 * @return 是否可更新
 	 */
 	private static boolean adjustRefreshOpen(int scaleField, int value, Calendar curTime, Calendar lastRefreshTime, Calendar nextRefreshTime) {
-		if (value != TimeCfg.NO_VALUE) {
+		if (value != GsConst.UNUSABLE) {
 			// 现在已关闭
 			if (curTime.get(scaleField) > value) {
 				// 上次更新就已关闭

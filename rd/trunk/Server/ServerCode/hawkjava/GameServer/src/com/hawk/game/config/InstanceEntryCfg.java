@@ -1,14 +1,8 @@
 package com.hawk.game.config;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.log.HawkLog;
-
-import sun.print.resources.serviceui;
 
 import com.hawk.game.util.InstanceUtil;
 
@@ -39,7 +33,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 
 	// assemble
 	protected InstanceChapterCfg chapterCfg;
-	protected List<MonsterCfg> enemyList;
+//	protected List<MonsterCfg> enemyList;
 	protected RewardCfg rewardCfg;
 
 	public InstanceEntryCfg() {
@@ -64,7 +58,7 @@ public class InstanceEntryCfg extends HawkConfigBase {
 
 		// 计算InstanceChapter
 		InstanceUtil.addInstance(this);
-		enemyList = new ArrayList<MonsterCfg>();
+//		enemyList = new ArrayList<MonsterCfg>();
 		return true;
 	}
 
@@ -76,55 +70,55 @@ public class InstanceEntryCfg extends HawkConfigBase {
 			return false;
 		}
 
-		// 检测敌人是否存在，并建立引用
-		if (enemy1 != "") {
-			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy1);
-			if (null == enemy) {
-				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy1));
-				return false;
-			}
-			enemyList.add(enemy);
-		}
-		if (enemy2 != "") {
-			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy2);
-			if (null == enemy) {
-				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy2));
-				return false;
-			}
-			enemyList.add(enemy);
-		}
-		if (enemy3 != "") {
-			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy3);
-			if (null == enemy) {
-				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy3));
-				return false;
-			}
-			enemyList.add(enemy);
-		}
-		if (enemy4 != "") {
-			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy4);
-			if (null == enemy) {
-				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy4));
-				return false;
-			}
-			enemyList.add(enemy);
-		}
-		if (enemy5 != "") {
-			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy5);
-			if (null == enemy) {
-				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy5));
-				return false;
-			}
-			enemyList.add(enemy);
-		}
-		if (enemy6 != "") {
-			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy6);
-			if (null == enemy) {
-				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy6));
-				return false;
-			}
-			enemyList.add(enemy);
-		}
+//		// 检测敌人是否存在，并建立引用
+//		if (enemy1 != "") {
+//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy1);
+//			if (null == enemy) {
+//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy1));
+//				return false;
+//			}
+//			enemyList.add(enemy);
+//		}
+//		if (enemy2 != "") {
+//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy2);
+//			if (null == enemy) {
+//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy2));
+//				return false;
+//			}
+//			enemyList.add(enemy);
+//		}
+//		if (enemy3 != "") {
+//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy3);
+//			if (null == enemy) {
+//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy3));
+//				return false;
+//			}
+//			enemyList.add(enemy);
+//		}
+//		if (enemy4 != "") {
+//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy4);
+//			if (null == enemy) {
+//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy4));
+//				return false;
+//			}
+//			enemyList.add(enemy);
+//		}
+//		if (enemy5 != "") {
+//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy5);
+//			if (null == enemy) {
+//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy5));
+//				return false;
+//			}
+//			enemyList.add(enemy);
+//		}
+//		if (enemy6 != "") {
+//			MonsterCfg enemy = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, enemy6);
+//			if (null == enemy) {
+//				HawkLog.errPrintln(String.format("config invalid MonsterCfg : %s", enemy6));
+//				return false;
+//			}
+//			enemyList.add(enemy);
+//		}
 
 		// 检测奖励是否存在，并建立引用
 		if (reward != null && reward.equals("") == false) {
@@ -174,9 +168,9 @@ public class InstanceEntryCfg extends HawkConfigBase {
 		return count;
 	}
 
-	public List<MonsterCfg> getEnemyList() {
-		return Collections.unmodifiableList(enemyList);
-	}
+//	public List<MonsterCfg> getEnemyList() {
+//		return Collections.unmodifiableList(enemyList);
+//	}
 
 	public RewardCfg getReward() {
 		return rewardCfg;

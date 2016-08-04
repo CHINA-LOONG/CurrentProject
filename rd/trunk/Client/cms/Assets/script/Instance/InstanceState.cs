@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class InstanceState : MonoBehaviour 
 {
+    /*
+    //todo:delete
 	public List<PB.InstanceState> listInstanceState = new List<PB.InstanceState>();
 	// Use this for initialization
 	void Start () 
@@ -52,5 +54,5 @@ public class InstanceState : MonoBehaviour
         {
             InstanceMapService.Instance.chapterState = statisticsInfo.chapterState;
         }
-	}
+	}*/
 }

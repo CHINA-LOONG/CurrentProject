@@ -233,7 +233,7 @@ namespace PB
     }
   
     private HSRewardInfo _sweepReward = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"sweepReward", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"sweepReward", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
     public HSRewardInfo sweepReward
     {

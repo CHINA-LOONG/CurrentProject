@@ -62,6 +62,8 @@ public class GsConst {
 	public static final int MAX_BATTLE_MONSTER_COUNT = 5;
 	// 钻石兑换金币索引
 	public static final int GOLD_TO_COIN_INDEX = 1;
+	// 副本次数重置索引
+	public static final String INSTANCE_RESET_ID= "1";
 	// 最大屏蔽玩家数
 	public static final int MAX_BLOCK_COUNT = 5;
 	// 合成上一级宝石数量
@@ -165,20 +167,18 @@ public class GsConst {
 		public static final int GLOBAL_REFRESH_END = 2;
 
 		// 个人刷新----------------------------------------------------------
-		public static final int PERS_REFRESH_BEGIN = 100;
+		public static final int PLAYER_REFRESH_1_BEGIN = 100;
 		public static final int DAILY_PERS_REFRESH = 101;
-//		public static final int SIGN_IN_PERS_REFRESH = 102;
-//		public static final int INSTANCE_PERS_REFRESH = 103;
+		public static final int PLAYER_REFRESH_1_END = 110;
 
-		public static final int SHOP_REFRESH_TIME_FIRST = 104;
-		public static final int SHOP_REFRESH_TIME_SECOND = 105;
-		public static final int SHOP_REFRESH_TIME_THIRD = 106;
-
-		public static final int ALLIANCE_REFRESH_TIME_FIRST = 107;
-		public static final int ALLIANCE_REFRESH_TIME_SECOND = 108;
-		public static final int ALLIANCE_REFRESH_TIME_THIRD = 109;
-
-		public static final int PERS_REFRESH_END = 110;
+		public static final int PLAYER_REFRESH_2_BEGIN = 200;
+		public static final int SHOP_REFRESH_TIME_FIRST = 201;
+		public static final int SHOP_REFRESH_TIME_SECOND = 202;
+		public static final int SHOP_REFRESH_TIME_THIRD = 203;
+		public static final int ALLIANCE_REFRESH_TIME_FIRST = 204;
+		public static final int ALLIANCE_REFRESH_TIME_SECOND = 205;
+		public static final int ALLIANCE_REFRESH_TIME_THIRD = 206;
+		public static final int PLAYER_REFRESH_2_END = 207;
 	}
 
 	/**

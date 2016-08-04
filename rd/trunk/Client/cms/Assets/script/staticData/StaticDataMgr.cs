@@ -54,12 +54,13 @@ public class StaticDataMgr : MonoBehaviour
 	List<ShopStaticData>	shopStaticDataList = new List<ShopStaticData>();
 
 	Dictionary<string,RechargeStaticData> rechargeStaticDataDic = new Dictionary<string, RechargeStaticData>();
+    Dictionary<string, InstanceReset> instanceResetDic = new Dictionary<string, InstanceReset>();
 	Dictionary<string,GoldChargeData> goldChargeDic = new Dictionary<string, GoldChargeData>();
     Dictionary<string, FunctionData> functionDic = new Dictionary<string, FunctionData>();
     Dictionary<int, List<FunctionData>> functionLevelDic = new Dictionary<int, List<FunctionData>>();
 
-    Dictionary<string, TowerStaticData> towerList = new Dictionary<string, TowerStaticData>();
-    Dictionary<string, HoleStaticData> holeList = new Dictionary<string, HoleStaticData>();
+    Dictionary<string, TowerData> towerList = new Dictionary<string, TowerData>();
+    Dictionary<string, HoleData> holeList = new Dictionary<string, HoleData>();
 
 
     public void Init()
@@ -630,6 +631,14 @@ public class StaticDataMgr : MonoBehaviour
             }
         }
 
+        {
+            var data = InitTable<InstanceReset>("instanceReset");
+            foreach(var item in data)
+            {
+                instanceResetDic.Add(item.id, item);
+            }
+        }
+
 		{
 			var	data = InitTable<GoldChargeData>("goldChange");
 			foreach( var item in data)
@@ -659,13 +668,39 @@ public class StaticDataMgr : MonoBehaviour
         //通天塔
         {
             var data = InitTable<TowerStaticData>("tower");
+            ArrayList floorData;
             foreach (var item in data)
-                towerList.Add(item.id, item);
+            {
+                TowerData towerData = new TowerData();
+                towerData.id = item.id;
+                towerData.time = item.time;
+                towerData.level = item.level;
+                floorData = MiniJsonExtensions.arrayListFromJson(item.floor);
+                for (int i = 0; i < floorData.Count; i++)
+                {
+                    towerData.floorList.Add(floorData[i].ToString());
+                }
+                towerList.Add(item.id, towerData);
+            }
         }
         {
             var data = InitTable<HoleStaticData>("hole");
+            ArrayList difficultyData;
             foreach (var item in data)
-                holeList.Add(item.id, item);
+            {
+                HoleData holeData = new HoleData();
+                holeData.id = item.id;
+                holeData.time = item.time;
+                holeData.count = item.count;
+                holeData.openId = item.openId;
+                holeData.dropId = item.dropId;
+                difficultyData = MiniJsonExtensions.arrayListFromJson(item.difficulty);
+                for (int i = 0; i < difficultyData.Count; i++)
+                {
+                    holeData.difficultyList.Add(difficultyData[i].ToString());
+                } 
+                holeList.Add(item.id, holeData);
+            }
         }
     }
 
@@ -932,6 +967,13 @@ public class StaticDataMgr : MonoBehaviour
 		return rechargeStaticDataDic;
 	}
 
+    public InstanceReset GetInstanceReset(string id)
+    {
+        InstanceReset retObj = null;
+        instanceResetDic.TryGetValue(id, out retObj);
+        return retObj;
+    }
+
     public  FunctionData    GetFunctionStaticData(string name)
     {
         FunctionData item = null;
@@ -1001,27 +1043,23 @@ public class StaticDataMgr : MonoBehaviour
     }
 
     //通天塔
-    public TowerStaticData GetTowerData(string id)
+    public TowerData GetTowerData(string id)
     {
-        TowerStaticData item = null;
+        TowerData item = null;
         if (id != null)
         {
             towerList.TryGetValue(id, out item);
         }
-
         return item;
     }
-    public HoleStaticData GetHoleData(string id)
+    public HoleData GetHoleData(string id)
     {
-        HoleStaticData item = null;
+        HoleData item = null;
         if (id != null)
         {
             holeList.TryGetValue(id, out item);
         }
-
         return item;
     }
-
-
     #endregion
 }

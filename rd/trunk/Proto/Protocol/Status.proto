@@ -33,7 +33,7 @@ enum error
 	PARAMS_INVALID             = 0x00000006;
 	// 配置错误
 	CONFIG_NOT_FOUND           = 0x00000007;
-	// 配置错误
+	// 无效请求
 	UNSUPPORT_ACTION           = 0x00000008;
 	// 服务器错误
 	SERVER_ERROR               = 0x00001000;
@@ -85,6 +85,8 @@ enum monsterError
 	LOCK_ALREADY               = 0x0003000A;
 	// 已经解锁
 	UNLOCK_ALREADY             = 0x0003000B;
+	// 不可上阵
+	MONSTER_BUSY               = 0x0003000C;
 }
 
 enum itemError
@@ -128,9 +130,9 @@ enum itemError
 	// 装备不能开孔
 	EQUIP_CAN_NOT_OPEN_SLOT	   = 0x0004100C;
 	// 镶嵌宝石不符
-	EQUIP_GEM_MISMATCH	       = 0x0004100D;
+	EQUIP_GEM_MISMATCH         = 0x0004100D;
 	// 槽位没有开孔
-	EQUIP_SLOT_NOT_PUNCH	   = 0x0004100E;
+	EQUIP_SLOT_NOT_PUNCH       = 0x0004100E;
 	// 玩家等级限制
 	EQUIP_PLAYER_LEVEL_DEMAND  = 0x00041010;
 }

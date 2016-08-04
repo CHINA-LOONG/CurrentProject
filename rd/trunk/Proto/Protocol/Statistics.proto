@@ -64,13 +64,15 @@ message HSStatisticsInfoSync
 	// 商城购买状态
 	repeated RechargeState rechargeState = 10;
 	// 月卡剩余时间
-	required int32  monthCardLeft = 11;
-	// 钻石购买金币次数
-	required int32  gold2CoinTimes = 12;
+	required int32 monthCardLeft = 11;
+	// 今日钻石购买金币次数
+	required int32 gold2CoinTimes = 12;
 	// 多倍经验剩余次数
 	required HSSyncExpLeftTimes expLeftTimes = 13;
-	// 物品使用次数
+	// 今日物品使用次数
 	repeated ItemState itemState = 14;
+	// 今日副本挑战重置次数
+	required int32 instanceResetCount = 15;
 }
 
 // SYNC_DAILY_REFRESH_S

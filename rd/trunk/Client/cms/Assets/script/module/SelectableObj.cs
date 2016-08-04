@@ -9,32 +9,96 @@ public enum SelectableObjType
     
     Num_Select_Type
 }
+public enum SelectableObjState
+{
+    State_Normal,
+    State_Selected,
+    State_Disabled,
+
+    Num_State
+}
+
 public class SelectableObj : MonoBehaviour {
 
     public const string ClickEvent = "SelectedObjClicked";
     public Material mNormalMat;
     public Material mSelectedMat;
+    public Color mNormalColor = Color.white;
+    public Color mDisableColor = Color.gray;
     public SelectableObjType mSelectType;
-
-    private bool mSelected;
+    
+    //0:noram 1:selected 2:disabed
+    public SelectableObjState CurState
+    {
+        get { return mCurState; }
+    }
+    private SelectableObjState mCurState = 0;
     private Renderer mCurRenderer;
+    
+    private bool mLockByGroup = false;
 
     //---------------------------------------------------------------------------------------------
     void Start()
     {
         mCurRenderer = gameObject.GetComponentInChildren<Renderer>();
-        mSelected = false;
+        //mCurState = 0;
     }
     //---------------------------------------------------------------------------------------------
-    public void SetSelected(bool selected)
+    public void SetLockByGroup(bool isLock, bool updateState = true)
     {
-        if (mSelected != selected)
+        if (mLockByGroup != isLock)
         {
-            mSelected = selected;
-            if (mCurRenderer != null)
+            mLockByGroup = isLock;
+            if (updateState == true)
             {
-                mCurRenderer.material = selected ? mSelectedMat : mNormalMat;
+                UpdateStateInternal(mCurState);
             }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    public void UpdateStateInternal(SelectableObjState state)
+    {
+        if (mCurRenderer != null)
+        {
+            switch (state)
+            {
+                case SelectableObjState.State_Normal:
+                    {
+                        mCurRenderer.material = mNormalMat;
+                        mCurRenderer.material.color = mNormalColor;
+                        break;
+                    }
+                case SelectableObjState.State_Selected:
+                    {
+                        mCurRenderer.material = mSelectedMat;
+                        break;
+                    }
+                case SelectableObjState.State_Disabled:
+                    {
+                        mCurRenderer.material = mNormalMat;
+                        if (mLockByGroup == true)
+                            mCurRenderer.material.color = mNormalColor;
+                        else
+                            mCurRenderer.material.color = mDisableColor;
+
+                        break;
+                    }
+            }
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    public void SetState(SelectableObjState state, bool saveState = true)
+    {
+        if (mLockByGroup == false && mCurState == SelectableObjState.State_Disabled)
+            return;
+
+        if (mCurState != state)
+        {
+            if (saveState == true)
+            {
+                mCurState = state;
+            }
+            UpdateStateInternal(state);
         }
     }
     //---------------------------------------------------------------------------------------------

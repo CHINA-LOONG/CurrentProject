@@ -26,7 +26,9 @@ public class InstanceEntry
     public string instanceSpell;
 
     public List<string> enemyList;
-	//public List<string> rewardList;
+
+    private Dictionary<string, int> enmeyStateDic;
+
 
 
 	public string NameAttr
@@ -48,24 +50,44 @@ public class InstanceEntry
 	public void AdaptData()
 	{
 		enemyList = new List<string>();
-       // rewardList = new List<string>();
-		
-		if(!string.IsNullOrEmpty(enemy1))
-			enemyList.Add(enemy1);
+        enmeyStateDic = new Dictionary<string, int>();
+
+        if (!string.IsNullOrEmpty(enemy1))
+            AddEnemy(enemy1);
 		
 		if(!string.IsNullOrEmpty(enemy2))
-			enemyList.Add(enemy2);
+            AddEnemy(enemy2);
 		
 		if(!string.IsNullOrEmpty(enemy3))
-			enemyList.Add(enemy3);
+            AddEnemy(enemy3);
 		
 		if(!string.IsNullOrEmpty(enemy4))
-			enemyList.Add(enemy4);
+            AddEnemy(enemy4);
 		
 		if(!string.IsNullOrEmpty(enemy5))
-			enemyList.Add(enemy5);
+            AddEnemy(enemy5);
 		
 		if(!string.IsNullOrEmpty(enemy6))
-			enemyList.Add(enemy6);
+            AddEnemy(enemy6);
 	}
+
+    void AddEnemy(string enemy)
+    {
+        string[] szData = enemy.Split(',');
+        if(null!=szData && szData.Length ==2)
+        {
+            enemyList.Add(szData[0]);
+            enmeyStateDic.Add(szData[0], int.Parse(szData[1]));
+        }
+    }
+
+    public  int GetEnemyState(string enemyId)
+    {
+        int stage = 0;
+        if(enmeyStateDic.TryGetValue(enemyId,out stage))
+        {
+            return stage;
+        }
+        return 1;
+    }
 }

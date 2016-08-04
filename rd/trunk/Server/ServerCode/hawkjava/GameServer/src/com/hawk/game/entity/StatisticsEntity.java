@@ -110,6 +110,10 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "monsterMaxStage", nullable = false)
 	private int monsterMaxStage = 0;
 
+	// 今日副本挑战次数重置次数
+	@Column(name = "instanceResetCountDaily", nullable = false)
+	private int instanceResetCountDaily = 0;
+
 	// 历史副本完成次数
 	@Column(name = "instanceAllCount", nullable = false)
 	private int instanceAllCount = 0;
@@ -574,6 +578,18 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public void setMonsterMaxStage(int monsterMaxStage) {
 		this.monsterMaxStage = monsterMaxStage;
+	}
+
+	public int getInstanceResetCountDaily() {
+		return instanceResetCountDaily;
+	}
+
+	public void addInstanceResetCountDaily() {
+		++instanceResetCountDaily;
+	}
+
+	public void clearInstanceResetCountDaily() {
+		instanceResetCountDaily = 0;
 	}
 
 	public int getInstanceAllCount() {

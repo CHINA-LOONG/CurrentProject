@@ -1258,6 +1258,14 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
+	 * 宠物是否可上阵
+	 */
+	public boolean isMonsterBusy(int monsterId) {
+		// TODO
+		return false;
+	}
+
+	/**
 	 * 首次登录
 	 */
 	public void onFirstLogin() {
@@ -1311,9 +1319,9 @@ public class Player extends HawkAppObj {
 //		HawkReportService.LoginData loginData = new HawkReportService.LoginData(getPuid(), getDevice(), getId(), HawkTime.getTimeString());
 //		HawkReportService.getInstance().report(loginData);
 	 }
-	 
+
 	/**
-	 * 刷新数据
+	 * 个人刷新
 	 */
 	private void onRefresh() {
 		Calendar curTime = HawkTime.getCalendar();
@@ -1323,30 +1331,20 @@ public class Player extends HawkAppObj {
 			return;
 		}
 
+		// 刷新时间
 		List<Integer> refreshList = new ArrayList<Integer>();
-		for (int i = GsConst.RefreshType.PERS_REFRESH_BEGIN + 1; i < GsConst.RefreshType.PERS_REFRESH_END; ++i) {
-			TimeCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, i);
-			if (null != timeCfg) {
-				try {
-					boolean  shouldRefresh = false;
-					Calendar nextRefreshTime = HawkTime.getCalendar();
-					Calendar lastRefreshTime = statisticsEntity.getLastRefreshTime(i);
-					if (null == lastRefreshTime) {
-						lastRefreshTime = HawkTime.getCalendar();
-						lastRefreshTime.setTimeInMillis(0);
-					}
-
-					shouldRefresh = TimeUtil.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
-					if (true == shouldRefresh) {
-						statisticsEntity.setRefreshTime(i, nextRefreshTime);
-						refreshList.add(i);
-					}
-				} catch (Exception e) {
-					HawkException.catchException(e);
-				}
+		for (int i = GsConst.RefreshType.PLAYER_REFRESH_1_BEGIN + 1; i < GsConst.RefreshType.PLAYER_REFRESH_1_END; ++i) {
+			if (true == refreshTime(i, curTime)) {
+				refreshList.add(i);
+			}
+		}
+		for (int i = GsConst.RefreshType.PLAYER_REFRESH_2_BEGIN + 1; i < GsConst.RefreshType.PLAYER_REFRESH_2_END; ++i) {
+			if (true == refreshTime(i, curTime)) {
+				refreshList.add(i);
 			}
 		}
 
+		// 刷新数据
 		if (false == refreshList.isEmpty()) {
 			statisticsEntity.notifyUpdate(true);
 
@@ -1359,5 +1357,34 @@ public class Player extends HawkAppObj {
 				}
 			}
 		}
+	}
+
+	/**
+	 * 刷新时间
+	 */
+	private boolean refreshTime(int timeCfgId, Calendar curTime) {
+		TimeCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, timeCfgId);
+		if (null != timeCfg) {
+			try {
+				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
+				boolean  shouldRefresh = false;
+				Calendar nextRefreshTime = HawkTime.getCalendar();
+				Calendar lastRefreshTime = statisticsEntity.getLastRefreshTime(timeCfgId);
+				if (null == lastRefreshTime) {
+					lastRefreshTime = HawkTime.getCalendar();
+					lastRefreshTime.setTimeInMillis(0);
+				}
+
+				shouldRefresh = TimeUtil.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
+				if (true == shouldRefresh) {
+					statisticsEntity.setRefreshTime(timeCfgId, nextRefreshTime);
+					return true;
+				}
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
+		}
+
+		return false;
 	}
 }

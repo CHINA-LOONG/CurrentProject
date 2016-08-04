@@ -656,7 +656,7 @@ public class GameUnit : IComparable
             }
             args.vitalMax = maxLife;
             GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.SpellLifeChange, args);
-            //battleUnit.TriggerEvent(BattleConst.levelChangeEvent, Time.time, null);
+            battleUnit.TriggerEvent(BattleConst.levelChangeEvent, Time.time, null);
         }
     }
 
