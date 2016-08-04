@@ -179,8 +179,8 @@ public class UseHuoLi : UIBase
             Logger.LogError("use items Error.....");
             return;
         }
-        string succMsg = "bag_record_001";
-        UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID(succMsg), (int)PB.ImType.PROMPT);
+       // string succMsg = "bag_record_001";
+      //  UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID(succMsg), (int)PB.ImType.PROMPT);
         RefreshUi();
         GameEventMgr.Instance.FireEvent(GameEventList.RefreshInstanceList);
     }
@@ -241,7 +241,11 @@ public class UseHuoLi : UIBase
         PB.HSItemBuyAndUseRet useReturn = msg.GetProtocolBody<PB.HSItemBuyAndUseRet>();
         GameDataMgr.Instance.PlayerDataAttr.gameItemData.UpdateItemState(useReturn.itemId, useReturn.useCountDaily);
         RefreshUi();
+         
         GameEventMgr.Instance.FireEvent(GameEventList.RefreshInstanceList);
+        ItemStaticData stData = StaticDataMgr.Instance.GetItemData(useReturn.itemId);
+        UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("energy_get"), stData.addAttrValue), (int)PB.ImType.PROMPT);
+
     }
 }
 

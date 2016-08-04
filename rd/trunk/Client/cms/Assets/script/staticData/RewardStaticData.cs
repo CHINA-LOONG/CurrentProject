@@ -41,6 +41,17 @@ public class RewardItemData
         this.protocolData.stage = stage;
         this.protocolData.level = level;
         this.prob = prob;
+
+        if(type == (int)PB.itemType.MONSTER)
+        {
+            PB.HSMonster monster = new PB.HSMonster();
+            monster.cfgId = itemId;
+            monster.stage = stage;
+            monster.monsterId = -1;
+            monster.level = level;
+
+            this.protocolData.monster = monster;
+        }
     }
 
 }

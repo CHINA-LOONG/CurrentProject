@@ -46,7 +46,7 @@ public class SaodangReward : MonoBehaviour {
                      subReward.type == (int)PB.itemType.ITEM ||
                      subReward.type == (int)PB.itemType.MONSTER)
             {
-                GameObject go = RewardItemCreator.CreateRewardItem(subReward, itemsScrollView.transform, false);
+                GameObject go = RewardItemCreator.CreateRewardItem(subReward, itemsScrollView.transform,true);
                 if (null != go)
                 {
                     itemsScrollView.AddElement(go);

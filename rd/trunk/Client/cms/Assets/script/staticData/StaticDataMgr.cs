@@ -371,6 +371,10 @@ public class StaticDataMgr : MonoBehaviour
                     {
                         if (rewardAttr.Length != 6) continue;
                     }
+                    else if ((PB.itemType)int.Parse(rewardAttr[0]) == PB.itemType.MONSTER)
+                    {
+                        if (rewardAttr.Length != 5) continue;
+                    }
                     else if (rewardAttr.Length != 4) continue;
 
                     RewardItemData rewardItem = null;
@@ -404,6 +408,12 @@ public class StaticDataMgr : MonoBehaviour
                         case PB.itemType.GROUP:
                             break;
                         case PB.itemType.MONSTER:
+                            rewardItem = new RewardItemData(int.Parse(rewardAttr[0]),
+                                                       rewardAttr[1],
+                                                       int.Parse(rewardAttr[2]),
+                                                       int.Parse(rewardAttr[3]),
+                                                       1,//level
+                                                       float.Parse(rewardAttr[4]));
                             break;
                         default:
                             Logger.Log("not found this itemType");

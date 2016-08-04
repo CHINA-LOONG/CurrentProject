@@ -96,7 +96,7 @@ public class MainStageController : MonoBehaviour
                     {
                         mCurrentSelectedObjGroup = currentSelectedGroup;
                         mCurrentSelectedObjGroup.SetState(SelectableObjState.State_Selected);
-                        mBeginDrag = false;
+                        //mBeginDrag = false;
                     }
                     else
                     {
@@ -104,7 +104,7 @@ public class MainStageController : MonoBehaviour
                         if (mCurrentSelectedObj != null)
                         {
                             mCurrentSelectedObj.SetState(SelectableObjState.State_Selected);
-                            mBeginDrag = false;
+                            //mBeginDrag = false;
                         }
                     }
                 }
@@ -194,7 +194,7 @@ public class MainStageController : MonoBehaviour
                     {
                         mCurrentSelectedObjGroup = currentSelectedGroup;
                         mCurrentSelectedObjGroup.SetState(SelectableObjState.State_Selected);
-                        mBeginDrag = false;
+                        //mBeginDrag = false;
                     }
                     else
                     {
@@ -202,7 +202,7 @@ public class MainStageController : MonoBehaviour
                         if (mCurrentSelectedObj != null)
                         {
                             mCurrentSelectedObj.SetState(SelectableObjState.State_Selected);
-                            mBeginDrag = false;
+                            //mBeginDrag = false;
                         }
                     }
                 }

@@ -48,55 +48,59 @@ public class UIMonsterInfo : UIBase
 		UIMgr.Instance.DestroyUI (this);
 	}
 
-	public	void	ShowWithData(int guid, string monsterid,int level,int stage)
-	{
-		UnitData unitData = StaticDataMgr.Instance.GetUnitRowData (monsterid);
-		if (null == unitData) 
-		{
-			Logger.LogError("Error:instance info , monsterId config error :" + monsterid);
-			return;
-		}
-		this.level = level;
-		this.guid = guid;
-		name.text = unitData.NickNameAttr;
+    public void ShowWithData(int guid, string monsterid, int level, int stage)
+    {
+        UnitData unitData = StaticDataMgr.Instance.GetUnitRowData(monsterid);
+        if (null == unitData)
+        {
+            Logger.LogError("Error:instance info , monsterId config error :" + monsterid);
+            return;
+        }
+        this.level = level;
+        this.guid = guid;
+        name.text = unitData.NickNameAttr;
 
         int quallity = 0;
         int plusQuality = 0;
         UIUtil.CalculationQuality(stage, out quallity, out plusQuality);
 
         UIUtil.SetStageColor(name, unitData.nickName, quallity);
-		monsterDescText.text = StaticDataMgr.Instance.GetTextByID (unitData.say);
+        monsterDescText.text = StaticDataMgr.Instance.GetTextByID(unitData.say);
 
-		SetProperty (unitData.property);
+        SetProperty(unitData.property);
 
-		MonsterIcon icon = MonsterIcon.CreateIcon ();
-		icon.transform.SetParent (iconTrans, false);
+        MonsterIcon icon = MonsterIcon.CreateIcon();
+        icon.transform.SetParent(iconTrans, false);
 
-		icon.SetMonsterStaticId (monsterid);
-		icon.SetStage (stage);
-		icon.SetLevel (level);
-		SetSpellIcon (unitData);
+        icon.SetMonsterStaticId(monsterid);
+        icon.SetStage(stage);
+        icon.SetLevel(level);
+        SetSpellIcon(unitData);
 
-		int monsterCharacter = unitData.disposition;
-		if (guid != -1)
-		{
-			GameUnit pet = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(guid);
-			if(pet != null)
-			{
-				monsterCharacter = pet.character;
-			}
+        int monsterCharacter = unitData.disposition;
+        if (guid != -1)
+        {
+            GameUnit pet = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey(guid);
+            if (pet != null)
+            {
+                monsterCharacter = pet.character;
+            }
             zhanliText.text = string.Format(StaticDataMgr.Instance.GetTextByID("zhanli:{0}"), 1989);
-		}
+        }
         else
         {
             zhanliText.text = "";
         }
-		CharacterData cData = StaticDataMgr.Instance.GetCharacterData (monsterCharacter);
-		if (null != cData)
-		{
-			character.text = cData.DescAttr;
-		}
-	}
+        CharacterData cData = StaticDataMgr.Instance.GetCharacterData(monsterCharacter);
+        if (null != cData)
+        {
+            character.text = cData.DescAttr;
+        }
+        if (unitData.assetID.Contains("boss"))
+        {
+            character.text = StaticDataMgr.Instance.GetTextByID("unkonwCharacter");
+        }
+    }
 
 	private void SetProperty(int property)
 	{

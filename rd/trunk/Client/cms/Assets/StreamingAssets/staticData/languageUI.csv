@@ -236,6 +236,7 @@ compose_record_005,请先选择分解原料,Please choose disenchantment materia
 compose_record_006,原料不足,Insufficent materials.
 xl_monsterbook,,
 handbook_btn,图鉴,Monsterbook
+handbook_owned,拥有宠物,Owned
 handbook_shouji,收集宠物,Collected
 item_type_chip,碎片,Fragment
 handbook_tips,*万能碎片最大只能替换X%的宠物碎片哟！,Core Fragments can be used for up to X% of a Monster's Fragments.
@@ -260,6 +261,12 @@ common_type_defence,防御型,Defense Type
 common_type_physical,物理型,PHYS Type
 common_type_magic,法术型,Magic Type
 common_type_support,支援型,Support Type
+monstertype1,动物,Animal
+monstertype2,人物,Human
+monstertype3,特异,Peculiar
+monstertype4,植物,Plant
+monstertype5,神,Deity
+,,
 zs_modify:xl,,
 pet_list_type,(圣兽),(shengshou)
 pet_list_option_all,全部,ALL

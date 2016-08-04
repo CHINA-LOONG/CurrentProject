@@ -106,6 +106,21 @@ message HSChapterBoxRet
 	required int32 boxState = 3;
 }
 
+// HOLE_ENTER_C
+message HSHoleEnter
+{
+	required string holeId = 1;
+	required string instanceId = 2;
+	repeated int32 battleMonsterId = 3;
+}
+
+// TOWER_ENTER_C
+message HSTowerEnter
+{
+	required string towerId = 1;
+	repeated int32 battleMonsterId = 3;
+}
+
 // --未使用--------------------------------------------------------
 
 // INSTANCE_ASSIST_C

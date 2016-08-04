@@ -51,7 +51,7 @@ public class InstanceItem : MonoBehaviour
 
         szGrewStar[0].gameObject.SetActive(false);
         szGrewStar[1].gameObject.SetActive(instanceData.star == 1);
-        szGrewStar[2].gameObject.SetActive(instanceData.star == 2);
+        szGrewStar[2].gameObject.SetActive(instanceData.star > 0 && instanceData.star < 3);
 
         Sprite sprite = ResourceMgr.Instance.LoadAssetType<Sprite>(insData.staticData.bgzhuangshi);
         if(null != sprite)

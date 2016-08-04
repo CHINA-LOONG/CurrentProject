@@ -34,6 +34,9 @@ namespace MsgBox
         {
             cancelButton.onClick.AddListener(OnCancelButtonClick);
             conformButton.onClick.AddListener(OnConformButtonClick);
+
+            UIUtil.SetButtonTitle(cancelButton.transform, StaticDataMgr.Instance.GetTextByID("ui_quxiao"));
+            UIUtil.SetButtonTitle(conformButton.transform, StaticDataMgr.Instance.GetTextByID("ui_queding"));
         }
 
         public  void SetData(int cost, string title, string opthionMsg, PromptMsg.PrompDelegate callback = null, bool autoClose = true)

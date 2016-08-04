@@ -52,4 +52,5 @@ public class GameConfig : MonoBehaviour {
     public int SecondBackupOpenNeedLevel = 10;
 
     public string saodangQuanId = "10003";
+    public int saodangOpenLevel = 15;//扫荡开启等级
 }

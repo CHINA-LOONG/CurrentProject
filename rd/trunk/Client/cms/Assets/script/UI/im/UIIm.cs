@@ -344,6 +344,7 @@ public class UIIm : UIBase
     //------------------------------------------------------------------------------------------------------  
     public void UpdateIMPos(bool isInBattle)//对局
     {
+        UIMgr.Instance.ChangeRoot(this, isInBattle);
         if (isInBattle)
         {
             HideChat();

@@ -50,8 +50,8 @@ public class UIBattle : UIBase
     GameObject startBattleUI = null;
 	Animator animator;
 
-    private MsgBox.PromptMsg reviveWnd;
-    private int reviveIndex;
+    private MsgBox.PrompCostMsg reviveWnd;
+    //private int reviveIndex;
 
 	static UIBattle instance = null;
 	public static UIBattle Instance
@@ -155,14 +155,21 @@ public class UIBattle : UIBase
                 reviveCount = 50;
                 break;
         }
-        reviveWnd = MsgBox.PromptMsg.Open(
-            MsgBox.MsgBoxType.Conform_Cancel,
-            string.Format(StaticDataMgr.Instance.GetTextByID("battle_revive"), reviveCount),
+        //reviveWnd = MsgBox.PromptMsg.Open(
+        //    MsgBox.MsgBoxType.Conform_Cancel,
+        //    string.Format(StaticDataMgr.Instance.GetTextByID("battle_revive"), reviveCount),
+        //    ChooseReviveOrNot,
+        //    false,
+        //    true
+        //    );
+        reviveWnd = MsgBox.PrompCostMsg.Open(
+            reviveCount,
+            StaticDataMgr.Instance.GetTextByID("battle_revive"),
+            null,
             ChooseReviveOrNot,
-            false,
-            true
+            false
             );
-        reviveIndex = reviveWnd.transform.GetSiblingIndex();
+        //reviveIndex = reviveWnd.transform.GetSiblingIndex();
         //this has text mesh render
         //Vector3 localPos = reviveWnd.transform.localPosition;
         //reviveWnd.transform.localPosition = new Vector3(localPos.x, localPos.y, 10.0f);
@@ -314,12 +321,12 @@ public class UIBattle : UIBase
 			                     PhyDazhaoController.Instance.DazhaoAllCount);
         }
 
-        if (reviveWnd != null)
-        {
-            reviveWnd.transform.SetAsLastSibling();
-            int index = reviveWnd.transform.GetSiblingIndex();
-            reviveWnd.gameObject.SetActive(index == reviveIndex);
-        }
+        //if (reviveWnd != null)
+        //{
+        //    reviveWnd.transform.SetAsLastSibling();
+        //    int index = reviveWnd.transform.GetSiblingIndex();
+        //    reviveWnd.gameObject.SetActive(index == reviveIndex);
+        //}
     }
 
     void BindListener()

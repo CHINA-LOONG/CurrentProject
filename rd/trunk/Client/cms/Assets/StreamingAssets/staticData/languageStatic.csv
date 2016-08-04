@@ -295,7 +295,21 @@ name_11003_gaojiqianghuacailiao,高级强化材料,strengthening materials
 name_10005_zhuangbeijinjiecailiao1,装备进阶材料1,advanced materials1
 name_10006_zhuangbeijinjiecailiao2,装备进阶材料2,advanced materials2
 name_10007_baoshikaikongcailiao,宝石开孔材料,open channel materials
-name_20001_suipian1,碎片1,chip1
+name_20001_suipian_common,万能碎片,wannengchip
+name_20002_suipian_xiyiren,蜥蜴人碎片,xiyirensuipian
+name_20003_suipian_huapo,花魄碎片,huaposuipian
+name_20004_suipian_panshen,潘神碎片,panshensuipian
+name_20005_suipian_mantuoluo,曼陀罗碎片,mantuoluosuipian
+name_20006_suipian_amute,阿姆特碎片,amutesuipian
+name_20007_suipian_wagui,蛙鬼碎片,waguisuipian
+name_20008_suipian_hetong,河童碎片,hetongsuipian
+name_20009_suipian_longgongtongzi,龙宫童子碎片,longgongtongzisuipian
+name_20010_suipian_langren,狼人碎片,langrensuipian
+name_20011_suipian_anpusha,安普啥碎片,anpushasuipian
+name_20012_suipian_kairuisi,凯瑞斯碎片,kairuisisuipian
+name_20013_suipian_luoxinfu,络新妇碎片,luoxinfusuipian
+name_20014_suipian_momo,莫莫碎片,momosuipian
+name_20015_suipian_hapi,哈皮碎片,hapisuipian
 name_30001_baoshi1_1,宝石1_1,gem1_1
 name_30002_baoshi1_2,宝石1_2,gem1_2
 name_30003_baoshi1_3,宝石1_3,gem1_3
@@ -367,7 +381,21 @@ tips_11003_gaojiqianghuacailiao,测试用tips,test Open Sockets: Reveals a Gem s
 tips_10005_zhuangbeijinjiecailiao1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_10006_zhuangbeijinjiecailiao2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_10007_baoshikaikongcailiao,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
-tips_20001_suipian1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20001_suipian_common,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20002_suipian_xiyiren,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20003_suipian_huapo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20004_suipian_panshen,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20005_suipian_mantuoluo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20006_suipian_amute,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20007_suipian_wagui,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20008_suipian_hetong,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20009_suipian_longgongtongzi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20010_suipian_langren,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20011_suipian_anpusha,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20012_suipian_kairuisi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20013_suipian_luoxinfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20014_suipian_momo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+tips_20015_suipian_hapi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_30001_baoshi1_1,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_30002_baoshi1_2,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_30003_baoshi1_3,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.

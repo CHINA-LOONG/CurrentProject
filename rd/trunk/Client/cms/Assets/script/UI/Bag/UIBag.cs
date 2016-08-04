@@ -307,11 +307,6 @@ public class UIBag : UIBase,TabButtonDelegate
 			PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode> ();
 			if(error.errCode == (int)PB.itemError.ITEM_EXP_LEFT_TIMES)
 			{
-				/*string errMsg = "bag_record_003";
-				if(isPilaoyao)
-				{
-					errMsg = "bag_record_002";
-				}*/
 				UIIm.Instance.ShowSystemHints (StaticDataMgr.Instance.GetTextByID("bag_record_003"),
 				                               (int)PB.ImType.PROMPT);
 			}
@@ -328,11 +323,11 @@ public class UIBag : UIBase,TabButtonDelegate
 			return;
 		}
 		string succMsg = "bag_record_004";
-		if(isPilaoyao)
+		if(!isPilaoyao)
 		{
-			succMsg = "bag_record_001";
-		}
-		UIIm.Instance.ShowSystemHints (StaticDataMgr.Instance.GetTextByID(succMsg), (int)PB.ImType.PROMPT);
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID(succMsg), (int)PB.ImType.PROMPT);
+            //succMsg = "bag_record_001";
+        }
 		RefreshBag ();
 	}
 }

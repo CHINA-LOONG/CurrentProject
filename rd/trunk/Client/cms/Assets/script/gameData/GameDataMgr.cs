@@ -218,7 +218,6 @@ public class GameDataMgr : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     void OnMonsterInfoSync(ProtocolMessage msg)
     {
-        
         PB.HSMonsterInfoSync monsterSync = msg.GetProtocolBody<PB.HSMonsterInfoSync>();
         int monsterCount = monsterSync.monsterInfo.Count;
         for (int i = 0; i < monsterCount; ++i)
@@ -555,6 +554,14 @@ public class GameDataMgr : MonoBehaviour
             if(itemUseReturn.useCountDaily != -1)
             {
                 PlayerDataAttr.gameItemData.UpdateItemState(itemUseReturn.itemId, itemUseReturn.useCountDaily);
+            }
+
+
+            ItemStaticData stData = StaticDataMgr.Instance.GetItemData(itemUseReturn.itemId);
+            bool isHuoli = (stData.addAttrType == 7);
+            if(isHuoli)
+            {
+                UIIm.Instance.ShowSystemHints(string.Format(StaticDataMgr.Instance.GetTextByID("energy_get"), stData.addAttrValue ),(int)PB.ImType.PROMPT);
             }
         }
     }

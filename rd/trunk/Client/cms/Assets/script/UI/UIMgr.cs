@@ -89,6 +89,31 @@ public class UIMgr : MonoBehaviour
         uiList.TryGetValue(uiName, out uiItem);
         return uiItem;
     }
+    public void ChangeRoot(UIBase ui, bool isTop)
+    {
+        if (isTop == true)
+        {
+            if (ui.ViewTypeAttr == UIBase.ViewType.VT_POPUP)
+            {
+                UIUtil.SetParentReset(ui.transform, uiTopData.topPanelTransform);
+            }
+            else
+            {
+                UIUtil.SetParentReset(ui.transform, uiTopData.uiPanelTransform);
+            }
+        }
+        else
+        {
+            if (ui.ViewTypeAttr == UIBase.ViewType.VT_POPUP)
+            {
+                UIUtil.SetParentReset(ui.transform, uiNormalData.topPanelTransform);
+            }
+            else
+            {
+                UIUtil.SetParentReset(ui.transform, uiNormalData.uiPanelTransform);
+            }
+        }
+    }
 
     private void InitUIRootData(GameObject rootObj, ref uiRootData rootData)
     {

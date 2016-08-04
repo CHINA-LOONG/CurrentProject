@@ -92,6 +92,9 @@ enum code
 	CHAPTER_BOX_C               = 3015;
 	CHAPTER_BOX_S               = 3016;
 
+	HOLE_ENTER_C                = 3101;
+	TOWER_ENTER_C               = 3102;
+
 	// 道具
 	ITEM_USE_C                  = 4001;
 	ITEM_USE_S                  = 4002;
