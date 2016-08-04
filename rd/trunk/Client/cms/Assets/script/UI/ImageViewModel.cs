@@ -35,11 +35,11 @@ public class ImageViewModel : MonoBehaviour {
         return model;
     }
 
-    public void ReloadData(string monsterId)
+    public BattleObject ReloadData(string monsterId)
     {
         if (string.Equals(curMonsterId,monsterId))
         {
-            return;
+            return curModel;
         }
         if (curModel != null)
         {
@@ -53,6 +53,8 @@ public class ImageViewModel : MonoBehaviour {
                             Quaternion.identity
                             );
         curMonsterId = monsterId;
+
+        return curModel;
     }
 
     /// <summary>

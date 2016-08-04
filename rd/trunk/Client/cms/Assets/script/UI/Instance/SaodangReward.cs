@@ -11,19 +11,22 @@ public class SaodangReward : MonoBehaviour {
     public ScrollView itemsScrollView;
 
 
-    public static SaodangReward CreateWith(string title, PB.HSRewardInfo rewardInfo)
+    public static SaodangReward CreateWith(string title, PB.HSRewardInfo rewardInfo,bool isExtraReward = false)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("SaodangReward", false);
         SaodangReward reward = go.GetComponent<SaodangReward>();
-        reward.InitWith(title, rewardInfo);
+        reward.InitWith(title, rewardInfo,isExtraReward);
         return reward;
     }
 
-   public   void    InitWith(string title, PB.HSRewardInfo rewardInfo)
+   public   void    InitWith(string title, PB.HSRewardInfo rewardInfo, bool isExtraReward = false)
     {
         titleText.text = title;
         jinbiCountText.text = "0";
-        expCountText.text = "";
+        expCountText.text = "0";
+
+        jinbiCountText.transform.parent.gameObject.SetActive(!isExtraReward);
+        expCountText.transform.parent.gameObject.SetActive(!isExtraReward);
         itemsScrollView.ClearAllElement();
 
         List<PB.RewardItem> listReward = rewardInfo.RewardItems;

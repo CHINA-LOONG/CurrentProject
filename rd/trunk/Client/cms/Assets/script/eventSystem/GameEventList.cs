@@ -103,6 +103,7 @@ public class GameEventList
     public static string ReloadPetStageNotify = "reloadPetStageNotify";
     public static string ReloadPetEquipNotify = "reloadPetEquipNotify";
     public static string ReloadEquipGemNotify = "reloadEquipGemNotify";
+    public static string ReloadPetCollectNotify = "reloadPetCollectNotify";
 
 	//buyItem
 	public	static	string	BuyItemFinished = "BuyItemFinished";
@@ -110,6 +111,6 @@ public class GameEventList
 	public	static	string	OpenBoxFinished = "OpenBoxFinished";
 
     //speed service
-    public const string SpeedChangeEvent = "EventSpeedChange";
+    //public const string SpeedChangeEvent = "EventSpeedChange";
 
 }

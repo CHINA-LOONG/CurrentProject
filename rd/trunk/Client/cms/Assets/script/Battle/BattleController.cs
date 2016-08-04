@@ -68,6 +68,7 @@ public class BattleController : MonoBehaviour
     private UIBattle uiBattle;
     public bool processStart;
     private UIScore mUIScore;
+    private UILevelInfo mUILevelInfo;
 
 	private	Dictionary<string,Transform> cameraNodeDic = new Dictionary<string, Transform>();
     private EnterInstanceParam curInstanceParam;
@@ -340,6 +341,9 @@ public class BattleController : MonoBehaviour
 
         uiBattle = UIMgr.Instance.OpenUI_(UIBattle.ViewName) as UIBattle;
         uiBattle.Initialize();
+        uiBattle.ShowUI(false);
+        mUILevelInfo = UIMgr.Instance.OpenUI_(UILevelInfo.ViewName) as UILevelInfo;
+        mUILevelInfo.SetInstanceName(entryData.NameAttr);
         //UIIm.Instance.transform.SetAsLastSibling();
         StartProcess(curProcessIndex);
     }
@@ -364,9 +368,9 @@ public class BattleController : MonoBehaviour
         GameDataMgr.Instance.PlayerDataAttr.InitMainUnitList();
         battleGroup.SetPlayerList();
 
-        uiBattle = UIMgr.Instance.OpenUI_(UIBattle.ViewName) as UIBattle;
-        //uiBattle = ui.GetComponent<UIBattle>();
-        uiBattle.Initialize();
+        //uiBattle = UIMgr.Instance.OpenUI_(UIBattle.ViewName) as UIBattle;
+        //uiBattle.Initialize();
+        //uiBattle.ShowUI();
         StartProcess(curProcessIndex);
     }
     //---------------------------------------------------------------------------------------------
@@ -434,6 +438,7 @@ public class BattleController : MonoBehaviour
         process.Clear();
         GameMain.Instance.ChangeModule<BuildModule>(state);
         UIMgr.Instance.DestroyUI(mUIScore);
+        UIMgr.Instance.DestroyUI(mUILevelInfo);
         UIMgr.Instance.DestroyUI(uiBattle);
         ResourceMgr.Instance.LoadLevelAsyn("mainstage", false, null);
         curInstanceParam = null;
@@ -591,6 +596,21 @@ public class BattleController : MonoBehaviour
     //{
     //    GameEventMgr.Instance.FireEvent(GameEventList.ShowBattleUI);
     //}
+    public void ShowLevelInfo(bool isVisible)
+    {
+        if (isVisible == true)
+        {
+            uiBattle.ShowUI(false);
+            UIIm.Instance.SetLevelVisible(false);
+            mUILevelInfo.SetBattleLevelProcess(curProcessIndex + 1, maxProcessIndex);
+        }
+        else
+        {
+            uiBattle.ShowUI(true);
+            UIIm.Instance.SetLevelVisible(true);
+            mUILevelInfo.SetVisible(false);
+        }
+    }
     //---------------------------------------------------------------------------------------------
     void StartProcess(int index)
     {
@@ -599,7 +619,6 @@ public class BattleController : MonoBehaviour
             GameObject slotNode = BattleController.Instance.GetSlotNode(UnitCamp.Player, 0, false);
             floorHeight = slotNode.transform.position.y;
 
-            uiBattle.SetBattleLevelProcess(index+1, maxProcessIndex);
             process.ClearRewardItem();
             PB.HSBattle curBattle = curInstance.battle[index];
             curBattleLevel = StaticDataMgr.Instance.GetBattleLevelData(curBattle.battleCfgId);
@@ -700,7 +719,9 @@ public class BattleController : MonoBehaviour
 		GameEventMgr.Instance.FireEvent<bool> (GameEventList.SetMirrorModeState, false);
 		process.HideFireFocus ();
 
+        //uiBattle.gameObject.BroadcastMessage("OnAnimationFinish");
         uiBattle.ShowUI(false);
+        UIIm.Instance.SetLevelVisible(false);
         float waitTime = BattleConst.unitOutTime * 0.5f * GameSpeedService.Instance.GetBattleSpeed();
         Appearance(false, waitTime);
         IsOcclusion(true);
@@ -715,8 +736,8 @@ public class BattleController : MonoBehaviour
         IsOcclusion(false);
         yield return new WaitForSeconds(waitTime);        
         battleGroup.RefreshPlayerPos();
-        uiBattle.ShowUI(true);
-        uiBattle.gameObject.BroadcastMessage("OnAnimationFinish");
+        //uiBattle.ShowUI(true);
+        //uiBattle.gameObject.BroadcastMessage("OnAnimationFinish");
         StartProcess(curProcessIndex);
         SetCameraDefault();
         Appearance(true, waitTime);

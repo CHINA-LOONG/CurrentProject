@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 public class TowerStaticData 
 {
-    public string id;
+    public int id;
+    public string textId;
     public string time;
     public int level;
     public string floor;
@@ -11,7 +12,7 @@ public class TowerStaticData
 
 public class TowerData
 {
-    public string id;
+    public int id;
     public string time;
     public int level;
     public List<string> floorList = new List<string>();

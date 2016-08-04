@@ -109,7 +109,7 @@ message HSChapterBoxRet
 // HOLE_ENTER_C
 message HSHoleEnter
 {
-	required string holeId = 1;
+	required int32 holeId = 1;
 	required string instanceId = 2;
 	repeated int32 battleMonsterId = 3;
 }
@@ -117,7 +117,7 @@ message HSHoleEnter
 // TOWER_ENTER_C
 message HSTowerEnter
 {
-	required string towerId = 1;
+	required int32 towerId = 1;
 	repeated int32 battleMonsterId = 3;
 }
 

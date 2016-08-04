@@ -142,6 +142,38 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HoleState")]
+  public partial class HoleState : global::ProtoBuf.IExtensible
+  {
+    public HoleState() {}
+    
+    private int _holeId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"holeId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int holeId
+    {
+      get { return _holeId; }
+      set { _holeId = value; }
+    }
+    private bool _isOpen;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"isOpen", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool isOpen
+    {
+      get { return _isOpen; }
+      set { _isOpen = value; }
+    }
+    private int _countDaily = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"countDaily", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int countDaily
+    {
+      get { return _countDaily; }
+      set { _countDaily = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsInfoSync")]
   public partial class HSStatisticsInfoSync : global::ProtoBuf.IExtensible
   {
@@ -253,6 +285,13 @@ namespace PB
       get { return _instanceResetCount; }
       set { _instanceResetCount = value; }
     }
+    private readonly global::System.Collections.Generic.List<HoleState> _holeState = new global::System.Collections.Generic.List<HoleState>();
+    [global::ProtoBuf.ProtoMember(16, Name=@"holeState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HoleState> holeState
+    {
+      get { return _holeState; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -262,6 +301,23 @@ namespace PB
   public partial class HSSyncDailyRefresh : global::ProtoBuf.IExtensible
   {
     public HSSyncDailyRefresh() {}
+    
+    private readonly global::System.Collections.Generic.List<HoleState> _holeState = new global::System.Collections.Generic.List<HoleState>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"holeState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<HoleState> holeState
+    {
+      get { return _holeState; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSSyncMonthlyRefresh")]
+  public partial class HSSyncMonthlyRefresh : global::ProtoBuf.IExtensible
+  {
+    public HSSyncMonthlyRefresh() {}
     
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

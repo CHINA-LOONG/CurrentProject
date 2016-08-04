@@ -730,7 +730,7 @@ public class Buff
 
         if (result == 1)
         {
-            if (result == 1)
+            //if (result == 1)
             {
                 --responseCount;
                 Effect curEffect = spellService.GetEffect(response.Value);
@@ -746,6 +746,18 @@ public class Buff
                     }
                     curEffect.noDamageResponse = true;
                     curEffect.Apply(curTime, wpName);
+
+                    if (ownedSpell.spellData.category ==  (int)SpellType.Spell_Type_Passive)
+                    {
+                        SpellVitalChangeArgs spellNameArgs = new SpellVitalChangeArgs();
+                        spellNameArgs.vitalType = (int)VitalType.Vital_Type_SpellName;
+                        spellNameArgs.triggerTime = curTime;
+                        spellNameArgs.casterID = targetID;
+                        spellNameArgs.targetID = targetID;
+                        spellNameArgs.wpNode = ownedSpell.spellData.name;
+                        spellNameArgs.vitalMax = -1;
+                        spellService.TriggerEvent(GameEventList.SpellLifeChange, spellNameArgs);
+                    }
                 }
             }
         }

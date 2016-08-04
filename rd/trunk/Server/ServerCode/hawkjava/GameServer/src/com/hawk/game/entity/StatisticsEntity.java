@@ -138,13 +138,17 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "arenaCountDaily", nullable = false)
 	private int arenaCountDaily = 0;
 
-	// 历史时光之穴次数
-	@Column(name = "timeholeCount", nullable = false)
-	private int timeholeCount = 0;
+	// 历史洞总次数
+	@Column(name = "holeCount", nullable = false)
+	private int holeCount = 0;
 
-	// 今日时光之穴次数
-	@Column(name = "timeholeCountDaily", nullable = false)
-	private int timeholeCountDaily = 0;
+	// 今日各洞次数
+	@Column(name = "holeCountDaily", nullable = false)
+	private String holeCountDailyJson = "";
+
+	// 各塔已完成副本索引
+	@Column(name = "towerIndex", nullable = false)
+	private String towerIndexJson = "";
 
 	// 历史炼妖炉次数
 	@Column(name = "monsterMixCount", nullable = false)
@@ -263,23 +267,27 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Transient
 	protected Set<Integer> questCompleteDailySet = new HashSet<Integer>();
 	@Transient
-	protected Map<String, Integer> instanceStarMap = new HashMap<String, Integer> ();
+	protected Map<String, Integer> instanceStarMap = new HashMap<String, Integer>();
 	@Transient
-	protected List<Integer> chapterBoxNormalList = new ArrayList<Integer> ();
+	protected List<Integer> chapterBoxNormalList = new ArrayList<Integer>();
 	@Transient
-	protected List<Integer> chapterBoxHardList = new ArrayList<Integer> ();
+	protected List<Integer> chapterBoxHardList = new ArrayList<Integer>();
 	@Transient
-	protected Map<String, Integer> instanceCountDailyMap = new HashMap<String, Integer> ();
+	protected Map<String, Integer> instanceCountDailyMap = new HashMap<String, Integer>();
 	@Transient
-	protected Set<String> monsterCollectSet = new HashSet<String> ();
+	protected Set<String> monsterCollectSet = new HashSet<String>();
 	@Transient
 	protected Map<Integer, Integer> monsterStageMap = new HashMap<Integer, Integer>();
 	@Transient
 	protected Map<Integer, Integer> monsterLevelMap = new HashMap<Integer, Integer>();
 	@Transient
-	protected Map<String, Integer> rechargeRecordMap = new HashMap<String, Integer> ();
+	protected Map<Integer, Integer> holeCountDailyMap = new HashMap<Integer, Integer>();
 	@Transient
-	protected Map<String, Integer> itemUseCountDailyMap = new HashMap<String, Integer> ();
+	protected Map<Integer, Integer> towerIndexMap = new HashMap<Integer, Integer>();
+	@Transient
+	protected Map<String, Integer> rechargeRecordMap = new HashMap<String, Integer>();
+	@Transient
+	protected Map<String, Integer> itemUseCountDailyMap = new HashMap<String, Integer>();
 	// 最后普通副本所属章节
 	@Transient
 	protected int normalTopChapter = 0;
@@ -461,10 +469,6 @@ public class StatisticsEntity  extends HawkDBEntity {
 		chapterBoxHardList.set(chapterId - 1, state);
 	}
 
-	public Map<String, Integer> getInstanceCountDailyMap() {
-		return instanceCountDailyMap;
-	}
-
 	/**
 	 * @return 副本完成次数，如未完成返回0
 	 */
@@ -474,6 +478,10 @@ public class StatisticsEntity  extends HawkDBEntity {
 			return count;
 		}
 		return 0;
+	}
+
+	public Map<String, Integer> getInstanceCountDailyMap() {
+		return instanceCountDailyMap;
 	}
 
 	public void addInstanceCountDaily(String instanceId, int addCount) {
@@ -523,6 +531,70 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public void setMonsterCountOverLevel(int level, int count) {
 		monsterLevelMap.put(level, count);
+	}
+
+	/**
+	 * @return 洞完成次数，如未完成返回0
+	 */
+	public int getHoleCountDaily(int holeId) {
+		Integer count = holeCountDailyMap.get(holeId);
+		if (null != count) {
+			return count;
+		}
+		return 0;
+	}
+
+	public Map<Integer, Integer> getHoleCountDailyMap() {
+		return holeCountDailyMap;
+	}
+
+	public void addHoleCountDaily(int holeId, int addCount) {
+		int curCount = 0;
+		Integer oldCount = holeCountDailyMap.get(holeId);
+		if (null != oldCount) {
+			curCount = oldCount;
+		}
+		holeCountDailyMap.put(holeId, curCount + addCount);
+	}
+
+	public void setHoleCountDaily(int holeId, int count) {
+		holeCountDailyMap.put(holeId, count);
+	}
+
+	public void clearHoleCountDaily() {
+		holeCountDailyMap.clear();
+	}
+
+	/**
+	 * @return 塔完成副本索引，如未完成返回0
+	 */
+	public int getTowerIndex(int towerId) {
+		Integer index = towerIndexMap.get(towerId);
+		if (null != index) {
+			return index;
+		}
+		return 0;
+	}
+
+	public Map<Integer, Integer> getTowerIndexMap() {
+		return towerIndexMap;
+	}
+
+	public void addTowerIndex(int towerId, int addCount) {
+		int curIndex = 0;
+		Integer oldIndex = towerIndexMap.get(towerId);
+		if (null != oldIndex) {
+			curIndex = oldIndex;
+		}
+		towerIndexMap.put(towerId, curIndex + addCount);
+	}
+
+	public void setTowerIndex(int towerId, int index) {
+		towerIndexMap.put(towerId, index);
+	}
+
+	public void clearTowerIndexMap() {
+		towerIndexMap.clear();
 	}
 
 	public int getRechargeTime(String productId){
@@ -652,24 +724,12 @@ public class StatisticsEntity  extends HawkDBEntity {
 		arenaCountDaily = 0;
 	}
 
-	public int getTimeholeCount() {
-		return timeholeCount;
+	public int getHoleCount() {
+		return holeCount;
 	}
 
-	public void addTimeholeCount() {
-		++timeholeCount;
-	}
-
-	public int getTimeholeCountDaily() {
-		return timeholeCountDaily;
-	}
-
-	public void addTimeholeCountDaily() {
-		++timeholeCountDaily;
-	}
-
-	public void clearTimeholeCountDaily() {
-		timeholeCountDaily = 0;
+	public void addHoleCount() {
+		++holeCount;
 	}
 
 	public int getMonsterMixCount() {

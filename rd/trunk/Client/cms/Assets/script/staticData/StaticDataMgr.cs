@@ -24,6 +24,7 @@ public class StaticDataMgr : MonoBehaviour
 
     Dictionary<string, WeakPointData> weakPointData = new Dictionary<string, WeakPointData>();
     Dictionary<string, UnitData> unitData = new Dictionary<string, UnitData>();
+    List<UnitData> collectData;
     Dictionary<int, UnitBaseData> unitBaseData = new Dictionary<int, UnitBaseData>();
     Dictionary<string, BuffPrototype> buffData = new Dictionary<string, BuffPrototype>();
     Dictionary<string, EffectPrototype> effectData = new Dictionary<string, EffectPrototype>();
@@ -42,6 +43,7 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<int, TimeStaticData> timeData = new Dictionary<int, TimeStaticData>();
     Dictionary<string, SpeechData> speechData = new Dictionary<string, SpeechData>();
     Dictionary<int, UnitStageData> unitStageData = new Dictionary<int, UnitStageData>();
+    Dictionary<int, UnitRarityData> unitRarityData = new Dictionary<int, UnitRarityData>();
 
     Dictionary<string, string> assetMapping = new Dictionary<string, string>();
     Dictionary<string, LangStaticData> langData = new Dictionary<string, LangStaticData>();
@@ -59,8 +61,8 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, FunctionData> functionDic = new Dictionary<string, FunctionData>();
     Dictionary<int, List<FunctionData>> functionLevelDic = new Dictionary<int, List<FunctionData>>();
 
-    Dictionary<string, TowerData> towerList = new Dictionary<string, TowerData>();
-    Dictionary<string, HoleData> holeList = new Dictionary<string, HoleData>();
+    Dictionary<int, TowerData> towerList = new Dictionary<int, TowerData>();
+    Dictionary<int, HoleData> holeList = new Dictionary<int, HoleData>();
 
 
     public void Init()
@@ -524,9 +526,16 @@ public class StaticDataMgr : MonoBehaviour
             }
             #endregion
         }
-
-
-
+        {
+            #region unitRarity
+            var data = InitTable<UnitRarityData>("unitRarity");
+            foreach (var item in data)
+            {
+                unitRarityData.Add(item.rarity, item);
+            }
+            #endregion
+        }
+        
         {
             #region assetMap
             var data = InitTable<AssetMapData>("assetMap");
@@ -751,6 +760,22 @@ public class StaticDataMgr : MonoBehaviour
             return unitData[unitID];
         return null;
     }
+    public List<UnitData> GetPlayerUnitData()
+    {
+        if (collectData == null)
+        {
+            collectData = new List<UnitData>();
+            foreach (var item in unitData)
+            {
+                if (!string.IsNullOrEmpty(item.Value.fragmentId))
+                {
+                    collectData.Add(item.Value);
+                }
+            }
+        }
+        return collectData;
+    }
+
     public SpellProtoType GetSpellProtoData(string id)
     {
         if (spellData.ContainsKey(id))
@@ -945,6 +970,13 @@ public class StaticDataMgr : MonoBehaviour
         unitStageData.TryGetValue(stage, out item);
         return item;
     }
+    public UnitRarityData GetUnitRarityData(int rarity)
+    {
+        UnitRarityData item = null;
+        unitRarityData.TryGetValue(rarity, out item);
+        return item;
+    }
+
       
 	public ShopAutoRefreshData GetShopAutoRefreshData(int shopType)
 	{
@@ -1053,22 +1085,16 @@ public class StaticDataMgr : MonoBehaviour
     }
 
     //Í¨ÌìËþ
-    public TowerData GetTowerData(string id)
+    public TowerData GetTowerData(int id)
     {
         TowerData item = null;
-        if (id != null)
-        {
-            towerList.TryGetValue(id, out item);
-        }
+        towerList.TryGetValue(id, out item);
         return item;
     }
-    public HoleData GetHoleData(string id)
+    public HoleData GetHoleData(int id)
     {
         HoleData item = null;
-        if (id != null)
-        {
-            holeList.TryGetValue(id, out item);
-        }
+        holeList.TryGetValue(id, out item);
         return item;
     }
     #endregion

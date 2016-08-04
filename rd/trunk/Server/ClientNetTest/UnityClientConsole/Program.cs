@@ -17,7 +17,7 @@ namespace UnityClientConsole
 {
     class Program
     {
-        static int  TEST_USER = 200;
+        static int  TEST_USER = 1;
 
         public static long GetTimeStamp()
         {
@@ -38,7 +38,7 @@ namespace UnityClientConsole
 
             for (int i = 0; i < TEST_USER; ++i)
             {
-                string name = "_chat" + (1 + i);
+                string name = "tadong" + (1 + i);
                 //string name = "11171002";
 
                 test[i] = new App();
@@ -56,15 +56,15 @@ namespace UnityClientConsole
 
             System.Threading.Thread.Sleep(4000);
 
-            while (true)
-            {
-                for (int i = 0; i < TEST_USER; ++i)
-                {
-                    test[i].OnTick(GetTimeStamp());
-                }
+            //while (true)
+            //{
+            //    for (int i = 0; i < TEST_USER; ++i)
+            //    {
+            //        test[i].OnTick(GetTimeStamp());
+            //    }
 
-                //System.Threading.Thread.Sleep(10);
-            }
+            //    //System.Threading.Thread.Sleep(10);
+            //}
 
             Console.ReadLine();
 

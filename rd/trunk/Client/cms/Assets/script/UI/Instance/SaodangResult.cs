@@ -50,6 +50,7 @@ public class SaodangResult : UIBase
         scrollRect = scrollView.GetComponent<ScrollRect>();
         this.listReward = listReward;
         PB.HSRewardInfo subRewardInfo = null;
+        bool isExtraReward = false;
         for (int i = 0; i < listReward.Count; ++i)
         {
             subRewardInfo = listReward[i];
@@ -57,12 +58,13 @@ public class SaodangResult : UIBase
             if (i == listReward.Count - 1)
             {
                 title = StaticDataMgr.Instance.GetTextByID("arrayselect_saodang_reward");
+                isExtraReward = true;
             }
             else
             {
                 title = string.Format(StaticDataMgr.Instance.GetTextByID("arrayselect_saodang_num"), i + 1);
             }
-            var boxReward = SaodangReward.CreateWith(title, subRewardInfo);
+            var boxReward = SaodangReward.CreateWith(title, subRewardInfo, isExtraReward);
             scrollView.AddElement(boxReward.gameObject);
         }
         scrollView.gameObject.SetActive(false);

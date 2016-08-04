@@ -93,6 +93,12 @@ public class UIIm : UIBase
 
     }
     //------------------------------------------------------------------------------------------------------
+    public void SetLevelVisible(bool visible)
+    {
+        Vector3 targetPos = leftChatBox.transform.localPosition;
+        basicsChat.SetActive(visible);
+        leftChatBox.transform.localPosition = new Vector3(targetPos.x, leftCahtVec.y, targetPos.z);
+    }
 
     //------------------------------------------------------------------------------------------------------
     void MsgOnClick(GameObject but)//通用button点击事件
@@ -100,7 +106,8 @@ public class UIIm : UIBase
         if (but.name == showLeftChatBox.name)//show左侧聊天框
         {
             basicsChat.SetActive(false);
-            leftChatBox.transform.DOLocalMoveY(leftCahtMove.localPosition.y, 0.5f);
+            Tweener imMover = leftChatBox.transform.DOLocalMoveY(leftCahtMove.localPosition.y, 0.5f);
+            imMover.SetUpdate(true);
             ShowMessage();
         }
         else if (but.name == showBasicsChat.name)//show基础聊天框
@@ -359,7 +366,8 @@ public class UIIm : UIBase
         if (!basicsChat.activeSelf)
         {
             basicsChat.SetActive(true);
-            leftChatBox.transform.DOLocalMoveY(leftCahtVec.y, 0.5f);
+            Tweener imMover = leftChatBox.transform.DOLocalMoveY(leftCahtVec.y, 0.5f);
+            imMover.SetUpdate(true);
         }
     }
     //------------------------------------------------------------------------------------------------------

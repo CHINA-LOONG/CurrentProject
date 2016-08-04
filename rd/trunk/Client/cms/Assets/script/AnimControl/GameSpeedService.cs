@@ -79,7 +79,7 @@ public class GameSpeedService : MonoBehaviour {
             Time.timeScale = tmpSpeedScale;
         }
 
-        GameEventMgr.Instance.FireEvent<System.EventArgs>(GameEventList.SpeedChangeEvent, null);
+        //GameEventMgr.Instance.FireEvent<System.EventArgs>(GameEventList.SpeedChangeEvent, null);
     }
     //---------------------------------------------------------------------------------------------
 	// Use this for initialization

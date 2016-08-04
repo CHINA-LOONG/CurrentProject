@@ -50,7 +50,7 @@ public class UnitData
     public float recoveryRate;
 
     public int equip;
-   // public string AI;
+    // public string AI;
 
     public string spellIDList;
     public string weakpointList;
@@ -61,6 +61,25 @@ public class UnitData
     public int fragmentCount;
     public string say;
 
+    private List<SpellProtoType> spellList=null;
+    public List<SpellProtoType> SpellList
+    {
+        get
+        {
+            if (spellList == null)
+            {
+                spellList = new List<SpellProtoType>();
+                ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson(spellIDList);
+                for (int i = 0; i < spellArrayList.Count; ++i)
+                {
+                    string spellID = spellArrayList[i] as string;
+                    SpellProtoType spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellID);
+                    spellList.Add(spellPt);
+                }
+            }
+            return spellList;
+        }
+    }
     public string NickNameAttr
 	{
 		get
@@ -68,4 +87,5 @@ public class UnitData
 			return StaticDataMgr.Instance.GetTextByID(nickName);
 		}
 	}
+
 }

@@ -16,19 +16,19 @@ public class UITowerEntry : UIBase
     //---------------------------------------------------------------------------------------------
     public override void Init()
     {
-        TowerData towerShilian = StaticDataMgr.Instance.GetTowerData("tower_shilian");
+        TowerData towerShilian = StaticDataMgr.Instance.GetTowerData(1);
         if (towerShilian != null)
         {
             mShilianText.text = string.Format("tower:shilian lv:{0}", towerShilian.level);
         }
 
-        TowerData towerJuewang = StaticDataMgr.Instance.GetTowerData("tower_juewang");
+        TowerData towerJuewang = StaticDataMgr.Instance.GetTowerData(2);
         if (towerJuewang != null)
         {
             mJuewangText.text = string.Format("tower:juewang lv:{0}", towerJuewang.level);
         }
 
-        TowerData towerSiwang = StaticDataMgr.Instance.GetTowerData("tower_siwang");
+        TowerData towerSiwang = StaticDataMgr.Instance.GetTowerData(3);
         if (towerSiwang != null)
         {
             mSiwangText.text = string.Format("tower:siwang lv:{0}", towerSiwang.level);

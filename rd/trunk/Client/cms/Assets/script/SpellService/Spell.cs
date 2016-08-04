@@ -134,6 +134,35 @@ public class Spell
             energyArgs.vitalMax = 0;
             spellService.TriggerEvent(GameEventList.SpellEnergyChange, energyArgs);
         }
+        //trigger spell name event
+        if (casterID != BattleConst.battleSceneGuid)
+        {
+            if (
+                isFirstSpell ==  true ||
+                spellData.category == (int)SpellType.Spell_Type_PhyAttack ||
+                spellData.category == (int)SpellType.Spell_Type_MgicAttack ||
+                spellData.category == (int)SpellType.Spell_Type_Cure ||
+                spellData.category == (int)SpellType.Spell_Type_Defense ||
+                spellData.category == (int)SpellType.Spell_Type_Beneficial ||
+                spellData.category == (int)SpellType.Spell_Type_Negative ||
+                spellData.category == (int)SpellType.Spell_Type_Dot ||
+                spellData.category == (int)SpellType.Spell_Type_Hot ||
+                spellData.category == (int)SpellType.Spell_Type_MagicDazhao||
+                spellData.category == (int)SpellType.Spell_Type_PhyDaZhao
+                )
+            {
+                SpellVitalChangeArgs spellNameArgs = new SpellVitalChangeArgs();
+                spellNameArgs.vitalType = (int)VitalType.Vital_Type_SpellName;
+                spellNameArgs.triggerTime = triggerTime;
+                spellNameArgs.casterID = casterID;
+                spellNameArgs.targetID = casterID;
+                spellNameArgs.wpNode = spellData.name;
+                spellNameArgs.vitalChange = spellData.energyGenerate;
+                spellNameArgs.vitalCurrent = caster.energy;
+                spellNameArgs.vitalMax = 0;
+                spellService.TriggerEvent(GameEventList.SpellLifeChange, spellNameArgs);
+            }
+        }
 
         //take energy if needed
         //if (caster.energy < spellData.energyCost)

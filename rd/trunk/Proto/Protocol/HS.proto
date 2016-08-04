@@ -34,8 +34,8 @@ enum code
 	KICKOUT_S                   = 1004;
 	SYNCINFO_C                  = 1005;
 	SYNCINFO_S                  = 1006;
-	RECCONECT_C					= 1007;
-	RECCONECT_S				    = 1008;
+	RECCONECT_C                 = 1007;
+	RECCONECT_S                 = 1008;
 
 	PLAYER_INFO_SYNC_S          = 1010;
 	STATISTICS_INFO_SYNC_S      = 1011;
@@ -112,7 +112,7 @@ enum code
 	GEM_COMPOSE_S               = 4014;
 	ITEM_BUY_AND_USE_C          = 4015;
 	ITEM_BUY_AND_USE_S          = 4016;
-	
+
 	EQUIP_SELL_C                = 4101;
 	EQUIP_SELL_S                = 4102;
 	EQUIP_BUY_C                 = 4103;
@@ -170,18 +170,18 @@ enum code
 	SHOP_GOLD2COIN_C            = 8009;
 	SHOP_GOLD2COIN_S            = 8010;
 	SHOP_REFRESH_TIMES          = 8011;
-	
+
 	// 公会
 	ALLIANCE_CREATE_C           = 9001;
 	ALLIANCE_CREATE_S           = 9002;
-	ALLIANCE_LIST_C         	= 9003;
-	ALLIANCE_LIST_S         	= 9004;
-	ALLIANCE_SEARCH_C         	= 9005;
-	ALLIANCE_SEARCH_S         	= 9006;
+	ALLIANCE_LIST_C             = 9003;
+	ALLIANCE_LIST_S             = 9004;
+	ALLIANCE_SEARCH_C           = 9005;
+	ALLIANCE_SEARCH_S           = 9006;
 	ALLIANCE_NOTICE_C           = 9007;
 	ALLIANCE_NOTICE_S           = 9008;
 	ALLIANCE_NOTICE_SYNC_S      = 9009;
-	
+
 	// 系统设置
 	SETTING_LANGUAGE_C          = 10001;
 	SETTING_LANGUAGE_S          = 10002;
@@ -190,6 +190,7 @@ enum code
 
 	// 数据同步
 	SYNC_DAILY_REFRESH_S        = 11001;  // 每日刷新
+	SYNC_MONTHLY_REFRESH_S      = 11002;  // 每月刷新
 	SYNC_SHOP_REFRESH_S         = 11003;  // 商店刷新
-	SYNC_EXP_LEFT_TIMES_S       = 11002;  // 经验药水剩余次数
+	SYNC_EXP_LEFT_TIMES_S       = 11004;  // 经验药水剩余次数
 }

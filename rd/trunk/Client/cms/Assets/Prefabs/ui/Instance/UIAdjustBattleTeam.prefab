@@ -1660,7 +1660,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a3df42f2b3152da47ba029d85f92be10, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 91fc9bbb4667f07459d8c23356f9223a, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1864,6 +1864,7 @@ MonoBehaviour:
   resetTimesButton: {fileID: 11465162}
   battleTimesText: {fileID: 11442922}
   customHuoliText: {fileID: 11494402}
+  dropInfoText: {fileID: 11475766}
   lbMyZhenrong: {fileID: 11425196}
   lbEnemyZhenrong: {fileID: 11469698}
   lbMyShangzhen: {fileID: 11477146}

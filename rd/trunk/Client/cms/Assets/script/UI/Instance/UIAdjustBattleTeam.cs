@@ -37,6 +37,7 @@ public class UIAdjustBattleTeam : UIBase
     public Button resetTimesButton;
     public Text battleTimesText;
     public Text customHuoliText;
+    public Text dropInfoText;
 
 	public	Text	lbMyZhenrong;
 	public  Text	lbEnemyZhenrong;
@@ -74,7 +75,8 @@ public class UIAdjustBattleTeam : UIBase
 
 	private	List<string> teamList;
 	private int prepareIndex = -1;//准备上阵的空位索引
-    private bool isOpenSaodang = false;
+    private bool isOpenSaodangOneTimes = false;
+    private bool isOpenSaodangTenTimes = false;
 
 	private Dictionary<string,MonsterIcon> playerAllIconDic = new Dictionary<string, MonsterIcon>();
 
@@ -107,8 +109,9 @@ public class UIAdjustBattleTeam : UIBase
 		lbMyHoubei.text = StaticDataMgr.Instance.GetTextByID ("instance_houbei");
 		lbMyShangzhen.text = StaticDataMgr.Instance.GetTextByID ("instance_shangzhen");
 		lbMyZhenrong.text = StaticDataMgr.Instance.GetTextByID ("instance_wofangzhenrong");
+        dropInfoText.text = StaticDataMgr.Instance.GetTextByID("instance_jiangliList");
 
-		battleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID ("instance_kaishizhandou");
+        battleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID ("instance_kaishizhandou");
         resetTimesButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhi_anniu");
         UIUtil.SetButtonTitle(rapid1Button.transform, StaticDataMgr.Instance.GetTextByID("instance_saodang"));
         skillTips.gameObject.SetActive(false);
@@ -192,12 +195,19 @@ public class UIAdjustBattleTeam : UIBase
             playerTeamBg[4].SetAsLocked(true,SecondBackupClicked);
         }
 
-        isOpenSaodang = false;
-        if(GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.saodangOpenLevel && star >2)
+        isOpenSaodangOneTimes = false;
+        isOpenSaodangTenTimes = false;
+        if(star >  2)
         {
-            isOpenSaodang = true;
+            if(GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.saodangOpenLevelForOneTimes)
+            {
+                isOpenSaodangOneTimes = true;
+            }
+            if(GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.saodangOpenLevelForTenTimes)
+            {
+                isOpenSaodangTenTimes = true;
+            }
         }
-
         StartCoroutine( RefreshUICo ());
 	}
 
@@ -470,8 +480,8 @@ public class UIAdjustBattleTeam : UIBase
         szGrewStar[2].gameObject.SetActive(star > 0  && star < 3);
 
         bool isNormalInstance = instanceType == InstanceType.Normal;
-        rapid10Button.gameObject.SetActive(isNormalInstance && isOpenSaodang);
-        rapid1Button.gameObject.SetActive(isNormalInstance && isOpenSaodang);
+        rapid10Button.gameObject.SetActive(isNormalInstance && isOpenSaodangTenTimes);
+        rapid1Button.gameObject.SetActive(isNormalInstance && isOpenSaodangOneTimes);
         battleTimesText.gameObject.SetActive(isNormalInstance);
         resetTimesButton.gameObject.SetActive(false);
         if (isNormalInstance)
@@ -479,7 +489,7 @@ public class UIAdjustBattleTeam : UIBase
             InstanceEntryRuntimeData realData = InstanceMapService.Instance.GetRuntimeInstance(instanceId);
             if(realData.countDaily < realData.staticData.count)
             {
-                battleTimesText.text = string.Format(StaticDataMgr.Instance.GetTextByID("instance_tiaozhancishu"), realData.countDaily, realData.staticData.count);
+                battleTimesText.text = string.Format(StaticDataMgr.Instance.GetTextByID("instance_tiaozhancishu"), realData.staticData.count - realData.countDaily, realData.staticData.count);
             }
             else
             {
@@ -488,8 +498,22 @@ public class UIAdjustBattleTeam : UIBase
             }
             RefreshSaodangTimes();
         }
+        RefreshBattleButton();
+    }
+
+    void RefreshBattleButton()
+    {
         InstanceEntry stData = StaticDataMgr.Instance.GetInstanceEntry(instanceId);
+
         customHuoliText.text = stData.fatigue.ToString();
+        if(stData.fatigue > GameDataMgr.Instance.PlayerDataAttr.HuoliAttr)
+        {
+            customHuoliText.color = new Color(1, 0, 0);
+        }
+        else
+        {
+            customHuoliText.color = new Color(251.0f / 255.0f, 241.0f / 255.0f, 216.0f / 255.0f);
+        }
     }
     //---------------------------------------------------------------------------------------------------------------------
 
@@ -658,7 +682,7 @@ public class UIAdjustBattleTeam : UIBase
         string msg = StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhi");
         int times = InstanceMapService.Instance.instanceResetTimes;
         InstanceReset insReset = StaticDataMgr.Instance.GetInstanceReset("1");
-        resetInstanceCost = insReset.GetBaseZuanshiWithTime(times);
+        resetInstanceCost = insReset.GetBaseZuanshiWithTime(times + 1);
 
         string optionMsg = string.Format(StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhiTimes"), times);
 
@@ -754,12 +778,13 @@ public class UIAdjustBattleTeam : UIBase
 
     void RefreshSaodangTimes()
     {
-        if (instanceType == InstanceType.Normal && isOpenSaodang)
+        if (instanceType == InstanceType.Normal && isOpenSaodangTenTimes)
         {
             int saodTimes = 1;
             GetSaodangState(out saodTimes);
             UIUtil.SetButtonTitle(rapid10Button.transform, string.Format(StaticDataMgr.Instance.GetTextByID("instance_saodang10"), saodTimes));
         }
+        RefreshBattleButton();
     }
 
     SaodangState GetSaodangState(out int iTimes)
@@ -856,7 +881,8 @@ public class UIAdjustBattleTeam : UIBase
         List<int> battleTeam = SaveBattleTeam();
         if (null == battleTeam || battleTeam.Count < 1)
         {
-            MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"));
+           // MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform, StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"));
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("tip_zhenrongError"), (int)PB.ImType.PROMPT);
         }
         else if (instanceEntryData.fatigue > GameDataMgr.Instance.PlayerDataAttr.HuoliAttr)
         {

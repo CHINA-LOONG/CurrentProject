@@ -648,7 +648,7 @@ public class GameUnit : IComparable
             args.casterID = BattleConst.battleSceneGuid;
             args.targetID = pbUnit.guid;
             args.isCritical = false;
-            args.vitalChange = recovery;
+            args.vitalChange = 0;
             args.vitalCurrent = curLife + recovery;
             if (args.vitalCurrent >= maxLife)
             {

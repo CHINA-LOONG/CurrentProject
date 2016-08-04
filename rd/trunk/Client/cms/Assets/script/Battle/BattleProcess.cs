@@ -608,10 +608,10 @@ public class BattleProcess : MonoBehaviour
         //if (IsClearBuff())
         //    yield return StartCoroutine(ClearBuff());
 
+        yield return StartCoroutine(PlayCountDownAnim());
         if (battleLevelIndex == 0)
         {
             mCurrentReviveCount = 0;
-            yield return StartCoroutine(PlayCountDownAnim());
             CastInstanceSpell();
         }
         else
@@ -627,11 +627,9 @@ public class BattleProcess : MonoBehaviour
 
     IEnumerator PlayCountDownAnim()
     {
-        yield return new WaitForSeconds(1.0f);
-        BattleController.Instance.GetUIBattle().ShowStartBattleUI();
-        yield return new WaitForSeconds(2.0f);
-        BattleController.Instance.GetUIBattle().DestroyStartBattleUI();
-        yield return null;
+        BattleController.Instance.ShowLevelInfo(true);
+        yield return new WaitForSeconds(BattleConst.battleLevelTime * Time.timeScale);
+        BattleController.Instance.ShowLevelInfo(false);
     }
 
     //private void RefreshEnemyState()

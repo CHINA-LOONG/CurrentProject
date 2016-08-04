@@ -230,6 +230,14 @@ public class BehaviorLogger {
 		 */
 		CHAPTER_BOX,
 		/**
+		 * 洞进入
+		 */
+		HOLE_ENTER,
+		/**
+		 * 塔进入
+		 */
+		TOWER_ENTER,
+		/**
 		 * 任务交付
 		 */
 		QUEST_SUBMIT,

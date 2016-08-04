@@ -345,9 +345,12 @@ public class PlayerQuestModule extends PlayerModule {
 		//	时光之穴次数
 		case GsConst.QuestGoalType.TIMEHOLE_GOAL: {
 			if (quest.getCycle() == Cycle.NORMAL_CYCLE) {
-				progress = statisticsEntity.getTimeholeCount();
+				progress = statisticsEntity.getHoleCount();
 			} else if (quest.getCycle() == Cycle.DAILY_CYCLE) {
-				progress = statisticsEntity.getTimeholeCountDaily();
+				progress = 0;
+				for (Entry<Integer, Integer> entry : statisticsEntity.getHoleCountDailyMap().entrySet()) {
+					progress += entry.getValue();
+				}
 			}
 			break;
 		}

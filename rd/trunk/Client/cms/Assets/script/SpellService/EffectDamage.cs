@@ -115,6 +115,7 @@ public class EffectDamage : Effect
             if (CalculateHit(wpID) == SpellConst.hitSuccess)
             {
                 GameDataMgr gdMgr = GameDataMgr.Instance;
+                bool isKezhi = false;
 
                 //暴击计算 min(max(N+L(lv1-lv2))+总附加命中率,60%,100%)
                 float damageRatio = 1.0f;
@@ -258,7 +259,7 @@ public class EffectDamage : Effect
                         //五行相生相克系数
                         int targetProp = wpRuntime != null ? wpRuntime.property : target.property;
                         EffectDamageProtoType damagePt = protoEffect as EffectDamageProtoType;
-                        propertyDamageRatio *= SpellFunctions.GetPropertyDamageRatio((int)(damagePt.damageProperty), targetProp);
+                        propertyDamageRatio *= SpellFunctions.GetPropertyDamageRatio((int)(damagePt.damageProperty), targetProp, ref isKezhi);
                         //减伤护盾
                         float curInjuryRatio = injuryRatio - target.spellmgReduceInjury;
                         curInjuryRatio = curInjuryRatio < 0.0f ? 0.0f : curInjuryRatio;
@@ -403,6 +404,34 @@ public class EffectDamage : Effect
                             {
                                 target.buffList[i].DamageResponse(applyTime, this, wpID);
                             }
+                        }
+
+                        //trigger kezhi
+                        if (isKezhi && damageProto.isHeal == false)
+                        {
+                            SpellVitalChangeArgs spellKezhiArgs = new SpellVitalChangeArgs();
+                            spellKezhiArgs.vitalType = (int)VitalType.Vital_Type_Kezhi;
+                            spellKezhiArgs.triggerTime = applyTime;
+                            spellKezhiArgs.casterID = casterID;
+                            spellKezhiArgs.targetID = targetID;
+                            spellKezhiArgs.wpNode = args.wpNode;
+                            spellKezhiArgs.wpID = args.wpID;
+                            spellKezhiArgs.vitalMax = 0;
+                            spellService.TriggerEvent(GameEventList.SpellLifeChange, spellKezhiArgs);
+                        }
+
+                        //trigger critical event
+                        if (isCritical == true)
+                        {
+                            SpellVitalChangeArgs spellCriticalArgs = new SpellVitalChangeArgs();
+                            spellCriticalArgs.vitalType = (int)VitalType.Vital_Type_Critical;
+                            spellCriticalArgs.triggerTime = applyTime;
+                            spellCriticalArgs.casterID = casterID;
+                            spellCriticalArgs.targetID = targetID;
+                            spellCriticalArgs.wpNode = args.wpNode;
+                            spellCriticalArgs.wpID = args.wpID;
+                            spellCriticalArgs.vitalMax = 0;
+                            spellService.TriggerEvent(GameEventList.SpellLifeChange, spellCriticalArgs);
                         }
                     }
                 }

@@ -22,19 +22,19 @@ public class UIHoleEntry : UIBase
     //---------------------------------------------------------------------------------------------
     public override void Init()
     {
-        HoleData holeJinbi = StaticDataMgr.Instance.GetHoleData("hole_jinbi");
+        HoleData holeJinbi = StaticDataMgr.Instance.GetHoleData(2);
         if (holeJinbi != null)
         {
             mJinbiStartTimeText.text = holeJinbi.openId;
-            mJinbiNameText.text = holeJinbi.id;
+            mJinbiNameText.text = holeJinbi.id.ToString();
             mJinbiRemainCountText.text = holeJinbi.count.ToString();
         }
 
-        HoleData holeExp = StaticDataMgr.Instance.GetHoleData("hole_exp");
+        HoleData holeExp = StaticDataMgr.Instance.GetHoleData(1);
         if (holeExp != null)
         {
             mExpStartTimeText.text = holeExp.openId;
-            mExpNameText.text = holeExp.id;
+            mExpNameText.text = holeExp.id.ToString();
             mExpRemainCountText.text = holeExp.count.ToString();
         }
     }

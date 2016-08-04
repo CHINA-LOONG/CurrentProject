@@ -14,7 +14,7 @@ public class ImageView : MonoBehaviour,IBeginDragHandler,
 
     private RawImage image;
     
-    public void ReloadData(string monsterId)
+    public BattleObject ReloadData(string monsterId)
     {
         if (model==null)
         {
@@ -22,13 +22,14 @@ public class ImageView : MonoBehaviour,IBeginDragHandler,
             image = GetComponent<RawImage>();
             model.Camera.targetTexture = image.texture as RenderTexture;
         }
-        model.ReloadData(monsterId);
+        return model.ReloadData(monsterId);
     }
     public void CleanImageView()
     {
         if (model!=null)
         {
             model.DestroyModel();
+            Destroy(model.gameObject);
         }
     }
 

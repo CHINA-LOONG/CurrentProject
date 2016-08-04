@@ -77,6 +77,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 		// 重置统计数据，保证其它模块刷新时数据时间一致
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
+		// 每日刷新
 		if (refreshTypeList.contains(GsConst.RefreshType.DAILY_PERS_REFRESH)) {
 			statisticsEntity.clearAdventureCountDaily();
 			statisticsEntity.clearArenaCountDaily();
@@ -93,7 +94,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 			statisticsEntity.clearMonsterMixCountDaily();
 			statisticsEntity.clearQuestCompleteDaily();
 			statisticsEntity.clearSkillUpCountDaily();
-			statisticsEntity.clearTimeholeCountDaily();
+			statisticsEntity.clearHoleCountDaily();
 
 			statisticsEntity.notifyUpdate(true);
 			player.getPlayerData().syncDailyRefreshInfo();

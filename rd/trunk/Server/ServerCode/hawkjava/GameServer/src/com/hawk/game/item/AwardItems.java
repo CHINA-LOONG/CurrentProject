@@ -39,7 +39,7 @@ public class AwardItems {
 	 * 奖励信息
 	 */
 	private HSRewardInfo.Builder rewardInfo;
-	
+
 	/**
 	 * 构造函数
 	 */
@@ -56,14 +56,14 @@ public class AwardItems {
 		awards.addItemInfos(infos);
 		return awards;
 	}
-	
+
 	/**
 	 * 设置builder
 	 */
 	public void setRewardInfo(HSRewardInfo.Builder rewardInfo) {
 		this.rewardInfo = rewardInfo;
 	}
-	
+
 	public HSRewardInfo.Builder getBuilder() {
 		return rewardInfo;
 	}
@@ -77,7 +77,7 @@ public class AwardItems {
 		newAward.setRewardInfo(rewardInfo.clone());
 		return newAward;
 	}
-	
+
 	/**
 	 * 判断是否有奖励
 	 */
@@ -102,7 +102,7 @@ public class AwardItems {
 		rewardInfo.addAllRewardItems(rewardList);
 		return this;
 	}
-	
+
 	public AwardItems addItem(String itemId, int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
@@ -111,7 +111,7 @@ public class AwardItems {
 				break;
 			}
 		}
-		
+
 		if (rewardItem == null) {
 			rewardItem = RewardItem.newBuilder();
 			rewardItem.setType(itemType.ITEM_VALUE);
@@ -122,7 +122,7 @@ public class AwardItems {
 		else {
 			rewardItem.setCount(rewardItem.getCount() + count);
 		}
-		
+
 		return this;
 	}
 
@@ -149,7 +149,7 @@ public class AwardItems {
 		}
 		return this;
 	}
-	
+
 	public AwardItems  addMonster(String monsterId, int stage) {
 		RewardItem.Builder rewardItem = RewardItem.newBuilder();
 		rewardItem.setType(Const.itemType.MONSTER_VALUE);
@@ -158,14 +158,14 @@ public class AwardItems {
 		rewardInfo.addRewardItems(rewardItem);
 		return this;
 	}
-	
+
 	public AwardItems addMonster(String monsterId, int stage, int level, int lazy, int disposition) {
 		RewardItem.Builder rewardItem = RewardItem.newBuilder();
 		rewardItem.setType(Const.itemType.MONSTER_VALUE);
 		rewardItem.setItemId(monsterId);
 		rewardItem.setStage(stage);
 		rewardItem.setLevel(level);
-		
+
 		HSMonster.Builder monster = HSMonster.newBuilder();
 		monster.setCfgId(monsterId);
 		monster.setStage(stage);
@@ -176,12 +176,12 @@ public class AwardItems {
 		monster.setDisposition(disposition);
 		monster.setMonsterId(0);
 		rewardItem.setMonster(monster);
-		
+
 		rewardItem.setMonster(monster);
 		rewardInfo.addRewardItems(rewardItem);
 		return this;
 	}
-	
+
 	public AwardItems addAttr(String attrType, int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
@@ -190,7 +190,7 @@ public class AwardItems {
 				break;
 			}
 		}
-		
+
 		if (rewardItem == null) {
 			rewardItem = RewardItem.newBuilder();
 			rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
@@ -201,14 +201,14 @@ public class AwardItems {
 		else {
 			rewardItem.setCount(rewardItem.getCount() + count);
 		}
-		
+
 		return this;
 	}
-	
+
 	public AwardItems addAttr(int attrType, int count) {
 		return addAttr(String.valueOf(attrType), count);
 	}
-	
+
 	public AwardItems addMonsterAttr(int attrType, int count, int id) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
@@ -217,7 +217,7 @@ public class AwardItems {
 				break;
 			}
 		}
-		
+
 		if (rewardItem == null) {
 			rewardItem = RewardItem.newBuilder();
 			rewardItem.setType(itemType.MONSTER_ATTR_VALUE);
@@ -228,11 +228,11 @@ public class AwardItems {
 		}
 		else
 		{
-			rewardItem.setCount(rewardItem.getCount() + count);	
+			rewardItem.setCount(rewardItem.getCount() + count);
 		}
 		return this;
 	}
-	
+
 	public AwardItems addMonsterAttr(int attrType, int count) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
@@ -241,7 +241,7 @@ public class AwardItems {
 				break;
 			}
 		}
-		
+
 		if (rewardItem == null) {
 			rewardItem = RewardItem.newBuilder();
 			rewardItem.setType(itemType.MONSTER_ATTR_VALUE);
@@ -250,12 +250,12 @@ public class AwardItems {
 			rewardInfo.addRewardItems(rewardItem);
 		}
 		else {
-			rewardItem.setCount(rewardItem.getCount() + count);	
+			rewardItem.setCount(rewardItem.getCount() + count);
 		}
-				
+
 		return this;
 	}
-	
+
 	public AwardItems addItemInfo(ItemInfo itemInfo) {
 		if (itemInfo != null) {
 			if (itemInfo.getType() == itemType.PLAYER_ATTR_VALUE) {
@@ -274,7 +274,7 @@ public class AwardItems {
 				else {
 					addEquip(itemInfo.getItemId(), itemInfo.getStage(), itemInfo.getLevel());
 				}
-			}		
+			}
 			else if (itemInfo.getType() == itemType.MONSTER_VALUE) {
 				if (itemInfo.getCount() > 0) {
 					addMonster(itemInfo.getItemId(), itemInfo.getCount(), itemInfo.getStage(), 1, 1, 1);
@@ -411,7 +411,7 @@ public class AwardItems {
 			for (int i = 0; i < rewardInfo.getRewardItemsBuilderList().size(); ) {
 				RewardItem.Builder item = rewardInfo.getRewardItemsBuilder(i);
 				boolean invalidType = false;
-				if (item.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
+				if (item.getType() == itemType.PLAYER_ATTR_VALUE) {
 					switch (Integer.parseInt(item.getItemId())) {
 					case changeType.CHANGE_COIN_VALUE:
 						player.increaseCoin(item.getCount(), action);
@@ -424,7 +424,7 @@ public class AwardItems {
 					case changeType.CHANGE_GOLD_BUY_VALUE:
 						player.increaseBuyGold(item.getCount(), action);
 						break;
-						
+
 					case changeType.CHANGE_PLAYER_EXP_VALUE:
 						int oldLevel = player.getLevel();
 						player.increaseExp(item.getCount(), action);
@@ -436,7 +436,7 @@ public class AwardItems {
 								if (null != attrCfg) {
 									RewardItem.Builder rewardItem = RewardItem.newBuilder();
 									rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
-									rewardItem.setItemId(String.valueOf(Const.changeType.CHANGE_FATIGUE_VALUE));
+									rewardItem.setItemId(String.valueOf(changeType.CHANGE_FATIGUE_VALUE));
 									rewardItem.setCount(attrCfg.getFatigueReward());
 									rewardInfo.addRewardItems(rewardItem);
 								}
@@ -460,7 +460,7 @@ public class AwardItems {
 								if (null != attrCfg) {
 									RewardItem.Builder rewardItem = RewardItem.newBuilder();
 									rewardItem.setType(itemType.PLAYER_ATTR_VALUE);
-									rewardItem.setItemId(String.valueOf(Const.changeType.CHANGE_FATIGUE_VALUE));
+									rewardItem.setItemId(String.valueOf(changeType.CHANGE_FATIGUE_VALUE));
 									rewardItem.setCount(attrCfg.getFatigueReward());
 									rewardInfo.addRewardItems(rewardItem);
 								}
@@ -473,11 +473,11 @@ public class AwardItems {
 						break;
 					}
 
-					SynPlayerAttr.Builder playerBuilder = rewardInfo.getPlayerAttrBuilder();	
+					SynPlayerAttr.Builder playerBuilder = rewardInfo.getPlayerAttrBuilder();
 					playerBuilder.setCoin(player.getCoin());
 					playerBuilder.setGold(player.getGold());
 					playerBuilder.setExp(player.getExp());
-					playerBuilder.setLevel(player.getLevel());	
+					playerBuilder.setLevel(player.getLevel());
 					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
 					playerBuilder.setFatigueBeginTime((int)(player.getPlayerData().getStatisticsEntity().getFatigueBeginTime().getTimeInMillis() / 1000));
 				}
@@ -495,101 +495,60 @@ public class AwardItems {
 				RewardItem.Builder item = rewardInfo.getRewardItemsBuilder(i);
 				boolean invalidType = false;
 				boolean rewardFail = false;
-				if (item.getType() == Const.itemType.MONSTER_ATTR_VALUE) {
-					if (Integer.parseInt(item.getItemId()) == changeType.CHANGE_MONSTER_EXP_VALUE) {
-						if (item.getId() == 0) {
-							// 未指定怪物时奖励所有上阵怪物，平分经验
-							List<Integer> battleMonsters = player.getPlayerData().getPlayerEntity().getBattleMonsterList();
-							if (false == battleMonsters.isEmpty()) {
-								int exp = item.getCount() / battleMonsters.size();
-								for (Integer monsterId : battleMonsters) {
-									if (player.getPlayerData().getMonsterEntity(monsterId) != null) {
-										RewardItem.Builder builder = RewardItem.newBuilder();
-										builder.setType(itemType.MONSTER_ATTR_VALUE);
-										builder.setItemId(String.valueOf(changeType.CHANGE_MONSTER_EXP_VALUE));
-										builder.setCount(exp);
-										builder.setId(monsterId);
-										rewardInfo.addRewardItems(builder);
-									}
-								}
-							}
+				switch (item.getType()) {
+				case itemType.MONSTER_ATTR_VALUE:
+					if (item.getId() == 0 || player.getPlayerData().getMonsterEntity((int)item.getId()) == null) {
+						// 强制清除没有id的怪物奖励
+						invalidType = true;
+					} else {
+						if (Integer.parseInt(item.getItemId()) == changeType.CHANGE_MONSTER_EXP_VALUE) {
+							player.increaseMonsterExp((int)item.getId(), item.getCount(), action);
+						} else if (Integer.parseInt(item.getItemId()) == changeType.CHANGE_MONSTER_LEVEL_VALUE) {
+							player.setMonsterLevel((int)item.getId(), item.getCount(), action);
+						}
 
-							// 强制清除没有id的怪物奖励
-							invalidType = true;
-						}
-						else {
-							if (player.getPlayerData().getMonsterEntity((int)item.getId()) != null) {
-								SynMonsterAttr.Builder monsterBuilder = null;
-								//重置怪物经验值
-								player.increaseMonsterExp((int)item.getId(), item.getCount(), action);									
-								for (SynMonsterAttr.Builder builder : rewardInfo.getMonstersAttrBuilderList()) {
-									if (builder.getMonsterId() == (int)item.getId()) {
-										monsterBuilder = builder;
-										break;
-									}
-								}
-								if (monsterBuilder == null) {
-									monsterBuilder = SynMonsterAttr.newBuilder();
-									monsterBuilder.setMonsterId((int)item.getId());
-									monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
-									monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
-									rewardInfo.addMonstersAttr(monsterBuilder);
-								}
-								else {
-									monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
-									monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
-								}
+						SynMonsterAttr.Builder monsterBuilder = null;
+						for (SynMonsterAttr.Builder builder : rewardInfo.getMonstersAttrBuilderList()) {
+							if (builder.getMonsterId() == (int)item.getId()) {
+								monsterBuilder = builder;
+								break;
 							}
+						}
+						if (monsterBuilder == null) {
+							monsterBuilder = SynMonsterAttr.newBuilder();
+							monsterBuilder.setMonsterId((int)item.getId());
+							monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
+							monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
+							rewardInfo.addMonstersAttr(monsterBuilder);
+						} else {
+							monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
+							monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
 						}
 					}
-					else if (Integer.parseInt(item.getItemId()) == changeType.CHANGE_MONSTER_LEVEL_VALUE) {
-						if (player.getPlayerData().getMonsterEntity((int)item.getId()) != null) {
-							SynMonsterAttr.Builder monsterBuilder = null;
-							//重置怪物经验值
-							player.setMonsterLevel((int)item.getId(), item.getCount(), action);									
-							for (SynMonsterAttr.Builder builder : rewardInfo.getMonstersAttrBuilderList()) {
-								if (builder.getMonsterId() == (int)item.getId()) {
-									monsterBuilder = builder;
-									break;
-								}
-							}
-							if (monsterBuilder == null) {
-								monsterBuilder = SynMonsterAttr.newBuilder();
-								monsterBuilder.setMonsterId((int)item.getId());
-								monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
-								monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
-								rewardInfo.addMonstersAttr(monsterBuilder);
-							}
-							else {
-								monsterBuilder.setExp(player.getMonsterExp((int)item.getId()));
-								monsterBuilder.setLevel(player.getMonsterLevel((int)item.getId()));
-							}						
-						}
-					}
-				}		
-				else if(item.getType() == Const.itemType.ITEM_VALUE){
+					break;
+
+				case itemType.ITEM_VALUE:
 					ItemEntity itemEntity = player.increaseItem(item.getItemId(), item.getCount(), action);
-					if (itemEntity == null) {					
+					if (itemEntity == null) {
 						rewardFail = true;
 					}
-				}
-				else if(item.getType() == Const.itemType.EQUIP_VALUE){				
-					EquipEntity equipEntity = player.increaseEquip(item.getItemId(), item.getStage(), item.getLevel(), action);			
-					if (equipEntity == null) {				
+					break;
+
+				case itemType.EQUIP_VALUE:
+					EquipEntity equipEntity = player.increaseEquip(item.getItemId(), item.getStage(), item.getLevel(), action);
+					if (equipEntity == null) {
 						rewardFail = true;
-					}
-					else {
+					} else {
 						EquipUtil.generateAttr(equipEntity, item);
 						item.setId(equipEntity.getId());
 					}
-				}
-				else if(item.getType() == Const.itemType.MONSTER_VALUE){
-					MonsterEntity monsterEntity = player.increaseMonster(item.getItemId(), item.getStage(), action);			
-					if (monsterEntity == null) {				
+					break;
+
+				case itemType.MONSTER_VALUE:
+					MonsterEntity monsterEntity = player.increaseMonster(item.getItemId(), item.getStage(), action);
+					if (monsterEntity == null) {
 						rewardFail = true;
-					}
-					else
-					{
+					} else {
 						HSMonster monster = item.getMonster();
 						if (monster != null) {
 							monsterEntity.setLevel(monster.getLevel());
@@ -603,9 +562,11 @@ public class AwardItems {
 						item.setId(monsterEntity.getId());
 						item.setMonster(BuilderUtil.genMonsterBuilder(monsterEntity));
 					}
-				}
-				else if (item.getType() != Const.itemType.PLAYER_ATTR_VALUE){
+					break;
+
+				default:
 					invalidType = true;
+					break;
 				}
 
 				if (invalidType== true || rewardFail == true) {
@@ -620,7 +581,7 @@ public class AwardItems {
 			HawkException.catchException(e);
 			return false;
 		}
-		
+
 		return true;
 	}
 

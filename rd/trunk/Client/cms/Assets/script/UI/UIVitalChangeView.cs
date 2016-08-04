@@ -7,17 +7,19 @@ public class UIVitalChangeView : MonoBehaviour
 {
     //TODO: fontsettings have default mat
     public string aniName;
+    public string spellNameAni;
     public string criticalAniName;
     public Font damageFont;
     public Font healFont;
     public Text vitalWnd;
-    public Image vitalBackImage;
-    public Sprite criticalSprite;
-    public Sprite criticalHealSprite;
-    //modify: xuelong 2015-8-31 11:50:51  由于图片中心点不同。不能直接设置
-    //public Sprite missSprite;
-    //public Sprite interruptSprite;
+    //public Image vitalBackImage;
+    //public Sprite criticalSprite;
+    //public Sprite criticalHealSprite;
     public Text hitResult;
+    public Color criticalColor;
+    public Color absorbColor;
+    public Color interruptColor;
+    public Color spellnameColor;
     RectTransform trans;
 
     //---------------------------------------------------------------------------------------------
@@ -34,6 +36,7 @@ public class UIVitalChangeView : MonoBehaviour
         trans.SetParent(parent);
         trans.localScale = Vector3.one;
         trans.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        Color curColor = Color.white;
         if (args.vitalType == (int)VitalType.Vital_Type_Default)
         {
             vitalWnd.gameObject.SetActive(true);
@@ -41,79 +44,100 @@ public class UIVitalChangeView : MonoBehaviour
             {
                 vitalWnd.font = damageFont;
                 vitalChange *= -1;
-                vitalBackImage.sprite = criticalSprite;
+                //vitalBackImage.sprite = criticalSprite;
             }
             else
             {
                 vitalWnd.font = healFont;
-                vitalBackImage.sprite = criticalHealSprite;
+                //vitalBackImage.sprite = criticalHealSprite;
             }
-            vitalBackImage.gameObject.SetActive(args.isCritical == true);
+            //vitalBackImage.gameObject.SetActive(args.isCritical == true);
             hitResult.gameObject.SetActive(false);
             vitalWnd.text = vitalChange.ToString();
         }
-        else if (args.vitalType == (int)VitalType.Vital_Type_Miss)
-        {
-            //vitalBackImage.sprite = missSprite;
-            vitalBackImage.gameObject.SetActive(false);
-            vitalWnd.gameObject.SetActive(true);
-            vitalWnd.text = string.Empty;
-            hitResult.gameObject.SetActive(true);
-            hitResult.text = StaticDataMgr.Instance.GetTextByID("spell_hit_miss");
-        }
-        else if (args.vitalType == (int)VitalType.Vital_Type_Interrupt)
-        {
-            //vitalBackImage.sprite = interruptSprite;
-            vitalBackImage.gameObject.SetActive(false);
-            vitalWnd.gameObject.SetActive(true);
-            vitalWnd.text = string.Empty;
-            hitResult.gameObject.SetActive(true);
-            hitResult.text = StaticDataMgr.Instance.GetTextByID("spell_hit_interrupt");
-        }
         else if (
+            args.vitalType == (int)VitalType.Vital_Type_Miss ||
+            args.vitalType == (int)VitalType.Vital_Type_Critical ||
+            args.vitalType == (int)VitalType.Vital_Type_Interrupt ||
             args.vitalType == (int)VitalType.Vital_Type_FirstSpell ||
             args.vitalType == (int)VitalType.Vital_Type_Absorbed ||
             args.vitalType == (int)VitalType.Vital_Type_Stun ||
             args.vitalType == (int)VitalType.Vital_Type_Immune ||
             args.vitalType == (int)VitalType.Vital_Type_NoHeal ||
             args.vitalType == (int)VitalType.Vital_Type_PhyImmune ||
-            args.vitalType == (int)VitalType.Vital_Type_MagicImmune
+            args.vitalType == (int)VitalType.Vital_Type_MagicImmune ||
+            args.vitalType == (int)VitalType.Vital_Type_SpellName ||
+            args.vitalType == (int)VitalType.Vital_Type_Kezhi
             )
         {
             string textID;
-            if(args.vitalType == (int)VitalType.Vital_Type_FirstSpell)
+            if (args.vitalType == (int)VitalType.Vital_Type_FirstSpell)
             {
+                curColor = criticalColor;
                 textID = "spell_first_spell";
+            }
+            else if (args.vitalType == (int)VitalType.Vital_Type_Critical)
+            {
+                curColor = criticalColor;
+                textID = "spell_critical";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_Absorbed)
             {
+                curColor = absorbColor;
                 textID = "spell_shield";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_Immune)
             {
+                curColor = absorbColor;
                 textID = "spell_hit_immune";
             }
-            else if(args.vitalType == (int)VitalType.Vital_Type_NoHeal)
+            else if (args.vitalType == (int)VitalType.Vital_Type_Miss)
             {
+                curColor = interruptColor;
+                textID = "spell_hit_miss";
+            }
+            else if (args.vitalType == (int)VitalType.Vital_Type_Interrupt)
+            {
+                curColor = interruptColor;
+                textID = "spell_hit_interrupt";
+            }
+            else if (args.vitalType == (int)VitalType.Vital_Type_NoHeal)
+            {
+                curColor = interruptColor;
                 textID = "spell_hit_noheal";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_PhyImmune)
             {
+                curColor = absorbColor;
                 textID = "spell_hit_physicalImmune";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_MagicImmune)
             {
+                curColor = absorbColor;
                 textID = "spell_hit_magicImmune";
             }
-            else 
+            else if (args.vitalType == (int)VitalType.Vital_Type_SpellName)
             {
+                curColor = spellnameColor;
+                textID = args.wpNode;
+            }
+            else if (args.vitalType == (int)VitalType.Vital_Type_Kezhi)
+            {
+                curColor = criticalColor;
+                textID = "spell_kezhi";
+            }
+            else
+            {
+                curColor = interruptColor;
                 textID = "spell_stun";
             }
-            vitalBackImage.gameObject.SetActive(false);
+
+            //vitalBackImage.gameObject.SetActive(false);
             vitalWnd.gameObject.SetActive(true);
             vitalWnd.text = string.Empty;
             hitResult.gameObject.SetActive(true);
             hitResult.text = StaticDataMgr.Instance.GetTextByID(textID);
+            hitResult.color = curColor;
         }
 
         //calculate pos
@@ -121,19 +145,29 @@ public class UIVitalChangeView : MonoBehaviour
         if (bo != null)
         {
             Transform targetTrans = bo.transform;
-            GameObject lifebarNode = Util.FindChildByName(bo.gameObject, BattleConst.lifeBarNode);
-            if (lifebarNode != null)
+            if (args.vitalType != (int)VitalType.Vital_Type_SpellName)
             {
-                targetTrans = lifebarNode.transform;
-            }
-
-            if (args.wpNode != null && args.wpNode.Length > 0)
-            {
-                GameObject targetNode = Util.FindChildByName(bo.gameObject, args.wpNode);
-                if (targetNode != null)
+                GameObject lifebarNode = Util.FindChildByName(bo.gameObject, BattleConst.lifeBarNode);
+                if (lifebarNode != null)
                 {
-                    targetTrans = targetNode.transform;
+                    targetTrans = lifebarNode.transform;
                 }
+
+                if (
+                    args.wpNode != null &&
+                    args.wpNode.Length > 0
+                    )
+                {
+                    GameObject targetNode = Util.FindChildByName(bo.gameObject, args.wpNode);
+                    if (targetNode != null)
+                    {
+                        targetTrans = targetNode.transform;
+                    }
+                }
+            }
+            else if (args.vitalMax == -1)
+            {
+                hitResult.text = hitResult.text + "(" + StaticDataMgr.Instance.GetTextByID("passive") + ")";
             }
             Vector3 pt = BattleCamera.Instance.CameraAttr.WorldToScreenPoint(targetTrans.position);
             float scale = UIMgr.Instance.CanvasAttr.scaleFactor;
@@ -149,6 +183,13 @@ public class UIVitalChangeView : MonoBehaviour
                 if (string.IsNullOrEmpty(criticalAniName) == false)
                 {
                     animator.Play(criticalAniName);
+                }
+            }
+            else if(args.vitalType == (int)VitalType.Vital_Type_SpellName)
+            {
+                if (string.IsNullOrEmpty(spellNameAni) == false)
+                {
+                    animator.Play(spellNameAni);
                 }
             }
             else 

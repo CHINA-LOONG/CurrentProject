@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UIMonsterInfo : UIBase
 {
@@ -14,6 +15,7 @@ public class UIMonsterInfo : UIBase
 	}
 
 	public Button closeButton;
+    public Image closeImage;
 	public	Text	name;
 	public  Text	character;
     public Text monsterDescText;
@@ -31,6 +33,7 @@ public class UIMonsterInfo : UIBase
 	void Awake ()
 	{
 		EventTriggerListener.Get (closeButton.gameObject).onClick = OnCloseButtonClick;
+        EventTriggerListener.Get(closeImage.gameObject).onClick = OnCloseButtonClick;
 	}
 
     public override void Init()
@@ -112,13 +115,12 @@ public class UIMonsterInfo : UIBase
 	}
 
 	private void SetSpellIcon(UnitData unitData)
-	{
-		ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson(unitData.spellIDList);
+    {
         int spellCount = 0;
-		for (int i = 0; i < spellArrayList.Count; ++i) 
+        List<SpellProtoType> spellList = unitData.SpellList;
+		for (int i = 0; i < spellList.Count; ++i) 
 		{
-			string spellID = spellArrayList [i] as string;
-			SpellProtoType spellPt = StaticDataMgr.Instance.GetSpellProtoData (spellID);
+            SpellProtoType spellPt = spellList[i];
 			if (spellPt == null) 
 			{
 				continue;

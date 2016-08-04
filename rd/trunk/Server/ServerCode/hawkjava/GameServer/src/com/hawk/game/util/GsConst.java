@@ -324,6 +324,13 @@ public class GsConst {
 		public static final int OTHER_STATISTICS = 2;
 	}
 
+	// 副本类型
+	public static class InstanceType {
+		public static final int STORY = 1;
+		public static final int HOLE = 2;
+		public static final int TOWER = 3;
+	}
+
 	// 副本难度
 	public static class InstanceDifficulty {
 		public static final int NORMAL_INSTANCE = 0;

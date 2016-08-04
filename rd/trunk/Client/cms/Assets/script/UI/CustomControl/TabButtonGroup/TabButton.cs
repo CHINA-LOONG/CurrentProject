@@ -24,15 +24,6 @@ public class TabButton : MonoBehaviour
 	{
 		if(homeButton != null)
 			homeButton.IsOn = isOn;
-        //if (anim==null)
-        //{
-        //    anim = GetComponent<Animator>();
-        //}
-        //if (anim != null)
-        //{
-        //    anim.SetTrigger(isOn?"select":"normal");
-        //}
-
 	}
 	
 	public	void	OnTabButtonClicked(GameObject go)
@@ -50,6 +41,6 @@ public class TabButton : MonoBehaviour
 
 	public	void	SetButtonTitleName(string title)
 	{
-		homeButton.button.GetComponentInChildren<Text> ().text = title;
-	}
+        homeButton.SetButtonText(title);
+    }
 }

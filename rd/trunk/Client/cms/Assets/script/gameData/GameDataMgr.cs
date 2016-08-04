@@ -460,6 +460,7 @@ public class GameDataMgr : MonoBehaviour
                 pbUnit.spellPbList = monster.skill;
                 mainPlayer.unitPbList.Add(pbUnit.guid, pbUnit);
                 mainPlayer.allUnitDic.Add(pbUnit.guid, GameUnit.FromPb(pbUnit, true));
+                PlayerDataAttr.AddCollectPet(pbUnit.id);
             }
             else if (item.type == (int)PB.itemType.PLAYER_ATTR)
             {

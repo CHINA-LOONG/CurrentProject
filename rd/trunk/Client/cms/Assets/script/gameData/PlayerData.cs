@@ -115,6 +115,9 @@ public class PlayerData : MonoBehaviour
     public List<BattleObject> mainUnitList = new List<BattleObject>();
     public Dictionary<int, PbUnit> unitPbList = new Dictionary<int, PbUnit>();
 	public Dictionary<int,GameUnit> allUnitDic = new Dictionary<int, GameUnit> ();
+    //图鉴收藏
+    public List<string> petCollect = new List<string>();
+
     //屏蔽列表
     public List<int> mBlockPlayerList = new List<int>();
 
@@ -262,6 +265,21 @@ public class PlayerData : MonoBehaviour
         //}
         //PB
 
+    }
+    //---------------------------------------------------------------------------------------------
+    public void AddCollectPet(string monsterId)
+    {
+        if (petCollect.Contains(monsterId))
+        {
+            return;
+        }
+        petCollect.Add(monsterId);
+        GameEventMgr.Instance.FireEvent(GameEventList.ReloadPetCollectNotify);
+    }
+
+    public void InitCollectPet(List<string> list)
+    {
+        petCollect = list;
     }
     //---------------------------------------------------------------------------------------------
 }

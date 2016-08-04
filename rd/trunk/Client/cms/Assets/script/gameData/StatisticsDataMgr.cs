@@ -71,6 +71,7 @@ public class StatisticsDataMgr : MonoBehaviour {
 		GameDataMgr.Instance.ShopDataMgrAttr.listRechageState = staticsticsData.rechargeState;
 		expLeftTime = staticsticsData.expLeftTimes;
 		gold2coinExchargeTimes = staticsticsData.gold2CoinTimes;
+        GameDataMgr.Instance.PlayerDataAttr.InitCollectPet(staticsticsData.monsterCollect);
 
         GameDataMgr.Instance.PlayerDataAttr.gameItemData.SynItemState(staticsticsData.itemState);
 

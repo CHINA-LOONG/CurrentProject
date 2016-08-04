@@ -330,6 +330,21 @@ namespace UnityClientConsole
 //                 instanceEnter.battleMonsterId.Add(21480);
 //                 netmanaget.SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
 
+//                 HSInstanceResetCount resetCount = new HSInstanceResetCount();
+//                 resetCount.instanceId = "minghe12";
+//                 netmanaget.SendProtocol(code.INSTANCE_RESET_COUNT_C.GetHashCode(), resetCount);
+
+//                 HSHoleEnter hole = new HSHoleEnter();
+//                 hole.holeId = 1;
+//                 hole.instanceId = "minghe12";
+//                 hole.battleMonsterId.Add(44278);
+//                 netmanaget.SendProtocol(code.HOLE_ENTER_C.GetHashCode(), hole);
+
+                HSTowerEnter tower = new HSTowerEnter();
+                tower.towerId = 1;
+                tower.battleMonsterId.Add(44278);
+                netmanaget.SendProtocol(code.TOWER_ENTER_C.GetHashCode(), tower);
+
                 //HSChapterBox chapterBox = new HSChapterBox();
                 //chapterBox.chapterId = 1;
                 //chapterBox.difficulty = 0;
@@ -367,8 +382,8 @@ namespace UnityClientConsole
                 Console.WriteLine("进入副本");
 
                 HSInstanceSettle instanceSettle = new HSInstanceSettle();
-//                 instanceSettle.victory = true;
-//                 netmanaget.SendProtocol(code.INSTANCE_SETTLE_C.GetHashCode(), instanceSettle);
+                 instanceSettle.passBattleCount = 3;
+                 netmanaget.SendProtocol(code.INSTANCE_SETTLE_C.GetHashCode(), instanceSettle);
 
                 //HSInstanceRevive instanceRevive = new HSInstanceRevive();
                 //NetManager.GetInstance().SendProtocol(code.INSTANCE_REVIVE_C.GetHashCode(), instanceRevive);

@@ -25,14 +25,14 @@ public class BattleConst
     public const int maxFieldUnit = 3;
 
     //换宠冷却时间
-    public const float switchPetCD = 10;
+    public const float switchPetCD = 15;
 
     public const int speedK = 1000;
     public const float speedFactorMin = 0.98f;
     public const float speedFactorMax = 1.02f;
 
     //能量积攒上限
-    public const int enegyMax = 100;
+    public const int enegyMax = 10;
     public const int maxSpeed = 10000;
 
     public const int processContinueRet = -1;
@@ -76,7 +76,7 @@ public class BattleConst
     public const float floorHeight = 0.01f;
     public const float magicDazhaoDelay = 3.0f;
     public const float battleEndDelay = 2.0f;
-    public const float entranceTime = 1.5f;
+    public const float entranceTime = 1.0f;
     public const float reviveTime = 0.5f;
 
     //无效的宠物id -1；
@@ -111,4 +111,10 @@ public class BattleConst
     //最大消息数
     public const int maxMsg = 100;
     public const float hintImageLength = 50f;
+
+    public const float intervalTime = 0.2f;//各种弹数字间隔
+    public const float battleLevelTime = 2.0f;//显示对局信息时间
+    //万能碎片ID
+    public const string commonFragmentID = "20001";
+
 }

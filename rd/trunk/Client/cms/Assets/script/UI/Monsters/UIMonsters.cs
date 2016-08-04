@@ -1,0 +1,406 @@
+﻿using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using System;
+
+public class CollectUnit
+{
+    public UnitData unit;
+    public bool isExist;
+}
+public class UIMonsters : UIBase, 
+                          TabButtonDelegate,
+                          IScrollView,
+                          IOwnedPetItem,
+                          ICollectItem
+{
+
+    public static string ViewName = "UIMonsters";
+
+    public Text text_Title;
+    public Text text_Owned;
+    public Text text_Collection;
+
+    public Button btn_Close;
+
+    public Button btn_Owned;
+    public Button btn_Collection;
+
+    public FixCountScrollView scrollView_Owend;
+    public FixCountScrollView scrollView_Collect;
+
+    public GameObject objFragmentsInfo;
+    public Transform iconPos;
+    private ItemIcon iconFragment;
+    public Text text_Collect;
+    public Text textCollect;
+    public Text textComFragments;
+
+
+    public enum UIType
+    {
+        Owned,
+        Collection
+    }
+    public UIType uiType
+    {
+        get
+        {
+            return (UIType)tabIndex1st;
+        }
+        set
+        {
+            if (tabIndex1st != (int)value)
+            {
+                tabIndex1st = (int)value;
+                Animator Own = btn_Owned.GetComponent<Animator>();
+                Animator Collect = btn_Collection.GetComponent<Animator>();
+                Own.SetBool("Selected", false);
+                Collect.SetBool("Selected", false);
+                if (tabIndex1st == (int)UIType.Owned)
+                {
+                    text_Title.text = StaticDataMgr.Instance.GetTextByID("pet_list_title");
+                    objFragmentsInfo.SetActive(false);
+                    Own.SetTrigger("Normal");
+                    Own.SetBool("Selected", true);
+                }
+                else
+                {
+                    text_Title.text = StaticDataMgr.Instance.GetTextByID("handbook_btn");
+                    objFragmentsInfo.SetActive(true);
+                    Collect.SetTrigger("Normal");
+                    Collect.SetBool("Selected", true);
+                }
+            }
+
+        }
+    }
+    private int tabIndex1st = -1;
+    private int selIndex1st = 0;
+
+
+    private TabButtonGroup tabGroup;
+    public TabButtonGroup TabGroup
+    {
+        get
+        {
+            if (tabGroup == null)
+            {
+                tabGroup = GetComponentInChildren<TabButtonGroup>();
+                tabGroup.InitWithDelegate(this);
+            }
+            return tabGroup;
+        }
+    }
+
+    private int tabIndex2nd = -1;
+    private int selIndex2nd = 0;
+
+    public List<GameUnit> OwnedList = new List<GameUnit>();
+    public List<CollectUnit> CollectList = new List<CollectUnit>();
+
+
+
+    private UIPetDetail uiPetDetail;
+    public UIPetDetail UIPetDetail
+    {
+        get { return uiPetDetail; }
+    }
+
+    private UIMonsterCompose uiMonsterCompose;
+    public UIMonsterCompose UIMonsterCompose
+    {
+        get { return uiMonsterCompose; }
+    }
+
+    public override void Init()
+    {
+        tabIndex1st = -1;
+        selIndex1st = 0;
+
+        tabIndex2nd = -1;
+        selIndex2nd = 0;
+        Refresh();
+    }
+    public override void Clean()
+    {
+        UIMgr.Instance.DestroyUI(UIPetDetail);
+        UIMgr.Instance.DestroyUI(UIMonsterCompose);
+
+        scrollView_Owend.CleanContent();
+        scrollView_Collect.CleanContent();
+    }
+
+    void OnEnable()
+    {
+        GameEventMgr.Instance.AddListener(GameEventList.ReloadPetStageNotify, OnListEventRefresh);
+        GameEventMgr.Instance.AddListener(GameEventList.ReloadPetEquipNotify, OnListEventRefresh);
+        GameEventMgr.Instance.AddListener(GameEventList.ReloadPetCollectNotify, OnCollectEventRefresh);
+    }
+    void OnDisable()
+    {
+        GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetStageNotify, OnListEventRefresh);
+        GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetEquipNotify, OnListEventRefresh);
+        GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetCollectNotify, OnCollectEventRefresh);
+    }
+    void OnListEventRefresh()
+    {
+        if (uiType == UIType.Owned)
+        {
+            Refresh();
+        }
+    }
+    void OnCollectEventRefresh()
+    {
+        if (UIType.Collection == uiType)
+        {
+            Refresh();
+        }
+    }
+
+    void Start()
+    {
+        text_Owned.text = StaticDataMgr.Instance.GetTextByID("handbook_owned");
+        text_Collection.text = StaticDataMgr.Instance.GetTextByID("handbook_shouji");
+
+        text_Collect.text= StaticDataMgr.Instance.GetTextByID("handbook_shouji");
+
+        btn_Close.onClick.AddListener(OnClickCloseBtn);
+        btn_Owned.onClick.AddListener(OnClickOwnedBtn);
+        btn_Collection.onClick.AddListener(OnClickCollectionBtn);
+        Init();
+    }
+
+    public void Refresh(int select1st = -1, int select2nd = -1)
+    {
+        selIndex1st = (select1st == -1 ? selIndex1st : select1st);
+        uiType = (UIType)selIndex1st;
+
+        selIndex2nd = (select2nd == -1 ? selIndex2nd : select2nd);
+        if (tabIndex2nd != selIndex2nd)
+        {
+            TabGroup.OnChangeItem(selIndex2nd);
+        }
+        else
+        {
+            ReLoadData(selIndex2nd);
+        }
+    }
+    void ReLoadData(int index)
+    {
+        if (uiType == UIType.Owned)
+        {
+            scrollView_Owend.gameObject.SetActive(true);
+            scrollView_Collect.gameObject.SetActive(false);
+            ReLoadOwnedData(index);
+        }
+        else if (uiType == UIType.Collection)
+        {
+            scrollView_Owend.gameObject.SetActive(false);
+            scrollView_Collect.gameObject.SetActive(true);
+            ReLoadCollectData(index);
+        }
+    }
+    void ReLoadOwnedData(int index)
+    {
+        int curType = GetTypeByIndex(index);
+
+        List<GameUnit> list = GameDataMgr.Instance.PlayerDataAttr.GetAllPet();
+        OwnedList.Clear();
+        if (0 == curType)
+        {
+            OwnedList = list;
+        }
+        else
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].property == curType)
+                {
+                    OwnedList.Add(list[i]);
+                }
+            }
+        }
+        OwnedList.Sort();
+
+        scrollView_Owend.InitContentSize(OwnedList.Count, this);
+    }
+    void ReLoadCollectData(int index)
+    {
+        int curType = GetTypeByIndex(index);
+        
+        List<UnitData> unitList = StaticDataMgr.Instance.GetPlayerUnitData();
+        List<string> collect = GameDataMgr.Instance.PlayerDataAttr.petCollect;
+
+        List<CollectUnit> list = SetCollectList(unitList, collect);
+        CollectList.Clear();
+        if (0 == curType)
+        {
+            CollectList = list;
+        }
+        else
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].unit.property == curType)
+                {
+                    CollectList.Add(list[i]);
+                }
+            }
+        }
+        //CollectList.Sort();
+
+        scrollView_Collect.InitContentSize(CollectList.Count, this);
+
+        if (iconFragment==null)
+        {
+            iconFragment = ItemIcon.CreateItemIcon(new ItemData() { itemId = BattleConst.commonFragmentID, count = 0 });
+            UIUtil.SetParentReset(iconFragment.transform, iconPos);
+            iconFragment.HideExceptIcon();
+        }
+        ItemData comFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(BattleConst.commonFragmentID);
+        textComFragments.text = (comFragment == null ? "0" : comFragment.count.ToString());
+        textCollect.text = string.Format("{0}/{1}", collect.Count, list.Count);
+    }
+
+    int GetTypeByIndex(int index)
+    {
+        int curType = 0;
+        #region 标签与类型匹配
+
+        switch (index)
+        {
+            case 0:
+                curType = 0;
+                break;
+            case 1:
+                curType = SpellConst.propertyFire;
+                break;
+            case 2:
+                curType = SpellConst.propertyWater;
+                break;
+            case 3:
+                curType = SpellConst.propertyWood;
+                break;
+            case 4:
+                curType = SpellConst.propertyGold;
+                break;
+            case 5:
+                curType = SpellConst.propertyEarth;
+                break;
+            default:
+                Logger.LogError("选择图鉴标签出错");
+                break;
+        }
+        #endregion
+
+        return curType;
+    }
+
+    List<CollectUnit> SetCollectList(List<UnitData> unitList, List<string> collect)
+    {
+        List<CollectUnit> list = new List<CollectUnit>();
+        for (int i = 0; i < unitList.Count; i++)
+        {
+            CollectUnit collectUnit = new CollectUnit();
+            collectUnit.unit = unitList[i];
+            if (collect.Contains(unitList[i].id))
+            {
+                collectUnit.isExist = true;
+            }
+            else
+            {
+                collectUnit.isExist = false;
+            }
+            list.Add(collectUnit);
+        }
+        return list;
+    }
+
+    void OnClickCloseBtn()
+    {
+        UIMgr.Instance.CloseUI_(this);
+    }
+    void OnClickOwnedBtn()
+    {
+        Refresh(0, -1);
+    }
+    void OnClickCollectionBtn()
+    {
+        Refresh(1, -1);
+    }
+    
+    public void OnTabButtonChanged(int index)
+    {
+        if (tabIndex2nd == index)
+        {
+            return;
+        }
+        tabIndex2nd = index;
+        selIndex2nd = index;
+        ReLoadData(tabIndex2nd);
+    }
+
+    public Transform CreateData(Transform parent, int index = 0)
+    {
+        if (uiType == UIType.Owned)
+        {
+            GameObject go = ResourceMgr.Instance.LoadAsset("MonsterListItem");
+            if (null != go)
+            {
+                UIUtil.SetParentReset(go.transform, parent);
+                MonsterListItem item = go.GetComponent<MonsterListItem>();
+                item.iOwnedPetDelegate = this;
+                return go.transform;
+            }
+        }
+        else if (uiType == UIType.Collection)
+        {
+            GameObject go = ResourceMgr.Instance.LoadAsset("MonsterCollectItem");
+            if (null != go)
+            {
+                UIUtil.SetParentReset(go.transform, parent);
+                MonsterCollectItem item = go.GetComponent<MonsterCollectItem>();
+                item.iCollectDelegate = this;
+                return go.transform;
+            }
+        }
+        return null;
+    }
+    public void ReloadData(Transform item, int index)
+    {
+        if (uiType == UIType.Owned)
+        {
+            MonsterListItem owned = item.GetComponent<MonsterListItem>();
+            owned.ReloadData(OwnedList[index]);
+        }
+        else if (uiType == UIType.Collection)
+        {
+            MonsterCollectItem collect = item.GetComponent<MonsterCollectItem>();
+            collect.ReloadData(CollectList[index]);
+        }
+    }
+    public void CleanData(List<Transform> itemList)
+    {
+        if (uiType == UIType.Owned)
+        {
+            itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
+        }
+        else if (uiType == UIType.Collection)
+        {
+            itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
+        }
+    }
+
+    public void OnClickOwnedPet(GameUnit data)
+    {
+        uiPetDetail = UIMgr.Instance.OpenUI_(UIPetDetail.ViewName) as UIPetDetail;
+        UIPetDetail.SetTypeList(data, OwnedList);
+    }
+
+    public void OnClickCollectPet(CollectUnit data)
+    {
+        uiMonsterCompose = UIMgr.Instance.OpenUI_(UIMonsterCompose.ViewName) as UIMonsterCompose;
+        UIMonsterCompose.SetTypeList(data, CollectList);
+    }
+}

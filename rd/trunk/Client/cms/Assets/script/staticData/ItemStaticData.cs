@@ -50,9 +50,9 @@ public class ItemStaticData
 
 	public	int	part;
 	public	int	durability;
-	public	int	equipAttId;
+    public string itemfounds;
 
-	public	string	NameAttr
+    public	string	NameAttr
 	{
 		get
 		{

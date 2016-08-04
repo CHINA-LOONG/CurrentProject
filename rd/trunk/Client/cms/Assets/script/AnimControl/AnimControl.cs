@@ -56,6 +56,22 @@ public class AnimControl : MonoBehaviour
         hashShengliState = Animator.StringToHash("Base Layer.shengli");
     }
     //---------------------------------------------------------------------------------------------
+    void Update()
+    {
+        AnimatorClipInfo[] aniList = animator.GetCurrentAnimatorClipInfo(0);
+        for (int i = 0; i < aniList.Length; ++i)
+        {
+            if (aniList[i].clip.name.Contains("daiji") || aniList[i].clip.name.Contains("dazhaoxuanyao"))
+            {
+                animator.speed = 1.0f / Time.timeScale;
+                //animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                return;
+            }
+        }
+        animator.speed = 1.0f;
+        //animator.updateMode = AnimatorUpdateMode.Normal;
+    }
+    //---------------------------------------------------------------------------------------------
     public void SetController(string controllerName)
     {
         RuntimeAnimatorController curController = ResourceMgr.Instance.LoadAssetType<RuntimeAnimatorController>(controllerName);

@@ -57,8 +57,15 @@ public class HomeButton : MonoBehaviour
 		}
 	}
 
-	// Use this for initialization
-	void Start ()
+    public void SetButtonText(string text)
+    {
+        if (Text != null)
+        {
+            Text.text = text;
+        }
+    }
+    // Use this for initialization
+    void Start ()
 	{
 	
 		EventTriggerListener.Get (button.gameObject).onClick = OnButtonClicked;

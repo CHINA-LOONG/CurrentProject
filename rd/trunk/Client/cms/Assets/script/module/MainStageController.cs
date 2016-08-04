@@ -19,7 +19,7 @@ public class MainStageController : MonoBehaviour
     public SelectableObj mTowerJuewangObj;
     public SelectableObj mTowerSiwangObj;
     public SelectableObj mHoleJinbiObj;
-    public SelectableObj mHoleZuanshiObj;
+    public SelectableObj mHoleJingyanObj;
     //lise all group
     public SelectableObjGroup mTowerGroup;
     public SelectableObjGroup mHoleGroup;
@@ -331,6 +331,7 @@ public class MainStageController : MonoBehaviour
                 return;
             }
 
+            //普通副本
             if (selectedObj == mInstanceObj)
             {
                 UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
@@ -339,7 +340,28 @@ public class MainStageController : MonoBehaviour
                     uiBuild.OpenInstanceUI();
                 }
             }
+            //死亡之塔
             else if (selectedObj == mTowerSiwangObj)
+            {
+
+            }
+            //试炼之塔
+            else if (selectedObj == mTowerShilianObj)
+            {
+
+            }
+            //绝望之塔
+            else if (selectedObj == mTowerJuewangObj)
+            {
+
+            }
+            //金币洞穴
+            else if (selectedObj == mHoleJinbiObj)
+            {
+
+            }
+            //经验洞穴
+            else if (selectedObj == mHoleJingyanObj)
             {
 
             }

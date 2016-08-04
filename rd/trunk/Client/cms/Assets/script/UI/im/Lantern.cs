@@ -23,15 +23,15 @@ public class Lantern : MonoBehaviour
     [HideInInspector]
     public bool roll;
     
-    void Awake()
-    {
-        GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpeedChangeEvent, OnSpeedChange);
-    }
+    //void Awake()
+    //{
+    //    GameEventMgr.Instance.AddListener<EventArgs>(GameEventList.SpeedChangeEvent, OnSpeedChange);
+    //}
 
-    void Destroy()
-    {
-        GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpeedChangeEvent, OnSpeedChange);
-    }
+    //void Destroy()
+    //{
+    //    GameEventMgr.Instance.RemoveListener<EventArgs>(GameEventList.SpeedChangeEvent, OnSpeedChange);
+    //}
 
     public void AddMsg(string msg)
     {
@@ -73,6 +73,7 @@ public class Lantern : MonoBehaviour
             {
                 lanternMsg[i].isRoll = true;
                 lanternMsg[i].battleTitleTw = lanternMsg[i].lant.transform.DOLocalMove(lanternMsg[i].moveVec, lanternMsg[i].nextTime - lanternMsg[i].beginTime, true);
+                lanternMsg[i].battleTitleTw.SetUpdate(true);
                 lanternMsg[i].battleTitleTw.SetEase(Ease.Linear);
                 lanternMsg[i].battleTitleTw.OnComplete(LanternMoveEnd);
                 if (Time.timeScale != 0.0f)
@@ -106,21 +107,21 @@ public class Lantern : MonoBehaviour
         lanternMsg.Clear();
         gameObject.SetActive(false);
     }
-    public void OnSpeedChange(System.EventArgs args)
-    {
-        float curTimeScale = 1.0f;
-        if (Time.timeScale != 0.0f)
-        {
-            curTimeScale = 1.0f / Time.timeScale;
-        }
+    //public void OnSpeedChange(System.EventArgs args)
+    //{
+    //    float curTimeScale = 1.0f;
+    //    if (Time.timeScale != 0.0f)
+    //    {
+    //        curTimeScale = 1.0f / Time.timeScale;
+    //    }
 
-        for (int i = 0; i < lanternMsg.Count; i++)
-        {
-            if (lanternMsg[i].battleTitleTw != null)
-            {
-                lanternMsg[i].battleTitleTw.timeScale = curTimeScale;
-            }
-        }
+    //    for (int i = 0; i < lanternMsg.Count; i++)
+    //    {
+    //        if (lanternMsg[i].battleTitleTw != null)
+    //        {
+    //            lanternMsg[i].battleTitleTw.timeScale = curTimeScale;
+    //        }
+    //    }
 
-    }
+    //}
 }

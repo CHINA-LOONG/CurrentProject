@@ -39,6 +39,15 @@ message ItemState
 	required int32 useCountDaily = 2;
 }
 
+message HoleState
+{
+	required int32 holeId = 1;
+	required bool isOpen = 2;
+
+	// 当isOpen==true时，包含此值
+	optional int32 countDaily = 3;
+}
+
 // protocol-----------------------------------------------------
 
 message HSStatisticsInfoSync
@@ -73,10 +82,18 @@ message HSStatisticsInfoSync
 	repeated ItemState itemState = 14;
 	// 今日副本挑战重置次数
 	required int32 instanceResetCount = 15;
+	// 洞开启状态
+	repeated HoleState holeState = 16;
 }
 
 // SYNC_DAILY_REFRESH_S
 message HSSyncDailyRefresh
+{
+	repeated HoleState holeState = 1;
+}
+
+// SYNC_MONTHLY_REFRESH_S
+message HSSyncMonthlyRefresh
 {
 }
 

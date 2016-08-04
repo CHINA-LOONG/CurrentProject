@@ -34,7 +34,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &131416
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -159,14 +159,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aniName: fadeout
+  spellNameAni: fadeout
   criticalAniName: critical_fadeout
   damageFont: {fileID: 12800000, guid: b3ca372a7fe572b46bae93d81764ec54, type: 2}
   healFont: {fileID: 12800000, guid: 3172aabf19bdf434e98207d347e70252, type: 2}
   vitalWnd: {fileID: 11410706}
-  vitalBackImage: {fileID: 11404220}
-  criticalSprite: {fileID: 21300000, guid: 16a8c9f57d8962e49b810e7a9a5c8000, type: 3}
-  criticalHealSprite: {fileID: 21300000, guid: 69db06e5a2a30e14fba92527747fa856, type: 3}
   hitResult: {fileID: 11454562}
+  criticalColor: {r: .903448343, g: 1, b: 0, a: 1}
+  absorbColor: {r: .210016698, g: .691176474, b: .0203287397, a: 1}
+  interruptColor: {r: 1, g: 0, b: 0, a: 1}
+  spellnameColor: {r: .688797593, g: .911675215, b: .95588237, a: 1}
 --- !u!114 &11454562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: .588235259, g: .477150679, b: .0129757905, a: 1}
+  m_EffectColor: {r: .192861944, g: .0434688404, b: .985294104, a: 1}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!222 &22222478
@@ -325,7 +327,39 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: criticalColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: absorbColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: interruptColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spellnameColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spellNameAni
+      value: fadeout
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spellnameColor.r
+      value: .688797593
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spellnameColor.g
+      value: .911675215
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spellnameColor.b
+      value: .95588237
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131416}

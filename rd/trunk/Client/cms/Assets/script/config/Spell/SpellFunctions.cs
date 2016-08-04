@@ -13,14 +13,16 @@ public class SpellFunctions
         return 0.0f;
     }
 
-    public static float GetPropertyDamageRatio(int casterProp, int targetProp)
+    public static float GetPropertyDamageRatio(int casterProp, int targetProp, ref bool isKezhi)
     {
         //propertyGold->guang propertyEarth->an
+        isKezhi = false;
         float damageRatio = 1.0f;
         if (casterProp == SpellConst.propertyGold)
         {
             if (targetProp == SpellConst.propertyEarth)
             {
+                isKezhi = true;
                 return SpellConst.propertyEnhance;
             }
         }
@@ -28,6 +30,7 @@ public class SpellFunctions
         {
             if (targetProp == SpellConst.propertyWater)
             {
+                isKezhi = true;
                 return SpellConst.propertyEnhance;
             }
             else if (targetProp == SpellConst.propertyFire)
@@ -39,6 +42,7 @@ public class SpellFunctions
         {
             if (targetProp == SpellConst.propertyFire)
             {
+                isKezhi = true;
                 return SpellConst.propertyEnhance;
             }
             else if (targetProp == SpellConst.propertyWood)
@@ -50,6 +54,7 @@ public class SpellFunctions
         {
             if (targetProp == SpellConst.propertyWood)
             {
+                isKezhi = true;
                 return SpellConst.propertyEnhance;
             }
             else if (targetProp == SpellConst.propertyWater)
@@ -61,6 +66,7 @@ public class SpellFunctions
         {
             if (targetProp == SpellConst.propertyGold)
             {
+                isKezhi = true;
                 return SpellConst.propertyEnhance;
             }
         }

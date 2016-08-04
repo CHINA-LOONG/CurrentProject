@@ -37,7 +37,7 @@ public class UIBattle : UIBase
     public BattleGroupUI m_PlayerGroupUI;
     public PetSwitchPage m_PetPanel;
     public DazhaoTip dazhaoTip;
-    public Text levelIndex;
+    //public Text levelIndex;
 
     [HideInInspector]
     public UIFazhen uiFazhen;
@@ -46,12 +46,16 @@ public class UIBattle : UIBase
 
     private int m_BattleSpeed = 1;
 	private	int	m_MaxSpeed = 3;
-
-    GameObject startBattleUI = null;
-	Animator animator;
-
+    private Animator animator;
     private MsgBox.PrompCostMsg reviveWnd;
     //private int reviveIndex;
+    struct SpellVitalChangeData
+    {
+        public SpellVitalChangeArgs vitalChangeArgs;
+        public float showTime;
+    }
+    private List<SpellVitalChangeData> mVitalChangeList = new List<SpellVitalChangeData>();
+    private List<SpellVitalChangeData> mSpellNameList = new List<SpellVitalChangeData>();
 
 	static UIBattle instance = null;
 	public static UIBattle Instance
@@ -92,12 +96,15 @@ public class UIBattle : UIBase
 
 		animator = GetComponent<Animator> ();
 		AniControl.battleUIState = Animator.StringToHash ("battleUIState");
+
+        mSpellNameList.Clear();
+        mVitalChangeList.Clear();
     }
 
     public override void Init()
     {
         //TODO：战斗界面不会隐藏了，只会删除
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
         m_PetPanel.Hide(BattleConst.closeSwitchPetUI);
     }
 
@@ -121,26 +128,6 @@ public class UIBattle : UIBase
     {
         UnBindListener();
     }
-
-    public void SetBattleLevelProcess(int curIndex, int maxIndex)
-    {
-        levelIndex.text = curIndex.ToString() + "/" + maxIndex.ToString();
-    }
-
-    public void ShowStartBattleUI()
-    {
-        //GameObject starBattlePrefab = ResourceMgr.Instance.LoadAsset("startBattle") as GameObject;
-        startBattleUI = ResourceMgr.Instance.LoadAsset("startBattle");
-        startBattleUI.transform.SetParent(publicTopGroup, false);
-        //Animator startBattleUIAni = startBattleUI.GetComponent<Animator>();
-        //startBattleUIAni.gameObject.SetActive(true);
-    }
-
-    public void DestroyStartBattleUI()
-    {
-        ResourceMgr.Instance.DestroyAsset(startBattleUI);
-    }
-
     public void ShowReviveUI(int reviveCount)
     {
         switch (reviveCount)
@@ -276,10 +263,21 @@ public class UIBattle : UIBase
             lifeChange.vitalType != (int)VitalType.Vital_Type_Shield
             )
         {
-            //GameObject prefab = ResourceMgr.Instance.LoadAsset("ui/battle", "VitalChange");
-            GameObject go = ResourceMgr.Instance.LoadAsset("VitalChange");
-            UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
-            uiVitalChangeView.ShowVitalChange(lifeChange, gameObject.transform as RectTransform);
+            SpellVitalChangeData vitalChangeData = new SpellVitalChangeData();
+            vitalChangeData.vitalChangeArgs = lifeChange;
+            if (lifeChange.vitalType == (int)VitalType.Vital_Type_SpellName)
+            {
+                vitalChangeData.showTime = Time.time + BattleConst.intervalTime * mSpellNameList.Count;
+                mSpellNameList.Add(vitalChangeData);
+            }
+            else
+            {
+                vitalChangeData.showTime = Time.time + BattleConst.intervalTime * mVitalChangeList.Count;
+                mVitalChangeList.Add(vitalChangeData);
+                //GameObject go = ResourceMgr.Instance.LoadAsset("VitalChange");
+                //UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
+                //uiVitalChangeView.ShowVitalChange(lifeChange, gameObject.transform as RectTransform);
+            }
         }
     }
 
@@ -319,6 +317,38 @@ public class UIBattle : UIBase
 			dazhaoTip.SetTipInfo((int)PhyDazhaoController.Instance.DazhaoLeftTime,
 			                     PhyDazhaoController.Instance.DazhaoUseCount,
 			                     PhyDazhaoController.Instance.DazhaoAllCount);
+        }
+
+        for (int i = mSpellNameList.Count - 1; i >= 0; i--)
+        {
+            SpellVitalChangeData vitalData = mSpellNameList[i];
+            if (vitalData.showTime <= Time.time)
+            {
+                GameObject go = ResourceMgr.Instance.LoadAsset("VitalChange");
+                UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
+                uiVitalChangeView.ShowVitalChange(vitalData.vitalChangeArgs, gameObject.transform as RectTransform);
+                mSpellNameList.Remove(vitalData);
+            }
+        }
+
+        for (int i = mVitalChangeList.Count - 1; i >= 0; i--)
+        {
+            SpellVitalChangeData vitalData = mVitalChangeList[i];
+            if (vitalData.showTime <= Time.time)
+            {
+                if (
+                    vitalData.vitalChangeArgs.vitalType == (int)VitalType.Vital_Type_Default &&
+                    vitalData.vitalChangeArgs.vitalChange == 0
+                    )
+                {
+                    mVitalChangeList.Remove(vitalData);
+                    continue;
+                }
+                GameObject go = ResourceMgr.Instance.LoadAsset("VitalChange");
+                UIVitalChangeView uiVitalChangeView = go.GetComponent<UIVitalChangeView>();
+                uiVitalChangeView.ShowVitalChange(vitalData.vitalChangeArgs, gameObject.transform as RectTransform);
+                mVitalChangeList.Remove(vitalData);
+            }
         }
 
         //if (reviveWnd != null)

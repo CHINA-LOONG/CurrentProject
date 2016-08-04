@@ -130,6 +130,9 @@ public enum VitalType
     Vital_Type_NoHeal,
     Vital_Type_PhyImmune,
     Vital_Type_MagicImmune,
+    Vital_Type_SpellName,//技能名
+    Vital_Type_Kezhi,//属性相克
+    Vital_Type_Critical,//暴击
 
     Num_Vital_Type
 }

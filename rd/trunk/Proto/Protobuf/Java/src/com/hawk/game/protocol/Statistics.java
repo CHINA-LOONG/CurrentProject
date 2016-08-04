@@ -3010,6 +3010,612 @@ public final class Statistics {
     // @@protoc_insertion_point(class_scope:ItemState)
   }
 
+  public interface HoleStateOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 holeId = 1;
+    /**
+     * <code>required int32 holeId = 1;</code>
+     */
+    boolean hasHoleId();
+    /**
+     * <code>required int32 holeId = 1;</code>
+     */
+    int getHoleId();
+
+    // required bool isOpen = 2;
+    /**
+     * <code>required bool isOpen = 2;</code>
+     */
+    boolean hasIsOpen();
+    /**
+     * <code>required bool isOpen = 2;</code>
+     */
+    boolean getIsOpen();
+
+    // optional int32 countDaily = 3;
+    /**
+     * <code>optional int32 countDaily = 3;</code>
+     *
+     * <pre>
+     * 当isOpen==true时，包含此值
+     * </pre>
+     */
+    boolean hasCountDaily();
+    /**
+     * <code>optional int32 countDaily = 3;</code>
+     *
+     * <pre>
+     * 当isOpen==true时，包含此值
+     * </pre>
+     */
+    int getCountDaily();
+  }
+  /**
+   * Protobuf type {@code HoleState}
+   */
+  public static final class HoleState extends
+      com.google.protobuf.GeneratedMessage
+      implements HoleStateOrBuilder {
+    // Use HoleState.newBuilder() to construct.
+    private HoleState(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HoleState(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HoleState defaultInstance;
+    public static HoleState getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HoleState getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HoleState(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              holeId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              isOpen_ = input.readBool();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              countDaily_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Statistics.internal_static_HoleState_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Statistics.internal_static_HoleState_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Statistics.HoleState.class, com.hawk.game.protocol.Statistics.HoleState.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HoleState> PARSER =
+        new com.google.protobuf.AbstractParser<HoleState>() {
+      public HoleState parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HoleState(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HoleState> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 holeId = 1;
+    public static final int HOLEID_FIELD_NUMBER = 1;
+    private int holeId_;
+    /**
+     * <code>required int32 holeId = 1;</code>
+     */
+    public boolean hasHoleId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 holeId = 1;</code>
+     */
+    public int getHoleId() {
+      return holeId_;
+    }
+
+    // required bool isOpen = 2;
+    public static final int ISOPEN_FIELD_NUMBER = 2;
+    private boolean isOpen_;
+    /**
+     * <code>required bool isOpen = 2;</code>
+     */
+    public boolean hasIsOpen() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required bool isOpen = 2;</code>
+     */
+    public boolean getIsOpen() {
+      return isOpen_;
+    }
+
+    // optional int32 countDaily = 3;
+    public static final int COUNTDAILY_FIELD_NUMBER = 3;
+    private int countDaily_;
+    /**
+     * <code>optional int32 countDaily = 3;</code>
+     *
+     * <pre>
+     * 当isOpen==true时，包含此值
+     * </pre>
+     */
+    public boolean hasCountDaily() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 countDaily = 3;</code>
+     *
+     * <pre>
+     * 当isOpen==true时，包含此值
+     * </pre>
+     */
+    public int getCountDaily() {
+      return countDaily_;
+    }
+
+    private void initFields() {
+      holeId_ = 0;
+      isOpen_ = false;
+      countDaily_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasHoleId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasIsOpen()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, holeId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(2, isOpen_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, countDaily_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, holeId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, isOpen_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, countDaily_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Statistics.HoleState parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.HoleState parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HoleState parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.HoleState parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HoleState parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HoleState parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HoleState parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HoleState parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HoleState parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HoleState parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Statistics.HoleState prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HoleState}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Statistics.HoleStateOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Statistics.internal_static_HoleState_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Statistics.internal_static_HoleState_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Statistics.HoleState.class, com.hawk.game.protocol.Statistics.HoleState.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Statistics.HoleState.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        holeId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        isOpen_ = false;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        countDaily_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Statistics.internal_static_HoleState_descriptor;
+      }
+
+      public com.hawk.game.protocol.Statistics.HoleState getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Statistics.HoleState.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Statistics.HoleState build() {
+        com.hawk.game.protocol.Statistics.HoleState result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Statistics.HoleState buildPartial() {
+        com.hawk.game.protocol.Statistics.HoleState result = new com.hawk.game.protocol.Statistics.HoleState(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.holeId_ = holeId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.isOpen_ = isOpen_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.countDaily_ = countDaily_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Statistics.HoleState) {
+          return mergeFrom((com.hawk.game.protocol.Statistics.HoleState)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Statistics.HoleState other) {
+        if (other == com.hawk.game.protocol.Statistics.HoleState.getDefaultInstance()) return this;
+        if (other.hasHoleId()) {
+          setHoleId(other.getHoleId());
+        }
+        if (other.hasIsOpen()) {
+          setIsOpen(other.getIsOpen());
+        }
+        if (other.hasCountDaily()) {
+          setCountDaily(other.getCountDaily());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasHoleId()) {
+          
+          return false;
+        }
+        if (!hasIsOpen()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Statistics.HoleState parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Statistics.HoleState) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 holeId = 1;
+      private int holeId_ ;
+      /**
+       * <code>required int32 holeId = 1;</code>
+       */
+      public boolean hasHoleId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 holeId = 1;</code>
+       */
+      public int getHoleId() {
+        return holeId_;
+      }
+      /**
+       * <code>required int32 holeId = 1;</code>
+       */
+      public Builder setHoleId(int value) {
+        bitField0_ |= 0x00000001;
+        holeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 holeId = 1;</code>
+       */
+      public Builder clearHoleId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        holeId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required bool isOpen = 2;
+      private boolean isOpen_ ;
+      /**
+       * <code>required bool isOpen = 2;</code>
+       */
+      public boolean hasIsOpen() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required bool isOpen = 2;</code>
+       */
+      public boolean getIsOpen() {
+        return isOpen_;
+      }
+      /**
+       * <code>required bool isOpen = 2;</code>
+       */
+      public Builder setIsOpen(boolean value) {
+        bitField0_ |= 0x00000002;
+        isOpen_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool isOpen = 2;</code>
+       */
+      public Builder clearIsOpen() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        isOpen_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 countDaily = 3;
+      private int countDaily_ ;
+      /**
+       * <code>optional int32 countDaily = 3;</code>
+       *
+       * <pre>
+       * 当isOpen==true时，包含此值
+       * </pre>
+       */
+      public boolean hasCountDaily() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 countDaily = 3;</code>
+       *
+       * <pre>
+       * 当isOpen==true时，包含此值
+       * </pre>
+       */
+      public int getCountDaily() {
+        return countDaily_;
+      }
+      /**
+       * <code>optional int32 countDaily = 3;</code>
+       *
+       * <pre>
+       * 当isOpen==true时，包含此值
+       * </pre>
+       */
+      public Builder setCountDaily(int value) {
+        bitField0_ |= 0x00000004;
+        countDaily_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 countDaily = 3;</code>
+       *
+       * <pre>
+       * 当isOpen==true时，包含此值
+       * </pre>
+       */
+      public Builder clearCountDaily() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        countDaily_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HoleState)
+    }
+
+    static {
+      defaultInstance = new HoleState(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HoleState)
+  }
+
   public interface HSStatisticsInfoSyncOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -3406,6 +4012,51 @@ public final class Statistics {
      * </pre>
      */
     int getInstanceResetCount();
+
+    // repeated .HoleState holeState = 16;
+    /**
+     * <code>repeated .HoleState holeState = 16;</code>
+     *
+     * <pre>
+     * 洞开启状态
+     * </pre>
+     */
+    java.util.List<com.hawk.game.protocol.Statistics.HoleState> 
+        getHoleStateList();
+    /**
+     * <code>repeated .HoleState holeState = 16;</code>
+     *
+     * <pre>
+     * 洞开启状态
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.HoleState getHoleState(int index);
+    /**
+     * <code>repeated .HoleState holeState = 16;</code>
+     *
+     * <pre>
+     * 洞开启状态
+     * </pre>
+     */
+    int getHoleStateCount();
+    /**
+     * <code>repeated .HoleState holeState = 16;</code>
+     *
+     * <pre>
+     * 洞开启状态
+     * </pre>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Statistics.HoleStateOrBuilder> 
+        getHoleStateOrBuilderList();
+    /**
+     * <code>repeated .HoleState holeState = 16;</code>
+     *
+     * <pre>
+     * 洞开启状态
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.HoleStateOrBuilder getHoleStateOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code HSStatisticsInfoSync}
@@ -3561,6 +4212,14 @@ public final class Statistics {
               instanceResetCount_ = input.readInt32();
               break;
             }
+            case 130: {
+              if (!((mutable_bitField0_ & 0x00008000) == 0x00008000)) {
+                holeState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.HoleState>();
+                mutable_bitField0_ |= 0x00008000;
+              }
+              holeState_.add(input.readMessage(com.hawk.game.protocol.Statistics.HoleState.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3580,6 +4239,9 @@ public final class Statistics {
         }
         if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
           itemState_ = java.util.Collections.unmodifiableList(itemState_);
+        }
+        if (((mutable_bitField0_ & 0x00008000) == 0x00008000)) {
+          holeState_ = java.util.Collections.unmodifiableList(holeState_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -4142,6 +4804,62 @@ public final class Statistics {
       return instanceResetCount_;
     }
 
+    // repeated .HoleState holeState = 16;
+    public static final int HOLESTATE_FIELD_NUMBER = 16;
+    private java.util.List<com.hawk.game.protocol.Statistics.HoleState> holeState_;
+    /**
+     * <code>repeated .HoleState holeState = 16;</code>
+     *
+     * <pre>
+     * 洞开启状态
+     * </pre>
+     */
+    public java.util.List<com.hawk.game.protocol.Statistics.HoleState> getHoleStateList() {
+      return holeState_;
+    }
+    /**
+     * <code>repeated .HoleState holeState = 16;</code>
+     *
+     * <pre>
+     * 洞开启状态
+     * </pre>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Statistics.HoleStateOrBuilder> 
+        getHoleStateOrBuilderList() {
+      return holeState_;
+    }
+    /**
+     * <code>repeated .HoleState holeState = 16;</code>
+     *
+     * <pre>
+     * 洞开启状态
+     * </pre>
+     */
+    public int getHoleStateCount() {
+      return holeState_.size();
+    }
+    /**
+     * <code>repeated .HoleState holeState = 16;</code>
+     *
+     * <pre>
+     * 洞开启状态
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.HoleState getHoleState(int index) {
+      return holeState_.get(index);
+    }
+    /**
+     * <code>repeated .HoleState holeState = 16;</code>
+     *
+     * <pre>
+     * 洞开启状态
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.HoleStateOrBuilder getHoleStateOrBuilder(
+        int index) {
+      return holeState_.get(index);
+    }
+
     private void initFields() {
       instanceState_ = java.util.Collections.emptyList();
       chapterState_ = com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
@@ -4158,6 +4876,7 @@ public final class Statistics {
       expLeftTimes_ = com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.getDefaultInstance();
       itemState_ = java.util.Collections.emptyList();
       instanceResetCount_ = 0;
+      holeState_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4230,6 +4949,12 @@ public final class Statistics {
           return false;
         }
       }
+      for (int i = 0; i < getHoleStateCount(); i++) {
+        if (!getHoleState(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4281,6 +5006,9 @@ public final class Statistics {
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeInt32(15, instanceResetCount_);
+      }
+      for (int i = 0; i < holeState_.size(); i++) {
+        output.writeMessage(16, holeState_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -4355,6 +5083,10 @@ public final class Statistics {
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(15, instanceResetCount_);
+      }
+      for (int i = 0; i < holeState_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, holeState_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4469,6 +5201,7 @@ public final class Statistics {
           getRechargeStateFieldBuilder();
           getExpLeftTimesFieldBuilder();
           getItemStateFieldBuilder();
+          getHoleStateFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4527,6 +5260,12 @@ public final class Statistics {
         }
         instanceResetCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00004000);
+        if (holeStateBuilder_ == null) {
+          holeState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00008000);
+        } else {
+          holeStateBuilder_.clear();
+        }
         return this;
       }
 
@@ -4640,6 +5379,15 @@ public final class Statistics {
           to_bitField0_ |= 0x00000400;
         }
         result.instanceResetCount_ = instanceResetCount_;
+        if (holeStateBuilder_ == null) {
+          if (((bitField0_ & 0x00008000) == 0x00008000)) {
+            holeState_ = java.util.Collections.unmodifiableList(holeState_);
+            bitField0_ = (bitField0_ & ~0x00008000);
+          }
+          result.holeState_ = holeState_;
+        } else {
+          result.holeState_ = holeStateBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4779,6 +5527,32 @@ public final class Statistics {
         if (other.hasInstanceResetCount()) {
           setInstanceResetCount(other.getInstanceResetCount());
         }
+        if (holeStateBuilder_ == null) {
+          if (!other.holeState_.isEmpty()) {
+            if (holeState_.isEmpty()) {
+              holeState_ = other.holeState_;
+              bitField0_ = (bitField0_ & ~0x00008000);
+            } else {
+              ensureHoleStateIsMutable();
+              holeState_.addAll(other.holeState_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.holeState_.isEmpty()) {
+            if (holeStateBuilder_.isEmpty()) {
+              holeStateBuilder_.dispose();
+              holeStateBuilder_ = null;
+              holeState_ = other.holeState_;
+              bitField0_ = (bitField0_ & ~0x00008000);
+              holeStateBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getHoleStateFieldBuilder() : null;
+            } else {
+              holeStateBuilder_.addAllMessages(other.holeState_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -4846,6 +5620,12 @@ public final class Statistics {
         }
         for (int i = 0; i < getItemStateCount(); i++) {
           if (!getItemState(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getHoleStateCount(); i++) {
+          if (!getHoleState(i).isInitialized()) {
             
             return false;
           }
@@ -6733,6 +7513,318 @@ public final class Statistics {
         return this;
       }
 
+      // repeated .HoleState holeState = 16;
+      private java.util.List<com.hawk.game.protocol.Statistics.HoleState> holeState_ =
+        java.util.Collections.emptyList();
+      private void ensureHoleStateIsMutable() {
+        if (!((bitField0_ & 0x00008000) == 0x00008000)) {
+          holeState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.HoleState>(holeState_);
+          bitField0_ |= 0x00008000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.HoleState, com.hawk.game.protocol.Statistics.HoleState.Builder, com.hawk.game.protocol.Statistics.HoleStateOrBuilder> holeStateBuilder_;
+
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public java.util.List<com.hawk.game.protocol.Statistics.HoleState> getHoleStateList() {
+        if (holeStateBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(holeState_);
+        } else {
+          return holeStateBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public int getHoleStateCount() {
+        if (holeStateBuilder_ == null) {
+          return holeState_.size();
+        } else {
+          return holeStateBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.HoleState getHoleState(int index) {
+        if (holeStateBuilder_ == null) {
+          return holeState_.get(index);
+        } else {
+          return holeStateBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public Builder setHoleState(
+          int index, com.hawk.game.protocol.Statistics.HoleState value) {
+        if (holeStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHoleStateIsMutable();
+          holeState_.set(index, value);
+          onChanged();
+        } else {
+          holeStateBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public Builder setHoleState(
+          int index, com.hawk.game.protocol.Statistics.HoleState.Builder builderForValue) {
+        if (holeStateBuilder_ == null) {
+          ensureHoleStateIsMutable();
+          holeState_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          holeStateBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public Builder addHoleState(com.hawk.game.protocol.Statistics.HoleState value) {
+        if (holeStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHoleStateIsMutable();
+          holeState_.add(value);
+          onChanged();
+        } else {
+          holeStateBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public Builder addHoleState(
+          int index, com.hawk.game.protocol.Statistics.HoleState value) {
+        if (holeStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHoleStateIsMutable();
+          holeState_.add(index, value);
+          onChanged();
+        } else {
+          holeStateBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public Builder addHoleState(
+          com.hawk.game.protocol.Statistics.HoleState.Builder builderForValue) {
+        if (holeStateBuilder_ == null) {
+          ensureHoleStateIsMutable();
+          holeState_.add(builderForValue.build());
+          onChanged();
+        } else {
+          holeStateBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public Builder addHoleState(
+          int index, com.hawk.game.protocol.Statistics.HoleState.Builder builderForValue) {
+        if (holeStateBuilder_ == null) {
+          ensureHoleStateIsMutable();
+          holeState_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          holeStateBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public Builder addAllHoleState(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Statistics.HoleState> values) {
+        if (holeStateBuilder_ == null) {
+          ensureHoleStateIsMutable();
+          super.addAll(values, holeState_);
+          onChanged();
+        } else {
+          holeStateBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public Builder clearHoleState() {
+        if (holeStateBuilder_ == null) {
+          holeState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00008000);
+          onChanged();
+        } else {
+          holeStateBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public Builder removeHoleState(int index) {
+        if (holeStateBuilder_ == null) {
+          ensureHoleStateIsMutable();
+          holeState_.remove(index);
+          onChanged();
+        } else {
+          holeStateBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.HoleState.Builder getHoleStateBuilder(
+          int index) {
+        return getHoleStateFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.HoleStateOrBuilder getHoleStateOrBuilder(
+          int index) {
+        if (holeStateBuilder_ == null) {
+          return holeState_.get(index);  } else {
+          return holeStateBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Statistics.HoleStateOrBuilder> 
+           getHoleStateOrBuilderList() {
+        if (holeStateBuilder_ != null) {
+          return holeStateBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(holeState_);
+        }
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.HoleState.Builder addHoleStateBuilder() {
+        return getHoleStateFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Statistics.HoleState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.HoleState.Builder addHoleStateBuilder(
+          int index) {
+        return getHoleStateFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Statistics.HoleState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HoleState holeState = 16;</code>
+       *
+       * <pre>
+       * 洞开启状态
+       * </pre>
+       */
+      public java.util.List<com.hawk.game.protocol.Statistics.HoleState.Builder> 
+           getHoleStateBuilderList() {
+        return getHoleStateFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.HoleState, com.hawk.game.protocol.Statistics.HoleState.Builder, com.hawk.game.protocol.Statistics.HoleStateOrBuilder> 
+          getHoleStateFieldBuilder() {
+        if (holeStateBuilder_ == null) {
+          holeStateBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Statistics.HoleState, com.hawk.game.protocol.Statistics.HoleState.Builder, com.hawk.game.protocol.Statistics.HoleStateOrBuilder>(
+                  holeState_,
+                  ((bitField0_ & 0x00008000) == 0x00008000),
+                  getParentForChildren(),
+                  isClean());
+          holeState_ = null;
+        }
+        return holeStateBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:HSStatisticsInfoSync)
     }
 
@@ -6746,6 +7838,31 @@ public final class Statistics {
 
   public interface HSSyncDailyRefreshOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .HoleState holeState = 1;
+    /**
+     * <code>repeated .HoleState holeState = 1;</code>
+     */
+    java.util.List<com.hawk.game.protocol.Statistics.HoleState> 
+        getHoleStateList();
+    /**
+     * <code>repeated .HoleState holeState = 1;</code>
+     */
+    com.hawk.game.protocol.Statistics.HoleState getHoleState(int index);
+    /**
+     * <code>repeated .HoleState holeState = 1;</code>
+     */
+    int getHoleStateCount();
+    /**
+     * <code>repeated .HoleState holeState = 1;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Statistics.HoleStateOrBuilder> 
+        getHoleStateOrBuilderList();
+    /**
+     * <code>repeated .HoleState holeState = 1;</code>
+     */
+    com.hawk.game.protocol.Statistics.HoleStateOrBuilder getHoleStateOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code HSSyncDailyRefresh}
@@ -6784,6 +7901,7 @@ public final class Statistics {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -6801,6 +7919,14 @@ public final class Statistics {
               }
               break;
             }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                holeState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.HoleState>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              holeState_.add(input.readMessage(com.hawk.game.protocol.Statistics.HoleState.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -6809,6 +7935,9 @@ public final class Statistics {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          holeState_ = java.util.Collections.unmodifiableList(holeState_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -6840,13 +7969,56 @@ public final class Statistics {
       return PARSER;
     }
 
+    // repeated .HoleState holeState = 1;
+    public static final int HOLESTATE_FIELD_NUMBER = 1;
+    private java.util.List<com.hawk.game.protocol.Statistics.HoleState> holeState_;
+    /**
+     * <code>repeated .HoleState holeState = 1;</code>
+     */
+    public java.util.List<com.hawk.game.protocol.Statistics.HoleState> getHoleStateList() {
+      return holeState_;
+    }
+    /**
+     * <code>repeated .HoleState holeState = 1;</code>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Statistics.HoleStateOrBuilder> 
+        getHoleStateOrBuilderList() {
+      return holeState_;
+    }
+    /**
+     * <code>repeated .HoleState holeState = 1;</code>
+     */
+    public int getHoleStateCount() {
+      return holeState_.size();
+    }
+    /**
+     * <code>repeated .HoleState holeState = 1;</code>
+     */
+    public com.hawk.game.protocol.Statistics.HoleState getHoleState(int index) {
+      return holeState_.get(index);
+    }
+    /**
+     * <code>repeated .HoleState holeState = 1;</code>
+     */
+    public com.hawk.game.protocol.Statistics.HoleStateOrBuilder getHoleStateOrBuilder(
+        int index) {
+      return holeState_.get(index);
+    }
+
     private void initFields() {
+      holeState_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      for (int i = 0; i < getHoleStateCount(); i++) {
+        if (!getHoleState(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -6854,6 +8026,9 @@ public final class Statistics {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      for (int i = 0; i < holeState_.size(); i++) {
+        output.writeMessage(1, holeState_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -6863,6 +8038,10 @@ public final class Statistics {
       if (size != -1) return size;
 
       size = 0;
+      for (int i = 0; i < holeState_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, holeState_.get(i));
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -6975,6 +8154,7 @@ public final class Statistics {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getHoleStateFieldBuilder();
         }
       }
       private static Builder create() {
@@ -6983,6 +8163,12 @@ public final class Statistics {
 
       public Builder clear() {
         super.clear();
+        if (holeStateBuilder_ == null) {
+          holeState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          holeStateBuilder_.clear();
+        }
         return this;
       }
 
@@ -7009,6 +8195,16 @@ public final class Statistics {
 
       public com.hawk.game.protocol.Statistics.HSSyncDailyRefresh buildPartial() {
         com.hawk.game.protocol.Statistics.HSSyncDailyRefresh result = new com.hawk.game.protocol.Statistics.HSSyncDailyRefresh(this);
+        int from_bitField0_ = bitField0_;
+        if (holeStateBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            holeState_ = java.util.Collections.unmodifiableList(holeState_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.holeState_ = holeState_;
+        } else {
+          result.holeState_ = holeStateBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -7024,11 +8220,43 @@ public final class Statistics {
 
       public Builder mergeFrom(com.hawk.game.protocol.Statistics.HSSyncDailyRefresh other) {
         if (other == com.hawk.game.protocol.Statistics.HSSyncDailyRefresh.getDefaultInstance()) return this;
+        if (holeStateBuilder_ == null) {
+          if (!other.holeState_.isEmpty()) {
+            if (holeState_.isEmpty()) {
+              holeState_ = other.holeState_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureHoleStateIsMutable();
+              holeState_.addAll(other.holeState_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.holeState_.isEmpty()) {
+            if (holeStateBuilder_.isEmpty()) {
+              holeStateBuilder_.dispose();
+              holeStateBuilder_ = null;
+              holeState_ = other.holeState_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              holeStateBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getHoleStateFieldBuilder() : null;
+            } else {
+              holeStateBuilder_.addAllMessages(other.holeState_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        for (int i = 0; i < getHoleStateCount(); i++) {
+          if (!getHoleState(i).isInitialized()) {
+            
+            return false;
+          }
+        }
         return true;
       }
 
@@ -7049,6 +8277,247 @@ public final class Statistics {
         }
         return this;
       }
+      private int bitField0_;
+
+      // repeated .HoleState holeState = 1;
+      private java.util.List<com.hawk.game.protocol.Statistics.HoleState> holeState_ =
+        java.util.Collections.emptyList();
+      private void ensureHoleStateIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          holeState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.HoleState>(holeState_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.HoleState, com.hawk.game.protocol.Statistics.HoleState.Builder, com.hawk.game.protocol.Statistics.HoleStateOrBuilder> holeStateBuilder_;
+
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Statistics.HoleState> getHoleStateList() {
+        if (holeStateBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(holeState_);
+        } else {
+          return holeStateBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public int getHoleStateCount() {
+        if (holeStateBuilder_ == null) {
+          return holeState_.size();
+        } else {
+          return holeStateBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public com.hawk.game.protocol.Statistics.HoleState getHoleState(int index) {
+        if (holeStateBuilder_ == null) {
+          return holeState_.get(index);
+        } else {
+          return holeStateBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public Builder setHoleState(
+          int index, com.hawk.game.protocol.Statistics.HoleState value) {
+        if (holeStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHoleStateIsMutable();
+          holeState_.set(index, value);
+          onChanged();
+        } else {
+          holeStateBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public Builder setHoleState(
+          int index, com.hawk.game.protocol.Statistics.HoleState.Builder builderForValue) {
+        if (holeStateBuilder_ == null) {
+          ensureHoleStateIsMutable();
+          holeState_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          holeStateBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public Builder addHoleState(com.hawk.game.protocol.Statistics.HoleState value) {
+        if (holeStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHoleStateIsMutable();
+          holeState_.add(value);
+          onChanged();
+        } else {
+          holeStateBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public Builder addHoleState(
+          int index, com.hawk.game.protocol.Statistics.HoleState value) {
+        if (holeStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHoleStateIsMutable();
+          holeState_.add(index, value);
+          onChanged();
+        } else {
+          holeStateBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public Builder addHoleState(
+          com.hawk.game.protocol.Statistics.HoleState.Builder builderForValue) {
+        if (holeStateBuilder_ == null) {
+          ensureHoleStateIsMutable();
+          holeState_.add(builderForValue.build());
+          onChanged();
+        } else {
+          holeStateBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public Builder addHoleState(
+          int index, com.hawk.game.protocol.Statistics.HoleState.Builder builderForValue) {
+        if (holeStateBuilder_ == null) {
+          ensureHoleStateIsMutable();
+          holeState_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          holeStateBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public Builder addAllHoleState(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Statistics.HoleState> values) {
+        if (holeStateBuilder_ == null) {
+          ensureHoleStateIsMutable();
+          super.addAll(values, holeState_);
+          onChanged();
+        } else {
+          holeStateBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public Builder clearHoleState() {
+        if (holeStateBuilder_ == null) {
+          holeState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          holeStateBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public Builder removeHoleState(int index) {
+        if (holeStateBuilder_ == null) {
+          ensureHoleStateIsMutable();
+          holeState_.remove(index);
+          onChanged();
+        } else {
+          holeStateBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public com.hawk.game.protocol.Statistics.HoleState.Builder getHoleStateBuilder(
+          int index) {
+        return getHoleStateFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public com.hawk.game.protocol.Statistics.HoleStateOrBuilder getHoleStateOrBuilder(
+          int index) {
+        if (holeStateBuilder_ == null) {
+          return holeState_.get(index);  } else {
+          return holeStateBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Statistics.HoleStateOrBuilder> 
+           getHoleStateOrBuilderList() {
+        if (holeStateBuilder_ != null) {
+          return holeStateBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(holeState_);
+        }
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public com.hawk.game.protocol.Statistics.HoleState.Builder addHoleStateBuilder() {
+        return getHoleStateFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Statistics.HoleState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public com.hawk.game.protocol.Statistics.HoleState.Builder addHoleStateBuilder(
+          int index) {
+        return getHoleStateFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Statistics.HoleState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HoleState holeState = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Statistics.HoleState.Builder> 
+           getHoleStateBuilderList() {
+        return getHoleStateFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.HoleState, com.hawk.game.protocol.Statistics.HoleState.Builder, com.hawk.game.protocol.Statistics.HoleStateOrBuilder> 
+          getHoleStateFieldBuilder() {
+        if (holeStateBuilder_ == null) {
+          holeStateBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Statistics.HoleState, com.hawk.game.protocol.Statistics.HoleState.Builder, com.hawk.game.protocol.Statistics.HoleStateOrBuilder>(
+                  holeState_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          holeState_ = null;
+        }
+        return holeStateBuilder_;
+      }
 
       // @@protoc_insertion_point(builder_scope:HSSyncDailyRefresh)
     }
@@ -7059,6 +8528,323 @@ public final class Statistics {
     }
 
     // @@protoc_insertion_point(class_scope:HSSyncDailyRefresh)
+  }
+
+  public interface HSSyncMonthlyRefreshOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSSyncMonthlyRefresh}
+   *
+   * <pre>
+   * SYNC_MONTHLY_REFRESH_S
+   * </pre>
+   */
+  public static final class HSSyncMonthlyRefresh extends
+      com.google.protobuf.GeneratedMessage
+      implements HSSyncMonthlyRefreshOrBuilder {
+    // Use HSSyncMonthlyRefresh.newBuilder() to construct.
+    private HSSyncMonthlyRefresh(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSSyncMonthlyRefresh(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSSyncMonthlyRefresh defaultInstance;
+    public static HSSyncMonthlyRefresh getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSSyncMonthlyRefresh getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSSyncMonthlyRefresh(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Statistics.internal_static_HSSyncMonthlyRefresh_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Statistics.internal_static_HSSyncMonthlyRefresh_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh.class, com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSSyncMonthlyRefresh> PARSER =
+        new com.google.protobuf.AbstractParser<HSSyncMonthlyRefresh>() {
+      public HSSyncMonthlyRefresh parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSSyncMonthlyRefresh(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSSyncMonthlyRefresh> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSSyncMonthlyRefresh}
+     *
+     * <pre>
+     * SYNC_MONTHLY_REFRESH_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Statistics.HSSyncMonthlyRefreshOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncMonthlyRefresh_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncMonthlyRefresh_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh.class, com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncMonthlyRefresh_descriptor;
+      }
+
+      public com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh build() {
+        com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh buildPartial() {
+        com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh result = new com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh) {
+          return mergeFrom((com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh other) {
+        if (other == com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSSyncMonthlyRefresh)
+    }
+
+    static {
+      defaultInstance = new HSSyncMonthlyRefresh(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSSyncMonthlyRefresh)
   }
 
   public interface HSSyncShopRefreshOrBuilder
@@ -8091,6 +9877,11 @@ public final class Statistics {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ItemState_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HoleState_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HoleState_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSStatisticsInfoSync_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -8100,6 +9891,11 @@ public final class Statistics {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSSyncDailyRefresh_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSSyncMonthlyRefresh_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSSyncMonthlyRefresh_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSSyncShopRefresh_descriptor;
   private static
@@ -8128,22 +9924,25 @@ public final class Statistics {
       "ardBoxState\030\006 \003(\005\"4\n\rRechargeState\022\021\n\tpr" +
       "oductId\030\001 \002(\t\022\020\n\010buyTimes\030\002 \002(\005\"2\n\tItemS" +
       "tate\022\016\n\006itemId\030\001 \002(\t\022\025\n\ruseCountDaily\030\002 " +
-      "\002(\005\"\275\003\n\024HSStatisticsInfoSync\022%\n\rinstance",
-      "State\030\001 \003(\0132\016.InstanceState\022#\n\014chapterSt" +
-      "ate\030\002 \002(\0132\r.ChapterState\022\026\n\016monsterColle" +
-      "ct\030\003 \003(\t\022\017\n\007fatigue\030\004 \002(\005\022\030\n\020fatigueBegi" +
-      "nTime\030\005 \002(\005\022\022\n\nskillPoint\030\006 \002(\005\022\033\n\023skill" +
-      "PointBeginTime\030\007 \002(\005\022\021\n\ttimeStamp\030\010 \001(\005\022" +
-      "\026\n\016orderServerKey\030\t \002(\t\022%\n\rrechargeState" +
-      "\030\n \003(\0132\016.RechargeState\022\025\n\rmonthCardLeft\030" +
-      "\013 \002(\005\022\026\n\016gold2CoinTimes\030\014 \002(\005\022)\n\014expLeft" +
-      "Times\030\r \002(\0132\023.HSSyncExpLeftTimes\022\035\n\titem" +
-      "State\030\016 \003(\0132\n.ItemState\022\032\n\022instanceReset",
-      "Count\030\017 \002(\005\"\024\n\022HSSyncDailyRefresh\"%\n\021HSS" +
-      "yncShopRefresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSy" +
-      "ncExpLeftTimes\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n" +
-      "\rtripleExpLeft\030\002 \002(\005B\030\n\026com.hawk.game.pr" +
-      "otocol"
+      "\002(\005\"?\n\tHoleState\022\016\n\006holeId\030\001 \002(\005\022\016\n\006isOp",
+      "en\030\002 \002(\010\022\022\n\ncountDaily\030\003 \001(\005\"\334\003\n\024HSStati" +
+      "sticsInfoSync\022%\n\rinstanceState\030\001 \003(\0132\016.I" +
+      "nstanceState\022#\n\014chapterState\030\002 \002(\0132\r.Cha" +
+      "pterState\022\026\n\016monsterCollect\030\003 \003(\t\022\017\n\007fat" +
+      "igue\030\004 \002(\005\022\030\n\020fatigueBeginTime\030\005 \002(\005\022\022\n\n" +
+      "skillPoint\030\006 \002(\005\022\033\n\023skillPointBeginTime\030" +
+      "\007 \002(\005\022\021\n\ttimeStamp\030\010 \001(\005\022\026\n\016orderServerK" +
+      "ey\030\t \002(\t\022%\n\rrechargeState\030\n \003(\0132\016.Rechar" +
+      "geState\022\025\n\rmonthCardLeft\030\013 \002(\005\022\026\n\016gold2C" +
+      "oinTimes\030\014 \002(\005\022)\n\014expLeftTimes\030\r \002(\0132\023.H",
+      "SSyncExpLeftTimes\022\035\n\titemState\030\016 \003(\0132\n.I" +
+      "temState\022\032\n\022instanceResetCount\030\017 \002(\005\022\035\n\t" +
+      "holeState\030\020 \003(\0132\n.HoleState\"3\n\022HSSyncDai" +
+      "lyRefresh\022\035\n\tholeState\030\001 \003(\0132\n.HoleState" +
+      "\"\026\n\024HSSyncMonthlyRefresh\"%\n\021HSSyncShopRe" +
+      "fresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSyncExpLeft" +
+      "Times\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\rtripleEx" +
+      "pLeft\030\002 \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -8174,26 +9973,38 @@ public final class Statistics {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_ItemState_descriptor,
               new java.lang.String[] { "ItemId", "UseCountDaily", });
-          internal_static_HSStatisticsInfoSync_descriptor =
+          internal_static_HoleState_descriptor =
             getDescriptor().getMessageTypes().get(4);
+          internal_static_HoleState_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HoleState_descriptor,
+              new java.lang.String[] { "HoleId", "IsOpen", "CountDaily", });
+          internal_static_HSStatisticsInfoSync_descriptor =
+            getDescriptor().getMessageTypes().get(5);
           internal_static_HSStatisticsInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsInfoSync_descriptor,
-              new java.lang.String[] { "InstanceState", "ChapterState", "MonsterCollect", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "ItemState", "InstanceResetCount", });
+              new java.lang.String[] { "InstanceState", "ChapterState", "MonsterCollect", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "ItemState", "InstanceResetCount", "HoleState", });
           internal_static_HSSyncDailyRefresh_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_HSSyncDailyRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSyncDailyRefresh_descriptor,
+              new java.lang.String[] { "HoleState", });
+          internal_static_HSSyncMonthlyRefresh_descriptor =
+            getDescriptor().getMessageTypes().get(7);
+          internal_static_HSSyncMonthlyRefresh_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSSyncMonthlyRefresh_descriptor,
               new java.lang.String[] { });
           internal_static_HSSyncShopRefresh_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_HSSyncShopRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSyncShopRefresh_descriptor,
               new java.lang.String[] { "ShopType", });
           internal_static_HSSyncExpLeftTimes_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_HSSyncExpLeftTimes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSyncExpLeftTimes_descriptor,

@@ -152,7 +152,7 @@ public class MonsterIcon : MonoBehaviour
 	public	void	SetLevel(int level,bool bshow=true)
 	{
       //  levelImage.gameObject.SetActive(true);
-		levelText.gameObject.SetActive (true);
+		levelText.gameObject.SetActive (bshow);
 		levelText.text = level.ToString ();
 	}
 

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 public class HoleStaticData
 {
-	public string id;
+    public int id;
+	public string textId;
     public string time;
     public int count;
     public string openId;
@@ -13,7 +14,7 @@ public class HoleStaticData
 
 public class HoleData
 {
-    public string id;
+    public int id;
     public string time;
     public int count;
     public string openId;

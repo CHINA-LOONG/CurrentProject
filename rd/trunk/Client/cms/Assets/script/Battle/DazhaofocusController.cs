@@ -91,7 +91,7 @@ public class DazhaofocusController : MonoBehaviour
             battleObject.TriggerEvent(battleObject.unit.closeUp, Time.time, null);
         }
 
-		yield return new WaitForSeconds (BattleConst.dazhaoShowOffTime);
+		yield return new WaitForSeconds (BattleConst.dazhaoShowOffTime * Time.timeScale);
 		RestoreBattle ();
 	}
 

@@ -131,8 +131,10 @@ spell_stun,眩晕,Stun
 spell_hit_noheal,禁止恢复,Noheal
 spell_hit_physicalImmune,物理免疫,PhysicalImmune
 spell_hit_magicImmune,法术免疫,MagicImmune
+spell_kezhi,克制,Crushing
+spell_critical,暴击,Critical
 gain_pet,恭喜！你获得了,Congratulations! You received 
-battle_revive,花费 <quad material=1 size=20 x=0 y=0 width=1 height=1 />*{0}继续战斗吗？,Spend <quad material=1 size=20 x=0 y=0 width=1 height=1 />*{0} to continue battle?
+battle_revive,是否现在复活继续进行战斗？,Revive now to continue the battle?
 xl_quest,薛龙_任务界面,Loong
 quest_title,任务,Mission
 quest_juqingrenwu,剧情任务,Storyline
@@ -172,7 +174,7 @@ im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 equip_inlay_xiangqian,镶嵌,Embed
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
-equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
+equip_inlay_tips,"开孔将随机获得""1-{0}""个宝石槽","Opening Sockets will randomly reveal between ""1 and {0}"" of slots."
 equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
 equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
 equip_inlay_xiexia,卸下,Remove
@@ -307,7 +309,7 @@ instanceselect_open_003,"需要通关之前的副本才可以进行该副本的�
 instanceselect_open_004,需要通关全部普通副本后才能开启挑战难度哦！,You must clear all stages on Normal to unlock Heroic Difficulty!
 instanceselect_reward_001,该章节内所有副本均为3颗星就能领取奖励哦！,Achieve a 3 star rating on all stages in this chapter for a reward!
 instanceselect_reward_002,你已经领取过满星奖励了哦！,You have already collected the star completion reward.
-arrayselect_chongzhi_anniu,重置,
+arrayselect_chongzhi_anniu,重置,Reset
 arrayselect_saodangquan,扫荡券,
 main_levelup_pilao,当前活力,Current Energy
 main_levelup_shangxian,活力上限,Energy Limit
@@ -326,3 +328,14 @@ energy_hint_unhint,本次登录不再提示该界面,Don't show again for curren
 energy_hint_buy,购买并使用一个 {0}?,Buy and use one {0}?
 energy_hint_max,活力值已达到最大数量,Energy to the greatest numbe
 im_recordhuoli_002,活力值已达到最大数量,Energy to the greatest numbe
+arrayselect_saodang_reward,额外奖励,Bonus Rewards
+arrayselect_saodang_num,第 {0} 战,Battle {0}
+arrayselect_chongzhi,重置当前副本挑战次数,chongzhifubenahaha
+arrayselect_chongzhiTimes,今日已重置 {0} 次,jinrichongzhicishuahaha{0}
+arrayselect_count_001,今日剩余挑战次数不足，无法进行挑战,No more tries remaining today. Unable to enter.
+arrayselect_count_002,未上阵首发宠物，无法开始挑战,No starting monsters selected. Unable to start the battle.
+arrayselect_count_003,上阵宠物已满,Your monsters lineup is already full.
+arrayselect_count_004,等级达到 {0} 级就能开启这个站位哦,Player Level {0} is required to unlock this position.
+arrayselect_count_005,该宠物正在进行大冒险，无法上阵哦,This monster is currently on an adventure. Unable to enter battle now.
+unkonwCharacter,未知,Unknow
+zhanli:{0},战力：{0},BP:{0}

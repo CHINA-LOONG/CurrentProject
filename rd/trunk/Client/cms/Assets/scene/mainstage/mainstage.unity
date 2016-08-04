@@ -440,7 +440,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 128224, guid: 5aee64292a58b7a4f869446420e3c23b, type: 2}
       propertyPath: m_Name
-      value: hole_zuanshi
+      value: hole_jingyan
       objectReference: {fileID: 0}
     - target: {fileID: 2318126, guid: 5aee64292a58b7a4f869446420e3c23b, type: 2}
       propertyPath: m_CastShadows
@@ -1213,7 +1213,7 @@ MonoBehaviour:
   mTowerJuewangObj: {fileID: 346883010}
   mTowerSiwangObj: {fileID: 577714751}
   mHoleJinbiObj: {fileID: 1865886635}
-  mHoleZuanshiObj: {fileID: 367879646}
+  mHoleJingyanObj: {fileID: 367879646}
   mTowerGroup: {fileID: 1657453191}
   mHoleGroup: {fileID: 1496638330}
 --- !u!4 &1269970886

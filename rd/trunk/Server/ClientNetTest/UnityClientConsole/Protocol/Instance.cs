@@ -233,7 +233,7 @@ namespace PB
     }
   
     private HSRewardInfo _sweepReward = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"sweepReward", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"sweepReward", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
     public HSRewardInfo sweepReward
     {
@@ -349,6 +349,61 @@ namespace PB
       get { return _boxState; }
       set { _boxState = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSHoleEnter")]
+  public partial class HSHoleEnter : global::ProtoBuf.IExtensible
+  {
+    public HSHoleEnter() {}
+    
+    private int _holeId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"holeId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int holeId
+    {
+      get { return _holeId; }
+      set { _holeId = value; }
+    }
+    private string _instanceId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"instanceId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string instanceId
+    {
+      get { return _instanceId; }
+      set { _instanceId = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _battleMonsterId = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"battleMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> battleMonsterId
+    {
+      get { return _battleMonsterId; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSTowerEnter")]
+  public partial class HSTowerEnter : global::ProtoBuf.IExtensible
+  {
+    public HSTowerEnter() {}
+    
+    private int _towerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"towerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int towerId
+    {
+      get { return _towerId; }
+      set { _towerId = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _battleMonsterId = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"battleMonsterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> battleMonsterId
+    {
+      get { return _battleMonsterId; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
