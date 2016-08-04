@@ -49,10 +49,13 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 	private int postion;
 	
 	@Column(name = "exitTime")
-	private long exitTime = 0;
+	private int exitTime = 0;
 	
 	@Column(name = "joinTime")
-	private long joinTime = 0;
+	private int joinTime = 0;
+
+	@Column(name = "reportTime")
+	private int reportTime = 0;
 	
 	@Column(name = "createTime", nullable = false)
 	protected int createTime = 0;
@@ -107,7 +110,7 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 		return exitTime;
 	}
 
-	public void setExitTime(long exitTime) {
+	public void setExitTime(int exitTime) {
 		this.exitTime = exitTime;
 	}
 
@@ -115,8 +118,16 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 		return joinTime;
 	}
 
-	public void setJoinTime(long joinTime) {
+	public void setJoinTime(int joinTime) {
 		this.joinTime = joinTime;
+	}
+
+	public long getReportTime() {
+		return reportTime;
+	}
+
+	public void setReportTime(int reportTime) {
+		this.reportTime = reportTime;
 	}
 	
 	@Override

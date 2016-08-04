@@ -2,37 +2,24 @@ package com.hawk.game.manager;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.hawk.app.HawkAppObj;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBManager;
 import org.hawk.msg.HawkMsg;
-import org.hawk.net.protocol.HawkProtocol;
-import org.hawk.obj.HawkObjBase;
-import org.hawk.os.HawkException;
 import org.hawk.xid.HawkXID;
-
-import com.hawk.game.GsApp;
-import com.hawk.game.ServerData;
 import com.hawk.game.config.AllianceCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
-import com.hawk.game.item.AwardItems;
-import com.hawk.game.log.BehaviorLogger;
-import com.hawk.game.log.BehaviorLogger.Action;
-import com.hawk.game.log.BehaviorLogger.Params;
-import com.hawk.game.log.BehaviorLogger.Source;
-import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.AllianceInfo;
-import com.hawk.game.protocol.Alliance.AllianceMember;
-import com.hawk.game.protocol.Mail;
-import com.hawk.game.util.AllianceUtil;
-import com.hawk.game.util.GsConst;
-
 /**
  * @author zs 
  * 公会管理器
@@ -55,7 +42,12 @@ public class AllianceManager extends HawkAppObj {
 	 * 公会管理对象 公会ID,对象
 	 */
 	private ConcurrentHashMap<Integer, AllianceEntity> allianceMap;
-
+	
+	/**
+	 * 工会有序列表
+	 */
+	private Set<AllianceEntity> allianceLevelSet;
+	
 	/**
 	 * 已存在公会名字
 	 */
@@ -70,6 +62,13 @@ public class AllianceManager extends HawkAppObj {
 			instance = this;
 		}
 		allianceMap = new ConcurrentHashMap<Integer, AllianceEntity>();
+		allianceLevelSet = new TreeSet<>(new Comparator<AllianceEntity>() {
+            public int compare(AllianceEntity o1, AllianceEntity o2) {
+                //如果有空值，直接返回0
+                if (o1 == null || o2 == null)
+                    return 0; 
+                return o1.getLevel() - o2.getLevel();
+         }});
 	}
 	
 	/**
@@ -85,6 +84,7 @@ public class AllianceManager extends HawkAppObj {
 				if (allianceCfg == null)
 					throw new NullPointerException(" AllianceCfg not find level: " + allianceEntity.getLevel() + " data !!!");
 				addAlliance(allianceEntity);
+				addAllianceForSort(allianceEntity);
 			}
 		}
 
@@ -129,6 +129,10 @@ public class AllianceManager extends HawkAppObj {
 		return allianceMap;
 	}
 
+	public Set<AllianceEntity> getAllianceLevelSet() {
+		return allianceLevelSet;
+	}
+
 	/**
 	 * 增加公会
 	 * @param allianceEntity
@@ -137,6 +141,37 @@ public class AllianceManager extends HawkAppObj {
 		allianceMap.put(allianceEntity.getId(), allianceEntity);
 	}
 
+	/**
+	 * 增加公会排序表
+	 * @param allianceEntity
+	 */
+	public void addAllianceForSort(AllianceEntity allianceEntity){
+		synchronized (allianceLevelSet) {
+			allianceLevelSet.add(allianceEntity);
+		}
+	}
+	
+	/**
+	 * 删除公会排序表
+	 * @param allianceEntity
+	 */
+	public void removeAllianceForSort(AllianceEntity allianceEntity) {
+		synchronized (allianceLevelSet) {
+			allianceLevelSet.remove(allianceEntity);
+		}
+	}
+	
+	/**
+	 * 升级
+	 * @param allianceEntity
+	 */
+	public void reSortAllianceForSort(AllianceEntity allianceEntity) {
+		synchronized (allianceLevelSet) {
+			allianceLevelSet.remove(allianceEntity);
+			allianceLevelSet.add(allianceEntity);
+		}
+	}
+	
 	/**
 	 * 通过公会Id获取公会数据
 	 * @param allianceId
@@ -154,28 +189,6 @@ public class AllianceManager extends HawkAppObj {
 		return existName;
 	}
 
-	/**
-	 * 构造公会信息回复协议
-	 * @param allianceEntity
-	 * @param playerId
-	 * @param remGold
-	 * @return
-	 */
-	public AllianceInfo.Builder getAllianceInfo(AllianceEntity allianceEntity, int playerId, int remGold){	
-		AllianceCfg allianceCfg = HawkConfigManager.getInstance().getConfigByKey(AllianceCfg.class, allianceEntity.getLevel());
-		if(allianceCfg == null){
-			throw new NullPointerException("AllianceCfg not found");
-		}
-		AllianceInfo.Builder ret = AllianceInfo.newBuilder();
-		ret.setId(allianceEntity.getId());
-		ret.setLevel(allianceEntity.getLevel());
-		ret.setCurrentExp(allianceEntity.getExp());
-		ret.setNextExp(0);
-		ret.setCurrentPop(allianceEntity.getMemberList().size());
-		ret.setMaxPop(allianceCfg.getPop());
-		ret.setName(allianceEntity.getName());
-		return ret;
-	}
 	
 }
 

@@ -13,6 +13,7 @@ import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Const.changeType;
 import com.hawk.game.protocol.Const.playerAttr;
 import com.hawk.game.protocol.HS;
@@ -356,10 +357,13 @@ public class AwardItems {
 			if (hsCode > 0) {
 				switch (result) {
 				case AwardCheckResult.COIN_LIMIT:
+					player.sendError(hsCode, Status.PlayerError.COINS_LIMIT_VALUE);
 					break;
 				case AwardCheckResult.GOLD_LIMIT:
+					player.sendError(hsCode, Status.PlayerError.GOLD_LIMIT_VALUE);
 					break;
 				case AwardCheckResult.FATIGUE_LIMIT:
+					player.sendError(hsCode, Status.PlayerError.FATIGUE_LIMIT_VALUE);
 					break;
 				}
 			}

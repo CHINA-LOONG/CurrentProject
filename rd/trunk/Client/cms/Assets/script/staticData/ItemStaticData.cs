@@ -23,7 +23,7 @@ public class ItemStaticData
 	public	int	type;
     public int subType;
 
-    public int level;
+   // public int level;
 	public	int	grade;
 	public	int	minLevel;
 	public	int	condition;

@@ -11,33 +11,55 @@ public class EnterInstanceParam
 	public	PB.HSInstanceEnterRet instanceData;
 }
 
+public enum InstanceType
+{
+    Normal = 0,
+    Tower
+}
+
 public class UIAdjustBattleTeam : UIBase
 {
 	public static string ViewName = "UIAdjustBattleTeam";
 
 	public	Button	backButton;
 	public	Button	battleButton;
-	public	Button	cancleButton;
+    public Button rapid1Button;
+    public Button rapid10Button;
+    public Button resetTimesButton;
+    public Text battleTimesText;
+    public Text customHuoliText;
 
 	public	Text	lbMyZhenrong;
 	public  Text	lbEnemyZhenrong;
 	public	Text	lbMyShangzhen;
-	public	Text	lbEnemyShangzhen;
 	public	Text	lbMyHoubei;
-	public	Text	lbYongyou;
-	public	Text	lbFriend;
-	public  Text	lbZhenrongTiaozheng;
 
+    public Image buffImage;
+    public Text nameText;
+    public Transform[] szStar;
+    public Transform[] szGrewStar;
+
+    public float monsterIconScale = 1.0f;
+    public float bossMonsterIconScale = 1.16f;
     public List<MonsterIconBg> playerTeamBg = new List<MonsterIconBg>();
     private List<MonsterIcon> playerIcons = new List<MonsterIcon>();
+
     public List<MonsterIconBg> enemyTeamBg = new List<MonsterIconBg>();
     private List<MonsterIcon> enemyIcons = new List<MonsterIcon>();
 
+    public List<Transform> dropList = new List<Transform>();
+    private List<GameObject> dropObjectList = new List<GameObject>();
+
 	public ScrollView scrollView;
 
+
 	private string instanceId  = null;
+    private InstanceEntry instanceEntryData;
 	private	List<string>	enemyList =null;
 	private int enemyLevel = 1;
+    private int star = 0;
+    private InstanceType instanceType;
+    private int teamMax = 1;
 
 	private	List<string> teamList;
 	private int prepareIndex = -1;//准备上阵的空位索引
@@ -46,10 +68,10 @@ public class UIAdjustBattleTeam : UIBase
 
 	EnterInstanceParam enterInstanceParam  = new EnterInstanceParam();
     
-    public  static void OpenWith(string instanceId, List<string> enmeyList, int enemyLevel)
+    public  static void OpenWith(string instanceId,int star, InstanceType insType = InstanceType.Normal)
     {
         UIAdjustBattleTeam uiadust = (UIAdjustBattleTeam)UIMgr.Instance.OpenUI_(ViewName);
-        uiadust.SetData(instanceId, enmeyList, enemyLevel);
+        uiadust.SetData(instanceId, star, insType);
 
         UIBuild uiBuild = UIMgr.Instance.GetUI(UIBuild.ViewName) as UIBuild;
         if (uiBuild != null)
@@ -63,21 +85,16 @@ public class UIAdjustBattleTeam : UIBase
 	{
 		EventTriggerListener.Get (backButton.gameObject).onClick = OnBackButtonClick;
 		EventTriggerListener.Get (battleButton.gameObject).onClick = OnBattleButtonClick;
-		EventTriggerListener.Get (cancleButton.gameObject).onClick = OnCancleButtonClick;
+        EventTriggerListener.Get(resetTimesButton.gameObject).onClick = OnResetTimesClick;
 
-		lbEnemyShangzhen.text = StaticDataMgr.Instance.GetTextByID ("instance_shangzhen");
 		lbEnemyZhenrong.text = StaticDataMgr.Instance.GetTextByID ("instance_difangzhenrong");
-		lbFriend.text = StaticDataMgr.Instance.GetTextByID ("instance_haoyou");
 		lbMyHoubei.text = StaticDataMgr.Instance.GetTextByID ("instance_houbei");
 		lbMyShangzhen.text = StaticDataMgr.Instance.GetTextByID ("instance_shangzhen");
 		lbMyZhenrong.text = StaticDataMgr.Instance.GetTextByID ("instance_wofangzhenrong");
-		lbYongyou.text = StaticDataMgr.Instance.GetTextByID ("instance_yongyou");
-		lbZhenrongTiaozheng.text = StaticDataMgr.Instance.GetTextByID ("instance_zhenrongtiaozheng");
 
-       // backButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("instance_back");
 		battleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID ("instance_kaishizhandou");
-		cancleButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID ("instance_quxiaozhandou");
-	}
+        resetTimesButton.GetComponentInChildren<Text>().text = StaticDataMgr.Instance.GetTextByID("arrayselect_chongzhi_anniu");
+    }
 
     public override void Init()
     {
@@ -111,19 +128,57 @@ public class UIAdjustBattleTeam : UIBase
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
     }
 
-	public void SetData(string instanceId,List<string>enmeyList,int enemyLevel)
+	public void SetData(string instanceId,int star, InstanceType insType = InstanceType.Normal)
 	{
 		this.instanceId = instanceId;
-		this.enemyList = enmeyList;
-		this.enemyLevel = enemyLevel;
-		StartCoroutine( RefreshUICo ());
+        instanceEntryData = StaticDataMgr.Instance.GetInstanceEntry(instanceId);
+        this.enemyList = instanceEntryData.enemyList;
+        InstanceData instanceData = StaticDataMgr.Instance.GetInstanceData(instanceId);
+        this.enemyLevel = instanceData.instanceProtoData.level;
+        this.star = star;
+        instanceType = insType;
+        teamMax = 3;
+        if(IsFirstBackupOpen())
+        {
+            playerTeamBg[3].SetAsLocked(false);
+            teamMax++;
+        }
+        else
+        {
+            playerTeamBg[3].SetAsLocked(true);
+        }
+
+        if(IsSecondBackupOpen())
+        {
+            playerTeamBg[4].SetAsLocked(false);
+            teamMax++;
+        }
+        else
+        {
+            playerTeamBg[4].SetAsLocked(true);
+        }
+
+        StartCoroutine( RefreshUICo ());
 	}
-	
-	IEnumerator RefreshUICo()
+
+    bool IsFirstBackupOpen()
+    {
+        return GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.FirstBackupOpenNeedLevel;
+    }
+
+    bool IsSecondBackupOpen()
+    {
+        return GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.Instance.SecondBackupOpenNeedLevel;
+    }
+
+    IEnumerator RefreshUICo()
 	{
 		yield return StartCoroutine (RefreshEnmeyIcons());
 		yield return StartCoroutine (RefreshPlayerIcons());
+        yield return StartCoroutine(RefreshDropInfo());
+        yield return StartCoroutine(RefreshTitleAndOthers());
 	}
+
 
 	IEnumerator RefreshEnmeyIcons()
 	{
@@ -133,6 +188,7 @@ public class UIAdjustBattleTeam : UIBase
 		string monsterId = null;
 		MonsterIconBg subBg = null;
 		RectTransform rectTrans = null;
+    
 		for (int i = 0; i<enemyTeamBg.Count; ++ i)
 		{
 			subBg = enemyTeamBg[i];
@@ -147,7 +203,7 @@ public class UIAdjustBattleTeam : UIBase
 				
 				rectTrans = subIcon.transform as RectTransform;
 				rectTrans.anchoredPosition = new Vector2(0,0);
-				rectTrans.localScale  = new Vector3(0.6f,0.6f,0.6f);
+				rectTrans.localScale  = new Vector3(monsterIconScale, monsterIconScale, monsterIconScale);
 
 				subIcon.SetMonsterStaticId(monsterId);
 				subIcon.SetStage(1);
@@ -169,7 +225,7 @@ public class UIAdjustBattleTeam : UIBase
 						rt.pivot = newPivot;
 						rt.anchoredPosition = newpos;
 						float scale = GameConfig.Instance.BossEnemyIconScale;
-						subBg.transform.localScale = new Vector3(scale, scale, scale);
+						subBg.transform.localScale = new Vector3(bossMonsterIconScale, bossMonsterIconScale, bossMonsterIconScale);
 					}
 				}
 
@@ -206,7 +262,7 @@ public class UIAdjustBattleTeam : UIBase
 		teamList =  BattleTeamManager.GetTeamWithKey (BattleTeamManager.TeamList.Defualt);
         CleanAllPlayersIcons();
 
-		MonsterIconBg subBg = null;
+        MonsterIconBg subBg = null;
 		RectTransform rectTrans = null;
 		for (int i = 0; i<playerTeamBg.Count; ++ i)
 		{
@@ -237,7 +293,7 @@ public class UIAdjustBattleTeam : UIBase
 				
 				rectTrans = subIcon.transform as RectTransform;
 				rectTrans.anchoredPosition = new Vector2(0,0);
-				rectTrans.localScale  = new Vector3(0.6f,0.6f,0.6f);
+                rectTrans.localScale = new Vector3(monsterIconScale, monsterIconScale, monsterIconScale);
 				
 				subIcon.SetId(guid);
 				subIcon.SetMonsterStaticId(unit.pbUnit.id);
@@ -267,8 +323,7 @@ public class UIAdjustBattleTeam : UIBase
 		GameUnit subUnit = null;
 		for (int i =0; i< listUnit.Count; ++i) 
 		{
-
-			subUnit = listUnit[i];
+            subUnit = listUnit[i];
 			string monsterId = subUnit.pbUnit.id;
 
 			MonsterIcon icon = MonsterIcon.CreateIcon();
@@ -298,9 +353,91 @@ public class UIAdjustBattleTeam : UIBase
         }
         playerAllIconDic.Clear();
     }
-	//---------------------------------------------------------------------------------------------------------------------
 
-	void	OnPlayerTeamIconClick(GameObject go)
+    IEnumerator RefreshDropInfo()
+    {
+        yield return new WaitForEndOfFrame();
+        ClearAllDropObject();
+
+        string rewardId = instanceEntryData.reward;
+
+        RewardData rewardData = StaticDataMgr.Instance.GetRewardData(rewardId);
+        if (rewardData == null || rewardData.itemList == null)
+            yield break;
+
+        for(int i =0; i< rewardData.itemList.Count;++i)
+        {
+            if (i > 5)
+                break;
+
+            var subRewardData = rewardData.itemList[i];
+            GameObject go = RewardItemCreator.CreateRewardItem(subRewardData, dropList[i]);
+            if(null != go)
+            {
+                dropObjectList.Add(go);
+            }
+        }
+    }
+
+    void ClearAllDropObject()
+    {
+        for(int i =0;i<dropObjectList.Count;++i)
+        {
+            ResourceMgr.Instance.DestroyAsset(dropObjectList[i]);
+        }
+        dropObjectList.Clear();
+    }
+
+   IEnumerator RefreshTitleAndOthers()
+    {
+        yield return new WaitForEndOfFrame();
+
+        //buffImage
+        string spellId = instanceEntryData.instanceSpell;
+        SpellProtoType spell = StaticDataMgr.Instance.GetSpellProtoData(spellId);
+        if(null != spell)
+        {
+            Sprite spellSp = ResourceMgr.Instance.LoadAssetType<Sprite>(spell.icon);
+            if(null != spellSp)
+            {
+                buffImage.sprite = spellSp;
+            }
+        }
+
+        //instance name
+        nameText.text = instanceEntryData.NameAttr;
+
+        szStar[0].gameObject.SetActive(star > 0);
+        szStar[1].gameObject.SetActive(star > 1);
+        szStar[2].gameObject.SetActive(star > 2);
+        szGrewStar[0].gameObject.SetActive(false);
+        szGrewStar[1].gameObject.SetActive(star == 1);
+        szGrewStar[2].gameObject.SetActive(star == 2);
+
+        bool isNormalInstance = instanceType == InstanceType.Normal;
+        rapid10Button.gameObject.SetActive(isNormalInstance);
+        rapid1Button.gameObject.SetActive(isNormalInstance);
+        battleTimesText.gameObject.SetActive(isNormalInstance);
+        resetTimesButton.gameObject.SetActive(false);
+        if (isNormalInstance)
+        {
+            InstanceEntryRuntimeData realData = InstanceMapService.Instance.GetRuntimeInstance(instanceId);
+            if(realData.countDaily < realData.staticData.count)
+            {
+                battleTimesText.text = string.Format(StaticDataMgr.Instance.GetTextByID("instance_tiaozhancishu"), realData.countDaily, realData.staticData.count);
+            }
+            else
+            {
+                battleTimesText.text = "";
+                resetTimesButton.gameObject.SetActive(true);
+            }
+        }
+        InstanceEntry stData = StaticDataMgr.Instance.GetInstanceEntry(instanceId);
+        customHuoliText.text = stData.fatigue.ToString();
+    }
+    //---------------------------------------------------------------------------------------------------------------------
+
+    void	OnPlayerTeamIconClick(GameObject go)
 	{
 		MonsterIcon subIcon = go.GetComponentInParent<MonsterIcon> ();
 
@@ -372,7 +509,7 @@ public class UIAdjustBattleTeam : UIBase
 			
 			RectTransform rectTrans = subIcon.transform as RectTransform;
 			rectTrans.anchoredPosition = new Vector2(0,0);
-			rectTrans.localScale  = new Vector3(0.6f,0.6f,0.6f);
+			rectTrans.localScale  = new Vector3(monsterIconScale, monsterIconScale, monsterIconScale);
 			EventTriggerListener.Get(subIcon.iconButton.gameObject).onClick = OnPlayerTeamIconClick;
 		}
 		subIcon.gameObject.SetActive (true);
@@ -395,7 +532,7 @@ public class UIAdjustBattleTeam : UIBase
 		playerIcon.ShowMaskImage (false);
 
 		MonsterIconBg subBg = null;
-		for (int i =0; i<playerTeamBg.Count; ++i) 
+		for (int i =0; i<teamMax; ++i) 
 		{
 			subBg = playerTeamBg[i];
 			MonsterIcon subIcon = subBg.GetComponentInChildren<MonsterIcon>();
@@ -431,7 +568,7 @@ public class UIAdjustBattleTeam : UIBase
 	{
 		prepareIndex = -1;
 		MonsterIconBg subIconBg = null;
-		for (int i =0 ;i < playerTeamBg.Count; ++i)
+		for (int i =0 ;i < teamMax; ++i)
 		{
 			subIconBg = playerTeamBg[i];
 			MonsterIcon tempIcon = subIconBg.GetComponentInChildren<MonsterIcon>();
@@ -469,10 +606,14 @@ public class UIAdjustBattleTeam : UIBase
 			enterInstanceParam.playerTeam = battleTeam;
 			RequestEnterInstance ();
 		}
-
 	}
 
-	List<int> SaveBattleTeam()
+    void OnResetTimesClick(GameObject go)
+    {
+
+    }
+
+    List<int> SaveBattleTeam()
 	{
 		List<int> battleTeam = new List<int> ();
 		bool isNeedSave = false;

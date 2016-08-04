@@ -38,7 +38,6 @@ public class InstanceMap : UIBase
             FirstInit();
         }
         RefreshChapterButtons();
-        BindListener();
         OnHuoliChanged(GameDataMgr.Instance.PlayerDataAttr.HuoliAttr);
     }
     public override void Clean()
@@ -61,6 +60,7 @@ public class InstanceMap : UIBase
     }
     private void FirstInit()
     {
+        BindListener();
         chapterButtonCankao.gameObject.SetActive(false);
         mapScrollRect.onValueChanged.AddListener(OnScrollRectValueChanged);
         EventTriggerListener.Get(backButton.gameObject).onClick = OnBackButtonClicked;
@@ -197,7 +197,7 @@ public class InstanceMap : UIBase
             {
                 uiBuild.uiAdjustBattleTeam = adjustUi;
             }
-            adjustUi.SetData(data.instanceId, data.staticData.enemyList, 10);
+            adjustUi.SetData(data.instanceId, data.star);
         }
     }
 

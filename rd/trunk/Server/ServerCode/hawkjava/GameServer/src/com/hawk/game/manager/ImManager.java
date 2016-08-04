@@ -10,11 +10,11 @@ import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppObj;
 import org.hawk.cache.HawkCacheObj;
-import org.hawk.log.HawkLog;
 import org.hawk.net.HawkSession;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.thread.HawkTask;
@@ -120,9 +120,11 @@ public class ImManager extends HawkAppObj {
 	/**
 	 * 待推送消息队列
 	 */
+	// TODO: 在真实环境中测试哪种结构最优
 	private ConcurrentLinkedQueue<ImMsg> personMsgQueue;
-//	private ConcurrentLinkedQueue<ImMsg> worldMsgQueue;
-	private List<ImMsg> worldMsgQueue;
+	private ConcurrentLinkedQueue<ImMsg> worldMsgQueue;
+	//private LinkedBlockingQueue<ImMsg> worldMsgQueue;
+	//private List<ImMsg> worldMsgQueue;
 	private ConcurrentHashMap<Integer, ConcurrentLinkedQueue<ImMsg>> guildMsgQueueMap;
 
 	/**
@@ -146,8 +148,9 @@ public class ImManager extends HawkAppObj {
 		guildPlayerMap = new ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, ImPlayer>>();
 		guildLangMap = new ConcurrentHashMap<Integer, ConcurrentHashMap<String, Integer>>();
 		personMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
-		//worldMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
-		worldMsgQueue = new LinkedList<ImMsg>();
+		worldMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
+		//worldMsgQueue = new LinkedBlockingQueue<ImMsg>();
+		//worldMsgQueue = new LinkedList<ImMsg>();
 		guildMsgQueueMap = new ConcurrentHashMap<Integer, ConcurrentLinkedQueue<ImMsg>>();
 		transMsgQueue = new ConcurrentLinkedQueue<ImMsg>();
 	}
@@ -350,13 +353,19 @@ public class ImManager extends HawkAppObj {
 			}
 		}
 
-		if (false == worldMsgQueue.isEmpty()) {	
+		if (false == worldMsgQueue.isEmpty()) {
 			pushWorldList = new ArrayList<ImMsg>();
-			synchronized(worldMsgQueue){
-				pushWorldList.addAll(worldMsgQueue);
-				worldMsgQueue.clear();
+			while ((msgObj = worldMsgQueue.poll()) != null) {
+				pushWorldList.add(msgObj);
 			}
 		}
+//		if (false == worldMsgQueue.isEmpty()) {	
+//			pushWorldList = new ArrayList<ImMsg>();
+//			synchronized(worldMsgQueue){
+//				pushWorldList.addAll(worldMsgQueue);
+//				worldMsgQueue.clear();
+//			}
+//		}
 
 		if (false == guildMsgQueueMap.isEmpty()) {
 			pushGuildMap = new HashMap<>();
@@ -415,10 +424,10 @@ public class ImManager extends HawkAppObj {
 				break;
 			}
 			case Const.ImChannel.WORLD_VALUE: {
-				//worldMsgQueue.offer(msgObj);
-				synchronized (worldMsgQueue){
-					worldMsgQueue.add(msgObj);
-				}
+				worldMsgQueue.offer(msgObj);
+//				synchronized (worldMsgQueue){
+//					worldMsgQueue.add(msgObj);
+//				}
 				break;
 			}
 			case Const.ImChannel.GUILD_VALUE: {

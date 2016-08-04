@@ -44,4 +44,10 @@ public class GameConfig : MonoBehaviour {
 	public	int	maxBuyCountInBag	= 50;
 	//背包 最大开宝箱数量 
 	public	int	maxOpenBoxCount = 10;
+
+    //活力值恢复
+    public int RestoreHuoLiNeedSeconds = 600;
+
+    public int FirstBackupOpenNeedLevel = 5;
+    public int SecondBackupOpenNeedLevel = 10;
 }

@@ -47,7 +47,7 @@ public class InstanceList : UIBase
     //删除界面，对子对象的清理操作
     public override void Clean()
     {
-        UnBindListener();
+        
     }
 
     void    BindListener()
@@ -55,6 +55,7 @@ public class InstanceList : UIBase
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.CHAPTER_BOX_C.GetHashCode().ToString(), OnRequestReceivBoxFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.CHAPTER_BOX_S.GetHashCode().ToString(), OnRequestReceivBoxFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
+        GameEventMgr.Instance.AddListener(GameEventList.RefreshInstanceList, OnRequestRereshList);
     }
 
     void    UnBindListener()
@@ -62,6 +63,17 @@ public class InstanceList : UIBase
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.CHAPTER_BOX_C.GetHashCode().ToString(), OnRequestReceivBoxFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.CHAPTER_BOX_S.GetHashCode().ToString(), OnRequestReceivBoxFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
+        GameEventMgr.Instance.RemoveListener(GameEventList.RefreshInstanceList, OnRequestRereshList);
+    }
+
+    void    OnEnable()
+    {
+        BindListener();
+    }
+
+    void    OnDisable()
+    {
+        UnBindListener();
     }
 
     bool isFirst = true;
@@ -75,7 +87,7 @@ public class InstanceList : UIBase
         difficultyDropDown.options.Clear();
         difficultyDropDown.options.Add(new Dropdown.OptionData(StaticDataMgr.Instance.GetTextByID("diffculty_normal")));
         difficultyDropDown.options.Add(new Dropdown.OptionData(StaticDataMgr.Instance.GetTextByID("diffculty_hard")));
-        difficultyDropDown.itemText.text = StaticDataMgr.Instance.GetTextByID("diffculty_normal");
+        difficultyDropDown.captionText.text = StaticDataMgr.Instance.GetTextByID("diffculty_normal");
 
         InstanceItem[] szItem = instanceScrollView.GetComponentsInChildren<InstanceItem>();
         for (int i = 0; i < szItem.Length; ++i)
@@ -84,8 +96,6 @@ public class InstanceList : UIBase
             szItem[i].gameObject.SetActive(false);
         }
         EventTriggerListener.Get(closeButton).onClick = OnClose;
-
-        BindListener();
     }
 
     public  static  void    Close()
@@ -297,6 +307,11 @@ public class InstanceList : UIBase
         if (reward == null || reward.hsCode != PB.code.CHAPTER_BOX_C.GetHashCode())
             return;
         boxReward = reward;
+    }
+
+    void OnRequestRereshList()
+    {
+        UpdateUI(false, false);
     }
 
     private void OnDifficultyValueChanged(int index)

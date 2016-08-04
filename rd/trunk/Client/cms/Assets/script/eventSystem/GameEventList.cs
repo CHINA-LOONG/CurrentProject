@@ -56,6 +56,7 @@ public class GameEventList
 	public static	string	FinishedInstance = "FinishedInstance";//param(int ,string) star instanceid
     public static string OpenNewChapter = "OpenNewChapter";//param(int) newChapter
     public static string ShowInstanceList = "ShowInstanceList";//prama(string) instanceId
+    public static string RefreshInstanceList = "RefreshInstanceList";
 
 
     //Spell

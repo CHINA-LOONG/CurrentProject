@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class UIDecompose : UIBase, TabButtonDelegate
+public class UIDecompose : UIBase, TabButtonDelegate,IScrollView
 {
     public static string ViewName = "UIDecompose";
 
@@ -52,6 +52,7 @@ public class UIDecompose : UIBase, TabButtonDelegate
         public long firstItem = 0;
         [HideInInspector]
         public List<long> selectItems = new List<long>();
+        public List<EquipData> UnloadEquip = new List<EquipData>();
 
         public Transform content;
         [HideInInspector]
@@ -184,62 +185,14 @@ public class UIDecompose : UIBase, TabButtonDelegate
     public class DecomposeList
     {
         public Text text_Material;
-        public Transform content;
-
-        [HideInInspector]
-        public List<DecomposeItem> items = new List<DecomposeItem>();
-        //[HideInInspector]
-        //public Dictionary<long, DecomposeItem> items = new Dictionary<long, DecomposeItem>();
-        [HideInInspector]
-        public List<DecomposeItem> itemPool = new List<DecomposeItem>();
-
-        public DecomposeItem GetElement()
-        {
-            DecomposeItem item = null;
-            if (itemPool.Count<=0)
-            {
-                GameObject go = ResourceMgr.Instance.LoadAsset("DecomposeItem");
-                if (go!=null)
-                {
-                    UIUtil.SetParentReset(go.transform, content);
-                    item = go.GetComponent<DecomposeItem>();
-                }
-            }
-            else
-            {
-                item = itemPool[itemPool.Count - 1];
-                item.gameObject.SetActive(true);
-                itemPool.Remove(item);
-            }
-            item.transform.SetAsLastSibling();
-            item.SetSelect(false);
-            items.Add(item);
-            return item;
-        }
-        //public void RemoveElement(DecomposeItem item)
-        //{
-        //    if (items.ContainsValue(item))
-        //    {
-        //        item.gameObject.SetActive(false);
-        //        itemPool.Add(item);
-        //        items.Remove(item);
-        //    }
-        //}
-        public void RemoveAllElement()
-        {
-            foreach (var item in items)
-            {
-                item.gameObject.SetActive(false);
-            }
-            itemPool.AddRange(items);
-            items.Clear();
-        }
+        public FixCountScrollView scrollView;
+        
+        public List<DecomposeItemInfo> itemsInfo = new List<DecomposeItemInfo>();
     }
 
     public DecomposeView decomposeView;
     public DecomposeList decomposeList;
-
-
+    
     private int tabIndex = -1;
     private int selIndex = 0;
     public enum type
@@ -305,7 +258,7 @@ public class UIDecompose : UIBase, TabButtonDelegate
     }
     public override void Clean()
     {
-
+        decomposeList.scrollView.CleanContent();
     }
 
     public void Refresh(int select = -1)
@@ -335,6 +288,7 @@ public class UIDecompose : UIBase, TabButtonDelegate
     void ReLoadData(int index)
     {
         #region ReLoadView
+
         decomposeView.selectItems.Clear();
         decomposeView.RemoveElement(decomposeView.coinIcon);
         decomposeView.RemoveAllElement();
@@ -358,13 +312,12 @@ public class UIDecompose : UIBase, TabButtonDelegate
             }
 
             equipInfos.Sort(SortEquip);
-            decomposeList.RemoveAllElement();
+            decomposeList.itemsInfo.Clear();
+
             for (int i = 0; i < equipInfos.Count; i++)
             {
-                DecomposeItem item = decomposeList.GetElement();
-                item.ReloadData(equipInfos[i], OnClickItem);
+                decomposeList.itemsInfo.Add(new DecomposeItemInfo(equipInfos[i]));
             }
-
         }
         else
         {
@@ -380,56 +333,36 @@ public class UIDecompose : UIBase, TabButtonDelegate
             }
 
             monsterInfos.Sort(SortMonster);
-            decomposeList.RemoveAllElement();
+            decomposeList.itemsInfo.Clear();
+
             for (int i = 0; i < monsterInfos.Count; i++)
             {
-                DecomposeItem item = decomposeList.GetElement();
-                item.ReloadData(monsterInfos[i], OnClickItem);
+                decomposeList.itemsInfo.Add(new DecomposeItemInfo(monsterInfos[i]));
             }
-
         }
+        decomposeList.scrollView.InitContentSize(decomposeList.itemsInfo.Count, this);
         decomposeView.ShowMenu = false;
         #endregion
     }
 
     void OnClickItem(DecomposeItem item)
     {
-        if (Type==type.Equipment)
-        {
-            if (CheckIsSelect(item.curEquip.id))
+        DecomposeItemInfo info = item.CurData;
+            if (CheckIsSelect(info.ItemId))
             {
-                OnSetDeselect(Type, item);
+                OnSetDeselect(info);
             }
             else
             {
-                OnSetSelect(Type, item);
+                OnSetSelect(info);
             }
-        }
-        else
-        {
-            if (CheckIsSelect(item.curMonster.pbUnit.guid))
-            {
-                OnSetDeselect(Type, item);
-            }
-            else
-            {
-                OnSetSelect(Type, item);
-            }
-        }
     }
 
-    void OnSetSelect(type seltype, DecomposeItem item)
+    void OnSetSelect(DecomposeItemInfo item)
     {
-        item.SetSelect(true);
-        ReloadDecomposeList(seltype, item);
-        if (seltype == type.Equipment)
-        {
-            decomposeView.selectItems.Add(item.curEquip.id);
-        }
-        else
-        {
-            decomposeView.selectItems.Add(item.curMonster.pbUnit.guid);
-        }
+        item.IsSelect = true;
+        ReloadDecomposeList(item);
+        decomposeView.selectItems.Add(item.ItemId);
         SetSelectIconTips();
     }
     void OnSetSelectStage(int stage)//宠物需要转换品质
@@ -437,25 +370,25 @@ public class UIDecompose : UIBase, TabButtonDelegate
         bool isFind = false;
         if (Type == type.Equipment)
         {
-            for (int i = 0; i < decomposeList.items.Count; i++)
+            for (int i = 0; i < decomposeList.itemsInfo.Count; i++)
             {
-                if (decomposeList.items[i].curEquip.stage==stage)
+                if (decomposeList.itemsInfo[i].curEquip.stage==stage)
                 {
                     isFind = true;
-                    OnSetSelect(Type, decomposeList.items[i]);
+                    OnSetSelect(decomposeList.itemsInfo[i]);
                 }
             }
         }
         else
         {
             int quallity, plusQuality;
-            for (int i = 0; i < decomposeList.items.Count; i++)
+            for (int i = 0; i < decomposeList.itemsInfo.Count; i++)
             {
-                UIUtil.CalculationQuality(decomposeList.items[i].curMonster.pbUnit.stage, out quallity, out plusQuality);
+                UIUtil.CalculationQuality(decomposeList.itemsInfo[i].curMonster.pbUnit.stage, out quallity, out plusQuality);
                 if (quallity==stage)
                 {
                     isFind = true;
-                    OnSetSelect(Type, decomposeList.items[i]);
+                    OnSetSelect(decomposeList.itemsInfo[i]);
                 }
             }
         }
@@ -474,35 +407,28 @@ public class UIDecompose : UIBase, TabButtonDelegate
 
 
     }
-    void OnSetDeselect(type seltype, DecomposeItem item)
+    void OnSetDeselect(DecomposeItemInfo item)
     {
-        item.SetSelect(false);
-        ReloadDecomposeList(seltype, item, true);
-        if (seltype == type.Equipment)
-        {
-            decomposeView.selectItems.Remove(item.curEquip.id);
-        }
-        else
-        {
-            decomposeView.selectItems.Remove(item.curMonster.pbUnit.guid);
-        }
+        item.IsSelect = false;
+        ReloadDecomposeList(item, true);
+        decomposeView.selectItems.Remove(item.ItemId);
         SetSelectIconTips();
     }
     void OnSetDeselectAll()
     {
-        for (int i = 0; i < decomposeList.items.Count; i++)
+        for (int i = 0; i < decomposeList.itemsInfo.Count; i++)
         {
-            if (decomposeView.selectItems.Contains(decomposeList.items[i].itemId))
+            if (decomposeView.selectItems.Contains(decomposeList.itemsInfo[i].ItemId))
             {
-                OnSetDeselect(Type, decomposeList.items[i]);
+                OnSetDeselect(decomposeList.itemsInfo[i]);
             }
         }
     }
 
-    void ReloadDecomposeList(type seltype, DecomposeItem item, bool isRemove = false)
+    void ReloadDecomposeList(DecomposeItemInfo item, bool isRemove = false)
     {
         List<ItemInfo> decomposeList = new List<ItemInfo>();
-        if (seltype == type.Equipment)
+        if (item.type == type.Equipment)
         {
             EquipForgeData forgeData = StaticDataMgr.Instance.GetEquipForgeData(item.curEquip.stage, item.curEquip.level);
             forgeData.GetDecompose(ref decomposeList);
@@ -713,13 +639,25 @@ public class UIDecompose : UIBase, TabButtonDelegate
             }
             else
             {
+                decomposeView.UnloadEquip.Clear();
+                
                 PB.HSMonsterDecompose param = new PB.HSMonsterDecompose();
-                decomposeView.selectItems.ForEach(delegate(long item) { param.monsterId.Add((int)item); });
+                decomposeView.selectItems.ForEach(delegate(long item) 
+                                                          {
+                                                              param.monsterId.Add((int)item);
+                                                              GameUnit unit = GameDataMgr.Instance.PlayerDataAttr.GetPetWithKey((int)item);
+                                                              for (int i = 0; i < unit.equipList.Length; i++)
+                                                              {
+                                                                  if (unit.equipList[i]!=null)
+                                                                  {
+                                                                      decomposeView.UnloadEquip.Add(unit.equipList[i]);
+                                                                  }
+                                                              }
+                                                          });
                 GameApp.Instance.netManager.SendMessage(PB.code.MONSTER_DECOMPOSE_C.GetHashCode(), param);
             }
         }
     }
-
 
     public static int SortEquip(EquipData a, EquipData b)
     {
@@ -756,17 +694,14 @@ public class UIDecompose : UIBase, TabButtonDelegate
         return 0;
     }
 
-
     void OnEnable()
     {
         BindListener();
     }
-
     void OnDisable()
     {
         UnBindListener();
     }
-
     void BindListener()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
@@ -777,7 +712,6 @@ public class UIDecompose : UIBase, TabButtonDelegate
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.MONSTER_DECOMPOSE_S.GetHashCode().ToString(), OnMonsterDecomposeRet);
 
     }
-
     void UnBindListener()
     {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
@@ -788,15 +722,12 @@ public class UIDecompose : UIBase, TabButtonDelegate
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.MONSTER_DECOMPOSE_S.GetHashCode().ToString(), OnMonsterDecomposeRet);
     }
 
-
     void OnReward(ProtocolMessage msg)
     {
         PB.HSRewardInfo reward = msg.GetProtocolBody<PB.HSRewardInfo>();
         if (reward == null)
             return;
-
-
-
+        
         if (reward.hsCode == PB.code.EQUIP_DECOMPOSE_C.GetHashCode() || reward.hsCode == PB.code.MONSTER_DECOMPOSE_C.GetHashCode())
         {
             string tips = StaticDataMgr.Instance.GetTextByID("compose_record_002");
@@ -864,7 +795,34 @@ public class UIDecompose : UIBase, TabButtonDelegate
             Logger.LogError("分解物品错误");
             return;
         }
+        for (int i = 0; i < decomposeView.UnloadEquip.Count; i++)
+        {
+            decomposeView.UnloadEquip[i].monsterId = BattleConst.invalidMonsterID;
+        }
         Refresh();
     }
 
+    public void ReloadData(Transform item, int index)
+    {
+        DecomposeItem material = item.GetComponent<DecomposeItem>();
+        material.ReloadData(decomposeList.itemsInfo[index]);
+    }
+
+    public Transform CreateData(Transform parent, int index = 0)
+    {
+        GameObject go = ResourceMgr.Instance.LoadAsset("DecomposeItem");
+        if (go != null)
+        {
+            UIUtil.SetParentReset(go.transform, parent);
+            DecomposeItem item = go.GetComponent<DecomposeItem>();
+            item.Init(OnClickItem);
+            return go.transform;
+        }
+        return null;
+    }
+
+    public void CleanData(List<Transform> itemList)
+    {
+        itemList.ForEach(delegate (Transform item) { Destroy(item.gameObject); });
+    }
 }

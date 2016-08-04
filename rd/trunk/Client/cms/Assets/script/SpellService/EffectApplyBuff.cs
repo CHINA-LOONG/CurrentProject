@@ -73,7 +73,7 @@ public class EffectApplyBuff : Effect
         GameUnit target = spellService.GetUnit(targetID);
         //check prop first
         EffectApplyBuffPrototype buffPt = protoEffect as EffectApplyBuffPrototype;
-        if (buffPt != null && buffPt.validatorNum != 0)
+        if (buffPt != null && buffPt.validatorNum > 0)
         {
             int targetProp = 1 << (target.property - 1);
             if ((targetProp & buffPt.validatorNum) == 0)

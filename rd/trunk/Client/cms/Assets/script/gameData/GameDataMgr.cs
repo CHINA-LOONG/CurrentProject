@@ -142,6 +142,8 @@ public class GameDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.PLAYER_CONSUME_S.GetHashCode().ToString(), OnConsume);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_USE_S.GetHashCode().ToString(), OnUseItemFinished);
         //GameEventMgr.Instance.AddListener<Coin>(GameEventList.EatCoin, OnEatCoin);
     }
     //---------------------------------------------------------------------------------------------
@@ -164,6 +166,8 @@ public class GameDataMgr : MonoBehaviour
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_REWARD_S.GetHashCode().ToString(), OnReward);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.PLAYER_CONSUME_S.GetHashCode().ToString(), OnConsume);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_USE_S.GetHashCode().ToString(), OnUseItemFinished);
         //GameEventMgr.Instance.RemoveListener<Coin>(GameEventList.EatCoin, OnEatCoin);
     }
     //---------------------------------------------------------------------------------------------
@@ -552,7 +556,21 @@ public class GameDataMgr : MonoBehaviour
             }
         }
     }
-    
+
+
+    void OnUseItemFinished(ProtocolMessage msg)
+    {
+        PB.HSItemUseRet itemUseReturn = msg.GetProtocolBody<PB.HSItemUseRet>();
+        if(null != itemUseReturn)
+        {
+            if(itemUseReturn.useCountDaily != -1)
+            {
+                PlayerDataAttr.gameItemData.UpdateItemState(itemUseReturn.itemId, itemUseReturn.useCountDaily);
+            }
+        }
+    }
+
+
     //---------------------------------------------------------------------------------------------
     //public void AddPlayerData(PlayerData data)
     //{

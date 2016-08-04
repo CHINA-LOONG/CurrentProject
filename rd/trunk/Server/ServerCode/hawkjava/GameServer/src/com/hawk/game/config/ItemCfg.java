@@ -6,6 +6,7 @@ import org.hawk.config.HawkConfigBase.Id;
 
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.protocol.Const;
+import com.hawk.game.util.GsConst;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -32,10 +33,6 @@ public class ItemCfg extends HawkConfigBase {
 	 * 子类型
 	 */
 	protected final int subType;
-	/**
-	 * 等级
-	 */
-	protected final int level;
 	/**
 	 * 品级
 	 */
@@ -120,11 +117,11 @@ public class ItemCfg extends HawkConfigBase {
 	 * 耐久度
 	 */
 	protected final int durability;
-	
+
 	protected final String name ;
-	
+
 	protected final String asset ;
-	
+
 	protected final String tips ;
 
 	/**
@@ -139,19 +136,18 @@ public class ItemCfg extends HawkConfigBase {
 	 * 合成/兑换装备列表
 	 */
 	private List<ItemInfo> targetItemList;
-	
+
 	/**
 	 * 宝石配置
 	 */
 	private static Map<Integer, Map<Integer, ItemCfg>> gemList = new HashMap<Integer, Map<Integer, ItemCfg>>();
-	
-	public ItemCfg(){				
+
+	public ItemCfg(){
 		id  = null;
 		classType = 0;
 		type = 0;
 		subType = 0;
 		grade = 0;
-		level = 0;
 		minLevel = 0;
 		condition = 0;
 		times = 0;
@@ -172,11 +168,11 @@ public class ItemCfg extends HawkConfigBase {
 		gemType = 0;
 		part = 0;
 		durability = 0;
-		
+
 		name = null;
 		asset = null;
 		tips = null;
-		
+
 		componentItemList = new LinkedList<ItemInfo>();
 		needItemList = new LinkedList<ItemInfo>();
 		targetItemList = new LinkedList<ItemInfo>();
@@ -201,10 +197,6 @@ public class ItemCfg extends HawkConfigBase {
 	public int getGrade() {
 		return grade;
 	}
-
-	public int getLevel() {
-		return level;
-	}
 	
 	public int getMinLevel() {
 		return minLevel;
@@ -214,26 +206,21 @@ public class ItemCfg extends HawkConfigBase {
 		return condition;
 	}
 
-
 	public int getTimes() {
 		return times;
 	}
-
 
 	public int getBindType() {
 		return bindType;
 	} 
 
-
 	public int getSellPrice() {
 		return sellPrice;
 	}
 
-
 	public int getSellType() {
 		return sellType;
 	}
-
 
 	public int getBuyPrice() {
 		return buyPrice;
@@ -243,11 +230,9 @@ public class ItemCfg extends HawkConfigBase {
 		return buyType;
 	}
 
-
 	public int getStack() {
 		return stack;
 	}
-
 
 	public String getRewardId() {
 		return rewardId;
@@ -261,22 +246,18 @@ public class ItemCfg extends HawkConfigBase {
 		return addAttrType;
 	}
 
-
 	public int getAddAttrValue() {
 		return addAttrValue;
 	}
-
 
 	public String getGemId() {
 		return gemId;
 	}
 
-	
 	public int getGemType() {
 		return gemType;
 	}
-	
-	
+
 	public int getMaxType() {
 		return gemType;
 	}
@@ -314,16 +295,15 @@ public class ItemCfg extends HawkConfigBase {
 		return Collections.unmodifiableList(targetItemList);
 	}
 
-	public static ItemCfg getGemCfg(int level, int type)
-	{
+	public static ItemCfg getGemCfg(int level, int type) {
 		return gemList.get(level).get(type);
 	}
-	
+
 	@Override
 	protected boolean assemble() {
 		needItemList.clear();
 		targetItemList.clear();
-		
+
 		// 合成该物品需要的道具列表
 		if (this.componentItem != null && this.componentItem.length() > 0 && !"0".equals(this.componentItem)) {
 			String[] itemArrays = componentItem.split(",");
@@ -354,7 +334,7 @@ public class ItemCfg extends HawkConfigBase {
 				}
 			}
 		}
-		
+
 		// 合成列表
 		if (this.targetItem != null && this.targetItem.length() > 0 && !"0".equals(this.targetItem)) {
 			String[] itemArrays = targetItem.split(",");
@@ -385,7 +365,7 @@ public class ItemCfg extends HawkConfigBase {
 				}
 			}
 		}
-		
+
 		// 宝箱需要配对的钥匙
 		if (this.type == Const.toolType.BOXTOOL_VALUE) {
 			if (this.needItem != null && this.needItem.length() > 0 && !"0".equals(this.needItem)) {
@@ -428,18 +408,60 @@ public class ItemCfg extends HawkConfigBase {
 				gemList.get(grade).put(gemType, this);
 			}
 		}
-		
+
 		return true;
 	}
 
 	@Override
 	protected boolean checkValid() {
-		if (this.type == Const.toolType.FRAGMENTTOOL_VALUE && this.getNeedCount() <= 0 ) {
+		if (this.type == Const.toolType.FRAGMENTTOOL_VALUE ) {
+			if (this.subType == Const.FragSubType.FRAG_MONSTER_VALUE) {
+				if (this.needCount != GsConst.UNUSABLE) {
+					return false;
+				}
+			} else if (this.subType == Const.FragSubType.FRAG_TOOL_VALUE ) {
+				if (this.needCount <= 0) {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		} else if (this.type == Const.toolType.BOXTOOL_VALUE && (this.rewardId == null || this.rewardId.equals(""))) {
 			return false;
 		}
-		else if (this.type == Const.toolType.BOXTOOL_VALUE && (this.getRewardId() == null || this.getRewardId().equals(""))) {
+
+		if (this.sellType == GsConst.UNUSABLE && this.sellPrice != GsConst.UNUSABLE) {
+			return false;
+		} else if (this.sellType != GsConst.UNUSABLE && this.sellPrice == GsConst.UNUSABLE) {
 			return false;
 		}
+
+		if (this.buyType == GsConst.UNUSABLE && this.buyPrice != GsConst.UNUSABLE) {
+			return false;
+		} else if (this.buyType != GsConst.UNUSABLE && this.buyPrice == GsConst.UNUSABLE) {
+			return false;
+		}
+
+		if (this.targetItemList.isEmpty() == true && this.needCount != GsConst.UNUSABLE) {
+			return false;
+		} else if (this.targetItemList.isEmpty() == false && this.needCount == GsConst.UNUSABLE) {
+			return false;
+		}
+
+		if (this.addAttrType == GsConst.UNUSABLE && this.addAttrValue != GsConst.UNUSABLE) {
+			return false;
+		} else if (this.addAttrType != GsConst.UNUSABLE && this.addAttrValue == GsConst.UNUSABLE) {
+			return false;
+		}
+
+		if (this.gemId != null && this.gemId.length() > 0) {
+			if (this.gemType == GsConst.UNUSABLE) {
+				return false;
+			}
+		} else if (this.gemType != GsConst.UNUSABLE) {
+			return false;
+		}
+
 		return true;
 	}
 }

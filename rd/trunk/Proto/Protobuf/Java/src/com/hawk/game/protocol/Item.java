@@ -3243,6 +3243,31 @@ public final class Item {
 
   public interface HSItemUseRetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // required string itemId = 1;
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    boolean hasItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
+
+    // required int32 useCountDaily = 2;
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    boolean hasUseCountDaily();
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    int getUseCountDaily();
   }
   /**
    * Protobuf type {@code HSItemUseRet}
@@ -3281,6 +3306,7 @@ public final class Item {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -3296,6 +3322,16 @@ public final class Item {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              itemId_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              useCountDaily_ = input.readInt32();
               break;
             }
           }
@@ -3337,13 +3373,83 @@ public final class Item {
       return PARSER;
     }
 
+    private int bitField0_;
+    // required string itemId = 1;
+    public static final int ITEMID_FIELD_NUMBER = 1;
+    private java.lang.Object itemId_;
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public boolean hasItemId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 useCountDaily = 2;
+    public static final int USECOUNTDAILY_FIELD_NUMBER = 2;
+    private int useCountDaily_;
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    public boolean hasUseCountDaily() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    public int getUseCountDaily() {
+      return useCountDaily_;
+    }
+
     private void initFields() {
+      itemId_ = "";
+      useCountDaily_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasItemId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUseCountDaily()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -3351,6 +3457,12 @@ public final class Item {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getItemIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, useCountDaily_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3360,6 +3472,14 @@ public final class Item {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getItemIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, useCountDaily_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -3480,6 +3600,10 @@ public final class Item {
 
       public Builder clear() {
         super.clear();
+        itemId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        useCountDaily_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -3506,6 +3630,17 @@ public final class Item {
 
       public com.hawk.game.protocol.Item.HSItemUseRet buildPartial() {
         com.hawk.game.protocol.Item.HSItemUseRet result = new com.hawk.game.protocol.Item.HSItemUseRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.itemId_ = itemId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.useCountDaily_ = useCountDaily_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -3521,11 +3656,27 @@ public final class Item {
 
       public Builder mergeFrom(com.hawk.game.protocol.Item.HSItemUseRet other) {
         if (other == com.hawk.game.protocol.Item.HSItemUseRet.getDefaultInstance()) return this;
+        if (other.hasItemId()) {
+          bitField0_ |= 0x00000001;
+          itemId_ = other.itemId_;
+          onChanged();
+        }
+        if (other.hasUseCountDaily()) {
+          setUseCountDaily(other.getUseCountDaily());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasItemId()) {
+          
+          return false;
+        }
+        if (!hasUseCountDaily()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -3544,6 +3695,114 @@ public final class Item {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string itemId = 1;
+      private java.lang.Object itemId_ = "";
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public boolean hasItemId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder clearItemId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 useCountDaily = 2;
+      private int useCountDaily_ ;
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public boolean hasUseCountDaily() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public int getUseCountDaily() {
+        return useCountDaily_;
+      }
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public Builder setUseCountDaily(int value) {
+        bitField0_ |= 0x00000002;
+        useCountDaily_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public Builder clearUseCountDaily() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        useCountDaily_ = 0;
+        onChanged();
         return this;
       }
 
@@ -7192,6 +7451,31 @@ public final class Item {
 
   public interface HSItemBuyAndUseRetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // required string itemId = 1;
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    boolean hasItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
+
+    // required int32 useCountDaily = 2;
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    boolean hasUseCountDaily();
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    int getUseCountDaily();
   }
   /**
    * Protobuf type {@code HSItemBuyAndUseRet}
@@ -7230,6 +7514,7 @@ public final class Item {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -7245,6 +7530,16 @@ public final class Item {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              itemId_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              useCountDaily_ = input.readInt32();
               break;
             }
           }
@@ -7286,13 +7581,83 @@ public final class Item {
       return PARSER;
     }
 
+    private int bitField0_;
+    // required string itemId = 1;
+    public static final int ITEMID_FIELD_NUMBER = 1;
+    private java.lang.Object itemId_;
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public boolean hasItemId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 useCountDaily = 2;
+    public static final int USECOUNTDAILY_FIELD_NUMBER = 2;
+    private int useCountDaily_;
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    public boolean hasUseCountDaily() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    public int getUseCountDaily() {
+      return useCountDaily_;
+    }
+
     private void initFields() {
+      itemId_ = "";
+      useCountDaily_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasItemId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUseCountDaily()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7300,6 +7665,12 @@ public final class Item {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getItemIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, useCountDaily_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -7309,6 +7680,14 @@ public final class Item {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getItemIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, useCountDaily_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -7429,6 +7808,10 @@ public final class Item {
 
       public Builder clear() {
         super.clear();
+        itemId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        useCountDaily_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -7455,6 +7838,17 @@ public final class Item {
 
       public com.hawk.game.protocol.Item.HSItemBuyAndUseRet buildPartial() {
         com.hawk.game.protocol.Item.HSItemBuyAndUseRet result = new com.hawk.game.protocol.Item.HSItemBuyAndUseRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.itemId_ = itemId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.useCountDaily_ = useCountDaily_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -7470,11 +7864,27 @@ public final class Item {
 
       public Builder mergeFrom(com.hawk.game.protocol.Item.HSItemBuyAndUseRet other) {
         if (other == com.hawk.game.protocol.Item.HSItemBuyAndUseRet.getDefaultInstance()) return this;
+        if (other.hasItemId()) {
+          bitField0_ |= 0x00000001;
+          itemId_ = other.itemId_;
+          onChanged();
+        }
+        if (other.hasUseCountDaily()) {
+          setUseCountDaily(other.getUseCountDaily());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasItemId()) {
+          
+          return false;
+        }
+        if (!hasUseCountDaily()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -7493,6 +7903,114 @@ public final class Item {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string itemId = 1;
+      private java.lang.Object itemId_ = "";
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public boolean hasItemId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder clearItemId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 useCountDaily = 2;
+      private int useCountDaily_ ;
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public boolean hasUseCountDaily() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public int getUseCountDaily() {
+        return useCountDaily_;
+      }
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public Builder setUseCountDaily(int value) {
+        bitField0_ |= 0x00000002;
+        useCountDaily_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public Builder clearUseCountDaily() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        useCountDaily_ = 0;
+        onChanged();
         return this;
       }
 
@@ -9609,20 +10127,22 @@ public final class Item {
       "(\005\022\016\n\006status\030\004 \002(\005\".\n\016HSItemInfoSync\022\034\n\t" +
       "itemInfos\030\001 \003(\0132\t.ItemInfo\"@\n\tHSItemUse\022" +
       "\016\n\006itemId\030\001 \002(\t\022\021\n\titemCount\030\002 \001(\005\022\020\n\010ta" +
-      "rgetID\030\003 \001(\005\"\016\n\014HSItemUseRet\"6\n\021HSItemBo" +
-      "xUseBatch\022\016\n\006itemId\030\001 \002(\t\022\021\n\titemCount\030\002" +
-      " \002(\005\"\026\n\024HSItemBoxUseBatchRet\"+\n\017HSItemSe",
-      "llBatch\022\030\n\005items\030\001 \003(\0132\t.ItemSell\"\024\n\022HSI" +
-      "temSellBatchRet\".\n\tHSItemBuy\022\016\n\006itemId\030\001" +
-      " \002(\t\022\021\n\titemCount\030\002 \002(\005\"1\n\014HSItemBuyRet\022" +
-      "\016\n\006itemId\030\001 \002(\t\022\021\n\titemCount\030\002 \002(\005\"4\n\017HS" +
-      "ItemBuyAndUse\022\016\n\006itemId\030\001 \002(\t\022\021\n\titemCou" +
-      "nt\030\002 \002(\005\"\024\n\022HSItemBuyAndUseRet\"3\n\rHSItem" +
-      "Compose\022\016\n\006itemId\030\001 \002(\t\022\022\n\ncomposeAll\030\002 " +
-      "\002(\010\"\022\n\020HSItemComposeRet\"<\n\014HSGemCompose\022" +
-      "\030\n\004gems\030\001 \003(\0132\n.GemSelect\022\022\n\ncomposeAll\030" +
-      "\002 \002(\010\"\021\n\017HSGemComposeRetB\030\n\026com.hawk.gam",
-      "e.protocol"
+      "rgetID\030\003 \001(\005\"5\n\014HSItemUseRet\022\016\n\006itemId\030\001" +
+      " \002(\t\022\025\n\ruseCountDaily\030\002 \002(\005\"6\n\021HSItemBox" +
+      "UseBatch\022\016\n\006itemId\030\001 \002(\t\022\021\n\titemCount\030\002 ",
+      "\002(\005\"\026\n\024HSItemBoxUseBatchRet\"+\n\017HSItemSel" +
+      "lBatch\022\030\n\005items\030\001 \003(\0132\t.ItemSell\"\024\n\022HSIt" +
+      "emSellBatchRet\".\n\tHSItemBuy\022\016\n\006itemId\030\001 " +
+      "\002(\t\022\021\n\titemCount\030\002 \002(\005\"1\n\014HSItemBuyRet\022\016" +
+      "\n\006itemId\030\001 \002(\t\022\021\n\titemCount\030\002 \002(\005\"4\n\017HSI" +
+      "temBuyAndUse\022\016\n\006itemId\030\001 \002(\t\022\021\n\titemCoun" +
+      "t\030\002 \002(\005\";\n\022HSItemBuyAndUseRet\022\016\n\006itemId\030" +
+      "\001 \002(\t\022\025\n\ruseCountDaily\030\002 \002(\005\"3\n\rHSItemCo" +
+      "mpose\022\016\n\006itemId\030\001 \002(\t\022\022\n\ncomposeAll\030\002 \002(" +
+      "\010\"\022\n\020HSItemComposeRet\"<\n\014HSGemCompose\022\030\n",
+      "\004gems\030\001 \003(\0132\n.GemSelect\022\022\n\ncomposeAll\030\002 " +
+      "\002(\010\"\021\n\017HSGemComposeRetB\030\n\026com.hawk.game." +
+      "protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9664,7 +10184,7 @@ public final class Item {
           internal_static_HSItemUseRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemUseRet_descriptor,
-              new java.lang.String[] { });
+              new java.lang.String[] { "ItemId", "UseCountDaily", });
           internal_static_HSItemBoxUseBatch_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_HSItemBoxUseBatch_fieldAccessorTable = new
@@ -9712,7 +10232,7 @@ public final class Item {
           internal_static_HSItemBuyAndUseRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSItemBuyAndUseRet_descriptor,
-              new java.lang.String[] { });
+              new java.lang.String[] { "ItemId", "UseCountDaily", });
           internal_static_HSItemCompose_descriptor =
             getDescriptor().getMessageTypes().get(14);
           internal_static_HSItemCompose_fieldAccessorTable = new

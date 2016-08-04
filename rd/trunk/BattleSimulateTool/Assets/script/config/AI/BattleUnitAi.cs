@@ -218,7 +218,11 @@ public class BattleUnitAi{
 		{
 			return AiAttackStyle.Lazy;
 		}
-		
+        if (battleUnit.dazhaoList.Contains(battleUnit.attackCount))
+		{
+            int d = 2;
+		}
+
 		//大招
 		if ( UnitCamp.Enemy == battleUnit.pbUnit.camp &&
 		    battleUnit.dazhaoList.Contains (battleUnit.attackCount))

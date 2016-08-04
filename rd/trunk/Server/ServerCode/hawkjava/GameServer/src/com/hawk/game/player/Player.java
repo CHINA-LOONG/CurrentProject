@@ -1041,7 +1041,7 @@ public class Player extends HawkAppObj {
 			statisticsEntity.setMonsterCountOverLevel(level, cur);
 			update = true;
 		}
-		
+
 		history = statisticsEntity.getMonsterMaxLevel();
 		if (level > history) {
 			statisticsEntity.setMonsterMaxLevel(level);
@@ -1062,7 +1062,7 @@ public class Player extends HawkAppObj {
 			statisticsEntity.setMonsterMaxStage(stage);
 			update = true;
 		}
-		
+
 		// count
 		history = statisticsEntity.getMonsterMaxCount();
 		cur = playerData.getMonsterEntityMap().size();
@@ -1070,10 +1070,10 @@ public class Player extends HawkAppObj {
 			statisticsEntity.setMonsterMaxCount(cur);
 			update = true;
 		}
-		
+
 		if (true == update) {
 			statisticsEntity.notifyUpdate(true);
-			
+
 			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, getXid());
 			msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
 			if (false == HawkApp.getInstance().postMsg(msg)) {
@@ -1233,13 +1233,20 @@ public class Player extends HawkAppObj {
 		int delta = (int)((curTime.getTimeInMillis() - beginTime.getTimeInMillis()) / 1000);
 		int oldFatigue = statisticsEntity.getFatigue();
 		int curFatigue = oldFatigue + delta / GsConst.FATIGUE_TIME;
+
 		PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, getLevel());
 		if (attrCfg != null) {
-			int maxFatigue = attrCfg.getFatigue();
 			// 只有自动恢复体力受等级体力上限影响
-			if (oldFatigue < maxFatigue && curFatigue > maxFatigue) {
-				curFatigue = maxFatigue;
+			int autoMaxFatigue = attrCfg.getFatigue();
+			if (oldFatigue >= autoMaxFatigue) {
+				curFatigue = oldFatigue;
+			} else if (curFatigue > autoMaxFatigue) {
+				curFatigue = autoMaxFatigue;
 			}
+		}
+
+		if (curFatigue > GsConst.MAX_FATIGUE_COUNT) {
+			curFatigue = GsConst.MAX_FATIGUE_COUNT;
 		}
 
 		beginTime.setTimeInMillis(curTime.getTimeInMillis() - delta % GsConst.FATIGUE_TIME  * 1000);
@@ -1255,7 +1262,12 @@ public class Player extends HawkAppObj {
 	 */
 	public void onFirstLogin() {
 		StatisticsEntity statisticsEntity = playerData.loadStatistics();
-		// default skill point
+
+		// default statistics
+		PlayerAttrCfg attrCfg = HawkConfigManager.getInstance().getConfigByKey(PlayerAttrCfg.class, getLevel());
+		if (attrCfg != null) {
+			statisticsEntity.setFatigue(attrCfg.getFatigue());
+		}
 		statisticsEntity.setSkillPoint(10);
 		statisticsEntity.notifyUpdate(true);
 

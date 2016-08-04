@@ -2442,6 +2442,574 @@ public final class Statistics {
     // @@protoc_insertion_point(class_scope:RechargeState)
   }
 
+  public interface ItemStateOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string itemId = 1;
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    boolean hasItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    java.lang.String getItemId();
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
+
+    // required int32 useCountDaily = 2;
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    boolean hasUseCountDaily();
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    int getUseCountDaily();
+  }
+  /**
+   * Protobuf type {@code ItemState}
+   */
+  public static final class ItemState extends
+      com.google.protobuf.GeneratedMessage
+      implements ItemStateOrBuilder {
+    // Use ItemState.newBuilder() to construct.
+    private ItemState(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ItemState(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ItemState defaultInstance;
+    public static ItemState getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ItemState getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ItemState(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              itemId_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              useCountDaily_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Statistics.internal_static_ItemState_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Statistics.internal_static_ItemState_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Statistics.ItemState.class, com.hawk.game.protocol.Statistics.ItemState.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ItemState> PARSER =
+        new com.google.protobuf.AbstractParser<ItemState>() {
+      public ItemState parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ItemState(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ItemState> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string itemId = 1;
+    public static final int ITEMID_FIELD_NUMBER = 1;
+    private java.lang.Object itemId_;
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public boolean hasItemId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          itemId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string itemId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 useCountDaily = 2;
+    public static final int USECOUNTDAILY_FIELD_NUMBER = 2;
+    private int useCountDaily_;
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    public boolean hasUseCountDaily() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 useCountDaily = 2;</code>
+     */
+    public int getUseCountDaily() {
+      return useCountDaily_;
+    }
+
+    private void initFields() {
+      itemId_ = "";
+      useCountDaily_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasItemId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUseCountDaily()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getItemIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, useCountDaily_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getItemIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, useCountDaily_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Statistics.ItemState parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.ItemState parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.ItemState parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.ItemState parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.ItemState parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.ItemState parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.ItemState parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.ItemState parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.ItemState parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.ItemState parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Statistics.ItemState prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ItemState}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Statistics.ItemStateOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Statistics.internal_static_ItemState_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Statistics.internal_static_ItemState_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Statistics.ItemState.class, com.hawk.game.protocol.Statistics.ItemState.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Statistics.ItemState.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        itemId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        useCountDaily_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Statistics.internal_static_ItemState_descriptor;
+      }
+
+      public com.hawk.game.protocol.Statistics.ItemState getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Statistics.ItemState.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Statistics.ItemState build() {
+        com.hawk.game.protocol.Statistics.ItemState result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Statistics.ItemState buildPartial() {
+        com.hawk.game.protocol.Statistics.ItemState result = new com.hawk.game.protocol.Statistics.ItemState(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.itemId_ = itemId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.useCountDaily_ = useCountDaily_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Statistics.ItemState) {
+          return mergeFrom((com.hawk.game.protocol.Statistics.ItemState)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Statistics.ItemState other) {
+        if (other == com.hawk.game.protocol.Statistics.ItemState.getDefaultInstance()) return this;
+        if (other.hasItemId()) {
+          bitField0_ |= 0x00000001;
+          itemId_ = other.itemId_;
+          onChanged();
+        }
+        if (other.hasUseCountDaily()) {
+          setUseCountDaily(other.getUseCountDaily());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasItemId()) {
+          
+          return false;
+        }
+        if (!hasUseCountDaily()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Statistics.ItemState parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Statistics.ItemState) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string itemId = 1;
+      private java.lang.Object itemId_ = "";
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public boolean hasItemId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder clearItemId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string itemId = 1;</code>
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        itemId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 useCountDaily = 2;
+      private int useCountDaily_ ;
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public boolean hasUseCountDaily() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public int getUseCountDaily() {
+        return useCountDaily_;
+      }
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public Builder setUseCountDaily(int value) {
+        bitField0_ |= 0x00000002;
+        useCountDaily_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 useCountDaily = 2;</code>
+       */
+      public Builder clearUseCountDaily() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        useCountDaily_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ItemState)
+    }
+
+    static {
+      defaultInstance = new ItemState(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ItemState)
+  }
+
   public interface HSStatisticsInfoSyncOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -2750,9 +3318,9 @@ public final class Statistics {
      */
     int getGold2CoinTimes();
 
-    // required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;
+    // required .HSSyncExpLeftTimes expLeftTimes = 13;
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+     * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -2760,21 +3328,66 @@ public final class Statistics {
      */
     boolean hasExpLeftTimes();
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+     * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
      * </pre>
      */
-    com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync getExpLeftTimes();
+    com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes getExpLeftTimes();
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+     * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
      * </pre>
      */
-    com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSyncOrBuilder getExpLeftTimesOrBuilder();
+    com.hawk.game.protocol.Statistics.HSSyncExpLeftTimesOrBuilder getExpLeftTimesOrBuilder();
+
+    // repeated .ItemState itemState = 14;
+    /**
+     * <code>repeated .ItemState itemState = 14;</code>
+     *
+     * <pre>
+     * 物品使用次数
+     * </pre>
+     */
+    java.util.List<com.hawk.game.protocol.Statistics.ItemState> 
+        getItemStateList();
+    /**
+     * <code>repeated .ItemState itemState = 14;</code>
+     *
+     * <pre>
+     * 物品使用次数
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.ItemState getItemState(int index);
+    /**
+     * <code>repeated .ItemState itemState = 14;</code>
+     *
+     * <pre>
+     * 物品使用次数
+     * </pre>
+     */
+    int getItemStateCount();
+    /**
+     * <code>repeated .ItemState itemState = 14;</code>
+     *
+     * <pre>
+     * 物品使用次数
+     * </pre>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Statistics.ItemStateOrBuilder> 
+        getItemStateOrBuilderList();
+    /**
+     * <code>repeated .ItemState itemState = 14;</code>
+     *
+     * <pre>
+     * 物品使用次数
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.ItemStateOrBuilder getItemStateOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code HSStatisticsInfoSync}
@@ -2905,16 +3518,24 @@ public final class Statistics {
               break;
             }
             case 106: {
-              com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder subBuilder = null;
+              com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.Builder subBuilder = null;
               if (((bitField0_ & 0x00000200) == 0x00000200)) {
                 subBuilder = expLeftTimes_.toBuilder();
               }
-              expLeftTimes_ = input.readMessage(com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.PARSER, extensionRegistry);
+              expLeftTimes_ = input.readMessage(com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(expLeftTimes_);
                 expLeftTimes_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000200;
+              break;
+            }
+            case 114: {
+              if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
+                itemState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.ItemState>();
+                mutable_bitField0_ |= 0x00002000;
+              }
+              itemState_.add(input.readMessage(com.hawk.game.protocol.Statistics.ItemState.PARSER, extensionRegistry));
               break;
             }
           }
@@ -2933,6 +3554,9 @@ public final class Statistics {
         }
         if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
           rechargeState_ = java.util.Collections.unmodifiableList(rechargeState_);
+        }
+        if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
+          itemState_ = java.util.Collections.unmodifiableList(itemState_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -3381,11 +4005,11 @@ public final class Statistics {
       return gold2CoinTimes_;
     }
 
-    // required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;
+    // required .HSSyncExpLeftTimes expLeftTimes = 13;
     public static final int EXPLEFTTIMES_FIELD_NUMBER = 13;
-    private com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync expLeftTimes_;
+    private com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes expLeftTimes_;
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+     * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
@@ -3395,24 +4019,80 @@ public final class Statistics {
       return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+     * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
      * </pre>
      */
-    public com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync getExpLeftTimes() {
+    public com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes getExpLeftTimes() {
       return expLeftTimes_;
     }
     /**
-     * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+     * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
      *
      * <pre>
      * 多倍经验剩余次数
      * </pre>
      */
-    public com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSyncOrBuilder getExpLeftTimesOrBuilder() {
+    public com.hawk.game.protocol.Statistics.HSSyncExpLeftTimesOrBuilder getExpLeftTimesOrBuilder() {
       return expLeftTimes_;
+    }
+
+    // repeated .ItemState itemState = 14;
+    public static final int ITEMSTATE_FIELD_NUMBER = 14;
+    private java.util.List<com.hawk.game.protocol.Statistics.ItemState> itemState_;
+    /**
+     * <code>repeated .ItemState itemState = 14;</code>
+     *
+     * <pre>
+     * 物品使用次数
+     * </pre>
+     */
+    public java.util.List<com.hawk.game.protocol.Statistics.ItemState> getItemStateList() {
+      return itemState_;
+    }
+    /**
+     * <code>repeated .ItemState itemState = 14;</code>
+     *
+     * <pre>
+     * 物品使用次数
+     * </pre>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Statistics.ItemStateOrBuilder> 
+        getItemStateOrBuilderList() {
+      return itemState_;
+    }
+    /**
+     * <code>repeated .ItemState itemState = 14;</code>
+     *
+     * <pre>
+     * 物品使用次数
+     * </pre>
+     */
+    public int getItemStateCount() {
+      return itemState_.size();
+    }
+    /**
+     * <code>repeated .ItemState itemState = 14;</code>
+     *
+     * <pre>
+     * 物品使用次数
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.ItemState getItemState(int index) {
+      return itemState_.get(index);
+    }
+    /**
+     * <code>repeated .ItemState itemState = 14;</code>
+     *
+     * <pre>
+     * 物品使用次数
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.ItemStateOrBuilder getItemStateOrBuilder(
+        int index) {
+      return itemState_.get(index);
     }
 
     private void initFields() {
@@ -3428,7 +4108,8 @@ public final class Statistics {
       rechargeState_ = java.util.Collections.emptyList();
       monthCardLeft_ = 0;
       gold2CoinTimes_ = 0;
-      expLeftTimes_ = com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance();
+      expLeftTimes_ = com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.getDefaultInstance();
+      itemState_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3491,6 +4172,12 @@ public final class Statistics {
         memoizedIsInitialized = 0;
         return false;
       }
+      for (int i = 0; i < getItemStateCount(); i++) {
+        if (!getItemState(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -3536,6 +4223,9 @@ public final class Statistics {
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeMessage(13, expLeftTimes_);
+      }
+      for (int i = 0; i < itemState_.size(); i++) {
+        output.writeMessage(14, itemState_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -3602,6 +4292,10 @@ public final class Statistics {
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(13, expLeftTimes_);
+      }
+      for (int i = 0; i < itemState_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, itemState_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3715,6 +4409,7 @@ public final class Statistics {
           getChapterStateFieldBuilder();
           getRechargeStateFieldBuilder();
           getExpLeftTimesFieldBuilder();
+          getItemStateFieldBuilder();
         }
       }
       private static Builder create() {
@@ -3760,11 +4455,17 @@ public final class Statistics {
         gold2CoinTimes_ = 0;
         bitField0_ = (bitField0_ & ~0x00000800);
         if (expLeftTimesBuilder_ == null) {
-          expLeftTimes_ = com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance();
+          expLeftTimes_ = com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.getDefaultInstance();
         } else {
           expLeftTimesBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00001000);
+        if (itemStateBuilder_ == null) {
+          itemState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00002000);
+        } else {
+          itemStateBuilder_.clear();
+        }
         return this;
       }
 
@@ -3864,6 +4565,15 @@ public final class Statistics {
           result.expLeftTimes_ = expLeftTimes_;
         } else {
           result.expLeftTimes_ = expLeftTimesBuilder_.build();
+        }
+        if (itemStateBuilder_ == null) {
+          if (((bitField0_ & 0x00002000) == 0x00002000)) {
+            itemState_ = java.util.Collections.unmodifiableList(itemState_);
+            bitField0_ = (bitField0_ & ~0x00002000);
+          }
+          result.itemState_ = itemState_;
+        } else {
+          result.itemState_ = itemStateBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -3975,6 +4685,32 @@ public final class Statistics {
         if (other.hasExpLeftTimes()) {
           mergeExpLeftTimes(other.getExpLeftTimes());
         }
+        if (itemStateBuilder_ == null) {
+          if (!other.itemState_.isEmpty()) {
+            if (itemState_.isEmpty()) {
+              itemState_ = other.itemState_;
+              bitField0_ = (bitField0_ & ~0x00002000);
+            } else {
+              ensureItemStateIsMutable();
+              itemState_.addAll(other.itemState_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.itemState_.isEmpty()) {
+            if (itemStateBuilder_.isEmpty()) {
+              itemStateBuilder_.dispose();
+              itemStateBuilder_ = null;
+              itemState_ = other.itemState_;
+              bitField0_ = (bitField0_ & ~0x00002000);
+              itemStateBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getItemStateFieldBuilder() : null;
+            } else {
+              itemStateBuilder_.addAllMessages(other.itemState_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -4035,6 +4771,12 @@ public final class Statistics {
         if (!getExpLeftTimes().isInitialized()) {
           
           return false;
+        }
+        for (int i = 0; i < getItemStateCount(); i++) {
+          if (!getItemState(i).isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -5405,12 +6147,12 @@ public final class Statistics {
         return this;
       }
 
-      // required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;
-      private com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync expLeftTimes_ = com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance();
+      // required .HSSyncExpLeftTimes expLeftTimes = 13;
+      private com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes expLeftTimes_ = com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSyncOrBuilder> expLeftTimesBuilder_;
+          com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes, com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.Builder, com.hawk.game.protocol.Statistics.HSSyncExpLeftTimesOrBuilder> expLeftTimesBuilder_;
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+       * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -5420,13 +6162,13 @@ public final class Statistics {
         return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+       * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
        * </pre>
        */
-      public com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync getExpLeftTimes() {
+      public com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes getExpLeftTimes() {
         if (expLeftTimesBuilder_ == null) {
           return expLeftTimes_;
         } else {
@@ -5434,13 +6176,13 @@ public final class Statistics {
         }
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+       * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
        * </pre>
        */
-      public Builder setExpLeftTimes(com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync value) {
+      public Builder setExpLeftTimes(com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes value) {
         if (expLeftTimesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5454,14 +6196,14 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+       * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
        * </pre>
        */
       public Builder setExpLeftTimes(
-          com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder builderForValue) {
+          com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.Builder builderForValue) {
         if (expLeftTimesBuilder_ == null) {
           expLeftTimes_ = builderForValue.build();
           onChanged();
@@ -5472,18 +6214,18 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+       * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
        * </pre>
        */
-      public Builder mergeExpLeftTimes(com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync value) {
+      public Builder mergeExpLeftTimes(com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes value) {
         if (expLeftTimesBuilder_ == null) {
           if (((bitField0_ & 0x00001000) == 0x00001000) &&
-              expLeftTimes_ != com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance()) {
+              expLeftTimes_ != com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.getDefaultInstance()) {
             expLeftTimes_ =
-              com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.newBuilder(expLeftTimes_).mergeFrom(value).buildPartial();
+              com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.newBuilder(expLeftTimes_).mergeFrom(value).buildPartial();
           } else {
             expLeftTimes_ = value;
           }
@@ -5495,7 +6237,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+       * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
@@ -5503,7 +6245,7 @@ public final class Statistics {
        */
       public Builder clearExpLeftTimes() {
         if (expLeftTimesBuilder_ == null) {
-          expLeftTimes_ = com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance();
+          expLeftTimes_ = com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.getDefaultInstance();
           onChanged();
         } else {
           expLeftTimesBuilder_.clear();
@@ -5512,25 +6254,25 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+       * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
        * </pre>
        */
-      public com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder getExpLeftTimesBuilder() {
+      public com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.Builder getExpLeftTimesBuilder() {
         bitField0_ |= 0x00001000;
         onChanged();
         return getExpLeftTimesFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+       * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
        * </pre>
        */
-      public com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSyncOrBuilder getExpLeftTimesOrBuilder() {
+      public com.hawk.game.protocol.Statistics.HSSyncExpLeftTimesOrBuilder getExpLeftTimesOrBuilder() {
         if (expLeftTimesBuilder_ != null) {
           return expLeftTimesBuilder_.getMessageOrBuilder();
         } else {
@@ -5538,24 +6280,336 @@ public final class Statistics {
         }
       }
       /**
-       * <code>required .HSStatisticsExpLeftTimeSync expLeftTimes = 13;</code>
+       * <code>required .HSSyncExpLeftTimes expLeftTimes = 13;</code>
        *
        * <pre>
        * 多倍经验剩余次数
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSyncOrBuilder> 
+          com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes, com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.Builder, com.hawk.game.protocol.Statistics.HSSyncExpLeftTimesOrBuilder> 
           getExpLeftTimesFieldBuilder() {
         if (expLeftTimesBuilder_ == null) {
           expLeftTimesBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSyncOrBuilder>(
+              com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes, com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.Builder, com.hawk.game.protocol.Statistics.HSSyncExpLeftTimesOrBuilder>(
                   expLeftTimes_,
                   getParentForChildren(),
                   isClean());
           expLeftTimes_ = null;
         }
         return expLeftTimesBuilder_;
+      }
+
+      // repeated .ItemState itemState = 14;
+      private java.util.List<com.hawk.game.protocol.Statistics.ItemState> itemState_ =
+        java.util.Collections.emptyList();
+      private void ensureItemStateIsMutable() {
+        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
+          itemState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.ItemState>(itemState_);
+          bitField0_ |= 0x00002000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.ItemState, com.hawk.game.protocol.Statistics.ItemState.Builder, com.hawk.game.protocol.Statistics.ItemStateOrBuilder> itemStateBuilder_;
+
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public java.util.List<com.hawk.game.protocol.Statistics.ItemState> getItemStateList() {
+        if (itemStateBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(itemState_);
+        } else {
+          return itemStateBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public int getItemStateCount() {
+        if (itemStateBuilder_ == null) {
+          return itemState_.size();
+        } else {
+          return itemStateBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.ItemState getItemState(int index) {
+        if (itemStateBuilder_ == null) {
+          return itemState_.get(index);
+        } else {
+          return itemStateBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public Builder setItemState(
+          int index, com.hawk.game.protocol.Statistics.ItemState value) {
+        if (itemStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemStateIsMutable();
+          itemState_.set(index, value);
+          onChanged();
+        } else {
+          itemStateBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public Builder setItemState(
+          int index, com.hawk.game.protocol.Statistics.ItemState.Builder builderForValue) {
+        if (itemStateBuilder_ == null) {
+          ensureItemStateIsMutable();
+          itemState_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemStateBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public Builder addItemState(com.hawk.game.protocol.Statistics.ItemState value) {
+        if (itemStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemStateIsMutable();
+          itemState_.add(value);
+          onChanged();
+        } else {
+          itemStateBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public Builder addItemState(
+          int index, com.hawk.game.protocol.Statistics.ItemState value) {
+        if (itemStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemStateIsMutable();
+          itemState_.add(index, value);
+          onChanged();
+        } else {
+          itemStateBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public Builder addItemState(
+          com.hawk.game.protocol.Statistics.ItemState.Builder builderForValue) {
+        if (itemStateBuilder_ == null) {
+          ensureItemStateIsMutable();
+          itemState_.add(builderForValue.build());
+          onChanged();
+        } else {
+          itemStateBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public Builder addItemState(
+          int index, com.hawk.game.protocol.Statistics.ItemState.Builder builderForValue) {
+        if (itemStateBuilder_ == null) {
+          ensureItemStateIsMutable();
+          itemState_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemStateBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public Builder addAllItemState(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Statistics.ItemState> values) {
+        if (itemStateBuilder_ == null) {
+          ensureItemStateIsMutable();
+          super.addAll(values, itemState_);
+          onChanged();
+        } else {
+          itemStateBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public Builder clearItemState() {
+        if (itemStateBuilder_ == null) {
+          itemState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00002000);
+          onChanged();
+        } else {
+          itemStateBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public Builder removeItemState(int index) {
+        if (itemStateBuilder_ == null) {
+          ensureItemStateIsMutable();
+          itemState_.remove(index);
+          onChanged();
+        } else {
+          itemStateBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.ItemState.Builder getItemStateBuilder(
+          int index) {
+        return getItemStateFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.ItemStateOrBuilder getItemStateOrBuilder(
+          int index) {
+        if (itemStateBuilder_ == null) {
+          return itemState_.get(index);  } else {
+          return itemStateBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Statistics.ItemStateOrBuilder> 
+           getItemStateOrBuilderList() {
+        if (itemStateBuilder_ != null) {
+          return itemStateBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(itemState_);
+        }
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.ItemState.Builder addItemStateBuilder() {
+        return getItemStateFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Statistics.ItemState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.ItemState.Builder addItemStateBuilder(
+          int index) {
+        return getItemStateFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Statistics.ItemState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ItemState itemState = 14;</code>
+       *
+       * <pre>
+       * 物品使用次数
+       * </pre>
+       */
+      public java.util.List<com.hawk.game.protocol.Statistics.ItemState.Builder> 
+           getItemStateBuilderList() {
+        return getItemStateFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.ItemState, com.hawk.game.protocol.Statistics.ItemState.Builder, com.hawk.game.protocol.Statistics.ItemStateOrBuilder> 
+          getItemStateFieldBuilder() {
+        if (itemStateBuilder_ == null) {
+          itemStateBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Statistics.ItemState, com.hawk.game.protocol.Statistics.ItemState.Builder, com.hawk.game.protocol.Statistics.ItemStateOrBuilder>(
+                  itemState_,
+                  ((bitField0_ & 0x00002000) == 0x00002000),
+                  getParentForChildren(),
+                  isClean());
+          itemState_ = null;
+        }
+        return itemStateBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:HSStatisticsInfoSync)
@@ -5569,7 +6623,768 @@ public final class Statistics {
     // @@protoc_insertion_point(class_scope:HSStatisticsInfoSync)
   }
 
-  public interface HSStatisticsExpLeftTimeSyncOrBuilder
+  public interface HSSyncDailyRefreshOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSSyncDailyRefresh}
+   *
+   * <pre>
+   * SYNC_DAILY_REFRESH_S
+   * </pre>
+   */
+  public static final class HSSyncDailyRefresh extends
+      com.google.protobuf.GeneratedMessage
+      implements HSSyncDailyRefreshOrBuilder {
+    // Use HSSyncDailyRefresh.newBuilder() to construct.
+    private HSSyncDailyRefresh(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSSyncDailyRefresh(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSSyncDailyRefresh defaultInstance;
+    public static HSSyncDailyRefresh getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSSyncDailyRefresh getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSSyncDailyRefresh(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Statistics.internal_static_HSSyncDailyRefresh_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Statistics.internal_static_HSSyncDailyRefresh_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Statistics.HSSyncDailyRefresh.class, com.hawk.game.protocol.Statistics.HSSyncDailyRefresh.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSSyncDailyRefresh> PARSER =
+        new com.google.protobuf.AbstractParser<HSSyncDailyRefresh>() {
+      public HSSyncDailyRefresh parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSSyncDailyRefresh(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSSyncDailyRefresh> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Statistics.HSSyncDailyRefresh parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncDailyRefresh parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncDailyRefresh parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncDailyRefresh parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncDailyRefresh parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncDailyRefresh parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncDailyRefresh parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncDailyRefresh parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncDailyRefresh parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncDailyRefresh parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Statistics.HSSyncDailyRefresh prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSSyncDailyRefresh}
+     *
+     * <pre>
+     * SYNC_DAILY_REFRESH_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Statistics.HSSyncDailyRefreshOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncDailyRefresh_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncDailyRefresh_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Statistics.HSSyncDailyRefresh.class, com.hawk.game.protocol.Statistics.HSSyncDailyRefresh.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Statistics.HSSyncDailyRefresh.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncDailyRefresh_descriptor;
+      }
+
+      public com.hawk.game.protocol.Statistics.HSSyncDailyRefresh getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Statistics.HSSyncDailyRefresh.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Statistics.HSSyncDailyRefresh build() {
+        com.hawk.game.protocol.Statistics.HSSyncDailyRefresh result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Statistics.HSSyncDailyRefresh buildPartial() {
+        com.hawk.game.protocol.Statistics.HSSyncDailyRefresh result = new com.hawk.game.protocol.Statistics.HSSyncDailyRefresh(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Statistics.HSSyncDailyRefresh) {
+          return mergeFrom((com.hawk.game.protocol.Statistics.HSSyncDailyRefresh)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Statistics.HSSyncDailyRefresh other) {
+        if (other == com.hawk.game.protocol.Statistics.HSSyncDailyRefresh.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Statistics.HSSyncDailyRefresh parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Statistics.HSSyncDailyRefresh) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSSyncDailyRefresh)
+    }
+
+    static {
+      defaultInstance = new HSSyncDailyRefresh(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSSyncDailyRefresh)
+  }
+
+  public interface HSSyncShopRefreshOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 shopType = 1;
+    /**
+     * <code>required int32 shopType = 1;</code>
+     *
+     * <pre>
+     * 商店类型
+     * </pre>
+     */
+    boolean hasShopType();
+    /**
+     * <code>required int32 shopType = 1;</code>
+     *
+     * <pre>
+     * 商店类型
+     * </pre>
+     */
+    int getShopType();
+  }
+  /**
+   * Protobuf type {@code HSSyncShopRefresh}
+   *
+   * <pre>
+   * SYNC_SHOP_REFRESH_S
+   * </pre>
+   */
+  public static final class HSSyncShopRefresh extends
+      com.google.protobuf.GeneratedMessage
+      implements HSSyncShopRefreshOrBuilder {
+    // Use HSSyncShopRefresh.newBuilder() to construct.
+    private HSSyncShopRefresh(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSSyncShopRefresh(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSSyncShopRefresh defaultInstance;
+    public static HSSyncShopRefresh getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSSyncShopRefresh getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSSyncShopRefresh(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              shopType_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Statistics.internal_static_HSSyncShopRefresh_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Statistics.internal_static_HSSyncShopRefresh_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Statistics.HSSyncShopRefresh.class, com.hawk.game.protocol.Statistics.HSSyncShopRefresh.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSSyncShopRefresh> PARSER =
+        new com.google.protobuf.AbstractParser<HSSyncShopRefresh>() {
+      public HSSyncShopRefresh parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSSyncShopRefresh(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSSyncShopRefresh> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 shopType = 1;
+    public static final int SHOPTYPE_FIELD_NUMBER = 1;
+    private int shopType_;
+    /**
+     * <code>required int32 shopType = 1;</code>
+     *
+     * <pre>
+     * 商店类型
+     * </pre>
+     */
+    public boolean hasShopType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 shopType = 1;</code>
+     *
+     * <pre>
+     * 商店类型
+     * </pre>
+     */
+    public int getShopType() {
+      return shopType_;
+    }
+
+    private void initFields() {
+      shopType_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasShopType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, shopType_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, shopType_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Statistics.HSSyncShopRefresh parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncShopRefresh parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncShopRefresh parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncShopRefresh parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncShopRefresh parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncShopRefresh parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncShopRefresh parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncShopRefresh parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncShopRefresh parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.HSSyncShopRefresh parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Statistics.HSSyncShopRefresh prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSSyncShopRefresh}
+     *
+     * <pre>
+     * SYNC_SHOP_REFRESH_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Statistics.HSSyncShopRefreshOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncShopRefresh_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncShopRefresh_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Statistics.HSSyncShopRefresh.class, com.hawk.game.protocol.Statistics.HSSyncShopRefresh.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Statistics.HSSyncShopRefresh.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        shopType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncShopRefresh_descriptor;
+      }
+
+      public com.hawk.game.protocol.Statistics.HSSyncShopRefresh getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Statistics.HSSyncShopRefresh.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Statistics.HSSyncShopRefresh build() {
+        com.hawk.game.protocol.Statistics.HSSyncShopRefresh result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Statistics.HSSyncShopRefresh buildPartial() {
+        com.hawk.game.protocol.Statistics.HSSyncShopRefresh result = new com.hawk.game.protocol.Statistics.HSSyncShopRefresh(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.shopType_ = shopType_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Statistics.HSSyncShopRefresh) {
+          return mergeFrom((com.hawk.game.protocol.Statistics.HSSyncShopRefresh)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Statistics.HSSyncShopRefresh other) {
+        if (other == com.hawk.game.protocol.Statistics.HSSyncShopRefresh.getDefaultInstance()) return this;
+        if (other.hasShopType()) {
+          setShopType(other.getShopType());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasShopType()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Statistics.HSSyncShopRefresh parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Statistics.HSSyncShopRefresh) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 shopType = 1;
+      private int shopType_ ;
+      /**
+       * <code>required int32 shopType = 1;</code>
+       *
+       * <pre>
+       * 商店类型
+       * </pre>
+       */
+      public boolean hasShopType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 shopType = 1;</code>
+       *
+       * <pre>
+       * 商店类型
+       * </pre>
+       */
+      public int getShopType() {
+        return shopType_;
+      }
+      /**
+       * <code>required int32 shopType = 1;</code>
+       *
+       * <pre>
+       * 商店类型
+       * </pre>
+       */
+      public Builder setShopType(int value) {
+        bitField0_ |= 0x00000001;
+        shopType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 shopType = 1;</code>
+       *
+       * <pre>
+       * 商店类型
+       * </pre>
+       */
+      public Builder clearShopType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        shopType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSSyncShopRefresh)
+    }
+
+    static {
+      defaultInstance = new HSSyncShopRefresh(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSSyncShopRefresh)
+  }
+
+  public interface HSSyncExpLeftTimesOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required int32 doubleExpLeft = 1;
@@ -5609,24 +7424,28 @@ public final class Statistics {
     int getTripleExpLeft();
   }
   /**
-   * Protobuf type {@code HSStatisticsExpLeftTimeSync}
+   * Protobuf type {@code HSSyncExpLeftTimes}
+   *
+   * <pre>
+   * SYNC_EXP_LEFT_TIMES_S
+   * </pre>
    */
-  public static final class HSStatisticsExpLeftTimeSync extends
+  public static final class HSSyncExpLeftTimes extends
       com.google.protobuf.GeneratedMessage
-      implements HSStatisticsExpLeftTimeSyncOrBuilder {
-    // Use HSStatisticsExpLeftTimeSync.newBuilder() to construct.
-    private HSStatisticsExpLeftTimeSync(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HSSyncExpLeftTimesOrBuilder {
+    // Use HSSyncExpLeftTimes.newBuilder() to construct.
+    private HSSyncExpLeftTimes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HSStatisticsExpLeftTimeSync(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HSSyncExpLeftTimes(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HSStatisticsExpLeftTimeSync defaultInstance;
-    public static HSStatisticsExpLeftTimeSync getDefaultInstance() {
+    private static final HSSyncExpLeftTimes defaultInstance;
+    public static HSSyncExpLeftTimes getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HSStatisticsExpLeftTimeSync getDefaultInstanceForType() {
+    public HSSyncExpLeftTimes getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -5636,7 +7455,7 @@ public final class Statistics {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HSStatisticsExpLeftTimeSync(
+    private HSSyncExpLeftTimes(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5683,28 +7502,28 @@ public final class Statistics {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsExpLeftTimeSync_descriptor;
+      return com.hawk.game.protocol.Statistics.internal_static_HSSyncExpLeftTimes_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsExpLeftTimeSync_fieldAccessorTable
+      return com.hawk.game.protocol.Statistics.internal_static_HSSyncExpLeftTimes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.class, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder.class);
+              com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.class, com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HSStatisticsExpLeftTimeSync> PARSER =
-        new com.google.protobuf.AbstractParser<HSStatisticsExpLeftTimeSync>() {
-      public HSStatisticsExpLeftTimeSync parsePartialFrom(
+    public static com.google.protobuf.Parser<HSSyncExpLeftTimes> PARSER =
+        new com.google.protobuf.AbstractParser<HSSyncExpLeftTimes>() {
+      public HSSyncExpLeftTimes parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HSStatisticsExpLeftTimeSync(input, extensionRegistry);
+        return new HSSyncExpLeftTimes(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HSStatisticsExpLeftTimeSync> getParserForType() {
+    public com.google.protobuf.Parser<HSSyncExpLeftTimes> getParserForType() {
       return PARSER;
     }
 
@@ -5816,53 +7635,53 @@ public final class Statistics {
       return super.writeReplace();
     }
 
-    public static com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync parseFrom(
+    public static com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync parseFrom(
+    public static com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync parseFrom(byte[] data)
+    public static com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync parseFrom(
+    public static com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync parseFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync parseFrom(
+    public static com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync parseDelimitedFrom(java.io.InputStream input)
+    public static com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync parseDelimitedFrom(
+    public static com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync parseFrom(
+    public static com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync parseFrom(
+    public static com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5871,7 +7690,7 @@ public final class Statistics {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync prototype) {
+    public static Builder newBuilder(com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -5883,24 +7702,28 @@ public final class Statistics {
       return builder;
     }
     /**
-     * Protobuf type {@code HSStatisticsExpLeftTimeSync}
+     * Protobuf type {@code HSSyncExpLeftTimes}
+     *
+     * <pre>
+     * SYNC_EXP_LEFT_TIMES_S
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSyncOrBuilder {
+       implements com.hawk.game.protocol.Statistics.HSSyncExpLeftTimesOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsExpLeftTimeSync_descriptor;
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncExpLeftTimes_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsExpLeftTimeSync_fieldAccessorTable
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncExpLeftTimes_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.class, com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.Builder.class);
+                com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.class, com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.Builder.class);
       }
 
-      // Construct using com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.newBuilder()
+      // Construct using com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5933,23 +7756,23 @@ public final class Statistics {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsExpLeftTimeSync_descriptor;
+        return com.hawk.game.protocol.Statistics.internal_static_HSSyncExpLeftTimes_descriptor;
       }
 
-      public com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync getDefaultInstanceForType() {
-        return com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance();
+      public com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.getDefaultInstance();
       }
 
-      public com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync build() {
-        com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync result = buildPartial();
+      public com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes build() {
+        com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync buildPartial() {
-        com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync result = new com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync(this);
+      public com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes buildPartial() {
+        com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes result = new com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -5966,16 +7789,16 @@ public final class Statistics {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync) {
-          return mergeFrom((com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync)other);
+        if (other instanceof com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes) {
+          return mergeFrom((com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync other) {
-        if (other == com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes other) {
+        if (other == com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes.getDefaultInstance()) return this;
         if (other.hasDoubleExpLeft()) {
           setDoubleExpLeft(other.getDoubleExpLeft());
         }
@@ -6002,11 +7825,11 @@ public final class Statistics {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync parsedMessage = null;
+        com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync) e.getUnfinishedMessage();
+          parsedMessage = (com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -6115,887 +7938,15 @@ public final class Statistics {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:HSStatisticsExpLeftTimeSync)
+      // @@protoc_insertion_point(builder_scope:HSSyncExpLeftTimes)
     }
 
     static {
-      defaultInstance = new HSStatisticsExpLeftTimeSync(true);
+      defaultInstance = new HSSyncExpLeftTimes(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:HSStatisticsExpLeftTimeSync)
-  }
-
-  public interface HSStatisticsResetSyncOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // required int32 goldChangeTimes = 1;
-    /**
-     * <code>required int32 goldChangeTimes = 1;</code>
-     *
-     * <pre>
-     * 钻石兑换次数
-     * </pre>
-     */
-    boolean hasGoldChangeTimes();
-    /**
-     * <code>required int32 goldChangeTimes = 1;</code>
-     *
-     * <pre>
-     * 钻石兑换次数
-     * </pre>
-     */
-    int getGoldChangeTimes();
-  }
-  /**
-   * Protobuf type {@code HSStatisticsResetSync}
-   */
-  public static final class HSStatisticsResetSync extends
-      com.google.protobuf.GeneratedMessage
-      implements HSStatisticsResetSyncOrBuilder {
-    // Use HSStatisticsResetSync.newBuilder() to construct.
-    private HSStatisticsResetSync(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private HSStatisticsResetSync(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final HSStatisticsResetSync defaultInstance;
-    public static HSStatisticsResetSync getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public HSStatisticsResetSync getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private HSStatisticsResetSync(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              goldChangeTimes_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsResetSync_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsResetSync_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.Statistics.HSStatisticsResetSync.class, com.hawk.game.protocol.Statistics.HSStatisticsResetSync.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<HSStatisticsResetSync> PARSER =
-        new com.google.protobuf.AbstractParser<HSStatisticsResetSync>() {
-      public HSStatisticsResetSync parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HSStatisticsResetSync(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<HSStatisticsResetSync> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required int32 goldChangeTimes = 1;
-    public static final int GOLDCHANGETIMES_FIELD_NUMBER = 1;
-    private int goldChangeTimes_;
-    /**
-     * <code>required int32 goldChangeTimes = 1;</code>
-     *
-     * <pre>
-     * 钻石兑换次数
-     * </pre>
-     */
-    public boolean hasGoldChangeTimes() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required int32 goldChangeTimes = 1;</code>
-     *
-     * <pre>
-     * 钻石兑换次数
-     * </pre>
-     */
-    public int getGoldChangeTimes() {
-      return goldChangeTimes_;
-    }
-
-    private void initFields() {
-      goldChangeTimes_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasGoldChangeTimes()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, goldChangeTimes_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, goldChangeTimes_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.hawk.game.protocol.Statistics.HSStatisticsResetSync parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsResetSync parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsResetSync parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsResetSync parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsResetSync parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsResetSync parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsResetSync parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsResetSync parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsResetSync parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsResetSync parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.Statistics.HSStatisticsResetSync prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code HSStatisticsResetSync}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.Statistics.HSStatisticsResetSyncOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsResetSync_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsResetSync_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.Statistics.HSStatisticsResetSync.class, com.hawk.game.protocol.Statistics.HSStatisticsResetSync.Builder.class);
-      }
-
-      // Construct using com.hawk.game.protocol.Statistics.HSStatisticsResetSync.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        goldChangeTimes_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsResetSync_descriptor;
-      }
-
-      public com.hawk.game.protocol.Statistics.HSStatisticsResetSync getDefaultInstanceForType() {
-        return com.hawk.game.protocol.Statistics.HSStatisticsResetSync.getDefaultInstance();
-      }
-
-      public com.hawk.game.protocol.Statistics.HSStatisticsResetSync build() {
-        com.hawk.game.protocol.Statistics.HSStatisticsResetSync result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.hawk.game.protocol.Statistics.HSStatisticsResetSync buildPartial() {
-        com.hawk.game.protocol.Statistics.HSStatisticsResetSync result = new com.hawk.game.protocol.Statistics.HSStatisticsResetSync(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.goldChangeTimes_ = goldChangeTimes_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.Statistics.HSStatisticsResetSync) {
-          return mergeFrom((com.hawk.game.protocol.Statistics.HSStatisticsResetSync)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.hawk.game.protocol.Statistics.HSStatisticsResetSync other) {
-        if (other == com.hawk.game.protocol.Statistics.HSStatisticsResetSync.getDefaultInstance()) return this;
-        if (other.hasGoldChangeTimes()) {
-          setGoldChangeTimes(other.getGoldChangeTimes());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        if (!hasGoldChangeTimes()) {
-          
-          return false;
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.hawk.game.protocol.Statistics.HSStatisticsResetSync parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.Statistics.HSStatisticsResetSync) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // required int32 goldChangeTimes = 1;
-      private int goldChangeTimes_ ;
-      /**
-       * <code>required int32 goldChangeTimes = 1;</code>
-       *
-       * <pre>
-       * 钻石兑换次数
-       * </pre>
-       */
-      public boolean hasGoldChangeTimes() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required int32 goldChangeTimes = 1;</code>
-       *
-       * <pre>
-       * 钻石兑换次数
-       * </pre>
-       */
-      public int getGoldChangeTimes() {
-        return goldChangeTimes_;
-      }
-      /**
-       * <code>required int32 goldChangeTimes = 1;</code>
-       *
-       * <pre>
-       * 钻石兑换次数
-       * </pre>
-       */
-      public Builder setGoldChangeTimes(int value) {
-        bitField0_ |= 0x00000001;
-        goldChangeTimes_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 goldChangeTimes = 1;</code>
-       *
-       * <pre>
-       * 钻石兑换次数
-       * </pre>
-       */
-      public Builder clearGoldChangeTimes() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        goldChangeTimes_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:HSStatisticsResetSync)
-    }
-
-    static {
-      defaultInstance = new HSStatisticsResetSync(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:HSStatisticsResetSync)
-  }
-
-  public interface HSStatisticsShopRefreshOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // required int32 shopType = 1;
-    /**
-     * <code>required int32 shopType = 1;</code>
-     *
-     * <pre>
-     * 商店类型
-     * </pre>
-     */
-    boolean hasShopType();
-    /**
-     * <code>required int32 shopType = 1;</code>
-     *
-     * <pre>
-     * 商店类型
-     * </pre>
-     */
-    int getShopType();
-  }
-  /**
-   * Protobuf type {@code HSStatisticsShopRefresh}
-   */
-  public static final class HSStatisticsShopRefresh extends
-      com.google.protobuf.GeneratedMessage
-      implements HSStatisticsShopRefreshOrBuilder {
-    // Use HSStatisticsShopRefresh.newBuilder() to construct.
-    private HSStatisticsShopRefresh(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private HSStatisticsShopRefresh(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final HSStatisticsShopRefresh defaultInstance;
-    public static HSStatisticsShopRefresh getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public HSStatisticsShopRefresh getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private HSStatisticsShopRefresh(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              shopType_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsShopRefresh_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsShopRefresh_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh.class, com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<HSStatisticsShopRefresh> PARSER =
-        new com.google.protobuf.AbstractParser<HSStatisticsShopRefresh>() {
-      public HSStatisticsShopRefresh parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HSStatisticsShopRefresh(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<HSStatisticsShopRefresh> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required int32 shopType = 1;
-    public static final int SHOPTYPE_FIELD_NUMBER = 1;
-    private int shopType_;
-    /**
-     * <code>required int32 shopType = 1;</code>
-     *
-     * <pre>
-     * 商店类型
-     * </pre>
-     */
-    public boolean hasShopType() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required int32 shopType = 1;</code>
-     *
-     * <pre>
-     * 商店类型
-     * </pre>
-     */
-    public int getShopType() {
-      return shopType_;
-    }
-
-    private void initFields() {
-      shopType_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasShopType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, shopType_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, shopType_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code HSStatisticsShopRefresh}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hawk.game.protocol.Statistics.HSStatisticsShopRefreshOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsShopRefresh_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsShopRefresh_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh.class, com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh.Builder.class);
-      }
-
-      // Construct using com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        shopType_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.hawk.game.protocol.Statistics.internal_static_HSStatisticsShopRefresh_descriptor;
-      }
-
-      public com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh getDefaultInstanceForType() {
-        return com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh.getDefaultInstance();
-      }
-
-      public com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh build() {
-        com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh buildPartial() {
-        com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh result = new com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.shopType_ = shopType_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh) {
-          return mergeFrom((com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh other) {
-        if (other == com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh.getDefaultInstance()) return this;
-        if (other.hasShopType()) {
-          setShopType(other.getShopType());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        if (!hasShopType()) {
-          
-          return false;
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // required int32 shopType = 1;
-      private int shopType_ ;
-      /**
-       * <code>required int32 shopType = 1;</code>
-       *
-       * <pre>
-       * 商店类型
-       * </pre>
-       */
-      public boolean hasShopType() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required int32 shopType = 1;</code>
-       *
-       * <pre>
-       * 商店类型
-       * </pre>
-       */
-      public int getShopType() {
-        return shopType_;
-      }
-      /**
-       * <code>required int32 shopType = 1;</code>
-       *
-       * <pre>
-       * 商店类型
-       * </pre>
-       */
-      public Builder setShopType(int value) {
-        bitField0_ |= 0x00000001;
-        shopType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 shopType = 1;</code>
-       *
-       * <pre>
-       * 商店类型
-       * </pre>
-       */
-      public Builder clearShopType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        shopType_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:HSStatisticsShopRefresh)
-    }
-
-    static {
-      defaultInstance = new HSStatisticsShopRefresh(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:HSStatisticsShopRefresh)
+    // @@protoc_insertion_point(class_scope:HSSyncExpLeftTimes)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
@@ -7014,25 +7965,30 @@ public final class Statistics {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_RechargeState_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_ItemState_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ItemState_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSStatisticsInfoSync_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSStatisticsInfoSync_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HSStatisticsExpLeftTimeSync_descriptor;
+    internal_static_HSSyncDailyRefresh_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HSStatisticsExpLeftTimeSync_fieldAccessorTable;
+      internal_static_HSSyncDailyRefresh_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HSStatisticsResetSync_descriptor;
+    internal_static_HSSyncShopRefresh_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HSStatisticsResetSync_fieldAccessorTable;
+      internal_static_HSSyncShopRefresh_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_HSStatisticsShopRefresh_descriptor;
+    internal_static_HSSyncExpLeftTimes_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_HSStatisticsShopRefresh_fieldAccessorTable;
+      internal_static_HSSyncExpLeftTimes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7049,22 +8005,23 @@ public final class Statistics {
       "\002 \002(\005\022\026\n\016hardTopChapter\030\003 \002(\005\022\024\n\014hardTop" +
       "Index\030\004 \002(\005\022\026\n\016normalBoxState\030\005 \003(\005\022\024\n\014h" +
       "ardBoxState\030\006 \003(\005\"4\n\rRechargeState\022\021\n\tpr" +
-      "oductId\030\001 \002(\t\022\020\n\010buyTimes\030\002 \002(\005\"\213\003\n\024HSSt" +
-      "atisticsInfoSync\022%\n\rinstanceState\030\001 \003(\0132" +
-      "\016.InstanceState\022#\n\014chapterState\030\002 \002(\0132\r.",
-      "ChapterState\022\026\n\016monsterCollect\030\003 \003(\t\022\017\n\007" +
-      "fatigue\030\004 \002(\005\022\030\n\020fatigueBeginTime\030\005 \002(\005\022" +
-      "\022\n\nskillPoint\030\006 \002(\005\022\033\n\023skillPointBeginTi" +
-      "me\030\007 \002(\005\022\021\n\ttimeStamp\030\010 \001(\005\022\026\n\016orderServ" +
-      "erKey\030\t \002(\t\022%\n\rrechargeState\030\n \003(\0132\016.Rec" +
-      "hargeState\022\025\n\rmonthCardLeft\030\013 \002(\005\022\026\n\016gol" +
-      "d2CoinTimes\030\014 \002(\005\0222\n\014expLeftTimes\030\r \002(\0132" +
-      "\034.HSStatisticsExpLeftTimeSync\"K\n\033HSStati" +
-      "sticsExpLeftTimeSync\022\025\n\rdoubleExpLeft\030\001 " +
-      "\002(\005\022\025\n\rtripleExpLeft\030\002 \002(\005\"0\n\025HSStatisti",
-      "csResetSync\022\027\n\017goldChangeTimes\030\001 \002(\005\"+\n\027" +
-      "HSStatisticsShopRefresh\022\020\n\010shopType\030\001 \002(" +
-      "\005B\030\n\026com.hawk.game.protocol"
+      "oductId\030\001 \002(\t\022\020\n\010buyTimes\030\002 \002(\005\"2\n\tItemS" +
+      "tate\022\016\n\006itemId\030\001 \002(\t\022\025\n\ruseCountDaily\030\002 " +
+      "\002(\005\"\241\003\n\024HSStatisticsInfoSync\022%\n\rinstance",
+      "State\030\001 \003(\0132\016.InstanceState\022#\n\014chapterSt" +
+      "ate\030\002 \002(\0132\r.ChapterState\022\026\n\016monsterColle" +
+      "ct\030\003 \003(\t\022\017\n\007fatigue\030\004 \002(\005\022\030\n\020fatigueBegi" +
+      "nTime\030\005 \002(\005\022\022\n\nskillPoint\030\006 \002(\005\022\033\n\023skill" +
+      "PointBeginTime\030\007 \002(\005\022\021\n\ttimeStamp\030\010 \001(\005\022" +
+      "\026\n\016orderServerKey\030\t \002(\t\022%\n\rrechargeState" +
+      "\030\n \003(\0132\016.RechargeState\022\025\n\rmonthCardLeft\030" +
+      "\013 \002(\005\022\026\n\016gold2CoinTimes\030\014 \002(\005\022)\n\014expLeft" +
+      "Times\030\r \002(\0132\023.HSSyncExpLeftTimes\022\035\n\titem" +
+      "State\030\016 \003(\0132\n.ItemState\"\024\n\022HSSyncDailyRe",
+      "fresh\"%\n\021HSSyncShopRefresh\022\020\n\010shopType\030\001" +
+      " \002(\005\"B\n\022HSSyncExpLeftTimes\022\025\n\rdoubleExpL" +
+      "eft\030\001 \002(\005\022\025\n\rtripleExpLeft\030\002 \002(\005B\030\n\026com." +
+      "hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7089,30 +8046,36 @@ public final class Statistics {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_RechargeState_descriptor,
               new java.lang.String[] { "ProductId", "BuyTimes", });
-          internal_static_HSStatisticsInfoSync_descriptor =
+          internal_static_ItemState_descriptor =
             getDescriptor().getMessageTypes().get(3);
+          internal_static_ItemState_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_ItemState_descriptor,
+              new java.lang.String[] { "ItemId", "UseCountDaily", });
+          internal_static_HSStatisticsInfoSync_descriptor =
+            getDescriptor().getMessageTypes().get(4);
           internal_static_HSStatisticsInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsInfoSync_descriptor,
-              new java.lang.String[] { "InstanceState", "ChapterState", "MonsterCollect", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", });
-          internal_static_HSStatisticsExpLeftTimeSync_descriptor =
-            getDescriptor().getMessageTypes().get(4);
-          internal_static_HSStatisticsExpLeftTimeSync_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HSStatisticsExpLeftTimeSync_descriptor,
-              new java.lang.String[] { "DoubleExpLeft", "TripleExpLeft", });
-          internal_static_HSStatisticsResetSync_descriptor =
+              new java.lang.String[] { "InstanceState", "ChapterState", "MonsterCollect", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "ItemState", });
+          internal_static_HSSyncDailyRefresh_descriptor =
             getDescriptor().getMessageTypes().get(5);
-          internal_static_HSStatisticsResetSync_fieldAccessorTable = new
+          internal_static_HSSyncDailyRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HSStatisticsResetSync_descriptor,
-              new java.lang.String[] { "GoldChangeTimes", });
-          internal_static_HSStatisticsShopRefresh_descriptor =
+              internal_static_HSSyncDailyRefresh_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSSyncShopRefresh_descriptor =
             getDescriptor().getMessageTypes().get(6);
-          internal_static_HSStatisticsShopRefresh_fieldAccessorTable = new
+          internal_static_HSSyncShopRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_HSStatisticsShopRefresh_descriptor,
+              internal_static_HSSyncShopRefresh_descriptor,
               new java.lang.String[] { "ShopType", });
+          internal_static_HSSyncExpLeftTimes_descriptor =
+            getDescriptor().getMessageTypes().get(7);
+          internal_static_HSSyncExpLeftTimes_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSSyncExpLeftTimes_descriptor,
+              new java.lang.String[] { "DoubleExpLeft", "TripleExpLeft", });
           return null;
         }
       };

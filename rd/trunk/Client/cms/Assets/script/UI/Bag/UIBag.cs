@@ -307,14 +307,19 @@ public class UIBag : UIBase,TabButtonDelegate
 			PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode> ();
 			if(error.errCode == (int)PB.itemError.ITEM_EXP_LEFT_TIMES)
 			{
-				string errMsg = "bag_record_003";
+				/*string errMsg = "bag_record_003";
 				if(isPilaoyao)
 				{
 					errMsg = "bag_record_002";
-				}
-				UIIm.Instance.ShowSystemHints (StaticDataMgr.Instance.GetTextByID(errMsg),
+				}*/
+				UIIm.Instance.ShowSystemHints (StaticDataMgr.Instance.GetTextByID("bag_record_003"),
 				                               (int)PB.ImType.PROMPT);
 			}
+            else if (error.errCode == (int)PB.itemError.ITEM_USE_COUNT)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("bag_record_002"),
+                                               (int)PB.ImType.PROMPT);
+            }
 			Logger.LogError("use items Error.....");
 			return;
 		}

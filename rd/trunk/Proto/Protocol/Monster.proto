@@ -140,3 +140,16 @@ message HSMonsterDecomposeRet
 {
 
 }
+
+// MONSTER_COMPOSE_C
+message HSMonsterCompose
+{
+	required string cfgId = 1;
+	required bool useCommon = 2;
+}
+
+// MONSTER_COMPOSE_S
+message HSMonsterComposeRet
+{
+
+}

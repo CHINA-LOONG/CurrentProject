@@ -49,10 +49,16 @@ enum PlayerError
 	PUID_EXIST                 = 0x00020003;
 	// 金币不足
 	COINS_NOT_ENOUGH           = 0x00020004;
+	// 金币上限
+	COINS_LIMIT                = 0x00020005;
 	// 钻石不足
-	GOLD_NOT_ENOUGH            = 0x00020005;
+	GOLD_NOT_ENOUGH            = 0x00020006;
+	// 钻石上限
+	GOLD_LIMIT                 = 0x00020007;
 	// 疲劳值不足
-	FATIGUE_NOT_ENOUGH         = 0x00020006;
+	FATIGUE_NOT_ENOUGH         = 0x00020008;
+	// 疲劳值上限
+	FATIGUE_LIMIT              = 0x00020009;
 }
 
 enum monsterError
@@ -93,7 +99,9 @@ enum itemError
 	ITEM_SELL_NOT_ALLOW        = 0x00040005;
 	// 多倍经验还有剩余
 	ITEM_EXP_LEFT_TIMES        = 0x00040006;
-	
+	// 物品使用次数已满
+	ITEM_USE_COUNT             = 0x00040007;
+
 	// 装备不足
 	EQUIP_NOT_FOUND            = 0x00041001;
 	// 装备最大等级
@@ -102,7 +110,7 @@ enum itemError
 	EQUIP_LEVEL_NOT_ENOUGH     = 0x00041003;
 	// 装备最大品级
 	EQUIP_MAX_STAGE_ALREADY    = 0x00041004;
-		
+
 	// 装备不在背包
 	EQUIP_DRESS_ALREADY        = 0x00041005;
 	// 该位置没有其他装备
@@ -168,12 +176,18 @@ enum allianceError
 	ALLIANCE_LEVEL_NOT_ENOUGH  = 0x0080001;
 	// 已经在公会中
 	ALLIANCE_ALREADY_IN        = 0x0080002;
+	// 工会不存在
+	ALLIANCE_NOT_EXIST         = 0x0080003;
 	// 公会名称错误
-	ALLIANCE_NAME_ERROR        = 0x0080003;
+	ALLIANCE_NAME_ERROR        = 0x0080004;
 	// 已经名称重复
-	ALLIANCE_NAME_EXIST        = 0x0080004;
+	ALLIANCE_NAME_EXIST        = 0x0080005;
 	// 未加入公会
-	ALLIANCE_NOT_JOIN          = 0x0080005;
+	ALLIANCE_NOT_JOIN          = 0x0080006;
+	// 非会长
+	ALLIANCE_NO_MAIN           = 0x0080007;
+	// 通告错误
+	ALLIANCE_NOTICE_ERROR      = 0x0080008;
 }
 
 enum shopError

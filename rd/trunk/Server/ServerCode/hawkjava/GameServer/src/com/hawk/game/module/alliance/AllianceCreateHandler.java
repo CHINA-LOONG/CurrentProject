@@ -14,8 +14,8 @@ import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
-import com.hawk.game.protocol.Alliance.HSAllianceCreateC;
-import com.hawk.game.protocol.Alliance.HSAllianceCreateS;
+import com.hawk.game.protocol.Alliance.HSAllianceCreate;
+import com.hawk.game.protocol.Alliance.HSAllianceCreateRet;
 import com.hawk.game.protocol.Const.changeType;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
@@ -35,8 +35,8 @@ public class AllianceCreateHandler implements HawkProtocolHandler {
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_LEVEL_NOT_ENOUGH_VALUE);
 			return true;
 		}
-		if(player.getGold() < SysBasicCfg.getInstance().getAllianceCreateCoin()){
-			player.sendError(protocol.getType(), Status.PlayerError.GOLD_NOT_ENOUGH_VALUE);
+		if(player.getCoin() < SysBasicCfg.getInstance().getAllianceCreateCoin()){
+			player.sendError(protocol.getType(), Status.PlayerError.COINS_NOT_ENOUGH_VALUE);
 			return true;
 		}
 		if(player.getPlayerData().getPlayerAllianceEntity().getAllianceId()!=0){
@@ -44,20 +44,26 @@ public class AllianceCreateHandler implements HawkProtocolHandler {
 			return true;
 		}	
 		
-		HSAllianceCreateC par = protocol.parseProtocol(HSAllianceCreateC.getDefaultInstance());
-		String name = par.getName();
+		HSAllianceCreate request = protocol.parseProtocol(HSAllianceCreate.getDefaultInstance());
+		String name = request.getName();
 		if(name == null){
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NAME_ERROR_VALUE);
 			return true;
 		}
+		
 		name = name.trim();
-		if(name.length()<=0){
+		if(name.length() <= 0){
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NAME_ERROR_VALUE);
 			return true;
 		}
 		
 		if(!AllianceUtil.checkName(name)){
 			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NAME_ERROR_VALUE);
+			return true;
+		}
+		
+		if(!AllianceUtil.checkNotice(request.getNotice())){
+			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NOTICE_ERROR_VALUE);
 			return true;
 		}
 		
@@ -78,13 +84,19 @@ public class AllianceCreateHandler implements HawkProtocolHandler {
 		allianceEntity.setExp(0);
 		allianceEntity.setLevel(allianceCfg.getLevel());
 		allianceEntity.setName(name);
+		allianceEntity.setNotice(request.getNotice());
 		allianceEntity.setCreateAllianceTime(System.currentTimeMillis());
 		allianceEntity.getMemberList().add(player.getId());
-		allianceEntity.notifyCreate();
+		if (allianceEntity.notifyCreate() == false) {
+			player.sendError(protocol.getType(), Status.error.SERVER_ERROR_VALUE);
+			return true;
+		}
+		
 		//标记为会长
 		player.getPlayerData().getPlayerAllianceEntity().setPostion(GsConst.Alliance.ALLIANCE_POS_MAIN);
 		player.getPlayerData().getPlayerAllianceEntity().setAllianceId(allianceEntity.getId());
 		player.getPlayerData().getPlayerAllianceEntity().notifyUpdate(true);
+		
 		// 从db创建
 		AllianceManager.getInstance().addAlliance(allianceEntity);
 		
@@ -92,10 +104,8 @@ public class AllianceCreateHandler implements HawkProtocolHandler {
 		
 		ConsumeItems.valueOf(changeType.CHANGE_COIN, SysBasicCfg.getInstance().getAllianceCreateCoin()).consumeTakeAffect(player, Action.ALLIANCE_CREATE_CONSUME);
 		
-		PlayerAllianceEntity myPlayerAllianceEntity = player.getPlayerData().getPlayerAllianceEntity();
-
-		HSAllianceCreateS.Builder response = HSAllianceCreateS.newBuilder();
-		response.setAllianceInfo(AllianceManager.getInstance().getAllianceInfo(allianceEntity, player.getId(), player.getGold()));
+		HSAllianceCreateRet.Builder response = HSAllianceCreateRet.newBuilder();
+		response.setAllianceInfo(AllianceUtil.getAllianceInfo(allianceEntity));
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_CREATE_S_VALUE, response));
 		return true;
 	}

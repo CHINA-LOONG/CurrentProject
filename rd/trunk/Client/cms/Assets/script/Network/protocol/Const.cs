@@ -235,14 +235,14 @@ namespace PB
     public enum bindType
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"NON_BIND", Value=0)]
-      NON_BIND = 0,
+      [global::ProtoBuf.ProtoEnum(Name=@"NON_BIND", Value=1)]
+      NON_BIND = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"USE_BIND", Value=1)]
-      USE_BIND = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"USE_BIND", Value=2)]
+      USE_BIND = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"TAKE_BIND", Value=2)]
-      TAKE_BIND = 2
+      [global::ProtoBuf.ProtoEnum(Name=@"TAKE_BIND", Value=3)]
+      TAKE_BIND = 3
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"toolType")]
@@ -266,6 +266,17 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIPTOOL", Value=7)]
       EQUIPTOOL = 7
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"FragSubType")]
+    public enum FragSubType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"FRAG_MONSTER", Value=1)]
+      FRAG_MONSTER = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"FRAG_TOOL", Value=2)]
+      FRAG_TOOL = 2
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"UseToolSubType")]

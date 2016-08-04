@@ -35,19 +35,21 @@ public class WeakPointRuntimeData
 
 	public float damageRate
 	{
-		get
-		{
-			if(staticData == null)
-				return 0;
+        get
+        {
+            if (staticData == null)
+                return 0;
 
-			if(wpState == WeakpointState.Normal1)
-				return staticData.damageRate1;
+            //if(wpState == WeakpointState.Normal1)
+            //return staticData.damageRate1;
 
-			if(wpState == WeakpointState.Normal2)
-				return staticData.damageRate2;
+            if (wpState == WeakpointState.Normal2)
+                return staticData.damageRate2;
 
-			return 0;
-		}
+            return staticData.damageRate1;
+
+            //return 0;
+        }
 	}
 
 	public int property

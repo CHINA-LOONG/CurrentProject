@@ -32,7 +32,7 @@ public class HuoliRestore : MonoBehaviour
     IEnumerator RestoreHuoliCo()
     {
         PlayerData playerData =  GameDataMgr.Instance.PlayerDataAttr;
-        int restoreTime = 360;//6分钟 
+        int restoreTime = GameConfig.Instance.RestoreHuoLiNeedSeconds;//10分钟 
         while(true)
         {
             int lastRestore = playerData.HuoliBegintimeAttr;
@@ -43,7 +43,7 @@ public class HuoliRestore : MonoBehaviour
             {
                 playerData.UpdateHuoli(playerData.HuoliAttr + addHuoli, lastRestore + addHuoli * restoreTime);
             }
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(1.5f);
         }
     }
 }

@@ -33,7 +33,7 @@ public class PlayerData : MonoBehaviour
         {
             int oldExp = value - exp;
             exp = value;
-            GameEventMgr.Instance.FireEvent<int, int>(GameEventList.PlayerExpChanged, oldExp, exp);
+            GameEventMgr.Instance.FireEvent<int, int,bool>(GameEventList.PlayerExpChanged, oldExp, exp,false);
         }
     }
 	public	int	gold;//钻石

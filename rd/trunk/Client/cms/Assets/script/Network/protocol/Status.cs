@@ -99,11 +99,20 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"COINS_NOT_ENOUGH", Value=131076)]
       COINS_NOT_ENOUGH = 131076,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=131077)]
-      GOLD_NOT_ENOUGH = 131077,
+      [global::ProtoBuf.ProtoEnum(Name=@"COINS_LIMIT", Value=131077)]
+      COINS_LIMIT = 131077,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"FATIGUE_NOT_ENOUGH", Value=131078)]
-      FATIGUE_NOT_ENOUGH = 131078
+      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=131078)]
+      GOLD_NOT_ENOUGH = 131078,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_LIMIT", Value=131079)]
+      GOLD_LIMIT = 131079,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"FATIGUE_NOT_ENOUGH", Value=131080)]
+      FATIGUE_NOT_ENOUGH = 131080,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"FATIGUE_LIMIT", Value=131081)]
+      FATIGUE_LIMIT = 131081
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"monsterError")]
@@ -162,6 +171,9 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_EXP_LEFT_TIMES", Value=262150)]
       ITEM_EXP_LEFT_TIMES = 262150,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_COUNT", Value=262151)]
+      ITEM_USE_COUNT = 262151,
             
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=266241)]
       EQUIP_NOT_FOUND = 266241,
@@ -279,14 +291,23 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_ALREADY_IN", Value=524290)]
       ALLIANCE_ALREADY_IN = 524290,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NAME_ERROR", Value=524291)]
-      ALLIANCE_NAME_ERROR = 524291,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOT_EXIST", Value=524291)]
+      ALLIANCE_NOT_EXIST = 524291,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NAME_EXIST", Value=524292)]
-      ALLIANCE_NAME_EXIST = 524292,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NAME_ERROR", Value=524292)]
+      ALLIANCE_NAME_ERROR = 524292,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOT_JOIN", Value=524293)]
-      ALLIANCE_NOT_JOIN = 524293
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NAME_EXIST", Value=524293)]
+      ALLIANCE_NAME_EXIST = 524293,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOT_JOIN", Value=524294)]
+      ALLIANCE_NOT_JOIN = 524294,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NO_MAIN", Value=524295)]
+      ALLIANCE_NO_MAIN = 524295,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOTICE_ERROR", Value=524296)]
+      ALLIANCE_NOTICE_ERROR = 524296
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"shopError")]

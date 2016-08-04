@@ -3,6 +3,57 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+public class DecomposeItemInfo
+{
+    public UIDecompose.type type;
+
+    public EquipData curEquip;
+    public GameUnit curMonster;
+    public System.Action Refresh;
+
+    private bool isSelect=false;
+    public bool IsSelect
+    {
+        get { return isSelect; }
+        set
+        {
+            if (isSelect != value)
+            {
+                isSelect = value;
+                if (Refresh!=null)
+                {
+                    Refresh();
+                }
+            }
+        }
+    }
+    public long ItemId
+    {
+        get
+        {
+            if (type==UIDecompose.type.Equipment)
+            {
+                return curEquip.id;
+            }
+            else
+            {
+                return curMonster.pbUnit.guid;
+            }
+        }
+    }
+
+    public DecomposeItemInfo(EquipData equip)
+    {
+        type = UIDecompose.type.Equipment;
+        curEquip = equip;
+    }
+    public DecomposeItemInfo(GameUnit monster)
+    {
+        type = UIDecompose.type.Monsters;
+        curMonster = monster;
+    }
+
+}
 public class DecomposeItem : MonoBehaviour
 {
     public Button btnSelect;
@@ -11,8 +62,21 @@ public class DecomposeItem : MonoBehaviour
     private Sprite sprNormal;
     private Sprite sprSelect;
     private System.Action<DecomposeItem> onClickBack;
-    public long itemId;
 
+    private DecomposeItemInfo curData;
+    public DecomposeItemInfo CurData
+    {
+        get { return curData; }
+        set
+        {
+            if (curData != null)
+            {
+                curData.Refresh = null;
+            }
+            curData = value;
+            curData.Refresh = RefreshInfo;
+        }
+    }
     #region monster
 
     public GameObject monsterUI;
@@ -25,7 +89,6 @@ public class DecomposeItem : MonoBehaviour
     public Text textMonsterBP;
     public Text text_MonsterBP;
 
-    public GameUnit curMonster;
     #endregion
 
     #region equipment
@@ -41,13 +104,11 @@ public class DecomposeItem : MonoBehaviour
     public Text text_EquipBP;
     public Text text_Dengji;
 
-
     public Transform content;
     [HideInInspector]
     public List<EquipGemItem> items = new List<EquipGemItem>();
     [HideInInspector]
     public List<EquipGemItem> itemPool = new List<EquipGemItem>();
-
 
     void RefreshGem(List<GemInfo> gems)
     {
@@ -97,8 +158,7 @@ public class DecomposeItem : MonoBehaviour
         itemPool.AddRange(items);
         items.Clear();
     }
-
-    public EquipData curEquip;
+    
     #endregion
 
     void Start()
@@ -111,14 +171,36 @@ public class DecomposeItem : MonoBehaviour
         text_EquipBP.text = StaticDataMgr.Instance.GetTextByID("equip_forge_zhanli");
     }
 
-    public void ReloadData(EquipData data, System.Action<DecomposeItem> clickBack = null)
+    public void Init(System.Action<DecomposeItem> clickBack)
+    {
+        this.onClickBack = clickBack;
+    }
+
+    public void ReloadData(DecomposeItemInfo data)
+    {
+        CurData = data;
+        if (CurData.type == UIDecompose.type.Equipment)
+        {
+            ReloadData(CurData.curEquip);
+        }
+        else
+        {
+            ReloadData(CurData.curMonster);
+        }
+        RefreshInfo();
+    }
+
+    public void RefreshInfo()
+    {
+        SetSelect(CurData.IsSelect);
+    }
+
+    void ReloadData(EquipData data)
     {
         equipUI.SetActive(true);
         monsterUI.SetActive(false);
 
-        curEquip = data;
-        itemId = data.id;
-        onClickBack = clickBack;
+        EquipData curEquip = CurData.curEquip;
         ItemStaticData staticData = StaticDataMgr.Instance.GetItemData(curEquip.equipId);
 
         if (equipIcon==null)
@@ -128,8 +210,7 @@ public class DecomposeItem : MonoBehaviour
         }
         else
         {
-            //equipIcon.gameObject.SetActive(true);
-            equipIcon.RefreshWithEquipInfo(curEquip);
+            equipIcon.RefreshWithEquipInfo(CurData.curEquip);
         }
         UIUtil.SetStageColor(equipName, staticData.name, curEquip.stage);
         //TODO:设置战力
@@ -137,14 +218,12 @@ public class DecomposeItem : MonoBehaviour
         textDengji.text = staticData.minLevel.ToString();
         RefreshGem(curEquip.gemList);
     }
-    public void ReloadData(GameUnit data, System.Action<DecomposeItem> clickBack = null)
+    void ReloadData(GameUnit data)
     {
         monsterUI.SetActive(true);
         equipUI.SetActive(false);
 
-        curMonster = data;
-        itemId = data.pbUnit.guid;
-        onClickBack = clickBack;
+        GameUnit curMonster = CurData.curMonster;
         UIUtil.SetStageColor(monsterName, curMonster);
 
         proIcon.sprite = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + curMonster.property) as Sprite;
@@ -166,7 +245,7 @@ public class DecomposeItem : MonoBehaviour
 
     }
 
-    public void SetSelect(bool select)
+    void SetSelect(bool select)
     {
         if (sprNormal == null)
             sprNormal = ResourceMgr.Instance.LoadAssetType<Sprite>("beibao_duigou");

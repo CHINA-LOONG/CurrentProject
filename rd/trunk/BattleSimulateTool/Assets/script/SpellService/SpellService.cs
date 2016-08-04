@@ -288,7 +288,8 @@ public class SpellService : MonoBehaviour
         {
             SpellUnitDeadArgs curArgs = args as SpellUnitDeadArgs;
             Logger.LogFormat("[SpellService]{0}<color=#FB00FFFF> killed </color>{1}", curArgs.casterID, curArgs.deathID);
-            
+            BattleObject deather = ObjectDataMgr.Instance.GetBattleObject(curArgs.deathID);
+            //Logger.LogError(deather.unit.pbUnit.id + "死了" + deather.unit.attackCount);
             ////trigger motion
             //BattleObject deather = ObjectDataMgr.Instance.GetBattleObject(curArgs.deathID);
             //if (deather != null)

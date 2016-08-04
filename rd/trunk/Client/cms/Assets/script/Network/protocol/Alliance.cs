@@ -95,50 +95,43 @@ namespace PB
       get { return _currentExp; }
       set { _currentExp = value; }
     }
-    private int _nextExp;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"nextExp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int nextExp
+    private int _liveness;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"liveness", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int liveness
     {
-      get { return _nextExp; }
-      set { _nextExp = value; }
+      get { return _liveness; }
+      set { _liveness = value; }
+    }
+    private int _livenessTotal;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"livenessTotal", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int livenessTotal
+    {
+      get { return _livenessTotal; }
+      set { _livenessTotal = value; }
     }
     private int _currentPop;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"currentPop", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"currentPop", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int currentPop
     {
       get { return _currentPop; }
       set { _currentPop = value; }
     }
     private int _maxPop;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"maxPop", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"maxPop", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int maxPop
     {
       get { return _maxPop; }
       set { _maxPop = value; }
     }
     private string _annoucement;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"annoucement", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"annoucement", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string annoucement
     {
       get { return _annoucement; }
       set { _annoucement = value; }
     }
-    private int _battleLimit;
-    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"battleLimit", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int battleLimit
-    {
-      get { return _battleLimit; }
-      set { _battleLimit = value; }
-    }
-    private int _remGold;
-    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"remGold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int remGold
-    {
-      get { return _remGold; }
-      set { _remGold = value; }
-    }
     private string _name;
-    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string name
     {
       get { return _name; }
@@ -149,10 +142,10 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceCreateC")]
-  public partial class HSAllianceCreateC : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceCreate")]
+  public partial class HSAllianceCreate : global::ProtoBuf.IExtensible
   {
-    public HSAllianceCreateC() {}
+    public HSAllianceCreate() {}
     
     private string _name;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -161,15 +154,22 @@ namespace PB
       get { return _name; }
       set { _name = value; }
     }
+    private string _notice;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"notice", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string notice
+    {
+      get { return _notice; }
+      set { _notice = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceCreateS")]
-  public partial class HSAllianceCreateS : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceCreateRet")]
+  public partial class HSAllianceCreateRet : global::ProtoBuf.IExtensible
   {
-    public HSAllianceCreateS() {}
+    public HSAllianceCreateRet() {}
     
     private AllianceInfo _allianceInfo;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"allianceInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -177,6 +177,125 @@ namespace PB
     {
       get { return _allianceInfo; }
       set { _allianceInfo = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceList")]
+  public partial class HSAllianceList : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceList() {}
+    
+    private int _reqPage;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"reqPage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int reqPage
+    {
+      get { return _reqPage; }
+      set { _reqPage = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceListRet")]
+  public partial class HSAllianceListRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceListRet() {}
+    
+    private int _totalPage;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"totalPage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int totalPage
+    {
+      get { return _totalPage; }
+      set { _totalPage = value; }
+    }
+    private readonly global::System.Collections.Generic.List<AllianceInfo> _allianceList = new global::System.Collections.Generic.List<AllianceInfo>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"allianceList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<AllianceInfo> allianceList
+    {
+      get { return _allianceList; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSearch")]
+  public partial class HSAllianceSearch : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSearch() {}
+    
+    private string _nameOrId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"nameOrId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string nameOrId
+    {
+      get { return _nameOrId; }
+      set { _nameOrId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSearchRet")]
+  public partial class HSAllianceSearchRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSearchRet() {}
+    
+    private readonly global::System.Collections.Generic.List<AllianceInfo> _result = new global::System.Collections.Generic.List<AllianceInfo>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<AllianceInfo> result
+    {
+      get { return _result; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceNotice")]
+  public partial class HSAllianceNotice : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceNotice() {}
+    
+    private string _notice;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"notice", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string notice
+    {
+      get { return _notice; }
+      set { _notice = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceNoticeRet")]
+  public partial class HSAllianceNoticeRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceNoticeRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceNoticeNotify")]
+  public partial class HSAllianceNoticeNotify : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceNoticeNotify() {}
+    
+    private string _notice;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"notice", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string notice
+    {
+      get { return _notice; }
+      set { _notice = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

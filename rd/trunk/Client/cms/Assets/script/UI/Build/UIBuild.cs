@@ -85,7 +85,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 		GameEventMgr.Instance.AddListener<int> (GameEventList.LevelChanged, OnLevelChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailAdd, OnMailChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.MailRead, OnMailChanged);
-        GameEventMgr.Instance.AddListener<int, int>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
+        GameEventMgr.Instance.AddListener<int, int,bool>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
         GameEventMgr.Instance.AddListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
 	}
 
@@ -94,7 +94,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 		GameEventMgr.Instance.RemoveListener<int> (GameEventList.LevelChanged, OnLevelChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailAdd, OnMailChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.MailRead, OnMailChanged);
-        GameEventMgr.Instance.RemoveListener<int, int>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
+        GameEventMgr.Instance.RemoveListener<int, int,bool>(GameEventList.PlayerExpChanged, OnPlayerExpChanged);
         GameEventMgr.Instance.RemoveListener<int>(GameEventList.HuoliChanged, OnHuoliChanged);
     }
 
@@ -104,7 +104,7 @@ public class UIBuild : UIBase,PopupListIndextDelegate
 		nameText.text = GameDataMgr.Instance.PlayerDataAttr.nickName;
 	}
 
-    void OnPlayerExpChanged(int oldExp,int newExp,bool withAni=true)
+    void OnPlayerExpChanged(int oldExp,int newExp,bool withAni = false)
     {
         PlayerLevelAttr originalAttr = StaticDataMgr.Instance.GetPlayerLevelAttr(GameDataMgr.Instance.PlayerDataAttr.LevelAttr);
         if (null == originalAttr)
@@ -118,7 +118,10 @@ public class UIBuild : UIBase,PopupListIndextDelegate
         }
 
         playerProgress.SetTargetRatio(targetExp);
-       // playerProgress.SkipAnimation();
+        if(!withAni)
+        {
+            playerProgress.SkipAnimation();
+        }
         int ratio = (int)Mathf.Ceil(targetExp * 100);
         if(GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= GameConfig.MaxPlayerLevel)
         {

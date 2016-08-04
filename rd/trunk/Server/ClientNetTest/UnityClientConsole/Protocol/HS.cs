@@ -156,6 +156,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_DECOMPOSE_S", Value=2015)]
       MONSTER_DECOMPOSE_S = 2015,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_COMPOSE_C", Value=2016)]
+      MONSTER_COMPOSE_C = 2016,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_COMPOSE_S", Value=2017)]
+      MONSTER_COMPOSE_S = 2017,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ASSIST_C", Value=3001)]
       INSTANCE_ASSIST_C = 3001,
             

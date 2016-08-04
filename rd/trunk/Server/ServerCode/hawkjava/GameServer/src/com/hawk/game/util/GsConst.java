@@ -14,10 +14,12 @@ public class GsConst {
 	public static final int EQUIP_NOT_DRESS = -1;
 	// 扫荡券Id
 	public static final String SWEEP_TICKET = "10003";
+	// 万能碎片Id
+	public static final String COMMON_FRAGMENT = "20001";
 	// 最大技能点数
 	public static final int MAX_SKILL_POINT = 10;
 	// 活力值增长秒数
-	public static final int FATIGUE_TIME = 6 * 60;
+	public static final int FATIGUE_TIME = 10 * 60;
 	// 技能点增长秒数
 	public static final int SKILL_POINT_TIME = 6 * 60;
 	// 最大邮件数
@@ -335,6 +337,10 @@ public class GsConst {
 		public static final int ALLIANCE_POS_COMMON = 0;
 		public static final int ALLIANCE_POS_COPYMAIN = 1;
 		public static final int ALLIANCE_POS_MAIN = 2;
+		
+		
+		public static final int ONE_PAGE_SIZE = 2;
+		public static final int NOTICE_MAX_LENGTH = 200;
 	}
 	
 	// 翻译系统，敏感词选项

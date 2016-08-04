@@ -46,7 +46,7 @@ public class HuoliCountDown : MonoBehaviour
         int lastRestore = playerData.HuoliBegintimeAttr;
         int curTime = GameTimeMgr.Instance.GetServerTimeStamp();
         int delta = curTime - lastRestore;
-        leftTime = 360 - delta % 360 + 2;
+        leftTime = GameConfig.Instance.RestoreHuoLiNeedSeconds - delta % GameConfig.Instance.RestoreHuoLiNeedSeconds;
     }
     int exitTip = 0;
    IEnumerator TimeCountDownCo()
@@ -60,9 +60,9 @@ public class HuoliCountDown : MonoBehaviour
             min = leftTime / 60;
             second = leftTime % 60;
             timeCountDownText.text = string.Format("{0:D2}:{1:D2}",min,second);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.5f);
             exitTip++;
-            if(exitTip >= 10)
+            if(exitTip >= 20)
             {
                 SetShow(false);
             }

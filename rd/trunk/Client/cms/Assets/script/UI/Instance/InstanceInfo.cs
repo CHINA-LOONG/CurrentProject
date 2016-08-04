@@ -204,7 +204,7 @@ public class InstanceInfo : MonoBehaviour
         {
             uiBuild.uiAdjustBattleTeam = adjustUi;
         }
-		adjustUi.SetData (instanceData.instanceId, instanceData.staticData.enemyList,10);
+		//adjustUi.SetData (instanceData.instanceId, instanceData.staticData.enemyList,10);
 	}
 
 }

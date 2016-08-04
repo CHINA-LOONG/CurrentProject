@@ -44,6 +44,7 @@ public class LevelUp : UIBase
         InitFunctions(nextLevel);
 
         EventTriggerListener.Get(conformButton.gameObject).onClick = OnConformButtonClicked;
+        UIUtil.SetButtonTitle(conformButton.transform, StaticDataMgr.Instance.GetTextByID("ui_queding"));
     }
 
     void InitFunctions(int targetLevel)

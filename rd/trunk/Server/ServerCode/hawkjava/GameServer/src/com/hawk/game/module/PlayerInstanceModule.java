@@ -131,20 +131,20 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 副本等级
 		if (player.getLevel() < chapterCfg.getLevelByDifficulty(entryCfg.getDifficult())) {
-			//sendError(hsCode, Status.instanceError.INSTANCE_LEVEL);
-			//return true;
+			sendError(hsCode, Status.instanceError.INSTANCE_LEVEL);
+			return true;
 		}
 
 		// 次数
 		if (statisticsEntity.getInstanceCountDaily(instanceId) >= entryCfg.getCount()) {
-			//sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
-			//return true;
+			sendError(hsCode, Status.instanceError.INSTANCE_COUNT);
+			return true;
 		}
 
 		// 体力
 		if (player.updateFatigue() < entryCfg.getFatigue()) {
-			//sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
-			//return true;
+			sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
+			return true;
 		}
 
 		InstanceCfg instanceCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, instanceId);
@@ -283,9 +283,10 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		if (this.curInstanceId == ""){
 			sendError(hsCode, Status.instanceError.INSTANCE_NOT_ENTER_VALUE);
+			HawkException.catchException(new RuntimeException("instanceSettle"));
 			return true;
 		}
-		
+
 		boolean victory = false;
 		if (passBattleCount == this.curBattleList.size()) {
 			victory = true;

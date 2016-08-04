@@ -20,24 +20,62 @@ message AllianceInfo
 	required int32  id = 1;//公会ID
 	required int32  level = 2;//等级
 	required int32  currentExp = 3;//当前经验
-	required int32  nextExp = 4;//升级经验
-	required int32  currentPop = 5;//当前人数
-	required int32  maxPop = 6;//最大人数
-	required string annoucement = 7; // 公会公告
-	required int32  battleLimit = 8; //战力限制条件
-	required int32  remGold = 9;//剩余钻石
-	required string name = 10; // 公会名称
+	required int32  liveness = 4; //当天活跃值
+	required int32  livenessTotal = 5; //累计活跃值
+	required int32  currentPop = 6;//当前人数
+	required int32  maxPop = 7;//最大人数
+	required string annoucement = 8; // 公会公告
+	required string name = 9; // 公会名称
 }
 
 // ------------------------------------------------------- protocol-----------------------------------------------------
 
 //公会创建
-message HSAllianceCreateC
+message HSAllianceCreate
 {
 	required string name = 1;//公会名字
+	required string notice = 2; //公会宣言
 }
 
-message HSAllianceCreateS
+message HSAllianceCreateRet
 {
 	required AllianceInfo allianceInfo = 1;//公会信息
+}
+
+//公会列表
+message HSAllianceList
+{
+	required int32 reqPage = 1;//索引号
+}
+
+message HSAllianceListRet
+{
+	required int32 totalPage = 1;//一共多少页
+	repeated AllianceInfo allianceList = 2; //工会列表
+}
+
+//公会搜索
+message HSAllianceSearch
+{
+	required string nameOrId = 1;// 工会名称或者ID
+}
+
+message HSAllianceSearchRet
+{
+	repeated AllianceInfo result = 1;//  工会列表
+}
+
+//公会列表
+message HSAllianceNotice
+{
+	required string notice = 1;// 工会公告
+}
+
+message HSAllianceNoticeRet
+{
+}
+
+message HSAllianceNoticeNotify
+{
+	required string notice = 1;// 工会公告
 }

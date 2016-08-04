@@ -505,6 +505,7 @@ public class BattleProcess : MonoBehaviour
     //run action
     void RunUnitFightAction(BattleObject bo)
     {
+        BattleToolMain.Instance.roundNum = round;
         Logger.LogFormat("[Battle.Process]Unit {0} is moving...", bo.unit.name);    
         //执行战斗
         var aiResult = BattleUnitAi.Instance.GetAiAttackResult(bo.unit);
@@ -595,31 +596,39 @@ public class BattleProcess : MonoBehaviour
                 }
             }
         }
-        if (bo.camp == UnitCamp.Enemy && bo.unit.energy == BattleConst.enegyMax)
-        {
-            LogResult.Instance.logData[LogResult.Instance.xhNumber].enemyData[BattleToolMain.Instance.bureauNum].monsterDazhaoNumber++;
-        }
         if (bo.camp == UnitCamp.Player && BattleToolMain.Instance.bureauNum == 2)
         {
             if (battleGroup.EnemyFieldList[0] != null)
             {
-                for (int i = 0; i < BattleToolMain.Instance.operationData.weaknessName.Length; i++)//minghe13/yueguangsenlin11_1
+                if (BattleToolMain.Instance.roundNum == round)
                 {
-                    if (battleGroup.EnemyFieldList[0].wpGroup.allWpDic[BattleToolMain.Instance.operationData.weaknessName[i]].wpState != WeakpointState.Dead)
+                    for (int i = 0; i < BattleToolMain.Instance.operationData.weaknessName.Length; i++)//minghe13/yueguangsenlin11_1
                     {
-                        if (BattleToolMain.Instance.roundNum == round)
+                        if (battleGroup.EnemyFieldList[0].wpGroup.allWpDic[BattleToolMain.Instance.operationData.weaknessName[i]].wpState != WeakpointState.Dead)
                         {
-                            aiResult.attackTarget = battleGroup.EnemyFieldList[0].unit;
-                            //Debug.LogError("目标" + aiResult.attackTarget.name);
-                            aiResult.attackTarget.attackWpName = BattleToolMain.Instance.operationData.weaknessName[i];
+                            if (BattleToolMain.Instance.attWpName != string.Empty || BattleToolMain.Instance.attWpName != "")
+                            {
+                                if (battleGroup.EnemyFieldList[0].wpGroup.allWpDic[BattleToolMain.Instance.attWpName].wpState != WeakpointState.Dead)
+                                {
+                                    fireFocusTarget = battleGroup.EnemyFieldList[0].unit;
+                                    fireAttackWpName = BattleToolMain.Instance.attWpName;
+                                    continue;
+                                }
+                            }
+                            fireFocusTarget = battleGroup.EnemyFieldList[0].unit;
+                            fireAttackWpName = BattleToolMain.Instance.operationData.weaknessName[i];
+                            BattleToolMain.Instance.attWpName = fireAttackWpName;
+                            //aiResult.attackTarget = battleGroup.EnemyFieldList[0].unit;
+                            ////Debug.LogError("目标" + aiResult.attackTarget.name);
+                            //aiResult.attackTarget.attackWpName = BattleToolMain.Instance.operationData.weaknessName[i];
                             //Debug.LogError("弱点" + aiResult.attackTarget.attackWpName);
                         }
-                    }
-                    else
-                    {
-                        if ((i + 1) < BattleToolMain.Instance.operationData.weaknessName.Length)
+                        else
                         {
-                            BattleToolMain.Instance.roundNum = (round + BattleToolMain.Instance.operationData.IntervalRoundNum[i + 1]);
+                            if ((i + 1) < BattleToolMain.Instance.operationData.weaknessName.Length)
+                            {
+                                BattleToolMain.Instance.roundNum = (round + BattleToolMain.Instance.operationData.IntervalRoundNum[i + 1]);
+                            }
                         }
                     }
                 }
@@ -673,10 +682,10 @@ public class BattleProcess : MonoBehaviour
                 break;
             case BattleUnitAi.AiAttackStyle.MagicAttack:
             case BattleUnitAi.AiAttackStyle.PhysicsAttack:
+                break;
             case BattleUnitAi.AiAttackStyle.Dazhao:
                 break;
         }
-
         var curTarget = aiResult.attackTarget;
         if (null == curTarget)
         {

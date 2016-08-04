@@ -1450,7 +1450,7 @@ MonoBehaviour:
   mProgressImage: {fileID: 11427054}
   mProgressText: {fileID: 11492492}
   mProgressSpeed: 1
-  mNeedAni: 1
+  mNeedAni: 0
   mShowText: 1
 --- !u!114 &11407000
 MonoBehaviour:
@@ -5038,7 +5038,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -94, y: -52.4000244}
+  m_AnchoredPosition: {x: -94, y: -52.5}
   m_SizeDelta: {x: 188, y: 48}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22474454
@@ -5198,7 +5198,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -285.600006, y: -52.4000015}
+  m_AnchoredPosition: {x: -285.5, y: -52.5}
   m_SizeDelta: {x: 188, y: 48}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22488730

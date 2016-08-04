@@ -4,6 +4,9 @@ import net.sf.json.JSONArray;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase;
+import org.hawk.log.HawkLog;
+
+import com.hawk.game.util.GsConst;
 
 @HawkConfigManager.CsvResource(file = "staticData/unitData.csv", struct = "map")
 public class MonsterCfg extends HawkConfigBase {
@@ -30,14 +33,18 @@ public class MonsterCfg extends HawkConfigBase {
 	protected final String spellIDList;
 	protected final String weakpointList;
 	protected final int friendship;
+	protected final String fragmentId;
+	protected final int fragmentCount;
 
 	//client only
 	protected final int disposition = 0;
 	protected final String closeUp = null;
+
 	// assemble
-	boolean canEvolve;
-	private String[] spellIdListAssemble;
-	private String[] weakpointListAssemble;
+	protected boolean canEvolve;
+	protected String[] spellIdListAssemble;
+	protected String[] weakpointListAssemble;
+	protected ItemCfg fragment;
 
 	public MonsterCfg() {
 		id = "";
@@ -61,6 +68,8 @@ public class MonsterCfg extends HawkConfigBase {
 		spellIDList = "";
 		weakpointList = "";
 		friendship = 0;
+		fragmentId = "";
+		fragmentCount = 0;
 	}
 
 	@Override
@@ -83,6 +92,23 @@ public class MonsterCfg extends HawkConfigBase {
 		weakpointListAssemble = new String[jsonArray.size()];
 		for (int i = 0; i < jsonArray.size(); ++i) {
 			weakpointListAssemble[i] = jsonArray.getString(i);
+		}
+
+		return true;
+	}
+
+	@Override
+	protected boolean checkValid() {
+		// 检测碎片是否存在，并建立引用
+		fragment = null;
+		if (fragmentId != null && fragmentId.equals("") == false) {
+			fragment = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, fragmentId);
+			if (null == fragment) {
+				HawkLog.errPrintln(String.format("config invalid ItemCfg : %s", fragmentId));
+				return false;
+			}
+		} else if (fragmentCount != GsConst.UNUSABLE) {
+			return false;
 		}
 
 		return true;
@@ -160,4 +186,11 @@ public class MonsterCfg extends HawkConfigBase {
 		return friendship;
 	}
 
+	public String getFragmentId() {
+		return fragmentId;
+	}
+
+	public int getFragmentCount() {
+		return fragmentCount;
+	}
 }

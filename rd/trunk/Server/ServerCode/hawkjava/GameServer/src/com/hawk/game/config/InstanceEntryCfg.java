@@ -57,6 +57,11 @@ public class InstanceEntryCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean assemble() {
+		// 活力值不允许低于1
+		if (fatigue < 1) {
+			return false;
+		}
+
 		// 计算InstanceChapter
 		InstanceUtil.addInstance(this);
 		enemyList = new ArrayList<MonsterCfg>();

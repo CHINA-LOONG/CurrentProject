@@ -254,13 +254,14 @@ public class FunPlusTranslateService extends HawkTickable {
 
 					@Override
 					public void completed(HttpResponse response) {
-						HawkLog.logPrintln(String.format("FunPlus translate complete : \"%s\" %s", sourceText, httpRequest.getRequestLine()));
+
 						try {
 							String responseString = EntityUtils.toString(response.getEntity());
 
 							TranslateResponse transResponse = HawkJsonUtil.getJsonInstance().fromJson(responseString, new TypeToken<TranslateResponse>() {}.getType());
 							if (transResponse.errorCode == 0) {
 								transText[reqIndex][langIndex] = transResponse.translation.targetText;
+								//HawkLog.logPrintln(String.format("FunPlus translate succ : \"%s\"  \"%s\" %s", sourceText, transResponse.translation.targetText, httpRequest.getRequestLine()));
 							} else {
 								HawkLog.errPrintln(String.format("FunPlus translate error : %d %s \"%s\" %s", transResponse.errorCode, transResponse.errorMessage, sourceText, httpRequest.getRequestLine()));
 							}
@@ -297,6 +298,9 @@ public class FunPlusTranslateService extends HawkTickable {
 		for (int i = 0; i < transText.length; ++i) {
 			transArray[i].transTextArray = transText[i];
 		}
+
+		HawkLog.logPrintln(String.format("FunPlus translate task complete"));
+
 	}
 
 	@Override

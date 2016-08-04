@@ -71,6 +71,8 @@ enum code
 	MONSTER_LOCK_S              = 2013;
 	MONSTER_DECOMPOSE_C         = 2014;
 	MONSTER_DECOMPOSE_S         = 2015;
+	MONSTER_COMPOSE_C           = 2016;
+	MONSTER_COMPOSE_S           = 2017;
 
 	// 副本
 	INSTANCE_ASSIST_C           = 3001;
@@ -169,17 +171,22 @@ enum code
 	// 公会
 	ALLIANCE_CREATE_C           = 9001;
 	ALLIANCE_CREATE_S           = 9002;
-
+	ALLIANCE_LIST_C         	= 9003;
+	ALLIANCE_LIST_S         	= 9004;
+	ALLIANCE_SEARCH_C         	= 9005;
+	ALLIANCE_SEARCH_S         	= 9006;
+	ALLIANCE_NOTICE_C           = 9007;
+	ALLIANCE_NOTICE_S           = 9008;
+	ALLIANCE_NOTICE_SYNC_S      = 9009;
+	
 	// 系统设置
 	SETTING_LANGUAGE_C          = 10001;
 	SETTING_LANGUAGE_S          = 10002;
 	SETTING_BLOCK_C             = 10003;
 	SETTING_BLOCK_S             = 10004;
-	
-	// 经验药水剩余次数
-	STATISTICS_EXP_LEFT_TIMES   = 11001;
-	// 零点重置
-	STATISTICS_RESET_SYN        = 11002;
-	// 商店刷新
-	STATISTICS_SHOP_REFRESH     = 11003;
+
+	// 数据同步
+	SYNC_DAILY_REFRESH_S        = 11001;  // 每日刷新
+	SYNC_SHOP_REFRESH_S         = 11003;  // 商店刷新
+	SYNC_EXP_LEFT_TIMES_S       = 11002;  // 经验药水剩余次数
 }

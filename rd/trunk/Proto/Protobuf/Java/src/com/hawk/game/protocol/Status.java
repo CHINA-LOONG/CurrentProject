@@ -443,21 +443,45 @@ public final class Status {
      */
     COINS_NOT_ENOUGH(3, 131076),
     /**
-     * <code>GOLD_NOT_ENOUGH = 131077;</code>
+     * <code>COINS_LIMIT = 131077;</code>
+     *
+     * <pre>
+     * 金币上限
+     * </pre>
+     */
+    COINS_LIMIT(4, 131077),
+    /**
+     * <code>GOLD_NOT_ENOUGH = 131078;</code>
      *
      * <pre>
      * 钻石不足
      * </pre>
      */
-    GOLD_NOT_ENOUGH(4, 131077),
+    GOLD_NOT_ENOUGH(5, 131078),
     /**
-     * <code>FATIGUE_NOT_ENOUGH = 131078;</code>
+     * <code>GOLD_LIMIT = 131079;</code>
+     *
+     * <pre>
+     * 钻石上限
+     * </pre>
+     */
+    GOLD_LIMIT(6, 131079),
+    /**
+     * <code>FATIGUE_NOT_ENOUGH = 131080;</code>
      *
      * <pre>
      * 疲劳值不足
      * </pre>
      */
-    FATIGUE_NOT_ENOUGH(5, 131078),
+    FATIGUE_NOT_ENOUGH(7, 131080),
+    /**
+     * <code>FATIGUE_LIMIT = 131081;</code>
+     *
+     * <pre>
+     * 疲劳值上限
+     * </pre>
+     */
+    FATIGUE_LIMIT(8, 131081),
     ;
 
     /**
@@ -493,21 +517,45 @@ public final class Status {
      */
     public static final int COINS_NOT_ENOUGH_VALUE = 131076;
     /**
-     * <code>GOLD_NOT_ENOUGH = 131077;</code>
+     * <code>COINS_LIMIT = 131077;</code>
+     *
+     * <pre>
+     * 金币上限
+     * </pre>
+     */
+    public static final int COINS_LIMIT_VALUE = 131077;
+    /**
+     * <code>GOLD_NOT_ENOUGH = 131078;</code>
      *
      * <pre>
      * 钻石不足
      * </pre>
      */
-    public static final int GOLD_NOT_ENOUGH_VALUE = 131077;
+    public static final int GOLD_NOT_ENOUGH_VALUE = 131078;
     /**
-     * <code>FATIGUE_NOT_ENOUGH = 131078;</code>
+     * <code>GOLD_LIMIT = 131079;</code>
+     *
+     * <pre>
+     * 钻石上限
+     * </pre>
+     */
+    public static final int GOLD_LIMIT_VALUE = 131079;
+    /**
+     * <code>FATIGUE_NOT_ENOUGH = 131080;</code>
      *
      * <pre>
      * 疲劳值不足
      * </pre>
      */
-    public static final int FATIGUE_NOT_ENOUGH_VALUE = 131078;
+    public static final int FATIGUE_NOT_ENOUGH_VALUE = 131080;
+    /**
+     * <code>FATIGUE_LIMIT = 131081;</code>
+     *
+     * <pre>
+     * 疲劳值上限
+     * </pre>
+     */
+    public static final int FATIGUE_LIMIT_VALUE = 131081;
 
 
     public final int getNumber() { return value; }
@@ -518,8 +566,11 @@ public final class Status {
         case 131074: return PLAYER_NICKNAME_EXIST;
         case 131075: return PUID_EXIST;
         case 131076: return COINS_NOT_ENOUGH;
-        case 131077: return GOLD_NOT_ENOUGH;
-        case 131078: return FATIGUE_NOT_ENOUGH;
+        case 131077: return COINS_LIMIT;
+        case 131078: return GOLD_NOT_ENOUGH;
+        case 131079: return GOLD_LIMIT;
+        case 131080: return FATIGUE_NOT_ENOUGH;
+        case 131081: return FATIGUE_LIMIT;
         default: return null;
       }
     }
@@ -868,13 +919,21 @@ public final class Status {
      */
     ITEM_EXP_LEFT_TIMES(4, 262150),
     /**
+     * <code>ITEM_USE_COUNT = 262151;</code>
+     *
+     * <pre>
+     * 物品使用次数已满
+     * </pre>
+     */
+    ITEM_USE_COUNT(5, 262151),
+    /**
      * <code>EQUIP_NOT_FOUND = 266241;</code>
      *
      * <pre>
      * 装备不足
      * </pre>
      */
-    EQUIP_NOT_FOUND(5, 266241),
+    EQUIP_NOT_FOUND(6, 266241),
     /**
      * <code>EQUIP_MAX_LEVEL_ALREADY = 266242;</code>
      *
@@ -882,7 +941,7 @@ public final class Status {
      * 装备最大等级
      * </pre>
      */
-    EQUIP_MAX_LEVEL_ALREADY(6, 266242),
+    EQUIP_MAX_LEVEL_ALREADY(7, 266242),
     /**
      * <code>EQUIP_LEVEL_NOT_ENOUGH = 266243;</code>
      *
@@ -890,7 +949,7 @@ public final class Status {
      * 装备等级不够进阶
      * </pre>
      */
-    EQUIP_LEVEL_NOT_ENOUGH(7, 266243),
+    EQUIP_LEVEL_NOT_ENOUGH(8, 266243),
     /**
      * <code>EQUIP_MAX_STAGE_ALREADY = 266244;</code>
      *
@@ -898,7 +957,7 @@ public final class Status {
      * 装备最大品级
      * </pre>
      */
-    EQUIP_MAX_STAGE_ALREADY(8, 266244),
+    EQUIP_MAX_STAGE_ALREADY(9, 266244),
     /**
      * <code>EQUIP_DRESS_ALREADY = 266245;</code>
      *
@@ -906,7 +965,7 @@ public final class Status {
      * 装备不在背包
      * </pre>
      */
-    EQUIP_DRESS_ALREADY(9, 266245),
+    EQUIP_DRESS_ALREADY(10, 266245),
     /**
      * <code>EQUIP_NOT_DRESS_OTHER = 266246;</code>
      *
@@ -914,7 +973,7 @@ public final class Status {
      * 该位置没有其他装备
      * </pre>
      */
-    EQUIP_NOT_DRESS_OTHER(10, 266246),
+    EQUIP_NOT_DRESS_OTHER(11, 266246),
     /**
      * <code>EQUIP_DRESS_OTHER_ALREADY = 266247;</code>
      *
@@ -922,7 +981,7 @@ public final class Status {
      * 该位置已经有其他装备
      * </pre>
      */
-    EQUIP_DRESS_OTHER_ALREADY(11, 266247),
+    EQUIP_DRESS_OTHER_ALREADY(12, 266247),
     /**
      * <code>EQUIP_NOT_DRESSED = 266248;</code>
      *
@@ -930,7 +989,7 @@ public final class Status {
      * 装备不在身上
      * </pre>
      */
-    EQUIP_NOT_DRESSED(12, 266248),
+    EQUIP_NOT_DRESSED(13, 266248),
     /**
      * <code>EQUIP_SLOT_NOT_EMPTY = 266249;</code>
      *
@@ -938,7 +997,7 @@ public final class Status {
      * 槽位已经镶嵌宝石
      * </pre>
      */
-    EQUIP_SLOT_NOT_EMPTY(13, 266249),
+    EQUIP_SLOT_NOT_EMPTY(14, 266249),
     /**
      * <code>EQUIP_SLOT_EMPTY = 266250;</code>
      *
@@ -946,7 +1005,7 @@ public final class Status {
      * 槽位没有镶嵌宝石
      * </pre>
      */
-    EQUIP_SLOT_EMPTY(14, 266250),
+    EQUIP_SLOT_EMPTY(15, 266250),
     /**
      * <code>EQUIP_GEM_NOT_FOUND = 266251;</code>
      *
@@ -954,7 +1013,7 @@ public final class Status {
      * 宝石不存在
      * </pre>
      */
-    EQUIP_GEM_NOT_FOUND(15, 266251),
+    EQUIP_GEM_NOT_FOUND(16, 266251),
     /**
      * <code>EQUIP_CAN_NOT_OPEN_SLOT = 266252;</code>
      *
@@ -962,7 +1021,7 @@ public final class Status {
      * 装备不能开孔
      * </pre>
      */
-    EQUIP_CAN_NOT_OPEN_SLOT(16, 266252),
+    EQUIP_CAN_NOT_OPEN_SLOT(17, 266252),
     /**
      * <code>EQUIP_GEM_MISMATCH = 266253;</code>
      *
@@ -970,7 +1029,7 @@ public final class Status {
      * 镶嵌宝石不符
      * </pre>
      */
-    EQUIP_GEM_MISMATCH(17, 266253),
+    EQUIP_GEM_MISMATCH(18, 266253),
     /**
      * <code>EQUIP_SLOT_NOT_PUNCH = 266254;</code>
      *
@@ -978,7 +1037,7 @@ public final class Status {
      * 槽位没有开孔
      * </pre>
      */
-    EQUIP_SLOT_NOT_PUNCH(18, 266254),
+    EQUIP_SLOT_NOT_PUNCH(19, 266254),
     /**
      * <code>EQUIP_PLAYER_LEVEL_DEMAND = 266256;</code>
      *
@@ -986,7 +1045,7 @@ public final class Status {
      * 玩家等级限制
      * </pre>
      */
-    EQUIP_PLAYER_LEVEL_DEMAND(19, 266256),
+    EQUIP_PLAYER_LEVEL_DEMAND(20, 266256),
     ;
 
     /**
@@ -1029,6 +1088,14 @@ public final class Status {
      * </pre>
      */
     public static final int ITEM_EXP_LEFT_TIMES_VALUE = 262150;
+    /**
+     * <code>ITEM_USE_COUNT = 262151;</code>
+     *
+     * <pre>
+     * 物品使用次数已满
+     * </pre>
+     */
+    public static final int ITEM_USE_COUNT_VALUE = 262151;
     /**
      * <code>EQUIP_NOT_FOUND = 266241;</code>
      *
@@ -1160,6 +1227,7 @@ public final class Status {
         case 262148: return ITEM_BUY_NOT_ALLOW;
         case 262149: return ITEM_SELL_NOT_ALLOW;
         case 262150: return ITEM_EXP_LEFT_TIMES;
+        case 262151: return ITEM_USE_COUNT;
         case 266241: return EQUIP_NOT_FOUND;
         case 266242: return EQUIP_MAX_LEVEL_ALREADY;
         case 266243: return EQUIP_LEVEL_NOT_ENOUGH;
@@ -1639,29 +1707,53 @@ public final class Status {
      */
     ALLIANCE_ALREADY_IN(1, 524290),
     /**
-     * <code>ALLIANCE_NAME_ERROR = 524291;</code>
+     * <code>ALLIANCE_NOT_EXIST = 524291;</code>
+     *
+     * <pre>
+     * 工会不存在
+     * </pre>
+     */
+    ALLIANCE_NOT_EXIST(2, 524291),
+    /**
+     * <code>ALLIANCE_NAME_ERROR = 524292;</code>
      *
      * <pre>
      * 公会名称错误
      * </pre>
      */
-    ALLIANCE_NAME_ERROR(2, 524291),
+    ALLIANCE_NAME_ERROR(3, 524292),
     /**
-     * <code>ALLIANCE_NAME_EXIST = 524292;</code>
+     * <code>ALLIANCE_NAME_EXIST = 524293;</code>
      *
      * <pre>
      * 已经名称重复
      * </pre>
      */
-    ALLIANCE_NAME_EXIST(3, 524292),
+    ALLIANCE_NAME_EXIST(4, 524293),
     /**
-     * <code>ALLIANCE_NOT_JOIN = 524293;</code>
+     * <code>ALLIANCE_NOT_JOIN = 524294;</code>
      *
      * <pre>
      * 未加入公会
      * </pre>
      */
-    ALLIANCE_NOT_JOIN(4, 524293),
+    ALLIANCE_NOT_JOIN(5, 524294),
+    /**
+     * <code>ALLIANCE_NO_MAIN = 524295;</code>
+     *
+     * <pre>
+     * 非会长
+     * </pre>
+     */
+    ALLIANCE_NO_MAIN(6, 524295),
+    /**
+     * <code>ALLIANCE_NOTICE_ERROR = 524296;</code>
+     *
+     * <pre>
+     * 通告错误
+     * </pre>
+     */
+    ALLIANCE_NOTICE_ERROR(7, 524296),
     ;
 
     /**
@@ -1681,29 +1773,53 @@ public final class Status {
      */
     public static final int ALLIANCE_ALREADY_IN_VALUE = 524290;
     /**
-     * <code>ALLIANCE_NAME_ERROR = 524291;</code>
+     * <code>ALLIANCE_NOT_EXIST = 524291;</code>
+     *
+     * <pre>
+     * 工会不存在
+     * </pre>
+     */
+    public static final int ALLIANCE_NOT_EXIST_VALUE = 524291;
+    /**
+     * <code>ALLIANCE_NAME_ERROR = 524292;</code>
      *
      * <pre>
      * 公会名称错误
      * </pre>
      */
-    public static final int ALLIANCE_NAME_ERROR_VALUE = 524291;
+    public static final int ALLIANCE_NAME_ERROR_VALUE = 524292;
     /**
-     * <code>ALLIANCE_NAME_EXIST = 524292;</code>
+     * <code>ALLIANCE_NAME_EXIST = 524293;</code>
      *
      * <pre>
      * 已经名称重复
      * </pre>
      */
-    public static final int ALLIANCE_NAME_EXIST_VALUE = 524292;
+    public static final int ALLIANCE_NAME_EXIST_VALUE = 524293;
     /**
-     * <code>ALLIANCE_NOT_JOIN = 524293;</code>
+     * <code>ALLIANCE_NOT_JOIN = 524294;</code>
      *
      * <pre>
      * 未加入公会
      * </pre>
      */
-    public static final int ALLIANCE_NOT_JOIN_VALUE = 524293;
+    public static final int ALLIANCE_NOT_JOIN_VALUE = 524294;
+    /**
+     * <code>ALLIANCE_NO_MAIN = 524295;</code>
+     *
+     * <pre>
+     * 非会长
+     * </pre>
+     */
+    public static final int ALLIANCE_NO_MAIN_VALUE = 524295;
+    /**
+     * <code>ALLIANCE_NOTICE_ERROR = 524296;</code>
+     *
+     * <pre>
+     * 通告错误
+     * </pre>
+     */
+    public static final int ALLIANCE_NOTICE_ERROR_VALUE = 524296;
 
 
     public final int getNumber() { return value; }
@@ -1712,9 +1828,12 @@ public final class Status {
       switch (value) {
         case 524289: return ALLIANCE_LEVEL_NOT_ENOUGH;
         case 524290: return ALLIANCE_ALREADY_IN;
-        case 524291: return ALLIANCE_NAME_ERROR;
-        case 524292: return ALLIANCE_NAME_EXIST;
-        case 524293: return ALLIANCE_NOT_JOIN;
+        case 524291: return ALLIANCE_NOT_EXIST;
+        case 524292: return ALLIANCE_NAME_ERROR;
+        case 524293: return ALLIANCE_NAME_EXIST;
+        case 524294: return ALLIANCE_NOT_JOIN;
+        case 524295: return ALLIANCE_NO_MAIN;
+        case 524296: return ALLIANCE_NOTICE_ERROR;
         default: return null;
       }
     }
@@ -2080,25 +2199,27 @@ public final class Status {
       "GISTER_MAX_LIMIT\020\003\022\025\n\021SERVER_GRAY_STATE\020" +
       "\004\022\023\n\017DATA_BASE_ERROR\020\005\022\022\n\016PARAMS_INVALID",
       "\020\006\022\024\n\020CONFIG_NOT_FOUND\020\007\022\024\n\020UNSUPPORT_AC" +
-      "TION\020\010\022\021\n\014SERVER_ERROR\020\200 *\235\001\n\013PlayerErro" +
+      "TION\020\010\022\021\n\014SERVER_ERROR\020\200 *\327\001\n\013PlayerErro" +
       "r\022\026\n\020PLAYER_NOT_EXIST\020\201\200\010\022\033\n\025PLAYER_NICK" +
       "NAME_EXIST\020\202\200\010\022\020\n\nPUID_EXIST\020\203\200\010\022\026\n\020COIN" +
-      "S_NOT_ENOUGH\020\204\200\010\022\025\n\017GOLD_NOT_ENOUGH\020\205\200\010\022" +
-      "\030\n\022FATIGUE_NOT_ENOUGH\020\206\200\010*\230\002\n\014monsterErr" +
-      "or\022\026\n\020MONSTER_MAX_SIZE\020\201\200\014\022\027\n\021MONSTER_NO" +
-      "T_EXIST\020\202\200\014\022\034\n\026SKILL_POINT_NOT_ENOUGH\020\203\200" +
-      "\014\022\027\n\021SKILL_LEVEL_LIMIT\020\204\200\014\022\021\n\013STAGE_LIMI" +
-      "T\020\205\200\014\022\034\n\026STAGE_LEVEL_NOT_ENOUGH\020\206\200\014\022\023\n\rS",
-      "TAGE_CONSUME\020\207\200\014\022\032\n\024BATTLE_MONSTER_COUNT" +
-      "\020\210\200\014\022\024\n\016MONSTER_LOCKED\020\211\200\014\022\022\n\014LOCK_ALREA" +
-      "DY\020\212\200\014\022\024\n\016UNLOCK_ALREADY\020\213\200\014*\262\004\n\titemErr" +
-      "or\022\024\n\016ITEM_NOT_FOUND\020\201\200\020\022\025\n\017ITEM_NOT_ENO" +
-      "UGH\020\203\200\020\022\030\n\022ITEM_BUY_NOT_ALLOW\020\204\200\020\022\031\n\023ITE" +
-      "M_SELL_NOT_ALLOW\020\205\200\020\022\031\n\023ITEM_EXP_LEFT_TI" +
-      "MES\020\206\200\020\022\025\n\017EQUIP_NOT_FOUND\020\201\240\020\022\035\n\027EQUIP_" +
-      "MAX_LEVEL_ALREADY\020\202\240\020\022\034\n\026EQUIP_LEVEL_NOT" +
+      "S_NOT_ENOUGH\020\204\200\010\022\021\n\013COINS_LIMIT\020\205\200\010\022\025\n\017G" +
+      "OLD_NOT_ENOUGH\020\206\200\010\022\020\n\nGOLD_LIMIT\020\207\200\010\022\030\n\022" +
+      "FATIGUE_NOT_ENOUGH\020\210\200\010\022\023\n\rFATIGUE_LIMIT\020" +
+      "\211\200\010*\230\002\n\014monsterError\022\026\n\020MONSTER_MAX_SIZE" +
+      "\020\201\200\014\022\027\n\021MONSTER_NOT_EXIST\020\202\200\014\022\034\n\026SKILL_P" +
+      "OINT_NOT_ENOUGH\020\203\200\014\022\027\n\021SKILL_LEVEL_LIMIT",
+      "\020\204\200\014\022\021\n\013STAGE_LIMIT\020\205\200\014\022\034\n\026STAGE_LEVEL_N" +
+      "OT_ENOUGH\020\206\200\014\022\023\n\rSTAGE_CONSUME\020\207\200\014\022\032\n\024BA" +
+      "TTLE_MONSTER_COUNT\020\210\200\014\022\024\n\016MONSTER_LOCKED" +
+      "\020\211\200\014\022\022\n\014LOCK_ALREADY\020\212\200\014\022\024\n\016UNLOCK_ALREA" +
+      "DY\020\213\200\014*\310\004\n\titemError\022\024\n\016ITEM_NOT_FOUND\020\201" +
+      "\200\020\022\025\n\017ITEM_NOT_ENOUGH\020\203\200\020\022\030\n\022ITEM_BUY_NO" +
+      "T_ALLOW\020\204\200\020\022\031\n\023ITEM_SELL_NOT_ALLOW\020\205\200\020\022\031" +
+      "\n\023ITEM_EXP_LEFT_TIMES\020\206\200\020\022\024\n\016ITEM_USE_CO" +
+      "UNT\020\207\200\020\022\025\n\017EQUIP_NOT_FOUND\020\201\240\020\022\035\n\027EQUIP_" +
+      "MAX_LEVEL_ALREADY\020\202\240\020\022\034\n\026EQUIP_LEVEL_NOT",
       "_ENOUGH\020\203\240\020\022\035\n\027EQUIP_MAX_STAGE_ALREADY\020\204" +
-      "\240\020\022\031\n\023EQUIP_DRESS_ALREADY\020\205\240\020\022\033\n\025EQUIP_N",
+      "\240\020\022\031\n\023EQUIP_DRESS_ALREADY\020\205\240\020\022\033\n\025EQUIP_N" +
       "OT_DRESS_OTHER\020\206\240\020\022\037\n\031EQUIP_DRESS_OTHER_" +
       "ALREADY\020\207\240\020\022\027\n\021EQUIP_NOT_DRESSED\020\210\240\020\022\032\n\024" +
       "EQUIP_SLOT_NOT_EMPTY\020\211\240\020\022\026\n\020EQUIP_SLOT_E" +
@@ -2106,9 +2227,9 @@ public final class Status {
       "QUIP_CAN_NOT_OPEN_SLOT\020\214\240\020\022\030\n\022EQUIP_GEM_" +
       "MISMATCH\020\215\240\020\022\032\n\024EQUIP_SLOT_NOT_PUNCH\020\216\240\020" +
       "\022\037\n\031EQUIP_PLAYER_LEVEL_DEMAND\020\220\240\020*T\n\nque" +
-      "stError\022\026\n\020QUEST_NOT_ACCEPT\020\201\200\024\022\030\n\022QUEST" +
+      "stError\022\026\n\020QUEST_NOT_ACCEPT\020\201\200\024\022\030\n\022QUEST",
       "_NOT_COMPLETE\020\202\200\024\022\024\n\016QUEST_NOT_OPEN\020\203\200\024*" +
-      "\341\001\n\rinstanceError\022\027\n\021INSTANCE_NOT_OPEN\020\201",
+      "\341\001\n\rinstanceError\022\027\n\021INSTANCE_NOT_OPEN\020\201" +
       "\200\030\022\024\n\016INSTANCE_LEVEL\020\202\200\030\022\024\n\016INSTANCE_COU" +
       "NT\020\203\200\030\022\026\n\020INSTANCE_FATIGUE\020\204\200\030\022\033\n\025INSTAN" +
       "CE_REVIVE_COUNT\020\205\200\030\022\034\n\026CHAPTER_BOX_STAR_" +
@@ -2116,16 +2237,18 @@ public final class Status {
       "\030\022\030\n\022INSTANCE_NOT_ENTER\020\210\200\030*^\n\tmailError" +
       "\022\024\n\016MAIL_NOT_EXIST\020\201\200\034\022\017\n\tMAIL_NONE\020\202\200\034\022" +
       "\024\n\016MAIL_COIN_FULL\020\203\200\034\022\024\n\016MAIL_GOLD_FULL\020" +
-      "\204\200\034*\232\001\n\rallianceError\022\037\n\031ALLIANCE_LEVEL_" +
+      "\204\200\034*\351\001\n\rallianceError\022\037\n\031ALLIANCE_LEVEL_",
       "NOT_ENOUGH\020\201\200 \022\031\n\023ALLIANCE_ALREADY_IN\020\202\200" +
-      " \022\031\n\023ALLIANCE_NAME_ERROR\020\203\200 \022\031\n\023ALLIANCE",
-      "_NAME_EXIST\020\204\200 \022\027\n\021ALLIANCE_NOT_JOIN\020\205\200 " +
-      "*\202\001\n\tshopError\022\032\n\024SHOP_REFRESH_TIMEOUT\020\201" +
-      "\200$\022\033\n\025SHOP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026SHOP_" +
-      "REFRESH_MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COIN_" +
-      "MAX_COUNT\020\204\200$*\037\n\007imError\022\024\n\016IM_CHAT_LENG" +
-      "TH\020\201\200@*(\n\014settingError\022\030\n\022SETTING_BLOCK_" +
-      "FULL\020\201\200DB\030\n\026com.hawk.game.protocol"
+      " \022\030\n\022ALLIANCE_NOT_EXIST\020\203\200 \022\031\n\023ALLIANCE_" +
+      "NAME_ERROR\020\204\200 \022\031\n\023ALLIANCE_NAME_EXIST\020\205\200" +
+      " \022\027\n\021ALLIANCE_NOT_JOIN\020\206\200 \022\026\n\020ALLIANCE_N" +
+      "O_MAIN\020\207\200 \022\033\n\025ALLIANCE_NOTICE_ERROR\020\210\200 *" +
+      "\202\001\n\tshopError\022\032\n\024SHOP_REFRESH_TIMEOUT\020\201\200" +
+      "$\022\033\n\025SHOP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026SHOP_R" +
+      "EFRESH_MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COIN_M" +
+      "AX_COUNT\020\204\200$*\037\n\007imError\022\024\n\016IM_CHAT_LENGT" +
+      "H\020\201\200@*(\n\014settingError\022\030\n\022SETTING_BLOCK_F",
+      "ULL\020\201\200DB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

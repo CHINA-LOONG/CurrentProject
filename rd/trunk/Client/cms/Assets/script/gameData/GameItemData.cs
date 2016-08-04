@@ -20,6 +20,7 @@ public class ItemData
 public class GameItemData
 {
     public Dictionary<string, ItemData> itemList = new Dictionary<string, ItemData>();
+    public Dictionary<string, PB.ItemState> itemStateDic = new Dictionary<string, PB.ItemState>();
 
     public void AddItem(string itemId, int count)
     {
@@ -61,6 +62,50 @@ public class GameItemData
 
         return null;
     }
+
+    public  void    SynItemState(List<PB.ItemState> listItemState)
+    {
+        itemStateDic.Clear();
+
+        foreach(var subItemState in listItemState)
+        {
+            itemStateDic.Add(subItemState.itemId, subItemState);
+        }
+    }
+
+    public void UpdateItemState(string id, int useCountDaily)
+    {
+        PB.ItemState subState = null;
+        if(itemStateDic.TryGetValue(id,out subState))
+        {
+            subState.useCountDaily = useCountDaily;
+        }
+        else
+        {
+            subState = new PB.ItemState();
+            subState.itemId = id;
+            subState.useCountDaily = useCountDaily;
+            itemStateDic.Add(id, subState);
+        }
+    }
+
+    public  int GetItemUsedCountDaily(string itemid)
+    {
+        PB.ItemState itemState = null;
+
+        if(itemStateDic.TryGetValue(itemid, out itemState))
+        {
+            return itemState.useCountDaily;
+        }
+        return 0;
+    }
+
+    public int GetItemUseLimitTimes(string itemId)
+    {
+        ItemStaticData itemStData = StaticDataMgr.Instance.GetItemData(itemId);
+        return itemStData.times;
+    }
+   
 }
 
 public class ItemDataInfo

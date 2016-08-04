@@ -34,6 +34,7 @@ public class BattleToolMain : MonoBehaviour
     public InputField mSimulateCount;//循环次数//hpx1531v
     AttData attData;
     public OperationData operationData;
+    public string attWpName;
     public int bureauNum;//对局数
     public int roundNum = 0;//回合数
     public List<BattleObject> mMainUnitList = new List<BattleObject>();
@@ -62,6 +63,7 @@ public class BattleToolMain : MonoBehaviour
     void StartClick(GameObject but)
     {
         LogResult.Instance.xhNumber = 0;
+        mCurSimulateCount = 0;
         int count = int.Parse(mSimulateCount.text);
         LogResult.Instance.logData = new LogData[count];
         for (int i = 0; i < count; ++i)
@@ -101,7 +103,7 @@ public class BattleToolMain : MonoBehaviour
             //curUnitData.unitCharacter = 1;
             mMainUnitDataList.Add(curUnitData);
         }
-        operationData = StaticDataMgr.Instance.GetPlayerBehaviorData(mInstanceID.text);//"minghe18_1");//minghe18_1");//
+		operationData = StaticDataMgr.Instance.GetPlayerBehaviorData(operationID.text);//"minghe18_1");//minghe18_1");//
         //end test
         int playerUnitStartID = 100;
         mMainUnitList.Clear();

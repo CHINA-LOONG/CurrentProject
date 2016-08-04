@@ -65,8 +65,15 @@ public class InstanceItem : MonoBehaviour
     {
         if(instanceData.isOpen)
         {
-            UIAdjustBattleTeam.OpenWith(instanceData.instanceId, instanceData.staticData.enemyList, 1);
-            InstanceList.Close();
+            if(GameDataMgr.Instance.PlayerDataAttr.HuoliAttr >= instanceData.staticData.fatigue)
+            {
+                UIAdjustBattleTeam.OpenWith(instanceData.instanceId, instanceData.star);
+                InstanceList.Close();
+            }
+           else
+            {
+                UseHuoLi.Open();
+            }
         }
         else
         {

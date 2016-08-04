@@ -518,4 +518,38 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterCompose")]
+  public partial class HSMonsterCompose : global::ProtoBuf.IExtensible
+  {
+    public HSMonsterCompose() {}
+    
+    private string _cfgId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"cfgId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string cfgId
+    {
+      get { return _cfgId; }
+      set { _cfgId = value; }
+    }
+    private bool _useCommon;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"useCommon", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool useCommon
+    {
+      get { return _useCommon; }
+      set { _useCommon = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMonsterComposeRet")]
+  public partial class HSMonsterComposeRet : global::ProtoBuf.IExtensible
+  {
+    public HSMonsterComposeRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

@@ -72,10 +72,10 @@ public class ComposeItem : MonoBehaviour
     private ComposeItemInfo curData;
     public ComposeItemInfo CurData
     {
-        get{return curData;}
+        get { return curData; }
         set
         {
-            if (curData!=null)
+            if (curData != null)
             {
                 curData.Refresh = null;
             }
@@ -132,7 +132,7 @@ public class ComposeItem : MonoBehaviour
         }
         if (tempData.count<=0)
         {
-            curData.IsDisable = true;
+            CurData.IsDisable = true;
         }
     }
     void SetDisable(bool disable)

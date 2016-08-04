@@ -1584,64 +1584,64 @@ public final class Const {
   public enum bindType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>NON_BIND = 0;</code>
+     * <code>NON_BIND = 1;</code>
      *
      * <pre>
      * 不绑定
      * </pre>
      */
-    NON_BIND(0, 0),
+    NON_BIND(0, 1),
     /**
-     * <code>USE_BIND = 1;</code>
+     * <code>USE_BIND = 2;</code>
      *
      * <pre>
      * 使用绑定
      * </pre>
      */
-    USE_BIND(1, 1),
+    USE_BIND(1, 2),
     /**
-     * <code>TAKE_BIND = 2;</code>
+     * <code>TAKE_BIND = 3;</code>
      *
      * <pre>
      * 拾取绑定
      * </pre>
      */
-    TAKE_BIND(2, 2),
+    TAKE_BIND(2, 3),
     ;
 
     /**
-     * <code>NON_BIND = 0;</code>
+     * <code>NON_BIND = 1;</code>
      *
      * <pre>
      * 不绑定
      * </pre>
      */
-    public static final int NON_BIND_VALUE = 0;
+    public static final int NON_BIND_VALUE = 1;
     /**
-     * <code>USE_BIND = 1;</code>
+     * <code>USE_BIND = 2;</code>
      *
      * <pre>
      * 使用绑定
      * </pre>
      */
-    public static final int USE_BIND_VALUE = 1;
+    public static final int USE_BIND_VALUE = 2;
     /**
-     * <code>TAKE_BIND = 2;</code>
+     * <code>TAKE_BIND = 3;</code>
      *
      * <pre>
      * 拾取绑定
      * </pre>
      */
-    public static final int TAKE_BIND_VALUE = 2;
+    public static final int TAKE_BIND_VALUE = 3;
 
 
     public final int getNumber() { return value; }
 
     public static bindType valueOf(int value) {
       switch (value) {
-        case 0: return NON_BIND;
-        case 1: return USE_BIND;
-        case 2: return TAKE_BIND;
+        case 1: return NON_BIND;
+        case 2: return USE_BIND;
+        case 3: return TAKE_BIND;
         default: return null;
       }
     }
@@ -1864,10 +1864,112 @@ public final class Const {
   }
 
   /**
+   * Protobuf enum {@code FragSubType}
+   *
+   * <pre>
+   * 子类型-碎片
+   * </pre>
+   */
+  public enum FragSubType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>FRAG_MONSTER = 1;</code>
+     *
+     * <pre>
+     * 怪物
+     * </pre>
+     */
+    FRAG_MONSTER(0, 1),
+    /**
+     * <code>FRAG_TOOL = 2;</code>
+     *
+     * <pre>
+     * 道具
+     * </pre>
+     */
+    FRAG_TOOL(1, 2),
+    ;
+
+    /**
+     * <code>FRAG_MONSTER = 1;</code>
+     *
+     * <pre>
+     * 怪物
+     * </pre>
+     */
+    public static final int FRAG_MONSTER_VALUE = 1;
+    /**
+     * <code>FRAG_TOOL = 2;</code>
+     *
+     * <pre>
+     * 道具
+     * </pre>
+     */
+    public static final int FRAG_TOOL_VALUE = 2;
+
+
+    public final int getNumber() { return value; }
+
+    public static FragSubType valueOf(int value) {
+      switch (value) {
+        case 1: return FRAG_MONSTER;
+        case 2: return FRAG_TOOL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<FragSubType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<FragSubType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<FragSubType>() {
+            public FragSubType findValueByNumber(int number) {
+              return FragSubType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(12);
+    }
+
+    private static final FragSubType[] VALUES = values();
+
+    public static FragSubType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private FragSubType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:FragSubType)
+  }
+
+  /**
    * Protobuf enum {@code UseToolSubType}
    *
    * <pre>
-   * 消耗品子类型
+   * 子类型-消耗品
    * </pre>
    */
   public enum UseToolSubType
@@ -1974,7 +2076,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(12);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(13);
     }
 
     private static final UseToolSubType[] VALUES = values();
@@ -2212,7 +2314,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(13);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(14);
     }
 
     private static final equipPart[] VALUES = values();
@@ -2382,7 +2484,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(14);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(15);
     }
 
     private static final equipQuality[] VALUES = values();
@@ -2477,7 +2579,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(15);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(16);
     }
 
     private static final shopType[] VALUES = values();
@@ -2613,7 +2715,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(16);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(17);
     }
 
     private static final mailState[] VALUES = values();
@@ -2749,7 +2851,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(17);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(18);
     }
 
     private static final ImType[] VALUES = values();
@@ -2868,7 +2970,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(18);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(19);
     }
 
     private static final ImChannel[] VALUES = values();
@@ -2987,7 +3089,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(19);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(20);
     }
 
     private static final ChapterBoxState[] VALUES = values();
@@ -3048,26 +3150,27 @@ public final class Const {
       "HITRATE\020j\022\020\n\014CUREINCREASE\020k\022\020\n\014DAMAGERED" +
       "UCE\020l\022\022\n\016DAMAGEINCREASE\020m*+\n\ruserConditi" +
       "on\022\n\n\006BATTLE\020\001\022\016\n\nNON_BATTLE\020\002*5\n\010bindTy" +
-      "pe\022\014\n\010NON_BIND\020\000\022\014\n\010USE_BIND\020\001\022\r\n\tTAKE_B" +
-      "IND\020\002*b\n\010toolType\022\016\n\nCOMMONTOOL\020\001\022\020\n\014FRA" +
+      "pe\022\014\n\010NON_BIND\020\001\022\014\n\010USE_BIND\020\002\022\r\n\tTAKE_B" +
+      "IND\020\003*b\n\010toolType\022\016\n\nCOMMONTOOL\020\001\022\020\n\014FRA" +
       "GMENTTOOL\020\002\022\013\n\007GEMTOOL\020\003\022\013\n\007BOXTOOL\020\004\022\013\n",
-      "\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007*`\n\016UseToolSubT" +
-      "ype\022\016\n\nUSETOOLEXP\020\001\022\024\n\020USETOOLDOUBLEEXP\020" +
-      "\002\022\024\n\020USETOOLTRIPLEEXP\020\003\022\022\n\016USETOOLFATIGU" +
-      "E\020\004*\204\001\n\tequipPart\022\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022" +
-      "\010\n\004BELT\020\003\022\013\n\007CUIRASS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007W" +
-      "EAPON2\020\006\022\014\n\010LEGGUARD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLO" +
-      "VE\020\t\022\014\n\010NECKLACE\020\n*O\n\014equipQuality\022\t\n\005WH" +
-      "ITE\020\001\022\t\n\005GREEN\020\002\022\010\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n" +
-      "\n\006ORANGE\020\005\022\007\n\003RED\020\006*;\n\010shopType\022\016\n\nNORMA" +
-      "LSHOP\020\001\022\020\n\014ALLIANCESHOP\020\002\022\r\n\tOTHERSHOP\020\003",
-      "*<\n\tmailState\022\n\n\006UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007R" +
-      "ECEIVE\020\003\022\014\n\010OVERFLOW\020\004*7\n\006ImType\022\010\n\004CHAT" +
-      "\020\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006NOTICE\020\004*" +
-      "-\n\tImChannel\022\n\n\006PERSON\020\001\022\t\n\005WORLD\020\002\022\t\n\005G" +
-      "UILD\020\003*<\n\017ChapterBoxState\022\024\n\007INVALID\020\377\377\377" +
-      "\377\377\377\377\377\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001B\030\n\026com.hawk" +
-      ".game.protocol"
+      "\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007*.\n\013FragSubType" +
+      "\022\020\n\014FRAG_MONSTER\020\001\022\r\n\tFRAG_TOOL\020\002*`\n\016Use" +
+      "ToolSubType\022\016\n\nUSETOOLEXP\020\001\022\024\n\020USETOOLDO" +
+      "UBLEEXP\020\002\022\024\n\020USETOOLTRIPLEEXP\020\003\022\022\n\016USETO" +
+      "OLFATIGUE\020\004*\204\001\n\tequipPart\022\n\n\006HELMET\020\001\022\010\n" +
+      "\004RING\020\002\022\010\n\004BELT\020\003\022\013\n\007CUIRASS\020\004\022\013\n\007WEAPON" +
+      "1\020\005\022\013\n\007WEAPON2\020\006\022\014\n\010LEGGUARD\020\007\022\t\n\005SHOES\020" +
+      "\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020\n*O\n\014equipQuali" +
+      "ty\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022\010\n\004BLUE\020\003\022\n\n\006PU" +
+      "RPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED\020\006*;\n\010shopType\022",
+      "\016\n\nNORMALSHOP\020\001\022\020\n\014ALLIANCESHOP\020\002\022\r\n\tOTH" +
+      "ERSHOP\020\003*<\n\tmailState\022\n\n\006UNREAD\020\001\022\010\n\004REA" +
+      "D\020\002\022\013\n\007RECEIVE\020\003\022\014\n\010OVERFLOW\020\004*7\n\006ImType" +
+      "\022\010\n\004CHAT\020\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006N" +
+      "OTICE\020\004*-\n\tImChannel\022\n\n\006PERSON\020\001\022\t\n\005WORL" +
+      "D\020\002\022\t\n\005GUILD\020\003*<\n\017ChapterBoxState\022\024\n\007INV" +
+      "ALID\020\377\377\377\377\377\377\377\377\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001B\030\n\026" +
+      "com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

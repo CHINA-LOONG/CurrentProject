@@ -1,6 +1,6 @@
 ﻿#NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,NUM,TEXT,TEXT,TEXT
 stage,health,strength,intelligence,speed,defense,endurance,recovery,modifyRate,demandLevel,demandCoin,demandItem,demandMonster,decompose
-#品质,体力,力量,智力,速度,防御力,耐力,战后回血,品质系数K,需求该宠物等级,需求金币,需求材料,需求怪物,分解列表
+#品质,体力,力量,智力,速度,防御力,耐力,战后回血,品质系数K,进阶需求该宠物等级,进阶需求金币,进阶需求材料,进阶需求怪物,分解列表
 0,0,0,0,0,0,0,0,0,0,0,,,3_10002_1
 1,1000,100,100,100,100,0,0,1,0,1,3_10002_1,7_xgXiyiren_1_0,3_10002_1
 2,1000,100,100,100,100,0,0,1,0,1,3_10002_2,,3_10002_2

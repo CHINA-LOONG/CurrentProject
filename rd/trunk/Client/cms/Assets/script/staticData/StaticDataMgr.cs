@@ -58,6 +58,10 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<string, FunctionData> functionDic = new Dictionary<string, FunctionData>();
     Dictionary<int, List<FunctionData>> functionLevelDic = new Dictionary<int, List<FunctionData>>();
 
+    Dictionary<string, TowerStaticData> towerList = new Dictionary<string, TowerStaticData>();
+    Dictionary<string, HoleStaticData> holeList = new Dictionary<string, HoleStaticData>();
+
+
     public void Init()
     {
         DontDestroyOnLoad(gameObject);
@@ -652,6 +656,17 @@ public class StaticDataMgr : MonoBehaviour
                 }
             }
         }
+        //通天塔
+        {
+            var data = InitTable<TowerStaticData>("tower");
+            foreach (var item in data)
+                towerList.Add(item.id, item);
+        }
+        {
+            var data = InitTable<HoleStaticData>("hole");
+            foreach (var item in data)
+                holeList.Add(item.id, item);
+        }
     }
 
     List<T> InitTable<T>(string filename) where T : new()
@@ -855,6 +870,10 @@ public class StaticDataMgr : MonoBehaviour
 
     public RewardData GetRewardData(string id)
     {
+        if(null == id)
+        {
+            return null;
+        }
         RewardData item = null;
         rewardData.TryGetValue(id, out item);
         return item;
@@ -979,6 +998,28 @@ public class StaticDataMgr : MonoBehaviour
         if (string.IsNullOrEmpty(id)) return audio;
         audioMapping.TryGetValue(id, out audio);
         return audio;
+    }
+
+    //通天塔
+    public TowerStaticData GetTowerData(string id)
+    {
+        TowerStaticData item = null;
+        if (id != null)
+        {
+            towerList.TryGetValue(id, out item);
+        }
+
+        return item;
+    }
+    public HoleStaticData GetHoleData(string id)
+    {
+        HoleStaticData item = null;
+        if (id != null)
+        {
+            holeList.TryGetValue(id, out item);
+        }
+
+        return item;
     }
 
 

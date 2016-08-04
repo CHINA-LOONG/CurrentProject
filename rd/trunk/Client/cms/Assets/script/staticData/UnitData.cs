@@ -57,8 +57,10 @@ public class UnitData
 	public int	friendship;
 	public int disposition;
     public string closeUp;
+    public string fragmentId;
+    public int fragmentCount;
 
-	public string NickNameAttr
+    public string NickNameAttr
 	{
 		get
 		{

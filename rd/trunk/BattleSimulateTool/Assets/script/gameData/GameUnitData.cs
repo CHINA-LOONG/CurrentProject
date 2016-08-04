@@ -643,6 +643,11 @@ public class GameUnit : IComparable
 
     public void OnDead()
     {
+        //if (pbUnit.camp == UnitCamp.Enemy)
+        {
+            Debug.LogError(pbUnit.id + "死了" + attackCount);
+        }
+        
         buffList.Clear();
         invincible = 0;
         stun = 0;

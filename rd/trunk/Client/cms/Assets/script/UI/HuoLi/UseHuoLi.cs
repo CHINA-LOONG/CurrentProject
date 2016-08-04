@@ -9,6 +9,7 @@ public class UseHuoLi : UIBase
     public Text[] szDescText;
     public Button[] szUseButton;
     public Button closeButton;
+    public Text title;
 
     private ItemData[] szItemData = new ItemData[3];
     private string curUseItemId = null;
@@ -16,9 +17,26 @@ public class UseHuoLi : UIBase
 
     public static void Open()
     {
-        UseHuoLi ui = (UseHuoLi)UIMgr.Instance.OpenUI_(ViewName);
+        UseHuoLi ui = (UseHuoLi)UIMgr.Instance.OpenUI_(ViewName,true);
     }
 
+    void OnEnable()
+    {
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_USE_C.GetHashCode().ToString(), OnUseItemFinished);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_USE_S.GetHashCode().ToString(), OnUseItemFinished);
+
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_C.GetHashCode().ToString(), OnItemBuyAndUseFinished);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_S.GetHashCode().ToString(), OnItemBuyAndUseFinished);
+    }
+
+    void OnDisable()
+    {
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_USE_C.GetHashCode().ToString(), OnUseItemFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_USE_S.GetHashCode().ToString(), OnUseItemFinished);
+
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_C.GetHashCode().ToString(), OnItemBuyAndUseFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_S.GetHashCode().ToString(), OnItemBuyAndUseFinished);
+    }
     // Use this for initialization
     void Start()
     {
@@ -26,12 +44,7 @@ public class UseHuoLi : UIBase
         szUseButton[0].onClick.AddListener(OnUseButton1Click);
         szUseButton[1].onClick.AddListener(OnUseButton2Click);
         szUseButton[2].onClick.AddListener(OnUseButton3Click);
-
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_USE_C.GetHashCode().ToString(), OnUseItemFinished);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_USE_S.GetHashCode().ToString(), OnUseItemFinished);
-
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_C.GetHashCode().ToString(), OnUseItemFinished);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_S.GetHashCode().ToString(), OnUseItemFinished);
+        title.text = StaticDataMgr.Instance.GetTextByID("energy_supple");
     }
 
     public override void Init()
@@ -41,11 +54,6 @@ public class UseHuoLi : UIBase
     //删除界面，对子对象的清理操作
     public override void Clean()
     {
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_USE_C.GetHashCode().ToString(), OnUseItemFinished);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_USE_S.GetHashCode().ToString(), OnUseItemFinished);
-
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_C.GetHashCode().ToString(), OnUseItemFinished);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.ITEM_BUY_AND_USE_S.GetHashCode().ToString(), OnUseItemFinished);
     }
 
     public void RefreshUi()
@@ -165,6 +173,7 @@ public class UseHuoLi : UIBase
         string succMsg = "bag_record_001";
         UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID(succMsg), (int)PB.ImType.PROMPT);
         RefreshUi();
+        GameEventMgr.Instance.FireEvent(GameEventList.RefreshInstanceList);
     }
 
     void BuyAndUseItem(string itemId)
@@ -197,7 +206,29 @@ public class UseHuoLi : UIBase
 
     void OnItemBuyAndUseFinished(ProtocolMessage msg)
     {
-      //  UINetRequest.Close();
+        UINetRequest.Close();
+
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
+            if (error.errCode == (int)PB.itemError.ITEM_EXP_LEFT_TIMES)
+            {
+                string errMsg = "bag_record_002";
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID(errMsg),
+                                               (int)PB.ImType.PROMPT);
+            }
+            else if (error.errCode == (int)PB.PlayerError.GOLD_NOT_ENOUGH)
+            {
+                GameDataMgr.Instance.ShopDataMgrAttr.ZuanshiNoEnough();
+            }
+            Logger.LogError("use items Error.....");
+            return;
+        }
+
+        PB.HSItemBuyAndUseRet useReturn = msg.GetProtocolBody<PB.HSItemBuyAndUseRet>();
+        GameDataMgr.Instance.PlayerDataAttr.gameItemData.UpdateItemState(useReturn.itemId, useReturn.useCountDaily);
+        RefreshUi();
+        GameEventMgr.Instance.FireEvent(GameEventList.RefreshInstanceList);
     }
 }
 

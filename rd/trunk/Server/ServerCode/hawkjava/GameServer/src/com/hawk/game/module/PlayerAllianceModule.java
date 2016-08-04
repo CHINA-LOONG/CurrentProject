@@ -5,8 +5,12 @@ import org.hawk.net.protocol.HawkProtocol;
 
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.manager.ImManager;
+import com.hawk.game.module.alliance.AllianceCreateHandler;
+import com.hawk.game.module.alliance.AllianceListHandler;
+import com.hawk.game.module.alliance.AllianceSearchHandler;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
+import com.hawk.game.protocol.HS;
 
 /**
  * 公会模块
@@ -21,6 +25,9 @@ public class PlayerAllianceModule extends PlayerModule {
 	 */
 	public PlayerAllianceModule(Player player) {
 		super(player);
+		listenProto(HS.code.ALLIANCE_CREATE_C, new AllianceCreateHandler());
+		listenProto(HS.code.ALLIANCE_LIST_C, new AllianceListHandler());
+		listenProto(HS.code.ALLIANCE_SEARCH_C, new AllianceSearchHandler());
 	}
 
 	/**

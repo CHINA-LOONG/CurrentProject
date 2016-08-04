@@ -170,6 +170,10 @@ public class BehaviorLogger {
 		 */
 		MONSTER_DECOMPOSE,
 		/**
+		 * 宠物合成
+		 */
+		MONSTER_COMPOSE,
+		/**
 		 * 装备分解
 		 */
 		EQUIP_DECOMPOSE,

@@ -1,0 +1,9 @@
+﻿#NUM,TEXT,FLOAT
+rarity,desc,commonRatio
+#稀有度,描述,万能碎片最大比例
+0,E,1
+1,D,0.8
+2,C,0.6
+3,B,0.4
+4,A,0.2
+5,S,0

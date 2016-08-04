@@ -6,14 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.persistence.Embeddable;
-
 import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBManager;
-import org.hawk.log.HawkLog;
 import org.hawk.net.protocol.HawkProtocol;
-
-import sun.rmi.runtime.Log;
 
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
@@ -24,9 +19,7 @@ import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.StatisticsEntity;
-import com.hawk.game.protocol.Const.equipPart;
 import com.hawk.game.protocol.Equip.HSEquipInfoSync;
-import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
 import com.hawk.game.protocol.Mail.HSMailInfoSync;
@@ -36,7 +29,6 @@ import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.Quest.HSQuestInfoSync;
 import com.hawk.game.protocol.Setting.HSSetting;
 import com.hawk.game.protocol.Setting.HSSettingInfoSync;
-import com.hawk.game.protocol.Status.itemError;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ShopUtil;
@@ -740,27 +732,29 @@ public class PlayerData {
 	 * 同步经验次数信息
 	 */
 	public void syncStatisticsExpLeftInfo() {
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_EXP_LEFT_TIMES_VALUE, BuilderUtil.genStatisticsExpLeftTimeBuilder(statisticsEntity)));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.SYNC_EXP_LEFT_TIMES_S, BuilderUtil.genSyncExpLeftTimesBuilder(statisticsEntity)));
 	}
-	
+
 	/**
 	 * 同步商店刷新次数信息
 	 */
 	public void syncShopRefreshTimeInfo() {
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_REFRESH_TIMES_VALUE, BuilderUtil.genShopRefreshTimeLeftBuilder(player, shopEntity)));
-	}
-	
-	/**
-	 * 刷新商店数据
-	 */
-	public void syncStaticticsShopRefreshInfo(int shopType) {
-		player.sendProtocol(HawkProtocol.valueOf(HS.code.STATISTICS_SHOP_REFRESH_VALUE, BuilderUtil.genStaticsticsShopRefreshBuilder(shopType)));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_REFRESH_TIMES, BuilderUtil.genShopRefreshTimeBuilder(player, shopEntity)));
 	}
 
 	/**
-	 * TODO
+	 * 刷新商店数据
+	 */
+	public void syncShopRefreshInfo(int shopType) {
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.SYNC_SHOP_REFRESH_S, BuilderUtil.genSyncShopRefreshBuilder(shopType)));
+	}
+
+	/**
 	 * 同步刷新数据
 	 */
+	public void syncDailyRefreshInfo() {
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.SYNC_DAILY_REFRESH_S, BuilderUtil.genSyncDailyRefreshBuilder()));
+	}
 
 	/**
 	 * 同步系统设置信息

@@ -174,30 +174,36 @@ public class PlayerShopModule extends PlayerModule{
 	@ProtocolHandler(code = HS.code.SHOP_ITEM_BUY_C_VALUE)
 	private boolean onShopItemBuy(HawkProtocol cmd){
 		HSShopItemBuy protocol = cmd.parseProtocol(HSShopItemBuy.getDefaultInstance());
+		int hsCode = cmd.getType();
 		ShopEntity shopEntity = player.getPlayerData().getShopEntity();
 		ShopItemInfo itemInfo = shopEntity.getShopItemsList(protocol.getType()).get(protocol.getSlot());
 
 		if (itemInfo == null) {
-			sendError(HS.code.SHOP_ITEM_BUY_C_VALUE, Status.error.PARAMS_INVALID_VALUE);
+			sendError(hsCode, Status.error.PARAMS_INVALID_VALUE);
 			return true;
 		}
 		
 		if (protocol.getShopId() != shopEntity.getShopId(protocol.getType())) {
-			sendError(HS.code.SHOP_ITEM_BUY_C_VALUE, Status.shopError.SHOP_REFRESH_TIMEOUT_VALUE);
+			sendError(hsCode, Status.shopError.SHOP_REFRESH_TIMEOUT_VALUE);
 			return true;
 		}
 		
 		if (shopEntity.getShopItemsList(protocol.getType()).get(protocol.getSlot()).isHasBuy() == true) {
-			sendError(HS.code.SHOP_ITEM_BUY_C_VALUE, Status.shopError.SHOP_ITEM_ALREADY_BUY_VALUE);
+			sendError(hsCode, Status.shopError.SHOP_ITEM_ALREADY_BUY_VALUE);
 			return true;
 		}
 			
 		ItemCfg itemCfg = HawkConfigManager.getInstance().getConfigByKey(ItemCfg.class, shopEntity.getShopItemsList(protocol.getType()).get(protocol.getSlot()).getItemId());
 		if (itemCfg == null) {
-			sendError(HS.code.SHOP_ITEM_BUY_C_VALUE, Status.itemError.ITEM_NOT_FOUND_VALUE);
+			sendError(hsCode, Status.itemError.ITEM_NOT_FOUND_VALUE);
 			return true;	
 		}
-		
+
+		if (itemCfg.getBuyPrice() == GsConst.UNUSABLE) {
+			sendError(hsCode, Status.itemError.ITEM_BUY_NOT_ALLOW);
+			return true;
+		}
+
 		ConsumeItems consume = new ConsumeItems();
 		if (itemCfg.getBuyType() == Const.moneyType.MONEY_COIN_VALUE) {
 			consume.addCoin((int)(itemInfo.getCount() * itemCfg.getBuyPrice() * itemInfo.getDiscount()));
@@ -206,7 +212,7 @@ public class PlayerShopModule extends PlayerModule{
 			consume.addGold((int)(itemInfo.getCount() * itemCfg.getBuyPrice() * itemInfo.getDiscount()));
 		}
 		
-		if (consume.checkConsume(player, HS.code.SHOP_ITEM_BUY_C_VALUE) == false) {
+		if (consume.checkConsume(player, hsCode) == false) {
 			return true;
 		}
 		
@@ -219,8 +225,8 @@ public class PlayerShopModule extends PlayerModule{
 			award.addItem(itemInfo.getItemId(), itemInfo.getCount());
 		}
 		
-		consume.consumeTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, HS.code.SHOP_ITEM_BUY_C_VALUE);
-		award.rewardTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, HS.code.SHOP_ITEM_BUY_C_VALUE);
+		consume.consumeTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, hsCode);
+		award.rewardTakeAffectAndPush(player, Action.SHOP_ITEM_BUY, hsCode);
 		shopEntity.getShopItemsList(protocol.getType()).get(protocol.getSlot()).setHasBuy(true);
 		shopEntity.notifyUpdate(true);
 
@@ -245,14 +251,14 @@ public class PlayerShopModule extends PlayerModule{
 			refreshTypeList.contains(GsConst.RefreshType.SHOP_REFRESH_TIME_THIRD ))
 		{
 			ShopUtil.refreshShopData(Const.shopType.NORMALSHOP_VALUE, player);
-			player.getPlayerData().syncStaticticsShopRefreshInfo(Const.shopType.NORMALSHOP_VALUE);
+			player.getPlayerData().syncShopRefreshInfo(Const.shopType.NORMALSHOP_VALUE);
 		}
 		else if (refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_FIRST) || 
-			     refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_SECOND)||
-			     refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_THIRD ))
+				refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_SECOND)||
+				refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_THIRD ))
 		{
 			ShopUtil.refreshShopData(Const.shopType.ALLIANCESHOP_VALUE, player);
-			player.getPlayerData().syncStaticticsShopRefreshInfo(Const.shopType.ALLIANCESHOP_VALUE);
+			player.getPlayerData().syncShopRefreshInfo(Const.shopType.ALLIANCESHOP_VALUE);
 		}
 		
 		return true;

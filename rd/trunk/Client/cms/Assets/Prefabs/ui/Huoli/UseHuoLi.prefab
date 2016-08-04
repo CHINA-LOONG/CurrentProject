@@ -1043,6 +1043,7 @@ MonoBehaviour:
   - {fileID: 11475838}
   - {fileID: 11493484}
   closeButton: {fileID: 11497208}
+  title: {fileID: 11470842}
 --- !u!114 &11423654
 MonoBehaviour:
   m_ObjectHideFlags: 1

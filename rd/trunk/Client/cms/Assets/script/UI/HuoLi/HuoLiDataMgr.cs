@@ -19,13 +19,14 @@ public class HuoLiDataMgr
 
     public string huoliyao_1 = "50005";
     public string huoliyao_2 = "50006";
-    public string huoliyao_3 = "50006";
+    public string huoliyao_3 = "50007";
 
     public bool showHuoliBuyDlg = true;
 
     public  int GetHuoliYaoLeftTime(string itemid)
     {
-        return Random.Range(0, 2);
+        GameItemData gItemData = GameDataMgr.Instance.PlayerDataAttr.gameItemData;
+        return gItemData.GetItemUseLimitTimes(itemid) - gItemData.GetItemUsedCountDaily(itemid);
     }
 
     public  string  GetHuoliyaoId(int index)

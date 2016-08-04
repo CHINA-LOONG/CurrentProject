@@ -20,6 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.google.gson.reflect.TypeToken;
 import com.hawk.game.log.BehaviorLogger.Action;
+import com.sun.org.apache.bcel.internal.util.Objects;
 
 /**
  * @author zs
@@ -161,6 +162,11 @@ public class AllianceEntity extends HawkDBEntity {
 		this.createAllianceTime = createAllianceTime;
 	}
 
+	@Override 
+	public int hashCode() {
+		return Objects.hashCode(name);
+	};
+	
 	@Override
 	public int getCreateTime() {
 		return createTime;

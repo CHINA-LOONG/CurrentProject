@@ -33,6 +33,12 @@ message RechargeState
 	required int32  buyTimes = 2;
 }
 
+message ItemState
+{
+	required string itemId = 1;
+	required int32 useCountDaily = 2;
+}
+
 // protocol-----------------------------------------------------
 
 message HSStatisticsInfoSync
@@ -62,10 +68,25 @@ message HSStatisticsInfoSync
 	// 钻石购买金币次数
 	required int32  gold2CoinTimes = 12;
 	// 多倍经验剩余次数
-	required HSStatisticsExpLeftTimeSync expLeftTimes = 13;
+	required HSSyncExpLeftTimes expLeftTimes = 13;
+	// 物品使用次数
+	repeated ItemState itemState = 14;
 }
 
-message HSStatisticsExpLeftTimeSync
+// SYNC_DAILY_REFRESH_S
+message HSSyncDailyRefresh
+{
+}
+
+// SYNC_SHOP_REFRESH_S
+message HSSyncShopRefresh
+{
+	// 商店类型
+	required int32 shopType = 1;
+}
+
+// SYNC_EXP_LEFT_TIMES_S
+message HSSyncExpLeftTimes
 {
 	// 双倍经验剩余次数
 	required int32  doubleExpLeft = 1;
@@ -73,14 +94,8 @@ message HSStatisticsExpLeftTimeSync
 	required int32  tripleExpLeft = 2;
 }
 
-message HSStatisticsResetSync
-{
-	// 钻石兑换次数
-	required int32 goldChangeTimes = 1;
-}
-
-message HSStatisticsShopRefresh
-{
-	// 商店类型
-	required int32 shopType = 1;
-}
+//message HSStatisticsResetSync
+//{
+//	// 钻石兑换次数
+//	required int32 goldChangeTimes = 1;
+//}

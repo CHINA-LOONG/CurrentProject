@@ -19,8 +19,8 @@ public class StatisticsDataMgr : MonoBehaviour {
 		}
 	}
 
-	private	PB.HSStatisticsExpLeftTimeSync	expLeftTime;
-	public	PB.HSStatisticsExpLeftTimeSync	ExpLeftTimeAttr
+    private PB.HSSyncExpLeftTimes expLeftTime;
+    public PB.HSSyncExpLeftTimes ExpLeftTimeAttr
 	{
 		get
 		{
@@ -46,16 +46,16 @@ public class StatisticsDataMgr : MonoBehaviour {
     public void Init()
     {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
-		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.STATISTICS_EXP_LEFT_TIMES.GetHashCode ().ToString (), OnExpLeftTimesSync);
-		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.STATISTICS_SHOP_REFRESH.GetHashCode ().ToString (), OnShopNeedRefreshSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_EXP_LEFT_TIMES_S.GetHashCode().ToString(), OnExpLeftTimesSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_SHOP_REFRESH_S.GetHashCode().ToString(), OnShopNeedRefreshSync);
         DontDestroyOnLoad(gameObject);
     }
 
     void Destroy()
     {
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);  
-		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.STATISTICS_EXP_LEFT_TIMES.GetHashCode ().ToString (), OnExpLeftTimesSync);
-        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_SHOP_REFRESH.GetHashCode().ToString(), OnShopNeedRefreshSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_EXP_LEFT_TIMES_S.GetHashCode().ToString(), OnExpLeftTimesSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_SHOP_REFRESH_S.GetHashCode().ToString(), OnShopNeedRefreshSync);
     }
 
     void OnStatisticsInfoSync(ProtocolMessage message)
@@ -69,20 +69,22 @@ public class StatisticsDataMgr : MonoBehaviour {
 		expLeftTime = staticsticsData.expLeftTimes;
 		gold2coinExchargeTimes = staticsticsData.gold2CoinTimes;
 
+        GameDataMgr.Instance.PlayerDataAttr.gameItemData.SynItemState(staticsticsData.itemState);
+
         UpdateServerTime(staticsticsData.timeStamp);
 
         GameDataMgr.Instance.PlayerDataAttr.UpdateHuoli(staticsticsData.fatigue, staticsticsData.fatigueBeginTime);
     }
 
-	void	OnExpLeftTimesSync(ProtocolMessage message)
+	void OnExpLeftTimesSync(ProtocolMessage message)
 	{
-		PB.HSStatisticsExpLeftTimeSync msgBody = message.GetProtocolBody<PB.HSStatisticsExpLeftTimeSync> ();
+        PB.HSSyncExpLeftTimes msgBody = message.GetProtocolBody<PB.HSSyncExpLeftTimes>();
 		expLeftTime = msgBody;
 	}
 
-	void	 OnShopNeedRefreshSync(ProtocolMessage message)
+	void OnShopNeedRefreshSync(ProtocolMessage message)
 	{
-		PB.HSStatisticsShopRefresh msgBody = message.GetProtocolBody<PB.HSStatisticsShopRefresh> ();
+        PB.HSSyncShopRefresh msgBody = message.GetProtocolBody<PB.HSSyncShopRefresh>();
 		GameDataMgr.Instance.ShopDataMgrAttr.RefreshShopWithFree (msgBody.shopType, false);
 	}
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 using ProtoBuf;
 using ProtoBuf.Meta;
@@ -15,21 +16,33 @@ namespace UnityClientConsole
         private static App instance;
         private NetManager netmanaget;
         private int    playerID;
-        private string puid;
-        static int count = 0;
-        static Object lockref = new Object();
-
-
+        public string puid;
+        private long lastBeatTime = 0;
+        private long lastIMTime = 0;
+        private long lastInstanceime = 0;
+        private long lastShowStateTime = 0;
+        Random random = new Random();
+        int heartBeatTime = 0;
+        int IMSendTime = 0;
+        int IMReceivedTime = 0;
+        int instanceTime = 0;
+        bool isAssemble = false;
+        bool firstTest = false; 
+        int[] monster = new int[5];
+        string[] instanceID = {"yueguangsenlin11", "yueguangsenlin12", "yueguangsenlin14", "yueguangsenlin17", "yueguangsenlin18",
+                               "minghe12", "minghe13", "minghe14", "minghe17", "minghe18"};
         public App()
         {
            
         }
+
         public static App GetInstance()
         {
             if (instance == null)
             {
                 instance = new App();
             }
+
             return instance;
         }
 
@@ -59,6 +72,44 @@ namespace UnityClientConsole
             netmanaget.SendProtocol(code.LOGIN_C.GetHashCode(), login);
         }
 
+        public void SendHeartBeatProtocol()
+        {
+            HSHeartBeat heartBeat = new HSHeartBeat();
+            netmanaget.SendProtocol(sys.HEART_BEAT.GetHashCode(), heartBeat);
+        }
+
+        public void SendIMMessage()
+        {
+            HSImChatSend chatSend = new HSImChatSend();
+            chatSend.channel = ImChannel.WORLD.GetHashCode();
+
+            chatSend.text = puid + "This is English. Hello world!";
+            netmanaget.SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+
+            chatSend.text = puid + "这是中文。你好世界！";
+            netmanaget.SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
+        }
+
+        public void SendInstanceMessage()
+        {
+            HSInstanceEnter instanceEnter = new HSInstanceEnter();
+            for (int i = 0; i < 5; i++)
+            {
+                instanceEnter.battleMonsterId.Add(monster[i]);
+            }
+
+            instanceEnter.instanceId = instanceID[random.Next(0, 1)];
+            netmanaget.SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
+        }
+
+        public void SendRefreshShop()
+        {
+            HSShopRefresh refreshShop = new HSShopRefresh();
+            refreshShop.type = 2;
+
+            netmanaget.SendProtocol(code.SHOP_REFRESH_C.GetHashCode(), refreshShop);
+        }
+
         public void OnProtocol(Protocol protocol)
         {
             
@@ -66,7 +117,6 @@ namespace UnityClientConsole
             {
                 HSErrorCode hsError = protocol.GetProtocolBody<HSErrorCode>();
                 Console.WriteLine("" + hsError.hsCode.GetHashCode() + " " + hsError.errCode.GetHashCode().ToString("X2"));
-                Console.WriteLine(""); 
             }
 
 
@@ -121,10 +171,24 @@ namespace UnityClientConsole
                 HSStatisticsInfoSync statisticsInfo = protocol.GetProtocolBody<HSStatisticsInfoSync>();
                 Console.WriteLine("同步统计信息");
             }
+            else if (protocol.checkType(code.SETTING_INFO_SYNC_S.GetHashCode()))
+            {
+                HSSettingInfoSync settingSyn = protocol.GetProtocolBody<HSSettingInfoSync>();
+            }
             else if (protocol.checkType(code.MONSTER_INFO_SYNC_S.GetHashCode()))
             {
-                HSMonsterInfoSync monsterInfo = protocol.GetProtocolBody<HSMonsterInfoSync>();
-                Console.WriteLine("同步宠物信息");
+                HSMonsterInfoSync monsterInfoSyn = protocol.GetProtocolBody<HSMonsterInfoSync>();
+
+                if (firstTest == false)
+                {
+                    for (int i = 0; i < 5; ++i)
+                    {
+                        monster[i] = monsterInfoSyn.monsterInfo[i].monsterId;
+                    }
+
+                    firstTest = true;
+                }
+        
             }
             else if (protocol.checkType(code.ITEM_INFO_SYNC_S.GetHashCode()))
             {
@@ -146,10 +210,7 @@ namespace UnityClientConsole
             }
             else if (protocol.checkType(code.ASSEMBLE_FINISH_S.GetHashCode()))
             {
-                lock (lockref)
-                {
-                    Console.WriteLine("同步完成 : {0}", ++count);
-                }
+                isAssemble = true;
 
                // HSSettingBlock settingBlock = new HSSettingBlock();
                //settingBlock.playerId = 731; //xiaozhen1
@@ -257,6 +318,11 @@ namespace UnityClientConsole
 //                 monsterLock.locked = false;
 //                 NetManager.GetInstance().SendProtocol(code.MONSTER_LOCK_C.GetHashCode(), monsterLock);
 
+//                 HSMonsterCompose monsterCompose = new HSMonsterCompose();
+//                 monsterCompose.cfgId = "xgXiyiren";
+//                 monsterCompose.useCommon = true;
+//                 netmanaget.SendProtocol(code.MONSTER_COMPOSE_C.GetHashCode(), monsterCompose);
+
 //                 HSInstanceEnter instanceEnter = new HSInstanceEnter();
 //                 instanceEnter.instanceId = "yueguangsenlin11";
 //                 instanceEnter.battleMonsterId.Add(21478);
@@ -264,10 +330,10 @@ namespace UnityClientConsole
 //                 instanceEnter.battleMonsterId.Add(21480);
 //                 netmanaget.SendProtocol(code.INSTANCE_ENTER_C.GetHashCode(), instanceEnter);
 
-                HSChapterBox chapterBox = new HSChapterBox();
-                chapterBox.chapterId = 1;
-                chapterBox.difficulty = 0;
-                netmanaget.SendProtocol(code.CHAPTER_BOX_C.GetHashCode(), chapterBox);
+                //HSChapterBox chapterBox = new HSChapterBox();
+                //chapterBox.chapterId = 1;
+                //chapterBox.difficulty = 0;
+                //netmanaget.SendProtocol(code.CHAPTER_BOX_C.GetHashCode(), chapterBox);
 
 //                 HSItemBuy itemBuy = new HSItemBuy();
 //                 itemBuy.itemId = 40001;
@@ -275,12 +341,24 @@ namespace UnityClientConsole
 //                 NetManager.GetInstance().SendProtocol(code.ITEM_BUY_C.GetHashCode(), itemBuy);
  
 //                 HSItemUse itemUse = new HSItemUse();
-//                 itemUse.itemId = 40001;
-//                 NetManager.GetInstance().SendProtocol(code.ITEM_USE_C.GetHashCode(), itemUse);
+//                 itemUse.itemId = "50005";
+//                 itemUse.itemCount = 1;
+//                 netmanaget.SendProtocol(code.ITEM_USE_C.GetHashCode(), itemUse);
+
+//                 HSItemBuyAndUse buyUse = new HSItemBuyAndUse();
+//                 buyUse.itemId = "50005";
+//                 buyUse.itemCount = 1;
+//                 netmanaget.SendProtocol(code.ITEM_BUY_AND_USE_C.GetHashCode(), buyUse);
 
 //                 HSQuestSubmit questSubmit = new HSQuestSubmit();
 //                 questSubmit.questId = 10003;
 //                 NetManager.GetInstance().SendProtocol(code.QUEST_SUBMIT_C.GetHashCode(), questSubmit);
+
+
+//                 HSAllianceJoinList allianceJoinList = new HSAllianceJoinList();
+//                 allianceJoinList.reqPage = 1;
+//                 netmanaget.SendProtocol(code.ALLIANCE_JOINLIST_C.GetHashCode(), allianceJoinList);
+
             }
             // 副本----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.INSTANCE_ENTER_S.GetHashCode()))
@@ -289,8 +367,8 @@ namespace UnityClientConsole
                 Console.WriteLine("进入副本");
 
                 HSInstanceSettle instanceSettle = new HSInstanceSettle();
-                instanceSettle.victory = true;
-                netmanaget.SendProtocol(code.INSTANCE_SETTLE_C.GetHashCode(), instanceSettle);
+//                 instanceSettle.victory = true;
+//                 netmanaget.SendProtocol(code.INSTANCE_SETTLE_C.GetHashCode(), instanceSettle);
 
                 //HSInstanceRevive instanceRevive = new HSInstanceRevive();
                 //NetManager.GetInstance().SendProtocol(code.INSTANCE_REVIVE_C.GetHashCode(), instanceRevive);
@@ -334,10 +412,16 @@ namespace UnityClientConsole
                 HSRewardInfo rewardInfo = protocol.GetProtocolBody<HSRewardInfo>();
                 Console.WriteLine("奖励");
             }
-            else if (protocol.checkType(sys.HEART_BEAT.GetHashCode()))
+            // 商店---------------------------------------------------------------------------------------------------------
+            else if (protocol.checkType(code.SHOP_REFRESH_S.GetHashCode()))
             {
-                // HSHeartBeat response = protocol.GetProtocolBody<HSHeartBeat>();
+                HSShopRefreshRet rewardInfo = protocol.GetProtocolBody<HSShopRefreshRet>();
 
+            }
+            else if (protocol.checkType(code.ITEM_USE_S.GetHashCode()))
+            {
+                HSItemUseRet useReturn = protocol.GetProtocolBody<HSItemUseRet>();
+                Console.WriteLine("使用");
             }
             // 任务----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.QUEST_UPDATE_S.GetHashCode()))
@@ -375,6 +459,12 @@ namespace UnityClientConsole
             {
                 HSMonsterLockRet monsterLock = protocol.GetProtocolBody<HSMonsterLockRet>();
                 Console.WriteLine("锁定");
+            }
+            else if (protocol.checkType(code.MONSTER_COMPOSE_S.GetHashCode()))
+            {
+                HSMonsterComposeRet compose = protocol.GetProtocolBody<HSMonsterComposeRet>();
+                Console.WriteLine("怪物合成");
+
             }
             // 邮件----------------------------------------------------------------------------------------------------------
             else if (protocol.checkType(code.MAIL_RECEIVE_S.GetHashCode()))
@@ -415,7 +505,57 @@ namespace UnityClientConsole
                 HSSettingBlockRet block = protocol.GetProtocolBody<HSSettingBlockRet>();
                 Console.WriteLine("屏蔽玩家");
             }
+            // ALLIANCE-------------------------------------------------------------------------------------------------------
+//             else if (protocol.checkType(code.ALLIANCE_CREATE_S.GetHashCode()))
+//             {
+//                 HSAllianceCreateRet response = protocol.GetProtocolBody<HSAllianceCreateRet>();
+//                 Console.WriteLine("创建公会成功");
+//             }
+//             else if (protocol.checkType(code.ALLIANCE_JOINLIST_S.GetHashCode()))
+//             {
+//                 HSAllianceJoinListRet response = protocol.GetProtocolBody<HSAllianceJoinListRet>();
+//                 Console.WriteLine("工会列表");
+//             }
         }
 
+        public void OnTick(long timeStamp)
+        {
+            if (isAssemble == false)
+            {
+                return;
+            }
+
+//             if (lastBeatTime + 3000 < timeStamp)
+//             {
+//                 SendHeartBeatProtocol();
+//                 lastBeatTime = timeStamp;
+//                 lastBeatTime += random.Next(0, 3000);
+//             }
+
+            if ( lastIMTime + 10000 < timeStamp)
+            {
+                SendIMMessage();
+                IMSendTime++;
+                lastIMTime = timeStamp;
+                lastIMTime += random.Next(0, 100);
+            }
+
+//             if (lastInstanceime + 15000 < timeStamp)
+//             {
+//                 SendInstanceMessage();
+//                 SendRefreshShop();
+//                 instanceTime++;
+//                 lastInstanceime = timeStamp;
+//                 lastInstanceime += random.Next(0, 15000);
+//             }
+// 
+//             if (lastShowStateTime + 1000 < timeStamp)
+//             {
+//                 Console.WriteLine("heartBeat数量:{0}, 副本数量{1}, 发送IM数{2}, 收到{3}", heartBeatTime, instanceTime, IMSendTime, IMReceivedTime,puid);
+//                 lastShowStateTime = timeStamp;
+//                 IMSendTime = 0;
+//                 IMReceivedTime = 0;
+//             }
+        }
     }
 }

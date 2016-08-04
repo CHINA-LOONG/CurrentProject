@@ -12,7 +12,6 @@ import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.PlayerEntity;
-import com.hawk.game.entity.RechargeEntity;
 import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
@@ -24,16 +23,16 @@ import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Equip.EquipInfo;
 import com.hawk.game.protocol.Equip.GemPunch;
 import com.hawk.game.protocol.Im.HSImMsg;
-import com.hawk.game.protocol.Im.HSImPush;
 import com.hawk.game.protocol.Item.ItemInfo;
 import com.hawk.game.protocol.Mail.HSMail;
 import com.hawk.game.protocol.Monster.HSMonster;
-import com.hawk.game.protocol.Shop.HSShopRefresh;
 import com.hawk.game.protocol.Shop.HSShopRefreshTimeSync;
 import com.hawk.game.protocol.Statistics.ChapterState;
-import com.hawk.game.protocol.Statistics.HSStatisticsExpLeftTimeSync;
 import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
-import com.hawk.game.protocol.Statistics.HSStatisticsShopRefresh;
+import com.hawk.game.protocol.Statistics.HSSyncDailyRefresh;
+import com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes;
+import com.hawk.game.protocol.Statistics.HSSyncShopRefresh;
+import com.hawk.game.protocol.Statistics.ItemState;
 import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Statistics.InstanceState;
@@ -109,19 +108,27 @@ public class BuilderUtil {
 		}
 
 		builder.setGold2CoinTimes(statisticsEntity.getCoinOrderCountDaily());
-		builder.setExpLeftTimes(genStatisticsExpLeftTimeBuilder(statisticsEntity));
+		builder.setExpLeftTimes(genSyncExpLeftTimesBuilder(statisticsEntity));
+
+		for (Entry<String, Integer> entry : statisticsEntity.getItemUseCountDailyMap().entrySet()) {
+			ItemState.Builder itemState = ItemState.newBuilder();
+			itemState.setItemId(entry.getKey());
+			itemState.setUseCountDaily(entry.getValue());
+
+			builder.addItemState(itemState);
+		}
 
 		return builder;
 	}
 
-	public static HSStatisticsExpLeftTimeSync.Builder genStatisticsExpLeftTimeBuilder(StatisticsEntity statisticsEntity) {
-		HSStatisticsExpLeftTimeSync.Builder builder = HSStatisticsExpLeftTimeSync.newBuilder();
+	public static HSSyncExpLeftTimes.Builder genSyncExpLeftTimesBuilder(StatisticsEntity statisticsEntity) {
+		HSSyncExpLeftTimes.Builder builder = HSSyncExpLeftTimes.newBuilder();
 		builder.setDoubleExpLeft(statisticsEntity.getDoubleExpLeftTimes());
 		builder.setTripleExpLeft(statisticsEntity.getTripleExpLeftTimes());
 		return builder;
 	}
-	
-	public static HSShopRefreshTimeSync.Builder genShopRefreshTimeLeftBuilder(Player player, ShopEntity shopEntity) {
+
+	public static HSShopRefreshTimeSync.Builder genShopRefreshTimeBuilder(Player player, ShopEntity shopEntity) {
 		HSShopRefreshTimeSync.Builder builder = HSShopRefreshTimeSync.newBuilder();
 		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.OTHERSHOP_VALUE; ++i) {
 			ShopCfg shopCfg = ShopCfg.getShopCfg(i, player.getLevel());
@@ -137,13 +144,18 @@ public class BuilderUtil {
 		}
 		return builder;
 	}
-	
-	public static HSStatisticsShopRefresh.Builder genStaticsticsShopRefreshBuilder(int shopType) {
-		HSStatisticsShopRefresh.Builder builder = HSStatisticsShopRefresh.newBuilder();
+
+	public static HSSyncShopRefresh.Builder genSyncShopRefreshBuilder(int shopType) {
+		HSSyncShopRefresh.Builder builder = HSSyncShopRefresh.newBuilder();
 		builder.setShopType(shopType);
 		return builder;
 	}
-	
+
+	public static HSSyncDailyRefresh.Builder genSyncDailyRefreshBuilder() {
+		HSSyncDailyRefresh.Builder builder = HSSyncDailyRefresh.newBuilder();
+		return builder;
+	}
+
 	public static HSMonster.Builder genMonsterBuilder(MonsterEntity monsterEntity) {
 		HSMonster.Builder builder = HSMonster.newBuilder();
 		builder.setMonsterId(monsterEntity.getId());

@@ -175,7 +175,7 @@ public class PlayerEquipModule extends PlayerModule{
 			return ;
 		}
 		
-		if(itemCfg.getBuyPrice() <= 0) {
+		if (itemCfg.getBuyPrice() == GsConst.UNUSABLE) {
 			sendError(hsCode, Status.itemError.ITEM_BUY_NOT_ALLOW);
 			return ;
 		}

@@ -1,0 +1,6 @@
+﻿#TEXT,TEXT,NUM,TEXT
+id,time,level,floor
+#id,开启时间,需求等级,层数副本列表
+tower_shilian,"[""117""]",1,"[""minghe12"",""minghe12"",""minghe12"",""minghe12"",""minghe12""]"
+tower_juewang,"[""117""]",1,"[""minghe12"",""minghe12"",""minghe12"",""minghe12"",""minghe12""]"
+tower_siwang,"[""117""]",1,"[""minghe12"",""minghe12"",""minghe12"",""minghe12"",""minghe12""]"

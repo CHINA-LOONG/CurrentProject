@@ -14,6 +14,8 @@ import org.hawk.config.HawkConfigManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkException;
+import org.hawk.os.HawkRand;
 import org.hawk.os.HawkTime;
 import org.hibernate.annotations.Check;
 import org.slf4j.Logger;
@@ -21,8 +23,11 @@ import org.slf4j.LoggerFactory;
 
 import sun.awt.image.OffScreenImage;
 
+import com.hawk.game.config.MonsterCfg;
+import com.hawk.game.config.MonsterRarityCfg;
 import com.hawk.game.config.MonsterStageCfg;
 import com.hawk.game.config.SkillUpPriceCfg;
+import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
@@ -38,6 +43,8 @@ import com.hawk.game.protocol.Monster.HSMonster;
 import com.hawk.game.protocol.Monster.HSMonsterAdd;
 import com.hawk.game.protocol.Monster.HSMonsterBreakRet;
 import com.hawk.game.protocol.Monster.HSMonsterCatch;
+import com.hawk.game.protocol.Monster.HSMonsterCompose;
+import com.hawk.game.protocol.Monster.HSMonsterComposeRet;
 import com.hawk.game.protocol.Monster.HSMonsterDecompose;
 import com.hawk.game.protocol.Monster.HSMonsterDecomposeRet;
 import com.hawk.game.protocol.Monster.HSMonsterFeed;
@@ -54,6 +61,7 @@ import com.hawk.game.protocol.Monster.HSMonsterBreak;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
+import com.hawk.game.util.GsConst.ConsumeCheckResult;
 
 /**
  * 怪物模块
@@ -283,7 +291,8 @@ public class PlayerMonsterModule extends PlayerModule {
 				sendError(hsCode, Status.monsterError.STAGE_CONSUME);
 				return true;
 			}
-		} else {
+		} 
+		else {
 			List<MonsterEntity> consumeMonsterList = new ArrayList<>();
 			for (int id : consumeMonsterIdList) {
 				MonsterEntity consumeMonsterEntity = player.getPlayerData().getMonsterEntity(id);
@@ -391,37 +400,98 @@ public class PlayerMonsterModule extends PlayerModule {
 	@ProtocolHandler(code = HS.code.MONSTER_DECOMPOSE_C_VALUE)
 	private boolean onMonsterDecompose(HawkProtocol cmd) {
 		HSMonsterDecompose protocol = cmd.parseProtocol(HSMonsterDecompose.getDefaultInstance());
+		int hsCode = cmd.getType();
+
 		ConsumeItems consume = new ConsumeItems();
 		AwardItems award = new AwardItems();
 		for(int monsterId : protocol.getMonsterIdList()){
 			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
 			if (monsterEntity == null) {
-				sendError(HS.code.MONSTER_DECOMPOSE_C_VALUE, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
+				sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST_VALUE);
 				return true;
 			}
-			
+
 			MonsterStageCfg monsterStageCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterStageCfg.class, (int)monsterEntity.getStage());
 			if (monsterStageCfg == null) {
-				sendError(HS.code.MONSTER_DECOMPOSE_C_VALUE, Status.error.CONFIG_NOT_FOUND_VALUE);
+				sendError(hsCode, Status.error.CONFIG_NOT_FOUND_VALUE);
 				return true;
 			}
-			
+
 			consume.addMonster(monsterId, monsterEntity.getCfgId());
 			award.addItemInfos(monsterStageCfg.getDecomposeList());
 		}
-		
-		if (consume.checkConsume(player, HS.code.MONSTER_DECOMPOSE_C_VALUE) == false) {
+
+		if (consume.checkConsume(player, hsCode) == false) {
 			return false;
 		}
-		
-		consume.consumeTakeAffectAndPush(player, Action.MONSTER_DECOMPOSE, HS.code.MONSTER_DECOMPOSE_C_VALUE);
-		award.rewardTakeAffectAndPush(player, Action.MONSTER_DECOMPOSE, HS.code.MONSTER_DECOMPOSE_C_VALUE);
-		
+
+		consume.consumeTakeAffectAndPush(player, Action.MONSTER_DECOMPOSE, hsCode);
+		award.rewardTakeAffectAndPush(player, Action.MONSTER_DECOMPOSE, hsCode);
+
 		HSMonsterDecomposeRet.Builder response = HSMonsterDecomposeRet.newBuilder();
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_DECOMPOSE_S_VALUE, response));
 		return true;
 	}
-	
+
+	/**
+	 * 合成怪物
+	 */
+	@ProtocolHandler(code = HS.code.MONSTER_COMPOSE_C_VALUE)
+	private boolean onMonsterCompose(HawkProtocol cmd) {
+		HSMonsterCompose protocol = cmd.parseProtocol(HSMonsterCompose.getDefaultInstance());
+		int hsCode = cmd.getType();
+		String cfgId = protocol.getCfgId();
+		boolean useCommon = protocol.getUseCommon();
+
+		MonsterCfg monsterCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterCfg.class, cfgId);
+		if (monsterCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_NOT_FOUND_VALUE);
+			return true;
+		}
+
+		ConsumeItems consume = ConsumeItems.valueOf();
+		AwardItems award = AwardItems.valueOf();
+		int fragmentCount = monsterCfg.getFragmentCount();
+
+		if (true == useCommon) {
+			MonsterRarityCfg rarityCfg = HawkConfigManager.getInstance().getConfigByKey(MonsterRarityCfg.class, monsterCfg.getRarity());
+			float ratio = rarityCfg.getCommonRatio();
+			int maxCommonCount = (int)(fragmentCount *  ratio);
+			int curCommonCount = 0;
+			ItemEntity itemEntity = player.getPlayerData().getItemByItemId(GsConst.COMMON_FRAGMENT);
+			if(itemEntity != null) {
+				curCommonCount = itemEntity.getCount();
+			}
+
+			if (curCommonCount >= maxCommonCount) {
+				consume.addItem(GsConst.COMMON_FRAGMENT, maxCommonCount);
+				fragmentCount -= maxCommonCount;
+			} else if (curCommonCount > 0) {
+				consume.addItem(GsConst.COMMON_FRAGMENT, curCommonCount);
+				fragmentCount -= curCommonCount;
+			}
+		}
+		consume.addItem(monsterCfg.getFragmentId(), fragmentCount);
+
+		if (consume.checkConsume(player, hsCode) == false) {
+			return false;
+		}
+
+		try {
+			int disposition = HawkRand.randInt(1, 6);
+			award.addMonster(cfgId, 0, 1, 1, disposition);
+		} catch (HawkException e) {
+			HawkException.catchException(e);
+		}
+
+		consume.consumeTakeAffectAndPush(player, Action.MONSTER_COMPOSE, hsCode);
+		award.rewardTakeAffectAndPush(player, Action.MONSTER_COMPOSE, hsCode);
+
+		HSMonsterComposeRet.Builder response = HSMonsterComposeRet.newBuilder();
+		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_COMPOSE_S_VALUE, response));
+		return true;
+	}
+
 	/**
 	 * 奖励怪物
 	 */

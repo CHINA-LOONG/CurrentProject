@@ -163,6 +163,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_EXP_LEFT_TIMES", Value=262150)]
       ITEM_EXP_LEFT_TIMES = 262150,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_COUNT", Value=262151)]
+      ITEM_USE_COUNT = 262151,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"EQUIP_NOT_FOUND", Value=266241)]
       EQUIP_NOT_FOUND = 266241,
             

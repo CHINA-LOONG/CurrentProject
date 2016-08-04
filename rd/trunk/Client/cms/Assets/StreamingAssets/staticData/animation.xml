@@ -8,7 +8,7 @@ state = 1 Remove
 	<AniList group="common">
 		<Ani id="level_change" state="0" action_delay="0">
 			<ParticleList>
-				<Particle time="0" asset="effect_hot" bundle="effect/particle" parent=""/>
+				<Particle time="0" asset="magicCureMedium" bundle="effect/particle" parent=""/>
 			</ParticleList>
 		</Ani>
 		<Ani id="revive" state="0" action_delay="0">

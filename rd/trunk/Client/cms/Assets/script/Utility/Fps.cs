@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Fps : MonoBehaviour
 {
     public Text m_FPS;
-    float _updateInterval = 0.02f;//设定更新帧率的时间间隔为1秒
+    float _updateInterval = 0.5f;//设定更新帧率的时间间隔为1秒
     float _accum = .0f;//累积时间
     int _frames = 0;//在_updateInterval时间内运行了多少帧
     float _timeLeft;

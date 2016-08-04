@@ -46,10 +46,11 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "playerId", unique = true)
 	private int playerId = 0;
 
-	// 疲劳值
+	// 活力值
 	@Column(name = "fatigue", nullable = false)
 	private int fatigue = 0;
 
+	// 活力值开始计时时间
 	@Column(name = "fatigueBeginTime")
 	private Calendar fatigueBeginTime = null;
 
@@ -205,6 +206,10 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "fatigueClaimCountDaily", nullable = false)
 	private int fatigueClaimCountDaily = 0;
 
+	// 今日物品使用次数
+	@Column(name = "itemUseCountDaily", nullable = false)
+	private String itemUseCountDailyJson = "";
+
 	// 商品充值次数记录
 	@Column(name = "rechargeRecord", nullable = false)
 	private String rechargeRecordJson = "";
@@ -269,6 +274,8 @@ public class StatisticsEntity  extends HawkDBEntity {
 	protected Map<Integer, Integer> monsterLevelMap = new HashMap<Integer, Integer>();
 	@Transient
 	protected Map<String, Integer> rechargeRecordMap = new HashMap<String, Integer> ();
+	@Transient
+	protected Map<String, Integer> itemUseCountDailyMap = new HashMap<String, Integer> ();
 	// 最后普通副本所属章节
 	@Transient
 	protected int normalTopChapter = 0;
@@ -454,6 +461,17 @@ public class StatisticsEntity  extends HawkDBEntity {
 		return instanceCountDailyMap;
 	}
 
+	/**
+	 * @return 副本完成次数，如未完成返回0
+	 */
+	public int getInstanceCountDaily(String instanceId) {
+		Integer count = instanceCountDailyMap.get(instanceId);
+		if (null != count) {
+			return count;
+		}
+		return 0;
+	}
+
 	public void addInstanceCountDaily(String instanceId, int addCount) {
 		int curCount = 0;
 		Integer oldCount = instanceCountDailyMap.get(instanceId);
@@ -465,17 +483,6 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public void setInstanceCountDaily(String instanceId, int count) {
 		instanceCountDailyMap.put(instanceId, count);
-	}
-
-	/**
-	 * @return 副本完成次数，如未完成返回0
-	 */
-	public int getInstanceCountDaily(String instanceId) {
-		Integer count = instanceCountDailyMap.get(instanceId);
-		if (null != count) {
-			return count;
-		}
-		return 0;
 	}
 
 	public void clearInstanceCountDaily() {
@@ -809,6 +816,38 @@ public class StatisticsEntity  extends HawkDBEntity {
 		fatigueClaimCountDaily = 0;
 	}
 
+	public Map<String, Integer> getItemUseCountDailyMap() {
+		return itemUseCountDailyMap;
+	}
+
+	/**
+	 * @return 物品使用次数，如未使用返回0
+	 */
+	public int getItemUseCountDaily(String itemId) {
+		Integer count = itemUseCountDailyMap.get(itemId);
+		if (null != count) {
+			return count;
+		}
+		return 0;
+	}
+
+	public void addItemUseCountDaily(String itemId, int addCount) {
+		int curCount = 0;
+		Integer oldCount = itemUseCountDailyMap.get(itemId);
+		if (null != oldCount) {
+			curCount = oldCount;
+		}
+		itemUseCountDailyMap.put(itemId, curCount + addCount);
+	}
+
+	public void setItemUseCountDaily(String itemId, int count) {
+		itemUseCountDailyMap.put(itemId, count);
+	}
+
+	public void clearItemUseCountDaily() {
+		itemUseCountDailyMap.clear();
+	}
+
 	public byte getSignInCount() {
 		return signInCount;
 	}
@@ -943,6 +982,9 @@ public class StatisticsEntity  extends HawkDBEntity {
 		if (rechargeRecordJson != null && false == "".equals(rechargeRecordJson) && false == "null".equals(rechargeRecordJson)) {
 			rechargeRecordMap = HawkJsonUtil.getJsonInstance().fromJson(rechargeRecordJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
+		if (itemUseCountDailyJson != null && false == "".equals(itemUseCountDailyJson) && false == "null".equals(itemUseCountDailyJson)) {
+			itemUseCountDailyMap = HawkJsonUtil.getJsonInstance().fromJson(itemUseCountDailyJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
+		}
 
 		// 0表示未开始任何章节
 		normalTopChapter = 0;
@@ -989,6 +1031,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 		monsterStageJson = HawkJsonUtil.getJsonInstance().toJson(monsterStageMap);
 		monsterLevelJson = HawkJsonUtil.getJsonInstance().toJson(monsterLevelMap);
 		rechargeRecordJson = HawkJsonUtil.getJsonInstance().toJson(rechargeRecordMap);
+		itemUseCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(itemUseCountDailyMap);
 
 		refreshStringMap.clear();
 		for (Map.Entry<Integer, Calendar> entry : refreshTimeMap.entrySet()) {

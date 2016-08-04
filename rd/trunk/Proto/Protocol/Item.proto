@@ -42,6 +42,8 @@ message HSItemUse
 // 使用道具返回
 message HSItemUseRet
 {
+	required string itemId = 1;
+	required int32  useCountDaily = 2;
 }
 
 // 批量使用宝箱
@@ -93,6 +95,8 @@ message HSItemBuyAndUse
 // 购买并且使用道具返回
 message HSItemBuyAndUseRet
 {
+	required string itemId = 1;
+	required int32  useCountDaily = 2;
 }
 
 // 合成道具

@@ -118,6 +118,30 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ItemState")]
+  public partial class ItemState : global::ProtoBuf.IExtensible
+  {
+    public ItemState() {}
+    
+    private string _itemId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"itemId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string itemId
+    {
+      get { return _itemId; }
+      set { _itemId = value; }
+    }
+    private int _useCountDaily;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"useCountDaily", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int useCountDaily
+    {
+      get { return _useCountDaily; }
+      set { _useCountDaily = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsInfoSync")]
   public partial class HSStatisticsInfoSync : global::ProtoBuf.IExtensible
   {
@@ -208,22 +232,56 @@ namespace PB
       get { return _gold2CoinTimes; }
       set { _gold2CoinTimes = value; }
     }
-    private HSStatisticsExpLeftTimeSync _expLeftTimes;
+    private HSSyncExpLeftTimes _expLeftTimes;
     [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"expLeftTimes", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public HSStatisticsExpLeftTimeSync expLeftTimes
+    public HSSyncExpLeftTimes expLeftTimes
     {
       get { return _expLeftTimes; }
       set { _expLeftTimes = value; }
+    }
+    private readonly global::System.Collections.Generic.List<ItemState> _itemState = new global::System.Collections.Generic.List<ItemState>();
+    [global::ProtoBuf.ProtoMember(14, Name=@"itemState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<ItemState> itemState
+    {
+      get { return _itemState; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSSyncDailyRefresh")]
+  public partial class HSSyncDailyRefresh : global::ProtoBuf.IExtensible
+  {
+    public HSSyncDailyRefresh() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSSyncShopRefresh")]
+  public partial class HSSyncShopRefresh : global::ProtoBuf.IExtensible
+  {
+    public HSSyncShopRefresh() {}
+    
+    private int _shopType;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"shopType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int shopType
+    {
+      get { return _shopType; }
+      set { _shopType = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsExpLeftTimeSync")]
-  public partial class HSStatisticsExpLeftTimeSync : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSSyncExpLeftTimes")]
+  public partial class HSSyncExpLeftTimes : global::ProtoBuf.IExtensible
   {
-    public HSStatisticsExpLeftTimeSync() {}
+    public HSSyncExpLeftTimes() {}
     
     private int _doubleExpLeft;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"doubleExpLeft", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -238,40 +296,6 @@ namespace PB
     {
       get { return _tripleExpLeft; }
       set { _tripleExpLeft = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsResetSync")]
-  public partial class HSStatisticsResetSync : global::ProtoBuf.IExtensible
-  {
-    public HSStatisticsResetSync() {}
-    
-    private int _goldChangeTimes;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"goldChangeTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int goldChangeTimes
-    {
-      get { return _goldChangeTimes; }
-      set { _goldChangeTimes = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsShopRefresh")]
-  public partial class HSStatisticsShopRefresh : global::ProtoBuf.IExtensible
-  {
-    public HSStatisticsShopRefresh() {}
-    
-    private int _shopType;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"shopType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int shopType
-    {
-      get { return _shopType; }
-      set { _shopType = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

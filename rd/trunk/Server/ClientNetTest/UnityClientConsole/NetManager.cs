@@ -13,7 +13,7 @@ namespace UnityClientConsole
   
     class NetManager
     {
-        private const int BUFFERSIZE = 102400;
+        private const int BUFFERSIZE = 10240;
         private static NetManager instance;
         private Socket socketClient;
         private MemoryStream sendStream;
@@ -98,6 +98,7 @@ namespace UnityClientConsole
                 int bytesReceive = handler.EndReceive(ar);
                 //Console.WriteLine("{0} bytes already received", bytesReceive);
 
+                receiveStream.Seek(receiveStream.Length, SeekOrigin.Begin);
                 receiveStream.Write(buffer.GetBuffer(), 0, bytesReceive);
 
                 Protocol protocol = Protocol.valueOf();

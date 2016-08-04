@@ -156,6 +156,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_DECOMPOSE_S", Value=2015)]
       MONSTER_DECOMPOSE_S = 2015,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_COMPOSE_C", Value=2016)]
+      MONSTER_COMPOSE_C = 2016,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MONSTER_COMPOSE_S", Value=2017)]
+      MONSTER_COMPOSE_S = 2017,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_ASSIST_C", Value=3001)]
       INSTANCE_ASSIST_C = 3001,
             
@@ -402,6 +408,27 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CREATE_S", Value=9002)]
       ALLIANCE_CREATE_S = 9002,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LIST_C", Value=9003)]
+      ALLIANCE_LIST_C = 9003,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LIST_S", Value=9004)]
+      ALLIANCE_LIST_S = 9004,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SEARCH_C", Value=9005)]
+      ALLIANCE_SEARCH_C = 9005,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SEARCH_S", Value=9006)]
+      ALLIANCE_SEARCH_S = 9006,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOTICE_C", Value=9007)]
+      ALLIANCE_NOTICE_C = 9007,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOTICE_S", Value=9008)]
+      ALLIANCE_NOTICE_S = 9008,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOTICE_SYNC_S", Value=9009)]
+      ALLIANCE_NOTICE_SYNC_S = 9009,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SETTING_LANGUAGE_C", Value=10001)]
       SETTING_LANGUAGE_C = 10001,
             
@@ -414,14 +441,14 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"SETTING_BLOCK_S", Value=10004)]
       SETTING_BLOCK_S = 10004,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_EXP_LEFT_TIMES", Value=11001)]
-      STATISTICS_EXP_LEFT_TIMES = 11001,
+      [global::ProtoBuf.ProtoEnum(Name=@"SYNC_DAILY_REFRESH_S", Value=11001)]
+      SYNC_DAILY_REFRESH_S = 11001,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_RESET_SYN", Value=11002)]
-      STATISTICS_RESET_SYN = 11002,
+      [global::ProtoBuf.ProtoEnum(Name=@"SYNC_SHOP_REFRESH_S", Value=11003)]
+      SYNC_SHOP_REFRESH_S = 11003,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"STATISTICS_SHOP_REFRESH", Value=11003)]
-      STATISTICS_SHOP_REFRESH = 11003
+      [global::ProtoBuf.ProtoEnum(Name=@"SYNC_EXP_LEFT_TIMES_S", Value=11002)]
+      SYNC_EXP_LEFT_TIMES_S = 11002
     }
   
 }
