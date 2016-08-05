@@ -191,6 +191,9 @@ public class HawkScriptManager {
 					loadResult += error;
 
 					HawkLog.errPrintln("script load failed, scriptid: " + entry.getKey() + ", class: " + entry.getValue() + ", error: " + error);
+					printWriter.close();
+					baos.close();
+					continue;
 				}
 
 				printWriter.close();

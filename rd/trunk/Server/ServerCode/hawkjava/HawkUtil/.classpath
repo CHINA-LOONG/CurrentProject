@@ -52,5 +52,6 @@
 	<classpathentry kind="lib" path="lib/httpclient-cache-4.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/httpcore-4.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/httpcore-nio-4.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/concurrentlinkedhashmap-lru-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

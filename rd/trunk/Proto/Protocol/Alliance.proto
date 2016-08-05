@@ -1,17 +1,28 @@
 option java_package = "com.hawk.game.protocol";
 
 // ------------------------------------------------------- message -----------------------------------------------------
+// 工会申请
+message AllianceApply
+{
+	required int32 allianceId = 1; // 工会id
+	required int32 playerId = 2; // 玩家id
+	required string nickname = 3; // 昵称
+	required int32 level = 4; // 级别
+}
 
 //公会成员信息
 message AllianceMember
 {
 	required int32  level = 1;//等级
-	required string  name = 2;//名字
+	required string name = 2;//名字
 	required int32  battlePoint = 3;//战斗力
 	required int32  contribution = 4;//贡献值
 	required int32  postion = 5;//职位: 0:普通成员,2:会长,1:副会长
 	required int32  id = 6;//唯一ID
-	required bool hasReported = 7; // 今日是否已经签到
+	required int32  prayCount = 7; // 祈福次数
+	optional bool  sendFatigue = 8; // 祈福次数
+	required int32  loginTime = 9; // 登陆时间
+	required int32  logoutTime = 10; // 登出时间
 }
 
 //返回的公会基础信息
@@ -19,13 +30,18 @@ message AllianceInfo
 {
 	required int32  id = 1;//公会ID
 	required int32  level = 2;//等级
-	required int32  currentExp = 3;//当前经验
-	required int32  liveness = 4; //当天活跃值
-	required int32  livenessTotal = 5; //累计活跃值
+	required int32  contribution = 3; //当前贡献值
+	required int32  contributionToday = 4; //今日贡献值
+	required int32  contribution3day = 5; //3日累计活跃值
 	required int32  currentPop = 6;//当前人数
 	required int32  maxPop = 7;//最大人数
-	required string annoucement = 8; // 公会公告
-	required string name = 9; // 公会名称
+	required int32  memLevel = 8;//人数级别
+	required int32  expLevel = 9;//人数级别
+	required int32  coinLevel = 10;//金币级别
+	required string notice = 11; // 公会公告
+	required string name = 12; // 公会名称
+	required int32  minLevel = 13;  // 最低级别
+	required bool   autoAccept = 14; //自否自动允许加入
 }
 
 // ------------------------------------------------------- protocol-----------------------------------------------------
@@ -39,7 +55,7 @@ message HSAllianceCreate
 
 message HSAllianceCreateRet
 {
-	required AllianceInfo allianceInfo = 1;//公会信息
+	required int32 allianeId = 1;// 工会id
 }
 
 //公会列表
@@ -65,7 +81,7 @@ message HSAllianceSearchRet
 	repeated AllianceInfo result = 1;//  工会列表
 }
 
-//公会列表
+//公会公告修改
 message HSAllianceNotice
 {
 	required string notice = 1;// 工会公告
@@ -75,7 +91,240 @@ message HSAllianceNoticeRet
 {
 }
 
+//工会申请
+message HSAllianceApply
+{
+	required int32 allianceId = 1; // 工会id
+}
+
+message HSAllianceApplyRet
+{
+	required int32 allianceId = 1; // 0代表申请成功，非零代表加入成功
+}
+
+//操作申请
+message HSAllianceHanleApply
+{
+	optional int32 playerId = 1; // 申请id
+	required bool accept = 2; // 是否同意
+	required bool isAll = 3; // 批量操作
+}
+
+message HSAllianceHanleApplyRet
+{
+	
+}
+
+//取消申请
+message HSAllianceCancleApply
+{
+	required int32 allianceId = 1; // 工会ID
+}
+
+message HSAllianceCancleApplyRet
+{
+}
+
+// 职位变更操作
+message HSAllianceChangePos
+{
+	required int32 playerId = 1; //玩家id
+	required int32 postion = 2; // 新职位
+}
+
+message HSAllianceChangePosRet
+{
+
+}
+
+// 退出工会操作
+message HSAllianceLeave
+{
+
+}
+
+message HSAllianceLeaveRet
+{
+
+}
+
+// 更换公会会长
+message HSAllianceChangeOwner
+{
+	required int32 targetId = 1;
+}
+
+message HSAllianceChangeOwnerRet
+{
+
+}
+
+// 工会成员踢出
+message HSAllianceMemKick
+{
+	required int32 targetId	= 1; // 
+}
+
+message HSAllianceMemKickRet
+{
+	
+}
+
+// 工会科技升级
+message HSAllianceLevelUp
+{
+	required int32 type = 1; //升级科技类型
+}
+
+message HSAllianceLevelUpRet
+{
+
+}
+
+// 公会祈福
+message HSAlliancePray
+{
+	required int32 prayIndex = 1; //祈福级别
+}
+
+message HSAlliancePrayRet
+{
+
+}
+
+// 公会设置
+message HSAllianceSettion
+{
+	required int32 minLevel = 1;
+	required bool  autoJoin = 2;
+}
+
+message HSAllianceSettionRet
+{
+
+}
+
+// 赠送体力值
+message HSAllianceFatigueGive
+{
+	required int32 targetId = 1;
+}
+
+// 赠送体力值
+message HSAllianceFatigueGiveRet
+{
+	
+}
+
+// 工会数据同步
+message HSAllianceSyn
+{
+}
+
+message HSAllianceSynRet
+{
+}
+
+//工会数据同步
+message HSAllianceData
+{
+	
+}
+
+message HSAllianceDataRet
+{
+	required AllianceInfo allianceData = 1;//  工会列表
+}
+
+// 公会设置同步
+message HSAllianceSettingSyn
+{
+
+}
+
+message HSAllianceSettingSynRet
+{
+	required int32 minLevel = 1;
+	required bool  autoJoin = 2;
+}
+
+//工会中玩家数据
+message HSAllianceSelfData
+{
+}
+
+message HSAllianceSelfDataRet
+{
+	required AllianceMember selfData = 1;
+}
+
+//工会成员列表
+message HSAllianceMembers
+{
+}
+
+message HSAllianceMembersRet
+{
+	repeated AllianceMember memberList = 1;
+}
+
+//工会申请列表
+message HSAllianceApplyList
+{
+}
+
+message HSAllianceApplyListRet
+{
+	repeated AllianceApply apply = 1;
+}
+
+// 工会申请通知
+message HSAllianceApplyNotify
+{
+	required AllianceApply apply = 1;
+}
+
+// 工会操作申请通知
+message HSAllianceRemoveApplyNotify
+{
+	optional int32 playerId = 1; // 玩家id
+	required bool clear = 2; // 操作所有玩家
+}
+
+//公会公告变更通知
 message HSAllianceNoticeNotify
 {
 	required string notice = 1;// 工会公告
+}
+
+// 工会新成员
+message HSMemberAddNotify
+{
+	repeated AllianceMember memberData = 1;
+}
+
+// 工会移除成员
+message HSMemberRemoveNotify
+{
+	required int32 playerId = 1;
+}
+
+// 工会成员职位更新
+message HSMemberPosChangeNotify
+{
+	required int32 playerId = 1;
+	required int32 newPos = 2;
+}
+
+// 公会会长变更通知
+message HSChangeOwnerNotify
+{
+	required int32 ownerId = 1;
+}
+
+// 公会科技等级变更通知
+message HSLevelChangeNotify
+{
+	required int32 type = 1;
+	required int32 level = 2;
 }

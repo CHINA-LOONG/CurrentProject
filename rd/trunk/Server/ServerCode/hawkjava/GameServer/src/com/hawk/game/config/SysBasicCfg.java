@@ -24,6 +24,28 @@ public class SysBasicCfg extends HawkConfigBase {
 	 */
 	protected final int shopRefreshGold;
 	/**
+	 * 最大缓存数量
+	 */
+	protected final int maxPlayerSnapShotQty;
+	/**
+	 * 工会祈福次数
+	 */
+	protected final int alliancePrayCount;
+	/**
+	 * 工会冻结时间
+	 */
+	protected final int allianceFrizenTime;
+	/**
+	 * 工会疲劳值接受最大值
+	 */
+	protected final int allianceMaxFatigueReceived;
+
+	/**
+	 * 工会冻结时间
+	 */
+	protected final int allianceMaxApply;
+	/**
+	/**
 	 * 全局静态对象
 	 */
 	private static SysBasicCfg instance = null;
@@ -43,6 +65,11 @@ public class SysBasicCfg extends HawkConfigBase {
 		allianceCreateCoin = 0;
 		allianceMinLevel = 0;
 		shopRefreshGold = 0;
+		maxPlayerSnapShotQty = 0;
+		alliancePrayCount = 0;
+		allianceFrizenTime = 0;
+		allianceMaxFatigueReceived = 0;
+		allianceMaxApply = 0;
 	}
 
 	public int getPlayerCacheTime() {
@@ -59,5 +86,28 @@ public class SysBasicCfg extends HawkConfigBase {
 	
 	public int getShopRefreshGold() {
 		return shopRefreshGold;
+	}
+
+	public int getMaxPlayerSnapShotQty() {
+		return maxPlayerSnapShotQty;
+	}
+	
+	public int getAlliancePrayCount() {
+		return alliancePrayCount;
+	}
+	
+	public int getAllianceFrizenTime() {
+		
+		return allianceFrizenTime;
+	}
+
+	public int getAllianceMaxFatigueReceived() {
+		
+		return allianceMaxFatigueReceived;
+	}
+
+	public int getAllianceMaxApply() {
+		
+		return allianceMaxApply;
 	}
 }

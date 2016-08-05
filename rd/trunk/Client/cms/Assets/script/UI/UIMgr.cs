@@ -51,10 +51,15 @@ public class UIMgr : MonoBehaviour
                 mInst = uiRootNormal.AddComponent<UIMgr>();
                 DontDestroyOnLoad(uiRootNormal);
                 DontDestroyOnLoad(uiRootTop);
-			}
+            }
 			return mInst;
 		}
 	}
+
+    public static bool IsUIDestroyed()
+    {
+        return mInst == null;
+    }
 
     Dictionary<string, UIBase> uiList = new Dictionary<string, UIBase>();
     List<UIBase> popupList = new List<UIBase>();

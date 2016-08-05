@@ -11,12 +11,8 @@ import com.hawk.game.ServerData;
 import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.entity.MailEntity;
-import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ItemInfo;
-import com.hawk.game.log.BehaviorLogger.Action;
-import com.hawk.game.log.BehaviorLogger.Source;
 import com.hawk.game.protocol.Const;
-import com.hawk.game.protocol.Reward.RewardItem;
 
 public class MailUtil {
 

@@ -43,7 +43,7 @@ public class UIBattle : UIBase
     [HideInInspector]
     public UIFazhen uiFazhen;
 
-    private MirrorDray m_MirrorDray = null;
+    public MirrorDray m_MirrorDray = null;
 
     private int m_BattleSpeed = 1;
 	private	int	m_MaxSpeed = 3;

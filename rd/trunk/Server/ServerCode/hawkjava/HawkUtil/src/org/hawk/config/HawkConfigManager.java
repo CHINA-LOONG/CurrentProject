@@ -243,7 +243,8 @@ public class HawkConfigManager {
 				}
 			}
 			return true;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			HawkException.catchException(e);
 		}
 		return false;

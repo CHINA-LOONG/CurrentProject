@@ -10,7 +10,7 @@ import org.hawk.db.HawkDBEntity;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "alliance")
+@Table(name = "allianceApply")
 @SuppressWarnings("serial")
 public class AllianceApplyEntity extends HawkDBEntity {
 	@Id
@@ -23,7 +23,7 @@ public class AllianceApplyEntity extends HawkDBEntity {
 	private int playerId = 0;
 	
 	@Column(name = "allianceId")
-	private String playerName = "";
+	private int allianceId = 0;
 	
 	@Column(name = "name")
 	private String name;
@@ -59,12 +59,12 @@ public class AllianceApplyEntity extends HawkDBEntity {
 		this.playerId = playerId;
 	}
 
-	public String getPlayerName() {
-		return playerName;
+	public int getAllianceId() {
+		return allianceId;
 	}
 
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
+	public void setAllianceId(int allianceId) {
+		this.allianceId = allianceId;
 	}
 
 	public String getName() {

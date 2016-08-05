@@ -630,6 +630,9 @@ public class BattleProcess : MonoBehaviour
         }
 
         StartAction();
+        BattleController.Instance.mirrorState = MirrorState.Recover;
+        BattleController.Instance.MirrorEnegyAttr = GameConfig.Instance.MirrorInitallyEnegy;
+        BattleController.Instance.beginChangeEnegyTime = GameTimeMgr.Instance.TimeStampAsMilliseconds();
     }
 
     IEnumerator PlayCountDownAnim()

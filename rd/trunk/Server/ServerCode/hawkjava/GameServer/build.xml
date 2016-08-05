@@ -51,6 +51,7 @@
         <pathelement location="${HawkUtil.location}/lib/httpclient-cache-4.4.1.jar"/>
         <pathelement location="${HawkUtil.location}/lib/httpcore-4.4.1.jar"/>
         <pathelement location="${HawkUtil.location}/lib/httpcore-nio-4.4.1.jar"/>
+        <pathelement location="${HawkUtil.location}/lib/concurrentlinkedhashmap-lru-1.4.jar"/>
     </path>
     <path id="ServerProto.classpath">
         <pathelement location="${ServerProto.location}/bin"/>
@@ -72,6 +73,7 @@
         <pathelement location="${HawkUtil.location}/lib/slf4j-api-1.7.6.jar"/>
         <pathelement location="${HawkUtil.location}/lib/slf4j-log4j12-1.7.6.jar"/>
         <pathelement location="${HawkUtil.location}/lib/gson-1.6.jar"/>
+        <pathelement location="${HawkUtil.location}/lib/concurrentlinkedhashmap-lru-1.4.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>

@@ -9,13 +9,12 @@ import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceNotice;
 import com.hawk.game.protocol.Alliance.HSAllianceNoticeRet;
-import com.hawk.game.protocol.Alliance.HSAllianceNoticeRetOrBuilder;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.AllianceUtil;
 
 /**
- * @author zhenghuangfei
+ * @author 
  * 设置公告内容
  */
 public class AllianceNoticeHandler implements HawkProtocolHandler {

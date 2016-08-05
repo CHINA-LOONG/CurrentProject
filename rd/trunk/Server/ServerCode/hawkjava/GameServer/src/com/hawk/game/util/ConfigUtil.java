@@ -4,7 +4,6 @@ import org.hawk.config.HawkConfigManager;
 import org.hawk.log.HawkLog;
 
 import com.hawk.game.config.ItemCfg;
-import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.protocol.Const;
 
 /**

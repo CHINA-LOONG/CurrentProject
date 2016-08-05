@@ -439,7 +439,7 @@ public class UIScore : UIBase
         mItemGainList.gameObject.SetActive(true);
         //show button
         //normal instance
-        if (mInstanceType == 0)
+        if (mInstanceType == (int)InstanceType.Normal)
         {
             if (mIsSuccess == true)
             {
@@ -458,7 +458,7 @@ public class UIScore : UIBase
             mConfirmBtn.gameObject.SetActive(true);
         }
         //hole instance
-        else if (mInstanceType == 1)
+        else if (mInstanceType == (int)InstanceType.Hole)
         {
             mNextLevelBtn.gameObject.SetActive(true);
         }
@@ -467,8 +467,8 @@ public class UIScore : UIBase
         {
             if (mIsSuccess == true)
             {
-                EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
-                if (curInstance != null)
+                string nextTowerFloor = GameDataMgr.Instance.GetNextTowerFloor();
+                if (nextTowerFloor != null)
                 {
                     mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");
                     mRetryBtn.gameObject.SetActive(true);
@@ -477,6 +477,7 @@ public class UIScore : UIBase
             else
             {
                 mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_again");
+                mRetryBtn.gameObject.SetActive(true);
             }
 
             mConfirmBtn.gameObject.SetActive(true);

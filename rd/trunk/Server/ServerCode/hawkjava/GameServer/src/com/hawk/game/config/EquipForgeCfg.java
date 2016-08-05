@@ -8,7 +8,6 @@ import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 
 import com.hawk.game.item.ItemInfo;
-import com.hawk.game.protocol.Const.equipPart;
 import com.hawk.game.util.GsConst.ItemParseType;
 
 @HawkConfigManager.CsvResource(file = "staticData/equipForge.csv", struct = "list")

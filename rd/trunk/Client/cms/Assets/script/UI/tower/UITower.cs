@@ -233,6 +233,15 @@ public class UITower : UIBase
         UIMgr.Instance.DestroyUI(transform.GetComponent<UITower>());
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
+    public void OpenAdjustTeam()
+    {
+        string nextInstance = GameDataMgr.Instance.GetNextTowerFloor();
+        if (nextInstance != null)
+        {
+            UIAdjustBattleTeam.OpenWith(nextInstance, 0, InstanceType.Tower);
+        }
+    }
+    //---------------------------------------------------------------------------------------------------------------------------------------
     //TODO: save current towid and laststage to playerdatamanager
     //---------------------------------------------------------------------------------------------------------------------------------------
 }

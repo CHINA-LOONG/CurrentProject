@@ -6,20 +6,18 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.hawk.app.HawkApp;
-import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.xid.HawkXID;
 
+import com.hawk.game.GsApp;
 import com.hawk.game.ServerData;
-import com.hawk.game.config.MailSysCfg;
-import com.hawk.game.log.BehaviorLogger.Action;
-import com.hawk.game.log.BehaviorLogger.Source;
+import com.hawk.game.manager.SnapShotManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Player.HSAssembleFinish;
 import com.hawk.game.util.GsConst;
-import com.hawk.game.util.MailUtil;
 
 /**
  * 空闲模块, 所有模块最后操作
@@ -45,7 +43,7 @@ public class PlayerIdleModule extends PlayerModule {
 	protected boolean onPlayerLogin() {
 		// 最后通知组装完成
 		sendProtocol(HawkProtocol.valueOf(HS.code.ASSEMBLE_FINISH_S, HSAssembleFinish.newBuilder().setPlayerID(player.getPlayerData().getId())));
-			
+		
 		// 通知玩家组装完成
  		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_ASSEMBLE, player.getXid());
 		HawkApp.getInstance().postMsg(msg);
@@ -70,6 +68,13 @@ public class PlayerIdleModule extends PlayerModule {
 		player.setAssembleFinish(true);
 		// 添加在线信息
 		ServerData.getInstance().addOnlinePlayerId(player.getId());
+		
+		// 通知快照管理器删除离线快照数据
+		//HawkXID targetXId = HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.SNAPSHOT);
+		//HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ONLINE_REMOVE_OFFLINE_SNAPSHOT, targetXId);
+		//msg.pushParam(player.getId());
+		//GsApp.getInstance().postMsg(msg);
+		
 		return true;
 	}
 
@@ -80,6 +85,8 @@ public class PlayerIdleModule extends PlayerModule {
 	 */
 	@Override
 	protected boolean onPlayerLogout() {
+		// 保存玩家数据快照
+		//SnapShotManager.getInstance().cacheSnapshot(player.getId(), player.getPlayerData().getOnlinePlayerSnapshot(true));
 		// 移除玩家在线id
 		ServerData.getInstance().removeOnlinePlayerId(player.getId());
 		// 情况玩家会话

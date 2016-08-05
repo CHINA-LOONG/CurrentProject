@@ -1,0 +1,32 @@
+option java_package = "com.hawk.game.protocol";
+
+// ------------------------------------------------------- struct -----------------------------------------------------
+
+//快照玩家对象
+message PlayerSnapInfo
+{
+	required int32 id = 1;//唯一ID
+	required string nickname = 2;//角色名字
+	required int32 level = 3;// 等级
+}
+
+//快照工会对象
+message AllianceSnapInfo
+{
+	required int32 id = 1;//唯一ID
+	required int32 allianceId = 2;//公会ID
+	required int32 playerId = 3;//角色id
+	required int32 contribution = 4;//公会贡献
+	required int32 postion = 5;//公会职位
+}
+
+//快照对象
+message SnapshotInfo 
+{
+	required int32 playerId = 1;
+	required PlayerSnapInfo playerInfo = 2;
+	required AllianceSnapInfo allianceInfo= 3; 
+}
+
+
+

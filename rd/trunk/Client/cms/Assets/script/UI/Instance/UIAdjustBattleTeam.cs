@@ -386,7 +386,7 @@ public class UIAdjustBattleTeam : UIBase
         CleanAllPlayerPetsIcons();
 
 		List<GameUnit> listUnit = GameDataMgr.Instance.PlayerDataAttr.GetAllPet ();
-
+        listUnit.Sort();
 		GameUnit subUnit = null;
 		for (int i =0; i< listUnit.Count; ++i) 
 		{

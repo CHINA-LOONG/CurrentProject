@@ -19,6 +19,7 @@ import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.ShopEntity;
 import com.hawk.game.entity.StatisticsEntity;
+import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.protocol.Equip.HSEquipInfoSync;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Item.HSItemInfoSync;
@@ -29,9 +30,11 @@ import com.hawk.game.protocol.Quest.HSQuest;
 import com.hawk.game.protocol.Quest.HSQuestInfoSync;
 import com.hawk.game.protocol.Setting.HSSetting;
 import com.hawk.game.protocol.Setting.HSSettingInfoSync;
+import com.hawk.game.protocol.Snapshot.SnapshotInfo;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ShopUtil;
+import com.hawk.game.util.SnapshotUtil;
 
 /**
  * 管理所有玩家数据集合
@@ -73,7 +76,12 @@ public class PlayerData {
 	 * 装备列表
 	 */
 	private Map<Long, EquipEntity> equipEntityMap = null;
-
+	
+	/**
+	 * 玩家数据快照
+	 */
+	private SnapshotInfo.Builder onlinePlayerSnapshot = null;
+	
 	/**
 	 * 穿戴装备列表
 	 */
@@ -226,7 +234,6 @@ public class PlayerData {
 	public PlayerAllianceEntity getPlayerAllianceEntity() {
 		return playerAllianceEntity;
 	}
-
 
 	/**
 	 * 获取当前角色的统计数据实体
@@ -694,14 +701,20 @@ public class PlayerData {
 	 * 加载公会个人信息
 	 */
 	public PlayerAllianceEntity loadPlayerAlliance() {
+		// 先从工会里面取
+		playerAllianceEntity = AllianceManager.getInstance().getPlayerAllianceEntity(player.getId());
+
 		if (playerAllianceEntity == null) {
 			List<PlayerAllianceEntity> resultList = HawkDBManager.getInstance().query("from PlayerAllianceEntity where playerId = ? and invalid = 0", getId());
 			if (resultList != null && resultList.size() > 0) {
 				playerAllianceEntity = resultList.get(0);
+				playerAllianceEntity.decode();
 			}
 			if (playerAllianceEntity == null) {
 				playerAllianceEntity = new PlayerAllianceEntity();
 				playerAllianceEntity.setPlayerId(playerEntity.getId());
+				playerAllianceEntity.setLevel(playerEntity.getLevel());
+				playerAllianceEntity.setName(playerEntity.getNickname());
 				playerAllianceEntity.notifyCreate();
 			}
 		}
@@ -875,5 +888,23 @@ public class PlayerData {
 
 		HawkProtocol protocol = HawkProtocol.valueOf(HS.code.MAIL_INFO_SYNC_S, builder);
 		player.sendProtocol(protocol);
+	}
+	
+	/**
+	 * 获取在线玩家快照数据
+	 * @return
+	 */
+	public SnapshotInfo.Builder getOnlinePlayerSnapshot(boolean refresh) {
+		if(refresh || this.onlinePlayerSnapshot == null){
+			refreshOnlinePlayerSnapshot();
+		}
+		return onlinePlayerSnapshot;
+	}
+	
+	/**
+	 * 刷新在线玩家快照数据
+	 */
+	public void refreshOnlinePlayerSnapshot(){
+		this.onlinePlayerSnapshot = SnapshotUtil.genOnlineQuickPhoto(this);
 	}
 }

@@ -15,7 +15,6 @@ import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Const.changeType;
-import com.hawk.game.protocol.Const.playerAttr;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Const.itemType;
 import com.hawk.game.protocol.Monster.HSMonster;

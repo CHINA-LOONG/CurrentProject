@@ -48,6 +48,7 @@
             <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/httpclient-cache-4.4.1.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/httpcore-4.4.1.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/httpcore-nio-4.4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../ServerCode/hawkjava/HawkUtil/lib/concurrentlinkedhashmap-lru-1.4.jar"/>
             <fileset dir="../../Proto/Protobuf/Java/bin"/>
         </jar>
     </target>

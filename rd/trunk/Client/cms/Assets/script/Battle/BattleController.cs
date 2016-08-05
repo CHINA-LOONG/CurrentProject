@@ -38,6 +38,32 @@ public class BattleController : MonoBehaviour
     GameObject occlusion1;
     GameObject occlusion2;
     Animator occlusionAnimator;
+    public double beginChangeEnegyTime = 0;
+    private float mirrorEnegy = 0;
+    public  float MirrorEnegyAttr
+    {
+        get
+        {
+            return mirrorEnegy;
+        }
+        set
+        {
+            mirrorEnegy = value;
+            if(mirrorEnegy < 0)
+            {
+                mirrorEnegy = 0;
+            }
+            if(mirrorEnegy > GameConfig.Instance.MirrorMaxEnegy)
+            {
+                mirrorEnegy = GameConfig.Instance.MirrorMaxEnegy;
+            }
+            if (uiBattle != null)
+            {
+                uiBattle.m_MirrorDray.UpdateMirrorEnegy();
+            }
+        }
+    }
+    public MirrorState mirrorState = MirrorState.CannotUse;
 
     public int InstanceStar
     {
@@ -150,6 +176,37 @@ public class BattleController : MonoBehaviour
                 }
             }
 		}
+        int changeStep = 0;
+        //mirror enegy
+        if(mirrorState == MirrorState.Recover)
+        {
+            changeStep = 1;
+        }
+        else if (mirrorState == MirrorState.Consum)
+        {
+            changeStep = -1;
+        }
+        if(changeStep != 0)
+        {
+            double curTime = GameTimeMgr.Instance.TimeStampAsMilliseconds();
+            if (curTime - beginChangeEnegyTime > 200)
+            {
+                int times = (int)(curTime - beginChangeEnegyTime) / 200;
+                if(changeStep == 1)
+                {
+                    MirrorEnegyAttr += times * GameConfig.Instance.RecoveryMirrorEnegyUnit;
+                }
+                else
+                {
+                    MirrorEnegyAttr -= times * GameConfig.Instance.ConsumMirrorEnegyUnit;
+                }
+                beginChangeEnegyTime += times * 200;
+            }
+            if(changeStep == -1 && MirrorEnegyAttr < 0.001)
+            {
+                GameEventMgr.Instance.FireEvent<bool>(GameEventList.SetMirrorModeState, false);
+            }
+        }
     }
     //---------------------------------------------------------------------------------------------
 	void RaycastBattleObject(Vector3 inputPos)
@@ -827,6 +884,7 @@ public class BattleController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnBattleOver(bool isSuccess)
     {
+        mirrorState = MirrorState.CannotUse;
         battleSuccess = isSuccess;
         ItemDropManager.Instance.ClearDropItem();
         processStart = false;

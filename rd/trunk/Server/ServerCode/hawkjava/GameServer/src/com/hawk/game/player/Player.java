@@ -809,6 +809,12 @@ public class Player extends HawkAppObj {
 			if (false == HawkApp.getInstance().postMsg(msg)) {
 				HawkLog.errPrintln("post statistics update message failed: " + getName());
 			}
+			
+			msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LEVEL_CHANGE, HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+			msg.pushParam(this);
+			if (false == HawkApp.getInstance().postMsg(msg)) {
+				HawkLog.errPrintln("post level update message failed: " + getName());
+			}
 		}
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 

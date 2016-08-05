@@ -48,9 +48,21 @@ public class MainStageController : MonoBehaviour
         GameEventMgr.Instance.AddListener(GameEventList.DailyRefresh, OnDailyRefresh);
     }
     //---------------------------------------------------------------------------------------------
-    void OnDisable()
+    public void OnDisable()
     {
         GameEventMgr.Instance.RemoveListener(GameEventList.DailyRefresh, OnDailyRefresh);
+
+        if (UIMgr.IsUIDestroyed() == false)
+        {
+            UIMgr mgr = UIMgr.Instance;
+            if (mgr != null)
+            {
+                mgr.DestroyUI(mUITowerEntry);
+                mgr.DestroyUI(mUIHoleEntry);
+                mgr.DestroyUI(mUIHole);
+                mgr.DestroyUI(mUITower);
+            }
+        }
     }
     //---------------------------------------------------------------------------------------------
     void OnDailyRefresh()
@@ -90,12 +102,11 @@ public class MainStageController : MonoBehaviour
             else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
             {
                 SetCurrentSelectGroup((int)InstanceType.Tower);
-                mUITower = UITower.OpenTower((int)TowerType.Tower_Siwang);
-                if (curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Next)
-                {
-
-                }
-                else if (curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Retry)
+                mUITower = UITower.OpenTower((int)GameDataMgr.Instance.curTowerType);
+                if (
+                    curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Next ||
+                    curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Retry
+                    )
                 {
 
                 }
@@ -164,14 +175,6 @@ public class MainStageController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     void OnDestroy()
     {
-        UIMgr mgr = UIMgr.Instance;
-        if (mgr != null)
-        {
-            mgr.DestroyUI(mUITowerEntry);
-            mgr.DestroyUI(mUIHoleEntry);
-            mgr.DestroyUI(mUIHole);
-            mgr.DestroyUI(mUITower);
-        }
     }
     //---------------------------------------------------------------------------------------------
     // Update is called once per frame

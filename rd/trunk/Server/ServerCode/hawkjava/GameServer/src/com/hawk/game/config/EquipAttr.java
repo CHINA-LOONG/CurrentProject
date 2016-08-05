@@ -4,20 +4,13 @@ import org.hawk.config.HawkConfigManager;
 import org.hawk.log.HawkLog;
 
 import com.hawk.game.attr.Attribute;
-import com.hawk.game.item.ItemInfo;
-import com.hawk.game.protocol.Const.attr;
-import com.hawk.game.util.GsConst;
 import com.hawk.game.util.WeightUtil;
-import com.hawk.game.util.GsConst.ItemParseType;
 import com.hawk.game.util.WeightUtil.WeightItem;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
-import javax.smartcardio.ATR;
 
 @HawkConfigManager.CsvResource(file = "staticData/equipAttr.csv", struct = "list")
 public class EquipAttr extends HawkConfigBase{

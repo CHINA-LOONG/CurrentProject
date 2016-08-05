@@ -821,9 +821,181 @@ public final class HS {
      */
     ALLIANCE_NOTICE_S(128, 9008),
     /**
-     * <code>ALLIANCE_NOTICE_SYNC_S = 9009;</code>
+     * <code>ALLIANCE_APPLY_C = 9010;</code>
      */
-    ALLIANCE_NOTICE_SYNC_S(129, 9009),
+    ALLIANCE_APPLY_C(129, 9010),
+    /**
+     * <code>ALLIANCE_APPLY_S = 9011;</code>
+     */
+    ALLIANCE_APPLY_S(130, 9011),
+    /**
+     * <code>ALLIANCE_HANDLE_APPLY_C = 9012;</code>
+     */
+    ALLIANCE_HANDLE_APPLY_C(131, 9012),
+    /**
+     * <code>ALLIANCE_HANDLE_APPLY_S = 9013;</code>
+     */
+    ALLIANCE_HANDLE_APPLY_S(132, 9013),
+    /**
+     * <code>ALLIANCE_DATA_C = 9014;</code>
+     */
+    ALLIANCE_DATA_C(133, 9014),
+    /**
+     * <code>ALLIANCE_DATA_S = 9015;</code>
+     */
+    ALLIANCE_DATA_S(134, 9015),
+    /**
+     * <code>ALLIANCE_SELF_DATA_C = 9016;</code>
+     */
+    ALLIANCE_SELF_DATA_C(135, 9016),
+    /**
+     * <code>ALLIANCE_SELF_DATA_S = 9017;</code>
+     */
+    ALLIANCE_SELF_DATA_S(136, 9017),
+    /**
+     * <code>ALLIANCE_MEMBERS_C = 9018;</code>
+     */
+    ALLIANCE_MEMBERS_C(137, 9018),
+    /**
+     * <code>ALLIANCE_MEMBERS_S = 9019;</code>
+     */
+    ALLIANCE_MEMBERS_S(138, 9019),
+    /**
+     * <code>ALLIANCE_APPLYS_C = 9020;</code>
+     */
+    ALLIANCE_APPLYS_C(139, 9020),
+    /**
+     * <code>ALLIANCE_APPLYS_S = 9021;</code>
+     */
+    ALLIANCE_APPLYS_S(140, 9021),
+    /**
+     * <code>ALLIANCE_FATIGUE_C = 9022;</code>
+     */
+    ALLIANCE_FATIGUE_C(141, 9022),
+    /**
+     * <code>ALLIANCE_FATIGUE_S = 9023;</code>
+     */
+    ALLIANCE_FATIGUE_S(142, 9023),
+    /**
+     * <code>ALLIANCE_SYN_C = 9024;</code>
+     */
+    ALLIANCE_SYN_C(143, 9024),
+    /**
+     * <code>ALLIANCE_SYN_S = 9025;</code>
+     */
+    ALLIANCE_SYN_S(144, 9025),
+    /**
+     * <code>ALLIANCE_CHANGE_POS_C = 9026;</code>
+     */
+    ALLIANCE_CHANGE_POS_C(145, 9026),
+    /**
+     * <code>ALLIANCE_CHANGE_POS_S = 9027;</code>
+     */
+    ALLIANCE_CHANGE_POS_S(146, 9027),
+    /**
+     * <code>ALLIANCE_MEMBER_KICK_C = 9028;</code>
+     */
+    ALLIANCE_MEMBER_KICK_C(147, 9028),
+    /**
+     * <code>ALLIANCE_MEMBER_KCIK_S = 9029;</code>
+     */
+    ALLIANCE_MEMBER_KCIK_S(148, 9029),
+    /**
+     * <code>ALLIANCE_MEMBER_LEAVE_C = 9030;</code>
+     */
+    ALLIANCE_MEMBER_LEAVE_C(149, 9030),
+    /**
+     * <code>ALLIANCE_MEMBER_LEAVE_S = 9031;</code>
+     */
+    ALLIANCE_MEMBER_LEAVE_S(150, 9031),
+    /**
+     * <code>ALLIANCE_CHANGE_OWNER_C = 9032;</code>
+     */
+    ALLIANCE_CHANGE_OWNER_C(151, 9032),
+    /**
+     * <code>ALLIANCE_CHANGE_OWNER_S = 9033;</code>
+     */
+    ALLIANCE_CHANGE_OWNER_S(152, 9033),
+    /**
+     * <code>ALLIANCE_LEVEL_UP_C = 9034;</code>
+     */
+    ALLIANCE_LEVEL_UP_C(153, 9034),
+    /**
+     * <code>ALLIANCE_LEVEL_UP_S = 9035;</code>
+     */
+    ALLIANCE_LEVEL_UP_S(154, 9035),
+    /**
+     * <code>ALLIANCE_PRAY_C = 9036;</code>
+     */
+    ALLIANCE_PRAY_C(155, 9036),
+    /**
+     * <code>ALLIANCE_PRAY_S = 9037;</code>
+     */
+    ALLIANCE_PRAY_S(156, 9037),
+    /**
+     * <code>ALLIANCE_SETTING_C = 9038;</code>
+     */
+    ALLIANCE_SETTING_C(157, 9038),
+    /**
+     * <code>ALLIANCE_SETTING_S = 9039;</code>
+     */
+    ALLIANCE_SETTING_S(158, 9039),
+    /**
+     * <code>ALLIANCE_SETTING_SYNC_C = 9040;</code>
+     */
+    ALLIANCE_SETTING_SYNC_C(159, 9040),
+    /**
+     * <code>ALLIANCE_SETTING_SYNC_S = 9041;</code>
+     */
+    ALLIANCE_SETTING_SYNC_S(160, 9041),
+    /**
+     * <code>ALLIANCE_FATIGUE_GIVE_C = 9042;</code>
+     */
+    ALLIANCE_FATIGUE_GIVE_C(161, 9042),
+    /**
+     * <code>ALLIANCE_FATIGUE_GIVE_S = 9043;</code>
+     */
+    ALLIANCE_FATIGUE_GIVE_S(162, 9043),
+    /**
+     * <code>ALLIANCE_CANCLE_APPLY_C = 9044;</code>
+     */
+    ALLIANCE_CANCLE_APPLY_C(163, 9044),
+    /**
+     * <code>ALLIANCE_CANCLE_APPLY_S = 9045;</code>
+     */
+    ALLIANCE_CANCLE_APPLY_S(164, 9045),
+    /**
+     * <code>ALLIANCE_APPLY_N_S = 9100;</code>
+     */
+    ALLIANCE_APPLY_N_S(165, 9100),
+    /**
+     * <code>ALLIANCE_REMOVE_APPLY_N_S = 9101;</code>
+     */
+    ALLIANCE_REMOVE_APPLY_N_S(166, 9101),
+    /**
+     * <code>ALLIANCE_NOTICE_N_S = 9102;</code>
+     */
+    ALLIANCE_NOTICE_N_S(167, 9102),
+    /**
+     * <code>ALLIANCE_MEMBER_ADD_N_S = 9103;</code>
+     */
+    ALLIANCE_MEMBER_ADD_N_S(168, 9103),
+    /**
+     * <code>ALLIANCE_MEMBER_REMOVE_N_S = 9104;</code>
+     */
+    ALLIANCE_MEMBER_REMOVE_N_S(169, 9104),
+    /**
+     * <code>ALLIANCE_CHANGE_POS_N_S = 9105;</code>
+     */
+    ALLIANCE_CHANGE_POS_N_S(170, 9105),
+    /**
+     * <code>ALLIANCE_CHANGE_OWNER_N_S = 9106;</code>
+     */
+    ALLIANCE_CHANGE_OWNER_N_S(171, 9106),
+    /**
+     * <code>ALLIANCE_LEVEL_CHANGE_N_S = 9107;</code>
+     */
+    ALLIANCE_LEVEL_CHANGE_N_S(172, 9107),
     /**
      * <code>SETTING_LANGUAGE_C = 10001;</code>
      *
@@ -831,19 +1003,19 @@ public final class HS {
      * 系统设置
      * </pre>
      */
-    SETTING_LANGUAGE_C(130, 10001),
+    SETTING_LANGUAGE_C(173, 10001),
     /**
      * <code>SETTING_LANGUAGE_S = 10002;</code>
      */
-    SETTING_LANGUAGE_S(131, 10002),
+    SETTING_LANGUAGE_S(174, 10002),
     /**
      * <code>SETTING_BLOCK_C = 10003;</code>
      */
-    SETTING_BLOCK_C(132, 10003),
+    SETTING_BLOCK_C(175, 10003),
     /**
      * <code>SETTING_BLOCK_S = 10004;</code>
      */
-    SETTING_BLOCK_S(133, 10004),
+    SETTING_BLOCK_S(176, 10004),
     /**
      * <code>SYNC_DAILY_REFRESH_S = 11001;</code>
      *
@@ -851,7 +1023,7 @@ public final class HS {
      * 数据同步
      * </pre>
      */
-    SYNC_DAILY_REFRESH_S(134, 11001),
+    SYNC_DAILY_REFRESH_S(177, 11001),
     /**
      * <code>SYNC_MONTHLY_REFRESH_S = 11002;</code>
      *
@@ -859,7 +1031,7 @@ public final class HS {
      * 每月刷新
      * </pre>
      */
-    SYNC_MONTHLY_REFRESH_S(135, 11002),
+    SYNC_MONTHLY_REFRESH_S(178, 11002),
     /**
      * <code>SYNC_SHOP_REFRESH_S = 11003;</code>
      *
@@ -867,7 +1039,7 @@ public final class HS {
      * 商店刷新
      * </pre>
      */
-    SYNC_SHOP_REFRESH_S(136, 11003),
+    SYNC_SHOP_REFRESH_S(179, 11003),
     /**
      * <code>SYNC_EXP_LEFT_TIMES_S = 11004;</code>
      *
@@ -875,7 +1047,7 @@ public final class HS {
      * 经验药水剩余次数
      * </pre>
      */
-    SYNC_EXP_LEFT_TIMES_S(137, 11004),
+    SYNC_EXP_LEFT_TIMES_S(180, 11004),
     ;
 
     /**
@@ -1435,9 +1607,181 @@ public final class HS {
      */
     public static final int ALLIANCE_NOTICE_S_VALUE = 9008;
     /**
-     * <code>ALLIANCE_NOTICE_SYNC_S = 9009;</code>
+     * <code>ALLIANCE_APPLY_C = 9010;</code>
      */
-    public static final int ALLIANCE_NOTICE_SYNC_S_VALUE = 9009;
+    public static final int ALLIANCE_APPLY_C_VALUE = 9010;
+    /**
+     * <code>ALLIANCE_APPLY_S = 9011;</code>
+     */
+    public static final int ALLIANCE_APPLY_S_VALUE = 9011;
+    /**
+     * <code>ALLIANCE_HANDLE_APPLY_C = 9012;</code>
+     */
+    public static final int ALLIANCE_HANDLE_APPLY_C_VALUE = 9012;
+    /**
+     * <code>ALLIANCE_HANDLE_APPLY_S = 9013;</code>
+     */
+    public static final int ALLIANCE_HANDLE_APPLY_S_VALUE = 9013;
+    /**
+     * <code>ALLIANCE_DATA_C = 9014;</code>
+     */
+    public static final int ALLIANCE_DATA_C_VALUE = 9014;
+    /**
+     * <code>ALLIANCE_DATA_S = 9015;</code>
+     */
+    public static final int ALLIANCE_DATA_S_VALUE = 9015;
+    /**
+     * <code>ALLIANCE_SELF_DATA_C = 9016;</code>
+     */
+    public static final int ALLIANCE_SELF_DATA_C_VALUE = 9016;
+    /**
+     * <code>ALLIANCE_SELF_DATA_S = 9017;</code>
+     */
+    public static final int ALLIANCE_SELF_DATA_S_VALUE = 9017;
+    /**
+     * <code>ALLIANCE_MEMBERS_C = 9018;</code>
+     */
+    public static final int ALLIANCE_MEMBERS_C_VALUE = 9018;
+    /**
+     * <code>ALLIANCE_MEMBERS_S = 9019;</code>
+     */
+    public static final int ALLIANCE_MEMBERS_S_VALUE = 9019;
+    /**
+     * <code>ALLIANCE_APPLYS_C = 9020;</code>
+     */
+    public static final int ALLIANCE_APPLYS_C_VALUE = 9020;
+    /**
+     * <code>ALLIANCE_APPLYS_S = 9021;</code>
+     */
+    public static final int ALLIANCE_APPLYS_S_VALUE = 9021;
+    /**
+     * <code>ALLIANCE_FATIGUE_C = 9022;</code>
+     */
+    public static final int ALLIANCE_FATIGUE_C_VALUE = 9022;
+    /**
+     * <code>ALLIANCE_FATIGUE_S = 9023;</code>
+     */
+    public static final int ALLIANCE_FATIGUE_S_VALUE = 9023;
+    /**
+     * <code>ALLIANCE_SYN_C = 9024;</code>
+     */
+    public static final int ALLIANCE_SYN_C_VALUE = 9024;
+    /**
+     * <code>ALLIANCE_SYN_S = 9025;</code>
+     */
+    public static final int ALLIANCE_SYN_S_VALUE = 9025;
+    /**
+     * <code>ALLIANCE_CHANGE_POS_C = 9026;</code>
+     */
+    public static final int ALLIANCE_CHANGE_POS_C_VALUE = 9026;
+    /**
+     * <code>ALLIANCE_CHANGE_POS_S = 9027;</code>
+     */
+    public static final int ALLIANCE_CHANGE_POS_S_VALUE = 9027;
+    /**
+     * <code>ALLIANCE_MEMBER_KICK_C = 9028;</code>
+     */
+    public static final int ALLIANCE_MEMBER_KICK_C_VALUE = 9028;
+    /**
+     * <code>ALLIANCE_MEMBER_KCIK_S = 9029;</code>
+     */
+    public static final int ALLIANCE_MEMBER_KCIK_S_VALUE = 9029;
+    /**
+     * <code>ALLIANCE_MEMBER_LEAVE_C = 9030;</code>
+     */
+    public static final int ALLIANCE_MEMBER_LEAVE_C_VALUE = 9030;
+    /**
+     * <code>ALLIANCE_MEMBER_LEAVE_S = 9031;</code>
+     */
+    public static final int ALLIANCE_MEMBER_LEAVE_S_VALUE = 9031;
+    /**
+     * <code>ALLIANCE_CHANGE_OWNER_C = 9032;</code>
+     */
+    public static final int ALLIANCE_CHANGE_OWNER_C_VALUE = 9032;
+    /**
+     * <code>ALLIANCE_CHANGE_OWNER_S = 9033;</code>
+     */
+    public static final int ALLIANCE_CHANGE_OWNER_S_VALUE = 9033;
+    /**
+     * <code>ALLIANCE_LEVEL_UP_C = 9034;</code>
+     */
+    public static final int ALLIANCE_LEVEL_UP_C_VALUE = 9034;
+    /**
+     * <code>ALLIANCE_LEVEL_UP_S = 9035;</code>
+     */
+    public static final int ALLIANCE_LEVEL_UP_S_VALUE = 9035;
+    /**
+     * <code>ALLIANCE_PRAY_C = 9036;</code>
+     */
+    public static final int ALLIANCE_PRAY_C_VALUE = 9036;
+    /**
+     * <code>ALLIANCE_PRAY_S = 9037;</code>
+     */
+    public static final int ALLIANCE_PRAY_S_VALUE = 9037;
+    /**
+     * <code>ALLIANCE_SETTING_C = 9038;</code>
+     */
+    public static final int ALLIANCE_SETTING_C_VALUE = 9038;
+    /**
+     * <code>ALLIANCE_SETTING_S = 9039;</code>
+     */
+    public static final int ALLIANCE_SETTING_S_VALUE = 9039;
+    /**
+     * <code>ALLIANCE_SETTING_SYNC_C = 9040;</code>
+     */
+    public static final int ALLIANCE_SETTING_SYNC_C_VALUE = 9040;
+    /**
+     * <code>ALLIANCE_SETTING_SYNC_S = 9041;</code>
+     */
+    public static final int ALLIANCE_SETTING_SYNC_S_VALUE = 9041;
+    /**
+     * <code>ALLIANCE_FATIGUE_GIVE_C = 9042;</code>
+     */
+    public static final int ALLIANCE_FATIGUE_GIVE_C_VALUE = 9042;
+    /**
+     * <code>ALLIANCE_FATIGUE_GIVE_S = 9043;</code>
+     */
+    public static final int ALLIANCE_FATIGUE_GIVE_S_VALUE = 9043;
+    /**
+     * <code>ALLIANCE_CANCLE_APPLY_C = 9044;</code>
+     */
+    public static final int ALLIANCE_CANCLE_APPLY_C_VALUE = 9044;
+    /**
+     * <code>ALLIANCE_CANCLE_APPLY_S = 9045;</code>
+     */
+    public static final int ALLIANCE_CANCLE_APPLY_S_VALUE = 9045;
+    /**
+     * <code>ALLIANCE_APPLY_N_S = 9100;</code>
+     */
+    public static final int ALLIANCE_APPLY_N_S_VALUE = 9100;
+    /**
+     * <code>ALLIANCE_REMOVE_APPLY_N_S = 9101;</code>
+     */
+    public static final int ALLIANCE_REMOVE_APPLY_N_S_VALUE = 9101;
+    /**
+     * <code>ALLIANCE_NOTICE_N_S = 9102;</code>
+     */
+    public static final int ALLIANCE_NOTICE_N_S_VALUE = 9102;
+    /**
+     * <code>ALLIANCE_MEMBER_ADD_N_S = 9103;</code>
+     */
+    public static final int ALLIANCE_MEMBER_ADD_N_S_VALUE = 9103;
+    /**
+     * <code>ALLIANCE_MEMBER_REMOVE_N_S = 9104;</code>
+     */
+    public static final int ALLIANCE_MEMBER_REMOVE_N_S_VALUE = 9104;
+    /**
+     * <code>ALLIANCE_CHANGE_POS_N_S = 9105;</code>
+     */
+    public static final int ALLIANCE_CHANGE_POS_N_S_VALUE = 9105;
+    /**
+     * <code>ALLIANCE_CHANGE_OWNER_N_S = 9106;</code>
+     */
+    public static final int ALLIANCE_CHANGE_OWNER_N_S_VALUE = 9106;
+    /**
+     * <code>ALLIANCE_LEVEL_CHANGE_N_S = 9107;</code>
+     */
+    public static final int ALLIANCE_LEVEL_CHANGE_N_S_VALUE = 9107;
     /**
      * <code>SETTING_LANGUAGE_C = 10001;</code>
      *
@@ -1625,7 +1969,50 @@ public final class HS {
         case 9006: return ALLIANCE_SEARCH_S;
         case 9007: return ALLIANCE_NOTICE_C;
         case 9008: return ALLIANCE_NOTICE_S;
-        case 9009: return ALLIANCE_NOTICE_SYNC_S;
+        case 9010: return ALLIANCE_APPLY_C;
+        case 9011: return ALLIANCE_APPLY_S;
+        case 9012: return ALLIANCE_HANDLE_APPLY_C;
+        case 9013: return ALLIANCE_HANDLE_APPLY_S;
+        case 9014: return ALLIANCE_DATA_C;
+        case 9015: return ALLIANCE_DATA_S;
+        case 9016: return ALLIANCE_SELF_DATA_C;
+        case 9017: return ALLIANCE_SELF_DATA_S;
+        case 9018: return ALLIANCE_MEMBERS_C;
+        case 9019: return ALLIANCE_MEMBERS_S;
+        case 9020: return ALLIANCE_APPLYS_C;
+        case 9021: return ALLIANCE_APPLYS_S;
+        case 9022: return ALLIANCE_FATIGUE_C;
+        case 9023: return ALLIANCE_FATIGUE_S;
+        case 9024: return ALLIANCE_SYN_C;
+        case 9025: return ALLIANCE_SYN_S;
+        case 9026: return ALLIANCE_CHANGE_POS_C;
+        case 9027: return ALLIANCE_CHANGE_POS_S;
+        case 9028: return ALLIANCE_MEMBER_KICK_C;
+        case 9029: return ALLIANCE_MEMBER_KCIK_S;
+        case 9030: return ALLIANCE_MEMBER_LEAVE_C;
+        case 9031: return ALLIANCE_MEMBER_LEAVE_S;
+        case 9032: return ALLIANCE_CHANGE_OWNER_C;
+        case 9033: return ALLIANCE_CHANGE_OWNER_S;
+        case 9034: return ALLIANCE_LEVEL_UP_C;
+        case 9035: return ALLIANCE_LEVEL_UP_S;
+        case 9036: return ALLIANCE_PRAY_C;
+        case 9037: return ALLIANCE_PRAY_S;
+        case 9038: return ALLIANCE_SETTING_C;
+        case 9039: return ALLIANCE_SETTING_S;
+        case 9040: return ALLIANCE_SETTING_SYNC_C;
+        case 9041: return ALLIANCE_SETTING_SYNC_S;
+        case 9042: return ALLIANCE_FATIGUE_GIVE_C;
+        case 9043: return ALLIANCE_FATIGUE_GIVE_S;
+        case 9044: return ALLIANCE_CANCLE_APPLY_C;
+        case 9045: return ALLIANCE_CANCLE_APPLY_S;
+        case 9100: return ALLIANCE_APPLY_N_S;
+        case 9101: return ALLIANCE_REMOVE_APPLY_N_S;
+        case 9102: return ALLIANCE_NOTICE_N_S;
+        case 9103: return ALLIANCE_MEMBER_ADD_N_S;
+        case 9104: return ALLIANCE_MEMBER_REMOVE_N_S;
+        case 9105: return ALLIANCE_CHANGE_POS_N_S;
+        case 9106: return ALLIANCE_CHANGE_OWNER_N_S;
+        case 9107: return ALLIANCE_LEVEL_CHANGE_N_S;
         case 10001: return SETTING_LANGUAGE_C;
         case 10002: return SETTING_LANGUAGE_S;
         case 10003: return SETTING_BLOCK_C;
@@ -1698,7 +2085,7 @@ public final class HS {
       "ER\020\001\022\020\n\014KEY_EXCHANGE\020\002\022\016\n\nHEART_BEAT\020\003\022\016" +
       "\n\nERROR_CODE\020\004*@\n\002gm\022\024\n\020GEN_TEST_ACCOUNT" +
       "\020d\022\021\n\rGMOPERATION_C\020e\022\021\n\rGMOPERATION_S\020f" +
-      "*\277\030\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n" +
+      "*\314!\n\004code\022\014\n\007LOGIN_C\020\350\007\022\014\n\007LOGIN_S\020\351\007\022\r\n" +
       "\010LOGOUT_C\020\352\007\022\r\n\010LOGOUT_S\020\353\007\022\016\n\tKICKOUT_S" +
       "\020\354\007\022\017\n\nSYNCINFO_C\020\355\007\022\017\n\nSYNCINFO_S\020\356\007\022\020\n" +
       "\013RECCONECT_C\020\357\007\022\020\n\013RECCONECT_S\020\360\007\022\027\n\022PLA" +
@@ -1770,14 +2157,43 @@ public final class HS {
       "_S\020\252F\022\024\n\017ALLIANCE_LIST_C\020\253F\022\024\n\017ALLIANCE_" +
       "LIST_S\020\254F\022\026\n\021ALLIANCE_SEARCH_C\020\255F\022\026\n\021ALL" +
       "IANCE_SEARCH_S\020\256F\022\026\n\021ALLIANCE_NOTICE_C\020\257" +
-      "F\022\026\n\021ALLIANCE_NOTICE_S\020\260F\022\033\n\026ALLIANCE_NO" +
-      "TICE_SYNC_S\020\261F\022\027\n\022SETTING_LANGUAGE_C\020\221N\022" +
-      "\027\n\022SETTING_LANGUAGE_S\020\222N\022\024\n\017SETTING_BLOC" +
-      "K_C\020\223N\022\024\n\017SETTING_BLOCK_S\020\224N\022\031\n\024SYNC_DAI",
-      "LY_REFRESH_S\020\371U\022\033\n\026SYNC_MONTHLY_REFRESH_" +
-      "S\020\372U\022\030\n\023SYNC_SHOP_REFRESH_S\020\373U\022\032\n\025SYNC_E" +
-      "XP_LEFT_TIMES_S\020\374UB\030\n\026com.hawk.game.prot" +
-      "ocol"
+      "F\022\026\n\021ALLIANCE_NOTICE_S\020\260F\022\025\n\020ALLIANCE_AP" +
+      "PLY_C\020\262F\022\025\n\020ALLIANCE_APPLY_S\020\263F\022\034\n\027ALLIA" +
+      "NCE_HANDLE_APPLY_C\020\264F\022\034\n\027ALLIANCE_HANDLE" +
+      "_APPLY_S\020\265F\022\024\n\017ALLIANCE_DATA_C\020\266F\022\024\n\017ALL",
+      "IANCE_DATA_S\020\267F\022\031\n\024ALLIANCE_SELF_DATA_C\020" +
+      "\270F\022\031\n\024ALLIANCE_SELF_DATA_S\020\271F\022\027\n\022ALLIANC" +
+      "E_MEMBERS_C\020\272F\022\027\n\022ALLIANCE_MEMBERS_S\020\273F\022" +
+      "\026\n\021ALLIANCE_APPLYS_C\020\274F\022\026\n\021ALLIANCE_APPL" +
+      "YS_S\020\275F\022\027\n\022ALLIANCE_FATIGUE_C\020\276F\022\027\n\022ALLI" +
+      "ANCE_FATIGUE_S\020\277F\022\023\n\016ALLIANCE_SYN_C\020\300F\022\023" +
+      "\n\016ALLIANCE_SYN_S\020\301F\022\032\n\025ALLIANCE_CHANGE_P" +
+      "OS_C\020\302F\022\032\n\025ALLIANCE_CHANGE_POS_S\020\303F\022\033\n\026A" +
+      "LLIANCE_MEMBER_KICK_C\020\304F\022\033\n\026ALLIANCE_MEM" +
+      "BER_KCIK_S\020\305F\022\034\n\027ALLIANCE_MEMBER_LEAVE_C",
+      "\020\306F\022\034\n\027ALLIANCE_MEMBER_LEAVE_S\020\307F\022\034\n\027ALL" +
+      "IANCE_CHANGE_OWNER_C\020\310F\022\034\n\027ALLIANCE_CHAN" +
+      "GE_OWNER_S\020\311F\022\030\n\023ALLIANCE_LEVEL_UP_C\020\312F\022" +
+      "\030\n\023ALLIANCE_LEVEL_UP_S\020\313F\022\024\n\017ALLIANCE_PR" +
+      "AY_C\020\314F\022\024\n\017ALLIANCE_PRAY_S\020\315F\022\027\n\022ALLIANC" +
+      "E_SETTING_C\020\316F\022\027\n\022ALLIANCE_SETTING_S\020\317F\022" +
+      "\034\n\027ALLIANCE_SETTING_SYNC_C\020\320F\022\034\n\027ALLIANC" +
+      "E_SETTING_SYNC_S\020\321F\022\034\n\027ALLIANCE_FATIGUE_" +
+      "GIVE_C\020\322F\022\034\n\027ALLIANCE_FATIGUE_GIVE_S\020\323F\022" +
+      "\034\n\027ALLIANCE_CANCLE_APPLY_C\020\324F\022\034\n\027ALLIANC",
+      "E_CANCLE_APPLY_S\020\325F\022\027\n\022ALLIANCE_APPLY_N_" +
+      "S\020\214G\022\036\n\031ALLIANCE_REMOVE_APPLY_N_S\020\215G\022\030\n\023" +
+      "ALLIANCE_NOTICE_N_S\020\216G\022\034\n\027ALLIANCE_MEMBE" +
+      "R_ADD_N_S\020\217G\022\037\n\032ALLIANCE_MEMBER_REMOVE_N" +
+      "_S\020\220G\022\034\n\027ALLIANCE_CHANGE_POS_N_S\020\221G\022\036\n\031A" +
+      "LLIANCE_CHANGE_OWNER_N_S\020\222G\022\036\n\031ALLIANCE_" +
+      "LEVEL_CHANGE_N_S\020\223G\022\027\n\022SETTING_LANGUAGE_" +
+      "C\020\221N\022\027\n\022SETTING_LANGUAGE_S\020\222N\022\024\n\017SETTING" +
+      "_BLOCK_C\020\223N\022\024\n\017SETTING_BLOCK_S\020\224N\022\031\n\024SYN" +
+      "C_DAILY_REFRESH_S\020\371U\022\033\n\026SYNC_MONTHLY_REF",
+      "RESH_S\020\372U\022\030\n\023SYNC_SHOP_REFRESH_S\020\373U\022\032\n\025S" +
+      "YNC_EXP_LEFT_TIMES_S\020\374UB\030\n\026com.hawk.game" +
+      ".protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

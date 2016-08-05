@@ -1,8 +1,7 @@
 package com.hawk.game.entity;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,11 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hawk.db.HawkDBEntity;
-import org.hawk.log.HawkLog;
-import org.hawk.os.HawkTime;
 import org.hibernate.annotations.GenericGenerator;
-
-import com.google.gson.reflect.TypeToken;
 
 /**
  * @author zs
@@ -25,7 +20,6 @@ import com.google.gson.reflect.TypeToken;
 
 @Entity
 @Table(name = "player_alliance")
-@SuppressWarnings("serial")
 public class PlayerAllianceEntity extends HawkDBEntity {
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")
@@ -36,12 +30,30 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 	@Column(name = "allianceId")
 	private int allianceId = 0;
 	
+	@Column(name = "preAllianceId")
+	private int preAllianceId = 0;
+	
 	@Column(name = "playerId")
 	private int playerId = 0;
+	
+	@Column(name = "name")
+	private String name = null;
+
+	@Column(name = "level")
+	private int level = 0;
+	
+	@Column(name = "fatigueCount")
+	private int fatigueCount = 0;
+	
+	@Column(name = "fatigue", nullable = false)
+	private String fatigue = "";
 	
 	@Column(name = "contribution")
 	private int contribution = 0;
 	
+	@Column(name = "totalContribution")
+	private int totalContribution = 0;
+
 	/**
 	 * 0:普通成员,1:副会长,2:会长
 	 */
@@ -51,11 +63,17 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 	@Column(name = "exitTime")
 	private int exitTime = 0;
 	
+	@Column(name = "logoutTime")
+	private int logoutTime = 0;
+	
+	@Column(name = "loginTime")
+	private int loginTime = 0;
+	
 	@Column(name = "joinTime")
 	private int joinTime = 0;
 
-	@Column(name = "reportTime")
-	private int reportTime = 0;
+	@Column(name = "refreshTime")
+	private int refreshTime = 0;
 	
 	@Column(name = "createTime", nullable = false)
 	protected int createTime = 0;
@@ -65,6 +83,9 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 	
 	@Column(name = "invalid")
 	protected boolean invalid;
+	
+	@Transient
+	protected Set<Integer> fatigueSet = new HashSet<Integer>();
 	
 	public int getId() {
 		return id;
@@ -82,12 +103,60 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 		this.allianceId = allianceId;
 	}
 
+	public int getPreAllianceId() {
+		return preAllianceId;
+	}
+
+	public void setPreAllianceId(int preAllianceId) {
+		this.preAllianceId = preAllianceId;
+	}
+
 	public int getPlayerId() {
 		return playerId;
 	}
 
 	public void setPlayerId(int playerId) {
 		this.playerId = playerId;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getFatigueCount() {
+		return fatigueCount;
+	}
+
+	public void addFatigueCount() {
+		++fatigueCount;
+	}
+	
+	public void clearFatigueCount() {
+		fatigueCount = 0;
+	}
+	
+	public Set<Integer> getFatigueSet() {
+		return fatigueSet;
+	}
+
+	public synchronized void addFatigueSet(int playerId) {
+		fatigueSet.add(playerId);
+	}
+	
+	public synchronized void clearFatigueSet() {
+		fatigueSet.clear();
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	public int getContribution() {
@@ -98,12 +167,36 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 		this.contribution = contribution;
 	}
 
+	public int getTotalContribution() {
+		return totalContribution;
+	}
+
+	public void setTotalContribution(int totalContribution) {
+		this.totalContribution = totalContribution;
+	}
+	
 	public int getPostion() {
 		return postion;
 	}
 
 	public void setPostion(int postion) {
 		this.postion = postion;
+	}
+
+	public int getLoginTime() {
+		return loginTime;
+	}
+
+	public void setLoginTime(int loginTime) {
+		this.loginTime = loginTime;
+	}
+
+	public int getLogoutTime() {
+		return logoutTime;
+	}
+
+	public void setLogoutTime(int logoutTime) {
+		this.logoutTime = logoutTime;
 	}
 
 	public long getExitTime() {
@@ -122,12 +215,12 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 		this.joinTime = joinTime;
 	}
 
-	public long getReportTime() {
-		return reportTime;
+	public long getRefreshTime() {
+		return refreshTime;
 	}
 
-	public void setReportTime(int reportTime) {
-		this.reportTime = reportTime;
+	public void setRefreshTime(int refreshTime) {
+		this.refreshTime = refreshTime;
 	}
 	
 	@Override
@@ -144,7 +237,7 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 	public int getUpdateTime() {
 		return updateTime;
 	}
-	
+
 	@Override
 	public void setUpdateTime(int updateTime) {
 		this.updateTime = updateTime;
@@ -163,5 +256,28 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 	@Override
 	public void notifyUpdate(boolean async) {
 		super.notifyUpdate(async);
+	}
+	
+	@Override
+	public boolean decode() {
+		fatigueSet.clear();		
+		if (fatigue != null && false == "".equals(fatigue) && false == "null".equals(fatigue)) {
+			String[] result = fatigue.split(",");
+			for (String element : result) {
+				if (element != null && false == "".equals(element)) {
+					fatigueSet.add(Integer.parseInt(element));
+				}
+			}
+		}
+		return true;
+	}
+	
+	@Override
+	public boolean encode() {
+		fatigue = "";
+		for (int element : fatigueSet) {
+			fatigue += String.valueOf(element) + ",";
+		}
+		return true;
 	}
 }

@@ -1,14 +1,7 @@
 package com.hawk.game.module.alliance;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.TreeSet;
-import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
-
-import javassist.tools.framedump;
 
 import org.hawk.app.HawkAppObj;
 import org.hawk.net.protocol.HawkProtocol;
@@ -27,7 +20,18 @@ public class AllianceListHandler implements HawkProtocolHandler {
 	@Override
 	public boolean onProtocol(HawkAppObj appObj, HawkProtocol protocol) {
 		Player player = (Player) appObj;
-		Set<AllianceEntity> levelSet = AllianceManager.getInstance().getAllianceLevelSet();
+		Set<AllianceEntity> levelSet = new LinkedHashSet<AllianceEntity>();
+		
+		if (AllianceManager.getInstance().getPlayerApplyList(player.getId()) != null) {
+			for (int allianceId : AllianceManager.getInstance().getPlayerApplyList(player.getId())) {
+				AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(allianceId);
+				if (allianceEntity != null) {
+					levelSet.add(allianceEntity);
+				}
+			}
+		}
+		
+		levelSet.addAll(AllianceManager.getInstance().getAllianceLevelSet());
 		
 		// 计算最大页码
 		int maxPageNum = (levelSet.size() + GsConst.Alliance.ONE_PAGE_SIZE - 1) / GsConst.Alliance.ONE_PAGE_SIZE;
@@ -49,9 +53,11 @@ public class AllianceListHandler implements HawkProtocolHandler {
 			if (index >= formIndex) {
 				builder.addAllianceList(AllianceUtil.getAllianceInfo(allianceEntity));
 			}
+			
 			if (index == endIndex - 1) {
 				break;
 			}
+			
 			index ++;
 		}
 	

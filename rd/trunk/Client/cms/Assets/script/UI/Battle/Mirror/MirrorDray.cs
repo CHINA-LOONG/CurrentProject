@@ -5,6 +5,12 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
+public enum MirrorState
+{
+    CannotUse = 0,//不可使用
+    Recover,    //正在恢复
+    Consum  //正在消耗
+}
 public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, IDragHandler,IPointerClickHandler
 {
 
@@ -27,6 +33,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 	//Image MirrorDragImage;
 	GameObject mirrorParticle;
 	Animator mirrorUIAnimator;
+    Image mirrorEnegyImage;
 
 
 	bool isDragging = false;
@@ -47,9 +54,10 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		rectTrans = transform as RectTransform;
 
 		mirrorUIAnimator = mirrorUi.GetComponent < Animator> ();
+        mirrorEnegyImage = Util.FindChildByName(mirrorUi, "enegyImage").GetComponent<Image>();
 
-		//MirrorDragImage = Util.FindChildByName (gameObject, "MirrorDragImage").GetComponent<Image> ();
-		mirrorParticle = Util.FindChildByName (gameObject, "zhaoyaojing");
+        //MirrorDragImage = Util.FindChildByName (gameObject, "MirrorDragImage").GetComponent<Image> ();
+        mirrorParticle = Util.FindChildByName (gameObject, "zhaoyaojing");
         //baozha_fire
 		if (null == mirrorExitEffect)
 		{
@@ -59,6 +67,15 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 
 		ResetMirror ();
 	}
+
+    public  void   UpdateMirrorEnegy()
+    {
+        if (null != mirrorEnegyImage)
+        {
+            float enegyRatio = BattleController.Instance.MirrorEnegyAttr / GameConfig.Instance.MirrorMaxEnegy;
+            mirrorEnegyImage.fillAmount = enegyRatio;
+        }
+    }
 
 	public void ResetMirror()
 	{
@@ -108,6 +125,11 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
         if (BattleController.Instance.processStart == false)
             return;
 
+        if(BattleController.Instance.MirrorEnegyAttr < GameConfig.Instance.UseMirrorMinEnegy)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("battle_zhaoyaojing_001"), (int)PB.ImType.PROMPT);
+            return;
+        }
 		//if (mirrorTween != null &&
 		//    mirrorTween.IsPlaying())
 		//{
@@ -175,11 +197,15 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		{
 			mirrorExitEffect.gameObject.SetActive(false);
 			StartRayCast();
-		} 
+
+            BattleController.Instance.mirrorState = MirrorState.Consum;
+            BattleController.Instance.beginChangeEnegyTime = GameTimeMgr.Instance.TimeStampAsMilliseconds();
+        } 
 		else 
 		{
-
-			StopRayCast();
+            BattleController.Instance.mirrorState = MirrorState.Recover;
+            BattleController.Instance.beginChangeEnegyTime = GameTimeMgr.Instance.TimeStampAsMilliseconds();
+            StopRayCast();
 			if(isShowMirrorExitEffect && isCanShowMirrorExitEffect)
 			{
 				isShowMirrorExitEffect  = false;
@@ -227,7 +253,7 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 		{
 			GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.MirrorOutWeakPoint,listTarget);
 		}
-		GameEventMgr.Instance.FireEvent(GameEventList.HideFindMonsterInfo);
+		//GameEventMgr.Instance.FireEvent(GameEventList.HideFindMonsterInfo);
 	}
 
 	IEnumerator weakPointRayCastCo()

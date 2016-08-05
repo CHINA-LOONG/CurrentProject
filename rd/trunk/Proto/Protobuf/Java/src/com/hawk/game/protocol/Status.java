@@ -1771,6 +1771,142 @@ public final class Status {
      * </pre>
      */
     ALLIANCE_NOTICE_ERROR(7, 524296),
+    /**
+     * <code>ALLIANCE_ALREADY_APPLY = 524297;</code>
+     *
+     * <pre>
+     * 已经申请过了
+     * </pre>
+     */
+    ALLIANCE_ALREADY_APPLY(8, 524297),
+    /**
+     * <code>ALLIANCE_ALREADY_FULL = 524298;</code>
+     *
+     * <pre>
+     * 工会已满
+     * </pre>
+     */
+    ALLIANCE_ALREADY_FULL(9, 524298),
+    /**
+     * <code>ALLIANCE_APPLY_NOT_EXIST = 524299;</code>
+     *
+     * <pre>
+     * 申请不存在
+     * </pre>
+     */
+    ALLIANCE_APPLY_NOT_EXIST(10, 524299),
+    /**
+     * <code>ALLIANCE_POSITION_ERROR = 524300;</code>
+     *
+     * <pre>
+     * 工会级别有误
+     * </pre>
+     */
+    ALLIANCE_POSITION_ERROR(11, 524300),
+    /**
+     * <code>ALLIANCE__LEAVE_NOT_EMPTY = 524301;</code>
+     *
+     * <pre>
+     * 公会会长退出时不空
+     * </pre>
+     */
+    ALLIANCE__LEAVE_NOT_EMPTY(12, 524301),
+    /**
+     * <code>ALLIANCE_TARGET_NOT_JOIN = 524302;</code>
+     *
+     * <pre>
+     * 操作对象未加入公会
+     * </pre>
+     */
+    ALLIANCE_TARGET_NOT_JOIN(13, 524302),
+    /**
+     * <code>ALLIANCE_TARGET_ALREADY_JOIN = 524304;</code>
+     *
+     * <pre>
+     * 操作对象已加入公会
+     * </pre>
+     */
+    ALLIANCE_TARGET_ALREADY_JOIN(14, 524304),
+    /**
+     * <code>ALLIANCE_TECH_FULL = 524305;</code>
+     *
+     * <pre>
+     * 工会科技等级满级
+     * </pre>
+     */
+    ALLIANCE_TECH_FULL(15, 524305),
+    /**
+     * <code>ALLIANCE_LEVEL_LIMIT = 524306;</code>
+     *
+     * <pre>
+     * 工会等级不足
+     * </pre>
+     */
+    ALLIANCE_LEVEL_LIMIT(16, 524306),
+    /**
+     * <code>ALLIANCE_CONTRI_NOT_ENOUGH = 524307;</code>
+     *
+     * <pre>
+     * 公会贡献值不足
+     * </pre>
+     */
+    ALLIANCE_CONTRI_NOT_ENOUGH(17, 524307),
+    /**
+     * <code>ALLIANCE_PRAY_MAX_COUNT = 524308;</code>
+     *
+     * <pre>
+     * 公会祈福最大值
+     * </pre>
+     */
+    ALLIANCE_PRAY_MAX_COUNT(18, 524308),
+    /**
+     * <code>ALLIANCE_FRIZEN_TIME = 524309;</code>
+     *
+     * <pre>
+     * 退出公会冻结时间
+     * </pre>
+     */
+    ALLIANCE_FRIZEN_TIME(19, 524309),
+    /**
+     * <code>ALLIANCE_MAX_FAGIGUE_COUNT = 524310;</code>
+     *
+     * <pre>
+     * 赠送次数已满
+     * </pre>
+     */
+    ALLIANCE_MAX_FAGIGUE_COUNT(20, 524310),
+    /**
+     * <code>ALLIANCE_FAGIGUE_GIVE_ALREADY = 524311;</code>
+     *
+     * <pre>
+     * 已经赠送过疲劳值
+     * </pre>
+     */
+    ALLIANCE_FAGIGUE_GIVE_ALREADY(21, 524311),
+    /**
+     * <code>ALLIANCE_CAPACITY_NOT_ENOUGH = 524312;</code>
+     *
+     * <pre>
+     * 容量不足
+     * </pre>
+     */
+    ALLIANCE_CAPACITY_NOT_ENOUGH(22, 524312),
+    /**
+     * <code>ALLIANCE_SAME_POSITION = 524313;</code>
+     *
+     * <pre>
+     * 职位相同
+     * </pre>
+     */
+    ALLIANCE_SAME_POSITION(23, 524313),
+    /**
+     * <code>ALLIANCE_MAX_APPLY = 524314;</code>
+     *
+     * <pre>
+     * 申请上限
+     * </pre>
+     */
+    ALLIANCE_MAX_APPLY(24, 524314),
     ;
 
     /**
@@ -1837,6 +1973,142 @@ public final class Status {
      * </pre>
      */
     public static final int ALLIANCE_NOTICE_ERROR_VALUE = 524296;
+    /**
+     * <code>ALLIANCE_ALREADY_APPLY = 524297;</code>
+     *
+     * <pre>
+     * 已经申请过了
+     * </pre>
+     */
+    public static final int ALLIANCE_ALREADY_APPLY_VALUE = 524297;
+    /**
+     * <code>ALLIANCE_ALREADY_FULL = 524298;</code>
+     *
+     * <pre>
+     * 工会已满
+     * </pre>
+     */
+    public static final int ALLIANCE_ALREADY_FULL_VALUE = 524298;
+    /**
+     * <code>ALLIANCE_APPLY_NOT_EXIST = 524299;</code>
+     *
+     * <pre>
+     * 申请不存在
+     * </pre>
+     */
+    public static final int ALLIANCE_APPLY_NOT_EXIST_VALUE = 524299;
+    /**
+     * <code>ALLIANCE_POSITION_ERROR = 524300;</code>
+     *
+     * <pre>
+     * 工会级别有误
+     * </pre>
+     */
+    public static final int ALLIANCE_POSITION_ERROR_VALUE = 524300;
+    /**
+     * <code>ALLIANCE__LEAVE_NOT_EMPTY = 524301;</code>
+     *
+     * <pre>
+     * 公会会长退出时不空
+     * </pre>
+     */
+    public static final int ALLIANCE__LEAVE_NOT_EMPTY_VALUE = 524301;
+    /**
+     * <code>ALLIANCE_TARGET_NOT_JOIN = 524302;</code>
+     *
+     * <pre>
+     * 操作对象未加入公会
+     * </pre>
+     */
+    public static final int ALLIANCE_TARGET_NOT_JOIN_VALUE = 524302;
+    /**
+     * <code>ALLIANCE_TARGET_ALREADY_JOIN = 524304;</code>
+     *
+     * <pre>
+     * 操作对象已加入公会
+     * </pre>
+     */
+    public static final int ALLIANCE_TARGET_ALREADY_JOIN_VALUE = 524304;
+    /**
+     * <code>ALLIANCE_TECH_FULL = 524305;</code>
+     *
+     * <pre>
+     * 工会科技等级满级
+     * </pre>
+     */
+    public static final int ALLIANCE_TECH_FULL_VALUE = 524305;
+    /**
+     * <code>ALLIANCE_LEVEL_LIMIT = 524306;</code>
+     *
+     * <pre>
+     * 工会等级不足
+     * </pre>
+     */
+    public static final int ALLIANCE_LEVEL_LIMIT_VALUE = 524306;
+    /**
+     * <code>ALLIANCE_CONTRI_NOT_ENOUGH = 524307;</code>
+     *
+     * <pre>
+     * 公会贡献值不足
+     * </pre>
+     */
+    public static final int ALLIANCE_CONTRI_NOT_ENOUGH_VALUE = 524307;
+    /**
+     * <code>ALLIANCE_PRAY_MAX_COUNT = 524308;</code>
+     *
+     * <pre>
+     * 公会祈福最大值
+     * </pre>
+     */
+    public static final int ALLIANCE_PRAY_MAX_COUNT_VALUE = 524308;
+    /**
+     * <code>ALLIANCE_FRIZEN_TIME = 524309;</code>
+     *
+     * <pre>
+     * 退出公会冻结时间
+     * </pre>
+     */
+    public static final int ALLIANCE_FRIZEN_TIME_VALUE = 524309;
+    /**
+     * <code>ALLIANCE_MAX_FAGIGUE_COUNT = 524310;</code>
+     *
+     * <pre>
+     * 赠送次数已满
+     * </pre>
+     */
+    public static final int ALLIANCE_MAX_FAGIGUE_COUNT_VALUE = 524310;
+    /**
+     * <code>ALLIANCE_FAGIGUE_GIVE_ALREADY = 524311;</code>
+     *
+     * <pre>
+     * 已经赠送过疲劳值
+     * </pre>
+     */
+    public static final int ALLIANCE_FAGIGUE_GIVE_ALREADY_VALUE = 524311;
+    /**
+     * <code>ALLIANCE_CAPACITY_NOT_ENOUGH = 524312;</code>
+     *
+     * <pre>
+     * 容量不足
+     * </pre>
+     */
+    public static final int ALLIANCE_CAPACITY_NOT_ENOUGH_VALUE = 524312;
+    /**
+     * <code>ALLIANCE_SAME_POSITION = 524313;</code>
+     *
+     * <pre>
+     * 职位相同
+     * </pre>
+     */
+    public static final int ALLIANCE_SAME_POSITION_VALUE = 524313;
+    /**
+     * <code>ALLIANCE_MAX_APPLY = 524314;</code>
+     *
+     * <pre>
+     * 申请上限
+     * </pre>
+     */
+    public static final int ALLIANCE_MAX_APPLY_VALUE = 524314;
 
 
     public final int getNumber() { return value; }
@@ -1851,6 +2123,23 @@ public final class Status {
         case 524294: return ALLIANCE_NOT_JOIN;
         case 524295: return ALLIANCE_NO_MAIN;
         case 524296: return ALLIANCE_NOTICE_ERROR;
+        case 524297: return ALLIANCE_ALREADY_APPLY;
+        case 524298: return ALLIANCE_ALREADY_FULL;
+        case 524299: return ALLIANCE_APPLY_NOT_EXIST;
+        case 524300: return ALLIANCE_POSITION_ERROR;
+        case 524301: return ALLIANCE__LEAVE_NOT_EMPTY;
+        case 524302: return ALLIANCE_TARGET_NOT_JOIN;
+        case 524304: return ALLIANCE_TARGET_ALREADY_JOIN;
+        case 524305: return ALLIANCE_TECH_FULL;
+        case 524306: return ALLIANCE_LEVEL_LIMIT;
+        case 524307: return ALLIANCE_CONTRI_NOT_ENOUGH;
+        case 524308: return ALLIANCE_PRAY_MAX_COUNT;
+        case 524309: return ALLIANCE_FRIZEN_TIME;
+        case 524310: return ALLIANCE_MAX_FAGIGUE_COUNT;
+        case 524311: return ALLIANCE_FAGIGUE_GIVE_ALREADY;
+        case 524312: return ALLIANCE_CAPACITY_NOT_ENOUGH;
+        case 524313: return ALLIANCE_SAME_POSITION;
+        case 524314: return ALLIANCE_MAX_APPLY;
         default: return null;
       }
     }
@@ -2254,19 +2543,32 @@ public final class Status {
       "_BOX_ALREADY_OPEN\020\207\200\030\022\030\n\022INSTANCE_NOT_EN" +
       "TER\020\210\200\030*^\n\tmailError\022\024\n\016MAIL_NOT_EXIST\020\201" +
       "\200\034\022\017\n\tMAIL_NONE\020\202\200\034\022\024\n\016MAIL_COIN_FULL\020\203\200" +
-      "\034\022\024\n\016MAIL_GOLD_FULL\020\204\200\034*\351\001\n\rallianceErro",
+      "\034\022\024\n\016MAIL_GOLD_FULL\020\204\200\034*\376\005\n\rallianceErro",
       "r\022\037\n\031ALLIANCE_LEVEL_NOT_ENOUGH\020\201\200 \022\031\n\023AL" +
       "LIANCE_ALREADY_IN\020\202\200 \022\030\n\022ALLIANCE_NOT_EX" +
       "IST\020\203\200 \022\031\n\023ALLIANCE_NAME_ERROR\020\204\200 \022\031\n\023AL" +
       "LIANCE_NAME_EXIST\020\205\200 \022\027\n\021ALLIANCE_NOT_JO" +
       "IN\020\206\200 \022\026\n\020ALLIANCE_NO_MAIN\020\207\200 \022\033\n\025ALLIAN" +
-      "CE_NOTICE_ERROR\020\210\200 *\202\001\n\tshopError\022\032\n\024SHO" +
-      "P_REFRESH_TIMEOUT\020\201\200$\022\033\n\025SHOP_ITEM_ALREA" +
-      "DY_BUY\020\202\200$\022\034\n\026SHOP_REFRESH_MAX_COUNT\020\203\200$" +
-      "\022\036\n\030SHOP_GOLD2COIN_MAX_COUNT\020\204\200$*\037\n\007imEr" +
-      "ror\022\024\n\016IM_CHAT_LENGTH\020\201\200@*(\n\014settingErro",
-      "r\022\030\n\022SETTING_BLOCK_FULL\020\201\200DB\030\n\026com.hawk." +
-      "game.protocol"
+      "CE_NOTICE_ERROR\020\210\200 \022\034\n\026ALLIANCE_ALREADY_" +
+      "APPLY\020\211\200 \022\033\n\025ALLIANCE_ALREADY_FULL\020\212\200 \022\036" +
+      "\n\030ALLIANCE_APPLY_NOT_EXIST\020\213\200 \022\035\n\027ALLIAN" +
+      "CE_POSITION_ERROR\020\214\200 \022\037\n\031ALLIANCE__LEAVE" +
+      "_NOT_EMPTY\020\215\200 \022\036\n\030ALLIANCE_TARGET_NOT_JO",
+      "IN\020\216\200 \022\"\n\034ALLIANCE_TARGET_ALREADY_JOIN\020\220" +
+      "\200 \022\030\n\022ALLIANCE_TECH_FULL\020\221\200 \022\032\n\024ALLIANCE" +
+      "_LEVEL_LIMIT\020\222\200 \022 \n\032ALLIANCE_CONTRI_NOT_" +
+      "ENOUGH\020\223\200 \022\035\n\027ALLIANCE_PRAY_MAX_COUNT\020\224\200" +
+      " \022\032\n\024ALLIANCE_FRIZEN_TIME\020\225\200 \022 \n\032ALLIANC" +
+      "E_MAX_FAGIGUE_COUNT\020\226\200 \022#\n\035ALLIANCE_FAGI" +
+      "GUE_GIVE_ALREADY\020\227\200 \022\"\n\034ALLIANCE_CAPACIT" +
+      "Y_NOT_ENOUGH\020\230\200 \022\034\n\026ALLIANCE_SAME_POSITI" +
+      "ON\020\231\200 \022\030\n\022ALLIANCE_MAX_APPLY\020\232\200 *\202\001\n\tsho" +
+      "pError\022\032\n\024SHOP_REFRESH_TIMEOUT\020\201\200$\022\033\n\025SH",
+      "OP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026SHOP_REFRESH_" +
+      "MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COIN_MAX_COUN" +
+      "T\020\204\200$*\037\n\007imError\022\024\n\016IM_CHAT_LENGTH\020\201\200@*(" +
+      "\n\014settingError\022\030\n\022SETTING_BLOCK_FULL\020\201\200D" +
+      "B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

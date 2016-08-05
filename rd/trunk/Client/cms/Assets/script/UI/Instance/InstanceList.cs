@@ -321,7 +321,7 @@ public class InstanceList : UIBase
         {
             if(!InstanceMapService.Instance.IsHardChapterOpend(chapterIndex))
             {
-                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("instanceselect_reward_001"), (int)PB.ImType.PROMPT);
+				UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("select_tiaozhan"), (int)PB.ImType.PROMPT);
                 difficultyDropDown.value = 0;
                 return;
             }

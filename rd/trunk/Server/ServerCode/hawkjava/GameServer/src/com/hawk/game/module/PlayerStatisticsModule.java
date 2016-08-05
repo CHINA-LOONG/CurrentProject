@@ -79,7 +79,8 @@ public class PlayerStatisticsModule  extends PlayerModule {
 
 		for (int index : refreshIndexList) {
 			int mask = GsConst.PlayerRefreshMask[index];
-
+			statisticsEntity.clearAlliancePrayCountDaily();
+			
 			if (0 != (mask & GsConst.RefreshMask.DAILY )) {
 				statisticsEntity.clearAdventureCountDaily();
 				statisticsEntity.clearArenaCountDaily();

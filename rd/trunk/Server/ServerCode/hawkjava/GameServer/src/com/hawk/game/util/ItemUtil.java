@@ -3,14 +3,12 @@ package com.hawk.game.util;
 import java.util.Map;
 
 import org.hawk.config.HawkConfigManager;
-import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
 
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.MonsterBaseCfg;
 import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.entity.MonsterEntity;
-import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 
 public class ItemUtil {

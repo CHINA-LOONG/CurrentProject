@@ -11,8 +11,6 @@ import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Attribute.Attr;
-import com.hawk.game.protocol.Const.equipPart;
-import com.hawk.game.protocol.Const.equipQuality;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.util.GsConst.EquipStagePunch;

@@ -47,6 +47,7 @@ import com.hawk.game.entity.RechargeEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.manager.ShopManager;
+import com.hawk.game.manager.SnapShotManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
@@ -228,12 +229,16 @@ public class GsApp extends HawkApp {
 		}
 
 		// 公会初始化
-		//HawkLog.logPrintln("init alliance manager......");
-		//AllianceManager.getInstance().init();
+		HawkLog.logPrintln("init alliance manager......");
+		AllianceManager.getInstance().init();
 
 		//开机刷新一次
 		onRefresh();
 
+		// 快照缓存对象初始
+		HawkLog.logPrintln("init snapshot manager......");
+		SnapShotManager.getInstance().init();
+		
 		return true;
 	}
 
@@ -254,6 +259,8 @@ public class GsApp extends HawkApp {
 		objMan = createObjMan(GsConst.ObjType.MANAGER);
 		// 应用管理器
 		objMan.allocObject(getXid(), this);
+		// 创建玩家快照管理器
+		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.SNAPSHOT));
 		// IM管理器
 		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.IM));
 		// 商店管理器
@@ -263,6 +270,19 @@ public class GsApp extends HawkApp {
 		return true;
 	}
 
+	/**
+	 * 查询Player
+	 * @param playerId
+	 * @return
+	 */
+	public Player queryPlayer(int playerId) {
+		HawkObjBase<HawkXID, HawkAppObj> objBase =queryObject(HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId));
+		if(objBase != null) {
+			return (Player)objBase.getImpl();
+		}
+		return null;
+	}
+	
 	/**
 	 * 获取hash线程索引
 	 */
@@ -366,6 +386,9 @@ public class GsApp extends HawkApp {
 			}
 			else if (xid.getId() == GsConst.ObjId.ALLIANCE) {
 				appObj = new AllianceManager(xid);
+			}
+			else if (xid.getId() == GsConst.ObjId.SNAPSHOT) {
+				appObj = new SnapShotManager(xid);
 			}
 		}
 		else if (xid.getType() == GsConst.ObjType.PLAYER) {

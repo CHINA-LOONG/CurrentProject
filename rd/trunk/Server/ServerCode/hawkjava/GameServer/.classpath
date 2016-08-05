@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="/HawkUtil/lib/slf4j-api-1.7.6.jar"/>
 	<classpathentry kind="lib" path="/HawkUtil/lib/slf4j-log4j12-1.7.6.jar"/>
 	<classpathentry kind="lib" path="/HawkUtil/lib/gson-1.6.jar"/>
+	<classpathentry kind="lib" path="/HawkUtil/lib/concurrentlinkedhashmap-lru-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

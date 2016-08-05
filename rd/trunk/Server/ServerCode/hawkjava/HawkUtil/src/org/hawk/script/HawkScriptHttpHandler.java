@@ -49,6 +49,7 @@ public class HawkScriptHttpHandler implements HttpHandler {
 					return;
 				}
 			}
+			
 	
 			String result = "" + HawkTime.getTimeString() + ":\n\n";
 			String uriInfo = httpExchange.getRequestURI().getQuery();

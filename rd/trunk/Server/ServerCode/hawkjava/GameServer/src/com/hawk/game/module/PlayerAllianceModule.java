@@ -1,16 +1,31 @@
 package com.hawk.game.module;
 
+import org.hawk.app.HawkApp;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkTime;
+import org.hawk.xid.HawkXID;
 
+import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
-import com.hawk.game.module.alliance.AllianceCreateHandler;
 import com.hawk.game.module.alliance.AllianceListHandler;
 import com.hawk.game.module.alliance.AllianceSearchHandler;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
+import com.hawk.game.protocol.Alliance.HSAllianceApplyList;
+import com.hawk.game.protocol.Alliance.HSAllianceDataRet;
+import com.hawk.game.protocol.Alliance.HSAllianceMembers;
+import com.hawk.game.protocol.Alliance.HSAllianceSelfDataRet;
+import com.hawk.game.protocol.Alliance.HSAllianceSettingSyn;
+import com.hawk.game.protocol.Alliance.HSAllianceSettingSynRet;
+import com.hawk.game.protocol.Alliance.HSAllianceSyn;
+import com.hawk.game.protocol.Alliance.HSAllianceSynRet;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Status;
+import com.hawk.game.util.AllianceUtil;
+import com.hawk.game.util.GsConst;
 
 /**
  * 公会模块
@@ -25,9 +40,23 @@ public class PlayerAllianceModule extends PlayerModule {
 	 */
 	public PlayerAllianceModule(Player player) {
 		super(player);
-		listenProto(HS.code.ALLIANCE_CREATE_C, new AllianceCreateHandler());
+		listenProto(HS.code.ALLIANCE_CREATE_C);
 		listenProto(HS.code.ALLIANCE_LIST_C, new AllianceListHandler());
 		listenProto(HS.code.ALLIANCE_SEARCH_C, new AllianceSearchHandler());
+		listenProto(HS.code.ALLIANCE_APPLY_C_VALUE);
+		listenProto(HS.code.ALLIANCE_HANDLE_APPLY_C);
+		listenProto(HS.code.ALLIANCE_CHANGE_OWNER_C);
+		listenProto(HS.code.ALLIANCE_CHANGE_POS_C);
+		listenProto(HS.code.ALLIANCE_MEMBER_KICK_C);
+		listenProto(HS.code.ALLIANCE_MEMBER_LEAVE_C);
+		listenProto(HS.code.ALLIANCE_LEVEL_UP_C);
+		listenProto(HS.code.ALLIANCE_PRAY_C);
+		listenProto(HS.code.ALLIANCE_SYN_C_VALUE);
+		listenProto(HS.code.ALLIANCE_SETTING_C);
+		listenProto(HS.code.ALLIANCE_FATIGUE_GIVE_C_VALUE);
+		listenProto(HS.code.ALLIANCE_MEMBERS_C_VALUE);
+		listenProto(HS.code.ALLIANCE_APPLYS_C_VALUE);
+		listenProto(HS.code.ALLIANCE_CANCLE_APPLY_C_VALUE);
 	}
 
 	/**
@@ -38,10 +67,19 @@ public class PlayerAllianceModule extends PlayerModule {
 	protected boolean onPlayerLogin() {
 		// 加载公会数据
 		PlayerAllianceEntity allianceEntity = player.getPlayerData().loadPlayerAlliance();
+		allianceEntity.setLoginTime(HawkTime.getSeconds());
+		allianceEntity.notifyUpdate(true);
+		
+		if (allianceEntity.getRefreshTime() < HawkTime.getSeconds()) {
+			allianceEntity.clearFatigueCount();
+			allianceEntity.clearFatigueSet();
+			allianceEntity.setRefreshTime((int) HawkTime.getNextAM0Date() / 1000);
+			allianceEntity.notifyUpdate(true);
+		}
+		
 		int allianceId = allianceEntity.getAllianceId();
 		if (allianceId != 0) {
 			ImManager.getInstance().joinGuild(allianceId, player);
-			
 		}
 		return true;
 	}
@@ -51,10 +89,11 @@ public class PlayerAllianceModule extends PlayerModule {
 		if (allianceId != 0) {
 			ImManager.getInstance().quitGuild(allianceId, player.getId());
 		}
+		
+		player.getPlayerData().getPlayerAllianceEntity().setLogoutTime(HawkTime.getSeconds());	
 		return true;
 	}
-
-
+	
 	/**
 	 * 更新
 	 * 
@@ -84,6 +123,225 @@ public class PlayerAllianceModule extends PlayerModule {
 	 */
 	@Override
 	public boolean onProtocol(HawkProtocol protocol) {
+		if (protocol.checkType(HS.code.ALLIANCE_CREATE_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_CREATE, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_APPLY_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_APPLY, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_HANDLE_APPLY_C_VALUE)){
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_HANDLE_APPLY, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+			msg.pushParam(player);
+			msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_CHANGE_POS_C_VALUE)){
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_CHANGE_POS, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+			msg.pushParam(player);
+			msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_CHANGE_OWNER_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_CHANGE_OWNER, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_MEMBER_KICK_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_KICK, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_MEMBER_LEAVE_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_LEAVE, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_LEVEL_UP_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_LEVEL_UP, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_PRAY_C))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_PRAY, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_SETTING_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_SETTING, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_FATIGUE_GIVE_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_FATIGUE_GIVE, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_CANCLE_APPLY_C_VALUE))
+		{
+	 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_CANCLE_APPLY, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+	 		msg.pushParam(player);
+	 		msg.pushParam(protocol);
+			HawkApp.getInstance().postMsg(msg);
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_SYN_C_VALUE)) {
+			onAllianceSyn(HS.code.ALLIANCE_SYN_C_VALUE, protocol.parseProtocol(HSAllianceSyn.getDefaultInstance()));
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_SETTING_SYNC_C_VALUE)) {
+			onAllianceSettingSyn(HS.code.ALLIANCE_SETTING_C_VALUE, protocol.parseProtocol(HSAllianceSettingSyn.getDefaultInstance()));
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_MEMBERS_C_VALUE)) {
+			onAllianceMembersSyn(HS.code.ALLIANCE_MEMBERS_C_VALUE, protocol.parseProtocol(HSAllianceMembers.getDefaultInstance()));
+			return true;
+		}
+		else if (protocol.checkType(HS.code.ALLIANCE_APPLYS_C_VALUE)) {
+			onAllianceApplysSyn(HS.code.ALLIANCE_APPLYS_C_VALUE, protocol.parseProtocol(HSAllianceApplyList.getDefaultInstance()));
+			return true;
+		}
+		
 		return super.onProtocol(protocol);
+	}
+	
+	/**
+	 * 工会数据同步
+	 * 
+	 */
+	public boolean onAllianceSyn(int hsCode, HSAllianceSyn protocol) {
+		if (player.getAllianceId() == 0) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+			return true;
+		}
+		
+		AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(player.getAllianceId());
+		if (allianceEntity == null) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_EXIST_VALUE);
+			return true;
+		}
+		
+		// 同步工会数据
+		HSAllianceDataRet.Builder allianceData = HSAllianceDataRet.newBuilder();
+		allianceData.setAllianceData(AllianceUtil.getAllianceInfo(allianceEntity));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_DATA_S_VALUE, allianceData));
+
+		// 同步自身数据
+		HSAllianceSelfDataRet.Builder sleftData = HSAllianceSelfDataRet.newBuilder();
+		sleftData.setSelfData(AllianceUtil.getMemberInfo(player.getPlayerData().getPlayerAllianceEntity(), null));
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_SELF_DATA_S_VALUE, sleftData));
+
+		// 同步成员数据
+		//player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_MEMBERS_S_VALUE, AllianceUtil.getAllianceMembersInfo(allianceEntity, player.getId())));
+		
+		// 同步申请列表
+		//player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_APPLYS_S_VALUE, AllianceUtil.getApplyList(allianceEntity)));
+
+		// 同步完成 
+		HSAllianceSynRet.Builder response = HSAllianceSynRet.newBuilder();
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_SYN_S_VALUE, response));
+		return true;
+	}
+	
+	/**
+	 * 工会设置数据同步
+	 * 
+	 */
+	public boolean onAllianceSettingSyn(int hsCode, HSAllianceSettingSyn protocol) {
+		if (player.getAllianceId() == 0) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+			return true;
+		}
+		
+		AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(player.getAllianceId());
+		if (allianceEntity == null) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_EXIST_VALUE);
+			return true;
+		}
+		
+		HSAllianceSettingSynRet.Builder response = HSAllianceSettingSynRet.newBuilder();
+		response.setMinLevel(allianceEntity.getMinLevel());
+		response.setAutoJoin(allianceEntity.isAutoAccept());
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_SETTING_SYNC_S_VALUE, response));
+		
+		return true;
+	}
+	
+	/**
+	 * 工会成员数据同步
+	 * 
+	 */
+	public boolean onAllianceMembersSyn(int hsCode, HSAllianceMembers protocol) {
+		if (player.getAllianceId() == 0) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+			return true;
+		}
+		
+		AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(player.getAllianceId());
+		if (allianceEntity == null) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_EXIST_VALUE);
+			return true;
+		}
+		
+		PlayerAllianceEntity playerEntity = allianceEntity.getMember(player.getId());
+		if (playerEntity == null) {
+			sendError(hsCode, Status.error.SERVER_ERROR_VALUE);
+			return true;
+		}
+		
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_MEMBERS_S_VALUE, AllianceUtil.getAllianceMembersInfo(allianceEntity, playerEntity, player.getId())));
+		return true;
+	}
+	
+	/**
+	 * 工会成员数据同步
+	 * 
+	 */
+	public boolean onAllianceApplysSyn(int hsCode, HSAllianceApplyList protocol) {
+		if (player.getAllianceId() == 0) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+			return true;
+		}
+		
+		AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(player.getAllianceId());
+		if (allianceEntity == null) {
+			sendError(hsCode, Status.allianceError.ALLIANCE_NOT_EXIST_VALUE);
+			return true;
+		}
+		
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_APPLYS_S_VALUE, AllianceUtil.getApplyList(allianceEntity)));
+		return true;
 	}
 }

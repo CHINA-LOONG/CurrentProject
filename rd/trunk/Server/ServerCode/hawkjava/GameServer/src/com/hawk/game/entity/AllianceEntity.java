@@ -2,6 +2,7 @@ package com.hawk.game.entity;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -48,17 +49,44 @@ public class AllianceEntity extends HawkDBEntity {
 	@Column(name = "level")
 	private int level = 0;
 	
-	@Column(name = "exp")
-	private int exp = 0;
+	@Column(name = "memLevel")
+	private int memLevel = 0;
 	
-	@Column(name = "joinLimit")
-	private int joinLimit = 0;
+	@Column(name = "expLevel")
+	private int expLevel = 0;
+	
+	@Column(name = "coinLevel")
+	private int coinLevel = 0;
+	
+	@Column(name = "contribution")
+	private int contribution = 0;
+
+	@Column(name = "contribution0")
+	private int contribution0 = 0;
+	
+	@Column(name = "contribution1")
+	private int contribution1 = 0;
+	
+	@Column(name = "contribution2")
+	private int contribution2 = 0;
+	
+	@Column(name = "contribution3")
+	private int contribution3 = 0;
 	
 	@Column(name = "notice")
 	private String notice;
 	
-	@Column(name = "createAllianceTime")
-	private long createAllianceTime = 0;
+	@Column(name = "autoAccept")
+	private boolean autoAccept = false;
+
+	@Column(name = "minLevel")
+	private int minLevel = 0;
+	
+	@Column(name = "refreshTime")
+	protected int refreshTime = 0;
+	
+	@Column(name = "isDelete")
+	private boolean isDelete = false;
 	
 	@Column(name = "createTime", nullable = false)
 	protected int createTime = 0;
@@ -76,12 +104,19 @@ public class AllianceEntity extends HawkDBEntity {
 	 * 成员列表
 	 */
 	@Transient
-	private Set<Integer> memberList;
+	private HashMap<Integer, PlayerAllianceEntity> memberList;
+	
+	/**
+	 * 申请列表
+	 */
+	@Transient
+	private ConcurrentHashMap<Integer, AllianceApplyEntity> applyList;
 	
 	public AllianceEntity() {
-		memberList = new HashSet<Integer>();
+		memberList = new HashMap<Integer, PlayerAllianceEntity>();
+		applyList = new ConcurrentHashMap<Integer, AllianceApplyEntity>();
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -114,22 +149,75 @@ public class AllianceEntity extends HawkDBEntity {
 		this.level = level;
 	}
 
-	public int getExp() {
-		return exp;
+	public int getMemLevel() {
+		return memLevel;
 	}
 
-	public void setExp(int exp) {
-		this.exp = exp;
+	public void setMemLevel(int memLevel) {
+		this.memLevel = memLevel;
 	}
 
-	public int getJoinLimit() {
-		return joinLimit;
+	public int getExpLevel() {
+		return expLevel;
 	}
 
-	public void setJoinLimit(int joinLimit) {
-		this.joinLimit = joinLimit;
+	public void setExpLevel(int expLevel) {
+		this.expLevel = expLevel;
 	}
 
+	public int getCoinLevel() {
+		return coinLevel;
+	}
+
+	public void setCoinLevel(int coinLevel) {
+		this.coinLevel = coinLevel;
+	}
+
+	public int getContribution() {
+		return contribution;
+	}
+
+	public void setContribution(int contribution) {
+		this.contribution = contribution;
+	}
+
+	public int getContribution0() {
+		return contribution0;
+	}
+
+	public void setContribution0(int contribution0) {
+		this.contribution0 = contribution0;
+	}
+
+	public int getContribution1() {
+		return contribution1;
+	}
+
+	public void setContribution1(int contribution1) {
+		this.contribution1 = contribution1;
+	}
+
+	public int getContribution2() {
+		return contribution2;
+	}
+
+	public void setContribution2(int contribution2) {
+		this.contribution2 = contribution2;
+	}
+
+	public int getContribution3() {
+		return contribution3;
+	}
+
+	public void setContribution3(int contribution3) {
+		this.contribution3 = contribution3;
+	}
+
+	public int get3DaysContribution()
+	{
+		return contribution1 + contribution2 + contribution3;
+	}
+	
 	public String getNotice() {
 		return notice;
 	}
@@ -138,14 +226,45 @@ public class AllianceEntity extends HawkDBEntity {
 		this.notice = notice;
 	}
 
-	public Set<Integer> getMemberList() {
+	public void setMemberList(HashMap<Integer, PlayerAllianceEntity> memberList) {
+		this.memberList = memberList;
+	}
+
+	public void setApplyList(
+			ConcurrentHashMap<Integer, AllianceApplyEntity> applyList) {
+		this.applyList = applyList;
+	}
+
+	public Map<Integer, PlayerAllianceEntity> getMemberList() {
 		return memberList;
 	}
 
-	public void addMember(int memberId) {
-		memberList.add(memberId);
+	public void addMember(int memberId, PlayerAllianceEntity playerAlliance) {
+		if (memberId != 0 && playerAlliance != null) {
+			memberList.put(memberId, playerAlliance);
+		}
 	}
 
+	public void removeMember(int memberId) {
+		memberList.remove(memberId);
+	}
+
+	public PlayerAllianceEntity getMember(int memberId) {
+		return memberList.get(memberId);
+	}
+	
+	public Map<Integer, AllianceApplyEntity> getApplyList() {
+		return applyList;
+	}
+	
+	public void addApply(AllianceApplyEntity apply){
+		applyList.put(apply.getPlayerId(), apply);
+	}
+	
+	public AllianceApplyEntity removeApply(int playerId){
+		return	applyList.remove(playerId);
+	}
+	
 	public String getPlayerName() {
 		return playerName;
 	}
@@ -153,15 +272,47 @@ public class AllianceEntity extends HawkDBEntity {
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
-
-	public long getCreateAllianceTime() {
-		return createAllianceTime;
+	
+	public int getMinLevel() {
+		return minLevel;
 	}
 
-	public void setCreateAllianceTime(long createAllianceTime) {
-		this.createAllianceTime = createAllianceTime;
+	public void setMinLevel(int minLevel) {
+		this.minLevel = minLevel;
 	}
 
+	public boolean isAutoAccept() {
+		return autoAccept;
+	}
+
+	public void setAutoAccept(boolean autoAccept) {
+		this.autoAccept = autoAccept;
+	}
+
+	public int getRefreshTime() {
+		return refreshTime;
+	}
+
+	public void setRefreshTime(int refreshTime) {
+		this.refreshTime = refreshTime;
+	}
+	
+	public boolean isDelete() {
+		return isDelete;
+	}
+
+	public void setDelete(boolean isDelete) {
+		this.isDelete = isDelete;
+	}
+
+	public void dailyRefresh()
+	{
+		contribution3 = contribution2;
+		contribution2 = contribution1;
+		contribution1 = contribution0;
+		contribution0 = 0;
+	}
+	
 	@Override 
 	public int hashCode() {
 		return Objects.hashCode(name);

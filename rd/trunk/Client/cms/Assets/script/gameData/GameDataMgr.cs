@@ -248,6 +248,35 @@ public class GameDataMgr : MonoBehaviour
         //GameEventMgr.Instance.FireEvent(GameEventList.DailyRefresh);
     }
     //---------------------------------------------------------------------------------------------
+    public string GetNextTowerFloor()
+    {
+        string nextInstanceID = null;
+        TowerData curTowerData = StaticDataMgr.Instance.GetTowerData((int)curTowerType);
+        switch (curTowerType)
+        {
+            case TowerType.Tower_Shilian:
+                if(curTowerShilianFloor + 1 < curTowerData.floorList.Count)
+                {
+                    nextInstanceID = curTowerData.floorList[curTowerShilianFloor + 1];
+                }
+                break;
+            case TowerType.Tower_Juewang:
+                if (curTowerJuewangFloor + 1 < curTowerData.floorList.Count)
+                {
+                    nextInstanceID = curTowerData.floorList[curTowerJuewangFloor + 1];
+                }
+                break;
+            case TowerType.Tower_Siwang:
+                if (curTowerSiwangFloor + 1 < curTowerData.floorList.Count)
+                {
+                    nextInstanceID = curTowerData.floorList[curTowerSiwangFloor + 1];
+                }
+                break;
+        }
+
+        return nextInstanceID;
+    }
+    //---------------------------------------------------------------------------------------------
     void OnPlayerInfoSync(ProtocolMessage msg)
     {
         if (mainPlayer == null)

@@ -250,6 +250,10 @@ public class BehaviorLogger {
 		 */
 		STAGE_UP,
 		/**
+		 * 公会祈福
+		 */
+		ALLIANCE_PRAY,
+		/**
 		 * 商店物品购买
 		 */
 		SHOP_ITEM_BUY,	

@@ -18,10 +18,18 @@ public class GameConfig : MonoBehaviour {
 	public float FireFocusWpRadius = 50f;
 	public float EnmeyUnitOffsetYForBloodUI  = 1.4f;
 
-	public	float	MaxCureMagicLifeRate  = 0.75f;	
+	public	float	MaxCureMagicLifeRate  = 0.75f;
 
-	//副本入口
-	public float	BossEnemyIconScale = 1.2f;
+    //照妖镜能量相关
+    public float MirrorInitallyEnegy = 50;
+    public float MirrorMaxEnegy = 100;
+    public float UseMirrorMinEnegy = 20;
+    public float RecoveryMirrorEnegyUnit = 2;//每200毫秒恢复能量数值
+    public float ConsumMirrorEnegyUnit = 3;//
+
+
+    //副本入口
+    public float	BossEnemyIconScale = 1.2f;
 
     //心跳间隔
     public static int HeartBreakInterval = 5;

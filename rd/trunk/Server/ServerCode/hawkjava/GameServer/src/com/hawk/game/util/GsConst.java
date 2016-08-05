@@ -72,7 +72,9 @@ public class GsConst {
 	public static final int GEM_COMPOSE_COUNT = 5;	
 	// 最大合成次数
 	public static final int COMPOSE_MAX_COUNT = 10;	
-	
+	// 经验药水邮件
+	public static final String FATIGUE_MAIL_ID = "mail_sys_010";
+
 	/**
 	 * 对象类型
 	 * 
@@ -98,7 +100,10 @@ public class GsConst {
 		// 商店
 		public static final int SHOP = 3;
 		// 公会
-		public static final int ALLIANCE= 4;
+		public static final int ALLIANCE = 4;
+		// 快照
+		public static final int SNAPSHOT = 5;
+		
 	}
 
 	/**
@@ -113,7 +118,40 @@ public class GsConst {
 		public static final int PLAYER_ASSEMBLE = 4;
 		// 玩家重新连接
 		public static final int PLAYER_RECONNECT = 5;
+		// 玩家等级变化更新
+		public static final int PLAYER_LEVEL_CHANGE = 6;
 
+		// 创建公会
+		public static final int ALLIANCE_CREATE = 100;	
+		// 申请入会
+		public static final int ALLIANCE_APPLY = 101;	
+		// 操作申请
+		public static final int ALLIANCE_HANDLE_APPLY = 102;
+		// 职位变更
+		public static final int ALLIANCE_CHANGE_POS = 103;
+		// 公会会主变更
+		public static final int ALLIANCE_CHANGE_OWNER = 104;
+		// 离开公会
+		public static final int ALLIANCE_LEAVE = 105;
+		// 踢人
+		public static final int ALLIANCE_KICK = 106;
+		// 升级
+		public static final int ALLIANCE_LEVEL_UP = 107;
+		// 祈福
+		public static final int ALLIANCE_PRAY = 108;
+		// 设置
+		public static final int ALLIANCE_SETTING = 109;
+		// 疲劳只赠送
+		public static final int ALLIANCE_FATIGUE_GIVE = 110;
+		// 取消申请
+		public static final int ALLIANCE_CANCLE_APPLY = 111;
+		
+		/**
+		 * 快照管理器消息定义
+		 */
+		// 上线删除快照数据
+		public static int ONLINE_REMOVE_OFFLINE_SNAPSHOT = 202;
+		
 		// 奖励宠物
 		public static final int PRESENT_MONSTER = 1001;
 		// 玩家统计数据更新
@@ -337,8 +375,12 @@ public class GsConst {
 		public static final int ALLIANCE_POS_COMMON = 0;
 		public static final int ALLIANCE_POS_COPYMAIN = 1;
 		public static final int ALLIANCE_POS_MAIN = 2;
-		
-		
+
+		public static final int ALLIANCE_TEC_LEVEL = 1;
+		public static final int ALLIANCE_TEC_MEMBER = 2;
+		public static final int ALLIANCE_TEC_COIN = 3;
+		public static final int ALLIANCE_TEC_EXP = 4;
+
 		public static final int ONE_PAGE_SIZE = 2;
 		public static final int NOTICE_MAX_LENGTH = 200;
 	}

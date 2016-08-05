@@ -218,6 +218,10 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Column(name = "itemUseCountDaily", nullable = false)
 	private String itemUseCountDailyJson = "";
 
+	// 今日工会祈福次数
+	@Column(name = "alliancePrayCountDaily", nullable = false)
+	private int alliancePrayCountDaily = 0;
+	
 	// 商品充值次数记录
 	@Column(name = "rechargeRecord", nullable = false)
 	private String rechargeRecordJson = "";
@@ -891,11 +895,23 @@ public class StatisticsEntity  extends HawkDBEntity {
 	public void clearFatigueClaimCountDaily() {
 		fatigueClaimCountDaily = 0;
 	}
+	
+	public int getAlliancePrayCountDaily() {
+		return alliancePrayCountDaily;
+	}
 
+	public void addAlliancePrayCountDaily() {
+		++alliancePrayCountDaily;
+	}
+
+	public void clearAlliancePrayCountDaily() {
+		alliancePrayCountDaily = 0;
+	}
+	
 	public Map<String, Integer> getItemUseCountDailyMap() {
 		return itemUseCountDailyMap;
 	}
-
+	
 	/**
 	 * @return 物品使用次数，如未使用返回0
 	 */

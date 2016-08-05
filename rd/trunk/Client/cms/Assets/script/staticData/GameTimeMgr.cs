@@ -27,7 +27,11 @@ public class GameTimeMgr
 
     public int TimeStamp()
     { 
-        return (int)(Now - TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1))).TotalSeconds;
+        return (int)(DateTime.Now - TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1))).TotalSeconds;
+    }
+    public double TimeStampAsMilliseconds()
+    {
+        return (double)(DateTime.Now - TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1))).TotalMilliseconds;
     }
 
 
