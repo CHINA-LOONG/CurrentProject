@@ -35,9 +35,18 @@ public class WeakPointGroup
 
 			WeakPointRuntimeData wpRealData = new WeakPointRuntimeData();
 			wpRealData.id = weakID;
-			wpRealData.maxHp = wpRealData.hp = rowData.health;
-			wpRealData.wpState = (WeakpointState)rowData.initialStatus;
-			wpRealData.IsFind = false;
+			wpRealData.maxHp = rowData.health;
+            wpRealData.HpAttr = wpRealData.maxHp;
+           wpRealData.wpState = (WeakpointState)rowData.initialStatus;
+            if(wpRealData.wpState == WeakpointState.Normal1 ||
+                wpRealData.wpState == WeakpointState.Normal2)
+            {
+                wpRealData.IsFind = true;
+            }
+            else
+            {
+                wpRealData.IsFind = false;
+            }
 			wpRealData.staticData = rowData;
 			wpRealData.battleObject = battleObj;
 
@@ -86,7 +95,8 @@ public class WeakPointGroup
 		wpData.findWpEffect = ParticleEffect.CreateEffect (effectGo.transform, rowData.findWpEffect);
 		wpData.appraisalWpStateEffect = ParticleEffect.CreateEffect (effectGo.transform, rowData.appraisalStateEffect);
 		wpData.appraisalWpEffect = ParticleEffect.CreateEffect (effectGo.transform, "baozha_fire");
-	}
+        wpData.showoffEffect = ParticleEffect.CreateEffect(effectGo.transform, "baozha_fire");//
+    }
 	//every weakstate have one mesh
 	void InitWeakPointState(WeakPointRuntimeData wpRealData,BattleObject bo)
 	{
@@ -150,6 +160,7 @@ public class WeakPointGroup
         {
             curStateMesh.SetActive(true);
         }
+        wpRealData.CheckAndShowAppraisalEffect();
 	}
 
 

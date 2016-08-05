@@ -29,7 +29,25 @@ public class WeakPointRuntimeData
 	public BattleObject battleObject;
 	public string id;
 	public int maxHp;
-	public int hp;
+	private int hp = 0;
+    public int HpAttr
+    {
+        get { return hp; }
+        set
+        {
+            int oldHp = hp;
+            hp = value;
+            if(hp < 0)
+            {
+                hp = 0;
+            }
+            if(hp >maxHp)
+            {
+                hp = maxHp;
+            }
+            GameEventMgr.Instance.FireEvent<WeakPointRuntimeData, int>(GameEventList.RefreshWpProgress, this, oldHp);
+        }
+    }
 	public	WeakpointState	wpState;
 	public	bool	IsFind;//是否被鉴定
 
@@ -77,6 +95,7 @@ public class WeakPointRuntimeData
 	public	ParticleEffect	findWpEffect = null;// 
 	public	ParticleEffect	appraisalWpStateEffect = null;
 	public	ParticleEffect	appraisalWpEffect = null;
+    public ParticleEffect showoffEffect;//选中ui后，与ui关联的 弱点效果
 
 	//boxCollider
 	public List<WeakpointTarget>  listBoxCollider = new List<WeakpointTarget> ();
@@ -106,22 +125,6 @@ public class WeakPointRuntimeData
 		{
 			battleObject.TriggerEvent(effectId,Time.time,null);
 		}
-
-		if (lastWpstate == WeakpointState.Dead) 
-		{
-			hp = maxHp;
-			IsFind = false;
-		}
-		if (lastWpstate == WeakpointState.Normal1 &&
-			wpState == WeakpointState.Normal2) 
-		{
-			IsFind = false;
-		}
-		if (lastWpstate == WeakpointState.Normal2 &&
-			wpState == WeakpointState.Normal1)
-		{
-			IsFind = false;
-		}
 		//检测是否取消集火
 		string fireFocuWpName = BattleController.Instance.Process.fireAttackWpName;
 		if (!string.IsNullOrEmpty (fireFocuWpName))
@@ -132,7 +135,27 @@ public class WeakPointRuntimeData
 			}
 		}
 		UpdateBoxCollider ();
-	}
+        CheckAndShowAppraisalEffect();
+        if(lastWpstate != WeakpointState.Ice && wpState != WeakpointState.Ice)
+        {
+            //event or call
+            BattleController.Instance.GetUIBattle().wpUI.UpdateWeakpointIcon(this);
+        }
+    }
+
+    public  void   CheckAndShowAppraisalEffect()
+    {
+        if (wpState == WeakpointState.Normal1 || wpState == WeakpointState.Normal2)
+        {
+            this.appraisalWpStateEffect.Show(true);
+            IsFind = true;
+        }
+        else
+        {
+            this.appraisalWpStateEffect.Show(false);
+            IsFind = false;
+        }
+    }
 
 	public GameObject GetMeshWithState(WeakpointState state)
 	{
@@ -171,13 +194,15 @@ public class WeakPointRuntimeData
 
 	public bool IsCanFireFocus()
 	{
-		if (wpState == WeakpointState.Dead ||
-			wpState == WeakpointState.Hide ||
-			wpState == WeakpointState.Ice)
-		{
-			return false;
-		}
-		return true;
+        if (wpState == WeakpointState.Normal1 ||
+            wpState == WeakpointState.Normal2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 	}
 
 	public void InitBoxColliders()

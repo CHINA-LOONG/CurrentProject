@@ -622,6 +622,13 @@ public class BattleProcess : MonoBehaviour
         BattleController.Instance.processStart = true;
         //RefreshEnemyState();
 
+        //boss
+        if(BattleController.Instance.battleType == BattleType.Boss)
+        {
+            WeakPointGroup wpGroup = battleGroup.EnemyFieldList[0].wpGroup;
+            BattleController.Instance.GetUIBattle().wpUI.RefreshUI(wpGroup);
+        }
+
         StartAction();
     }
 
@@ -1267,7 +1274,7 @@ public class BattleProcess : MonoBehaviour
 		if (fireFocusTarget == unit.unit  && lastSelWp == weakpointName) 
 		{
 			//取消集火
-			HideFireFocus();
+			//HideFireFocus();
 		}
 		else
 		{

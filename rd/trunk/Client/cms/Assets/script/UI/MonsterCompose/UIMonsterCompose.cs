@@ -12,10 +12,10 @@ public class UIMonsterCompose : UIBase
     public Text textType;
     public Image imgProIcon;
 
+    public Text textTips;
     public Slider proFragments;
     public Text text_Fragments;
     public Text textFragments;
-
     public Toggle tglUseCommon;
     public Transform iconPos;
     private ItemIcon iconCommon;
@@ -118,12 +118,15 @@ public class UIMonsterCompose : UIBase
         {
             baseData = StaticDataMgr.Instance.GetUnitBaseRowData(1);
         }
-        attrPanel.textSTA.text = (Math.Floor(baseData.health * CurData.unit.healthModifyRate)).ToString();
-        attrPanel.textSTR.text = (Math.Floor(baseData.strength * CurData.unit.strengthModifyRate)).ToString();
-        attrPanel.textINT.text = (Math.Floor(baseData.intelligence * CurData.unit.intelligenceModifyRate)).ToString();
-        attrPanel.textDEF.text = (Math.Floor(baseData.defense * CurData.unit.defenseModifyRate)).ToString();
-        attrPanel.textSPD.text = (Math.Floor(baseData.speed * CurData.unit.speedModifyRate)).ToString();
+        attrPanel.textSTA.text = string.Format("{0:F0}", baseData.health * CurData.unit.healthModifyRate);
+        attrPanel.textSTR.text = string.Format("{0:F0}", baseData.strength * CurData.unit.strengthModifyRate);
+        attrPanel.textINT.text = string.Format("{0:F0}", baseData.intelligence * CurData.unit.intelligenceModifyRate);
+        attrPanel.textDEF.text = string.Format("{0:F0}", baseData.defense * CurData.unit.defenseModifyRate);
+        attrPanel.textSPD.text = string.Format("{0:F0}", baseData.speed * CurData.unit.speedModifyRate);
 
+
+        UnitRarityData rarity = StaticDataMgr.Instance.GetUnitRarityData(CurData.unit.rarity);
+        textTips.text = string.Format(StaticDataMgr.Instance.GetTextByID("handbook_tips"), rarity.commonRatio);
         curFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(CurData.unit.fragmentId);
         curCount = (curFragment == null ? 0 : curFragment.count);
         textFragments.text = string.Format("{0}/{1}", curCount, CurData.unit.fragmentCount);
@@ -246,7 +249,7 @@ public class UIMonsterCompose : UIBase
     void ClickComposeBtn()
     {
         bool useCommon = tglUseCommon.isOn;
-        ItemData itemData = null;
+        //ItemData itemData = null;
         //if (true)
         //{
         //    itemData = new ItemData() { itemId = CurData.unit.fragmentId, count = CurData.unit.fragmentCount };
@@ -257,7 +260,7 @@ public class UIMonsterCompose : UIBase
         //}
         if (!useCommon)
         {
-            if (curCount > CurData.unit.fragmentCount)
+            if (curCount >= CurData.unit.fragmentCount)
             {
                 PromptComposeMST prompt = PromptComposeMST.Open(StaticDataMgr.Instance.GetTextByID("handbook_tips1"),
                                                                 ""/*StaticDataMgr.Instance.GetTextByID("handbook_tips")*/, CurData.unit.fragmentId, CurData.unit.fragmentCount, 0, OnConfirmCompose, OnCancelCompose);
@@ -272,13 +275,13 @@ public class UIMonsterCompose : UIBase
             UnitRarityData rarity = StaticDataMgr.Instance.GetUnitRarityData(CurData.unit.rarity);
             int needComCount = (int)(rarity.commonRatio * CurData.unit.fragmentCount);
             int needCurCount = CurData.unit.fragmentCount - needComCount;
-            if (curCount > needCurCount && (curCount +comCount)>CurData.unit.fragmentCount)
+            if (curCount >= needCurCount && (curCount +comCount)>=CurData.unit.fragmentCount)
             {
                 if (comCount >= needComCount)
                 {
                     PromptComposeMST prompt = PromptComposeMST.Open(StaticDataMgr.Instance.GetTextByID("handbook_tips1"),
                                                                     string.Format(StaticDataMgr.Instance.GetTextByID("handbook_tips"), 
-                                                                    rarity.commonRatio.ToString("P")), 
+                                                                    rarity.commonRatio), 
                                                                     CurData.unit.fragmentId, 
                                                                     needCurCount, 
                                                                     needComCount, 
@@ -289,7 +292,7 @@ public class UIMonsterCompose : UIBase
                 {
                     PromptComposeMST prompt = PromptComposeMST.Open(StaticDataMgr.Instance.GetTextByID("handbook_tips1"),
                                                                     string.Format(StaticDataMgr.Instance.GetTextByID("handbook_tips"), 
-                                                                    rarity.commonRatio.ToString("P")),
+                                                                    rarity.commonRatio),
                                                                     CurData.unit.fragmentId,
                                                                     CurData.unit.fragmentCount - comCount,
                                                                     comCount, 
@@ -314,8 +317,7 @@ public class UIMonsterCompose : UIBase
     {
 
     }
-
-
+    
     void ClickCloseBtn()
     {
         UIMgr.Instance.CloseUI_(this);
@@ -362,7 +364,6 @@ public class UIMonsterCompose : UIBase
         }
 
     }
-
     void OnMonsterComposeRet(ProtocolMessage msg)
     {
         UINetRequest.Close();
@@ -371,6 +372,7 @@ public class UIMonsterCompose : UIBase
             Logger.LogError("合成宠物出现错误");
             return;
         }
+        GameEventMgr.Instance.FireEvent(GameEventList.ReloadUseFragmentNotify);
         Refresh();
     }
     

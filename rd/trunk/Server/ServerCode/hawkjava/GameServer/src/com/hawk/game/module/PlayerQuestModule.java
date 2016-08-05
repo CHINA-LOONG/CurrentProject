@@ -446,37 +446,40 @@ public class PlayerQuestModule extends PlayerModule {
 	}
 
 	@Override
-	protected boolean onRefresh(List<Integer> refreshTypeList) {
-		if (refreshTypeList.contains(GsConst.RefreshType.DAILY_PERS_REFRESH)) {
-			// 清理已过期任务
-			List<Integer> removeList = new ArrayList<Integer>();
-			Map<Integer, HSQuest> questMap = player.getPlayerData().getQuestMap();
-			Iterator<Entry<Integer, HSQuest>>  iter = questMap.entrySet().iterator();
-			while (iter.hasNext()) {
-				Entry<Integer, HSQuest> entry = iter.next();
-				int questId = entry.getValue().getQuestId();
+	protected boolean onRefresh(List<Integer> refreshIndexList) {
+		for (int index : refreshIndexList) {
+			if (0 != (GsConst.PlayerRefreshMask[index] & GsConst.RefreshMask.DAILY )) {
+				// 清理已过期任务
+				List<Integer> removeList = new ArrayList<Integer>();
+				Map<Integer, HSQuest> questMap = player.getPlayerData().getQuestMap();
+				Iterator<Entry<Integer, HSQuest>> iter = questMap.entrySet().iterator();
+				while (iter.hasNext()) {
+					Entry<Integer, HSQuest> entry = iter.next();
+					int questId = entry.getValue().getQuestId();
 
-				QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questId);
-				if (questCfg.getCycle() == GsConst.Cycle.DAILY_CYCLE) {
-					removeList.add(questId);
-					iter.remove();
+					QuestCfg questCfg = HawkConfigManager.getInstance().getConfigByKey(QuestCfg.class, questId);
+					if (questCfg.getCycle() == GsConst.Cycle.DAILY_CYCLE) {
+						removeList.add(questId);
+						iter.remove();
+					}
+				}
+				if (false == removeList.isEmpty()) {
+					HSQuestRemove.Builder builder = HSQuestRemove.newBuilder();
+					builder.addAllQuestId(removeList);
+					sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_REMOVE_S, builder));
+				}
+
+				// 接取新任务
+				Map<Integer, QuestGroup> groupMap = QuestUtil.getCycleQuestGroupMap(GsConst.Cycle.DAILY_CYCLE);
+				List<HSQuest> acceptQuestList = loadQuest(groupMap);
+				if (false == acceptQuestList.isEmpty()) {
+					HSQuestAccept.Builder acceptBuilder = HSQuestAccept.newBuilder();
+					acceptBuilder.addAllQuest(acceptQuestList);
+					sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_ACCEPT_S, acceptBuilder));
 				}
 			}
-			if (false == removeList.isEmpty()) {
-				HSQuestRemove.Builder builder = HSQuestRemove.newBuilder();
-				builder.addAllQuestId(removeList);
-				sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_REMOVE_S, builder));
-			}
-
-			// 接取新任务
-			Map<Integer, QuestGroup> groupMap = QuestUtil.getCycleQuestGroupMap(GsConst.Cycle.DAILY_CYCLE);
-			List<HSQuest> acceptQuestList = loadQuest(groupMap);
-			if (false == acceptQuestList.isEmpty()) {
-				HSQuestAccept.Builder acceptBuilder = HSQuestAccept.newBuilder();
-				acceptBuilder.addAllQuest(acceptQuestList);
-				sendProtocol(HawkProtocol.valueOf(HS.code.QUEST_ACCEPT_S, acceptBuilder));
-			}
 		}
+
 		return true;
 	}
 }

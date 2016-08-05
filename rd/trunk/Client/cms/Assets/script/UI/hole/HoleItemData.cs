@@ -9,13 +9,10 @@ public class HoleItemData : MonoBehaviour
     public Text difficultyText;
     public Text vitalityNumText;
     public GameObject leveLimit;
+    public GameObject consume;
+    public GameObject[] difficulty;
     [HideInInspector]
     public string fbID;
     [HideInInspector]
     public int holeLevel;
-    //---------------------------------------------------------------------------------------------------------------------------------------
-	public void RequestEnterHole()
-    {
-
-    }
 }

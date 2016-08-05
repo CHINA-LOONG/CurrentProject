@@ -38,6 +38,7 @@ public class UIBattle : UIBase
     public PetSwitchPage m_PetPanel;
     public DazhaoTip dazhaoTip;
     //public Text levelIndex;
+    public WeakpointUI wpUI;
 
     [HideInInspector]
     public UIFazhen uiFazhen;

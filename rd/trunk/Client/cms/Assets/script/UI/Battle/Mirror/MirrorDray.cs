@@ -285,11 +285,11 @@ public class MirrorDray : MonoBehaviour,IPointerDownHandler, IPointerUpHandler, 
 			if(finishFindTargett.Count > 0)
 			{
 				GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.FindFinishedWeakPoint,finishFindTargett);
-				GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.ShowFindMonsterInfo, finishFindTargett);
+				//GameEventMgr.Instance.FireEvent<List<MirrorTarget>>(GameEventList.ShowFindMonsterInfo, finishFindTargett);
 			}
 			else
 			{
-				GameEventMgr.Instance.FireEvent(GameEventList.HideFindMonsterInfo);
+				//GameEventMgr.Instance.FireEvent(GameEventList.HideFindMonsterInfo);
 			}
 
 			List<MirrorTarget> lastFindKeys =  new List<MirrorTarget>( lastFindWeakpoint.Keys);

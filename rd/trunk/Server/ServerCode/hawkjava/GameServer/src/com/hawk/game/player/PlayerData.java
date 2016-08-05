@@ -750,10 +750,17 @@ public class PlayerData {
 	}
 
 	/**
-	 * 同步刷新数据
+	 * 同步每日刷新数据
 	 */
 	public void syncDailyRefreshInfo() {
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.SYNC_DAILY_REFRESH_S, BuilderUtil.genSyncDailyRefreshBuilder()));
+	}
+
+	/**
+	 * 同步每月刷新数据
+	 */
+	public void syncMonthlyRefreshInfo() {
+		player.sendProtocol(HawkProtocol.valueOf(HS.code.SYNC_MONTHLY_REFRESH_S, BuilderUtil.genSyncMonthlyRefreshBuilder()));
 	}
 
 	/**

@@ -117,6 +117,7 @@ public class PlayerData : MonoBehaviour
 	public Dictionary<int,GameUnit> allUnitDic = new Dictionary<int, GameUnit> ();
     //图鉴收藏
     public List<string> petCollect = new List<string>();
+    public List<CollectUnit> collectUnit = new List<CollectUnit>();
 
     //屏蔽列表
     public List<int> mBlockPlayerList = new List<int>();
@@ -273,13 +274,62 @@ public class PlayerData : MonoBehaviour
         {
             return;
         }
+
         petCollect.Add(monsterId);
+        for (int i = 0; i < collectUnit.Count; i++)
+        {
+            if (collectUnit[i].unit.id==monsterId)
+            {
+                collectUnit[i].isExist = true;
+            }
+        }
         GameEventMgr.Instance.FireEvent(GameEventList.ReloadPetCollectNotify);
     }
-
     public void InitCollectPet(List<string> list)
     {
         petCollect = list;
+
+        List<UnitData> unitList = StaticDataMgr.Instance.GetPlayerUnitData();
+        collectUnit.Clear();
+        for (int i = 0; i < unitList.Count; i++)
+        {
+            CollectUnit collect = new CollectUnit();
+            collect.unit = unitList[i];
+            if (petCollect.Contains(unitList[i].id))
+            {
+                collect.isExist = true;
+            }
+            else
+            {
+                collect.isExist = false;
+            }
+            collectUnit.Add(collect);
+        }
+        collectUnit.Sort(SortCollect);
     }
+    static int SortCollect(CollectUnit a, CollectUnit b)
+    {
+        int result = 0;
+        if (a.unit.rarity>b.unit.rarity)
+        {
+            result = 1;
+        }
+        else if(a.unit.rarity < b.unit.rarity)
+        {
+            result = -1;
+        }
+        return result;
+    }
+    public int GetCollectCount()
+    {
+        return petCollect.Count;
+    }
+
     //---------------------------------------------------------------------------------------------
+}
+
+public class CollectUnit
+{
+    public UnitData unit;
+    public bool isExist;
 }

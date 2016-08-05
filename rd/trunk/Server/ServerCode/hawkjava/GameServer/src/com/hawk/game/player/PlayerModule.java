@@ -70,7 +70,7 @@ public class PlayerModule extends HawkObjModule {
 	 * 
 	 * @return
 	 */
-	protected boolean onRefresh(List<Integer> refreshTypeList) {
+	protected boolean onRefresh(List<Integer> refreshIndexList) {
 		return true;
 	}
 

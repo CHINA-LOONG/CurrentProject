@@ -235,32 +235,28 @@ public class PlayerShopModule extends PlayerModule{
 
 		return true;
 	}
-	
+
 	@Override
-	protected boolean onRefresh(List<Integer> refreshTypeList) {	
-		if (refreshTypeList.contains(GsConst.RefreshType.DAILY_PERS_REFRESH)) {
-			ShopEntity shopEntity = player.getPlayerData().getShopEntity();
-			shopEntity.setAllianceRefreshNums(0);
-			shopEntity.setNormalRefreshNums(0);
-			shopEntity.setOtherRefreshNums(0);
-			player.getPlayerData().syncShopRefreshTimeInfo();
+	protected boolean onRefresh(List<Integer> refreshIndexList) {
+		for (int index : refreshIndexList) {
+			int mask = GsConst.PlayerRefreshMask[index];
+			if (0 != (mask & GsConst.RefreshMask.DAILY )) {
+				ShopEntity shopEntity = player.getPlayerData().getShopEntity();
+				shopEntity.setAllianceRefreshNums(0);
+				shopEntity.setNormalRefreshNums(0);
+				shopEntity.setOtherRefreshNums(0);
+				player.getPlayerData().syncShopRefreshTimeInfo();
+
+			} else if (0 != (mask & GsConst.RefreshMask.SHOP_NORMAL)) {
+				ShopUtil.refreshShopData(Const.shopType.NORMALSHOP_VALUE, player);
+				player.getPlayerData().syncShopRefreshInfo(Const.shopType.NORMALSHOP_VALUE);
+				
+			} else if (0 != (mask & GsConst.RefreshMask.SHOP_ALLIANCE)) {
+				ShopUtil.refreshShopData(Const.shopType.ALLIANCESHOP_VALUE, player);
+				player.getPlayerData().syncShopRefreshInfo(Const.shopType.ALLIANCESHOP_VALUE);
+			}
 		}
-		
-		if (refreshTypeList.contains(GsConst.RefreshType.SHOP_REFRESH_TIME_FIRST) || 
-			refreshTypeList.contains(GsConst.RefreshType.SHOP_REFRESH_TIME_SECOND)||
-			refreshTypeList.contains(GsConst.RefreshType.SHOP_REFRESH_TIME_THIRD ))
-		{
-			ShopUtil.refreshShopData(Const.shopType.NORMALSHOP_VALUE, player);
-			player.getPlayerData().syncShopRefreshInfo(Const.shopType.NORMALSHOP_VALUE);
-		}
-		else if (refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_FIRST) || 
-				refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_SECOND)||
-				refreshTypeList.contains(GsConst.RefreshType.ALLIANCE_REFRESH_TIME_THIRD ))
-		{
-			ShopUtil.refreshShopData(Const.shopType.ALLIANCESHOP_VALUE, player);
-			player.getPlayerData().syncShopRefreshInfo(Const.shopType.ALLIANCESHOP_VALUE);
-		}
-		
+
 		return true;
 	}
 }

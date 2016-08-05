@@ -16,9 +16,10 @@ public class GameEventList
     public static string StartBattle = "StartBattle";  //param: PbStartBattle  
 	//public static string LoadBattleObjectFinished = "LoadBattleObjectFinished";//param GameUnitData
 	public static string ChangeUIBattleState = "ChangeUIBattleState";// param UIBattle.UiState
+    public static string RefreshWpProgress = "RefreshWpProgress";//param wpRun oldHp
 
-	//Mirror in the Battle
-	public static string SetMirrorModeState = "SetMirrorModeState"; //param bool 
+    //Mirror in the Battle
+    public static string SetMirrorModeState = "SetMirrorModeState"; //param bool 
 	public static string FindWeakPoint = "FindWeakPoint";//param List<MirrorTarget>
 	public static string FindFinishedWeakPoint = "FindFinishedWeakPoint";//param  List<MirrorTarget>
 	public static string MirrorOutWeakPoint = "MirrorOutWeakPoint";//param  List<MirrorTarget>
@@ -104,6 +105,7 @@ public class GameEventList
     public static string ReloadPetEquipNotify = "reloadPetEquipNotify";
     public static string ReloadEquipGemNotify = "reloadEquipGemNotify";
     public static string ReloadPetCollectNotify = "reloadPetCollectNotify";
+    public static string ReloadUseFragmentNotify = "reloadUseFragmentNotify";
 
 	//buyItem
 	public	static	string	BuyItemFinished = "BuyItemFinished";
@@ -112,5 +114,8 @@ public class GameEventList
 
     //speed service
     //public const string SpeedChangeEvent = "EventSpeedChange";
+
+    //
+    public const string DailyRefresh = "DailyRefresh";
 
 }

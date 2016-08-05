@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
+//todo:delete later
 public class MirrorFindWpInfo : MonoBehaviour
 {
 	public Text wpInfoTextRight;
@@ -39,7 +40,9 @@ public class MirrorFindWpInfo : MonoBehaviour
 
 		int property = wpRuntime.property;
 		var image = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + property) as Sprite;
-		if(image != null)
+
+        /*
+        if (image != null)
 		{
 			wpInfoImage.enabled = true;
 			wpInfoImage.sprite = image;
@@ -54,6 +57,6 @@ public class MirrorFindWpInfo : MonoBehaviour
 		{
 			wpInfoTextLeft.text = wpRuntime.staticData.DescAttr;
 			wpInfoTextRight.text = "";
-		}
+		}*/
 	}
 }

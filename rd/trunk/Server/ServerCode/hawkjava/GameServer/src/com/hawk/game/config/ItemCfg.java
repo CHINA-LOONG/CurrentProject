@@ -118,12 +118,13 @@ public class ItemCfg extends HawkConfigBase {
 	 */
 	protected final int durability;
 
-	protected final String name ;
+	// client only
+	protected final String name = null;
+	protected final String asset = null;
+	protected final String tips = null;
+	protected final String itemfounds = null;
 
-	protected final String asset ;
-
-	protected final String tips ;
-
+	// assemble
 	/**
 	 * 合成该装备需要的道具列表
 	 */
@@ -137,6 +138,7 @@ public class ItemCfg extends HawkConfigBase {
 	 */
 	private List<ItemInfo> targetItemList;
 
+	// global
 	/**
 	 * 宝石配置
 	 */
@@ -168,14 +170,6 @@ public class ItemCfg extends HawkConfigBase {
 		gemType = 0;
 		part = 0;
 		durability = 0;
-
-		name = null;
-		asset = null;
-		tips = null;
-
-		componentItemList = new LinkedList<ItemInfo>();
-		needItemList = new LinkedList<ItemInfo>();
-		targetItemList = new LinkedList<ItemInfo>();
 	}
 
 	public String getId() {
@@ -262,7 +256,6 @@ public class ItemCfg extends HawkConfigBase {
 		return gemType;
 	}
 
-	
 	public int getPart() {
 		return part;
 	}
@@ -301,8 +294,9 @@ public class ItemCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean assemble() {
-		needItemList.clear();
-		targetItemList.clear();
+		componentItemList = new LinkedList<ItemInfo>();
+		needItemList = new LinkedList<ItemInfo>();
+		targetItemList = new LinkedList<ItemInfo>();
 
 		// 合成该物品需要的道具列表
 		if (this.componentItem != null && this.componentItem.length() > 0 && !"0".equals(this.componentItem)) {

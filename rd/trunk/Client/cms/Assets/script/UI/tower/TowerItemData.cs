@@ -12,14 +12,10 @@ public enum TowerItemType
 public class TowerItemData : MonoBehaviour
 {
     public Text towerNum;
-    public GameObject towerImage;
+    public Image towerImage;
+    public GameObject selectedImage;
     [HideInInspector]
     public string itemTowerID;
     [HideInInspector]
 	public TowerItemType currType = TowerItemType.Num_Item_Type;
-    //---------------------------------------------------------------------------------------------------------------------------------------
-	public void RequestEnterTower()//进塔
-    {
-        Debug.Log("----------------------TTTT---------------------");
-    }
 }

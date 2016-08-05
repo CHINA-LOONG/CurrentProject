@@ -7,7 +7,7 @@ package com.hawk.game.util;
  */
 public class GsConst {
 	// 刷新间隔帧
-	public static final int REFRESH_PERIOD = 100;
+	public static final int REFRESH_PERIOD = 200;
 	// 没有值，无效值，不可用
 	public static final int UNUSABLE = -1;
 	// 装备在背包时monsterId
@@ -158,28 +158,21 @@ public class GsConst {
 	}
 
 	/**
-	 * 刷新类型定义
+	 * 刷新时间掩码
 	 */
-	public static class RefreshType {
-		// 全局刷新----------------------------------------------------------
-		public static final int GLOBAL_REFRESH_BEGIN = 0;
-		public static final int QUEST_GLOBAL_REFRESH = 1;
-		public static final int GLOBAL_REFRESH_END = 2;
-
-		// 个人刷新----------------------------------------------------------
-		public static final int PLAYER_REFRESH_1_BEGIN = 100;
-		public static final int DAILY_PERS_REFRESH = 101;
-		public static final int PLAYER_REFRESH_1_END = 110;
-
-		public static final int PLAYER_REFRESH_2_BEGIN = 200;
-		public static final int SHOP_REFRESH_TIME_FIRST = 201;
-		public static final int SHOP_REFRESH_TIME_SECOND = 202;
-		public static final int SHOP_REFRESH_TIME_THIRD = 203;
-		public static final int ALLIANCE_REFRESH_TIME_FIRST = 204;
-		public static final int ALLIANCE_REFRESH_TIME_SECOND = 205;
-		public static final int ALLIANCE_REFRESH_TIME_THIRD = 206;
-		public static final int PLAYER_REFRESH_2_END = 207;
+	public static class RefreshMask {
+		public static final int DAILY = 1 << 0;
+		public static final int TOWER = 1 << 1;
+		public static final int HOLE = 1 << 2;
+		public static final int SHOP_NORMAL = 1 << 3;
+		public static final int SHOP_ALLIANCE = 1 << 4;
 	}
+
+	public static int[] SysRefreshTime = {103, 104, 105, 106, 107, 108, 109};
+	public static int[] SysRefreshMask = {4, 4, 4, 4, 4, 4, 4};
+
+	public static int[] PlayerRefreshTime = {101, 102, 201, 202, 203, 204, 205, 206};
+	public static int[] PlayerRefreshMask = {1, 2, 8, 8, 8, 16, 16, 16};
 
 	/**
 	 * 属性类型定义

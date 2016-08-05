@@ -130,7 +130,7 @@ public class InstanceInfo : MonoBehaviour
 		unitIcon.SetMonsterStaticId (monsterId);
 		unitIcon.SetLevel (10);
 		unitIcon.SetStage (1);
-		if (unitData.assetID.Contains("boss_"))
+		if (unitData.assetID.Contains("boss"))
 		{
 			unitIcon.ShowBossItem(true);
 		}

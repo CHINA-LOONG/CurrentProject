@@ -23,9 +23,12 @@ public class MainStageController : MonoBehaviour
     //lise all group
     public SelectableObjGroup mTowerGroup;
     public SelectableObjGroup mHoleGroup;
+
     //ui ref
     private UIHoleEntry mUIHoleEntry;
+    private UIHole mUIHole;
     private UITowerEntry mUITowerEntry;
+    private UITower mUITower;
 
     //private float mDistanceList;
     private float mCurYawAngle = 0.0f;
@@ -39,6 +42,21 @@ public class MainStageController : MonoBehaviour
     private bool mBeginDrag;
     private float mRotAngle = 0.0f;
     private bool mDisableMove = false;
+    //---------------------------------------------------------------------------------------------
+    void OnEnable()
+    {
+        GameEventMgr.Instance.AddListener(GameEventList.DailyRefresh, OnDailyRefresh);
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnDisable()
+    {
+        GameEventMgr.Instance.RemoveListener(GameEventList.DailyRefresh, OnDailyRefresh);
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnDailyRefresh()
+    {
+        RefreshHoleState();
+    }
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
     void Start ()
@@ -61,18 +79,100 @@ public class MainStageController : MonoBehaviour
         Camera.main.transform.SetParent(mRecPos, false);
         ResetCameraPos(GameDataMgr.Instance.mainStageRotAngle);
         mBeginDrag = false;
+
+        BuildModule curModule = GameMain.Instance.GetBuildModule();
+        if (curModule != null)
+        {
+            if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Hole)
+            {
+                SetCurrentSelectGroup((int)InstanceType.Hole);
+            }
+            else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
+            {
+                SetCurrentSelectGroup((int)InstanceType.Tower);
+                mUITower = UITower.OpenTower((int)TowerType.Tower_Siwang);
+                if (curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Next)
+                {
+
+                }
+                else if (curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Retry)
+                {
+
+                }
+            }
+        }
+
+        RefreshHoleState();
+        RefreshTowerState();
         //test only
-        mTowerSiwangObj.SetState(SelectableObjState.State_Disabled);
+        //mTowerSiwangObj.SetState(SelectableObjState.State_Disabled);
     }
     //---------------------------------------------------------------------------------------------
-    public void RefreshSelectState()
+    public void RefreshHoleState()
     {
+        mHoleJingyanObj.SetState(SelectableObjState.State_Normal);
+        mHoleJinbiObj.SetState(SelectableObjState.State_Normal);
+        int count = GameDataMgr.Instance.mHoleStateList.Count;
+        for (int i = 0; i < count; ++i)
+        {
+            PB.HoleState curHoleState = GameDataMgr.Instance.mHoleStateList[i];
+            if (curHoleState.isOpen == false)
+            {
+                if (curHoleState.holeId == (int)HoleType.Hole_Exp)
+                {
+                    mHoleJingyanObj.SetState(SelectableObjState.State_Disabled);
+                }
+                else if (curHoleState.holeId == (int)HoleType.Hole_Jingbi)
+                {
+                    mHoleJinbiObj.SetState(SelectableObjState.State_Disabled);
+                }
+            }
+        }
     }
     //---------------------------------------------------------------------------------------------
-    //void OnDestroy()
-    //{
-    //    SaveCurrentRot();
-    //}
+    public void RefreshTowerState()
+    {
+        mTowerShilianObj.SetState(SelectableObjState.State_Normal);
+        mTowerSiwangObj.SetState(SelectableObjState.State_Normal);
+        mTowerJuewangObj.SetState(SelectableObjState.State_Normal);
+
+        if (IsTowerOpen(TowerType.Tower_Shilian) == false)
+        {
+            mTowerShilianObj.SetState(SelectableObjState.State_Disabled);
+        }
+
+        if (IsTowerOpen(TowerType.Tower_Juewang) == false)
+        {
+            mTowerJuewangObj.SetState(SelectableObjState.State_Disabled);
+        }
+
+        if (IsTowerOpen(TowerType.Tower_Siwang) == false)
+        {
+            mTowerSiwangObj.SetState(SelectableObjState.State_Disabled);
+        }
+    }
+    //---------------------------------------------------------------------------------------------
+    private bool IsTowerOpen(TowerType towerType)
+    {
+        TowerData curTower = StaticDataMgr.Instance.GetTowerData((int)towerType);
+        if (curTower != null)
+        {
+            return GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= curTower.level;
+        }
+        return false;
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnDestroy()
+    {
+        UIMgr mgr = UIMgr.Instance;
+        if (mgr != null)
+        {
+            mgr.DestroyUI(mUITowerEntry);
+            mgr.DestroyUI(mUIHoleEntry);
+            mgr.DestroyUI(mUIHole);
+            mgr.DestroyUI(mUITower);
+        }
+    }
     //---------------------------------------------------------------------------------------------
     // Update is called once per frame
     void Update ()
@@ -321,7 +421,7 @@ public class MainStageController : MonoBehaviour
         GameDataMgr.Instance.mainStageRotAngle = mRotAngle;
     }
     //---------------------------------------------------------------------------------------------
-    public void OnSelectableObjClicked(SelectableObj selectedObj)
+    private void OnSelectableObjClicked(SelectableObj selectedObj)
     {
         if (selectedObj != null)
         {
@@ -343,32 +443,49 @@ public class MainStageController : MonoBehaviour
             //死亡之塔
             else if (selectedObj == mTowerSiwangObj)
             {
-
+                GameDataMgr.Instance.curTowerType = TowerType.Tower_Siwang;
+                mUITower = UITower.OpenTower((int)TowerType.Tower_Siwang);
             }
             //试炼之塔
             else if (selectedObj == mTowerShilianObj)
             {
-
+                GameDataMgr.Instance.curTowerType = TowerType.Tower_Shilian;
+                mUITower = UITower.OpenTower((int)TowerType.Tower_Shilian);
             }
             //绝望之塔
             else if (selectedObj == mTowerJuewangObj)
             {
-
+                GameDataMgr.Instance.curTowerType = TowerType.Tower_Juewang;
+                mUITower = UITower.OpenTower((int)TowerType.Tower_Juewang);
             }
             //金币洞穴
             else if (selectedObj == mHoleJinbiObj)
             {
-
+                if (mUIHoleEntry.IsDailyCountFull(HoleType.Hole_Jingbi) == true)
+                {
+                    UIIm.Instance.ShowSystemHints("no play count", (int)PB.ImType.PROMPT);
+                }
+                else
+                {
+                    mUIHole = UIHole.OpenHole((int)HoleType.Hole_Jingbi);
+                }
             }
             //经验洞穴
             else if (selectedObj == mHoleJingyanObj)
             {
-
+                if (mUIHoleEntry.IsDailyCountFull(HoleType.Hole_Exp) == true)
+                {
+                    UIIm.Instance.ShowSystemHints("no play count", (int)PB.ImType.PROMPT);
+                }
+                else
+                {
+                    mUIHole = UIHole.OpenHole((int)HoleType.Hole_Exp);
+                }
             }
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void EnterSelectGroup(ref SelectableObjGroup selectGroup)
+    private void EnterSelectGroup(ref SelectableObjGroup selectGroup)
     {
         if (selectGroup != null)
         {
@@ -385,11 +502,13 @@ public class MainStageController : MonoBehaviour
             {
                 mUITowerEntry = UIMgr.Instance.OpenUI_("UITowerEntry") as UITowerEntry;
                 mUITowerEntry.SetMainStageControl(this);
+                RefreshTowerState();
             }
             else if (selectGroup == mHoleGroup)
             {
                 mUIHoleEntry = UIMgr.Instance.OpenUI_("UIHoleEntry") as UIHoleEntry;
                 mUIHoleEntry.SetMainStageControl(this);
+                RefreshHoleState();
             }
 
             //TODO: set outside instead of deactive
@@ -431,18 +550,18 @@ public class MainStageController : MonoBehaviour
     //NOTE: for return back from battle only
     public void SetCurrentSelectGroup(int instanceType)
     {
-        if (instanceType == 1)
+        if (instanceType == (int)InstanceType.Hole)
         {
             mCurrentSelectedObjGroup = mHoleGroup;
         }
-        else if (instanceType == 2)
+        else if (instanceType == (int)InstanceType.Tower)
         {
             mCurrentSelectedObjGroup = mTowerGroup;
         }
         EnterSelectGroup(ref mCurrentSelectedObjGroup);
     }
     //---------------------------------------------------------------------------------------------
-    private void ResetCameraPos(float yawAngle)
+    private void ResetCameraPos(float yawAngle) 
     {
         //Quaternion rot = Quaternion.AngleAxis(yawAngle, Vector3.up);
         //mLTransform.SetTRS(new Vector3(mRadius, 0.0f, 0.0f), rot, Vector3.one);

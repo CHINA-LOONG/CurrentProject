@@ -491,24 +491,24 @@ public class GameUnit : IComparable
         WeakPointRuntimeData wpRuntimeData = null;
         if (battleUnit.wpGroup.allWpDic.TryGetValue(id, out wpRuntimeData))
         {
-			if(wpRuntimeData.hp <=0)
+			if(wpRuntimeData.HpAttr <=0)
 			{
 				return ;
 			}
 
-            wpRuntimeData.hp += damage;
-            if (wpRuntimeData.hp <= 0)
+            wpRuntimeData.HpAttr += damage;
+            if (wpRuntimeData.HpAttr < 0)
             {
-                wpRuntimeData.hp = 0;
+                wpRuntimeData.HpAttr = 0;
                 WeakPointDeadArgs deadArgs = new WeakPointDeadArgs();
                 deadArgs.triggerTime = damageTime;
                 deadArgs.targetID = pbUnit.guid;
                 deadArgs.wpID = id;
                 GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.WeakpoingDead, deadArgs);
             }
-            else if (wpRuntimeData.hp > wpRuntimeData.maxHp)
+            else if (wpRuntimeData.HpAttr > wpRuntimeData.maxHp)
             {
-                wpRuntimeData.hp = wpRuntimeData.maxHp;
+                wpRuntimeData.HpAttr = wpRuntimeData.maxHp;
             }
         }
     }

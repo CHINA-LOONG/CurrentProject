@@ -210,6 +210,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"CHAPTER_BOX_S", Value=3016)]
       CHAPTER_BOX_S = 3016,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"HOLE_ENTER_C", Value=3101)]
+      HOLE_ENTER_C = 3101,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_ENTER_C", Value=3102)]
+      TOWER_ENTER_C = 3102,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
             
@@ -444,11 +450,14 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"SYNC_DAILY_REFRESH_S", Value=11001)]
       SYNC_DAILY_REFRESH_S = 11001,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"SYNC_MONTHLY_REFRESH_S", Value=11002)]
+      SYNC_MONTHLY_REFRESH_S = 11002,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"SYNC_SHOP_REFRESH_S", Value=11003)]
       SYNC_SHOP_REFRESH_S = 11003,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SYNC_EXP_LEFT_TIMES_S", Value=11002)]
-      SYNC_EXP_LEFT_TIMES_S = 11002
+      [global::ProtoBuf.ProtoEnum(Name=@"SYNC_EXP_LEFT_TIMES_S", Value=11004)]
+      SYNC_EXP_LEFT_TIMES_S = 11004
     }
   
 }

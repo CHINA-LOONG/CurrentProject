@@ -14,8 +14,8 @@ public class EnterInstanceParam
 public enum InstanceType
 {
     Normal = 0,
-    Tower,
-    Hole
+    Hole,
+    Tower
 }
 
 public class UIAdjustBattleTeam : UIBase
@@ -141,6 +141,10 @@ public class UIAdjustBattleTeam : UIBase
 	{
 		GameEventMgr.Instance.AddListener<ProtocolMessage> (PB.code.INSTANCE_ENTER_S.GetHashCode ().ToString(), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.HOLE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
+
+        //GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_S.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
+        //GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
 
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_C.GetHashCode().ToString(), OnSaodangFinished);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_S.GetHashCode().ToString(), OnSaodangFinished);
@@ -155,6 +159,7 @@ public class UIAdjustBattleTeam : UIBase
 	{
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.INSTANCE_ENTER_S.GetHashCode ().ToString (), OnRequestEnterInstanceFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.HOLE_ENTER_C.GetHashCode().ToString(), OnRequestEnterInstanceFinished);
 
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_C.GetHashCode().ToString(), OnSaodangFinished);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.INSTANCE_SWEEP_S.GetHashCode().ToString(), OnSaodangFinished);
@@ -277,7 +282,7 @@ public class UIAdjustBattleTeam : UIBase
 				{
 					if(unitRow.assetID.Contains("boss"))
 					{
-						subIcon.ShowBossItem(true);
+						//subIcon.ShowBossItem(true);
 						RectTransform rt = subBg.transform as RectTransform;
 						Vector2 oldPivot = rt.pivot;
 						Vector2 newPivot = new Vector2(0.5f,0.5f);
@@ -512,7 +517,7 @@ public class UIAdjustBattleTeam : UIBase
         }
         else
         {
-            customHuoliText.color = new Color(251.0f / 255.0f, 241.0f / 255.0f, 216.0f / 255.0f);
+            customHuoliText.color = new Color(96.0f / 255.0f,76.0f / 255.0f, 51.0f / 255.0f);
         }
     }
     //---------------------------------------------------------------------------------------------------------------------
@@ -954,16 +959,47 @@ public class UIAdjustBattleTeam : UIBase
 	}
 
 	void RequestEnterInstance()
-	{
-		PB.HSInstanceEnter param = new PB.HSInstanceEnter ();
-		param.instanceId = instanceId;
-        int count = enterInstanceParam.playerTeam.Count;
-        for (int i = 0; i < count; ++i)
+    {
+        GameDataMgr.Instance.curInstanceType = (int)instanceType;
+        if (instanceType == InstanceType.Normal)
         {
-            param.battleMonsterId.Add(enterInstanceParam.playerTeam[i]);
-        }
+            PB.HSInstanceEnter param = new PB.HSInstanceEnter();
+            param.instanceId = instanceId;
+            int count = enterInstanceParam.playerTeam.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                param.battleMonsterId.Add(enterInstanceParam.playerTeam[i]);
+            }
 
-		GameApp.Instance.netManager.SendMessage (PB.code.INSTANCE_ENTER_C.GetHashCode (), param);
+            GameApp.Instance.netManager.SendMessage(PB.code.INSTANCE_ENTER_C.GetHashCode(), param);
+        }
+        else if (instanceType == InstanceType.Hole)
+        {
+            PB.HSHoleEnter param = new PB.HSHoleEnter();
+            param.instanceId = instanceId;
+            int count = enterInstanceParam.playerTeam.Count;
+            UIHole hole = UIMgr.Instance.GetUI(UIHole.ViewName) as UIHole;
+            param.holeId = hole.GetSelectHoleType();
+            GameDataMgr.Instance.curHoleType = (HoleType)param.holeId;
+            for (int i = 0; i < count; ++i)
+            {
+                param.battleMonsterId.Add(enterInstanceParam.playerTeam[i]);
+            }
+
+            GameApp.Instance.netManager.SendMessage(PB.code.HOLE_ENTER_C.GetHashCode(), param);
+        }
+        else if (instanceType ==  InstanceType.Tower)
+        {
+            PB.HSTowerEnter param = new PB.HSTowerEnter();
+            int count = enterInstanceParam.playerTeam.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                param.battleMonsterId.Add(enterInstanceParam.playerTeam[i]);
+            }
+            param.towerId = (int)GameDataMgr.Instance.curTowerType;
+
+            GameApp.Instance.netManager.SendMessage(PB.code.TOWER_ENTER_C.GetHashCode(), param);
+        }
 	}
 
 	void OnRequestEnterInstanceFinished(ProtocolMessage msg)

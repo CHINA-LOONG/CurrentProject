@@ -293,7 +293,6 @@ public class PlayerMonsterModule extends PlayerModule {
 			}
 		} 
 		else {
-			List<MonsterEntity> consumeMonsterList = new ArrayList<>();
 			for (int id : consumeMonsterIdList) {
 				MonsterEntity consumeMonsterEntity = player.getPlayerData().getMonsterEntity(id);
 				if (consumeMonsterEntity == null) {
@@ -323,13 +322,12 @@ public class PlayerMonsterModule extends PlayerModule {
 						}
 					}
 				}
-				
+
 				if (false == valid) {
 					sendError(hsCode, Status.monsterError.STAGE_CONSUME);
 					return true;
 				}
 
-				consumeMonsterList.add(consumeMonsterEntity);
 				consume.addMonster(id, consumeMonsterEntity.getCfgId());
 			}
 
@@ -337,13 +335,6 @@ public class PlayerMonsterModule extends PlayerModule {
 				sendError(hsCode, Status.monsterError.STAGE_CONSUME);
 				return true;
 			}
-			
-			List<Integer> battleMonsterList = player.getEntity().getBattleMonsterList();
-			for (int i = 0; i < consumeMonsterList.size(); ++i) {
-				MonsterEntity consumeMonster = consumeMonsterList.get(i);
-				battleMonsterList.remove(Integer.valueOf(consumeMonster.getId()));
-			}
-			player.getEntity().notifyUpdate(true);
 		}
 
 		consume.consumeTakeAffectAndPush(player, Action.STAGE_UP, HS.code.MONSTER_STAGE_UP_C_VALUE);
@@ -500,9 +491,9 @@ public class PlayerMonsterModule extends PlayerModule {
 		addMonster(RewardReason.SYS_PRESENT, (MonsterEntity)msg.getParam(0));
 		return true;
 	}
-	
+
 	// 内部函数--------------------------------------------------------------------------------------
-	
+
 	private boolean addMonster(RewardReason reason, MonsterEntity monsterEntity) {
 		if (false == monsterEntity.notifyCreate()) {
 			logger.error("database error, create monster entity fail");
@@ -515,11 +506,11 @@ public class PlayerMonsterModule extends PlayerModule {
 		response.setMonster(monsterData);
 		response.setReason(reason);
 		sendProtocol(HawkProtocol.valueOf(HS.code.MONSTER_ADD_S, response));
-		
+
 		// 统计数据
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity(); 
 		boolean update = false;
-		
+
 		// collection
 		if (false == statisticsEntity.getMonsterCollectSet().contains(monsterEntity.getCfgId())) {
 			statisticsEntity.addMonsterCollect(monsterEntity.getCfgId());
@@ -534,13 +525,13 @@ public class PlayerMonsterModule extends PlayerModule {
 			statisticsEntity.setMonsterCountOverLevel(level, cur);
 			update = true;
 		}
-		
+
 		history = statisticsEntity.getMonsterMaxLevel();
 		if (level > history) {
 			statisticsEntity.setMonsterMaxLevel(level);
 			update = true;
 		}
-		
+
 		// stage
 		int stage = monsterEntity.getStage();
 		history = statisticsEntity.getMonsterCountOverStage(stage);
@@ -549,13 +540,13 @@ public class PlayerMonsterModule extends PlayerModule {
 			statisticsEntity.setMonsterCountOverStage(stage, cur);
 			update = true;
 		}
-		
+
 		history = statisticsEntity.getMonsterMaxStage();
 		if (stage > history) {
 			statisticsEntity.setMonsterMaxStage(stage);
 			update = true;
 		}
-		
+
 		// count
 		history = statisticsEntity.getMonsterMaxCount();
 		cur = player.getPlayerData().getMonsterEntityMap().size();
@@ -563,10 +554,10 @@ public class PlayerMonsterModule extends PlayerModule {
 			statisticsEntity.setMonsterMaxCount(cur);
 			update = true;
 		}
-		
+
 		if (true == update) {
 			statisticsEntity.notifyUpdate(true);
-			
+
 			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.STATISTICS_UPDATE, player.getXid());
 			msg.pushParam(GsConst.StatisticsType.OTHER_STATISTICS);
 			if (false == HawkApp.getInstance().postMsg(msg)) {

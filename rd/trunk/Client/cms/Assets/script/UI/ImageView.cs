@@ -29,7 +29,6 @@ public class ImageView : MonoBehaviour,IBeginDragHandler,
         if (model!=null)
         {
             model.DestroyModel();
-            Destroy(model.gameObject);
         }
     }
 

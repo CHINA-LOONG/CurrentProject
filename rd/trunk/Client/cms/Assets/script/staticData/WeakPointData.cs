@@ -21,24 +21,25 @@ public class WeakPointData
 
     public int initialStatus;
 
-	public int tipType;	
-	public int tipOffsetX;
-	public int tipOffsetY;
-
 	public float damageRate1;//伤害系数
 	public float damageRate2;//伤害系数
 
 	public int property1;
 	public int property2;
 
-	public string stateparam0;
+    public int stat1WpType;
+    public int state2WpType;
+
+    public string stateparam0;
+    public string state0Tips;
 	public string stateparam1;
+    public string state1Tips;
 	public string stateparam2;
+    public string state2Tips;
+
 	public string stateparam3;
 	public string stateparam4;
-
-	public string desc;
-	public int descOnRight;
+    public string state4Tips;
 
 	//
 	public Hashtable state0;
@@ -47,17 +48,6 @@ public class WeakPointData
 	public Hashtable state3;
 	public Hashtable state4;
 
-	public string DescAttr
-	{
-		get
-		{
-            if (string.IsNullOrEmpty(desc))
-            {
-                return "";
-            }
-			return StaticDataMgr.Instance.GetTextByID(desc);
-		}
-	}
 
 	public void AdaptData()
 	{

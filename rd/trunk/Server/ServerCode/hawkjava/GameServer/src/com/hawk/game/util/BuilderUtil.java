@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import org.hawk.os.HawkTime;
 import org.hawk.util.services.HawkOrderService;
 
+import com.hawk.game.ServerData;
 import com.hawk.game.config.ShopCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
@@ -31,12 +32,15 @@ import com.hawk.game.protocol.Statistics.ChapterState;
 import com.hawk.game.protocol.Statistics.HSStatisticsInfoSync;
 import com.hawk.game.protocol.Statistics.HSSyncDailyRefresh;
 import com.hawk.game.protocol.Statistics.HSSyncExpLeftTimes;
+import com.hawk.game.protocol.Statistics.HSSyncMonthlyRefresh;
 import com.hawk.game.protocol.Statistics.HSSyncShopRefresh;
+import com.hawk.game.protocol.Statistics.HoleState;
 import com.hawk.game.protocol.Statistics.ItemState;
 import com.hawk.game.protocol.Player.PlayerInfo;
 import com.hawk.game.protocol.Skill.HSSkill;
 import com.hawk.game.protocol.Statistics.InstanceState;
 import com.hawk.game.protocol.Statistics.RechargeState;
+import com.hawk.game.protocol.Statistics.TowerState;
 
 public class BuilderUtil {
 
@@ -120,6 +124,23 @@ public class BuilderUtil {
 			builder.addItemState(itemState);
 		}
 
+		for (Entry<Integer, Boolean> entry : ServerData.getInstance().getHoleStateMap().entrySet()) {
+			HoleState.Builder holeState = HoleState.newBuilder();
+			holeState.setHoleId(entry.getKey());
+			holeState.setIsOpen(entry.getValue());
+			holeState.setCountDaily(statisticsEntity.getHoleCountDaily(entry.getKey()));
+
+			builder.addHoleState(holeState);
+		}
+
+		for (Entry<Integer, Integer> entry : statisticsEntity.getTowerIndexMap().entrySet()) {
+			TowerState.Builder towerState = TowerState.newBuilder();
+			towerState.setTowerId(entry.getKey());
+			towerState.setIndex(entry.getValue());
+
+			builder.addTowerState(towerState);
+		}
+
 		return builder;
 	}
 
@@ -155,6 +176,19 @@ public class BuilderUtil {
 
 	public static HSSyncDailyRefresh.Builder genSyncDailyRefreshBuilder() {
 		HSSyncDailyRefresh.Builder builder = HSSyncDailyRefresh.newBuilder();
+
+		for (Entry<Integer, Boolean> entry : ServerData.getInstance().getHoleStateMap().entrySet()) {
+			HoleState.Builder holeState = HoleState.newBuilder();
+			holeState.setHoleId(entry.getKey());
+			holeState.setIsOpen(entry.getValue());
+
+			builder.addHoleState(holeState);
+		}
+		return builder;
+	}
+
+	public static HSSyncMonthlyRefresh.Builder genSyncMonthlyRefreshBuilder() {
+		HSSyncMonthlyRefresh.Builder builder = HSSyncMonthlyRefresh.newBuilder();
 		return builder;
 	}
 

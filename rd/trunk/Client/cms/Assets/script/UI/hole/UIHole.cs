@@ -7,7 +7,7 @@ public class UIHole : UIBase
     public static string ViewName = "UISelectDifficulty";
     public static UIHole OpenHole(int holeType)
     {
-        UIHole hole = UIMgr.Instance.OpenUI_(UIHole.ViewName, false) as UIHole;
+        UIHole hole = UIMgr.Instance.OpenUI_(UIHole.ViewName) as UIHole;
 		hole.ShowHole(holeType);
         return hole;
     }
@@ -17,6 +17,7 @@ public class UIHole : UIBase
     List<GameObject> difficultyObjs = new List<GameObject>();
     HoleData holeData;
     int[] vitalityNum;//活力消耗
+    private int mCurrentHoleType;
     //---------------------------------------------------------------------------------------------------------------------------------------
     // Use this for initialization
     void Start()
@@ -25,11 +26,18 @@ public class UIHole : UIBase
         EventTriggerListener.Get(Close).onClick = ExitClick;
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
+    public int GetSelectHoleType()
+    {
+        return mCurrentHoleType;
+    }
+    //---------------------------------------------------------------------------------------------------------------------------------------
     private void ShowHole(int holeType)
     {
+        mCurrentHoleType = holeType;
         InstanceEntry instEntry;
         HoleItemData holeItemData;
         InstanceData instanceData;
+        Sprite difficultyImageAsset = null;
         holeData = StaticDataMgr.Instance.GetHoleData(holeType);
         vitalityNum = new int[holeData.difficultyList.Count];
         for (int i = 0; i < holeData.difficultyList.Count; i++)
@@ -40,15 +48,41 @@ public class UIHole : UIBase
             EventTriggerListener.Get(difficultyObjs[i]).onClick = HoleItemClick;
 			difficultyObjs[i].transform.SetParent(fatherBox, false);
             holeItemData = difficultyObjs[i].GetComponent<HoleItemData>();
+            if (i >= 0 && i < 4)
+            {
+                for (int j = 0; j < 3 - i; j++)
+                {
+                     holeItemData.difficulty[j].SetActive(false);
+                }
+                difficultyImageAsset = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_nandukulou1");                
+            }
+            else if (i >= 4 && i < 8)
+            {
+                for (int j = 0; j < 7 - i; j++)
+                {
+                    holeItemData.difficulty[j].SetActive(false);
+                }
+                difficultyImageAsset = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_nandukulou2");  
+            }
+            else if (i >= 8)
+            {
+                for (int j = 0; j < 11 - i; j++)
+                {
+                    holeItemData.difficulty[j].SetActive(false);
+                }
+                difficultyImageAsset = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_nandukulou3");  
+            }
+            holeItemData.difficultyImage.sprite = difficultyImageAsset;
+            holeItemData.difficultyImage.SetNativeSize();
             holeItemData.fbID = holeData.difficultyList[i];
             holeItemData.difficultyText.text = StaticDataMgr.Instance.GetTextByID(instEntry.name);//难度
             holeItemData.vitalityNumText.text = vitalityNum[i].ToString();
             instanceData = StaticDataMgr.Instance.GetInstanceData(holeData.difficultyList[i]);
             holeItemData.holeLevel = instanceData.instanceProtoData.level;
             if (GameDataMgr.Instance.PlayerDataAttr.LevelAttr >= instanceData.instanceProtoData.level)
-            {
                 holeItemData.leveLimit.SetActive(false);
-            }
+            else
+                holeItemData.consume.SetActive(false);
         }
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
@@ -63,7 +97,7 @@ public class UIHole : UIBase
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
     void HoleItemClick(GameObject bnt)
-    {
+    {   
 		HoleItemData holeItemData = bnt.GetComponent<HoleItemData>();
         if (holeItemData.holeLevel > GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
         {
@@ -71,12 +105,8 @@ public class UIHole : UIBase
         }
         else
         {
-			holeItemData.RequestEnterHole();
+            UIAdjustBattleTeam.OpenWith(holeItemData.fbID, 0, InstanceType.Hole);
         }
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
-	void OnRequestEnterHoleFinished(ProtocolMessage msg)
-	{
-		
-	}
 }

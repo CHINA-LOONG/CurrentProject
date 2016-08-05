@@ -2,6 +2,8 @@ package com.hawk.game;
 
 import java.net.InetAddress;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +19,6 @@ import org.hawk.config.HawkConfigStorage;
 import org.hawk.db.HawkDBManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
-import org.hawk.net.HawkNetManager;
 import org.hawk.net.HawkSession;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.obj.HawkObjBase;
@@ -25,7 +26,6 @@ import org.hawk.obj.HawkObjManager;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkShutdownHook;
 import org.hawk.os.HawkTime;
-import org.hawk.service.HawkService;
 import org.hawk.service.HawkServiceManager;
 import org.hawk.util.services.HawkAccountService;
 import org.hawk.util.services.HawkCdkService;
@@ -39,7 +39,9 @@ import org.slf4j.LoggerFactory;
 
 import com.hawk.game.callback.ShutdownCallback;
 import com.hawk.game.config.GrayPuidCfg;
+import com.hawk.game.config.HoleCfg;
 import com.hawk.game.config.SysBasicCfg;
+import com.hawk.game.config.TimeCfg;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.RechargeEntity;
 import com.hawk.game.manager.AllianceManager;
@@ -55,13 +57,12 @@ import com.hawk.game.protocol.Login.HSReconnectRet;
 import com.hawk.game.protocol.Player.HSPlayerCreate;
 import com.hawk.game.protocol.Player.HSPlayerCreateRet;
 import com.hawk.game.protocol.Status;
-import com.hawk.game.protocol.Status.error;
-import com.hawk.game.protocol.Status.itemError;
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.protocol.SysProtocol.HSHeartBeat;
 import com.hawk.game.service.GmService;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
+import com.hawk.game.util.TimeUtil;
 
 /**
  * 游戏应用
@@ -74,7 +75,7 @@ public class GsApp extends HawkApp {
 	 * 日志记录器
 	 */
 	private static final Logger logger = LoggerFactory.getLogger("Server");
-	
+
 	/**
 	 * puid登陆时间
 	 */
@@ -111,7 +112,7 @@ public class GsApp extends HawkApp {
 
 		puidLoginTime = new ConcurrentHashMap<String, Long>();
 	}
-	
+
 	/**
 	 * 从配置文件初始化
 	 * 
@@ -140,13 +141,13 @@ public class GsApp extends HawkApp {
 
 		// 设置关服回调
 		HawkShutdownHook.getInstance().setCallback(new ShutdownCallback());
-		
+
 		// 初始化全局实例对象
 		HawkLog.logPrintln("init server data......");
 		ServerData.getInstance().init();
-		
+
 		HawkServiceManager.getInstance().registerService("GMTest", new GmService());
-		
+
 		// cdk服务初始化
 		if (GsConfig.getInstance().getCdkHost().length() > 0) {
 			HawkLog.logPrintln("install cdk service......");
@@ -159,7 +160,7 @@ public class GsApp extends HawkApp {
 		}
 		// 数据上报服务初始化并获取账号服务器地址
 		if (GsConfig.getInstance().getReportHost().length() > 0) {
-			HawkLog.logPrintln("install report service......");	
+			HawkLog.logPrintln("install report service......");
 			if (!HawkReportService.getInstance().install(
 					 GsConfig.getInstance().getGameId(), 
 					 GsConfig.getInstance().getPlatform(),
@@ -171,7 +172,7 @@ public class GsApp extends HawkApp {
 			}
 			else
 			{
-				HawkLog.logPrintln("get account server......");			
+				HawkLog.logPrintln("get account server......");
 				StringBuilder accountZmqHost = new StringBuilder();
 				IntHolder zmqPort = new IntHolder();
 				if (!HawkReportService.getInstance().fetchAccountServerInfo(appCfg, accountZmqHost, zmqPort)) {
@@ -179,7 +180,7 @@ public class GsApp extends HawkApp {
 				}
 				else
 				{
-					HawkLog.logPrintln("install account service......");				
+					HawkLog.logPrintln("install account service......");
 					if (HawkAccountService.getInstance().install(
 							GsConfig.getInstance().getGameId(), 												 
 							GsConfig.getInstance().getPlatform(), 
@@ -200,7 +201,7 @@ public class GsApp extends HawkApp {
 							HawkLog.logPrintln("get ip fail");
 						}
 					}
-				}		
+				}
 			}
 		}
 
@@ -217,7 +218,7 @@ public class GsApp extends HawkApp {
 		else {
 			HawkLog.logPrintln("install order service fail");
 		}
-		
+
 		// 初始化邮件服务
 		if (GsConfig.getInstance().getEmailUser() != null && GsConfig.getInstance().getEmailUser().length() > 0) {
 			HawkLog.logPrintln("install email service......");
@@ -225,11 +226,14 @@ public class GsApp extends HawkApp {
 					GsConfig.getInstance().getEmailUser(),
 					GsConfig.getInstance().getEmailPwd());
 		}
-	
+
 		// 公会初始化
 		//HawkLog.logPrintln("init alliance manager......");
 		//AllianceManager.getInstance().init();
-		
+
+		//开机刷新一次
+		onRefresh();
+
 		return true;
 	}
 
@@ -258,7 +262,7 @@ public class GsApp extends HawkApp {
 		createObj(HawkXID.valueOf(GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
 		return true;
 	}
-	
+
 	/**
 	 * 获取hash线程索引
 	 */
@@ -281,8 +285,9 @@ public class GsApp extends HawkApp {
 	 */
 	@Override
 	public boolean onTick() {
-		// 刷新全局数据
+		// 首先刷新全局数据
 		if (++tickIndex % GsConst.REFRESH_PERIOD == 0) {
+			tickIndex = 0;
 			onRefresh();
 		}
 
@@ -312,7 +317,7 @@ public class GsApp extends HawkApp {
 			}
 		}
 	}
-	
+
 	/**
 	 * 打印状态
 	 */
@@ -321,7 +326,7 @@ public class GsApp extends HawkApp {
 		super.printState();
 		HawkLog.errPrintln(String.format("player 数量: %d ", objMans.get(GsConst.ObjType.PLAYER).getObjBaseMap().size()));
 	}
-	
+
 	/**
 	 * 内存不足警告
 	 */
@@ -339,12 +344,12 @@ public class GsApp extends HawkApp {
 				removeCount++;
 			}
 		}
-		
+
 		HawkLog.debugPrintln(String.format("移除对象个数 %d", removeCount));
-		
+
 		System.gc();
 	}
-	
+
 	/**
 	 * 创建应用对象
 	 */
@@ -426,7 +431,7 @@ public class GsApp extends HawkApp {
 				if (session.getAppObject() == null) {
 					// 登陆协议
 					if (protocol.checkType(HS.code.LOGIN_C)) {
-	
+
 						String puid = protocol.parseProtocol(HSLogin.getDefaultInstance()).getPuid().trim().toLowerCase();
 						if (!checkPuidValid(puid, session)) {
 							return true;
@@ -473,11 +478,11 @@ public class GsApp extends HawkApp {
 						if (!reconnectPuidSession(cmd, puid, session)) {
 							return true;
 						}
-						
+
 						HSReconnectRet.Builder response = HSReconnectRet.newBuilder();
 						response.setStatus(Status.error.NONE_ERROR_VALUE);
 						session.sendProtocol(HawkProtocol.valueOf(HS.code.RECCONECT_S_VALUE, response));
-						
+
 						// 通知玩家其他模块玩家登陆成功
 						HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, ServerData.getInstance().getPlayerIdByPuid(puid));
 						HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_RECONNECT, xid);
@@ -486,7 +491,7 @@ public class GsApp extends HawkApp {
 						{
 							HawkLog.errPrintln("post player reconnect message failed: " + puid);
 						}
-						
+
 						return true;
 					} else {
 						HawkLog.errPrintln("session appobj null cannot process unlogin protocol: " + protocol.getType());
@@ -554,7 +559,7 @@ public class GsApp extends HawkApp {
 	 * 
 	 */
 	@Override
-	public void onShutdown() {	
+	public void onShutdown() {
 		HawkAccountService.getInstance().report(new HawkAccountService.UnRegitsterGameServer());
 		HawkAccountService.getInstance().stop();
 		super.onShutdown();
@@ -665,7 +670,7 @@ public class GsApp extends HawkApp {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 重新组装session
 	 * 
@@ -698,36 +703,121 @@ public class GsApp extends HawkApp {
 				objBase.unlockObj();
 			}
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * 刷新全局数据
 	 */
 	private void onRefresh() {
-		// TODO
+		Calendar curTime = HawkTime.getCalendar();
+
+		// 洞最大刷新时间
+		class HoleRefreshMaxTime {
+			long time = 0;
+			boolean isOpen = false;
+		}
+		Map<Integer, HoleRefreshMaxTime> HoleRefreshMaxTimeMap = null;
+		Map<Object, HoleCfg> holeCfgMap = null;
+		boolean refreshHole = false;
+
+		for (int index = 0; index < GsConst.SysRefreshTime.length; ++index) {
+			int timeCfgId = GsConst.SysRefreshTime[index];
+
+			Calendar nextRefreshTime = refreshTime(timeCfgId, curTime);
+			if (nextRefreshTime != null) {
+				// 刷新时间点
+				ServerData.getInstance().setRefreshTime(timeCfgId, nextRefreshTime);
+
+				// 刷新数据
+				if (0 != (GsConst.SysRefreshMask[index] & GsConst.RefreshMask.HOLE)) {
+					if (false == refreshHole) {
+						refreshHole = true;
+						// 初始化洞刷新所需临时数据
+						HoleRefreshMaxTimeMap = new HashMap<Integer, HoleRefreshMaxTime>();
+						holeCfgMap = HawkConfigManager.getInstance().getConfigMap(HoleCfg.class);
+						for (HoleCfg hole : holeCfgMap.values()) {
+							HoleRefreshMaxTimeMap.put(hole.getId(), new HoleRefreshMaxTime());
+						}
+					}
+					// 在所有洞刷新时间（都小于当前时间）中选择最接近当前时间的
+					for (HoleCfg hole : holeCfgMap.values()) {
+						Boolean isOpen = null;
+						// 洞开启时间区间左闭右开，因此先判断关闭，再判断开启
+						if (true == hole.isCloseTime(timeCfgId)) {
+							isOpen = false;
+						}
+						if (true == hole.isOpenTime(timeCfgId)) {
+							isOpen = true;
+						}
+
+						if (isOpen != null) {
+							HoleRefreshMaxTime max = HoleRefreshMaxTimeMap.get(hole.getId());
+							if (max.time < nextRefreshTime.getTimeInMillis()) {
+								max.time = nextRefreshTime.getTimeInMillis();
+								max.isOpen = isOpen;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// 刷新洞
+		if (true == refreshHole) {
+			for (Entry<Integer, HoleRefreshMaxTime> entry : HoleRefreshMaxTimeMap.entrySet()) {
+				ServerData.getInstance().setHoleOpen(entry.getKey(), entry.getValue().isOpen);
+			}
+		}
 	}
-	
+
+	/**
+	 * 刷新时间点
+	 * @return 如果该时间需要刷新，返回下一个刷新时间，否则返回null
+	 */
+	private Calendar refreshTime(int timeCfgId, Calendar curTime) {
+		TimeCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, timeCfgId);
+		if (null != timeCfg) {
+			try {
+				Calendar nextRefreshTime = HawkTime.getCalendar();
+				Calendar lastRefreshTime = ServerData.getInstance().getLastRefreshTime(timeCfgId);
+				if (null == lastRefreshTime) {
+					lastRefreshTime = HawkTime.getCalendar();
+					lastRefreshTime.setTimeInMillis(0);
+				}
+
+				boolean shouldRefresh = TimeUtil.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
+				if (true == shouldRefresh) {
+					return nextRefreshTime;
+				}
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
+		}
+
+		return null;
+	}
+
 	// 主线程运行
 	@Override
 	public void onOrderNotify(JSONObject jsonInfo) {
 		if (jsonInfo.getInt("action") == (HawkOrderService.ACTION_ORDER_DELIVER_REQUEST)) {
-			
+
 			logger.info("order notity:" + jsonInfo.toString());
-			
+
 			String puid = jsonInfo.getString("uid");
 			String orderSerial = jsonInfo.getString("tid");
 			String platform = jsonInfo.getString("type");
 			String productId = jsonInfo.getString("product_id");
-			
+
 			int playerId = ServerData.getInstance().getPlayerIdByPuid(puid);
 			if (playerId == 0) {
 				HawkOrderService.getInstance().responseDeliver(orderSerial, HawkOrderService.ORDER_PLAYER_NOT_EXIST, 0, 0);
 				return;
 			}
-			
-			if (ServerData.getInstance().isExistOrder(orderSerial)) {			
+
+			if (ServerData.getInstance().isExistOrder(orderSerial)) {
 				List<RechargeEntity> resultList = HawkDBManager.getInstance().query("from RechargeEntity where orderSerial = ?", orderSerial);
 				if (resultList != null && resultList.size() > 0) {
 					RechargeEntity rechargeEntity = resultList.get(0);
@@ -735,7 +825,7 @@ public class GsApp extends HawkApp {
 					return;
 				}
 			}
-			
+
 			HawkXID xid = HawkXID.valueOf(GsConst.ObjType.PLAYER, playerId);
 			boolean playerOffline = false;
 			HawkObjBase<HawkXID, HawkAppObj> objBase = lockObject(xid);
@@ -746,20 +836,20 @@ public class GsApp extends HawkApp {
 					if (objBase != null) {
 						objBase.lockObj();
 					}
-					
+
 					playerOffline = true;
 				}
- 		
+ 
 				if (objBase != null) {
-					Player player = (Player) objBase.getImpl();	
+					Player player = (Player) objBase.getImpl();
 					if (playerOffline == true) {
 						player.getPlayerData().setPuid(jsonInfo.getString("uid"));
 						player.getPlayerData().loadPlayer();
 						player.getPlayerData().loadStatistics();
 					}
-					
+
 					// 处理订单
-					ShopManager.getInstance().OnOrderNotify(player, puid, orderSerial, platform, productId);				
+					ShopManager.getInstance().OnOrderNotify(player, puid, orderSerial, platform, productId);
 				}
 			} finally {
 				if (objBase != null) {
@@ -767,6 +857,5 @@ public class GsApp extends HawkApp {
 				}
 			}
 		}
-		
 	}
 }

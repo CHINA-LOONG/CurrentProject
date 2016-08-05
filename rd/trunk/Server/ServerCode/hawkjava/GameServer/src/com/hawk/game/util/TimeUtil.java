@@ -246,7 +246,7 @@ public class TimeUtil {
 				}
 			}
 			// 还未开启
-			else if (value > curTime.get(scaleField)) {
+			else if (curTime.get(scaleField) < value) {
 				return false;
 			}
 			// 现在正开启，不用变

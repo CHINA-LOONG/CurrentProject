@@ -324,12 +324,12 @@ public class StatisticsEntity  extends HawkDBEntity {
 		this.playerId = playerId;
 	}
 
-	public Calendar getLastRefreshTime(int type) {
-		return refreshTimeMap.get(type);
+	public Calendar getLastRefreshTime(int timeCfgId) {
+		return refreshTimeMap.get(timeCfgId);
 	}
 
-	public void setRefreshTime(int type, Calendar time) {
-		this.refreshTimeMap.put(type, time);
+	public void setRefreshTime(int timeCfgId, Calendar time) {
+		this.refreshTimeMap.put(timeCfgId, time);
 	}
 
 	public int getFatigue() {

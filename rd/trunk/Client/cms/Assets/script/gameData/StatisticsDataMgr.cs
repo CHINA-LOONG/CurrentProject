@@ -50,6 +50,7 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_EXP_LEFT_TIMES_S.GetHashCode().ToString(), OnExpLeftTimesSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_SHOP_REFRESH_S.GetHashCode().ToString(), OnShopNeedRefreshSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_DAILY_REFRESH_S.GetHashCode().ToString(), OnDailyRefreshSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_MONTHLY_REFRESH_S.GetHashCode().ToString(), OnMonthlyRefreshSync);
         DontDestroyOnLoad(gameObject);
     }
 
@@ -59,6 +60,7 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_EXP_LEFT_TIMES_S.GetHashCode().ToString(), OnExpLeftTimesSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_SHOP_REFRESH_S.GetHashCode().ToString(), OnShopNeedRefreshSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_DAILY_REFRESH_S.GetHashCode().ToString(), OnDailyRefreshSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_MONTHLY_REFRESH_S.GetHashCode().ToString(), OnMonthlyRefreshSync);
     }
 
     void OnStatisticsInfoSync(ProtocolMessage message)
@@ -91,6 +93,7 @@ public class StatisticsDataMgr : MonoBehaviour {
             InstanceMapService.Instance.chapterState = staticsticsData.chapterState;
         }
 
+        GameDataMgr.Instance.SyncHoleData(staticsticsData.holeState);
     }
 
 	void OnExpLeftTimesSync(ProtocolMessage message)
@@ -107,7 +110,7 @@ public class StatisticsDataMgr : MonoBehaviour {
     
     void OnDailyRefreshSync(ProtocolMessage message)
     {
-       // PB.HSSyncDailyRefresh msgBody = message.GetProtocolBody<PB.HSSyncDailyRefresh>();
+        PB.HSSyncDailyRefresh msgBody = message.GetProtocolBody<PB.HSSyncDailyRefresh>();
 
         //清理物品使用次数
         GameDataMgr.Instance.PlayerDataAttr.gameItemData.SynItemState(null);
@@ -117,7 +120,13 @@ public class StatisticsDataMgr : MonoBehaviour {
         InstanceMapService.Instance.ResetCountDaily();
         //清理副本 重置次数
         InstanceMapService.Instance.instanceResetTimes = 0;
-
+        //清理通天塔洞次数
+        GameDataMgr.Instance.SyncHoleData(msgBody.holeState);
+    }
+    void OnMonthlyRefreshSync(ProtocolMessage message)
+    {
+        //PB.HSSyncMonthlyRefresh msgBody = message.GetProtocolBody<PB.HSSyncMonthlyRefresh>();
+        GameDataMgr.Instance.SyncTowerData();
     }
 
     public void ResetSkillPointState(int currentPoint, int beginTime)

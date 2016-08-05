@@ -1,26 +1,19 @@
 package com.hawk.game.module;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 
-import javax.persistence.criteria.CriteriaBuilder.Case;
-
 import org.hawk.annotation.ProtocolHandler;
 import org.hawk.config.HawkConfigManager;
-import org.hawk.log.HawkLog;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
-import org.hawk.os.HawkTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.impl.StaticLoggerBinder;
 
-import com.hawk.game.config.GoldChangeCfg;
+import com.hawk.game.ServerData;
 import com.hawk.game.config.HoleCfg;
 import com.hawk.game.config.InstanceCfg;
 import com.hawk.game.config.InstanceChapterCfg;
@@ -28,8 +21,6 @@ import com.hawk.game.config.InstanceDropCfg;
 import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.InstanceResetCfg;
 import com.hawk.game.config.InstanceRewardCfg;
-import com.hawk.game.config.ItemCfg;
-import com.hawk.game.config.PlayerAttrCfg;
 import com.hawk.game.config.RewardCfg;
 import com.hawk.game.config.TowerCfg;
 import com.hawk.game.entity.MonsterEntity;
@@ -42,7 +33,6 @@ import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const.changeType;
 import com.hawk.game.protocol.Const.itemType;
-import com.hawk.game.protocol.Const.toolType;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Instance.HSBattle;
@@ -61,10 +51,8 @@ import com.hawk.game.protocol.Instance.HSInstanceSettleRet;
 import com.hawk.game.protocol.Instance.HSInstanceSweep;
 import com.hawk.game.protocol.Instance.HSInstanceSweepRet;
 import com.hawk.game.protocol.Instance.HSTowerEnter;
-import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
-import com.hawk.game.util.GsConst.InstanceType;
 import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.InstanceUtil.InstanceChapter;
 
@@ -263,7 +251,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
 		// 洞开启
-		if (false == InstanceUtil.isHoleOpen) {
+		if (false == ServerData.getInstance().isHoleOpen(holeId)) {
 			sendError(hsCode, Status.instanceError.INSTANCE_NOT_OPEN);
 			return true;
 		}

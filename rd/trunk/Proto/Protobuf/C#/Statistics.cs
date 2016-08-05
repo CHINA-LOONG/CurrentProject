@@ -161,9 +161,9 @@ namespace PB
       get { return _isOpen; }
       set { _isOpen = value; }
     }
-    private int _countDaily = default(int);
+    private int _countDaily = (int)0;
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"countDaily", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    [global::System.ComponentModel.DefaultValue((int)0)]
     public int countDaily
     {
       get { return _countDaily; }

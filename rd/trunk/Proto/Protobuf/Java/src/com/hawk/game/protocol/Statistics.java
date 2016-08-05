@@ -3033,21 +3033,13 @@ public final class Statistics {
      */
     boolean getIsOpen();
 
-    // optional int32 countDaily = 3;
+    // optional int32 countDaily = 3 [default = 0];
     /**
-     * <code>optional int32 countDaily = 3;</code>
-     *
-     * <pre>
-     * 当isOpen==true时，包含此值
-     * </pre>
+     * <code>optional int32 countDaily = 3 [default = 0];</code>
      */
     boolean hasCountDaily();
     /**
-     * <code>optional int32 countDaily = 3;</code>
-     *
-     * <pre>
-     * 当isOpen==true时，包含此值
-     * </pre>
+     * <code>optional int32 countDaily = 3 [default = 0];</code>
      */
     int getCountDaily();
   }
@@ -3189,25 +3181,17 @@ public final class Statistics {
       return isOpen_;
     }
 
-    // optional int32 countDaily = 3;
+    // optional int32 countDaily = 3 [default = 0];
     public static final int COUNTDAILY_FIELD_NUMBER = 3;
     private int countDaily_;
     /**
-     * <code>optional int32 countDaily = 3;</code>
-     *
-     * <pre>
-     * 当isOpen==true时，包含此值
-     * </pre>
+     * <code>optional int32 countDaily = 3 [default = 0];</code>
      */
     public boolean hasCountDaily() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional int32 countDaily = 3;</code>
-     *
-     * <pre>
-     * 当isOpen==true时，包含此值
-     * </pre>
+     * <code>optional int32 countDaily = 3 [default = 0];</code>
      */
     public int getCountDaily() {
       return countDaily_;
@@ -3556,34 +3540,22 @@ public final class Statistics {
         return this;
       }
 
-      // optional int32 countDaily = 3;
+      // optional int32 countDaily = 3 [default = 0];
       private int countDaily_ ;
       /**
-       * <code>optional int32 countDaily = 3;</code>
-       *
-       * <pre>
-       * 当isOpen==true时，包含此值
-       * </pre>
+       * <code>optional int32 countDaily = 3 [default = 0];</code>
        */
       public boolean hasCountDaily() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional int32 countDaily = 3;</code>
-       *
-       * <pre>
-       * 当isOpen==true时，包含此值
-       * </pre>
+       * <code>optional int32 countDaily = 3 [default = 0];</code>
        */
       public int getCountDaily() {
         return countDaily_;
       }
       /**
-       * <code>optional int32 countDaily = 3;</code>
-       *
-       * <pre>
-       * 当isOpen==true时，包含此值
-       * </pre>
+       * <code>optional int32 countDaily = 3 [default = 0];</code>
        */
       public Builder setCountDaily(int value) {
         bitField0_ |= 0x00000004;
@@ -3592,11 +3564,7 @@ public final class Statistics {
         return this;
       }
       /**
-       * <code>optional int32 countDaily = 3;</code>
-       *
-       * <pre>
-       * 当isOpen==true时，包含此值
-       * </pre>
+       * <code>optional int32 countDaily = 3 [default = 0];</code>
        */
       public Builder clearCountDaily() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -3614,6 +3582,499 @@ public final class Statistics {
     }
 
     // @@protoc_insertion_point(class_scope:HoleState)
+  }
+
+  public interface TowerStateOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 towerId = 1;
+    /**
+     * <code>required int32 towerId = 1;</code>
+     */
+    boolean hasTowerId();
+    /**
+     * <code>required int32 towerId = 1;</code>
+     */
+    int getTowerId();
+
+    // required int32 index = 2;
+    /**
+     * <code>required int32 index = 2;</code>
+     */
+    boolean hasIndex();
+    /**
+     * <code>required int32 index = 2;</code>
+     */
+    int getIndex();
+  }
+  /**
+   * Protobuf type {@code TowerState}
+   */
+  public static final class TowerState extends
+      com.google.protobuf.GeneratedMessage
+      implements TowerStateOrBuilder {
+    // Use TowerState.newBuilder() to construct.
+    private TowerState(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private TowerState(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final TowerState defaultInstance;
+    public static TowerState getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public TowerState getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TowerState(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              towerId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              index_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Statistics.internal_static_TowerState_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Statistics.internal_static_TowerState_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Statistics.TowerState.class, com.hawk.game.protocol.Statistics.TowerState.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<TowerState> PARSER =
+        new com.google.protobuf.AbstractParser<TowerState>() {
+      public TowerState parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TowerState(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TowerState> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 towerId = 1;
+    public static final int TOWERID_FIELD_NUMBER = 1;
+    private int towerId_;
+    /**
+     * <code>required int32 towerId = 1;</code>
+     */
+    public boolean hasTowerId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 towerId = 1;</code>
+     */
+    public int getTowerId() {
+      return towerId_;
+    }
+
+    // required int32 index = 2;
+    public static final int INDEX_FIELD_NUMBER = 2;
+    private int index_;
+    /**
+     * <code>required int32 index = 2;</code>
+     */
+    public boolean hasIndex() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 index = 2;</code>
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    private void initFields() {
+      towerId_ = 0;
+      index_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasTowerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasIndex()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, towerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, index_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, towerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, index_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Statistics.TowerState parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.TowerState parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.TowerState parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Statistics.TowerState parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.TowerState parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.TowerState parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.TowerState parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.TowerState parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Statistics.TowerState parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Statistics.TowerState parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Statistics.TowerState prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code TowerState}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Statistics.TowerStateOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Statistics.internal_static_TowerState_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Statistics.internal_static_TowerState_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Statistics.TowerState.class, com.hawk.game.protocol.Statistics.TowerState.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Statistics.TowerState.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        towerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        index_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Statistics.internal_static_TowerState_descriptor;
+      }
+
+      public com.hawk.game.protocol.Statistics.TowerState getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Statistics.TowerState.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Statistics.TowerState build() {
+        com.hawk.game.protocol.Statistics.TowerState result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Statistics.TowerState buildPartial() {
+        com.hawk.game.protocol.Statistics.TowerState result = new com.hawk.game.protocol.Statistics.TowerState(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.towerId_ = towerId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.index_ = index_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Statistics.TowerState) {
+          return mergeFrom((com.hawk.game.protocol.Statistics.TowerState)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Statistics.TowerState other) {
+        if (other == com.hawk.game.protocol.Statistics.TowerState.getDefaultInstance()) return this;
+        if (other.hasTowerId()) {
+          setTowerId(other.getTowerId());
+        }
+        if (other.hasIndex()) {
+          setIndex(other.getIndex());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasTowerId()) {
+          
+          return false;
+        }
+        if (!hasIndex()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Statistics.TowerState parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Statistics.TowerState) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 towerId = 1;
+      private int towerId_ ;
+      /**
+       * <code>required int32 towerId = 1;</code>
+       */
+      public boolean hasTowerId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 towerId = 1;</code>
+       */
+      public int getTowerId() {
+        return towerId_;
+      }
+      /**
+       * <code>required int32 towerId = 1;</code>
+       */
+      public Builder setTowerId(int value) {
+        bitField0_ |= 0x00000001;
+        towerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 towerId = 1;</code>
+       */
+      public Builder clearTowerId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        towerId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 index = 2;
+      private int index_ ;
+      /**
+       * <code>required int32 index = 2;</code>
+       */
+      public boolean hasIndex() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 index = 2;</code>
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <code>required int32 index = 2;</code>
+       */
+      public Builder setIndex(int value) {
+        bitField0_ |= 0x00000002;
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 index = 2;</code>
+       */
+      public Builder clearIndex() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:TowerState)
+    }
+
+    static {
+      defaultInstance = new TowerState(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:TowerState)
   }
 
   public interface HSStatisticsInfoSyncOrBuilder
@@ -4057,6 +4518,51 @@ public final class Statistics {
      */
     com.hawk.game.protocol.Statistics.HoleStateOrBuilder getHoleStateOrBuilder(
         int index);
+
+    // repeated .TowerState towerState = 17;
+    /**
+     * <code>repeated .TowerState towerState = 17;</code>
+     *
+     * <pre>
+     * 塔完成层数
+     * </pre>
+     */
+    java.util.List<com.hawk.game.protocol.Statistics.TowerState> 
+        getTowerStateList();
+    /**
+     * <code>repeated .TowerState towerState = 17;</code>
+     *
+     * <pre>
+     * 塔完成层数
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.TowerState getTowerState(int index);
+    /**
+     * <code>repeated .TowerState towerState = 17;</code>
+     *
+     * <pre>
+     * 塔完成层数
+     * </pre>
+     */
+    int getTowerStateCount();
+    /**
+     * <code>repeated .TowerState towerState = 17;</code>
+     *
+     * <pre>
+     * 塔完成层数
+     * </pre>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Statistics.TowerStateOrBuilder> 
+        getTowerStateOrBuilderList();
+    /**
+     * <code>repeated .TowerState towerState = 17;</code>
+     *
+     * <pre>
+     * 塔完成层数
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.TowerStateOrBuilder getTowerStateOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code HSStatisticsInfoSync}
@@ -4220,6 +4726,14 @@ public final class Statistics {
               holeState_.add(input.readMessage(com.hawk.game.protocol.Statistics.HoleState.PARSER, extensionRegistry));
               break;
             }
+            case 138: {
+              if (!((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
+                towerState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.TowerState>();
+                mutable_bitField0_ |= 0x00010000;
+              }
+              towerState_.add(input.readMessage(com.hawk.game.protocol.Statistics.TowerState.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4242,6 +4756,9 @@ public final class Statistics {
         }
         if (((mutable_bitField0_ & 0x00008000) == 0x00008000)) {
           holeState_ = java.util.Collections.unmodifiableList(holeState_);
+        }
+        if (((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
+          towerState_ = java.util.Collections.unmodifiableList(towerState_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -4860,6 +5377,62 @@ public final class Statistics {
       return holeState_.get(index);
     }
 
+    // repeated .TowerState towerState = 17;
+    public static final int TOWERSTATE_FIELD_NUMBER = 17;
+    private java.util.List<com.hawk.game.protocol.Statistics.TowerState> towerState_;
+    /**
+     * <code>repeated .TowerState towerState = 17;</code>
+     *
+     * <pre>
+     * 塔完成层数
+     * </pre>
+     */
+    public java.util.List<com.hawk.game.protocol.Statistics.TowerState> getTowerStateList() {
+      return towerState_;
+    }
+    /**
+     * <code>repeated .TowerState towerState = 17;</code>
+     *
+     * <pre>
+     * 塔完成层数
+     * </pre>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Statistics.TowerStateOrBuilder> 
+        getTowerStateOrBuilderList() {
+      return towerState_;
+    }
+    /**
+     * <code>repeated .TowerState towerState = 17;</code>
+     *
+     * <pre>
+     * 塔完成层数
+     * </pre>
+     */
+    public int getTowerStateCount() {
+      return towerState_.size();
+    }
+    /**
+     * <code>repeated .TowerState towerState = 17;</code>
+     *
+     * <pre>
+     * 塔完成层数
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.TowerState getTowerState(int index) {
+      return towerState_.get(index);
+    }
+    /**
+     * <code>repeated .TowerState towerState = 17;</code>
+     *
+     * <pre>
+     * 塔完成层数
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.TowerStateOrBuilder getTowerStateOrBuilder(
+        int index) {
+      return towerState_.get(index);
+    }
+
     private void initFields() {
       instanceState_ = java.util.Collections.emptyList();
       chapterState_ = com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
@@ -4877,6 +5450,7 @@ public final class Statistics {
       itemState_ = java.util.Collections.emptyList();
       instanceResetCount_ = 0;
       holeState_ = java.util.Collections.emptyList();
+      towerState_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4955,6 +5529,12 @@ public final class Statistics {
           return false;
         }
       }
+      for (int i = 0; i < getTowerStateCount(); i++) {
+        if (!getTowerState(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -5009,6 +5589,9 @@ public final class Statistics {
       }
       for (int i = 0; i < holeState_.size(); i++) {
         output.writeMessage(16, holeState_.get(i));
+      }
+      for (int i = 0; i < towerState_.size(); i++) {
+        output.writeMessage(17, towerState_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -5087,6 +5670,10 @@ public final class Statistics {
       for (int i = 0; i < holeState_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(16, holeState_.get(i));
+      }
+      for (int i = 0; i < towerState_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, towerState_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5202,6 +5789,7 @@ public final class Statistics {
           getExpLeftTimesFieldBuilder();
           getItemStateFieldBuilder();
           getHoleStateFieldBuilder();
+          getTowerStateFieldBuilder();
         }
       }
       private static Builder create() {
@@ -5265,6 +5853,12 @@ public final class Statistics {
           bitField0_ = (bitField0_ & ~0x00008000);
         } else {
           holeStateBuilder_.clear();
+        }
+        if (towerStateBuilder_ == null) {
+          towerState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00010000);
+        } else {
+          towerStateBuilder_.clear();
         }
         return this;
       }
@@ -5387,6 +5981,15 @@ public final class Statistics {
           result.holeState_ = holeState_;
         } else {
           result.holeState_ = holeStateBuilder_.build();
+        }
+        if (towerStateBuilder_ == null) {
+          if (((bitField0_ & 0x00010000) == 0x00010000)) {
+            towerState_ = java.util.Collections.unmodifiableList(towerState_);
+            bitField0_ = (bitField0_ & ~0x00010000);
+          }
+          result.towerState_ = towerState_;
+        } else {
+          result.towerState_ = towerStateBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -5553,6 +6156,32 @@ public final class Statistics {
             }
           }
         }
+        if (towerStateBuilder_ == null) {
+          if (!other.towerState_.isEmpty()) {
+            if (towerState_.isEmpty()) {
+              towerState_ = other.towerState_;
+              bitField0_ = (bitField0_ & ~0x00010000);
+            } else {
+              ensureTowerStateIsMutable();
+              towerState_.addAll(other.towerState_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.towerState_.isEmpty()) {
+            if (towerStateBuilder_.isEmpty()) {
+              towerStateBuilder_.dispose();
+              towerStateBuilder_ = null;
+              towerState_ = other.towerState_;
+              bitField0_ = (bitField0_ & ~0x00010000);
+              towerStateBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getTowerStateFieldBuilder() : null;
+            } else {
+              towerStateBuilder_.addAllMessages(other.towerState_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -5626,6 +6255,12 @@ public final class Statistics {
         }
         for (int i = 0; i < getHoleStateCount(); i++) {
           if (!getHoleState(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getTowerStateCount(); i++) {
+          if (!getTowerState(i).isInitialized()) {
             
             return false;
           }
@@ -7825,6 +8460,318 @@ public final class Statistics {
         return holeStateBuilder_;
       }
 
+      // repeated .TowerState towerState = 17;
+      private java.util.List<com.hawk.game.protocol.Statistics.TowerState> towerState_ =
+        java.util.Collections.emptyList();
+      private void ensureTowerStateIsMutable() {
+        if (!((bitField0_ & 0x00010000) == 0x00010000)) {
+          towerState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.TowerState>(towerState_);
+          bitField0_ |= 0x00010000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.TowerState, com.hawk.game.protocol.Statistics.TowerState.Builder, com.hawk.game.protocol.Statistics.TowerStateOrBuilder> towerStateBuilder_;
+
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public java.util.List<com.hawk.game.protocol.Statistics.TowerState> getTowerStateList() {
+        if (towerStateBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(towerState_);
+        } else {
+          return towerStateBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public int getTowerStateCount() {
+        if (towerStateBuilder_ == null) {
+          return towerState_.size();
+        } else {
+          return towerStateBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.TowerState getTowerState(int index) {
+        if (towerStateBuilder_ == null) {
+          return towerState_.get(index);
+        } else {
+          return towerStateBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public Builder setTowerState(
+          int index, com.hawk.game.protocol.Statistics.TowerState value) {
+        if (towerStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTowerStateIsMutable();
+          towerState_.set(index, value);
+          onChanged();
+        } else {
+          towerStateBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public Builder setTowerState(
+          int index, com.hawk.game.protocol.Statistics.TowerState.Builder builderForValue) {
+        if (towerStateBuilder_ == null) {
+          ensureTowerStateIsMutable();
+          towerState_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          towerStateBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public Builder addTowerState(com.hawk.game.protocol.Statistics.TowerState value) {
+        if (towerStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTowerStateIsMutable();
+          towerState_.add(value);
+          onChanged();
+        } else {
+          towerStateBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public Builder addTowerState(
+          int index, com.hawk.game.protocol.Statistics.TowerState value) {
+        if (towerStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTowerStateIsMutable();
+          towerState_.add(index, value);
+          onChanged();
+        } else {
+          towerStateBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public Builder addTowerState(
+          com.hawk.game.protocol.Statistics.TowerState.Builder builderForValue) {
+        if (towerStateBuilder_ == null) {
+          ensureTowerStateIsMutable();
+          towerState_.add(builderForValue.build());
+          onChanged();
+        } else {
+          towerStateBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public Builder addTowerState(
+          int index, com.hawk.game.protocol.Statistics.TowerState.Builder builderForValue) {
+        if (towerStateBuilder_ == null) {
+          ensureTowerStateIsMutable();
+          towerState_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          towerStateBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public Builder addAllTowerState(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Statistics.TowerState> values) {
+        if (towerStateBuilder_ == null) {
+          ensureTowerStateIsMutable();
+          super.addAll(values, towerState_);
+          onChanged();
+        } else {
+          towerStateBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public Builder clearTowerState() {
+        if (towerStateBuilder_ == null) {
+          towerState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00010000);
+          onChanged();
+        } else {
+          towerStateBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public Builder removeTowerState(int index) {
+        if (towerStateBuilder_ == null) {
+          ensureTowerStateIsMutable();
+          towerState_.remove(index);
+          onChanged();
+        } else {
+          towerStateBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.TowerState.Builder getTowerStateBuilder(
+          int index) {
+        return getTowerStateFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.TowerStateOrBuilder getTowerStateOrBuilder(
+          int index) {
+        if (towerStateBuilder_ == null) {
+          return towerState_.get(index);  } else {
+          return towerStateBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Statistics.TowerStateOrBuilder> 
+           getTowerStateOrBuilderList() {
+        if (towerStateBuilder_ != null) {
+          return towerStateBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(towerState_);
+        }
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.TowerState.Builder addTowerStateBuilder() {
+        return getTowerStateFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Statistics.TowerState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.TowerState.Builder addTowerStateBuilder(
+          int index) {
+        return getTowerStateFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Statistics.TowerState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .TowerState towerState = 17;</code>
+       *
+       * <pre>
+       * 塔完成层数
+       * </pre>
+       */
+      public java.util.List<com.hawk.game.protocol.Statistics.TowerState.Builder> 
+           getTowerStateBuilderList() {
+        return getTowerStateFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.TowerState, com.hawk.game.protocol.Statistics.TowerState.Builder, com.hawk.game.protocol.Statistics.TowerStateOrBuilder> 
+          getTowerStateFieldBuilder() {
+        if (towerStateBuilder_ == null) {
+          towerStateBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Statistics.TowerState, com.hawk.game.protocol.Statistics.TowerState.Builder, com.hawk.game.protocol.Statistics.TowerStateOrBuilder>(
+                  towerState_,
+                  ((bitField0_ & 0x00010000) == 0x00010000),
+                  getParentForChildren(),
+                  isClean());
+          towerState_ = null;
+        }
+        return towerStateBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:HSStatisticsInfoSync)
     }
 
@@ -9882,6 +10829,11 @@ public final class Statistics {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HoleState_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_TowerState_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_TowerState_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSStatisticsInfoSync_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -9924,25 +10876,27 @@ public final class Statistics {
       "ardBoxState\030\006 \003(\005\"4\n\rRechargeState\022\021\n\tpr" +
       "oductId\030\001 \002(\t\022\020\n\010buyTimes\030\002 \002(\005\"2\n\tItemS" +
       "tate\022\016\n\006itemId\030\001 \002(\t\022\025\n\ruseCountDaily\030\002 " +
-      "\002(\005\"?\n\tHoleState\022\016\n\006holeId\030\001 \002(\005\022\016\n\006isOp",
-      "en\030\002 \002(\010\022\022\n\ncountDaily\030\003 \001(\005\"\334\003\n\024HSStati" +
-      "sticsInfoSync\022%\n\rinstanceState\030\001 \003(\0132\016.I" +
-      "nstanceState\022#\n\014chapterState\030\002 \002(\0132\r.Cha" +
-      "pterState\022\026\n\016monsterCollect\030\003 \003(\t\022\017\n\007fat" +
-      "igue\030\004 \002(\005\022\030\n\020fatigueBeginTime\030\005 \002(\005\022\022\n\n" +
-      "skillPoint\030\006 \002(\005\022\033\n\023skillPointBeginTime\030" +
-      "\007 \002(\005\022\021\n\ttimeStamp\030\010 \001(\005\022\026\n\016orderServerK" +
-      "ey\030\t \002(\t\022%\n\rrechargeState\030\n \003(\0132\016.Rechar" +
-      "geState\022\025\n\rmonthCardLeft\030\013 \002(\005\022\026\n\016gold2C" +
-      "oinTimes\030\014 \002(\005\022)\n\014expLeftTimes\030\r \002(\0132\023.H",
-      "SSyncExpLeftTimes\022\035\n\titemState\030\016 \003(\0132\n.I" +
-      "temState\022\032\n\022instanceResetCount\030\017 \002(\005\022\035\n\t" +
-      "holeState\030\020 \003(\0132\n.HoleState\"3\n\022HSSyncDai" +
-      "lyRefresh\022\035\n\tholeState\030\001 \003(\0132\n.HoleState" +
-      "\"\026\n\024HSSyncMonthlyRefresh\"%\n\021HSSyncShopRe" +
-      "fresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSyncExpLeft" +
-      "Times\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\rtripleEx" +
-      "pLeft\030\002 \002(\005B\030\n\026com.hawk.game.protocol"
+      "\002(\005\"B\n\tHoleState\022\016\n\006holeId\030\001 \002(\005\022\016\n\006isOp",
+      "en\030\002 \002(\010\022\025\n\ncountDaily\030\003 \001(\005:\0010\",\n\nTower" +
+      "State\022\017\n\007towerId\030\001 \002(\005\022\r\n\005index\030\002 \002(\005\"\375\003" +
+      "\n\024HSStatisticsInfoSync\022%\n\rinstanceState\030" +
+      "\001 \003(\0132\016.InstanceState\022#\n\014chapterState\030\002 " +
+      "\002(\0132\r.ChapterState\022\026\n\016monsterCollect\030\003 \003" +
+      "(\t\022\017\n\007fatigue\030\004 \002(\005\022\030\n\020fatigueBeginTime\030" +
+      "\005 \002(\005\022\022\n\nskillPoint\030\006 \002(\005\022\033\n\023skillPointB" +
+      "eginTime\030\007 \002(\005\022\021\n\ttimeStamp\030\010 \001(\005\022\026\n\016ord" +
+      "erServerKey\030\t \002(\t\022%\n\rrechargeState\030\n \003(\013" +
+      "2\016.RechargeState\022\025\n\rmonthCardLeft\030\013 \002(\005\022",
+      "\026\n\016gold2CoinTimes\030\014 \002(\005\022)\n\014expLeftTimes\030" +
+      "\r \002(\0132\023.HSSyncExpLeftTimes\022\035\n\titemState\030" +
+      "\016 \003(\0132\n.ItemState\022\032\n\022instanceResetCount\030" +
+      "\017 \002(\005\022\035\n\tholeState\030\020 \003(\0132\n.HoleState\022\037\n\n" +
+      "towerState\030\021 \003(\0132\013.TowerState\"3\n\022HSSyncD" +
+      "ailyRefresh\022\035\n\tholeState\030\001 \003(\0132\n.HoleSta" +
+      "te\"\026\n\024HSSyncMonthlyRefresh\"%\n\021HSSyncShop" +
+      "Refresh\022\020\n\010shopType\030\001 \002(\005\"B\n\022HSSyncExpLe" +
+      "ftTimes\022\025\n\rdoubleExpLeft\030\001 \002(\005\022\025\n\rtriple" +
+      "ExpLeft\030\002 \002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9979,32 +10933,38 @@ public final class Statistics {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HoleState_descriptor,
               new java.lang.String[] { "HoleId", "IsOpen", "CountDaily", });
-          internal_static_HSStatisticsInfoSync_descriptor =
+          internal_static_TowerState_descriptor =
             getDescriptor().getMessageTypes().get(5);
+          internal_static_TowerState_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_TowerState_descriptor,
+              new java.lang.String[] { "TowerId", "Index", });
+          internal_static_HSStatisticsInfoSync_descriptor =
+            getDescriptor().getMessageTypes().get(6);
           internal_static_HSStatisticsInfoSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSStatisticsInfoSync_descriptor,
-              new java.lang.String[] { "InstanceState", "ChapterState", "MonsterCollect", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "ItemState", "InstanceResetCount", "HoleState", });
+              new java.lang.String[] { "InstanceState", "ChapterState", "MonsterCollect", "Fatigue", "FatigueBeginTime", "SkillPoint", "SkillPointBeginTime", "TimeStamp", "OrderServerKey", "RechargeState", "MonthCardLeft", "Gold2CoinTimes", "ExpLeftTimes", "ItemState", "InstanceResetCount", "HoleState", "TowerState", });
           internal_static_HSSyncDailyRefresh_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_HSSyncDailyRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSyncDailyRefresh_descriptor,
               new java.lang.String[] { "HoleState", });
           internal_static_HSSyncMonthlyRefresh_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_HSSyncMonthlyRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSyncMonthlyRefresh_descriptor,
               new java.lang.String[] { });
           internal_static_HSSyncShopRefresh_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_HSSyncShopRefresh_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSyncShopRefresh_descriptor,
               new java.lang.String[] { "ShopType", });
           internal_static_HSSyncExpLeftTimes_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_HSSyncExpLeftTimes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSSyncExpLeftTimes_descriptor,

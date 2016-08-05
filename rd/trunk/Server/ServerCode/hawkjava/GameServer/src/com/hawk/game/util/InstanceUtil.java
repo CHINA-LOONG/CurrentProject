@@ -24,8 +24,6 @@ public class InstanceUtil {
 	 */
 	public static Map<Integer, InstanceChapter> chapterMap = new HashMap<>();
 
-	public static volatile boolean isHoleOpen = true;
-
 	// 构造阶段---------------------------------------------------------------------
 
 	/**

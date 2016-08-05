@@ -63,12 +63,13 @@ public class WeakPointController : MonoBehaviour
 			{
 				wpRuntime.findWpEffect.Show(!isFinished);
 			}
-
-			if(wpRuntime.appraisalWpStateEffect != null)
+            
+			if(isFinished && wpRuntime.appraisalWpStateEffect != null)
 			{
 				wpRuntime.appraisalWpStateEffect.Show(isFinished);
 			}
-		}
+            BattleController.Instance.GetUIBattle().wpUI.ShowOffIcon(wpRuntime.id, true);
+        }
 	}
 
 	void OnFindFinishedWeakPoint(List<MirrorTarget> finishList)
@@ -88,10 +89,11 @@ public class WeakPointController : MonoBehaviour
 			if(  !wpRuntime.IsFind )
 			{
 				wpRuntime.IsFind = true;
-				if(null != wpRuntime.appraisalWpEffect &&
+
+                if (null != wpRuntime.appraisalWpEffect &&
 				   wpRuntime.appraisalWpStateEffect != null)
 				{
-					wpRuntime.appraisalWpEffect.Show(false);
+					//wpRuntime.appraisalWpEffect.Show(false);
 					wpRuntime.appraisalWpEffect.Show(true);
 				}
 			}
@@ -120,7 +122,8 @@ public class WeakPointController : MonoBehaviour
 					GameEventMgr.Instance.FireEvent<int>(GameEventList.ShowHideMonster, bo.unit.pbUnit.guid);
 				}
 			}
-		}
+            BattleController.Instance.GetUIBattle().wpUI.ShowOffIcon(wpRuntime.id, true);
+        }
 	}
 
 	void OnMirrorOutFromWeakPoint(List<MirrorTarget> outList)
@@ -140,11 +143,12 @@ public class WeakPointController : MonoBehaviour
 			{
 				wpRuntime.findWpEffect.Show(false);
 			}
-			
-			if(wpRuntime.appraisalWpStateEffect != null)
-			{
-				wpRuntime.appraisalWpStateEffect.Show(false);
-			}
+
+            //if(wpRuntime.appraisalWpStateEffect != null)
+            //{
+            //wpRuntime.appraisalWpStateEffect.Show(false);
+            //}
+            BattleController.Instance.GetUIBattle().wpUI.ShowOffIcon(wpRuntime.id, false);
 		}
 	}
 

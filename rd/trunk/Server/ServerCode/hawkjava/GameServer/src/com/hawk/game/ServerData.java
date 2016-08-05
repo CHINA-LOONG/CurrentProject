@@ -1,6 +1,8 @@
 package com.hawk.game;
 
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -8,12 +10,15 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.hawk.config.HawkConfigManager;
 import org.hawk.db.HawkDBManager;
 import org.hawk.log.HawkLog;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.hawk.game.config.HoleCfg;
 
 /**
  * 服务器数据
@@ -36,27 +41,36 @@ public class ServerData {
 	/**
 	 * puid和玩家id的映射表
 	 */
-	protected Map<String, Integer> puidMap;
+	protected ConcurrentHashMap<String, Integer> puidMap;
 	/**
 	 * 玩家名和玩家id的映射表
 	 */
-	protected Map<String, Integer> nameMap;
+	protected ConcurrentHashMap<String, Integer> nameMap;
 	/**
 	 * 玩家id和puid的映射表
 	 */
-	protected Map<Integer, String> idMap;
-	/**
-	 * 
-	 */
-	protected Set<String> rechargeList;
+	protected ConcurrentHashMap<Integer, String> idMap;
 	/**
 	 * 在线玩家列表
 	 */
-	protected Map<Integer, Integer> onlineMap;
+	protected ConcurrentHashMap<Integer, Integer> onlineMap;
 	/**
 	 * 无效设备
 	 */
-	protected Map<String, String> disablePhoneMap;
+	protected ConcurrentHashMap<String, String> disablePhoneMap;
+	/**
+	 * 系统刷新时间的映射表
+	 * 只有主线程使用
+	 */
+	protected HashMap<Integer, Calendar> refreshTimeMap;
+	/**
+	 * 已付费订单列表
+	 */
+	protected Set<String> rechargeList;
+	/**
+	 * 洞开启状态的映射表
+	 */
+	protected ConcurrentHashMap<Integer, Boolean> holeStateMap;
 	/**
 	 * 上次信息显示时间
 	 */
@@ -90,8 +104,16 @@ public class ServerData {
 		idMap = new ConcurrentHashMap<Integer, String>();
 		onlineMap = new ConcurrentHashMap<Integer, Integer>();
 		disablePhoneMap = new ConcurrentHashMap<String, String>();
+		refreshTimeMap = new HashMap<Integer, Calendar>();
 		rechargeList = Collections.synchronizedSet(new HashSet<String>());
+		holeStateMap = new ConcurrentHashMap<Integer, Boolean>();
 		lastShowTime = HawkTime.getSeconds();
+
+		// 洞初始状态为关闭，启动后refresh
+		Map<Object, HoleCfg> holeCfgMap = HawkConfigManager.getInstance().getConfigMap(HoleCfg.class);
+		for (HoleCfg hole : holeCfgMap.values()) {
+			holeStateMap.put(hole.getId(), false);
+		}
 	}
 
 	/**
@@ -135,7 +157,6 @@ public class ServerData {
 			return false;
 		}
 
-		
 		// 从db拉取玩家name和id的映射表
 		try {
 			HawkLog.logPrintln("load nickname and playerId from db......");
@@ -200,7 +221,7 @@ public class ServerData {
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * 通过玩家id获取puid
 	 * 
@@ -263,8 +284,7 @@ public class ServerData {
 	public boolean isExistOrder(String orderSerial) {
 		return rechargeList.contains(orderSerial);
 	}
-	
-	
+
 	/**
 	 * 是否存在名字
 	 * @param name
@@ -330,6 +350,26 @@ public class ServerData {
 	 */
 	public void clearDisablePhone() {
 		disablePhoneMap.clear();
+	}
+
+	public Calendar getLastRefreshTime(int timeCfgId) {
+		return refreshTimeMap.get(timeCfgId);
+	}
+
+	public void setRefreshTime(int timeCfgId, Calendar time) {
+		this.refreshTimeMap.put(timeCfgId, time);
+	}
+
+	public Map<Integer, Boolean> getHoleStateMap() {
+		return Collections.unmodifiableMap(holeStateMap);
+	}
+
+	public boolean isHoleOpen(int holeId) {
+		return holeStateMap.get(holeId);
+	}
+
+	public void setHoleOpen(int holeId, boolean isOpen) {
+		this.holeStateMap.put(holeId, isOpen);
 	}
 
 	/**

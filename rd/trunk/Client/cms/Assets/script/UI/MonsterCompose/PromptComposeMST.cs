@@ -11,6 +11,8 @@ public class PromptComposeMST : UIBase
     public Text textMsg;
     public Button btnConfirm;
     public Button btnCancel;
+    public Text text_Confirm;
+    public Text text_Cancel;
     //碎片
     public Transform iconCurPos;
     public Text textFragment;
@@ -48,6 +50,9 @@ public class PromptComposeMST : UIBase
         ConfirmEvent = clickConfirm;
         CancelEvent = clickCancel;
 
+        text_Confirm.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
+        text_Cancel.text = StaticDataMgr.Instance.GetTextByID("ui_quxiao");
+
         textTitle.text = title;
         textTitle.alignment = (textTitle.preferredWidth > ((textTitle.transform as RectTransform).rect.width) ? TextAnchor.MiddleLeft : TextAnchor.MiddleCenter);
 
@@ -57,12 +62,12 @@ public class PromptComposeMST : UIBase
         ItemData itemInfo = new ItemData() { itemId = currentItem, count = 0 };
         if (null == iconFragment)
         {
-            iconFragment = ItemIcon.CreateItemIcon(itemInfo, false);
+            iconFragment = ItemIcon.CreateItemIcon(itemInfo);
             UIUtil.SetParentReset(iconFragment.transform, iconCurPos);
         }
         else
         {
-            iconFragment.RefreshWithItemInfo(itemInfo, false);
+            iconFragment.RefreshWithItemInfo(itemInfo);
         }
         textFragment.text = string.Format("*{0}", currentCount);
         

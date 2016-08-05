@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 
-public class CollectUnit
-{
-    public UnitData unit;
-    public bool isExist;
-}
 public class UIMonsters : UIBase, 
                           TabButtonDelegate,
                           IScrollView,
@@ -136,12 +131,14 @@ public class UIMonsters : UIBase,
         GameEventMgr.Instance.AddListener(GameEventList.ReloadPetStageNotify, OnListEventRefresh);
         GameEventMgr.Instance.AddListener(GameEventList.ReloadPetEquipNotify, OnListEventRefresh);
         GameEventMgr.Instance.AddListener(GameEventList.ReloadPetCollectNotify, OnCollectEventRefresh);
+        GameEventMgr.Instance.AddListener(GameEventList.ReloadUseFragmentNotify, OnCollectEventRefresh);
     }
     void OnDisable()
     {
         GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetStageNotify, OnListEventRefresh);
         GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetEquipNotify, OnListEventRefresh);
         GameEventMgr.Instance.RemoveListener(GameEventList.ReloadPetCollectNotify, OnCollectEventRefresh);
+        GameEventMgr.Instance.RemoveListener(GameEventList.ReloadUseFragmentNotify, OnCollectEventRefresh);
     }
     void OnListEventRefresh()
     {
@@ -229,14 +226,14 @@ public class UIMonsters : UIBase,
     {
         int curType = GetTypeByIndex(index);
         
-        List<UnitData> unitList = StaticDataMgr.Instance.GetPlayerUnitData();
-        List<string> collect = GameDataMgr.Instance.PlayerDataAttr.petCollect;
+        //List<UnitData> unitList = StaticDataMgr.Instance.GetPlayerUnitData();
+        //List<string> collect = GameDataMgr.Instance.PlayerDataAttr.petCollect;
 
-        List<CollectUnit> list = SetCollectList(unitList, collect);
+        List<CollectUnit> list = GameDataMgr.Instance.PlayerDataAttr.collectUnit;//SetCollectList(unitList, collect);
         CollectList.Clear();
         if (0 == curType)
         {
-            CollectList = list;
+            CollectList = new List<CollectUnit>(list);
         }
         else
         {
@@ -248,7 +245,7 @@ public class UIMonsters : UIBase,
                 }
             }
         }
-        //CollectList.Sort();
+        //CollectList.Sort(SortCollect);
 
         scrollView_Collect.InitContentSize(CollectList.Count, this);
 
@@ -260,7 +257,7 @@ public class UIMonsters : UIBase,
         }
         ItemData comFragment = GameDataMgr.Instance.PlayerDataAttr.gameItemData.getItem(BattleConst.commonFragmentID);
         textComFragments.text = (comFragment == null ? "0" : comFragment.count.ToString());
-        textCollect.text = string.Format("{0}/{1}", collect.Count, list.Count);
+        textCollect.text = string.Format("{0}/{1}", GameDataMgr.Instance.PlayerDataAttr.GetCollectCount(), list.Count);
     }
 
     int GetTypeByIndex(int index)
@@ -297,25 +294,26 @@ public class UIMonsters : UIBase,
         return curType;
     }
 
-    List<CollectUnit> SetCollectList(List<UnitData> unitList, List<string> collect)
-    {
-        List<CollectUnit> list = new List<CollectUnit>();
-        for (int i = 0; i < unitList.Count; i++)
-        {
-            CollectUnit collectUnit = new CollectUnit();
-            collectUnit.unit = unitList[i];
-            if (collect.Contains(unitList[i].id))
-            {
-                collectUnit.isExist = true;
-            }
-            else
-            {
-                collectUnit.isExist = false;
-            }
-            list.Add(collectUnit);
-        }
-        return list;
-    }
+    //List<CollectUnit> SetCollectList(List<UnitData> unitList, List<string> collect)
+    //{
+    //    List<CollectUnit> list = new List<CollectUnit>();
+    //    for (int i = 0; i < unitList.Count; i++)
+    //    {
+    //        CollectUnit collectUnit = new CollectUnit();
+    //        collectUnit.unit = unitList[i];
+    //        if (collect.Contains(unitList[i].id))
+    //        {
+    //            collectUnit.isExist = true;
+    //        }
+    //        else
+    //        {
+    //            collectUnit.isExist = false;
+    //        }
+    //        list.Add(collectUnit);
+    //    }
+    //    return list;
+    //}
+
 
     void OnClickCloseBtn()
     {

@@ -2,6 +2,14 @@
 using UnityEngine.UI;
 using System.Collections;
 
+public enum HoleType
+{
+    Hole_Exp = 1,
+    Hole_Jingbi,
+
+    Num_Hole_Type
+}
+
 public class UIHoleEntry : UIBase
 {
     public static string ViewName = "UIHoleEntry";
@@ -17,31 +25,54 @@ public class UIHoleEntry : UIBase
     public Text mExpNameText;
     public RectTransform mExpDropList;
 
+    private HoleData mHoleJinbiData;
+    private HoleData mHoleExpData;
     private MainStageController mMainStageControl;
 
     //---------------------------------------------------------------------------------------------
-    public override void Init()
+    public void RefreshUI()
     {
-        HoleData holeJinbi = StaticDataMgr.Instance.GetHoleData(2);
-        if (holeJinbi != null)
+        mHoleJinbiData = StaticDataMgr.Instance.GetHoleData((int)HoleType.Hole_Jingbi);
+        if (mHoleJinbiData != null)
         {
-            mJinbiStartTimeText.text = holeJinbi.openId;
-            mJinbiNameText.text = holeJinbi.id.ToString();
-            mJinbiRemainCountText.text = holeJinbi.count.ToString();
+            mJinbiStartTimeText.text = mHoleJinbiData.openId;
+            mJinbiNameText.text = mHoleJinbiData.id.ToString();
+            int finishCount = GameDataMgr.Instance.GetHoleDailyCount((int)HoleType.Hole_Jingbi);
+            mJinbiRemainCountText.text = finishCount.ToString() + "/" + mHoleJinbiData.count.ToString();
         }
 
-        HoleData holeExp = StaticDataMgr.Instance.GetHoleData(1);
-        if (holeExp != null)
+        mHoleExpData = StaticDataMgr.Instance.GetHoleData((int)HoleType.Hole_Exp);
+        if (mHoleExpData != null)
         {
-            mExpStartTimeText.text = holeExp.openId;
-            mExpNameText.text = holeExp.id.ToString();
-            mExpRemainCountText.text = holeExp.count.ToString();
+            mExpStartTimeText.text = mHoleExpData.openId;
+            mExpNameText.text = mHoleExpData.id.ToString();
+            int finishCount = GameDataMgr.Instance.GetHoleDailyCount((int)HoleType.Hole_Exp);
+            mExpRemainCountText.text = finishCount.ToString() + "/" + mHoleExpData.count.ToString();
         }
+    }
+    //---------------------------------------------------------------------------------------------
+    public override void Init()
+    {
+        RefreshUI();
     }
     //---------------------------------------------------------------------------------------------
     public override void Clean()
     {
 
+    }
+    //---------------------------------------------------------------------------------------------
+    public bool IsDailyCountFull(HoleType holeType)
+    {
+        if (holeType == HoleType.Hole_Exp)
+        {
+            return mHoleExpData.count <= GameDataMgr.Instance.GetHoleDailyCount((int)holeType);
+        }
+        else if (holeType == HoleType.Hole_Jingbi)
+        {
+            return mHoleJinbiData.count <= GameDataMgr.Instance.GetHoleDailyCount((int)holeType);
+        }
+
+        return true;
     }
     //---------------------------------------------------------------------------------------------
     public void SetMainStageControl(MainStageController control)

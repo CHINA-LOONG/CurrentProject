@@ -8,8 +8,8 @@ public class UITower : UIBase
     public static string ViewName = "UITower";
     public static UITower OpenTower(int towerType)
     {
-        UITower tower = UIMgr.Instance.OpenUI_(UITower.ViewName, false) as UITower;
-        tower.ShowTower(towerType,1);
+        UITower tower = UIMgr.Instance.OpenUI_(UITower.ViewName) as UITower;
+        tower.ShowTower(towerType);
         return tower;
     }
     public GameObject rewardButton;
@@ -17,6 +17,7 @@ public class UITower : UIBase
     public GameObject towerReward;//奖励
     public GameObject exitTowerButton;
     public Text rewardTitle;
+    public Text towerStageNum;
 	//外面拖的 代码不用new和add
     public List<GameObject> towerItems;
     public Transform fatherBox;
@@ -41,6 +42,7 @@ public class UITower : UIBase
     {
         EventTriggerListener.Get(rewardButton).onClick = StageRewardClick;
         EventTriggerListener.Get(closeRewardButton).onClick = StageRewardClick;
+        EventTriggerListener.Get(exitTowerButton).onClick = ExitTowerClick;
         rewardTitle.text = StaticDataMgr.Instance.GetTextByID("towerBoss_instance_reward");
         towerReward.SetActive(false);
     }
@@ -57,11 +59,28 @@ public class UITower : UIBase
         }
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
-    void ShowTower(int towerType, int currentTower)
+    void ShowTower(int towerType)
     {
+        int currentFloor = 0;
+        switch (towerType)
+        {
+            case (int)TowerType.Tower_Shilian:
+                currentFloor = GameDataMgr.Instance.curTowerShilianFloor;
+                break;
+            case (int)TowerType.Tower_Juewang:
+                currentFloor = GameDataMgr.Instance.curTowerJuewangFloor;
+                break;
+            case (int)TowerType.Tower_Siwang:
+                currentFloor = GameDataMgr.Instance.curTowerSiwangFloor;
+                break;
+        }
+
         int towerItemNum = 0;
         TowerItemData towerItemData;
-        int stageTower = (currentTower + 1) / 5; 
+
+        Sprite towerStateImage = null;
+        int stageTower = (currentFloor) / 5;
+        towerStageNum.text = "STAGE " + (stageTower + 1);
         //first entry
         loopNum = 0;
         if (towerID != 0)
@@ -69,7 +88,7 @@ public class UITower : UIBase
             if (lastStage != stageTower)
             {
                 loopNum = stageTower - lastStage;
-                //SlideTowerItem();
+                SlideTowerItem();
             }
         }
         towerData = StaticDataMgr.Instance.GetTowerData(towerType);
@@ -81,8 +100,29 @@ public class UITower : UIBase
                 towerItemData = towerItems[towerItemNum].GetComponent<TowerItemData>();
                 towerItemData.towerNum.text = (towerItemNum + 1).ToString();
                 towerItemData.itemTowerID = towerData.floorList[i];
-                if (currentTower == i) 
-					towerItemData.currType = TowerItemType.Item_Type_Curr;
+                if ((currentFloor - 1) >= i)
+                {
+                    towerItemData.currType = TowerItemType.Item_Type_ok;
+                    towerStateImage = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_cleared");
+                }
+                else if (i == currentFloor)
+                {
+                     towerItemData.currType = TowerItemType.Item_Type_Curr;
+                     towerItemData.selectedImage.SetActive(true);
+                     towerStateImage = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_ready");
+                }
+                else if ((towerItemNum + 1) % 5 == 0)
+                {
+                     towerItemData.currType = TowerItemType.Item_Type_end;
+                     towerStateImage = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_boss");
+                }
+                else if ((currentFloor - 1) < i)
+                {
+                    towerItemData.currType = TowerItemType.Item_Type_not;
+                    towerStateImage = ResourceMgr.Instance.LoadAssetType<Sprite>("tongtianta_lock");
+                }
+                towerItemData.towerImage.sprite = towerStateImage;
+                towerItemData.towerImage.SetNativeSize();
                 towerItemNum++;
             }
         }
@@ -119,8 +159,9 @@ public class UITower : UIBase
 			towerTw1 = towerItemOne.transform.DOLocalMoveY(endVec.localPosition.y, twoTime);
             towerTw1.SetEase(Ease.Linear);
             towerTw1.OnComplete(SlideTowerItemOne);          
-        }        
+        }
     }
+    //---------------------------------------------------------------------------------------------------------------------------------------
     void SlideTowerItemTwo()
     {
         if (currLoopNum == loopNum)
@@ -182,7 +223,7 @@ public class UITower : UIBase
         TowerItemData towerItemData = item.GetComponent<TowerItemData>();
 		if (towerItemData.currType == TowerItemType.Item_Type_Curr)
         {
-			towerItemData.RequestEnterTower();//进塔
+            UIAdjustBattleTeam.OpenWith(towerItemData.itemTowerID, 0, InstanceType.Tower);
         }
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
@@ -190,11 +231,6 @@ public class UITower : UIBase
     {
         CloseReward();
         UIMgr.Instance.DestroyUI(transform.GetComponent<UITower>());
-    }
-	//---------------------------------------------------------------------------------------------------------------------------------------
-	void OnRequestEnterTowerFinished(ProtocolMessage msg)
-	{
-
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
     //TODO: save current towid and laststage to playerdatamanager

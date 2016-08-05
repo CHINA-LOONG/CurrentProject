@@ -73,31 +73,39 @@ public class PlayerStatisticsModule  extends PlayerModule {
 	}
 
 	@Override
-	protected boolean onRefresh(List<Integer> refreshTypeList) {
-		// 重置统计数据，保证其它模块刷新时数据时间一致
+	protected boolean onRefresh(List<Integer> refreshIndexList) {
+		// 刷新统计数据，保证其它模块刷新时数据时间一致
 		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
-		// 每日刷新
-		if (refreshTypeList.contains(GsConst.RefreshType.DAILY_PERS_REFRESH)) {
-			statisticsEntity.clearAdventureCountDaily();
-			statisticsEntity.clearArenaCountDaily();
-			statisticsEntity.clearBossrushCountDaily();
-			statisticsEntity.clearCoinOrderCountDaily();
-			statisticsEntity.clearEquipUpCountDaily();
-			statisticsEntity.clearExploreCountDaily();
-			statisticsEntity.clearFatigueClaimCountDaily();
-			statisticsEntity.clearHardCountDaily();
-			statisticsEntity.clearInstanceAllCountDaily();
-			statisticsEntity.clearInstanceCountDaily();
-			statisticsEntity.clearInstanceResetCountDaily();
-			statisticsEntity.clearItemUseCountDaily();
-			statisticsEntity.clearMonsterMixCountDaily();
-			statisticsEntity.clearQuestCompleteDaily();
-			statisticsEntity.clearSkillUpCountDaily();
-			statisticsEntity.clearHoleCountDaily();
+		for (int index : refreshIndexList) {
+			int mask = GsConst.PlayerRefreshMask[index];
 
-			statisticsEntity.notifyUpdate(true);
-			player.getPlayerData().syncDailyRefreshInfo();
+			if (0 != (mask & GsConst.RefreshMask.DAILY )) {
+				statisticsEntity.clearAdventureCountDaily();
+				statisticsEntity.clearArenaCountDaily();
+				statisticsEntity.clearBossrushCountDaily();
+				statisticsEntity.clearCoinOrderCountDaily();
+				statisticsEntity.clearEquipUpCountDaily();
+				statisticsEntity.clearExploreCountDaily();
+				statisticsEntity.clearFatigueClaimCountDaily();
+				statisticsEntity.clearHardCountDaily();
+				statisticsEntity.clearInstanceAllCountDaily();
+				statisticsEntity.clearInstanceCountDaily();
+				statisticsEntity.clearInstanceResetCountDaily();
+				statisticsEntity.clearItemUseCountDaily();
+				statisticsEntity.clearMonsterMixCountDaily();
+				statisticsEntity.clearQuestCompleteDaily();
+				statisticsEntity.clearSkillUpCountDaily();
+				statisticsEntity.clearHoleCountDaily();
+
+				statisticsEntity.notifyUpdate(true);
+				player.getPlayerData().syncDailyRefreshInfo();
+
+			} else if (0 != (mask & GsConst.RefreshMask.TOWER)) {
+				statisticsEntity.clearTowerIndexMap();
+				statisticsEntity.notifyUpdate(true);
+				player.getPlayerData().syncMonthlyRefreshInfo();
+			}
 		}
 
 		return true;

@@ -78,38 +78,38 @@ public class UIScore : UIBase
     //---------------------------------------------------------------------------------------------
     void OnRetry(GameObject go)
     {
-        if (mInstanceType == 0)
+        if (mInstanceType == (int)InstanceType.Normal)
         {
-            BattleController.Instance.UnLoadBattleScene(2);
+            BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Retry);
         }
-        else if (mInstanceType == 2)
+        else if (mInstanceType == (int)InstanceType.Tower)
         {
             if (mIsSuccess == true)
             {
-                BattleController.Instance.UnLoadBattleScene(1);
+                BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Next);
             }
             else
             {
-                BattleController.Instance.UnLoadBattleScene(2);
+                BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Retry);
             }
         }
     }
     //---------------------------------------------------------------------------------------------
     void OnNextLevel(GameObject go)
     {
-        if (mInstanceType == 0)
+        if (mInstanceType == (int)InstanceType.Normal)
         {
-            BattleController.Instance.UnLoadBattleScene(1);
+            BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Next);
         }
-        else if (mInstanceType == 1)
+        else if (mInstanceType == (int)InstanceType.Hole)
         {
-            BattleController.Instance.UnLoadBattleScene(0);
+            BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_OK);
         }
     }
     //---------------------------------------------------------------------------------------------
     void OnConfirm(GameObject go)
     {
-        BattleController.Instance.UnLoadBattleScene(0);
+        BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_OK);
     }
     //---------------------------------------------------------------------------------------------
     void SkipScoreAni(GameObject go)
@@ -245,18 +245,18 @@ public class UIScore : UIBase
 
         //TODO: use enum
         //0:normal 1:hole 2:tower
-        mInstanceType = 0;
+        mInstanceType = GameDataMgr.Instance.curInstanceType;
         switch (mInstanceType)
         {
-            case 0:
+            case (int)InstanceType.Normal:
                 mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_again");
                 mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");
                 mConfirmText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
                 break;
-            case 1:
+            case (int)InstanceType.Hole:
                 mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
                 break;
-            case 2:
+            case (int)InstanceType.Tower:
                 break;
         }
     }

@@ -1,13 +1,10 @@
 package com.hawk.game.config;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import net.sf.json.JSONArray;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.config.HawkConfigBase;

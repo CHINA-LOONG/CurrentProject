@@ -2,7 +2,6 @@ package com.hawk.game.player;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -12,14 +11,12 @@ import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppObj;
 import org.hawk.app.HawkObjModule;
 import org.hawk.config.HawkConfigManager;
-import org.hawk.db.HawkDBManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 import org.hawk.service.HawkServiceProxy;
-import org.hawk.util.services.HawkReportService;
 import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,14 +24,11 @@ import org.slf4j.LoggerFactory;
 import com.hawk.game.config.MonsterBaseCfg;
 import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.PlayerAttrCfg;
-import com.hawk.game.config.QuestCfg;
 import com.hawk.game.config.TimeCfg;
-import com.hawk.game.config.ItemCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.entity.MonsterEntity;
-import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.log.BehaviorLogger;
@@ -56,25 +50,15 @@ import com.hawk.game.module.PlayerShopModule;
 import com.hawk.game.module.PlayerStatisticsModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Const.RewardReason;
-import com.hawk.game.protocol.Const.playerAttr;
-import com.hawk.game.protocol.Mail.HSMail;
-import com.hawk.game.protocol.Monster.HSMonster;
-import com.hawk.game.protocol.Monster.HSMonsterAdd;
-import com.hawk.game.protocol.Quest.HSQuest;
-import com.hawk.game.protocol.Quest.HSQuestAccept;
-import com.hawk.game.protocol.Quest.HSQuestRemove;
-import com.hawk.game.protocol.Skill.HSSkill;
+
 import com.hawk.game.protocol.SysProtocol.HSErrorCode;
 import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.MailUtil;
-import com.hawk.game.util.QuestUtil;
 import com.hawk.game.util.TimeUtil;
 import com.hawk.game.util.MailUtil.MailInfo;
-import com.hawk.game.util.QuestUtil.QuestGroup;
 
 /**
  * 玩家对象
@@ -1331,27 +1315,26 @@ public class Player extends HawkAppObj {
 			return;
 		}
 
-		// 刷新时间
-		List<Integer> refreshList = new ArrayList<Integer>();
-		for (int i = GsConst.RefreshType.PLAYER_REFRESH_1_BEGIN + 1; i < GsConst.RefreshType.PLAYER_REFRESH_1_END; ++i) {
-			if (true == refreshTime(i, curTime)) {
-				refreshList.add(i);
-			}
-		}
-		for (int i = GsConst.RefreshType.PLAYER_REFRESH_2_BEGIN + 1; i < GsConst.RefreshType.PLAYER_REFRESH_2_END; ++i) {
-			if (true == refreshTime(i, curTime)) {
-				refreshList.add(i);
+		// 刷新时间点
+		List<Integer> refreshIndexList = new ArrayList<Integer>();
+		for (int index = 0; index < GsConst.PlayerRefreshTime.length; ++index) {
+			int timeCfgId = GsConst.PlayerRefreshTime[index];
+
+			Calendar nextRefreshTime = refreshTime(timeCfgId, curTime);
+			if (nextRefreshTime != null) {
+				statisticsEntity.setRefreshTime(timeCfgId, nextRefreshTime);
+				refreshIndexList.add(index);
 			}
 		}
 
 		// 刷新数据
-		if (false == refreshList.isEmpty()) {
+		if (false == refreshIndexList.isEmpty()) {
 			statisticsEntity.notifyUpdate(true);
 
 			for (Entry<Integer, HawkObjModule> entry : objModules.entrySet()) {
 				PlayerModule playerModule = (PlayerModule) entry.getValue();
 				try {
-					playerModule.onRefresh(refreshList);
+					playerModule.onRefresh(refreshIndexList);
 				} catch (Exception e) {
 					HawkException.catchException(e);
 				}
@@ -1360,31 +1343,29 @@ public class Player extends HawkAppObj {
 	}
 
 	/**
-	 * 刷新时间
+	 * 刷新时间点
+	 * @return 如果该时间需要刷新，返回下一个刷新时间，否则返回null
 	 */
-	private boolean refreshTime(int timeCfgId, Calendar curTime) {
+	private Calendar refreshTime(int timeCfgId, Calendar curTime) {
 		TimeCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, timeCfgId);
 		if (null != timeCfg) {
 			try {
-				StatisticsEntity statisticsEntity = playerData.getStatisticsEntity();
-				boolean  shouldRefresh = false;
 				Calendar nextRefreshTime = HawkTime.getCalendar();
-				Calendar lastRefreshTime = statisticsEntity.getLastRefreshTime(timeCfgId);
+				Calendar lastRefreshTime = playerData.getStatisticsEntity().getLastRefreshTime(timeCfgId);
 				if (null == lastRefreshTime) {
 					lastRefreshTime = HawkTime.getCalendar();
 					lastRefreshTime.setTimeInMillis(0);
 				}
 
-				shouldRefresh = TimeUtil.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
+				boolean shouldRefresh = TimeUtil.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
 				if (true == shouldRefresh) {
-					statisticsEntity.setRefreshTime(timeCfgId, nextRefreshTime);
-					return true;
+					return nextRefreshTime;
 				}
 			} catch (Exception e) {
 				HawkException.catchException(e);
 			}
 		}
 
-		return false;
+		return null;
 	}
 }

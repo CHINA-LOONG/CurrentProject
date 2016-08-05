@@ -5,6 +5,12 @@ public class BuildModule : ModuleBase
 {	
     public static bool needSyncInfo = false;
 
+    public int CurrentInitState
+    {
+        get { return mCurrentInitState; }
+    }
+    private int mCurrentInitState = -1;
+
 	void Start()
 	{
 	}
@@ -41,28 +47,33 @@ public class BuildModule : ModuleBase
         imUI.transform.SetAsLastSibling();
         if (param != null)
         {
-            int initState = System.Convert.ToInt32(param);
-            InstanceMap uiInstance = uiBuild.OpenInstanceUI();
-            switch (initState)
+            mCurrentInitState = System.Convert.ToInt32(param);
+            int curInstanceType = GameDataMgr.Instance.curInstanceType;
+            //exit from normal instance
+            if (curInstanceType == (int)InstanceType.Normal)
             {
-                case 1:
-                    {
-                        EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
-                        if (curInstance != null)
+                InstanceMap uiInstance = uiBuild.OpenInstanceUI();
+                switch (mCurrentInitState)
+                {
+                    case (int)ExitInstanceType.Exit_Instance_Next:
                         {
-                            uiInstance.OpenNextInstance(curInstance.instanceData.instanceId);
+                            EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
+                            if (curInstance != null)
+                            {
+                                uiInstance.OpenNextInstance(curInstance.instanceData.instanceId);
+                            }
                         }
-                    }
-                    break;
-                case 2:
-                    {
-                        EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
-                        if (curInstance != null)
+                        break;
+                    case (int)ExitInstanceType.Exit_Instance_Retry:
                         {
-                            uiInstance.ReOpenCurrentInstance(curInstance.instanceData.instanceId);
+                            EnterInstanceParam curInstance = BattleController.Instance.GetCurrentInstance();
+                            if (curInstance != null)
+                            {
+                                uiInstance.ReOpenCurrentInstance(curInstance.instanceData.instanceId);
+                            }
                         }
-                    }
-                    break;
+                        break;
+                }
             }
         }
 	}

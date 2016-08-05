@@ -1,11 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ImageViewModel : MonoBehaviour {
 
-
     public static int Count = 0;
-
+    public static ImageViewModel CreateModel()
+    {
+        GameObject go = ResourceMgr.Instance.LoadAsset("ImageViewModel");
+        UIMgr.Instance.SetModelView(go.transform, Count);
+        ImageViewModel model = go.GetComponent<ImageViewModel>();
+        model.index = Count;
+        Count++;
+        return model;
+    }
+    public int index;
     public Transform verticalTurn;
     public Transform herizontalTurn;
 
@@ -26,14 +35,6 @@ public class ImageViewModel : MonoBehaviour {
     private BattleObject curModel;
 
 
-    public static ImageViewModel CreateModel()
-    {
-        ImageViewModel model = null;
-        GameObject go = ResourceMgr.Instance.LoadAsset("ImageViewModel");
-        UIMgr.Instance.SetModelView(go.transform, Count++);
-        model = go.GetComponent<ImageViewModel>();
-        return model;
-    }
 
     public BattleObject ReloadData(string monsterId)
     {
@@ -45,7 +46,7 @@ public class ImageViewModel : MonoBehaviour {
         {
             ObjectDataMgr.Instance.RemoveBattleObject(curModel.guid);
         }
-        GameUnit gainPet = GameUnit.CreateFakeUnit(BattleConst.enemyStartID-Count-10, monsterId);
+        GameUnit gainPet = GameUnit.CreateFakeUnit(BattleConst.enemyStartID-index-10, monsterId);
         curModel = ObjectDataMgr.Instance.CreateBattleObject(
                             gainPet,
                             modelPos,
@@ -53,7 +54,7 @@ public class ImageViewModel : MonoBehaviour {
                             Quaternion.identity
                             );
         curMonsterId = monsterId;
-
+        ReSetTurn();
         return curModel;
     }
 
@@ -65,9 +66,14 @@ public class ImageViewModel : MonoBehaviour {
         ObjectDataMgr.Instance.RemoveBattleObject(curModel.guid);
         curModel = null;
         curMonsterId = "";
+        Destroy(this.gameObject);
     }
 
-
+    public void ReSetTurn()
+    {
+        verticalTurn.localEulerAngles = Vector3.zero;
+        herizontalTurn.localEulerAngles = Vector3.zero;
+    }
     public void UpdateTurn(Vector2 delta)
     {
         Vector3 angle = herizontalTurn.localEulerAngles;

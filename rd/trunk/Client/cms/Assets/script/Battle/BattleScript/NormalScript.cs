@@ -54,7 +54,7 @@ public static class NormalScript
                 var itor = wpRutimeDataList.GetEnumerator();
                 while (itor.MoveNext())
                 {
-                    curLife += itor.Current.Value.hp;
+                    curLife += itor.Current.Value.HpAttr;
                     maxLife += itor.Current.Value.maxHp;
                 }
 
@@ -65,7 +65,7 @@ public static class NormalScript
                 WeakPointRuntimeData wpRuntionData;
                 if (wpRutimeDataList.TryGetValue(wpName, out wpRuntionData))
                 {
-                    lifeRatio = (float)wpRuntionData.hp / wpRuntionData.maxHp;
+                    lifeRatio = (float)wpRuntionData.HpAttr / wpRuntionData.maxHp;
                 }
             }
         }
@@ -85,7 +85,7 @@ public static class NormalScript
                 var itor = wpRutimeDataList.GetEnumerator();
                 while (itor.MoveNext())
                 {
-                    curLife += itor.Current.Value.hp;
+                    curLife += itor.Current.Value.HpAttr;
                 }
             }
             else
@@ -93,7 +93,7 @@ public static class NormalScript
                 WeakPointRuntimeData wpRuntionData;
                 if (wpRutimeDataList.TryGetValue(wpName, out wpRuntionData))
                 {
-                    curLife = wpRuntionData.hp;
+                    curLife = wpRuntionData.HpAttr;
                 }
             }
         }
@@ -113,7 +113,7 @@ public static class NormalScript
                 var itor = wpRutimeDataList.GetEnumerator();
                 while (itor.MoveNext())
                 {
-                    if (itor.Current.Value.hp > 0)
+                    if (itor.Current.Value.HpAttr > 0)
                     {
                         allDead = false;
                         break;
@@ -125,7 +125,7 @@ public static class NormalScript
                 WeakPointRuntimeData wpRuntionData;
                 if (wpRutimeDataList.TryGetValue(wpName, out wpRuntionData))
                 {
-                    allDead = wpRuntionData.hp <= 0;
+                    allDead = wpRuntionData.HpAttr <= 0;
                 }
             }
         }

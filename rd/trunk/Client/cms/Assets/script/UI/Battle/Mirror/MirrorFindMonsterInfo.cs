@@ -47,6 +47,7 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 
 	void	OnShowFindMonsterInfo(List<MirrorTarget> listTarget)
 	{
+        //todo:弱点信息outtime
 		WpInfoGroup.Instance.Clear ();
 		List<MirrorFindWpInfo> listWpInfo = WpInfoGroup.Instance.listWpInfo;
 		int findIndex = 0;
@@ -61,44 +62,7 @@ public class MirrorFindMonsterInfo : MonoBehaviour
 			bool isok = bo.wpGroup.allWpDic.TryGetValue(subTarget.WeakPointIDAttr,out wpRuntimeData);
 			if(!isok)
 				continue;
-
-
-			WeakPointData wpData = wpRuntimeData.staticData;
-			if(null == wpData || wpData.tipType == (int)TipInfoType.NoTip)
-				continue;
-
-			if(subTarget.isSelf)
-			{
-				if(wpData.tipType == (int)TipInfoType.TipSelf)
-				{
-					GameUnit unit = subTarget.battleObject.unit;
-					//propertyText.text = subTarget.WeakPointIDAttr;
-					friendShipText.text = unit.friendship.ToString();
-					friendShipText.gameObject.SetActive(true);
-					propertyText.gameObject.SetActive(true);
-					//likeFoodText.text = "subTarget";
-
-					int property = wpRuntimeData.property;
-					var image = ResourceMgr.Instance.LoadAssetType<Sprite>("property_" + property) as Sprite;
-					if(image != null)
-					{
-						propertyImage.enabled = true;
-						propertyImage.sprite = image;
-					}
-
-				}
-			}
-			else
-			{
-				if(wpData.tipType == (int)TipInfoType.TipWeakPoint)
-				{
-					if(findIndex < listWpInfo.Count)
-					{
-						listWpInfo[findIndex].Show(subTarget, wpData.tipOffsetX, wpData.tipOffsetY);
-						findIndex ++ ;
-					}
-				}
-			}
+			
 		}
 
 	}

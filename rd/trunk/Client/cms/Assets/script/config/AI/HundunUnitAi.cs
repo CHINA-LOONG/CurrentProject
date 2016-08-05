@@ -95,7 +95,7 @@ public class HundunUnitAi : BossAi {
 		foreach (KeyValuePair<string,WeakPointRuntimeData> subWp in gUnit.battleUnit.wpGroup.allWpDic)
 		{
 			WeakPointRuntimeData wpData = subWp.Value;
-			if(wpData.hp > 0)
+			if(wpData.HpAttr > 0)
 			{
 				wpList.Add(subWp.Key);
 			}

@@ -128,9 +128,9 @@ spell_hit_interrupt,被打断,Interrupt
 spell_shield,吸收,Absorbed
 spell_first_spell,先置攻击,First Strike
 spell_stun,眩晕,Stun
-spell_hit_noheal,禁止恢复,Noheal
-spell_hit_physicalImmune,物理免疫,PhysicalImmune
-spell_hit_magicImmune,法术免疫,MagicImmune
+spell_hit_noheal,禁止恢复,Healing Disabled
+spell_hit_physicalImmune,物理免疫,Physical Immune
+spell_hit_magicImmune,法术免疫,Magic Immune
 spell_kezhi,克制,Crushing
 spell_critical,暴击,Critical
 gain_pet,恭喜！你获得了,Congratulations! You received 
@@ -174,7 +174,7 @@ im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 equip_inlay_xiangqian,镶嵌,Embed
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
-equip_inlay_tips,"开孔将随机获得""1-{0}""个宝石槽","Opening Sockets will randomly reveal between ""1 and {0}"" of slots."
+equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
 equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
 equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
 equip_inlay_xiexia,卸下,Remove
@@ -241,7 +241,7 @@ handbook_btn,图鉴,Monsterbook
 handbook_owned,拥有宠物,Owned
 handbook_shouji,收集宠物,Collected
 item_type_chip,碎片,Fragment
-handbook_tips,*万能碎片最大只能替换X%的宠物碎片哟！,Core Fragments can be used for up to X% of a Monster's Fragments.
+handbook_tips,*万能碎片最大只能替换{0:0%}的宠物碎片哟！,Core Fragments can be used for up to {0:0%} of a Monster's Fragments.
 handbook_zhaohuan,召唤,Summon
 handbook_huodeway,获得途径,Get By
 handbook_petsuipian,宠物碎片,Monster Fragments

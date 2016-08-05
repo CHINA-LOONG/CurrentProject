@@ -43,9 +43,13 @@ message HoleState
 {
 	required int32 holeId = 1;
 	required bool isOpen = 2;
+	optional int32 countDaily = 3 [default = 0];
+}
 
-	// 当isOpen==true时，包含此值
-	optional int32 countDaily = 3;
+message TowerState
+{
+	required int32 towerId = 1;
+	required int32 index = 2;
 }
 
 // protocol-----------------------------------------------------
@@ -84,6 +88,8 @@ message HSStatisticsInfoSync
 	required int32 instanceResetCount = 15;
 	// 洞开启状态
 	repeated HoleState holeState = 16;
+	// 塔完成层数
+	repeated TowerState towerState = 17;
 }
 
 // SYNC_DAILY_REFRESH_S

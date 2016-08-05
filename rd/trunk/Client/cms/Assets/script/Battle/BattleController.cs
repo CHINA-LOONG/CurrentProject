@@ -6,6 +6,15 @@ using System;
 using System.Reflection;
 using DG.Tweening;
 
+public enum ExitInstanceType
+{
+    Exit_Instance_OK,
+    Exit_Instance_Next,
+    Exit_Instance_Retry,
+
+    Num_Exit_Instance_Type
+}
+
 public enum BattleType
 {
     Normal,
@@ -20,7 +29,7 @@ public class BattleController : MonoBehaviour
     int curProcessIndex = 0;
     int maxProcessIndex = 0;
     int battleStartID = BattleConst.enemyStartID;
-    BattleType battleType;
+    public  BattleType battleType;
     InstanceData instanceData;
     PB.HSInstanceEnterRet curInstance = null;
     BattleLevelData curBattleLevel = null;
@@ -197,7 +206,7 @@ public class BattleController : MonoBehaviour
             //集火或者大招
 			process.OnHitBattleObject(battleGo, weakpointName);
             GameEventMgr.Instance.FireEvent<int>(GameEventList.HideSwitchPetUI, BattleConst.closeSwitchPetUI);
-            Logger.LogWarning("hit enemy gameobject....");
+           // Logger.LogWarning("hit enemy gameobject....");
         }
         else if (battleGo.camp == UnitCamp.Player && process.SwitchingPet == false)
         {
@@ -416,7 +425,7 @@ public class BattleController : MonoBehaviour
 		return cameraNode.transform;
 	}
     //---------------------------------------------------------------------------------------------
-    public void UnLoadBattleScene(int state = 0)
+    public void UnLoadBattleScene(ExitInstanceType state)
     {
         //state 0 confirm back to instance choose
         //state 1 next back to instance info
@@ -436,7 +445,7 @@ public class BattleController : MonoBehaviour
         curBattleScene = null;
 
         process.Clear();
-        GameMain.Instance.ChangeModule<BuildModule>(state);
+        GameMain.Instance.ChangeModule<BuildModule>((int)state);
         UIMgr.Instance.DestroyUI(mUIScore);
         UIMgr.Instance.DestroyUI(mUILevelInfo);
         UIMgr.Instance.DestroyUI(uiBattle);
@@ -857,7 +866,7 @@ public class BattleController : MonoBehaviour
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
             Logger.LogError("instance settle result error");
-            UnLoadBattleScene(0);
+            UnLoadBattleScene(ExitInstanceType.Exit_Instance_OK);
         }
         else
         {
@@ -872,6 +881,11 @@ public class BattleController : MonoBehaviour
             {
                 PB.HSInstanceSettleRet scoreInfo = msg.GetProtocolBody<PB.HSInstanceSettleRet>();
                 GameEventMgr.Instance.FireEvent<int, string>(GameEventList.FinishedInstance, scoreInfo.starCount, instanceData.instanceProtoData.id);
+            }
+            
+            if (battleSuccess == true)
+            {
+                GameDataMgr.Instance.OnBattleSuccess();
             }
         }
     }
