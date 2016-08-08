@@ -1,7 +1,5 @@
 package com.hawk.version.entity;
 
-import java.util.Calendar;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +11,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "version")
-@SuppressWarnings("serial")
 public class VersionEntity extends HawkDBEntity{
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")

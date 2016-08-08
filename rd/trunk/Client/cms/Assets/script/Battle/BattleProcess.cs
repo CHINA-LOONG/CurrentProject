@@ -28,6 +28,7 @@ public class BattleProcess : MonoBehaviour
 	{
 		Phyics =0,
 		Magic,
+        Magic_Prepare,//the designer modified dazhao cast process,replace fazhen with dazhao prepare
 		Unkown
 	}
 
@@ -681,15 +682,24 @@ public class BattleProcess : MonoBehaviour
 				StartCoroutine(RunSwitchPetAction(action.caster, action.target));
 				break;
             case ActionType.Dazhao:
-				if (action.dazhaoType == DazhaoType.Phyics)
-                {
-                    inDazhaoAction = true;
-					PhyDazhaoController.Instance.RunActionWithDazhao(action.caster);
-				}
-				else if (action.dazhaoType == DazhaoType.Magic)
-				{
-					MagicDazhaoController.Instance.RunActionWithDazhao(action.caster);
-				}
+			        if (action.dazhaoType == DazhaoType.Phyics)
+                    {
+                        inDazhaoAction = true;
+				        PhyDazhaoController.Instance.RunActionWithDazhao(action.caster);
+			        }
+                    else if (action.dazhaoType == DazhaoType.Magic_Prepare)
+                    {
+                        Spell curSpell = BattleUnitAi.Instance.GetSpell(BattleUnitAi.AiAttackStyle.DazhaoPrepare, action.caster.unit);
+                        if (curSpell != null)
+                        {
+                            SpellService.Instance.SpellRequest(curSpell.spellData.id, action.caster.unit, action.caster.unit, Time.time);
+                        }
+                    }
+                    else if (action.dazhaoType == DazhaoType.Magic)
+                    {
+                        MagicDazhaoController magicController = MagicDazhaoController.Instance;
+                        magicController.RunActionWithDazhao(action.caster);
+			        }
 				
 				break;
             case ActionType.UnitReplaceDead:
@@ -931,6 +941,21 @@ public class BattleProcess : MonoBehaviour
             bo.SetTargetRotate(Quaternion.LookRotation(relativePos), false);
         }
         bo.unit.attackCount++;
+
+        if (bo.camp == UnitCamp.Player && aiResult.attackStyle == BattleUnitAi.AiAttackStyle.Dazhao)
+        {
+            Action action = new Action();
+            action.type = ActionType.Dazhao;
+            action.caster = bo;
+            bo.unit.energy = 0;
+            action.dazhaoType = DazhaoType.Magic;
+            InsertAction(action);
+            bo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
+            OnActionOver();
+            //MagicDazhaoController.Instance.RunActionWithDazhao(bo);
+            return;
+        }
+
         if (aiResult.useSpell != null)
         {
             SpellService.Instance.SpellRequest(aiResult.useSpell.spellData.id, bo.unit, aiResult.attackTarget, Time.time);
@@ -1197,7 +1222,6 @@ public class BattleProcess : MonoBehaviour
             return;
         }
 
-
 		Spell dazhaoSpell = bo.unit.GetDazhao ();
 		if (null == dazhaoSpell)
 		{
@@ -1231,8 +1255,9 @@ public class BattleProcess : MonoBehaviour
 		}
 		else if (dazhaoSpell.spellData.category == (int)SpellType.Spell_Type_MagicDazhao) 
 		{
-			action.dazhaoType = DazhaoType.Magic;
-            MagicDazhaoController.Instance.PrepareShifa(action);
+			action.dazhaoType = DazhaoType.Magic_Prepare;
+            MagicDazhaoController magicController = MagicDazhaoController.Instance;
+            magicController.PrepareShifa(action);
 		}
 		isCastDazhao = false;
     }
@@ -1323,7 +1348,7 @@ public class BattleProcess : MonoBehaviour
 
     IEnumerator WaitAnim(BattleObject movedUnit, float waitLen, bool firstSpell)
     {
-        if (curAction == null ||  curAction.type != ActionType.Dazhao)
+        if (curAction == null ||  curAction.type != ActionType.Dazhao || curAction.dazhaoType == DazhaoType.Magic_Prepare)
         {
             yield return new WaitForSeconds(waitLen);
 
@@ -1490,7 +1515,8 @@ public class BattleProcess : MonoBehaviour
 				return true;
 			}
 		}
-		return false;
+
+        return battleGroup.IsPlayerCasteDazhao();
 	}
 
 	bool IsChangePeting(BattleObject bo)

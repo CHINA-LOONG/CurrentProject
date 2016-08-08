@@ -941,10 +941,7 @@ public class BattleController : MonoBehaviour
                 GameEventMgr.Instance.FireEvent<int, string>(GameEventList.FinishedInstance, scoreInfo.starCount, instanceData.instanceProtoData.id);
             }
             
-            if (battleSuccess == true)
-            {
-                GameDataMgr.Instance.OnBattleSuccess();
-            }
+            GameDataMgr.Instance.OnBattleOver(battleSuccess);
         }
     }
     //---------------------------------------------------------------------------------------------

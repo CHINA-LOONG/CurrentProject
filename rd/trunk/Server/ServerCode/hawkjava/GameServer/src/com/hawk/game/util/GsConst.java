@@ -145,21 +145,32 @@ public class GsConst {
 		public static final int ALLIANCE_FATIGUE_GIVE = 110;
 		// 取消申请
 		public static final int ALLIANCE_CANCLE_APPLY = 111;
-		
+		// 创建队伍
+		public static final int ALLIANCE_TEAM_CREATE = 112;
+		// 加入队伍
+		public static final int ALLIANCE_TEAM_JOIN = 113;
+		// 接受任务
+		public static final int ALLIANCE_TASK_ACCEPT = 114;
+		// 提交任务
+		public static final int ALLIANCE_TASK_COMMIT = 115;
+		// 工会任务
+		public static final int ALLIANCE_INSTANCE_TASK = 116;
+		// 工会奖励
+		public static final int ALLIANCE_REWARD_TASK = 117;
+		// 解散工会
+		public static final int ALLIANCE_DISSOLVE_TEAM = 118;
 		/**
 		 * 快照管理器消息定义
 		 */
 		// 上线删除快照数据
 		public static int ONLINE_REMOVE_OFFLINE_SNAPSHOT = 202;
-		
-		// 奖励宠物
-		public static final int PRESENT_MONSTER = 1001;
+
 		// 玩家统计数据更新
-		public static final int STATISTICS_UPDATE = 1002;
+		public static final int STATISTICS_UPDATE = 1001;
 		// 玩家收到新邮件
-		public static final int MAIL_NEW = 1003;
+		public static final int MAIL_NEW = 1002;
 		// 刷新商店
-		public static final int REFRESH_SHOP = 1004;
+		public static final int REFRESH_SHOP = 1003;
 	}
 
 	/**
@@ -303,6 +314,10 @@ public class GsConst {
 		public static final int MONSTER_NOT_ENOUGH = 9;
 		// 宠物锁定
 		public static final int MONSTER_LOCKED = 10;
+		// 未入公会
+		public static final int NOT_IN_ALLIANCE = 11;
+		// 贡献值不足
+		public static final int CONTRIBUTION_NOT_ENOUGH = 12;
 	}
 
 	/**
@@ -322,11 +337,18 @@ public class GsConst {
 
 	// 任务类型
 	public static class QuestType {
-		public static final int 	STORY_QUEST = 1;
+		public static final int STORY_QUEST = 1;
 		public static final int DAILY_QUEST = 2;
 		public static final int BIOGRAPHY_QUEST = 3;
 	}
 
+	// 目标类型
+	public static class AllianceQuestType {
+		public static final int COIN_QUEST = 1;
+		public static final int ITEM_QUEST = 2;
+		public static final int INSTANCE_QUEST = 3;
+	}
+	
 	// 任务目标类型
 	public static class QuestGoalType {
 		public static final int DIFFICULTY_GOAL = 1;
@@ -353,13 +375,6 @@ public class GsConst {
 	public static class StatisticsType {
 		public static final int LEVEL_STATISTICS = 1;
 		public static final int OTHER_STATISTICS = 2;
-	}
-
-	// 副本类型
-	public static class InstanceType {
-		public static final int STORY = 1;
-		public static final int HOLE = 2;
-		public static final int TOWER = 3;
 	}
 
 	// 副本难度

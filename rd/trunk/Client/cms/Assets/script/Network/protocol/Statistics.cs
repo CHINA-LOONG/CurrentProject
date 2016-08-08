@@ -161,13 +161,37 @@ namespace PB
       get { return _isOpen; }
       set { _isOpen = value; }
     }
-    private int _countDaily = default(int);
+    private int _countDaily = (int)0;
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"countDaily", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    [global::System.ComponentModel.DefaultValue((int)0)]
     public int countDaily
     {
       get { return _countDaily; }
       set { _countDaily = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TowerState")]
+  public partial class TowerState : global::ProtoBuf.IExtensible
+  {
+    public TowerState() {}
+    
+    private int _towerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"towerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int towerId
+    {
+      get { return _towerId; }
+      set { _towerId = value; }
+    }
+    private int _index;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int index
+    {
+      get { return _index; }
+      set { _index = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -290,6 +314,13 @@ namespace PB
     public global::System.Collections.Generic.List<HoleState> holeState
     {
       get { return _holeState; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<TowerState> _towerState = new global::System.Collections.Generic.List<TowerState>();
+    [global::ProtoBuf.ProtoMember(17, Name=@"towerState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<TowerState> towerState
+    {
+      get { return _towerState; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;

@@ -18,7 +18,7 @@ public class MagicDazhaoController : MonoBehaviour
 	BattleObject  casterBattleGo;
 	Spell dazhaoSpell;
 	
-	DazhaoExitCheck  dazhaoExitCheck = null;
+	//DazhaoExitCheck  dazhaoExitCheck = null;
 	
 	DazhaoState dazhaoState = DazhaoState.Finished;
 
@@ -49,14 +49,14 @@ public class MagicDazhaoController : MonoBehaviour
 	void BindListener()
 	{
 		GameEventMgr.Instance.AddListener< int >(GameEventList.ExitDazhaoByPhyAttacked , OnExitByPhyAttacked);
-		GameEventMgr.Instance.AddListener<int > (GameEventList.OverMagicShifaWithResult, OnOverMagicShifaWithResult);
+		//GameEventMgr.Instance.AddListener<int > (GameEventList.OverMagicShifaWithResult, OnOverMagicShifaWithResult);
 		GameEventMgr.Instance.AddListener (GameEventList.MonsterShowoffOver, OnMonsterShowoffOver);
 	}
 	
 	void UnBindListener()
 	{
 		GameEventMgr.Instance.RemoveListener< int > (GameEventList.ExitDazhaoByPhyAttacked, OnExitByPhyAttacked);
-		GameEventMgr.Instance.RemoveListener<int > (GameEventList.OverMagicShifaWithResult, OnOverMagicShifaWithResult);
+		//GameEventMgr.Instance.RemoveListener<int > (GameEventList.OverMagicShifaWithResult, OnOverMagicShifaWithResult);
 		GameEventMgr.Instance.RemoveListener (GameEventList.MonsterShowoffOver, OnMonsterShowoffOver);
 	}
 
@@ -88,20 +88,21 @@ public class MagicDazhaoController : MonoBehaviour
 		//{
 			//casterBattleGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoPreprare);
 		//}
-		casterBattleGo.TriggerEvent ("magicDazhaoPrepare", Time.time, null);
+		//casterBattleGo.TriggerEvent ("magicDazhaoPrepare", Time.time, null);
+        BattleController.Instance.Process.InsertAction(magicAction);
 
-		//显示法阵
-		OpenFazhenUI ();
+        //显示法阵
+        //OpenFazhenUI ();
 
-		//中断检测
-		dazhaoExitCheck = casterBattleGo.gameObject.GetComponent<DazhaoExitCheck> ();
-		if (null != dazhaoExitCheck)
-		{
-			Destroy(dazhaoExitCheck);
-			dazhaoExitCheck = null;
-		}
-		dazhaoExitCheck = casterBattleGo.gameObject.AddComponent<DazhaoExitCheck>();
-	}
+        ////中断检测
+        //dazhaoExitCheck = casterBattleGo.gameObject.GetComponent<DazhaoExitCheck> ();
+        //if (null != dazhaoExitCheck)
+        //{
+        //	Destroy(dazhaoExitCheck);
+        //	dazhaoExitCheck = null;
+        //}
+        //dazhaoExitCheck = casterBattleGo.gameObject.AddComponent<DazhaoExitCheck>();
+    }
 
 	public void RunActionWithDazhao(BattleObject casterGo)
 	{
@@ -110,7 +111,7 @@ public class MagicDazhaoController : MonoBehaviour
 		//{
 		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
 		//}
-		casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
+		//casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 		
 		dazhaoSpell = casterBattleGo.unit.GetDazhao ();
 		if (dazhaoSpell == null)
@@ -175,31 +176,31 @@ public class MagicDazhaoController : MonoBehaviour
 	}
 
 
-	void OnOverMagicShifaWithResult(int iresult)
-	{
-		CloseFazhenUI ();
-		if (1 == iresult) 
-		{
-			//画阵（施法）成功，插入事件
-			//插入法术事件
-			BattleController.Instance.Process.InsertAction(magicAction);
-		}
-		else 
-		{
-			//over
-			DazhaoFinished();
-		}
-	}
+	//void OnOverMagicShifaWithResult(int iresult)
+	//{
+	//	//CloseFazhenUI ();
+	//	if (1 == iresult) 
+	//	{
+	//		//画阵（施法）成功，插入事件
+	//		//插入法术事件
+	//		BattleController.Instance.Process.InsertAction(magicAction);
+	//	}
+	//	else 
+	//	{
+	//		//over
+	//		DazhaoFinished();
+	//	}
+	//}
 
 
 	public void FinishDazhaoWithAllEnemyDead()
 	{
-		CloseFazhenUI ();
+		//CloseFazhenUI ();
 		DazhaoFinished ();
 	}
 	public void FinishDazhaoWithSelfDead()
 	{
-		CloseFazhenUI ();
+		//CloseFazhenUI ();
 		DazhaoFinished ();
 	}
 	
@@ -212,7 +213,7 @@ public class MagicDazhaoController : MonoBehaviour
             //{
             //	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
             //}
-            casterBattleGo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
+            //casterBattleGo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
 
             dazhaoState = DazhaoState.Finished;
 
@@ -233,11 +234,11 @@ public class MagicDazhaoController : MonoBehaviour
 		GameEventMgr.Instance.FireEvent(GameEventList.HideDazhaoTip);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Normal);
 		
-		if (null != dazhaoExitCheck)
-		{
-			Destroy(dazhaoExitCheck);
-			dazhaoExitCheck = null;
-		}
+		//if (null != dazhaoExitCheck)
+		//{
+		//	Destroy(dazhaoExitCheck);
+		//	dazhaoExitCheck = null;
+		//}
 	}
 
 	private void OnExitByPhyAttacked( int casterID)
@@ -249,10 +250,9 @@ public class MagicDazhaoController : MonoBehaviour
 
 		if (casterBattleGo.guid != casterID)
 		{
-			Logger.LogErrorFormat("ExitDazhao by PhyAttack Error: dazhao castID = {0}, getCasterID = {1}",casterBattleGo.guid,casterID);
 			return;
 		}
-		CloseFazhenUI ();
+		//CloseFazhenUI ();
 		if (dazhaoState == DazhaoState.Prepare || dazhaoState == DazhaoState.Shifa)
 		{
 			//大招被打断
@@ -260,7 +260,7 @@ public class MagicDazhaoController : MonoBehaviour
 			//{
 			//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
 			//}
-			casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
+			//casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 			//todo:大招被打断ui提示
 			SpellVitalChangeArgs args = new SpellVitalChangeArgs();
             args.vitalType = (int)VitalType.Vital_Type_Interrupt;
@@ -272,11 +272,11 @@ public class MagicDazhaoController : MonoBehaviour
 			DazhaoFinished();
 			
 		}
-		if (null != dazhaoExitCheck)
-		{
-			Destroy(dazhaoExitCheck);
-			dazhaoExitCheck = null;
-		}
+		//if (null != dazhaoExitCheck)
+		//{
+		//	Destroy(dazhaoExitCheck);
+		//	dazhaoExitCheck = null;
+		//}
 	}
 
 	public void ClearAll()
@@ -287,29 +287,29 @@ public class MagicDazhaoController : MonoBehaviour
 		}
 
 		dazhaoState = DazhaoState.Finished;
-		CloseFazhenUI ();
-		if (null != dazhaoExitCheck)
-		{
-			Destroy(dazhaoExitCheck);
-			dazhaoExitCheck = null;
-		}
+		//CloseFazhenUI ();
+		//if (null != dazhaoExitCheck)
+		//{
+		//	Destroy(dazhaoExitCheck);
+		//	dazhaoExitCheck = null;
+		//}
 		//if(casterBattleGo.shifaNodeEffect !=null)
 		//{
 		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
 		//}
-		casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
+		//casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 	}
 
-	private void OpenFazhenUI()
-	{
-        if (UIBattle.Instance != null)
-        {
-            UIBattle.Instance.uiFazhen = UIMgr.Instance.OpenUI_(UIFazhen.ViewName) as UIFazhen;
-        }
-	}
+	//private void OpenFazhenUI()
+	//{
+ //       if (UIBattle.Instance != null)
+ //       {
+ //           UIBattle.Instance.uiFazhen = UIMgr.Instance.OpenUI_(UIFazhen.ViewName) as UIFazhen;
+ //       }
+	//}
 
-	private void CloseFazhenUI()
-	{
-		UIMgr.Instance.CloseUI_(UIFazhen.ViewName);
-	}
+	//private void CloseFazhenUI()
+	//{
+	//	UIMgr.Instance.CloseUI_(UIFazhen.ViewName);
+	//}
 }

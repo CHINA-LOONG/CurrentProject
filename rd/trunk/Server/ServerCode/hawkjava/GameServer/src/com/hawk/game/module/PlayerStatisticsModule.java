@@ -3,14 +3,9 @@ package com.hawk.game.module;
 import java.util.Calendar;
 import java.util.List;
 
-import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
-import org.hawk.os.HawkTime;
 
-import com.hawk.game.config.InstanceEntryCfg;
-import com.hawk.game.config.PlayerAttrCfg;
 import com.hawk.game.entity.StatisticsEntity;
-import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.util.GsConst;
@@ -30,11 +25,6 @@ public class PlayerStatisticsModule  extends PlayerModule {
 	protected boolean onPlayerLogin() {
 		// 加载统计数据
 		StatisticsEntity statisticsEntity = player.getPlayerData().loadStatistics();
-
-		// 首次登陆，初始化数据
-		if (statisticsEntity.getLoginCount() == 0) {
-			player.onFirstLogin();
-		}
 
 		// 登录时更新数据
 		player.updateSkillPoint();
@@ -73,14 +63,13 @@ public class PlayerStatisticsModule  extends PlayerModule {
 	}
 
 	@Override
-	protected boolean onRefresh(List<Integer> refreshIndexList) {
+	protected boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
 		// 刷新统计数据，保证其它模块刷新时数据时间一致
-		StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+		StatisticsEntity statisticsEntity = player.getPlayerData().loadStatistics();
 
 		for (int index : refreshIndexList) {
 			int mask = GsConst.PlayerRefreshMask[index];
-			statisticsEntity.clearAlliancePrayCountDaily();
-			
+
 			if (0 != (mask & GsConst.RefreshMask.DAILY )) {
 				statisticsEntity.clearAdventureCountDaily();
 				statisticsEntity.clearArenaCountDaily();
@@ -98,14 +87,19 @@ public class PlayerStatisticsModule  extends PlayerModule {
 				statisticsEntity.clearQuestCompleteDaily();
 				statisticsEntity.clearSkillUpCountDaily();
 				statisticsEntity.clearHoleCountDaily();
-
+				statisticsEntity.clearAlliancePrayCountDaily();
+				statisticsEntity.clearAllianceTaskCountDaily();
 				statisticsEntity.notifyUpdate(true);
-				player.getPlayerData().syncDailyRefreshInfo();
+				if (false == onLogin) {
+					player.getPlayerData().syncDailyRefreshInfo();
+				}
 
 			} else if (0 != (mask & GsConst.RefreshMask.TOWER)) {
 				statisticsEntity.clearTowerIndexMap();
 				statisticsEntity.notifyUpdate(true);
-				player.getPlayerData().syncMonthlyRefreshInfo();
+				if (false == onLogin) {
+					player.getPlayerData().syncMonthlyRefreshInfo();
+				}
 			}
 		}
 

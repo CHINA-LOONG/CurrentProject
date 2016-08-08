@@ -1,7 +1,5 @@
 package com.hawk.game.entity;
 
-import java.util.Calendar;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hawk.db.HawkDBEntity;
-import org.hawk.os.HawkTime;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -20,7 +17,6 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @Table(name = "item")
-@SuppressWarnings("serial")
 public class ItemEntity extends HawkDBEntity {
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")

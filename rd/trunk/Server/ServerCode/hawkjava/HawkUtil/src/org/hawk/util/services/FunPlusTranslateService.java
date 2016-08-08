@@ -3,9 +3,9 @@ package org.hawk.util.services;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.Map.Entry;
 import java.util.concurrent.CountDownLatch;
 
 import javax.crypto.Mac;
@@ -30,8 +30,6 @@ import org.hawk.os.HawkTime;
 import org.hawk.util.HawkJsonUtil;
 import org.hawk.util.HawkTickable;
 import org.hawk.util.HawkURL;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -69,8 +67,6 @@ public class FunPlusTranslateService extends HawkTickable {
 		public String errorMessage; 
 		public Data translation;
 	}
-
-	private static final Logger logger = LoggerFactory.getLogger("FunPlus");
 
 	/**
 	 * 异步httpClient

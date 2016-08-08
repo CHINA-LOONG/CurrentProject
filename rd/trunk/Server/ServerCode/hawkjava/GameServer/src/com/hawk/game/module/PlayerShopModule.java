@@ -9,7 +9,6 @@ import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
-import org.hawk.os.HawkTime;
 
 import com.hawk.game.config.GoldChangeCfg;
 import com.hawk.game.config.ItemCfg;
@@ -24,17 +23,15 @@ import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Shop.HSShopDataInit;
 import com.hawk.game.protocol.Shop.HSShopDataInitRet;
-import com.hawk.game.protocol.Shop.HSShopDataSynRet;
-import com.hawk.game.protocol.Shop.HSShopGold2Coin;
-import com.hawk.game.protocol.Shop.HSShopGold2CoinRet;
-import com.hawk.game.protocol.Shop.HSShopRefreshRet;
-import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Shop.HSShopDataSyn;
+import com.hawk.game.protocol.Shop.HSShopDataSynRet;
+import com.hawk.game.protocol.Shop.HSShopGold2CoinRet;
 import com.hawk.game.protocol.Shop.HSShopItemBuy;
 import com.hawk.game.protocol.Shop.HSShopItemBuyRet;
 import com.hawk.game.protocol.Shop.HSShopRefresh;
+import com.hawk.game.protocol.Shop.HSShopRefreshRet;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ShopUtil;
 public class PlayerShopModule extends PlayerModule{
@@ -61,7 +58,6 @@ public class PlayerShopModule extends PlayerModule{
 
 	@ProtocolHandler(code = HS.code.SHOP_GOLD2COIN_C_VALUE)
 	private boolean onShopGold2Coin(HawkProtocol cmd) throws HawkException{
-		HSShopGold2Coin protocol = cmd.parseProtocol(HSShopGold2Coin.getDefaultInstance());
 		GoldChangeCfg goldChangeCfg = HawkConfigManager.getInstance().getConfigByKey(GoldChangeCfg.class, GsConst.GOLD_TO_COIN_INDEX);
 		if (goldChangeCfg == null) {
 			sendError(HS.code.SHOP_GOLD2COIN_C_VALUE, Status.error.CONFIG_ERROR_VALUE);
@@ -118,7 +114,6 @@ public class PlayerShopModule extends PlayerModule{
 	
 	@ProtocolHandler(code = HS.code.SHOP_DATA_INIT_C_VALUE)
 	private boolean onShopDataInit(HawkProtocol cmd){
-		HSShopDataInit protocol = cmd.parseProtocol(HSShopDataInit.getDefaultInstance());
 		HSShopDataInitRet.Builder response = HSShopDataInitRet.newBuilder();
 		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.NORMALSHOP_VALUE));
 		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.ALLIANCESHOP_VALUE));
@@ -205,13 +200,18 @@ public class PlayerShopModule extends PlayerModule{
 		}
 
 		ConsumeItems consume = new ConsumeItems();
-		if (itemCfg.getBuyType() == Const.moneyType.MONEY_COIN_VALUE) {
-			consume.addCoin((int)(itemInfo.getCount() * itemCfg.getBuyPrice() * itemInfo.getDiscount()));
+		if (protocol.getType() == Const.shopType.NORMALSHOP_VALUE) {
+			if (itemCfg.getBuyType() == Const.moneyType.MONEY_COIN_VALUE) {
+				consume.addCoin((int)(itemInfo.getCount() * itemInfo.getPrice() * itemInfo.getDiscount()));
+			}
+			else{
+				consume.addGold((int)(itemInfo.getCount() * itemInfo.getPrice()  * itemInfo.getDiscount()));
+			}
 		}
-		else{
-			consume.addGold((int)(itemInfo.getCount() * itemCfg.getBuyPrice() * itemInfo.getDiscount()));
+		else if (protocol.getType() == Const.shopType.ALLIANCESHOP_VALUE) {
+			consume.addContribution((int)(itemInfo.getCount() * itemInfo.getPrice()  * itemInfo.getDiscount()));
 		}
-		
+
 		if (consume.checkConsume(player, hsCode) == false) {
 			return true;
 		}
@@ -237,23 +237,31 @@ public class PlayerShopModule extends PlayerModule{
 	}
 
 	@Override
-	protected boolean onRefresh(List<Integer> refreshIndexList) {
+	protected boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
+		ShopEntity shopEntity = player.getPlayerData().loadShop();
+
 		for (int index : refreshIndexList) {
 			int mask = GsConst.PlayerRefreshMask[index];
 			if (0 != (mask & GsConst.RefreshMask.DAILY )) {
-				ShopEntity shopEntity = player.getPlayerData().getShopEntity();
 				shopEntity.setAllianceRefreshNums(0);
 				shopEntity.setNormalRefreshNums(0);
 				shopEntity.setOtherRefreshNums(0);
-				player.getPlayerData().syncShopRefreshTimeInfo();
+				shopEntity.notifyUpdate(true);
+				if (false == onLogin) {
+					player.getPlayerData().syncShopRefreshTimeInfo();
+				}
 
 			} else if (0 != (mask & GsConst.RefreshMask.SHOP_NORMAL)) {
 				ShopUtil.refreshShopData(Const.shopType.NORMALSHOP_VALUE, player);
-				player.getPlayerData().syncShopRefreshInfo(Const.shopType.NORMALSHOP_VALUE);
-				
+				if (false == onLogin) {
+					player.getPlayerData().syncShopRefreshInfo(Const.shopType.NORMALSHOP_VALUE);
+				}
+
 			} else if (0 != (mask & GsConst.RefreshMask.SHOP_ALLIANCE)) {
 				ShopUtil.refreshShopData(Const.shopType.ALLIANCESHOP_VALUE, player);
-				player.getPlayerData().syncShopRefreshInfo(Const.shopType.ALLIANCESHOP_VALUE);
+				if (false == onLogin) {
+					player.getPlayerData().syncShopRefreshInfo(Const.shopType.ALLIANCESHOP_VALUE);
+				}
 			}
 		}
 

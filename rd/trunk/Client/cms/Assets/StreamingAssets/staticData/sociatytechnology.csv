@@ -1,6 +1,6 @@
-#NUM,NUM,NUM,NUM,NUM,NUM,FLOAT,TEXT
+ï»¿#NUM,NUM,NUM,NUM,NUM,NUM,FLOAT,TEXT
 id,type,level,sociatyLevel,levelUp,gainPeople,gainCoin,gainExp
-#id,#¿Æ¼¼ÀàÐÍ,±¾¿Æ¼¼µÈ¼¶,¹«»áµÈ¼¶,Éý¼¶ÏûºÄ,±¾¼¶¹«»á×î´óÈËÊý,±¾¼¶½ðÇ®ÊÔÁ¶»ñµÃµÄÔöÒæ°Ù·Ö±È,±¾¼¶½ðÇ®ÊÔÁ¶»ñµÃµÄÔöÒæ°Ù·Ö±È
+#id,#ç§‘æŠ€ç±»åž‹,æœ¬ç§‘æŠ€ç­‰çº§,å…¬ä¼šç­‰çº§,å‡çº§æ¶ˆè€—,æœ¬çº§å…¬ä¼šæœ€å¤§äººæ•°,æœ¬çº§é‡‘é’±è¯•ç‚¼èŽ·å¾—çš„å¢žç›Šç™¾åˆ†æ¯”,æœ¬çº§é‡‘é’±è¯•ç‚¼èŽ·å¾—çš„å¢žç›Šç™¾åˆ†æ¯”
 1,1,1,-1,200,-1,0,
 2,1,2,-1,200,-1,0,
 3,1,3,-1,200,-1,0,

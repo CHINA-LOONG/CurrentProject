@@ -288,16 +288,16 @@ public class GsApp extends HawkApp {
 	 */
 	@Override
 	public int getHashThread(HawkXID xid, int threadNum) {
-		return super.getHashThread(xid, threadNum);
-		//if (threadNum <= 1) {
-		//	return 0;
-		//}
-		//else if (xid.getType() == GsConst.ObjType.MANAGER) {
-		//	return threadNum - 1;
-		//}
-		//else {
-		//	return  xid.getId() % (threadNum - 1);
-		//}
+		//return super.getHashThread(xid, threadNum);
+		if (threadNum <= 1) {
+			return 0;
+		}
+		else if (xid.getType() == GsConst.ObjType.MANAGER) {
+			return threadNum - 1;
+		}
+		else {
+			return  xid.getId() % (threadNum - 1);
+		}
 	}
 
 	/**

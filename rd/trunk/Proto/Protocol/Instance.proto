@@ -121,6 +121,13 @@ message HSTowerEnter
 	repeated int32 battleMonsterId = 3;
 }
 
+// GUILD_INSTANCE_ENTER_C
+message HSGuildInstanceEnter
+{
+	required string instanceId = 1;
+	repeated int32 battleMonsterId = 2;
+}
+
 // --未使用--------------------------------------------------------
 
 // INSTANCE_ASSIST_C

@@ -31,9 +31,8 @@ message PlayerInfo
 	optional int32  eye = 9;
 	optional int32  hair = 10;
 	optional int32  hairColor = 11;
-	repeated int32  battleMonster = 12;
-	required int32  recharge = 13;
-	required int32  vipLevel = 14;
+	required int32  recharge = 12;
+	required int32  vipLevel = 13;
 }
 
 // ------------------------------------------------------- protocol-----------------------------------------------------
@@ -72,6 +71,7 @@ message HSPlayerInfoSync
 // ASSEMBLE_FINISH_S
 message HSAssembleFinish
 {
-	required int32 playerID = 1;
+	required int32 playerId = 1;
+	required int32 allianceID = 2;
 }
 

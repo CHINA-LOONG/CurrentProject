@@ -9,12 +9,19 @@ import org.hawk.os.HawkTime;
 import com.hawk.game.config.SociatyTechnologyCfg;
 import com.hawk.game.entity.AllianceApplyEntity;
 import com.hawk.game.entity.AllianceEntity;
+import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.protocol.Alliance.AllianceApply;
 import com.hawk.game.protocol.Alliance.AllianceInfo;
 import com.hawk.game.protocol.Alliance.AllianceMember;
+import com.hawk.game.protocol.Alliance.AllianceTaskInfo;
+import com.hawk.game.protocol.Alliance.AllianceTeamInfo;
+import com.hawk.game.protocol.Alliance.AllianceTeamMemInfo;
+import com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo;
 import com.hawk.game.protocol.Alliance.HSAllianceApplyListRet;
 import com.hawk.game.protocol.Alliance.HSAllianceMembersRet;
+import com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet;
+import com.hawk.game.protocol.Alliance.HSAllianceTeamListRet;
 
 public class AllianceUtil {
 
@@ -24,7 +31,7 @@ public class AllianceUtil {
 	 * @return
 	 */
 	public static boolean checkName(String name) {  
-		String regEx = "^[0-9A-Za-z\u4e00-\u9fa5]{2,6}$";  
+		String regEx = "^[0-9A-Za-z\u4e00-\u9fa5]{2,6}$";
 		Pattern pat = Pattern.compile(regEx);  
 		Matcher mat = pat.matcher(name);  
 		return mat.find();     
@@ -160,7 +167,104 @@ public class AllianceUtil {
 	}
 	
 	/**
-	 * 所有请求
+	 * 工会队伍列表
+	 * @param allianceId
+	 * @param player
+	 * @return
+	 */
+	public static HSAllianceTeamListRet.Builder getTeamList(AllianceEntity allianceEntity) {
+		HSAllianceTeamListRet.Builder builder = HSAllianceTeamListRet.newBuilder();
+		for (AllianceTeamEntity teamEntity : allianceEntity.getUnfinishTeamList().values()) {
+			builder.addAllianceTeams(getTeamInfo(teamEntity, allianceEntity, false));
+		}
+		return builder;
+	}
+	
+	/**
+	 * 工会队伍
+	 * @param allianceId
+	 * @param player
+	 * @return
+	 */
+	public static AllianceTeamInfo.Builder getTeamInfo(AllianceTeamEntity teamEntity, AllianceEntity allianceEntity, boolean questInfo) {
+		AllianceTeamInfo.Builder element = AllianceTeamInfo.newBuilder();
+		element.setStartTime(teamEntity.getCreateTime());
+		if (teamEntity.getCaptain() != 0) {
+			AllianceTeamMemInfo.Builder member = getPlayerInfo(teamEntity.getCaptain(), allianceEntity);
+			member.setIsCaptain(true);
+			element.addMembers(member);
+		}
+		
+		if (teamEntity.getMember1() != 0) {
+			element.addMembers(getPlayerInfo(teamEntity.getMember1(), allianceEntity));
+		}
+		
+		if (teamEntity.getMember2() != 0) {
+			element.addMembers(getPlayerInfo(teamEntity.getMember2(), allianceEntity));
+		}
+		
+		if (teamEntity.getMember3() != 0) {
+			element.addMembers(getPlayerInfo(teamEntity.getMember3(), allianceEntity));
+		}
+		
+		if (questInfo == true) {
+			element.addQuestInfos(getTaskInfo(teamEntity.getItemQuest1PlayerId(), teamEntity.getItemQuest1(), teamEntity, allianceEntity));
+			element.addQuestInfos(getTaskInfo(teamEntity.getItemQuest2PlayerId(), teamEntity.getItemQuest2(), teamEntity, allianceEntity));
+			element.addQuestInfos(getTaskInfo(teamEntity.getItemQuest3PlayerId(), teamEntity.getItemQuest3(), teamEntity, allianceEntity));
+			element.addQuestInfos(getTaskInfo(teamEntity.getCoinQuest1PlayerId(), teamEntity.getCoinQuest1(), teamEntity, allianceEntity));
+			element.addQuestInfos(getTaskInfo(teamEntity.getCoinQuest2PlayerId(), teamEntity.getCoinQuest2(), teamEntity, allianceEntity));
+			element.addQuestInfos(getTaskInfo(teamEntity.getInstanceQuest1PlayerId(), teamEntity.getInstanceQuest1(), teamEntity, allianceEntity));
+		}
+		
+		return element;
+	}
+	
+	/**
+	 * 工会任务信息
+	 * @param allianceId
+	 * @param player
+	 * @return
+	 */
+	public static AllianceTeamQuestInfo.Builder getTaskInfo(int playerId, int questId, AllianceTeamEntity teamEntity, AllianceEntity allianceEntity){
+		AllianceTeamQuestInfo.Builder questBuilder = AllianceTeamQuestInfo.newBuilder();
+		questBuilder.setQuestId(questId);
+		questBuilder.setPlayerId(playerId);
+		if (playerId != 0 && !isMemberInTeam(playerId, teamEntity) ) {
+			PlayerAllianceEntity playerEntity = allianceEntity.getMember(teamEntity.getItemQuest1PlayerId());
+			if (playerEntity != null) {
+				questBuilder.setNickname(playerEntity.getName());
+				questBuilder.setLevel(playerEntity.getLevel());
+				questBuilder.setAvatar(0);
+			}	
+			else {
+				questBuilder.setPlayerId(-1);
+			}
+		}	
+		return questBuilder;
+	}
+	
+	
+	/**
+	 * 工会队伍队员
+	 * @param allianceId
+	 * @param player
+	 * @return
+	 */
+	public static AllianceTeamMemInfo.Builder getPlayerInfo(int playerId, AllianceEntity allianceEntity) {
+		AllianceTeamMemInfo.Builder member = AllianceTeamMemInfo.newBuilder();
+		PlayerAllianceEntity playerEntity = allianceEntity.getMember(playerId);
+		if (playerEntity != null) {
+			member.setPlayerId(playerId);
+			member.setNickname(playerEntity.getName());
+			member.setLevel(playerEntity.getLevel());
+			member.setAvatar(0);
+			member.setIsCaptain(false);
+		}	
+		return member;
+	}
+	
+	/**
+	 * 所有队伍
 	 * @param allianceId
 	 * @param player
 	 * @return
@@ -171,5 +275,48 @@ public class AllianceUtil {
 			builder.addApply(getApplyNotify(applyEntity));
 		}
 		return builder;
+	}
+	
+	/**
+	 * 工会任务信息
+	 * @param allianceId
+	 * @param player
+	 * @return
+	 */
+	public static AllianceTaskInfo.Builder getAllianceTaskInfo(AllianceTeamEntity teamEntity) {
+		AllianceTaskInfo.Builder builder = AllianceTaskInfo.newBuilder();
+		builder.addItemTask(teamEntity.getItemQuest1());
+		builder.addItemTask(teamEntity.getItemQuest2());
+		builder.addItemTask(teamEntity.getItemQuest3());
+		builder.addCoinTask(teamEntity.getCoinQuest1());
+		builder.addCoinTask(teamEntity.getCoinQuest2());
+		builder.addInstanceTask(teamEntity.getInstanceQuest1());
+		return builder;
+	}
+	
+	/**
+	 * 自身组队信息
+	 * @param allianceId
+	 * @param player
+	 * @return
+	 */
+	public static HSAllianceSelfTeamRet.Builder getSelfTeamInfo(AllianceTeamEntity teamEntity, AllianceEntity allianceEntity) {
+		HSAllianceSelfTeamRet.Builder builder = HSAllianceSelfTeamRet.newBuilder();
+		builder.setSelfTeam(getTeamInfo(teamEntity, allianceEntity, true));
+		return builder;
+	}
+	
+	/**
+	 * 自身组队信息
+	 * @param allianceId
+	 * @param player
+	 * @return
+	 */
+	public static boolean isMemberInTeam(int playerId, AllianceTeamEntity teamEntity){
+		if (teamEntity.getCaptain() != playerId && teamEntity.getMember1() != playerId && teamEntity.getMember2() != playerId && teamEntity.getMember3() != playerId) {
+			return false;
+		}
+		
+		return true;
 	}
 }

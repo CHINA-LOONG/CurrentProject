@@ -1,7 +1,5 @@
 package org.hawk.db;
 
-import java.util.Date;
-import java.util.Calendar;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.hawk.os.HawkTime;

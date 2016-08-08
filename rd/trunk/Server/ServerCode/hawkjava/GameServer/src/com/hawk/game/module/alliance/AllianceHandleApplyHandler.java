@@ -18,6 +18,7 @@ import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceHanleApply;
 import com.hawk.game.protocol.Alliance.HSAllianceHanleApplyRet;
+import com.hawk.game.protocol.Alliance.HSAllianceJoinNotify;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
@@ -130,6 +131,8 @@ public class AllianceHandleApplyHandler implements HawkMsgHandler{
 					AllianceManager.getInstance().addPlayerAndAllianceMap(request.getPlayerId(), allianceEntity.getId());	
 					// 清理该玩家在其他公会的申请
 					AllianceManager.getInstance().clearPlayerApply(targetId);
+					HawkProtocol notify = HawkProtocol.valueOf(HS.code.ALLIANCE_JOIN_N_S_VALUE, HSAllianceJoinNotify.newBuilder().setAllianceId(allianceEntity.getId()));
+					AllianceManager.getInstance().memberNotify(targetPlayerAllianceEntity.getPlayerId(), notify);
 				}
 			}
 		} 

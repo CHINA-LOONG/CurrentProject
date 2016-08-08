@@ -29,7 +29,6 @@ import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.QuestCfg;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.util.GsConst;
-import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.GsConst.Cycle;
 
 /**
@@ -40,7 +39,6 @@ import com.hawk.game.util.GsConst.Cycle;
  */
 @Entity
 @Table(name = "statistics")
-@SuppressWarnings("serial")
 public class StatisticsEntity  extends HawkDBEntity {
 	@Id
 	@Column(name = "playerId", unique = true)
@@ -221,7 +219,11 @@ public class StatisticsEntity  extends HawkDBEntity {
 	// 今日工会祈福次数
 	@Column(name = "alliancePrayCountDaily", nullable = false)
 	private int alliancePrayCountDaily = 0;
-	
+
+	// 今日公会任务数
+	@Column(name = "allianceTaskCountDaily", nullable = false)
+	private int allianceTaskCountDaily = 0;
+
 	// 商品充值次数记录
 	@Column(name = "rechargeRecord", nullable = false)
 	private String rechargeRecordJson = "";
@@ -232,7 +234,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	// 刷新时间
 	@Column(name = "refreshTime")
-	private String refreshTimeJson = null;
+	private String refreshTimeJson = "";
 
 	// 签到次数
 	@Column(name = "signInCount", nullable = false)
@@ -267,31 +269,60 @@ public class StatisticsEntity  extends HawkDBEntity {
 	@Transient
 	protected Map<Integer, String> refreshStringMap = new HashMap<Integer, String>();
 	@Transient
+	boolean refreshTimeFlag = false;
+	@Transient
 	protected Set<Integer> questCompleteSet = new HashSet<Integer>();
+	@Transient
+	boolean questCompleteFlag = false;
 	@Transient
 	protected Set<Integer> questCompleteDailySet = new HashSet<Integer>();
 	@Transient
+	boolean questCompleteDailyFlag = false;
+	@Transient
 	protected Map<String, Integer> instanceStarMap = new HashMap<String, Integer>();
+	@Transient
+	boolean instanceStarFlag = false;
 	@Transient
 	protected List<Integer> chapterBoxNormalList = new ArrayList<Integer>();
 	@Transient
+	boolean chapterBoxNormalFlag = false;
+	@Transient
 	protected List<Integer> chapterBoxHardList = new ArrayList<Integer>();
+	@Transient
+	boolean chapterBoxHardFlag = false;
 	@Transient
 	protected Map<String, Integer> instanceCountDailyMap = new HashMap<String, Integer>();
 	@Transient
+	boolean  instanceCountDailyFlag = false;
+	@Transient
 	protected Set<String> monsterCollectSet = new HashSet<String>();
+	@Transient
+	boolean monsterCollectFlag = false;
 	@Transient
 	protected Map<Integer, Integer> monsterStageMap = new HashMap<Integer, Integer>();
 	@Transient
+	boolean monsterStageFlag = false;
+	@Transient
 	protected Map<Integer, Integer> monsterLevelMap = new HashMap<Integer, Integer>();
+	@Transient
+	boolean monsterLevelFlag = false;
 	@Transient
 	protected Map<Integer, Integer> holeCountDailyMap = new HashMap<Integer, Integer>();
 	@Transient
+	boolean holeCountDailyFlag = false;
+	@Transient
 	protected Map<Integer, Integer> towerIndexMap = new HashMap<Integer, Integer>();
+	@Transient
+	boolean towerIndexFlag = false;
 	@Transient
 	protected Map<String, Integer> rechargeRecordMap = new HashMap<String, Integer>();
 	@Transient
+	boolean rechargeRecordFlag = false;
+	@Transient
 	protected Map<String, Integer> itemUseCountDailyMap = new HashMap<String, Integer>();
+	@Transient
+	boolean itemUseCountDailyFlag = false;
+
 	// 最后普通副本所属章节
 	@Transient
 	protected int normalTopChapter = 0;
@@ -334,6 +365,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public void setRefreshTime(int timeCfgId, Calendar time) {
 		this.refreshTimeMap.put(timeCfgId, time);
+		refreshTimeFlag = true;
 	}
 
 	public int getFatigue() {
@@ -384,13 +416,16 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 		if (questCfg.getCycle() == Cycle.DAILY_CYCLE) {
 			questCompleteDailySet.add(questId);
+			questCompleteDailyFlag = true;
 		} else {
 			questCompleteSet.add(questId);
+			questCompleteFlag = true;
 		}
 	}
 
 	public void clearQuestCompleteDaily() {
 		questCompleteDailySet.clear();
+		questCompleteDailyFlag = true;
 	}
 
 	// GM begin--------------------------------------------------------------------
@@ -402,12 +437,15 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 		if (questCfg.getCycle() == Cycle.DAILY_CYCLE) {
 			questCompleteDailySet.remove(questId);
+			questCompleteDailyFlag = true;
 		} else {
 			questCompleteSet.remove(questId);
+			questCompleteFlag = true;
 		}
 	}
 	public void clearQuestComplete() {
 		questCompleteSet.clear();
+		questCompleteFlag = true;
 	}
 	// Gm end------------------------------------------------------------------------
 
@@ -417,6 +455,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public void addMonsterCollect(String monsterCfgId) {
 		monsterCollectSet.add(monsterCfgId);
+		monsterCollectFlag = true;
 	}
 
 	public Map<String, Integer> getInstanceStarMap() {
@@ -425,6 +464,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public void setInstanceStar(String instanceId, int starCount) {
 		instanceStarMap.put(instanceId, starCount);
+		instanceStarFlag = true;
 	}
 	/**
 	 * @return 副本完成星级，如未完成返回0
@@ -453,6 +493,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 			chapterBoxNormalList.add(Const.ChapterBoxState.INVALID_VALUE);
 		}
 		chapterBoxNormalList.set(chapterId - 1, state);
+		chapterBoxNormalFlag = true;
 	}
 
 	public List<Integer> getHardChapterBoxStateList() {
@@ -471,6 +512,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 			chapterBoxHardList.add(Const.ChapterBoxState.INVALID_VALUE);
 		}
 		chapterBoxHardList.set(chapterId - 1, state);
+		chapterBoxHardFlag = true;
 	}
 
 	/**
@@ -495,14 +537,17 @@ public class StatisticsEntity  extends HawkDBEntity {
 			curCount = oldCount;
 		}
 		instanceCountDailyMap.put(instanceId, curCount + addCount);
+		instanceCountDailyFlag = true;
 	}
 
 	public void setInstanceCountDaily(String instanceId, int count) {
 		instanceCountDailyMap.put(instanceId, count);
+		instanceCountDailyFlag = true;
 	}
 
 	public void clearInstanceCountDaily() {
 		instanceCountDailyMap.clear();
+		instanceCountDailyFlag = true;
 	}
 
 	public Map<Integer, Integer> getMonsterCountOverStageMap() {
@@ -519,6 +564,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public void setMonsterCountOverStage(int stage, int count) {
 		monsterStageMap.put(stage, count);
+		monsterStageFlag = true;
 	}
 
 	public Map<Integer, Integer> getMonsterCountOverLevelMap() {
@@ -535,6 +581,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	public void setMonsterCountOverLevel(int level, int count) {
 		monsterLevelMap.put(level, count);
+		monsterLevelFlag = true;
 	}
 
 	/**
@@ -559,14 +606,17 @@ public class StatisticsEntity  extends HawkDBEntity {
 			curCount = oldCount;
 		}
 		holeCountDailyMap.put(holeId, curCount + addCount);
+		holeCountDailyFlag = true;
 	}
 
 	public void setHoleCountDaily(int holeId, int count) {
 		holeCountDailyMap.put(holeId, count);
+		holeCountDailyFlag = true;
 	}
 
 	public void clearHoleCountDaily() {
 		holeCountDailyMap.clear();
+		holeCountDailyFlag = true;
 	}
 
 	/**
@@ -591,14 +641,17 @@ public class StatisticsEntity  extends HawkDBEntity {
 			curIndex = oldIndex;
 		}
 		towerIndexMap.put(towerId, curIndex + addCount);
+		towerIndexFlag = true;
 	}
 
 	public void setTowerIndex(int towerId, int index) {
 		towerIndexMap.put(towerId, index);
+		towerIndexFlag = true;
 	}
 
 	public void clearTowerIndexMap() {
 		towerIndexMap.clear();
+		towerIndexFlag = true;
 	}
 
 	public int getRechargeTime(String productId){
@@ -619,6 +672,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 		else{
 			rechargeRecordMap.put(productId, 1);
 		}
+		rechargeRecordFlag = true;
 	}
 
 	public Calendar getMonthCardEndTime() {
@@ -895,7 +949,7 @@ public class StatisticsEntity  extends HawkDBEntity {
 	public void clearFatigueClaimCountDaily() {
 		fatigueClaimCountDaily = 0;
 	}
-	
+
 	public int getAlliancePrayCountDaily() {
 		return alliancePrayCountDaily;
 	}
@@ -907,11 +961,23 @@ public class StatisticsEntity  extends HawkDBEntity {
 	public void clearAlliancePrayCountDaily() {
 		alliancePrayCountDaily = 0;
 	}
-	
+
+	public int getAllianceTaskCountDaily() {
+		return allianceTaskCountDaily;
+	}
+
+	public void addAllianceTaskCountDaily() {
+		++allianceTaskCountDaily;
+	}
+
+	public void clearAllianceTaskCountDaily() {
+		allianceTaskCountDaily = 0;
+	}
+
 	public Map<String, Integer> getItemUseCountDailyMap() {
 		return itemUseCountDailyMap;
 	}
-	
+
 	/**
 	 * @return 物品使用次数，如未使用返回0
 	 */
@@ -930,14 +996,17 @@ public class StatisticsEntity  extends HawkDBEntity {
 			curCount = oldCount;
 		}
 		itemUseCountDailyMap.put(itemId, curCount + addCount);
+		itemUseCountDailyFlag = true;
 	}
 
 	public void setItemUseCountDaily(String itemId, int count) {
 		itemUseCountDailyMap.put(itemId, count);
+		itemUseCountDailyFlag = true;
 	}
 
 	public void clearItemUseCountDaily() {
 		itemUseCountDailyMap.clear();
+		itemUseCountDailyFlag = true;
 	}
 
 	public byte getSignInCount() {
@@ -1071,6 +1140,12 @@ public class StatisticsEntity  extends HawkDBEntity {
 		if (monsterLevelJson != null && false == "".equals(monsterLevelJson) && false == "null".equals(monsterLevelJson)) {
 			monsterLevelMap = HawkJsonUtil.getJsonInstance().fromJson(monsterLevelJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
 		}
+		if (holeCountDailyJson != null && false == "".equals(holeCountDailyJson) && false == "null".equals(holeCountDailyJson)) {
+			holeCountDailyMap = HawkJsonUtil.getJsonInstance().fromJson(holeCountDailyJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
+		}
+		if (towerIndexJson != null && false == "".equals(towerIndexJson) && false == "null".equals(towerIndexJson)) {
+			towerIndexMap = HawkJsonUtil.getJsonInstance().fromJson(towerIndexJson, new TypeToken<HashMap<Integer, Integer>>() {}.getType());
+		}
 		if (rechargeRecordJson != null && false == "".equals(rechargeRecordJson) && false == "null".equals(rechargeRecordJson)) {
 			rechargeRecordMap = HawkJsonUtil.getJsonInstance().fromJson(rechargeRecordJson, new TypeToken<HashMap<String, Integer>>() {}.getType());
 		}
@@ -1113,23 +1188,66 @@ public class StatisticsEntity  extends HawkDBEntity {
 
 	@Override
 	public boolean encode() {
-		questCompleteJson = HawkJsonUtil.getJsonInstance().toJson(questCompleteSet);
-		questCompleteDailyJson = HawkJsonUtil.getJsonInstance().toJson(questCompleteDailySet);
-		monsterCollectJson = HawkJsonUtil.getJsonInstance().toJson(monsterCollectSet);
-		instanceStarJson = HawkJsonUtil.getJsonInstance().toJson(instanceStarMap);
-		chapterBoxNormalJson = HawkJsonUtil.getJsonInstance().toJson(chapterBoxNormalList);
-		chapterBoxHardJson = HawkJsonUtil.getJsonInstance().toJson(chapterBoxHardList);
-		instanceCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(instanceCountDailyMap);
-		monsterStageJson = HawkJsonUtil.getJsonInstance().toJson(monsterStageMap);
-		monsterLevelJson = HawkJsonUtil.getJsonInstance().toJson(monsterLevelMap);
-		rechargeRecordJson = HawkJsonUtil.getJsonInstance().toJson(rechargeRecordMap);
-		itemUseCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(itemUseCountDailyMap);
-
-		refreshStringMap.clear();
-		for (Map.Entry<Integer, Calendar> entry : refreshTimeMap.entrySet()) {
-			refreshStringMap.put(entry.getKey(), dateFormat.format(entry.getValue().getTime()));
+		if (true == refreshTimeFlag) {
+			refreshTimeFlag = false;
+			refreshStringMap.clear();
+			for (Map.Entry<Integer, Calendar> entry : refreshTimeMap.entrySet()) {
+				refreshStringMap.put(entry.getKey(), dateFormat.format(entry.getValue().getTime()));
+			}
+			refreshTimeJson = HawkJsonUtil.getJsonInstance().toJson(refreshStringMap);
 		}
-		refreshTimeJson = HawkJsonUtil.getJsonInstance().toJson(refreshStringMap);
+		if (true == questCompleteFlag) {
+			questCompleteFlag = false;
+			questCompleteJson = HawkJsonUtil.getJsonInstance().toJson(questCompleteSet);
+		}
+		if (true == questCompleteDailyFlag) {
+			questCompleteDailyFlag = false;
+			questCompleteDailyJson = HawkJsonUtil.getJsonInstance().toJson(questCompleteDailySet);
+		}
+		if (true == instanceStarFlag) {
+			instanceStarFlag = false;
+			instanceStarJson = HawkJsonUtil.getJsonInstance().toJson(instanceStarMap);
+		}
+		if (true == chapterBoxNormalFlag) {
+			chapterBoxNormalFlag = false;
+			chapterBoxNormalJson = HawkJsonUtil.getJsonInstance().toJson(chapterBoxNormalList);
+		}
+		if (true == chapterBoxHardFlag) {
+			chapterBoxHardFlag = false;
+			chapterBoxHardJson = HawkJsonUtil.getJsonInstance().toJson(chapterBoxHardList);
+		}
+		if (true == instanceCountDailyFlag) {
+			instanceCountDailyFlag = false;
+			instanceCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(instanceCountDailyMap);
+		}
+		if (true == monsterCollectFlag) {
+			monsterCollectFlag = false;
+			monsterCollectJson = HawkJsonUtil.getJsonInstance().toJson(monsterCollectSet);
+		}
+		if (true == monsterStageFlag) {
+			monsterStageFlag = false;
+			monsterStageJson = HawkJsonUtil.getJsonInstance().toJson(monsterStageMap);
+		}
+		if (true == monsterLevelFlag) {
+			monsterLevelFlag = false;
+			monsterLevelJson = HawkJsonUtil.getJsonInstance().toJson(monsterLevelMap);
+		}
+		if (true == holeCountDailyFlag) {
+			holeCountDailyFlag = false;
+			holeCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(holeCountDailyMap);
+		}
+		if (true == towerIndexFlag) {
+			towerIndexFlag = false;
+			towerIndexJson = HawkJsonUtil.getJsonInstance().toJson(towerIndexMap);
+		}
+		if (true == rechargeRecordFlag) {
+			rechargeRecordFlag = false;
+			rechargeRecordJson = HawkJsonUtil.getJsonInstance().toJson(rechargeRecordMap);
+		}
+		if (true == itemUseCountDailyFlag) {
+			itemUseCountDailyFlag = false;
+			itemUseCountDailyJson = HawkJsonUtil.getJsonInstance().toJson(itemUseCountDailyMap);
+		}
 
 		return true;
 	}

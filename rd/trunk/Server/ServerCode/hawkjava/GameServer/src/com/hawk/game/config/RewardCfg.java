@@ -10,7 +10,6 @@ import org.hawk.config.HawkConfigManager;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Const.itemType;
-import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.RatioUtil;
 import com.hawk.game.util.RatioUtil.RatioItem;
 

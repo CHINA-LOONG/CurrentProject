@@ -1,18 +1,17 @@
 package com.hawk.game.config;
 
-import org.hawk.config.HawkConfigBase;
-import org.hawk.config.HawkConfigManager;
-import org.hawk.config.HawkConfigBase.Id;
-
-import com.hawk.game.item.ItemInfo;
-import com.hawk.game.protocol.Const;
-import com.hawk.game.util.GsConst;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import org.hawk.config.HawkConfigBase;
+import org.hawk.config.HawkConfigManager;
+
+import com.hawk.game.item.ItemInfo;
+import com.hawk.game.protocol.Const;
+import com.hawk.game.util.GsConst;
 
 @HawkConfigManager.CsvResource(file = "staticData/item.csv", struct = "map")
 public class ItemCfg extends HawkConfigBase {

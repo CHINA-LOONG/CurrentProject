@@ -58,6 +58,8 @@ enum itemType
 	GROUP = 6;
 	// 怪物奖励
 	MONSTER = 7;
+	// 公会奖励
+	ALLIANCE = 8;
 }
 
 // 购买价格类型
@@ -67,23 +69,6 @@ enum moneyType
 	MONEY_GOLD = 1;
 	// 金币
 	MONEY_COIN = 2;	
-}
-
-// 玩家属性类型定义
-enum playerAttr
-{
-	// 钻石
-	GOLD = 1;
-	// 金币
-	COIN = 2;
-	// 等级
-	LEVEL = 3;
-	// 经验
-	EXP = 4;
-	// 疲劳值
-	FATIGUE = 5;
-	// vip等级
-	VIPLEVEL = 6;
 }
 
 // 变换的数值类型
@@ -107,6 +92,8 @@ enum changeType
 	CHANGE_FAV	= 8;
 	// 充值钻石
 	CHANGE_GOLD_BUY	= 8;
+	// 玩家公会贡献值
+	CHANGE_PLAYER_CONTRIBUTION = 9;
 }
 
 // 附加属性类型定义
@@ -300,4 +287,17 @@ enum ChapterBoxState
 	VALID = 0;
 	// 已领取
 	OPEN = 1;
+}
+
+// 副本类型
+enum InstanceType
+{
+	// 故事
+	INSTANCE_STORY = 1;
+	// 洞
+	INSTANCE_HOLE = 2;
+	// 塔
+	INSTANCE_TOWER = 3;
+	// 公会
+	INSTANCE_GUILD = 4;
 }

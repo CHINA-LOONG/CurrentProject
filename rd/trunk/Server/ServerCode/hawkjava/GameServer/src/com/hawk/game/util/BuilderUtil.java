@@ -62,7 +62,6 @@ public class BuilderUtil {
 		builder.setEye(playerEntity.getExp());
 		builder.setHair(playerEntity.getHair());
 		builder.setHairColor(playerEntity.getHairColor());
-		builder.addAllBattleMonster(playerEntity.getBattleMonsterList());
 		builder.setRecharge(playerEntity.getRecharge());
 		builder.setVipLevel(playerEntity.getVipLevel());
 		return builder;

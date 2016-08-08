@@ -18,6 +18,7 @@ import com.hawk.game.protocol.Consume.ConsumeItem;
 import com.hawk.game.protocol.Consume.HSConsumeInfo;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Player.SynPlayerAttr;
+import com.hawk.game.protocol.Reward.RewardItem;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst.ConsumeCheckResult;
 
@@ -140,6 +141,27 @@ public class ConsumeItems {
 		}
 		return this;
 	}
+
+	public ConsumeItems addContribution(int count) {
+		ConsumeItem.Builder consumeItem = null;
+		for (ConsumeItem.Builder consume : consumeInfo.getConsumeItemsBuilderList()) {
+			if (consume.getType() == itemType.ALLIANCE_VALUE && Integer.valueOf(consume.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
+				consumeItem = consume;
+				break;
+			}
+		}
+		if (consumeItem == null) {
+			consumeItem = ConsumeItem.newBuilder();
+			consumeItem.setType(itemType.ALLIANCE_VALUE);
+			consumeItem.setItemId(String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION));
+			consumeItem.setCount(count);
+			consumeInfo.addConsumeItems(consumeItem);
+		}
+		else {
+			consumeItem.setCount(consumeItem.getCount() + count);
+		}
+		return this;
+	}
 	
 	public ConsumeItems addAttr(int attrType, int count) {		
 		return addAttr(String.valueOf(attrType), count);
@@ -170,6 +192,9 @@ public class ConsumeItems {
 			}
 			else if (itemInfo.getType() == itemType.MONSTER_VALUE) {
 				throw new RuntimeException("unsupport config consume type");
+			}
+			else if (itemInfo.getType() == itemType.ALLIANCE_VALUE) {
+				addContribution(itemInfo.getCount());
 			}
 			//配置的消耗类型不包括装备
 			else if (itemInfo.getType() == itemType.EQUIP_VALUE) {
@@ -247,6 +272,12 @@ public class ConsumeItems {
 					case ConsumeCheckResult.MONSTER_LOCKED:
 						player.sendError(hsCode, Status.monsterError.MONSTER_LOCKED_VALUE);
 						break;
+					case ConsumeCheckResult.NOT_IN_ALLIANCE:
+						player.sendError(hsCode, Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
+						break;
+					case ConsumeCheckResult.CONTRIBUTION_NOT_ENOUGH:
+						player.sendError(hsCode, Status.allianceError.ALLIANCE_CONTRI_NOT_ENOUGH_VALUE);
+						break;
 					default:
 						break;
 					}
@@ -307,6 +338,18 @@ public class ConsumeItems {
 					return ConsumeCheckResult.TOOLS_NOT_ENOUGH;
 				}
 			}
+			else if(consumeItem.getType() == Const.itemType.ALLIANCE_VALUE) {
+				//检测公会
+				if (player.getAllianceId() == 0) {
+					return ConsumeCheckResult.NOT_IN_ALLIANCE;
+				}
+				// 检测贡献值
+				if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
+					if (player.getPlayerData().getPlayerAllianceEntity().getContribution() < consumeItem.getCount()) {
+						return ConsumeCheckResult.CONTRIBUTION_NOT_ENOUGH;
+					}
+				}
+			}
 		}
 		
 		return 0;
@@ -365,6 +408,15 @@ public class ConsumeItems {
 					if (result == false) {				
 						consumeInfo.removeConsumeItems(i);
 						continue;
+					}
+				}
+				else if(item.getType() == Const.itemType.ALLIANCE_VALUE ){
+					if (Integer.valueOf(item.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
+						boolean result = player.consumeContribution(item.getCount(), action);
+						if (result == false) {				
+							consumeInfo.removeConsumeItems(i);
+							continue;
+						}
 					}
 				}
 				else {

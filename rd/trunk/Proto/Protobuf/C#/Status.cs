@@ -310,7 +310,94 @@ namespace PB
       ALLIANCE_NO_MAIN = 524295,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOTICE_ERROR", Value=524296)]
-      ALLIANCE_NOTICE_ERROR = 524296
+      ALLIANCE_NOTICE_ERROR = 524296,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_ALREADY_APPLY", Value=524297)]
+      ALLIANCE_ALREADY_APPLY = 524297,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_ALREADY_FULL", Value=524298)]
+      ALLIANCE_ALREADY_FULL = 524298,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_NOT_EXIST", Value=524299)]
+      ALLIANCE_APPLY_NOT_EXIST = 524299,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_POSITION_ERROR", Value=524300)]
+      ALLIANCE_POSITION_ERROR = 524300,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE__LEAVE_NOT_EMPTY", Value=524301)]
+      ALLIANCE__LEAVE_NOT_EMPTY = 524301,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TARGET_NOT_JOIN", Value=524302)]
+      ALLIANCE_TARGET_NOT_JOIN = 524302,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TARGET_ALREADY_JOIN", Value=524304)]
+      ALLIANCE_TARGET_ALREADY_JOIN = 524304,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TECH_FULL", Value=524305)]
+      ALLIANCE_TECH_FULL = 524305,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LEVEL_LIMIT", Value=524306)]
+      ALLIANCE_LEVEL_LIMIT = 524306,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CONTRI_NOT_ENOUGH", Value=524307)]
+      ALLIANCE_CONTRI_NOT_ENOUGH = 524307,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_PRAY_MAX_COUNT", Value=524308)]
+      ALLIANCE_PRAY_MAX_COUNT = 524308,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_FRIZEN_TIME", Value=524309)]
+      ALLIANCE_FRIZEN_TIME = 524309,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_FAGIGUE_COUNT", Value=524310)]
+      ALLIANCE_MAX_FAGIGUE_COUNT = 524310,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_FAGIGUE_GIVE_ALREADY", Value=524311)]
+      ALLIANCE_FAGIGUE_GIVE_ALREADY = 524311,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CAPACITY_NOT_ENOUGH", Value=524312)]
+      ALLIANCE_CAPACITY_NOT_ENOUGH = 524312,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SAME_POSITION", Value=524313)]
+      ALLIANCE_SAME_POSITION = 524313,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_APPLY", Value=524314)]
+      ALLIANCE_MAX_APPLY = 524314,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_ALREADY_IN_TEAM", Value=524315)]
+      ALLIANCE_ALREADY_IN_TEAM = 524315,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEAM_NOT_EXIST", Value=524316)]
+      ALLIANCE_TEAM_NOT_EXIST = 524316,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEAM_FINISH", Value=524317)]
+      ALLIANCE_TEAM_FINISH = 524317,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEAM_FULL", Value=524318)]
+      ALLIANCE_TEAM_FULL = 524318,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_FINISH", Value=524320)]
+      ALLIANCE_TASK_FINISH = 524320,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOT_IN_TEAM", Value=524321)]
+      ALLIANCE_NOT_IN_TEAM = 524321,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_NOT_EXIST", Value=524322)]
+      ALLIANCE_TASK_NOT_EXIST = 524322,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_BIG_TASK", Value=524323)]
+      ALLIANCE_MAX_BIG_TASK = 524323,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MAX_SMALL_TASK", Value=524324)]
+      ALLIANCE_MAX_SMALL_TASK = 524324,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_QUEST_NOT_EXIST", Value=524325)]
+      ALLIANCE_QUEST_NOT_EXIST = 524325,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_QUEST_FINISH", Value=524326)]
+      ALLIANCE_QUEST_FINISH = 524326,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_NOT_FINISH", Value=524327)]
+      ALLIANCE_TASK_NOT_FINISH = 524327
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"shopError")]

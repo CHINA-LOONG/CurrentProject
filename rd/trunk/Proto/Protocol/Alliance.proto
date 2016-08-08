@@ -42,9 +42,43 @@ message AllianceInfo
 	required string name = 12; // 公会名称
 	required int32  minLevel = 13;  // 最低级别
 	required bool   autoAccept = 14; //自否自动允许加入
+	optional int32  prayCount = 15; //祈福次数
+	optional int32  taskCount = 16; //任务接取次数
 }
 
-// ------------------------------------------------------- protocol-----------------------------------------------------
+message AllianceTaskInfo
+{
+	repeated int32 itemTask = 1;
+	repeated int32 coinTask = 2;
+	repeated int32 instanceTask = 3;
+}
+
+message AllianceTeamQuestInfo
+{
+	required int32 questId = 1;
+	required int32 playerId = 2;
+	optional string nickname = 3;
+	optional int32  level = 4;
+	optional int32  avatar = 5;
+}
+
+message AllianceTeamMemInfo
+{
+	required int32 playerId = 1;
+	optional string nickname = 2;
+	required int32 level = 3;
+	required int32 avatar = 4;
+	required bool isCaptain = 5;
+}
+
+message AllianceTeamInfo
+{
+	required int32 startTime = 1;
+	repeated AllianceTeamMemInfo members = 2;
+	repeated AllianceTeamQuestInfo questInfos = 3;
+}
+
+// -------------------------------------------------------  工会基础协议 -----------------------------------------------------
 
 //公会创建
 message HSAllianceCreate
@@ -115,7 +149,7 @@ message HSAllianceHanleApplyRet
 	
 }
 
-//取消申请
+//申请
 message HSAllianceCancleApply
 {
 	required int32 allianceId = 1; // 工会ID
@@ -328,3 +362,105 @@ message HSLevelChangeNotify
 	required int32 type = 1;
 	required int32 level = 2;
 }
+
+// 入会通知
+message HSAllianceJoinNotify
+{
+	required int32 allianceId = 1;
+}
+
+// 离会通知
+message HSAllianceLeaveNotify
+{
+}
+
+// -------------------------------------------------------  工会任务协议 -----------------------------------------------------
+
+// 组队
+message HSAllianceCreateTeam
+{
+	required int32 taskId = 1;//任务号
+}
+
+message HSAllianceCreateTeamRet
+{
+	required AllianceTaskInfo taskInfo = 1; //任务信息
+}
+
+// 加入队伍
+message HSAllianceJoinTeam
+{
+	required int32 teamId = 1;//组号
+}
+
+message HSAllianceJoinTeamRet
+{
+
+}
+
+// 接取任务
+message HSAllianceTaskAccept
+{
+	required int32 questId = 1;
+}
+
+message HSAllianceTaskAcceptRet
+{
+
+}
+
+// 提交任务
+message HSAllianceTaskCommit
+{
+	required int32 questId = 1;
+}
+
+message HSAllianceTaskCommitRet
+{
+
+}
+
+// 提交任务
+message HSAllianceTaskReward
+{
+
+}
+
+message HSAllianceTaskRewardRet
+{
+
+}
+
+// 解散队伍
+message HSAllianceDissolveTeam
+{
+
+}
+
+message HSAllianceDissolveTeamRet
+{
+
+}
+
+// 工会任务列表
+message HSAllianceTeamList
+{
+
+}
+
+message HSAllianceTeamListRet
+{
+	repeated AllianceTeamInfo allianceTeams = 1;
+}
+
+// 我的工会
+message HSAllianceSelfTeam
+{
+
+}
+
+message HSAllianceSelfTeamRet
+{
+	required AllianceTeamInfo selfTeam = 1;
+}
+	

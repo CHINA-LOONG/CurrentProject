@@ -154,22 +154,15 @@ namespace PB
       get { return _hairColor; }
       set { _hairColor = value; }
     }
-    private readonly global::System.Collections.Generic.List<int> _battleMonster = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(12, Name=@"battleMonster", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> battleMonster
-    {
-      get { return _battleMonster; }
-    }
-  
     private int _recharge;
-    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"recharge", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"recharge", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int recharge
     {
       get { return _recharge; }
       set { _recharge = value; }
     }
     private int _vipLevel;
-    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"vipLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"vipLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int vipLevel
     {
       get { return _vipLevel; }
@@ -303,12 +296,19 @@ namespace PB
   {
     public HSAssembleFinish() {}
     
-    private int _playerID;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int playerID
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int playerId
     {
-      get { return _playerID; }
-      set { _playerID = value; }
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private int _allianceID;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"allianceID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int allianceID
+    {
+      get { return _allianceID; }
+      set { _allianceID = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

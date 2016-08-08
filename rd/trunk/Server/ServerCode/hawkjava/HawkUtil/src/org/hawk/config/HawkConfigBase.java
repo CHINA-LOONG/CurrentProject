@@ -7,8 +7,6 @@ import java.lang.annotation.Target;
 import java.util.List;
 import java.util.Map;
 
-import com.sun.tools.internal.jxc.gen.config.Config;
-
 /**
  * 1. 配置文件基类(所有属性必须是final, 而且final属性的初始化必须在默认构造函数进行)
  * 

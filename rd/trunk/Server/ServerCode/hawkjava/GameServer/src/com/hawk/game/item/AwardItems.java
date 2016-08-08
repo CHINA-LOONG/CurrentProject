@@ -208,6 +208,27 @@ public class AwardItems {
 		return addAttr(String.valueOf(attrType), count);
 	}
 
+	public AwardItems addContribution(int count) {
+		RewardItem.Builder rewardItem = null;
+		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
+			if (reward.getType() == itemType.ALLIANCE_VALUE && Integer.valueOf(reward.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
+				rewardItem = reward;
+				break;
+			}
+		}
+		if (rewardItem == null) {
+			rewardItem = RewardItem.newBuilder();
+			rewardItem.setType(itemType.ALLIANCE_VALUE);
+			rewardItem.setItemId(String.valueOf(Const.changeType.CHANGE_PLAYER_CONTRIBUTION));
+			rewardItem.setCount(count);
+			rewardInfo.addRewardItems(rewardItem);
+		}
+		else {
+			rewardItem.setCount(rewardItem.getCount() + count);
+		}
+		return this;
+	}
+	
 	public AwardItems addMonsterAttr(int attrType, int count, int id) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
@@ -282,6 +303,11 @@ public class AwardItems {
 					addMonster(itemInfo.getItemId(), itemInfo.getStage());
 				}
 			}
+			else if (itemInfo.getType() == itemType.ALLIANCE_VALUE) {
+				if (Integer.valueOf(itemInfo.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
+					addContribution(itemInfo.getCount());
+				}
+			}
 		}
 
 		return this;
@@ -296,6 +322,17 @@ public class AwardItems {
 		return this;
 	}
 
+	public int getRewardCount(int type, String itemId)
+	{
+		for (RewardItem.Builder rewardItem : rewardInfo.getRewardItemsBuilderList()) {
+			if (rewardItem.getType() == type && itemId.equals(rewardItem.getItemId())) {
+				return rewardItem.getCount();
+			}
+		}
+		
+		return 0;
+	}
+	
 	public AwardItems addFreeGold(int gold) {
 		if (gold <= 0 ) {
 			return this;
@@ -563,6 +600,16 @@ public class AwardItems {
 					}
 					break;
 
+				case itemType.PLAYER_ATTR_VALUE:
+					break;
+				case itemType.ALLIANCE_VALUE:
+					if (Integer.valueOf(item.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
+						if (player.increaseContribution(item.getCount(), action) == false) {
+							rewardFail = true;
+						}
+					}
+					
+					break;
 				default:
 					invalidType = true;
 					break;

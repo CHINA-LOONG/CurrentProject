@@ -12,6 +12,7 @@ import com.hawk.game.entity.AllianceApplyEntity;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
+import com.hawk.game.protocol.Alliance.HSAllianceJoinNotify;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceApply;
@@ -84,6 +85,8 @@ public class AllianceApplyHandler implements HawkMsgHandler{
 						
 			//HawkProtocol memberData =  HawkProtocol.valueOf(HS.code.ALLIANCE_MEMBER_ADD_N_S_VALUE, AllianceUtil.getMemberInfo(player.getPlayerData().getPlayerAllianceEntity()));
 			//AllianceManager.getInstance().broadcastNotify(allianceEntity.getId(), memberData,  0);
+			HawkProtocol notify = HawkProtocol.valueOf(HS.code.ALLIANCE_JOIN_N_S_VALUE, HSAllianceJoinNotify.newBuilder().setAllianceId(allianceEntity.getId()));
+			player.sendProtocol(notify);
 		} 
 		else 
 		{

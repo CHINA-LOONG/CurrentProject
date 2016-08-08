@@ -64,6 +64,12 @@ public class StaticDataMgr : MonoBehaviour
     Dictionary<int, TowerData> towerList = new Dictionary<int, TowerData>();
     Dictionary<int, HoleData> holeList = new Dictionary<int, HoleData>();
 
+    //公会
+    Dictionary<int, SociatyPray> sociatyPrayDic = new Dictionary<int, SociatyPray>();
+    Dictionary<int, SociatyTask> sociaTaskDic = new Dictionary<int, SociatyTask>();
+    Dictionary<int, SociatyQuest> sociatyQuestDic = new Dictionary<int, SociatyQuest>();
+    List<Sociatytechnology> sociatyTechnologyList = new List<Sociatytechnology>();
+
 
     public void Init()
     {
@@ -720,6 +726,29 @@ public class StaticDataMgr : MonoBehaviour
                 } 
                 holeList.Add(item.id, holeData);
             }
+        }
+
+        {
+            //公会
+            var data = InitTable<SociatyPray>("sociatyPray");
+            foreach (var item in data)
+            {
+                sociatyPrayDic.Add(item.id, item);
+            }
+
+            var stask = InitTable<SociatyTask>("sociatyTask");
+            foreach (var item in stask)
+            {
+                sociaTaskDic.Add(item.id, item);
+            }
+
+            var squest = InitTable<SociatyQuest>("sociatyQuest");
+            foreach (var item in squest)
+            {
+                sociatyQuestDic.Add(item.id, item);
+            }
+
+            sociatyTechnologyList = InitTable<Sociatytechnology>("sociatytechnology");
         }
     }
 

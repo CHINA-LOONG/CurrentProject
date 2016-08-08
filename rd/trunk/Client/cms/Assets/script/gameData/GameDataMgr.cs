@@ -19,6 +19,7 @@ public class GameDataMgr : MonoBehaviour
     public int curTowerSiwangFloor;//死亡塔层数
     public HoleType curHoleType;//当前洞类型
     public List<PB.HoleState> mHoleStateList;// = new List<PB.HoleState>();
+    //public List<PB.TowerState> mTowerStateList;
 
     bool mGoldMaxHinted = false;
     bool mCoinMaxHinted = false;
@@ -168,7 +169,7 @@ public class GameDataMgr : MonoBehaviour
         //GameEventMgr.Instance.RemoveListener<Coin>(GameEventList.EatCoin, OnEatCoin);
     }
     //---------------------------------------------------------------------------------------------
-    public void OnBattleSuccess()
+    public void OnBattleOver(bool isSuccess)
     {
         if(curInstanceType == (int)InstanceType.Tower)
         {
@@ -179,28 +180,37 @@ public class GameDataMgr : MonoBehaviour
                 {
                     case TowerType.Tower_Juewang:
                         {
-                            curTowerJuewangFloor++;
-                            if (curTowerJuewangFloor > curTowerData.floorList.Count)
+                            if (isSuccess == true)
                             {
-                                curTowerJuewangFloor = curTowerData.floorList.Count;
+                                curTowerJuewangFloor++;
+                                if (curTowerJuewangFloor > curTowerData.floorList.Count)
+                                {
+                                    curTowerJuewangFloor = curTowerData.floorList.Count;
+                                }
                             }
                         }
                         break;
                     case TowerType.Tower_Shilian:
                         {
-                            curTowerShilianFloor++;
-                            if (curTowerShilianFloor > curTowerData.floorList.Count)
+                            if (isSuccess == true)
                             {
-                                curTowerShilianFloor = curTowerData.floorList.Count;
+                                curTowerShilianFloor++;
+                                if (curTowerShilianFloor > curTowerData.floorList.Count)
+                                {
+                                    curTowerShilianFloor = curTowerData.floorList.Count;
+                                }
                             }
                         }
                         break;
                     case TowerType.Tower_Siwang:
                         {
-                            curTowerSiwangFloor++;
-                            if (curTowerSiwangFloor > curTowerData.floorList.Count)
+                            if (isSuccess == true)
                             {
-                                curTowerSiwangFloor = curTowerData.floorList.Count;
+                                curTowerSiwangFloor++;
+                                if (curTowerSiwangFloor > curTowerData.floorList.Count)
+                                {
+                                    curTowerSiwangFloor = curTowerData.floorList.Count;
+                                }
                             }
                         }
                         break;
@@ -240,11 +250,33 @@ public class GameDataMgr : MonoBehaviour
         GameEventMgr.Instance.FireEvent(GameEventList.DailyRefresh);
     }
     //---------------------------------------------------------------------------------------------
-    public void SyncTowerData()
+    public void SyncTowerData(List<PB.TowerState> towerStateList)
     {
         curTowerShilianFloor = 0;
         curTowerSiwangFloor = 0;
         curTowerJuewangFloor = 0;
+        //mTowerStateList = towerStateList;
+
+        if (towerStateList != null)
+        {
+            int count = towerStateList.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                if (towerStateList[i].towerId == (int)TowerType.Tower_Juewang)
+                {
+                    curTowerJuewangFloor = towerStateList[i].index;
+                }
+                else if (towerStateList[i].towerId == (int)TowerType.Tower_Siwang)
+                {
+                    curTowerSiwangFloor = towerStateList[i].index;
+                }
+                else if (towerStateList[i].towerId == (int)TowerType.Tower_Shilian)
+                {
+                    curTowerShilianFloor = towerStateList[i].index;
+                }
+            }
+        }
+
         //GameEventMgr.Instance.FireEvent(GameEventList.DailyRefresh);
     }
     //---------------------------------------------------------------------------------------------
@@ -255,21 +287,21 @@ public class GameDataMgr : MonoBehaviour
         switch (curTowerType)
         {
             case TowerType.Tower_Shilian:
-                if(curTowerShilianFloor + 1 < curTowerData.floorList.Count)
+                if(curTowerShilianFloor + 1 <= curTowerData.floorList.Count)
                 {
-                    nextInstanceID = curTowerData.floorList[curTowerShilianFloor + 1];
+                    nextInstanceID = curTowerData.floorList[curTowerShilianFloor];
                 }
                 break;
             case TowerType.Tower_Juewang:
-                if (curTowerJuewangFloor + 1 < curTowerData.floorList.Count)
+                if (curTowerJuewangFloor + 1 <= curTowerData.floorList.Count)
                 {
-                    nextInstanceID = curTowerData.floorList[curTowerJuewangFloor + 1];
+                    nextInstanceID = curTowerData.floorList[curTowerJuewangFloor];
                 }
                 break;
             case TowerType.Tower_Siwang:
-                if (curTowerSiwangFloor + 1 < curTowerData.floorList.Count)
+                if (curTowerSiwangFloor + 1 <= curTowerData.floorList.Count)
                 {
-                    nextInstanceID = curTowerData.floorList[curTowerSiwangFloor + 1];
+                    nextInstanceID = curTowerData.floorList[curTowerSiwangFloor];
                 }
                 break;
         }

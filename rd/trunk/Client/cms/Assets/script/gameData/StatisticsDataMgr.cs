@@ -94,6 +94,7 @@ public class StatisticsDataMgr : MonoBehaviour {
         }
 
         GameDataMgr.Instance.SyncHoleData(staticsticsData.holeState);
+        GameDataMgr.Instance.SyncTowerData(staticsticsData.towerState);
     }
 
 	void OnExpLeftTimesSync(ProtocolMessage message)
@@ -126,7 +127,7 @@ public class StatisticsDataMgr : MonoBehaviour {
     void OnMonthlyRefreshSync(ProtocolMessage message)
     {
         //PB.HSSyncMonthlyRefresh msgBody = message.GetProtocolBody<PB.HSSyncMonthlyRefresh>();
-        GameDataMgr.Instance.SyncTowerData();
+        GameDataMgr.Instance.SyncTowerData(null);
     }
 
     public void ResetSkillPointState(int currentPoint, int beginTime)

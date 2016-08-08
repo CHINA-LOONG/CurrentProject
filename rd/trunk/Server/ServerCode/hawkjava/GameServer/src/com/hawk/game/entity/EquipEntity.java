@@ -1,11 +1,7 @@
 package com.hawk.game.entity;
 
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Column;
@@ -15,14 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-
-
-
-
-
-
 import org.hawk.db.HawkDBEntity;
-import org.hawk.os.HawkTime;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.hawk.game.attr.Attribute;
@@ -37,7 +26,6 @@ import com.hawk.game.util.GsConst;
  */
 @Entity
 @Table(name = "equip")
-@SuppressWarnings("serial")
 public class EquipEntity extends HawkDBEntity {
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")

@@ -1,6 +1,5 @@
 package com.hawk.game.entity;
 
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +25,6 @@ import com.google.gson.reflect.TypeToken;
  */
 @Entity
 @Table(name = "monster")
-@SuppressWarnings("serial")
 public class MonsterEntity extends HawkDBEntity {
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")

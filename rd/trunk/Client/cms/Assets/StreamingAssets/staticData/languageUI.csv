@@ -174,7 +174,7 @@ im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 equip_inlay_xiangqian,镶嵌,Embed
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
-equip_inlay_tips,"开孔将随机获得""1-{0}""个宝石槽","Opening Sockets will randomly reveal between ""1 and {0}"" of slots."
+equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
 equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
 equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
 equip_inlay_xiexia,卸下,Remove
@@ -247,6 +247,27 @@ handbook_huodeway,获得途径,Get By
 handbook_petsuipian,宠物碎片,Monster Fragments
 handbook_tips1,确定进行1次召唤吗？,Confirm summon once?
 handbook_record_001,碎片不足,Insufficent fragments.
+,,
+xl_itemtips,,
+tips_main1,副本,Stage
+shop_main,商店,Shop
+tips_main5,日常,Daily
+tips_main6,抽奖,Lucky Draw
+sociaty_title,公会,Guild
+towerBoss_instance_title,通天塔,Towers Of Trials
+tower_gold_name,金钱试炼,Palace of Midas
+tower_exp_name,经验试炼,Fields of Elysium
+towerBoss_instance_shop,XXX商店,Wishing Tree Shop
+sociaty_boss,公会BOSS,Guild Boss
+sociaty_task,公会任务,Guild Mission
+record_item_found1,条件尚未达成,Conditions have not been met.
+record_item_found2,目标功能已经打开.,Target function is already open.
+record_notopen1,副本未开启,This stage has not been opened yet.
+record_notopen2,合成功能未开启,The combine function has not been opened yet.
+record_notopen3,分解功能未开启,The disenchant function has not been opened yet.
+record_notopen4,该商店未开启,This shop has not been opened yet.
+record_notopen5,尚未加入公会,You have not joined a Guild yet.
+,,
 xl_common,公用部分,
 pet_detail_skill_level,等级:,LVL:
 equip_forge_zhanli,战力:,BP:

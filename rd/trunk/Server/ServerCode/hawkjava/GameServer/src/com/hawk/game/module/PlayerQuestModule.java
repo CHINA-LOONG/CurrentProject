@@ -3,7 +3,6 @@ package com.hawk.game.module;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +15,6 @@ import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.hawk.game.config.QuestCfg;
 import com.hawk.game.entity.StatisticsEntity;
@@ -27,21 +24,21 @@ import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Quest.HSQuestRemove;
-import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Quest.HSQuest;
-import com.hawk.game.protocol.Quest.HSQuestAccept;
 import com.hawk.game.protocol.Quest.HSQuest.Builder;
+import com.hawk.game.protocol.Quest.HSQuestAccept;
+import com.hawk.game.protocol.Quest.HSQuestRemove;
 import com.hawk.game.protocol.Quest.HSQuestSubmit;
 import com.hawk.game.protocol.Quest.HSQuestSubmitRet;
 import com.hawk.game.protocol.Quest.HSQuestUpdate;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
-import com.hawk.game.util.ProtoUtil;
-import com.hawk.game.util.TimeUtil;
-import com.hawk.game.util.GsConst.StatisticsType;
-import com.hawk.game.util.QuestUtil;
 import com.hawk.game.util.GsConst.Cycle;
+import com.hawk.game.util.GsConst.StatisticsType;
+import com.hawk.game.util.ProtoUtil;
+import com.hawk.game.util.QuestUtil;
 import com.hawk.game.util.QuestUtil.QuestGroup;
+import com.hawk.game.util.TimeUtil;
 
 /**
  * 任务模块
@@ -50,7 +47,6 @@ import com.hawk.game.util.QuestUtil.QuestGroup;
  */
 public class PlayerQuestModule extends PlayerModule {
 
-	private static final Logger logger = LoggerFactory.getLogger("Protocol");
 	private Map<Integer, QuestGroup> inactiveQuestGroupMap = new HashMap<Integer, QuestGroup>();
 
 	public PlayerQuestModule(Player player) {
@@ -446,9 +442,14 @@ public class PlayerQuestModule extends PlayerModule {
 	}
 
 	@Override
-	protected boolean onRefresh(List<Integer> refreshIndexList) {
+	protected boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
 		for (int index : refreshIndexList) {
 			if (0 != (GsConst.PlayerRefreshMask[index] & GsConst.RefreshMask.DAILY )) {
+				// 忽略登录时刷新
+				if (true == onLogin) {
+					continue;
+				}
+
 				// 清理已过期任务
 				List<Integer> removeList = new ArrayList<Integer>();
 				Map<Integer, HSQuest> questMap = player.getPlayerData().getQuestMap();

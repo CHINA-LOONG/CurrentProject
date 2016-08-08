@@ -171,8 +171,9 @@ public class UIAdjustBattleTeam : UIBase
     }
 
 	public void SetData(string instanceId,int star, InstanceType insType = InstanceType.Normal)
-	{
-		this.instanceId = instanceId;
+    {
+        GameDataMgr.Instance.curInstanceType = (int)insType;
+        this.instanceId = instanceId;
         instanceEntryData = StaticDataMgr.Instance.GetInstanceEntry(instanceId);
         this.enemyList = instanceEntryData.enemyList;
         InstanceData instanceData = StaticDataMgr.Instance.GetInstanceData(instanceId);
@@ -242,17 +243,28 @@ public class UIAdjustBattleTeam : UIBase
 
     IEnumerator RefreshUICo()
 	{
+        yield return StartCoroutine(ClearAllCo());
 		yield return StartCoroutine (RefreshEnmeyIcons());
 		yield return StartCoroutine (RefreshPlayerIcons());
         yield return StartCoroutine(RefreshDropInfo());
         yield return StartCoroutine(RefreshTitleAndOthers());
 	}
 
+    IEnumerator ClearAllCo()
+    {
+        CleanAllEnemyIcons();//清空敌方怪物列表
+        CleanAllPlayersIcons();
+        ClearAllDropObject();
+        nameText.text = "";
+        buffIcon.gameObject.SetActive(false);
+       yield break;
+    }
+
+
 	IEnumerator RefreshEnmeyIcons()
 	{
         CleanAllEnemyIcons();//清空敌方怪物列表
-
-		int enmeyCount = enemyList.Count;
+        int enmeyCount = enemyList.Count;
 		string monsterId = null;
 		MonsterIconBg subBg = null;
 		RectTransform rectTrans = null;
@@ -960,7 +972,7 @@ public class UIAdjustBattleTeam : UIBase
 
 	void RequestEnterInstance()
     {
-        GameDataMgr.Instance.curInstanceType = (int)instanceType;
+        //GameDataMgr.Instance.curInstanceType = (int)instanceType;
         if (instanceType == InstanceType.Normal)
         {
             PB.HSInstanceEnter param = new PB.HSInstanceEnter();
@@ -1008,7 +1020,22 @@ public class UIAdjustBattleTeam : UIBase
 
         if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
         {
-            return;
+            PB.HSErrorCode error = msg.GetProtocolBody<PB.HSErrorCode>();
+
+            string errorMsg;
+            if (error.errCode == (int)PB.instanceError.INSTANCE_NOT_OPEN)
+            {
+                errorMsg = StaticDataMgr.Instance.GetTextByID("tower_record_004");
+                UIIm.Instance.ShowSystemHints(errorMsg, (int)PB.ImType.PROMPT);
+            }
+            else if (error.errCode == (int)PB.instanceError.INSTANCE_FATIGUE)
+            {
+            }
+            else if (error.errCode == (int)PB.instanceError.INSTANCE_COUNT)
+            {
+
+            }
+                return;
         }
         
 		var responseData =  msg.GetProtocolBody<PB.HSInstanceEnterRet> ();

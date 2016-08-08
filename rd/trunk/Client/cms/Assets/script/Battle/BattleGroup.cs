@@ -202,6 +202,23 @@ public class BattleGroup
         }
     }
 
+    public bool IsPlayerCasteDazhao()
+    {
+        for (int i = 0; i < playerField.Count; i++)
+        {
+            var bo = playerField[i];
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.isVisible)
+            {
+                if (bo.unit.dazhaoPrepareCount > 0)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public BattleObject GetNextMoveUnit()
     {
         //check if enemy is preparing dazhao, only enemy need do this
@@ -210,6 +227,19 @@ public class BattleGroup
             var bo = enemyField[i];
             if (bo != null && bo.unit.curLife > 0 && bo.unit.dazhao > 0 && bo.unit.State != UnitState.Dead)
             {
+                if (--bo.unit.dazhaoPrepareCount == 0)
+                {
+                    return bo;
+                }
+            }
+        }
+        
+        for (int i = 0; i < playerField.Count; i++)
+        {
+            var bo = playerField[i];
+            if (bo != null && bo.unit.curLife > 0 && bo.unit.isVisible)
+            {
+                //xxxxplayer need to insert action, so when 1 remained trigger dazhao
                 if (--bo.unit.dazhaoPrepareCount == 0)
                 {
                     return bo;
@@ -237,17 +267,17 @@ public class BattleGroup
             }
         }
 
-		var shifaBo = MagicDazhaoController.Instance.GetCasterBattleObj ();
+		//var shifaBo = MagicDazhaoController.Instance.GetCasterBattleObj ();
         for (int i = 0; i < playerField.Count; i++)
         {
             var bo = playerField[i];
             if (bo != null && bo.unit.curLife > 0 && bo.unit.isVisible)
             {
 				//施法对象不参与行动序列
-				if(null != shifaBo && shifaBo.guid == bo.guid)
-				{
-					continue;
-				}
+				//if(null != shifaBo && shifaBo.guid == bo.guid)
+				//{
+				//	continue;
+				//}
                 if (bo.unit.ActionOrder < fastestOrder)
                 {
                     fastestUnit = bo;

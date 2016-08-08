@@ -10098,6 +10098,650 @@ public final class Instance {
     // @@protoc_insertion_point(class_scope:HSTowerEnter)
   }
 
+  public interface HSGuildInstanceEnterOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string instanceId = 1;
+    /**
+     * <code>required string instanceId = 1;</code>
+     */
+    boolean hasInstanceId();
+    /**
+     * <code>required string instanceId = 1;</code>
+     */
+    java.lang.String getInstanceId();
+    /**
+     * <code>required string instanceId = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getInstanceIdBytes();
+
+    // repeated int32 battleMonsterId = 2;
+    /**
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    java.util.List<java.lang.Integer> getBattleMonsterIdList();
+    /**
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    int getBattleMonsterIdCount();
+    /**
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    int getBattleMonsterId(int index);
+  }
+  /**
+   * Protobuf type {@code HSGuildInstanceEnter}
+   *
+   * <pre>
+   * GUILD_INSTANCE_ENTER_C
+   * </pre>
+   */
+  public static final class HSGuildInstanceEnter extends
+      com.google.protobuf.GeneratedMessage
+      implements HSGuildInstanceEnterOrBuilder {
+    // Use HSGuildInstanceEnter.newBuilder() to construct.
+    private HSGuildInstanceEnter(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSGuildInstanceEnter(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSGuildInstanceEnter defaultInstance;
+    public static HSGuildInstanceEnter getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSGuildInstanceEnter getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSGuildInstanceEnter(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              instanceId_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                battleMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              battleMonsterId_.add(input.readInt32());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
+                battleMonsterId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                battleMonsterId_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          battleMonsterId_ = java.util.Collections.unmodifiableList(battleMonsterId_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Instance.internal_static_HSGuildInstanceEnter_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Instance.internal_static_HSGuildInstanceEnter_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Instance.HSGuildInstanceEnter.class, com.hawk.game.protocol.Instance.HSGuildInstanceEnter.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSGuildInstanceEnter> PARSER =
+        new com.google.protobuf.AbstractParser<HSGuildInstanceEnter>() {
+      public HSGuildInstanceEnter parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSGuildInstanceEnter(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSGuildInstanceEnter> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string instanceId = 1;
+    public static final int INSTANCEID_FIELD_NUMBER = 1;
+    private java.lang.Object instanceId_;
+    /**
+     * <code>required string instanceId = 1;</code>
+     */
+    public boolean hasInstanceId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string instanceId = 1;</code>
+     */
+    public java.lang.String getInstanceId() {
+      java.lang.Object ref = instanceId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          instanceId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string instanceId = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getInstanceIdBytes() {
+      java.lang.Object ref = instanceId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        instanceId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // repeated int32 battleMonsterId = 2;
+    public static final int BATTLEMONSTERID_FIELD_NUMBER = 2;
+    private java.util.List<java.lang.Integer> battleMonsterId_;
+    /**
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getBattleMonsterIdList() {
+      return battleMonsterId_;
+    }
+    /**
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    public int getBattleMonsterIdCount() {
+      return battleMonsterId_.size();
+    }
+    /**
+     * <code>repeated int32 battleMonsterId = 2;</code>
+     */
+    public int getBattleMonsterId(int index) {
+      return battleMonsterId_.get(index);
+    }
+
+    private void initFields() {
+      instanceId_ = "";
+      battleMonsterId_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasInstanceId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getInstanceIdBytes());
+      }
+      for (int i = 0; i < battleMonsterId_.size(); i++) {
+        output.writeInt32(2, battleMonsterId_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getInstanceIdBytes());
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < battleMonsterId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(battleMonsterId_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getBattleMonsterIdList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Instance.HSGuildInstanceEnter parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Instance.HSGuildInstanceEnter parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSGuildInstanceEnter parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Instance.HSGuildInstanceEnter parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSGuildInstanceEnter parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Instance.HSGuildInstanceEnter parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSGuildInstanceEnter parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Instance.HSGuildInstanceEnter parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Instance.HSGuildInstanceEnter parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Instance.HSGuildInstanceEnter parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Instance.HSGuildInstanceEnter prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSGuildInstanceEnter}
+     *
+     * <pre>
+     * GUILD_INSTANCE_ENTER_C
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Instance.HSGuildInstanceEnterOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Instance.internal_static_HSGuildInstanceEnter_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Instance.internal_static_HSGuildInstanceEnter_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Instance.HSGuildInstanceEnter.class, com.hawk.game.protocol.Instance.HSGuildInstanceEnter.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Instance.HSGuildInstanceEnter.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        instanceId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        battleMonsterId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Instance.internal_static_HSGuildInstanceEnter_descriptor;
+      }
+
+      public com.hawk.game.protocol.Instance.HSGuildInstanceEnter getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Instance.HSGuildInstanceEnter.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Instance.HSGuildInstanceEnter build() {
+        com.hawk.game.protocol.Instance.HSGuildInstanceEnter result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Instance.HSGuildInstanceEnter buildPartial() {
+        com.hawk.game.protocol.Instance.HSGuildInstanceEnter result = new com.hawk.game.protocol.Instance.HSGuildInstanceEnter(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.instanceId_ = instanceId_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          battleMonsterId_ = java.util.Collections.unmodifiableList(battleMonsterId_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.battleMonsterId_ = battleMonsterId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Instance.HSGuildInstanceEnter) {
+          return mergeFrom((com.hawk.game.protocol.Instance.HSGuildInstanceEnter)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Instance.HSGuildInstanceEnter other) {
+        if (other == com.hawk.game.protocol.Instance.HSGuildInstanceEnter.getDefaultInstance()) return this;
+        if (other.hasInstanceId()) {
+          bitField0_ |= 0x00000001;
+          instanceId_ = other.instanceId_;
+          onChanged();
+        }
+        if (!other.battleMonsterId_.isEmpty()) {
+          if (battleMonsterId_.isEmpty()) {
+            battleMonsterId_ = other.battleMonsterId_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureBattleMonsterIdIsMutable();
+            battleMonsterId_.addAll(other.battleMonsterId_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasInstanceId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Instance.HSGuildInstanceEnter parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Instance.HSGuildInstanceEnter) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string instanceId = 1;
+      private java.lang.Object instanceId_ = "";
+      /**
+       * <code>required string instanceId = 1;</code>
+       */
+      public boolean hasInstanceId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string instanceId = 1;</code>
+       */
+      public java.lang.String getInstanceId() {
+        java.lang.Object ref = instanceId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          instanceId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string instanceId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getInstanceIdBytes() {
+        java.lang.Object ref = instanceId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          instanceId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string instanceId = 1;</code>
+       */
+      public Builder setInstanceId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        instanceId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string instanceId = 1;</code>
+       */
+      public Builder clearInstanceId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        instanceId_ = getDefaultInstance().getInstanceId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string instanceId = 1;</code>
+       */
+      public Builder setInstanceIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        instanceId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // repeated int32 battleMonsterId = 2;
+      private java.util.List<java.lang.Integer> battleMonsterId_ = java.util.Collections.emptyList();
+      private void ensureBattleMonsterIdIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          battleMonsterId_ = new java.util.ArrayList<java.lang.Integer>(battleMonsterId_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getBattleMonsterIdList() {
+        return java.util.Collections.unmodifiableList(battleMonsterId_);
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public int getBattleMonsterIdCount() {
+        return battleMonsterId_.size();
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public int getBattleMonsterId(int index) {
+        return battleMonsterId_.get(index);
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public Builder setBattleMonsterId(
+          int index, int value) {
+        ensureBattleMonsterIdIsMutable();
+        battleMonsterId_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public Builder addBattleMonsterId(int value) {
+        ensureBattleMonsterIdIsMutable();
+        battleMonsterId_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public Builder addAllBattleMonsterId(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureBattleMonsterIdIsMutable();
+        super.addAll(values, battleMonsterId_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 battleMonsterId = 2;</code>
+       */
+      public Builder clearBattleMonsterId() {
+        battleMonsterId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSGuildInstanceEnter)
+    }
+
+    static {
+      defaultInstance = new HSGuildInstanceEnter(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSGuildInstanceEnter)
+  }
+
   public interface HSInstanceAssistOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
   }
@@ -11919,6 +12563,11 @@ public final class Instance {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSTowerEnter_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSGuildInstanceEnter_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSGuildInstanceEnter_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSInstanceAssist_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -11976,11 +12625,13 @@ public final class Instance {
       "\n\013HSHoleEnter\022\016\n\006holeId\030\001 \002(\005\022\022\n\ninstanc" +
       "eId\030\002 \002(\t\022\027\n\017battleMonsterId\030\003 \003(\005\"8\n\014HS" +
       "TowerEnter\022\017\n\007towerId\030\001 \002(\005\022\027\n\017battleMon" +
-      "sterId\030\003 \003(\005\"\022\n\020HSInstanceAssist\"0\n\023HSIn",
-      "stanceAssistRet\022\031\n\006assist\030\001 \003(\0132\t.HSAssi" +
-      "st\"\'\n\022HSInstanceOpenCard\022\021\n\topenCount\030\001 " +
-      "\002(\005\"\027\n\025HSInstanceOpenCardRetB\030\n\026com.hawk" +
-      ".game.protocol"
+      "sterId\030\003 \003(\005\"C\n\024HSGuildInstanceEnter\022\022\n\n",
+      "instanceId\030\001 \002(\t\022\027\n\017battleMonsterId\030\002 \003(" +
+      "\005\"\022\n\020HSInstanceAssist\"0\n\023HSInstanceAssis" +
+      "tRet\022\031\n\006assist\030\001 \003(\0132\t.HSAssist\"\'\n\022HSIns" +
+      "tanceOpenCard\022\021\n\topenCount\030\001 \002(\005\"\027\n\025HSIn" +
+      "stanceOpenCardRetB\030\n\026com.hawk.game.proto" +
+      "col"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12083,26 +12734,32 @@ public final class Instance {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSTowerEnter_descriptor,
               new java.lang.String[] { "TowerId", "BattleMonsterId", });
-          internal_static_HSInstanceAssist_descriptor =
+          internal_static_HSGuildInstanceEnter_descriptor =
             getDescriptor().getMessageTypes().get(16);
+          internal_static_HSGuildInstanceEnter_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSGuildInstanceEnter_descriptor,
+              new java.lang.String[] { "InstanceId", "BattleMonsterId", });
+          internal_static_HSInstanceAssist_descriptor =
+            getDescriptor().getMessageTypes().get(17);
           internal_static_HSInstanceAssist_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceAssist_descriptor,
               new java.lang.String[] { });
           internal_static_HSInstanceAssistRet_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_HSInstanceAssistRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceAssistRet_descriptor,
               new java.lang.String[] { "Assist", });
           internal_static_HSInstanceOpenCard_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_HSInstanceOpenCard_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceOpenCard_descriptor,
               new java.lang.String[] { "OpenCount", });
           internal_static_HSInstanceOpenCardRet_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_HSInstanceOpenCardRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSInstanceOpenCardRet_descriptor,

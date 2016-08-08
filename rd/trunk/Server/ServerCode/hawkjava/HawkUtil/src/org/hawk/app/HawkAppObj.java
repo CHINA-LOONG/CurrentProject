@@ -14,9 +14,6 @@ import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.xid.HawkXID;
 
-import com.google.protobuf.Message;
-import com.googlecode.protobuf.format.JsonFormat;
-
 /**
  * 应用程序对象
  * 

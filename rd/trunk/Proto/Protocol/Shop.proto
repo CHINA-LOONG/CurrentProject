@@ -11,7 +11,8 @@ message ShopItem
 	optional int32  level = 5;// 级别
 	required int32  slot = 6;//位置
 	required float  discount = 7;//折扣
-	required bool   hasBuy = 8;//是否已经购买
+	required int32  price = 8;//价钱
+	required bool   hasBuy = 9;//是否已经购买
 }
 
 message ShopData

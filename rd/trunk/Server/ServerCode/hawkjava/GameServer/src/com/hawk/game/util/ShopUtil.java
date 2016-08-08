@@ -54,6 +54,7 @@ public class ShopUtil {
 				shopItem.setStage(element.getStage());
 				shopItem.setLevel(element.getLevel());
 			}
+			shopItem.setPrice(element.getPrice());
 			shopItem.setDiscount(element.getDiscount());
 			shopItem.setSlot(element.getSlot());
 			shopItem.setHasBuy(element.isHasBuy());

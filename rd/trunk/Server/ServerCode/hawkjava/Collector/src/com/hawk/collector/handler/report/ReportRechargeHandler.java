@@ -9,7 +9,6 @@ import org.hawk.os.HawkTime;
 import org.hawk.util.HawkHttpParams;
 
 import com.hawk.collector.Collector;
-import com.hawk.collector.CollectorServices;
 import com.hawk.collector.db.DBManager;
 import com.hawk.collector.http.CollectorHttpServer;
 import com.sun.net.httpserver.HttpExchange;

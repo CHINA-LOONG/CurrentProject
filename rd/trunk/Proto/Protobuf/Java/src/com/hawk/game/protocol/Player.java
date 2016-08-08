@@ -1119,37 +1119,23 @@ public final class Player {
      */
     int getHairColor();
 
-    // repeated int32 battleMonster = 12;
+    // required int32 recharge = 12;
     /**
-     * <code>repeated int32 battleMonster = 12;</code>
-     */
-    java.util.List<java.lang.Integer> getBattleMonsterList();
-    /**
-     * <code>repeated int32 battleMonster = 12;</code>
-     */
-    int getBattleMonsterCount();
-    /**
-     * <code>repeated int32 battleMonster = 12;</code>
-     */
-    int getBattleMonster(int index);
-
-    // required int32 recharge = 13;
-    /**
-     * <code>required int32 recharge = 13;</code>
+     * <code>required int32 recharge = 12;</code>
      */
     boolean hasRecharge();
     /**
-     * <code>required int32 recharge = 13;</code>
+     * <code>required int32 recharge = 12;</code>
      */
     int getRecharge();
 
-    // required int32 vipLevel = 14;
+    // required int32 vipLevel = 13;
     /**
-     * <code>required int32 vipLevel = 14;</code>
+     * <code>required int32 vipLevel = 13;</code>
      */
     boolean hasVipLevel();
     /**
-     * <code>required int32 vipLevel = 14;</code>
+     * <code>required int32 vipLevel = 13;</code>
      */
     int getVipLevel();
   }
@@ -1260,32 +1246,11 @@ public final class Player {
               break;
             }
             case 96: {
-              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
-                battleMonster_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000800;
-              }
-              battleMonster_.add(input.readInt32());
-              break;
-            }
-            case 98: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800) && input.getBytesUntilLimit() > 0) {
-                battleMonster_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000800;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                battleMonster_.add(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            case 104: {
               bitField0_ |= 0x00000800;
               recharge_ = input.readInt32();
               break;
             }
-            case 112: {
+            case 104: {
               bitField0_ |= 0x00001000;
               vipLevel_ = input.readInt32();
               break;
@@ -1298,9 +1263,6 @@ public final class Player {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
-          battleMonster_ = java.util.Collections.unmodifiableList(battleMonster_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -1536,56 +1498,33 @@ public final class Player {
       return hairColor_;
     }
 
-    // repeated int32 battleMonster = 12;
-    public static final int BATTLEMONSTER_FIELD_NUMBER = 12;
-    private java.util.List<java.lang.Integer> battleMonster_;
-    /**
-     * <code>repeated int32 battleMonster = 12;</code>
-     */
-    public java.util.List<java.lang.Integer>
-        getBattleMonsterList() {
-      return battleMonster_;
-    }
-    /**
-     * <code>repeated int32 battleMonster = 12;</code>
-     */
-    public int getBattleMonsterCount() {
-      return battleMonster_.size();
-    }
-    /**
-     * <code>repeated int32 battleMonster = 12;</code>
-     */
-    public int getBattleMonster(int index) {
-      return battleMonster_.get(index);
-    }
-
-    // required int32 recharge = 13;
-    public static final int RECHARGE_FIELD_NUMBER = 13;
+    // required int32 recharge = 12;
+    public static final int RECHARGE_FIELD_NUMBER = 12;
     private int recharge_;
     /**
-     * <code>required int32 recharge = 13;</code>
+     * <code>required int32 recharge = 12;</code>
      */
     public boolean hasRecharge() {
       return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
-     * <code>required int32 recharge = 13;</code>
+     * <code>required int32 recharge = 12;</code>
      */
     public int getRecharge() {
       return recharge_;
     }
 
-    // required int32 vipLevel = 14;
-    public static final int VIPLEVEL_FIELD_NUMBER = 14;
+    // required int32 vipLevel = 13;
+    public static final int VIPLEVEL_FIELD_NUMBER = 13;
     private int vipLevel_;
     /**
-     * <code>required int32 vipLevel = 14;</code>
+     * <code>required int32 vipLevel = 13;</code>
      */
     public boolean hasVipLevel() {
       return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
-     * <code>required int32 vipLevel = 14;</code>
+     * <code>required int32 vipLevel = 13;</code>
      */
     public int getVipLevel() {
       return vipLevel_;
@@ -1603,7 +1542,6 @@ public final class Player {
       eye_ = 0;
       hair_ = 0;
       hairColor_ = 0;
-      battleMonster_ = java.util.Collections.emptyList();
       recharge_ = 0;
       vipLevel_ = 0;
     }
@@ -1688,14 +1626,11 @@ public final class Player {
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeInt32(11, hairColor_);
       }
-      for (int i = 0; i < battleMonster_.size(); i++) {
-        output.writeInt32(12, battleMonster_.get(i));
-      }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeInt32(13, recharge_);
+        output.writeInt32(12, recharge_);
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        output.writeInt32(14, vipLevel_);
+        output.writeInt32(13, vipLevel_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1750,22 +1685,13 @@ public final class Player {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(11, hairColor_);
       }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < battleMonster_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(battleMonster_.get(i));
-        }
-        size += dataSize;
-        size += 1 * getBattleMonsterList().size();
-      }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(13, recharge_);
+          .computeInt32Size(12, recharge_);
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(14, vipLevel_);
+          .computeInt32Size(13, vipLevel_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1905,12 +1831,10 @@ public final class Player {
         bitField0_ = (bitField0_ & ~0x00000200);
         hairColor_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
-        battleMonster_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000800);
         recharge_ = 0;
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000800);
         vipLevel_ = 0;
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
 
@@ -1983,16 +1907,11 @@ public final class Player {
           to_bitField0_ |= 0x00000400;
         }
         result.hairColor_ = hairColor_;
-        if (((bitField0_ & 0x00000800) == 0x00000800)) {
-          battleMonster_ = java.util.Collections.unmodifiableList(battleMonster_);
-          bitField0_ = (bitField0_ & ~0x00000800);
-        }
-        result.battleMonster_ = battleMonster_;
-        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
           to_bitField0_ |= 0x00000800;
         }
         result.recharge_ = recharge_;
-        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
           to_bitField0_ |= 0x00001000;
         }
         result.vipLevel_ = vipLevel_;
@@ -2046,16 +1965,6 @@ public final class Player {
         }
         if (other.hasHairColor()) {
           setHairColor(other.getHairColor());
-        }
-        if (!other.battleMonster_.isEmpty()) {
-          if (battleMonster_.isEmpty()) {
-            battleMonster_ = other.battleMonster_;
-            bitField0_ = (bitField0_ & ~0x00000800);
-          } else {
-            ensureBattleMonsterIsMutable();
-            battleMonster_.addAll(other.battleMonster_);
-          }
-          onChanged();
         }
         if (other.hasRecharge()) {
           setRecharge(other.getRecharge());
@@ -2530,133 +2439,67 @@ public final class Player {
         return this;
       }
 
-      // repeated int32 battleMonster = 12;
-      private java.util.List<java.lang.Integer> battleMonster_ = java.util.Collections.emptyList();
-      private void ensureBattleMonsterIsMutable() {
-        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
-          battleMonster_ = new java.util.ArrayList<java.lang.Integer>(battleMonster_);
-          bitField0_ |= 0x00000800;
-         }
-      }
-      /**
-       * <code>repeated int32 battleMonster = 12;</code>
-       */
-      public java.util.List<java.lang.Integer>
-          getBattleMonsterList() {
-        return java.util.Collections.unmodifiableList(battleMonster_);
-      }
-      /**
-       * <code>repeated int32 battleMonster = 12;</code>
-       */
-      public int getBattleMonsterCount() {
-        return battleMonster_.size();
-      }
-      /**
-       * <code>repeated int32 battleMonster = 12;</code>
-       */
-      public int getBattleMonster(int index) {
-        return battleMonster_.get(index);
-      }
-      /**
-       * <code>repeated int32 battleMonster = 12;</code>
-       */
-      public Builder setBattleMonster(
-          int index, int value) {
-        ensureBattleMonsterIsMutable();
-        battleMonster_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 battleMonster = 12;</code>
-       */
-      public Builder addBattleMonster(int value) {
-        ensureBattleMonsterIsMutable();
-        battleMonster_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 battleMonster = 12;</code>
-       */
-      public Builder addAllBattleMonster(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureBattleMonsterIsMutable();
-        super.addAll(values, battleMonster_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 battleMonster = 12;</code>
-       */
-      public Builder clearBattleMonster() {
-        battleMonster_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000800);
-        onChanged();
-        return this;
-      }
-
-      // required int32 recharge = 13;
+      // required int32 recharge = 12;
       private int recharge_ ;
       /**
-       * <code>required int32 recharge = 13;</code>
+       * <code>required int32 recharge = 12;</code>
        */
       public boolean hasRecharge() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
-       * <code>required int32 recharge = 13;</code>
+       * <code>required int32 recharge = 12;</code>
        */
       public int getRecharge() {
         return recharge_;
       }
       /**
-       * <code>required int32 recharge = 13;</code>
+       * <code>required int32 recharge = 12;</code>
        */
       public Builder setRecharge(int value) {
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00000800;
         recharge_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 recharge = 13;</code>
+       * <code>required int32 recharge = 12;</code>
        */
       public Builder clearRecharge() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000800);
         recharge_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 vipLevel = 14;
+      // required int32 vipLevel = 13;
       private int vipLevel_ ;
       /**
-       * <code>required int32 vipLevel = 14;</code>
+       * <code>required int32 vipLevel = 13;</code>
        */
       public boolean hasVipLevel() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
-       * <code>required int32 vipLevel = 14;</code>
+       * <code>required int32 vipLevel = 13;</code>
        */
       public int getVipLevel() {
         return vipLevel_;
       }
       /**
-       * <code>required int32 vipLevel = 14;</code>
+       * <code>required int32 vipLevel = 13;</code>
        */
       public Builder setVipLevel(int value) {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00001000;
         vipLevel_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 vipLevel = 14;</code>
+       * <code>required int32 vipLevel = 13;</code>
        */
       public Builder clearVipLevel() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00001000);
         vipLevel_ = 0;
         onChanged();
         return this;
@@ -5208,15 +5051,25 @@ public final class Player {
   public interface HSAssembleFinishOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 playerID = 1;
+    // required int32 playerId = 1;
     /**
-     * <code>required int32 playerID = 1;</code>
+     * <code>required int32 playerId = 1;</code>
      */
-    boolean hasPlayerID();
+    boolean hasPlayerId();
     /**
-     * <code>required int32 playerID = 1;</code>
+     * <code>required int32 playerId = 1;</code>
      */
-    int getPlayerID();
+    int getPlayerId();
+
+    // required int32 allianceID = 2;
+    /**
+     * <code>required int32 allianceID = 2;</code>
+     */
+    boolean hasAllianceID();
+    /**
+     * <code>required int32 allianceID = 2;</code>
+     */
+    int getAllianceID();
   }
   /**
    * Protobuf type {@code HSAssembleFinish}
@@ -5275,7 +5128,12 @@ public final class Player {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              playerID_ = input.readInt32();
+              playerId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              allianceID_ = input.readInt32();
               break;
             }
           }
@@ -5318,31 +5176,52 @@ public final class Player {
     }
 
     private int bitField0_;
-    // required int32 playerID = 1;
+    // required int32 playerId = 1;
     public static final int PLAYERID_FIELD_NUMBER = 1;
-    private int playerID_;
+    private int playerId_;
     /**
-     * <code>required int32 playerID = 1;</code>
+     * <code>required int32 playerId = 1;</code>
      */
-    public boolean hasPlayerID() {
+    public boolean hasPlayerId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 playerID = 1;</code>
+     * <code>required int32 playerId = 1;</code>
      */
-    public int getPlayerID() {
-      return playerID_;
+    public int getPlayerId() {
+      return playerId_;
+    }
+
+    // required int32 allianceID = 2;
+    public static final int ALLIANCEID_FIELD_NUMBER = 2;
+    private int allianceID_;
+    /**
+     * <code>required int32 allianceID = 2;</code>
+     */
+    public boolean hasAllianceID() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 allianceID = 2;</code>
+     */
+    public int getAllianceID() {
+      return allianceID_;
     }
 
     private void initFields() {
-      playerID_ = 0;
+      playerId_ = 0;
+      allianceID_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasPlayerID()) {
+      if (!hasPlayerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAllianceID()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -5354,7 +5233,10 @@ public final class Player {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, playerID_);
+        output.writeInt32(1, playerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, allianceID_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -5367,7 +5249,11 @@ public final class Player {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, playerID_);
+          .computeInt32Size(1, playerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, allianceID_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5489,8 +5375,10 @@ public final class Player {
 
       public Builder clear() {
         super.clear();
-        playerID_ = 0;
+        playerId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        allianceID_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -5522,7 +5410,11 @@ public final class Player {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.playerID_ = playerID_;
+        result.playerId_ = playerId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.allianceID_ = allianceID_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5539,15 +5431,22 @@ public final class Player {
 
       public Builder mergeFrom(com.hawk.game.protocol.Player.HSAssembleFinish other) {
         if (other == com.hawk.game.protocol.Player.HSAssembleFinish.getDefaultInstance()) return this;
-        if (other.hasPlayerID()) {
-          setPlayerID(other.getPlayerID());
+        if (other.hasPlayerId()) {
+          setPlayerId(other.getPlayerId());
+        }
+        if (other.hasAllianceID()) {
+          setAllianceID(other.getAllianceID());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasPlayerID()) {
+        if (!hasPlayerId()) {
+          
+          return false;
+        }
+        if (!hasAllianceID()) {
           
           return false;
         }
@@ -5573,35 +5472,68 @@ public final class Player {
       }
       private int bitField0_;
 
-      // required int32 playerID = 1;
-      private int playerID_ ;
+      // required int32 playerId = 1;
+      private int playerId_ ;
       /**
-       * <code>required int32 playerID = 1;</code>
+       * <code>required int32 playerId = 1;</code>
        */
-      public boolean hasPlayerID() {
+      public boolean hasPlayerId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 playerID = 1;</code>
+       * <code>required int32 playerId = 1;</code>
        */
-      public int getPlayerID() {
-        return playerID_;
+      public int getPlayerId() {
+        return playerId_;
       }
       /**
-       * <code>required int32 playerID = 1;</code>
+       * <code>required int32 playerId = 1;</code>
        */
-      public Builder setPlayerID(int value) {
+      public Builder setPlayerId(int value) {
         bitField0_ |= 0x00000001;
-        playerID_ = value;
+        playerId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 playerID = 1;</code>
+       * <code>required int32 playerId = 1;</code>
        */
-      public Builder clearPlayerID() {
+      public Builder clearPlayerId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        playerID_ = 0;
+        playerId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 allianceID = 2;
+      private int allianceID_ ;
+      /**
+       * <code>required int32 allianceID = 2;</code>
+       */
+      public boolean hasAllianceID() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 allianceID = 2;</code>
+       */
+      public int getAllianceID() {
+        return allianceID_;
+      }
+      /**
+       * <code>required int32 allianceID = 2;</code>
+       */
+      public Builder setAllianceID(int value) {
+        bitField0_ |= 0x00000002;
+        allianceID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 allianceID = 2;</code>
+       */
+      public Builder clearAllianceID() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        allianceID_ = 0;
         onChanged();
         return this;
       }
@@ -5664,21 +5596,21 @@ public final class Player {
       "\n\025Protocol/Player.proto\"r\n\rSynPlayerAttr" +
       "\022\014\n\004gold\030\001 \001(\005\022\014\n\004coin\030\002 \001(\003\022\r\n\005level\030\003 " +
       "\001(\005\022\013\n\003exp\030\004 \001(\005\022\017\n\007fatigue\030\005 \001(\005\022\030\n\020fat" +
-      "igueBeginTime\030\006 \001(\005\"\361\001\n\nPlayerInfo\022\020\n\010pl" +
+      "igueBeginTime\030\006 \001(\005\"\332\001\n\nPlayerInfo\022\020\n\010pl" +
       "ayerId\030\001 \002(\005\022\020\n\010nickname\030\002 \002(\t\022\016\n\006career" +
       "\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004go" +
       "ld\030\006 \002(\005\022\014\n\004coin\030\007 \002(\003\022\016\n\006gender\030\010 \001(\005\022\013" +
       "\n\003eye\030\t \001(\005\022\014\n\004hair\030\n \001(\005\022\021\n\thairColor\030\013" +
-      " \001(\005\022\025\n\rbattleMonster\030\014 \003(\005\022\020\n\010recharge\030" +
-      "\r \002(\005\022\020\n\010vipLevel\030\016 \002(\005\"!\n\017HSPlayerKicko",
-      "ut\022\016\n\006reason\030\001 \002(\005\"~\n\016HSPlayerCreate\022\014\n\004" +
-      "puid\030\001 \002(\t\022\020\n\010nickname\030\002 \002(\t\022\016\n\006career\030\003" +
-      " \002(\005\022\016\n\006gender\030\004 \002(\005\022\013\n\003eye\030\005 \002(\005\022\014\n\004hai" +
-      "r\030\006 \002(\005\022\021\n\thairColor\030\007 \002(\005\"5\n\021HSPlayerCr" +
-      "eateRet\022\016\n\006status\030\001 \002(\005\022\020\n\010palyerID\030\002 \001(" +
-      "\005\"-\n\020HSPlayerInfoSync\022\031\n\004info\030\001 \002(\0132\013.Pl" +
-      "ayerInfo\"$\n\020HSAssembleFinish\022\020\n\010playerID" +
-      "\030\001 \002(\005B\030\n\026com.hawk.game.protocol"
+      " \001(\005\022\020\n\010recharge\030\014 \002(\005\022\020\n\010vipLevel\030\r \002(\005" +
+      "\"!\n\017HSPlayerKickout\022\016\n\006reason\030\001 \002(\005\"~\n\016H",
+      "SPlayerCreate\022\014\n\004puid\030\001 \002(\t\022\020\n\010nickname\030" +
+      "\002 \002(\t\022\016\n\006career\030\003 \002(\005\022\016\n\006gender\030\004 \002(\005\022\013\n" +
+      "\003eye\030\005 \002(\005\022\014\n\004hair\030\006 \002(\005\022\021\n\thairColor\030\007 " +
+      "\002(\005\"5\n\021HSPlayerCreateRet\022\016\n\006status\030\001 \002(\005" +
+      "\022\020\n\010palyerID\030\002 \001(\005\"-\n\020HSPlayerInfoSync\022\031" +
+      "\n\004info\030\001 \002(\0132\013.PlayerInfo\"8\n\020HSAssembleF" +
+      "inish\022\020\n\010playerId\030\001 \002(\005\022\022\n\nallianceID\030\002 " +
+      "\002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5696,7 +5628,7 @@ public final class Player {
           internal_static_PlayerInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PlayerInfo_descriptor,
-              new java.lang.String[] { "PlayerId", "Nickname", "Career", "Level", "Exp", "Gold", "Coin", "Gender", "Eye", "Hair", "HairColor", "BattleMonster", "Recharge", "VipLevel", });
+              new java.lang.String[] { "PlayerId", "Nickname", "Career", "Level", "Exp", "Gold", "Coin", "Gender", "Eye", "Hair", "HairColor", "Recharge", "VipLevel", });
           internal_static_HSPlayerKickout_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_HSPlayerKickout_fieldAccessorTable = new
@@ -5726,7 +5658,7 @@ public final class Player {
           internal_static_HSAssembleFinish_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAssembleFinish_descriptor,
-              new java.lang.String[] { "PlayerID", });
+              new java.lang.String[] { "PlayerId", "AllianceID", });
           return null;
         }
       };

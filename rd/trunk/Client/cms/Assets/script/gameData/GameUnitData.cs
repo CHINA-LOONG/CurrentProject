@@ -497,7 +497,7 @@ public class GameUnit : IComparable
 			}
 
             wpRuntimeData.HpAttr += damage;
-            if (wpRuntimeData.HpAttr < 0)
+            if (wpRuntimeData.HpAttr <= 0)
             {
                 wpRuntimeData.HpAttr = 0;
                 WeakPointDeadArgs deadArgs = new WeakPointDeadArgs();

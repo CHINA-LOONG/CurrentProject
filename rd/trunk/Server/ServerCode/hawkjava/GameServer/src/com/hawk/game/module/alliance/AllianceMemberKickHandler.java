@@ -6,12 +6,13 @@ import org.hawk.msg.HawkMsgHandler;
 import org.hawk.net.protocol.HawkProtocol;
 
 import com.hawk.game.entity.AllianceEntity;
+import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
-import com.hawk.game.protocol.Alliance.HSMemberRemoveNotify;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
+import com.hawk.game.protocol.Alliance.HSAllianceLeave;
 import com.hawk.game.protocol.Alliance.HSAllianceMemKick;
 import com.hawk.game.protocol.Alliance.HSAllianceMemKickRet;
 import com.hawk.game.util.GsConst;
@@ -68,8 +69,16 @@ public class AllianceMemberKickHandler implements HawkMsgHandler{
 		AllianceManager.getInstance().removePlayerAndAllianceMap(request.getTargetId());
 		allianceEntity.removeMember(request.getTargetId());
 		
+		AllianceTeamEntity teamEntity = allianceEntity.getTeamEntity(request.getTargetId());
+		if (teamEntity != null) {
+			teamEntity.removePlayerFromTeam(request.getTargetId());
+		}
+		
 		HSAllianceMemKickRet.Builder response = HSAllianceMemKickRet.newBuilder();
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_MEMBER_KCIK_S_VALUE, response));
+		
+		HawkProtocol notify = HawkProtocol.valueOf(HS.code.ALLIANCE_LEAVE_N_S_VALUE, HSAllianceLeave.newBuilder());
+		AllianceManager.getInstance().memberNotify(targetPlayerAllianceEntity.getPlayerId(), notify);
 		
 		// 广播
 		//HSMemberRemoveNotify.Builder notify = HSMemberRemoveNotify.newBuilder();

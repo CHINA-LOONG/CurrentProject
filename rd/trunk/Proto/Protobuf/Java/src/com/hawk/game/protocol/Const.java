@@ -524,6 +524,14 @@ public final class Const {
      * </pre>
      */
     MONSTER(7, 7),
+    /**
+     * <code>ALLIANCE = 8;</code>
+     *
+     * <pre>
+     * 公会奖励
+     * </pre>
+     */
+    ALLIANCE(8, 8),
     ;
 
     /**
@@ -590,6 +598,14 @@ public final class Const {
      * </pre>
      */
     public static final int MONSTER_VALUE = 7;
+    /**
+     * <code>ALLIANCE = 8;</code>
+     *
+     * <pre>
+     * 公会奖励
+     * </pre>
+     */
+    public static final int ALLIANCE_VALUE = 8;
 
 
     public final int getNumber() { return value; }
@@ -604,6 +620,7 @@ public final class Const {
         case 5: return SKILL;
         case 6: return GROUP;
         case 7: return MONSTER;
+        case 8: return ALLIANCE;
         default: return null;
       }
     }
@@ -758,176 +775,6 @@ public final class Const {
   }
 
   /**
-   * Protobuf enum {@code playerAttr}
-   *
-   * <pre>
-   * 玩家属性类型定义
-   * </pre>
-   */
-  public enum playerAttr
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>GOLD = 1;</code>
-     *
-     * <pre>
-     * 钻石
-     * </pre>
-     */
-    GOLD(0, 1),
-    /**
-     * <code>COIN = 2;</code>
-     *
-     * <pre>
-     * 金币
-     * </pre>
-     */
-    COIN(1, 2),
-    /**
-     * <code>LEVEL = 3;</code>
-     *
-     * <pre>
-     * 等级
-     * </pre>
-     */
-    LEVEL(2, 3),
-    /**
-     * <code>EXP = 4;</code>
-     *
-     * <pre>
-     * 经验
-     * </pre>
-     */
-    EXP(3, 4),
-    /**
-     * <code>FATIGUE = 5;</code>
-     *
-     * <pre>
-     * 疲劳值
-     * </pre>
-     */
-    FATIGUE(4, 5),
-    /**
-     * <code>VIPLEVEL = 6;</code>
-     *
-     * <pre>
-     * vip等级
-     * </pre>
-     */
-    VIPLEVEL(5, 6),
-    ;
-
-    /**
-     * <code>GOLD = 1;</code>
-     *
-     * <pre>
-     * 钻石
-     * </pre>
-     */
-    public static final int GOLD_VALUE = 1;
-    /**
-     * <code>COIN = 2;</code>
-     *
-     * <pre>
-     * 金币
-     * </pre>
-     */
-    public static final int COIN_VALUE = 2;
-    /**
-     * <code>LEVEL = 3;</code>
-     *
-     * <pre>
-     * 等级
-     * </pre>
-     */
-    public static final int LEVEL_VALUE = 3;
-    /**
-     * <code>EXP = 4;</code>
-     *
-     * <pre>
-     * 经验
-     * </pre>
-     */
-    public static final int EXP_VALUE = 4;
-    /**
-     * <code>FATIGUE = 5;</code>
-     *
-     * <pre>
-     * 疲劳值
-     * </pre>
-     */
-    public static final int FATIGUE_VALUE = 5;
-    /**
-     * <code>VIPLEVEL = 6;</code>
-     *
-     * <pre>
-     * vip等级
-     * </pre>
-     */
-    public static final int VIPLEVEL_VALUE = 6;
-
-
-    public final int getNumber() { return value; }
-
-    public static playerAttr valueOf(int value) {
-      switch (value) {
-        case 1: return GOLD;
-        case 2: return COIN;
-        case 3: return LEVEL;
-        case 4: return EXP;
-        case 5: return FATIGUE;
-        case 6: return VIPLEVEL;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<playerAttr>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static com.google.protobuf.Internal.EnumLiteMap<playerAttr>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<playerAttr>() {
-            public playerAttr findValueByNumber(int number) {
-              return playerAttr.valueOf(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(6);
-    }
-
-    private static final playerAttr[] VALUES = values();
-
-    public static playerAttr valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int index;
-    private final int value;
-
-    private playerAttr(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:playerAttr)
-  }
-
-  /**
    * Protobuf enum {@code changeType}
    *
    * <pre>
@@ -1000,6 +847,14 @@ public final class Const {
      * </pre>
      */
     CHANGE_FAV(7, 8),
+    /**
+     * <code>CHANGE_PLAYER_CONTRIBUTION = 9;</code>
+     *
+     * <pre>
+     * 玩家公会贡献值
+     * </pre>
+     */
+    CHANGE_PLAYER_CONTRIBUTION(9, 9),
     ;
 
     /**
@@ -1082,6 +937,14 @@ public final class Const {
      * </pre>
      */
     public static final int CHANGE_GOLD_BUY_VALUE = 8;
+    /**
+     * <code>CHANGE_PLAYER_CONTRIBUTION = 9;</code>
+     *
+     * <pre>
+     * 玩家公会贡献值
+     * </pre>
+     */
+    public static final int CHANGE_PLAYER_CONTRIBUTION_VALUE = 9;
 
 
     public final int getNumber() { return value; }
@@ -1096,6 +959,7 @@ public final class Const {
         case 6: return CHANGE_MONSTER_LEVEL;
         case 7: return CHANGE_FATIGUE;
         case 8: return CHANGE_FAV;
+        case 9: return CHANGE_PLAYER_CONTRIBUTION;
         default: return null;
       }
     }
@@ -1122,11 +986,11 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(7);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(6);
     }
 
     private static final changeType[] VALUES = {
-      CHANGE_GOLD, CHANGE_COIN, CHANGE_PLAYER_EXP, CHANGE_PLAYER_LEVEL, CHANGE_MONSTER_EXP, CHANGE_MONSTER_LEVEL, CHANGE_FATIGUE, CHANGE_FAV, CHANGE_GOLD_BUY, 
+      CHANGE_GOLD, CHANGE_COIN, CHANGE_PLAYER_EXP, CHANGE_PLAYER_LEVEL, CHANGE_MONSTER_EXP, CHANGE_MONSTER_LEVEL, CHANGE_FATIGUE, CHANGE_FAV, CHANGE_GOLD_BUY, CHANGE_PLAYER_CONTRIBUTION, 
     };
 
     public static changeType valueOf(
@@ -1447,7 +1311,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(8);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(7);
     }
 
     private static final attr[] VALUES = values();
@@ -1549,7 +1413,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(9);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(8);
     }
 
     private static final userCondition[] VALUES = values();
@@ -1668,7 +1532,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(10);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(9);
     }
 
     private static final bindType[] VALUES = values();
@@ -1838,7 +1702,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(11);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(10);
     }
 
     private static final toolType[] VALUES = values();
@@ -1940,7 +1804,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(12);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(11);
     }
 
     private static final FragSubType[] VALUES = values();
@@ -2076,7 +1940,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(13);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(12);
     }
 
     private static final UseToolSubType[] VALUES = values();
@@ -2314,7 +2178,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(14);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(13);
     }
 
     private static final equipPart[] VALUES = values();
@@ -2484,7 +2348,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(15);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(14);
     }
 
     private static final equipQuality[] VALUES = values();
@@ -2579,7 +2443,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(16);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(15);
     }
 
     private static final shopType[] VALUES = values();
@@ -2715,7 +2579,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(17);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(16);
     }
 
     private static final mailState[] VALUES = values();
@@ -2851,7 +2715,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(18);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(17);
     }
 
     private static final ImType[] VALUES = values();
@@ -2970,7 +2834,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(19);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(18);
     }
 
     private static final ImChannel[] VALUES = values();
@@ -3089,7 +2953,7 @@ public final class Const {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(20);
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(19);
     }
 
     private static final ChapterBoxState[] VALUES = values();
@@ -3114,6 +2978,142 @@ public final class Const {
     // @@protoc_insertion_point(enum_scope:ChapterBoxState)
   }
 
+  /**
+   * Protobuf enum {@code InstanceType}
+   *
+   * <pre>
+   * 副本类型
+   * </pre>
+   */
+  public enum InstanceType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>INSTANCE_STORY = 1;</code>
+     *
+     * <pre>
+     * 故事
+     * </pre>
+     */
+    INSTANCE_STORY(0, 1),
+    /**
+     * <code>INSTANCE_HOLE = 2;</code>
+     *
+     * <pre>
+     * 洞
+     * </pre>
+     */
+    INSTANCE_HOLE(1, 2),
+    /**
+     * <code>INSTANCE_TOWER = 3;</code>
+     *
+     * <pre>
+     * 塔
+     * </pre>
+     */
+    INSTANCE_TOWER(2, 3),
+    /**
+     * <code>INSTANCE_GUILD = 4;</code>
+     *
+     * <pre>
+     * 公会
+     * </pre>
+     */
+    INSTANCE_GUILD(3, 4),
+    ;
+
+    /**
+     * <code>INSTANCE_STORY = 1;</code>
+     *
+     * <pre>
+     * 故事
+     * </pre>
+     */
+    public static final int INSTANCE_STORY_VALUE = 1;
+    /**
+     * <code>INSTANCE_HOLE = 2;</code>
+     *
+     * <pre>
+     * 洞
+     * </pre>
+     */
+    public static final int INSTANCE_HOLE_VALUE = 2;
+    /**
+     * <code>INSTANCE_TOWER = 3;</code>
+     *
+     * <pre>
+     * 塔
+     * </pre>
+     */
+    public static final int INSTANCE_TOWER_VALUE = 3;
+    /**
+     * <code>INSTANCE_GUILD = 4;</code>
+     *
+     * <pre>
+     * 公会
+     * </pre>
+     */
+    public static final int INSTANCE_GUILD_VALUE = 4;
+
+
+    public final int getNumber() { return value; }
+
+    public static InstanceType valueOf(int value) {
+      switch (value) {
+        case 1: return INSTANCE_STORY;
+        case 2: return INSTANCE_HOLE;
+        case 3: return INSTANCE_TOWER;
+        case 4: return INSTANCE_GUILD;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<InstanceType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<InstanceType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<InstanceType>() {
+            public InstanceType findValueByNumber(int number) {
+              return InstanceType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(20);
+    }
+
+    private static final InstanceType[] VALUES = values();
+
+    public static InstanceType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private InstanceType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:InstanceType)
+  }
+
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3131,46 +3131,48 @@ public final class Const {
       "T\020\005*L\n\014RewardReason\022\017\n\013SYS_PRESENT\020\001\022\007\n\003" +
       "NPC\020\002\022\t\n\005QUEST\020\003\022\014\n\010ACITVITY\020\004\022\t\n\005CATCH\020" +
       "\005*.\n\tClassType\022\017\n\013PLAYER_TYPE\020\001\022\020\n\014MONST" +
-      "ER_TYPE\020\002*t\n\010itemType\022\r\n\tNONE_ITEM\020\000\022\017\n\013" +
-      "PLAYER_ATTR\020\001\022\020\n\014MONSTER_ATTR\020\002\022\010\n\004ITEM\020",
-      "\003\022\t\n\005EQUIP\020\004\022\t\n\005SKILL\020\005\022\t\n\005GROUP\020\006\022\013\n\007MO" +
-      "NSTER\020\007*+\n\tmoneyType\022\016\n\nMONEY_GOLD\020\001\022\016\n\n" +
-      "MONEY_COIN\020\002*O\n\nplayerAttr\022\010\n\004GOLD\020\001\022\010\n\004" +
-      "COIN\020\002\022\t\n\005LEVEL\020\003\022\007\n\003EXP\020\004\022\013\n\007FATIGUE\020\005\022" +
-      "\014\n\010VIPLEVEL\020\006*\311\001\n\nchangeType\022\017\n\013CHANGE_G" +
-      "OLD\020\001\022\017\n\013CHANGE_COIN\020\002\022\025\n\021CHANGE_PLAYER_" +
-      "EXP\020\003\022\027\n\023CHANGE_PLAYER_LEVEL\020\004\022\026\n\022CHANGE" +
-      "_MONSTER_EXP\020\005\022\030\n\024CHANGE_MONSTER_LEVEL\020\006" +
-      "\022\022\n\016CHANGE_FATIGUE\020\007\022\016\n\nCHANGE_FAV\020\010\022\023\n\017" +
-      "CHANGE_GOLD_BUY\020\010*\365\001\n\004attr\022\r\n\tEMPTYATTR\020",
-      "\000\022\014\n\010STRENGHT\020\001\022\020\n\014INTELLIGENCE\020\002\022\t\n\005SPE" +
-      "ED\020\003\022\013\n\007DEFENSE\020\004\022\n\n\006HEALTH\020\005\022\021\n\rDEFENSE" +
-      "WEAKEN\020e\022\014\n\010CRITICAL\020f\022\022\n\016CRITICALWEAKEN" +
-      "\020g\022\014\n\010RECOVERY\020h\022\022\n\016CRITICALDAMAGE\020i\022\013\n\007" +
-      "HITRATE\020j\022\020\n\014CUREINCREASE\020k\022\020\n\014DAMAGERED" +
-      "UCE\020l\022\022\n\016DAMAGEINCREASE\020m*+\n\ruserConditi" +
-      "on\022\n\n\006BATTLE\020\001\022\016\n\nNON_BATTLE\020\002*5\n\010bindTy" +
-      "pe\022\014\n\010NON_BIND\020\001\022\014\n\010USE_BIND\020\002\022\r\n\tTAKE_B" +
-      "IND\020\003*b\n\010toolType\022\016\n\nCOMMONTOOL\020\001\022\020\n\014FRA" +
-      "GMENTTOOL\020\002\022\013\n\007GEMTOOL\020\003\022\013\n\007BOXTOOL\020\004\022\013\n",
-      "\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007*.\n\013FragSubType" +
-      "\022\020\n\014FRAG_MONSTER\020\001\022\r\n\tFRAG_TOOL\020\002*`\n\016Use" +
-      "ToolSubType\022\016\n\nUSETOOLEXP\020\001\022\024\n\020USETOOLDO" +
-      "UBLEEXP\020\002\022\024\n\020USETOOLTRIPLEEXP\020\003\022\022\n\016USETO" +
-      "OLFATIGUE\020\004*\204\001\n\tequipPart\022\n\n\006HELMET\020\001\022\010\n" +
-      "\004RING\020\002\022\010\n\004BELT\020\003\022\013\n\007CUIRASS\020\004\022\013\n\007WEAPON" +
-      "1\020\005\022\013\n\007WEAPON2\020\006\022\014\n\010LEGGUARD\020\007\022\t\n\005SHOES\020" +
-      "\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020\n*O\n\014equipQuali" +
-      "ty\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022\010\n\004BLUE\020\003\022\n\n\006PU" +
-      "RPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED\020\006*;\n\010shopType\022",
-      "\016\n\nNORMALSHOP\020\001\022\020\n\014ALLIANCESHOP\020\002\022\r\n\tOTH" +
-      "ERSHOP\020\003*<\n\tmailState\022\n\n\006UNREAD\020\001\022\010\n\004REA" +
-      "D\020\002\022\013\n\007RECEIVE\020\003\022\014\n\010OVERFLOW\020\004*7\n\006ImType" +
-      "\022\010\n\004CHAT\020\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006N" +
-      "OTICE\020\004*-\n\tImChannel\022\n\n\006PERSON\020\001\022\t\n\005WORL" +
-      "D\020\002\022\t\n\005GUILD\020\003*<\n\017ChapterBoxState\022\024\n\007INV" +
-      "ALID\020\377\377\377\377\377\377\377\377\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001B\030\n\026" +
-      "com.hawk.game.protocol"
+      "ER_TYPE\020\002*\202\001\n\010itemType\022\r\n\tNONE_ITEM\020\000\022\017\n" +
+      "\013PLAYER_ATTR\020\001\022\020\n\014MONSTER_ATTR\020\002\022\010\n\004ITEM",
+      "\020\003\022\t\n\005EQUIP\020\004\022\t\n\005SKILL\020\005\022\t\n\005GROUP\020\006\022\013\n\007M" +
+      "ONSTER\020\007\022\014\n\010ALLIANCE\020\010*+\n\tmoneyType\022\016\n\nM" +
+      "ONEY_GOLD\020\001\022\016\n\nMONEY_COIN\020\002*\351\001\n\nchangeTy" +
+      "pe\022\017\n\013CHANGE_GOLD\020\001\022\017\n\013CHANGE_COIN\020\002\022\025\n\021" +
+      "CHANGE_PLAYER_EXP\020\003\022\027\n\023CHANGE_PLAYER_LEV" +
+      "EL\020\004\022\026\n\022CHANGE_MONSTER_EXP\020\005\022\030\n\024CHANGE_M" +
+      "ONSTER_LEVEL\020\006\022\022\n\016CHANGE_FATIGUE\020\007\022\016\n\nCH" +
+      "ANGE_FAV\020\010\022\023\n\017CHANGE_GOLD_BUY\020\010\022\036\n\032CHANG" +
+      "E_PLAYER_CONTRIBUTION\020\t*\365\001\n\004attr\022\r\n\tEMPT" +
+      "YATTR\020\000\022\014\n\010STRENGHT\020\001\022\020\n\014INTELLIGENCE\020\002\022",
+      "\t\n\005SPEED\020\003\022\013\n\007DEFENSE\020\004\022\n\n\006HEALTH\020\005\022\021\n\rD" +
+      "EFENSEWEAKEN\020e\022\014\n\010CRITICAL\020f\022\022\n\016CRITICAL" +
+      "WEAKEN\020g\022\014\n\010RECOVERY\020h\022\022\n\016CRITICALDAMAGE" +
+      "\020i\022\013\n\007HITRATE\020j\022\020\n\014CUREINCREASE\020k\022\020\n\014DAM" +
+      "AGEREDUCE\020l\022\022\n\016DAMAGEINCREASE\020m*+\n\ruserC" +
+      "ondition\022\n\n\006BATTLE\020\001\022\016\n\nNON_BATTLE\020\002*5\n\010" +
+      "bindType\022\014\n\010NON_BIND\020\001\022\014\n\010USE_BIND\020\002\022\r\n\t" +
+      "TAKE_BIND\020\003*b\n\010toolType\022\016\n\nCOMMONTOOL\020\001\022" +
+      "\020\n\014FRAGMENTTOOL\020\002\022\013\n\007GEMTOOL\020\003\022\013\n\007BOXTOO" +
+      "L\020\004\022\013\n\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007*.\n\013FragS",
+      "ubType\022\020\n\014FRAG_MONSTER\020\001\022\r\n\tFRAG_TOOL\020\002*" +
+      "`\n\016UseToolSubType\022\016\n\nUSETOOLEXP\020\001\022\024\n\020USE" +
+      "TOOLDOUBLEEXP\020\002\022\024\n\020USETOOLTRIPLEEXP\020\003\022\022\n" +
+      "\016USETOOLFATIGUE\020\004*\204\001\n\tequipPart\022\n\n\006HELME" +
+      "T\020\001\022\010\n\004RING\020\002\022\010\n\004BELT\020\003\022\013\n\007CUIRASS\020\004\022\013\n\007" +
+      "WEAPON1\020\005\022\013\n\007WEAPON2\020\006\022\014\n\010LEGGUARD\020\007\022\t\n\005" +
+      "SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020\n*O\n\014equi" +
+      "pQuality\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022\010\n\004BLUE\020\003" +
+      "\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED\020\006*;\n\010sho" +
+      "pType\022\016\n\nNORMALSHOP\020\001\022\020\n\014ALLIANCESHOP\020\002\022",
+      "\r\n\tOTHERSHOP\020\003*<\n\tmailState\022\n\n\006UNREAD\020\001\022" +
+      "\010\n\004READ\020\002\022\013\n\007RECEIVE\020\003\022\014\n\010OVERFLOW\020\004*7\n\006" +
+      "ImType\022\010\n\004CHAT\020\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020" +
+      "\003\022\n\n\006NOTICE\020\004*-\n\tImChannel\022\n\n\006PERSON\020\001\022\t" +
+      "\n\005WORLD\020\002\022\t\n\005GUILD\020\003*<\n\017ChapterBoxState\022" +
+      "\024\n\007INVALID\020\377\377\377\377\377\377\377\377\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN" +
+      "\020\001*]\n\014InstanceType\022\022\n\016INSTANCE_STORY\020\001\022\021" +
+      "\n\rINSTANCE_HOLE\020\002\022\022\n\016INSTANCE_TOWER\020\003\022\022\n" +
+      "\016INSTANCE_GUILD\020\004B\030\n\026com.hawk.game.proto" +
+      "col"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

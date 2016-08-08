@@ -1,15 +1,11 @@
 package com.hawk.game.entity;
 
-import com.hawk.game.item.ShopItemInfo;
-import com.hawk.game.protocol.Const;
-import com.hawk.game.protocol.Status.instanceError;
-
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -17,15 +13,16 @@ import javax.persistence.Transient;
 import net.sf.json.JSONArray;
 
 import org.hawk.db.HawkDBEntity;
-import org.hawk.os.HawkTime;
-import org.hibernate.annotations.GenericGenerator;
+
+import com.hawk.game.item.ShopItemInfo;
+import com.hawk.game.protocol.Const;
+
 /**
  * @author zs
  * 商店实体
  */
 @Entity
 @Table(name = "shop")
-@SuppressWarnings("serial")
 public class ShopEntity extends HawkDBEntity{
 	@Id
 	@Column(name = "playerId", unique = true)
@@ -327,66 +324,76 @@ public class ShopEntity extends HawkDBEntity{
 	}
 	
 	@Override
-	@SuppressWarnings("unchecked")
 	public boolean decode() {
-		JSONArray array = null;
+		normalShopItemsList = new LinkedList<>();
 		if (normalShopItems != null && normalShopItems.isEmpty() == false) {
-			array = JSONArray.fromObject(normalShopItems);
+			String[] items = normalShopItems.trim().split(" ");
+			for (String item  : items) {
+				ShopItemInfo itemInfo = ShopItemInfo.valueOf(item);
+				if (itemInfo != null) {
+					normalShopItemsList.add(itemInfo);
+				}
+			}
 		}
-		else
-		{
-			array = new JSONArray();
-		}
-		normalShopItemsList = ((List<ShopItemInfo>) JSONArray.toCollection(array, ShopItemInfo.class));
 		
+		allianceShopItemsList = new LinkedList<>();
 		if (allianceShopItems != null && allianceShopItems.isEmpty() == false) {
-			array = JSONArray.fromObject(allianceShopItems);
+			String[] items = allianceShopItems.trim().split(" ");
+			for (String item  : items) {
+				ShopItemInfo itemInfo = ShopItemInfo.valueOf(item);
+				if (itemInfo != null) {
+					allianceShopItemsList.add(itemInfo);
+				}
+			}
 		}
-		else
-		{
-			array = new JSONArray();
-		}
-		allianceShopItemsList = ((List<ShopItemInfo>) JSONArray.toCollection(array, ShopItemInfo.class));
 		
+		otherShopItemsList = new LinkedList<>();
 		if (otherShopItems != null && otherShopItems.isEmpty() == false) {
-			array = JSONArray.fromObject(otherShopItems);
+			String[] items = otherShopItems.trim().split(" ");
+			for (String item  : items) {
+				ShopItemInfo itemInfo = ShopItemInfo.valueOf(item);
+				if (itemInfo != null) {
+					otherShopItemsList.add(itemInfo);
+				}
+			}
 		}
-		else
-		{
-			array = new JSONArray();
-		}
-		otherShopItemsList = ((List<ShopItemInfo>) JSONArray.toCollection(array, ShopItemInfo.class));
-				
+		
 		return true;
 	}
 	
 	@Override
 	public boolean encode() {
-		if (normalShopItemsList == null) {
+		StringBuilder builder = new StringBuilder();
+		if (normalShopItemsList == null || normalShopItemsList.isEmpty() == true) {
 			this.normalShopItems = null;
 		}
-		else
-		{
-			JSONArray array = JSONArray.fromObject(normalShopItemsList);
-			this.normalShopItems = array.toString();
+		else{
+			for (ShopItemInfo shopItem : normalShopItemsList) {
+				builder.append(shopItem.toString()).append(" ");
+			}
+			this.normalShopItems = builder.toString().trim();
 		}
 		
-		if (allianceShopItemsList == null) {
+		builder.setLength(0);
+		if (allianceShopItemsList == null || allianceShopItemsList.isEmpty() == true) {
 			this.allianceShopItems = null;
 		}
-		else
-		{
-			JSONArray array = JSONArray.fromObject(allianceShopItemsList);
-			this.allianceShopItems = array.toString();
+		else{
+			for (ShopItemInfo shopItem : allianceShopItemsList) {
+				builder.append(shopItem.toString()).append(" ");
+			}
+			this.allianceShopItems = builder.toString().trim();
 		}
 		
-		if (otherShopItemsList == null) {
+		builder.setLength(0);
+		if (otherShopItemsList == null || otherShopItemsList.isEmpty() == true) {
 			this.otherShopItems = null;
 		}
-		else
-		{
-			JSONArray array = JSONArray.fromObject(otherShopItemsList);
-			this.otherShopItems = array.toString();
+		else{
+			for (ShopItemInfo shopItem : otherShopItemsList) {
+				builder.append(shopItem.toString()).append(" ");
+			}
+			this.otherShopItems = builder.toString().trim();
 		}
 		
 		return true;

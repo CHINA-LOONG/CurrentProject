@@ -43,7 +43,7 @@ public class GameEventList
 	public static string WeakpoingDead = "WeakpointDead";//param GameUnit,string
 
 	//数据统计
-	public static string SpellAttackStatistics = "SpellAttackStatistics";//
+	//public static string SpellAttackStatistics = "SpellAttackStatistics";//
 
 	//Dazhao
 	public static string DazhaoBtnClicked = "DazhaoBtnClicked";

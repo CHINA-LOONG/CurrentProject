@@ -17,7 +17,7 @@ public class TowerCfg extends HawkConfigBase {
 	protected final String floor;
 
 	// client only
-	private final String textId = null;
+	protected final String textId = null;
 
 	// assemble
 	protected int[] refreshTimeList;

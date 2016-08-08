@@ -27,7 +27,6 @@ import com.hawk.game.util.GsConst;
  */
 @Entity
 @Table(name = "player")
-@SuppressWarnings("serial")
 public class PlayerEntity extends HawkDBEntity {
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")
@@ -76,9 +75,6 @@ public class PlayerEntity extends HawkDBEntity {
 
 	@Column(name = "goldFree")
 	protected int goldFree = 0;
-	
-	@Column(name = "battleMonster", nullable = false)
-	protected String battleMonsterJson = "";
 
 	@Column(name = "blockPlayer", nullable = false)
 	protected String blockPlayerJson = "";
@@ -112,9 +108,6 @@ public class PlayerEntity extends HawkDBEntity {
 
 	@Column(name = "invalid")
 	protected boolean invalid;
-
-	@Transient
-	private List<Integer> battleMonsterList = new LinkedList<Integer>();
 
 	@Transient
 	private List<Integer> blockPlayerList = new LinkedList<Integer>();
@@ -205,14 +198,6 @@ public class PlayerEntity extends HawkDBEntity {
 
 	public void setFreeGold(int gold) {
 		this.goldFree = gold;
-	}
-
-	public List<Integer> getBattleMonsterList() {
-		return battleMonsterList;
-	}
-
-	public void setBattleMonsterList(List<Integer> list) {
-		this.battleMonsterList = list;
 	}
 
 	public List<Integer> getBlockPlayerList() {
@@ -319,10 +304,6 @@ public class PlayerEntity extends HawkDBEntity {
 
 	@Override
 	public boolean decode() {
-		if (battleMonsterJson != null && false == "".equals(battleMonsterJson) && false == "null".equals(battleMonsterJson)) {
-			battleMonsterList = HawkJsonUtil.getJsonInstance().fromJson(battleMonsterJson, new TypeToken<List<Integer>>() {}.getType());
-		}
-
 		if (blockPlayerJson != null && false == "".equals(blockPlayerJson) && false == "null".equals(blockPlayerJson)) {
 			blockPlayerList = HawkJsonUtil.getJsonInstance().fromJson(blockPlayerJson, new TypeToken<List<Integer>>() {}.getType());
 		}
@@ -332,7 +313,6 @@ public class PlayerEntity extends HawkDBEntity {
 
 	@Override
 	public boolean encode() {
-		battleMonsterJson = HawkJsonUtil.getJsonInstance().toJson(battleMonsterList);
 		blockPlayerJson = HawkJsonUtil.getJsonInstance().toJson(blockPlayerList);
 		return true;
 	}

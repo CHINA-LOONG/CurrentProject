@@ -359,6 +359,37 @@ public class Buff
     {
         GameUnit target = spellService.GetUnit(targetID);
 
+        //打断
+        if (buffProto.category == (int)BuffType.Buff_Type_Interrupt)
+        {
+            if (isRemove == false)
+            {
+                //interrupt if in dazhao
+                //if (target.pbUnit.camp == UnitCamp.Enemy)
+                {
+                    List<Buff> buffList = target.buffList;
+                    int count = buffList.Count;
+                    for (int i = 0; i < count; ++i)
+                    {
+                        if (buffList[i].buffProto.category == (int)(BuffType.Buff_Type_Dazhao) && buffList[i].isFinish == false)
+                        {
+                            buffList[i].Finish(curTime);
+                            SpellVitalChangeArgs interruptArgs = new SpellVitalChangeArgs();
+                            interruptArgs.vitalType = (int)VitalType.Vital_Type_Interrupt;
+                            interruptArgs.triggerTime = curTime;
+                            interruptArgs.casterID = 0;
+                            interruptArgs.targetID = targetID;
+                            spellService.TriggerEvent(GameEventList.SpellLifeChange, interruptArgs);
+                            break;
+                        }
+                    }
+                }
+                if (target.pbUnit.camp == UnitCamp.Player)
+                {
+                    GameEventMgr.Instance.FireEvent<int>(GameEventList.ExitDazhaoByPhyAttacked, target.pbUnit.guid);
+                }
+            }
+        }
         //状态改变
         if (buffProto.stun > 0)
         {
@@ -400,7 +431,7 @@ public class Buff
                 if (target.stun == 0)
                 {
                     //interrupt if in dazhao
-                    if (target.pbUnit.camp == UnitCamp.Enemy)
+                    //if (target.pbUnit.camp == UnitCamp.Enemy)
                     {
                         List<Buff> buffList = target.buffList;
                         int count = buffList.Count;
@@ -419,7 +450,7 @@ public class Buff
                             }
                         }
                     }
-                    else
+                    if (target.pbUnit.camp == UnitCamp.Player)
                     {
                         GameEventMgr.Instance.FireEvent<int>(GameEventList.ExitDazhaoByPhyAttacked, target.pbUnit.guid);
                     }
@@ -581,30 +612,30 @@ public class Buff
     }
     //---------------------------------------------------------------------------------------------
     //now only dazhao buff need response
-    public void CheckDazhaoInterrupt(float curTime)
-    {
-        if (IsFinish == true)
-            return;
+    //public void CheckDazhaoInterrupt(float curTime)
+    //{
+    //    if (IsFinish == true)
+    //        return;
 
-        GameUnit target = spellService.GetUnit(targetID);
-        if (target != null)
-        {
-            if (target.dazhao > 0)
-            {
-                ++target.dazhaoDamageCount;
-                if (DazhaoExitCheck.IsExitByPhyAttacked(target.dazhaoDamageCount))
-                {
-                    Finish(curTime);
-                    SpellVitalChangeArgs args = new SpellVitalChangeArgs();
-                    args.vitalType = (int)VitalType.Vital_Type_Interrupt;
-                    args.triggerTime = curTime;
-                    args.casterID = 0;
-                    args.targetID = targetID;
-                    spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
-                }
-            }
-        }
-    }
+    //    GameUnit target = spellService.GetUnit(targetID);
+    //    if (target != null)
+    //    {
+    //        if (target.dazhao > 0)
+    //        {
+    //            ++target.dazhaoDamageCount;
+    //            if (DazhaoExitCheck.IsExitByPhyAttacked(target.dazhaoDamageCount))
+    //            {
+    //                Finish(curTime);
+    //                SpellVitalChangeArgs args = new SpellVitalChangeArgs();
+    //                args.vitalType = (int)VitalType.Vital_Type_Interrupt;
+    //                args.triggerTime = curTime;
+    //                args.casterID = 0;
+    //                args.targetID = targetID;
+    //                spellService.TriggerEvent(GameEventList.SpellLifeChange, args);
+    //            }
+    //        }
+    //    }
+    //}
     //---------------------------------------------------------------------------------------------
     public void DamageResponse(float curTime, Effect triggerEffect, string wpName)
     {

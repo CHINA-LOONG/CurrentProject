@@ -85,6 +85,7 @@ public class MainStageController : MonoBehaviour
         //mLtoW.SetColumn(2, zAxis);
         //mLtoW.SetColumn(3, new Vector4(0.0f, 0.0f, 0.0f, 1.0f));
         //mRadius = Vector3.Distance(mRecPos.position, mCentrePos.position);
+        UIIm.Instance.SetLevelVisible(true);
         mRotAngle = 0.0f;
         mMaxNormalAngle = mMaxYawAngle - mBoundAngle;
         mMinNormalAngle = mMinYawAngle + mBoundAngle;
@@ -108,7 +109,7 @@ public class MainStageController : MonoBehaviour
                     curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Retry
                     )
                 {
-
+                    mUITower.OpenAdjustTeam();
                 }
             }
         }
@@ -119,10 +120,10 @@ public class MainStageController : MonoBehaviour
         //mTowerSiwangObj.SetState(SelectableObjState.State_Disabled);
     }
     //---------------------------------------------------------------------------------------------
-    public void RefreshHoleState()
+    public void RefreshHoleState(bool forceRefresh = false)
     {
-        mHoleJingyanObj.SetState(SelectableObjState.State_Normal);
-        mHoleJinbiObj.SetState(SelectableObjState.State_Normal);
+        mHoleJingyanObj.SetState(SelectableObjState.State_Normal, true, forceRefresh);
+        mHoleJinbiObj.SetState(SelectableObjState.State_Normal, true, forceRefresh);
         int count = GameDataMgr.Instance.mHoleStateList.Count;
         for (int i = 0; i < count; ++i)
         {
@@ -143,23 +144,31 @@ public class MainStageController : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void RefreshTowerState()
     {
-        mTowerShilianObj.SetState(SelectableObjState.State_Normal);
-        mTowerSiwangObj.SetState(SelectableObjState.State_Normal);
-        mTowerJuewangObj.SetState(SelectableObjState.State_Normal);
-
         if (IsTowerOpen(TowerType.Tower_Shilian) == false)
         {
             mTowerShilianObj.SetState(SelectableObjState.State_Disabled);
+        }
+        else
+        {
+            mTowerShilianObj.SetState(SelectableObjState.State_Normal, true, true);
         }
 
         if (IsTowerOpen(TowerType.Tower_Juewang) == false)
         {
             mTowerJuewangObj.SetState(SelectableObjState.State_Disabled);
         }
+        else
+        {
+            mTowerJuewangObj.SetState(SelectableObjState.State_Normal, true, true);
+        }
 
         if (IsTowerOpen(TowerType.Tower_Siwang) == false)
         {
             mTowerSiwangObj.SetState(SelectableObjState.State_Disabled);
+        }
+        else
+        {
+            mTowerSiwangObj.SetState(SelectableObjState.State_Normal, true, true);
         }
     }
     //---------------------------------------------------------------------------------------------
@@ -430,7 +439,23 @@ public class MainStageController : MonoBehaviour
         {
             if (selectedObj.CurState == SelectableObjState.State_Disabled)
             {
-                UIIm.Instance.ShowSystemHints("function locked", (int)PB.ImType.PROMPT);
+                string errorMsg = string.Empty;
+                if (
+                    selectedObj == mTowerJuewangObj ||
+                    selectedObj == mTowerShilianObj ||
+                    selectedObj == mTowerSiwangObj
+                    )
+                {
+                    errorMsg = StaticDataMgr.Instance.GetTextByID("towerBoss_record_001");
+                }
+                else if (
+                    selectedObj == mHoleJinbiObj ||
+                    selectedObj == mHoleJingyanObj
+                    )
+                {
+                    errorMsg = StaticDataMgr.Instance.GetTextByID("tower_record_001");
+                }
+                UIIm.Instance.ShowSystemHints(errorMsg, (int)PB.ImType.PROMPT);
                 return;
             }
 
@@ -466,7 +491,8 @@ public class MainStageController : MonoBehaviour
             {
                 if (mUIHoleEntry.IsDailyCountFull(HoleType.Hole_Jingbi) == true)
                 {
-                    UIIm.Instance.ShowSystemHints("no play count", (int)PB.ImType.PROMPT);
+                    string errorMsg = StaticDataMgr.Instance.GetTextByID("tower_record_002");
+                    UIIm.Instance.ShowSystemHints(errorMsg, (int)PB.ImType.PROMPT);
                 }
                 else
                 {
@@ -478,7 +504,8 @@ public class MainStageController : MonoBehaviour
             {
                 if (mUIHoleEntry.IsDailyCountFull(HoleType.Hole_Exp) == true)
                 {
-                    UIIm.Instance.ShowSystemHints("no play count", (int)PB.ImType.PROMPT);
+                    string errorMsg = StaticDataMgr.Instance.GetTextByID("tower_record_002");
+                    UIIm.Instance.ShowSystemHints(errorMsg, (int)PB.ImType.PROMPT);
                 }
                 else
                 {

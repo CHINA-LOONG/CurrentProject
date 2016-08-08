@@ -216,6 +216,9 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"TOWER_ENTER_C", Value=3102)]
       TOWER_ENTER_C = 3102,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"GUILD_INSTANCE_ENTER_C", Value=3103)]
+      GUILD_INSTANCE_ENTER_C = 3103,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"ITEM_USE_C", Value=4001)]
       ITEM_USE_C = 4001,
             
@@ -432,8 +435,185 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOTICE_S", Value=9008)]
       ALLIANCE_NOTICE_S = 9008,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOTICE_SYNC_S", Value=9009)]
-      ALLIANCE_NOTICE_SYNC_S = 9009,
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_C", Value=9010)]
+      ALLIANCE_APPLY_C = 9010,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_S", Value=9011)]
+      ALLIANCE_APPLY_S = 9011,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_HANDLE_APPLY_C", Value=9012)]
+      ALLIANCE_HANDLE_APPLY_C = 9012,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_HANDLE_APPLY_S", Value=9013)]
+      ALLIANCE_HANDLE_APPLY_S = 9013,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_DATA_C", Value=9014)]
+      ALLIANCE_DATA_C = 9014,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_DATA_S", Value=9015)]
+      ALLIANCE_DATA_S = 9015,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SELF_DATA_C", Value=9016)]
+      ALLIANCE_SELF_DATA_C = 9016,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SELF_DATA_S", Value=9017)]
+      ALLIANCE_SELF_DATA_S = 9017,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MEMBERS_C", Value=9018)]
+      ALLIANCE_MEMBERS_C = 9018,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MEMBERS_S", Value=9019)]
+      ALLIANCE_MEMBERS_S = 9019,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLYS_C", Value=9020)]
+      ALLIANCE_APPLYS_C = 9020,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLYS_S", Value=9021)]
+      ALLIANCE_APPLYS_S = 9021,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_FATIGUE_C", Value=9022)]
+      ALLIANCE_FATIGUE_C = 9022,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_FATIGUE_S", Value=9023)]
+      ALLIANCE_FATIGUE_S = 9023,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SYN_C", Value=9024)]
+      ALLIANCE_SYN_C = 9024,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SYN_S", Value=9025)]
+      ALLIANCE_SYN_S = 9025,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CHANGE_POS_C", Value=9026)]
+      ALLIANCE_CHANGE_POS_C = 9026,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CHANGE_POS_S", Value=9027)]
+      ALLIANCE_CHANGE_POS_S = 9027,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MEMBER_KICK_C", Value=9028)]
+      ALLIANCE_MEMBER_KICK_C = 9028,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MEMBER_KCIK_S", Value=9029)]
+      ALLIANCE_MEMBER_KCIK_S = 9029,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MEMBER_LEAVE_C", Value=9030)]
+      ALLIANCE_MEMBER_LEAVE_C = 9030,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MEMBER_LEAVE_S", Value=9031)]
+      ALLIANCE_MEMBER_LEAVE_S = 9031,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CHANGE_OWNER_C", Value=9032)]
+      ALLIANCE_CHANGE_OWNER_C = 9032,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CHANGE_OWNER_S", Value=9033)]
+      ALLIANCE_CHANGE_OWNER_S = 9033,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LEVEL_UP_C", Value=9034)]
+      ALLIANCE_LEVEL_UP_C = 9034,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LEVEL_UP_S", Value=9035)]
+      ALLIANCE_LEVEL_UP_S = 9035,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_PRAY_C", Value=9036)]
+      ALLIANCE_PRAY_C = 9036,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_PRAY_S", Value=9037)]
+      ALLIANCE_PRAY_S = 9037,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SETTING_C", Value=9038)]
+      ALLIANCE_SETTING_C = 9038,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SETTING_S", Value=9039)]
+      ALLIANCE_SETTING_S = 9039,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SETTING_SYNC_C", Value=9040)]
+      ALLIANCE_SETTING_SYNC_C = 9040,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SETTING_SYNC_S", Value=9041)]
+      ALLIANCE_SETTING_SYNC_S = 9041,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_FATIGUE_GIVE_C", Value=9042)]
+      ALLIANCE_FATIGUE_GIVE_C = 9042,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_FATIGUE_GIVE_S", Value=9043)]
+      ALLIANCE_FATIGUE_GIVE_S = 9043,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CANCLE_APPLY_C", Value=9044)]
+      ALLIANCE_CANCLE_APPLY_C = 9044,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CANCLE_APPLY_S", Value=9045)]
+      ALLIANCE_CANCLE_APPLY_S = 9045,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CREATE_TEAM_C", Value=9060)]
+      ALLIANCE_CREATE_TEAM_C = 9060,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CREATE_TEAM_S", Value=9061)]
+      ALLIANCE_CREATE_TEAM_S = 9061,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_JOIN_TEAM_C", Value=9062)]
+      ALLIANCE_JOIN_TEAM_C = 9062,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_JOIN_TEAM_S", Value=9063)]
+      ALLIANCE_JOIN_TEAM_S = 9063,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_ACCEPT_TASK_C", Value=9064)]
+      ALLIANCE_ACCEPT_TASK_C = 9064,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_ACCEPT_TASK_S", Value=9065)]
+      ALLIANCE_ACCEPT_TASK_S = 9065,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_COMMIT_TASK_C", Value=9066)]
+      ALLIANCE_COMMIT_TASK_C = 9066,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_COMMIT_TASK_S", Value=9067)]
+      ALLIANCE_COMMIT_TASK_S = 9067,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_REWARD_C", Value=9068)]
+      ALLIANCE_TASK_REWARD_C = 9068,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_REWARD_S", Value=9069)]
+      ALLIANCE_TASK_REWARD_S = 9069,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEAM_LIST_C", Value=9070)]
+      ALLIANCE_TEAM_LIST_C = 9070,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TEAM_LIST_S", Value=9071)]
+      ALLIANCE_TEAM_LIST_S = 9071,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SELF_TEAM_C", Value=9072)]
+      ALLIANCE_SELF_TEAM_C = 9072,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SELF_TEAM_S", Value=9073)]
+      ALLIANCE_SELF_TEAM_S = 9073,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_N_S", Value=9100)]
+      ALLIANCE_APPLY_N_S = 9100,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_REMOVE_APPLY_N_S", Value=9101)]
+      ALLIANCE_REMOVE_APPLY_N_S = 9101,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOTICE_N_S", Value=9102)]
+      ALLIANCE_NOTICE_N_S = 9102,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MEMBER_ADD_N_S", Value=9103)]
+      ALLIANCE_MEMBER_ADD_N_S = 9103,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_MEMBER_REMOVE_N_S", Value=9104)]
+      ALLIANCE_MEMBER_REMOVE_N_S = 9104,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CHANGE_POS_N_S", Value=9105)]
+      ALLIANCE_CHANGE_POS_N_S = 9105,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_CHANGE_OWNER_N_S", Value=9106)]
+      ALLIANCE_CHANGE_OWNER_N_S = 9106,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LEVEL_CHANGE_N_S", Value=9107)]
+      ALLIANCE_LEVEL_CHANGE_N_S = 9107,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_JOIN_N_S", Value=9108)]
+      ALLIANCE_JOIN_N_S = 9108,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_LEAVE_N_S", Value=9109)]
+      ALLIANCE_LEAVE_N_S = 9109,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SETTING_LANGUAGE_C", Value=10001)]
       SETTING_LANGUAGE_C = 10001,

@@ -11,7 +11,7 @@ public class MonsterRarityCfg extends HawkConfigBase {
 	protected final float commonRatio;
 
 	// client only
-	private final String desc = null;
+	protected final String desc = null;
 	
 	public MonsterRarityCfg() {
 		rarity = 0;

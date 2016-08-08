@@ -20,6 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "player_alliance")
+@SuppressWarnings("serial")
 public class PlayerAllianceEntity extends HawkDBEntity {
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")
@@ -262,11 +263,9 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 	public boolean decode() {
 		fatigueSet.clear();		
 		if (fatigue != null && false == "".equals(fatigue) && false == "null".equals(fatigue)) {
-			String[] result = fatigue.split(",");
+			String[] result = fatigue.trim().split(" ");
 			for (String element : result) {
-				if (element != null && false == "".equals(element)) {
-					fatigueSet.add(Integer.parseInt(element));
-				}
+				fatigueSet.add(Integer.parseInt(element));
 			}
 		}
 		return true;
@@ -276,8 +275,9 @@ public class PlayerAllianceEntity extends HawkDBEntity {
 	public boolean encode() {
 		fatigue = "";
 		for (int element : fatigueSet) {
-			fatigue += String.valueOf(element) + ",";
+			fatigue += String.valueOf(element) + " ";
 		}
+		fatigue.trim();
 		return true;
 	}
 }

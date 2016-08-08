@@ -1,20 +1,16 @@
 package com.hawk.game.module;
 
 import java.util.Map;
-import java.util.Random;
 
 import org.hawk.config.HawkConfigManager;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
 
-import com.hawk.game.config.EquipAttr;
 import com.hawk.game.config.EquipForgeCfg;
 import com.hawk.game.config.ItemCfg;
-import com.hawk.game.config.MonsterStageCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
-import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.item.GemInfo;
@@ -24,7 +20,6 @@ import com.hawk.game.log.BehaviorLogger.Params;
 import com.hawk.game.log.BehaviorLogger.Source;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
-import com.hawk.game.protocol.Const.toolType;
 import com.hawk.game.protocol.Equip.GemPunch;
 import com.hawk.game.protocol.Equip.HSEquipBuy;
 import com.hawk.game.protocol.Const;
@@ -38,20 +33,16 @@ import com.hawk.game.protocol.Equip.HSEquipIncreaseStage;
 import com.hawk.game.protocol.Equip.HSEquipIncreaseStageRet;
 import com.hawk.game.protocol.Equip.HSEquipMonsterDress;
 import com.hawk.game.protocol.Equip.HSEquipMonsterDressRet;
-import com.hawk.game.protocol.Equip.HSEquipMonsterDressRetOrBuilder;
 import com.hawk.game.protocol.Equip.HSEquipMonsterReplace;
 import com.hawk.game.protocol.Equip.HSEquipMonsterReplaceRet;
 import com.hawk.game.protocol.Equip.HSEquipMonsterUndress;
 import com.hawk.game.protocol.Equip.HSEquipMonsterUndressRet;
 import com.hawk.game.protocol.Equip.HSEquipPunch;
 import com.hawk.game.protocol.Equip.HSEquipPunchRet;
-import com.hawk.game.protocol.Monster.HSMonsterDecompose;
-import com.hawk.game.protocol.Monster.HSMonsterDecomposeRet;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.EquipUtil;
 import com.hawk.game.util.GsConst;
-import com.sun.corba.se.impl.interceptors.SlotTable;
 
 public class PlayerEquipModule extends PlayerModule{
 	/**

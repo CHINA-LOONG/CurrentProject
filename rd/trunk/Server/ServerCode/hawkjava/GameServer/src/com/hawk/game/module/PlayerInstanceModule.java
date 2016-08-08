@@ -6,12 +6,14 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.hawk.annotation.ProtocolHandler;
+import org.hawk.app.HawkApp;
 import org.hawk.config.HawkConfigManager;
+import org.hawk.log.HawkLog;
+import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkRand;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.hawk.xid.HawkXID;
 
 import com.hawk.game.ServerData;
 import com.hawk.game.config.HoleCfg;
@@ -31,16 +33,15 @@ import com.hawk.game.item.ItemInfo;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
+import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.Const.changeType;
 import com.hawk.game.protocol.Const.itemType;
-import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Instance.HSBattle;
 import com.hawk.game.protocol.Instance.HSChapterBox;
 import com.hawk.game.protocol.Instance.HSChapterBoxRet;
+import com.hawk.game.protocol.Instance.HSGuildInstanceEnter;
 import com.hawk.game.protocol.Instance.HSHoleEnter;
-import com.hawk.game.protocol.Instance.HSInstanceAssist;
-import com.hawk.game.protocol.Instance.HSInstanceAssistRet;
 import com.hawk.game.protocol.Instance.HSInstanceEnter;
 import com.hawk.game.protocol.Instance.HSInstanceEnterRet;
 import com.hawk.game.protocol.Instance.HSInstanceResetCount;
@@ -57,8 +58,6 @@ import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.InstanceUtil.InstanceChapter;
 
 public class PlayerInstanceModule extends PlayerModule {
-
-	private static final Logger logger = LoggerFactory.getLogger("Protocol");
 
 	// 本次副本类型
 	private int curType;
@@ -96,14 +95,12 @@ public class PlayerInstanceModule extends PlayerModule {
 	 */
 	@ProtocolHandler(code = HS.code.INSTANCE_ASSIST_C_VALUE)
 	private boolean onInstanceAssist(HawkProtocol cmd) {
-		HSInstanceAssist protocol = cmd.parseProtocol(HSInstanceAssist.getDefaultInstance());
-		int hsCode = cmd.getType();
-
-		// TODO
-
-		HSInstanceAssistRet.Builder response = HSInstanceAssistRet.newBuilder();
-		//response.addAllAssist(values);
-		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_ASSIST_S, response));
+//		HSInstanceAssist protocol = cmd.parseProtocol(HSInstanceAssist.getDefaultInstance());
+//		int hsCode = cmd.getType();
+//
+//		HSInstanceAssistRet.Builder response = HSInstanceAssistRet.newBuilder();
+//		//response.addAllAssist(values);
+//		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_ASSIST_S, response));
 		return true;
 	}
 
@@ -117,7 +114,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		String instanceId = protocol.getInstanceId();
 		List<Integer> battleMonsterList = protocol.getBattleMonsterIdList();
 		if (true == protocol.hasFriendId()) {
-			int friendId = protocol.getFriendId();
+//			int friendId = protocol.getFriendId();
 		}
 
 		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
@@ -159,29 +156,18 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 阵型
-		if (battleMonsterList.size() == 0 || battleMonsterList.size() > GsConst.MAX_BATTLE_MONSTER_COUNT) {
-			sendError(hsCode, Status.monsterError.BATTLE_MONSTER_COUNT);
+		int battleMonsterCode = checkBattleMonsterList(battleMonsterList);
+		if (Status.error.NONE_ERROR_VALUE != battleMonsterCode) {
+			sendError(hsCode, battleMonsterCode);
 			return true;
-		}
-
-		for(Integer monsterId : battleMonsterList) {
-			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
-			if (monsterEntity == null) {
-				sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST);
-				return true;
-			}
-			if (true == player.isMonsterBusy(monsterId)) {
-				sendError(hsCode, Status.monsterError.MONSTER_BUSY);
-				return true;
-			}
 		}
 
 		// 满足条件，进入副本
 		if (false == isCurDataClear()) {
-			logger.error("instance data is not empty when enter instance");
+			HawkLog.errPrintln("instance data is not empty when enter instance");
 			clearCurData();
 		}
-		this.curType = GsConst.InstanceType.STORY;
+		this.curType = Const.InstanceType.INSTANCE_STORY_VALUE;
 		this.curInstanceId = instanceId;
 		this.curDifficulty = entryCfg.getDifficult();
 		this.curChapterId = entryCfg.getChapter();
@@ -275,29 +261,18 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 阵型
-		if (battleMonsterList.size() == 0 || battleMonsterList.size() > GsConst.MAX_BATTLE_MONSTER_COUNT) {
-			sendError(hsCode, Status.monsterError.BATTLE_MONSTER_COUNT);
+		int battleMonsterCode = checkBattleMonsterList(battleMonsterList);
+		if (Status.error.NONE_ERROR_VALUE != battleMonsterCode) {
+			sendError(hsCode, battleMonsterCode);
 			return true;
-		}
-
-		for(Integer monsterId : battleMonsterList) {
-			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
-			if (monsterEntity == null) {
-				sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST);
-				return true;
-			}
-			if (true == player.isMonsterBusy(monsterId)) {
-				sendError(hsCode, Status.monsterError.MONSTER_BUSY);
-				return true;
-			}
 		}
 
 		// 满足条件，进入副本
 		if (false == isCurDataClear()) {
-			logger.error("instance data is not empty when enter instance");
+			HawkLog.errPrintln("instance data is not empty when enter instance");
 			clearCurData();
 		}
-		this.curType = GsConst.InstanceType.HOLE;
+		this.curType = Const.InstanceType.INSTANCE_HOLE_VALUE;
 		this.curInstanceId = instanceId;
 		this.curMonsterList.addAll(battleMonsterList);
 
@@ -367,29 +342,18 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		// 阵型
-		if (battleMonsterList.size() == 0 || battleMonsterList.size() > GsConst.MAX_BATTLE_MONSTER_COUNT) {
-			sendError(hsCode, Status.monsterError.BATTLE_MONSTER_COUNT);
+		int battleMonsterCode = checkBattleMonsterList(battleMonsterList);
+		if (Status.error.NONE_ERROR_VALUE != battleMonsterCode) {
+			sendError(hsCode, battleMonsterCode);
 			return true;
-		}
-
-		for(Integer monsterId : battleMonsterList) {
-			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
-			if (monsterEntity == null) {
-				sendError(hsCode, Status.monsterError.MONSTER_NOT_EXIST);
-				return true;
-			}
-			if (true == player.isMonsterBusy(monsterId)) {
-				sendError(hsCode, Status.monsterError.MONSTER_BUSY);
-				return true;
-			}
 		}
 
 		// 满足条件，进入副本
 		if (false == isCurDataClear()) {
-			logger.error("instance data is not empty when enter instance");
+			HawkLog.errPrintln("instance data is not empty when enter instance");
 			clearCurData();
 		}
-		this.curType = GsConst.InstanceType.TOWER;
+		this.curType = Const.InstanceType.INSTANCE_TOWER_VALUE;
 		this.curInstanceId = instanceId;
 		this.curMonsterList.addAll(battleMonsterList);
 		this.curTowerId = towerId;
@@ -397,7 +361,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		// 生成副本
 		genInstance(instanceId);
 
-		// 进副本消耗体力
+		// 进副本消耗全部体力
 		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
 		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, entryCfg.getFatigue());
 		consumeFatigue.consumeTakeAffectAndPush(player, Action.TOWER_ENTER, hsCode);
@@ -407,6 +371,65 @@ public class PlayerInstanceModule extends PlayerModule {
 		response.addAllBattle(this.curBattleList);
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_ENTER_S, response));
 
+		return true;
+	}
+
+	/**
+	 * 公会副本进入
+	 */
+	@ProtocolHandler(code = HS.code.GUILD_INSTANCE_ENTER_C_VALUE)
+	private boolean onGuildInstanceEnter(HawkProtocol cmd) {
+		HSGuildInstanceEnter protocol = cmd.parseProtocol(HSGuildInstanceEnter.getDefaultInstance());
+		int hsCode = cmd.getType();
+		String instanceId = protocol.getInstanceId();
+		List<Integer> battleMonsterList = protocol.getBattleMonsterIdList();
+
+		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, instanceId);
+		if (entryCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_ERROR);
+			return true;
+		}
+
+		InstanceCfg instanceCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, instanceId);
+		if (instanceCfg == null) {
+			sendError(hsCode, Status.error.CONFIG_ERROR);
+			return true;
+		}
+
+		// 体力
+		if (player.updateFatigue() < entryCfg.getFatigue()) {
+			sendError(hsCode, Status.instanceError.INSTANCE_FATIGUE);
+			return true;
+		}
+
+		// 阵型
+		int battleMonsterCode = checkBattleMonsterList(battleMonsterList);
+		if (Status.error.NONE_ERROR_VALUE != battleMonsterCode) {
+			sendError(hsCode, battleMonsterCode);
+			return true;
+		}
+
+		// 满足条件，进入副本
+		if (false == isCurDataClear()) {
+			HawkLog.errPrintln("instance data is not empty when enter instance");
+			clearCurData();
+		}
+		this.curType = Const.InstanceType.INSTANCE_GUILD_VALUE;
+		this.curInstanceId = instanceId;
+		this.curMonsterList.addAll(battleMonsterList);
+
+		// 生成副本
+		genInstance(instanceId);
+
+		// 进副本消耗1点体力
+		ConsumeItems consumeFatigue = ConsumeItems.valueOf();
+		consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, 1);
+		consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_ENTER, hsCode);
+
+		HSInstanceEnterRet.Builder response = HSInstanceEnterRet.newBuilder();
+		response.setInstanceId(instanceId);
+		response.addAllBattle(this.curBattleList);
+		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_ENTER_S, response));
 		return true;
 	}
 
@@ -426,16 +449,20 @@ public class PlayerInstanceModule extends PlayerModule {
 		}
 
 		switch (this.curType) {
-		case GsConst.InstanceType.STORY:
+		case Const.InstanceType.INSTANCE_STORY_VALUE:
 			settleStory(passBattleCount, hsCode);
 			break;
 
-		case GsConst.InstanceType.HOLE:
+		case Const.InstanceType.INSTANCE_HOLE_VALUE:
 			settleHole(passBattleCount, hsCode);
 			break;
 
-		case GsConst.InstanceType.TOWER:
+		case Const.InstanceType.INSTANCE_TOWER_VALUE:
 			settleTower(passBattleCount, hsCode);
+			break;
+
+		case Const.InstanceType.INSTANCE_GUILD_VALUE:
+			settleGuild(passBattleCount, hsCode);
 			break;
 
 		default:
@@ -811,6 +838,35 @@ public class PlayerInstanceModule extends PlayerModule {
 	}
 
 	/**
+	 * 检查阵容是否合法
+	 */
+	private int checkBattleMonsterList(List<Integer> battleMonsterList) {
+		// 阵型
+		int size = battleMonsterList.size();
+		if (size == 0 || size > GsConst.MAX_BATTLE_MONSTER_COUNT) {
+			return Status.monsterError.BATTLE_MONSTER_COUNT_VALUE;
+		}
+
+		for (int i = 0; i < size; ++i) {
+			int monsterId = battleMonsterList.get(i);
+			// 去重，通用于arrayList和linkedList优化
+			if (i != battleMonsterList.lastIndexOf(monsterId)) {
+				return Status.error.PARAMS_INVALID_VALUE;
+			}
+
+			MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity(monsterId);
+			if (monsterEntity == null) {
+				return Status.monsterError.MONSTER_NOT_EXIST_VALUE;
+			}
+			if (true == player.isMonsterBusy(monsterId)) {
+				return Status.monsterError.MONSTER_BUSY_VALUE;
+			}
+		}
+
+		return Status.error.NONE_ERROR_VALUE;
+	}
+
+	/**
 	 * 生成副本数据
 	 */
 	private boolean genInstance(String instanceId) {
@@ -819,41 +875,44 @@ public class PlayerInstanceModule extends PlayerModule {
 			return false;
 		}
 
-		// 生成normal对局-------------------------------------------------------------------------------
 		List<String> orderedMonsterList = new ArrayList<String>();
 
-		// 乱序
-		for (Entry<String, Integer> entry : instanceCfg.getNormalBattleMonsterMap().entrySet()) {
-			for (int i = entry.getValue(); i > 0; --i) {
-				orderedMonsterList.add(entry.getKey());
+		// 生成normal对局-------------------------------------------------------------------------------
+		int normalBattleCount = instanceCfg.getNormalBattleCount();
+		if (normalBattleCount > 0) {
+			// 乱序
+			for (Entry<String, Integer> entry : instanceCfg.getNormalBattleMonsterMap().entrySet()) {
+				for (int i = entry.getValue(); i > 0; --i) {
+					orderedMonsterList.add(entry.getKey());
+				}
 			}
-		}
-		HawkRand.randomOrder(orderedMonsterList);
-		int battleMonsterCount = orderedMonsterList.size() / instanceCfg.getNormalBattleCount();
+			HawkRand.randomOrder(orderedMonsterList);
+			int battleMonsterCount = orderedMonsterList.size() / normalBattleCount;
 
-		Iterator<String> iter = orderedMonsterList.iterator();
-		for (int i = 0; i < instanceCfg.getNormalBattleCount(); ++i) {
-			HSBattle.Builder battle = HSBattle.newBuilder();
-			battle.setBattleCfgId(instanceCfg.getNormalBattleIdList().get(i));
+			Iterator<String> iter = orderedMonsterList.iterator();
+			for (int i = 0; i < normalBattleCount; ++i) {
+				HSBattle.Builder battle = HSBattle.newBuilder();
+				battle.setBattleCfgId(instanceCfg.getNormalBattleIdList().get(i));
 
-			for (int j = 0; j < battleMonsterCount; ++j) {
-				String monsterCfgId = iter.next();
-				String instanceMonsterId = instanceId + "_" + monsterCfgId;
-				List<ItemInfo> monsterDropList = null;
+				for (int j = 0; j < battleMonsterCount; ++j) {
+					String monsterCfgId = iter.next();
+					String instanceMonsterId = instanceId + "_" + monsterCfgId;
+					List<ItemInfo> monsterDropList = null;
 
-				InstanceDropCfg dropCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceDropCfg.class, instanceMonsterId);
-				if (dropCfg != null) {
-					monsterDropList = dropCfg.getReward().getRewardList();
-					this.curDropList.addAll(monsterDropList);
-				} else {
-					monsterDropList = new ArrayList<ItemInfo>();
+					InstanceDropCfg dropCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceDropCfg.class, instanceMonsterId);
+					if (dropCfg != null) {
+						monsterDropList = dropCfg.getReward().getRewardList();
+						this.curDropList.addAll(monsterDropList);
+					} else {
+						monsterDropList = new ArrayList<ItemInfo>();
+					}
+
+					battle.addMonsterCfgId(monsterCfgId);
+					battle.addMonsterDrop(AwardItems.valueOf(monsterDropList).getBuilder());
 				}
 
-				battle.addMonsterCfgId(monsterCfgId);
-				battle.addMonsterDrop(AwardItems.valueOf(monsterDropList).getBuilder());
+				this.curBattleList.add(battle.build());
 			}
-
-			this.curBattleList.add(battle.build());
 		}
 
 		// 生成boss对局-----------------------------------------------------------------------------------------
@@ -868,7 +927,6 @@ public class PlayerInstanceModule extends PlayerModule {
 			}
 		}
 
-		iter = orderedMonsterList.iterator();
 		for (int i = 0; i < orderedMonsterList.size(); ++i) {
 			String monsterCfgId = orderedMonsterList.get(i);
 			String instanceMonsterId = instanceId + "_" + monsterCfgId;
@@ -898,9 +956,7 @@ public class PlayerInstanceModule extends PlayerModule {
 		HSInstanceSettleRet.Builder response = HSInstanceSettleRet.newBuilder();
 
 		// 胜利
-			if (passBattleCount == this.curBattleList.size()) {
-			// 奖励
-			AwardItems completeReward = genSettleReward();
+		if (passBattleCount == this.curBattleList.size()) {
 			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
 
 			// TODO
@@ -947,6 +1003,9 @@ public class PlayerInstanceModule extends PlayerModule {
 			statisticsEntity.notifyUpdate(true);
 
 			response.setStarCount(starCount);
+
+			// 奖励
+			AwardItems completeReward = genSettleReward();
 			response.setReward(completeReward.getBuilder());
 		}
 
@@ -972,10 +1031,6 @@ public class PlayerInstanceModule extends PlayerModule {
 		if (passBattleCount == this.curBattleList.size()) {
 			// 奖励
 			AwardItems completeReward = genSettleReward();
-			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
-			statisticsEntity.addTowerIndex(this.curTowerId, 1);
-			statisticsEntity.notifyUpdate(true);
-
 			response.setReward(completeReward.getBuilder());
 		}
 
@@ -990,9 +1045,44 @@ public class PlayerInstanceModule extends PlayerModule {
 
 		// 胜利
 		if (passBattleCount == this.curBattleList.size()) {
+			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+			statisticsEntity.addTowerIndex(this.curTowerId, 1);
+			statisticsEntity.notifyUpdate(true);
+
 			// 奖励
 			AwardItems completeReward = genSettleReward();
 			response.setReward(completeReward.getBuilder());
+		}
+
+		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));
+	}
+
+	/**
+	 * 结算公会本
+	 */
+	private void settleGuild(int passBattleCount, int hsCode) {
+		HSInstanceSettleRet.Builder response = HSInstanceSettleRet.newBuilder();
+
+		// 胜利
+		if (passBattleCount == this.curBattleList.size()) {
+			// 公会消息
+			HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.ALLIANCE_INSTANCE_TASK, HawkXID.valueOf( GsConst.ObjType.MANAGER, GsConst.ObjId.ALLIANCE));
+			msg.pushParam(player);
+			msg.pushParam(this.curInstanceId);
+			HawkApp.getInstance().postMsg(msg);
+
+			// 奖励
+			AwardItems completeReward = genSettleReward();
+			response.setReward(completeReward.getBuilder());
+		}
+
+		// 消耗剩余体力，向上取整
+		InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class,this.curInstanceId);
+		int fatigueChange = (int) Math.ceil((double)passBattleCount / this.curBattleList.size() * (entryCfg.getFatigue() - 1));
+		if (fatigueChange > 0) {
+			ConsumeItems consumeFatigue = ConsumeItems.valueOf();
+			consumeFatigue.addAttr(Const.changeType.CHANGE_FATIGUE_VALUE, fatigueChange);
+			consumeFatigue.consumeTakeAffectAndPush(player, Action.INSTANCE_SETTLE, hsCode);
 		}
 
 		sendProtocol(HawkProtocol.valueOf(HS.code.INSTANCE_SETTLE_S, response));

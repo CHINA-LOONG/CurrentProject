@@ -6,8 +6,6 @@ import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.obj.HawkObjBase;
 import org.hawk.os.HawkException;
 import org.hawk.xid.HawkXID;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.hawk.game.GsApp;
 import com.hawk.game.ServerData;
@@ -18,16 +16,14 @@ import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Im.HSImChatSend;
 import com.hawk.game.protocol.Im.HSImPlayer;
 import com.hawk.game.protocol.Im.HSImPlayerGet;
 import com.hawk.game.protocol.Im.HSImPlayerGetRet;
 import com.hawk.game.protocol.Status;
-import com.hawk.game.protocol.Im.HSImChatSend;
 import com.hawk.game.util.GsConst;
 
 public class PlayerImModule extends PlayerModule {
-
-	private static final Logger logger = LoggerFactory.getLogger("Protocol");
 
 	public PlayerImModule(Player player) {
 		super(player);

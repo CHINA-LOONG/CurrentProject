@@ -44,7 +44,6 @@ import org.hawk.thread.HawkThreadPool;
 import org.hawk.timer.HawkTimerManager;
 import org.hawk.util.HawkTickable;
 import org.hawk.util.services.HawkCdkService;
-import org.hawk.util.services.HawkOrderService;
 import org.hawk.util.services.HawkReportService;
 import org.hawk.xid.HawkXID;
 import org.hawk.zmq.HawkZmq;

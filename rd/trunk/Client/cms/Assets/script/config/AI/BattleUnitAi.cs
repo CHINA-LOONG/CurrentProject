@@ -213,9 +213,12 @@ public class BattleUnitAi : MonoBehaviour {
 
 	AiAttackStyle GetAttackStyle(GameUnit battleUnit)
 	{
-		if (battleUnit.dazhao > 0 && battleUnit.dazhaoPrepareCount == 0)
+		if (battleUnit.dazhao > 0)
 		{
-			return AiAttackStyle.Dazhao;
+            if (battleUnit.dazhaoPrepareCount == 0)
+            {
+                return AiAttackStyle.Dazhao;
+            }
 		}
 		
 		//lazy 
@@ -386,7 +389,6 @@ public class BattleUnitAi : MonoBehaviour {
 		default:
 			return AiAttackStyle.UnKown;
 		}
-		return AiAttackStyle.UnKown;
 	}
 
 
@@ -678,7 +680,7 @@ public class BattleUnitAi : MonoBehaviour {
 
 
 
-	Spell	GetSpell( AiAttackStyle attackStyle, GameUnit battleUnit )
+	public Spell GetSpell( AiAttackStyle attackStyle, GameUnit battleUnit )
 	{
 		Dictionary<string, Spell> spellDic = battleUnit.spellList;
         Spell subSpel = null;

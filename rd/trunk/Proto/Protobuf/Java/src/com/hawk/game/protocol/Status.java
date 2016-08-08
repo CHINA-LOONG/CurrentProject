@@ -1907,6 +1907,118 @@ public final class Status {
      * </pre>
      */
     ALLIANCE_MAX_APPLY(24, 524314),
+    /**
+     * <code>ALLIANCE_ALREADY_IN_TEAM = 524315;</code>
+     *
+     * <pre>
+     * 已经在队伍中
+     * </pre>
+     */
+    ALLIANCE_ALREADY_IN_TEAM(25, 524315),
+    /**
+     * <code>ALLIANCE_TEAM_NOT_EXIST = 524316;</code>
+     *
+     * <pre>
+     * 队伍不存在
+     * </pre>
+     */
+    ALLIANCE_TEAM_NOT_EXIST(26, 524316),
+    /**
+     * <code>ALLIANCE_TEAM_FINISH = 524317;</code>
+     *
+     * <pre>
+     * 队伍任务全部完成
+     * </pre>
+     */
+    ALLIANCE_TEAM_FINISH(27, 524317),
+    /**
+     * <code>ALLIANCE_TEAM_FULL = 524318;</code>
+     *
+     * <pre>
+     * 队伍满员
+     * </pre>
+     */
+    ALLIANCE_TEAM_FULL(28, 524318),
+    /**
+     * <code>ALLIANCE_TASK_FINISH = 524320;</code>
+     *
+     * <pre>
+     * 大任务已完成
+     * </pre>
+     */
+    ALLIANCE_TASK_FINISH(29, 524320),
+    /**
+     * <code>ALLIANCE_NOT_IN_TEAM = 524321;</code>
+     *
+     * <pre>
+     * 不再队伍中
+     * </pre>
+     */
+    ALLIANCE_NOT_IN_TEAM(30, 524321),
+    /**
+     * <code>ALLIANCE_TASK_NOT_EXIST = 524322;</code>
+     *
+     * <pre>
+     * 大任务不存在
+     * </pre>
+     */
+    ALLIANCE_TASK_NOT_EXIST(31, 524322),
+    /**
+     * <code>ALLIANCE_MAX_BIG_TASK = 524323;</code>
+     *
+     * <pre>
+     * 大任务最大值
+     * </pre>
+     */
+    ALLIANCE_MAX_BIG_TASK(32, 524323),
+    /**
+     * <code>ALLIANCE_MAX_SMALL_TASK = 524324;</code>
+     *
+     * <pre>
+     * 小任务最大值
+     * </pre>
+     */
+    ALLIANCE_MAX_SMALL_TASK(33, 524324),
+    /**
+     * <code>ALLIANCE_QUEST_NOT_EXIST = 524325;</code>
+     *
+     * <pre>
+     * 小任务不存在
+     * </pre>
+     */
+    ALLIANCE_QUEST_NOT_EXIST(34, 524325),
+    /**
+     * <code>ALLIANCE_QUEST_FINISH = 524326;</code>
+     *
+     * <pre>
+     * 小任务已完成
+     * </pre>
+     */
+    ALLIANCE_QUEST_FINISH(35, 524326),
+    /**
+     * <code>ALLIANCE_TASK_NOT_FINISH = 524327;</code>
+     *
+     * <pre>
+     * 大任务未完成
+     * </pre>
+     */
+    ALLIANCE_TASK_NOT_FINISH(36, 524327),
+    /**
+     * <code>ALLIANCE_NOT_CAPTAIN = 524328;</code>
+     *
+     * <pre>
+     * 不是队长
+     * </pre>
+     */
+    ALLIANCE_NOT_CAPTAIN(37, 524328),
+    /**
+     * <code>ALLIANCE_HAVE_MEMBER = 524329;</code>
+     *
+     * <pre>
+     * 队伍中有队友
+     * </pre>
+     */
+    ALLIANCE_HAVE_MEMBER(38, 524329),
     ;
 
     /**
@@ -2109,6 +2221,118 @@ public final class Status {
      * </pre>
      */
     public static final int ALLIANCE_MAX_APPLY_VALUE = 524314;
+    /**
+     * <code>ALLIANCE_ALREADY_IN_TEAM = 524315;</code>
+     *
+     * <pre>
+     * 已经在队伍中
+     * </pre>
+     */
+    public static final int ALLIANCE_ALREADY_IN_TEAM_VALUE = 524315;
+    /**
+     * <code>ALLIANCE_TEAM_NOT_EXIST = 524316;</code>
+     *
+     * <pre>
+     * 队伍不存在
+     * </pre>
+     */
+    public static final int ALLIANCE_TEAM_NOT_EXIST_VALUE = 524316;
+    /**
+     * <code>ALLIANCE_TEAM_FINISH = 524317;</code>
+     *
+     * <pre>
+     * 队伍任务全部完成
+     * </pre>
+     */
+    public static final int ALLIANCE_TEAM_FINISH_VALUE = 524317;
+    /**
+     * <code>ALLIANCE_TEAM_FULL = 524318;</code>
+     *
+     * <pre>
+     * 队伍满员
+     * </pre>
+     */
+    public static final int ALLIANCE_TEAM_FULL_VALUE = 524318;
+    /**
+     * <code>ALLIANCE_TASK_FINISH = 524320;</code>
+     *
+     * <pre>
+     * 大任务已完成
+     * </pre>
+     */
+    public static final int ALLIANCE_TASK_FINISH_VALUE = 524320;
+    /**
+     * <code>ALLIANCE_NOT_IN_TEAM = 524321;</code>
+     *
+     * <pre>
+     * 不再队伍中
+     * </pre>
+     */
+    public static final int ALLIANCE_NOT_IN_TEAM_VALUE = 524321;
+    /**
+     * <code>ALLIANCE_TASK_NOT_EXIST = 524322;</code>
+     *
+     * <pre>
+     * 大任务不存在
+     * </pre>
+     */
+    public static final int ALLIANCE_TASK_NOT_EXIST_VALUE = 524322;
+    /**
+     * <code>ALLIANCE_MAX_BIG_TASK = 524323;</code>
+     *
+     * <pre>
+     * 大任务最大值
+     * </pre>
+     */
+    public static final int ALLIANCE_MAX_BIG_TASK_VALUE = 524323;
+    /**
+     * <code>ALLIANCE_MAX_SMALL_TASK = 524324;</code>
+     *
+     * <pre>
+     * 小任务最大值
+     * </pre>
+     */
+    public static final int ALLIANCE_MAX_SMALL_TASK_VALUE = 524324;
+    /**
+     * <code>ALLIANCE_QUEST_NOT_EXIST = 524325;</code>
+     *
+     * <pre>
+     * 小任务不存在
+     * </pre>
+     */
+    public static final int ALLIANCE_QUEST_NOT_EXIST_VALUE = 524325;
+    /**
+     * <code>ALLIANCE_QUEST_FINISH = 524326;</code>
+     *
+     * <pre>
+     * 小任务已完成
+     * </pre>
+     */
+    public static final int ALLIANCE_QUEST_FINISH_VALUE = 524326;
+    /**
+     * <code>ALLIANCE_TASK_NOT_FINISH = 524327;</code>
+     *
+     * <pre>
+     * 大任务未完成
+     * </pre>
+     */
+    public static final int ALLIANCE_TASK_NOT_FINISH_VALUE = 524327;
+    /**
+     * <code>ALLIANCE_NOT_CAPTAIN = 524328;</code>
+     *
+     * <pre>
+     * 不是队长
+     * </pre>
+     */
+    public static final int ALLIANCE_NOT_CAPTAIN_VALUE = 524328;
+    /**
+     * <code>ALLIANCE_HAVE_MEMBER = 524329;</code>
+     *
+     * <pre>
+     * 队伍中有队友
+     * </pre>
+     */
+    public static final int ALLIANCE_HAVE_MEMBER_VALUE = 524329;
 
 
     public final int getNumber() { return value; }
@@ -2140,6 +2364,20 @@ public final class Status {
         case 524312: return ALLIANCE_CAPACITY_NOT_ENOUGH;
         case 524313: return ALLIANCE_SAME_POSITION;
         case 524314: return ALLIANCE_MAX_APPLY;
+        case 524315: return ALLIANCE_ALREADY_IN_TEAM;
+        case 524316: return ALLIANCE_TEAM_NOT_EXIST;
+        case 524317: return ALLIANCE_TEAM_FINISH;
+        case 524318: return ALLIANCE_TEAM_FULL;
+        case 524320: return ALLIANCE_TASK_FINISH;
+        case 524321: return ALLIANCE_NOT_IN_TEAM;
+        case 524322: return ALLIANCE_TASK_NOT_EXIST;
+        case 524323: return ALLIANCE_MAX_BIG_TASK;
+        case 524324: return ALLIANCE_MAX_SMALL_TASK;
+        case 524325: return ALLIANCE_QUEST_NOT_EXIST;
+        case 524326: return ALLIANCE_QUEST_FINISH;
+        case 524327: return ALLIANCE_TASK_NOT_FINISH;
+        case 524328: return ALLIANCE_NOT_CAPTAIN;
+        case 524329: return ALLIANCE_HAVE_MEMBER;
         default: return null;
       }
     }
@@ -2543,7 +2781,7 @@ public final class Status {
       "_BOX_ALREADY_OPEN\020\207\200\030\022\030\n\022INSTANCE_NOT_EN" +
       "TER\020\210\200\030*^\n\tmailError\022\024\n\016MAIL_NOT_EXIST\020\201" +
       "\200\034\022\017\n\tMAIL_NONE\020\202\200\034\022\024\n\016MAIL_COIN_FULL\020\203\200" +
-      "\034\022\024\n\016MAIL_GOLD_FULL\020\204\200\034*\376\005\n\rallianceErro",
+      "\034\022\024\n\016MAIL_GOLD_FULL\020\204\200\034*\233\t\n\rallianceErro",
       "r\022\037\n\031ALLIANCE_LEVEL_NOT_ENOUGH\020\201\200 \022\031\n\023AL" +
       "LIANCE_ALREADY_IN\020\202\200 \022\030\n\022ALLIANCE_NOT_EX" +
       "IST\020\203\200 \022\031\n\023ALLIANCE_NAME_ERROR\020\204\200 \022\031\n\023AL" +
@@ -2562,13 +2800,23 @@ public final class Status {
       "E_MAX_FAGIGUE_COUNT\020\226\200 \022#\n\035ALLIANCE_FAGI" +
       "GUE_GIVE_ALREADY\020\227\200 \022\"\n\034ALLIANCE_CAPACIT" +
       "Y_NOT_ENOUGH\020\230\200 \022\034\n\026ALLIANCE_SAME_POSITI" +
-      "ON\020\231\200 \022\030\n\022ALLIANCE_MAX_APPLY\020\232\200 *\202\001\n\tsho" +
-      "pError\022\032\n\024SHOP_REFRESH_TIMEOUT\020\201\200$\022\033\n\025SH",
-      "OP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026SHOP_REFRESH_" +
-      "MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2COIN_MAX_COUN" +
-      "T\020\204\200$*\037\n\007imError\022\024\n\016IM_CHAT_LENGTH\020\201\200@*(" +
-      "\n\014settingError\022\030\n\022SETTING_BLOCK_FULL\020\201\200D" +
-      "B\030\n\026com.hawk.game.protocol"
+      "ON\020\231\200 \022\030\n\022ALLIANCE_MAX_APPLY\020\232\200 \022\036\n\030ALLI" +
+      "ANCE_ALREADY_IN_TEAM\020\233\200 \022\035\n\027ALLIANCE_TEA",
+      "M_NOT_EXIST\020\234\200 \022\032\n\024ALLIANCE_TEAM_FINISH\020" +
+      "\235\200 \022\030\n\022ALLIANCE_TEAM_FULL\020\236\200 \022\032\n\024ALLIANC" +
+      "E_TASK_FINISH\020\240\200 \022\032\n\024ALLIANCE_NOT_IN_TEA" +
+      "M\020\241\200 \022\035\n\027ALLIANCE_TASK_NOT_EXIST\020\242\200 \022\033\n\025" +
+      "ALLIANCE_MAX_BIG_TASK\020\243\200 \022\035\n\027ALLIANCE_MA" +
+      "X_SMALL_TASK\020\244\200 \022\036\n\030ALLIANCE_QUEST_NOT_E" +
+      "XIST\020\245\200 \022\033\n\025ALLIANCE_QUEST_FINISH\020\246\200 \022\036\n" +
+      "\030ALLIANCE_TASK_NOT_FINISH\020\247\200 \022\032\n\024ALLIANC" +
+      "E_NOT_CAPTAIN\020\250\200 \022\032\n\024ALLIANCE_HAVE_MEMBE" +
+      "R\020\251\200 *\202\001\n\tshopError\022\032\n\024SHOP_REFRESH_TIME",
+      "OUT\020\201\200$\022\033\n\025SHOP_ITEM_ALREADY_BUY\020\202\200$\022\034\n\026" +
+      "SHOP_REFRESH_MAX_COUNT\020\203\200$\022\036\n\030SHOP_GOLD2" +
+      "COIN_MAX_COUNT\020\204\200$*\037\n\007imError\022\024\n\016IM_CHAT" +
+      "_LENGTH\020\201\200@*(\n\014settingError\022\030\n\022SETTING_B" +
+      "LOCK_FULL\020\201\200DB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

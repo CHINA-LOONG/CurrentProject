@@ -207,6 +207,30 @@ public class EffectDamage : Effect
                 else if (immune == false)
                 {
                     float wpRatio = wpRuntime != null ? wpRuntime.damageRate : 1.0f;
+                    //主角五行伤害加成
+                    float propertyDamageRatio = 1.0f;
+                    switch (damageProto.damageProperty)
+                    {
+                        case SpellConst.propertyGold:
+                            propertyDamageRatio += gdMgr.PlayerDataAttr.goldDamageRatio;
+                            break;
+                        case SpellConst.propertyWood:
+                            propertyDamageRatio += gdMgr.PlayerDataAttr.woodDamageRatio;
+                            break;
+                        case SpellConst.propertyWater:
+                            propertyDamageRatio += gdMgr.PlayerDataAttr.waterDamageRatio;
+                            break;
+                        case SpellConst.propertyFire:
+                            propertyDamageRatio += gdMgr.PlayerDataAttr.fireDamageRatio;
+                            break;
+                        case SpellConst.propertyEarth:
+                            propertyDamageRatio += gdMgr.PlayerDataAttr.earthDamageRatio;
+                            break;
+                    }
+                    //五行相生相克系数
+                    int targetProp = wpRuntime != null ? wpRuntime.property : target.property;
+                    EffectDamageProtoType damagePt = protoEffect as EffectDamageProtoType;
+                    propertyDamageRatio *= SpellFunctions.GetPropertyDamageRatio((int)(damagePt.damageProperty), targetProp, ref isKezhi);
                     //物理伤害
                     if (damageProto.damageType == SpellConst.damagePhy)
                     {
@@ -217,49 +241,26 @@ public class EffectDamage : Effect
                                         damageRatio * curInjuryRatio * SpellConst.strengthToAttack * caster.strength *  //暴击伤害系数 * 受伤比 * 攻击
                                         (1.0f + caster.additionDamageRatio - target.minusDamageRatio) * //主角和怪物装备加成
                                         (damageProto.attackFactor + spellLevelRatio) * //技能加成
-                                        (1.0f + caster.spellStrengthRatio) *
+                                        (1.0f + caster.spellStrengthRatio) * 
+                                        propertyDamageRatio *
                                         wpRatio *
                                         (1.0f + target.spellDefenseDamageRatio)
                                         ); //buff加成(队长技 etc)
 
                         //物理伤害打断检测
-                        int targetBuffcount = target.buffList.Count;
-                        for (int i = 0; i < targetBuffcount; ++i)
-                        {
-                            if (target.buffList[i].buffProto.category == (int)(BuffType.Buff_Type_Dazhao))
-                            {
-                                target.buffList[i].CheckDazhaoInterrupt(applyTime);
-                                break;
-                            }
-                        }
+                        //int targetBuffcount = target.buffList.Count;
+                        //for (int i = 0; i < targetBuffcount; ++i)
+                        //{
+                        //    if (target.buffList[i].buffProto.category == (int)(BuffType.Buff_Type_Dazhao))
+                        //    {
+                        //        target.buffList[i].CheckDazhaoInterrupt(applyTime);
+                        //        break;
+                        //    }
+                        //}
                     }
                     //法术伤害
                     else
                     {
-                        //主角五行伤害加成
-                        float propertyDamageRatio = 1.0f;
-                        switch (damageProto.damageProperty)
-                        {
-                            case SpellConst.propertyGold:
-                                propertyDamageRatio += gdMgr.PlayerDataAttr.goldDamageRatio;
-                                break;
-                            case SpellConst.propertyWood:
-                                propertyDamageRatio += gdMgr.PlayerDataAttr.woodDamageRatio;
-                                break;
-                            case SpellConst.propertyWater:
-                                propertyDamageRatio += gdMgr.PlayerDataAttr.waterDamageRatio;
-                                break;
-                            case SpellConst.propertyFire:
-                                propertyDamageRatio += gdMgr.PlayerDataAttr.fireDamageRatio;
-                                break;
-                            case SpellConst.propertyEarth:
-                                propertyDamageRatio += gdMgr.PlayerDataAttr.earthDamageRatio;
-                                break;
-                        }
-                        //五行相生相克系数
-                        int targetProp = wpRuntime != null ? wpRuntime.property : target.property;
-                        EffectDamageProtoType damagePt = protoEffect as EffectDamageProtoType;
-                        propertyDamageRatio *= SpellFunctions.GetPropertyDamageRatio((int)(damagePt.damageProperty), targetProp, ref isKezhi);
                         //减伤护盾
                         float curInjuryRatio = injuryRatio - target.spellmgReduceInjury;
                         curInjuryRatio = curInjuryRatio < 0.0f ? 0.0f : curInjuryRatio;
@@ -466,7 +467,7 @@ public class EffectDamage : Effect
         }       
 
 		//统计攻击次数
-		GameEventMgr.Instance.FireEvent<SpellAttackStatisticsParam> (GameEventList.SpellAttackStatistics, new SpellAttackStatisticsParam (ownedSpell, casterID, targetID));
+		//GameEventMgr.Instance.FireEvent<SpellAttackStatisticsParam> (GameEventList.SpellAttackStatistics, new SpellAttackStatisticsParam (ownedSpell, casterID, targetID));
 
     }
     //---------------------------------------------------------------------------------------------

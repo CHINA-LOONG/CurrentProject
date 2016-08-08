@@ -4,6 +4,7 @@ import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.log.HawkLog;
 
+import com.hawk.game.util.GsConst;
 import com.hawk.game.util.InstanceUtil;
 
 @HawkConfigManager.CsvResource(file = "staticData/instanceEntry.csv", struct = "map")
@@ -64,10 +65,12 @@ public class InstanceEntryCfg extends HawkConfigBase {
 
 	@Override
 	protected boolean checkValid() {
-		chapterCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceChapterCfg.class, chapter);
-		if (null == chapterCfg) {
-			HawkLog.errPrintln(String.format("config invalid InstanceChapterCfg : %s", chapter));
-			return false;
+		if (chapter != GsConst.UNUSABLE) {
+			chapterCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceChapterCfg.class, chapter);
+			if (null == chapterCfg) {
+				HawkLog.errPrintln(String.format("config invalid InstanceChapterCfg : %s", chapter));
+				return false;
+			}
 		}
 
 //		// 检测敌人是否存在，并建立引用

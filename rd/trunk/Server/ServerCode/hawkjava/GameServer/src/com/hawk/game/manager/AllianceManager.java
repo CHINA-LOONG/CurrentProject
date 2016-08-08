@@ -19,19 +19,27 @@ import com.hawk.game.GsApp;
 import com.hawk.game.ServerData;
 import com.hawk.game.entity.AllianceApplyEntity;
 import com.hawk.game.entity.AllianceEntity;
+import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.module.alliance.AllianceAcceptQuestHandler;
 import com.hawk.game.module.alliance.AllianceApplyHandler;
 import com.hawk.game.module.alliance.AllianceCancleApplyHandler;
 import com.hawk.game.module.alliance.AllianceChangeOwnerHandler;
 import com.hawk.game.module.alliance.AllianceChangePosHandler;
+import com.hawk.game.module.alliance.AllianceCommitQuestHandler;
 import com.hawk.game.module.alliance.AllianceCreateHandler;
+import com.hawk.game.module.alliance.AllianceDissolveTeamHandler;
 import com.hawk.game.module.alliance.AllianceFatigueHandler;
 import com.hawk.game.module.alliance.AllianceHandleApplyHandler;
+import com.hawk.game.module.alliance.AllianceInstanceQuestHandler;
+import com.hawk.game.module.alliance.AllianceJoinTeamHandler;
 import com.hawk.game.module.alliance.AllianceLevelUpHandler;
 import com.hawk.game.module.alliance.AllianceMemberKickHandler;
 import com.hawk.game.module.alliance.AllianceMemberLeaveHandler;
 import com.hawk.game.module.alliance.AlliancePrayHandler;
 import com.hawk.game.module.alliance.AllianceSettingHandler;
+import com.hawk.game.module.alliance.AllianceTaskRewardHandler;
+import com.hawk.game.module.alliance.AllianceTeamCreateHandler;
 import com.hawk.game.player.Player;
 import com.hawk.game.util.GsConst;
 
@@ -77,7 +85,7 @@ public class AllianceManager extends HawkAppObj {
 	 * 已存在公会名字
 	 */
 	private List<String> existName;
-
+	
 	/**
 	 * 构造函数
 	 */
@@ -99,7 +107,15 @@ public class AllianceManager extends HawkAppObj {
 		listenMsg(GsConst.MsgType.ALLIANCE_PRAY, new AlliancePrayHandler());
 		listenMsg(GsConst.MsgType.ALLIANCE_SETTING, new AllianceSettingHandler());
 		listenMsg(GsConst.MsgType.ALLIANCE_CANCLE_APPLY, new AllianceCancleApplyHandler());
+		listenMsg(GsConst.MsgType.ALLIANCE_TEAM_CREATE, new AllianceTeamCreateHandler());
+		listenMsg(GsConst.MsgType.ALLIANCE_TEAM_JOIN, new AllianceJoinTeamHandler());
+		listenMsg(GsConst.MsgType.ALLIANCE_TASK_ACCEPT, new AllianceAcceptQuestHandler());
+		listenMsg(GsConst.MsgType.ALLIANCE_TASK_COMMIT, new AllianceCommitQuestHandler());
+		listenMsg(GsConst.MsgType.ALLIANCE_INSTANCE_TASK, new AllianceInstanceQuestHandler());
+		listenMsg(GsConst.MsgType.ALLIANCE_REWARD_TASK, new AllianceTaskRewardHandler());
+		listenMsg(GsConst.MsgType.ALLIANCE_DISSOLVE_TEAM, new AllianceDissolveTeamHandler());
 		listenMsg(GsConst.MsgType.PLAYER_LEVEL_CHANGE);
+
 		
 		allianceMap = new ConcurrentHashMap<Integer, AllianceEntity>();
 		playerApplyMap = new ConcurrentHashMap<Integer, HashSet<Integer>>();
@@ -119,6 +135,7 @@ public class AllianceManager extends HawkAppObj {
 		List<AllianceEntity> allianceEntities = HawkDBManager.getInstance().query("from AllianceEntity where invalid = 0");
 		List<PlayerAllianceEntity> allianceMembers = HawkDBManager.getInstance().query("from PlayerAllianceEntity where allianceId > 0 and invalid = 0");
 		List<AllianceApplyEntity> allianceApplyEnties = HawkDBManager.getInstance().query("from AllianceApplyEntity where invalid = 0");
+		List<AllianceTeamEntity> allianceTeams = HawkDBManager.getInstance().query("from AllianceTeamEntity where invalid = 0");
 		
 		if (allianceEntities.isEmpty() == false) {
 			for (AllianceEntity allianceEntity : allianceEntities) {
@@ -147,6 +164,16 @@ public class AllianceManager extends HawkAppObj {
 				else {
 					applyEntity.delete(true);
 				}
+			}
+		}
+
+		// 组队信息
+		for (AllianceTeamEntity teamEntity : allianceTeams) {
+			AllianceEntity allianceEntity = getAlliance(teamEntity.getAllianceId());
+			if (allianceEntity != null ) {
+				teamEntity.setAllianceEntity(allianceEntity);
+				teamEntity.decode();
+				allianceEntity.addAllianceTeamEntity(teamEntity);
 			}
 		}
 		
@@ -178,13 +205,17 @@ public class AllianceManager extends HawkAppObj {
 	 */
 	@Override
 	public boolean onTick() {
+		int nowSeconds = HawkTime.getSeconds();
 		for (AllianceEntity alliance : allianceMap.values()) {
-			if (HawkTime.getSeconds() > alliance.getRefreshTime()) {
+			if (nowSeconds > alliance.getRefreshTime()) {
 				alliance.dailyRefresh();
 				alliance.setRefreshTime((int) (HawkTime.getNextAM0Date() / 1000));
 				alliance.notifyUpdate(true);
 			}
+
+			alliance.refreshTeamEntity(nowSeconds);
 		}
+		
 		return true;
 	}
 
@@ -410,7 +441,7 @@ public class AllianceManager extends HawkAppObj {
 	}
 	
 	/*
-	 * 通知新会员的加入
+	 * 广播
 	 * @param allianceId
 	 * @param protocol
 	 * @param filterId
@@ -421,11 +452,24 @@ public class AllianceManager extends HawkAppObj {
 			for (int playerId : allianceEntity.getMemberList().keySet()) {
 				if (playerId != filterId && ServerData.getInstance().isPlayerOnline(playerId) == true) {
 					Player member = GsApp.getInstance().queryPlayer(playerId);
-					if (member.isOnline() && member.isAssembleFinish()) {
+					if (member != null && member.isOnline() && member.isAssembleFinish()) {
 						member.sendProtocol(protocol);
 					}
 				}	
 			}
+		}
+	}
+	
+	/*
+	 * 单播
+	 * @param allianceId
+	 * @param protocol
+	 * @param filterId
+	 */
+	public void memberNotify(int playerId, HawkProtocol protocol) {
+		Player member = GsApp.getInstance().queryPlayer(playerId);
+		if (member != null && member.isOnline() && member.isAssembleFinish()) {
+			member.sendProtocol(protocol);
 		}
 	}
 }

@@ -430,4 +430,21 @@ namespace PB
       OPEN = 1
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"InstanceType")]
+    public enum InstanceType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_STORY", Value=1)]
+      INSTANCE_STORY = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_HOLE", Value=2)]
+      INSTANCE_HOLE = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_TOWER", Value=3)]
+      INSTANCE_TOWER = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_GUILD", Value=4)]
+      INSTANCE_GUILD = 4
+    }
+  
 }

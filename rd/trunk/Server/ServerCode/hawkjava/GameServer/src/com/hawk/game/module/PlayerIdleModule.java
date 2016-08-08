@@ -1,18 +1,9 @@
 package com.hawk.game.module;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import org.hawk.app.HawkApp;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
-import org.hawk.xid.HawkXID;
 
-import com.hawk.game.GsApp;
 import com.hawk.game.ServerData;
-import com.hawk.game.manager.SnapShotManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
@@ -42,7 +33,10 @@ public class PlayerIdleModule extends PlayerModule {
 	@Override
 	protected boolean onPlayerLogin() {
 		// 最后通知组装完成
-		sendProtocol(HawkProtocol.valueOf(HS.code.ASSEMBLE_FINISH_S, HSAssembleFinish.newBuilder().setPlayerID(player.getPlayerData().getId())));
+		HSAssembleFinish.Builder response = HSAssembleFinish.newBuilder();
+		response.setPlayerId(player.getId());
+		response.setAllianceID(player.getAllianceId());
+		sendProtocol(HawkProtocol.valueOf(HS.code.ASSEMBLE_FINISH_S, response));
 		
 		// 通知玩家组装完成
  		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_ASSEMBLE, player.getXid());
@@ -53,10 +47,13 @@ public class PlayerIdleModule extends PlayerModule {
 
 	@Override
 	protected boolean onPlayerReconnect(HawkMsg msg) {
-		// 最后通知组装完成
-		sendProtocol(HawkProtocol.valueOf(HS.code.ASSEMBLE_FINISH_S, HSAssembleFinish.newBuilder().setPlayerID(player.getPlayerData().getId())));
+		HSAssembleFinish.Builder response = HSAssembleFinish.newBuilder();
+		response.setPlayerId(player.getId());
+		response.setAllianceID(player.getAllianceId());
+		sendProtocol(HawkProtocol.valueOf(HS.code.ASSEMBLE_FINISH_S, response));
 		return true;
 	}
+	
 	/**
 	 * 组装完成
 	 */

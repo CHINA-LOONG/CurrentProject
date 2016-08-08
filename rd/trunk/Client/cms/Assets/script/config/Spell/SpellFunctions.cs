@@ -75,6 +75,7 @@ public class SpellFunctions
 
     public static int IsEnemy(GameUnit caster, GameUnit target)
     {
+        return 1;
         if (caster != null)
         {
             return (caster.pbUnit.camp == UnitCamp.Enemy) ? 1 : 0;

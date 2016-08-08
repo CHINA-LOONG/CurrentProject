@@ -33,8 +33,8 @@ public class AllianceSettingHandler  implements HawkMsgHandler{
 		HawkProtocol protocol = (HawkProtocol)msg.getParam(1);
 		HSAllianceSettion request = protocol.parseProtocol(HSAllianceSettion.getDefaultInstance());
 		
-		if(player.getPlayerData().getPlayerAllianceEntity().getAllianceId() != 0){
-			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_ALREADY_IN_VALUE);
+		if(player.getPlayerData().getPlayerAllianceEntity().getAllianceId() == 0){
+			player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_NOT_JOIN_VALUE);
 			return true;
 		}	
 

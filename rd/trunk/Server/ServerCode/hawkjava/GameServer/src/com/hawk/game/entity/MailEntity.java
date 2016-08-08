@@ -1,7 +1,6 @@
 package com.hawk.game.entity;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,13 +11,11 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hawk.db.HawkDBEntity;
-import org.hawk.os.HawkTime;
 import org.hawk.util.HawkJsonUtil;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.google.gson.reflect.TypeToken;
 import com.hawk.game.item.ItemInfo;
-import com.hawk.game.protocol.Reward.RewardItem;
 
 /**
  * 邮件数据
@@ -28,7 +25,6 @@ import com.hawk.game.protocol.Reward.RewardItem;
  */
 @Entity
 @Table(name = "mail")
-@SuppressWarnings("serial")
 public class MailEntity extends HawkDBEntity {
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")

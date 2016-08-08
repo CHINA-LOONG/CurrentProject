@@ -27,6 +27,10 @@ public class GameConfig : MonoBehaviour {
     public float RecoveryMirrorEnegyUnit = 2;//每200毫秒恢复能量数值
     public float ConsumMirrorEnegyUnit = 3;//
 
+    //battle
+    public  DG.Tweening.Ease InPhyDazhaoEaseAni = DG.Tweening.Ease.Linear;
+    public  DG.Tweening.Ease OutPhyDazhaoEaseAni = DG.Tweening.Ease.Linear;
+
 
     //副本入口
     public float	BossEnemyIconScale = 1.2f;

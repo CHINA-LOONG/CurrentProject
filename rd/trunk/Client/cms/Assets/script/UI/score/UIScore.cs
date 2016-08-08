@@ -48,7 +48,6 @@ public class UIScore : UIBase
     private int mCurrentHuoli;
     private int mHuoliBeginTime;
     private bool mCheckCoin;
-    private int mInstanceType;
     //---------------------------------------------------------------------------------------------
     public static void AddResourceRequest()
     {
@@ -78,11 +77,11 @@ public class UIScore : UIBase
     //---------------------------------------------------------------------------------------------
     void OnRetry(GameObject go)
     {
-        if (mInstanceType == (int)InstanceType.Normal)
+        if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Normal)
         {
             BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Retry);
         }
-        else if (mInstanceType == (int)InstanceType.Tower)
+        else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
         {
             if (mIsSuccess == true)
             {
@@ -97,11 +96,11 @@ public class UIScore : UIBase
     //---------------------------------------------------------------------------------------------
     void OnNextLevel(GameObject go)
     {
-        if (mInstanceType == (int)InstanceType.Normal)
+        if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Normal)
         {
             BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_Next);
         }
-        else if (mInstanceType == (int)InstanceType.Hole)
+        else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Hole)
         {
             BattleController.Instance.UnLoadBattleScene(ExitInstanceType.Exit_Instance_OK);
         }
@@ -165,7 +164,8 @@ public class UIScore : UIBase
     {
         if (UIIm.Instance != null)
         {
-            UIIm.Instance.HideChat();
+            UIIm.Instance.SetLevelVisible(false);
+            //UIIm.Instance.HideChat();
         }
         mIsSuccess = success;
         gameObject.SetActive(true);
@@ -242,23 +242,6 @@ public class UIScore : UIBase
     public void SetScoreInfo(PB.HSRewardInfo scoreInfo)
     {
         mInstanceSettleResult = scoreInfo;
-
-        //TODO: use enum
-        //0:normal 1:hole 2:tower
-        mInstanceType = GameDataMgr.Instance.curInstanceType;
-        switch (mInstanceType)
-        {
-            case (int)InstanceType.Normal:
-                mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_again");
-                mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");
-                mConfirmText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
-                break;
-            case (int)InstanceType.Hole:
-                mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
-                break;
-            case (int)InstanceType.Tower:
-                break;
-        }
     }
     //---------------------------------------------------------------------------------------------
     private void ShowStar()
@@ -429,6 +412,25 @@ public class UIScore : UIBase
     //---------------------------------------------------------------------------------------------
     private void ShowScoreInfo()
     {
+        mRetryBtn.gameObject.SetActive(false);
+        mNextLevelBtn.gameObject.SetActive(false);
+        mConfirmBtn.gameObject.SetActive(false);
+        //TODO: use enum
+        //0:normal 1:hole 2:tower
+        switch (GameDataMgr.Instance.curInstanceType)
+        {
+            case (int)InstanceType.Normal:
+                mRetryText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_again");
+                mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_battle_next");
+                mConfirmText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
+                break;
+            case (int)InstanceType.Hole:
+                mNextLevelText.text = StaticDataMgr.Instance.GetTextByID("ui_queding");
+                break;
+            case (int)InstanceType.Tower:
+                break;
+        }
+
         mBackground.SetActive(true);
         mLineMonsterItem.SetActive(true);
         //show player info
@@ -439,7 +441,7 @@ public class UIScore : UIBase
         mItemGainList.gameObject.SetActive(true);
         //show button
         //normal instance
-        if (mInstanceType == (int)InstanceType.Normal)
+        if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Normal)
         {
             if (mIsSuccess == true)
             {
@@ -458,7 +460,7 @@ public class UIScore : UIBase
             mConfirmBtn.gameObject.SetActive(true);
         }
         //hole instance
-        else if (mInstanceType == (int)InstanceType.Hole)
+        else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Hole)
         {
             mNextLevelBtn.gameObject.SetActive(true);
         }

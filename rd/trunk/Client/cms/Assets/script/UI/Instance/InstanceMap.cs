@@ -104,6 +104,9 @@ public class InstanceMap : UIBase
 
     void OnShowInstanceList(string instanceId)
     {
+        if (GameDataMgr.Instance.curInstanceType != (int)InstanceType.Normal)
+            return;
+
         InstanceEntryRuntimeData subInstance = InstanceMapService.Instance.GetRuntimeInstance(instanceId);
         if (null == subInstance)
             return;

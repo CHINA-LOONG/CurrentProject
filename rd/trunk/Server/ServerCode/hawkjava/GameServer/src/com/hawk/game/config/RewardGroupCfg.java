@@ -6,11 +6,9 @@ import java.util.List;
 
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
-import org.hawk.config.HawkConfigBase.Id;
 
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.protocol.Const;
-import com.hawk.game.util.ConfigUtil;
 import com.hawk.game.util.WeightUtil;
 import com.hawk.game.util.WeightUtil.WeightItem;
 

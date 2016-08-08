@@ -9,11 +9,10 @@ import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
-import com.hawk.game.protocol.Alliance.HSMemberPosChangeNotify;
-import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Alliance.HSAllianceChangePos;
 import com.hawk.game.protocol.Alliance.HSAllianceChangePosRet;
+import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
 
 public class AllianceChangePosHandler implements HawkMsgHandler{

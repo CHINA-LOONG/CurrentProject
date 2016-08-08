@@ -1,7 +1,6 @@
 package org.hawk.config;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -22,8 +21,6 @@ import java.util.ResourceBundle;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.csvreader.CsvReader;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -43,6 +40,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.csvreader.CsvReader;
 import com.google.gson.reflect.TypeToken;
 
 /**

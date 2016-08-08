@@ -10,6 +10,44 @@
 // Generated from: Protocol/Alliance.proto
 namespace PB
 {
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AllianceApply")]
+  public partial class AllianceApply : global::ProtoBuf.IExtensible
+  {
+    public AllianceApply() {}
+    
+    private int _allianceId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"allianceId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int allianceId
+    {
+      get { return _allianceId; }
+      set { _allianceId = value; }
+    }
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private string _nickname;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string nickname
+    {
+      get { return _nickname; }
+      set { _nickname = value; }
+    }
+    private int _level;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AllianceMember")]
   public partial class AllianceMember : global::ProtoBuf.IExtensible
   {
@@ -57,12 +95,34 @@ namespace PB
       get { return _id; }
       set { _id = value; }
     }
-    private bool _hasReported;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"hasReported", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public bool hasReported
+    private int _prayCount;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"prayCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int prayCount
     {
-      get { return _hasReported; }
-      set { _hasReported = value; }
+      get { return _prayCount; }
+      set { _prayCount = value; }
+    }
+    private bool _sendFatigue = default(bool);
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"sendFatigue", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool sendFatigue
+    {
+      get { return _sendFatigue; }
+      set { _sendFatigue = value; }
+    }
+    private int _loginTime;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"loginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int loginTime
+    {
+      get { return _loginTime; }
+      set { _loginTime = value; }
+    }
+    private int _logoutTime;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"logoutTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int logoutTime
+    {
+      get { return _logoutTime; }
+      set { _logoutTime = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -88,26 +148,26 @@ namespace PB
       get { return _level; }
       set { _level = value; }
     }
-    private int _currentExp;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"currentExp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int currentExp
+    private int _contribution;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"contribution", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int contribution
     {
-      get { return _currentExp; }
-      set { _currentExp = value; }
+      get { return _contribution; }
+      set { _contribution = value; }
     }
-    private int _liveness;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"liveness", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int liveness
+    private int _contributionToday;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"contributionToday", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int contributionToday
     {
-      get { return _liveness; }
-      set { _liveness = value; }
+      get { return _contributionToday; }
+      set { _contributionToday = value; }
     }
-    private int _livenessTotal;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"livenessTotal", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int livenessTotal
+    private int _contribution3day;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"contribution3day", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int contribution3day
     {
-      get { return _livenessTotal; }
-      set { _livenessTotal = value; }
+      get { return _contribution3day; }
+      set { _contribution3day = value; }
     }
     private int _currentPop;
     [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"currentPop", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -123,20 +183,211 @@ namespace PB
       get { return _maxPop; }
       set { _maxPop = value; }
     }
-    private string _annoucement;
-    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"annoucement", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string annoucement
+    private int _memLevel;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"memLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int memLevel
     {
-      get { return _annoucement; }
-      set { _annoucement = value; }
+      get { return _memLevel; }
+      set { _memLevel = value; }
+    }
+    private int _expLevel;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"expLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int expLevel
+    {
+      get { return _expLevel; }
+      set { _expLevel = value; }
+    }
+    private int _coinLevel;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"coinLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int coinLevel
+    {
+      get { return _coinLevel; }
+      set { _coinLevel = value; }
+    }
+    private string _notice;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"notice", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string notice
+    {
+      get { return _notice; }
+      set { _notice = value; }
     }
     private string _name;
-    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string name
     {
       get { return _name; }
       set { _name = value; }
     }
+    private int _minLevel;
+    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"minLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int minLevel
+    {
+      get { return _minLevel; }
+      set { _minLevel = value; }
+    }
+    private bool _autoAccept;
+    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"autoAccept", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool autoAccept
+    {
+      get { return _autoAccept; }
+      set { _autoAccept = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AllianceTaskInfo")]
+  public partial class AllianceTaskInfo : global::ProtoBuf.IExtensible
+  {
+    public AllianceTaskInfo() {}
+    
+    private readonly global::System.Collections.Generic.List<int> _itemTask = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"itemTask", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> itemTask
+    {
+      get { return _itemTask; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<int> _coinTask = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"coinTask", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> coinTask
+    {
+      get { return _coinTask; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<int> _instanceTask = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"instanceTask", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> instanceTask
+    {
+      get { return _instanceTask; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AllianceTeamQuestInfo")]
+  public partial class AllianceTeamQuestInfo : global::ProtoBuf.IExtensible
+  {
+    public AllianceTeamQuestInfo() {}
+    
+    private int _questId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"questId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int questId
+    {
+      get { return _questId; }
+      set { _questId = value; }
+    }
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private string _nickname = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string nickname
+    {
+      get { return _nickname; }
+      set { _nickname = value; }
+    }
+    private int _level = default(int);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
+    }
+    private int _avatar = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"avatar", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int avatar
+    {
+      get { return _avatar; }
+      set { _avatar = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AllianceTeamMemInfo")]
+  public partial class AllianceTeamMemInfo : global::ProtoBuf.IExtensible
+  {
+    public AllianceTeamMemInfo() {}
+    
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private string _nickname = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string nickname
+    {
+      get { return _nickname; }
+      set { _nickname = value; }
+    }
+    private int _level;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
+    }
+    private int _avatar;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"avatar", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int avatar
+    {
+      get { return _avatar; }
+      set { _avatar = value; }
+    }
+    private bool _isCaptain;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"isCaptain", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool isCaptain
+    {
+      get { return _isCaptain; }
+      set { _isCaptain = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AllianceTeamInfo")]
+  public partial class AllianceTeamInfo : global::ProtoBuf.IExtensible
+  {
+    public AllianceTeamInfo() {}
+    
+    private int _startTime;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"startTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int startTime
+    {
+      get { return _startTime; }
+      set { _startTime = value; }
+    }
+    private readonly global::System.Collections.Generic.List<AllianceTeamMemInfo> _members = new global::System.Collections.Generic.List<AllianceTeamMemInfo>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"members", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<AllianceTeamMemInfo> members
+    {
+      get { return _members; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<AllianceTeamQuestInfo> _questInfos = new global::System.Collections.Generic.List<AllianceTeamQuestInfo>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"questInfos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<AllianceTeamQuestInfo> questInfos
+    {
+      get { return _questInfos; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -171,12 +422,12 @@ namespace PB
   {
     public HSAllianceCreateRet() {}
     
-    private AllianceInfo _allianceInfo;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"allianceInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public AllianceInfo allianceInfo
+    private int _allianeId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"allianeId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int allianeId
     {
-      get { return _allianceInfo; }
-      set { _allianceInfo = value; }
+      get { return _allianeId; }
+      set { _allianeId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -285,6 +536,536 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceApply")]
+  public partial class HSAllianceApply : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceApply() {}
+    
+    private int _allianceId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"allianceId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int allianceId
+    {
+      get { return _allianceId; }
+      set { _allianceId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceApplyRet")]
+  public partial class HSAllianceApplyRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceApplyRet() {}
+    
+    private int _allianceId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"allianceId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int allianceId
+    {
+      get { return _allianceId; }
+      set { _allianceId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceHanleApply")]
+  public partial class HSAllianceHanleApply : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceHanleApply() {}
+    
+    private int _playerId = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private bool _accept;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"accept", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool accept
+    {
+      get { return _accept; }
+      set { _accept = value; }
+    }
+    private bool _isAll;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"isAll", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool isAll
+    {
+      get { return _isAll; }
+      set { _isAll = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceHanleApplyRet")]
+  public partial class HSAllianceHanleApplyRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceHanleApplyRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceCancleApply")]
+  public partial class HSAllianceCancleApply : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceCancleApply() {}
+    
+    private int _allianceId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"allianceId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int allianceId
+    {
+      get { return _allianceId; }
+      set { _allianceId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceCancleApplyRet")]
+  public partial class HSAllianceCancleApplyRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceCancleApplyRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceChangePos")]
+  public partial class HSAllianceChangePos : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceChangePos() {}
+    
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private int _postion;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"postion", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int postion
+    {
+      get { return _postion; }
+      set { _postion = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceChangePosRet")]
+  public partial class HSAllianceChangePosRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceChangePosRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceLeave")]
+  public partial class HSAllianceLeave : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceLeave() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceLeaveRet")]
+  public partial class HSAllianceLeaveRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceLeaveRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceChangeOwner")]
+  public partial class HSAllianceChangeOwner : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceChangeOwner() {}
+    
+    private int _targetId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"targetId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int targetId
+    {
+      get { return _targetId; }
+      set { _targetId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceChangeOwnerRet")]
+  public partial class HSAllianceChangeOwnerRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceChangeOwnerRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceMemKick")]
+  public partial class HSAllianceMemKick : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceMemKick() {}
+    
+    private int _targetId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"targetId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int targetId
+    {
+      get { return _targetId; }
+      set { _targetId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceMemKickRet")]
+  public partial class HSAllianceMemKickRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceMemKickRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceLevelUp")]
+  public partial class HSAllianceLevelUp : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceLevelUp() {}
+    
+    private int _type;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int type
+    {
+      get { return _type; }
+      set { _type = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceLevelUpRet")]
+  public partial class HSAllianceLevelUpRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceLevelUpRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAlliancePray")]
+  public partial class HSAlliancePray : global::ProtoBuf.IExtensible
+  {
+    public HSAlliancePray() {}
+    
+    private int _prayIndex;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"prayIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int prayIndex
+    {
+      get { return _prayIndex; }
+      set { _prayIndex = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAlliancePrayRet")]
+  public partial class HSAlliancePrayRet : global::ProtoBuf.IExtensible
+  {
+    public HSAlliancePrayRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSettion")]
+  public partial class HSAllianceSettion : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSettion() {}
+    
+    private int _minLevel;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"minLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int minLevel
+    {
+      get { return _minLevel; }
+      set { _minLevel = value; }
+    }
+    private bool _autoJoin;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"autoJoin", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool autoJoin
+    {
+      get { return _autoJoin; }
+      set { _autoJoin = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSettionRet")]
+  public partial class HSAllianceSettionRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSettionRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceFatigueGive")]
+  public partial class HSAllianceFatigueGive : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceFatigueGive() {}
+    
+    private int _targetId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"targetId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int targetId
+    {
+      get { return _targetId; }
+      set { _targetId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceFatigueGiveRet")]
+  public partial class HSAllianceFatigueGiveRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceFatigueGiveRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSyn")]
+  public partial class HSAllianceSyn : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSyn() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSynRet")]
+  public partial class HSAllianceSynRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSynRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceData")]
+  public partial class HSAllianceData : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceData() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceDataRet")]
+  public partial class HSAllianceDataRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceDataRet() {}
+    
+    private AllianceInfo _allianceData;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"allianceData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public AllianceInfo allianceData
+    {
+      get { return _allianceData; }
+      set { _allianceData = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSettingSyn")]
+  public partial class HSAllianceSettingSyn : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSettingSyn() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSettingSynRet")]
+  public partial class HSAllianceSettingSynRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSettingSynRet() {}
+    
+    private int _minLevel;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"minLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int minLevel
+    {
+      get { return _minLevel; }
+      set { _minLevel = value; }
+    }
+    private bool _autoJoin;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"autoJoin", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool autoJoin
+    {
+      get { return _autoJoin; }
+      set { _autoJoin = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSelfData")]
+  public partial class HSAllianceSelfData : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSelfData() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSelfDataRet")]
+  public partial class HSAllianceSelfDataRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSelfDataRet() {}
+    
+    private AllianceMember _selfData;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"selfData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public AllianceMember selfData
+    {
+      get { return _selfData; }
+      set { _selfData = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceMembers")]
+  public partial class HSAllianceMembers : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceMembers() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceMembersRet")]
+  public partial class HSAllianceMembersRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceMembersRet() {}
+    
+    private readonly global::System.Collections.Generic.List<AllianceMember> _memberList = new global::System.Collections.Generic.List<AllianceMember>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"memberList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<AllianceMember> memberList
+    {
+      get { return _memberList; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceApplyList")]
+  public partial class HSAllianceApplyList : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceApplyList() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceApplyListRet")]
+  public partial class HSAllianceApplyListRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceApplyListRet() {}
+    
+    private readonly global::System.Collections.Generic.List<AllianceApply> _apply = new global::System.Collections.Generic.List<AllianceApply>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"apply", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<AllianceApply> apply
+    {
+      get { return _apply; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceApplyNotify")]
+  public partial class HSAllianceApplyNotify : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceApplyNotify() {}
+    
+    private AllianceApply _apply;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"apply", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public AllianceApply apply
+    {
+      get { return _apply; }
+      set { _apply = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceRemoveApplyNotify")]
+  public partial class HSAllianceRemoveApplyNotify : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceRemoveApplyNotify() {}
+    
+    private int _playerId = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private bool _clear;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"clear", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool clear
+    {
+      get { return _clear; }
+      set { _clear = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceNoticeNotify")]
   public partial class HSAllianceNoticeNotify : global::ProtoBuf.IExtensible
   {
@@ -296,6 +1077,321 @@ namespace PB
     {
       get { return _notice; }
       set { _notice = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMemberAddNotify")]
+  public partial class HSMemberAddNotify : global::ProtoBuf.IExtensible
+  {
+    public HSMemberAddNotify() {}
+    
+    private readonly global::System.Collections.Generic.List<AllianceMember> _memberData = new global::System.Collections.Generic.List<AllianceMember>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"memberData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<AllianceMember> memberData
+    {
+      get { return _memberData; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMemberRemoveNotify")]
+  public partial class HSMemberRemoveNotify : global::ProtoBuf.IExtensible
+  {
+    public HSMemberRemoveNotify() {}
+    
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMemberPosChangeNotify")]
+  public partial class HSMemberPosChangeNotify : global::ProtoBuf.IExtensible
+  {
+    public HSMemberPosChangeNotify() {}
+    
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int playerId
+    {
+      get { return _playerId; }
+      set { _playerId = value; }
+    }
+    private int _newPos;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"newPos", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int newPos
+    {
+      get { return _newPos; }
+      set { _newPos = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSChangeOwnerNotify")]
+  public partial class HSChangeOwnerNotify : global::ProtoBuf.IExtensible
+  {
+    public HSChangeOwnerNotify() {}
+    
+    private int _ownerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ownerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int ownerId
+    {
+      get { return _ownerId; }
+      set { _ownerId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSLevelChangeNotify")]
+  public partial class HSLevelChangeNotify : global::ProtoBuf.IExtensible
+  {
+    public HSLevelChangeNotify() {}
+    
+    private int _type;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int type
+    {
+      get { return _type; }
+      set { _type = value; }
+    }
+    private int _level;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int level
+    {
+      get { return _level; }
+      set { _level = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceJoinNotify")]
+  public partial class HSAllianceJoinNotify : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceJoinNotify() {}
+    
+    private int _allianceId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"allianceId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int allianceId
+    {
+      get { return _allianceId; }
+      set { _allianceId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceLeaveNotify")]
+  public partial class HSAllianceLeaveNotify : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceLeaveNotify() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceCreateTeam")]
+  public partial class HSAllianceCreateTeam : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceCreateTeam() {}
+    
+    private int _taskId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"taskId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int taskId
+    {
+      get { return _taskId; }
+      set { _taskId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceCreateTeamRet")]
+  public partial class HSAllianceCreateTeamRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceCreateTeamRet() {}
+    
+    private AllianceTaskInfo _taskInfo;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"taskInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public AllianceTaskInfo taskInfo
+    {
+      get { return _taskInfo; }
+      set { _taskInfo = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceJoinTeam")]
+  public partial class HSAllianceJoinTeam : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceJoinTeam() {}
+    
+    private int _teamId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"teamId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int teamId
+    {
+      get { return _teamId; }
+      set { _teamId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceJoinTeamRet")]
+  public partial class HSAllianceJoinTeamRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceJoinTeamRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTaskAccept")]
+  public partial class HSAllianceTaskAccept : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTaskAccept() {}
+    
+    private int _questId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"questId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int questId
+    {
+      get { return _questId; }
+      set { _questId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTaskAcceptRet")]
+  public partial class HSAllianceTaskAcceptRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTaskAcceptRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTaskCommit")]
+  public partial class HSAllianceTaskCommit : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTaskCommit() {}
+    
+    private int _questId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"questId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int questId
+    {
+      get { return _questId; }
+      set { _questId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTaskCommitRet")]
+  public partial class HSAllianceTaskCommitRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTaskCommitRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTaskReward")]
+  public partial class HSAllianceTaskReward : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTaskReward() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTaskRewardRet")]
+  public partial class HSAllianceTaskRewardRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTaskRewardRet() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTeamList")]
+  public partial class HSAllianceTeamList : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTeamList() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceTeamListRet")]
+  public partial class HSAllianceTeamListRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceTeamListRet() {}
+    
+    private readonly global::System.Collections.Generic.List<AllianceTeamInfo> _allianceTeams = new global::System.Collections.Generic.List<AllianceTeamInfo>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"allianceTeams", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<AllianceTeamInfo> allianceTeams
+    {
+      get { return _allianceTeams; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSelfTeam")]
+  public partial class HSAllianceSelfTeam : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSelfTeam() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSAllianceSelfTeamRet")]
+  public partial class HSAllianceSelfTeamRet : global::ProtoBuf.IExtensible
+  {
+    public HSAllianceSelfTeamRet() {}
+    
+    private AllianceTeamInfo _selfTeam;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"selfTeam", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public AllianceTeamInfo selfTeam
+    {
+      get { return _selfTeam; }
+      set { _selfTeam = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

@@ -174,6 +174,30 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TowerState")]
+  public partial class TowerState : global::ProtoBuf.IExtensible
+  {
+    public TowerState() {}
+    
+    private int _towerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"towerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int towerId
+    {
+      get { return _towerId; }
+      set { _towerId = value; }
+    }
+    private int _index;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int index
+    {
+      get { return _index; }
+      set { _index = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSStatisticsInfoSync")]
   public partial class HSStatisticsInfoSync : global::ProtoBuf.IExtensible
   {
@@ -290,6 +314,13 @@ namespace PB
     public global::System.Collections.Generic.List<HoleState> holeState
     {
       get { return _holeState; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<TowerState> _towerState = new global::System.Collections.Generic.List<TowerState>();
+    [global::ProtoBuf.ProtoMember(17, Name=@"towerState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<TowerState> towerState
+    {
+      get { return _towerState; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;

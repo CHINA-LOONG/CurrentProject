@@ -1,14 +1,11 @@
 package com.hawk.game.entity;
 
-import java.util.Calendar;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hawk.db.HawkDBEntity;
-import org.hawk.os.HawkTime;
 @Entity
 @Table(name = "recharge")
 public class RechargeEntity extends HawkDBEntity{

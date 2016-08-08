@@ -3,14 +3,12 @@ package com.hawk.game.manager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppObj;
@@ -21,8 +19,6 @@ import org.hawk.thread.HawkTask;
 import org.hawk.util.services.FunPlusTranslateService;
 import org.hawk.util.services.FunPlusTranslateService.Translation;
 import org.hawk.xid.HawkXID;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.hawk.game.GsConfig;
 import com.hawk.game.player.Player;
@@ -89,8 +85,6 @@ public class ImManager extends HawkAppObj {
 	private static final int TRANS_BATCH_SIZE = 2;
 	// 推送任务批次最大数量
 	private static final int PUSH_BATCH_SIZE = 20;
-
-	private static final Logger logger = LoggerFactory.getLogger("Server");
 
 	/**
 	 * 世界频道会话列表

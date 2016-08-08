@@ -39,12 +39,22 @@ public class SysBasicCfg extends HawkConfigBase {
 	 * 工会疲劳值接受最大值
 	 */
 	protected final int allianceMaxFatigueReceived;
-
 	/**
 	 * 工会冻结时间
 	 */
 	protected final int allianceMaxApply;
 	/**
+	 * 最大大任务数量
+	 */
+	protected final int allianceMaxBigTask;
+	/**
+	 * 最大小任务数量
+	 */
+	protected final int allianceMaxSmallTask;
+	/**
+	 * 解散公会返还比例
+	 */
+	protected final float allianceDissoveGoldRate;
 	/**
 	 * 全局静态对象
 	 */
@@ -70,6 +80,9 @@ public class SysBasicCfg extends HawkConfigBase {
 		allianceFrizenTime = 0;
 		allianceMaxFatigueReceived = 0;
 		allianceMaxApply = 0;
+		allianceMaxBigTask = 0;
+		allianceMaxSmallTask = 0;
+		allianceDissoveGoldRate = .0f;
 	}
 
 	public int getPlayerCacheTime() {
@@ -109,5 +122,17 @@ public class SysBasicCfg extends HawkConfigBase {
 	public int getAllianceMaxApply() {
 		
 		return allianceMaxApply;
+	}
+
+	public int getAllianceMaxBigTask() {
+		return allianceMaxBigTask;
+	}
+
+	public int getAllianceMaxSmallTask() {
+		return allianceMaxSmallTask;
+	}
+
+	public float getAllianceDissoveGoldRate() {
+		return allianceDissoveGoldRate;
 	}
 }

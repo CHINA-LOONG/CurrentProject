@@ -49,9 +49,17 @@ public class GameTimeMgr
 		DateTime serverDateTime = GetTime (serverTimeStamp);
 		serverTime.hour = serverDateTime.Hour;
 		serverTime.minute = serverDateTime.Minute;
+        serverTime.month = serverDateTime.Month;
 
 		return serverTime;
 	}
+
+    public DateTime GetServerDateTime()
+    {
+        int serverTimeStamp = TimeStamp() - StatisticsDataMgr.Instance.TimeDiffer;
+        DateTime serverDateTime = GetTime(serverTimeStamp);
+        return serverDateTime;
+    }
 
     public  int GetServerTimeStamp()
     {

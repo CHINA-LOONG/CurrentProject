@@ -12,7 +12,7 @@ public class PhyDazhaoController : MonoBehaviour
 	int dazhaoLeftTime =0;
 	float dazhaoStartTime = 0;
 
-	DazhaoExitCheck  dazhaoExitCheck = null;
+	//DazhaoExitCheck  dazhaoExitCheck = null;
 
 	DazhaoState dazhaoState = DazhaoState.Finished;
 
@@ -73,14 +73,14 @@ public class PhyDazhaoController : MonoBehaviour
 		//蓄气效果
 		casterBattleGo.TriggerEvent ("phyDazhaoPrepare", Time.time, null);
 
-		//中断检测
-		dazhaoExitCheck = casterGo.gameObject.GetComponent<DazhaoExitCheck> ();
-		if (null != dazhaoExitCheck)
-		{
-			Destroy(dazhaoExitCheck);
-			dazhaoExitCheck = null;
-		}
-		dazhaoExitCheck = casterGo.gameObject.AddComponent<DazhaoExitCheck>();
+		////中断检测
+		//dazhaoExitCheck = casterGo.gameObject.GetComponent<DazhaoExitCheck> ();
+		//if (null != dazhaoExitCheck)
+		//{
+		//	Destroy(dazhaoExitCheck);
+		//	dazhaoExitCheck = null;
+		//}
+		//dazhaoExitCheck = casterGo.gameObject.AddComponent<DazhaoExitCheck>();
 	}
 
 	public void RunActionWithDazhao(BattleObject casterGo)
@@ -233,11 +233,11 @@ public class PhyDazhaoController : MonoBehaviour
 			args.targetID = casterBattleGo.guid;
 			GameEventMgr.Instance.FireEvent<EventArgs>(GameEventList.SpellLifeChange, args);
 		}
-		if (null != dazhaoExitCheck)
-		{
-			Destroy(dazhaoExitCheck);
-			dazhaoExitCheck = null;
-		}
+		//if (null != dazhaoExitCheck)
+		//{
+		//	Destroy(dazhaoExitCheck);
+		//	dazhaoExitCheck = null;
+		//}
 	}
 
 	// Update is called once per frame
@@ -286,11 +286,11 @@ public class PhyDazhaoController : MonoBehaviour
 		BattleCameraAni.MotionToDefault ().OnComplete (OnExitDazhao);
 		GameEventMgr.Instance.FireEvent<UIBattle.UiState> (GameEventList.ChangeUIBattleState, UIBattle.UiState.Normal);
 
-		if (null != dazhaoExitCheck)
-		{
-			Destroy(dazhaoExitCheck);
-			dazhaoExitCheck = null;
-		}
+		//if (null != dazhaoExitCheck)
+		//{
+		//	Destroy(dazhaoExitCheck);
+		//	dazhaoExitCheck = null;
+		//}
 	}
 
 	void OnExitDazhao()

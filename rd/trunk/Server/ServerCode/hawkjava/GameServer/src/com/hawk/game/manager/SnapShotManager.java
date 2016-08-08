@@ -103,9 +103,11 @@ public class SnapShotManager extends HawkAppObj {
 			} else {
 				HawkLog.errPrintln("query snapshot player null: " + playerId);
 			}
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			HawkException.catchException(e);
 		}
+		
 		return null;
 	}
 	

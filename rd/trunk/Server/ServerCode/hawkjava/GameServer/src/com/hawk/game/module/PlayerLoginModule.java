@@ -16,7 +16,6 @@ import com.hawk.game.log.BehaviorLogger.Source;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Login.HSReconnect;
 import com.hawk.game.protocol.Login.HSSyncInfo;
 import com.hawk.game.protocol.Login.HSSyncInfoRet;
 import com.hawk.game.protocol.Status;
@@ -24,7 +23,7 @@ import com.hawk.game.protocol.Status.error;
 import com.hawk.game.util.GsConst;
 import com.hawk.game.util.ProtoUtil;
 /**
- * 玩家登陆模块
+ * 玩家登录模块
  * 
  * @author hawk
  */
@@ -50,7 +49,7 @@ public class PlayerLoginModule extends PlayerModule {
 	{
 		if (protocol.checkType(HS.code.SYNCINFO_C_VALUE))
 		{
-			// 处理本会话的玩家登陆协议
+			// 处理本会话的玩家登录协议
 			onPlayerLogin(protocol.getSession(), protocol.getType(), protocol.parseProtocol(HSSyncInfo.getDefaultInstance()));
 			return true;
 		}
@@ -58,7 +57,7 @@ public class PlayerLoginModule extends PlayerModule {
 	}
 
 	/**
-	 * 登陆协议处理
+	 * 登录协议处理
 	 * 
 	 * @param session
 	 * @param protocol
@@ -143,7 +142,7 @@ public class PlayerLoginModule extends PlayerModule {
 		// 记录上线时间
 		playerEntity.setLoginTime(HawkTime.getCalendar());
 
-		// 登陆回复协议
+		// 登录回复协议
 		HSSyncInfoRet.Builder response = HSSyncInfoRet.newBuilder();
 		response.setStatus(error.NONE_ERROR_VALUE);
 		 
@@ -152,18 +151,13 @@ public class PlayerLoginModule extends PlayerModule {
 		playerEntity.setLoginTime(HawkTime.getCalendar());
 		playerEntity.notifyUpdate(true);
 
-		// 发送登陆成功协议
+		// 发送登录成功协议
 		sendProtocol(HawkProtocol.valueOf(HS.code.SYNCINFO_S, response));
-
-		// 跨天重置
-		if (null == player.getEntity().getResetTime() || false == HawkTime.isToday(player.getEntity().getResetTime().getTime())) {
-			player.onFirstLoginDaily(false);
-		}
 
 		// 同步玩家信息
 		player.getPlayerData().syncPlayerInfo();
 
-		// 通知玩家其他模块玩家登陆成功
+		// 通知玩家其他模块玩家登录成功
 		HawkMsg msg = HawkMsg.valueOf(GsConst.MsgType.PLAYER_LOGIN, player.getXid());
 		if (!HawkApp.getInstance().postMsg(msg))
 		{

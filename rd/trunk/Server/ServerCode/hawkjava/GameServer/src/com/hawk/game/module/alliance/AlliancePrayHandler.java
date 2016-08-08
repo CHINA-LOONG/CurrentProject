@@ -13,6 +13,7 @@ import com.hawk.game.config.SociatyPrayCfg;
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
+import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.manager.AllianceManager;
@@ -85,18 +86,17 @@ public class AlliancePrayHandler implements HawkMsgHandler{
 						return true;
 					}
 					
-					allianceEntity.setContribution(allianceEntity.getContribution() + prayCfg.getAllianceReward());
-					allianceEntity.setContribution0(allianceEntity.getContribution0() + prayCfg.getAllianceReward());
+					AwardItems reward = new AwardItems();
+					reward.addContribution(prayCfg.getMemberReward());
+					
+					allianceEntity.addContribution(prayCfg.getAllianceReward());
 					allianceEntity.notifyUpdate(true);
-
-					playerAllianceEntity.setContribution(playerAllianceEntity.getContribution() + prayCfg.getMemberReward());
-					playerAllianceEntity.setTotalContribution(playerAllianceEntity.getTotalContribution() + prayCfg.getMemberReward());
-					playerAllianceEntity.notifyUpdate(true);
 					
 					player.getPlayerData().getStatisticsEntity().addAlliancePrayCountDaily();
 					player.getPlayerData().getStatisticsEntity().notifyUpdate(true);
 					
 					consume.consumeTakeAffectAndPush(player, Action.ALLIANCE_PRAY, protocol.getType());
+					reward.rewardTakeAffectAndPush(player, Action.ALLIANCE_PRAY, protocol.getType());
 					
 					HSAlliancePrayRet.Builder response = HSAlliancePrayRet.newBuilder();
 					player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_PRAY_S_VALUE, response));

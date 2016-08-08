@@ -1,7 +1,5 @@
 package com.hawk.game.config;
 
-import java.util.List;
-
 import org.hawk.config.HawkConfigBase;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.log.HawkLog;
@@ -19,9 +17,9 @@ public class HoleCfg extends HawkConfigBase {
 	protected final String difficulty;
 
 	// client only
-	private final String textId = null;
-	private final String openId = null;
-	private final String dropId = null;
+	protected final String textId = null;
+	protected final String openId = null;
+	protected final String dropId = null;
 
 	// assemble
 	protected int[] openTimeList;

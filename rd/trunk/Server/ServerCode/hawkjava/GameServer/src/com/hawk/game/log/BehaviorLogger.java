@@ -4,9 +4,7 @@ import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
 import org.hawk.os.HawkException;
-import org.hawk.os.HawkTime;
 
-import com.hawk.game.GsConfig;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.player.Player;
 
@@ -64,6 +62,10 @@ public class BehaviorLogger {
 		 * 玩家属性改变
 		 */
 		PLAYER_ATTR_CHANGE,
+		/**
+		 * 公会属性改变
+		 */
+		ALLIANCE_ATTR_CHANGE,
 		/**
 		 * 怪物属性改变
 		 */
@@ -238,6 +240,10 @@ public class BehaviorLogger {
 		 */
 		TOWER_ENTER,
 		/**
+		 * 公会副本进入
+		 */
+		GUILD_INSTANCE_ENTER,
+		/**
 		 * 任务交付
 		 */
 		QUEST_SUBMIT,
@@ -273,6 +279,28 @@ public class BehaviorLogger {
 		 * 公会创建
 		 */
 		ALLIANCE_CREATE_CONSUME,
+		/**
+		 * 公会大任务消耗
+		 */
+		ALLIANCE_TASK_CONSUME,
+		/**
+		 * 公会小任务消耗
+		 */
+		ALLIANCE_QUEST_CONSUME,
+		/**
+		 * 解散工会队伍奖励
+		 */
+		ALLIANCE_DISSOLVE_TEAM_REWARD,
+		/**
+		 * 公会小任务奖励
+		 */
+		ALLIANCE_QUEST_REWARD,
+		/**
+		/**
+		 * 公会大任务消耗
+		 */
+		ALLIANCE_TASK_REWARD,
+		/**
 		/**
 		 * gm
 		 */

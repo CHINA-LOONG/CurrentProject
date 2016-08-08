@@ -13,8 +13,6 @@ import com.hawk.game.entity.MonsterEntity;
 import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
-import com.hawk.game.item.GemInfo;
-import com.hawk.game.item.ItemInfo;
 import com.hawk.game.log.BehaviorLogger.Action;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;

@@ -7,38 +7,27 @@ import java.util.List;
 
 import org.hawk.annotation.MessageHandler;
 import org.hawk.annotation.ProtocolHandler;
-import org.hawk.config.HawkConfigManager;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.hawk.game.config.InstanceRewardCfg;
-import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.entity.MailEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ItemInfo;
 import com.hawk.game.log.BehaviorLogger.Action;
-import com.hawk.game.log.BehaviorLogger.Source;
 import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
-import com.hawk.game.protocol.Reward.RewardItem;
-import com.hawk.game.protocol.Status;
 import com.hawk.game.protocol.Mail.HSMailNew;
 import com.hawk.game.protocol.Mail.HSMailRead;
 import com.hawk.game.protocol.Mail.HSMailReceive;
-import com.hawk.game.protocol.Mail.HSMailReceiveAll;
 import com.hawk.game.protocol.Mail.HSMailReceiveAllRet;
 import com.hawk.game.protocol.Mail.HSMailReceiveRet;
+import com.hawk.game.protocol.Status;
 import com.hawk.game.util.BuilderUtil;
 import com.hawk.game.util.GsConst;
-import com.hawk.game.util.MailUtil;
 
 public class PlayerMailModule extends PlayerModule {
-
-	private static final Logger logger = LoggerFactory.getLogger("Protocol");
 
 	public PlayerMailModule(Player player) {
 		super(player);
@@ -132,7 +121,6 @@ public class PlayerMailModule extends PlayerModule {
 	 */
 	@ProtocolHandler(code = HS.code.MAIL_RECEIVE_ALL_C_VALUE)
 	private boolean onMailReceiveAll(HawkProtocol cmd) {
-		HSMailReceiveAll protocol = cmd.parseProtocol(HSMailReceiveAll.getDefaultInstance());
 		int hsCode = cmd.getType();
 
 		List<MailEntity> mailList = player.getPlayerData().getMailEntityList();

@@ -13,7 +13,6 @@ import com.hawk.game.protocol.Snapshot.SnapshotInfo;
 
 @Entity
 @Table(name = "player_snapshot")
-@SuppressWarnings("serial")
 public class SnapshotEntity extends HawkDBEntity{
 
 	@Id

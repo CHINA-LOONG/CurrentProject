@@ -8,10 +8,9 @@ import org.hawk.os.HawkException;
 import org.hawk.thread.HawkTask;
 import org.hawk.thread.HawkThreadPool;
 import org.hawk.util.HawkTickable;
-import org.hawk.util.services.HawkAccountService.HeartBeatData;
 import org.hawk.zmq.HawkZmq;
-import org.hawk.zmq.HawkZmqManager;
 import org.hawk.zmq.HawkZmq.SocketEvent;
+import org.hawk.zmq.HawkZmqManager;
 
 import com.hawk.account.AccountServices;
 import com.hawk.account.httpHandler.HeartBeatHandler;

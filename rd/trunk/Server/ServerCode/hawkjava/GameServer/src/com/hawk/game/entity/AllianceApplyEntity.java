@@ -11,7 +11,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "allianceApply")
-@SuppressWarnings("serial")
 public class AllianceApplyEntity extends HawkDBEntity {
 	@Id
 	@GenericGenerator(name = "AUTO_INCREMENT", strategy = "native")

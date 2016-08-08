@@ -41,13 +41,13 @@ public class InstanceCfg extends HawkConfigBase {
 		battleLevelList = "";
 		battleBoss = "";
 	}
-	
+
 	@Override
 	protected boolean assemble() {
 		normalBattleIdList = HawkJsonUtil.getJsonInstance().fromJson(battleLevelList, new TypeToken<List<String>>() {}.getType());
 		return true;
 	}
-	
+
 	@Override
 	protected boolean checkValid() {
 		normalBattleMonsterMap = new HashMap<String, Integer>();
@@ -57,7 +57,7 @@ public class InstanceCfg extends HawkConfigBase {
 				HawkLog.errPrintln(String.format("config invalid BattleLevelCfg : %s", normalBattleIdList.get(i)));
 				return false;
 			}
-			
+
 			for (Entry<String, Integer> entry : battleCfg.getMonsterMap().entrySet()) {
 				Integer count = normalBattleMonsterMap.get(entry.getKey());
 				if (null == count) {
@@ -66,7 +66,7 @@ public class InstanceCfg extends HawkConfigBase {
 				normalBattleMonsterMap.put(entry.getKey(), entry.getValue() + count);
 			}
 		}
-		
+
 		BattleLevelCfg bossBattleCfg = HawkConfigManager.getInstance().getConfigByKey(BattleLevelCfg.class, battleBoss);
 		if (null == bossBattleCfg) {
 			HawkLog.errPrintln(String.format("config invalid BattleLevelCfg : %s", battleBoss));
@@ -80,15 +80,15 @@ public class InstanceCfg extends HawkConfigBase {
 	public String getId() {
 		return id;
 	}
-	
+
 	public int getMonsterLevel() {
 		return level;
 	}
-	
+
 	public List<String> getNormalBattleIdList() {
 		return Collections.unmodifiableList(normalBattleIdList);
 	}
-	
+
 	public String getBossBattleId() {
 		return battleBoss;
 	}
@@ -96,11 +96,11 @@ public class InstanceCfg extends HawkConfigBase {
 	public int getNormalBattleCount() {
 		return normalBattleIdList.size();
 	}
-	
+
 	public Map<String, Integer> getNormalBattleMonsterMap() {
 		return Collections.unmodifiableMap(normalBattleMonsterMap);
 	}
-	
+
 	public Map<String, Integer> getBossBattleMonsterMap() {
 		return Collections.unmodifiableMap(bossBattleMonsterMap);
 	}

@@ -8,11 +8,11 @@ import org.hawk.os.HawkTime;
 
 import com.hawk.game.config.SysBasicCfg;
 import com.hawk.game.entity.AllianceEntity;
+import com.hawk.game.entity.AllianceTeamEntity;
 import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceLeaveRet;
-import com.hawk.game.protocol.Alliance.HSMemberRemoveNotify;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
 import com.hawk.game.util.GsConst;
@@ -72,6 +72,11 @@ public class AllianceMemberLeaveHandler implements HawkMsgHandler{
 		playerAllianceEntity.notifyUpdate(true);
 		
 		AllianceManager.getInstance().removePlayerAndAllianceMap(player.getId());
+		
+		AllianceTeamEntity teamEntity = allianceEntity.getTeamEntity(player.getId());
+		if (teamEntity != null) {
+			teamEntity.removePlayerFromTeam(player.getId());
+		}
 		
 		HSAllianceLeaveRet.Builder response = HSAllianceLeaveRet.newBuilder();
 		player.sendProtocol(HawkProtocol.valueOf(HS.code.ALLIANCE_MEMBER_LEAVE_S_VALUE, response));

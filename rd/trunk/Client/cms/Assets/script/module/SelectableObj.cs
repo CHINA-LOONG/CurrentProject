@@ -87,12 +87,13 @@ public class SelectableObj : MonoBehaviour {
         }
     }
     //---------------------------------------------------------------------------------------------
-    public void SetState(SelectableObjState state, bool saveState = true)
+    public void SetState(SelectableObjState state, bool saveState = true, bool forceRefresh = false)
     {
-        if (mLockByGroup == false && mCurState == SelectableObjState.State_Disabled)
+        if (mLockByGroup == false && mCurState == SelectableObjState.State_Disabled && forceRefresh == false)
             return;
-
-        if (mCurState != state)
+        
+        //if (mCurState != state)
+        //always update since, the state may not save
         {
             if (saveState == true)
             {

@@ -2796,6 +2796,42 @@ public final class Alliance {
      * </pre>
      */
     boolean getAutoAccept();
+
+    // optional int32 prayCount = 15;
+    /**
+     * <code>optional int32 prayCount = 15;</code>
+     *
+     * <pre>
+     *祈福次数
+     * </pre>
+     */
+    boolean hasPrayCount();
+    /**
+     * <code>optional int32 prayCount = 15;</code>
+     *
+     * <pre>
+     *祈福次数
+     * </pre>
+     */
+    int getPrayCount();
+
+    // optional int32 taskCount = 16;
+    /**
+     * <code>optional int32 taskCount = 16;</code>
+     *
+     * <pre>
+     *任务接取次数
+     * </pre>
+     */
+    boolean hasTaskCount();
+    /**
+     * <code>optional int32 taskCount = 16;</code>
+     *
+     * <pre>
+     *任务接取次数
+     * </pre>
+     */
+    int getTaskCount();
   }
   /**
    * Protobuf type {@code AllianceInfo}
@@ -2920,6 +2956,16 @@ public final class Alliance {
             case 112: {
               bitField0_ |= 0x00002000;
               autoAccept_ = input.readBool();
+              break;
+            }
+            case 120: {
+              bitField0_ |= 0x00004000;
+              prayCount_ = input.readInt32();
+              break;
+            }
+            case 128: {
+              bitField0_ |= 0x00008000;
+              taskCount_ = input.readInt32();
               break;
             }
           }
@@ -3360,6 +3406,54 @@ public final class Alliance {
       return autoAccept_;
     }
 
+    // optional int32 prayCount = 15;
+    public static final int PRAYCOUNT_FIELD_NUMBER = 15;
+    private int prayCount_;
+    /**
+     * <code>optional int32 prayCount = 15;</code>
+     *
+     * <pre>
+     *祈福次数
+     * </pre>
+     */
+    public boolean hasPrayCount() {
+      return ((bitField0_ & 0x00004000) == 0x00004000);
+    }
+    /**
+     * <code>optional int32 prayCount = 15;</code>
+     *
+     * <pre>
+     *祈福次数
+     * </pre>
+     */
+    public int getPrayCount() {
+      return prayCount_;
+    }
+
+    // optional int32 taskCount = 16;
+    public static final int TASKCOUNT_FIELD_NUMBER = 16;
+    private int taskCount_;
+    /**
+     * <code>optional int32 taskCount = 16;</code>
+     *
+     * <pre>
+     *任务接取次数
+     * </pre>
+     */
+    public boolean hasTaskCount() {
+      return ((bitField0_ & 0x00008000) == 0x00008000);
+    }
+    /**
+     * <code>optional int32 taskCount = 16;</code>
+     *
+     * <pre>
+     *任务接取次数
+     * </pre>
+     */
+    public int getTaskCount() {
+      return taskCount_;
+    }
+
     private void initFields() {
       id_ = 0;
       level_ = 0;
@@ -3375,6 +3469,8 @@ public final class Alliance {
       name_ = "";
       minLevel_ = 0;
       autoAccept_ = false;
+      prayCount_ = 0;
+      taskCount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3486,6 +3582,12 @@ public final class Alliance {
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
         output.writeBool(14, autoAccept_);
       }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        output.writeInt32(15, prayCount_);
+      }
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        output.writeInt32(16, taskCount_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3550,6 +3652,14 @@ public final class Alliance {
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(14, autoAccept_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(15, prayCount_);
+      }
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(16, taskCount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3699,6 +3809,10 @@ public final class Alliance {
         bitField0_ = (bitField0_ & ~0x00001000);
         autoAccept_ = false;
         bitField0_ = (bitField0_ & ~0x00002000);
+        prayCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00004000);
+        taskCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00008000);
         return this;
       }
 
@@ -3783,6 +3897,14 @@ public final class Alliance {
           to_bitField0_ |= 0x00002000;
         }
         result.autoAccept_ = autoAccept_;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00004000;
+        }
+        result.prayCount_ = prayCount_;
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00008000;
+        }
+        result.taskCount_ = taskCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3844,6 +3966,12 @@ public final class Alliance {
         }
         if (other.hasAutoAccept()) {
           setAutoAccept(other.getAutoAccept());
+        }
+        if (other.hasPrayCount()) {
+          setPrayCount(other.getPrayCount());
+        }
+        if (other.hasTaskCount()) {
+          setTaskCount(other.getTaskCount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4712,6 +4840,104 @@ public final class Alliance {
         return this;
       }
 
+      // optional int32 prayCount = 15;
+      private int prayCount_ ;
+      /**
+       * <code>optional int32 prayCount = 15;</code>
+       *
+       * <pre>
+       *祈福次数
+       * </pre>
+       */
+      public boolean hasPrayCount() {
+        return ((bitField0_ & 0x00004000) == 0x00004000);
+      }
+      /**
+       * <code>optional int32 prayCount = 15;</code>
+       *
+       * <pre>
+       *祈福次数
+       * </pre>
+       */
+      public int getPrayCount() {
+        return prayCount_;
+      }
+      /**
+       * <code>optional int32 prayCount = 15;</code>
+       *
+       * <pre>
+       *祈福次数
+       * </pre>
+       */
+      public Builder setPrayCount(int value) {
+        bitField0_ |= 0x00004000;
+        prayCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 prayCount = 15;</code>
+       *
+       * <pre>
+       *祈福次数
+       * </pre>
+       */
+      public Builder clearPrayCount() {
+        bitField0_ = (bitField0_ & ~0x00004000);
+        prayCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 taskCount = 16;
+      private int taskCount_ ;
+      /**
+       * <code>optional int32 taskCount = 16;</code>
+       *
+       * <pre>
+       *任务接取次数
+       * </pre>
+       */
+      public boolean hasTaskCount() {
+        return ((bitField0_ & 0x00008000) == 0x00008000);
+      }
+      /**
+       * <code>optional int32 taskCount = 16;</code>
+       *
+       * <pre>
+       *任务接取次数
+       * </pre>
+       */
+      public int getTaskCount() {
+        return taskCount_;
+      }
+      /**
+       * <code>optional int32 taskCount = 16;</code>
+       *
+       * <pre>
+       *任务接取次数
+       * </pre>
+       */
+      public Builder setTaskCount(int value) {
+        bitField0_ |= 0x00008000;
+        taskCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 taskCount = 16;</code>
+       *
+       * <pre>
+       *任务接取次数
+       * </pre>
+       */
+      public Builder clearTaskCount() {
+        bitField0_ = (bitField0_ & ~0x00008000);
+        taskCount_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:AllianceInfo)
     }
 
@@ -4721,6 +4947,3579 @@ public final class Alliance {
     }
 
     // @@protoc_insertion_point(class_scope:AllianceInfo)
+  }
+
+  public interface AllianceTaskInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated int32 itemTask = 1;
+    /**
+     * <code>repeated int32 itemTask = 1;</code>
+     */
+    java.util.List<java.lang.Integer> getItemTaskList();
+    /**
+     * <code>repeated int32 itemTask = 1;</code>
+     */
+    int getItemTaskCount();
+    /**
+     * <code>repeated int32 itemTask = 1;</code>
+     */
+    int getItemTask(int index);
+
+    // repeated int32 coinTask = 2;
+    /**
+     * <code>repeated int32 coinTask = 2;</code>
+     */
+    java.util.List<java.lang.Integer> getCoinTaskList();
+    /**
+     * <code>repeated int32 coinTask = 2;</code>
+     */
+    int getCoinTaskCount();
+    /**
+     * <code>repeated int32 coinTask = 2;</code>
+     */
+    int getCoinTask(int index);
+
+    // repeated int32 instanceTask = 3;
+    /**
+     * <code>repeated int32 instanceTask = 3;</code>
+     */
+    java.util.List<java.lang.Integer> getInstanceTaskList();
+    /**
+     * <code>repeated int32 instanceTask = 3;</code>
+     */
+    int getInstanceTaskCount();
+    /**
+     * <code>repeated int32 instanceTask = 3;</code>
+     */
+    int getInstanceTask(int index);
+  }
+  /**
+   * Protobuf type {@code AllianceTaskInfo}
+   */
+  public static final class AllianceTaskInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements AllianceTaskInfoOrBuilder {
+    // Use AllianceTaskInfo.newBuilder() to construct.
+    private AllianceTaskInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private AllianceTaskInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final AllianceTaskInfo defaultInstance;
+    public static AllianceTaskInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public AllianceTaskInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AllianceTaskInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                itemTask_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              itemTask_.add(input.readInt32());
+              break;
+            }
+            case 10: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001) && input.getBytesUntilLimit() > 0) {
+                itemTask_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                itemTask_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 16: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                coinTask_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              coinTask_.add(input.readInt32());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
+                coinTask_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                coinTask_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 24: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                instanceTask_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              instanceTask_.add(input.readInt32());
+              break;
+            }
+            case 26: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004) && input.getBytesUntilLimit() > 0) {
+                instanceTask_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                instanceTask_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          itemTask_ = java.util.Collections.unmodifiableList(itemTask_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          coinTask_ = java.util.Collections.unmodifiableList(coinTask_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          instanceTask_ = java.util.Collections.unmodifiableList(instanceTask_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_AllianceTaskInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_AllianceTaskInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.AllianceTaskInfo.class, com.hawk.game.protocol.Alliance.AllianceTaskInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<AllianceTaskInfo> PARSER =
+        new com.google.protobuf.AbstractParser<AllianceTaskInfo>() {
+      public AllianceTaskInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AllianceTaskInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AllianceTaskInfo> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated int32 itemTask = 1;
+    public static final int ITEMTASK_FIELD_NUMBER = 1;
+    private java.util.List<java.lang.Integer> itemTask_;
+    /**
+     * <code>repeated int32 itemTask = 1;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getItemTaskList() {
+      return itemTask_;
+    }
+    /**
+     * <code>repeated int32 itemTask = 1;</code>
+     */
+    public int getItemTaskCount() {
+      return itemTask_.size();
+    }
+    /**
+     * <code>repeated int32 itemTask = 1;</code>
+     */
+    public int getItemTask(int index) {
+      return itemTask_.get(index);
+    }
+
+    // repeated int32 coinTask = 2;
+    public static final int COINTASK_FIELD_NUMBER = 2;
+    private java.util.List<java.lang.Integer> coinTask_;
+    /**
+     * <code>repeated int32 coinTask = 2;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getCoinTaskList() {
+      return coinTask_;
+    }
+    /**
+     * <code>repeated int32 coinTask = 2;</code>
+     */
+    public int getCoinTaskCount() {
+      return coinTask_.size();
+    }
+    /**
+     * <code>repeated int32 coinTask = 2;</code>
+     */
+    public int getCoinTask(int index) {
+      return coinTask_.get(index);
+    }
+
+    // repeated int32 instanceTask = 3;
+    public static final int INSTANCETASK_FIELD_NUMBER = 3;
+    private java.util.List<java.lang.Integer> instanceTask_;
+    /**
+     * <code>repeated int32 instanceTask = 3;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getInstanceTaskList() {
+      return instanceTask_;
+    }
+    /**
+     * <code>repeated int32 instanceTask = 3;</code>
+     */
+    public int getInstanceTaskCount() {
+      return instanceTask_.size();
+    }
+    /**
+     * <code>repeated int32 instanceTask = 3;</code>
+     */
+    public int getInstanceTask(int index) {
+      return instanceTask_.get(index);
+    }
+
+    private void initFields() {
+      itemTask_ = java.util.Collections.emptyList();
+      coinTask_ = java.util.Collections.emptyList();
+      instanceTask_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < itemTask_.size(); i++) {
+        output.writeInt32(1, itemTask_.get(i));
+      }
+      for (int i = 0; i < coinTask_.size(); i++) {
+        output.writeInt32(2, coinTask_.get(i));
+      }
+      for (int i = 0; i < instanceTask_.size(); i++) {
+        output.writeInt32(3, instanceTask_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < itemTask_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(itemTask_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getItemTaskList().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < coinTask_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(coinTask_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getCoinTaskList().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < instanceTask_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(instanceTask_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getInstanceTaskList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.AllianceTaskInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTaskInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTaskInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTaskInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTaskInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTaskInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTaskInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTaskInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTaskInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTaskInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.AllianceTaskInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code AllianceTaskInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.AllianceTaskInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTaskInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTaskInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.AllianceTaskInfo.class, com.hawk.game.protocol.Alliance.AllianceTaskInfo.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.AllianceTaskInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        itemTask_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        coinTask_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        instanceTask_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTaskInfo_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTaskInfo getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.AllianceTaskInfo.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTaskInfo build() {
+        com.hawk.game.protocol.Alliance.AllianceTaskInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTaskInfo buildPartial() {
+        com.hawk.game.protocol.Alliance.AllianceTaskInfo result = new com.hawk.game.protocol.Alliance.AllianceTaskInfo(this);
+        int from_bitField0_ = bitField0_;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          itemTask_ = java.util.Collections.unmodifiableList(itemTask_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.itemTask_ = itemTask_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          coinTask_ = java.util.Collections.unmodifiableList(coinTask_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.coinTask_ = coinTask_;
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          instanceTask_ = java.util.Collections.unmodifiableList(instanceTask_);
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.instanceTask_ = instanceTask_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.AllianceTaskInfo) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.AllianceTaskInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.AllianceTaskInfo other) {
+        if (other == com.hawk.game.protocol.Alliance.AllianceTaskInfo.getDefaultInstance()) return this;
+        if (!other.itemTask_.isEmpty()) {
+          if (itemTask_.isEmpty()) {
+            itemTask_ = other.itemTask_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureItemTaskIsMutable();
+            itemTask_.addAll(other.itemTask_);
+          }
+          onChanged();
+        }
+        if (!other.coinTask_.isEmpty()) {
+          if (coinTask_.isEmpty()) {
+            coinTask_ = other.coinTask_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureCoinTaskIsMutable();
+            coinTask_.addAll(other.coinTask_);
+          }
+          onChanged();
+        }
+        if (!other.instanceTask_.isEmpty()) {
+          if (instanceTask_.isEmpty()) {
+            instanceTask_ = other.instanceTask_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureInstanceTaskIsMutable();
+            instanceTask_.addAll(other.instanceTask_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.AllianceTaskInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.AllianceTaskInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated int32 itemTask = 1;
+      private java.util.List<java.lang.Integer> itemTask_ = java.util.Collections.emptyList();
+      private void ensureItemTaskIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          itemTask_ = new java.util.ArrayList<java.lang.Integer>(itemTask_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated int32 itemTask = 1;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getItemTaskList() {
+        return java.util.Collections.unmodifiableList(itemTask_);
+      }
+      /**
+       * <code>repeated int32 itemTask = 1;</code>
+       */
+      public int getItemTaskCount() {
+        return itemTask_.size();
+      }
+      /**
+       * <code>repeated int32 itemTask = 1;</code>
+       */
+      public int getItemTask(int index) {
+        return itemTask_.get(index);
+      }
+      /**
+       * <code>repeated int32 itemTask = 1;</code>
+       */
+      public Builder setItemTask(
+          int index, int value) {
+        ensureItemTaskIsMutable();
+        itemTask_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 itemTask = 1;</code>
+       */
+      public Builder addItemTask(int value) {
+        ensureItemTaskIsMutable();
+        itemTask_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 itemTask = 1;</code>
+       */
+      public Builder addAllItemTask(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureItemTaskIsMutable();
+        super.addAll(values, itemTask_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 itemTask = 1;</code>
+       */
+      public Builder clearItemTask() {
+        itemTask_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      // repeated int32 coinTask = 2;
+      private java.util.List<java.lang.Integer> coinTask_ = java.util.Collections.emptyList();
+      private void ensureCoinTaskIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          coinTask_ = new java.util.ArrayList<java.lang.Integer>(coinTask_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <code>repeated int32 coinTask = 2;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getCoinTaskList() {
+        return java.util.Collections.unmodifiableList(coinTask_);
+      }
+      /**
+       * <code>repeated int32 coinTask = 2;</code>
+       */
+      public int getCoinTaskCount() {
+        return coinTask_.size();
+      }
+      /**
+       * <code>repeated int32 coinTask = 2;</code>
+       */
+      public int getCoinTask(int index) {
+        return coinTask_.get(index);
+      }
+      /**
+       * <code>repeated int32 coinTask = 2;</code>
+       */
+      public Builder setCoinTask(
+          int index, int value) {
+        ensureCoinTaskIsMutable();
+        coinTask_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 coinTask = 2;</code>
+       */
+      public Builder addCoinTask(int value) {
+        ensureCoinTaskIsMutable();
+        coinTask_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 coinTask = 2;</code>
+       */
+      public Builder addAllCoinTask(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureCoinTaskIsMutable();
+        super.addAll(values, coinTask_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 coinTask = 2;</code>
+       */
+      public Builder clearCoinTask() {
+        coinTask_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
+      // repeated int32 instanceTask = 3;
+      private java.util.List<java.lang.Integer> instanceTask_ = java.util.Collections.emptyList();
+      private void ensureInstanceTaskIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          instanceTask_ = new java.util.ArrayList<java.lang.Integer>(instanceTask_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      /**
+       * <code>repeated int32 instanceTask = 3;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getInstanceTaskList() {
+        return java.util.Collections.unmodifiableList(instanceTask_);
+      }
+      /**
+       * <code>repeated int32 instanceTask = 3;</code>
+       */
+      public int getInstanceTaskCount() {
+        return instanceTask_.size();
+      }
+      /**
+       * <code>repeated int32 instanceTask = 3;</code>
+       */
+      public int getInstanceTask(int index) {
+        return instanceTask_.get(index);
+      }
+      /**
+       * <code>repeated int32 instanceTask = 3;</code>
+       */
+      public Builder setInstanceTask(
+          int index, int value) {
+        ensureInstanceTaskIsMutable();
+        instanceTask_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 instanceTask = 3;</code>
+       */
+      public Builder addInstanceTask(int value) {
+        ensureInstanceTaskIsMutable();
+        instanceTask_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 instanceTask = 3;</code>
+       */
+      public Builder addAllInstanceTask(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureInstanceTaskIsMutable();
+        super.addAll(values, instanceTask_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 instanceTask = 3;</code>
+       */
+      public Builder clearInstanceTask() {
+        instanceTask_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:AllianceTaskInfo)
+    }
+
+    static {
+      defaultInstance = new AllianceTaskInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:AllianceTaskInfo)
+  }
+
+  public interface AllianceTeamQuestInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 questId = 1;
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    boolean hasQuestId();
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    int getQuestId();
+
+    // required int32 playerId = 2;
+    /**
+     * <code>required int32 playerId = 2;</code>
+     */
+    boolean hasPlayerId();
+    /**
+     * <code>required int32 playerId = 2;</code>
+     */
+    int getPlayerId();
+
+    // optional string nickname = 3;
+    /**
+     * <code>optional string nickname = 3;</code>
+     */
+    boolean hasNickname();
+    /**
+     * <code>optional string nickname = 3;</code>
+     */
+    java.lang.String getNickname();
+    /**
+     * <code>optional string nickname = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getNicknameBytes();
+
+    // optional int32 level = 4;
+    /**
+     * <code>optional int32 level = 4;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>optional int32 level = 4;</code>
+     */
+    int getLevel();
+
+    // optional int32 avatar = 5;
+    /**
+     * <code>optional int32 avatar = 5;</code>
+     */
+    boolean hasAvatar();
+    /**
+     * <code>optional int32 avatar = 5;</code>
+     */
+    int getAvatar();
+  }
+  /**
+   * Protobuf type {@code AllianceTeamQuestInfo}
+   */
+  public static final class AllianceTeamQuestInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements AllianceTeamQuestInfoOrBuilder {
+    // Use AllianceTeamQuestInfo.newBuilder() to construct.
+    private AllianceTeamQuestInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private AllianceTeamQuestInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final AllianceTeamQuestInfo defaultInstance;
+    public static AllianceTeamQuestInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public AllianceTeamQuestInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AllianceTeamQuestInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              questId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              playerId_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              nickname_ = input.readBytes();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              level_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              avatar_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamQuestInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamQuestInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.class, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<AllianceTeamQuestInfo> PARSER =
+        new com.google.protobuf.AbstractParser<AllianceTeamQuestInfo>() {
+      public AllianceTeamQuestInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AllianceTeamQuestInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AllianceTeamQuestInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 questId = 1;
+    public static final int QUESTID_FIELD_NUMBER = 1;
+    private int questId_;
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    public boolean hasQuestId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    public int getQuestId() {
+      return questId_;
+    }
+
+    // required int32 playerId = 2;
+    public static final int PLAYERID_FIELD_NUMBER = 2;
+    private int playerId_;
+    /**
+     * <code>required int32 playerId = 2;</code>
+     */
+    public boolean hasPlayerId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 playerId = 2;</code>
+     */
+    public int getPlayerId() {
+      return playerId_;
+    }
+
+    // optional string nickname = 3;
+    public static final int NICKNAME_FIELD_NUMBER = 3;
+    private java.lang.Object nickname_;
+    /**
+     * <code>optional string nickname = 3;</code>
+     */
+    public boolean hasNickname() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string nickname = 3;</code>
+     */
+    public java.lang.String getNickname() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nickname_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string nickname = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNicknameBytes() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nickname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional int32 level = 4;
+    public static final int LEVEL_FIELD_NUMBER = 4;
+    private int level_;
+    /**
+     * <code>optional int32 level = 4;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 level = 4;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    // optional int32 avatar = 5;
+    public static final int AVATAR_FIELD_NUMBER = 5;
+    private int avatar_;
+    /**
+     * <code>optional int32 avatar = 5;</code>
+     */
+    public boolean hasAvatar() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 avatar = 5;</code>
+     */
+    public int getAvatar() {
+      return avatar_;
+    }
+
+    private void initFields() {
+      questId_ = 0;
+      playerId_ = 0;
+      nickname_ = "";
+      level_ = 0;
+      avatar_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasQuestId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPlayerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, questId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, playerId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getNicknameBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, level_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, avatar_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, questId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, playerId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getNicknameBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, level_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, avatar_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code AllianceTeamQuestInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.AllianceTeamQuestInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamQuestInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamQuestInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.class, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        questId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        playerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nickname_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        avatar_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamQuestInfo_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo build() {
+        com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo buildPartial() {
+        com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo result = new com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.questId_ = questId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.playerId_ = playerId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.nickname_ = nickname_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.avatar_ = avatar_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo other) {
+        if (other == com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.getDefaultInstance()) return this;
+        if (other.hasQuestId()) {
+          setQuestId(other.getQuestId());
+        }
+        if (other.hasPlayerId()) {
+          setPlayerId(other.getPlayerId());
+        }
+        if (other.hasNickname()) {
+          bitField0_ |= 0x00000004;
+          nickname_ = other.nickname_;
+          onChanged();
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
+        if (other.hasAvatar()) {
+          setAvatar(other.getAvatar());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasQuestId()) {
+          
+          return false;
+        }
+        if (!hasPlayerId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 questId = 1;
+      private int questId_ ;
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public boolean hasQuestId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public int getQuestId() {
+        return questId_;
+      }
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public Builder setQuestId(int value) {
+        bitField0_ |= 0x00000001;
+        questId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public Builder clearQuestId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        questId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 playerId = 2;
+      private int playerId_ ;
+      /**
+       * <code>required int32 playerId = 2;</code>
+       */
+      public boolean hasPlayerId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 playerId = 2;</code>
+       */
+      public int getPlayerId() {
+        return playerId_;
+      }
+      /**
+       * <code>required int32 playerId = 2;</code>
+       */
+      public Builder setPlayerId(int value) {
+        bitField0_ |= 0x00000002;
+        playerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 playerId = 2;</code>
+       */
+      public Builder clearPlayerId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        playerId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string nickname = 3;
+      private java.lang.Object nickname_ = "";
+      /**
+       * <code>optional string nickname = 3;</code>
+       */
+      public boolean hasNickname() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string nickname = 3;</code>
+       */
+      public java.lang.String getNickname() {
+        java.lang.Object ref = nickname_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          nickname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string nickname = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNicknameBytes() {
+        java.lang.Object ref = nickname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nickname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string nickname = 3;</code>
+       */
+      public Builder setNickname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string nickname = 3;</code>
+       */
+      public Builder clearNickname() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        nickname_ = getDefaultInstance().getNickname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string nickname = 3;</code>
+       */
+      public Builder setNicknameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level = 4;
+      private int level_ ;
+      /**
+       * <code>optional int32 level = 4;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 level = 4;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional int32 level = 4;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000008;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level = 4;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 avatar = 5;
+      private int avatar_ ;
+      /**
+       * <code>optional int32 avatar = 5;</code>
+       */
+      public boolean hasAvatar() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int32 avatar = 5;</code>
+       */
+      public int getAvatar() {
+        return avatar_;
+      }
+      /**
+       * <code>optional int32 avatar = 5;</code>
+       */
+      public Builder setAvatar(int value) {
+        bitField0_ |= 0x00000010;
+        avatar_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 avatar = 5;</code>
+       */
+      public Builder clearAvatar() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        avatar_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:AllianceTeamQuestInfo)
+    }
+
+    static {
+      defaultInstance = new AllianceTeamQuestInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:AllianceTeamQuestInfo)
+  }
+
+  public interface AllianceTeamMemInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 playerId = 1;
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    boolean hasPlayerId();
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    int getPlayerId();
+
+    // optional string nickname = 2;
+    /**
+     * <code>optional string nickname = 2;</code>
+     */
+    boolean hasNickname();
+    /**
+     * <code>optional string nickname = 2;</code>
+     */
+    java.lang.String getNickname();
+    /**
+     * <code>optional string nickname = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNicknameBytes();
+
+    // required int32 level = 3;
+    /**
+     * <code>required int32 level = 3;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>required int32 level = 3;</code>
+     */
+    int getLevel();
+
+    // required int32 avatar = 4;
+    /**
+     * <code>required int32 avatar = 4;</code>
+     */
+    boolean hasAvatar();
+    /**
+     * <code>required int32 avatar = 4;</code>
+     */
+    int getAvatar();
+
+    // required bool isCaptain = 5;
+    /**
+     * <code>required bool isCaptain = 5;</code>
+     */
+    boolean hasIsCaptain();
+    /**
+     * <code>required bool isCaptain = 5;</code>
+     */
+    boolean getIsCaptain();
+  }
+  /**
+   * Protobuf type {@code AllianceTeamMemInfo}
+   */
+  public static final class AllianceTeamMemInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements AllianceTeamMemInfoOrBuilder {
+    // Use AllianceTeamMemInfo.newBuilder() to construct.
+    private AllianceTeamMemInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private AllianceTeamMemInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final AllianceTeamMemInfo defaultInstance;
+    public static AllianceTeamMemInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public AllianceTeamMemInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AllianceTeamMemInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              playerId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              nickname_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              level_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              avatar_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              isCaptain_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamMemInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamMemInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.class, com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<AllianceTeamMemInfo> PARSER =
+        new com.google.protobuf.AbstractParser<AllianceTeamMemInfo>() {
+      public AllianceTeamMemInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AllianceTeamMemInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AllianceTeamMemInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 playerId = 1;
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private int playerId_;
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    public boolean hasPlayerId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 playerId = 1;</code>
+     */
+    public int getPlayerId() {
+      return playerId_;
+    }
+
+    // optional string nickname = 2;
+    public static final int NICKNAME_FIELD_NUMBER = 2;
+    private java.lang.Object nickname_;
+    /**
+     * <code>optional string nickname = 2;</code>
+     */
+    public boolean hasNickname() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string nickname = 2;</code>
+     */
+    public java.lang.String getNickname() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nickname_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string nickname = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNicknameBytes() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nickname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 level = 3;
+    public static final int LEVEL_FIELD_NUMBER = 3;
+    private int level_;
+    /**
+     * <code>required int32 level = 3;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 level = 3;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    // required int32 avatar = 4;
+    public static final int AVATAR_FIELD_NUMBER = 4;
+    private int avatar_;
+    /**
+     * <code>required int32 avatar = 4;</code>
+     */
+    public boolean hasAvatar() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required int32 avatar = 4;</code>
+     */
+    public int getAvatar() {
+      return avatar_;
+    }
+
+    // required bool isCaptain = 5;
+    public static final int ISCAPTAIN_FIELD_NUMBER = 5;
+    private boolean isCaptain_;
+    /**
+     * <code>required bool isCaptain = 5;</code>
+     */
+    public boolean hasIsCaptain() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required bool isCaptain = 5;</code>
+     */
+    public boolean getIsCaptain() {
+      return isCaptain_;
+    }
+
+    private void initFields() {
+      playerId_ = 0;
+      nickname_ = "";
+      level_ = 0;
+      avatar_ = 0;
+      isCaptain_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasPlayerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLevel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAvatar()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasIsCaptain()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, playerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getNicknameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, level_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, avatar_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBool(5, isCaptain_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, playerId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getNicknameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, level_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, avatar_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, isCaptain_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.AllianceTeamMemInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamMemInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamMemInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamMemInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamMemInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamMemInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamMemInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamMemInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamMemInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamMemInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.AllianceTeamMemInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code AllianceTeamMemInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.AllianceTeamMemInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamMemInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamMemInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.class, com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        playerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        nickname_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        avatar_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        isCaptain_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamMemInfo_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTeamMemInfo getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTeamMemInfo build() {
+        com.hawk.game.protocol.Alliance.AllianceTeamMemInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTeamMemInfo buildPartial() {
+        com.hawk.game.protocol.Alliance.AllianceTeamMemInfo result = new com.hawk.game.protocol.Alliance.AllianceTeamMemInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.playerId_ = playerId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.nickname_ = nickname_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.avatar_ = avatar_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.isCaptain_ = isCaptain_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.AllianceTeamMemInfo) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.AllianceTeamMemInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.AllianceTeamMemInfo other) {
+        if (other == com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.getDefaultInstance()) return this;
+        if (other.hasPlayerId()) {
+          setPlayerId(other.getPlayerId());
+        }
+        if (other.hasNickname()) {
+          bitField0_ |= 0x00000002;
+          nickname_ = other.nickname_;
+          onChanged();
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
+        if (other.hasAvatar()) {
+          setAvatar(other.getAvatar());
+        }
+        if (other.hasIsCaptain()) {
+          setIsCaptain(other.getIsCaptain());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasPlayerId()) {
+          
+          return false;
+        }
+        if (!hasLevel()) {
+          
+          return false;
+        }
+        if (!hasAvatar()) {
+          
+          return false;
+        }
+        if (!hasIsCaptain()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.AllianceTeamMemInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.AllianceTeamMemInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 playerId = 1;
+      private int playerId_ ;
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public boolean hasPlayerId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public int getPlayerId() {
+        return playerId_;
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public Builder setPlayerId(int value) {
+        bitField0_ |= 0x00000001;
+        playerId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 playerId = 1;</code>
+       */
+      public Builder clearPlayerId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        playerId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string nickname = 2;
+      private java.lang.Object nickname_ = "";
+      /**
+       * <code>optional string nickname = 2;</code>
+       */
+      public boolean hasNickname() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string nickname = 2;</code>
+       */
+      public java.lang.String getNickname() {
+        java.lang.Object ref = nickname_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          nickname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string nickname = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNicknameBytes() {
+        java.lang.Object ref = nickname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nickname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string nickname = 2;</code>
+       */
+      public Builder setNickname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string nickname = 2;</code>
+       */
+      public Builder clearNickname() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nickname_ = getDefaultInstance().getNickname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string nickname = 2;</code>
+       */
+      public Builder setNicknameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 level = 3;
+      private int level_ ;
+      /**
+       * <code>required int32 level = 3;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 level = 3;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>required int32 level = 3;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000004;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 level = 3;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 avatar = 4;
+      private int avatar_ ;
+      /**
+       * <code>required int32 avatar = 4;</code>
+       */
+      public boolean hasAvatar() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int32 avatar = 4;</code>
+       */
+      public int getAvatar() {
+        return avatar_;
+      }
+      /**
+       * <code>required int32 avatar = 4;</code>
+       */
+      public Builder setAvatar(int value) {
+        bitField0_ |= 0x00000008;
+        avatar_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 avatar = 4;</code>
+       */
+      public Builder clearAvatar() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        avatar_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required bool isCaptain = 5;
+      private boolean isCaptain_ ;
+      /**
+       * <code>required bool isCaptain = 5;</code>
+       */
+      public boolean hasIsCaptain() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required bool isCaptain = 5;</code>
+       */
+      public boolean getIsCaptain() {
+        return isCaptain_;
+      }
+      /**
+       * <code>required bool isCaptain = 5;</code>
+       */
+      public Builder setIsCaptain(boolean value) {
+        bitField0_ |= 0x00000010;
+        isCaptain_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool isCaptain = 5;</code>
+       */
+      public Builder clearIsCaptain() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        isCaptain_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:AllianceTeamMemInfo)
+    }
+
+    static {
+      defaultInstance = new AllianceTeamMemInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:AllianceTeamMemInfo)
+  }
+
+  public interface AllianceTeamInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 startTime = 1;
+    /**
+     * <code>required int32 startTime = 1;</code>
+     */
+    boolean hasStartTime();
+    /**
+     * <code>required int32 startTime = 1;</code>
+     */
+    int getStartTime();
+
+    // repeated .AllianceTeamMemInfo members = 2;
+    /**
+     * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+     */
+    java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamMemInfo> 
+        getMembersList();
+    /**
+     * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+     */
+    com.hawk.game.protocol.Alliance.AllianceTeamMemInfo getMembers(int index);
+    /**
+     * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+     */
+    int getMembersCount();
+    /**
+     * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Alliance.AllianceTeamMemInfoOrBuilder> 
+        getMembersOrBuilderList();
+    /**
+     * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+     */
+    com.hawk.game.protocol.Alliance.AllianceTeamMemInfoOrBuilder getMembersOrBuilder(
+        int index);
+
+    // repeated .AllianceTeamQuestInfo questInfos = 3;
+    /**
+     * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+     */
+    java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo> 
+        getQuestInfosList();
+    /**
+     * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+     */
+    com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo getQuestInfos(int index);
+    /**
+     * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+     */
+    int getQuestInfosCount();
+    /**
+     * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Alliance.AllianceTeamQuestInfoOrBuilder> 
+        getQuestInfosOrBuilderList();
+    /**
+     * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+     */
+    com.hawk.game.protocol.Alliance.AllianceTeamQuestInfoOrBuilder getQuestInfosOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code AllianceTeamInfo}
+   */
+  public static final class AllianceTeamInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements AllianceTeamInfoOrBuilder {
+    // Use AllianceTeamInfo.newBuilder() to construct.
+    private AllianceTeamInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private AllianceTeamInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final AllianceTeamInfo defaultInstance;
+    public static AllianceTeamInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public AllianceTeamInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AllianceTeamInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              startTime_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                members_ = new java.util.ArrayList<com.hawk.game.protocol.Alliance.AllianceTeamMemInfo>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              members_.add(input.readMessage(com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.PARSER, extensionRegistry));
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                questInfos_ = new java.util.ArrayList<com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              questInfos_.add(input.readMessage(com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          members_ = java.util.Collections.unmodifiableList(members_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          questInfos_ = java.util.Collections.unmodifiableList(questInfos_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.AllianceTeamInfo.class, com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<AllianceTeamInfo> PARSER =
+        new com.google.protobuf.AbstractParser<AllianceTeamInfo>() {
+      public AllianceTeamInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AllianceTeamInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AllianceTeamInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 startTime = 1;
+    public static final int STARTTIME_FIELD_NUMBER = 1;
+    private int startTime_;
+    /**
+     * <code>required int32 startTime = 1;</code>
+     */
+    public boolean hasStartTime() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 startTime = 1;</code>
+     */
+    public int getStartTime() {
+      return startTime_;
+    }
+
+    // repeated .AllianceTeamMemInfo members = 2;
+    public static final int MEMBERS_FIELD_NUMBER = 2;
+    private java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamMemInfo> members_;
+    /**
+     * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+     */
+    public java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamMemInfo> getMembersList() {
+      return members_;
+    }
+    /**
+     * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Alliance.AllianceTeamMemInfoOrBuilder> 
+        getMembersOrBuilderList() {
+      return members_;
+    }
+    /**
+     * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+     */
+    public int getMembersCount() {
+      return members_.size();
+    }
+    /**
+     * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceTeamMemInfo getMembers(int index) {
+      return members_.get(index);
+    }
+    /**
+     * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceTeamMemInfoOrBuilder getMembersOrBuilder(
+        int index) {
+      return members_.get(index);
+    }
+
+    // repeated .AllianceTeamQuestInfo questInfos = 3;
+    public static final int QUESTINFOS_FIELD_NUMBER = 3;
+    private java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo> questInfos_;
+    /**
+     * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+     */
+    public java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo> getQuestInfosList() {
+      return questInfos_;
+    }
+    /**
+     * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Alliance.AllianceTeamQuestInfoOrBuilder> 
+        getQuestInfosOrBuilderList() {
+      return questInfos_;
+    }
+    /**
+     * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+     */
+    public int getQuestInfosCount() {
+      return questInfos_.size();
+    }
+    /**
+     * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo getQuestInfos(int index) {
+      return questInfos_.get(index);
+    }
+    /**
+     * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceTeamQuestInfoOrBuilder getQuestInfosOrBuilder(
+        int index) {
+      return questInfos_.get(index);
+    }
+
+    private void initFields() {
+      startTime_ = 0;
+      members_ = java.util.Collections.emptyList();
+      questInfos_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasStartTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getMembersCount(); i++) {
+        if (!getMembers(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getQuestInfosCount(); i++) {
+        if (!getQuestInfos(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, startTime_);
+      }
+      for (int i = 0; i < members_.size(); i++) {
+        output.writeMessage(2, members_.get(i));
+      }
+      for (int i = 0; i < questInfos_.size(); i++) {
+        output.writeMessage(3, questInfos_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, startTime_);
+      }
+      for (int i = 0; i < members_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, members_.get(i));
+      }
+      for (int i = 0; i < questInfos_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, questInfos_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.AllianceTeamInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.AllianceTeamInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.AllianceTeamInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code AllianceTeamInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.AllianceTeamInfo.class, com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.AllianceTeamInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMembersFieldBuilder();
+          getQuestInfosFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        startTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (membersBuilder_ == null) {
+          members_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          membersBuilder_.clear();
+        }
+        if (questInfosBuilder_ == null) {
+          questInfos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          questInfosBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_AllianceTeamInfo_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTeamInfo getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.AllianceTeamInfo.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTeamInfo build() {
+        com.hawk.game.protocol.Alliance.AllianceTeamInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.AllianceTeamInfo buildPartial() {
+        com.hawk.game.protocol.Alliance.AllianceTeamInfo result = new com.hawk.game.protocol.Alliance.AllianceTeamInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.startTime_ = startTime_;
+        if (membersBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            members_ = java.util.Collections.unmodifiableList(members_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.members_ = members_;
+        } else {
+          result.members_ = membersBuilder_.build();
+        }
+        if (questInfosBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            questInfos_ = java.util.Collections.unmodifiableList(questInfos_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.questInfos_ = questInfos_;
+        } else {
+          result.questInfos_ = questInfosBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.AllianceTeamInfo) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.AllianceTeamInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.AllianceTeamInfo other) {
+        if (other == com.hawk.game.protocol.Alliance.AllianceTeamInfo.getDefaultInstance()) return this;
+        if (other.hasStartTime()) {
+          setStartTime(other.getStartTime());
+        }
+        if (membersBuilder_ == null) {
+          if (!other.members_.isEmpty()) {
+            if (members_.isEmpty()) {
+              members_ = other.members_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureMembersIsMutable();
+              members_.addAll(other.members_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.members_.isEmpty()) {
+            if (membersBuilder_.isEmpty()) {
+              membersBuilder_.dispose();
+              membersBuilder_ = null;
+              members_ = other.members_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              membersBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMembersFieldBuilder() : null;
+            } else {
+              membersBuilder_.addAllMessages(other.members_);
+            }
+          }
+        }
+        if (questInfosBuilder_ == null) {
+          if (!other.questInfos_.isEmpty()) {
+            if (questInfos_.isEmpty()) {
+              questInfos_ = other.questInfos_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureQuestInfosIsMutable();
+              questInfos_.addAll(other.questInfos_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.questInfos_.isEmpty()) {
+            if (questInfosBuilder_.isEmpty()) {
+              questInfosBuilder_.dispose();
+              questInfosBuilder_ = null;
+              questInfos_ = other.questInfos_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              questInfosBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getQuestInfosFieldBuilder() : null;
+            } else {
+              questInfosBuilder_.addAllMessages(other.questInfos_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasStartTime()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getMembersCount(); i++) {
+          if (!getMembers(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getQuestInfosCount(); i++) {
+          if (!getQuestInfos(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.AllianceTeamInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.AllianceTeamInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 startTime = 1;
+      private int startTime_ ;
+      /**
+       * <code>required int32 startTime = 1;</code>
+       */
+      public boolean hasStartTime() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 startTime = 1;</code>
+       */
+      public int getStartTime() {
+        return startTime_;
+      }
+      /**
+       * <code>required int32 startTime = 1;</code>
+       */
+      public Builder setStartTime(int value) {
+        bitField0_ |= 0x00000001;
+        startTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 startTime = 1;</code>
+       */
+      public Builder clearStartTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        startTime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .AllianceTeamMemInfo members = 2;
+      private java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamMemInfo> members_ =
+        java.util.Collections.emptyList();
+      private void ensureMembersIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          members_ = new java.util.ArrayList<com.hawk.game.protocol.Alliance.AllianceTeamMemInfo>(members_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceTeamMemInfo, com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamMemInfoOrBuilder> membersBuilder_;
+
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamMemInfo> getMembersList() {
+        if (membersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(members_);
+        } else {
+          return membersBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public int getMembersCount() {
+        if (membersBuilder_ == null) {
+          return members_.size();
+        } else {
+          return membersBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamMemInfo getMembers(int index) {
+        if (membersBuilder_ == null) {
+          return members_.get(index);
+        } else {
+          return membersBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public Builder setMembers(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamMemInfo value) {
+        if (membersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMembersIsMutable();
+          members_.set(index, value);
+          onChanged();
+        } else {
+          membersBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public Builder setMembers(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder builderForValue) {
+        if (membersBuilder_ == null) {
+          ensureMembersIsMutable();
+          members_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          membersBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public Builder addMembers(com.hawk.game.protocol.Alliance.AllianceTeamMemInfo value) {
+        if (membersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMembersIsMutable();
+          members_.add(value);
+          onChanged();
+        } else {
+          membersBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public Builder addMembers(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamMemInfo value) {
+        if (membersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMembersIsMutable();
+          members_.add(index, value);
+          onChanged();
+        } else {
+          membersBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public Builder addMembers(
+          com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder builderForValue) {
+        if (membersBuilder_ == null) {
+          ensureMembersIsMutable();
+          members_.add(builderForValue.build());
+          onChanged();
+        } else {
+          membersBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public Builder addMembers(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder builderForValue) {
+        if (membersBuilder_ == null) {
+          ensureMembersIsMutable();
+          members_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          membersBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public Builder addAllMembers(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Alliance.AllianceTeamMemInfo> values) {
+        if (membersBuilder_ == null) {
+          ensureMembersIsMutable();
+          super.addAll(values, members_);
+          onChanged();
+        } else {
+          membersBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public Builder clearMembers() {
+        if (membersBuilder_ == null) {
+          members_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          membersBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public Builder removeMembers(int index) {
+        if (membersBuilder_ == null) {
+          ensureMembersIsMutable();
+          members_.remove(index);
+          onChanged();
+        } else {
+          membersBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder getMembersBuilder(
+          int index) {
+        return getMembersFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamMemInfoOrBuilder getMembersOrBuilder(
+          int index) {
+        if (membersBuilder_ == null) {
+          return members_.get(index);  } else {
+          return membersBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Alliance.AllianceTeamMemInfoOrBuilder> 
+           getMembersOrBuilderList() {
+        if (membersBuilder_ != null) {
+          return membersBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(members_);
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder addMembersBuilder() {
+        return getMembersFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder addMembersBuilder(
+          int index) {
+        return getMembersFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .AllianceTeamMemInfo members = 2;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder> 
+           getMembersBuilderList() {
+        return getMembersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceTeamMemInfo, com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamMemInfoOrBuilder> 
+          getMembersFieldBuilder() {
+        if (membersBuilder_ == null) {
+          membersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Alliance.AllianceTeamMemInfo, com.hawk.game.protocol.Alliance.AllianceTeamMemInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamMemInfoOrBuilder>(
+                  members_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          members_ = null;
+        }
+        return membersBuilder_;
+      }
+
+      // repeated .AllianceTeamQuestInfo questInfos = 3;
+      private java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo> questInfos_ =
+        java.util.Collections.emptyList();
+      private void ensureQuestInfosIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          questInfos_ = new java.util.ArrayList<com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo>(questInfos_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfoOrBuilder> questInfosBuilder_;
+
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo> getQuestInfosList() {
+        if (questInfosBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(questInfos_);
+        } else {
+          return questInfosBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public int getQuestInfosCount() {
+        if (questInfosBuilder_ == null) {
+          return questInfos_.size();
+        } else {
+          return questInfosBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo getQuestInfos(int index) {
+        if (questInfosBuilder_ == null) {
+          return questInfos_.get(index);
+        } else {
+          return questInfosBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public Builder setQuestInfos(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo value) {
+        if (questInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureQuestInfosIsMutable();
+          questInfos_.set(index, value);
+          onChanged();
+        } else {
+          questInfosBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public Builder setQuestInfos(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder builderForValue) {
+        if (questInfosBuilder_ == null) {
+          ensureQuestInfosIsMutable();
+          questInfos_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          questInfosBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public Builder addQuestInfos(com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo value) {
+        if (questInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureQuestInfosIsMutable();
+          questInfos_.add(value);
+          onChanged();
+        } else {
+          questInfosBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public Builder addQuestInfos(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo value) {
+        if (questInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureQuestInfosIsMutable();
+          questInfos_.add(index, value);
+          onChanged();
+        } else {
+          questInfosBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public Builder addQuestInfos(
+          com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder builderForValue) {
+        if (questInfosBuilder_ == null) {
+          ensureQuestInfosIsMutable();
+          questInfos_.add(builderForValue.build());
+          onChanged();
+        } else {
+          questInfosBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public Builder addQuestInfos(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder builderForValue) {
+        if (questInfosBuilder_ == null) {
+          ensureQuestInfosIsMutable();
+          questInfos_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          questInfosBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public Builder addAllQuestInfos(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo> values) {
+        if (questInfosBuilder_ == null) {
+          ensureQuestInfosIsMutable();
+          super.addAll(values, questInfos_);
+          onChanged();
+        } else {
+          questInfosBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public Builder clearQuestInfos() {
+        if (questInfosBuilder_ == null) {
+          questInfos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          questInfosBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public Builder removeQuestInfos(int index) {
+        if (questInfosBuilder_ == null) {
+          ensureQuestInfosIsMutable();
+          questInfos_.remove(index);
+          onChanged();
+        } else {
+          questInfosBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder getQuestInfosBuilder(
+          int index) {
+        return getQuestInfosFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamQuestInfoOrBuilder getQuestInfosOrBuilder(
+          int index) {
+        if (questInfosBuilder_ == null) {
+          return questInfos_.get(index);  } else {
+          return questInfosBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Alliance.AllianceTeamQuestInfoOrBuilder> 
+           getQuestInfosOrBuilderList() {
+        if (questInfosBuilder_ != null) {
+          return questInfosBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(questInfos_);
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder addQuestInfosBuilder() {
+        return getQuestInfosFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder addQuestInfosBuilder(
+          int index) {
+        return getQuestInfosFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .AllianceTeamQuestInfo questInfos = 3;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder> 
+           getQuestInfosBuilderList() {
+        return getQuestInfosFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfoOrBuilder> 
+          getQuestInfosFieldBuilder() {
+        if (questInfosBuilder_ == null) {
+          questInfosBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamQuestInfoOrBuilder>(
+                  questInfos_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          questInfos_ = null;
+        }
+        return questInfosBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:AllianceTeamInfo)
+    }
+
+    static {
+      defaultInstance = new AllianceTeamInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:AllianceTeamInfo)
   }
 
   public interface HSAllianceCreateOrBuilder
@@ -11341,7 +15140,7 @@ public final class Alliance {
    * Protobuf type {@code HSAllianceCancleApply}
    *
    * <pre>
-   *取消申请
+   *申请
    * </pre>
    */
   public static final class HSAllianceCancleApply extends
@@ -11578,7 +15377,7 @@ public final class Alliance {
      * Protobuf type {@code HSAllianceCancleApply}
      *
      * <pre>
-     *取消申请
+     *申请
      * </pre>
      */
     public static final class Builder extends
@@ -27413,6 +31212,7044 @@ public final class Alliance {
     // @@protoc_insertion_point(class_scope:HSLevelChangeNotify)
   }
 
+  public interface HSAllianceJoinNotifyOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 allianceId = 1;
+    /**
+     * <code>required int32 allianceId = 1;</code>
+     */
+    boolean hasAllianceId();
+    /**
+     * <code>required int32 allianceId = 1;</code>
+     */
+    int getAllianceId();
+  }
+  /**
+   * Protobuf type {@code HSAllianceJoinNotify}
+   *
+   * <pre>
+   * 入会通知
+   * </pre>
+   */
+  public static final class HSAllianceJoinNotify extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceJoinNotifyOrBuilder {
+    // Use HSAllianceJoinNotify.newBuilder() to construct.
+    private HSAllianceJoinNotify(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceJoinNotify(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceJoinNotify defaultInstance;
+    public static HSAllianceJoinNotify getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceJoinNotify getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceJoinNotify(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              allianceId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinNotify_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinNotify_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceJoinNotify.class, com.hawk.game.protocol.Alliance.HSAllianceJoinNotify.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceJoinNotify> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceJoinNotify>() {
+      public HSAllianceJoinNotify parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceJoinNotify(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceJoinNotify> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 allianceId = 1;
+    public static final int ALLIANCEID_FIELD_NUMBER = 1;
+    private int allianceId_;
+    /**
+     * <code>required int32 allianceId = 1;</code>
+     */
+    public boolean hasAllianceId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 allianceId = 1;</code>
+     */
+    public int getAllianceId() {
+      return allianceId_;
+    }
+
+    private void initFields() {
+      allianceId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasAllianceId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, allianceId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, allianceId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinNotify parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinNotify parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinNotify parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinNotify parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinNotify parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinNotify parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinNotify parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinNotify parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinNotify parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinNotify parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceJoinNotify prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceJoinNotify}
+     *
+     * <pre>
+     * 入会通知
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceJoinNotifyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinNotify_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinNotify_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceJoinNotify.class, com.hawk.game.protocol.Alliance.HSAllianceJoinNotify.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceJoinNotify.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        allianceId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinNotify_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceJoinNotify getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceJoinNotify.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceJoinNotify build() {
+        com.hawk.game.protocol.Alliance.HSAllianceJoinNotify result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceJoinNotify buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceJoinNotify result = new com.hawk.game.protocol.Alliance.HSAllianceJoinNotify(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.allianceId_ = allianceId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceJoinNotify) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceJoinNotify)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceJoinNotify other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceJoinNotify.getDefaultInstance()) return this;
+        if (other.hasAllianceId()) {
+          setAllianceId(other.getAllianceId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasAllianceId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceJoinNotify parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceJoinNotify) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 allianceId = 1;
+      private int allianceId_ ;
+      /**
+       * <code>required int32 allianceId = 1;</code>
+       */
+      public boolean hasAllianceId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 allianceId = 1;</code>
+       */
+      public int getAllianceId() {
+        return allianceId_;
+      }
+      /**
+       * <code>required int32 allianceId = 1;</code>
+       */
+      public Builder setAllianceId(int value) {
+        bitField0_ |= 0x00000001;
+        allianceId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 allianceId = 1;</code>
+       */
+      public Builder clearAllianceId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        allianceId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceJoinNotify)
+    }
+
+    static {
+      defaultInstance = new HSAllianceJoinNotify(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceJoinNotify)
+  }
+
+  public interface HSAllianceLeaveNotifyOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSAllianceLeaveNotify}
+   *
+   * <pre>
+   * 离会通知
+   * </pre>
+   */
+  public static final class HSAllianceLeaveNotify extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceLeaveNotifyOrBuilder {
+    // Use HSAllianceLeaveNotify.newBuilder() to construct.
+    private HSAllianceLeaveNotify(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceLeaveNotify(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceLeaveNotify defaultInstance;
+    public static HSAllianceLeaveNotify getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceLeaveNotify getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceLeaveNotify(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceLeaveNotify_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceLeaveNotify_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify.class, com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceLeaveNotify> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceLeaveNotify>() {
+      public HSAllianceLeaveNotify parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceLeaveNotify(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceLeaveNotify> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceLeaveNotify}
+     *
+     * <pre>
+     * 离会通知
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceLeaveNotifyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceLeaveNotify_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceLeaveNotify_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify.class, com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceLeaveNotify_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify build() {
+        com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify result = new com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceLeaveNotify) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceLeaveNotify)
+    }
+
+    static {
+      defaultInstance = new HSAllianceLeaveNotify(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceLeaveNotify)
+  }
+
+  public interface HSAllianceCreateTeamOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 taskId = 1;
+    /**
+     * <code>required int32 taskId = 1;</code>
+     *
+     * <pre>
+     *任务号
+     * </pre>
+     */
+    boolean hasTaskId();
+    /**
+     * <code>required int32 taskId = 1;</code>
+     *
+     * <pre>
+     *任务号
+     * </pre>
+     */
+    int getTaskId();
+  }
+  /**
+   * Protobuf type {@code HSAllianceCreateTeam}
+   *
+   * <pre>
+   * 组队
+   * </pre>
+   */
+  public static final class HSAllianceCreateTeam extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceCreateTeamOrBuilder {
+    // Use HSAllianceCreateTeam.newBuilder() to construct.
+    private HSAllianceCreateTeam(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceCreateTeam(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceCreateTeam defaultInstance;
+    public static HSAllianceCreateTeam getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceCreateTeam getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceCreateTeam(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              taskId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceCreateTeam_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceCreateTeam_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceCreateTeam.class, com.hawk.game.protocol.Alliance.HSAllianceCreateTeam.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceCreateTeam> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceCreateTeam>() {
+      public HSAllianceCreateTeam parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceCreateTeam(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceCreateTeam> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 taskId = 1;
+    public static final int TASKID_FIELD_NUMBER = 1;
+    private int taskId_;
+    /**
+     * <code>required int32 taskId = 1;</code>
+     *
+     * <pre>
+     *任务号
+     * </pre>
+     */
+    public boolean hasTaskId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 taskId = 1;</code>
+     *
+     * <pre>
+     *任务号
+     * </pre>
+     */
+    public int getTaskId() {
+      return taskId_;
+    }
+
+    private void initFields() {
+      taskId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasTaskId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, taskId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, taskId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeam parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeam parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeam parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeam parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeam parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeam parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeam parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeam parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeam parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeam parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceCreateTeam prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceCreateTeam}
+     *
+     * <pre>
+     * 组队
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceCreateTeamOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceCreateTeam_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceCreateTeam_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceCreateTeam.class, com.hawk.game.protocol.Alliance.HSAllianceCreateTeam.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceCreateTeam.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        taskId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceCreateTeam_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceCreateTeam getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceCreateTeam.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceCreateTeam build() {
+        com.hawk.game.protocol.Alliance.HSAllianceCreateTeam result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceCreateTeam buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceCreateTeam result = new com.hawk.game.protocol.Alliance.HSAllianceCreateTeam(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.taskId_ = taskId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceCreateTeam) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceCreateTeam)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceCreateTeam other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceCreateTeam.getDefaultInstance()) return this;
+        if (other.hasTaskId()) {
+          setTaskId(other.getTaskId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasTaskId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceCreateTeam parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceCreateTeam) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 taskId = 1;
+      private int taskId_ ;
+      /**
+       * <code>required int32 taskId = 1;</code>
+       *
+       * <pre>
+       *任务号
+       * </pre>
+       */
+      public boolean hasTaskId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 taskId = 1;</code>
+       *
+       * <pre>
+       *任务号
+       * </pre>
+       */
+      public int getTaskId() {
+        return taskId_;
+      }
+      /**
+       * <code>required int32 taskId = 1;</code>
+       *
+       * <pre>
+       *任务号
+       * </pre>
+       */
+      public Builder setTaskId(int value) {
+        bitField0_ |= 0x00000001;
+        taskId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 taskId = 1;</code>
+       *
+       * <pre>
+       *任务号
+       * </pre>
+       */
+      public Builder clearTaskId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        taskId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceCreateTeam)
+    }
+
+    static {
+      defaultInstance = new HSAllianceCreateTeam(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceCreateTeam)
+  }
+
+  public interface HSAllianceCreateTeamRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .AllianceTaskInfo taskInfo = 1;
+    /**
+     * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+     *
+     * <pre>
+     *任务信息
+     * </pre>
+     */
+    boolean hasTaskInfo();
+    /**
+     * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+     *
+     * <pre>
+     *任务信息
+     * </pre>
+     */
+    com.hawk.game.protocol.Alliance.AllianceTaskInfo getTaskInfo();
+    /**
+     * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+     *
+     * <pre>
+     *任务信息
+     * </pre>
+     */
+    com.hawk.game.protocol.Alliance.AllianceTaskInfoOrBuilder getTaskInfoOrBuilder();
+  }
+  /**
+   * Protobuf type {@code HSAllianceCreateTeamRet}
+   */
+  public static final class HSAllianceCreateTeamRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceCreateTeamRetOrBuilder {
+    // Use HSAllianceCreateTeamRet.newBuilder() to construct.
+    private HSAllianceCreateTeamRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceCreateTeamRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceCreateTeamRet defaultInstance;
+    public static HSAllianceCreateTeamRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceCreateTeamRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceCreateTeamRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.hawk.game.protocol.Alliance.AllianceTaskInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = taskInfo_.toBuilder();
+              }
+              taskInfo_ = input.readMessage(com.hawk.game.protocol.Alliance.AllianceTaskInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(taskInfo_);
+                taskInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceCreateTeamRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceCreateTeamRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet.class, com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceCreateTeamRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceCreateTeamRet>() {
+      public HSAllianceCreateTeamRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceCreateTeamRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceCreateTeamRet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .AllianceTaskInfo taskInfo = 1;
+    public static final int TASKINFO_FIELD_NUMBER = 1;
+    private com.hawk.game.protocol.Alliance.AllianceTaskInfo taskInfo_;
+    /**
+     * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+     *
+     * <pre>
+     *任务信息
+     * </pre>
+     */
+    public boolean hasTaskInfo() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+     *
+     * <pre>
+     *任务信息
+     * </pre>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceTaskInfo getTaskInfo() {
+      return taskInfo_;
+    }
+    /**
+     * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+     *
+     * <pre>
+     *任务信息
+     * </pre>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceTaskInfoOrBuilder getTaskInfoOrBuilder() {
+      return taskInfo_;
+    }
+
+    private void initFields() {
+      taskInfo_ = com.hawk.game.protocol.Alliance.AllianceTaskInfo.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasTaskInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, taskInfo_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, taskInfo_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceCreateTeamRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceCreateTeamRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceCreateTeamRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet.class, com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTaskInfoFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (taskInfoBuilder_ == null) {
+          taskInfo_ = com.hawk.game.protocol.Alliance.AllianceTaskInfo.getDefaultInstance();
+        } else {
+          taskInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceCreateTeamRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet build() {
+        com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet result = new com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (taskInfoBuilder_ == null) {
+          result.taskInfo_ = taskInfo_;
+        } else {
+          result.taskInfo_ = taskInfoBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet.getDefaultInstance()) return this;
+        if (other.hasTaskInfo()) {
+          mergeTaskInfo(other.getTaskInfo());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasTaskInfo()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceCreateTeamRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .AllianceTaskInfo taskInfo = 1;
+      private com.hawk.game.protocol.Alliance.AllianceTaskInfo taskInfo_ = com.hawk.game.protocol.Alliance.AllianceTaskInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceTaskInfo, com.hawk.game.protocol.Alliance.AllianceTaskInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTaskInfoOrBuilder> taskInfoBuilder_;
+      /**
+       * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+       *
+       * <pre>
+       *任务信息
+       * </pre>
+       */
+      public boolean hasTaskInfo() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+       *
+       * <pre>
+       *任务信息
+       * </pre>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTaskInfo getTaskInfo() {
+        if (taskInfoBuilder_ == null) {
+          return taskInfo_;
+        } else {
+          return taskInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+       *
+       * <pre>
+       *任务信息
+       * </pre>
+       */
+      public Builder setTaskInfo(com.hawk.game.protocol.Alliance.AllianceTaskInfo value) {
+        if (taskInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          taskInfo_ = value;
+          onChanged();
+        } else {
+          taskInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+       *
+       * <pre>
+       *任务信息
+       * </pre>
+       */
+      public Builder setTaskInfo(
+          com.hawk.game.protocol.Alliance.AllianceTaskInfo.Builder builderForValue) {
+        if (taskInfoBuilder_ == null) {
+          taskInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          taskInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+       *
+       * <pre>
+       *任务信息
+       * </pre>
+       */
+      public Builder mergeTaskInfo(com.hawk.game.protocol.Alliance.AllianceTaskInfo value) {
+        if (taskInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              taskInfo_ != com.hawk.game.protocol.Alliance.AllianceTaskInfo.getDefaultInstance()) {
+            taskInfo_ =
+              com.hawk.game.protocol.Alliance.AllianceTaskInfo.newBuilder(taskInfo_).mergeFrom(value).buildPartial();
+          } else {
+            taskInfo_ = value;
+          }
+          onChanged();
+        } else {
+          taskInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+       *
+       * <pre>
+       *任务信息
+       * </pre>
+       */
+      public Builder clearTaskInfo() {
+        if (taskInfoBuilder_ == null) {
+          taskInfo_ = com.hawk.game.protocol.Alliance.AllianceTaskInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          taskInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+       *
+       * <pre>
+       *任务信息
+       * </pre>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTaskInfo.Builder getTaskInfoBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getTaskInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+       *
+       * <pre>
+       *任务信息
+       * </pre>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTaskInfoOrBuilder getTaskInfoOrBuilder() {
+        if (taskInfoBuilder_ != null) {
+          return taskInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return taskInfo_;
+        }
+      }
+      /**
+       * <code>required .AllianceTaskInfo taskInfo = 1;</code>
+       *
+       * <pre>
+       *任务信息
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceTaskInfo, com.hawk.game.protocol.Alliance.AllianceTaskInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTaskInfoOrBuilder> 
+          getTaskInfoFieldBuilder() {
+        if (taskInfoBuilder_ == null) {
+          taskInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.hawk.game.protocol.Alliance.AllianceTaskInfo, com.hawk.game.protocol.Alliance.AllianceTaskInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTaskInfoOrBuilder>(
+                  taskInfo_,
+                  getParentForChildren(),
+                  isClean());
+          taskInfo_ = null;
+        }
+        return taskInfoBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceCreateTeamRet)
+    }
+
+    static {
+      defaultInstance = new HSAllianceCreateTeamRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceCreateTeamRet)
+  }
+
+  public interface HSAllianceJoinTeamOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 teamId = 1;
+    /**
+     * <code>required int32 teamId = 1;</code>
+     *
+     * <pre>
+     *组号
+     * </pre>
+     */
+    boolean hasTeamId();
+    /**
+     * <code>required int32 teamId = 1;</code>
+     *
+     * <pre>
+     *组号
+     * </pre>
+     */
+    int getTeamId();
+  }
+  /**
+   * Protobuf type {@code HSAllianceJoinTeam}
+   *
+   * <pre>
+   * 加入队伍
+   * </pre>
+   */
+  public static final class HSAllianceJoinTeam extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceJoinTeamOrBuilder {
+    // Use HSAllianceJoinTeam.newBuilder() to construct.
+    private HSAllianceJoinTeam(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceJoinTeam(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceJoinTeam defaultInstance;
+    public static HSAllianceJoinTeam getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceJoinTeam getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceJoinTeam(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              teamId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinTeam_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinTeam_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceJoinTeam.class, com.hawk.game.protocol.Alliance.HSAllianceJoinTeam.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceJoinTeam> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceJoinTeam>() {
+      public HSAllianceJoinTeam parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceJoinTeam(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceJoinTeam> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 teamId = 1;
+    public static final int TEAMID_FIELD_NUMBER = 1;
+    private int teamId_;
+    /**
+     * <code>required int32 teamId = 1;</code>
+     *
+     * <pre>
+     *组号
+     * </pre>
+     */
+    public boolean hasTeamId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 teamId = 1;</code>
+     *
+     * <pre>
+     *组号
+     * </pre>
+     */
+    public int getTeamId() {
+      return teamId_;
+    }
+
+    private void initFields() {
+      teamId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasTeamId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, teamId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, teamId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeam parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeam parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeam parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeam parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeam parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeam parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeam parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeam parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeam parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeam parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceJoinTeam prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceJoinTeam}
+     *
+     * <pre>
+     * 加入队伍
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceJoinTeamOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinTeam_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinTeam_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceJoinTeam.class, com.hawk.game.protocol.Alliance.HSAllianceJoinTeam.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceJoinTeam.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        teamId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinTeam_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceJoinTeam getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceJoinTeam.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceJoinTeam build() {
+        com.hawk.game.protocol.Alliance.HSAllianceJoinTeam result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceJoinTeam buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceJoinTeam result = new com.hawk.game.protocol.Alliance.HSAllianceJoinTeam(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.teamId_ = teamId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceJoinTeam) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceJoinTeam)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceJoinTeam other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceJoinTeam.getDefaultInstance()) return this;
+        if (other.hasTeamId()) {
+          setTeamId(other.getTeamId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasTeamId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceJoinTeam parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceJoinTeam) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 teamId = 1;
+      private int teamId_ ;
+      /**
+       * <code>required int32 teamId = 1;</code>
+       *
+       * <pre>
+       *组号
+       * </pre>
+       */
+      public boolean hasTeamId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 teamId = 1;</code>
+       *
+       * <pre>
+       *组号
+       * </pre>
+       */
+      public int getTeamId() {
+        return teamId_;
+      }
+      /**
+       * <code>required int32 teamId = 1;</code>
+       *
+       * <pre>
+       *组号
+       * </pre>
+       */
+      public Builder setTeamId(int value) {
+        bitField0_ |= 0x00000001;
+        teamId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 teamId = 1;</code>
+       *
+       * <pre>
+       *组号
+       * </pre>
+       */
+      public Builder clearTeamId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        teamId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceJoinTeam)
+    }
+
+    static {
+      defaultInstance = new HSAllianceJoinTeam(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceJoinTeam)
+  }
+
+  public interface HSAllianceJoinTeamRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSAllianceJoinTeamRet}
+   */
+  public static final class HSAllianceJoinTeamRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceJoinTeamRetOrBuilder {
+    // Use HSAllianceJoinTeamRet.newBuilder() to construct.
+    private HSAllianceJoinTeamRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceJoinTeamRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceJoinTeamRet defaultInstance;
+    public static HSAllianceJoinTeamRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceJoinTeamRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceJoinTeamRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinTeamRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinTeamRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet.class, com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceJoinTeamRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceJoinTeamRet>() {
+      public HSAllianceJoinTeamRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceJoinTeamRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceJoinTeamRet> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceJoinTeamRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinTeamRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinTeamRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet.class, com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceJoinTeamRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet build() {
+        com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet result = new com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceJoinTeamRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceJoinTeamRet)
+    }
+
+    static {
+      defaultInstance = new HSAllianceJoinTeamRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceJoinTeamRet)
+  }
+
+  public interface HSAllianceTaskAcceptOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 questId = 1;
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    boolean hasQuestId();
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    int getQuestId();
+  }
+  /**
+   * Protobuf type {@code HSAllianceTaskAccept}
+   *
+   * <pre>
+   * 接取任务
+   * </pre>
+   */
+  public static final class HSAllianceTaskAccept extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceTaskAcceptOrBuilder {
+    // Use HSAllianceTaskAccept.newBuilder() to construct.
+    private HSAllianceTaskAccept(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceTaskAccept(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceTaskAccept defaultInstance;
+    public static HSAllianceTaskAccept getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceTaskAccept getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceTaskAccept(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              questId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskAccept_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskAccept_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceTaskAccept.class, com.hawk.game.protocol.Alliance.HSAllianceTaskAccept.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceTaskAccept> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceTaskAccept>() {
+      public HSAllianceTaskAccept parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceTaskAccept(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceTaskAccept> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 questId = 1;
+    public static final int QUESTID_FIELD_NUMBER = 1;
+    private int questId_;
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    public boolean hasQuestId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    public int getQuestId() {
+      return questId_;
+    }
+
+    private void initFields() {
+      questId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasQuestId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, questId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, questId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAccept parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAccept parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAccept parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAccept parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAccept parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAccept parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAccept parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAccept parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAccept parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAccept parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceTaskAccept prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceTaskAccept}
+     *
+     * <pre>
+     * 接取任务
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskAccept_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskAccept_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceTaskAccept.class, com.hawk.game.protocol.Alliance.HSAllianceTaskAccept.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceTaskAccept.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        questId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskAccept_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskAccept getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceTaskAccept.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskAccept build() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskAccept result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskAccept buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskAccept result = new com.hawk.game.protocol.Alliance.HSAllianceTaskAccept(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.questId_ = questId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceTaskAccept) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceTaskAccept)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceTaskAccept other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceTaskAccept.getDefaultInstance()) return this;
+        if (other.hasQuestId()) {
+          setQuestId(other.getQuestId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasQuestId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskAccept parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceTaskAccept) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 questId = 1;
+      private int questId_ ;
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public boolean hasQuestId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public int getQuestId() {
+        return questId_;
+      }
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public Builder setQuestId(int value) {
+        bitField0_ |= 0x00000001;
+        questId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public Builder clearQuestId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        questId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceTaskAccept)
+    }
+
+    static {
+      defaultInstance = new HSAllianceTaskAccept(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceTaskAccept)
+  }
+
+  public interface HSAllianceTaskAcceptRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSAllianceTaskAcceptRet}
+   */
+  public static final class HSAllianceTaskAcceptRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceTaskAcceptRetOrBuilder {
+    // Use HSAllianceTaskAcceptRet.newBuilder() to construct.
+    private HSAllianceTaskAcceptRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceTaskAcceptRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceTaskAcceptRet defaultInstance;
+    public static HSAllianceTaskAcceptRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceTaskAcceptRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceTaskAcceptRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskAcceptRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskAcceptRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet.class, com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceTaskAcceptRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceTaskAcceptRet>() {
+      public HSAllianceTaskAcceptRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceTaskAcceptRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceTaskAcceptRet> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceTaskAcceptRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskAcceptRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskAcceptRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet.class, com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskAcceptRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet build() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet result = new com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceTaskAcceptRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceTaskAcceptRet)
+    }
+
+    static {
+      defaultInstance = new HSAllianceTaskAcceptRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceTaskAcceptRet)
+  }
+
+  public interface HSAllianceTaskCommitOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 questId = 1;
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    boolean hasQuestId();
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    int getQuestId();
+  }
+  /**
+   * Protobuf type {@code HSAllianceTaskCommit}
+   *
+   * <pre>
+   * 提交任务
+   * </pre>
+   */
+  public static final class HSAllianceTaskCommit extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceTaskCommitOrBuilder {
+    // Use HSAllianceTaskCommit.newBuilder() to construct.
+    private HSAllianceTaskCommit(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceTaskCommit(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceTaskCommit defaultInstance;
+    public static HSAllianceTaskCommit getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceTaskCommit getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceTaskCommit(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              questId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskCommit_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskCommit_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceTaskCommit.class, com.hawk.game.protocol.Alliance.HSAllianceTaskCommit.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceTaskCommit> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceTaskCommit>() {
+      public HSAllianceTaskCommit parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceTaskCommit(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceTaskCommit> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 questId = 1;
+    public static final int QUESTID_FIELD_NUMBER = 1;
+    private int questId_;
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    public boolean hasQuestId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 questId = 1;</code>
+     */
+    public int getQuestId() {
+      return questId_;
+    }
+
+    private void initFields() {
+      questId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasQuestId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, questId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, questId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommit parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommit parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommit parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommit parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommit parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommit parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommit parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommit parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommit parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommit parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceTaskCommit prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceTaskCommit}
+     *
+     * <pre>
+     * 提交任务
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceTaskCommitOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskCommit_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskCommit_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceTaskCommit.class, com.hawk.game.protocol.Alliance.HSAllianceTaskCommit.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceTaskCommit.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        questId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskCommit_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskCommit getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceTaskCommit.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskCommit build() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskCommit result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskCommit buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskCommit result = new com.hawk.game.protocol.Alliance.HSAllianceTaskCommit(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.questId_ = questId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceTaskCommit) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceTaskCommit)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceTaskCommit other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceTaskCommit.getDefaultInstance()) return this;
+        if (other.hasQuestId()) {
+          setQuestId(other.getQuestId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasQuestId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskCommit parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceTaskCommit) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 questId = 1;
+      private int questId_ ;
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public boolean hasQuestId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public int getQuestId() {
+        return questId_;
+      }
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public Builder setQuestId(int value) {
+        bitField0_ |= 0x00000001;
+        questId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 questId = 1;</code>
+       */
+      public Builder clearQuestId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        questId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceTaskCommit)
+    }
+
+    static {
+      defaultInstance = new HSAllianceTaskCommit(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceTaskCommit)
+  }
+
+  public interface HSAllianceTaskCommitRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSAllianceTaskCommitRet}
+   */
+  public static final class HSAllianceTaskCommitRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceTaskCommitRetOrBuilder {
+    // Use HSAllianceTaskCommitRet.newBuilder() to construct.
+    private HSAllianceTaskCommitRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceTaskCommitRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceTaskCommitRet defaultInstance;
+    public static HSAllianceTaskCommitRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceTaskCommitRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceTaskCommitRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskCommitRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskCommitRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet.class, com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceTaskCommitRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceTaskCommitRet>() {
+      public HSAllianceTaskCommitRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceTaskCommitRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceTaskCommitRet> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceTaskCommitRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskCommitRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskCommitRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet.class, com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskCommitRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet build() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet result = new com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceTaskCommitRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceTaskCommitRet)
+    }
+
+    static {
+      defaultInstance = new HSAllianceTaskCommitRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceTaskCommitRet)
+  }
+
+  public interface HSAllianceTaskRewardOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSAllianceTaskReward}
+   *
+   * <pre>
+   * 提交任务
+   * </pre>
+   */
+  public static final class HSAllianceTaskReward extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceTaskRewardOrBuilder {
+    // Use HSAllianceTaskReward.newBuilder() to construct.
+    private HSAllianceTaskReward(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceTaskReward(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceTaskReward defaultInstance;
+    public static HSAllianceTaskReward getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceTaskReward getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceTaskReward(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskReward_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskReward_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceTaskReward.class, com.hawk.game.protocol.Alliance.HSAllianceTaskReward.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceTaskReward> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceTaskReward>() {
+      public HSAllianceTaskReward parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceTaskReward(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceTaskReward> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskReward parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskReward parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskReward parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskReward parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskReward parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskReward parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskReward parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskReward parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskReward parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskReward parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceTaskReward prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceTaskReward}
+     *
+     * <pre>
+     * 提交任务
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceTaskRewardOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskReward_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskReward_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceTaskReward.class, com.hawk.game.protocol.Alliance.HSAllianceTaskReward.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceTaskReward.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskReward_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskReward getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceTaskReward.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskReward build() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskReward result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskReward buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskReward result = new com.hawk.game.protocol.Alliance.HSAllianceTaskReward(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceTaskReward) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceTaskReward)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceTaskReward other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceTaskReward.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskReward parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceTaskReward) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceTaskReward)
+    }
+
+    static {
+      defaultInstance = new HSAllianceTaskReward(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceTaskReward)
+  }
+
+  public interface HSAllianceTaskRewardRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSAllianceTaskRewardRet}
+   */
+  public static final class HSAllianceTaskRewardRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceTaskRewardRetOrBuilder {
+    // Use HSAllianceTaskRewardRet.newBuilder() to construct.
+    private HSAllianceTaskRewardRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceTaskRewardRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceTaskRewardRet defaultInstance;
+    public static HSAllianceTaskRewardRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceTaskRewardRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceTaskRewardRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskRewardRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskRewardRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet.class, com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceTaskRewardRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceTaskRewardRet>() {
+      public HSAllianceTaskRewardRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceTaskRewardRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceTaskRewardRet> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceTaskRewardRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskRewardRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskRewardRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet.class, com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTaskRewardRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet build() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet result = new com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceTaskRewardRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceTaskRewardRet)
+    }
+
+    static {
+      defaultInstance = new HSAllianceTaskRewardRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceTaskRewardRet)
+  }
+
+  public interface HSAllianceDissolveTeamOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSAllianceDissolveTeam}
+   *
+   * <pre>
+   * 解散队伍
+   * </pre>
+   */
+  public static final class HSAllianceDissolveTeam extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceDissolveTeamOrBuilder {
+    // Use HSAllianceDissolveTeam.newBuilder() to construct.
+    private HSAllianceDissolveTeam(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceDissolveTeam(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceDissolveTeam defaultInstance;
+    public static HSAllianceDissolveTeam getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceDissolveTeam getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceDissolveTeam(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceDissolveTeam_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceDissolveTeam_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam.class, com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceDissolveTeam> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceDissolveTeam>() {
+      public HSAllianceDissolveTeam parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceDissolveTeam(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceDissolveTeam> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceDissolveTeam}
+     *
+     * <pre>
+     * 解散队伍
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceDissolveTeam_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceDissolveTeam_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam.class, com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceDissolveTeam_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam build() {
+        com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam result = new com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceDissolveTeam)
+    }
+
+    static {
+      defaultInstance = new HSAllianceDissolveTeam(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceDissolveTeam)
+  }
+
+  public interface HSAllianceDissolveTeamRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSAllianceDissolveTeamRet}
+   */
+  public static final class HSAllianceDissolveTeamRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceDissolveTeamRetOrBuilder {
+    // Use HSAllianceDissolveTeamRet.newBuilder() to construct.
+    private HSAllianceDissolveTeamRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceDissolveTeamRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceDissolveTeamRet defaultInstance;
+    public static HSAllianceDissolveTeamRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceDissolveTeamRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceDissolveTeamRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceDissolveTeamRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceDissolveTeamRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet.class, com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceDissolveTeamRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceDissolveTeamRet>() {
+      public HSAllianceDissolveTeamRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceDissolveTeamRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceDissolveTeamRet> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceDissolveTeamRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceDissolveTeamRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceDissolveTeamRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet.class, com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceDissolveTeamRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet build() {
+        com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet result = new com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceDissolveTeamRet)
+    }
+
+    static {
+      defaultInstance = new HSAllianceDissolveTeamRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceDissolveTeamRet)
+  }
+
+  public interface HSAllianceTeamListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSAllianceTeamList}
+   *
+   * <pre>
+   * 工会任务列表
+   * </pre>
+   */
+  public static final class HSAllianceTeamList extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceTeamListOrBuilder {
+    // Use HSAllianceTeamList.newBuilder() to construct.
+    private HSAllianceTeamList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceTeamList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceTeamList defaultInstance;
+    public static HSAllianceTeamList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceTeamList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceTeamList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTeamList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTeamList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceTeamList.class, com.hawk.game.protocol.Alliance.HSAllianceTeamList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceTeamList> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceTeamList>() {
+      public HSAllianceTeamList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceTeamList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceTeamList> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceTeamList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceTeamList}
+     *
+     * <pre>
+     * 工会任务列表
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceTeamListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTeamList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTeamList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceTeamList.class, com.hawk.game.protocol.Alliance.HSAllianceTeamList.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceTeamList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTeamList_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTeamList getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceTeamList.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTeamList build() {
+        com.hawk.game.protocol.Alliance.HSAllianceTeamList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTeamList buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceTeamList result = new com.hawk.game.protocol.Alliance.HSAllianceTeamList(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceTeamList) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceTeamList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceTeamList other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceTeamList.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceTeamList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceTeamList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceTeamList)
+    }
+
+    static {
+      defaultInstance = new HSAllianceTeamList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceTeamList)
+  }
+
+  public interface HSAllianceTeamListRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .AllianceTeamInfo allianceTeams = 1;
+    /**
+     * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+     */
+    java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamInfo> 
+        getAllianceTeamsList();
+    /**
+     * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+     */
+    com.hawk.game.protocol.Alliance.AllianceTeamInfo getAllianceTeams(int index);
+    /**
+     * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+     */
+    int getAllianceTeamsCount();
+    /**
+     * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder> 
+        getAllianceTeamsOrBuilderList();
+    /**
+     * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+     */
+    com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder getAllianceTeamsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code HSAllianceTeamListRet}
+   */
+  public static final class HSAllianceTeamListRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceTeamListRetOrBuilder {
+    // Use HSAllianceTeamListRet.newBuilder() to construct.
+    private HSAllianceTeamListRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceTeamListRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceTeamListRet defaultInstance;
+    public static HSAllianceTeamListRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceTeamListRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceTeamListRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                allianceTeams_ = new java.util.ArrayList<com.hawk.game.protocol.Alliance.AllianceTeamInfo>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              allianceTeams_.add(input.readMessage(com.hawk.game.protocol.Alliance.AllianceTeamInfo.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          allianceTeams_ = java.util.Collections.unmodifiableList(allianceTeams_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTeamListRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTeamListRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceTeamListRet.class, com.hawk.game.protocol.Alliance.HSAllianceTeamListRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceTeamListRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceTeamListRet>() {
+      public HSAllianceTeamListRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceTeamListRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceTeamListRet> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .AllianceTeamInfo allianceTeams = 1;
+    public static final int ALLIANCETEAMS_FIELD_NUMBER = 1;
+    private java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamInfo> allianceTeams_;
+    /**
+     * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+     */
+    public java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamInfo> getAllianceTeamsList() {
+      return allianceTeams_;
+    }
+    /**
+     * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder> 
+        getAllianceTeamsOrBuilderList() {
+      return allianceTeams_;
+    }
+    /**
+     * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+     */
+    public int getAllianceTeamsCount() {
+      return allianceTeams_.size();
+    }
+    /**
+     * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceTeamInfo getAllianceTeams(int index) {
+      return allianceTeams_.get(index);
+    }
+    /**
+     * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder getAllianceTeamsOrBuilder(
+        int index) {
+      return allianceTeams_.get(index);
+    }
+
+    private void initFields() {
+      allianceTeams_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getAllianceTeamsCount(); i++) {
+        if (!getAllianceTeams(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < allianceTeams_.size(); i++) {
+        output.writeMessage(1, allianceTeams_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < allianceTeams_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, allianceTeams_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamListRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamListRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamListRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamListRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamListRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamListRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamListRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamListRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamListRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceTeamListRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceTeamListRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceTeamListRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceTeamListRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTeamListRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTeamListRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceTeamListRet.class, com.hawk.game.protocol.Alliance.HSAllianceTeamListRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceTeamListRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getAllianceTeamsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (allianceTeamsBuilder_ == null) {
+          allianceTeams_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          allianceTeamsBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceTeamListRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTeamListRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceTeamListRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTeamListRet build() {
+        com.hawk.game.protocol.Alliance.HSAllianceTeamListRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceTeamListRet buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceTeamListRet result = new com.hawk.game.protocol.Alliance.HSAllianceTeamListRet(this);
+        int from_bitField0_ = bitField0_;
+        if (allianceTeamsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            allianceTeams_ = java.util.Collections.unmodifiableList(allianceTeams_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.allianceTeams_ = allianceTeams_;
+        } else {
+          result.allianceTeams_ = allianceTeamsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceTeamListRet) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceTeamListRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceTeamListRet other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceTeamListRet.getDefaultInstance()) return this;
+        if (allianceTeamsBuilder_ == null) {
+          if (!other.allianceTeams_.isEmpty()) {
+            if (allianceTeams_.isEmpty()) {
+              allianceTeams_ = other.allianceTeams_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureAllianceTeamsIsMutable();
+              allianceTeams_.addAll(other.allianceTeams_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.allianceTeams_.isEmpty()) {
+            if (allianceTeamsBuilder_.isEmpty()) {
+              allianceTeamsBuilder_.dispose();
+              allianceTeamsBuilder_ = null;
+              allianceTeams_ = other.allianceTeams_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              allianceTeamsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getAllianceTeamsFieldBuilder() : null;
+            } else {
+              allianceTeamsBuilder_.addAllMessages(other.allianceTeams_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getAllianceTeamsCount(); i++) {
+          if (!getAllianceTeams(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceTeamListRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceTeamListRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .AllianceTeamInfo allianceTeams = 1;
+      private java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamInfo> allianceTeams_ =
+        java.util.Collections.emptyList();
+      private void ensureAllianceTeamsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          allianceTeams_ = new java.util.ArrayList<com.hawk.game.protocol.Alliance.AllianceTeamInfo>(allianceTeams_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceTeamInfo, com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder> allianceTeamsBuilder_;
+
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamInfo> getAllianceTeamsList() {
+        if (allianceTeamsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(allianceTeams_);
+        } else {
+          return allianceTeamsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public int getAllianceTeamsCount() {
+        if (allianceTeamsBuilder_ == null) {
+          return allianceTeams_.size();
+        } else {
+          return allianceTeamsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamInfo getAllianceTeams(int index) {
+        if (allianceTeamsBuilder_ == null) {
+          return allianceTeams_.get(index);
+        } else {
+          return allianceTeamsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public Builder setAllianceTeams(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamInfo value) {
+        if (allianceTeamsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAllianceTeamsIsMutable();
+          allianceTeams_.set(index, value);
+          onChanged();
+        } else {
+          allianceTeamsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public Builder setAllianceTeams(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder builderForValue) {
+        if (allianceTeamsBuilder_ == null) {
+          ensureAllianceTeamsIsMutable();
+          allianceTeams_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          allianceTeamsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public Builder addAllianceTeams(com.hawk.game.protocol.Alliance.AllianceTeamInfo value) {
+        if (allianceTeamsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAllianceTeamsIsMutable();
+          allianceTeams_.add(value);
+          onChanged();
+        } else {
+          allianceTeamsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public Builder addAllianceTeams(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamInfo value) {
+        if (allianceTeamsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAllianceTeamsIsMutable();
+          allianceTeams_.add(index, value);
+          onChanged();
+        } else {
+          allianceTeamsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public Builder addAllianceTeams(
+          com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder builderForValue) {
+        if (allianceTeamsBuilder_ == null) {
+          ensureAllianceTeamsIsMutable();
+          allianceTeams_.add(builderForValue.build());
+          onChanged();
+        } else {
+          allianceTeamsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public Builder addAllianceTeams(
+          int index, com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder builderForValue) {
+        if (allianceTeamsBuilder_ == null) {
+          ensureAllianceTeamsIsMutable();
+          allianceTeams_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          allianceTeamsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public Builder addAllAllianceTeams(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Alliance.AllianceTeamInfo> values) {
+        if (allianceTeamsBuilder_ == null) {
+          ensureAllianceTeamsIsMutable();
+          super.addAll(values, allianceTeams_);
+          onChanged();
+        } else {
+          allianceTeamsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public Builder clearAllianceTeams() {
+        if (allianceTeamsBuilder_ == null) {
+          allianceTeams_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          allianceTeamsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public Builder removeAllianceTeams(int index) {
+        if (allianceTeamsBuilder_ == null) {
+          ensureAllianceTeamsIsMutable();
+          allianceTeams_.remove(index);
+          onChanged();
+        } else {
+          allianceTeamsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder getAllianceTeamsBuilder(
+          int index) {
+        return getAllianceTeamsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder getAllianceTeamsOrBuilder(
+          int index) {
+        if (allianceTeamsBuilder_ == null) {
+          return allianceTeams_.get(index);  } else {
+          return allianceTeamsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder> 
+           getAllianceTeamsOrBuilderList() {
+        if (allianceTeamsBuilder_ != null) {
+          return allianceTeamsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(allianceTeams_);
+        }
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder addAllianceTeamsBuilder() {
+        return getAllianceTeamsFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Alliance.AllianceTeamInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder addAllianceTeamsBuilder(
+          int index) {
+        return getAllianceTeamsFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Alliance.AllianceTeamInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .AllianceTeamInfo allianceTeams = 1;</code>
+       */
+      public java.util.List<com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder> 
+           getAllianceTeamsBuilderList() {
+        return getAllianceTeamsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceTeamInfo, com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder> 
+          getAllianceTeamsFieldBuilder() {
+        if (allianceTeamsBuilder_ == null) {
+          allianceTeamsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Alliance.AllianceTeamInfo, com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder>(
+                  allianceTeams_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          allianceTeams_ = null;
+        }
+        return allianceTeamsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceTeamListRet)
+    }
+
+    static {
+      defaultInstance = new HSAllianceTeamListRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceTeamListRet)
+  }
+
+  public interface HSAllianceSelfTeamOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code HSAllianceSelfTeam}
+   *
+   * <pre>
+   * 我的工会
+   * </pre>
+   */
+  public static final class HSAllianceSelfTeam extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceSelfTeamOrBuilder {
+    // Use HSAllianceSelfTeam.newBuilder() to construct.
+    private HSAllianceSelfTeam(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceSelfTeam(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceSelfTeam defaultInstance;
+    public static HSAllianceSelfTeam getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceSelfTeam getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceSelfTeam(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceSelfTeam_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceSelfTeam_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceSelfTeam.class, com.hawk.game.protocol.Alliance.HSAllianceSelfTeam.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceSelfTeam> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceSelfTeam>() {
+      public HSAllianceSelfTeam parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceSelfTeam(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceSelfTeam> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeam parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeam parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeam parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeam parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeam parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeam parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeam parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeam parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeam parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeam parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceSelfTeam prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceSelfTeam}
+     *
+     * <pre>
+     * 我的工会
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceSelfTeamOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceSelfTeam_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceSelfTeam_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceSelfTeam.class, com.hawk.game.protocol.Alliance.HSAllianceSelfTeam.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceSelfTeam.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceSelfTeam_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceSelfTeam getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceSelfTeam.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceSelfTeam build() {
+        com.hawk.game.protocol.Alliance.HSAllianceSelfTeam result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceSelfTeam buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceSelfTeam result = new com.hawk.game.protocol.Alliance.HSAllianceSelfTeam(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceSelfTeam) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceSelfTeam)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceSelfTeam other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceSelfTeam.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceSelfTeam parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceSelfTeam) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceSelfTeam)
+    }
+
+    static {
+      defaultInstance = new HSAllianceSelfTeam(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceSelfTeam)
+  }
+
+  public interface HSAllianceSelfTeamRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .AllianceTeamInfo selfTeam = 1;
+    /**
+     * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+     */
+    boolean hasSelfTeam();
+    /**
+     * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+     */
+    com.hawk.game.protocol.Alliance.AllianceTeamInfo getSelfTeam();
+    /**
+     * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+     */
+    com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder getSelfTeamOrBuilder();
+  }
+  /**
+   * Protobuf type {@code HSAllianceSelfTeamRet}
+   */
+  public static final class HSAllianceSelfTeamRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSAllianceSelfTeamRetOrBuilder {
+    // Use HSAllianceSelfTeamRet.newBuilder() to construct.
+    private HSAllianceSelfTeamRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSAllianceSelfTeamRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSAllianceSelfTeamRet defaultInstance;
+    public static HSAllianceSelfTeamRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSAllianceSelfTeamRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSAllianceSelfTeamRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = selfTeam_.toBuilder();
+              }
+              selfTeam_ = input.readMessage(com.hawk.game.protocol.Alliance.AllianceTeamInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(selfTeam_);
+                selfTeam_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceSelfTeamRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Alliance.internal_static_HSAllianceSelfTeamRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet.class, com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSAllianceSelfTeamRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSAllianceSelfTeamRet>() {
+      public HSAllianceSelfTeamRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSAllianceSelfTeamRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSAllianceSelfTeamRet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .AllianceTeamInfo selfTeam = 1;
+    public static final int SELFTEAM_FIELD_NUMBER = 1;
+    private com.hawk.game.protocol.Alliance.AllianceTeamInfo selfTeam_;
+    /**
+     * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+     */
+    public boolean hasSelfTeam() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceTeamInfo getSelfTeam() {
+      return selfTeam_;
+    }
+    /**
+     * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+     */
+    public com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder getSelfTeamOrBuilder() {
+      return selfTeam_;
+    }
+
+    private void initFields() {
+      selfTeam_ = com.hawk.game.protocol.Alliance.AllianceTeamInfo.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasSelfTeam()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getSelfTeam().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, selfTeam_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, selfTeam_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSAllianceSelfTeamRet}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceSelfTeamRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceSelfTeamRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet.class, com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSelfTeamFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (selfTeamBuilder_ == null) {
+          selfTeam_ = com.hawk.game.protocol.Alliance.AllianceTeamInfo.getDefaultInstance();
+        } else {
+          selfTeamBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Alliance.internal_static_HSAllianceSelfTeamRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet build() {
+        com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet buildPartial() {
+        com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet result = new com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (selfTeamBuilder_ == null) {
+          result.selfTeam_ = selfTeam_;
+        } else {
+          result.selfTeam_ = selfTeamBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet) {
+          return mergeFrom((com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet other) {
+        if (other == com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet.getDefaultInstance()) return this;
+        if (other.hasSelfTeam()) {
+          mergeSelfTeam(other.getSelfTeam());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasSelfTeam()) {
+          
+          return false;
+        }
+        if (!getSelfTeam().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Alliance.HSAllianceSelfTeamRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .AllianceTeamInfo selfTeam = 1;
+      private com.hawk.game.protocol.Alliance.AllianceTeamInfo selfTeam_ = com.hawk.game.protocol.Alliance.AllianceTeamInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceTeamInfo, com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder> selfTeamBuilder_;
+      /**
+       * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+       */
+      public boolean hasSelfTeam() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamInfo getSelfTeam() {
+        if (selfTeamBuilder_ == null) {
+          return selfTeam_;
+        } else {
+          return selfTeamBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+       */
+      public Builder setSelfTeam(com.hawk.game.protocol.Alliance.AllianceTeamInfo value) {
+        if (selfTeamBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          selfTeam_ = value;
+          onChanged();
+        } else {
+          selfTeamBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+       */
+      public Builder setSelfTeam(
+          com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder builderForValue) {
+        if (selfTeamBuilder_ == null) {
+          selfTeam_ = builderForValue.build();
+          onChanged();
+        } else {
+          selfTeamBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+       */
+      public Builder mergeSelfTeam(com.hawk.game.protocol.Alliance.AllianceTeamInfo value) {
+        if (selfTeamBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              selfTeam_ != com.hawk.game.protocol.Alliance.AllianceTeamInfo.getDefaultInstance()) {
+            selfTeam_ =
+              com.hawk.game.protocol.Alliance.AllianceTeamInfo.newBuilder(selfTeam_).mergeFrom(value).buildPartial();
+          } else {
+            selfTeam_ = value;
+          }
+          onChanged();
+        } else {
+          selfTeamBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+       */
+      public Builder clearSelfTeam() {
+        if (selfTeamBuilder_ == null) {
+          selfTeam_ = com.hawk.game.protocol.Alliance.AllianceTeamInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          selfTeamBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder getSelfTeamBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getSelfTeamFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+       */
+      public com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder getSelfTeamOrBuilder() {
+        if (selfTeamBuilder_ != null) {
+          return selfTeamBuilder_.getMessageOrBuilder();
+        } else {
+          return selfTeam_;
+        }
+      }
+      /**
+       * <code>required .AllianceTeamInfo selfTeam = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Alliance.AllianceTeamInfo, com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder> 
+          getSelfTeamFieldBuilder() {
+        if (selfTeamBuilder_ == null) {
+          selfTeamBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.hawk.game.protocol.Alliance.AllianceTeamInfo, com.hawk.game.protocol.Alliance.AllianceTeamInfo.Builder, com.hawk.game.protocol.Alliance.AllianceTeamInfoOrBuilder>(
+                  selfTeam_,
+                  getParentForChildren(),
+                  isClean());
+          selfTeam_ = null;
+        }
+        return selfTeamBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSAllianceSelfTeamRet)
+    }
+
+    static {
+      defaultInstance = new HSAllianceSelfTeamRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSAllianceSelfTeamRet)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_AllianceApply_descriptor;
   private static
@@ -27428,6 +38265,26 @@ public final class Alliance {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_AllianceInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_AllianceTaskInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_AllianceTaskInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_AllianceTeamQuestInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_AllianceTeamQuestInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_AllianceTeamMemInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_AllianceTeamMemInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_AllianceTeamInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_AllianceTeamInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSAllianceCreate_descriptor;
   private static
@@ -27678,6 +38535,96 @@ public final class Alliance {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSLevelChangeNotify_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceJoinNotify_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceJoinNotify_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceLeaveNotify_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceLeaveNotify_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceCreateTeam_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceCreateTeam_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceCreateTeamRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceCreateTeamRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceJoinTeam_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceJoinTeam_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceJoinTeamRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceJoinTeamRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceTaskAccept_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceTaskAccept_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceTaskAcceptRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceTaskAcceptRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceTaskCommit_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceTaskCommit_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceTaskCommitRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceTaskCommitRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceTaskReward_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceTaskReward_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceTaskRewardRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceTaskRewardRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceDissolveTeam_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceDissolveTeam_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceDissolveTeamRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceDissolveTeamRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceTeamList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceTeamList_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceTeamListRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceTeamListRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceSelfTeam_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceSelfTeam_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSAllianceSelfTeamRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSAllianceSelfTeamRet_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -27694,65 +38641,92 @@ public final class Alliance {
       "\t\022\023\n\013battlePoint\030\003 \002(\005\022\024\n\014contribution\030\004" +
       " \002(\005\022\017\n\007postion\030\005 \002(\005\022\n\n\002id\030\006 \002(\005\022\021\n\tpra" +
       "yCount\030\007 \002(\005\022\023\n\013sendFatigue\030\010 \001(\010\022\021\n\tlog" +
-      "inTime\030\t \002(\005\022\022\n\nlogoutTime\030\n \002(\005\"\223\002\n\014All" +
+      "inTime\030\t \002(\005\022\022\n\nlogoutTime\030\n \002(\005\"\271\002\n\014All" +
       "ianceInfo\022\n\n\002id\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\024\n\014" +
       "contribution\030\003 \002(\005\022\031\n\021contributionToday\030",
       "\004 \002(\005\022\030\n\020contribution3day\030\005 \002(\005\022\022\n\ncurre" +
       "ntPop\030\006 \002(\005\022\016\n\006maxPop\030\007 \002(\005\022\020\n\010memLevel\030" +
       "\010 \002(\005\022\020\n\010expLevel\030\t \002(\005\022\021\n\tcoinLevel\030\n \002" +
       "(\005\022\016\n\006notice\030\013 \002(\t\022\014\n\004name\030\014 \002(\t\022\020\n\010minL" +
-      "evel\030\r \002(\005\022\022\n\nautoAccept\030\016 \002(\010\"0\n\020HSAlli" +
-      "anceCreate\022\014\n\004name\030\001 \002(\t\022\016\n\006notice\030\002 \002(\t" +
-      "\"(\n\023HSAllianceCreateRet\022\021\n\tallianeId\030\001 \002" +
-      "(\005\"!\n\016HSAllianceList\022\017\n\007reqPage\030\001 \002(\005\"K\n" +
-      "\021HSAllianceListRet\022\021\n\ttotalPage\030\001 \002(\005\022#\n" +
-      "\014allianceList\030\002 \003(\0132\r.AllianceInfo\"$\n\020HS",
-      "AllianceSearch\022\020\n\010nameOrId\030\001 \002(\t\"4\n\023HSAl" +
-      "lianceSearchRet\022\035\n\006result\030\001 \003(\0132\r.Allian" +
-      "ceInfo\"\"\n\020HSAllianceNotice\022\016\n\006notice\030\001 \002" +
-      "(\t\"\025\n\023HSAllianceNoticeRet\"%\n\017HSAllianceA" +
-      "pply\022\022\n\nallianceId\030\001 \002(\005\"(\n\022HSAllianceAp" +
-      "plyRet\022\022\n\nallianceId\030\001 \002(\005\"G\n\024HSAlliance" +
-      "HanleApply\022\020\n\010playerId\030\001 \001(\005\022\016\n\006accept\030\002" +
-      " \002(\010\022\r\n\005isAll\030\003 \002(\010\"\031\n\027HSAllianceHanleAp" +
-      "plyRet\"+\n\025HSAllianceCancleApply\022\022\n\nallia" +
-      "nceId\030\001 \002(\005\"\032\n\030HSAllianceCancleApplyRet\"",
-      "8\n\023HSAllianceChangePos\022\020\n\010playerId\030\001 \002(\005" +
-      "\022\017\n\007postion\030\002 \002(\005\"\030\n\026HSAllianceChangePos" +
-      "Ret\"\021\n\017HSAllianceLeave\"\024\n\022HSAllianceLeav" +
-      "eRet\")\n\025HSAllianceChangeOwner\022\020\n\010targetI" +
-      "d\030\001 \002(\005\"\032\n\030HSAllianceChangeOwnerRet\"%\n\021H" +
-      "SAllianceMemKick\022\020\n\010targetId\030\001 \002(\005\"\026\n\024HS" +
-      "AllianceMemKickRet\"!\n\021HSAllianceLevelUp\022" +
-      "\014\n\004type\030\001 \002(\005\"\026\n\024HSAllianceLevelUpRet\"#\n" +
-      "\016HSAlliancePray\022\021\n\tprayIndex\030\001 \002(\005\"\023\n\021HS" +
-      "AlliancePrayRet\"7\n\021HSAllianceSettion\022\020\n\010",
-      "minLevel\030\001 \002(\005\022\020\n\010autoJoin\030\002 \002(\010\"\026\n\024HSAl" +
-      "lianceSettionRet\")\n\025HSAllianceFatigueGiv" +
-      "e\022\020\n\010targetId\030\001 \002(\005\"\032\n\030HSAllianceFatigue" +
-      "GiveRet\"\017\n\rHSAllianceSyn\"\022\n\020HSAllianceSy" +
-      "nRet\"\020\n\016HSAllianceData\"8\n\021HSAllianceData" +
-      "Ret\022#\n\014allianceData\030\001 \002(\0132\r.AllianceInfo" +
-      "\"\026\n\024HSAllianceSettingSyn\"=\n\027HSAllianceSe" +
-      "ttingSynRet\022\020\n\010minLevel\030\001 \002(\005\022\020\n\010autoJoi" +
-      "n\030\002 \002(\010\"\024\n\022HSAllianceSelfData\":\n\025HSAllia" +
-      "nceSelfDataRet\022!\n\010selfData\030\001 \002(\0132\017.Allia",
-      "nceMember\"\023\n\021HSAllianceMembers\";\n\024HSAlli" +
-      "anceMembersRet\022#\n\nmemberList\030\001 \003(\0132\017.All" +
-      "ianceMember\"\025\n\023HSAllianceApplyList\"7\n\026HS" +
-      "AllianceApplyListRet\022\035\n\005apply\030\001 \003(\0132\016.Al" +
-      "lianceApply\"6\n\025HSAllianceApplyNotify\022\035\n\005" +
-      "apply\030\001 \002(\0132\016.AllianceApply\">\n\033HSAllianc" +
-      "eRemoveApplyNotify\022\020\n\010playerId\030\001 \001(\005\022\r\n\005" +
-      "clear\030\002 \002(\010\"(\n\026HSAllianceNoticeNotify\022\016\n" +
-      "\006notice\030\001 \002(\t\"8\n\021HSMemberAddNotify\022#\n\nme" +
-      "mberData\030\001 \003(\0132\017.AllianceMember\"(\n\024HSMem",
-      "berRemoveNotify\022\020\n\010playerId\030\001 \002(\005\";\n\027HSM" +
-      "emberPosChangeNotify\022\020\n\010playerId\030\001 \002(\005\022\016" +
-      "\n\006newPos\030\002 \002(\005\"&\n\023HSChangeOwnerNotify\022\017\n" +
-      "\007ownerId\030\001 \002(\005\"2\n\023HSLevelChangeNotify\022\014\n" +
-      "\004type\030\001 \002(\005\022\r\n\005level\030\002 \002(\005B\030\n\026com.hawk.g" +
-      "ame.protocol"
+      "evel\030\r \002(\005\022\022\n\nautoAccept\030\016 \002(\010\022\021\n\tprayCo" +
+      "unt\030\017 \001(\005\022\021\n\ttaskCount\030\020 \001(\005\"L\n\020Alliance" +
+      "TaskInfo\022\020\n\010itemTask\030\001 \003(\005\022\020\n\010coinTask\030\002" +
+      " \003(\005\022\024\n\014instanceTask\030\003 \003(\005\"k\n\025AllianceTe" +
+      "amQuestInfo\022\017\n\007questId\030\001 \002(\005\022\020\n\010playerId" +
+      "\030\002 \002(\005\022\020\n\010nickname\030\003 \001(\t\022\r\n\005level\030\004 \001(\005\022",
+      "\016\n\006avatar\030\005 \001(\005\"k\n\023AllianceTeamMemInfo\022\020" +
+      "\n\010playerId\030\001 \002(\005\022\020\n\010nickname\030\002 \001(\t\022\r\n\005le" +
+      "vel\030\003 \002(\005\022\016\n\006avatar\030\004 \002(\005\022\021\n\tisCaptain\030\005" +
+      " \002(\010\"x\n\020AllianceTeamInfo\022\021\n\tstartTime\030\001 " +
+      "\002(\005\022%\n\007members\030\002 \003(\0132\024.AllianceTeamMemIn" +
+      "fo\022*\n\nquestInfos\030\003 \003(\0132\026.AllianceTeamQue" +
+      "stInfo\"0\n\020HSAllianceCreate\022\014\n\004name\030\001 \002(\t" +
+      "\022\016\n\006notice\030\002 \002(\t\"(\n\023HSAllianceCreateRet\022" +
+      "\021\n\tallianeId\030\001 \002(\005\"!\n\016HSAllianceList\022\017\n\007" +
+      "reqPage\030\001 \002(\005\"K\n\021HSAllianceListRet\022\021\n\tto",
+      "talPage\030\001 \002(\005\022#\n\014allianceList\030\002 \003(\0132\r.Al" +
+      "lianceInfo\"$\n\020HSAllianceSearch\022\020\n\010nameOr" +
+      "Id\030\001 \002(\t\"4\n\023HSAllianceSearchRet\022\035\n\006resul" +
+      "t\030\001 \003(\0132\r.AllianceInfo\"\"\n\020HSAllianceNoti" +
+      "ce\022\016\n\006notice\030\001 \002(\t\"\025\n\023HSAllianceNoticeRe" +
+      "t\"%\n\017HSAllianceApply\022\022\n\nallianceId\030\001 \002(\005" +
+      "\"(\n\022HSAllianceApplyRet\022\022\n\nallianceId\030\001 \002" +
+      "(\005\"G\n\024HSAllianceHanleApply\022\020\n\010playerId\030\001" +
+      " \001(\005\022\016\n\006accept\030\002 \002(\010\022\r\n\005isAll\030\003 \002(\010\"\031\n\027H" +
+      "SAllianceHanleApplyRet\"+\n\025HSAllianceCanc",
+      "leApply\022\022\n\nallianceId\030\001 \002(\005\"\032\n\030HSAllianc" +
+      "eCancleApplyRet\"8\n\023HSAllianceChangePos\022\020" +
+      "\n\010playerId\030\001 \002(\005\022\017\n\007postion\030\002 \002(\005\"\030\n\026HSA" +
+      "llianceChangePosRet\"\021\n\017HSAllianceLeave\"\024" +
+      "\n\022HSAllianceLeaveRet\")\n\025HSAllianceChange" +
+      "Owner\022\020\n\010targetId\030\001 \002(\005\"\032\n\030HSAllianceCha" +
+      "ngeOwnerRet\"%\n\021HSAllianceMemKick\022\020\n\010targ" +
+      "etId\030\001 \002(\005\"\026\n\024HSAllianceMemKickRet\"!\n\021HS" +
+      "AllianceLevelUp\022\014\n\004type\030\001 \002(\005\"\026\n\024HSAllia" +
+      "nceLevelUpRet\"#\n\016HSAlliancePray\022\021\n\tprayI",
+      "ndex\030\001 \002(\005\"\023\n\021HSAlliancePrayRet\"7\n\021HSAll" +
+      "ianceSettion\022\020\n\010minLevel\030\001 \002(\005\022\020\n\010autoJo" +
+      "in\030\002 \002(\010\"\026\n\024HSAllianceSettionRet\")\n\025HSAl" +
+      "lianceFatigueGive\022\020\n\010targetId\030\001 \002(\005\"\032\n\030H" +
+      "SAllianceFatigueGiveRet\"\017\n\rHSAllianceSyn" +
+      "\"\022\n\020HSAllianceSynRet\"\020\n\016HSAllianceData\"8" +
+      "\n\021HSAllianceDataRet\022#\n\014allianceData\030\001 \002(" +
+      "\0132\r.AllianceInfo\"\026\n\024HSAllianceSettingSyn" +
+      "\"=\n\027HSAllianceSettingSynRet\022\020\n\010minLevel\030" +
+      "\001 \002(\005\022\020\n\010autoJoin\030\002 \002(\010\"\024\n\022HSAllianceSel",
+      "fData\":\n\025HSAllianceSelfDataRet\022!\n\010selfDa" +
+      "ta\030\001 \002(\0132\017.AllianceMember\"\023\n\021HSAllianceM" +
+      "embers\";\n\024HSAllianceMembersRet\022#\n\nmember" +
+      "List\030\001 \003(\0132\017.AllianceMember\"\025\n\023HSAllianc" +
+      "eApplyList\"7\n\026HSAllianceApplyListRet\022\035\n\005" +
+      "apply\030\001 \003(\0132\016.AllianceApply\"6\n\025HSAllianc" +
+      "eApplyNotify\022\035\n\005apply\030\001 \002(\0132\016.AllianceAp" +
+      "ply\">\n\033HSAllianceRemoveApplyNotify\022\020\n\010pl" +
+      "ayerId\030\001 \001(\005\022\r\n\005clear\030\002 \002(\010\"(\n\026HSAllianc" +
+      "eNoticeNotify\022\016\n\006notice\030\001 \002(\t\"8\n\021HSMembe",
+      "rAddNotify\022#\n\nmemberData\030\001 \003(\0132\017.Allianc" +
+      "eMember\"(\n\024HSMemberRemoveNotify\022\020\n\010playe" +
+      "rId\030\001 \002(\005\";\n\027HSMemberPosChangeNotify\022\020\n\010" +
+      "playerId\030\001 \002(\005\022\016\n\006newPos\030\002 \002(\005\"&\n\023HSChan" +
+      "geOwnerNotify\022\017\n\007ownerId\030\001 \002(\005\"2\n\023HSLeve" +
+      "lChangeNotify\022\014\n\004type\030\001 \002(\005\022\r\n\005level\030\002 \002" +
+      "(\005\"*\n\024HSAllianceJoinNotify\022\022\n\nallianceId" +
+      "\030\001 \002(\005\"\027\n\025HSAllianceLeaveNotify\"&\n\024HSAll" +
+      "ianceCreateTeam\022\016\n\006taskId\030\001 \002(\005\">\n\027HSAll" +
+      "ianceCreateTeamRet\022#\n\010taskInfo\030\001 \002(\0132\021.A",
+      "llianceTaskInfo\"$\n\022HSAllianceJoinTeam\022\016\n" +
+      "\006teamId\030\001 \002(\005\"\027\n\025HSAllianceJoinTeamRet\"\'" +
+      "\n\024HSAllianceTaskAccept\022\017\n\007questId\030\001 \002(\005\"" +
+      "\031\n\027HSAllianceTaskAcceptRet\"\'\n\024HSAlliance" +
+      "TaskCommit\022\017\n\007questId\030\001 \002(\005\"\031\n\027HSAllianc" +
+      "eTaskCommitRet\"\026\n\024HSAllianceTaskReward\"\031" +
+      "\n\027HSAllianceTaskRewardRet\"\030\n\026HSAllianceD" +
+      "issolveTeam\"\033\n\031HSAllianceDissolveTeamRet" +
+      "\"\024\n\022HSAllianceTeamList\"A\n\025HSAllianceTeam" +
+      "ListRet\022(\n\rallianceTeams\030\001 \003(\0132\021.Allianc",
+      "eTeamInfo\"\024\n\022HSAllianceSelfTeam\"<\n\025HSAll" +
+      "ianceSelfTeamRet\022#\n\010selfTeam\030\001 \002(\0132\021.All" +
+      "ianceTeamInfoB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -27776,307 +38750,439 @@ public final class Alliance {
           internal_static_AllianceInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_AllianceInfo_descriptor,
-              new java.lang.String[] { "Id", "Level", "Contribution", "ContributionToday", "Contribution3Day", "CurrentPop", "MaxPop", "MemLevel", "ExpLevel", "CoinLevel", "Notice", "Name", "MinLevel", "AutoAccept", });
-          internal_static_HSAllianceCreate_descriptor =
+              new java.lang.String[] { "Id", "Level", "Contribution", "ContributionToday", "Contribution3Day", "CurrentPop", "MaxPop", "MemLevel", "ExpLevel", "CoinLevel", "Notice", "Name", "MinLevel", "AutoAccept", "PrayCount", "TaskCount", });
+          internal_static_AllianceTaskInfo_descriptor =
             getDescriptor().getMessageTypes().get(3);
+          internal_static_AllianceTaskInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_AllianceTaskInfo_descriptor,
+              new java.lang.String[] { "ItemTask", "CoinTask", "InstanceTask", });
+          internal_static_AllianceTeamQuestInfo_descriptor =
+            getDescriptor().getMessageTypes().get(4);
+          internal_static_AllianceTeamQuestInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_AllianceTeamQuestInfo_descriptor,
+              new java.lang.String[] { "QuestId", "PlayerId", "Nickname", "Level", "Avatar", });
+          internal_static_AllianceTeamMemInfo_descriptor =
+            getDescriptor().getMessageTypes().get(5);
+          internal_static_AllianceTeamMemInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_AllianceTeamMemInfo_descriptor,
+              new java.lang.String[] { "PlayerId", "Nickname", "Level", "Avatar", "IsCaptain", });
+          internal_static_AllianceTeamInfo_descriptor =
+            getDescriptor().getMessageTypes().get(6);
+          internal_static_AllianceTeamInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_AllianceTeamInfo_descriptor,
+              new java.lang.String[] { "StartTime", "Members", "QuestInfos", });
+          internal_static_HSAllianceCreate_descriptor =
+            getDescriptor().getMessageTypes().get(7);
           internal_static_HSAllianceCreate_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceCreate_descriptor,
               new java.lang.String[] { "Name", "Notice", });
           internal_static_HSAllianceCreateRet_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_HSAllianceCreateRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceCreateRet_descriptor,
               new java.lang.String[] { "AllianeId", });
           internal_static_HSAllianceList_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_HSAllianceList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceList_descriptor,
               new java.lang.String[] { "ReqPage", });
           internal_static_HSAllianceListRet_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_HSAllianceListRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceListRet_descriptor,
               new java.lang.String[] { "TotalPage", "AllianceList", });
           internal_static_HSAllianceSearch_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_HSAllianceSearch_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceSearch_descriptor,
               new java.lang.String[] { "NameOrId", });
           internal_static_HSAllianceSearchRet_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_HSAllianceSearchRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceSearchRet_descriptor,
               new java.lang.String[] { "Result", });
           internal_static_HSAllianceNotice_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_HSAllianceNotice_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceNotice_descriptor,
               new java.lang.String[] { "Notice", });
           internal_static_HSAllianceNoticeRet_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_HSAllianceNoticeRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceNoticeRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceApply_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_HSAllianceApply_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceApply_descriptor,
               new java.lang.String[] { "AllianceId", });
           internal_static_HSAllianceApplyRet_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_HSAllianceApplyRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceApplyRet_descriptor,
               new java.lang.String[] { "AllianceId", });
           internal_static_HSAllianceHanleApply_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_HSAllianceHanleApply_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceHanleApply_descriptor,
               new java.lang.String[] { "PlayerId", "Accept", "IsAll", });
           internal_static_HSAllianceHanleApplyRet_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_HSAllianceHanleApplyRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceHanleApplyRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceCancleApply_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_HSAllianceCancleApply_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceCancleApply_descriptor,
               new java.lang.String[] { "AllianceId", });
           internal_static_HSAllianceCancleApplyRet_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_HSAllianceCancleApplyRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceCancleApplyRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceChangePos_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_HSAllianceChangePos_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceChangePos_descriptor,
               new java.lang.String[] { "PlayerId", "Postion", });
           internal_static_HSAllianceChangePosRet_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_HSAllianceChangePosRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceChangePosRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceLeave_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_HSAllianceLeave_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceLeave_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceLeaveRet_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_HSAllianceLeaveRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceLeaveRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceChangeOwner_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_HSAllianceChangeOwner_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceChangeOwner_descriptor,
               new java.lang.String[] { "TargetId", });
           internal_static_HSAllianceChangeOwnerRet_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_HSAllianceChangeOwnerRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceChangeOwnerRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceMemKick_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_HSAllianceMemKick_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceMemKick_descriptor,
               new java.lang.String[] { "TargetId", });
           internal_static_HSAllianceMemKickRet_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_HSAllianceMemKickRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceMemKickRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceLevelUp_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_HSAllianceLevelUp_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceLevelUp_descriptor,
               new java.lang.String[] { "Type", });
           internal_static_HSAllianceLevelUpRet_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_HSAllianceLevelUpRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceLevelUpRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAlliancePray_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_HSAlliancePray_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAlliancePray_descriptor,
               new java.lang.String[] { "PrayIndex", });
           internal_static_HSAlliancePrayRet_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_HSAlliancePrayRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAlliancePrayRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceSettion_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_HSAllianceSettion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceSettion_descriptor,
               new java.lang.String[] { "MinLevel", "AutoJoin", });
           internal_static_HSAllianceSettionRet_descriptor =
-            getDescriptor().getMessageTypes().get(30);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_HSAllianceSettionRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceSettionRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceFatigueGive_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_HSAllianceFatigueGive_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceFatigueGive_descriptor,
               new java.lang.String[] { "TargetId", });
           internal_static_HSAllianceFatigueGiveRet_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_HSAllianceFatigueGiveRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceFatigueGiveRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceSyn_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_HSAllianceSyn_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceSyn_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceSynRet_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_HSAllianceSynRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceSynRet_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceData_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_HSAllianceData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceData_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceDataRet_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_HSAllianceDataRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceDataRet_descriptor,
               new java.lang.String[] { "AllianceData", });
           internal_static_HSAllianceSettingSyn_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_HSAllianceSettingSyn_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceSettingSyn_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceSettingSynRet_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_HSAllianceSettingSynRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceSettingSynRet_descriptor,
               new java.lang.String[] { "MinLevel", "AutoJoin", });
           internal_static_HSAllianceSelfData_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_HSAllianceSelfData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceSelfData_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceSelfDataRet_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_HSAllianceSelfDataRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceSelfDataRet_descriptor,
               new java.lang.String[] { "SelfData", });
           internal_static_HSAllianceMembers_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(45);
           internal_static_HSAllianceMembers_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceMembers_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceMembersRet_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(46);
           internal_static_HSAllianceMembersRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceMembersRet_descriptor,
               new java.lang.String[] { "MemberList", });
           internal_static_HSAllianceApplyList_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(47);
           internal_static_HSAllianceApplyList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceApplyList_descriptor,
               new java.lang.String[] { });
           internal_static_HSAllianceApplyListRet_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(48);
           internal_static_HSAllianceApplyListRet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceApplyListRet_descriptor,
               new java.lang.String[] { "Apply", });
           internal_static_HSAllianceApplyNotify_descriptor =
-            getDescriptor().getMessageTypes().get(45);
+            getDescriptor().getMessageTypes().get(49);
           internal_static_HSAllianceApplyNotify_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceApplyNotify_descriptor,
               new java.lang.String[] { "Apply", });
           internal_static_HSAllianceRemoveApplyNotify_descriptor =
-            getDescriptor().getMessageTypes().get(46);
+            getDescriptor().getMessageTypes().get(50);
           internal_static_HSAllianceRemoveApplyNotify_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceRemoveApplyNotify_descriptor,
               new java.lang.String[] { "PlayerId", "Clear", });
           internal_static_HSAllianceNoticeNotify_descriptor =
-            getDescriptor().getMessageTypes().get(47);
+            getDescriptor().getMessageTypes().get(51);
           internal_static_HSAllianceNoticeNotify_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSAllianceNoticeNotify_descriptor,
               new java.lang.String[] { "Notice", });
           internal_static_HSMemberAddNotify_descriptor =
-            getDescriptor().getMessageTypes().get(48);
+            getDescriptor().getMessageTypes().get(52);
           internal_static_HSMemberAddNotify_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMemberAddNotify_descriptor,
               new java.lang.String[] { "MemberData", });
           internal_static_HSMemberRemoveNotify_descriptor =
-            getDescriptor().getMessageTypes().get(49);
+            getDescriptor().getMessageTypes().get(53);
           internal_static_HSMemberRemoveNotify_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMemberRemoveNotify_descriptor,
               new java.lang.String[] { "PlayerId", });
           internal_static_HSMemberPosChangeNotify_descriptor =
-            getDescriptor().getMessageTypes().get(50);
+            getDescriptor().getMessageTypes().get(54);
           internal_static_HSMemberPosChangeNotify_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMemberPosChangeNotify_descriptor,
               new java.lang.String[] { "PlayerId", "NewPos", });
           internal_static_HSChangeOwnerNotify_descriptor =
-            getDescriptor().getMessageTypes().get(51);
+            getDescriptor().getMessageTypes().get(55);
           internal_static_HSChangeOwnerNotify_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSChangeOwnerNotify_descriptor,
               new java.lang.String[] { "OwnerId", });
           internal_static_HSLevelChangeNotify_descriptor =
-            getDescriptor().getMessageTypes().get(52);
+            getDescriptor().getMessageTypes().get(56);
           internal_static_HSLevelChangeNotify_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSLevelChangeNotify_descriptor,
               new java.lang.String[] { "Type", "Level", });
+          internal_static_HSAllianceJoinNotify_descriptor =
+            getDescriptor().getMessageTypes().get(57);
+          internal_static_HSAllianceJoinNotify_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceJoinNotify_descriptor,
+              new java.lang.String[] { "AllianceId", });
+          internal_static_HSAllianceLeaveNotify_descriptor =
+            getDescriptor().getMessageTypes().get(58);
+          internal_static_HSAllianceLeaveNotify_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceLeaveNotify_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSAllianceCreateTeam_descriptor =
+            getDescriptor().getMessageTypes().get(59);
+          internal_static_HSAllianceCreateTeam_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceCreateTeam_descriptor,
+              new java.lang.String[] { "TaskId", });
+          internal_static_HSAllianceCreateTeamRet_descriptor =
+            getDescriptor().getMessageTypes().get(60);
+          internal_static_HSAllianceCreateTeamRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceCreateTeamRet_descriptor,
+              new java.lang.String[] { "TaskInfo", });
+          internal_static_HSAllianceJoinTeam_descriptor =
+            getDescriptor().getMessageTypes().get(61);
+          internal_static_HSAllianceJoinTeam_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceJoinTeam_descriptor,
+              new java.lang.String[] { "TeamId", });
+          internal_static_HSAllianceJoinTeamRet_descriptor =
+            getDescriptor().getMessageTypes().get(62);
+          internal_static_HSAllianceJoinTeamRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceJoinTeamRet_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSAllianceTaskAccept_descriptor =
+            getDescriptor().getMessageTypes().get(63);
+          internal_static_HSAllianceTaskAccept_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceTaskAccept_descriptor,
+              new java.lang.String[] { "QuestId", });
+          internal_static_HSAllianceTaskAcceptRet_descriptor =
+            getDescriptor().getMessageTypes().get(64);
+          internal_static_HSAllianceTaskAcceptRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceTaskAcceptRet_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSAllianceTaskCommit_descriptor =
+            getDescriptor().getMessageTypes().get(65);
+          internal_static_HSAllianceTaskCommit_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceTaskCommit_descriptor,
+              new java.lang.String[] { "QuestId", });
+          internal_static_HSAllianceTaskCommitRet_descriptor =
+            getDescriptor().getMessageTypes().get(66);
+          internal_static_HSAllianceTaskCommitRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceTaskCommitRet_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSAllianceTaskReward_descriptor =
+            getDescriptor().getMessageTypes().get(67);
+          internal_static_HSAllianceTaskReward_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceTaskReward_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSAllianceTaskRewardRet_descriptor =
+            getDescriptor().getMessageTypes().get(68);
+          internal_static_HSAllianceTaskRewardRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceTaskRewardRet_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSAllianceDissolveTeam_descriptor =
+            getDescriptor().getMessageTypes().get(69);
+          internal_static_HSAllianceDissolveTeam_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceDissolveTeam_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSAllianceDissolveTeamRet_descriptor =
+            getDescriptor().getMessageTypes().get(70);
+          internal_static_HSAllianceDissolveTeamRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceDissolveTeamRet_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSAllianceTeamList_descriptor =
+            getDescriptor().getMessageTypes().get(71);
+          internal_static_HSAllianceTeamList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceTeamList_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSAllianceTeamListRet_descriptor =
+            getDescriptor().getMessageTypes().get(72);
+          internal_static_HSAllianceTeamListRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceTeamListRet_descriptor,
+              new java.lang.String[] { "AllianceTeams", });
+          internal_static_HSAllianceSelfTeam_descriptor =
+            getDescriptor().getMessageTypes().get(73);
+          internal_static_HSAllianceSelfTeam_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceSelfTeam_descriptor,
+              new java.lang.String[] { });
+          internal_static_HSAllianceSelfTeamRet_descriptor =
+            getDescriptor().getMessageTypes().get(74);
+          internal_static_HSAllianceSelfTeamRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSAllianceSelfTeamRet_descriptor,
+              new java.lang.String[] { "SelfTeam", });
           return null;
         }
       };

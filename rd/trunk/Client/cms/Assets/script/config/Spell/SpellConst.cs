@@ -70,6 +70,8 @@ public enum BuffType
     Buff_Type_NoHeal,
     Buff_Type_PhyImmune,
     Buff_Type_MagicImmune,
+    Buff_Type_Interrupt,//打断大招
+    
 
     Num_Buff_Type
 }
