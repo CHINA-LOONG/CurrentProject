@@ -388,7 +388,7 @@ public class HawkReportService extends HawkThread {
 	}
 	
 	/**
-	 * 上报充值数据
+	 * 上报服务器数据
 	 * 
 	 * @author hawk
 	 */

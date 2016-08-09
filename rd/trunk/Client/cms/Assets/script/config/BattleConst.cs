@@ -94,6 +94,8 @@ public class BattleConst
     //最大最小装备品阶 6 1
     public const int maxEquipStage = 6;
     public const int minEquipStage = 1;
+    //装备类型个数
+    public const int equipTypeCount = 4;
     //最大宝石个数 6-4,5-3,4-2,3-1,2-0,1-0
     public const int maxGemCount = 4;
     //最小宝石出现等级
@@ -117,4 +119,10 @@ public class BattleConst
     //万能碎片ID
     public const string commonFragmentID = "20001";
 
+    //战力相关
+    public const float bpSpellBasic = 100.0f;
+    public const float bpDazhaoLvl = 1.0f;
+    public const float bpPhyLvl = 1.0f;
+    public const float bpMagicLvl = 1.0f;
+    public const float bpDotLvl = 1.0f;
 }

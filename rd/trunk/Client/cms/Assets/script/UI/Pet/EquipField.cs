@@ -39,11 +39,11 @@ public class EquipField : MonoBehaviour
         }
     }
 
-    public void SetField(GameUnit unit, int part)
+    public void SetField(GameUnit unit, PartType part)
     {
         this.unit=unit;
-        this.part = (PartType)part;
-        this.Data = unit.equipList[part];
+        this.part = part;
+        this.Data = unit.equipList[(int)part - 1];
     }
 
     void SetEquip(EquipData data)
@@ -61,7 +61,7 @@ public class EquipField : MonoBehaviour
             {
                 equipNull.gameObject.SetActive(true);
             }
-            equipNull.ShowAdd(UIUtil.CheckIsEnoughEquip(unit,(int)part));
+            equipNull.ShowAdd(UIUtil.CheckIsEnoughEquip(unit,part));
 
             if (equipIcon != null)
             {

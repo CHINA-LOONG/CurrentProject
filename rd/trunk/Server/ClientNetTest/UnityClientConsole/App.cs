@@ -223,8 +223,11 @@ namespace UnityClientConsole
                 //NetManager.GetInstance().SendProtocol(code.SETTING_LANGUAGE_C.GetHashCode(), settingLang);
                 //Console.WriteLine("设置语言");
 
-                //HSImChatSend chatSend = new HSImChatSend();
-                //chatSend.channel = ImChannel.WORLD.GetHashCode();
+//                 HSImChatSend chatSend = new HSImChatSend();
+//                 chatSend.channel = ImChannel.WORLD.GetHashCode();
+//                 chatSend.text = "hello world!";
+//                 chatSend.expansion = "ha\0haha";
+//                 netmanaget.SendProtocol(code.IM_CHAT_SEND_C.GetHashCode(), chatSend);
 
                 //for (int i = 0; i < 1000; ++i)
                 //{
@@ -292,6 +295,13 @@ namespace UnityClientConsole
 //                 NetManager.GetInstance().SendProtocol(gm.GEN_TEST_ACCOUNT.GetHashCode(), genAccount);
 //                 Console.WriteLine("生成测试账号");
 
+                GMOperation gmOperation = new GMOperation();
+                gmOperation.action = "setpass";
+                gmOperation.itemId = "minghe12";
+                gmOperation.value = 0;
+                netmanaget.SendProtocol(gm.GMOPERATION_C.GetHashCode(), gmOperation);
+
+
 //                 HSMailRead mailRead = new HSMailRead();
 //                 mailRead.mailId = 2;
 //                 NetManager.GetInstance().SendProtocol(code.MAIL_READ_C.GetHashCode(), mailRead);
@@ -340,10 +350,10 @@ namespace UnityClientConsole
 //                 hole.battleMonsterId.Add(44278);
 //                 netmanaget.SendProtocol(code.HOLE_ENTER_C.GetHashCode(), hole);
 
-                HSTowerEnter tower = new HSTowerEnter();
-                tower.towerId = 1;
-                tower.battleMonsterId.Add(44278);
-                netmanaget.SendProtocol(code.TOWER_ENTER_C.GetHashCode(), tower);
+//                 HSTowerEnter tower = new HSTowerEnter();
+//                 tower.towerId = 1;
+//                 tower.battleMonsterId.Add(44278);
+//                 netmanaget.SendProtocol(code.TOWER_ENTER_C.GetHashCode(), tower);
 
                 //HSChapterBox chapterBox = new HSChapterBox();
                 //chapterBox.chapterId = 1;
@@ -368,7 +378,6 @@ namespace UnityClientConsole
 //                 HSQuestSubmit questSubmit = new HSQuestSubmit();
 //                 questSubmit.questId = 10003;
 //                 NetManager.GetInstance().SendProtocol(code.QUEST_SUBMIT_C.GetHashCode(), questSubmit);
-
 
 //                 HSAllianceJoinList allianceJoinList = new HSAllianceJoinList();
 //                 allianceJoinList.reqPage = 1;

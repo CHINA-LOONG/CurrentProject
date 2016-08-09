@@ -38,7 +38,10 @@ namespace PB
       GMOPERATION_C = 101,
             
       [global::ProtoBuf.ProtoEnum(Name=@"GMOPERATION_S", Value=102)]
-      GMOPERATION_S = 102
+      GMOPERATION_S = 102,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GM_INSTANCE_PUSH_S", Value=200)]
+      GM_INSTANCE_PUSH_S = 200
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"code")]
@@ -366,6 +369,12 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"MAIL_NEW_S", Value=6006)]
       MAIL_NEW_S = 6006,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_DELETE_C", Value=6007)]
+      MAIL_DELETE_C = 6007,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAIL_DELETE_S", Value=6008)]
+      MAIL_DELETE_S = 6008,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"IM_CHAT_SEND_C", Value=7001)]
       IM_CHAT_SEND_C = 7001,
             
@@ -584,6 +593,18 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_SELF_TEAM_S", Value=9073)]
       ALLIANCE_SELF_TEAM_S = 9073,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_INSTANCE_TASK_C", Value=9074)]
+      ALLIANCE_INSTANCE_TASK_C = 9074,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_INSTANCE_TASK_S", Value=9075)]
+      ALLIANCE_INSTANCE_TASK_S = 9075,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_DISSOVLE_TEAM_C", Value=9076)]
+      ALLIANCE_DISSOVLE_TEAM_C = 9076,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_DISSOVLE_TEAM_S", Value=9077)]
+      ALLIANCE_DISSOVLE_TEAM_S = 9077,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_APPLY_N_S", Value=9100)]
       ALLIANCE_APPLY_N_S = 9100,

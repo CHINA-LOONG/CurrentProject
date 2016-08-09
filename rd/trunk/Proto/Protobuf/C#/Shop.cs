@@ -66,8 +66,15 @@ namespace PB
       get { return _discount; }
       set { _discount = value; }
     }
+    private int _price;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"price", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int price
+    {
+      get { return _price; }
+      set { _price = value; }
+    }
     private bool _hasBuy;
-    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"hasBuy", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"hasBuy", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public bool hasBuy
     {
       get { return _hasBuy; }
@@ -312,12 +319,12 @@ namespace PB
       get { return _allianceShopRefreshTime; }
       set { _allianceShopRefreshTime = value; }
     }
-    private int _otherShopRefreshTime;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"otherShopRefreshTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int otherShopRefreshTime
+    private int _towerShopRefreshTime;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"towerShopRefreshTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int towerShopRefreshTime
     {
-      get { return _otherShopRefreshTime; }
-      set { _otherShopRefreshTime = value; }
+      get { return _towerShopRefreshTime; }
+      set { _towerShopRefreshTime = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

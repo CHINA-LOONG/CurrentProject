@@ -18,7 +18,7 @@ public class ItemIcon : MonoBehaviour
 
     #region ----------------Create Method
 
-    public static ItemIcon CreateItemIcon(ItemData itemInfo, bool showTips = true, bool showGetby = false)
+    public static ItemIcon CreateItemIcon(ItemData itemInfo, bool showTips = true, bool showGetby = true)
     {
         GameObject go = ResourceMgr.Instance.LoadAsset("ItemIcon");
         ItemIcon itemIcon = go.GetComponent<ItemIcon>();
@@ -79,7 +79,7 @@ public class ItemIcon : MonoBehaviour
 
 	#region --------------public接口----------------------
 
-    public bool RefreshWithItemInfo(ItemData itemInfo, bool showTips = true, bool showGetby = false)
+    public bool RefreshWithItemInfo(ItemData itemInfo, bool showTips = true, bool showGetby = true)
     {
         ShowTips = showTips;
         string itemStaticId = itemInfo.itemId;

@@ -157,6 +157,16 @@ public class Buff
         {
             return;
         }
+        //ignore player cast dazhao manual
+        if (skipUpdate == true && buffProto.dazhao > 0)
+        {
+            GameUnit caster = spellService.GetUnit(casterID);
+            if (caster != null && caster.battleUnit.camp == UnitCamp.Player)
+            {
+                skipUpdate = false;
+            }
+        }
+
         if (skipUpdate == true)
         {
             skipUpdate = false;
@@ -288,7 +298,7 @@ public class Buff
                 magicShield = (int)(buffProto.shieldNum + buffProto.shieldRatio * attr);
             }
         }
-        else
+        else if (buffProto.category != (int)BuffType.Buff_Type_Interrupt)
         {
             foreach (Buff buff in buffList)
             {

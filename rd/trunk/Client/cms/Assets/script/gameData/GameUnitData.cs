@@ -110,6 +110,8 @@ public class GameUnit : IComparable
     public int maxLife;
     public int magicAttack;
     public int phyAttack;
+    public int mBp;//战力
+    public float mInjuryratio;//受伤比
 
     public List<Buff> buffList;
     public Dictionary<string, Spell> spellList;
@@ -193,6 +195,22 @@ public class GameUnit : IComparable
         defensePierce = 0.0f;
 
         GameDataMgr gdMgr = GameDataMgr.Instance;
+        //初始化玩家宠物技能列表
+        spellList = new Dictionary<string, Spell>();
+        SpellProtoType spellPt = null;
+        if (pbUnit.spellPbList != null)
+        {
+            int skillCount = pbUnit.spellPbList.Count;
+            for (int skillIndex = 0; skillIndex < skillCount; ++skillIndex)
+            {
+                string spellID = pbUnit.spellPbList[skillIndex].skillId;
+                spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellID);
+                if (spellPt != null)
+                {
+                    spellList.Add(spellID, new Spell(spellPt, pbUnit.spellPbList[skillIndex].level));
+                }
+            }
+        }
         UpdateAttributeInternal();
 
         UnitData unitRowData = StaticDataMgr.Instance.GetUnitRowData(pbUnit.id);
@@ -252,25 +270,8 @@ public class GameUnit : IComparable
             headImg = ResourceMgr.Instance.LoadAssetType<Sprite>(unitRowData.uiAsset) as Sprite;
         }
 
-        //初始化技能列表
-        spellList = new Dictionary<string, Spell>();
-        SpellProtoType spellPt = null;
-
-        if (pbUnit.spellPbList != null)
-        {
-            int skillCount = pbUnit.spellPbList.Count;
-            for (int skillIndex = 0; skillIndex < skillCount; ++skillIndex)
-            {
-                string spellID = pbUnit.spellPbList[skillIndex].skillId;
-                spellPt = StaticDataMgr.Instance.GetSpellProtoData(spellID);
-                if (spellPt != null)
-                {
-                    spellList.Add(spellID, new Spell(spellPt, pbUnit.spellPbList[skillIndex].level));
-                }
-            }
-        }
         //TODO: remove, for fake enemy
-        else
+        if (pbUnit.spellPbList == null)
         {
             ArrayList spellArrayList = MiniJsonExtensions.arrayListFromJson(unitRowData.spellIDList);
             for (int i = 0; i < spellArrayList.Count; ++i)
@@ -299,9 +300,7 @@ public class GameUnit : IComparable
             }	
         }
 
-
 		//性格，勤奋度,//怪物友好度
-      
         lazy = pbUnit.lazy;
         closeUp = unitRowData.closeUp;
 		if (isPlayer) 
@@ -378,6 +377,12 @@ public class GameUnit : IComparable
         maxLife = curLife;
         magicAttack = (int)(SpellConst.strengthToAttack * intelligence);
         phyAttack = (int)(SpellConst.intelligenceToAttack * strength);
+
+        //受伤比计算 max(1/(1+(守方总防御力-攻方防御穿透)/I(min(lv1,lv2))),25%)
+        mInjuryratio = 1.0f / (1.0f + (defense * 1.0f) / SpellFunctions.GetInjuryAdjustNum(pbUnit.level, pbUnit.level));
+        mInjuryratio = mInjuryratio < 0.25f ? 0.25f : mInjuryratio;
+        if(pbUnit.spellPbList != null)
+            RefreshBp();
     }
 
     public void RefreshUnitLvl(int targetLvl, int exp)
@@ -397,20 +402,35 @@ public class GameUnit : IComparable
     //    hitRatio = gdMgr.PlayerDataAttr.hitRatio;
     //    //TODO: player equips
     //}
+    public void LevelUpdateSpell(string spellID)
+    {
+        if (spellList != null)
+        {
+            Spell curSpell;
+            if (spellList.TryGetValue(spellID, out curSpell) == true)
+            {
+                //curSpell.level = lvl;
+                RefreshBp();
+            }
+        }
+    }
 
     public void SetEquipData(int part, EquipData equipdata, bool refreshAttr = true)
     {
+        part -= 1;
         if (part < (int)PartType.NUM_EQUIP_PART)
         {
             EquipData preEquip = equipList[part];
             if (preEquip != null)
             {
                 preEquip.monsterId = BattleConst.invalidMonsterID;
+                GameDataMgr.Instance.PlayerDataAttr.AddEquipTypePart(preEquip);
             }
             equipList[part] = equipdata;
             if (equipdata != null)
             {
                 equipdata.monsterId = pbUnit.guid;
+                GameDataMgr.Instance.PlayerDataAttr.RemoveEquipTypePart(equipdata);
             }
             if (refreshAttr == true)
             {
@@ -456,8 +476,46 @@ public class GameUnit : IComparable
         buffChangeEventArgs.buffID = "internal_all";//internal use only
         BattleController.Instance.GetUIBattle().ChangeBuffState(buffChangeEventArgs);
     }
-	
-	void InitWeakPoint(string strWeak)
+    private void RefreshBp()
+    {
+        float bpHp = (maxLife / mInjuryratio * (1.0f + additionHealRatio * 0.33f));
+        float bpDps = (magicAttack + phyAttack) * 0.5f * speed * (criticalRatio * criticalDamageRatio + (1.0f - criticalRatio)) * (1 + additionEnergy * 0.0033f);
+        //TODO: save spell lvl
+        int dazhaoLvl = 0;
+        int phyLvl = 0;
+        int magicLvl = 0;
+        int dotLvl = 0;
+        
+        //get dazhao lvl
+        Spell curSpell = GetSpellWithType(SpellType.Spell_Type_PhyDaZhao);
+        if (curSpell == null)
+            curSpell = GetSpellWithType(SpellType.Spell_Type_MagicDazhao);
+        if (curSpell != null)
+            dazhaoLvl = curSpell.level;
+
+        curSpell = GetSpellWithType(SpellType.Spell_Type_PhyAttack);
+        if (curSpell != null)
+            phyLvl = curSpell.level;
+
+        curSpell = GetSpellWithType(SpellType.Spell_Type_MgicAttack);
+        if (curSpell != null)
+            magicLvl = curSpell.level;
+
+        curSpell = GetSpellWithType(SpellType.Spell_Type_Dot);
+        if (curSpell != null)
+            dotLvl = curSpell.level;
+
+        mBp = (int)(
+            bpHp * bpDps * SpellFunctions.GetBpLvlAdjust(pbUnit.level) +
+            BattleConst.bpSpellBasic +
+            BattleConst.bpDazhaoLvl * dazhaoLvl +
+            BattleConst.bpPhyLvl * phyLvl +
+            BattleConst.bpMagicLvl * magicLvl +
+            BattleConst.bpDotLvl * dotLvl
+            );
+    }
+
+    void InitWeakPoint(string strWeak)
 	{
 		if (strWeak == null || strWeak == "") 
 		{

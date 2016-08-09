@@ -6671,7 +6671,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 117736, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_Name
@@ -7561,7 +7561,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 117736, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_Name
@@ -8552,47 +8552,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 117736, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
       propertyPath: m_Name
       value: battlePosition2
-      objectReference: {fileID: 0}
-    - target: {fileID: 471418, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 471418, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: .00512161152
-      objectReference: {fileID: 0}
-    - target: {fileID: 471418, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: .707088292
-      objectReference: {fileID: 0}
-    - target: {fileID: 471418, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -.00512161246
-      objectReference: {fileID: 0}
-    - target: {fileID: 471418, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: .707088172
-      objectReference: {fileID: 0}
-    - target: {fileID: 454248, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 454248, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 454248, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 117736, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b398f0dd13c9ca4fab857d8a574af7e, type: 2}

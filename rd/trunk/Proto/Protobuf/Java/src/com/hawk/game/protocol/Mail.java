@@ -5049,6 +5049,830 @@ public final class Mail {
     // @@protoc_insertion_point(class_scope:HSMailNew)
   }
 
+  public interface HSMailDeleteOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 mailId = 1;
+    /**
+     * <code>required int32 mailId = 1;</code>
+     */
+    boolean hasMailId();
+    /**
+     * <code>required int32 mailId = 1;</code>
+     */
+    int getMailId();
+  }
+  /**
+   * Protobuf type {@code HSMailDelete}
+   *
+   * <pre>
+   * MAIL_DELETE_C
+   * </pre>
+   */
+  public static final class HSMailDelete extends
+      com.google.protobuf.GeneratedMessage
+      implements HSMailDeleteOrBuilder {
+    // Use HSMailDelete.newBuilder() to construct.
+    private HSMailDelete(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSMailDelete(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSMailDelete defaultInstance;
+    public static HSMailDelete getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSMailDelete getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSMailDelete(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              mailId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Mail.internal_static_HSMailDelete_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Mail.internal_static_HSMailDelete_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Mail.HSMailDelete.class, com.hawk.game.protocol.Mail.HSMailDelete.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSMailDelete> PARSER =
+        new com.google.protobuf.AbstractParser<HSMailDelete>() {
+      public HSMailDelete parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSMailDelete(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSMailDelete> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 mailId = 1;
+    public static final int MAILID_FIELD_NUMBER = 1;
+    private int mailId_;
+    /**
+     * <code>required int32 mailId = 1;</code>
+     */
+    public boolean hasMailId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 mailId = 1;</code>
+     */
+    public int getMailId() {
+      return mailId_;
+    }
+
+    private void initFields() {
+      mailId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMailId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, mailId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, mailId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Mail.HSMailDelete parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDelete parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDelete parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDelete parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDelete parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDelete parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDelete parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDelete parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDelete parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDelete parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Mail.HSMailDelete prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSMailDelete}
+     *
+     * <pre>
+     * MAIL_DELETE_C
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Mail.HSMailDeleteOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Mail.internal_static_HSMailDelete_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Mail.internal_static_HSMailDelete_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Mail.HSMailDelete.class, com.hawk.game.protocol.Mail.HSMailDelete.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Mail.HSMailDelete.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        mailId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Mail.internal_static_HSMailDelete_descriptor;
+      }
+
+      public com.hawk.game.protocol.Mail.HSMailDelete getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Mail.HSMailDelete.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Mail.HSMailDelete build() {
+        com.hawk.game.protocol.Mail.HSMailDelete result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Mail.HSMailDelete buildPartial() {
+        com.hawk.game.protocol.Mail.HSMailDelete result = new com.hawk.game.protocol.Mail.HSMailDelete(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.mailId_ = mailId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Mail.HSMailDelete) {
+          return mergeFrom((com.hawk.game.protocol.Mail.HSMailDelete)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Mail.HSMailDelete other) {
+        if (other == com.hawk.game.protocol.Mail.HSMailDelete.getDefaultInstance()) return this;
+        if (other.hasMailId()) {
+          setMailId(other.getMailId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMailId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Mail.HSMailDelete parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Mail.HSMailDelete) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 mailId = 1;
+      private int mailId_ ;
+      /**
+       * <code>required int32 mailId = 1;</code>
+       */
+      public boolean hasMailId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 mailId = 1;</code>
+       */
+      public int getMailId() {
+        return mailId_;
+      }
+      /**
+       * <code>required int32 mailId = 1;</code>
+       */
+      public Builder setMailId(int value) {
+        bitField0_ |= 0x00000001;
+        mailId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 mailId = 1;</code>
+       */
+      public Builder clearMailId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        mailId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSMailDelete)
+    }
+
+    static {
+      defaultInstance = new HSMailDelete(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSMailDelete)
+  }
+
+  public interface HSMailDeleteRetOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 mailId = 1;
+    /**
+     * <code>required int32 mailId = 1;</code>
+     */
+    boolean hasMailId();
+    /**
+     * <code>required int32 mailId = 1;</code>
+     */
+    int getMailId();
+  }
+  /**
+   * Protobuf type {@code HSMailDeleteRet}
+   *
+   * <pre>
+   * MAIL_DELETE_S
+   * </pre>
+   */
+  public static final class HSMailDeleteRet extends
+      com.google.protobuf.GeneratedMessage
+      implements HSMailDeleteRetOrBuilder {
+    // Use HSMailDeleteRet.newBuilder() to construct.
+    private HSMailDeleteRet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private HSMailDeleteRet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final HSMailDeleteRet defaultInstance;
+    public static HSMailDeleteRet getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public HSMailDeleteRet getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private HSMailDeleteRet(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              mailId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.Mail.internal_static_HSMailDeleteRet_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.Mail.internal_static_HSMailDeleteRet_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.Mail.HSMailDeleteRet.class, com.hawk.game.protocol.Mail.HSMailDeleteRet.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<HSMailDeleteRet> PARSER =
+        new com.google.protobuf.AbstractParser<HSMailDeleteRet>() {
+      public HSMailDeleteRet parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HSMailDeleteRet(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HSMailDeleteRet> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 mailId = 1;
+    public static final int MAILID_FIELD_NUMBER = 1;
+    private int mailId_;
+    /**
+     * <code>required int32 mailId = 1;</code>
+     */
+    public boolean hasMailId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 mailId = 1;</code>
+     */
+    public int getMailId() {
+      return mailId_;
+    }
+
+    private void initFields() {
+      mailId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMailId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, mailId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, mailId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.Mail.HSMailDeleteRet parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDeleteRet parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDeleteRet parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDeleteRet parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDeleteRet parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDeleteRet parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDeleteRet parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDeleteRet parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDeleteRet parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.Mail.HSMailDeleteRet parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.Mail.HSMailDeleteRet prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HSMailDeleteRet}
+     *
+     * <pre>
+     * MAIL_DELETE_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.Mail.HSMailDeleteRetOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.Mail.internal_static_HSMailDeleteRet_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.Mail.internal_static_HSMailDeleteRet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.Mail.HSMailDeleteRet.class, com.hawk.game.protocol.Mail.HSMailDeleteRet.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.Mail.HSMailDeleteRet.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        mailId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.Mail.internal_static_HSMailDeleteRet_descriptor;
+      }
+
+      public com.hawk.game.protocol.Mail.HSMailDeleteRet getDefaultInstanceForType() {
+        return com.hawk.game.protocol.Mail.HSMailDeleteRet.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.Mail.HSMailDeleteRet build() {
+        com.hawk.game.protocol.Mail.HSMailDeleteRet result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.Mail.HSMailDeleteRet buildPartial() {
+        com.hawk.game.protocol.Mail.HSMailDeleteRet result = new com.hawk.game.protocol.Mail.HSMailDeleteRet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.mailId_ = mailId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.Mail.HSMailDeleteRet) {
+          return mergeFrom((com.hawk.game.protocol.Mail.HSMailDeleteRet)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.Mail.HSMailDeleteRet other) {
+        if (other == com.hawk.game.protocol.Mail.HSMailDeleteRet.getDefaultInstance()) return this;
+        if (other.hasMailId()) {
+          setMailId(other.getMailId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMailId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.Mail.HSMailDeleteRet parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.Mail.HSMailDeleteRet) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 mailId = 1;
+      private int mailId_ ;
+      /**
+       * <code>required int32 mailId = 1;</code>
+       */
+      public boolean hasMailId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 mailId = 1;</code>
+       */
+      public int getMailId() {
+        return mailId_;
+      }
+      /**
+       * <code>required int32 mailId = 1;</code>
+       */
+      public Builder setMailId(int value) {
+        bitField0_ |= 0x00000001;
+        mailId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 mailId = 1;</code>
+       */
+      public Builder clearMailId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        mailId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HSMailDeleteRet)
+    }
+
+    static {
+      defaultInstance = new HSMailDeleteRet(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:HSMailDeleteRet)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_HSMail_descriptor;
   private static
@@ -5089,6 +5913,16 @@ public final class Mail {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_HSMailNew_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSMailDelete_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSMailDelete_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_HSMailDeleteRet_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HSMailDeleteRet_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -5110,8 +5944,9 @@ public final class Mail {
       "MailReceiveAll\"<\n\023HSMailReceiveAllRet\022\016\n",
       "\006status\030\001 \002(\005\022\025\n\rreceiveMailId\030\002 \003(\005\":\n\t" +
       "HSMailNew\022\025\n\004mail\030\001 \002(\0132\007.HSMail\022\026\n\016over" +
-      "flowMailId\030\002 \001(\005B\030\n\026com.hawk.game.protoc" +
-      "ol"
+      "flowMailId\030\002 \001(\005\"\036\n\014HSMailDelete\022\016\n\006mail" +
+      "Id\030\001 \002(\005\"!\n\017HSMailDeleteRet\022\016\n\006mailId\030\001 " +
+      "\002(\005B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5166,6 +6001,18 @@ public final class Mail {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSMailNew_descriptor,
               new java.lang.String[] { "Mail", "OverflowMailId", });
+          internal_static_HSMailDelete_descriptor =
+            getDescriptor().getMessageTypes().get(8);
+          internal_static_HSMailDelete_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSMailDelete_descriptor,
+              new java.lang.String[] { "MailId", });
+          internal_static_HSMailDeleteRet_descriptor =
+            getDescriptor().getMessageTypes().get(9);
+          internal_static_HSMailDeleteRet_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_HSMailDeleteRet_descriptor,
+              new java.lang.String[] { "MailId", });
           return null;
         }
       };

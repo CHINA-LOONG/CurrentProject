@@ -13,8 +13,9 @@ public class MonsterListItem : MonoBehaviour
     private MonsterIcon iconMonster;
     //public Image imgBadge;
 
-    public Transform[] equipPos = new Transform[6];
+    public Transform[] equipSlot = new Transform[6];
     private ItemIcon[] equipIcon = new ItemIcon[6];
+    private GameObject[] equipAdd = new GameObject[6];
     
     public GameUnit curData;
 
@@ -47,6 +48,9 @@ public class MonsterListItem : MonoBehaviour
         iconMonster.SetLevel(curData.pbUnit.level);
         iconMonster.iconButton.gameObject.SetActive(false);
 
+
+
+        UnitData petData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
         for (int i = 0; i < unit.equipList.Length; i++)
         {
             if (unit.equipList[i] == null)
@@ -54,6 +58,18 @@ public class MonsterListItem : MonoBehaviour
                 if (equipIcon[i] != null)
                 {
                     equipIcon[i].gameObject.SetActive(false);
+                }
+                if (equipAdd[i] == null)
+                {
+                    equipAdd[i] = equipSlot[i].FindChild("ImageAdd").gameObject;
+                }
+                if (GameDataMgr.Instance.PlayerDataAttr.CheckEquipTypePart(petData.equip, i + 1))
+                {
+                    equipAdd[i].SetActive(true);
+                }
+                else
+                {
+                    equipAdd[i].SetActive(false);
                 }
             }
             else
@@ -63,7 +79,7 @@ public class MonsterListItem : MonoBehaviour
                 if (equipIcon[i] == null)
                 {
                     equipIcon[i] = ItemIcon.CreateItemIcon(equipData, false);
-                    UIUtil.SetParentReset(equipIcon[i].transform, equipPos[i]);
+                    UIUtil.SetParentReset(equipIcon[i].transform, equipSlot[i].FindChild("equipPos"));
                     //equipIcon[i].HideExceptIcon();
                 }
                 else
@@ -74,8 +90,6 @@ public class MonsterListItem : MonoBehaviour
                 }
             }
         }
-
-
     }
 
     //public void CheckStageStatus()

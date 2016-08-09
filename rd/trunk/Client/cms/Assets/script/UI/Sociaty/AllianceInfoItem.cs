@@ -1,0 +1,162 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+public class AllianceInfoItem : MonoBehaviour
+{
+    public Image selectEffect;
+    public Button operationButton;
+    public Text[] textArray;
+    public Button itemButton;
+
+    public PB.AllianceSimpleInfo itemInfoData;
+
+    public  static  AllianceInfoItem CreateWith(PB.AllianceSimpleInfo itemInfo)
+    {
+       GameObject go =  ResourceMgr.Instance.LoadAsset("AllianceInfoItem");
+        AllianceInfoItem allianceItem = go.GetComponent<AllianceInfoItem>();
+        allianceItem.InitWith(itemInfo);
+        allianceItem.SetSelect(false);
+        return allianceItem;
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
+        operationButton.onClick.AddListener(OnOperationButtonClick);
+        itemButton.onClick.AddListener(OnItemButtonClick);
+	}
+
+    public  void    InitWith(PB.AllianceSimpleInfo itemInfo)
+    {
+        itemInfoData = itemInfo;
+        textArray[0].text = itemInfo.id.ToString();
+        textArray[1].text = itemInfo.name;
+        textArray[2].text = itemInfo.level.ToString();
+        textArray[3].text = itemInfo.captaionName;
+        textArray[4].text = itemInfo.currentPop.ToString();
+        textArray[5].text = itemInfo.contribution3day.ToString();
+        textArray[6].text = itemInfo.minLevel.ToString();
+
+        RefreshButtonTitle();
+    }
+
+    void RefreshButtonTitle()
+    {
+        if (itemInfoData.apply)
+        {
+            UIUtil.SetButtonTitle(operationButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_cancelshenqing"));
+        }
+        else
+        {
+            UIUtil.SetButtonTitle(operationButton.transform, StaticDataMgr.Instance.GetTextByID("sociaty_shenqing"));
+        }
+    }
+
+    public  void SetSelect(bool isSel)
+    {
+        selectEffect.gameObject.SetActive(isSel);
+    }
+
+    void OnItemButtonClick()
+    {
+        SociatyList.Instance.OnAllianceInfoItemClick(this);
+    }
+
+    void OnOperationButtonClick()
+    {
+        if(itemInfoData.apply)
+        {
+            RequestCancelApply();
+        }
+        else
+        {
+            if (itemInfoData.currentPop == itemInfoData.maxPop)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_002"), (int)PB.ImType.PROMPT);
+                return;
+            }
+            if (itemInfoData.minLevel > GameDataMgr.Instance.PlayerDataAttr.LevelAttr)
+            {
+                UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("sociaty_record_038"), (int)PB.ImType.PROMPT);
+                return;
+            }
+
+            if(itemInfoData.autoAccept)
+            {
+                MsgBox.PromptMsg.Open(MsgBox.MsgBoxType.Conform_Cancel, StaticDataMgr.Instance.GetTextByID("sociaty_tips1"), AppplyOption);
+            }
+            else
+            {
+                RequestApply();
+            }
+        }
+    }
+
+    void AppplyOption(MsgBox.PrompButtonClick buttonClick)
+    {
+        if(buttonClick == MsgBox.PrompButtonClick.OK)
+        {
+            RequestApply();
+        }
+    }
+
+    void RequestCancelApply()
+    {
+        GameDataMgr.Instance.SociatyDataMgrAttr.RequestCancelApply(itemInfoData.id, OnCancelApplyFinish);
+    }
+
+    void OnCancelApplyFinish(ProtocolMessage msg)
+    {
+        UINetRequest.Close();
+        if(msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = msg.GetProtocolBody<PB.HSErrorCode>();
+            // switch(errorCode)
+            // {
+            // case PB.allianceError.ALLIANCE_ALREADY_APPLY
+            //}
+            return;
+        }
+
+        itemInfoData.apply = false;
+
+        RefreshButtonTitle();
+
+    }
+
+    void RequestApply()
+    {
+        GameDataMgr.Instance.SociatyDataMgrAttr.RequestApply(itemInfoData.id, OnApplyFinish);
+    }
+
+    void OnApplyFinish(ProtocolMessage msg)
+    {
+        UINetRequest.Close();
+        if (msg.GetMessageType() == (int)PB.sys.ERROR_CODE)
+        {
+            PB.HSErrorCode errorCode = msg.GetProtocolBody<PB.HSErrorCode>();
+            switch (errorCode.errCode)
+            {
+                case (int)PB.allianceError.ALLIANCE_LEVEL_NOT_ENOUGH:
+                    UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("等级不足..."), (int)PB.ImType.PROMPT);
+                    break;
+            }
+            return;
+        }
+
+        itemInfoData.apply = true;
+
+        if(itemInfoData.autoAccept)
+        {
+            GameDataMgr.Instance.SociatyDataMgrAttr.allianceID = itemInfoData.id;
+            UIMgr.Instance.CloseUI_(SociatyList.ViewName);
+            GameDataMgr.Instance.SociatyDataMgrAttr.OpenSociaty();
+        }
+        else
+        {
+            RefreshButtonTitle();
+        }
+    }
+    
+}

@@ -34,270 +34,274 @@ enum RewardReason
 enum ClassType
 {
 	// 角色
-	PLAYER_TYPE = 1;
+	PLAYER_TYPE            = 1;
 	// 怪物
-	MONSTER_TYPE = 2;
+	MONSTER_TYPE           = 2;
 }
 
 // 抽象物品类型定义
 enum itemType
 {
 	// 空属性
-	NONE_ITEM = 0;
+	NONE_ITEM              = 0;
 	// 玩家属性
-	PLAYER_ATTR = 1;
+	PLAYER_ATTR            = 1;
 	// 角色属性
-	MONSTER_ATTR = 2;
+	MONSTER_ATTR           = 2;
 	// 道具
-	ITEM = 3;
+	ITEM                   = 3;
 	// 装备
-	EQUIP = 4;
+	EQUIP                  = 4;
 	// 技能
-	SKILL = 5;
+	SKILL                  = 5;
 	// 奖励组
-	GROUP = 6;
+	GROUP                  = 6;
 	// 怪物奖励
-	MONSTER = 7;
+	MONSTER                = 7;
 	// 公会奖励
-	ALLIANCE = 8;
+	ALLIANCE               = 8;
 }
 
-// 购买价格类型
+// 普通商店购买价格类型
 enum moneyType
 {
 	// 钻石
-	MONEY_GOLD = 1;
+	MONEY_GOLD             = 1;
 	// 金币
-	MONEY_COIN = 2;	
+	MONEY_COIN             = 2;	
 }
 
 // 变换的数值类型
 enum changeType 
 {
 	// 钻石
-	CHANGE_GOLD = 1;
+	CHANGE_GOLD            = 1;
 	// 金币
-	CHANGE_COIN = 2;
+	CHANGE_COIN            = 2;
 	// 经验
-	CHANGE_PLAYER_EXP = 3;
+	CHANGE_PLAYER_EXP      = 3;
 	// 等级
-	CHANGE_PLAYER_LEVEL = 4;
+	CHANGE_PLAYER_LEVEL    = 4;
 	// 经验
-	CHANGE_MONSTER_EXP = 5;
+	CHANGE_MONSTER_EXP     = 5;
 	// 等级
-	CHANGE_MONSTER_LEVEL = 6;
+	CHANGE_MONSTER_LEVEL   = 6;
 	// 疲劳值
-	CHANGE_FATIGUE = 7;
+	CHANGE_FATIGUE         = 7;
 	// 好感度
-	CHANGE_FAV	= 8;
+	CHANGE_FAV	           = 8;
 	// 充值钻石
-	CHANGE_GOLD_BUY	= 8;
-	// 玩家公会贡献值
-	CHANGE_PLAYER_CONTRIBUTION = 9;
+	CHANGE_GOLD_BUY	       = 9;
+	// 公会贡献值
+	CHANGE_PLAYER_CONTRIBUTION = 10;
+	// 通天塔币
+	CHANGE_TOWER_COIN      = 11;
 }
 
 // 附加属性类型定义
 enum attr
 {
 	// 空属性
-	EMPTYATTR = 0;
+	EMPTYATTR              = 0;
 	// 力量
-	STRENGHT = 1;
+	STRENGHT               = 1;
 	// 智力
-	INTELLIGENCE = 2;
+	INTELLIGENCE           = 2;
 	//速度
-	SPEED = 3;
+	SPEED                  = 3;
 	//防御力
-	DEFENSE = 4;
+	DEFENSE                = 4;
 	//体力
-	HEALTH = 5;
+	HEALTH                 = 5;
 
 	//防御穿透
-	DEFENSEWEAKEN = 101;
+	DEFENSEWEAKEN          = 101;
 	//暴击率
-	CRITICAL = 102;
+	CRITICAL               = 102;
 	//暴击抗性
-	CRITICALWEAKEN = 103;
+	CRITICALWEAKEN         = 103;
 	//生命回复
-	RECOVERY = 104;
+	RECOVERY               = 104;
 	//暴击伤害加成
-	CRITICALDAMAGE = 105;
+	CRITICALDAMAGE         = 105;
 	//命中率
-	HITRATE = 106;
+	HITRATE                = 106;
 	//治疗效果加成
-	CUREINCREASE = 107;
+	CUREINCREASE           = 107;
 	//伤害减免
-	DAMAGEREDUCE = 108;
+	DAMAGEREDUCE           = 108;
 	//伤害加深
-	DAMAGEINCREASE = 109;
+	DAMAGEINCREASE         = 109;
 }
 
 // 使用条件
 enum userCondition
 {
 	// 战斗
-	BATTLE = 1;
+	BATTLE                 = 1;
 	// 非战斗
-	NON_BATTLE = 2;
+	NON_BATTLE             = 2;
 }
 
 // 绑定类型
 enum bindType
 {
 	// 不绑定
-	NON_BIND = 1;
+	NON_BIND               = 1;
 	// 使用绑定
-	USE_BIND = 2;
+	USE_BIND               = 2;
 	// 拾取绑定
-	TAKE_BIND =3;
+	TAKE_BIND              = 3;
 }
 
 // 物品类型定义
 enum toolType
 {
 	// 通用类型
-	COMMONTOOL = 1;
+	COMMONTOOL             = 1;
 	// 碎片
-	FRAGMENTTOOL = 2;
+	FRAGMENTTOOL           = 2;
 	// 宝石
-	GEMTOOL = 3;
+	GEMTOOL                = 3;
 	// 宝箱
-	BOXTOOL = 4;
+	BOXTOOL                = 4;
 	// 消耗类
-	USETOOL = 5;
+	USETOOL                = 5;
 	// 装备
-	EQUIPTOOL = 7;
+	EQUIPTOOL              = 7;
 }
 
 // 子类型-碎片
 enum FragSubType
 {
 	// 怪物
-	FRAG_MONSTER = 1;
+	FRAG_MONSTER           = 1;
 	// 道具
-	FRAG_TOOL = 2;
+	FRAG_TOOL              = 2;
 }
 
 // 子类型-消耗品
 enum UseToolSubType
 {
 	// 经验药水
-	USETOOLEXP = 1;
+	USETOOLEXP             = 1;
 	// 双倍药水
-	USETOOLDOUBLEEXP = 2;
+	USETOOLDOUBLEEXP       = 2;
 	// 三倍药水
-	USETOOLTRIPLEEXP = 3;
+	USETOOLTRIPLEEXP       = 3;
 	// 疲劳值
-	USETOOLFATIGUE = 4;
+	USETOOLFATIGUE         = 4;
 }
 
 // 装备部位定义
 enum equipPart
 {
 	// 头盔
-	HELMET = 1;
+	HELMET                 = 1;
 	// 戒子
-	RING = 2;
+	RING                   = 2;
 	// 腰带
-	BELT = 3;
+	BELT                   = 3;
 	// 胸甲
-	CUIRASS = 4;
+	CUIRASS                = 4;
 	// 主手武器
-	WEAPON1 = 5;
+	WEAPON1                = 5;
 	// 副手武器
-	WEAPON2 = 6;
+	WEAPON2                = 6;
 	// 护腿
-	LEGGUARD = 7;
+	LEGGUARD               = 7;
 	// 鞋子
-	SHOES = 8;
+	SHOES                  = 8;
 	// 手套
-	GLOVE = 9;
+	GLOVE                  = 9;
 	// 项链
-	NECKLACE = 10;
+	NECKLACE               = 10;
 }
 
 // 装备品质
 enum equipQuality
 {
 	// 白
-	WHITE = 1;
+	WHITE                  = 1;
 	// 绿
-	GREEN = 2;
+	GREEN                  = 2;
 	// 蓝
-	BLUE = 3;
+	BLUE                   = 3;
 	// 紫
-	PURPLE = 4;
+	PURPLE                 = 4;
 	// 橙
-	ORANGE = 5;
+	ORANGE                 = 5;
 	// 红
-	RED = 6;
+	RED                    = 6;
 }
 
 // 商店类型
 enum shopType
 {
-	NORMALSHOP = 1;
-	ALLIANCESHOP = 2;
-	OTHERSHOP = 3;
+	NORMALSHOP             = 1;
+	ALLIANCESHOP           = 2;
+	TOWERSHOP              = 3;
 }
 
 // 邮件状态
 enum mailState
 {
 	// 未读
-	UNREAD = 1;
+	UNREAD                 = 1;
 	// 已读
-	READ = 2;
+	READ                   = 2;
 	// 已领取奖励
-	RECEIVE = 3;
+	RECEIVE                = 3;
 	// 已溢出删除
-	OVERFLOW = 4;
+	OVERFLOW               = 4;
+	// 已删除
+	DELETE                 = 5;
 }
 
 // IM类型
 enum ImType
 {
 	// 聊天
-	CHAT = 1;
+	CHAT                   = 1;
 	// 走马灯
-	LANTERN = 2;
+	LANTERN                = 2;
 	// 系统提示
-	PROMPT = 3;
+	PROMPT                 = 3;
 	// 系统公告
-	NOTICE = 4;
+	NOTICE                 = 4;
 }
 
 // IM频道
 enum ImChannel
 {
 	// 私人
-	PERSON = 1;
+	PERSON                 = 1;
 	// 公共
-	WORLD = 2;
+	WORLD                  = 2;
 	// 公会
-	GUILD = 3;
+	GUILD                  = 3;
 }
 
 // 章节宝箱状态
 enum ChapterBoxState
 {
 	// 不能领取
-	INVALID = -1;
+	INVALID                = -1;
 	// 可领取
-	VALID = 0;
+	VALID                  = 0;
 	// 已领取
-	OPEN = 1;
+	OPEN                   = 1;
 }
 
 // 副本类型
 enum InstanceType
 {
 	// 故事
-	INSTANCE_STORY = 1;
+	INSTANCE_STORY         = 1;
 	// 洞
-	INSTANCE_HOLE = 2;
+	INSTANCE_HOLE          = 2;
 	// 塔
-	INSTANCE_TOWER = 3;
+	INSTANCE_TOWER         = 3;
 	// 公会
-	INSTANCE_GUILD = 4;
+	INSTANCE_GUILD         = 4;
 }

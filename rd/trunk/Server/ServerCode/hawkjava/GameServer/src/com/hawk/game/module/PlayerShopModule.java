@@ -117,7 +117,7 @@ public class PlayerShopModule extends PlayerModule{
 		HSShopDataInitRet.Builder response = HSShopDataInitRet.newBuilder();
 		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.NORMALSHOP_VALUE));
 		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.ALLIANCESHOP_VALUE));
-		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.OTHERSHOP_VALUE));
+		response.addShopDatas(ShopUtil.generateShopData(player, Const.shopType.TOWERSHOP_VALUE));
 		sendProtocol(HawkProtocol.valueOf(HS.code.SHOP_DATA_INIT_S_VALUE, response));
 		return true;
 	} 
@@ -205,11 +205,14 @@ public class PlayerShopModule extends PlayerModule{
 				consume.addCoin((int)(itemInfo.getCount() * itemInfo.getPrice() * itemInfo.getDiscount()));
 			}
 			else{
-				consume.addGold((int)(itemInfo.getCount() * itemInfo.getPrice()  * itemInfo.getDiscount()));
+				consume.addGold((int)(itemInfo.getCount() * itemInfo.getPrice() * itemInfo.getDiscount()));
 			}
 		}
 		else if (protocol.getType() == Const.shopType.ALLIANCESHOP_VALUE) {
-			consume.addContribution((int)(itemInfo.getCount() * itemInfo.getPrice()  * itemInfo.getDiscount()));
+			consume.addContribution((int)(itemInfo.getCount() * itemInfo.getPrice() * itemInfo.getDiscount()));
+		}
+		else if (protocol.getType() == Const.shopType.TOWERSHOP_VALUE) {
+			consume.addTowerCoin((int)(itemInfo.getCount() * itemInfo.getPrice() * itemInfo.getDiscount()));
 		}
 
 		if (consume.checkConsume(player, hsCode) == false) {
@@ -237,7 +240,7 @@ public class PlayerShopModule extends PlayerModule{
 	}
 
 	@Override
-	protected boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
+	public boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
 		ShopEntity shopEntity = player.getPlayerData().loadShop();
 
 		for (int index : refreshIndexList) {
@@ -245,7 +248,7 @@ public class PlayerShopModule extends PlayerModule{
 			if (0 != (mask & GsConst.RefreshMask.DAILY )) {
 				shopEntity.setAllianceRefreshNums(0);
 				shopEntity.setNormalRefreshNums(0);
-				shopEntity.setOtherRefreshNums(0);
+				shopEntity.setTowerRefreshNums(0);
 				shopEntity.notifyUpdate(true);
 				if (false == onLogin) {
 					player.getPlayerData().syncShopRefreshTimeInfo();
@@ -261,6 +264,12 @@ public class PlayerShopModule extends PlayerModule{
 				ShopUtil.refreshShopData(Const.shopType.ALLIANCESHOP_VALUE, player);
 				if (false == onLogin) {
 					player.getPlayerData().syncShopRefreshInfo(Const.shopType.ALLIANCESHOP_VALUE);
+				}
+
+			} else if (0 != (mask & GsConst.RefreshMask.SHOP_TOWER)) {
+				ShopUtil.refreshShopData(Const.shopType.TOWERSHOP_VALUE, player);
+				if (false == onLogin) {
+					player.getPlayerData().syncShopRefreshInfo(Const.shopType.TOWERSHOP_VALUE);
 				}
 			}
 		}

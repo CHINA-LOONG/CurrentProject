@@ -326,6 +326,73 @@ public class PlayerData : MonoBehaviour
     }
 
     //---------------------------------------------------------------------------------------------
+
+    public int[,] equipTypePart = new int[BattleConst.equipTypeCount, (int)PartType.NUM_EQUIP_PART] { {0,0,0,0,0,0 },
+                                                                                                    {0,0,0,0,0,0 },
+                                                                                                    {0,0,0,0,0,0 },
+                                                                                                    {0,0,0,0,0,0 }};
+    //获得或卸下装备
+    public void AddEquipTypePart(long equipId)
+    {
+        AddEquipTypePart(gameEquipData.GetEquip(equipId));
+    }
+    public void AddEquipTypePart(EquipData equip)
+    {
+        if (equip.monsterId == BattleConst.invalidMonsterID)
+        {
+            ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
+            equipTypePart[itemInfo.subType-1, itemInfo.part-1] += 1;
+        }
+    }
+    //被装备或移除该装备
+    public void RemoveEquipTypePart(long equipId)
+    {
+        RemoveEquipTypePart(gameEquipData.GetEquip(equipId));
+    }
+    public void RemoveEquipTypePart(EquipData equip)
+    {
+        ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(equip.equipId);
+
+        equipTypePart[itemInfo.subType - 1, itemInfo.part - 1] -= 1;
+        if (equipTypePart[itemInfo.subType - 1, itemInfo.part - 1] < 0)
+        {
+            Logger.LogError("装备出现异常");
+        }
+    }
+    public void RefreshEquipTypePart()
+    {
+        for (int i = 0; i < equipTypePart.GetLength(0); i++)
+        {
+            for (int j = 0; j < equipTypePart.GetLength(1); j++)
+            {
+                equipTypePart[i, j] = 0;
+            }
+        }
+
+        Dictionary<long, EquipData> equipList = GameDataMgr.Instance.PlayerDataAttr.gameEquipData.equipList;
+        foreach (var item in equipList)
+        {
+            if (item.Value.monsterId != BattleConst.invalidMonsterID)
+            {
+                continue;
+            }
+            ItemStaticData itemTemp = StaticDataMgr.Instance.GetItemData(item.Value.equipId);
+            equipTypePart[itemTemp.subType - 1, itemTemp.part - 1] += 1;
+        }
+    }
+
+    public bool CheckEquipTypePart(int type, int part)
+    {
+        if (equipTypePart[type-1,part-1]>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    //-----------------------------------------------------------------------
 }
 
 public class CollectUnit

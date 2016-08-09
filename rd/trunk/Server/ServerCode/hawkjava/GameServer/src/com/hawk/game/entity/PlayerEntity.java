@@ -40,41 +40,44 @@ public class PlayerEntity extends HawkDBEntity {
 	@Column(name = "nickname", unique = true, nullable = false)
 	protected String nickname = "";
 
-	@Column(name = "gender")
+	@Column(name = "gender", nullable = false)
 	protected byte gender = 0;
 
-	@Column(name = "eye")
+	@Column(name = "eye", nullable = false)
 	protected byte eye = 0;
 
-	@Column(name = "hair")
+	@Column(name = "hair", nullable = false)
 	protected byte hair = 0;
 
-	@Column(name = "hairColor")
+	@Column(name = "hairColor", nullable = false)
 	protected byte hairColor = 0;
 
-	@Column(name = "career")
+	@Column(name = "career", nullable = false)
 	protected byte career = 0;
 
-	@Column(name = "recharge")
+	@Column(name = "recharge", nullable = false)
 	protected int recharge = 0;
 
-	@Column(name = "vipLevel")
+	@Column(name = "vipLevel", nullable = false)
 	protected int vipLevel = 0;
 
-	@Column(name = "coin")
-	protected long coin = 0;
-
-	@Column(name = "level")
+	@Column(name = "level", nullable = false)
 	protected short level = 1;
 
-	@Column(name = "exp")
+	@Column(name = "exp", nullable = false)
 	protected int exp = 0;
 
-	@Column(name = "goldBuy")
+	@Column(name = "coin", nullable = false)
+	protected long coin = 0;
+
+	@Column(name = "goldBuy", nullable = false)
 	protected int goldBuy = 0;
 
-	@Column(name = "goldFree")
+	@Column(name = "goldFree", nullable = false)
 	protected int goldFree = 0;
+
+	@Column(name = "towerCoin", nullable = false)
+	protected int towerCoin = 0;
 
 	@Column(name = "blockPlayer", nullable = false)
 	protected String blockPlayerJson = "";
@@ -106,7 +109,7 @@ public class PlayerEntity extends HawkDBEntity {
 	@Column(name = "updateTime")
 	protected int updateTime;
 
-	@Column(name = "invalid")
+	@Column(name = "invalid", nullable = false)
 	protected boolean invalid;
 
 	@Transient
@@ -152,14 +155,6 @@ public class PlayerEntity extends HawkDBEntity {
 		return this.nickname;
 	}
 
-	public short getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = (short)level;
-	}
-
 	public byte getCareer() {
 		return career;
 	}
@@ -168,12 +163,12 @@ public class PlayerEntity extends HawkDBEntity {
 		this.career = career;
 	}
 
-	public long getCoin() {
-		return coin;
+	public short getLevel() {
+		return level;
 	}
 
-	public void setCoin(long coin) {
-		this.coin = coin;
+	public void setLevel(int level) {
+		this.level = (short)level;
 	}
 
 	public int getExp() {
@@ -182,6 +177,14 @@ public class PlayerEntity extends HawkDBEntity {
 
 	public void setExp(int exp) {
 		this.exp = exp;
+	}
+
+	public long getCoin() {
+		return coin;
+	}
+
+	public void setCoin(long coin) {
+		this.coin = coin;
 	}
 
 	public int getBuyGold() {
@@ -198,6 +201,14 @@ public class PlayerEntity extends HawkDBEntity {
 
 	public void setFreeGold(int gold) {
 		this.goldFree = gold;
+	}
+
+	public int getTowerCoin() {
+		return towerCoin;
+	}
+
+	public void setTowerCoin(int towerCoin) {
+		this.towerCoin = towerCoin;
 	}
 
 	public List<Integer> getBlockPlayerList() {

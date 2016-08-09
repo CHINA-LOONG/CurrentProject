@@ -64,7 +64,7 @@ public class UIPropTips : UIBase {
         propDescription.text = StaticDataMgr.Instance.GetTextByID(itemData.tips);
 
         //get by
-        if (!getBy || itemData.FoundList.Count <= 0)
+        if (!getBy ||itemData.FoundList==null|| itemData.FoundList.Count <= 0)
         {
             objGetBy.SetActive(false);
         }

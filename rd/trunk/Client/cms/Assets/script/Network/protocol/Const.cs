@@ -146,11 +146,14 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_FAV", Value=8)]
       CHANGE_FAV = 8,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_GOLD_BUY", Value=8)]
-      CHANGE_GOLD_BUY = 8,
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_GOLD_BUY", Value=9)]
+      CHANGE_GOLD_BUY = 9,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_PLAYER_CONTRIBUTION", Value=9)]
-      CHANGE_PLAYER_CONTRIBUTION = 9
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_PLAYER_CONTRIBUTION", Value=10)]
+      CHANGE_PLAYER_CONTRIBUTION = 10,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_TOWER_COIN", Value=11)]
+      CHANGE_TOWER_COIN = 11
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"attr")]
@@ -347,8 +350,8 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCESHOP", Value=2)]
       ALLIANCESHOP = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OTHERSHOP", Value=3)]
-      OTHERSHOP = 3
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWERSHOP", Value=3)]
+      TOWERSHOP = 3
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailState")]
@@ -365,7 +368,10 @@ namespace PB
       RECEIVE = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"OVERFLOW", Value=4)]
-      OVERFLOW = 4
+      OVERFLOW = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"DELETE", Value=5)]
+      DELETE = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"ImType")]

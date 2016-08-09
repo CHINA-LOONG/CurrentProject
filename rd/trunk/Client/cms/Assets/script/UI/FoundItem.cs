@@ -78,11 +78,12 @@ public class FoundItem : MonoBehaviour
         imgButton.gameObject.SetActive(condition);
         if (condition)
         {
-            textName.color = Color.white;
+            
+            textName.color = ColorConst.system_color_black;
         }
         else
         {
-            textName.color = Color.red;
+            textName.color = ColorConst.text_color_nReq;
         }
     }
 
@@ -158,10 +159,30 @@ public abstract class ParseBase
 
 public class StageParse : ParseBase
 {
+    
     public override void ClickCallBack()
     {
         base.ClickCallBack();
-        //TODO：前往副本
+        InstanceEntry entry = StaticDataMgr.Instance.GetInstanceEntry(Info[1]);
+        if (entry == null)
+        {
+            return;
+        }
+        else
+        {
+            switch ((InstanceType)entry.type)
+            {
+                case InstanceType.Normal:
+                    FoundMgr.Instance.GoToUIStage(entry);
+                    break;
+                case InstanceType.Hole:
+                    FoundMgr.Instance.GoToHole();
+                    break;
+                case InstanceType.Tower:
+                    FoundMgr.Instance.GoToTower();
+                    break;
+            }
+        }
         Logger.Log("副本");
     }
 
@@ -175,9 +196,32 @@ public class StageParse : ParseBase
         InstanceEntry entry = StaticDataMgr.Instance.GetInstanceEntry(Info[1]);
         if (entry == null)
         {
+            name = string.Format("{0}:{1}", name, Info[1]);
+            condition = false;
             return;
         }
-        name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID(entry.name));
+        else
+        {
+            name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID(entry.name));
+            switch ((InstanceType)entry.type)
+            {
+                case InstanceType.Normal:
+                    InstanceEntryRuntimeData runtime = InstanceMapService.Instance.GetRuntimeInstance(entry.id);
+                    condition = runtime.isOpen;
+                    break;
+                case InstanceType.Hole:
+                    condition = true;
+                    //TODO: 检测功能是否开启
+                    break;
+                case InstanceType.Tower:
+                    condition = true;
+                    //TODO: 检测功能是否开启
+                    break;
+                default:
+                    condition = false;
+                    break;
+            }
+        }
     }
     
 }
@@ -266,8 +310,19 @@ public class ShopParse : ParseBase
     public override void ClickCallBack()
     {
         base.ClickCallBack();
-        //TODO:
-        Logger.Log("商店");
+
+        switch ((FoundShopType)int.Parse(Info[1]))
+        {
+            case FoundShopType.Normal:
+                FoundMgr.Instance.GoToUIShop(PB.shopType.NORMALSHOP);
+                break;
+            case FoundShopType.Guild:
+                FoundMgr.Instance.GoToUIShop(PB.shopType.ALLIANCESHOP);
+                break;
+            case FoundShopType.Wishing:
+                //TODO： 设置通天塔商店
+                break;
+        }
     }
 
     public override void GetResult(List<string> info, out string name, out Action action, out bool condition)
@@ -281,12 +336,18 @@ public class ShopParse : ParseBase
         {
             case FoundShopType.Normal:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("shop_putong"));
+                condition = true;
+                //TODO： 判断是否开启功能
                 break;
             case FoundShopType.Guild:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("shop_gonghui"));
+                condition = false;
+                //TODO： 判断是否开启功能
                 break;
             case FoundShopType.Wishing:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("towerBoss_instance_shop"));
+                condition = false;
+                //TODO： 判断是否开启功能
                 break;
             default:
                 break;
@@ -307,6 +368,7 @@ public class StoreParse : ParseBase
         Info = info;
         action = ClickCallBack;
         condition = false;
+        //TODO： 判断是否开启功能
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("shop_store"));
         name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("tips_go"));
     }
@@ -324,7 +386,8 @@ public class DailyParse : ParseBase
     {
         Info = info;
         action = ClickCallBack;
-        condition = true;
+        condition = false;
+        //TODO： 判断是否开启功能
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("tips_main5"));
         name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("tips_go"));
     }
@@ -343,6 +406,7 @@ public class LuckyParse : ParseBase
         Info = info;
         action = ClickCallBack;
         condition = false;
+        //TODO： 判断是否开启功能
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("tips_main6"));
         name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("tips_go"));
     }
@@ -360,16 +424,20 @@ public class GuildParse : ParseBase
     {
         Info = info;
         action = ClickCallBack;
-        condition = true;
+        condition = false;
         name = string.Format("[{0}]", StaticDataMgr.Instance.GetTextByID("sociaty_title"));
 
         switch ((FoundGuildType)int.Parse(Info[1]))
         {
             case FoundGuildType.Boss:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("sociaty_boss"));
+                condition = false;
+                //TODO： 判断是否开启功能
                 break;
             case FoundGuildType.Mission:
                 name = string.Format("{0}:{1}", name, StaticDataMgr.Instance.GetTextByID("sociaty_task"));
+                condition = false;
+                //TODO： 判断是否开启功能
                 break;
             default:
                 break;

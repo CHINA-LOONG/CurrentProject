@@ -101,7 +101,10 @@ namespace PB
       GROUP = 6,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONSTER", Value=7)]
-      MONSTER = 7
+      MONSTER = 7,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE", Value=8)]
+      ALLIANCE = 8
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"moneyType")]
@@ -113,29 +116,6 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"MONEY_COIN", Value=2)]
       MONEY_COIN = 2
-    }
-  
-    [global::ProtoBuf.ProtoContract(Name=@"playerAttr")]
-    public enum playerAttr
-    {
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"GOLD", Value=1)]
-      GOLD = 1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"COIN", Value=2)]
-      COIN = 2,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"LEVEL", Value=3)]
-      LEVEL = 3,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"EXP", Value=4)]
-      EXP = 4,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"FATIGUE", Value=5)]
-      FATIGUE = 5,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"VIPLEVEL", Value=6)]
-      VIPLEVEL = 6
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"changeType")]
@@ -166,8 +146,14 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_FAV", Value=8)]
       CHANGE_FAV = 8,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_GOLD_BUY", Value=8)]
-      CHANGE_GOLD_BUY = 8
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_GOLD_BUY", Value=9)]
+      CHANGE_GOLD_BUY = 9,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_PLAYER_CONTRIBUTION", Value=10)]
+      CHANGE_PLAYER_CONTRIBUTION = 10,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CHANGE_TOWER_COIN", Value=11)]
+      CHANGE_TOWER_COIN = 11
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"attr")]
@@ -364,8 +350,8 @@ namespace PB
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCESHOP", Value=2)]
       ALLIANCESHOP = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OTHERSHOP", Value=3)]
-      OTHERSHOP = 3
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWERSHOP", Value=3)]
+      TOWERSHOP = 3
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailState")]
@@ -382,7 +368,10 @@ namespace PB
       RECEIVE = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"OVERFLOW", Value=4)]
-      OVERFLOW = 4
+      OVERFLOW = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"DELETE", Value=5)]
+      DELETE = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"ImType")]
@@ -428,6 +417,23 @@ namespace PB
             
       [global::ProtoBuf.ProtoEnum(Name=@"OPEN", Value=1)]
       OPEN = 1
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"InstanceType")]
+    public enum InstanceType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_STORY", Value=1)]
+      INSTANCE_STORY = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_HOLE", Value=2)]
+      INSTANCE_HOLE = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_TOWER", Value=3)]
+      INSTANCE_TOWER = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_GUILD", Value=4)]
+      INSTANCE_GUILD = 4
     }
   
 }

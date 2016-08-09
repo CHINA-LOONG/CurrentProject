@@ -61,3 +61,15 @@ message HSMailNew
 	required HSMail mail = 1;
 	optional int32 overflowMailId = 2;
 }
+
+// MAIL_DELETE_C
+message HSMailDelete
+{
+	required int32 mailId = 1;
+}
+
+// MAIL_DELETE_S
+message HSMailDeleteRet
+{
+	required int32 mailId = 1;
+}

@@ -1161,6 +1161,9 @@ public class StatisticsEntity  extends HawkDBEntity {
 		hardTopIndex = 0;
 
 		for (Entry<String, Integer> entry : instanceStarMap.entrySet()) {
+			if (entry.getValue() <= 0) {
+				continue;
+			}
 			InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, entry.getKey());
 			if (entryCfg != null) {
 				int chapter = entryCfg.getChapter();

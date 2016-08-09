@@ -18,7 +18,6 @@ import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Alliance.AllianceInfo;
 import com.hawk.game.protocol.Alliance.HSAllianceApplyList;
 import com.hawk.game.protocol.Alliance.HSAllianceDataRet;
-import com.hawk.game.protocol.Alliance.HSAllianceList;
 import com.hawk.game.protocol.Alliance.HSAllianceMembers;
 import com.hawk.game.protocol.Alliance.HSAllianceSelfDataRet;
 import com.hawk.game.protocol.Alliance.HSAllianceSelfTeam;
@@ -296,8 +295,8 @@ public class PlayerAllianceModule extends PlayerModule {
 			onAllianceSelfTeamSyn(HS.code.ALLIANCE_SELF_DATA_C_VALUE, protocol.parseProtocol(HSAllianceSelfTeam.getDefaultInstance()));
 			return true;
 		}
-		else if (protocol.checkType(HS.code.ALLIANCE_LIST_C_VALUE)) {
-			onAllianceTeamListSyn(HS.code.ALLIANCE_LIST_C_VALUE, protocol.parseProtocol(HSAllianceTeamList.getDefaultInstance()));
+		else if (protocol.checkType(HS.code.ALLIANCE_TEAM_LIST_C_VALUE)) {
+			onAllianceTeamListSyn(HS.code.ALLIANCE_TEAM_LIST_C_VALUE, protocol.parseProtocol(HSAllianceTeamList.getDefaultInstance()));
 			return true;
 		}
 		

@@ -751,7 +751,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			}
 
 			topIndex = statisticsEntity.getNormalTopIndex();
-			topMaxIndex = InstanceUtil.getInstanceChapterMap().get(topChapterId).normalList.size() - 1;
+			topMaxIndex = InstanceUtil.getInstanceChapter(topChapterId).normalList.size() - 1;
 			break;
 		case GsConst.InstanceDifficulty.HARD_INSTANCE:
 			topChapterId = statisticsEntity.getHardTopChapter();
@@ -762,7 +762,7 @@ public class PlayerInstanceModule extends PlayerModule {
 			}
 
 			topIndex = statisticsEntity.getHardTopIndex();
-			topMaxIndex = InstanceUtil.getInstanceChapterMap().get(topChapterId).hardList.size() - 1;
+			topMaxIndex = InstanceUtil.getInstanceChapter(topChapterId).hardList.size() - 1;
 			break;
 		default:
 			return false;
@@ -1237,7 +1237,7 @@ public class PlayerInstanceModule extends PlayerModule {
 	}
 
 	@Override
-	protected boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
+	public boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
 		for (int index : refreshIndexList) {
 			this.refreshMask |= GsConst.PlayerRefreshMask[index];
 		}

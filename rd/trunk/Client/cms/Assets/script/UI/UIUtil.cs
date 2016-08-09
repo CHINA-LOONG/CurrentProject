@@ -236,23 +236,10 @@ public class UIUtil
         }
     }
 
-    public static bool CheckIsEnoughEquip(GameUnit unit,int part)
+    public static bool CheckIsEnoughEquip(GameUnit unit, PartType part)
     {
         UnitData petData = StaticDataMgr.Instance.GetUnitRowData(unit.pbUnit.id);
-        Dictionary<long, EquipData> equipList = GameDataMgr.Instance.PlayerDataAttr.gameEquipData.equipList;
-        foreach (var item in equipList)
-        {
-            if (item.Value.monsterId != BattleConst.invalidMonsterID)
-            {
-                continue;
-            }
-            ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(item.Value.equipId);
-            if (itemInfo.minLevel <= unit.pbUnit.level && itemInfo.part == part && itemInfo.subType == petData.equip)
-            {
-                return true;
-            }
-        }
-        return false;
+        return GameDataMgr.Instance.PlayerDataAttr.CheckEquipTypePart(petData.equip, (int)part);
     }
 
     public static bool CheckPetIsMaxLevel(int level)

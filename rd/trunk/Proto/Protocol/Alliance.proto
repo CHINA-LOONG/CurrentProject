@@ -20,7 +20,7 @@ message AllianceMember
 	required int32  postion = 5;//职位: 0:普通成员,2:会长,1:副会长
 	required int32  id = 6;//唯一ID
 	required int32  prayCount = 7; // 祈福次数
-	optional bool  sendFatigue = 8; // 祈福次数
+	optional bool   sendFatigue = 8; // 祈福次数
 	required int32  loginTime = 9; // 登陆时间
 	required int32  logoutTime = 10; // 登出时间
 }
@@ -36,14 +36,33 @@ message AllianceInfo
 	required int32  currentPop = 6;//当前人数
 	required int32  maxPop = 7;//最大人数
 	required int32  memLevel = 8;//人数级别
-	required int32  expLevel = 9;//人数级别
+	required int32  expLevel = 9;//经验级别
 	required int32  coinLevel = 10;//金币级别
 	required string notice = 11; // 公会公告
 	required string name = 12; // 公会名称
 	required int32  minLevel = 13;  // 最低级别
 	required bool   autoAccept = 14; //自否自动允许加入
-	optional int32  prayCount = 15; //祈福次数
-	optional int32  taskCount = 16; //任务接取次数
+	required int32  captainId = 15; //队长ID
+	required string captaionName = 16; //队长昵称
+	optional int32  prayCount = 17; //祈福次数
+	optional int32  taskCount = 18; //任务接取次数
+}
+
+//返回的公会基础信息
+message AllianceSimpleInfo
+{
+	required int32  id = 1;//公会ID
+	required int32  level = 2;//等级
+	required int32  contribution3day = 3; //3日累计活跃值
+	required int32  currentPop = 4;//当前人数
+	required int32  maxPop = 5;//最大人数
+	required string notice = 6; // 公会公告
+	required string name = 7; // 公会名称
+	required int32  minLevel = 8;  // 最低级别
+	required int32  captainId = 9; //队长ID
+	required string captaionName = 10; //队长昵称
+	required bool   apply = 11; // 申请过
+	required bool   autoAccept = 12; //自否自动允许加入
 }
 
 message AllianceTaskInfo
@@ -101,7 +120,7 @@ message HSAllianceList
 message HSAllianceListRet
 {
 	required int32 totalPage = 1;//一共多少页
-	repeated AllianceInfo allianceList = 2; //工会列表
+	repeated AllianceSimpleInfo allianceList = 2; //工会列表
 }
 
 //公会搜索
@@ -112,7 +131,7 @@ message HSAllianceSearch
 
 message HSAllianceSearchRet
 {
-	repeated AllianceInfo result = 1;//  工会列表
+	repeated AllianceSimpleInfo result = 1;//  工会列表
 }
 
 //公会公告修改
@@ -330,6 +349,7 @@ message HSAllianceNoticeNotify
 {
 	required string notice = 1;// 工会公告
 }
+
 
 // 工会新成员
 message HSMemberAddNotify

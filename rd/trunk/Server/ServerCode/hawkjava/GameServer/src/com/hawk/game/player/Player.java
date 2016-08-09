@@ -17,6 +17,7 @@ import org.hawk.net.protocol.HawkProtocol;
 import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 import org.hawk.service.HawkServiceProxy;
+import org.hawk.util.services.HawkAccountService;
 import org.hawk.xid.HawkXID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,6 @@ import org.slf4j.LoggerFactory;
 import com.hawk.game.config.MonsterBaseCfg;
 import com.hawk.game.config.MonsterCfg;
 import com.hawk.game.config.PlayerAttrCfg;
-import com.hawk.game.config.TimeCfg;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MailEntity;
@@ -390,6 +390,15 @@ public class Player extends HawkAppObj {
 	public long getCoin() {
 		return playerData.getPlayerEntity().getCoin();
 	}
+	
+	/**
+	 * 获取通天塔币
+	 * 
+	 * @return
+	 */
+	public int getTowerCoin() {
+		return playerData.getPlayerEntity().getTowerCoin();
+	}
 
 	/**
 	 * 获取玩家vip等级
@@ -577,6 +586,43 @@ public class Player extends HawkAppObj {
 				Params.valueOf("playerAttr", Const.changeType.CHANGE_COIN_VALUE), 
 				Params.valueOf("sub", coin), 
 				Params.valueOf("after", getCoin()));
+	}
+
+	/**
+	 * 增加通天塔币
+	 */
+	public int increaseTowerCoin(int towerCoin, Action action) {
+		if (towerCoin <= 0) {
+			throw new RuntimeException("increaseTowerCoin");
+		}
+
+		int coinRemain = getTowerCoin() + towerCoin - GsConst.MAX_COIN_COUNT;
+		playerData.getPlayerEntity().setTowerCoin(getTowerCoin() + towerCoin - (coinRemain > 0 ? coinRemain : 0));
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("playerAttr", Const.changeType.CHANGE_TOWER_COIN_VALUE), 
+				Params.valueOf("add", towerCoin), 
+				Params.valueOf("after", getTowerCoin()));
+
+		return coinRemain > 0 ? towerCoin - coinRemain : towerCoin;
+	}
+
+	/**
+	 * 消费通天塔币
+	 */
+	public void consumeTowerCoin(int towerCoin, Action action) {
+		if (towerCoin <= 0 || towerCoin > getTowerCoin()) {
+			throw new RuntimeException("consumeTowerCoin");
+		}
+
+		playerData.getPlayerEntity().setTowerCoin(getTowerCoin() - towerCoin);
+		playerData.getPlayerEntity().notifyUpdate(true);
+
+		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
+				Params.valueOf("playerAttr", Const.changeType.CHANGE_TOWER_COIN_VALUE), 
+				Params.valueOf("sub", towerCoin), 
+				Params.valueOf("after", getTowerCoin()));
 	}
 
 	/**
@@ -811,6 +857,8 @@ public class Player extends HawkAppObj {
 			if (false == HawkApp.getInstance().postMsg(msg)) {
 				HawkLog.errPrintln("post level update message failed: " + getName());
 			}
+			
+			HawkAccountService.getInstance().report(new HawkAccountService.LevelUpData(getPuid(), getId(), targetLevel));
 		}
 
 		BehaviorLogger.log4Service(this, Source.PLAYER_ATTR_CHANGE, action, 
@@ -1109,7 +1157,8 @@ public class Player extends HawkAppObj {
 				Params.valueOf("add", contribution), 
 				Params.valueOf("after", playerData.getPlayerAllianceEntity().getContribution()));
 		return true;
-	}	
+	}
+
 	/**
 	 * 发送邮件
 	 */
@@ -1354,9 +1403,10 @@ public class Player extends HawkAppObj {
 		for (int index = 0; index < GsConst.PlayerRefreshTime.length; ++index) {
 			int timeCfgId = GsConst.PlayerRefreshTime[index];
 
-			Calendar nextRefreshTime = refreshTime(timeCfgId, curTime);
-			if (nextRefreshTime != null) {
-				statisticsEntity.setRefreshTime(timeCfgId, nextRefreshTime);
+			Calendar lastRefreshTime = playerData.getStatisticsEntity().getLastRefreshTime(timeCfgId);
+			Calendar expectedRefreshTime = TimeUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
+			if (expectedRefreshTime != null) {
+				statisticsEntity.setRefreshTime(timeCfgId, expectedRefreshTime);
 				refreshIndexList.add(index);
 			}
 		}
@@ -1376,30 +1426,4 @@ public class Player extends HawkAppObj {
 		}
 	}
 
-	/**
-	 * 刷新时间点
-	 * @return 如果该时间需要刷新，返回下一个刷新时间，否则返回null
-	 */
-	private Calendar refreshTime(int timeCfgId, Calendar curTime) {
-		TimeCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, timeCfgId);
-		if (null != timeCfg) {
-			try {
-				Calendar nextRefreshTime = HawkTime.getCalendar();
-				Calendar lastRefreshTime = playerData.getStatisticsEntity().getLastRefreshTime(timeCfgId);
-				if (null == lastRefreshTime) {
-					lastRefreshTime = HawkTime.getCalendar();
-					lastRefreshTime.setTimeInMillis(0);
-				}
-
-				boolean shouldRefresh = TimeUtil.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
-				if (true == shouldRefresh) {
-					return nextRefreshTime;
-				}
-			} catch (Exception e) {
-				HawkException.catchException(e);
-			}
-		}
-
-		return null;
-	}
 }

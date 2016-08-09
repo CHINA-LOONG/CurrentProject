@@ -19,23 +19,146 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: {x: 1, y: 1, z: 1}
-        inSlope: {x: -.399999976, y: -.399999976, z: 0}
-        outSlope: {x: -.399999976, y: -.399999976, z: 0}
+        inSlope: {x: -1.32338738, y: -1.31697512, z: 0}
+        outSlope: {x: -1.32338738, y: -1.31697512, z: 0}
         tangentMode: 0
-      - time: .5
-        value: {x: .800000012, y: .800000012, z: 1}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+      - time: .216666669
+        value: {x: .713266075, y: .714655399, z: 1}
+        inSlope: {x: -.925480545, y: -.923161209, z: 0}
+        outSlope: {x: -.925480545, y: -.923161209, z: 0}
         tangentMode: 0
       - time: 1
-        value: {x: 1, y: 1, z: 1}
-        inSlope: {x: .399999976, y: .399999976, z: 0}
-        outSlope: {x: .399999976, y: .399999976, z: 0}
+        value: {x: .300000012, y: .300000012, z: 1}
+        inSlope: {x: -.152059078, y: -.150811851, z: 0}
+        outSlope: {x: -.152059078, y: -.150811851, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: fireFocusImage1
-  m_FloatCurves: []
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 1
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 6.35586166, y: 6.336092, z: 6.336092}
+        outSlope: {x: 6.35586166, y: 6.336092, z: 6.336092}
+        tangentMode: 0
+      - time: 1.01666665
+        value: {x: 1.10593092, y: 1.10560143, z: 1.10560143}
+        inSlope: {x: 3.49149466, y: 3.48270798, z: 3.48270798}
+        outSlope: {x: 3.49149466, y: 3.48270798, z: 3.48270798}
+        tangentMode: 0
+      - time: 1.16666663
+        value: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
+        inSlope: {x: .627127588, y: .629324198, z: .629324198}
+        outSlope: {x: .627127588, y: .629324198, z: .629324198}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: 
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 1
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 4.40462065, y: 4.42175341, z: 4.40857363}
+        outSlope: {x: 4.40462065, y: 4.42175341, z: 4.40857363}
+        tangentMode: 0
+      - time: 1.04999995
+        value: {x: 1.22023082, y: 1.22108746, z: 1.22042847}
+        inSlope: {x: 2.97274947, y: 2.97764468, z: 2.97387886}
+        outSlope: {x: 2.97274947, y: 2.97764468, z: 2.97387886}
+        tangentMode: 0
+      - time: 1.16666663
+        value: {x: 1.39999998, y: 1.39999998, z: 1.39999998}
+        inSlope: {x: -.135781869, y: -.20866549, z: -.215905011}
+        outSlope: {x: -.135781869, y: -.20866549, z: -.215905011}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: fireFocusImage2
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Color.r
+    path: fireFocusImage1
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Color.g
+    path: fireFocusImage1
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Color.b
+    path: fireFocusImage1
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .800000012
+        inSlope: -.559274435
+        outSlope: -.559274435
+        tangentMode: 10
+      - time: .783333361
+        value: .361901671
+        inSlope: -.751682997
+        outSlope: -.751682997
+        tangentMode: 10
+      - time: 1.16666663
+        value: 0
+        inSlope: -.944091499
+        outSlope: -.944091499
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Color.a
+    path: fireFocusImage1
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_PPtrCurves:
   - curve:
     - time: 0
@@ -46,6 +169,13 @@ AnimationClip:
     path: normalGroup/fireFocusEffect
     classID: 114
     script: {fileID: 11500000, guid: da6849db88f25054ab10b2b897244fd3, type: 3}
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 2ca6bee741a90ed4e975603700162c2a, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -59,19 +189,62 @@ AnimationClip:
       classID: 4
       customType: 0
       isPPtrCurve: 0
+    - path: 0
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3936370627
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1940483705
+      attribute: 304273561
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
     - path: 2886395616
       attribute: 2188255609
       script: {fileID: 11500000, guid: da6849db88f25054ab10b2b897244fd3, type: 3}
       classID: 114
       customType: 0
       isPPtrCurve: 1
+    - path: 0
+      attribute: 2015549526
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 1
+    - path: 1940483705
+      attribute: 2526845255
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1940483705
+      attribute: 4215373228
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1940483705
+      attribute: 2334886179
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
     pptrCurveMapping:
     - {fileID: 0}
     - {fileID: 0}
+    - {fileID: 21300000, guid: 2ca6bee741a90ed4e975603700162c2a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 1.16666663
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -91,19 +264,19 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 1
-        inSlope: -.399999976
-        outSlope: -.399999976
+        inSlope: -1.32338738
+        outSlope: -1.32338738
         tangentMode: 10
-      - time: .5
-        value: .800000012
-        inSlope: 0
-        outSlope: 0
+      - time: .216666669
+        value: .713266075
+        inSlope: -.925480545
+        outSlope: -.925480545
         tangentMode: 10
       - time: 1
-        value: 1
-        inSlope: .399999976
-        outSlope: .399999976
-        tangentMode: 10
+        value: .300000012
+        inSlope: -.152059078
+        outSlope: -.152059078
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalScale.x
@@ -115,19 +288,19 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 1
-        inSlope: -.399999976
-        outSlope: -.399999976
+        inSlope: -1.31697512
+        outSlope: -1.31697512
         tangentMode: 10
-      - time: .5
-        value: .800000012
-        inSlope: 0
-        outSlope: 0
+      - time: .216666669
+        value: .714655399
+        inSlope: -.923161209
+        outSlope: -.923161209
         tangentMode: 10
       - time: 1
-        value: 1
-        inSlope: .399999976
-        outSlope: .399999976
-        tangentMode: 10
+        value: .300000012
+        inSlope: -.150811851
+        outSlope: -.150811851
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalScale.y
@@ -151,6 +324,231 @@ AnimationClip:
       m_PostInfinity: 2
     attribute: m_LocalScale.z
     path: fireFocusImage1
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 1
+        value: 1
+        inSlope: 6.35586166
+        outSlope: 6.35586166
+        tangentMode: 10
+      - time: 1.01666665
+        value: 1.10593092
+        inSlope: 3.49149466
+        outSlope: 3.49149466
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1.20000005
+        inSlope: .627127588
+        outSlope: .627127588
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.x
+    path: 
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 1
+        value: 1
+        inSlope: 6.336092
+        outSlope: 6.336092
+        tangentMode: 10
+      - time: 1.01666665
+        value: 1.10560143
+        inSlope: 3.48270798
+        outSlope: 3.48270798
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1.20000005
+        inSlope: .629324198
+        outSlope: .629324198
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.y
+    path: 
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 1
+        value: 1
+        inSlope: 6.336092
+        outSlope: 6.336092
+        tangentMode: 10
+      - time: 1.01666665
+        value: 1.10560143
+        inSlope: 3.48270798
+        outSlope: 3.48270798
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1.20000005
+        inSlope: .629324198
+        outSlope: .629324198
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.z
+    path: 
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Color.r
+    path: fireFocusImage1
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Color.g
+    path: fireFocusImage1
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Color.b
+    path: fireFocusImage1
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .800000012
+        inSlope: -.559274435
+        outSlope: -.559274435
+        tangentMode: 10
+      - time: .783333361
+        value: .361901671
+        inSlope: -.751682997
+        outSlope: -.751682997
+        tangentMode: 10
+      - time: 1.16666663
+        value: 0
+        inSlope: -.944091499
+        outSlope: -.944091499
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Color.a
+    path: fireFocusImage1
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 1
+        value: 1
+        inSlope: 4.40462065
+        outSlope: 4.40462065
+        tangentMode: 10
+      - time: 1.04999995
+        value: 1.22023082
+        inSlope: 2.97274947
+        outSlope: 2.97274947
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1.39999998
+        inSlope: -.135781869
+        outSlope: -.135781869
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.x
+    path: fireFocusImage2
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 1
+        value: 1
+        inSlope: 4.42175341
+        outSlope: 4.42175341
+        tangentMode: 10
+      - time: 1.04999995
+        value: 1.22108746
+        inSlope: 2.97764468
+        outSlope: 2.97764468
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1.39999998
+        inSlope: -.20866549
+        outSlope: -.20866549
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.y
+    path: fireFocusImage2
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 1
+        value: 1
+        inSlope: 4.40857363
+        outSlope: 4.40857363
+        tangentMode: 10
+      - time: 1.04999995
+        value: 1.22042847
+        inSlope: 2.97387886
+        outSlope: 2.97387886
+        tangentMode: 10
+      - time: 1.16666663
+        value: 1.39999998
+        inSlope: -.215905011
+        outSlope: -.215905011
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.z
+    path: fireFocusImage2
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []

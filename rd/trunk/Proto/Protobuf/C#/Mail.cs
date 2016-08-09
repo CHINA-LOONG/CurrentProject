@@ -204,4 +204,38 @@ namespace PB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMailDelete")]
+  public partial class HSMailDelete : global::ProtoBuf.IExtensible
+  {
+    public HSMailDelete() {}
+    
+    private int _mailId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"mailId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int mailId
+    {
+      get { return _mailId; }
+      set { _mailId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HSMailDeleteRet")]
+  public partial class HSMailDeleteRet : global::ProtoBuf.IExtensible
+  {
+    public HSMailDeleteRet() {}
+    
+    private int _mailId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"mailId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int mailId
+    {
+      get { return _mailId; }
+      set { _mailId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

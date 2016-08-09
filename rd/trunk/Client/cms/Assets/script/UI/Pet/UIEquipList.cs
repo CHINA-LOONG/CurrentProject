@@ -45,7 +45,7 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip,IScrollView
                 continue;
             }
             ItemStaticData itemInfo = StaticDataMgr.Instance.GetItemData(item.Value.equipId);
-            if (itemInfo.minLevel <= m_unit.pbUnit.level && itemInfo.part == part && itemInfo.subType == petData.equip)
+            if (itemInfo.part == part && itemInfo.subType == petData.equip)
             {
                 Infos.Add(item.Value);
             }
@@ -54,9 +54,6 @@ public class UIEquipList : MonoBehaviour,IClickUsedEquip,IScrollView
         
         scrollView.InitContentSize(Infos.Count, this);
     }
-    
-
-
     //TODO: sort by zhandouli(战斗力)
     public static int SortEquip(EquipData a, EquipData b)
     {

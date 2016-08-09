@@ -51,7 +51,7 @@ public class AllianceListHandler implements HawkProtocolHandler {
 		int index = 0;
 		for (AllianceEntity allianceEntity : levelSet) {
 			if (index >= formIndex) {
-				builder.addAllianceList(AllianceUtil.getAllianceInfo(allianceEntity));
+				builder.addAllianceList(AllianceUtil.getSimpleAllianceInfo(allianceEntity, AllianceManager.getInstance().isPlayerApply(player.getId(), allianceEntity.getId())));
 			}
 			
 			if (index == endIndex - 1) {

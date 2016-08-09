@@ -189,11 +189,8 @@ public class GameDataMgr : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnBattleStart()
     {
-        if (mHoleInvalidate == true)
-        {
-            mHoleInvalidate = false;
-            return;
-        }
+        mHoleInvalidate = false;
+        mTowerInvalidate = false;
 
         if (curInstanceType == (int)InstanceType.Hole)
         {
@@ -210,14 +207,15 @@ public class GameDataMgr : MonoBehaviour
     //---------------------------------------------------------------------------------------------
     public void OnBattleOver(bool isSuccess)
     {
-        if (mTowerInvalidate == true)
-        {
-            mTowerInvalidate = false;
-            return;
-        }
 
         if(curInstanceType == (int)InstanceType.Tower)
         {
+            if (mTowerInvalidate == true)
+            {
+                mTowerInvalidate = false;
+                return;
+            }
+
             TowerData curTowerData = StaticDataMgr.Instance.GetTowerData((int)curTowerType);
             if (curTowerData != null)
             {
@@ -446,8 +444,10 @@ public class GameDataMgr : MonoBehaviour
         foreach (PB.EquipInfo equipInfo in equpSync.equipInfos)
         {
             EquipData equip = EquipData.valueof(equipInfo.id, equipInfo.equipId, equipInfo.stage, equipInfo.level,equipInfo.monsterId, equipInfo.gemItems);
-            
+
             mainPlayer.gameEquipData.AddEquip(equip);
+            //要在添加装备之后
+            mainPlayer.AddEquipTypePart(equip);
             
             if (mainPlayer.allUnitDic.ContainsKey(equipInfo.monsterId))
             {
@@ -627,6 +627,7 @@ public class GameDataMgr : MonoBehaviour
             else if (item.type == (int)PB.itemType.EQUIP)
             {
                 GameDataMgr.Instance.mainPlayer.gameEquipData.AddEquip(EquipData.valueof(item.id, item.itemId, item.stage, item.level, -1, new List<PB.GemPunch>()));
+                GameDataMgr.Instance.mainPlayer.AddEquipTypePart(item.id);
             }
             else if (item.type == (int)PB.itemType.MONSTER)
             {
@@ -725,6 +726,7 @@ public class GameDataMgr : MonoBehaviour
             }
             else if (item.type == (int)PB.itemType.EQUIP)
             {
+                GameDataMgr.Instance.mainPlayer.RemoveEquipTypePart(item.id);
                 GameDataMgr.Instance.mainPlayer.gameEquipData.RemoveEquip(item.id);
             }
             else if (item.type == (int)PB.itemType.MONSTER)

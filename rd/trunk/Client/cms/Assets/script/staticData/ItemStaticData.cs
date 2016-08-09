@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 public enum PartType
 {
-    Head,
+    Head = 1,
     Body,
     Waist,
     Neck,
     Wrist,
     Finger,
-    
-    NUM_EQUIP_PART
+
+    NUM_EQUIP_PART = Finger
 }
 
 

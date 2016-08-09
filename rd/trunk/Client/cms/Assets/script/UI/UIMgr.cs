@@ -37,6 +37,13 @@ public class UIMgr : MonoBehaviour
     private static GameObject uiRootNormal;
     private static GameObject uiRootTop;
 
+    public MainStageController MainstageInstance
+    {
+        set { mMainstageController = value; }
+        get { return mMainstageController; }
+    }
+    private MainStageController mMainstageController;
+
 	static UIMgr mInst = null;
 	public static UIMgr Instance
 	{

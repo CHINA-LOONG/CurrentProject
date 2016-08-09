@@ -13,6 +13,11 @@ public class SpellFunctions
         return 0.0f;
     }
 
+    public static float GetBpLvlAdjust(int lvl)
+    {
+        return 0.000001f;
+    }
+
     public static float GetPropertyDamageRatio(int casterProp, int targetProp, ref bool isKezhi)
     {
         //propertyGold->guang propertyEarth->an

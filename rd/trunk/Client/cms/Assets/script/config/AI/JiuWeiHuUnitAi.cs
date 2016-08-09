@@ -9,7 +9,8 @@ public class JiuWeiHuUnitAi : BossAi {
 	{
 	
 	}
-
+	//下面这个是弱点提示切换的动画，需要配置在状态切换事件下方
+	//BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
 
 	public	override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit jiuWeihuUnit)
 	{

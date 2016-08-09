@@ -124,7 +124,11 @@ public class AllianceManager extends HawkAppObj {
             public int compare(AllianceEntity o1, AllianceEntity o2) {
                 if (o1 == null || o2 == null)
                     return 0; 
-                return o2.getLevel() - o1.getLevel();
+                if (o1.getLevel() != o2.getLevel()) {
+                	return o2.getLevel() - o1.getLevel();
+				}
+                
+                return o1.getId() - o2.getId();
          }});
 	}
 	
@@ -353,6 +357,18 @@ public class AllianceManager extends HawkAppObj {
 	}
 	
 	/**
+	 * 获取申请数量
+	 */
+	public int getPlayerApplyCount(int playerId) {
+		HashSet<Integer> allianceSet = playerApplyMap.get(playerId);
+		if (allianceSet != null) {
+			return allianceSet.size();
+		}
+		
+		return 0;
+	}
+	
+	/**
 	 * 删除申请列表
 	 */
 	public void removePlayerApply(int playerId, int allianceId) {
@@ -360,6 +376,18 @@ public class AllianceManager extends HawkAppObj {
 		if (allianceSet != null) {
 			allianceSet.remove(allianceId);
 		}
+	}
+	
+	/**
+	 * 是否申请过公会
+	 */
+	public boolean isPlayerApply(int playerId, int allianceId) {
+		HashSet<Integer> allianceSet = playerApplyMap.get(playerId);
+		if (allianceSet != null) {
+			return allianceSet.contains(allianceId);
+		}
+		
+		return false;
 	}
 	
 	/**

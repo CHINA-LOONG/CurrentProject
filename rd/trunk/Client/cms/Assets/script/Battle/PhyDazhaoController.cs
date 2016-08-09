@@ -196,7 +196,7 @@ public class PhyDazhaoController : MonoBehaviour
 			wpPosInScreen.x /= uiScale;
 			wpPosInScreen.y /= uiScale;
 			Transform comboParent =  BattleController.Instance.GetUIBattle().publicTopGroup;
-			HitCombo.ShowCombo(comboParent,comboIndex,wpPosInScreen.x - 75,wpPosInScreen.y + 10);
+			HitCombo.ShowCombo(comboParent,comboIndex,wpPosInScreen.x - 150,wpPosInScreen.y + 50);
 		}
 	}
 

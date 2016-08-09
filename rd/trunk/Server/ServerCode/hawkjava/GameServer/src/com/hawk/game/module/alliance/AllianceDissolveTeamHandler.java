@@ -21,7 +21,6 @@ import com.hawk.game.player.Player;
 import com.hawk.game.protocol.Alliance.HSAllianceDissolveTeamRet;
 import com.hawk.game.protocol.HS;
 import com.hawk.game.protocol.Status;
-import com.hawk.game.protocol.Alliance.HSAllianceDissolveTeam;
 import com.hawk.game.util.GsConst;
 
 public class AllianceDissolveTeamHandler implements HawkMsgHandler{

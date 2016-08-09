@@ -63,7 +63,7 @@ public class PlayerStatisticsModule  extends PlayerModule {
 	}
 
 	@Override
-	protected boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
+	public boolean onRefresh(List<Integer> refreshIndexList, boolean onLogin) {
 		// 刷新统计数据，保证其它模块刷新时数据时间一致
 		StatisticsEntity statisticsEntity = player.getPlayerData().loadStatistics();
 

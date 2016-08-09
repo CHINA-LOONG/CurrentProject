@@ -61,6 +61,10 @@ public class ShopDataMgr : MonoBehaviour
 		GameEventMgr.Instance.RemoveListener<ProtocolMessage> (PB.code.SHOP_REFRESH_TIMES.GetHashCode ().ToString (), OnShopRefreshItemsChanged);
 	}
 
+    public bool IsShopOpen(int shopType)
+    {
+        return true;
+    }
 	public	bool	IsNeedUpdateShopData()
 	{
 		if (lastRefreshTime == null)
@@ -259,11 +263,6 @@ public class ShopDataMgr : MonoBehaviour
 			alliancShopData.refreshTimesLeft = data.allianceShopRefreshTime;
 		}
 
-		PB.ShopData otherShopData = null;
-		if (shopDataDic.TryGetValue ((int)PB.shopType.OTHERSHOP, out otherShopData))
-		{
-			otherShopData.refreshTimesLeft = data.otherShopRefreshTime;
-		}
 	}
 
 	#region -----钻石不足引导充值  --金币不足要兑换(兑换不足强提示)

@@ -1989,7 +1989,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154864}
-  m_LocalRotation: {x: -.033714883, y: .70655179, z: .706317842, w: -.0276247971}
+  m_LocalRotation: {x: -.0337148793, y: .706551731, z: .706317782, w: -.0276247878}
   m_LocalPosition: {x: -.122730561, y: -.202755034, z: -.00225822441}
   m_LocalScale: {x: 1.00000012, y: 1.00000024, z: 1.00000024}
   m_Children:
@@ -3919,6 +3919,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: isUseXgAi
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

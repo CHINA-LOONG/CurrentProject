@@ -74,8 +74,18 @@ public class CreateSociaty : UIBase
 
     bool CheckInput()
     {
-        UIIm.Instance.ShowSystemHints(nameInputField.text.Length.ToString(), (int)PB.ImType.PROMPT);
-        return false;
+        if(string.IsNullOrEmpty(nameInputField.text))
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("名字不能为空 "),(int)PB.ImType.PROMPT);
+            return false;
+        }
+        if(string.IsNullOrEmpty(gonggaoInputField.text))
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("公告内容不能为空 "), (int)PB.ImType.PROMPT);
+            return false;
+        }
+      //  UIIm.Instance.ShowSystemHints(nameInputField.text.Length.ToString(), (int)PB.ImType.PROMPT);
+        return true;
     }
 
     void RequestCreateSociaty()

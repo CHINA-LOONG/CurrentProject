@@ -233,6 +233,15 @@ bossYueguangsenlin18Meidusha1Name,群蛇乱舞,Serpent Fury
 bossYueguangsenlin18Meidusha5Name,压制,Suppress
 bossYueguangsenlin18Meidusha8Name,石化攻击,Petrify
 bossYueguangsenlin18Meidusha9Name,拍打攻击,Batter
+meidusha1,技能1,skill1
+meidusha2,技能2,skill2
+meidusha3,技能3,skill3
+meidusha4,技能4,skill4
+meidusha5,技能5,skill5
+meidusha6,技能6,skill6
+meidusha7,技能7,skill7
+meidusha8,技能8,skill8
+meidusha9,技能9,skill9
 ultXiyirenName,嘲讽射击,Sneering Shots
 psvXiyirenName,保护色,Protective color
 ultHuapoName,花刺扫射,Spike Spray
@@ -457,3 +466,26 @@ tips_70021_zhiyuanxinghujia,测试用tips,test Open Sockets: Reveals a Gem slot 
 tips_70022_zhiyuanxingshouzhuo,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_70023_zhiyuanxingjiezhi,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
 tips_70024_zhiyuanxinghushenfu,测试用tips,test Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.Open Sockets: Reveals a Gem slot after opening.
+amutehide_lian,面具都掉了，看看什么露出来了？,mianjudoudiaole
+amutehide_mianju,阿姆特这个面具好奇特的感觉,mianjuhaoqiguai
+amutenormal1_lian,这脸细皮嫩肉的，一定不抗打！,xipineiroude
+amutenormal1_shenti,阿姆特的胸部，似乎并不是他非常重要的部位,xiong
+amutenormal1_mianju,面具后面似乎隐藏着什么秘密,mianjuhoumian
+wpName24,脸,face
+wpName25,胸,xiong
+wpName26,面具,mianju
+wpName15,胸,xiong
+wpName16,左侧蛇头,zuoshetou
+wpName17,右侧蛇头,youshetou
+wpName18,小蛇头,xiaoshetou
+wpName19,小蛇头,xiaoshetou
+wpName20,眼睛,eyes
+meidushahide_zuoshetou,这蛇头好像有些问题,youwenti！
+meidushahide_youshetou,这蛇头好像有些问题,youwenti！
+meidushahide_xiaoshetou,据说美杜莎非常喜爱他的头发,love toufa
+meidushahide_eyes,据说被美杜莎注视过的人都会石化！,shihua！
+meidushanormal1_xiong,美杜莎的胸，看起来好平哦！,feijichang
+meidushanormal1_zuoshetou,这蛇头提升了美杜莎的物理攻击能力,wulinengli
+meidushanormal1_youshetou,这蛇头提升了美杜莎的法术攻击能力,fashunengli
+meidushanormal1_xiaoshetou,这蛇头看起来有些诡异,haoqiguaio
+meidushanormal1_eyes,往往危险的部位也比较脆弱！,cuiruo！

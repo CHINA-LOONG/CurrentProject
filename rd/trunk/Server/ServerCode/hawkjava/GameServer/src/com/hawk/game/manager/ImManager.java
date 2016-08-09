@@ -46,10 +46,12 @@ public class ImManager extends HawkAppObj {
 		public String origText;
 		/** @key 语言IOS代码 */
 		public Map<String, String> transText;
+
 		// 可选的
 		public int guildId;
 		public int receiverId;
 		public ImPlayer receiver;
+		public String expansion;
 	}
 
 	/**
@@ -279,7 +281,7 @@ public class ImManager extends HawkAppObj {
 	/**
 	 * 投递聊天消息(由player自身调用)
 	 */
-	public void postChat(Player player, String chatText, int channel) {
+	public void postChat(Player player, int channel, String chatText, String expansion) {
 		ImMsg msgObj = new ImMsg();
 		msgObj.type = Const.ImType.CHAT_VALUE;
 		msgObj.channel = channel;
@@ -288,6 +290,7 @@ public class ImManager extends HawkAppObj {
 		msgObj.origLang = player.getLanguage();
 		msgObj.origText = chatText;
 		msgObj.transText = null;
+		msgObj.expansion = expansion;
 
 		if (channel == Const.ImChannel.GUILD_VALUE) {
 			msgObj.guildId = player.getPlayerData().getPlayerAllianceEntity().getAllianceId();

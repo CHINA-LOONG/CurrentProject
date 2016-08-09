@@ -161,14 +161,19 @@ MonoBehaviour:
   aniName: fadeout
   spellNameAni: fadeout
   criticalAniName: critical_fadeout
-  damageFont: {fileID: 12800000, guid: b3ca372a7fe572b46bae93d81764ec54, type: 2}
+  damageFont: {fileID: 12800000, guid: ea9c73064f5f4bf44a8745cdf8913499, type: 2}
   healFont: {fileID: 12800000, guid: 3172aabf19bdf434e98207d347e70252, type: 2}
   vitalWnd: {fileID: 11410706}
   hitResult: {fileID: 11454562}
-  criticalColor: {r: .903448343, g: 1, b: 0, a: 1}
-  absorbColor: {r: .210016698, g: .691176474, b: .0203287397, a: 1}
+  hitResultOutline: {fileID: 11487914}
+  criticalOutlineColor: {r: .725490212, g: .117647059, b: 0, a: 1}
+  absorbOutlineColor: {r: 0, g: .372549027, b: .196078435, a: 1}
+  interruptOutlineColor: {r: .4627451, g: 0, b: 0, a: 1}
+  spellnameOutlineColor: {r: .0196078438, g: .0196078438, b: .0470588244, a: 1}
+  criticalColor: {r: 1, g: .713725507, b: .0235294122, a: 1}
+  absorbColor: {r: .478431374, g: 1, b: 0, a: 1}
   interruptColor: {r: 1, g: 0, b: 0, a: 1}
-  spellnameColor: {r: .688797593, g: .911675215, b: .95588237, a: 1}
+  spellnameColor: {r: .890196085, g: .992156863, b: 1, a: 1}
 --- !u!114 &11454562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,7 +195,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 826beefc1d985ac47b40203da557dc27, type: 3}
-    m_FontSize: 34
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10

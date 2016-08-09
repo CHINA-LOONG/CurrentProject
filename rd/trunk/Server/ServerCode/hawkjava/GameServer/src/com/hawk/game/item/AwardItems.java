@@ -228,7 +228,7 @@ public class AwardItems {
 		}
 		return this;
 	}
-	
+
 	public AwardItems addMonsterAttr(int attrType, int count, int id) {
 		RewardItem.Builder rewardItem = null;
 		for (RewardItem.Builder reward :  rewardInfo.getRewardItemsBuilderList()) {
@@ -329,31 +329,35 @@ public class AwardItems {
 				return rewardItem.getCount();
 			}
 		}
-		
+
 		return 0;
 	}
-	
+
 	public AwardItems addFreeGold(int gold) {
-		if (gold <= 0 ) {
-			return this;
+		if (gold > 0) {
+			addAttr(changeType.CHANGE_GOLD_VALUE, gold);
 		}
-		addAttr(changeType.CHANGE_GOLD_VALUE, gold);
 		return this;
 	}
 
 	public AwardItems addBuyGold(int gold) {
-		if (gold <= 0 ) {
-			return this;
+		if (gold > 0) {
+			addAttr(changeType.CHANGE_GOLD_BUY_VALUE, gold);
 		}
-		addAttr(changeType.CHANGE_GOLD_BUY_VALUE, gold);
 		return this;
 	}
 
 	public AwardItems addCoin(int coin) {
-		if (coin <= 0 ) {
-			return this;
+		if (coin > 0) {
+			addAttr(changeType.CHANGE_COIN_VALUE, coin);
 		}
-		addAttr(changeType.CHANGE_COIN_VALUE, coin);
+		return this;
+	}
+
+	public AwardItems addTowerCoin(int towerCoin) {
+		if (towerCoin > 0) {
+			addAttr(changeType.CHANGE_TOWER_COIN_VALUE, towerCoin);
+		}
 		return this;
 	}
 
@@ -415,17 +419,23 @@ public class AwardItems {
 	private int checkLimitInternal(Player player) {
 		for (RewardItem rewardItem : rewardInfo.getRewardItemsList()) {
 			if(rewardItem.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
-				if (Integer.valueOf(rewardItem.getItemId()).intValue() == Const.changeType.CHANGE_COIN_VALUE) {
+				int changeType = Integer.valueOf(rewardItem.getItemId());
+				if (changeType == Const.changeType.CHANGE_COIN_VALUE) {
 					if(player.getCoin() + rewardItem.getCount() > GsConst.MAX_COIN_COUNT) {
 						return AwardCheckResult.COIN_LIMIT;
 					}
 				}
-				else if (Integer.valueOf(rewardItem.getItemId()).intValue() == Const.changeType.CHANGE_GOLD_VALUE) {
+				else if (changeType == Const.changeType.CHANGE_GOLD_VALUE) {
 					if (player.getGold() + rewardItem.getCount() > GsConst.MAX_GOLD_COUNT) {
 						return AwardCheckResult.GOLD_LIMIT;
 					}
 				}
-				else if (Integer.valueOf(rewardItem.getItemId()).intValue() == Const.changeType.CHANGE_FATIGUE_VALUE) {
+				else if (changeType == Const.changeType.CHANGE_TOWER_COIN_VALUE) {
+					if(player.getTowerCoin() + rewardItem.getCount() > GsConst.MAX_COIN_COUNT) {
+						return AwardCheckResult.TOWER_COIN_LIMIT;
+					}
+				}
+				else if (changeType == Const.changeType.CHANGE_FATIGUE_VALUE) {
 					// 更新活力值
 					player.updateFatigue();
 					if (player.getPlayerData().getStatisticsEntity().getFatigue() +  rewardItem.getCount() > GsConst.MAX_FATIGUE_COUNT) {
@@ -447,6 +457,7 @@ public class AwardItems {
 			for (int i = 0; i < rewardInfo.getRewardItemsBuilderList().size(); ) {
 				RewardItem.Builder item = rewardInfo.getRewardItemsBuilder(i);
 				boolean invalidType = false;
+
 				if (item.getType() == itemType.PLAYER_ATTR_VALUE) {
 					switch (Integer.parseInt(item.getItemId())) {
 					case changeType.CHANGE_COIN_VALUE:
@@ -459,6 +470,14 @@ public class AwardItems {
 
 					case changeType.CHANGE_GOLD_BUY_VALUE:
 						player.increaseBuyGold(item.getCount(), action);
+						break;
+
+					case changeType.CHANGE_TOWER_COIN_VALUE:
+						player.increaseTowerCoin(item.getCount(), action);
+						break;
+
+					case changeType.CHANGE_FATIGUE_VALUE:
+						player.increaseFatigue(item.getCount(), action);
 						break;
 
 					case changeType.CHANGE_PLAYER_EXP_VALUE:
@@ -478,10 +497,6 @@ public class AwardItems {
 								}
 							}
 						}
-						break;
-
-					case changeType.CHANGE_FATIGUE_VALUE:
-						player.increaseFatigue(item.getCount(), action);
 						break;
 
 					// GM命令 ,不会和CHANGE_PLAYER_EXP_VALUE同时出现
@@ -532,6 +547,10 @@ public class AwardItems {
 				boolean invalidType = false;
 				boolean rewardFail = false;
 				switch (item.getType()) {
+				case itemType.PLAYER_ATTR_VALUE:
+					// 前边已计算
+					break;
+
 				case itemType.MONSTER_ATTR_VALUE:
 					if (item.getId() == 0 || player.getPlayerData().getMonsterEntity((int)item.getId()) == null) {
 						// 强制清除没有id的怪物奖励
@@ -600,16 +619,14 @@ public class AwardItems {
 					}
 					break;
 
-				case itemType.PLAYER_ATTR_VALUE:
-					break;
 				case itemType.ALLIANCE_VALUE:
 					if (Integer.valueOf(item.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
 						if (player.increaseContribution(item.getCount(), action) == false) {
 							rewardFail = true;
 						}
 					}
-					
 					break;
+
 				default:
 					invalidType = true;
 					break;

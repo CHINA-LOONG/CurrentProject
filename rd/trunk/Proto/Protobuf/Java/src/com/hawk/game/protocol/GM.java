@@ -1603,6 +1603,1083 @@ public final class GM {
     // @@protoc_insertion_point(class_scope:GMOperationRet)
   }
 
+  public interface GMInstancePushOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .InstanceState instanceState = 1;
+    /**
+     * <code>repeated .InstanceState instanceState = 1;</code>
+     *
+     * <pre>
+     * 副本状态
+     * </pre>
+     */
+    java.util.List<com.hawk.game.protocol.Statistics.InstanceState> 
+        getInstanceStateList();
+    /**
+     * <code>repeated .InstanceState instanceState = 1;</code>
+     *
+     * <pre>
+     * 副本状态
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.InstanceState getInstanceState(int index);
+    /**
+     * <code>repeated .InstanceState instanceState = 1;</code>
+     *
+     * <pre>
+     * 副本状态
+     * </pre>
+     */
+    int getInstanceStateCount();
+    /**
+     * <code>repeated .InstanceState instanceState = 1;</code>
+     *
+     * <pre>
+     * 副本状态
+     * </pre>
+     */
+    java.util.List<? extends com.hawk.game.protocol.Statistics.InstanceStateOrBuilder> 
+        getInstanceStateOrBuilderList();
+    /**
+     * <code>repeated .InstanceState instanceState = 1;</code>
+     *
+     * <pre>
+     * 副本状态
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.InstanceStateOrBuilder getInstanceStateOrBuilder(
+        int index);
+
+    // required .ChapterState chapterState = 2;
+    /**
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    boolean hasChapterState();
+    /**
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.ChapterState getChapterState();
+    /**
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    com.hawk.game.protocol.Statistics.ChapterStateOrBuilder getChapterStateOrBuilder();
+  }
+  /**
+   * Protobuf type {@code GMInstancePush}
+   *
+   * <pre>
+   * GM_INSTANCE_PUSH_S
+   * </pre>
+   */
+  public static final class GMInstancePush extends
+      com.google.protobuf.GeneratedMessage
+      implements GMInstancePushOrBuilder {
+    // Use GMInstancePush.newBuilder() to construct.
+    private GMInstancePush(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private GMInstancePush(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final GMInstancePush defaultInstance;
+    public static GMInstancePush getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public GMInstancePush getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GMInstancePush(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                instanceState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.InstanceState>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              instanceState_.add(input.readMessage(com.hawk.game.protocol.Statistics.InstanceState.PARSER, extensionRegistry));
+              break;
+            }
+            case 18: {
+              com.hawk.game.protocol.Statistics.ChapterState.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = chapterState_.toBuilder();
+              }
+              chapterState_ = input.readMessage(com.hawk.game.protocol.Statistics.ChapterState.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(chapterState_);
+                chapterState_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          instanceState_ = java.util.Collections.unmodifiableList(instanceState_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.hawk.game.protocol.GM.internal_static_GMInstancePush_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.hawk.game.protocol.GM.internal_static_GMInstancePush_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.hawk.game.protocol.GM.GMInstancePush.class, com.hawk.game.protocol.GM.GMInstancePush.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<GMInstancePush> PARSER =
+        new com.google.protobuf.AbstractParser<GMInstancePush>() {
+      public GMInstancePush parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GMInstancePush(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GMInstancePush> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // repeated .InstanceState instanceState = 1;
+    public static final int INSTANCESTATE_FIELD_NUMBER = 1;
+    private java.util.List<com.hawk.game.protocol.Statistics.InstanceState> instanceState_;
+    /**
+     * <code>repeated .InstanceState instanceState = 1;</code>
+     *
+     * <pre>
+     * 副本状态
+     * </pre>
+     */
+    public java.util.List<com.hawk.game.protocol.Statistics.InstanceState> getInstanceStateList() {
+      return instanceState_;
+    }
+    /**
+     * <code>repeated .InstanceState instanceState = 1;</code>
+     *
+     * <pre>
+     * 副本状态
+     * </pre>
+     */
+    public java.util.List<? extends com.hawk.game.protocol.Statistics.InstanceStateOrBuilder> 
+        getInstanceStateOrBuilderList() {
+      return instanceState_;
+    }
+    /**
+     * <code>repeated .InstanceState instanceState = 1;</code>
+     *
+     * <pre>
+     * 副本状态
+     * </pre>
+     */
+    public int getInstanceStateCount() {
+      return instanceState_.size();
+    }
+    /**
+     * <code>repeated .InstanceState instanceState = 1;</code>
+     *
+     * <pre>
+     * 副本状态
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.InstanceState getInstanceState(int index) {
+      return instanceState_.get(index);
+    }
+    /**
+     * <code>repeated .InstanceState instanceState = 1;</code>
+     *
+     * <pre>
+     * 副本状态
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.InstanceStateOrBuilder getInstanceStateOrBuilder(
+        int index) {
+      return instanceState_.get(index);
+    }
+
+    // required .ChapterState chapterState = 2;
+    public static final int CHAPTERSTATE_FIELD_NUMBER = 2;
+    private com.hawk.game.protocol.Statistics.ChapterState chapterState_;
+    /**
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    public boolean hasChapterState() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.ChapterState getChapterState() {
+      return chapterState_;
+    }
+    /**
+     * <code>required .ChapterState chapterState = 2;</code>
+     *
+     * <pre>
+     * 章节状态
+     * </pre>
+     */
+    public com.hawk.game.protocol.Statistics.ChapterStateOrBuilder getChapterStateOrBuilder() {
+      return chapterState_;
+    }
+
+    private void initFields() {
+      instanceState_ = java.util.Collections.emptyList();
+      chapterState_ = com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasChapterState()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getInstanceStateCount(); i++) {
+        if (!getInstanceState(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (!getChapterState().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < instanceState_.size(); i++) {
+        output.writeMessage(1, instanceState_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(2, chapterState_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < instanceState_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, instanceState_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, chapterState_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.hawk.game.protocol.GM.GMInstancePush parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.GM.GMInstancePush parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.GM.GMInstancePush parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.hawk.game.protocol.GM.GMInstancePush parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.GM.GMInstancePush parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.GM.GMInstancePush parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.GM.GMInstancePush parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.hawk.game.protocol.GM.GMInstancePush parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.hawk.game.protocol.GM.GMInstancePush parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.hawk.game.protocol.GM.GMInstancePush parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.hawk.game.protocol.GM.GMInstancePush prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GMInstancePush}
+     *
+     * <pre>
+     * GM_INSTANCE_PUSH_S
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.hawk.game.protocol.GM.GMInstancePushOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.hawk.game.protocol.GM.internal_static_GMInstancePush_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.hawk.game.protocol.GM.internal_static_GMInstancePush_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.hawk.game.protocol.GM.GMInstancePush.class, com.hawk.game.protocol.GM.GMInstancePush.Builder.class);
+      }
+
+      // Construct using com.hawk.game.protocol.GM.GMInstancePush.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getInstanceStateFieldBuilder();
+          getChapterStateFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (instanceStateBuilder_ == null) {
+          instanceState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          instanceStateBuilder_.clear();
+        }
+        if (chapterStateBuilder_ == null) {
+          chapterState_ = com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
+        } else {
+          chapterStateBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.hawk.game.protocol.GM.internal_static_GMInstancePush_descriptor;
+      }
+
+      public com.hawk.game.protocol.GM.GMInstancePush getDefaultInstanceForType() {
+        return com.hawk.game.protocol.GM.GMInstancePush.getDefaultInstance();
+      }
+
+      public com.hawk.game.protocol.GM.GMInstancePush build() {
+        com.hawk.game.protocol.GM.GMInstancePush result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.hawk.game.protocol.GM.GMInstancePush buildPartial() {
+        com.hawk.game.protocol.GM.GMInstancePush result = new com.hawk.game.protocol.GM.GMInstancePush(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (instanceStateBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            instanceState_ = java.util.Collections.unmodifiableList(instanceState_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.instanceState_ = instanceState_;
+        } else {
+          result.instanceState_ = instanceStateBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (chapterStateBuilder_ == null) {
+          result.chapterState_ = chapterState_;
+        } else {
+          result.chapterState_ = chapterStateBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.hawk.game.protocol.GM.GMInstancePush) {
+          return mergeFrom((com.hawk.game.protocol.GM.GMInstancePush)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.hawk.game.protocol.GM.GMInstancePush other) {
+        if (other == com.hawk.game.protocol.GM.GMInstancePush.getDefaultInstance()) return this;
+        if (instanceStateBuilder_ == null) {
+          if (!other.instanceState_.isEmpty()) {
+            if (instanceState_.isEmpty()) {
+              instanceState_ = other.instanceState_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureInstanceStateIsMutable();
+              instanceState_.addAll(other.instanceState_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.instanceState_.isEmpty()) {
+            if (instanceStateBuilder_.isEmpty()) {
+              instanceStateBuilder_.dispose();
+              instanceStateBuilder_ = null;
+              instanceState_ = other.instanceState_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              instanceStateBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getInstanceStateFieldBuilder() : null;
+            } else {
+              instanceStateBuilder_.addAllMessages(other.instanceState_);
+            }
+          }
+        }
+        if (other.hasChapterState()) {
+          mergeChapterState(other.getChapterState());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasChapterState()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getInstanceStateCount(); i++) {
+          if (!getInstanceState(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (!getChapterState().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.hawk.game.protocol.GM.GMInstancePush parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.hawk.game.protocol.GM.GMInstancePush) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .InstanceState instanceState = 1;
+      private java.util.List<com.hawk.game.protocol.Statistics.InstanceState> instanceState_ =
+        java.util.Collections.emptyList();
+      private void ensureInstanceStateIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          instanceState_ = new java.util.ArrayList<com.hawk.game.protocol.Statistics.InstanceState>(instanceState_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.InstanceState, com.hawk.game.protocol.Statistics.InstanceState.Builder, com.hawk.game.protocol.Statistics.InstanceStateOrBuilder> instanceStateBuilder_;
+
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public java.util.List<com.hawk.game.protocol.Statistics.InstanceState> getInstanceStateList() {
+        if (instanceStateBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(instanceState_);
+        } else {
+          return instanceStateBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public int getInstanceStateCount() {
+        if (instanceStateBuilder_ == null) {
+          return instanceState_.size();
+        } else {
+          return instanceStateBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.InstanceState getInstanceState(int index) {
+        if (instanceStateBuilder_ == null) {
+          return instanceState_.get(index);
+        } else {
+          return instanceStateBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public Builder setInstanceState(
+          int index, com.hawk.game.protocol.Statistics.InstanceState value) {
+        if (instanceStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInstanceStateIsMutable();
+          instanceState_.set(index, value);
+          onChanged();
+        } else {
+          instanceStateBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public Builder setInstanceState(
+          int index, com.hawk.game.protocol.Statistics.InstanceState.Builder builderForValue) {
+        if (instanceStateBuilder_ == null) {
+          ensureInstanceStateIsMutable();
+          instanceState_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          instanceStateBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public Builder addInstanceState(com.hawk.game.protocol.Statistics.InstanceState value) {
+        if (instanceStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInstanceStateIsMutable();
+          instanceState_.add(value);
+          onChanged();
+        } else {
+          instanceStateBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public Builder addInstanceState(
+          int index, com.hawk.game.protocol.Statistics.InstanceState value) {
+        if (instanceStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureInstanceStateIsMutable();
+          instanceState_.add(index, value);
+          onChanged();
+        } else {
+          instanceStateBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public Builder addInstanceState(
+          com.hawk.game.protocol.Statistics.InstanceState.Builder builderForValue) {
+        if (instanceStateBuilder_ == null) {
+          ensureInstanceStateIsMutable();
+          instanceState_.add(builderForValue.build());
+          onChanged();
+        } else {
+          instanceStateBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public Builder addInstanceState(
+          int index, com.hawk.game.protocol.Statistics.InstanceState.Builder builderForValue) {
+        if (instanceStateBuilder_ == null) {
+          ensureInstanceStateIsMutable();
+          instanceState_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          instanceStateBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public Builder addAllInstanceState(
+          java.lang.Iterable<? extends com.hawk.game.protocol.Statistics.InstanceState> values) {
+        if (instanceStateBuilder_ == null) {
+          ensureInstanceStateIsMutable();
+          super.addAll(values, instanceState_);
+          onChanged();
+        } else {
+          instanceStateBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public Builder clearInstanceState() {
+        if (instanceStateBuilder_ == null) {
+          instanceState_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          instanceStateBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public Builder removeInstanceState(int index) {
+        if (instanceStateBuilder_ == null) {
+          ensureInstanceStateIsMutable();
+          instanceState_.remove(index);
+          onChanged();
+        } else {
+          instanceStateBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.InstanceState.Builder getInstanceStateBuilder(
+          int index) {
+        return getInstanceStateFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.InstanceStateOrBuilder getInstanceStateOrBuilder(
+          int index) {
+        if (instanceStateBuilder_ == null) {
+          return instanceState_.get(index);  } else {
+          return instanceStateBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public java.util.List<? extends com.hawk.game.protocol.Statistics.InstanceStateOrBuilder> 
+           getInstanceStateOrBuilderList() {
+        if (instanceStateBuilder_ != null) {
+          return instanceStateBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(instanceState_);
+        }
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.InstanceState.Builder addInstanceStateBuilder() {
+        return getInstanceStateFieldBuilder().addBuilder(
+            com.hawk.game.protocol.Statistics.InstanceState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.InstanceState.Builder addInstanceStateBuilder(
+          int index) {
+        return getInstanceStateFieldBuilder().addBuilder(
+            index, com.hawk.game.protocol.Statistics.InstanceState.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .InstanceState instanceState = 1;</code>
+       *
+       * <pre>
+       * 副本状态
+       * </pre>
+       */
+      public java.util.List<com.hawk.game.protocol.Statistics.InstanceState.Builder> 
+           getInstanceStateBuilderList() {
+        return getInstanceStateFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.hawk.game.protocol.Statistics.InstanceState, com.hawk.game.protocol.Statistics.InstanceState.Builder, com.hawk.game.protocol.Statistics.InstanceStateOrBuilder> 
+          getInstanceStateFieldBuilder() {
+        if (instanceStateBuilder_ == null) {
+          instanceStateBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.hawk.game.protocol.Statistics.InstanceState, com.hawk.game.protocol.Statistics.InstanceState.Builder, com.hawk.game.protocol.Statistics.InstanceStateOrBuilder>(
+                  instanceState_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          instanceState_ = null;
+        }
+        return instanceStateBuilder_;
+      }
+
+      // required .ChapterState chapterState = 2;
+      private com.hawk.game.protocol.Statistics.ChapterState chapterState_ = com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Statistics.ChapterState, com.hawk.game.protocol.Statistics.ChapterState.Builder, com.hawk.game.protocol.Statistics.ChapterStateOrBuilder> chapterStateBuilder_;
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public boolean hasChapterState() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.ChapterState getChapterState() {
+        if (chapterStateBuilder_ == null) {
+          return chapterState_;
+        } else {
+          return chapterStateBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public Builder setChapterState(com.hawk.game.protocol.Statistics.ChapterState value) {
+        if (chapterStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          chapterState_ = value;
+          onChanged();
+        } else {
+          chapterStateBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public Builder setChapterState(
+          com.hawk.game.protocol.Statistics.ChapterState.Builder builderForValue) {
+        if (chapterStateBuilder_ == null) {
+          chapterState_ = builderForValue.build();
+          onChanged();
+        } else {
+          chapterStateBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public Builder mergeChapterState(com.hawk.game.protocol.Statistics.ChapterState value) {
+        if (chapterStateBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              chapterState_ != com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance()) {
+            chapterState_ =
+              com.hawk.game.protocol.Statistics.ChapterState.newBuilder(chapterState_).mergeFrom(value).buildPartial();
+          } else {
+            chapterState_ = value;
+          }
+          onChanged();
+        } else {
+          chapterStateBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public Builder clearChapterState() {
+        if (chapterStateBuilder_ == null) {
+          chapterState_ = com.hawk.game.protocol.Statistics.ChapterState.getDefaultInstance();
+          onChanged();
+        } else {
+          chapterStateBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.ChapterState.Builder getChapterStateBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getChapterStateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      public com.hawk.game.protocol.Statistics.ChapterStateOrBuilder getChapterStateOrBuilder() {
+        if (chapterStateBuilder_ != null) {
+          return chapterStateBuilder_.getMessageOrBuilder();
+        } else {
+          return chapterState_;
+        }
+      }
+      /**
+       * <code>required .ChapterState chapterState = 2;</code>
+       *
+       * <pre>
+       * 章节状态
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.hawk.game.protocol.Statistics.ChapterState, com.hawk.game.protocol.Statistics.ChapterState.Builder, com.hawk.game.protocol.Statistics.ChapterStateOrBuilder> 
+          getChapterStateFieldBuilder() {
+        if (chapterStateBuilder_ == null) {
+          chapterStateBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.hawk.game.protocol.Statistics.ChapterState, com.hawk.game.protocol.Statistics.ChapterState.Builder, com.hawk.game.protocol.Statistics.ChapterStateOrBuilder>(
+                  chapterState_,
+                  getParentForChildren(),
+                  isClean());
+          chapterState_ = null;
+        }
+        return chapterStateBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:GMInstancePush)
+    }
+
+    static {
+      defaultInstance = new GMInstancePush(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:GMInstancePush)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_GMGenTestAccount_descriptor;
   private static
@@ -1618,6 +2695,11 @@ public final class GM {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_GMOperationRet_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_GMInstancePush_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_GMInstancePush_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1627,11 +2709,14 @@ public final class GM {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021Protocol/GM.proto\"\022\n\020GMGenTestAccount\"" +
-      "a\n\013GMOperation\022\016\n\006action\030\001 \002(\t\022\021\n\toperat" +
-      "ion\030\002 \001(\t\022\020\n\010targetId\030\003 \001(\003\022\r\n\005value\030\004 \001" +
-      "(\003\022\016\n\006itemId\030\005 \001(\t\"\020\n\016GMOperationRetB\030\n\026" +
-      "com.hawk.game.protocol"
+      "\n\021Protocol/GM.proto\032\031Protocol/Statistics" +
+      ".proto\"\022\n\020GMGenTestAccount\"a\n\013GMOperatio" +
+      "n\022\016\n\006action\030\001 \002(\t\022\021\n\toperation\030\002 \001(\t\022\020\n\010" +
+      "targetId\030\003 \001(\003\022\r\n\005value\030\004 \001(\003\022\016\n\006itemId\030" +
+      "\005 \001(\t\"\020\n\016GMOperationRet\"\\\n\016GMInstancePus" +
+      "h\022%\n\rinstanceState\030\001 \003(\0132\016.InstanceState" +
+      "\022#\n\014chapterState\030\002 \002(\0132\r.ChapterStateB\030\n" +
+      "\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1656,12 +2741,19 @@ public final class GM {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_GMOperationRet_descriptor,
               new java.lang.String[] { });
+          internal_static_GMInstancePush_descriptor =
+            getDescriptor().getMessageTypes().get(3);
+          internal_static_GMInstancePush_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_GMInstancePush_descriptor,
+              new java.lang.String[] { "InstanceState", "ChapterState", });
           return null;
         }
       };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.hawk.game.protocol.Statistics.getDescriptor(),
         }, assigner);
   }
 

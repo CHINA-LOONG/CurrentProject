@@ -29,7 +29,7 @@ public class AllianceSearchHandler implements HawkProtocolHandler{
 		boolean found = false;
 		for (AllianceEntity allianceEntity : AllianceManager.getInstance().getAllianceMap().values()) {
 			if (allianceEntity.getName().equals(requsest.getNameOrId())) {
-				response.addResult(AllianceUtil.getAllianceInfo(allianceEntity));
+				response.addResult(AllianceUtil.getSimpleAllianceInfo(allianceEntity, AllianceManager.getInstance().isPlayerApply(player.getId(), allianceEntity.getId())));
 				found = true;
 				break;
 			}
@@ -39,7 +39,7 @@ public class AllianceSearchHandler implements HawkProtocolHandler{
 			int allianceId = Integer.valueOf(requsest.getNameOrId());
 			AllianceEntity allianceEntity = AllianceManager.getInstance().getAlliance(allianceId);
 			if (allianceEntity != null) {
-				response.addResult(AllianceUtil.getAllianceInfo(allianceEntity));
+				response.addResult(AllianceUtil.getSimpleAllianceInfo(allianceEntity, AllianceManager.getInstance().isPlayerApply(player.getId(), allianceEntity.getId())));
 			}
 		}
 		

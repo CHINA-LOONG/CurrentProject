@@ -1486,6 +1486,11 @@ MonoBehaviour:
   button: {fileID: 11494890}
   normalEffectPanel: {fileID: 22404676}
   checkedEffectPanel: {fileID: 22462316}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
+  outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   isOn: 0
 --- !u!114 &11415700
 MonoBehaviour:
@@ -1740,6 +1745,11 @@ MonoBehaviour:
   button: {fileID: 11438286}
   normalEffectPanel: {fileID: 22404620}
   checkedEffectPanel: {fileID: 22457090}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
+  outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   isOn: 0
 --- !u!114 &11432884
 MonoBehaviour:
@@ -2292,6 +2302,11 @@ MonoBehaviour:
   button: {fileID: 11413448}
   normalEffectPanel: {fileID: 22479964}
   checkedEffectPanel: {fileID: 22476888}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
+  outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   isOn: 0
 --- !u!114 &11464278
 MonoBehaviour:
@@ -2442,6 +2457,11 @@ MonoBehaviour:
   button: {fileID: 11401022}
   normalEffectPanel: {fileID: 22489084}
   checkedEffectPanel: {fileID: 22416530}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
+  outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   isOn: 0
 --- !u!114 &11471454
 MonoBehaviour:
@@ -2561,6 +2581,11 @@ MonoBehaviour:
   button: {fileID: 11455066}
   normalEffectPanel: {fileID: 22427020}
   checkedEffectPanel: {fileID: 22426550}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
+  outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   isOn: 0
 --- !u!114 &11475010
 MonoBehaviour:
@@ -2822,6 +2847,11 @@ MonoBehaviour:
   button: {fileID: 11406846}
   normalEffectPanel: {fileID: 22483396}
   checkedEffectPanel: {fileID: 22468858}
+  useDefault: 0
+  textNormalColor: {r: .980392158, g: .968627453, b: .945098042, a: 1}
+  textSelectColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineNormalColor: {r: .792156875, g: .592156887, b: .0509803928, a: 1}
+  outlineSelectColor: {r: .0784313753, g: .0588235296, b: .0627451017, a: 1}
   isOn: 0
 --- !u!114 &11498666
 MonoBehaviour:
@@ -4177,7 +4207,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -234.399994}
+  m_AnchoredPosition: {x: 0, y: -239}
   m_SizeDelta: {x: 712.690002, y: 12}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22486804

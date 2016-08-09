@@ -59,6 +59,14 @@ namespace PB
       get { return _transText; }
       set { _transText = value; }
     }
+    private string _expansion = "";
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"expansion", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string expansion
+    {
+      get { return _expansion; }
+      set { _expansion = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -129,6 +137,14 @@ namespace PB
     {
       get { return _text; }
       set { _text = value; }
+    }
+    private string _expansion = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"expansion", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string expansion
+    {
+      get { return _expansion; }
+      set { _expansion = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

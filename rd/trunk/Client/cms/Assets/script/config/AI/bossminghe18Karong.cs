@@ -13,7 +13,7 @@ public class bossMinghe18Karong : BossAi {
 	}
 	int jishu = 0 ;
 
-	public	override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit karongUnit)
+	public override BattleUnitAi.AiAttackResult GetAiAttackResult(GameUnit meidushaUnit)
 	{
 		BattleUnitAi.AiAttackResult attackResult = new BattleUnitAi.AiAttackResult ();
 
@@ -21,73 +21,51 @@ public class bossMinghe18Karong : BossAi {
 		attackResult.attackStyle = BattleUnitAi.AiAttackStyle.PhysicsAttack;
 
 		//spell todo
-		Dictionary<string,Spell> karongSpellDic = GetUnitSpellList (karongUnit);
+		Dictionary<string,Spell> meidushaSpellDic = GetUnitSpellList (meidushaUnit);
 
 		Spell useSpell = null;
-		//jiuWeihuSpellDic.TryGetValue ("bossKarong_anyingzhua", out useSpell);
+		//jiuWeihuSpellDic.TryGetValue ("bossmeidusha_anyingzhua", out useSpell);
 
-		attackResult.attackTarget = GetAttackRandomTarget(karongUnit);
+		attackResult.attackTarget = GetAttackRandomTarget(meidushaUnit);
 
 		List<string> wpList = null;
-		wpList = GetAliveWeakPointList (karongUnit);
+		wpList = GetAliveWeakPointList (meidushaUnit);
 
-		if ( NormalScript.GetWpLifeLeftRatio (karongUnit.battleUnit, "bossMinghe18Karongwp02")> 0 && karongUnit.curLife > karongUnit.maxLife * 0.7 && jishu == 0) 
+		if (NormalScript.GetWpLifeLeftRatio(meidushaUnit.battleUnit, "bossYueguangsenlin18Meidushawp02")==0)
 		{
-			float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
-			if (randkey >= 0.8) {
-				karongSpellDic.TryGetValue ("bossMinghe18Karong1", out useSpell);
-			} 
-			else 
+			
+			meidushaSpellDic.TryGetValue ("bossYueguangsenlin18Meidusha3", out useSpell);
+
+			int i = 1;
+			if (GetAttackCount(meidushaUnit) % 3 == 0) 
 			{
-				karongSpellDic.TryGetValue ("bossMinghe18Karong2", out useSpell);
+				meidushaSpellDic.TryGetValue ("bossYueguangsenlin18Meidusha2", out useSpell);
+				attackResult.attackTarget = meidushaUnit;
 			}
 
 		} 
+		else if (NormalScript.GetWpLifeLeftRatio(meidushaUnit.battleUnit, "bossYueguangsenlin18Meidushawp03")==0)
+		{
+			
+			meidushaSpellDic.TryGetValue ("bossYueguangsenlin18Meidusha4", out useSpell);
+			
+			int i = 1;
+			if (GetAttackCount(meidushaUnit) % 3 == 0) 
+			{
+				meidushaSpellDic.TryGetValue ("bossYueguangsenlin18Meidusha1", out useSpell);
+				attackResult.attackTarget = meidushaUnit;
+			}
+
+		}
 		else 
 		{
-			if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp04")>0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp05")>0)
+			meidushaSpellDic.TryGetValue ("bossYueguangsenlin18Meidusha4", out useSpell);
+			
+			int i = 1;
+			if (GetAttackCount(meidushaUnit) % 2== 0) 
 			{
-				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
-				if (randkey >= 0.9) {
-					karongSpellDic.TryGetValue ("bossMinghe18Karong4", out useSpell);
-				} 
-				else 
-				{
-					karongSpellDic.TryGetValue ("bossMinghe18Karong3", out useSpell);
-				}
-			}
-			else if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp04")>0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp05")==0)
-			{
-				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
-				if (randkey >= 0.1) {
-					karongSpellDic.TryGetValue ("bossMinghe18Karong6", out useSpell);
-				} 
-				else 
-				{
-					karongSpellDic.TryGetValue ("bossMinghe18Karong3", out useSpell);
-				}
-			}
-			else if(NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp04")==0 && NormalScript.GetWpLifeLeft(karongUnit.battleUnit,"bossMinghe18Karongwp05")>0)
-			{
-				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
-				if (randkey >= 0.9) {
-					karongSpellDic.TryGetValue ("bossMinghe18Karong4", out useSpell);
-				} 
-				else 
-				{
-					karongSpellDic.TryGetValue ("bossMinghe18Karong5", out useSpell);
-				}
-			}
-			else
-			{
-				float randkey = UnityEngine.Random.Range (0.0f, 1.0f);	
-				if (randkey >= 0.9) {
-					karongSpellDic.TryGetValue ("bossMinghe18Karong6", out useSpell);
-				} 
-				else 
-				{
-					karongSpellDic.TryGetValue ("bossMinghe18Karong5", out useSpell);
-				}
+				meidushaSpellDic.TryGetValue ("bossYueguangsenlin18Meidusha3", out useSpell);
+				attackResult.attackTarget = meidushaUnit;
 			}
 
 		}			
@@ -96,33 +74,24 @@ public class bossMinghe18Karong : BossAi {
 		return attackResult;
     }
     //---------------------------------------------------------------------------------------------
-    public override void OnVitalChange(SpellVitalChangeArgs args)
-    {
-        BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-        if (target.unit.curLife <= target.unit.maxLife * 0.82 && jishu == 0)
-        {
-            target.TriggerEvent("karong_stage1to2_shuihuo", Time.time, null);
-            jishu++;
-        }
-    }
+    
     //---------------------------------------------------------------------------------------------
     public override void OnWpDead(WeakPointDeadArgs args)
 	{
 		BattleObject target = ObjectDataMgr.Instance.GetBattleObject(args.targetID);
-        if (args.wpID == "bossMinghe18Karongwp02" && jishu == 0)
+		if (args.wpID == "bossYueguangsenlin18Meidushawp02" && jishu==0)
         {
-            target.TriggerEvent("karong_shuijingqiusiwang", Time.time, null);
-            target.TriggerEvent("karong_stage1to2_shuisi", Time.time, null);
+			target.TriggerEvent("meidusha_state1to2", Time.time, null);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
 			jishu ++;
         }
-		if (args.wpID == "bossMinghe18Karongwp05" && jishu ==1)
+
+		if (args.wpID == "bossYueguangsenlin18Meidushawp03" && jishu==0)
 		{
-			target.TriggerEvent("karong_rightarmsiwang",Time.time,null);
+			target.TriggerEvent("meidusha_state1to3", Time.time, null);
+			BattleController.Instance.GetUIBattle().wpUI.ChangeBatch(2.0f);
+			jishu ++;
 		}
-		if (args.wpID == "bossMinghe18Karongwp04" && jishu ==1)
-		{
-			target.TriggerEvent("karong_leftarmsiwang",Time.time,null);
-		}
-    }
-    //---------------------------------------------------------------------------------------------
+	}
+	//---------------------------------------------------------------------------------------------
 }

@@ -85,6 +85,33 @@ public final class Im {
      */
     com.google.protobuf.ByteString
         getTransTextBytes();
+
+    // optional string expansion = 7;
+    /**
+     * <code>optional string expansion = 7;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    boolean hasExpansion();
+    /**
+     * <code>optional string expansion = 7;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    java.lang.String getExpansion();
+    /**
+     * <code>optional string expansion = 7;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getExpansionBytes();
   }
   /**
    * Protobuf type {@code HSImMsg}
@@ -169,6 +196,11 @@ public final class Im {
             case 50: {
               bitField0_ |= 0x00000020;
               transText_ = input.readBytes();
+              break;
+            }
+            case 58: {
+              bitField0_ |= 0x00000040;
+              expansion_ = input.readBytes();
               break;
             }
           }
@@ -388,6 +420,61 @@ public final class Im {
       }
     }
 
+    // optional string expansion = 7;
+    public static final int EXPANSION_FIELD_NUMBER = 7;
+    private java.lang.Object expansion_;
+    /**
+     * <code>optional string expansion = 7;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    public boolean hasExpansion() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional string expansion = 7;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    public java.lang.String getExpansion() {
+      java.lang.Object ref = expansion_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          expansion_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string expansion = 7;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getExpansionBytes() {
+      java.lang.Object ref = expansion_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        expansion_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       type_ = 0;
       channel_ = 0;
@@ -395,6 +482,7 @@ public final class Im {
       senderName_ = "";
       origText_ = "";
       transText_ = "";
+      expansion_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -442,6 +530,9 @@ public final class Im {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(6, getTransTextBytes());
       }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBytes(7, getExpansionBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -474,6 +565,10 @@ public final class Im {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(6, getTransTextBytes());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(7, getExpansionBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -607,6 +702,8 @@ public final class Im {
         bitField0_ = (bitField0_ & ~0x00000010);
         transText_ = "";
         bitField0_ = (bitField0_ & ~0x00000020);
+        expansion_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -659,6 +756,10 @@ public final class Im {
           to_bitField0_ |= 0x00000020;
         }
         result.transText_ = transText_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.expansion_ = expansion_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -697,6 +798,11 @@ public final class Im {
         if (other.hasTransText()) {
           bitField0_ |= 0x00000020;
           transText_ = other.transText_;
+          onChanged();
+        }
+        if (other.hasExpansion()) {
+          bitField0_ |= 0x00000040;
+          expansion_ = other.expansion_;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -1059,6 +1165,104 @@ public final class Im {
   }
   bitField0_ |= 0x00000020;
         transText_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string expansion = 7;
+      private java.lang.Object expansion_ = "";
+      /**
+       * <code>optional string expansion = 7;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public boolean hasExpansion() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional string expansion = 7;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public java.lang.String getExpansion() {
+        java.lang.Object ref = expansion_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          expansion_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string expansion = 7;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getExpansionBytes() {
+        java.lang.Object ref = expansion_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          expansion_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string expansion = 7;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public Builder setExpansion(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        expansion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string expansion = 7;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public Builder clearExpansion() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        expansion_ = getDefaultInstance().getExpansion();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string expansion = 7;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public Builder setExpansionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        expansion_ = value;
         onChanged();
         return this;
       }
@@ -1995,6 +2199,33 @@ public final class Im {
      */
     com.google.protobuf.ByteString
         getTextBytes();
+
+    // optional string expansion = 3;
+    /**
+     * <code>optional string expansion = 3;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    boolean hasExpansion();
+    /**
+     * <code>optional string expansion = 3;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    java.lang.String getExpansion();
+    /**
+     * <code>optional string expansion = 3;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getExpansionBytes();
   }
   /**
    * Protobuf type {@code HSImChatSend}
@@ -2059,6 +2290,11 @@ public final class Im {
             case 18: {
               bitField0_ |= 0x00000002;
               text_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              expansion_ = input.readBytes();
               break;
             }
           }
@@ -2160,9 +2396,65 @@ public final class Im {
       }
     }
 
+    // optional string expansion = 3;
+    public static final int EXPANSION_FIELD_NUMBER = 3;
+    private java.lang.Object expansion_;
+    /**
+     * <code>optional string expansion = 3;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    public boolean hasExpansion() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string expansion = 3;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    public java.lang.String getExpansion() {
+      java.lang.Object ref = expansion_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          expansion_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string expansion = 3;</code>
+     *
+     * <pre>
+     * 扩展数据
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getExpansionBytes() {
+      java.lang.Object ref = expansion_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        expansion_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       channel_ = 0;
       text_ = "";
+      expansion_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2190,6 +2482,9 @@ public final class Im {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getTextBytes());
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getExpansionBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2206,6 +2501,10 @@ public final class Im {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getTextBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getExpansionBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2331,6 +2630,8 @@ public final class Im {
         bitField0_ = (bitField0_ & ~0x00000001);
         text_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        expansion_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -2367,6 +2668,10 @@ public final class Im {
           to_bitField0_ |= 0x00000002;
         }
         result.text_ = text_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.expansion_ = expansion_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2389,6 +2694,11 @@ public final class Im {
         if (other.hasText()) {
           bitField0_ |= 0x00000002;
           text_ = other.text_;
+          onChanged();
+        }
+        if (other.hasExpansion()) {
+          bitField0_ |= 0x00000004;
+          expansion_ = other.expansion_;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -2529,6 +2839,104 @@ public final class Im {
   }
   bitField0_ |= 0x00000002;
         text_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string expansion = 3;
+      private java.lang.Object expansion_ = "";
+      /**
+       * <code>optional string expansion = 3;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public boolean hasExpansion() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string expansion = 3;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public java.lang.String getExpansion() {
+        java.lang.Object ref = expansion_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          expansion_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string expansion = 3;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getExpansionBytes() {
+        java.lang.Object ref = expansion_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          expansion_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string expansion = 3;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public Builder setExpansion(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        expansion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string expansion = 3;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public Builder clearExpansion() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        expansion_ = getDefaultInstance().getExpansion();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string expansion = 3;</code>
+       *
+       * <pre>
+       * 扩展数据
+       * </pre>
+       */
+      public Builder setExpansionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        expansion_ = value;
         onChanged();
         return this;
       }
@@ -4220,17 +4628,18 @@ public final class Im {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021Protocol/Im.proto\"s\n\007HSImMsg\022\014\n\004type\030\001" +
-      " \002(\005\022\017\n\007channel\030\002 \002(\005\022\020\n\010senderId\030\003 \002(\005\022" +
-      "\022\n\nsenderName\030\004 \001(\t\022\020\n\010origText\030\005 \002(\t\022\021\n" +
-      "\ttransText\030\006 \001(\t\"c\n\nHSImPlayer\022\020\n\010player" +
-      "Id\030\001 \002(\005\022\020\n\010nickname\030\002 \002(\t\022\r\n\005level\030\003 \002(" +
-      "\005\022\017\n\007guildId\030\004 \001(\005\022\021\n\tguildName\030\005 \001(\t\"-\n" +
-      "\014HSImChatSend\022\017\n\007channel\030\001 \002(\005\022\014\n\004text\030\002" +
-      " \002(\t\"#\n\010HSImPush\022\027\n\005imMsg\030\001 \003(\0132\010.HSImMs" +
-      "g\"!\n\rHSImPlayerGet\022\020\n\010playerId\030\001 \002(\005\"1\n\020" +
-      "HSImPlayerGetRet\022\035\n\010imPlayer\030\001 \002(\0132\013.HSI",
-      "mPlayerB\030\n\026com.hawk.game.protocol"
+      "\n\021Protocol/Im.proto\"\206\001\n\007HSImMsg\022\014\n\004type\030" +
+      "\001 \002(\005\022\017\n\007channel\030\002 \002(\005\022\020\n\010senderId\030\003 \002(\005" +
+      "\022\022\n\nsenderName\030\004 \001(\t\022\020\n\010origText\030\005 \002(\t\022\021" +
+      "\n\ttransText\030\006 \001(\t\022\021\n\texpansion\030\007 \001(\t\"c\n\n" +
+      "HSImPlayer\022\020\n\010playerId\030\001 \002(\005\022\020\n\010nickname" +
+      "\030\002 \002(\t\022\r\n\005level\030\003 \002(\005\022\017\n\007guildId\030\004 \001(\005\022\021" +
+      "\n\tguildName\030\005 \001(\t\"@\n\014HSImChatSend\022\017\n\007cha" +
+      "nnel\030\001 \002(\005\022\014\n\004text\030\002 \002(\t\022\021\n\texpansion\030\003 " +
+      "\001(\t\"#\n\010HSImPush\022\027\n\005imMsg\030\001 \003(\0132\010.HSImMsg" +
+      "\"!\n\rHSImPlayerGet\022\020\n\010playerId\030\001 \002(\005\"1\n\020H",
+      "SImPlayerGetRet\022\035\n\010imPlayer\030\001 \002(\0132\013.HSIm" +
+      "PlayerB\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4242,7 +4651,7 @@ public final class Im {
           internal_static_HSImMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSImMsg_descriptor,
-              new java.lang.String[] { "Type", "Channel", "SenderId", "SenderName", "OrigText", "TransText", });
+              new java.lang.String[] { "Type", "Channel", "SenderId", "SenderName", "OrigText", "TransText", "Expansion", });
           internal_static_HSImPlayer_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_HSImPlayer_fieldAccessorTable = new
@@ -4254,7 +4663,7 @@ public final class Im {
           internal_static_HSImChatSend_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSImChatSend_descriptor,
-              new java.lang.String[] { "Channel", "Text", });
+              new java.lang.String[] { "Channel", "Text", "Expansion", });
           internal_static_HSImPush_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_HSImPush_fieldAccessorTable = new

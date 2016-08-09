@@ -88,7 +88,7 @@ public class MagicDazhaoController : MonoBehaviour
 		//{
 			//casterBattleGo.shifaNodeEffect.ShowEffectWithKey(EffectList.dazhaoPreprare);
 		//}
-		//casterBattleGo.TriggerEvent ("magicDazhaoPrepare", Time.time, null);
+		casterBattleGo.TriggerEvent ("magicDazhaoPrepare", Time.time, null);
         BattleController.Instance.Process.InsertAction(magicAction);
 
         //显示法阵
@@ -111,7 +111,7 @@ public class MagicDazhaoController : MonoBehaviour
 		//{
 		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
 		//}
-		//casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
+		casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 		
 		dazhaoSpell = casterBattleGo.unit.GetDazhao ();
 		if (dazhaoSpell == null)
@@ -213,7 +213,7 @@ public class MagicDazhaoController : MonoBehaviour
             //{
             //	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
             //}
-            //casterBattleGo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
+            casterBattleGo.TriggerEvent("magicDazhaoPrepare_Finish", Time.time, null);
 
             dazhaoState = DazhaoState.Finished;
 
@@ -260,7 +260,7 @@ public class MagicDazhaoController : MonoBehaviour
 			//{
 			//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
 			//}
-			//casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
+			casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 			//todo:大招被打断ui提示
 			SpellVitalChangeArgs args = new SpellVitalChangeArgs();
             args.vitalType = (int)VitalType.Vital_Type_Interrupt;
@@ -297,7 +297,7 @@ public class MagicDazhaoController : MonoBehaviour
 		//{
 		//	casterBattleGo.shifaNodeEffect.HideEffectWithKey(EffectList.dazhaoPreprare);
 		//}
-		//casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
+		casterBattleGo.TriggerEvent ("magicDazhaoPrepare_Finish", Time.time, null);
 	}
 
 	//private void OpenFazhenUI()

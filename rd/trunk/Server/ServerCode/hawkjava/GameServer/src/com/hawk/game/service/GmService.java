@@ -1,18 +1,24 @@
 package com.hawk.game.service;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.hawk.app.HawkApp;
 import org.hawk.app.HawkAppObj;
+import org.hawk.app.HawkObjModule;
 import org.hawk.config.HawkConfigManager;
 import org.hawk.log.HawkLog;
 import org.hawk.msg.HawkMsg;
 import org.hawk.net.protocol.HawkProtocol;
+import org.hawk.os.HawkException;
 import org.hawk.os.HawkTime;
 
 import com.hawk.game.ServerData;
+import com.hawk.game.config.InstanceCfg;
+import com.hawk.game.config.InstanceEntryCfg;
 import com.hawk.game.config.ItemCfg;
 import com.hawk.game.config.MailSysCfg;
 import com.hawk.game.config.MonsterBaseCfg;
@@ -21,6 +27,7 @@ import com.hawk.game.config.MonsterStageCfg;
 import com.hawk.game.config.PlayerAttrCfg;
 import com.hawk.game.config.QuestCfg;
 import com.hawk.game.config.RewardCfg;
+import com.hawk.game.entity.AllianceEntity;
 import com.hawk.game.entity.EquipEntity;
 import com.hawk.game.entity.ItemEntity;
 import com.hawk.game.entity.MonsterEntity;
@@ -28,22 +35,31 @@ import com.hawk.game.entity.StatisticsEntity;
 import com.hawk.game.item.AwardItems;
 import com.hawk.game.item.ConsumeItems;
 import com.hawk.game.log.BehaviorLogger.Action;
+import com.hawk.game.manager.AllianceManager;
 import com.hawk.game.manager.ImManager;
 import com.hawk.game.manager.ImManager.ImMsg;
+import com.hawk.game.module.PlayerQuestModule;
 import com.hawk.game.player.Player;
+import com.hawk.game.player.PlayerModule;
+import com.hawk.game.protocol.Const;
+import com.hawk.game.protocol.GM.GMInstancePush;
 import com.hawk.game.protocol.GM.GMOperation;
 import com.hawk.game.protocol.GM.GMOperationRet;
-import com.hawk.game.protocol.HS.gm;
-import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.HS.gm;
+import com.hawk.game.protocol.Quest.HSQuest;
+import com.hawk.game.protocol.Statistics.ChapterState;
+import com.hawk.game.protocol.Statistics.InstanceState;
 import com.hawk.game.protocol.Status.error;
-import com.hawk.game.service.GameService;
 import com.hawk.game.util.GsConst;
+import com.hawk.game.util.InstanceUtil;
 import com.hawk.game.util.MailUtil;
 import com.hawk.game.util.MailUtil.MailInfo;
+import com.hawk.game.util.QuestUtil;
 
 /**
- * GM服务
+ * GM服务测试
+ * 上线时合并此文件到GameService.GmService
  * 
  * @author walker
  */
@@ -165,6 +181,21 @@ public class GmService extends GameService {
 				}
 				else {
 					consume.addGold((int)(-goldChange));
+				}
+				actionHandled = true;
+			}
+			break;
+		}
+		//修改通天塔币
+		case "towercoin": {
+			long towercoinChange = gmValue;
+			if (gmOperation.equals("=")) {
+				towercoinChange = gmValue - player.getTowerCoin();
+				if (towercoinChange > 0) {
+					award.addTowerCoin((int)towercoinChange);
+				}
+				else {
+					consume.addTowerCoin((int)(-towercoinChange));
 				}
 				actionHandled = true;
 			}
@@ -312,6 +343,7 @@ public class GmService extends GameService {
 				lanternMsg.origLang = player.getLanguage();
 				lanternMsg.origText = gmOperation;
 				lanternMsg.transText = null;
+				lanternMsg.expansion = null;
 				ImManager.getInstance().post(lanternMsg);
 
 				ImMsg noticeMsg = ImManager.getInstance().new ImMsg();
@@ -322,6 +354,7 @@ public class GmService extends GameService {
 				noticeMsg.origLang = player.getLanguage();
 				noticeMsg.origText = gmOperation;
 				noticeMsg.transText = null;
+				noticeMsg.expansion = null;
 				ImManager.getInstance().post(noticeMsg);
 			}
 			actionHandled = true;
@@ -383,6 +416,21 @@ public class GmService extends GameService {
 			}
 			statisticsEntity.notifyUpdate(true);
 
+			// 重新加载并推送任务
+			Map<Integer, HSQuest> questMap = player.getPlayerData().getQuestMap();
+			questMap.clear();
+			PlayerQuestModule module = (PlayerQuestModule)player.getModule(GsConst.ModuleType.QUEST_MODULE);
+			try {
+				Method loadQuest = module.getClass().getDeclaredMethod("loadQuest", Map.class);
+				if (loadQuest != null) {
+					loadQuest.setAccessible(true);
+					loadQuest.invoke(module, QuestUtil.getQuestGroupMap());
+				}
+				player.getPlayerData().syncQuestInfo();
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
+
 			actionHandled = true;
 			break;
 		}
@@ -392,9 +440,222 @@ public class GmService extends GameService {
 			statisticsEntity.clearQuestComplete();
 			statisticsEntity.clearQuestCompleteDaily();
 			statisticsEntity.notifyUpdate(true);
+
+			// 重新加载并推送任务
+			Map<Integer, HSQuest> questMap = player.getPlayerData().getQuestMap();
+			questMap.clear();
+			PlayerQuestModule module = (PlayerQuestModule)player.getModule(GsConst.ModuleType.QUEST_MODULE);
+			try {
+				Method loadQuest = module.getClass().getDeclaredMethod("loadQuest", Map.class);
+				if (loadQuest != null) {
+					loadQuest.setAccessible(true);
+					loadQuest.invoke(module, QuestUtil.getQuestGroupMap());
+				}
+				player.getPlayerData().syncQuestInfo();
+			} catch (Exception e) {
+				HawkException.catchException(e);
+			}
+
 			actionHandled = true;
 			break;
 		}
+		// 每日刷新
+		case "dailyrefresh": {
+			List<Integer> refreshIndexList = new ArrayList<Integer>();
+			for (int i = 0; i < GsConst.PlayerRefreshMask.length; ++i) {
+				if (0 != (GsConst.PlayerRefreshMask[i] & GsConst.RefreshMask.DAILY )) {
+					refreshIndexList.add(i);
+					break;
+				}
+			}
+			if (false == refreshIndexList.isEmpty()) {
+				for (HawkObjModule module : player.getObjModules().values()) {
+					PlayerModule playerModule = (PlayerModule) module;
+					try {
+						playerModule.onRefresh(refreshIndexList, false);
+					} catch (Exception e) {
+						HawkException.catchException(e);
+					}
+				}
+			}
+
+			// 公会不走统一刷新机制
+			for (AllianceEntity alliance : AllianceManager.getInstance().getAllianceMap().values()) {
+				alliance.dailyRefresh();
+				alliance.notifyUpdate(true);
+			}
+
+			actionHandled = true;
+			break;
+		}
+		// 设置副本星级
+		case "setstar": {
+			InstanceCfg instanceCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceCfg.class, gmItemId);
+			if (instanceCfg == null) {
+				player.sendError(gm.GMOPERATION_C_VALUE, error.PARAMS_INVALID_VALUE);
+				return;
+			}
+
+			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+			statisticsEntity.setInstanceStar(gmItemId, (int)gmValue);
+
+			// 重计算章节和索引
+			int normalTopChapter = 0;
+			int hardTopChapter = 0;
+			int normalTopIndex = 0;
+			int hardTopIndex = 0;
+			for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
+				if (entry.getValue() <= 0) {
+					continue;
+				}
+				InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, entry.getKey());
+				if (entryCfg != null) {
+					int chapter = entryCfg.getChapter();
+					int index = entryCfg.getIndex();
+					if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+						if (chapter > normalTopChapter) {
+							normalTopChapter = chapter;
+							normalTopIndex = index;
+						} else if (chapter == normalTopChapter && index > normalTopIndex) {
+							normalTopIndex = index;
+						}
+					} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+						if (chapter > hardTopChapter) {
+							hardTopChapter = chapter;
+							hardTopIndex = index;
+						} else if (chapter == hardTopChapter && index > hardTopIndex) {
+							hardTopIndex = index;
+						}
+					}
+				}
+			}
+			statisticsEntity.setNormalTopChapter(normalTopChapter);
+			statisticsEntity.setNormalTopIndex(normalTopIndex);
+			statisticsEntity.setHardTopChapter(hardTopChapter);
+			statisticsEntity.setHardTopIndex(hardTopIndex);
+
+			statisticsEntity.notifyUpdate(true);
+
+			// 推送副本数据
+			GMInstancePush.Builder gmPush = GMInstancePush.newBuilder();
+			for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
+				InstanceState.Builder instanceState = InstanceState.newBuilder();
+				instanceState.setInstanceId(entry.getKey());
+				instanceState.setStar(entry.getValue());
+				instanceState.setCountDaily(statisticsEntity.getInstanceCountDaily(entry.getKey()));
+				gmPush.addInstanceState(instanceState);
+			}
+			ChapterState.Builder chapterState = ChapterState.newBuilder();
+			chapterState.setNormalTopChapter(statisticsEntity.getNormalTopChapter());
+			chapterState.setNormalTopIndex(statisticsEntity.getNormalTopIndex());
+			chapterState.setHardTopChapter(statisticsEntity.getHardTopChapter());
+			chapterState.setHardTopIndex(statisticsEntity.getHardTopIndex());
+			chapterState.addAllNormalBoxState(statisticsEntity.getNormalChapterBoxStateList());
+			chapterState.addAllHardBoxState(statisticsEntity.getHardChapterBoxStateList());
+			gmPush.setChapterState(chapterState);
+			player.sendProtocol(HawkProtocol.valueOf(HS.gm.GM_INSTANCE_PUSH_S_VALUE, gmPush));
+
+			actionHandled = true;
+			break;
+		}
+		// 设置副本是否通关
+		case "setpass": {
+			InstanceEntryCfg entryCfg = HawkConfigManager.getInstance().getConfigByKey(InstanceEntryCfg.class, gmItemId);
+			if (entryCfg == null) {
+				player.sendError(gm.GMOPERATION_C_VALUE, error.PARAMS_INVALID_VALUE);
+				return;
+			}
+
+			boolean isPass = (gmValue == 0) ? false : true;
+			int chapter = entryCfg.getChapter();
+			int index = entryCfg.getIndex();			
+			StatisticsEntity statisticsEntity = player.getPlayerData().getStatisticsEntity();
+			int topChapter = 0;
+			int topIndex = 0;
+			boolean update = true;
+
+			if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+				topChapter = statisticsEntity.getNormalTopChapter();
+				topIndex = statisticsEntity.getNormalTopIndex();
+			} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+				topChapter = statisticsEntity.getHardTopChapter();
+				topIndex = statisticsEntity.getHardTopIndex();
+			}
+
+			if (true == isPass) {
+				if (chapter > topChapter) {
+					topChapter = chapter;
+					topIndex = index;
+				} else if (chapter == topChapter && index > topIndex) {
+					topIndex = index;
+				} else {
+					update = false;
+				}
+			} else {
+				if (chapter == 0
+						|| (chapter == 1 && index == 0)) {
+					topChapter = 0;
+					topIndex = 0;
+				} else if (chapter < topChapter
+						|| (chapter == topChapter && index <= topIndex)) {
+					if (index == 0) {
+						topChapter = chapter - 1;
+						if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+							topIndex = InstanceUtil.getInstanceChapter(topChapter).normalList.size() - 1;
+						} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+							topIndex = InstanceUtil.getInstanceChapter(topChapter).hardList.size() - 1;
+						}
+					} else {
+						topChapter = chapter;
+						topIndex = index - 1;
+					}
+				} else {
+					update = false;
+				}
+			}
+
+			if (true == update) {
+				if (true == isPass) {
+					statisticsEntity.setInstanceStar(gmItemId, 1);
+				} else {
+					statisticsEntity.setInstanceStar(gmItemId, 0);
+				}
+
+				if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.NORMAL_INSTANCE) {
+					statisticsEntity.setNormalTopChapter(topChapter);
+					statisticsEntity.setNormalTopIndex(topIndex);
+				} else if (entryCfg.getDifficult() == GsConst.InstanceDifficulty.HARD_INSTANCE) {
+					statisticsEntity.setHardTopChapter(topChapter);
+					statisticsEntity.setHardTopIndex(topIndex);
+				}
+
+				statisticsEntity.notifyUpdate(true);
+
+				// 推送副本数据
+				GMInstancePush.Builder gmPush = GMInstancePush.newBuilder();
+				for (Entry<String, Integer> entry : statisticsEntity.getInstanceStarMap().entrySet()) {
+					InstanceState.Builder instanceState = InstanceState.newBuilder();
+					instanceState.setInstanceId(entry.getKey());
+					instanceState.setStar(entry.getValue());
+					instanceState.setCountDaily(statisticsEntity.getInstanceCountDaily(entry.getKey()));
+					gmPush.addInstanceState(instanceState);
+				}
+				ChapterState.Builder chapterState = ChapterState.newBuilder();
+				chapterState.setNormalTopChapter(statisticsEntity.getNormalTopChapter());
+				chapterState.setNormalTopIndex(statisticsEntity.getNormalTopIndex());
+				chapterState.setHardTopChapter(statisticsEntity.getHardTopChapter());
+				chapterState.setHardTopIndex(statisticsEntity.getHardTopIndex());
+				chapterState.addAllNormalBoxState(statisticsEntity.getNormalChapterBoxStateList());
+				chapterState.addAllHardBoxState(statisticsEntity.getHardChapterBoxStateList());
+				gmPush.setChapterState(chapterState);
+				player.sendProtocol(HawkProtocol.valueOf(HS.gm.GM_INSTANCE_PUSH_S_VALUE, gmPush));
+			}
+
+			actionHandled = true;
+			break;
+		}
+		default:
+			break;
 		}
 
 		if (actionHandled == false) {

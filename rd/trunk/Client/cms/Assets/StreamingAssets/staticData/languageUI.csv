@@ -174,7 +174,7 @@ im_xuqu_daojubuzu,需求道具不足,Insufficient amount of required items.
 equip_inlay_xiangqian,镶嵌,Embed
 equip_inlay_openmax,宝石槽已全开,Gem slots are full.
 equip_inlay_btnopen,开孔,Open Sockets
-equip_inlay_tips,开孔将随机获得"1-{0}"个宝石槽,Opening Sockets will randomly reveal between "1 and {0}" of slots.
+equip_inlay_tips,"开孔将随机获得""1-{0}""个宝石槽","Opening Sockets will randomly reveal between ""1 and {0}"" of slots."
 equip_inlay_lockTips,点击开孔有机会开启宝石槽,Tap 'Open Sockets' for a chance of revealing Gem slots.
 equip_inlay_unlockTips,点击宝石槽可镶嵌宝石,Tap a Gem slot to insert a Gem.
 equip_inlay_xiexia,卸下,Remove
@@ -254,10 +254,6 @@ shop_main,商店,Shop
 tips_main5,日常,Daily
 tips_main6,抽奖,Lucky Draw
 sociaty_title,公会,Guild
-towerBoss_instance_title,通天塔,Towers Of Trials
-tower_gold_name,金钱试炼,Palace of Midas
-tower_exp_name,经验试炼,Fields of Elysium
-towerBoss_instance_shop,XXX商店,Wishing Tree Shop
 sociaty_boss,公会BOSS,Guild Boss
 sociaty_task,公会任务,Guild Mission
 record_item_found1,条件尚未达成,Conditions have not been met.
@@ -281,10 +277,10 @@ common_attr_defence,防御,DEF
 common_attr_intelligence,智力,INT
 common_attr_speed,速度,SPD
 common_attr_health,体力,STA
-common_attr_critical_ratio,暴击率,criticalRatio
-common_attr_critical_dmg,暴击伤害加成,criticalDMG
-common_attr_heal_ratio,被治疗效果加成,healRatio
-common_attr_energy,前置能量,energy
+common_attr_critical_ratio,暴击率,Crit Rate
+common_attr_critical_dmg,暴击伤害加成,Crit DMG
+common_attr_heal_ratio,被治疗效果加成,Heal AMNT
+common_attr_energy,前置能量,Start ENG
 common_type_defence,防御型,Defense Type
 common_type_physical,物理型,PHYS Type
 common_type_magic,法术型,Magic Type
@@ -355,6 +351,7 @@ energy_supple,补充活力,Add Energy
 energy_hint_unhint,本次登录不再提示该界面,Don't show again for current session.
 energy_hint_buy,购买并使用一个 {0}?,Buy and use one {0}?
 energy_hint_max,活力值已达到最大数量,Energy to the greatest numbe
+energy_get, 获得 {0} 点活力,get {0} energy
 im_recordhuoli_002,活力值已达到最大数量,Energy to the greatest numbe
 arrayselect_saodang_reward,额外奖励,Bonus Rewards
 arrayselect_saodang_num,第 {0} 战,Battle {0}
@@ -369,3 +366,285 @@ unkonwCharacter,未知,Unknow
 zhanli:{0},战力：{0},BP:{0}
 battle_zhaoyaojing_001,照妖镜还未准备好，请稍后再试,"The Monster Detector is not ready yet, please wait and try again."
 battle_zhaoyaojing_002,照妖镜能量已耗尽，请稍后再试,"Out of Monster Detector Energy, please wait and try again."
+sociaty_shuruxianshi,请输入要搜索的公会名称或者公会ID,Search Guild Name or Guild ID
+sociaty_search,搜索,Search
+sociaty_id,公会ID,Guild ID
+sociaty_name,公会名称,Name
+sociaty_level,等级,Lvl
+sociaty_chairman,会长,Guild Master
+sociaty_peoplenum,人数,Members
+sociaty_qiliveness,3日贡献值,3 Day Pts.
+sociaty_applylevel,申请等级,Lvl Req.
+sociaty_operate,操作,Action
+sociaty_shenqing,申请加入,Apply
+sociaty_cancelshenqing,取消申请,Cancel
+sociaty_notice,公会公告,Guild Announcement
+sociaty_buildbtn,创建公会,Create Guild
+sociaty_tips1,您已满足该公会申请条件，是否立即加入？（退出公会12小时后才能加入其他公会）,You already met this guild's application requirements. Join immediately?(You must wait 12 hours after leaving a Guild before you may join another.)
+sociaty_buildtitle,创建公会,Guild Creation
+sociaty_buildlimit,（只能输入字母、数字和中文汉字）,(Alphanumeric and Chinese characters only.)
+sociaty_reqcoin,消耗,Cost
+sociaty_information,公会信息,Info
+sociaty_member,成员列表,Members
+sociaty_technology,公会科技,Tech
+sociaty_log,公会日志,Log
+sociaty_other,其他公会,Other
+sociaty_chairmanname,会长：,Guild Master:
+sociaty_id1,公会ID：,Guild ID:
+sociaty_peoplenum1,成员数量：,Member Count:
+sociaty_onecontribution,个人贡献值：,Your Guild Pts:
+sociaty_comcontribution,公会贡献值：,Guild Pts Total:
+sociaty_oneliveness,公会今日贡献值：,Today's Guild Pts:
+sociaty_revisenotice,修改公告,Edit
+sociaty_activity,公会活动,Guild Event
+sociaty_pray,公会祈福,Guild Wish
+sociaty_jidi,公会基地,Guild Base
+sociaty_beiqingli,很遗憾，您已被请出公会,"Unfortunately, you were removed from the guild."
+sociaty_shouren,招收成员,Recruitment
+sociaty_shourenbianji,收人啦！快来点我，立即申请加入吧！,We are recruiting! Tap here to apply!
+sociaty_membername,成员名称,Name
+sociaty_job,职位,Role
+sociaty_contributionall,历史贡献值,Guild Pts.
+sociaty_last,最后上线,Last Online
+sociaty_songhuo,赠活力值,Send Energy
+sociaty_gang,刚刚,Just now
+sociaty_minite,X分钟前,X min ago
+sociaty_hour,X小时前,X hrs ago
+sociaty_day,X天前,X days ago
+sociaty_zaixian,在线,Online
+sociaty_quit,退出公会,Leave Guild
+sociaty_newapply,新的申请,New Applications
+sociaty_yield,移交会长,Transfer Master Role
+sociaty_yieldfu,任命副会长,Promote Elder
+sociaty_yieldfujie,解除副会长,Demote Elder
+sociaty_expel,请离公会,Remove From Guild
+sociaty_tips3,确定将会长移交给XXX？,You are transfering Guild Master role to XXX. Continue?
+sociaty_tips4,确定任命XXX为副会长？,You are promoting XXX to Guild Elder. Continue?
+sociaty_jiechu,确定解除XXX副会长职务？,You are removing XXX from the guild. Continue?
+sociaty_tips5,确定将XXX请离公会？,Confirm leave guild?
+sociaty_tips6,确定退出公会？,Confirm leave guild?
+sociaty_refuse,拒绝,Refuse
+sociaty_approve,批准,Accept
+sociaty_setup,申请设置,Application Settings
+sociaty_approveall,全部批准,Accept All
+sociaty_refuseall,全部拒绝,Refuse All
+sociaty_type,公会类型：,Guild Type:
+sociaty_type1,需要批准才能加入,Application required
+sociaty_type2,所有人都可以加入,Anyone can join
+sociaty_minlevel,最低人物等级：,Level Req:
+sociaty_tips7,设置后，该公会将收不到低于设置要求的申请,"Once set, the guild cannot receive applications from players below the Level Requirement."
+sociaty_levelname,公会等级,Guild Lvl
+sociaty_peoplenum2,公会人数,Member Count
+sociaty_coinup,金钱试炼增益,Palace of Midas Gains
+sociaty_expup,经验试炼增益,Fields of Elysium Gains
+sociaty_leveltips,限制公会科技可提升最大等级,Increases guild's level limit.
+sociaty_peopletips,提升公会最大人数,Increases guild's member limit.
+sociaty_cointips,增加金钱试炼的金币获得量,Increases Coins gained from Palace of Midas.
+sociaty_exptips,经验试炼时额外获得经验药,Grants bonus EXP while playing Fields of Elysium.
+sociaty_nowlevel,本级效果：,Current:
+sociaty_leveltipsmiaoshu1,X级,LVL X
+sociaty_peopletipsmiaoshu1,X人,X Members
+sociaty_maxlevel,已满级,Max
+sociaty_startlevel,公会X级可开启,Unlocked at Guild Lvl X
+sociaty_levelupup,升级,Upgrade
+sociaty_X1dang,X1档,X1 Spot
+sociaty_X2dang,X2档,X2 Spot
+sociaty_X3dang,X3档,X3 Spot
+sociaty_qifubtn,许愿,Wish
+sociaty_myteam,我的队伍,My Team
+sociaty_otherteam,其他队伍,Other Teams
+sociaty_tasknum,今日剩余次数：X,Remaining today:
+sociaty_teamreward,奖励,Rewards
+sociaty_start,开启,Open
+sociaty_spendtips,确定开启公会任务吗？,Confirm open Guild Mission?
+sociaty_myteam1,我的小队,My squad
+sociaty_shengyutime,剩余时间：,Time remaining:
+sociaty_tasktarget,任务目标,Mission Objective
+sociaty_daojutarget,提交X个Y（X代表道具数量，Y代表道具数量）,Retrieve X of Y
+sociaty_cointarget,提交X个金币,Retrieve X Coins
+sociaty_fubentarget,通关X副本（X代表副本名称）,Clear Stage X
+sociaty_rewardtitle,任务奖励,Mission Reward
+sociaty_commit,提交,Submit
+sociaty_gogogo,立即前往,Go Now
+sociaty_completename,玩家XXX已完成,Completed by XXX 
+sociaty_renbuzai,完成人已不在公会,The member who completed is no longer in this Guild.
+sociaty_giveup,放弃任务,Abandon Mission
+sociaty_findfriends,招募伙伴,Recruit Allies
+sociaty_taskfail,时间已到，任务失败,Time's up! Mission failed.
+sociaty_giveuptips,确定要放弃公会任务吗？,Confirm abandon Guild Mission?
+sociaty_giveuptips1,（放弃将返还80%的开启费用，但会消耗1次任务次数）,"(Abandoning returns 80% of initial cost, but will use up 1 mission chance.)"
+sociaty_enqueue,入队,Join Squad
+sociaty_jiarutips,确定加入小队么？,Confirm join squad?
+sociaty_jiarutips1,（加入小队后，完成任务才能退出哦）,(You may only exit after the mission is completed.)
+sociaty_record_001,没有找到相应的公会，请重新输入,"Guild not found, please try again."
+sociaty_record_002,该公会人数已满，试试其他的吧,"Guild is full, please try another."
+sociaty_record_003,申请成功，等待公会批准,"Application sent, pending approval."
+sociaty_record_004,取消申请成功,Cancelled application request.
+sociaty_record_005,公会名称不能为空,Guild name cannot be empty.
+sociaty_record_006,公会名称已存在，换一个试试吧,"Guild name taken, please try another."
+sociaty_record_007,公会公告不能为空,Guild announcement cannot be empty.
+sociaty_record_008,该公会的设置已更改，请重新操作,"Guild settings have changed, please retry."
+sociaty_record_009,金币不足，快去赚钱吧,Insufficient Coins. Go earn some more!
+sociaty_record_010,公会已解散，试试其他公会吧,"Guild already disbanded, please try another."
+sociaty_record_011,活跃度未达标，快去叫小伙伴们一起参加公会活动吧,Activity level requirement not met. Rally the members and join some events.
+sociaty_record_013,移交会长成功，您的身份已变更为会员,Transfer of Guild Master role successful. You are now just a member.
+sociaty_record_014,操作失败，XXX已不在公会（XXX为玩家名称）,Action failed. XXX is no longer in the guild.
+sociaty_record_015,操作失败，XXX已为副会长（XXX为玩家名称）,Action failed. XXX is already a Guild Elder.
+sociaty_record_016,XXX（玩家名称）已被任命为副会长（该条信息在公会频道特殊颜色显示，美术给配个色）,XXX has been promoted to Guild Elder.
+sociaty_record_017,XXX已被请离公会（XXX为玩家名称）,XXX has been removed from the guild.
+sociaty_record_018,您没有操作权限,You do not have the power to do this.
+sociaty_record_019,请先移交会长，才能退出公会,Please tranfer the role of Guild Master before leaving.
+sociaty_record_020,退出公会成功,You have left the guild.
+sociaty_record_021,公会人数已满,Guild is full.
+sociaty_record_022,XXX（玩家名称）加入公会（该条信息在公会频道特殊颜色显示，美术给配个色，同前）,XXX has joined the guild.
+sociaty_record_023,公会容纳不下这么多人啦,The guild cannot fit that many members.
+sociaty_record_024,没有可领取的活力值,No Guild Points to be collected.
+sociaty_record_025,公会等级已变更,Guild Lvl has changed.
+sociaty_record_026,公会贡献值不足，升级失败,"Insufficient Guild Points, upgrade failed."
+sociaty_record_027,今日祈福次数已用完,Today's Wishes have already all been used.
+sociaty_record_028,祈福所需货币不足,Insufficient currency required for the Wish.
+sociaty_record_029,祈福成功！个人贡献值+XX，公会贡献值+YY,"Wish successful! Your Guild Points +XX, Guild Points Total +YY."
+sociaty_record_030,今日任务次数已用完,Today's mission chances have all been used.
+sociaty_record_031,等级不足，快去提升自己的等级吧,Insufficient level. Get out there and level up!
+sociaty_record_032,您正在公会任务小队中，不能退出公会,You are in a Guild Mission Squad. Unable to leave guild.
+sociaty_record_033,该任务已被其他玩家完成,This mission has already been completed by another player.
+sociaty_record_034,任务目标不足,Mission conditions have not been met.
+sociaty_record_035,该小队任务已全部完成，您不能加入了哟,This squad's missions have all been completed. Unable to join.
+sociaty_record_036,您已有队伍，请完成任务后再加入其他队伍,You are already in a team. Complete the current missions before joining another team.
+sociaty_record_037,距离您上次退出公会还未满12小时，无法加入新的公会,12 hours have not passed since you left a guild. Unable to join another guild yet.
+sociaty_record_038,您未达到该公会限制的最低等级,You do not meet this guild's minimum level requirement.
+sociaty_record_040,副会长人数已达最大，任命失败,The guild has reached the max number of Elders. Unable to promote.
+sociaty_record_041,XXX（玩家名称）已被解除副会长,XXX has been demoted from Guild Elder.
+sociaty_record_042,公会科技等级已变更,Guild Tech Lvl has changed.
+sociaty_record_044,小队人数已满了哟,Squad is full.
+sociaty_record_045,数据已过期,Data has expired.
+sociaty_record_046,科技等级已与公会等级相同，不能再升啦,Tech Level is now equal to Guild Level. Unable to upgrade.
+sociaty_record_047,这个家伙已经不在公会了，领取失败,This member has already left the guild. Unable to collect.
+sociaty_record_048,已达可完成的队内任务上限,Team missions limit reached.
+sociaty_record_052,快来加入我的小队：XXXX（XXXX代表任务名称）,Come join my squad: XXXX
+sociaty_record_053,XXX（科技名词）升至Y级,XXX is now Lvl Y.
+sociaty_record_054,XXX（玩家名称）已成为新任会长,XXX is now Guild Master.
+sociaty_record_055,申请数量已达上限，请先取消再操作,Application limit has been reached. Please cancel and try again.
+sociaty_record_056,存在非法字符,Contains illegal characters.
+sociaty_record_057,名称不能只有数字,Name cannot contain just numbers.
+,,
+tower_instance_title,愿望树,The Wishing Tree
+tower_gold_name,米达斯宫,Palace of Midas
+tower_exp_name,至福乐土,Fields of Elysium
+tower_instance_time,开启时间：,Starting time:
+tower_instance_drop,掉落物品：,Possible drops:
+tower_gold_time,每周二、四、六、和周日,"Every Tuesday, Thursday, Saturday, and Sunday"
+tower_exp_time,每周一、三、五、和周日,"Every Monday, Wednesday, Friday, and Sunday"
+tower_instance_count,剩余次数：{0},Remaining tries:
+tower_difficulty_title,选择难度,Select Difficulty
+tower_difficulty_1,难度I,Newbie
+tower_difficulty_2,难度II,Easy
+tower_difficulty_3,难度III,Normal
+tower_difficulty_4,难度IV,Hard
+tower_record_001,该副本今日不开启,This stage is not open today.
+tower_record_002,今日已达到最大次数,Already reached the maximum number for today.
+tower_record_003,该难度将在玩家{0}级时开启,This difficulty unlocks at Player Level {0}.
+tower_record_004,该副本已关闭,This stage is already closed.
+towerBoss_instance_title,通天塔,Towers Of Trials 
+towerBoss_instance_name1,试炼之塔（20层）,Tower Of Gauntlets (Floor 20)
+towerBoss_instance_name2,绝望之塔（30层）,Tower Of Despair (Floor 30)
+towerBoss_instance_name3,死亡之塔（40层）,Tower Of Death (Floor 40)
+towerBoss_instance_level,开启等级：,Unlock level:
+towerBoss_instance_fatigue,每层消耗活力值：,Energy required per floor:
+towerBoss_instance_shop,通天塔商店,Tower Shop
+towerBoss_instance_time,刷新时间剩余:{0}天,Time until refresh: {0} days
+towerBoss_instance_reward,Stage奖励,Stage Reward
+towerBoss_record_001,玩家等级不足，无法进入,Player has not reached the required level. Unable to enter.
+towerBoss_record_002,已通关该层,This floor has already been cleared.
+towerBoss_record_003,尚未通关之前的层数,The previous floors must be cleared first.
+towerBoss_record_004,副本进度已重置,Stage progress has already been reset.
+towerBoss_1_1,试炼之塔 - 1,Tower Of Gauntlets - 1
+towerBoss_1_2,试炼之塔 - 2,Tower Of Gauntlets - 2
+towerBoss_1_3,试炼之塔 - 3,Tower Of Gauntlets - 3
+towerBoss_1_4,试炼之塔 - 4,Tower Of Gauntlets - 4
+towerBoss_1_5,试炼之塔 - 5,Tower Of Gauntlets - 5
+towerBoss_1_6,试炼之塔 - 6,Tower Of Gauntlets - 6
+towerBoss_1_7,试炼之塔 - 7,Tower Of Gauntlets - 7
+towerBoss_1_8,试炼之塔 - 8,Tower Of Gauntlets - 8
+towerBoss_1_9,试炼之塔 - 9,Tower Of Gauntlets - 9
+towerBoss_1_10,试炼之塔 - 10,Tower Of Gauntlets - 10
+towerBoss_1_11,试炼之塔 - 11,Tower Of Gauntlets - 11
+towerBoss_1_12,试炼之塔 - 12,Tower Of Gauntlets - 12
+towerBoss_1_13,试炼之塔 - 13,Tower Of Gauntlets - 13
+towerBoss_1_14,试炼之塔 - 14,Tower Of Gauntlets - 14
+towerBoss_1_15,试炼之塔 - 15,Tower Of Gauntlets - 15
+towerBoss_1_16,试炼之塔 - 16,Tower Of Gauntlets - 16
+towerBoss_1_17,试炼之塔 - 17,Tower Of Gauntlets - 17
+towerBoss_1_18,试炼之塔 - 18,Tower Of Gauntlets - 18
+towerBoss_1_19,试炼之塔 - 19,Tower Of Gauntlets - 19
+towerBoss_1_20,试炼之塔 - 20,Tower Of Gauntlets - 20
+towerBoss_2_1,绝望之塔 - 1,Tower Of Despair - 1
+towerBoss_2_2,绝望之塔 - 2,Tower Of Despair - 2
+towerBoss_2_3,绝望之塔 - 3,Tower Of Despair - 3
+towerBoss_2_4,绝望之塔 - 4,Tower Of Despair - 4
+towerBoss_2_5,绝望之塔 - 5,Tower Of Despair - 5
+towerBoss_2_6,绝望之塔 - 6,Tower Of Despair - 6
+towerBoss_2_7,绝望之塔 - 7,Tower Of Despair - 7
+towerBoss_2_8,绝望之塔 - 8,Tower Of Despair - 8
+towerBoss_2_9,绝望之塔 - 9,Tower Of Despair - 9
+towerBoss_2_10,绝望之塔 - 10,Tower Of Despair - 10
+towerBoss_2_11,绝望之塔 - 11,Tower Of Despair - 11
+towerBoss_2_12,绝望之塔 - 12,Tower Of Despair - 12
+towerBoss_2_13,绝望之塔 - 13,Tower Of Despair - 13
+towerBoss_2_14,绝望之塔 - 14,Tower Of Despair - 14
+towerBoss_2_15,绝望之塔 - 15,Tower Of Despair - 15
+towerBoss_2_16,绝望之塔 - 16,Tower Of Despair - 16
+towerBoss_2_17,绝望之塔 - 17,Tower Of Despair - 17
+towerBoss_2_18,绝望之塔 - 18,Tower Of Despair - 18
+towerBoss_2_19,绝望之塔 - 19,Tower Of Despair - 19
+towerBoss_2_20,绝望之塔 - 20,Tower Of Despair - 20
+towerBoss_2_21,绝望之塔 - 21,Tower Of Despair - 21
+towerBoss_2_22,绝望之塔 - 22,Tower Of Despair - 22
+towerBoss_2_23,绝望之塔 - 23,Tower Of Despair - 23
+towerBoss_2_24,绝望之塔 - 24,Tower Of Despair - 24
+towerBoss_2_25,绝望之塔 - 25,Tower Of Despair - 25
+towerBoss_2_26,绝望之塔 - 26,Tower Of Despair - 26
+towerBoss_2_27,绝望之塔 - 27,Tower Of Despair - 27
+towerBoss_2_28,绝望之塔 - 28,Tower Of Despair - 28
+towerBoss_2_29,绝望之塔 - 29,Tower Of Despair - 29
+towerBoss_2_30,绝望之塔 - 30,Tower Of Despair - 30
+towerBoss_3_1,死亡之塔 - 1,Tower Of Death - 1
+towerBoss_3_2,死亡之塔 - 2,Tower Of Death - 2
+towerBoss_3_3,死亡之塔 - 3,Tower Of Death - 3
+towerBoss_3_4,死亡之塔 - 4,Tower Of Death - 4
+towerBoss_3_5,死亡之塔 - 5,Tower Of Death - 5
+towerBoss_3_6,死亡之塔 - 6,Tower Of Death - 6
+towerBoss_3_7,死亡之塔 - 7,Tower Of Death - 7
+towerBoss_3_8,死亡之塔 - 8,Tower Of Death - 8
+towerBoss_3_9,死亡之塔 - 9,Tower Of Death - 9
+towerBoss_3_10,死亡之塔 - 10,Tower Of Death - 10
+towerBoss_3_11,死亡之塔 - 11,Tower Of Death - 11
+towerBoss_3_12,死亡之塔 - 12,Tower Of Death - 12
+towerBoss_3_13,死亡之塔 - 13,Tower Of Death - 13
+towerBoss_3_14,死亡之塔 - 14,Tower Of Death - 14
+towerBoss_3_15,死亡之塔 - 15,Tower Of Death - 15
+towerBoss_3_16,死亡之塔 - 16,Tower Of Death - 16
+towerBoss_3_17,死亡之塔 - 17,Tower Of Death - 17
+towerBoss_3_18,死亡之塔 - 18,Tower Of Death - 18
+towerBoss_3_19,死亡之塔 - 19,Tower Of Death - 19
+towerBoss_3_20,死亡之塔 - 20,Tower Of Death - 20
+towerBoss_3_21,死亡之塔 - 21,Tower Of Death - 21
+towerBoss_3_22,死亡之塔 - 22,Tower Of Death - 22
+towerBoss_3_23,死亡之塔 - 23,Tower Of Death - 23
+towerBoss_3_24,死亡之塔 - 24,Tower Of Death - 24
+towerBoss_3_25,死亡之塔 - 25,Tower Of Death - 25
+towerBoss_3_26,死亡之塔 - 26,Tower Of Death - 26
+towerBoss_3_27,死亡之塔 - 27,Tower Of Death - 27
+towerBoss_3_28,死亡之塔 - 28,Tower Of Death - 28
+towerBoss_3_29,死亡之塔 - 29,Tower Of Death - 29
+towerBoss_3_30,死亡之塔 - 30,Tower Of Death - 30
+towerBoss_3_31,死亡之塔 - 31,Tower Of Death - 31
+towerBoss_3_32,死亡之塔 - 32,Tower Of Death - 32
+towerBoss_3_33,死亡之塔 - 33,Tower Of Death - 33
+towerBoss_3_34,死亡之塔 - 34,Tower Of Death - 34
+towerBoss_3_35,死亡之塔 - 35,Tower Of Death - 35
+towerBoss_3_36,死亡之塔 - 36,Tower Of Death - 36
+towerBoss_3_37,死亡之塔 - 37,Tower Of Death - 37
+towerBoss_3_38,死亡之塔 - 38,Tower Of Death - 38
+towerBoss_3_39,死亡之塔 - 39,Tower Of Death - 39
+towerBoss_3_40,死亡之塔 - 40,Tower Of Death - 40

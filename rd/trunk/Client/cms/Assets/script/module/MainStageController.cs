@@ -46,12 +46,16 @@ public class MainStageController : MonoBehaviour
     void OnEnable()
     {
         GameEventMgr.Instance.AddListener(GameEventList.DailyRefresh, OnDailyRefresh);
+        GameEventMgr.Instance.AddListener<string>(GameEventList.ShowInstanceList, OnBackToTower);
         GameDataMgr.Instance.mTowerRefreshed = false;
+
+        UIMgr.Instance.MainstageInstance = this;
     }
     //---------------------------------------------------------------------------------------------
     public void OnDisable()
     {
         GameEventMgr.Instance.RemoveListener(GameEventList.DailyRefresh, OnDailyRefresh);
+        GameEventMgr.Instance.RemoveListener<string>(GameEventList.ShowInstanceList, OnBackToTower);
 
         if (UIMgr.IsUIDestroyed() == false)
         {
@@ -62,6 +66,7 @@ public class MainStageController : MonoBehaviour
                 mgr.DestroyUI(mUIHoleEntry);
                 mgr.DestroyUI(mUIHole);
                 mgr.DestroyUI(mUITower);
+                mgr.MainstageInstance = null;
             }
         }
     }
@@ -69,6 +74,14 @@ public class MainStageController : MonoBehaviour
     void OnDailyRefresh()
     {
         RefreshHoleState(true);
+    }
+    //---------------------------------------------------------------------------------------------
+    void OnBackToTower(string instanceId)
+    {
+        if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower && mUITower == null)
+        {
+            mUITower = UITower.OpenTower((int)GameDataMgr.Instance.curTowerType);
+        }
     }
     //---------------------------------------------------------------------------------------------
     // Use this for initialization
@@ -104,13 +117,21 @@ public class MainStageController : MonoBehaviour
             else if (GameDataMgr.Instance.curInstanceType == (int)InstanceType.Tower)
             {
                 SetCurrentSelectGroup((int)InstanceType.Tower);
-                mUITower = UITower.OpenTower((int)GameDataMgr.Instance.curTowerType);
                 if (
                     curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Next ||
                     curModule.CurrentInitState == (int)ExitInstanceType.Exit_Instance_Retry
                     )
                 {
+                    if (mUITower != null)
+                    {
+                        Logger.LogError("ui tower not null!");
+                    }
+                    mUITower = null;
                     UIMgr.Instance.OpenTowerAdjustTeam();
+                }
+                else
+                {
+                    mUITower = UITower.OpenTower((int)GameDataMgr.Instance.curTowerType);
                 }
             }
         }

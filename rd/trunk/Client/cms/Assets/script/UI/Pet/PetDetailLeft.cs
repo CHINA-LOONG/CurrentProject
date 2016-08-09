@@ -265,7 +265,7 @@ public class PetDetailLeft : MonoBehaviour,IEquipField
         }
         for (int i = 0; i < equips.Length; i++)
         {
-            fields[i].SetField(m_unit, i);
+            fields[i].SetField(m_unit, (PartType)i+1);
         }
     }
 

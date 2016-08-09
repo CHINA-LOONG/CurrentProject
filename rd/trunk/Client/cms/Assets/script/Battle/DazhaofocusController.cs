@@ -19,11 +19,11 @@ public class DazhaofocusController : MonoBehaviour
 	public static DazhaofocusController Create(bool isMagicDazhao, string testname = "")
 	{
 		GameObject go = null;
-		if (isMagicDazhao)
-		{
-            go = ResourceMgr.Instance.LoadAsset("dazhaoFocusSceneMagic");
-		}
-		else 
+		//if (isMagicDazhao)
+		//{
+  //          go = ResourceMgr.Instance.LoadAsset("dazhaoFocusSceneMagic");
+		//}
+		//else 
 		{
 			go =  ResourceMgr.Instance.LoadAsset("dazhaoFocusScene");
 		}

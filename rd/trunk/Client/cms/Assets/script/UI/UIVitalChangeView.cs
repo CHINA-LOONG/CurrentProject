@@ -16,10 +16,16 @@ public class UIVitalChangeView : MonoBehaviour
     //public Sprite criticalSprite;
     //public Sprite criticalHealSprite;
     public Text hitResult;
+    public Outline hitResultOutline;
+    public Color criticalOutlineColor;
+    public Color absorbOutlineColor;
+    public Color interruptOutlineColor;
+    public Color spellnameOutlineColor;
     public Color criticalColor;
     public Color absorbColor;
     public Color interruptColor;
     public Color spellnameColor;
+
     RectTransform trans;
 
     //---------------------------------------------------------------------------------------------
@@ -37,6 +43,7 @@ public class UIVitalChangeView : MonoBehaviour
         trans.localScale = Vector3.one;
         trans.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         Color curColor = Color.white;
+        Color curOutlineColor = Color.white;
         if (args.vitalType == (int)VitalType.Vital_Type_Default)
         {
             vitalWnd.gameObject.SetActive(true);
@@ -74,61 +81,73 @@ public class UIVitalChangeView : MonoBehaviour
             if (args.vitalType == (int)VitalType.Vital_Type_FirstSpell)
             {
                 curColor = criticalColor;
+                curOutlineColor = criticalOutlineColor;
                 textID = "spell_first_spell";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_Critical)
             {
                 curColor = criticalColor;
+                curOutlineColor = criticalOutlineColor;
                 textID = "spell_critical";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_Absorbed)
             {
                 curColor = absorbColor;
+                curOutlineColor = absorbOutlineColor;
                 textID = "spell_shield";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_Immune)
             {
                 curColor = absorbColor;
+                curOutlineColor = absorbOutlineColor;
                 textID = "spell_hit_immune";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_Miss)
             {
                 curColor = interruptColor;
+                curOutlineColor = interruptOutlineColor;
                 textID = "spell_hit_miss";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_Interrupt)
             {
                 curColor = interruptColor;
+                curOutlineColor = interruptOutlineColor;
                 textID = "spell_hit_interrupt";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_NoHeal)
             {
                 curColor = interruptColor;
+                curOutlineColor = interruptOutlineColor;
                 textID = "spell_hit_noheal";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_PhyImmune)
             {
                 curColor = absorbColor;
+                curOutlineColor = absorbOutlineColor;
                 textID = "spell_hit_physicalImmune";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_MagicImmune)
             {
                 curColor = absorbColor;
+                curOutlineColor = absorbOutlineColor;
                 textID = "spell_hit_magicImmune";
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_SpellName)
             {
                 curColor = spellnameColor;
+                curOutlineColor = spellnameOutlineColor;
                 textID = args.wpNode;
             }
             else if (args.vitalType == (int)VitalType.Vital_Type_Kezhi)
             {
                 curColor = criticalColor;
+                curOutlineColor = criticalOutlineColor;
                 textID = "spell_kezhi";
             }
             else
             {
                 curColor = interruptColor;
+                curOutlineColor = interruptOutlineColor;
                 textID = "spell_stun";
             }
 
@@ -138,6 +157,7 @@ public class UIVitalChangeView : MonoBehaviour
             hitResult.gameObject.SetActive(true);
             hitResult.text = StaticDataMgr.Instance.GetTextByID(textID);
             hitResult.color = curColor;
+            hitResultOutline.effectColor = curOutlineColor;
         }
 
         //calculate pos

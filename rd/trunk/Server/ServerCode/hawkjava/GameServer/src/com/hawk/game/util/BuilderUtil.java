@@ -152,7 +152,7 @@ public class BuilderUtil {
 
 	public static HSShopRefreshTimeSync.Builder genShopRefreshTimeBuilder(Player player, ShopEntity shopEntity) {
 		HSShopRefreshTimeSync.Builder builder = HSShopRefreshTimeSync.newBuilder();
-		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.OTHERSHOP_VALUE; ++i) {
+		for (int i = Const.shopType.NORMALSHOP_VALUE; i <= Const.shopType.TOWERSHOP_VALUE; ++i) {
 			ShopCfg shopCfg = ShopCfg.getShopCfg(i, player.getLevel());
 			if (i == Const.shopType.NORMALSHOP_VALUE) {
 				builder.setNormalShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));
@@ -160,8 +160,8 @@ public class BuilderUtil {
 			else if (i == Const.shopType.ALLIANCESHOP_VALUE) {
 				builder.setAllianceShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));
 			}
-			else if (i == Const.shopType.OTHERSHOP_VALUE) {
-				builder.setOtherShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));
+			else if (i == Const.shopType.TOWERSHOP_VALUE) {
+				builder.setTowerShopRefreshTime(shopCfg == null ? 0 : (shopCfg.getRefreshMaxNumByHand() - shopEntity.getShopRefreshNum(i)));
 			}
 		}
 		return builder;
@@ -295,6 +295,10 @@ public class BuilderUtil {
 			if (transMsg != null) {
 				builder.setTransText(transMsg);
 			}
+		}
+
+		if (imMsg.expansion != null) {
+			builder.setExpansion(imMsg.expansion);
 		}
 		return builder;
 	}

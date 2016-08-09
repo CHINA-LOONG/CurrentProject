@@ -67,19 +67,19 @@ public class ShopUtil {
 	public static void refreshShopData(Player player){
 		refreshShopData(Const.shopType.NORMALSHOP_VALUE, player);
 		refreshShopData(Const.shopType.ALLIANCESHOP_VALUE, player);
-		refreshShopData(Const.shopType.OTHERSHOP_VALUE, player);
+		refreshShopData(Const.shopType.TOWERSHOP_VALUE, player);
 	}
 	
 	public static void refreshShopData(int type, Player player){
 		ShopEntity shopEntity = player.getPlayerData().getShopEntity();
-		List<ShopItemInfo> shopList = ShopUtil.getPlayerShopItems(player, type);
-		for (int i = 0; i < shopList.size(); i++) {
-			shopList.get(i).setSlot(i);
-			shopList.get(i).setHasBuy(false);
+		List<ShopItemInfo> shopItemList = ShopUtil.getPlayerShopItems(player, type);
+		for (int i = 0; i < shopItemList.size(); i++) {
+			shopItemList.get(i).setSlot(i);
+			shopItemList.get(i).setHasBuy(false);
 		}
 		shopEntity.increaseShopId(type);
-		shopEntity.setRefreshData(type, HawkTime.getCalendar());
-		shopEntity.setShopItemsList(type, shopList);
+		shopEntity.setRefreshDate(type, HawkTime.getCalendar());
+		shopEntity.setShopItemsList(type, shopItemList);
 		shopEntity.notifyUpdate(true);
 	}
 }

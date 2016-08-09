@@ -84,6 +84,7 @@ public class PetDetailRightSkill : PetDetailRightBase, SkillElementDelegate
 
         PB.HSMonsterSkillUpRet skillUpResponse = msg.GetProtocolBody<PB.HSMonsterSkillUpRet>();
         m_unit.spellList[m_currentSpellId].level += 1;
+        m_unit.LevelUpdateSpell(m_currentSpellId);
         StatisticsDataMgr.Instance.ResetSkillPointState(skillUpResponse.skillPoint, skillUpResponse.skillPointTimeStamp);
         ReloadElement(m_currentSpellId, m_unit.spellList[m_currentSpellId], m_unit);
     }

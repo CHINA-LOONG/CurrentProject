@@ -4,6 +4,7 @@ exp + 100          增加经验
 petexp + 100 87    增加宠物经验 最后一个参数是宠物id
 coin = 100000      设置金币
 gold = 100000      设置钻石
+towercoin = 10000  设置通天塔币
 tili = 100000      设置体力
 grade = 3 87       设置宠物星级，最后一个参数是宠物id
 resp               技能点恢复
@@ -20,3 +21,7 @@ questclear         清空任务
 mail 1001 101 10   发邮件 后三个参数分别是接受者id  邮件id 和 数量
 mailall 101        群发邮件  最后一个参数是邮件id
 end 0			   0:failed 1：win`
+dailyrefresh       每日刷新
+setstar 1|2|3 id   设置副本星级
+setpass 1|0 id     设置副本是否通关
+

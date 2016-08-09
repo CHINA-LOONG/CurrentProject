@@ -1,6 +1,6 @@
 ﻿#TEXT,TEXT,NUM,NUM,NUM,NUM,NUM,NUM,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT,TEXT
 id,name,chapter,index,type,difficulty,fatigue,count,desc,enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,reward,bgzhuangshi,instanceSpell
-#副本Id,副本名称,章节,章节内索引,类型,难度,疲劳值,每日可完成次数,副本描述,敌人1,敌人2,敌人3,敌人4,敌人5,敌人6,奖励Id,ui背景装饰,场景技能
+#副本Id,副本名称,章节,章节内索引,1故事 2洞  3通天塔 4公会,难度,疲劳值,每日可完成次数,副本描述,敌人1,敌人2,敌人3,敌人4,敌人5,敌人6,奖励Id,ui背景装饰,场景技能
 yueguangsenlin11,Moon Forest - 1,1,0,1,0,2,999,,"xgHuapo,2","xgAmute,8","bossMinghe13Zouyincao,8",,,,10001,fubenxuanze_minghe,debuffPlantDotStrong
 yueguangsenlin12,Moon Forest - 2,1,1,1,0,2,999,,"xgHuapo,2","xgLangren,8","bossYueguangsenlin12Mantuoluo,8",,,,10001,fubenxuanze_minghe,debuffPlantDotStrong
 yueguangsenlin14,Moon Forest - 4,1,2,1,0,2,10,,"xgXiyiren,2","xgPanshen,8","bossYueguangsenlin14Luoxinfu,8",,,,10001,fubenxuanze_minghe,debuffPlantDotStrong
@@ -10,4 +10,4 @@ minghe12,Nether River - 2,2,1,1,0,2,999,,"xgLangren,2","xgHetong,8","bossMinghe1
 minghe13,Nether River - 3,2,2,1,0,2,999,,"xgHapi,2","xgKairuisi,8","bossMinghe13Zouyincao,8",,,,10001,fubenxuanze_minghe,debuffPlantDotStrong
 minghe14,Nether River - 4,3,0,1,0,2,999,,"xgLangren,2","xgAnpusha,8","bossMinghe14Amute,8",,,,10001,fubenxuanze_minghe,debuffPlantDotStrong
 minghe17,Nether River - 7,3,1,1,0,2,999,,"xgWagui,2","xgMantuoluo,8","bossMinghe17Anpusha,8",,,,10002,fubenxuanze_minghe,debuffPlantDotStrong
-minghe18,Nether River - 8,3,2,1,0,2,999,,"xgAmute,2","xgPanshen,8","bossMinghe18Karong,8",,,,10003,fubenxuanze_minghe,debuffPlantDotStrong
+minghe18,Nether River - 8,3,2,4,0,2,999,,"xgAmute,2","xgPanshen,8","bossMinghe18Karong,8",,,,10003,fubenxuanze_minghe,debuffPlantDotStrong

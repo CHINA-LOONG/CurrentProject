@@ -90,7 +90,7 @@ public class AllianceApplyHandler implements HawkMsgHandler{
 		} 
 		else 
 		{
-			if (AllianceManager.getInstance().getPlayerApplyList(player.getId()).size() >= SysBasicCfg.getInstance().getAllianceMaxApply()) {
+			if (AllianceManager.getInstance().getPlayerApplyCount(player.getId()) >= SysBasicCfg.getInstance().getAllianceMaxApply()) {
 				player.sendError(protocol.getType(), Status.allianceError.ALLIANCE_MAX_APPLY_VALUE);
 				return true;
 			}

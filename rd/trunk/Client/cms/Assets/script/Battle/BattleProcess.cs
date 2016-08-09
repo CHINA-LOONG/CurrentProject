@@ -1205,7 +1205,7 @@ public class BattleProcess : MonoBehaviour
 		if (IsHaveDazhaoAction())
 		{
 			isCastDazhao = false;
-            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID(" im_battle_002"), (int)PB.ImType.PROMPT);
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_battle_002"), (int)PB.ImType.PROMPT);
             //Logger.Log("had a dazhaoAction,can't insert Another!");
             return;
 		}
@@ -1213,14 +1213,14 @@ public class BattleProcess : MonoBehaviour
 		if (IsChangePeting (bo)) 
 		{
 			isCastDazhao = false;
-			Logger.LogError("change Pet.....");
-			return ;
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_battle_001"), (int)PB.ImType.PROMPT);
+            return ;
 		}
         //是否眩晕
         if (bo.unit.stun > 0)
         {
 			isCastDazhao = false;
-            Logger.Log("unit is stun");
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("im_spell_001"), (int)PB.ImType.PROMPT);
             return;
         }
 

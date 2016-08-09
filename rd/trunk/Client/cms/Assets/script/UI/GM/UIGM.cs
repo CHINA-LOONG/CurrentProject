@@ -281,6 +281,36 @@ public class UIGM : UIBase {
             UIMgr.Instance.CloseUI_(this);
             return;
         }
+        else if (command[0].Equals("dailyrefresh"))
+        {
+            if (command.Count != 1)
+            {
+                text.text = "格式错误";
+                return;
+            }
+        }
+        else if (command[0].Equals("setstar"))
+        {
+            if (command.Count != 3)
+            {
+                text.text = "格式错误";
+                return;
+            }
+
+            gmOperation.value = int.Parse(command[1] as string);
+            gmOperation.itemId = command[2] as string;
+        }
+        else if (command[0].Equals("setpass"))
+        {
+            if (command.Count != 3)
+            {
+                text.text = "格式错误";
+                return;
+            }
+
+            gmOperation.value = int.Parse(command[1] as string);
+            gmOperation.itemId = command[2] as string;
+        }
 
         GameApp.Instance.netManager.SendMessage(PB.gm.GMOPERATION_C.GetHashCode(), gmOperation);
     }

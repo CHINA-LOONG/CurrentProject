@@ -522,7 +522,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8981\u6C42:"
+  m_Text: "\u8981\u6C42:1111"
 --- !u!114 &11441442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -700,7 +700,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7C7B\u578B:"
+  m_Text: "\u7C7B\u578B:111"
 --- !u!114 &11491098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -858,11 +858,11 @@ RectTransform:
   - {fileID: 22484654}
   m_Father: {fileID: 22454182}
   m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: 0}
-  m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: -112, y: 220}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -135, y: 82.5}
   m_SizeDelta: {x: 0, y: 25}
-  m_Pivot: {x: .5, y: 0}
+  m_Pivot: {x: 0, y: .5}
 --- !u!224 &22414056
 RectTransform:
   m_ObjectHideFlags: 1
@@ -944,11 +944,11 @@ RectTransform:
   - {fileID: 22481008}
   m_Father: {fileID: 22454182}
   m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: 0}
-  m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: -135, y: 195}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -135, y: 57.5}
   m_SizeDelta: {x: 0, y: 25}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: .5}
 --- !u!224 &22441254
 RectTransform:
   m_ObjectHideFlags: 1

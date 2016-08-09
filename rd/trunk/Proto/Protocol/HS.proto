@@ -21,6 +21,9 @@ enum gm
 	// gm命令
 	GMOPERATION_C               = 101;
 	GMOPERATION_S               = 102;
+
+	// gm生效后推送
+	GM_INSTANCE_PUSH_S          = 200;
 }
 
 // 游戏协议ID列表(>=1000)
@@ -152,6 +155,8 @@ enum code
 	MAIL_RECEIVE_ALL_C          = 6004;
 	MAIL_RECEIVE_ALL_S          = 6005;
 	MAIL_NEW_S                  = 6006;
+	MAIL_DELETE_C               = 6007;
+	MAIL_DELETE_S               = 6008;
 
 	// 即时通讯
 	IM_CHAT_SEND_C              = 7001;

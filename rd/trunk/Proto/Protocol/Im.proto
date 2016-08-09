@@ -9,6 +9,8 @@ message HSImMsg
 	optional string senderName = 4;
 	required string origText = 5;
 	optional string transText = 6;
+	// 扩展数据
+	optional string expansion = 7;
 }
 
 message HSImPlayer
@@ -27,6 +29,8 @@ message HSImChatSend
 {
 	required int32 channel = 1;
 	required string text = 2;
+	// 扩展数据
+	optional string expansion = 3;
 }
 
 // IM_PUSH_S

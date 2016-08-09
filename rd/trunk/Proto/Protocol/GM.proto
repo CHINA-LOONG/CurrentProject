@@ -1,4 +1,5 @@
 option java_package = "com.hawk.game.protocol";
+import "Protocol/Statistics.proto";
 
 // struct-------------------------------------------------------
 
@@ -23,5 +24,13 @@ message GMOperation
 // GMOPERATION_S
 message GMOperationRet
 {
+}
 
+// GM_INSTANCE_PUSH_S
+message GMInstancePush
+{
+	// 副本状态
+	repeated InstanceState instanceState = 1;
+	// 章节状态
+	required ChapterState chapterState = 2;
 }

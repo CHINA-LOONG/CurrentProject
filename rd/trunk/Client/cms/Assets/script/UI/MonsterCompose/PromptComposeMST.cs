@@ -62,12 +62,12 @@ public class PromptComposeMST : UIBase
         ItemData itemInfo = new ItemData() { itemId = currentItem, count = 0 };
         if (null == iconFragment)
         {
-            iconFragment = ItemIcon.CreateItemIcon(itemInfo);
+            iconFragment = ItemIcon.CreateItemIcon(itemInfo, true, false);
             UIUtil.SetParentReset(iconFragment.transform, iconCurPos);
         }
         else
         {
-            iconFragment.RefreshWithItemInfo(itemInfo);
+            iconFragment.RefreshWithItemInfo(itemInfo, true, false);
         }
         textFragment.text = string.Format("*{0}", currentCount);
         

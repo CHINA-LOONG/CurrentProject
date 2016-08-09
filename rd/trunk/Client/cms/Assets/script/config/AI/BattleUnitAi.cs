@@ -68,7 +68,7 @@ public class BattleUnitAi : MonoBehaviour {
 			
 		case (int)SpellType.Spell_Type_PhyAttack:
 		case (int)SpellType.Spell_Type_PhyDaZhao:
-			attackTarget = GetPhyAttackTarget(caster);
+			attackTarget = GetMagicAttackTarget(caster);
 			break;
 		case (int)SpellType.Spell_Type_MgicAttack:
 		case (int)SpellType.Spell_Type_MagicDazhao:
@@ -500,9 +500,9 @@ public class BattleUnitAi : MonoBehaviour {
 		{
 			return GetMinLifeTarget(bestAttackList);
 		}
-		
-		int randomIndex = Random.Range (0, listTarget.Count);
-		return listTarget [randomIndex];
+        return GetMinLifeTarget(listTarget);
+        //int randomIndex = Random.Range (0, listTarget.Count);
+		//return listTarget [randomIndex];
 	}
 
 	GameUnit GetCurveAiTarget(GameUnit battleUnit)

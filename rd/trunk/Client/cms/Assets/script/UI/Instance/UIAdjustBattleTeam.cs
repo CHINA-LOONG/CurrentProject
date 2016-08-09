@@ -13,9 +13,10 @@ public class EnterInstanceParam
 
 public enum InstanceType
 {
-    Normal = 0,
-    Hole,
-    Tower
+    Normal = PB.InstanceType.INSTANCE_STORY,
+    Hole = PB.InstanceType.INSTANCE_HOLE,
+    Tower = PB.InstanceType.INSTANCE_TOWER,
+    Guild = PB.InstanceType.INSTANCE_GUILD
 }
 
 public class UIAdjustBattleTeam : UIBase
@@ -1037,7 +1038,7 @@ public class UIAdjustBattleTeam : UIBase
             string errorMsg;
             if (error.errCode == (int)PB.instanceError.INSTANCE_NOT_OPEN)
             {
-                errorMsg = StaticDataMgr.Instance.GetTextByID("towerBoss_record_001");
+                errorMsg = StaticDataMgr.Instance.GetTextByID("tower_record_004");
                 UIIm.Instance.ShowSystemHints(errorMsg, (int)PB.ImType.PROMPT);
             }
             else if (error.errCode == (int)PB.instanceError.TOWER_FLOOR)

@@ -14,6 +14,7 @@ import com.hawk.game.entity.PlayerAllianceEntity;
 import com.hawk.game.protocol.Alliance.AllianceApply;
 import com.hawk.game.protocol.Alliance.AllianceInfo;
 import com.hawk.game.protocol.Alliance.AllianceMember;
+import com.hawk.game.protocol.Alliance.AllianceSimpleInfo;
 import com.hawk.game.protocol.Alliance.AllianceTaskInfo;
 import com.hawk.game.protocol.Alliance.AllianceTeamInfo;
 import com.hawk.game.protocol.Alliance.AllianceTeamMemInfo;
@@ -106,9 +107,35 @@ public class AllianceUtil {
 		builder.setName(allianceEntity.getName());
 		builder.setAutoAccept(allianceEntity.isAutoAccept());
 		builder.setMinLevel(allianceEntity.getMinLevel());
+		builder.setCaptainId(allianceEntity.getPlayerId());
+		builder.setCaptaionName(allianceEntity.getPlayerName());
 		return builder;
 	}
 
+	/**
+	 * 构造公会信息回复协议
+	 * @param allianceEntity
+	 * @param playerId
+	 * @param remGold
+	 * @return
+	 */
+	public static AllianceSimpleInfo.Builder getSimpleAllianceInfo(AllianceEntity allianceEntity, boolean isApply){	
+		AllianceSimpleInfo.Builder builder = AllianceSimpleInfo.newBuilder();
+		builder.setId(allianceEntity.getId());
+		builder.setLevel(allianceEntity.getLevel());
+		builder.setCurrentPop(allianceEntity.getMemberList().size());
+		builder.setMaxPop(SociatyTechnologyCfg.getMemberPop(allianceEntity.getMemLevel()));
+		builder.setContribution3Day(allianceEntity.get3DaysContribution());
+		builder.setNotice(allianceEntity.getNotice());
+		builder.setName(allianceEntity.getName());
+		builder.setMinLevel(allianceEntity.getMinLevel());
+		builder.setCaptainId(allianceEntity.getPlayerId());
+		builder.setCaptaionName(allianceEntity.getPlayerName());
+		builder.setApply(isApply);
+		builder.setAutoAccept(allianceEntity.isAutoAccept());
+		return builder;
+	}
+	
 	/**
 	 * 获取成员数据
 	 * @param allianceId

@@ -215,13 +215,14 @@ public class GsConst {
 		public static final int HOLE = 1 << 2;
 		public static final int SHOP_NORMAL = 1 << 3;
 		public static final int SHOP_ALLIANCE = 1 << 4;
+		public static final int SHOP_TOWER = 1 << 5;
 	}
 
 	public static int[] SysRefreshTime = {103, 104, 105, 106, 107, 108, 109};
 	public static int[] SysRefreshMask = {4, 4, 4, 4, 4, 4, 4};
 
-	public static int[] PlayerRefreshTime = {101, 102, 201, 202, 203, 204, 205, 206};
-	public static int[] PlayerRefreshMask = {1, 2, 8, 8, 8, 16, 16, 16};
+	public static int[] PlayerRefreshTime = {101, 102, 201, 202, 203, 204, 205, 206, 207};
+	public static int[] PlayerRefreshMask = {1, 2, 8, 8, 8, 16, 16, 16, 32};
 
 	/**
 	 * 属性类型定义
@@ -300,9 +301,10 @@ public class GsConst {
 	 */
 	public static class ConsumeCheckResult {
 		// 金币不足
-		public static final int COINS_NOT_ENOUGH = 1;
+		public static final int COIN_NOT_ENOUGH = 1;
 		// 钻石不足
 		public static final int GOLD_NOT_ENOUGH = 2;
+		public static final int TOWER_COIN_NOT_ENOUGH = 3;
 		public static final int LEVEL_NOT_ENOUGH = 4;
 		public static final int EXP_NOT_ENOUGH = 5;
 		public static final int FATIGUE_NOT_ENOUGH = 6;
@@ -326,7 +328,8 @@ public class GsConst {
 	public static class AwardCheckResult {
 		public static final int COIN_LIMIT = 1;
 		public static final int GOLD_LIMIT = 2;
-		public static final int FATIGUE_LIMIT = 3;
+		public static final int TOWER_COIN_LIMIT = 3;
+		public static final int FATIGUE_LIMIT = 4;
 	}
 
 	// 循环性

@@ -28,9 +28,10 @@ public class FoundMgr
     }
 
     //副本
-    public void GoToUIStage()
+    public void GoToUIStage(InstanceEntry entry)
     {
-        Logger.Log("打开副本界面");
+        InstanceEntryRuntimeData runtime = InstanceMapService.Instance.GetRuntimeInstance(entry.id);
+        UIAdjustBattleTeam.OpenWith(entry.id, runtime.star, (InstanceType)entry.type);
     }
     //合成
     public void GoToUICompose(int index)
@@ -45,10 +46,9 @@ public class FoundMgr
         uibuild.uiDecompose.Refresh(index);
     }
     //商店
-    public void GoToUIShop()
+    public void GoToUIShop(PB.shopType type)
     {
-        Logger.Log("打开商店界面");
-        //UIMgr.
+        uibuild.OpenShop((int)type);
     }
     //商城
     public void GoToUIStore()
@@ -63,13 +63,31 @@ public class FoundMgr
     //抽奖
     public void GoToLucky()
     {
-
         Logger.Log("打开抽奖界面");
     }
     //公会
     public void GoToGuild()
     {
         Logger.Log("打开公会界面");
+    }
+
+    //通天塔
+    public void GoToTower()
+    {
+        MainStageController mainStage = UIMgr.Instance.MainstageInstance;
+        if (mainStage != null)
+        {
+            mainStage.SetCurrentSelectGroup((int)InstanceType.Tower);
+        }
+    }
+    //洞
+    public void GoToHole()
+    {
+        MainStageController mainStage = UIMgr.Instance.MainstageInstance;
+        if (mainStage != null)
+        {
+            mainStage.SetCurrentSelectGroup((int)InstanceType.Hole);
+        }
     }
 
 }

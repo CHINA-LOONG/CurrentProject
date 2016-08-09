@@ -7081,23 +7081,23 @@ public final class Shop {
      */
     int getAllianceShopRefreshTime();
 
-    // required int32 otherShopRefreshTime = 3;
+    // required int32 towerShopRefreshTime = 3;
     /**
-     * <code>required int32 otherShopRefreshTime = 3;</code>
+     * <code>required int32 towerShopRefreshTime = 3;</code>
      *
      * <pre>
-     * 其他玩法商店刷新次数
+     * 通天塔商店刷新次数
      * </pre>
      */
-    boolean hasOtherShopRefreshTime();
+    boolean hasTowerShopRefreshTime();
     /**
-     * <code>required int32 otherShopRefreshTime = 3;</code>
+     * <code>required int32 towerShopRefreshTime = 3;</code>
      *
      * <pre>
-     * 其他玩法商店刷新次数
+     * 通天塔商店刷新次数
      * </pre>
      */
-    int getOtherShopRefreshTime();
+    int getTowerShopRefreshTime();
   }
   /**
    * Protobuf type {@code HSShopRefreshTimeSync}
@@ -7162,7 +7162,7 @@ public final class Shop {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              otherShopRefreshTime_ = input.readInt32();
+              towerShopRefreshTime_ = input.readInt32();
               break;
             }
           }
@@ -7253,34 +7253,34 @@ public final class Shop {
       return allianceShopRefreshTime_;
     }
 
-    // required int32 otherShopRefreshTime = 3;
-    public static final int OTHERSHOPREFRESHTIME_FIELD_NUMBER = 3;
-    private int otherShopRefreshTime_;
+    // required int32 towerShopRefreshTime = 3;
+    public static final int TOWERSHOPREFRESHTIME_FIELD_NUMBER = 3;
+    private int towerShopRefreshTime_;
     /**
-     * <code>required int32 otherShopRefreshTime = 3;</code>
+     * <code>required int32 towerShopRefreshTime = 3;</code>
      *
      * <pre>
-     * 其他玩法商店刷新次数
+     * 通天塔商店刷新次数
      * </pre>
      */
-    public boolean hasOtherShopRefreshTime() {
+    public boolean hasTowerShopRefreshTime() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required int32 otherShopRefreshTime = 3;</code>
+     * <code>required int32 towerShopRefreshTime = 3;</code>
      *
      * <pre>
-     * 其他玩法商店刷新次数
+     * 通天塔商店刷新次数
      * </pre>
      */
-    public int getOtherShopRefreshTime() {
-      return otherShopRefreshTime_;
+    public int getTowerShopRefreshTime() {
+      return towerShopRefreshTime_;
     }
 
     private void initFields() {
       normalShopRefreshTime_ = 0;
       allianceShopRefreshTime_ = 0;
-      otherShopRefreshTime_ = 0;
+      towerShopRefreshTime_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -7295,7 +7295,7 @@ public final class Shop {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasOtherShopRefreshTime()) {
+      if (!hasTowerShopRefreshTime()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -7313,7 +7313,7 @@ public final class Shop {
         output.writeInt32(2, allianceShopRefreshTime_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, otherShopRefreshTime_);
+        output.writeInt32(3, towerShopRefreshTime_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7334,7 +7334,7 @@ public final class Shop {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, otherShopRefreshTime_);
+          .computeInt32Size(3, towerShopRefreshTime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -7456,7 +7456,7 @@ public final class Shop {
         bitField0_ = (bitField0_ & ~0x00000001);
         allianceShopRefreshTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        otherShopRefreshTime_ = 0;
+        towerShopRefreshTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
@@ -7497,7 +7497,7 @@ public final class Shop {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.otherShopRefreshTime_ = otherShopRefreshTime_;
+        result.towerShopRefreshTime_ = towerShopRefreshTime_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -7520,8 +7520,8 @@ public final class Shop {
         if (other.hasAllianceShopRefreshTime()) {
           setAllianceShopRefreshTime(other.getAllianceShopRefreshTime());
         }
-        if (other.hasOtherShopRefreshTime()) {
-          setOtherShopRefreshTime(other.getOtherShopRefreshTime());
+        if (other.hasTowerShopRefreshTime()) {
+          setTowerShopRefreshTime(other.getTowerShopRefreshTime());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -7536,7 +7536,7 @@ public final class Shop {
           
           return false;
         }
-        if (!hasOtherShopRefreshTime()) {
+        if (!hasTowerShopRefreshTime()) {
           
           return false;
         }
@@ -7660,51 +7660,51 @@ public final class Shop {
         return this;
       }
 
-      // required int32 otherShopRefreshTime = 3;
-      private int otherShopRefreshTime_ ;
+      // required int32 towerShopRefreshTime = 3;
+      private int towerShopRefreshTime_ ;
       /**
-       * <code>required int32 otherShopRefreshTime = 3;</code>
+       * <code>required int32 towerShopRefreshTime = 3;</code>
        *
        * <pre>
-       * 其他玩法商店刷新次数
+       * 通天塔商店刷新次数
        * </pre>
        */
-      public boolean hasOtherShopRefreshTime() {
+      public boolean hasTowerShopRefreshTime() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required int32 otherShopRefreshTime = 3;</code>
+       * <code>required int32 towerShopRefreshTime = 3;</code>
        *
        * <pre>
-       * 其他玩法商店刷新次数
+       * 通天塔商店刷新次数
        * </pre>
        */
-      public int getOtherShopRefreshTime() {
-        return otherShopRefreshTime_;
+      public int getTowerShopRefreshTime() {
+        return towerShopRefreshTime_;
       }
       /**
-       * <code>required int32 otherShopRefreshTime = 3;</code>
+       * <code>required int32 towerShopRefreshTime = 3;</code>
        *
        * <pre>
-       * 其他玩法商店刷新次数
+       * 通天塔商店刷新次数
        * </pre>
        */
-      public Builder setOtherShopRefreshTime(int value) {
+      public Builder setTowerShopRefreshTime(int value) {
         bitField0_ |= 0x00000004;
-        otherShopRefreshTime_ = value;
+        towerShopRefreshTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 otherShopRefreshTime = 3;</code>
+       * <code>required int32 towerShopRefreshTime = 3;</code>
        *
        * <pre>
-       * 其他玩法商店刷新次数
+       * 通天塔商店刷新次数
        * </pre>
        */
-      public Builder clearOtherShopRefreshTime() {
+      public Builder clearTowerShopRefreshTime() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        otherShopRefreshTime_ = 0;
+        towerShopRefreshTime_ = 0;
         onChanged();
         return this;
       }
@@ -7813,7 +7813,7 @@ public final class Shop {
       "(\005\022\020\n\010multiple\030\002 \002(\005\022\023\n\013totalReward\030\003 \002(" +
       "\005\"u\n\025HSShopRefreshTimeSync\022\035\n\025normalShop" +
       "RefreshTime\030\001 \002(\005\022\037\n\027allianceShopRefresh" +
-      "Time\030\002 \002(\005\022\034\n\024otherShopRefreshTime\030\003 \002(\005",
+      "Time\030\002 \002(\005\022\034\n\024towerShopRefreshTime\030\003 \002(\005",
       "B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
@@ -7898,7 +7898,7 @@ public final class Shop {
           internal_static_HSShopRefreshTimeSync_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_HSShopRefreshTimeSync_descriptor,
-              new java.lang.String[] { "NormalShopRefreshTime", "AllianceShopRefreshTime", "OtherShopRefreshTime", });
+              new java.lang.String[] { "NormalShopRefreshTime", "AllianceShopRefreshTime", "TowerShopRefreshTime", });
           return null;
         }
       };

@@ -41,7 +41,7 @@ public class UIBattle : UIBase
     public WeakpointUI wpUI;
 
     [HideInInspector]
-    public UIFazhen uiFazhen;
+    //public UIFazhen uiFazhen;
 
     public MirrorDray m_MirrorDray = null;
 
@@ -111,7 +111,7 @@ public class UIBattle : UIBase
 
     public override void Clean()
     {
-        UIMgr.Instance.DestroyUI(uiFazhen);
+        //UIMgr.Instance.DestroyUI(uiFazhen);
     }
 
     public void HideBattleUI()

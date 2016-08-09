@@ -264,7 +264,10 @@ namespace PB
       CHAPTER_BOX_ALREADY_OPEN = 393223,
             
       [global::ProtoBuf.ProtoEnum(Name=@"INSTANCE_NOT_ENTER", Value=393224)]
-      INSTANCE_NOT_ENTER = 393224
+      INSTANCE_NOT_ENTER = 393224,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TOWER_FLOOR", Value=393225)]
+      TOWER_FLOOR = 393225
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"mailError")]
@@ -397,7 +400,13 @@ namespace PB
       ALLIANCE_QUEST_FINISH = 524326,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_TASK_NOT_FINISH", Value=524327)]
-      ALLIANCE_TASK_NOT_FINISH = 524327
+      ALLIANCE_TASK_NOT_FINISH = 524327,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_NOT_CAPTAIN", Value=524328)]
+      ALLIANCE_NOT_CAPTAIN = 524328,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ALLIANCE_HAVE_MEMBER", Value=524329)]
+      ALLIANCE_HAVE_MEMBER = 524329
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"shopError")]

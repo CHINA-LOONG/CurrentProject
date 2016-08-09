@@ -198,6 +198,8 @@ public class UIMonsters : UIBase,
             ReLoadCollectData(index);
         }
     }
+
+
     void ReLoadOwnedData(int index)
     {
         int curType = GetTypeByIndex(index);
@@ -245,8 +247,6 @@ public class UIMonsters : UIBase,
                 }
             }
         }
-        //CollectList.Sort(SortCollect);
-
         scrollView_Collect.InitContentSize(CollectList.Count, this);
 
         if (iconFragment==null)
@@ -293,27 +293,6 @@ public class UIMonsters : UIBase,
 
         return curType;
     }
-
-    //List<CollectUnit> SetCollectList(List<UnitData> unitList, List<string> collect)
-    //{
-    //    List<CollectUnit> list = new List<CollectUnit>();
-    //    for (int i = 0; i < unitList.Count; i++)
-    //    {
-    //        CollectUnit collectUnit = new CollectUnit();
-    //        collectUnit.unit = unitList[i];
-    //        if (collect.Contains(unitList[i].id))
-    //        {
-    //            collectUnit.isExist = true;
-    //        }
-    //        else
-    //        {
-    //            collectUnit.isExist = false;
-    //        }
-    //        list.Add(collectUnit);
-    //    }
-    //    return list;
-    //}
-
 
     void OnClickCloseBtn()
     {

@@ -51,6 +51,7 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_SHOP_REFRESH_S.GetHashCode().ToString(), OnShopNeedRefreshSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_DAILY_REFRESH_S.GetHashCode().ToString(), OnDailyRefreshSync);
         GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_MONTHLY_REFRESH_S.GetHashCode().ToString(), OnMonthlyRefreshSync);
+        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.gm.GM_INSTANCE_PUSH_S.GetHashCode().ToString(), OnGMInstanceStateChange);
         DontDestroyOnLoad(gameObject);
     }
 
@@ -59,8 +60,9 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.STATISTICS_INFO_SYNC_S.GetHashCode().ToString(), OnStatisticsInfoSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_EXP_LEFT_TIMES_S.GetHashCode().ToString(), OnExpLeftTimesSync);
         GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_SHOP_REFRESH_S.GetHashCode().ToString(), OnShopNeedRefreshSync);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_DAILY_REFRESH_S.GetHashCode().ToString(), OnDailyRefreshSync);
-        GameEventMgr.Instance.AddListener<ProtocolMessage>(PB.code.SYNC_MONTHLY_REFRESH_S.GetHashCode().ToString(), OnMonthlyRefreshSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_DAILY_REFRESH_S.GetHashCode().ToString(), OnDailyRefreshSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.code.SYNC_MONTHLY_REFRESH_S.GetHashCode().ToString(), OnMonthlyRefreshSync);
+        GameEventMgr.Instance.RemoveListener<ProtocolMessage>(PB.gm.GM_INSTANCE_PUSH_S.GetHashCode().ToString(), OnGMInstanceStateChange);
     }
 
     void OnStatisticsInfoSync(ProtocolMessage message)
@@ -131,6 +133,23 @@ public class StatisticsDataMgr : MonoBehaviour {
         GameDataMgr.Instance.mTowerInvalidate = true;
         GameDataMgr.Instance.mTowerRefreshed = true;
         GameDataMgr.Instance.SyncTowerData(null);
+    }
+
+    void OnGMInstanceStateChange(ProtocolMessage messge)
+    {
+        PB.GMInstancePush gmInstance = messge.GetProtocolBody<PB.GMInstancePush>();
+        if (null == gmInstance)
+            return;
+        if (gmInstance.instanceState != null)
+        {
+            InstanceMapService.Instance.RefreshInstanceMap(gmInstance.instanceState);
+        }
+
+        if (gmInstance.chapterState != null)
+        {
+            InstanceMapService.Instance.chapterState = gmInstance.chapterState;
+        }
+
     }
 
     public void ResetSkillPointState(int currentPoint, int beginTime)

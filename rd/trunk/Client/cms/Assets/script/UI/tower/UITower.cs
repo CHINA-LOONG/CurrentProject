@@ -8,6 +8,7 @@ public class UITower : UIBase
     public static string ViewName = "UITower";
     public static UITower OpenTower(int towerType)
     {
+        GameDataMgr.Instance.mTowerRefreshed = false;
         UITower tower = UIMgr.Instance.OpenUI_(UITower.ViewName) as UITower;
         tower.ShowTower(towerType);
         return tower;
@@ -252,6 +253,12 @@ public class UITower : UIBase
     //---------------------------------------------------------------------------------------------------------------------------------------
     void TowerItemClick(GameObject item)
     {
+        if (GameDataMgr.Instance.mTowerRefreshed == true)
+        {
+            UIIm.Instance.ShowSystemHints(StaticDataMgr.Instance.GetTextByID("towerBoss_record_004"), (int)PB.ImType.PROMPT);
+            return;
+        }
+
         TowerItemData towerItemData = item.GetComponent<TowerItemData>();
 		if (towerItemData.currType == TowerItemType.Item_Type_Curr)
         {

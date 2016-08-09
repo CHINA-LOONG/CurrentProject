@@ -45,18 +45,18 @@ public class ConsumeItems {
 		newConsumeItem.addAttr(changeType.getNumber(), count);
 		return newConsumeItem;
 	}
-	
+
 	/**
 	 * 设置builder
 	 */
 	public void setRewardInfo(HSConsumeInfo.Builder consumeInfo) {
 		this.consumeInfo = consumeInfo;
 	}
-	
+
 	public HSConsumeInfo.Builder getBuilder() {
 		return consumeInfo;
 	}
-	
+
 	/**
 	 * 克隆消耗对象
 	 */
@@ -66,14 +66,14 @@ public class ConsumeItems {
 		newConsume.setRewardInfo(consumeInfo.clone());
 		return newConsume;
 	}
-	
+
 	/**
 	 * 判断是否有奖励
 	 */
 	public boolean hasConsumeItem() {
 		return consumeInfo.getConsumeItemsList().size() > 0;
 	}
-	
+
 	/**
 	 * 生成存储字符串
 	 * 
@@ -87,8 +87,8 @@ public class ConsumeItems {
 	public String toString() {
 		return null;
 	}
-	
-	public ConsumeItems addItem(String itemId, int count) {		
+
+	public ConsumeItems addItem(String itemId, int count) {
 		ConsumeItem.Builder consumeItem = null;
 		for (ConsumeItem.Builder consume :  consumeInfo.getConsumeItemsBuilderList()) {
 			if (consume.getType() == itemType.ITEM_VALUE && consume.getItemId().equals(itemId)) {
@@ -96,7 +96,7 @@ public class ConsumeItems {
 				break;
 			}
 		}
-		
+
 		if (consumeItem == null) {
 			consumeItem = ConsumeItem.newBuilder();
 			consumeItem.setType(itemType.ITEM_VALUE);
@@ -119,7 +119,7 @@ public class ConsumeItems {
 		consumeInfo.addConsumeItems(consumeItem);
 		return this;
 	}
-	
+
 	public ConsumeItems addAttr(String attrType, int count) {
 		ConsumeItem.Builder consumeItem = null;
 		for (ConsumeItem.Builder consume :  consumeInfo.getConsumeItemsBuilderList()) {
@@ -127,7 +127,7 @@ public class ConsumeItems {
 				consumeItem = consume;
 				break;
 			}
-		}		
+		}
 		if (consumeItem == null) {
 			consumeItem = ConsumeItem.newBuilder();
 			consumeItem.setType(itemType.PLAYER_ATTR_VALUE);
@@ -162,11 +162,11 @@ public class ConsumeItems {
 		}
 		return this;
 	}
-	
-	public ConsumeItems addAttr(int attrType, int count) {		
+
+	public ConsumeItems addAttr(int attrType, int count) {
 		return addAttr(String.valueOf(attrType), count);
 	}
-	
+
 	//目前怪物的消耗都是通过指定Id的
 	public ConsumeItems addMonster(int id, String monsterId) {
 		ConsumeItem.Builder consumeItem = ConsumeItem.newBuilder();
@@ -176,7 +176,7 @@ public class ConsumeItems {
 		consumeInfo.addConsumeItems(consumeItem);
 		return this;
 	}
-	
+
 	/**
 	 * 根据配置添加消耗
 	 * 
@@ -201,33 +201,38 @@ public class ConsumeItems {
 				throw new RuntimeException("unsupport config consume type");
 			}
 		}
-		
+
 		return this;
 	}
-	
+
 	public ConsumeItems addItemInfos(List<ItemInfo> itemInfos) {
 		if (itemInfos != null) {
 			for (ItemInfo itemInfo : itemInfos) {
 				addItemInfo(itemInfo);
 			}
 		}
-		
+
 		return this;
 	}
-	
+
 	public ConsumeItems addGold(int gold) {
-		if (gold <= 0 ) {
-			return this;
+		if (gold > 0 ) {
+			addAttr(changeType.CHANGE_GOLD_VALUE, gold);
 		}
-		addAttr(changeType.CHANGE_GOLD_VALUE, gold);
 		return this;
 	}
 
 	public ConsumeItems addCoin(int coin) {
-		if (coin <= 0 ) {
-			return this;
+		if (coin > 0 ) {
+			addAttr(changeType.CHANGE_COIN_VALUE, coin);
 		}
-		addAttr(changeType.CHANGE_COIN_VALUE, coin);
+		return this;
+	}
+
+	public ConsumeItems addTowerCoin(int towerCoin) {
+		if (towerCoin > 0) {
+			addAttr(changeType.CHANGE_TOWER_COIN_VALUE, towerCoin);
+		}
 		return this;
 	}
 
@@ -239,7 +244,7 @@ public class ConsumeItems {
 	public boolean checkConsume(Player player) {
 		return checkConsumeInternal(player) == 0;
 	}
-	
+
 	/**
 	 * 检测是否可消耗
 	 * @param player
@@ -251,7 +256,7 @@ public class ConsumeItems {
 		if(result > 0) {
 			if(hsCode > 0) {
 				switch (result) {
-					case ConsumeCheckResult.COINS_NOT_ENOUGH:
+					case ConsumeCheckResult.COIN_NOT_ENOUGH:
 						player.sendError(hsCode, Status.PlayerError.COINS_NOT_ENOUGH_VALUE);
 						break;
 					case ConsumeCheckResult.GOLD_NOT_ENOUGH:
@@ -286,7 +291,7 @@ public class ConsumeItems {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 检测消耗物品或者属性数量是否充足
 	 * @param player
@@ -294,34 +299,41 @@ public class ConsumeItems {
 	 */
 	private int checkConsumeInternal(Player player) {
 		for(ConsumeItem consumeItem : consumeInfo.getConsumeItemsList()) {
-			if(consumeItem.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
-				if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_COIN_VALUE) {
+			switch (consumeItem.getType()) {
+			case itemType.PLAYER_ATTR_VALUE:
+				int changeType = Integer.valueOf(consumeItem.getItemId());
+				if (changeType == Const.changeType.CHANGE_COIN_VALUE) {
 					if(player.getCoin() < consumeItem.getCount()) {
-						return ConsumeCheckResult.COINS_NOT_ENOUGH;
+						return ConsumeCheckResult.COIN_NOT_ENOUGH;
 					}
 				}
-				else if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_GOLD_VALUE) {
+				else if (changeType == Const.changeType.CHANGE_GOLD_VALUE) {
 					if (player.getGold() < consumeItem.getCount()) {
 						return ConsumeCheckResult.GOLD_NOT_ENOUGH;
 					}
 				}
-				else if (Integer.valueOf(consumeItem.getItemId()).intValue() == Const.changeType.CHANGE_FATIGUE_VALUE) {
+				else if (changeType == Const.changeType.CHANGE_TOWER_COIN_VALUE) {
+					if (player.getTowerCoin() < consumeItem.getCount()) {
+						return ConsumeCheckResult.TOWER_COIN_NOT_ENOUGH;
+					}
+				}
+				else if (changeType == Const.changeType.CHANGE_FATIGUE_VALUE) {
 					// 更新活力值
 					player.updateFatigue();
 					if (player.getPlayerData().getStatisticsEntity().getFatigue() < consumeItem.getCount()) {
 						return ConsumeCheckResult.FATIGUE_NOT_ENOUGH;
 					}
 				}
-			}
-			else if(consumeItem.getType() == Const.itemType.EQUIP_VALUE) {
-				//检测装备 
+				break;
+
+			case itemType.EQUIP_VALUE:
 				EquipEntity equipEntity = player.getPlayerData().getEquipById(consumeItem.getId());
 				if(equipEntity == null) {
 					return ConsumeCheckResult.EQUIP_NOT_ENOUGH;
 				}
-			} 
-			else if(consumeItem.getType() == Const.itemType.MONSTER_VALUE) {
-				//检测装备 
+				break;
+
+			case itemType.MONSTER_VALUE:
 				MonsterEntity monsterEntity = player.getPlayerData().getMonsterEntity((int)consumeItem.getId());
 				if(monsterEntity == null) {
 					return ConsumeCheckResult.MONSTER_NOT_ENOUGH;
@@ -329,16 +341,16 @@ public class ConsumeItems {
 				else if (monsterEntity.isLocked()) {
 					return ConsumeCheckResult.MONSTER_LOCKED;
 				}
-			}
-			else if(consumeItem.getType() == Const.itemType.ITEM_VALUE) {
-				//检测道具
-				String itemId = consumeItem.getItemId();
-				ItemEntity itemEntity = player.getPlayerData().getItemByItemId(itemId);
+				break;
+
+			case itemType.ITEM_VALUE:
+				ItemEntity itemEntity = player.getPlayerData().getItemByItemId(consumeItem.getItemId());
 				if(itemEntity == null || itemEntity.getCount() <= 0 || itemEntity.getCount() < consumeItem.getCount()) {
 					return ConsumeCheckResult.TOOLS_NOT_ENOUGH;
 				}
-			}
-			else if(consumeItem.getType() == Const.itemType.ALLIANCE_VALUE) {
+				break;
+
+			case itemType.ALLIANCE_VALUE:
 				//检测公会
 				if (player.getAllianceId() == 0) {
 					return ConsumeCheckResult.NOT_IN_ALLIANCE;
@@ -349,20 +361,25 @@ public class ConsumeItems {
 						return ConsumeCheckResult.CONTRIBUTION_NOT_ENOUGH;
 					}
 				}
+				break;
+
+			default:
+				break;
 			}
 		}
-		
+
 		return 0;
 	}
-	
+
 	/**
 	 * 数据消耗
 	 */
 	public boolean consumeTakeAffect(Player player, Action action) {
-		try {	
-			for (int i = 0; i < consumeInfo.getConsumeItemsBuilderList().size(); ) {
+		try {
+			for (int i = 0; i < consumeInfo.getConsumeItemsBuilderList().size(); ++i) {
 				ConsumeItem.Builder item = consumeInfo.getConsumeItemsBuilder(i);
-				if (item.getType() == Const.itemType.PLAYER_ATTR_VALUE) {
+				switch (item.getType()) {
+				case itemType.PLAYER_ATTR_VALUE:
 					// 玩家属性
 					switch (Integer.valueOf(item.getItemId()).intValue()) {
 					case changeType.CHANGE_COIN_VALUE:
@@ -372,58 +389,60 @@ public class ConsumeItems {
 					case changeType.CHANGE_GOLD_VALUE:
 						player.consumeGold(item.getCount(), action);
 						break;
-						
+
+					case changeType.CHANGE_TOWER_COIN_VALUE:
+						player.consumeTowerCoin(item.getCount(), action);
+						break;
+
 					case changeType.CHANGE_FATIGUE_VALUE:
 						player.consumeFatigue(item.getCount(), action);
 						break;
-						
+
 					default:
 						break;
 					}
-					
-					SynPlayerAttr.Builder playerBuilder = consumeInfo.getPlayerAttrBuilder();		
+					SynPlayerAttr.Builder playerBuilder = consumeInfo.getPlayerAttrBuilder();
 					playerBuilder.setCoin(player.getCoin());
 					playerBuilder.setGold(player.getGold());
 					playerBuilder.setExp(player.getExp());
-					playerBuilder.setLevel(player.getLevel());	
+					playerBuilder.setLevel(player.getLevel());
 					playerBuilder.setFatigue(player.getPlayerData().getStatisticsEntity().getFatigue());
 					playerBuilder.setFatigueBeginTime((int)(player.getPlayerData().getStatisticsEntity().getFatigueBeginTime().getTimeInMillis() / 1000));
-				}
-				else if(item.getType() == Const.itemType.ITEM_VALUE){
-					ItemEntity itemEntity = player.consumeItem(item.getItemId(), item.getCount(), action);
-					if (itemEntity == null) {					
+					break;
+
+				case itemType.ITEM_VALUE:
+					if (null == player.consumeItem(item.getItemId(), item.getCount(), action)) {
 						consumeInfo.removeConsumeItems(i);
 						continue;
 					}
-				}
-				else if(item.getType() == Const.itemType.EQUIP_VALUE){
-					boolean result = player.consumeEquip(item.getId(), action);
-					if (result == false) {				
+					break;
+
+				case itemType.EQUIP_VALUE:
+					if (false == player.consumeEquip(item.getId(), action)) {
 						consumeInfo.removeConsumeItems(i);
 						continue;
 					}
-				}
-				else if(item.getType() == Const.itemType.MONSTER_VALUE ){
-					boolean result = player.consumeMonster((int)item.getId(), action);
-					if (result == false) {				
+					break;
+
+				case itemType.MONSTER_VALUE:
+					if (false == player.consumeMonster((int)item.getId(), action)) {
 						consumeInfo.removeConsumeItems(i);
 						continue;
 					}
-				}
-				else if(item.getType() == Const.itemType.ALLIANCE_VALUE ){
+					break;
+
+				case itemType.ALLIANCE_VALUE:
 					if (Integer.valueOf(item.getItemId()).intValue() == Const.changeType.CHANGE_PLAYER_CONTRIBUTION_VALUE) {
-						boolean result = player.consumeContribution(item.getCount(), action);
-						if (result == false) {				
+						if (false == player.consumeContribution(item.getCount(), action)) {
 							consumeInfo.removeConsumeItems(i);
 							continue;
 						}
 					}
-				}
-				else {
+					break;
+
+				default:
 					throw new RuntimeException("unsupport item type");
 				}
-				
-				++i;
 			}
 		}
 		catch (Exception e) {

@@ -54,9 +54,11 @@ public class HawkAccountService extends HawkTickable {
 
 	public static class LevelUpData {
 		public String puid;
+		public int playerId;
 		int level;
-		public LevelUpData (String puid, int level) {
+		public LevelUpData (String puid, int playerId, int level) {
 			this.puid = puid;
+			this.playerId = playerId;
 			this.level = level;
 		}
 	}
@@ -90,7 +92,7 @@ public class HawkAccountService extends HawkTickable {
 	private static final String heartBeatPath    	= "/heartBeat";
 	
 	private static final String roleCreateParam     = "game=%s&platform=%s&channel=%s&server=%s&puid=%s&playerid=%d&nickname=%s";
-	private static final String levelUpParam        = "game=%s&platform=%s&channel=%s&server=%s&puid=%sd&level=%d";
+	private static final String levelUpParam        = "game=%s&platform=%s&channel=%s&server=%s&puid=%s&playerid=%d&level=%d";
 	private static final String serverRegistParam   = "game=%s&platform=%s&channel=%s&server=%s&ip=%s&port=%d";
 	private static final String serverUnRegistParam = "game=%s&platform=%s&channel=%s&server=%s";
 	private static final String heartBeatParam      = "game=%s&platform=%s&channel=%s&server=%s";
@@ -381,7 +383,7 @@ public class HawkAccountService extends HawkTickable {
 	private boolean doReport(LevelUpData levelUpData) {
 		if (accountZmq != null) {
 			try {
-				String queryParam = String.format(levelUpParam, gameName, platform, channel, serverId, levelUpData.puid, levelUpData.level);
+				String queryParam = String.format(levelUpParam, gameName, platform, channel, serverId, levelUpData.puid, levelUpData.playerId, levelUpData.level);
 				accountLogger.info("report: " + levelUpPath + "?" + queryParam);
 
 				int status = executeMethod(levelUpPath, queryParam);

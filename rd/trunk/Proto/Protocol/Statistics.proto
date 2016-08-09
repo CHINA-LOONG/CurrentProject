@@ -118,9 +118,3 @@ message HSSyncExpLeftTimes
 	// 三倍经验剩余次数
 	required int32  tripleExpLeft = 2;
 }
-
-//message HSStatisticsResetSync
-//{
-//	// 钻石兑换次数
-//	required int32 goldChangeTimes = 1;
-//}

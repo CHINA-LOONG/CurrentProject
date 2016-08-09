@@ -61,8 +61,8 @@ public class PetDetailRightAttr : PetDetailRightBase
         textPhysATK.text = unit.phyAttack.ToString(); //((int)(unit.strength * SpellConst.strengthToAttack)).ToString();
         textMagicATK.text = unit.magicAttack.ToString(); //((int)(unit.intelligence * SpellConst.intelligenceToAttack)).ToString();
         //受伤比计算 max(1/(1+(守方总防御力-攻方防御穿透)/I(min(lv1,lv2))),25%)
-        float injuryRatio = 1.0f / (1.0f + (unit.defense * 1.0f) / SpellFunctions.GetInjuryAdjustNum(unit.pbUnit.level, unit.pbUnit.level));
-        injuryRatio = injuryRatio < 0.25f ? 0.25f : injuryRatio;
-        textINJ.text = injuryRatio.ToString("P");
+        //float injuryRatio = 1.0f / (1.0f + (unit.defense * 1.0f) / SpellFunctions.GetInjuryAdjustNum(unit.pbUnit.level, unit.pbUnit.level));
+        //injuryRatio = injuryRatio < 0.25f ? 0.25f : injuryRatio;
+        textINJ.text = unit.mInjuryratio.ToString("P");
     }
 }

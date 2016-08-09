@@ -38,6 +38,7 @@ public class PlayerImModule extends PlayerModule {
 		int hsCode = cmd.getType();
 		int channel = protocol.getChannel();
 		String chatText = protocol.getText();
+		String expansion = protocol.hasExpansion() ? protocol.getExpansion() : null;
 
 		// TODO: 
 		// 禁言判断
@@ -55,7 +56,7 @@ public class PlayerImModule extends PlayerModule {
 			}
 		}
 
-		ImManager.getInstance().postChat(player, chatText, channel);
+		ImManager.getInstance().postChat(player, channel, chatText, expansion);
 
 		return true;
 	}

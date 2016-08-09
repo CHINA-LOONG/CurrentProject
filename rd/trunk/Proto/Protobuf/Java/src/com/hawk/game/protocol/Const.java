@@ -676,7 +676,7 @@ public final class Const {
    * Protobuf enum {@code moneyType}
    *
    * <pre>
-   * 购买价格类型
+   * 普通商店购买价格类型
    * </pre>
    */
   public enum moneyType
@@ -848,23 +848,31 @@ public final class Const {
      */
     CHANGE_FAV(7, 8),
     /**
-     * <code>CHANGE_PLAYER_CONTRIBUTION = 9;</code>
-     *
-     * <pre>
-     * 玩家公会贡献值
-     * </pre>
-     */
-    CHANGE_PLAYER_CONTRIBUTION(9, 9),
-    ;
-
-    /**
-     * <code>CHANGE_GOLD_BUY = 8;</code>
+     * <code>CHANGE_GOLD_BUY = 9;</code>
      *
      * <pre>
      * 充值钻石
      * </pre>
      */
-    public static final changeType CHANGE_GOLD_BUY = CHANGE_FAV;
+    CHANGE_GOLD_BUY(8, 9),
+    /**
+     * <code>CHANGE_PLAYER_CONTRIBUTION = 10;</code>
+     *
+     * <pre>
+     * 公会贡献值
+     * </pre>
+     */
+    CHANGE_PLAYER_CONTRIBUTION(9, 10),
+    /**
+     * <code>CHANGE_TOWER_COIN = 11;</code>
+     *
+     * <pre>
+     * 通天塔币
+     * </pre>
+     */
+    CHANGE_TOWER_COIN(10, 11),
+    ;
+
     /**
      * <code>CHANGE_GOLD = 1;</code>
      *
@@ -930,21 +938,29 @@ public final class Const {
      */
     public static final int CHANGE_FAV_VALUE = 8;
     /**
-     * <code>CHANGE_GOLD_BUY = 8;</code>
+     * <code>CHANGE_GOLD_BUY = 9;</code>
      *
      * <pre>
      * 充值钻石
      * </pre>
      */
-    public static final int CHANGE_GOLD_BUY_VALUE = 8;
+    public static final int CHANGE_GOLD_BUY_VALUE = 9;
     /**
-     * <code>CHANGE_PLAYER_CONTRIBUTION = 9;</code>
+     * <code>CHANGE_PLAYER_CONTRIBUTION = 10;</code>
      *
      * <pre>
-     * 玩家公会贡献值
+     * 公会贡献值
      * </pre>
      */
-    public static final int CHANGE_PLAYER_CONTRIBUTION_VALUE = 9;
+    public static final int CHANGE_PLAYER_CONTRIBUTION_VALUE = 10;
+    /**
+     * <code>CHANGE_TOWER_COIN = 11;</code>
+     *
+     * <pre>
+     * 通天塔币
+     * </pre>
+     */
+    public static final int CHANGE_TOWER_COIN_VALUE = 11;
 
 
     public final int getNumber() { return value; }
@@ -959,7 +975,9 @@ public final class Const {
         case 6: return CHANGE_MONSTER_LEVEL;
         case 7: return CHANGE_FATIGUE;
         case 8: return CHANGE_FAV;
-        case 9: return CHANGE_PLAYER_CONTRIBUTION;
+        case 9: return CHANGE_GOLD_BUY;
+        case 10: return CHANGE_PLAYER_CONTRIBUTION;
+        case 11: return CHANGE_TOWER_COIN;
         default: return null;
       }
     }
@@ -989,9 +1007,7 @@ public final class Const {
       return com.hawk.game.protocol.Const.getDescriptor().getEnumTypes().get(6);
     }
 
-    private static final changeType[] VALUES = {
-      CHANGE_GOLD, CHANGE_COIN, CHANGE_PLAYER_EXP, CHANGE_PLAYER_LEVEL, CHANGE_MONSTER_EXP, CHANGE_MONSTER_LEVEL, CHANGE_FATIGUE, CHANGE_FAV, CHANGE_GOLD_BUY, CHANGE_PLAYER_CONTRIBUTION, 
-    };
+    private static final changeType[] VALUES = values();
 
     public static changeType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -2391,9 +2407,9 @@ public final class Const {
      */
     ALLIANCESHOP(1, 2),
     /**
-     * <code>OTHERSHOP = 3;</code>
+     * <code>TOWERSHOP = 3;</code>
      */
-    OTHERSHOP(2, 3),
+    TOWERSHOP(2, 3),
     ;
 
     /**
@@ -2405,9 +2421,9 @@ public final class Const {
      */
     public static final int ALLIANCESHOP_VALUE = 2;
     /**
-     * <code>OTHERSHOP = 3;</code>
+     * <code>TOWERSHOP = 3;</code>
      */
-    public static final int OTHERSHOP_VALUE = 3;
+    public static final int TOWERSHOP_VALUE = 3;
 
 
     public final int getNumber() { return value; }
@@ -2416,7 +2432,7 @@ public final class Const {
       switch (value) {
         case 1: return NORMALSHOP;
         case 2: return ALLIANCESHOP;
-        case 3: return OTHERSHOP;
+        case 3: return TOWERSHOP;
         default: return null;
       }
     }
@@ -2509,6 +2525,14 @@ public final class Const {
      * </pre>
      */
     OVERFLOW(3, 4),
+    /**
+     * <code>DELETE = 5;</code>
+     *
+     * <pre>
+     * 已删除
+     * </pre>
+     */
+    DELETE(4, 5),
     ;
 
     /**
@@ -2543,6 +2567,14 @@ public final class Const {
      * </pre>
      */
     public static final int OVERFLOW_VALUE = 4;
+    /**
+     * <code>DELETE = 5;</code>
+     *
+     * <pre>
+     * 已删除
+     * </pre>
+     */
+    public static final int DELETE_VALUE = 5;
 
 
     public final int getNumber() { return value; }
@@ -2553,6 +2585,7 @@ public final class Const {
         case 2: return READ;
         case 3: return RECEIVE;
         case 4: return OVERFLOW;
+        case 5: return DELETE;
         default: return null;
       }
     }
@@ -3135,44 +3168,44 @@ public final class Const {
       "\013PLAYER_ATTR\020\001\022\020\n\014MONSTER_ATTR\020\002\022\010\n\004ITEM",
       "\020\003\022\t\n\005EQUIP\020\004\022\t\n\005SKILL\020\005\022\t\n\005GROUP\020\006\022\013\n\007M" +
       "ONSTER\020\007\022\014\n\010ALLIANCE\020\010*+\n\tmoneyType\022\016\n\nM" +
-      "ONEY_GOLD\020\001\022\016\n\nMONEY_COIN\020\002*\351\001\n\nchangeTy" +
+      "ONEY_GOLD\020\001\022\016\n\nMONEY_COIN\020\002*\200\002\n\nchangeTy" +
       "pe\022\017\n\013CHANGE_GOLD\020\001\022\017\n\013CHANGE_COIN\020\002\022\025\n\021" +
       "CHANGE_PLAYER_EXP\020\003\022\027\n\023CHANGE_PLAYER_LEV" +
       "EL\020\004\022\026\n\022CHANGE_MONSTER_EXP\020\005\022\030\n\024CHANGE_M" +
       "ONSTER_LEVEL\020\006\022\022\n\016CHANGE_FATIGUE\020\007\022\016\n\nCH" +
-      "ANGE_FAV\020\010\022\023\n\017CHANGE_GOLD_BUY\020\010\022\036\n\032CHANG" +
-      "E_PLAYER_CONTRIBUTION\020\t*\365\001\n\004attr\022\r\n\tEMPT" +
-      "YATTR\020\000\022\014\n\010STRENGHT\020\001\022\020\n\014INTELLIGENCE\020\002\022",
-      "\t\n\005SPEED\020\003\022\013\n\007DEFENSE\020\004\022\n\n\006HEALTH\020\005\022\021\n\rD" +
-      "EFENSEWEAKEN\020e\022\014\n\010CRITICAL\020f\022\022\n\016CRITICAL" +
-      "WEAKEN\020g\022\014\n\010RECOVERY\020h\022\022\n\016CRITICALDAMAGE" +
-      "\020i\022\013\n\007HITRATE\020j\022\020\n\014CUREINCREASE\020k\022\020\n\014DAM" +
-      "AGEREDUCE\020l\022\022\n\016DAMAGEINCREASE\020m*+\n\ruserC" +
-      "ondition\022\n\n\006BATTLE\020\001\022\016\n\nNON_BATTLE\020\002*5\n\010" +
-      "bindType\022\014\n\010NON_BIND\020\001\022\014\n\010USE_BIND\020\002\022\r\n\t" +
-      "TAKE_BIND\020\003*b\n\010toolType\022\016\n\nCOMMONTOOL\020\001\022" +
-      "\020\n\014FRAGMENTTOOL\020\002\022\013\n\007GEMTOOL\020\003\022\013\n\007BOXTOO" +
-      "L\020\004\022\013\n\007USETOOL\020\005\022\r\n\tEQUIPTOOL\020\007*.\n\013FragS",
-      "ubType\022\020\n\014FRAG_MONSTER\020\001\022\r\n\tFRAG_TOOL\020\002*" +
-      "`\n\016UseToolSubType\022\016\n\nUSETOOLEXP\020\001\022\024\n\020USE" +
-      "TOOLDOUBLEEXP\020\002\022\024\n\020USETOOLTRIPLEEXP\020\003\022\022\n" +
-      "\016USETOOLFATIGUE\020\004*\204\001\n\tequipPart\022\n\n\006HELME" +
-      "T\020\001\022\010\n\004RING\020\002\022\010\n\004BELT\020\003\022\013\n\007CUIRASS\020\004\022\013\n\007" +
-      "WEAPON1\020\005\022\013\n\007WEAPON2\020\006\022\014\n\010LEGGUARD\020\007\022\t\n\005" +
-      "SHOES\020\010\022\t\n\005GLOVE\020\t\022\014\n\010NECKLACE\020\n*O\n\014equi" +
-      "pQuality\022\t\n\005WHITE\020\001\022\t\n\005GREEN\020\002\022\010\n\004BLUE\020\003" +
-      "\022\n\n\006PURPLE\020\004\022\n\n\006ORANGE\020\005\022\007\n\003RED\020\006*;\n\010sho" +
-      "pType\022\016\n\nNORMALSHOP\020\001\022\020\n\014ALLIANCESHOP\020\002\022",
-      "\r\n\tOTHERSHOP\020\003*<\n\tmailState\022\n\n\006UNREAD\020\001\022" +
-      "\010\n\004READ\020\002\022\013\n\007RECEIVE\020\003\022\014\n\010OVERFLOW\020\004*7\n\006" +
-      "ImType\022\010\n\004CHAT\020\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020" +
-      "\003\022\n\n\006NOTICE\020\004*-\n\tImChannel\022\n\n\006PERSON\020\001\022\t" +
-      "\n\005WORLD\020\002\022\t\n\005GUILD\020\003*<\n\017ChapterBoxState\022" +
-      "\024\n\007INVALID\020\377\377\377\377\377\377\377\377\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN" +
-      "\020\001*]\n\014InstanceType\022\022\n\016INSTANCE_STORY\020\001\022\021" +
-      "\n\rINSTANCE_HOLE\020\002\022\022\n\016INSTANCE_TOWER\020\003\022\022\n" +
-      "\016INSTANCE_GUILD\020\004B\030\n\026com.hawk.game.proto" +
-      "col"
+      "ANGE_FAV\020\010\022\023\n\017CHANGE_GOLD_BUY\020\t\022\036\n\032CHANG" +
+      "E_PLAYER_CONTRIBUTION\020\n\022\025\n\021CHANGE_TOWER_" +
+      "COIN\020\013*\365\001\n\004attr\022\r\n\tEMPTYATTR\020\000\022\014\n\010STRENG",
+      "HT\020\001\022\020\n\014INTELLIGENCE\020\002\022\t\n\005SPEED\020\003\022\013\n\007DEF" +
+      "ENSE\020\004\022\n\n\006HEALTH\020\005\022\021\n\rDEFENSEWEAKEN\020e\022\014\n" +
+      "\010CRITICAL\020f\022\022\n\016CRITICALWEAKEN\020g\022\014\n\010RECOV" +
+      "ERY\020h\022\022\n\016CRITICALDAMAGE\020i\022\013\n\007HITRATE\020j\022\020" +
+      "\n\014CUREINCREASE\020k\022\020\n\014DAMAGEREDUCE\020l\022\022\n\016DA" +
+      "MAGEINCREASE\020m*+\n\ruserCondition\022\n\n\006BATTL" +
+      "E\020\001\022\016\n\nNON_BATTLE\020\002*5\n\010bindType\022\014\n\010NON_B" +
+      "IND\020\001\022\014\n\010USE_BIND\020\002\022\r\n\tTAKE_BIND\020\003*b\n\010to" +
+      "olType\022\016\n\nCOMMONTOOL\020\001\022\020\n\014FRAGMENTTOOL\020\002" +
+      "\022\013\n\007GEMTOOL\020\003\022\013\n\007BOXTOOL\020\004\022\013\n\007USETOOL\020\005\022",
+      "\r\n\tEQUIPTOOL\020\007*.\n\013FragSubType\022\020\n\014FRAG_MO" +
+      "NSTER\020\001\022\r\n\tFRAG_TOOL\020\002*`\n\016UseToolSubType" +
+      "\022\016\n\nUSETOOLEXP\020\001\022\024\n\020USETOOLDOUBLEEXP\020\002\022\024" +
+      "\n\020USETOOLTRIPLEEXP\020\003\022\022\n\016USETOOLFATIGUE\020\004" +
+      "*\204\001\n\tequipPart\022\n\n\006HELMET\020\001\022\010\n\004RING\020\002\022\010\n\004" +
+      "BELT\020\003\022\013\n\007CUIRASS\020\004\022\013\n\007WEAPON1\020\005\022\013\n\007WEAP" +
+      "ON2\020\006\022\014\n\010LEGGUARD\020\007\022\t\n\005SHOES\020\010\022\t\n\005GLOVE\020" +
+      "\t\022\014\n\010NECKLACE\020\n*O\n\014equipQuality\022\t\n\005WHITE" +
+      "\020\001\022\t\n\005GREEN\020\002\022\010\n\004BLUE\020\003\022\n\n\006PURPLE\020\004\022\n\n\006O" +
+      "RANGE\020\005\022\007\n\003RED\020\006*;\n\010shopType\022\016\n\nNORMALSH",
+      "OP\020\001\022\020\n\014ALLIANCESHOP\020\002\022\r\n\tTOWERSHOP\020\003*H\n" +
+      "\tmailState\022\n\n\006UNREAD\020\001\022\010\n\004READ\020\002\022\013\n\007RECE" +
+      "IVE\020\003\022\014\n\010OVERFLOW\020\004\022\n\n\006DELETE\020\005*7\n\006ImTyp" +
+      "e\022\010\n\004CHAT\020\001\022\013\n\007LANTERN\020\002\022\n\n\006PROMPT\020\003\022\n\n\006" +
+      "NOTICE\020\004*-\n\tImChannel\022\n\n\006PERSON\020\001\022\t\n\005WOR" +
+      "LD\020\002\022\t\n\005GUILD\020\003*<\n\017ChapterBoxState\022\024\n\007IN" +
+      "VALID\020\377\377\377\377\377\377\377\377\377\001\022\t\n\005VALID\020\000\022\010\n\004OPEN\020\001*]\n" +
+      "\014InstanceType\022\022\n\016INSTANCE_STORY\020\001\022\021\n\rINS" +
+      "TANCE_HOLE\020\002\022\022\n\016INSTANCE_TOWER\020\003\022\022\n\016INST" +
+      "ANCE_GUILD\020\004B\030\n\026com.hawk.game.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

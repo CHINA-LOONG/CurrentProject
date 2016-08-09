@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Protocol/GM.proto
+// Note: requires additional types generated from: Protocol/Statistics.proto
 namespace PB
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GMGenTestAccount")]
@@ -74,6 +75,30 @@ namespace PB
   {
     public GMOperationRet() {}
     
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GMInstancePush")]
+  public partial class GMInstancePush : global::ProtoBuf.IExtensible
+  {
+    public GMInstancePush() {}
+    
+    private readonly global::System.Collections.Generic.List<InstanceState> _instanceState = new global::System.Collections.Generic.List<InstanceState>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"instanceState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<InstanceState> instanceState
+    {
+      get { return _instanceState; }
+    }
+  
+    private ChapterState _chapterState;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"chapterState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public ChapterState chapterState
+    {
+      get { return _chapterState; }
+      set { _chapterState = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

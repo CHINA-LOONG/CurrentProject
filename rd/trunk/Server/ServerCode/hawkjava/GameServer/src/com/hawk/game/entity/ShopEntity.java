@@ -52,17 +52,17 @@ public class ShopEntity extends HawkDBEntity{
 	@Column(name = "allianceShopItems")
 	protected String allianceShopItems = null;
 	
-	@Column(name = "otherShopId")
-	protected int otherShopId = 0;
-	
-	@Column(name = "otherRefreshDate")
-	protected Calendar otherRefreshDate = null;
+	@Column(name = "towerShopId")
+	protected int towerShopId = 0;
 
-	@Column(name = "otherRefreshNums")
-	protected int otherRefreshNums = 0;
-	
-	@Column(name = "otherShopItems")
-	protected String otherShopItems = null;
+	@Column(name = "towerRefreshDate")
+	protected Calendar towerRefreshDate = null;
+
+	@Column(name = "towerRefreshNums")
+	protected int towerRefreshNums = 0;
+
+	@Column(name = "towerShopItems")
+	protected String towerShopItems = null;
 	
 	@Column(name = "createTime", nullable = false)
 	protected int createTime = 0;
@@ -78,9 +78,9 @@ public class ShopEntity extends HawkDBEntity{
 	
 	@Transient
 	private List<ShopItemInfo> allianceShopItemsList = null;
-	
+
 	@Transient
-	private List<ShopItemInfo> otherShopItemsList = null;
+	private List<ShopItemInfo> towerShopItemsList = null;
 	
 	public int getPlayerId() {
 		return playerId;
@@ -154,37 +154,38 @@ public class ShopEntity extends HawkDBEntity{
 		this.allianceShopItems = allianceShopItems;
 	}
 
-	public int getOtherShopId() {
-		return otherShopId;
+	public int getTowerShopId() {
+		return towerShopId;
 	}
 
-	public void setOtherShopId(int otherShopId) {
-		this.otherShopId = otherShopId;
+	public void setTowerShopId(int towerShopId) {
+		this.towerShopId = towerShopId;
 	}
 
-	public Calendar getOtherRefreshDate() {
-		return otherRefreshDate;
+	public Calendar getTowerRefreshDate() {
+		return towerRefreshDate;
 	}
 
-	public void setOtherRefreshDate(Calendar otherRefreshDate) {
-		this.otherRefreshDate = otherRefreshDate;
+	public void setTowerRefreshDate(Calendar towerRefreshDate) {
+		this.towerRefreshDate = towerRefreshDate;
 	}
 
-	public int getOtherRefreshNums() {
-		return otherRefreshNums;
+	public int getTowerRefreshNums() {
+		return towerRefreshNums;
 	}
 
-	public void setOtherRefreshNums(int otherRefreshNums) {
-		this.otherRefreshNums = otherRefreshNums;
+	public void setTowerRefreshNums(int towerRefreshNums) {
+		this.towerRefreshNums = towerRefreshNums;
 	}
 
-	public String getOtherShopItems() {
-		return otherShopItems;
+	public String getTowerShopItems() {
+		return towerShopItems;
 	}
 
-	public void setOtherShopItems(String otherShopItems) {
-		this.otherShopItems = otherShopItems;
+	public void setTowerShopItems(String towerShopItems) {
+		this.towerShopItems = towerShopItems;
 	}
+
 
 	public List<ShopItemInfo> getNormalShopItemsList() {
 		return normalShopItemsList;
@@ -202,22 +203,14 @@ public class ShopEntity extends HawkDBEntity{
 		this.allianceShopItemsList = allianceShopItemsList;
 	}
 
-	public List<ShopItemInfo> getOtherShopItemsList() {
-		return otherShopItemsList;
-	}
-
-	public void setOtherShopItemsList(List<ShopItemInfo> otherShopItemsList) {
-		this.otherShopItemsList = otherShopItemsList;
-	}
-
 	public List<ShopItemInfo> getShopItemsList(int type) {
 		switch (type) {
 		case Const.shopType.NORMALSHOP_VALUE:
 			return normalShopItemsList;
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			return allianceShopItemsList;
-		case Const.shopType.OTHERSHOP_VALUE:
-			return otherShopItemsList;
+		case Const.shopType.TOWERSHOP_VALUE:
+			return towerShopItemsList;
 		default:
 			return null;
 		}
@@ -231,8 +224,8 @@ public class ShopEntity extends HawkDBEntity{
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			allianceShopItemsList = shopItemsList;
 			break;
-		case Const.shopType.OTHERSHOP_VALUE:
-			otherShopItemsList = shopItemsList;
+		case Const.shopType.TOWERSHOP_VALUE:
+			towerShopItemsList = shopItemsList;
 			break;
 		default:
 			
@@ -245,8 +238,8 @@ public class ShopEntity extends HawkDBEntity{
 			return normalShopId;
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			return allianceShopId;
-		case Const.shopType.OTHERSHOP_VALUE:
-			return otherShopId;
+		case Const.shopType.TOWERSHOP_VALUE:
+			return towerShopId;
 		default:
 			return 0;
 		}
@@ -260,8 +253,8 @@ public class ShopEntity extends HawkDBEntity{
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			allianceShopId += 1;
 			break;
-		case Const.shopType.OTHERSHOP_VALUE:
-			otherShopId += 1;
+		case Const.shopType.TOWERSHOP_VALUE:
+			towerShopId += 1;
 			break;
 		default:
 		}
@@ -273,8 +266,8 @@ public class ShopEntity extends HawkDBEntity{
 			return normalRefreshNums;
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			return allianceRefreshNums;
-		case Const.shopType.OTHERSHOP_VALUE:
-			return otherRefreshNums;
+		case Const.shopType.TOWERSHOP_VALUE:
+			return towerRefreshNums;
 		default:
 			return 0;
 		}
@@ -288,27 +281,27 @@ public class ShopEntity extends HawkDBEntity{
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			allianceRefreshNums += 1;
 			break;
-		case Const.shopType.OTHERSHOP_VALUE:
-			otherRefreshNums += 1;
+		case Const.shopType.TOWERSHOP_VALUE:
+			towerRefreshNums += 1;
 			break;
 		default:
 		}
 	}
 	
-	public Calendar getRefreshData(int type) {
+	public Calendar getRefreshDate(int type) {
 		switch (type) {
 		case Const.shopType.NORMALSHOP_VALUE:
 			return normalRefreshDate;
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			return allianceRefreshDate;
-		case Const.shopType.OTHERSHOP_VALUE:
-			return otherRefreshDate;
+		case Const.shopType.TOWERSHOP_VALUE:
+			return towerRefreshDate;
 		default:
 			return null;
 		}
 	}
 	
-	public void setRefreshData(int type, Calendar refreshData) {
+	public void setRefreshDate(int type, Calendar refreshData) {
 		switch (type) {
 		case Const.shopType.NORMALSHOP_VALUE:
 			normalRefreshDate = refreshData;
@@ -316,8 +309,8 @@ public class ShopEntity extends HawkDBEntity{
 		case Const.shopType.ALLIANCESHOP_VALUE:
 			allianceRefreshDate = refreshData;
 			break;
-		case Const.shopType.OTHERSHOP_VALUE:
-			otherRefreshDate = refreshData;
+		case Const.shopType.TOWERSHOP_VALUE:
+			towerRefreshDate = refreshData;
 			break;
 		default:
 		}
@@ -347,13 +340,13 @@ public class ShopEntity extends HawkDBEntity{
 			}
 		}
 		
-		otherShopItemsList = new LinkedList<>();
-		if (otherShopItems != null && otherShopItems.isEmpty() == false) {
-			String[] items = otherShopItems.trim().split(" ");
+		towerShopItemsList = new LinkedList<>();
+		if (towerShopItems != null && towerShopItems.isEmpty() == false) {
+			String[] items = towerShopItems.trim().split(" ");
 			for (String item  : items) {
 				ShopItemInfo itemInfo = ShopItemInfo.valueOf(item);
 				if (itemInfo != null) {
-					otherShopItemsList.add(itemInfo);
+					towerShopItemsList.add(itemInfo);
 				}
 			}
 		}
@@ -386,14 +379,14 @@ public class ShopEntity extends HawkDBEntity{
 		}
 		
 		builder.setLength(0);
-		if (otherShopItemsList == null || otherShopItemsList.isEmpty() == true) {
-			this.otherShopItems = null;
+		if (towerShopItemsList == null || towerShopItemsList.isEmpty() == true) {
+			this.towerShopItems = null;
 		}
 		else{
-			for (ShopItemInfo shopItem : otherShopItemsList) {
+			for (ShopItemInfo shopItem : towerShopItemsList) {
 				builder.append(shopItem.toString()).append(" ");
 			}
-			this.otherShopItems = builder.toString().trim();
+			this.towerShopItems = builder.toString().trim();
 		}
 		
 		return true;

@@ -18,6 +18,7 @@ import com.hawk.game.player.Player;
 import com.hawk.game.player.PlayerModule;
 import com.hawk.game.protocol.Const;
 import com.hawk.game.protocol.HS;
+import com.hawk.game.protocol.Mail.HSMailDelete;
 import com.hawk.game.protocol.Mail.HSMailNew;
 import com.hawk.game.protocol.Mail.HSMailRead;
 import com.hawk.game.protocol.Mail.HSMailReceive;
@@ -84,6 +85,28 @@ public class PlayerMailModule extends PlayerModule {
 		if (true == update) {
 			mailEntity.notifyUpdate(true);
 		}
+		return true;
+	}
+
+	/**
+	 * 删除邮件
+	 */
+	@ProtocolHandler(code = HS.code.MAIL_DELETE_C_VALUE)
+	private boolean onMailDelete(HawkProtocol cmd) {
+		HSMailDelete protocol = cmd.parseProtocol(HSMailDelete.getDefaultInstance());
+		int hsCode = cmd.getType();
+		int mailId = protocol.getMailId();
+
+		MailEntity mailEntity = player.getPlayerData().getMailEntity(mailId);
+		if (mailEntity == null) {
+			sendError(hsCode, Status.mailError.MAIL_NOT_EXIST);
+			return true;
+		}
+
+		mailEntity.setState((byte)Const.mailState.DELETE_VALUE);
+		mailEntity.setInvalid(true);
+		mailEntity.notifyUpdate(true);
+		player.getPlayerData().removeMailEntity(mailEntity);
 		return true;
 	}
 

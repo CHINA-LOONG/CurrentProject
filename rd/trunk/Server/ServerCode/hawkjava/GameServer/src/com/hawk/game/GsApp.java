@@ -41,7 +41,6 @@ import com.hawk.game.callback.ShutdownCallback;
 import com.hawk.game.config.GrayPuidCfg;
 import com.hawk.game.config.HoleCfg;
 import com.hawk.game.config.SysBasicCfg;
-import com.hawk.game.config.TimeCfg;
 import com.hawk.game.entity.PlayerEntity;
 import com.hawk.game.entity.RechargeEntity;
 import com.hawk.game.manager.AllianceManager;
@@ -748,10 +747,11 @@ public class GsApp extends HawkApp {
 		for (int index = 0; index < GsConst.SysRefreshTime.length; ++index) {
 			int timeCfgId = GsConst.SysRefreshTime[index];
 
-			Calendar nextRefreshTime = refreshTime(timeCfgId, curTime);
-			if (nextRefreshTime != null) {
+			Calendar lastRefreshTime = ServerData.getInstance().getLastRefreshTime(timeCfgId);
+			Calendar expectedRefreshTime = TimeUtil.getExpectedRefreshTime(timeCfgId, curTime, lastRefreshTime);
+			if (expectedRefreshTime != null) {
 				// 刷新时间点
-				ServerData.getInstance().setRefreshTime(timeCfgId, nextRefreshTime);
+				ServerData.getInstance().setRefreshTime(timeCfgId, expectedRefreshTime);
 
 				// 刷新数据
 				if (0 != (GsConst.SysRefreshMask[index] & GsConst.RefreshMask.HOLE)) {
@@ -777,8 +777,8 @@ public class GsApp extends HawkApp {
 
 						if (isOpen != null) {
 							HoleRefreshMaxTime max = HoleRefreshMaxTimeMap.get(hole.getId());
-							if (max.time < nextRefreshTime.getTimeInMillis()) {
-								max.time = nextRefreshTime.getTimeInMillis();
+							if (max.time < expectedRefreshTime.getTimeInMillis()) {
+								max.time = expectedRefreshTime.getTimeInMillis();
 								max.isOpen = isOpen;
 							}
 						}
@@ -793,33 +793,6 @@ public class GsApp extends HawkApp {
 				ServerData.getInstance().setHoleOpen(entry.getKey(), entry.getValue().isOpen);
 			}
 		}
-	}
-
-	/**
-	 * 刷新时间点
-	 * @return 如果该时间需要刷新，返回下一个刷新时间，否则返回null
-	 */
-	private Calendar refreshTime(int timeCfgId, Calendar curTime) {
-		TimeCfg timeCfg = HawkConfigManager.getInstance().getConfigByKey(TimeCfg.class, timeCfgId);
-		if (null != timeCfg) {
-			try {
-				Calendar nextRefreshTime = HawkTime.getCalendar();
-				Calendar lastRefreshTime = ServerData.getInstance().getLastRefreshTime(timeCfgId);
-				if (null == lastRefreshTime) {
-					lastRefreshTime = HawkTime.getCalendar();
-					lastRefreshTime.setTimeInMillis(0);
-				}
-
-				boolean shouldRefresh = TimeUtil.getNextRefreshTime(timeCfg, curTime, lastRefreshTime, nextRefreshTime);
-				if (true == shouldRefresh) {
-					return nextRefreshTime;
-				}
-			} catch (Exception e) {
-				HawkException.catchException(e);
-			}
-		}
-
-		return null;
 	}
 
 	// 主线程运行
